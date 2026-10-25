@@ -1,0 +1,1843 @@
+{
+  "taskId": "LUXESTYLE_SOCIAL_DISTRIBUTION_20261025",
+  "documentType": "OWNER_INTENT_AND_READINESS_DOCUMENT_NOT_EXECUTABLE_QUEUE_NOT_PUBLICATION_LEDGER",
+  "timezone": "Europe/Zurich",
+  "brandId": 6227837,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "productId": "gid://shopify/Product/15521256604033",
+  "variantId": "gid://shopify/ProductVariant/56197916361089",
+  "ownerInstructions": {
+    "distributionRequest": "verbreite alles",
+    "sixChannelScopeConfirmedBy": "jo",
+    "youtubeAudienceAnswer": "Allgemeines Publikum, nicht speziell für Kinder",
+    "youtubeAudienceAppliesTo": "this Sternenlicht master only",
+    "madeForKidsIntent": false,
+    "globalAccountSettingsChanged": false,
+    "qualityAndRightsRequirementsPreserved": true,
+    "replyTimePrecision": "Explicit current chat confirmations, no independently recorded exact reply timestamps"
+  },
+  "identityCheck": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "brand": 6227837,
+    "timezone": "Europe/Zurich",
+    "allSixChannelIdentitiesMatch": true
+  },
+  "filmGates": {
+    "actualProfessionalMasterMp4": "not established",
+    "actualMp4Sha256": null,
+    "creativeApprovalForActualMp4": "not established",
+    "commercialFilmEditingAndAdvertisingRights": "not established",
+    "musicFileAndRightsBeforeActualUse": "must verify automation/music/luxe-premium.wav",
+    "voiceover": false,
+    "ledgerHistory": "unknown; do not initialize/reset or infer empty history",
+    "stableMasterIdMustSurviveReencoding": true,
+    "canonicalMusicFileIntegrity": {
+      "status": "PASS",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "bytes": 11343950,
+      "durationSeconds": 64.30766439909297,
+      "channels": 2,
+      "sampleRate": 44100
+    },
+    "musicProvenance": {
+      "gate": "musicProvenanceDocumentation",
+      "status": "PASS",
+      "qualifier": "PASS for concrete current repository provenance records, not a new independent legal/finished-mix certification.",
+      "evidence": [
+        "freshRepoMusicCredits",
+        "archivedMusicProvenance",
+        "archivedSoundfontLicence"
+      ],
+      "finding": "Fresh CREDITS.txt lists luxe-premium.wav under ORIGINAL PRO/100% royalty-free with a named reproducible producer. Archived Fluid soundfont copyright contains an MIT permission grant. Music provenance is not generally missing."
+    },
+    "finalAudioMixAndListeningApproval": "unknown"
+  },
+  "products": {
+    "lastDetailedProof": "2026-10-25T19:08:14+01:00 through 19:08:15+01:00",
+    "knownActive": true,
+    "knownPriceCHF": "34.90",
+    "knownTracked": false,
+    "knownInventoryPolicy": "CONTINUE",
+    "knownPublicVariantAvailable": true,
+    "freshReadBeforeAnyFuturePushRequired": true
+  },
+  "channels": [
+    {
+      "channel": "instagram",
+      "identity": "luxestyle.ch",
+      "draftText": "Ein Blick auf den Sternenlicht-Projektor. Entdecke die angebotene Ausführung und die Produktdetails. Link im Profil.",
+      "linkMode": "bio",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": "unknown",
+      "verifiedPinterestBoard": null,
+      "youtubeAudience": null,
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    },
+    {
+      "channel": "tiktok",
+      "identity": "luxestyle.ch",
+      "draftText": "Licht im Detail. Den Sternenlicht-Projektor und seine Ausführung findest du über den Link im Profil.",
+      "linkMode": "bio",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": "unknown",
+      "verifiedPinterestBoard": null,
+      "youtubeAudience": null,
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    },
+    {
+      "channel": "youtube",
+      "identity": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "draftText": "Sternenlicht-Projektor im Detail | LuxeStyle",
+      "linkMode": "shorts_profile_path_unverified",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": null,
+      "verifiedPinterestBoard": null,
+      "youtubeAudience": {
+        "status": "CONFIRMED_BY_OWNER",
+        "audience": "general, not specifically children",
+        "madeForKids": false,
+        "titleDraftValid": true,
+        "profileTarget": "unknown"
+      },
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    },
+    {
+      "channel": "facebook",
+      "identity": "1049840534888592",
+      "draftText": "Entdecke den Sternenlicht-Projektor. Sieh dir die angebotene Ausführung und alle Produktangaben an:",
+      "linkMode": "caption_product_link",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": null,
+      "verifiedPinterestBoard": null,
+      "youtubeAudience": null,
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    },
+    {
+      "channel": "threads",
+      "identity": "luxestyle.ch",
+      "draftText": "Ein Blick auf Licht und Gerät. Hier findest du den Sternenlicht-Projektor und die Angaben zur angebotenen Ausführung:",
+      "linkMode": "caption_product_link",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": null,
+      "verifiedPinterestBoard": null,
+      "youtubeAudience": null,
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    },
+    {
+      "channel": "pinterest",
+      "identity": "luxestyleCH",
+      "draftText": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+      "linkMode": "pin_product_link",
+      "targetDraft": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18_v1",
+      "verifiedBioTarget": null,
+      "verifiedPinterestBoard": "unknown",
+      "youtubeAudience": null,
+      "channelState": "BLOCKED_NO_VERIFIED_APPROVED_PROFESSIONAL_MASTER_MP4",
+      "metricoolId": null,
+      "uuid": null,
+      "scheduledAt": null,
+      "appliedPostFlags": null,
+      "publicationUrl": null,
+      "ownPublicationState": "NOT_SENT_NOT_SCHEDULED",
+      "requiredBeforeWrite": [
+        "fresh identity/product/tag/storefront checks",
+        "actual MP4 rights/content/quality approval",
+        "master/channel ledger/history and duplicate check",
+        "channel-specific link/board/audience prerequisites",
+        "fresh original post read and explicit diff",
+        "future appropriate slot and per-channel post-write readback"
+      ]
+    }
+  ],
+  "existingPlan": {
+    "posts": 24,
+    "providerPending": 41,
+    "oldInWindow": 6,
+    "newUuidCount": 18,
+    "missingOldUuids": [],
+    "calendarDays": {
+      "2026-10-26": 4,
+      "2026-10-28": 3,
+      "2026-10-29": 5,
+      "2026-10-27": 4,
+      "2026-10-30": 3,
+      "2026-10-31": 3,
+      "2026-11-01": 2
+    },
+    "networkPending": {
+      "facebook": 17,
+      "instagram": 17,
+      "threads": 1,
+      "pinterest": 6
+    },
+    "newUuidsAreNotOwnWrites": true,
+    "ownWrites": []
+  },
+  "operationalWrites": [],
+  "analyticsAndFlowReports": "No analytics or flow reports read for this distribution task; no new-day daily scan forced",
+  "unrelatedAuthorizations": "No shop/SEO/theme/flow/feed/budget/discount/DNS or customer-message activation implied by this social request",
+  "taskStartedDateEuropeZurich": "2026-10-25",
+  "recordedDateEuropeZurich": "2026-10-26",
+  "currentPlanIdentity": [
+    {
+      "id": 404927218,
+      "uuid": "3370014454796207908",
+      "publicationDate": {
+        "dateTime": "2026-10-26T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ]
+    },
+    {
+      "id": 404927223,
+      "uuid": "1910940002626912625",
+      "publicationDate": {
+        "dateTime": "2026-10-26T19:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977"
+      ]
+    },
+    {
+      "id": 404927234,
+      "uuid": "2383637826676869482",
+      "publicationDate": {
+        "dateTime": "2026-10-28T09:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ]
+    },
+    {
+      "id": 404927236,
+      "uuid": "-884200541558521239",
+      "publicationDate": {
+        "dateTime": "2026-10-29T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ]
+    },
+    {
+      "id": 404928616,
+      "uuid": "2877674070200569146",
+      "publicationDate": {
+        "dateTime": "2026-10-27T14:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ]
+    },
+    {
+      "id": 404928620,
+      "uuid": "-3165721293129560265",
+      "publicationDate": {
+        "dateTime": "2026-10-27T17:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978"
+      ]
+    },
+    {
+      "id": 405941138,
+      "uuid": "3832103242401204926",
+      "publicationDate": {
+        "dateTime": "2026-10-29T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5264607261495550408.jpeg"
+      ]
+    },
+    {
+      "id": 405941267,
+      "uuid": "-7289213762748006017",
+      "publicationDate": {
+        "dateTime": "2026-10-29T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-11336918479186155735.jpeg"
+      ]
+    },
+    {
+      "id": 405941288,
+      "uuid": "5422556514800451906",
+      "publicationDate": {
+        "dateTime": "2026-10-30T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-15480236855238901677.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-9200127248536401560.jpeg"
+      ]
+    },
+    {
+      "id": 405941311,
+      "uuid": "-4313698764087147701",
+      "publicationDate": {
+        "dateTime": "2026-10-30T13:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16008650721639421477.jpeg"
+      ]
+    },
+    {
+      "id": 405941344,
+      "uuid": "-4161958612308901750",
+      "publicationDate": {
+        "dateTime": "2026-10-31T17:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13769764836650894203.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-12648395147022624622.jpeg"
+      ]
+    },
+    {
+      "id": 405941368,
+      "uuid": "6949901535401824082",
+      "publicationDate": {
+        "dateTime": "2026-10-31T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5114647947605543485.jpeg"
+      ]
+    },
+    {
+      "id": 405941388,
+      "uuid": "7159397983996628078",
+      "publicationDate": {
+        "dateTime": "2026-11-01T11:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13772458834798770438.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-16086701481287477631.jpeg"
+      ]
+    },
+    {
+      "id": 405941434,
+      "uuid": "4429839409975411400",
+      "publicationDate": {
+        "dateTime": "2026-11-01T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-4399823561216210061.jpeg"
+      ]
+    },
+    {
+      "id": 405984904,
+      "uuid": "-2555305829825950000",
+      "publicationDate": {
+        "dateTime": "2026-10-26T08:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-6383276462566813954.jpeg"
+      ]
+    },
+    {
+      "id": 405985933,
+      "uuid": "-797878253177779214",
+      "publicationDate": {
+        "dateTime": "2026-10-26T17:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5191367944139021133.jpeg"
+      ]
+    },
+    {
+      "id": 405985995,
+      "uuid": "-8155579652890605502",
+      "publicationDate": {
+        "dateTime": "2026-10-27T08:20:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13438170428479483990.jpeg"
+      ]
+    },
+    {
+      "id": 405986064,
+      "uuid": "5354266046264263913",
+      "publicationDate": {
+        "dateTime": "2026-10-27T17:50:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9638067166964776346.jpeg"
+      ]
+    },
+    {
+      "id": 405986109,
+      "uuid": "6638701680568649025",
+      "publicationDate": {
+        "dateTime": "2026-10-28T08:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9670165828582285479.jpeg"
+      ]
+    },
+    {
+      "id": 405986403,
+      "uuid": "8825326286574078154",
+      "publicationDate": {
+        "dateTime": "2026-10-28T17:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17528583970301589680.jpeg"
+      ]
+    },
+    {
+      "id": 405986725,
+      "uuid": "7686029963411803895",
+      "publicationDate": {
+        "dateTime": "2026-10-29T08:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17382016742390885373.jpeg"
+      ]
+    },
+    {
+      "id": 405986779,
+      "uuid": "-1907404935308818459",
+      "publicationDate": {
+        "dateTime": "2026-10-29T17:20:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-3980894827781219500.jpeg"
+      ]
+    },
+    {
+      "id": 405987137,
+      "uuid": "8599624041512978720",
+      "publicationDate": {
+        "dateTime": "2026-10-30T08:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17005348926549372341.jpeg"
+      ]
+    },
+    {
+      "id": 405987167,
+      "uuid": "-1970243383549213009",
+      "publicationDate": {
+        "dateTime": "2026-10-31T10:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-331970871294002016.jpeg"
+      ]
+    }
+  ],
+  "currentPlanningWindow": {
+    "from": "2026-10-26T00:36:00+01:00",
+    "to": "2026-11-02T00:36:00+01:00"
+  },
+  "masterReadinessEvidence": {
+    "task": "LUXESTYLE_DISTRIBUTION_MASTER_READINESS_20261025",
+    "recordedAtUTC": "2026-10-25T23:37:37.200305+00:00",
+    "overallStatus": "BLOCKED",
+    "decision": "Do not schedule/publish this master from the currently verified evidence. A finished file and asset-bound approvals remain unproven. This is not a global claim that no such files or history exist anywhere.",
+    "scope": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "intendedFormat": {
+        "durationSeconds": 18,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "channels": [
+        "instagram",
+        "threads",
+        "tiktok",
+        "facebook",
+        "pinterest",
+        "youtube"
+      ],
+      "otherProductsOrMastersAssessed": false,
+      "handoffReadFirst": true,
+      "handoffBlobs": {
+        "readme": "a17a4f3599b48b508829e63323d59483f3a6e53f",
+        "log": "a40b11035712ab0e6996ecabce46f7bb1db03199"
+      },
+      "latestKnownEveningBlockersReused": true,
+      "searchIsNotGlobalInventory": true
+    },
+    "ownerConfirmations": {
+      "sixChannelInstruction": {
+        "status": "PASS_owner_confirmation",
+        "source": "Current explicit owner instruction verbreite alles, then jo for all six social channels, relayed by parent. Existing gates remain.",
+        "newPermissionQuestionRequired": false
+      },
+      "youtubeAudience": {
+        "status": "PASS_owner_confirmation",
+        "statement": "Allgemeines Publikum, nicht speziell für Kinder",
+        "scope": "This Sternenlicht film/master only; no global channel setting changed.",
+        "source": "Current explicit owner reply relayed by parent",
+        "timePrecision": "Owner reply relayed during this ongoing task; no independently recorded exact reply time."
+      }
+    },
+    "gates": [
+      {
+        "gate": "stableMasterAndProductVariantScope",
+        "status": "PASS",
+        "evidence": [
+          "handoff",
+          "currentFrameplan",
+          "takeAcceptanceTemplate",
+          "freshRepoCutplan"
+        ],
+        "finding": "Same stable masterId and exact product/variant preserved; planned duration is18s, not proof of an exported file."
+      },
+      {
+        "gate": "finishedProfessional18SecondMaster",
+        "status": "BLOCKED",
+        "evidence": [
+          "latestEveningPackage",
+          "takeAcceptanceTemplate",
+          "currentFrameplan",
+          "freshRepoCutplan"
+        ],
+        "finding": "Fresh handoff cutplan still says proposed_edl_not_rendered_not_publishable. Current take template and frameplan have actual professional/master MP4 and hash fields null; latest evening package repeats no new master. No exact deliverable path+SHA was established in this bounded check.",
+        "notClaimed": "No master exists anywhere or in another connector."
+      },
+      {
+        "gate": "matchingPremiumOriginalTakes",
+        "status": "BLOCKED",
+        "evidence": [
+          "takeAcceptanceTemplate",
+          "currentFrameplan"
+        ],
+        "finding": "All five actual source file/hash rows remain unfilled. Template is not completed intake evidence; aggregate readyForEditing=false and publicationReady=false."
+      },
+      {
+        "gate": "exactSuppliedVariantAndMotifsInFilm",
+        "status": "UNKNOWN",
+        "evidence": [
+          "takeAcceptanceTemplate",
+          "latestEveningPackage"
+        ],
+        "finding": "Identity/motif evidence for the five actual takes is unknown. Shop product availability/reference-image rights do not bind a film to the delivered default variant."
+      },
+      {
+        "gate": "commercialFilmEditingAndAdvertisingRights",
+        "status": "UNKNOWN",
+        "evidence": [
+          "takeAcceptanceTemplate",
+          "latestEveningPackage"
+        ],
+        "finding": "No filled asset-specific film-rights document, issuer, exact covered asset/hash or platform/editing/advertising scope in the inspected acceptance record. Do not infer rights from CDN access, Prime/free flags or photo rights."
+      },
+      {
+        "gate": "assetBoundContentAndFinalQualityApproval",
+        "status": "UNKNOWN",
+        "evidence": [
+          "takeAcceptanceTemplate",
+          "currentFrameplan"
+        ],
+        "finding": "OwnerContentApproval and finalFilmQualityApproval are unknown and no reviewed final export is identified. The general six-channel instruction is accepted; it does not provide an absent final-file review."
+      },
+      {
+        "gate": "canonicalMusicFileIntegrity",
+        "status": "PASS",
+        "evidence": [
+          "canonicalMusicLocalCopy",
+          "musicAtExpectedWorkspacePath",
+          "repoReadEvidence"
+        ],
+        "finding": "Actual local WAV matches freshly read default-branch directory Git blob61de48704b2b3ae22fb028e6cf0a3c88e4826a7c and size11,343,950bytes. SHA256 a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688. No new audio generated."
+      },
+      {
+        "gate": "musicProvenanceDocumentation",
+        "status": "PASS",
+        "qualifier": "PASS for concrete current repository provenance records, not a new independent legal/finished-mix certification.",
+        "evidence": [
+          "freshRepoMusicCredits",
+          "archivedMusicProvenance",
+          "archivedSoundfontLicence"
+        ],
+        "finding": "Fresh CREDITS.txt lists luxe-premium.wav under ORIGINAL PRO/100% royalty-free with a named reproducible producer. Archived Fluid soundfont copyright contains an MIT permission grant. Music provenance is not generally missing."
+      },
+      {
+        "gate": "finishedAudioMixAndListeningApproval",
+        "status": "UNKNOWN",
+        "evidence": [
+          "takeAcceptanceTemplate",
+          "currentFrameplan"
+        ],
+        "finding": "No mixed final audio/master file or finished listening approval is identified. Current plan is without voiceover and uses only the canonical music. Prior music rightsApproval is recorded unknown; this check does not fabricate a final approval."
+      },
+      {
+        "gate": "durableMasterPerChannelPublicationLedger",
+        "status": "UNKNOWN",
+        "evidence": [
+          "handoff",
+          "historicalLedgerTestStatus",
+          "ledgerHelperCandidate",
+          "freshRepoPublisher",
+          "freshRepoQueue"
+        ],
+        "finding": "Local ledger sources are helpers/tests; historical status says not_deployed_no_operational_register_created. Fresh inspected publisher uses CSV checkpoints and has no stable master/MP4-hash ledger fields/import. Its inspected queue has no exact stable-master reference or hash fields. These files do not establish a durable full per-channel ledger or an empty past.",
+        "requiredTreatment": "Preserve existing history; unknown/inflight/uncertain must not be reset or retried. No ledger initialized."
+      },
+      {
+        "gate": "youtubeAudienceForThisMaster",
+        "status": "PASS_owner_confirmation",
+        "evidence": [],
+        "finding": "Owner explicitly confirmed general audience/not specifically for children for this master. No renewed permission question; no exact owner-reply timestamp asserted."
+      },
+      {
+        "gate": "otherChannelPrerequisitesAndCurrentPlanning",
+        "status": "UNKNOWN",
+        "assessedBy": "parent",
+        "finding": "Parent handles current identities/planning/bio/board/link prerequisites, including the fresh post-midnight check for26Oct. This subtask does not repeat those queries or present earlier25Oct counts as current26Oct evidence."
+      }
+    ],
+    "localTakeRows": [
+      {
+        "takeId": "T01",
+        "filePath": null,
+        "sha256": null,
+        "identityState": "unknown",
+        "filmRightsState": "unknown"
+      },
+      {
+        "takeId": "T02",
+        "filePath": null,
+        "sha256": null,
+        "identityState": "unknown",
+        "filmRightsState": "unknown"
+      },
+      {
+        "takeId": "T03",
+        "filePath": null,
+        "sha256": null,
+        "identityState": "unknown",
+        "filmRightsState": "unknown"
+      },
+      {
+        "takeId": "T04",
+        "filePath": null,
+        "sha256": null,
+        "identityState": "unknown",
+        "filmRightsState": "unknown"
+      },
+      {
+        "takeId": "T05",
+        "filePath": null,
+        "sha256": null,
+        "identityState": "unknown",
+        "filmRightsState": "unknown"
+      }
+    ],
+    "historicalAssets": {
+      "sourceMp4": {
+        "sourceRef": "historicalSourceMp4",
+        "archivedTechnicalFacts": {
+          "durationSeconds": 27.96,
+          "width": 960,
+          "height": 540,
+          "fps": 25
+        },
+        "role": "Historical source, not finished18s master."
+      },
+      "oldExport": {
+        "sourceRef": "old15SecondExport",
+        "archivedDurationSeconds": 15,
+        "role": "Old15s export, not a newly approved18s master. Re-encoding does not create a new stable master."
+      }
+    },
+    "musicActualFile": {
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "bytes": 11343950,
+      "durationSeconds": 64.30766439909297,
+      "channels": 2,
+      "sampleRate": 44100
+    },
+    "repositoryCountercheck": {
+      "searches": [
+        {
+          "query": "luxe_sternenprojektor_master_20261018",
+          "repository": "allengchour-glitch/aban-news-landing",
+          "coverage": "default branch only",
+          "topn": 5,
+          "status": "fulfilled",
+          "isError": false,
+          "results": [],
+          "interpretation": "No indexed result is not proof of global absence or an empty publication history."
+        },
+        {
+          "query": "master_publication_ledger",
+          "repository": "allengchour-glitch/aban-news-landing",
+          "coverage": "default branch only",
+          "topn": 5,
+          "status": "fulfilled",
+          "isError": false,
+          "results": [],
+          "interpretation": "No indexed result is not proof of global absence or an empty publication history."
+        }
+      ],
+      "targetedReads": [
+        {
+          "key": "publisher",
+          "request": {
+            "key": "publisher",
+            "path": "automation/metricool-schedule.mjs"
+          },
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/metricool-schedule.mjs",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/metricool-schedule.mjs",
+          "gitBlobSha": "c8814e25d09d2df3c47f204911f4a0f09a98f3b4",
+          "sourceEncoding": "utf-8",
+          "copyMethod": "UTF-8 content returned by GitHub tool; newline normalization stated in file hash checks"
+        },
+        {
+          "key": "queue",
+          "request": {
+            "key": "queue",
+            "path": "social/metricool_queue.csv"
+          },
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/metricool_queue.csv",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/social/metricool_queue.csv",
+          "gitBlobSha": "7debc256dc48050b3e45440b3e1da1d33cd75b29",
+          "sourceEncoding": "utf-8",
+          "copyMethod": "UTF-8 content returned by GitHub tool; newline normalization stated in file hash checks"
+        },
+        {
+          "key": "music_credits",
+          "request": {
+            "key": "music_credits",
+            "path": "automation/music/CREDITS.txt"
+          },
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/CREDITS.txt",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/CREDITS.txt",
+          "gitBlobSha": "159e308cf68e88841b810a88882856101fdefb42",
+          "sourceEncoding": "utf-8",
+          "copyMethod": "UTF-8 content returned by GitHub tool; newline normalization stated in file hash checks"
+        },
+        {
+          "key": "cutplan",
+          "request": {
+            "key": "cutplan",
+            "path": "dropship/codex-handoff-20261018/MASTER-CUT-PLAN.json",
+            "ref": "codex/luxestyle-claude-handoff-20261018"
+          },
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/MASTER-CUT-PLAN.json",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/MASTER-CUT-PLAN.json",
+          "gitBlobSha": "555a0af310fb3b677cee1154cae368c1cac6d078",
+          "sourceEncoding": "utf-8",
+          "copyMethod": "UTF-8 content returned by GitHub tool; newline normalization stated in file hash checks"
+        }
+      ],
+      "canonicalMusicMetadata": {
+        "listingUrl": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/contents/automation/music",
+        "totalDirectoryEntries": 12,
+        "selectedFile": {
+          "path": "automation/music/luxe-premium.wav",
+          "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+          "bytes": 11343950,
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/luxe-premium.wav"
+        },
+        "binaryDownloaded": false
+      },
+      "binaryMetadataTransportLimit": {
+        "kind": "single canonical binary contents URL",
+        "result": "GitHub Fetch rejected non-UTF-8 content; this does not prove a missing file"
+      },
+      "inspectedQueueOnly": {
+        "rows": 26,
+        "statuses": {
+          "hold": 20,
+          "scheduled": 6
+        },
+        "exactStableMasterStringMatches": 0,
+        "masterOrMasterHashColumnsPresent": false,
+        "interpretation": "No matching row in this one queue is not no publication history. Twenty hold rows and six already scheduled rows remain untouched."
+      },
+      "publisherInspection": {
+        "sharedQueueInputValidationPresent": true,
+        "stableMasterLedgerReferenceFoundInThisOneFile": false,
+        "executed": false
+      }
+    },
+    "sources": {
+      "handoff": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/HANDOFF-SOURCE.json",
+        "bytes": 176866,
+        "sha256": "369193512885be180e778fd531ba23f5f6db09091b6f8e550baa43cc11e09bd1"
+      },
+      "latestEveningPackage": {
+        "path": "/workspace/luxestyle-review/abend-20261025/ABENDPAKET.md",
+        "bytes": 19182,
+        "sha256": "f2479cdea227f26b3004f5bc84be173c05bd28da93d6f2237e14ed780815464a"
+      },
+      "takeAcceptanceTemplate": {
+        "path": "/workspace/luxestyle-review/abend-20261024/content/TAKE-ABNAHME.json",
+        "bytes": 39521,
+        "sha256": "5dfbf90460faa82c9ff9a3d696b386b5b75a41398306811bc5d754aae31ed156"
+      },
+      "currentFrameplan": {
+        "path": "/workspace/luxestyle-review/folge-20261024-1405/content/MASTER-FRAMEPLAN.json",
+        "bytes": 13635,
+        "sha256": "a1b088be20fb14de4e3cff502d4c4fae7b2dd12f41421cf880c384daa5967f01"
+      },
+      "historicalApprovalManifest": {
+        "path": "/workspace/luxestyle-review/owner-review-20261018/approval-manifest.json",
+        "bytes": 1591,
+        "sha256": "920baa0a57fd3c17674bbe3559080a8fa6d65ecf912eedd160a98106495ff8be"
+      },
+      "historicalSourceMp4": {
+        "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+        "bytes": 3679836,
+        "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57"
+      },
+      "old15SecondExport": {
+        "path": "/workspace/luxestyle-review/video-edit/batch2/metricool-uploads/luxestyle-sternenprojektor-15s.mp4",
+        "bytes": 4821121,
+        "sha256": "0d59f5cafd8b3b7b6f3562c799239c99faf2b42ce45fbd425c63bb7f0c19c27c"
+      },
+      "canonicalMusicLocalCopy": {
+        "path": "/workspace/luxestyle-review/media/luxe-premium.wav",
+        "bytes": 11343950,
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688"
+      },
+      "musicAtExpectedWorkspacePath": {
+        "path": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+        "bytes": 11343950,
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688"
+      },
+      "archivedMusicProvenance": {
+        "path": "/workspace/luxestyle-review/folge-20261024-1405/music-rights-evidence.json",
+        "bytes": 3014,
+        "sha256": "8c7c6d897f3f397087c51e0d7abd94a75537368d2b1e43c02d084ed10af4f47a"
+      },
+      "archivedSoundfontLicence": {
+        "path": "/workspace/luxestyle-review/owner-review-20261018/repo/fluid-soundfont-copyright.txt",
+        "bytes": 2132,
+        "sha256": "f2f5e6358fc7c1fe62aafc6c8229c4c5898e5afb0d4ce1322b15362a8cbd600e"
+      },
+      "historicalLedgerTestStatus": {
+        "path": "/workspace/luxestyle-review/next-improvements-20261018/automation/ledger-test-summary.json",
+        "bytes": 550,
+        "sha256": "b0cab18e29a86015d22ac52ef8285b6db9a316a1d27135c764c7cb5038ebee3c"
+      },
+      "ledgerHelperCandidate": {
+        "path": "/workspace/luxestyle-review/new-improvements-20261018/publisher/candidate/master_publication_ledger.mjs",
+        "bytes": 9889,
+        "sha256": "3609c1a02fb4c83c98c13ed90486c7a7557eff7f5cd91c12a90fd79db50e1634"
+      },
+      "repoReadEvidence": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/READS.json",
+        "bytes": 3983,
+        "sha256": "c6794dc2ded1544d9a83ce365720eb24e3a94dfa4e980593bbf10072d82509cb"
+      },
+      "freshRepoCutplan": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/MASTER-CUT-PLAN.json",
+        "bytes": 4106,
+        "sha256": "cd0884a0fa427ea86f4b13adb9b7c0de5edd789f1185b6d4ac169aa5513becc9"
+      },
+      "freshRepoPublisher": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/metricool-schedule.mjs",
+        "bytes": 12089,
+        "sha256": "5b18a034efbeb69473e80f5d5b5fcba880402322d3e55204ddefd96f5d0e088b"
+      },
+      "freshRepoQueue": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/metricool_queue.csv",
+        "bytes": 11081,
+        "sha256": "5636d454dd5c0838f91baeb731ea07b081c371c8d173679dcfb60a9c16573cf8"
+      },
+      "freshRepoMusicCredits": {
+        "path": "/workspace/luxestyle-review/ausspielung-20261025/repo-evidence/CREDITS.txt",
+        "bytes": 1549,
+        "sha256": "7be1bcca83ae7f9154d1f827a3c6399ea02b790508e704f97d9966922fb7676a"
+      }
+    },
+    "requiredConcreteEvidenceBeforeDistribution": [
+      "One actual matching professional18s MP4 with path/URL and SHA256.",
+      "Exact variant/motif and asset-specific commercial film-editing/advertising rights evidence for the selected real takes.",
+      "Completed final content, motion/crop/text/audio review bound to that same file.",
+      "Durable per-master/per-channel publication history/provenance checked without resetting unknown history, plus parent channel prerequisites."
+    ],
+    "actions": {
+      "githubDefaultBranchSearchQueries": 2,
+      "githubFetchFileReads": 4,
+      "githubCanonicalBinaryMetadataAttempt": 1,
+      "githubKnownMusicDirectoryMetadataRead": 1,
+      "otherAPICalls": 0,
+      "metricoolCalls": 0,
+      "kpiCalls": 0,
+      "flowCalls": 0,
+      "secretReads": 0,
+      "renders": 0,
+      "installs": 0,
+      "workflowRuns": 0,
+      "socialWrites": 0,
+      "ledgerInitializations": 0,
+      "repositoryWrites": 0,
+      "localReviewAndSourceEvidenceFilesOnly": true
+    },
+    "limits": [
+      "This bounded search/read scope is not an inventory of every branch, attachment, workflow artifact, external drive or connector.",
+      "Default-branch search results were empty; do not turn them into a global missing-file or no-history proof.",
+      "Fresh content/metadata reads establish the stated repository blobs, not a successful publisher execution.",
+      "No new master MP4/audio was rendered, downloaded, installed or published by this subtask.",
+      "No repeat of today metric/Klaviyo reports; no renewed publication permission question."
+    ],
+    "documentTiming": {
+      "taskStartedCalendarDateEuropeZurich": "2026-10-25",
+      "createdCalendarDateEuropeZurich": "2026-10-26",
+      "recordedAtUTC": "2026-10-25T23:37:37.200305+00:00",
+      "recordedAtEuropeZurich": "2026-10-26T00:37:37.200305+01:00",
+      "continuity": "Same authorized task continued past midnight; prior source capture dates remain unchanged. No further queries after parent closure instruction.",
+      "repositoryReadTimestampPrecision": "Individual tool read times were not recorded; no exact time invented. Existing source/document timestamps retained."
+    },
+    "sourceSearchFollowup": {
+      "officialCjProductPage": "https://cjdropshipping.com/product/-p-1477820492730732544.html",
+      "productIdCandidate": "1477820492730732544",
+      "publicFetchStatus": "302 to CJ validation; not followed",
+      "authenticatedRuntime": "no ready CJ binding/token in this runtime; GitHub key presence accepted",
+      "originalShopifyVideo": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+      "knownDimensions": "960x540",
+      "knownFps": 25,
+      "knownDuration": 27.96,
+      "betterOriginalInProductVideoRecords": "not found in one returned video; hasNextPage=false",
+      "filmRightsAndExactMotifs": "unknown",
+      "paidActions": 0
+    }
+  },
+  "materialSourceRequest": {
+    "requested": true,
+    "text": "Link to suitable original footage or finished professional master MP4; no credentials",
+    "answer": "cj selber suchen",
+    "action": "Exact official CJ page identified; live fetch blocked by validation, existing CJ helpers/workflows reviewed and current Shopify original video inspected",
+    "furtherOwnerSourceLinkQuestionRequired": false
+  },
+  "sourceTaskDate": "2026-10-26",
+  "recordedAtUTC": "2026-10-25T23:56:22.845472+00:00",
+  "cjSourceEvidence": {
+    "access": {
+      "status": "READ_ONLY_ACCESS_AUDIT_CURRENT_SOURCE_READ_NO_CJ_AUTH",
+      "recordedAtUtc": "2026-10-25T23:47:25.612724+00:00",
+      "recordedAtEuropeZurich": "2026-10-26T00:47:25.612724+01:00",
+      "repository": "allengchour-glitch/aban-news-landing",
+      "target": {
+        "cjPidCandidate": "1477820492730732544",
+        "origin": "Existing Shopify SKU/importer-derived candidate; no current CJ API match observed by this audit.",
+        "requestedMedia": "Matching original Sternenlicht product films; no specific video metadata found by this access audit."
+      },
+      "authorizationScope": "Read current main auth/fetch helpers, one successful workflow filename list, one automation filename list, three matching workflow definitions and historical local readonly preparations. No execution or mutation.",
+      "runtimeAndKey": {
+        "runtimeObservationProvidedByParent": 546,
+        "parentReportsCurrentRuntimeSecretOrOutboundIdentityBindings": 0,
+        "observedAgainByThisSubtask": false,
+        "repositoryCjApiKeyPresence": "Owner screenshot confirmation accepted; no secret values/names endpoint inspected.",
+        "keyMissingOrInvalidConclusion": false,
+        "keyOrTokenReadFromEnvironmentOrCache": false,
+        "existingTokenCachePathRead": false,
+        "legitimatelyUsableCjAccessInThisExecutor": "not established; current secure runtime binding not supplied, no token exchange or CJ API request performed.",
+        "installationNeededByAudit": false
+      },
+      "currentMainSources": [
+        {
+          "path": "automation/lib/cj_token.mjs",
+          "refAtRead": "main",
+          "gitBlobSha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf",
+          "sha256": "4ca7e37feb36853b9a754231705af5b2686627fbf9b66e17d6af1caac40f9beb",
+          "bytes": 1870,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/automation/lib/cj_token.mjs"
+        },
+        {
+          "path": "automation/lib/cj_fetch.mjs",
+          "refAtRead": "main",
+          "gitBlobSha": "265309894c7f2c8f14d3aab34517653039efb8c9",
+          "sha256": "c519aba8eb595412d6d287f5dfbe3be2790eb411751400d45e0468d19fc6b69b",
+          "bytes": 3955,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/automation/lib/cj_fetch.mjs"
+        },
+        {
+          "path": ".github/workflows/cj-autopilot.yml",
+          "refAtRead": "main",
+          "gitBlobSha": "436e7e616ac4859eac43a399839fb21d833205b6",
+          "sha256": "0975d0201e3030f32502f5e0f7cba6c0bfe00bb6801ec5a8b1a08e4b027bd862",
+          "bytes": 2969,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/.github/workflows/cj-autopilot.yml"
+        },
+        {
+          "path": ".github/workflows/cj-gaps.yml",
+          "refAtRead": "main",
+          "gitBlobSha": "2d78a65b0570e21265f91902a52722334cac4e99",
+          "sha256": "98aec9baf16c2dcbb2cf7ee9416a1e61b328037b541f21580ad4b17d8bd0ee2e",
+          "bytes": 2091,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/.github/workflows/cj-gaps.yml"
+        },
+        {
+          "path": ".github/workflows/cj-reviews.yml",
+          "refAtRead": "main",
+          "gitBlobSha": "f5a0841a2bad7296c7302ddbc3711e2b7f98430d",
+          "sha256": "068a662f0ad6d8f3a882a6bd53af8bf817dbba04e9a7b72ca129a48b20c6148a",
+          "bytes": 4817,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/.github/workflows/cj-reviews.yml"
+        },
+        {
+          "path": "automation/lib/cj_response.mjs",
+          "refAtRead": "main",
+          "gitBlobSha": "17dbd7669dba7331f758542829505749518822d4",
+          "sha256": "53b39368becf6d38ef93e2615de278be79c4c357b300fb7b71c0236c1c8b02d4",
+          "bytes": 1132,
+          "savedExactCopy": "/workspace/luxestyle-review/ausspielung-20261025/cj/source/automation/lib/cj_response.mjs"
+        }
+      ],
+      "sourceSnapshotPrecision": "Each file was freshly read at ref main with exact blob SHA; no atomic commit snapshot across separate calls is asserted.",
+      "mainAuthHelper": {
+        "path": "automation/lib/cj_token.mjs",
+        "existing": true,
+        "requiredInputsFromCode": [
+          "CJ_EMAIL",
+          "CJ_API_KEY"
+        ],
+        "requiredBeforeCacheRead": true,
+        "cachePathDefault": "/tmp/cj_token.json",
+        "cacheSafetyBufferMs": 300000,
+        "authMethodDeclared": "POST authentication/getAccessToken using email/password:key",
+        "cacheStoresTokenAndExpiry": true,
+        "fallbackExpiryWhenMissingInResponseMs": 86400000,
+        "executed": false,
+        "limits": "Auth shape/cache duration are code observations, not a new verification of CJ current authentication rules, token validity, quota or account access. No token cache was inspected."
+      },
+      "genericFetchHelper": {
+        "path": "automation/lib/cj_fetch.mjs",
+        "declaredBehavior": "Bounded retries for network/429/5xx; detected daily-points exhaustion aborts; CJ response validation via cj_response.mjs.",
+        "executed": false,
+        "liveErrorsObserved": false
+      },
+      "workflowFiles": {
+        "successfulNameLists": 1,
+        "mainFilesReturned": 176,
+        "dedicatedKnownReadWorkflowPresent": false,
+        "matchingFiles": [
+          {
+            "path": ".github/workflows/cj-autopilot.yml",
+            "sha": "436e7e616ac4859eac43a399839fb21d833205b6"
+          },
+          {
+            "path": ".github/workflows/cj-gaps.yml",
+            "sha": "2d78a65b0570e21265f91902a52722334cac4e99"
+          },
+          {
+            "path": ".github/workflows/cj-reviews.yml",
+            "sha": "f5a0841a2bad7296c7302ddbc3711e2b7f98430d"
+          }
+        ],
+        "classification": [
+          {
+            "path": ".github/workflows/cj-autopilot.yml",
+            "purpose": "CJ product sourcing and Shopify import/publication; ACTIVE default",
+            "fixedTargetPid": false,
+            "filmReadOnlyJob": false,
+            "artifactUpload": "none configured",
+            "credentialsReferencesOnly": [
+              "CJ_EMAIL",
+              "CJ_API_KEY",
+              "SHOPIFY_SHOP",
+              "SHOPIFY_ADMIN_TOKEN",
+              "SHOPIFY_CLIENT_ID",
+              "SHOPIFY_CLIENT_SECRET",
+              "GEMINI_API_KEY"
+            ]
+          },
+          {
+            "path": ".github/workflows/cj-gaps.yml",
+            "purpose": "Category gap import and optional main ledger commit; dry-run default does not make this a fixed product-film reader",
+            "fixedTargetPid": false,
+            "filmReadOnlyJob": false,
+            "artifactUpload": "none configured; ledger path is dropship/cj_gaps_done.txt"
+          },
+          {
+            "path": ".github/workflows/cj-reviews.yml",
+            "purpose": "Shopify selection, CJ comments and Judge.me/review-ledger import; dry-run default",
+            "fixedTargetPid": false,
+            "filmReadOnlyJob": false,
+            "artifactUpload": "cj-review-checkpoints-<run_id>-<attempt>: review TXT/JSONL checkpoints; not original-film metadata"
+          }
+        ]
+      },
+      "automationPaths": {
+        "source": "GitHub contents automation at ref main",
+        "count": 287,
+        "matchingCjReadSourcePrime": [],
+        "knownReadHelpers": [
+          {
+            "name": "cj_prime_read_bridge.mjs",
+            "present": false
+          },
+          {
+            "name": "cj_product_images_readonly.mjs",
+            "present": false
+          }
+        ]
+      },
+      "existingJobArtifacts": {
+        "matchedCurrentReadOnlyJobId": null,
+        "matchedAccessibleFilmMetadataArtifact": null,
+        "state": "not_identified_or_verified; unknown whether matching historical/other-ref artifacts exist",
+        "actionsWorkflowEndpointAttempt": {
+          "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/actions/workflows?per_page=100",
+          "result": {
+            "error": "HTTPError: 400: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint. (Response: None)",
+            "error_code": "INVALID_ARGUMENT"
+          },
+          "meaning": "Connector rejected endpoint as unsupported HTTP400; not a CJ auth failure, repository403, absent workflow or empty Actions history."
+        },
+        "runListsRead": 0,
+        "jobLogsRead": 0,
+        "artifactMetadataReads": 0,
+        "artifactDownloads": 0,
+        "reasonNoArbitraryArtifactRead": "No matching fixed readonly workflow/run ID identified. Existing archived June autopilot run IDs 27409976282 and 27369872476 are operational import runs, not a safe fixed product-film source job.",
+        "specializedArtifactToolAvailability": "An artifact reader/downloader exists but requires a valid matching run/artifact ID; no arbitrary ID substituted.",
+        "registeredWorkflowOrOtherRefHistoryExhaustivelyChecked": false
+      },
+      "existingLocalReadPreparations": {
+        "files": [
+          {
+            "path": "/workspace/luxestyle-review/morgen-20261024/cj-bridge/payload/automation/cj_prime_read_bridge.mjs",
+            "sha256": "64ca88f04aabad289785956451a2d670f2c29930a520827092121bc3f8ad92cd",
+            "status": "historical local preparation/evidence; not current live CJ data or main integration"
+          },
+          {
+            "path": "/workspace/luxestyle-review/cj-prime-20261024/reader/cj_product_images_readonly.mjs",
+            "sha256": "04cad816fb0e5a88383e3d1880ca9097a04a304c2f605a6f0330a77ddaf16b92",
+            "status": "historical local preparation/evidence; not current live CJ data or main integration"
+          },
+          {
+            "path": "/workspace/luxestyle-review/cj-prime-20261024/reader/README.md",
+            "sha256": "488a6fd1ed17e249e8875e20fc93f38442007cc0a6cc34adc5bba0b65d0940ac",
+            "status": "historical local preparation/evidence; not current live CJ data or main integration"
+          },
+          {
+            "path": "/workspace/luxestyle-review/next-improvements-20261018/source/cj_video_proof_parser.mjs",
+            "sha256": "1f6ff1a1edba0e83119a647165ebeebe77a3495766e8a5258116b3b99abf5554",
+            "status": "historical local preparation/evidence; not current live CJ data or main integration"
+          },
+          {
+            "path": "/workspace/luxestyle-review/morgen-20261024/evidence/gh-existing-cj-runs.json",
+            "sha256": "ec01a61231e4c9cf2bf24b22fd91bdb0c1dfd3ad9159b1d18fa192432867c9df",
+            "status": "historical local preparation/evidence; not current live CJ data or main integration"
+          }
+        ],
+        "authBridge": "Historical guarded manual GitHub Actions context, exact approved checkout commit and API-key exchange; not main-integrated according to current known path checks; not executed.",
+        "imageReader": "Historical fixed projector/diffuser detail GET reader, no video request; not main-integrated according to current known path checks; not executed.",
+        "videoProofParser": "Historical local parser only; needs actual matching product/video response envelopes; no account/movie data produced.",
+        "notCountedAsNewImplementation": true
+      },
+      "independentStaticReview": "Three workflows independently classified as not fixed CJ readonly product/film jobs. Auth helper requires email/key before cache and workflow YAML does not restore that cache. No live credential/key/error inference.",
+      "result": "Current reusable CJ auth/fetch/response code exists. A ready secure CJ binding or existing matching readonly film artifact was not established. No new integration installed, operational importer started, or source film invented.",
+      "nextIndependentStep": "Parent continues bounded public CJ source research. Reuse existing auth/response helpers and historical read preparations if a legitimate authorized secure runtime or suitable existing run becomes available; no secret values requested in chat.",
+      "actions": {
+        "githubReadAttempts": 9,
+        "githubSuccessfulReads": 8,
+        "unsupportedEndpointResponses": 1,
+        "secretValueReads": 0,
+        "cjAuthenticationCalls": 0,
+        "cjProductCalls": 0,
+        "cjVideoCalls": 0,
+        "workflowStarts": 0,
+        "workflowReruns": 0,
+        "jobOrArtifactDownloads": 0,
+        "installs": 0,
+        "shopWrites": 0,
+        "repositoryWrites": 0,
+        "imports": 0,
+        "purchases": 0,
+        "contactMessages": 0
+      }
+    },
+    "originalVideo": {
+      "task": "EXACT_PROJECTOR_SHOPIFY_ORIGINAL_SOURCE_CHECK",
+      "checkedAtUtc": "2026-10-25T23:47:01.672157+00:00",
+      "checkedAtEuropeZurich": "2026-10-26T00:47:01.672157+01:00",
+      "status": "NO_HIGHER_RESOLUTION_SOURCE_IN_CURRENT_PRODUCT_VIDEO_MEDIA",
+      "product": {
+        "id": "gid://shopify/Product/15521256604033",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "status": "ACTIVE",
+        "currencyCode": "CHF",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "currentTags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech"
+        ],
+        "newTagObservationsVersusEvening": [
+          "sort-nachtlichter",
+          "sort-nachttischlampen"
+        ],
+        "tagsChangedByThisTask": false
+      },
+      "scope": {
+        "productDataReads": 2,
+        "nativeGetProductReads": 1,
+        "nativeMediaQueryReads": 1,
+        "mediaFilter": "media_type:VIDEO",
+        "requestedVideoLimit": 3,
+        "returnedVideoCount": 1,
+        "hasNextPage": false,
+        "paginationPerformed": false,
+        "otherProductReads": 0,
+        "newCjOrCdnRequestsByThisSubtask": 0,
+        "newDownloads": 0,
+        "renders": 0,
+        "externalWrites": 0,
+        "purchasesOrSecretReads": 0,
+        "scopeLimit": "Current attached Shopify-hosted VIDEO media for this exact product; not the full Shopify Files store, external-video entries, CJ API or entire web."
+      },
+      "video": {
+        "__typename": "Video",
+        "id": "gid://shopify/Video/77496185356679",
+        "status": "READY",
+        "filename": "cj-1477820492730732544.mp4",
+        "createdAt": "2026-10-12T00:39:06Z",
+        "duration": 27960,
+        "originalSource": {
+          "url": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+          "width": 960,
+          "height": 540,
+          "format": "mp4",
+          "mimeType": "video/mp4",
+          "fileSize": 3679836
+        },
+        "sources": [
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4",
+            "width": 852,
+            "height": 480,
+            "format": "mp4",
+            "mimeType": "video/mp4",
+            "fileSize": null
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.m3u8",
+            "width": 852,
+            "height": 480,
+            "format": "m3u8",
+            "mimeType": "application/x-mpegURL",
+            "fileSize": null
+          }
+        ]
+      },
+      "localOriginalEvidence": {
+        "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+        "bytes": 3679836,
+        "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+        "hashRecheckedLocallyAtUtc": "2026-10-25T23:49:15.698834+00:00",
+        "downloadedAtUtc": "2026-10-18T06:24:49.448309+00:00",
+        "archivedHttpStatus": 200,
+        "freshCdnRead": false,
+        "probePath": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-ffprobe.json",
+        "probeSha256": "1fa7e12454ba4847c0f8feb6dc88b273a42d9e05eed4983fa5a938c607afb0d5",
+        "width": 960,
+        "height": 540,
+        "fps": "25/1",
+        "durationSeconds": "27.960000",
+        "frames": "699",
+        "codec": "h264",
+        "videoBitrateBitsPerSecond": "949565",
+        "embeddedEncoder": "www.aliyun.com - Media Transcoding",
+        "probeReusedNoNewRender": true
+      },
+      "qualityConclusion": {
+        "higherQualityAttachedOriginalFound": false,
+        "maxOriginalResolution": [
+          960,
+          540
+        ],
+        "derivativeResolution": [
+          852,
+          480
+        ],
+        "native1080x1920AvailableInThisScope": false,
+        "cameraOrCjMasterProvenance": "UNKNOWN",
+        "explanation": "originalSource is Shopify upload-original terminology. Filename cj-1477820492730732544.mp4 does not establish an untranscoded CJ camera master or rights."
+      },
+      "modelAndMotifAssignment": {
+        "shopifyProductToVideoAssociation": "FRESH_API_VERIFIED",
+        "historicalVisualModelReview": "/workspace/luxestyle-review/video-edit/batch2/source/PROJEKTOR-MODELLPRUEFUNG.md",
+        "existingStillImagesViewedNow": [
+          {
+            "path": "/workspace/luxestyle-review/video-edit/batch2/source/projector-square-audit/crop-4.5.jpg",
+            "timeSeconds": 4.5,
+            "observation": "White spherical device in U-bracket, four front buttons, side USB connection and manual operation."
+          },
+          {
+            "path": "/workspace/luxestyle-review/video-edit/batch2/source/projector-square-audit/crop-20.5.jpg",
+            "timeSeconds": 20.5,
+            "observation": "Blue/purple galaxy-and-star projection."
+          }
+        ],
+        "whiteVisibleModelFamily": "SUPPORTED_BY_ARCHIVED_VISUAL_REVIEW_AND_TWO_REVIEWED_STILLS",
+        "exactDefaultVariantMotifSetsIncluded": "UNKNOWN",
+        "musicBluetoothAccessoriesIncluded": "UNKNOWN",
+        "commercialFilmEditingAndAdvertisingRights": "UNKNOWN",
+        "fullMotionAudioAndFinalMasterApproval": "NOT_PERFORMED",
+        "stillImageQualityNote": "Existing audit JPEGs are derived display canvases; their 1080x1920 dimensions do not increase the 960x540 video source resolution."
+      },
+      "parentCjPageContext": {
+        "url": "https://cjdropshipping.com/product/-p-1477820492730732544.html",
+        "observationOwner": "Root agent reported live scrape all engines failed; not independently fetched here.",
+        "status": "UNKNOWN_FETCH_FAILURE_NOT_404",
+        "rightsInference": false
+      },
+      "validation": {
+        "schemaTypesFreshlyRead": [
+          "Product",
+          "Video",
+          "VideoSource",
+          "QueryRoot"
+        ],
+        "docsUrls": [
+          "https://shopify.dev/docs/apps/build/product-merchandising/products-and-collections/manage-media",
+          "https://shopify.dev/docs/api/admin-graphql/2026-10/queries/files"
+        ],
+        "nativeValidator": "SKIPPED_NATIVE_RESPONSE_REFERS_TO_EXECUTION_VALIDATION",
+        "queryExecution": "SUCCESS",
+        "independentValidationPassClaim": false
+      },
+      "evidenceManifest": [
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/product-native.json",
+          "sha256": "a648dcc6888d59fe468dd5c785ea64e15b40f9ca96e57576599baae66509185c"
+        },
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/media-native.json",
+          "sha256": "f9254b3d0df2506749173163f59e77c432c53c0be88a1d75bf4827af94a27cd2"
+        },
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/read-original.graphql",
+          "sha256": "758086bb93ca8ddf66be9c73572df21da6ed20690c17da52b6f8cce901cd7259"
+        },
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/schema-fields.json",
+          "sha256": "254520631d311ec4e15de33331a5150e60987d5e64f431557101e9143b397f3c"
+        },
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/query-validation.json",
+          "sha256": "a3f53175d34ed63b865f323249fa7955f35315cfb38202330724404362be2a2d"
+        },
+        {
+          "path": "/workspace/luxestyle-review/ausspielung-20261025/cj/original-evidence/docs-source.json",
+          "sha256": "b1d53af57355532b2c01e245069d0d5f38f7f57add37001489a2f24401e9ee69"
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261018/shopify/film-source-live.json",
+          "sha256": "5cdad435508984eaf8c7471108f8390a53464aff26adbffc791509caa2a08e74"
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261022/video-targeted.json",
+          "sha256": "21548c16a300993f45badf354d2558f2ee8ff5e26a297b57d2d578edda41ca8e"
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-ffprobe.json",
+          "sha256": "1fa7e12454ba4847c0f8feb6dc88b273a42d9e05eed4983fa5a938c607afb0d5"
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/source-provenance.json",
+          "sha256": "037645cdd11d13ec9123dd2d9ee854bd1ff1fba7f238026ba1dfe7d5c839cbd9"
+        },
+        {
+          "path": "/workspace/luxestyle-review/video-edit/batch2/source/PROJEKTOR-MODELLPRUEFUNG.md",
+          "sha256": "0ea8b6a47995a19a9ad2ccdbeac0cc5c290bcb41dfd65f6bbdaaaca1f7c2142b"
+        },
+        {
+          "path": "/workspace/luxestyle-review/video-edit/batch2/source/projector-square-audit/crop-4.5.jpg",
+          "sha256": "90c7f76b3833da47d94425c64c8edacfb9aa23cef37a4516cecf50b721bc8f08"
+        },
+        {
+          "path": "/workspace/luxestyle-review/video-edit/batch2/source/projector-square-audit/crop-20.5.jpg",
+          "sha256": "240705074b0f3b74c72c57b190edd36fc9f34365801cb14bb6d13ea08d1be164"
+        }
+      ],
+      "nextStep": "Use the exact CJ product/PID in the parallel authorised CJ source search. A higher quality original and exact sold motif/variant/filmrights must be evidenced; do not substitute the old 15-second export or upscale it as a native master."
+    },
+    "publicSearch": {
+      "exactSearch": {
+        "success": true,
+        "data": {
+          "web": [
+            {
+              "url": "https://cjdropshipping.com/product/-p-1477820492730732544.html",
+              "title": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration ...",
+              "description": "Product information: Additional features: music, projection. Voltage: ≤36V (V) Shade material: PVC Dimensions: 121x110x121 (mm) Switch type: button type",
+              "position": 1
+            }
+          ],
+          "tools": [
+            {
+              "provider": "fanatics-com",
+              "capability": "products/list_products",
+              "description": "Use when the user wants a team's or league's gear or a department within it. league_id comes from a search facet (type o), team_id from list_teams, department_id from a facet option of type d. Pass url instead of ids to follow a facet or breadcrumb path returned by this function or search_products."
+            },
+            {
+              "provider": "fanatics-com",
+              "capability": "products/search_products",
+              "description": "Start here when the user names a product, player or team in free text. Follow a result's product_id into get_product for sizes and stock, or a facet option's path into list_products."
+            },
+            {
+              "provider": "ebay-com",
+              "capability": "listings/item_shipping",
+              "description": "You need the shipping service, delivery estimate, ships-to list or returns policy of a listing."
+            },
+            {
+              "provider": "claude-com",
+              "capability": "product-website/list_customers",
+              "description": "To find which companies use Claude for an industry, product or region (case studies), then read a story with get_page."
+            },
+            {
+              "provider": "christies-com",
+              "capability": "auction-lots/list_auction_lots",
+              "description": "Full catalogue or results of a sale whose sale_id, sale_number and sale_room_code you have (get_auction returns all three)."
+            }
+          ]
+        },
+        "id": "01a17572-90d6-73d5-8d37-42a48bd7924d",
+        "creditsUsed": 2,
+        "agent_hints": [
+          "All 1 web results are excerpts only (#1 \"https://cjdropshipping.com/product/-p-1477820492730732544.html\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+        ]
+      },
+      "videoSearch": {
+        "success": true,
+        "data": {
+          "web": [
+            {
+              "url": "https://cjdropshipping.com/product/-p-1477820492730732544.html",
+              "title": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration ...",
+              "description": "Instructions · 1. The light shade is turned on and it can be side projection · 2. The lampshade buckles into a small night light · 3. Twist the situation to adjust ...",
+              "position": 1
+            }
+          ],
+          "tools": []
+        },
+        "id": "01a17574-a114-72f8-8bc4-e9ae38b36146",
+        "creditsUsed": 2,
+        "agent_hints": [
+          "All 1 web results are excerpts only (#1 \"https://cjdropshipping.com/product/-p-1477820492730732544.html\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+        ]
+      },
+      "liveScrape": {
+        "error": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "details": "Tool 'firecrawl_scrape' execution failed: All scraping engines failed to retrieve content from this URL. Engines tried: [fire-engine;chrome-cdp;stealth, fire-engine(retry);chrome-cdp;stealth, pdf, document, image]. This usually happens when: (1) The URL is invalid or the page doesn't exist (404), (2) The website is blocking automated access, (3) The website is down or unreachable, (4) The page requires authentication. Double check the URL is correct and accessible in a browser. If the issue persists, contact us at help@firecrawl.com with your request ID for investigation.",
+        "interpretation": "Fetch failure, not HTTP404 or missing product; no CAPTCHA/validation bypass"
+      },
+      "searchFeedback": {
+        "exact": {
+          "success": true,
+          "feedbackId": "01a17572-ecaf-717e-8dbf-deb43abc17b5",
+          "creditsRefunded": 1,
+          "creditsRefundedToday": 1,
+          "dailyRefundCap": 100
+        },
+        "video": {
+          "success": false,
+          "error": "Search feedback must be submitted within 120 seconds of the search.",
+          "status": 409,
+          "feedbackErrorCode": "FEEDBACK_WINDOW_EXPIRED",
+          "retryable": false
+        },
+        "alexandria": {
+          "error": "McpServerError: MCP error -32602: Tool 'firecrawl_feedback' parameter validation failed: root: Unrecognized key: \"missingContent\". Please check the parameter types and values according to the tool's schema.",
+          "error_code": "INVALID_ARGUMENT",
+          "error_data": {
+            "type": "json_rpc_error",
+            "code": -32602,
+            "message": "MCP error -32602: Tool 'firecrawl_feedback' parameter validation failed: root: Unrecognized key: \"missingContent\". Please check the parameter types and values according to the tool's schema."
+          }
+        }
+      },
+      "scope": "two targeted searches, one live scrape attempt, one standard non-followed GET; no purchases/authentication/contacts/renders or other-brand operations"
+    },
+    "publicRoute": {
+      "url": "https://cjdropshipping.com/product/-p-1477820492730732544.html",
+      "method": "GET",
+      "allowRedirects": false,
+      "timeoutSeconds": 15,
+      "byteLimit": 262144,
+      "credentialUse": false,
+      "actualNetworkAttempts": 1,
+      "retries": 0,
+      "observedAtUTC": "2026-10-25T23:53:21.762670+00:00",
+      "implementation": "Python standard-library urllib; inherited proxy and TLS verification retained; missing optional requests package did not send a request",
+      "statusCode": 302,
+      "contentType": "text/html",
+      "location": "https://frontend.cjdropshipping.com/egg/cj/validation.html?rd=https://cjdropshipping.com/product/-p-1477820492730732544.html",
+      "bytesRead": 499,
+      "sha256": "e6154e8170a2cc85e98c6f6b426ab796c350a4b64de6876cec642dcd075d717b",
+      "truncated": false,
+      "interpretation": "Response or redirect recorded without following; source/film/rights remain unverified until body inspection. Not a missing-product or empty-catalogue finding."
+    }
+  },
+  "currentPlanComparison": {
+    "commonOldUuids": 6,
+    "commonOldContentChanges": [],
+    "newUuidCount": 18,
+    "newUuidCountDoesNotMeanOwnWrites": true,
+    "missingOldUuids": [],
+    "exactMediaChannelDuplicates": [],
+    "completeMasterHistory": "unknown"
+  }
+}
