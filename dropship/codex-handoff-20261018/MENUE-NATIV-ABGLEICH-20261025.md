@@ -8,7 +8,7 @@ Shopify liefert `gid://shopify/Menu/310224093569`, Handle `main-menu`, Titel `Ma
 
 ## Konkreter Gewinn für die weitere Umsetzung
 
-Die spätere Gegenprobe kann jetzt echte Menü-/Item-IDs nutzen, statt einen neu erfundenen Menübaum oder allein die44 Vorschau-Einstiege zu überschreiben. `NATIVE-MENU-MAPPING.json` enthält den vollständigen aktuellen nativen Snapshot und die verlustfreie218-Zeilen-Zuordnung zur bisherigen Migration.
+Die spätere Gegenprobe kann jetzt echte Menü-/Item-IDs nutzen, statt einen neu erfundenen Menübaum oder allein die44 Vorschau-Einstiege zu überschreiben. [MENUE-NATIV-ABGLEICH-20261025.json](MENUE-NATIV-ABGLEICH-20261025.json) enthält den vollständigen aktuellen nativen Snapshot und die verlustfreie218-Zeilen-Zuordnung zur bisherigen Migration.
 
 Alle218 Einträge sind heute als Typ `HTTP` konfiguriert, mit `resourceId=null` und leeren `MenuItem.tags`. Das ist keine Fehlermeldung. Es wird keine Umwandlung zu `COLLECTION` und keine ungeprüfte Ressourcenzuordnung vorgeschlagen. Die separat archivierten fünf Technik-Filterrouten gehören zum Kategorie-Kontext und haben menu_entry=false. Sie sind keine der218 nativen Menüeinträge und werden keinem nativen Menü-ID-Feld zugeordnet. Ihre URL-Bestandteile bleiben als eigener Reviewumfang erhalten. Leere Navigations-Tags sind von Produkt-/Social-Sperrtags zu unterscheiden.
 
