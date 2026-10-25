@@ -1,0 +1,16 @@
+--- a/templates/index.json
++++ b/templates/index.json
+@@ -3835,12 +3835,12 @@
+   "order": [
+     "hero_jVaWmY",
+     "lux_usp",
++    "collection_list_hREdj9",
+     "mode_row",
+     "pl_trends",
+     "pl_kinder",
+     "pl_herbst",
+     "pl_tech_gadgets",
+-    "collection_list_hREdj9",
+     "product_list_topseller",
+     "lux_kundenstimmen",
+     "product_list_wm2026",
