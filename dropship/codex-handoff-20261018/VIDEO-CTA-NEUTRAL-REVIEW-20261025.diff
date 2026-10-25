@@ -1,0 +1,107 @@
+--- a/automation/reel/overlay.py
++++ b/automation/reel/overlay.py
+@@ -7,6 +7,8 @@
+ import sys
+ from PIL import Image, ImageDraw, ImageFont, ImageFilter
+ W, H = 1080, 1920
++# Neutraler eingebrannter Master-CTA; Kaufpfad in der Kanal-Caption separat pruefen.
++CTA_TEXT = "Produkt ansehen · luxestyle.ch"
+ F_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+ F_REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+ F_SERIF = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+--- a/automation/reel/schnitt.py
++++ b/automation/reel/schnitt.py
+@@ -16,7 +16,7 @@
+   plan(analyse, musik, ziel) -> Schnittliste auf dem Beat-Raster (Phase auf dem Kick): Hook (staerkste Stelle ohne
+                                  Uebergang, nie im Quell-Intro), Intro-Zone fuer ALLE Stuecke gesperrt, je Einstellung
+                                  hoechstens 2 Auftritte, eine Kamerafahrt nur vorwaerts, ganze Takte, Loop-Ende,
+-                                 Band senkrecht nach verdeckter Energie, kurzes Reel mit «Link in Bio» im Infofeld.
++                                 Band senkrecht nach verdeckter Energie, kurzes Reel mit «Produkt ansehen» im Infofeld.
+   render(plan, out, text)    -> MP4 1080x1920, 25 fps (25/50-fps-Quellen) sonst 30, H.264 yuv420p + AAC 48 kHz Stereo,
+                                  Ton zweistufig -14 LUFS / TP-Ziel -2,5, True Peak NACH dem Mux gemessen und per
+                                  Limiter nachgeregelt; Zoom nur im Fenster; Text nur als PNG (overlay.py-Bausteine) in
+@@ -1670,12 +1670,12 @@
+         if t_C is None:
+             t_C = max(t_F + 3.0, D - 2.0)
+     else:
+-        # kurzes Reel: kein eigener CTA-Block, aber das Infofeld traegt «Link in Bio» statt der Fusszeile
++        # kurzes Reel: kein eigener CTA-Block, aber das Infofeld traegt «Produkt ansehen» statt der Fusszeile
+         # (Bildjury 23.09., p4: cta [5,806, 5,806] = 0 s — ein Reel ohne CTA)
+         t_C = D; info_variante = 'cta'
+     text = dict(hook=[0.0, _r(t_F)], info=[_r(t_F), _r(t_C)], cta=[_r(t_C), _r(D)], info_variante=info_variante)
+     L('text', f'Hook 0-{t_F:.2f} s, Titel+Preis {t_F:.2f}-{t_C:.2f} s' + (f', Preis+CTA {t_C:.2f}-{D:.2f} s' if t_C < D else
+-                                                                           ' mit «Link in Bio» im Infofeld'),
++                                                                           ' mit «Produkt ansehen» im Infofeld'),
+       f'Bild 0 hoechstens Marke + Hook (<= 40 Zeichen); Hook-Lesezeit {t_hook_min:.2f} s (15 Z/s + 0,3 s), '
+       'Wechsel auf einem Schnitt; hoechstens 2 Textbloecke gleichzeitig')
+ 
+@@ -1775,8 +1775,8 @@
+ 
+ def text_ebenen(ordner, titel1='', titel2='', preis='', hook='', zone='organisch'):
+     """PNG-Ebenen aus den overlay.py-Bausteinen (font/spaced/wrap/text_cx, Farben, KOPF_Y/HOOK_Y/FUSS_Y/CX_FUSS).
+-    kopf (ab Bild 0), hook (0 -> t_F), info (Titel+Preis+Fusszeile, t_F -> t_C), infocta (wie info, aber «Link in Bio»
+-    statt Fusszeile — fuer kurze Reels ohne eigenen CTA-Block), cta (Preis + «Link in Bio», t_C -> Ende).
++    kopf (ab Bild 0), hook (0 -> t_F), info (Titel+Preis+Fusszeile, t_F -> t_C), infocta (wie info, aber «Produkt ansehen»
++    statt Fusszeile — fuer kurze Reels ohne eigenen CTA-Block), cta (Preis + «Produkt ansehen», t_C -> Ende).
+     Rueckgabe: dict(pfade, textboxen, zone_ok)."""
+     Z = ZONEN[zone]; os.makedirs(ordner, exist_ok=True)
+     kasten = {}
+@@ -1841,16 +1841,16 @@
+                    (255, 255, 255, 255) if fett else (235, 235, 235, 255), schatten=bool(fett))
+         return im, zl
+     inf, zeilen = info_ebene('info', fuss, False)
+-    # kurzes Reel (< 5 s nach dem Hook): Infofeld traegt «Link in Bio» statt der Fusszeile (Bildjury 23.09.: p4 ohne CTA)
+-    infc, _ = info_ebene('infocta', 'Link in Bio · luxestyle.ch', True)
+-    # CTA (letzte ~2 s): Preis + «Link in Bio»
++    # kurzes Reel (< 5 s nach dem Hook): Infofeld traegt «Produkt ansehen» statt der Fusszeile (Bildjury 23.09.: p4 ohne CTA)
++    infc, _ = info_ebene('infocta', ov.CTA_TEXT, True)
++    # CTA (letzte ~2 s): Preis + «Produkt ansehen»
+     ct = neu(); d4 = ImageDraw.Draw(ct)
+     d4.rectangle((0, fy, W, unten), fill=(20, 20, 20, 168))
+     d4.rectangle((cx - 100, fy + 16, cx + 100, fy + 20), fill=ov.GOLD)
+     y = fy + 40
+     if preis:
+         text_mitte('cta', d4, cx, y, preis, ov.font(ov.F_BOLD, 76), ov.GOLD); y += 100
+-    text_mitte('cta', d4, cx, y, 'Link in Bio · luxestyle.ch', ov.font(ov.F_BOLD, 44), ov.WHITE)
++    text_mitte('cta', d4, cx, y, ov.CTA_TEXT, ov.font(ov.F_BOLD, 44), ov.WHITE)
+     pfade = {}
+     for name, im in (('kopf', k), ('hook', hk), ('info', inf), ('infocta', infc), ('cta', ct)):
+         pfade[name] = os.path.join(ordner, f'ebene_{name}.png'); im.save(pfade[name])
+@@ -1863,7 +1863,7 @@
+             if y1 >= 950 and x1 > Z['fuss_rechts']:
+                 fehler.append(f'{name} rechts {int(x1)} > {Z["fuss_rechts"]} (Knopfleiste)')
+     zeichen = dict(bild0=len('LUXESTYLE') + len(hook or ''), info=len(' '.join(zeilen)) + len(preis or '') + len(fuss),
+-                   cta=len(preis or '') + len('Link in Bio · luxestyle.ch'))
++                   cta=len(preis or '') + len(ov.CTA_TEXT))
+     return dict(pfade=pfade, textboxen={k_: [[int(v) for v in b] for b in v_] for k_, v_ in kasten.items()},
+                 zone=zone, zone_ok=not fehler, zone_fehler=fehler, zeichen=zeichen)
+ 
+--- a/automation/reel/bild_reel.py
++++ b/automation/reel/bild_reel.py
+@@ -240,7 +240,7 @@
+ 
+ def cta_anhaengen(datei, preis_text, dauer, td):
+     """13.10.2026 (Prüfer R2, A/B-Fairness): Video-Reels enden mit einer CTA-Ebene (schnitt.py text_ebenen «cta»: Preis +
+-    «Link in Bio · luxestyle.ch», letzte ~2 s), Bild-Reels hatten keinen CTA — Skill-Regel 3 «nie ein Reel ohne CTA» und ein
++    «Produkt ansehen · luxestyle.ch», letzte ~2 s), Bild-Reels hatten keinen CTA — Skill-Regel 3 «nie ein Reel ohne CTA» und ein
+     zweiter Unterschied neben der Quelle im A/B-Test. Hier dieselbe Ebene, deckend über dem Infofeld von overlay.py (1170–1440,
+     links der Knopfleiste zentriert), als zweiter Durchgang über die fertige make_reel.sh-Datei; Ton wird kopiert."""
+     import overlay as ov
+@@ -249,7 +249,7 @@
+     d.rectangle((0, ov.FUSS_Y, W, ov.FUSS_ENDE), fill=(20, 20, 20, 255))
+     d.rectangle((ov.CX_FUSS - 100, ov.FUSS_Y + 16, ov.CX_FUSS + 100, ov.FUSS_Y + 20), fill=ov.GOLD)
+     ov.text_cx(d, ov.CX_FUSS, ov.FUSS_Y + 40, preis_text, ov.font(ov.F_BOLD, 76), ov.GOLD)
+-    ov.text_cx(d, ov.CX_FUSS, ov.FUSS_Y + 140, "Link in Bio · luxestyle.ch", ov.font(ov.F_BOLD, 44), ov.WHITE)
++    ov.text_cx(d, ov.CX_FUSS, ov.FUSS_Y + 140, ov.CTA_TEXT, ov.font(ov.F_BOLD, 44), ov.WHITE)
+     png, tmp = os.path.join(td, "cta.png"), os.path.join(td, "mit_cta.mp4")
+     im.save(png)
+     subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", datei, "-i", png, "-filter_complex",
+@@ -365,7 +365,7 @@
+     ap.add_argument("--ohne-stimme", action="store_true")
+     ap.add_argument("--text-grenze", type=int, default=FREMDTEXT_GRENZE, help="Bild raus ab so vielen OCR-Wörtern (Standard 4)")
+     ap.add_argument("--weg", default="", help="Bildindizes (product.media, nur Bilder ≥ 600 px) weglassen, z. B. 4,5")
+-    ap.add_argument("--ohne-cta", action="store_true", help="13.10.2026: ohne CTA-Ebene «Link in Bio» in den letzten 2 s")
++    ap.add_argument("--ohne-cta", action="store_true", help="13.10.2026: ohne CTA-Ebene «Produkt ansehen» in den letzten 2 s")
+     ap.add_argument("--freigeben", default="")
+     a = ap.parse_args()
+     if a.freigeben:
