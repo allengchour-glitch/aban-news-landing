@@ -1,0 +1,3160 @@
+{
+  "task": "LUXESTYLE_ABEND_20261025",
+  "scope": "Fresh shop/brand/planning/two-products/native-menu/index-basics; daily analytics and Klaviyo reused, no operational writes",
+  "runtime": {
+    "revision": "535",
+    "observationsCurrent": true,
+    "network": "unrestricted/enforced",
+    "secrets": [],
+    "outboundIdentities": []
+  },
+  "metricoolPlan": {
+    "task": "LUXESTYLE_ABEND_20261025_METRICOOL",
+    "recordedAfterQueriesUtc": "2026-10-25T18:06:48Z",
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "identityCheck": {
+      "brandId": true,
+      "timezone": true,
+      "identities": {
+        "facebookData": {
+          "expected": "1049840534888592",
+          "observed": "1049840534888592",
+          "match": true
+        },
+        "instagramData": {
+          "expected": "luxestyle.ch",
+          "observed": "luxestyle.ch",
+          "match": true
+        },
+        "threadsData": {
+          "expected": "luxestyle.ch",
+          "observed": "luxestyle.ch",
+          "match": true
+        },
+        "pinterestData": {
+          "expected": "luxestyleCH",
+          "observed": "luxestyleCH",
+          "match": true
+        },
+        "tiktokData": {
+          "expected": "luxestyle.ch",
+          "observed": "luxestyle.ch",
+          "match": true
+        },
+        "youtubeData": {
+          "expected": "UCSfCEYjAsdOyYxyfTClXRZA",
+          "observed": "UCSfCEYjAsdOyYxyfTClXRZA",
+          "match": true
+        }
+      }
+    },
+    "request": {
+      "brandId": "6227837",
+      "extendedRange": false,
+      "fromDate": "2026-10-25T19:06:39+01:00",
+      "toDate": "2026-11-01T19:06:39+01:00",
+      "timezone": "Europe/Zurich"
+    },
+    "endpointCoverage": "scheduled-only; excludes already published posts; no complete publication history",
+    "creatorFieldsOmitted": true,
+    "posts": [
+      {
+        "id": 399474714,
+        "publicationDate": {
+          "dateTime": "2026-10-25T19:40:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T00:29:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Dieses trendige Langarm-Sweatshirt für Damen überzeugt mit einem frischen und luftigen Stil. Der Pullover ist aus einem hochwertigen Leinwandgewebe gefertigt und bietet dank des regulären Schnitts einen angenehmen Tragekomfort.\n\nCHF 22.90 · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kleiner Schweizer Shop 🇨🇭",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d7948e62-5515-4e86-a542-0c84e9a85391.jpg?v=1783231835"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531718",
+          "pinTitle": "3D Digital-Print Crew-Neck Langarm-Sweatshirt",
+          "pinLink": "https://luxestyle.ch/products/3d-digital-print-crew-neck-langarm-sweatshirt-637100?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-6697818564919276513",
+        "brandTags": []
+      },
+      {
+        "id": 399475266,
+        "publicationDate": {
+          "dateTime": "2026-10-25T20:05:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T00:29:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Hunde-Outdoorschuhe 👀\n«Verstellbare, rutschfeste Hunde-Outdoorschuhe» — Schütze die Pfoten deines Vierbeiners auf jedem Terrain mit diesen verstellbaren Hunde-Outdoorschuhen.\n\nab CHF 19.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/verstellbare-rutschfeste-hunde-outdoorschuhe-444288\n\n#luxestyle #zürich #hundeliebe #hundezubehör #tierliebe",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJYD189003201AZ.mp4?v=1792034203"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "commercialContentOwnBrand": true,
+          "music": {
+            "musicId": "7660513330570725393",
+            "title": "Days Like This (Nature Sounds)",
+            "author": "Dennis Korn",
+            "previewUrl": "https://sf16-ies-music-sg.tiktokcdn.com/obj/tos-alisg-ve-2774/ocz1JQBRIAAiBt1nvWBwMHbijePaZ6pcHiNson",
+            "thumbnailUrl": "https://p16-sg.tiktokcdn.com/aweme/100x100/tos-alisg-v-2774/o8pBASqEPviDKB11g6QL9fEzFtCZBATiqof9AE.jpeg",
+            "soundVolume": 73,
+            "originalVolume": 0,
+            "startMillis": 32250,
+            "endMillis": 43930
+          }
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-7145470493074108759",
+        "brandTags": []
+      },
+      {
+        "id": 399476575,
+        "publicationDate": {
+          "dateTime": "2026-10-25T20:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T00:31:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wireless Ladestation 👀\n«3-in-1 Wireless Ladestation für iPhone & Android» — Diese kabellose Ladestation ist ein echtes Trend-Produkt und lädt gleichzeitig dein Smartphone, deine Apple Watch und deine AirPods.\n\nab CHF 20.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/3-in-1-wireless-ladestation-fur-apple-android-710200 (Link in Bio)\n\n#luxestyle #swissstyle #techschweiz #technik #gadgets",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "7659202434600943789",
+        "brandTags": []
+      },
+      {
+        "id": 399476578,
+        "publicationDate": {
+          "dateTime": "2026-10-25T20:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T00:31:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wireless Ladestation 👀\n«3-in-1 Wireless Ladestation für iPhone & Android» — Diese kabellose Ladestation ist ein echtes Trend-Produkt und lädt gleichzeitig dein Smartphone, deine Apple Watch und deine AirPods.\n\nab CHF 20.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/3-in-1-wireless-ladestation-fur-apple-android-710200\n\n➕ Folge LuxeStyle CH – jeden Tag ein neues Fundstück aus der Schweiz 🇨🇭\n\n#luxestyle #swissstyle #techschweiz #technik #gadgets",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "REEL"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-4711778171676639107",
+        "brandTags": []
+      },
+      {
+        "id": 399477126,
+        "publicationDate": {
+          "dateTime": "2026-10-25T21:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T00:33:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Dieses stylische Herren-Sweatshirt mit Waffelstruktur ist die ideale Ergänzung für deine Garderobe. Es ist in verschiedenen Farben erhältlich, darunter Marineblau, Weinrot, Armeegrün, Weiss, Schwarz und Hellblau, passend für jeden Geschmack.\n\nCHF 20.90 · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kleiner Schweizer Shop 🇨🇭",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d79dd2be-25a5-4940-82f6-03e48652a022.jpg?v=1783211568"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Herren Hoodie Waffel-Sweatshirt",
+          "pinLink": "https://luxestyle.ch/products/herren-hoodie-waffel-sweatshirt-620300?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-2888478165694265565",
+        "brandTags": []
+      },
+      {
+        "id": 399776972,
+        "publicationDate": {
+          "dateTime": "2026-10-25T21:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-19T10:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Selfie Stick Stativ mit LED-Ringlicht · CHF 49.90\nKleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlich angeschrieben · 30 Tage Rückgabe · TWINT oder Rechnung.\nFragen? Schreib sie in die Kommentare 👇\nJetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio\n\n#luxestyle #zürich #zuhause #wohnen #homedecor",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/01.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/02.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/03.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/04.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/05.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/06.jpg",
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/07.jpg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "7971349064418217754",
+        "brandTags": []
+      },
+      {
+        "id": 401179904,
+        "publicationDate": {
+          "dateTime": "2026-10-25T19:10:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-20T16:44:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "2344041729300253064",
+        "brandTags": []
+      },
+      {
+        "id": 401179909,
+        "publicationDate": {
+          "dateTime": "2026-10-25T19:10:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-20T16:44:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "STORY"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-2554409969231966828",
+        "brandTags": []
+      },
+      {
+        "id": 404927218,
+        "publicationDate": {
+          "dateTime": "2026-10-26T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:20:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Elektrischer Fleischwolf 5L 🔪\nFleisch, Gemüse, Zwiebeln, Knoblauch und Kräuter – ein Gerät für Wurst, Füllungen, Saucen und Babynahrung.\n\nCHF 75.90 · 400 W · 110–240 V · 5 Liter\n🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#küche #küchenmaschine #fleischwolf #kochen #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "3370014454796207908",
+        "brandTags": []
+      },
+      {
+        "id": 404927223,
+        "publicationDate": {
+          "dateTime": "2026-10-26T19:10:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:20:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Leuchtender Schaukelgeist 👻\nGrosse Geisterfigur für draussen: integrierte Beleuchtung, schaukelt vor und zurück. Für Türeingang, Garten und Vorplatz, aus robustem Kunststoff.\n\nCHF 17.90\n🚚 Lieferung 10–20 Werktage – plane ihn für die nächste Saison ein\n🔄 30 Tage Rückgabe\n🔗 https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400\n\n#halloween #deko #gartendeko #herbst #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "1910940002626912625",
+        "brandTags": []
+      },
+      {
+        "id": 404927234,
+        "publicationDate": {
+          "dateTime": "2026-10-28T09:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:20:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fünf Stufen, ein Gerät: Stufe I mit 8000 U/min macht Gemüse und Obst in 5–10 Sekunden klein, Stufe II mit 10000 U/min Fleisch, Karotten und Kürbis in 10–20 Sekunden.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "2383637826676869482",
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "brandTags": []
+      },
+      {
+        "id": 404927236,
+        "publicationDate": {
+          "dateTime": "2026-10-29T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:20:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Mealprep ohne Handarbeit 🥕\nGemüse in 5–10 Sekunden, Fleisch in 10–20 Sekunden. Eier-Rührgang fürs Verquirlen, Entsafter-Gang für Früchte – alles im selben 5-Liter-Behälter.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · 400 W\n🚚 Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#mealprep #küche #kochen #haushalt #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-884200541558521239",
+        "brandTags": []
+      },
+      {
+        "id": 404928616,
+        "publicationDate": {
+          "dateTime": "2026-10-27T14:40:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:23:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Elektrischer Fleischwolf 5L – Küchenmaschine\nFünf Stufen: 8000 U/min für Gemüse und Obst, 10000 U/min für Fleisch, Karotten und Kürbis. Dazu Eier-Rührgang und Entsafter-Gang.\n\nCHF 75.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#küchenhelfer #mealprep #fleischwolf #kochen #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114036",
+          "pinTitle": "Elektrischer Fleischwolf 5L - Kuechenmaschine",
+          "pinLink": "https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true
+        },
+        "hasNotReadNotes": false,
+        "uuid": "2877674070200569146",
+        "brandTags": []
+      },
+      {
+        "id": 404928620,
+        "publicationDate": {
+          "dateTime": "2026-10-27T17:10:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-24T13:23:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Leuchtender Schaukelgeist für draussen\nBeleuchtete Geisterfigur mit Schaukelbewegung für Türeingang, Garten und Vorplatz. Robuster Kunststoff.\n\nCHF 17.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400\n\n#halloweendeko #gartendeko #aussendeko #herbstdeko #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          null
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Leuchtender Schaukelgeist fuer draussen",
+          "pinLink": "https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-3165721293129560265",
+        "brandTags": []
+      }
+    ]
+  },
+  "metricoolComparison": {
+    "task": "LUXESTYLE_ABEND_20261025_METRICOOL_COMPARE",
+    "status": "PASS_IDENTITY_AND_SCHEDULE_COMPARISON_NO_NEW_METRICS",
+    "sources": {
+      "currentPlan": {
+        "path": "/workspace/luxestyle-review/abend-20261025/metricool/PLAN.json",
+        "sha256": "03ffb1749b7a8d1aecf947f59999628b45c62170c8e60f78b3d65131f2c759cf"
+      },
+      "prior1851Plan": {
+        "path": "/workspace/luxestyle-review/sitewide-20261025/evidence/LATEST-PLAN-1851.json",
+        "sha256": "04458906a0ff0d8316c14732d416dc1ca935ec580243f508aa829fc05bdd9e3b"
+      },
+      "freshHandoffSource": {
+        "path": "/workspace/luxestyle-review/abend-20261025/HANDOFF-SOURCE.json",
+        "sha256": "6cf0c7cb3100fd22597bf16659107f0712b68bf6192d06eec7e7dd283dd989bf",
+        "documents": [
+          {
+            "document": "readme",
+            "gitBlobSha": "f24f137cdce79abb5b1edfa0af9a5b7304929335",
+            "gitBlobMatchesContent": true,
+            "displayUrl": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/README.md"
+          },
+          {
+            "document": "log",
+            "gitBlobSha": "83ecf30049681c628ec6bd5fce72016ca0c3cc02",
+            "gitBlobMatchesContent": true,
+            "displayUrl": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/TAGESPROTOKOLL.md"
+          }
+        ]
+      },
+      "reusedMorningReports": [
+        {
+          "path": "/workspace/luxestyle-review/morgen-20261025/metricool/BERICHT.md",
+          "sha256": "7e7d305ff33a757036c81831b414509a6d0e95e6e2f41616b7c9c291feaaf88f"
+        },
+        {
+          "path": "/workspace/luxestyle-review/morgen-20261025/metricool/KENNZAHLEN.json",
+          "sha256": "55ac232c9c4359973864d9f707f99a1002f441d243c0f9afd3ad83c6f11ef2c0"
+        },
+        {
+          "path": "/workspace/luxestyle-review/morgen-20261025/metricool/VALIDIERUNG.json",
+          "sha256": "a77a03bffa9a80deb95e08a50cd054ed4aead94dd027072c41936503d4d24408"
+        }
+      ]
+    },
+    "identity": {
+      "freshMetricoolGetBrandSettings": true,
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "sixExactMatches": {
+        "brandId": true,
+        "timezone": true,
+        "identities": {
+          "facebookData": {
+            "expected": "1049840534888592",
+            "observed": "1049840534888592",
+            "match": true
+          },
+          "instagramData": {
+            "expected": "luxestyle.ch",
+            "observed": "luxestyle.ch",
+            "match": true
+          },
+          "threadsData": {
+            "expected": "luxestyle.ch",
+            "observed": "luxestyle.ch",
+            "match": true
+          },
+          "pinterestData": {
+            "expected": "luxestyleCH",
+            "observed": "luxestyleCH",
+            "match": true
+          },
+          "tiktokData": {
+            "expected": "luxestyle.ch",
+            "observed": "luxestyle.ch",
+            "match": true
+          },
+          "youtubeData": {
+            "expected": "UCSfCEYjAsdOyYxyfTClXRZA",
+            "observed": "UCSfCEYjAsdOyYxyfTClXRZA",
+            "match": true
+          }
+        }
+      },
+      "shopIdentity": "LuxeStyle/luxestyle.ch/CHF freshly confirmed by parent at stated 19:05 CET; no duplicate Shopify query by this subtask"
+    },
+    "request": {
+      "brandId": "6227837",
+      "extendedRange": false,
+      "fromDate": "2026-10-25T19:06:39+01:00",
+      "toDate": "2026-11-01T19:06:39+01:00",
+      "timezone": "Europe/Zurich"
+    },
+    "recordedAfterQueriesUtc": "2026-10-25T18:06:48Z",
+    "windowChecks": {
+      "durationHours": 168.0,
+      "utcOffsetAtBothBounds": "+01:00",
+      "interpretation": "Half-open [from,to); no exact-boundary entries.",
+      "allEntriesWithinWindow": true,
+      "allEntryTimezonesEuropeZurich": true,
+      "latestSlotsBeforeCaptureCount": 0,
+      "missingIdsOrUUIDs": 0
+    },
+    "totals": {
+      "posts": 14,
+      "distinctIds": 14,
+      "distinctUUIDs": 14,
+      "providerPlacements": 17,
+      "networks": {
+        "instagram": 6,
+        "facebook": 5,
+        "pinterest": 4,
+        "tiktok": 1,
+        "threads": 1,
+        "youtube": 0
+      },
+      "statuses": {
+        "PENDING": 17
+      },
+      "allAutoPublishTrue": true,
+      "allDraftFalse": true,
+      "firstScheduledAt": "2026-10-25T19:10:00+01:00",
+      "lastScheduledAt": "2026-10-29T12:15:00+01:00"
+    },
+    "duplicates": {
+      "uuid": [],
+      "id": [],
+      "exactMediaUrlSameNetwork": [],
+      "exactOrderedMediaListSameNetwork": [],
+      "mediaUrlIgnoringQuerySameNetwork": [],
+      "sameNetworkIdenticalNonemptyText": [],
+      "sameNetworkTimeSlot": [],
+      "definition": "Distinct post IDs; exact URL/list/text/slot comparison only, no downloaded bytes, perceptual similarity or full historical duplicate proof."
+    },
+    "crossChannelMediaReuse": {
+      "count": 5,
+      "definition": "Exact media URL assigned to multiple different networks, including one post with multiple providers; not a same-network duplicate.",
+      "groups": [
+        {
+          "media": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg",
+          "networks": [
+            "facebook",
+            "instagram"
+          ],
+          "posts": [
+            {
+              "id": 401179904,
+              "uuid": "2344041729300253064",
+              "scheduledAt": "2026-10-25T19:10:00+01:00",
+              "networks": [
+                "instagram"
+              ],
+              "network": "instagram"
+            },
+            {
+              "id": 401179909,
+              "uuid": "-2554409969231966828",
+              "scheduledAt": "2026-10-25T19:10:00+01:00",
+              "networks": [
+                "facebook"
+              ],
+              "network": "facebook"
+            }
+          ]
+        },
+        {
+          "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433",
+          "networks": [
+            "facebook",
+            "instagram"
+          ],
+          "posts": [
+            {
+              "id": 399476575,
+              "uuid": "7659202434600943789",
+              "scheduledAt": "2026-10-25T20:15:00+01:00",
+              "networks": [
+                "instagram"
+              ],
+              "network": "instagram"
+            },
+            {
+              "id": 399476578,
+              "uuid": "-4711778171676639107",
+              "scheduledAt": "2026-10-25T20:15:00+01:00",
+              "networks": [
+                "facebook"
+              ],
+              "network": "facebook"
+            }
+          ]
+        },
+        {
+          "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756",
+          "networks": [
+            "facebook",
+            "instagram",
+            "threads"
+          ],
+          "posts": [
+            {
+              "id": 404927218,
+              "uuid": "3370014454796207908",
+              "scheduledAt": "2026-10-26T12:15:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "facebook"
+            },
+            {
+              "id": 404927218,
+              "uuid": "3370014454796207908",
+              "scheduledAt": "2026-10-26T12:15:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "instagram"
+            },
+            {
+              "id": 404927234,
+              "uuid": "2383637826676869482",
+              "scheduledAt": "2026-10-28T09:45:00+01:00",
+              "networks": [
+                "threads"
+              ],
+              "network": "threads"
+            }
+          ]
+        },
+        {
+          "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977",
+          "networks": [
+            "facebook",
+            "instagram"
+          ],
+          "posts": [
+            {
+              "id": 404927223,
+              "uuid": "1910940002626912625",
+              "scheduledAt": "2026-10-26T19:10:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "facebook"
+            },
+            {
+              "id": 404927223,
+              "uuid": "1910940002626912625",
+              "scheduledAt": "2026-10-26T19:10:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "instagram"
+            }
+          ]
+        },
+        {
+          "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756",
+          "networks": [
+            "facebook",
+            "instagram",
+            "pinterest"
+          ],
+          "posts": [
+            {
+              "id": 404928616,
+              "uuid": "2877674070200569146",
+              "scheduledAt": "2026-10-27T14:40:00+01:00",
+              "networks": [
+                "pinterest"
+              ],
+              "network": "pinterest"
+            },
+            {
+              "id": 404927236,
+              "uuid": "-884200541558521239",
+              "scheduledAt": "2026-10-29T12:15:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "facebook"
+            },
+            {
+              "id": 404927236,
+              "uuid": "-884200541558521239",
+              "scheduledAt": "2026-10-29T12:15:00+01:00",
+              "networks": [
+                "facebook",
+                "instagram"
+              ],
+              "network": "instagram"
+            }
+          ]
+        }
+      ]
+    },
+    "calendarDayCoverage": [
+      {
+        "date": "2026-10-25",
+        "fromInclusive": "2026-10-25T19:06:39+01:00",
+        "toExclusive": "2026-10-26T00:00:00+01:00",
+        "partialCalendarDay": true,
+        "posts": 8,
+        "providerPlacements": 8,
+        "networkPlacements": {
+          "instagram": 3,
+          "facebook": 2,
+          "pinterest": 2,
+          "tiktok": 1,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-26",
+        "fromInclusive": "2026-10-26T00:00:00+01:00",
+        "toExclusive": "2026-10-27T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 2,
+        "providerPlacements": 4,
+        "networkPlacements": {
+          "instagram": 2,
+          "facebook": 2,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-27",
+        "fromInclusive": "2026-10-27T00:00:00+01:00",
+        "toExclusive": "2026-10-28T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 2,
+        "providerPlacements": 2,
+        "networkPlacements": {
+          "instagram": 0,
+          "facebook": 0,
+          "pinterest": 2,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-28",
+        "fromInclusive": "2026-10-28T00:00:00+01:00",
+        "toExclusive": "2026-10-29T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 1,
+        "providerPlacements": 1,
+        "networkPlacements": {
+          "instagram": 0,
+          "facebook": 0,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 1,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-29",
+        "fromInclusive": "2026-10-29T00:00:00+01:00",
+        "toExclusive": "2026-10-30T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 1,
+        "providerPlacements": 2,
+        "networkPlacements": {
+          "instagram": 1,
+          "facebook": 1,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-30",
+        "fromInclusive": "2026-10-30T00:00:00+01:00",
+        "toExclusive": "2026-10-31T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 0,
+        "providerPlacements": 0,
+        "networkPlacements": {
+          "instagram": 0,
+          "facebook": 0,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-10-31",
+        "fromInclusive": "2026-10-31T00:00:00+01:00",
+        "toExclusive": "2026-11-01T00:00:00+01:00",
+        "partialCalendarDay": false,
+        "posts": 0,
+        "providerPlacements": 0,
+        "networkPlacements": {
+          "instagram": 0,
+          "facebook": 0,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-11-01",
+        "fromInclusive": "2026-11-01T00:00:00+01:00",
+        "toExclusive": "2026-11-01T19:06:39+01:00",
+        "partialCalendarDay": true,
+        "posts": 0,
+        "providerPlacements": 0,
+        "networkPlacements": {
+          "instagram": 0,
+          "facebook": 0,
+          "pinterest": 0,
+          "tiktok": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      }
+    ],
+    "fullCalendarDatesWithoutScheduledEntries": [
+      "2026-10-30",
+      "2026-10-31"
+    ],
+    "emptyPartialCalendarDates": [
+      "2026-11-01"
+    ],
+    "trailingNoEntryInterval": {
+      "fromExclusive": "2026-10-29T12:15:00+01:00",
+      "toExclusive": "2026-11-01T19:06:39+01:00",
+      "seconds": 283899,
+      "hoursMinutesSeconds": "78h 51m 39s",
+      "meaning": "No scheduled entry in returned snapshot; not a verified publication gap."
+    },
+    "comparisonWith1851": {
+      "priorRawPosts": 14,
+      "priorFilteredToSameWindowPosts": 14,
+      "priorFilteredToSameWindowProviderPlacements": 17,
+      "sharedUUIDs": 14,
+      "currentOnlyPosts": [],
+      "priorOnlyPosts": [],
+      "sameUUIDSetAfterIdenticalWindowFilter": true,
+      "allSharedFieldsEqualExcludingCreatorFields": true,
+      "fieldChanges": [],
+      "providerStatusChanges": [],
+      "newlyCoveredTail": {
+        "fromInclusive": "2026-11-01T18:51:00+01:00",
+        "toExclusive": "2026-11-01T19:06:39+01:00",
+        "returnedEntries": 0
+      },
+      "interpretation": "No missing or new posts relative to 18:51. Earlier slots excluded in previous comparisons remain unknown; elapsed slots or absence never establish publication."
+    },
+    "metricsReuse": {
+      "newAnalyticsMetricDiscoveryCalls": 0,
+      "newAnalyticsDataCalls": 0,
+      "period": "2026-10-18 00:00:00 through 2026-10-24 23:59:59 Europe/Zurich (UTC+02 in that period)",
+      "morningMeasurementReused": true,
+      "fullCoverageVisibilityTotals": {
+        "instagramViews": 1633,
+        "tiktokVideoCohortViews": 6352,
+        "facebookContentViews": 1198
+      },
+      "fullCoverageTiktokInteractions": 36,
+      "otherMetrics": "Partial/unknown as recorded in morning BERICHT.md and KENNZAHLEN.json; missing days not zero-filled; no sales or growth inference."
+    },
+    "separateOwnerGoogleIndexationQuotaReport": {
+      "status": "OWNER_REPORTED_GOOGLE_INDEXATION_QUOTA_LIMIT",
+      "independentlyVerified": false,
+      "source": "Parent relayed owner message in current evening task",
+      "metricoolError": false,
+      "metricoolReadsSucceeded": true,
+      "interpretation": "Separate Google indexing report, not an observed Metricool API, scheduling or quota failure. No Google request performed here."
+    },
+    "actions": {
+      "metricoolGetBrandSettingsCalls": 1,
+      "metricoolGetScheduledPostsCalls": 1,
+      "newMetricDiscoveryCalls": 0,
+      "newMetricDataCalls": 0,
+      "mediaDownloads": 0,
+      "socialWrites": 0,
+      "scheduleChanges": 0,
+      "publicationActions": 0,
+      "googleIndexRequests": 0
+    },
+    "privacy": "Creator identity/email fields omitted from PLAN and reports; raw handoff/prior sources not changed.",
+    "limits": [
+      "Scheduled-only response excludes already published posts and is not full published history.",
+      "PENDING/global autoPublish and elapsed dates do not establish publication.",
+      "Identity alone does not satisfy product, film-rights, quality, channel or publication-ledger gates.",
+      "No content approval or queue activation inferred; existing schedule preserved."
+    ]
+  },
+  "products": {
+    "status": "READ_ONLY_EVENING_PRODUCT_CHECK",
+    "dateEuropeZurich": "2026-10-25",
+    "publicReadWindowEuropeZurich": "19:08:14–19:08:15 CET",
+    "scope": "Exactly two known products and exact variants. Two native get_product reads, one reused exact two-node variant query, six bounded public GET reads (HTML, product.js and featured image per product). No product pagination, cart/checkout action or external write.",
+    "shopIdentity": "LuxeStyle / luxestyle.ch / CHF freshly checked by root and reused; no second shopInfo read.",
+    "handoffSource": {
+      "path": "/workspace/luxestyle-review/abend-20261025/HANDOFF-SOURCE.json",
+      "readmeBlob": "f24f137cdce79abb5b1edfa0af9a5b7304929335",
+      "logBlob": "83ecf30049681c628ec6bd5fce72016ca0c3cc02"
+    },
+    "guard": {
+      "repo": "allengchour-glitch/aban-news-landing",
+      "path": "automation/lib/kanal_sperren.mjs",
+      "ref": "main",
+      "gitBlob": "3adab7369f90945769331910525c08b3778b4371",
+      "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+      "sourceUrl": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/kanal_sperren.mjs"
+    },
+    "graphql": {
+      "reusedSource": "/workspace/luxestyle-review/morgen-20261025/products/read-variants.graphql",
+      "schemaCheckedTypes": [
+        "QueryRoot",
+        "ProductVariant",
+        "InventoryItem",
+        "Product"
+      ],
+      "nativeValidationMessage": "GraphQL validation skipped. Continue with graphql_query or graphql_mutation which will perform the validation.",
+      "queryExecutedSuccessfully": true,
+      "independentValidatorPassedClaim": false
+    },
+    "products": [
+      {
+        "name": "projector",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "variantTitle": "Default Title",
+        "sku": "CJ-1477820492730732544",
+        "status": "ACTIVE",
+        "currencyCode": "CHF",
+        "adminPrice": "34.90",
+        "publicVariantPriceMinorUnits": 3490,
+        "publicExactVariantAvailable": true,
+        "inventoryQuantityObserved": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "nativeProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "publicCanonical": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "tech"
+        ],
+        "tagGate": {
+          "name": "projector",
+          "productId": "gid://shopify/Product/15521256604033",
+          "variantId": "gid://shopify/ProductVariant/56197916361089",
+          "identityMatches": true,
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "tech"
+          ],
+          "tagsValid": true,
+          "missingEmptyOrInvalidTagsBlock": false,
+          "repoMatches": [],
+          "rueckholMatches": [],
+          "blocksFromTagRules": false,
+          "auswahlOffen": true,
+          "publicationApproved": false,
+          "note": "Tagprüfung ist keine Ausführungs-, Filmrechts-, Qualitäts-, Kanal- oder Publikationsfreigabe."
+        },
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "publicProductFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "path": "/workspace/luxestyle-review/abend-20261025/products/projector-image.jpg",
+          "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+          "dimensions": [
+            1920,
+            1919
+          ],
+          "httpStatus": 200,
+          "visuallyInspected": true,
+          "visualObservation": "Weisses Gerät mit schwarzer Sternenkuppel, schwenkbarem Bügel und separat liegender weisser Haube.",
+          "sameBytesAsMorning": true,
+          "exactSupplierVariantOrFilmMatch": "UNKNOWN"
+        },
+        "publicReads": [
+          {
+            "name": "projector",
+            "kind": "page",
+            "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+            "readAtUtc": "2026-10-25T18:08:14.276424+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+            "contentType": "text/html; charset=utf-8",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/projector-page.html",
+            "bytes": 829047,
+            "sha256": "326b5f4e3f2fe6f7e477494f65ba51df860bd986cc911fa2d7e1019f0dd98efd",
+            "canonical": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+            "purchaseUiObservedInHtml": true
+          },
+          {
+            "name": "projector",
+            "kind": "productJson",
+            "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+            "readAtUtc": "2026-10-25T18:08:14.277158+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+            "contentType": "text/javascript; charset=utf-8",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/projector-productJson.json",
+            "bytes": 11035,
+            "sha256": "bf4e323cd32983e755869b4ef8babf5d9c9c9580c7c5a285db8527515009c319"
+          },
+          {
+            "name": "projector",
+            "kind": "image",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+            "readAtUtc": "2026-10-25T18:08:14.277631+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+            "contentType": "image/jpeg",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/projector-image.jpg",
+            "bytes": 118008,
+            "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+            "imageDimensions": [
+              1920,
+              1919
+            ]
+          }
+        ],
+        "nativeResponseArchivedAtUtc": "2026-10-25T18:07:06.568213+00:00",
+        "checks": {
+          "expectedProductId": true,
+          "expectedVariantId": true,
+          "statusActive": true,
+          "currencyCHF": true,
+          "adminPublicExactVariantPriceMatches": true,
+          "publicExactVariantAvailable": true,
+          "canonicalMatchesNativeUrl": true,
+          "featuredImageMatchesPublicProduct": true,
+          "tagsValid": true,
+          "noTagRuleHit": true,
+          "trackedFalse": true,
+          "inventoryPolicyContinue": true,
+          "imageReadSucceeded": true
+        },
+        "remainingBlockers": [
+          "auswahl-offen ist weiterhin vorhanden; konkrete Ausführung/Motivzuordnung ungeklärt.",
+          "Keine kommerziellen Filmrechte oder finale Master-/Ton-/Cropabnahme bestätigt.",
+          "Keine mobile Live-Kaufinteraktion oder Bestellung ausgelöst."
+        ]
+      },
+      {
+        "name": "diffuser",
+        "title": "Aroma-Diffuser in Holzoptik",
+        "productId": "gid://shopify/Product/15411554320769",
+        "variantId": "gid://shopify/ProductVariant/55743280021889",
+        "variantTitle": "Default Title",
+        "sku": "CJ-CJJJJTJT22925",
+        "status": "ACTIVE",
+        "currencyCode": "CHF",
+        "adminPrice": "44.90",
+        "publicVariantPriceMinorUnits": 4490,
+        "publicExactVariantAvailable": true,
+        "inventoryQuantityObserved": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "nativeProductUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+        "publicCanonical": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+        "tags": [
+          "aroma-diffuser",
+          "auswahl-offen",
+          "bild-ok",
+          "cj-real",
+          "deko",
+          "geschenkidee",
+          "geschenkideen",
+          "geschenkwelt-alle",
+          "geschenkwelt-hochzeit",
+          "geschenkwelt-sie",
+          "geschenkwelt-unter100",
+          "geschenkwelt-unter50",
+          "home",
+          "kat-aroma",
+          "NEU 2026",
+          "such-luftbefeuchter",
+          "wellness",
+          "Wellness-Spa"
+        ],
+        "tagGate": {
+          "name": "diffuser",
+          "productId": "gid://shopify/Product/15411554320769",
+          "variantId": "gid://shopify/ProductVariant/55743280021889",
+          "identityMatches": true,
+          "tags": [
+            "aroma-diffuser",
+            "auswahl-offen",
+            "bild-ok",
+            "cj-real",
+            "deko",
+            "geschenkidee",
+            "geschenkideen",
+            "geschenkwelt-alle",
+            "geschenkwelt-hochzeit",
+            "geschenkwelt-sie",
+            "geschenkwelt-unter100",
+            "geschenkwelt-unter50",
+            "home",
+            "kat-aroma",
+            "NEU 2026",
+            "such-luftbefeuchter",
+            "wellness",
+            "Wellness-Spa"
+          ],
+          "tagsValid": true,
+          "missingEmptyOrInvalidTagsBlock": false,
+          "repoMatches": [],
+          "rueckholMatches": [],
+          "blocksFromTagRules": false,
+          "auswahlOffen": true,
+          "publicationApproved": false,
+          "note": "Tagprüfung ist keine Ausführungs-, Filmrechts-, Qualitäts-, Kanal- oder Publikationsfreigabe."
+        },
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+          "publicProductFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+          "path": "/workspace/luxestyle-review/abend-20261025/products/diffuser-image.jpg",
+          "sha256": "0f3efc5740b0be89c5b357d6cb596026471b776cae3576085cdbd263beb35234",
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "httpStatus": 200,
+          "visuallyInspected": true,
+          "visualObservation": "Runder Sockel in Holzoptik mit weissem Wasserbehälter; abgenommener Aufsatz rechts, Vorderseitentasten sichtbar.",
+          "sameBytesAsMorning": true,
+          "exactSupplierVariantOrFilmMatch": "UNKNOWN"
+        },
+        "publicReads": [
+          {
+            "name": "diffuser",
+            "kind": "page",
+            "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+            "readAtUtc": "2026-10-25T18:08:14.751994+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+            "contentType": "text/html; charset=utf-8",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/diffuser-page.html",
+            "bytes": 780561,
+            "sha256": "b87670b4b6c09b34f512adf56b71ab68999c5037204466af3d58c619d5af9d9c",
+            "canonical": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+            "purchaseUiObservedInHtml": true
+          },
+          {
+            "name": "diffuser",
+            "kind": "productJson",
+            "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben.js",
+            "readAtUtc": "2026-10-25T18:08:14.808603+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben.js",
+            "contentType": "text/javascript; charset=utf-8",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/diffuser-productJson.json",
+            "bytes": 8430,
+            "sha256": "57459589d490c2db00d2464de57c435e89e6a0a8e3ba272fb974247084f9a8d0"
+          },
+          {
+            "name": "diffuser",
+            "kind": "image",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+            "readAtUtc": "2026-10-25T18:08:15.377730+00:00",
+            "status": "success",
+            "httpStatus": 200,
+            "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+            "contentType": "image/jpeg",
+            "path": "/workspace/luxestyle-review/abend-20261025/products/diffuser-image.jpg",
+            "bytes": 58799,
+            "sha256": "0f3efc5740b0be89c5b357d6cb596026471b776cae3576085cdbd263beb35234",
+            "imageDimensions": [
+              1000,
+              1000
+            ]
+          }
+        ],
+        "nativeResponseArchivedAtUtc": "2026-10-25T18:07:07.208207+00:00",
+        "checks": {
+          "expectedProductId": true,
+          "expectedVariantId": true,
+          "statusActive": true,
+          "currencyCHF": true,
+          "adminPublicExactVariantPriceMatches": true,
+          "publicExactVariantAvailable": true,
+          "canonicalMatchesNativeUrl": true,
+          "featuredImageMatchesPublicProduct": true,
+          "tagsValid": true,
+          "noTagRuleHit": true,
+          "trackedFalse": true,
+          "inventoryPolicyContinue": true,
+          "imageReadSucceeded": true
+        },
+        "remainingBlockers": [
+          "auswahl-offen ist weiterhin vorhanden; konkrete Ausführung/Motivzuordnung ungeklärt.",
+          "Keine kommerziellen Filmrechte oder finale Master-/Ton-/Cropabnahme bestätigt.",
+          "Keine mobile Live-Kaufinteraktion oder Bestellung ausgelöst."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/projector-native.json",
+        "sha256": "8d37cf875eac374011d74875c0a984721cb7f5d92654948262bf911429c66864"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/diffuser-native.json",
+        "sha256": "a7ab177e5c3e88acdec4484d57733f48fed1b963637e8ab483de2eb6b64683d4"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/variants-native.json",
+        "sha256": "b1ec30d962bb7b036aea31b6cf6e5258572a300198f6b26b43d066fe4a1b57c0"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/guard-source.json",
+        "sha256": "8cb5a0aac9e235b01842d50d2d8c8ff5d2b1eebb1b831bfc1145cc6c334834db"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/kanal_sperren.mjs",
+        "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/TAG-GATES.json",
+        "sha256": "68729292e9992b95ccdf79560053235378bacee3b7b86273bdfba923f3780505"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/PUBLIC-CHECK.json",
+        "sha256": "158ffb2dc003f5a069d10af3ed34cfd48f151c359dd46c2dd5165458db5cb7cf"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/GRAPHQL-VALIDATION.json",
+        "sha256": "a3f53175d34ed63b865f323249fa7955f35315cfb38202330724404362be2a2d"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/products/SCHEMA-CHECK.json",
+        "sha256": "77e0eeeb10bccc479db9ae17cf9a81639c79d3247bd2249928c0134021fbdec0"
+      },
+      {
+        "path": "/workspace/luxestyle-review/abend-20261025/HANDOFF-SOURCE.json",
+        "sha256": "6cf0c7cb3100fd22597bf16659107f0712b68bf6192d06eec7e7dd283dd989bf"
+      }
+    ],
+    "noWrites": true,
+    "noKpiOrdersFlowsReads": true,
+    "noCartOrCheckoutAction": true,
+    "noRenderInstallOrWorkflow": true,
+    "interpretation": [
+      "Inventory0 with tracked=false/CONTINUE does not prove out of stock or physical warehouse inventory.",
+      "No block from tag rules is not publication approval. Every rueckhol and invalid/missing tags would block this check.",
+      "Public variant available=true is a point-in-time product JSON observation, not a completed purchase or mobile UI test.",
+      "Existing photo rights confirmation is preserved; images do not establish film rights or exact supplier-variant identity.",
+      "HTML capture strings are not functioning consent/flow evidence; no scripts or tracking events were executed."
+    ]
+  },
+  "index": {
+    "status": "READ_ONLY_INDEXING_PREPARATION_NO_REQUESTS",
+    "recordedAtUtc": "2026-10-25T18:10:52.034601+00:00",
+    "scope": {
+      "site": "https://luxestyle.ch",
+      "officialGoogleDocPagesFetched": 1,
+      "shopPublicUrlsFetched": 2,
+      "collectionSitemapsFetched": 0,
+      "productSitemapsFetched": 0,
+      "childSitemapReasonNotFetched": "Not necessary to verify robots sitemap reference and top-level XML response; bounded scope ends at the sitemap index.",
+      "crawls": 0,
+      "searchConsoleReads": 0,
+      "googleUrlInspectionOrIndexingRequests": 0,
+      "bypassAttempts": 0,
+      "settingsOrStoreWrites": 0,
+      "kpiOrSalesReads": 0,
+      "localArtifactsOnly": true
+    },
+    "handoffSource": {
+      "path": "/workspace/luxestyle-review/abend-20261025/HANDOFF-SOURCE.json",
+      "sha256": "6cf0c7cb3100fd22597bf16659107f0712b68bf6192d06eec7e7dd283dd989bf",
+      "readmeBlobSha": "f24f137cdce79abb5b1edfa0af9a5b7304929335",
+      "tagesprotokollBlobSha": "83ecf30049681c628ec6bd5fce72016ca0c3cc02"
+    },
+    "userReport": {
+      "quotedMessageRelayedByParent": "2kontingentüberschritten",
+      "associatedCandidate": "Hundebetten",
+      "meaningOfLeading2": "Not interpreted as an observed number of indexing attempts or quota size.",
+      "nature": "Owner report; no independent Search Console screenshot or error-object inspection.",
+      "requestsAcceptedEarlier": "unknown",
+      "requestQuotaRemaining": "unknown",
+      "dogBedUrlGoogleIndexStatus": "unknown",
+      "furtherRequestsOrWorkarounds": "not performed"
+    },
+    "officialDocumentation": {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl",
+      "retrieval": "Firecrawl scrape single official URL maxAge=0",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "scrapeId": "01a1743e-6626-75ec-98b2-7166da61fd9a",
+      "readCompletedBeforeRecordedAtUtc": "2026-10-25T18:07:19.684Z",
+      "documentLastUpdatedAsStated": "2025-12-10 UTC",
+      "savedMarkdownPath": "/workspace/luxestyle-review/abend-20261025/index/google-recrawl-source.md",
+      "savedMarkdownSha256": "f21d0d8a129c640e6e9d65b39c6f8a4c90eb7ae3c68b87af47209917ee57c670",
+      "exactRelevantQuotes": [
+        "Keep in mind that there's a quota for submitting individual URLs and requesting a recrawl\nmultiple times for the same URL won't get it crawled any faster.",
+        "Crawling can take anywhere from a few days to a few weeks."
+      ],
+      "supportedConclusions": [
+        "Google states there is a quota for submitting individual URLs.",
+        "Repeated recrawl requests for the same URL do not accelerate crawling.",
+        "The days-to-weeks statement describes possible crawling delay, not quota reset.",
+        "The page describes sitemaps as a way to help Google discover many URLs."
+      ],
+      "notSpecifiedOnThisReadPage": {
+        "quotaCount": true,
+        "quotaPeriod": true,
+        "quotaResetTime": true,
+        "propertySpecificQuotaRemaining": true,
+        "automaticResetNextDay": true
+      },
+      "notRead": [
+        "Linked URL Inspection help page",
+        "Any Search Console property or Google index status",
+        "Any other Google documentation URL"
+      ],
+      "feedbackSubmittedOnce": {
+        "endpoint": "scrape",
+        "feedbackId": "01a1743f-a209-736a-a39a-66f5df221646",
+        "success": true
+      }
+    },
+    "publicReads": [
+      {
+        "url": "https://luxestyle.ch/robots.txt",
+        "method": "GET",
+        "startedAtUtc": "2026-10-25T18:07:58.748617+00:00",
+        "maximumReadBytes": 262144,
+        "requestsBeforeRedirects": 1,
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/robots.txt",
+        "contentType": "text/plain; charset=utf-8",
+        "reportedContentLength": null,
+        "lastModified": null,
+        "etag": "W/\"page_cache:94368563585:RobotsController:b8e544fd455a5fa4de9bce99ae074505\"",
+        "headers": {
+          "date": "Sun, 25 Oct 2026 18:07:59 GMT",
+          "content-type": "text/plain; charset=utf-8",
+          "x-download-options": "noopen",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_shopify_marketing=:AaF0P3jcAAEAvHjCOiLbeaBzrEIApoNOyUus61ZdzvdfQqOXqAVnLjVYPz14os7M1XhVXlSbYxR0d3IWPejaBryd9hY:; Max-Age=31536000; Path=/; HttpOnly; Secure; Priority=High; SameSite=Lax",
+          "link": "<https://cdn.shopify.com>; rel=\"preconnect\", <https://cdn.shopify.com>; rel=\"preconnect\"; crossorigin, </.well-known/ucp>; rel=\"ucp\"; version=\"2026-08-25\"",
+          "x-request-id": "6294a092-d5d1-426c-ada6-f9316cc46a38-1792951679",
+          "etag": "W/\"page_cache:94368563585:RobotsController:b8e544fd455a5fa4de9bce99ae074505\"",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.01,\"max_age\":604800}",
+          "shopify-complexity-score": "0",
+          "shopify-complexity-score-v2": "47",
+          "x-frame-options": "DENY",
+          "content-security-policy": "block-all-mixed-content; frame-ancestors 'none'; upgrade-insecure-requests;",
+          "strict-transport-security": "max-age=7889238",
+          "x-permitted-cross-domain-policies": "none",
+          "vary": "Accept,accept-encoding",
+          "cdn-cache-control": "no-cache, no-store",
+          "content-language": "de-CH",
+          "powered-by": "Shopify",
+          "server-timing": "processing;dur=53, db;dur=21, db_async;dur=6.581, asn;desc=\"13335\", edge;desc=\"SJC\", country;desc=\"CH\", knownbot, theme;desc=\"187533001089\", pageType;desc=\"robots\", servedBy;desc=\"j5n9\", requestID;desc=\"6294a092-d5d1-426c-ada6-f9316cc46a38-1792951679\", _y;desc=\"46d1645d-a9fe-4c34-a939-affda49da9a4\", _s;desc=\"845b8d16-4ef6-49d0-9809-df6d4e8c0e57\", _cmp;desc=\"3.AMPS_US_f_f_Iw7SCePfRL-Nz0JuS7etcQ\", _ye;desc=\"1824509279\", _se;desc=\"1792953479\", compressionLevel;desc=\"5\", compressionTime;dur=0.296",
+          "x-dc": "gcp-us-west1,gcp-us-west1,gcp-us-west1",
+          "x-xss-protection": "1; mode=block",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server": "envoy",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=oAHaK%2Bc8taSph%2BC2kDCmq2TlqUg3T3%2F6xKVzAtVfOH%2BM%2FfISwgvhsbc7r%2B6VR5mampbD8If6lzC%2B%2FGTWV9oXDbvHaF5XKsFf7eNEKCVPVT49GD5UXN7Bx9W4FapSvg%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "cf-ray": "a50329fa695980fd-SJC",
+          "x-envoy-upstream-service-time": "135",
+          "connection": "close",
+          "transfer-encoding": "chunked"
+        },
+        "bytesRead": 3638,
+        "truncatedByLocalReadCap": false,
+        "sha256": "183bd4057aade622ad023f27d37a3bad0407a5dbe195d823291c0dbeac278f1b",
+        "savedPath": "/workspace/luxestyle-review/abend-20261025/index/robots.txt",
+        "completedAtUtc": "2026-10-25T18:07:59.240808+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/sitemap.xml",
+        "method": "GET",
+        "startedAtUtc": "2026-10-25T18:07:58.750287+00:00",
+        "maximumReadBytes": 1048576,
+        "requestsBeforeRedirects": 1,
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/sitemap.xml",
+        "contentType": "application/xml; charset=utf-8",
+        "reportedContentLength": null,
+        "lastModified": null,
+        "etag": "W/\"page_cache:94368563585:SitemapIndexController:84239f31f97e6906da4e2d0a2d8aa955\"",
+        "headers": {
+          "date": "Sun, 25 Oct 2026 18:07:59 GMT",
+          "content-type": "application/xml; charset=utf-8",
+          "x-download-options": "noopen",
+          "x-request-id": "1dab7ffa-05ac-4f4f-8467-c9a4d8860264-1792951679",
+          "etag": "W/\"page_cache:94368563585:SitemapIndexController:84239f31f97e6906da4e2d0a2d8aa955\"",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_shopify_marketing=:AaF0P3iiAAEAGxJhPrSZWxRo8PVGsX84KxF0k48jz1Q1FauGi1NdT1im7DMBg4pqqMCCazBvdy8K5Z7KnQ7Xi2T9wUg:; Max-Age=31536000; Path=/; HttpOnly; Secure; Priority=High; SameSite=Lax",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.01,\"max_age\":604800}",
+          "shopify-complexity-score": "0",
+          "shopify-complexity-score-v2": "24",
+          "x-frame-options": "DENY",
+          "content-security-policy": "block-all-mixed-content; frame-ancestors 'none'; upgrade-insecure-requests;",
+          "strict-transport-security": "max-age=7889238",
+          "x-permitted-cross-domain-policies": "none",
+          "vary": "Accept,accept-encoding",
+          "cdn-cache-control": "no-cache, no-store",
+          "content-language": "de-CH",
+          "link": "</.well-known/ucp>; rel=\"ucp\"; version=\"2026-08-25\"",
+          "powered-by": "Shopify",
+          "server-timing": "processing;dur=32;desc=\"gc:1\", db;dur=6, db_async;dur=4.047, asn;desc=\"13335\", edge;desc=\"SJC\", country;desc=\"CH\", knownbot, servedBy;desc=\"fj2v\", requestID;desc=\"1dab7ffa-05ac-4f4f-8467-c9a4d8860264-1792951679\", _y;desc=\"0b231fda-6223-43da-aba9-3138c8af0f8a\", _s;desc=\"0172a297-8408-4052-94d0-77765227eb4a\", _cmp;desc=\"3.AMPS_US_f_f_fBNiBEAWTDuxrsk04tbd7Q\", _ye;desc=\"1824509279\", _se;desc=\"1792953479\", compressionLevel;desc=\"5\"",
+          "x-dc": "gcp-us-west1,gcp-us-west1,gcp-us-west1",
+          "x-xss-protection": "1; mode=block",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server": "envoy",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hLl%2F7Xus13FZ0uNPOX3X1NOQOcgKZ3Mn82dmI7T4IMu5NtE16mDYdJIlYBlUgZHyRfHMuhQ%2FdFnrzFoseWUCvCUJbC45ShDnqhz0A%2BZJe9d1nAlLmXQTaOSTs0VDcQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "cf-ray": "a50329fa28cb80fd-SJC",
+          "x-envoy-upstream-service-time": "164",
+          "connection": "close",
+          "transfer-encoding": "chunked"
+        },
+        "bytesRead": 15872,
+        "truncatedByLocalReadCap": false,
+        "sha256": "230ff90d421b62afd183c9d5aebabea1993a1111ae80e3bcbd4b834110aa8561",
+        "savedPath": "/workspace/luxestyle-review/abend-20261025/index/sitemap.xml",
+        "completedAtUtc": "2026-10-25T18:07:59.180149+00:00"
+      }
+    ],
+    "robots": {
+      "textDecode": "UTF-8",
+      "sizeBytes": 3638,
+      "sha256": "183bd4057aade622ad023f27d37a3bad0407a5dbe195d823291c0dbeac278f1b",
+      "typeMatchesExpectedText": true,
+      "sitemapReferences": [
+        "https://luxestyle.ch/sitemap.xml"
+      ],
+      "referenceMatchesFetchedRootSitemap": true,
+      "observedUserAgentGroups": [
+        "*",
+        "adsbot-google"
+      ],
+      "defaultGroupHasAllowRoot": true,
+      "selectedRestrictionContext": [
+        "Transactional/admin/cart/checkout/account paths have Disallow directives.",
+        "Some collection sorting and multi-filter URL patterns have Disallow directives."
+      ],
+      "scopeLimit": "Root Allow does not erase more specific Disallow rules; no page-level robots meta or index status inferred. File comments are retained as source text, not followed as instructions.",
+      "xRobotsTagHeader": null
+    },
+    "sitemapIndex": {
+      "wellFormedXml": true,
+      "rootTag": "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex",
+      "namespace": "http://www.sitemaps.org/schemas/sitemap/0.9",
+      "directChildSitemaps": 123,
+      "uniqueDirectChildSitemapUrls": 123,
+      "xmlCommentNodesExcludedFromSitemapEntryCount": 1,
+      "allEntryLocsPresentAndAbsoluteHttpsSameHost": true,
+      "basicSitemapIndexStructurePassed": true,
+      "externalXsdValidationPerformed": false,
+      "byteCapTruncated": false,
+      "collectionSitemapReferences": [
+        "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755132203399",
+        "https://luxestyle.ch/fr/sitemap_collections_1.xml?from=687295136129&to=755132203399"
+      ],
+      "allReferencedSitemapUrls": [
+        "https://luxestyle.ch/sitemap_agentic_discovery.xml",
+        "https://luxestyle.ch/sitemap_products_1.xml?from=15406765801857&to=15446272016769",
+        "https://luxestyle.ch/sitemap_products_2.xml?from=15446272082305&to=15447995482497",
+        "https://luxestyle.ch/sitemap_products_3.xml?from=15447995679105&to=15448594088321",
+        "https://luxestyle.ch/sitemap_products_4.xml?from=15448594186625&to=15448760484225",
+        "https://luxestyle.ch/sitemap_products_5.xml?from=15448763171201&to=15448928125313",
+        "https://luxestyle.ch/sitemap_products_6.xml?from=15448928289153&to=15449130762625",
+        "https://luxestyle.ch/sitemap_products_7.xml?from=15449130795393&to=15449477120385",
+        "https://luxestyle.ch/sitemap_products_8.xml?from=15449477153153&to=15450172326273",
+        "https://luxestyle.ch/sitemap_products_9.xml?from=15450172719489&to=15450852360577",
+        "https://luxestyle.ch/sitemap_products_10.xml?from=15450852426113&to=15453729096065",
+        "https://luxestyle.ch/sitemap_products_11.xml?from=15453729161601&to=15453922230657",
+        "https://luxestyle.ch/sitemap_products_12.xml?from=15453922263425&to=15454115692929",
+        "https://luxestyle.ch/sitemap_products_13.xml?from=15454115725697&to=15454893736321",
+        "https://luxestyle.ch/sitemap_products_14.xml?from=15454893769089&to=15458719596929",
+        "https://luxestyle.ch/sitemap_products_15.xml?from=15458719629697&to=15466071064961",
+        "https://luxestyle.ch/sitemap_products_16.xml?from=15466071130497&to=15469959250305",
+        "https://luxestyle.ch/sitemap_products_17.xml?from=15469959283073&to=15469998932353",
+        "https://luxestyle.ch/sitemap_products_18.xml?from=15469998965121&to=15471272198529",
+        "https://luxestyle.ch/sitemap_products_19.xml?from=15471536177537&to=15477130035585",
+        "https://luxestyle.ch/sitemap_products_20.xml?from=15477130133889&to=15479485366657",
+        "https://luxestyle.ch/sitemap_products_21.xml?from=15479485399425&to=15481765134721",
+        "https://luxestyle.ch/sitemap_products_22.xml?from=15481765265793&to=15486373953921",
+        "https://luxestyle.ch/sitemap_products_23.xml?from=15486374052225&to=15492997251457",
+        "https://luxestyle.ch/sitemap_products_24.xml?from=15492997316993&to=15493828346241",
+        "https://luxestyle.ch/sitemap_products_25.xml?from=15493828379009&to=15493928976769",
+        "https://luxestyle.ch/sitemap_products_26.xml?from=15493929042305&to=15495116816769",
+        "https://luxestyle.ch/sitemap_products_27.xml?from=15495116915073&to=15495409992065",
+        "https://luxestyle.ch/sitemap_products_28.xml?from=15495584645505&to=15496385593729",
+        "https://luxestyle.ch/sitemap_products_29.xml?from=15496385626497&to=15497360572801",
+        "https://luxestyle.ch/sitemap_products_30.xml?from=15497360605569&to=15497475522945",
+        "https://luxestyle.ch/sitemap_products_31.xml?from=15497475555713&to=15500110365057",
+        "https://luxestyle.ch/sitemap_products_32.xml?from=15500110463361&to=15500743868801",
+        "https://luxestyle.ch/sitemap_products_33.xml?from=15500780437889&to=15500974883201",
+        "https://luxestyle.ch/sitemap_products_34.xml?from=15500974915969&to=15502040531329",
+        "https://luxestyle.ch/sitemap_products_35.xml?from=15502040924545&to=15503090319745",
+        "https://luxestyle.ch/sitemap_products_36.xml?from=15503090352513&to=15503843950977",
+        "https://luxestyle.ch/sitemap_products_37.xml?from=15503844016513&to=15504188473729",
+        "https://luxestyle.ch/sitemap_products_38.xml?from=15504188506497&to=15506324357505",
+        "https://luxestyle.ch/sitemap_products_39.xml?from=15506324455809&to=15508418855297",
+        "https://luxestyle.ch/sitemap_products_40.xml?from=15508418888065&to=15509377876353",
+        "https://luxestyle.ch/sitemap_products_41.xml?from=15509377909121&to=15510318449025",
+        "https://luxestyle.ch/sitemap_products_42.xml?from=15510318481793&to=15510927049089",
+        "https://luxestyle.ch/sitemap_products_43.xml?from=15510927081857&to=15516217966977",
+        "https://luxestyle.ch/sitemap_products_44.xml?from=15516217999745&to=15520243319169",
+        "https://luxestyle.ch/sitemap_products_45.xml?from=15520244072833&to=15522141536641",
+        "https://luxestyle.ch/sitemap_products_46.xml?from=15522141569409&to=15523782230401",
+        "https://luxestyle.ch/sitemap_products_47.xml?from=15523782295937&to=15524698358145",
+        "https://luxestyle.ch/sitemap_products_48.xml?from=15524698390913&to=15525461885313",
+        "https://luxestyle.ch/sitemap_products_49.xml?from=15525462573441&to=16603809120647",
+        "https://luxestyle.ch/sitemap_products_50.xml?from=16603823243655&to=16607159779719",
+        "https://luxestyle.ch/sitemap_products_51.xml?from=16607159845255&to=16611880960391",
+        "https://luxestyle.ch/sitemap_products_52.xml?from=16611881320839&to=16614287540615",
+        "https://luxestyle.ch/sitemap_products_53.xml?from=16614287606151&to=16615783072135",
+        "https://luxestyle.ch/sitemap_products_54.xml?from=16615783104903&to=16617700098439",
+        "https://luxestyle.ch/sitemap_products_55.xml?from=16617700229511&to=16644918149511",
+        "https://luxestyle.ch/sitemap_products_56.xml?from=16645058527623&to=16654411563399",
+        "https://luxestyle.ch/sitemap_products_57.xml?from=16654412841351&to=16657023861127",
+        "https://luxestyle.ch/sitemap_pages_1.xml?from=697899417985&to=700975022465",
+        "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755132203399",
+        "https://luxestyle.ch/sitemap_blogs_1.xml",
+        "https://luxestyle.ch/sitemap_articles_1.xml",
+        "https://luxestyle.ch/fr/sitemap_products_1.xml?from=15406765801857&to=15446272016769",
+        "https://luxestyle.ch/fr/sitemap_products_2.xml?from=15446272082305&to=15447995482497",
+        "https://luxestyle.ch/fr/sitemap_products_3.xml?from=15447995679105&to=15448594088321",
+        "https://luxestyle.ch/fr/sitemap_products_4.xml?from=15448594186625&to=15448760484225",
+        "https://luxestyle.ch/fr/sitemap_products_5.xml?from=15448763171201&to=15448928125313",
+        "https://luxestyle.ch/fr/sitemap_products_6.xml?from=15448928289153&to=15449130762625",
+        "https://luxestyle.ch/fr/sitemap_products_7.xml?from=15449130795393&to=15449477120385",
+        "https://luxestyle.ch/fr/sitemap_products_8.xml?from=15449477153153&to=15450172326273",
+        "https://luxestyle.ch/fr/sitemap_products_9.xml?from=15450172719489&to=15450852360577",
+        "https://luxestyle.ch/fr/sitemap_products_10.xml?from=15450852426113&to=15453729096065",
+        "https://luxestyle.ch/fr/sitemap_products_11.xml?from=15453729161601&to=15453922230657",
+        "https://luxestyle.ch/fr/sitemap_products_12.xml?from=15453922263425&to=15454115692929",
+        "https://luxestyle.ch/fr/sitemap_products_13.xml?from=15454115725697&to=15454893736321",
+        "https://luxestyle.ch/fr/sitemap_products_14.xml?from=15454893769089&to=15458719596929",
+        "https://luxestyle.ch/fr/sitemap_products_15.xml?from=15458719629697&to=15466071064961",
+        "https://luxestyle.ch/fr/sitemap_products_16.xml?from=15466071130497&to=15469959250305",
+        "https://luxestyle.ch/fr/sitemap_products_17.xml?from=15469959283073&to=15469998932353",
+        "https://luxestyle.ch/fr/sitemap_products_18.xml?from=15469998965121&to=15471272198529",
+        "https://luxestyle.ch/fr/sitemap_products_19.xml?from=15471536177537&to=15477130035585",
+        "https://luxestyle.ch/fr/sitemap_products_20.xml?from=15477130133889&to=15479485366657",
+        "https://luxestyle.ch/fr/sitemap_products_21.xml?from=15479485399425&to=15481765134721",
+        "https://luxestyle.ch/fr/sitemap_products_22.xml?from=15481765265793&to=15486373953921",
+        "https://luxestyle.ch/fr/sitemap_products_23.xml?from=15486374052225&to=15492997251457",
+        "https://luxestyle.ch/fr/sitemap_products_24.xml?from=15492997316993&to=15493828346241",
+        "https://luxestyle.ch/fr/sitemap_products_25.xml?from=15493828379009&to=15493928976769",
+        "https://luxestyle.ch/fr/sitemap_products_26.xml?from=15493929042305&to=15495116816769",
+        "https://luxestyle.ch/fr/sitemap_products_27.xml?from=15495116915073&to=15495409992065",
+        "https://luxestyle.ch/fr/sitemap_products_28.xml?from=15495584645505&to=15496385593729",
+        "https://luxestyle.ch/fr/sitemap_products_29.xml?from=15496385626497&to=15497360572801",
+        "https://luxestyle.ch/fr/sitemap_products_30.xml?from=15497360605569&to=15497475522945",
+        "https://luxestyle.ch/fr/sitemap_products_31.xml?from=15497475555713&to=15500110365057",
+        "https://luxestyle.ch/fr/sitemap_products_32.xml?from=15500110463361&to=15500743868801",
+        "https://luxestyle.ch/fr/sitemap_products_33.xml?from=15500780437889&to=15500974883201",
+        "https://luxestyle.ch/fr/sitemap_products_34.xml?from=15500974915969&to=15502040531329",
+        "https://luxestyle.ch/fr/sitemap_products_35.xml?from=15502040924545&to=15503090319745",
+        "https://luxestyle.ch/fr/sitemap_products_36.xml?from=15503090352513&to=15503843950977",
+        "https://luxestyle.ch/fr/sitemap_products_37.xml?from=15503844016513&to=15504188473729",
+        "https://luxestyle.ch/fr/sitemap_products_38.xml?from=15504188506497&to=15506324357505",
+        "https://luxestyle.ch/fr/sitemap_products_39.xml?from=15506324455809&to=15508418855297",
+        "https://luxestyle.ch/fr/sitemap_products_40.xml?from=15508418888065&to=15509377876353",
+        "https://luxestyle.ch/fr/sitemap_products_41.xml?from=15509377909121&to=15510318449025",
+        "https://luxestyle.ch/fr/sitemap_products_42.xml?from=15510318481793&to=15510927049089",
+        "https://luxestyle.ch/fr/sitemap_products_43.xml?from=15510927081857&to=15516217966977",
+        "https://luxestyle.ch/fr/sitemap_products_44.xml?from=15516217999745&to=15520243319169",
+        "https://luxestyle.ch/fr/sitemap_products_45.xml?from=15520244072833&to=15522141536641",
+        "https://luxestyle.ch/fr/sitemap_products_46.xml?from=15522141569409&to=15523782230401",
+        "https://luxestyle.ch/fr/sitemap_products_47.xml?from=15523782295937&to=15524698358145",
+        "https://luxestyle.ch/fr/sitemap_products_48.xml?from=15524698390913&to=15525461885313",
+        "https://luxestyle.ch/fr/sitemap_products_49.xml?from=15525462573441&to=16603809120647",
+        "https://luxestyle.ch/fr/sitemap_products_50.xml?from=16603823243655&to=16607159779719",
+        "https://luxestyle.ch/fr/sitemap_products_51.xml?from=16607159845255&to=16611880960391",
+        "https://luxestyle.ch/fr/sitemap_products_52.xml?from=16611881320839&to=16614287540615",
+        "https://luxestyle.ch/fr/sitemap_products_53.xml?from=16614287606151&to=16615783072135",
+        "https://luxestyle.ch/fr/sitemap_products_54.xml?from=16615783104903&to=16617700098439",
+        "https://luxestyle.ch/fr/sitemap_products_55.xml?from=16617700229511&to=16644918149511",
+        "https://luxestyle.ch/fr/sitemap_products_56.xml?from=16645058527623&to=16654411563399",
+        "https://luxestyle.ch/fr/sitemap_products_57.xml?from=16654412841351&to=16657023861127",
+        "https://luxestyle.ch/fr/sitemap_pages_1.xml?from=697899417985&to=700975022465",
+        "https://luxestyle.ch/fr/sitemap_collections_1.xml?from=687295136129&to=755132203399",
+        "https://luxestyle.ch/fr/sitemap_blogs_1.xml",
+        "https://luxestyle.ch/fr/sitemap_articles_1.xml"
+      ],
+      "typeMatchesExpectedXml": true,
+      "xRobotsTagHeader": null,
+      "googleSubmittedStatus": "unknown",
+      "googleReadOrProcessedStatus": "unknown",
+      "childSitemapAvailabilityOrXmlValidity": "not checked",
+      "individualPageMembership": "not checked",
+      "indexStatusFromPresence": "not inferred"
+    },
+    "limitations": [
+      "Quota message does not establish HTTP404, noindex, a robots block or successful indexing.",
+      "HTTP200 and syntactically correct sitemap XML do not establish Google submission, processing or indexing.",
+      "No quota height, reset period or tomorrow-availability promise derived.",
+      "No sitemap submission/resubmission, index request, auth flow, new account or API workaround.",
+      "No live product/collection-page fetch and no sitemap-child pagination.",
+      "Read timestamps are source-read observations, not Google crawl or submission timestamps."
+    ],
+    "validation": {
+      "httpAndTypesObserved": true,
+      "rawSavedHashesMatchReads": true,
+      "wellFormedXmlParsedWithoutExternalEntitiesOrNetwork": true,
+      "rootNamespaceAnd123LocStructureChecked": true,
+      "exactRobotsSitemapReferenceMatchesReadIndex": true,
+      "twoOfficialQuotesVerifiedAgainstSavedMarkdown": true,
+      "independentDocumentationInterpretation": "passed; quota count/period/reset absent, days-to-weeks is crawling delay"
+    }
+  },
+  "metricoolDailyReused": {
+    "task": "LUXESTYLE_MORGEN_20261025_METRICOOL",
+    "recordedAfterQueriesUtc": "2026-10-25 07:07:00 UTC",
+    "timezone": "Europe/Zurich",
+    "identity": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "handoffRead": {
+      "readmeSha": "1588384aa63a0e5039603607e5805eed9bfcfaf8",
+      "dailyLogSha": "fcce4b4b2eaa5c60fa0939f27d97b55c54c690bf",
+      "no25DateBlockAtRead": true
+    },
+    "metricsScope": {
+      "from": "2026-10-18T00:00:00+02:00",
+      "to": "2026-10-24T23:59:59+02:00",
+      "firstReadCalendarDayZurich": "2026-10-25",
+      "discoveryQueries": 6,
+      "dataQueries": 6,
+      "retries": 0,
+      "salesInferences": false
+    },
+    "availableSelectedMetrics": {
+      "instagram": [
+        {
+          "fieldId": "IGEV05",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "views",
+          "metricLabel": "Instagram Evolution > Views",
+          "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV38",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 38,
+          "metricName": "postsInteractions",
+          "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "tiktok": [
+        {
+          "fieldId": "TKEV02",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "views",
+          "metricLabel": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV06",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "facebook": [
+        {
+          "fieldId": "FBEV49",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 49,
+          "metricName": "pageMediaView",
+          "metricLabel": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "FBEV34",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 34,
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "threads": [
+        {
+          "fieldId": "THEV06",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "THEV05",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "pinterest": [
+        {
+          "fieldId": "PIEV01",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 1,
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV04",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 4,
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "youtube": [
+        {
+          "fieldId": "YTEV02",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "videoViews",
+          "metricLabel": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV14",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 14,
+          "metricName": "visitedVideoLikes",
+          "metricLabel": "Youtube Evolution > Visited Videos Likes",
+          "description": "Number of likes of the visited videos",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV16",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 16,
+          "metricName": "visitedVideoComments",
+          "metricLabel": "Youtube Evolution > Visited Videos Comments",
+          "description": "Number of comments received by visited video",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV18",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 18,
+          "metricName": "visitedVideoVideoShares",
+          "metricLabel": "Youtube Evolution > Visited Videos Shares",
+          "description": "Number of shares of the visited videos",
+          "dataAggregation": "SUM"
+        }
+      ]
+    },
+    "channelResults": {
+      "instagram": {
+        "isError": false,
+        "rows": [
+          [
+            "255.0",
+            "2.0",
+            "20261021"
+          ],
+          [
+            "292.0",
+            "2.0",
+            "20261022"
+          ],
+          [
+            "282.0",
+            "1.0",
+            "20261023"
+          ],
+          [
+            "188.0",
+            null,
+            "20261024"
+          ],
+          [
+            "120.0",
+            "2.0",
+            "20261018"
+          ],
+          [
+            "263.0",
+            null,
+            "20261019"
+          ],
+          [
+            "233.0",
+            "3.0",
+            "20261020"
+          ]
+        ]
+      },
+      "tiktok": {
+        "isError": false,
+        "rows": [
+          [
+            "1076.0",
+            "2.0",
+            "20261021"
+          ],
+          [
+            "547.0",
+            "1.0",
+            "20261018"
+          ],
+          [
+            "1028.0",
+            "7.0",
+            "20261022"
+          ],
+          [
+            "809.0",
+            "5.0",
+            "20261023"
+          ],
+          [
+            "1036.0",
+            "6.0",
+            "20261019"
+          ],
+          [
+            "801.0",
+            "10.0",
+            "20261024"
+          ],
+          [
+            "1055.0",
+            "5.0",
+            "20261020"
+          ]
+        ]
+      },
+      "facebook": {
+        "isError": false,
+        "rows": [
+          [
+            "240.0",
+            null,
+            "20261021"
+          ],
+          [
+            "112.0",
+            null,
+            "20261022"
+          ],
+          [
+            "388.0",
+            "1.0",
+            "20261023"
+          ],
+          [
+            "187.0",
+            null,
+            "20261024"
+          ],
+          [
+            "72.0",
+            null,
+            "20261018"
+          ],
+          [
+            "93.0",
+            null,
+            "20261019"
+          ],
+          [
+            "106.0",
+            null,
+            "20261020"
+          ]
+        ]
+      },
+      "threads": {
+        "isError": false,
+        "rows": [
+          [
+            "1.0",
+            null,
+            "20261021"
+          ],
+          [
+            "3.0",
+            null,
+            "20261023"
+          ],
+          [
+            null,
+            "0.0",
+            "20261024"
+          ],
+          [
+            "1.0",
+            null,
+            "20261019"
+          ],
+          [
+            "2.0",
+            null,
+            "20261020"
+          ]
+        ]
+      },
+      "pinterest": {
+        "isError": false,
+        "rows": [
+          [
+            "1811.0",
+            "38.0",
+            "20261020"
+          ],
+          [
+            "8475.0",
+            "120.0",
+            "20261018"
+          ],
+          [
+            "4772.0",
+            "70.0",
+            "20261019"
+          ],
+          [
+            "1250.0",
+            "21.0",
+            "20261021"
+          ],
+          [
+            "1718.0",
+            "23.0",
+            "20261022"
+          ]
+        ]
+      },
+      "youtube": {
+        "isError": false,
+        "rows": [
+          [
+            "110.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "20261021"
+          ],
+          [
+            "263.0",
+            "3.0",
+            "0.0",
+            "0.0",
+            "20261022"
+          ],
+          [
+            "99.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "20261020"
+          ],
+          [
+            "55.0",
+            "1.0",
+            "0.0",
+            "2.0",
+            "20261018"
+          ],
+          [
+            "127.0",
+            "2.0",
+            "0.0",
+            "0.0",
+            "20261019"
+          ]
+        ]
+      }
+    },
+    "summary": {
+      "instagram": [
+        {
+          "id": "IGEV05",
+          "label": "Instagram Evolution > Views",
+          "sum": 1633,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023",
+            "20261024"
+          ],
+          "missingDays": []
+        },
+        {
+          "id": "IGEV38",
+          "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "sum": 10,
+          "presentDays": [
+            "20261018",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023"
+          ],
+          "missingDays": [
+            "20261019",
+            "20261024"
+          ]
+        }
+      ],
+      "tiktok": [
+        {
+          "id": "TKEV02",
+          "label": "TikTok Evolution > Views",
+          "sum": 6352,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023",
+            "20261024"
+          ],
+          "missingDays": []
+        },
+        {
+          "id": "TKEV06",
+          "label": "TikTok Evolution > Interactions",
+          "sum": 36,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023",
+            "20261024"
+          ],
+          "missingDays": []
+        }
+      ],
+      "facebook": [
+        {
+          "id": "FBEV49",
+          "label": "Facebook Evolution > Page Media View",
+          "sum": 1198,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023",
+            "20261024"
+          ],
+          "missingDays": []
+        },
+        {
+          "id": "FBEV34",
+          "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "sum": 1,
+          "presentDays": [
+            "20261023"
+          ],
+          "missingDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261024"
+          ]
+        }
+      ],
+      "threads": [
+        {
+          "id": "THEV06",
+          "label": "Threads Evolution > Post Views",
+          "sum": 7,
+          "presentDays": [
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261023"
+          ],
+          "missingDays": [
+            "20261018",
+            "20261022",
+            "20261024"
+          ]
+        },
+        {
+          "id": "THEV05",
+          "label": "Threads Evolution > Interactions",
+          "sum": 0,
+          "presentDays": [
+            "20261024"
+          ],
+          "missingDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023"
+          ]
+        }
+      ],
+      "pinterest": [
+        {
+          "id": "PIEV01",
+          "label": "Pinterest Evolution > Impressions in period",
+          "sum": 18026,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        },
+        {
+          "id": "PIEV04",
+          "label": "Pinterest Evolution > Interactions in period",
+          "sum": 272,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        }
+      ],
+      "youtube": [
+        {
+          "id": "YTEV02",
+          "label": "Youtube Evolution > Video Views",
+          "sum": 654,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        },
+        {
+          "id": "YTEV14",
+          "label": "Youtube Evolution > Visited Videos Likes",
+          "sum": 8,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        },
+        {
+          "id": "YTEV16",
+          "label": "Youtube Evolution > Visited Videos Comments",
+          "sum": 0,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        },
+        {
+          "id": "YTEV18",
+          "label": "Youtube Evolution > Visited Videos Shares",
+          "sum": 2,
+          "presentDays": [
+            "20261018",
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022"
+          ],
+          "missingDays": [
+            "20261023",
+            "20261024"
+          ]
+        }
+      ]
+    },
+    "noRemoteWrites": true
+  },
+  "klaviyoDailyReused": {
+    "taskId": "LUXESTYLE_DAILY_20261025_KLAVIYO",
+    "observedCompletedAtUtc": "2026-10-25 07:10:49 UTC",
+    "timezone": "Europe/Zurich",
+    "handoff": {
+      "branch": "codex/luxestyle-claude-handoff-20261018",
+      "readmeSha": "1588384aa63a0e5039603607e5805eed9bfcfaf8",
+      "dailyLogSha": "fcce4b4b2eaa5c60fa0939f27d97b55c54c690bf",
+      "day25BlockPresentAtRead": false
+    },
+    "account": {
+      "id": "XWqMAD",
+      "contact_information": {
+        "organization_name": "LuxeStyle CH",
+        "website_url": "https://luxestyle.ch"
+      },
+      "preferred_currency": "USD",
+      "timezone": "Europe/Zurich"
+    },
+    "metricDiscovery": {
+      "unfiltered": true,
+      "fields": [
+        "name"
+      ],
+      "placedOrderId": "W7XTVD",
+      "placedOrderName": "Placed Order",
+      "metricsNextPagePresent": false
+    },
+    "flowReport": {
+      "calls": 1,
+      "timeframe": {
+        "start": "2026-10-18T00:00:00+02:00",
+        "endExclusive": "2026-10-25T00:00:00+02:00",
+        "utcStart": "2026-10-17T22:00:00Z",
+        "utcEndExclusive": "2026-10-24T22:00:00Z",
+        "completedLocalDays": "18.–24.10.2026"
+      },
+      "flowIds": [
+        "Vse76a",
+        "XEGbTB",
+        "VbLQj6",
+        "RnTvsY"
+      ],
+      "reportId": "4e127fb6-6cd2-4a28-895e-349c6649787a",
+      "rows": [
+        {
+          "groupings": {
+            "flow_id": "XEGbTB",
+            "flow_name": "Abandoned Checkout · 1 Std",
+            "flow_message_id": "VfffLv",
+            "flow_message_name": "Abandoned Checkout - Email 1 (nach 1 Std)",
+            "send_channel": "email"
+          },
+          "statistics": {
+            "recipients": 1,
+            "delivered": 0,
+            "bounced": 1,
+            "opens_unique": 0,
+            "clicks_unique": 0,
+            "conversions": 0
+          },
+          "status": "live"
+        },
+        {
+          "groupings": {
+            "flow_id": "VbLQj6",
+            "flow_name": "Welcome Series",
+            "flow_message_id": "TTuuTS",
+            "flow_message_name": "Email #1",
+            "send_channel": "email"
+          },
+          "statistics": {
+            "recipients": 2,
+            "delivered": 2,
+            "bounced": 0,
+            "opens_unique": 1,
+            "clicks_unique": 0,
+            "conversions": 0
+          },
+          "status": "live"
+        },
+        {
+          "groupings": {
+            "flow_id": "RnTvsY",
+            "flow_name": "Post-Purchase · Order + Review",
+            "flow_message_id": "Tr6DXE",
+            "flow_message_name": "Review Request T+10d",
+            "send_channel": "email"
+          },
+          "statistics": {
+            "recipients": 4,
+            "delivered": 4,
+            "bounced": 0,
+            "opens_unique": 2,
+            "clicks_unique": 1,
+            "conversions": 0
+          },
+          "status": "live"
+        }
+      ],
+      "missingRowFlowIds": [
+        "Vse76a"
+      ],
+      "missingRowsMeaning": "unknown; never zero",
+      "valueStatisticsRequested": [],
+      "returnedValueStatistics": "ignored; USD account not mixed with Shopify CHF",
+      "shopOrderSync": "not evaluated by this report"
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "archived": false,
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": {
+          "condition_groups": [
+            {
+              "conditions": [
+                {
+                  "type": "profile-metric",
+                  "metric_id": "W7XTVD",
+                  "measurement": "count",
+                  "measurement_filter": {
+                    "type": "numeric",
+                    "operator": "equals",
+                    "value": 0
+                  },
+                  "timeframe_filter": {
+                    "type": "date",
+                    "operator": "flow-start"
+                  },
+                  "metric_filters": null
+                }
+              ]
+            }
+          ]
+        },
+        "entryActionId": "106812819",
+        "actions": [
+          {
+            "id": "106812819",
+            "type": "send-email",
+            "next": "106812817",
+            "status": "draft",
+            "delay": null,
+            "message": {
+              "id": "Yq4Puv",
+              "name": "Abandoned Checkout - Email 1",
+              "addTrackingParams": true,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "TTQSWH"
+            }
+          },
+          {
+            "id": "106812817",
+            "type": "time-delay",
+            "next": "106812826",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812826",
+            "type": "time-delay",
+            "next": "106812827",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812827",
+            "type": "send-email",
+            "next": "108024959",
+            "status": "draft",
+            "delay": null,
+            "message": {
+              "id": "VPmnEB",
+              "name": "Abandoned Checkout - Email 2",
+              "addTrackingParams": true,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "TDX7Ux"
+            }
+          },
+          {
+            "id": "108024959",
+            "type": "send-email",
+            "next": "108024886",
+            "status": "draft",
+            "delay": null,
+            "message": {
+              "id": "WNFHjV",
+              "name": "Email #3",
+              "addTrackingParams": false,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "WaQaDv"
+            }
+          },
+          {
+            "id": "108024886",
+            "type": "time-delay",
+            "next": null,
+            "delay": {
+              "unit": "days",
+              "value": 1,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          }
+        ]
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live",
+        "archived": false,
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": {
+          "condition_groups": [
+            {
+              "conditions": [
+                {
+                  "type": "profile-metric",
+                  "metric_id": "W7XTVD",
+                  "measurement": "count",
+                  "measurement_filter": {
+                    "type": "numeric",
+                    "operator": "equals",
+                    "value": 0
+                  },
+                  "timeframe_filter": {
+                    "type": "date",
+                    "operator": "flow-start"
+                  },
+                  "metric_filters": null
+                }
+              ]
+            }
+          ]
+        },
+        "entryActionId": "120053544",
+        "actions": [
+          {
+            "id": "120053544",
+            "type": "time-delay",
+            "next": "120053545",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053545",
+            "type": "send-email",
+            "next": "120053546",
+            "status": "live",
+            "delay": null,
+            "message": {
+              "id": "VfffLv",
+              "name": "Abandoned Checkout - Email 1 (nach 1 Std)",
+              "addTrackingParams": true,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "RfQt4V"
+            }
+          },
+          {
+            "id": "120053546",
+            "type": "time-delay",
+            "next": "120053547",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053547",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "delay": null,
+            "message": {
+              "id": "SPNjDp",
+              "name": "Abandoned Checkout - Email 2 (nach 24 Std, -10%)",
+              "addTrackingParams": true,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "RNefka"
+            }
+          }
+        ]
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "live",
+        "archived": false,
+        "triggerType": "Added to List",
+        "triggers": [
+          {
+            "type": "list",
+            "id": "T2VHfu"
+          }
+        ],
+        "profileFilter": null,
+        "entryActionId": "108029461",
+        "actions": [
+          {
+            "id": "108029461",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "delay": null,
+            "message": {
+              "id": "TTuuTS",
+              "name": "Email #1",
+              "addTrackingParams": false,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "VZnxDz"
+            }
+          }
+        ]
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "live",
+        "archived": false,
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "W7XTVD",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": null,
+        "entryActionId": "107500622",
+        "actions": [
+          {
+            "id": "107500622",
+            "type": "send-email",
+            "next": "107500775",
+            "status": "draft",
+            "delay": null,
+            "message": {
+              "id": "Y3pKip",
+              "name": "Order Confirmation",
+              "addTrackingParams": false,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "TXYDrh"
+            }
+          },
+          {
+            "id": "107500775",
+            "type": "time-delay",
+            "next": "107500830",
+            "delay": {
+              "unit": "days",
+              "value": 21,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "107500830",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "delay": null,
+            "message": {
+              "id": "Tr6DXE",
+              "name": "Review Request T+10d",
+              "addTrackingParams": false,
+              "smartSending": true,
+              "transactional": false,
+              "templateId": "V4KY2g"
+            }
+          }
+        ]
+      }
+    ],
+    "capture": {
+      "formsApi": {
+        "requestedPageSize": 5,
+        "rows": 0,
+        "nextPagePresent": false,
+        "meaning": "successful empty API response; not proof that no public capture exists"
+      },
+      "list": {
+        "id": "T2VHfu",
+        "name": "Newsletter Subscribers",
+        "opt_in_process": "single_opt_in",
+        "profile_count": 5,
+        "updated": "2026-05-22T02:26:23+00:00",
+        "triggers": [
+          {
+            "id": "UKjAsV",
+            "name": "E-Mail Welcome-Serie",
+            "status": "draft",
+            "trigger_type": "Added to List"
+          },
+          {
+            "id": "VbLQj6",
+            "name": "Welcome Series",
+            "status": "live",
+            "trigger_type": "Added to List"
+          },
+          {
+            "id": "X4kYd7",
+            "name": "Welcome Series · EN/US",
+            "status": "draft",
+            "trigger_type": "Added to List"
+          }
+        ]
+      },
+      "publicHtml": {
+        "source": "../products/PUBLIC-CHECK.json",
+        "rootProductAgentObservedAtUtc": "2026-10-25T07:07:02Z",
+        "projector": {
+          "publicKeyXWqMAD": true,
+          "listIdT2VHfu": true,
+          "newsletterMarker": true
+        },
+        "diffuser": {
+          "publicKeyXWqMAD": true,
+          "listIdT2VHfu": true,
+          "newsletterMarker": true
+        },
+        "submissionOrConsentOrDeliveryTest": "not performed"
+      }
+    },
+    "sendingDomains": [
+      {
+        "id": "3438728",
+        "domain": "send.luxestyle.ch",
+        "status": "pending",
+        "updated_at": "2026-10-17T13:59:15+00:00"
+      }
+    ],
+    "bounceDiagnostic": {
+      "newSpecificFinding": "one recovery bounce in report required narrow diagnostic",
+      "additionalReportCalls": 0,
+      "smallEventSample": {
+        "metricName": "Bounced Email",
+        "metricId": "YvpPUe",
+        "pageSize": 3,
+        "deliveredRows": 1,
+        "nextPagePresent": false,
+        "timeframeSameAsReport": true
+      },
+      "matchedEvent": {
+        "id": "7xzSveBZUUi",
+        "datetimeUtc": "2026-10-19T23:00:41+00:00",
+        "flowId": "XEGbTB",
+        "messageId": "VfffLv",
+        "type": "Hard",
+        "category": "Invalid Address",
+        "smtpCode": "550 5.1.1",
+        "reason": "Recipient address rejected: Address does not exist",
+        "addExclusion": true,
+        "recipientAddress": "not exported"
+      },
+      "limits": "one observed event, not population diagnosis; no profile/suppression-state lookup or resend; not evidence of DNS causing this bounce"
+    },
+    "singleImprovement": {
+      "flowId": "VbLQj6",
+      "messageId": "TTuuTS",
+      "actionId": "108029461",
+      "field": "add_tracking_params",
+      "before": false,
+      "proposed": true,
+      "status": "OWNER_REVIEW_ONLY_NOT_APPLIED",
+      "purpose": "make subsequent welcome link clicks attributable; no promised sale",
+      "preconditions": [
+        "check account UTM policy and current message links",
+        "avoid duplicate query parameters",
+        "preview actual final destinations and preserve all other message/flow fields"
+      ],
+      "excludedChanges": [
+        "activate old checkout flow",
+        "activate draft welcomes",
+        "change discounts, sender domain, trigger, delay, consent or template",
+        "resend or unsuppress invalid addresses"
+      ],
+      "jsonPointer": "/data/attributes/definition/add_tracking_params",
+      "responseSource": "WELCOME-MESSAGE-BEFORE.json",
+      "snapshotSha256": "9b77800eb7d3d4be6449613af905013e8f6402949309e28d08a1f8b6528ee1ef",
+      "reviewPatch": "WELCOME-TRACKING-REVIEW-PATCH.json",
+      "channel": "Email",
+      "templateId": "VZnxDz",
+      "globalOpenOrClickTrackingChange": false,
+      "actualUtmKeysValues": "unknown"
+    },
+    "writes": {
+      "klaviyo": 0,
+      "dns": 0,
+      "shop": 0,
+      "customersContacted": 0,
+      "emailsSent": 0
+    }
+  },
+  "menuMappingFile": "MENUE-NATIV-ABGLEICH-20261025.json",
+  "menuMappingSha256": "5efdd29a3306531de695695da3d05b5d776aef80914c1aa8cf0ee8aa9610e6bc",
+  "socialWrites": [],
+  "shopSettingsWrites": [],
+  "newMasterMP4": false,
+  "nativeMenuSourceRead": {
+    "id": "gid://shopify/Menu/310224093569",
+    "handle": "main-menu",
+    "topLimit": 50,
+    "topReturned": 13,
+    "totalNativeItems": 218,
+    "uniqueNormalizedTargets": 195,
+    "nativeSchemaTypesRead": [
+      "QueryRoot",
+      "Menu",
+      "MenuItem"
+    ],
+    "nativeQueryValidatedAtExecution": true,
+    "localCliValidationUnavailable": "missing assets directory; no dummy assets or retries",
+    "nativeMenuUpdated": false
+  }
+}
