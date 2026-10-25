@@ -1,0 +1,4731 @@
+{
+  "recordType": "creative_video_audit_NOT_a_master_publication_ledger",
+  "taskId": "LUXESTYLE_VIDEO_QUALITAET_20261025",
+  "brandId": 6227837,
+  "timezone": "Europe/Zurich",
+  "auditDates": [
+    "2026-10-24",
+    "2026-10-25"
+  ],
+  "scope": {
+    "localPathsInitiallyInventoried": 63,
+    "localHashGroupsIncludingInvalidFile": 50,
+    "localPlayableUniqueFiles": 49,
+    "additionalDownloadedMedia": 14,
+    "totalPlayableUniqueFiles": 63,
+    "historicalSocialExportFiles": 17,
+    "uniqueHistoricalSocialVideoPayloads": 9,
+    "otherLocalSourcesAndIntermediates": 32,
+    "invalid114ByteNonvideoResponses": 1,
+    "entirePlatformHistory": "unknown",
+    "historical105FileRepoIndex": "hint only, not all loaded or reviewed"
+  },
+  "method": "time-sampled decoded original pictures over duration; identical encoded video payloads grouped; no continuous real-time playback or heard audio approval",
+  "noNewMasterMp4": true,
+  "newSocialWrites": 0,
+  "rows": [
+    {
+      "assetId": "L00",
+      "sha256": "46fd14d827e653fd463d8a08a8c2dacf28343e14475e7f1ed4888972824404bd",
+      "bytes": 7025336,
+      "role": "historical_brand_or_jewellery_export_not_current_publish_proof",
+      "durationSeconds": 26.4,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "792",
+        "bit_rate": "1926270"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "96000",
+          "channels": 2,
+          "duration": "26.400000",
+          "bit_rate": "193597"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/media/luxestyle-brand-30s-text.mp4"
+      ],
+      "historicalRepoHints": [
+        {
+          "path": "reels/luxestyle-brand-30s-text.mp4",
+          "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/reels/luxestyle-brand-30s-text.mp4",
+          "currentReachability": "not_verified_in_this_audit"
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 72,
+          "seconds": 2.4
+        },
+        {
+          "frame": 144,
+          "seconds": 4.8
+        },
+        {
+          "frame": 216,
+          "seconds": 7.2
+        },
+        {
+          "frame": 288,
+          "seconds": 9.6
+        },
+        {
+          "frame": 360,
+          "seconds": 12.0
+        },
+        {
+          "frame": 431,
+          "seconds": 14.366667
+        },
+        {
+          "frame": 503,
+          "seconds": 16.766667
+        },
+        {
+          "frame": 575,
+          "seconds": 19.166667
+        },
+        {
+          "frame": 647,
+          "seconds": 21.566667
+        },
+        {
+          "frame": 719,
+          "seconds": 23.966667
+        },
+        {
+          "frame": 742,
+          "seconds": 24.733333
+        },
+        {
+          "frame": 791,
+          "seconds": 26.366667
+        }
+      ],
+      "videoPacketHash": "SHA256=d6e60abadc6b8dafdc4f1c5d31bfc01ad48be8249b5ff5fd8e63ac2ca523b061",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L01",
+      "sha256": "d9c89bdaf76f5bf9b72f1748c3333c85d4cda919c8e955411dbdfdd07c8fcec7",
+      "bytes": 12969078,
+      "role": "historical_brand_or_jewellery_export_not_current_publish_proof",
+      "durationSeconds": 52.467,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "1574",
+        "bit_rate": "1774797"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "96000",
+          "channels": 2,
+          "duration": "52.467000",
+          "bit_rate": "193951"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/media/luxestyle-brand-60s-text.mp4"
+      ],
+      "historicalRepoHints": [
+        {
+          "path": "reels/luxestyle-brand-60s-text.mp4",
+          "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/reels/luxestyle-brand-60s-text.mp4",
+          "currentReachability": "not_verified_in_this_audit"
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 143,
+          "seconds": 4.766667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 429,
+          "seconds": 14.3
+        },
+        {
+          "frame": 572,
+          "seconds": 19.066667
+        },
+        {
+          "frame": 715,
+          "seconds": 23.833333
+        },
+        {
+          "frame": 858,
+          "seconds": 28.6
+        },
+        {
+          "frame": 1001,
+          "seconds": 33.366667
+        },
+        {
+          "frame": 1144,
+          "seconds": 38.133333
+        },
+        {
+          "frame": 1287,
+          "seconds": 42.9
+        },
+        {
+          "frame": 1430,
+          "seconds": 47.666667
+        },
+        {
+          "frame": 1475,
+          "seconds": 49.166667
+        },
+        {
+          "frame": 1573,
+          "seconds": 52.433333
+        }
+      ],
+      "videoPacketHash": "SHA256=7b1c4d427d724a691201622db3a9433f1bdd9c8e451671d659d8be95bc5e1e87",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L02",
+      "sha256": "67ef47cb6b18452e02018fc2315058da29bcf90625fbd72c929b8116921817c2",
+      "bytes": 2795457,
+      "role": "historical_brand_or_jewellery_export_not_current_publish_proof",
+      "durationSeconds": 17.6,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "528",
+        "bit_rate": "1069212"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "96000",
+          "channels": 1,
+          "duration": "17.600000",
+          "bit_rate": "192208"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/media/luxestyle-schmuck-tiktok.mp4"
+      ],
+      "historicalRepoHints": [
+        {
+          "path": "reels/luxestyle-schmuck-tiktok.mp4",
+          "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/reels/luxestyle-schmuck-tiktok.mp4",
+          "currentReachability": "not_verified_in_this_audit"
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 48,
+          "seconds": 1.6
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 96,
+          "seconds": 3.2
+        },
+        {
+          "frame": 144,
+          "seconds": 4.8
+        },
+        {
+          "frame": 192,
+          "seconds": 6.4
+        },
+        {
+          "frame": 240,
+          "seconds": 8.0
+        },
+        {
+          "frame": 287,
+          "seconds": 9.566667
+        },
+        {
+          "frame": 335,
+          "seconds": 11.166667
+        },
+        {
+          "frame": 383,
+          "seconds": 12.766667
+        },
+        {
+          "frame": 431,
+          "seconds": 14.366667
+        },
+        {
+          "frame": 479,
+          "seconds": 15.966667
+        },
+        {
+          "frame": 494,
+          "seconds": 16.466667
+        },
+        {
+          "frame": 527,
+          "seconds": 17.566667
+        }
+      ],
+      "videoPacketHash": "SHA256=7035c79ef33caf20f7c938fbddb8d3f36af3bd3d6cd5621b65f6945e66b6192c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L03",
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "bytes": 3679836,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 27.96,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "699",
+        "bit_rate": "949565"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "27.887007",
+          "bit_rate": "96293"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1477820492730732544.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        15.0,
+        17.0,
+        19.0,
+        21.0,
+        23.0,
+        25.0,
+        27.84
+      ]
+    },
+    {
+      "assetId": "L04",
+      "sha256": "0d59f5cafd8b3b7b6f3562c799239c99faf2b42ce45fbd425c63bb7f0c19c27c",
+      "bytes": 4821121,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "2302800"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "258552"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/owner-review-20261019/existing-projector-post-399397274.mp4",
+        "/workspace/luxestyle-review/reels/luxestyle-sternenprojektor-15s-hochdeutsch.mp4",
+        "/workspace/luxestyle-review/video-edit/batch2/metricool-uploads/luxestyle-sternenprojektor-15s.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=910606b18335364ae9dc02d173c990da65c3e2dc003b1433c4bed3ae633ee714",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L05",
+      "sha256": "59e9763e7862219ab1911d00aa4ae11f0f68ef9c6fdd3d5fcd1c91c6f83e6019",
+      "bytes": 10885582,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "4081338"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "263374"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s-details-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=1b2a3e200b72cbc0d46fbde2a7f0709923c1232d5cfb61251b28d8986f868337",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L06",
+      "sha256": "75c5e93033230a2d11ed0e5efbf824d5fc78a886c8fac0b9853882c6ade9b49c",
+      "bytes": 14570911,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "5555520"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "263401"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=2168f37a0eabebf43e6dffd6263aa965d0b5fafad58d6cf528b97174c954c93c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L07",
+      "sha256": "c815c7901d5fea21e704551078a4a2e81d0e615432ae8b6680cca694c354ac55",
+      "bytes": 14564333,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "5555520"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "260772"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s-voice-music-v2.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=2168f37a0eabebf43e6dffd6263aa965d0b5fafad58d6cf528b97174c954c93c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L08",
+      "sha256": "9bc48ccbaa870502b230d576c66e5843b41a1697b9467132922a2c424fd46397",
+      "bytes": 14574463,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "5555520"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "264820"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s-voice-music-v3.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=2168f37a0eabebf43e6dffd6263aa965d0b5fafad58d6cf528b97174c954c93c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L09",
+      "sha256": "6e11ba7016070bac2492868ef49ae56f63359eaaf38d58c3807930ae4f95d609",
+      "bytes": 14401114,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "5555520"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "195554"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s-voice.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=2168f37a0eabebf43e6dffd6263aa965d0b5fafad58d6cf528b97174c954c93c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L10",
+      "sha256": "8d7819ee2b22b1dc87bbba5de0b27f467bb20e112395ca960800fd10ac259e05",
+      "bytes": 14392317,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "5555520"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "192039"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-business-tasche-20s.mp4",
+        "/workspace/luxestyle-review/video-edit/output/luxestyle-business-tasche-20s.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=2168f37a0eabebf43e6dffd6263aa965d0b5fafad58d6cf528b97174c954c93c",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L11",
+      "sha256": "d727ddedf84379e507d88500ab30cb2c3ed41046858afe9e75f702aa2853adfe",
+      "bytes": 2735288,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1188964"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "259943"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s-details-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=81e2ff2a55bae55ca74e6f58cf5e9f5c4e970721fdefccc26ac3e89ff4fc52e9",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L12",
+      "sha256": "a15ac357a1906cee2ae54c5af80561acb70e72586ab866ddba7dd40f3486bf14",
+      "bytes": 2553725,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1095124"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "256930"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=6c4d379a95dc7bae66e073a62a47f50ddb3bf474b48fa42dc4245a99fcd41237",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L13",
+      "sha256": "8eecfd2e611c07ce5839596075c08957c9f7c901d92730d23723d465614f6c6b",
+      "bytes": 2551413,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1095124"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "255699"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s-voice-music-v2.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=6c4d379a95dc7bae66e073a62a47f50ddb3bf474b48fa42dc4245a99fcd41237",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L14",
+      "sha256": "fa991f0da1921d61fa53dfdabc2b0cf7d3cc733eee687cbaeadfcc2c0e2d441a",
+      "bytes": 2553326,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1095124"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "256718"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s-voice-music-v3.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=6c4d379a95dc7bae66e073a62a47f50ddb3bf474b48fa42dc4245a99fcd41237",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L15",
+      "sha256": "706b8263ad0dd6876fa0ebbb675ec02ec0dbc77a4ca28ca1e89a630118999973",
+      "bytes": 2444614,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1095124"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "198820"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s-voice.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=6c4d379a95dc7bae66e073a62a47f50ddb3bf474b48fa42dc4245a99fcd41237",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L16",
+      "sha256": "e143bab8bd135b0eafdbc7f2cc3e0ba856aa81cbe48ed792289ffb64477c6366",
+      "bytes": 2431390,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1095124"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "191777"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-hasenwecker-15s.mp4",
+        "/workspace/luxestyle-review/video-edit/output/luxestyle-hasenwecker-15s.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 41,
+          "seconds": 1.366667
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 82,
+          "seconds": 2.733333
+        },
+        {
+          "frame": 122,
+          "seconds": 4.066667
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 204,
+          "seconds": 6.8
+        },
+        {
+          "frame": 245,
+          "seconds": 8.166667
+        },
+        {
+          "frame": 286,
+          "seconds": 9.533333
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 367,
+          "seconds": 12.233333
+        },
+        {
+          "frame": 408,
+          "seconds": 13.6
+        },
+        {
+          "frame": 421,
+          "seconds": 14.033333
+        },
+        {
+          "frame": 449,
+          "seconds": 14.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=6c4d379a95dc7bae66e073a62a47f50ddb3bf474b48fa42dc4245a99fcd41237",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L17",
+      "sha256": "4e67e3a28acf6a70c6d602bb30e460f57c26776d39d1adf0f4518a9b46498e67",
+      "bytes": 6586780,
+      "role": "local_social_export_or_historical_variant_not_current_publish_proof",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "2362105"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "20.000000",
+          "bit_rate": "262996"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/reels/luxestyle-led-hundegeschirr-20s-hochdeutsch.mp4",
+        "/workspace/luxestyle-review/video-edit/batch2/metricool-uploads/luxestyle-led-hundegeschirr-20s.mp4",
+        "/workspace/luxestyle-review/video-edit/batch2/qa-audio-input/luxestyle-led-hundegeschirr-20s-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "historical_social_export",
+      "sampleFrames": [
+        {
+          "frame": 0,
+          "seconds": 0.0
+        },
+        {
+          "frame": 15,
+          "seconds": 0.5
+        },
+        {
+          "frame": 30,
+          "seconds": 1.0
+        },
+        {
+          "frame": 54,
+          "seconds": 1.8
+        },
+        {
+          "frame": 60,
+          "seconds": 2.0
+        },
+        {
+          "frame": 109,
+          "seconds": 3.633333
+        },
+        {
+          "frame": 163,
+          "seconds": 5.433333
+        },
+        {
+          "frame": 218,
+          "seconds": 7.266667
+        },
+        {
+          "frame": 272,
+          "seconds": 9.066667
+        },
+        {
+          "frame": 327,
+          "seconds": 10.9
+        },
+        {
+          "frame": 381,
+          "seconds": 12.7
+        },
+        {
+          "frame": 436,
+          "seconds": 14.533333
+        },
+        {
+          "frame": 490,
+          "seconds": 16.333333
+        },
+        {
+          "frame": 545,
+          "seconds": 18.166667
+        },
+        {
+          "frame": 562,
+          "seconds": 18.733333
+        },
+        {
+          "frame": 599,
+          "seconds": 19.966667
+        }
+      ],
+      "videoPacketHash": "SHA256=9a0933c86689c436739ad24d6b214224592964e6eb5db78aa8ad7081f46c5685",
+      "loudnessMeasurement": null,
+      "sameVideoPayloadDeduplication": true
+    },
+    {
+      "assetId": "L18",
+      "sha256": "2f6df6c721e5416f5aabf528f40579c0cc0a02caf10a07771f06c28236623319",
+      "bytes": 943313,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 5.208333,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 720,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "nb_frames": "125",
+        "bit_rate": "1446864"
+      },
+      "audioStreams": [],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/seo-cleanup-next-20261023/video-review/diffuser-source.mp4",
+        "/workspace/luxestyle-review/video-edit/source/holzoptik-original.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.088
+      ],
+      "currentProductComparison": "Current 25Oct diffuser featured image differs visibly in case form/finish; exact matching variant unknown. Do not use as current product proof."
+    },
+    {
+      "assetId": "L19",
+      "sha256": "99e2ac1b51bc6ae13697c1f891fc5d729d75b99c7c6c5bcad25393d738520494",
+      "bytes": 5913270,
+      "role": "local_picture_only_edit_intermediate",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "2362105"
+      },
+      "audioStreams": [],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/output/luxestyle-led-hundegeschirr-20s-picture.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        15.0,
+        17.0,
+        19.0,
+        19.88
+      ]
+    },
+    {
+      "assetId": "L20",
+      "sha256": "263a989d563b5f3278730ab30bd03e5b585329e9ed69b6497de67681650bb1b3",
+      "bytes": 4324021,
+      "role": "local_picture_only_edit_intermediate",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "2302800"
+      },
+      "audioStreams": [],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/output/luxestyle-sternenprojektor-15s-picture.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        14.88
+      ]
+    },
+    {
+      "assetId": "L21",
+      "sha256": "81eb9f44e0b1141fba77fd3d7f48da687c93e0db1450edae79544faf4c2931d1",
+      "bytes": 3092995,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "448",
+        "bit_rate": "1387317"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "48000",
+          "channels": 2,
+          "duration": "15.000000",
+          "bit_rate": "258552"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/qa-audio-input/luxestyle-sternenprojektor-15s-hochdeutsch.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        14.88
+      ]
+    },
+    {
+      "assetId": "L22",
+      "sha256": "b2129bf69b68c6b1538b981d305d0bad2028b9ca6625f4e5bd65e3d0636bc3d6",
+      "bytes": 7355569,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 59.456009,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "1486",
+        "bit_rate": "886973"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "59.456009",
+          "bit_rate": "96016"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/source/cj-1621444648612933632.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1621444648612933632.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        124,
+        248,
+        371,
+        495,
+        619,
+        742,
+        866,
+        990,
+        1114,
+        1238,
+        1361,
+        1485
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        4.96,
+        9.92,
+        14.84,
+        19.8,
+        24.76,
+        29.68,
+        34.64,
+        39.6,
+        44.56,
+        49.52,
+        54.44,
+        59.4
+      ],
+      "observedMotif": "Olivfarbenes Hundegeschirr mit aufgesetztem Lichtmodul",
+      "findings": "0–14.84 s sehr dunkle Gassibilder; 19.80–44.56 s sichtbare Montage-, Licht- und Gurtbedienung; 49.52 s SECURITY-Aufnäher.",
+      "claudeAction": "Dunklen langen Einstieg nicht als Hook wählen. Montage-/Bedienungskandidaten um19.80/24.76/39.60 s am Original genauer prüfen; genaue Farbe und mitgeliefertes Modul abgleichen. Nachtwirkung ist kein Sicherheitsnachweis."
+    },
+    {
+      "assetId": "L23",
+      "sha256": "db8103836c24bf7f125277231400d7e9bc3bcb4a258b0b779372accad83953f2",
+      "bytes": 1009531,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 9.799002,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "244",
+        "bit_rate": "722100"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "9.799002",
+          "bit_rate": "96621"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/source/cj-1658406710341545984.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1658406710341545984.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        20,
+        25,
+        40,
+        50,
+        61,
+        81,
+        101,
+        122,
+        142,
+        162,
+        182,
+        202,
+        223,
+        243
+      ],
+      "sampledSeconds": [
+        0.0,
+        0.8,
+        1.0,
+        1.6,
+        2.0,
+        2.44,
+        3.24,
+        4.04,
+        4.88,
+        5.68,
+        6.48,
+        7.28,
+        8.08,
+        8.92,
+        9.72
+      ],
+      "observedMotif": "Kleines hellgraues Gehäuse mit abgenommener Haube",
+      "findings": "0–9.72 s bläulicher Tisch, mehrere Gehäusewinkel; kaum nachvollziehbare Anwendung.",
+      "claudeAction": "Keinen Funktionsclaim aus Form oder Dateiname ableiten. Für Premium fehlen ein echtes Nutzungsmoment, wärmeres kontrolliertes Licht und eindeutig bestätigte Produktzuordnung."
+    },
+    {
+      "assetId": "L24",
+      "sha256": "a51cc801c1e734e929ea1dfd24bf9ec810f116775104c0e4c7d168595a830284",
+      "bytes": 1819437,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 16.207007,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "405",
+        "bit_rate": "794448"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "16.207007",
+          "bit_rate": "96307"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/source/cj-1716405657424891904.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1716405657424891904.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        34,
+        50,
+        67,
+        101,
+        135,
+        168,
+        202,
+        236,
+        269,
+        303,
+        337,
+        370,
+        404
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.36,
+        2.0,
+        2.68,
+        4.04,
+        5.4,
+        6.72,
+        8.08,
+        9.44,
+        10.76,
+        12.12,
+        13.48,
+        14.8,
+        16.16
+      ],
+      "observedMotif": "Verschiedene farbige und naturfarbene Stapeltürme",
+      "findings": "0–2 s stehendes Motiv, 2.68/4.04 s Ringe in der Hand, 8.08 s Ringdetail; englische Schreibschrift liegt im Bild.",
+      "claudeAction": "Als Referenz für einen ruhigen Detaildreh brauchbar; verschiedene gezeigte Sets/Farben nicht einer einzelnen Variante zuschreiben. Fremden Text nur mit rechtlich erlaubter Bearbeitung ersetzen; keine Material-/Entwicklungs-/Sicherheitsversprechen."
+    },
+    {
+      "assetId": "L25",
+      "sha256": "35d0e17a36ca219db42a67bd60cdef2730bee1d2157d47dbe038836b017b806c",
+      "bytes": 2183826,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 18.785011,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "469",
+        "bit_rate": "827365"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "18.785011",
+          "bit_rate": "96219"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/source/cj-1719534882407329792.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1719534882407329792.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        39,
+        50,
+        78,
+        117,
+        156,
+        195,
+        234,
+        273,
+        312,
+        351,
+        390,
+        429,
+        468
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.56,
+        2.0,
+        3.12,
+        4.68,
+        6.24,
+        7.8,
+        9.36,
+        10.92,
+        12.48,
+        14.04,
+        15.6,
+        17.16,
+        18.72
+      ],
+      "observedMotif": "Olivfarbene Schultertasche mit seitlichem Flaschenfach",
+      "findings": "0–3.12 s Tragebild; 4.68–17.16 s Fächer/Öffnen/Trageriemen. Goldfarbenes Logo und unruhiger Ladenhintergrund sichtbar.",
+      "claudeAction": "Tatsächliche Handlungsfolge ist stärker als ein Fotozoom. Kandidaten um7.80/9.36/14.04 s gezielt prüfen; keinen Flaschen-/Tablet-Lieferumfang behaupten, Hintergründe und Outfit bei Ergänzungsdreh vereinheitlichen."
+    },
+    {
+      "assetId": "L26",
+      "sha256": "e416c1a63a021eb01f9aaa6d450a21a0b3df71a45cb2b1900ea108e8c4f0f963",
+      "bytes": 1720693,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 14.56,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "364",
+        "bit_rate": "841291"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "14.536009",
+          "bit_rate": "96479"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/batch2/source/cj-1738821481179652096.mp4",
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1738821481179652096.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        30,
+        50,
+        60,
+        91,
+        121,
+        151,
+        182,
+        212,
+        242,
+        272,
+        302,
+        333,
+        363
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.2,
+        2.0,
+        2.4,
+        3.64,
+        4.84,
+        6.04,
+        7.28,
+        8.48,
+        9.68,
+        10.88,
+        12.08,
+        13.32,
+        14.52
+      ],
+      "observedMotif": "Blaue Schmucknägel im Display-Etui",
+      "findings": "0–14.52 s fast gleiches Etui aus wechselnden Winkeln; XS Advanced Customization sichtbar.",
+      "claudeAction": "Keine Anwendungsdemonstration; wiederholte Etuischwenks nicht zu neuem Premium-Master aufblasen. Als Form-/Farb-Referenz ablegen, Zuordnung und Markenrechte separat klären."
+    },
+    {
+      "assetId": "L27",
+      "sha256": "7c1779e23a8aa5dcfb3353180187930320fda231b5e962f57b162088cbaafcfc",
+      "bytes": 2731262,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 22.976009,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "574",
+        "bit_rate": "849008"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "22.976009",
+          "bit_rate": "96049"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1407934219342188544.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        48,
+        50,
+        96,
+        143,
+        191,
+        239,
+        286,
+        334,
+        382,
+        430,
+        478,
+        525,
+        573
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.92,
+        2.0,
+        3.84,
+        5.72,
+        7.64,
+        9.56,
+        11.44,
+        13.36,
+        15.28,
+        17.2,
+        19.12,
+        21.0,
+        22.92
+      ],
+      "observedMotif": "Rotes/blaues Hundegeschirr an Husky",
+      "findings": "0–9.56 s Anlegen und Karabiner, 13.36–17.20 s Gehen, 19.12–22.92 s helle Streifen in Dunkelheit.",
+      "claudeAction": "Keinesfalls mit olivfarbenem oder neongrünem LED-Geschirr gleichsetzen. Helle Nachtstreifen belegen keine elektrische LED-Funktion. Nur bei exakter Variantenübereinstimmung Handlungsreferenz nutzen."
+    },
+    {
+      "assetId": "L28",
+      "sha256": "77d758006b95c7f445028ee989c6f856f35468acf66ea27dc9b705a04528e43b",
+      "bytes": 7245810,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 58.645011,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "1466",
+        "bit_rate": "885707"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "58.645011",
+          "bit_rate": "96013"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1408332641408782336.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        122,
+        244,
+        366,
+        488,
+        610,
+        732,
+        855,
+        977,
+        1099,
+        1221,
+        1343,
+        1465
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        4.88,
+        9.76,
+        14.64,
+        19.52,
+        24.4,
+        29.28,
+        34.2,
+        39.08,
+        43.96,
+        48.84,
+        53.72,
+        58.6
+      ],
+      "observedMotif": "Orangefarbenes aufblasbares Schwimm-/Packobjekt am Fluss",
+      "findings": "0–19.52 s Packen/Tragen, 29.28–39.08 s Aufblasen, 48.84–53.72 s im Wasser; letzter Frame58.60 s schwarz.",
+      "claudeAction": "Kein Rettungs-/Sicherheits-/Wasserdichtigkeitsversprechen aus der Szene. Schluss-Schwarz und lange Vorbereitung würden Tempo schwächen. Für den Projektor-Master inhaltlich unpassend, keine Ersatzquelle."
+    },
+    {
+      "assetId": "L29",
+      "sha256": "05fb49513add8f75b3e376aeaf3ba7a899ea75c1b3473c375d27224d86ef235f",
+      "bytes": 1866717,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 17.515011,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "437",
+        "bit_rate": "750428"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "17.515011",
+          "bit_rate": "96090"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1570981177232732160.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        36,
+        50,
+        73,
+        109,
+        145,
+        182,
+        218,
+        254,
+        291,
+        327,
+        363,
+        400,
+        436
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.44,
+        2.0,
+        2.92,
+        4.36,
+        5.8,
+        7.28,
+        8.72,
+        10.16,
+        11.64,
+        13.08,
+        14.52,
+        16.0,
+        17.44
+      ],
+      "observedMotif": "Weisser Projektor mit separaten runden Motivscheiben",
+      "findings": "0–4.36 s Scheiben-/Gerätebedienung, 7.28–17.44 s verschiedene Raumprojektionen.",
+      "claudeAction": "Andere Datei/andere Geräteansicht als der offene27.96-s-Projektor-Master. Keine Szenen oder Motivsets mischen, bevor Produkt und Variante exakt belegt sind. Wirkungsvoller Raumshot ist keine Lizenz- oder Ausstattungsgarantie."
+    },
+    {
+      "assetId": "L30",
+      "sha256": "19896f660a0409c5e30346120723e41bd0a641be0ad579a749ff5c56be022af6",
+      "bytes": 800675,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 7.12,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "178",
+        "bit_rate": "794130"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "7.105011",
+          "bit_rate": "96745"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1583646011715760128.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        15,
+        25,
+        30,
+        44,
+        50,
+        59,
+        74,
+        88,
+        103,
+        118,
+        133,
+        148,
+        162,
+        177
+      ],
+      "sampledSeconds": [
+        0.0,
+        0.6,
+        1.0,
+        1.2,
+        1.76,
+        2.0,
+        2.36,
+        2.96,
+        3.52,
+        4.12,
+        4.72,
+        5.32,
+        5.92,
+        6.48,
+        7.08
+      ],
+      "observedMotif": "Roséfarbenes Handgerät mit abnehmbarer Hülse",
+      "findings": "0–1.76 s auf blau kariertem Stoff; 2–4.12 s Hand nimmt Hülse ab; 6.48/7.08 s geöffnete Mechanik.",
+      "claudeAction": "Hintergrund und Farbtemperatur sind unruhig; genaue Funktion bleibt offen. Für neuen Dreh neutralen Hintergrund, ganze Hand und reale bestätigte Anwendung verlangen; keinen Wärme-/Leistungsclaim erfinden."
+    },
+    {
+      "assetId": "L31",
+      "sha256": "e5d0c506eb90465f2828f203283b4f93b01ab5a88c82f3d42b6b3586fe06d679",
+      "bytes": 2609064,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 23.243878,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "581",
+        "bit_rate": "795072"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "23.129887",
+          "bit_rate": "96324"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1630798896974802944.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        48,
+        50,
+        97,
+        145,
+        193,
+        242,
+        290,
+        338,
+        387,
+        435,
+        483,
+        532,
+        580
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.92,
+        2.0,
+        3.88,
+        5.8,
+        7.72,
+        9.68,
+        11.6,
+        13.52,
+        15.48,
+        17.4,
+        19.32,
+        21.28,
+        23.2
+      ],
+      "observedMotif": "Weisses Modellauto mit japanischer Beschriftung",
+      "findings": "0 s dunkel, 1–23.20 s Detail-/Tür-/Haubenansichten; Querbild in sehr grossen schwarzen Hochkantflächen.",
+      "claudeAction": "Nicht als fremdmarkenfreies LuxeStyle-Produkt ausgeben. Film/Modell-/Dekorrechte und tatsächliche Shopvariante klären. Fehlende native Hochkantfläche nicht durch extremen Qualitätsverlust wegcroppen."
+    },
+    {
+      "assetId": "L32",
+      "sha256": "22e09d3284df2ee6c45860e339c28935626edb0d8fa7d654d59337ce0bae22e3",
+      "bytes": 3746170,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 32.578005,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "814",
+        "bit_rate": "817121"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "32.578005",
+          "bit_rate": "96090"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1650336395719872512.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        68,
+        136,
+        203,
+        271,
+        339,
+        406,
+        474,
+        542,
+        610,
+        678,
+        745,
+        813
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        2.72,
+        5.44,
+        8.12,
+        10.84,
+        13.56,
+        16.24,
+        18.96,
+        21.68,
+        24.4,
+        27.12,
+        29.8,
+        32.52
+      ],
+      "observedMotif": "Schwarzer Rucksack in Flughafen-/Reiseszene",
+      "findings": "0 s schwarz; 1–13.56 s Tragen/Öffnen/Laptop, 8.12 s Digital Exclusive Compartment und10.84 s USB charging port eingebrannt; 29.80–32.52 s Flugzeuge.",
+      "claudeAction": "Gute Handlung, aber Schluss zeigt kein Produkt und wirkt wie Reise-B-Roll. Identität, eingebrannte Funktionsclaims und Rechte an allen Szenen klären. Nicht als vorhandener Projektor-Master oder allgemeiner erlaubter Stock einsetzen."
+    },
+    {
+      "assetId": "L33",
+      "sha256": "96e9a0cdf182205af95dc6043d5db99dbc027549d3c0d7f7afc68e4e3f6a7077",
+      "bytes": 2449340,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 20.52,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "513",
+        "bit_rate": "851166"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "20.502993",
+          "bit_rate": "96329"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1655805331345256448.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        43,
+        50,
+        85,
+        128,
+        171,
+        213,
+        256,
+        299,
+        341,
+        384,
+        427,
+        469,
+        512
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.72,
+        2.0,
+        3.4,
+        5.12,
+        6.84,
+        8.52,
+        10.24,
+        11.96,
+        13.64,
+        15.36,
+        17.08,
+        18.76,
+        20.48
+      ],
+      "observedMotif": "Wasser-Raketenspielzeug in mehreren Farben",
+      "findings": "1–3.40 s sichtbarer Wasserstart, 5.12–8.52 s Schlauchanschluss, 10.24–20.48 s andere Farben/Varianten.",
+      "claudeAction": "Sofortige reale Aktion ist ein gutes Referenzprinzip für Hooks. Für dieses Produkt sind Variante, Anschluss/Lieferumfang und Zielgruppen-/Sicherheitsfragen offen; nicht mit Grössen-/Höhenversprechen werben."
+    },
+    {
+      "assetId": "L34",
+      "sha256": "e62d029b12086af157f3644518440b8ec783d0eed8c8909799fbd9c73fc45f3e",
+      "bytes": 3035009,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 26.447007,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "661",
+        "bit_rate": "814751"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "26.447007",
+          "bit_rate": "96216"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1742131093098205184.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        55,
+        110,
+        165,
+        220,
+        275,
+        330,
+        385,
+        440,
+        495,
+        550,
+        605,
+        660
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        2.2,
+        4.4,
+        6.6,
+        8.8,
+        11.0,
+        13.2,
+        15.4,
+        17.6,
+        19.8,
+        22.0,
+        24.2,
+        26.4
+      ],
+      "observedMotif": "Neongrünes leuchtendes Hundegeschirr",
+      "findings": "0–15.40 s Details; englische Aussagen u.a. PVC,150mAh und Size label; 17.60–22 s Leucht-/Tastenbedienung; 24.20/26.40 s an Stoffhund, Grössenangabe S,M,L.",
+      "claudeAction": "Produktfarbe/Form ist nicht die olivfarbene Quelle22 oder das rote Geschirr27. Eingebrannte Batterie-/Material-/Grössenclaims vor Nutzung exakt belegen; Leuchtsequenz als Take-Kandidat erst nach Variante/Rechten prüfen."
+    },
+    {
+      "assetId": "L35",
+      "sha256": "eddc2561c6da3a396828cace75ef185091c552bdeac03c1017c3661f1f8a7622",
+      "bytes": 2244071,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 19.643991,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "491",
+        "bit_rate": "810562"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "19.643991",
+          "bit_rate": "96000"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1782669165971644416.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        41,
+        50,
+        82,
+        122,
+        163,
+        204,
+        245,
+        286,
+        327,
+        368,
+        408,
+        449,
+        490
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.64,
+        2.0,
+        3.28,
+        4.88,
+        6.52,
+        8.16,
+        9.8,
+        11.44,
+        13.08,
+        14.72,
+        16.32,
+        17.96,
+        19.6
+      ],
+      "observedMotif": "RGB-Lampe mit Bild-im-Bild und kaleidoskopartigen Übergängen",
+      "findings": "0–8.16 s wechselnde Lichtfarben; 9.80–19.60 s vervielfachte/rotierte Bildkacheln und Unschärfe.",
+      "claudeAction": "Nicht produktgetreue Formprüfung mit Effektspielerei verwechseln. Historische VISUELLE-KANDIDATEN.md warnt für diese PID vor damaliger Zuordnung zu WLAN-Kamera; heute nicht neu geprüft. Bis Klärung der Zuordnung ausgeschlossen, kein schöner Ersatzclip."
+    },
+    {
+      "assetId": "L36",
+      "sha256": "6b2dacd752d12f98e40152d4c8d0abc501d531615e0d3d1766f34e66c800e565",
+      "bytes": 3222799,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 25.680998,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "642",
+        "bit_rate": "900568"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "25.680998",
+          "bit_rate": "96085"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-1794612172111224832.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        53,
+        107,
+        160,
+        214,
+        267,
+        320,
+        374,
+        427,
+        481,
+        534,
+        588,
+        641
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        2.12,
+        4.28,
+        6.4,
+        8.56,
+        10.68,
+        12.8,
+        14.96,
+        17.08,
+        19.24,
+        21.36,
+        23.52,
+        25.64
+      ],
+      "observedMotif": "Helles Hundegeschirr an kleinem weissem Hund",
+      "findings": "0–8.56 s Anlegen;12.80 s Karabiner;14.96–23.52 s Gassigehen; letzter Frame25.64 s schwarz.",
+      "claudeAction": "Die Folge Anlegen–Befestigen–Gehen ist eine nachvollziehbare Handlung. Exakte Variante und Rechte bleiben offen; keine Zug-/Sicherheits-/Materialversprechen. Anfang näher und ruhiger drehen, Schluss-Schwarz ausschliessen."
+    },
+    {
+      "assetId": "L37",
+      "sha256": "a001b3d1de111e0a04fb2654fdd79514d2b87ed7afc4141adb1d73e9c16f8d02",
+      "bytes": 6697625,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 55.88,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "1397",
+        "bit_rate": "855742"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "55.867007",
+          "bit_rate": "96127"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-2406150253321608200.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        116,
+        233,
+        349,
+        465,
+        582,
+        698,
+        814,
+        931,
+        1047,
+        1163,
+        1280,
+        1396
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        4.64,
+        9.32,
+        13.96,
+        18.6,
+        23.28,
+        27.92,
+        32.56,
+        37.24,
+        41.88,
+        46.52,
+        51.2,
+        55.84
+      ],
+      "observedMotif": "Rosa/türkise Geschirre an Stoffhunden, danach Handgerät mit Wärmebild",
+      "findings": "0–32.56 s verschiedene Farben und Geräte;37.24–55.84 s Demonstration mit Wärmebildgerät.",
+      "claudeAction": "Aufnahmen beweisen keine sichere Temperatur oder geprüfte Heizleistung. Keinen Wärme-/Gesundheitsclaim und keine Lieferumfangsaussage ableiten; Varianten und Messkontext vor jeder Verwendung klären."
+    },
+    {
+      "assetId": "L38",
+      "sha256": "8c960eb0a634604d58f503415f9f59d3156cb28bd765f4ca05e0fb3009d32b91",
+      "bytes": 702800,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 6.12,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "153",
+        "bit_rate": "812772"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "6.107007",
+          "bit_rate": "96620"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-2601230246311621700.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        13,
+        25,
+        38,
+        50,
+        51,
+        63,
+        76,
+        89,
+        101,
+        114,
+        127,
+        139,
+        152
+      ],
+      "sampledSeconds": [
+        0.0,
+        0.52,
+        1.0,
+        1.52,
+        2.0,
+        2.04,
+        2.52,
+        3.04,
+        3.56,
+        4.04,
+        4.56,
+        5.08,
+        5.56,
+        6.08
+      ],
+      "observedMotif": "Schwarzer Kfz-Ladeadapter und Telefon",
+      "findings": "0–2.04 s Adapter im Fahrzeug,2.52–4.56 s Kabelanschluss/Telefon-Ladeanzeige,5.08–6.08 s Adapterdetail.",
+      "claudeAction": "Kurze reale Funktionsfolge statt Slideshow. Sichtbare Ladeanzeige belegt keine Wattzahl/Schnellladung/Kompatibilität. Bei exakter Zuordnung neutraler, ruhiger Ergänzungsdreh und keine unbelegten Leistungsclaims."
+    },
+    {
+      "assetId": "L39",
+      "sha256": "b931afbeb68636fdefcf5682ab6961525ff69e305612ec97dc6fef8c3aa57c11",
+      "bytes": 761942,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 6.989002,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "174",
+        "bit_rate": "769626"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "6.989002",
+          "bit_rate": "96585"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-audit/new-candidates/cj-video-2609041234501624500.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        14,
+        25,
+        29,
+        43,
+        50,
+        58,
+        72,
+        86,
+        101,
+        115,
+        130,
+        144,
+        159,
+        173
+      ],
+      "sampledSeconds": [
+        0.0,
+        0.56,
+        1.0,
+        1.16,
+        1.72,
+        2.0,
+        2.32,
+        2.88,
+        3.44,
+        4.04,
+        4.6,
+        5.2,
+        5.76,
+        6.36,
+        6.92
+      ],
+      "observedMotif": "Werkstatt-/Lagerraum mit vielen Taschen und arbeitenden Personen",
+      "findings": "0–6.92 s fast nur Raum-/Mengenschwenk, kein einzelnes klar erklärtes Angebot.",
+      "claudeAction": "Als Premium-Produktfilm ungeeignet. Keine Schweizer Produktion, eigene Fabrik, Bestandsmenge oder Lieferzeit daraus behaupten. Menschen-/Standort-/Filmrechte nicht belegt."
+    },
+    {
+      "assetId": "L40",
+      "sha256": "b2b392a6b2cd3689570b1db5aecc6daecfee6100897b6372369d82b7a4018ee5",
+      "bytes": 10211349,
+      "role": "local_picture_only_edit_intermediate",
+      "durationSeconds": 20.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "600",
+        "bit_rate": "4081338"
+      },
+      "audioStreams": [],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-v2/output/luxestyle-business-tasche-20s-picture.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        15.0,
+        17.0,
+        19.0,
+        19.88
+      ]
+    },
+    {
+      "assetId": "L41",
+      "sha256": "2f93888b57a7a6cda42f0fd36291807facb243a5ddfab3339ffae52b4310b017",
+      "bytes": 2235544,
+      "role": "local_picture_only_edit_intermediate",
+      "durationSeconds": 15.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "450",
+        "bit_rate": "1188964"
+      },
+      "audioStreams": [],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/creative-v2/output/luxestyle-hasenwecker-15s-picture.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "master_source_or_edit_intermediate",
+      "requestedSeekSeconds": [
+        0,
+        0.5,
+        1,
+        1.5,
+        2,
+        3.0,
+        5.0,
+        7.0,
+        9.0,
+        11.0,
+        13.0,
+        14.88
+      ]
+    },
+    {
+      "assetId": "L42",
+      "sha256": "a6baaf142b6930fee133c2b85617ac792de0d25f565ec97c7f90cc66d5a37500",
+      "bytes": 6380017,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 54.848005,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "1370",
+        "bit_rate": "828258"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "54.848005",
+          "bit_rate": "96074"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-1645635953874178048.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        114,
+        228,
+        342,
+        456,
+        570,
+        684,
+        799,
+        913,
+        1027,
+        1141,
+        1255,
+        1369
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        4.56,
+        9.12,
+        13.68,
+        18.24,
+        22.8,
+        27.36,
+        31.96,
+        36.52,
+        41.08,
+        45.64,
+        50.2,
+        54.76
+      ],
+      "observedMotif": "Schwarzer Rucksack, Tragen und Fächerdetails",
+      "findings": "0–9.12 s Tragebild;13.68/18.24/31.96 s Gurte/Reissverschluss/Fach;36.52 s Wasser auf Oberfläche;41.08–50.20 s Innenraum/Inhalt;54.76 s fast leeres Bild.",
+      "claudeAction": "Starke vorhandene Handlungsdetails als Referenz, aber Wassertropfen-Test belegt keine allgemeine Wasserdichtigkeit. Keine Geräte als Lieferumfang ausgeben. Letzte leere Aufnahme kürzen; genaue Rucksackvariante belegen."
+    },
+    {
+      "assetId": "L43",
+      "sha256": "41989b94362f3e4f743f00436f3196d7bd3787a57f7bfe4e0c159cce2a0e1c07",
+      "bytes": 1806035,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 16.81,
+      "video": {
+        "codec_name": "h264",
+        "width": 546,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "420",
+        "bit_rate": "756059"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "16.810000",
+          "bit_rate": "96178"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-2041009181988507649.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        35,
+        50,
+        70,
+        105,
+        140,
+        175,
+        210,
+        244,
+        279,
+        314,
+        349,
+        384,
+        419
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.4,
+        2.0,
+        2.8,
+        4.2,
+        5.6,
+        7.0,
+        8.4,
+        9.76,
+        11.16,
+        12.56,
+        13.96,
+        15.36,
+        16.76
+      ],
+      "observedMotif": "Blumenförmige Brosche mit Schachtel und Hemd",
+      "findings": "0–5.60 s Schachtel öffnen,8.40 s Rückseite,11.16–16.76 s Anbringen/Ansicht auf Hemd; Arme verdecken Details.",
+      "claudeAction": "Erst das Ergebnis am Hemd als Referenzhook prüfen, dann Schliessen/Anbringen. Material und Verschlussfunktion nicht aus Optik benennen; Produktzuordnung und Schmuck-/Filmrechte offen."
+    },
+    {
+      "assetId": "L44",
+      "sha256": "64235fe799e7effab0cb165875ec8cc9424476c6069cafdcf1e40d67490eb0c0",
+      "bytes": 2704487,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 22.12,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "553",
+        "bit_rate": "874806"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "22.080998",
+          "bit_rate": "96006"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-2057639406026477570.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        46,
+        50,
+        92,
+        138,
+        184,
+        230,
+        276,
+        322,
+        368,
+        414,
+        460,
+        506,
+        552
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.84,
+        2.0,
+        3.68,
+        5.52,
+        7.36,
+        9.2,
+        11.04,
+        12.88,
+        14.72,
+        16.56,
+        18.4,
+        20.24,
+        22.08
+      ],
+      "observedMotif": "Mehrfarbige Umhängetaschen mit Beifany a/Beifanya-Schriftzug",
+      "findings": "0–3.68 s getragen,5.52–16.56 s mehrere Farben/Fächer;11.04 s deutliches Fremdlogo;18.40–22.08 s schwarze Tasche getragen.",
+      "claudeAction": "Fremdlogo nicht als LuxeStyle-Logo übernehmen oder unsichtbar neu erfinden. Shopvariante und Marken-/Filmrechte klären; nicht Farben und Modellwechsel als ein angebotenes Set darstellen."
+    },
+    {
+      "assetId": "L45",
+      "sha256": "44071e249d5bd13315d2ec007bfc6784e18e04b879d632af15c35693fb59cf3f",
+      "bytes": 2787339,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 22.406009,
+      "video": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "560",
+        "bit_rate": "891829"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "22.406009",
+          "bit_rate": "96163"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-2058387491983028226.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        47,
+        50,
+        93,
+        140,
+        186,
+        233,
+        280,
+        326,
+        373,
+        419,
+        466,
+        512,
+        559
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.88,
+        2.0,
+        3.72,
+        5.6,
+        7.44,
+        9.32,
+        11.2,
+        13.04,
+        14.92,
+        16.76,
+        18.64,
+        20.48,
+        22.36
+      ],
+      "observedMotif": "Schwarze und gelbe kleine Schultertasche mit Flaschenfach",
+      "findings": "0–5.60 s schwarze Tasche,7.44/9.32 s Farbauswahl,11.20–18.64 s gelbe Tasche/Flaschenfach,20.48/22.36 s Innenfach.",
+      "claudeAction": "Tatsächlich gezeigte Fachbedienung ist brauchbare Handlungsreferenz. Für einen konkreten Film bei einer bestätigten Farbe/Variante bleiben, Flasche/Inhalt nicht als inklusive ausgeben, ruhigen Hintergrund wählen."
+    },
+    {
+      "assetId": "L46",
+      "sha256": "4022c8f5f929ac132e74611bb61e085e1daa73228ac89d0d7596914085b62cec",
+      "bytes": 5558486,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 44.351995,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "1108",
+        "bit_rate": "900168"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "44.351995",
+          "bit_rate": "96046"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-2406260742101606200.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        50,
+        92,
+        184,
+        277,
+        369,
+        461,
+        554,
+        646,
+        738,
+        830,
+        922,
+        1015,
+        1107
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        2.0,
+        3.68,
+        7.36,
+        11.08,
+        14.76,
+        18.44,
+        22.16,
+        25.84,
+        29.52,
+        33.2,
+        36.88,
+        40.6,
+        44.28
+      ],
+      "observedMotif": "Rosa Hasen-Wecker mit grossen Ohren",
+      "findings": "0–18.44 s überwiegend gleiche Frontansicht mit Hand; eingebrannt6 White Noise Sound;22.16/25.84 s Uhranzeige;29.52–44.28 s Rückseite/Taste/Ohrenlicht, später Dimmable Light.",
+      "claudeAction": "Frühe lange Wiederholung nicht durch Zoom kaschieren. Tatsächliche Bedienung und danach Uhransicht würden Handlung klarer machen. Eingebrannte Ton-/Funktionsangaben für exakte Variante belegen; kein fremdes Originalaudio oder Voiceover übernehmen."
+    },
+    {
+      "assetId": "L47",
+      "sha256": "2331e128c007d255c6c49a7cfef685e92015eafb9eae7a6debf2574f4afcbb15",
+      "bytes": 1807262,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 15.082993,
+      "video": {
+        "codec_name": "h264",
+        "width": 540,
+        "height": 960,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "nb_frames": "377",
+        "bit_rate": "854716"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "15.082993",
+          "bit_rate": "96193"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/cj-probe.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        25,
+        31,
+        50,
+        63,
+        94,
+        125,
+        157,
+        188,
+        219,
+        251,
+        282,
+        313,
+        345,
+        376
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.24,
+        2.0,
+        2.52,
+        3.76,
+        5.0,
+        6.28,
+        7.52,
+        8.76,
+        10.04,
+        11.28,
+        12.52,
+        13.8,
+        15.04
+      ],
+      "observedMotif": "Glänzender runder Schmuck auf Hand und zwischen Fingern",
+      "findings": "0–5 s dunkle Handaufnahme mit fremder Armbanduhr;6.28–15.04 s einzelne Schmuckteile näher, weiterhin dunkel.",
+      "claudeAction": "Aus Optik keine Edelstein-/Metall-/Echtheitsclaims ableiten. Ergänzungsdreh mit kontrollierten Reflexen, neutralem Hintergrund und ohne konkurrierendes Uhrmotiv; Zuordnung/Rechte offen."
+    },
+    {
+      "assetId": "L48",
+      "sha256": "add35ddceb40948a23d312a8a43aecb96ad319679d99f72f8452f52e291342dc",
+      "bytes": 3844719,
+      "role": "source_or_candidate_not_verified_social",
+      "durationSeconds": 17.74,
+      "video": {
+        "codec_name": "h264",
+        "width": 720,
+        "height": 1280,
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "nb_frames": "1064",
+        "bit_rate": "1672175"
+      },
+      "audioStreams": [
+        {
+          "codec_name": "aac",
+          "sample_rate": "44100",
+          "channels": 2,
+          "duration": "17.740000",
+          "bit_rate": "48349"
+        }
+      ],
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/video-edit/source/herrenuhr-shopify-c29410ef.mp4"
+      ],
+      "historicalRepoHints": [],
+      "visualSamplingReviewed": true,
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "publishedHistory": "unknown",
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false,
+      "reviewSection": "source_candidate",
+      "sampledFrameIndices": [
+        0,
+        60,
+        89,
+        120,
+        177,
+        266,
+        354,
+        443,
+        532,
+        620,
+        709,
+        797,
+        886,
+        974,
+        1063
+      ],
+      "sampledSeconds": [
+        0.0,
+        1.0,
+        1.483,
+        2.0,
+        2.95,
+        4.433,
+        5.9,
+        7.383,
+        8.867,
+        10.333,
+        11.817,
+        13.283,
+        14.767,
+        16.233,
+        17.717
+      ],
+      "observedMotif": "Runde SEA-GULL AUTOMATIC-Uhr mit schwarzem Band",
+      "findings": "0 s schwarz;1–2 s Zifferblatt SEA-GULL/CHINA MADE;2.95/4.43 s Marken-Schliesse;5.90/7.38 s Werk;16.23/17.717 s ganze runde Uhr.",
+      "claudeAction": "Eindeutiger Marken-/Formhinweis: nicht automatisch Herrenuhr Carré/minimalist-square. Keine Swiss-made-Aussage. Als Makro-Lichtreferenz interessant, für anderes Produkt nicht verwenden; Film-/Markenrechte und exakte Shopzuordnung klären."
+    },
+    {
+      "assetId": "F01",
+      "sha256": "c7012c2973d99fd2b0c3629309a68af454217500aeffa1693c950a9630f9a3c7",
+      "bytes": 3621298,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bildreel_kuscheldecke-hasenfell-imitat-tie-dye-697984.mp4?v=1792383884",
+      "downloadedAtUtc": "2026-10-24T21:53:38.055936+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F01.mp4"
+      ],
+      "durationSeconds": 11.0,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "duration": "11.000000",
+        "bit_rate": "2459043",
+        "nb_frames": "330"
+      },
+      "postReferences": [
+        {
+          "id": 399624137,
+          "uuid": "1246259894015246874",
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T13:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.35",
+        "input_tp": "-1.64",
+        "input_lra": "3.20",
+        "input_thresh": "-24.41",
+        "output_i": "-24.94",
+        "output_tp": "-12.71",
+        "output_lra": "2.10",
+        "output_thresh": "-34.98",
+        "normalization_type": "dynamic",
+        "target_offset": "0.94"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F02",
+      "sha256": "6ac183feb028742a39470a247ac984d3c0852d7553cf556a54b4dc379515ff39",
+      "bytes": 1196638,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJCD154096301AZ.mp4?v=1792038600",
+      "downloadedAtUtc": "2026-10-24T21:53:43.573692+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F02.mp4"
+      ],
+      "durationSeconds": 7.8,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "7.800000",
+        "bit_rate": "1059260",
+        "nb_frames": "195"
+      },
+      "postReferences": [
+        {
+          "id": 399471886,
+          "uuid": "-4986950361971732961",
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T12:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        },
+        {
+          "id": 399471890,
+          "uuid": "6802607845615748979",
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T12:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.08",
+        "input_tp": "-2.98",
+        "input_lra": "0.30",
+        "input_thresh": "-24.08",
+        "output_i": "-24.01",
+        "output_tp": "-12.83",
+        "output_lra": "0.30",
+        "output_thresh": "-34.01",
+        "normalization_type": "dynamic",
+        "target_offset": "0.01"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F03",
+      "sha256": "c2c857756a3c745a2910f54862622cf86fdb3001dd7c2e7a2e053bb1d581a08e",
+      "bytes": 3053876,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJJT129901001AZ.mp4?v=1792023745",
+      "downloadedAtUtc": "2026-10-24T21:53:46.721713+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F03.mp4"
+      ],
+      "durationSeconds": 11.96,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "11.960000",
+        "bit_rate": "1875571",
+        "nb_frames": "299"
+      },
+      "postReferences": [
+        {
+          "id": 399474015,
+          "uuid": "4696589336208886053",
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T16:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.60",
+        "input_tp": "-2.49",
+        "input_lra": "6.50",
+        "input_thresh": "-24.80",
+        "output_i": "-25.56",
+        "output_tp": "-14.39",
+        "output_lra": "2.50",
+        "output_thresh": "-35.63",
+        "normalization_type": "dynamic",
+        "target_offset": "1.56"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F04",
+      "sha256": "966bb9c6a37de3f4881fc20f12e0e8eb4a659b13efa9c96c4a07e0b226a49849",
+      "bytes": 2093716,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433",
+      "downloadedAtUtc": "2026-10-24T21:53:52.154627+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F04.mp4"
+      ],
+      "durationSeconds": 12.16,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "12.160000",
+        "bit_rate": "1210539",
+        "nb_frames": "304"
+      },
+      "postReferences": [
+        {
+          "id": 399476575,
+          "uuid": "7659202434600943789",
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T20:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        },
+        {
+          "id": 399476578,
+          "uuid": "-4711778171676639107",
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T20:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.08",
+        "input_tp": "-4.93",
+        "input_lra": "2.10",
+        "input_thresh": "-24.08",
+        "output_i": "-23.46",
+        "output_tp": "-13.86",
+        "output_lra": "1.70",
+        "output_thresh": "-33.46",
+        "normalization_type": "dynamic",
+        "target_offset": "-0.54"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F05",
+      "sha256": "7adfa8a2c59e9c6edbf6bc075ca7e5c9339cd5046f3ec16c3a592af74ba84fd6",
+      "bytes": 5625357,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJYD189003201AZ.mp4?v=1792034203",
+      "downloadedAtUtc": "2026-10-24T21:53:57.458021+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F05.mp4"
+      ],
+      "durationSeconds": 11.68,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "11.680000",
+        "bit_rate": "3683004",
+        "nb_frames": "292"
+      },
+      "postReferences": [
+        {
+          "id": 399475266,
+          "uuid": "-7145470493074108759",
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T20:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.25",
+        "input_tp": "-2.67",
+        "input_lra": "1.00",
+        "input_thresh": "-24.25",
+        "output_i": "-23.98",
+        "output_tp": "-12.47",
+        "output_lra": "1.10",
+        "output_thresh": "-33.98",
+        "normalization_type": "dynamic",
+        "target_offset": "-0.02"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F06",
+      "sha256": "b65cd38ddd214febbc2c187d0d443bc75cd1ca04ff9a5fa03c03fb0f2b6a7e26",
+      "bytes": 3085930,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJZBLXDZ00003-NY346.mp4?v=1792005176",
+      "downloadedAtUtc": "2026-10-24T21:54:04.384496+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F06.mp4"
+      ],
+      "durationSeconds": 8.76,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "8.760000",
+        "bit_rate": "2647263",
+        "nb_frames": "219"
+      },
+      "postReferences": [
+        {
+          "id": 399470881,
+          "uuid": "-5057560616818291422",
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T07:20:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.05",
+        "input_tp": "-2.09",
+        "input_lra": "3.60",
+        "input_thresh": "-24.05",
+        "output_i": "-24.62",
+        "output_tp": "-13.15",
+        "output_lra": "1.00",
+        "output_thresh": "-34.62",
+        "normalization_type": "dynamic",
+        "target_offset": "0.62"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "F07",
+      "sha256": "386b201d5a65674b830d491caa7925ab2f6eca23c13bc153d4fd367f726af9df",
+      "bytes": 7226499,
+      "role": "media_from_dated_24Oct_scheduled_plan_not_full_history",
+      "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/reels/reel_CJQC141029801AZ.mp4",
+      "downloadedAtUtc": "2026-10-24T21:54:09.238707+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/future/F07.mp4"
+      ],
+      "durationSeconds": 12.16,
+      "video": {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "12.160000",
+        "bit_rate": "4584498",
+        "nb_frames": "304"
+      },
+      "postReferences": [
+        {
+          "id": 400607510,
+          "uuid": "-6122886408697786750",
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "publicationDate": {
+            "dateTime": "2026-10-25T08:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "visualSamplingReviewed": true,
+      "sampling": "about one frame per second plus selected native frames",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "loudnessMeasurement": {
+        "input_i": "-14.64",
+        "input_tp": "-3.07",
+        "input_lra": "2.30",
+        "input_thresh": "-24.69",
+        "output_i": "-24.49",
+        "output_tp": "-13.11",
+        "output_lra": "1.30",
+        "output_thresh": "-34.52",
+        "normalization_type": "dynamic",
+        "target_offset": "0.49"
+      },
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E01",
+      "sha256": "b1f75d1686bca39ce8619b17a355ecf2a88f87236a6d1f03c84555ecf0162956",
+      "bytes": 2858952,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJBJHZCZ00137-39.mp4?v=1791991071",
+      "downloadReadStartedAtUtc": "2026-10-24T21:55:45.193917+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/01-reel_CJBJHZCZ00137-39.mp4"
+      ],
+      "durationSeconds": 8.16,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399467504,
+          "uuid": "8556672370328684952",
+          "publicationDate": {
+            "dateTime": "2026-10-24T07:20:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E02",
+      "sha256": "f5dff8fab513476ef0975f5c1445f186162d270081b03bf732675741beea5008",
+      "bytes": 6335218,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJJJCWGY01608-2pc.mp4?v=1791996255",
+      "downloadReadStartedAtUtc": "2026-10-24T21:55:56.568736+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/02-reel_CJJJCWGY01608-2pc.mp4"
+      ],
+      "durationSeconds": 11.12,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399469005,
+          "uuid": "2514298121499397876",
+          "publicationDate": {
+            "dateTime": "2026-10-24T16:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E03",
+      "sha256": "fe0495e4f4041136b648fa691fe974116807ef2e5b3971d8c51107ee3caba3de",
+      "bytes": 1552374,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bildreel_herren-leinenhose-lino-locker-atmungsaktiv.mp4?v=1791234237",
+      "downloadReadStartedAtUtc": "2026-10-24T21:56:03.746964+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/03-bildreel_herren-leinenhose-lino-locker-atmungsaktiv.mp4"
+      ],
+      "durationSeconds": 11.0,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399469922,
+          "uuid": "-4206620814732932379",
+          "publicationDate": {
+            "dateTime": "2026-10-24T20:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        },
+        {
+          "id": 399469928,
+          "uuid": "4468609605882364408",
+          "publicationDate": {
+            "dateTime": "2026-10-24T20:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E04",
+      "sha256": "c8e98436d44179776007ae1db6c96a113961c27c1a84e9b9583f100fa570d68f",
+      "bytes": 2373781,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bildreel_eleganter-edelstahl-kerzenstander-im-french-st-625700.mp4?v=1792375567",
+      "downloadReadStartedAtUtc": "2026-10-24T21:56:11.545788+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/04-bildreel_eleganter-edelstahl-kerzenstander-im-french-st-625700.mp4"
+      ],
+      "durationSeconds": 8.0,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399567802,
+          "uuid": "-2341816744397815416",
+          "publicationDate": {
+            "dateTime": "2026-10-24T08:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E05",
+      "sha256": "8264829ca0d5bff9d8f4ff8427503d75bf583344306befd83e8295448d248f1e",
+      "bytes": 3907619,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJEJ164037101AZ.mp4?v=1792375137",
+      "downloadReadStartedAtUtc": "2026-10-24T21:56:21.383154+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/05-reel_CJEJ164037101AZ.mp4"
+      ],
+      "durationSeconds": 11.2,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399568072,
+          "uuid": "4530182189488622918",
+          "publicationDate": {
+            "dateTime": "2026-10-24T13:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E06",
+      "sha256": "e55bbaeb5f8255eb9bbf3c136123281bc7440b56e9c0c1bf5b07d1ad37a195a9",
+      "bytes": 2268639,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJEJ130581801AZ.mp4?v=1792375427",
+      "downloadReadStartedAtUtc": "2026-10-24T21:56:36.177424+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/06-reel_CJEJ130581801AZ.mp4"
+      ],
+      "durationSeconds": 7.6,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "25/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 399568410,
+          "uuid": "-8507252436674327758",
+          "publicationDate": {
+            "dateTime": "2026-10-24T20:05:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    },
+    {
+      "assetId": "E07",
+      "sha256": "da4d93ef820cc48e070422408377d1466d262da0ac8fcbfad01d512bb218f7c1",
+      "bytes": 1289561,
+      "role": "media_from_historical_24Oct_evening_provider_record",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bildreel_steampunk-korsage-schwarz-fgssor9537.mp4?v=1792545273",
+      "downloadReadStartedAtUtc": "2026-10-24T21:56:46.453389+00:00",
+      "localReferencePaths": [
+        "/workspace/luxestyle-review/social-video-audit-20261024/published-today/07-bildreel_steampunk-korsage-schwarz-fgssor9537.mp4"
+      ],
+      "durationSeconds": 8.0,
+      "video": {
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1"
+      },
+      "historicalPostReferences": [
+        {
+          "id": 403378886,
+          "uuid": "2878909041268114098",
+          "publicationDate": {
+            "dateTime": "2026-10-24T12:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        },
+        {
+          "id": 403378909,
+          "uuid": "-5088273423135586730",
+          "publicationDate": {
+            "dateTime": "2026-10-24T12:15:00",
+            "timezone": "Europe/Zurich"
+          }
+        }
+      ],
+      "currentPublishedState": "unknown; historical provider messages are not Codex publications",
+      "visualSamplingReviewed": true,
+      "sampling": "about one original image per second",
+      "fullMotionPlaybackReviewed": false,
+      "audioAuditioned": false,
+      "currentExactVariantMatch": "unknown",
+      "commercialFilmRights": "unknown",
+      "approvedForReuse": false
+    }
+  ]
+}
