@@ -1,0 +1,5669 @@
+{
+  "taskId": "LUXESTYLE_NATIVE_MENU_20261025",
+  "status": "READ_ONLY_VERIFIED_REVIEW_NOT_APPLIED",
+  "date": "2026-10-25",
+  "timezone": "Europe/Zurich",
+  "shop": "luxestyle.ch",
+  "menuId": "gid://shopify/Menu/310224093569",
+  "handle": "main-menu",
+  "scope": {
+    "menusHeaderRead": 3,
+    "menusHeaderHasNextPage": false,
+    "topLevelLimit": 50,
+    "topLevelReturned": 13,
+    "nestedLevelsReturned": 3,
+    "fourthLevelItemsReturned": 0,
+    "productPagination": false,
+    "writes": [],
+    "noNewMenuCreated": true
+  },
+  "sources": {
+    "archiveMigrationGitBlob": "cd4b2d865245209e503a5debe7cf7934d5bb45cf",
+    "archiveMigrationSha256": "1cc0b8a7da0d2a3c555793a808a9d63d0c5b0fed4ba21a6263d563d7c037928d",
+    "nativeSnapshotSha256": "7cd2a86a7a6b9e12638c5133bb9f8c8e1d4c67d0a4829990f20b5f9c93b7a518",
+    "docs": "https://shopify.dev/docs/api/admin-graphql/2026-10/objects/Menu",
+    "themeHeaderMenuReference": "main-menu from archived header-group.json, not freshly theme-reread"
+  },
+  "summary": {
+    "nativeItems": 218,
+    "uniqueItemIds": 218,
+    "nativeDepths": {
+      "1": 13,
+      "2": 174,
+      "3": 31
+    },
+    "uniqueNormalizedUrls": 195,
+    "archiveItemsMatchedExactly": 218,
+    "unmatchedOrMissing": [],
+    "typeCounts": {
+      "HTTP": 218
+    },
+    "resourceIdsNonNull": 0,
+    "menuItemTagsNonEmpty": 0,
+    "placementDraft": 204,
+    "placementStillOpen": 14
+  },
+  "nativeMenuSnapshot": {
+    "id": "gid://shopify/Menu/310224093569",
+    "handle": "main-menu",
+    "title": "Main menu",
+    "items": [
+      {
+        "id": "gid://shopify/MenuItem/798550491521",
+        "title": "🎁 Geschenke & Weihnachten",
+        "url": "/collections/premium-geschenke",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/1475071148423",
+            "title": "Weihnachten 🎄",
+            "url": "/collections/weihnachten-2026",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475812721031",
+            "title": "Adventskalender 🎄",
+            "url": "/collections/adventskalender",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1479249953159",
+            "title": "Weihnachtspyjamas für die Familie",
+            "url": "/collections/weihnachtspyjama-familie",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723570561",
+            "title": "Geschenke für Sie",
+            "url": "/collections/geschenke-fuer-sie",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471765807495",
+            "title": "Geschenke für Ihn",
+            "url": "/collections/geschenke-fuer-ihn",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723603329",
+            "title": "Geschenke für Kinder",
+            "url": "/collections/geschenke-fuer-kinder",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475071181191",
+            "title": "Hochzeitsgeschenke",
+            "url": "/collections/hochzeitsgeschenke",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723505025",
+            "title": "Kleine Mitbringsel unter CHF 20",
+            "url": "/collections/kleine-geschenke-mitbringsel",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805459132801",
+            "title": "Preis-Hits unter CHF 25",
+            "url": "/collections/unter-chf-25",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723406721",
+            "title": "Geschenke bis CHF 30",
+            "url": "/collections/%F0%9F%8E%81-geschenke-bis-chf-30",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723439489",
+            "title": "Geschenke unter CHF 50",
+            "url": "/collections/geschenke-unter-50-franken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723472257",
+            "title": "Geschenke unter CHF 100",
+            "url": "/collections/geschenke-unter-100-franken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723636097",
+            "title": "Sets & Bundles",
+            "url": "/collections/sets-bundles",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723537793",
+            "title": "Premium ab CHF 80",
+            "url": "/collections/%F0%9F%92%8E-premium-ab-chf-80",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798551114113",
+            "title": "Kiffer-Zubehör (18+)",
+            "url": "/collections/smoke-zubehoer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550753665",
+            "title": "Selbst gestalten",
+            "url": "/pages/selbst-gestalten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550819201",
+            "title": "Ratgeber",
+            "url": "/blogs/ratgeber",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/802316222849",
+            "title": "🔎 Alle Kategorien",
+            "url": "/pages/alle-kategorien",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798548722049",
+        "title": "Damen",
+        "url": "/collections/damen-mode",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/804806099329",
+            "title": "Taschen & Rucksäcke",
+            "url": "/collections/sub-taschen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955032455",
+            "title": "Bauchtaschen & Gürteltaschen",
+            "url": "/collections/bauchtaschen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/807714226561",
+            "title": "Accessoires: Schals, Mützen & Gürtel",
+            "url": "/collections/accessoires",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548754817",
+            "title": "Kleider",
+            "url": "/collections/sub-kleider",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471932465543",
+            "title": "Midikleider",
+            "url": "/collections/midikleider",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955065223",
+            "title": "Abendkleider & Cocktailkleider",
+            "url": "/collections/abendkleider",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548951425",
+            "title": "Schuhe",
+            "url": "/collections/damen-schuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548984193",
+            "title": "T-Shirts & Tops",
+            "url": "/collections/t-shirts-tops",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548918657",
+            "title": "Strick & Pullover",
+            "url": "/collections/damen-strick-pullover",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549016961",
+            "title": "Jeans & Denim",
+            "url": "/collections/jeans-denim",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548885889",
+            "title": "Jacken & Mäntel",
+            "url": "/collections/damen-jacken-maentel",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549082497",
+            "title": "Jacken & Outdoor-Mode",
+            "url": "/collections/jacken-outdoor",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549049729",
+            "title": "Jumpsuits & Overalls",
+            "url": "/collections/jumpsuits-overalls",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548787585",
+            "title": "Blusen & Tops",
+            "url": "/collections/damen-blusen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548820353",
+            "title": "Hosen & Leggings",
+            "url": "/collections/damen-hosen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548853121",
+            "title": "Röcke",
+            "url": "/collections/sub-roecke",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723111809",
+            "title": "Shorts & Bermudas",
+            "url": "/collections/shorts-bermudas",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723079041",
+            "title": "Nachtwäsche & Pyjamas",
+            "url": "/collections/nachtwaesche-pyjamas",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798549148033",
+        "title": "Herren",
+        "url": "/collections/fur-ihn",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/798549213569",
+            "title": "Schuhe",
+            "url": "/collections/herren-schuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549311873",
+            "title": "Hemden",
+            "url": "/collections/herren-hemden",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549279105",
+            "title": "Shirts & Polos",
+            "url": "/collections/herren-shirts",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549344641",
+            "title": "Hosen",
+            "url": "/collections/herren-hosen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483146756487",
+            "title": "Herren-Jeans",
+            "url": "/collections/herren-jeans",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549410177",
+            "title": "Pullover",
+            "url": "/collections/herren-pullover",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549377409",
+            "title": "Jacken",
+            "url": "/collections/herren-jacken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549246337",
+            "title": "Uhren",
+            "url": "/collections/herren-uhren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549180801",
+            "title": "Bart & Rasur",
+            "url": "/collections/sub-bart-rasur",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798549934465",
+        "title": "Schuhe",
+        "url": "/collections/schuhe",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/798549967233",
+            "title": "Damenschuhe",
+            "url": "/collections/damen-schuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550000001",
+            "title": "Herrenschuhe",
+            "url": "/collections/herren-schuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550098305",
+            "title": "Sandalen",
+            "url": "/collections/sub-sandalen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550065537",
+            "title": "Kinderschuhe",
+            "url": "/collections/kinderschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550262145",
+            "title": "Lauf- & Sportschuhe",
+            "url": "/collections/sub-laufschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550131073",
+            "title": "Stiefel & Boots",
+            "url": "/collections/sub-stiefel-boots",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955097991",
+            "title": "Winterschuhe & Winterstiefel",
+            "url": "/collections/winterschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550032769",
+            "title": "Sneaker & Sport",
+            "url": "/collections/sneaker-sportschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550163841",
+            "title": "Pumps & High Heels",
+            "url": "/collections/sub-pumps-heels",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550196609",
+            "title": "Ballerinas & Flats",
+            "url": "/collections/sub-ballerinas",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550229377",
+            "title": "Hausschuhe & Slipper",
+            "url": "/collections/sub-hausschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550294913",
+            "title": "Wander- & Arbeitsschuhe",
+            "url": "/collections/sub-wander-arbeitsschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798549442945",
+        "title": "Schmuck & Uhren",
+        "url": "/collections/schmuck-uhren",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/806210568577",
+            "title": "Premium Schmuck",
+            "url": "/collections/premium-schmuck",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549639553",
+            "title": "Uhren",
+            "url": "/collections/uhren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483136860551",
+                "title": "Smartwatches & Wearables",
+                "url": "/collections/smartwatches-wearables",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483136893319",
+                "title": "Herrenuhren",
+                "url": "/collections/uhren-herren",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483136926087",
+                "title": "Damenuhren",
+                "url": "/collections/uhren-damen",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483136958855",
+                "title": "Uhrenarmbänder & Smartwatch-Armbänder",
+                "url": "/collections/uhrenarmbaender",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483136991623",
+                "title": "Chronographen & Automatik",
+                "url": "/collections/chronographen-automatik",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549574017",
+            "title": "Armbänder",
+            "url": "/collections/sub-armbaender",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549475713",
+            "title": "Ringe",
+            "url": "/collections/sub-ringe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549508481",
+            "title": "Halsketten",
+            "url": "/collections/sub-halsketten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549541249",
+            "title": "Ohrringe",
+            "url": "/collections/sub-ohrringe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549606785",
+            "title": "Sets",
+            "url": "/collections/schmuck-sets",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549672321",
+            "title": "Sonnenbrillen",
+            "url": "/collections/sonnenbrillen-alle",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798549705089",
+        "title": "Beauty & Pflege",
+        "url": "/collections/beauty-pflege",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/798549737857",
+            "title": "Beauty & Pflege",
+            "url": "/collections/beauty-pflege",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723144577",
+            "title": "Make-up & Kosmetik",
+            "url": "/collections/make-up",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723177345",
+            "title": "Hautpflege & Skincare",
+            "url": "/collections/hautpflege-skincare",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549770625",
+            "title": "Haarpflege & Styling",
+            "url": "/collections/beauty-haar",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549868929",
+            "title": "Haarstyling-Geräte",
+            "url": "/collections/haarstyling-geraete",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798549901697",
+            "title": "Nägel & Maniküre",
+            "url": "/collections/naegel-manikuere",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475071213959",
+            "title": "Wimpern & Lashes",
+            "url": "/collections/wimpern-lashes",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471188992391",
+            "title": "Parfum & Düfte",
+            "url": "/collections/parfum-duefte",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137024391",
+            "title": "Beauty-Geräte & Haarentfernung",
+            "url": "/collections/beauty-geraete",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137057159",
+            "title": "Gesichtspflege-Geräte",
+            "url": "/collections/gesichtspflege-geraete",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137089927",
+            "title": "Aroma & Diffuser",
+            "url": "/collections/sub-aroma-diffuser",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137122695",
+            "title": "Luftbefeuchter",
+            "url": "/collections/luftbefeuchter",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137155463",
+            "title": "Schminkspiegel",
+            "url": "/collections/schminkspiegel",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798550622593",
+        "title": "Wohnen & Garten",
+        "url": "/collections/wohnen-dekoration",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/805458411905",
+            "title": "Wohnen & Deko",
+            "url": "/collections/wohnen-dekoration",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723210113",
+            "title": "Aufbewahrung",
+            "url": "/collections/aufbewahrung-sub",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936551303",
+            "title": "Wäschekörbe",
+            "url": "/collections/waeschekoerbe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936584071",
+            "title": "Wandregale",
+            "url": "/collections/wandregale",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458444673",
+            "title": "Küche & Kochen",
+            "url": "/collections/sub-kueche",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1476976148871",
+            "title": "Schneidebretter",
+            "url": "/collections/schneidebretter",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955130759",
+            "title": "Woks & Wokpfannen",
+            "url": "/collections/woks",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955163527",
+            "title": "Etageren",
+            "url": "/collections/etageren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723275649",
+            "title": "Küchenhelfer & Gadgets",
+            "url": "/collections/kuechenhelfer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955196295",
+            "title": "Lunchboxen & Bento-Boxen",
+            "url": "/collections/lunchboxen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723242881",
+            "title": "Kissen & Wohntextilien",
+            "url": "/collections/kissen-wohntextilien",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936616839",
+            "title": "Teppiche",
+            "url": "/collections/teppiche",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936649607",
+            "title": "Bettwäsche",
+            "url": "/collections/bettwaesche",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471932498311",
+            "title": "Vorhänge",
+            "url": "/collections/vorhaenge",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936682375",
+            "title": "Duschvorhänge",
+            "url": "/collections/duschvorhaenge",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798551015809",
+            "title": "Basteln & DIY",
+            "url": "/collections/basteln-diy",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1475821732231",
+                "title": "Malen nach Zahlen",
+                "url": "/collections/malen-nach-zahlen",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1475821764999",
+                "title": "Diamond Painting",
+                "url": "/collections/diamond-painting",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458608513",
+            "title": "Garten & Outdoor",
+            "url": "/collections/outdoor-garten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471932531079",
+            "title": "Hängematten",
+            "url": "/collections/haengematten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/799320932737",
+            "title": "Werkzeug & Maschinen",
+            "url": "/collections/werkzeug-maschinen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458542977",
+            "title": "Aroma & Diffuser",
+            "url": "/collections/sub-aroma-diffuser",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458510209",
+            "title": "Vasen & Deko",
+            "url": "/collections/sub-deko",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471932563847",
+            "title": "Wanddeko",
+            "url": "/collections/wanddeko",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1476976181639",
+            "title": "Wandteppiche & Wandbehänge",
+            "url": "/collections/wandteppiche",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955229063",
+            "title": "Wanduhren",
+            "url": "/collections/wanduhren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798551179649",
+            "title": "Ersatzteile & Zubehör",
+            "url": "/collections/ersatzteile-zubehoer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458477441",
+            "title": "Beleuchtung",
+            "url": "/collections/sub-beleuchtung",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936715143",
+            "title": "Wecker",
+            "url": "/collections/wecker",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798551081345",
+            "title": "Geschenkverpackung",
+            "url": "/collections/geschenkverpackung",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458575745",
+            "title": "Kuschel- & Heizdecken",
+            "url": "/collections/kuschel-heizdecken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471189025159",
+            "title": "Haushaltsgeräte",
+            "url": "/collections/haushaltsgeraete",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475071246727",
+            "title": "LED-Strips & Lichterketten",
+            "url": "/collections/licht-led-strip",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798550655361",
+        "title": "Technik & Gaming",
+        "url": "/collections/elektronik-technik",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/805458641281",
+            "title": "Elektronik & Technik",
+            "url": "/collections/elektronik-technik",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458674049",
+            "title": "Smartwatches & Wearables",
+            "url": "/collections/smartwatches-wearables",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137188231",
+                "title": "Uhrenarmbänder & Smartwatch-Armbänder",
+                "url": "/collections/uhrenarmbaender",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458706817",
+            "title": "Kopfhörer & Audio",
+            "url": "/collections/kopfhoerer-audio",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137220999",
+                "title": "Lautsprecher & Boxen",
+                "url": "/collections/lautsprecher",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137253767",
+                "title": "Mikrofone & Streaming",
+                "url": "/collections/mikrofone",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723308417",
+            "title": "Ladegeräte & Powerbanks",
+            "url": "/collections/elektronik-laden",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/804806132097",
+            "title": "Handy-Zubehör",
+            "url": "/collections/handy-zubehoer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137286535",
+                "title": "Halterungen & MagSafe",
+                "url": "/collections/handy-halterungen",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137319303",
+                "title": "Handyhüllen & Cases",
+                "url": "/collections/handy-huellen",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471189057927",
+            "title": "Kabel & Adapter",
+            "url": "/collections/kabel-adapter",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/804806164865",
+            "title": "Gaming",
+            "url": "/collections/gaming",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137352071",
+                "title": "Controller & Gamepads",
+                "url": "/collections/gaming-controller",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137384839",
+                "title": "PC-Gaming",
+                "url": "/collections/pc-gaming",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137417607",
+                "title": "Retro & Handheld-Gaming",
+                "url": "/collections/retro-handheld",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458772353",
+            "title": "Drohnen & Kameras",
+            "url": "/collections/drohnen-kameras",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137450375",
+                "title": "Drohnen & FPV",
+                "url": "/collections/drohnen-fpv",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137483143",
+                "title": "Foto & Video",
+                "url": "/collections/foto-tech",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458739585",
+            "title": "Beamer & Heimkino",
+            "url": "/collections/beamer-heimkino",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458805121",
+            "title": "PC & Homeoffice",
+            "url": "/collections/pc-homeoffice",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1483137515911",
+                "title": "Tastaturen & Mäuse",
+                "url": "/collections/tastatur-maus",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137548679",
+                "title": "Laptop- & Tablet-Zubehör",
+                "url": "/collections/laptop-tablet-zubehoer",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137581447",
+                "title": "PC-Komponenten & Speicher",
+                "url": "/collections/pc-komponenten",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1483137614215",
+                "title": "Netzwerk & WLAN",
+                "url": "/collections/netzwerk-router",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/807734542721",
+            "title": "Büro & Home Office",
+            "url": "/collections/buro-home-office",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137646983",
+            "title": "Smart Home & smarte Gadgets",
+            "url": "/collections/smart-home-gadgets",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475955261831",
+            "title": "USB-Sticks",
+            "url": "/collections/usb-sticks",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/804806197633",
+            "title": "Auto & KFZ-Zubehör",
+            "url": "/collections/auto-kfz-zubehoer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/804813013377",
+            "title": "Elektronik-Kleinteile",
+            "url": "/collections/elektronik-kleinteile",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723341185",
+            "title": "Lifestyle & Trends",
+            "url": "/collections/trends-gadgets",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798550557057",
+        "title": "Kinder & Haustier",
+        "url": "/collections/sub-baby-kids",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/805458837889",
+            "title": "Kinder & Baby",
+            "url": "/collections/sub-baby-kids",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1474909176199",
+            "title": "👶 Babykleidung & Kindermode",
+            "url": "/collections/babykleidung",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/1474909208967",
+                "title": "Strampler & Bodys",
+                "url": "/collections/strampler-bodys",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1474909241735",
+                "title": "Baby- & Kinder-Sets",
+                "url": "/collections/baby-kinder-sets",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550688129",
+            "title": "Haustierwelt",
+            "url": "/collections/sub-haustier",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": [
+              {
+                "id": "gid://shopify/MenuItem/798779244929",
+                "title": "Hunde",
+                "url": "/collections/haustier-hunde",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/798779277697",
+                "title": "Katzen",
+                "url": "/collections/haustier-katzen",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/798779310465",
+                "title": "Leinen & Tierkleidung",
+                "url": "/collections/tier-leinen-kleidung",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/798779343233",
+                "title": "Tierspielzeug",
+                "url": "/collections/tierspielzeug",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/798779376001",
+                "title": "Näpfe & Füttern",
+                "url": "/collections/tier-naepfe-fuettern",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/798779408769",
+                "title": "Pflege & Unterwegs",
+                "url": "/collections/tier-pflege-unterwegs",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1471932596615",
+                "title": "Kratzbäume",
+                "url": "/collections/kratzbaeume",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              },
+              {
+                "id": "gid://shopify/MenuItem/1471932629383",
+                "title": "Hundebetten",
+                "url": "/collections/hundebetten",
+                "type": "HTTP",
+                "resourceId": null,
+                "tags": [],
+                "items": []
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/MenuItem/798707646849",
+            "title": "Spielzeug & Plüsch",
+            "url": "/collections/spielzeug",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458903425",
+            "title": "Kinderschuhe",
+            "url": "/collections/kinderschuhe",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475071279495",
+            "title": "Fahrzeuge & RC",
+            "url": "/collections/spielzeug-fahrzeuge",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458870657",
+            "title": "Spielzeug ab CH-Lager 🇨🇭",
+            "url": "/collections/spielzeug-ch-lager",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805447500161",
+            "title": "Klemmbausteine & Bausätze",
+            "url": "/collections/klemmbausteine-bausaetze",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137679751",
+            "title": "Geschenke für Kinder",
+            "url": "/collections/geschenke-fuer-kinder",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798548361601",
+        "title": "Highlights",
+        "url": "/collections/bestseller",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/798548525441",
+            "title": "Topseller",
+            "url": "/collections/bestseller",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299230081",
+            "title": "🇨🇭 Ab Schweizer Lager",
+            "url": "/collections/blitzversand-schweiz",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/804810064257",
+            "title": "Kostüme ab CH-Lager 🎃",
+            "url": "/collections/kostueme-ch-lager",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548590977",
+            "title": "Viral-Hits",
+            "url": "/collections/viral-hits",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548492673",
+            "title": "EU-Lager",
+            "url": "/collections/eu-lager-schnell",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548394369",
+            "title": "Schweizer Editionen 🇨🇭",
+            "url": "/collections/erste-august",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548623745",
+            "title": "Premium & Marken",
+            "url": "/collections/luxestyle-premium",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548558209",
+            "title": "Ventilatoren & Kühlung",
+            "url": "/collections/ventilatoren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548427137",
+            "title": "Fussball & Fanshop",
+            "url": "/collections/fussball-fanshop",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548459905",
+            "title": "VR, AI & Neuheiten",
+            "url": "/collections/vr-ai-neuheiten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798548689281",
+            "title": "Schnell finden",
+            "url": "/pages/marken-kategorien",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798550327681",
+        "title": "Herbst & Übergang",
+        "url": "/collections/jacken-outdoor",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/798550393217",
+            "title": "🍂 Herbst-Favoriten",
+            "url": "/collections/herbst-favoriten",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299262849",
+            "title": "Jacken & Mäntel",
+            "url": "/collections/jacken-outdoor",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936747911",
+            "title": "Winterjacken & Daunenjacken",
+            "url": "/collections/winterjacken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299295617",
+            "title": "Damen-Strick & Pullover",
+            "url": "/collections/damen-strick-pullover",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299328385",
+            "title": "Hoodies & Sweatshirts",
+            "url": "/collections/hoodies-sweatshirts",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550425985",
+            "title": "Herren-Pullover & Strick",
+            "url": "/collections/herren-pullover",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1479249985927",
+            "title": "Weihnachtspullover 🎄",
+            "url": "/collections/weihnachtspullover",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550360449",
+            "title": "Stiefel & Boots",
+            "url": "/collections/sub-stiefel-boots",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299361153",
+            "title": "Mützen & Schals",
+            "url": "/collections/muetzen-schals",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1471189090695",
+            "title": "Westen & Gilets",
+            "url": "/collections/westen-gilets",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/803299393921",
+            "title": "Kuschel- & Heizdecken",
+            "url": "/collections/kuschel-heizdecken",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/807226311041",
+            "title": "Wärme & Komfort 🔥",
+            "url": "/collections/waerme-komfort",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1479250018695",
+            "title": "Handwärmer",
+            "url": "/collections/handwaermer",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550458753",
+            "title": "Reisen & Outdoor",
+            "url": "/collections/sub-reise",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798550589825",
+        "title": "Sport & Party",
+        "url": "/collections/fitness-training",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": [
+          {
+            "id": "gid://shopify/MenuItem/805458936193",
+            "title": "Sport & Fitness",
+            "url": "/collections/fitness-training",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805723373953",
+            "title": "Rucksäcke",
+            "url": "/collections/rucksaecke",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805459100033",
+            "title": "Kostüme ab CH-Lager 🎃",
+            "url": "/collections/kostueme-ch-lager",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550720897",
+            "title": "Kostüme & Party",
+            "url": "/collections/kostueme-fasnacht",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/807734575489",
+            "title": "Partydeko & Ballone",
+            "url": "/collections/party-deko-ch",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805448417665",
+            "title": "Süsses & Esswaren 🍬",
+            "url": "/collections/suesses-esswaren",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805459034497",
+            "title": "Reisen & Outdoor",
+            "url": "/collections/sub-reise",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805458968961",
+            "title": "Yoga & Fitness",
+            "url": "/collections/sub-yoga-fitness",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798550524289",
+            "title": "Halloween 🎃",
+            "url": "/collections/halloween",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/807734608257",
+            "title": "Weihnachten 🎄",
+            "url": "/collections/weihnachten-2026",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/798551146881",
+            "title": "Wandern & Trekking",
+            "url": "/collections/wandern-trekking",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805459067265",
+            "title": "Fussball & Fanshop",
+            "url": "/collections/fussball-fanshop",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/805459001729",
+            "title": "Camping & Outdoor",
+            "url": "/collections/camping-outdoor",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1475936780679",
+            "title": "Taschenlampen & Stirnlampen",
+            "url": "/collections/taschenlampen",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          },
+          {
+            "id": "gid://shopify/MenuItem/1483137712519",
+            "title": "Velo & Radsport",
+            "url": "/collections/velo-radsport",
+            "type": "HTTP",
+            "resourceId": null,
+            "tags": [],
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/MenuItem/798695457153",
+        "title": "♥ Merkliste",
+        "url": "/pages/merkliste",
+        "type": "HTTP",
+        "resourceId": null,
+        "tags": [],
+        "items": []
+      }
+    ]
+  },
+  "archiveNativeJoin": [
+    {
+      "archiveEntryId": "desktop-001",
+      "nativeItemId": "gid://shopify/MenuItem/798550491521",
+      "nativeParentIds": [],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/premium-geschenke",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-002",
+      "nativeItemId": "gid://shopify/MenuItem/1475071148423",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/weihnachten-2026",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Weihnachten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-003",
+      "nativeItemId": "gid://shopify/MenuItem/1475812721031",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/adventskalender",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Adventskalender"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-004",
+      "nativeItemId": "gid://shopify/MenuItem/1479249953159",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/weihnachtspyjama-familie",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Weihnachtspyjamas für die Familie"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-005",
+      "nativeItemId": "gid://shopify/MenuItem/805723570561",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-fuer-sie",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke für Sie"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-006",
+      "nativeItemId": "gid://shopify/MenuItem/1471765807495",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-fuer-ihn",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke für Ihn"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-007",
+      "nativeItemId": "gid://shopify/MenuItem/805723603329",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-fuer-kinder",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke für Kinder"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-008",
+      "nativeItemId": "gid://shopify/MenuItem/1475071181191",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Hochzeitsgeschenke"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-009",
+      "nativeItemId": "gid://shopify/MenuItem/805723505025",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kleine-geschenke-mitbringsel",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Kleine Mitbringsel unter CHF 20"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-010",
+      "nativeItemId": "gid://shopify/MenuItem/805459132801",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/unter-chf-25",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Preis-Hits unter CHF 25"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-011",
+      "nativeItemId": "gid://shopify/MenuItem/805723406721",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke bis CHF 30"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-012",
+      "nativeItemId": "gid://shopify/MenuItem/805723439489",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke unter CHF 50"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-013",
+      "nativeItemId": "gid://shopify/MenuItem/805723472257",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-unter-100-franken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Geschenke unter CHF 100"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-014",
+      "nativeItemId": "gid://shopify/MenuItem/805723636097",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sets-bundles",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Sets & Bundles"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-015",
+      "nativeItemId": "gid://shopify/MenuItem/805723537793",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/%F0%9F%92%8E-premium-ab-chf-80",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Geschenke & Weihnachten",
+        "Premium ab CHF 80"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-016",
+      "nativeItemId": "gid://shopify/MenuItem/798551114113",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 15,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/smoke-zubehoer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-017",
+      "nativeItemId": "gid://shopify/MenuItem/798550753665",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 16,
+      "normalizedRenderedUrl": "https://luxestyle.ch/pages/selbst-gestalten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_REQUIRES_PAGE_PURPOSE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-018",
+      "nativeItemId": "gid://shopify/MenuItem/798550819201",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 17,
+      "normalizedRenderedUrl": "https://luxestyle.ch/blogs/ratgeber",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "UTILITY_PLACEMENT_OPEN",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-019",
+      "nativeItemId": "gid://shopify/MenuItem/802316222849",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550491521"
+      ],
+      "nativeOrder": 18,
+      "normalizedRenderedUrl": "https://luxestyle.ch/pages/alle-kategorien",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "UTILITY_PLACEMENT_OPEN",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-020",
+      "nativeItemId": "gid://shopify/MenuItem/798548722049",
+      "nativeParentIds": [],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-mode",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-021",
+      "nativeItemId": "gid://shopify/MenuItem/804806099329",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-taschen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Taschen & Rucksäcke"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-022",
+      "nativeItemId": "gid://shopify/MenuItem/1475955032455",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/bauchtaschen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Bauchtaschen & Gürteltaschen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-023",
+      "nativeItemId": "gid://shopify/MenuItem/807714226561",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/accessoires",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Accessoires: Schals, Mützen & Gürtel"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-024",
+      "nativeItemId": "gid://shopify/MenuItem/798548754817",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-kleider",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Kleider"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-025",
+      "nativeItemId": "gid://shopify/MenuItem/1471932465543",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/midikleider",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Midikleider"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-026",
+      "nativeItemId": "gid://shopify/MenuItem/1475955065223",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/abendkleider",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Abendkleider & Cocktailkleider"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-027",
+      "nativeItemId": "gid://shopify/MenuItem/798548951425",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-schuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Schuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-028",
+      "nativeItemId": "gid://shopify/MenuItem/798548984193",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/t-shirts-tops",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "T-Shirts & Tops"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-029",
+      "nativeItemId": "gid://shopify/MenuItem/798548918657",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-strick-pullover",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Strick & Pullover"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-030",
+      "nativeItemId": "gid://shopify/MenuItem/798549016961",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/jeans-denim",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Jeans & Denim"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-031",
+      "nativeItemId": "gid://shopify/MenuItem/798548885889",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-jacken-maentel",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Jacken & Mäntel"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-032",
+      "nativeItemId": "gid://shopify/MenuItem/798549082497",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/jacken-outdoor",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Jacken & Outdoor-Mode"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-033",
+      "nativeItemId": "gid://shopify/MenuItem/798549049729",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/jumpsuits-overalls",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Jumpsuits & Overalls"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-034",
+      "nativeItemId": "gid://shopify/MenuItem/798548787585",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-blusen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Blusen & Tops"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-035",
+      "nativeItemId": "gid://shopify/MenuItem/798548820353",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 15,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-hosen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Hosen & Leggings"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-036",
+      "nativeItemId": "gid://shopify/MenuItem/798548853121",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 16,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-roecke",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Röcke"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-037",
+      "nativeItemId": "gid://shopify/MenuItem/805723111809",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 17,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/shorts-bermudas",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Shorts & Bermudas"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-038",
+      "nativeItemId": "gid://shopify/MenuItem/805723079041",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548722049"
+      ],
+      "nativeOrder": 18,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/nachtwaesche-pyjamas",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Damen",
+        "Nachtwäsche & Pyjamas"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-039",
+      "nativeItemId": "gid://shopify/MenuItem/798549148033",
+      "nativeParentIds": [],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/fur-ihn",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-040",
+      "nativeItemId": "gid://shopify/MenuItem/798549213569",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-schuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Schuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-041",
+      "nativeItemId": "gid://shopify/MenuItem/798549311873",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-hemden",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Hemden"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-042",
+      "nativeItemId": "gid://shopify/MenuItem/798549279105",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-shirts",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Shirts & Polos"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-043",
+      "nativeItemId": "gid://shopify/MenuItem/798549344641",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-hosen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Hosen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-044",
+      "nativeItemId": "gid://shopify/MenuItem/1483146756487",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-jeans",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Herren-Jeans"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-045",
+      "nativeItemId": "gid://shopify/MenuItem/798549410177",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-pullover",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Pullover"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-046",
+      "nativeItemId": "gid://shopify/MenuItem/798549377409",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-jacken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Jacken"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-047",
+      "nativeItemId": "gid://shopify/MenuItem/798549246337",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-uhren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Uhren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-048",
+      "nativeItemId": "gid://shopify/MenuItem/798549180801",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549148033"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-bart-rasur",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herren",
+        "Bart & Rasur"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-049",
+      "nativeItemId": "gid://shopify/MenuItem/798549934465",
+      "nativeParentIds": [],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/schuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-050",
+      "nativeItemId": "gid://shopify/MenuItem/798549967233",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-schuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Damenschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-051",
+      "nativeItemId": "gid://shopify/MenuItem/798550000001",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-schuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Herrenschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-052",
+      "nativeItemId": "gid://shopify/MenuItem/798550098305",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-sandalen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Sandalen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-053",
+      "nativeItemId": "gid://shopify/MenuItem/798550065537",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kinderschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Kinderschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-054",
+      "nativeItemId": "gid://shopify/MenuItem/798550262145",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-laufschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Lauf- & Sportschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-055",
+      "nativeItemId": "gid://shopify/MenuItem/798550131073",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-stiefel-boots",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Stiefel & Boots"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-056",
+      "nativeItemId": "gid://shopify/MenuItem/1475955097991",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/winterschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Winterschuhe & Winterstiefel"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-057",
+      "nativeItemId": "gid://shopify/MenuItem/798550032769",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sneaker-sportschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Sneaker & Sport"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-058",
+      "nativeItemId": "gid://shopify/MenuItem/798550163841",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-pumps-heels",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Pumps & High Heels"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-059",
+      "nativeItemId": "gid://shopify/MenuItem/798550196609",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-ballerinas",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Ballerinas & Flats"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-060",
+      "nativeItemId": "gid://shopify/MenuItem/798550229377",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-hausschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Hausschuhe & Slipper"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-061",
+      "nativeItemId": "gid://shopify/MenuItem/798550294913",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549934465"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-wander-arbeitsschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schuhe",
+        "Wander- & Arbeitsschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-062",
+      "nativeItemId": "gid://shopify/MenuItem/798549442945",
+      "nativeParentIds": [],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/schmuck-uhren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-063",
+      "nativeItemId": "gid://shopify/MenuItem/806210568577",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/premium-schmuck",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Premium Schmuck"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-064",
+      "nativeItemId": "gid://shopify/MenuItem/798549639553",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/uhren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Uhren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-065",
+      "nativeItemId": "gid://shopify/MenuItem/1483136860551",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945",
+        "gid://shopify/MenuItem/798549639553"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/smartwatches-wearables",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Uhren",
+        "Smartwatches & Wearables"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-066",
+      "nativeItemId": "gid://shopify/MenuItem/1483136893319",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945",
+        "gid://shopify/MenuItem/798549639553"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/uhren-herren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Uhren",
+        "Herrenuhren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-067",
+      "nativeItemId": "gid://shopify/MenuItem/1483136926087",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945",
+        "gid://shopify/MenuItem/798549639553"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/uhren-damen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Uhren",
+        "Damenuhren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-068",
+      "nativeItemId": "gid://shopify/MenuItem/1483136958855",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945",
+        "gid://shopify/MenuItem/798549639553"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/uhrenarmbaender",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Uhren",
+        "Uhrenarmbänder & Smartwatch-Armbänder"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-069",
+      "nativeItemId": "gid://shopify/MenuItem/1483136991623",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945",
+        "gid://shopify/MenuItem/798549639553"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/chronographen-automatik",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Uhren",
+        "Chronographen & Automatik"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-070",
+      "nativeItemId": "gid://shopify/MenuItem/798549574017",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-armbaender",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Armbänder"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-071",
+      "nativeItemId": "gid://shopify/MenuItem/798549475713",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-ringe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Ringe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-072",
+      "nativeItemId": "gid://shopify/MenuItem/798549508481",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-halsketten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Halsketten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-073",
+      "nativeItemId": "gid://shopify/MenuItem/798549541249",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-ohrringe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Ohrringe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-074",
+      "nativeItemId": "gid://shopify/MenuItem/798549606785",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/schmuck-sets",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Sets"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-075",
+      "nativeItemId": "gid://shopify/MenuItem/798549672321",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549442945"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sonnenbrillen-alle",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Schmuck & Uhren",
+        "Sonnenbrillen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-076",
+      "nativeItemId": "gid://shopify/MenuItem/798549705089",
+      "nativeParentIds": [],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/beauty-pflege",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Beauty & Pflege – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-077",
+      "nativeItemId": "gid://shopify/MenuItem/798549737857",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/beauty-pflege",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Beauty & Pflege"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-078",
+      "nativeItemId": "gid://shopify/MenuItem/805723144577",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/make-up",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Make-up & Kosmetik"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-079",
+      "nativeItemId": "gid://shopify/MenuItem/805723177345",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/hautpflege-skincare",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Hautpflege & Skincare"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-080",
+      "nativeItemId": "gid://shopify/MenuItem/798549770625",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/beauty-haar",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Haarpflege & Styling"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-081",
+      "nativeItemId": "gid://shopify/MenuItem/798549868929",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/haarstyling-geraete",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Haarstyling-Geräte"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-082",
+      "nativeItemId": "gid://shopify/MenuItem/798549901697",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/naegel-manikuere",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Nägel & Maniküre"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-083",
+      "nativeItemId": "gid://shopify/MenuItem/1475071213959",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wimpern-lashes",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Wimpern & Lashes"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-084",
+      "nativeItemId": "gid://shopify/MenuItem/1471188992391",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/parfum-duefte",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Parfum & Düfte"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-085",
+      "nativeItemId": "gid://shopify/MenuItem/1483137024391",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/beauty-geraete",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Beauty-Geräte & Haarentfernung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-086",
+      "nativeItemId": "gid://shopify/MenuItem/1483137057159",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/gesichtspflege-geraete",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Gesichtspflege-Geräte"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-087",
+      "nativeItemId": "gid://shopify/MenuItem/1483137089927",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-aroma-diffuser",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Aroma & Diffuser"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-088",
+      "nativeItemId": "gid://shopify/MenuItem/1483137122695",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/luftbefeuchter",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Luftbefeuchter"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-089",
+      "nativeItemId": "gid://shopify/MenuItem/1483137155463",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798549705089"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/schminkspiegel",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Beauty & Pflege",
+        "Schminkspiegel"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-090",
+      "nativeItemId": "gid://shopify/MenuItem/798550622593",
+      "nativeParentIds": [],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-091",
+      "nativeItemId": "gid://shopify/MenuItem/805458411905",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wohnen & Deko"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-092",
+      "nativeItemId": "gid://shopify/MenuItem/805723210113",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/aufbewahrung-sub",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Aufbewahrung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-093",
+      "nativeItemId": "gid://shopify/MenuItem/1475936551303",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/waeschekoerbe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wäschekörbe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-094",
+      "nativeItemId": "gid://shopify/MenuItem/1475936584071",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wandregale",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wandregale"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-095",
+      "nativeItemId": "gid://shopify/MenuItem/805458444673",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-kueche",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Küche & Kochen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-096",
+      "nativeItemId": "gid://shopify/MenuItem/1476976148871",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/schneidebretter",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Schneidebretter"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-097",
+      "nativeItemId": "gid://shopify/MenuItem/1475955130759",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/woks",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Woks & Wokpfannen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-098",
+      "nativeItemId": "gid://shopify/MenuItem/1475955163527",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/etageren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Etageren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-099",
+      "nativeItemId": "gid://shopify/MenuItem/805723275649",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kuechenhelfer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Küchenhelfer & Gadgets"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-100",
+      "nativeItemId": "gid://shopify/MenuItem/1475955196295",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/lunchboxen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Lunchboxen & Bento-Boxen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-101",
+      "nativeItemId": "gid://shopify/MenuItem/805723242881",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kissen-wohntextilien",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Kissen & Wohntextilien"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-102",
+      "nativeItemId": "gid://shopify/MenuItem/1475936616839",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/teppiche",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Teppiche"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-103",
+      "nativeItemId": "gid://shopify/MenuItem/1475936649607",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/bettwaesche",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Bettwäsche"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-104",
+      "nativeItemId": "gid://shopify/MenuItem/1471932498311",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/vorhaenge",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Vorhänge"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-105",
+      "nativeItemId": "gid://shopify/MenuItem/1475936682375",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 15,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/duschvorhaenge",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Duschvorhänge"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-106",
+      "nativeItemId": "gid://shopify/MenuItem/798551015809",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 16,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/basteln-diy",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Basteln & DIY"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-107",
+      "nativeItemId": "gid://shopify/MenuItem/1475821732231",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593",
+        "gid://shopify/MenuItem/798551015809"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/malen-nach-zahlen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Basteln & DIY",
+        "Malen nach Zahlen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-108",
+      "nativeItemId": "gid://shopify/MenuItem/1475821764999",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593",
+        "gid://shopify/MenuItem/798551015809"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/diamond-painting",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Basteln & DIY",
+        "Diamond Painting"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-109",
+      "nativeItemId": "gid://shopify/MenuItem/805458608513",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 17,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/outdoor-garten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Garten & Outdoor"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-110",
+      "nativeItemId": "gid://shopify/MenuItem/1471932531079",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 18,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/haengematten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Hängematten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-111",
+      "nativeItemId": "gid://shopify/MenuItem/799320932737",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 19,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/werkzeug-maschinen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Werkzeug & Maschinen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-112",
+      "nativeItemId": "gid://shopify/MenuItem/805458542977",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 20,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-aroma-diffuser",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Aroma & Diffuser"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-113",
+      "nativeItemId": "gid://shopify/MenuItem/805458510209",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 21,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-deko",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Vasen & Deko"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-114",
+      "nativeItemId": "gid://shopify/MenuItem/1471932563847",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 22,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wanddeko",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wanddeko"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-115",
+      "nativeItemId": "gid://shopify/MenuItem/1476976181639",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 23,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wandteppiche",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wandteppiche & Wandbehänge"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-116",
+      "nativeItemId": "gid://shopify/MenuItem/1475955229063",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 24,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wanduhren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wanduhren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-117",
+      "nativeItemId": "gid://shopify/MenuItem/798551179649",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 25,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/ersatzteile-zubehoer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Ersatzteile & Zubehör"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-118",
+      "nativeItemId": "gid://shopify/MenuItem/805458477441",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 26,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-beleuchtung",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Beleuchtung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-119",
+      "nativeItemId": "gid://shopify/MenuItem/1475936715143",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 27,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wecker",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Wecker"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-120",
+      "nativeItemId": "gid://shopify/MenuItem/798551081345",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 28,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenkverpackung",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Geschenkverpackung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-121",
+      "nativeItemId": "gid://shopify/MenuItem/805458575745",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 29,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kuschel-heizdecken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Kuschel- & Heizdecken"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-122",
+      "nativeItemId": "gid://shopify/MenuItem/1471189025159",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 30,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/haushaltsgeraete",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "Haushaltsgeräte"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-123",
+      "nativeItemId": "gid://shopify/MenuItem/1475071246727",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550622593"
+      ],
+      "nativeOrder": 31,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/licht-led-strip",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Wohnen & Garten",
+        "LED-Strips & Lichterketten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-124",
+      "nativeItemId": "gid://shopify/MenuItem/798550655361",
+      "nativeParentIds": [],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/elektronik-technik",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Technik & Gaming – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-125",
+      "nativeItemId": "gid://shopify/MenuItem/805458641281",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/elektronik-technik",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Elektronik & Technik"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-126",
+      "nativeItemId": "gid://shopify/MenuItem/805458674049",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/smartwatches-wearables",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Smartwatches & Wearables"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-127",
+      "nativeItemId": "gid://shopify/MenuItem/1483137188231",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458674049"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/uhrenarmbaender",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Smartwatches & Wearables",
+        "Uhrenarmbänder & Smartwatch-Armbänder"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-128",
+      "nativeItemId": "gid://shopify/MenuItem/805458706817",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kopfhoerer-audio",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Kopfhörer & Audio"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-129",
+      "nativeItemId": "gid://shopify/MenuItem/1483137220999",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458706817"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/lautsprecher",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Kopfhörer & Audio",
+        "Lautsprecher & Boxen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-130",
+      "nativeItemId": "gid://shopify/MenuItem/1483137253767",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458706817"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/mikrofone",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Kopfhörer & Audio",
+        "Mikrofone & Streaming"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-131",
+      "nativeItemId": "gid://shopify/MenuItem/805723308417",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/elektronik-laden",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Ladegeräte & Powerbanks"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-132",
+      "nativeItemId": "gid://shopify/MenuItem/804806132097",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/handy-zubehoer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Handy-Zubehör"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-133",
+      "nativeItemId": "gid://shopify/MenuItem/1483137286535",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/804806132097"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/handy-halterungen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Handy-Zubehör",
+        "Halterungen & MagSafe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-134",
+      "nativeItemId": "gid://shopify/MenuItem/1483137319303",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/804806132097"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/handy-huellen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Handy-Zubehör",
+        "Handyhüllen & Cases"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-135",
+      "nativeItemId": "gid://shopify/MenuItem/1471189057927",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kabel-adapter",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Kabel & Adapter"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-136",
+      "nativeItemId": "gid://shopify/MenuItem/804806164865",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/gaming",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Gaming"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-137",
+      "nativeItemId": "gid://shopify/MenuItem/1483137352071",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/804806164865"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/gaming-controller",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Gaming",
+        "Controller & Gamepads"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-138",
+      "nativeItemId": "gid://shopify/MenuItem/1483137384839",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/804806164865"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/pc-gaming",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Gaming",
+        "PC-Gaming"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-139",
+      "nativeItemId": "gid://shopify/MenuItem/1483137417607",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/804806164865"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/retro-handheld",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Gaming",
+        "Retro & Handheld-Gaming"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-140",
+      "nativeItemId": "gid://shopify/MenuItem/805458772353",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/drohnen-kameras",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Drohnen & Kameras"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-141",
+      "nativeItemId": "gid://shopify/MenuItem/1483137450375",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458772353"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/drohnen-fpv",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Drohnen & Kameras",
+        "Drohnen & FPV"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-142",
+      "nativeItemId": "gid://shopify/MenuItem/1483137483143",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458772353"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/foto-tech",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Drohnen & Kameras",
+        "Foto & Video"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-143",
+      "nativeItemId": "gid://shopify/MenuItem/805458739585",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/beamer-heimkino",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Beamer & Heimkino"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-144",
+      "nativeItemId": "gid://shopify/MenuItem/805458805121",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/pc-homeoffice",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "PC & Homeoffice"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-145",
+      "nativeItemId": "gid://shopify/MenuItem/1483137515911",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458805121"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/tastatur-maus",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "PC & Homeoffice",
+        "Tastaturen & Mäuse"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-146",
+      "nativeItemId": "gid://shopify/MenuItem/1483137548679",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458805121"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/laptop-tablet-zubehoer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "PC & Homeoffice",
+        "Laptop- & Tablet-Zubehör"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-147",
+      "nativeItemId": "gid://shopify/MenuItem/1483137581447",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458805121"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/pc-komponenten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "PC & Homeoffice",
+        "PC-Komponenten & Speicher"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-148",
+      "nativeItemId": "gid://shopify/MenuItem/1483137614215",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361",
+        "gid://shopify/MenuItem/805458805121"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/netzwerk-router",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "PC & Homeoffice",
+        "Netzwerk & WLAN"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-149",
+      "nativeItemId": "gid://shopify/MenuItem/807734542721",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/buro-home-office",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Büro & Home Office"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-150",
+      "nativeItemId": "gid://shopify/MenuItem/1483137646983",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/smart-home-gadgets",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Smart Home & smarte Gadgets"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-151",
+      "nativeItemId": "gid://shopify/MenuItem/1475955261831",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/usb-sticks",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "USB-Sticks"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-152",
+      "nativeItemId": "gid://shopify/MenuItem/804806197633",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/auto-kfz-zubehoer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Auto & KFZ-Zubehör"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-153",
+      "nativeItemId": "gid://shopify/MenuItem/804813013377",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 15,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/elektronik-kleinteile",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Elektronik-Kleinteile"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-154",
+      "nativeItemId": "gid://shopify/MenuItem/805723341185",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550655361"
+      ],
+      "nativeOrder": 16,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/trends-gadgets",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Lifestyle & Trends"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-155",
+      "nativeItemId": "gid://shopify/MenuItem/798550557057",
+      "nativeParentIds": [],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-baby-kids",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-156",
+      "nativeItemId": "gid://shopify/MenuItem/805458837889",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-baby-kids",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Kinder & Baby"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-157",
+      "nativeItemId": "gid://shopify/MenuItem/1474909176199",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/babykleidung",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Babykleidung & Kindermode"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-158",
+      "nativeItemId": "gid://shopify/MenuItem/1474909208967",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/1474909176199"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/strampler-bodys",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Babykleidung & Kindermode",
+        "Strampler & Bodys"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-159",
+      "nativeItemId": "gid://shopify/MenuItem/1474909241735",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/1474909176199"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/baby-kinder-sets",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Babykleidung & Kindermode",
+        "Baby- & Kinder-Sets"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-160",
+      "nativeItemId": "gid://shopify/MenuItem/798550688129",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-haustier",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Haustierwelt"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-161",
+      "nativeItemId": "gid://shopify/MenuItem/798779244929",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/haustier-hunde",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Hunde"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-162",
+      "nativeItemId": "gid://shopify/MenuItem/798779277697",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/haustier-katzen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Katzen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-163",
+      "nativeItemId": "gid://shopify/MenuItem/798779310465",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/tier-leinen-kleidung",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Leinen & Tierkleidung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-164",
+      "nativeItemId": "gid://shopify/MenuItem/798779343233",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/tierspielzeug",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Tierspielzeug"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-165",
+      "nativeItemId": "gid://shopify/MenuItem/798779376001",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/tier-naepfe-fuettern",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Näpfe & Füttern"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-166",
+      "nativeItemId": "gid://shopify/MenuItem/798779408769",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/tier-pflege-unterwegs",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Pflege & Unterwegs"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-167",
+      "nativeItemId": "gid://shopify/MenuItem/1471932596615",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kratzbaeume",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Kratzbäume"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-168",
+      "nativeItemId": "gid://shopify/MenuItem/1471932629383",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057",
+        "gid://shopify/MenuItem/798550688129"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/hundebetten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Haustierwelt",
+        "Hundebetten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-169",
+      "nativeItemId": "gid://shopify/MenuItem/798707646849",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/spielzeug",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Spielzeug & Plüsch"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-170",
+      "nativeItemId": "gid://shopify/MenuItem/805458903425",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kinderschuhe",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Kinderschuhe"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-171",
+      "nativeItemId": "gid://shopify/MenuItem/1475071279495",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/spielzeug-fahrzeuge",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Fahrzeuge & RC"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-172",
+      "nativeItemId": "gid://shopify/MenuItem/805458870657",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/spielzeug-ch-lager",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Spielzeug ab CH-Lager"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-173",
+      "nativeItemId": "gid://shopify/MenuItem/805447500161",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/klemmbausteine-bausaetze",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Klemmbausteine & Bausätze"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-174",
+      "nativeItemId": "gid://shopify/MenuItem/1483137679751",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550557057"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/geschenke-fuer-kinder",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Kinder & Haustier",
+        "Geschenke für Kinder"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-175",
+      "nativeItemId": "gid://shopify/MenuItem/798548361601",
+      "nativeParentIds": [],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/bestseller",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-176",
+      "nativeItemId": "gid://shopify/MenuItem/798548525441",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/bestseller",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-177",
+      "nativeItemId": "gid://shopify/MenuItem/803299230081",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/blitzversand-schweiz",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-178",
+      "nativeItemId": "gid://shopify/MenuItem/804810064257",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kostueme-ch-lager",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Highlights",
+        "Kostüme ab CH-Lager"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-179",
+      "nativeItemId": "gid://shopify/MenuItem/798548590977",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/viral-hits",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-180",
+      "nativeItemId": "gid://shopify/MenuItem/798548492673",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/eu-lager-schnell",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-181",
+      "nativeItemId": "gid://shopify/MenuItem/798548394369",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/erste-august",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Highlights",
+        "Schweizer Editionen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-182",
+      "nativeItemId": "gid://shopify/MenuItem/798548623745",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/luxestyle-premium",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-183",
+      "nativeItemId": "gid://shopify/MenuItem/798548558209",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/ventilatoren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Highlights",
+        "Ventilatoren & Kühlung"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-184",
+      "nativeItemId": "gid://shopify/MenuItem/798548427137",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/fussball-fanshop",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Highlights",
+        "Fussball & Fanshop"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-185",
+      "nativeItemId": "gid://shopify/MenuItem/798548459905",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/vr-ai-neuheiten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Technik & Gaming",
+        "Highlights",
+        "VR, AI & Neuheiten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-186",
+      "nativeItemId": "gid://shopify/MenuItem/798548689281",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798548361601"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/pages/marken-kategorien",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "UTILITY_PLACEMENT_OPEN",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-187",
+      "nativeItemId": "gid://shopify/MenuItem/798550327681",
+      "nativeParentIds": [],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/jacken-outdoor",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-188",
+      "nativeItemId": "gid://shopify/MenuItem/798550393217",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herbst-favoriten",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Herbst-Favoriten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-189",
+      "nativeItemId": "gid://shopify/MenuItem/803299262849",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/jacken-outdoor",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Jacken & Mäntel"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-190",
+      "nativeItemId": "gid://shopify/MenuItem/1475936747911",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/winterjacken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Winterjacken & Daunenjacken"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-191",
+      "nativeItemId": "gid://shopify/MenuItem/803299295617",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/damen-strick-pullover",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Damen-Strick & Pullover"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-192",
+      "nativeItemId": "gid://shopify/MenuItem/803299328385",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/hoodies-sweatshirts",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Hoodies & Sweatshirts"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-193",
+      "nativeItemId": "gid://shopify/MenuItem/798550425985",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/herren-pullover",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Herren-Pullover & Strick"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-194",
+      "nativeItemId": "gid://shopify/MenuItem/1479249985927",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/weihnachtspullover",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Weihnachtspullover"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-195",
+      "nativeItemId": "gid://shopify/MenuItem/798550360449",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-stiefel-boots",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Stiefel & Boots"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-196",
+      "nativeItemId": "gid://shopify/MenuItem/803299361153",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/muetzen-schals",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Mützen & Schals"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-197",
+      "nativeItemId": "gid://shopify/MenuItem/1471189090695",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/westen-gilets",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Mode & Accessoires",
+        "Herbst & Übergang",
+        "Westen & Gilets"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-198",
+      "nativeItemId": "gid://shopify/MenuItem/803299393921",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kuschel-heizdecken",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Wohnen & Licht",
+        "Herbst & Übergang",
+        "Kuschel- & Heizdecken"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-199",
+      "nativeItemId": "gid://shopify/MenuItem/807226311041",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/waerme-komfort",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-200",
+      "nativeItemId": "gid://shopify/MenuItem/1479250018695",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/handwaermer",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "OPEN_CROSS_CUTTING_OR_SENSITIVE",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-201",
+      "nativeItemId": "gid://shopify/MenuItem/798550458753",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550327681"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-reise",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Herbst & Übergang",
+        "Reisen & Outdoor"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-202",
+      "nativeItemId": "gid://shopify/MenuItem/798550589825",
+      "nativeParentIds": [],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/fitness-training",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party – Übersicht"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-203",
+      "nativeItemId": "gid://shopify/MenuItem/805458936193",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 1,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/fitness-training",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Sport & Fitness"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-204",
+      "nativeItemId": "gid://shopify/MenuItem/805723373953",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 2,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/rucksaecke",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Rucksäcke"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-205",
+      "nativeItemId": "gid://shopify/MenuItem/805459100033",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 3,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kostueme-ch-lager",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Kostüme ab CH-Lager"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-206",
+      "nativeItemId": "gid://shopify/MenuItem/798550720897",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 4,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/kostueme-fasnacht",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Kostüme & Party"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-207",
+      "nativeItemId": "gid://shopify/MenuItem/807734575489",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 5,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/party-deko-ch",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Partydeko & Ballone"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-208",
+      "nativeItemId": "gid://shopify/MenuItem/805448417665",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 6,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/suesses-esswaren",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Süsses & Esswaren"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-209",
+      "nativeItemId": "gid://shopify/MenuItem/805459034497",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 7,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-reise",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Reisen & Outdoor"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-210",
+      "nativeItemId": "gid://shopify/MenuItem/805458968961",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 8,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/sub-yoga-fitness",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Yoga & Fitness"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-211",
+      "nativeItemId": "gid://shopify/MenuItem/798550524289",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 9,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/halloween",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Halloween"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-212",
+      "nativeItemId": "gid://shopify/MenuItem/807734608257",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 10,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/weihnachten-2026",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Geschenke & Saison",
+        "Sport & Party",
+        "Weihnachten"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-213",
+      "nativeItemId": "gid://shopify/MenuItem/798551146881",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 11,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/wandern-trekking",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Wandern & Trekking"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-214",
+      "nativeItemId": "gid://shopify/MenuItem/805459067265",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 12,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/fussball-fanshop",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Fussball & Fanshop"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-215",
+      "nativeItemId": "gid://shopify/MenuItem/805459001729",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/camping-outdoor",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Camping & Outdoor"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-216",
+      "nativeItemId": "gid://shopify/MenuItem/1475936780679",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 14,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/taschenlampen",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Taschenlampen & Stirnlampen"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-217",
+      "nativeItemId": "gid://shopify/MenuItem/1483137712519",
+      "nativeParentIds": [
+        "gid://shopify/MenuItem/798550589825"
+      ],
+      "nativeOrder": 15,
+      "normalizedRenderedUrl": "https://luxestyle.ch/collections/velo-radsport",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": [
+        "Familie & Freizeit",
+        "Sport & Party",
+        "Velo & Radsport"
+      ],
+      "placementStatus": "MAPPED_DRAFT",
+      "mutation": "NONE"
+    },
+    {
+      "archiveEntryId": "desktop-218",
+      "nativeItemId": "gid://shopify/MenuItem/798695457153",
+      "nativeParentIds": [],
+      "nativeOrder": 13,
+      "normalizedRenderedUrl": "https://luxestyle.ch/pages/merkliste",
+      "sourceMatch": "EXACT_TITLE_URL_PARENT_ORDER",
+      "proposedPath": null,
+      "placementStatus": "UTILITY_PLACEMENT_OPEN",
+      "mutation": "NONE"
+    }
+  ],
+  "importantDistinctions": [
+    "All source links are configured as HTTP; this is a confirmed existing configuration, not an error or instruction to convert them to COLLECTION.",
+    "Empty navigation MenuItem.tags does not mean product social tags are empty. Product tag guards remain separate.",
+    "Five separately archived technology-category filter routes have menu_entry=false; they are not among the 218 native menu items and are not MenuItem.tags. No native IDs are assigned to these context routes; preserve their separate URL semantics during any later category review.",
+    "Native IDs remove the previous unknown native-menu-source blocker, not the 14 remaining placement decisions, rights gates, or owner approval.",
+    "No index status, target HTTP response, product membership or Shopify publication status is inferred from a menu link.",
+    "Archived rendered absolute URL and exact native relative URL are both retained; normalization only compares the known luxestyle.ch origin."
+  ],
+  "validation": {
+    "schema": "QueryRoot/Menu/MenuItem fetched first; native validator delegated validation to successful graphql_query",
+    "nativeReadSucceeded": true,
+    "localCliDocSearch": "fetch failed; native docs search succeeded",
+    "localCliValidator": "unavailable: missing /workspace/luxestyle-review/claude-hilfe-20261024/assets; not a field validation failure; no dummy assets/install/retry"
+  },
+  "nextStep": "Read same menu freshly and resolve 14 placements before designing a native input diff; preserve every existing id/type/url/resourceId/tags and new hierarchy review, no operational write here."
+}
