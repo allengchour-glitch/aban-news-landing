@@ -1,6 +1,6 @@
 // Tests der Kategorie-Regeln und des Menü-Umbaus. Gegenproben in BEIDE Richtungen; Zusammenfassung am ENDE.
 // Die Fälle sind echte Titel/Google-Kategorien aus dem Katalog vom 25.10.2026.
-import { KATEGORIEN, BEREINIGUNG, gehoertIn, werkzeugArt, istSticker, istBastelWare, WAFFEN } from './kategorien.mjs';
+import { istGeschenkUngeeignet, KATEGORIEN, BEREINIGUNG, gehoertIn, werkzeugArt, istSticker, istBastelWare, WAFFEN } from './kategorien.mjs';
 import { einfuegenPfad, verschiebe, befoerdern, umbenennen, entfernen, tiefe, anwenden, gleicherBaum, UMBAU } from './menue_plan.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -63,10 +63,13 @@ ist('kissen: Bezug gehört NICHT zu Kissen', in_('kissen', P('Kissenbezug Leinen
 ist('kissenbezuege: Bezug', in_('kissenbezuege', P('Kissenbezug Leinen 45x45', 'Home & Garden > Decor > Throw Pillows')), true);
 ist('kissenbezuege: Gegenprobe Kissen «Alphorn»', in_('kissenbezuege', P('Kissen «Alphorn»', 'Home & Garden > Decor > Throw Pillows')), false);
 ist('sofaueberzuege', in_('sofaueberzuege', P('Elastischer Sofabezug ohne Armlehnen', 'Home & Garden > Decor > Slipcovers')), true);
-ist('lampen: Tischlampe', in_('lampen', P('LED Nachttischlampe Musiknote', 'Home & Garden > Lighting > Lamps')), true);
+ist('lampen: Tischlampe', in_('lampen', P('Kristall-Tischlampe mit Touch-Funktion', 'Home & Garden > Lighting > Lamps')), true);
 ist('lampen: Gegenprobe Wandleuchte', in_('lampen', P('Wandleuchte', 'Home & Garden > Lighting > Lighting Fixtures > Wall Light Fixtures')), false);
-ist('geldboersen', in_('geldboersen', P('Herren Geldbörse', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), true);
-ist('geldboersen: Gegenprobe Handtasche', in_('geldboersen', P('Handtasche', 'Apparel & Accessories > Handbags, Wallets & Cases > Handbags')), false);
+ist('portemonnaie: Herren-Geldbörse', in_('portemonnaies', P('Herren-Geldbörse aus Rindsleder', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), true);
+ist('portemonnaie: Gegenprobe Kartenhalter ist kein Portemonnaie', in_('portemonnaies', P('Kartenhalter aus Ölfarben-Leder', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), false);
+ist('kartenhalter: Kartenetui', in_('kartenhalter', P('Magnetisches Leder Kartenetui', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), true);
+ist('kartenhalter: Gegenprobe Geldbörse mit Kartenfächern bleibt Portemonnaie', in_('kartenhalter', P('Männliche Leder-Geldbörse mit Kartenfächern', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), false);
+ist('portemonnaie: Gegenprobe Handtasche', in_('portemonnaies', P('Handtasche', 'Apparel & Accessories > Handbags, Wallets & Cases > Handbags')), false);
 ist('laptopzubehoer: Gegenprobe Laptop-Rucksack', in_('laptopzubehoer', P('Business-Rucksack gross für Laptop', 'Luggage & Bags > Backpacks')), false);
 ist('laptopzubehoer: Laptop-Ständer', in_('laptopzubehoer', P('Laptop-Ständer aus Aluminium', 'Electronics > Electronics Accessories > Computer Accessories')), true);
 
@@ -77,6 +80,40 @@ ist('kinder-baby: Spielzeug', in_('kinder-baby', P('Klemmbausteine Set', 'Toys &
 ist('kinder-baby: Gegenprobe Damen-Stiefel', in_('kinder-baby', P('Damen Wildleder-Stiefeletten', 'Apparel & Accessories > Shoes')), false);
 ist('tier-leinen: Hundeleine', in_('tier-leinen', P('Stossdämpfende Hundeleine', 'Animals & Pet Supplies > Pet Supplies > Pet Leashes')), true);
 ist('tier-kleidung: Hundemantel', in_('tier-kleidung', P('Hundemantel wasserdicht', 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel')), true);
+
+// ── Wander- und Arbeitsschuhe ──
+const SH = 'Apparel & Accessories > Shoes';
+ist('wanderschuhe: Herren-Wanderschuhe', in_('wanderschuhe', P('Herren-Wanderschuhe aus Leder', SH)), true);
+ist('wanderschuhe: Hikingboots', in_('wanderschuhe', P('Atmungsaktive Lederhikingboots', SH)), true);
+ist('wanderschuhe: Gegenprobe Arbeitsschuh', in_('wanderschuhe', P('Arbeitsschuhe mit Stahlkappe', SH)), false);
+ist('wanderschuhe: Gegenprobe Wanderstock ist kein Schuh', in_('wanderschuhe', P('Wanderstock aus Carbon', 'Sporting Goods > Outdoor Recreation')), false);
+ist('arbeitsschuhe: Stahlkappe', in_('arbeitsschuhe', P('Leichte Arbeitsschuhe mit Stahlkappe', SH)), true);
+ist('arbeitsschuhe: Gegenprobe Sneaker', in_('arbeitsschuhe', P('Atmungsaktiver Sneaker', SH)), false);
+ist('arbeitsschuhe: Gegenprobe Wanderschuhe trennen', [in_('wanderschuhe', P('Outdoor-Arbeitsstiefel Low-Top', SH)), in_('arbeitsschuhe', P('Outdoor-Arbeitsstiefel Low-Top', SH))], [false, true]);
+
+// ── VR / smarte Brillen ──
+ist('vr: VR-Brille', in_('vr', P('VR-Brille für Smartphones', 'Electronics > Video')), true);
+ist('vr: Gegenprobe Kleid «Vrouwe» kein VR', in_('vr', P('Vrouwen Kleid Sommer', 'Apparel & Accessories > Clothing > Dresses')), false);
+ist('smartebrillen: Smart-Brille mit Kamera', in_('smartebrillen', P('Smart-Brille mit 8MP Kamera', 'Electronics > Computers > Smart Glasses')), true);
+ist('smartebrillen: Gegenprobe VR-Brille gehört nicht dazu', in_('smartebrillen', P('VR-Brille für Smartphones', 'Electronics > Computers > Smart Glasses')), false);
+
+// ── Büro ──
+ist('buero: Desk-Organizer', in_('buero-organizer', P('Schreibtisch-Organizer', 'Office Supplies > Filing & Organization > Desk Organizers')), true);
+ist('buero: Gegenprobe Kalender nicht im Organizer', in_('buero-organizer', P('Retro Schreibtischkalender', 'Office Supplies > Filing & Organization > Calendars, Organizers & Planners')), false);
+ist('buero: Kalender', in_('kalender', P('Retro Schreibtischkalender', 'Office Supplies > Filing & Organization > Calendars, Organizers & Planners')), true);
+ist('buero: Schreibtischlampe nach Titel', in_('schreibtischlampen', P('LED Schreibtischlampe Akku – 3 Helligkeiten', 'Home & Garden > Lighting > Lamps')), true);
+ist('buero: Gegenprobe Rucksack gehört nicht ins Büro', in_('buero', P('Business-Rucksack gross für Laptop', 'Luggage & Bags > Backpacks')), false);
+ist('buero: Gegenprobe Aktentasche gehört zu Taschen', in_('buero', P('Aktentasche', 'Luggage & Bags > Briefcases')), false);
+
+// ── Lampen überschneidungsfrei ──
+const LP = 'Home & Garden > Lighting > Lamps';
+const lampenIds = t => ['lampen', 'nachttischlampen', 'schreibtischlampen'].filter(id => in_(id, P(t, LP)));
+ist('lampen: Nachttischlampe nur dort', lampenIds('LED Nachttischlampe Musiknote'), ['nachttischlampen']);
+ist('lampen: Schreibtischlampe nur dort', lampenIds('Zen-Stil Schreibtischlampe'), ['schreibtischlampen']);
+ist('lampen: Dekolampe nur bei Tisch- & Stehlampen', lampenIds('Quallen-Lava-Lampe mit 17 Farben'), ['lampen']);
+ist('lampen: Gegenprobe Bewegungssensor-Schreibtischlampe für Schlafzimmertische ist eine Schreibtischlampe, keine zweite', lampenIds('Bewegungssensor-Schreibtischlampe für Schlafzimmertische'), ['schreibtischlampen']);
+ist('mauspads: Mauspad', in_('mauspads', P('Mauspad «Alphorn»', 'Electronics > Electronics Accessories > Computer Accessories > Mouse Pads')), true);
+ist('mauspads: Gegenprobe Maus selbst', in_('mauspads', P('Kabellose Maus ergonomisch', 'Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs')), false);
 
 // ── Retro: ganzes Wort ──
 ist('retro: Retro-Uhr', in_('retro', P('Retro-Glockenwecker aus Metall')), true);
@@ -91,6 +128,15 @@ ist('bereinigung: Gegenprobe Malset behält basteln', b('basteln-fremd').wenn(P(
 ist('bereinigung: Bastelware ohne Tag bekommt ihn', b('basteln-fehlt').wenn(P('Kreuzstich-Set', 'Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits', [])), true);
 ist('bereinigung: Vase verlässt Dekoration', b('deko-vasen').wenn(P('Retro Glasvase', 'Home & Garden > Decor > Vases', ['kat-deko'])), true);
 ist('bereinigung: Gegenprobe Figur bleibt in Dekoration', b('deko-vasen').wenn(P('Kupfer-Löwe Dekoration', 'Home & Garden > Decor > Figurines', ['kat-deko'])), false);
+
+// ── Geschenk-Eignung (Seite «Geschenke für Ihn» zeigte Camping-Ware) ──
+ist('geschenk: Camping-Airbett ungeeignet', istGeschenkUngeeignet(P('Camping-Automatik-Airbett faltbar', 'Sporting Goods > Outdoor Recreation > Camping & Hiking')), true);
+ist('geschenk: Hecktasche ungeeignet', istGeschenkUngeeignet(P('Camping Hecktasche faltbar für Outdoor', 'Home & Garden > Household Supplies > Storage & Organization')), true);
+ist('geschenk: Küchenmaschine ungeeignet', istGeschenkUngeeignet(P('Elektrischer Fleischwolf 5L', 'Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders')), true);
+ist('geschenk: Gegenprobe Herrenuhr geeignet', istGeschenkUngeeignet(P('Klassische Herrenuhr mit Leuchtanzeige', 'Apparel & Accessories > Jewelry > Watches')), false);
+ist('geschenk: Gegenprobe Portemonnaie geeignet', istGeschenkUngeeignet(P('Grosses Lederportemonnaie', 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips')), false);
+ist('geschenk: Gegenprobe Whisky-Barware geeignet', istGeschenkUngeeignet(P('Whisky-Gläser Set', 'Home & Garden > Kitchen & Dining > Barware')), false);
+ist('bereinigung: Camping verliert Geschenk-Tag, Uhr behält ihn', [BEREINIGUNG.find(x => x.id === 'geschenk-eignung').wenn(P('Camping-Airbett', 'Sporting Goods > Outdoor Recreation > Camping & Hiking', ['geschenkwelt-ihn'])), BEREINIGUNG.find(x => x.id === 'geschenk-eignung').wenn(P('Herrenuhr', 'Apparel & Accessories > Jewelry > Watches', ['geschenkwelt-ihn']))], [true, false]);
 
 // ── Struktur: jede Kategorie hat Tag, Mindestzahl; keine doppelten Tags/Handles; neue Tags kollidieren nicht mit bestehenden ──
 const tags = KATEGORIEN.map(k => k.tag), handles = KATEGORIEN.map(k => k.handle);

@@ -117,9 +117,12 @@ export const UMBAU = [
   // Taschen & Rucksäcke eigene Welt (waren nur ein Unterpunkt von «Damen»)
   { op: 'befoerdern', von: ['Damen', 'Taschen & Rucksäcke'], hinter: 'Schuhe' },
   { op: 'verschiebe', von: ['Damen', 'Bauchtaschen & Gürteltaschen'], nach: ['Taschen & Rucksäcke'] },
+  // Wander- und Arbeitsschuhe trennen
+  { op: 'entfernen', pfad: ['Schuhe', 'Wander- & Arbeitsschuhe'] },
   // Kinder und Haustiere trennen
   { op: 'umbenennen', pfad: ['Kinder & Haustier'], titel: 'Kinder & Baby' },
   { op: 'entfernen', pfad: ['Kinder & Baby', 'Kinder & Baby'] },
   { op: 'befoerdern', von: ['Kinder & Baby', 'Haustierwelt'], hinter: 'Kinder & Baby', titel: 'Haustiere' },
   { op: 'entfernen', pfad: ['Haustiere', 'Leinen & Tierkleidung'] },
+  { op: 'entfernen', pfad: ['Haustiere', 'Hundebetten'] },
 ];

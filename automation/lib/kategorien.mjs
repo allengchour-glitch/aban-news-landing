@@ -103,6 +103,17 @@ export function istBastelWare(p) {
 
 const KIND_RE = /(^|[^a-zäöüß])(kinder|mädchen|jungen|jungs|kleinkind(er)?|baby|babys|kids?|teenager)([^a-zäöüß]|$)|(kinder|mädchen|baby)-/i;
 const SCHULE_RE = anfang('schulrucksack|schulranzen|schultasche|federmäppchen|federtasche|etui für stifte|stiftebox|stifthalter|schreibhilfe|schreiblern|radiergummi|bleistiftspitzer|anspitzer|schulheft|schulbedarf|schuleinführung|einschulung|zuckertüte|znünibox|brotdose|kindergartentasche|kindergartenrucksack|lernuhr|lerntafel|malblock');
+const TIER_TECH_RE = /(^|[^a-zäöüß])(elektrisch\w*|smart\w*|intelligent\w*|automatisch\w*|gps|tracker\w*|kamera\w*|usb\w*|wiederaufladbar\w*|led|ultraschall\w*|fernbedien\w*|futterautomat\w*|trinkbrunnen|katzenbrunnen|wasserspender|bluetooth)([^a-zäöüß]|$)|app-steuerung|katzentoilette/i;
+const KARTEN_RE = anfang('kartenhalter|kartenetui|kartentasche|kartenhülle|card ?holder|ausweishülle|ausweisetui|visitenkartenetui|kartenportemonnaie|kreditkartenetui|kartenbörse');
+const istGeldbeutel = p => gp(p, 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets', 'Apparel & Accessories > Handbags, Wallets & Cases > Badge');
+const istKartenhalter = p => istGeldbeutel(p) && KARTEN_RE.test(p.title) || gp(p, 'Apparel & Accessories > Handbags, Wallets & Cases > Badge');
+const istSchuh = p => gp(p, 'Apparel & Accessories > Shoes') || (p.productType || '').toLowerCase().includes('schuh');
+const WANDER_RE = ende_('wanderschuh\\w*|wanderstiefel|trekking\\w*|hiking\\w*|bergschuh\\w*|bergstiefel|outdoor-?schuh\\w*|outdoor-?stiefel|wander-');
+const ARBEIT_RE = ende_('arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|arbeits-');
+const VR_RE = /(^|[^a-zäöüß])(vr|virtual)[- ]?(brille|headset|reality|controller|zubehör|gamepad)|vr-?brille|vr-headset|3d-?brille/i;
+const SMART_BRILLE_RE = /smart(e|en)? ?brille|ar-brille|ki-brille|audio-brille|bluetooth-brille|mt5 ultra ai brille/i;
+const BUERO_LAMPE_RE = ende_('schreibtischlampe|schreibtischleuchte|bürolampe|leselampe|monitor-?lichtleiste|buchlampe|klemmlampe|arbeitsplatzleuchte|desk');
+const NACHT_LAMPE_RE = ende_('nachttisch\\w*|nachtlampe|bettlampe|bett-?leuchte|schlafzimmer\\w*');
 const BEZUG_RE = anfang('kissenbezug|kissenbezüge|kissenhülle|kissenüberzug|bezug|bezüge|hülle|überzug|ueberzug');
 const WANDBILD_RE = anfang('wandbild|leinwandbild|poster|gemälde|ölgemälde|kunstdruck|wandtattoo|wandsticker|wandaufkleber|bilderrahmen|fotowand|diamantmalerei-bild|leinwand');
 
@@ -197,11 +208,16 @@ export const KATEGORIEN = [
     passt: p => gp(p, HG + 'Decor > Vases') || (ende_('vase|vasen|blumentopf|blumentöpfe|pflanztopf|übertopf|pflanzgefäss|blumenampel').test(p.title) && !gp(p, 'Apparel', 'Electronics', 'Hardware', 'Health & Beauty')) },
 
   // ── Beleuchtung ──
-  { id: 'lampen', handle: 'tisch-nachttischlampen', titel: 'Tisch- & Nachttischlampen', tag: 'sort-lampen', min: 15,
-    beschreibung: 'Tischlampen, Nachttischlampen, Leselampen und Stehleuchten — zum Lesen, Arbeiten und für gemütliches Licht.',
-    seoBeschreibung: 'Tisch- & Nachttischlampen: Leselampen, Schreibtischlampen und Stehleuchten. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+  { id: 'lampen', handle: 'tisch-nachttischlampen', titel: 'Tisch- & Stehlampen', tag: 'sort-lampen', min: 15,
+    beschreibung: 'Dekorative Tischlampen, Stehleuchten und Akku-Lampen für Wohnzimmer, Regal und Kommode.',
+    seoBeschreibung: 'Tisch- & Stehlampen: dekorative LED-Lampen und Stehleuchten für Wohnzimmer und Regal. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
     eltern: ['Wohnen & Garten', 'Beleuchtung'], nach: null,
-    passt: p => gp(p, HG + 'Lighting > Lamps') },
+    passt: p => gp(p, HG + 'Lighting > Lamps') && !BUERO_LAMPE_RE.test(p.title) && !NACHT_LAMPE_RE.test(p.title) },
+  { id: 'nachttischlampen', handle: 'nachttischlampen', titel: 'Nachttischlampen', tag: 'sort-nachttischlampen', min: 10,
+    beschreibung: 'Nachttischlampen und Bettlampen mit Touch-Dimmer, warmem Licht und Akku — für ruhige Abende im Schlafzimmer.',
+    seoBeschreibung: 'Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Wohnen & Garten', 'Beleuchtung'], nach: 'Tisch- & Stehlampen',
+    passt: p => gp(p, HG + 'Lighting') && NACHT_LAMPE_RE.test(p.title) && !BUERO_LAMPE_RE.test(p.title) },
   { id: 'wandleuchten', handle: 'wandleuchten', titel: 'Wandleuchten', tag: 'sort-wandleuchten', min: 15,
     beschreibung: 'Wandlampen und Wandleuchten für Flur, Schlafzimmer und Wohnzimmer — mit Kabel, Akku oder Steckdose.',
     seoBeschreibung: 'Wandleuchten & Wandlampen für Flur, Schlafzimmer und Wohnzimmer. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
@@ -303,11 +319,16 @@ export const KATEGORIEN = [
     passt: p => gp(p, 'Apparel & Accessories > Jewelry') && !gp(p, 'Apparel & Accessories > Jewelry > Watches', 'Apparel & Accessories > Jewelry > Watch Accessories') },
 
   // ── Taschen (die Laptop-Seite zeigte Rucksäcke und Aktentaschen, weil «laptop» im Titel steht) ──
-  { id: 'geldboersen', handle: 'geldboersen-etuis', titel: 'Geldbörsen & Etuis', tag: 'sort-geldboersen', min: 15,
-    beschreibung: 'Geldbörsen, Kartenetuis, Münzbörsen und Portemonnaies für Damen und Herren — in Leder und Kunstleder.',
-    seoBeschreibung: 'Geldbörsen & Etuis: Portemonnaies, Kartenetuis und Münzbörsen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+  { id: 'portemonnaies', handle: 'portemonnaies-geldboersen', titel: 'Portemonnaies & Geldbörsen', tag: 'sort-portemonnaies', min: 15,
+    beschreibung: 'Portemonnaies, Geldbörsen, Münzbörsen und Clutches für Damen und Herren — aus Leder, Kunstleder und Carbon, mit RFID-Schutz oder AirTag-Fach.',
+    seoBeschreibung: 'Portemonnaies & Geldbörsen für Damen und Herren aus Leder und Kunstleder. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
     eltern: ['Taschen & Rucksäcke'], nach: null,
-    passt: p => gp(p, 'Apparel & Accessories > Handbags, Wallets & Cases > Wallets', 'Apparel & Accessories > Handbags, Wallets & Cases > Badge') },
+    passt: p => istGeldbeutel(p) && !istKartenhalter(p) },
+  { id: 'kartenhalter', handle: 'kartenhalter-kartenetuis', titel: 'Kartenhalter & Kartenetuis', tag: 'sort-kartenhalter', min: 15,
+    beschreibung: 'Kartenhalter, Kartenetuis und Ausweishüllen — schlank, mit RFID-Schutz, magnetisch oder mit Ortungschip.',
+    seoBeschreibung: 'Kartenhalter & Kartenetuis: schlanke Etuis für Kredit- und Ausweiskarten mit RFID-Schutz. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Taschen & Rucksäcke'], nach: 'Portemonnaies & Geldbörsen',
+    passt: p => istKartenhalter(p) },
   { id: 'aktentaschen', handle: 'aktentaschen-messenger', titel: 'Aktentaschen & Messenger Bags', tag: 'sort-aktentaschen', min: 15,
     beschreibung: 'Aktentaschen, Laptoptaschen und Messenger Bags für Büro, Uni und Pendeln.',
     seoBeschreibung: 'Aktentaschen & Messenger Bags: Laptoptaschen für Büro, Uni und Pendeln. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
@@ -354,6 +375,33 @@ export const KATEGORIEN = [
     eltern: ['Kinder & Baby'], nach: 'Puzzles & Spiele',
     passt: p => !gp(p, 'Hardware', 'Apparel & Accessories > Jewelry') && (SCHULE_RE.test(p.title) || (gp(p, 'Office Supplies') && KIND_RE.test(p.title))) },
   // ── Haustiere ──
+
+  { id: 'haustier', handle: 'sub-haustier', titel: 'Haustierwelt', tag: 'sort-haustier', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies') || anfang('haustier|hundebett|katzenbett|hundeleine|katzenklo|kratzbaum|hundenapf|katzennapf').test(p.title) },
+  { id: 'hunde', handle: 'haustier-hunde', titel: 'Hunde', tag: 'sort-hunde', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies') || (gp(p, 'Animals & Pet Supplies') && ende_('hund|hunde|hunden|welpe|welpen').test(p.title) && !/katze|katzen/i.test(p.title)) },
+  { id: 'katzen', handle: 'haustier-katzen', titel: 'Katzen', tag: 'sort-katzen', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies') || (gp(p, 'Animals & Pet Supplies') && ende_('katze|katzen|kater|kitten').test(p.title) && !/hund/i.test(p.title)) },
+  { id: 'tier-spielzeug', handle: 'tierspielzeug', titel: 'Tierspielzeug', tag: 'sort-tier-spielzeug', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys', 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys') },
+  { id: 'tier-naepfe', handle: 'tier-naepfe-fuettern', titel: 'Näpfe & Füttern', tag: 'sort-tier-naepfe', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers', 'Animals & Pet Supplies > Pet Supplies > Pet Food Containers') },
+  { id: 'tier-pflege', handle: 'tier-pflege-unterwegs', titel: 'Pflege & Unterwegs', tag: 'sort-tier-pflege', min: 15, bestehend: true,
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Pet Carriers & Crates', 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies', 'Animals & Pet Supplies > Pet Supplies > Pet Oral Care Supplies', 'Animals & Pet Supplies > Pet Supplies > Pet Waste Disposal', 'Animals & Pet Supplies > Pet Supplies > Pet Medical') },
+  { id: 'tier-betten', handle: 'tierbetten-kratzbaeume', titel: 'Betten, Kratzbäume & Möbel', tag: 'sort-tier-betten', min: 15,
+    beschreibung: 'Hundebetten, Katzenbetten, Kratzbäume und Tiermöbel — gemütliche Plätze zum Schlafen, Klettern und Kratzen.',
+    seoBeschreibung: 'Betten, Kratzbäume & Möbel für Hunde und Katzen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Haustiere'], nach: 'Hunde- & Katzenkleidung',
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds', 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Beds', 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Furniture') },
+  { id: 'tier-aquarium', handle: 'aquarium-fische', titel: 'Aquarium & Fische', tag: 'sort-tier-aquarium', min: 15,
+    beschreibung: 'Aquarien, Filter, Dekoration und Zubehör für Fische und Zierfische.',
+    seoBeschreibung: 'Aquarium & Fische: Aquarien, Filter und Dekoration. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Haustiere'], nach: 'Betten, Kratzbäume & Möbel',
+    passt: p => gp(p, 'Animals & Pet Supplies > Pet Supplies > Fish Supplies') },
+
+  { id: 'tier-technik', handle: 'haustier-tech', titel: 'Smarte Geräte & Technik', tag: 'sort-tier-technik', min: 15, bestehend: true,
+    eltern: ['Haustiere'], nach: 'Tierspielzeug',
+    passt: p => gp(p, 'Animals & Pet Supplies') && TIER_TECH_RE.test(p.title) && !/(^|[^a-zäöüß])(leine|rückzugsleine|schleppleine)([^a-zäöüß]|$)|saugnapf-futterspender|futterspender-spielzeug|gegen stress/i.test(p.title) },
   { id: 'tier-leinen', handle: 'leinen-halsbaender-geschirre', titel: 'Leinen, Halsbänder & Geschirre', tag: 'sort-tier-leinen', min: 15,
     beschreibung: 'Hundeleinen, Halsbänder und Geschirre — stossdämpfend, reflektierend, verstellbar, für kleine und grosse Hunde und für Katzen.',
     seoBeschreibung: 'Leinen, Halsbänder & Geschirre für Hunde und Katzen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
@@ -382,6 +430,71 @@ export const KATEGORIEN = [
     eltern: ['Schmuck'], nach: 'Broschen & Pins', passt: p => gp(p, 'Apparel & Accessories > Jewelry > Anklets', 'Apparel & Accessories > Jewelry > Body Jewelry') },
   { id: 'uhrenarmbaender', handle: 'uhrenarmbaender', titel: 'Uhrenarmbänder & Smartwatch-Armbänder', tag: 'sort-uhrenarmbaender', min: 15, bestehend: true, passt: p => gp(p, 'Apparel & Accessories > Jewelry > Watch Accessories') },
 
+
+  // ── Schuhe: die Google-Kategorie ist bei allen 6199 Schuhen nur «Shoes» → der Titel entscheidet ──
+  { id: 'wanderschuhe', handle: 'wanderschuhe-trekking', titel: 'Wanderschuhe & Trekking', tag: 'sort-wanderschuhe', min: 15,
+    beschreibung: 'Wanderschuhe, Trekkingstiefel und Outdoor-Schuhe mit griffiger Sohle — für Wege, Berge und nasse Wiesen.',
+    seoBeschreibung: 'Wanderschuhe & Trekkingstiefel: Outdoor-Schuhe mit rutschfester Sohle für Damen und Herren. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Schuhe'], nach: 'Winterschuhe & Winterstiefel',
+    passt: p => istSchuh(p) && WANDER_RE.test(p.title) && !ARBEIT_RE.test(p.title) },
+  { id: 'arbeitsschuhe', handle: 'arbeitsschuhe', titel: 'Arbeits- & Sicherheitsschuhe', tag: 'sort-arbeitsschuhe', min: 15,
+    beschreibung: 'Arbeitsschuhe, Sicherheitsschuhe mit Stahlkappe und Arbeitsstiefel — rutschfest, robust und für lange Tage auf den Beinen.',
+    seoBeschreibung: 'Arbeits- & Sicherheitsschuhe: Arbeitsstiefel mit Stahlkappe, rutschfest und robust. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Schuhe'], nach: 'Wanderschuhe & Trekking',
+    passt: p => istSchuh(p) && ARBEIT_RE.test(p.title) },
+
+
+  { id: 'vr', handle: 'vr-brillen-headsets', titel: 'VR-Brillen & Headsets', tag: 'sort-vr', min: 10,
+    beschreibung: 'VR-Brillen für das Smartphone, Standalone-VR-Headsets und Controller für Virtual Reality — zum Spielen, Filme schauen und Ausprobieren.',
+    seoBeschreibung: 'VR-Brillen & Headsets: Virtual Reality für Smartphone und Standalone, mit Controller. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik'], nach: 'Beamer & Heimkino',
+    passt: p => !gp(p, 'Apparel') && VR_RE.test(p.title) },
+  { id: 'smartebrillen', handle: 'smarte-brillen-ki', titel: 'Smarte Brillen & KI-Gadgets', tag: 'sort-smartebrillen', min: 10,
+    beschreibung: 'Smarte Brillen mit Kamera, Audio-Brillen und KI-Brillen — Technik, die man trägt.',
+    seoBeschreibung: 'Smarte Brillen & KI-Gadgets: Brillen mit Kamera, Audio und KI-Assistent. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik'], nach: 'VR-Brillen & Headsets',
+    passt: p => !VR_RE.test(p.title) && (gp(p, 'Electronics > Computers > Smart Glasses') || SMART_BRILLE_RE.test(p.title)) },
+
+
+  // ── Büro & Home Office ──
+  { id: 'buero', handle: 'buro-home-office', titel: 'Büro & Home Office', tag: 'sort-buero', min: 15, bestehend: true,
+    passt: p => gp(p, 'Office Supplies', 'Furniture > Office Furniture', 'Electronics > Print, Copy, Scan & Fax > Printers', 'Electronics > Print, Copy, Scan & Fax > Scanners', 'Electronics > Print, Copy, Scan & Fax > Printer, Copier') || (BUERO_LAMPE_RE.test(p.title) && gp(p, HG + 'Lighting')) },
+  { id: 'buero-organizer', handle: 'buero-organizer-ablage', titel: 'Büro-Organizer & Ablage', tag: 'sort-buero-organizer', min: 15,
+    beschreibung: 'Schreibtisch-Organizer, Stiftehalter, Etuis und Ablagen — Ordnung auf dem Schreibtisch.',
+    seoBeschreibung: 'Büro-Organizer & Ablage: Schreibtisch-Organizer, Stiftehalter und Etuis. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'Büro & Home Office'], nach: null,
+    passt: p => gp(p, 'Office Supplies > Filing & Organization') && !gp(p, 'Office Supplies > Filing & Organization > Calendars') },
+  { id: 'kalender', handle: 'kalender-planer', titel: 'Kalender & Planer', tag: 'sort-kalender', min: 15,
+    beschreibung: 'Tischkalender, Wandkalender, Wochenplaner und Organizer für Büro, Küche und Schreibtisch.',
+    seoBeschreibung: 'Kalender & Planer: Tischkalender, Wandkalender und Wochenplaner. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Büro-Organizer & Ablage',
+    passt: p => gp(p, 'Office Supplies > Filing & Organization > Calendars') },
+  { id: 'schreibwaren', handle: 'schreibwaren-stifte', titel: 'Schreibwaren & Stifte', tag: 'sort-schreibwaren', min: 15,
+    beschreibung: 'Stifte, Marker, Notizblöcke, Haftnotizen, Büroklammern und Zubehör zum Schreiben und Zeichnen.',
+    seoBeschreibung: 'Schreibwaren & Stifte: Stifte, Marker, Notizblöcke und Büroklammern. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Kalender & Planer',
+    passt: p => gp(p, 'Office Supplies > Office Instruments', 'Office Supplies > General Office Supplies', 'Office Supplies > Book Accessories', 'Office Supplies > Presentation Supplies') },
+  { id: 'bueroelektronik', handle: 'bueroelektronik', titel: 'Büroelektronik', tag: 'sort-bueroelektronik', min: 15,
+    beschreibung: 'Taschenrechner, Übersetzer, Etikettendrucker, Drucker, Scanner, Aktenvernichter und Webcams für Büro und Home Office.',
+    seoBeschreibung: 'Büroelektronik: Taschenrechner, Übersetzer, Etikettendrucker, Scanner und Webcams. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Schreibwaren & Stifte',
+    passt: p => gp(p, 'Office Supplies > Office Equipment', 'Electronics > Print, Copy, Scan & Fax > Printers', 'Electronics > Print, Copy, Scan & Fax > Scanners', 'Electronics > Print, Copy, Scan & Fax > Printer, Copier', 'Cameras & Optics > Cameras > Webcams') },
+  { id: 'schreibtischlampen', handle: 'schreibtischlampen', titel: 'Schreibtisch- & Leselampen', tag: 'sort-schreibtischlampen', min: 10,
+    beschreibung: 'Schreibtischlampen, Leselampen und Monitor-Lichtleisten — blendfrei, dimmbar und mit Akku für Büro und Studium.',
+    seoBeschreibung: 'Schreibtisch- & Leselampen: dimmbare LED-Lampen und Monitor-Lichtleisten. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Büroelektronik',
+    passt: p => BUERO_LAMPE_RE.test(p.title) && gp(p, HG + 'Lighting') },
+
+  { id: 'klima', handle: 'luftreiniger-klimageraete', titel: 'Luftreiniger & Klimageräte', tag: 'sort-klima', min: 15, bestehend: true,
+    eltern: ['Wohnen & Garten'], nach: 'Haushaltsgeräte',
+    passt: p => gp(p, 'Home & Garden > Household Appliances > Climate Control Appliances > Air Purifiers', 'Home & Garden > Household Appliances > Climate Control Appliances > Space Heaters', 'Home & Garden > Household Appliances > Climate Control Appliances > Dehumidifiers', 'Home & Garden > Household Appliances > Climate Control Appliances > Air Conditioners') || (ende_('luftreiniger|luftreinigung|ionisator').test(p.title) && gp(p, 'Home & Garden', 'Vehicles & Parts', 'Electronics')) },
+
+  { id: 'mauspads', handle: 'mauspads-unterlagen', titel: 'Mauspads & Schreibtischunterlagen', tag: 'sort-mauspads', min: 15,
+    beschreibung: 'Mauspads, Gaming-Unterlagen und Schreibtischmatten in vielen Motiven und Grössen — mit Handgelenkauflage, Ladefunktion oder Heizung.',
+    seoBeschreibung: 'Mauspads & Schreibtischunterlagen: Gaming-Pads in vielen Motiven und Grössen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik', 'PC & Homeoffice'], nach: 'Tastaturen & Mäuse',
+    passt: p => gp(p, 'Electronics > Electronics Accessories > Computer Accessories > Mouse Pads') || (ende_('mauspad|mousepad|mouse pad|schreibtischunterlage|handgelenkauflage').test(p.title) && gp(p, 'Electronics', 'Office Supplies', 'Home & Garden')) },
+
   // ── Stil ──
   { id: 'retro', handle: 'retro-vintage', titel: 'Retro & Vintage', tag: 'sort-retro', min: 15,
     beschreibung: 'Retro und Vintage: Kleider, Schuhe, Taschen, Schmuck, Uhren und Deko im Stil vergangener Jahrzehnte.',
@@ -402,9 +515,18 @@ export const BEREINIGUNG = [
     wenn: p => (p.tags || []).includes('basteln') && !istBastelWare(p), entfernt: () => ['basteln'], setzt: () => [] },
   { id: 'basteln-fehlt', grund: 'Echte Bastel-Ware ohne den Tag «basteln» steht nicht in «Basteln & DIY».',
     wenn: p => !(p.tags || []).includes('basteln') && istBastelWare(p), entfernt: () => [], setzt: () => ['basteln'] },
+  { id: 'geschenk-eignung', grund: '«Geschenke für Ihn» zeigte eine Camping-Luftmatratze und eine Hecktasche; die vier Geschenk-Sammlungen (je 400, vom Tag geschenkwelt-*) enthielten Küchenmaschinen, Gartengeräte, Fitnessgeräte.',
+    wenn: p => GESCHENK_TAGS.some(t => (p.tags || []).includes(t)) && istGeschenkUngeeignet(p), entfernt: p => GESCHENK_TAGS.filter(t => (p.tags || []).includes(t)), setzt: () => [] },
   { id: 'deko-vasen', grund: 'Vasen & Deko trennen: Vasen verlassen «Dekoration» (Tag kat-deko).',
     wenn: p => (p.tags || []).includes('kat-deko') && KATEGORIEN.find(k => k.id === 'vasen').passt(p), entfernt: () => ['kat-deko'], setzt: () => [] },
 ];
+
+/** Geschenk-Sammlungen: Ware, die als Geschenk nicht taugt (Luftmatratze, Küchenmaschine, Gartengerät, Fitnessgerät). */
+export const GESCHENK_TAGS = ['geschenkwelt-ihn', 'geschenkwelt-sie', 'geschenkwelt-kinder', 'geschenkwelt-alle'];
+const GESCHENK_NEIN_G = ['Sporting Goods > Outdoor Recreation > Camping', 'Sporting Goods > Exercise & Fitness', 'Vehicles & Parts', 'Hardware', 'Business & Industrial',
+  KD + 'Kitchen Appliances', KD + 'Kitchen Appliance Accessories', KD + 'Cookware & Bakeware', KD + 'Kitchen Tools & Utensils', KD + 'Food & Beverage Carriers',
+  HG + 'Household Supplies', HG + 'Lawn & Garden', HG + 'Household Appliances', HG + 'Plumbing', 'Animals & Pet Supplies'];
+export const istGeschenkUngeeignet = p => gp(p, ...GESCHENK_NEIN_G) || /(^|[^a-zäöüß])(camping|zelt|schlafsack|airbett|isomatte|ersatzteil|hecktasche)/i.test(p.title || '');
 
 /** @returns {boolean} gehört das Produkt (Objekt oder nur Titel-String) in die Kategorie? */
 export function gehoertIn(kat, p) {
@@ -416,6 +538,9 @@ export function gehoertIn(kat, p) {
 
 /** Bestehende, gut passende Collections, die nur im Menü fehlen (nichts an Tags/Regeln ändern). Wird eingefügt, wenn live HTTP 200 und noch nicht verlinkt. */
 export const MENUE_NUR = [
+  { handle: 'schreibtischlampen', titel: 'Schreibtisch- & Leselampen', eltern: ['Wohnen & Garten', 'Beleuchtung'], nach: 'Nachttischlampen', doppelt: true },
+  { handle: 'rucksaecke-laptop', titel: 'Laptop- & Business-Rucksäcke', eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Büroelektronik', doppelt: true },
+  { handle: 'aktentaschen-messenger', titel: 'Aktentaschen & Messenger Bags', eltern: ['Elektronik', 'Büro & Home Office'], nach: 'Laptop- & Business-Rucksäcke', doppelt: true },
   { handle: 'sticker-aufkleber', titel: 'Sticker & Aufkleber', eltern: ['Wohnen & Garten'], nach: 'Basteln & DIY' },
   { handle: 'rucksaecke', titel: 'Rucksäcke', eltern: ['Taschen & Rucksäcke'], nach: null },
   { handle: 'rucksaecke-laptop', titel: 'Laptop- & Business-Rucksäcke', eltern: ['Taschen & Rucksäcke'], nach: 'Rucksäcke' },

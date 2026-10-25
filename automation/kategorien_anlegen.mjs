@@ -96,15 +96,23 @@ async function main() {
 
   // ── 4) Tags ──
   if (PHASE === 'alle' || PHASE === 'tags') {
+    // Blöcke zu 20 Aliasen je Mutation, KONKURRENT (die Antwort dauert ~6 s, der Eimer bleibt dabei fast voll). CONC=5.
+    const CONC = Number(process.env.CONC || 5);
     const stapel = async (fn, tag, ids) => {
-      const liste = [...ids];
-      for (let i = 0; i < liste.length; i += 20) {
-        const teil = liste.slice(i, i + 20);
-        const m = `mutation{${teil.map((id, n) => `a${n}:${fn}(id:${JSON.stringify(id)},tags:${JSON.stringify([tag])}){userErrors{field message}}`).join(' ')}}`;
-        const d = await q(m, {});
-        for (let n = 0; n < teil.length; n++) if (d[`a${n}`].userErrors.length) throw new Error(`${fn} ${tag}: ${JSON.stringify(d[`a${n}`].userErrors)}`);
-        if ((i / 20) % 25 === 24) console.log(`  … ${tag}: ${i + teil.length}/${liste.length}`);
-      }
+      const liste = [...ids], bloecke = [];
+      for (let i = 0; i < liste.length; i += 20) bloecke.push(liste.slice(i, i + 20));
+      let fertig = 0, naechster = 0;
+      const arbeiter = async () => {
+        while (naechster < bloecke.length) {
+          const teil = bloecke[naechster++];
+          const m = `mutation{${teil.map((id, n) => `a${n}:${fn}(id:${JSON.stringify(id)},tags:${JSON.stringify([tag])}){userErrors{field message}}`).join(' ')}}`;
+          const d = await q(m, {});
+          for (let n = 0; n < teil.length; n++) if (d[`a${n}`].userErrors.length) throw new Error(`${fn} ${tag}: ${JSON.stringify(d[`a${n}`].userErrors)}`);
+          fertig += teil.length;
+          if (Math.floor(fertig / 500) !== Math.floor((fertig - teil.length) / 500)) console.log(`  … ${tag}: ${fertig}/${liste.length}`);
+        }
+      };
+      await Promise.all(Array.from({ length: Math.min(CONC, bloecke.length) }, arbeiter));
       ledger(`${fn} ${tag} ${liste.length}`);
     };
     for (const [tag, ids] of tagWeg) { await stapel('tagsRemove', tag, ids); console.log(`Tag «${tag}» entfernt: ${ids.size}`); }
@@ -161,9 +169,9 @@ async function main() {
       catch (e) { log.push(`ÜBERSPRUNGEN ${op.op} ${(op.von || op.pfad || []).join(' > ')}: ${e.message}`); }
     }
     const verlinkt = alleRessourcen(baum);
-    const einfuegen = async (handle, titel, eltern, nach) => {
+    const einfuegen = async (handle, titel, eltern, nach, doppelt = false) => {
       const id = await gid(handle); if (!id) { log.push(`ÜBERSPRUNGEN ${handle}: Collection fehlt`); return; }
-      if (verlinkt.has(id)) { log.push(`schon verlinkt ${handle}`); return; }
+      if (verlinkt.has(id) && !doppelt) { log.push(`schon verlinkt ${handle}`); return; }
       try { baum = einfuegenPfad(baum, { eltern, nach, neu: { title: titel, type: 'COLLECTION', resourceId: id, items: [] } }); verlinkt.add(id); log.push(`ok   neu ${eltern.join(' > ') || '(oben)'} > ${titel}`); }
       catch (e) { log.push(`ÜBERSPRUNGEN ${handle}: ${e.message}`); }
     };
@@ -171,7 +179,7 @@ async function main() {
     for (const n of MENUE_NUR) {
       const code = (await fetch(`https://luxestyle.ch/collections/${n.handle}?cb=${Date.now()}`)).status;
       if (code !== 200) { log.push(`ÜBERSPRUNGEN ${n.handle}: live HTTP ${code}`); continue; }
-      await einfuegen(n.handle, n.titel, n.eltern, n.nach);
+      await einfuegen(n.handle, n.titel, n.eltern, n.nach, !!n.doppelt);
     }
     console.log(log.join('\n'));
     if (tiefe(baum) > 3) { console.error(`ABBRUCH: Menü hätte ${tiefe(baum)} Ebenen (Shopify erlaubt 3) — nichts geschrieben`); process.exit(2); }
