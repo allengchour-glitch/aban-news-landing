@@ -1,0 +1,656 @@
+{
+  "task": "LUXESTYLE_LATEST_PLAN_1851_LOCAL_CHECK_20261025",
+  "status": "NO_DUPLICATES_FOUND_SCHEDULE_COVERAGE_GAPS_RECORDED",
+  "checkedAtUTC": "2026-10-25T17:53:04.152965+00:00",
+  "scope": "Local read-only analysis of archived scheduled-plan snapshots. No connector, metrics, media download or publication action.",
+  "sources": {
+    "latest": {
+      "path": "/workspace/luxestyle-review/sitewide-20261025/evidence/LATEST-PLAN-1851.json",
+      "sha256": "04458906a0ff0d8316c14732d416dc1ca935ec580243f508aa829fc05bdd9e3b",
+      "readAtUTC": "2026-10-25T17:51:00Z"
+    },
+    "earlier1400": {
+      "path": "/workspace/luxestyle-review/sitewide-20261025/evidence/LATEST-PLAN-1400.json",
+      "sha256": "c907215fe8269a22e39df492e854f02f6b5d976d4d2d9aa76387ee6b70917f1c",
+      "readAtUTC": "2026-10-25T13:00:10Z"
+    },
+    "morningForCountContextOnly": {
+      "path": "/workspace/luxestyle-review/morgen-20261025/metricool/PLAN.json",
+      "sha256": "e19920e64149b46f22f35b57e44d92d4bac58a292160fb5ea679177d09f3f5d7",
+      "endpointCoverage": "scheduled-only; no complete published history"
+    }
+  },
+  "window": {
+    "fromInclusive": "2026-10-25T18:51:00+01:00",
+    "toExclusive": "2026-11-01T18:51:00+01:00",
+    "timezone": "Europe/Zurich",
+    "timezoneAbbreviationAtBothBounds": "CET",
+    "durationHours": 168.0,
+    "interpretation": "Half-open [from,to); no entries on either exact bound."
+  },
+  "windowChecks": {
+    "allEntriesWithinDeclaredWindow": true,
+    "allEntryTimezonesEuropeZurich": true,
+    "missingIdOrUUIDCount": 0,
+    "captureTimeCET": "2026-10-25T18:51:00+01:00",
+    "slotsBeforeCaptureInLatestSnapshot": 0
+  },
+  "totals": {
+    "posts": 14,
+    "distinctUUIDs": 14,
+    "distinctIds": 14,
+    "providerPlacements": 17,
+    "networks": {
+      "facebook": 5,
+      "instagram": 6,
+      "pinterest": 4,
+      "threads": 1,
+      "tiktok": 1
+    },
+    "providerStatuses": {
+      "PENDING": 17
+    },
+    "allAutoPublishTrue": true,
+    "allDraftFalse": true,
+    "firstScheduledAt": "2026-10-25T19:10:00+01:00",
+    "lastScheduledAt": "2026-10-29T12:15:00+01:00",
+    "uniqueExactMediaURLs": 16
+  },
+  "duplicates": {
+    "uuid": [],
+    "id": [],
+    "exactMediaURLSameNetwork": [],
+    "exactOrderedMediaListSameNetwork": [],
+    "mediaURLIgnoringQuerySameNetwork": [],
+    "definition": "Same asset URL or ordered media list and network assigned to distinct post IDs; media bytes and visual similarity were not inspected."
+  },
+  "crossChannelMediaReuse": {
+    "count": 5,
+    "definition": "Exact asset URL on two or more networks; includes a single post with multiple providers. Not same-network duplication.",
+    "groups": [
+      {
+        "media": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg",
+        "networks": [
+          "facebook",
+          "instagram"
+        ],
+        "placements": [
+          {
+            "id": 401179909,
+            "uuid": "-2554409969231966828",
+            "network": "facebook",
+            "scheduledAt": "2026-10-25T19:10:00+01:00"
+          },
+          {
+            "id": 401179904,
+            "uuid": "2344041729300253064",
+            "network": "instagram",
+            "scheduledAt": "2026-10-25T19:10:00+01:00"
+          }
+        ]
+      },
+      {
+        "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433",
+        "networks": [
+          "facebook",
+          "instagram"
+        ],
+        "placements": [
+          {
+            "id": 399476578,
+            "uuid": "-4711778171676639107",
+            "network": "facebook",
+            "scheduledAt": "2026-10-25T20:15:00+01:00"
+          },
+          {
+            "id": 399476575,
+            "uuid": "7659202434600943789",
+            "network": "instagram",
+            "scheduledAt": "2026-10-25T20:15:00+01:00"
+          }
+        ]
+      },
+      {
+        "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756",
+        "networks": [
+          "facebook",
+          "instagram",
+          "threads"
+        ],
+        "placements": [
+          {
+            "id": 404927218,
+            "uuid": "3370014454796207908",
+            "network": "facebook",
+            "scheduledAt": "2026-10-26T12:15:00+01:00"
+          },
+          {
+            "id": 404927218,
+            "uuid": "3370014454796207908",
+            "network": "instagram",
+            "scheduledAt": "2026-10-26T12:15:00+01:00"
+          },
+          {
+            "id": 404927234,
+            "uuid": "2383637826676869482",
+            "network": "threads",
+            "scheduledAt": "2026-10-28T09:45:00+01:00"
+          }
+        ]
+      },
+      {
+        "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977",
+        "networks": [
+          "facebook",
+          "instagram"
+        ],
+        "placements": [
+          {
+            "id": 404927223,
+            "uuid": "1910940002626912625",
+            "network": "facebook",
+            "scheduledAt": "2026-10-26T19:10:00+01:00"
+          },
+          {
+            "id": 404927223,
+            "uuid": "1910940002626912625",
+            "network": "instagram",
+            "scheduledAt": "2026-10-26T19:10:00+01:00"
+          }
+        ]
+      },
+      {
+        "media": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756",
+        "networks": [
+          "facebook",
+          "instagram",
+          "pinterest"
+        ],
+        "placements": [
+          {
+            "id": 404928616,
+            "uuid": "2877674070200569146",
+            "network": "pinterest",
+            "scheduledAt": "2026-10-27T14:40:00+01:00"
+          },
+          {
+            "id": 404927236,
+            "uuid": "-884200541558521239",
+            "network": "facebook",
+            "scheduledAt": "2026-10-29T12:15:00+01:00"
+          },
+          {
+            "id": 404927236,
+            "uuid": "-884200541558521239",
+            "network": "instagram",
+            "scheduledAt": "2026-10-29T12:15:00+01:00"
+          }
+        ]
+      }
+    ]
+  },
+  "calendarDayCoverage": [
+    {
+      "date": "2026-10-25",
+      "fromInclusive": "2026-10-25T18:51:00+01:00",
+      "toExclusive": "2026-10-26T00:00:00+01:00",
+      "partialCalendarDay": true,
+      "posts": 8,
+      "providerPlacements": 8
+    },
+    {
+      "date": "2026-10-26",
+      "fromInclusive": "2026-10-26T00:00:00+01:00",
+      "toExclusive": "2026-10-27T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 2,
+      "providerPlacements": 4
+    },
+    {
+      "date": "2026-10-27",
+      "fromInclusive": "2026-10-27T00:00:00+01:00",
+      "toExclusive": "2026-10-28T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 2,
+      "providerPlacements": 2
+    },
+    {
+      "date": "2026-10-28",
+      "fromInclusive": "2026-10-28T00:00:00+01:00",
+      "toExclusive": "2026-10-29T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 1,
+      "providerPlacements": 1
+    },
+    {
+      "date": "2026-10-29",
+      "fromInclusive": "2026-10-29T00:00:00+01:00",
+      "toExclusive": "2026-10-30T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 1,
+      "providerPlacements": 2
+    },
+    {
+      "date": "2026-10-30",
+      "fromInclusive": "2026-10-30T00:00:00+01:00",
+      "toExclusive": "2026-10-31T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "date": "2026-10-31",
+      "fromInclusive": "2026-10-31T00:00:00+01:00",
+      "toExclusive": "2026-11-01T00:00:00+01:00",
+      "partialCalendarDay": false,
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "date": "2026-11-01",
+      "fromInclusive": "2026-11-01T00:00:00+01:00",
+      "toExclusive": "2026-11-01T18:51:00+01:00",
+      "partialCalendarDay": true,
+      "posts": 0,
+      "providerPlacements": 0
+    }
+  ],
+  "fullCalendarDatesWithoutPosts": [
+    "2026-10-30",
+    "2026-10-31"
+  ],
+  "emptyPartialCalendarDates": [
+    "2026-11-01"
+  ],
+  "rolling24HourCoverage": [
+    {
+      "fromInclusive": "2026-10-25T18:51:00+01:00",
+      "toExclusive": "2026-10-26T18:51:00+01:00",
+      "posts": 9,
+      "providerPlacements": 10
+    },
+    {
+      "fromInclusive": "2026-10-26T18:51:00+01:00",
+      "toExclusive": "2026-10-27T18:51:00+01:00",
+      "posts": 3,
+      "providerPlacements": 4
+    },
+    {
+      "fromInclusive": "2026-10-27T18:51:00+01:00",
+      "toExclusive": "2026-10-28T18:51:00+01:00",
+      "posts": 1,
+      "providerPlacements": 1
+    },
+    {
+      "fromInclusive": "2026-10-28T18:51:00+01:00",
+      "toExclusive": "2026-10-29T18:51:00+01:00",
+      "posts": 1,
+      "providerPlacements": 2
+    },
+    {
+      "fromInclusive": "2026-10-29T18:51:00+01:00",
+      "toExclusive": "2026-10-30T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "fromInclusive": "2026-10-30T18:51:00+01:00",
+      "toExclusive": "2026-10-31T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "fromInclusive": "2026-10-31T18:51:00+01:00",
+      "toExclusive": "2026-11-01T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    }
+  ],
+  "emptyRolling24HourWindows": [
+    {
+      "fromInclusive": "2026-10-29T18:51:00+01:00",
+      "toExclusive": "2026-10-30T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "fromInclusive": "2026-10-30T18:51:00+01:00",
+      "toExclusive": "2026-10-31T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    },
+    {
+      "fromInclusive": "2026-10-31T18:51:00+01:00",
+      "toExclusive": "2026-11-01T18:51:00+01:00",
+      "posts": 0,
+      "providerPlacements": 0
+    }
+  ],
+  "trailingGapAfterLastScheduledAt": {
+    "fromExclusive": "2026-10-29T12:15:00+01:00",
+    "toExclusive": "2026-11-01T18:51:00+01:00",
+    "minutes": 4716,
+    "hoursAndMinutes": "78h 36m",
+    "meaning": "No scheduled entry in this response after the last slot; not proof of a publication gap."
+  },
+  "comparisonWith1400": {
+    "earlierRawPosts": 18,
+    "earlierRawProviderPlacements": 21,
+    "earlierFilteredToLatestWindowPosts": 14,
+    "earlierFilteredToLatestWindowProviderPlacements": 17,
+    "sharedUUIDs": 14,
+    "latestOnlyUUIDs": [],
+    "earlierOnlyPosts": [
+      {
+        "id": 399473790,
+        "uuid": "5647442127906033662",
+        "scheduledAt": "2026-10-25T14:40:00+01:00",
+        "networks": [
+          "pinterest"
+        ],
+        "providerStatuses": {
+          "pinterest": "PENDING"
+        }
+      },
+      {
+        "id": 399474015,
+        "uuid": "4696589336208886053",
+        "scheduledAt": "2026-10-25T16:05:00+01:00",
+        "networks": [
+          "youtube"
+        ],
+        "providerStatuses": {
+          "youtube": "PENDING"
+        }
+      },
+      {
+        "id": 399530737,
+        "uuid": "-9174162768470129778",
+        "scheduledAt": "2026-10-25T16:10:00+01:00",
+        "networks": [
+          "instagram"
+        ],
+        "providerStatuses": {
+          "instagram": "PENDING"
+        }
+      },
+      {
+        "id": 399474369,
+        "uuid": "5166604728534712901",
+        "scheduledAt": "2026-10-25T17:10:00+01:00",
+        "networks": [
+          "pinterest"
+        ],
+        "providerStatuses": {
+          "pinterest": "PENDING"
+        }
+      }
+    ],
+    "allEarlierOnlyPostsPrecedeLatestWindow": true,
+    "sameUUIDSetAfterIdenticalWindowFilter": true,
+    "allSharedContentEqualExcludingCreatorFields": true,
+    "sharedChangesExcludingCreatorFields": [],
+    "overlap": {
+      "fromInclusive": "2026-10-25T18:51:00+01:00",
+      "toExclusive": "2026-11-01T14:00:00+01:00"
+    },
+    "laterWindowTail": {
+      "fromInclusive": "2026-11-01T14:00:00+01:00",
+      "toExclusive": "2026-11-01T18:51:00+01:00",
+      "latestEntries": 0
+    },
+    "interpretation": "Four 14:00-snapshot entries are before 18:51 and outside the current query window. Absence establishes neither publication nor failure/deletion."
+  },
+  "morningCountContext": {
+    "earlierRawPosts": 26,
+    "latestRawPosts": 14,
+    "earlierOnlyPosts": 12,
+    "allEarlierOnlyPostsPrecedeLatestWindow": true,
+    "interpretation": "Morning26 minus current14 gives12 earlier-only rows, not8. The previously reported8 related to morning26 versus14:00-snapshot18. Neither difference proves publication."
+  },
+  "posts": [
+    {
+      "id": 401179904,
+      "uuid": "2344041729300253064",
+      "scheduledAt": "2026-10-25T19:10:00+01:00",
+      "networks": [
+        "instagram"
+      ],
+      "providerStatuses": {
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 401179909,
+      "uuid": "-2554409969231966828",
+      "scheduledAt": "2026-10-25T19:10:00+01:00",
+      "networks": [
+        "facebook"
+      ],
+      "providerStatuses": {
+        "facebook": "PENDING"
+      },
+      "media": [
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/stories/story_cat-kompaktlader-fga02481.jpg"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399474714,
+      "uuid": "-6697818564919276513",
+      "scheduledAt": "2026-10-25T19:40:00+01:00",
+      "networks": [
+        "pinterest"
+      ],
+      "providerStatuses": {
+        "pinterest": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d7948e62-5515-4e86-a542-0c84e9a85391.jpg?v=1783231835"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399475266,
+      "uuid": "-7145470493074108759",
+      "scheduledAt": "2026-10-25T20:05:00+01:00",
+      "networks": [
+        "tiktok"
+      ],
+      "providerStatuses": {
+        "tiktok": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJYD189003201AZ.mp4?v=1792034203"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399476575,
+      "uuid": "7659202434600943789",
+      "scheduledAt": "2026-10-25T20:15:00+01:00",
+      "networks": [
+        "instagram"
+      ],
+      "providerStatuses": {
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399476578,
+      "uuid": "-4711778171676639107",
+      "scheduledAt": "2026-10-25T20:15:00+01:00",
+      "networks": [
+        "facebook"
+      ],
+      "providerStatuses": {
+        "facebook": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/reel_CJXFZNKC00131-Black.mp4?v=1792038433"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399776972,
+      "uuid": "7971349064418217754",
+      "scheduledAt": "2026-10-25T21:15:00+01:00",
+      "networks": [
+        "instagram"
+      ],
+      "providerStatuses": {
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/01.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/02.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/03.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/04.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/05.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/06.jpg",
+        "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/social/instagram/selfie-stick-stativ-mit-led-ringlicht-699712/07.jpg"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 399477126,
+      "uuid": "-2888478165694265565",
+      "scheduledAt": "2026-10-25T21:50:00+01:00",
+      "networks": [
+        "pinterest"
+      ],
+      "providerStatuses": {
+        "pinterest": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d79dd2be-25a5-4940-82f6-03e48652a022.jpg?v=1783211568"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404927218,
+      "uuid": "3370014454796207908",
+      "scheduledAt": "2026-10-26T12:15:00+01:00",
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStatuses": {
+        "facebook": "PENDING",
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404927223,
+      "uuid": "1910940002626912625",
+      "scheduledAt": "2026-10-26T19:10:00+01:00",
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStatuses": {
+        "facebook": "PENDING",
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404928616,
+      "uuid": "2877674070200569146",
+      "scheduledAt": "2026-10-27T14:40:00+01:00",
+      "networks": [
+        "pinterest"
+      ],
+      "providerStatuses": {
+        "pinterest": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404928620,
+      "uuid": "-3165721293129560265",
+      "scheduledAt": "2026-10-27T17:10:00+01:00",
+      "networks": [
+        "pinterest"
+      ],
+      "providerStatuses": {
+        "pinterest": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404927234,
+      "uuid": "2383637826676869482",
+      "scheduledAt": "2026-10-28T09:45:00+01:00",
+      "networks": [
+        "threads"
+      ],
+      "providerStatuses": {
+        "threads": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ],
+      "autoPublish": true,
+      "draft": false
+    },
+    {
+      "id": 404927236,
+      "uuid": "-884200541558521239",
+      "scheduledAt": "2026-10-29T12:15:00+01:00",
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStatuses": {
+        "facebook": "PENDING",
+        "instagram": "PENDING"
+      },
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ],
+      "autoPublish": true,
+      "draft": false
+    }
+  ],
+  "privacy": "Creator identity fields and email addresses omitted; raw source files unchanged.",
+  "limits": [
+    "Scheduled-only snapshots are not a complete publication history.",
+    "PENDING, autoPublish=true, elapsed scheduled times and absence from a later query window do not prove successful publication.",
+    "No rights, content, product, media-quality or scheduling approval is established.",
+    "No connector, metric query, media download, plan write or publication action was performed."
+  ]
+}
