@@ -1,0 +1,267 @@
+{
+  "status": "PROPOSAL_NOT_APPLIED",
+  "items": [
+    {
+      "id": "mode",
+      "label": "Mode & Accessoires",
+      "url": null,
+      "children": [
+        {
+          "label": "Damen",
+          "url": "https://luxestyle.ch/collections/damen-mode",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Herren",
+          "url": "https://luxestyle.ch/collections/fur-ihn",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Schuhe",
+          "url": "https://luxestyle.ch/collections/schuhe",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Damenschuhe",
+          "url": "https://luxestyle.ch/collections/damen-schuhe",
+          "evidence": "HTTP_200_CANONICAL_MATCH_2026-10-25"
+        },
+        {
+          "label": "Herrenschuhe",
+          "url": "https://luxestyle.ch/collections/herren-schuhe",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Schmuck & Uhren",
+          "url": "https://luxestyle.ch/collections/schmuck-uhren",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Taschen & Rucksäcke",
+          "url": "https://luxestyle.ch/collections/sub-taschen",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Accessoires",
+          "url": "https://luxestyle.ch/collections/accessoires",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "wohnen",
+      "label": "Wohnen & Licht",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "children": [
+        {
+          "label": "Wohnen & Deko",
+          "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+          "evidence": "HTTP_200_CANONICAL_MATCH_2026-10-25"
+        },
+        {
+          "label": "Beleuchtung",
+          "url": "https://luxestyle.ch/collections/sub-beleuchtung",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "LED-Strips & Lichterketten",
+          "url": "https://luxestyle.ch/collections/licht-led-strip",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Aroma & Diffuser",
+          "url": "https://luxestyle.ch/collections/sub-aroma-diffuser",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Küche & Kochen",
+          "url": "https://luxestyle.ch/collections/sub-kueche",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Aufbewahrung",
+          "url": "https://luxestyle.ch/collections/aufbewahrung-sub",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Kissen & Wohntextilien",
+          "url": "https://luxestyle.ch/collections/kissen-wohntextilien",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Garten & Outdoor",
+          "url": "https://luxestyle.ch/collections/outdoor-garten",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "technik",
+      "label": "Technik & Gaming",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "children": [
+        {
+          "label": "Technik entdecken",
+          "url": "https://luxestyle.ch/collections/elektronik-technik",
+          "evidence": "HTTP_200_CANONICAL_MATCH_2026-10-25"
+        },
+        {
+          "label": "Handy-Zubehör",
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Kopfhörer & Audio",
+          "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Ladegeräte & Powerbanks",
+          "url": "https://luxestyle.ch/collections/elektronik-laden",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Gaming",
+          "url": "https://luxestyle.ch/collections/gaming",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Foto & Video",
+          "url": "https://luxestyle.ch/collections/foto-tech",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "PC & Homeoffice",
+          "url": "https://luxestyle.ch/collections/pc-homeoffice",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Smart Home & Gadgets",
+          "url": "https://luxestyle.ch/collections/smart-home-gadgets",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "beauty",
+      "label": "Beauty & Pflege",
+      "url": "https://luxestyle.ch/collections/beauty-pflege",
+      "children": [
+        {
+          "label": "Beauty & Pflege entdecken",
+          "url": "https://luxestyle.ch/collections/beauty-pflege",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Hautpflege",
+          "url": "https://luxestyle.ch/collections/hautpflege-skincare",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Make-up & Kosmetik",
+          "url": "https://luxestyle.ch/collections/make-up",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Haarpflege & Styling",
+          "url": "https://luxestyle.ch/collections/beauty-haar",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Nägel & Maniküre",
+          "url": "https://luxestyle.ch/collections/naegel-manikuere",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Beauty-Geräte",
+          "url": "https://luxestyle.ch/collections/beauty-geraete",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "familie",
+      "label": "Familie & Freizeit",
+      "url": null,
+      "children": [
+        {
+          "label": "Kinder & Baby",
+          "url": "https://luxestyle.ch/collections/sub-baby-kids",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Spielzeug & Plüsch",
+          "url": "https://luxestyle.ch/collections/spielzeug",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Haustierwelt",
+          "url": "https://luxestyle.ch/collections/sub-haustier",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Sport & Fitness",
+          "url": "https://luxestyle.ch/collections/fitness-training",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Reisen & Outdoor",
+          "url": "https://luxestyle.ch/collections/sub-reise",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Camping & Outdoor",
+          "url": "https://luxestyle.ch/collections/camping-outdoor",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "geschenke",
+      "label": "Geschenke & Saison",
+      "url": "https://luxestyle.ch/collections/premium-geschenke",
+      "children": [
+        {
+          "label": "Geschenke entdecken",
+          "url": "https://luxestyle.ch/collections/premium-geschenke",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Geschenke für sie",
+          "url": "https://luxestyle.ch/collections/geschenke-fuer-sie",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Geschenke für ihn",
+          "url": "https://luxestyle.ch/collections/geschenke-fuer-ihn",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Geschenke für Kinder",
+          "url": "https://luxestyle.ch/collections/geschenke-fuer-kinder",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Geschenke unter CHF 50",
+          "url": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Weihnachten",
+          "url": "https://luxestyle.ch/collections/weihnachten-2026",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Partydeko & Ballone",
+          "url": "https://luxestyle.ch/collections/party-deko-ch",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        },
+        {
+          "label": "Kostüme & Party",
+          "url": "https://luxestyle.ch/collections/kostueme-fasnacht",
+          "evidence": "LINK_OBSERVED_2026-10-25_DESTINATION_NOT_FETCHED"
+        }
+      ]
+    }
+  ]
+}
