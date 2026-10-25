@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_VIDEO_QUALITAET_20261025
+
+**Konkrete Claude-Vorarbeit und neuer Tagescheck, 25.10.2026:** [Videoaudit und Arbeitsauftrag](VIDEO-AUDIT-20261025.md), [63-Dateien-Register](VIDEO-AUDIT-REGISTER-20261025.json), [Einzelbefunde mit Zeitmarken](VIDEO-AUDIT-DETAILS-20261025.md), [kostenlose Werkzeuge mit offiziellen Quellen](GRATIS-VIDEO-TOOLS-20261025.md) und [Content-/Verkaufs-Paket mit sechs Caption-/UTM-Entwürfen](CONTENT-VERKAUF-20261025.md). Register ist ein Kreativ-Audit, kein Publikationsledger. Alle erreichbaren Dateien im begrenzten Scope anhand Bildstichproben geprüft; vollständige Plattformhistorie, durchgängige Bewegungs- und Hörabnahme bleiben offen. Derselbe professionelle Projektor-Master bleibt priorisiert; kein fertiger neuer Film, kein neuer Socialpost und keine Shop-/Flow-/DNS-/Budgetänderung. Status: bereitgestellt und zurückgelesen, Claude-Lesebestätigung und Ausführung unbekannt. Die vier Profit-Aufgaben darunter gelten weiter; keine neue Clipserie, kein paralleler Shop-Crawl und keine pauschale Altclip-/Queueaktivierung.
+
 ## LUXESTYLE_PROFIT_4_20261024
 
 **Zusätzliche Codex-Vorarbeit, 24.10.2026:** [Konkrete Arbeitsunterlagen für Claude](CLAUDE-HILFE-20261024.md) mit zwei frisch gelesenen Shopify-Kostenreferenzen, [portabler Margeneingabe](MARGENPILOT-20261024.csv), [Feld-/Rechenschema](MARGEN-SCHEMA-20261024.json) und [rekonstruierbarem FAQ-Quellpatch](FAQ-QUELLPATCH-20261024.json). Gespeicherte unitCost ist keine vollständige Beschaffungskosten-/Gewinnrechnung; fehlende Kosten bleiben unbekannt. Nur Dokumentation vorbereitet und zurückgelesen, keine Shop-/Ads-Änderung und keine Claude-Ausführung bestätigt.
