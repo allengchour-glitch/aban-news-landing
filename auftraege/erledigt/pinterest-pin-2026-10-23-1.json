@@ -3,6 +3,22 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-23-1",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 1 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-25T00:56:55.041Z",
+  "dauer_s": 17.4,
+  "ergebnis": {
+    "gepinnt": [
+      "gesichtsmaske-mit-rot-und-blaulichtfunktion-618000"
+    ],
+    "unklar": [],
+    "uebersprungen": [
+      "gesichtsmaske-mit-rot-und-blaulichtfunktion-618000: schon auf der Pinnwand"
+    ],
+    "schritte": [
+      "Warteschlange 193, quittiert 78, offen 168",
+      "Boards auf dem Profil: /luxestyleCH/tech-gadgets/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Wellness & Beauty» (https://ch.pinterest.com/luxestyleCH/wellness-beauty/, 1199 Z.): Titel SCHON DA"
+    ],
+    "bilder": []
+  }
 }
