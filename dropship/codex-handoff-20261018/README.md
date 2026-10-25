@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_ABEND_20261025
+
+**Prüfstand ab 19:05 CET:** [Abendpaket mit Storyboard, sechs Kanaltexten und UTM-Zielen](ABENDPAKET-20261025.md), [belegte Leseprüfungen](ABEND-BELEGE-20261025.json), [native Menüquelle und Abgleich](MENUE-NATIV-ABGLEICH-20261025.md), [vollständige native IDs-/Archivzuordnung](MENUE-NATIV-ABGLEICH-20261025.json) und [Google-Kontingent / Robots-/Sitemap-Prüfung](INDEX-KONTINGENT-20261025.md).
+
+Neuer konkreter Fortschritt: Shopify-Hauptmenü `gid://shopify/Menu/310224093569` / `main-menu` mit 218 echten Eintrags-IDs gelesen; alle Titel, Ziele, Eltern und Reihenfolgen passen exakt zu 195 archivierten Zielen. Damit ist die frühere unbekannte native Menüquelle für dieses Menü geklärt. 204 Platzierungsentwürfe und 14 offene Fälle bleiben erhalten; keine Menüänderung oder neue Freigabe. Die fünf separat archivierten Technik-Filterrouten sind Kategorie-Kontext (`menu_entry=false`), keine dieser 218 Menüzeilen.
+
+Shop/Metricool samt sechs Kanalidentitäten frisch passend. Planung 19:06:39 CET: 14 bestehende UUIDs / 17 PENDING-Kanalplätze, gegenüber 18:51 unverändert. Genau Projektor und Diffuser erneut geprüft: ACTIVE, CHF 34.90/44.90, tracked=false/CONTINUE, öffentliche exakte Varianten kaufbar und echte Hauptbilder unverändert. Tageskennzahlen und Klaviyo-Report werden aus der heutigen Erstprüfung wiederverwendet; keine zusätzlichen breiten Messungen.
+
+Der Inhaber meldet beim zweiten zuletzt genannten Link ein Google-Kontingentproblem. Keine weiteren Anträge oder Umgehungen. robots.txt und Sitemap-Index aktuell HTTP 200; Google nennt in der gelesenen Quelle keinen Resettermin. Indexierung, Sitemap-Verarbeitung und Annahme des einzelnen Antrags bleiben unbekannt. Derselbe professionelle Master ist weiter ohne freigabefähig belegte neue MP4; Bio-/Board-/YouTube-/Rechte-/Qualitäts-/Ledgergates bleiben offen. Keine Shop-/Theme-/Flow-/Feed-/DNS-/Budget-/Rabattaktivierung oder Kundenansprache. Status der Unterlagen: zur Übernahme bereitgestellt; Claude-Lesebestätigung und Ausführung unbekannt.
+
 ## LUXESTYLE_GESAMTSHOP_20261025
 
 **Fortsetzung im Abendlauf:** [Vollständige beobachtete Menüzuordnung](GESAMTSHOP-MENUE-MIGRATION-20261025.md), [verlustfreie Eintragsdaten](GESAMTSHOP-MENUE-MIGRATION-20261025.json) und [rein lesender Prüfer für die Quellenstruktur im ZIP](GESAMTSHOP-MENUE-PRUEFER-20261025.py) sichern jetzt 218 Desktop-Linkvorkommen mit 195 unveränderten Zielen. Die früher genannten 201 zählen verschachtelte Collectionlinks; zusätzlich sind vier Nicht-Collection-Unterlinks und 13 Hauptlinks enthalten. 204 Platzierungen sind Entwürfe für die sechs Bereiche, 14 bleiben offen. Mobil: 196 href-Vorkommen/181 Ziele; 14 Desktopziele ohne mobile href separat prüfen. Das ist weiterhin kein fertiger nativer Shopify-Menübaum und keine erweiterte Prototypfunktion.
