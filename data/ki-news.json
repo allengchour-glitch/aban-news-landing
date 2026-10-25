@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-24T08:51:17Z",
+ "stand": "2026-10-25T09:07:43Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,11 +18,59 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Community Challenge: Smart-Home-Schuhtrockner und Solar-KI-Server",
-   "u": "https://www.golem.de/news/community-challenge-smart-home-schuhtrockner-und-solar-ki-server-2610-214445.html",
+   "t": "Weniger Demo, mehr Daten: Was Unternehmen nach dem KI-Hype wirklich beschäftigt",
+   "u": "https://t3n.de/news/weniger-demo-mehr-daten-was-unternehmen-nach-dem-ki-hype-wirklich-beschaeftigt-1765690/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-25T08:00:00Z",
+   "s": "Chatbots, Copiloten und beeindruckende Demos gibt es inzwischen genug. 2026 wollen Unternehmen vor allem wissen, welche KI-Anwendungen im Arbeitsalltag funktionieren und sich rechnen. Drei Entwicklung…",
+   "sprache": "de"
+  },
+  {
+   "t": "Offene KI-Modelle: Irgendwo zwischen Schutz vor Konzernmacht und Angst vor Cyberangriffen",
+   "u": "https://t3n.de/news/debatte-um-offene-ki-es-geht-um-cybersicherheit-demokratie-und-sehr-viel-geld-1768097/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-25T07:00:00Z",
+   "s": "Geschlossen gegen offen: Die Debatte tobt in der KI-Szene so heftig wie noch nie. Doch die Diskussion ist komplexer, als es auf den ersten Blick scheint.weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "The AI graveyard: a running list of projects and startups that didn’t make it",
+   "u": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-24T19:00:00Z",
+   "s": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+   "sprache": "en"
+  },
+  {
+   "t": "Block’s new voice model sounds eerily human",
+   "u": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-24T16:00:00Z",
+   "s": "Block said that the voice model can run locally on a MacBook M4 Max",
+   "sprache": "en"
+  },
+  {
+   "t": "KI-Modell: Moonshot AI stellt Kimi K3.1 Pro vor",
+   "u": "https://www.golem.de/news/ki-modell-moonshot-ai-stellt-kimi-k3-1-pro-vor-2610-214477.html",
    "q": "Golem",
-   "d": "2026-10-24T08:30:02Z",
-   "s": "In der Golem-Community haben wir einen kleinen Programmier-Wettbewerb ausgerufen. Das sind die Gewinner - und unsere Einreichung. Von Johannes Hiltscher (Smart Home, Server)",
+   "d": "2026-10-24T13:20:02Z",
+   "s": "Moonshot AI hat Kimi K3.1 Pro vorgestellt, ein KI-Modell, das für Entwicklung, Forschung, Finanzanalysen und 3D-Inhalte gedacht ist. (KI, API)",
+   "sprache": "de"
+  },
+  {
+   "t": "OpenAI stellt seine neue Trainingsumgebung vor – ohne Air Gap",
+   "u": "https://www.heise.de/news/OpenAI-stellt-seine-neue-Trainingsumgebung-vor-ohne-Air-Gap-11499163.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-24T11:37:00Z",
+   "s": "OpenAI verschärfte nach Hacking-Attacken durch seine KI die Sicherheits-Maßnahmen. Die „Offline-Welten“ dafür sind aber nicht offline.",
+   "sprache": "de"
+  },
+  {
+   "t": "Ausbruchsgefahr: OpenAI sperrt seine KI-Modelle vom Internet aus",
+   "u": "https://www.golem.de/news/ausbruchsgefahr-openai-sperrt-seine-ki-modelle-vom-internet-aus-2610-214474.html",
+   "q": "Golem",
+   "d": "2026-10-24T11:27:01Z",
+   "s": "OpenAI trainiert Spitzenmodelle nur noch offline. Der Grund: KI-Agenten waren in Tests aus Sandboxes ausgebrochen. (OpenAI, KI)",
    "sprache": "de"
   },
   {
@@ -32,38 +80,6 @@
    "d": "2026-10-24T08:14:00Z",
    "s": "Anthropic berät sich angeblich mit Anwaltskanzleien, wie KI-Agenten künftig Preise, Gehälter und Verträge für ihre Nutzer aushandeln sollten.",
    "sprache": "de"
-  },
-  {
-   "t": "Continuous Architecture: KI zwingt uns dazu, veraltete Dokumentation aufzuräumen",
-   "u": "https://www.heise.de/hintergrund/Continuous-Architecture-KI-zwingt-uns-dazu-veraltete-Dokumentation-aufzuraeumen-11497700.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-24T08:03:00Z",
-   "s": "Im Interview beschreibt Murat Erder, wie KI Softwareentwicklung verändern kann, ohne die grundlegenden Prinzipien guter Architektur außer Kraft zu setzen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Blackjack-Studie: KI-Agenten erfinden heimlich eine Geheimsprache, um Karten zu zählen",
-   "u": "https://t3n.de/news/blackjack-studie-ki-agenten-1765425/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-24T08:00:00Z",
-   "s": "Einzeln betrachtet, wirken agentische Systeme oft harmlos. Gemeinsam können sie allerdings ihre Kräfte bündeln und ihre Kommunikation gezielt verschleiern. In der realen Welt könnten sie so großen Sch…",
-   "sprache": "de"
-  },
-  {
-   "t": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
-   "u": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-23T23:05:49Z",
-   "s": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work.",
-   "sprache": "en"
-  },
-  {
-   "t": "Hottest toy for Christmas? Nvidia CEO plays with adorable Microduck robots, 20,000 sell",
-   "u": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-23T21:59:19Z",
-   "s": "The robots, stomping their little feet and making tiny R2-D2 noises, sat, fell down dead for a \"nap,\" and summersaulted on voice command.",
-   "sprache": "en"
   },
   {
    "t": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
@@ -80,22 +96,6 @@
    "d": "2026-10-23T16:15:50Z",
    "s": "",
    "sprache": "en"
-  },
-  {
-   "t": "KI-Boom: Wie die Bundesregierung die Regulierung von Rechenzentren aushöhlt",
-   "u": "https://netzpolitik.org/2026/ki-boom-wie-die-bundesregierung-die-regulierung-von-rechenzentren-aushoehlt/",
-   "q": "netzpolitik.org",
-   "d": "2026-10-23T14:28:43Z",
-   "s": "Bundeskanzler Friedrich Merz (CDU) und Nvidia-Chef Jensen Huang auf dem \"Invest in Germany\"-Gipfel in Berlin. – Alle Rechte vorbehalten: IMAGO / dts NachrichtenagenturDer KI-Boom lässt den Strombedarf…",
-   "sprache": "de"
-  },
-  {
-   "t": "Jensen Huang: Schlaft weniger und scheitert vorwärts!",
-   "u": "https://www.golem.de/news/jensen-huang-schlaft-weniger-und-scheitert-vorwaerts-2610-214453.html",
-   "q": "Golem",
-   "d": "2026-10-23T13:48:01Z",
-   "s": "Der Nvidia-CEO überrascht mit teils kuriosen Aussagen. Ebenso spannend ist das Aufeinandertreffen von deutscher und Silicon-Valley-Mentalität. Ein Bericht von Johannes Hiltscher (Nvidia, KI)",
-   "sprache": "de"
   }
  ]
 }
