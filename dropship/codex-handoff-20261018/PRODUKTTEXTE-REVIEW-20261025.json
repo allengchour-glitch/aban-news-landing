@@ -1,0 +1,84 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPLIED",
+  "scope": "descriptionHtml only; all other product fields unchanged",
+  "products": [
+    {
+      "name": "projector",
+      "sourceAndDiffProof": {
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "fieldScope": [
+          "descriptionHtml"
+        ],
+        "beforeHtmlSha256": "bfc6f7c22f98a9ef25f751c6bce1e5195297239540ae2bc4970f0e6efec2fa62",
+        "afterHtmlSha256": "564d44669f0448a4e17313743be6f775b318a3891559478efd6814731c50cb4d",
+        "beforeSnapshotSha256": "337b981ecd18bcd3ba94b75d7275162058b231595808978bd80cb39ee98498a1",
+        "beforeLinks": [
+          "/collections/wohnen-dekoration",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterLinks": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/wohnen-dekoration",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "allOriginalLinkTargetsPreserved": true,
+        "mediaElementsInDescriptionBefore": [],
+        "mediaElementsInDescriptionAfter": [],
+        "adminProductMediaUntouched": true,
+        "changedSEO": false,
+        "shopWrite": false,
+        "ownerApproval": false
+      },
+      "beforeHtml": "<p>Dieser kompakte Sternenlicht-Projektor verwandelt dein Schlafzimmer in eine faszinierende Galaxie. Mit seinen Massen von 121x110x121 mm findet er mühelos auf jedem Nachttisch Platz. Er ist aus robustem PVC gefertigt und bietet eine lange durchschnittliche Lebensdauer von über 480 Stunden. Die Bedienung erfolgt einfach per Knopfdruck.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Spannung: ≤36V</li>\n<li>Leistung der Lichtquelle: 4W</li>\n<li>Stromversorgung: Plug-in (verschiedene Modelle mit Ladefunktion verfügbar)</li>\n<li>Stil: Leichter Luxus</li>\n<li>Zusatzfunktionen (modellabhängig): Musik, Bluetooth, diverse Filmsets und Galaxie-Projektionen</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "afterHtml": "<p>Entdecke den Sternenlicht-Projektor für dein Schlafzimmer und sieh dir das Gerät in den Produktansichten aus der Nähe an.</p>\n<h3>Design im Überblick</h3>\n<p>Die Produktansichten zeigen ein rundes Gerät in einem Bügel sowie Bedienelemente an der Vorderseite.</p>\n<h3>Vor deiner Wahl</h3>\n<p>Vergleiche die Produktansichten mit den Angaben zur angebotenen Ausführung. Prüfe vor dem Kauf, welche Stromversorgung, welches Zubehör und welche Motive ausdrücklich für dieses Angebot bestätigt sind.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n",
+      "unifiedDiff": "--- projector-BEFORE.html\n+++ projector-AFTER.html\n@@ -1,9 +1,8 @@\n-<p>Dieser kompakte Sternenlicht-Projektor verwandelt dein Schlafzimmer in eine faszinierende Galaxie. Mit seinen Massen von 121x110x121 mm findet er mühelos auf jedem Nachttisch Platz. Er ist aus robustem PVC gefertigt und bietet eine lange durchschnittliche Lebensdauer von über 480 Stunden. Die Bedienung erfolgt einfach per Knopfdruck.</p><h3>Das zeichnet es aus</h3><ul>\n-<li>Spannung: ≤36V</li>\n-<li>Leistung der Lichtquelle: 4W</li>\n-<li>Stromversorgung: Plug-in (verschiedene Modelle mit Ladefunktion verfügbar)</li>\n-<li>Stil: Leichter Luxus</li>\n-<li>Zusatzfunktionen (modellabhängig): Musik, Bluetooth, diverse Filmsets und Galaxie-Projektionen</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n\\ No newline at end of file\n+<p>Entdecke den Sternenlicht-Projektor für dein Schlafzimmer und sieh dir das Gerät in den Produktansichten aus der Nähe an.</p>\n+<h3>Design im Überblick</h3>\n+<p>Die Produktansichten zeigen ein rundes Gerät in einem Bügel sowie Bedienelemente an der Vorderseite.</p>\n+<h3>Vor deiner Wahl</h3>\n+<p>Vergleiche die Produktansichten mit den Angaben zur angebotenen Ausführung. Prüfe vor dem Kauf, welche Stromversorgung, welches Zubehör und welche Motive ausdrücklich für dieses Angebot bestätigt sind.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n"
+    },
+    {
+      "name": "diffuser",
+      "sourceAndDiffProof": {
+        "productId": "gid://shopify/Product/15411554320769",
+        "variantId": "gid://shopify/ProductVariant/55743280021889",
+        "fieldScope": [
+          "descriptionHtml"
+        ],
+        "beforeHtmlSha256": "3b504d1f57516acd0883aaaea26c5f65c14f46df583d46a4576c76e8034204ec",
+        "afterHtmlSha256": "155feee9a903248820480bc5b846d97d07d5029bc494a3aecc9e6677aaef194e",
+        "beforeSnapshotSha256": "aaefa35aee1016ea6244687e2d2f936e279079ff99f37c90afc72a1b06611aa4",
+        "beforeLinks": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/wellness-selfcare",
+          "/collections/beauty-geraete",
+          "/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026",
+          "/blogs/ratgeber/trockene-heizungsluft-winter-luftbefeuchter",
+          "/blogs/ratgeber/einschlaf-ritual-aromatherapie-pillow-spray",
+          "/blogs/magazin/atherische-ole-fur-besseren-schlaf-die-top-5-2026",
+          "/blogs/magazin/diffuser-kaufen-schweiz-2026"
+        ],
+        "afterLinks": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/wellness-selfcare",
+          "/collections/beauty-geraete",
+          "/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026",
+          "/blogs/ratgeber/trockene-heizungsluft-winter-luftbefeuchter",
+          "/blogs/ratgeber/einschlaf-ritual-aromatherapie-pillow-spray",
+          "/blogs/magazin/atherische-ole-fur-besseren-schlaf-die-top-5-2026",
+          "/blogs/magazin/diffuser-kaufen-schweiz-2026"
+        ],
+        "allOriginalLinkTargetsPreserved": true,
+        "mediaElementsInDescriptionBefore": [],
+        "mediaElementsInDescriptionAfter": [],
+        "adminProductMediaUntouched": true,
+        "changedSEO": false,
+        "shopWrite": false,
+        "ownerApproval": false
+      },
+      "beforeHtml": "<p>Ein Aroma-Diffuser in Holzoptik mit rundem Sockel und schlank zulaufendem Aufsatz. Die sichtbare Maserung und die geschwungene Form setzen einen dekorativen Akzent auf einem Tisch oder Sideboard.</p>\n<h3>Design und Aufbau</h3>\n<ul>\n<li>Gehäuse in Holzoptik mit umlaufendem Akzentband</li>\n<li>Abnehmbarer Aufsatz über dem Wasserbehälter</li>\n<li>Bedientasten an der Vorderseite</li>\n</ul>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!--xsell--><p><strong>Passend dazu:</strong> <a href=\"/collections/wellness-selfcare\">Wellness &amp; Selfcare</a> · <a href=\"/collections/beauty-geraete\">Beauty-Geräte</a></p>\n<h3>Mehr zum Thema</h3>\n<ul>\n<li><a href=\"/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026\">Aroma-Diffuser: Auswahl und Kauf</a></li>\n<li><a href=\"/blogs/ratgeber/trockene-heizungsluft-winter-luftbefeuchter\">Luftbefeuchter und trockene Heizungsluft</a></li>\n<li><a href=\"/blogs/ratgeber/einschlaf-ritual-aromatherapie-pillow-spray\">Aromatherapie und Abendroutine</a></li>\n<li><a href=\"/blogs/magazin/atherische-ole-fur-besseren-schlaf-die-top-5-2026\">Ratgeber zu ätherischen Ölen</a></li>\n<li><a href=\"/blogs/magazin/diffuser-kaufen-schweiz-2026\">Diffuser kaufen in der Schweiz</a></li>\n</ul>",
+      "afterHtml": "<p>Ein Aroma-Diffuser in Holzoptik mit rundem Sockel und schlank zulaufendem Aufsatz. Die sichtbare Maserung und die geschwungene Form setzen einen dekorativen Akzent auf einem Tisch oder Sideboard.</p>\n<h3>Design und Aufbau</h3>\n<ul>\n<li>Gehäuse in Holzoptik mit umlaufendem Akzentband</li>\n<li>Abnehmbarer Aufsatz über dem Wasserbehälter</li>\n<li>Bedientasten an der Vorderseite</li>\n</ul>\n<h3>Vor deiner Wahl</h3>\n<p>Vergleiche die Produktansichten mit den Angaben zur angebotenen Ausführung. Prüfe vor dem Kauf die ausdrücklich genannte Stromversorgung, den Lieferumfang und die Hinweise zur Befüllung und Pflege.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!--xsell--><p><strong>Passend dazu:</strong> <a href=\"/collections/wellness-selfcare\">Wellness &amp; Selfcare</a> · <a href=\"/collections/beauty-geraete\">Beauty-Geräte</a></p>\n<h3>Mehr zum Thema</h3>\n<ul>\n<li><a href=\"/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026\">Aroma-Diffuser: Auswahl und Kauf</a></li>\n<li><a href=\"/blogs/ratgeber/trockene-heizungsluft-winter-luftbefeuchter\">Luftbefeuchter und trockene Heizungsluft</a></li>\n<li><a href=\"/blogs/ratgeber/einschlaf-ritual-aromatherapie-pillow-spray\">Aromatherapie und Abendroutine</a></li>\n<li><a href=\"/blogs/magazin/atherische-ole-fur-besseren-schlaf-die-top-5-2026\">Ratgeber zu ätherischen Ölen</a></li>\n<li><a href=\"/blogs/magazin/diffuser-kaufen-schweiz-2026\">Diffuser kaufen in der Schweiz</a></li>\n</ul>",
+      "unifiedDiff": "--- diffuser-BEFORE.html\n+++ diffuser-AFTER.html\n@@ -5,6 +5,8 @@\n <li>Abnehmbarer Aufsatz über dem Wasserbehälter</li>\n <li>Bedientasten an der Vorderseite</li>\n </ul>\n+<h3>Vor deiner Wahl</h3>\n+<p>Vergleiche die Produktansichten mit den Angaben zur angebotenen Ausführung. Prüfe vor dem Kauf die ausdrücklich genannte Stromversorgung, den Lieferumfang und die Hinweise zur Befüllung und Pflege.</p>\n <h3>Versand und Rückgabe</h3>\n <p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n <!--xsell--><p><strong>Passend dazu:</strong> <a href=\"/collections/wellness-selfcare\">Wellness &amp; Selfcare</a> · <a href=\"/collections/beauty-geraete\">Beauty-Geräte</a></p>\n"
+    }
+  ]
+}
