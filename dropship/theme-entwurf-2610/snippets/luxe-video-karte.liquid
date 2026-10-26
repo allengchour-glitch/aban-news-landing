@@ -1,0 +1,88 @@
+{%- doc -%}
+  LuxeStyle 26.10.2026: EINE Videokarte (Vorschaubild, Abspiel-Symbol, Plattform-Beschriftung) als Link.
+  Gibt NICHTS aus, wenn die Adresse nicht zu TikTok oder YouTube gehört (fremde Domains werden verworfen).
+  Kein iframe, keine externen Skripte: die Karte ist ein gewöhnlicher Link, der in einem neuen Tab öffnet.
+
+  @param {string} url - Adresse des Videos (nur https://…tiktok.com, vm.tiktok.com, vt.tiktok.com, youtube.com, youtu.be)
+  @param {string} [titel] - Titel des Videos
+  @param {string} [vorschau] - Vorschaubild (https://…); fehlt es, wird bei YouTube eines aus der Video-ID abgeleitet
+  @param {string} [plattform] - wird ignoriert, die Plattform folgt immer aus der Adresse (kein Vertrauen in Metafeld-Text)
+
+  @example
+  {% render 'luxe-video-karte', url: video.url, titel: video.titel, vorschau: video.vorschau %}
+{%- enddoc -%}
+
+{%- liquid
+  assign lx_u = url | strip
+  assign lx_u_klein = lx_u | downcase
+  assign lx_plattform = null
+
+  assign lx_tt_praefixe = 'https://www.tiktok.com/,https://tiktok.com/,https://vm.tiktok.com/,https://vt.tiktok.com/,https://m.tiktok.com/' | split: ','
+  assign lx_yt_praefixe = 'https://www.youtube.com/,https://youtube.com/,https://m.youtube.com/,https://youtu.be/' | split: ','
+
+  for lx_p in lx_tt_praefixe
+    assign lx_pk = lx_u_klein | slice: 0, lx_p.size
+    if lx_pk == lx_p
+      assign lx_plattform = 'TikTok'
+    endif
+  endfor
+  for lx_p in lx_yt_praefixe
+    assign lx_pk = lx_u_klein | slice: 0, lx_p.size
+    if lx_pk == lx_p
+      assign lx_plattform = 'YouTube'
+    endif
+  endfor
+
+  # Vorschaubild: nur https-Adressen; sonst bei YouTube aus der Video-ID ableiten
+  assign lx_bild = null
+  assign lx_vorschau = vorschau | strip
+  assign lx_vk = lx_vorschau | downcase | slice: 0, 8
+  if lx_vk == 'https://'
+    assign lx_bild = lx_vorschau
+  elsif lx_plattform == 'YouTube'
+    assign lx_yt_id = null
+    if lx_u contains 'v='
+      assign lx_yt_id = lx_u | split: 'v=' | last | split: '&' | first
+    elsif lx_u contains '/shorts/'
+      assign lx_yt_id = lx_u | split: '/shorts/' | last | split: '?' | first
+    elsif lx_u contains 'youtu.be/'
+      assign lx_yt_id = lx_u | split: 'youtu.be/' | last | split: '?' | first
+    endif
+    if lx_yt_id != blank and lx_yt_id.size == 11
+      assign lx_bild = 'https://img.youtube.com/vi/' | append: lx_yt_id | append: '/hqdefault.jpg'
+    endif
+  endif
+
+  assign lx_titel = titel | strip | default: 'Video von LuxeStyle'
+-%}
+{%- if lx_plattform != blank -%}
+  <li class="lx-vid__item">
+    <a
+      class="lx-vid__karte{% if lx_bild == blank %} lx-vid__karte--ohne-bild{% endif %}"
+      href="{{ lx_u | escape }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="{{ lx_titel | escape }} ({{ lx_plattform }}, öffnet in neuem Tab)"
+    >
+      {%- if lx_bild != blank -%}
+        <img
+          class="lx-vid__bild"
+          src="{{ lx_bild | escape }}"
+          alt=""
+          width="270"
+          height="480"
+          loading="lazy"
+          decoding="async"
+        >
+      {%- endif -%}
+      <span class="lx-vid__plattform" aria-hidden="true">{{ lx_plattform }}</span>
+      <span class="lx-vid__play" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="48" height="48" focusable="false">
+          <circle cx="24" cy="24" r="24" fill="rgba(0,0,0,.58)"></circle>
+          <path d="M19 15.5v17l14.5-8.5z" fill="#fff"></path>
+        </svg>
+      </span>
+      <span class="lx-vid__titel" aria-hidden="true">{{ lx_titel | escape }}</span>
+    </a>
+  </li>
+{%- endif -%}

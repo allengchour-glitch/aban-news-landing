@@ -1,0 +1,87 @@
+{%- comment -%}
+  LuxeStyle 26.10.2026: Video-Zeile (TikTok / YouTube).
+  Daten: Shop-Metafeld luxe.videos (Typ json), Liste von {plattform, titel, url, vorschau}, neueste zuerst.
+  Gepflegt wird es von automation/videos_zeile.mjs (Trockenlauf Vorgabe, LIVE=1 schreibt).
+  Auf Produktseiten steht zuerst das Video aus product.metafields.luxe.video_url (Typ url), falls vorhanden.
+  Ist keine gültige Karte da, gibt der Abschnitt NICHTS aus. Rücknahme: Abschnitt aus templates/index.json und
+  templates/product.json entfernen (oder im Theme-Editor löschen).
+{%- endcomment -%}
+
+{%- liquid
+  assign lx_liste = shop.metafields.luxe.videos.value
+  assign lx_produkt_video = null
+  if product != blank
+    assign lx_produkt_video = product.metafields.luxe.video_url.value
+  endif
+-%}
+{%- if lx_liste.size > 0 or lx_produkt_video != blank -%}
+  <div class="lx-videos-abschnitt" {{ section.shopify_attributes }}>
+    {%- render 'luxe-videos-zeile',
+      liste: lx_liste,
+      erstes_url: lx_produkt_video,
+      ueberschrift: section.settings.heading,
+      maximal: section.settings.max_items,
+      abstand_oben: section.settings.padding_top,
+      abstand_unten: section.settings.padding_bottom,
+      schluessel: section.id
+    -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "LuxeStyle Videos",
+  "tag": "section",
+  "class": "section-luxe-videos",
+  "enabled_on": {
+    "templates": ["index", "product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt die neuesten TikTok- und YouTube-Videos als Vorschaukarten. Die Liste kommt aus dem Shop-Metafeld luxe.videos und wird mit automation/videos_zeile.mjs gepflegt. Ist die Liste leer, erscheint nichts. Auf Produktseiten steht zuerst das Video aus dem Produkt-Metafeld luxe.video_url."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Videos"
+    },
+    {
+      "type": "range",
+      "id": "max_items",
+      "label": "Maximale Anzahl",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Abstand oben",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Abstand unten",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "LuxeStyle Videos",
+      "category": "Medien"
+    }
+  ]
+}
+{% endschema %}
