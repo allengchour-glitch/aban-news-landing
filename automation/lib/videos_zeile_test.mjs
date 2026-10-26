@@ -185,6 +185,14 @@ const keinWarten = () => Promise.resolve();
   pruef('sammle: 1 von 4 echten Quellen ausgefallen -> Schreiben erlaubt', darfSchreiben(liste, { quellen: bericht.quellen, ausgefallen: bericht.ausgefallen }).ja, true);
 }
 {
+  // YouTube-Einzelvideo: 404 bei oEmbed = Video gibt es nicht -> nicht in die Liste; 503 = Störung -> Video bleibt (Ersatztitel).
+  const fn = (status) => async (url) => (url.startsWith('https://www.youtube.com/oembed') ? antwort(status, '') : antwort(500));
+  const weg = await sammle({ youtube: ['https://youtu.be/00000000000'] }, { fetch: fn(404), warte: keinWarten });
+  pruef('YouTube-Video 404: nicht in der Liste, im Bericht genannt', [weg.liste.length, weg.bericht.uebersprungen.length], [0, 1]);
+  const stoerung = await sammle({ youtube: ['https://youtu.be/dQw4w9WgXcQ'] }, { fetch: fn(503), warte: keinWarten, versuche: 2 });
+  pruef('YouTube-Video bei Störung (503): bleibt mit Ersatztitel', [stoerung.liste.length, stoerung.liste[0]?.titel], [1, 'YouTube-Video von LuxeStyle']);
+}
+{
   const { liste, bericht } = await sammle({ tiktok: [], youtube: [] }, { fetch: async () => { throw new Error('darf nicht gerufen werden'); } });
   pruef('sammle: leere Quelle -> leere Liste, kein Netzzugriff', [liste, bericht.quellen], [[], 0]);
 }

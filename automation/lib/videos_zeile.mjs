@@ -298,7 +298,9 @@ export async function sammle(quellenObj, opt = {}) {
       alle.push(...eintraege);
     } else {
       let o = null;
-      const r = await hole(youtubeOembedUrl(y.url), y.url); // nur für den Titel; fällt sie aus, bleibt der Ersatztitel
+      const r = await hole(youtubeOembedUrl(y.url), y.url); // liefert den Titel; bei einer Störung (5xx/Netz) bleibt der Ersatztitel
+      // 400/401/403/404 = es gibt das Video nicht (mehr), ist privat oder die Adresse ist falsch: nicht in die Liste.
+      if (!r.ok && [400, 401, 403, 404].includes(r.status)) { ausfall(y.url, `Video nicht abrufbar (${r.fehler}): gelöscht, privat oder falsche Adresse`); continue; }
       if (r.ok) { try { o = JSON.parse(r.text); } catch { o = null; } }
       const e = eintragAusYoutubeVideo(y.url, o);
       if (e) alle.push(e); else ausfall(y.url, 'kein Eintrag baubar');
