@@ -1,0 +1,250 @@
+{
+  "scopeDateEuropeZurich": "2026-10-26",
+  "metadataOnly": true,
+  "performanceMetricsReread": false,
+  "request": {
+    "brandId": "6227837",
+    "from": "2026-10-19T00:00:00+02:00",
+    "to": "2026-10-25T23:59:59+01:00",
+    "metrics": [
+      "YTVP02",
+      "YTVP04",
+      "YTVP05",
+      "YTVP17"
+    ]
+  },
+  "columns": [
+    "publishedAtRawWithoutTimezone",
+    "videoId",
+    "videoUrl",
+    "currentTitle"
+  ],
+  "existingVideoRows": [
+    [
+      "20261023052049",
+      "jDcJdy9hrhU",
+      "https://www.youtube.com/watch?v=jDcJdy9hrhU",
+      "Steamy Cat Bürste Avocado #Shorts"
+    ],
+    [
+      "20261022140738",
+      "RDnQPUuh25M",
+      "https://www.youtube.com/watch?v=RDnQPUuh25M",
+      "Tierhaarbürste zur Entfernung von losem Haar #Shorts"
+    ],
+    [
+      "20261022052040",
+      "tvS9TqDBgxQ",
+      "https://www.youtube.com/watch?v=tvS9TqDBgxQ",
+      "Dinosaurier-Hundespielzeug für grosse Hunde #Shorts"
+    ],
+    [
+      "20261021140902",
+      "8YlvWBSMwNc",
+      "https://www.youtube.com/watch?v=8YlvWBSMwNc",
+      "Nahtloser Yoga-Bodysuit mit Cut-Outs #Shorts"
+    ],
+    [
+      "20261021052109",
+      "6lynB_zJ6O4",
+      "https://www.youtube.com/watch?v=6lynB_zJ6O4",
+      "Interaktives Slow-Feeder Spielzeug für Hunde & Katzen #Shorts"
+    ],
+    [
+      "20261020140800",
+      "GtdjH8rvXps",
+      "https://www.youtube.com/watch?v=GtdjH8rvXps",
+      "V-Ausschnitt A-Linien Kleid mit Puffärmeln #Shorts"
+    ],
+    [
+      "20261020052035",
+      "P8RgKFhCzxY",
+      "https://www.youtube.com/watch?v=P8RgKFhCzxY",
+      "Reisetasche mit grossem Volumen #Shorts"
+    ],
+    [
+      "20261019140751",
+      "lcFYLCMBgNs",
+      "https://www.youtube.com/watch?v=lcFYLCMBgNs",
+      "Handyhalter mit Schwanenhals #Shorts"
+    ],
+    [
+      "20261019052043",
+      "V_a9FZNDCCg",
+      "https://www.youtube.com/watch?v=V_a9FZNDCCg",
+      "Hundeleine mit LED-Beleuchtung, 3m #Shorts"
+    ]
+  ],
+  "editorialGroups": [
+    {
+      "videoId": "jDcJdy9hrhU",
+      "group": "Haustier"
+    },
+    {
+      "videoId": "RDnQPUuh25M",
+      "group": "Haustier"
+    },
+    {
+      "videoId": "tvS9TqDBgxQ",
+      "group": "Haustier"
+    },
+    {
+      "videoId": "8YlvWBSMwNc",
+      "group": "Mode"
+    },
+    {
+      "videoId": "6lynB_zJ6O4",
+      "group": "Haustier"
+    },
+    {
+      "videoId": "GtdjH8rvXps",
+      "group": "Mode"
+    },
+    {
+      "videoId": "P8RgKFhCzxY",
+      "group": "Reise"
+    },
+    {
+      "videoId": "lcFYLCMBgNs",
+      "group": "Handy"
+    },
+    {
+      "videoId": "V_a9FZNDCCg",
+      "group": "Haustier"
+    }
+  ],
+  "topicCounts": {
+    "Haustier": 5,
+    "Mode": 2,
+    "Reise": 1,
+    "Handy": 1
+  },
+  "doesNotProveFollowerImpact": true,
+  "currentProfileTextRead": {
+    "facebook": "UNKNOWN: info connector INVALID_ARGUMENT",
+    "youtube": "UNKNOWN: info connector INVALID_ARGUMENT"
+  },
+  "productTagGates": [
+    {
+      "name": "avocado",
+      "productId": "gid://shopify/Product/15450835091841",
+      "tagsPresent": true,
+      "repoMatches": [],
+      "ownerRueckholMatches": [
+        "rueckhol-0907"
+      ],
+      "newPromotionPrepared": false
+    },
+    {
+      "name": "tierbuerste",
+      "productId": "gid://shopify/Product/15450833944961",
+      "tagsPresent": true,
+      "repoMatches": [],
+      "ownerRueckholMatches": [
+        "rueckhol-0907"
+      ],
+      "newPromotionPrepared": false
+    }
+  ],
+  "publicHomeRead": {
+    "url": "https://luxestyle.ch/",
+    "checkedAtUtc": "2026-10-26T07:54:41.510093+00:00",
+    "maxBytes": 6291456,
+    "executedScripts": false,
+    "requests": 1,
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/",
+    "bytesRead": 2824102,
+    "truncated": false,
+    "contentType": "text/html; charset=utf-8",
+    "sha256OfReadBytes": "bf305c7b7975458f87d4c78ca270ef9b59f2df8460e4181fa46377625d95682c",
+    "observedLinks": [
+      {
+        "href": "https://www.facebook.com/1049840534888592",
+        "ariaLabel": "Facebook",
+        "title": null,
+        "inSemanticFooter": true,
+        "text": "Facebook",
+        "anchorStart": [
+          87082,
+          10
+        ]
+      }
+    ],
+    "semanticFooterCount": 1,
+    "semanticFooters": [
+      {
+        "id": null,
+        "class": null
+      }
+    ],
+    "absenceClaimsAllowed": true
+  },
+  "footerDraftValidation": {
+    "status": "PASS_SINGLE_FIELD_REVIEW_DRAFT_NOT_APPLIED",
+    "recordedAtUtc": "2026-10-26T08:06:24.861275+00:00",
+    "theme": {
+      "id": "gid://shopify/OnlineStoreTheme/187533001089",
+      "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+      "role": "MAIN"
+    },
+    "fieldPath": "/sections/footer_utilities_jLGE8U/blocks/social_links_Ew63Kq/settings/youtube_url",
+    "oldValue": "",
+    "newValue": "https://www.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA",
+    "beforeSha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+    "afterSha256": "986a2f8fd41636f4d738f8a78b1bdd6b306dcf80f40076e7ba588e012cf45779",
+    "nativeFileProofs": [
+      {
+        "filename": "blocks/social-links.liquid",
+        "apiMd5": "f96ba721f77a5d0976ad72d4afaf53dd",
+        "actualMd5": "f96ba721f77a5d0976ad72d4afaf53dd",
+        "sha256": "8c46f5620a1b0f5503220bb80d37dc238bea809bb3de2a0c5e52ca88a1670027",
+        "bytes": 6130,
+        "updatedAt": "2026-06-11T15:06:59Z"
+      },
+      {
+        "filename": "sections/footer-group.json",
+        "apiMd5": "368187170859033dc70fce5fa332ce27",
+        "actualMd5": "368187170859033dc70fce5fa332ce27",
+        "sha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+        "bytes": 20091,
+        "updatedAt": "2026-10-21T06:38:31Z"
+      },
+      {
+        "filename": "snippets/icon.liquid",
+        "apiMd5": "bae5a7489642235f437f8072be3b7c56",
+        "actualMd5": "bae5a7489642235f437f8072be3b7c56",
+        "sha256": "3f7b91b16a5116871bda8ffb8b9cf86ee96ec97c619ef3c0538f2931b6a16f83",
+        "youtubeCasePresent": true
+      }
+    ],
+    "semanticFieldsChanged": 1,
+    "allOtherJsonValuesPreserved": true,
+    "rawPrefixAndSuffixPreserved": true,
+    "existingFacebookLinkPreserved": true,
+    "rendererAndIconAlreadySupportYoutube": true,
+    "externalLibrariesInstalled": 0,
+    "liveThemeWrites": 0,
+    "profileWrites": 0,
+    "socialWrites": 0,
+    "scopeLimits": [
+      "Public homepage HTML only, no storefront JavaScript executed.",
+      "No browser, full theme dependency, or subscription outcome test.",
+      "CLI docs fetch failed; native official documentation was available.",
+      "CLI GraphQL validator lacks assets; native validator delegated to successful actual read queries.",
+      "Current source hash and MAIN role must match immediately before any separately approved application."
+    ]
+  },
+  "independentReview": {
+    "topicGrouping": "PASS: 5/2/1/1 is descriptive, no causal inference",
+    "proposedChannelCta": "Für weitere Produktideen abonnieren.",
+    "singleFooterFieldScope": "PASS as local review draft; no inferred subscription growth"
+  },
+  "writes": {
+    "liveTheme": 0,
+    "profiles": 0,
+    "social": 0,
+    "customers": 0
+  },
+  "missingSourceEvidence": "Nine titles/thumbnail URLs are metadata, not a full film/video-rights audit."
+}
