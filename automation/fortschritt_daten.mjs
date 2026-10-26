@@ -23,6 +23,8 @@ const zeilen = [
   { id: 'fakten', bereich: 'Technische Daten, Lieferumfang', einheit: 'Produkte', fertig: art('fakten').size, gesamt: null, quelle: 'kategorien_ledger.txt (fakten)', anmerkung: 'nur belegte Angaben aus dem Datenblatt' },
   { id: 'labels', bereich: 'Kategorie-Bilder', einheit: 'Kategorien', fertig: art('bild').size, gesamt: 88, quelle: 'kategorien_ledger.txt (bild)', anmerkung: '88 Kategorien in lib/kategorien.mjs' },
   { id: 'bewertung', bereich: 'Gut bewertete zuerst', einheit: 'Kategorien', fertig: art('bewertung-zuerst').size, gesamt: null, quelle: 'kategorien_ledger.txt (bewertung-zuerst)', anmerkung: 'Kategorien im Menü mit mindestens 10 Produkten' },
+  { id: 'optionen', bereich: 'Optionswerte ins Deutsche', einheit: 'Produkte', fertig: art('optionen-uebersetzt').size, gesamt: 2863, quelle: 'kategorien_ledger.txt (optionen-uebersetzt)', anmerkung: 'Umfang gemessen am 26.10. (2 863 Produkte mit englischen Werten); ein Teil bleibt bewusst englisch (Namenskollision, Zahl, Marke)' },
+  { id: 'verengt', bereich: 'Menü-Seiten ohne Fremdprodukte', einheit: 'Kategorien', fertig: JSON.parse(readFileSync('automation/lib/kategorien_verengt_daten.json', 'utf8')).length, gesamt: 27, quelle: 'lib/kategorien_verengt_daten.json (live am 26.10.)', anmerkung: '27 Alt-Collections von Titel-Regeln auf Tags mit Google-Kategorie-Ausschlüssen umgestellt; Prüfer-Ausreisser 631 → 315' },
   { id: 'titel', bereich: 'Titel korrigiert', einheit: 'Produkte', fertig: art('titel').size, gesamt: null, quelle: 'kategorien_ledger.txt (titel)', anmerkung: 'Titel, die dem Datenblatt widersprachen' },
 ].map(z => ({ ...z, stand: zeitpunkt }));
 writeFileSync(OUT, JSON.stringify(zeilen, null, 1));
