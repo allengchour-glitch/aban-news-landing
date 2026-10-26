@@ -241,19 +241,24 @@ export function metafieldsSetEingabe(shopId, liste) {
   return [{ ownerId: shopId, namespace: NAMESPACE, key: KEY, type: 'json', value: JSON.stringify(liste) }];
 }
 
-/** HTTP mit Geduld: 429/5xx/Netzfehler -> bis zu `versuche` Versuche mit wachsender Pause; andere 4xx sofort. */
+/**
+ * HTTP mit Geduld: 429/5xx/Netzfehler -> bis zu `versuche` Versuche mit wachsender Pause; andere 4xx sofort.
+ * `auchWiederholen: [404]` für Endpunkte, die gelegentlich zu Unrecht 404 melden: der YouTube-RSS-Feed
+ * antwortete am 26.10.2026 für DIESELBE Kanal-ID abwechselnd mit 200, 404 und 500.
+ */
 export async function holeMitGeduld(url, opt = {}) {
   const versuche = opt.versuche ?? 4;
   const basis = opt.basisMs ?? 1200;
   const fetchFn = opt.fetch ?? fetch;
   const warte = opt.warte ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
+  const nochmal = new Set(opt.auchWiederholen ?? []); // weitere Status, die wie eine Störung behandelt werden
   let status = 0, text = '', fehler = '', nachgefasst = 0;
   for (let i = 0; i < versuche; i++) {
     try {
       const r = await fetchFn(url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; LuxeStyle-Videozeile/1.0)', Accept: '*/*' } });
       status = r.status; text = await r.text(); fehler = '';
       if (status >= 200 && status < 300) return { ok: true, status, text, nachgefasst };
-      if (status !== 429 && status < 500) return { ok: false, status, text: '', nachgefasst, fehler: `HTTP ${status}` };
+      if (status !== 429 && status < 500 && !nochmal.has(status)) return { ok: false, status, text: '', nachgefasst, fehler: `HTTP ${status}` };
       fehler = `HTTP ${status}`;
     } catch (e) { status = 0; fehler = 'Netzfehler: ' + (e?.message || e); }
     if (i + 1 < versuche) { nachgefasst++; await warte(basis * 2 ** i); }
@@ -272,9 +277,9 @@ export async function sammle(quellenObj, opt = {}) {
   const alle = [];
   const pause = opt.pauseMs ?? 0;
   const warte = opt.warte ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
-  const hole = async (url, was) => {
+  const hole = async (url, extra = {}) => {
     if (pause) await warte(pause);
-    const r = await holeMitGeduld(url, opt);
+    const r = await holeMitGeduld(url, { ...opt, ...extra });
     bericht.nachgefasst += r.nachgefasst;
     return r;
   };
@@ -282,7 +287,7 @@ export async function sammle(quellenObj, opt = {}) {
 
   for (const url of q.tiktok) {
     bericht.quellen++;
-    const r = await hole(tiktokOembedUrl(url), url);
+    const r = await hole(tiktokOembedUrl(url));
     if (!r.ok) { ausfall(url, r.fehler); continue; }
     let j; try { j = JSON.parse(r.text); } catch { ausfall(url, 'oEmbed-Antwort ist kein JSON'); continue; }
     const e = eintragAusTiktok(url, j);
@@ -291,14 +296,14 @@ export async function sammle(quellenObj, opt = {}) {
   for (const y of q.youtube) {
     bericht.quellen++;
     if (y.art === 'kanal') {
-      const r = await hole(feedUrl(y.id), y.id);
+      const r = await hole(feedUrl(y.id), { auchWiederholen: [404] }); // der Feed meldet gelegentlich zu Unrecht 404
       if (!r.ok) { ausfall(`Kanal ${y.id}`, r.fehler); continue; }
       const eintraege = parseYoutubeFeed(r.text);
       if (!eintraege.length) { ausfall(`Kanal ${y.id}`, 'Feed ohne lesbare Videos'); continue; }
       alle.push(...eintraege);
     } else {
       let o = null;
-      const r = await hole(youtubeOembedUrl(y.url), y.url); // liefert den Titel; bei einer Störung (5xx/Netz) bleibt der Ersatztitel
+      const r = await hole(youtubeOembedUrl(y.url)); // liefert den Titel; bei einer Störung (5xx/Netz) bleibt der Ersatztitel
       // 400/401/403/404 = es gibt das Video nicht (mehr), ist privat oder die Adresse ist falsch: nicht in die Liste.
       if (!r.ok && [400, 401, 403, 404].includes(r.status)) { ausfall(y.url, `Video nicht abrufbar (${r.fehler}): gelöscht, privat oder falsche Adresse`); continue; }
       if (r.ok) { try { o = JSON.parse(r.text); } catch { o = null; } }

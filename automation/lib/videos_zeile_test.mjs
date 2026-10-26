@@ -36,6 +36,7 @@ for (const [name, u] of [
   ['ähnlicher Name', 'https://nottiktok.com/@a/video/75012345678901234'],
   ['http statt https', 'http://www.tiktok.com/@a/video/75012345678901234'],
   ['Zugangsdaten in der Adresse', 'https://www.tiktok.com@evil.example/@a/video/75012345678901234'],
+  ['Zugangsdaten bei echtem Host', 'https://user:pw@www.tiktok.com/@a/video/75012345678901234'],
   ['javascript:', 'javascript:alert(1)'],
   ['kein Text', 12345],
   ['leer', ''],
@@ -115,6 +116,62 @@ pruef('Feed: neueste 6 von 9', f.map((e) => e.titel.slice(0, 13)).slice(0, 2), [
 pruef('Feed: genau 6 Einträge', f.length, 6);
 pruef('Feed: Entitäten gelesen', f[0].titel, 'Video & Nr. 8 "neu"');
 pruef('Feed: Vorschau aus dem Feed', f[0].vorschau, 'https://i.ytimg.com/vi/aaaaaaaaaa8/hqdefault.jpg');
+// Echter Feed (freeCodeCamp, am 26.10.2026 abgerufen, auf zwei Einträge gekürzt): Kopfzeilen des Feeds dürfen nicht als Video zählen.
+const ECHT = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ"/>
+ <id>yt:channel:8butISFwT-Wl7EV0hUK0BQ</id>
+ <yt:channelId>8butISFwT-Wl7EV0hUK0BQ</yt:channelId>
+ <title>freeCodeCamp.org</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ"/>
+ <author>
+  <name>freeCodeCamp.org</name>
+  <uri>https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ</uri>
+ </author>
+ <published>2014-12-16T21:18:48+00:00</published>
+ <entry>
+  <id>yt:video:JGly6PSK5iw</id>
+  <yt:videoId>JGly6PSK5iw</yt:videoId>
+  <yt:channelId>UC8butISFwT-Wl7EV0hUK0BQ</yt:channelId>
+  <title>Gemini 4 Argon API Crash Course</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=JGly6PSK5iw"/>
+  <author>
+   <name>freeCodeCamp.org</name>
+   <uri>https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ</uri>
+  </author>
+  <published>2026-10-23T14:10:25+00:00</published>
+  <updated>2026-10-24T07:43:30+00:00</updated>
+  <media:group>
+   <media:title>Gemini 4 Argon API Crash Course</media:title>
+   <media:content url="https://www.youtube.com/v/JGly6PSK5iw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/JGly6PSK5iw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>…</media:description>
+   
+  </media:group>
+ </entry><entry>
+  <id>yt:video:gYXLRMycVMk</id>
+  <yt:videoId>gYXLRMycVMk</yt:videoId>
+  <yt:channelId>UC8butISFwT-Wl7EV0hUK0BQ</yt:channelId>
+  <title>MCP Security Fundamentals Course</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=gYXLRMycVMk"/>
+  <author>
+   <name>freeCodeCamp.org</name>
+   <uri>https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ</uri>
+  </author>
+  <published>2026-10-22T12:08:35+00:00</published>
+  <updated>2026-10-22T21:38:58+00:00</updated>
+  <media:group>
+   <media:title>MCP Security Fundamentals Course</media:title>
+   <media:content url="https://www.youtube.com/v/gYXLRMycVMk?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/gYXLRMycVMk/hqdefault.jpg" width="480" height="360"/>
+   <media:description>…</media:description>
+   
+  </media:group>
+ </entry></feed>`;
+const echt = parseYoutubeFeed(ECHT);
+pruef('Echt-Feed: 2 Videos, die Feed-Kopfzeile (Kanaltitel/-link) zählt nicht', [echt.length, echt[0].url.startsWith('https://www.youtube.com/watch?v='), echt.some((e) => e.titel === 'freeCodeCamp.org')], [2, true, false]);
+pruef('Echt-Feed: neuestes zuerst', Date.parse(echt[0].datum) > Date.parse(echt[1].datum), true);
+pruef('Echt-Feed: Vorschau https', echt.every((e) => e.vorschau.startsWith('https://')), true);
 pruef('Feed: leer / kaputt -> leere Liste, kein Absturz', [parseYoutubeFeed('').length, parseYoutubeFeed('<html>').length, parseYoutubeFeed(null).length], [0, 0, 0]);
 pruef('Feed: Eintrag mit kaputter Video-ID wird übersprungen', parseYoutubeFeed('<entry><yt:videoId>kurz</yt:videoId><title>x</title></entry>').length, 0);
 pruef('YouTube-Video ohne oEmbed: Vorschau aus der ID', eintragAusYoutubeVideo('https://youtu.be/dQw4w9WgXcQ', null).vorschau, 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
@@ -153,6 +210,23 @@ const keinWarten = () => Promise.resolve();
   let n = 0;
   const r = await holeMitGeduld('https://x/', { fetch: async () => (++n, antwort(404)), warte: keinWarten });
   pruef('404 wird NICHT nachgefasst', [r.ok, n], [false, 1]);
+}
+{
+  let n = 0;
+  const r = await holeMitGeduld('https://x/', { fetch: async () => (++n < 3 ? antwort(404) : antwort(200, '<feed/>')), warte: keinWarten, auchWiederholen: [404] });
+  pruef('404 mit auchWiederholen: wird nachgefasst (YouTube-Feed meldet gelegentlich zu Unrecht 404)', [r.ok, n], [true, 3]);
+}
+{
+  let n = 0;
+  const r = await holeMitGeduld('https://x/', { fetch: async () => (++n, antwort(404)), warte: keinWarten, auchWiederholen: [404], versuche: 3 });
+  pruef('404 bleibt dauerhaft (falsche Kanal-ID): nach 3 Versuchen aufgegeben, nicht endlos', [r.ok, n], [false, 3]);
+}
+{
+  // Kanal-Feed: erst 404, dann Feed -> der Eintrag kommt durch, der Lauf meldet die Nachfassung
+  let n = 0;
+  const fetchFn = async (url) => (url.startsWith('https://www.youtube.com/feeds/') ? (++n < 2 ? antwort(404) : antwort(200, xml(2))) : antwort(500));
+  const { liste, bericht } = await sammle({ youtube: ['UCabcdefghijklmnopqrstuv'] }, { fetch: fetchFn, warte: keinWarten });
+  pruef('sammle: Feed erst 404, dann 200 -> 2 Videos, 1 Nachfassung, nichts übersprungen', [liste.length, bericht.nachgefasst, bericht.uebersprungen.length], [2, 1, 0]);
 }
 {
   let n = 0;
