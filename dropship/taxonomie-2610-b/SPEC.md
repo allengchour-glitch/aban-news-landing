@@ -22,6 +22,10 @@ bei allen Produkten) durch ist. Schreiben in den Shop (Tags, Collections, Menü)
 - Weitere oberste Ebenen von CJ: Men's Clothing, Bags & Shoes, Sports & Outdoors, Home Improvement, Automobiles & Motorcycles
   (dazu vermutlich Home/Garden/Furniture, Beauty/Health, Jewelry/Watches, Pet Supplies).
 
+- **Der VOLLE CJ-Baum liegt vor** (`dropship/taxonomie-2610-b/cj_baum.json`, gelesen am 26.10.2026 über CJs offizielle Schnittstelle `product/getCategory`: 14 oberste Ebenen,
+  89 Gruppen, 578 Blätter; die Seite `cjdropshipping.com/list/…` ist für Firecrawl gesperrt, der Umweg über einen Stealth-Proxy wurde nicht gegangen). Er ist die Checkliste,
+  gegen die jede Bereichsdatei nachträglich abgeglichen wird: für jedes CJ-Blatt «hat der Shop genug echte Produkte, und gibt es dafür eine Kategorie?».
+
 **Das Vorbild ist eine Gliederung, kein Befund.** CJ ordnet die Produkte selbst unsauber ein: das Titelbild von «Screen Protectors» ist eine
 Winkelschleifer, das von «Chargers» ein Motorteil, das von «Quad Core» ein Gehstock. Darum folgt unsere Zuordnung NIE dem CJ-Namen, sondern
 der Google-Kategorie und dem Titel des Produkts im Shop, mit Gegenprobe an den echten Titeln. Spezifikations-Kategorien («Octa Core»,

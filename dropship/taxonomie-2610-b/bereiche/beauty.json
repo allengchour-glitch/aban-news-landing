@@ -39,11 +39,12 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
         "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|bein[a-zäöüß-]*|gelenk[a-zäöüß-]*|kopfhaut[a-zäöüß-]*|haar[a-zäöüß-]*|styling|wattepad[a-zäöüß-]*|paraffin[a-zäöüß-]*|perianal[a-zäöüß-]*|schwangerschaft[a-zäöüß-]*|rücken[a-zäöüß-]*|schlaf|tattoo[a-zäöüß-]*|make-up[a-zäöüß-]*)",
         "(pflaster|maske|bandage|entferner)(?![a-zäöüß])",
         "(^|[^a-zäöüß])(lip)",
-        "(^|[^a-zäöüß])(aromatherapie[a-zäöüß-]*)"
+        "(^|[^a-zäöüß])(aromatherapie[a-zäöüß-]*)",
+        "nano|tabletten|^(liftende )?gesichtsstraffung$|^hautrejuvenation$"
       ],
       "beschreibung": "Cremes, Seren, Lotionen und Gesichtsöle für die tägliche Pflege: Feuchtigkeitscreme, Nachtcreme, Augencreme und Seren mit Hyaluron, Vitamin C, Retinol oder Kollagen.",
       "unterfilter": [
@@ -75,9 +76,10 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
         "(^|[^a-zäöüß])(viking|ugly|latex|skull|zombie|horror|cosplay|steampunk|tiermaske|stahlgitter|glitzernde|druckmaske|ohrhaken|sonnenmaske|sauerstoffbarriere|doppelkinn|bindi|sticker)",
-        "(^|[^a-zäöüß])(led|licht[a-zäöüß-]*|usb|beheizt[a-zäöüß-]*|wärme[a-zäöüß-]*|kühl[a-zäöüß-]*|dampf[a-zäöüß-]*|silikon[a-zäöüß-]*|rotlicht)"
+        "(^|[^a-zäöüß])(led|usb|beheizt[a-zäöüß-]*|wärme[a-zäöüß-]*|kühl[a-zäöüß-]*|dampf[a-zäöüß-]*|silikon[a-zäöüß-]*|smart)",
+        "licht"
       ],
       "beschreibung": "Tuchmasken, Augenpads, Schlammmasken, Peeling-Gele und Abziehmasken zum Auftragen auf Gesicht, Augenpartie, Hals und Körper."
     },
@@ -92,7 +94,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
         "(^|[^a-zäöüß])(ohr[a-zäöüß-]*)"
       ],
       "beschreibung": "Gesichtsreiniger, Reinigungsschäume und -öle, Gesichtswasser, Toner und Abschminkpads zum Reinigen der Haut."
@@ -104,11 +106,12 @@
         "Health & Beauty > Personal Care > Cosmetics > Skin Care"
       ],
       "titel_muss": [
-        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])"
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])"
       ],
       "titel_nicht": [
         "(^|[^a-zäöüß])(lip[a-zäöüß-]*|lippen[a-zäöüß-]*)",
-        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|spa|aromatherapie[a-zäöüß-]*)"
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|spa|aromatherapie[a-zäöüß-]*)",
+        "brauen|pflaster"
       ],
       "beschreibung": "Mehrteilige Pflegesets für das Gesicht, Reise-Sets und Geschenkboxen mit Reiniger, Toner, Serum und Creme."
     },
@@ -846,6 +849,16 @@
       ]
     },
     {
+      "handle": "brillen-brillenzubehoer",
+      "titel": "Brillen & Brillenzubehör",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Vision Care"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lesebrillen und Blaulichtfilter-Brillen sowie Brillenetuis, Brillenhalter, Reinigungstücher und Reinigungsspray."
+    },
+    {
       "handle": "gesundheit-alltagshilfen",
       "titel": "Alltagshilfen & Gesundheitszubehör",
       "g_prefix": [
@@ -926,15 +939,13 @@
       ]
     },
     {
-      "titel": "Körper, Bad & Düfte",
+      "titel": "Körper, Mund & Düfte",
       "handle": "beauty-koerper-duefte-gruppe",
       "kinder": [
         "koerperpflege-bad",
         "fusspflege",
         "mundpflege",
-        "parfum-duefte",
-        "sub-aroma-diffuser",
-        "luftbefeuchter"
+        "parfum-duefte"
       ]
     },
     {
@@ -950,14 +961,15 @@
       ]
     },
     {
-      "titel": "Rücken, Gelenke & Gesundheit",
+      "titel": "Rücken, Gelenke & Alltagshilfen",
       "handle": "beauty-gesundheit-gruppe",
       "kinder": [
         "haltungsgurte-ruecken",
         "bandagen-gelenkstuetzen",
         "lendenstuetzen-rueckenkissen",
         "heizkissen-waermegurte",
-        "gesundheit-alltagshilfen"
+        "gesundheit-alltagshilfen",
+        "brillen-brillenzubehoer"
       ]
     }
   ],
