@@ -8,8 +8,26 @@
   "g_prefix": [
    "Sporting Goods"
   ],
-  "g_nicht": [],
-  "titel_muss": [],
+  "g_nicht": [
+   "Apparel & Accessories > Clothing",
+   "Apparel & Accessories > Shoes",
+   "Apparel & Accessories > Jewelry",
+   "Apparel & Accessories > Costumes",
+   "Apparel & Accessories > Shoe Accessories",
+   "Animals & Pet Supplies",
+   "Toys & Games",
+   "Baby & Toddler",
+   "Arts & Entertainment",
+   "Luggage & Bags",
+   "Health & Beauty",
+   "Home & Garden > Decor",
+   "Vehicles & Parts",
+   "Furniture > Baby & Toddler Furniture",
+   "Business & Industrial"
+  ],
+  "titel_muss": [
+   "fitness|hantel|kettlebell|yoga|pilates|widerstandsband|springseil|bauchroller|liegestütz|klimmzug|faszienroll|camping|zelt(?![a-zäöüß])|schlafsack|isomatte|hängematte|picknick|gaskocher|holzofen|survival|wanderstock|wanderstöcke|trekkingstock|kompass|karabiner|trinkblase|angelrute|angelrolle|angelzubehör|angelhaken|schwimmbrille|taucherbrille|tauchmaske|schnorchel|fahrrad|velo(?!urs)|mountainbike|e-bike|rennrad|boxsack|boxhandschuh|taekwondo|karate|tischtennis|badminton|skateboard|skihelm|reithelm|knieschoner|kühlbox|trampolin|kletter"
+  ],
   "titel_nicht": []
  },
  "kategorien": [
