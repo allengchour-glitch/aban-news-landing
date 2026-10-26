@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/688586654081",
+ "title": "Damen-Hosen",
+ "productsCount": {
+  "count": 299
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "damen"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "hose"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Set"
+   }
+  ]
+ }
+}

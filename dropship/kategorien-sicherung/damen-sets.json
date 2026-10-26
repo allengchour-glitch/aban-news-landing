@@ -1,0 +1,57 @@
+{
+ "id": "gid://shopify/Collection/688586686849",
+ "title": "Damen-Sets & 2-Teiler",
+ "productsCount": {
+  "count": 191
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "damen"
+   },
+   {
+    "column": "TAG",
+    "relation": "NOT_EQUALS",
+    "condition": "schmuck"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Set"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Geschenk"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "besetzt"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Korsett"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Reisetasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Sunset"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Übersetz"
+   }
+  ]
+ }
+}
