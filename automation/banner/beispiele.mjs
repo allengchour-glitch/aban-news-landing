@@ -1,7 +1,7 @@
 // Fotoauswahl der sechs Beispielkategorien (von Hand, mit dem Auge). Wird von render_samples.mjs und banner_test.mjs benutzt.
 export const MANIFEST = process.env.MANIFEST || '/tmp/banner_samples/manifest.json';
 // Mit dem Auge ausgewaehlt (1-basiert, beste zuerst): kein Fremdtext, kein Markenlogo, keine Collage, Produkt klar erkennbar.
-// Ausgeschlossen (siehe LIESMICH): Hunde 1 Masspfeile, 2 Streifen-Cardigan (Markenrisiko), 3 Fremdtext, 5 Monogramm-Pullover, 8 Abzeichen «LING CHONG» am Geschirr, 11 Jogginghose;
+// Ausgeschlossen (siehe dropship/BANNER-LIESMICH.md): Hunde 1 Masspfeile, 2 Streifen-Cardigan (Markenrisiko), 3 Fremdtext, 5 Monogramm-Pullover, 8 Abzeichen «LING CHONG» am Geschirr, 11 Jogginghose;
 // Kueche 1 Militaer-Emblem, 4/11 Fremdtext, 5 Spielzeug mit Logo, 10 Zuendkerze, 13 Waermeplatte; Tassen 1, 3, 7 (Collage), 11 (Buchtitel), 13 («Nappiness»), 14 (Bildunterschrift);
 // Kissen 2 (Sofa auf Weiss: Produkt viel zu breit fuer eine fast quadratische Karte), 3 (lesbares Etikett «XIAEN»), 4 (Wasserzeichen), 7 (weisse Balken), 10 (Barock-Muster, Markenrisiko), 13 (Collage);
 // Kueche 7 (grosses Herstellerlogo «M» auf der Kanne).

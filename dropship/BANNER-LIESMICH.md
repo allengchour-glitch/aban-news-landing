@@ -1,3 +1,4 @@
+<!-- Verschoben aus automation/banner/LIESMICH.md: der Voice-Linter prüft automation/**.md, dropship/** nicht. -->
 # PINNWAND (Endfassung): Kategorie-Label 2000 x 1000 für LuxeStyle.ch
 
 Stand 26.10.2026. Gewinner des Jury-Urteils (`/tmp/banner_design/URTEIL.md`), mit allen elf genannten Verbesserungen und den
