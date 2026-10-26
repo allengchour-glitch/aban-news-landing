@@ -8,7 +8,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { pruefeAbgleich, fasseZusammen, schwereRang } from './lib/auswahl_abgleich.mjs';
 
 const ROH = process.env.ROH || '/tmp/auswahl_abgleich_roh.jsonl', AUS = process.env.AUS || '/tmp/auswahl_abgleich.csv';
-const zeilen = readFileSync(ROH, 'utf8').split('\n').filter(Boolean).map((z) => JSON.parse(z));
+// Eine abgerissene Zeile (Container-Neustart mitten im Schreiben) bricht die Auswertung nicht ab; je Handle zählt die LETZTE Zeile.
+let kaputt = 0;
+const jeHandle = new Map();
+for (const z of readFileSync(ROH, 'utf8').split('\n').filter(Boolean)) { try { const o = JSON.parse(z); jeHandle.set(o.handle, o); } catch { kaputt++; } }
+const zeilen = [...jeHandle.values()];
 const ergebnisse = zeilen.map((z) => {
   if (z.fehler) return { handle: z.handle, flags: [{ code: 'ABRUFFEHLER', schwere: 'info', text: z.fehler }] };
   if (z.shop === null) return { handle: z.handle, flags: [{ code: 'PRODUKT_FEHLT_IM_SHOP', schwere: 'hoch', text: 'Handle nicht gefunden' }] };
@@ -18,7 +22,10 @@ const ergebnisse = zeilen.map((z) => {
 });
 const z = fasseZusammen(ergebnisse);
 const mitLager = ergebnisse.filter((e) => e.mitLager).length;
-console.log(JSON.stringify({ produkte: z.produkte, mitBefundMittelOderHoch: z.mitBefund, mitLagerdaten: mitLager }));
+const ohneAbruf = ergebnisse.filter((e) => e.flags.some((f) => f.code === 'ABRUFFEHLER')).length;
+const ohneCj = ergebnisse.filter((e) => e.flags.some((f) => f.code === 'CJ_NICHT_ABRUFBAR')).length;
+console.log(JSON.stringify({ produkte: z.produkte, mitBefundMittelOderHoch: z.mitBefund, mitLagerdaten: mitLager, ohneShopAbruf: ohneAbruf, cjNichtAbrufbar: ohneCj, abgerisseneZeilen: kaputt }));
+if ((ohneAbruf + ohneCj) / Math.max(z.produkte, 1) > 0.05) console.log(`WARNUNG: ${ohneAbruf + ohneCj} von ${z.produkte} Produkten ohne vollständigen Abruf — das Ergebnis sagt über diese Produkte NICHTS (kein «sauber»).`);
 for (const [code, v] of Object.entries(z.je).sort((a, b) => schwereRang(b[1].schwere) - schwereRang(a[1].schwere) || b[1].n - a[1].n)) {
   const bsp = ergebnisse.filter((e) => e.flags.some((f) => f.code === code)).slice(0, 2).map((e) => `${e.handle}: ${e.flags.find((f) => f.code === code).text}`);
   console.log(`${v.schwere.padEnd(7)} ${String(v.n).padStart(5)}  ${code}\n          ${bsp.join('\n          ')}`);

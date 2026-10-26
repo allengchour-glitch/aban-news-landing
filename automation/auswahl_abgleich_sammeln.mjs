@@ -8,6 +8,8 @@
  *
  * REIHENFOLGE: nach Hash gemischt — jeder Anfang der Datei ist eine Zufallsstichprobe, ein Abbruch verfälscht nichts.
  * FORTSETZEN: schon vorhandene Handles der Datei werden übersprungen (Container-Neustart tötet Prozesse, die Datei bleibt).
+ * ABRUFFEHLER werden NICHT in die Datei geschrieben (sie zählten beim Fortsetzen sonst als erledigt, ein Ausfall ergab «0 Befunde»); nach MAX_FEHLER_FOLGE
+ *   Fehlern in Folge endet der Lauf mit Exitcode 1. Antwortet CJ ohne Daten (ausgelistet?), steht der CJ-Code in der Zeile.
  * CJ erlaubt 1 Anfrage pro Sekunde (PAUSE_MS 1100). Tagespunkte erschöpft oder Drosselung → Exitcode 3 (später fortsetzen).
  *
  * ENV: HANDLES_DATEI (Vorgabe: Ledger dropship/cj_varianten_ledger.txt, Zeilen GESCHRIEBEN) · AUS (Vorgabe /tmp/auswahl_abgleich_roh.jsonl)
@@ -28,6 +30,7 @@ const SHOP = process.env.SHOPIFY_SHOP;
 const AUS = process.env.AUS || '/tmp/auswahl_abgleich_roh.jsonl';
 const PAUSE = Number(process.env.PAUSE_MS || 1100), LIMIT = Number(process.env.LIMIT || 0), LAGER_JEDES = Number(process.env.LAGER_JEDES || 0);
 const SEED = process.env.SEED || 'abgleich';
+const MAX_FEHLER_FOLGE = Number(process.env.MAX_FEHLER_FOLGE || 5);
 const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const handlesAusLedger = () => {
@@ -50,10 +53,11 @@ async function main() {
   const cj = await cjToken();
   if (!cj) { console.error('Kein CJ-Token'); process.exit(1); }
 
-  const fertig = new Set(existsSync(AUS) ? readFileSync(AUS, 'utf8').split('\n').filter(Boolean).map((z) => { try { return JSON.parse(z).handle; } catch { return null; } }) : []);
+  // Als erledigt gilt nur eine vollständige Zeile (ohne Abruffehler); eine abgerissene Schlusszeile zählt nicht.
+  const fertig = new Set(existsSync(AUS) ? readFileSync(AUS, 'utf8').split('\n').filter(Boolean).map((z) => { try { const o = JSON.parse(z); return o.fehler ? null : o.handle; } catch { return null; } }) : []);
   const alle = handlesAusLedger().sort((a, b) => (hash(a) < hash(b) ? -1 : 1));
   console.log(`Handles: ${alle.length} · schon in ${AUS}: ${fertig.size}`);
-  let neu = 0;
+  let neu = 0, fehlerFolge = 0, verworfen = 0;
   for (let i = 0; i < alle.length; i++) {
     const h = alle[i];
     if (fertig.has(h)) continue;
@@ -69,33 +73,42 @@ async function main() {
           variants: p.variants.nodes.map((v) => ({ sku: v.sku, price: v.price, kosten: v.inventoryItem?.unitCost ? Number(v.inventoryItem.unitCost.amount) : null,
             werte: Object.fromEntries(v.selectedOptions.map((o) => [o.name, o.value])), bildId: v.image?.id || null })) };
         const wege = strategien(p.variants.nodes[0]?.sku);
-        let c = null;
+        let c = null, cjCode = null;
         for (const [art, wert] of wege) {
           const res = await cjFetch(`${BASE}/product/query?${art}=${encodeURIComponent(wert)}`, { context: 'Abgleich', headers: { 'CJ-Access-Token': cj }, weicheCodes: WEICHE_CODES });
           await schlaf(PAUSE);
           if (res?.data) { c = res.data; break; }
+          if (res && res.code != null) cjCode = Number(res.code);
         }
-        zeile.cj = c ? { pid: c.pid, variants: (c.variants || []).map((v) => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), bild: v.variantImage || '' })) } : { fehler: wege.length ? 'CJ ohne Daten' : 'keine CJ-Kennung in der SKU' };
+        zeile.cj = c ? { pid: c.pid, variants: (c.variants || []).map((v) => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: v.variantSellPrice == null || v.variantSellPrice === '' ? null : Number(v.variantSellPrice), bild: v.variantImage || '' })) } : { fehler: wege.length ? 'CJ ohne Daten' : 'keine CJ-Kennung in der SKU', code: cjCode };
         if (c && LAGER_JEDES > 0 && neu % LAGER_JEDES === 0) {
           const shopSkus = new Set(p.variants.nodes.map((v) => v.sku));
-          zeile.stock = {};
+          const bestand = {};
           for (const v of zeile.cj.variants.filter((x) => shopSkus.has(x.sku))) {
             try {
               const s = await cjFetch(`${BASE}/product/stock/queryByVid?vid=${encodeURIComponent(v.vid)}`, { context: 'Abgleich-Lager', headers: { 'CJ-Access-Token': cj }, weicheCodes: WEICHE_CODES });
-              zeile.stock[v.vid] = (s?.data || []).reduce((sum, a) => sum + (Number(a.totalInventoryNum) || 0), 0);
+              bestand[v.vid] = (s?.data || []).reduce((sum, a) => sum + (Number(a.totalInventoryNum) || 0), 0);
             } catch (e) { if (/CJ_QUOTA|CJ_THROTTLED/.test(String(e.message))) throw e; /* einzelne Variante ohne Antwort: bleibt ohne Wert */ }
             await schlaf(PAUSE);
           }
+          if (Object.keys(bestand).length) zeile.stock = bestand; // nie ein leeres Objekt: «gemessen, aber nichts erhalten» ist keine Lagerdaten-Zeile
         }
       }
     } catch (e) {
       if (/CJ_QUOTA|CJ_THROTTLED/.test(String(e.message))) { console.log('ABBRUCH:', e.message, '— später fortsetzen'); process.exitCode = 3; break; }
       zeile.fehler = String(e.message).slice(0, 200);
     }
+    if (zeile.fehler) {
+      verworfen++; fehlerFolge++;
+      console.log(`FEHLER ${h}: ${zeile.fehler} (nicht gespeichert, Folge ${fehlerFolge}/${MAX_FEHLER_FOLGE})`);
+      if (fehlerFolge >= MAX_FEHLER_FOLGE) { console.error('ABBRUCH: zu viele Fehler in Folge — Dienst gestört? Später fortsetzen.'); process.exitCode = 1; break; }
+      continue;
+    }
+    fehlerFolge = 0;
     appendFileSync(AUS, JSON.stringify(zeile) + '\n');
     neu++;
     if (neu % 25 === 0) console.log(`${neu} neu (${fertig.size + neu} von ${alle.length})`);
   }
-  console.log(`Fertig: ${neu} neue Zeilen, gesamt ${fertig.size + neu} von ${alle.length}`);
+  console.log(`Fertig: ${neu} neue Zeilen, gesamt ${fertig.size + neu} von ${alle.length}${verworfen ? ` · ${verworfen} Abruffehler NICHT gespeichert (beim nächsten Lauf erneut)` : ''}`);
 }
 main().catch((e) => { console.error('FEHLER', e.message); process.exit(1); });
