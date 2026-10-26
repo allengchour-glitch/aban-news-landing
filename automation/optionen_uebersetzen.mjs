@@ -25,6 +25,9 @@ const CACHE = '/tmp/optionen_uebersetzt.json';
 /** Klar englische Wörter (mehrdeutige wie «Set», «Mini», «Box», «Band», «Standard» sind im Schweizer Shop-Deutsch gebräuchlich und zählen NICHT). */
 export const EN_RE = /(^|[^a-zäöüß])(black|white|red|blue|green|yellow|gray|grey|brown|purple|silver|golden|light|dark|style|color|colour|size|pcs|frame|shell|suit|with|and|apricot|coffee|army|wine|sky|navy|cream|plain|flower|leopard|stripe|striped|print|hair|sleeve|long|short|small|large|medium|only|single|double|strap|leather|steel|plastic|cotton|silk|wool|lace|ordinary|magnetic|charge|wire|belt|boxes|metallic|pure|matte|dull|parent|child|mother|father|boy|girl|kids|men|women|lady|ladies|gift|free|without|normal|regular|upgrade|version|model|type|pink-|rose-red|multi|mixed|random|transparent-)(?![a-zäöüß])/i;
 
+/** Strenge Liste für das ERGEBNIS: nur Wörter, die im Deutschen sicher fremd sind. «Version», «Upgrade», «Leopard», «Matt» sind gebräuchlich und lehnen eine Übersetzung nicht ab (26.10.: «Standard-Version» fiel sonst durch). */
+export const EN_AUSGABE_RE = /(^|[^a-zäöüß])(black|white|red|blue|green|yellow|gray|grey|brown|purple|silver|golden|light|dark|style|color|colour|size|pcs|frame|shell|suit|with|and|apricot|coffee|army|wine|sky|navy|cream|plain|flower|stripe|striped|print|hair|sleeve|long|short|small|large|medium|only|single|double|leather|steel|plastic|cotton|silk|wool|lace|ordinary|magnetic|charge|wire|belt|boxes|metallic|dull|parent|child|mother|father|boy|girl|kids|men|women|lady|ladies|gift|without|packaging|insole)(?![a-zäöüß])/i;
+
 /** Braucht dieser Wert eine Übersetzung? Rein, getestet. */
 export function brauchtUebersetzung(v) {
   const s = String(v ?? '').trim();
@@ -38,7 +41,7 @@ export function uebersetzungOk(alt, neu) {
   const n = String(neu ?? '').replace(/ß/g, 'ss').replace(/\s+/g, ' ').trim();
   if (!n || n.length > 60) return null;
   if (n.toLowerCase() === String(alt).trim().toLowerCase()) return null;
-  if (EN_RE.test(n)) return null;                       // noch Englisch
+  if (EN_AUSGABE_RE.test(n)) return null;               // noch Englisch
   if (/[一-鿿]/.test(n)) return null;
   if (/^(null|undefined|n\/a|-)$/i.test(n)) return null;
   return n;
@@ -54,6 +57,8 @@ function cacheLesen() { try { return JSON.parse(readFileSync(CACHE, 'utf8')); } 
 function cacheSchreiben(c) { writeFileSync(CACHE, JSON.stringify(c)); }
 
 async function uebersetzeWerte(werte, c) {
+  // Früher abgelehnte Antworten der KI mit der aktuellen Prüfung neu bewerten (kein neuer KI-Aufruf)
+  for (const [w, e] of Object.entries(c)) if (e && !e.neu && e.roh) { const ok = uebersetzungOk(w, e.roh); if (ok) c[w] = { neu: ok, weg: e.weg, neubewertet: true }; }
   const offen = werte.filter(w => !(w in c));
   // 1) deterministisch
   const rest = [];

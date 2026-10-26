@@ -10,4 +10,9 @@ ist('noch Englisch → abgelehnt', uebersetzungOk('Blue Frame', 'Blau Frame'), n
 ist('leer → abgelehnt', uebersetzungOk('Blue', '  '), null);
 ist('zu lang → abgelehnt', uebersetzungOk('Blue', 'x'.repeat(61)), null);
 ist('Platzhalter → abgelehnt', uebersetzungOk('Blue', 'N/A'), null);
+ist('Standard-Version ist Deutsch genug', uebersetzungOk('Khaki · Gr. 34-Regular version', 'Khaki · Gr. 34, Standard-Version'), 'Khaki · Gr. 34, Standard-Version');
+ist('Leopard ist ein deutsches Wort', uebersetzungOk('Leopard-Size12.43to43.5', 'Leopard, Grösse 12.43–43.5'), 'Leopard, Grösse 12.43–43.5');
+ist('2pcs bleibt abgelehnt', uebersetzungOk('2pcs Matt purple', '2pcs Matt Violett'), null);
+ist('Frame im Ergebnis bleibt abgelehnt', uebersetzungOk('Black Frame', 'Black Frame'), null);
+
 console.log(`${ok} ok, ${fehl} Fehler`); process.exit(fehl ? 1 : 0);
