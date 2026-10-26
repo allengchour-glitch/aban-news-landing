@@ -1,7 +1,9 @@
 // Geschlechts-Regel der Herren-Abteilung. Wird von herren_messen.mjs benutzt und im JSON (geschlecht_regel) in Worten beschrieben.
 // Reihenfolge = Vorrang (erste zutreffende Stufe entscheidet).
 import fs from 'fs';
-export const d = JSON.parse(fs.readFileSync('/tmp/mode_daten.json', 'utf8'));
+// Messdatensatz nur für die Mess-Skripte (herren_*messen, *_bauen). Die Regeln selbst brauchen ihn nicht: ohne die Datei (CI, neue Umgebung) bleibt d null,
+// damit lib/mode_taxonomie.mjs und seine Tests das Modul laden können.
+export const d = fs.existsSync('/tmp/mode_daten.json') ? JSON.parse(fs.readFileSync('/tmp/mode_daten.json', 'utf8')) : null;
 export const isCl = p => /^Apparel & Accessories > Clothing( >|$)/.test(p.g || '') || !p.g;
 const B = 'a-zäöüß';
 export const A_ = s => new RegExp(`(^|[^${B}])(${s})`, 'i');          // Wortanfang
