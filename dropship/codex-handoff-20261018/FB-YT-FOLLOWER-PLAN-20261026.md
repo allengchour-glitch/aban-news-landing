@@ -1,5 +1,7 @@
 # LuxeStyle: Facebook-Follower und YouTube-Abos aufbauen
 
+**Aktueller Genehmigungsstand:** Der Inhaber hat genau die YouTube-Footer-Ergänzung mit «ja» freigegeben. [Genehmigung, aktuelle Gegenprobe und genauer Editorlink](FOOTER-YOUTUBE-GENEHMIGT-20261026.md). Das vorhandene Feld ist weiterhin leer; die App unterstützt keine Dateischreibzugriffe auf MAIN-Themes. Keine erneute Freigabe für denselben Link, keine zusätzliche Theme-Kopie oder Umgehung über andere Credentials/Workflows. Übrige Profil-/Socialentwürfe bleiben unübernommen.
+
 ## Belegte Fortsetzung: vorhandene Inhalte und Shop-Einstieg
 
 Frischer reiner Metadatenread für 19.–25.10.: Metricool liefert neun bestehende YouTube-Videotitel und IDs, davon redaktionell fünf Haustier-, zwei Mode-, ein Reise- und ein Handythema. Das ist ein begrenzter Titelsatz, keine vollständige Video-/Kanalprüfung und kein Beleg, dass der Themenmix neue Abos verhindert. Keine neuen Views oder Followerwerte abgefragt.
