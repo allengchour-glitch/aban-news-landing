@@ -1,1 +1,1539 @@
-[]
+[
+ {
+  "handle": "sub-reise",
+  "titel": "Reise & Outdoor",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Reise"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Koffer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Camping"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Picknick"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Vehicles & Parts",
+   "Animals & Pet Supplies",
+   "Toys & Games",
+   "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools",
+   "Apparel & Accessories > Jewelry",
+   "Apparel & Accessories > Clothing > Shirts & Tops",
+   "Hardware > Tool Accessories",
+   "Hardware > Tools > Compressors",
+   "Home & Garden > Decor > Artwork",
+   "Home & Garden > Kitchen & Dining > Food Storage",
+   "Health & Beauty > Personal Care > Cosmetics > Makeup"
+  ],
+  "ausschlussTitel": "^(?!.*((?<![kp])reise|koffer|camping|picknick))|kofferraum|motorrad|(^|[^a-zäöüß])einkaufs(wagen|trolley)|shisha|wasserpfeife|^kostüm|kostüm für|(^|[^a-zäöüß])(hund|hunde|hunden|katze|katzen|haustier|haustiere)([^a-zäöüß]|$)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "elektronik-kleinteile",
+  "titel": "Elektronik-Zubehör & Kleinteile",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Adapter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Ladegerät"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Ladestation"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Ladekabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "USB-Kabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Powerbank"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Netzteil"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Batterie"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Steckdose"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Kabelbinder"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Speicherkarte"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Apparel & Accessories > Clothing",
+   "Baby & Toddler",
+   "Business & Industrial",
+   "Cameras & Optics",
+   "Electronics > Audio > Audio Components",
+   "Electronics > Audio > Audio Players & Recorders",
+   "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers",
+   "Hardware > Hardware Pumps",
+   "Hardware > Plumbing",
+   "Hardware > Tool Accessories > Drill & Screwdriver Accessories",
+   "Hardware > Tools > Flashlights & Headlamps",
+   "Health & Beauty > Health Care",
+   "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools",
+   "Health & Beauty > Personal Care > Shaving & Grooming",
+   "Home & Garden > Decor",
+   "Home & Garden > Household Appliance Accessories",
+   "Home & Garden > Household Supplies > Household Cleaning Supplies",
+   "Home & Garden > Kitchen & Dining",
+   "Home & Garden > Lawn & Garden",
+   "Home & Garden > Lighting",
+   "Sporting Goods",
+   "Toys & Games > Toys > Remote Control Toys",
+   "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts",
+   "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Repair & Specialty Tools > Vehicle Jumper Cables",
+   "Luggage & Bags",
+   "Furniture",
+   "Home & Garden > Household Appliances",
+   "Home & Garden > Pool & Spa",
+   "Food, Beverages & Tobacco",
+   "Arts & Entertainment",
+   "Media",
+   "Office Supplies",
+   "Mature"
+  ],
+  "ausschlussTitel": "^([a-z0-9]+ )?smartwatch mit |tattoo|(?<!auto)(?<!auto-)radio|handventilator|make-?up[ -]?spiegel|lichtleiste|(^|[^a-zäöüß])tastatur mit |(^|[^a-zäöüß])(makita|milwaukee|dewalt|ryobi|einhell|hilti|metabo|parkside|elektrowerkzeug|totalstation|lipo|uav|dyson|drohne|dji)|(^|[^0-9])72 ?v([^a-zäöüß]|$)|schubkarre|balance car|(lampe|leuchte) mit (usb|lade)",
+  "nurG": [],
+  "min": 8,
+  "titelEmpfehlung": "Ladegeräte, Powerbanks & Elektronik-Zubehör"
+ },
+ {
+  "handle": "sub-yoga-fitness",
+  "titel": "Yoga & Fitness",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Yoga"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Fitness"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Widerstand"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Faszien"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Apparel & Accessories > Jewelry",
+   "Arts & Entertainment",
+   "Health & Beauty > Health Care > Biometric Monitors",
+   "Health & Beauty > Personal Care > Cosmetics",
+   "Electronics",
+   "Animals & Pet Supplies",
+   "Baby & Toddler",
+   "Home & Garden > Decor"
+  ],
+  "ausschlussTitel": "smartwatch|smart[ -]ring([^a-zäöüß]|$)|(fitness|activity|aktivitäts)[ -]?tracker|fitness-?armband([^e]|$)|armbanduhr|(wasser|kau)widerstandsf[äa]hig|^ersatz",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "handtaschen-umhaengetaschen",
+  "titel": "Handtaschen & Umhängetaschen",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handtasche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Umhängetasche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Schultertasche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Crossbody"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Luggage & Bags > Backpacks",
+   "Luggage & Bags > Duffel Bags",
+   "Luggage & Bags > Fanny Packs",
+   "Luggage & Bags > Briefcases",
+   "Sporting Goods",
+   "Home & Garden",
+   "Arts & Entertainment",
+   "Animals & Pet Supplies",
+   "Health & Beauty",
+   "Apparel & Accessories > Shoes",
+   "Toys & Games",
+   "Electronics",
+   "Luggage & Bags > Luggage Accessories"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(haustier\\w*|(hunde?n?|katzen?) ?(&|und) ?(hunde?n?|katzen?))|(^|[^a-zäöüß])für (hunde?n?|katzen?)([^a-zäöüß]|$)|laufleine|kamera|fotoausr|drohne|(^|[^a-zäöüß])(angel[- ]|angeln|angelaus|angelzub|angler)|flaschen?([^a-zäöüß]|$)|isolier|kühltasche|kühlbox|kühlfach|picknick|handtaschen-?(aufbewahrung|organizer|einsatz|einlage|halter|haken)|(^|[^a-zäöüß])(?<!mit )organizer(?!-?fach)|weste([^a-zäöüß]|$)|badminton|schläger|musikinstrument|für (game|spielkonsole|konsole|nintendo|xbox|playstation|steam deck)|^(?!.*(handtasche|computer|laptop)).*(^|[^0-9,.])[1-9][0-9]+ ?l(iter)?([^a-zäöüß]|$)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "velo-radsport",
+  "titel": "Velo & Radsport",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "fahrrad"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "velohelm"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "radfahren"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "e-bike"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "mountainbike"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Toys & Games"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(hund|hunde|hunden|katze|katzen|haustier|welpe|welpen)([^a-zäöüß]|$)|(^|[^a-zäöüß])(hunde|hund)(leine|fahrrad|geschirr|halsband)|halsband|spielzeug",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "make-up",
+  "titel": "Make-up & Kosmetik",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Make-up"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lidschatten"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mascara"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wimperntusche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lippenstift"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Foundation"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Concealer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Eyeliner"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Kajal"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Nagellack"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "BB Cream"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rouge"
+    }
+   ]
+  },
+  "ausschlussG": [],
+  "ausschlussTitel": "(^|[^a-zäöüß])(kinder|spielzeug|spielset|für jungen|telefon|handy|smartphone)",
+  "nurG": [
+   "Health & Beauty > Personal Care > Cosmetics",
+   "Luggage & Bags > Cosmetic & Toiletry Bags",
+   "Home & Garden > Household Supplies > Storage & Organization"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "pc-homeoffice",
+  "titel": "PC & Homeoffice",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Tastatur"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mauspad"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Webcam"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Homeoffice"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Schreibtisch"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "USB-Hub"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Monitor-Erhöhung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Monitor-Lichtleiste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Monitor-Halter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Monitorständer"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Health & Beauty > Personal Care",
+   "Toys & Games",
+   "Arts & Entertainment",
+   "Food, Beverages & Tobacco",
+   "Vehicles & Parts",
+   "Baby & Toddler",
+   "Sporting Goods",
+   "Apparel & Accessories > Shoes",
+   "Apparel & Accessories > Jewelry",
+   "Apparel & Accessories > Handbags",
+   "Apparel & Accessories > Costumes",
+   "Apparel & Accessories > Clothing > Dresses",
+   "Apparel & Accessories > Clothing > Outerwear",
+   "Apparel & Accessories > Clothing > Pants",
+   "Apparel & Accessories > Clothing > Activewear",
+   "Apparel & Accessories > Clothing > Sleepwear",
+   "Apparel & Accessories > Clothing > Underwear",
+   "Home & Garden > Kitchen & Dining",
+   "Home & Garden > Decor",
+   "Home & Garden > Household Appliances",
+   "Home & Garden > Household Supplies > Household Cleaning Supplies",
+   "Home & Garden > Lawn & Garden",
+   "Hardware > Tools > Measuring Tools",
+   "Electronics > Video Game Console Accessories"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(xbox|ps[345]($|[^a-zäöüß0-9])|playstation|nintendo|gamepad|(spiel)?konsolen?($|[^a-zäöüß])|make-?up|kosmetik|schminke|kinder|eier)|vase|bonsai|blumentopf|tontopf|übertopf",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "rucksaecke",
+  "titel": "Rucksäcke",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rucksack"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Backpack"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Apparel & Accessories > Clothing",
+   "Home & Garden",
+   "Office Supplies",
+   "Sporting Goods > Exercise & Fitness",
+   "Sporting Goods > Outdoor Recreation > Boating & Water Sports",
+   "Luggage & Bags > Luggage Accessories"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(haustier|hunde?n?(?![a-zäöüß])(?!-?\\s?(motiv|print|muster|design|aufdruck))|hunderucksack|tier-?rucksack)|(^|[^a-zäöüß])(anhänger|clip|halterung|schloss|regenhülle|regenschutz|organizer|einlage)\\s+für\\s+(\\S+\\s+)?rucksa|rucksack-?(clip|halterung|anhänger|schloss|regenhülle|regenschutz|organizer|einlage|zubehör)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "smart-home-gadgets",
+  "titel": "Smart Home & Smarte Gadgets",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart Home"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart Plug"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart LED"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart Glühbirne"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart Diffuser"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smart Ring"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Roboterstaubsauger"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Überwachungskamera"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Körperanalysewaage"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Vorhang-Controller"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Jalousienmotor"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Luftreiniger Smart"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Babyphone"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bewegungsmelder"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "CRISTAL SMART"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartes Raumklima"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Sous-Vide Garstab"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Sprach-Steuerung"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Electronics > Video > Projectors",
+   "Sporting Goods",
+   "Home & Garden > Business & Home Security > Dummy Surveillance Cameras"
+  ],
+  "ausschlussTitel": "attrappe|kamera-?dummy|(^|[^a-zäöüß])dummy|ring-?licht|ring-?leuchte|ring ?light|^(?!.*(kamera|camera|video|wlan|wifi|wi-fi|fernzugriff|smart|intelligent|bluetooth|tuya|cloud|4g|(^|[^a-zäöüß])app([^a-zäöüß]|$))).*babyphone",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "beauty-haar",
+  "titel": "Haarpflege & Styling",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haartrockner"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Föhn"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Glätteisen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lockenstab"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haarbürste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Perücke"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Arts & Entertainment"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(cosplay|kostüm|kostuem|karneval|fasnacht|halloween)",
+  "nurG": [
+   "Health & Beauty",
+   "Apparel & Accessories > Clothing Accessories > Hair Accessories",
+   "Apparel & Accessories > Handbags",
+   "Luggage & Bags",
+   "Home & Garden"
+  ],
+  "min": 8,
+  "titelEmpfehlung": "Haarstyling & Perücken"
+ },
+ {
+  "handle": "kopfhoerer-audio",
+  "titel": "Kopfhörer & Audio",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "kopfhörer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "headset"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "earbuds"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "ohrhörer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "lautsprecher"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "soundbar"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "bluetooth-box"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Apparel & Accessories",
+   "Arts & Entertainment",
+   "Luggage & Bags",
+   "Sporting Goods",
+   "Toys & Games",
+   "Hardware",
+   "Home & Garden > Household Supplies",
+   "Home & Garden > Decor > Home Fragrance",
+   "Electronics > Computers",
+   "Electronics > Electronics Accessories > Computer Components",
+   "Electronics > Electronics Accessories > Electronics Cleaners",
+   "Electronics > Communications"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])vr([^a-zäöüß]|$)|(^|[^a-zäöüß])(ladegerät|charger|ladestation|lader).*(handy|smartphone|uhr|watch)|(^|[^a-zäöüß])kühl|controller|magnifier|vergrösser|smart-?watch|smart watch|smartuhr|armband|bracelet",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "handy-huellen",
+  "titel": "Handyhüllen & Cases",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handyhülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handycase"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Hülle für iPhone"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Hülle für Samsung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Schutzhülle für"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Silikonhülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Flip-Case"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Klapphülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bumper"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "iPhone®-Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "iPhone-Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartphone Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartphone-Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Telefonhülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handy Schutzhülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handy-Tasche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handytasche"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Magnet-Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Akku-Hülle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "MagSafe Hülle"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Electronics > Video Game",
+   "Electronics > Electronics Accessories > Computer Components",
+   "Electronics > Audio > Audio Accessories > Speaker",
+   "Electronics > Audio > Audio Components",
+   "Electronics > Electronics Accessories > Power"
+  ],
+  "ausschlussTitel": "^(?!.*(handy|iphone|smartphone|airpods|samsung|galaxy|pixel|xiaomi|huawei|oneplus|redmi)).*(halsband|airtag|staubschutz|(^|[^a-zäöüß])(fernbedienung|konsole|gaming|game-?controller|gamepad|handheld|steam ?deck|switch|nintendo|playstation|xbox|controller|lautsprecher|powerbank|autoschl|fahrzeug|fernseher|tv|monitor|drucker))",
+  "nurG": [
+   "Electronics",
+   "Office Supplies",
+   "Apparel & Accessories > Jewelry > Watch Accessories",
+   "Apparel & Accessories > Handbags, Wallets & Cases > Wallets"
+  ],
+  "min": 8,
+  "titelEmpfehlung": "Hüllen für Handy, Tablet, Kopfhörer & Smartwatch"
+ },
+ {
+  "handle": "ventilatoren",
+  "titel": "Ventilatoren & Kühlung",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "ventilator"
+    },
+    {
+     "column": "TITLE",
+     "relation": "NOT_CONTAINS",
+     "condition": "abluftschlauch"
+    },
+    {
+     "column": "TITLE",
+     "relation": "NOT_CONTAINS",
+     "condition": "rucksack"
+    },
+    {
+     "column": "TITLE",
+     "relation": "NOT_CONTAINS",
+     "condition": "halterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "NOT_CONTAINS",
+     "condition": "ersatzteil"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Toys & Games",
+   "Electronics > Video Game",
+   "Hardware > Plumbing",
+   "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers",
+   "Home & Garden > Household Supplies > Pest Control",
+   "Home & Garden > Kitchen & Dining > Kitchen Tools"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(fliegenabwehr|duschkopf|drohne|konsole|bausteine|[a-zäöüß]*regal)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "haushaltsgeraete",
+  "titel": "Haushaltsgeräte",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wasserkocher"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Toaster"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bügeleisen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Fritteuse"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Staubsauger"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mixer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mikrowelle"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Entsafter"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Home & Garden > Household Appliance Accessories",
+   "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories",
+   "Home & Garden > Kitchen & Dining > Kitchen Tools",
+   "Home & Garden > Kitchen & Dining > Food Storage",
+   "Home & Garden > Kitchen & Dining > Food & Beverage Carriers",
+   "Hardware > Tools",
+   "Health & Beauty",
+   "Business & Industrial",
+   "Electronics > Electronics Accessories > Power"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(mikrowellen-?(toaster|eier|lunch|regal|deckel|sandwich)|für (die |den )?mikrowelle|für (dyson|thermomix|staubsauger|küchenmaschine|mixer|[a-zäöüß]*fritteuse)|für (den )?herd|gusseisen|[a-zäöüß]*regal|organizer)|^manuell|(^|-)ersatz|[a-zäöüß]-?zubehör",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "sub-bart-rasur",
+  "titel": "Bart & Rasur",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bart"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rasier"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rasur"
+    }
+   ]
+  },
+  "ausschlussG": [],
+  "ausschlussTitel": "(^|[^a-zäöüß])(fussel|eisrasier|bartender|perücke)",
+  "nurG": [
+   "Health & Beauty"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "handy-halterungen",
+  "titel": "Halterungen & MagSafe",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handyhalterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handy-Halterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "KFZ-Halterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Autohalterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "MagSafe"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handyhalter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartphone-Halterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Fahrradhalterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handy-Halter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Handy-Ständer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartphone-Halter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Telefonhalter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Phone-Halter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Magnethalter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Nackenhalterung"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rückspiegel-Handy"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Velo-Handy"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Smartphone HUD"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Home & Garden",
+   "Sporting Goods > Exercise & Fitness",
+   "Health & Beauty",
+   "Cameras & Optics > Photography > Lighting & Studio",
+   "Electronics > Audio",
+   "Electronics > Electronics Accessories > Cables",
+   "Baby & Toddler",
+   "Animals & Pet Supplies",
+   "Furniture",
+   "Toys & Games"
+  ],
+  "ausschlussTitel": "^(?!.*(handy|smartphone|phone|magsafe|telefon|iphone)).*$|scanner",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "sonnenbrillen-alle",
+  "titel": "Sonnenbrillen (alle)",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Sonnenbrille"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Apparel & Accessories > Jewelry",
+   "Apparel & Accessories > Handbags, Wallets & Cases",
+   "Health & Beauty > Personal Care > Vision Care > Eyewear Accessories",
+   "Vehicles & Parts"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(geschenk-?set|uhren[- ]?set)|(etui|box|aufbewahrung\\w*|halter|ständer|kette|tuch|hülle|tasche|case)\\s+(für|fuer|zur)\\s+(die\\s+)?sonnenbrille|sonnenbrillen-?(etui|halter|box|ständer|kette|tuch|aufbewahrung)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "kabel-adapter",
+  "titel": "Kabel & Adapter",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "USB-Kabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "HDMI"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Ladekabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Verlängerungskabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "USB-C-Kabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Netzwerkkabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Glasfaserkabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "AUX-Kabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Klinkenkabel"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Ladegerät"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Steckdosenleiste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Adapterstecker"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "OTG-Adapter"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Electronics > Video Game Consoles",
+   "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards",
+   "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs",
+   "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers",
+   "Electronics > Audio > Audio Components",
+   "Electronics > Video > Projectors",
+   "Electronics > Video > Televisions"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(makita|milwaukee|dewalt|ryobi|einhell|hilti|metabo|parkside|elektrowerkzeug|totalstation|lipo|uav|dyson|bleiakku|fahrzeugladeger|kühlstation|drohne|dji (air|mini|mavic|avata|phantom)|schubkarre|balance car)|(^|[^a-zäöüß])(?<!lithium-)batterieladeger|(^|[^0-9])72 ?v([^a-zäöüß]|$)|kurbel-?radio|radio mit (hand)?kurbel|(^|[^a-zäöüß])(tv|streaming|media)[- ]?(box|player)|zange([^a-zäöüß]|$)|(lampe|leuchte|nachtlicht) mit (usb|kabellos|wireless|lade|qi)|^(?!.*(kabel(?!los)|adapter|dongle|hub|stecker|wandler|konverter|converter|verteiler|splitter|verlängerung|buchse|kupplung)).*(ladeger|ladestation|powerbank|netzteil|power bank|akku|schnelllade|wireless|kabellos|charger|lader)",
+  "nurG": [
+   "Electronics",
+   "Office Supplies",
+   "Vehicles & Parts"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "drohnen-fpv",
+  "titel": "Drohnen & FPV",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "drohne"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "drone"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "quadrocopter"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts",
+   "Apparel & Accessories > Clothing",
+   "Apparel & Accessories > Shoes",
+   "Apparel & Accessories > Jewelry",
+   "Home & Garden > Decor",
+   "Home & Garden > Kitchen & Dining",
+   "Home & Garden > Linens & Bedding",
+   "Animals & Pet Supplies",
+   "Health & Beauty",
+   "Food, Beverages & Tobacco"
+  ],
+  "ausschlussTitel": "^sticker|^2s drone",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "lautsprecher",
+  "titel": "Lautsprecher & Boxen",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lautsprecher"
+    }
+   ]
+  },
+  "ausschlussG": [],
+  "ausschlussTitel": "",
+  "nurG": [
+   "Electronics > Audio",
+   "Home & Garden > Decor > Clocks > Alarm Clocks"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "mikrofone",
+  "titel": "Mikrofone & Streaming",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mikrofon"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Microphone"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Karaoke"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Electronics > Communications",
+   "Electronics > Audio > Audio Components > Headphones & Headsets"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(headset mit|kopfhörer|over-ear|in-ear|puppe)|^(?!.*(karaoke|ktv|set|dual|stage|mikrofon (und|&)|mikrofone)).*(^|[^a-zäöüß])(subwoofer|lautsprecher|speaker)",
+  "nurG": [
+   "Electronics > Audio",
+   "Office Supplies"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "klemmbausteine-bausaetze",
+  "titel": "Klemmbausteine & Bausätze",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Klemmbaustein"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bausteine"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Bausatz"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Baukasten"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Klemmbausteine"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Electronics",
+   "Hardware",
+   "Vehicles & Parts",
+   "Furniture",
+   "Business & Industrial",
+   "Apparel & Accessories",
+   "Health & Beauty",
+   "Animals & Pet Supplies",
+   "Food, Beverages & Tobacco",
+   "Luggage & Bags"
+  ],
+  "ausschlussTitel": "",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "vorhaenge",
+  "titel": "Vorhänge",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Vorhang"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Gardine"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Home & Garden > Bathroom Accessories",
+   "Home & Garden > Lighting",
+   "Home & Garden > Decor > Seasonal & Holiday Decorations > Holiday Ornaments",
+   "Hardware > Power & Electrical Supplies",
+   "Vehicles & Parts",
+   "Apparel & Accessories"
+  ],
+  "ausschlussTitel": "(^|[^a-zäöüß])(dusch|badewannen)[a-zäöüß-]*vorh[aä]ng|(^|[^a-zäöüß])badezimmer-?vorhang|lichter-?vorhang|vorhang-?lichter?([^a-zäöüß]|$)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "haarstyling-geraete",
+  "titel": "Haarstyling-Geräte",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Glätteisen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lockenstab"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haarglätt"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haartrockner"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Warmluftbürste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Glättbürste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haarstyling"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lockenwickler"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Kreppeisen"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Luggage & Bags",
+   "Apparel & Accessories",
+   "Home & Garden > Household Supplies",
+   "Animals & Pet Supplies",
+   "Health & Beauty > Personal Care > Hair Care > Hair Styling Products"
+  ],
+  "ausschlussTitel": "(aufbewahr|tasche|beutel|etui|koffer|halterung|halter|ständer|ablage|gestell|organizer)[a-zäöüß]*\\s+für\\s+(den\\s+|die\\s+|das\\s+)?(lockenstab|lockenwickler|haartrockner|haarglätter|glätteisen|föhn|fön|haarstyling|warmluftbürste|glättbürste|kreppeisen|styling)|(lockenstab|haartrockner|haarglätter|glätteisen|föhn|fön|haarstyling|styler)[a-zäöüß]*-(aufbewahr|tasche|beutel|etui|koffer|halter|ständer|ablage|gestell|organizer)|^[a-zäöüß-]*flasche([^a-zäöüß]|$)|glättung[a-zäöüß-]*(creme|cream|shampoo|serum|spray|lotion|maske|behandlung|mittel)",
+  "nurG": [],
+  "min": 8
+ },
+ {
+  "handle": "tastatur-maus",
+  "titel": "Tastaturen & Mäuse",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Tastatur"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Gaming-Maus"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "kabellose Maus"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Funkmaus"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Mauspad"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Home & Garden > Kitchen & Dining",
+   "Home & Garden > Household Supplies > Household Cleaning Supplies",
+   "Electronics > Electronics Accessories > Electronics Cleaners"
+  ],
+  "ausschlussTitel": "reinigung|reiniger|desinfektion|staubsauger",
+  "nurG": [],
+  "min": 8,
+  "titelEmpfehlung": "Tastaturen, Mäuse & Zubehör"
+ },
+ {
+  "handle": "rucksaecke-schule",
+  "titel": "Schulrucksäcke",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "schulrucksack"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "schulranzen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "kinderrucksack"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "schultasche"
+    }
+   ]
+  },
+  "ausschlussG": [],
+  "ausschlussTitel": "",
+  "nurG": [
+   "Luggage & Bags"
+  ],
+  "min": 8
+ },
+ {
+  "handle": "wanddeko",
+  "titel": "Wanddeko",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wanddeko"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wandbild"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wandtattoo"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Wandbehang"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Toys & Games > Toys > Building Toys"
+  ],
+  "ausschlussTitel": "diamond[ -]?painting|malen nach zahlen|digital painting|(^|[^a-zäöüß])diy[ -]?(leinwand|gemälde|malerei|mal)",
+  "nurG": [],
+  "min": 8
+ }
+]
