@@ -1,0 +1,110 @@
+--- a/automation/lib/stecker_cj.mjs
++++ b/automation/lib/stecker_cj.mjs
+@@ -1,10 +1,10 @@
+ /**
+- * Fremdstecker erkennen am CJ-Variantenschlüssel («White-US», «Black-UK», «G42 British Standard», «Silver Gray-800W EU»).
++ * Länder-/Steckerlabels am CJ-Variantenschlüssel erkennen («White-US», «Black-UK», «G42 British Standard», «Silver Gray-800W EU»).
+  *
+- * WARUM (26.10.2026): Die Schweizer Steckdose (Typ J) nimmt den flachen Euro-Stecker (Typ C), keinen US-, UK-, AU- oder JP-Stecker. Der Auswahl-Lauf legte
+- * aus CJ-Varianten wie «White-US | Pink-US | Blue-US» Shop-Varianten an, bei denen die Steckerangabe fehlte («Weiss | Rosa | Blau») — im Shop sah das nach drei Farben
+- * eines normalen Geräts aus, in Wahrheit waren es drei US-Stecker (120 V). Die Prüfung am Optionstext (stecker_bereinigen.mjs) sah das nicht. 34 aktive Produkte
+- * mit 85 solchen Varianten lagen live.
++ * WARUM: Bei der Übersetzung von «White-US» zu «Weiss» kann die Lieferausführung unsichtbar werden.
++ * Labels wie EU/US sind Hinweise, keine Messung von Steckerbauform oder Netzteilspannung.
++ * Ein belegter Eurostecker kann in Typ-J-Steckdosen passen; auch Schweizer Stecker sind vorgesehen.
++ * Der nachstehende Legacy-Label-Filter bestätigt keine Schweizer Lieferkonformität.
+  *
+  * Darum prüft diese Datei den CJ-SCHLÜSSEL (nicht den Shop-Text) und ordnet Shop-Varianten über die SKU zu. Rein, ohne Netz.
+  * Streng am Schlüsselende verankert: «US Size 10-Main Ring» (Ringgrösse) ist KEIN Stecker.
+@@ -15,7 +15,7 @@
+ const EURO_ENDE = new RegExp(`(^|[-\\s])(EU|EUR)${ENDE}$`, 'i');
+ const EURO_WORT = /european standard|euro plug|eu plug|(^|[^0-9])(220|230) ?V ?(eu|european)/i;
+ 
+-/** true, wenn der CJ-Schlüssel einen Stecker nennt, der nicht in die Schweizer Steckdose passt. */
++/** Legacy-Textsignal für Fremdstecker; kein physischer Kompatibilitätsnachweis. */
+ export function fremdSteckerKey(key) {
+   const k = String(key ?? '').trim();
+   if (!k) return false;
+@@ -24,7 +24,7 @@
+ }
+ // Stecker-Angabe am ANFANG des Schlüssels («US-3 Million»): allein nicht sicher (könnte eine Grösse sein), mit einem Geschwister «EU-…» am Anfang schon.
+ const START = new RegExp(`^(US|UK|AU|JP)${ENDE}-`, 'i'), START_EURO = new RegExp(`^(EU|EUR)${ENDE}-`, 'i');
+-/** true, wenn der Schlüssel ausdrücklich den Euro-Stecker nennt (Typ C passt in Typ J). */
++/** Legacy-EU/EUR-Labelerkennung; true belegt weder Eurostecker/Typ C noch CH-Kompatibilität. */
+ export const euroSteckerKey = key => { const k = String(key ?? '').trim(); return !!k && (EURO_ENDE.test(k) || EURO_WORT.test(k) || START_EURO.test(k)); };
+ 
+ /**
+@@ -62,3 +62,73 @@
+   const vs = varianten.map(v => { keys[v.id] = v.werte.find(w => fremdSteckerKey(w)) ?? v.werte.join('-'); return { id: v.id, sku: v.id }; });
+   return steckerUrteil(vs, keys);
+ }
++
++
++/**
++ * ENTWURF 2026-10-26: zusätzlicher reiner Evidenz-Review im bestehenden Modul.
++ * Bestehende Label-Filter bleiben unverändert. Keine I/O, keine Schreibentscheidung.
++ * evidenceComplete bedeutet nur: dieser begrenzte Nachweissatz ist ausgefüllt.
++ * Es ist weder approved noch eine Rechts-/Sicherheits- oder Lieferfreigabe.
++ */
++export function stromversorgungsReview(record) {
++  const result = (status, reason, scope = 'swiss-power-evidence') => ({ status, reason, scope });
++  const text = x => typeof x === 'string' && x.trim().length > 0;
++  const date = x => text(x) && /^\d{4}-\d{2}-\d{2}T/.test(x) && Number.isFinite(Date.parse(x));
++  if (!record || record.schemaVersion !== 1 ||
++      !/^gid:\/\/shopify\/ProductVariant\/\d+$/.test(record.shopifyVariantID ?? '') ||
++      !text(record.supplierVariantID)) return result('unknown', 'Exakte Shopify-/Supplier-Variantenbindung fehlt');
++  const evidence = record.evidence ?? {};
++  if (typeof evidence !== 'object' || Array.isArray(evidence))
++    return result('unknown', 'Belegsammlung fehlt oder hat ein ungültiges Format');
++  const bound = ref => ref && ref.shopifyVariantID === record.shopifyVariantID && ref.supplierVariantID === record.supplierVariantID;
++  const valid = ref => bound(ref) && text(ref.source) && date(ref.capturedAt) && /^[a-f0-9]{64}$/i.test(ref.sha256 ?? '');
++  if (Object.values(evidence).some(ref => ref &&
++      (ref.shopifyVariantID !== record.shopifyVariantID || ref.supplierVariantID !== record.supplierVariantID)))
++    return result('needsReview', 'Belege sind nicht derselben exakten Variantenpaarung zugeordnet');
++  if (record.configuration === 'mixed') return result('needsReview', 'Gemischte oder widersprüchliche Ausführungen');
++  if (record.configuration !== 'single' || !valid(evidence.identity) || !valid(evidence.contents))
++    return result('unknown', 'Eindeutige Ausführung, Variantenmapping oder Lieferumfang unbelegt');
++  const mains = record.power === 'mains' || record.power === 'includedAdapter';
++  if (mains) {
++    if (!valid(evidence.plug) || !['CH', 'Europlug', 'foreign'].includes(record.suppliedPlug))
++      return result('unknown', 'Tatsächlich mitgelieferter Netzstecker unbelegt');
++    if (!['none', 'fixedAdapter', 'travelAdapter', 'unknown'].includes(record.adapterSolution))
++      return result('unknown', 'Mitgelieferte Adapterlösung nicht dokumentiert');
++    if (record.suppliedPlug === 'foreign' && record.adapterSolution === 'none')
++      return result('reject', 'Bestätigter Fremdstecker ohne belegte mitgelieferte Lösung');
++    if (record.adapterSolution === 'unknown')
++      return result('unknown', 'Mitgelieferte Adapterlösung ist unbekannt');
++    if (record.adapterSolution !== 'none')
++      return result('needsReview', 'Adapterfall: fachliche Prüfung der konkreten Lieferung erforderlich');
++    const range = x => x && Number.isFinite(x.min) && Number.isFinite(x.max) && x.min > 0 && x.min <= x.max;
++    const electrical = record.electrical ?? {};
++    if (!valid(evidence.ratings) || electrical.input !== 'AC' ||
++        !range(electrical.voltageV) || !range(electrical.frequencyHz))
++      return result('unknown', 'Abgelesene AC-Eingangsspannung/Frequenz unbelegt');
++    if (!(electrical.voltageV.min <= 230 && electrical.voltageV.max >= 230 &&
++          electrical.frequencyHz.min <= 50 && electrical.frequencyHz.max >= 50))
++      return result('reject', 'Belegte AC-Eingangsangaben decken 230 V / 50 Hz nicht ab');
++    if (!valid(evidence.protection) || record.checks?.plugRatingAndProtection !== true ||
++        !valid(evidence.conformity) || record.checks?.supplyConformityEvidence !== true)
++      return result('unknown', 'Steckerbelastbarkeit/Schutzkonzept oder zugehörige Konformitätsunterlagen ungeprüft');
++    if (record.power === 'includedAdapter' &&
++        (!valid(evidence.deviceInput) || !valid(evidence.adapterOutput) ||
++         !text(record.deviceInputMarking) || !text(record.adapterOutputMarking) ||
++         record.checks?.outputMatchesDevice !== true))
++      return result('unknown', 'Netzteil-Ausgang und Geräteeingang nicht belegt abgeglichen');
++  } else if (record.power === 'usbOnly') {
++    if (!record.suppliedPlug || !record.adapterSolution)
++      return result('unknown', 'USB-Lieferumfang ist nicht vollständig dokumentiert');
++    if (record.suppliedPlug !== 'none' || record.adapterSolution !== 'none')
++      return result('needsReview', 'USB-only widerspricht dokumentiertem Netzstecker/Adapter');
++    if (!valid(evidence.deviceInput) || !valid(evidence.usbRequirements) ||
++        !text(record.deviceInputMarking) || !text(record.usbConnector) ||
++        !text(record.usbSourceRequirements) || record.checks?.usbRequirementsReviewed !== true)
++      return result('unknown', 'USB-Lieferumfang oder erforderliche Stromquelle unvollständig belegt');
++  } else return result('unknown', 'Versorgungsart fehlt oder liegt ausserhalb dieses begrenzten Entwurfs');
++  if (!text(record.reviewedBy) || !date(record.reviewedAt))
++    return result('unknown', 'Nachvollziehbarer manueller Review fehlt');
++  return result('evidenceComplete', 'Begrenzter Nachweissatz dokumentiert; keine Gesamtfreigabe',
++    record.power === 'usbOnly' ? 'usb-package-and-source-requirements-only' : 'swiss-power-evidence');
++}
++
