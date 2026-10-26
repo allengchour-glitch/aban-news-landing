@@ -40,6 +40,9 @@ jobs:
       - name: Link guard (404 watcher)
         run: node automation/link_guard.mjs
       - name: Cross-sell generator
+        # 26.10.2026: nur von Hand (workflow_dispatch). Der Trockenlauf wollte bei 30 Produkten pro Woche einen Querverweis in die Beschreibung schreiben und
+        # ordnete u. a. «Tiger Kostüm für Golden Retriever» der Sammlung «Damenmode» zu (Teilwort «kleid» in «Bekleidung»). Erst nach Prüfung wieder zeitgesteuert.
+        if: github.event_name != 'schedule'
         run: node automation/cross_sell.mjs
       - name: Publish guard (all sales channels)
         run: node automation/publish_guard.mjs
