@@ -225,7 +225,10 @@
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves"
    ],
-   "beschreibung": "Tragbare Gaskocher, Spirituskocher, Holzöfen und Kochsysteme für Camping, Wandern und Picknick."
+   "beschreibung": "Tragbare Gaskocher, Spirituskocher, Holzöfen und Kochsysteme für Camping, Wandern und Picknick.",
+   "titel_nicht": [
+    "gasgrill"
+   ]
   },
   {
    "handle": "schneidebretter-bretter",
@@ -761,7 +764,9 @@
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > Barware",
     "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Stemware",
-    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Drinkware Sets"
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Drinkware Sets",
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Beer Glasses",
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Shot Glasses"
    ],
    "beschreibung": "Weingläser, Karaffen und Dekanter, Korkenzieher, Flaschenöffner, Weinkühler, Cocktail-Shaker, Untersetzer und weiteres Zubehör für Bar und Weinabend.",
    "unterfilter": [
@@ -1675,6 +1680,9 @@
     "(^|[^a-zäöüß])(vogel[a-zäöüß-]*|nistkasten|futterstation|futterhaus|uhrwerk|uhrenzeiger|federwelle|blechschild|messlatte|grössenmess[a-zäöüß]*)",
     "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
     "futterstelle",
+    "futterstation",
+    "massage",
+    "[a-zäöüß-]*(kissen|bezug|bezüge|abdeckung|bettläufer|fussunterlage|kopfstütze|schnitttuch)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],

@@ -152,7 +152,8 @@
       "titel_muss": [],
       "titel_nicht": [
         "(^|[^a-zäöüß])(augenbrau[a-zäöüß-]*|brauen[a-zäöüß-]*|brow)",
-        "wimpern-?(serum|lift|welle|pflege|fluid|kleber|extension|wickl)|wimpernlift|lash ?(serum|lift|extension)|keratin"
+        "wimpern-?(serum|lift|welle|pflege|fluid|kleber|extension|wickl)|wimpernlift|lash ?(serum|lift|extension)|keratin",
+        "^compact"
       ],
       "beschreibung": "Lidschatten-Paletten, Eyeliner, Kajal, Mascara und Glitzer für die Augen.",
       "unterfilter": [
@@ -205,7 +206,9 @@
         "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes"
       ],
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "lösung"
+      ],
       "beschreibung": "Falsche Wimpern zum Aufkleben, magnetische Wimpern und Einzel-Cluster in verschiedenen Längen und Stärken.",
       "unterfilter": [
         {
@@ -266,7 +269,9 @@
         "Health & Beauty > Personal Care > Cosmetics > Makeup > Makeup Finishing"
       ],
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "massage"
+      ],
       "beschreibung": "Foundation, Concealer, BB-Cream, Puder, Rouge, Bronzer, Highlighter und Fixierspray für den Teint.",
       "unterfilter": [
         {
@@ -324,7 +329,8 @@
       ],
       "titel_nicht": [
         "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|spielzeug[a-zäöüß-]*|jungen|mädchen|halloween|meerjungfrau[a-zäöüß-]*|schminkbr[a-zäöüß-]*|beauty-tools|mystery)",
-        "kindermake|kosmetikbox|kosmetik-set mit"
+        "kindermake|kosmetikbox|kosmetik-set mit",
+        "(^|[^a-zäöüß])öl(?![a-zäöüß])"
       ],
       "beschreibung": "Fertige Make-up-Sets, Geschenkboxen und Multi-Paletten für Augen, Lippen und Wangen, teils mit Pinseln und Täschchen."
     },
@@ -336,7 +342,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
         "pinsel|mischer|farbkarte|farbtabelle|lippenstift|lidschatten|nagelbad"
       ],
       "beschreibung": "Nagellack, Gel-Lack und UV-Lack in Farben, Cat-Eye- und Glitzer-Effekt, dazu Top Coat, Base Coat und Nagellackentferner."
@@ -349,7 +355,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
       ],
       "beschreibung": "Nagelsticker, Strasssteine, Nail-Art-Stifte, Pinsel, Stempelplatten und Zubehör zum Gestalten der Nägel.",
       "unterfilter": [
@@ -393,7 +399,7 @@
         "Health & Beauty > Personal Care > Cosmetics > Nail Care > False Nails"
       ],
       "titel_muss": [
-        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
       ],
       "titel_nicht": [],
       "beschreibung": "Verlängerungsgele, Aufbau-Gel, Polygel, Acrylpulver und Dipping-Pulver samt Sets zur Nagelmodellage."
@@ -406,7 +412,9 @@
         "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Drills"
       ],
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "^handgemachte|gel-nagellack set"
+      ],
       "beschreibung": "UV- und LED-Nagellampen zum Aushärten von Gel-Lack sowie elektrische Nagelfräser und Polierer.",
       "unterfilter": [
         {
@@ -443,9 +451,12 @@
         "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polish",
         "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Art"
       ],
-      "titel_muss": [],
+      "titel_muss": [
+        "knip|clipper|trimmer|schneid|feil|polier|buffer|schleif|fräs|set|pflege|haut|öl|stift|kleber|kleb|haft|zange|staub|absaug|entferner|übung|auflage|halter|gerät|werkzeug|lösung|spray|serum|pinsel|pflaster|manik|pedik"
+      ],
       "titel_nicht": [
-        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
+        "epoxy|piercing|hautentfernung|nagelset|gräfin"
       ],
       "beschreibung": "Nagelknipser, Nagelfeilen, Maniküre-Sets, Nagelhautpflege und Nagelpflege-Stifte.",
       "unterfilter": [
@@ -486,7 +497,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "aufbewahr|tasche|beutel|etui|(^|[^a-zäöüß])box|halter|ständer|gestell|ablage|organizer|koffer|wandhalterung|diffus|düse|haarcreme|haarschere|schleuder|entferner|strassierer|friseur ohne|haarwurzel|perm",
+        "aufbewahr|tasche|beutel|etui|(^|[^a-zäöüß])box|halter|ständer|gestell|ablage|organizer|koffer|wandhalterung|haarcreme|haarschere|schleuder|entferner|strassierer|friseur ohne|haarwurzel|perms$|dauerwelle|aufsatz für|^(universal |wellen locken )?diffus|föhn-düse",
         "(^|[^a-zäöüß])(bart)",
         "(^|[^a-zäöüß])(haarkamm|massagekamm)"
       ],
@@ -547,7 +558,7 @@
       "titel_muss": [],
       "titel_nicht": [
         "(^|[^a-zäöüß])(bart)",
-        "organizer|ladestation"
+        "organizer|ladestation|haustier"
       ],
       "beschreibung": "Elektrische Haarschneider, Bart- und Nasenhaartrimmer, Augenbrauentrimmer und Friseurscheren."
     },
@@ -592,7 +603,9 @@
         "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing"
       ],
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "haar"
+      ],
       "beschreibung": "Elektrische Gesichtsreinigungsbürsten aus Silikon und Ultraschall-Reiniger mit Vibration und Wärme."
     },
     {
@@ -621,8 +634,7 @@
         "dampf|nano|ionen|zerstäub|atomi|sprüh|spray|nebel|mist|befeuchter"
       ],
       "titel_nicht": [
-        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|mesotherapie)",
-        "sprühpistole|compressor"
+        "sprühpistole|compressor|mikrostrom|ems|lifting|(^|[^a-zäöüß])rf|oxygen|sauerstoff|injektor|infusion"
       ],
       "beschreibung": "Gesichtsdampfer mit Nano-Ionen und Heissdampf sowie Nano-Sprühgeräte für feinen Wassernebel."
     },
@@ -782,7 +794,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [
-        "handwärmer|handwaermer|stichheiler"
+        "handwärmer|handwaermer|stichheiler|handschuh"
       ],
       "beschreibung": "Elektrische Heizkissen, Wärmegürtel, Wärmflaschen und Wärme-Auflagen für Rücken, Bauch, Nacken und Schultern."
     },
@@ -827,7 +839,9 @@
         "Health & Beauty > Personal Care > Sleeping Aids"
       ],
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "baby|babys"
+      ],
       "beschreibung": "Schlafmasken, aufblasbare und U-förmige Reisekissen, Nackenstützen sowie Geräte für Schlafgeräusche und Anti-Schnarch-Helfer.",
       "unterfilter": [
         {
