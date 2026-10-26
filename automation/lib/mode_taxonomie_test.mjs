@@ -51,6 +51,17 @@ ist('Korrektur: Blazer mit falscher Google-Kategorie «Belts» steht trotzdem be
 ist('Gegenprobe: derselbe Titel unter unbekanntem Handle bleibt draussen', in_('damen-jacken-maentel', P(BLAZER, GURT, ['damen', 'damen-mode', 'kat-damen-jacke'], 'Blazer', 'ein-ganz-anderes-produkt')), false);
 ist('Korrektur: Sommerkleid mit «Belts» steht bei den Kleidern', in_('damen-kleider', P('Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel', GURT, [], '', 'sommerkleid-fleur-noir-blumen-print-midi-mit-bindegurtel')), true);
 
+// ── Herren-Titel auf Schnitten, die als «weiblich» gelten: Herren bleibt Herren (26.10.2026; Fotos der 9 Produkte zeigen Männer) ──
+const JEANS = 'Apparel & Accessories > Clothing > Pants', TOPS = 'Apparel & Accessories > Clothing > Shirts & Tops', JACKE = 'Apparel & Accessories > Clothing > Outerwear > Coats & Jackets';
+const FL = P('Herren High-Waist Loose-Fit Flared Jeans', JEANS, ['herren', 'kat-jeans', 'such-herren-jeans'], 'Herrenmode', 'herren-high-waist-loose-fit-flared-jeans-626600');
+ist('Herren-Flared-Jeans mit High-Waist steht bei Herren-Jeans, nicht bei Damen-Jeans', [in_('herren-jeans', FL), in_('damen-jeans', FL)], [true, false]);
+const OS = P('Eleganter Off-Shoulder Hemd für Herren', TOPS, ['herren'], 'Herrenmode', 'eleganter-off-shoulder-hemd-fur-herren-607400');
+ist('Herren-Off-Shoulder-Hemd steht bei Herren-Hemden, nicht bei Damen-Blusen', [in_('herren-hemden', OS), in_('damen-blusen-hemden', OS)], [true, false]);
+const WE = P('Distressed Leder Off-Shoulder Jacke', JACKE, ['herren', 'kat-jacke-outdoor'], 'Herrenmode', 'distressed-leder-off-shoulder-jacke-616700');
+ist('Nur Tag herren (ohne Herren-Wort im Titel): Off-Shoulder-Jacke bleibt Herren', [in_('herren-jacken-maentel', WE), in_('damen-jacken-maentel', WE)], [true, false]);
+ist('Gegenprobe: eine Off-Shoulder-Bluse für Damen bleibt bei Damen', [in_('damen-blusen-hemden', P('Off-Shoulder Bluse für Damen', TOPS, ['damen'], 'Damenmode')), in_('herren-hemden', P('Off-Shoulder Bluse für Damen', TOPS, ['damen'], 'Damenmode'))], [true, false]);
+ist('Gegenprobe: ein «Herren-Rock» (Kleidungsstück, das ein Herr nicht trägt) bleibt kein Herren-Produkt', MODE.some(k => k.handle.startsWith('herren') && gehoertIn(k, P('Herren Rock mit Gürtel', 'Apparel & Accessories > Clothing > Skirts', ['herren'], 'Herrenmode'))), false);
+
 // ── Hilfsfunktionen ──
 ist('normiere: productType wird zu type', normiere({ handle: 'x', productType: 'Damenmode', tags: [] }).type, 'Damenmode');
 ist('normiere: Google-Korrektur greift nur für bekannte Handles', normiere({ handle: 'kein-bekanntes-produkt', g: 'A > B', tags: [] }).g, 'A > B');

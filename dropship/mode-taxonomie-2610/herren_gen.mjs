@@ -35,12 +35,13 @@ export function geschlecht(p) {
   const fem = RX.nurDamen.test(t) || G_FEM.test(g);
   const th0 = hasTag(p, 'herren') || hasTag(p, 'maenner') || hasTag(p, 'männer');
   if (h && dd) return 'unisex';
-  if (h && RX.weiblichDesign.test(t)) return 'damen';
+  // 26.10.2026: «Herren» im Titel gewinnt gegen den Schnitt-Verdacht. Fotos der 9 betroffenen Produkte zeigen Männer (Flared-Jeans, Off-Shoulder-Hemd,
+  // Halterneck-Weste); die Quelle verkauft sie als Herrenmode. Der Schnitt allein macht ein Herrenprodukt nicht zum Damenprodukt.
   if (h) return (fem || (RX.weichDamen.test(t) && !th0)) ? 'damen' : 'herren';
   if (dd) return 'damen';
   if (hasTag(p, 'kinder')) return 'kinder';
   const th = hasTag(p, 'herren') || hasTag(p, 'maenner') || hasTag(p, 'männer'), td = hasTag(p, 'damen'), tu = hasTag(p, 'unisex');
-  if (th && (fem || RX.weichDamen.test(t) || RX.weiblichDesign.test(t))) return 'damen';
+  if (th && (fem || RX.weichDamen.test(t))) return 'damen';   // weiblichDesign zählt hier nicht mehr (siehe oben: Fotos zeigen Männer)
   if (tu || (th && td)) return 'unisex';
   if (th) return 'herren';
   if (td) return 'damen';
