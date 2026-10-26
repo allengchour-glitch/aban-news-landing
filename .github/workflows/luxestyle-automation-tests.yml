@@ -38,6 +38,7 @@ on:
       - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
+      - 'dropship/mode-taxonomie-2610/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
@@ -91,6 +92,7 @@ jobs:
             dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
+            dropship/mode-taxonomie-2610
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
