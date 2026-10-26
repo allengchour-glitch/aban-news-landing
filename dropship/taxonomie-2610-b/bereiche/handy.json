@@ -1,0 +1,503 @@
+{
+  "bereich": "handy",
+  "titel": "Handy & Zubehör",
+  "menue": {
+    "oben": "Elektronik"
+  },
+  "universum": {
+    "g_prefix": [
+      "Electronics > Communications > Telephony > Mobile Phone Accessories",
+      "Electronics > Electronics Accessories > Power > Power Adapters & Chargers",
+      "Electronics > Electronics Accessories > Power > Power Adapter & Charger Accessories",
+      "Electronics > Electronics Accessories > Power > Battery Accessories > General Purpose Battery Chargers",
+      "Electronics > Electronics Accessories > Cables",
+      "Electronics > Electronics Accessories > Electronics Films & Shields",
+      "Electronics > Electronics Accessories > Mobile Phone & Tablet Tripods",
+      "Cameras & Optics > Camera & Optic Accessories > Tripods & Monopods",
+      "Cameras & Optics > Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers & Support"
+    ],
+    "titel_muss": [
+      "handy|smartphone|iphone|magsafe|power ?bank|ladekabel|ladegerät|displayschutz|panzerglas|selfie"
+    ],
+    "g_nicht": [
+      "Apparel & Accessories",
+      "Luggage & Bags",
+      "Toys & Games",
+      "Electronics > Audio",
+      "Electronics > Video",
+      "Electronics > Computers",
+      "Electronics > GPS",
+      "Electronics > Electronics Accessories > Computer Components",
+      "Electronics > Electronics Accessories > Memory",
+      "Electronics > Electronics Accessories > Remote Controls",
+      "Electronics > Video Game",
+      "Electronics > Print",
+      "Home & Garden",
+      "Sporting Goods",
+      "Hardware",
+      "Animals & Pet Supplies",
+      "Cameras & Optics > Cameras",
+      "Health & Beauty",
+      "Baby & Toddler",
+      "Arts & Entertainment",
+      "Office Supplies",
+      "Business & Industrial"
+    ],
+    "titel_nicht": [
+      "^(?!.*(power ?bank|powerbank|kabellos|wireless|magsafe)).*(akku|batterie|li-?ion|lithium|lipo|18650|16340|cr123|aaa|werkzeug|makita|milwaukee|dewalt|dyson|staubsauger|scooter|e-fahrzeug|schubkarre|balance|xbox|ps2|ps4|ps5|konsole|handheld|türklingel|gegensprech|tattoo|totalstation|nitecore|digicharger|kamera|dji|drohne|pilzlampe|hammer|tassenwärmer|chair|hdmi|ethernet|sata|starthilfe|reparatur|hub|docking|trafo|usv|solar|radio|controller|gamepad|joy-?con|switch|wii|(^|[^a-zäöüß])vr(?![a-zäöüß])|oculus|quest|schächt|schacht|inst360|laderegler|vga|audio|game|vollautomatisch|lampe|leuchte|diffuser|desinfektion|sterilisation|tasse|organizer|sleeve|ev ladebox|ladebox)",
+      "^(?!.*(power ?bank|powerbank|kabellos|wireless|magsafe)).*(laptop|notebook|macbook|handwärmer|starthilfe)",
+      "^(?!.*(handy|phone|kopfhörer|airpods|3-in-1|2-in-1|4-in-1|geräte|mobil)).*(für [^|]*(watch|uhr)|smartwatch|apple watch|google watch|watch [0-9]|uhren-|mini-uhr|uhr-lade)"
+    ]
+  },
+  "kategorien": [
+    {
+      "handle": "powerbanks",
+      "titel": "Powerbanks",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Power",
+        "Electronics > Electronics Accessories > Cables"
+      ],
+      "titel_muss": [
+        "power ?bank|powerbank"
+      ],
+      "titel_nicht": [
+        "starthilfe|notstart|handwärmer|handwaermer|hülle für|diy|kopfband|radio|ventilator|datenkabel|handyhalter|gehäuse"
+      ],
+      "beschreibung": "Mobile Akkus zum Laden unterwegs: Powerbanks in vielen Kapazitäten, magnetisch, kabellos, mit eingebautem Kabel oder mit Solarzelle.",
+      "unterfilter": [
+        {
+          "handle": "powerbanks-magnetisch",
+          "titel": "Magnetisch & kabellos",
+          "titel_muss": [
+            "magnet|magsafe|kabellos|wireless"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "powerbanks-solar",
+          "titel": "Solar-Powerbanks",
+          "titel_muss": [
+            "solar"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "powerbanks-mit-kabel",
+          "titel": "Mit eingebautem Kabel",
+          "titel_muss": [
+            "kabel(?!los)|kabeln"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "powerbanks-mini",
+          "titel": "Mini & kompakt",
+          "titel_muss": [
+            "mini|kompakt|klein|ultradünn|slim|dünn"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "powerbanks-gross",
+          "titel": "Grosse Kapazität (ab 20 000 mAh)",
+          "titel_muss": [
+            "([2-9][0-9])[.'’ ]?000 ?(mah|ma)"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "auto-ladegeraete",
+      "titel": "Auto-Ladegeräte",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Power",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Electronics",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Power & Electrical"
+      ],
+      "titel_muss": [
+        "^(?=.*((^|[^a-zäöüß])auto(?!-?sensing)(?!mati)|kfz|fahrzeug|motorrad|zigarettenanzünder|lkw|mazda|honda|toyota|bmw|(^|[^a-zäöüß])audi(?![a-zäöüß])|mercedes|tesla|(^|[^a-zäöüß])ford(?![a-zäöüß])))(?=.*(lade-?(gerät|geraet|station|ständer|stand|pad|platte|dock|halter|schale|adapter|stecker|feld|panel|block|funktion)|lader(?![a-zäöüß])|charger|charging|netzteil|power supply))"
+      ],
+      "titel_nicht": [
+        "batterie|bleiakku|starthilfe|reparatur|werkzeug|scooter|balance|vollautomatisch|separator|akku|ev ladebox|ladebox|halterung mit ladefunktion|organizer"
+      ],
+      "beschreibung": "Ladegeräte fürs Fahrzeug: USB-Lader für den Zigarettenanzünder mit Schnellladefunktion und kabellose Auto-Lader mit Magnet oder Halterung.",
+      "unterfilter": [
+        {
+          "handle": "auto-ladegeraete-kabellos",
+          "titel": "Kabellos & magnetisch",
+          "titel_muss": [
+            "kabellos|wireless|magsafe|magnet|qi|drahtlos"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "auto-ladegeraete-usb",
+          "titel": "USB-Lader für den Zigarettenanzünder",
+          "titel_muss": [
+            "usb|zigarettenanzünder|dual|schnell|quick|(^|[^a-zäöüß])(pd|qc)"
+          ],
+          "titel_nicht": [
+            "kabellos|wireless|magsafe|drahtlos"
+          ]
+        }
+      ]
+    },
+    {
+      "handle": "kabellos-laden",
+      "titel": "Kabelloses Laden",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Power",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Electronics"
+      ],
+      "titel_muss": [
+        "^(?=.*(kabellos|wireless|wireloser|drahtlos|induktiv|induktion|magsafe|qi-|magnetisch))(?=.*(lade-?(gerät|geraet|station|ständer|stand|pad|platte|dock|halter|schale|adapter|stecker|feld|panel|block|funktion)|lader(?![a-zäöüß])|charger|charging|netzteil|power supply))"
+      ],
+      "titel_nicht": [
+        "power ?bank|powerbank",
+        "((^|[^a-zäöüß])auto(?!-?sensing)(?!mati)|kfz|fahrzeug|motorrad|zigarettenanzünder|lkw|mazda|honda|toyota|bmw|(^|[^a-zäöüß])audi(?![a-zäöüß])|mercedes|tesla|(^|[^a-zäöüß])ford(?![a-zäöüß]))",
+        "(akku|batterie|li-?ion|lithium|lipo|18650|16340|cr123|aaa|werkzeug|makita|milwaukee|dewalt|dyson|staubsauger|scooter|e-fahrzeug|schubkarre|balance|xbox|ps2|ps4|ps5|konsole|handheld|türklingel|gegensprech|tattoo|totalstation|nitecore|digicharger|kamera|dji|drohne|pilzlampe|hammer|tassenwärmer|chair|hdmi|ethernet|sata|starthilfe|reparatur|hub|docking|trafo|usv|solar|radio|controller|gamepad|joy-?con|switch|wii|(^|[^a-zäöüß])vr(?![a-zäöüß])|oculus|quest|schächt|schacht|inst360|laderegler|vga|audio|game|vollautomatisch|lampe|leuchte|diffuser|desinfektion|sterilisation|tasse|organizer|sleeve|ev ladebox|ladebox)",
+        "^(?!.*(handy|phone|kopfhörer|airpods|3-in-1|2-in-1|4-in-1|geräte|mobil)).*(für [^|]*(watch|uhr)|smartwatch|apple watch|google watch|watch [0-9]|uhren-|mini-uhr|uhr-lade)",
+        "^(?!.*(handy|smartphone|phone|tablet|mobil)).*(laptop|notebook|macbook)"
+      ],
+      "beschreibung": "Ladegeräte und Ladestationen ohne Kabelanschluss am Gerät: Qi- und MagSafe-Lader, Ladeständer und Ladepads für Smartphone, Ohrhörer und mehr.",
+      "unterfilter": [
+        {
+          "handle": "kabellos-laden-mehrfach",
+          "titel": "Mehrfach-Lader (2-in-1 bis 6-in-1)",
+          "titel_muss": [
+            "(^|[^a-zäöüß0-9])[2-7]-?in-?(1|ein)|dreifach|dual|duales|multi-?(port|usb|lader|ladegerät)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kabellos-laden-kompakt",
+          "titel": "Kompakt & ultradünn",
+          "titel_muss": [
+            "ultradünn|ultra-?slim|slim|mini|kompakt|portabel|tragbar|dünn|pad"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kabellos-laden-staender",
+          "titel": "Ladeständer & Halterungen",
+          "titel_muss": [
+            "ständer|stand(?![a-zäöüß])|vertikal|halterung|dock"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kabellos-laden-magnetisch",
+          "titel": "Magnetisch & MagSafe",
+          "titel_muss": [
+            "magnet|magsafe"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "ladegeraete-netzteile",
+      "titel": "Ladegeräte & Netzteile",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Power",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Electronics",
+        "Electronics > Electronics Accessories > Adapters > USB Adapters"
+      ],
+      "titel_muss": [
+        "(lade-?(gerät|geraet|station|ständer|stand|pad|platte|dock|halter|schale|adapter|stecker|feld|panel|block|funktion)|lader(?![a-zäöüß])|charger|charging|netzteil|power supply)|schnell ?lade|schnelllader|ladeadapter|lade-adapter|ladestation|ladestecker|(^|[^a-zäöüß])gan[- ]"
+      ],
+      "titel_nicht": [
+        "power ?bank|powerbank",
+        "^(?=.*(kabellos|wireless|wireloser|drahtlos|induktiv|induktion|magsafe|qi-|magnetisch))(?=.*(lade-?(gerät|geraet|station|ständer|stand|pad|platte|dock|halter|schale|adapter|stecker|feld|panel|block|funktion)|lader(?![a-zäöüß])|charger|charging|netzteil|power supply))",
+        "((^|[^a-zäöüß])auto(?!-?sensing)(?!mati)|kfz|fahrzeug|motorrad|zigarettenanzünder|lkw|mazda|honda|toyota|bmw|(^|[^a-zäöüß])audi(?![a-zäöüß])|mercedes|tesla|(^|[^a-zäöüß])ford(?![a-zäöüß]))",
+        "(akku|batterie|li-?ion|lithium|lipo|18650|16340|cr123|aaa|werkzeug|makita|milwaukee|dewalt|dyson|staubsauger|scooter|e-fahrzeug|schubkarre|balance|xbox|ps2|ps4|ps5|konsole|handheld|türklingel|gegensprech|tattoo|totalstation|nitecore|digicharger|kamera|dji|drohne|pilzlampe|hammer|tassenwärmer|chair|hdmi|ethernet|sata|starthilfe|reparatur|hub|docking|trafo|usv|solar|radio|controller|gamepad|joy-?con|switch|wii|(^|[^a-zäöüß])vr(?![a-zäöüß])|oculus|quest|schächt|schacht|inst360|laderegler|vga|audio|game|vollautomatisch|lampe|leuchte|diffuser|desinfektion|sterilisation|tasse|organizer|sleeve|ev ladebox|ladebox)",
+        "^(?!.*(handy|phone|kopfhörer|airpods|3-in-1|2-in-1|4-in-1|geräte|mobil)).*(für [^|]*(watch|uhr)|smartwatch|apple watch|google watch|watch [0-9]|uhren-|mini-uhr|uhr-lade)",
+        "^(?!.*(handy|smartphone|phone|tablet|mobil)).*(laptop|notebook|macbook)",
+        "(lade|daten|adapter)-?kabel(?!los)"
+      ],
+      "beschreibung": "Steckdosen-Ladegeräte und Netzteile für Smartphone, Tablet und andere USB-Geräte: Schnelllader, Mehrfach-Lader und Reiseladegeräte.",
+      "unterfilter": [
+        {
+          "handle": "ladegeraete-gan-schnell",
+          "titel": "GaN & Schnellladen",
+          "titel_muss": [
+            "(^|[^a-zäöüß])gan(?![a-zäöüß])|gallium|schnell|fast|rapid|(^|[^a-zäöüß])(pd|qc)|quick"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "ladegeraete-mehrfach-usb",
+          "titel": "Mehrfach-Lader (mehrere Anschlüsse)",
+          "titel_muss": [
+            "(^|[^a-zäöüß0-9])[0-9]*-?(multi-?)?ports?(?![a-zäöüß])|anschlüss|dual|dreifach|[3-5]-in-1|mehrfach|vier |fünf "
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "ladegeraete-ladestationen",
+          "titel": "Ladestationen",
+          "titel_muss": [
+            "station|ständer|stand(?![a-zäöüß])"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "ladekabel-datenkabel",
+      "titel": "Ladekabel & Datenkabel",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Cables"
+      ],
+      "titel_muss": [
+        "(lade|daten|schnelllade)[- ]?(flach)?(und )?(daten)?kabel(?!los)"
+      ],
+      "titel_nicht": [
+        "organizer|halter|binder|maus|keyboard|tastatur|sata|festplatte|programmer|ethernet|netzwerk|hdmi|vga|glasfaser|fiber|faser|verlängerung|oculus|quest|hub|armband|gpd|netzteil"
+      ],
+      "beschreibung": "Kabel zum Laden und Übertragen: USB-C- und Micro-USB-Kabel, magnetische Mehrfachkabel und Schnellladekabel, auch für iPhone und Android."
+    },
+    {
+      "handle": "handyhalter-staender",
+      "titel": "Handyhalter & Ständer",
+      "g_prefix": [
+        "Electronics > Communications > Telephony"
+      ],
+      "titel_muss": [
+        "halter|halterung|ständer"
+      ],
+      "titel_nicht": [
+        "selfie|gimbal|ringlicht|karten-?scanner|kühler|hülle"
+      ],
+      "beschreibung": "Halter und Ständer fürs Smartphone: fürs Auto, Velo und Motorrad, für Schreibtisch und Bett, magnetisch oder zum Klemmen.",
+      "unterfilter": [
+        {
+          "handle": "handyhalter-magnet",
+          "titel": "Magnetisch & MagSafe",
+          "titel_muss": [
+            "magnet|magsafe"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "handyhalter-tisch",
+          "titel": "Ständer, faltbar & verstellbar",
+          "titel_muss": [
+            "ständer|(^|[^a-zäöüß])tisch|schreibtisch|(^|[^a-zäöüß])bett|klemme|faltbar|verstellbar|flexibel|drehbar|teleskop|klapp|schwanenhals|stand(?![a-zäöüß])"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "handyhalter-unterwegs",
+          "titel": "Unterwegs & im Auto",
+          "titel_muss": [
+            "auto|kfz|armaturenbrett|lüftung|rückspiegel|mittelkonsole|fahrzeug|velo|fahrrad|motorrad|lenker|nacken|golf|sport|unterwegs|hud"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "handyhuellen-displayschutz",
+      "titel": "Handyhüllen & Displayschutz",
+      "g_prefix": [
+        "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases",
+        "Electronics > Electronics Accessories > Electronics Films & Shields"
+      ],
+      "beschreibung": "Schutz fürs Smartphone: Hüllen, Cases und Taschen für iPhone und Android, dazu Schutzfolien und Panzerglas für das Display."
+    },
+    {
+      "handle": "selfie-stative-foto",
+      "titel": "Selfie, Stative & Foto-Zubehör",
+      "g_prefix": [
+        "Cameras & Optics > Camera & Optic Accessories > Tripods & Monopods",
+        "Cameras & Optics > Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers & Support",
+        "Electronics > Electronics Accessories > Mobile Phone & Tablet Tripods",
+        "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Camera Accessories",
+        "Cameras & Optics > Photography > Lighting & Studio > Studio Lights & Flashes"
+      ],
+      "titel_nicht": [
+        "dji|mavic|drohne|motor|schutzabdeckung|fotostudio|webcam|mikrofon|dslr|dolly|kamera-arm|gelenkarm"
+      ],
+      "beschreibung": "Zubehör für Selfies, Vlogs und Fotos mit dem Smartphone: Selfie-Sticks, Stative, Gimbals, Ringlicht und Kamera-Clips."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Laden unterwegs",
+      "handle": "handy-laden-unterwegs-gruppe",
+      "kinder": [
+        "powerbanks",
+        "auto-ladegeraete"
+      ]
+    },
+    {
+      "titel": "Laden & Kabel",
+      "handle": "handy-laden-kabel-gruppe",
+      "kinder": [
+        "ladegeraete-netzteile",
+        "kabellos-laden",
+        "ladekabel-datenkabel"
+      ]
+    },
+    {
+      "titel": "Hüllen, Halter & Foto",
+      "handle": "handy-huellen-halter-foto-gruppe",
+      "kinder": [
+        "handyhuellen-displayschutz",
+        "handyhalter-staender",
+        "selfie-stative-foto"
+      ]
+    }
+  ],
+  "ausserhalb": [
+    {
+      "text": "Titel mit «Powerbank», die keine eigenständige Powerbank sind: Auto-Starthilfegeräte (9, gehören zu Auto), Handwärmer mit Powerbank-Funktion (6), Bausätze ohne Zellen, Schutzhülle für Powerbank, Handyhalter mit Powerbank-Gehäuse und Datenkabel mit Powerbank (zusammen 7), dazu Kombigeräte, bei denen die Powerbank nur Zusatzfunktion ist (Kopfhörer, Lautsprecher, Radio, Ventilator, Drohne, VR-Kopfband, Velo-Licht, Controller). Insgesamt stehen 37 von 208 Powerbank-Titeln in keiner der acht Kategorien.",
+      "beispiele": [
+        "12V Starthilfe Power Bank 500A",
+        "Mini-Handwärmer & Powerbank",
+        "DIY Powerbank Kit für 16x 18650 Akkus",
+        "Schutzhülle für Anker 165W Powerbank",
+        "Solar-Kurbelradio mit Powerbank",
+        "Oculus Quest 3 Kopfband mit 10000mAh Powerbank"
+      ]
+    },
+    {
+      "text": "Drei echte Powerbanks tragen eine falsche Google-Kategorie (Kosmetik bzw. Uhren) und fallen deshalb durch die Google-Vorgabe der Kategorie «Powerbanks». Bewusst nicht per Titel nachgeholt, weil derselbe Weg auch «Smartwatch mit Powerbank & Headset» hereinholen würde; bei Bedarf von Hand umkategorisieren.",
+      "beispiele": [
+        "Powerbank mit Schminkspiegel",
+        "Magnetische Wireless Power Bank für Smartwatches",
+        "Kabellose Powerbank für Smartwatches"
+      ]
+    },
+    {
+      "text": "Akkus, Zellen, Batterien und deren Ladegeräte (18650, CR123A, AA/AAA, LiPo, Werkzeug-, Kamera- und Drohnen-Akkus, Akku-Ladegeräte): in der Google-Klasse «Power» tragen 111 Titel ausserhalb der acht Kategorien solche Wörter (die Unterklasse «Batterien» hat allein 67 Produkte). Gehört zu «unterhaltung» (allgemeine Batterien) bzw. Werkzeug, nicht zu Handy.",
+      "beispiele": [
+        "USB-Ladegerät für 18650 Li-ion Akkus",
+        "Doppel-Schnellladegerät für Makita 18V Akkus",
+        "Smart AA Ladegerät mit 8 Lithium-Akkus",
+        "Lithium-Ion-Batterie 18650"
+      ]
+    },
+    {
+      "text": "Smartphone-Gaming: Gamepads, Controller, Trigger und Griffe fürs Smartphone sowie Controller-Ladestationen für PS4/PS5/Switch/Xbox/VR. 64 Titel mit Handy-Bezug gemessen (Google-Klasse meist «Computer Components > Input Devices»), dazu 39 Titel in der Klasse «Power» mit Konsolen-, Controller- oder VR-Bezug (Ladestationen, Netzteile). Gehört zu Gaming (gaming-controller, konsolen-zubehoer); falls dort nicht aufgenommen, reicht eine eigene Kategorie «Smartphone-Controller & Trigger» (über 15 Treffer).",
+      "beispiele": [
+        "Bluetooth Gamecontroller für Android-Smartphones",
+        "G21 Gaming Trigger für Smartphones",
+        "Mobile Gaming Controller",
+        "PS5 Controller Ladestation mit LED"
+      ]
+    },
+    {
+      "text": "Reine Uhren-Ladegeräte (Apple Watch, Google Watch, Galaxy Watch, Smartwatch-Ständer und -Kabel): 16 Titel, gehören zu «Smartwatches & Wearables». Mehrgeräte-Lader, die auch das Handy laden («3-in-1 für iPhone, Watch & AirPods»), stehen dagegen in «Kabelloses Laden».",
+      "beispiele": [
+        "Kabelloses Ladegerät für Apple Watch",
+        "Tragbares kabelloses Google Watch Ladegerät",
+        "U-förmiger Ladeständer für Apple Watch",
+        "Magnetisches Wireless Ladekabel für Smartwatches"
+      ]
+    },
+    {
+      "text": "Solar-Panels, Solar-Ladegeräte und Kurbelradios mit Ladefunktion (ohne Powerbank-Titel): 15 Titel in der Google-Klasse «Power». Solar-Powerbanks selbst stehen in «Powerbanks» (Chip «Solar-Powerbanks»). Passend zur vorhandenen Kategorie solar-energie.",
+      "beispiele": [
+        "Faltbares 40W Solarpanel-Ladegerät",
+        "Solar Photovoltaik Panel 6W Ladegerät",
+        "Solar-Handkurbelradio 10000 mAh Notfall-Ladegerät & Leselicht"
+      ]
+    },
+    {
+      "text": "Batterieladegeräte und Starthilfe fürs Fahrzeug (12V/24V, Bleiakku), E-Scooter-, Roller-, Staubsauger-, Werkzeug-, Drohnen- und Gerätelader, Tattoo-Pen: in der Klasse «Power» 20 Titel mit Fahrzeug- oder Starthilfe-Bezug (inklusive der Starthilfe-Powerbanks) und 30 Titel mit Werkzeug-, Roller-, Drohnen- oder Gerätebezug. Gehören zu Auto bzw. Werkzeug/Fahrzeug.",
+      "beispiele": [
+        "Batterieladegerät für Auto und Motorrad",
+        "Ladegerät für Dyson V6, V7, V8 Staubsauger",
+        "E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschluss",
+        "Mini Tattoo Pen mit USB-Ladekabel"
+      ]
+    },
+    {
+      "text": "Wireless-Charger als Zusatz in einem anderen Produkt (Lampe, Tasse, Diffusor, Organizer, UV-Box, Laptop-Hülle): 12 Titel im Universum. Hauptprodukt entscheidet, sie gehören zu Beleuchtung bzw. Haushalt.",
+      "beispiele": [
+        "Phantom Tischlampe mit Wireless Charger",
+        "Tasse mit Heizplatte & Wireless Charger",
+        "Riesenrad Aroma Diffuser mit Wireless Charger",
+        "3-in-1 Laptop Sleeve mit Wireless Charger"
+      ]
+    },
+    {
+      "text": "Laptop-Netzteile, USB-Hubs, Dockingstationen, Kartenleser, USB-Sticks, Speicher, Netzwerk- und Glasfaserkabel, Drucker, Mäuse und Tastaturen mit Kabel: 51 Titel im breiten Feld. Gehören zu «computer».",
+      "beispiele": [
+        "GaN Laptop-Ladegerät 230W/330W",
+        "Type-C Multiport-Hub",
+        "Gigabit-Faserkabel Kategorie 6",
+        "Mini-Thermodrucker für Mobiltelefone"
+      ]
+    },
+    {
+      "text": "Audio, Video und Anzeigegeräte mit Handy-Bezug (Mikrofone, Lautsprecher, Kopfhörer, Beamer, Fernbedienungen, TV-Boxen, HDMI- und Adapterkabel, Soundkarten, Bildschirmübertragung): 43 Titel im breiten Feld. Gehören zu «unterhaltung».",
+      "beispiele": [
+        "Kabelloses Lavalier-Mikrofon für Handy-Aufnahmen",
+        "Mini LED Beamer für Handy & Heimkino",
+        "Type-C Wireless Mirroring Adapter für PCs",
+        "HD-Adapterkabel"
+      ]
+    },
+    {
+      "text": "Handytaschen zum Umhängen oder Tragen, Hüfttaschen, Westen mit Handyfach, Portemonnaies und Kartenetuis fürs Handy: 39 Titel, Google-Klasse Handtaschen, Gürteltaschen, Geldbörsen. Echte Taschen, gehören zu Taschen (Mode-Taxonomie). Die Hüllen der Klasse «Mobile Phone Cases» stehen dagegen in «Handyhüllen & Displayschutz».",
+      "beispiele": [
+        "Mini-Handytasche mit Strass-Design",
+        "Kleine Leder-Handytasche",
+        "Outdoor-Velo- und Laufweste mit Handyfach",
+        "Captain Bull Handy-Portemonnaie aus Leder"
+      ]
+    },
+    {
+      "text": "Handy-Ersatzteile und Reparaturwerkzeug: nur 11 echte Titel (Schraubendreher-Sets, Demontage-Set, Reparaturmikroskop, Klebeband, Display-Einheit, Seiten-Tasten, Ladebuchse, Batterie-Set). Unter der Schwelle von 15, deshalb keine Kategorie. Dazu Kleinteile aus der Google-Klasse «Telephony» ohne eigene Art (Smartphone-Kühler, Auto-Clicker, Lanyard, Gel-Pads, Quick Brush, Karten-Scanner): 12 Titel, ebenfalls zu wenig.",
+      "beispiele": [
+        "Handy-Reparatur-Werkzeugset 11-teilig",
+        "Display-Einheit für iPhone X / XS / XR",
+        "Portabler Smartphone-Kühler mit Clip",
+        "Handy-Lanyard mit abnehmbarer Handschlaufe"
+      ]
+    },
+    {
+      "text": "Echte Telefone fehlen im Katalog: nur Kinder-Spielzeug-Handys (3 Titel, Spielzeug) und ein Wandtelefon. Keine Kategorie «Telefone». Smartwatches mit Telefonfunktion sind Uhren.",
+      "beispiele": [
+        "Kinder-Smartphone mit Kamera, Pinguin-Design Rosa",
+        "Lern-Smartphone mit Musik und Vibration",
+        "Wandtelefon"
+      ]
+    },
+    {
+      "text": "Reiseadapter und Stromadapter: 4 bis 5 Titel, ohne Ladegerät-Wort im Titel. Zu wenig für eine Kategorie, gehören zu Reise.",
+      "beispiele": [
+        "PD 20W Universal Reiseadapter",
+        "Internationaler Universal-Reiseadapter",
+        "Universeller Stromadapter 6ft"
+      ]
+    },
+    {
+      "text": "Nach der Regel «nie raten» draussen geblieben, weil der Titel die Art nicht belegt: Wörter wie «Laden» ohne Gerät, Splitter, Adapter, Power Box. Einzelfälle (je 1 Titel).",
+      "beispiele": [
+        "Smart Splitter für schnelles & sicheres Laden",
+        "Magnetische Ladesteckdose für iPhone & Android Type-C",
+        "Mobile Power Box",
+        "Doppel-Ladegerät",
+        "Dreifach-USB-Adapter aus Aluminium-Legierung"
+      ]
+    }
+  ],
+  "hinweise": [
+    "Keine der vorhandenen Handy-Collections war gut genug (Fremdkörper unter 3 %), darum sind alle acht Kategorien neu. Ersetzt wird (aktive Produkte, jeweils mit Anteil, der nicht zur Art gehört): handy-powerbanks (208 aktiv, 37 = 18 % keine Powerbank) durch «powerbanks»; handy-huellen (28 aktiv, 12 = 43 % Hüllen für Uhr, AirPods, Tablet, Headset) und handy-schutzglas (5 aktiv) durch «handyhuellen-displayschutz»; handy-halterungen (74 aktiv, 24 = 32 % Ladegeräte, Powerbanks, Hüllen und Fremdes) und elektronik-handy (55 aktiv, 12 ohne Zuordnung) durch «handyhalter-staender»; ladegeraete (138 aktiv, 46 = 33 % Akku-, Werkzeug-, Laptop- und Solar-Lader) durch «ladegeraete-netzteile» und «kabellos-laden»; handy-selfie-video (21 aktiv, 10 = 48 % Webcams, Drohnen-Gimbals, Fotostudio) durch «selfie-stative-foto».",
+    "Sammelbecken, die durch die neuen Kategorien schrumpfen: elektronik-laden «Ladegeräte & Powerbanks» (569 aktiv, davon 486 in den acht Kategorien, 83 = 15 % Fremdes), handy-laden «Ladegeräte & Kabel» (420 aktiv, 292 in den acht, 128 = 30 % Fremdes), handy-zubehoer «Handy-Zubehör» (652 aktiv, 502 in den acht, 150 = 23 % Fremdes wie Handytaschen, Werkzeug-Lader, Solar), kabel-adapter «Kabel & Adapter» (60 aktiv, nur 35 in den acht, 25 = 42 % HDMI, VGA, Hubs, Konsolen-Konverter), elektronik-kleinteile (733 aktiv, 473 in den acht, 260 Rest: Batterien, Laptop-Netzteile, Konsolen-Adapter, Kabelmanagement). Empfehlung: Menüpunkte «Ladegeräte & Powerbanks» und «Handy-Zubehör» durch die drei Gruppen ersetzen; «Kabel & Adapter» bleibt nur für HDMI/Video/Audio-Adapter (unterhaltung) und verliert die Ladekabel.",
+    "Aufteilung der Gruppen: «Laden unterwegs» hat nur zwei Kinder (Powerbanks, Auto-Ladegeräte). Wenn eine Zwei-Kinder-Gruppe stört, die beiden Lade-Gruppen zu «Laden & Strom» mit fünf Kindern zusammenlegen (powerbanks, ladegeraete-netzteile, kabellos-laden, auto-ladegeraete, ladekabel-datenkabel); dann bleiben zwei Gruppen. Der Katalog gibt für Reparatur, Telefone und Adapter keine weiteren Kategorien her.",
+    "Vorrang statt Überlappung (gemessen: 0 Überlappungen): Powerbank-Titel stehen nur in «Powerbanks» (die Regeln für kabelloses Laden und für Ladegeräte schliessen sie aus, auch Solar-, Magnet- und Kabel-Powerbanks), Auto-Titel mit Lade-Wort nur in «Auto-Ladegeräte» (auch kabellose Auto-Lader), kabellose Lader nur in «Kabelloses Laden», alle übrigen Lader in «Ladegeräte & Netzteile». Handyhalter mit Ladefunktion in der Google-Klasse Telephony bleiben bei «Handyhalter & Ständer», dieselben Titel in der Klasse Power bei «Kabelloses Laden». Kommen später neue Produkte dazu, die zwei Regeln treffen, meldet messen.mjs die Überlappung.",
+    "Google-Klassen sind die Grundlage der Regeln (Telephony für Halter, «Mobile Phone Cases» und «Electronics Films & Shields» für Hüllen und Displayschutz, Power für Lader und Powerbanks, Cables für Kabel, Stativ-Klassen für Selfie). Wird ein Produkt später in eine andere Google-Klasse verschoben, wandert es aus der Kategorie. Der Lauf, der die Tags setzt, muss deshalb frische Google-Kategorien lesen.",
+    "Abgrenzung nach Wunsch des Besitzers prüfen: reine Uhren-Ladegeräte (16) und Smartphone-Gaming (64 Titel) bleiben draussen. Beides liesse sich mit je einer Zeile aufnehmen (Uhren-Ausschluss in kabellos-laden streichen bzw. Kategorie «Smartphone-Controller & Trigger» anlegen), gehört aber thematisch zu Smartwatches bzw. Gaming.",
+    "Überschneidung mit foto-tech «Foto & Video» (Menü unter «Drohnen & Kameras», Titel-Regel Gimbal/Ringlicht/Lavalier/Selfie-Stick, 35 aktiv, 14 davon in «selfie-stative-foto»): die Selfie-, Stativ- und Gimbal-Titel sollten nur in einer der beiden stehen. Lavalier-Mikrofone und Webcams gehören nicht zu «Selfie, Stative & Foto-Zubehör».",
+    "Die vorhandene Kategorie solar-energie (sort-solar, 148 aktiv) sammelt jedes Produkt mit «Solar» im Titel (Gartenleuchten, Solar-Uhren, Roboter-Bausätze, Hundehalsbänder, Kamera mit Solarpanel). Mit den 26 Solar-Powerbanks gibt es eine Doppelung; ein Verweis auf solar-energie als Kind der Gruppe «Laden unterwegs» wurde bewusst nicht gesetzt, solange die Kategorie nicht verengt ist.",
+    "Gezählt über alle acht Kategorien (697 Titel gelesen): 1 sicherer Fremdkörper («2-in-1 Magnetisches Uhren-Ladegerät» in «Kabelloses Laden», reiner Uhren-Lader) und 9 Grenzfälle, deren Art der Titel nicht belegt und die deshalb nicht als Fremdkörper zählen: «Magnetische Ladestation 10000mAh», «Magnetische WLAN-Ladestation» und «Wireless Charger für A3, A4L, A5, A6, A7» (vermutlich Auto) in «Kabelloses Laden»; «Schnellladegerät 10000mAh», «Outdoor-Ladegerät für Camping», «Dual-Channel-Ladegerät», «Multifunktionale Kühl- und Ladestation» und «Galaxy Watch Active & Galaxy Buds 3-in-1 Ladestation» in «Ladegeräte & Netzteile»; «M3 Smart Power Bank mit Bluetooth & Health-Tracking» in «Powerbanks». Im ungünstigsten Fall sind das 10 von 697 Titeln (1,4 %). Der Besitzer kann sie bei Bedarf per Hand zuordnen.",
+    "Sperr-Tags (adult-nicht-bewerben, 18plus, fortura, nicht-bewerben, stecker-nicht-ch usw.) schliesst das Werkzeug automatisch aus; im Handy-Bereich betrifft das 1 Titel (eine Kamera mit «kabellos» im Titel, kein Handy-Zubehör). Produkte mit stecker-nicht-ch gibt es im aktiven Katalog keine. Die Zahlen unter «ausserhalb» stammen aus getrennten Zählungen mit Titel-Wörtern und überschneiden sich teilweise; sie dürfen nicht addiert werden.",
+    "Unterfilter-Chips (alle mit mindestens 15 Treffern gemessen): Powerbanks (Magnetisch & kabellos, Solar-Powerbanks, Mit eingebautem Kabel, Mini & kompakt, Grosse Kapazität ab 20 000 mAh), Auto-Ladegeräte (Kabellos & magnetisch, USB-Lader), Kabelloses Laden (Mehrfach-Lader, Kompakt & ultradünn, Ladeständer & Halterungen, Magnetisch & MagSafe), Ladegeräte & Netzteile (GaN & Schnellladen, Mehrfach-Lader, Ladestationen), Handyhalter (Magnetisch & MagSafe, Ständer faltbar & verstellbar, Unterwegs & im Auto). Ladekabel (27 Treffer) und Selfie (30) haben getestete Teilgruppen unter 15 (Ladekabel: magnetisch 11, Mehrfach 9, USB-C 6; Selfie: Selfie-Sticks 7, Stative 11, Gimbals 6, Licht 9), Hüllen (23) sind zu klein für Chips."
+  ]
+}

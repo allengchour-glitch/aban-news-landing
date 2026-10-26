@@ -1,0 +1,616 @@
+{
+  "bereich": "computer",
+  "titel": "Computer, Büro & Sicherheit",
+  "menue": {
+    "oben": "Elektronik"
+  },
+  "universum": {
+    "g_prefix": [
+      "Electronics > Computers",
+      "Electronics > Networking",
+      "Electronics > Print, Copy, Scan & Fax",
+      "Electronics > Electronics Accessories > Computer Components",
+      "Electronics > Electronics Accessories > Computer Accessories",
+      "Electronics > Electronics Accessories > Memory",
+      "Electronics > Electronics Accessories > Cable Management",
+      "Electronics > Electronics Accessories > Power > Batteries > Laptop Batteries",
+      "Electronics > GPS Tracking Devices",
+      "Office Supplies",
+      "Furniture > Office Furniture",
+      "Home & Garden > Business & Home Security",
+      "Home & Garden > Flood, Fire & Gas Safety",
+      "Cameras & Optics > Cameras > Surveillance Cameras",
+      "Cameras & Optics > Cameras > Webcams",
+      "Hardware > Locks & Keys",
+      "Hardware > Building Materials > Door Hardware > Door Bells",
+      "Business & Industrial > Work Safety Protective Gear"
+    ],
+    "g_nicht": [
+      "Electronics > Computers > Smart Glasses",
+      "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers",
+      "Electronics > Electronics Accessories > Computer Components > Input Device Accessories > Game Controller Accessories",
+      "Hardware > Locks & Keys > Key Caps"
+    ],
+    "titel_muss": [],
+    "titel_nicht": []
+  },
+  "kategorien": [
+    {
+      "handle": "tastaturen",
+      "titel": "Tastaturen & Tastatur-Sets",
+      "g_prefix": [
+        "Electronics"
+      ],
+      "g_nicht": [
+        "Electronics > Video Game Console Accessories"
+      ],
+      "titel_muss": [
+        "(tastatur(en)?|keyboards?)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "tastenkappe|keycap|leertaste|tastenkappen",
+        "reinig|desinfekt|staubsauger|bürste",
+        "e-keyboard|e-orgel|orgel|piano|klavier|musik|synthesizer|midi",
+        "adapter",
+        "aufbewahrungstasche|unterlage|schreibtischmatte|handgelenk|mauspad",
+        "zubehör",
+        "xbox|ps4|ps5|playstation|nintendo|controller|gamepad"
+      ],
+      "beschreibung": "Tastaturen für Computer, Laptop und Tablet: kabellos oder mit Kabel, mechanisch, mit Gaming-Beleuchtung, faltbar oder als Set mit Maus.",
+      "unterfilter": [
+        {
+          "handle": "tastaturen-gaming",
+          "titel": "Gaming-Tastaturen",
+          "titel_muss": [
+            "gaming|kampftastatur|rgb"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "tastaturen-kabellos",
+          "titel": "Kabellose & Bluetooth-Tastaturen",
+          "titel_muss": [
+            "kabellos|bluetooth|wireless|drahtlos|funktastatur|funk-"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "tastaturen-sets",
+          "titel": "Tastatur-Maus-Sets",
+          "titel_muss": [
+            "set|kombi|tastatur[- &]*(und )?maus|maus[- &]*(und )?tastatur"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "computer-maeuse",
+      "titel": "Computer-Mäuse",
+      "g_prefix": [
+        "Electronics",
+        "Office Supplies"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "(maus|mäuse|mouse|mice|trackball)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "tastatur|keyboard",
+        "mauspad|mousepad|unterlage|armlehne|handgelenk",
+        "konverter|adapter",
+        "tail-?cover",
+        "fernbedienung"
+      ],
+      "beschreibung": "Kabellose und kabelgebundene Mäuse für Büro, Laptop und Gaming: Bluetooth- und Funkmäuse, ergonomische Vertikalmäuse und Luftmäuse.",
+      "unterfilter": [
+        {
+          "handle": "maeuse-gaming",
+          "titel": "Gaming-Mäuse",
+          "titel_muss": [
+            "gaming|e-sport|rgb|dpi"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "maeuse-kabellos",
+          "titel": "Kabellose & Bluetooth-Mäuse",
+          "titel_muss": [
+            "kabellos|bluetooth|wireless|drahtlos|funkmaus"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "tastenkappen",
+      "titel": "Tastenkappen & Tastatur-Zubehör",
+      "g_prefix": [
+        "Electronics"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "tastenkappe|keycaps?|leertaste|tasten-?kappen|keyboard-zubehör"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Tastenkappen-Sets und einzelne Kappen für mechanische Tastaturen in vielen Farben und Motiven."
+    },
+    {
+      "handle": "usb-flash-sticks",
+      "titel": "USB-Sticks",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Computer Components > Storage Devices > USB Flash Drives"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "USB-Sticks für Smartphone und Computer: Mini-Sticks, Modelle aus Metall oder Holz, wasserdichte Sticks und Sticks im Motiv-Design."
+    },
+    {
+      "handle": "ssd-festplatten",
+      "titel": "SSD & externe Festplatten",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Computer Components > Storage Devices > Hard Drives",
+        "Electronics > Electronics Accessories > Computer Components"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(ssd|festplatte|hdd|solid state|nvme|mobile ?festplatte|speicherlaufwerk)"
+      ],
+      "titel_nicht": [
+        "gehäuse|box|dock|hülle|lesegerät|station|kühler|adapter|kabel|programmer|rekorder|stoss|u-?disk"
+      ],
+      "beschreibung": "SSD und Festplatten für Notebook, PC und Smartphone: externe, mobile und M.2-Laufwerke."
+    },
+    {
+      "handle": "festplattengehaeuse-docks",
+      "titel": "Festplattengehäuse & Docks",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Computer Components > Storage Devices > Hard Drive Accessories"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Gehäuse, Dockingstationen und Hüllen für 2,5- und 3,5-Zoll-Festplatten sowie für M.2-SSD.",
+      "unterfilter": [
+        {
+          "handle": "gehaeuse-ssd-m2",
+          "titel": "SSD- & M.2-Gehäuse",
+          "titel_muss": [
+            "ssd|m\\.?2|nvme|ngff"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "gehaeuse-festplatte",
+          "titel": "Festplattengehäuse",
+          "titel_muss": [
+            "festplatte|hdd|harddisk"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "speicherkarten-kartenleser",
+      "titel": "Speicherkarten & Kartenleser",
+      "g_prefix": [
+        "Electronics"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "speicherkarte|kartenleser|card[- ]?reader|tf[- ]?card|tf-?karte|micro-?sd|sd-?karte|memory ?card|speicherkarten"
+      ],
+      "titel_nicht": [
+        "hub|dock|festplatte|hdmi|programmer"
+      ],
+      "beschreibung": "Micro-SD- und TF-Speicherkarten für Handy, Kamera und Fahrzeug-Recorder sowie Kartenleser für USB-A, Micro-USB und USB-C und ein Speicherkarten-Etui."
+    },
+    {
+      "handle": "laptop-tablet-staender",
+      "titel": "Laptop-, Tablet- & Monitorständer",
+      "g_prefix": [
+        "Electronics"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "(laptop|notebook|macbook|tablet|ipad|monitor|bildschirm)[- ]?(ständer|staender|halter|halterung|erhöhung|riser|kühler|luftkühler|kühlpad|kissen)",
+        "(ständer|halter|halterung|stand) (für|fuer) (laptop|notebook|tablet|ipad|monitor)",
+        "monitorständer|laptopständer|tabletständer|tablet-?halter"
+      ],
+      "titel_nicht": [
+        "kamera|webcam|handy|smartphone"
+      ],
+      "beschreibung": "Ständer und Halterungen für Laptop, Tablet und Monitor: faltbar, höhenverstellbar, teils mit Kühlfunktion oder USB-Ladeanschluss."
+    },
+    {
+      "handle": "usb-hubs-docks",
+      "titel": "USB-Hubs & Docking-Stationen",
+      "g_prefix": [
+        "Electronics",
+        "Office Supplies"
+      ],
+      "g_nicht": [
+        "Electronics > Video Game Console Accessories"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(usb[- ]?(c[- ]?)?hub|type-?c[- ]?hub|hub|dock)(?![a-zäöüß])|dockingstation|docking-station|docking station|multiadapter|multi-?interface|(^|[^a-zäöüß])usb[- ]?[0-9.]*[- ]?(splitter|expander|verteiler)"
+      ],
+      "titel_nicht": [
+        "ladegerät|ladeadapter|lade-?dock|schnelllade|ladestation|auto|audio|bluetooth|festplatte|ssd|gehäuse|controller|konsole|ps5|switch|spiel|handy|smartwatch|powerbank|kopfhörer|sticklampe|ladebasis|hdmi-?(verteiler|splitter)"
+      ],
+      "beschreibung": "USB-Hubs und Docking-Stationen für Laptop, MacBook und iPad: mehrere USB-Ports, HDMI, Ethernet, Kartenleser und USB-C."
+    },
+    {
+      "handle": "laptop-netzteile-akkus",
+      "titel": "Laptop-Netzteile & Akkus",
+      "g_prefix": [
+        "Electronics"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "(laptop|notebook|macbook)[- ]?(netzteil|ladegerät|ladeadapter|stromadapter|akku|batterie|ladekabel|lade)",
+        "(netzteil|ladegerät|akku|ersatzakku|batterie) (für|fuer) (macbook|laptop|notebook)",
+        "universal.{0,20}(laptop|notebook).{0,15}(netzteil|ladegerät)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Netzteile, Ladegeräte und Ersatzakkus speziell für Laptop und Notebook."
+    },
+    {
+      "handle": "pc-bauteile",
+      "titel": "PC-Bauteile & Erweiterungskarten",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Memory > RAM",
+        "Electronics > Electronics Accessories > Computer Components > Computer System Cooling Parts",
+        "Electronics > Electronics Accessories > Computer Components > I/O Cards & Adapters",
+        "Electronics > Electronics Accessories > Computer Components > Desktop Computer",
+        "Electronics > Electronics Accessories > Computer Components > Storage Devices > Optical Drives",
+        "Electronics > Electronics Accessories > Computer Components > Storage Devices > Floppy Drives",
+        "Electronics > Circuit Boards & Components > Printed Circuit Boards > Computer Circuit Boards"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "laptop|notebook"
+      ],
+      "beschreibung": "Arbeitsspeicher, Mainboards, Kühlung, Erweiterungskarten, Laufwerke und Gehäuse für Desktop-PC und Workstation."
+    },
+    {
+      "handle": "kabelmanagement",
+      "titel": "Kabelmanagement & Kabelorganizer",
+      "g_prefix": [
+        "Electronics > Electronics Accessories > Cable Management"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Kabelhalter, Kabelclips, Kabelboxen und Organizer, damit Ladekabel und Datenkabel am Schreibtisch geordnet bleiben."
+    },
+    {
+      "handle": "drucker-scanner-bueromaschinen",
+      "titel": "Drucker, Scanner & Büromaschinen",
+      "g_prefix": [
+        "Electronics > Print, Copy, Scan & Fax > Printers, Copiers & Fax Machines",
+        "Electronics > Print, Copy, Scan & Fax > Scanners",
+        "Electronics > Print, Copy, Scan & Fax > Printer, Copier & Fax Machine Accessories",
+        "Office Supplies > Office Equipment > Label Makers",
+        "Office Supplies > Office Equipment > Office Shredders"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "3d-?druck"
+      ],
+      "beschreibung": "Thermo-, Foto- und Etikettendrucker, Scanner, Aktenvernichter und Druckerzubehör wie Tintenpatronen, Druckköpfe, Halterungen und Hüllen für Büro und Home Office."
+    },
+    {
+      "handle": "webcams-uebersetzer-rechner",
+      "titel": "Webcams, Übersetzer & Taschenrechner",
+      "g_prefix": [
+        "Cameras & Optics > Cameras > Webcams",
+        "Office Supplies > Office Equipment > Electronic Dictionaries & Translators",
+        "Office Supplies > Office Equipment > Calculators"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "USB-Webcams für Videoanrufe, Sprachübersetzer und Übersetzungsstifte sowie Tischrechner und Taschenrechner."
+    },
+    {
+      "handle": "ueberwachungskameras",
+      "titel": "Überwachungskameras",
+      "g_prefix": [
+        "Cameras & Optics > Cameras > Surveillance Cameras",
+        "Home & Garden > Business & Home Security > Dummy Surveillance Cameras"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "türspion|turspion|türkamera|turkamera|klingel",
+        "(^|[^a-zäöüß])(pet|haustier|hund|katze)",
+        "pet-kamera"
+      ],
+      "beschreibung": "Überwachungs- und Heimkameras für Innen und Aussen: WLAN, Nachtsicht, Bewegungserkennung, Schwenk-Neige-Funktion, Solar- und Akkubetrieb sowie Kamera-Attrappen.",
+      "unterfilter": [
+        {
+          "handle": "kameras-wlan",
+          "titel": "WLAN-Kameras",
+          "titel_muss": [
+            "wlan|wifi|wi-fi"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kameras-nachtsicht",
+          "titel": "Kameras mit Nachtsicht",
+          "titel_muss": [
+            "nachtsicht|infrarot"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kameras-aussen-solar",
+          "titel": "Aussen- & Solarkameras",
+          "titel_muss": [
+            "aussen|outdoor|wasserdicht|solar"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "tuerklingeln-tuerspione",
+      "titel": "Türklingeln & Türspione",
+      "g_prefix": [
+        "Hardware > Building Materials > Door Hardware",
+        "Cameras & Optics > Cameras > Surveillance Cameras",
+        "Home & Garden > Business & Home Security"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "klingel|türspion|turspion|türsummer|sprechanlage|türkamera|turkamera|(^|[^a-zäöüß])(bell)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Funk- und Video-Türklingeln mit Kamera und Gegensprechfunktion sowie digitale Türspione."
+    },
+    {
+      "handle": "alarm-sensoren-melder",
+      "titel": "Alarm, Sensoren & Melder",
+      "g_prefix": [
+        "Home & Garden > Business & Home Security",
+        "Home & Garden > Flood, Fire & Gas Safety"
+      ],
+      "g_nicht": [
+        "Home & Garden > Business & Home Security > Security Safes",
+        "Home & Garden > Business & Home Security > Dummy Surveillance Cameras",
+        "Home & Garden > Business & Home Security > Security Monitors"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "klingel|türspion|schlüsselsafe|tresor|safe|schlüsselbox",
+        "wolf"
+      ],
+      "beschreibung": "Alarmanlagen, Bewegungsmelder, Tür- und Fenstersensoren, Wassermelder, Kohlenmonoxidmelder sowie Detektoren für versteckte Kameras."
+    },
+    {
+      "handle": "schloesser-safes",
+      "titel": "Schlösser, Safes & Schlüsselboxen",
+      "g_prefix": [
+        "Hardware > Locks & Keys",
+        "Home & Garden > Business & Home Security > Security Safes"
+      ],
+      "g_nicht": [
+        "Hardware > Locks & Keys > Key Caps"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "nfc|chipkarten"
+      ],
+      "beschreibung": "Türschlösser, Vorhängeschlösser, Fingerabdruckschlösser, Mini-Safes und Schlüsselboxen."
+    },
+    {
+      "handle": "gps-tracker-ortung",
+      "titel": "GPS-Tracker & Gegenstandsfinder",
+      "g_prefix": [
+        "Electronics > GPS Tracking Devices"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "^(?!.*(kinder|senioren|personen)).*(haustier|hund|katze|tier|pet|halsband)"
+      ],
+      "beschreibung": "Bluetooth-Gegenstandsfinder, Fahrzeug-Tracker und GPS-Ortungsgeräte für Schlüssel, Taschen, Auto und Personen."
+    },
+    {
+      "handle": "arbeitsschutz-masken",
+      "titel": "Arbeitsschutz & Schutzmasken",
+      "g_prefix": [
+        "Business & Industrial > Work Safety Protective Gear"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Staub- und Atemschutzmasken, Schutzhelme, Knieschoner, Absturzsicherungen und weiterer Schutz für Handwerk und Industrie."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Tastaturen, Mäuse & Eingabe",
+      "handle": "computer-eingabe-gruppe",
+      "kinder": [
+        "tastaturen",
+        "computer-maeuse",
+        "tastenkappen",
+        "mauspads-unterlagen"
+      ]
+    },
+    {
+      "titel": "Speicher & Datenträger",
+      "handle": "computer-speicher-gruppe",
+      "kinder": [
+        "usb-flash-sticks",
+        "ssd-festplatten",
+        "festplattengehaeuse-docks",
+        "speicherkarten-kartenleser"
+      ]
+    },
+    {
+      "titel": "Laptop & Tablet",
+      "handle": "computer-laptop-tablet-gruppe",
+      "kinder": [
+        "laptop-tablet-staender",
+        "usb-hubs-docks",
+        "laptop-netzteile-akkus",
+        "rucksaecke-laptop"
+      ]
+    },
+    {
+      "titel": "PC-Komponenten & Netzwerk",
+      "handle": "computer-pc-netzwerk-gruppe",
+      "kinder": [
+        "pc-bauteile",
+        "netzwerk-router",
+        "kabelmanagement"
+      ]
+    },
+    {
+      "titel": "Büro & Drucker",
+      "handle": "computer-buero-gruppe",
+      "kinder": [
+        "drucker-scanner-bueromaschinen",
+        "webcams-uebersetzer-rechner",
+        "buero-organizer-ablage",
+        "kalender-planer",
+        "schreibwaren-stifte",
+        "schreibtischlampen",
+        "3d-drucker-zubehoer"
+      ]
+    },
+    {
+      "titel": "Sicherheit & Überwachung",
+      "handle": "computer-sicherheit-gruppe",
+      "kinder": [
+        "ueberwachungskameras",
+        "tuerklingeln-tuerspione",
+        "alarm-sensoren-melder",
+        "schloesser-safes",
+        "gps-tracker-ortung",
+        "arbeitsschutz-masken"
+      ]
+    }
+  ],
+  "ausserhalb": [
+    {
+      "text": "Von vorhandenen, sauberen Kindern getragen und deshalb nicht neu gebaut (zusammen 203 Produkte des Universums, gezählt am Tag der vorhandenen Kategorie): Mauspads & Schreibtischunterlagen (sort-mauspads, 45, davon 25 Motiv-Mauspads mit Namen wie «Alphorn», «Basel», «Fondue»), Schreibwaren & Stifte (sort-schreibwaren, 49), Büro-Organizer & Ablage (sort-buero-organizer, 37), Kalender & Planer (sort-kalender, 25), Netzwerk & WLAN (sort-netzwerk, 24 im Universum von 28), 3D-Drucker & Zubehör (sort-3d-drucker, 23). Diese Kategorien stehen als Kinder in den Gruppen.",
+      "beispiele": [
+        "Mauspad «Alphorn»",
+        "Tischkalender mit Doppelfotorahmen",
+        "Gigabit WLAN-Router für Zuhause",
+        "PLA 3D-Druckfilament 1 kg, 1,75 mm, Mehrfarbig"
+      ]
+    },
+    {
+      "text": "Haustier-Tracker (GPS Tracking Devices mit Haustier, Hund oder Katze im Titel, 17) und Haustier-Kameras (2): Tierware mit Elektronik-Wort gehört in den Haustier-Bereich (haustier-tech). Mischtitel «für Kinder, Senioren und Haustiere» bleiben in gps-tracker-ortung.",
+      "beispiele": [
+        "GPS-Tracker für Hunde mit Echtzeitortung",
+        "GPS-Halsband für Nutztiere",
+        "A8 HD Pet-Kamera",
+        "Smart Pet HD Videokamera für Zuhause"
+      ]
+    },
+    {
+      "text": "Gamepads, Joysticks und Controller samt Zubehör (Google «Game Controllers» und «Game Controller Accessories», 201 aktive Produkte), Konsolen-Tastatur- und -Maus-Adapter und der Xbox-Chat-Tastatur-Aufsatz gehören zu Gaming (Bereich unterhaltung). Diese Ware ist bewusst aus dem Universum genommen.",
+      "beispiele": [
+        "Bluetooth Wireless Gaming Controller",
+        "Arcade-Game-Stick",
+        "Tastatur- & Maus-Adapter für Spielkonsolen",
+        "ONE Handle Wireless Chat-Tastatur für Xbox One"
+      ]
+    },
+    {
+      "text": "Smart Glasses und VR-Brillen (Google «Computers > Smart Glasses», 21) stehen schon in vr-brillen-headsets und smarte-brillen-ki; sie waren bisher auch in pc-komponenten und laptop-tablet-zubehoer.",
+      "beispiele": [
+        "VR-Brille für Smartphone",
+        "Smarte Audio-Brille mit Wechsellinsen"
+      ]
+    },
+    {
+      "text": "Ladegeräte, Powerbanks und Batterien (Google «Electronics Accessories > Power», 836) gehören zum Bereich handy (Laden). Hier liegen nur die Laptop-Netzteile und -Akkus (18, Titel mit Laptop, Notebook oder MacBook). Universal-Ladegeräte «für Smartphones & Laptops» und Laptop-Powerbanks bleiben im Laden-Bereich.",
+      "beispiele": [
+        "65W GaN Ladegerät für Smartphones & Laptops",
+        "PD 140W Laptop Power Bank 25000 mAh"
+      ]
+    },
+    {
+      "text": "Google-Gruppe «Office Supplies» ohne Unterkategorie (38 aktive Produkte): Auffangbecken des Imports, kein Büro-Sortiment (Regenketten, Winkelmesser, Drohne, Mikrofon, Malen nach Zahlen, Bücherregal, E-Book-Reader). Nie nach dem Oberbegriff einordnen; zwei echte Treffer (eine Maus, ein USB-C-Dock) sind über den Titel in computer-maeuse und usb-hubs-docks gelandet, 36 bleiben ohne Kategorie in diesem Bereich.",
+      "beispiele": [
+        "Regenkette aus Metall",
+        "Digitaler Inklinometer-Winkelmesser",
+        "S138 Drohne mit 360° Hinderniserkennung, Dualkamera",
+        "HDMI-Verteiler 4K Splitter mit USB-Ladeanschluss",
+        "Kartenhalter mit Anime-Motiv"
+      ]
+    },
+    {
+      "text": "Platinen, Module und Bastelelektronik (Google «Circuit Boards & Components», 13; nur die 3 Mainboards stehen in pc-bauteile): Bereich Elektronik für Bastler, nicht Computer.",
+      "beispiele": [
+        "ESP32 Testplatine",
+        "Bluetooth MP3 Decoder & FM Radio Modul",
+        "Schutzgehäuse für Raspberry Pi 4 mit Lüfter"
+      ]
+    },
+    {
+      "text": "Zu klein für eine eigene Kategorie (unter 15): Grafiktabletts und Zeichenbretter (3), Eingabestifte (1), Handgelenkstützen für Tastatur und Maus (2), Tablet-Hüllen und Schutzhüllen für Tablets und Laptops (2), Barcode-Scanner (1), Bürostuhl-Zubehör (2), Kinderschreibtisch (1), Monitore (keine; nur 4 Digital Signs). Diese Produkte bleiben ohne Kategorie, bis der Katalog mehr hergibt.",
+      "beispiele": [
+        "Digitales Zeichenbrett für Smartphone und PC",
+        "Aktiver Eingabestift für iPad",
+        "Handgelenkstütze für Tastatur und Maus",
+        "Tablet-Hülle mit Stiftschlitz und Drehgriff"
+      ]
+    },
+    {
+      "text": "Kein Computer, sondern Nachbarbereich: Action-, Video- und Wildkameras (Cameras > Video Cameras 45, Trail Cameras 6) gehören zu Foto & Video (unterhaltung); Babyphones (7) zu Baby; Fahrrad- und Motorrad-Alarme sowie Autoschlüssel-Hüllen (Google «Vehicle Alarms & Locks», «Key Caps») zu Velo und Auto; Kabel (40) und Adapter (8) zu kabel-adapter (handy); Fernbedienungen (48) zu unterhaltung; Kartenhalter und Badge-Halter (3) zu kartenhalter-kartenetuis; Sammelkarten-Zubehör zu Hobby und Sammeln.",
+      "beispiele": [
+        "4K Action-Kamera für Outdoor & Sport",
+        "Feldüberwachungskamera mit WLAN-APP & Bluetooth",
+        "Schlüsselhülle für Ford Maverick",
+        "Intelligente Velo-Alarmanlage mit Rücklicht"
+      ]
+    },
+    {
+      "text": "Nicht im Katalog: Rauchmelder, Feuerlöscher und Brandschutz (Titel- und Google-Suche liefert keinen Treffer; die beiden Kohlenmonoxidmelder und die Wassermelder stehen in alarm-sensoren-melder). Die CJ-Gruppe «Fire Protection» entfällt deshalb.",
+      "beispiele": []
+    },
+    {
+      "text": "Grenzfälle ohne Kategorie, weil der Titel die Art nicht belegt: Bluetooth-Tastaturhülle, USB Enter-Taste mit Kissenfunktion, Farbige Tastaturbeleuchtung, Mosaik Anti-Wolf Gerät, NFC Chipkarten-Set mit Yuan Coin Chips, USB-Software-Dongle für Entwickler, 1.6 Zoll LCD-Display für CPU-Informationen, Grafikkarten-Halterung L-Typ.",
+      "beispiele": [
+        "Bluetooth-Tastaturhülle",
+        "Mosaik Anti-Wolf Gerät"
+      ]
+    },
+    {
+      "text": "Zwei 3D-Drucker-Ersatzteile tragen die Google-Kategorie «Printers, Copiers & Fax Machines» und standen deshalb in bueroelektronik; sie gehören zu 3d-drucker-zubehoer (die Engine-Regel dort kennt nur «3D Printer»).",
+      "beispiele": [
+        "3D-Drucker-Ersatz-Druckkopf",
+        "3D-Drucker-Motherboard SKR V1.4"
+      ]
+    }
+  ],
+  "hinweise": [
+    "ABDECKUNG: messen.mjs zählt nur die neuen Kategorien dieser Datei: 590 von 887 (66,5 %). Dazu kommen 203 Produkte, die vorhandene saubere Kinder tragen (Mauspads 45, Schreibwaren 49, Büro-Organizer 37, Kalender 25, Netzwerk 24, 3D-Drucker 23): zusammen 793 von 887 = 89,4 %. Der Rest (94) steht oben in «ausserhalb» mit Grund.",
+    "ersetzt: pc-komponenten (546 aktive Produkte; 201 Controller und 21 Smart Glasses = 40,7 % Fremdkörper). Die Ware verteilt sich auf tastaturen, computer-maeuse, tastenkappen, usb-flash-sticks, ssd-festplatten, festplattengehaeuse-docks, speicherkarten-kartenleser, usb-hubs-docks und pc-bauteile.",
+    "ersetzt: tastatur-maus (143; 42 Mauspads und 11 Konsolen-Zubehör = 37 % Fremdkörper) durch tastaturen, computer-maeuse und tastenkappen. Mauspads bleiben in mauspads-unterlagen.",
+    "ersetzt: laptop-tablet-zubehoer (147; 25 Handy-Ladegeräte aus der Google-Gruppe Power und 21 Smart Glasses = 31 % Fremdkörper) durch laptop-tablet-staender, usb-hubs-docks und laptop-netzteile-akkus.",
+    "ersetzt: usb-sticks (Tag kat-usb-sticks, 44): es fehlen 15 der 58 USB-Sticks der Google-Kategorie, ein DVB-T-Stick ist Fremdkörper. usb-flash-sticks nimmt genau die Google-Kategorie «USB Flash Drives» (58).",
+    "ersetzt: bueroelektronik (43) durch drucker-scanner-bueromaschinen (19) und webcams-uebersetzer-rechner (22): ein Sammelbecken aus vier Warenarten, dazu 2 Fremdkörper (3D-Drucker-Ersatzteile, siehe «ausserhalb»).",
+    "Sammelbecken im Menü: pc-homeoffice (169; 79 Titel mit «Tastatur», 42 mit «Mauspad», doppelt zu tastatur-maus und mauspads-unterlagen) und buro-home-office (205; darunter 38 Produkte der Google-Gruppe «Office Supplies» ohne Unterkategorie, 18,5 %). Beide Zweige werden durch die sechs Gruppen ersetzt.",
+    "Alt-Collections mit Titel-Regel, nicht im Menü, nicht weiterverwenden: speicher-datentraeger (217; «Titel enthält ssd» trifft «Stossdämpfend»: im Katalog 6 Schuhe, 3 Hundeleinen, 1 Fahrradsattel), computer-zubehoer (317), gaming-maeuse (108, Gaming-Bereich).",
+    "Menüvorschlag unter «Elektronik»: die Zweige «PC & Homeoffice» und «Büro & Home Office» sowie den Einzeleintrag «USB-Sticks» durch die sechs Gruppen dieser Datei ersetzen. «3D-Drucker & Zubehör» wandert in die Gruppe «Büro & Drucker», «Laptop- & Business-Rucksäcke» (rucksaecke-laptop; mindestens 181 aktive Produkte, alle mit Google-Kategorie Rucksäcke) in «Laptop & Tablet». «Aktentaschen & Messenger Bags» und «Schreibtisch- & Leselampen» bleiben in ihren Zweigen (Taschen, Beleuchtung); Lampen sind nur ein Verweis.",
+    "Vorhandene Kinder mit Befund (nicht in dieser Datei änderbar): kalender-planer (25) besteht zu 18 aus Notizbüchern und überschneidet sich mit notizbuecher-journaling (19 von dessen 36 Produkten tragen beide Tags); Umbenennung oder Zusammenlegung klären. buero-organizer-ablage (37) enthält 2 Sammelkarten-Artikel (Sammelbuch, Schutzhüllen für gradierte Karten). netzwerk-router (28) enthält 1 Fremdkörper (TV-Box & Router Wandhalterung) und 2 USB-Hubs mit Ethernet (bewusster Verweis zu usb-hubs-docks, andere Gruppe); Zigbee-Gateways und -Dongle (4) sind Grenzfälle. schreibtischlampen hat nur 13 aktive Produkte (unter 15), bleibt als Verweis.",
+    "Dünne neue Kategorien: ssd-festplatten (16), kabelmanagement (17), laptop-netzteile-akkus (18), drucker-scanner-bueromaschinen (19), speicherkarten-kartenleser (20), tuerklingeln-tuerspione (20). Fällt eine davon unter 15 aktive Produkte, wird sie nach der Regel der Engine nicht mehr angelegt.",
+    "Grenzfälle in neuen Kategorien (nicht als Fremdkörper gezählt): tastaturen enthält 2 Gaming-Sets mit Headset und Lautsprechern sowie eine Tastatur-Fernbedienung; gps-tracker-ortung enthält 3 Titel «für Kinder, Senioren und Haustiere / Personen» (Personen genannt, deshalb hier); ueberwachungskameras enthält 1 Kamera-Attrappe (Solar-Überwachungskamera-Attrappe mit Licht) und 3 Kameras in Figurenform (Astronaut Roboter, Minions, Space Robot); laptop-tablet-staender enthält 7 Titel mit Kühler, Kühlfunktion oder Lüfter und 1 Dual-Bildschirm-Halterung.",
+    "Offene Entscheidungen: (1) gps-tracker-ortung (27) und arbeitsschutz-masken (22) sind hier unter «Sicherheit» eingeordnet, könnten auch zu Haustiere/Auto bzw. Werkzeug/Haus gehören; vor dem Bau mit den anderen Bereichsdateien abgleichen (messen.mjs --alle prüft nur Handles). (2) Die 25 Motiv-Mauspads machen mehr als die Hälfte von mauspads-unterlagen aus; ein Unterfilter «Motiv-Mauspads» wäre möglich, die vorhandene Kategorie hat aber keinen. (3) Unterfilter-Chips gibt es nur dort, wo mindestens 15 Treffer mit einem Titelwort belegt sind: tastaturen (3), computer-maeuse (2), festplattengehaeuse-docks (2), ueberwachungskameras (3).",
+    "Lizenz-Hinweis (ausserhalb dieser Aufgabe): zwei Titel nennen geschützte Figuren und tragen kein Lizenz-Tag: «Minions HD Überwachungskamera mit Nachtsicht» (ueberwachungskameras) und «Animal Crossing Tastenkappe» (tastenkappen). Vor dem Bau von der Lizenzprüfung ansehen lassen.",
+    "Umsetzung in der Engine: alle neuen Regeln bestehen aus Google-Präfix UND Titel-Regex (oder nur Google-Präfix) und lassen sich 1:1 als `gp(p, …) && wort(…)` in automation/lib/kategorien.mjs schreiben. Titelregeln mit Umlauten nutzen die Wortgrenze `(^|[^a-zäöüß])` und `(?![a-zäöüß])`. Die Tags der neuen Kategorien heissen sort-<handle>."
+  ]
+}
