@@ -16,9 +16,12 @@ export function zerlege(html) {
   const h = String(html || '');
   const a = h.indexOf(MARKER);
   if (a >= 0) { const e = h.indexOf(ENDE, a); if (e >= 0) return { kopf: h.slice(0, a), prosa: h.slice(a + MARKER.length, e), rest: h.slice(e + ENDE.length), markiert: true }; }
-  let kopfEnde = 0;
-  const liefer = /^\s*<p class="ls-liefer"[^>]*>[\s\S]*?<\/p>\s*/.exec(h);
-  if (liefer) kopfEnde = liefer[0].length;
+  // Der Auswahl-Lauf stellt <!-- ls-var-v1 --> (und «Ausführung: …»-Hinweise) VOR die Seite. Das gehört zum Kopf und bleibt unberührt —
+  // sonst hielt `zerlege` den Marker für den ersten Kasten, fand keine Prosa und lehnte 48 von 220 fertigen Texten ab (26.10.2026).
+  const vorspann = /^\s*<!-- ls-var-v1 -->(?:\s*<p><strong>Ausführung:<\/strong>[\s\S]*?<\/p>)*\s*/.exec(h);
+  let kopfEnde = vorspann ? vorspann[0].length : 0;
+  const liefer = /^\s*<p class="ls-liefer"[^>]*>[\s\S]*?<\/p>\s*/.exec(h.slice(kopfEnde));
+  if (liefer) kopfEnde += liefer[0].length;
   const trust = /^\s*<p[^>]*background:#f7faf7[^>]*>[\s\S]*?<\/p>\s*/.exec(h.slice(kopfEnde));
   if (trust) kopfEnde += trust[0].length;
   let restStart = h.length;

@@ -56,4 +56,13 @@ t('Einsetzen ist wiederholbar und verdoppelt nicht', () => {
 });
 t('Einsetzen: Rest bleibt byte-gleich', () => assert.equal(zerlege(prosaEinsetzen(SEITE, '<p>X</p>')).rest.trim(), zerlege(SEITE).rest.trim()));
 
+// ── 26.10.2026: der Auswahl-Lauf setzt <!-- ls-var-v1 --> (und «Ausführung»-Hinweise) vor die Seite ──
+const VAR = '<!-- ls-var-v1 -->';
+const MIT_VAR = VAR + '<p>Alte Prosa mit Inhalt.</p><h3>Das zeichnet es aus</h3><ul><li>A</li></ul>\n<div class="ls-produktdetails"><h4>Produktdetails</h4></div>';
+t('Var-Marker: Prosa wird gefunden', () => { const z = zerlege(MIT_VAR); assert.ok(z.kopf.includes(VAR)); assert.ok(z.prosa.includes('Alte Prosa')); assert.ok(z.rest.startsWith('<div class="ls-produktdetails"')); });
+t('Var-Marker: Hinweis «Ausführung» bleibt im Kopf', () => { const z = zerlege(VAR + '<p><strong>Ausführung:</strong> Ohne Powerbank</p><p>Alte Prosa.</p>'); assert.ok(z.kopf.includes('Ohne Powerbank')); assert.equal(z.prosa.trim(), '<p>Alte Prosa.</p>'); });
+t('Var-Marker: Einsetzen erhält Marker und Hinweis', () => { const neu = prosaEinsetzen(VAR + '<p><strong>Ausführung:</strong> Ohne Powerbank</p><p>Alte Prosa.</p>', '<p>NEU</p>'); assert.ok(neu.startsWith(VAR + '<p><strong>Ausführung:</strong> Ohne Powerbank</p>')); assert.ok(neu.includes('NEU') && !neu.includes('Alte Prosa')); });
+t('Var-Marker: Gegenprobe — ohne Prosa bleibt die Prosa leer', () => assert.equal(zerlege(VAR + '<div class="ls-produktdetails">x</div>').prosa.trim(), ''));
+t('Var-Marker: schlichtesProsa erkennt die Seite jetzt als bearbeitbar', () => assert.ok(schlichtesProsa(zerlege(MIT_VAR).prosa)));
+
 console.log(`text_prosa_test: ${n} ok`);
