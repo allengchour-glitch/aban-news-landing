@@ -1,0 +1,131 @@
+{
+  "reviewId": "luxe_catalog_continuation_independent_20261026",
+  "reviewer": "/root/continuation_review",
+  "checkedAt": "2026-10-26T20:05:42.395085+00:00",
+  "state": "REVIEWED_DRAFTS_NOT_APPLIED",
+  "newShopWrites": 0,
+  "newRepoWrites": 0,
+  "metricsOrCatalogExports": 0,
+  "seo": {
+    "singleChangedPath": "seo.description",
+    "seoTitlePreserved": true,
+    "bodyMatchesExistingApprovedSHA": "c8922da85f1b0df162251ebc91e19479c5901efffc8e96d6d0ce10571cd96963",
+    "nativeVariantMatrix": "exact 8 colours x 6 sizes = 48",
+    "descriptionChars": 139,
+    "nativeAndPublicDescriptionMatch": true,
+    "status": "prepared; not applied",
+    "validationLimit": "Connector validator skipped; actual native read succeeded. CLI validator unavailable because _validate_graphql.mjs is missing. Not an independent validator pass."
+  },
+  "organizer": {
+    "status": "prepared; not applied",
+    "nativeBeforeExact": true,
+    "beforeSha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+    "afterSha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+    "serviceTailAndLinksExact": true,
+    "threeImages": "independently visually inspected and byte hashes confirmed",
+    "factualScope": "Visible shape, surface appearance and arrangement suggestions; no supplied set quantity, material, magnet, liner, dimension, delivery or warranty promise introduced.",
+    "remaining": [
+      "Supplier/brand-to-exact-offer identity and actual included set not independently confirmed",
+      "Inventory tracking/policy and public purchase availability not checked in this text subreview",
+      "Existing linked/service tail retained; not a fresh audit of every destination or title"
+    ]
+  },
+  "cj": {
+    "baselineTests": 26,
+    "reviewDefect": "Date.parse accepted impossible calendar dates such as 2026-02-30; sent to source agent and fixed before final review.",
+    "finalSourceTests": 42,
+    "independentAdditionalProbes": 7,
+    "finalCombinedPass": 49,
+    "finalCombinedFail": 0,
+    "status": "offline structural comparator only; not integrated or deployed",
+    "boundaries": [
+      "No supplier-source truth or assignmentSource authentication",
+      "Current Shopify SKU is reported, not independently authenticated against mapping evidence",
+      "No age/freshness assertion from syntax validation",
+      "No independent power, fulfilment, rights or publication approval; mutationReady and publicationReady always false"
+    ]
+  },
+  "openCriticalDefects": [],
+  "artifacts": [
+    {
+      "path": "seo/NATIVE-SEO.json",
+      "sha256": "143a5ff2ca50aafe52a641b63392b000ff55684790eeced9993b5cd872ce683b",
+      "bytes": 730
+    },
+    {
+      "path": "seo/NATIVE-PRODUCT.json",
+      "sha256": "227d30998af73063fcb66b6c3555b559114de6eded351c0f5f09c76c6c300d6f",
+      "bytes": 17193
+    },
+    {
+      "path": "seo/PUBLIC-HEAD.json",
+      "sha256": "2a9d2101cbbba1f2704ea81718bb0c6a25760df9fdad1fa483daaf631b9ec137",
+      "bytes": 1832
+    },
+    {
+      "path": "seo/ENTWURF.json",
+      "sha256": "620b7593880966afd95a8f820c21043e48cebb5c57bdf604c9d15820d8e5c8b9",
+      "bytes": 1951
+    },
+    {
+      "path": "seo/before.json",
+      "sha256": "b40e6d72a0b7f44704008c5f9de631ad41a5041ffdb0989c6a41ba597c176fca",
+      "bytes": 306
+    },
+    {
+      "path": "seo/after.json",
+      "sha256": "702cc209c0bba609e1b6cb746c0e7a55971658dce885c305cc58e1968c71a6c1",
+      "bytes": 305
+    },
+    {
+      "path": "seo/seo-description.diff",
+      "sha256": "315bb8e2296085b33055bfab0038baad582de2d31db448184d22183befbabbc2",
+      "bytes": 538
+    },
+    {
+      "path": "organizer/MANIFEST.json",
+      "sha256": "bf1de59418ca70269999d2cb29d1a064aefbaca66c990ac0c6a112f9c7762cc8",
+      "bytes": 3930
+    },
+    {
+      "path": "organizer/BEFORE.html",
+      "sha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+      "bytes": 1479
+    },
+    {
+      "path": "organizer/AFTER.html",
+      "sha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+      "bytes": 2120
+    },
+    {
+      "path": "organizer/description.diff",
+      "sha256": "dbb313fc9c67a3adc134088f251c6a72dc4f14249b496bafb2b88eabfa7f63aa",
+      "bytes": 1547
+    },
+    {
+      "path": "organizer/revision-vs-previous.diff",
+      "sha256": "5be4ba0dbf93af4ac9dc60c360437bbead0cf8e26aa87511388f26377b327742",
+      "bytes": 2041
+    },
+    {
+      "path": "cj/variant_binding_review.mjs",
+      "sha256": "e4f5781b4dc8932b66b48ad89c98077c6f50d67ed6e5951bfdea42ac7f9d262c",
+      "bytes": 5342
+    },
+    {
+      "path": "cj/variant_binding_review.test.mjs",
+      "sha256": "6e69a15b3050a0df23297b4f81e5de2e14c1b34d1bf69cb5b5cae815da0e928c",
+      "bytes": 6565
+    },
+    {
+      "path": "cj/README.md",
+      "sha256": "9fd6c71e5b74668f5261128433d89212867f3f36d77b47238c126ce13b060de3",
+      "bytes": 5421
+    },
+    {
+      "path": "review/independent-binding-probes.mjs",
+      "sha256": "6e30e67bc8e2cc638800782af20e80522d66e562c2d3d64d02d2cb41449c0a02",
+      "bytes": 3694
+    }
+  ]
+}
