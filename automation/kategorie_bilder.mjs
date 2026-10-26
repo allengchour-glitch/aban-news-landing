@@ -17,6 +17,7 @@ import { createRequire } from 'node:module';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { KATEGORIEN } from './lib/kategorien.mjs';
+import { VERBOTEN } from './lib/fakten_block.mjs';
 
 const require = createRequire(import.meta.url);
 const LIVE = process.env.LIVE === '1', FORCE = process.env.FORCE === '1';
@@ -27,7 +28,7 @@ const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googlea
 const MARKE = 'LuxeStyle-Label';
 
 /** Schriftgrösse nach Titellänge (Pixel auf der 1600er Fläche). Rein, getestet. */
-export function titelGroesse(titel) { const n = String(titel).length; return n <= 12 ? 168 : n <= 20 ? 132 : n <= 30 ? 104 : 84; }
+export function titelGroesse(titel) { const n = String(titel).length; return n <= 8 ? 168 : n <= 12 ? 140 : n <= 20 ? 116 : n <= 30 ? 92 : 76; }
 /** Wählt höchstens `n` Fotos: gross genug, annähernd quadratisch, bestätigt sauber. Rein, getestet. */
 export function waehleFotos(kandidaten, n = 3, minPx = 700) {
   return kandidaten.filter(k => k.breite >= minPx && k.hoehe >= minPx && k.hoehe / k.breite > 0.75 && k.hoehe / k.breite < 1.34 && k.sauber !== false).slice(0, n);
@@ -45,7 +46,7 @@ export function labelHtml(titel, bilder, anzahl) {
   .k img{width:100%;height:100%;object-fit:cover;display:block}
   .marke{position:absolute;left:96px;top:84px;font-size:44px;letter-spacing:.04em;color:#3b2f22;font-weight:700}
   .marke b{color:#8b6f47}
-  .titel{position:absolute;left:96px;bottom:200px;width:760px;font-size:${titelGroesse(titel)}px;line-height:1.02;color:#2c2118;font-weight:700;letter-spacing:-.01em}
+  .titel{position:absolute;left:96px;bottom:200px;width:560px;font-size:${titelGroesse(titel)}px;line-height:1.02;color:#2c2118;font-weight:700;letter-spacing:-.01em}
   .linie{position:absolute;left:100px;bottom:168px;width:130px;height:6px;background:#8b6f47;border-radius:3px}
   .fuss{position:absolute;left:96px;bottom:84px;font-size:38px;color:#6b5a47;font-family:'Liberation Sans','DejaVu Sans',sans-serif}
   </style></head><body>
@@ -60,6 +61,7 @@ export function labelHtml(titel, bilder, anzahl) {
 
 async function gemini(bytesB64, mime) {
   const prompt = 'Ist das ein sauberes Produktfoto für eine Kategorie-Kachel eines Online-Shops? Sauber heisst: das Produkt ist klar sichtbar (allein, in der Hand, getragen oder in einer Wohnumgebung), KEIN eingeblendeter Text oder chinesische Schrift, KEINE Masspfeile oder Grössentabelle, KEIN Wasserzeichen, KEINE Collage aus mehreren Einzelbildern, nicht unscharf. '
+    + 'Zusätzlich NICHT sauber, wenn ein Markenlogo, ein Luxusmarken-Monogramm (z. B. Louis Vuitton, Gucci, Chanel), ein erkennbares Markenstreifen- oder Karomuster (z. B. Burberry, Thom Browne) oder ein Lizenzmotiv (Disney, Marvel, Pokémon) zu sehen ist — auch als Nachahmung. '
     + 'Antworte NUR als JSON: {"sauber": true|false, "grund": "kurz"}';
   const r = await fetch(`${GBASE}/models/${MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: mime, data: bytesB64 } }] }], generationConfig: { temperature: 0, responseMimeType: 'application/json' } }) });
@@ -82,10 +84,10 @@ async function main() {
   const bericht = [];
   for (const h of [...new Set(handles)]) {
     const c = (await q(`query($h:String!){collectionByHandle(handle:$h){id title image{altText url} productsCount{count}
-      products(first:30,sortKey:BEST_SELLING){nodes{status featuredImage{url width height}}}}}`, { h })).collectionByHandle;
+      products(first:30,sortKey:BEST_SELLING){nodes{status title featuredImage{url width height}}}}}`, { h })).collectionByHandle;
     if (!c) { bericht.push(`${h}: Collection fehlt`); continue; }
     if (!FORCE && c.image?.altText?.includes(MARKE)) { bericht.push(`${h}: hat schon ein Label`); continue; }
-    const kand = c.products.nodes.filter(p => p.status === 'ACTIVE' && p.featuredImage).map(p => ({ url: p.featuredImage.url, breite: p.featuredImage.width, hoehe: p.featuredImage.height }));
+    const kand = c.products.nodes.filter(p => p.status === 'ACTIVE' && p.featuredImage && !VERBOTEN.test(p.title || '')).map(p => ({ url: p.featuredImage.url, breite: p.featuredImage.width, hoehe: p.featuredImage.height }));
     const vor = waehleFotos(kand, 12);
     const gewaehlt = [];
     for (const k of vor) {

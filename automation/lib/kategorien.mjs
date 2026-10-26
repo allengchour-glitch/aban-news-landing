@@ -535,9 +535,15 @@ const GESCHENK_NEIN_G = ['Sporting Goods > Outdoor Recreation > Camping', 'Sport
   HG + 'Household Supplies', HG + 'Lawn & Garden', HG + 'Household Appliances', HG + 'Plumbing', 'Animals & Pet Supplies'];
 export const istGeschenkUngeeignet = p => gp(p, ...GESCHENK_NEIN_G) || /(^|[^a-zäöüß])(camping|zelt|schlafsack|airbett|isomatte|ersatzteil|hecktasche)/i.test(p.title || '');
 
+/** Wer als nicht zu bewerben markiert ist (Erwachsene, Tabak, Waffen, kein CH-Stecker …), wird in KEINE Themenkategorie einsortiert:
+ *  eine «Muskelmann»-Lampe mit Tag adult-nicht-bewerben stand sonst im Büro-Bereich (User-Seite, 25.10.). Über die Suche bleibt das Produkt erreichbar. */
+export const SPERR_TAGS = ['adult-nicht-bewerben', '18plus', 'gmc-adult-pull', 'raucher-rueckhol-0809', 'nicht-bewerben', 'compliance-pruefen', 'waffenzubehoer-nicht-verkaufen', 'stecker-nicht-ch'];
+export const istGesperrt = p => (p.tags || []).some(t => SPERR_TAGS.includes(t));
+
 /** @returns {boolean} gehört das Produkt (Objekt oder nur Titel-String) in die Kategorie? */
 export function gehoertIn(kat, p) {
   const prod = typeof p === 'string' ? { title: p, g: '', tags: [] } : p;
+  if (istGesperrt(prod)) return false;
   if (kat.passt) return !!kat.passt(prod);
   if (!kat.einschluss.test(prod.title || '')) return false;
   return !(kat.ausschluss && kat.ausschluss.test(prod.title || ''));

@@ -1,6 +1,6 @@
 // Tests der Kategorie-Regeln und des Menü-Umbaus. Gegenproben in BEIDE Richtungen; Zusammenfassung am ENDE.
 // Die Fälle sind echte Titel/Google-Kategorien aus dem Katalog vom 25.10.2026.
-import { istGeschenkUngeeignet, KATEGORIEN, BEREINIGUNG, gehoertIn, werkzeugArt, istSticker, istBastelWare, WAFFEN } from './kategorien.mjs';
+import { SPERR_TAGS, istGesperrt, istGeschenkUngeeignet, KATEGORIEN, BEREINIGUNG, gehoertIn, werkzeugArt, istSticker, istBastelWare, WAFFEN } from './kategorien.mjs';
 import { einfuegenPfad, verschiebe, befoerdern, umbenennen, entfernen, tiefe, anwenden, gleicherBaum, UMBAU } from './menue_plan.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -192,5 +192,12 @@ const idx = (op, t) => UMBAU.findIndex(o => o.op === op && JSON.stringify(o).inc
 ist('Plan: Schmuck umbenennen vor Uhren befördern', idx('umbenennen', '"Schmuck"') < idx('befoerdern', '"Uhren"'), true);
 ist('Plan: Kinder & Baby doppelt entfernen NACH dem Umbenennen', idx('umbenennen', '"Kinder & Baby"') < idx('entfernen', '"Kinder & Baby","Kinder & Baby"'), true);
 
+
+// ── Sperr-Tags: markierte Produkte kommen in keine Themenkategorie ──
+ist('sperr: Muskelmann-Lampe mit adult-nicht-bewerben nicht im Büro', in_('schreibtischlampen', P('Muskelmann Schreibtischlampe aus PLA', 'Home & Garden > Lighting > Lamps', ['adult-nicht-bewerben'])), false);
+ist('sperr: Gegenprobe dieselbe Lampe ohne Sperr-Tag', in_('schreibtischlampen', P('Muskelmann Schreibtischlampe aus PLA', 'Home & Garden > Lighting > Lamps', [])), true);
+ist('sperr: jeder Sperr-Tag sperrt', SPERR_TAGS.every(tag => istGesperrt({ tags: ['x', tag] })), true);
+ist('sperr: Gegenprobe gewöhnliche Tags sperren nicht', istGesperrt({ tags: ['fortura', 'sommer-2026', 'waffe-pruefen'] }), false);
+ist('sperr: Titel-String ohne Tags stürzt nicht ab', typeof gehoertIn(kat('schreibtischlampen'), 'Schreibtischlampe'), 'boolean');
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
