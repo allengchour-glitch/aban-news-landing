@@ -94,3 +94,13 @@ Abschnitt «LuxeStyle Videos» im Editor einfügen und den Aufruf aus `custom_li
   4 Karten sichtbar Desktop, 1,3 Mobil, Pfeil blättert, leere Liste und nur ungültige Einträge geben nichts aus.
 - Leeres Metafeld: Server-HTML von Startseite und Produktseite unverändert (Unterschied = nur der leere Wrapper),
   Seitenhöhen vorher/nachher gleich (Start 11743 / 10812 px, Produkt 3097 / 3524 px, Desktop / Mobil, ohne geladene Empfehlungen).
+- Abschluss-Smoke-Test, Entwurf gegen live (neuer Kontext je Seite, Lazy-Bilder erzwungen): Startseite, Produktseite
+  (Halloween-Schaukelgeist), Kategorie `/collections/halloween`, `/cart`, `/search?q=kleid`, je Desktop 1440 und Mobil 390
+  (mit Touch): **20 von 20 Seiten HTTP 200, 0 kaputte Bilder** (naturalWidth > 0 bei allen gerenderten Bildern, 12 bis 264
+  je Seite), **0 eigene Konsolenfehler** (die Meldungen von shop.app, Monorail und Zahlungsframes kommen live wie im Entwurf).
+  Nichts verschoben: Start Δ 0 px (22 von 22 Abschnitte), Warenkorb Δ 0 px. Unterschiede gegen live gibt es nur
+  (a) auf der Produktseite durch die neuen Elemente (Empfehlungen 4 → 10 Karten plus Knopf: +447 px Desktop /
+  +1056 px Mobil; die Video-Zeile hat Höhe 0), und (b) dort, wo der Entwurf 25.10. b schon vorher abwich (Abschnitt `main`
+  der Produktseite +92 / +84 px, Kategorie-Kopf `lux_subchips`/`lux_usp_coll`, Suche mobil +72 px). Zu (b): das
+  Server-HTML von `main` war vor und nach meinen Änderungen gleich (nur der leere Video-Wrapper kam hinzu), die
+  Abweichungen stammen also nicht aus dieser Arbeit.
