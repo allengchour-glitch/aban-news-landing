@@ -132,7 +132,9 @@ async function main() {
       const c = bestand[k.id];
       const regel = { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: k.tag }] };
       if (c && k.bestehend) {
-        writeFileSync(`dropship/kategorien-sicherung/${k.handle}.json`, JSON.stringify(c, null, 1));
+        // Nie überschreiben: ein zweiter Lauf läse sonst den schon umgebauten Stand und ersetzte den Originalstand (26.10.: 6 Sicherungen waren betroffen).
+        const sicherung = `dropship/kategorien-sicherung/${k.handle}.json`;
+        if (!existsSync(sicherung)) writeFileSync(sicherung, JSON.stringify(c, null, 1));
         const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
         if (d.collectionUpdate.userErrors.length) throw new Error(`collectionUpdate ${k.handle} ${JSON.stringify(d.collectionUpdate.userErrors)}`);
         console.log(`Umgestellt: ${k.handle} → TAG ${k.tag}`); ledger(`umgestellt ${k.handle}`);

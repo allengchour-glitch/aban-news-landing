@@ -1,6 +1,6 @@
 // Tests der Mode-Taxonomie-Anbindung (lib/mode_taxonomie.mjs). Gegenproben in BEIDE Richtungen; Zusammenfassung am ENDE.
 // Titel stammen aus dem echten Katalog vom 26.10.2026 (Stichproben der Prüfung).
-import { MODE, ALLES, KOLLISIONEN, bereinigeBeschreibung, menueEintraege, normiere } from './mode_taxonomie.mjs';
+import { MODE, ALLES, KOLLISIONEN, baueMode, bereinigeBeschreibung, menueEintraege, normiere } from './mode_taxonomie.mjs';
 import { gehoertIn, KATEGORIEN } from './kategorien.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -15,6 +15,11 @@ ist('ids eindeutig', new Set(MODE.map(k => k.id)).size, MODE.length);
 ist('handles eindeutig', new Set(MODE.map(k => k.handle)).size, MODE.length);
 ist('tags eindeutig und mit sort-', MODE.every(k => k.tag === 'sort-' + k.handle) && new Set(MODE.map(k => k.tag)).size === MODE.length, true);
 ist('kein Tag stösst mit den anderen Kategorien zusammen', KATEGORIEN.filter(k => !k.mode).some(k => MODE.some(m => m.tag === k.tag)), false);
+// Shopify macht aus «ö» ein «o» im Handle, das Tag behält den Umlaut → Plan und Live-Stand laufen auseinander (26.10.: damen-geldboersen-langbörsen).
+const ALLE4 = baueMode(['bekleidung', 'schuhe', 'taschen', 'accessoires']);
+ist('alle vier Bereiche: Handle und Tag nur a-z, 0-9, Bindestrich', ALLE4.filter(k => !/^[a-z0-9-]+$/.test(k.handle) || !/^[a-z0-9-]+$/.test(k.tag)).map(k => k.handle), []);
+ist('alle vier Bereiche: Handles und Tags eindeutig', [new Set(ALLE4.map(k => k.handle)).size, new Set(ALLE4.map(k => k.tag)).size], [ALLE4.length, ALLE4.length]);
+ist('Gegenprobe: der Prüfer erkennt einen Umlaut-Handle', ['damen-geldboersen-langbörsen'].filter(h => !/^[a-z0-9-]+$/.test(h)).length, 1);
 ist('jede Kategorie hat min 15', MODE.every(k => k.min === 15), true);
 ist('kein ß in Titel/Beschreibung', MODE.some(k => /ß/.test(k.titel + k.beschreibung + k.seoBeschreibung)), false);
 ist('SEO-Beschreibung höchstens 160 Zeichen', MODE.every(k => k.seoBeschreibung.length <= 160), true);

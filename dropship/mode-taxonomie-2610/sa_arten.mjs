@@ -127,7 +127,7 @@ export const GELD_ARTEN = {
     beschreibung: 'Kartenetuis und Kartenhalter in schlank — mit RFID-Schutz, für Kreditkarten, Ausweis und Notizen.', uf: [] },
   geld: { titel: 'Geldbörsen & Portemonnaies', slug: 'geldboersen', muss: [], rest: true,
     beschreibung: 'Geldbörsen, Portemonnaies und Münzbörsen aus Leder und Kunstleder — kompakt oder lang, mit viel Platz für Karten und Scheine.',
-    uf: [{ slug: 'langbörsen', titel: 'Lange Geldbörsen', muss: [anfS('lang\\w*|long\\w*|langbörse|reissverschluss\\w*|handgelenk\\w*')] }, { slug: 'kurz', titel: 'Kurze Geldbörsen', muss: [anfS('kurz\\w*|kompakt\\w*|klein\\w*|mini\\w*|dreifach\\w*|faltbar\\w*|bifold|trifold')] }, { slug: 'leder', titel: 'Leder-Geldbörsen', muss: [anfS('leder\\w*|echtleder|rindsleder|vollnarben\\w*|kuhleder|crazy-? ?horse|lederportemonnaie')] }] },
+    uf: [{ slug: 'langborsen', titel: 'Lange Geldbörsen', muss: [anfS('lang\\w*|long\\w*|langbörse|reissverschluss\\w*|handgelenk\\w*')] }, { slug: 'kurz', titel: 'Kurze Geldbörsen', muss: [anfS('kurz\\w*|kompakt\\w*|klein\\w*|mini\\w*|dreifach\\w*|faltbar\\w*|bifold|trifold')] }, { slug: 'leder', titel: 'Leder-Geldbörsen', muss: [anfS('leder\\w*|echtleder|rindsleder|vollnarben\\w*|kuhleder|crazy-? ?horse|lederportemonnaie')] }] },
 };
 
 // ───────────────────────────── Accessoires (je Gruppe EINE Kategorie mit Unterfiltern) ─────────────────────────────

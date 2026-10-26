@@ -4625,7 +4625,7 @@
    "beschreibung": "Geldbörsen, Portemonnaies und Münzbörsen. Die Unterkategorien Lange Geldbörsen, Kurze Geldbörsen und Leder-Geldbörsen grenzen die Auswahl ein.",
    "unterfilter": [
     {
-     "handle": "damen-geldboersen-langbörsen",
+     "handle": "damen-geldboersen-langborsen",
      "titel": "Lange Geldbörsen",
      "titel_muss": [
       "(^|[^a-zäöüß])(lang\\w*|long\\w*|langbörse|reissverschluss\\w*|handgelenk\\w*)"
@@ -8402,7 +8402,7 @@
        "treffer": 115,
        "unterfilter": [
         {
-         "handle": "damen-geldboersen-langbörsen",
+         "handle": "damen-geldboersen-langborsen",
          "titel": "Lange Geldbörsen",
          "treffer": 19
         },
