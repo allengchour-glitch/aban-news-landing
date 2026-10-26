@@ -1,0 +1,8 @@
+{
+  "typ": "wartung",
+  "aktion": "waechter_zustand",
+  "id": "server-zustand-2026-10-26",
+  "warum": "13.10.2026, Plan «Hetzner auf Maximum» Schritt 1 (rein lesend). Vermutung des Plans: systemd beendet am Ende jedes 10-Minuten-Takts alle Motoren des Wächters (Type=oneshot, kein KillMode) — darum kommt kein langer Lauf (Kundenschutz ~45 min, Google-Feedback 466 s, Reel-Bau) auf dem Server zu Ende. Die einzige Messung vom 06.10. fiel mitten in einen Takt und bewies nichts. Die Aktion waechter_zustand liest deshalb die Takt-Dauer aus dem Journal (systemd «Consumed … wall clock») und die Einheit jedes laufenden Skripts — das gilt unabhängig davon, wann sie läuft. Dazu täglich: scipy/av/ffmpeg (ohne sie baut der Server kein Reel), Stash-Zahl im Wächter-Klon (wächst sie, löst der Rewind-Fehlalarm noch aus), Platte, /tmp, RAM, Swap, Herzschlag, Export-/Zugangsdateien (nur Name, Grösse, Zeit), Abschlusszeilen der zwei langen CJ-Wachen und luxe-m-*-Einheiten. Jeder spätere Plan-Schritt (4 Fehlalarm, 5 Geheimnisse, 6 Platz/Swap, 8 Dauerläufer, 9 Reels) prüft seine Wirkung an dieser Quittung. Rückweg: diese Datei löschen. [wiederkehrend, alle 1 Tag(e)]",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}

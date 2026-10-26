@@ -3,6 +3,52 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-23-2",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 2 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-25T00:58:17.651Z",
+  "dauer_s": 61.8,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [
+      "leoparden-blumen-patchwork-abendkleid-614600"
+    ],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 193, quittiert 80, offen 166",
+      "Boards auf dem Profil: /luxestyleCH/tech-gadgets/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 1118 Z.): Titel nicht da",
+      "Bild 113007 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Vorab-Quittung an 2 Ort(en) geschrieben",
+      "Nachlesen: Titel NICHT gefunden (1177 Z.)"
+    ],
+    "bilder": [
+      "server:/tmp/luxe-bilder-notfall/pinterest-pin-2026-10-23-2-1-bild.png",
+      "server:/tmp/luxe-bilder-notfall/pinterest-pin-2026-10-23-2-2-ausgefuellt.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-23-2-3-nachher.png"
+    ],
+    "hinweis": "Pin nach dem Klick nicht auf der Pinnwand gesehen — bleibt als «unklar» gesperrt (kein zweiter Versuch ohne Mensch)"
+  },
+  "bilder_weiche": {
+    "oeffentlich": false,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/tmp/luxe-bilder-notfall/pinterest-pin-2026-10-23-2-1-bild.png",
+        "bytes": 183715,
+        "notfall": true,
+        "fehler": "Server: ENOSPC: no space left on device, copyfile '/opt/luxe-agent/repo/auftraege/ergebn"
+      },
+      {
+        "datei": "/tmp/luxe-bilder-notfall/pinterest-pin-2026-10-23-2-2-ausgefuellt.png",
+        "bytes": 204062,
+        "notfall": true,
+        "fehler": "Server: ENOSPC: no space left on device, copyfile '/opt/luxe-agent/repo/auftraege/ergebn"
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-23-2-3-nachher.png",
+        "bytes": 112088
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
 }
