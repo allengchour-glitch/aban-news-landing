@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_NUR_PRODUKTTEXT_ORGANIZER_LIVE_20261026
+
+Inhaberfokus «nur text verbessern bei produkt» umgesetzt: genau descriptionHtml des geprüften Schubladen-Organizers 15408458170753 einmalig aktualisiert. [Implementierungsbeleg](ORGANIZER-IMPLEMENTIERUNG-20261026.json). Frischer Quellhash passte; native Rücklesung und öffentliches Produkt-JSON HTTP 200 bestätigen Ziel 58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89. Nur Beschreibung geändert; alle übrigen gelieferten nativen Felder, Variante/CHF 34.90, Bilder sowie Service-/Linkteil erhalten. Früherer Entwurf ist damit für diesen Artikel überholt, nicht erneut zur Freigabe vorlegen oder schreiben. Keine Suchmetadaten-, Varianten-, Preis-, Social- oder Automationsänderung in diesem engen Textauftrag. Lieferquellen-/Setzuordnung bleibt offen und wird im Text nicht als geklärt behauptet.
+
 ## LUXESTYLE_KATALOGPFLEGE_FORTSETZUNG_2103_20261026
 
 [Fortgesetzte Katalogpflege](KATALOG-FORTSETZUNG-20261026.md), [vollständige Quellen-/Diffbelege](KATALOG-FORTSETZUNG-BELEGE-20261026.json) und [unabhängiger Review](katalog-fortsetzung-20261026/review/REVIEW.md) frisch gespeichert und vollständig zurückgelesen. Der genehmigte Trenchcoat-Produkttext bleibt live und wird nicht erneut geschrieben. Neue native SEO-/Roothead-Gegenprobe klärt die Quelle der alten 100-cm-/Kälteangaben; exakt ein `seo.description`-Diff mit 139 Zeichen vorbereitet, nicht angewendet. Ein vorhandener Organizer-Entwurf um drei konkrete Ordnungsschritte weiterentwickelt, alle drei Originalbilder/Quellen sowie Service-/Link-Tail geprüft; Lieferumfang/Markenzuordnung bleibt offen.
