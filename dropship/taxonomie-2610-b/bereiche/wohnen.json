@@ -21,9 +21,24 @@
   "g_nicht": [
    "Furniture > Baby & Toddler Furniture",
    "Furniture > Office Furniture",
-   "Furniture > Outdoor Furniture"
+   "Furniture > Outdoor Furniture",
+   "Home & Garden > Household Supplies > Pest Control",
+   "Home & Garden > Decor > Window Treatments > Window Screens",
+   "Home & Garden > Decor > Lawn Ornaments & Garden Sculptures",
+   "Home & Garden > Decor > Fountains & Ponds",
+   "Home & Garden > Decor > Wind Chimes",
+   "Home & Garden > Lighting > Landscape Pathway Lighting",
+   "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+   "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Outdoor Grill Accessories",
+   "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
   ],
-  "titel_nicht": []
+  "titel_nicht": [
+   "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+   "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))",
+   "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
+   "(^|[^a-zäöüß])(blumen|pflanz)[a-zäöüß-]*(topf|töpfe|kübel|ampel)",
+   "vogelhaus|nistkasten|futterstation|futterstelle"
+  ]
  },
  "kategorien": [
   {
@@ -31,13 +46,13 @@
    "titel": "Pfannen & Woks",
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans",
-    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Woks",
-    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Griddles & Grill Pans"
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Woks"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(spritzschutz|bonsai|blumentopf|pflanz[a-zäöüß]*|hunde[a-zäöüß-]*|katzen[a-zäöüß-]*|kochfeld|pfannenring|[a-zäöüß-]*halter)(?![a-zäöüß])"
+    "(^|[^a-zäöüß])(spritzschutz|bonsai|blumentopf|pflanz[a-zäöüß]*|hunde[a-zäöüß-]*|katzen[a-zäöüß-]*|kochfeld|pfannenring|[a-zäöüß-]*halter)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
-   "beschreibung": "Bratpfannen, Woks, Grillpfannen und Crêpe-Pfannen aus Edelstahl, Gusseisen, Aluminium und mit Antihaft-Beschichtung — für Herd, Induktion und Gas.",
+   "beschreibung": "Bratpfannen, Woks und Crêpe-Pfannen aus Edelstahl, Gusseisen, Aluminium und mit Antihaft-Beschichtung — für Herd, Induktion und Gas.",
    "unterfilter": [
     {
      "handle": "pfannen-woks-bratpfannen",
@@ -51,10 +66,10 @@
      ]
     },
     {
-     "handle": "pfannen-woks-woks-grill",
-     "titel": "Woks & Grillpfannen",
+     "handle": "pfannen-woks-woks",
+     "titel": "Woks",
      "titel_muss": [
-      "wok|grill|teppanyaki|bbq|platte"
+      "wok"
      ],
      "titel_nicht": []
     },
@@ -86,10 +101,12 @@
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans",
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Woks",
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Griddles & Grill Pans",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Grill Presses",
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Stovetop Kettles"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(bonsai|blumen-?topf|sandblumen|pflanz[a-zäöüß]*|[a-zäöüß-]*einsatz|fermentier[a-zäöüß-]*|wärmeleit[a-zäöüß-]*|[a-zäöüß-]*pressplatte|druckplatte|küchenhelfer|silikon-?deckel|gussform|dampfgarform)"
+    "(^|[^a-zäöüß])(bonsai|blumen-?topf|sandblumen|pflanz[a-zäöüß]*|[a-zäöüß-]*einsatz|fermentier[a-zäöüß-]*|wärmeleit[a-zäöüß-]*|[a-zäöüß-]*pressplatte|druckplatte|küchenhelfer|silikon-?deckel|gussform|dampfgarform)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Kochtöpfe, Suppentöpfe, Milchtöpfe, Schmortöpfe, Gusseisen-Töpfe und komplette Kochgeschirr-Sets für Herd und Ofen.",
    "unterfilter": [
@@ -128,7 +145,8 @@
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Bakeware"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(blumen-?topf|schmuck[a-zäöüß-]*|vase|gesichts-?vase|diy-?kreationen)"
+    "(^|[^a-zäöüß])(blumen-?topf|schmuck[a-zäöüß-]*|vase|gesichts-?vase|diy-?kreationen)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Kuchenformen, Springformen, Backbleche, Brotformen, Auflaufformen und Backmatten aus Silikon, Metall und Keramik.",
    "unterfilter": [
@@ -186,7 +204,28 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
+  },
+  {
+   "handle": "grillpfannen-elektrogrills",
+   "titel": "Grillpfannen & Elektrogrills",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Griddles & Grill Pans",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Grill Presses"
+   ],
+   "beschreibung": "Elektrische Tischgrills, Grillplatten sowie Crêpe- und Takoyaki-Geräte mit Heizplatte für drinnen, dazu Grillpfannen, Grillplatten aus Gusseisen und Edelstahl, Teppanyaki-Platten und Grillpressen für Herd und Induktion."
+  },
+  {
+   "handle": "campingkocher-outdoor-kocher",
+   "titel": "Campingkocher & Outdoor-Kocher",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves"
+   ],
+   "beschreibung": "Tragbare Gaskocher, Spirituskocher, Holzöfen und Kochsysteme für Camping, Wandern und Picknick."
   },
   {
    "handle": "schneidebretter-bretter",
@@ -198,7 +237,8 @@
     "(^|[^a-zäöüß])(messer-? ?(und|&) ?schneidebrett)",
     "(^|[^a-zäöüß])(messerhalter)",
     "(^|[^a-zäöüß])(bento)",
-    "(^|[^a-zäöüß])(besteck-?set)"
+    "(^|[^a-zäöüß])(besteck-?set)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Schneidebretter und Küchenbretter aus Holz, Bambus, Kunststoff und Edelstahl — auch als Set, mit Saftrille oder doppelseitig nutzbar.",
    "unterfilter": [
@@ -258,6 +298,9 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
@@ -305,6 +348,10 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ]
   },
   {
@@ -321,7 +368,9 @@
     "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Timers"
    ],
    "titel_nicht": [
-    "(waage|waagen)(?![a-zäöüß])"
+    "(waage|waagen)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Siebe und Abtropfkörbe, Salz- und Pfeffermühlen, Messbecher und Messlöffel, Öl- und Essigspender, Mörser, Salatschleudern, Küchenthermometer und Timer.",
    "unterfilter": [
@@ -396,7 +445,9 @@
     "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Rolling Pins"
    ],
    "titel_nicht": [
-    "(waage|waagen)(?![a-zäöüß])"
+    "(waage|waagen)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Praktische Helfer für die Küche, die in keine andere Gruppe passen: Zitruspressen, Ölfilter, Eierhelfer, Auftauplatten, Pizzaroller, Dosenöffner und weitere kleine Gadgets."
   },
@@ -436,11 +487,14 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
-   "handle": "fritteusen-grills-kochfelder",
-   "titel": "Fritteusen, Grills & Kochfelder",
+   "handle": "fritteusen-kochfelder-oefen",
+   "titel": "Fritteusen, Kochfelder & Öfen",
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > Kitchen Appliances"
    ],
@@ -453,6 +507,7 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
@@ -463,9 +518,11 @@
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
-   "beschreibung": "Heissluftfritteusen, Fritteusen, Elektrogrills, Induktionskochfelder, Hot-Pot-Geräte und Teppanyaki-Grills für den Tisch und die Arbeitsplatte."
+   "beschreibung": "Heissluftfritteusen, Fritteusen, Induktionskochfelder, Hot-Pot-Geräte, Elektroherde und Backöfen für den Tisch und die Arbeitsplatte."
   },
   {
    "handle": "reiskocher-dampfgarer",
@@ -482,6 +539,7 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
@@ -493,7 +551,9 @@
    ],
    "titel_nicht": [
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
-    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Reiskocher, Dampfgarer, Eierkocher, Slow Cooker und elektrische Kochtöpfe für Reis, Eintöpfe, Eier und schonendes Garen."
   },
@@ -512,6 +572,7 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
@@ -524,7 +585,9 @@
    "titel_nicht": [
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
     "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
-    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Waffeleisen, Sandwichmaker, Toaster, Pancake- und Crêpe-Maker für das Frühstück und für Snacks am Tisch."
   },
@@ -543,6 +606,7 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
@@ -556,7 +620,9 @@
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
     "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
     "waffel[a-zäöüß-]*|sandwich[a-zäöüß-]*|toaster|pancake[a-zäöüß-]*|crêpe[a-zäöüß-]*|crepe[a-zäöüß-]*|frühstücks[a-zäöüß-]*|panini|taiyaki|gebäck-?maker|kuchenbackautomat|tortenpresse|kuchenpress[a-zäöüß]*",
-    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Nudelmaschinen, Pastamaker, Eismaschinen, Popcornmaschinen, Zuckerwatte-Maschinen und Schokoladenbrunnen für selbstgemachte Snacks und Desserts."
   },
@@ -575,6 +641,7 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
     "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
@@ -585,7 +652,9 @@
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
     "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
     "waffel[a-zäöüß-]*|sandwich[a-zäöüß-]*|toaster|pancake[a-zäöüß-]*|crêpe[a-zäöüß-]*|crepe[a-zäöüß-]*|frühstücks[a-zäöüß-]*|panini|taiyaki|gebäck-?maker|kuchenbackautomat|tortenpresse|kuchenpress[a-zäöüß]*",
-    "nudel[a-zäöüß-]*|pasta[a-zäöüß-]*|eismaschine|glacemaschine|eiscreme[a-zäöüß-]*|speiseeis[a-zäöüß-]*|popcorn[a-zäöüß-]*|zuckerwatte[a-zäöüß-]*|schokoladenbrunnen|takoyaki[a-zäöüß-]*|brotback[a-zäöüß-]*|pizzamaschine|knetmaschine|teigmaschine|teigpresse|teigtaschen[a-zäöüß-]*|ravioli[a-zäöüß-]*|hot ?dog[a-zäöüß-]*|burger[a-zäöüß-]*"
+    "nudel[a-zäöüß-]*|pasta[a-zäöüß-]*|eismaschine|glacemaschine|eiscreme[a-zäöüß-]*|speiseeis[a-zäöüß-]*|popcorn[a-zäöüß-]*|zuckerwatte[a-zäöüß-]*|schokoladenbrunnen|takoyaki[a-zäöüß-]*|brotback[a-zäöüß-]*|pizzamaschine|knetmaschine|teigmaschine|teigpresse|teigtaschen[a-zäöüß-]*|ravioli[a-zäöüß-]*|hot ?dog[a-zäöüß-]*|burger[a-zäöüß-]*",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ],
    "beschreibung": "Vakuumiergeräte, Dörrautomaten, Sprudelwasser-Maschinen und weitere elektrische Küchengeräte, die in keine der anderen Gerätegruppen passen."
   },
@@ -599,7 +668,30 @@
     "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories",
     "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Outdoor Grill Accessories"
    ],
-   "beschreibung": "Zubehör und Ersatzteile für Küchengeräte: Silikon-Einsätze und Gitter für Heissluftfritteusen, Spülmaschinen-Körbe, Kühlschrank-Filter, Mixer-Ersatzteile und Schutzhüllen."
+   "beschreibung": "Zubehör und Ersatzteile für Küchengeräte: Silikon-Einsätze und Gitter für Heissluftfritteusen, Spülmaschinen-Körbe, Kühlschrank-Filter, Mixer-Ersatzteile und Schutzhüllen.",
+   "titel_nicht": [
+    "wasserfilter",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
+   ]
+  },
+  {
+   "handle": "kuechenwaagen-feinwaagen",
+   "titel": "Küchen- & Feinwaagen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > ",
+    "Hardware > Tools > Measuring",
+    "Office Supplies"
+   ],
+   "titel_muss": [
+    "waage"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(körper[a-zäöüß-]*|personen[a-zäöüß-]*|baby[a-zäöüß-]*|haustier[a-zäöüß-]*|futter[a-zäöüß-]*|kran[a-zäöüß-]*|koffer[a-zäöüß-]*|hänge[a-zäöüß-]*|fett[a-zäöüß-]*|mixer)",
+    "wasserwaage",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+   ],
+   "beschreibung": "Digitale Küchenwaagen, Kaffeewaagen, Löffelwaagen, Taschenwaagen und Feinwaagen zum genauen Abwiegen von Zutaten, Kaffee und Kleinteilen."
   },
   {
    "handle": "messerschaerfer",
@@ -645,6 +737,9 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
@@ -655,7 +750,10 @@
     "Home & Garden > Kitchen & Dining > Tableware > Coffee Servers & Tea Pots",
     "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Stovetop Kettles"
    ],
-   "beschreibung": "Teekannen, Teekessel, Tee-Sets, Matcha-Sets, Kaffeekannen und komplette Kaffee- und Teeservice aus Keramik, Porzellan, Glas und Gusseisen."
+   "beschreibung": "Teekannen, Teekessel, Tee-Sets, Matcha-Sets, Kaffeekannen und komplette Kaffee- und Teeservice aus Keramik, Porzellan, Glas und Gusseisen.",
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+   ]
   },
   {
    "handle": "bar-weinzubehoer",
@@ -683,6 +781,9 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
@@ -692,6 +793,10 @@
     "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles",
     "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Thermoses",
     "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Drink Sleeves"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(shaker|thermobehälter|wasserreiniger)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Trinkflaschen aus Edelstahl, Glas und Kunststoff sowie Thermosflaschen, die Getränke warm oder kalt halten — für Büro, Sport und unterwegs.",
    "unterfilter": [
@@ -729,7 +834,8 @@
     "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Coffee & Tea Cups"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(isolier[a-zäöüß-]*|thermo[a-zäöüß-]*|edelstahl-?trinkbecher|eisbecher)"
+    "(^|[^a-zäöüß])(isolier[a-zäöüß-]*|thermo[a-zäöüß-]*|edelstahl-?trinkbecher|eisbecher|messbecher|messlöffel)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Tassen und Kaffeebecher aus Keramik, Porzellan und Glas, dazu Teetassen mit Untertasse, Motiv-Tassen mit Schweizer Sujets und Tassen zum Selbstgestalten.",
    "unterfilter": [
@@ -765,6 +871,10 @@
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Tumblers"
    ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(whisky[a-zäöüß-]*)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+   ],
    "beschreibung": "Isolierte Thermobecher, Reisebecher, Trinkbecher mit Strohhalm und Coffee-to-go-Becher aus Edelstahl, Glas und Kunststoff.",
    "unterfilter": [
     {
@@ -792,7 +902,8 @@
     "Home & Garden > Kitchen & Dining > Tableware > Dinnerware"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(feuerschale|sammelkarten|seifenschale|hartschale)"
+    "(^|[^a-zäöüß])(feuerschale|sammelkarten|seifenschale|hartschale)",
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ],
    "beschreibung": "Speisetteller, Suppenteller, Schalen, Schüsseln und komplette Geschirrsets aus Keramik, Porzellan, Glas und Bambus.",
    "unterfilter": [
@@ -856,6 +967,9 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
@@ -885,6 +999,9 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
    ]
   },
   {
@@ -894,7 +1011,7 @@
     "Home & Garden > Linens & Bedding > Table Linens",
     "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Aprons"
    ],
-   "beschreibung": "Tischdecken, Tischläufer, Platzsets und Untersetzer für den Esstisch sowie Koch- und Grillschürzen.",
+   "beschreibung": "Tischdecken, Tischläufer und Platzsets für den Esstisch sowie Küchen-, Koch- und Gartenschürzen.",
    "unterfilter": [
     {
      "handle": "tischdecken-schuerzen-schuerzen",
@@ -912,6 +1029,10 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
    ]
   },
   {
@@ -970,50 +1091,7 @@
    "g_prefix": [
     "Home & Garden > Household Supplies > Waste Containment"
    ],
-   "beschreibung": "Mülleimer und Abfallbehälter für Küche, Bad und Büro — mit Sensor, Pedal oder Deckel, auch als Recyclingbox."
-  },
-  {
-   "handle": "insektenschutz-schaedlingsabwehr",
-   "titel": "Insektenschutz & Schädlingsabwehr",
-   "g_prefix": [
-    "Home & Garden > Household Supplies > Pest Control",
-    "Home & Garden > Decor > Window Treatments > Window Screens",
-    "Home & Garden > Decor > Window Treatments > Curtains & Drapes"
-   ],
-   "titel_muss": [
-    "(^|[^a-zäöüß])(insekt[a-zäöüß]*|mücke[a-zäöüß]*|moskito[a-zäöüß]*|fliegen[a-zäöüß]*|schädling[a-zäöüß]*|ungeziefer|ultraschall[a-zäöüß]*|kakerlak[a-zäöüß]*|nager[a-zäöüß]*|mäuse[a-zäöüß]*|spinnen[a-zäöüß]*|wespe[a-zäöüß]*|bienen[a-zäöüß]*|schreck|vertreib[a-zäöüß]*|abwehr[a-zäöüß]*|falle|klatsche|fänger|köder[a-zäöüß]*|repell[a-zäöüß]*|killer[a-zäöüß]*|vernichter|ratten|tier-? ?(und|&)|vogel|taube[a-zäöüß]*|waschbär|wabenlaterne|schwebfliegen|magnetisch[a-zäöüß]*)"
-   ],
-   "beschreibung": "Mückenlampen, Fliegenfallen, Ultraschall-Vertreiber, magnetische Insektenschutz-Türvorhänge und Fliegengitter gegen Mücken, Fliegen, Kakerlaken und Nager.",
-   "unterfilter": [
-    {
-     "handle": "insektenschutz-tuerschutz",
-     "titel": "Fliegengitter & Türvorhänge",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(fliegengitter|türvorhang|insektenschutz|vorhang|netz|gitter|tür)"
-     ],
-     "titel_nicht": [
-      "(^|[^a-zäöüß])(lampe|falle)"
-     ]
-    },
-    {
-     "handle": "insektenschutz-muecken",
-     "titel": "Mückenlampen & Mückenabwehr",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(mücke[a-zäöüß]*|moskito[a-zäöüß]*)"
-     ],
-     "titel_nicht": [
-      "(^|[^a-zäöüß])(vorhang|fliegengitter|tür)"
-     ]
-    },
-    {
-     "handle": "insektenschutz-ultraschall",
-     "titel": "Ultraschall-Vertreiber",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(ultraschall|vertreib|schreck|repell)"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "beschreibung": "Mülleimer und Abfallbehälter für Küche, Bad und unterwegs — mit Sensor, Deckel oder zum Aufhängen, auch als Recyclingbox."
   },
   {
    "handle": "staubsauger-zubehoer",
@@ -1066,7 +1144,7 @@
     "Home & Garden > Household Appliances > Water Heaters"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(garage[a-zäöüß]*|tor(?![a-zäöüß])|durchlauferhitzer|luftkühler|kühlend[a-zäöüß]*|klimaanlagen|ventilator)"
+    "(^|[^a-zäöüß])(garage[a-zäöüß]*|tor(?![a-zäöüß])|durchlauferhitzer|luftkühler|kühlend[a-zäöüß]*|klimaanlagen|ventilator|nagel[a-zäöüß-]*)"
    ],
    "beschreibung": "UV-Sterilisatoren, Desinfektionsboxen, Ozon-Desinfektionsgeräte, Ultraschall-Reiniger für Brillen und Schmuck sowie Dampfreiniger für den Haushalt."
   },
@@ -1080,7 +1158,10 @@
     "(^|[^a-zäöüß])(aufbewahrungs-?(tasche|beutel|säck)[a-zäöüß]*|vakuum[a-zäöüß-]*(beutel|tasche)|kompressionsbeutel|kleidersäck[a-zäöüß]*|kleidersack|wäschebeutel)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(taktisch[a-zäöüß]*|camouflage|helm|tourniquet|tastatur|camping|schwimm[a-zäöüß-]*|baseball|cap(?![a-zäöüß])|deo-|scheren)"
+    "(^|[^a-zäöüß])(taktisch[a-zäöüß]*|camouflage|helm|tourniquet|tastatur|camping|schwimm[a-zäöüß-]*|baseball|cap(?![a-zäöüß])|deo-|scheren)",
+    "spielzeug|stofftier",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Aufbewahrungstaschen, Vakuumbeutel und Kleidersäcke für Kleidung, Bettwäsche und Reisegepäck — platzsparend und staubgeschützt."
   },
@@ -1100,7 +1181,9 @@
     "(^|[^a-zäöüß])(organizer|schubladen[a-zäöüß-]*|ordnungs[a-zäöüß-]*|aufbewahrungsbox|aufbewahrungsset|aufbewahrungsständer|aufbewahrungskorb|box|kasten|ständer)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(aufbewahrungs-?(tasche|beutel)|vakuum|kleidersack|kleiderbügel|schuhregal|kosmetik[a-zäöüß-]*|make-?up[a-zäöüß-]*|schmink[a-zäöüß-]*|pinsel[a-zäöüß-]*|lippenstift[a-zäöüß-]*|nagellack[a-zäöüß-]*|beauty[a-zäöüß-]*|blind ?box|mahjong|yo-yo|basketball|spielzeug[a-zäöüß-]*|modellauto[a-zäöüß-]*|kartenhalter|eiscreme|käsereibe|schleifk[a-zäöüß]*|münz[a-zäöüß-]*|medikament[a-zäöüß-]*|digitaler organizer|outdoor|schmuck[a-zäöüß-]*|uhren[a-zäöüß-]*|tassen-ständer|display|ständer)"
+    "(^|[^a-zäöüß])(aufbewahrungs-?(tasche|beutel)|vakuum|kleidersack|kleiderbügel|schuhregal|kosmetik[a-zäöüß-]*|make-?up[a-zäöüß-]*|schmink[a-zäöüß-]*|pinsel[a-zäöüß-]*|lippenstift[a-zäöüß-]*|nagellack[a-zäöüß-]*|beauty[a-zäöüß-]*|blind ?box|mahjong|yo-yo|basketball|spielzeug[a-zäöüß-]*|modellauto[a-zäöüß-]*|kartenhalter|eiscreme|käsereibe|schleifk[a-zäöüß]*|münz[a-zäöüß-]*|medikament[a-zäöüß-]*|digitaler organizer|outdoor|schmuck[a-zäöüß-]*|uhren[a-zäöüß-]*|tassen-ständer|display|ständer|set-top|zinklegierung|hündchen|badespielzeug|flip)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Schubladen-Organizer, Ordnungsboxen, Kosmetik-Organizer und Hänge-Organizer für Schrank, Schublade, Bad und Schreibtisch."
   },
@@ -1121,6 +1204,9 @@
    "g_prefix": [
     "Home & Garden > Household Supplies > Storage & Organization > Storage Hooks & Racks",
     "Home & Garden > Decor > Coat & Hat Racks"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(dartboard)"
    ],
    "beschreibung": "Wandhaken, Hakenleisten, Kleiderhaken, Schlüsselhalter und Garderobenhalter zum Aufhängen — mit Klebepad oder zum Schrauben."
   },
@@ -1165,6 +1251,11 @@
      ],
      "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "spielzeug|schultaschen|schulranzen",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ]
   },
   {
@@ -1181,7 +1272,9 @@
     "Furniture > Outdoor Furniture"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(stopper|fuss-?kissen|fussstütze[a-zäöüß-]*|beachbag|camping|outdoor|angeln|hülle|baby|kinder|matratze)"
+    "(^|[^a-zäöüß])(stopper|fuss-?kissen|fussstütze[a-zäöüß-]*|beachbag|camping|outdoor|angeln|hülle|baby|kinder|matratze)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Sessel, Hocker, Beistelltische, Couchtische, Schränke, Betten und Ottomanen für Wohnzimmer, Schlafzimmer und Flur."
   },
@@ -1241,7 +1334,9 @@
     "Home & Garden > Linens & Bedding > Towels"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(t-shirt|kleid|edelstahl)"
+    "(^|[^a-zäöüß])(t-shirt|kleid|edelstahl)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Handtücher, Badetücher, Strandtücher und Handtuch-Sets aus Baumwolle, Mikrofaser und Leinen.",
    "unterfilter": [
@@ -1269,7 +1364,7 @@
    "g_prefix": [
     "Home & Garden > Linens & Bedding > Bedding > Pillows"
    ],
-   "beschreibung": "Kopfkissen, Nackenstützkissen, Memory-Schaum-Kissen, Seitenschläferkissen, Beinkissen und Kinderkissen für erholsamen Schlaf.",
+   "beschreibung": "Kopfkissen, Nackenstützkissen, Memory-Schaum-Kissen, Seitenschläferkissen und Beinkissen für erholsamen Schlaf.",
    "unterfilter": [
     {
      "handle": "kopfkissen-memory-schaum",
@@ -1294,15 +1389,11 @@
       "(^|[^a-zäöüß])(seiten|bein|knie|schwanger|wickel|u-förmig)"
      ],
      "titel_nicht": []
-    },
-    {
-     "handle": "kopfkissen-kinder",
-     "titel": "Kinder- & Babykissen",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(kinder|baby)"
-     ],
-     "titel_nicht": []
     }
+   ],
+   "titel_nicht": [
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ]
   },
   {
@@ -1314,7 +1405,9 @@
     "Home & Garden > Linens & Bedding > Bedding > Mattress Protectors"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(sofa-?kissen|sofakissen|zierkissen|deko-?kissen|sofa|polster[a-zäöüß-]*|weihnacht[a-zäöüß-]*)"
+    "(^|[^a-zäöüß])(sofa-?kissen|sofakissen|zierkissen|deko-?kissen|sofa|polster[a-zäöüß-]*|weihnacht[a-zäöüß-]*)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Bettwäsche-Sets, Bettbezüge, Kopfkissenbezüge und Matratzenschoner aus Baumwolle, Satin, Seide und Tencel.",
    "unterfilter": [
@@ -1344,7 +1437,9 @@
     "Home & Garden > Linens & Bedding > Bedding > Quilts & Comforters"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(plüschkissen|heizschal|kissen in|reisekissen)"
+    "(^|[^a-zäöüß])(plüschkissen|heizschal|kissen in|reisekissen)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Kuscheldecken, Wolldecken, Strickdecken, Sommerdecken, Kühldecken und Plaids für Sofa und Bett.",
    "unterfilter": [
@@ -1382,21 +1477,28 @@
     "Home & Garden > Decor > Door Mats"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(knüpfteppich-?set|diy)"
+    "(^|[^a-zäöüß])(knüpfteppich-?set|diy)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Teppiche, Läufer, Küchenmatten und Fussmatten für Wohnzimmer, Kinderzimmer, Küche und Eingang."
   },
   {
-   "handle": "vorhaenge-gardinen",
-   "titel": "Vorhänge & Gardinen",
+   "handle": "vorhaenge-gardinen-rollos",
+   "titel": "Vorhänge, Gardinen & Rollos",
    "g_prefix": [
-    "Home & Garden > Decor > Window Treatments > Curtains & Drapes"
+    "Home & Garden > Decor > Window Treatment"
+   ],
+   "g_nicht": [
+    "Home & Garden > Decor > Window Treatments > Window Screens"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(insekt[a-zäöüß]*|mücke[a-zäöüß]*|moskito[a-zäöüß]*|fliegen[a-zäöüß]*|magnetisch[a-zäöüß]*)",
-    "(^|[^a-zäöüß])(duschvorhang|badewannen)"
+    "fliegengitter|fliegenvorhang|insektenschutz[a-zäöüß-]*(türvorhang|vorhang)|insekten-schutz für türen|mücken[a-zäöüß-]*(türvorhang|vorhang)|mückennetz|moskito[a-zäöüß-]*(vorhang|tür)|insektenschutz für türen",
+    "(^|[^a-zäöüß])(duschvorhang|badewannen|smart|motor|controller|steuerung)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
-   "beschreibung": "Vorhänge, Gardinen, Verdunkelungsvorhänge und Fadenvorhänge für Fenster, Türen und als Raumteiler.",
+   "beschreibung": "Vorhänge, Gardinen, Verdunkelungsvorhänge, Rollos, Jalousien und Fensterfolien sowie Vorhangschienen und Raffhalter für Fenster, Türen und als Raumteiler.",
    "unterfilter": [
     {
      "handle": "vorhaenge-verdunkelung",
@@ -1425,15 +1527,6 @@
    ]
   },
   {
-   "handle": "rollos-vorhangzubehoer",
-   "titel": "Rollos, Jalousien & Vorhangzubehör",
-   "g_prefix": [
-    "Home & Garden > Decor > Window Treatments > Window Blinds & Shades",
-    "Home & Garden > Decor > Window Treatment Accessories"
-   ],
-   "beschreibung": "Rollos, Faltrollos, Jalousien, Vorhangschienen, Raffhalter und smarte Motoren für Vorhänge und Rollläden."
-  },
-  {
    "handle": "wandbilder-wanddeko",
    "titel": "Wandbilder & Wanddeko",
    "g_prefix": [
@@ -1453,7 +1546,9 @@
     "leinwand|wandbild|poster|plakat|kunstdruck|gemälde|malerei|wanddeko|wanddekoration|wandschmuck|wandkunst|wandskulptur|wandobjekt|wanddekor|hängekunst|stoffbild|canvas|kunstwerk|(^|[^a-zäöüß])bild(er)?(?![a-zäöüß])|[a-zäöüß-]+bild(?![a-zäöüß])"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(diy|diamond|diamant|malen|puzzle|sticker|aufkleber|tattoo|kissen|teppich|wandteppich|wandbehang|korb|regal|uhr|lampe|leuchte|haken|spiegel(?!ung)|bilderrahmen|(^|[^a-zäöüß])rahmen|holzrahmen|schwamm|tasche|tuch|licht|led|leinwandstoff|türspion|bildschirm|vorhang|stoff|garn|stick|perlen|kreuzstich|nähen|häkel|filz|harz|epoxy|papier|buch|fensterfolie|ornament|kunstharz|statue|skulptur|figur|gips|regenschirm|edelstein|ballon|weide|security|überwach|kamera)"
+    "(^|[^a-zäöüß])(diy|diamond|diamant|malen|puzzle|sticker|aufkleber|tattoo|kissen|teppich|wandteppich|wandbehang|korb|regal|uhr|lampe|leuchte|haken|spiegel(?!ung)|bilderrahmen|(^|[^a-zäöüß])rahmen|holzrahmen|schwamm|tasche|tuch|licht|led|leinwandstoff|türspion|bildschirm|vorhang|stoff|garn|stick|perlen|kreuzstich|nähen|häkel|filz|harz|epoxy|papier|buch|fensterfolie|ornament|kunstharz|statue|skulptur|figur|gips|regenschirm|edelstein|ballon|weide|security|überwach|kamera|nagel)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Leinwandbilder, Poster, Kunstdrucke, Ölgemälde und Wanddeko aus Metall für Wohnzimmer, Schlafzimmer und Flur — darunter eine Serie mit Schweizer Motiven.",
    "unterfilter": [
@@ -1489,17 +1584,25 @@
    "g_prefix": [
     "Home & Garden > Decor > Artwork > Decorative Tapestries"
    ],
-   "beschreibung": "Wandteppiche und Wandbehänge aus Stoff mit Motiven, Mustern und Quasten — zum Aufhängen im Wohnzimmer, Schlafzimmer oder Studentenzimmer."
+   "beschreibung": "Wandteppiche und Wandbehänge aus Stoff mit Motiven, Mustern und Quasten — zum Aufhängen im Wohnzimmer, Schlafzimmer oder Studentenzimmer.",
+   "titel_nicht": [
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+   ]
   },
   {
    "handle": "bilderrahmen-wandtattoos-tapeten",
-   "titel": "Bilderrahmen, Wandtattoos & Tapeten",
+   "titel": "Bilderrahmen, Wandtattoos & Klebefolien",
    "g_prefix": [
     "Home & Garden > Decor > Picture Frames",
     "Home & Garden > Decor > Home Decor Decals",
     "Home & Garden > Decor > Wallpaper"
    ],
-   "beschreibung": "Bilderrahmen, Fotorahmen, Wandtattoos, Wandsticker und selbstklebende Tapeten, um Wände ohne Bohren zu gestalten."
+   "beschreibung": "Bilderrahmen, Fotorahmen, Wandtattoos, Wandsticker, selbstklebende Tapeten sowie Tür-, Möbel- und Fensterfolien, um Wände und Flächen ohne Bohren zu gestalten.",
+   "titel_nicht": [
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+   ]
   },
   {
    "handle": "wanduhren-tischuhren",
@@ -1510,7 +1613,11 @@
    "g_nicht": [
     "Home & Garden > Decor > Clocks > Alarm Clocks"
    ],
-   "beschreibung": "Wanduhren, Tischuhren und Standuhren aus Holz, Metall und Acryl — mit leisem Uhrwerk und in vielen Stilen."
+   "beschreibung": "Wanduhren, Tischuhren und Standuhren aus Holz, Metall und Acryl — mit leisem Uhrwerk und in vielen Stilen.",
+   "titel_nicht": [
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+   ]
   },
   {
    "handle": "wecker-radiowecker",
@@ -1527,7 +1634,12 @@
     "Home & Garden > Decor > Figurines",
     "Home & Garden > Decor > Artwork > Sculptures & Statues"
    ],
-   "beschreibung": "Dekofiguren, Statuen, Skulpturen und Ornamente aus Kunstharz, Keramik, Holz und Metall für Regal, Tisch und Vitrine."
+   "beschreibung": "Dekofiguren, Statuen, Skulpturen und Ornamente aus Kunstharz, Keramik, Holz und Metall für Regal, Tisch und Vitrine.",
+   "titel_nicht": [
+    "garten",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+   ]
   },
   {
    "handle": "deko-objekte-accessoires",
@@ -1560,27 +1672,13 @@
     "Home & Garden > Decor > Fountains & Ponds"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(vogel[a-zäöüß-]*|nistkasten|futterstation|futterhaus|uhrwerk|uhrenzeiger|federwelle|blechschild|messlatte|grössenmess[a-zäöüß]*)"
+    "(^|[^a-zäöüß])(vogel[a-zäöüß-]*|nistkasten|futterstation|futterhaus|uhrwerk|uhrenzeiger|federwelle|blechschild|messlatte|grössenmess[a-zäöüß]*)",
+    "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
+    "futterstelle",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
-   "beschreibung": "Dekoschalen, Deko-Tabletts, Kunstblumen, Buchstützen, Spieluhren, Spardosen, Windspiele und weitere Dekoobjekte für Regal, Tisch und Fensterbank.",
-   "unterfilter": [
-    {
-     "handle": "deko-schalen-tabletts",
-     "titel": "Schalen & Tabletts",
-     "titel_muss": [
-      "schale|tablett|tray"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "deko-windspiele-spardosen",
-     "titel": "Windspiele, Traumfänger & Spardosen",
-     "titel_muss": [
-      "windspiel|klangspiel|traumfänger|spieluhr|spardose|sparschwein"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "beschreibung": "Dekoschalen, Deko-Tabletts, Kunstblumen, Buchstützen, Spieluhren, Spardosen, Windspiele und weitere Dekoobjekte für Regal, Tisch und Fensterbank."
   },
   {
    "handle": "saison-weihnachtsdeko",
@@ -1590,7 +1688,9 @@
     "Home & Garden > Decor > Wreaths & Garlands"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(keksstempel|spielzeug|aufbewahrungstasse|wc-set)"
+    "(^|[^a-zäöüß])(keksstempel|spielzeug|aufbewahrungstasse|wc-set)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
    "beschreibung": "Weihnachtsdeko, Christbaumschmuck, Türkränze, Girlanden, Adventskalender und Halloween-Deko für die Festtage.",
    "unterfilter": [
@@ -1637,6 +1737,9 @@
    "g_prefix": [
     "Home & Garden > Decor > Home Fragrance Accessories > Incense Holders",
     "Home & Garden > Decor > Home Fragrances > Fragrance Oil"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(bundle)"
    ],
    "beschreibung": "Räucherstäbchenhalter, Räuchergefässe, Rückflussbrunnen und Duftöle für Diffuser und Aromalampen."
   },
@@ -1714,6 +1817,11 @@
    "g_prefix": [
     "Home & Garden > Household Appliances > Climate Control Appliances > Fans"
    ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(cpu|pc(?![a-zäöüß])|laptop|computer|rgb|sonnenschirm|trinkflasche|abluft|rohr[a-zäöüß-]*ventilator|küchen-rohr|delta)",
+    "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+   ],
    "beschreibung": "Tischventilatoren, Standventilatoren, Deckenventilatoren, USB-Ventilatoren und Handventilatoren mit Sprühnebel für heisse Tage zuhause, im Büro und unterwegs.",
    "unterfilter": [
     {
@@ -1741,18 +1849,24 @@
     "Home & Garden > Lighting > Light Ropes & Strings",
     "Home & Garden > Lighting Accessories"
    ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(lampe?n?halter)",
+    "solar"
+   ],
    "beschreibung": "LED-Streifen, Lichterketten, Lichtervorhänge, Solar-Lichterketten und Steuergeräte für Ambiente-Licht in Wohnung, Garten und Fest."
   }
  ],
  "gruppen": [
   {
-   "titel": "Kochgeschirr & Backen",
+   "titel": "Kochen, Grillen & Backen",
    "handle": "kochgeschirr-backen-gruppe",
    "kinder": [
     "pfannen-woks",
     "toepfe-kochgeschirr-sets",
     "backformen-backbleche",
-    "kuechenformen-tortendeko"
+    "kuechenformen-tortendeko",
+    "grillpfannen-elektrogrills",
+    "campingkocher-outdoor-kocher"
    ]
   },
   {
@@ -1766,7 +1880,7 @@
     "kuechengadgets",
     "kuechen-organizer",
     "vorratsdosen",
-    "waagen"
+    "kuechenwaagen-feinwaagen"
    ]
   },
   {
@@ -1774,7 +1888,7 @@
    "handle": "kuechengeraete-gruppe",
    "kinder": [
     "mixer-entsafter-zerkleinerer",
-    "fritteusen-grills-kochfelder",
+    "fritteusen-kochfelder-oefen",
     "reiskocher-dampfgarer",
     "waffeleisen-sandwichmaker-toaster",
     "nudel-eis-snackmaschinen",
@@ -1814,8 +1928,7 @@
     "staubsauger-zubehoer",
     "desinfektion-reinigungsgeraete",
     "waesche-buegeln-fusselentferner",
-    "muelleimer-abfall",
-    "insektenschutz-schaedlingsabwehr"
+    "muelleimer-abfall"
    ]
   },
   {
@@ -1840,8 +1953,7 @@
     "seifenspender-bad-accessoires",
     "wc-zubehoer-taschentuchboxen",
     "handtuchhalter-badregale",
-    "handtuecher-badetuecher",
-    "armaturen-duschen"
+    "handtuecher-badetuecher"
    ]
   },
   {
@@ -1862,8 +1974,7 @@
    "titel": "Fenster, Wand & Uhren",
    "handle": "fenster-wand-uhren-gruppe",
    "kinder": [
-    "vorhaenge-gardinen",
-    "rollos-vorhangzubehoer",
+    "vorhaenge-gardinen-rollos",
     "wandbilder-wanddeko",
     "wandteppiche-wandbehaenge",
     "bilderrahmen-wandtattoos-tapeten",
