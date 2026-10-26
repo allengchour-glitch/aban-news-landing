@@ -104,7 +104,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **⏳ Auswahl-Dauerlauf** hängt am Shopify-Tageslimit für neue Varianten (03:31, 07:03, 07:43, 08:26, 09:52 UTC weiter gesperrt, kein Mitternachts-Reset); läuft von selbst weiter (`/tmp/auswahl_durchlauf.log`).
 - **🛒 CJ:** Doppelbestellung `#1028-K` (vom User von Hand angelegt, unbezahlt) in den CJ-Papierkorb gelegt; echte `LX1028` ist versandt (`EQKPT8613176643YQ`); Shopify #1028 am 26.10. 11:15 UTC mit Freigabe des Users auf «Erfüllt» gesetzt (CJPacket, 17TRACK-Link, Versandmail an den Kunden; `fulfillmentCreateV2`, Muster wie #1021–#1026). **🔎 Index:** alle Grundlisten-Seiten indexiert, nächste 10 in `dropship/INDEX-LISTE-2610.md`.
 - **⚠️ Veraltete Routinen** (stündliche «Aufseher-Keepalive», 4-stündliche «Autonome Verbesserungsrunde», Stand 01.10.) NICHT ausgeführt: sie würden CJ-Runner starten (Variantenlimit, CJ-Punkte), `git add -A` und auf den fremden Branch `claude/luxestyle-status-tztnn1` pushen → User soll sie pausieren; die «Google-Index-Liste» wurde nur lesend bedient.
-- **🟡 Beim User:** Theme-Entwurf veröffentlichen · TikTok-/YouTube-Adressen für die Video-Zeile · Tanja-Keller-Entwurf (Preis fehlt) · ChatGPT-Abo (`dropship/CHATGPT-AUFTRAEGE-2610.md`) · Routinen pausieren · die 10 Index-Anträge (`dropship/INDEX-LISTE-2610.md`).
+- **🟡 Beim User:** Theme-Entwurf veröffentlichen · TikTok-/YouTube-Adressen für die Video-Zeile · ChatGPT-Abo (`dropship/CHATGPT-AUFTRAEGE-2610.md`) · Routinen pausieren · die 10 Index-Anträge (`dropship/INDEX-LISTE-2610.md`). (Tanja-Keller-Antwort: vom User am 26.10. erledigt.)
 
 **📌 2026-10-26 (🎛️ Auswahl-Dauerlauf für alle CJ-Produkte · Optionswerte repariert · Tassen · Text-Pipeline · CLAUDE.md von 255 KB auf 24 KB):**
 Auftrag des Users in der Nacht: «fast allen Produkten fehlt die Auswahl» (wichtigstes), mehr Text, Kategorien/Filter selbst bauen, Pinterest-Banner, ChatGPT weiter nutzen?, TikTok/YouTube-Zeile, ähnliche Produkte. PR #2737, Branch `claude/luxestyle-projektor-2026-10-25`.
@@ -119,7 +119,7 @@ Auftrag des Users in der Nacht: «fast allen Produkten fehlt die Auswahl» (wich
 - **📝 Texte:** der Agenten-Prompt steht jetzt in `dropship/TEXT-AGENT-AUFTRAG.md` (ging vorher mit der Sitzung verloren). Zweiter Lauf 236 Produkte (nur Produkte mit CJ-Datenblatt im Zwischenspeicher `/tmp/cj_fakten_cache`, der beim Auswahl-Lauf mitwächst).
 - **🔑 ChatGPT:** Empfehlung «behalten, aber nur mit Aufträgen, die Fehler finden» in `dropship/CHATGPT-AUFTRAEGE-2610.md` (Abo-Preis unbekannt → Entscheid beim User).
 - **🪙 TOKEN-LEHRE:** CLAUDE.md wurde bei jedem Zug mitgeladen (255 KB ≈ 65 000 Token). Alle Stand-Blöcke vor dem 25.10. liegen jetzt VERBATIM in `dropship/STAND-ARCHIV.md`; CLAUDE.md trägt nur Kernfakten, den aktuellen Block und ein Überschriften-Verzeichnis. **Neue Stand-Blöcke kurz halten (≤ 30 Zeilen); Details in `dropship/*.md`.**
-- **🟡 Beim User:** Theme-Entwurf 212498841991 veröffentlichen (Rückfall `187533001089`) · Tanja-Keller-Entwurf in Gmail (Preis fehlt, nicht gesendet) · Hoodie-Preis · Abo-Entscheid ChatGPT.
+- **🟡 Beim User:** Theme-Entwurf 212498841991 veröffentlichen (Rückfall `187533001089`) · Hoodie-Preis · Abo-Entscheid ChatGPT.
 
 ### Ältere Stand-Blöcke → `dropship/STAND-ARCHIV.md` (vollständig, verbatim; per `grep -n` durchsuchen)
 Die Blöcke bis 26.10.2026 (früh) (Merchant-Feed, Sourcing, ChatGPT-Arbeit, SEO-Titel, Pilot 2.0 mit 20 Prüfungen, Bewertungen, Versand-Schwelle, Spiele/Webseite-Handschrift, Social-Maschine …) stehen im Archiv. Überschriften:
