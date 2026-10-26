@@ -1,0 +1,55 @@
+{
+  "status": "PASS_SINGLE_FIELD_REVIEW_DRAFT_NOT_APPLIED",
+  "recordedAtUtc": "2026-10-26T08:06:24.861275+00:00",
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/187533001089",
+    "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+    "role": "MAIN"
+  },
+  "fieldPath": "/sections/footer_utilities_jLGE8U/blocks/social_links_Ew63Kq/settings/youtube_url",
+  "oldValue": "",
+  "newValue": "https://www.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA",
+  "beforeSha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+  "afterSha256": "986a2f8fd41636f4d738f8a78b1bdd6b306dcf80f40076e7ba588e012cf45779",
+  "nativeFileProofs": [
+    {
+      "filename": "blocks/social-links.liquid",
+      "apiMd5": "f96ba721f77a5d0976ad72d4afaf53dd",
+      "actualMd5": "f96ba721f77a5d0976ad72d4afaf53dd",
+      "sha256": "8c46f5620a1b0f5503220bb80d37dc238bea809bb3de2a0c5e52ca88a1670027",
+      "bytes": 6130,
+      "updatedAt": "2026-06-11T15:06:59Z"
+    },
+    {
+      "filename": "sections/footer-group.json",
+      "apiMd5": "368187170859033dc70fce5fa332ce27",
+      "actualMd5": "368187170859033dc70fce5fa332ce27",
+      "sha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+      "bytes": 20091,
+      "updatedAt": "2026-10-21T06:38:31Z"
+    },
+    {
+      "filename": "snippets/icon.liquid",
+      "apiMd5": "bae5a7489642235f437f8072be3b7c56",
+      "actualMd5": "bae5a7489642235f437f8072be3b7c56",
+      "sha256": "3f7b91b16a5116871bda8ffb8b9cf86ee96ec97c619ef3c0538f2931b6a16f83",
+      "youtubeCasePresent": true
+    }
+  ],
+  "semanticFieldsChanged": 1,
+  "allOtherJsonValuesPreserved": true,
+  "rawPrefixAndSuffixPreserved": true,
+  "existingFacebookLinkPreserved": true,
+  "rendererAndIconAlreadySupportYoutube": true,
+  "externalLibrariesInstalled": 0,
+  "liveThemeWrites": 0,
+  "profileWrites": 0,
+  "socialWrites": 0,
+  "scopeLimits": [
+    "Public homepage HTML only, no storefront JavaScript executed.",
+    "No browser, full theme dependency, or subscription outcome test.",
+    "CLI docs fetch failed; native official documentation was available.",
+    "CLI GraphQL validator lacks assets; native validator delegated to successful actual read queries.",
+    "Current source hash and MAIN role must match immediately before any separately approved application."
+  ]
+}
