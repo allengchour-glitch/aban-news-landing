@@ -73,7 +73,7 @@ STUFEN="1 2 3" BATCH=150 nohup bash automation/auswahl_durchlauf.sh > /tmp/auswa
 # 7. Fremdstecker (Schweizer Steckdose Typ J nimmt Euro-Flachstecker Typ C, NICHT Schuko Typ F, UK, US, AU) - erkannt am CJ-Variantenschlüssel, nicht am Shop-Text
 $N automation/stecker_cj_bereinigen.mjs                 # Trockenlauf; liest /tmp/cj_fakten_cache/<handle>.json (CACHE_DIR); Plan /tmp/stecker_cj_plan.json
 QUELLE=shop $N automation/stecker_cj_bereinigen.mjs     # Produkte OHNE CJ-Datenblatt: Optionswerte aus /tmp/varianten_bulk.jsonl (BULK_DATEI)
-#    LIVE=1 löscht Fremdstecker-Varianten (Tag stecker-bereinigt-2510); bleibt keine passende, Produkt DRAFT + Tag stecker-nicht-ch. Gegenprobe: Lauf wiederholen, Plan muss leer sein (bei QUELLE=shop erst die Bulk-Datei neu ziehen).
+#    LIVE=1 löscht Fremdstecker-Varianten (Tag stecker-bereinigt-2510); bleibt keine passende, Produkt DRAFT + Tag stecker-nicht-ch. Gegenprobe: Lauf wiederholen, Plan muss leer sein (bei QUELLE=shop erst die Bulk-Datei neu ziehen: `bulkOperationRunQuery` auf `productVariants { id title selectedOptions{name value} product{id handle title status} }`, kein Repo-Skript erzeugt sie).
 ```
 
 Weitere Schalter von `cj_varianten_nachziehen.mjs`: `PLAN_DIR` · `LEDGER` (Vorgabe `dropship/cj_varianten_ledger.txt`) · `USD_CHF` (0.82435, Kurs 23.10.) ·
@@ -91,7 +91,7 @@ er zeigte sich zuerst als «alle Läufe rc=1, FERTIG»: **bei einem Dauerlauf im
 - Zerlegt den CJ-Schlüssel nur, wenn eindeutig; sonst `Auswahl nicht baubar` - **es wird nie geraten**.
 - Fracht CN→CH je Gewichtsklasse (`lib/lieferbarkeit.mjs`): 0 Linien = Variante ausgeschlossen; **unbekannt wird nicht hinzugefügt**; mindestens 2 lieferbare Varianten nötig.
 - Preis: Einkaufsbezug ist die **erste** CJ-Variante (`vs[0].ek`, Annahme «so wurde importiert», nicht belegt, Falle 7). Mehreinkauf über 0,05 CHF gegenüber dieser bekommt den Aufschlag
-  (Mehreinkauf × `USD_CHF` × Preis/Kosten der bisherigen Variante, aufgerundet auf .90); nie unter dem bisherigen Preis; unbekannte Basiskosten/-preis → Einheitspreis. Im Plan `basis`, `varianten[].preis`/`einheitspreis` gegen den Shop-Preis lesen.
+  (Mehreinkauf × `USD_CHF` × Preis/Kosten der bisherigen Variante, aufgerundet auf .90); nie unter dem bisherigen Preis; unbekannte Basiskosten oder unbekannter Einkaufspreis → Einheitspreis; fehlender Basispreis (Shop-Preis ≤ 0) → Überspringen «kein Basispreis». Im Plan `basis`, `varianten[].preis`/`einheitspreis` gegen den Shop-Preis lesen.
 - Fremdstecker (US/UK/AU/JP) werden nie angelegt (`steckerUrteil`, `lib/stecker_cj.mjs`, am CJ-Schlüssel); EU/EUR bleibt, «US Size 10» (Ringgrösse) ist kein Stecker. Nur Fremdstecker bei CJ = Überspringen («nur Fremdstecker», ins Ledger).
 - Buchstaben-Kürzel unter Color/Farbe (A, B, C; mind. die Hälfte der Werte) werden Option «Modell» mit Werten «Modell A»; Zahlen nie (Moissanit-Ring «5, 6, 7, 8» = Ringgrössen).
 - `productSet` mit `files` **definiert die ganze Galerie**: alle READY-Medien werden per ID mitgeschickt (über 60 Medien → übersprungen). Nicht-READY-Medien fallen weg (`medienVerworfen`).

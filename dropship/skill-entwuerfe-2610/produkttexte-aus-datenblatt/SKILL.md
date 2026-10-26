@@ -14,7 +14,7 @@ Marken: **GEMESSEN** · **SETZUNG** · alles andere steht im Code.
 
 ## Wann einsetzen
 
-- User-Aussage «Texte zu lasch / zu knapp» (26.10.2026; steht so im Kopfkommentar von `lib/fakten_block.mjs` und `lib/text_prosa.mjs`).
+- User-Aussage «Beschreibungen zu lasch» (Kopfkommentar `lib/fakten_block.mjs`, datiert 25.10.2026, und `lib/text_prosa.mjs`, datiert 26.10.2026); «zu knappe Texte» steht im CLAUDE.md-Block vom 25./26.10. (jetzt in `dropship/STAND-ARCHIV.md`).
 - Neue Produkte nach einem Import, deren Seite nur den Kurztext hat.
 - **Nicht**, wenn der Titel dem Datenblatt widerspricht (erst Skill `titel-wahrheit`) oder die Quelle dünn ist (siehe Grenzen).
 
