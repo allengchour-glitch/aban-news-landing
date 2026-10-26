@@ -84,10 +84,13 @@ jobs:
         # ffmpeg ist auf ubuntu-latest NICHT vorinstalliert. Ohne es gälte jedes Variantenbild als «unlesbar» und die Varianten gingen ohne eigenes Bild live
         # (Prüfung 26.10.2026, drei Prüfer unabhängig). Das Werkzeug prüft ffmpeg zusätzlich selbst und bricht sonst ab.
         run: |
+          # apt kann auf frischen Rechnern lange auf die Paketsperre warten (am 26.10.2026 hing ein CI-Lauf über drei Minuten): Sperr-Wartezeit und hartes Zeitlimit,
+          # dann laut scheitern — nie eine ganze Nacht stehen.
           for versuch in 1 2 3; do
-            sudo apt-get update -q && sudo apt-get install -y --no-install-recommends ffmpeg && break
-            echo "apt-get gescheitert (Versuch $versuch/3)"; sleep 15
+            if timeout 420 sudo apt-get -o DPkg::Lock::Timeout=240 update -q && timeout 420 sudo apt-get -o DPkg::Lock::Timeout=240 install -y --no-install-recommends ffmpeg; then break; fi
+            echo "apt-get gescheitert (Versuch $versuch/3)"; sleep 20
           done
+          command -v ffmpeg >/dev/null || { echo "::error title=ffmpeg fehlt::apt-get konnte ffmpeg nach 3 Versuchen nicht installieren; ohne ffmpeg werden keine Variantenbilder erkannt, es wird nichts geschrieben."; exit 1; }
           ffmpeg -version | head -1
 
       - name: KI-Dienst für die Übersetzung der Variantennamen prüfen (echter Probeaufruf)

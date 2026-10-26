@@ -3,7 +3,7 @@
 // Exitcode den Treiber steuert. Das lässt sich mit den reinen Bibliotheksfunktionen allein nicht prüfen.
 // Jedes Szenario startet das Werkzeug als eigenen Prozess; geprüft werden Exitcode, Ledger-Zeilen und die tatsächlich gesendeten Anfragen.
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, mkdirSync, chmodSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -11,6 +11,13 @@ let ok = 0, fehl = 0;
 const ist = (n, a, b) => { if (JSON.stringify(a) === JSON.stringify(b)) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
 const REPO = resolve(new URL('..', import.meta.url).pathname);
 const STUB = join(REPO, 'automation/lib/test_netz_stub.mjs'), WERKZEUG = process.env.WERKZEUG_PFAD || join(REPO, 'automation/cj_varianten_nachziehen.mjs');   // WERKZEUG_PFAD: für Mutationsproben
+
+// ffmpeg-Attrappe: Das Werkzeug prüft beim Start nur `ffmpeg -version` (die Szenarien brauchen keine Bilddekodierung; der Bild-Fall scheitert schon beim Laden).
+// So hängt der Test weder von einem installierten ffmpeg noch vom Paketserver der CI ab (apt-get hing dort einmal über drei Minuten).
+const SHIM = mkdtempSync(join(tmpdir(), 'ffmpeg-attrappe-'));
+writeFileSync(join(SHIM, 'ffmpeg'), '#!/bin/sh\n[ "$1" = "-version" ] && { echo "ffmpeg version attrappe"; exit 0; }\necho "ffmpeg-Attrappe: nur für Tests" >&2; exit 1\n');
+chmodSync(join(SHIM, 'ffmpeg'), 0o755);
+process.on('exit', () => rmSync(SHIM, { recursive: true, force: true }));
 
 /** Produkt-Baukasten: sicher = Farben, die das Wörterbuch kennt; unsicher = Phantasiefarben, die erst übersetzt werden müssten. */
 let zaehler = 0;
@@ -23,7 +30,7 @@ const P = (art = 'sicher', extra = {}) => {
   return { pid, ...basis, ...extra };
 };
 
-function lauf(szenario, { ledger = '', live = true, env = {}, pfad = process.env.PATH } = {}) {
+function lauf(szenario, { ledger = '', live = true, env = {}, pfad = `${SHIM}:${process.env.PATH}` } = {}) {
   const t = mkdtempSync(join(tmpdir(), 'nachziehen-test-'));
   try {
     const handles = Object.keys(szenario.produkte);
