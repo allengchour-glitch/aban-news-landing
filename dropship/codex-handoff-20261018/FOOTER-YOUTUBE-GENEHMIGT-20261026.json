@@ -1,0 +1,46 @@
+{
+  "changeId": "luxe_footer_youtube_20261026",
+  "scopeDateEuropeZurich": "2026-10-26",
+  "ownerAuthorization": {
+    "reply": "ja",
+    "specificQuestion": "Gibst du diese eine YouTube-Link-Ergänzung im Shop-Footer frei?",
+    "approved": true,
+    "approvalTimePrecision": "Chat order and date; exact reply time not independently recorded",
+    "noRepeatApprovalNeeded": true
+  },
+  "shopDomain": "luxestyle.ch",
+  "myshopifyDomain": "au3j0y-hq.myshopify.com",
+  "themeId": "gid://shopify/OnlineStoreTheme/187533001089",
+  "fieldPath": "/sections/footer_utilities_jLGE8U/blocks/social_links_Ew63Kq/settings/youtube_url",
+  "approvedValue": "https://www.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA",
+  "currentVerifiedValue": "",
+  "currentVerifiedSourceSha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+  "reviewedBeforeMatchesFreshSource": true,
+  "state": "OWNER_APPROVED_NOT_APPLIED_TOOL_MAIN_LIMIT",
+  "writePolicy": {
+    "tool": "shopify_graphql_mutation",
+    "declaredRestriction": "themeFilesCopy/themeFilesUpsert allowed on unpublished themes only; live MAIN theme writes blocked",
+    "mutationAttempted": false,
+    "autoReviewRejectionReceived": false,
+    "alternativeCredentialsOrWorkflowUsed": false,
+    "unnecessaryThemeCopyCreated": false
+  },
+  "editor": {
+    "url": "https://admin.shopify.com/store/au3j0y-hq/themes/187533001089/editor",
+    "source": "Fresh native Shop.myshopifyDomain and MAIN theme ID",
+    "germanLabelsVerifiedFrom": "locales/de.schema.json",
+    "path": [
+      "Footer-Bereich",
+      "Dienstprogramme",
+      "Social-Media-Links",
+      "YouTube"
+    ]
+  },
+  "writes": {
+    "liveTheme": 0,
+    "profiles": 0,
+    "social": 0,
+    "dns": 0
+  },
+  "remainingStep": "Authenticated owner sets only this existing YouTube URL field in Shopify Admin and saves; source and rendered link then require confirmation. Permission remains valid."
+}
