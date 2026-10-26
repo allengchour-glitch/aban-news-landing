@@ -1,0 +1,485 @@
+{
+  "baselineAndUnitReview": {
+    "schemaVersion": 1,
+    "recordedAtUtc": "2026-10-26T18:40:09+00:00",
+    "result": "local_draft_verified_with_documented_integration_limit",
+    "scope": "Independent local review of existing automation/lib/stecker_cj.mjs draft; no activation",
+    "runtime": "Node.js v24.19.0; built-in modules only",
+    "draftOnly": true,
+    "operationalChanges": false,
+    "externalWrites": [],
+    "installs": [],
+    "networkCallsDuringTests": 0,
+    "moduleDraftChangedInThisReview": false,
+    "baseline": {
+      "manifest": "BASELINE-MANIFEST.json",
+      "sha256Verified": true,
+      "gitBlobHashesVerified": true,
+      "filesVerified": 3,
+      "modified": false
+    },
+    "moduleDiff": {
+      "path": "stecker_cj-evidence-entwurf.diff",
+      "command": "patch --batch --fuzz=0 -p1 -d <temporary-copy> -i <absolute-module-diff>",
+      "exitCode": 0,
+      "stdout": "patching file automation/lib/stecker_cj.mjs\n",
+      "appliesWithoutFuzz": true,
+      "patchedBytesEqualDraft": true,
+      "executableLegacyTextEqualAfterRemovingComments": true,
+      "newExport": "stromversorgungsReview",
+      "existingGuardAddedOrReplaced": false,
+      "realCallerChangedOrExecuted": false
+    },
+    "tests": [
+      {
+        "command": "node baseline/stecker_cj_test.mjs",
+        "result": "passed",
+        "exitCode": 0,
+        "checks": 58,
+        "stdout": "58 ok, 0 Fehler\n"
+      },
+      {
+        "command": "node <temporary-copy>/stecker_cj_test.mjs",
+        "setup": "Unmodified baseline suite copied beside the draft module in an isolated temporary directory",
+        "result": "passed",
+        "exitCode": 0,
+        "checks": 58,
+        "stdout": "58 ok, 0 Fehler\n",
+        "note": "Same existing suite against draft; not 58 additional distinct fixtures"
+      },
+      {
+        "command": "node entwurf/stecker_cj_evidence_test.mjs",
+        "result": "passed",
+        "exitCode": 0,
+        "checks": 19,
+        "stdout": "19 lokale Evidenz-/Grenzfallprüfungen bestanden; keine externen Aufrufe.\n",
+        "syntheticOnly": true
+      },
+      {
+        "command": "node entwurf/stecker_cj_completeness_test.mjs",
+        "result": "passed",
+        "exitCode": 0,
+        "cases": 45,
+        "syntheticOnly": true,
+        "caseResults": [
+          {
+            "name": "fehlender Pflichtbeleg: identity",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: contents",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: plug",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: ratings",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: protection",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: conformity",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: deviceInput",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Pflichtbeleg: adapterOutput",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlende Originalreferenz: source",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlende Originalreferenz: capturedAt",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlende Originalreferenz: sha256",
+            "status": "unknown"
+          },
+          {
+            "name": "unlesbares Archivdatum",
+            "status": "unknown"
+          },
+          {
+            "name": "fehlender Shopify-Variantenbezug",
+            "status": "unknown"
+          },
+          {
+            "name": "Shopify-ID gehört zu einem Produkt, nicht einer Variante",
+            "status": "unknown"
+          },
+          {
+            "name": "Beleg gehört zu anderer Variante: shopifyVariantID",
+            "status": "needsReview"
+          },
+          {
+            "name": "Beleg gehört zu anderer Variante: supplierVariantID",
+            "status": "needsReview"
+          },
+          {
+            "name": "EU/CE allein ersetzen auch eine fehlende Steckeraufnahme nicht",
+            "status": "unknown"
+          },
+          {
+            "name": "unbekanntes Datenformat",
+            "status": "unknown"
+          },
+          {
+            "name": "unbekannte Lieferkonfiguration",
+            "status": "unknown"
+          },
+          {
+            "name": "Mischlieferung bleibt trotz vollständiger übriger Felder offen",
+            "status": "needsReview"
+          },
+          {
+            "name": "EU-Label hebt belegte 60-Hz-only-Ausführung nicht auf",
+            "status": "reject"
+          },
+          {
+            "name": "110-V-Wert ohne Ratingsbeleg ist keine belegte Ablehnung",
+            "status": "unknown"
+          },
+          {
+            "name": "verkehrter Spannungsbereich bleibt unbelegt",
+            "status": "unknown"
+          },
+          {
+            "name": "DC-Angaben ersetzen keine AC-Netzeingangswerte",
+            "status": "unknown"
+          },
+          {
+            "name": "belegter US-Lieferfall ohne Lösung wird abgewiesen",
+            "status": "reject"
+          },
+          {
+            "name": "US-Label ohne exakten Steckerbeleg bleibt unbekannt",
+            "status": "unknown"
+          },
+          {
+            "name": "belegter UK-Lieferfall ohne Lösung wird abgewiesen",
+            "status": "reject"
+          },
+          {
+            "name": "UK-Label ohne exakten Steckerbeleg bleibt unbekannt",
+            "status": "unknown"
+          },
+          {
+            "name": "Reiseadapter bleibt fachlich offen",
+            "status": "needsReview"
+          },
+          {
+            "name": "nicht dokumentierte Adapterlösung",
+            "status": "unknown"
+          },
+          {
+            "name": "manueller Abgleich fehlt: plugRatingAndProtection",
+            "status": "unknown"
+          },
+          {
+            "name": "manueller Abgleich fehlt: supplyConformityEvidence",
+            "status": "unknown"
+          },
+          {
+            "name": "manueller Abgleich fehlt: outputMatchesDevice",
+            "status": "unknown"
+          },
+          {
+            "name": "Abschluss-/Typenschildangabe fehlt: deviceInputMarking",
+            "status": "unknown"
+          },
+          {
+            "name": "Abschluss-/Typenschildangabe fehlt: adapterOutputMarking",
+            "status": "unknown"
+          },
+          {
+            "name": "Abschluss-/Typenschildangabe fehlt: reviewedBy",
+            "status": "unknown"
+          },
+          {
+            "name": "Abschluss-/Typenschildangabe fehlt: reviewedAt",
+            "status": "unknown"
+          },
+          {
+            "name": "CH-Netzlieferung mit vollständig dokumentiertem Review bleibt nur evidenceComplete",
+            "status": "evidenceComplete"
+          },
+          {
+            "name": "USB ohne Netzteil hat nur Lieferumfang-/Stromquellen-Scope",
+            "status": "evidenceComplete"
+          },
+          {
+            "name": "USB-Pflichtbeleg fehlt: contents",
+            "status": "unknown"
+          },
+          {
+            "name": "USB-Pflichtbeleg fehlt: deviceInput",
+            "status": "unknown"
+          },
+          {
+            "name": "USB-Pflichtbeleg fehlt: usbRequirements",
+            "status": "unknown"
+          },
+          {
+            "name": "USB-Anforderungen sind manuell ungeprüft",
+            "status": "unknown"
+          },
+          {
+            "name": "USB-only widerspricht beigefügtem Netzstecker",
+            "status": "needsReview"
+          },
+          {
+            "name": "USB-only widerspricht dokumentiertem Adapter",
+            "status": "needsReview"
+          }
+        ]
+      },
+      {
+        "command": "node baseline/cj_varianten_nachziehen_stecker_test.mjs",
+        "result": "blocked_missing_local_dependency",
+        "exitCode": 1,
+        "casesExecuted": 0,
+        "error": "ERR_MODULE_NOT_FOUND",
+        "missing": "baseline/cj_varianten_nachziehen.mjs",
+        "stderr": "node:internal/modules/esm/resolve:271\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/luxestyle-review/katalogpflege-20261026/swiss-power/baseline/cj_varianten_nachziehen.mjs' imported from /workspace/luxestyle-review/katalogpflege-20261026/swiss-power/baseline/cj_varianten_nachziehen_stecker_test.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:271:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)\n    at #resolve (node:internal/modules/esm/loader:683:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)\n    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///workspace/luxestyle-review/katalogpflege-20261026/swiss-power/baseline/cj_varianten_nachziehen.mjs'\n}\n\nNode.js v24.19.0\n",
+        "note": "Attempted locally; failure occurs during module import. No integration result, no operative caller run."
+      }
+    ],
+    "callerCommentArtifact": {
+      "path": "caller-comment.diff",
+      "result": "schematic_comment_proposal_only",
+      "applyReady": false,
+      "reason": "Contains bare @@ rather than a numbered unified-diff hunk. Caller baseline unavailable locally, so caller patch accuracy cannot be verified.",
+      "handled": "Explicitly labelled in PRODUKTPRUEFUNG.md; not applied or represented as an integration patch."
+    },
+    "semanticReview": {
+      "approvedDecisionReturned": false,
+      "evidenceCompleteIsOnlyDocumentedLimitedEvidence": true,
+      "legalOrSafetyApproval": false,
+      "usbScope": "usb-package-and-source-requirements-only",
+      "usbDoesNotClaimSwissMainsAdapter": true,
+      "euCeUsbLabelsWithoutProof": "unknown",
+      "mixedConfiguration": "needsReview",
+      "variantEvidenceIdMismatch": "needsReview",
+      "documentedForeignPlugWithoutSolution": "reject",
+      "documentedAcRangesExcluding230V50Hz": "reject",
+      "exactEvidenceContentAuthenticityCheckedByCode": false,
+      "exactEvidenceContentRequiresNamedHumanReview": true,
+      "existingLegacyFilterLimitationsPreservedAndDocumented": true,
+      "realProductExamplesRemainUnknown": true
+    },
+    "sourceArchives": [
+      {
+        "url": "https://www.esti.admin.ch/de/themen/faq/elektrische-erzeugnisse-marktueberwachung",
+        "statusCode": 200,
+        "title": "Elektrische Erzeugnisse, Marktüberwachung - Eidgenössisches Starkstrominspektorat ESTI",
+        "scrapeId": "01a17981-6c5d-768c-b668-90ec6b0e830e",
+        "recordedAtUtc": "2026-10-26T18:38:09Z",
+        "maxAge": 0,
+        "path": "ESTI-LIVE.json",
+        "sha256": "e5c4d6e94e670b75300458a77ec24ce4f84770ed00749b1a3dde5595a99094ce",
+        "markdownPresent": true
+      },
+      {
+        "url": "https://www.myswitzerland.com/en-us/planning/about-switzerland/general-facts/general-information/electricity/",
+        "statusCode": 200,
+        "title": "Electricity | Switzerland Tourism",
+        "scrapeId": "01a17981-6bcd-716e-8e0d-47e088a2a838",
+        "recordedAtUtc": "2026-10-26T18:38:09Z",
+        "maxAge": 0,
+        "path": "SWISS-TOURISM-LIVE.json",
+        "sha256": "9fc8595d256826f48d5c24e9d42ed651f8fa980a29e2a8ac6c4ccd9ac832e8ac",
+        "markdownPresent": true
+      }
+    ],
+    "sourceReview": {
+      "pagesLocallyReadAndComparedToSourceNotes": true,
+      "referencesConsistent": true,
+      "estiPageLastUpdate": "2021-07-22",
+      "tourismIsNotLegalOrProductTestingAuthority": true,
+      "archiveFormat": "Complete returned Markdown with selected scrape metadata; not raw HTTP/HTML originals",
+      "noNewProductEvidenceEstablished": true
+    },
+    "limits": [
+      "Review export is not integrated into the operative import or write planner.",
+      "Caller integration test cannot run without the missing local caller and its dependencies.",
+      "caller-comment.diff is a schematic text proposal, not an apply-ready patch.",
+      "Synthetic fixtures prove decision boundaries, not the authenticity or technical correctness of supplier evidence.",
+      "evidenceComplete is not a legal, conformity, safety, product or write approval.",
+      "No shop, feed, workflow or GitHub write was performed."
+    ],
+    "files": [
+      {
+        "path": "BASELINE-MANIFEST.json",
+        "bytes": 750,
+        "sha256": "16510b7f4886f7fe87d4be3314add5d86c4af252e37e1bba7d3178313430547d"
+      },
+      {
+        "path": "ESTI-LIVE.json",
+        "bytes": 14868,
+        "sha256": "e5c4d6e94e670b75300458a77ec24ce4f84770ed00749b1a3dde5595a99094ce"
+      },
+      {
+        "path": "PRODUKTPRUEFUNG.md",
+        "bytes": 9698,
+        "sha256": "c8548d1833b2963bf9a79fb582bd0bdc3c004f7b2a7abdc0b5ed226381c5aba1"
+      },
+      {
+        "path": "SOURCE.md",
+        "bytes": 4731,
+        "sha256": "8a0d58ec25114f7fefdeebde030ff44dd58a178c1c3a11a995093014466de999"
+      },
+      {
+        "path": "SWISS-TOURISM-LIVE.json",
+        "bytes": 6689,
+        "sha256": "9fc8595d256826f48d5c24e9d42ed651f8fa980a29e2a8ac6c4ccd9ac832e8ac"
+      },
+      {
+        "path": "baseline/cj_varianten_nachziehen_stecker_test.mjs",
+        "bytes": 3195,
+        "sha256": "5cf863d8f23e923892287d8b55a320d9e5af392e90009f48a8982624fa25bdb0"
+      },
+      {
+        "path": "baseline/stecker_cj.mjs",
+        "bytes": 4621,
+        "sha256": "d7dec65d9aa04364649c65de2b9d7bb718c6336db6ec666b3e30b893f643d8fe"
+      },
+      {
+        "path": "baseline/stecker_cj_test.mjs",
+        "bytes": 5610,
+        "sha256": "4ce639008189b012949cbc47d3fffa7d21f8a05b835295f77a8fe6b558260b76"
+      },
+      {
+        "path": "caller-comment.diff",
+        "bytes": 665,
+        "sha256": "407ef4618aeafd47a89c60235311db3a9262933bc34565214c16a8a90fdd9463"
+      },
+      {
+        "path": "entwurf/stecker_cj.mjs",
+        "bytes": 9741,
+        "sha256": "a4a6625a8b0e8279624f6dc46221146b1948123d6445bd6a3e6dc96b2b279945"
+      },
+      {
+        "path": "entwurf/stecker_cj_completeness_test.mjs",
+        "bytes": 6053,
+        "sha256": "781a316ff83254613e179e6bde1438f0c3daae51fdb3ccf992a9d97522e6112a"
+      },
+      {
+        "path": "entwurf/stecker_cj_evidence_test.mjs",
+        "bytes": 4089,
+        "sha256": "697137958d97ffd55bc63cfdc30ae8b9af5c32a213b5170b019202e586a3b267"
+      },
+      {
+        "path": "stecker_cj-evidence-entwurf.diff",
+        "bytes": 8202,
+        "sha256": "996de26052f3b9e5cbdbbac78e2746a6242fd7a941fe8bdd6b830e3133255dc8"
+      }
+    ]
+  },
+  "laterLegacyIntegration": {
+    "schemaVersion": 1,
+    "recordedAtUtc": "2026-10-26T18:58:32.548605+00:00",
+    "result": "passed_legacy_caller_only",
+    "scope": "Five existing synthetic early-return plane() cases; no operational main() execution",
+    "repository": "allengchour-glitch/aban-news-landing",
+    "commit": "f5c687a1e113b6dfad108fa7dbf31ef4185c27e5",
+    "frozenModules": 14,
+    "frozenGitBlobAndSha256VerifiedBeforeTests": true,
+    "fixtureTest": "baseline/cj_varianten_nachziehen_stecker_test.mjs",
+    "testSourceSha256": "5cf863d8f23e923892287d8b55a320d9e5af392e90009f48a8982624fa25bdb0",
+    "harnessOnlyAdaptation": {
+      "reason": "Keep test cleanup in isolated temporary cache",
+      "from": "rmSync(`/tmp/cj_fakten_cache/${h}.json`)",
+      "to": "rmSync(`${process.env.CJ_FAKTEN_CACHE}/${h}.json`)"
+    },
+    "testEnvironment": {
+      "inheritedEnvironment": false,
+      "CJ_PAUSE_MS": "0",
+      "CJ_FAKTEN_CACHE": "isolated temporary directory"
+    },
+    "staticReview": {
+      "modules": 14,
+      "staticImportStatements": 22,
+      "onlyRelativeAndNodeBuiltins": true,
+      "guardedMainModules": [
+        "automation/cj_varianten_nachziehen.mjs:412",
+        "automation/farbwahl_scan.mjs:86"
+      ],
+      "credentialReadFunctionsNotCalled": true,
+      "allFiveCasesReturnBeforeFreightImagesAndTranslation": true
+    },
+    "tests": [
+      {
+        "name": "frozen_baseline",
+        "result": "passed",
+        "exitCode": 0,
+        "cases": 5,
+        "stdout": "5 ok, 0 Fehler\nOFFLINE_EVIDENCE={\"syntheticProductRequests\":5,\"blockedFetchAttempts\":0,\"childProcessAttempts\":0,\"realNetworkCalls\":0,\"requests\":[\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\"]}\n",
+        "stderr": "",
+        "isolationEvidence": {
+          "syntheticProductRequests": 5,
+          "blockedFetchAttempts": 0,
+          "childProcessAttempts": 0,
+          "realNetworkCalls": 0,
+          "requests": [
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160"
+          ]
+        },
+        "cacheFilesRemainingAfterSuite": [],
+        "temporaryDirectoryRemovedAfterRun": true
+      },
+      {
+        "name": "local_draft_legacy_exports",
+        "result": "passed",
+        "exitCode": 0,
+        "cases": 5,
+        "stdout": "5 ok, 0 Fehler\nOFFLINE_EVIDENCE={\"syntheticProductRequests\":5,\"blockedFetchAttempts\":0,\"childProcessAttempts\":0,\"realNetworkCalls\":0,\"requests\":[\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\",\"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160\"]}\n",
+        "stderr": "",
+        "isolationEvidence": {
+          "syntheticProductRequests": 5,
+          "blockedFetchAttempts": 0,
+          "childProcessAttempts": 0,
+          "realNetworkCalls": 0,
+          "requests": [
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160",
+            "https://developers.cjdropshipping.com/api2.0/v1/product/query?pid=260505090828160"
+          ]
+        },
+        "cacheFilesRemainingAfterSuite": [],
+        "temporaryDirectoryRemovedAfterRun": true
+      }
+    ],
+    "externalWrites": [],
+    "installs": [],
+    "credentialReads": 0,
+    "operationalChanges": false,
+    "reviewExportIntegratedIntoCaller": false,
+    "previousValidationPreserved": "VALIDIERUNG.json retains the earlier failed missing-dependency import attempt",
+    "limits": [
+      "PASS covers only existing legacy steckerUrteil filtering through plane().",
+      "The new stromversorgungsReview export remains disconnected from the operative caller.",
+      "Synthetic cases do not establish actual product conformity or supplier evidence authenticity.",
+      "MAX_VARIANTEN=1 intentionally causes return before freight, image, translation and write planning."
+    ]
+  },
+  "notIntegratedIntoLiveCaller": true,
+  "sourceMarkdown": "swiss-power/SOURCE.md",
+  "officialSourcesArchived": true
+}
