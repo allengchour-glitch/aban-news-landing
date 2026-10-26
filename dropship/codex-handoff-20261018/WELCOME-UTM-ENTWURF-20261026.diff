@@ -1,0 +1,11 @@
+--- VZnxDz.before.html
++++ VZnxDz.review.html
+@@ -38,7 +38,7 @@
+ </td>
+ </tr>
+ <tr>
+-<td align="center" style="padding:28px 32px 8px;"> <a href="https://luxestyle.ch/collections/neu-eingetroffen" style="display:inline-block;background:#b8915a;color:#ffffff;text-decoration:none;font-size:17px;font-weight:bold;padding:15px 44px;border-radius:6px;">Neuheiten entdecken →</a>
++<td align="center" style="padding:28px 32px 8px;"> <a href="https://luxestyle.ch/collections/neu-eingetroffen?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=welcome_series&amp;utm_content=welcome_cta" style="display:inline-block;background:#b8915a;color:#ffffff;text-decoration:none;font-size:17px;font-weight:bold;padding:15px 44px;border-radius:6px;">Neuheiten entdecken →</a>
+ </td>
+ </tr>
+ <tr>
