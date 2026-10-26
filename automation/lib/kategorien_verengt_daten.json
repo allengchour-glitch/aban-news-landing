@@ -1535,5 +1535,44 @@
   "ausschlussTitel": "diamond[ -]?painting|malen nach zahlen|digital painting|(^|[^a-zäöüß])diy[ -]?(leinwand|gemälde|malerei|mal)",
   "nurG": [],
   "min": 8
+ },
+ {
+  "handle": "westen-gilets",
+  "titel": "Westen & Gilets",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Weste"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Gilet"
+    }
+   ]
+  },
+  "ausschlussG": [
+   "Animals & Pet Supplies",
+   "Apparel & Accessories > Shoes",
+   "Apparel & Accessories > Jewelry",
+   "Apparel & Accessories > Clothing > Dresses",
+   "Apparel & Accessories > Clothing > Skirts",
+   "Apparel & Accessories > Clothing > Pants",
+   "Apparel & Accessories > Clothing > Underwear",
+   "Electronics",
+   "Home & Garden",
+   "Arts & Entertainment",
+   "Health & Beauty",
+   "Hardware",
+   "Luggage & Bags",
+   "Vehicles & Parts",
+   "Toys & Games"
+  ],
+  "ausschlussTitel": "^(?!.*(weste(?!rn)|gilet)).*western|magazinbeutel|umhängetasche|powerbank",
+  "nurG": [],
+  "min": 5
  }
 ]

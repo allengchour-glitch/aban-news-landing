@@ -1,0 +1,22 @@
+{
+ "id": "gid://shopify/Collection/689775477121",
+ "title": "Westen & Gilets",
+ "productsCount": {
+  "count": 576
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Weste"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Gilet"
+   }
+  ]
+ }
+}
