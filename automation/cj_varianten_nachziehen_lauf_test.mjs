@@ -81,9 +81,13 @@ ist('userError beim Schreiben: FEHLER gemerkt, Lauf geht weiter', [r.rc, eng(r)]
 r = lauf({ produkte: { a: P(), b: P(), c: P(), d: P() }, set: { a: 'fehler', b: 'fehler', c: 'fehler', d: 'fehler' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
 ist('Fehlerserie: Exitcode 1 nach 3 Fehlern', [r.rc, eng(r)], [1, ['a:FEHLER', 'b:FEHLER', 'c:FEHLER']]);
 ist('Fehlerserie: das vierte Produkt wurde nicht einmal geplant', art(r, 'PRODUKT').map(x => x.handle), ['a', 'b', 'c']);
-ist('Fehlerserie: Meldung', /ABBRUCH: 3 Fehler in Folge/.test(r.out), true);
+ist('Fehlerserie: Meldung', /ABBRUCH: 3 Schreibfehler in Folge/.test(r.out), true);
 r = lauf({ produkte: { a: P(), b: P(), c: P(), d: P() }, set: { a: 'fehler', b: 'fehler', c: 'ok', d: 'fehler' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
 ist('ein Erfolg setzt die Serie zurück: kein Abbruch', [r.rc, eng(r)], [0, ['a:FEHLER', 'b:FEHLER', 'c:GESCHRIEBEN', 'd:FEHLER']]);
+
+// Ein dauerhafter Schreibausfall wird auch erkannt, wenn zwischendurch Produkte übersprungen werden (Überspringer setzen den Schreibzähler NICHT zurück)
+r = lauf({ produkte: { a: P(), e1: P('einzeln'), b: P(), e2: P('einzeln'), c: P(), e3: P('einzeln'), d: P() }, set: { a: 'fehler', b: 'fehler', c: 'fehler', d: 'fehler' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
+ist('Schreibausfall mit eingestreuten Überspringern: trotzdem Exitcode 1 nach 3 Schreibfehlern', [r.rc, eng(r).filter(x => x.endsWith(':FEHLER')), art(r, 'PRODUKT').map(x => x.handle).includes('d')], [1, ['a:FEHLER', 'b:FEHLER', 'c:FEHLER'], false]);
 
 // ── 5) Shopify-Tageslimit: Exitcode 4, KEINE Ledger-Zeile (kein Fehler des Produkts)
 r = lauf({ produkte: { a: P(), b: P() }, set: { a: 'limit' } });

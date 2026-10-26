@@ -300,7 +300,9 @@ async function main() {
   // Serien: Ein einzelner kaputter Datensatz darf die Scheibe nicht festhalten (er wird gemerkt, der Lauf geht weiter), eine ganze Serie gleicher Fehler
   // aber bedeutet «ein Dienst ist weg» — dann nicht die Liste verbrennen, sondern kontrolliert enden (der Treiber wiederholt bzw. wartet).
   const MAX_FEHLER = Number(process.env.MAX_FEHLER_FOLGE || 8), MAX_KI = Number(process.env.MAX_KI_FOLGE || 5);
-  let fehlerFolge = 0, kiFolge = 0, drosselFolge = 0;
+  // fehlerFolge = Plan-Fehler (CJ/Shopify-Lesen), schreibFolge = Schreibfehler. Überspringer setzen NUR fehlerFolge zurück (sie belegen, dass CJ antwortet), nie schreibFolge:
+  // sonst bliebe ein dauerhafter Schreibausfall unerkannt, sobald zwischendurch ein Produkt übersprungen wird (Prüfung 26.10.2026).
+  let fehlerFolge = 0, schreibFolge = 0, kiFolge = 0, drosselFolge = 0;
   const abbruch = (code, text) => { console.log('ABBRUCH:', text); process.exitCode = code; };
   try {
     for (const h of handles) {
@@ -377,7 +379,7 @@ async function main() {
         zaehl.FEHLER = (zaehl.FEHLER || 0) + 1;
         console.log('   FEHLER beim Schreiben:', String(e.message).slice(0, 200));
         merke('FEHLER', `Schreiben: ${String(e.message).slice(0, 90)}`);
-        if (++fehlerFolge >= MAX_FEHLER) { abbruch(1, `${fehlerFolge} Fehler in Folge — ein Dienst scheint auszufallen`); break; }
+        if (++schreibFolge >= MAX_FEHLER) { abbruch(1, `${schreibFolge} Schreibfehler in Folge — ein Dienst scheint auszufallen`); break; }
         continue;
       }
       if (veraendert) {
@@ -392,10 +394,10 @@ async function main() {
       if (!w.ok && /VARIANT_THROTTLE|Daily variant creation limit/i.test(w.fehler)) throw new Error(w.fehler);
       if (!w.ok) {
         zaehl.FEHLER = (zaehl.FEHLER || 0) + 1; console.log('   FEHLER beim Schreiben:', w.fehler); merke('FEHLER', w.fehler);
-        if (++fehlerFolge >= MAX_FEHLER) { abbruch(1, `${fehlerFolge} Fehler in Folge — ein Dienst scheint auszufallen`); break; }
+        if (++schreibFolge >= MAX_FEHLER) { abbruch(1, `${schreibFolge} Schreibfehler in Folge — ein Dienst scheint auszufallen`); break; }
         continue;
       }
-      fehlerFolge = 0;
+      fehlerFolge = 0; schreibFolge = 0;
       zaehl.GESCHRIEBEN = (zaehl.GESCHRIEBEN || 0) + 1;
       console.log(`   GESCHRIEBEN: ${w.varianten} Varianten`);
       merke('GESCHRIEBEN', `${w.varianten} Varianten`);

@@ -28,29 +28,35 @@ exec 9>"$T/auswahl_durchlauf.lock"; flock -n 9 || { echo "Läuft schon (Sperre $
 WORKERS=${WORKERS:-3}   # parallele Läufe: die Zeit geht in Bild-Downloads und Shopify-Schreiben, nicht in CJ (CJ erlaubt ~1 Abfrage/s)
 FEHLMARKE="$T/auswahl_scheibe_fehler"; rm -f "$FEHLMARKE"
 
+# Fortschritt = Ledger-Zeilen, die NICHT FEHLER und nicht «vorläufig» sind. Die bricht das Werkzeug beim Abbruch mit Exitcode 3/5 selbst ab und hängt sie dabei an (Parkzeile des KI-Ausfalls,
+# FEHLER-Zeile der ersten CJ-Drosselung): mit `wc -l` zählte jeder abgebrochene Lauf als Fortschritt und MAX_STILL griff nie (Prüfung 26.10.2026). `grep -c` gibt bei 0 Treffern «0» aus.
+fortschritt() { local n; n=$(grep -vcE ' · FEHLER · | · UEBERSPRUNGEN · vorläufig' 2>/dev/null "$LEDGER"); echo "${n:-0}"; }
+# Schlafen in 5-Sekunden-Stücken: die Stopp-Datei (sanftes Ende vor der Höchstdauer) weckt auch schlafende Scheiben. Sonst endet der Lauf fast immer durch den harten Abbruch.
+schlaf() { local i; for ((i = 0; i < $1; i += 5)); do [ -e "$T/auswahl_stop" ] && return 0; sleep 5; done; }
+
 lauf_scheibe() {   # $1 = Stufe, $2 = Datei mit den Handles dieser Scheibe, $3 = Nummer
   local st=$1 datei=$2 nr=$3 lauf rc zus fehl=0 still=0 vor nach
   [ "$(wc -l < "$datei")" -le 1 ] && return 0   # nur die Kopfzeile: leere Scheibe, kein Fehler
   while true; do
     [ -e "$T/auswahl_stop" ] && { echo "$(date -u +%FT%TZ) [$st/$nr] Stopp-Datei gefunden" | tee -a "$LOG"; return 0; }
-    lauf=$(mktemp); vor=$(wc -l 2>/dev/null < "$LEDGER" || echo 0)
+    lauf=$(mktemp); vor=$(fortschritt)
     LIVE=1 LIMIT="$BATCH" HANDLES_DATEI="$datei" "$NODE" automation/cj_varianten_nachziehen.mjs > "$lauf" 2>&1; rc=$?
     cat "$lauf" >> "$LOG"
-    nach=$(wc -l 2>/dev/null < "$LEDGER" || echo 0); [ "$nach" -gt "$vor" ] && still=0   # Fortschritt (irgendeine Scheibe schrieb eine Ledger-Zeile)
+    nach=$(fortschritt); [ "$nach" -gt "$vor" ] && still=0   # Fortschritt (irgendeine Scheibe schrieb eine Ledger-Zeile)
     zus=$(grep -E '^Zusammenfassung' "$lauf" | tail -1)
     echo "$(date -u +%FT%TZ) [$st/$nr] rc=$rc $zus" | tee -a "$LOG"
     if [ "$rc" = 3 ] || [ "$rc" = 5 ]; then
       still=$((still + 1)); rm -f "$lauf"
       if [ "$still" -ge "$MAX_STILL" ]; then echo "$(date -u +%FT%TZ) [$st/$nr] gibt auf: $still Mal rc=$rc ohne neue Ledger-Zeile" | tee -a "$LOG"; echo "Stufe $st Scheibe $nr: rc=$rc ohne Fortschritt" >> "$FEHLMARKE"; return 0; fi
       if [ "$rc" = 3 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] CJ drosselt/erschöpft — warte ${WARTE}s ($still/$MAX_STILL)" | tee -a "$LOG"; else echo "$(date -u +%FT%TZ) [$st/$nr] KI-Dienst fällt aus — warte ${WARTE}s ($still/$MAX_STILL)" | tee -a "$LOG"; fi
-      sleep "$WARTE"; continue
+      schlaf "$WARTE"; continue
     fi
-    if [ "$rc" = 4 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] Shopify-Tagesgrenze für neue Varianten erreicht — warte ${WARTE_VAR}s" | tee -a "$LOG"; rm -f "$lauf"; sleep "$WARTE_VAR"; continue; fi
+    if [ "$rc" = 4 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] Shopify-Tagesgrenze für neue Varianten erreicht — warte ${WARTE_VAR}s" | tee -a "$LOG"; rm -f "$lauf"; schlaf "$WARTE_VAR"; continue; fi
     if [ "$rc" != 0 ]; then   # Absturz: NICHT als «Scheibe durch» werten
       fehl=$((fehl + 1)); rm -f "$lauf"
       echo "$(date -u +%FT%TZ) [$st/$nr] ABSTURZ rc=$rc (Versuch $fehl/3)" | tee -a "$LOG"
       if [ "$fehl" -ge 3 ]; then echo "Stufe $st Scheibe $nr: rc=$rc" >> "$FEHLMARKE"; return 0; fi
-      sleep "$WARTE_FEHL"; continue
+      schlaf "$WARTE_FEHL"; continue
     fi
     fehl=0
     if ! grep -q 'LIMIT .* erreicht' "$lauf"; then rm -f "$lauf"; return 0; fi   # Scheibe durch

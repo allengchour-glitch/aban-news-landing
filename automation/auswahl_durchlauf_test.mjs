@@ -15,13 +15,15 @@ if grep -q poison "$HANDLES_DATEI"; then echo poison >> "$FAKE_LOG"; echo 'Zusam
 echo "FORCE=\${FORCE:-leer}" >> "$FAKE_FORCE"
 f="$FAKE_CODES"; z=$(head -n1 "$f" 2>/dev/null); sed -i '1d' "$f" 2>/dev/null; echo "$z" >> "$FAKE_LOG"
 [ -n "$FAKE_SCHREIBT" ] && echo "x · 2026-10-26T00:00:00Z · GESCHRIEBEN · 1 Varianten" >> "$LEDGER"
+[ -n "$FAKE_PARKT" ] && { echo "p · 2026-10-26T00:00:00Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar" >> "$LEDGER"; echo "q · 2026-10-26T00:00:00Z · FEHLER · Plan: CJ_THROTTLED x" >> "$LEDGER"; }
+[ -n "$FAKE_STOPP" ] && touch "$FAKE_STOPP"
 case "$z" in
   0L) echo "LIMIT 40 erreicht — Rest bleibt für den nächsten Lauf"; echo 'Zusammenfassung: {}'; exit 0;;
   *) echo 'Zusammenfassung: {}'; exit "\${z:-0}";;
 esac
 `;
 
-function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, stufen = '1', workers = '1', extra = {} } = {}) {
+function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, stufen = '1', workers = '1', extra = {}, stoppImLauf = false } = {}) {
   const t = mkdtempSync(join(tmpdir(), 'auswahl-test-'));
   try {
     writeFileSync(join(t, 'fake_node.sh'), FAKE); chmodSync(join(t, 'fake_node.sh'), 0o755);
@@ -31,7 +33,7 @@ function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, s
     const r = spawnSync('bash', [process.env.DRIVER || 'automation/auswahl_durchlauf.sh'], {
       cwd: REPO, encoding: 'utf8', timeout: 60000,
       env: { PATH: process.env.PATH, AUSWAHL_TMP: t, NODE: join(t, 'fake_node.sh'), WORKERS: workers, STUFEN: stufen, BATCH: '40',
-        WARTE: '0', WARTE_VAR: '0', WARTE_FEHL: '0', LEDGER: join(t, 'ledger.txt'), FAKE_CODES: join(t, 'codes.txt'), FAKE_LOG: join(t, 'aufrufe.txt'), FAKE_FORCE: join(t, 'force.txt'), ...extra },
+        WARTE: '0', WARTE_VAR: '0', WARTE_FEHL: '0', LEDGER: join(t, 'ledger.txt'), FAKE_CODES: join(t, 'codes.txt'), FAKE_LOG: join(t, 'aufrufe.txt'), FAKE_FORCE: join(t, 'force.txt'), ...extra, ...(stoppImLauf ? { FAKE_STOPP: join(t, 'auswahl_stop') } : {}) },
     });
     const aufrufe = existsSync(join(t, 'aufrufe.txt')) ? readFileSync(join(t, 'aufrufe.txt'), 'utf8').split('\n').filter(x => x !== '' || false) : [];
     const log = existsSync(join(t, 'auswahl_durchlauf.log')) ? readFileSync(join(t, 'auswahl_durchlauf.log'), 'utf8') : '';
@@ -98,6 +100,22 @@ r = lauf(['5', '0']);
 ist('rc=5 einmal, dann Erfolg: weiter, Exitcode 0', [r.rc, r.anzahl], [0, 2]);
 r = lauf(['3', '3', '3', '3', '3', '3', '0'], { extra: { MAX_STILL: '3', FAKE_SCHREIBT: '1' } });
 ist('rc=3 MIT Fortschritt (Ledger wächst): nie aufgeben, Exitcode 0', [r.rc, r.anzahl, /gibt auf/.test(r.log)], [0, 7, false]);
+
+// 10b) Das Werkzeug hängt beim Abbruch mit rc=3/5 selbst Parkzeilen an («vorläufig», FEHLER): das ist KEIN Fortschritt (Prüfung 26.10.2026: sonst griff MAX_STILL nie)
+r = lauf(['5', '5', '5', '5', '5'], { extra: { MAX_STILL: '3', FAKE_PARKT: '1' } });
+ist('rc=5 mit Parkzeilen im Ledger: gibt trotzdem nach 3 Mal auf, Exitcode 2', [r.rc, r.anzahl, /gibt auf: 3 Mal rc=5/.test(r.log)], [2, 3, true]);
+r = lauf(['3', '3', '3', '3', '3'], { extra: { MAX_STILL: '3', FAKE_PARKT: '1' } });
+ist('rc=3 (CJ-5xx) mit FEHLER-Zeilen im Ledger: gibt trotzdem nach 3 Mal auf, Exitcode 2', [r.rc, r.anzahl], [2, 3]);
+r = lauf(['3', '3', '3', '3', '3', '0'], { extra: { MAX_STILL: '3', FAKE_PARKT: '1', FAKE_SCHREIBT: '1' } });
+ist('echte Schreiberfolge zwischen den Abbrüchen zählen weiter als Fortschritt', [r.rc, /gibt auf/.test(r.log)], [0, false]);
+
+// 10c) Die Stopp-Datei (sanftes Ende) weckt auch eine schlafende Scheibe — sonst endet der Lauf fast immer durch den harten Abbruch
+{
+  const t0 = Date.now();
+  r = lauf(['3', '0'], { extra: { WARTE: '40', FAKE_STOPP: '/tmp/__wird_unten_ersetzt__' }, stoppImLauf: true });
+  const dauer = (Date.now() - t0) / 1000;
+  ist('Stopp-Datei beendet die 40-Sekunden-Pause sofort: 1 Aufruf, Exitcode 0, in unter 20 s', [r.rc, r.anzahl, dauer < 20, /Stopp-Datei gefunden/.test(r.log)], [0, 1, true, true]);
+}
 
 // 11) FORCE wird nicht an das Werkzeug durchgereicht (sonst Endlosschleife über volle Stapel)
 r = lauf(['0'], { extra: { FORCE: '1' } });
