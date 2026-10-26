@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_KATALOGPFLEGE_GENEHMIGTER_TEXT_20261026
+
+**Der konkret besprochene Trenchcoat-Text ist jetzt genehmigt und live umgesetzt.** Auf «wie gebe ich frei? du hast freigabe» genau descriptionHtml von Produkt 16603335754119 geschrieben, einmalig und nativ/öffentlich exakt zurückgelesen. [Implementierungsbeleg](TRENCHCOAT-IMPLEMENTIERUNG-20261026.json). Alle 48 Varianten, CHF 31.90 und alle übrigen gelieferten nativen Produktfelder unverändert. Keine erneute Genehmigung oder Wiederholung dieses erledigten Textwrites. Die öffentliche Produktseite zeigt die neue Einleitung/Farb-/Grössenhilfe; ihre alte Meta-Description mit 100 cm bleibt als separater Quellenprüfpunkt offen.
+
+[Gesamtes Katalog-/Abendpaket](KATALOGPFLEGE-PAKET-20261026.md), [konkreter Pflegeauftrag](KATALOGPFLEGE-AUFTRAG-20261026.md), [Quellen-/Prüfbelege](KATALOGPFLEGE-BELEGE-20261026.json) und [Manifest der Reviewquellen](katalogpflege-20261026/MANIFEST.json). Vorhandenen vollständigen 56’630-ACTIVE-Snapshot weiter ausgewertet, keine neue Massenpagination: 29’720 Default-only sind keine Defekte. Drei bedeutungsunklare regionale Grössenfelder und 53 Mehrfachstecker-Verdachtsrouten gezielt priorisiert; keine bestätigte Katalogfehlerquote. 45 Optionsfixtures, zwölf Prioritäten mit Originalzeilen geprüft. Neue Python-/Steckerartefakte unter Handoff sind Reviewquellen, kein Deployment; grosse CSV/JSONL bleiben lokale/ZIP-Anlagen.
+
+CJ in GitHub Actions belegt: aktueller Code mit Fakten-/Varianten-/Bild-/Steckerhelfern, bestehender Zugangslauf 40364261840 fremd und nicht durch Codex gestartet. Keine Secrets/Logs gelesen oder Importjobs gestartet. Stromversorgungsreview unterscheidet echte Varianten- und Netzteilbelege; EU/CE/USB allein reichen nicht. 58 bestehende/64 Evidenz-/fünf Legacy-Integrationsfälle gegen Baseline und Entwurf geprüft; neuer Evidenzreview weiterhin nicht im produktiven Caller aufgerufen. CHF 50/45 und Kundendomäne erhalten.
+
+Konten/Planung 19:38 CET frisch passend: 20 bestehende Posts/33 PENDING, alle gemeinsamen Werte unverändert, keine eigenen Social-Writes. Tageskennzahlen/Klaviyo wiederverwendet. Derselbe 18s-Master samt sechs Captions/UTMs bleibt ohne fertige Abnahme/Filmrechte/Premiumquelle/Ausführungs-/Stromzuordnung/Ledger; kein neues Video. Genehmigte YouTube-Footer-URL und vier DNS-Records werden nicht nochmals zur Genehmigung vorgelegt; bekannte Zugangsblocker erhalten.
+
 ## LUXESTYLE_FORTSETZUNG_20261026_1538
 
 [Fortgesetztes Tagespaket mit Storyboard, sechs Kanaltexten/UTMs und enger Verkaufsfreigabe](FORTSETZUNG-20261026-1538.md), [frische Belege und wiederverwendeter Tagesstand](FORTSETZUNG-BELEGE-20261026-1538.json), [YouTube-CTA-Diff](YOUTUBE-SHORTS-CTA-20261026.diff), [frisch quellgleicher Versand-Schema-Diff](VERSAND-SCHEMA-QUELLABGLEICH-20261026.diff).
