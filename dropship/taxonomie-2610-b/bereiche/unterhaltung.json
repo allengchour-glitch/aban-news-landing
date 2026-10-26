@@ -562,11 +562,15 @@
     "Apparel & Accessories > Jewelry > Watches"
    ],
    "titel_muss": [
-    "(^|[^a-zäöüß])(smart ?watch|smartuhr|smart[- ]?armbanduhr|smart-?uhr|smarte uhr|telefonuhr|videoanruf-?uhr|bluetooth[- ]?(pedometer[- ])?uhr|pedometer[- ]bluetooth[- ]uhr)"
+    "(^|[^a-zäöüß])(smart ?watch|smartuhr|smart[- ]?armbanduhr|smart-?uhr|smarte uhr|smart-?headset-?uhr|smart(e|er|es)?[- ]?sportuhr|telefonuhr|videoanruf-?uhr|bluetooth[- ]?(pedometer[- ])?uhr|pedometer[- ]bluetooth[- ]uhr)",
+    "^(?=.*uhr)(?=.*(bluetooth|anruf|telefonie|gps|herzfrequenz))"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(armband für|armbänder? für)",
     "power ?bank für",
+    "speaker",
+    "lautsprecher",
+    "stoppuhr",
     "halskette",
     "smart ?watch-?armband( |$)",
     "harzarmband",
@@ -612,8 +616,8 @@
    "handle": "fitness-tracker-smartbands",
    "titel": "Fitness-Tracker, Smartbands & Smart Rings",
    "titel_muss": [
-    "(^|[^a-zäöüß])(fitness-?tracker|smart ?band|aktivitäts?-?tracker|smart ?bracelet|smart ?ring|herzfrequenz-?armband)",
-    "^(?=.*armband)(?=.*(smart|fitness|health|gesundheit|pedometer|schrittzähler|herzfrequenz|pulsmesser|bluetooth))"
+    "(^|[^a-zäöüß])(fitness[- ]?tracker|smart[- ]?band|aktivitäts?[- ]?tracker|smart[- ]?bracelet|smart[- ]?ring|herzfrequenz-?armband|blutsauerstoff-?tracker)",
+    "^(?=.*armband)(?=.*(smart|fitness|health|gesundheit|pedometer|schrittzähler|herzfrequenz|pulsmesser|bluetooth|farbdisplay|temperaturmessung))"
    ],
    "g_nicht": [
     "Apparel & Accessories > Jewelry > Watch Accessories",
@@ -868,6 +872,144 @@
    ]
   }
  ],
- "ausserhalb": [],
- "hinweise": []
+ "ausserhalb": [
+  {
+   "text": "HiFi- und Studio-Technik: Verstärker (4), Mischpult (1), Effektpedal für E-Gitarre (1) und ein Karaoke-System (1) = 7 Produkte. Zu wenig für eine eigene Kategorie (Schwelle 15) und ohne Verwandtschaft zu Lautsprechern oder Mikrofonen. Das Megaphon und der Gürtel-Lautsprecher für Durchsagen stehen in funkgeraete-megaphone.",
+   "beispiele": [
+    "Digitaler 2.1 Stereo-Verstärker mit Bass",
+    "8-Kanal-Mischpult mit USB und Bluetooth",
+    "Overload Sound Pedal für E-Gitarre",
+    "Duales Stereo Karaoke-System"
+   ]
+  },
+  {
+   "text": "Kameras, deren Titel die Art nicht belegt (14 Produkte, Regel «nie raten»): Kamera ohne Zusatz, Rekorder-Namen, Nachtsichtkamera, ein Kleinflugzeug mit Kamera, eine 360-Grad-VR-Kamera, eine WLAN-Kamera mit Cloud-Speicher. Ob Action-, Überwachungs- oder Wildkamera, sagt der Titel nicht; die Google-Klasse ist bei diesen Produkten leer oder nur «Cameras».",
+   "beispiele": [
+    "Kabellose HD-Kamera",
+    "Kamera mit Anti-Shake-Funktion",
+    "Smart-Lichtrecorder",
+    "Tragbarer Rückenstützrekorder mit Bildschirm",
+    "Kleinflugzeug mit Kamera",
+    "V10 VR-Kamera"
+   ]
+  },
+  {
+   "text": "Projektoren der Google-Klasse «Projectors», die keine Heimkino-Beamer sind (11 Produkte): Weihnachts-, Halloween- und Sternenhimmel-Lichtprojektoren, Hologramm-Projektoren, ein Zeichenprojektor, ein Laserlicht-Projektor. Gehören zu Beleuchtung und Deko (Nachtlichter, Ambiente-Licht), nicht zu Beamer.",
+   "beispiele": [
+    "Weihnachts-Projektorlicht für Fahrzeuge",
+    "Full HD Weihnachtsmann Projektor",
+    "3D Hologramm Projektor",
+    "Zeichenprojektor mit verstellbarem Standfuss",
+    "Sternenhimmel-Projektor für Auto-Interieur"
+   ]
+  },
+  {
+   "text": "Randfälle bei Kopfhörern, Lautsprechern und Mikrofonen (10 Produkte), deren Titel eine andere Art nennt oder keine: Schlafmaske mit Kopfhörern, Ohrschutz und Schallschutz-Kopfhörer, Mikrofon für Puppen, Soundcard, Monitor-Lupe mit Lautsprechern, Lautsprecher-Halter und -Schutzhülle (die Google-Klasse ist Lautsprecher, die Art ist Zubehör, der Zubehör-Filter greift nur bei «Audio Accessories»), «Romantische Atmosphäre» und ein «Vintage Auto-Bluetooth-Modell» ohne Wort für Lautsprecher.",
+   "beispiele": [
+    "Bluetooth-Maske mit integrierten Kopfhörern",
+    "BJD Mini Mikrofon für Puppen",
+    "10-Zoll-Bildschirmmagnifier mit Bluetooth-Lautsprechern",
+    "Wandhalterung für Smart Speaker",
+    "Romantische Atmosphäre",
+    "Kopfhörer mit Lärm- und Schallschutz"
+   ]
+  },
+  {
+   "text": "Konsolen-Zubehör ohne erkennbaren Konsolenbezug im Titel oder mit Handy-Bezug (8 Produkte), dazu 5 Hüllen, Halterungen, Adapter und ein Expander, deren Google-Klasse «Video Game Consoles» ist (die Kategorie «spielkonsolen-retro-handhelds» wertet sie über titel_nicht aus, «konsolen-zubehoer-ladestationen» verlangt die Klasse «Console Accessories» oder «Power»), und 3 Einzelfälle in fremden Google-Klassen (eine Retro-Konsole unter «Game Controllers», eine PS5-Ladebasis unter «Office Supplies», eine Tanzmatte). Die Art ist bei den 8 ersten nicht aus dem Titel zu belegen.",
+   "beispiele": [
+    "Video-Buch mit Hardcover und 7-Zoll-Display",
+    "Wiederaufladbarer Smart Simulator",
+    "Wireless Controller Handyhalterung P5",
+    "Gaming-Konsole Silikonhülle",
+    "Wandhalterung für Game-Konsolen aus Aluminium",
+    "Retro-Spielkonsole mit 2 Controllern",
+    "Multifunktionale Ladebasis für PS5"
+   ]
+  },
+  {
+   "text": "Stativ-Zubehör, Gelenkarm, Kamera-Arm und Dolly (5 Produkte): handy.json nimmt in «selfie-stative-foto» alle Stativ-, Stabilisator- und Studiolicht-Titel auf und schliesst genau diese per titel_nicht aus (DSLR, Dolly, Kamera-Arm, Gelenkarm). Diese Produkte bleiben ohne Kategorie, bis eine der beiden Dateien sie aufnimmt.",
+   "beispiele": [
+    "Gelenkarm 7 Zoll für DSLR-Kamera",
+    "Kamera-Arm 360° Drehgimbal aus Aluminium",
+    "Kabelloser Kamera-Dolly",
+    "Stativ-Querstange für Kamera & Handy"
+   ]
+  },
+  {
+   "text": "Smartwatch-Randfälle (18 Produkte): Uhren-Teile und -Gehäuse (Zifferblätter, Uhrgehäuse, Uhrenbeweger, Uhrenhalter), Armbänder mit Gehäuse, die Armband und Schutz zugleich sind, ein Smartwatch-Titel mit Halskette, ein Pager («Fussbad-Pager»), zwei Powerbanks für Smartwatches (handy.json nimmt Powerbank-Titel nur in der Google-Klasse «Power» auf, diese stehen unter «Watches» bzw. «Watch Accessories»), eine Quarzuhr und eine Smartwatch, die Google als Uhrenzubehör führt, und zwei Armband-Titel ohne Angabe, ob Uhr oder Band.",
+   "beispiele": [
+    "Smartwatch-Halskette mit Perlen und Herz-Anhänger",
+    "Fussbad-Pager Xunling Smartwatch",
+    "Kabellose Powerbank für Smartwatches",
+    "Uhrenbeweger mit Piano-Lack",
+    "Luminous Quarz-Uhr 48 mm mit Silikonarmband",
+    "Smartwatch Armband"
+   ]
+  },
+  {
+   "text": "Fernbedienungen, die keine sind (4 Produkte): Dimmer und Lichtschalter mit Funkbedienung, eine Mini-Tastatur und die Steuerung einer Drohne. Der Titel nennt eine andere Art; die Drohnen-Steuerung gehört in den Drohnen-Zubehör-Bereich, wenn der Titel eine Drohne nennt (hier nicht).",
+   "beispiele": [
+    "Intelligenter Fernbedienungs-Dimmer mit Farbwechsel",
+    "Kabelloser Fernbedienungs-Lichtschalter mit Aufladung",
+    "Mini-Tastatur mit Bluetooth, optional mit Hintergrundbeleuchtung",
+    "M22-Fernbedienung mit 45-Zoll-Bildschirm und bürstenlosem UAV"
+   ]
+  },
+  {
+   "text": "Laptop- und iPhone-Akkus (4 Produkte der Google-Klasse «Batteries»): gehören zu computer.json (laptop-netzteile-akkus) bzw. zum Handy-Bereich; batterien-akkus schliesst die Unterklassen «Laptop Batteries» und «Mobile Phone Batteries» aus.",
+   "beispiele": [
+    "Ersatzakku für MacBook Pro 15″ (A1707)",
+    "Lithium-Ionen-Laptopbatterie",
+    "Grosses iPhone-Batterie-Set"
+   ]
+  },
+  {
+   "text": "Zu klein für eine eigene Kategorie (unter 15): Endoskope (3), TV- und Monitor-Zubehör (3: Halter, Staubabdeckung), Foto-Requisiten für Neugeborenen-Fotos (2), HiFi-Technik (7, siehe oben), Funkgeräte ohne Megaphone (13 Walkie-Talkies und Zubehör; mit den 2 Megaphonen stehen sie in funkgeraete-megaphone).",
+   "beispiele": [
+    "Wasserdichtes HD-Endoskop mit Bildschirm",
+    "TV-Staubabdeckung",
+    "Monitor-Halter Metallgitter",
+    "Neugeborenen-Fotoshooting Requisiten-Set"
+   ]
+  },
+  {
+   "text": "Einzelfälle (3 Produkte): eine Video-Türsprechanlage (computer.json, tuerklingeln-tuerspione), ein «Kabelloser 4-in-1-Lader» in der Klasse «Battery Accessories» (Art unklar, wäre ein Fall für handy.json kabellos-laden) und ein Quadcopter-Helikopter der Google-Klasse «Remote Control Helicopters», den spielzeug.json führt.",
+   "beispiele": [
+    "ENNIO 7-Zoll Farb-Video-Türsprechanlage",
+    "Kabelloser 4-in-1-Lader",
+    "X13 Quadcopter Fernbedienungs-Helikopter"
+   ]
+  },
+  {
+   "text": "Bewusst nicht im Universum: GPS-Tracker (44 in der Google-Klasse «GPS Tracking Devices», in computer.json als gps-tracker-ortung gebaut, hier nur als Verweis), Überwachungskameras (78) und Webcams (7) (computer.json), Gaming-Mäuse, Tastaturen und Mauspads (computer.json), Ladegeräte, Powerbanks und Ladekabel (handy.json), die Google-Klasse «Electronics» ohne Unterklasse (91 aktive Produkte, ein Auffangbecken des Imports: Messgeräte, Küchengeräte, Filter, Werkzeug), Sportuhren und Digitaluhren ohne Smart-Funktion (186 Titel mit «Sportuhr», «Digitaluhr», «Schrittzähler»: Bereich Uhren).",
+   "beispiele": [
+    "GPS-Tracker für Haustiere",
+    "WLAN HD Überwachungskamera für Innenbereiche",
+    "Gaming-Maus mit Kabel",
+    "Multifunktionale digitale Sportuhr"
+   ]
+  },
+  {
+   "text": "Nicht im Katalog (Titel- und Google-Suche): Fernseher, Monitore, HDMI-Kabel (es gibt nur 7 HDMI- und Video-Adapter, -Umwandler und -Umschalter, sie stehen in streaming-hdmi-adapter), AV-Receiver, Plattenspieler-Anlagen. Die CJ-Gruppe «Television» und «Audio & Video Cables» entfällt deshalb; Digitalkameras gibt es nur als Kinderkamera und eine WLAN-Spiegelreflexkamera (3), sie stehen in action-sport-wildkameras.",
+   "beispiele": []
+  }
+ ],
+ "hinweise": [
+  "ABDECKUNG: Universum 2 477 aktive Produkte (Google-Klassen Audio, Video, Cameras & Optics ohne Überwachung und Webcams, Videospiele, Game Controllers, Fernbedienungen, Batterien, AV-Adapter, Uhren-Zubehör, Smart Glasses, Solarpanels sowie Titel zu Smartwatch, Fitness-Tracker, Smart Ring, Drohne, DJI, Smart Home, Solar-Ladegerät, Konsolen-Ladestationen). messen.mjs zählt die 27 neuen Kategorien: 2 343 von 2 477 = 94,6 %. Dazu kommen 34 Produkte, die vorhandene oder fremde Kinder tragen (smarte-brillen-ki 11 Smart Glasses; selfie-stative-foto aus handy.json: Stative, Gimbals, Ringlichter): zusammen 2 377 = 96,0 %. Der Rest von 100 steht oben in «ausserhalb» mit Grund.",
+  "ersetzt: kopfhoerer-audio (Tag sort-kopfhoerer-audio, 237 aktiv): ein Topf aus 127 Kopfhörern, 73 Lautsprechern, 22 Kopfhörer-Zubehörteilen, 4 Weckern, 4 Kabelhaltern. Die Gruppe «Kopfhörer & Audio» ersetzt sie; 221 von 237 stehen in den neuen Kategorien (kopfhoerer-ohrhoerer, gaming-kopfhoerer-headsets, bluetooth-headsets-telefon, audio-zubehoer-adapter, bluetooth-lautsprecher-boxen), 4 Kabelhalter in computer.json, 4 Wecker-Lautsprecher in Haus.",
+  "ersetzt: lautsprecher (80 aktiv): 4 Wecker-Lautsprecher der Google-Klasse «Clocks», 2 Lautsprecher-Zubehörteile, 3 Randfälle = 9 (11 %) gehören nicht zu Bluetooth-Lautsprechern; 71 stehen in bluetooth-lautsprecher-boxen. ersetzt: mikrofone (147 aktiv): 12 Lautsprecher mit Mikrofon-Wort im Titel und 3 weitere = 15 (10 %) sind keine Mikrofone; 132 stehen in mikrofone-zubehoer.",
+  "ersetzt: drohnen-fpv (Tag sort-drohnen-fpv, 157 aktiv): 21 Akkus, Rucksäcke, Propeller und ähnliches Zubehör (13 %) lagen mit 132 Drohnen in einer Kategorie; dazu fehlten 17 Drohnen und 26 DJI- und FPV-Zubehörteile, die bisher nur in «Spielzeug-Fahrzeuge» standen. kameradrohnen-quadrocopter (149) und drohnen-zubehoer-fpv (47) trennen beides. ABSTIMMUNG: spielzeug.json führt «drohnen-fpv» als Kind der Gruppe «Fahrzeuge & Ferngesteuertes»; wird hier umgestellt, muss dort auf kameradrohnen-quadrocopter verwiesen werden (oder drohnen-fpv bleibt dort stehen).",
+  "ersetzt: konsolen-zubehoer (182 aktiv): 42 Spielkonsolen und Handhelds (23 %) sind kein Zubehör, und die 39 Ladestationen, Netzteile und Akkus für Controller (Google-Klasse «Power») fehlten; 163 von 182 stehen in spielkonsolen-retro-handhelds und konsolen-zubehoer-ladestationen; von den übrigen 19 sind 6 VR-Zubehör für Oculus, Quest, Pico und PS-VR (jetzt in vr-brillen-zubehoer), 5 Hüllen, Halterungen und Adapter mit der Google-Klasse Konsole und 8 ohne Konsolenbezug im Titel (siehe «ausserhalb»).",
+  "ersetzt: vr-brillen-headsets (18 aktiv, sauber) durch vr-brillen-zubehoer (28): dieselben 18 plus 10 VR-Zubehörteile (Ladestationen, Kopfbänder, Schutzhüllen, Ständer, Link-Kabel für Quest, Pico, PS-VR), die der Engine-Regel (verlangt «VR» vor «Brille/Headset/Controller») entgehen. smarte-brillen-ki (11 Smart Glasses, sauber, Titel ohne VR) bleibt als Kind unverändert, obwohl unter 15: sie ist vorhanden, nicht neu.",
+  "ersetzt: solar-energie (Tag sort-solar, 148 aktiv): die Titel-Regel «Solar» holt Gartenleuchten, Solar-Powerbanks (handy.json), Kurbelradios (radios-audioplayer-diktiergeraete), 9 Rucksäcke, 8 Uhren, 7 Überwachungskameras, Rollos und Spielzeug; nur 21 von 148 sind Solarpanels, Solar-Ladegeräte oder Laderegler (solar-panels-ladegeraete, 22 Treffer). 40 der übrigen stehen in Kategorien anderer Dateien, der Rest in Beleuchtung, Tasche und Haus.",
+  "ersetzt: uhrenarmbaender (Tag sort-uhrenarmbaender, 281 aktiv): 13 sind keine Armbänder (Zifferblätter, Uhrgehäuse, Uhrenbeweger, Uhrenhalter, Armband-mit-Gehäuse-Mischprodukte = 4,6 %), 16 sind Smartwatch-Ladegeräte, Hüllen und Gehäuse (smartwatch-zubehoer). uhrenarmbaender-smartwatch (252) enthält nur Bänder, Schnallen und Federstege. Die vorhandene Kategorie steht im Menü auch unter «Uhren»: dort beim Umbau ebenfalls austauschen.",
+  "ersetzt: smart-home-gadgets (78 aktiv): 49 Überwachungskameras, 7 Smart Rings und Ring-Fernbedienungen, 2 Körperwaagen, 3 Babyphones, 3 Fernbedienungen und weiteres; nur 5 sind Smart-Home-Geräte im engen Sinn. smart-home-geraete (25) nimmt Gateways, WLAN-Schalter und -Dimmer, Rollladen- und Vorhangmotoren, Thermostate; Kameras stehen in computer.json (ueberwachungskameras), Smart Rings in fitness-tracker-smartbands.",
+  "Sammelbecken im Menü, die durch die neuen Kategorien schrumpfen sollten (nicht ersetzt, nur Hinweis; Zahlen aus den Titel-Regeln gegen den Katalog gemessen): smartwatches-wearables (830 aktiv; 814 in unterhaltung, 16 in keiner neuen Kategorie: Smart-Armband-Randfälle), drohnen-kameras (303 aktiv; 201 hier, 79 in handy.json und computer.json, 23 in keiner), beamer-heimkino (78 aktiv; 4 Fremdkörper = 5 %: WLAN-Adapter, Hologramm-Projektor, Projektor-Luftbefeuchter, Zeichenprojektor), foto-tech (35 aktiv; 17 hier und 17 in handy.json selfie-stative-foto: die Selfie-, Stativ- und Gimbal-Titel sollten nur in einer der beiden stehen), gaming (371 aktiv; 327 hier), pc-gaming (123 aktiv; 31 hier, 34 in computer.json, 58 Motiv-Mauspads und ähnliches), retro-handheld (52 aktiv; 17 Aufkleber, Spiegel, Taschen), elektronik-audio (210 aktiv) und audio-sub (154 aktiv) mit Reinigungssets, Rucksack mit Lautsprecher und E-Keyboard, elektronik-kleinteile (733 aktiv; 107 hier, 504 in handy.json und computer.json, 122 in keiner).",
+  "Verweise auf Kategorien anderer Dateien (messen.mjs --alle findet alle): selfie-stative-foto (handy.json) in «Kamera, Foto & Drohnen», gps-tracker-ortung (computer.json) in «Smart & Wearables», powerbanks (handy.json) in «Strom, Batterien & Solar». gaming-kopfhoerer-headsets steht bewusst in zwei Gruppen (Audio und Gaming & VR). Überlappung mit computer.json, handy.json und spielzeug.json gemessen: 0 Produkte.",
+  "Abstimmung mit handy.json: 6 Smartwatch-Lader bleiben dort (3 «Powerbank für Apple Watch» in powerbanks, 2 magnetische 2-in-1-Lader in kabellos-laden, 1 3-in-1-Ladestation in ladegeraete-netzteile); smartwatch-zubehoer (30) schliesst sie per titel_nicht aus. handy.json nennt reine Uhren-Ladegeräte als Sache der Smartwatches; wenn handy.json sie ganz abgibt, kann die Ausnahme hier entfallen. Smartphone-Controller, Trigger und Konsolen-Ladestationen, die handy.json offen lässt, stehen in gamepads-controller und konsolen-zubehoer-ladestationen.",
+  "Fremdkörper-Zählung: Alle 27 Kategorien mit zusammen 2 556 Zuordnungen in der Endfassung gelesen (die grossen als Volltext in mehreren Fassungen: Smartwatches, Fitness-Tracker, Armbänder, Gamepads, Konsolen-Zubehör, Mikrofone, Kopfhörer, Lautsprecher, Drohnen; die übrigen komplett; nach späten Regelerweiterungen die neu hinzugekommenen Titel einzeln), dazu Fremdwort-Greps je Kategorie und ein Titel-Gegencheck (Wörter wie Kopfhörer, Lautsprecher, Mikrofon, Beamer, Action-Kamera, Gamepad, Smartwatch ohne Treffer in einer Kategorie). In den Entwurfsrunden 76 Fremdkörper und Fehlzuordnungen gefunden (davon rund 20 richtige Ware in der falschen Kategorie, etwa VR-Zubehör im Konsolen-Zubehör und Drohnen im Drohnen-Zubehör) und per Regel entfernt (Beispiele: Weihnachts-Projektoren im Beamer, Spielzeug-Batterien im Konsolen-Zubehör, Rucksäcke mit Solarpanel im Solar-Topf, Smartphone-Armband und Luft-Kabel im Fitness-Tracker, Halskette und Powerbank bei den Smartwatches, Quarzuhr unter den Armbändern); in den Endlisten verbleiben 14 unklare Titel (3 Hybrid-Lautsprecher mit Lampe oder Diffusor, «Klein, robust, 4K-Auflösung», «Fischerei-Controller-Halter», «LED Pixel Screen für Gaming-Atmosphäre», «Multifunktions Bluetooth Armband», 3 Bluetooth-Uhren mit Schrittzähler, «PortaPack H1 für HackRF One SDR Receiver» u. a.) = 0,6 %.",
+  "Wortgrenzen und Fallen, die gemessen wurden: «Akkulaufzeit» in Drohnen-Titeln darf Drohnen nicht zu Zubehör machen (Rückblick auf «mit», «und», «,» vor dem Zubehörwort); «Smart» und «Armband» treffen auch «Smartphone-Armband» (ausgeschlossen); «Sportarmband» ohne Smart-, Bluetooth- oder Display-Angabe ist oft ein Silikonband ohne Elektronik und bleibt draussen; «spiel» in «Spielzeug» holte Spielzeug-Batterien ins Konsolen-Zubehör; Zubehör-Wörter stehen in Verbundwörtern («Drohnenpropeller», «Ersatzakku»), deshalb ohne Wortanfang geprüft.",
+  "Unterfilter: 37 Chips in 15 Kategorien, jeder mit mindestens 15 Treffern gemessen (am Katalog vom 26.10.2026 20:14). Kategorien ohne Chips haben zu wenig Substanz für eine zweite Ebene oder die Chips scheiterten an der Schwelle (z. B. Over-Ear-Kopfhörer 4, Karaoke-Lautsprecher 14, Wildkameras 6, TV-Ersatz-Fernbedienungen 8).",
+  "Offene Entscheidungen für den Besitzer: (1) Sollen Uhren-Ladegeräte bei handy.json oder hier stehen? (2) drohnen-fpv ersetzen oder behalten (Abstimmung mit spielzeug.json)? (3) 186 Sportuhren und Digitaluhren ohne Smart-Funktion in einen Bereich Uhren aufnehmen. (4) Kameras ohne Art im Titel (14) per Hand am Bild prüfen. (5) Die Gruppe «TV, Beamer & Streaming» hat nur 3 Kinder, weil der Katalog keine Fernseher, Monitore und HDMI-Kabel führt; mit «Kopfhörer & Audio» zusammenlegen geht nicht (11 Kinder, Grenze 8)."
+ ]
 }

@@ -1,0 +1,1912 @@
+{
+ "bereich": "wohnen",
+ "titel": "Wohnen, Küche, Bad & Haushalt",
+ "menue": {
+  "oben": "Wohnen & Garten"
+ },
+ "universum": {
+  "g_prefix": [
+   "Home & Garden > Decor",
+   "Home & Garden > Kitchen & Dining",
+   "Home & Garden > Household Supplies",
+   "Home & Garden > Linens & Bedding",
+   "Home & Garden > Household Appliances",
+   "Home & Garden > Household Appliance Accessories",
+   "Home & Garden > Bathroom Accessories",
+   "Home & Garden > Lighting",
+   "Home & Garden > Fireplaces",
+   "Furniture"
+  ],
+  "titel_muss": [],
+  "g_nicht": [
+   "Furniture > Baby & Toddler Furniture",
+   "Furniture > Office Furniture",
+   "Furniture > Outdoor Furniture"
+  ],
+  "titel_nicht": []
+ },
+ "kategorien": [
+  {
+   "handle": "pfannen-woks",
+   "titel": "Pfannen & Woks",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Woks",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Griddles & Grill Pans"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(spritzschutz|bonsai|blumentopf|pflanz[a-zäöüß]*|hunde[a-zäöüß-]*|katzen[a-zäöüß-]*|kochfeld|pfannenring|[a-zäöüß-]*halter)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Bratpfannen, Woks, Grillpfannen und Crêpe-Pfannen aus Edelstahl, Gusseisen, Aluminium und mit Antihaft-Beschichtung — für Herd, Induktion und Gas.",
+   "unterfilter": [
+    {
+     "handle": "pfannen-woks-bratpfannen",
+     "titel": "Bratpfannen",
+     "titel_muss": [
+      "pfanne"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(wok)",
+      "(^|[^a-zäöüß])(grill)"
+     ]
+    },
+    {
+     "handle": "pfannen-woks-woks-grill",
+     "titel": "Woks & Grillpfannen",
+     "titel_muss": [
+      "wok|grill|teppanyaki|bbq|platte"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "pfannen-woks-omelett",
+     "titel": "Omelett- & Crêpe-Pfannen",
+     "titel_muss": [
+      "omelett|crêpe|crepe|pancake|pfannkuchen|spiegelei|tamagoyaki|mulden"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "pfannen-woks-antihaft",
+     "titel": "Antihaft",
+     "titel_muss": [
+      "antihaft|anti-haft|beschichtung"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "toepfe-kochgeschirr-sets",
+   "titel": "Töpfe & Kochgeschirr-Sets",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Woks",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Griddles & Grill Pans",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Stovetop Kettles"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(bonsai|blumen-?topf|sandblumen|pflanz[a-zäöüß]*|[a-zäöüß-]*einsatz|fermentier[a-zäöüß-]*|wärmeleit[a-zäöüß-]*|[a-zäöüß-]*pressplatte|druckplatte|küchenhelfer|silikon-?deckel|gussform|dampfgarform)"
+   ],
+   "beschreibung": "Kochtöpfe, Suppentöpfe, Milchtöpfe, Schmortöpfe, Gusseisen-Töpfe und komplette Kochgeschirr-Sets für Herd und Ofen.",
+   "unterfilter": [
+    {
+     "handle": "toepfe-kochgeschirr-suppentoepfe",
+     "titel": "Koch- & Suppentöpfe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kochtopf|suppentopf|topf|töpfe)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(set)"
+     ]
+    },
+    {
+     "handle": "toepfe-kochgeschirr-schmoertoepfe",
+     "titel": "Schmor- & Gusseisentöpfe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(schmortopf|kasserolle|casserole|gusseisen|emaille|dutch|bräter)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "toepfe-kochgeschirr-sets-sets",
+     "titel": "Kochgeschirr-Sets",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(set|teilig|kochset|topfset)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "backformen-backbleche",
+   "titel": "Backformen & Backbleche",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Bakeware"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(blumen-?topf|schmuck[a-zäöüß-]*|vase|gesichts-?vase|diy-?kreationen)"
+   ],
+   "beschreibung": "Kuchenformen, Springformen, Backbleche, Brotformen, Auflaufformen und Backmatten aus Silikon, Metall und Keramik.",
+   "unterfilter": [
+    {
+     "handle": "backformen-silikonformen",
+     "titel": "Silikonformen",
+     "titel_muss": [
+      "silikon"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "backformen-kuchenformen",
+     "titel": "Kuchen- & Brotformen",
+     "titel_muss": [
+      "kuchenform|backform|brotform|toastform|gugel|springform|kuchen"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "kuechenformen-tortendeko",
+   "titel": "Formen, Teigroller & Tortendeko",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Molds",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cake Decorating Supplies",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Ice Cube Trays",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Baking Peels",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Rolling Pins"
+   ],
+   "beschreibung": "Formen für Burger, Sushi, Pralinen und Eis, Eiswürfelformen, Spritztüllen und Zubehör zum Dekorieren von Torten, dazu Teigroller und Pizzaschaufeln.",
+   "unterfilter": [
+    {
+     "handle": "kuechenformen-eiswuerfel",
+     "titel": "Eiswürfel- & Eisformen",
+     "titel_muss": [
+      "eiswürfel|eisform|glace|popsicle"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kuechenformen-tortendeko-tuellen",
+     "titel": "Tortendeko & Spritztüllen",
+     "titel_muss": [
+      "tülle|tüllen|torte|dekor|fondant|spritz|drehteller|backset|tortenständer|set"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kuechenformen-burger-sushi",
+     "titel": "Burger-, Sushi- & Pralinenformen",
+     "titel_muss": [
+      "burger|sushi|schokolad|schoggi|reiskugel|dumpling|cannoli|meatball|mondkuchen|bun"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "schneidebretter-bretter",
+   "titel": "Schneidebretter",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cutting Boards"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(messer-? ?(und|&) ?schneidebrett)",
+    "(^|[^a-zäöüß])(messerhalter)",
+    "(^|[^a-zäöüß])(bento)",
+    "(^|[^a-zäöüß])(besteck-?set)"
+   ],
+   "beschreibung": "Schneidebretter und Küchenbretter aus Holz, Bambus, Kunststoff und Edelstahl — auch als Set, mit Saftrille oder doppelseitig nutzbar.",
+   "unterfilter": [
+    {
+     "handle": "schneidebretter-holz-bambus",
+     "titel": "Holz & Bambus",
+     "titel_muss": [
+      "holz|bambus|akazie|teak|olive|nuss|buche|massiv|ebenholz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "schneidebretter-edelstahl-titan",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "edelstahl|titan|stahl|ti-"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "schneiden-reiben-schaelen",
+   "titel": "Gemüseschneider, Schäler & Reiben",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Slicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Food Peelers & Corers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Food Graters & Zesters",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Garlic Presses",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Shears"
+   ],
+   "beschreibung": "Gemüseschneider, Gemüsehobel, Spiralschneider, Schäler, Reiben, Knoblauchpressen und Küchenscheren zum Schneiden, Raspeln und Schälen von Obst und Gemüse.",
+   "unterfilter": [
+    {
+     "handle": "schneiden-gemuesehobel",
+     "titel": "Gemüseschneider & Hobel",
+     "titel_muss": [
+      "gemüseschneider|gemüsehobel|hobel|mandoline|spiralschneider|slicer|obstschneider|schneider|cutter"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(schäl|schere|knoblauch)"
+     ]
+    },
+    {
+     "handle": "schneiden-schaeler",
+     "titel": "Schäler & Entkerner",
+     "titel_muss": [
+      "schäler|entkerner|sparschäler|schälmesser"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "schneiden-reiben-pressen-scheren",
+     "titel": "Reiben, Pressen & Scheren",
+     "titel_muss": [
+      "reibe|raffel|knoblauch|zester|presse|hacker|schere|kutter|chopper"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "kochutensilien-sets",
+   "titel": "Kochlöffel, Zangen & Utensilien-Sets",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Utensil Sets",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Spatulas",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Tongs",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Mixing Bowls",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Oven Mitts & Pot Holders",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Meat Tenderizers"
+   ],
+   "beschreibung": "Kochlöffel, Pfannenwender, Zangen und Küchenhelfer-Sets aus Silikon, Holz und Edelstahl, dazu Rührschüsseln, Ofenhandschuhe und Topflappen.",
+   "unterfilter": [
+    {
+     "handle": "kochutensilien-silikon",
+     "titel": "Silikon-Sets",
+     "titel_muss": [
+      "silikon"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kochutensilien-holz",
+     "titel": "Holz & Bambus",
+     "titel_muss": [
+      "holz|bambus|akazie|teak|olive|buche"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kochutensilien-zangen-kellen",
+     "titel": "Zangen, Wender & Kellen",
+     "titel_muss": [
+      "zange|wender|spatel|schaufel|löffel|kelle"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kochutensilien-edelstahl",
+     "titel": "Edelstahl",
+     "titel_muss": [
+      "edelstahl|stahl"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "siebe-muehlen-messhilfen",
+   "titel": "Siebe, Mühlen & Messhilfen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Colanders & Strainers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Measuring Cups & Spoons",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Spice Grinders",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Oil & Vinegar Dispensers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Mortars & Pestles",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Salad Spinners",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Thermometers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Timers"
+   ],
+   "titel_nicht": [
+    "(waage|waagen)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Siebe und Abtropfkörbe, Salz- und Pfeffermühlen, Messbecher und Messlöffel, Öl- und Essigspender, Mörser, Salatschleudern, Küchenthermometer und Timer.",
+   "unterfilter": [
+    {
+     "handle": "siebe-muehlen-pfeffermuehlen",
+     "titel": "Salz- & Pfeffermühlen",
+     "titel_muss": [
+      "mühle|muehle"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "siebe-muehlen-siebe",
+     "titel": "Siebe & Abtropfkörbe",
+     "titel_muss": [
+      "sieb|abtropf|schleuder|drainer|korb|schale"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "siebe-muehlen-messbecher",
+     "titel": "Messbecher, Waagen & Thermometer",
+     "titel_muss": [
+      "messbecher|messlöffel|thermometer|timer|waage|messhilfe"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "siebe-muehlen-oelspender",
+     "titel": "Öl- & Essigspender",
+     "titel_muss": [
+      "öl|essig|sprüh|mörser|spender"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "kuechengadgets",
+   "titel": "Küchengadgets",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cutting Boards",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Aprons",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Dish Racks & Drain Boards",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Organizers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Slicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Food Peelers & Corers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Food Graters & Zesters",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Garlic Presses",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Shears",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Utensil Sets",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Spatulas",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Tongs",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Mixing Bowls",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Oven Mitts & Pot Holders",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Meat Tenderizers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Colanders & Strainers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Measuring Cups & Spoons",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Spice Grinders",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Oil & Vinegar Dispensers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Mortars & Pestles",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Salad Spinners",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Thermometers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Timers",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Molds",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cake Decorating Supplies",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Ice Cube Trays",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Baking Peels",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Rolling Pins"
+   ],
+   "titel_nicht": [
+    "(waage|waagen)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Praktische Helfer für die Küche, die in keine andere Gruppe passen: Zitruspressen, Ölfilter, Eierhelfer, Auftauplatten, Pizzaroller, Dosenöffner und weitere kleine Gadgets."
+  },
+  {
+   "handle": "mixer-entsafter-zerkleinerer",
+   "titel": "Mixer, Entsafter & Zerkleinerer",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers"
+   ],
+   "beschreibung": "Standmixer, Handmixer, Pürierstäbe, Entsafter, elektrische Zerkleinerer, Fleischwölfe und Eiscrusher für Smoothies, Saft und Zubereitung.",
+   "unterfilter": [
+    {
+     "handle": "mixer-entsafter-entsafter",
+     "titel": "Entsafter & Saftpressen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(entsafter|saftpress|zitruspress|saftmaschine)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "mixer-entsafter-mixer",
+     "titel": "Mixer & Blender",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mixer|blender|stabmixer|smoothie)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "mixer-entsafter-fleischwolf",
+     "titel": "Fleischwölfe & Zerkleinerer",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fleischwolf|fleischmühle|zerkleiner|hacker|chopper|multizerkleinerer|processor)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "fritteusen-grills-kochfelder",
+   "titel": "Fritteusen, Grills & Kochfelder",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+   ],
+   "titel_muss": [
+    "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+   ],
+   "beschreibung": "Heissluftfritteusen, Fritteusen, Elektrogrills, Induktionskochfelder, Hot-Pot-Geräte und Teppanyaki-Grills für den Tisch und die Arbeitsplatte."
+  },
+  {
+   "handle": "reiskocher-dampfgarer",
+   "titel": "Reiskocher, Dampfgarer & Eierkocher",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+   ],
+   "titel_muss": [
+    "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf"
+   ],
+   "titel_nicht": [
+    "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+   ],
+   "beschreibung": "Reiskocher, Dampfgarer, Eierkocher, Slow Cooker und elektrische Kochtöpfe für Reis, Eintöpfe, Eier und schonendes Garen."
+  },
+  {
+   "handle": "waffeleisen-sandwichmaker-toaster",
+   "titel": "Waffeleisen, Sandwichmaker & Toaster",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+   ],
+   "titel_muss": [
+    "waffel[a-zäöüß-]*|sandwich[a-zäöüß-]*|toaster|pancake[a-zäöüß-]*|crêpe[a-zäöüß-]*|crepe[a-zäöüß-]*|frühstücks[a-zäöüß-]*|panini|taiyaki|gebäck-?maker|kuchenbackautomat|tortenpresse|kuchenpress[a-zäöüß]*"
+   ],
+   "titel_nicht": [
+    "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
+    "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+   ],
+   "beschreibung": "Waffeleisen, Sandwichmaker, Toaster, Pancake- und Crêpe-Maker für das Frühstück und für Snacks am Tisch."
+  },
+  {
+   "handle": "nudel-eis-snackmaschinen",
+   "titel": "Nudel-, Eis- & Snackmaschinen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+   ],
+   "titel_muss": [
+    "nudel[a-zäöüß-]*|pasta[a-zäöüß-]*|eismaschine|glacemaschine|eiscreme[a-zäöüß-]*|speiseeis[a-zäöüß-]*|popcorn[a-zäöüß-]*|zuckerwatte[a-zäöüß-]*|schokoladenbrunnen|takoyaki[a-zäöüß-]*|brotback[a-zäöüß-]*|pizzamaschine|knetmaschine|teigmaschine|teigpresse|teigtaschen[a-zäöüß-]*|ravioli[a-zäöüß-]*|hot ?dog[a-zäöüß-]*|burger[a-zäöüß-]*"
+   ],
+   "titel_nicht": [
+    "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
+    "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
+    "waffel[a-zäöüß-]*|sandwich[a-zäöüß-]*|toaster|pancake[a-zäöüß-]*|crêpe[a-zäöüß-]*|crepe[a-zäöüß-]*|frühstücks[a-zäöüß-]*|panini|taiyaki|gebäck-?maker|kuchenbackautomat|tortenpresse|kuchenpress[a-zäöüß]*",
+    "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)"
+   ],
+   "beschreibung": "Nudelmaschinen, Pastamaker, Eismaschinen, Popcornmaschinen, Zuckerwatte-Maschinen und Schokoladenbrunnen für selbstgemachte Snacks und Desserts."
+  },
+  {
+   "handle": "kuechengeraete-weitere",
+   "titel": "Weitere Küchengeräte",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Mixers & Blenders",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Ice Crushers & Shavers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Soy Milk Makers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Outdoor Grills",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+   ],
+   "titel_nicht": [
+    "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
+    "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
+    "waffel[a-zäöüß-]*|sandwich[a-zäöüß-]*|toaster|pancake[a-zäöüß-]*|crêpe[a-zäöüß-]*|crepe[a-zäöüß-]*|frühstücks[a-zäöüß-]*|panini|taiyaki|gebäck-?maker|kuchenbackautomat|tortenpresse|kuchenpress[a-zäöüß]*",
+    "nudel[a-zäöüß-]*|pasta[a-zäöüß-]*|eismaschine|glacemaschine|eiscreme[a-zäöüß-]*|speiseeis[a-zäöüß-]*|popcorn[a-zäöüß-]*|zuckerwatte[a-zäöüß-]*|schokoladenbrunnen|takoyaki[a-zäöüß-]*|brotback[a-zäöüß-]*|pizzamaschine|knetmaschine|teigmaschine|teigpresse|teigtaschen[a-zäöüß-]*|ravioli[a-zäöüß-]*|hot ?dog[a-zäöüß-]*|burger[a-zäöüß-]*"
+   ],
+   "beschreibung": "Vakuumiergeräte, Dörrautomaten, Sprudelwasser-Maschinen und weitere elektrische Küchengeräte, die in keine der anderen Gerätegruppen passen."
+  },
+  {
+   "handle": "kuechengeraete-zubehoer",
+   "titel": "Zubehör für Küchengeräte",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories"
+   ],
+   "g_nicht": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Outdoor Grill Accessories"
+   ],
+   "beschreibung": "Zubehör und Ersatzteile für Küchengeräte: Silikon-Einsätze und Gitter für Heissluftfritteusen, Spülmaschinen-Körbe, Kühlschrank-Filter, Mixer-Ersatzteile und Schutzhüllen."
+  },
+  {
+   "handle": "messerschaerfer",
+   "titel": "Messerschärfer",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Knife Sharpeners"
+   ],
+   "beschreibung": "Messerschärfer für Küchenmesser — von Hand, mit festem Schleifwinkel oder elektrisch."
+  },
+  {
+   "handle": "wasserkocher-kaffeemaschinen",
+   "titel": "Wasserkocher, Kaffeemaschinen & Mühlen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Milk Frothers & Steamers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Beverage Warmers",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories"
+   ],
+   "beschreibung": "Wasserkocher, Kaffeemaschinen, Milchaufschäumer, Kaffeemühlen, Tamper, Kaffeefilter, Kapselfilter und Warmhalteplatten für Kaffee und Heissgetränke.",
+   "unterfilter": [
+    {
+     "handle": "wasserkocher-kaffee-wasserkocher",
+     "titel": "Wasserkocher & Warmhalten",
+     "titel_muss": [
+      "wasserkocher|teekocher|kocher|wasserkessel|kessel|heiztasse|warmhalte|tassenpad|untersetzer"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wasserkocher-kaffee-muehlen",
+     "titel": "Kaffeemühlen",
+     "titel_muss": [
+      "mühle|muehle"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wasserkocher-kaffee-zubehoer",
+     "titel": "Kaffee-Zubehör & Filter",
+     "titel_muss": [
+      "tamper|filter|kapsel|verteiler|siebträger|portafilter|milchaufschäum|milchschäum|dampfdüse"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "teekannen-kaffeeservice",
+   "titel": "Teekannen, Tee- & Kaffeeservice",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Coffee & Tea Sets",
+    "Home & Garden > Kitchen & Dining > Tableware > Coffee Servers & Tea Pots",
+    "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Stovetop Kettles"
+   ],
+   "beschreibung": "Teekannen, Teekessel, Tee-Sets, Matcha-Sets, Kaffeekannen und komplette Kaffee- und Teeservice aus Keramik, Porzellan, Glas und Gusseisen."
+  },
+  {
+   "handle": "bar-weinzubehoer",
+   "titel": "Barware & Weinzubehör",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Barware",
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Stemware",
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Drinkware Sets"
+   ],
+   "beschreibung": "Weingläser, Karaffen und Dekanter, Korkenzieher, Flaschenöffner, Weinkühler, Cocktail-Shaker, Untersetzer und weiteres Zubehör für Bar und Weinabend.",
+   "unterfilter": [
+    {
+     "handle": "bar-wein-weinzubehoer",
+     "titel": "Wein-Zubehör",
+     "titel_muss": [
+      "korkenzieher|weinöffner|flaschenöffner|entkorker|öffner|dekanter|karaffe|belüfter|weinkühl|weinständer|weinregal|weinflaschenhalter|wein|sektkühler|kühlwürfel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "bar-wein-cocktail",
+     "titel": "Cocktail- & Bar-Zubehör",
+     "titel_muss": [
+      "cocktail|shaker|bar-?set|eis|kühlstab|whisky|flachmann|zapfturm|sieb|messbecher|untersetzer"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "trinkflaschen-thermosflaschen",
+   "titel": "Trinkflaschen & Thermosflaschen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles",
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Thermoses",
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Drink Sleeves"
+   ],
+   "beschreibung": "Trinkflaschen aus Edelstahl, Glas und Kunststoff sowie Thermosflaschen, die Getränke warm oder kalt halten — für Büro, Sport und unterwegs.",
+   "unterfilter": [
+    {
+     "handle": "trinkflaschen-thermos",
+     "titel": "Thermos- & Isolierflaschen",
+     "titel_muss": [
+      "thermos|isolier|thermo|doppelwandig|vakuum"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "trinkflaschen-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|fahrrad|fitness"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "trinkflaschen-strohhalm-tee",
+     "titel": "Mit Strohhalm oder Teesieb",
+     "titel_muss": [
+      "strohhalm|tee|sieb|infus"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tassen-kaffeebecher",
+   "titel": "Tassen & Kaffeebecher",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Mugs",
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Coffee & Tea Cups"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(isolier[a-zäöüß-]*|thermo[a-zäöüß-]*|edelstahl-?trinkbecher|eisbecher)"
+   ],
+   "beschreibung": "Tassen und Kaffeebecher aus Keramik, Porzellan und Glas, dazu Teetassen mit Untertasse, Motiv-Tassen mit Schweizer Sujets und Tassen zum Selbstgestalten.",
+   "unterfilter": [
+    {
+     "handle": "tassen-kaffeebecher-motive",
+     "titel": "Schweizer Motiv-Tassen",
+     "titel_muss": [
+      "tasse «|schweiz|matterhorn|fondue|swiss"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tassen-kaffeebecher-keramik",
+     "titel": "Keramik & Porzellan",
+     "titel_muss": [
+      "keramik|porzellan|bone china"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tassen-kaffeebecher-tee-kaffee",
+     "titel": "Tee- & Kaffeetassen",
+     "titel_muss": [
+      "tee|kaffee|latte|espresso|untertasse"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "thermobecher-trinkbecher",
+   "titel": "Thermobecher & Trinkbecher",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Tumblers"
+   ],
+   "beschreibung": "Isolierte Thermobecher, Reisebecher, Trinkbecher mit Strohhalm und Coffee-to-go-Becher aus Edelstahl, Glas und Kunststoff.",
+   "unterfilter": [
+    {
+     "handle": "thermobecher-isoliert",
+     "titel": "Isolierbecher aus Edelstahl",
+     "titel_muss": [
+      "isolier|thermo|vakuum|doppelwand|edelstahl"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "thermobecher-strohhalm",
+     "titel": "Becher mit Strohhalm",
+     "titel_muss": [
+      "strohhalm"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "teller-schalen-geschirrsets",
+   "titel": "Teller, Schalen & Geschirrsets",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Dinnerware"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(feuerschale|sammelkarten|seifenschale|hartschale)"
+   ],
+   "beschreibung": "Speisetteller, Suppenteller, Schalen, Schüsseln und komplette Geschirrsets aus Keramik, Porzellan, Glas und Bambus.",
+   "unterfilter": [
+    {
+     "handle": "teller-schalen-teller",
+     "titel": "Teller",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(teller|platte|steakplatte)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(schale|schüssel|set)"
+     ]
+    },
+    {
+     "handle": "teller-schalen-schalen",
+     "titel": "Schalen & Schüsseln",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(schale|schüssel|schälchen|bowl|nudelschale)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "teller-schalen-sets",
+     "titel": "Geschirrsets",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(geschirr-?set|geschirrset|set|teilig)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "servierplatten-etageren",
+   "titel": "Servierplatten, Tabletts & Etageren",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Serveware"
+   ],
+   "beschreibung": "Servierplatten, Tabletts, Etageren, Tortenplatten, Karaffen und Servierzubehör für den gedeckten Tisch und das Buffet.",
+   "unterfilter": [
+    {
+     "handle": "servierplatten-tabletts",
+     "titel": "Tabletts",
+     "titel_muss": [
+      "tablett|tray"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "servierplatten-platten",
+     "titel": "Servierplatten & Teller",
+     "titel_muss": [
+      "platte|teller|schale|servier"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "servierplatten-holz",
+     "titel": "Holz & Bambus",
+     "titel_muss": [
+      "holz|bambus|akazie"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "lunchboxen-kuehltaschen",
+   "titel": "Lunchboxen & Kühltaschen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Lunch Boxes & Totes",
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Insulated Bags",
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Coolers",
+    "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Picnic Baskets"
+   ],
+   "beschreibung": "Lunchboxen, Bento-Boxen, Brotdosen, Isoliertaschen, Kühltaschen und Picknickkörbe für Arbeit, Schule und Ausflug.",
+   "unterfilter": [
+    {
+     "handle": "lunchboxen-bento",
+     "titel": "Lunchboxen & Bento",
+     "titel_muss": [
+      "lunchbox|bento|brotdose"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "lunchboxen-kuehltaschen-picknick",
+     "titel": "Kühltaschen & Picknick",
+     "titel_muss": [
+      "kühl|picknick"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tischdecken-schuerzen",
+   "titel": "Tischdecken, Platzsets & Schürzen",
+   "g_prefix": [
+    "Home & Garden > Linens & Bedding > Table Linens",
+    "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Aprons"
+   ],
+   "beschreibung": "Tischdecken, Tischläufer, Platzsets und Untersetzer für den Esstisch sowie Koch- und Grillschürzen.",
+   "unterfilter": [
+    {
+     "handle": "tischdecken-schuerzen-schuerzen",
+     "titel": "Schürzen",
+     "titel_muss": [
+      "schürze|schurze"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tischdecken-schuerzen-tischdecken-laeufer",
+     "titel": "Tischdecken & Läufer",
+     "titel_muss": [
+      "tischdecke|tischläufer|tischset|platzset|platzmatte|placemat|tischmatte|läufer"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "reinigungsmittel-buersten-mopps",
+   "titel": "Putzen & Reinigen",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Household Cleaning Supplies"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(schutzfolie)"
+   ],
+   "beschreibung": "Reinigungsbürsten, Mopps, Besen, Putztücher, Schwämme, Handschuhe, Glasreiniger, Reinigungsmittel und UV-Desinfektionsgeräte für Boden, Fugen, Fenster und Bad.",
+   "unterfilter": [
+    {
+     "handle": "reinigung-buersten",
+     "titel": "Bürsten",
+     "titel_muss": [
+      "bürste"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "reinigung-mopps-tuecher",
+     "titel": "Mopps, Besen & Tücher",
+     "titel_muss": [
+      "mopp|mop|besen|wischer|schaufel|eimer|staubwedel|glaswischer|abzieher|wedel|tuch|tücher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "reinigung-reiniger-sprays",
+     "titel": "Reiniger & Sprays",
+     "titel_muss": [
+      "reiniger|reinigungs?-?(tuch|tücher|gel|spray|pulver|tabs|tabletten)|tabs|spray|entferner|pads|desinf"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "waesche-buegeln-fusselentferner",
+   "titel": "Wäsche, Bügeln & Fusselentferner",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Laundry Supplies",
+    "Home & Garden > Household Appliances > Laundry Appliances",
+    "Home & Garden > Household Appliance Accessories > Laundry Appliance Accessories"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(gemüse)"
+   ],
+   "beschreibung": "Wäschekörbe, Wäschesäcke, Wäscheständer, Fusselentferner, Dampfglätter, Bügeleisen und Zubehör für die Wäschepflege."
+  },
+  {
+   "handle": "muelleimer-abfall",
+   "titel": "Mülleimer & Abfall",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Waste Containment"
+   ],
+   "beschreibung": "Mülleimer und Abfallbehälter für Küche, Bad und Büro — mit Sensor, Pedal oder Deckel, auch als Recyclingbox."
+  },
+  {
+   "handle": "insektenschutz-schaedlingsabwehr",
+   "titel": "Insektenschutz & Schädlingsabwehr",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Pest Control",
+    "Home & Garden > Decor > Window Treatments > Window Screens",
+    "Home & Garden > Decor > Window Treatments > Curtains & Drapes"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(insekt[a-zäöüß]*|mücke[a-zäöüß]*|moskito[a-zäöüß]*|fliegen[a-zäöüß]*|schädling[a-zäöüß]*|ungeziefer|ultraschall[a-zäöüß]*|kakerlak[a-zäöüß]*|nager[a-zäöüß]*|mäuse[a-zäöüß]*|spinnen[a-zäöüß]*|wespe[a-zäöüß]*|bienen[a-zäöüß]*|schreck|vertreib[a-zäöüß]*|abwehr[a-zäöüß]*|falle|klatsche|fänger|köder[a-zäöüß]*|repell[a-zäöüß]*|killer[a-zäöüß]*|vernichter|ratten|tier-? ?(und|&)|vogel|taube[a-zäöüß]*|waschbär|wabenlaterne|schwebfliegen|magnetisch[a-zäöüß]*)"
+   ],
+   "beschreibung": "Mückenlampen, Fliegenfallen, Ultraschall-Vertreiber, magnetische Insektenschutz-Türvorhänge und Fliegengitter gegen Mücken, Fliegen, Kakerlaken und Nager.",
+   "unterfilter": [
+    {
+     "handle": "insektenschutz-tuerschutz",
+     "titel": "Fliegengitter & Türvorhänge",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fliegengitter|türvorhang|insektenschutz|vorhang|netz|gitter|tür)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(lampe|falle)"
+     ]
+    },
+    {
+     "handle": "insektenschutz-muecken",
+     "titel": "Mückenlampen & Mückenabwehr",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mücke[a-zäöüß]*|moskito[a-zäöüß]*)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(vorhang|fliegengitter|tür)"
+     ]
+    },
+    {
+     "handle": "insektenschutz-ultraschall",
+     "titel": "Ultraschall-Vertreiber",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(ultraschall|vertreib|schreck|repell)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "staubsauger-zubehoer",
+   "titel": "Staubsauger & Zubehör",
+   "g_prefix": [
+    "Home & Garden > Household Appliances > Vacuums",
+    "Home & Garden > Household Appliance Accessories > Vacuum Accessories"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(phototherapie)"
+   ],
+   "beschreibung": "Handstaubsauger, Akku-Staubsauger, Saugroboter und Zubehör wie Bürsten, Filter und Aufsätze für die Reinigung zuhause.",
+   "unterfilter": [
+    {
+     "handle": "staubsauger-saugroboter",
+     "titel": "Saugroboter",
+     "titel_muss": [
+      "roboter"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "staubsauger-handstaubsauger",
+     "titel": "Handstaubsauger & Akku-Sauger",
+     "titel_muss": [
+      "handstaubsauger|akku-|kabellos|mini|tragbar|handsauger|auto"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "staubsauger-zubehoer-teile",
+     "titel": "Zubehör & Ersatzteile",
+     "titel_muss": [
+      "zubehör|ersatz|adapter|akku|filter|beutel|bürste|aufsatz|schlauch|dyson|kit|bügel"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "desinfektion-reinigungsgeraete",
+   "titel": "Desinfektions- & Reinigungsgeräte",
+   "g_prefix": [
+    "Home & Garden > Household Appliances"
+   ],
+   "g_nicht": [
+    "Home & Garden > Household Appliances > Climate Control Appliances",
+    "Home & Garden > Household Appliances > Vacuums",
+    "Home & Garden > Household Appliances > Laundry Appliances",
+    "Home & Garden > Household Appliances > Water Heaters"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(garage[a-zäöüß]*|tor(?![a-zäöüß])|durchlauferhitzer|luftkühler|kühlend[a-zäöüß]*|klimaanlagen|ventilator)"
+   ],
+   "beschreibung": "UV-Sterilisatoren, Desinfektionsboxen, Ozon-Desinfektionsgeräte, Ultraschall-Reiniger für Brillen und Schmuck sowie Dampfreiniger für den Haushalt."
+  },
+  {
+   "handle": "aufbewahrungsbeutel-taschen",
+   "titel": "Aufbewahrungsbeutel & Vakuumbeutel",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Storage & Organization"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(aufbewahrungs-?(tasche|beutel|säck)[a-zäöüß]*|vakuum[a-zäöüß-]*(beutel|tasche)|kompressionsbeutel|kleidersäck[a-zäöüß]*|kleidersack|wäschebeutel)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(taktisch[a-zäöüß]*|camouflage|helm|tourniquet|tastatur|camping|schwimm[a-zäöüß-]*|baseball|cap(?![a-zäöüß])|deo-|scheren)"
+   ],
+   "beschreibung": "Aufbewahrungstaschen, Vakuumbeutel und Kleidersäcke für Kleidung, Bettwäsche und Reisegepäck — platzsparend und staubgeschützt."
+  },
+  {
+   "handle": "schubladen-organizer",
+   "titel": "Organizer & Schubladenboxen",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Storage & Organization"
+   ],
+   "g_nicht": [
+    "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+    "Home & Garden > Household Supplies > Storage & Organization > Storage Hooks & Racks",
+    "Home & Garden > Household Supplies > Storage & Organization > Household Storage Bags",
+    "Home & Garden > Household Supplies > Storage & Organization > Household Storage Containers"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(organizer|schubladen[a-zäöüß-]*|ordnungs[a-zäöüß-]*|aufbewahrungsbox|aufbewahrungsset|aufbewahrungsständer|aufbewahrungskorb|box|kasten|ständer)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(aufbewahrungs-?(tasche|beutel)|vakuum|kleidersack|kleiderbügel|schuhregal|kosmetik[a-zäöüß-]*|make-?up[a-zäöüß-]*|schmink[a-zäöüß-]*|pinsel[a-zäöüß-]*|lippenstift[a-zäöüß-]*|nagellack[a-zäöüß-]*|beauty[a-zäöüß-]*|blind ?box|mahjong|yo-yo|basketball|spielzeug[a-zäöüß-]*|modellauto[a-zäöüß-]*|kartenhalter|eiscreme|käsereibe|schleifk[a-zäöüß]*|münz[a-zäöüß-]*|medikament[a-zäöüß-]*|digitaler organizer|outdoor|schmuck[a-zäöüß-]*|uhren[a-zäöüß-]*|tassen-ständer|display|ständer)"
+   ],
+   "beschreibung": "Schubladen-Organizer, Ordnungsboxen, Kosmetik-Organizer und Hänge-Organizer für Schrank, Schublade, Bad und Schreibtisch."
+  },
+  {
+   "handle": "kleiderbuegel-schuhregale",
+   "titel": "Kleiderbügel, Kleiderständer & Schuhregale",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kleidersack|kleidersäck[a-zäöüß]*|aufbewahrungs-?tasche|baseball)"
+   ],
+   "beschreibung": "Kleiderbügel, Kleiderständer, Garderobenstangen, Schrank-Organizer und Schuhregale für Flur und Kleiderschrank."
+  },
+  {
+   "handle": "haken-garderobenhalter",
+   "titel": "Haken & Garderobenhalter",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Storage & Organization > Storage Hooks & Racks",
+    "Home & Garden > Decor > Coat & Hat Racks"
+   ],
+   "beschreibung": "Wandhaken, Hakenleisten, Kleiderhaken, Schlüsselhalter und Garderobenhalter zum Aufhängen — mit Klebepad oder zum Schrauben."
+  },
+  {
+   "handle": "regale-wandregale",
+   "titel": "Regale & Wandregale",
+   "g_prefix": [
+    "Furniture > Shelving",
+    "Furniture > Cabinets & Storage > Wine Racks"
+   ],
+   "beschreibung": "Wandregale, Standregale, Eckregale, Bücherregale, Badregale und Küchenregale aus Holz, Metall und Acryl.",
+   "unterfilter": [
+    {
+     "handle": "regale-wandregale-wand",
+     "titel": "Wandregale",
+     "titel_muss": [
+      "wandregal|wandmontiert|hängeregal|wand"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "regale-badregale",
+     "titel": "Bad & Kosmetik",
+     "titel_muss": [
+      "bad|wc|dusch|kosmetik|badezimmer"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "regale-kuechenregale",
+     "titel": "Küche & Gewürze",
+     "titel_muss": [
+      "küche|gewürz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "regale-holz-bambus",
+     "titel": "Holz & Bambus",
+     "titel_muss": [
+      "holz|bambus"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "moebel-hocker-tische",
+   "titel": "Möbel, Hocker & Tische",
+   "g_prefix": [
+    "Furniture"
+   ],
+   "g_nicht": [
+    "Furniture > Shelving",
+    "Furniture > Cabinets & Storage > Wine Racks",
+    "Furniture > Baby & Toddler Furniture",
+    "Furniture > Office Furniture",
+    "Furniture > Outdoor Furniture"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(stopper|fuss-?kissen|fussstütze[a-zäöüß-]*|beachbag|camping|outdoor|angeln|hülle|baby|kinder|matratze)"
+   ],
+   "beschreibung": "Sessel, Hocker, Beistelltische, Couchtische, Schränke, Betten und Ottomanen für Wohnzimmer, Schlafzimmer und Flur."
+  },
+  {
+   "handle": "badematten-badteppiche",
+   "titel": "Badematten & Badteppiche",
+   "g_prefix": [
+    "Home & Garden > Bathroom Accessories > Bath Mats & Rugs"
+   ],
+   "beschreibung": "Badematten, Badteppiche und Bad-Sets mit Rutschschutz aus Mikrofaser, Baumwolle, Bambus und Memory-Schaum."
+  },
+  {
+   "handle": "duschvorhaenge-duschstangen",
+   "titel": "Duschvorhänge & Duschstangen",
+   "g_prefix": [
+    "Home & Garden > Bathroom Accessories > Shower Curtains",
+    "Home & Garden > Bathroom Accessories > Shower Rods",
+    "Home & Garden > Bathroom Accessories > Shower Curtain Rings"
+   ],
+   "beschreibung": "Duschvorhänge mit Motiven und in Uni, dazu Duschstangen und Vorhangringe — wasserdicht und schimmelresistent."
+  },
+  {
+   "handle": "seifenspender-bad-accessoires",
+   "titel": "Seifenspender & Bad-Accessoires",
+   "g_prefix": [
+    "Home & Garden > Bathroom Accessories > Soap & Lotion Dispensers",
+    "Home & Garden > Bathroom Accessories > Soap Dishes & Holders",
+    "Home & Garden > Bathroom Accessories > Toothbrush Holders",
+    "Home & Garden > Bathroom Accessories > Bathroom Accessory Sets",
+    "Home & Garden > Bathroom Accessories > Bath Caddies",
+    "Home & Garden > Bathroom Accessories > Bath Pillows"
+   ],
+   "beschreibung": "Seifenspender, Seifenschalen, Zahnbürstenhalter, Bad-Sets, Duschablagen und Badewannenkissen für ein geordnetes Badezimmer."
+  },
+  {
+   "handle": "wc-zubehoer-taschentuchboxen",
+   "titel": "WC-Zubehör & Taschentuchboxen",
+   "g_prefix": [
+    "Home & Garden > Bathroom Accessories > Facial Tissue Holders",
+    "Home & Garden > Bathroom Accessories > Toilet Paper Holders",
+    "Home & Garden > Bathroom Accessories > Toilet Brushes & Holders"
+   ],
+   "beschreibung": "WC-Bürsten, Toilettenpapierhalter und Taschentuchboxen aus Keramik, Edelstahl und Bambus."
+  },
+  {
+   "handle": "handtuchhalter-badregale",
+   "titel": "Handtuchhalter",
+   "g_prefix": [
+    "Home & Garden > Bathroom Accessories > Towel Racks & Holders"
+   ],
+   "beschreibung": "Handtuchhalter, Handtuchstangen und Tuchhalter zur Wandmontage, mit Saugnapf oder ohne Bohren."
+  },
+  {
+   "handle": "handtuecher-badetuecher",
+   "titel": "Handtücher & Badetücher",
+   "g_prefix": [
+    "Home & Garden > Linens & Bedding > Towels"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(t-shirt|kleid|edelstahl)"
+   ],
+   "beschreibung": "Handtücher, Badetücher, Strandtücher und Handtuch-Sets aus Baumwolle, Mikrofaser und Leinen.",
+   "unterfilter": [
+    {
+     "handle": "handtuecher-bade-strand",
+     "titel": "Bade- & Strandtücher",
+     "titel_muss": [
+      "bade|strand"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "handtuecher-baumwolle",
+     "titel": "Baumwolle",
+     "titel_muss": [
+      "baumwoll"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "kopfkissen-nackenkissen",
+   "titel": "Kopfkissen & Nackenkissen",
+   "g_prefix": [
+    "Home & Garden > Linens & Bedding > Bedding > Pillows"
+   ],
+   "beschreibung": "Kopfkissen, Nackenstützkissen, Memory-Schaum-Kissen, Seitenschläferkissen, Beinkissen und Kinderkissen für erholsamen Schlaf.",
+   "unterfilter": [
+    {
+     "handle": "kopfkissen-memory-schaum",
+     "titel": "Memory-Schaum",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(memory|schaum|foam)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kopfkissen-nackenkissen-nacken",
+     "titel": "Nackenkissen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(nacken|hals)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kopfkissen-seitenschlaefer",
+     "titel": "Seiten- & Beinkissen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(seiten|bein|knie|schwanger|wickel|u-förmig)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kopfkissen-kinder",
+     "titel": "Kinder- & Babykissen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kinder|baby)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "bettwaesche-bettbezuege",
+   "titel": "Bettwäsche & Bettbezüge",
+   "g_prefix": [
+    "Home & Garden > Linens & Bedding > Bedding > Duvet Covers",
+    "Home & Garden > Linens & Bedding > Bedding > Pillowcases & Shams",
+    "Home & Garden > Linens & Bedding > Bedding > Mattress Protectors"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sofa-?kissen|sofakissen|zierkissen|deko-?kissen|sofa|polster[a-zäöüß-]*|weihnacht[a-zäöüß-]*)"
+   ],
+   "beschreibung": "Bettwäsche-Sets, Bettbezüge, Kopfkissenbezüge und Matratzenschoner aus Baumwolle, Satin, Seide und Tencel.",
+   "unterfilter": [
+    {
+     "handle": "bettwaesche-sets",
+     "titel": "Bettwäsche-Sets",
+     "titel_muss": [
+      "bettwäsche|bettbezug|duvet|deckenbezug"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "bettwaesche-satin-baumwolle",
+     "titel": "Satin, Seide & Baumwolle",
+     "titel_muss": [
+      "satin|seide|tencel|baumwoll|samt|jacquard"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "decken-plaids",
+   "titel": "Decken & Plaids",
+   "g_prefix": [
+    "Home & Garden > Linens & Bedding > Bedding > Blankets",
+    "Home & Garden > Linens & Bedding > Bedding > Quilts & Comforters"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(plüschkissen|heizschal|kissen in|reisekissen)"
+   ],
+   "beschreibung": "Kuscheldecken, Wolldecken, Strickdecken, Sommerdecken, Kühldecken und Plaids für Sofa und Bett.",
+   "unterfilter": [
+    {
+     "handle": "decken-kuscheldecken",
+     "titel": "Kuschel- & Plüschdecken",
+     "titel_muss": [
+      "kuschel|plüsch|fleece|flausch|samt|flanell|coral|korall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "decken-strickdecken",
+     "titel": "Strick- & Wolldecken",
+     "titel_muss": [
+      "strick|häkel|woll|gestrick|alpaka|lamm"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "decken-sommerdecken",
+     "titel": "Sommer- & Kühldecken",
+     "titel_muss": [
+      "sommer|kühl|eisseide|gaze|mull|leicht|quilt|baumwoll|soja"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "teppiche-fussmatten",
+   "titel": "Teppiche & Fussmatten",
+   "g_prefix": [
+    "Home & Garden > Decor > Rugs",
+    "Home & Garden > Decor > Door Mats"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(knüpfteppich-?set|diy)"
+   ],
+   "beschreibung": "Teppiche, Läufer, Küchenmatten und Fussmatten für Wohnzimmer, Kinderzimmer, Küche und Eingang."
+  },
+  {
+   "handle": "vorhaenge-gardinen",
+   "titel": "Vorhänge & Gardinen",
+   "g_prefix": [
+    "Home & Garden > Decor > Window Treatments > Curtains & Drapes"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(insekt[a-zäöüß]*|mücke[a-zäöüß]*|moskito[a-zäöüß]*|fliegen[a-zäöüß]*|magnetisch[a-zäöüß]*)",
+    "(^|[^a-zäöüß])(duschvorhang|badewannen)"
+   ],
+   "beschreibung": "Vorhänge, Gardinen, Verdunkelungsvorhänge und Fadenvorhänge für Fenster, Türen und als Raumteiler.",
+   "unterfilter": [
+    {
+     "handle": "vorhaenge-verdunkelung",
+     "titel": "Verdunkelungsvorhänge",
+     "titel_muss": [
+      "verdunkel|blackout|verdunk|thermo|blickdicht|auslicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vorhaenge-gardinen-voile",
+     "titel": "Gardinen & Voile",
+     "titel_muss": [
+      "gardine|voile|gaze|tüll|transparent|halbtransparent|spitze|store"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vorhaenge-samt-leinen",
+     "titel": "Samt, Chenille & Leinen",
+     "titel_muss": [
+      "samt|chenille|leinen|baumwoll"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "rollos-vorhangzubehoer",
+   "titel": "Rollos, Jalousien & Vorhangzubehör",
+   "g_prefix": [
+    "Home & Garden > Decor > Window Treatments > Window Blinds & Shades",
+    "Home & Garden > Decor > Window Treatment Accessories"
+   ],
+   "beschreibung": "Rollos, Faltrollos, Jalousien, Vorhangschienen, Raffhalter und smarte Motoren für Vorhänge und Rollläden."
+  },
+  {
+   "handle": "wandbilder-wanddeko",
+   "titel": "Wandbilder & Wanddeko",
+   "g_prefix": [
+    "Home & Garden > Decor > Artwork",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+   ],
+   "g_nicht": [
+    "Home & Garden > Decor > Artwork > Decorative Tapestries",
+    "Home & Garden > Decor > Artwork > Sculptures & Statues",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Craft Organization",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Crafting Patterns & Molds"
+   ],
+   "titel_muss": [
+    "leinwand|wandbild|poster|plakat|kunstdruck|gemälde|malerei|wanddeko|wanddekoration|wandschmuck|wandkunst|wandskulptur|wandobjekt|wanddekor|hängekunst|stoffbild|canvas|kunstwerk|(^|[^a-zäöüß])bild(er)?(?![a-zäöüß])|[a-zäöüß-]+bild(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(diy|diamond|diamant|malen|puzzle|sticker|aufkleber|tattoo|kissen|teppich|wandteppich|wandbehang|korb|regal|uhr|lampe|leuchte|haken|spiegel(?!ung)|bilderrahmen|(^|[^a-zäöüß])rahmen|holzrahmen|schwamm|tasche|tuch|licht|led|leinwandstoff|türspion|bildschirm|vorhang|stoff|garn|stick|perlen|kreuzstich|nähen|häkel|filz|harz|epoxy|papier|buch|fensterfolie|ornament|kunstharz|statue|skulptur|figur|gips|regenschirm|edelstein|ballon|weide|security|überwach|kamera)"
+   ],
+   "beschreibung": "Leinwandbilder, Poster, Kunstdrucke, Ölgemälde und Wanddeko aus Metall für Wohnzimmer, Schlafzimmer und Flur — darunter eine Serie mit Schweizer Motiven.",
+   "unterfilter": [
+    {
+     "handle": "wandbilder-uf-leinwand",
+     "titel": "Leinwandbilder & Gemälde",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leinwand|ölgemälde|gemälde|canvas|malerei)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wandbilder-uf-poster",
+     "titel": "Poster & Kunstdrucke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(poster|kunstdruck|plakat)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wandbilder-uf-metall",
+     "titel": "Metall-Wanddeko",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(metall|eisen|silhouette|aluminium)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "wandteppiche-wandbehaenge",
+   "titel": "Wandteppiche & Wandbehänge",
+   "g_prefix": [
+    "Home & Garden > Decor > Artwork > Decorative Tapestries"
+   ],
+   "beschreibung": "Wandteppiche und Wandbehänge aus Stoff mit Motiven, Mustern und Quasten — zum Aufhängen im Wohnzimmer, Schlafzimmer oder Studentenzimmer."
+  },
+  {
+   "handle": "bilderrahmen-wandtattoos-tapeten",
+   "titel": "Bilderrahmen, Wandtattoos & Tapeten",
+   "g_prefix": [
+    "Home & Garden > Decor > Picture Frames",
+    "Home & Garden > Decor > Home Decor Decals",
+    "Home & Garden > Decor > Wallpaper"
+   ],
+   "beschreibung": "Bilderrahmen, Fotorahmen, Wandtattoos, Wandsticker und selbstklebende Tapeten, um Wände ohne Bohren zu gestalten."
+  },
+  {
+   "handle": "wanduhren-tischuhren",
+   "titel": "Wanduhren & Tischuhren",
+   "g_prefix": [
+    "Home & Garden > Decor > Clocks"
+   ],
+   "g_nicht": [
+    "Home & Garden > Decor > Clocks > Alarm Clocks"
+   ],
+   "beschreibung": "Wanduhren, Tischuhren und Standuhren aus Holz, Metall und Acryl — mit leisem Uhrwerk und in vielen Stilen."
+  },
+  {
+   "handle": "wecker-radiowecker",
+   "titel": "Wecker",
+   "g_prefix": [
+    "Home & Garden > Decor > Clocks > Alarm Clocks"
+   ],
+   "beschreibung": "Digitale Wecker, Lichtwecker, Reisewecker und Retro-Wecker, teils mit Ladefunktion, Thermometer oder Kalender."
+  },
+  {
+   "handle": "figuren-skulpturen",
+   "titel": "Figuren & Skulpturen",
+   "g_prefix": [
+    "Home & Garden > Decor > Figurines",
+    "Home & Garden > Decor > Artwork > Sculptures & Statues"
+   ],
+   "beschreibung": "Dekofiguren, Statuen, Skulpturen und Ornamente aus Kunstharz, Keramik, Holz und Metall für Regal, Tisch und Vitrine."
+  },
+  {
+   "handle": "deko-objekte-accessoires",
+   "titel": "Dekoobjekte & Accessoires",
+   "g_prefix": [
+    "Home & Garden > Decor"
+   ],
+   "g_nicht": [
+    "Home & Garden > Decor > Throw Pillows",
+    "Home & Garden > Decor > Chair & Sofa Cushions",
+    "Home & Garden > Decor > Backrest Pillows",
+    "Home & Garden > Decor > Slipcovers",
+    "Home & Garden > Decor > Baskets",
+    "Home & Garden > Decor > Artwork",
+    "Home & Garden > Decor > Clocks",
+    "Home & Garden > Decor > Figurines",
+    "Home & Garden > Decor > Home Fragrance",
+    "Home & Garden > Decor > Flameless Candles",
+    "Home & Garden > Decor > Vases",
+    "Home & Garden > Decor > Seasonal & Holiday Decorations",
+    "Home & Garden > Decor > Wreaths & Garlands",
+    "Home & Garden > Decor > Rugs",
+    "Home & Garden > Decor > Door Mats",
+    "Home & Garden > Decor > Window Treatment",
+    "Home & Garden > Decor > Picture Frames",
+    "Home & Garden > Decor > Home Decor Decals",
+    "Home & Garden > Decor > Wallpaper",
+    "Home & Garden > Decor > Coat & Hat Racks",
+    "Home & Garden > Decor > Lawn Ornaments & Garden Sculptures",
+    "Home & Garden > Decor > Fountains & Ponds"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(vogel[a-zäöüß-]*|nistkasten|futterstation|futterhaus|uhrwerk|uhrenzeiger|federwelle|blechschild|messlatte|grössenmess[a-zäöüß]*)"
+   ],
+   "beschreibung": "Dekoschalen, Deko-Tabletts, Kunstblumen, Buchstützen, Spieluhren, Spardosen, Windspiele und weitere Dekoobjekte für Regal, Tisch und Fensterbank.",
+   "unterfilter": [
+    {
+     "handle": "deko-schalen-tabletts",
+     "titel": "Schalen & Tabletts",
+     "titel_muss": [
+      "schale|tablett|tray"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "deko-windspiele-spardosen",
+     "titel": "Windspiele, Traumfänger & Spardosen",
+     "titel_muss": [
+      "windspiel|klangspiel|traumfänger|spieluhr|spardose|sparschwein"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "saison-weihnachtsdeko",
+   "titel": "Weihnachts- & Saisondeko",
+   "g_prefix": [
+    "Home & Garden > Decor > Seasonal & Holiday Decorations",
+    "Home & Garden > Decor > Wreaths & Garlands"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(keksstempel|spielzeug|aufbewahrungstasse|wc-set)"
+   ],
+   "beschreibung": "Weihnachtsdeko, Christbaumschmuck, Türkränze, Girlanden, Adventskalender und Halloween-Deko für die Festtage.",
+   "unterfilter": [
+    {
+     "handle": "saison-adventskalender",
+     "titel": "Adventskalender & Countdown",
+     "titel_muss": [
+      "advent|kalender|countdown"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "saison-christbaumschmuck",
+     "titel": "Christbaumschmuck & Ornamente",
+     "titel_muss": [
+      "baum|kugel|ornament|anhänger|christbaum|stern"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "vasen-blumenvasen",
+   "titel": "Vasen",
+   "g_prefix": [
+    "Home & Garden > Decor > Vases"
+   ],
+   "beschreibung": "Vasen aus Keramik, Glas und Metall für Schnittblumen, Trockenblumen und als Tischdeko — von der schlichten Blumenvase bis zum Statement-Stück."
+  },
+  {
+   "handle": "kerzen-kerzenhalter",
+   "titel": "Kerzen & Kerzenhalter",
+   "g_prefix": [
+    "Home & Garden > Decor > Home Fragrance Accessories > Candle Holders",
+    "Home & Garden > Decor > Home Fragrance Accessories > Candle & Oil Warmers",
+    "Home & Garden > Decor > Home Fragrances > Candles",
+    "Home & Garden > Decor > Flameless Candles"
+   ],
+   "beschreibung": "Kerzenhalter, Teelichthalter, LED-Kerzen, Duftkerzen und Kerzenwärmer für Tisch, Wand und Fensterbank."
+  },
+  {
+   "handle": "raeucherwerk-duftoele",
+   "titel": "Räucherwerk & Duftöle",
+   "g_prefix": [
+    "Home & Garden > Decor > Home Fragrance Accessories > Incense Holders",
+    "Home & Garden > Decor > Home Fragrances > Fragrance Oil"
+   ],
+   "beschreibung": "Räucherstäbchenhalter, Räuchergefässe, Rückflussbrunnen und Duftöle für Diffuser und Aromalampen."
+  },
+  {
+   "handle": "aroma-diffuser-duftlampen",
+   "titel": "Aroma-Diffuser & Duftlampen",
+   "g_prefix": [
+    "Home & Garden > Decor > Home Fragrance Accessories"
+   ],
+   "g_nicht": [
+    "Home & Garden > Decor > Home Fragrance Accessories > Candle Holders",
+    "Home & Garden > Decor > Home Fragrance Accessories > Candle & Oil Warmers",
+    "Home & Garden > Decor > Home Fragrance Accessories > Incense Holders"
+   ],
+   "beschreibung": "Aroma-Diffuser, Ultraschall-Vernebler, Duftlampen und Aromatherapie-Geräte mit Licht, Timer und Fernbedienung für Wohnzimmer, Büro und Schlafzimmer.",
+   "unterfilter": [
+    {
+     "handle": "aroma-diffuser-holz",
+     "titel": "Holzoptik",
+     "titel_muss": [
+      "holz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "aroma-diffuser-flamme-licht",
+     "titel": "Mit Flammen- oder LED-Licht",
+     "titel_muss": [
+      "flamme|vulkan|feuer|licht|led"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "luftbefeuchter-raumbefeuchter",
+   "titel": "Luftbefeuchter",
+   "g_prefix": [
+    "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(luftreiniger)"
+   ],
+   "beschreibung": "Luftbefeuchter für Zimmer, Schreibtisch und Auto — als Ultraschall-Vernebler mit Nachtlicht, Aroma-Funktion oder USB-Anschluss.",
+   "unterfilter": [
+    {
+     "handle": "luftbefeuchter-aroma",
+     "titel": "Mit Aroma-Funktion",
+     "titel_muss": [
+      "aroma|diffus|duft|vernebler"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "luftbefeuchter-mini-usb",
+     "titel": "Mini- & USB-Luftbefeuchter",
+     "titel_muss": [
+      "mini|usb|tragbar|klein|kompakt"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "luftbefeuchter-licht",
+     "titel": "Mit Nachtlicht",
+     "titel_muss": [
+      "nachtlicht|licht|lampe|led|projekt"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "ventilatoren-handventilatoren",
+   "titel": "Ventilatoren & Handventilatoren",
+   "g_prefix": [
+    "Home & Garden > Household Appliances > Climate Control Appliances > Fans"
+   ],
+   "beschreibung": "Tischventilatoren, Standventilatoren, Deckenventilatoren, USB-Ventilatoren und Handventilatoren mit Sprühnebel für heisse Tage zuhause, im Büro und unterwegs.",
+   "unterfilter": [
+    {
+     "handle": "ventilatoren-hand-mini",
+     "titel": "Hand- & Mini-Ventilatoren",
+     "titel_muss": [
+      "hand|mini|tragbar|nacken|taschen"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "ventilatoren-tisch-usb",
+     "titel": "Tisch- & USB-Ventilatoren",
+     "titel_muss": [
+      "tisch|schreibtisch|usb"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "led-streifen-lichterketten",
+   "titel": "LED-Streifen & Lichterketten",
+   "g_prefix": [
+    "Home & Garden > Lighting > Light Ropes & Strings",
+    "Home & Garden > Lighting Accessories"
+   ],
+   "beschreibung": "LED-Streifen, Lichterketten, Lichtervorhänge, Solar-Lichterketten und Steuergeräte für Ambiente-Licht in Wohnung, Garten und Fest."
+  }
+ ],
+ "gruppen": [
+  {
+   "titel": "Kochgeschirr & Backen",
+   "handle": "kochgeschirr-backen-gruppe",
+   "kinder": [
+    "pfannen-woks",
+    "toepfe-kochgeschirr-sets",
+    "backformen-backbleche",
+    "kuechenformen-tortendeko"
+   ]
+  },
+  {
+   "titel": "Küchenhelfer & Vorrat",
+   "handle": "kuechenhelfer-vorrat-gruppe",
+   "kinder": [
+    "schneidebretter-bretter",
+    "schneiden-reiben-schaelen",
+    "kochutensilien-sets",
+    "siebe-muehlen-messhilfen",
+    "kuechengadgets",
+    "kuechen-organizer",
+    "vorratsdosen",
+    "waagen"
+   ]
+  },
+  {
+   "titel": "Elektrische Küchengeräte",
+   "handle": "kuechengeraete-gruppe",
+   "kinder": [
+    "mixer-entsafter-zerkleinerer",
+    "fritteusen-grills-kochfelder",
+    "reiskocher-dampfgarer",
+    "waffeleisen-sandwichmaker-toaster",
+    "nudel-eis-snackmaschinen",
+    "kuechengeraete-weitere",
+    "kuechengeraete-zubehoer",
+    "messerschaerfer"
+   ]
+  },
+  {
+   "titel": "Kaffee, Tee & Trinken",
+   "handle": "kaffee-tee-trinken-gruppe",
+   "kinder": [
+    "wasserkocher-kaffeemaschinen",
+    "teekannen-kaffeeservice",
+    "tassen-kaffeebecher",
+    "thermobecher-trinkbecher",
+    "trinkflaschen-thermosflaschen",
+    "bar-weinzubehoer"
+   ]
+  },
+  {
+   "titel": "Geschirr, Besteck & Tisch",
+   "handle": "geschirr-tisch-gruppe",
+   "kinder": [
+    "teller-schalen-geschirrsets",
+    "servierplatten-etageren",
+    "besteck",
+    "tischdecken-schuerzen",
+    "lunchboxen-kuehltaschen"
+   ]
+  },
+  {
+   "titel": "Putzen & Haushalt",
+   "handle": "putzen-haushalt-gruppe",
+   "kinder": [
+    "reinigungsmittel-buersten-mopps",
+    "staubsauger-zubehoer",
+    "desinfektion-reinigungsgeraete",
+    "waesche-buegeln-fusselentferner",
+    "muelleimer-abfall",
+    "insektenschutz-schaedlingsabwehr"
+   ]
+  },
+  {
+   "titel": "Aufbewahrung & Möbel",
+   "handle": "aufbewahrung-moebel-gruppe",
+   "kinder": [
+    "koerbe-behaelter",
+    "aufbewahrungsbeutel-taschen",
+    "schubladen-organizer",
+    "kleiderbuegel-schuhregale",
+    "haken-garderobenhalter",
+    "regale-wandregale",
+    "moebel-hocker-tische"
+   ]
+  },
+  {
+   "titel": "Bad",
+   "handle": "bad-gruppe",
+   "kinder": [
+    "badematten-badteppiche",
+    "duschvorhaenge-duschstangen",
+    "seifenspender-bad-accessoires",
+    "wc-zubehoer-taschentuchboxen",
+    "handtuchhalter-badregale",
+    "handtuecher-badetuecher",
+    "armaturen-duschen"
+   ]
+  },
+  {
+   "titel": "Kissen, Decken & Bettwäsche",
+   "handle": "kissen-decken-bett-gruppe",
+   "kinder": [
+    "kissen",
+    "kissenbezuege",
+    "sitz-rueckenkissen",
+    "sofa-moebelueberzuege",
+    "kopfkissen-nackenkissen",
+    "bettwaesche-bettbezuege",
+    "decken-plaids",
+    "teppiche-fussmatten"
+   ]
+  },
+  {
+   "titel": "Fenster, Wand & Uhren",
+   "handle": "fenster-wand-uhren-gruppe",
+   "kinder": [
+    "vorhaenge-gardinen",
+    "rollos-vorhangzubehoer",
+    "wandbilder-wanddeko",
+    "wandteppiche-wandbehaenge",
+    "bilderrahmen-wandtattoos-tapeten",
+    "wanduhren-tischuhren",
+    "wecker-radiowecker"
+   ]
+  },
+  {
+   "titel": "Deko & Kerzen",
+   "handle": "deko-kerzen-gruppe",
+   "kinder": [
+    "vasen-blumenvasen",
+    "figuren-skulpturen",
+    "deko-objekte-accessoires",
+    "saison-weihnachtsdeko",
+    "kerzen-kerzenhalter",
+    "raeucherwerk-duftoele"
+   ]
+  },
+  {
+   "titel": "Raumluft & Klima",
+   "handle": "raumluft-klima-gruppe",
+   "kinder": [
+    "aroma-diffuser-duftlampen",
+    "luftbefeuchter-raumbefeuchter",
+    "ventilatoren-handventilatoren",
+    "luftreiniger-klimageraete"
+   ]
+  },
+  {
+   "titel": "Beleuchtung",
+   "handle": "beleuchtung-gruppe",
+   "kinder": [
+    "led-streifen-lichterketten",
+    "tisch-nachttischlampen",
+    "nachttischlampen",
+    "wandleuchten",
+    "deckenleuchten",
+    "nachtlichter-ambiente",
+    "schreibtischlampen"
+   ]
+  }
+ ],
+ "ausserhalb": [],
+ "hinweise": []
+}

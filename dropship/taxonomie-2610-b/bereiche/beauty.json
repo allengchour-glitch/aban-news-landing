@@ -1,0 +1,695 @@
+{
+  "bereich": "beauty",
+  "titel": "Beauty, Pflege & Gesundheit",
+  "menue": {
+    "oben": "Beauty & Pflege"
+  },
+  "universum": {
+    "g_prefix": [
+      "Health & Beauty"
+    ],
+    "titel_muss": [],
+    "g_nicht": [
+      "Health & Beauty > Jewelry Cleaning & Care",
+      "Health & Beauty > Health Care > Biometric Monitors"
+    ],
+    "titel_nicht": []
+  },
+  "kategorien": [
+    {
+      "handle": "gesichtscreme-serum",
+      "titel": "Gesichtscreme, Serum & Öl",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Masks",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lip Balms",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Sunscreen",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Toners",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Tanning",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Body Oil",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Makeup Removers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Acne Treatments",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Anti-Aging Skin Care Kits",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Wart",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Kits"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|bein[a-zäöüß-]*|gelenk[a-zäöüß-]*|kopfhaut[a-zäöüß-]*|haar[a-zäöüß-]*|styling|wattepad[a-zäöüß-]*|paraffin[a-zäöüß-]*|perianal[a-zäöüß-]*|schwangerschaft[a-zäöüß-]*|rücken[a-zäöüß-]*|schlaf|tattoo[a-zäöüß-]*|make-up[a-zäöüß-]*)",
+        "(pflaster|maske|bandage|entferner)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(lip)",
+        "(^|[^a-zäöüß])(aromatherapie[a-zäöüß-]*)"
+      ],
+      "beschreibung": "Cremes, Seren, Lotionen und Gesichtsöle für die tägliche Pflege: Feuchtigkeitscreme, Nachtcreme, Augencreme und Seren mit Hyaluron, Vitamin C, Retinol oder Kollagen."
+    },
+    {
+      "handle": "gesichtsmasken-peelings",
+      "titel": "Gesichtsmasken & Peelings",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Masks & Peels"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(viking|ugly|latex|skull|zombie|horror|cosplay|steampunk|tiermaske|stahlgitter|glitzernde|druckmaske|ohrhaken|sonnenmaske|sauerstoffbarriere|doppelkinn|bindi|sticker)",
+        "(^|[^a-zäöüß])(led|licht[a-zäöüß-]*|usb|beheizt[a-zäöüß-]*|wärme[a-zäöüß-]*|kühl[a-zäöüß-]*|dampf[a-zäöüß-]*|silikon[a-zäöüß-]*|rotlicht)"
+      ],
+      "beschreibung": "Tuchmasken, Augenpads, Schlammmasken, Peeling-Gele und Abziehmasken zum Auftragen auf Gesicht, Augenpartie, Hals und Körper."
+    },
+    {
+      "handle": "gesichtsreinigung-toner",
+      "titel": "Gesichtsreinigung & Toner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Toners",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Makeup Removers"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(ohr[a-zäöüß-]*)"
+      ],
+      "beschreibung": "Gesichtsreiniger, Reinigungsschäume und -öle, Gesichtswasser, Toner und Abschminkpads zum Reinigen der Haut."
+    },
+    {
+      "handle": "hautpflege-sets",
+      "titel": "Hautpflege-Sets & Geschenkboxen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care"
+      ],
+      "titel_muss": [
+        "(sets?|kits?|boxen?|geschenk[a-zäöüß]*)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(lip[a-zäöüß-]*|lippen[a-zäöüß-]*)",
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|spa|aromatherapie[a-zäöüß-]*)"
+      ],
+      "beschreibung": "Mehrteilige Pflegesets für das Gesicht, Reise-Sets und Geschenkboxen mit Reiniger, Toner, Serum und Creme."
+    },
+    {
+      "handle": "lippenpflege",
+      "titel": "Lippenpflege",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lip Balms & Treatments"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lippenbalsam, Lippenöl, Lip-Plumper und Lippenmasken zur Pflege der Lippen, teils mit Farbe."
+    },
+    {
+      "handle": "sonnenschutz-braeunung",
+      "titel": "Sonnenschutz & Selbstbräuner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Sunscreen",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Tanning"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(make-?up[a-zäöüß-]*|cushion|bb[ -]cream)"
+      ],
+      "beschreibung": "Sonnencremes, Sonnenstifte und Sonnenöle mit Lichtschutzfaktor sowie Selbstbräuner und Bräunungsöle."
+    },
+    {
+      "handle": "augen-make-up",
+      "titel": "Augen-Make-up",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Eyebrow",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Lash & Brow"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(wimpern[a-zäöüß-]*|augenbrauen[a-zäöüß-]*|brauen[a-zäöüß-]*)(?![a-zäöüß])"
+      ],
+      "beschreibung": "Lidschatten-Paletten, Eyeliner, Kajal, Mascara und Glitzer für die Augen."
+    },
+    {
+      "handle": "augenbrauen-wimpernpflege",
+      "titel": "Augenbrauen & Wimpernserum",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(augenbrau[a-zäöüß-]*|brauen[a-zäöüß-]*|brow|wimpern[a-zäöüß-]*serum|wimpern[a-zäöüß-]*lift|wimpern[a-zäöüß-]*pflege|lash)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Augenbrauenstifte, -gele und -puder, Brauenstempel und Wimpernseren sowie Wimpern- und Brauen-Lifting-Sets."
+    },
+    {
+      "handle": "kuenstliche-wimpern",
+      "titel": "Künstliche Wimpern",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Makeup Tools > False Eyelash"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Falsche Wimpern zum Aufkleben, magnetische Wimpern, Einzel-Cluster und Zubehör wie Wimpernkleber und Applikatoren."
+    },
+    {
+      "handle": "lippen-make-up",
+      "titel": "Lippenstift & Lipgloss",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Lip Makeup"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lippenstifte, Lipgloss, Lipliner und Lippentönungen in vielen Farben und Texturen."
+    },
+    {
+      "handle": "teint-make-up",
+      "titel": "Foundation, Rouge & Puder",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Face Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Makeup Finishing",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Body Makeup"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Foundation, Concealer, BB-Cream, Puder, Rouge, Bronzer, Highlighter und Fixierspray für den Teint."
+    },
+    {
+      "handle": "make-up-sets",
+      "titel": "Make-up-Sets",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Sets"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|kindermake-up[a-zäöüß-]*|spielzeug[a-zäöüß-]*|jungen|mädchen)(?![a-zäöüß])"
+      ],
+      "beschreibung": "Fertige Make-up-Sets und Geschenkboxen mit Lidschatten, Lippenstift, Rouge und Zubehör."
+    },
+    {
+      "handle": "nagellack-gel-lack",
+      "titel": "Nagellack & Gel-Lack",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polish"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
+        "pinsel|mischer|farbkarte|farbtabelle|lippenstift|lidschatten|nagelbad"
+      ],
+      "beschreibung": "Nagellack, Gel-Lack und UV-Lack in Farben, Cat-Eye- und Glitzer-Effekt, dazu Top Coat, Base Coat und Nagellackentferner."
+    },
+    {
+      "handle": "nagelsticker-nail-art",
+      "titel": "Nagelsticker & Nail Art",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Art"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+      ],
+      "beschreibung": "Nagelsticker, Strasssteine, Nail-Art-Stifte, Pinsel, Stempelplatten und Zubehör zum Gestalten der Nägel."
+    },
+    {
+      "handle": "nagelverlaengerung-gel",
+      "titel": "Nagelverlängerung & Modellage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > False Nails"
+      ],
+      "titel_muss": [
+        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Verlängerungsgele, Aufbau-Gel, Polygel, Acrylpulver und Dipping-Pulver samt Sets zur Nagelmodellage."
+    },
+    {
+      "handle": "nagellampen-fraeser",
+      "titel": "Nagellampen & Nagelfräser",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Dryers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Drills"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "UV- und LED-Nagellampen zum Aushärten von Gel-Lack sowie elektrische Nagelfräser und Polierer."
+    },
+    {
+      "handle": "nagelpflege-werkzeuge",
+      "titel": "Nagelpflege & Maniküre-Zubehör",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Dryers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Drills",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > False Nails",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polish",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Art"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+      ],
+      "beschreibung": "Nagelknipser, Nagelfeilen, Maniküre-Sets, Nagelhautpflege und Nagelpflege-Stifte."
+    },
+    {
+      "handle": "haarpflege-oele-shampoo",
+      "titel": "Haarpflege, Haaröl & Haarfarbe",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Hair Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tools",
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tool Accessories",
+        "Health & Beauty > Personal Care > Hair Care > Hair Shears"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(haar[a-zäöüß-]*|hair|shampoo|kopfhaut[a-zäöüß-]*|perücken[a-zäöüß-]*|rosmarin[a-zäöüß-]*)"
+      ],
+      "titel_nicht": [
+        "flasche|sprüher|sprühgerät|sprühfeucht|dampfer|duscher|tasche|verlänger|stecker|kappe|haube|wachsmaschine|aerosol|temperatur|applicator|ätherisch"
+      ],
+      "beschreibung": "Haaröle, Haarseren, Shampoo, Haarmasken und Kopfhautpflege sowie Haarfarbe, Farbspray und Haaransatz-Puder."
+    },
+    {
+      "handle": "haarschneider-trimmer",
+      "titel": "Haarschneider & Trimmer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers",
+        "Health & Beauty > Personal Care > Hair Care > Hair Shears"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(bart)",
+        "organizer|ladestation"
+      ],
+      "beschreibung": "Elektrische Haarschneider, Bart- und Nasenhaartrimmer, Augenbrauentrimmer und Friseurscheren."
+    },
+    {
+      "handle": "haarentfernung-epilierer",
+      "titel": "Haarentfernung & Epilierer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Shaving & Grooming > Hair Removal"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "rasier",
+        "shaver"
+      ],
+      "beschreibung": "Epilierer, IPL-Geräte, Haarentfernungsgeräte, Wachswärmer und Enthaarungscreme für Körper und Gesicht."
+    },
+    {
+      "handle": "led-masken-lichtgeraete",
+      "titel": "LED-Masken & Lichtgeräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Facial Saunas",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(led|photon[a-zäöüß-]*|licht[a-zäöüß-]*|rotlicht|infrarot|leuchtmaske|blaulicht|farblicht)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|straffungs[a-zäöüß-]*|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|hautglätter|schönheitsinstrument|schönheitsgerät|beauty-gerät|beauty instrument|hautpflegegerät|hautpflege-gerät)"
+      ],
+      "beschreibung": "Gesichtsmasken und Handgeräte mit LED-, Rotlicht- oder Photonen-Licht für zuhause."
+    },
+    {
+      "handle": "gesichtsreinigungsgeraete",
+      "titel": "Gesichtsreinigungsbürsten",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Elektrische Gesichtsreinigungsbürsten aus Silikon und Ultraschall-Reiniger mit Vibration und Wärme."
+    },
+    {
+      "handle": "porenreiniger-mitesser",
+      "titel": "Porenreiniger & Mitesser-Entferner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Elektrische Porenreiniger mit Vakuum oder Ultraschall, Mitesser-Sauger und Mitesser-Entferner-Sets aus Edelstahl."
+    },
+    {
+      "handle": "gesichtsdampfer-nanospray",
+      "titel": "Gesichtsdampfer & Nano-Sprayer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "dampf|nano|ionen|zerstäub|atomi|sprüh|spray|nebel|mist|befeuchter"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|straffungs[a-zäöüß-]*|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|hautglätter|schönheitsinstrument|schönheitsgerät|beauty-gerät|beauty instrument|hautpflegegerät|hautpflege-gerät)"
+      ],
+      "beschreibung": "Gesichtsdampfer mit Nano-Ionen und Heissdampf sowie Nano-Sprühgeräte für feinen Wassernebel."
+    },
+    {
+      "handle": "gua-sha-gesichtsroller",
+      "titel": "Gua Sha & Gesichtsroller",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Gua-Sha-Steine, Jade- und Rosenquarz-Roller, Kühlroller und Microneedling-Roller für die Gesichtsmassage."
+    },
+    {
+      "handle": "mikrostrom-lifting-geraete",
+      "titel": "Mikrostrom-, EMS- & RF-Geräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Facial Saunas",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|straffungs[a-zäöüß-]*|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|hautglätter|schönheitsinstrument|schönheitsgerät|beauty-gerät|beauty instrument|hautpflegegerät|hautpflege-gerät)"
+      ],
+      "titel_nicht": [
+        "zerstäub|atomi|spray|sprüh|nebel|dampf"
+      ],
+      "beschreibung": "Handgeräte für die Gesichtspflege mit Mikrostrom, EMS, Radiofrequenz oder Ultraschall."
+    },
+    {
+      "handle": "koerperpflege-bad",
+      "titel": "Körperpflege & Bad",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Bath & Body",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Body Oil",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lotion & Moisturizer"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|dusch[a-zäöüß-]*|shower|bad[a-zäöüß-]*|seife[a-zäöüß-]*|öl(?![a-zäöüß])|rückenbürste|reinigungsbürste)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(gesicht[a-zäöüß-]*|augen[a-zäöüß-]*|lip[a-zäöüß-]*|ölregulierung)"
+      ],
+      "beschreibung": "Seife, Duschgel, Badesalz, Badebomben, Körperöl und Bürsten für Bad und Dusche."
+    },
+    {
+      "handle": "fusspflege",
+      "titel": "Fusspflege",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Foot Care",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Hornhautentferner, Fussfeilen, Fussmasken, Fersenpolster und Einlagen."
+    },
+    {
+      "handle": "nacken-ruecken-massagegeraete",
+      "titel": "Nacken-, Schulter- & Rückenmassage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(nacken[a-zäöüß-]*|schulter[a-zäöüß-]*|shoulder|rücken[a-zäöüß-]*|lendenwirbel[a-zäöüß-]*|halswirbel[a-zäöüß-]*|hals[a-zäöüß-]*massage[a-zäöüß-]*|halsmassage[a-zäöüß-]*)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)",
+        "faszien|akupressur|meridian"
+      ],
+      "beschreibung": "Elektrische Massagegeräte, Massagekissen und Massageschals für Nacken, Schultern und Rücken."
+    },
+    {
+      "handle": "augenmassagegeraete",
+      "titel": "Augenmassagegeräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage"
+      ],
+      "beschreibung": "Elektrische Augenmassagegeräte mit Vibration, Wärme, Farblicht oder Luftdruck."
+    },
+    {
+      "handle": "faszien-massagepistolen",
+      "titel": "Massagepistolen, Faszienbälle & Roller",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(faszien[a-zäöüß-]*|massagepistole|massage gun|massageball|massageroller|massage-roller|massage-stick|massagerad|yoga-massage[a-zäöüß-]*|erdnuss[a-zäöüß-]*|peanut|akupressur[a-zäöüß-]*|meridian[a-zäöüß-]*|fascia)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "beschreibung": "Massagepistolen, Faszienbälle, Massageroller und Akupressur-Sets für Muskeln und Verspannungen."
+    },
+    {
+      "handle": "massagekissen-matten",
+      "titel": "Massagekissen & Massagematten",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "kissen|matte|massagematte|sitzauflage"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "beschreibung": "Massagekissen für Nacken, Rücken und Sitz sowie Akupressur-Matten und Fussmassage-Matten."
+    },
+    {
+      "handle": "gesichts-kopf-massagegeraete",
+      "titel": "Gesichts-, Kopf- & Fussmassage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(gesicht[a-zäöüß-]*|kopf[a-zäöüß-]*|fuss[a-zäöüß-]*|hand[a-zäöüß-]*|waden[a-zäöüß-]*|bauch[a-zäöüß-]*|taille[a-zäöüß-]*|körper[a-zäöüß-]*|bian[a-zäöüß-]*|gua sha|schröpf[a-zäöüß-]*|cupping)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye|nacken[a-zäöüß-]*|schulter[a-zäöüß-]*|rücken[a-zäöüß-]*|lendenwirbel[a-zäöüß-]*)",
+        "faszien|akupressur|meridian"
+      ],
+      "beschreibung": "Massagegeräte und Massagebürsten für Gesicht, Kopfhaut, Füsse, Hände, Waden und Bauch."
+    },
+    {
+      "handle": "heizkissen-waermegurte",
+      "titel": "Heizkissen & Wärmegürtel",
+      "g_prefix": [
+        "Health & Beauty > Health Care > First Aid > Hot & Cold Therapies"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "handwärmer|handwaermer|stichheiler"
+      ],
+      "beschreibung": "Elektrische Heizkissen, Wärmegürtel, Wärmflaschen und Wärme-Auflagen für Rücken, Bauch, Nacken und Schultern."
+    },
+    {
+      "handle": "haltungsgurte-ruecken",
+      "titel": "Haltungsgurte & Rückenstützen",
+      "g_prefix": [
+        "Health & Beauty > Health Care > Supports & Braces"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(haltung[a-zäöüß-]*|rücken[a-zäöüß-]*|lenden[a-zäöüß-]*|korsett|korrektur[a-zäöüß-]*|schlüsselbein|wirbel[a-zäöüß-]*|traktion[a-zäöüß-]*|nacken[a-zäöüß-]*|kopfstütze)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Haltungsgurte, Rückenstützgurte und Lendenstützen."
+    },
+    {
+      "handle": "lendenstuetzen-rueckenkissen",
+      "titel": "Lendenstützen & Rückenkissen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Back Care"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lendenstützen, Lordosenkissen und Rückenkissen für Autositz, Bürostuhl und Sofa, meist aus Memory-Schaum."
+    },
+    {
+      "handle": "bandagen-gelenkstuetzen",
+      "titel": "Bandagen & Gelenkstützen",
+      "g_prefix": [
+        "Health & Beauty > Health Care > Supports & Braces"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(knie[a-zäöüß-]*|knöchel[a-zäöüß-]*|handgelenk[a-zäöüß-]*|ellbogen[a-zäöüß-]*|ellenbogen[a-zäöüß-]*|bandage[a-zäöüß-]*|patella[a-zäöüß-]*|fussgelenk[a-zäöüß-]*|schulterstütze|hüft[a-zäöüß-]*|daumen[a-zäöüß-]*|kompression[a-zäöüß-]*|orthese|wrist|stütze|schoner)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Bandagen und Stützen für Knie, Knöchel, Handgelenk, Ellbogen und Schulter."
+    },
+    {
+      "handle": "schlafmasken-nackenkissen",
+      "titel": "Schlafmasken, Reisekissen & Schlafhilfen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Sleeping Aids"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Schlafmasken, aufblasbare und U-förmige Reisekissen, Nackenstützen sowie Geräte für Schlafgeräusche und Anti-Schnarch-Helfer."
+    },
+    {
+      "handle": "gesundheit-alltagshilfen",
+      "titel": "Alltagshilfen & Gesundheitszubehör",
+      "g_prefix": [
+        "Health & Beauty > Health Care",
+        "Health & Beauty > Personal Care > Ear Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Health Care > Biometric Monitors",
+        "Health & Beauty > Health Care > Supports & Braces",
+        "Health & Beauty > Health Care > First Aid > Hot & Cold Therapies"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Pillendosen, Ohrenreiniger, Notruf-Armbänder, Gehhilfen, Muskelstimulatoren, Lichttherapie-Lampen und Erste-Hilfe-Zubehör."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Gesicht & Haut",
+      "handle": "beauty-gesicht-haut-gruppe",
+      "kinder": [
+        "gesichtscreme-serum",
+        "gesichtsmasken-peelings",
+        "gesichtsreinigung-toner",
+        "hautpflege-sets",
+        "lippenpflege",
+        "sonnenschutz-braeunung"
+      ]
+    },
+    {
+      "titel": "Make-up & Wimpern",
+      "handle": "beauty-make-up-gruppe",
+      "kinder": [
+        "augen-make-up",
+        "augenbrauen-wimpernpflege",
+        "kuenstliche-wimpern",
+        "lippen-make-up",
+        "teint-make-up",
+        "make-up-sets",
+        "make-up-pinsel-tools",
+        "schminkspiegel"
+      ]
+    },
+    {
+      "titel": "Nägel & Maniküre",
+      "handle": "beauty-naegel-gruppe",
+      "kinder": [
+        "kunstnaegel-press-on",
+        "nagellack-gel-lack",
+        "nagelsticker-nail-art",
+        "nagelverlaengerung-gel",
+        "nagellampen-fraeser",
+        "nagelpflege-werkzeuge"
+      ]
+    },
+    {
+      "titel": "Haare, Rasur & Haarentfernung",
+      "handle": "beauty-haare-rasur-gruppe",
+      "kinder": [
+        "haarstyling-geraete",
+        "haarbuersten-kaemme",
+        "haarpflege-oele-shampoo",
+        "haarschneider-trimmer",
+        "sub-bart-rasur",
+        "haarentfernung-epilierer"
+      ]
+    },
+    {
+      "titel": "Beauty-Geräte fürs Gesicht",
+      "handle": "beauty-geraete-gesicht-gruppe",
+      "kinder": [
+        "led-masken-lichtgeraete",
+        "gesichtsreinigungsgeraete",
+        "porenreiniger-mitesser",
+        "gesichtsdampfer-nanospray",
+        "gua-sha-gesichtsroller",
+        "mikrostrom-lifting-geraete"
+      ]
+    },
+    {
+      "titel": "Körper, Bad & Düfte",
+      "handle": "beauty-koerper-duefte-gruppe",
+      "kinder": [
+        "koerperpflege-bad",
+        "fusspflege",
+        "mundpflege",
+        "parfum-duefte",
+        "sub-aroma-diffuser",
+        "luftbefeuchter"
+      ]
+    },
+    {
+      "titel": "Massage & Entspannung",
+      "handle": "beauty-massage-gruppe",
+      "kinder": [
+        "nacken-ruecken-massagegeraete",
+        "augenmassagegeraete",
+        "faszien-massagepistolen",
+        "massagekissen-matten",
+        "gesichts-kopf-massagegeraete",
+        "schlafmasken-nackenkissen"
+      ]
+    },
+    {
+      "titel": "Rücken, Gelenke & Gesundheit",
+      "handle": "beauty-gesundheit-gruppe",
+      "kinder": [
+        "haltungsgurte-ruecken",
+        "bandagen-gelenkstuetzen",
+        "lendenstuetzen-rueckenkissen",
+        "heizkissen-waermegurte",
+        "gesundheit-alltagshilfen"
+      ]
+    }
+  ],
+  "ausserhalb": [],
+  "hinweise": []
+}
