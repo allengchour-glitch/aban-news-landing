@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'automation/lib/**'
+      - 'automation/*.mjs'
+      - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
@@ -54,6 +56,9 @@ jobs:
         with:
           sparse-checkout: |
             automation/lib
+            automation/*.mjs
+            tools/versandregel.mjs
+            tools/versandregel_test.mjs
             automation/seo-optimizer.mjs
             automation/metricool-schedule.mjs
             automation/price_guard.mjs
@@ -130,6 +135,30 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+      - name: Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)
+        # 26.10.2026: Diese 21 Tests lagen im Repo, liefen aber in KEINEM Workflow (gefunden mit: jeden *_test.mjs gegen .github/workflows greppen).
+        run: |
+          node automation/lib/kategorien_test.mjs
+          node automation/lib/tassen_regel_test.mjs
+          node automation/lib/fakten_block_test.mjs
+          node automation/lib/text_prosa_test.mjs
+          node automation/lib/bewertung_rang_test.mjs
+          node automation/lib/option_umbenennen_test.mjs
+          node automation/lib/cj_varianten_test.mjs
+          node automation/lib/cj_token_test.mjs
+          node automation/lib/uebersetzen_test.mjs
+          node automation/lib/url_status_test.mjs
+          node automation/lib/gmc_ausschluss_test.mjs
+          node automation/lib/gmc_feed_item_test.mjs
+          node automation/lib/sourcing_kandidaten_test.mjs
+          node automation/lib/top_kandidaten_test.mjs
+          node automation/auswahl_kandidaten_test.mjs
+          node automation/auswahl_scan_test.mjs
+          node automation/cj_variantenbilder_test.mjs
+          node automation/farbwahl_scan_test.mjs
+          node automation/menu_eintrag_einfuegen_test.mjs
+          node automation/stecker_bereinigen_test.mjs
+          node tools/versandregel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs

@@ -30,6 +30,7 @@ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { cjToken } from './lib/cj_token.mjs';
 import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { lieferurteil } from './lib/lieferbarkeit.mjs';
+import { strategien } from './lib/fakten_block.mjs';
 import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_varianten.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
@@ -100,8 +101,9 @@ const PRODUKT = `query($h:String!){productByHandle(handle:$h){
   media(first:60){nodes{id status alt ... on MediaImage{image{url width height}}}}}}`;
 
 // ---------------------------------------------------------------- CJ
-async function cjProdukt(cj, pid) {
-  const res = await cjFetch(`${BASE}/product/query?pid=${encodeURIComponent(pid)}`, { context: 'Varianten', headers: { 'CJ-Access-Token': cj }, weicheCodes: WEICHE_CODES });
+async function cjProdukt(cj, kennung) {
+  const [[art, wert]] = Object.entries(typeof kennung === 'object' ? kennung : { pid: kennung });
+  const res = await cjFetch(`${BASE}/product/query?${art}=${encodeURIComponent(wert)}`, { context: 'Varianten', headers: { 'CJ-Access-Token': cj }, weicheCodes: WEICHE_CODES });
   await schlaf(1100);
   return res;
 }
@@ -124,11 +126,16 @@ export async function plane({ q, cj, handle, tmp }) {
   if (!standard) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `kein Standard-Einzelprodukt (${p.variantsCount.count} Varianten, Optionen ${p.options.map(o => o.name).join('/')})` };
   if (p.mediaCount.count > 60) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `zu viele Medien (${p.mediaCount.count}) — productSet würde Bilder verlieren` };
   const v0 = p.variants.nodes[0];
-  const pid = (String(v0.sku || '').match(/(\d{15,})/) || [])[1];
-  if (!pid) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `keine pid in der SKU «${v0.sku}»` };
-
-  const res = await cjProdukt(cj, pid);
-  const c = res.data;
+  // Die SKU kann eine pid (Ziffern/UUID) oder eine CJ-Varianten-SKU sein (`CJYD…AZ`, `CJ-CJCS…`): 69 von 525 Kandidaten wurden am
+  // 26.10. nur deshalb übersprungen. Reihenfolge und Schreibweisen kommen aus lib/fakten_block.mjs (getestet).
+  const wege = strategien(v0.sku);
+  if (!wege.length) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `keine CJ-Kennung in der SKU «${v0.sku}»` };
+  let res = null, pid = null;
+  for (const [art, wert] of wege) {
+    res = await cjProdukt(cj, art === 'pid' ? { pid: wert } : { [art]: wert });
+    if (res?.data) { pid = res.data.pid || (art === 'pid' ? wert : null); break; }
+  }
+  const c = res?.data;
   if (!c) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ ohne Daten (code ${res.code})` };
   const vs = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
     bild: v.variantImage || '', laenge: v.variantLength, breite: v.variantWidth, hoehe: v.variantHeight }));
@@ -246,11 +253,19 @@ async function aufschreiben(q, plan) {
 async function main() {
   const handles = process.argv.slice(2);
   if (process.env.HANDLES_DATEI) {
-    for (const z of readFileSync(process.env.HANDLES_DATEI, 'utf8').split('\n').slice(1)) { const h = z.split(';')[0].trim(); if (h) handles.push(h); }
+    // Die erste Zeile ist nur dann eine Kopfzeile, wenn sie so aussieht («handle;…»): sonst ging das erste Produkt jeder Liste verloren.
+    const zeilen = readFileSync(process.env.HANDLES_DATEI, 'utf8').split('\n');
+    for (const z of /^handle\b/i.test(zeilen[0] || '') ? zeilen.slice(1) : zeilen) { const h = z.split(';')[0].trim(); if (h) handles.push(h); }
   }
   if (!handles.length) { console.error('Kein Handle angegeben'); process.exit(1); }
   const erledigt = new Set();
-  if (existsSync(LEDGER)) for (const z of readFileSync(LEDGER, 'utf8').split('\n')) { const [h, , e] = z.split('·').map(s => s.trim()); if (h && e === 'GESCHRIEBEN') erledigt.add(h); }
+  if (existsSync(LEDGER)) for (const z of readFileSync(LEDGER, 'utf8').split('\n')) {
+    const [h, zeit, e] = z.split('·').map(s => s.trim());
+    if (!h) continue;
+    if (e === 'GESCHRIEBEN') erledigt.add(h);
+    // Endgültige Überspringer (CJ führt nur eine Variante …) nicht bei jedem Lauf neu bei CJ erfragen — 14 Tage Ruhe, FORCE=1 hebt es auf.
+    else if (e === 'UEBERSPRUNGEN' && process.env.FORCE !== '1' && Date.now() - Date.parse(zeit) < 14 * 24 * 3600 * 1000) erledigt.add(h);
+  }
   const q = await shopifyZugang();
   const cj = await cjToken();
   if (!cj) { console.error('Kein CJ-Token (CJ_EMAIL/CJ_API_KEY)'); process.exit(1); }
@@ -272,7 +287,7 @@ async function main() {
       if (!plan) {
         try { plan = await plane({ q, cj, handle: h, tmp }); }
         catch (e) {
-          if (/CJ_QUOTA|CJ_THROTTLED/.test(String(e.message))) { console.log('ABBRUCH:', e.message); break; }
+          if (/CJ_QUOTA|CJ_THROTTLED/.test(String(e.message))) { console.log('ABBRUCH:', e.message); process.exitCode = 3; break; }
           plan = { handle: h, ergebnis: 'FEHLER', grund: String(e.message).slice(0, 300) };
         }
         writeFileSync(planPfad, JSON.stringify(plan, null, 1));
@@ -283,7 +298,12 @@ async function main() {
         console.log(h, '→ UEBERSPRUNGEN | unsicher übersetzt:', JSON.stringify(plan.unsicherUebersetzt).slice(0, 160));
         continue;
       }
-      if (plan.ergebnis !== 'PLAN') { zaehl[plan.ergebnis] = (zaehl[plan.ergebnis] || 0) + 1; console.log(h, '→', plan.ergebnis, '|', plan.grund); continue; }
+      if (plan.ergebnis !== 'PLAN') {
+        zaehl[plan.ergebnis] = (zaehl[plan.ergebnis] || 0) + 1; console.log(h, '→', plan.ergebnis, '|', plan.grund);
+        if (LIVE && plan.ergebnis === 'UEBERSPRUNGEN' && /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung)/.test(plan.grund || ''))
+          appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · UEBERSPRUNGEN · ${String(plan.grund).slice(0, 100)}\n`);
+        continue;
+      }
       console.log(`\n${h} → PLAN: ${plan.varianten.length} Varianten, Optionen ${plan.optionen.map(o => `${o.name}(${o.werte.length})`).join(' × ')}, Preise ${[...new Set(plan.varianten.map(v => v.preis))].join('/')}, Bilder: ${plan.bilder.zugeordnet} zugeordnet, ${plan.bilder.neuHochzuladen} neu, ${plan.bilder.unlesbar} unlesbar`);
       if (plan.unsicherUebersetzt.length) console.log('   ⚠ nicht sicher übersetzt:', JSON.stringify(plan.unsicherUebersetzt).slice(0, 200));
       if (plan.hinweise.length) console.log('   Hinweise:', plan.hinweise.map(x => `${x.name}=${x.wert}${x.text ? ' → ' + x.text : ' (unübersetzt)'}`).join('; '));
