@@ -307,7 +307,8 @@ async function main() {
   try {
     for (const h of handles) {
       if (n >= LIMIT) { console.log(`LIMIT ${LIMIT} erreicht — Rest bleibt für den nächsten Lauf`); break; }
-      if (erledigt.has(h)) { console.log(h, '→ schon geschrieben (Ledger)'); continue; }
+      // «erledigt» heisst hier nicht nur GESCHRIEBEN: auch endgültig/zurückgestellt Übersprungene und frische Fehler stehen in der Menge (ledgerGedaechtnis).
+      if (erledigt.has(h)) { console.log(h, '→ übersprungen: steht im Ledger (geschrieben, zurückgestellt oder frisch gescheitert)'); continue; }
       n++;
       let plan;
       const planPfad = join(PLAN_DIR, h + '.json');
