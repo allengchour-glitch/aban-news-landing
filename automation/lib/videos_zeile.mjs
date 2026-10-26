@@ -88,9 +88,10 @@ export function parseQuellen(obj) {
   const aus = { tiktok: [], youtube: [], abgelehnt: [] };
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) { aus.abgelehnt.push({ quelle: String(obj), grund: 'Quellendatei ist kein Objekt' }); return aus; }
   for (const eintrag of Array.isArray(obj.tiktok) ? obj.tiktok : []) {
-    const e = erkenneUrl(eintrag);
+    const roh = tiktokQuellUrl(eintrag);
+    const e = erkenneUrl(roh);
     if (e && e.plattform === 'tiktok') aus.tiktok.push(e.url);
-    else aus.abgelehnt.push({ quelle: String(eintrag), grund: 'keine gültige TikTok-Videoadresse (nur https://…tiktok.com/…)' });
+    else aus.abgelehnt.push({ quelle: String(roh), grund: 'keine gültige TikTok-Videoadresse (nur https://…tiktok.com/…)' });
   }
   for (const eintrag of Array.isArray(obj.youtube) ? obj.youtube : []) {
     const k = kanalId(eintrag);
@@ -98,6 +99,29 @@ export function parseQuellen(obj) {
     const e = erkenneUrl(eintrag);
     if (e && e.plattform === 'youtube') aus.youtube.push({ art: 'video', url: e.url });
     else aus.abgelehnt.push({ quelle: String(eintrag), grund: 'weder Kanal-ID (UC…) noch gültige YouTube-Videoadresse; @Handle-Adressen lassen sich nicht auflösen' });
+  }
+  return aus;
+}
+
+/** Ein TikTok-Eintrag der Quellendatei ist eine Adresse (Text) oder ein Objekt {url, titel?, vorschau?}. */
+const tiktokQuellUrl = (eintrag) => (eintrag && typeof eintrag === 'object' && !Array.isArray(eintrag) ? eintrag.url : eintrag);
+
+/**
+ * Handgesetzte Titel und Vorschaubilder für TikTok-Einträge: Adresse (bereinigt) -> {titel, vorschau}.
+ * WARUM: TikToks oEmbed liefert für @luxestyle.ch weder Titel noch Vorschaubild (26.10.2026 gemessen; die Titelbild-Adressen auf der
+ * Videoseite sind signiert und laufen nach wenigen Tagen ab). Ohne Zusatz zeigt die Karte einen dunklen Platzhalter.
+ * Die Vorschau muss https sein (wie überall hier), sonst fällt sie weg; ein Titel ohne Text zählt nicht.
+ */
+export function tiktokZusatz(obj) {
+  const aus = {};
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return aus;
+  for (const eintrag of Array.isArray(obj.tiktok) ? obj.tiktok : []) {
+    if (!eintrag || typeof eintrag !== 'object' || Array.isArray(eintrag)) continue;
+    const e = erkenneUrl(eintrag.url);
+    if (!e || e.plattform !== 'tiktok') continue;
+    const titel = saubererTitel(eintrag.titel, '');
+    const vorschau = nurHttps(eintrag.vorschau);
+    if (titel || vorschau) aus[e.url] = { titel, vorschau };
   }
   return aus;
 }
@@ -273,6 +297,7 @@ export async function holeMitGeduld(url, opt = {}) {
  */
 export async function sammle(quellenObj, opt = {}) {
   const q = parseQuellen(quellenObj);
+  const zusatz = tiktokZusatz(quellenObj);
   const bericht = { quellen: 0, ausgefallen: 0, abgelehnt: q.abgelehnt, uebersprungen: [], nachgefasst: 0, eintraege: 0 };
   const alle = [];
   const pause = opt.pauseMs ?? 0;
@@ -291,7 +316,11 @@ export async function sammle(quellenObj, opt = {}) {
     if (!r.ok) { ausfall(url, r.fehler); continue; }
     let j; try { j = JSON.parse(r.text); } catch { ausfall(url, 'oEmbed-Antwort ist kein JSON'); continue; }
     const e = eintragAusTiktok(url, j);
-    if (e) alle.push(e); else ausfall(url, 'kein Eintrag baubar');
+    if (!e) { ausfall(url, 'kein Eintrag baubar'); continue; }
+    const z = zusatz[e.url]; // von Hand gesetzter Titel/Vorschau gewinnt gegen das, was oEmbed (nicht) liefert
+    if (z?.titel) e.titel = z.titel;
+    if (z?.vorschau) e.vorschau = z.vorschau;
+    alle.push(e);
   }
   for (const y of q.youtube) {
     bericht.quellen++;
