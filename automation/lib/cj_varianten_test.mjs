@@ -120,5 +120,23 @@ ist('dünnes Raster: Variante trägt den Wert', duenn.varianten[2].werte, { Ausf
 const fast = ['Red', 'Blue', 'Green'].flatMap(f => ['S', 'M', 'L', 'XL'].map(g => ({ key: `${f}-${g}`, vid: f + g }))).slice(0, 11);   // 11 von 12
 ist('Gegenprobe: fast vollständiges Raster bleibt getrennt', baueAuswahl(zerlegeOptionen('Color-Size', fast)).optionen.map(o => o.name), ['Farbe', 'Grösse']);
 
+// ── 26.10.2026: «Gold black» galt als «bereits deutsch» (Regex prüfte nur den Anfang) · Codes unter «Color» sind Modelle ──
+ist('Gold black → ganz übersetzt', farbeDeutsch('Gold black'), { text: 'Gold / Schwarz', sicher: true });
+ist('Gold white → ganz übersetzt', farbeDeutsch('Gold white').text, 'Gold / Weiss');
+ist('Silver blue weiterhin richtig', farbeDeutsch('Silver blue').text, 'Silber / Blau');
+ist('Gegenprobe: deutsch bleibt deutsch (Bindestrich)', farbeDeutsch('Silber-Schwarz'), { text: 'Silber-Schwarz', sicher: true });
+ist('Gegenprobe: Hellgrün bleibt', farbeDeutsch('Hellgrün').text, 'Hellgrün');
+ist('Gegenprobe: «Beige-Camel» bleibt unverändert', farbeDeutsch('Beige-Camel'), { text: 'Beige-Camel', sicher: true });
+ist('Rose Red Black → Rosenrot / Schwarz', farbeDeutsch('Rose Red Black').text, 'Rosenrot / Schwarz');
+ist('Colorful Rose Red', farbeDeutsch('Colorful Rose Red').text, 'Bunt / Rosenrot');
+ist('Deep Green + Black', farbeDeutsch('Deep Green Black').text, 'Tiefgrün / Schwarz');
+ist('Gegenprobe: unbekanntes Wort bleibt unsicher', farbeDeutsch('Gold noodles').sicher, false);
+ist('Gegenprobe: «Goldfisch» ist keine Farbe', farbeDeutsch('Goldfisch').sicher, false);
+const codes = baueAuswahl(zerlegeOptionen('Color', ['A', 'B', 'C', 'Black'].map((k, i) => ({ key: k, vid: String(i) }))));
+ist('Codes: Option heisst Modell', codes.optionen.map(o => o.name), ['Modell']);
+ist('Codes: Werte', codes.optionen[0].werte, ['Modell A', 'Modell B', 'Modell C', 'Schwarz']);
+ist('Gegenprobe: echte Farben bleiben Farbe', baueAuswahl(zerlegeOptionen('Color', ['Red', 'Blue', 'Black'].map((k, i) => ({ key: k, vid: String(i) })))).optionen[0].name, 'Farbe');
+ist('Gegenprobe: ein einzelner Code unter Farben ist keine Modell-Option', baueAuswahl(zerlegeOptionen('Color', ['Red', 'Blue', 'Black', 'A'].map((k, i) => ({ key: k, vid: String(i) })))).optionen[0].name, 'Farbe');
+
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

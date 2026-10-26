@@ -31,12 +31,32 @@ const GROESSE_RE = /^(\d+(?:[.,]\d+)?)\s*[x×*]\s*(\d+(?:[.,]\d+)?)(?:\s*[x×*]\
 const KONFEKTION_RE = /^(x{0,3}s|x{0,3}l|m|[2-6]xl|[2-6]xs|one size|free size|\d{2}(?:\.\d)?)$/i;
 
 /** @returns {{text:string, sicher:boolean}} */
+// Ein Token ist deutsch, wenn das GANZE Wort ein deutsches Farbwort ist («Hellgrün», «Roségold»). Vorher prüfte die Regex nur den Anfang:
+// «Gold black», «Gold white» und «Gold blue» galten als «bereits deutsch» und blieben mit englischem Rest stehen (26.10.2026, live gefunden).
+const FARB_TOKEN_DE = new RegExp(FARB_RE_DE.source.replace('(?![a-zäöüß])', '$'), 'i');
+const TRENNER_RE = /\s*(?:\/|&|\+|,|-|\s)\s*/;
 export function farbeDeutsch(wert) {
   const roh = String(wert ?? '').trim();
   if (!roh) return { text: '', sicher: false };
   const k = roh.toLowerCase().replace(/\s+/g, ' ');
   if (BASIS_FARBEN[k]) return { text: BASIS_FARBEN[k], sicher: true };
-  if (FARB_RE_DE.test(roh)) return { text: roh, sicher: true };      // bereits deutsch
+  if (FARB_TOKEN_DE.test(roh)) return { text: roh, sicher: true };      // bereits deutsch (ein Wort)
+  // Mehrere Wörter: jedes ist deutsch ODER eine bekannte englische Farbe → «Gold black» → «Gold / Schwarz»; «Silber-Schwarz» bleibt unverändert.
+  const tokens = roh.split(TRENNER_RE).filter(Boolean);
+  if (tokens.length >= 2) {
+    // Von links nach rechts, zuerst zwei Wörter zusammen («rose red» → Rosenrot, «deep green» → Tiefgrün), dann einzeln.
+    const teile = []; let fremd = false, i = 0;
+    while (i < tokens.length) {
+      const zwei = i + 1 < tokens.length ? `${tokens[i]} ${tokens[i + 1]}`.toLowerCase() : '';
+      const a = tokens[i].toLowerCase(), b = (tokens[i + 1] || '').toLowerCase();
+      if (zwei && BASIS_FARBEN[zwei]) { teile.push(BASIS_FARBEN[zwei]); i += 2; fremd = true; }
+      else if (zwei && PRAEFIX[a] && BASIS_NUR[b]) { teile.push(PRAEFIX[a] + BASIS_NUR[b]); i += 2; fremd = true; }
+      else if (FARB_TOKEN_DE.test(tokens[i])) { teile.push(tokens[i]); i += 1; }
+      else if (BASIS_FARBEN[a]) { teile.push(BASIS_FARBEN[a]); i += 1; if (BASIS_FARBEN[a].toLowerCase() !== a) fremd = true; }
+      else { teile.length = 0; break; }
+    }
+    if (teile.length) return { text: fremd ? teile.join(' / ') : roh, sicher: true };    // ohne englischen Rest bleibt der Wert unverändert («Beige-Camel»)
+  }
   const teile = k.split(' ');
   if (teile.length === 2 && PRAEFIX[teile[0]] && BASIS_NUR[teile[1]]) {
     return { text: PRAEFIX[teile[0]] + BASIS_NUR[teile[1]], sicher: true };
@@ -159,6 +179,10 @@ export function hinweisText({ name, wert }) {
   return null;
 }
 
+/** Ein Buchstabe oder eine ein-/zweistellige Zahl: ein Modell-Kürzel, keine Farbe. */
+// Nur Buchstaben: Zahlen unter «Color» sind oft Ringgrössen oder Stil-Nummern (Moissanit-Ring «5, 6, 7, 8»), nie blind «Modell» nennen.
+const istCode = x => /^[a-z]$/i.test(String(x).trim());
+
 /**
  * Baut aus der Zerlegung die endgültige Shop-Auswahl.
  * Konstante Optionen (alle Varianten gleich, z. B. «Excluding Power Bank») werden KEINE Auswahl, sondern ein Hinweis.
@@ -173,20 +197,25 @@ export function baueAuswahl(zerlegung, extra = {}) {
     if (werte.length === 1) { hinweise.push({ name, wert: werte[0] }); return; }
     let art = optionsArt(name, werte);
     if (art === 'groesse' && (/length|l[äa]nge|dimension/i.test(name) || werte.every(x => GROESSE_RE.test(String(x).trim())))) art = 'abmessung';
-    behalten.push({ i, name, werte, art });
+    // «Color: A, B, C, D, E, F» sind Modelle, keine Farben — als «Farbe: A» liest es keine Kundin (26.10.2026, MTB-Lampe live).
+    const code = art === 'farbe' && werte.filter(istCode).length / werte.length >= 0.5;
+    behalten.push({ i, name, werte, art: code ? 'ausfuehrung' : art, code });
   });
   if (!behalten.length) return { ok: false, grund: 'keine echte Auswahl (alle Optionen konstant)', hinweise };
 
   const benutzt = new Map();
   const optionen = behalten.map(o => {
-    let ziel = o.art === 'ausfuehrung' ? (NAMEN_DE[String(o.name).toLowerCase()] || OPTIONSNAME.ausfuehrung)
+    let ziel = o.code ? 'Modell' : o.art === 'ausfuehrung' ? (NAMEN_DE[String(o.name).toLowerCase()] || OPTIONSNAME.ausfuehrung)
       : (o.art === 'abmessung' && /length|l[äa]nge/i.test(o.name)) ? 'Länge' : OPTIONSNAME[o.art];
     const n = (benutzt.get(ziel) || 0) + 1; benutzt.set(ziel, n);
     if (n > 1) ziel = `${ziel} ${n}`;
     const wertMap = new Map();
     for (const w of o.werte) {
       let neu = w;
-      if (o.art === 'farbe') {
+      if (o.code) {
+        if (istCode(w)) neu = `Modell ${String(w).trim().toUpperCase()}`;
+        else { const f = farbeDeutsch(w); neu = extra.wert?.[w] || f.text; if (!f.sicher && !extra.wert?.[w]) unsicher.push({ option: ziel, wert: w }); }
+      } else if (o.art === 'farbe') {
         const f = farbeDeutsch(w);
         if (!f.sicher && extra.wert?.[w]) neu = extra.wert[w];
         else { neu = f.text; if (!f.sicher) unsicher.push({ option: ziel, wert: w }); }

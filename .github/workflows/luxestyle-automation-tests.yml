@@ -153,6 +153,7 @@ jobs:
           node automation/lib/sourcing_kandidaten_test.mjs
           node automation/lib/top_kandidaten_test.mjs
           node automation/auswahl_kandidaten_test.mjs
+          node automation/optionen_reparieren_test.mjs
           node automation/auswahl_scan_test.mjs
           node automation/cj_variantenbilder_test.mjs
           node automation/farbwahl_scan_test.mjs
