@@ -3,7 +3,7 @@
 import {
   erkenneUrl, youtubeVideoId, youtubeVorschau, kanalId, parseQuellen, saubererTitel, tiktokDatum,
   eintragAusTiktok, parseYoutubeFeed, eintragAusYoutubeVideo, dublettenSchluessel, baueListe,
-  pruefeListe, darfSchreiben, metafieldsSetEingabe, holeMitGeduld, sammle, xmlText,
+  pruefeListe, darfSchreiben, metafieldsSetEingabe, holeMitGeduld, sammle, xmlText, tiktokZusatz,
   MAX_EINTRAEGE, NAMESPACE, KEY,
 } from './videos_zeile.mjs';
 
@@ -275,6 +275,45 @@ const keinWarten = () => Promise.resolve();
   const { liste, bericht } = await sammle({ tiktok: [ttUrl('2026-10-02T00:00:00Z')], youtube: [] }, { fetch: async () => antwort(500), warte: keinWarten, versuche: 2 });
   pruef('sammle: alles fällt aus -> leere Liste', liste, []);
   pruef('sammle: alles fällt aus -> kein Schreiben', darfSchreiben(liste, { quellen: bericht.quellen, ausgefallen: bericht.ausgefallen }).ja, false);
+}
+
+// ── 6. TikTok-Einträge mit handgesetztem Titel und Vorschaubild (oEmbed liefert beides nicht, 26.10.2026) ──
+{
+  const a = ttUrl('2026-10-20T00:00:00Z'), b = ttUrl('2026-10-21T00:00:00Z'), c = ttUrl('2026-10-22T00:00:00Z');
+  const quellen = {
+    tiktok: [
+      { url: a + '?utm_source=x', titel: 'Hunde-Outdoorschuhe', vorschau: 'https://cdn.shopify.com/s/files/a.jpg' },
+      b, // Text wie bisher
+      { url: c, titel: 'Nur Titel' },
+      { url: 'https://evil.example/x', titel: 'Fremd', vorschau: 'https://cdn.shopify.com/s/files/x.jpg' },
+      { titel: 'ohne Adresse' }, null,
+    ],
+    youtube: [],
+  };
+  const pq = parseQuellen(quellen);
+  pruef('Objekt-Eintrag: Adresse wird bereinigt, Text-Eintrag bleibt', pq.tiktok, [a, b, c]);
+  pruef('Objekt-Eintrag mit fremder/fehlender Adresse wird abgelehnt', pq.abgelehnt.map((x) => x.quelle), ['https://evil.example/x', 'undefined', 'null']);
+  const z = tiktokZusatz(quellen);
+  pruef('Zusatz: nur die Objekt-Einträge mit gültiger TikTok-Adresse', Object.keys(z), [a, c]);
+  pruef('Zusatz: Titel und Vorschau übernommen', z[a], { titel: 'Hunde-Outdoorschuhe', vorschau: 'https://cdn.shopify.com/s/files/a.jpg' });
+  pruef('Zusatz: nur Titel -> Vorschau leer', z[c], { titel: 'Nur Titel', vorschau: '' });
+  pruef('Zusatz: Vorschau ohne https fliegt raus, Eintrag ohne Titel und ohne gültige Vorschau entfällt ganz',
+    tiktokZusatz({ tiktok: [{ url: a, titel: '  ', vorschau: 'http://x/a.jpg' }, { url: b, vorschau: 'javascript:alert(1)' }] }), {});
+  pruef('Zusatz: kein Objekt / keine Liste -> leer, kein Absturz', [tiktokZusatz(null), tiktokZusatz({}), tiktokZusatz({ tiktok: 'x' })], [{}, {}, {}]);
+
+  const fetchFn = async (url) => {
+    if (url.startsWith('https://www.tiktok.com/oembed')) return antwort(200, JSON.stringify({ version: '1.0', type: 'video', html: '<iframe></iframe>' })); // wie am 26.10.2026: kein Titel, keine Vorschau
+    return antwort(500);
+  };
+  const { liste, bericht } = await sammle(quellen, { fetch: fetchFn, warte: keinWarten });
+  const nachUrl = Object.fromEntries(liste.map((e) => [e.url, e]));
+  pruef('sammle: handgesetzter Titel und Vorschau stehen in der Liste', [nachUrl[a].titel, nachUrl[a].vorschau], ['Hunde-Outdoorschuhe', 'https://cdn.shopify.com/s/files/a.jpg']);
+  pruef('sammle: Eintrag ohne Zusatz behält den Ersatztitel und hat keine Vorschau', [nachUrl[b].titel, nachUrl[b].vorschau], ['TikTok-Video von LuxeStyle', '']);
+  pruef('sammle: nur Titel gesetzt -> Titel da, Vorschau leer', [nachUrl[c].titel, nachUrl[c].vorschau], ['Nur Titel', '']);
+  pruef('sammle: Ergebnis mit Zusatz besteht die Schreib-Prüfung', [pruefeListe(liste).ok, bericht.abgelehnt.length], [true, 3]);
+  // Gegenprobe: der Zusatz gilt nur für TikTok-Einträge dieser Adresse, nie für andere
+  const fremd = await sammle({ tiktok: [b, { url: a, titel: 'Nur für a' }] }, { fetch: fetchFn, warte: keinWarten });
+  pruef('sammle: Zusatz von a färbt b nicht ab', fremd.liste.find((e) => e.url === b).titel, 'TikTok-Video von LuxeStyle');
 }
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');

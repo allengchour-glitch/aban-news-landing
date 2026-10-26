@@ -1,5 +1,31 @@
 {
-  "_hinweis": "Quellen der Video-Zeile (Shop-Metafeld luxe.videos). TikTok-Konto: https://www.tiktok.com/@luxestyle.ch. Hier eintragen: \"tiktok\" = einzelne Video-Adressen (https://www.tiktok.com/@luxestyle.ch/video/<Nummer>), \"youtube\" = Kanal-IDs (UC… mit 24 Zeichen, die neuesten 6 Videos kommen automatisch) oder einzelne Video-Adressen. Die konkreten Adressen fehlen noch (Stand 26.10.2026). Lauf: node automation/videos_zeile.mjs (Trockenlauf), LIVE=1 schreibt.",
-  "tiktok": [],
-  "youtube": []
+  "_hinweis": "Quellen der Video-Zeile (Shop-Metafeld luxe.videos). YouTube: Kanal-ID (UCSfCEYjAsdOyYxyfTClXRZA = https://www.youtube.com/@luxestyle_ch), die neuesten 6 Videos kommen bei jedem Lauf automatisch aus dem RSS-Feed. TikTok (https://www.tiktok.com/@luxestyle.ch): einzelne Video-Adressen, hier von Hand gepflegt — TikToks oEmbed liefert weder Titel noch Vorschaubild, darum tragen die Einträge 'titel' (Produktname) und 'vorschau' (Produktbild im Shopify-CDN, dauerhaft) selbst. Neue TikTok-Adressen: Metricool (Datenfeld TKPO03) oder TikTok-Profil; Adressen ohne ?utm-Anhang eintragen, keine IDs, die auf 000 enden (Rundungsfehler). Lauf: node automation/videos_zeile.mjs (Trockenlauf), LIVE=1 schreibt. Stand 26.10.2026.",
+  "tiktok": [
+    {
+      "url": "https://www.tiktok.com/@luxestyle.ch/video/7700683760961965344",
+      "titel": "Verstellbare, rutschfeste Hunde-Outdoorschuhe",
+      "vorschau": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1721449276715962368.jpg?v=1783476737"
+    },
+    {
+      "url": "https://www.tiktok.com/@luxestyle.ch/video/7700575509171752224",
+      "titel": "Kuscheldecke Hasenfell-Imitat Tie-Dye",
+      "vorschau": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c79e406d-a019-498d-b80b-920053c11a26.jpg?v=1786516127"
+    },
+    {
+      "url": "https://www.tiktok.com/@luxestyle.ch/video/7700498100183403808",
+      "titel": "Halterung für Rückspiegel-Handy",
+      "vorschau": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02ffb695-f8f4-481a-8624-9163d5083bef.jpg?v=1783468316"
+    },
+    {
+      "url": "https://www.tiktok.com/@luxestyle.ch/video/7700297260646665504",
+      "titel": "Kabellose LED Kopfhörer mit Katzenohren",
+      "vorschau": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/185997c4-8685-404c-abdf-06557e439b39.jpg?v=1783476978"
+    },
+    {
+      "url": "https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329",
+      "titel": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe",
+      "vorschau": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d83dfdec-8988-4191-bd19-31e3ed729ead.jpg?v=1780242313"
+    }
+  ],
+  "youtube": ["UCSfCEYjAsdOyYxyfTClXRZA"]
 }
