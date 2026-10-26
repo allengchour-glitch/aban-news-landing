@@ -1,0 +1,221 @@
+{
+  "bereich": "auto",
+  "titel": "Auto & Motorrad",
+  "menue": {
+    "oben": "Elektronik (bisher «Auto & KFZ-Zubehör»; neuer eigener Zweig «Auto & Motorrad» vorschlagen, siehe menue.neu)",
+    "neu": true
+  },
+  "universum": {
+    "g_prefix": [
+      "Vehicles & Parts"
+    ],
+    "g_nicht": [],
+    "titel_muss": [],
+    "titel_nicht": []
+  },
+  "kategorien": [
+    {
+      "handle": "lenkradbezuege",
+      "titel": "Lenkradbezüge & Lenkradhüllen",
+      "g_prefix": [
+        "Vehicles & Parts"
+      ],
+      "titel_muss": [
+        "lenkradbezug|lenkradhülle|lenkradschutz|lenkradabdeckung|lenkradgriff|lenkradschoner|lenkrad-set|lenkradüberzug|steuerrad-abdeckung|steuerungshülle|lenkrad-abdeckung|lenkrad-set"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(zier|verzier)|blende|(^|[^a-zäöüß])(tisch)(?![a-zäöüß])|simulator|controller|drehknopf|(^|[^a-zäöüß])(kart|karts|vierradkarts)(?![a-zäöüß])|golf-cart"
+      ],
+      "beschreibung": "Bezüge und Hüllen fürs Lenkrad: aus Leder, Kunstleder, Plüsch oder Carbon-Optik, zum Überziehen oder Schnüren, universal oder passend für einzelne Modelle.",
+      "unterfilter": [
+        {
+          "handle": "lenkradbezuege-leder",
+          "titel": "Leder & Kunstleder",
+          "titel_muss": [
+            "leder|nappa|sued|suede|wildleder"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "lenkradbezuege-carbon",
+          "titel": "Carbon-Optik",
+          "titel_muss": [
+            "carbon|karbon|kohlefaser|kohlenstoff"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "lenkradbezuege-sport",
+          "titel": "Sportlich & rutschfest",
+          "titel_muss": [
+            "sport|rutschfest|anti-?rutsch|ultra-?dünn|ultraflach|ultra-dünn"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "autositzbezuege-auflagen",
+      "titel": "Autositzbezüge & Sitzauflagen",
+      "g_prefix": [
+        "Vehicles & Parts"
+      ],
+      "titel_muss": [
+        "sitzbezug|sitzbezüge|sitz-bezug|sitzauflage|sitzmatte|sitzschoner|sitzschutz|sitzabdeckung|autositz-bezug|sitzrückenschutz|autorestsitz|autositze-polster|auto-sitzbezug"
+      ],
+      "titel_nicht": [
+        "kissen|nacken|kopfstütze|lenden|lordosen|schlüssel|kinder-?sitz|kindersitz|baby|(^|[^a-zäöüß])(gurt)(?![a-zäöüß])"
+      ],
+      "beschreibung": "Bezüge, Auflagen und Schoner für Autositze: Sets für Vorder- und Rückbank aus Kunstleder, Leder, Stoff oder Baumwolle sowie wasserdichte und wärmende Sitzauflagen.",
+      "unterfilter": []
+    },
+    {
+      "handle": "auto-kissen-stuetzen",
+      "titel": "Auto-Sitzkissen, Nacken- & Lendenstützen",
+      "g_prefix": [
+        "Vehicles & Parts"
+      ],
+      "titel_muss": [
+        "kissen|nackenstütze|nackenstuetze|kopfstütze|lordosen|lendenstütze|sitzpolster|sitzstütze|autokissen|hüft-|memory-foam sitze|(^|[^a-zäöüß])(sitze)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "sitzbezug|sitzbezüge|sitzauflage|kissenbezug|armlehn|schlüssel|katzenkopf|kinder|schwanger|(^|[^a-zäöüß])(airbag)(?![a-zäöüß])"
+      ],
+      "beschreibung": "Kissen und Stützen fürs Auto: Sitzkissen aus Memory-Schaum, Nackenkissen für die Kopfstütze, Lendenstützen für den Rücken und beheizbare Sitzkissen für 12 Volt.",
+      "unterfilter": [
+        {
+          "handle": "auto-kissen-nacken",
+          "titel": "Nacken- & Kopfstützenkissen",
+          "titel_muss": [
+            "nacken|kopfstütze|kopfstütz"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "auto-kissen-memory",
+          "titel": "Memory-Schaum",
+          "titel_muss": [
+            "memory"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "auto-organizer-ablagen",
+      "titel": "Auto-Organizer & Ablagen",
+      "g_prefix": [
+        "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Storage & Cargo > Vehicle Organizers",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Storage & Cargo > Vehicle Headrest Hangers & Hooks"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "spiel- und aufbewahrungsmatte|stromwandler|schlüssel-organizer"
+      ],
+      "beschreibung": "Ordnung im Auto: Organizer für Rücksitz und Kofferraum, Mülleimer, Taschentuchboxen, Getränkehalter, Sonnenblenden-Taschen und Staufächer für die Mittelkonsole.",
+      "unterfilter": [
+        {
+          "handle": "auto-organizer-kofferraum",
+          "titel": "Kofferraum-Organizer",
+          "titel_muss": [
+            "kofferraum|front-trunk|stauraumkiste"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "auto-organizer-ruecksitz",
+          "titel": "Rücksitz- & Sitzlücken-Organizer",
+          "titel_muss": [
+            "rücksitz|rückbank|rücklehne|sitzlücke|rueckl|autositz|sitz-organizer|hängetasche|hänge-"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "auto-interieur-zierteile",
+      "titel": "Armlehnen, Schaltknäufe & Zierteile",
+      "g_prefix": [
+        "Vehicles & Parts"
+      ],
+      "titel_muss": [
+        "armlehn|(^|[^a-zäöüß])(schalt(knauf|kopf|knüppel|knopf))|(^|[^a-zäöüß])(zier(ring|leiste|blende))|verzierung|lenkradblende|interieur|innenraum deko|spiegel-anhänger|sitzanhänger|auto-anhänger|(^|[^a-zäöüß])([a-zäöüß-]*anhänger)(?![a-zäöüß])|fussmatte|fußmatte|gurt-?abdeckung|gurtpolster|gurt-schulterpolster|sonnenbrillenhalter|zündschalter|schmuck-gurt"
+      ],
+      "titel_nicht": [
+        "handbremse|kupplung|kamera|display|dashcam|kinder|ladung|ladegerät|flicken"
+      ],
+      "beschreibung": "Zubehör für den Fahrzeuginnenraum: Armlehnen-Polster, Schaltknäufe, Zierringe und Zierleisten, Rückspiegel-Anhänger, Fussmatten und Gurtpolster.",
+      "unterfilter": []
+    },
+    {
+      "handle": "auto-duft-luft",
+      "titel": "Autoduft, Luftreiniger & Luftbefeuchter",
+      "g_prefix": [
+        "Vehicles & Parts",
+        "Home & Garden > Household Appliances > Climate Control Appliances",
+        "Health & Beauty > Personal Care > Cosmetics",
+        "Home & Garden > Smoking Accessories"
+      ],
+      "titel_muss": [
+        "^(?=.*((^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*|wagen)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)|autositz|autoschlüssel))(?=.*(luftreiniger|luftbefeuchter|feuchtigkeitsspender|duft|diffus|lufterfrischer|luftfrischer|aroma|parfüm|zerstäuber|ionisator|ozon))",
+        "luftfrischer|lufterfrischer|auto-?duft|ventildiffusor"
+      ],
+      "titel_nicht": [
+        "kinder|spielzeug|hund|katze"
+      ],
+      "beschreibung": "Frische Luft im Auto: Duftspender und Lufterfrischer für die Lüftung, Diffusoren, Luftreiniger mit Ionen und kleine Luftbefeuchter mit USB-Anschluss.",
+      "unterfilter": []
+    },
+    {
+      "handle": "auto-aufkleber-folien",
+      "titel": "Auto-Aufkleber & Folien",
+      "g_prefix": [
+        "Vehicles & Parts"
+      ],
+      "titel_muss": [
+        "aufkleber|sticker|folie|(^|[^a-zäöüß])(decal)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "wandsticker|wandtattoo|polster|reparatur|gürtel|dekorativer sticker|mountainbike|rahmen|(^|[^a-zäöüß])(zier)"
+      ],
+      "beschreibung": "Aufkleber, Streifen und Folien für Karosserie, Heckscheibe und Fenster: Seitenlinien, Motive, Leuchtsticker und Farbwechsel-Folie zum Dekorieren.",
+      "unterfilter": []
+    },
+    {
+      "handle": "auto-beleuchtung",
+      "titel": "Auto-Beleuchtung & Sternenlicht",
+      "g_prefix": [
+        "Vehicles & Parts",
+        "Electronics > Video > Projectors",
+        "Home & Garden > Lighting"
+      ],
+      "titel_muss": [
+        "scheinwerfer|tagfahrlicht|blinker|(^|[^a-zäöüß])(led-leuchte|auto-beleuchtung|sternenlicht)(?![a-zäöüß])",
+        "^(?=.*((^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*|wagen)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)|autositz|autoschlüssel))(?=.*(sternenhimmel|sternenlicht|projekt|ambiente|leuchte|licht))"
+      ],
+      "titel_nicht": [
+        "zierring|zierblende|vernebler|reparatur|e-scooter|helm|motorrad|leuchtsticker|aufkleber|sticker"
+      ],
+      "beschreibung": "Licht fürs Fahrzeug: LED-Scheinwerfer und Nebellicht, Tagfahrlicht mit Blinker sowie Sternenlicht und Projektoren für den Innenraum.",
+      "unterfilter": []
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Innenraum",
+      "handle": "auto-innenraum-gruppe",
+      "kinder": [
+        "lenkradbezuege",
+        "autositzbezuege-auflagen",
+        "auto-kissen-stuetzen",
+        "auto-organizer-ablagen",
+        "auto-interieur-zierteile",
+        "auto-duft-luft",
+        "auto-aufkleber-folien",
+        "auto-beleuchtung"
+      ]
+    }
+  ],
+  "ausserhalb": [],
+  "hinweise": []
+}
