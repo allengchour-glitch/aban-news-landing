@@ -1,0 +1,11 @@
+--- sections/footer-group.json.before
++++ sections/footer-group.json.review
+@@ -220,7 +220,7 @@
+           "settings": {
+             "facebook_url": "https://www.facebook.com/1049840534888592",
+             "instagram_url": "https://www.instagram.com/luxestyle.ch",
+-            "youtube_url": "",
++            "youtube_url": "https://www.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA",
+             "tiktok_url": "https://www.tiktok.com/@luxestyle.ch",
+             "twitter_url": "",
+             "threads_url": "https://www.threads.net/@luxestyle.ch",
