@@ -16,7 +16,7 @@
   "currentVerifiedValue": "",
   "currentVerifiedSourceSha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
   "reviewedBeforeMatchesFreshSource": true,
-  "state": "OWNER_APPROVED_NOT_APPLIED_TOOL_MAIN_LIMIT",
+  "state": "OWNER_APPROVED_WAITING_FOR_AUTHENTICATED_SHOPIFY_UI",
   "writePolicy": {
     "tool": "shopify_graphql_mutation",
     "declaredRestriction": "themeFilesCopy/themeFilesUpsert allowed on unpublished themes only; live MAIN theme writes blocked",
@@ -42,7 +42,7 @@
     "social": 0,
     "dns": 0
   },
-  "remainingStep": "Authenticated owner sets only this existing YouTube URL field in Shopify Admin and saves; source and rendered link then require confirmation. Permission remains valid.",
+  "remainingStep": "Owner signs in and handles hCaptcha in temporary Shopify browser. Codex then verifies exact shop/theme/field, uses only the ordinary editor for the approved URL if writable, and reads back saved value/public link. No alternate API credentials or MAIN file upserts.",
   "documentedFollowupChecks": [
     {
       "recordedAtUtc": "2026-10-26T13:19:16.293165+00:00",
@@ -65,6 +65,25 @@
       "socialWrites": 0,
       "ownerApprovalRetained": true,
       "metricsReread": false
+    }
+  ],
+  "documentedUiAccessChecks": [
+    {
+      "scopeDate": "2026-10-26",
+      "method": "Firecrawl interactive browser, normal Shopify Admin UI only",
+      "requestedEditor": "https://admin.shopify.com/store/au3j0y-hq/themes/187533001089/editor",
+      "observedHost": "accounts.shopify.com",
+      "observedTitle": "Log in — Shopify",
+      "loginRequired": true,
+      "hCaptchaVisible": true,
+      "agentCredentialsEntered": false,
+      "agentCaptchaSolved": false,
+      "uiChanges": 0,
+      "nativeMainFileMutationUsed": false,
+      "firstTemporarySessionExpired": true,
+      "newTemporaryHandoffOpened": true,
+      "sessionAccessUrlsAndTokensExcluded": true,
+      "ownerInputNeeded": "Owner performs login and hCaptcha in the interactive browser; already approved edit needs no further approval."
     }
   ]
 }
