@@ -51,7 +51,7 @@ AUS=/tmp/farbwahl-scan.csv PQUERY='status:active AND tag:cj-real' SORT=UPDATED_A
 LIMIT=10 HANDLES_DATEI=/tmp/auswahl_kandidaten.csv $N automation/cj_varianten_nachziehen.mjs      # oder: ... cj_varianten_nachziehen.mjs <handle> <handle>
 #    Plan LESEN: optionen, varianten (werte, preis, bild.art = vorhanden|neu|unlesbar|ohne), fracht, ausgeschlossen, unbekanntOhneBeweis, unsicherUebersetzt, kiUebersetzt
 
-# 3. Stichprobe LIVE (5-10 Produkte): ein Plan < 3 h wird wiederverwendet (spart CJ-Punkte); nach Änderung an Produkt oder Code vorher `rm /tmp/cj_varianten_plan/<handle>.json`
+# 3. Stichprobe LIVE (5-10 Produkte): ein Plan < 3 h wird wiederverwendet (spart CJ-Punkte); nach Änderung an Produkt oder Code vorher rm /tmp/cj_varianten_plan/<handle>.json
 LIVE=1 LIMIT=5 HANDLES_DATEI=/tmp/auswahl_kandidaten.csv $N automation/cj_varianten_nachziehen.mjs
 
 # 4. Kontaktbogen: je Produkt ein PNG mit einem Bild je Farbe + _befunde.json. DANN DIE BILDER ANSEHEN (Read auf die PNG) - ob Bild zur Beschriftung passt, kann kein Skript.
