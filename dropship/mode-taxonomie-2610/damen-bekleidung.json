@@ -1,0 +1,2308 @@
+{
+ "abteilung": "damen-bekleidung",
+ "geschlecht_regel": "Seit der gemeinsamen Pruefung gilt fuer ALLE Abteilungen EINE Geschlechtsregel (geschlecht_gemeinsam.mjs, beschrieben in ALLES.json -> geschlecht). Die urspruengliche Regel dieser Abteilung steht unveraendert in `geschlecht_regel_abteilung`; sie ist in der gemeinsamen Regel als Eingabe enthalten.",
+ "kategorien": [
+  {
+   "handle": "damen-umstandsmode",
+   "titel": "Umstandsmode",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > "
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Kleider, Leggings, Jeans und Röcke für die Schwangerschaft. Dazu Stillkleider und Umstandswäsche.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 23,
+    "stichprobe": 23,
+    "falsch": 0,
+    "falsche_beispiele": []
+   }
+  },
+  {
+   "handle": "damen-bademode",
+   "titel": "Bademode",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Swimwear"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Bikinis, Tankinis und Badeanzüge für Damen sowie Strandkimonos und Cover-ups. Für Pool, See und Meer.",
+   "unterfilter": [
+    {
+     "handle": "damen-bademode-bikini",
+     "titel": "Bikinis & Tankinis",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bikini|tankini)"
+     ],
+     "titel_nicht": [],
+     "treffer": 40
+    },
+    {
+     "handle": "damen-bademode-badeanzug",
+     "titel": "Badeanzüge",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(badeanzug|einteiler|schwimmanzug)"
+     ],
+     "titel_nicht": [],
+     "treffer": 27
+    }
+   ],
+   "gemessen": {
+    "treffer": 80,
+    "stichprobe": 81,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 81
+   }
+  },
+  {
+   "handle": "damen-nachtwaesche",
+   "titel": "Nachtwäsche & Loungewear",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Sleepwear & Loungewear"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Pyjamas, Nachthemden und Morgenmäntel für Damen. Dazu Loungewear für zu Hause.",
+   "unterfilter": [
+    {
+     "handle": "damen-nachtwaesche-pyjama",
+     "titel": "Pyjamas & Schlafanzüge",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(pyjama|schlafanzug|schlaf-?set)"
+     ],
+     "titel_nicht": [],
+     "treffer": 15
+    },
+    {
+     "handle": "damen-nachtwaesche-nachthemd",
+     "titel": "Nachthemden & Morgenmäntel",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(nachthemd|nachtkleid|nachtgewand|nachtrobe|morgenrobe|morgenmantel|bademantel|robe(?![a-zäöüß]))"
+     ],
+     "titel_nicht": [],
+     "treffer": 22
+    }
+   ],
+   "gemessen": {
+    "treffer": 41,
+    "stichprobe": 39,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 39
+   }
+  },
+  {
+   "handle": "damen-dessous",
+   "titel": "Dessous & Unterwäsche",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Underwear & Socks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "BHs, Dessous, Korsetts und Shapewear für Damen. Dazu Strumpfhosen, Strümpfe und Socken.",
+   "unterfilter": [
+    {
+     "handle": "damen-dessous-bh",
+     "titel": "BHs, Dessous & Korsetts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bh(?![a-zäöüß])|dessous|bustier|korsett|lingerie|body(?![a-zäöüß]))"
+     ],
+     "titel_nicht": [],
+     "treffer": 31
+    },
+    {
+     "handle": "damen-dessous-shapewear",
+     "titel": "Shapewear",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(shapewear|taillenformer|shaper|formend|bauch)"
+     ],
+     "titel_nicht": [],
+     "treffer": 35
+    },
+    {
+     "handle": "damen-dessous-strumpfhosen",
+     "titel": "Strumpfhosen, Strümpfe & Socken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strumpf|tights|feinstrumpf|netzstrümpfe|strümpfe)",
+      "(socken|söckchen)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 31
+    }
+   ],
+   "gemessen": {
+    "treffer": 103,
+    "stichprobe": 102,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 102
+   }
+  },
+  {
+   "handle": "damen-sportbekleidung",
+   "titel": "Sportbekleidung",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Activewear",
+    "Apparel & Accessories > Clothing > One-Pieces > Leotards"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Sportbekleidung für Damen: Leggings, Yogahosen, Sport-Shorts, Sport-Tops und Trainingssets. Für Fitness, Yoga und Alltag.",
+   "unterfilter": [
+    {
+     "handle": "damen-sport-leggings",
+     "titel": "Sport-Leggings",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leggings|tights)"
+     ],
+     "titel_nicht": [],
+     "treffer": 103
+    },
+    {
+     "handle": "damen-sport-yogahosen",
+     "titel": "Yogahosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(yoga-?hose|yoga-?pants|yoga-hosen|yogapants)"
+     ],
+     "titel_nicht": [],
+     "treffer": 41
+    },
+    {
+     "handle": "damen-sport-shorts",
+     "titel": "Sport-Shorts",
+     "titel_muss": [
+      "(shorts?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 21
+    },
+    {
+     "handle": "damen-sport-sets",
+     "titel": "Sets, Anzüge & Jumpsuits",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(set(?![a-zäöüß])|zweiteil|anzug|2-?teil|jumpsuit|overall|einteiler|bodysuit|catsuit)"
+     ],
+     "titel_nicht": [],
+     "treffer": 18
+    },
+    {
+     "handle": "damen-sport-tops",
+     "titel": "Sport-Tops & BHs",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(top|bra(?![a-zäöüß])|bh(?![a-zäöüß])|shirt|tank)"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    }
+   ],
+   "gemessen": {
+    "treffer": 241,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 231
+   }
+  },
+  {
+   "handle": "damen-kleider",
+   "titel": "Kleider",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Dresses"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Kleider für Damen in allen Längen: Mini, Midi und Maxi. Mit den Filtern finden Sie Abend-, Sommer-, Strand- und Boho-Kleider.",
+   "unterfilter": [
+    {
+     "handle": "damen-kleider-mini",
+     "titel": "Minikleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mini)",
+      "(^|[^a-zäöüß])(kurzes)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 245
+    },
+    {
+     "handle": "damen-kleider-midi",
+     "titel": "Midikleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(midi|mid-?length|mittellang|knielang)"
+     ],
+     "titel_nicht": [],
+     "treffer": 330
+    },
+    {
+     "handle": "damen-kleider-maxi",
+     "titel": "Maxikleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(maxi|bodenlang|knöchellang|longkleid|langkleid)",
+      "(^|[^a-zäöüß])(langes)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 397
+    },
+    {
+     "handle": "damen-kleider-abend",
+     "titel": "Abendkleider & festliche Kleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(abend|ballkleid|ball-?kleid|gala|abschlussball|festkleid|festlich|prom(?![a-zäöüß])|brautjungfer|hochzeit|trauzeugin)"
+     ],
+     "titel_nicht": [],
+     "treffer": 109
+    },
+    {
+     "handle": "damen-kleider-cocktail",
+     "titel": "Cocktail- & Partykleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cocktail|party|clubkleid)"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    },
+    {
+     "handle": "damen-kleider-business",
+     "titel": "Business- & Etuikleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|büro|office|bleistift|etui|workwear)"
+     ],
+     "titel_nicht": [],
+     "treffer": 96
+    },
+    {
+     "handle": "damen-kleider-sommer",
+     "titel": "Sommerkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sommer)"
+     ],
+     "titel_nicht": [],
+     "treffer": 170
+    },
+    {
+     "handle": "damen-kleider-strand",
+     "titel": "Strandkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strand|beach|urlaub|resort)"
+     ],
+     "titel_nicht": [],
+     "treffer": 76
+    },
+    {
+     "handle": "damen-kleider-boho",
+     "titel": "Boho-Kleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(boho|bohemian|ibiza|hippie|ethno|folk)"
+     ],
+     "titel_nicht": [],
+     "treffer": 51
+    },
+    {
+     "handle": "damen-kleider-strick",
+     "titel": "Strick- & Winterkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strick|pullover|rollkragen|winter|woll|plüsch|fleece|flanell|kapuzen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 167
+    },
+    {
+     "handle": "damen-kleider-freizeit",
+     "titel": "Freizeit- & Hemdblusenkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(freizeit|casual|alltag|shirt-?kleid|hemd|hemdblusen|blusenkleid|sweat)"
+     ],
+     "titel_nicht": [],
+     "treffer": 164
+    },
+    {
+     "handle": "damen-kleider-blumen",
+     "titel": "Blumenkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(blumen|geblümt|floral|blüten)"
+     ],
+     "titel_nicht": [],
+     "treffer": 299
+    },
+    {
+     "handle": "damen-kleider-spitze",
+     "titel": "Spitzenkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(spitze(?![a-zäöüß])|spitzen|häkel|lace)"
+     ],
+     "titel_nicht": [],
+     "treffer": 201
+    },
+    {
+     "handle": "damen-kleider-langarm",
+     "titel": "Langarmkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(langarm|langärm|lange ärmel|3/4|¾)"
+     ],
+     "titel_nicht": [],
+     "treffer": 185
+    },
+    {
+     "handle": "damen-kleider-schulterfrei",
+     "titel": "Schulterfreie Kleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(off-?shoulder|schulterfrei|trägerlos|bandeau)"
+     ],
+     "titel_nicht": [],
+     "treffer": 237
+    }
+   ],
+   "gemessen": {
+    "treffer": 3173,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": []
+   }
+  },
+  {
+   "handle": "damen-roecke",
+   "titel": "Röcke",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Skirts",
+    "Apparel & Accessories > Clothing > Skorts"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)|(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Röcke für Damen als Mini-, Midi- und Maxiröcke, dazu Plissee- und Jeansröcke. Filtern Sie nach Länge und Stil.",
+   "unterfilter": [
+    {
+     "handle": "damen-roecke-mini",
+     "titel": "Miniröcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mini)",
+      "(^|[^a-zäöüß])(kurzrock|kurzer rock)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 56
+    },
+    {
+     "handle": "damen-roecke-midi",
+     "titel": "Midiröcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(midi|knielang|mid-?length|mittellang)"
+     ],
+     "titel_nicht": [],
+     "treffer": 81
+    },
+    {
+     "handle": "damen-roecke-maxi",
+     "titel": "Maxiröcke & lange Röcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(maxi|langrock|bodenlang)",
+      "(^|[^a-zäöüß])(langer|langen|lange)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 38
+    },
+    {
+     "handle": "damen-roecke-jeans",
+     "titel": "Jeansröcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim)"
+     ],
+     "titel_nicht": [],
+     "treffer": 24
+    },
+    {
+     "handle": "damen-roecke-plissee",
+     "titel": "Plissee- & Faltenröcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(plissee|plissier|falten|faltenrock)"
+     ],
+     "titel_nicht": [],
+     "treffer": 30
+    }
+   ],
+   "gemessen": {
+    "treffer": 390,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 391
+   }
+  },
+  {
+   "handle": "damen-jumpsuits",
+   "titel": "Jumpsuits & Overalls",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Jumpsuits, Overalls und Playsuits für Damen, lang und kurz. Dazu Einteiler für Sport und Yoga.",
+   "unterfilter": [
+    {
+     "handle": "damen-jumpsuits-overall",
+     "titel": "Overalls & Latzhosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(overall|latzhose|einteiler)"
+     ],
+     "titel_nicht": [],
+     "treffer": 20
+    },
+    {
+     "handle": "damen-jumpsuits-playsuit",
+     "titel": "Playsuits & kurze Jumpsuits",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(playsuit|romper|kurzer|kurze|shorts)"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    },
+    {
+     "handle": "damen-jumpsuits-sport",
+     "titel": "Jumpsuits für Sport & Yoga",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(yoga|sport|fitness)"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    }
+   ],
+   "gemessen": {
+    "treffer": 257,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": []
+   }
+  },
+  {
+   "handle": "damen-sets",
+   "titel": "Zweiteiler & Sets",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outfit Sets",
+    "Apparel & Accessories > Clothing > Suits",
+    "Apparel & Accessories > Clothing > Shirts & Tops",
+    "Apparel & Accessories > Clothing > Pants",
+    "Apparel & Accessories > Clothing > Shorts",
+    "Apparel & Accessories > Clothing > Skirts"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])",
+    "(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)",
+    "bodysuit mit (shorts|hose|rock)",
+    "(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)",
+    "(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))",
+    "(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)",
+    "(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])",
+    "(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)",
+    "(zweiteiler-?(look|optik))(?![a-zäöüß])",
+    "(^|[^a-zäöüß])((im|in) zweiteiler)",
+    "zweiteiler-?look",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Zweiteiler und Sets für Damen aus Top und Hose, Top und Rock oder Hoodie und Jogginghose. Dazu Hosenanzüge und Blazer-Sets.",
+   "unterfilter": [
+    {
+     "handle": "damen-sets-hose",
+     "titel": "Sets mit Hose",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hose|jogger|pants|leggings|shorts)"
+     ],
+     "titel_nicht": [],
+     "treffer": 48
+    },
+    {
+     "handle": "damen-sets-rock",
+     "titel": "Sets mit Rock",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(rock|jupe)"
+     ],
+     "titel_nicht": [],
+     "treffer": 20
+    },
+    {
+     "handle": "damen-sets-sport",
+     "titel": "Trainings- & Hoodie-Sets",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hoodie|sweat|jogging|training|sport|yoga|fleece|plüsch)"
+     ],
+     "titel_nicht": [],
+     "treffer": 22
+    },
+    {
+     "handle": "damen-sets-sommer",
+     "titel": "Sommer- & Freizeit-Sets",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sommer|resort|strand|leinen|boho|chiffon|freizeit|casual)"
+     ],
+     "titel_nicht": [],
+     "treffer": 25
+    }
+   ],
+   "gemessen": {
+    "treffer": 133,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 127
+   },
+   "ersetzt_collection": {
+    "handle": "damen-sets",
+    "titel": "Damen-Sets & 2-Teiler",
+    "n_alt": 191,
+    "regel_alt": "TAG EQUALS damen UND TAG NOT_EQUALS schmuck UND TITLE CONTAINS Set UND TITLE NOT_CONTAINS Geschenk UND TITLE NOT_CONTAINS besetzt UND TITLE NOT_CONTAINS Korsett UND TITLE NOT_CONTAINS Reisetasche UND TITLE NOT_CONTAINS Sunset UND TITLE NOT_CONTAINS Übersetz",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "damen-jacken-maentel",
+   "titel": "Jacken & Mäntel",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outerwear"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(hemd|hemden)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Jacken, Mäntel, Blazer und Westen für Damen. Von der Übergangsjacke über den Trenchcoat bis zur Winter- und Daunenjacke.",
+   "unterfilter": [
+    {
+     "handle": "damen-jacken-maentel-maentel",
+     "titel": "Mäntel",
+     "titel_muss": [
+      "(mantel|coat|trench\\w*|parka)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 172
+    },
+    {
+     "handle": "damen-jacken-winter",
+     "titel": "Winter- & Daunenjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(daunen|winter|puffer|steppjacke|steppmantel|gefütterte?[rs]?|wattiert|gepolstert|parka|thermo)"
+     ],
+     "titel_nicht": [
+      "(mantel|coat)(?![a-zäöüß])"
+     ],
+     "treffer": 103
+    },
+    {
+     "handle": "damen-jacken-westen",
+     "titel": "Westen",
+     "titel_muss": [
+      "(weste|westen|gilet)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 84
+    },
+    {
+     "handle": "damen-jacken-blazer",
+     "titel": "Blazer",
+     "titel_muss": [
+      "(blazer|sakko)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 23
+    },
+    {
+     "handle": "damen-jacken-kunstfell",
+     "titel": "Fell- & Plüschjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fell|plüsch|teddy|shearling|lammfell|pelz)"
+     ],
+     "titel_nicht": [],
+     "treffer": 33
+    },
+    {
+     "handle": "damen-jacken-kapuze",
+     "titel": "Jacken mit Kapuze",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kapuze)"
+     ],
+     "titel_nicht": [],
+     "treffer": 63
+    }
+   ],
+   "gemessen": {
+    "treffer": 465,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 446
+   },
+   "ersetzt_collection": {
+    "handle": "damen-jacken-maentel",
+    "titel": "Damen-Jacken & Mäntel",
+    "n_alt": 900,
+    "regel_alt": "TAG EQUALS kat-damen-jacke",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "damen-jeans",
+   "titel": "Jeans",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Pants"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(jeans|denim|jeggings?)",
+    "(jeans)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Jeans für Damen in verschiedenen Schnitten wie High Waist, Wide Leg, Straight, Slim und Flared. Dazu Ripped-Jeans und Stretch-Jeans.",
+   "unterfilter": [
+    {
+     "handle": "damen-jeans-highwaist",
+     "titel": "High-Waist-Jeans",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(high-?waist|hochtaill|hohe?r? (taille|bund)|hohem bund)"
+     ],
+     "titel_nicht": [],
+     "treffer": 50
+    },
+    {
+     "handle": "damen-jeans-weit",
+     "titel": "Weite Jeans & Wide Leg",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wide|weit|baggy|loose)"
+     ],
+     "titel_nicht": [],
+     "treffer": 65
+    },
+    {
+     "handle": "damen-jeans-gerade",
+     "titel": "Straight-Leg-Jeans",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(straight|gerade)"
+     ],
+     "titel_nicht": [],
+     "treffer": 54
+    },
+    {
+     "handle": "damen-jeans-slim",
+     "titel": "Slim- & Stretch-Jeans",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(slim|skinny|stretch)"
+     ],
+     "titel_nicht": [],
+     "treffer": 43
+    },
+    {
+     "handle": "damen-jeans-flare",
+     "titel": "Bootcut- & Flare-Jeans",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(flare|bootcut|ausgestellt|schlag)"
+     ],
+     "titel_nicht": [],
+     "treffer": 29
+    },
+    {
+     "handle": "damen-jeans-ripped",
+     "titel": "Ripped & Destroyed",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(ripped|distressed|riss|zerrissen|gerissen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 22
+    }
+   ],
+   "gemessen": {
+    "treffer": 259,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 256
+   }
+  },
+  {
+   "handle": "damen-hosen",
+   "titel": "Hosen",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Pants"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(hotpants?)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(^|[^a-zäöüß])(jeans|denim|jeggings?)",
+    "(jeans)(?![a-zäöüß])",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Hosen für Damen ausser Jeans: Stoffhosen, weite Hosen, Culottes, Capri- und Freizeithosen. Filtern Sie nach Schnitt und Anlass.",
+   "unterfilter": [
+    {
+     "handle": "damen-hosen-weit",
+     "titel": "Weite Hosen & Culottes",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wide|weit|palazzo|culotte|schlag|flare|ausgestellt)"
+     ],
+     "titel_nicht": [],
+     "treffer": 88
+    },
+    {
+     "handle": "damen-hosen-stoff",
+     "titel": "Stoff- & Business-Hosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(stoff|business|anzug|bügelfalten|elegant)"
+     ],
+     "titel_nicht": [],
+     "treffer": 25
+    },
+    {
+     "handle": "damen-hosen-jogging",
+     "titel": "Jogging- & Freizeithosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jogg|sweat|trainings|freizeit)"
+     ],
+     "titel_nicht": [],
+     "treffer": 28
+    },
+    {
+     "handle": "damen-hosen-capri",
+     "titel": "Capri- & Cropped-Hosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(capri|kapri|7/8|cropped)"
+     ],
+     "titel_nicht": [],
+     "treffer": 19
+    }
+   ],
+   "gemessen": {
+    "treffer": 213,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 209
+   },
+   "ersetzt_collection": {
+    "handle": "damen-hosen",
+    "titel": "Damen-Hosen",
+    "n_alt": 299,
+    "regel_alt": "TAG EQUALS damen UND TITLE CONTAINS hose UND TITLE NOT_CONTAINS Set",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "damen-shorts",
+   "titel": "Shorts",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shorts"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Kurze Hosen für Damen: Jeansshorts, Stoffshorts, Cargoshorts und Bermudas. Für Sommer, Urlaub und Alltag.",
+   "unterfilter": [
+    {
+     "handle": "damen-shorts-jeans",
+     "titel": "Jeansshorts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim)"
+     ],
+     "titel_nicht": [],
+     "treffer": 27
+    }
+   ],
+   "gemessen": {
+    "treffer": 77,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 75
+   }
+  },
+  {
+   "handle": "damen-hoodies-sweatshirts",
+   "titel": "Hoodies & Sweatshirts",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Hoodies, Sweatshirts und Kapuzenpullover für Damen. Mit oder ohne Reissverschluss, in normaler und Oversize-Passform.",
+   "unterfilter": [
+    {
+     "handle": "damen-hoodies-hoodie",
+     "titel": "Hoodies",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hoodie)"
+     ],
+     "titel_nicht": [],
+     "treffer": 223
+    },
+    {
+     "handle": "damen-hoodies-sweatshirt",
+     "titel": "Sweatshirts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sweatshirt|sweater)"
+     ],
+     "titel_nicht": [],
+     "treffer": 156
+    },
+    {
+     "handle": "damen-hoodies-kapuzenpullover",
+     "titel": "Kapuzenpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kapuzenpullover|kapuzenpulli|kapuzensweat)"
+     ],
+     "titel_nicht": [],
+     "treffer": 88
+    },
+    {
+     "handle": "damen-hoodies-zip",
+     "titel": "Zip-Hoodies & Sweatjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zip|reissverschluss|kapuzenjacke|sweatjacke)"
+     ],
+     "titel_nicht": [],
+     "treffer": 43
+    },
+    {
+     "handle": "damen-hoodies-oversize",
+     "titel": "Oversize-Hoodies",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(oversize|loose|locker)"
+     ],
+     "titel_nicht": [],
+     "treffer": 30
+    },
+    {
+     "handle": "damen-hoodies-fleece",
+     "titel": "Fleece- & Plüsch-Hoodies",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fleece|plüsch|samt|gefüttert|teddy)"
+     ],
+     "titel_nicht": [],
+     "treffer": 33
+    }
+   ],
+   "gemessen": {
+    "treffer": 469,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 467
+   }
+  },
+  {
+   "handle": "damen-strickjacken",
+   "titel": "Strickjacken & Cardigans",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(cardigans?|kardigans?|strickjacke|strickjäckchen|bolero|wickeljacke|kimono|shrug)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Cardigans und Strickjacken für Damen, kurz und lang, mit oder ohne Kapuze. Zum Überziehen über Shirts und Kleider.",
+   "unterfilter": [
+    {
+     "handle": "damen-strickjacken-cardigan",
+     "titel": "Cardigans",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cardigan|kardigan)"
+     ],
+     "titel_nicht": [],
+     "treffer": 187
+    },
+    {
+     "handle": "damen-strickjacken-strickjacke",
+     "titel": "Strickjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strickjacke)"
+     ],
+     "titel_nicht": [],
+     "treffer": 23
+    },
+    {
+     "handle": "damen-strickjacken-kapuze",
+     "titel": "Cardigans mit Kapuze",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kapuze)"
+     ],
+     "titel_nicht": [],
+     "treffer": 24
+    }
+   ],
+   "gemessen": {
+    "treffer": 218,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 215
+   }
+  },
+  {
+   "handle": "damen-pullover",
+   "titel": "Pullover & Strick",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(pullover|pulli|pullis|sweater|jumper|strickoberteil|strickshirt)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(rollkragenpullover|pullunder)"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)",
+    "(cardigans?|kardigans?|strickjacke|strickjäckchen|bolero|wickeljacke|kimono|shrug)(?![a-zäöüß])",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Pullover und Strickpullover für Damen, vom Rollkragenpullover bis zum Grobstrick. Dazu Pullover mit V-Ausschnitt oder Rundhals.",
+   "unterfilter": [
+    {
+     "handle": "damen-pullover-rollkragen",
+     "titel": "Rollkragenpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(rollkragen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 35
+    },
+    {
+     "handle": "damen-pullover-strick",
+     "titel": "Strickpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strick)"
+     ],
+     "titel_nicht": [],
+     "treffer": 144
+    },
+    {
+     "handle": "damen-pullover-v",
+     "titel": "Pullover mit V-Ausschnitt",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(v-?(neck|ausschnitt))"
+     ],
+     "titel_nicht": [],
+     "treffer": 43
+    },
+    {
+     "handle": "damen-pullover-rundhals",
+     "titel": "Rundhalspullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(rundhals)"
+     ],
+     "titel_nicht": [],
+     "treffer": 61
+    },
+    {
+     "handle": "damen-pullover-grob",
+     "titel": "Grobstrick- & Zopfmuster-Pullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(grobstrick|kabel|zopf|chunky|waffel|rippen|gerippt|fisher|pointelle)"
+     ],
+     "titel_nicht": [],
+     "treffer": 20
+    },
+    {
+     "handle": "damen-pullover-oversize",
+     "titel": "Oversize-Pullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(oversize|loose|locker)"
+     ],
+     "titel_nicht": [],
+     "treffer": 35
+    },
+    {
+     "handle": "damen-pullover-weihnacht",
+     "titel": "Weihnachts- & Motivpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(weihnacht|christmas|xmas|schneemann|rentier|santa|herz|katze|tier)"
+     ],
+     "titel_nicht": [],
+     "treffer": 19
+    }
+   ],
+   "gemessen": {
+    "treffer": 403,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 401
+   }
+  },
+  {
+   "handle": "damen-blusen-hemden",
+   "titel": "Blusen & Hemden",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(blusen?|blouses?|hemd|hemden|tunika|tunic|kaftan|kasack)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)",
+    "(cardigans?|kardigans?|strickjacke|strickjäckchen|bolero|wickeljacke|kimono|shrug)(?![a-zäöüß])",
+    "(pullover|pulli|pullis|sweater|jumper|strickoberteil|strickshirt)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(rollkragenpullover|pullunder)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Blusen, Hemden und Hemdblusen für Damen aus Chiffon, Satin, Leinen oder Baumwolle. Mit und ohne Spitze oder Rüschen.",
+   "unterfilter": [
+    {
+     "handle": "damen-blusen-bluse",
+     "titel": "Blusen",
+     "titel_muss": [
+      "(blusen?|blouses?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 323
+    },
+    {
+     "handle": "damen-blusen-hemd",
+     "titel": "Hemden",
+     "titel_muss": [
+      "(hemd|hemden)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 158
+    },
+    {
+     "handle": "damen-blusen-chiffon",
+     "titel": "Chiffonblusen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(chiffon)"
+     ],
+     "titel_nicht": [],
+     "treffer": 32
+    },
+    {
+     "handle": "damen-blusen-leinen",
+     "titel": "Leinenblusen & -hemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leinen|baumwoll-?leinen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 39
+    },
+    {
+     "handle": "damen-blusen-satin",
+     "titel": "Satin- & Seidenblusen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(satin|seide)"
+     ],
+     "titel_nicht": [],
+     "treffer": 25
+    },
+    {
+     "handle": "damen-blusen-spitze",
+     "titel": "Spitzenblusen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(spitze(?![a-zäöüß])|spitzen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 33
+    },
+    {
+     "handle": "damen-blusen-rueschen",
+     "titel": "Blusen mit Rüschen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(rüsch)"
+     ],
+     "titel_nicht": [],
+     "treffer": 45
+    }
+   ],
+   "gemessen": {
+    "treffer": 484,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 482
+   }
+  },
+  {
+   "handle": "damen-t-shirts",
+   "titel": "T-Shirts & Langarmshirts",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(t-?shirts?|shirts?|langarmshirts?|poloshirts?|polos?|longsleeves?|henley)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)",
+    "(cardigans?|kardigans?|strickjacke|strickjäckchen|bolero|wickeljacke|kimono|shrug)(?![a-zäöüß])",
+    "(pullover|pulli|pullis|sweater|jumper|strickoberteil|strickshirt)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(rollkragenpullover|pullunder)",
+    "(blusen?|blouses?|hemd|hemden|tunika|tunic|kaftan|kasack)(?![a-zäöüß])",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "T-Shirts, Poloshirts und Langarmshirts für Damen. Einfarbig, gestreift oder mit Print.",
+   "unterfilter": [
+    {
+     "handle": "damen-t-shirts-tshirt",
+     "titel": "T-Shirts",
+     "titel_muss": [
+      "(t-?shirts?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 136
+    },
+    {
+     "handle": "damen-t-shirts-langarm",
+     "titel": "Langarmshirts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(langarm|langärm|long-?sleeve)"
+     ],
+     "titel_nicht": [],
+     "treffer": 207
+    },
+    {
+     "handle": "damen-t-shirts-print",
+     "titel": "Shirts mit Print",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(print|druck|bedruckt|aufdruck)"
+     ],
+     "titel_nicht": [],
+     "treffer": 42
+    },
+    {
+     "handle": "damen-t-shirts-oversize",
+     "titel": "Oversize-Shirts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(oversize|loose|locker)"
+     ],
+     "titel_nicht": [],
+     "treffer": 32
+    }
+   ],
+   "gemessen": {
+    "treffer": 517,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 521
+   }
+  },
+  {
+   "handle": "damen-tops",
+   "titel": "Tops & Oberteile",
+   "eltern": "damen",
+   "geschlecht": "damen",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(tops?|tanktops?|tanks?|crops?|camis?|camisoles?|bandeau|bustier|oberteils?|oberteile|bodys?|bodysuits?|neckholder|trägertops?)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(achsellos|kurzärmlos|kurzärmlook|topschickling)"
+   ],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
+    "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
+    "(^|[^a-zäöüß])(body[- ]?chain)",
+    "(^|[^a-zäöüß])(bade-?tops?)",
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(sets?|zweiteiler|zweiteilig\\w*|2-?teilig\\w*|2-?teiler|3-?teilig\\w*|dreiteil\\w*|outfit|co-?ord|ensemble|anzug)(?![a-zäöüß])|(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|crop|weste|blazer|tank\\w*|cami\\w*) (&|und|\\+) [a-zäöüß-]*(hose|rock|shorts|jupe|jogger|pants|leggings)|bodysuit mit (shorts|hose|rock)|(top|shirt|bluse|hemd|oberteil) (&|und|\\+) (cardigan|blazer|jacke|weste)|(cardigan|pullover|hoodie|hemd|bluse|blazer|jacke)[^&+]{0,40}(&|\\+| und )\\s?[a-zäöüß ]*(hose|hosen|rock|shorts|jupe)(?![a-zäöüß-]*(print|muster))|(hose|rock|shorts) (&|und|\\+) [a-zäöüß-]*(top|hemd|bluse|pullover|hoodie|cardigan|shirt|bodysuit|oberteil|weste|blazer)))",
+    "(hoodies?|sweatshirts?|kapuzenpullover|kapuzenpulli|kapuzensweat|kapuzenjacke|sweatjacke)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(hoodie)",
+    "(cardigans?|kardigans?|strickjacke|strickjäckchen|bolero|wickeljacke|kimono|shrug)(?![a-zäöüß])",
+    "(pullover|pulli|pullis|sweater|jumper|strickoberteil|strickshirt)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(rollkragenpullover|pullunder)",
+    "(blusen?|blouses?|hemd|hemden|tunika|tunic|kaftan|kasack)(?![a-zäöüß])",
+    "(t-?shirts?|shirts?|langarmshirts?|poloshirts?|polos?|longsleeves?|henley)(?![a-zäöüß])",
+    "^(?!.*(?:(^|[^a-zäöüß])(fake|mock|faux|tang-?anzug)|(zweiteiler-?(look|optik))(?![a-zäöüß])|(^|[^a-zäöüß])((im|in) zweiteiler)|zweiteiler-?look))(?=.*(?:(top|shirt|bluse|hemd|oberteil|pullover|hoodie|cardigan|bodysuit|crop|tank[a-zäöüß]*|cami[a-zäöüß]*)[a-zäöüß-]*[^&+]{0,30} mit [a-zäöüß -]{0,25}[a-zäöüß-]*(rock|hose|hosen|shorts|jupe)(?![a-zäöüß])|(rock|minirock|maxirock|midirock|hose|shorts|jupe)[a-zäöüß-]* mit [a-zäöüß -]{0,25}[a-zäöüß-]*(top|shirt|bluse|oberteil|hemd)(?![a-zäöüß])))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Tops, Tanktops, Camisoles, Crop-Tops und Bodys für Damen. Zum Kombinieren mit Röcken, Hosen und Blazern.",
+   "unterfilter": [
+    {
+     "handle": "damen-tops-tank",
+     "titel": "Tanktops",
+     "titel_muss": [
+      "(tanktops?|tanks?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 37
+    },
+    {
+     "handle": "damen-tops-cami",
+     "titel": "Camisoles",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cami)"
+     ],
+     "titel_nicht": [],
+     "treffer": 37
+    },
+    {
+     "handle": "damen-tops-crop",
+     "titel": "Crop-Tops & Bodys",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(crop|bauchfrei|kurzes? (top|oberteil)|kurzarm-body)",
+      "(bodys?|bodysuits?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    },
+    {
+     "handle": "damen-tops-neckholder",
+     "titel": "Neckholder- & Bandeau-Tops",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bandeau|neckholder|halter|tube)"
+     ],
+     "titel_nicht": [],
+     "treffer": 43
+    },
+    {
+     "handle": "damen-tops-spitze",
+     "titel": "Spitzentops",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(spitze(?![a-zäöüß])|spitzen|häkel)"
+     ],
+     "titel_nicht": [],
+     "treffer": 57
+    },
+    {
+     "handle": "damen-tops-strick",
+     "titel": "Strick-Tops",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strick)"
+     ],
+     "titel_nicht": [],
+     "treffer": 34
+    },
+    {
+     "handle": "damen-tops-schulterfrei",
+     "titel": "Schulterfreie Tops",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(off-?shoulder|schulterfrei|rückenfrei|backless)"
+     ],
+     "titel_nicht": [],
+     "treffer": 27
+    }
+   ],
+   "gemessen": {
+    "treffer": 466,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 464
+   }
+  }
+ ],
+ "rest": {
+  "anzahl": 39,
+  "beispiele": [
+   "Samt-Hotpants mit hoher Taille",
+   "Casual Badetop für Damen",
+   "Weihnachts-Partnerlook Blau-Weiss Gestreift",
+   "Halloween Performance Kostümkleid",
+   "Mittellanger Cape-Mantel mit Fellkragen",
+   "Kurzarmhemd mit ärmelloser Weste",
+   "Perlen-Bodychain Neckholder-Top",
+   "Archon IX9 Tactical Cargo Hose",
+   "Ärmelloses Turtleneck-Top mit Satin-Midirock",
+   "Halloween-Kostüm: Mittelalterliches Korsett-Dress",
+   "Cord-Steppjacke mit Baumwollfüllung",
+   "Weite Pufferjacke mit Kapuze",
+   "Maskenball-Kleid für Kostümparty",
+   "Pailletten Body Chain Top",
+   "Body Chain Top mit Perlen – Rosarot",
+   "Pailletten-Pulloverkleid mit asymmetrischem Saum",
+   "Halloween Kostümkleid Set",
+   "Hexenkostüm mit Kleid, Hut und Halskette",
+   "Farbwechselnde Stoffmasken mit Print (10er-Set)",
+   "Schlankmachendes Urlaubsgewand mit Mittelhüft-Design"
+  ],
+  "vorschlag": "Aufschlüsselung der 39: 15 durch Sperr-Tag (adult, 18plus, Lizenz u. a.) bewusst ohne Themenkategorie; 7 Kostüme/Kostümkleider und 1 Stoffmasken, 1 taktische Ware, 3 Körperschmuck (siehe fremdkoerper); 3 Jacken/Mäntel mit Google-Kategorie «Shirts & Tops» (g auf «Outerwear > Coats & Jackets» setzen, dann greift damen-jacken-maentel); 4 Outfit-Sets ohne Set-Wort im Titel (Titel um «Set» oder «Zweiteiler» ergänzen); 5 Einzelfälle («Kurzarmhemd mit ärmelloser Weste», «Casual Badetop für Damen», «Samt-Hotpants mit hoher Taille», «Modernisierter Kimono für junge Damen», «Schlankmachendes Urlaubsgewand mit Mittelhüft-Design»). Zusätzlich 106 Kleidungsprodukte ohne erkennbares Geschlecht (kein Tag, kein type, kein Zielgruppen-Wort; davon 48 Sport-/Outdoor-/Taktik-Ware) und 10 Produkte ohne Google-Kategorie (g leer) mit Kleidungstitel: dort Tag damen/herren bzw. Google-Kategorie nachtragen, dann sortieren sie sich selbst ein."
+ },
+ "fremdkoerper": [
+  {
+   "handle": "weihnachts-hoodie-fur-die-ganze-familie-619500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Hoodie für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-sweatshirts-fur-familien-609500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook Sweatshirts für Familien»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "kurbisfarbener-kapuzenpullover-fur-eltern-kind-628500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Kürbisfarbener Kapuzenpullover für Eltern & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "mutter-tochter-sweater-fur-herbst-winter-608600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Mutter-Tochter Sweater für Herbst & Winter»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "loose-fit-t-shirt-fur-paare-familie-617100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Loose-fit T-Shirt für Paare & Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "color-matching-pocket-family-suit-parent-child-109504",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-t-shirt-fur-die-ganze-familie-494080",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook T-Shirt für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "cartoon-mutter-tochter-t-shirt-436416",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Cartoon Mutter-Tochter T-Shirt»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-outfits-fur-die-ganze-familie-600800",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook-Outfits für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "koreanische-familien-outfits-fur-eltern-und-ki-639500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Koreanische Familien-Outfits für Eltern und Kinder»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "eltern-kind-baumwoll-set-fur-herbst-633600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Eltern-Kind Baumwoll-Set für Herbst»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-pyjama-fur-die-ganze-familie-600900",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Pyjama für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-loungewear-fur-die-ganze-familie-604200",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Loungewear für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-pyjama-sets-fur-die-ganze-familie-613100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts Pyjama-Sets für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "loungewear-pyjama-set-fur-die-ganze-familie-603800",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Loungewear Pyjama-Set für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-herbst-sweatshirts-fur-eltern-kind-636100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook Herbst Sweatshirts für Eltern & Kinder»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-partnerlook-fur-die-ganze-familie-618800",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Partnerlook für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "dinosaurier-pyjama-partnerlook-fur-die-ganze-f-612500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Dinosaurier Pyjama Partnerlook für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "leopard-print-langarm-bademode-fur-mutter-kind-600000",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Leopard Print Langarm Bademode für Mutter & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "bambus-baumwoll-pyjama-fur-eltern-kind-629000",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Bambus-Baumwoll-Pyjama für Eltern & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-hausanzug-fur-die-ganze-familie-617300",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Hausanzug für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "kariertes-pyjama-set-fur-die-ganze-familie-600300",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Kariertes Pyjama-Set für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-homewear-fur-die-ganze-familie-615600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Homewear für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-pyjama-set-fur-die-ganze-familie-615100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Pyjama-Set für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "kariertes-familien-pyjama-set-mit-hirschgeweih-616100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Kariertes Familien-Pyjama-Set mit Hirschgeweih»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-pyjama-fur-mutter-tochter-611100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Pyjama für Mutter & Tochter»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-hausanzug-fur-die-ganze-familie-622600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook Hausanzug für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "blumen-partnerlook-fur-die-ganze-familie-620400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Blumen-Partnerlook für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "elastischer-pyjama-fur-kinder-erwachsene-612400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Elastischer Pyjama für Kinder & Erwachsene»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachtliches-familien-outfit-im-hirsch-desi-600300",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachtliches Familien-Outfit im Hirsch-Design»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "hawaii-familien-look-fur-4-personen-601500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Hawaii Familien-Look für 4 Personen»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "pyjama-set-fur-die-ganze-familie-616700",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Pyjama-Set für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-pyjama-set-mit-elch-muster-fur-die-627800",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts Pyjama-Set mit Elch-Muster für die Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "camo-tie-dye-pullover-fur-mutter-kind-626900",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Camo Tie-Dye Pullover für Mutter & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "dino-weihnachtsbaum-pyjama-fur-die-ganze-famil-602400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Dino-Weihnachtsbaum-Pyjama für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "freizeit-cheongsam-familien-set-im-china-stil-602700",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Freizeit Cheongsam Familien-Set im China-Stil»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "familien-pyjama-set-mit-tiermotiven-616100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Familien-Pyjama-Set mit Tiermotiven»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "herz-print-pyjama-set-fur-eltern-kind-620400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Herz-Print Pyjama-Set für Eltern & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "leoparden-look-pullover-schlaghose-fur-mama-ki-906112",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Leoparden-Look: Pullover & Schlaghose für Mama & Kind»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "kariertes-freizeit-set-fur-die-ganze-familie-738944",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Kariertes Freizeit-Set für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "weihnachts-elch-pyjama-fur-die-ganze-familie-884416",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Weihnachts-Elch Pyjama für die ganze Familie»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "damen-und-kind-freizeitanzug-mit-print-568960",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Damen- und Kind-Freizeitanzug mit Print»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "gestreiftes-familien-set-fur-weihnachten-246528",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Gestreiftes Familien-Set für Weihnachten»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "hoodie-mit-leopardenmuster-fur-teenager-619300",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Hoodie mit Leopardenmuster für Teenager»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "partnerlook-pullover-fur-mutter-und-tochter-893504",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Partnerlook Pullover für Mutter und Tochter»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "prinzessinnenkleid-fur-teenager-615100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Prinzessinnenkleid für Teenager»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "sweatshirt-mit-baby-letter-print-und-kapuze-635600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Sweatshirt mit Baby Schriftzug-Print und Kapuze»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "herren-strick-kapuzenjacke-mit-stickerei-und-p-637600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Herren Strick-Kapuzenjacke mit Stickerei und Print»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "zuckersu-madchenstil-langarm-einfarbiges-pajam-628100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "madchen-prinzessinnenkleid-aus-baumwolle-613500",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Mädchen Prinzessinnenkleid aus Baumwolle»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "madchen-a-linien-sommerkleid-mit-cartoon-print-632400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Mädchen A-Linien Sommerkleid mit Cartoon-Print»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "cartoon-kleid-fur-madchen-617700",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Cartoon-Kleid für Mädchen»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "herren-langarm-freizeithemd-im-karo-look-623600",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Herren Langarm-Freizeithemd im Karo-Look»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "kinderkleid-mit-stufenrock-628900",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Kinderkleid mit Stufenrock»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "herren-baumwolljacke-mit-entspanntem-schnitt-612100",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Herren-Baumwolljacke mit entspanntem Schnitt»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "herren-hosen-612300",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Herren-Hosen»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "herren-kurzjeans-mit-doppelbund-628000",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Herren Kurzjeans mit Doppelbund»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "madchen-faux-zweiteiler-langarm-kleid-608400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Mädchen Faux Zweiteiler Langarm-Kleid»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "retro-camouflage-zip-hoodie-fur-teenager-624400",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Kinder/Familie/Eltern/Mädchen: «Retro Camouflage Zip-Hoodie für Teenager»",
+   "gehoert_nach": "Kinder-/Familienbekleidung (Abteilung Kinder)"
+  },
+  {
+   "handle": "satin-halstuch-armellose-weste-fur-herren-601900",
+   "grund": "[RAUS] Tag damen, aber der Titel nennt Herren: «Ärmellose Satin-Weste für Herren»",
+   "gehoert_nach": "Herren-Bekleidung"
+  },
+  {
+   "handle": "pailletten-pulloverkleid-mit-asymmetrischem-sa-609200",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Pailletten-Pulloverkleid mit asymmetrischem Saum»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "halloween-performance-kostumkleid-638500",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Halloween Performance Kostümkleid»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "hexenkostum-mit-kleid-hut-und-halskette-622600",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Hexenkostüm mit Kleid, Hut und Halskette»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "maskenball-kleid-fur-kostumparty-625900",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Maskenball-Kleid für Kostümparty»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "halloween-kostum-mittelalterliches-korsett-dre-620700",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Halloween-Kostüm: Mittelalterliches Korsett-Dress»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "halloween-kostumkleid-set-619000",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Halloween Kostümkleid Set»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "locken-pulloverkleid-600800",
+   "grund": "[RAUS] Kostüm/Verkleidung, keine Alltagsmode: «Locken-Pulloverkleid»",
+   "gehoert_nach": "Kostüme & Fasnacht (kostueme-fasnacht, Handles ft-*)"
+  },
+  {
+   "handle": "farbwechselnde-stoffmasken-mit-print-10er-set-620900",
+   "grund": "[RAUS] Gesichtsmasken-Set, keine Bekleidung: «Farbwechselnde Stoffmasken mit Print (10er-Set)»",
+   "gehoert_nach": "Gesundheit/Hygiene (nicht Mode)"
+  },
+  {
+   "handle": "archon-ix9-tactical-cargo-hose-623300",
+   "grund": "[RAUS] taktische Ausrüstung (Outdoor/Einsatz), keine Damenmode: «Archon IX9 Tactical Cargo Hose»",
+   "gehoert_nach": "Sport & Outdoor"
+  },
+  {
+   "handle": "body-chain-top-mit-perlen-rosarot-636300",
+   "grund": "[RAUS] Körperschmuck, kein Oberteil: «Body Chain Top mit Perlen – Rosarot»",
+   "gehoert_nach": "Schmuck"
+  },
+  {
+   "handle": "perlen-bodychain-neckholder-top-615400",
+   "grund": "[RAUS] Körperschmuck, kein Oberteil: «Perlen-Bodychain Neckholder-Top»",
+   "gehoert_nach": "Schmuck"
+  },
+  {
+   "handle": "pailletten-body-chain-top-613400",
+   "grund": "[RAUS] Körperschmuck, kein Oberteil: «Pailletten Body Chain Top»",
+   "gehoert_nach": "Schmuck"
+  },
+  {
+   "handle": "verstellbarer-laptop-stander-fur-den-schreibti-637700",
+   "grund": "[RAUS] Laptop-Ständer mit Google-Kategorie «Shirts & Tops»",
+   "gehoert_nach": "Büro/Computerzubehör"
+  },
+  {
+   "handle": "desktop-pulley-trainer-fur-armkraft-621800",
+   "grund": "[RAUS] Fitnessgerät mit Google-Kategorie «Shirts & Tops»",
+   "gehoert_nach": "Sport & Fitnessgeräte"
+  },
+  {
+   "handle": "jeans-schurze-fur-erwachsene-400448",
+   "grund": "[RAUS] Schürze (Haushalt/Küche) mit Google-Kategorie «Pants»",
+   "gehoert_nach": "Küche/Schürzen"
+  },
+  {
+   "handle": "tauchgurt-aus-silikon-610500",
+   "grund": "[RAUS] Tauchzubehör mit Google-Kategorie «Clothing»",
+   "gehoert_nach": "Sport & Outdoor"
+  },
+  {
+   "handle": "thermo-nackenwarmer-624100",
+   "grund": "[RAUS] Accessoire mit Google-Kategorie «Clothing»",
+   "gehoert_nach": "Accessoires (Schals & Wärmer)"
+  },
+  {
+   "handle": "ohrwarmer-aus-fell-warme-frostschutz-631600",
+   "grund": "[RAUS] Accessoire mit Google-Kategorie «Clothing»",
+   "gehoert_nach": "Accessoires (Mützen & Ohrwärmer)"
+  },
+  {
+   "handle": "kopfbedeckung-aus-mercerisiertem-baumwollgarn-611800",
+   "grund": "[RAUS] Kopfbedeckung mit Google-Kategorie «Clothing»",
+   "gehoert_nach": "Accessoires (Mützen & Hüte)"
+  },
+  {
+   "handle": "irideszierender-laser-muster-pvc-bundelband-634800",
+   "grund": "[RAUS] Band/Zubehör mit Google-Kategorie «Clothing»",
+   "gehoert_nach": "Accessoires"
+  },
+  {
+   "handle": "schutzhose-fur-basketball-rugby-601900",
+   "grund": "[RAUS] Sport-Schutzausrüstung",
+   "gehoert_nach": "Sport & Outdoor"
+  },
+  {
+   "handle": "reflektierende-led-weste-mit-usb-ladegerat-004096",
+   "grund": "[RAUS] Sicherheitsweste mit Warnlicht, keine Modeware",
+   "gehoert_nach": "Arbeits-/Sicherheitskleidung"
+  },
+  {
+   "handle": "sicherheitsweste-mit-warnlicht-875520",
+   "grund": "[RAUS] Sicherheitsweste, keine Modeware",
+   "gehoert_nach": "Arbeits-/Sicherheitskleidung"
+  },
+  {
+   "handle": "sommerkleid-fleur-noir-blumen-print-midi-mit-bindegurtel",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Kleid, g «Belts» wegen «Bindegürtel» im Titel",
+   "gehoert_nach": "damen-kleider"
+  },
+  {
+   "handle": "blazer-roma-tailliert-mit-bindegurtel-revers",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Blazer, g «Belts» wegen «Bindegürtel» im Titel",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "damen-overall-mit-pailletten-und-gurtel-608900",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Overall, g «Belts» wegen «Gürtel» im Titel",
+   "gehoert_nach": "damen-jumpsuits"
+  },
+  {
+   "handle": "kurze-wattierte-jacke-mit-gurtel-und-kapuze-628800",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Jacke, g «Belts» wegen «Gürtel» im Titel",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "kurze-baumwolljacke-mit-gurtel-605000",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Jacke, g «Belts» wegen «Gürtel» im Titel",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "yoga-sport-maxirock-mit-taschen-613000",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Rock, g «Handbags» wegen «Taschen» im Titel",
+   "gehoert_nach": "damen-roecke"
+  },
+  {
+   "handle": "midirock-mit-tunnelzug-und-grossen-taschen-634000",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Rock, g «Handbags» wegen «Taschen» im Titel",
+   "gehoert_nach": "damen-roecke"
+  },
+  {
+   "handle": "damen-maxirock-mit-print-und-taschen-610400",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Rock, g «Handbags» wegen «Taschen» im Titel",
+   "gehoert_nach": "damen-roecke"
+  },
+  {
+   "handle": "luftige-caprihose-mit-taschen-fur-den-sommer-627200",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Hose, g «Handbags» wegen «Taschen» im Titel",
+   "gehoert_nach": "damen-hosen"
+  },
+  {
+   "handle": "loose-fit-stoffhose-mit-taschen-629200",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Hose, g «Handbags» wegen «Taschen» im Titel",
+   "gehoert_nach": "damen-hosen"
+  },
+  {
+   "handle": "bootcut-fitnesshose-mit-huft-push-up-621200",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Fitnesshose, g «Push Up & Pull Up Bars» wegen «Push-up» im Titel",
+   "gehoert_nach": "damen-sportbekleidung"
+  },
+  {
+   "handle": "kapuzenpullover-aus-plusch-610500",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Kapuzenpullover, g «Dolls, Playsets & Toy Figures» wegen «Plüsch»",
+   "gehoert_nach": "damen-hoodies-sweatshirts"
+  },
+  {
+   "handle": "gothic-stil-pluschmantel-mit-fell-bustier-630200",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Mantel, g «Dolls, Playsets & Toy Figures» wegen «Plüsch»",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "damen-nachthemd-aus-plusch-mit-gurtel-600900",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Nachthemd, g «Dolls, Playsets & Toy Figures» wegen «Plüsch»",
+   "gehoert_nach": "damen-nachtwaesche"
+  },
+  {
+   "handle": "damen-jacke-silbrig-mit-glitzer-fgssck4675",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Jacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "damen-jacke-rosa-mit-glitzer-fgssck4677",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Jacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "damen-jacke-gold-mit-glitzer-fgssck4676",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Jacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-jacken-maentel"
+  },
+  {
+   "handle": "damen-strickjacke-schwarz-fgsshb3800",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Strickjacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-strickjacken"
+  },
+  {
+   "handle": "strickjacke-damen-dunkelblau-fgsshb3805",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Strickjacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-strickjacken"
+  },
+  {
+   "handle": "strickjacke-damen-naturfarben-fgsshb3810",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Strickjacke ohne Google-Kategorie",
+   "gehoert_nach": "damen-strickjacken"
+  },
+  {
+   "handle": "trachtenbluse-damen-fgsshb2610",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Bluse ohne Google-Kategorie",
+   "gehoert_nach": "damen-blusen-hemden"
+  },
+  {
+   "handle": "raver-set-damen-hose-shirt-fgssor9991",
+   "grund": "[REIN] gehört in Damen-Bekleidung: Set ohne Google-Kategorie",
+   "gehoert_nach": "damen-sets"
+  }
+ ],
+ "widersprueche_tag_titel": {
+  "anzahl": 120,
+  "regel": "Der Titel gewinnt, sobald er eine Zielgruppe nennt (Schritte 1-4 der geschlecht_regel); der Tag zählt nur, wenn der Titel schweigt (Schritt 5). Gemessen 120 Widersprüche bei 4120 Produkten mit Zielgruppe im Titel und Tag (2,9 %): Tag damen -> unisex 36, Tag damen -> kinder 54, Tag damen -> herren 6, Tag herren -> kinder 9, Tag herren -> unisex 15. Kleider, Röcke, BHs und Nachthemden werden nie Herren (Nachkorrektur)."
+ },
+ "offene_fragen": [
+  "Unterfilter sind Facetten (Chips/Filter): ein Produkt kann in mehreren Unterfiltern derselben Kategorie stehen (z. B. «Maxikleider» und «Blumenkleider»), aber immer nur in einer Blatt-Kategorie. Jede Unterfilter-Regel gilt nur innerhalb ihrer Kategorie; alle Unterfilter haben mindestens 15 Treffer.",
+  "Hochzeitsgäste: nur 3 Kleider-Titel nennen Hochzeit oder Ball (alle «Ballkleid»); ein eigener Unterfilter wäre mit unter 15 Treffern zu klein. Sie stecken im Unterfilter «Abendkleider & festliche Kleider». Mehr geht nur mit neuen Daten (Titel/Tag «Hochzeitsgast» bei der Anlage vergeben).",
+  "Kleinste Unterfilter: «Cocktail- & Partykleider» mit 16 Treffern (Grenze 15). Fällt er unter 15, mit «Abendkleider & festliche Kleider» zusammenlegen.",
+  "Kleider machen 39,9 % der Damen-Bekleidung aus (3173 von 7960): kein Fehler der Regel (Google-Kategorie «Dresses» hat im Katalog 3208 Produkte), aber die Seite braucht die Unterfilter, sonst ist sie zu lang.",
+  "Leggings: in der Google-Kategorie «Pants» gibt es keine einzige Leggings, alle liegen in «Activewear». Sie stehen deshalb in Sportbekleidung (Unterfilter «Sport-Leggings», 100+ Treffer) und nicht in Hosen. Wer «Leggings» auch als eigene Hauptkategorie will, braucht eine Querschnitt-Sammlung (Titel «Leggings|Jeggings|Tights», Abteilung Damen), die Sport und Alltag mischt.",
+  "Vorhandene Collections mit gleichem Handle: damen-hosen (299, Tag-Regel), damen-jacken-maentel (900, Tag kat-damen-jacke), damen-sets (191, Titel «Set»). Diese Handles sollten auf die neuen Regeln umgestellt werden (gleiche URL, sauberer Inhalt), nicht doppelt angelegt.",
+  "Partner-/Couple-Shirts, Unisex-Hoodies und die «T-Shirt «…»»-Motive aus der Schweizer Reihe (120 Produkte) sind unisex und erscheinen in Damen UND Herren.",
+  "Familien-/Eltern-Kind-Sets mit Tag damen (54 Produkte) gelten als kinder: sie gehören nicht in Damen. Das ist eine Entscheidung nach dem Titel; wer sie in Damen behalten will, nimmt «famili|eltern» und die Wörter mutter/tochter/mama/kind aus der Kinder-Regel.",
+  "Das Wort «Kostüm» wird im Schweizer Hochdeutsch auch für das Damenkostüm (Jupe + Jacke) benutzt; in diesem Katalog (maschinell übersetzt) heisst es durchgehend Verkleidung. Darum sperrt die Regel «kostüm» in allen Damen-Bekleidungs-Kategorien (7 Produkte).",
+  "4 Titel heissen «Herren-Bluse»/«Herrenbluse» (g Shirts & Tops, Tag herren). Sie bleiben bei Herren (vermutlich Übersetzungsfehler für Herrenhemd); ein Herren-Rock oder Herren-Kleid kommt in den Daten nicht vor, die Nachkorrektur der Geschlechtsregel fängt es aber ab.",
+  "106 Kleidungsprodukte haben kein erkennbares Geschlecht und kommen in keine Abteilung (siehe rest). Entscheid beim Besitzer: Tag nachtragen (48 davon sind Sport-/Outdoor-/Taktik-Ware, die ohnehin zu Sport & Outdoor gehört).",
+  "Mit den Sperr-Tags (adult-nicht-bewerben, 18plus, gmc-adult-pull, google-gesperrt-adult, lizenz-nicht-bewerben u. a.) kommt ein Produkt in keine Kategorie, wie in automation/lib/kategorien.mjs (SPERR_TAGS) für alle Themenkategorien festgelegt. Betroffen sind 15 Damen-Produkte (davon 3 Dessous, der Rest Kleider, Oberteile und Hosen mit Adult-Tag).",
+  "Messprotokoll (alles mit damen-bekleidung_messen.mjs und damen-bekleidung_bauen.mjs wiederholbar): je Kategorie 30 zufällige Treffer (fester Seed) einzeln gelesen, bei Umstandsmode, Bademode, Nachtwäsche und Dessous alle Treffer; zusätzlich Vollscans über jede Kategorie nach Fremdwörtern (Maske, Schürze, Gürtel, Tasche, Schal … 221 Treffer durchgesehen, fast alles «mit Gürtel/Stickerei/Halter» im Titel eines echten Kleidungsstücks) und nach Titeln ohne Warenart-Wort (62 Titel; davon ein Körperschmuck-Band «Farbenfrohes Körperkreuz» und ein Unterrock ohne Kleidungsstück-Wort, der Rest echte Kleidung). Beim Lesen gefundene und danach per Regel behobene Fehltreffer: «Pailletten Body Chain Top» in Dessous, Stoffmasken-Set in Sets, 5 Kostümkleider in Kleidern, taktische Cargo-Hose in Hosen, «Casual Badetop» in Tops, «Samt-Hotpants» in Hosen, «Kurzarmhemd mit ärmelloser Weste» in Jacken, «Faux-Jeans-Oberteil»/«Jeans-Top» in Jeans und 5 Top-&-Hose-Zweiteiler in Hosen/Shorts/Strickjacken (jetzt in Zweiteiler & Sets), «Rosenrotes» Kleid im Blumenfilter, «Spitzer Ausschnitt» im Spitzenfilter. Grenzfälle, die als richtig gezählt sind: «Cardigan-Bluse» (2 in Strickjacken), «Sport-Top» in Tops, «Shapewear-Kleid» in Dessous. Eine Stichprobe von 30 beweist keine 97 %; sie schliesst grobe Fehler aus.",
+  "Die Titel enthalten viel Füllwort («Elegantes …» steht in rund 640 Kleidertiteln): als Unterfilter taugt es nicht und wurde nicht verwendet. Hinweis für die Titelpflege: «Elegant» ersetzt oft die Warenart (z. B. «Eleganter Jumpsuit» ist gut, «Elegantes Oberteil» ist leer)."
+ ],
+ "geschlecht_regel_abteilung": "Ergebnis je Produkt: damen | herren | kinder | unisex | unbekannt. Alle Muster sind Regex-Strings (JavaScript, Flag i) und werden auf den Produkttitel angewendet; der erste zutreffende Schritt gilt.\n1. Titel trifft KINDER ((^|[^a-zäöüß])(kinder|mädchen|maedchen|jungs|babys?(?![a-zäöüß])|baby-|kleinkind|teenager|teens?(?![a-zäöüß])|kids?(?![a-zäöüß])|säugling|neugeboren|strampler|famili|eltern)  ODER  (^|für |& |und |, )jungen(?![a-zäöüß])  ODER  (^|[^a-zäöüß])(mutter|tochter|mama|mami|papa|vater|sohn|kind)(?![a-zäöüß])) -> kinder.\n2. Titel trifft UNISEX ((^|[^a-zäöüß])(unisex|für paare|pärchen|partner-?(shirt|look|outfit)|paar-?look|couple)) oder trifft DAMEN UND HERREN zugleich -> unisex.\n3. Titel trifft HERREN ((^|[^a-zäöüß])(herren(?!los)|männer|maenner|männlich|mann(?![a-zäöüß])|gentleman)) -> herren.\n4. Titel trifft DAMEN ((^|[^a-zäöüß])(damen|frauen|weiblich|ladies)) -> damen.\n5. Tags: Tag unisex -> unisex; Tags damen UND (herren oder maenner) -> unisex; damen -> damen; herren oder maenner -> herren; kinder -> kinder.\n6. Feld type: Damenmode -> damen; Herrenmode -> herren; «Baby & Kinder» oder «Kinder» -> kinder; «T-Shirt» oder «Shirt», oder Titel enthält «selbst gestalten» -> unisex.\n7. Google-Kategorie beginnt mit Dresses | Skirts | Skorts | Underwear & Socks > Bras | Underwear & Socks > Lingerie | Sleepwear & Loungewear > Nightgowns | Underwear & Socks > Petticoats -> damen.\n8. Titel trifft EINDEUTIG ((^|[^a-zäöüß])(yoga|leggings|jeggings|bikini|badeanzug|tankini|jumpsuit|cheongsam)) -> damen (in den Daten mit bekanntem Geschlecht kommen diese Wörter nie bei Herren vor: yoga 147:0, leggings 106:0).\n9. Sonst unbekannt (das Produkt kommt in keine Kategorie).\nNachkorrektur: Ergibt Schritt 1-9 «herren» (oder «unisex» allein aus Tags) und beginnt g mit einem Anfangsstück aus Schritt 7, so gilt damen (Kleider, Röcke, BHs und Nachthemden sind nie Herren; so fängt die Regel Übersetzungsfehler wie «Herren-Rock» ab).\nEin Produkt mit Geschlecht unisex gehört zu Damen UND zu Herren (je einmal in genau einer Blatt-Kategorie jeder Abteilung); Kategorie-Geschlecht damen akzeptiert damen und unisex.\nGEMESSEN (11837 Produkte mit g unter «Apparel & Accessories > Clothing > »): damen 7879, herren 3408, kinder 324, unisex 120, unbekannt 106. Entscheidung durch Titel 4225, Tag 7397, type 93, Google-Kategorie 4, Schritt 8 12.\nTitel gegen Tag: nennt der Titel eine Zielgruppe UND ist ein Tag vorhanden (4120 Produkte), widersprechen sie sich in 120 Fällen (2,9 %): Tag damen -> unisex 36, Tag damen -> kinder 54, Tag damen -> herren 6, Tag herren -> kinder 9, Tag herren -> unisex 15. Der Titel gewinnt, weil er die Zielgruppe wörtlich nennt, während der Tag ein Sammel-Tag des Imports ist und Familien-, Paar- und Unisex-Ware nur grob als «damen» führt. Wo der Titel schweigt, gilt der Tag: das Feld type stimmt in 7374 von 7397 dieser Fälle (99,7 %) mit dem Tag überein.",
+ "nachtrag_pruefung": {
+  "datum": "2026-10-26",
+  "werkzeug": "pruefen.mjs / anpassen.mjs",
+  "aenderungen": [
+   "damen-sets: 2 Titelmuster ergaenzt («Top mit Satin-Midirock», «Wickel-Minirock mit Kurzarm-Top»): Set-Teile ohne Set-Wort fielen durch. Gemaess Vorrangregel der Abteilung auch als Ausschluss in 10 Kategorien mit gleicher Google-Kategorie (damen-roecke, damen-jeans, damen-hosen, damen-shorts, damen-hoodies-sweatshirts, damen-strickjacken, damen-pullover, damen-blusen-hemden, damen-t-shirts, damen-tops).",
+   "Tags «fortura» und «kostuem» in tags_nicht von 19 Kategorien ergaenzt (Kinder- und Schuh-Abteilung sperrten «fortura» schon); verhindert, dass Fasnachts-Kostüme und Fanartikel von Fortura durch die gemeinsame Geschlechtsregel in die Alltagsmode rutschen.",
+   "Ausschluss «verkleid» nur noch am Wortanfang (19 Kategorien); «Pailletten-Pulloverkleid» und «Locken-Pulloverkleid» (Pullo-VERKLEID) wurden faelschlich als Verkleidung ausgeschlossen und stehen jetzt in Kleider."
+  ]
+ }
+}
