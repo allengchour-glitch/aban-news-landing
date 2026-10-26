@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_SOCIALVERTEILUNG_20261026
+
+**Fortsetzung des am 25.10. begonnenen Verteilauftrags, Dokumentstand 26.10.:** [Ausspielstatus und selbst ausgeführte CJ-Suche](SOCIAL-AUSSPIELSTATUS-20261026.md), [Kanalplan mit Quellen und Belegen](SOCIAL-AUSSPIELPLAN-20261026.json). Der Inhaber bestätigt alle sechs Social-Kanäle. YouTube für denselben Sternenlicht-Master ausdrücklich **allgemeines Publikum, nicht speziell für Kinder**; diese Frage nicht erneut stellen und keine globale Kanaleinstellung daraus ändern. Stabile masterId `luxe_sternenprojektor_master_20261018` erhalten.
+
+Neu geprüft: exakte offizielle CJ-Produktseite 1477820492730732544 gefunden, Livezugriff führt HTTP 302 zur Validierung. Bestehende CJ-Helfer/Workflows gelesen; bekannte GitHub-Key-Ablage bleibt anerkannt, aktuelle Runtime546 hat keinen bereit gebundenen CJ-Zugang. Keine Secrets ausgelesen, Importjobs als Zugangstest gestartet oder bezahlte Medien gekauft. Die frische begrenzte Shopify-Medienlesung liefert genau ein Originalvideo, 960×540 / 25 fps / 27.960 s, keine höherwertige Quelle im zugeordneten Produkt-Videobestand. Musikdatei und aktuelle Herkunftsbelege passen; fertiger Hörmix bleibt offen.
+
+Planung 26.10.00:36–02.11.00:36 CET: 24 bestehende UUIDs / 41 PENDING-Kanalzustände. Sechs gemeinsame UUIDs unverändert; 18 seit der Vorprüfung neu geliefert, nicht durch diesen Lauf erstellt. Keine eigenen Social-Writes. Neue professionelle Master-MP4 mit belegten Filmrechten und fertiger Abnahme weiter nicht identifiziert; Ledgerhistorie unbekannt, kein Register initialisiert oder zurückgesetzt. Kanalplan ist Dokumentation, keine ausführbare Queue. Bio-Ziele/Pinterest-Board/YouTube-Zielpfad bleiben zusätzlich offen. Keine Shop-/Theme-/Flow-/Feed-/Budget-/Rabatt-/DNS-Aktivierung.
+
 ## LUXESTYLE_ABEND_20261025
 
 **Prüfstand ab 19:05 CET:** [Abendpaket mit Storyboard, sechs Kanaltexten und UTM-Zielen](ABENDPAKET-20261025.md), [belegte Leseprüfungen](ABEND-BELEGE-20261025.json), [native Menüquelle und Abgleich](MENUE-NATIV-ABGLEICH-20261025.md), [vollständige native IDs-/Archivzuordnung](MENUE-NATIV-ABGLEICH-20261025.json) und [Google-Kontingent / Robots-/Sitemap-Prüfung](INDEX-KONTINGENT-20261025.md).
