@@ -1,0 +1,806 @@
+{
+ "bereich": "tiere",
+ "titel": "Haustiere",
+ "menue": {
+  "oben": "Haustiere"
+ },
+ "universum": {
+  "g_prefix": [
+   "Animals & Pet Supplies"
+  ],
+  "g_nicht": [],
+  "titel_muss": [],
+  "titel_nicht": []
+ },
+ "kategorien": [
+  {
+   "handle": "tier-leinen",
+   "titel": "Hundeleinen & Katzenleinen",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "((?<![ck])leinen?|zugseil|zugleine|führleine|rollleine|laufleine|schleppleine|p-kette|hundeseil|führsel|führseil)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "^(?=.*(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband|(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)))(?=.*((?<![ck])leinen?(?![a-zäöüß])|zugseil|zugleine|führseil))"
+   ],
+   "beschreibung": "Hundeleinen und Katzenleinen einzeln: Rollleinen, Doppelleinen, Zugseile und Leinen aus Nylon, Leder oder Baumwollseil.",
+   "unterfilter": [
+    {
+     "handle": "tier-leinen-roll",
+     "titel": "Roll- & ausziehbare Leinen",
+     "titel_muss": [
+      "roll\\w*|ausziehbar\\w*|einziehbar\\w*|automatisch\\w*|selbsteinziehend|retract\\w*|teleskop"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-leinen-reflektierend",
+     "titel": "Reflektierende & Leucht-Leinen",
+     "titel_muss": [
+      "reflek\\w*|led|leucht\\w*|licht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-leinen-doppel",
+     "titel": "Doppelleinen",
+     "titel_muss": [
+      "doppel\\w*|zwei hunde|2 hunde"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-leinen-leder",
+     "titel": "Lederleinen",
+     "titel_muss": [
+      "leder\\w*|rindsleder"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-halsbaender",
+   "titel": "Halsbänder",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "^(?=.*(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband|(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)))(?=.*((?<![ck])leinen?(?![a-zäöüß])|zugseil|zugleine|führseil))",
+    "((?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste))(?![a-zäöüß])",
+    "gps|tracker|ortung|kamera|airtag|locator"
+   ],
+   "beschreibung": "Halsbänder für Hunde und Katzen einzeln: aus Leder, Nylon oder Samt, reflektierend oder mit Leuchtfunktion.",
+   "unterfilter": [
+    {
+     "handle": "tier-halsbaender-leder",
+     "titel": "Lederhalsbänder",
+     "titel_muss": [
+      "leder\\w*|rindsleder|pu-leder"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-halsbaender-leuchten",
+     "titel": "Leuchthalsbänder",
+     "titel_muss": [
+      "led|leucht\\w*|licht|reflek\\w*"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-halsbaender-katzen",
+     "titel": "Katzenhalsbänder",
+     "titel_muss": [
+      "(katze|katzen|kater|kitten|kätzchen|catnip)"
+     ],
+     "titel_nicht": [
+      "(hund|hunde|hunden|welpe|welpen)"
+     ]
+    }
+   ]
+  },
+  {
+   "handle": "tier-geschirre",
+   "titel": "Geschirre & Brustgurte",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "((?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste))(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "^(?=.*(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband|(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)))(?=.*((?<![ck])leinen?(?![a-zäöüß])|zugseil|zugleine|führseil))"
+   ],
+   "beschreibung": "Brustgeschirre und Brustgurte für Hunde und Katzen einzeln: gepolstert, reflektierend, verstellbar, für kleine und grosse Tiere.",
+   "unterfilter": [
+    {
+     "handle": "tier-geschirre-katzen",
+     "titel": "Katzengeschirre",
+     "titel_muss": [
+      "(katze|katzen|kater|kitten|kätzchen|catnip)"
+     ],
+     "titel_nicht": [
+      "(hund|hunde|hunden|welpe|welpen)"
+     ]
+    },
+    {
+     "handle": "tier-geschirre-reflektierend",
+     "titel": "Reflektierende Geschirre",
+     "titel_muss": [
+      "reflek\\w*|led|leucht\\w*"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-geschirre-zug",
+     "titel": "Zug- & Outdoor-Geschirre",
+     "titel_muss": [
+      "zugg\\w*|outdoor|taktisch\\w*|wander\\w*|sport\\w*"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-halsband-leine-sets",
+   "titel": "Halsband-, Geschirr- & Leinen-Sets",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "^(?=.*(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband|(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)))(?=.*((?<![ck])leinen?(?![a-zäöüß])|zugseil|zugleine|führseil))"
+   ],
+   "titel_nicht": [],
+   "beschreibung": "Sets aus Halsband oder Geschirr mit passender Leine für Hunde und Katzen.",
+   "unterfilter": [
+    {
+     "handle": "tier-sets-geschirr",
+     "titel": "Geschirr mit Leine",
+     "titel_muss": [
+      "(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-sets-halsband",
+     "titel": "Halsband mit Leine",
+     "titel_muss": [
+      "halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband"
+     ],
+     "titel_nicht": [
+      "(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)"
+     ]
+    }
+   ]
+  },
+  {
+   "handle": "tier-tracker",
+   "titel": "Tracker & smarte Technik",
+   "g_prefix": [
+    "Animals & Pet Supplies",
+    "Electronics > GPS Tracking Devices"
+   ],
+   "titel_muss": [
+    "^(?=.*(haustier|hund|hunde|katze|katzen|tier|pet|welpe))(?=.*(tracker|gps|ortung|ortungsgerät|locator|airtag|kamera|camera|wlan|app-steuerung|überwachung|bluetooth))"
+   ],
+   "titel_nicht": [
+    "schutzhülle|airtag-schutz|hülle|halter|halterung",
+    "spielzeug|spielball|ball",
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])",
+    "(trinkbrunnen|wasserspender|wasserautomat|wasserquelle|wasserhahn|trinkautomat|wasserbrunnen|katzenbrunnen|trinkspender|wasserfontäne|brunnen|wasserspeicher)(?![a-zäöüß])"
+   ],
+   "beschreibung": "GPS-Tracker, Ortungsgeräte und Kamera-Halsbänder für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-transport",
+   "titel": "Tragetaschen, Rucksäcke & Transport",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(rucksack|tragetasche|transporttasche|tragetuch|tragebox|transportbox|reisetasche|täschli|trolley|katzenbox|hundebox|hundetrage|tiertasche|haustiertasche|katzenkäfig|transportkäfig|tragtasche|brusttasche|tiertransport|hundetransport|transport)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "training|leckerli|snack|futter|spielzeug|plüsch",
+    "auto"
+   ],
+   "beschreibung": "Tragetaschen, Rucksäcke und Transportboxen für Hunde und Katzen: für Spaziergang, Velo, Zug und Reise.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-auto",
+   "titel": "Auto-Zubehör für Haustiere",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(auto(?![a-zäöüß])|auto-|autositz\\w*|automatte|autoschutz\\w*|autokissen|autogurt|autohängematte|fahrzeug\\w*)|(sicherheitsgurt|sitzgurt|rücksitz\\w*|kofferraum\\w*|rückbank|sitzauflage|isofix|fürs auto|im auto)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "spielzeug|ferngesteuert"
+   ],
+   "beschreibung": "Autositze, Schutzmatten, Sitzbezüge und Sicherheitsgurte für Hunde und Katzen im Auto.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-training",
+   "titel": "Training & Erziehung",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(training\\w*|trainer|clicker|pfeife|antibell|anti-?bell\\w*|bellentstörer|erziehung\\w*|welpenpad\\w*|zaun\\w*|trainingsstab|trainingsgerte|hundeführer|lehreif)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "spielzeug|ball|leine|halsband|geschirr|tasche|beutel"
+   ],
+   "beschreibung": "Trainingshilfen für Hunde und Katzen: Clicker, Trainingsstäbe, Pfeifen und Hilfsmittel zur Erziehung.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-naepfe",
+   "titel": "Näpfe & Schüsseln",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "((?<!saug)(napf|näpfe|schüssel|schale|schalen|teller|tränke|trog|bowl|becken|futterbecher|trinkbecher))(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])",
+    "(trinkbrunnen|wasserspender|wasserautomat|wasserquelle|wasserhahn|trinkautomat|wasserbrunnen|katzenbrunnen|trinkspender|wasserfontäne|brunnen|wasserspeicher)(?![a-zäöüß])",
+    "(anti-?schling\\w*|slow ?feed\\w*|langsam\\w*|leckmatte|schleckmatte|leckschale|schleckschale|schnüffel(teppich|matte)|futterversteck-?matte|futtermatte mit spiel)(?![a-zäöüß])",
+    "kratz|aquarium|bett|spielzeug|ball|halsband|geschirr|leine|toilette|streu",
+    "(napf|schale|schüssel)-?(ständer|halter|unterlage|matte|tablett)"
+   ],
+   "beschreibung": "Fress- und Trinknäpfe für Hunde und Katzen aus Keramik, Edelstahl und Silikon: einfach, doppelt, erhöht oder faltbar.",
+   "unterfilter": [
+    {
+     "handle": "tier-naepfe-keramik",
+     "titel": "Keramiknäpfe",
+     "titel_muss": [
+      "keramik\\w*|porzellan|keramisch\\w*"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-naepfe-edelstahl",
+     "titel": "Edelstahlnäpfe",
+     "titel_muss": [
+      "edelstahl|stahl"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-naepfe-doppel",
+     "titel": "Doppelnäpfe",
+     "titel_muss": [
+      "doppel\\w*|2-in-1|zweifach"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-naepfe-faltbar",
+     "titel": "Faltbare Reisenäpfe",
+     "titel_muss": [
+      "faltbar\\w*|tragbar\\w*|reise\\w*|unterwegs"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-futterautomaten",
+   "titel": "Futterautomaten & Futterspender",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "spielzeug|ball|spielball|puzzle|spiel"
+   ],
+   "beschreibung": "Automatische Futterspender und Futterstationen für Hunde und Katzen: mit Zeitschaltung, Behälter oder App.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-trinkbrunnen",
+   "titel": "Trinkbrunnen & Wasserspender",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(trinkbrunnen|wasserspender|wasserautomat|wasserquelle|wasserhahn|trinkautomat|wasserbrunnen|katzenbrunnen|trinkspender|wasserfontäne|brunnen|wasserspeicher)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])",
+    "filter(?!.*brunnen)|aquarium"
+   ],
+   "beschreibung": "Trinkbrunnen und automatische Wasserspender für Hunde und Katzen, mit Pumpe, Filter oder Gravitationsprinzip.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-anti-schling",
+   "titel": "Anti-Schling-Näpfe & Leckmatten",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(anti-?schling\\w*|slow ?feed\\w*|langsam\\w*|leckmatte|schleckmatte|leckschale|schleckschale|schnüffel(teppich|matte)|futterversteck-?matte|futtermatte mit spiel)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])",
+    "halsband|geschirr|leine|bett|kratz|pullover"
+   ],
+   "beschreibung": "Anti-Schling-Näpfe, Leckmatten und Schnüffelteppiche für langsames Fressen bei Hunden und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-napfzubehoer",
+   "titel": "Napf-Zubehör & Futterbehälter",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(napfständer|futterständer|napfhalter|schüsselhalter|futtertisch|futtermatte|napfunterlage|platzset|unterlage|futterbehälter|futtereimer|futtertonne|vorratsdose|futterlöffel|futterbecher|futterschaufel|dosierlöffel|futterwaage|messbecher|futtertablett|futterbox|snackbox|riser|futterbecher|ständer|halter|tablett)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(anti-?schling\\w*|slow ?feed\\w*|langsam\\w*|leckmatte|schleckmatte|leckschale|schleckschale|schnüffel(teppich|matte)|futterversteck-?matte|futtermatte mit spiel)(?![a-zäöüß])",
+    "(futterautomat\\w*|futterspender|fütterer|futterstation|futtermaschine|fütterungsgerät|futter-?(und|/|&)-?wasserspender|futtermatcher|futtermanger|belohnungsmaschine|snackspender|leckerli-?spender)(?![a-zäöüß])",
+    "(trinkbrunnen|wasserspender|wasserautomat|wasserquelle|wasserhahn|trinkautomat|wasserbrunnen|katzenbrunnen|trinkspender|wasserfontäne|brunnen|wasserspeicher)(?![a-zäöüß])",
+    "halsband|geschirr|leine|kratz|bett|spielzeug",
+    "(?<!saug)(napf|näpfe|schüssel|schale|teller)(?!-?(ständer|halter|unterlage|matte|tablett))"
+   ],
+   "beschreibung": "Napfständer, Futtermatten, Futtertonnen und Futterlöffel: Zubehör rund um Fressnapf und Futterlager.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-katzenspielzeug",
+   "titel": "Katzenspielzeug",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "^(?=.*(katze|katzen|kater|kitten|kätzchen|catnip))(?=.*(spielzeug|spielball|ball|bälle|knochen|plüsch\\w*|quietsch\\w*|kuscheltier|frisbee|tunnel|laser|teaser|federangel|katzenminze|catnip|spielstab|spielmaus|puzzle|rollball|schnüffel\\w*|zerr\\w*|spielmatte|plüschtier|kaustange|kauring|beissring|kauball))",
+    "(^|[^a-zäöüß])(maus|mäuse|catnip|teaser|federangel|katzenminze)"
+   ],
+   "titel_nicht": [
+    "(hund|hunde|hunden|welpe|welpen)",
+    "halsband|geschirr|leine|napf|bett|kratzbaum|pullover|toilette"
+   ],
+   "beschreibung": "Spielzeug für Katzen: Federangeln, Bälle, Mäuse, Tunnel und elektrisches Spielzeug.",
+   "unterfilter": [
+    {
+     "handle": "tier-katzenspielzeug-elektrisch",
+     "titel": "Elektrisches & interaktives Spielzeug",
+     "titel_muss": [
+      "elektr\\w*|interaktiv\\w*|automatisch\\w*|usb|ferngesteuert|smart\\w*"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-katzenspielzeug-feder",
+     "titel": "Federangeln & Teaser",
+     "titel_muss": [
+      "feder\\w*|angel|teaser|stab"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-katzenspielzeug-minze",
+     "titel": "Katzenminze-Spielzeug",
+     "titel_muss": [
+      "minze|catnip"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-kauspielzeug",
+   "titel": "Kau- & Beissspielzeug",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(kau\\w*|beiss\\w*|biss\\w*|knochen|molar\\w*|zahnreinigungs\\w*|knabber\\w*|zahnungs\\w*)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(katze|katzen|kater|kitten|kätzchen|catnip)(?!.*(hund|hunde|hunden|welpe|welpen))",
+    "halsband|geschirr|leine|napf|bett|toilette|spender|pullover",
+    "beissfest\\w*(?!.*(spielzeug|ball|knochen))"
+   ],
+   "beschreibung": "Kau- und Beissspielzeug für Hunde: Kauknochen, Beissringe und Molarenspielzeug aus Gummi, Nylon oder Naturmaterial.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-baelle",
+   "titel": "Bälle & Wurfspielzeug",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(ball|bälle|spielball|frisbee|apport\\w*|wurf\\w*|rollball|kugel)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(katze|katzen|kater|kitten|kätzchen|catnip)(?!.*(hund|hunde|hunden|welpe|welpen))",
+    "halsband|geschirr|leine|napf|bett|toilette|spender|pullover",
+    "kau|beiss|biss|knochen|molar|plüsch|quietsch",
+    "puzzle|schnüffel|intelligen|futter|leckerli|snack"
+   ],
+   "beschreibung": "Bälle, Frisbees und Wurfspielzeug für Hunde: zum Apportieren, Rollen und Fangen, auch mit Licht oder Sound.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-plueschspielzeug",
+   "titel": "Plüsch- & Quietschspielzeug",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(plüsch\\w*|quietsch\\w*|kuscheltier|stofftier|squeak\\w*|kuschelpuppe|plüschtier)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(katze|katzen|kater|kitten|kätzchen|catnip)(?!.*(hund|hunde|hunden|welpe|welpen))",
+    "halsband|geschirr|leine|napf|bett|toilette|spender|pullover|kissen|decke|mantel|jacke",
+    "kau|beiss|knochen|molar|ball(?![a-zäöüß])|puzzle|schnüffel|intelligen|futter|leckerli|snack"
+   ],
+   "beschreibung": "Plüschtiere und Quietschspielzeug für Hunde: weich, mit Quietscher oder Knistergeräusch.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-intelligenzspielzeug",
+   "titel": "Intelligenz- & Schnüffelspielzeug",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(intelligen\\w*|futterspielzeug|futterball|snackball|leckerli-?(spender|ball|versteck\\w*)|puzzle\\w*|denkspiel\\w*|schnüffel\\w*|versteckspiel\\w*|futter-?spielzeug\\w*|snack-?spielzeug|futterlabyrinth|spielzeug mit futter|dispenser|futterversteck\\w*)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(katze|katzen|kater|kitten|kätzchen|catnip)(?!.*(hund|hunde|hunden|welpe|welpen))",
+    "halsband|geschirr|leine|napf|bett|toilette|pullover",
+    "(anti-?schling\\w*|slow ?feed\\w*|langsam\\w*|leckmatte|schleckmatte|leckschale|schleckschale|schnüffel(teppich|matte)|futterversteck-?matte|futtermatte mit spiel)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Intelligenzspielzeug, Futterbälle und Schnüffelspiele für Hunde: Spielzeug, bei dem Futter oder Leckerli versteckt werden.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-pullover",
+   "titel": "Pullover, Strick & Hoodies",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(pullover|sweater|strickpullover|cardigan|hoodie|sweatshirt|kapuzenpullover|wollpullover|strickjacke|fleecepullover|strick\\w*|pulli)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|bett|spielzeug|plüsch|kissen|matte|decke|toilette|kratz|tasche|rucksack|auto"
+   ],
+   "beschreibung": "Pullover, Strickjacken und Hoodies für Hunde und Katzen, auch für haarlose Katzen.",
+   "unterfilter": [
+    {
+     "handle": "tier-pullover-katzen",
+     "titel": "Katzenpullover",
+     "titel_muss": [
+      "(katze|katzen|kater|kitten|kätzchen|catnip)"
+     ],
+     "titel_nicht": [
+      "(hund|hunde|hunden|welpe|welpen)"
+     ]
+    },
+    {
+     "handle": "tier-pullover-hoodies",
+     "titel": "Hoodies & Sweatshirts",
+     "titel_muss": [
+      "hoodie|sweatshirt|kapuze\\w*"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-maentel-jacken",
+   "titel": "Mäntel, Jacken & Westen",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(mantel|jacke|regenmantel|parka|windjacke|winterjacke|daunenjacke|regenjacke|fleecejacke|overall|regenponcho|poncho|cape|umhang|weste|westen|steppjacke|schneeanzug|wintermantel|kapuzenmantel|schutzanzug|vest|anzug|jumpsuit)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|bett|spielzeug|plüsch|kissen|matte|decke|toilette|kratz|tasche|rucksack|auto",
+    "(pullover|sweater|cardigan|hoodie|sweatshirt|strick\\w*)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Wintermäntel, Regenjacken, Westen und Overalls für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-kleider-shirts",
+   "titel": "Kleider, Shirts & Schlafanzüge",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(kleid|kleider|t-shirt|shirt|pyjama|schlafanzug|body|tutu|hemd|dress|onesie|polo|top|tank|kleidung)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|bett|spielzeug|plüsch|kissen|matte|decke|toilette|kratz|tasche|rucksack|auto",
+    "(pullover|sweater|cardigan|hoodie|sweatshirt|strick\\w*|mantel|jacke|weste|overall|anzug|jumpsuit)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Kleider, T-Shirts, Polos und Schlafanzüge für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-accessoires",
+   "titel": "Fliegen, Halstücher & Accessoires",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(fliege|halstuch|bandana|schal|mütze|hut|kappe|brille|haarspange|haarschleife|haarband|krawatte|schleife|glöckchen|glocke|stirnband|kopfbedeckung|anhänger|haarclip|haarreif|lätzchen)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|bett|spielzeug|plüsch|kissen|matte|decke|toilette|kratz|tasche|rucksack|auto",
+    "halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband",
+    "^(?=.*(halsband|halsbänder|halskette|kollier|halsreif|halsung|neckband|(?<!(futter|mahl|ess|trink))(geschirr|geschirre|harnisch|harness|brustgurt|gstältli|brustweste)))(?=.*((?<![ck])leinen?(?![a-zäöüß])|zugseil|zugleine|führseil))",
+    "(pullover|sweater|cardigan|hoodie|sweatshirt|strick\\w*|mantel|jacke|weste|overall|anzug|jumpsuit|kleid|shirt)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Fliegen, Halstücher, Bandanas und Haarschmuck für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-betten-koerbe",
+   "titel": "Betten, Körbe & Kissen",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(bett|betten|körbchen|korb|schlafplatz|liegeplatz|nest|höhle|schlafsack|sofa|kissen|liege|liegesessel|hängematte|lounge|iglu|zelt|haus|hütte|couch|haustierkissen|hundekissen)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "kratz|kletter",
+    "halsband|geschirr|leine|spielzeug|plüsch|toilette|streu",
+    "napf|näpfe|futter|bett für futter",
+    "(mantel|jacke|pullover|kleid)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Betten, Körbchen, Sofas, Höhlen und Kissen für Hunde und Katzen.",
+   "unterfilter": [
+    {
+     "handle": "tier-betten-katzen",
+     "titel": "Katzenbetten & -höhlen",
+     "titel_muss": [
+      "(katze|katzen|kater|kitten|kätzchen|catnip)"
+     ],
+     "titel_nicht": [
+      "(hund|hunde|hunden|welpe|welpen)"
+     ]
+    },
+    {
+     "handle": "tier-betten-hunde",
+     "titel": "Hundebetten",
+     "titel_muss": [
+      "(hund|hunde|hunden|welpe|welpen)"
+     ],
+     "titel_nicht": [
+      "(katze|katzen|kater|kitten|kätzchen|catnip)"
+     ]
+    },
+    {
+     "handle": "tier-betten-hoehlen",
+     "titel": "Höhlen, Nester & Zelte",
+     "titel_muss": [
+      "höhle|nest|zelt|iglu|hütte|haus"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-kratzmoebel",
+   "titel": "Kratzbäume, Kratzbretter & Kletterwände",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(kratz\\w*|kletter\\w*|katzenbaum|katzenturm|katzentreppe|wandplattform|katzenplattform|katzenregal|kratzer)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|toilette|spielzeug(?!.*(kratz))",
+    "schutz(?!.*(baum|brett))"
+   ],
+   "beschreibung": "Kratzbäume, Kratzbretter, Kratzsäulen und Kletterwände für Katzen.",
+   "unterfilter": [
+    {
+     "handle": "tier-kratz-baeume",
+     "titel": "Kratzbäume",
+     "titel_muss": [
+      "kratzbaum|katzenbaum|kletterbaum|katzenturm"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-kratz-bretter",
+     "titel": "Kratzbretter & -matten",
+     "titel_muss": [
+      "kratzbrett|kratzmatte|kratzpappe|wellpappe|kratzschale"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "tier-matten-decken",
+   "titel": "Matten & Decken",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(matte|decke|kühlmatte|heizmatte|wärmematte|unterlage|teppich|liegematte|eisseidenmatte|heizkissen|kühlkissen|pad)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "kratz|streu|futter|napf|näpfe|schnüffel|leck|auto|rücksitz|toilette",
+    "halsband|geschirr|leine|spielzeug|plüsch"
+   ],
+   "beschreibung": "Liegematten, Kühlmatten, Wärmematten und Decken für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-fellpflege",
+   "titel": "Fell- & Badepflege",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(bürste|bürsten|kamm|pflegehandschuh|massagehandschuh|haarentferner\\w*|entfilz\\w*|fellpflege\\w*|trimmer|schermaschine|fellpfleger|haarbürste|striegel|pflegeset|pflegeöl|schere|rasierer|föhn|duschgel|shampoo|badehandtuch|bademantel|badebürste|dusche|duschschlauch|trockentuch|handtuch|badewanne|pflegetisch|reinigungsset|fellroller|pflege\\w*)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|spielzeug|kratz|napf|bett|krall|zahn|molar"
+   ],
+   "beschreibung": "Bürsten, Kämme, Pflegehandschuhe und Badezubehör für die Fellpflege bei Hunden und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-krallen-zaehne",
+   "titel": "Krallen- & Zahnpflege",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(kralle|krallen\\w*|nagel\\w*|zahnbürste|zahnpflege\\w*|zahnreinigung\\w*|zahnpulver|atemfrischer|mundpflege|fingerzahnbürste|krallenschleifer|krallenschere|krallenzange)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|kratz|napf|bett|spielzeug|ball|kau"
+   ],
+   "beschreibung": "Krallenscheren, Krallenschleifer, Zahnbürsten und Zahnpflege-Zubehör für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-toilette-hygiene",
+   "titel": "Katzentoiletten, Streu & Kotbeutel",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(katzenklo|katzentoilette|toilette|streu|katzenstreu|streumatte|schaufel|sandschaufel|kotbeutel|kotgreifer|poop\\w*|kotschaufel|abfalleimer|windel\\w*|pinkelpad|urinal|hundetoilette|kotentsorg\\w*)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "halsband|geschirr|leine|napf|bett|spielzeug|futter(?!schaufel)"
+   ],
+   "beschreibung": "Katzentoiletten, Streu, Streumatten, Schaufeln und Kotbeutel für Hunde und Katzen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-halskrausen",
+   "titel": "Halskrausen & Schutzkragen",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(halskrause|schutzkragen|leckschutz\\w*|anti-?leck\\w*|halskragen|halsring|schutzring|kopfschutz|beisskragen|leckring|kragen)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "napf|schüssel|futter",
+    "halsband|geschirr|leine|spielzeug|bett|pullover|kissen"
+   ],
+   "beschreibung": "Halskrausen und Schutzkragen für Hunde und Katzen: aufblasbar, weich oder als Ring.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tier-kleintiere-voegel",
+   "titel": "Kleintiere, Vögel & Reptilien",
+   "g_prefix": [
+    "Animals & Pet Supplies"
+   ],
+   "titel_muss": [
+    "(kaninchen|hamster|nager|meerschwein\\w*|chinchilla|frettchen|schildkröte\\w*|reptil\\w*|terrarium\\w*|kleintier\\w*|heuraufe|wellensittich\\w*|papagei\\w*|vogelkäfig|vogelbad|vogelfutter|kanarien\\w*|für vögel|vögel)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(katze|katzen|kater|kitten|kätzchen|catnip)(?!.*(kaninchen|hamster|nager))"
+   ],
+   "beschreibung": "Zubehör für Kleintiere, Vögel und Reptilien: Futterspender, Heuraufen, Käfigzubehör und Terrarium-Technik.",
+   "unterfilter": []
+  }
+ ],
+ "gruppen": [
+  {
+   "titel": "Spazieren & Unterwegs",
+   "handle": "tiere-unterwegs-gruppe",
+   "kinder": [
+    "tier-leinen",
+    "tier-halsbaender",
+    "tier-geschirre",
+    "tier-halsband-leine-sets",
+    "tier-tracker",
+    "tier-transport",
+    "tier-auto",
+    "tier-training"
+   ]
+  },
+  {
+   "titel": "Futter & Trinken",
+   "handle": "tiere-futter-gruppe",
+   "kinder": [
+    "tier-naepfe",
+    "tier-futterautomaten",
+    "tier-trinkbrunnen",
+    "tier-anti-schling",
+    "tier-napfzubehoer"
+   ]
+  },
+  {
+   "titel": "Spielzeug",
+   "handle": "tiere-spielzeug-gruppe",
+   "kinder": [
+    "tier-katzenspielzeug",
+    "tier-kauspielzeug",
+    "tier-baelle",
+    "tier-plueschspielzeug",
+    "tier-intelligenzspielzeug"
+   ]
+  },
+  {
+   "titel": "Kleidung & Accessoires",
+   "handle": "tiere-kleidung-gruppe",
+   "kinder": [
+    "tier-pullover",
+    "tier-maentel-jacken",
+    "tier-kleider-shirts",
+    "tier-accessoires"
+   ]
+  },
+  {
+   "titel": "Schlafen, Möbel & Pflege",
+   "handle": "tiere-schlafen-pflege-gruppe",
+   "kinder": [
+    "tier-betten-koerbe",
+    "tier-kratzmoebel",
+    "tier-matten-decken",
+    "tier-fellpflege",
+    "tier-krallen-zaehne",
+    "tier-toilette-hygiene",
+    "tier-halskrausen"
+   ]
+  },
+  {
+   "titel": "Nach Tierart",
+   "handle": "tiere-tierart-gruppe",
+   "kinder": [
+    "haustier-hunde",
+    "haustier-katzen",
+    "tier-kleintiere-voegel",
+    "aquarium-fische"
+   ]
+  }
+ ],
+ "ausserhalb": [],
+ "hinweise": []
+}

@@ -1,0 +1,275 @@
+{
+ "bereich": "sportschuhe",
+ "titel": "Sportschuhe nach Sportart",
+ "menue": {
+  "oben": "Sport & Party (neuer Ast «Sportschuhe»; im Menü zusätzlich unter Schuhe verlinkbar)"
+ },
+ "universum": {
+  "g_prefix": [],
+  "g_nicht": [
+   "Apparel & Accessories > Clothing",
+   "Home & Garden",
+   "Apparel & Accessories > Jewelry",
+   "Health & Beauty",
+   "Animals & Pet Supplies",
+   "Luggage & Bags",
+   "Electronics",
+   "Toys & Games",
+   "Arts & Entertainment",
+   "Apparel & Accessories > Handbags",
+   "Sporting Goods",
+   "Hardware",
+   "Vehicles & Parts",
+   "Cameras & Optics",
+   "Office Supplies",
+   "Baby & Toddler",
+   "Furniture",
+   "Apparel & Accessories > Costumes",
+   "Business & Industrial",
+   "Apparel & Accessories > Handbag & Wallet Accessories",
+   "Food, Beverages & Tobacco",
+   "Religious & Ceremonial",
+   "Apparel & Accessories > Shoe Accessories",
+   "Media"
+  ],
+  "titel_muss": [
+   "laufschuh|running|jogging|marathon|walking|berglauf|(^|[^a-zäöüß])((kinder|herren|damen|jungen|mädchen|knaben)-?)?(sport|sports)-?(schuh|sneaker)|sportsschuh|multisport|turnschuh|(^|[^a-zäöüß])(training|trainings|fitness|workout|gym)|fu(ss|ß)ball|basketball|golf-?(schuh|sneaker)|golfschuh|tennis|badminton|volleyball|handball|(^|[^a-zäöüß])box(schuh|er|en|-)|wrestl|ringer|kampfsport|kampfkunst|kung|taekwondo|karate|judo|gymnastik|tanz|ballett-?schuh|ballet-?schuh|jazz|latein|latin|skate|skater|inline|roller-?skate|rollerskate|rollschuh|heelys|eiskufen|schlittschuh|wasserschuh|aqua|watschuh|schwimm|tauch|badeschuh|upstream|neopren|wassersport|schnorchel|(^|[^a-zäöüß])(river|stream)|(velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh|(^|[^a-zäöüß])rad(sport)?-?schuh|radfahrer|kletter|boulder|reitstiefel|reitschuh|leichtathl|spikes|stollenschuh|snowboard|skischuh|segelschuh"
+  ],
+  "titel_nicht": [
+   "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+   "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+   "(^|[^a-zäöüß])(baby\\w*|babies|kleinkind\\w*|lauflern\\w*|säugling\\w*|krabbel\\w*|neugeboren\\w*)",
+   "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])",
+   "(leggings|verpackung)"
+  ]
+ },
+ "kategorien": [
+  {
+   "handle": "laufschuhe-running",
+   "titel": "Laufschuhe & Walking",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(laufschuh\\w*|lauf-?sneaker\\w*|running\\w*|jogging\\w*|marathon\\w*|walking\\w*|berglauf\\w*|leichtlaufschuh\\w*)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(^|[^a-zäöüß])(baby\\w*|babies|kleinkind\\w*|lauflern\\w*|säugling\\w*|krabbel\\w*|neugeboren\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])",
+    "(plateau\\w*|plattform\\w*|platform\\w*|absatz\\w*|keilabsatz\\w*|erhöh\\w*|fersenerh\\w*|höhenverstärk\\w*|höhe(?![a-zäöüß])|hoehe(?![a-zäöüß])|prinzess\\w*|schleife\\w*|fransen)",
+    "^(?=.*(kinder|mädchen|jungen|knaben))(?=.*(weich\\w* sohle|weichsohle|soft-?sohle))",
+    "(drehbar\\w*|transformier\\w*)",
+    "(^|[^a-zäöüß])(fu(ss|ß)ball\\w*|basketball\\w*|golf\\w*|badminton\\w*|tischtennis\\w*|tennis\\w*|volleyball\\w*|handball\\w*)",
+    "(^|[^a-zäöüß])box(schuh\\w*|stiefel)|(^|[^a-zäöüß])(box(er|en|-)|wrestl\\w*|ringer\\w*|kampfsport\\w*|kampfkunst\\w*|kung|taekwondo|karate|judo|gymnastik\\w*)",
+    "(^|[^a-zäöüß])(tanz\\w*|ballett\\w*|ballet\\w*|jazz\\w*|latein\\w*|latin\\w*)",
+    "(^|[^a-zäöüß])(skate\\w*|skater\\w*|inline\\w*|roller\\w*|rollschuh\\w*|rollen|heelys|eiskufen|schlittschuh\\w*|lauf-?räder\\w*)",
+    "(^|[^a-zäöüß])(wasserschuh\\w*|aqua\\w*|watschuh\\w*|schwimm\\w*|tauch\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)",
+    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Laufschuhe, Running-Sneaker und Walking-Schuhe für Joggen, Training und lange Strecken, mit Modellen für Damen, Herren und Kinder.",
+   "unterfilter": []
+  },
+  {
+   "handle": "trainings-fitnessschuhe",
+   "titel": "Trainings- & Fitnessschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(training\\w*|fitness\\w*|workout\\w*|gym)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])",
+    "(plateau\\w*|plattform\\w*|platform\\w*|absatz\\w*|keilabsatz\\w*|erhöh\\w*|fersenerh\\w*|höhenverstärk\\w*|höhe(?![a-zäöüß])|hoehe(?![a-zäöüß])|prinzess\\w*|schleife\\w*|fransen)",
+    "(^|[^a-zäöüß])(laufschuh\\w*|lauf-?sneaker\\w*|running\\w*|jogging\\w*|marathon\\w*|walking\\w*|berglauf\\w*)",
+    "(^|[^a-zäöüß])(fu(ss|ß)ball\\w*|basketball\\w*|golf\\w*|badminton\\w*|tischtennis\\w*|tennis\\w*|volleyball\\w*|handball\\w*)",
+    "(^|[^a-zäöüß])box(schuh\\w*|stiefel)|(^|[^a-zäöüß])(box(er|en|-)|wrestl\\w*|ringer\\w*|kampfsport\\w*|kampfkunst\\w*|kung|taekwondo|karate|judo|gymnastik\\w*)",
+    "(^|[^a-zäöüß])(tanz\\w*|ballett\\w*|ballet\\w*|jazz\\w*|latein\\w*|latin\\w*)",
+    "(^|[^a-zäöüß])(skate\\w*|skater\\w*|inline\\w*|roller\\w*|rollschuh\\w*|rollen|heelys|eiskufen|schlittschuh\\w*|lauf-?räder\\w*)",
+    "(^|[^a-zäöüß])(wasserschuh\\w*|aqua\\w*|watschuh\\w*|schwimm\\w*|tauch\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)",
+    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Trainingsschuhe, Fitnessschuhe und Gym-Sneaker für Kraftraum, Kurse und Indoor-Training, rutschfest und mit flacher oder gedämpfter Sohle.",
+   "unterfilter": []
+  },
+  {
+   "handle": "allround-sportschuhe",
+   "titel": "Sportschuhe für Alltag & Freizeitsport",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])((kinder|herren|damen|jungen|mädchen|knaben)-?)?(sport|sports)-?(schuh|sneaker)\\w*",
+    "(^|[^a-zäöüß])multisport\\w*",
+    "turnschuh\\w*",
+    "(^|[^a-zäöüß])sport-? ?(und )?freizeit-?schuh\\w*"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(^|[^a-zäöüß])(baby\\w*|babies|kleinkind\\w*|lauflern\\w*|säugling\\w*|krabbel\\w*|neugeboren\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])",
+    "(plateau\\w*|plattform\\w*|platform\\w*|absatz\\w*|keilabsatz\\w*|erhöh\\w*|fersenerh\\w*|höhenverstärk\\w*|höhe(?![a-zäöüß])|hoehe(?![a-zäöüß])|prinzess\\w*|schleife\\w*|fransen)",
+    "(^|[^a-zäöüß])(laufschuh\\w*|lauf-?sneaker\\w*|running\\w*|jogging\\w*|marathon\\w*|walking\\w*|berglauf\\w*)",
+    "(^|[^a-zäöüß])(training\\w*|fitness\\w*|workout\\w*|gym)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(fu(ss|ß)ball\\w*|basketball\\w*|golf\\w*|badminton\\w*|tischtennis\\w*|tennis\\w*|volleyball\\w*|handball\\w*)",
+    "(^|[^a-zäöüß])box(schuh\\w*|stiefel)|(^|[^a-zäöüß])(box(er|en|-)|wrestl\\w*|ringer\\w*|kampfsport\\w*|kampfkunst\\w*|kung|taekwondo|karate|judo|gymnastik\\w*)",
+    "(^|[^a-zäöüß])(tanz\\w*|ballett\\w*|ballet\\w*|jazz\\w*|latein\\w*|latin\\w*)",
+    "(^|[^a-zäöüß])(skate\\w*|skater\\w*|inline\\w*|roller\\w*|rollschuh\\w*|rollen|heelys|eiskufen|schlittschuh\\w*|lauf-?räder\\w*)",
+    "(^|[^a-zäöüß])(wasserschuh\\w*|aqua\\w*|watschuh\\w*|schwimm\\w*|tauch\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)",
+    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Sportschuhe ohne feste Sportart, leicht und gedämpft, für Spaziergang, Freizeitsport und Alltag, in Modellen für Damen, Herren und Kinder.",
+   "unterfilter": []
+  },
+  {
+   "handle": "ballsportschuhe",
+   "titel": "Fussball-, Basketball- & Golfschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(fu(ss|ß)ball\\w*|basketball\\w*|golf-?(schuh|sneaker)\\w*)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Schuhe für Ballsport auf Platz und Court: Fussballschuhe mit Noppen, Basketballschuhe und Golfschuhe mit Spikes.",
+   "unterfilter": []
+  },
+  {
+   "handle": "hallen-kampfsportschuhe",
+   "titel": "Hallen- & Kampfsportschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(badminton\\w*|tischtennis\\w*|tennis\\w*|volleyball\\w*|handball\\w*|squash)",
+    "box(schuh\\w*|stiefel)|(^|[^a-zäöüß])(box(er|en|-)|wrestl\\w*|ringer\\w*|kampfsport\\w*|kampfkunst\\w*|kung|taekwondo|karate|judo|gymnastik\\w*)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Schuhe für Hallen- und Kampfsport: Badminton, Tischtennis und Tennis auf Hallenböden sowie Box-, Ringer- und Kampfsportschuhe mit flacher, griffiger Sohle.",
+   "unterfilter": []
+  },
+  {
+   "handle": "tanz-ballettschuhe",
+   "titel": "Tanz- & Ballettschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(tanzschuh\\w*|tanz-schuh\\w*|ballett-?schuh\\w*|ballet-?schuh\\w*|ballettschläppchen\\w*|jazz-?(tanz|schuh)\\w*|latein\\w*|latina\\w*|latinen\\w*|jazz dance|dance[- ]?(shoe|sneaker)\\w*|tanzstiefel|tanzsneaker\\w*|tanz-?performance\\w*)|(^|[^a-zäöüß])latin(?![a-zäöüß])|(für|zum|und) (den )?tanz"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Tanzschuhe für Ballett, Jazz, Latein und Gesellschaftstanz mit weicher oder geteilter Sohle, für Damen, Herren und Kinder.",
+   "unterfilter": []
+  },
+  {
+   "handle": "skateschuhe",
+   "titel": "Skateschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(skate|skater)[- ]?(schuh|sneaker|shoe)\\w*|skateboard\\w*"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(roller\\w*|inline\\w*|rollschuh\\w*|rollen|heelys|eiskufen)"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Skateschuhe und Skateboard-Sneaker mit flacher, griffiger Sohle und robustem Obermaterial für Skatepark und Strasse.",
+   "unterfilter": []
+  },
+  {
+   "handle": "inline-skates-rollschuhe",
+   "titel": "Inline-Skates & Rollschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes",
+    "Sporting Goods > Outdoor Recreation > Inline & Roller Skating"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "inline|roller[- ]?skate\\w*|rollschuh\\w*|roller-?schuh\\w*|heelys|eiskufen|schuhe mit (einzel|doppel)|(^|[^a-zäöüß])rollen(?![a-zäöüß])|einzelrad|doppellauf"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Inline-Skates, Rollschuhe und Roller-Skates für Kinder und Erwachsene, teils mit verstellbarer Grösse oder Leuchträdern.",
+   "unterfilter": []
+  },
+  {
+   "handle": "wasser-aquaschuhe",
+   "titel": "Wasser- & Aquaschuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(wasserschuh\\w*|aqua-?schuh\\w*|aqua|watschuh\\w*|schwimm(schuh|sandal)\\w*|tauchschuh\\w*|tauchstiefel\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)|(^|[^a-zäöüß])(river|stream)(?![a-zäöüß])|wasser- ?(&|und) ?(outdoor|aqua|wat)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Wasserschuhe, Aquaschuhe und Badeschuhe mit schnelltrocknendem Obermaterial und rutschfester Sohle, für Fluss, See, Strand und Wassersport.",
+   "unterfilter": []
+  },
+  {
+   "handle": "radschuhe",
+   "titel": "Radschuhe & Velo-Schuhe",
+   "g_prefix": [
+    "Apparel & Accessories > Shoes"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
+    "(^|[^a-zäöüß])(hunde?\\w*|welpen\\w*|katzen\\w*|haustier\\w*|puppen?\\w*|cosplay\\w*|kostüm\\w*|spielzeug\\w*)",
+    "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel|kampftraining)(?![a-zäöüß])"
+   ],
+   "tags_nicht": [],
+   "beschreibung": "Radschuhe und Velo-Schuhe für Strasse, Mountainbike und Freizeit, mit steifer Sohle und teils Klickverschluss.",
+   "unterfilter": []
+  }
+ ],
+ "gruppen": [],
+ "ausserhalb": [],
+ "hinweise": []
+}
