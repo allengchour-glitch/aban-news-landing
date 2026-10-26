@@ -121,3 +121,90 @@ export function pruefeSchuhe(alt, neu) {
   if (ohne(alt) !== ohne(neu)) fehler.push('Äste ausserhalb von «Schuhe» verändert');
   return fehler;
 }
+
+// ───────────────────────── Taschen & Accessoires (Phase 2) ─────────────────────────
+/**
+ * Der Ast «Taschen & Rucksäcke» war eine flache Liste mit Dubletten («Bauchtaschen & Gürteltaschen» stand zweimal) und Überschneidungen mit den neuen
+ * Kategorien. Sein Titel bleibt: kategorien.mjs und menue_plan.mjs hängen neue Kategorien darüber ein. Die Taxonomie-Gruppen («Damen-Taschen») haben im
+ * Shop keine Collection, ein Menüpunkt braucht ein Ziel — die Gruppen entfallen wie bei der Bekleidung, die Taschen-Einträge tragen «Damen:» / «Herren:».
+ * Gürtel, Mützen, Schals, Handschuhe, Sonnenbrillen und Haarschmuck stehen in den Ästen Damen und Herren (vor «Schuhe»), Kinder-Accessoires bei
+ * Kinder & Baby (hinter «Kinderschuhe»). Funktionale Alt-Einträge (Rucksäcke, Reisegepäck, Kulturbeutel …) bleiben. Ein zweiter Lauf fügt nichts doppelt ein.
+ */
+export const TASCHEN = {
+  pfad: ['Taschen & Rucksäcke'],
+  entfernen: ['Bauchtaschen & Gürteltaschen', 'Portemonnaies & Geldbörsen', 'Kartenhalter & Kartenetuis', 'Aktentaschen & Messenger Bags', 'Handtaschen & Umhängetaschen'],
+};
+export const ACCESSOIRES = {
+  Damen: { pfad: ['Damen'], praefix: 'damen-', vor: 'Schuhe', entfernen: ['Accessoires: Schals, Mützen & Gürtel'] },
+  Herren: { pfad: ['Herren'], praefix: 'herren-', vor: 'Schuhe', entfernen: [] },
+  Kinder: { pfad: ['Kinder & Baby'], praefix: 'kinder-', nach: 'Kinderschuhe', entfernen: [] },
+};
+const kurzTitel = t => t.replace(/^(Damen|Herren)(: |-)/, '');
+const blaetter = n => n.unterpunkte ? n.unterpunkte.flatMap(blaetter) : n.handle ? [n] : [];
+/** Alle Collection-Handles, die der Abschnitt braucht (für die Abfrage im Shop). */
+export const accessoireHandles = tax => blaetter(tax || {}).map(e => e.handle);
+
+/**
+ * @param baum  Menü-Eingabe
+ * @param tax   Taxonomie-Knoten «Accessoires»: { unterpunkte: [{ titel, unterpunkte: [{ handle, titel }] } | { handle, titel }] }
+ * @param gids  { handle: GID } vorhandener Collections
+ */
+export function accessoiresMenue(baum, tax, gids) {
+  const b = kopie(baum), log = [];
+  const taschen = [], rest = { Damen: [], Herren: [], Kinder: [] };
+  const eintrag = (e, titel) => {
+    const id = gids[e.handle];
+    if (!id) { log.push(`fehlt     ${e.handle}: Collection existiert nicht — Eintrag übersprungen`); return null; }
+    return { title: titel, type: 'COLLECTION', resourceId: id, items: [] };
+  };
+  for (const g of tax?.unterpunkte || []) {
+    if (/(Taschen|Geldbörsen)$/.test(g.titel)) {
+      const wer = g.titel.split('-')[0];
+      for (const e of blaetter(g)) { const x = eintrag(e, `${wer}: ${e.titel}`); if (x) taschen.push(x); }
+    } else {
+      for (const e of blaetter(g)) {
+        const zweig = Object.keys(ACCESSOIRES).find(k => e.handle.startsWith(ACCESSOIRES[k].praefix));
+        if (!zweig) { log.push(`ohne Ast  ${e.handle}: Präfix unbekannt — übersprungen`); continue; }
+        const x = eintrag(e, kurzTitel(e.titel)); if (x) rest[zweig].push(x);
+      }
+    }
+  }
+  // Ein Ast: bisherige Einträge ausser den entfernten und den schon vorhandenen neuen, dann die neuen an der Stelle des Ankers (vor/nach) oder am Ende
+  const umbauen = (name, pfad, neu, entfernen, vor, nach) => {
+    const eltern = suche(b, pfad);
+    if (!eltern) { log.push(`ÜBERSPRUNGEN ${name}: «${pfad.join(' > ')}» nicht gefunden`); return; }
+    const ids = new Set(neu.map(x => x.resourceId)), behalten = [];
+    for (const i of eltern.items) { if (entfernen.includes(i.title)) log.push(`entfernt  ${name} > ${i.title}`); else if (!ids.has(i.resourceId)) behalten.push(i); }
+    const ziel = vor ?? nach, anker = ziel ? behalten.findIndex(i => i.title === ziel) : -1;
+    if (ziel && anker < 0 && neu.length) log.push(`Anker «${ziel}» fehlt in ${name} — Einträge am Ende angehängt`);
+    const pos = !ziel ? 0 : anker < 0 ? behalten.length : vor ? anker : anker + 1;
+    eltern.items = [...behalten.slice(0, pos), ...neu, ...behalten.slice(pos)];
+    for (const x of neu) log.push(`neu       ${name} > ${x.title}`);
+  };
+  umbauen('Taschen', TASCHEN.pfad, taschen, TASCHEN.entfernen);
+  for (const [name, z] of Object.entries(ACCESSOIRES)) umbauen(name, z.pfad, rest[name], z.entfernen, z.vor, z.nach);
+  return { baum: b, log };
+}
+
+/** Prüfungen für Taschen & Accessoires: Tiefe, doppelte Ziele und Titel, oberste Ebene und fremde Äste gleich, bisherige Einträge unverändert und in Reihenfolge. */
+export function pruefeAccessoires(alt, neu) {
+  const fehler = [];
+  if (tiefe(neu) > 3) fehler.push(`Menü hätte ${tiefe(neu)} Ebenen (Shopify erlaubt 3)`);
+  (function lauf(l, pfad) {
+    const ziele = new Map();
+    for (const i of l) { if (i.resourceId) { if (ziele.has(i.resourceId)) fehler.push(`doppeltes Ziel unter «${pfad || '(oben)'}»: ${i.title} = ${ziele.get(i.resourceId)}`); ziele.set(i.resourceId, i.title); } lauf(i.items || [], `${pfad}/${i.title}`); }
+  })(neu, '');
+  if (JSON.stringify(alt.map(x => x.title)) !== JSON.stringify(neu.map(x => x.title))) fehler.push('oberste Ebene verändert');
+  const aeste = [[TASCHEN.pfad, TASCHEN.entfernen], ...Object.values(ACCESSOIRES).map(z => [z.pfad, z.entfernen])];
+  const namen = new Set(aeste.map(([p]) => p[0]));
+  const ohne = l => JSON.stringify(l.filter(x => !namen.has(x.title)));
+  if (ohne(alt) !== ohne(neu)) fehler.push('Äste ausserhalb von Taschen, Damen, Herren und Kinder & Baby verändert');
+  for (const [pfad, weg] of aeste) {
+    const a = (suche(alt, pfad)?.items || []).filter(i => !weg.includes(i.title)), n = suche(neu, pfad)?.items || [];
+    for (const i of a) { const j = n.find(x => x.title === i.title); if (!j) fehler.push(`verloren: ${pfad.join(' > ')} > ${i.title}`); else if (JSON.stringify(j) !== JSON.stringify(i)) fehler.push(`verändert: ${pfad.join(' > ')} > ${i.title}`); }
+    if (JSON.stringify(n.map(x => x.title).filter(t => a.some(i => i.title === t))) !== JSON.stringify(a.map(i => i.title))) fehler.push(`Reihenfolge der bisherigen Einträge verändert: ${pfad.join(' > ')}`);
+    const titel = n.map(x => x.title), dopp = titel.filter((t, i) => titel.indexOf(t) !== i);
+    if (dopp.length) fehler.push(`doppelter Titel unter ${pfad.join(' > ')}: ${[...new Set(dopp)].join(', ')}`);
+  }
+  return fehler;
+}

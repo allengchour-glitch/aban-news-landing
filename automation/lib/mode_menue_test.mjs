@@ -1,5 +1,5 @@
 // Tests des Menü-Umbaus für die Mode-Taxonomie (lib/mode_menue.mjs). Das Test-Menü bildet das Live-Menü vom 26.10.2026 nach.
-import { modeMenue, pruefeMenue, ENTFERNEN, PFADE, MIT_FILTER, schuheMenue, pruefeSchuhe, SCHUHE } from './mode_menue.mjs';
+import { modeMenue, pruefeMenue, ENTFERNEN, PFADE, MIT_FILTER, schuheMenue, pruefeSchuhe, SCHUHE, TASCHEN, ACCESSOIRES, accessoiresMenue, pruefeAccessoires, accessoireHandles } from './mode_menue.mjs';
 import { menueEintraege } from './mode_taxonomie.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -83,6 +83,57 @@ ist('Schuhe Gegenprobe: Prüfung findet verändertes Gruppen-Ziel', pruefeSchuhe
 ist('Schuhe Gegenprobe: Prüfung findet doppeltes Ziel', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); const e = b.find(x => x.title === 'Schuhe').items[0]; e.items.push({ ...e.items[0], title: 'Doppelt' }); return b; })()).some(f => f.includes('doppeltes Ziel')), true);
 ist('Schuhe Gegenprobe: Prüfung findet 4 Ebenen', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); b.find(x => x.title === 'Schuhe').items[0].items[0].items = [I('vierte Ebene')]; return b; })()).some(f => f.includes('Ebenen')), true);
 ist('Schuhe: SCHUHE benennt Pfad und Gruppen', [SCHUHE.pfad, SCHUHE.gruppen.length], [['Schuhe'], 3]);
+
+// ── Taschen & Accessoires (Phase 2) ──
+const KL = I('Kleider', [I('Abendkleider'), I('Sommerkleider')]);
+const AMENU = [
+  I('Damen', [KL, I('Partnerlook'), I('Accessoires: Schals, Mützen & Gürtel'), I('Schuhe')]),
+  I('Herren', [I('Hemden'), I('Schuhe'), I('Uhren')]),
+  I('Schuhe', [I('Damenschuhe')]),
+  I('Taschen & Rucksäcke', [I('Bauchtaschen & Gürteltaschen'), I('Rucksäcke'), I('Portemonnaies & Geldbörsen'), I('Bauchtaschen & Gürteltaschen'), I('Reisegepäck'), I('Handtaschen & Umhängetaschen'), I('Kartenhalter & Kartenetuis'), I('Aktentaschen & Messenger Bags')]),
+  I('Schmuck', [I('Ringe'), I('Sonnenbrillen')]),
+  I('Kinder & Baby', [I('👶 Babykleidung & Kindermode', [I('Strampler')]), I('Kinderschuhe'), I('Spielzeug')]),
+];
+const ATAX = { titel: 'Accessoires', unterpunkte: [
+  { titel: 'Damen-Taschen', unterpunkte: [{ handle: 'damen-handtaschen', titel: 'Handtaschen' }, { handle: 'damen-reisetaschen', titel: 'Reise- & Sporttaschen' }] },
+  { titel: 'Damen-Geldbörsen', unterpunkte: [{ handle: 'damen-geldboersen', titel: 'Geldbörsen & Portemonnaies' }] },
+  { titel: 'Herren-Taschen', unterpunkte: [{ handle: 'herren-handtaschen', titel: 'Handtaschen' }] },
+  { titel: 'Gürtel', unterpunkte: [{ handle: 'damen-guertel', titel: 'Damen-Gürtel' }, { handle: 'herren-guertel', titel: 'Herren-Gürtel' }] },
+  { titel: 'Mützen, Hüte & Masken', unterpunkte: [{ handle: 'damen-kopfbedeckung', titel: 'Damen: Mützen, Hüte & Caps' }, { handle: 'herren-kopfbedeckung', titel: 'Herren: Mützen, Hüte & Caps' }] },
+  { titel: 'Schals & Handschuhe', unterpunkte: [{ handle: 'damen-schals-tuecher', titel: 'Schals & Tücher' }, { handle: 'herren-handschuhe', titel: 'Herren-Handschuhe' }] },
+  { handle: 'damen-haarschmuck', titel: 'Haarschmuck' },
+  { handle: 'kinder-accessoires', titel: 'Kinder-Accessoires' } ] };
+const AG = Object.fromEntries(accessoireHandles(ATAX).map(h => [h, 'gid://c/' + h]));
+const ar = accessoiresMenue(AMENU, ATAX, AG);
+const kopieren = x => JSON.parse(JSON.stringify(x));
+ist('Accessoires: alle 12 Handles der Taxonomie werden abgefragt', accessoireHandles(ATAX).length, 12);
+ist('Taschen: neue Einträge vorn mit Damen:/Herren:, dann die funktionalen Alt-Einträge', titel(ast(ar.baum, ['Taschen & Rucksäcke'])),
+  ['Damen: Handtaschen', 'Damen: Reise- & Sporttaschen', 'Damen: Geldbörsen & Portemonnaies', 'Herren: Handtaschen', 'Rucksäcke', 'Reisegepäck']);
+ist('Taschen: die fünf überlappenden Alt-Einträge (auch die Dublette) sind weg', TASCHEN.entfernen.some(t => titel(ast(ar.baum, ['Taschen & Rucksäcke'])).includes(t)), false);
+ist('Taschen: Titel des Astes bleibt (andere Werkzeuge suchen darüber)', ar.baum.map(x => x.title), AMENU.map(x => x.title));
+ist('Damen: alter Sammel-Eintrag weg, neue Accessoires VOR «Schuhe», Reihenfolge der Taxonomie', titel(ast(ar.baum, ['Damen'])), ['Kleider', 'Partnerlook', 'Gürtel', 'Mützen, Hüte & Caps', 'Schals & Tücher', 'Haarschmuck', 'Schuhe']);
+ist('Herren: nur Herren-Kategorien, ohne Vorsilbe, vor «Schuhe»', titel(ast(ar.baum, ['Herren'])), ['Hemden', 'Gürtel', 'Mützen, Hüte & Caps', 'Handschuhe', 'Schuhe', 'Uhren']);
+ist('Kinder: Kinder-Accessoires HINTER «Kinderschuhe»', titel(ast(ar.baum, ['Kinder & Baby'])), ['👶 Babykleidung & Kindermode', 'Kinderschuhe', 'Kinder-Accessoires', 'Spielzeug']);
+ist('Damen: Unterbaum von «Kleider» bleibt vollständig', ast(ar.baum, ['Damen', 'Kleider']).map(x => x.title), ['Abendkleider', 'Sommerkleider']);
+ist('Schmuck und Schuhe bleiben unberührt (auch «Sonnenbrillen» im Schmuck)', JSON.stringify(ar.baum.filter(x => ['Schmuck', 'Schuhe'].includes(x.title))), JSON.stringify(AMENU.filter(x => ['Schmuck', 'Schuhe'].includes(x.title))));
+ist('Accessoires: Prüfung sauber', pruefeAccessoires(AMENU, ar.baum), []);
+ist('Accessoires: zweiter Lauf ändert nichts (idempotent)', JSON.stringify(accessoiresMenue(ar.baum, ATAX, AG).baum), JSON.stringify(ar.baum));
+ist('Accessoires: Prüfung bleibt auch beim zweiten Lauf sauber', pruefeAccessoires(ar.baum, accessoiresMenue(ar.baum, ATAX, AG).baum), []);
+ist('Accessoires: Eingabe wird nicht verändert', JSON.stringify(AMENU), JSON.stringify(kopieren(AMENU)));
+ist('Accessoires Gegenprobe: fehlende Collection wird gemeldet und übersprungen', (() => { const r = accessoiresMenue(AMENU, ATAX, { ...AG, 'damen-guertel': null }); return [r.log.some(z => z.startsWith('fehlt') && z.includes('damen-guertel')), titel(ast(r.baum, ['Damen'])).includes('Gürtel')]; })(), [true, false]);
+ist('Accessoires Gegenprobe: unbekanntes Präfix wird gemeldet, nicht eingefügt', accessoiresMenue(AMENU, { unterpunkte: [{ handle: 'unisex-schal', titel: 'Schal' }] }, { 'unisex-schal': 'gid://c/u' }).log.some(z => z.startsWith('ohne Ast')), true);
+ist('Accessoires Gegenprobe: fehlender Ast wird übersprungen', accessoiresMenue(AMENU.filter(x => x.title !== 'Herren'), ATAX, AG).log.some(z => z.startsWith('ÜBERSPRUNGEN Herren')), true);
+ist('Accessoires Gegenprobe: fehlender Anker hängt am Ende an und meldet es', (() => { const r = accessoiresMenue(AMENU.map(x => x.title === 'Herren' ? { ...x, items: x.items.filter(i => i.title !== 'Schuhe') } : x), ATAX, AG); return [r.log.some(z => z.startsWith('Anker «Schuhe» fehlt in Herren')), titel(ast(r.baum, ['Herren'])).at(-1)]; })(), [true, 'Handschuhe']);
+const ver = f => { const b = kopieren(ar.baum); f(b); return pruefeAccessoires(AMENU, b); };
+ist('Accessoires Gegenprobe: Prüfung findet verlorenen Alt-Eintrag', ver(b => { const e = b.find(x => x.title === 'Taschen & Rucksäcke'); e.items = e.items.filter(i => i.title !== 'Rucksäcke'); }).some(f => f.startsWith('verloren: Taschen & Rucksäcke > Rucksäcke')), true);
+ist('Accessoires Gegenprobe: Prüfung findet veränderten Unterbaum eines Alt-Eintrags', ver(b => { b.find(x => x.title === 'Damen').items.find(i => i.title === 'Kleider').items = []; }).some(f => f.startsWith('verändert: Damen > Kleider')), true);
+ist('Accessoires Gegenprobe: Prüfung findet verändertes Nachbar-Ast', ver(b => { b.find(x => x.title === 'Schmuck').items = []; }).some(f => f.includes('ausserhalb')), true);
+ist('Accessoires Gegenprobe: Prüfung findet veränderte oberste Ebene', pruefeAccessoires(AMENU, kopieren(ar.baum).reverse()).some(f => f.includes('oberste Ebene')), true);
+ist('Accessoires Gegenprobe: Prüfung findet doppeltes Ziel', ver(b => { const e = b.find(x => x.title === 'Taschen & Rucksäcke'); e.items.push({ ...e.items[0], title: 'Noch einmal' }); }).some(f => f.startsWith('doppeltes Ziel')), true);
+ist('Accessoires Gegenprobe: Prüfung findet doppelten Titel', ver(b => { const e = b.find(x => x.title === 'Taschen & Rucksäcke'); e.items.push({ ...e.items[0], resourceId: 'gid://c/anders' }); }).some(f => f.startsWith('doppelter Titel')), true);
+ist('Accessoires Gegenprobe: Prüfung findet 4 Ebenen', ver(b => { b.find(x => x.title === 'Damen').items.find(i => i.title === 'Kleider').items[0].items = [I('vierte Ebene')]; }).some(f => f.includes('Ebenen')), true);
+ist('Accessoires Gegenprobe: Prüfung findet vertauschte Reihenfolge der Alt-Einträge', ver(b => { b.find(x => x.title === 'Herren').items.reverse(); }).some(f => f.startsWith('Reihenfolge')), true);
+ist('Accessoires: TASCHEN und ACCESSOIRES benennen Äste und Anker', [TASCHEN.entfernen.length, Object.keys(ACCESSOIRES), ACCESSOIRES.Kinder.nach, ACCESSOIRES.Damen.vor], [5, ['Damen', 'Herren', 'Kinder'], 'Kinderschuhe', 'Schuhe']);
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
