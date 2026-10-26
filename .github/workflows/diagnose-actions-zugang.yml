@@ -1,0 +1,39 @@
+name: "Diagnose Actions-Zugang (Shopify + CJ, nur lesen)"
+
+# Misst, ob ein GitHub-Actions-Lauf Shopify und CJ erreicht. Schreibt nichts, gibt keine Geheimnisse aus
+# (nur Längen, Formate, HTTP-Status). Nur von Hand startbar. Hintergrund: automation/diagnose_actions_zugang.mjs
+on:
+  workflow_dispatch:
+    inputs:
+      cj_probe:
+        description: 'CJ-Token abrufen (CJ erlaubt das nur alle 5 Minuten)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/diagnose_actions_zugang.mjs
+            automation/lib/shopify_secret.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Zugang messen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          CJ_PROBE: ${{ inputs.cj_probe && '1' || '0' }}
+        run: node automation/diagnose_actions_zugang.mjs
