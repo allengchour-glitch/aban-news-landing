@@ -155,7 +155,7 @@
         "wimpern-?(serum|lift|welle|pflege|fluid|kleber|extension|wickl)|wimpernlift|lash ?(serum|lift|extension)|keratin",
         "^compact"
       ],
-      "beschreibung": "Lidschatten-Paletten, Eyeliner, Kajal, Mascara und Glitzer für die Augen.",
+      "beschreibung": "Lidschatten-Paletten, flüssige Lidschatten, Eyeliner, Augenstifte und Mascara für die Augen.",
       "unterfilter": [
         {
           "handle": "lidschatten-paletten",
@@ -239,7 +239,7 @@
       ],
       "titel_muss": [],
       "titel_nicht": [],
-      "beschreibung": "Lippenstifte, Lipgloss, Lipliner und Lippentönungen in vielen Farben und Texturen.",
+      "beschreibung": "Lippenstifte, Lipgloss, Lipliner und Lip Stains in vielen Farben und Texturen.",
       "unterfilter": [
         {
           "handle": "lippenstifte",
@@ -748,7 +748,7 @@
         "kissen|matte|massagematte|sitzauflage",
         "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
       ],
-      "beschreibung": "Massagepistolen, Faszienbälle, Massageroller und Akupressur-Sets für Muskeln und Verspannungen."
+      "beschreibung": "Massagepistolen, Faszienbälle, Massageroller und Akupressur-Sets für Körper, Beine und Füsse."
     },
     {
       "handle": "massagekissen-matten",
@@ -987,6 +987,151 @@
       ]
     }
   ],
-  "ausserhalb": [],
-  "hinweise": []
+  "ausserhalb": [
+    {
+      "text": "Bereits durch VORHANDENE Kategorien abgedeckt, die im Baum als Kinder eingeordnet sind (Zahlen = aktive Produkte im Universum): Kunstnägel & Press-on 590, Make-up Pinsel & Tools 362, Mundpflege & Zähne 65, Haarbürsten & Kämme 50, Bart & Rasur 48, Parfum & Düfte 33, Schminkspiegel 33 (Teilmenge von Pinsel & Tools). Das Messwerkzeug zählt nur die neuen Kategorien (2 856 von 4 300 = 66,4 %); mit den vorhandenen Kindern sind es 3 997 von 4 300 = 93,0 % (eigene Auswertung /tmp/taxo_b/beauty/abdeckung.mjs, gleiche Regelfunktion).",
+      "beispiele": [
+        "Press-on-Nails «French» · zum Aufkleben",
+        "Rosenquarz Gua Sha Set",
+        "Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle Box",
+        "Eau de Parfum für Damen, fruchtig-floral"
+      ]
+    },
+    {
+      "text": "19 Produkte der Google-Kategorie «Skin Care Masks & Peels», die keine Pflegemasken sind: Kostüm- und Horror-Masken, Sonnen- und Schutzmasken, beheizte USB-Augenmasken, Licht-Masken, Kinn-Masken. Kein Heim in dieser Datei (Kostüm gehört zu Kostüme & Party; die LED-Masken-Kategorie stützt sich auf Google «Skin Care Tools»).",
+      "beispiele": [
+        "Viking Ugly Latex Maske",
+        "Realistische Tiermaske",
+        "Beheizte USB-Augenmaske mit Dampffunktion",
+        "Leichte, atmungsaktive Sonnenmaske"
+      ]
+    },
+    {
+      "text": "18 Produkte Bodypainting, temporäre Tattoos, Bühnen- und Kunstblut-Make-up: Kostümbereich, keine Alltags-Kosmetik.",
+      "beispiele": [
+        "15 Farben Bodypainting-Palette",
+        "Kunstblut-Spray",
+        "Glitzer-Tattoo-Set"
+      ]
+    },
+    {
+      "text": "13 Make-up-Pinselreiniger (Google «Cosmetic Tool Cleansers»): unter der Mindestgrösse 15; sie bleiben in der Gesamtsuche.",
+      "beispiele": [
+        "Elektrischer Make-up Pinselreiniger",
+        "UV-Reinigungsbox für Make-up-Pinsel"
+      ]
+    },
+    {
+      "text": "21 Massagegeräte, deren Titel keine Körperstelle nennt («Massagegerät», «Mini-Massager»), und 4 Massageöle: nie raten, welche Stelle gemeint ist; Massageöl unter 15.",
+      "beispiele": [
+        "Minimassager",
+        "Intelligentes Massagegerät für zu Hause",
+        "Aromatherapie Massageöl-Set"
+      ]
+    },
+    {
+      "text": "16 Gesichts-Beauty-Geräte ohne erkennbare Technik im Titel («Beauty-Gerät», «Hautglätter», «Schönheitsinstrument») und ohne LED/Mikrostrom/Dampf-Wort: nicht belegt, daher keine Kategorie.",
+      "beispiele": [
+        "Hautglätter",
+        "Elektronisches Beauty-Gerät für zuhause",
+        "Feuchtigkeitsspendendes Schönheitsinstrument"
+      ]
+    },
+    {
+      "text": "44 Haarstyling-Zubehör und Haarpflege-Reste: Aufbewahrungstaschen, Halter, Aufsätze (auch für Dyson), Düsen und Diffusoren, Leerflaschen und Sprühgeräte, Satin-Schlafhauben (4); dazu Haarteile und Stylingwerkzeuge ohne Art im Titel. Zubehör gehört nicht in die Gerätekategorie (Regel 3).",
+      "beispiele": [
+        "Föhn-Aufbewahrungstasche",
+        "Wandhalterung für Lockenstab & Föhn",
+        "Seiden-Satin-Haube für Locken & Wellen",
+        "Kontinuierliche Sprühflasche für Haarpflege"
+      ]
+    },
+    {
+      "text": "64 Produkte mit der Google-Kategorie «Cosmetics» ganz ohne Unterkategorie: Mischung aus Gelenk- und Beinpflege, Brust-Pads, Kinder-Make-up, Make-up-Resten ohne Produktart, Geräten und Boxen; die Titel belegen die Art oft nicht (nie raten).",
+      "beispiele": [
+        "Gelenkpflege Salbe",
+        "Kindermake-up-Set mit grüner Tasche",
+        "Tummy Machine",
+        "Mystery Beauty Boxen (12er-Pack)"
+      ]
+    },
+    {
+      "text": "39 Hautpflege-Reste: Pflaster und Patches, Pflege einzelner Körperteile (Beine, Gelenke, Hals), Aromaöle, Sprays/Geräte unter «Lotion», Tabletten, SPF-Make-up (3), kurze Titel ohne Produktart.",
+      "beispiele": [
+        "Laniska Beinpflege-Pflaster (4 Stk.)",
+        "Kräuter-Feuchtigkeitspflege für Gelenke",
+        "Cushion Foundation LSF 50+ (inkl. 2 Nachfüllungen)",
+        "Hautflecken-Entferner"
+      ]
+    },
+    {
+      "text": "13 Make-up-Reste und 16 Nagel-Reste: Kinder-Make-up-Sets (gehören zu Kinder-Schminksets, Spielzeug), Titel ohne Produktart («Natürliche Hautfarbe»), Farbkarten, Pinselsets, Mischer und kurze Titel, die nach Press-on-Nägeln aussehen, aber nicht belegt sind.",
+      "beispiele": [
+        "Make-up-Sets für Jungen",
+        "Naturliche Hautbasis",
+        "Nagellack-Farbkarte mit 120 Farben",
+        "Kurznagel-Art"
+      ]
+    },
+    {
+      "text": "11 Gesundheits-Reste: USB-Handwärmer (vorhandene Collection handwaermer), Heizhandschuhe, Fusshebe-Orthesen, Wärmegurt in Stützen, Stichheiler.",
+      "beispiele": [
+        "USB-Handwärmer \"Warm Treasure\"",
+        "Fussheberorthese mit Airbag",
+        "Thermisches Stichheiler-Gerät"
+      ]
+    },
+    {
+      "text": "29 sonstige Einzelprodukte, die zu keiner Art passen (Rasierer «Lady Shaver», Pinzetten, Menstruationscup, Wattestäbchen, Deodorant, Auto-Duftclip unter Parfum).",
+      "beispiele": [
+        "Menstruationscup für Frauen",
+        "100 Stück Wattestäbchen im Karton",
+        "Zyvarn Invisible Deodorant Stick 50g"
+      ]
+    },
+    {
+      "text": "Bewusst NICHT im Universum (Google Health & Beauty, aber anderer Bereich): Schmuck- und Uhrenpflege 139 (Schmuckkästchen 129 liegen in der vorhandenen Kategorie Schmuckaufbewahrung, Uhrenwerkzeug 9), Fitness-Tracker 32, Körperwaagen 9 und andere Mess-Geräte 6 (Elektronik/Wearables bzw. Küchenwaagen).",
+      "beispiele": [
+        "Schmuckkästchen aus PU-Leder mit Doppelfunktion",
+        "Fitness-Tracker «ActiveBand» · Herzfrequenz & Schritte",
+        "Körperanalysewaage mit Bluetooth",
+        "Uhrenboden-Öffner"
+      ]
+    },
+    {
+      "text": "Perücken (7, Google Apparel > Hair Accessories > Wigs) liegen ausserhalb des Universums und unter 15: keine Kategorie, sie bleiben über die Suche erreichbar; Haarschmuck gehört zu Mode (Haarschmuck).",
+      "beispiele": [
+        "HD-Lace Haarperücke aus echtem Haar",
+        "Bob Perücke aus echtem Haar, halbgenäht, kurz, glatt"
+      ]
+    },
+    {
+      "text": "Aroma-Diffuser (kat-aroma) und Luftbefeuchter sind in wohnen.json (Gruppe Raumluft & Klima) neu gebaut; hier nicht doppelt. Kompressionsstrümpfe und -socken gibt es im Katalog nicht (Treffer nur Kompressions-Beinstulpen 1 und Reise-Kompressionsbeutel); 3 Haltungskorrektoren in Sport (Google Exercise & Fitness) bleiben dort.",
+      "beispiele": [
+        "Magnetischer Haltungskorrektor für Rücken",
+        "Kompressions-Beinstulpen (6 Paar)"
+      ]
+    },
+    {
+      "text": "19 Health-&-Beauty-Produkte mit Sperr-Tags (z. B. fortura, adult-nicht-bewerben) schliesst das Werkzeug automatisch aus.",
+      "beispiele": []
+    }
+  ],
+  "hinweise": [
+    "ABDECKUNG: 2 856 von 4 300 Produkten des Universums liegen in den 41 neuen Kategorien (Werkzeug-Zahl 66,4 %); mit den 7 vorhandenen Kindern (Kunstnägel, Pinsel & Tools, Mundpflege, Haarbürsten, Bart & Rasur, Parfum, Schminkspiegel) sind es 3 997 = 93,0 %. Rest 303 siehe «ausserhalb».",
+    "ERSETZT (Alt-Sammelbecken, Fremdkörper gemessen): hautpflege-skincare (Tag beauty+hautpflege, 634 aktiv: 29 Sturmhauben, 28 Massagegeräte, 22 Parfums, 21 Make-up, 12 Stützen), ebenso hautpflege, hautpflege-tools, beauty-hautpflege, premium-beauty, beauty-selfcare (alle Titel-/Typ-Regeln) -> gesichtscreme-serum, gesichtsmasken-peelings, gesichtsreinigung-toner, hautpflege-sets, lippenpflege, sonnenschutz-braeunung, koerperpflege-bad.",
+    "ERSETZT: make-up (sort-make-up, 826 aktiv): 27 Fremdkörper = 3,3 % (15 Organizer, 12 Kulturbeutel) und Nagellack-Treffer; die 558 passenden Produkte gehen in augen-make-up, lippen-make-up, teint-make-up, make-up-sets; die Titel-Collections beauty-makeup, make-up-kosmetik gehören dazu. Menüpunkt «Make-up & Kosmetik» sollte auf die Gruppe beauty-make-up-gruppe zeigen.",
+    "ERSETZT: wimpern-lashes (163 aktiv: enthält Mascara, Wimpernzangen, einen Dessous-Body, ein Kissen, Spitzenband) -> kuenstliche-wimpern (96) und augenbrauen-wimpernpflege (59); Wimpernzangen und Wimpernkleber bleiben in make-up-pinsel-tools (Google Makeup Tools).",
+    "ERSETZT: haarstyling-geraete (sort-haarstyling-geraete, 396; Titel-Regel verpasst Glättkämme, Curler, Haarkräusler, Kurzlocken-Geräte) -> glaetteisen-locken-foehn (530, +134) mit den Chips Glätteisen & Glättkämme, Lockenstäbe & Curler, Haartrockner & Warmluftbürsten. Alt-Collections glaetteisen, haarstyling-tools, beauty-haar (285 aktiv, 8 Haarschmuck, 2 Kulturbeutel) entfallen.",
+    "ERSETZT: naegel-manikuere (Tag nagel, 1 013 aktiv, sauber, aber ein Sammelbecken) -> Gruppe beauty-naegel-gruppe mit kunstnaegel-press-on, nagellack-gel-lack, nagelsticker-nail-art, nagelverlaengerung-gel, nagellampen-fraeser, nagelpflege-werkzeuge; Alt-Titel-Collections naegel, nagelstudio, beauty-naegel, nagel-geraete, nagelpflege entfallen. kunstnaegel-press-on enthält 2 Verlängerungs-Produkte (Google False Nails fehlbelegt: «Acrylpulver & Flüssigkeit für French Nails», «Glitzernde Resin-Acryl-Nieten für Nägel»).",
+    "ERSETZT: beauty-geraete (Titel-Regel), gesichtspflege-geraete (58), ipl-haarentfernung, sub-massage (Massage|Faszien, 228 aktiv: enthält Kissen, Sportgeräte), wellness-massage, wellness-gesundheit, waerme-komfort (enthält Heizjacken, Handwärmer), zahnpflege (Doppelung zu mundpflege), haarpflege, haarfarbe-coloration, herren-grooming: die neuen Kategorien in Beauty-Geräte, Massage & Entspannung und Haare, Rasur & Haarentfernung decken sie sauberer ab.",
+    "GRUPPENZAHL: 8 statt 3 bis 6, weil der Katalog acht klar getrennte Käuferabsichten hergibt (andere Bereichsdateien haben bis zu 13 Gruppen); jede Gruppe hat 4 bis 8 Kinder. Gruppen: Gesicht & Haut 6, Make-up & Wimpern 8, Nägel & Maniküre 6, Haare/Rasur/Haarentfernung 6, Beauty-Geräte fürs Gesicht 6, Körper/Mund/Düfte 4, Massage & Entspannung 6, Rücken/Gelenke/Alltagshilfen 6.",
+    "BEWUSSTER VERWEIS: schminkspiegel (35) steht mit 33 Produkten auch in make-up-pinsel-tools (Google Makeup Tools > Face Mirrors); der vorhandene Menüpunkt bleibt als Direktlink. Zwei Bartkämme stehen in haarbuersten-kaemme und sub-bart-rasur, ein Brauen-Rasierer in sub-bart-rasur und augenbrauen-wimpernpflege, ein Haarschneider («Bart»-Titel) in sub-bart-rasur und haarschneider-trimmer; je ein Meridian-Massagekamm (faszien-massagepistolen und haarbuersten-kaemme) und ein Rasierpinsel (make-up-pinsel-tools und sub-bart-rasur) liegen in verschiedenen Gruppen: Folge der vorhandenen Titel-Regeln, nicht lösbar ohne Eingriff in diese.",
+    "GRENZFALL: sonnenschutz-braeunung hat genau 15 Produkte (11 Sonnenschutz + 4 Bräunung; ohne 3 SPF-Make-ups mit «Make-up/Cushion/BB Cream» im Titel). 3 der 11 sind getönte Produkte, die «Sonnenschutz», «Sonnencreme» oder «Sonnen-BB» im Titel tragen und deshalb drin bleiben. Fällt ein Produkt weg, liegt die Kategorie unter min: dann in koerperpflege-bad aufnehmen.",
+    "UNTERFILTER: 25 Chips in 10 Kategorien (jeder >= 15); die Chips einer Kategorie dürfen sich überlappen (2-in-1-Geräte). Chips mit weniger als 15 Treffern (Augencreme 15 an der Grenze, Cat-Eye-Lack 10, Peelings 9, Lipliner 13) wurden nicht angelegt.",
+    "AUTO-ÜBERLAPP: 11 Lendenstützen und Nackenkissen sind Auto-Zubehör (Google Back Care, Titel «Auto»): bleiben hier, können im Auto-Bereich zusätzlich verlinkt werden. Drei aufblasbare Camping-/Outdoor-Kissen stehen unter Reisekissen (Google Travel Pillows).",
+    "KEINE WIRKVERSPRECHEN: Kategorienamen und Beschreibungen nennen nur die Produktart; Produkttitel mit Wirkaussagen («gegen Augenringe», «Hautverjüngung», «Haltungskorrektur») sind Sache der Titel-Wahrheit-Runde und werden hier nicht verändert.",
+    "MESSLÜCKE: Titel ohne Produktart und kurze Titel («Hautrejuvenation», «Gesichtsstraffung», «Kameliennagel») bleiben bewusst ausserhalb; die Kategorie-Regeln sind mit Google-Präfix UND Titel-Wort gebaut, damit falsch einsortierte Google-Kategorien (Massagegerät unter Face Makeup, Pflaster unter Skin Care) herausfallen.",
+    "PRÜFER-VERMERK Fremdkörper-Grenzwerte: beim Bau gefundene und behobene Fremdkörper stehen in /tmp/taxo_b/beauty/fremd.txt (26 Zeilen, jede mit Grund); Rest-Regeln mit hoher Fehlerneigung: nagelpflege-werkzeuge (positive Wortliste), haarpflege-oele-shampoo (positive Wortliste), gesichtscreme-serum (Ausschlussliste), kuenstliche-wimpern (Google-Fehlbelegungen)."
+  ]
 }

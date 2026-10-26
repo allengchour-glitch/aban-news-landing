@@ -1407,14 +1407,15 @@
    "g_prefix": [
     "Home & Garden > Linens & Bedding > Bedding > Duvet Covers",
     "Home & Garden > Linens & Bedding > Bedding > Pillowcases & Shams",
-    "Home & Garden > Linens & Bedding > Bedding > Mattress Protectors"
+    "Home & Garden > Linens & Bedding > Bedding > Mattress Protectors",
+    "Home & Garden > Linens & Bedding > Bedding > Bed Sheets"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(sofa-?kissen|sofakissen|zierkissen|deko-?kissen|sofa|polster[a-zäöüß-]*|weihnacht[a-zäöüß-]*)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
-   "beschreibung": "Bettwäsche-Sets, Bettbezüge, Kopfkissenbezüge und Matratzenschoner aus Baumwolle, Satin, Seide und Tencel.",
+   "beschreibung": "Bettwäsche-Sets, Bettbezüge, Kopfkissenbezüge, Bettlaken und Matratzenschoner aus Baumwolle, Satin, Seide und Tencel.",
    "unterfilter": [
     {
      "handle": "bettwaesche-sets",
@@ -1682,7 +1683,7 @@
     "futterstelle",
     "futterstation",
     "massage",
-    "[a-zäöüß-]*(kissen|bezug|bezüge|abdeckung|bettläufer|fussunterlage|kopfstütze|schnitttuch)",
+    "[a-zäöüß-]*(kissen|bezug|bezüge|abdeckung|bedeckung|bettläufer|fussunterlage|kopfstütze|schnitttuch)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
