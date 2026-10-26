@@ -142,7 +142,9 @@ export async function plane({ q, cj, handle, tmp }) {
   const vs = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
     bild: v.variantImage || '', laenge: v.variantLength, breite: v.variantWidth, hoehe: v.variantHeight }));
   if (vs.length <= 1) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
-  if (vs.length > 100) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `zu viele CJ-Varianten (${vs.length})` };
+  // Shopify erlaubt nur ~9 500 NEUE Varianten pro Tag: ein Produkt mit 84 Varianten kostet so viel wie zwölf normale. Grosse Produkte kommen später (MAX_VARIANTEN=100 erlaubt alle).
+  const MAXV = Number(process.env.MAX_VARIANTEN || 40);
+  if (vs.length > MAXV) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `viele CJ-Varianten (${vs.length} > ${MAXV}) — später, wenn das Tageskontingent reicht` };
 
   const zer = zerlegeOptionen(c.productKeyEn, vs.map(v => ({ vid: v.vid, key: v.key })));
   let aw = baueAuswahl(zer);
@@ -320,4 +322,9 @@ async function main() {
   console.log('\nZusammenfassung:', JSON.stringify(zaehl), LIVE ? '(LIVE)' : '(Trockenlauf — nichts geschrieben)');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main().catch(e => { console.error('FEHLER', e.message); process.exit(1); });
+// Shopify begrenzt das Anlegen NEUER Varianten je Tag («Daily variant creation limit reached», VARIANT_THROTTLE_EXCEEDED; gemessen 26.10.2026: ~9 500 Varianten,
+// dann Schluss). Das ist kein Fehler des Produkts → eigener Exitcode 4, der Dauerlauf wartet und versucht es später wieder.
+if (import.meta.url === `file://${process.argv[1]}`) main().catch(e => {
+  if (/VARIANT_THROTTLE|Daily variant creation limit/i.test(String(e.message))) { console.error('TAGESLIMIT: Shopify erlaubt heute keine neuen Varianten mehr'); process.exit(4); }
+  console.error('FEHLER', e.message); process.exit(1);
+});

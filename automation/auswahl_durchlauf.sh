@@ -7,10 +7,11 @@
 # oder die Sperrdatei /tmp/auswahl_stop angelegt wird.
 #
 # Aufruf:  STUFEN="1 2 3" BATCH=150 nohup bash automation/auswahl_durchlauf.sh > /tmp/auswahl_durchlauf.out 2>&1 &
+# Exitcode 4 = Shopify-Tagesgrenze für neue Varianten (gemessen ~9 500/Tag): der Lauf wartet WARTE_VAR Sekunden (Standard 40 Min.) und versucht es wieder.
 # Schalter: LISTE=/tmp/auswahl_kandidaten.csv · BATCH=150 · STUFEN="1 2 3" · WORKERS=3 · LOG=/tmp/auswahl_durchlauf.log · WARTE=1800
 cd "$(dirname "$0")/.." || exit 1
 LISTE=${LISTE:-/tmp/auswahl_kandidaten.csv}; BATCH=${BATCH:-150}; STUFEN=${STUFEN:-"1 2 3"}
-LOG=${LOG:-/tmp/auswahl_durchlauf.log}; WARTE=${WARTE:-1800}; NODE=${NODE:-/opt/node22/bin/node}
+LOG=${LOG:-/tmp/auswahl_durchlauf.log}; WARTE=${WARTE:-1800}; WARTE_VAR=${WARTE_VAR:-2400}; NODE=${NODE:-/opt/node22/bin/node}
 [ -f "$LISTE" ] || { echo "Keine Liste: $LISTE (erst node automation/auswahl_kandidaten.mjs)"; exit 1; }
 exec 9>/tmp/auswahl_durchlauf.lock; flock -n 9 || { echo "Läuft schon (Sperre /tmp/auswahl_durchlauf.lock)"; exit 1; }
 WORKERS=${WORKERS:-3}   # parallele Läufe: die Zeit geht in Bild-Downloads und Shopify-Schreiben, nicht in CJ (CJ erlaubt ~1 Abfrage/s)
@@ -25,6 +26,7 @@ lauf_scheibe() {   # $1 = Stufe, $2 = Datei mit den Handles dieser Scheibe, $3 =
     zus=$(grep -E '^Zusammenfassung' "$lauf" | tail -1)
     echo "$(date -u +%FT%TZ) [$st/$nr] rc=$rc $zus" | tee -a "$LOG"
     if [ "$rc" = 3 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] CJ drosselt/erschöpft — warte ${WARTE}s" | tee -a "$LOG"; rm -f "$lauf"; sleep "$WARTE"; continue; fi
+    if [ "$rc" = 4 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] Shopify-Tagesgrenze für neue Varianten erreicht — warte ${WARTE_VAR}s" | tee -a "$LOG"; rm -f "$lauf"; sleep "$WARTE_VAR"; continue; fi
     if ! grep -q 'LIMIT .* erreicht' "$lauf"; then rm -f "$lauf"; return 0; fi   # Scheibe durch
     rm -f "$lauf"
   done
