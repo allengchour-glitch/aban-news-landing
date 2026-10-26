@@ -1,5 +1,5 @@
 // Tests für lib/stecker_cj.mjs. Schlüssel sind echte CJ-Variantenschlüssel aus dem Zwischenspeicher vom 26.10.2026. Gegenproben in BEIDE Richtungen.
-import { fremdSteckerKey, euroSteckerKey, steckerUrteil } from './stecker_cj.mjs';
+import { fremdSteckerKey, euroSteckerKey, steckerUrteil, steckerUrteilOptionen } from './stecker_cj.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
 
@@ -31,6 +31,17 @@ ist('Gegenprobe: SKU nicht zuzuordnen, CJ führt auch EU: die unbekannte Variant
 ist('Ringe mit «US Size»: nie ein Urteil', steckerUrteil(SV('r1', 'r2'), { r1: 'US Size 10-Main Ring', r2: 'US Size 9-Main Ring' }).fremd, 0);
 ist('Stecker vorn im Schlüssel (Kamera): mit Geschwister «EU-…» wird «US-…» gelöscht', steckerUrteil(SV('a', 'b'), { a: 'EU-3 Million', b: 'US-3 Million' }).loeschen, ['v1']);
 ist('Gegenprobe: ohne «EU-…» am Anfang bleibt «US-6» (Grösse) unberührt', steckerUrteil(SV('a', 'b'), { a: 'US-6', b: 'US-7' }).fremd, 0);
+
+// ── Urteil aus Shop-Optionswerten (ohne CJ-Datenblatt) ──
+const OV = (...w) => w.map((werte, i) => ({ id: 'o' + i, werte }));
+ist('Optionen: «Dunkelblau Edelstahl 5L / US» fliegt, «/ EU» bleibt', steckerUrteilOptionen(OV(['Dunkelblau Edelstahl 5L', 'EU'], ['Dunkelblau Edelstahl 5L', 'US'], ['Dunkelblau Edelstahl 5L', 'UK'])).loeschen, ['o1', 'o2']);
+ist('Optionen: «Weiss-UK» in der Farbe trifft', steckerUrteilOptionen(OV(['Weiss-UK'], ['Weiss-EU'])).loeschen, ['o0']);
+ist('Optionen: Stecker unter «Grösse» (Werte AU/UK/US) trifft, EU bleibt', steckerUrteilOptionen(OV(['AU'], ['UK'], ['US'], ['EU'])).loeschen, ['o0', 'o1', 'o2']);
+ist('Optionen: nur Fremdstecker → Entwurf', steckerUrteilOptionen(OV(['Schwarz', 'US'], ['Weiss', 'US'])).draft, true);
+ist('Optionen Gegenprobe: Schuhgrössen «US 7» / «UK 6» sind kein Stecker', steckerUrteilOptionen(OV(['US 7'], ['UK 6'], ['EU 39'])).fremd, 0);
+ist('Optionen Gegenprobe: Farben und Grössen ohne Stecker', steckerUrteilOptionen(OV(['Rot', 'S'], ['Rot', 'M'], ['Blau', 'L'])), { loeschen: [], draft: false, fremd: 0, euro: 0, unbekannt: 0, grund: 'kein Fremdstecker' });
+ist('Optionen: Stecker nicht in der letzten Option (Modell = US, Farbe = Weiss)', steckerUrteilOptionen(OV(['US', 'Weiss'], ['EU', 'Weiss'])).loeschen, ['o0']);
+ist('Optionen: Ringgrösse «Gold-US 7» bleibt, «Gold-US» ohne Zahl trifft', [steckerUrteilOptionen(OV(['Gold-US 7'])).fremd, steckerUrteilOptionen(OV(['Gold-US'], ['Gold-EU'])).fremd], [0, 1]);
 ist('leere Eingaben', steckerUrteil([], {}).draft, false);
 
 console.log(`${ok} ok, ${fehl} Fehler`);

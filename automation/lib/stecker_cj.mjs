@@ -50,3 +50,15 @@ export function steckerUrteil(shopVarianten, cjSchluessel) {
   if (!rest.length) return { loeschen: [], draft: true, fremd: fremd.length, euro, unbekannt, grund: 'alle Varianten mit Fremdstecker' };
   return { loeschen: fremd.map(v => v.id), draft: false, fremd: fremd.length, euro, unbekannt, grund: `${fremd.length} von ${shopVarianten.length} Varianten mit Fremdstecker` };
 }
+
+/**
+ * Urteil aus den OPTIONSWERTEN der Shop-Varianten, wenn für ein Produkt kein CJ-Datenblatt im Zwischenspeicher liegt (Küchengeräte, Haushalt …:
+ * die erste Stecker-Prüfung hat nur Elektronik gelesen). Ein Wert zählt als Fremdstecker, wenn er selbst auf US/UK/AU/JP endet (fremdSteckerKey je Wert,
+ * nicht über die zusammengesetzte Variante: «US Size 7» bleibt unberührt, «Weiss-UK» und «Grösse = AU» treffen).
+ * @param {{id:string, werte:string[]}[]} varianten
+ */
+export function steckerUrteilOptionen(varianten) {
+  const keys = {};
+  const vs = varianten.map(v => { keys[v.id] = v.werte.find(w => fremdSteckerKey(w)) ?? v.werte.join('-'); return { id: v.id, sku: v.id }; });
+  return steckerUrteil(vs, keys);
+}
