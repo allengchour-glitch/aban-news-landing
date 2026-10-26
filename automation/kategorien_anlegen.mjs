@@ -89,7 +89,7 @@ async function main() {
     if (!k.bestehend && c && !(c.ruleSet?.rules.length === 1 && c.ruleSet.rules[0].condition === k.tag)) console.log(`  ⚠ ${k.handle}: Handle ist belegt mit anderer Regel → wird NICHT überschrieben (${s})`);
     else if (k.bestehend && !c) console.log(`  ⚠ ${k.handle}: soll bestehen, existiert aber nicht`);
   }
-  if (!LIVE) { console.log('\nTrockenlauf — nichts geschrieben.'); return; }
+  if (!LIVE && PHASE !== 'menue') { console.log('\nTrockenlauf — nichts geschrieben.'); return; }
 
   mkdirSync('dropship/kategorien-sicherung', { recursive: true });
   const ledger = zeile => appendFileSync('dropship/kategorien_ledger.txt', `${new Date().toISOString()} · ${zeile}\n`);
@@ -135,6 +135,13 @@ async function main() {
         const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel } });
         if (d.collectionUpdate.userErrors.length) throw new Error(`collectionUpdate ${k.handle} ${JSON.stringify(d.collectionUpdate.userErrors)}`);
         console.log(`Umgestellt: ${k.handle} → TAG ${k.tag}`); ledger(`umgestellt ${k.handle}`);
+        // Publish-Falle: eine bestehende Collection kann nie im Onlineshop publiziert worden sein (haustier-tech, 26.10.: HTTP 404, durch eine Umleitung verdeckt).
+        const pub = (await q(`query($id:ID!){collection(id:$id){resourcePublicationsV2(first:30){nodes{isPublished publication{id name}}}}}`, { id: c.id })).collection.resourcePublicationsV2.nodes;
+        const fehlt = pubs.filter(x => !pub.some(n => n.isPublished && n.publication.id === x.publicationId));
+        if (fehlt.length) {
+          const p2 = await q(`mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{field message}}}`, { id: c.id, i: fehlt });
+          console.log(`  nachpubliziert in ${fehlt.length} Kanälen ${JSON.stringify(p2.publishablePublish.userErrors)}`); ledger(`nachpubliziert ${k.handle}`);
+        }
       } else if (!c) {
         const d = await q(`mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id handle} userErrors{field message}}}`, { i: {
           title: k.titel, handle: k.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung }, ruleSet: regel } });
@@ -163,7 +170,7 @@ async function main() {
   if (PHASE === 'alle' || PHASE === 'menue') {
     const m = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];
     const datei = `dropship/menu-sicherung/main-menu-vor-umbau-2510.json`;
-    mkdirSync('dropship/menu-sicherung', { recursive: true }); writeFileSync(datei, JSON.stringify(m, null, 1));
+    if (LIVE) { mkdirSync('dropship/menu-sicherung', { recursive: true }); writeFileSync(datei, JSON.stringify(m, null, 1)); }
     let baum = eingabeAus(m.items);
     const gid = async h => (await q(`query($h:String!){collectionByHandle(handle:$h){id}}`, { h })).collectionByHandle?.id;
     const log = [];
@@ -186,6 +193,10 @@ async function main() {
     }
     console.log(log.join('\n'));
     if (tiefe(baum) > 3) { console.error(`ABBRUCH: Menü hätte ${tiefe(baum)} Ebenen (Shopify erlaubt 3) — nichts geschrieben`); process.exit(2); }
+    if (!LIVE) {
+      const zeige = (items, d = 0) => items.forEach(i => { console.log('  '.repeat(d) + '· ' + i.title); zeige(i.items || [], d + 1); });
+      console.log('\nMENÜ-VORSCHAU (Trockenlauf, nichts geschrieben):'); zeige(baum); return;
+    }
     const w = await q(`mutation($id:ID!,$t:String!,$h:String!,$i:[MenuItemUpdateInput!]!){menuUpdate(id:$id,title:$t,handle:$h,items:$i){menu{id} userErrors{field message code}}}`, { id: m.id, t: m.title, h: m.handle, i: baum });
     if (w.menuUpdate.userErrors.length) throw new Error('menuUpdate ' + JSON.stringify(w.menuUpdate.userErrors));
     const zurueck = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];

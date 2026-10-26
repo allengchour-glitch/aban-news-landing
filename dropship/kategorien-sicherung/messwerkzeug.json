@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/689718854017",
+ "title": "Messwerkzeug & Prüfwerkzeug",
+ "productsCount": {
+  "count": 64
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "messschieber"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "wasserwaage"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "laser-entfernungsmesser"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "zollstock"
+   }
+  ]
+ }
+}

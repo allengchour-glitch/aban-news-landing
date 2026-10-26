@@ -60,6 +60,14 @@ t('Gegenprobe: normaler Hinweis mit «heilig» ist kein Heilversprechen', () => 
 t('Mass ohne Einheit fliegt raus (160x48 kann cm, mm oder Steine sein)', () => assert.equal(saeubern({ daten: [{ label: 'Masse', wert: '160x48' }] }, 'Size: 160x48').daten.length, 0));
 t('Gegenprobe: Mass mit Einheit bleibt', () => assert.equal(saeubern({ daten: [{ label: 'Masse', wert: '160 x 48 cm' }] }, 'Size: 160 x 48 cm').daten.length, 1));
 t('Gegenprobe: Material mit Zahl im Label wird nicht als Mass gewertet', () => assert.equal(saeubern({ daten: [{ label: 'Material', wert: '925 Silber' }] }, 'Material: 925 Silver').daten.length, 1));
+t('Zielgruppe «Allgemeinheit» fliegt raus, «Damen» bleibt', () => {
+  assert.equal(saeubern({ daten: [{ label: 'Zielgruppe', wert: 'Allgemeinheit' }] }, Q).daten.length, 0);
+  assert.equal(saeubern({ daten: [{ label: 'Zielgruppe', wert: 'Damen' }] }, Q).daten.length, 1);
+});
+t('Stil «Mittelhohe Taille» fliegt raus, «Vintage» bleibt', () => {
+  assert.equal(saeubern({ daten: [{ label: 'Stil', wert: 'Mittelhohe Taille' }] }, Q).daten.length, 0);
+  assert.equal(saeubern({ daten: [{ label: 'Stil', wert: 'Vintage' }] }, Q).daten.length, 1);
+});
 t('Doppelte Labels werden einmal geführt', () => assert.equal(saeubern({ daten: [{ label: 'Material', wert: 'Edelstahl' }, { label: 'material', wert: 'Metall' }] }, Q).daten.length, 1));
 t('steht auf der Seite schon «Gewicht:», wird es nicht doppelt gesetzt', () => assert.deepEqual(saeubern({ daten: [{ label: 'Gewicht', wert: '16 g' }, { label: 'Material', wert: 'Edelstahl' }] }, Q, 'Produktdetails Gewicht: ca. 16 g').daten.map(d => d.label), ['Material']));
 t('kaputte Antwort stürzt nicht ab', () => { const s = saeubern(null, Q); assert.equal(s.belegt, 0); assert.equal(genug(s), false); });

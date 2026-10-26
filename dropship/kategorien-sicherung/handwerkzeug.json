@@ -1,0 +1,72 @@
+{
+ "id": "gid://shopify/Collection/689718788481",
+ "title": "Handwerkzeug",
+ "productsCount": {
+  "count": 362
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schraubenzieher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schraubendreher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "hammer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schraubenschlüssel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "inbus"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kombizange"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "rohrzange"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kneifzange"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "spitzzange"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "wasserpumpenzange"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "seitenschneider"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "abisolierzange"
+   }
+  ]
+ }
+}

@@ -62,6 +62,8 @@ const MASSEINHEIT = /\d\s*(mm|cm|dm|m|zoll|inch|in|"|″|ml|l|liter|g|kg|w|v|mah
 /** Erlaubte Beschriftungen: alles andere ist vom Modell erfunden und wird verworfen. */
 export const LABELS = /^(material|verarbeitung|zielgruppe|farbe|farben|muster|stil|passform|ärmel|ausschnitt|verschluss|saison|anlass|länge|breite|höhe|tiefe|durchmesser|masse|gewicht|tragkraft|kapazität|leistung|spannung|akku|anschluss|futter|sohle|stromversorgung|lichtfarbe|helligkeit|vergrösserung)$/i;
 const VERARBEITUNG = /galvani|poliert|gebürstet|beschichtet|vergoldet|versilbert|lackiert|bedruckt|gestickt|genäht|geschweisst|gegossen|geschliffen|plattiert|gewebt|gestrickt|geklebt|gepresst|geschmiedet/i;
+const ZIELGRUPPE = /damen|herren|kinder|mädchen|jungen|unisex|erwachsene|baby|babys|teenager|senioren|frauen|männer|hund|katze|haustier/i;
+const STIL_FALSCH = /taille|bund|länge|höhe|dicke|elastizität|schnitt/i;
 const MASS_LABELS = /^(länge|breite|höhe|tiefe|durchmesser|masse)$/i;
 const woerter = t => new Set((String(t).toLowerCase().match(/[a-zäöüß]{6,}/g) || []));
 /** Steht der Sinn eines Eintrags schon auf der Seite? (≥ 60 % der längeren Wörter). Rein, getestet. */
@@ -94,6 +96,8 @@ export function saeubern(roh, quelle, vorhandenerText = '') {
     const label = ss(kurz(d?.label, 40)), wert = ss(kurz(d?.wert, 160));
     if (!label || !gut(wert) || !gut(label)) continue;
     if (!LABELS.test(label)) { verworfen.push(`Beschriftung nicht erlaubt: ${label}`); continue; }
+    if (/^zielgruppe$/i.test(label) && !ZIELGRUPPE.test(wert)) { verworfen.push(`Zielgruppe unklar: ${kurz(wert, 40)}`); continue; }
+    if (/^stil$/i.test(label) && STIL_FALSCH.test(wert)) { verworfen.push(`kein Stil: ${kurz(wert, 40)}`); continue; }
     if (/:/.test(wert)) { verworfen.push(`zwei Angaben in einer: ${label} ${kurz(wert, 40)}`); continue; }
     if (/^verarbeitung$/i.test(label) && !VERARBEITUNG.test(wert)) { verworfen.push(`Verarbeitung ohne Verfahren: ${kurz(wert, 40)}`); continue; }
     if (massOhneEinheit(label, wert)) { verworfen.push(`Mass ohne Zahl/Einheit: ${label} ${kurz(wert, 40)}`); continue; }
@@ -162,6 +166,7 @@ STRENGE REGELN:
 - Jede Zahl muss im Quelltext stehen. Einheiten unverändert lassen (mm bleibt mm, cm bleibt cm, g bleibt g). Nichts umrechnen.
 - Fehlt eine Angabe, lass den Eintrag weg. Leere Felder sind richtig.
 - «daten»: erlaubte Beschriftungen sind NUR: Material, Verarbeitung (nur ein Verfahren wie galvanisiert, poliert, bedruckt), Zielgruppe, Farbe, Muster, Stil, Passform, Ärmel, Ausschnitt, Verschluss, Saison, Anlass, Länge, Breite, Höhe, Tiefe, Durchmesser, Masse, Gewicht, Tragkraft, Kapazität, Leistung, Spannung, Akku, Anschluss, Futter, Sohle, Lichtfarbe, Helligkeit, Vergrösserung. Höchstens 10.
+- «Stil» nur für Stilbezeichnungen (Vintage, Boho, Casual, Elegant, Sport); Taillenhöhe, Länge, Bund gehören unter «Passform» oder weg. «Zielgruppe» nur Damen, Herren, Kinder, Mädchen, Jungen, Unisex oder Erwachsene; bei «General» oder «Allgemein» weglassen.
 - Ein Wert ist EINE Angabe, kein Doppelpunkt, keine zwei Angaben in einem Wert. Grössen (S, M, L, 38, 40 …) NICHT aufführen — sie stehen schon in der Auswahl.
 - Masse nur mit Zahl UND Einheit, im Format «2400 × 700 mm» oder «25 cm». Steht im Quelltext keine Einheit dabei, lass das Mass weg.
 - «lieferumfang»: nur, wenn der Quelltext ein Packing list / Package includes nennt; Teile ins Deutsche übersetzen («1 Luftbett», nicht «1 Polyester Airbed»). Höchstens 6.

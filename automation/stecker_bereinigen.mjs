@@ -23,10 +23,11 @@ const LIVE = process.env.LIVE === '1';
 const buch = 'a-zäöüß0-9';
 const tok = re => new RegExp(`(^|[^${buch}])(${re})(?![${buch}])`, 'i');
 /** Fremder Stecker/Spannung in einem Variantenwert: US, UK, AU, AUS, JP, USA, 110/120/100 V. Rein, getestet. */
-const NICHT_CH_KLEIN = tok('us|uk|au|jp|usa|us/cn|110 ?v|120 ?v|100 ?v|us[- ]?stecker|uk[- ]?stecker|au[- ]?stecker|us plug|uk plug|au plug|aus plug|british standard|american standard|us standard');
+const NICHT_CH_KLEIN = tok('us|uk|au|jp|cn|usa|us/cn|110 ?v|120 ?v|100 ?v|us[- ]?stecker|uk[- ]?stecker|au[- ]?stecker|us plug|uk plug|au plug|aus plug|british standard|american standard|us standard|american version|china[- ]?stecker|cn plug');
 const AUS_GROSS = new RegExp('(^|[^' + buch + '])AUS(?![' + buch + '])'); // «aus» (Holz) ist deutsch, «AUS» der Stecker
 export const NICHT_CH = { test: t => NICHT_CH_KLEIN.test(t) || AUS_GROSS.test(t) };
-export const EURO = tok('eu|eu[- ]?stecker|eu plug|220 ?v|230 ?v|schuko|euro');
+// 220/230 V ist eine SPANNUNG, kein Steckertyp: «Netzstecker-220 V US» ist ein US-Stecker an 220 V und passt nicht (nachgemessen 26.10., retro-super-console, air-fryer «UK 220 V»).
+export const EURO = tok('eu|eu[- ]?stecker|eu plug|schuko|euro');
 /** Steckdosen-Ware: Leisten, Smart-/Funk-Steckdosen, Zeitschaltuhren, Thermostat-Steckdosen, Tischsteckdosen. Rein, getestet. */
 export const STECKDOSE_RE = /steckdosenleiste|steckerleiste|mehrfachsteckdose|mehrfachstecker|steckdosenverteiler|steckdosenpanel|vierfachstecker|tischsteckdose|funksteckdose|smart[- ]?plug|wlan-?steckdose|wifi-?steckdose|smart[- ]?(home )?steckdose|zeitschaltuhr-?steckdose|thermostat[- ]?steckdose|thermostatische smart steckdose|steckdosenadapter|überspannungsschutz|steckdose mit (timer|überspannung)|wasserdichte steckdose|insekten kletterwand smart steckdose|rubik'?s cube mehrfach/i;
 export const STECKDOSE_AUSSER = /schutz(deckel|abdeckung)|halterung|organizer|tester|reiseadapter|ladesteckdose|usb-hub|helligkeitssensor|nachttischlampe|ersatz/i;

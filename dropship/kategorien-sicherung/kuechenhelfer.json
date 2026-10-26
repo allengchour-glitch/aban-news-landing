@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/689362698625",
+ "title": "Küchenhelfer & Gadgets",
+ "productsCount": {
+  "count": 3744
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kueche"
+   }
+  ]
+ }
+}

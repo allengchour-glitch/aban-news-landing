@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/691318980993",
+ "title": "Tierspielzeug",
+ "productsCount": {
+  "count": 192
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-tierspielzeug"
+   }
+  ]
+ }
+}

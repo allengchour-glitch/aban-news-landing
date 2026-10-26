@@ -1,0 +1,37 @@
+{
+ "id": "gid://shopify/Collection/689722229121",
+ "title": "Luftreiniger & Klimageräte",
+ "productsCount": {
+  "count": 242
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "heizlüfter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "klimagerät"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "luftentfeuchter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "luftbefeuchter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "luftreiniger"
+   }
+  ]
+ }
+}

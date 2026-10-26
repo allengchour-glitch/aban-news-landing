@@ -1,0 +1,47 @@
+{
+ "id": "gid://shopify/Collection/689713545601",
+ "title": "Laptop-Zubehör & Tablet-Zubehör",
+ "productsCount": {
+  "count": 417
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "laptop"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "macbook"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "tablet-halter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "tablet-hülle"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "tablet-ständer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ipad-hülle"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "notebook-tasche"
+   }
+  ]
+ }
+}

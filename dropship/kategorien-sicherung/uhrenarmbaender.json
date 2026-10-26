@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/754936643975",
+ "title": "Uhrenarmbänder & Smartwatch-Armbänder",
+ "productsCount": {
+  "count": 159
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "such-uhrenarmband"
+   }
+  ]
+ }
+}

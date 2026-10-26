@@ -1,0 +1,22 @@
+{
+ "id": "gid://shopify/Collection/691319079297",
+ "title": "Pflege & Unterwegs",
+ "productsCount": {
+  "count": 44
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-tierpflege"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-tiertransport"
+   }
+  ]
+ }
+}

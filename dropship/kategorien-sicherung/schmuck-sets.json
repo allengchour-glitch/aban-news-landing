@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/688587407745",
+ "title": "Schmuck-Sets",
+ "productsCount": {
+  "count": 123
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "schmuck"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Set"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "besetzt"
+   }
+  ]
+ }
+}

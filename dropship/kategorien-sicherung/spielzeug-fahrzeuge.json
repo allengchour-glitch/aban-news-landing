@@ -1,0 +1,67 @@
+{
+ "id": "gid://shopify/Collection/688732832129",
+ "title": "Fahrzeuge & RC",
+ "productsCount": {
+  "count": 95
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Müllwagen"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Transporter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Batterie-Zug"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Stunt-Auto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Rutscher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Rennauto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "RC-Auto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Spielzeugauto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Modellauto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ferngesteuertes Auto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ferngesteuerter Bagger"
+   }
+  ]
+ }
+}

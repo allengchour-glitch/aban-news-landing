@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/691318882689",
+ "title": "Katzen",
+ "productsCount": {
+  "count": 880
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-katzen"
+   }
+  ]
+ }
+}

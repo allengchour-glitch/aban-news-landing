@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/687523299713",
+ "title": "Büro & Home Office",
+ "productsCount": {
+  "count": 151
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-buero"
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/688563650945",
+ "title": "Ohrringe",
+ "productsCount": {
+  "count": 244
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-ohrringe"
+   }
+  ]
+ }
+}
