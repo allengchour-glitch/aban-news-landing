@@ -1,0 +1,741 @@
+{
+  "bereich": "spielzeug",
+  "titel": "Spielzeug, Kinder & Baby",
+  "menue": {
+    "oben": "Kinder & Baby"
+  },
+  "universum": {
+    "g_prefix": [
+      "Toys & Games",
+      "Baby & Toddler",
+      "Furniture > Baby & Toddler Furniture",
+      "Luggage & Bags > Diaper Bags"
+    ],
+    "titel_muss": [
+      "(^|[^a-zäöüß])(baby|babys|kleinkind|kleinkinder|neugeboren[a-zäöüß]*|säugling|stillkissen|windel|windeln|kinderwagen|buggy|schnuller|beissring|kinderzimmer|spielzeug|lernspielzeug|montessori|kuscheltier|plüschtier|stofftier|spielküche|kindergarten|einschulung)"
+    ],
+    "g_nicht": [
+      "Apparel & Accessories",
+      "Animals & Pet Supplies",
+      "Health & Beauty",
+      "Electronics",
+      "Vehicles & Parts",
+      "Sporting Goods",
+      "Home & Garden > Decor > Throw Pillows",
+      "Home & Garden > Decor > Chair",
+      "Home & Garden > Decor > Slipcovers",
+      "Toys & Games > Toys > Remote Control Toy Accessories",
+      "Luggage & Bags > Backpacks",
+      "Luggage & Bags > Briefcases",
+      "Luggage & Bags > Duffel",
+      "Luggage & Bags > Messenger",
+      "Luggage & Bags > Suitcases",
+      "Luggage & Bags > Luggage Accessories"
+    ],
+    "titel_nicht": [
+      "(drohne|drohnen|drone|drones|quadrocopter|quadcopter|copter|uav|fluggerät|drohnenflieger|flugobjekt)(?![a-zäöüß])|(^|[^a-zäöüß])(fpv|luftbild[a-zäöüß-]*|luftaufnahmen|drohnen[a-zäöüß-]*)",
+      "^(?=.*pl[üu]sch)(?=.*(kissen|schuh|stiefel|boots|mantel|pullover|nachthemd|lenkrad|kranz|anhänger|mütze|tasche|etui|schal|kühlschrank|hausschuh|sneaker|decke|bodenmatte|kapuzen))",
+      "^(?=.*(baby|neugeboren))(?=.*(body|anzug|kleidung|strampler|schuhe|schuh|lauflern))",
+      "(^|[^a-zäöüß])(hula|hoop|fitnessreifen|gymnastikring|fingerboard[a-zäöüß-]*|baseballschläger|fidget|squishy)"
+    ]
+  },
+  "kategorien": [
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))"
+      ],
+      "titel_nicht": [],
+      "handle": "bausteine-holz-magnet-gross",
+      "titel": "Bauklötze, Magnet- & Grossbausteine",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Bauklötze, Holzbausteine, magnetische Bausteine und grosse weiche Steine: Bauspielzeug für Kleinkinder und zum Lernen."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))"
+      ],
+      "handle": "bausteine-fahrzeug-bausaetze",
+      "titel": "Fahrzeug- & Militär-Bausätze",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Autos, Rennwagen, Lastwagen, Flugzeuge, Panzer, Schiffe und Züge zum Selberbauen: Klemmbaustein-Modelle und Bausätze für Kinder und Sammler.",
+      "unterfilter": [
+        {
+          "handle": "bausteine-fahrzeuge-sportwagen",
+          "titel": "Sportwagen & Rennautos",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(sportwagen|sportauto|supersportwagen|rennauto|rennwagen|racing|rennmodell|rennserie|muscle|supercar|formel|f1|gtr?|speed|roadster|coupe|cabrio|rally)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "bausteine-fahrzeuge-militaer",
+          "titel": "Panzer, Militär & Flugzeuge",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(panzer|militär[a-zäöüß]*|kampf[a-zäöüß]*|jet|jäger|flugzeug|flugabwehr|zerstörer|soldat|helikopter|hubschrauber|jagdflugzeug|mustang)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "bausteine-fahrzeuge-gelaende",
+          "titel": "Geländewagen, Trucks & Baufahrzeuge",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(offroad|geländ[a-zäöüß]*|pickup|pick-up|truck|lkw|lastwagen|bagger|bulldozer|kran|traktor|baufahrzeug[a-zäöüß]*|jeep|camper|wohnwagen|feuerwehr|polizei)"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)",
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))"
+      ],
+      "handle": "bausaetze-roboter-technik",
+      "titel": "Roboter & Technik-Bausätze",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Bausätze mit Technik: Roboter zum Zusammenbauen, Metallmodelle, Solar- und Motorbausätze sowie Experimentierkästen zum Tüfteln."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))",
+        "^(?=.*(?:(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)))(?!.*(?:(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)))",
+        "^(?=.*(?:(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)))(?!.*(?:(^|[^a-zäöüß])(ornament[a-zäöüß-]*|beleuchtung|zubehör|led-?[a-zäöüß-]*|coupe|coupé|auto)))",
+        "(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)"
+      ],
+      "handle": "bausteine-tiere-weltraum",
+      "titel": "Tiere, Dinosaurier & Weltraum",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Bausteine-Sets mit Tieren, Dinosauriern, Raumfahrt und Sternen: Bauspass mit beliebten Motiven."
+    },
+    {
+      "titel_muss": [
+        "(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(ornament[a-zäöüß-]*|beleuchtung|zubehör|led-?[a-zäöüß-]*|coupe|coupé|auto)",
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))",
+        "^(?=.*(?:(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)))(?!.*(?:(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)))"
+      ],
+      "handle": "bausteine-gebaeude-staedte",
+      "titel": "Häuser, Schlösser & Städte",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Häuser, Schlösser, Strassenszenen und Wahrzeichen aus Klemmbausteinen: Bausätze für den Bautisch und die Vitrine."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))",
+        "^(?=.*(?:(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)))(?!.*(?:(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)))",
+        "^(?=.*(?:(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)))(?!.*(?:(^|[^a-zäöüß])(ornament[a-zäöüß-]*|beleuchtung|zubehör|led-?[a-zäöüß-]*|coupe|coupé|auto)))"
+      ],
+      "handle": "bausteine-blumen-deko",
+      "titel": "Blumen, Retro & Deko-Modelle",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Blumensträusse, Bonsai, Retro-Geräte, Spieluhren und Bilderrahmen aus Klemmbausteinen: Deko-Bausätze zum Aufstellen und Verschenken."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|kleinkind[a-zäöüß]*|jungen|mädchen|jugendliche|kids?|partikel|kleinpartikel|kleine?s?|mikro[a-zäöüß-]*|mini|pädagogisch[a-zäöüß]*|lern[a-zäöüß-]*|diamant[a-zäöüß-]*|pellet[a-zäöüß-]*|sensorisch[a-zäöüß]*)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))",
+        "^(?=.*(?:(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)))(?!.*(?:(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)))",
+        "^(?=.*(?:(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)))(?!.*(?:(^|[^a-zäöüß])(ornament[a-zäöüß-]*|beleuchtung|zubehör|led-?[a-zäöüß-]*|coupe|coupé|auto)))",
+        "(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)",
+        "(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)"
+      ],
+      "handle": "bausteine-kinder-mikro",
+      "titel": "Bausteine für Kinder & Mikrobausteine",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Bausteine-Sets für Kinder, Mikro- und Kleinpartikel-Bausteine, pädagogische Sets und kleine Bausätze zum Entdecken und Tüfteln."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(holz[a-zäöüß-]*(bausteine?|blöcke?|klötze?|steine?)|holzbaustein[a-zäöüß]*|magnet[a-zäöüß-]*|gummi[a-zäöüß-]*|schaumstoff[a-zäöüß-]*|duplo|transparente|kleinkind[a-zäöüß]*|lernbausteine|kindergärten|grosse? bausteine|grossen? bausteine|grossteile|soft)",
+        "^(?=.*(?:(^|[^a-zäöüß])(bauklötze?|bauklotz|bauklötzer|bauklötzchen|bauklötter)))(?!.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)|(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)|(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)|(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)|(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)))",
+        "^(?=.*(?:(^|[^a-zäöüß])(auto|autos|automodell|autoserie|supercar|oldtimer|transporter|lokomotive|militär[a-zäöüß-]*|bomber|ww2|special forces|rx7|audi|mazda|mustang|porsche|ferrari|lamborghini|bmw|nissan|subaru|mercedes|toyota|honda|tesla|bugatti|mclaren|corvette|chevrolet|volkswagen|vw|jeep|rv|muscle car|coupé)|(auto|autos|rennauto|rennwagen|wagen|sportwagen|pickup|pick-up|lkw|truck|bulldozer|bagger|traktor|motorrad|limousine|cabrio|coupe|roadster|modellauto|fahrzeug|fahrzeuge|panzer|jet|flugzeug|kampfjet|kampfflieger|schiff|boot|helikopter|hubschrauber|rakete|shuttle|batmobil|fahrrad|bike|zerstörer|muscle-?car|supersportwagen|raumschiff)(?![a-zäöüß])|(^|[^a-zäöüß])(zug|güterzug|dampfzug|schnellzug|lok|e-lok|eisenbahn|bus|taxi|camper|kran)(?![a-zäöüß])|(^|[^a-zäöüß])(racing|formel|offroad|gtr?|f1|rennmodell|rennserie|speed)))(?!.*(?:(^|[^a-zäöüß])(café|cafe|kaffeehaus|kaffeemaschine|villa|street ?view|bilderrahmen)|(café|kaffeehaus)(?![a-zäöüß])))",
+        "^(?=.*(?:(^|[^a-zäöüß])(roboter|robot|mecha|mech|programmierbar[a-zäöüß]*|solar|stem|elektronisch[a-zäöüß]*|wissenschaft[a-zäöüß]*|forscher|teleskop|mikroskop|metall[a-zäöüß-]*|motor[a-zäöüß-]*|mechanisch[a-zäöüß-]*|dynamisch[a-zäöüß-]*|skorpion|zahnrad|getriebe|ferngesteuert[a-zäöüß-]*|rc|fernsteuerung|steam|ingenieur[a-zäöüß]*)))(?!.*(?:(^|[^a-zäöüß])(beleuchtung|zubehör|led-?[a-zäöüß-]*)))",
+        "^(?=.*(?:(haus|häuser|villa|schloss|burg|kathedrale|tempel|turm|leuchtturm|mühle|hütte|café|cafe|kaffeehaus|cottage|bauernhof|farm|moschee|kirche|palast|pagode|pavillon|taverne|laden|shop|felsendom|baumhaus|zelt|fischerdorf|dorf|hütte|kaufhaus|restaurant|hotel)(?![a-zäöüß])|(^|[^a-zäöüß])(tor)(?![a-zäöüß])|(^|[^a-zäöüß])(stadt|city|strassen[a-zäöüß]*|street|wahrzeichen|architektur|gebäude|dorf|brücke|wolkenkratzer|miniatur[a-zäöüß]*|big ben|louvre|tokyo|paris|london|hongkong|hamburg|häuschen)))(?!.*(?:(^|[^a-zäöüß])(ornament[a-zäöüß-]*|beleuchtung|zubehör|led-?[a-zäöüß-]*|coupe|coupé|auto)))",
+        "(^|[^a-zäöüß])(blumen[a-zäöüß-]*|blüten?|bouquet|strauss|sträusse|rose|rosen|dahlie|tulpe|tulpen|sonnenblume|bonsai|pflanzen?|orchidee|lotus|kaktus|vasen?|floristin|florist|lantana|bäume|baum(?![a-zäöüß])|ewige|kirschblüten|schreibmaschine|kamera|kaffeemaschine|telefon|radio|fotorahmen|bilderrahmen|displayrahmen|spiegel|spieluhr|nachtlicht|wanddeko|ornament|dekor?[a-zäöüß-]*|herz|pixel|geschenk[a-zäöüß]*|retro|möbel|wellen?|sternennacht|mosaik|stereograph|gemälde|lampe|tischlampe|vitrine|musikbox|globus|uhr)",
+        "(^|[^a-zäöüß])(tiere|tierisch[a-zäöüß]*|tier-[a-zäöüß-]*|dino[a-zäöüß]*|tiger|hai|haie|panda|giraffe|fuchs|schmetterling[a-zäöüß]*|bienen?|papagei|insekten?|meerestiere|zoo|hund[a-zäöüß]*|katze[a-zäöüß]*|hase|pferd[a-zäöüß]*|drache[a-zäöüß]*|wolf|löwe|elefant|eule|pinguin|bär|bären|vogel|vögel|fisch|fische|fischen|kuh|schwan|einhorn|t-rex|rex|weltraum[a-zäöüß-]*|astronaut[a-zäöüß]*|space|planet[a-zäöüß]*|sonnensystem|mond|galaxie|ufo|alien|eichhörnchen|affe|krokodil|hamster|marienkäfer|frosch|schildkröte|biber|tukan|ochse|kobra|skorpion)",
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|kleinkind[a-zäöüß]*|jungen|mädchen|jugendliche|kids?|partikel|kleinpartikel|kleine?s?|mikro[a-zäöüß-]*|mini|pädagogisch[a-zäöüß]*|lern[a-zäöüß-]*|diamant[a-zäöüß-]*|pellet[a-zäöüß-]*|sensorisch[a-zäöüß]*)"
+      ],
+      "handle": "bausteine-weitere-sets",
+      "titel": "Weitere Bausteine-Sets & Zubehör",
+      "g_prefix": [
+        "Toys & Games > Toys > Building Toys"
+      ],
+      "beschreibung": "Weitere Bausteine-Sets, Sammlermodelle, Geschenk- und Saisonsets sowie Zubehör wie Beleuchtung für Klemmbausteine."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(kissen[a-zäöüß]*|schuh[a-zäöüß]*|stiefel|boots|mantel|jacke|pullover|schal|tasche|etui|lenkrad[a-zäöüß]*|schlüsselanhänger|kühlschrank[a-zäöüß]*|kranz|anhänger|mütze|bodenmatte|decke|nachthemd|kapuzen[a-zäöüß]*|kostüm|wanddeko|sneakers?|pantoffel[a-zäöüß]*|lauflern[a-zäöüß]*|magnet|desktop|weihnachts[a-zäöüß-]*)|(kissen|schuhe|stiefel|boots|sneakers?|tasche|taschen|mantel|schal|hausschuh|hausschuhe|kranz|anhänger)(?![a-zäöüß])"
+      ],
+      "handle": "pluesch-kuscheltiere",
+      "titel": "Plüsch- & Kuscheltiere",
+      "g_prefix": [
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals"
+      ],
+      "beschreibung": "Plüschtiere, Kuscheltiere und Stofftiere zum Knuddeln, Verschenken und Einschlafen, darunter sprechende und elektronische Plüschtiere."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "puppen-figuren-miniaturen",
+      "titel": "Puppen, Figuren & Miniaturwelten",
+      "g_prefix": [
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Dolls",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Action",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Dollhouse",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Puppets",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Doll &"
+      ],
+      "beschreibung": "Puppen, Spielfiguren, Dinosaurier-Figuren, Puppenhäuser und Puppenhaus-Zubehör: Spielwelten zum Sammeln und Nachspielen."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "rollenspiel-spielsets",
+      "titel": "Rollenspiel & Spielsets",
+      "g_prefix": [
+        "Toys & Games > Toys > Pretend Play",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Toy Playsets",
+        "Toys & Games > Toys > Toy Weapon"
+      ],
+      "beschreibung": "Spielküchen, Schminktische, Spielzeug-Handys, Spielsets und Rollenspiel-Zubehör für fantasievolles Spielen."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(plüsch[a-zäöüß-]*|kostüm|puzzle[a-zäöüß-]*)"
+      ],
+      "handle": "holzspielzeug-spielwelten",
+      "titel": "Holzspielzeug & weitere Spielsachen",
+      "g_prefix": [
+        "Toys & Games > Toys"
+      ],
+      "g_nicht": [
+        "Toys & Games > Toys > Building",
+        "Toys & Games > Toys > Dolls",
+        "Toys & Games > Toys > Remote",
+        "Toys & Games > Toys > Robotic",
+        "Toys & Games > Toys > Play Vehicle",
+        "Toys & Games > Toys > Flying",
+        "Toys & Games > Toys > Educational",
+        "Toys & Games > Toys > Musical",
+        "Toys & Games > Toys > Pretend",
+        "Toys & Games > Toys > Art",
+        "Toys & Games > Toys > Activity",
+        "Toys & Games > Toys > Sports",
+        "Toys & Games > Toys > Bath",
+        "Toys & Games > Toys > Riding",
+        "Toys & Games > Toys > Toy Weapon",
+        "Toys & Games > Toys > Executive"
+      ],
+      "beschreibung": "Spielsachen aus Holz, Miniaturhäuser, Rettungs- und Camper-Spielsets, Schraubspiele und weitere Kinderspielzeuge, die in keine andere Spielwarenkategorie passen."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(zubehör|motorhalter|upgrade|shock|absorber|ersatz)"
+      ],
+      "handle": "rc-autos-trucks",
+      "titel": "RC-Autos, Trucks & Boote",
+      "g_prefix": [
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Cars",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Tanks",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Motorcycles",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Boats"
+      ],
+      "beschreibung": "Ferngesteuerte Autos, Trucks, Panzer und Boote: Rennwagen, Drift-Autos, Geländefahrzeuge und Stunt-Autos."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "rc-helikopter-flugzeuge",
+      "titel": "RC-Helikopter, Flugzeuge & Flugspielzeug",
+      "g_prefix": [
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Helicopters",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Planes",
+        "Toys & Games > Toys > Flying Toys",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Airships"
+      ],
+      "beschreibung": "Ferngesteuerte Helikopter, Flugzeuge und Gleiter sowie Flugspielzeug zum Werfen, Steigen- und Fliegenlassen.",
+      "unterfilter": [
+        {
+          "handle": "rc-helikopter",
+          "titel": "RC-Helikopter",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(heli[a-zäöüß]*|hubschrauber|quadcopter|apache)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "rc-flugzeuge-gleiter",
+          "titel": "RC-Flugzeuge & Gleiter",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(flugzeug[a-zäöüß]*|gleiter|segel[a-zäöüß]*|jet|schaum[a-zäöüß-]*|glider|cessna|kampfjet|fx801)"
+          ],
+          "titel_nicht": [
+            "(^|[^a-zäöüß])(heli[a-zäöüß]*)"
+          ]
+        }
+      ]
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(roboter|robot|robo-?[a-zäöüß]*|hund[a-zäöüß]*|hündchen|katze[a-zäöüß]*|dino[a-zäöüß]*|[a-zäöüß]*saurus|triceratops|schlange|insekt[a-zäöüß]*|tierli|spinne|biene|oktopus|wurst|marienkäfer|drache[a-zäöüß]*|hamster|vogel|flugvogel|rakete|kipplaster|jeep|sensor[a-zäöüß-]*|induktions[a-zäöüß-]*|interaktiv[a-zäöüß]*|intelligent[a-zäöüß]*|smart|programmierbar[a-zäöüß]*|tanzend[a-zäöüß]*|linienfolger|malroboter|elektrisch[a-zäöüß]*|elektronisch[a-zäöüß]*|spielzeug|kothaufen[a-zäöüß-]*|deformations[a-zäöüß-]*|verwandlungs[a-zäöüß-]*)"
+      ],
+      "titel_nicht": [
+        "(drohne|drohnen|drone|drones|quadrocopter|quadcopter|copter|uav|fluggerät|drohnenflieger|flugobjekt)(?![a-zäöüß])|(^|[^a-zäöüß])(fpv|zubehör|upgrade|motorhalter|ersatz|shock|absorber|akku)"
+      ],
+      "handle": "spielzeug-roboter",
+      "titel": "Roboter, RC-Tiere & interaktive Spielzeuge",
+      "g_prefix": [
+        "Toys & Games > Toys > Robotic Toys",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Robots",
+        "Toys & Games > Toys > Remote Control Toys"
+      ],
+      "g_nicht": [
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Cars",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Tanks",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Motorcycles",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Boats",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Helicopters",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Planes",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Airships"
+      ],
+      "beschreibung": "Roboterhunde, Roboter mit Fernbedienung, ferngesteuerte Dinosaurier und Tierfiguren sowie interaktive Spielzeuge, die sich bewegen, sprechen oder auf Berührung reagieren."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "spielzeugautos-eisenbahn",
+      "titel": "Spielzeugautos & Eisenbahnen",
+      "g_prefix": [
+        "Toys & Games > Toys > Play Vehicle"
+      ],
+      "beschreibung": "Spielzeugautos, Modellfahrzeuge, Eisenbahnen und Rennbahnen zum Fahren, Sammeln und Spielen."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "puzzles-3d-holz",
+      "titel": "Puzzles: 3D, Holz & Knobeln",
+      "g_prefix": [
+        "Toys & Games > Puzzles"
+      ],
+      "beschreibung": "3D-Puzzles, Holzpuzzles, Steckpuzzles und Knobelpuzzles: vom Puzzle für Kinder bis zum Modell für Erwachsene.",
+      "unterfilter": [
+        {
+          "handle": "puzzles-holz",
+          "titel": "Holzpuzzles",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(holz[a-zäöüß-]*)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "puzzles-kinder-lernen",
+          "titel": "Puzzles für Kinder & Lernpuzzles",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|kleinkind[a-zäöüß]*|baby|lern[a-zäöüß]*|früh[a-zäöüß]*|montessori|steck[a-zäöüß-]*|jungen)"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(beiss[a-zäöüß-]*)"
+      ],
+      "handle": "spiele-karten-geschick",
+      "titel": "Gesellschafts-, Karten- & Geschicklichkeitsspiele",
+      "g_prefix": [
+        "Toys & Games > Games"
+      ],
+      "beschreibung": "Würfelspiele, Kartenspiele, Mahjong, Stapelspiele und Geschicklichkeitsspiele für Familie, Freunde und Spieleabende."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "lernspielzeug-experimentieren",
+      "titel": "Lern-, Musik- & Experimentierspielzeug",
+      "g_prefix": [
+        "Toys & Games > Toys > Educational Toys",
+        "Toys & Games > Toys > Musical Toys"
+      ],
+      "beschreibung": "Lernspielzeug, Montessori-Material, Sensorik-Spielzeug, Experimentierkästen und Musikspielzeug zum Entdecken von Formen, Farben, Zahlen und Klängen."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|kleinkind[a-zäöüß]*|kids?|für (mädchen|jungen)|3d-?stift|3d-?druckstift|3d zeichenstift|zeichentafel|zeichenbrett|schreibtafel|schreibbrett|lcd|deckenmalset)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(stoff|baumwoll[a-zäöüß]*|kleid[a-zäöüß]*|kleidung|druckknöpfe?|babykleidung|kinderszene|mutter)|(stoff|kleinderstoff|kinderkleidung)(?![a-zäöüß])"
+      ],
+      "handle": "kinder-malen-basteln",
+      "titel": "Malen, Basteln & Kreatives für Kinder",
+      "g_prefix": [
+        "Toys & Games > Toys > Art & Drawing Toys",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+      ],
+      "beschreibung": "Zeichentafeln, 3D-Stifte, Mal- und Bastelsets für Kinder: Material zum Malen, Basteln und Ausprobieren."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "baby-stillen-fuettern",
+      "titel": "Stillen, Flaschen & Füttern",
+      "g_prefix": [
+        "Baby & Toddler > Nursing & Feeding"
+      ],
+      "beschreibung": "Stillkissen, Flaschenwärmer, Sterilisatoren, Trinklernbecher und Zubehör für Stillen, Flasche und Beikost.",
+      "unterfilter": [
+        {
+          "handle": "stillkissen-schwangerschaftskissen",
+          "titel": "Still- & Schwangerschaftskissen",
+          "titel_muss": [
+            "(kissen|kissenbezug)(?![a-zäöüß])"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "flaschen-waermer-beikost",
+          "titel": "Flaschen, Wärmer & Beikost",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(flaschen[a-zäöüß-]*|milchwärmer|milch[a-zäöüß-]*|muttermilch[a-zäöüß-]*|sterilisator|desinfektor|sippy|babybrei|babynahrung|brei[a-zäöüß-]*|esslern[a-zäöüß-]*|trinklern[a-zäöüß-]*|babyausstell[a-zäöüß-]*|milchshaker)"
+          ],
+          "titel_nicht": [
+            "(kissen)(?![a-zäöüß])"
+          ]
+        }
+      ]
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "baby-kinderwagen-unterwegs",
+      "titel": "Kinderwagen, Tragen & Unterwegs",
+      "g_prefix": [
+        "Baby & Toddler > Baby Transport",
+        "Luggage & Bags > Diaper Bags"
+      ],
+      "beschreibung": "Kinderwagen-Zubehör, Babytragen, Kindersitze, Sitzzubehör und Wickeltaschen für unterwegs mit Baby.",
+      "unterfilter": [
+        {
+          "handle": "kinderwagen-kindersitz-zubehoer",
+          "titel": "Kinderwagen- & Kindersitz-Zubehör",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(kinderwagen[a-zäöüß-]*|buggy[a-zäöüß-]*|stroller|kindersitz[a-zäöüß-]*|autositz[a-zäöüß-]*|auto-?sitz[a-zäöüß-]*|sitzauflage|sitzerhöhung|kinderautositz|kinder-autositz)"
+          ],
+          "titel_nicht": [
+            "(^|[^a-zäöüß])(wickel[a-zäöüß-]*)"
+          ]
+        },
+        {
+          "handle": "baby-tragen-wickeltaschen",
+          "titel": "Babytragen & Wickeltaschen",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(trage[a-zäöüß-]*|tragegurt|hüftsitz[a-zäöüß-]*|babytrage|wickel[a-zäöüß-]*|rucksack|reise-?wickel[a-zäöüß-]*)"
+          ],
+          "titel_nicht": [
+            "(^|[^a-zäöüß])(kinderwagen[a-zäöüß-]*|buggy[a-zäöüß-]*)"
+          ]
+        }
+      ]
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "baby-baden-wickeln-pflege",
+      "titel": "Baden, Wickeln & Töpfchen",
+      "g_prefix": [
+        "Baby & Toddler > Baby Bathing",
+        "Baby & Toddler > Potty Training",
+        "Baby & Toddler > Diapering",
+        "Baby & Toddler > Baby Health > Baby Health"
+      ],
+      "beschreibung": "Babybadewannen, Badehilfen, Töpfchentrainer, Windeln, Wickelorganizer und Pflegesets für Bad und Wickeltisch."
+    },
+    {
+      "titel_muss": [
+        "^(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(badetuch|badehandtuch|bade[a-zäöüß-]*|stillkissen|still[a-zäöüß-]*|schwangerschaft[a-zäöüß-]*|auto|kinderwagen|buggy|nachtlicht|spiel[a-zäöüß-]*|krabbel[a-zäöüß-]*|schmusekissen|mobile)|schnull|aufbewahr|organizer|tasche|korb"
+      ],
+      "handle": "baby-schlafen-kuscheln",
+      "titel": "Schlafen, Decken & Babymöbel",
+      "g_prefix": [
+        "Baby & Toddler",
+        "Furniture",
+        "Home & Garden > Linens & Bedding",
+        "Home & Garden > Decor"
+      ],
+      "g_nicht": [
+        "Baby & Toddler > Nursing",
+        "Baby & Toddler > Baby Transport",
+        "Baby & Toddler > Baby Bathing",
+        "Baby & Toddler > Potty",
+        "Baby & Toddler > Diapering",
+        "Baby & Toddler > Baby Health",
+        "Baby & Toddler > Baby Toys",
+        "Baby & Toddler > Baby Safety"
+      ],
+      "beschreibung": "Babydecken, Pucktücher, Babynester, Lagerungskissen, Babykissen, Matratzen und Hochstühle: alles für Schlaf und Sitzplatz der Kleinsten.",
+      "unterfilter": [
+        {
+          "handle": "baby-kissen",
+          "titel": "Babykissen",
+          "titel_muss": [
+            "(kissen)(?![a-zäöüß])"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "baby-decken-nester-tuecher",
+          "titel": "Decken, Nester & Tücher",
+          "titel_muss": [
+            "(decke|decken|tuch|tücher|schlafsack|pucktuch|nest|nestchen|matratze|unterlage|polster)(?![a-zäöüß])"
+          ],
+          "titel_nicht": [
+            "(kissen)(?![a-zäöüß])"
+          ]
+        }
+      ]
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "baby-spielen-entdecken",
+      "titel": "Spielmatten, Beissringe & Baby-Spielzeug",
+      "g_prefix": [
+        "Baby & Toddler > Baby Toys & Activity Equipment",
+        "Baby & Toddler > Baby Health > Pacifiers"
+      ],
+      "beschreibung": "Krabbelmatten, Spielbögen, Beissringe, Mobiles, Stapel- und Greifspielzeug für die ersten Entdeckungen."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "baby-sicherheit-babyphone",
+      "titel": "Sicherheit & Babyphone",
+      "g_prefix": [
+        "Baby & Toddler > Baby Safety"
+      ],
+      "beschreibung": "Babyphones mit Kamera, Steckdosenschutz, Türschlösser und Kantenschutz für ein sicheres Zuhause."
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(body|anzug|kleidung|strampler|bekleidung|hose|mütze|schuhe?|socken|kleid|adventskalender|landschaft)|(kissen)(?![a-zäöüß])|(^|[^a-zäöüß])(bett-?netz|schlaf[a-zäöüß]*)"
+      ],
+      "handle": "baby-zubehoer-geschenke",
+      "titel": "Baby-Zubehör, Erinnerungen & Geschenke",
+      "g_prefix": [
+        "Baby & Toddler"
+      ],
+      "g_nicht": [
+        "Baby & Toddler > Nursing",
+        "Baby & Toddler > Baby Transport",
+        "Baby & Toddler > Baby Bathing",
+        "Baby & Toddler > Potty",
+        "Baby & Toddler > Diapering",
+        "Baby & Toddler > Baby Health",
+        "Baby & Toddler > Baby Toys",
+        "Baby & Toddler > Baby Safety",
+        "Baby & Toddler > Swaddling"
+      ],
+      "beschreibung": "Meilenstein-Sets für Babyfotos, Geschenkboxen für Neugeborene, Aufbewahrung für Windeln und Zubehör, Nachtlichter und Holzspielzeug für die Kleinsten."
+    },
+    {
+      "titel_muss": [
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|kleinkind[a-zäöüß]*|kids?)"
+      ],
+      "titel_nicht": [],
+      "handle": "kindergeschirr-trinken",
+      "titel": "Kinder- & Babygeschirr, Trinkflaschen",
+      "g_prefix": [
+        "Home & Garden > Kitchen & Dining"
+      ],
+      "beschreibung": "Geschirr-Sets, Besteck, Trinkbecher, Trinkflaschen und Lunchboxen für Kinder und Babys sowie Zubehör für Babynahrung.",
+      "unterfilter": [
+        {
+          "handle": "kinder-trinken-lunchbox",
+          "titel": "Trinkflaschen, Becher & Lunchboxen",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(trinkflasche|wasserflasche|becher|thermosbecher|trinkbecher|glas|flasche|thermos[a-zäöüß-]*|lunchbox|snack[a-zäöüß-]*|isolierte[a-zäöüß]*)"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "kinder-geschirr-babynahrung",
+          "titel": "Geschirr, Besteck & Babynahrung",
+          "titel_muss": [
+            "(^|[^a-zäöüß])(geschirr[a-zäöüß-]*|teller[a-zäöüß-]*|besteck[a-zäöüß-]*|dinner[a-zäöüß-]*|schüssel|tablett|babynahrung|babybrei|zerkleinerer|mixer|entsafter|passier[a-zäöüß-]*|pürier[a-zäöüß-]*|ausstech[a-zäöüß-]*)"
+          ],
+          "titel_nicht": [
+            "(^|[^a-zäöüß])(trinkflasche|wasserflasche|becher|thermosbecher|trinkbecher|lunchbox)"
+          ]
+        }
+      ]
+    },
+    {
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(hula|hoop|gymnastik[a-zäöüß]*|fitness[a-zäöüß-]*|training[a-zäöüß]*|fidget|schlüsselanhänger|antriebsmotor|fingerboard[a-zäöüß-]*|baseballschläger|nylon)"
+      ],
+      "handle": "draussen-wasser-seifenblasen",
+      "titel": "Draussen, Wasser & Seifenblasen",
+      "g_prefix": [
+        "Toys & Games > Outdoor Play Equipment",
+        "Toys & Games > Toys > Activity Toys",
+        "Toys & Games > Toys > Sports Toys",
+        "Toys & Games > Toys > Bath Toys",
+        "Toys & Games > Toys > Riding"
+      ],
+      "beschreibung": "Wassersprinkler, Schaukeln, Seifenblasen, Badespielzeug und weitere Spielsachen für draussen und die Badewanne."
+    },
+    {
+      "titel_muss": [
+        "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling|kleinkind[a-zäöüß]*|sitz[a-zäöüß-]*)"
+      ],
+      "handle": "kinderzimmer-textilien-deko",
+      "titel": "Kinderzimmer: Textilien & Deko",
+      "g_prefix": [],
+      "g_nicht": [
+        "Apparel & Accessories",
+        "Sporting Goods",
+        "Health & Beauty",
+        "Toys & Games",
+        "Baby & Toddler",
+        "Furniture > Baby",
+        "Home & Garden > Kitchen & Dining",
+        "Luggage & Bags",
+        "Electronics",
+        "Animals & Pet Supplies",
+        "Vehicles & Parts",
+        "Arts & Entertainment"
+      ],
+      "tags_nicht": [],
+      "beschreibung": "Kinderkissen, Kinderdecken, Teppiche, Vorhänge, Wandsticker und Nachtlichter für das Kinderzimmer."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Bausteine & Bausätze",
+      "handle": "spielzeug-bausteine-gruppe",
+      "kinder": [
+        "bausteine-fahrzeug-bausaetze",
+        "bausaetze-roboter-technik",
+        "bausteine-gebaeude-staedte",
+        "bausteine-blumen-deko",
+        "bausteine-tiere-weltraum",
+        "bausteine-holz-magnet-gross",
+        "bausteine-kinder-mikro",
+        "bausteine-weitere-sets"
+      ]
+    },
+    {
+      "titel": "Plüsch, Puppen & Spielwelten",
+      "handle": "spielzeug-pluesch-puppen-gruppe",
+      "kinder": [
+        "pluesch-kuscheltiere",
+        "puppen-figuren-miniaturen",
+        "rollenspiel-spielsets",
+        "holzspielzeug-spielwelten"
+      ]
+    },
+    {
+      "titel": "Fahrzeuge & Ferngesteuertes",
+      "handle": "spielzeug-fahrzeuge-gruppe",
+      "kinder": [
+        "rc-autos-trucks",
+        "rc-helikopter-flugzeuge",
+        "spielzeug-roboter",
+        "spielzeugautos-eisenbahn",
+        "drohnen-fpv"
+      ]
+    },
+    {
+      "titel": "Lernen, Puzzles & Spiele",
+      "handle": "spielzeug-lernen-spiele-gruppe",
+      "kinder": [
+        "puzzles-3d-holz",
+        "spiele-karten-geschick",
+        "lernspielzeug-experimentieren",
+        "kinder-malen-basteln"
+      ]
+    },
+    {
+      "titel": "Baby & Kleinkind",
+      "handle": "baby-kleinkind-gruppe",
+      "kinder": [
+        "baby-stillen-fuettern",
+        "baby-kinderwagen-unterwegs",
+        "baby-baden-wickeln-pflege",
+        "baby-schlafen-kuscheln",
+        "baby-spielen-entdecken",
+        "baby-sicherheit-babyphone",
+        "kindergeschirr-trinken",
+        "baby-zubehoer-geschenke"
+      ]
+    },
+    {
+      "titel": "Schule, Kinderzimmer & Draussen",
+      "handle": "kinder-schule-zimmer-gruppe",
+      "kinder": [
+        "schule-kindergarten",
+        "kinderzimmer-textilien-deko",
+        "draussen-wasser-seifenblasen"
+      ]
+    }
+  ],
+  "ausserhalb": [],
+  "hinweise": []
+}

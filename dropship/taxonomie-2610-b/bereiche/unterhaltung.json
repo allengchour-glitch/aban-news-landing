@@ -14,20 +14,33 @@
    "Electronics > Communications > Communication Radio",
    "Electronics > Communications > Intercoms",
    "Cameras & Optics",
-   "Electronics > Electronics Accessories > Cables",
-   "Electronics > Electronics Accessories > Adapters",
+   "Electronics > Electronics Accessories > Cables > Audio & Video",
+   "Electronics > Electronics Accessories > Adapters > Audio & Video",
    "Electronics > Electronics Accessories > Audio & Video",
    "Electronics > Video Game",
    "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers",
    "Electronics > Electronics Accessories > Computer Components > Input Device Accessories > Game Controller Accessories",
-   "Hardware > Power & Electrical Supplies > Solar Panels"
+   "Hardware > Power & Electrical Supplies > Solar Panels",
+   "Electronics > Computers > Smart Glasses",
+   "Apparel & Accessories > Jewelry > Watch Accessories"
   ],
   "titel_muss": [
-   "(^|[^a-zäöüß])(smart ?watch|smartuhr|fitness-?tracker|fitnessarmband|smart-?armband|drohne|quadcopter|fpv|vr-?brille)"
+   "(^|[^a-zäöüß])(smart ?watch|smartuhr|fitness-?tracker|fitness-?armband|smart-?armband|smart ?ring|drohne|quadcopter|quadrocopter|fpv|uav|dji|mavic|vr-?brille|solar[- ]?(panel|lade|faltpanel|controller)|kurbelradio|notfallradio|zigbee|smart ?home|tuya|gateway|rollladen|rolladen|vorhangmotor|smart[a-zäöüß]* thermostat|wlan-?thermostat|wifi thermostat|wlan-?schalter|wifi-?(touch)?schalter)",
+   "(lade|netzteil|akku)[^|]*(ps[1-5]|xbox|wii|switch ?2?|playstation|nintendo|joy-?con|gamepad|controller|oculus|quest|konsole|steam ?deck|portal)",
+   "(ps[1-5]|xbox|wii|switch ?2?|playstation|nintendo|joy-?con|gamepad|controller|oculus|quest|konsole|steam ?deck|portal)[^|]*(lade|netzteil|akku)"
   ],
   "g_nicht": [
    "Cameras & Optics > Cameras > Surveillance Cameras",
-   "Cameras & Optics > Cameras > Webcams"
+   "Cameras & Optics > Cameras > Webcams",
+   "Apparel & Accessories > Jewelry > Rings",
+   "Luggage & Bags",
+   "Home & Garden",
+   "Sporting Goods",
+   "Animals & Pet Supplies",
+   "Health & Beauty",
+   "Arts & Entertainment",
+   "Vehicles & Parts",
+   "Toys & Games > Toys > Building Toys"
   ],
   "titel_nicht": []
  },
@@ -42,31 +55,32 @@
     "(^|[^a-zäöüß])(gaming|e-?sport|zocker|ps[45])",
     "(^|[^a-zäöüß])(vr[- ]|virtual|3d-?brille|smart vr)",
     "(headset|headsets)(?![a-zäöüß])",
-    "(^|[^a-zäöüß])(helm|motorrad|velofahrer)"
+    "(^|[^a-zäöüß])(helm|motorrad|velofahrer)",
+    "(^|[^a-zäöüß])(maske|ohrschutz|schallschutz)"
    ],
    "beschreibung": "Kopfhörer und Ohrhörer zum Musikhören: kabellos mit Bluetooth oder mit Kabel, als In-Ear, Over-Ear oder Open-Ear, auch mit Geräuschunterdrückung.",
    "unterfilter": [
     {
      "handle": "kopfhoerer-in-ear",
-     "titel": "In-Ear-Kopfhörer",
+     "titel": "In-Ear- & Ohrhörer",
      "titel_muss": [
       "(^|[^a-zäöüß])(in-?ear|ohrhörer|earbuds?|earphones?|tws|ohrstöpsel)"
      ],
      "titel_nicht": []
     },
     {
-     "handle": "kopfhoerer-over-ear",
-     "titel": "Over-Ear-Kopfhörer",
+     "handle": "kopfhoerer-sport-knochenschall",
+     "titel": "Sport & Knochenschall",
      "titel_muss": [
-      "(^|[^a-zäöüß])(over-?ear|bügel)"
+      "(^|[^a-zäöüß])(knochen|sport|open-?ear|ohrhaken|ear-?clip|clip-on|ear-?hook|stirnband|kopfband)"
      ],
      "titel_nicht": []
     },
     {
-     "handle": "kopfhoerer-sport-knochenschall",
-     "titel": "Sport- & Knochenschall-Kopfhörer",
+     "handle": "kopfhoerer-kabellos-bluetooth",
+     "titel": "Kabellos & Bluetooth",
      "titel_muss": [
-      "(^|[^a-zäöüß])(knochen|sport|open-?ear|ohrhaken|ear-?clip|clip-on)"
+      "(^|[^a-zäöüß])(kabellos|bluetooth|wireless|tws)"
      ],
      "titel_nicht": []
     },
@@ -74,15 +88,7 @@
      "handle": "kopfhoerer-geraeuschunterdrueckung",
      "titel": "Mit Geräuschunterdrückung",
      "titel_muss": [
-      "(^|[^a-zäöüß])(geräuschunterdrückung|noise|anc|enc)"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "kopfhoerer-kabelgebunden",
-     "titel": "Kabelgebundene Kopfhörer",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(kabelgebunden|mit kabel|wired|3[.,]5|klinke)"
+      "(^|[^a-zäöüß])(geräuschunterdrückung|noise|anc|enc|lärm|übersetz)"
      ],
      "titel_nicht": []
     }
@@ -98,31 +104,14 @@
     "(^|[^a-zäöüß])(gaming|e-?sport|zocker|ps[45])"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(vr[- ]|virtual|3d-?brille)"
+    "(^|[^a-zäöüß])(vr[- ]|virtual|3d-?brille|smart vr)"
    ],
    "beschreibung": "Headsets zum Spielen: mit Mikrofon, Surround-Klang und Beleuchtung, kabelgebunden oder kabellos für Konsole, PC und Handy.",
-   "unterfilter": [
-    {
-     "handle": "gaming-headsets-kabellos",
-     "titel": "Kabellose Gaming-Headsets",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(kabellos|wireless|bluetooth|drahtlos)"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "gaming-headsets-in-ear",
-     "titel": "In-Ear-Gaming-Headsets",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(in-?ear)"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "unterfilter": []
   },
   {
    "handle": "bluetooth-headsets-telefon",
-   "titel": "Bluetooth-Headsets & Freisprecher",
+   "titel": "Bluetooth-Headsets",
    "g_prefix": [
     "Electronics > Audio > Audio Components > Headphones & Headsets"
    ],
@@ -133,18 +122,30 @@
     "(^|[^a-zäöüß])(gaming|e-?sport|zocker|ps[45])",
     "(^|[^a-zäöüß])(vr[- ]|virtual|3d-?brille|smart vr)"
    ],
-   "beschreibung": "Headsets mit Mikrofon für Telefonate und Büro, kabellos mit Bluetooth, mit Ohrhaken oder für den Helm.",
+   "beschreibung": "Headsets mit Mikrofon: Bluetooth-Headsets mit Ohrhaken, Sport-Headsets, faltbare Headsets und Headsets für den Helm.",
    "unterfilter": []
   },
   {
-   "handle": "kopfhoerer-zubehoer-etuis",
-   "titel": "Kopfhörer-Zubehör & Etuis",
+   "handle": "audio-zubehoer-adapter",
+   "titel": "Audio-Zubehör & Bluetooth-Adapter",
    "g_prefix": [
-    "Electronics > Audio > Audio Accessories > Headphone & Headset Accessories"
+    "Electronics > Audio > Audio Accessories",
+    "Electronics > Audio > Audio Components > Audio Transmitters"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Ständer, Halter, Schutzhüllen und Etuis für Kopfhörer und Ohrhörer.",
-   "unterfilter": []
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(vr)"
+   ],
+   "beschreibung": "Ständer, Halter, Etuis und Schutzhüllen für Kopfhörer und Lautsprecher sowie Bluetooth- und FM-Sender und -Empfänger für Auto und Heimanlage.",
+   "unterfilter": [
+    {
+     "handle": "audio-zubehoer-kopfhoerer",
+     "titel": "Für Kopfhörer & Ohrhörer",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kopfhörer|ohrhörer|airpods|headset|ohrhoerer|kopfhoerer)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "bluetooth-lautsprecher-boxen",
@@ -153,46 +154,141 @@
     "Electronics > Audio > Audio Components > Speakers"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(schutzhülle|halterung|tasche)",
-    "(^|[^a-zäöüß])(wecker)"
+    "(^|[^a-zäöüß])(wand)?halterung für",
+    "schutzhülle für",
+    "(^|[^a-zäöüß])tasche",
+    "(^|[^a-zäöüß])(wecker)",
+    "(^|[^a-zäöüß])(bildschirm)",
+    "romantische atmosphäre"
    ],
-   "beschreibung": "Tragbare und feste Lautsprecher: Bluetooth-Boxen für unterwegs, Outdoor und Badezimmer, Computer-Lautsprecher und Soundbars.",
-   "unterfilter": []
+   "beschreibung": "Tragbare und feste Lautsprecher: Bluetooth-Boxen für unterwegs, Outdoor und Badezimmer, Karaoke-Boxen, Computer-Lautsprecher und Soundbars.",
+   "unterfilter": [
+    {
+     "handle": "lautsprecher-outdoor-wasserdicht",
+     "titel": "Outdoor & wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(outdoor|wasserdicht|draussen|bad|dusche)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "lautsprecher-mit-licht",
+     "titel": "Mit Licht & Lampe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(licht|lampe|led|rgb|leucht)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
-   "handle": "mikrofone-aufnahme",
-   "titel": "Mikrofone & Aufnahme",
+   "handle": "mikrofone-zubehoer",
+   "titel": "Mikrofone & Zubehör",
    "g_prefix": [
     "Electronics > Audio > Audio Components > Microphones"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(puppe)",
-    "(^|[^a-zäöüß])(pop-?schutz)"
+    "(^|[^a-zäöüß])(puppe)"
    ],
-   "beschreibung": "Mikrofone für Gesang, Streaming, Podcast und Videoaufnahmen: USB-Kondensatormikrofone, Funkmikrofone, Ansteckmikrofone und Karaoke-Sets.",
-   "unterfilter": []
+   "beschreibung": "Mikrofone für Gesang, Streaming, Podcast und Videoaufnahmen: USB-Kondensatormikrofone, Funkmikrofone, Ansteckmikrofone und Karaoke-Sets, dazu Mikrofonständer.",
+   "unterfilter": [
+    {
+     "handle": "mikrofone-funk-ansteck",
+     "titel": "Funk- & Ansteckmikrofone",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(funk|ansteck|lavalier|kabellos|drahtlos|wireless|kragen|clip)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "mikrofone-usb-kondensator",
+     "titel": "USB- & Kondensatormikrofone",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(usb|kondensator|condenser)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "mikrofone-karaoke",
+     "titel": "Karaoke-Mikrofone",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(karaoke|ktv|gesang)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "radios-audioplayer-diktiergeraete",
    "titel": "Radios, MP3-Player & Diktiergeräte",
    "g_prefix": [
-    "Electronics > Audio > Audio Players & Recorders"
+    "Electronics > Audio > Audio Players & Recorders",
+    "Electronics > Electronics Accessories > Power"
+   ],
+   "titel_muss": [
+    "radio|mp3|player|walkman|diktier|rekorder|recorder|aufnahme-stick"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(karaoke)"
+   ],
+   "beschreibung": "Tragbare Radios, Notfallradios mit Kurbel und Solar, MP3- und CD-Player sowie Diktiergeräte und Sprachrekorder.",
+   "unterfilter": []
+  },
+  {
+   "handle": "funkgeraete-megaphone",
+   "titel": "Funkgeräte & Megaphone",
+   "g_prefix": [
+    "Electronics > Communications > Communication Radio",
+    "Electronics > Audio > Bullhorns",
+    "Electronics > Audio > Public Address"
    ],
    "titel_nicht": [],
-   "beschreibung": "Tragbare Radios, Notfallradios, MP3- und CD-Player sowie Diktiergeräte und Sprachrekorder.",
+   "beschreibung": "Walkie-Talkies und Handfunkgeräte, Funkgeräte fürs Fahrzeug und Funk-Zubehör sowie Megaphone und tragbare Lautsprecher zum Durchsagen.",
    "unterfilter": []
   },
   {
    "handle": "beamer-heimprojektoren",
-   "titel": "Beamer & Projektoren",
+   "titel": "Beamer & Heimprojektoren",
    "g_prefix": [
     "Electronics > Video > Projectors"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(weihnacht|zeichen|holo)",
+    "(^|[^a-zäöüß])(weihnacht|zeichen|holo|szenen|laserprojektor|sternenhimmel|nachtlicht|laserlicht)",
     "(projektorlicht)(?![a-zäöüß])"
    ],
    "beschreibung": "Mini-Beamer und Heimprojektoren für Filme, Serien und Spiele, mit WLAN, Android oder Anschluss ans Handy.",
+   "unterfilter": [
+    {
+     "handle": "beamer-mini-tragbar",
+     "titel": "Mini-Beamer",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mini|tragbar|portabel|kompakt|handy)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "beamer-wlan-smart",
+     "titel": "Mit WLAN & Android",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wlan|wifi|smart|android|bluetooth)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "streaming-hdmi-adapter",
+   "titel": "TV-Boxen, Streaming & HDMI-Adapter",
+   "g_prefix": [
+    "Electronics > Video > Video Players & Recorders",
+    "Electronics > Video > Video Transmitters",
+    "Electronics > Video > Video Editing Hardware",
+    "Electronics > Electronics Accessories > Adapters > Audio & Video",
+    "Electronics > Electronics Accessories > Audio & Video",
+    "Electronics > Electronics Accessories > Cables > Audio & Video"
+   ],
+   "titel_nicht": [],
+   "beschreibung": "Android-TV-Boxen, Streaming-Player und Dongles für den Fernseher, dazu HDMI-Adapter, -Umwandler und -Umschalter sowie Capture-Boxen.",
    "unterfilter": []
   },
   {
@@ -203,74 +299,142 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(uav|drohne)",
-    "(^|[^a-zäöüß])(tastatur)"
+    "(^|[^a-zäöüß])(tastatur)",
+    "(dimmer|lichtschalter)(?![a-zäöüß])"
    ],
    "beschreibung": "Universal- und Ersatz-Fernbedienungen für Fernseher, Klimaanlagen, Garagentore und Smart-Home-Geräte.",
    "unterfilter": []
   },
   {
-   "handle": "streaming-tv-boxen",
-   "titel": "TV-Boxen & Streaming-Player",
-   "g_prefix": [
-    "Electronics > Video > Video Players & Recorders",
-    "Electronics > Video > Video Transmitters"
-   ],
-   "titel_nicht": [],
-   "beschreibung": "Android-TV-Boxen, Streaming-Player und Dongles, die Bild und Ton vom Handy auf den Fernseher bringen.",
-   "unterfilter": []
-  },
-  {
-   "handle": "action-sportkameras",
-   "titel": "Action- & Sportkameras",
+   "handle": "action-sport-wildkameras",
+   "titel": "Action-, Sport- & Wildkameras",
    "g_prefix": [
     "Cameras & Optics > Cameras > Video Cameras",
     "Cameras & Optics > Cameras > Digital Cameras",
     "Cameras & Optics > Cameras > Trail Cameras"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Action-Kameras, Sport- und Outdoor-Kameras, Camcorder und Wildkameras.",
-   "unterfilter": []
-  },
-  {
-   "handle": "kamera-stative-gimbals",
-   "titel": "Kamera-Stative & Gimbals",
-   "g_prefix": [
-    "Cameras & Optics > Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers",
-    "Cameras & Optics > Camera & Optic Accessories > Tripod"
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(rückenstütz|lichtrecorder|bildschirm-recorder)"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Stative, Gimbals und Stabilisatoren für Kameras und Smartphones.",
-   "unterfilter": []
+   "beschreibung": "Action-Kameras, Sport- und Outdoor-Kameras, Camcorder, Kinderkameras und Wildkameras.",
+   "unterfilter": [
+    {
+     "handle": "kameras-action-sport",
+     "titel": "Action- & Sportkameras",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(action|sport|outdoor|bewegungs)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kameras-wasserdicht-4k",
+     "titel": "Wasserdicht & 4K",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|4k)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "kamerataschen-foto-zubehoer",
    "titel": "Kamerataschen & Foto-Zubehör",
    "g_prefix": [
-    "Cameras & Optics > Camera & Optic Accessories"
-   ],
-   "titel_nicht": [],
-   "beschreibung": "Kamerataschen, Objektive, Halterungen und weiteres Zubehör für Foto und Video.",
-   "unterfilter": []
-  },
-  {
-   "handle": "ringlicht-studiolicht",
-   "titel": "Ringlicht & Studiolicht",
-   "g_prefix": [
+    "Cameras & Optics > Camera & Optic Accessories",
     "Cameras & Optics > Photography"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Ringlichter, Fotolicht und Studio-Zubehör für Selfies, Streams und Produktfotos.",
+   "g_nicht": [
+    "Cameras & Optics > Camera & Optic Accessories > Tripods",
+    "Cameras & Optics > Camera & Optic Accessories > Tripod",
+    "Cameras & Optics > Camera & Optic Accessories > Optic Accessories",
+    "Cameras & Optics > Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers",
+    "Cameras & Optics > Photography > Lighting & Studio > Studio Lights & Flashes"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(dji|mavic)",
+    "(^|[^a-zäöüß])(neugeboren|baby)"
+   ],
+   "beschreibung": "Kamerataschen, Objektive und Filter, Schutzgehäuse, Griffe und Halterungen für Action-Kameras, Fotostudio-Zubehör sowie weiteres Zubehör für Foto und Video.",
    "unterfilter": []
   },
   {
    "handle": "fernglaeser-nachtsicht",
    "titel": "Ferngläser, Teleskope & Nachtsicht",
    "g_prefix": [
-    "Cameras & Optics > Optics"
+    "Cameras & Optics > Optics",
+    "Cameras & Optics > Camera & Optic Accessories > Optic Accessories"
    ],
    "titel_nicht": [],
-   "beschreibung": "Ferngläser, Monokulare, Teleskope und Nachtsichtgeräte für draussen.",
+   "beschreibung": "Ferngläser, Monokulare, Teleskope, Entfernungsmesser und Nachtsichtgeräte für draussen.",
    "unterfilter": []
+  },
+  {
+   "handle": "kameradrohnen-quadrocopter",
+   "titel": "Drohnen",
+   "titel_muss": [
+    "(^|[^a-zäöüß])(drohne|drohnen|drone|drones|quadcopter|quadrocopter|fpv|uav|flugroboter|mavic|dji|flugsteuerung|flugcontroller|tinyhawk|nanohawk)"
+   ],
+   "g_nicht": [
+    "Toys & Games > Toys > Remote Control Toys > Remote Control Helicopters",
+    "Luggage & Bags",
+    "Apparel & Accessories",
+    "Electronics > Electronics Accessories",
+    "Cameras & Optics > Camera & Optic Accessories",
+    "Arts & Entertainment"
+   ],
+   "titel_nicht": [
+    "(?<!mit )(?<!und )(?<!, )(?<!& )(?<!, \\d )(?<!mit \\d )(akku|akkus|akkumulator|batterie|propeller|rotorblätter|rucksack|aufbewahrungstasche|umhängetasche|messenger bag|ladegerät|lader(?![a-zäöüß])|ladestation|schutzring-set|propellerschutz|abdeckung|halterung|ständer|antenne|monitor|zubehör|modul|chip|rahmen|frame|lautsprecher für|filterset|schwenkarm|tuner|gimbal motor|gimbal-schutz|megaphon|abwurf|klemme|landeplatz|warnleucht|flugsteuerung|flugcontroller|paddle blade|wasserfeste box)"
+   ],
+   "beschreibung": "Drohnen: faltbare Mini-Drohnen mit Kamera, Quadrocopter mit Fernsteuerung, Drohnen für Kinder und FPV-Rennfluggeräte.",
+   "unterfilter": [
+    {
+     "handle": "drohnen-mit-kamera-4k",
+     "titel": "Drohnen mit Kamera",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kamera|4k|8k|hd)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "drohnen-mini-faltbar",
+     "titel": "Mini- & Falt-Drohnen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mini|falt)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "drohnen-zubehoer-fpv",
+   "titel": "Drohnen-Zubehör & FPV-Teile",
+   "titel_muss": [
+    "^(?=.*(^|[^a-zäöüß])(drohne|drohnen|drone|drones|quadcopter|quadrocopter|fpv|uav|flugroboter|mavic|dji|flugsteuerung|flugcontroller|tinyhawk|nanohawk))(?=.*(?<!mit )(?<!und )(?<!, )(?<!& )(?<!, \\d )(?<!mit \\d )(akku|akkus|akkumulator|batterie|propeller|rotorblätter|rucksack|aufbewahrungstasche|umhängetasche|messenger bag|ladegerät|lader(?![a-zäöüß])|ladestation|schutzring-set|propellerschutz|abdeckung|halterung|ständer|antenne|monitor|zubehör|modul|chip|rahmen|frame|lautsprecher für|filterset|schwenkarm|tuner|gimbal motor|gimbal-schutz|megaphon|abwurf|klemme|landeplatz|warnleucht|flugsteuerung|flugcontroller|paddle blade|wasserfeste box))"
+   ],
+   "g_nicht": [
+    "Arts & Entertainment",
+    "Health & Beauty"
+   ],
+   "titel_nicht": [],
+   "beschreibung": "Akkus, Ladegeräte, Propeller, Taschen, Rucksäcke und Ersatzteile für Drohnen und FPV-Flugmodelle.",
+   "unterfilter": [
+    {
+     "handle": "drohnen-zubehoer-akkus-lader",
+     "titel": "Akkus & Ladegeräte",
+     "titel_muss": [
+      "akku|lade|lipo|lithium|batter"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "drohnen-zubehoer-dji",
+     "titel": "Für DJI & Mavic",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(dji|mavic)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "gamepads-controller",
@@ -279,9 +443,37 @@
     "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers",
     "Electronics > Electronics Accessories > Computer Components > Input Device Accessories > Game Controller Accessories"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Gamepads, Controller, Joysticks und Arcade-Sticks für Handy, PC und Konsole.",
-   "unterfilter": []
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(tanzmatte)",
+    "(^|[^a-zäöüß])(retro-spielkonsole)"
+   ],
+   "beschreibung": "Gamepads, Controller, Joysticks und Arcade-Sticks für Handy, PC und Konsole, dazu Controller-Zubehör wie Trigger, Griffe und Schlaufen.",
+   "unterfilter": [
+    {
+     "handle": "controller-handy-mobile",
+     "titel": "Für Handy & Tablet",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mobil|smartphone|android|iphone|ios|handy|tablet)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "controller-bluetooth-kabellos",
+     "titel": "Kabellos & Bluetooth",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kabellos|bluetooth|wireless|drahtlos)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "controller-konsole-pc",
+     "titel": "Für PS, Xbox, Switch & PC",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(ps[3-5]|xbox|switch|pc|playstation|nintendo|wii|konsole)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "spielkonsolen-retro-handhelds",
@@ -289,55 +481,318 @@
    "g_prefix": [
     "Electronics > Video Game Consoles"
    ],
-   "titel_nicht": [],
+   "titel_nicht": [
+    "(hülle|halterung|adapter|expander)(?![a-zäöüß])"
+   ],
    "beschreibung": "Spielkonsolen für den Fernseher und Handhelds mit Retro-Spielen.",
-   "unterfilter": []
+   "unterfilter": [
+    {
+     "handle": "konsolen-retro-arcade",
+     "titel": "Retro & Arcade",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(retro|arcade|8-?bit|16 ?bit|fc|snes|classic|klassisch)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "konsolen-handheld",
+     "titel": "Handhelds",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(handheld|klapp|mini)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
-   "handle": "konsolen-zubehoer-sauber",
-   "titel": "Konsolen-Zubehör",
+   "handle": "konsolen-zubehoer-ladestationen",
+   "titel": "Konsolen-Zubehör & Ladestationen",
    "g_prefix": [
-    "Electronics > Video Game Console Accessories"
+    "Electronics > Video Game Console Accessories",
+    "Electronics > Electronics Accessories > Power"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(controller|konsole|konsolen|console|ps[1-5]|playstation|xbox|nintendo|switch|wii|joy-?con|steam ?deck|portal|gamepad|gaming|game|spielkonsole|spielekonsole|spielkarte|game card|vr|quest|oculus|joystick|retro|thumbstick|arcade|psp|gba|nes|n64|daumen|rocker|griff)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(apple watch|smartwatch|google watch|handy|smartphone|iphone|starthilfe|auto|kfz|laptop|solar|powerbank|power bank|spielzeug)",
+    "(^|[^a-zäöüß])(vr|oculus|quest|pico|meta quest|virtual|3d-?vr)"
+   ],
+   "beschreibung": "Hüllen, Ladestationen, Netzteile, Kühler, Skins und Ersatzteile für Spielkonsolen und Controller.",
+   "unterfilter": [
+    {
+     "handle": "konsolen-ladestationen",
+     "titel": "Ladestationen & Netzteile",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(lade|netzteil|akku|dock|powerbank)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "konsolen-huellen-taschen",
+     "titel": "Hüllen, Taschen & Skins",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hülle|tasche|case|box|sticker|skin|schutz|aufbewahrung|kappe|rocker)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "vr-brillen-zubehoer",
+   "titel": "VR-Brillen & VR-Zubehör",
+   "titel_muss": [
+    "(^|[^a-zäöüß])(vr[- ]?(brille|brillen|headset|controller|ständer|zubehör|gamepad|ladestation)|virtual[- ]reality|3d-?vr|3d-?brille|oculus|meta quest|quest ?[23]|pico ?(neo|4)|ps4vr|psvr|vr2)"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories",
+    "Cameras & Optics",
+    "Toys & Games"
    ],
    "titel_nicht": [],
-   "beschreibung": "Hüllen, Ladestationen, Kühler, Skins und Ersatzteile für Spielkonsolen und Controller.",
+   "beschreibung": "VR-Brillen fürs Smartphone, Standalone-VR-Headsets sowie Controller, Ladestationen, Kopfbänder, Ständer und Schutzhüllen für Virtual Reality.",
    "unterfilter": []
   },
   {
    "handle": "smartwatches",
    "titel": "Smartwatches",
-   "titel_muss": [
-    "(^|[^a-zäöüß])(smart ?watch|smartuhr|smart-?armbanduhr)"
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry > Watches"
    ],
-   "g_nicht": [
-    "Apparel & Accessories > Jewelry > Watch Accessories"
+   "titel_muss": [
+    "(^|[^a-zäöüß])(smart ?watch|smartuhr|smart[- ]?armbanduhr|smart-?uhr|smarte uhr|telefonuhr|videoanruf-?uhr|bluetooth[- ]?(pedometer[- ])?uhr|pedometer[- ]bluetooth[- ]uhr)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(armband für|armbänder? für|gehäuse|schutzfolie|hülle|ladekabel|ladegerät|ladestation)"
+    "(^|[^a-zäöüß])(armband für|armbänder? für)",
+    "power ?bank für",
+    "halskette",
+    "smart ?watch-?armband( |$)",
+    "harzarmband",
+    "fussbad"
    ],
    "beschreibung": "Smartwatches mit Bluetooth-Anrufen, Herzfrequenz- und Schlafmessung, GPS und Sportmodi, auch für Kinder.",
-   "unterfilter": []
+   "unterfilter": [
+    {
+     "handle": "smartwatches-kinder",
+     "titel": "Kinder-Smartwatches",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kinder|kids|schüler|junior)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "smartwatches-gps",
+     "titel": "Mit GPS",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(gps)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "smartwatches-anruf",
+     "titel": "Mit Anruffunktion",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(anruf|telefon|4g|sim|call)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "smartwatches-damen",
+     "titel": "Damen-Smartwatches",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(damen|frauen|lady|mädchen)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "fitness-tracker-smartbands",
-   "titel": "Fitness-Tracker & Smartbands",
+   "titel": "Fitness-Tracker, Smartbands & Smart Rings",
    "titel_muss": [
-    "(^|[^a-zäöüß])(fitness-?tracker|fitnessarmband|smart-?armband|smart ?band|aktivitäts?-?tracker|smart bracelet)"
+    "(^|[^a-zäöüß])(fitness-?tracker|smart ?band|aktivitäts?-?tracker|smart ?bracelet|smart ?ring|herzfrequenz-?armband)",
+    "^(?=.*armband)(?=.*(smart|fitness|health|gesundheit|pedometer|schrittzähler|herzfrequenz|pulsmesser|bluetooth))"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Jewelry > Watch Accessories",
+    "Electronics > Electronics Accessories > Remote Controls",
+    "Electronics > Audio"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart ?watch|smartuhr)"
+    "(^|[^a-zäöüß])(smart ?watch|smartuhr)",
+    "smart[- ]?armbanduhr",
+    "armband für (smart ?watch|uhr|apple|samsung|huawei|fitbit|xiaomi|garmin|watch|iwatch|redmi)",
+    "boho",
+    "ring fernbedienung",
+    "uhrenarmband",
+    "ersatzarmband",
+    "leuchtend",
+    "lader",
+    "kabel",
+    "gewicht",
+    "paare",
+    "armbanduhr",
+    "reminder",
+    "smartphone"
    ],
-   "beschreibung": "Fitness-Tracker und Smartbands mit Herzfrequenz, Schrittzähler und Schlaf-Tracking.",
+   "beschreibung": "Fitness-Tracker, Smartbands und Smart Rings mit Herzfrequenz, Schrittzähler und Schlaf-Tracking.",
+   "unterfilter": [
+    {
+     "handle": "tracker-herzfrequenz",
+     "titel": "Mit Herzfrequenzmessung",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herz|puls)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tracker-farbdisplay",
+     "titel": "Mit Farbdisplay",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(farb|display|touch|bildschirm)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tracker-bluetooth-anruf",
+     "titel": "Mit Bluetooth & Anruf",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bluetooth|anruf)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "smartwatch-zubehoer",
+   "titel": "Smartwatch-Ladegeräte & Schutzhüllen",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry > Watch Accessories",
+    "Electronics > Electronics Accessories > Power"
+   ],
+   "titel_muss": [
+    "^(?=.*(apple ?watch|smart ?watch|galaxy ?watch|google ?watch|huawei ?watch|uhren?-?lade|smartwatches))(?=.*(lade|charger|dock|ständer|halter|schutzhülle|hülle|case|gehäuse|folie|station|powerbank))"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(armband|uhrenband|band für)",
+    "edelstahlarmband",
+    "(^|[^a-zäöüß])(powerbank)",
+    "[1-9]-in-1"
+   ],
+   "beschreibung": "Ladegeräte, Ladestationen, Schutzhüllen und Gehäuse für Smartwatches und Apple Watch.",
+   "unterfilter": []
+  },
+  {
+   "handle": "uhrenarmbaender-smartwatch",
+   "titel": "Uhren- & Smartwatch-Armbänder",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry > Watch Accessories"
+   ],
+   "titel_muss": [
+    "(armband|armbänder|uhrenband|uhrenbänder|band|bänder|strap|loop|milanese|schliesse|schnalle)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(ladegerät|ladestation|schutzhülle|gehäuse|zifferblatt|uhrenbeweger|halter|quarz-uhr|sport-smartwatch)"
+   ],
+   "beschreibung": "Ersatzarmbänder für Uhren und Smartwatches aus Silikon, Leder, Metall und Nylon, dazu Schnallen und Verschlüsse.",
+   "unterfilter": [
+    {
+     "handle": "armbaender-silikon",
+     "titel": "Silikonarmbänder",
+     "titel_muss": [
+      "silikon"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "armbaender-leder",
+     "titel": "Lederarmbänder",
+     "titel_muss": [
+      "leder"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "armbaender-metall-edelstahl",
+     "titel": "Metall- & Edelstahlarmbänder",
+     "titel_muss": [
+      "metall|edelstahl|stahl|milanese|gliederarmband"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "armbaender-apple-watch",
+     "titel": "Für Apple Watch",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(apple)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "smart-home-geraete",
+   "titel": "Smart-Home-Geräte",
+   "g_prefix": [
+    "Electronics > Networking > Bridges & Routers > Network Bridges",
+    "Hardware > Power & Electrical Supplies",
+    "Home & Garden > Decor > Window Treatment Accessories",
+    "Hardware > Heating, Ventilation & Air Conditioning > HVAC Controls",
+    "Electronics > Networking > Network Cards"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(smart|zigbee|tuya|wlan|wifi|wi-fi|alexa|gateway)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(solar|schloss|kamera|adapter)",
+    "(hub)(?![a-zäöüß])"
+   ],
+   "beschreibung": "Geräte fürs vernetzte Zuhause: Gateways, WLAN-Schalter und -Dimmer, Rollladen- und Vorhangmotoren und Heizungsthermostate.",
    "unterfilter": []
   },
   {
    "handle": "batterien-akkus",
-   "titel": "Batterien & Akkus",
+   "titel": "Batterien, Akkus & Lader",
    "g_prefix": [
-    "Electronics > Electronics Accessories > Power > Batteries"
+    "Electronics > Electronics Accessories > Power > Batteries",
+    "Electronics > Electronics Accessories > Power > Battery Accessories"
    ],
-   "titel_nicht": [],
-   "beschreibung": "Batterien und wiederaufladbare Akkus: Knopfzellen, 18650-Zellen, AA/AAA sowie Ersatzakkus für Kameras und Drohnen.",
+   "g_nicht": [
+    "Electronics > Electronics Accessories > Power > Batteries > Laptop Batteries",
+    "Electronics > Electronics Accessories > Power > Batteries > Mobile Phone Batteries"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(solar)",
+    "(^|[^a-zäöüß])(drohne|drohnen|drone|drones|quadcopter|quadrocopter|fpv|uav|flugroboter|mavic|dji|flugsteuerung|flugcontroller|tinyhawk|nanohawk)",
+    "(^|[^a-zäöüß])(oculus|quest|controller|ps[1-5]|psp|xbox|switch|playstation)",
+    "(^|[^a-zäöüß])(kabellos)"
+   ],
+   "beschreibung": "Batterien und wiederaufladbare Akkus: Knopfzellen, 18650-Zellen, AA/AAA sowie Ersatzakkus für Kameras und Fahrzeuge, dazu Akku-Lader und Batterietester.",
+   "unterfilter": [
+    {
+     "handle": "akkus-18650-lithium",
+     "titel": "Lithium-Akkus & 18650",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(18650|lithium|li-?ion|lipo|lifepo)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "solar-panels-ladegeraete",
+   "titel": "Solarpanels & Solar-Ladegeräte",
+   "g_prefix": [
+    "Hardware > Power & Electrical Supplies",
+    "Electronics > Electronics Accessories > Power"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(solar[- ]?(panel|modul|lade|laderegler|controller|boost|halter|photovoltaik|zelle|faltpanel)|photovoltaik|solare lade)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(powerbank|power bank|radio|lampe|leucht)"
+   ],
+   "beschreibung": "Faltbare Solarpanels, Solar-Ladegeräte fürs Handy, Laderegler und Halterungen für Solarmodule.",
    "unterfilter": []
   }
  ],
@@ -349,10 +804,11 @@
     "kopfhoerer-ohrhoerer",
     "gaming-kopfhoerer-headsets",
     "bluetooth-headsets-telefon",
-    "kopfhoerer-zubehoer-etuis",
     "bluetooth-lautsprecher-boxen",
-    "mikrofone-aufnahme",
-    "radios-audioplayer-diktiergeraete"
+    "mikrofone-zubehoer",
+    "radios-audioplayer-diktiergeraete",
+    "funkgeraete-megaphone",
+    "audio-zubehoer-adapter"
    ]
   },
   {
@@ -360,7 +816,7 @@
    "handle": "tv-beamer-streaming-gruppe",
    "kinder": [
     "beamer-heimprojektoren",
-    "streaming-tv-boxen",
+    "streaming-hdmi-adapter",
     "fernbedienungen-universal"
    ]
   },
@@ -368,12 +824,12 @@
    "titel": "Kamera, Foto & Drohnen",
    "handle": "kamera-foto-drohnen-gruppe",
    "kinder": [
-    "action-sportkameras",
-    "kamera-stative-gimbals",
+    "action-sport-wildkameras",
     "kamerataschen-foto-zubehoer",
-    "ringlicht-studiolicht",
     "fernglaeser-nachtsicht",
-    "drohnen-fpv"
+    "kameradrohnen-quadrocopter",
+    "drohnen-zubehoer-fpv",
+    "selfie-stative-foto"
    ]
   },
   {
@@ -382,9 +838,9 @@
    "kinder": [
     "gamepads-controller",
     "spielkonsolen-retro-handhelds",
-    "konsolen-zubehoer-sauber",
+    "konsolen-zubehoer-ladestationen",
     "gaming-kopfhoerer-headsets",
-    "vr-brillen-headsets"
+    "vr-brillen-zubehoer"
    ]
   },
   {
@@ -393,16 +849,20 @@
    "kinder": [
     "smartwatches",
     "fitness-tracker-smartbands",
-    "uhrenarmbaender",
-    "smarte-brillen-ki"
+    "smartwatch-zubehoer",
+    "uhrenarmbaender-smartwatch",
+    "smart-home-geraete",
+    "smarte-brillen-ki",
+    "gps-tracker-ortung"
    ]
   },
   {
-   "titel": "Strom & Batterien",
-   "handle": "strom-batterien-gruppe",
+   "titel": "Strom, Batterien & Solar",
+   "handle": "strom-batterien-solar-gruppe",
    "kinder": [
     "batterien-akkus",
-    "solar-energie"
+    "solar-panels-ladegeraete",
+    "powerbanks"
    ]
   }
  ],
