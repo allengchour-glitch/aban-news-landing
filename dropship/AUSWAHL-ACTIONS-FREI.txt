@@ -1,0 +1,9 @@
+Freigabe für die nächtlichen Läufe von .github/workflows/auswahl-lauf.yml (Auswahl bei CJ-Produkten nachziehen).
+
+Angelegt:    26.10.2026 (Besitzerauftrag: «auswahl von produkten angepasst bei allen produkten»)
+Grundlage:   Probe am 26.10.2026 17:00 UTC (Lauf 40364261840, nichts geschrieben): ffmpeg, echter KI-Probeaufruf (Gemini), Shopify-Zugang (App autopilot2),
+             CJ-Token und Kandidatenbau aus dem Live-Shop liefen durch; 27 949 Kandidaten (Stufe 1: 467, Stufe 2: 6 137, Stufe 3: 21 346), fünf Pläne.
+Wirkung:     Ohne diese Datei tun geplante Läufe nichts (nur eine Warnung). Mit ihr schreibt jeder Lauf um 21:50 UTC bis zu 330 Minuten lang live in den Shop,
+             bis das Shopify-Tageslimit für neue Varianten erreicht ist (Exitcode 4 = Limit, kein Fehler).
+Rücknahme:   Diese Datei löschen (Commit auf main). Sofort stoppen: den laufenden Lauf in GitHub → Actions abbrechen.
+Von Hand:    Actions → «Auswahl-Lauf» → Run workflow: modus=probe (nur planen) oder modus=lauf (schreibt) — beides unabhängig von dieser Datei.

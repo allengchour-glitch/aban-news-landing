@@ -114,6 +114,15 @@ async function ratings(token, gids){
   }
   return map;
 }
+// Welche der Produkte (gids) sind ACTIVE? (nodes() in Päckchen zu 50)
+async function aktivSet(token, gids){
+  const aktiv = new Set();
+  for(let i=0;i<gids.length;i+=50){
+    const d = await gql(token, `query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id status } } }`, {ids:gids.slice(i,i+50)});
+    for(const n of d.nodes) if(n && n.status==='ACTIVE') aktiv.add(n.id);
+  }
+  return aktiv;
+}
 async function resolveHandles(token, handles){
   const map = new Map();
   for(const h of handles){
@@ -154,7 +163,13 @@ async function main(){
     const rest = [...goodIds, ...memberIds].filter(id=>!rated.includes(id));
     ranked = [...rated, ...rest.filter((v,i,a)=>a.indexOf(v)===i)];
   }
+  // Nur sichtbare Produkte: am 26.10.2026 waren 8 von 10 Mitgliedern DRAFT (auf der Startseite fehlten sie), und die Verkaufsrangliste enthält auch
+  // Produkte, die inzwischen DRAFT oder archiviert sind. Ein DRAFT-Mitglied belegt einen Platz, den ein sichtbares Produkt bekommen müsste.
+  const aktiv = await aktivSet(token, ranked);
+  ranked = ranked.filter(id=>aktiv.has(id));
   const desired = ranked.slice(0, TARGET);
+  // Leere Sammlung nie schreiben (Abfrage-Ausfall, alles DRAFT): lieber den alten Stand lassen als die Startseite leeren.
+  if(!desired.length){ console.log('ABBRUCH: kein aktives Produkt in der Rangliste — nichts geändert.'); return; }
 
   const toAdd = desired.filter(id=>!memberIds.includes(id));
   const toRemove = memberIds.filter(id=>!desired.includes(id));
