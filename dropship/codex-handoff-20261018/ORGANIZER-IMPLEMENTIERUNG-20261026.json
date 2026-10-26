@@ -1,0 +1,149 @@
+{
+  "changeId": "luxe_drawer_organizer_description_20261026_v2",
+  "ownerInstruction": "nur text verbessern bei produkt",
+  "authorizationContext": "Direct product-description improvement requested after prior explicit approval; scope only this reviewed descriptionHtml.",
+  "checkedShop": {
+    "domain": "luxestyle.ch",
+    "currencyCode": "CHF"
+  },
+  "writeTimeUTC": "2026-10-26 22:30:16 UTC",
+  "state": "CONFIRMED_NATIVE_AND_PUBLIC_JSON",
+  "writeCalls": 1,
+  "retries": 0,
+  "productId": "gid://shopify/Product/15408458170753",
+  "url": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular",
+  "submittedFields": [
+    "id",
+    "descriptionHtml"
+  ],
+  "beforeSha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+  "afterSha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+  "before": {
+    "id": "gid://shopify/Product/15408458170753",
+    "title": "Aufbewahrungssystem für Schubladen",
+    "vendor": "LuxeStyle",
+    "status": "ACTIVE",
+    "productType": "Bambus & Badezimmer",
+    "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Mehr Übersicht in deiner Schublade.</strong> Ein Aufbewahrungssystem für Küchenutensilien und andere kleine Alltagsgegenstände.</p>\n<h2>Übersichtlich aufbewahren</h2>\n<p>Ordne die Dinge, die du im Alltag häufig brauchst, an einem festen Platz.</p>\n<p>Sieh dir die Produktfotos an und entdecke das Aufbewahrungssystem bei LuxeStyle.</p>\n</div>\n<div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test\">Ratgeber: Accessoires im Badezimmer</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "tags": [
+      "aufbewahrung",
+      "bambus",
+      "bambus-badezimmer",
+      "bild-ok",
+      "kuratiert",
+      "luxestyle-ch",
+      "modular",
+      "nachhaltig",
+      "organizer",
+      "premium",
+      "schubladen",
+      "swiss-brand",
+      "vegan"
+    ],
+    "totalInventory": 0,
+    "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+        "altText": "Aufbewahrungseinsätze mit Küchenutensilien – Produktansicht",
+        "mediaId": "gid://shopify/MediaImage/69528088150401"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02-HeroLifestyleImage_6f257efe-626a-4068-8a15-15eda51fd2d9.jpg?v=1779958398",
+        "altText": "Aufbewahrungseinsätze in einer Küchenschublade",
+        "mediaId": "gid://shopify/MediaImage/69528088805761"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03-FeaturesImage_0cf29a42-7548-43e4-959f-7a427f511905.jpg?v=1779958401",
+        "altText": "Detail- und Anwendungsansichten der Aufbewahrungseinsätze",
+        "mediaId": "gid://shopify/MediaImage/69528089362817"
+      }
+    ],
+    "totalVariants": 1,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55732479525249",
+        "title": "Default Title",
+        "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST",
+        "price": "34.90",
+        "inventoryQuantity": 0
+      }
+    ],
+    "currencyCode": "CHF"
+  },
+  "after": {
+    "id": "gid://shopify/Product/15408458170753",
+    "title": "Aufbewahrungssystem für Schubladen",
+    "vendor": "LuxeStyle",
+    "status": "ACTIVE",
+    "productType": "Bambus & Badezimmer",
+    "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Küchenhelfer übersichtlich einordnen.</strong> Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.</p>\n<h2>Offene Einsätze mit klaren Konturen</h2>\n<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.</p>\n<h3>Eine Aufteilung für deine Küchenroutine</h3>\n<ul>\n<li>Ordne längere Küchenhelfer nebeneinander an.</li>\n<li>Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.</li>\n<li>Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.</li>\n</ul>\n<p>Sortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.</p>\n</div>\n<div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test\">Ratgeber: Accessoires im Badezimmer</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "tags": [
+      "aufbewahrung",
+      "bambus",
+      "bambus-badezimmer",
+      "bild-ok",
+      "kuratiert",
+      "luxestyle-ch",
+      "modular",
+      "nachhaltig",
+      "organizer",
+      "premium",
+      "schubladen",
+      "swiss-brand",
+      "vegan"
+    ],
+    "totalInventory": 0,
+    "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+        "altText": "Aufbewahrungseinsätze mit Küchenutensilien – Produktansicht",
+        "mediaId": "gid://shopify/MediaImage/69528088150401"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02-HeroLifestyleImage_6f257efe-626a-4068-8a15-15eda51fd2d9.jpg?v=1779958398",
+        "altText": "Aufbewahrungseinsätze in einer Küchenschublade",
+        "mediaId": "gid://shopify/MediaImage/69528088805761"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03-FeaturesImage_0cf29a42-7548-43e4-959f-7a427f511905.jpg?v=1779958401",
+        "altText": "Detail- und Anwendungsansichten der Aufbewahrungseinsätze",
+        "mediaId": "gid://shopify/MediaImage/69528089362817"
+      }
+    ],
+    "totalVariants": 1,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55732479525249",
+        "title": "Default Title",
+        "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST",
+        "price": "34.90",
+        "inventoryQuantity": 0
+      }
+    ],
+    "currencyCode": "CHF"
+  },
+  "changedReturnedFields": [
+    "descriptionHtml"
+  ],
+  "descriptionHtmlDiff": "--- live/descriptionHtml\n+++ approved/descriptionHtml\n@@ -1,9 +1,15 @@\n \n <div class=\"luxestyle-product-body\">\n-<p><strong>Mehr Übersicht in deiner Schublade.</strong> Ein Aufbewahrungssystem für Küchenutensilien und andere kleine Alltagsgegenstände.</p>\n-<h2>Übersichtlich aufbewahren</h2>\n-<p>Ordne die Dinge, die du im Alltag häufig brauchst, an einem festen Platz.</p>\n-<p>Sieh dir die Produktfotos an und entdecke das Aufbewahrungssystem bei LuxeStyle.</p>\n+<p><strong>Küchenhelfer übersichtlich einordnen.</strong> Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.</p>\n+<h2>Offene Einsätze mit klaren Konturen</h2>\n+<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.</p>\n+<h3>Eine Aufteilung für deine Küchenroutine</h3>\n+<ul>\n+<li>Ordne längere Küchenhelfer nebeneinander an.</li>\n+<li>Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.</li>\n+<li>Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.</li>\n+</ul>\n+<p>Sortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.</p>\n </div>\n <div class=\"luxestyle-service-info\">\n <h2>Versand und Rückgabe</h2>\n",
+  "serviceAndLinksPreserved": true,
+  "review": "Independent tight description-only review found no blocker; existing source and visual review preserved.",
+  "retryPolicy": "Do not repeat completed write. If after already present no-op; unknown write never blind retry.",
+  "publicReadback": {
+    "checkedAtUTC": "2026-10-26T22:30:48.097956+00:00",
+    "url": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular.js",
+    "method": "GET",
+    "noCartOrCheckoutAction": true,
+    "status": 200,
+    "productId": "15408458170753",
+    "descriptionSha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+    "descriptionExact": true,
+    "variants": 1,
+    "pricesCents": [
+      3490
+    ]
+  }
+}
+
