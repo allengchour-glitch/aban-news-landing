@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_FOLLOWER_FOOTER_20261026
+
+**Aktuelle Fortsetzung des Facebook-/YouTube-Followerauftrags:** [fortgeschriebener Followerplan](FB-YT-FOLLOWER-PLAN-20261026.md), [neue Quellen-/Metadatenbefunde](FOLLOWER-FORTSETZUNG-20261026.json), [konkrete Footer-Ergänzung zur Freigabe](FOOTER-YOUTUBE-REVIEW-20261026.md), [Ein-Feld-Diff](FOOTER-YOUTUBE-20261026.diff) und [Hash-/Feldprüfung](FOOTER-YOUTUBE-VALIDATION-20261026.json).
+
+Neuer belegter Hebel: Facebook-Link im vollständig gelesenen Startseiten-HTML vorhanden, kein YouTube-Anker. Das aktuelle MAIN-Theme 187533001089 bestätigt ein leeres vorhandenes youtube_url-Feld im Footer; Blockschema, Renderer und Icon unterstützen YouTube bereits. Drei genaue native Theme-Dateien/MD5s geprüft. Der lokale Diff setzt ausschliesslich dieses Feld auf den bestätigten Kanallink; alle übrigen Werte/Textbytes erhalten. Noch kein Live-Theme-/Profil-/Socialwrite. Eine konkrete Freigabe für die Footer-Übernahme ist bislang nicht dokumentiert; die bestehende Shopänderungsgrenze erhalten.
+
+Neun gelieferte bestehende YouTube-Titel redaktionell 5 Haustier/2 Mode/1 Reise/1 Handy; reiner Metadatenread, keine erneuten Follower-/Viewdaten und keine vollständige Videosichtung. Allgemeiner CTA «Für weitere Produktideen abonnieren» und breiterer Profiltext als Entwurf angepasst. Zwei gezielt frisch gelesene Bürsten tragen rueckhol-0907: zusätzliche Inhaberregel sperrt neue Ausspielung trotz fehlendem Repo-RegEx-Treffer; keine spezifischen Werbeentwürfe dafür und keine bestehenden Beiträge geändert. Profiltexte selbst bleiben wegen INVALID_ARGUMENT der info-Connectoren unbekannt. Keine neuen Follower, Verkäufe oder fertige Master-MP4 behauptet; alle bisherigen Master-/Rechte-/Ledger-/Kanalgrenzen erhalten.
+
 ## LUXESTYLE_PRODUKTTEXTE_20261026
 
 **Aktueller Fokus nach «warte»: kurze Produkttexte verbessern, Social weiter pausiert.** [Konkrete Textfreigabe](PRODUKTTEXTE-FREIGABE-20261026.md), [vier vollständige Vorher/Nachher-Texte mit Diffs](PRODUKTTEXTE-ENTWUERFE-20261026.json), [Umfang/Hashes/Validierung](PRODUKTTEXTE-MANIFEST-20261026.json) und [erkanntes Diffuser-Quelldelta](PRODUKTTEXTE-QUELLKONFLIKT-20261026.md).
