@@ -106,7 +106,7 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(vr[- ]|virtual|3d-?brille|smart vr)"
    ],
-   "beschreibung": "Headsets zum Spielen: mit Mikrofon, Surround-Klang und Beleuchtung, kabelgebunden oder kabellos für Konsole, PC und Handy.",
+   "beschreibung": "Headsets zum Spielen: mit Mikrofon, teils mit Beleuchtung, kabelgebunden oder kabellos, für PC und Konsole.",
    "unterfilter": []
   },
   {
@@ -135,7 +135,7 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(vr)"
    ],
-   "beschreibung": "Ständer, Halter, Etuis und Schutzhüllen für Kopfhörer und Lautsprecher sowie Bluetooth- und FM-Sender und -Empfänger für Auto und Heimanlage.",
+   "beschreibung": "Ständer, Halter, Etuis und Schutzhüllen für Kopfhörer und Lautsprecher sowie Bluetooth- und FM-Sender und -Empfänger.",
    "unterfilter": [
     {
      "handle": "audio-zubehoer-kopfhoerer",
@@ -159,7 +159,8 @@
     "(^|[^a-zäöüß])tasche",
     "(^|[^a-zäöüß])(wecker)",
     "(^|[^a-zäöüß])(bildschirm)",
-    "romantische atmosphäre"
+    "romantische atmosphäre",
+    "bluetooth-modell"
    ],
    "beschreibung": "Tragbare und feste Lautsprecher: Bluetooth-Boxen für unterwegs, Outdoor und Badezimmer, Karaoke-Boxen, Computer-Lautsprecher und Soundbars.",
    "unterfilter": [
@@ -188,7 +189,8 @@
     "Electronics > Audio > Audio Components > Microphones"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(puppe)"
+    "(^|[^a-zäöüß])(puppe)",
+    "(^|[^a-zäöüß])(soundcard)"
    ],
    "beschreibung": "Mikrofone für Gesang, Streaming, Podcast und Videoaufnahmen: USB-Kondensatormikrofone, Funkmikrofone, Ansteckmikrofone und Karaoke-Sets, dazu Mikrofonständer.",
    "unterfilter": [
@@ -243,7 +245,7 @@
     "Electronics > Audio > Public Address"
    ],
    "titel_nicht": [],
-   "beschreibung": "Walkie-Talkies und Handfunkgeräte, Funkgeräte fürs Fahrzeug und Funk-Zubehör sowie Megaphone und tragbare Lautsprecher zum Durchsagen.",
+   "beschreibung": "Walkie-Talkies und Handfunkgeräte, Funkgeräte fürs Fahrzeug und Funk-Zubehör sowie Megaphone und Gürtel-Lautsprecher für Durchsagen.",
    "unterfilter": []
   },
   {
@@ -256,7 +258,7 @@
     "(^|[^a-zäöüß])(weihnacht|zeichen|holo|szenen|laserprojektor|sternenhimmel|nachtlicht|laserlicht)",
     "(projektorlicht)(?![a-zäöüß])"
    ],
-   "beschreibung": "Mini-Beamer und Heimprojektoren für Filme, Serien und Spiele, mit WLAN, Android oder Anschluss ans Handy.",
+   "beschreibung": "Mini-Beamer und Heimprojektoren fürs Heimkino und fürs Büro, mit WLAN, Android oder Anschluss ans Handy.",
    "unterfilter": [
     {
      "handle": "beamer-mini-tragbar",
@@ -354,7 +356,7 @@
     "(^|[^a-zäöüß])(dji|mavic)",
     "(^|[^a-zäöüß])(neugeboren|baby)"
    ],
-   "beschreibung": "Kamerataschen, Objektive und Filter, Schutzgehäuse, Griffe und Halterungen für Action-Kameras, Fotostudio-Zubehör sowie weiteres Zubehör für Foto und Video.",
+   "beschreibung": "Kamerataschen, Objektive, Zwischenringe und Objektivschutz, Schutzgehäuse, Griffe und Halterungen für Action-Kameras, Fotostudio-Zubehör sowie weiteres Zubehör für Foto und Video.",
    "unterfilter": []
   },
   {
@@ -385,7 +387,7 @@
    "titel_nicht": [
     "(?<!mit )(?<!und )(?<!, )(?<!& )(?<!, \\d )(?<!mit \\d )(akku|akkus|akkumulator|batterie|propeller|rotorblätter|rucksack|aufbewahrungstasche|umhängetasche|messenger bag|ladegerät|lader(?![a-zäöüß])|ladestation|schutzring-set|propellerschutz|abdeckung|halterung|ständer|antenne|monitor|zubehör|modul|chip|rahmen|frame|lautsprecher für|filterset|schwenkarm|tuner|gimbal motor|gimbal-schutz|megaphon|abwurf|klemme|landeplatz|warnleucht|flugsteuerung|flugcontroller|paddle blade|wasserfeste box)"
    ],
-   "beschreibung": "Drohnen: faltbare Mini-Drohnen mit Kamera, Quadrocopter mit Fernsteuerung, Drohnen für Kinder und FPV-Rennfluggeräte.",
+   "beschreibung": "Drohnen: faltbare Mini-Drohnen mit Kamera, Quadrocopter mit Fernsteuerung, Drohnen für Kinder und FPV-Racing-Drohnen.",
    "unterfilter": [
     {
      "handle": "drohnen-mit-kamera-4k",
@@ -550,7 +552,7 @@
     "Toys & Games"
    ],
    "titel_nicht": [],
-   "beschreibung": "VR-Brillen fürs Smartphone, Standalone-VR-Headsets sowie Controller, Ladestationen, Kopfbänder, Ständer und Schutzhüllen für Virtual Reality.",
+   "beschreibung": "VR-Brillen fürs Smartphone, Standalone-VR-Headsets sowie Ladestationen für Controller, Kopfbänder, Ständer und Schutzhüllen für Virtual Reality.",
    "unterfilter": []
   },
   {
@@ -694,7 +696,7 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(ladegerät|ladestation|schutzhülle|gehäuse|zifferblatt|uhrenbeweger|halter|quarz-uhr|sport-smartwatch)"
    ],
-   "beschreibung": "Ersatzarmbänder für Uhren und Smartwatches aus Silikon, Leder, Metall und Nylon, dazu Schnallen und Verschlüsse.",
+   "beschreibung": "Ersatzarmbänder für Uhren und Smartwatches aus Silikon, Leder, Metall und Nylon, dazu Federstege und Verbindungsstücke.",
    "unterfilter": [
     {
      "handle": "armbaender-silikon",
