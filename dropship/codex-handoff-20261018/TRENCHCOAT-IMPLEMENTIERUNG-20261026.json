@@ -1,0 +1,42 @@
+{
+  "changeId": "luxe_trenchcoat_description_20261026",
+  "ownerAuthorization": {
+    "statement": "wie gebe ich frei? du hast freigabe",
+    "scope": "The concrete reviewed Trenchcoat descriptionHtml draft discussed immediately before this approval",
+    "dateEuropeZurich": "2026-10-26",
+    "exactReplyTimestampNotIndependentlyRecorded": true,
+    "noRepeatApprovalNeeded": true
+  },
+  "shop": "luxestyle.ch",
+  "productId": "gid://shopify/Product/16603335754119",
+  "fields": [
+    "descriptionHtml"
+  ],
+  "beforeSha256": "271cb88215210b259b1d549af75ec9e98374c2f69ab54f3c7df02650f8e281a6",
+  "expectedAfterSha256": "c8922da85f1b0df162251ebc91e19479c5901efffc8e96d6d0ce10571cd96963",
+  "state": "CONFIRMED_NATIVE_AND_PUBLIC_READBACK",
+  "preserve": [
+    "all prices",
+    "48 variants and IDs/SKUs",
+    "options",
+    "inventory",
+    "images",
+    "tags",
+    "status",
+    "shipping",
+    "flows",
+    "customer domain"
+  ],
+  "verification": {
+    "publicReadAtUtc": "2026-10-26T18:51:29.409239+00:00",
+    "nativeReadbackExact": true,
+    "publicReadbackExact": true,
+    "publicStatus": 200,
+    "variantCount": 48,
+    "publicPricesCHF": "31.90",
+    "otherNativeFieldsChanged": [],
+    "writeAttempts": 1,
+    "writeRetries": 0
+  },
+  "reapplyPolicy": "If current description already equals approved AFTER, record no-op; do not resubmit. A differing source needs a fresh diff; never blindly overwrite."
+}
