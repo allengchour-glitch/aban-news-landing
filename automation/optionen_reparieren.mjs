@@ -41,7 +41,7 @@ export function planeOption(name, werte) {
   return { art: 'farbe', werte: map };
 }
 
-async function bulk(q) {
+export async function bulk(q) {
   if (process.env.NEU !== '1' && existsSync(CACHE) && Date.now() - statSync(CACHE).mtimeMs < 20 * 60 * 1000) return readFileSync(CACHE, 'utf8');
   const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
   if (lauf && ['CREATED', 'RUNNING'].includes(lauf.status)) throw new Error('Es läuft schon eine Bulk-Abfrage — abwarten');

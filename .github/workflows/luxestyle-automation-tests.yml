@@ -154,6 +154,7 @@ jobs:
           node automation/lib/top_kandidaten_test.mjs
           node automation/auswahl_kandidaten_test.mjs
           node automation/optionen_reparieren_test.mjs
+          node automation/optionen_uebersetzen_test.mjs
           node automation/lib/regel_auswerten_test.mjs
           node automation/lib/kategorien_verengt_test.mjs
           node automation/auswahl_scan_test.mjs
@@ -161,6 +162,7 @@ jobs:
           node automation/farbwahl_scan_test.mjs
           node automation/menu_eintrag_einfuegen_test.mjs
           node automation/stecker_bereinigen_test.mjs
+          node automation/lib/videos_zeile_test.mjs
           node tools/versandregel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
