@@ -1,0 +1,2466 @@
+{
+  "reviewId": "luxe_katalog_fortsetzung_20261026_2103",
+  "dateEuropeZurich": "2026-10-26",
+  "preparedAtUTC": "2026-10-26T20:07:48.283589+00:00",
+  "scope": "exactly three known product sources; no pagination/new export",
+  "shopIdentity": "luxestyle.ch / CHF",
+  "runtime": {
+    "observationsCurrent": true,
+    "specRevision": "588",
+    "localSecretBindings": 0,
+    "existingGithubActionsCjAccessPreserved": true
+  },
+  "ownShopWritesThisContinuation": 0,
+  "ownMetricoolWritesThisContinuation": 0,
+  "newMetricsOrFlowReports": 0,
+  "newWorkflowDispatches": 0,
+  "existingCompletedWrite": "luxe_trenchcoat_description_20261026; confirmed earlier, not repeated",
+  "localSourceTests": {
+    "original": 42,
+    "independent": 7,
+    "total": 49,
+    "passed": 49,
+    "failed": 0,
+    "syntheticOnly": true,
+    "integrated": false
+  },
+  "validationLimits": [
+    "Native connector separate validation skipped; real reads successful",
+    "Local toolkit search fetch failed; native docs fallback succeeded",
+    "Local toolkit validator missing _validate_graphql.mjs, no installation or green claim"
+  ],
+  "files": {
+    "seo/NATIVE-SEO.json": {
+      "bytes": 730,
+      "sha256": "143a5ff2ca50aafe52a641b63392b000ff55684790eeced9993b5cd872ce683b",
+      "content": {
+        "checkedAt": "2026-10-26T20:59:38+01:00",
+        "source": "shopify_graphql_query",
+        "validation": "connector validation skipped; actual read successful",
+        "data": {
+          "product": {
+            "id": "gid://shopify/Product/16603335754119",
+            "handle": "langarmliger-doppelt-reiteriger-trenchcoat-601700",
+            "seo": {
+              "title": "Langärmliger doppelreihiger Trenchcoat | LuxeStyle",
+              "description": "Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm."
+            },
+            "onlineStoreUrl": "https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700",
+            "updatedAt": "2026-10-26T18:50:41Z"
+          }
+        }
+      }
+    },
+    "seo/NATIVE-PRODUCT.json": {
+      "bytes": 17193,
+      "sha256": "227d30998af73063fcb66b6c3555b559114de6eded351c0f5f09c76c6c300d6f",
+      "content": {
+        "id": "gid://shopify/Product/16603335754119",
+        "title": "Langärmliger doppelreihiger Trenchcoat",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenmode",
+        "descriptionHtml": "<p>Breites Revers, zwei Knopfreihen und eine lange Silhouette prägen diesen Trenchcoat. Die Produktbilder zeigen lange Ärmel mit geknöpften Riegeln an den Abschlüssen. In den gezeigten hellen und roten Farbansichten setzen die dunklen Knöpfe einen deutlichen Kontrast.</p>\n<h3>Ideen für deinen Look</h3>\n<p>Kombiniere den Mantel für einen entspannten Look mit einem schlichten Oberteil, Jeans und Sneakern. Mit Rock und Stiefeln greifst du die Stylingidee aus den Produktbildern auf. Offen getragen rahmen das Revers und die Knopfreihen dein Outfit ein.</p>\n<h3>Farbe und Grösse auswählen</h3>\n<p>In der Variantenauswahl findest du Schwarz, Dunkelgrau, Hellgrau, Khaki, Rot, Pink, Grün und Aprikose. Die Grössenbezeichnungen sind S, M, L, XL, 2XL und 3XL. Wähle Farbe und Grösse als konkrete Kombination aus.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n",
+        "tags": [
+          "cj-real",
+          "damen",
+          "dropship",
+          "fokus-damenmode",
+          "herbst",
+          "kat-damen-jacke",
+          "mode",
+          "neuheit",
+          "sort-damen-jacken-maentel",
+          "sort-damen-jacken-maentel-maentel",
+          "winter"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/343238f1-66e5-4e44-a7f9-ee796cc02630.jpg?v=1790876646",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/343238f1-66e5-4e44-a7f9-ee796cc02630.jpg?v=1790876646",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815480199"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39cfd255-0f03-45fb-8db3-4aefb8e5516e.jpg?v=1790876646",
+            "altText": "Langärmliger doppelreihiger Trenchcoat | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815414663"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/40396fc7-cc9c-4de5-acfe-fac25c1853d1.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815447431"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c090b136-1229-4dfd-af46-0e013c5b1906.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815512967"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/755c5f08-bb6d-433c-98eb-dad15a5dc932.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815545735"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b862062b-7a08-4396-a202-eb915bbfb310.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815578503"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6b5fd8aa-c57f-4801-abae-0a367490bd9b.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815611271"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7d9e9c28-bad4-464d-8b50-f908e528d2c3.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815644039"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b49080f-e763-4068-b22d-c6da0e0b0017.jpg?v=1790876646",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 9 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815676807"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3411157a-96cd-4d0e-999a-c4b9fd35c642.jpg?v=1790876646",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 10 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815709575"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7307cf53-a490-4245-abd5-e7de99e47418.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 11 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815742343"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8289c6f6-0f38-4c95-b58e-95680b879aa8.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 12 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815775111"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8cf41f09-4b5a-45c7-9fca-aa023ffacd48.jpg?v=1790876647",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 13 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815807879"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/40396fc7-cc9c-4de5-acfe-fac25c1853d1_50c2dbb4-97fd-487f-815a-1c2fd300075b.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 14 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815906183"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8289c6f6-0f38-4c95-b58e-95680b879aa8_f3dd8d2b-0bfc-47b6-8e93-e3c7ed6ccb12.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 15 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815938951"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b49080f-e763-4068-b22d-c6da0e0b0017_67ee9c83-740a-45f4-b770-b6aefe8391c1.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 16 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434815971719"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b862062b-7a08-4396-a202-eb915bbfb310_c7af73de-b40c-4185-8239-84c8f4f98caf.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 17 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434816004487"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8cf41f09-4b5a-45c7-9fca-aa023ffacd48_4e53198a-fbc0-4f4e-85d2-cf45c8eeaca9.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 18 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434816037255"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7d9e9c28-bad4-464d-8b50-f908e528d2c3_626bce80-803e-47c7-bc38-e6a3a01bdd0e.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 19 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434816070023"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3411157a-96cd-4d0e-999a-c4b9fd35c642_c10507da-2ebf-45ac-a173-a45011505d2c.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 20 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434816102791"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7307cf53-a490-4245-abd5-e7de99e47418_c3e72b66-9150-4f0b-a1ed-c490ed8f8a0d.jpg?v=1790876650",
+            "altText": "Langärmliger doppelreihiger Trenchcoat – Bild 21 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/77434816135559"
+          }
+        ],
+        "totalVariants": 48,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67610283344263",
+            "title": "Schwarz / S",
+            "sku": "CJ-CJQB316315301AZ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283377031",
+            "title": "Schwarz / M",
+            "sku": "CJ-CJQB316315302BY",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283409799",
+            "title": "Schwarz / L",
+            "sku": "CJ-CJQB316315303CX",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283442567",
+            "title": "Schwarz / XL",
+            "sku": "CJ-CJQB316315304DW",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283475335",
+            "title": "Schwarz / 2XL",
+            "sku": "CJ-CJQB316315305EV",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283508103",
+            "title": "Schwarz / 3XL",
+            "sku": "CJ-CJQB316315306FU",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283540871",
+            "title": "Dunkelgrau / S",
+            "sku": "CJ-CJQB316315307GT",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283573639",
+            "title": "Dunkelgrau / M",
+            "sku": "CJ-CJQB316315308HS",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283606407",
+            "title": "Dunkelgrau / L",
+            "sku": "CJ-CJQB316315309IR",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283639175",
+            "title": "Dunkelgrau / XL",
+            "sku": "CJ-CJQB316315310JQ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283671943",
+            "title": "Dunkelgrau / 2XL",
+            "sku": "CJ-CJQB316315311KP",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283704711",
+            "title": "Dunkelgrau / 3XL",
+            "sku": "CJ-CJQB316315312LO",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283737479",
+            "title": "Hellgrau / S",
+            "sku": "CJ-CJQB316315313MN",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283770247",
+            "title": "Hellgrau / M",
+            "sku": "CJ-CJQB316315314NM",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283803015",
+            "title": "Hellgrau / L",
+            "sku": "CJ-CJQB316315315OL",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283835783",
+            "title": "Hellgrau / XL",
+            "sku": "CJ-CJQB316315316PK",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283868551",
+            "title": "Hellgrau / 2XL",
+            "sku": "CJ-CJQB316315317QJ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283901319",
+            "title": "Hellgrau / 3XL",
+            "sku": "CJ-CJQB316315318RI",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283934087",
+            "title": "Khaki / S",
+            "sku": "CJ-CJQB316315319SH",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283966855",
+            "title": "Khaki / M",
+            "sku": "CJ-CJQB316315320TG",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610283999623",
+            "title": "Khaki / L",
+            "sku": "CJ-CJQB316315321UF",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284032391",
+            "title": "Khaki / XL",
+            "sku": "CJ-CJQB316315322VE",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284065159",
+            "title": "Khaki / 2XL",
+            "sku": "CJ-CJQB316315323WD",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284097927",
+            "title": "Khaki / 3XL",
+            "sku": "CJ-CJQB316315324XC",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284130695",
+            "title": "Rot / S",
+            "sku": "CJ-CJQB316315325YB",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284163463",
+            "title": "Rot / M",
+            "sku": "CJ-CJQB316315326ZA",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284196231",
+            "title": "Rot / L",
+            "sku": "CJ-CJQB316315327AZ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284228999",
+            "title": "Rot / XL",
+            "sku": "CJ-CJQB316315328BY",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284261767",
+            "title": "Rot / 2XL",
+            "sku": "CJ-CJQB316315329CX",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284294535",
+            "title": "Rot / 3XL",
+            "sku": "CJ-CJQB316315330DW",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284327303",
+            "title": "Pink / S",
+            "sku": "CJ-CJQB316315331EV",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284360071",
+            "title": "Pink / M",
+            "sku": "CJ-CJQB316315332FU",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284392839",
+            "title": "Pink / L",
+            "sku": "CJ-CJQB316315333GT",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284425607",
+            "title": "Pink / XL",
+            "sku": "CJ-CJQB316315334HS",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284458375",
+            "title": "Pink / 2XL",
+            "sku": "CJ-CJQB316315335IR",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284491143",
+            "title": "Pink / 3XL",
+            "sku": "CJ-CJQB316315336JQ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284523911",
+            "title": "Grün / S",
+            "sku": "CJ-CJQB316315337KP",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284556679",
+            "title": "Grün / M",
+            "sku": "CJ-CJQB316315338LO",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284589447",
+            "title": "Grün / L",
+            "sku": "CJ-CJQB316315339MN",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284622215",
+            "title": "Grün / XL",
+            "sku": "CJ-CJQB316315340NM",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284654983",
+            "title": "Grün / 2XL",
+            "sku": "CJ-CJQB316315341OL",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284687751",
+            "title": "Grün / 3XL",
+            "sku": "CJ-CJQB316315342PK",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284720519",
+            "title": "Aprikose / S",
+            "sku": "CJ-CJQB316315343QJ",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284753287",
+            "title": "Aprikose / M",
+            "sku": "CJ-CJQB316315344RI",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284786055",
+            "title": "Aprikose / L",
+            "sku": "CJ-CJQB316315345SH",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284818823",
+            "title": "Aprikose / XL",
+            "sku": "CJ-CJQB316315346TG",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284851591",
+            "title": "Aprikose / 2XL",
+            "sku": "CJ-CJQB316315347UF",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67610284884359",
+            "title": "Aprikose / 3XL",
+            "sku": "CJ-CJQB316315348VE",
+            "price": "31.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      }
+    },
+    "seo/PUBLIC-HEAD.json": {
+      "bytes": 1832,
+      "sha256": "2a9d2101cbbba1f2704ea81718bb0c6a25760df9fdad1fa483daaf631b9ec137",
+      "content": {
+        "capturedAt": "2026-10-26T20:00:24.336Z",
+        "url": "https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700",
+        "statusCode": 200,
+        "scrapeId": "01a179cc-ae45-7639-9f7c-bbadcbb01e0d",
+        "headComplete": true,
+        "rawHtmlChars": 1497947,
+        "headTags": [
+          "<meta property=\"og:url\" content=\"https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700\">",
+          "<meta property=\"og:title\" content=\"Langärmliger doppelreihiger Trenchcoat | LuxeStyle\">",
+          "<meta property=\"og:type\" content=\"product\">",
+          "<meta property=\"og:description\" content=\"Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.\">",
+          "<meta name=\"twitter:title\" content=\"Langärmliger doppelreihiger Trenchcoat | LuxeStyle\">",
+          "<meta name=\"twitter:description\" content=\"Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.\">",
+          "<title>\n  Langärmliger doppelreihiger Trenchcoat | LuxeStyle\n</title>",
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700\">",
+          "<meta name=\"description\" content=\"Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.\">"
+        ],
+        "bodyNewOpening": true,
+        "nativeDescription": "Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.",
+        "rawStored": false,
+        "metadataScope": "Only first complete document head evaluated. Flattened robots=none belongs to embedded account markup, not a confirmed root-head directive."
+      }
+    },
+    "seo/ENTWURF.json": {
+      "bytes": 1951,
+      "sha256": "620b7593880966afd95a8f820c21043e48cebb5c57bdf604c9d15820d8e5c8b9",
+      "content": {
+        "changeId": "luxe_trenchcoat_seo_description_20261026",
+        "status": "PREPARED_NOT_APPLIED",
+        "liveWrites": 0,
+        "scope": [
+          "Product.seo.description"
+        ],
+        "notInScope": [
+          "seo.title",
+          "descriptionHtml",
+          "handle",
+          "variants",
+          "prices",
+          "theme",
+          "flows",
+          "settings"
+        ],
+        "productId": "gid://shopify/Product/16603335754119",
+        "url": "https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700",
+        "descriptionBefore": "Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.",
+        "descriptionAfter": "Trenchcoat mit breitem Revers und zwei Knopfreihen. Wähle aus acht Farben und sechs Grössen deine Kombination. Jetzt bei LuxeStyle ansehen.",
+        "afterChars": 139,
+        "beforeSha256": "79b117e91101579793af569adecf6fa8c546970bd10974c457e398fc10b682b5",
+        "afterSha256": "90eaa129fe319eb56736c467c65210603bf168b95137429dddf8913bbdea156c",
+        "bodyAfterMatchesExistingApprovedWrite": true,
+        "bodySha256": "c8922da85f1b0df162251ebc91e19479c5901efffc8e96d6d0ce10571cd96963",
+        "evidence": [
+          "NATIVE-SEO.json",
+          "PUBLIC-HEAD.json",
+          "NATIVE-PRODUCT.json"
+        ],
+        "claimSources": {
+          "Revers/Knopfreihen": "visually inspected currently assigned original photos + approved native body",
+          "eightColoursSixSizes": "48 exact native variants; current body"
+        },
+        "approval": "Previous owner reply applied to the concrete body draft, not blanket metadata/catalog approval. This field is a distinct reviewable proposal.",
+        "futurePreflight": "Read identity and exact current seo description; after already present => no-op; unexpected change => stop and prepare new diff. Single field only; fresh native plus root-head description/og/twitter readback.",
+        "limits": [
+          "No Google index/ranking outcome measured",
+          "No blanket stock, fit, warmth, material, Swiss-made or delivery promise"
+        ]
+      }
+    },
+    "seo/before.json": {
+      "bytes": 306,
+      "sha256": "b40e6d72a0b7f44704008c5f9de631ad41a5041ffdb0989c6a41ba597c176fca",
+      "content": {
+        "productId": "gid://shopify/Product/16603335754119",
+        "seo": {
+          "title": "Langärmliger doppelreihiger Trenchcoat | LuxeStyle",
+          "description": "Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm."
+        }
+      }
+    },
+    "seo/after.json": {
+      "bytes": 305,
+      "sha256": "702cc209c0bba609e1b6cb746c0e7a55971658dce885c305cc58e1968c71a6c1",
+      "content": {
+        "productId": "gid://shopify/Product/16603335754119",
+        "seo": {
+          "title": "Langärmliger doppelreihiger Trenchcoat | LuxeStyle",
+          "description": "Trenchcoat mit breitem Revers und zwei Knopfreihen. Wähle aus acht Farben und sechs Grössen deine Kombination. Jetzt bei LuxeStyle ansehen."
+        }
+      }
+    },
+    "seo/seo-description.diff": {
+      "bytes": 538,
+      "sha256": "315bb8e2296085b33055bfab0038baad582de2d31db448184d22183befbabbc2",
+      "content": "--- Shopify SEO before\n+++ Shopify SEO proposed\n@@ -2,6 +2,6 @@\n   \"productId\": \"gid://shopify/Product/16603335754119\",\n   \"seo\": {\n     \"title\": \"Langärmliger doppelreihiger Trenchcoat | LuxeStyle\",\n-    \"description\": \"Für den Alltag bei kühleren Temperaturen bietet dieser lange, doppelt-reiterige Trenchcoat Schutz und Stil. Extra lange Länge über 100 cm.\"\n+    \"description\": \"Trenchcoat mit breitem Revers und zwei Knopfreihen. Wähle aus acht Farben und sechs Grössen deine Kombination. Jetzt bei LuxeStyle ansehen.\"\n   }\n }\n"
+    },
+    "seo/PRUEFGRENZEN.md": {
+      "bytes": 2259,
+      "sha256": "6f64e671ba44a960ee82e640dc6f81336a3d38519d6527c675de2e21cf0e4fce",
+      "content": "# Trenchcoat: Suchbeschreibung als separater Feldentwurf\n\n26.10.2026, Europe/Zurich. `Product.seo.description` nativ gelesen und mit dem ersten vollständigen Head der öffentlichen Produktseite abgeglichen. HTTP 200. Derselbe alte Text steht in description, OpenGraph und Twitter. Der neue, bereits genehmigte Produkttext ist weiterhin sichtbar und SHA-identisch zum bestätigten Write. Titel, Produktlink und Canonical passen; keine neue Handle- oder Titeländerung vorgeschlagen.\n\nDer 139-Zeichen-Vorschlag ersetzt unbelegte Kälte-/Schutz-/100-cm-Angaben durch sichtbare Formdetails und die aktuell belegte Farbauswahl. Genau ein Feld, kein Livewrite. Die frühere Inhaberfreigabe wurde für den konkret vorgelegten descriptionHtml-Text bereits umgesetzt; dieser neue Metadatenentwurf ist separat reviewbar. Vor einer später genehmigten Übernahme frisch lesen, exakten Vorher-Diff prüfen, danach nativ und im echten Head zurücklesen. Schon vorhandener Zieltext bedeutet keine erneute Mutation.\n\nDie automatische Firecrawl-Metadatenliste enthält auch eingebettete Account-/Shop-Pay-Metadaten. Ein darin auftauchendes robots=none ist kein bestätigtes noindex im Haupt-Head. Im vollständigen ausgewerteten Roothead wurde keine solche Direktive gefunden. Das beweist weder eine Google-Indexierung noch eine ausgewählte Google-Canonical oder Rankingwirkung.\n\nGraphQL-Schema vorher nativ entdeckt. Der Connector-Validator übersprang die separate Validierung; die echte begrenzte Read-Query wurde erfolgreich ausgeführt. Der ergänzende Toolkit-Suchskriptaufruf scheiterte am Fetch; der native Dokumentationsconnector lieferte die aktuelle Dokumentation. Der lokale Toolkit-Codevalidator war wegen fehlendem `_validate_graphql.mjs` nicht ausführbar. Beides ist kein grüner Validatorlauf. Keine Installation, kein Deployment, keine Mutation erzeugt oder ausgeführt.\n\nQuellen: [Shopify SEOInput](https://shopify.dev/docs/api/admin-graphql/2026-10/input-objects/SEOInput), [öffentliche Produktseite](https://luxestyle.ch/products/langarmliger-doppelt-reiteriger-trenchcoat-601700). Archivierte native Werte und ausgewählte Roothead-Tags in diesem Verzeichnis. Dynamische Account-/CSRF-/Session-Metadaten werden nicht mit dem Reviewpaket gespeichert.\n"
+    },
+    "organizer/NATIVE-FRESH.json": {
+      "bytes": 3617,
+      "sha256": "2fcbfc44481c3a7bfb1597c74c87b0bbaa8b14fc39628c4861144909c6e95f4b",
+      "content": {
+        "readAt": "2026-10-26T19:59:20.797Z",
+        "source": "Shopify native get_product/get_shop_info",
+        "shop": {
+          "name": "LuxeStyle",
+          "domain": "luxestyle.ch",
+          "currencyCode": "CHF",
+          "country": "Switzerland",
+          "timezone": "CET"
+        },
+        "product": {
+          "id": "gid://shopify/Product/15408458170753",
+          "title": "Aufbewahrungssystem für Schubladen",
+          "vendor": "LuxeStyle",
+          "status": "ACTIVE",
+          "productType": "Bambus & Badezimmer",
+          "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Mehr Übersicht in deiner Schublade.</strong> Ein Aufbewahrungssystem für Küchenutensilien und andere kleine Alltagsgegenstände.</p>\n<h2>Übersichtlich aufbewahren</h2>\n<p>Ordne die Dinge, die du im Alltag häufig brauchst, an einem festen Platz.</p>\n<p>Sieh dir die Produktfotos an und entdecke das Aufbewahrungssystem bei LuxeStyle.</p>\n</div>\n<div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test\">Ratgeber: Accessoires im Badezimmer</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+          "tags": [
+            "aufbewahrung",
+            "bambus",
+            "bambus-badezimmer",
+            "bild-ok",
+            "kuratiert",
+            "luxestyle-ch",
+            "modular",
+            "nachhaltig",
+            "organizer",
+            "premium",
+            "schubladen",
+            "swiss-brand",
+            "vegan"
+          ],
+          "totalInventory": 0,
+          "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+          "images": [
+            {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+              "altText": "Aufbewahrungseinsätze mit Küchenutensilien – Produktansicht",
+              "mediaId": "gid://shopify/MediaImage/69528088150401"
+            },
+            {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02-HeroLifestyleImage_6f257efe-626a-4068-8a15-15eda51fd2d9.jpg?v=1779958398",
+              "altText": "Aufbewahrungseinsätze in einer Küchenschublade",
+              "mediaId": "gid://shopify/MediaImage/69528088805761"
+            },
+            {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03-FeaturesImage_0cf29a42-7548-43e4-959f-7a427f511905.jpg?v=1779958401",
+              "altText": "Detail- und Anwendungsansichten der Aufbewahrungseinsätze",
+              "mediaId": "gid://shopify/MediaImage/69528089362817"
+            }
+          ],
+          "totalVariants": 1,
+          "variants": [
+            {
+              "id": "gid://shopify/ProductVariant/55732479525249",
+              "title": "Default Title",
+              "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST",
+              "price": "34.90",
+              "inventoryQuantity": 0
+            }
+          ],
+          "currencyCode": "CHF"
+        }
+      }
+    },
+    "organizer/MANIFEST.json": {
+      "bytes": 3930,
+      "sha256": "bf1de59418ca70269999d2cb29d1a064aefbaca66c990ac0c6a112f9c7762cc8",
+      "content": {
+        "reviewId": "luxe_drawer_organizer_text_revision_20261026_v2",
+        "state": "DRAFT_NOT_APPLIED",
+        "readAt": "2026-10-26T19:59:20.797Z",
+        "productId": "gid://shopify/Product/15408458170753",
+        "variantId": "gid://shopify/ProductVariant/55732479525249",
+        "productUrl": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular",
+        "beforeSha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+        "afterSha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+        "previousDraftSha256": "2ec3e464ab8cea93c31f4cda9c45a1b683e47a95e0c3c92ce4f03d7ba553aa44",
+        "allReturnedNativeFieldsUnchangedVsMorning": {
+          "id": true,
+          "title": true,
+          "vendor": true,
+          "status": true,
+          "productType": true,
+          "descriptionHtml": true,
+          "tags": true,
+          "totalInventory": true,
+          "featuredImageUrl": true,
+          "images": true,
+          "totalVariants": true,
+          "variants": true,
+          "currencyCode": true
+        },
+        "optionsSource": "same-day offline export, not fresh native options field",
+        "configuredOptions": [
+          {
+            "name": "Title",
+            "values": [
+              {
+                "name": "Default Title",
+                "hasVariants": true
+              }
+            ]
+          }
+        ],
+        "liveVariantSummary": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479525249",
+            "title": "Default Title",
+            "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "priceCurrency": "CHF",
+        "descriptionWordCountBefore": 80,
+        "newCoreWords": 112,
+        "linksPreserved": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires",
+          "/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test",
+          "/collections/luxestyle-premium",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "serviceAndLinksByteIdentical": true,
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+            "oldFile": "/workspace/luxestyle-review/produkttexte-20261026/organizer-quellen/schubladen/image-1.jpg",
+            "httpStatus": 200,
+            "bytes": 252974,
+            "sha256": "182f2793c27f2adf85060c2fc7311e3185b1a67b9afc325a3359de998798f734",
+            "sameAsVisuallyReviewedOriginal": true
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02-HeroLifestyleImage_6f257efe-626a-4068-8a15-15eda51fd2d9.jpg?v=1779958398",
+            "oldFile": "/workspace/luxestyle-review/produkttexte-20261026/organizer-quellen/schubladen/image-2.jpg",
+            "httpStatus": 200,
+            "bytes": 267302,
+            "sha256": "14d2eb463d643d387e14a00feb5ceede427217c7f18176916a56fb31e8190b75",
+            "sameAsVisuallyReviewedOriginal": true
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03-FeaturesImage_0cf29a42-7548-43e4-959f-7a427f511905.jpg?v=1779958401",
+            "oldFile": "/workspace/luxestyle-review/produkttexte-20261026/organizer-quellen/schubladen/image-3.jpg",
+            "httpStatus": 200,
+            "bytes": 332199,
+            "sha256": "113b10a28b0547a8b5af7c49cc08f05d968ec4d474de6682ca99158673b5b8c0",
+            "sameAsVisuallyReviewedOriginal": true
+          }
+        ],
+        "newProgress": "Fresh native source and image bytes checked; previous generic ordering paragraph revised into three specific arrangement steps.",
+        "notConfirmed": [
+          "supplier/brand-to-exact-offer mapping",
+          "delivered set count",
+          "dimensions",
+          "material",
+          "magnetic function",
+          "liner inclusion/type",
+          "inventory tracking/policy",
+          "public storefront purchase availability"
+        ],
+        "writeScopeIfApproved": "Only descriptionHtml, exact before hash required; no variant/options/status/tags/prices/image changes.",
+        "approval": "Not included in completed trenchcoat approval. No own shop or repo writes.",
+        "liveWrites": 0,
+        "inventoryZeroConclusion": "No sold-out conclusion from quantity zero."
+      }
+    },
+    "organizer/VALIDIERUNG.json": {
+      "bytes": 940,
+      "sha256": "c021ae9f0821e30f34a30d8d8548e70b8f7201c616e5180367fbf9f4c38e1079",
+      "content": {
+        "state": "PASS_LIMITED_SOURCE_AND_DRAFT_CHECK",
+        "checks": [
+          "fresh native original exactly matches prior native source",
+          "before/after SHA256 verified",
+          "all3 current associated image bytes match visually reviewed source files",
+          "all original link targets preserved",
+          "service/link tail byte identical",
+          "no technical/material/size/set/function claim in generated core",
+          "exact description diff verified",
+          "revision to earlier draft recorded",
+          "liveWrites0"
+        ],
+        "notChecked": [
+          "supplier/brand-to-exact-offer mapping",
+          "delivered set count",
+          "dimensions",
+          "material",
+          "magnetic function",
+          "liner inclusion/type",
+          "inventory tracking/policy",
+          "public storefront purchase availability"
+        ],
+        "initialValidationFailure": "substring guard falsely matched mm in ordinary word; replaced with word-boundary guard before successful validation",
+        "countOfNewTests": 0
+      }
+    },
+    "organizer/CLAIM-MATRIX.md": {
+      "bytes": 2479,
+      "sha256": "78cfa7707ff7734b77c74b422914a4fe10cd1080a417f035a9e4666373bb8ec9",
+      "content": "# Schubladen-Organizer: Quellen und Grenzen des revidierten Textes\n\nStand: 26.10.2026. Produkt `15408458170753`, Variante `55732479525249`. Nur Entwurf; keine Produktänderung.\n\n| Formulierung / Entscheidung | Beleg | Grenze |\n|---|---|---|\n| Verwendung für Küchenhelfer / kleine Alltagsgegenstände | Frischer nativer Alttext; drei zugeordnete Produktbilder | Keine neue Traglast-, Passform- oder Reinigungsaussage |\n| Rechteckige Einsätze, abgerundete Ecken, unterschiedlich grosse Bereiche | Alle drei Bilder visuell geprüft; dieselben Dateien frisch HTTP 200 und SHA-identisch heruntergeladen | Gezeigte unterschiedliche Einsätze sind kein Beleg für Anzahl und Umfang der gelieferten Ausführung |\n| Naturfarbene Oberfläche mit sichtbarer Maserung | Sichtbare Bildmerkmale | Kein Materialnachweis; insbesondere Bambus nicht aus Titel/Tag/Bild abgeleitet |\n| Offene Ansicht / Inhalt von oben erkennbar | Offene Bauform in Bildern | Kein Werbeversprechen zu Zeitersparnis oder Platzgewinn |\n| Drei konkrete Ordnungsschritte | Als Nutzungsidee formuliert, bekannte sichtbare Form und ursprünglicher Einsatzzweck | Keine neue Funktion oder garantierte Eigenschaft |\n| Ein Defaultartikel / CHF 34.90 | Frischer nativer Read liefert genau eine Variante | Keine künstlichen Farb-/Grössen-/Lineroptionen; Vollständigkeit gegen Lieferant nicht bestätigt |\n| Magnet, Gummieinlagen, Setumfang | Englische Werbeoverlays in Bildern vorhanden | Nicht in den Produkttext übernommen; weder Funktionsnachweis noch exakte Lieferumfangszuordnung |\n| Lieferanten-/Markenzuordnung | Bilder zeigen Kitchen Edge, Shopify führt LuxeStyle und SKU LX-33-BAMBUS-AUFBEWAHRUNGSSYST | Kein verifizierter CJ-SKU-/vid-Nachweis; Marken-/Artikelzuordnung offen, nicht automatisch umbenennen |\n| Versand, Rückgabe und bestehende Ratgeber-/Collectionlinks | Originalblock unverändert erhalten | Keine Lieferfrist, Versandkosten, Zusatzgarantie, Swiss-made- oder Nachhaltigkeitsbehauptung hinzugefügt |\n\nDie im bisherigen Shop enthaltenen Tags wie nachhaltig/vegan und die Ratgeberverlinkung sind keine Nachweise dieser Eigenschaften. Die Prüfung vergibt keine pauschale Freigabe für bestehende Bildwerbung, Tags oder den gesamten Artikel.\n\nNächster Quellenpunkt: exakten Lieferartikel und Lieferumfang anhand einer authentischen Lieferanten-/Herstellerquelle mit SKU/Modellzuordnung belegen. Weder mangelhafte Beschreibungsdaten noch Default-only rechtfertigen das Erzeugen neuer Varianten.\n"
+    },
+    "organizer/BERICHT.md": {
+      "bytes": 2079,
+      "sha256": "93f5d91c9abaa664e38b56f8668dc671d8fe83635a353b92603f785acf5f223c",
+      "content": "# Schubladen-Organizer: konkrete Textrevision\n\nDer bestehende Entwurf wurde weiterentwickelt: Die allgemeine Ordnungsanregung ist nun in drei kurze, konkrete Handlungsschritte gegliedert. Der Text beschreibt ausschliesslich den bereits genannten Einsatzzweck und sichtbare Formen. Der Kerntext umfasst 112 Wörter. Das ist eine redaktionelle Änderung und kein Rankingnachweis.\n\nProdukt: [Aufbewahrungssystem für Schubladen](https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular), ID `15408458170753`. Shop luxestyle.ch/CHF frisch bestätigt. Native Beschreibung, alle übrigen gelieferten Produktfelder und drei Bildzuordnungen sind zum Morgenstand unverändert. Drei Bilddateien frisch HTTP 200, bytegleich zu den erneut visuell geprüften Originalen. Genau eine native Defaultvariante, CHF 34.90; Nullbestand ist kein Ausverkaufsbeweis. Inventar-Tracking/Policy und öffentliche Kaufbarkeit wurden in diesem engen Textreview nicht erneut gelesen.\n\n`description.diff` zeigt den exakten Unterschied zum frisch gelesenen Live-Text. `revision-vs-previous.diff` zeigt ausschliesslich die Weiterentwicklung des früheren Entwurfs. `BEFORE.html`, `AFTER.html` und `MANIFEST.json` binden die Prüfung an konkrete Ausgangs-/Zielhashes. Alle vorhandenen Service- und Linkblöcke sind bytegleich erhalten. Keine weiteren Produktfelder, keine Bilder und keine Optionen ändern.\n\nDie Bilder enthalten Kitchen-Edge-Branding sowie englische Magnet-/Linerwerbung. Shopify liefert dafür nur die LX-SKU und eine Defaultausführung. Daraus wurde weder eine CJ-Zuordnung noch eine neue Variante, Materialangabe oder Lieferumfangsbehauptung erzeugt. Dieser Lieferquellenpunkt bleibt im Claim-Review offen; die Textrevision löst ihn nicht.\n\nStatus: **Entwurf, nicht angewendet.** Die bereits abgeschlossene Trenchcoat-Freigabe wurde hierfür nicht verwendet. Vor einer späteren Anwendung aktuelle genaue Beschreibung erneut lesen, den Quellenhash abgleichen und nur den konkreten freigegebenen Text schreiben. Bei abweichendem Hash zuerst Diff erneuern, kein blindes Überschreiben.\n"
+    },
+    "organizer/BEFORE.html": {
+      "bytes": 1479,
+      "sha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+      "content": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Mehr Übersicht in deiner Schublade.</strong> Ein Aufbewahrungssystem für Küchenutensilien und andere kleine Alltagsgegenstände.</p>\n<h2>Übersichtlich aufbewahren</h2>\n<p>Ordne die Dinge, die du im Alltag häufig brauchst, an einem festen Platz.</p>\n<p>Sieh dir die Produktfotos an und entdecke das Aufbewahrungssystem bei LuxeStyle.</p>\n</div>\n<div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test\">Ratgeber: Accessoires im Badezimmer</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>"
+    },
+    "organizer/AFTER.html": {
+      "bytes": 2120,
+      "sha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+      "content": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Küchenhelfer übersichtlich einordnen.</strong> Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.</p>\n<h2>Offene Einsätze mit klaren Konturen</h2>\n<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.</p>\n<h3>Eine Aufteilung für deine Küchenroutine</h3>\n<ul>\n<li>Ordne längere Küchenhelfer nebeneinander an.</li>\n<li>Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.</li>\n<li>Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.</li>\n</ul>\n<p>Sortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.</p>\n</div>\n<div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test\">Ratgeber: Accessoires im Badezimmer</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>"
+    },
+    "organizer/AFTER.md": {
+      "bytes": 1207,
+      "sha256": "e9a0b3b76261d57f9815d806f0c06587b84ababd14bb92de9ecae83324576e22",
+      "content": "# Aufbewahrungssystem für Schubladen\n\n**Küchenhelfer übersichtlich einordnen.** Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.\n\n## Offene Einsätze mit klaren Konturen\n\nDie Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.\n\n### Eine Aufteilung für deine Küchenroutine\n\n- Ordne längere Küchenhelfer nebeneinander an.\n- Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.\n- Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.\n\nSortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.\n\n---\n\nDie bestehenden Versand-/Rückgabeinformationen und Ratgeber-/Collectionlinks bleiben im vollständigen HTML-Entwurf bytegleich erhalten. Diese Leseansicht zeigt nur den überarbeiteten Produktkern; sie ist kein zusätzlicher ProductWrite.\n"
+    },
+    "organizer/description.diff": {
+      "bytes": 1547,
+      "sha256": "dbb313fc9c67a3adc134088f251c6a72dc4f14249b496bafb2b88eabfa7f63aa",
+      "content": "--- live/descriptionHtml\n+++ draft/descriptionHtml\n@@ -1,9 +1,15 @@\n \n <div class=\"luxestyle-product-body\">\n-<p><strong>Mehr Übersicht in deiner Schublade.</strong> Ein Aufbewahrungssystem für Küchenutensilien und andere kleine Alltagsgegenstände.</p>\n-<h2>Übersichtlich aufbewahren</h2>\n-<p>Ordne die Dinge, die du im Alltag häufig brauchst, an einem festen Platz.</p>\n-<p>Sieh dir die Produktfotos an und entdecke das Aufbewahrungssystem bei LuxeStyle.</p>\n+<p><strong>Küchenhelfer übersichtlich einordnen.</strong> Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.</p>\n+<h2>Offene Einsätze mit klaren Konturen</h2>\n+<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.</p>\n+<h3>Eine Aufteilung für deine Küchenroutine</h3>\n+<ul>\n+<li>Ordne längere Küchenhelfer nebeneinander an.</li>\n+<li>Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.</li>\n+<li>Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.</li>\n+</ul>\n+<p>Sortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.</p>\n </div>\n <div class=\"luxestyle-service-info\">\n <h2>Versand und Rückgabe</h2>\n"
+    },
+    "organizer/revision-vs-previous.diff": {
+      "bytes": 2041,
+      "sha256": "5be4ba0dbf93af4ac9dc60c360437bbead0cf8e26aa87511388f26377b327742",
+      "content": "--- previous-draft/descriptionHtml\n+++ revised-draft/descriptionHtml\n@@ -1,10 +1,15 @@\n \n <div class=\"luxestyle-product-body\">\n-<p><strong>Mehr Ordnung in deiner Schublade.</strong> Das Aufbewahrungssystem gliedert Küchenhelfer und kleine Alltagsgegenstände in übersichtliche Bereiche. So kannst du lange Utensilien und kleinere Teile getrennt einordnen, statt alles lose nebeneinander aufzubewahren.</p>\n-<h2>Offene Form mit klaren Konturen</h2>\n-<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich breiten Fächern und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Durch die offene Form bleibt der Inhalt von oben sichtbar.</p>\n-<h3>Nach deinen Abläufen ordnen</h3>\n-<p>Gruppiere die Küchenhelfer, die du häufig zusammen verwendest, und halte kleinere Gegenstände in einem eigenen Bereich. Die gezeigten Anordnungen geben dir eine Idee, wie du den Inhalt deiner Schublade strukturieren kannst.</p>\n+<p><strong>Küchenhelfer übersichtlich einordnen.</strong> Mit dem Aufbewahrungssystem gliederst du kleine Alltagsgegenstände und längere Küchenutensilien in übersichtliche Bereiche. So kannst du Zange, Messzubehör und kleinere Küchenhelfer nach ihrer Verwendung zusammenstellen.</p>\n+<h2>Offene Einsätze mit klaren Konturen</h2>\n+<p>Die Produktansichten zeigen rechteckige Einsätze mit abgerundeten Ecken, unterschiedlich grossen Bereichen und einer naturfarbenen Oberfläche mit sichtbarer Maserung. Von oben bleibt der Inhalt gut erkennbar.</p>\n+<h3>Eine Aufteilung für deine Küchenroutine</h3>\n+<ul>\n+<li>Ordne längere Küchenhelfer nebeneinander an.</li>\n+<li>Gruppiere kleinere Teile nach ihrem Zweck, zum Beispiel Messzubehör.</li>\n+<li>Lege häufig genutzte Gegenstände so ab, dass du sie gut siehst.</li>\n+</ul>\n+<p>Sortiere vor dem Einräumen aus, was du in dieser Schublade nicht brauchst. Die gezeigten Anordnungen können dir als Idee für deine eigene Aufteilung dienen.</p>\n </div>\n <div class=\"luxestyle-service-info\">\n <h2>Versand und Rückgabe</h2>\n"
+    },
+    "cj/PROJECTOR-NATIVE-FRESH.json": {
+      "bytes": 8780,
+      "sha256": "e34c5806ea72b5910937bab683d90096e9319d0b998df5d474b486b020e51cac",
+      "content": {
+        "id": "gid://shopify/Product/15521256604033",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Elektronik",
+        "descriptionHtml": "<!-- ls-text-v2 --><p>Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.</p><h4>So funktioniert er</h4><p>Mit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.</p><h4>Die Ausführungen</h4><p>Es gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxy-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxy-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxy-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxy-Scheibe, schau dir die gewünschte Ausführung also genau an.</p><h4>Hinweise</h4><p>Der Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.</p><!-- /ls-text-v2 -->\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-fakten-v1 --><div class=\"ls-fakten\" style=\"margin:16px 0;\">\n<h4>Technische Daten</h4>\n<table style=\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\">\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Material</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Kunststoff, Sonstiges</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Gewicht</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">650 g</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Masse</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">121x110x121 mm</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Leistung</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">4W</td>\n</tr>\n</table>\n<h4>Lieferumfang</h4>\n<ul>\n<li>1 Nachtlicht</li>\n<li>6 Farbscheiben</li>\n<li>1 wiederaufladbares Bluetooth-Drehteil</li>\n<li>1 Galaxyscheibe</li>\n</ul>\n<h4>So geht's</h4>\n<ol>\n<li>Lampenschirm einschalten für Seitenprojektion</li>\n<li>Lampenschirm als kleines Nachtlicht einrasten</li>\n<li>Situation drehen, um Fokus zu justieren</li>\n<li>Filmbox öffnen</li>\n<li>Filmschale entnehmen/ersetzen</li>\n<li>Filmschale in Filmbox schieben</li>\n</ol>\n<h4>Gut zu wissen</h4>\n<ul>\n<li>Produkt nicht mit schweren Gegenständen quetschen</li>\n<li>Oberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden</li>\n<li>Produkt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden</li>\n<li>Nur für Innenräume geeignet</li>\n<li>Mitgeliefertes USB-Kabel nur für dieses Produkt verwenden</li>\n</ul>\n<p style=\"font-size:12px;opacity:.7;margin-top:10px;\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\n</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173424513"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173260673"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173457281"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173490049"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173522817"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173555585"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173588353"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173621121"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173653889"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173686657"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173719425"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173752193"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56197916361089",
+            "title": "Default Title",
+            "sku": "CJ-1477820492730732544",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      }
+    },
+    "cj/PROJECTOR-NATIVE-SOURCE-FIELDS.json": {
+      "bytes": 5482,
+      "sha256": "2e83c83e3f8f379a5994f7afdb0f2f22465ca3b9120a70a8b459cc1b16e64ad1",
+      "content": {
+        "capturedAt": "2026-10-26T20:03:03.517Z",
+        "query": "query LuxeStyleProjectorSourceBindings($id: ID!) {\n product(id: $id) {\n  id\n  sourceFields: metafields(first: 15) { nodes { namespace key type value } pageInfo { hasNextPage endCursor } }\n  variants(first: 2) {\n   nodes {\n    id sku inventoryPolicy\n    inventoryItem { tracked }\n    sourceFields: metafields(first: 10) { nodes { namespace key type value } pageInfo { hasNextPage endCursor } }\n   }\n   pageInfo { hasNextPage endCursor }\n  }\n }\n}",
+        "validation": "connector validation skipped; actual read succeeded",
+        "response": {
+          "data": {
+            "product": {
+              "id": "gid://shopify/Product/15521256604033",
+              "sourceFields": {
+                "nodes": [
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "gender",
+                    "type": "single_line_text_field",
+                    "value": "unisex"
+                  },
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "age_group",
+                    "type": "single_line_text_field",
+                    "value": "adult"
+                  },
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "condition",
+                    "type": "single_line_text_field",
+                    "value": "new"
+                  },
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "custom_product",
+                    "type": "boolean",
+                    "value": "true"
+                  },
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "google_product_category",
+                    "type": "single_line_text_field",
+                    "value": "Home & Garden > Lighting > Night Lights & Ambient Lighting"
+                  },
+                  {
+                    "namespace": "mm-google-shopping",
+                    "key": "material",
+                    "type": "single_line_text_field",
+                    "value": "Kunststoff"
+                  },
+                  {
+                    "namespace": "global",
+                    "key": "title_tag",
+                    "type": "string",
+                    "value": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle"
+                  },
+                  {
+                    "namespace": "global",
+                    "key": "description_tag",
+                    "type": "string",
+                    "value": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+                  },
+                  {
+                    "namespace": "judgeme",
+                    "key": "badge",
+                    "type": "string",
+                    "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> Keine Bewertungen </span> </div>"
+                  },
+                  {
+                    "namespace": "judgeme",
+                    "key": "widget",
+                    "type": "string",
+                    "value": "<div></div>"
+                  },
+                  {
+                    "namespace": "judgeme",
+                    "key": "review_widget_data",
+                    "type": "json",
+                    "value": "{\"number_of_reviews\":0,\"average_rating\":\"0.00\",\"number_of_questions\":0,\"product_name\":\"Sternenlicht-Projektor für Schlafzimmer\",\"product_external_id\":15521256604033,\"product_coupons_enabled\":true,\"image_url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090\",\"histogram\":[{\"rating\":5,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":4,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":3,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":2,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":1,\"frequency\":0,\"percentage\":0,\"extra_class\":null}],\"review_keywords\":null,\"product_medals\":[],\"custom_form_filters_and_averages\":null,\"photo_gallery\":null,\"review_summary_text\":\"Be the first to write a review\",\"ai_summary_text\":\"\",\"sort_key\":\"created_at\",\"multi_language_sorting_enabled\":false,\"metafield_updated_at\":\"2026-10-20T08:26:37Z\",\"reviews\":[],\"pagination\":{\"total_pages\":0,\"current_page\":1,\"per_page\":5}}"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": "eyJsYXN0X2lkIjoyMDMxNDM3Nzc3NDczMjksImxhc3RfdmFsdWUiOiIyMDMxNDM3Nzc3NDczMjkifQ=="
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/56197916361089",
+                    "sku": "CJ-1477820492730732544",
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "sourceFields": {
+                      "nodes": [],
+                      "pageInfo": {
+                        "hasNextPage": false,
+                        "endCursor": null
+                      }
+                    }
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": "eyJsYXN0X2lkIjo1NjE5NzkxNjM2MTA4OSwibGFzdF92YWx1ZSI6MX0="
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cj/README.md": {
+      "bytes": 5421,
+      "sha256": "9fd6c71e5b74668f5261128433d89212867f3f36d77b47238c126ce13b060de3",
+      "content": "# Exakte CJ-Variantenbindung: Fortsetzung 26.10.2026\n\nEs wurde kein CJ-Job gestartet und keine Shopify-/Repositoryänderung vorgenommen. Die neue Arbeit ist ein lokal geprüfter Zuordnungsreview für den bereits vorbereiteten begrenzten CJ-Lesejob; sie erteilt weder Produkteignung noch Werbe-, Rechte- oder Schreibfreigabe.\n\n## Frische Quellengegenprobe\n\n`automation/cj_category_fill.mjs` wurde aus aktuellem `main` erneut gezielt gelesen. Git-Blob `a00c882026770d5b78e8ded997249f303ad8931f` ist unverändert. Zeile 198 setzt die Standard-SKU aus `CJ-` plus `p.pid` zusammen; die Kleidungsroute verwendet dagegen `variantSku` (Zeilen 28/39). Damit ist `CJ-1477820492730732544` weiterhin ein Produkt-PID-Kandidat, kein Beleg für eine konkrete CJ-vid, einen Stecker, ein enthaltenes Motivset oder Netzteil. Auch aus einer einvariantigen Shopify-Auswahl folgt keine einvariantige Lieferantenkonfiguration.\n\nDie auf fünf Treffer begrenzte korrekte Repositorysuche nach der exakten Nummer liefert drei ältere eigene Reviewdokumente am Indexcommit `be6a9badff424c52dd4d69abf1021eaa8ef1750d`, keine CJ-Variantenantwort. Der Suchindex ist kein vollständiger aktueller Repository-, Cache- oder Artefaktscan. Zwei vorgelagerte Parameterfehler führten keine Suche aus und stehen im Beleg. Keine weitere Runpagination oder Artefakt-/Logdownloads.\n\nRuntime 588 wurde vom Hauptlauf frisch als laufend mit keinen lokalen CJ-Secretbindungen bestätigt. Der bereits belegte CJ-Zugang in GitHub Actions bleibt anerkannt. Das ist kein fehlender Connector/API-Key; weiterhin fehlt hier ein belegter enger Ausführungskontext mit genau der Produktantwort und vorhandener Varianten-Zuordnung.\n\nDer Hauptlauf hat ergänzend am 26.10.2026 um 20:03:03 UTC die zugänglichen nativen Quellfelder gezielt gelesen (`PROJECTOR-NATIVE-SOURCE-FIELDS.json`): elf Produkt-Metafelder, `hasNextPage=false`; genau eine Variante 56197916361089 mit SKU CJ-1477820492730732544, tracked=false und CONTINUE; null zugängliche Varianten-Metafelder, ebenfalls `hasNextPage=false`. In diesen gelieferten Feldern ist keine CJ-vid-Zuordnung enthalten. Das ist der vollständige gelieferte sichtbare Verbindungsausschnitt dieser kleinen Abfrage, kein Beweis über private App-Daten oder andere Kontospeicher. Die bestehenden Modell-/Stromfragen bleiben offen.\n\n## Konkrete lokale Verbesserung\n\n`variant_binding_review.mjs` vergleicht eine aufgezeichnete CJ-`product/query`-Antwort mit exakt einer Shopify-Variante und einer separat belegten Variantenzuordnung. Es prüft Antwort-Hash, Zeitpunkt/Quelle, echte String-IDs, Produkt-PID, konkrete vid, Varianten-SKU, variantKey und Bild-URL. Es gibt keine automatische Auswahl der ersten Lieferantenvariante, keine Umdeutung von Produkt-PID zu Varianten-ID und keine Rundung langer numerischer IDs. Doppelte IDs/SKUs und widersprechende Eltern- oder Shopify-Zuordnungen bleiben Konflikte. Auth-/Quota-/HTTP-Probleme bleiben unbekannt.\n\nAuch `matchedForReview` bestätigt nur die Struktur und exakte Gleichheit der angelieferten Daten. Die angegebene manuelle Zuordnungsquelle wird damit nicht inhaltlich authentifiziert. Tatsächlicher Lieferumfang, Motive, Strom-/Netzteilangaben, Schweizer Anschluss, Filmrechte und fertige Qualitätsabnahme bleiben separat zu belegen. `publicationReady` und `mutationReady` sind immer false. Der Prüfer hat keinerlei Netzwerk-, Datei-, Credential-, Import- oder Mutationsfunktion und ist nirgends produktiv eingebunden.\n\nDie aktuelle Shopify-SKU wird als gelieferter Wert berichtet, nicht durch diesen Prüfer gegen die unabhängige `assignmentSource` authentifiziert. Die Herkunftsdatei und die reale Auftrags-/App-Zuordnung sind manuell beziehungsweise separat zu prüfen; deren blosses Vorhandensein genügt nicht für Produktfreigabe.\n\n42 gezielte synthetische Fälle bestanden mit `node --test variant_binding_review.test.mjs`. Die Erfolgsspur wählt bewusst die zweite aufgezeichnete Variante nur anhand ihrer exakten Zuordnung; weitere Fälle prüfen insbesondere Zahlrundung, PID/vid-Verwechslung, Duplikate, Quellen-/Hashbindung und HTTP403/429. Die künstlichen Lieferanten-IDs sind ausdrücklich keine Daten des realen Projektors. Der unabhängige Review fand zunächst, dass Date.parse unmögliche Kalendertage normalisiert. Das ist korrigiert: echte Monatstage/Schaltjahre, Uhrzeit und Zeitzonenformat werden nun streng geprüft; 16 zusätzliche Fälle umfassen ungültigen 30. Februar, Nichtschaltjahre, 24-Uhr-Roll-over, Zeit-/Offsetgrenzen sowie gültigen 29. Februar. Diese Datumsprüfung belegt Struktur, keine zeitliche Aktualität der Quelle.\n\n## Nächster begrenzter Quellenschritt\n\nDen bereits bestehenden `next-improvements-20261018/source/READ-JOB.json` in einem legitimen, zuvor geprüften engen Credentialkontext lesen lassen: genau Produktdetails zu PID-Kandidat 1477820492730732544, anschliessend nur bei bestätigter pid optional die vorgesehenen Videometadaten. Keine Import-/Kauf-/Variantenschreibaufrufe. Die Antwort datiert/hashgesichert aufnehmen und die tatsächlich erfüllte Shopify-Variante 56197916361089 aus vorhandener Zuordnung oder ausdrücklich nachgewiesener Konfiguration mit ihrer echten CJ-vid verbinden. Fehlt diese Zuordnung, bleibt sie offen; niemals einfach den ersten Treffer verwenden. Für Stromversorgung danach den bestehenden separaten CH-Evidenzreview nutzen. Keine neue Frequenz, Installation oder Workflowaktivierung.\n"
+    },
+    "cj/QUELLEN-UND-PRUEFBELEG.json": {
+      "bytes": 4929,
+      "sha256": "31fb9a08c6afa042c5f83527240cbb83b1edebf5d3e0529effaf243108759798",
+      "content": {
+        "importer": {
+          "sha": "a00c882026770d5b78e8ded997249f303ad8931f",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/cj_category_fill.mjs",
+          "excerpts": [
+            {
+              "line": 28,
+              "text": " return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}"
+            },
+            {
+              "line": 39,
+              "text": "  variants.push({optionValues:ov,price:chf(v.price),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'});"
+            },
+            {
+              "line": 198,
+              "text": "   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];"
+            }
+          ]
+        },
+        "search": {
+          "query": "1477820492730732544",
+          "repository_name": "allengchour-glitch/aban-news-landing",
+          "topn": 5,
+          "results": [
+            {
+              "path": "dropship/owner-review-20261019/STORYBOARD.md",
+              "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/be6a9badff424c52dd4d69abf1021eaa8ef1750d/dropship/owner-review-20261019/STORYBOARD.md",
+              "matchedFragments": 1
+            },
+            {
+              "path": "dropship/owner-review-20261019/FREIGABEPAKET.md",
+              "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/be6a9badff424c52dd4d69abf1021eaa8ef1750d/dropship/owner-review-20261019/FREIGABEPAKET.md",
+              "matchedFragments": 2
+            },
+            {
+              "path": "dropship/owner-review-20261019/current-evidence.json",
+              "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/be6a9badff424c52dd4d69abf1021eaa8ef1750d/dropship/owner-review-20261019/current-evidence.json",
+              "matchedFragments": 1
+            }
+          ],
+          "scope": "Indexed default-branch search; not exhaustive current branch/secret/cache/artifact source audit."
+        },
+        "observedAt": "2026-10-26T20:01:23.094Z",
+        "actualProduct": {
+          "shopifyProductId": "gid://shopify/Product/15521256604033",
+          "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+          "shopifySku": "CJ-1477820492730732544",
+          "cjPidCandidate": "1477820492730732544",
+          "cjVid": null,
+          "cjVariantSku": null,
+          "actualContents": null,
+          "powerSupply": null,
+          "status": "UNKNOWN_EXACT_CJ_VARIANT"
+        },
+        "access": {
+          "runtimeSpec": "588",
+          "runtimeObservationFromParent": true,
+          "localCjSecretsBound": false,
+          "githubActionsCjAccessPreviouslyConfirmed": true,
+          "noNewCjAuthenticationOrProductRequest": true,
+          "noLogsOrSecretsRead": true,
+          "noWorkflowDispatch": true
+        },
+        "validation": {
+          "testCases": 42,
+          "passed": 42,
+          "failed": 0,
+          "fixtures": "synthetic-only; no invented actual CJ variants",
+          "codeStatus": "local review source, no integration or deployment",
+          "publicationReady": false,
+          "mutationReady": false,
+          "reviewFix": {
+            "finding": "Date.parse normalized impossible calendar days",
+            "resolution": "Strict ISO components, real month/day and Gregorian leap-year checks; no rollover or absent timezone",
+            "additionalCases": 16,
+            "freshnessAssertion": false
+          }
+        },
+        "toolErrors": [
+          {
+            "attempt": 1,
+            "tool": "github_search",
+            "error": "INVALID_ARGUMENT: passed GitHub query flags/per_page not supported; no search executed"
+          },
+          {
+            "attempt": 2,
+            "tool": "github_search",
+            "error": "required query missing while inspecting tool contract; no search executed"
+          },
+          {
+            "attempt": 3,
+            "tool": "github_search",
+            "status": "success",
+            "correctedParameters": true
+          }
+        ],
+        "boundedNativeSourceFields": {
+          "sourceFile": "PROJECTOR-NATIVE-SOURCE-FIELDS.json",
+          "sha256": "2e83c83e3f8f379a5994f7afdb0f2f22465ca3b9120a70a8b459cc1b16e64ad1",
+          "capturedAt": "2026-10-26T20:03:03.517Z",
+          "productId": "gid://shopify/Product/15521256604033",
+          "productMetafieldsReturned": 11,
+          "productMetafieldsHasNextPage": false,
+          "variantsReturned": 1,
+          "variantsHasNextPage": false,
+          "variants": [
+            {
+              "id": "gid://shopify/ProductVariant/56197916361089",
+              "sku": "CJ-1477820492730732544",
+              "inventoryPolicy": "CONTINUE",
+              "tracked": false,
+              "metafieldsReturned": 0,
+              "metafieldsHasNextPage": false
+            }
+          ],
+          "cjVidMappingInReturnedFields": false,
+          "scope": "Accessible product and variant metafields returned by bounded native read; no assertion about private app data or other stores."
+        },
+        "limitations": [
+          "Current Shopify SKU reported, not authenticated against assignmentSource by this pure matcher.",
+          "Mapping source contents require separate independent verification.",
+          "Valid capturedAt structure is not a source freshness or licence assertion."
+        ]
+      }
+    },
+    "cj/MANIFEST.json": {
+      "bytes": 696,
+      "sha256": "cc390ab388eabbd7bce8cca672625d260e3a7644f2f16f85d0f939ae81a99b29",
+      "content": {
+        "variant_binding_review.mjs": {
+          "bytes": 5342,
+          "sha256": "e4f5781b4dc8932b66b48ad89c98077c6f50d67ed6e5951bfdea42ac7f9d262c"
+        },
+        "variant_binding_review.test.mjs": {
+          "bytes": 6565,
+          "sha256": "6e69a15b3050a0df23297b4f81e5de2e14c1b34d1bf69cb5b5cae815da0e928c"
+        },
+        "QUELLEN-UND-PRUEFBELEG.json": {
+          "bytes": 4929,
+          "sha256": "31fb9a08c6afa042c5f83527240cbb83b1edebf5d3e0529effaf243108759798"
+        },
+        "README.md": {
+          "bytes": 5421,
+          "sha256": "9fd6c71e5b74668f5261128433d89212867f3f36d77b47238c126ce13b060de3"
+        },
+        "PROJECTOR-NATIVE-SOURCE-FIELDS.json": {
+          "bytes": 5482,
+          "sha256": "2e83c83e3f8f379a5994f7afdb0f2f22465ca3b9120a70a8b459cc1b16e64ad1"
+        }
+      }
+    },
+    "metricool/FRESH-PLAN.json": {
+      "bytes": 34864,
+      "sha256": "1c6c2107ec9b64ec39f6ba062e229bc45d2d6db413139c1a906625e7e1181ca4",
+      "content": {
+        "readMode": "READ_ONLY",
+        "observedAtUTC": "2026-10-26T20:04:01.677Z",
+        "request": {
+          "brandId": "6227837",
+          "fromDate": "2026-10-26T20:03:45.000+00:00",
+          "toDate": "2026-11-02T20:03:45.000+00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "brand": {
+          "id": 6227837,
+          "timezone": "Europe/Zurich",
+          "networksData": {
+            "facebookData": "1049840534888592",
+            "instagramData": "luxestyle.ch",
+            "threadsData": "luxestyle.ch",
+            "pinterestData": "luxestyleCH",
+            "tiktokData": "luxestyle.ch",
+            "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+          }
+        },
+        "privateMetadataOmitted": [
+          "creatorUserMail",
+          "creatorUserId",
+          "createdBy",
+          "userMail",
+          "ownerUsername",
+          "hash",
+          "image",
+          "userId",
+          "ownerUserId"
+        ],
+        "plan": {
+          "data": [
+            {
+              "id": 404927234,
+              "publicationDate": {
+                "dateTime": "2026-10-28T09:45:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-24T13:20:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Fünf Stufen, ein Gerät: Stufe I mit 8000 U/min macht Gemüse und Obst in 5–10 Sekunden klein, Stufe II mit 10000 U/min Fleisch, Karotten und Kürbis in 10–20 Sekunden.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "threads",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "2383637826676869482",
+              "threadsData": {
+                "replyControl": "EVERYONE",
+                "type": "POST",
+                "shareAsInstagramStory": false
+              },
+              "brandTags": []
+            },
+            {
+              "id": 404927236,
+              "publicationDate": {
+                "dateTime": "2026-10-29T12:15:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-24T13:20:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Mealprep ohne Handarbeit 🥕\nGemüse in 5–10 Sekunden, Fleisch in 10–20 Sekunden. Eier-Rührgang fürs Verquirlen, Entsafter-Gang für Früchte – alles im selben 5-Liter-Behälter.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · 400 W\n🚚 Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#mealprep #küche #kochen #haushalt #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-884200541558521239",
+              "brandTags": []
+            },
+            {
+              "id": 404928616,
+              "publicationDate": {
+                "dateTime": "2026-10-27T14:40:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-24T13:23:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Elektrischer Fleischwolf 5L – Küchenmaschine\nFünf Stufen: 8000 U/min für Gemüse und Obst, 10000 U/min für Fleisch, Karotten und Kürbis. Dazu Eier-Rührgang und Entsafter-Gang.\n\nCHF 75.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#küchenhelfer #mealprep #fleischwolf #kochen #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239114036",
+                "pinTitle": "Elektrischer Fleischwolf 5L - Kuechenmaschine",
+                "pinLink": "https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "2877674070200569146",
+              "brandTags": []
+            },
+            {
+              "id": 404928620,
+              "publicationDate": {
+                "dateTime": "2026-10-27T17:10:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-24T13:23:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Leuchtender Schaukelgeist für draussen\nBeleuchtete Geisterfigur mit Schaukelbewegung für Türeingang, Garten und Vorplatz. Robuster Kunststoff.\n\nCHF 17.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400\n\n#halloweendeko #gartendeko #aussendeko #herbstdeko #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239114033",
+                "pinTitle": "Leuchtender Schaukelgeist fuer draussen",
+                "pinLink": "https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-3165721293129560265",
+              "brandTags": []
+            },
+            {
+              "id": 405941138,
+              "publicationDate": {
+                "dateTime": "2026-10-29T18:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:08:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Relaxed Fit Hoodie «Cosy» – mit Fell-Panel und Kordelzug.\nFür kühle Abende: lockerer Schnitt, weicher Look, Kordelzug zum Anpassen.\n\nab CHF 39.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#hoodie #herbstmode #luxestyle #swissstyle #zürich",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-5264607261495550408.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "3832103242401204926",
+              "brandTags": []
+            },
+            {
+              "id": 405941267,
+              "publicationDate": {
+                "dateTime": "2026-10-29T19:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Relaxed Fit Hoodie «Cosy» – mit Fell-Panel und Kordelzug für kühle Abende. Gratis Versand ab CHF 50 nach Rabatt.",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-11336918479186155735.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239531718",
+                "pinTitle": "Relaxed-Fit Hoodie «Cosy» mit Fell-Panel",
+                "pinLink": "https://luxestyle.ch/products/relaxed-fit-hoodie-cosy-mit-fell-panel-kordelzug?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-7289213762748006017",
+              "brandTags": []
+            },
+            {
+              "id": 405941288,
+              "publicationDate": {
+                "dateTime": "2026-10-30T12:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Rugged Smartwatch X5 – 5 ATM wasserdicht, GPS und Bluetooth-Calling.\nFür Sport, Wandern und Regen: Anrufe direkt am Handgelenk.\n\nab CHF 79.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#smartwatch #fitness #luxestyle #techschweiz #outdoor",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-15480236855238901677.jpeg",
+                "https://static.metricool.com/planner/202610/6227837-file-9200127248536401560.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null,
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "5422556514800451906",
+              "brandTags": []
+            },
+            {
+              "id": 405941311,
+              "publicationDate": {
+                "dateTime": "2026-10-30T13:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Rugged Smartwatch X5 – 5 ATM wasserdicht, GPS und Bluetooth-Calling. Gratis Versand ab CHF 50 nach Rabatt.",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-16008650721639421477.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239531706",
+                "pinTitle": "Rugged Smartwatch X5 wasserdicht mit GPS",
+                "pinLink": "https://luxestyle.ch/products/rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-4313698764087147701",
+              "brandTags": []
+            },
+            {
+              "id": 405941344,
+              "publicationDate": {
+                "dateTime": "2026-10-31T17:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten und Balkon.\nDie Abende werden früh dunkel: Solar laden am Tag, leuchten am Abend.\n\nab CHF 39.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#lichterkette #balkon #garten #luxestyle #schweiz",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-13769764836650894203.jpeg",
+                "https://static.metricool.com/planner/202610/6227837-file-12648395147022624622.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null,
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-4161958612308901750",
+              "brandTags": []
+            },
+            {
+              "id": 405941368,
+              "publicationDate": {
+                "dateTime": "2026-10-31T18:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten und Balkon. Gratis Versand ab CHF 50 nach Rabatt.",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-5114647947605543485.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239531706",
+                "pinTitle": "LED Solar-Lichterkette XL für Garten und Balkon",
+                "pinLink": "https://luxestyle.ch/products/led-solar-lichterkette-xl-8-leuchtmodi-wetterfest-fur-garten-balkon?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "6949901535401824082",
+              "brandTags": []
+            },
+            {
+              "id": 405941388,
+              "publicationDate": {
+                "dateTime": "2026-11-01T11:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend.\nGesehen werden auch im Dunkeln: Blinker per Fernbedienung am Velo.\n\nab CHF 44.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#fahrrad #velo #luxestyle #schweiz #sicherheit",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-13772458834798770438.jpeg",
+                "https://static.metricool.com/planner/202610/6227837-file-16086701481287477631.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null,
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "7159397983996628078",
+              "brandTags": []
+            },
+            {
+              "id": 405941434,
+              "publicationDate": {
+                "dateTime": "2026-11-01T12:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T21:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend. Gratis Versand ab CHF 50 nach Rabatt.",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "pinterest",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-4399823561216210061.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "isAiGenerated": false
+              },
+              "pinterestData": {
+                "boardId": "1111333714239531706",
+                "pinTitle": "LED-Fahrradrucksack mit Blinker",
+                "pinLink": "https://luxestyle.ch/products/led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+                "pinNewFormat": true,
+                "isAiGenerated": false,
+                "isAiGeneratedPerson": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "4429839409975411400",
+              "brandTags": []
+            },
+            {
+              "id": 405985995,
+              "publicationDate": {
+                "dateTime": "2026-10-27T08:20:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:08:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Untot und blutverschmiert 🧟\nKostüm «Priester Zombie» von Widmann – für alle, die an Halloween auffallen wollen.\n\nCHF 35.90\nNoch rechtzeitig vor Samstag:\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #zombie #halloweenkostüm #gruselig #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-13438170428479483990.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-8155579652890605502",
+              "brandTags": []
+            },
+            {
+              "id": 405986064,
+              "publicationDate": {
+                "dateTime": "2026-10-27T17:50:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Schwarz-rot, lang, mit Pony: die Perücke für die Vampirin 🧛‍♀️\nVon Widmann – macht aus jedem schwarzen Outfit einen Halloween-Look.\n\nCHF 24.90\nBestell jetzt für Samstag:\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #vampirin #perücke #halloweenlook #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-9638067166964776346.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "5354266046264263913",
+              "brandTags": []
+            },
+            {
+              "id": 405986109,
+              "publicationDate": {
+                "dateTime": "2026-10-28T08:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Der Auftritt für den Grafen 🦇\nKostüm «Vampir» von Widmann in Erwachsenengrösse. Das Bild zeigt es mit Zubehör – was genau im Lieferumfang steckt, steht auf der Produktseite.\n\nCHF 55.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #vampir #halloweenkostüm #graf #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-9670165828582285479.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "6638701680568649025",
+              "brandTags": []
+            },
+            {
+              "id": 405986403,
+              "publicationDate": {
+                "dateTime": "2026-10-28T17:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Verhülle dich wie Dracula 🧛\nSchwarzer Umhang von Widmann. Im Lieferumfang ist der Umhang – Hut, Perücke und Accessoires auf dem Bild sind Styling-Beispiele.\n\nCHF 26.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #dracula #umhang #halloweenkostüm #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-17528583970301589680.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "8825326286574078154",
+              "brandTags": []
+            },
+            {
+              "id": 405986725,
+              "publicationDate": {
+                "dateTime": "2026-10-29T08:40:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Gänsehaut garantiert 👻\nGruselpuppe, 50 cm, weiss, von Widmann – bringt Horror-Stimmung in Deko und Party.\n\nCHF 19.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #halloweendeko #gruselig #partydeko #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-17382016742390885373.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "7686029963411803895",
+              "brandTags": []
+            },
+            {
+              "id": 405986779,
+              "publicationDate": {
+                "dateTime": "2026-10-29T17:20:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Kapuzenrobe mit Gruselfaktor 💀\nKostüm «Screaming Souls» von Widmann in Erwachsenengrösse – für Partys, Maskenbälle und die Fasnachtszeit.\n\nCHF 47.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #kostüm #gruselig #fasnacht #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-3980894827781219500.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-1907404935308818459",
+              "brandTags": []
+            },
+            {
+              "id": 405987137,
+              "publicationDate": {
+                "dateTime": "2026-10-30T08:30:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:09:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Der Klassiker für kleine Hexen 🧙‍♀️\nHexenhut für Kinder – das schnelle Extra zum Outfit.\n\nCHF 20.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #hexenhut #kinderkostüm #verkleiden #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-17005348926549372341.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "8599624041512978720",
+              "brandTags": []
+            },
+            {
+              "id": 405987167,
+              "publicationDate": {
+                "dateTime": "2026-10-31T10:15:00",
+                "timezone": "Europe/Zurich"
+              },
+              "creationDate": {
+                "dateTime": "2026-10-25T22:10:00",
+                "timezone": "Europe/Zurich"
+              },
+              "text": "Frohes Halloween 🎃\nWir wünschen dir ein gruseliges Wochenende! Kostüme ab Schweizer Lager gibt es auch für Maskenbälle und die Fasnachtszeit, die am 11.11. beginnt.\n\nHier: Weltraum Horror Clown von Widmann · CHF 36.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #happyhalloween #kostüm #fasnacht #schweiz #luxestyle",
+              "firstCommentText": "",
+              "providers": [
+                {
+                  "network": "facebook",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                },
+                {
+                  "network": "instagram",
+                  "status": "PENDING",
+                  "detailedStatus": "Pending"
+                }
+              ],
+              "media": [
+                "https://static.metricool.com/planner/202610/6227837-file-331970871294002016.jpeg"
+              ],
+              "autoPublish": true,
+              "saveExternalMediaFiles": false,
+              "mediaAltText": [
+                null
+              ],
+              "shortener": false,
+              "draft": false,
+              "twitterData": {
+                "type": "POST"
+              },
+              "facebookData": {
+                "type": "POST"
+              },
+              "instagramData": {
+                "autoPublish": true,
+                "type": "POST",
+                "showReelOnFeed": true,
+                "isAiGenerated": false
+              },
+              "hasNotReadNotes": false,
+              "uuid": "-1970243383549213009",
+              "brandTags": []
+            }
+          ]
+        }
+      }
+    },
+    "metricool/UUID-PRAEZISION.json": {
+      "bytes": 117,
+      "sha256": "ae74effbbdc6337d42afc5fade7143cb8a91f8155a44c0b6e52055d2423ce52f",
+      "content": {
+        "rawUuidCount": 20,
+        "allOriginallyQuoted": true,
+        "exactStringMatch": true,
+        "numberConversionUsed": false
+      }
+    },
+    "metricool/AUSWERTUNG.json": {
+      "bytes": 1092,
+      "sha256": "4fb0aa5924f133f1f59eaa850f76f1dfdd24ac640743950b7f58410ef2fb6969",
+      "content": {
+        "readOnly": true,
+        "observedAtUTC": "2026-10-26T20:04:01.677Z",
+        "window": {
+          "brandId": "6227837",
+          "fromDate": "2026-10-26T20:03:45.000+00:00",
+          "toDate": "2026-11-02T20:03:45.000+00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "baseline": "final1938/FRESH-PLAN.json",
+        "posts": 20,
+        "providerStates": {
+          "PENDING": 33
+        },
+        "providers": {
+          "threads": 1,
+          "facebook": 13,
+          "instagram": 13,
+          "pinterest": 6
+        },
+        "commonUUIDs": 20,
+        "recordedChanges": [],
+        "newUUIDs": [],
+        "missingUUIDs": [],
+        "duplicateUUIDs": [],
+        "sameChannelSameTimeCollisions": [],
+        "sameMediaURLPerChannelDuplicates": [],
+        "allDraftFalse": true,
+        "allGlobalAutoPublishTrue": true,
+        "publicationNotProven": true,
+        "ownWrites": 0,
+        "analyticsCalls": 0,
+        "limits": [
+          "Only future scheduled posts. No prior master ledger or publication history proof.",
+          "Repeated homepage references are not repeated video identity proof.",
+          "Board fields in existing posts do not verify an account board for a new master.",
+          "Existing foreign schedules remain unchanged."
+        ]
+      }
+    },
+    "review/REVIEW.json": {
+      "bytes": 5069,
+      "sha256": "9faf8c4716ca9abfa94d6f12d2f516e9bc39066497ec6a58cf6eb183c11661fa",
+      "content": {
+        "reviewId": "luxe_catalog_continuation_independent_20261026",
+        "reviewer": "/root/continuation_review",
+        "checkedAt": "2026-10-26T20:05:42.395085+00:00",
+        "state": "REVIEWED_DRAFTS_NOT_APPLIED",
+        "newShopWrites": 0,
+        "newRepoWrites": 0,
+        "metricsOrCatalogExports": 0,
+        "seo": {
+          "singleChangedPath": "seo.description",
+          "seoTitlePreserved": true,
+          "bodyMatchesExistingApprovedSHA": "c8922da85f1b0df162251ebc91e19479c5901efffc8e96d6d0ce10571cd96963",
+          "nativeVariantMatrix": "exact 8 colours x 6 sizes = 48",
+          "descriptionChars": 139,
+          "nativeAndPublicDescriptionMatch": true,
+          "status": "prepared; not applied",
+          "validationLimit": "Connector validator skipped; actual native read succeeded. CLI validator unavailable because _validate_graphql.mjs is missing. Not an independent validator pass."
+        },
+        "organizer": {
+          "status": "prepared; not applied",
+          "nativeBeforeExact": true,
+          "beforeSha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+          "afterSha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+          "serviceTailAndLinksExact": true,
+          "threeImages": "independently visually inspected and byte hashes confirmed",
+          "factualScope": "Visible shape, surface appearance and arrangement suggestions; no supplied set quantity, material, magnet, liner, dimension, delivery or warranty promise introduced.",
+          "remaining": [
+            "Supplier/brand-to-exact-offer identity and actual included set not independently confirmed",
+            "Inventory tracking/policy and public purchase availability not checked in this text subreview",
+            "Existing linked/service tail retained; not a fresh audit of every destination or title"
+          ]
+        },
+        "cj": {
+          "baselineTests": 26,
+          "reviewDefect": "Date.parse accepted impossible calendar dates such as 2026-02-30; sent to source agent and fixed before final review.",
+          "finalSourceTests": 42,
+          "independentAdditionalProbes": 7,
+          "finalCombinedPass": 49,
+          "finalCombinedFail": 0,
+          "status": "offline structural comparator only; not integrated or deployed",
+          "boundaries": [
+            "No supplier-source truth or assignmentSource authentication",
+            "Current Shopify SKU is reported, not independently authenticated against mapping evidence",
+            "No age/freshness assertion from syntax validation",
+            "No independent power, fulfilment, rights or publication approval; mutationReady and publicationReady always false"
+          ]
+        },
+        "openCriticalDefects": [],
+        "artifacts": [
+          {
+            "path": "seo/NATIVE-SEO.json",
+            "sha256": "143a5ff2ca50aafe52a641b63392b000ff55684790eeced9993b5cd872ce683b",
+            "bytes": 730
+          },
+          {
+            "path": "seo/NATIVE-PRODUCT.json",
+            "sha256": "227d30998af73063fcb66b6c3555b559114de6eded351c0f5f09c76c6c300d6f",
+            "bytes": 17193
+          },
+          {
+            "path": "seo/PUBLIC-HEAD.json",
+            "sha256": "2a9d2101cbbba1f2704ea81718bb0c6a25760df9fdad1fa483daaf631b9ec137",
+            "bytes": 1832
+          },
+          {
+            "path": "seo/ENTWURF.json",
+            "sha256": "620b7593880966afd95a8f820c21043e48cebb5c57bdf604c9d15820d8e5c8b9",
+            "bytes": 1951
+          },
+          {
+            "path": "seo/before.json",
+            "sha256": "b40e6d72a0b7f44704008c5f9de631ad41a5041ffdb0989c6a41ba597c176fca",
+            "bytes": 306
+          },
+          {
+            "path": "seo/after.json",
+            "sha256": "702cc209c0bba609e1b6cb746c0e7a55971658dce885c305cc58e1968c71a6c1",
+            "bytes": 305
+          },
+          {
+            "path": "seo/seo-description.diff",
+            "sha256": "315bb8e2296085b33055bfab0038baad582de2d31db448184d22183befbabbc2",
+            "bytes": 538
+          },
+          {
+            "path": "organizer/MANIFEST.json",
+            "sha256": "bf1de59418ca70269999d2cb29d1a064aefbaca66c990ac0c6a112f9c7762cc8",
+            "bytes": 3930
+          },
+          {
+            "path": "organizer/BEFORE.html",
+            "sha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+            "bytes": 1479
+          },
+          {
+            "path": "organizer/AFTER.html",
+            "sha256": "58c41a3b939a8d414add4b36e57284c4c55664ab18887a215cc0948e97545b89",
+            "bytes": 2120
+          },
+          {
+            "path": "organizer/description.diff",
+            "sha256": "dbb313fc9c67a3adc134088f251c6a72dc4f14249b496bafb2b88eabfa7f63aa",
+            "bytes": 1547
+          },
+          {
+            "path": "organizer/revision-vs-previous.diff",
+            "sha256": "5be4ba0dbf93af4ac9dc60c360437bbead0cf8e26aa87511388f26377b327742",
+            "bytes": 2041
+          },
+          {
+            "path": "cj/variant_binding_review.mjs",
+            "sha256": "e4f5781b4dc8932b66b48ad89c98077c6f50d67ed6e5951bfdea42ac7f9d262c",
+            "bytes": 5342
+          },
+          {
+            "path": "cj/variant_binding_review.test.mjs",
+            "sha256": "6e69a15b3050a0df23297b4f81e5de2e14c1b34d1bf69cb5b5cae815da0e928c",
+            "bytes": 6565
+          },
+          {
+            "path": "cj/README.md",
+            "sha256": "9fd6c71e5b74668f5261128433d89212867f3f36d77b47238c126ce13b060de3",
+            "bytes": 5421
+          },
+          {
+            "path": "review/independent-binding-probes.mjs",
+            "sha256": "6e30e67bc8e2cc638800782af20e80522d66e562c2d3d64d02d2cb41449c0a02",
+            "bytes": 3694
+          }
+        ]
+      }
+    },
+    "review/REVIEW.md": {
+      "bytes": 2003,
+      "sha256": "b8a72969feb936d2cd74527ccccb3acd5887ac7257ea317af299a42f5f64ce71",
+      "content": "# Unabhängiger Review, 26.10.2026\n\nDer SEO-Diff ändert genau `seo.description`: 139 Zeichen, Titel und bereits genehmigter Produkttext bleiben erhalten. Acht Farben und sechs Grössen sind aus allen 48 nativen Varianten exakt bestätigt. Native und öffentliche alte Beschreibung passen. Dies ist ein neuer, noch nicht angewandter Feldentwurf; der vorherige Trenchcoat-Textwrite wird nicht erneut umgesetzt oder als neue Tätigkeit gezählt. Der Connectorvalidator wurde übersprungen; die tatsächliche Leseabfrage war erfolgreich. Der lokale CLI-Validator konnte wegen fehlendem `_validate_graphql.mjs` nicht laufen und gilt nicht als bestanden.\n\nOrganizer: aktueller Vorhertext und alle drei Bildhashes stimmen. Alle drei Bilder unabhängig angesehen; sichtbare Form/Oberfläche und praktische Ordnungsvorschläge sind gedeckt. Keine neuen Material-, Mass-, Magnet-, Liner-, Stückzahl-, Liefer- oder Garantieversprechen. Der gesamte Service-/Linkteil ist bytegleich erhalten. Der konkrete Lieferumfang und die Lieferanten-/Markenzuordnung bleiben offen, ebenso in diesem Textreview die öffentliche Kaufbarkeit und Inventory-Policy. Die neue Nachherbeschreibung bleibt ein Entwurf.\n\nCJ: In der ersten lokalen Fassung gefundenen Kalenderfehler gemeldet, anschliessend korrigierte Quelle und 42 Quellentests erneut gelesen/ausgeführt. Zusätzlich sieben unabhängige Proben zu unveränderlichen Eingaben, Null-/Skalardaten, Bild-URLs und Nachweisgrenzen. Zusammen 49/49 bestanden. Synthetische Fixtures belegen keinerlei Daten des realen Projektors. `matchedForReview` ist nur ein Strukturvergleich; aktuelle Shopify-SKU wird gemeldet, die inhaltliche Zuordnung dadurch nicht authentifiziert. Beide Schreib-/Publikationsflags bleiben false. Keine Integration, Produktänderung oder reale CJ-Anfrage.\n\nKein offener kritischer Defekt im geprüften lokalen Entwurf. Quellen-, Freigabe-, Strom-, Rechte- und Publikationsgates bleiben unverändert. Genaue Dateihashes und Grenzen stehen in REVIEW.json.\n"
+    }
+  }
+}
