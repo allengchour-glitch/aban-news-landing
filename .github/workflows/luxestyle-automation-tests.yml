@@ -177,6 +177,7 @@ jobs:
           node automation/lib/varianten_sicherheit_test.mjs
           node automation/auswahl_durchlauf_test.mjs
           node automation/cj_varianten_nachziehen_lauf_test.mjs
+          node automation/lib/auswahl_abgleich_test.mjs
           node tools/versandregel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
