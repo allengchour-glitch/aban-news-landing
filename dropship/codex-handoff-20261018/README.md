@@ -1,5 +1,17 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_FORTSETZUNG_20261026_1538
+
+[Fortgesetztes Tagespaket mit Storyboard, sechs Kanaltexten/UTMs und enger Verkaufsfreigabe](FORTSETZUNG-20261026-1538.md), [frische Belege und wiederverwendeter Tagesstand](FORTSETZUNG-BELEGE-20261026-1538.json), [YouTube-CTA-Diff](YOUTUBE-SHORTS-CTA-20261026.diff), [frisch quellgleicher Versand-Schema-Diff](VERSAND-SCHEMA-QUELLABGLEICH-20261026.diff).
+
+Shop und alle sechs Metricool-Identitäten passend. Planung 15:38 CET: 22 bestehende Einträge/37 PENDING; alle gemeinsamen UUIDs/aufgezeichneten Werte unverändert, zwei frühe Termine ausserhalb des verschobenen Fensters. UUID-Strings roh gegengeprüft, keine Zahlrundung. Keine eigenen Social-Writes; keine zusätzlichen Tageskennzahlen/Flow-/Verkaufsreports.
+
+Beide Produktseiten und Bilder HTTP200, native exakte Varianten kaufbar, tracked=false/CONTINUE. Diffuser-Produkt-JSON diesmal HTTP403; exaktes aktives Kauf-Formular im vollständigen HTML unabhängig bestätigt. Beschreibung/Bilder unverändert. Haupt-Head/Canonicals geprüft; eingebettetes robots=none nicht als Produkt-noindex missdeutet. Keine Google-Indexierung oder Rankingwirkung behauptet.
+
+YouTube-Hilfe bestätigt nicht anklickbare Shorts-URLs; Caption in Schweizer Standarddeutsch entsprechend korrigiert, Profil-Produktlink weiterhin unbestätigt. Derselbe Master und offene Film-/Rechte-/Abnahme-/Ledgergates erhalten, keine neue MP4. Aktuelle Headerquelle 187533001089/sections/header.liquid bytegleich zum VORHER-Stand vom 23.10.: zwei Werte 40.49/40.5 sollen 49.99/50 werden, nur als bestehender Freigabediff; keine Tarife geändert. Interne CHF 45 und Kundendomäne erhalten.
+
+YouTube-Footer-URL bleibt bereits genehmigt und noch nicht durch Codex gespeichert; aktuellster Genehmigungsbeleg nennt fehlenden bestätigten angemeldeten normalen Admin-UI-Zugang. Keine erneute Genehmigung, kein gesperrter MAIN-Datei-Write. Vier DNS-Ergänzungen ebenfalls weiterhin bereits genehmigt, authentifizierter Schreibzugang nicht bestätigt. Nur LuxeStyle-Dokumentation ergänzt; Tagesprotokoll im selben Datumsblock 26.10.
+
 ## LUXESTYLE_FOOTER_YOUTUBE_GENEHMIGT_20261026
 
 **Konkrete Inhaberfreigabe «ja» erteilt:** [genehmigter YouTube-Footerauftrag mit genauer Admin-Anleitung](FOOTER-YOUTUBE-GENEHMIGT-20261026.md) und [belegter Genehmigungs-/Zugriffsstatus](FOOTER-YOUTUBE-GENEHMIGT-20261026.json). Die eine Ergänzung nicht erneut zur Genehmigung vorlegen. Scope ausschliesslich das vorhandene youtube_url-Feld im aktuellen Footer; keine weiteren Shop-/Profil-/Flow-/Feed-/Rabatt-/Budget-/DNS-Änderungen.
