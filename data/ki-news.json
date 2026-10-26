@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-25T09:07:43Z",
+ "stand": "2026-10-26T10:03:39Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,67 +18,67 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Weniger Demo, mehr Daten: Was Unternehmen nach dem KI-Hype wirklich beschäftigt",
-   "u": "https://t3n.de/news/weniger-demo-mehr-daten-was-unternehmen-nach-dem-ki-hype-wirklich-beschaeftigt-1765690/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "„Benotung ist sinnlos geworden“: Warum dieser Mathe-Professor den Zweck von Hausaufgaben anzweifelt",
+   "u": "https://t3n.de/news/benotung-ist-sinnlos-geworden-warum-dieser-mathe-professor-den-zweck-von-hausaufgaben-anzweifelt-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-25T08:00:00Z",
-   "s": "Chatbots, Copiloten und beeindruckende Demos gibt es inzwischen genug. 2026 wollen Unternehmen vor allem wissen, welche KI-Anwendungen im Arbeitsalltag funktionieren und sich rechnen. Drei Entwicklung…",
+   "d": "2026-10-26T09:35:48Z",
+   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
    "sprache": "de"
   },
   {
-   "t": "Offene KI-Modelle: Irgendwo zwischen Schutz vor Konzernmacht und Angst vor Cyberangriffen",
-   "u": "https://t3n.de/news/debatte-um-offene-ki-es-geht-um-cybersicherheit-demokratie-und-sehr-viel-geld-1768097/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-25T07:00:00Z",
-   "s": "Geschlossen gegen offen: Die Debatte tobt in der KI-Szene so heftig wie noch nie. Doch die Diskussion ist komplexer, als es auf den ersten Blick scheint.weiterlesen auf t3n.de",
+   "t": "heise+ | Wenn Smartwatch und Co. mithören: Was bei Aufnahme und Transkription erlaubt ist",
+   "u": "https://www.heise.de/ratgeber/Wenn-Smartwatch-und-Co-mithoeren-Was-bei-Aufnahme-und-Transkription-erlaubt-ist-11426877.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-26T09:30:00Z",
+   "s": "Smarte Gadgets haben Mikrofone, KI transkribiert in Sekunden. Doch für Tonaufnahmen gelten strenge Gesetze. Dieser Ratgeber erklärt die Spielregeln.",
    "sprache": "de"
   },
   {
-   "t": "The AI graveyard: a running list of projects and startups that didn’t make it",
-   "u": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+   "t": "KI-Film: Grok veröffentlicht sieben Minuten seiner Odyssee",
+   "u": "https://www.golem.de/news/ki-film-grok-veroeffentlicht-sieben-minuten-seiner-odyssee-2610-214500.html",
+   "q": "Golem",
+   "d": "2026-10-26T09:12:01Z",
+   "s": "Elon Musk hatte einen abendfüllenden Film angekündigt. Nun zeigt Grok Episode 1 seiner KI-Odyssee, gemacht mit Wonder Studios. (Grok, Elon Musk)",
+   "sprache": "de"
+  },
+  {
+   "t": "Nach Hacking-Vorfällen: OpenAI trainiert Spitzenmodelle nur noch in einer Kopie des Webs",
+   "u": "https://t3n.de/news/openai-training-simulation-web-1769746/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-26T08:55:00Z",
+   "s": "Nach wiederholten Sicherheitsvorfällen zieht das KI-Labor jetzt die Reißleine. Dabei hatten Expert:innen zuvor argumentiert, dass es nahezu unmöglich sei, eine Sandbox komplett von der Außenwelt abzus…",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | Grenzen lokaler KI: Was iPhone, Galaxy, Pixel und iPad leisten",
+   "u": "https://www.heise.de/hintergrund/Grenzen-lokaler-KI-Was-iPhone-Galaxy-Pixel-und-iPad-leisten-11492816.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-26T08:00:00Z",
+   "s": "Transkribieren, Übersetzen, Zusammenfassen: Wie gut KI lokal auf iPhone, Galaxy, Pixel und iPad funktioniert, zeigen aktuelle Tests und Benchmarks.",
+   "sprache": "de"
+  },
+  {
+   "t": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
+   "u": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
    "q": "TechCrunch AI",
-   "d": "2026-10-24T19:00:00Z",
-   "s": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+   "d": "2026-10-25T21:31:16Z",
+   "s": "The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest.",
    "sprache": "en"
   },
   {
-   "t": "Block’s new voice model sounds eerily human",
-   "u": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+   "t": "AI delivers ‘zero financial payoff’ to most companies, Apollo economist says",
+   "u": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
    "q": "TechCrunch AI",
-   "d": "2026-10-24T16:00:00Z",
-   "s": "Block said that the voice model can run locally on a MacBook M4 Max",
+   "d": "2026-10-25T16:57:32Z",
+   "s": "\"Despite massive investments and widespread hype around artificial intelligence, the technology has delivered zero financial payoff to corporate America outside of tech.\"",
    "sprache": "en"
   },
   {
-   "t": "KI-Modell: Moonshot AI stellt Kimi K3.1 Pro vor",
-   "u": "https://www.golem.de/news/ki-modell-moonshot-ai-stellt-kimi-k3-1-pro-vor-2610-214477.html",
+   "t": "Risikoprüfungen werden Pflicht: China will KI-Jobverluste abfedern",
+   "u": "https://www.golem.de/news/risikopruefungen-werden-pflicht-china-will-ki-jobverluste-abfedern-2610-214487.html",
    "q": "Golem",
-   "d": "2026-10-24T13:20:02Z",
-   "s": "Moonshot AI hat Kimi K3.1 Pro vorgestellt, ein KI-Modell, das für Entwicklung, Forschung, Finanzanalysen und 3D-Inhalte gedacht ist. (KI, API)",
-   "sprache": "de"
-  },
-  {
-   "t": "OpenAI stellt seine neue Trainingsumgebung vor – ohne Air Gap",
-   "u": "https://www.heise.de/news/OpenAI-stellt-seine-neue-Trainingsumgebung-vor-ohne-Air-Gap-11499163.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-24T11:37:00Z",
-   "s": "OpenAI verschärfte nach Hacking-Attacken durch seine KI die Sicherheits-Maßnahmen. Die „Offline-Welten“ dafür sind aber nicht offline.",
-   "sprache": "de"
-  },
-  {
-   "t": "Ausbruchsgefahr: OpenAI sperrt seine KI-Modelle vom Internet aus",
-   "u": "https://www.golem.de/news/ausbruchsgefahr-openai-sperrt-seine-ki-modelle-vom-internet-aus-2610-214474.html",
-   "q": "Golem",
-   "d": "2026-10-24T11:27:01Z",
-   "s": "OpenAI trainiert Spitzenmodelle nur noch offline. Der Grund: KI-Agenten waren in Tests aus Sandboxes ausgebrochen. (OpenAI, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Anthropic lässt KI-Agenten Verhandlungsregeln für Menschen lernen",
-   "u": "https://www.heise.de/news/Anthropic-laesst-KI-Agenten-Verhandlungsregeln-fuer-Menschen-lernen-11498981.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-24T08:14:00Z",
-   "s": "Anthropic berät sich angeblich mit Anwaltskanzleien, wie KI-Agenten künftig Preise, Gehälter und Verträge für ihre Nutzer aushandeln sollten.",
+   "d": "2026-10-25T13:10:02Z",
+   "s": "China will den KI-Einsatz am Arbeitsplatz steuern und Beschäftigte mit Risikoprüfungen, Umschulung und Schutz vor den Folgen der Automatisierung absichern. (KI, Politik)",
    "sprache": "de"
   },
   {
