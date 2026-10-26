@@ -1,0 +1,1841 @@
+{
+  "analysis": {
+    "dateEuropeZurich": "2026-10-26",
+    "identities": {
+      "shopMatches": true,
+      "brand": [
+        {
+          "id": 6227837,
+          "timezone": "Europe/Zurich",
+          "networksData": {
+            "facebookData": "1049840534888592",
+            "instagramData": "luxestyle.ch",
+            "threadsData": "luxestyle.ch",
+            "pinterestData": "luxestyleCH",
+            "tiktokData": "luxestyle.ch",
+            "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+            "tiktokAdsData": "7691398659300179974"
+          }
+        }
+      ]
+    },
+    "metricPeriod": {
+      "from": "2026-10-19T00:00:00+02:00",
+      "to": "2026-10-25T23:59:59+01:00",
+      "note": "Seven completed local calendar days include the DST change on25Oct; unknown is never imputed as0."
+    },
+    "metrics": {
+      "instagram": [
+        {
+          "fieldId": "IGEV23",
+          "label": "Instagram Evolution > Reels Views",
+          "description": "Number of times your Reels' video was viewed",
+          "daily": {
+            "20261019": 164.0,
+            "20261020": 150.0,
+            "20261021": 172.0,
+            "20261022": 214.0,
+            "20261023": 152.0,
+            "20261024": 92.0,
+            "20261025": 293.0
+          },
+          "knownDayCount": 7,
+          "knownSum": 1237.0,
+          "sevenDayTotal": 1237.0,
+          "missingDays": []
+        },
+        {
+          "fieldId": "IGEV25",
+          "label": "Instagram Evolution > Reels Interactions",
+          "description": "Interactions (likes, comments, saves and shares) received by reels. Does not include feed posts.",
+          "daily": {
+            "20261019": null,
+            "20261020": 1.0,
+            "20261021": null,
+            "20261022": null,
+            "20261023": 1.0,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 2,
+          "knownSum": 2.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261019",
+            "20261021",
+            "20261022",
+            "20261024",
+            "20261025"
+          ]
+        }
+      ],
+      "facebook": [
+        {
+          "fieldId": "FBEV22",
+          "label": "Facebook Evolution > Reels Video Views",
+          "description": "Number of video views received on your reels.",
+          "daily": {
+            "20261019": 78.0,
+            "20261020": 101.0,
+            "20261021": 223.0,
+            "20261022": 165.0,
+            "20261023": 403.0,
+            "20261024": 233.0,
+            "20261025": 317.0
+          },
+          "knownDayCount": 7,
+          "knownSum": 1520.0,
+          "sevenDayTotal": 1520.0,
+          "missingDays": []
+        },
+        {
+          "fieldId": "FBEV26",
+          "label": "Facebook Evolution > Reels Interactions",
+          "description": "Number of interactions: Likes and comments.",
+          "daily": {
+            "20261019": null,
+            "20261020": null,
+            "20261021": null,
+            "20261022": null,
+            "20261023": 1.0,
+            "20261024": null,
+            "20261025": 1.0
+          },
+          "knownDayCount": 2,
+          "knownSum": 2.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261024"
+          ]
+        }
+      ],
+      "tiktok": [
+        {
+          "fieldId": "TKEV02",
+          "label": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "daily": {
+            "20261019": 1037.0,
+            "20261020": 1056.0,
+            "20261021": 1076.0,
+            "20261022": 1029.0,
+            "20261023": 810.0,
+            "20261024": 805.0,
+            "20261025": 794.0
+          },
+          "knownDayCount": 7,
+          "knownSum": 6607.0,
+          "sevenDayTotal": 6607.0,
+          "missingDays": []
+        },
+        {
+          "fieldId": "TKEV06",
+          "label": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "daily": {
+            "20261019": 6.0,
+            "20261020": 5.0,
+            "20261021": 2.0,
+            "20261022": 7.0,
+            "20261023": 5.0,
+            "20261024": 10.0,
+            "20261025": 3.0
+          },
+          "knownDayCount": 7,
+          "knownSum": 38.0,
+          "sevenDayTotal": 38.0,
+          "missingDays": []
+        }
+      ],
+      "youtube": [
+        {
+          "fieldId": "YTEV17",
+          "label": "Youtube Evolution > Visited Videos Views",
+          "description": "Number of views received by visited videos",
+          "daily": {
+            "20261019": 127.0,
+            "20261020": 99.0,
+            "20261021": 110.0,
+            "20261022": 263.0,
+            "20261023": null,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 4,
+          "knownSum": 599.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261023",
+            "20261024",
+            "20261025"
+          ]
+        },
+        {
+          "fieldId": "YTEV14",
+          "label": "Youtube Evolution > Visited Videos Likes",
+          "description": "Number of likes of the visited videos",
+          "daily": {
+            "20261019": 2.0,
+            "20261020": 1.0,
+            "20261021": 1.0,
+            "20261022": 3.0,
+            "20261023": null,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 4,
+          "knownSum": 7.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261023",
+            "20261024",
+            "20261025"
+          ]
+        },
+        {
+          "fieldId": "YTEV16",
+          "label": "Youtube Evolution > Visited Videos Comments",
+          "description": "Number of comments received by visited video",
+          "daily": {
+            "20261019": 0.0,
+            "20261020": 0.0,
+            "20261021": 0.0,
+            "20261022": 0.0,
+            "20261023": null,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 4,
+          "knownSum": 0.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261023",
+            "20261024",
+            "20261025"
+          ]
+        },
+        {
+          "fieldId": "YTEV18",
+          "label": "Youtube Evolution > Visited Videos Shares",
+          "description": "Number of shares of the visited videos",
+          "daily": {
+            "20261019": 0.0,
+            "20261020": 0.0,
+            "20261021": 0.0,
+            "20261022": 0.0,
+            "20261023": null,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 4,
+          "knownSum": 0.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261023",
+            "20261024",
+            "20261025"
+          ]
+        }
+      ],
+      "threads": [
+        {
+          "fieldId": "THEV06",
+          "label": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "daily": {
+            "20261019": 1.0,
+            "20261020": 2.0,
+            "20261021": 1.0,
+            "20261022": null,
+            "20261023": 3.0,
+            "20261024": null,
+            "20261025": 7.0
+          },
+          "knownDayCount": 5,
+          "knownSum": 14.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261022",
+            "20261024"
+          ]
+        },
+        {
+          "fieldId": "THEV05",
+          "label": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "daily": {
+            "20261019": null,
+            "20261020": null,
+            "20261021": null,
+            "20261022": null,
+            "20261023": null,
+            "20261024": null,
+            "20261025": 0.0
+          },
+          "knownDayCount": 1,
+          "knownSum": 0.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261019",
+            "20261020",
+            "20261021",
+            "20261022",
+            "20261023",
+            "20261024"
+          ]
+        }
+      ],
+      "pinterest": [
+        {
+          "fieldId": "PIEV01",
+          "label": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "daily": {
+            "20261019": 4772.0,
+            "20261020": 1811.0,
+            "20261021": 1250.0,
+            "20261022": 1718.0,
+            "20261023": 3207.0,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 5,
+          "knownSum": 12758.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261024",
+            "20261025"
+          ]
+        },
+        {
+          "fieldId": "PIEV04",
+          "label": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "daily": {
+            "20261019": 70.0,
+            "20261020": 38.0,
+            "20261021": 21.0,
+            "20261022": 23.0,
+            "20261023": 50.0,
+            "20261024": null,
+            "20261025": null
+          },
+          "knownDayCount": 5,
+          "knownSum": 202.0,
+          "sevenDayTotal": null,
+          "missingDays": [
+            "20261024",
+            "20261025"
+          ]
+        }
+      ]
+    },
+    "planning": {
+      "from": "2026-10-26T07:57:13+01:00",
+      "to": "2026-11-02T07:57:13+01:00",
+      "posts": 24,
+      "channelStates": {
+        "PENDING": 41
+      },
+      "dateCounts": {
+        "2026-10-26": 4,
+        "2026-10-27": 4,
+        "2026-10-28": 3,
+        "2026-10-29": 5,
+        "2026-10-30": 3,
+        "2026-10-31": 3,
+        "2026-11-01": 2
+      },
+      "sameChannelTimeCollisions": [],
+      "sameNormalizedMediaUrlAndChannelCandidates": [],
+      "comparisonTo0036": {
+        "sharedUuidCount": 24,
+        "newUuidCount": 0,
+        "missingFromCurrentWindowCount": 0,
+        "details": [
+          {
+            "uuid": "3370014454796207908",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "1910940002626912625",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "2383637826676869482",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-884200541558521239",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "2877674070200569146",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-3165721293129560265",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "3832103242401204926",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-7289213762748006017",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "5422556514800451906",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-4313698764087147701",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-4161958612308901750",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "6949901535401824082",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "7159397983996628078",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "4429839409975411400",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-2555305829825950000",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-797878253177779214",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-8155579652890605502",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "5354266046264263913",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "6638701680568649025",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "8825326286574078154",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "7686029963411803895",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-1907404935308818459",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "8599624041512978720",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          },
+          {
+            "uuid": "-1970243383549213009",
+            "fieldsCompared": [
+              "id",
+              "publicationDate",
+              "text",
+              "providers",
+              "media",
+              "draft",
+              "autoPublish"
+            ],
+            "changedFields": []
+          }
+        ]
+      },
+      "scope": "Scheduled posts only. Equal URLs are an exact-match check; no complete media-fingerprint/master-history certification."
+    },
+    "music": {
+      "path": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+      "bytes": 11343950,
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "matchesFreshRepoMetadata": true,
+      "durationSeconds": 64.30766439909297,
+      "channels": 2,
+      "sampleRate": 44100,
+      "provenance": "Fresh repository CREDITS identifies ORIGINAL PRO / reproducible producer; existing source licence evidence retained. No final mix or film-rights approval inferred."
+    },
+    "welcomeDraft": {
+      "flowId": "VbLQj6",
+      "messageId": "TTuuTS",
+      "templateId": "VZnxDz",
+      "beforeSha256": "febbda7778569ad3aba048d6f4c6dc0fa4fb2ada61d5fd74a70cf291fc2d1129",
+      "afterSha256": "9871468890bc18511ca5de786ae919f0d49ffdf7eb4b25ef8d6857aa946b7442",
+      "scope": "One existing main CTA href gains four UTM parameters; no discount, content promise, sending or flow setting change."
+    },
+    "writes": {
+      "social": 0,
+      "products": 0,
+      "flows": 0,
+      "dns": 0
+    }
+  },
+  "nativePlanningPosts": [
+    {
+      "id": 404927218,
+      "uuid": "3370014454796207908",
+      "publicationDate": {
+        "dateTime": "2026-10-26T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Elektrischer Fleischwolf 5L 🔪\nFleisch, Gemüse, Zwiebeln, Knoblauch und Kräuter – ein Gerät für Wurst, Füllungen, Saucen und Babynahrung.\n\nCHF 75.90 · 400 W · 110–240 V · 5 Liter\n🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#küche #küchenmaschine #fleischwolf #kochen #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 404927223,
+      "uuid": "1910940002626912625",
+      "publicationDate": {
+        "dateTime": "2026-10-26T19:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Leuchtender Schaukelgeist 👻\nGrosse Geisterfigur für draussen: integrierte Beleuchtung, schaukelt vor und zurück. Für Türeingang, Garten und Vorplatz, aus robustem Kunststoff.\n\nCHF 17.90\n🚚 Lieferung 10–20 Werktage – plane ihn für die nächste Saison ein\n🔄 30 Tage Rückgabe\n🔗 https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400\n\n#halloween #deko #gartendeko #herbst #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 404927234,
+      "uuid": "2383637826676869482",
+      "publicationDate": {
+        "dateTime": "2026-10-28T09:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Fünf Stufen, ein Gerät: Stufe I mit 8000 U/min macht Gemüse und Obst in 5–10 Sekunden klein, Stufe II mit 10000 U/min Fleisch, Karotten und Kürbis in 10–20 Sekunden.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 404927236,
+      "uuid": "-884200541558521239",
+      "publicationDate": {
+        "dateTime": "2026-10-29T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Mealprep ohne Handarbeit 🥕\nGemüse in 5–10 Sekunden, Fleisch in 10–20 Sekunden. Eier-Rührgang fürs Verquirlen, Entsafter-Gang für Früchte – alles im selben 5-Liter-Behälter.\n\nElektrischer Fleischwolf 5L · CHF 75.90 · 400 W\n🚚 Lieferung 10–20 Werktage\n🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#mealprep #küche #kochen #haushalt #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 404928616,
+      "uuid": "2877674070200569146",
+      "publicationDate": {
+        "dateTime": "2026-10-27T14:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Elektrischer Fleischwolf 5L – Küchenmaschine\nFünf Stufen: 8000 U/min für Gemüse und Obst, 10000 U/min für Fleisch, Karotten und Kürbis. Dazu Eier-Rührgang und Entsafter-Gang.\n\nCHF 75.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962\n\n#küchenhelfer #mealprep #fleischwolf #kochen #luxestyle",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114036",
+        "pinTitle": "Elektrischer Fleischwolf 5L - Kuechenmaschine",
+        "pinLink": "https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 404928620,
+      "uuid": "-3165721293129560265",
+      "publicationDate": {
+        "dateTime": "2026-10-27T17:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Leuchtender Schaukelgeist für draussen\nBeleuchtete Geisterfigur mit Schaukelbewegung für Türeingang, Garten und Vorplatz. Robuster Kunststoff.\n\nCHF 17.90 · Lieferung 10–20 Werktage\nhttps://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400\n\n#halloweendeko #gartendeko #aussendeko #herbstdeko #luxestyle",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114033",
+        "pinTitle": "Leuchtender Schaukelgeist fuer draussen",
+        "pinLink": "https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 405941138,
+      "uuid": "3832103242401204926",
+      "publicationDate": {
+        "dateTime": "2026-10-29T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Relaxed Fit Hoodie «Cosy» – mit Fell-Panel und Kordelzug.\nFür kühle Abende: lockerer Schnitt, weicher Look, Kordelzug zum Anpassen.\n\nab CHF 39.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#hoodie #herbstmode #luxestyle #swissstyle #zürich",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5264607261495550408.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405941267,
+      "uuid": "-7289213762748006017",
+      "publicationDate": {
+        "dateTime": "2026-10-29T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Relaxed Fit Hoodie «Cosy» – mit Fell-Panel und Kordelzug für kühle Abende. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-11336918479186155735.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239531718",
+        "pinTitle": "Relaxed-Fit Hoodie «Cosy» mit Fell-Panel",
+        "pinLink": "https://luxestyle.ch/products/relaxed-fit-hoodie-cosy-mit-fell-panel-kordelzug?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 405941288,
+      "uuid": "5422556514800451906",
+      "publicationDate": {
+        "dateTime": "2026-10-30T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rugged Smartwatch X5 – 5 ATM wasserdicht, GPS und Bluetooth-Calling.\nFür Sport, Wandern und Regen: Anrufe direkt am Handgelenk.\n\nab CHF 79.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#smartwatch #fitness #luxestyle #techschweiz #outdoor",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-15480236855238901677.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-9200127248536401560.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405941311,
+      "uuid": "-4313698764087147701",
+      "publicationDate": {
+        "dateTime": "2026-10-30T13:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rugged Smartwatch X5 – 5 ATM wasserdicht, GPS und Bluetooth-Calling. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16008650721639421477.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "Rugged Smartwatch X5 wasserdicht mit GPS",
+        "pinLink": "https://luxestyle.ch/products/rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 405941344,
+      "uuid": "-4161958612308901750",
+      "publicationDate": {
+        "dateTime": "2026-10-31T17:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten und Balkon.\nDie Abende werden früh dunkel: Solar laden am Tag, leuchten am Abend.\n\nab CHF 39.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#lichterkette #balkon #garten #luxestyle #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13769764836650894203.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-12648395147022624622.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405941368,
+      "uuid": "6949901535401824082",
+      "publicationDate": {
+        "dateTime": "2026-10-31T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten und Balkon. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5114647947605543485.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "LED Solar-Lichterkette XL für Garten und Balkon",
+        "pinLink": "https://luxestyle.ch/products/led-solar-lichterkette-xl-8-leuchtmodi-wetterfest-fur-garten-balkon?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 405941388,
+      "uuid": "7159397983996628078",
+      "publicationDate": {
+        "dateTime": "2026-11-01T11:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend.\nGesehen werden auch im Dunkeln: Blinker per Fernbedienung am Velo.\n\nab CHF 44.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#fahrrad #velo #luxestyle #schweiz #sicherheit",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13772458834798770438.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-16086701481287477631.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405941434,
+      "uuid": "4429839409975411400",
+      "publicationDate": {
+        "dateTime": "2026-11-01T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-4399823561216210061.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "LED-Fahrradrucksack mit Blinker",
+        "pinLink": "https://luxestyle.ch/products/led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+        "pinNewFormat": true
+      }
+    },
+    {
+      "id": 405984904,
+      "uuid": "-2555305829825950000",
+      "publicationDate": {
+        "dateTime": "2026-10-26T08:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Das Gebiss, das aus jedem Outfit einen Vampir macht 🧛\nGraf-Dracula-Gebiss in Weiss, verkauft im Bündel zu 10 Stück – genug für die ganze Gruppe.\n\nCHF 15.90 · 10 Stück\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #vampir #dracula #halloweenkostüm #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-6383276462566813954.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405985933,
+      "uuid": "-797878253177779214",
+      "publicationDate": {
+        "dateTime": "2026-10-26T17:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Für kleine Hexen 🧙‍♀️\nKleid und Hut von Widmann – fertig für die Halloween-Runde. Grössen stehen auf der Produktseite.\n\nCHF 38.90\nBestell jetzt, damit es bis Samstag klappt:\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #hexe #kinderkostüm #halloweenkostüm #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-5191367944139021133.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405985995,
+      "uuid": "-8155579652890605502",
+      "publicationDate": {
+        "dateTime": "2026-10-27T08:20:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Untot und blutverschmiert 🧟\nKostüm «Priester Zombie» von Widmann – für alle, die an Halloween auffallen wollen.\n\nCHF 35.90\nNoch rechtzeitig vor Samstag:\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #zombie #halloweenkostüm #gruselig #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13438170428479483990.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405986064,
+      "uuid": "5354266046264263913",
+      "publicationDate": {
+        "dateTime": "2026-10-27T17:50:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schwarz-rot, lang, mit Pony: die Perücke für die Vampirin 🧛‍♀️\nVon Widmann – macht aus jedem schwarzen Outfit einen Halloween-Look.\n\nCHF 24.90\nBestell jetzt für Samstag:\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #vampirin #perücke #halloweenlook #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9638067166964776346.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405986109,
+      "uuid": "6638701680568649025",
+      "publicationDate": {
+        "dateTime": "2026-10-28T08:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Der Auftritt für den Grafen 🦇\nKostüm «Vampir» von Widmann in Erwachsenengrösse. Das Bild zeigt es mit Zubehör – was genau im Lieferumfang steckt, steht auf der Produktseite.\n\nCHF 55.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #vampir #halloweenkostüm #graf #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9670165828582285479.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405986403,
+      "uuid": "8825326286574078154",
+      "publicationDate": {
+        "dateTime": "2026-10-28T17:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Verhülle dich wie Dracula 🧛\nSchwarzer Umhang von Widmann. Im Lieferumfang ist der Umhang – Hut, Perücke und Accessoires auf dem Bild sind Styling-Beispiele.\n\nCHF 26.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #dracula #umhang #halloweenkostüm #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17528583970301589680.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405986725,
+      "uuid": "7686029963411803895",
+      "publicationDate": {
+        "dateTime": "2026-10-29T08:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Gänsehaut garantiert 👻\nGruselpuppe, 50 cm, weiss, von Widmann – bringt Horror-Stimmung in Deko und Party.\n\nCHF 19.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #halloweendeko #gruselig #partydeko #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17382016742390885373.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405986779,
+      "uuid": "-1907404935308818459",
+      "publicationDate": {
+        "dateTime": "2026-10-29T17:20:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Kapuzenrobe mit Gruselfaktor 💀\nKostüm «Screaming Souls» von Widmann in Erwachsenengrösse – für Partys, Maskenbälle und die Fasnachtszeit.\n\nCHF 47.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #kostüm #gruselig #fasnacht #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-3980894827781219500.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405987137,
+      "uuid": "8599624041512978720",
+      "publicationDate": {
+        "dateTime": "2026-10-30T08:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Der Klassiker für kleine Hexen 🧙‍♀️\nHexenhut für Kinder – das schnelle Extra zum Outfit.\n\nCHF 20.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #hexenhut #kinderkostüm #verkleiden #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17005348926549372341.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    },
+    {
+      "id": 405987167,
+      "uuid": "-1970243383549213009",
+      "publicationDate": {
+        "dateTime": "2026-10-31T10:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Frohes Halloween 🎃\nWir wünschen dir ein gruseliges Wochenende! Kostüme ab Schweizer Lager gibt es auch für Maskenbälle und die Fasnachtszeit, die am 11.11. beginnt.\n\nHier: Weltraum Horror Clown von Widmann · CHF 36.90\n🇨🇭 Versand ab Schweizer Lager, meist in 2–3 Werktagen bei dir\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#halloween #happyhalloween #kostüm #fasnacht #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-331970871294002016.jpeg"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      }
+    }
+  ],
+  "flowReport": {
+    "data": {
+      "type": "flow-values-report",
+      "id": "8db3dd12-d18c-41ff-a102-4afc524dc899",
+      "attributes": {
+        "results": [
+          {
+            "groupings": {
+              "flow_id": "RnTvsY",
+              "flow_name": "Post-Purchase · Order + Review",
+              "flow_message_id": "Tr6DXE",
+              "send_channel": "email"
+            },
+            "statistics": {
+              "average_order_value": 0,
+              "click_rate": 0.25,
+              "clicks_unique": 1,
+              "conversion_rate": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 4,
+              "delivery_rate": 1,
+              "open_rate": 0.5,
+              "opens_unique": 2,
+              "recipients": 4,
+              "revenue_per_recipient": 0
+            },
+            "flow_details": {
+              "type": "flow",
+              "id": "RnTvsY",
+              "attributes": {
+                "name": "Post-Purchase · Order + Review",
+                "status": "live",
+                "trigger_type": "Metric",
+                "created": "2026-05-26T09:58:07+00:00",
+                "updated": "2026-05-26T09:58:55+00:00",
+                "tags": []
+              }
+            }
+          },
+          {
+            "groupings": {
+              "flow_id": "VbLQj6",
+              "flow_name": "Welcome Series",
+              "flow_message_id": "TTuuTS",
+              "send_channel": "email"
+            },
+            "statistics": {
+              "average_order_value": 0,
+              "click_rate": 0,
+              "clicks_unique": 0,
+              "conversion_rate": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 2,
+              "delivery_rate": 1,
+              "open_rate": 0.5,
+              "opens_unique": 1,
+              "recipients": 2,
+              "revenue_per_recipient": 0
+            },
+            "flow_details": {
+              "type": "flow",
+              "id": "VbLQj6",
+              "attributes": {
+                "name": "Welcome Series",
+                "status": "live",
+                "trigger_type": "Added to List",
+                "created": "2026-06-01T19:15:25+00:00",
+                "updated": "2026-06-01T19:16:30+00:00",
+                "tags": []
+              }
+            }
+          }
+        ],
+        "flow_aggregation": [
+          {
+            "flow_id": "RnTvsY",
+            "flow_details": {
+              "type": "flow",
+              "id": "RnTvsY",
+              "attributes": {
+                "name": "Post-Purchase · Order + Review",
+                "status": "live",
+                "trigger_type": "Metric",
+                "created": "2026-05-26T09:58:07+00:00",
+                "updated": "2026-05-26T09:58:55+00:00",
+                "tags": []
+              }
+            },
+            "statistics": {
+              "clicks_unique": 1,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 4,
+              "opens_unique": 2,
+              "recipients": 4,
+              "open_rate": 0.5,
+              "click_rate": 0.25,
+              "conversion_rate": 0,
+              "delivery_rate": 1,
+              "click_to_open_rate": 0.5,
+              "average_order_value": 0,
+              "revenue_per_recipient": 0
+            }
+          },
+          {
+            "flow_id": "VbLQj6",
+            "flow_details": {
+              "type": "flow",
+              "id": "VbLQj6",
+              "attributes": {
+                "name": "Welcome Series",
+                "status": "live",
+                "trigger_type": "Added to List",
+                "created": "2026-06-01T19:15:25+00:00",
+                "updated": "2026-06-01T19:16:30+00:00",
+                "tags": []
+              }
+            },
+            "statistics": {
+              "clicks_unique": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 2,
+              "opens_unique": 1,
+              "recipients": 2,
+              "open_rate": 0.5,
+              "click_rate": 0,
+              "conversion_rate": 0,
+              "delivery_rate": 1,
+              "click_to_open_rate": 0,
+              "average_order_value": 0,
+              "revenue_per_recipient": 0
+            }
+          }
+        ]
+      },
+      "relationships": {
+        "flows": {
+          "data": [
+            {
+              "type": "flow",
+              "id": "RnTvsY"
+            },
+            {
+              "type": "flow",
+              "id": "VbLQj6"
+            }
+          ]
+        },
+        "flow-messages": {
+          "data": [
+            {
+              "type": "flow-message",
+              "id": "Tr6DXE"
+            },
+            {
+              "type": "flow-message",
+              "id": "TTuuTS"
+            }
+          ]
+        }
+      }
+    },
+    "links": {
+      "self": "https://a.klaviyo.com/api/flow-values-reports",
+      "next": null,
+      "prev": null
+    }
+  },
+  "checkout": {
+    "data": {
+      "type": "flow",
+      "id": "Vse76a",
+      "attributes": {
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "trigger_type": "Metric",
+        "updated": "2026-10-10T08:13:07+00:00"
+      },
+      "relationships": {
+        "flow-actions": {
+          "links": {
+            "self": "https://a.klaviyo.com/api/flows/Vse76a/relationships/flow-actions/",
+            "related": "https://a.klaviyo.com/api/flows/Vse76a/flow-actions/"
+          }
+        },
+        "tags": {
+          "links": {
+            "self": "https://a.klaviyo.com/api/flows/Vse76a/relationships/tags/",
+            "related": "https://a.klaviyo.com/api/flows/Vse76a/tags/"
+          }
+        }
+      },
+      "links": {
+        "self": "https://a.klaviyo.com/api/flows/Vse76a/"
+      }
+    },
+    "links": {
+      "self": "https://a.klaviyo.com/api/flows/Vse76a?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+    }
+  },
+  "forms": {
+    "data": [],
+    "links": {
+      "self": "https://a.klaviyo.com/api/forms?fields%5Bform%5D=id%2Cname%2Cstatus%2Cupdated_at&page%5Bsize%5D=5&sort=-updated_at",
+      "next": null,
+      "prev": null
+    }
+  },
+  "klaviyoAccount": {
+    "data": [
+      {
+        "type": "account",
+        "id": "XWqMAD",
+        "attributes": {
+          "preferred_currency": "USD",
+          "timezone": "Europe/Zurich",
+          "contact_information": {
+            "website_url": "https://luxestyle.ch",
+            "organization_name": "LuxeStyle CH"
+          }
+        },
+        "links": {
+          "self": "https://a.klaviyo.com/api/accounts/XWqMAD/"
+        }
+      }
+    ],
+    "links": {
+      "self": "https://a.klaviyo.com/api/accounts?fields%5Baccount%5D=preferred_currency%2Ctimezone%2Ccontact_information.website_url%2Ccontact_information.organization_name",
+      "next": null,
+      "prev": null
+    }
+  },
+  "placedOrderDiscovery": [
+    {
+      "type": "metric",
+      "id": "W7XTVD",
+      "attributes": {
+        "name": "Placed Order"
+      },
+      "relationships": {
+        "flow-triggers": {
+          "links": {
+            "self": "https://a.klaviyo.com/api/metrics/W7XTVD/relationships/flow-triggers/",
+            "related": "https://a.klaviyo.com/api/metrics/W7XTVD/flow-triggers/"
+          }
+        }
+      },
+      "links": {
+        "self": "https://a.klaviyo.com/api/metrics/W7XTVD/"
+      }
+    }
+  ],
+  "publicProducts": [
+    {
+      "name": "projector",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "requests": [
+        {
+          "kind": "html",
+          "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "checkedAtUtc": "2026-10-26T07:05:52.369239+00:00",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "truncated": true,
+          "bytesRead": 300001,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "kind": "json",
+          "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+          "checkedAtUtc": "2026-10-26T07:05:53.170360+00:00",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+          "truncated": false,
+          "bytesRead": 15197,
+          "contentType": "text/javascript; charset=utf-8",
+          "exactVariant": {
+            "id": 56197916361089,
+            "available": true,
+            "price": 3490,
+            "title": "Default Title"
+          },
+          "nativeProductIdMatches": true
+        },
+        {
+          "kind": "image",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "checkedAtUtc": "2026-10-26T07:05:53.672843+00:00",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "truncated": false,
+          "bytesRead": 118008,
+          "contentType": "image/jpeg",
+          "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+          "savedAs": "projector-reference.jpg"
+        }
+      ]
+    },
+    {
+      "name": "diffuser",
+      "productId": "gid://shopify/Product/15411554320769",
+      "variantId": "gid://shopify/ProductVariant/55743280021889",
+      "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+      "requests": [
+        {
+          "kind": "html",
+          "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+          "checkedAtUtc": "2026-10-26T07:05:54.053512+00:00",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+          "truncated": true,
+          "bytesRead": 300001,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "kind": "json",
+          "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben.js",
+          "checkedAtUtc": "2026-10-26T07:05:54.685478+00:00",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben.js",
+          "truncated": false,
+          "bytesRead": 11000,
+          "contentType": "text/javascript; charset=utf-8",
+          "exactVariant": {
+            "id": 55743280021889,
+            "available": true,
+            "price": 4490,
+            "title": "Default Title"
+          },
+          "nativeProductIdMatches": true
+        },
+        {
+          "kind": "image",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+          "checkedAtUtc": "2026-10-26T07:05:54.998021+00:00",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+          "truncated": false,
+          "bytesRead": 58799,
+          "contentType": "image/jpeg",
+          "sha256": "0f3efc5740b0be89c5b357d6cb596026471b776cae3576085cdbd263beb35234",
+          "savedAs": "diffuser-reference.jpg"
+        }
+      ]
+    }
+  ],
+  "tagCheck": [
+    {
+      "name": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "tagsPresent": true,
+      "repoMatches": [],
+      "ownerRueckholMatches": [],
+      "openModelFlag": true
+    },
+    {
+      "name": "diffuser",
+      "id": "gid://shopify/Product/15411554320769",
+      "tagsPresent": true,
+      "repoMatches": [],
+      "ownerRueckholMatches": [],
+      "openModelFlag": true
+    }
+  ],
+  "evidenceLimits": [
+    "Scheduled state is not publication.",
+    "Source values with null/missing dates remain unknown.",
+    "No new order-sync or Merchant scan in this run.",
+    "Full native discovery/raw local source files retained in review archive."
+  ]
+}
