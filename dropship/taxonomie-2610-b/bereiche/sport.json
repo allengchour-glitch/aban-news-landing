@@ -1,0 +1,1177 @@
+{
+ "bereich": "sport",
+ "titel": "Sport & Outdoor",
+ "menue": {
+  "oben": "Sport & Party"
+ },
+ "universum": {
+  "g_prefix": [
+   "Sporting Goods"
+  ],
+  "g_nicht": [],
+  "titel_muss": [],
+  "titel_nicht": []
+ },
+ "kategorien": [
+  {
+   "handle": "velohelme",
+   "titel": "Velohelme",
+   "g_prefix": [
+    "Sporting Goods > Outdoor Recreation > Cycling"
+   ],
+   "titel_muss": [
+    "helm(e|en|s)?(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "elektroauto",
+    "taillight",
+    "velo- und helmlicht"
+   ],
+   "beschreibung": "Velohelme für Erwachsene und Kinder: Mountainbike-, Stadt- und Rennvelohelme, teils mit Visier, Schutzbrille oder LED-Licht.",
+   "unterfilter": [
+    {
+     "handle": "velohelme-kinder",
+     "titel": "Kinderhelme",
+     "titel_muss": [
+      "kinder|balance|junior|marienkäfer"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velohelme-mountainbike",
+     "titel": "Mountainbike-Helme",
+     "titel_muss": [
+      "mountain|mtb|downhill|berg"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velohelme-mit-licht",
+     "titel": "Mit Licht",
+     "titel_muss": [
+      "licht|led|leucht|blinker"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "velolichter-reflektoren",
+   "titel": "Velolichter & Reflektoren",
+   "g_prefix": [
+    "Sporting Goods > Outdoor Recreation > Cycling",
+    "Sporting Goods > Exercise & Fitness > Sport Safety Lights & Reflectors"
+   ],
+   "titel_muss": [
+    "licht|rücklich|light|leucht|lampe|scheinwerfer|blinker|strahler|reflekt|warnweste|sicherheitsweste|sportweste|beleuchtung"
+   ],
+   "titel_nicht": [
+    "helm(e|en|s)?(?![a-zäöüß])",
+    "tasche",
+    "sattel",
+    "schloss",
+    "pumpe",
+    "uhr",
+    "pedal",
+    "^(?!.*(velo|fahrrad|bike)).*stirnlampe",
+    "klapplichthalter"
+   ],
+   "beschreibung": "Front- und Rücklichter, Bremslichter, Blinker, Speichenlichter und Reflektoren fürs Velo, dazu LED-Westen und Sicherheitslichter für Laufen und Scooter.",
+   "unterfilter": [
+    {
+     "handle": "velolichter-ruecklichter",
+     "titel": "Rücklichter",
+     "titel_muss": [
+      "rück|brems|tail|hinter"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velolichter-frontlichter",
+     "titel": "Frontlichter & Scheinwerfer",
+     "titel_muss": [
+      "front|scheinwerfer|vorder|lumen"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velolichter-usb",
+     "titel": "USB-aufladbar",
+     "titel_muss": [
+      "usb|aufladbar|wiederaufladbar|akku"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "velotaschen-rucksaecke",
+   "titel": "Velotaschen & Fahrradrucksäcke",
+   "titel_muss": [
+    "^(?=.*(fahrrad|velo(?!urs)|bike|mtb|mountainbike|rennrad|rennvelo|radfahr|e-bike|ebike|bmx|radsport))(?=.*(tasche|taschen|rucksack|rucksäcke|pannier|beutel|koffer))",
+    "(lenker|rahmen|sattel|heck|front|vorder|gepäckträger|oberrohr)\\w*-?(tasche|box)",
+    "pannier",
+    "(tasche|rucksack)\\w* (für|am|fürs) (den )?(\\w+ )?(fahrrad|velo(?!urs)|bike|mtb|mountainbike|rennrad|rennvelo|radfahr|e-bike|ebike|bmx|radsport|lenker|gepäckträger)",
+    "radsport-rucksack|rücken(sattel)?tasche für mountainbike|beintasche für den radsport|brusttasche für velo|rucksack für velofahrten"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Vehicles & Parts",
+    "Electronics",
+    "Cameras & Optics"
+   ],
+   "titel_nicht": [
+    "kindersitz",
+    "motorrad",
+    "helmfach",
+    "helmbeutel",
+    "camping",
+    "wander",
+    "trekking",
+    "werkzeug",
+    "toolbox"
+   ],
+   "beschreibung": "Taschen fürs Velo: Lenker-, Rahmen-, Sattel- und Gepäckträgertaschen sowie Fahrradrucksäcke, oft wasserdicht oder faltbar.",
+   "unterfilter": [
+    {
+     "handle": "velotaschen-heck-gepaecktraeger",
+     "titel": "Heck- & Gepäckträgertaschen",
+     "titel_muss": [
+      "heck|gepäckträger|sattel|pannier"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velotaschen-rucksaecke-nur",
+     "titel": "Fahrradrucksäcke",
+     "titel_muss": [
+      "rucksack|rucksäcke"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velotaschen-lenker-rahmen-front",
+     "titel": "Lenker-, Rahmen- & Fronttaschen",
+     "titel_muss": [
+      "lenker|rahmen|oberrohr|front|vorder"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "velo-werkzeug-reparatur",
+   "titel": "Velo-Werkzeug & Reparatur",
+   "titel_muss": [
+    "^(?=.*(fahrrad|velo(?!urs)|bike|mtb|mountainbike|rennrad|rennvelo|radfahr|e-bike|ebike|bmx|radsport))(?=.*(werkzeug|reparatur|pumpe|toolbox|tool-?set|flick|reifenheber|innensechskant|multitool|montage|kettenreiniger))",
+    "kettennieter|kettenzange|kettenwerkzeug|kurbelabzieher|kurbelarm-?werkzeug|freilaufmontage|steuersatz-?kralle|ventilschlüssel|co2-kartuschen|reifendichtmittel|reifenheber|speichenschlüssel"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor"
+   ],
+   "titel_nicht": [
+    "auto",
+    "schutzfolie",
+    "handy"
+   ],
+   "beschreibung": "Werkzeug und Reparaturzubehör fürs Velo: Kettennieter, Kurbelabzieher, Reifenheber, Reifendichtmittel, Mini-Pumpen und Montagewerkzeug.",
+   "unterfilter": []
+  },
+  {
+   "handle": "velo-teile-zubehoer",
+   "titel": "Velo-Teile & Zubehör",
+   "g_prefix": [
+    "Sporting Goods > Outdoor Recreation > Cycling"
+   ],
+   "titel_muss": [
+    "sattel|sattelstütze|pedal|lenker|schaltauge|kassette|schnellspanner|kurbel|bidonhalter|griff|vorbau|ratsche|nabe|schloss|halterung|ständer|wandhalter|klingel|glocke|hupe|spiegel|computer|tacho|abdeckung|schutzhülle|kindersitz|stoppuhr|stopuhr|schutzfolie|motor|schweissfänger|schutz|kraftrad|pedal"
+   ],
+   "titel_nicht": [
+    "licht",
+    "rücklich",
+    "lampe",
+    "leucht(?!pedal)",
+    "tasche",
+    "beutel",
+    "helm(e|en|s)?(?![a-zäöüß])",
+    "werkzeug",
+    "kettennieter",
+    "kettenzange",
+    "kurbelabzieher",
+    "hupe mit licht",
+    "alarm-hupe",
+    "blinker"
+   ],
+   "beschreibung": "Teile und Zubehör fürs Velo: Sättel, Pedale, Lenker, Griffe, Schlösser, Halterungen, Klingeln, Spiegel, Fahrradcomputer und Abdeckungen.",
+   "unterfilter": [
+    {
+     "handle": "velo-teile-saettel-komponenten",
+     "titel": "Sättel & Komponenten",
+     "titel_muss": [
+      "sattel|sattelstütze|pedal|lenker|schaltauge|kassette|schnellspanner|kurbel|griff|ratsche|schrauben"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "hanteln-kettlebells",
+   "titel": "Hanteln, Kettlebells & Gewichte",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "titel_nicht": [
+    "boxball",
+    "taekwondo",
+    "box-?target"
+   ],
+   "beschreibung": "Kurzhanteln, Hantelsets, Kettlebells, Gewichtssäcke und Gewichtsmanschetten fürs Krafttraining zu Hause.",
+   "unterfilter": []
+  },
+  {
+   "handle": "widerstandsbaender-expander",
+   "titel": "Widerstandsbänder & Expander",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+   ],
+   "titel_nicht": [
+    "matte",
+    "zugriemen",
+    "bauchtrainer",
+    "uhrenarmband",
+    "push-up",
+    "yoga-strap",
+    "yoga stretch-strap",
+    "outdoor-tools",
+    "gummiband für yoga",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "beschreibung": "Widerstandsbänder, Expander, Fitnessbänder und Zugseile in verschiedenen Stärken — für Kraft, Dehnung und Reha-Übungen zu Hause.",
+   "unterfilter": [
+    {
+     "handle": "widerstandsbaender-sets",
+     "titel": "Bänder-Sets",
+     "titel_muss": [
+      "set|[0-9]+-teil"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "widerstandsbaender-hueft-bein",
+     "titel": "Hüft-, Bein- & Pedalbänder",
+     "titel_muss": [
+      "hüft|hip|bein|po-|squat|pedal|taille"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "springseile",
+   "titel": "Springseile",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "springseil|sprungseil|seilspringen|skipping|schwungseil|trainingsseil|fitness-?seil"
+   ],
+   "titel_nicht": [
+    "golf",
+    "matte",
+    "taper rope grip",
+    "grip",
+    "kraft"
+   ],
+   "beschreibung": "Springseile für Ausdauer und Koordination: klassische Seile mit Stahlkabel, Zählseile und kabellose Smart-Springseile.",
+   "unterfilter": [
+    {
+     "handle": "springseile-mit-zaehler",
+     "titel": "Mit Zähler oder App",
+     "titel_muss": [
+      "zähl|zähler|smart|lcd|digital|bluetooth|tracker|kalorien|app"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "bauchtrainer-liegestuetz-klimmzug",
+   "titel": "Bauchtrainer, Liegestütz- & Klimmzuggeräte",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad"
+   ],
+   "titel_nicht": [
+    "hose",
+    "bootcut",
+    "gürtel",
+    "stützband",
+    "bauchgurt",
+    "bandage",
+    "taille",
+    "boosterta",
+    "hilfsgurt",
+    "griffhaken",
+    "sit-up boxball",
+    "hantel",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "beschreibung": "Bauchroller, Liegestützgriffe, Push-up-Boards, Türreckstangen und Klimmzughilfen für das Training mit dem eigenen Körpergewicht.",
+   "unterfilter": [
+    {
+     "handle": "bauchtrainer-bauchroller",
+     "titel": "Bauchroller & Bauchräder",
+     "titel_muss": [
+      "bauch(roller|rad|muskelrad|trainer)|ab ?wheel|abdominal"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "bauchtrainer-liegestuetz-klimmzug-nur",
+     "titel": "Liegestütz & Klimmzug",
+     "titel_muss": [
+      "liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|dip"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "balance-gymnastik",
+   "titel": "Balance Boards, Gymnastikbälle & Steps",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness",
+    "Sporting Goods > Athletics > Gymnastics"
+   ],
+   "titel_muss": [
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance"
+   ],
+   "titel_nicht": [
+    "wasserball",
+    "tennis power chain",
+    "yogamatte",
+    "yoga-matte",
+    "hantel",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "beschreibung": "Balance Boards, Wackelbretter, Gymnastik- und Yogabälle, Aerobic-Steps und Gleitscheiben für Gleichgewicht, Rumpf und Koordination.",
+   "unterfilter": []
+  },
+  {
+   "handle": "kraftsport-handschuhe-guertel",
+   "titel": "Kraftsport-Zubehör: Handschuhe, Gürtel & Bandagen",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt"
+   ],
+   "titel_nicht": [
+    "hose",
+    "bootcut",
+    "taillenmieder",
+    "sweat",
+    "fettreduktion",
+    "widerstand",
+    "resistance",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+   ],
+   "beschreibung": "Zubehör fürs Krafttraining: Gewichthebergürtel, Handschuhe, Handgelenkbandagen, Zughilfen und Polster für Hantelstangen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "taillentrainer-hula-hoop",
+   "titel": "Taillentrainer & Hula-Hoop",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen"
+   ],
+   "titel_nicht": [
+    "hantel",
+    "hose",
+    "gewichtheb",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "beschreibung": "Taillentrainer, Taillen-Twister, Trainingsgürtel und Hula-Hoop-Reifen für Rumpf- und Bauchtraining zu Hause.",
+   "unterfilter": []
+  },
+  {
+   "handle": "trainingsgeraete-arm-bein-ganzkoerper",
+   "titel": "Trainingsgeräte für Arme, Beine & Ganzkörper",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "handtrainer|handkraft|griffkraft|grip|fingertrainer|fingerkraft|unterarm|armtrainer|arm-?trainingsgerät|armkraft|armdreh|brust(muskel)?-?(trainer|trainingsgerät|ausbilder)|brustmuskel|bizeps|trizeps|triceps|beintrainer|bein-?trainings|wadentrainer|waden-|fusstrainer|oberschenkel|muskelaufbau|muskeltrainer|oberkörper|körper-?ausbilder|heimtrainer|pedal|mini-?bike|stepper|ruder|hängetrainer|suspension|fitness-?set|fitness-?rally|fitness-?stange|fitness-?stick|rosenholz|trainingsstab|exerciser|rollenzug|fitnessgerät|trainingsgerät|trainingseinheit|beinheber|schienbein|dehner|stretcher|wadenstrecker|fussgelenk|supine|fitness board|fitness-board|muskel- ?und ?fitness|trainingsmaske|nacken-trainings|impedanz|hüft-?sticker|hüftgurt|griff-?trainer|zehentrainer|beauty-? ?trainer|gantry|v-förmiger|zuggriff|jack rolls|velore|sd exerciser|arm strength|waden- und"
+   ],
+   "titel_nicht": [
+    "beckenboden",
+    "pelvik",
+    "springseil",
+    "target",
+    "box(en|ball)",
+    "hantel",
+    "balance",
+    "laufbandabdeckung",
+    "tennis",
+    "schwimmtrainer",
+    "taille",
+    "sit-?up",
+    "plank",
+    "bauch",
+    "klimmzug",
+    "push-?up",
+    "liegestütz",
+    "widerstandsband",
+    "zugseil",
+    "expander",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
+    "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance",
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
+    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen"
+   ],
+   "beschreibung": "Hand-, Arm-, Brust- und Beintrainer, Pedaltrainer, Heimtrainer und Ganzkörper-Fitnessgeräte für das Training zu Hause.",
+   "unterfilter": []
+  },
+  {
+   "handle": "yogamatten-fitnessmatten",
+   "titel": "Yoga-, Fitness- & Gymnastikmatten",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "titel_muss": [
+    "^(?!.*(tasche|handtuch|gummiband|bauch|seilspringen|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)"
+   ],
+   "titel_nicht": [
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
+   ],
+   "beschreibung": "Yogamatten, Fitness- und Gymnastikmatten aus TPE, EVA oder Naturkautschuk, teils faltbar oder als Reisematte.",
+   "unterfilter": [
+    {
+     "handle": "yogamatten-faltbar-reise",
+     "titel": "Faltbar & Reise",
+     "titel_muss": [
+      "falt|reise|mini|klein|kompakt|travel"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "yoga-pilates-zubehoer",
+   "titel": "Yoga- & Pilates-Zubehör",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "yoga|pilates|meditationskissen|futon"
+   ],
+   "titel_nicht": [
+    "haustier",
+    "hose",
+    "resistance",
+    "faszien",
+    "foam",
+    "massage",
+    "yoga-?rolle",
+    "yoga-säule",
+    "ball(?![a-zäöüß])",
+    "hantel",
+    "armreif",
+    "pull back trainer",
+    "board",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance",
+    "^(?!.*(tasche|handtuch|gummiband|bauch|seilspringen|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
+    "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
+    "faszien|foam ?roller|massage-?(roller|rolle|ball|kugel|stab)|yoga-?(roller|rolle|säule)|schaumstoff-?rolle|peanut|pilates rolle|muskelentspannung|muskel-?massage"
+   ],
+   "beschreibung": "Zubehör für Yoga und Pilates: Blöcke, Gurte, Yogaräder, Pilates-Ringe und -Stäbe, Mattentaschen, Yogahandtücher und Meditationskissen.",
+   "unterfilter": [
+    {
+     "handle": "yoga-pilates-bloecke-gurte-raeder",
+     "titel": "Blöcke, Gurte & Räder",
+     "titel_muss": [
+      "block|gurt|strap|rad(?![a-zäöüß])|wheel|ring"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "faszienrollen-massagebaelle",
+   "titel": "Faszienrollen & Massagebälle",
+   "g_prefix": [
+    "Sporting Goods > Exercise & Fitness"
+   ],
+   "titel_muss": [
+    "faszien|foam ?roller|massage-?(roller|rolle|ball|kugel|stab)|yoga-?(roller|rolle|säule)|schaumstoff-?rolle|peanut|pilates rolle|muskelentspannung|muskel-?massage"
+   ],
+   "titel_nicht": [
+    "hantel",
+    "bluetooth lautsprecher",
+    "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+   ],
+   "beschreibung": "Faszienrollen, Massagebälle und Schaumstoffrollen zum Lockern und Dehnen nach dem Training, teils mit Noppen oder Vibration.",
+   "unterfilter": []
+  },
+  {
+   "handle": "zelte-zeltzubehoer",
+   "titel": "Zelte & Zeltzubehör",
+   "titel_muss": [
+    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
+    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Luggage & Bags"
+   ],
+   "titel_nicht": [
+    "katze",
+    "haustier",
+    "hund",
+    "kinderzelt",
+    "spiel",
+    "bausatz",
+    "kugelzelt",
+    "bausteine",
+    "feldbett",
+    "moskito",
+    "ofen",
+    "zeltlampe",
+    "schlafzelt mit licht"
+   ],
+   "beschreibung": "Campingzelte für 1 bis 5 Personen, Strandzelte und Pop-up-Zelte sowie Zeltstangen, Heringe, Bodentücher und Abspannleinen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "schlafsaecke-isomatten-luftbetten",
+   "titel": "Schlafsäcke, Isomatten & Luftbetten",
+   "titel_muss": [
+    "schlafsack|schlafsäcke|isomatte|schlafmatte|schlafpad|luftmatratze|luftbett|airbett|feldbett|campingmatte|auto-?(bett|matratze)|reisebett fürs auto|thermodecke|isolationsmatte|outdoor-?matte|outdoor faltmatte|outdoor-?isomatte|outdoor-?kissen|camping[ -]?kissen|campingdecke|aufblasbare (outdoor-)?matte|winddichte bodenmatte für outdoor"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Furniture > Baby"
+   ],
+   "titel_nicht": [
+    "baby",
+    "kleinkind",
+    "kinderschlafsack",
+    "kinder-?schlafsack",
+    "hund",
+    "katze",
+    "haustier",
+    "seidenstrumpf",
+    "neugeboren",
+    "pucksack",
+    "zelt",
+    "sofa",
+    "hängematte",
+    "kleber",
+    "reparatur",
+    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
+    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)"
+   ],
+   "beschreibung": "Schlafsäcke, Isomatten, Schlafpads und aufblasbare Luftbetten für Camping, Trekking und die Autoreise.",
+   "unterfilter": []
+  },
+  {
+   "handle": "campingmoebel-haengematten",
+   "titel": "Campingmöbel & Hängematten",
+   "titel_muss": [
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor"
+   ],
+   "titel_nicht": [
+    "katze",
+    "katzen",
+    "hund",
+    "haustier",
+    "yoga",
+    "aerial",
+    "baby",
+    "futter",
+    "bezug",
+    "schutzhülle",
+    "rücksitz",
+    "organizer",
+    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
+    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)"
+   ],
+   "beschreibung": "Faltbare Camping- und Outdoormöbel: Klappstühle, Falttische, Hocker, Liegen und Hängematten für Zeltplatz, Garten und Strand.",
+   "unterfilter": [
+    {
+     "handle": "campingmoebel-haengematten-nur",
+     "titel": "Hängematten",
+     "titel_muss": [
+      "hängematte|hammock"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "camping-kochen-geschirr",
+   "titel": "Camping-Küche: Kocher & Geschirr",
+   "titel_muss": [
+    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
+    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
+    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Luggage & Bags",
+    "Health & Beauty",
+    "Electronics > Electronics Accessories",
+    "Vehicles & Parts"
+   ],
+   "titel_nicht": [
+    "sandwich",
+    "futternapf",
+    "haustier",
+    "lichterkette",
+    "lüfter",
+    "glätt",
+    "ladestation",
+    "windschutzscheibe",
+    "heizer",
+    "dusche",
+    "zünder",
+    "zündkerze",
+    "küche und grill",
+    "abdeckung für outdoor-grill",
+    "lampe",
+    "laterne",
+    "wok",
+    "druckkochtopf",
+    "induktion",
+    "universal"
+   ],
+   "beschreibung": "Kocher, Kochgeschirr, Becher und Grills für unterwegs: Gaskocher, Holzöfen, Campingtopfsets, Kochsets aus Titan oder Aluminium und faltbare Camping-Grills.",
+   "unterfilter": []
+  },
+  {
+   "handle": "picknick-kuehlboxen",
+   "titel": "Picknick & Kühlboxen",
+   "titel_muss": [
+    "picknick|kühlbox|kühlboxen"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor"
+   ],
+   "titel_nicht": [
+    "kochset",
+    "besteck",
+    "gasherd",
+    "grill(?![a-zäöüß])",
+    "bbq",
+    "brettspiel",
+    "lunch",
+    "kupfer, 300",
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz",
+    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
+    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
+    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)"
+   ],
+   "beschreibung": "Picknickdecken und -matten, Picknickkörbe und -taschen, Kühlboxen und Picknickrucksäcke für Ausflug, Park und Strand.",
+   "unterfilter": [
+    {
+     "handle": "picknick-decken-matten",
+     "titel": "Decken & Matten",
+     "titel_muss": [
+      "decke|matte|teppich"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "picknick-kuehlboxen-nur",
+     "titel": "Kühlboxen & Kühltaschen",
+     "titel_muss": [
+      "kühl"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "camping-licht-zubehoer",
+   "titel": "Camping-Licht, Duschen & Zubehör",
+   "titel_muss": [
+    "camping|camp(?![a-zäöüß])|campen",
+    "petroleumlampe|kerosinlampe|zeltlampe|outdoor-?(lampe|laterne|licht)|tragbare (elektrische |camping-)?dusche"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Luggage & Bags",
+    "Apparel & Accessories"
+   ],
+   "titel_nicht": [
+    "stirn",
+    "taschenlampe",
+    "hund",
+    "futter",
+    "haustier",
+    "stiefel",
+    "sandwich",
+    "toaster",
+    "ladegerät",
+    "kohlenmonoxid",
+    "tasche",
+    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
+    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)",
+    "schlafsack|schlafsäcke|isomatte|schlafmatte|schlafpad|luftmatratze|luftbett|airbett|feldbett|campingmatte|auto-?(bett|matratze)|reisebett fürs auto|thermodecke|isolationsmatte|outdoor-?matte|outdoor faltmatte|outdoor-?isomatte|outdoor-?kissen|camping[ -]?kissen|campingdecke|aufblasbare (outdoor-)?matte|winddichte bodenmatte für outdoor",
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz",
+    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
+    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
+    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)",
+    "picknick|kühlbox|kühlboxen"
+   ],
+   "beschreibung": "Campinglampen und -laternen, Lichterketten, Duschen, Heizer, Ventilatoren und weiteres Zubehör für den Zeltplatz.",
+   "unterfilter": []
+  },
+  {
+   "handle": "wander-kletter-survival",
+   "titel": "Wanderstöcke, Klettern & Survival-Ausrüstung",
+   "titel_muss": [
+    "wanderstock|wanderstöcke|trekkingstock|trekkingstöcke|faltstock|kompass|karabiner|survival|notfall-?set|wasserfilter-?strohhalm|trinkblase|wasserbeutel|wassertasche|wasserspeicher|moskitonetz|mückennetz|outdoor-?hammer|zelt- und outdoor-hammer|klettergurt|kletterkarabiner|klettern|kletter-|magnesiumbeutel|seilklemme|einzelrolle für bergsteiger|bergsteiger|kniepolster für wander|seilrolle|rettungsrolle|kraftbrett"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Luggage & Bags",
+    "Apparel & Accessories",
+    "Hardware > Tools > Drill",
+    "Hardware > Tool Accessories",
+    "Home & Garden > Kitchen"
+   ],
+   "titel_nicht": [
+    "kühlschrank",
+    "abwasser",
+    "bohrer",
+    "campingstuhl",
+    "handwärmer",
+    "kinder-?moskito",
+    "baby",
+    "hund",
+    "fahrrad",
+    "wasserfilter-kartusche",
+    "kartusche",
+    "helm(e|en|s)?(?![a-zäöüß])",
+    "schrittzähler",
+    "powerbank",
+    "fürs bett",
+    "studenten",
+    "schraubendreher",
+    "taktisch",
+    "camping notfall",
+    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
+    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)",
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz"
+   ],
+   "beschreibung": "Ausrüstung für Tour und Notfall: Wanderstöcke, Kompasse, Karabiner, Wasserfilter und Trinkblasen, Moskitonetze und Survival-Tools.",
+   "unterfilter": []
+  },
+  {
+   "handle": "angeln-angelzubehoer",
+   "titel": "Angeln & Angelzubehör",
+   "titel_muss": [
+    "(^|[^a-zäöüß])(angel|angler)\\w*|spinnrolle|angelrolle|köder|fishing|fischernetz|aalreuse|reuse|tackle|fischereitool|fischerschirm|fischereischrank"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Home & Garden > Household Supplies > Pest",
+    "Health & Beauty",
+    "Electronics",
+    "Hardware > Tool Accessories > Flash"
+   ],
+   "titel_nicht": [
+    "kakerlaken",
+    "little angel",
+    "angel wing",
+    "angel wings",
+    "luftbefeuchter",
+    "highlighter",
+    "fischerhut",
+    "fischer-sandalen",
+    "fischerstiefel",
+    "angelspiel",
+    "weste",
+    "hose",
+    "stuhl",
+    "stirnlampe",
+    "kopflampe",
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz"
+   ],
+   "beschreibung": "Angelzubehör: Rollen, Schnüre, Haken und Köder-Sets, Angeltaschen und -rucksäcke, Zangen sowie Netze und Reusen.",
+   "unterfilter": []
+  },
+  {
+   "handle": "schwimmen-tauchen-wassersport",
+   "titel": "Schwimmen, Tauchen & Wassersport",
+   "titel_muss": [
+    "schwimmbrille|taucherbrille|tauchmaske|schnorchel|tauchgurt|schwimmweste|schwimmboje|schwimmlernhilfe|schwimmhilfe|schwimmflügel|badekappe|schwimmhandschuh|kajak|paddel|bilgepumpe|nasenklammer|flossen|signalboje|taucher|tauchen|schwimmtrainer|tauch"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing",
+    "Apparel & Accessories > Shoes",
+    "Apparel & Accessories > Jewelry",
+    "Apparel & Accessories > Shoe Accessories",
+    "Apparel & Accessories > Costumes",
+    "Animals & Pet Supplies",
+    "Toys & Games",
+    "Baby & Toddler",
+    "Arts & Entertainment",
+    "Health & Beauty > Personal Care > Cosmetics",
+    "Furniture > Baby & Toddler Furniture",
+    "Home & Garden > Decor",
+    "Luggage & Bags",
+    "Animals & Pet Supplies",
+    "Hardware",
+    "Home & Garden > Pool",
+    "Apparel & Accessories > Handbag"
+   ],
+   "titel_nicht": [
+    "hund",
+    "uhr",
+    "armband",
+    "schuh",
+    "stiefel",
+    "schwimmring",
+    "mixer",
+    "computer",
+    "smartwatch",
+    "helm(e|en|s)?(?![a-zäöüß])"
+   ],
+   "beschreibung": "Schwimmbrillen, Taucher- und Schnorchelmasken, Schwimmhilfen, Schwimmwesten, Paddel und Zubehör für Wassersport.",
+   "unterfilter": []
+  },
+  {
+   "handle": "boxen-kampfsport",
+   "titel": "Boxen & Kampfsport",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(box\\w*|boxing\\w*|speedball|taekwondo|karate|muay|kickbox\\w*|kampfsport\\w*|judo|sanda|mma|pratze\\w*|schlagpolster|kick-?pad|fusstarget)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "bauchtrainer",
+    "sandsack",
+    "resistance",
+    "boxer-style",
+    "boxen\\b"
+   ],
+   "beschreibung": "Boxhandschuhe, Boxsäcke, Pratzen, Schlagpolster und Schutzausrüstung für Boxen, Taekwondo, Muay Thai und andere Kampfsportarten.",
+   "unterfilter": []
+  },
+  {
+   "handle": "ballsport-teamsport",
+   "titel": "Fussball, Basketball & Ballsport",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "titel_muss": [
+    "fussball|fußball|basketball|volleyball|american football|baseball|handball|rugby|torwart|football|ball(?:aufblas|pumpe)|trainingswand|disc-soccer|cricket|eishockey|hockey"
+   ],
+   "titel_nicht": [
+    "helm(e|en|s)?(?![a-zäöüß])",
+    "badminton",
+    "tennis",
+    "cap(?![a-zäöüß])",
+    "shorts",
+    "jacke",
+    "hose",
+    "tunika",
+    "schutzshorts",
+    "mundschutz"
+   ],
+   "beschreibung": "Bälle, Tore, Netze und Trainingshilfen für Fussball, Basketball, Volleyball und weitere Mannschaftssportarten.",
+   "unterfilter": []
+  },
+  {
+   "handle": "schlagsport-tischtennis-tennis",
+   "titel": "Tischtennis, Tennis & Badminton",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "titel_muss": [
+    "tischtennis|tennis|badminton|padel|squash|pickleball|federball|schläger|ping ?pong|racket|racquet"
+   ],
+   "titel_nicht": [
+    "balance board"
+   ],
+   "beschreibung": "Schläger, Bälle, Netze, Griffbänder und Taschen für Tischtennis, Tennis, Badminton und Padel.",
+   "unterfilter": []
+  },
+  {
+   "handle": "golf-billard",
+   "titel": "Golf & Billard",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "titel_muss": [
+    "golf|billard|pool-?tisch|queue"
+   ],
+   "titel_nicht": [],
+   "beschreibung": "Golfzubehör wie Taschen, Schlägerhüllen, Trainingshilfen und Bälle sowie Billard- und Queue-Zubehör.",
+   "unterfilter": []
+  },
+  {
+   "handle": "sport-schutzausruestung",
+   "titel": "Sporthelme & Schutzausrüstung",
+   "g_prefix": [
+    "Sporting Goods"
+   ],
+   "g_nicht": [
+    "Sporting Goods > Outdoor Recreation > Cycling"
+   ],
+   "titel_muss": [
+    "helm(e|en|s)?(?![a-zäöüß])",
+    "knieschoner|knieschutz|ellenbogenschoner|ellbogenschoner|protektor|schienbeinschoner|schienbeinschutz|handgelenkschutz|handgelenkschoner|mundschutz|zahnschutz|kopfschutz|tiefschutz|brustschutz|schutzset|schutzweste|schutzhose|schutzshorts|schoner"
+   ],
+   "titel_nicht": [
+    "box",
+    "karate",
+    "taekwondo",
+    "sanda",
+    "kampfsport",
+    "klimm",
+    "sonnenschutz",
+    "lenkrad",
+    "seitenlage",
+    "sportbrille",
+    "überzug",
+    "taktisch",
+    "arbeits",
+    "schweisser"
+   ],
+   "beschreibung": "Schutzhelme für Skifahren, Skateboard, Reiten und Wassersport sowie Knie-, Ellbogen- und Handgelenkschoner und Mundschutz.",
+   "unterfilter": [
+    {
+     "handle": "sport-schutzausruestung-helme",
+     "titel": "Helme",
+     "titel_muss": [
+      "helm(e|en|s)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "sport-schutzausruestung-schoner",
+     "titel": "Schoner & Protektoren",
+     "titel_muss": [
+      "schoner|schutz(?!helm)|protektor"
+     ],
+     "titel_nicht": [
+      "helm"
+     ]
+    }
+   ]
+  }
+ ],
+ "gruppen": [
+  {
+   "titel": "Fitness & Training",
+   "handle": "sport-fitness-training-gruppe",
+   "kinder": [
+    "hanteln-kettlebells",
+    "widerstandsbaender-expander",
+    "springseile",
+    "bauchtrainer-liegestuetz-klimmzug",
+    "balance-gymnastik",
+    "kraftsport-handschuhe-guertel",
+    "trainingsgeraete-arm-bein-ganzkoerper",
+    "taillentrainer-hula-hoop"
+   ]
+  },
+  {
+   "titel": "Yoga, Pilates & Dehnen",
+   "handle": "sport-yoga-pilates-gruppe",
+   "kinder": [
+    "yogamatten-fitnessmatten",
+    "yoga-pilates-zubehoer",
+    "faszienrollen-massagebaelle"
+   ]
+  },
+  {
+   "titel": "Camping",
+   "handle": "sport-camping-gruppe",
+   "kinder": [
+    "zelte-zeltzubehoer",
+    "schlafsaecke-isomatten-luftbetten",
+    "campingmoebel-haengematten",
+    "camping-kochen-geschirr",
+    "picknick-kuehlboxen",
+    "camping-licht-zubehoer"
+   ]
+  },
+  {
+   "titel": "Wandern, Angeln & Wasser",
+   "handle": "sport-wandern-angeln-wasser-gruppe",
+   "kinder": [
+    "wander-kletter-survival",
+    "rucksaecke-sport",
+    "taschenlampen",
+    "angeln-angelzubehoer",
+    "schwimmen-tauchen-wassersport"
+   ]
+  },
+  {
+   "titel": "Rad & Velo",
+   "handle": "sport-rad-velo-gruppe",
+   "kinder": [
+    "velohelme",
+    "velolichter-reflektoren",
+    "velotaschen-rucksaecke",
+    "velo-werkzeug-reparatur",
+    "velo-teile-zubehoer"
+   ]
+  },
+  {
+   "titel": "Ball-, Kampf- & Schutzsport",
+   "handle": "sport-ball-kampf-schutz-gruppe",
+   "kinder": [
+    "boxen-kampfsport",
+    "ballsport-teamsport",
+    "schlagsport-tischtennis-tennis",
+    "golf-billard",
+    "sport-schutzausruestung"
+   ]
+  }
+ ],
+ "ausserhalb": [],
+ "hinweise": []
+}

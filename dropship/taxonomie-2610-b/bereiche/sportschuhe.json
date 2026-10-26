@@ -33,7 +33,7 @@
    "Media"
   ],
   "titel_muss": [
-   "laufschuh|running|jogging|marathon|walking|berglauf|(^|[^a-zäöüß])((kinder|herren|damen|jungen|mädchen|knaben)-?)?(sport|sports)-?(schuh|sneaker)|sportsschuh|multisport|turnschuh|(^|[^a-zäöüß])(training|trainings|fitness|workout|gym)|fu(ss|ß)ball|basketball|golf-?(schuh|sneaker)|golfschuh|tennis|badminton|volleyball|handball|(^|[^a-zäöüß])box(schuh|er|en|-)|wrestl|ringer|kampfsport|kampfkunst|(^|[^a-zäöüß])kung|taekwondo|karate|judo|gymnastik|tanz|ballett-?schuh|ballet-?schuh|jazz|latein|latin|skate|skater|inline|roller-?skate|rollerskate|rollschuh|heelys|eiskufen|schlittschuh|wasserschuh|aqua|watschuh|schwimm|tauch|badeschuh|upstream|neopren|wassersport|schnorchel|(^|[^a-zäöüß])(river|stream)|(velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh|(^|[^a-zäöüß])rad(sport)?-?schuh|radfahrer|kletter|boulder|reitstiefel|reitschuh|leichtathl|spikes|stollenschuh|snowboard|skischuh|segelschuh",
+   "laufschuh|running|jogging|marathon|walking|berglauf|(^|[^a-zäöüß])((kinder|herren|damen|jungen|mädchen|knaben)-?)?(sport|sports)-?(schuh|sneaker)|sportsschuh|multisport|turnschuh|(^|[^a-zäöüß])(training|trainings|fitness|workout|gym)|fu(ss|ß)ball|basketball|golf-?(schuh|sneaker)|golfschuh|tennis|badminton|volleyball|handball|(^|[^a-zäöüß])box(schuh|er|en|-)|wrestl|ringer|kampfsport|kampfkunst|(^|[^a-zäöüß])kung|taekwondo|karate|judo|gymnastik|tanz|ballett-?schuh|ballet-?schuh|jazz|latein|latin|skate|skater|inline|roller-?skate|rollerskate|rollschuh|heelys|eiskufen|schlittschuh|wasserschuh|aqua-?(sneaker|sandal|stiefel|boot|sock)\\w*|watschuh|schwimm|tauch|badeschuh|upstream|neopren|wassersport|schnorchel|(^|[^a-zäöüß])(river|stream)|(velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh|(^|[^a-zäöüß])rad(sport)?-?schuh|radfahrer|kletter|boulder|reitstiefel|reitschuh|leichtathl|spikes|stollenschuh|snowboard|skischuh|segelschuh",
    "(laufschuh\\w*|lauf-?sneaker\\w*|running\\w*|jogging\\w*|marathon\\w*|walking\\w*|berglauf\\w*|leichtlaufschuh\\w*|leichtathletik\\w*)",
    "(^|[^a-zäöüß])(training\\w*|fitness\\w*|workout\\w*|gym)(?![a-zäöüß])",
    "(^|[^a-zäöüß])((kinder|herren|damen|jungen|mädchen|knaben)-?)?(sport|sports)-?(schuh|sneaker)\\w*",
@@ -46,8 +46,9 @@
    "(tanzschuh\\w*|tanz-schuh\\w*|ballett-?schuh\\w*|ballet-?schuh\\w*|ballettschläppchen\\w*|jazz-?(tanz|schuh)\\w*|latein\\w*|latina\\w*|latinen\\w*|jazz dance|dance[- ]?(shoe|sneaker)\\w*|tanzstiefel|tanzsneaker\\w*|tanz-?performance\\w*)|(^|[^a-zäöüß])latin(?![a-zäöüß])|(für|zum|und) (den )?tanz",
    "(skate|skater)[- ]?(schuh|sneaker|shoe)\\w*|skateboard\\w*",
    "inline|roller[- ]?skate\\w*|rollschuh\\w*|roller-?schuh\\w*|heelys|eiskufen|schuhe mit (einzel|doppel)|(^|[^a-zäöüß])rollen(?![a-zäöüß])|einzelrad|doppellauf",
-   "(wasserschuh\\w*|aqua-?schuh\\w*|aqua|watschuh\\w*|schwimm(schuh|sandal)\\w*|tauchschuh\\w*|tauchstiefel\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)|(^|[^a-zäöüß])(river|stream)(?![a-zäöüß])|wasser- ?(&|und) ?(outdoor|aqua|wat)",
-   "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+   "(wasserschuh\\w*|aqua-?schuh\\w*|aqua-?(sneaker|sandal|stiefel|boot|sock)\\w*|watschuh\\w*|schwimm(schuh|sandal)\\w*|tauchschuh\\w*|tauchstiefel\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)|(^|[^a-zäöüß])(river|stream)(?![a-zäöüß])|wasser- ?(&|und) ?(outdoor|aqua-?(sneaker|sandal|stiefel|boot|sock)\\w*|wat)",
+   "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)",
+   "wasser-?freizeit-?schuh\\w*"
   ],
   "titel_nicht": [
    "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
@@ -81,10 +82,11 @@
     "(^|[^a-zäöüß])(tanz\\w*|ballett\\w*|ballet\\w*|jazz\\w*|latein\\w*|latin\\w*)",
     "(^|[^a-zäöüß])(skate\\w*|skater\\w*|inline\\w*|roller\\w*|rollschuh\\w*|rollen|heelys|eiskufen|schlittschuh\\w*|lauf-?räder\\w*)",
     "(^|[^a-zäöüß])(wasserschuh\\w*|aqua\\w*|watschuh\\w*|schwimm\\w*|tauch\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)",
-    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
+    "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)",
+    "^(?!.*sport)(?=.*(^|[^a-zäöüß])(casual|freizeit\\w*|alltag\\w*|campus|fashion\\w*|stilvoll\\w*))"
    ],
    "tags_nicht": [],
-   "beschreibung": "Laufschuhe, Running-Sneaker und Walking-Schuhe zum Joggen und Trainieren, mit Modellen für Damen, Herren und Kinder.",
+   "beschreibung": "Laufschuhe, Running-Sneaker und Walking-Schuhe, von leichten Mesh-Modellen bis zu Marathon- und Carbon-Laufschuhen, für Damen, Herren und Kinder.",
    "unterfilter": [
     {
      "handle": "laufschuhe-kinder",
@@ -114,7 +116,7 @@
   },
   {
    "handle": "trainings-fitnessschuhe",
-   "titel": "Trainings- & Fitnessschuhe",
+   "titel": "Fitness- & Trainingsschuhe",
    "g_prefix": [
     "Apparel & Accessories > Shoes"
    ],
@@ -136,7 +138,7 @@
     "((velo|fahrrad|rennrad|rennvelo|mountainbike|mtb|bergfahrrad)-?schuh\\w*|(^|[^a-zäöüß])rad(sport)?-?schuh\\w*|radfahrer-?schuh\\w*|velo-freizeit-schuh\\w*|rennrad-?sneaker\\w*)"
    ],
    "tags_nicht": [],
-   "beschreibung": "Trainingsschuhe und Fitnessschuhe für Gym, Kurse und Training in der Halle, für Damen, Herren und Kinder.",
+   "beschreibung": "Trainingsschuhe und Fitnessschuhe für Gym und Training, drinnen wie draussen, für Damen, Herren und Kinder.",
    "unterfilter": []
   },
   {
@@ -291,7 +293,7 @@
     "(arbeitsschuh\\w*|arbeitsstiefel|sicherheitsschuh\\w*|stahlkappe\\w*|schutzschuh\\w*|durchtrittschutz|kochschuh\\w*|küchenschuh\\w*|operationsschuh\\w*|pflegeschuh\\w*|kampfstiefel)(?![a-zäöüß])"
    ],
    "tags_nicht": [],
-   "beschreibung": "Inline-Skates, Rollschuhe und Roller-Skates, überwiegend für Kinder, teils mit LED-Rädern oder verstellbarer Grösse.",
+   "beschreibung": "Inline-Skates, Rollschuhe und Roller-Skates, überwiegend für Kinder, teils mit LED-Licht oder Leuchträdern.",
    "unterfilter": []
   },
   {
@@ -302,7 +304,8 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(wasserschuh\\w*|aqua-?schuh\\w*|aqua|watschuh\\w*|schwimm(schuh|sandal)\\w*|tauchschuh\\w*|tauchstiefel\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)|(^|[^a-zäöüß])(river|stream)(?![a-zäöüß])|wasser- ?(&|und) ?(outdoor|aqua|wat)"
+    "(wasserschuh\\w*|aqua-?schuh\\w*|aqua-?(sneaker|sandal|stiefel|boot|sock)\\w*|watschuh\\w*|schwimm(schuh|sandal)\\w*|tauchschuh\\w*|tauchstiefel\\w*|upstream\\w*|badeschuh\\w*|neopren\\w*|wassersport\\w*|schnorchel\\w*)|(^|[^a-zäöüß])(river|stream)(?![a-zäöüß])|wasser- ?(&|und) ?(outdoor|aqua-?(sneaker|sandal|stiefel|boot|sock)\\w*|wat)",
+    "wasser-?freizeit-?schuh\\w*"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(einlegesohle\\w*|einlagen?|sohleneinlage\\w*|schuhspanner|schnürsenkel(?!los)\\w*|überschuh\\w*|schuh-?abdeckung\\w*|(fuss|fuß)abdeckung\\w*|abdeckung\\w*|schuh-?tasche\\w*|schuh-?beutel\\w*|kniepolster|schienbein\\w*|spannschutz|schuhschutz\\w*|schuhüberzug\\w*|trainingstisch|anzüge|hose|hosen|socken|söckli|strümpfe|handschuh\\w*|mützen?|taschen?|schuhregal\\w*|pflegeset\\w*|zehen-?trenner|zehen-?spreizer)|[a-zäöüß]*anzug\\w*",
@@ -352,7 +355,7 @@
  ],
  "gruppen": [
   {
-   "titel": "Laufen, Training & Ballsport",
+   "titel": "Laufen, Training, Ball- & Kampfsport",
    "handle": "sportschuhe-laufen-training-ball",
    "kinder": [
     "laufschuhe-running",
@@ -425,22 +428,24 @@
    ]
   },
   {
-   "text": "Sportarten unter der Mindestgrösse von 15 Titeln: Kletterschuhe und Kletterstiefel (9 Titel; zwei davon, «Wander- und Kletterschuhe», stehen schon in wanderschuhe-trekking), Reitstiefel (7 Titel, mehrere mit Absatz), Segelschuhe (1). Werden nicht angelegt; ab 15 Titeln im Katalog neu messen.",
+   "text": "Sportarten unter der Mindestgrösse von 15 Titeln: Kletterschuhe und Kletterstiefel (9 Titel; zwei davon, «Wander- und Kletterschuhe», stehen schon in wanderschuhe-trekking), Reitstiefel (7 Titel, mehrere mit Absatz), Motorradstiefel (8 Titel), Segelschuhe (1). Werden nicht angelegt; ab 15 Titeln im Katalog neu messen.",
    "beispiele": [
     "Kletterschuhe für Herren",
     "Sport-Kletterschuhe für Paare",
     "Kinder Reitstiefel Obstacle",
-    "Plus Size Segelschuhe Herren Leder"
+    "Plus Size Segelschuhe Herren Leder",
+    "Herren Motorradstiefel mit Rundspitze"
    ]
   },
   {
-   "text": "Titel, die Sportart oder Produktart nicht belegen (5): nicht raten.",
+   "text": "Titel, die Sportart oder Produktart nicht belegen (6): nicht raten.",
    "beispiele": [
     "Drehbare Laufschuhe",
     "Transformierende Laufschuhe für Kinder",
     "Tarnmuster-Skate",
     "Jazz Stiefel mit Stilettoabsatz",
-    "Tanzprinzessin-Schuhe mit Nieten"
+    "Tanzprinzessin-Schuhe mit Nieten",
+    "Kinder Schlittschuh-Schuhe mit Plüsch"
    ]
   },
   {
@@ -463,27 +468,55 @@
    ]
   },
   {
-   "text": "Barfuss- und Zehenschuhe (20 Titel mit «Barfuss», «Zehenschuh» oder «Fünf-Finger»): keine Sportart, im Katalog zu klein für eine eigene Kategorie; einzelne stehen über Wort «Wasserschuhe», «Fitness» oder «Training» in den Sportarten.",
+   "text": "Barfuss- und Zehenschuhe (20 Titel mit «Barfuss», «Zehenschuh» oder «Fünf-Finger» ausserhalb der Sportarten): beschreiben eine Schuhform, keine Sportart. Die Zahl liegt über der Mindestgrösse von 15; eine eigene Kategorie «Barfussschuhe» wäre möglich, gehört aber in den Mode-Baum (Schuhe nach Art), nicht in die Sportart-Sicht. Einzelne stehen über die Wörter «Wasserschuhe», «Fitness» oder «Training» in den Sportarten.",
    "beispiele": [
     "Barfussschuhe mit breiter Zehenbox",
     "Herren Barfuss-Sneaker",
     "Atmungsaktive Zehenschuhe für Kinder mit Klettverschluss"
    ]
+  },
+  {
+   "text": "Laufschuhe, deren Titel «Casual», «Freizeit», «Alltag», «Campus», «Fashion» oder «stilvoll» sagt und kein Sportwort trägt (14 Titel; vorher in laufschuhe-running, dort 10,4 % der Mitglieder): Alltags-Sneaker, die nur «Laufschuh» heissen. Bleiben in den Mode-Kategorien (Sneaker, Freizeitschuhe). Titel mit «Sport» daneben («… (Sport & Alltag)») bleiben in der Sportart.",
+   "beispiele": [
+    "Casual Laufschuhe",
+    "Laufschuhe für den Alltag",
+    "Koreanische Campus Laufschuhe",
+    "Herren Freizeit-Laufschuhe",
+    "Stilvolle Laufschuhe"
+   ]
+  },
+  {
+   "text": "Board-Schuhe und Board-Sneaker (19 Titel ohne Skate-Wort): Lifestyle-Sneaker im Skate-Stil («Preppy Style», «Plateau», «Vintage», «Casual»); der Titel belegt keine Sportart und nennt kein Skateboard, darum nicht in skateschuhe. Die 4 Titel mit «Skateboard-Schuhe» stehen dort.",
+   "beispiele": [
+    "Leichte Casual Board-Schuhe für Herren",
+    "Plateau Board-Schuhe mit Schnürung",
+    "Retro Board-Schuhe für Herren"
+   ]
+  },
+  {
+   "text": "Strandschuhe und Beachschuhe (25 Titel): Schuhe für den Strand, keine Wassersportart und nicht als Wasser- oder Aquaschuh bezeichnet; viele davon für Kinder und Babys oder in Sandalen-Form. Bleiben in den Mode-Kategorien. Ob ein Ast «Strand & Wasser» gewünscht ist, entscheidet der Besitzer.",
+   "beispiele": [
+    "Atmungsaktive Herren-Strandschuhe",
+    "Schnelltrocknende Strandschuhe für Paare",
+    "Beachschuhe für Kinder"
+   ]
   }
  ],
  "hinweise": [
-  "Ergebnis der Messung am Katalog vom 26.10.2026: 6 199 aktive Schuhe (ohne Sperr-Tags), davon 531 in einer der 10 neuen Sportart-Kategorien (8,6 %) plus 1 Rollschuh-Produkt aus Sporting Goods; Universum «Sportart im Titel» 575 Produkte, davon 528 in einer Kategorie (91,8 %), die übrigen 47 stehen mit Grund in «ausserhalb». Überlappungen unter den 10 Kategorien: 0.",
+  "Ergebnis der Messung am Katalog vom 26.10.2026 (nach dem Gegenlesen): 6 199 aktive Schuhe (ohne Sperr-Tags), davon 518 in einer der 10 neuen Sportart-Kategorien (8,4 %) plus 1 Rollschuh-Produkt aus Sporting Goods; Universum «Sportart im Titel» 576 Produkte, davon 515 in einer Kategorie (89,4 %), die übrigen 61 stehen mit Grund in «ausserhalb» (47 aus der ersten Fassung plus 14 Casual-/Freizeit-Laufschuhe). Überlappungen unter den 10 Kategorien: 0.",
   "Alle 6 199 Schuhe tragen dieselbe Google-Kategorie «Apparel & Accessories > Shoes» ohne Unterstufe. Die Sportart entscheidet deshalb allein der Titel; die Google-Kategorie dient nur als Schuh-Filter. Jede Regel verlangt ein Sportart-Wort im Titel, nie das Aussehen.",
   "Zweite Sicht, Überlappung mit Mode gewollt: bis auf 7 Rollschuh-Produkte tragen alle Mitglieder schon ein sort-Tag (Mode-Taxonomie damen-/herren-/kinder-… oder Engine). Die Mode-Kategorien (damen-sportschuhe, herren-sportschuhe, kinder-sneaker, *-wanderschuhe) bleiben unberührt; die neuen Kategorien bekommen zusätzlich ihr eigenes Tag sort-<handle>.",
   "ersetzt: sub-laufschuhe («Laufschuhe & Sportschuhe», 1 409 Produkte; Titel-Regel enthält «Sneaker» und «Turnschuh», holt damit alle Alltags-Sneaker). Ebenso Sammelbecken mit demselben Fehler: sneaker-sportschuhe (721, Tags sneaker/sportschuhe) und schuhe-sneaker (1 375). Die neuen Kategorien laufschuhe-running und allround-sportschuhe tragen nur Titel mit Laufschuh/Running/Walking bzw. Sportschuh. Alte Collections nicht ins neue Menü hängen.",
-  "Die Gruppen sind klein, weil der Katalog nur 10 Sportarten mit mindestens 15 Titeln hergibt: Laufschuhe 134, Sportschuhe allgemein 176, Wasserschuhe 51, Tanzschuhe 34, Ball 31, Trainingsschuhe 28, Inline/Rollschuhe 24, Hallen-/Kampfsport 21, Skate 17, Radschuhe 16. Radschuhe liegen knapp über der Schwelle: fallen bei Abgängen unter 15, dann in allround-sportschuhe oder ausserhalb.",
+  "Die Gruppen sind klein, weil der Katalog nur 10 Sportarten mit mindestens 15 Titeln hergibt: Sportschuhe allgemein 176, Laufschuhe 120, Wasserschuhe 52, Tanzschuhe 34, Ball 31, Trainingsschuhe 28, Inline/Rollschuhe 24, Hallen-/Kampfsport 21, Skate 17, Radschuhe 16. Radschuhe liegen knapp über der Schwelle: fallen bei Abgängen unter 15, dann in allround-sportschuhe oder ausserhalb.",
   "Fussball (7), Basketball (14) und Golf (10) sind einzeln unter 15 und deshalb in ballsportschuhe zusammengefasst; Badminton, Tischtennis, Tennis, Boxen, Ringen und Kampfkunst in hallen-kampfsportschuhe. Gymnastikschuhe (1) liegen dort mit; wächst der Katalog, lohnen eigene Kategorien für Fussball und Basketball.",
-  "Aktive Unterfilter (je mindestens 15 Treffer, GEMESSEN): Laufschuhe Kinder 35 / Herren 31 / Mesh 45; Sportschuhe Kinder 45 / Herren 60 / Mesh 59; Wasserschuhe Kinder 18 / Badeschuhe 17. Damen-Chips gibt es nicht, weil nur 8 Laufschuhe und 7 Sportschuhe «Damen» im Titel nennen (zu viele Titel ohne Geschlecht).",
-  "Grenzfälle (BEHAUPTUNG nach Titel, kein Bildurteil): rund 20 der 531 Titel tragen das Sportwort, wirken aber nach Wortlaut wie Alltags- oder Kinderschuhe, z. B. «Casual Laufschuhe», «Koreanische Campus Laufschuhe», «Laufschuhe für den Alltag», mehrere «Kinderlaufschuhe» im Lauflern-Stil, «Dicke Baumwoll-Sportschuhe mit Hasenmotiv», «High-Heel Latin Sandalen mit Glitzer». Diese Titel bleiben, weil der Titel die Sportart nennt; Bildkontrolle durch den Besitzer wäre der nächste Schritt.",
+  "Aktive Unterfilter (je mindestens 15 Treffer, GEMESSEN): Laufschuhe Kinder 33 / Herren 25 / Mesh 39; Sportschuhe Kinder 45 / Herren 60 / Mesh 59; Wasserschuhe Kinder 18 / Badeschuhe 17. Damen-Chips gibt es nicht, weil nur 6 Laufschuhe und 8 Sportschuhe «Damen» im Titel nennen (zu viele Titel ohne Geschlecht).",
+  "Grenzfälle (BEHAUPTUNG nach Titel, kein Bildurteil): rund 17 der 519 Titel tragen das Sportwort, wirken aber nach Wortlaut wie Alltags- oder Kinderschuhe, z. B. acht Kinder-Laufschuhe aus Leder, Velours, Wolle oder Baumwolle («Woll-Laufschuhe für Kinder»), «Dicke Baumwoll-Sportschuhe mit Hasenmotiv», «High-Heel Latin Sandalen mit Glitzer», «Kinder-Lauflernschuhe für Latein-Tanz» und zwei Baby-Wasserschuhe. Diese Titel bleiben, weil der Titel die Sportart nennt; Bildkontrolle durch den Besitzer wäre der nächste Schritt. Titel, die selbst «Casual», «Freizeit» oder «Alltag» sagen, sind seit dem Gegenlesen aus den Laufschuhen heraus (siehe ausserhalb).",
   "inline-skates-rollschuhe: Inline-Skates und Rollschuhe stehen bei Google unter «Shoes», sind aber Sportgeräte. Wenn ein Bereich «Sport & Outdoor» (Velo, Roller) entsteht, kann die Kategorie dorthin wandern; die Regel bleibt gleich. 7 der 24 Produkte haben bisher kein sort-Tag, die Mode-Kategorien schliessen Rollschuhe ausdrücklich aus.",
   "sub-yoga-fitness («Yoga & Fitness») enthält 11 der Trainings- und Fitnessschuhe, velo-radsport 4 der Radschuhe: Schuhe doppelt zu führen ist gewollt, die Sportart-Kategorie ist die genauere Sicht.",
   "wanderschuhe-trekking ist eine bestehende Kategorie (alle 115 Mitglieder gelesen: kein Nicht-Schuh), steht aber noch nicht im Menü und bleibt hier unverändert als Kind der Gruppe «Outdoor, Wasser & Rad». Auffällig: 21 der 115 Titel tragen nur «Outdoor-Schuh» oder «Outdoor-Stiefel» ohne Wander-, Trekking-, Hiking- oder Berg-Wort (18 %), z. B. «Outdoor-Schuhe», «Multifunktions-Outdoor-Schuh», «Kinder-Cartoon-Outdoor-Schuhe». Entscheid beim Besitzer, ob die Regel im Engine-Code (WANDER_RE enthält outdoor-?schuh) enger werden soll.",
   "Menü: Gruppen hängen unter «Sport & Party» im neuen Ast «Sportschuhe»; im Menü zusätzlich unter «Schuhe» verlinkbar. Gruppen-Collections (sportschuhe-laufen-training-ball, sportschuhe-tanz-skate, sportschuhe-outdoor-wasser-rad) sammeln als «eines dieser Tags» alle Kinder; wanderschuhe-trekking bringt sein bestehendes Tag sort-wanderschuhe mit.",
-  "Nichts davon ist live: kein Tag, keine Collection, kein Menüpunkt geschrieben. Anlegen erst nach dem Auswahl-Lauf, mit Trockenlauf und Gegenprobe der Mitgliederzahlen am frischen Katalog."
+  "Nichts davon ist live: kein Tag, keine Collection, kein Menüpunkt geschrieben. Anlegen erst nach dem Auswahl-Lauf, mit Trockenlauf und Gegenprobe der Mitgliederzahlen am frischen Katalog.",
+  "Überlappung mit der bestehenden Kategorie wanderschuhe-trekking (Tag sort-wanderschuhe), GEMESSEN: 7 Produkte stehen zugleich in einer neuen Kategorie: laufschuhe-running 3 («Weite Walking-Schuhe mit weicher Sohle», «Offroad Wander- und Laufschuhe mit weicher Sohle», «Wander- und Laufschuhe, rutschfest & warm»), allround-sportschuhe 1 («Leichte Wander- & Sportschuhe für Herren»), trainings-fitnessschuhe 1 («Multifunktionaler Outdoor-Schuh für Strand, Berg & Fitness») und wasser-aquaschuhe 2 («Quick-Dry Wasser- & Outdoorschuh», «Outdoor Stream Trekking-Schuhe»). Nur die letzten zwei liegen in derselben Gruppe «Outdoor, Wasser & Rad»; sie sind ein bewusster Verweis (der Titel nennt beides).",
+  "Gegenlesen 26.10.2026 (unabhängig): alle 532 Mitglieder-Titel der ersten Fassung und alle 47 Titel der Lücke einzeln gelesen, dazu Verdachtswort-Greps über die Mitglieder (Socken, Sandalen, Zubehör, Kinder-/Baby-/Tier-/Kostüm-Wörter, Casual/Freizeit/Alltag u. a.) und je Sportart Stichwort-Greps gegen alle 6 199 Schuhe sowie gegen alle 56 620 Produkte (Sporting Goods mit Schuhwort). Befund: kein Nicht-Schuh und kein Tier-, Kostüm- oder Zubehör-Titel in den Mitgliedern. Behoben wurden die 14 Casual-/Freizeit-Laufschuhe, der Titel-Gleichstand von trainings-fitnessschuhe mit zwei Mode-Kategorien (jetzt «Fitness- & Trainingsschuhe»), die Beschreibungen von laufschuhe-running, trainings-fitnessschuhe und inline-skates-rollschuhe, der Titel der ersten Gruppe, das Teilwort «aqua» (trifft jetzt nur noch Aqua-Schuhe, -Sneaker, -Sandalen, -Stiefel, -Boots und -Socken, nicht die Farbe «Aqua» oder «Aquamarin») und die Lücke «Wasser-Freizeitschuhe»."
  ]
 }

@@ -35,10 +35,11 @@
    "Arts & Entertainment"
   ],
   "titel_nicht": [
-   "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+   "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
    "smartwatch|smartuhr|smart-?armband",
    "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+   "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
    "(^|[^a-zäöüß])(diy)(?![a-zäöüß])"
   ]
  },
@@ -56,10 +57,7 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])"
    ],
    "beschreibung": "Ringe mit Moissanit, als Solitär, mit Halo oder im Set, überwiegend in Silber gefasst."
   },
@@ -71,16 +69,13 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)"
+    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "moissanit"
+    "^(?=.*(?:moissanit))"
    ],
    "beschreibung": "Ringe mit Geburtsstein, Naturstein oder farbigem Stein wie Opal, Achat, Amethyst oder Tigerauge."
   },
@@ -92,17 +87,14 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "moissanit",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)"
+    "^(?=.*(?:moissanit))",
+    "^(?=.*(?:(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)))"
    ],
    "beschreibung": "Ringe aus 925er Sterlingsilber und Silber, schlicht oder mit Zirkonia, auch verstellbar."
   },
@@ -120,12 +112,9 @@
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "moissanit",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "^(?=.*(?:moissanit))",
+    "^(?=.*(?:(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
    "beschreibung": "Ringe aus Edelstahl, Titanstahl und Wolfram, für jeden Tag und für Herren wie Damen."
   },
@@ -143,13 +132,10 @@
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "moissanit",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)",
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "^(?=.*(?:moissanit))",
+    "^(?=.*(?:(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))"
    ],
    "beschreibung": "Funkelnde Ringe mit Zirkonia, Strass oder Kristall, ohne Silber- oder Stahlangabe im Titel."
   },
@@ -161,15 +147,12 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(set|sets|ringset)(?![a-zäöüß])|stapel|kombination|mehrteilig|[2-9]er"
+    "(^|[^a-zäöüß])(set|sets|ringset)(?![a-zäöüß])|stapel|gestapelt|ringkombination|mehrteilig"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])"
    ],
    "beschreibung": "Mehrere Ringe im Set oder zum Stapeln und Kombinieren."
   },
@@ -187,10 +170,7 @@
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "(^|[^a-zäöüß])(set|sets|ringset)(?![a-zäöüß])|stapel|kombination|mehrteilig|[2-9]er"
+    "^(?=.*(?:(^|[^a-zäöüß])(set|sets|ringset)(?![a-zäöüß])|stapel|gestapelt|ringkombination|mehrteilig))"
    ],
    "beschreibung": "Ringe mit offener Schiene, die sich in der Weite anpassen lassen."
   },
@@ -202,17 +182,14 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "herren|männer|männlich|unisex|siegelring"
+    "herren|männer|männlich|unisex"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])"
    ],
-   "beschreibung": "Ringe für Herren und Unisex-Ringe aus Edelstahl, Titan, Wolfram und Silber, auch Siegelringe."
+   "beschreibung": "Ringe für Herren und Unisex-Ringe aus Edelstahl, Titan, Wolfram und Silber."
   },
   {
    "handle": "personalisierte-ringe",
@@ -222,15 +199,12 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "personalis|gravur|graviert|namen|initial|buchstaben"
+    "personalis|gravur|graviert|(^|[^a-zäöüß])namen|initial|buchstaben"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
     "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])"
    ],
    "beschreibung": "Ringe mit Gravur, Namen oder Buchstaben als persönliches Geschenk."
   },
@@ -245,12 +219,7 @@
     "creole|huggie|clip|cuff|klemme"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Creolen, Huggies, Ohrclips und Ear Cuffs, auch ohne Ohrloch zu tragen."
   },
@@ -262,16 +231,11 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "hänger|tropfen|baumel|haken|pendant"
+    "(^|[^a-zäöüß])(ohr)?hänger|tropfen|baumel|ohrhaken|pendant"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "creole|huggie|clip|cuff|klemme"
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:creole|huggie|clip|cuff|klemme))"
    ],
    "beschreibung": "Ohrringe, die herunterhängen: Ohrhänger, Tropfen und lange Modelle."
   },
@@ -286,16 +250,41 @@
     "stecker|studs?(?![a-zäöüß])"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "creole|huggie|clip|cuff|klemme",
-    "hänger|tropfen|baumel|haken|pendant"
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:creole|huggie|clip|cuff|klemme))",
+    "^(?=.*(?:(^|[^a-zäöüß])(ohr)?hänger|tropfen|baumel|ohrhaken|pendant))"
    ],
-   "beschreibung": "Ohrstecker in schlichten und verzierten Formen, mit Zirkonia, Perle oder aus Silber."
+   "beschreibung": "Ohrstecker in schlichten und verzierten Formen, mit Zirkonia, Perle oder aus Silber.",
+   "unterfilter": [
+    {
+     "handle": "ohrstecker-silber",
+     "titel": "Silber",
+     "titel_muss": [
+      "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+     ],
+     "titel_nicht": [
+      "(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))",
+      "silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)",
+      "gold, silber"
+     ]
+    },
+    {
+     "handle": "ohrstecker-vintage",
+     "titel": "Vintage & Retro",
+     "titel_muss": [
+      "retro|vintage|antik"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "ohrstecker-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "silber-ohrringe",
@@ -305,15 +294,10 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Ohrringe aus 925er Sterlingsilber und Silber in vielen Formen."
   },
@@ -328,13 +312,8 @@
     "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
    "beschreibung": "Ohrringe mit Perlen, Süsswasserperlen oder Perlmutt."
   },
@@ -349,16 +328,29 @@
     "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))"
+   ],
+   "beschreibung": "Ohrringe mit Zirkonia, Strass oder Kristall für festliche Anlässe und den Alltag."
+  },
+  {
+   "handle": "halsketten-alle",
+   "titel": "Halsketten & Anhänger",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry > Necklaces",
+    "Apparel & Accessories > Jewelry > Charms & Pendants"
+   ],
+   "g_nicht": [],
+   "titel_nicht": [
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Ohrringe mit Zirkonia, Strass oder Kristall für festliche Anlässe und den Alltag."
+   "beschreibung": "Alle Halsketten, Ketten und Kettenanhänger: Perlenketten, Choker, Gliederketten und Ketten mit Anhänger in Silber, Edelstahl und vergoldet."
   },
   {
    "handle": "perlenketten",
@@ -372,18 +364,18 @@
     "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Halsketten mit Perlen, Süsswasserperlen und Perlmutt."
   },
   {
    "handle": "choker-layering-ketten",
-   "titel": "Choker & Layering-Ketten",
+   "titel": "Choker & mehrlagige Ketten",
    "g_prefix": [
     "Apparel & Accessories > Jewelry > Necklaces",
     "Apparel & Accessories > Jewelry > Charms & Pendants"
@@ -393,13 +385,13 @@
     "choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))"
    ],
    "beschreibung": "Kurze Choker und mehrlagige Ketten zum Kombinieren."
   },
@@ -415,20 +407,20 @@
     "cuban|kubanisch|panzer|gliederkette|hip-?hop|o-link|rolo"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))",
+    "^(?=.*(?:choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein))"
    ],
    "beschreibung": "Kräftige Gliederketten: Cuban- und Panzerketten, Rolo-Ketten und Ketten im Hip-Hop-Stil."
   },
   {
    "handle": "ketten-mit-anhaenger",
-   "titel": "Ketten mit Anhänger",
+   "titel": "Anhänger & Ketten mit Anhänger",
    "g_prefix": [
     "Apparel & Accessories > Jewelry > Necklaces",
     "Apparel & Accessories > Jewelry > Charms & Pendants"
@@ -438,17 +430,43 @@
     "anhänger|pendant|medaillon"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein",
-    "cuban|kubanisch|panzer|gliederkette|hip-?hop|o-link|rolo"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))",
+    "^(?=.*(?:choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein))",
+    "^(?=.*(?:cuban|kubanisch|panzer|gliederkette|hip-?hop|o-link|rolo))"
    ],
-   "beschreibung": "Halsketten mit Anhänger: Herz, Kreuz, Buchstaben und weitere Motive."
+   "beschreibung": "Halsketten mit Anhänger und einzelne Kettenanhänger: Herz, Kreuz, Buchstaben, Stern und weitere Motive.",
+   "unterfilter": [
+    {
+     "handle": "ketten-mit-anhaenger-stahl",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "ketten-mit-anhaenger-herz",
+     "titel": "Herz",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herz|herzen|herzförmig)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "ketten-mit-anhaenger-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "silberketten",
@@ -459,15 +477,16 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))"
    ],
    "beschreibung": "Halsketten und Anhänger aus 925er Sterlingsilber und Silber."
   },
@@ -483,13 +502,13 @@
     "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
    "beschreibung": "Halsketten aus Edelstahl und Titanstahl."
   },
@@ -506,14 +525,14 @@
     "moissanit"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)",
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))"
    ],
    "beschreibung": "Halsketten mit Zirkonia, Strass, Kristall oder Moissanit."
   },
@@ -526,21 +545,21 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "personalis|gravur|graviert|namen|initial|buchstaben"
+    "personalis|gravur|graviert|(^|[^a-zäöüß])namen|initial|buchstaben"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Halsketten mit Gravur, Namen, Buchstaben oder Geburtsstein als persönliches Geschenk."
   },
   {
    "handle": "armreifen-bangles",
-   "titel": "Armreifen & Bangles",
+   "titel": "Armreifen & Manschettenarmbänder",
    "g_prefix": [
     "Apparel & Accessories > Jewelry > Bracelets"
    ],
@@ -550,13 +569,29 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Feste und offene Armreifen aus Metall, auch mit Zirkonia oder Gravur."
+   "beschreibung": "Feste und offene Armreifen aus Metall, auch mit Zirkonia oder Gravur.",
+   "unterfilter": [
+    {
+     "handle": "armreifen-bangles-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "armreifen-bangles-vintage",
+     "titel": "Vintage & Retro",
+     "titel_muss": [
+      "retro|vintage|antik"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "lederarmbaender",
@@ -570,14 +605,30 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "armreif|bangle|manschette|cuff"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:armreif|bangle|manschette|cuff))"
    ],
-   "beschreibung": "Armbänder aus Leder, geflochten, mit Schnalle oder mit Metallteilen, für Herren und Damen."
+   "beschreibung": "Armbänder aus Leder, geflochten, mit Schnalle oder mit Metallteilen, für Herren und Damen.",
+   "unterfilter": [
+    {
+     "handle": "lederarmbaender-stahl",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "lederarmbaender-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "herren|männer|männlich|unisex"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "perlen-edelsteinarmbaender",
@@ -588,18 +639,16 @@
    "g_nicht": [],
    "titel_muss": [
     "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
+    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)",
     "chakra"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "armreif|bangle|manschette|cuff",
-    "(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:armreif|bangle|manschette|cuff))",
+    "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))"
    ],
    "beschreibung": "Armbänder aus Perlen, Natursteinen und Edelsteinen, elastisch oder mit Verschluss."
   },
@@ -615,16 +664,13 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "armreif|bangle|manschette|cuff",
-    "(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
-    "chakra"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "tennisracket|tennisschläger",
+    "^(?=.*(?:armreif|bangle|manschette|cuff))",
+    "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))"
    ],
    "beschreibung": "Gliederarmbänder, Panzer- und Cuban-Ketten sowie Tennisarmbänder."
   },
@@ -641,17 +687,13 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "armreif|bangle|manschette|cuff",
-    "(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
-    "chakra",
-    "cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:armreif|bangle|manschette|cuff))",
+    "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
+    "^(?=.*(?:cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband))(?!.*(?:tennisracket|tennisschläger))"
    ],
    "beschreibung": "Armbänder aus Kupfer und Armbänder mit Magnet oder Magnetverschluss."
   },
@@ -667,19 +709,14 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "armreif|bangle|manschette|cuff",
-    "(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband",
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
-    "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl)",
-    "chakra",
-    "cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband",
-    "(^|[^a-zäöüß])(kupfer|rotkupfer|messing)",
-    "magnet"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:armreif|bangle|manschette|cuff))",
+    "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
+    "^(?=.*(?:cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband))(?!.*(?:tennisracket|tennisschläger))",
+    "^(?=.*(?:(^|[^a-zäöüß])(kupfer|rotkupfer|messing)|magnet))"
    ],
    "beschreibung": "Armbänder aus geflochtenen oder gewebten Bändern, Kordeln und Wickelbändern."
   },
@@ -691,15 +728,16 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))",
+    "silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)",
+    "gold, silber"
    ],
    "beschreibung": "Armbänder und Armreifen aus 925er Sterlingsilber und Silber."
   },
@@ -715,14 +753,46 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
-   "beschreibung": "Armbänder aus Edelstahl und Titanstahl, robust für den Alltag."
+   "beschreibung": "Armbänder aus Edelstahl und Titanstahl, robust für den Alltag.",
+   "unterfilter": [
+    {
+     "handle": "edelstahl-titanarmbaender-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "edelstahl-titanarmbaender-leder",
+     "titel": "Aus Leder",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leder|rindleder|echtleder)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "edelstahl-titanarmbaender-vergoldet",
+     "titel": "Vergoldet",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(vergoldet|vergoldung|goldplattiert|gold-?plattiert|plattiert|goldüberzogen|18k|24k|14k)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "edelstahl-titanarmbaender-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "herren|männer|männlich|unisex"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "vergoldete-armbaender",
@@ -736,13 +806,11 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)",
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))"
    ],
    "beschreibung": "Armbänder und Armreifen mit Vergoldung, zum Beispiel 18K vergoldet oder goldplattiert."
   },
@@ -758,14 +826,12 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)",
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl",
-    "(^|[^a-zäöüß])(vergoldet|vergoldung|goldplattiert|gold-?plattiert|plattiert|goldüberzogen|18k|24k|14k)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))",
+    "^(?=.*(?:(^|[^a-zäöüß])(vergoldet|vergoldung|goldplattiert|gold-?plattiert|plattiert|goldüberzogen|18k|24k|14k)))"
    ],
    "beschreibung": "Armbänder mit Zirkonia, Strass oder Kristall."
   },
@@ -781,11 +847,9 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Armbänder für Herren aus Leder, Stahl, Kupfer und Naturstein."
   },
@@ -797,15 +861,13 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "personalis|gravur|graviert|namen|initial|buchstaben"
+    "personalis|gravur|graviert|(^|[^a-zäöüß])namen|initial|buchstaben"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
-    "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
-    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
-    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Armbänder mit Namen, Buchstaben oder Gravur als persönliches Geschenk."
   },
@@ -828,7 +890,8 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
    "beschreibung": "Schmuck mit Glückssymbolen und Schutzzeichen: Kleeblatt, Teufelsauge, Hamsa, Amulette und Hufeisen."
   },
@@ -851,8 +914,10 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "kreuzstich",
+    "^(?=.*(?:glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha))"
    ],
    "beschreibung": "Ketten, Ringe, Armbänder und Anhänger mit Kreuz."
   },
@@ -875,11 +940,70 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha",
-    "(^|[^a-zäöüß])kreuz"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha))",
+    "^(?=.*(?:(^|[^a-zäöüß])kreuz))(?!.*(?:kreuzstich))"
    ],
-   "beschreibung": "Schmuck mit Herz: Ketten, Armbänder, Ringe und Ohrringe, zum Beispiel als Geschenk zum Valentinstag."
+   "beschreibung": "Schmuck mit Herz: Ketten, Armbänder, Ringe und Ohrringe, zum Beispiel als Geschenk zum Valentinstag.",
+   "unterfilter": [
+    {
+     "handle": "herz-schmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herz-schmuck-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herz-schmuck-ketten",
+     "titel": "Ketten & Anhänger",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|kollier|choker|anhänger|halsband|medaillon)"
+     ],
+     "titel_nicht": [
+      "armband|ohrring"
+     ]
+    },
+    {
+     "handle": "herz-schmuck-ringe",
+     "titel": "Ringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": [
+      "ohrring|armring"
+     ]
+    },
+    {
+     "handle": "herz-schmuck-silber",
+     "titel": "Silber",
+     "titel_muss": [
+      "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+     ],
+     "titel_nicht": [
+      "(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))",
+      "silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)",
+      "gold, silber"
+     ]
+    },
+    {
+     "handle": "herz-schmuck-stahl",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "stern-mond-schmuck",
@@ -891,7 +1015,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "(^|[^a-zäöüß])(stern|sterne|sternen|mond|sonne|sonnen|galaxie|planet|sternzeichen)"
+    "(^|[^a-zäöüß])(stern|mond(?!stein)|sonne(?!nblume|nhut|nstein)|sonnen(?!blume|hut|stein)|galaxie|planet)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -900,10 +1024,12 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha",
-    "(^|[^a-zäöüß])kreuz",
-    "(^|[^a-zäöüß])(herz|herzen|herzförmig)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "sternfisch|wukong|seestern",
+    "^(?=.*(?:glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha))",
+    "^(?=.*(?:(^|[^a-zäöüß])kreuz))(?!.*(?:kreuzstich))",
+    "^(?=.*(?:(^|[^a-zäöüß])(herz|herzen|herzförmig)))"
    ],
    "beschreibung": "Schmuck mit Stern, Mond und Sonne sowie Sternzeichen-Motiven."
   },
@@ -926,13 +1052,71 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha",
-    "(^|[^a-zäöüß])kreuz",
-    "(^|[^a-zäöüß])(herz|herzen|herzförmig)",
-    "(^|[^a-zäöüß])(stern|sterne|sternen|mond|sonne|sonnen|galaxie|planet|sternzeichen)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "rosenquarz|rosenschliff|rosen-schliff|rosenholz",
+    "^(?=.*(?:glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha))",
+    "^(?=.*(?:(^|[^a-zäöüß])kreuz))(?!.*(?:kreuzstich))",
+    "^(?=.*(?:(^|[^a-zäöüß])(herz|herzen|herzförmig)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(stern|mond(?!stein)|sonne(?!nblume|nhut|nstein)|sonnen(?!blume|hut|stein)|galaxie|planet)))(?!.*(?:sternfisch|wukong|seestern))"
    ],
-   "beschreibung": "Schmuck mit Blüten- und Schmetterlingsmotiven, von zartem Blumenring bis zu Emaille-Blumenohrringen."
+   "beschreibung": "Schmuck mit Blüten- und Schmetterlingsmotiven, von zartem Blumenring bis zu Emaille-Blumenohrringen.",
+   "unterfilter": [
+    {
+     "handle": "blumen-schmetterlingsschmuck-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "blumen-schmetterlingsschmuck-ringe",
+     "titel": "Ringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": [
+      "ohrring|armring"
+     ]
+    },
+    {
+     "handle": "blumen-schmetterlingsschmuck-ohrringe",
+     "titel": "Ohrringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(ohrring|ohrringe|ohrstecker|ohrhänger|creole|ohrclips?|huggie)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "blumen-schmetterlingsschmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "blumen-schmetterlingsschmuck-perlen",
+     "titel": "Mit Perlen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "blumen-schmetterlingsschmuck-silber",
+     "titel": "Silber",
+     "titel_muss": [
+      "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?beschicht|-?ähnlich|-?look)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
+     ],
+     "titel_nicht": [
+      "(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))",
+      "silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)",
+      "gold, silber"
+     ]
+    }
+   ]
   },
   {
    "handle": "tier-schmuck",
@@ -944,7 +1128,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "(^|[^a-zäöüß])(katze|katzen|hund|pferd|schlange|schlangen|drache|drachen|tiger|löwe|eule|fuchs|wolf|elefant|schildkröte|biene|vogel|pfau|delfin|fisch|hase|leopard|panther|bär|krokodil|libelle|fledermaus|spinne|skorpion|seepferd|qualle|krabbe)"
+    "(^|[^a-zäöüß])(katze|katzen|hund|pferd|schlange|schlangen|drache|drachen|tiger|löwe|eule|fuchs|wolf|elefant|schildkröte|biene|vogel|pfau|delfin|fisch|hase|leopard|panther|bär|krokodil|libelle|fledermaus|spinne|skorpion|seepferd|qualle|krabbe|sternfisch|seestern)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -953,15 +1137,46 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "schlangenkette|schlangenketten|katzenaug|tigerauge|tigeraugen|tiger ?eye|pferdeauge|pferdaugen|fischgrät|wolfram|hundemarke",
-    "glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha",
-    "(^|[^a-zäöüß])kreuz",
-    "(^|[^a-zäöüß])(herz|herzen|herzförmig)",
-    "(^|[^a-zäöüß])(stern|sterne|sternen|mond|sonne|sonnen|galaxie|planet|sternzeichen)",
-    "(^|[^a-zäöüß])(blume|blumen|blüte|blüten|rose|rosen|lotus|schmetterling|schmetterlings|camelli|pfingstrose|gänseblümchen|orchidee|kirschblüte|sonnenblume|margerite|tulpe|lilie)"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "schlangenkette|schlangenketten|katzenaug|tigerauge|tigeraugen|tiger-augen|tigers eye|tiger ?eye|pferdeauge|pferdaugen|fischgrät|wolfram|hundemarke",
+    "^(?=.*(?:glück|kleeblatt|teufelsauge|dämonenauge|evil ?eye|böse blick|hamsa|fatima|amulett|talisman|hufeisen|pixiu|buddha))",
+    "^(?=.*(?:(^|[^a-zäöüß])kreuz))(?!.*(?:kreuzstich))",
+    "^(?=.*(?:(^|[^a-zäöüß])(herz|herzen|herzförmig)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(stern|mond(?!stein)|sonne(?!nblume|nhut|nstein)|sonnen(?!blume|hut|stein)|galaxie|planet)))(?!.*(?:sternfisch|wukong|seestern))",
+    "^(?=.*(?:(^|[^a-zäöüß])(blume|blumen|blüte|blüten|rose|rosen|lotus|schmetterling|schmetterlings|camelli|pfingstrose|gänseblümchen|orchidee|kirschblüte|sonnenblume|margerite|tulpe|lilie)))(?!.*(?:rosenquarz|rosenschliff|rosen-schliff|rosenholz))"
    ],
-   "beschreibung": "Schmuck mit Tiermotiven: Katze, Pferd, Schlange, Drache, Eule und weitere."
+   "beschreibung": "Schmuck mit Tiermotiven: Katze, Pferd, Schlange, Drache, Eule und weitere.",
+   "unterfilter": [
+    {
+     "handle": "tier-schmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "tier-schmuck-ketten",
+     "titel": "Ketten & Anhänger",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|kollier|choker|anhänger|halsband|medaillon)"
+     ],
+     "titel_nicht": [
+      "armband|ohrring"
+     ]
+    },
+    {
+     "handle": "tier-schmuck-ringe",
+     "titel": "Ringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": [
+      "ohrring|armring"
+     ]
+    }
+   ]
   },
   {
    "handle": "punk-gothic-schmuck",
@@ -973,7 +1188,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "punk|gothic|totenkopf|schädel|skull|hip-?hop"
+    "punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -982,13 +1197,32 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Schmuck im Punk-, Gothic- und Hip-Hop-Stil, auch mit Totenkopf."
+   "beschreibung": "Schmuck im Punk-, Gothic- und Hip-Hop-Stil, auch mit Totenkopf.",
+   "unterfilter": [
+    {
+     "handle": "punk-gothic-schmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "punk-gothic-schmuck-stahl",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "boho-ethno-schmuck",
-   "titel": "Boho- & Ethno-Schmuck",
+   "titel": "Boho-, Ethno- & Wikinger-Schmuck",
    "g_prefix": [
     "Apparel & Accessories > Jewelry"
    ],
@@ -996,7 +1230,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "boho|ethno|bohemian|böhm"
+    "boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -1005,10 +1239,37 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "punk|gothic|totenkopf|schädel|skull|hip-?hop"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))"
    ],
-   "beschreibung": "Schmuck im Boho- und Ethno-Stil mit Naturmaterialien, Quasten und Perlen."
+   "beschreibung": "Schmuck im Boho- und Ethno-Stil sowie mit nordischen, keltischen, tibetischen oder chinesischen Motiven."
+  },
+  {
+   "handle": "korea-frankreich-oldmoney-schmuck",
+   "titel": "Schmuck im Korea-, Frankreich- & Old-Money-Stil",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Jewelry > Watch"
+   ],
+   "titel_muss": [
+    "koreanisch|korean|französisch|japanisch|old money|europäisch|pariser"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
+    "gesundheitsring|blutsauerstoff|stressüberwachung",
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
+    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
+    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
+    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))",
+    "^(?=.*(?:boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch))"
+   ],
+   "beschreibung": "Schmuck, den der Titel als koreanischen, französischen, japanischen oder Old-Money-Stil beschreibt."
   },
   {
    "handle": "vintage-retro-schmuck",
@@ -1020,7 +1281,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "retro|vintage|antik|barock"
+    "retro|vintage|antik"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -1029,11 +1290,95 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "punk|gothic|totenkopf|schädel|skull|hip-?hop",
-    "boho|ethno|bohemian|böhm"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))",
+    "^(?=.*(?:boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch))",
+    "^(?=.*(?:koreanisch|korean|französisch|japanisch|old money|europäisch|pariser))"
    ],
-   "beschreibung": "Schmuck im Vintage-, Retro- und Barock-Stil."
+   "beschreibung": "Schmuck im Vintage-, Retro- und Antik-Stil.",
+   "unterfilter": [
+    {
+     "handle": "vintage-retro-schmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vintage-retro-schmuck-ringe",
+     "titel": "Ringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": [
+      "ohrring|armring"
+     ]
+    },
+    {
+     "handle": "vintage-retro-schmuck-ohrringe",
+     "titel": "Ohrringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(ohrring|ohrringe|ohrstecker|ohrhänger|creole|ohrclips?|huggie)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vintage-retro-schmuck-zirkonia",
+     "titel": "Mit Zirkonia",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vintage-retro-schmuck-stahl",
+     "titel": "Edelstahl & Titan",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "vintage-retro-schmuck-ketten",
+     "titel": "Ketten & Anhänger",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|kollier|choker|anhänger|halsband|medaillon)"
+     ],
+     "titel_nicht": [
+      "armband|ohrring"
+     ]
+    }
+   ]
+  },
+  {
+   "handle": "geometrischer-schmuck",
+   "titel": "Geometrischer Schmuck",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Jewelry > Watch"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])geometr"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
+    "gesundheitsring|blutsauerstoff|stressüberwachung",
+    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
+    "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
+    "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
+    "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))",
+    "^(?=.*(?:boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch))",
+    "^(?=.*(?:koreanisch|korean|französisch|japanisch|old money|europäisch|pariser))",
+    "^(?=.*(?:retro|vintage|antik))"
+   ],
+   "beschreibung": "Schmuck mit geometrischen Formen wie Kreis, Dreieck, Quadrat und Rhombus."
   },
   {
    "handle": "minimalistischer-schmuck",
@@ -1054,19 +1399,44 @@
     "schlüsselanh|taschenanh|auto-?anh|rückspiegel|handy-?anh",
     "wandlampe|wandleuchte|bikini|geschenkbeutel|weihnachtsstrumpf|christbaum",
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
-    "hundehalsband",
-    "punk|gothic|totenkopf|schädel|skull|hip-?hop",
-    "boho|ethno|bohemian|böhm",
-    "retro|vintage|antik|barock"
+    "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
+    "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))",
+    "^(?=.*(?:boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch))",
+    "^(?=.*(?:koreanisch|korean|französisch|japanisch|old money|europäisch|pariser))",
+    "^(?=.*(?:retro|vintage|antik))",
+    "^(?=.*(?:(^|[^a-zäöüß])geometr))"
    ],
-   "beschreibung": "Schlichter, zarter Schmuck für den Alltag und zum Kombinieren."
+   "beschreibung": "Schlichter, zarter Schmuck für den Alltag und zum Kombinieren.",
+   "unterfilter": [
+    {
+     "handle": "minimalistischer-schmuck-armbaender",
+     "titel": "Armbänder & Armreifen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "minimalistischer-schmuck-ringe",
+     "titel": "Ringe",
+     "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
+     ],
+     "titel_nicht": [
+      "ohrring|armring"
+     ]
+    }
+   ]
   },
   {
    "handle": "schmuck-selbermachen",
    "titel": "Schmuck selber machen",
    "g_prefix": [
     "Apparel & Accessories > Jewelry",
-    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Beads",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Jewelry Making Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools"
    ],
    "g_nicht": [
     "Apparel & Accessories > Jewelry > Watch",
@@ -1076,8 +1446,8 @@
     "Apparel & Accessories > Jewelry > Jewelry Sets"
    ],
    "titel_muss": [
-    "(^|[^a-zäöüß])diy(?![a-zäöüß])",
-    "perlen für|barock-?perlen|perlen splitter|schmuckperlen|armbandperlen|gold-perle|sandelholz-perlen|glasperle|(^|[^a-zäöüß])beads?(?![a-zäöüß])|-bead(?![a-zäöüß])|schmuckwerkzeug|schmuckdraht|ziehplatte|armband-?kit|paracord|ohrring-?set aus pu|schmuck-?set für reparaturen|nackenketten zubehör",
+    "^(?=.*(armband|halskette|ohrring|ring|anhänger|schmuck|kette|perle|bead|charm))(?=.*(^|[^a-zäöüß])diy(?![a-zäöüß]))",
+    "perlen für|perlen splitter|schmuckperlen|armbandperlen|gold-perle|sandelholz-perlen|schmuckwerkzeug|schmuckdraht|ziehplatte|armband-?kit|ohrring-?set aus pu|schmuck-?set für reparaturen|nackenketten zubehör|-bead(?![a-zäöüß])",
     "^(natürliche[rn]?|frische[rn]?|violette[rn]?) (diamantförmige )?süsswasser-?perlen?$"
    ],
    "titel_nicht": [
@@ -1103,6 +1473,43 @@
    "beschreibung": "Anhänger für Schlüssel und Taschen: Schlüsselanhänger aus Leder, Metall und Perlen, auch im Set."
   },
   {
+   "handle": "kombisets-kette-armband-ohrringe",
+   "titel": "Kombi-Sets aus Kette, Armband & Ohrringen",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Jewelry > Watch",
+    "Apparel & Accessories > Jewelry > Jewelry Sets"
+   ],
+   "titel_muss": [
+    "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
+   ],
+   "titel_nicht": [
+    "uhr|schlüsselanh|diy|geschenkbeutel|zahn"
+   ],
+   "beschreibung": "Mehrteilige Schmuck-Sets, die Halskette, Armband, Ohrringe oder Ring zusammen enthalten; ergänzt die Sets, die Google schon als Schmuck-Set führt."
+  },
+  {
+   "handle": "armbanduhren-alle",
+   "titel": "Armbanduhren",
+   "g_prefix": [
+    "Apparel & Accessories > Jewelry > Watches"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "^(?=.*(uhr|watch|chronograph|zeitmesser))"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
+    "smartwatch|smartuhr|smart-?armband",
+    "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
+    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls"
+   ],
+   "beschreibung": "Alle klassischen Armbanduhren und Taschenuhren mit Zeigern oder digitaler Anzeige, ohne Smartwatches, Wecker und Uhren-Zubehör."
+  },
+  {
    "handle": "paaruhren-partneruhren",
    "titel": "Paaruhren & Partneruhren",
    "g_prefix": [
@@ -1113,12 +1520,13 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
-    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring"
+    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls"
    ],
-   "beschreibung": "Uhren für Paare, als Partneruhren oder im Set für Sie und Ihn."
+   "beschreibung": "Uhren für Paare, als Partneruhren oder im Set für zwei Personen."
   },
   {
    "handle": "kinderuhren",
@@ -1131,13 +1539,14 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))))"
    ],
-   "beschreibung": "Armbanduhren für Kinder und Jugendliche: digital und analog, wasserdicht und mit Leuchtfunktion."
+   "beschreibung": "Armbanduhren für Kinder und Jugendliche, digital und analog, auch mit Leuchtfunktion."
   },
   {
    "handle": "unisex-uhren",
@@ -1150,12 +1559,13 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(unisex|herren-?/?(und|&|oder)? ?damen|damen (und|&|oder) herren|herren-/damen))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))))"
    ],
    "beschreibung": "Uhren, die laut Titel für Damen und Herren gleichermassen gedacht sind."
   },
@@ -1170,15 +1580,66 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(herren|männer|männlich|gentleman)))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(unisex|herren-?/?(und|&|oder)? ?damen|damen (und|&|oder) herren|herren-/damen))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(unisex|herren-?/?(und|&|oder)? ?damen|damen (und|&|oder) herren|herren-/damen))))"
    ],
-   "beschreibung": "Armbanduhren für Herren: Quarz, Automatik, Sport- und Business-Uhren in vielen Armbandvarianten."
+   "beschreibung": "Armbanduhren für Herren: Quarz, Automatik, Sport- und Business-Uhren in vielen Armbandvarianten.",
+   "unterfilter": [
+    {
+     "handle": "herrenuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herrenuhren-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herrenuhren-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herrenuhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herrenuhren-leuchtend",
+     "titel": "Leuchtend",
+     "titel_muss": [
+      "leucht|luminös|lumin|nachtlicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "herrenuhren-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "damenuhren",
@@ -1191,16 +1652,43 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(damen|frauen|lady|ladies|weiblich|girls?)))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(unisex|herren-?/?(und|&|oder)? ?damen|damen (und|&|oder) herren|herren-/damen))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(herren|männer|männlich|gentleman)))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(paar|paare|paaruhren?|pärchen|partner|lover|couple)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(kinder|kids|kind|jungen|jungs|mädchen|jugend|jugendliche)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(unisex|herren-?/?(und|&|oder)? ?damen|damen (und|&|oder) herren|herren-/damen))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(herren|männer|männlich|gentleman)))))"
    ],
-   "beschreibung": "Armbanduhren für Damen: schlichte und elegante Modelle, mit Edelstahl-, Leder- oder Mesh-Armband."
+   "beschreibung": "Armbanduhren für Damen: schlichte und elegante Modelle, mit Edelstahl-, Leder- oder Mesh-Armband.",
+   "unterfilter": [
+    {
+     "handle": "damenuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "damenuhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "damenuhren-strass",
+     "titel": "Mit Strass",
+     "titel_muss": [
+      "strass|kristall|diamant|zirkon"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhren-sets-geschenksets",
@@ -1213,12 +1701,31 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
-    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring"
+    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls"
    ],
-   "beschreibung": "Uhren im Set mit Armband, Zubehör oder Geschenkverpackung."
+   "beschreibung": "Uhren im Set mit Armband, Zubehör oder Geschenkverpackung.",
+   "unterfilter": [
+    {
+     "handle": "uhren-sets-geschenksets-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-sets-geschenksets-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "taschenuhren",
@@ -1231,13 +1738,32 @@
     "taschenuhr"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))"
    ],
-   "beschreibung": "Taschenuhren mit Kette, mechanisch oder mit Quarzwerk, oft im Retro-Stil."
+   "beschreibung": "Taschenuhren mit Kette, mechanisch oder mit Quarzwerk, oft im Retro-Stil.",
+   "unterfilter": [
+    {
+     "handle": "taschenuhren-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "taschenuhren-retro",
+     "titel": "Retro & Vintage",
+     "titel_muss": [
+      "retro|vintage|antik"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "holzuhren-bambusuhren",
@@ -1250,14 +1776,41 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))"
    ],
-   "beschreibung": "Armbanduhren mit Gehäuse oder Armband aus Holz und Bambus."
+   "beschreibung": "Armbanduhren mit Gehäuse oder Armband aus Holz und Bambus.",
+   "unterfilter": [
+    {
+     "handle": "holzuhren-bambusuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "holzuhren-bambusuhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "holzuhren-bambusuhren-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "automatik-mechanische-uhren",
@@ -1270,15 +1823,66 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))"
    ],
-   "beschreibung": "Uhren mit mechanischem Uhrwerk: Automatikuhren, Skelettuhren und Modelle mit Tourbillon-Optik."
+   "beschreibung": "Uhren mit mechanischem Uhrwerk: Automatikuhren, Skelettuhren und Modelle mit Tourbillon-Optik.",
+   "unterfilter": [
+    {
+     "handle": "automatik-mechanische-uhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "automatik-mechanische-uhren-skelett",
+     "titel": "Skelett & Hohl-Design",
+     "titel_muss": [
+      "skelett|hohl|transparent|durchsicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "automatik-mechanische-uhren-leuchtend",
+     "titel": "Leuchtend",
+     "titel_muss": [
+      "leucht|luminös|lumin|nachtlicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "automatik-mechanische-uhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "automatik-mechanische-uhren-business",
+     "titel": "Business & Elegant",
+     "titel_muss": [
+      "business|elegant|klassisch|dress"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "automatik-mechanische-uhren-leder",
+     "titel": "Lederarmband",
+     "titel_muss": [
+      "leder"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "chronographen",
@@ -1291,16 +1895,51 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))"
    ],
-   "beschreibung": "Uhren mit Chronograph-Funktion und Stoppfunktion im Zifferblatt."
+   "beschreibung": "Uhren mit Chronograph-Funktion und Stoppfunktion im Zifferblatt.",
+   "unterfilter": [
+    {
+     "handle": "chronographen-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "chronographen-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "chronographen-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "chronographen-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "digitaluhren-led-uhren",
@@ -1313,17 +1952,44 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))"
    ],
-   "beschreibung": "Uhren mit digitaler Anzeige: LED, Alarm, Datum und Leuchtfunktion."
+   "beschreibung": "Uhren mit digitaler Anzeige: LED, Alarm, Datum und Leuchtfunktion.",
+   "unterfilter": [
+    {
+     "handle": "digitaluhren-led-uhren-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "digitaluhren-led-uhren-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "digitaluhren-led-uhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "sportuhren-outdoor",
@@ -1336,18 +2002,61 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))))"
    ],
-   "beschreibung": "Robuste Sport- und Outdoor-Uhren, wasserdicht und mit Leuchtzeigern."
+   "beschreibung": "Sport- und Outdoor-Uhren, analog und digital, oft mit Leuchtzeigern oder Doppelanzeige.",
+   "unterfilter": [
+    {
+     "handle": "sportuhren-outdoor-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "sportuhren-outdoor-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "sportuhren-outdoor-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "sportuhren-outdoor-leuchtend",
+     "titel": "Leuchtend",
+     "titel_muss": [
+      "leucht|luminös|lumin|nachtlicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "sportuhren-outdoor-silikon",
+     "titel": "Silikon & Kautschuk",
+     "titel_muss": [
+      "silikon|kautschuk|gummi|nylon|canvas"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "strass-schmuckuhren",
@@ -1360,19 +2069,46 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))))"
    ],
-   "beschreibung": "Uhren mit Strass, Kristallen oder Zirkonia am Gehäuse oder Zifferblatt."
+   "beschreibung": "Uhren mit Strass, Kristallen oder Zirkonia am Gehäuse oder Zifferblatt.",
+   "unterfilter": [
+    {
+     "handle": "strass-schmuckuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "strass-schmuckuhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "strass-schmuckuhren-damen",
+     "titel": "Für Damen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(damen|frauen|lady)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "retro-vintage-uhren",
@@ -1385,20 +2121,39 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(retro|vintage|antik))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))))"
    ],
-   "beschreibung": "Uhren im Retro-, Vintage- und Antik-Stil."
+   "beschreibung": "Uhren im Retro-, Vintage- und Antik-Stil.",
+   "unterfilter": [
+    {
+     "handle": "retro-vintage-uhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "retro-vintage-uhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "business-dress-uhren",
@@ -1411,21 +2166,72 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(business|elegant|dress|formal|klassisch))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(retro|vintage|antik))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(retro|vintage|antik))))"
    ],
-   "beschreibung": "Schlichte und elegante Uhren für Büro, Anzug und festliche Anlässe."
+   "beschreibung": "Schlichte und elegante Uhren für Büro, Anzug und festliche Anlässe.",
+   "unterfilter": [
+    {
+     "handle": "business-dress-uhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "business-dress-uhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "business-dress-uhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "business-dress-uhren-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "business-dress-uhren-kalender",
+     "titel": "Mit Kalender",
+     "titel_muss": [
+      "kalender|datum"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "business-dress-uhren-leder",
+     "titel": "Lederarmband",
+     "titel_muss": [
+      "leder"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "quarzuhren",
@@ -1438,22 +2244,73 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(quarz|quartz))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))",
-    "taschenuhr",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(retro|vintage|antik))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(business|elegant|dress|formal|klassisch))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(set|sets|geschenkset|geschenkbox)(?![a-zäöüß])))))",
+    "^(?=.*(?:taschenuhr))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*((^|[^a-zäöüß])(holz|bambus|wood)))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett|selbstaufzug))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(chronograph))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(sport|outdoor|militär|taucher|lauf))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(strass|kristall|diamant|zirkon|perlmutt|steinen))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(retro|vintage|antik))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(business|elegant|dress|formal|klassisch))))"
    ],
-   "beschreibung": "Armbanduhren mit Quarzwerk, mit Kalender, Leuchtzeigern und verschiedenen Armbändern."
+   "beschreibung": "Armbanduhren mit Quarzwerk, mit Kalender, Leuchtzeigern und verschiedenen Armbändern.",
+   "unterfilter": [
+    {
+     "handle": "quarzuhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "quarzuhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "quarzuhren-kalender",
+     "titel": "Mit Kalender",
+     "titel_muss": [
+      "kalender|datum"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "quarzuhren-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "quarzuhren-leuchtend",
+     "titel": "Leuchtend",
+     "titel_muss": [
+      "leucht|luminös|lumin|nachtlicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "quarzuhren-damen",
+     "titel": "Für Damen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(damen|frauen|lady)"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhren-lederarmband",
@@ -1466,12 +2323,47 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leder))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
-    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring"
+    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls"
    ],
-   "beschreibung": "Armbanduhren mit Lederarmband, klassisch und im Retro-Stil."
+   "beschreibung": "Armbanduhren mit Lederarmband, klassisch und im Retro-Stil.",
+   "unterfilter": [
+    {
+     "handle": "uhren-lederarmband-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-lederarmband-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-lederarmband-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-lederarmband-business",
+     "titel": "Business & Elegant",
+     "titel_muss": [
+      "business|elegant|klassisch|dress"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhren-edelstahlarmband",
@@ -1484,13 +2376,64 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(edelstahl|stahl|mesh|milan|metall|legierung))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leder))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leder))))"
    ],
-   "beschreibung": "Armbanduhren mit Edelstahl-, Stahl- oder Mesh-Armband."
+   "beschreibung": "Armbanduhren mit Edelstahl-, Stahl- oder Mesh-Armband.",
+   "unterfilter": [
+    {
+     "handle": "uhren-edelstahlarmband-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-edelstahlarmband-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-edelstahlarmband-business",
+     "titel": "Business & Elegant",
+     "titel_muss": [
+      "business|elegant|klassisch|dress"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-edelstahlarmband-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-edelstahlarmband-damen",
+     "titel": "Für Damen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(damen|frauen|lady)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-edelstahlarmband-kalender",
+     "titel": "Mit Kalender",
+     "titel_muss": [
+      "kalender|datum"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhren-silikonarmband",
@@ -1503,14 +2446,49 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(silikon|kautschuk|gummi|nylon|canvas|plastik|harz))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leder))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(edelstahl|stahl|mesh|milan|metall|legierung))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leder))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(edelstahl|stahl|mesh|milan|metall|legierung))))"
    ],
-   "beschreibung": "Armbanduhren mit Silikon-, Kautschuk-, Nylon- oder Canvas-Armband."
+   "beschreibung": "Armbanduhren mit Silikon-, Kautschuk-, Nylon- oder Canvas-Armband.",
+   "unterfilter": [
+    {
+     "handle": "uhren-silikonarmband-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-silikonarmband-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-silikonarmband-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-silikonarmband-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhren-mit-kalender",
@@ -1523,12 +2501,63 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(kalender|datum|wochentag))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
-    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring"
+    "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls"
    ],
-   "beschreibung": "Armbanduhren mit Kalender, Datums- oder Wochentagsanzeige."
+   "beschreibung": "Armbanduhren mit Kalender, Datums- oder Wochentagsanzeige.",
+   "unterfilter": [
+    {
+     "handle": "uhren-mit-kalender-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-mit-kalender-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-mit-kalender-leuchtend",
+     "titel": "Leuchtend",
+     "titel_muss": [
+      "leucht|luminös|lumin|nachtlicht"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-mit-kalender-business",
+     "titel": "Business & Elegant",
+     "titel_muss": [
+      "business|elegant|klassisch|dress"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-mit-kalender-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "uhren-mit-kalender-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "leuchtuhren",
@@ -1541,13 +2570,56 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leucht|luminös|lumin|nachtlicht|fluoresz))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(kalender|datum|wochentag))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(kalender|datum|wochentag))))"
    ],
-   "beschreibung": "Armbanduhren mit Leuchtzeigern oder Leuchtziffern, die im Dunkeln ablesbar sind."
+   "beschreibung": "Armbanduhren mit Leuchtzeigern oder Leuchtziffern, die im Dunkeln ablesbar sind.",
+   "unterfilter": [
+    {
+     "handle": "leuchtuhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leuchtuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leuchtuhren-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leuchtuhren-multi",
+     "titel": "Multifunktion",
+     "titel_muss": [
+      "multifunktion|dual|doppel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leuchtuhren-automatik",
+     "titel": "Automatik & Mechanik",
+     "titel_muss": [
+      "automatik|automatisch|automatic|mechanisch|mechanik|tourbillon|skelett"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "multifunktionsuhren",
@@ -1560,14 +2632,65 @@
     "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(multifunktion|dual|doppel|weltzeit|24h|mondphase|kompass))"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon)",
+    "(^|[^a-zäöüß])(smart|bluetooth|herzfrequenz|fitness|tracker|gps|4g|sim-?karte|blutsauerstoff|schrittz|pager|reminder|speaker|lautsprecher|power ?bank|ladestation|ladegerät|musik|kamera|gesundheit|sos|notruf|telefon|anruf)",
     "smartwatch|smartuhr|smart-?armband",
     "wecker|wanduhr|tischuhr|standuhr|stoppuhr",
     "uhrenarmband|ersatzarmband|uhrenbox|uhrenbeweger|schutzhülle|gehäuseöffner|innenring",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(kalender|datum|wochentag))",
-    "^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leucht|luminös|lumin|nachtlicht|fluoresz))"
+    "case für|apple watch|(^|[^a-zäöüß])(pixel|galaxy|huawei|xiaomi|redmi|amazfit|garmin|fitbit|samsung|iwatch|iphone)|ersatzband|küchenuhr|radio|schwebeuhr|aufhängungsuhr|schutzschale|zifferblatt für|skalenring|spieluhr|schatzkiste|uhrbox|verpackungsbox|kronenschutz|nixie|ornament|anhängeruhr|wifi|röhrenuhr|diktier|feuerzeug|kalorien|schritt-|(^|[^a-zäöüß])puls",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(kalender|datum|wochentag))))",
+    "^(?=.*(?:^(?=.*(uhr|watch|chronograph|zeitmesser))(?=.*(leucht|luminös|lumin|nachtlicht|fluoresz))))"
    ],
-   "beschreibung": "Armbanduhren mit mehreren Anzeigen, zum Beispiel Doppelanzeige, Weltzeit, Mondphase oder Kompass."
+   "beschreibung": "Armbanduhren mit mehreren Anzeigen, zum Beispiel Doppelanzeige, Weltzeit, Mondphase oder Kompass.",
+   "unterfilter": [
+    {
+     "handle": "multifunktionsuhren-herren",
+     "titel": "Für Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "multifunktionsuhren-quarz",
+     "titel": "Quarz",
+     "titel_muss": [
+      "quarz|quartz"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "multifunktionsuhren-sport",
+     "titel": "Sport & Outdoor",
+     "titel_muss": [
+      "sport|outdoor|militär|taucher"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "multifunktionsuhren-digital",
+     "titel": "Digital & LED",
+     "titel_muss": [
+      "digital|(^|[^a-zäöüß])led(?![a-zäöüß])|elektronisch|elektronik"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "multifunktionsuhren-business",
+     "titel": "Business & Elegant",
+     "titel_muss": [
+      "business|elegant|klassisch|dress"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "multifunktionsuhren-edelstahl",
+     "titel": "Edelstahl & Metall",
+     "titel_muss": [
+      "edelstahl|stahl|mesh|milan|metall"
+     ],
+     "titel_nicht": []
+    }
+   ]
   },
   {
    "handle": "uhrenboxen-uhrenwerkzeug",
@@ -1578,11 +2701,9 @@
     "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands"
    ],
    "titel_muss": [
-    "uhrenbox|uhrenkiste|uhren-?aufbewahr|uhrenbeweger|uhren-?schrank|uhrenreparatur|uhrreparatur|zeigerabheber|gehäuseöffner|uhrenwerkzeug|uhrenboden|stiftausdrücker|uhren-?etui|uhrenarmband-?werkzeug|uhren-?reisetasche"
+    "uhrenbox|uhrbox|uhren-?verpackungsbox|uhr verpackungsbox|uhrenkiste|uhren-?aufbewahr|uhrenbeweger|uhren-?schrank|uhrenreparatur|uhrreparatur|zeigerabheber|gehäuseöffner|uhrenwerkzeug|uhrenboden|stiftausdrücker|uhren-?etui|uhrenarmband-?werkzeug|uhren-?reisetasche"
    ],
-   "titel_nicht": [
-    "federsteg"
-   ],
+   "titel_nicht": [],
    "beschreibung": "Boxen und Schränke zum Aufbewahren von Uhren, Uhrenbeweger und Werkzeug zum Öffnen, Reparieren und Armband-Wechseln."
   }
  ],
@@ -1630,6 +2751,7 @@
    "titel": "Halsketten & Anhänger",
    "handle": "ketten-gruppe",
    "kinder": [
+    "halsketten-alle",
     "perlenketten",
     "choker-layering-ketten",
     "glieder-hiphop-ketten",
@@ -1673,7 +2795,8 @@
    "handle": "schmuck-herren-gruppe",
    "kinder": [
     "herrenringe",
-    "herrenarmbaender"
+    "herrenarmbaender",
+    "herrenuhren"
    ]
   },
   {
@@ -1703,7 +2826,9 @@
    "kinder": [
     "punk-gothic-schmuck",
     "boho-ethno-schmuck",
+    "korea-frankreich-oldmoney-schmuck",
     "vintage-retro-schmuck",
+    "geometrischer-schmuck",
     "minimalistischer-schmuck"
    ]
   },
@@ -1721,6 +2846,7 @@
    "handle": "schmuck-sets-gruppe",
    "kinder": [
     "schmuck-sets",
+    "kombisets-kette-armband-ohrringe",
     "broschen-pins",
     "koerper-fussschmuck",
     "premium-schmuck"
@@ -1730,6 +2856,7 @@
    "titel": "Uhren für Herren, Damen & Kinder",
    "handle": "uhren-traeger-gruppe",
    "kinder": [
+    "armbanduhren-alle",
     "paaruhren-partneruhren",
     "kinderuhren",
     "unisex-uhren",
@@ -1756,20 +2883,26 @@
    ]
   },
   {
-   "titel": "Uhren nach Art",
-   "handle": "uhren-art-gruppe",
+   "titel": "Uhren nach Uhrwerk & Bauart",
+   "handle": "uhren-werk-gruppe",
    "kinder": [
-    "uhren-sets-geschenksets",
-    "taschenuhren",
-    "holzuhren-bambusuhren",
     "automatik-mechanische-uhren",
     "chronographen",
     "digitaluhren-led-uhren",
+    "quarzuhren",
+    "taschenuhren"
+   ]
+  },
+  {
+   "titel": "Uhren nach Stil & Einsatz",
+   "handle": "uhren-stil-gruppe",
+   "kinder": [
+    "uhren-sets-geschenksets",
+    "holzuhren-bambusuhren",
     "sportuhren-outdoor",
     "strass-schmuckuhren",
     "retro-vintage-uhren",
-    "business-dress-uhren",
-    "quarzuhren"
+    "business-dress-uhren"
    ]
   },
   {
@@ -1781,6 +2914,93 @@
    ]
   }
  ],
- "ausserhalb": [],
- "hinweise": []
+ "ausserhalb": [
+  {
+   "text": "Smartwatches, Smartbands und Fitness-Armbänder in der Google-Klasse «Jewelry > Watches»: 828 von 2 974 Produkten gehören nach der Aufgabenteilung zur Datei unterhaltung.json (smartwatches, fitness-tracker-smartbands). 824 davon nimmt die Universums-Regel per Titel heraus; 4 Sport-Armbänder mit Display oder Pedometer ohne Smart-Wort liegen noch in der Lücke. Gemessen: kein Produkt steht in einer Uhren-Kategorie dieser Datei UND in einer Smart-Kategorie von unterhaltung.json.",
+   "beispiele": [
+    "Smartwatch mit Herzfrequenzmessung",
+    "Smart-Armband mit Anruffunktion & Gesundheits-Tracking",
+    "Kinder Smartwatch mit Vibrationsalarm",
+    "Wasserdichtes Farbdisplay Pedometer Armband"
+   ]
+  },
+  {
+   "text": "Google-Klasse «Watches», aber keine Armbanduhr und kein Schmuck (69 Titel, vom Universum ausgenommen): Wecker, Tisch-, Wand- und Küchenuhren, Stoppuhren, Spieluhr, Diktier- und Nixie-Uhr, Uhren-Teile (Zifferblatt, Skalenring, Innenring, Kronenschutz, Ersatzband), Hüllen und Ladehalter für Apple Watch, Pager, Handy-Kühler. Uhrenboxen aus dieser Gruppe stehen in «uhrenboxen-uhrenwerkzeug».",
+   "beispiele": [
+    "Retro Tischuhr – verschiedene Stile",
+    "Wanduhr rechteckig, vertikal – Luxus-Design",
+    "Digitale Nixie-Röhrenuhr mit 6 Röhren",
+    "Grünes Leucht-Zifferblatt für Camouflage-Uhren",
+    "Aluminium-Case für Apple Watch – Schutzschale"
+   ]
+  },
+  {
+   "text": "Uhrenarmbänder, Hüllen und Ladestationen (Google «Watch Accessories», 281 Produkte): nur als Kind «uhrenarmbaender» in die Gruppe «Uhrenzubehör» eingeordnet, nicht neu gebaut. Die vorhandene Kategorie trägt 22 von 281 Titeln (7,8 %), die keine Bänder sind (Schutzhüllen, Gehäuse, Ladestationen). unterhaltung.json baut dafür «uhrenarmbaender-smartwatch» und «smartwatch-zubehoer» sauber neu; beim Zusammenführen ersetzt «uhrenarmbaender-smartwatch» den Menüpunkt «uhrenarmbaender».",
+   "beispiele": [
+    "Smartwatch-Armband aus Milanese-Edelstahl",
+    "Schutzhülle für Apple Watch mit Strasssteinen",
+    "Smartwatch-Ladestation"
+   ]
+  },
+  {
+   "text": "Broschen (54), Schmuck-Sets der Google-Klasse (35), Fuss- und Körperschmuck (22) und Schmuckaufbewahrung (129): vorhandene, nach Google-Klasse gebaute Kategorien mit weniger als 3 % Fremdkörpern (broschen-pins, schmuck-sets, koerper-fussschmuck, schmuckaufbewahrung). Diese Kategorien sind als Kinder eingeordnet und deshalb nicht Teil des Universums.",
+   "beispiele": [
+    "Schleifen-Brosche mit Strass, Blau-Weiss",
+    "Smaragd-Zirkon Schmuck-Set «Vintage» · Ohrringe, Ring & Halskette",
+    "Doppellagige Fusskette mit Zirkon-Anhänger",
+    "Samt Schmuckbox mit grosser Kapazität"
+   ]
+  },
+  {
+   "text": "Schmuck ohne Material-, Stein-, Form- oder Motivwort im Titel (die Lücke der Schmuck-Klassen umfasst 225 Titel, darunter rund 20 Fremdware, siehe übernächster Eintrag): diese Produkte stehen nur in der Gesamt-Kategorie ihrer Art (sub-ringe, sub-ohrringe, sub-armbaender, halsketten-alle). Eine Zuordnung ohne Wort im Titel wäre geraten. Dazu 6 Armbänder mit Badminton- oder Tennisschläger-Motiv, für eine eigene Kategorie zu wenige.",
+   "beispiele": [
+    "Eleganter Ring mit geometrischem Design",
+    "Armband für Herren",
+    "Ohrringe «Barque» – geprägtes Design",
+    "Damen-Ring mit Rindenstruktur",
+    "Delikate Halskette"
+   ]
+  },
+  {
+   "text": "Google-Klasse «Watches», aber nur ein «Armband» im Titel, kein Uhr-Wort (60 Produkte): Sport-Armbänder, Magnet-Armbänder, Lederarmbänder, Geschenksets ohne Uhr. Nicht entscheidbar, ob Uhr, Smartband oder Armband; die Google-Kategorie müsste von Hand korrigiert werden.",
+   "beispiele": [
+    "Wasserdichtes Lederarmband",
+    "Sportliches Silikon-Armband",
+    "Multifunktions-Armband",
+    "Echtes Leder Armband",
+    "Geschenkset für den Freund"
+   ]
+  },
+  {
+   "text": "Fremdware, die Google als Schmuck führt (rund 20 Titel, in keiner Kategorie): Wandlampen in der Klasse «Necklaces», Bikini-Top und Bikini-Anhänger, Weihnachtsstrumpf-Beutel, Auto-Rückspiegel-Anhänger, Hunde-Halskette, Kampfjet-Modellanhänger, Taschenanhänger, Antistatik-Armband, Anstecker, Stift-Set, Kartenetui, Pendel, Mückenabwehr-Armband. Wird die Google-Kategorie korrigiert, fallen sie aus dem Universum.",
+   "beispiele": [
+    "Wandlampe Glas Kürbis",
+    "Bikini-Top mit Pailletten und Halskette",
+    "Donut Auto-Anhänger für Rückspiegel",
+    "MiG-35 Kampfjet-Modellanhänger",
+    "Antistatik-Armband für Herren und Damen"
+   ]
+  },
+  {
+   "text": "Titelwort-Treffer ausserhalb der Schmuck-Google-Klassen (334 Produkte, vom Universum ausgenommen): Schmuckaufbewahrung 105 (gehört zu schmuckaufbewahrung), Tier-Halsbänder 23 (tiere), Smart Rings und Gesundheitsarmbänder 15 (unterhaltung), Bastelbedarf 20 (basteln / «schmuck-selbermachen»), Nagel-Schmuck 17 (beauty), Ladegeräte mit Uhr 13, Lampen, Spielzeug und Taschen mit «Anhänger» oder «Kette» im Titel.",
+   "beispiele": [
+    "Samt-Armband-Aufbewahrungsbeutel",
+    "Halskette für Hunde, Edelstahl, Gold",
+    "Smart Ring mit Gesundheits- und Fitness-Tracking",
+    "Nagel-Schmuck-Set · 13-teilig"
+   ]
+  }
+ ],
+ "hinweise": [
+  "Aufbau: 75 neue Kategorien in 20 Gruppen. Die Gruppen sind nach Achsen getrennt (Schmuck: Art, Material, Form, Motiv, Stil, Herren, Gravur; Uhren: Träger, Uhrwerk, Stil, Armband, Funktion). Innerhalb jeder Gruppe gilt Vorrang statt Überlappung: jede Regel schliesst alles aus, was eine frühere Kategorie derselben Gruppe trifft. Gemessen (Skript /tmp/taxo_b/schmuck-uhren/grp.mjs): 0 Produkte in zwei Verfeinerungen derselben Gruppe. Ausnahme mit Absicht: die Überblicks-Einträge «Alle …» (vorhanden: sub-ringe, sub-ohrringe, sub-armbaender; neu: halsketten-alle, armbanduhren-alle) enthalten die Produkte ihrer Geschwister, wie die Seite «Alle Ringe» die Seite «Silberringe» enthält. Die Gruppenzahl liegt über der Vorgabe von 3 bis 6 je Bereich, weil jede Achse eine eigene Gruppe braucht (sonst wären 8 Kinder je Gruppe überschritten); fürs Menü lassen sich je Schmuckart die Gruppen «Ringe» + «Ringe nach Form», «Ohrringe» + «Ohrringe nach Material» usw. zu einem Menüpunkt mit Zwischenüberschriften bündeln.",
+  "Bewusste Querverweise: Zwischen den Achsen steht ein Produkt in mehreren Gruppen, so wie CJ «Men's Watches > Quartz» führt (Herrenuhr mit Quarzwerk steht bei «herrenuhren» UND bei «quarzuhren»; Silberring mit Zirkonia bei «silberringe» UND in «Herz-Schmuck», wenn der Titel Herz sagt). messen.mjs listet diese Paare als ÜBERLAPP: die Spitzenreiter sind die zwei Sammelkategorien «armbanduhren-alle» und «halsketten-alle» gegen ihre Verfeinerungen, dann herrenuhren + quarzuhren (255), herrenuhren + automatik-mechanische-uhren (181). Das ist Absicht, kein Fehler.",
+  "Abdeckung: 93,8 % des Universums (4 294 von 4 579). Ohne die zwei Sammelkategorien «halsketten-alle» und «armbanduhren-alle» sind es 90,8 %. Universum = Schmuck- und Uhren-Produkte der Google-Klasse «Jewelry» plus Titel-Treffer, ohne Smart-Geräte, Nicht-Uhren und die Klassen, die vorhandene gute Kategorien tragen (siehe «ausserhalb»).",
+  "Ersetzt (Regel 7, Fremdkörper über 3 % oder Titelregel zu eng): «sub-halsketten» (522 aktive Produkte in den Klassen Necklaces und Charms & Pendants, davon 54 nicht in «halsketten-alle»: 20 Schlüssel- und Taschenanhänger, 10 Kombi-Sets, 7 DIY-Teile, 17 Fremdware wie Wandlampen, Bikini-Top und Rückspiegel-Anhänger) durch «halsketten-alle». «uhren-herren» (313 aktive Produkte, Titelregel nur «Herrenuhr», «Herren-Uhr», «Herren Uhr») und «herren-uhren» (325, Mode-Menü Herren) durch «herrenuhren» (976, ohne Smartwatches); «uhren-damen» (52) und «damen-uhren» (53) durch «damenuhren» (121). «chronographen-automatik» (153) durch «chronographen» (54) und «automatik-mechanische-uhren» (260). «holzuhren» (Tag such-holzuhren, 99, nicht im Menü) durch «holzuhren-bambusuhren» (136). «moissanit» (Titelregel, 97 aktive, nicht im Menü) durch «moissanit-ringe» (56) und die Moissanit-Treffer in den Ketten- und Armband-Kategorien; eine Moissanit-Kategorie über alle Arten wurde nicht gebaut (Ohrringe 12, Ketten 14, Armbänder 14 zu klein je Art).",
+  "Alte Sammelbecken, die durch den Baum überflüssig werden: «uhren» (Tag uhren oder Typ Uhren: 3 028 aktive Produkte, davon 2 750 Google-Klasse Watches inklusive Smartwatches und 269 Uhrenarmbänder und Zubehör) und «sub-uhren»; «schmuck-uhren» (Typ-Regel), «herrenuhren-schmuck» (Tag-Regel, nicht im Menü), «wasserfester-schmuck» (Tag wasserfest, 99, nicht im Menü, beruht auf einer Titel-Behauptung), «highlights», «moissanit-schmuck» und «see-und-sonne-wasserfest» (manuell, nicht im Menü). «premium-schmuck» ist manuell (124) und bleibt als Kind der Gruppe «Sets, Broschen & Körperschmuck»; ob er in dieser Gruppe richtig steht, entscheidet der Besitzer.",
+  "Menü-Vorschlag unter «Schmuck»: Ringe (Alle Ringe, Silberringe, Edelstahl- & Titanringe, Moissanit-Ringe, Edelstein- & Geburtsstein-Ringe, Zirkonia- & Strassringe | Sets, Verstellbare) · Ohrringe (Alle Ohrringe, Ohrstecker, Ohrhänger, Creolen/Ohrclips | Silber, Perlen, Zirkonia) · Halsketten & Anhänger (Alle, Perlenketten, Choker, Gliederketten, Anhänger | Silber, Edelstahl, Zirkonia/Moissanit) · Armbänder (Alle, Armreifen, Leder, Perlen/Edelstein, Glieder/Tennis, Kupfer/Magnet, Geflochten | Silber, Edelstahl, vergoldet, Zirkonia) · Für Herren · Gravur & Namen · Motive (Herz, Blumen, Stern, Tier, Glück, Kreuz) · Stile · Sets/Broschen/Körperschmuck · Zubehör. «Uhren» bleibt Oberpunkt wie heute: Armbanduhren (Alle, Herren, Damen, Kinder, Paare, Unisex), nach Uhrwerk, nach Stil, nach Armband, nach Funktion, Uhrenzubehör (Armbänder, Boxen & Werkzeug); Smartwatches und Wearables bleiben in der Gruppe von unterhaltung.json.",
+  "Reihenfolge beim Live-Gang: erst die Titel-Runde (Skill titel-wahrheit), dann diese Kategorien. Die Material-Kategorien (Silber, Edelstahl, Titan, vergoldet, Leder, Perlen, Naturstein) lesen nur den Titel; wird ein Titel wie «S925 Silber» oder «Edelstahl» nach dem Datenblatt geändert, wandert das Produkt beim nächsten Lauf von kategorien_anlegen.mjs von selbst. Die Beschreibungen nennen deshalb keine Eigenschaften wie wasserdicht oder hypoallergen.",
+  "Unterfilter: 121 Chips in 30 Kategorien, jeder Chip einzeln gemessen (mindestens 15 und unter 90 % der Mitglieder der Eltern-Kategorie). Die Sammelkategorien «halsketten-alle» und «armbanduhren-alle» tragen bewusst keine Chips, weil ihre Verfeinerungen schon eigene Kategorien sind. Stil und Stein stehen nur dort als Chip, wo der Titel es sagt.",
+  "Unterschiede zu anderen Dateien: gemessen 0 gemeinsame Produkte mit auto, beauty, computer, handy, haus-bau, sportschuhe, tiere, unterhaltung und wohnen; 1 Produkt mit spielzeug.json (das «DIY Weihnachtsarmband-Set für Kinder» steht in «kinder-malen-basteln» und in «schmuck-selbermachen»). Der Zuschnitt der Uhren folgt der Aufgabenteilung: Smartwatches, Smartbands und Fitness-Armbänder bleiben in unterhaltung.json, klassische Armbanduhren, Taschenuhren, Uhrenboxen und Uhrenwerkzeug sind hier.",
+  "Offen für den Besitzer: (1) «uhrenarmbaender» (vorhanden, 22 Fremdkörper) oder «uhrenarmbaender-smartwatch» (neu in unterhaltung.json) als einziger Band-Menüpunkt. (2) Die zwei Sammelkategorien als Landing-Seiten behalten oder weglassen; ohne sie bleibt die Abdeckung bei 90,8 %. (3) 60 Armband-Titel in der Google-Klasse Watches ohne Uhr-Wort von Hand klären. (4) Gruppen zu Menüpunkten bündeln (siehe oben). (5) Kinderuhren (20) und Paaruhren (33) liegen knapp über der Schwelle von 15 und könnten ebenso als Chips unter «armbanduhren-alle» geführt werden."
+ ]
 }
