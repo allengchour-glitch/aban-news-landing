@@ -13,6 +13,7 @@
  * Mindestgrösse: eine Kategorie lohnt erst ab MIN Produkten. Darunter wird sie nicht angelegt.
  */
 import { istTasseOderBecher, TASSEN_TAG } from './tassen_regel.mjs';
+import { VERENGT } from './kategorien_verengt.mjs';
 
 const BUCH = 'a-zäöüß';
 /** Eigenes Wort: links und rechts kein Buchstabe (ein Bindestrich trennt). */
@@ -118,7 +119,7 @@ const SOLAR_RE = /(^|[^a-zäöüß])solar(?!e([^a-zäöüß]|$))/i;
 const BEZUG_RE = anfang('kissenbezug|kissenbezüge|kissenhülle|kissenüberzug|bezug|bezüge|hülle|überzug|ueberzug');
 const WANDBILD_RE = anfang('wandbild|leinwandbild|poster|gemälde|ölgemälde|kunstdruck|wandtattoo|wandsticker|wandaufkleber|bilderrahmen|fotowand|diamantmalerei-bild|leinwand');
 
-export const KATEGORIEN = [
+const BASIS_KATEGORIEN = [
   // ── Küche & Tisch ──
   { id: 'tassen', handle: 'tassen-becher', titel: 'Tassen & Becher', tag: TASSEN_TAG, min: 15, passt: p => istTasseOderBecher(p.title) },
   { id: 'geschirr', handle: 'geschirr-teller', titel: 'Geschirr & Teller', tag: 'sort-geschirr', min: 15,
@@ -509,6 +510,8 @@ export const KATEGORIEN = [
     eltern: [], nach: null,
     passt: p => wort('retro|vintage').test(p.title) },
 ];
+/** Basis + die auf Tags umgestellten, verengten Alt-Collections (Daten: kategorien_verengt_daten.json). */
+export const KATEGORIEN = [...BASIS_KATEGORIEN, ...VERENGT];
 
 /**
  * Tag-Bereinigungen: entfernen/setzen unabhängig von einer Collection. Jede Regel hat einen Grund (gemessen) und eine Gegenprobe im Test.

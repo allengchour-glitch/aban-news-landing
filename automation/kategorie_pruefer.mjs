@@ -16,29 +16,11 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { regelPasst, mitglieder } from './lib/regel_auswerten.mjs';
 
 const KATALOG = process.env.KATALOG || '/tmp/katalog_voll.json', MIN = Number(process.env.MIN || 20);
 
-const klein = s => String(s || '').toLowerCase();
-/** Wertet EINE Regel auf einem Produkt aus. null = nicht auswertbar. Rein, getestet. */
-export function regelPasst(r, p) {
-  const c = r.column, rel = r.relation, v = klein(r.condition);
-  if (c === 'TAG') { const t = (p.tags || []).map(klein); return rel === 'EQUALS' ? t.includes(v) : rel === 'NOT_EQUALS' ? !t.includes(v) : null; }
-  if (c === 'TITLE') { const t = klein(p.title); return rel === 'CONTAINS' ? t.includes(v) : rel === 'NOT_CONTAINS' ? !t.includes(v) : rel === 'EQUALS' ? t === v : rel === 'STARTS_WITH' ? t.startsWith(v) : rel === 'ENDS_WITH' ? t.endsWith(v) : null; }
-  if (c === 'TYPE') { const t = klein(p.productType); return rel === 'EQUALS' ? t === v : rel === 'NOT_EQUALS' ? t !== v : null; }
-  return null;
-}
-/** Collection-Regel → Mitgliederliste (oder null, wenn eine Regel nicht lokal auswertbar ist). */
-export function mitglieder(ruleSet, produkte) {
-  if (!ruleSet?.rules?.length) return null;
-  const out = [];
-  for (const p of produkte) {
-    const res = ruleSet.rules.map(r => regelPasst(r, p));
-    if (res.includes(null)) return null;
-    if (ruleSet.appliedDisjunctively ? res.some(Boolean) : res.every(Boolean)) out.push(p);
-  }
-  return out;
-}
+export { regelPasst, mitglieder };
 const bereich = p => (p.g || '(ohne)').split(' > ')[0];
 /** Titel-Regel-Collections: Mitglieder aus einem ANDEREN Bereich (Ebene 1) als dem der Mehrheit. Rein, getestet. */
 export function fremdkoerper(mit, schwelle = 0.08) {

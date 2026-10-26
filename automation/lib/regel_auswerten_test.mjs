@@ -1,0 +1,14 @@
+import { regelPasst, passtRegelmenge, mitglieder } from './regel_auswerten.mjs';
+let ok = 0, fehl = 0;
+const ist = (n, a, b) => { if (JSON.stringify(a) === JSON.stringify(b)) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
+const p = { title: 'Mini Reise-Ladegerät', tags: ['Elektronik', 'sort-x'], productType: 'Ladegerät' };
+ist('Titel enthält (gross/klein egal)', regelPasst({ column: 'TITLE', relation: 'CONTAINS', condition: 'REISE' }, p), true);
+ist('Titel enthält nicht', regelPasst({ column: 'TITLE', relation: 'NOT_CONTAINS', condition: 'rucksack' }, p), true);
+ist('Tag gleich', regelPasst({ column: 'TAG', relation: 'EQUALS', condition: 'sort-x' }, p), true);
+ist('Typ gleich', regelPasst({ column: 'TYPE', relation: 'EQUALS', condition: 'ladegerät' }, p), true);
+ist('unbekannte Spalte → null', regelPasst({ column: 'VARIANT_PRICE', relation: 'GREATER_THAN', condition: '5' }, p), null);
+ist('ODER', passtRegelmenge({ appliedDisjunctively: true, rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'koffer' }, { column: 'TITLE', relation: 'CONTAINS', condition: 'reise' }] }, p), true);
+ist('UND mit Ausschluss', passtRegelmenge({ appliedDisjunctively: false, rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'reise' }, { column: 'TITLE', relation: 'NOT_CONTAINS', condition: 'lade' }] }, p), false);
+ist('Gegenprobe: nicht auswertbar bricht die ganze Liste', mitglieder({ appliedDisjunctively: false, rules: [{ column: 'VARIANT_PRICE', relation: 'LESS_THAN', condition: '5' }] }, [p]), null);
+ist('Liste', mitglieder({ appliedDisjunctively: true, rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'reise' }] }, [p, { title: 'Hut', tags: [] }]).length, 1);
+console.log(`${ok} ok, ${fehl} Fehler`); process.exit(fehl ? 1 : 0);
