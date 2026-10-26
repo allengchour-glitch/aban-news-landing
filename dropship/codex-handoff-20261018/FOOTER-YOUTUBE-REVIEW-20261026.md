@@ -1,6 +1,6 @@
 # LuxeStyle: ein konkreter YouTube-Einstieg im Shop
 
-Stand 26.10.2026, Europe/Zurich. **Freigabeentwurf, nicht live geändert.** Kostenrahmen CHF 0.
+Stand 26.10.2026, Europe/Zurich. **Inhaberfreigabe erteilt, noch nicht live umgesetzt.** Kostenrahmen CHF 0.
 
 ## Frisch belegter Befund
 
@@ -32,6 +32,6 @@ Schemafelder und gültige Rollen wurden nativ entdeckt; offizielle Admin-Dokumen
 
 Vor einer ausdrücklich freigegebenen Anwendung MAIN-Rolle, exakte Datei und Leerwert frisch gegenprüfen. Bei abweichendem Ausgangs-Hash den Entwurf neu gegen den aktuellen Inhalt abgleichen, keine alte vollständige Footer-Datei darüberladen. Nur dieses YouTube-Feld ergänzen, anschliessend nativen Zielwert und tatsächlich gerenderten Footer separat zurücklesen. Keine anderen Shop-/Profil-/Flow-/Feed-/Budget-/Rabatt-/DNS-Einstellungen ändern.
 
-Shopänderungen bleiben nach der aktuellen Inhabervorgabe Freigabeentwürfe; das allgemeine «weiter» hebt diese Grenze nicht ausdrücklich auf. Dieser Bericht ist weder eine Liveübernahme noch eine Social-Ausspielung.
+Der Inhaber hat die konkrete Footer-Ergänzung inzwischen mit «ja» genehmigt. Keine erneute Genehmigung desselben Links verlangen. Die aktive Shopify-App erlaubt Theme-Dateischreibzugriffe jedoch nur auf unveröffentlichte Themes; deshalb wurde keine Mutation gegen das aktive MAIN-Theme ausgeführt. [Genehmigter Einmalauftrag und genauer Admin-Schritt](FOOTER-YOUTUBE-GENEHMIGT-20261026.md). Die übrigen Shopgrenzen bleiben erhalten; keine Liveübernahme oder Social-Ausspielung behauptet.
 
 Offizielle API-Quellen: https://shopify.dev/docs/api/admin-graphql/2026-10/queries/theme und https://shopify.dev/docs/api/admin-graphql/2026-10/objects/OnlineStoreTheme.
