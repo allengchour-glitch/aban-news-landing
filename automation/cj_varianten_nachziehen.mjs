@@ -32,6 +32,7 @@ import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { lieferurteil } from './lib/lieferbarkeit.mjs';
 import { strategien } from './lib/fakten_block.mjs';
 import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_varianten.mjs';
+import { steckerUrteil } from './lib/stecker_cj.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
 
@@ -139,8 +140,13 @@ export async function plane({ q, cj, handle, tmp }) {
   // Dieselbe CJ-Antwort braucht später der Fakten-Block und der Textauftrag: einmal zahlen, zweimal nutzen (gleicher Pfad wie cj_fakten_block.mjs).
   if (c?.pid) { try { mkdirSync('/tmp/cj_fakten_cache', { recursive: true }); const f = `/tmp/cj_fakten_cache/${handle}.json`; if (!existsSync(f)) writeFileSync(f, JSON.stringify(c)); } catch { /* Zwischenspeicher ist nur eine Hilfe */ } }
   if (!c) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ ohne Daten (code ${res.code})` };
-  const vs = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
+  const vsRoh = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
     bild: v.variantImage || '', laenge: v.variantLength, breite: v.variantWidth, hoehe: v.variantHeight }));
+  // Fremdstecker (US/UK/AU/JP) nie anlegen: die Schweizer Steckdose nimmt nur den Euro-Stecker. Der CJ-Schlüssel «White-US» wurde sonst zur Farbe «Weiss» (26.10.: 34 Produkte, 85 Varianten live).
+  const stecker = steckerUrteil(vsRoh.map(v => ({ id: v.vid, sku: v.sku })), Object.fromEntries(vsRoh.map(v => [v.sku, v.key])));
+  if (stecker.draft) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `nur Fremdstecker (US/UK/AU/JP) bei CJ — nicht für die Schweiz (${vsRoh.length} Varianten)` };
+  const weg = new Set(stecker.loeschen);
+  const vs = vsRoh.filter(v => !weg.has(v.vid));
   if (vs.length <= 1) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
   // Shopify erlaubt nur ~9 500 NEUE Varianten pro Tag: ein Produkt mit 84 Varianten kostet so viel wie zwölf normale. Grosse Produkte kommen später (MAX_VARIANTEN=100 erlaubt alle).
   const MAXV = Number(process.env.MAX_VARIANTEN || 40);
@@ -304,7 +310,7 @@ async function main() {
       }
       if (plan.ergebnis !== 'PLAN') {
         zaehl[plan.ergebnis] = (zaehl[plan.ergebnis] || 0) + 1; console.log(h, '→', plan.ergebnis, '|', plan.grund);
-        if (LIVE && plan.ergebnis === 'UEBERSPRUNGEN' && /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung)/.test(plan.grund || ''))
+        if (LIVE && plan.ergebnis === 'UEBERSPRUNGEN' && /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung|nur Fremdstecker)/.test(plan.grund || ''))
           appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · UEBERSPRUNGEN · ${String(plan.grund).slice(0, 100)}\n`);
         continue;
       }
