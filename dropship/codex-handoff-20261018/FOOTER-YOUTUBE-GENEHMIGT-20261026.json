@@ -42,5 +42,29 @@
     "social": 0,
     "dns": 0
   },
-  "remainingStep": "Authenticated owner sets only this existing YouTube URL field in Shopify Admin and saves; source and rendered link then require confirmation. Permission remains valid."
+  "remainingStep": "Authenticated owner sets only this existing YouTube URL field in Shopify Admin and saves; source and rendered link then require confirmation. Permission remains valid.",
+  "documentedFollowupChecks": [
+    {
+      "recordedAtUtc": "2026-10-26T13:19:16.293165+00:00",
+      "dateEuropeZurich": "2026-10-26",
+      "themeId": "gid://shopify/OnlineStoreTheme/187533001089",
+      "role": "MAIN",
+      "youtubeValue": "",
+      "expectedValue": "https://www.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA",
+      "nativeMd5": "368187170859033dc70fce5fa332ce27",
+      "sourceSha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+      "publicStatus": 200,
+      "publicTruncated": false,
+      "publicBytesRead": 2825289,
+      "publicSourceSha256": "4fd9fc0352f7bc1ef575530c71bc8e2018e2d26706ca4a6bd73bb398952f9225",
+      "expectedYouTubeFooterAnchors": 0,
+      "state": "OWNER_APPROVED_NOT_APPLIED_TOOL_MAIN_LIMIT",
+      "actualThemeWriteAttempted": false,
+      "liveThemeWrites": 0,
+      "profileWrites": 0,
+      "socialWrites": 0,
+      "ownerApprovalRetained": true,
+      "metricsReread": false
+    }
+  ]
 }
