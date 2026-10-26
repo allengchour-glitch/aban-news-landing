@@ -1,0 +1,112 @@
+{
+  "scope": "LuxeStyle review drafts and read evidence only; no live import or publication queue",
+  "classification": {
+    "product_rows": 56630,
+    "unique_product_ids": 56630,
+    "classification_counts": {
+      "NOT_SHORT": 5548,
+      "SHORT": 40239,
+      "VERY_SHORT": 10843
+    },
+    "short_candidates_all_retained": 51082,
+    "manual_review_rows": 205,
+    "ABAN_reference_rows": 0,
+    "input_sha256": "481c98a41cd614a50b0bd7b5ff4a52e5845f10b10a8310bc0710ac42f271c994",
+    "download_job_id": "gid://shopify/BulkOperation/12824880382343"
+  },
+  "draftGeneration": {
+    "completedAtUtc": "2026-10-26T07:07:19.489789+00:00",
+    "status": "COMPLETE_REVIEW_ONLY",
+    "shop": "luxestyle.ch",
+    "sourceProductCount": 56630,
+    "shortCandidatesAssessed": 51082,
+    "sourceExportSha256": "481c98a41cd614a50b0bd7b5ff4a52e5845f10b10a8310bc0710ac42f271c994",
+    "sourceDatabaseSha256": "f2189b7f7111d1d4f3e99e0c4b295bc7f2bfb3294c5abed59aa09db05b741e4a",
+    "generatorVersion": "selection-review-v1.0.1",
+    "generatorSha256": "b871024ea9097cf3185bcc3fbc9240766a06f47c743dd0957b3b7b0200dcee93",
+    "decisions": {
+      "BLOCKED_NEEDS_SOURCE": 32731,
+      "MANUAL_DRAFT_REVIEW_ONLY": 4,
+      "SELECTION_DRAFT_REVIEW_ONLY": 18180,
+      "MANUAL_SOURCE_REVIEW": 167
+    },
+    "reasonCounts": {
+      "NO_NEW_GROUNDED_SELECTION_HELP": 32718,
+      "SOURCE_MATCHED_VISUAL_REVIEW_DRAFT": 4,
+      "NEW_EXACT_OPTION_LABEL_HELP": 18180,
+      "AUDIT_ROUTING_FLAGS": 167,
+      "ACTIVE_SOURCE_HTML_REQUIRES_MANUAL_REVIEW": 1,
+      "ACTIVE_SOURCE_HTML_REQUIRES_MANUAL_REVIEW|NO_NEW_GROUNDED_SELECTION_HELP": 12
+    },
+    "inheritedSourceFlagCounts": {
+      "EXISTING_MATERIAL_OR_CARE_CLAIM": 7669,
+      "EXISTING_SERVICE_OR_SUCCESS_CLAIM": 18158,
+      "EXISTING_PHYSICAL_OR_PERFORMANCE_CLAIM": 5676,
+      "EXISTING_COMPATIBILITY_OR_PACKAGE_CLAIM": 1090,
+      "EXISTING_MEDICAL_OR_SAFETY_CLAIM": 83,
+      "TECHNICAL_LABELS_ARE_NOT_VERIFIED_SPECIFICATIONS": 1155,
+      "EXISTING_REVIEW_OR_GUARD_TAG": 8577,
+      "CLAIM_LIKE_OPTION_LABEL_REQUIRES_SOURCE": 23
+    },
+    "manualDrafts": [
+      {
+        "productId": "gid://shopify/Product/15408458170753",
+        "name": "schubladen",
+        "beforeSha256": "6160fad7476c39422b93f7f04c8ad0a9e2a92a2888465c1694a2ec5a1ce8bf72",
+        "afterSha256": "2ec3e464ab8cea93c31f4cda9c45a1b683e47a95e0c3c92ce4f03d7ba553aa44",
+        "reviewPath": "organizer-quellen/schubladen/AFTER.html"
+      },
+      {
+        "productId": "gid://shopify/Product/15408458236289",
+        "name": "kosmetik",
+        "beforeSha256": "a9100c7847375c68dba273ca5531845b4311b7845c45896f7880623e38f1cc61",
+        "afterSha256": "30490bcb988d82b7ccca7cf3f8cff51512ae09ded386580653dd636f79c4b093",
+        "reviewPath": "organizer-quellen/kosmetik/AFTER.html"
+      },
+      {
+        "productId": "gid://shopify/Product/16603335754119",
+        "name": "trenchcoat",
+        "beforeSha256": "271cb88215210b259b1d549af75ec9e98374c2f69ab54f3c7df02650f8e281a6",
+        "afterSha256": "c8922da85f1b0df162251ebc91e19479c5901efffc8e96d6d0ce10571cd96963",
+        "reviewPath": "trenchcoat/after.html"
+      },
+      {
+        "productId": "gid://shopify/Product/15450856292737",
+        "name": "haengematte",
+        "beforeSha256": "ea2a6b86489abf4468a3bd4d98b082c2f373501e1c4ffdcf7a05f12c710a8826",
+        "afterSha256": "a01b4de2ca0d954f9097b42af0ea1cdb1c69149c0b629d6dd5db41460d8b2c76",
+        "reviewPath": "haengematte/AFTER.html"
+      }
+    ],
+    "fullDescriptionsRewrittenAutomatically": 0,
+    "liveProductWrites": 0,
+    "selectionDraftMeaning": "Limited exact option-label selection help; not full rewrites, publication approval or independently verified existing claims."
+  },
+  "completeIntegrityReview": {
+    "status": "PASS_LOCAL_INTEGRITY_NOT_CONTENT_APPROVAL",
+    "checkedAtUtc": "2026-10-26T07:10:05.815929+00:00",
+    "sourceRowsAndIdsAndHtmlAndHashesVerified": 56630,
+    "allShortCandidatesAccountedForExactlyOnce": 51082,
+    "selectionDraftsWithExactSourceAndFactPaths": 18180,
+    "sourceMatchedManualDrafts": 4,
+    "blockedOrManualSourceCases": 32898,
+    "liveProductWrites": 0,
+    "limits": [
+      "Automated copy has not received individual human creative approval.",
+      "Inherited source claims and model/package gaps remain unverified.",
+      "A later live application must re-read source and compare hashes.",
+      "Missing independent agent final reviews due session quota; root completed code, fixture and full integrity review."
+    ]
+  },
+  "localArchive": {
+    "path": "/workspace/luxestyle-review/LuxeStyle-Produkttexte-und-Tagespaket-20261026.zip",
+    "bytes": 38453265,
+    "sha256": "7f4edf8d54326a6a87b6e77ab6a486616d9b78be1cbc02651a6da295fcc88ffb",
+    "files": 107,
+    "crcReadback": "PASS",
+    "signedDownloadLocationExcluded": true,
+    "durableRetention": "Local/download artifact, not claimed as complete durable GitHub storage"
+  },
+  "sourceConflict": "# Quelländerung erkannt: früheren Diff nicht anwenden\n\nDer erste native Produktread für diesen Textentwurf und der spätere vollständige Produktleseexport weichen ab. Ein erneuter nativer Read bestätigt den späteren Exporttext. Der Unterschied ist eine inzwischen hinzugefügte technische Datentabelle; diese Ergänzung stammt nicht aus diesem Codex-Lauf.\n\n- Produkt: gid://shopify/Product/15411554320769.\n- Früherer BEFORE-SHA256: 3b504d1f57516acd0883aaaea26c5f65c14f46df583d46a4576c76e8034204ec.\n- Aktueller Export- und Gegenprobe-SHA256: 32e62356692c0e30022700a557e807564c401bdf157dfd730ee536988eb279e0.\n\nDer ursprüngliche AFTER-Text und Diff bleiben als historische lokale Vorarbeit erhalten. Sie sind nicht für den aktuellen Quellstand freigegeben und wurden nicht in die vier quellgleichen manuellen Textvorschläge des Sammelpakets übernommen. Die neue Tabelle nicht versehentlich entfernen oder als eigene Umsetzung zählen.\n\nDie Tabelle nennt unter anderem PP/ABS, 600 g, 168.5 mm, 215 mm und 400 ML als Lieferantendaten. Das Vorhandensein dieser Tabelle ist bestätigt; die genaue Zuordnung der Daten und unterschiedlichen Bilder zur Default-Ausführung ist damit nicht unabhängig geprüft. Nächster Schritt: passenden Produkt-/Variantenbeleg abgleichen und erst danach den Text auf den aktuellen HTML-Stand neu aufsetzen.\n",
+  "repoFileScope": "Summary, exact four manual drafts, current daily evidence, UTM diff, generator module/test and hashes; large source/batch files are in the local archive."
+}
