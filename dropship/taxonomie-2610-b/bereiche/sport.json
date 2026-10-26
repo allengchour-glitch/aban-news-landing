@@ -68,7 +68,7 @@
    "titel_nicht": [
     "helm(e|en|s)?(?![a-zäöüß])",
     "tasche",
-    "sattel",
+    "sattel mit rücklicht",
     "schloss",
     "pumpe",
     "uhr",
@@ -209,10 +209,7 @@
     "sattel|sattelstütze|pedal|lenker|schaltauge|kassette|schnellspanner|kurbel|bidonhalter|griff|vorbau|ratsche|nabe|schloss|halterung|ständer|wandhalter|klingel|glocke|hupe|spiegel|computer|tacho|abdeckung|schutzhülle|kindersitz|stoppuhr|stopuhr|schutzfolie|motor|schweissfänger|schutz|kraftrad|pedal"
    ],
    "titel_nicht": [
-    "licht",
-    "rücklich",
-    "lampe",
-    "leucht(?!pedal)",
+    "^(?!.*(sattel|pedal)).*(licht|rücklich|lampe|leucht)",
     "tasche",
     "beutel",
     "helm(e|en|s)?(?![a-zäöüß])",
@@ -220,8 +217,6 @@
     "kettennieter",
     "kettenzange",
     "kurbelabzieher",
-    "hupe mit licht",
-    "alarm-hupe",
     "blinker"
    ],
    "beschreibung": "Teile und Zubehör fürs Velo: Sättel, Pedale, Lenker, Griffe, Schlösser, Halterungen, Klingeln, Spiegel, Fahrradcomputer und Abdeckungen.",
@@ -260,7 +255,7 @@
     "Sporting Goods > Exercise & Fitness"
    ],
    "titel_muss": [
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
    ],
    "titel_nicht": [
     "matte",
@@ -268,8 +263,6 @@
     "bauchtrainer",
     "uhrenarmband",
     "push-up",
-    "yoga-strap",
-    "yoga stretch-strap",
     "outdoor-tools",
     "gummiband für yoga",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
@@ -301,7 +294,7 @@
     "Sporting Goods > Exercise & Fitness"
    ],
    "titel_muss": [
-    "springseil|sprungseil|seilspringen|skipping|schwungseil|trainingsseil|fitness-?seil"
+    "springseil|sprungseil|seilspringen|skipping|schwungseil|trainingsseil|fitness-?seil|leatherreep"
    ],
    "titel_nicht": [
     "golf",
@@ -374,10 +367,9 @@
     "Sporting Goods > Athletics > Gymnastics"
    ],
    "titel_muss": [
-    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance"
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance|gegengewichts|fitness-?ball"
    ],
    "titel_nicht": [
-    "wasserball",
     "tennis power chain",
     "yogamatte",
     "yoga-matte",
@@ -394,7 +386,7 @@
     "Sporting Goods > Exercise & Fitness"
    ],
    "titel_muss": [
-    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt"
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt"
    ],
    "titel_nicht": [
     "hose",
@@ -405,7 +397,7 @@
     "widerstand",
     "resistance",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
    ],
    "beschreibung": "Zubehör fürs Krafttraining: Gewichthebergürtel, Handschuhe, Handgelenkbandagen, Zughilfen und Polster für Hantelstangen.",
    "unterfilter": []
@@ -417,14 +409,14 @@
     "Sporting Goods > Exercise & Fitness"
    ],
    "titel_muss": [
-    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen"
+    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen|bauchformung|bauchgurt mit griff"
    ],
    "titel_nicht": [
     "hantel",
     "hose",
     "gewichtheb",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
-    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
    "beschreibung": "Taillentrainer, Taillen-Twister, Trainingsgürtel und Hula-Hoop-Reifen für Rumpf- und Bauchtraining zu Hause.",
@@ -461,11 +453,11 @@
     "zugseil",
     "expander",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
     "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
-    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance",
-    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness gürtel|fitness-gürtel|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
-    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen"
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance|gegengewichts|fitness-?ball",
+    "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
+    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen|bauchformung|bauchgurt mit griff"
    ],
    "beschreibung": "Hand-, Arm-, Brust- und Beintrainer, Pedaltrainer, Heimtrainer und Ganzkörper-Fitnessgeräte für das Training zu Hause.",
    "unterfilter": []
@@ -477,7 +469,7 @@
     "Sporting Goods"
    ],
    "titel_muss": [
-    "^(?!.*(tasche|handtuch|gummiband|bauch|seilspringen|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)"
+    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)"
    ],
    "titel_nicht": [
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
@@ -512,15 +504,12 @@
     "massage",
     "yoga-?rolle",
     "yoga-säule",
-    "ball(?![a-zäöüß])",
     "hantel",
-    "armreif",
-    "pull back trainer",
     "board",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap",
-    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance",
-    "^(?!.*(tasche|handtuch|gummiband|bauch|seilspringen|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
+    "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance|gegengewichts|fitness-?ball",
+    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
     "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
     "faszien|foam ?roller|massage-?(roller|rolle|ball|kugel|stab)|yoga-?(roller|rolle|säule)|schaumstoff-?rolle|peanut|pilates rolle|muskelentspannung|muskel-?massage"
    ],
@@ -549,7 +538,7 @@
     "hantel",
     "bluetooth lautsprecher",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)|stretch-?strap"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
    ],
    "beschreibung": "Faszienrollen, Massagebälle und Schaumstoffrollen zum Lockern und Dehnen nach dem Training, teils mit Noppen oder Vibration.",
    "unterfilter": []
@@ -627,16 +616,13 @@
     "seidenstrumpf",
     "neugeboren",
     "pucksack",
-    "zelt",
+    "schlafsackzelt",
     "sofa",
     "hängematte",
     "kleber",
-    "reparatur",
-    "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
-    "(^|[^a-zäöüß])tent(?![a-zäöüß])",
-    "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)"
+    "reparatur"
    ],
-   "beschreibung": "Schlafsäcke, Isomatten, Schlafpads und aufblasbare Luftbetten für Camping, Trekking und die Autoreise.",
+   "beschreibung": "Schlafsäcke, Isomatten, Schlafpads, Feldbetten und aufblasbare Luftbetten für Camping, Trekking und die Autoreise.",
    "unterfilter": []
   },
   {
@@ -813,8 +799,7 @@
     "Health & Beauty > Personal Care > Cosmetics",
     "Furniture > Baby & Toddler Furniture",
     "Home & Garden > Decor",
-    "Luggage & Bags",
-    "Apparel & Accessories"
+    "Luggage & Bags"
    ],
    "titel_nicht": [
     "stirn",
@@ -827,7 +812,6 @@
     "toaster",
     "ladegerät",
     "kohlenmonoxid",
-    "tasche",
     "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
     "(^|[^a-zäöüß])tent(?![a-zäöüß])",
     "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)",
@@ -838,7 +822,7 @@
     "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)",
     "picknick|kühlbox|kühlboxen"
    ],
-   "beschreibung": "Campinglampen und -laternen, Lichterketten, Duschen, Heizer, Ventilatoren und weiteres Zubehör für den Zeltplatz.",
+   "beschreibung": "Campinglampen und -laternen, Lichterketten, Campingtaschen, Duschen, Heizer, Ventilatoren und weiteres Zubehör für den Zeltplatz.",
    "unterfilter": []
   },
   {
@@ -992,8 +976,7 @@
     "bauchtrainer",
     "sandsack",
     "resistance",
-    "boxer-style",
-    "boxen\\b"
+    "boxer-style"
    ],
    "beschreibung": "Boxhandschuhe, Boxsäcke, Pratzen, Schlagpolster und Schutzausrüstung für Boxen, Taekwondo, Muay Thai und andere Kampfsportarten.",
    "unterfilter": []
@@ -1031,9 +1014,7 @@
    "titel_muss": [
     "tischtennis|tennis|badminton|padel|squash|pickleball|federball|schläger|ping ?pong|racket|racquet"
    ],
-   "titel_nicht": [
-    "balance board"
-   ],
+   "titel_nicht": [],
    "beschreibung": "Schläger, Bälle, Netze, Griffbänder und Taschen für Tischtennis, Tennis, Badminton und Padel.",
    "unterfilter": []
   },
@@ -1077,7 +1058,11 @@
     "überzug",
     "taktisch",
     "arbeits",
-    "schweisser"
+    "schweisser",
+    "fahrrad",
+    "velo(?!urs)",
+    "shorts",
+    "patella"
    ],
    "beschreibung": "Schutzhelme für Skifahren, Skateboard, Reiten und Wassersport sowie Knie-, Ellbogen- und Handgelenkschoner und Mundschutz.",
    "unterfilter": [

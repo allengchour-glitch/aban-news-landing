@@ -1,0 +1,353 @@
+{
+ "bereich": "hobby-party",
+ "titel": "Hobby, Party & Kreatives",
+ "menue": {
+  "oben": "Sport & Party (Party) und Wohnen & Garten > Basteln & DIY (Hobby)"
+ },
+ "universum": {
+  "g_prefix": [
+   "Arts & Entertainment",
+   "Home & Garden > Decor > Artificial Flora",
+   "Home & Garden > Decor > Dried Flowers"
+  ],
+  "titel_muss": [],
+  "g_nicht": [],
+  "titel_nicht": [
+   "weihnacht|halloween|advent"
+  ]
+ },
+ "kategorien": [
+  {
+   "handle": "malen-nach-zahlen-sets",
+   "titel": "Malen nach Zahlen",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Drawing & Painting Kits"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(aquarell|wasserfarb|zeichen|skizzier|kohle|buntstift|filzstift|marker)"
+   ],
+   "beschreibung": "Malsets zum Ausmalen nach Nummern: Leinwand mit vorgedrucktem Motiv, nummerierte Farben und Pinsel, mit oder ohne Rahmen."
+  },
+  {
+   "handle": "mal-zeichenbedarf",
+   "titel": "Malen & Zeichnen: Farben, Pinsel & Sets",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(pinsel|aquarell|wasserfarb|acryl-?(farb|mal)|farben?|malfarb|malset|mal- und|zeichen|skizz|kohle|spachtel|palette|staffelei|buntstift|filzstift|marker|ölfarb|kreide|tusche)"
+   ],
+   "titel_nicht": [
+    "diamond|diamant|nach zahlen|stick|kreuzstich|garn|stoff|harz|epoxy|nagel|sticker|aufkleber|digital"
+   ],
+   "beschreibung": "Aquarell- und Acrylfarben, Pinsel, Spachtel sowie Mal- und Zeichensets zum Malen und Skizzieren."
+  },
+  {
+   "handle": "stempel-schablonen-praegen",
+   "titel": "Stempel, Schablonen & Prägewerkzeug",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(stanz|stempel|prägestab|präge|schablone|vorlage|mandala|embossing|ziehplatte)"
+   ],
+   "titel_nicht": [
+    "stickvorlage|diamond|diamant"
+   ],
+   "beschreibung": "Stanzschablonen, Stempel, Mandala-Vorlagen und Prägewerkzeug für Papier, Leder und Ton."
+  },
+  {
+   "handle": "bastelsets-diy-kits",
+   "titel": "Bastelsets & DIY-Kits",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits"
+   ],
+   "g_nicht": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Mosaic Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Drawing & Painting Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Jewelry Making Kits"
+   ],
+   "titel_nicht": [
+    "diamond|diamant|nach zahlen|stick|kreuzstich|stricken|häkel|nähset|kerze|harz|epoxy"
+   ],
+   "beschreibung": "Komplette Bastelsets mit Material zum Selbermachen: Papier- und Quilling-Sets, Leder-Bastelsets, Fadenbilder und saisonale DIY-Kits."
+  },
+  {
+   "handle": "baender-borten-verzierungen",
+   "titel": "Bänder, Borten & Verzierungen",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Ribbons & Trim",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Appliques & Patches",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Bows & Yo-Yos",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Elastic",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Rhinestones & Flatbacks",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Loose Stones",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Crafting Adhesives & Magnets > Decorative Tape"
+   ],
+   "beschreibung": "Satin-, Samt- und Geschenkbänder, Borten, Aufnäher, Schleifen, Strasssteine und Washi-Tape zum Verzieren und Gestalten."
+  },
+  {
+   "handle": "bastelwerkzeug-schneiden-kleben",
+   "titel": "Bastelwerkzeug: Scheren, Kleber & Co",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools"
+   ],
+   "g_nicht": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Textile Craft Machines",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Thimbles",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Thread & Yarn Tools",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Frames, Hoops",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Art Brushes",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Color Mixing Tools",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Stencils",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile"
+   ],
+   "titel_nicht": [
+    "diamond|diamant|nähmaschine|sticknadel|häkel|stick|nähen|pinsel|schablone|stanz|stempel|prägestab|mandala"
+   ],
+   "beschreibung": "Scheren, Cutter, Heissklebepistolen, Pinzetten und weiteres Werkzeug zum Schneiden, Kleben und Gestalten."
+  },
+  {
+   "handle": "kunstleder-lederhandwerk",
+   "titel": "Kunstleder & Lederhandwerk",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])([a-zäöüß-]*leder[a-zäöüß-]*|lederimitat|nappa)"
+   ],
+   "g_nicht": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Textiles",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits"
+   ],
+   "titel_nicht": [
+    "schuhe|sofa|lederarmband"
+   ],
+   "beschreibung": "Kunstleder und Lederimitat als Meterware sowie Werkzeug zum Schneiden, Prägen und Nähen von Leder."
+  },
+  {
+   "handle": "kerzen-seifenformen",
+   "titel": "Kerzen- & Seifenformen",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Crafting Patterns & Molds"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(kerze|seife|duft|aromatherapie|wachs)"
+   ],
+   "beschreibung": "Silikon- und Kunststoffformen zum Giessen von Kerzen, Seife und Duftsteinen."
+  },
+  {
+   "handle": "stoffe-meterware",
+   "titel": "Stoffe & Meterware",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Textiles"
+   ],
+   "titel_nicht": [
+    "leder"
+   ],
+   "beschreibung": "Baumwoll-, Leinen-, Twill- und Jacquardstoffe sowie Spezialstoffe als Meterware zum Nähen und Basteln."
+  },
+  {
+   "handle": "stickpackungen-kreuzstich",
+   "titel": "Stickpackungen & Kreuzstich",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Frames, Hoops & Stretchers",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Crafting Patterns & Molds > Needlecraft Patterns"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(stick|kreuzstich|punch ?needle|nadelkunst|rahmen)"
+   ],
+   "titel_nicht": [
+    "häkel|strick"
+   ],
+   "beschreibung": "Stickpackungen, Kreuzstich-Sets, Punch-Needle-Sets und Stickrahmen mit Vorlage und Garn."
+  },
+  {
+   "handle": "naehzubehoer-naehmaschinen",
+   "titel": "Nähmaschinen & Nähzubehör",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Textile Craft Machines",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tool Accessories",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Craft Organization",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Hand-Sewing Needles",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Thimbles",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Craft Fasteners & Closures"
+   ],
+   "titel_nicht": [
+    "stricknadel|häkel|diamond|diamant"
+   ],
+   "beschreibung": "Nähmaschinen, Nähfüsse, Nähboxen, Nadeln, Fingerhüte, Nählineale sowie Klett-, Reissverschluss- und Druckknopf-Zubehör."
+  },
+  {
+   "handle": "garn-wolle-haekeln-stricken",
+   "titel": "Garn, Wolle, Häkeln & Stricken",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Crafting Fibers",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Thread & Yarn Tools",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(garn|wolle|häkel|strick|faden|fäden|stickgarn|amigurumi|nadelset|vlies)"
+   ],
+   "titel_nicht": [
+    "sticknadel|kreuzstich|stickrahmen|stickset|sticken-kit|punch"
+   ],
+   "beschreibung": "Garn, Wolle, Häkelnadeln, Stricknadeln und Häkel- oder Strick-Sets für Mützen, Schals und Amigurumi."
+  },
+  {
+   "handle": "musikinstrumente-trommeln-kalimba",
+   "titel": "Musikinstrumente",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(saite|saiten|plektr|gurt|nagel|potenziometer|zubehör|pickup|schlagbrett|dämpfer)"
+   ],
+   "beschreibung": "Stahlzungentrommeln, Kalimbas, Handtrommeln, Klangspiele und elektronische Instrumente zum Musizieren."
+  },
+  {
+   "handle": "gitarren-zubehoer",
+   "titel": "Gitarren-Zubehör",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > String Instrument Accessories",
+    "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(gitarr|ukulele|saiten|plektr|kapodaster|bass-)"
+   ],
+   "titel_nicht": [
+    "trommel|drum|kalimba|piano|klavier"
+   ],
+   "beschreibung": "Saiten, Plektren, Kapodaster, Ständer, Pickups, Gurte und Taschen für Gitarre, Bass und Ukulele."
+  },
+  {
+   "handle": "instrumenten-zubehoer-noten",
+   "titel": "Noten, Stimmen & weiteres Instrumenten-Zubehör",
+   "g_prefix": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories"
+   ],
+   "g_nicht": [
+    "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > String Instrument Accessories > Guitar"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(gitarr|ukulele|plektr|kapodaster)"
+   ],
+   "beschreibung": "Notenständer, Stimmgeräte, Klavier- und Schlagzeug-Zubehör, Schutzhüllen und Halterungen für verschiedene Instrumente."
+  },
+  {
+   "handle": "geschenkboxen-verpackung",
+   "titel": "Geschenkboxen & Verpackung",
+   "g_prefix": [
+    "Arts & Entertainment > Party & Celebration > Gift Giving",
+    "Arts & Entertainment > Party & Celebration > Party Supplies",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(geschenk(box|boxen|beutel|tüte|tüten|säckli|verpackung|band|papier)|[a-zäöüß]*-geschenkbox|kistchen|verpackungsbox)"
+   ],
+   "titel_nicht": [
+    "weihnacht|halloween|advent"
+   ],
+   "beschreibung": "Geschenkboxen, Geschenkbeutel, Geschenkband und Verpackungen zum Verschenken von Schmuck, Kleinigkeiten und Hochzeitsgeschenken."
+  },
+  {
+   "handle": "kunstblumen-kraenze-girlanden",
+   "titel": "Kunstblumen, Kränze & Girlanden",
+   "g_prefix": [
+    "Home & Garden > Decor > Artificial Flora",
+    "Home & Garden > Decor > Dried Flowers",
+    "Home & Garden > Decor > Wreaths & Garlands",
+    "Arts & Entertainment > Party & Celebration > Party Supplies"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(kunstblume|künstliche[a-zäöüß]* (blume|blüte|tulpe|rose)|trockenblume|blumenstr|rosenstr|rosengesteck|gesteck|kranz|girlande|arrangement|bouquet|eukalyptus|ewige rose|seifenblume|gipsblume|blumen)"
+   ],
+   "titel_nicht": [
+    "weihnacht|halloween|advent|osterhase|ostern|gestrickt|bausteine"
+   ],
+   "beschreibung": "Kunst- und Trockenblumen, Blumensträusse, Türkränze und Girlanden für Tisch, Tür und Wand."
+  },
+  {
+   "handle": "party-licht-effekte-zubehoer",
+   "titel": "Partyzubehör & Lichteffekte",
+   "g_prefix": [
+    "Arts & Entertainment > Party & Celebration"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(strobe|stroboskop|nebel|rauch|ballon|pompon|banner|tortenbox|cake ?box|pong|trinkhalm|strohhalm|konfetti|partyhut|glückwunschkarte|laterne|windlicht|fächer)"
+   ],
+   "titel_nicht": [
+    "weihnacht|halloween|advent"
+   ],
+   "beschreibung": "Stroboskop- und Nebelgeräte, Ballons und Pumpen, Pompons, Banner, Tortenboxen und Partyspiele für Geburtstag und Feier."
+  }
+ ],
+ "gruppen": [
+  {
+   "titel": "Malen, Zeichnen & Mosaik",
+   "handle": "malen-zeichnen-mosaik-gruppe",
+   "kinder": [
+    "malen-nach-zahlen-sets",
+    "diamond-painting",
+    "mal-zeichenbedarf",
+    "stempel-schablonen-praegen"
+   ]
+  },
+  {
+   "titel": "Basteln & Verzieren",
+   "handle": "basteln-verzieren-gruppe",
+   "kinder": [
+    "bastelsets-diy-kits",
+    "baender-borten-verzierungen",
+    "bastelwerkzeug-schneiden-kleben",
+    "kunstleder-lederhandwerk",
+    "kerzen-seifenformen",
+    "harz-giessformen"
+   ]
+  },
+  {
+   "titel": "Nähen, Sticken & Stricken",
+   "handle": "naehen-sticken-stricken-gruppe",
+   "kinder": [
+    "stoffe-meterware",
+    "stickpackungen-kreuzstich",
+    "naehzubehoer-naehmaschinen",
+    "garn-wolle-haekeln-stricken"
+   ]
+  },
+  {
+   "titel": "Sticker, Journaling & Modelle",
+   "handle": "sticker-journaling-modelle-gruppe",
+   "kinder": [
+    "sticker-aufkleber",
+    "notizbuecher-journaling",
+    "modellbau"
+   ]
+  },
+  {
+   "titel": "Musik",
+   "handle": "musik-gruppe",
+   "kinder": [
+    "musikinstrumente-trommeln-kalimba",
+    "gitarren-zubehoer",
+    "instrumenten-zubehoer-noten"
+   ]
+  },
+  {
+   "titel": "Party, Geschenk & Feier",
+   "handle": "party-geschenk-feier-gruppe",
+   "kinder": [
+    "geschenkboxen-verpackung",
+    "kunstblumen-kraenze-girlanden",
+    "party-licht-effekte-zubehoer"
+   ]
+  }
+ ],
+ "ausserhalb": [],
+ "hinweise": []
+}
