@@ -35,7 +35,7 @@ export const WEICHE_CODES = [1602001, 1602002, 1602003];
 export async function cjFetch(url, opt = {}) {
   const context = opt.context || 'CJ';
   const versuche = opt.versuche ?? 5;
-  const basis = opt.basisMs ?? 2000;
+  const basis = opt.basisMs ?? Number(process.env.CJ_BACKOFF_MS ?? 2000);   // CJ_BACKOFF_MS nur in Tests (0)
   const fetchFn = opt.fetch ?? fetch;
   const warte = opt.warte ?? (ms => new Promise(r => setTimeout(r, ms)));
   const init = { headers: opt.headers || {}, ...(opt.init || {}) };

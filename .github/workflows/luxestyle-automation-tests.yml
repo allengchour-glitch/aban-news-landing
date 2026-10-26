@@ -43,6 +43,8 @@ on:
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
       - '.github/workflows/metricool-schedule.yml'
+      - '.github/workflows/auswahl-lauf.yml'
+      - 'automation/auswahl_durchlauf.sh'
   workflow_dispatch: {}
 
 permissions:
@@ -93,6 +95,7 @@ jobs:
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
+            automation/auswahl_durchlauf.sh
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -171,6 +174,9 @@ jobs:
           node automation/menu_eintrag_einfuegen_test.mjs
           node automation/stecker_bereinigen_test.mjs
           node automation/lib/videos_zeile_test.mjs
+          node automation/lib/varianten_sicherheit_test.mjs
+          node automation/auswahl_durchlauf_test.mjs
+          node automation/cj_varianten_nachziehen_lauf_test.mjs
           node tools/versandregel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
