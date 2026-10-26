@@ -11,14 +11,17 @@ const ist = (n, a, b) => { if (JSON.stringify(a) === JSON.stringify(b)) ok++; el
 const REPO = resolve(new URL('..', import.meta.url).pathname);
 
 const FAKE = `#!/bin/bash
+if grep -q poison "$HANDLES_DATEI"; then echo poison >> "$FAKE_LOG"; echo 'Zusammenfassung: {}'; exit 3; fi
+echo "FORCE=\${FORCE:-leer}" >> "$FAKE_FORCE"
 f="$FAKE_CODES"; z=$(head -n1 "$f" 2>/dev/null); sed -i '1d' "$f" 2>/dev/null; echo "$z" >> "$FAKE_LOG"
+[ -n "$FAKE_SCHREIBT" ] && echo "x · 2026-10-26T00:00:00Z · GESCHRIEBEN · 1 Varianten" >> "$LEDGER"
 case "$z" in
   0L) echo "LIMIT 40 erreicht — Rest bleibt für den nächsten Lauf"; echo 'Zusammenfassung: {}'; exit 0;;
   *) echo 'Zusammenfassung: {}'; exit "\${z:-0}";;
 esac
 `;
 
-function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, stufen = '1' } = {}) {
+function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, stufen = '1', workers = '1', extra = {} } = {}) {
   const t = mkdtempSync(join(tmpdir(), 'auswahl-test-'));
   try {
     writeFileSync(join(t, 'fake_node.sh'), FAKE); chmodSync(join(t, 'fake_node.sh'), 0o755);
@@ -27,12 +30,13 @@ function lauf(codes, { liste = 'h1;1;sku1;3;g\nh2;1;sku2;3;g\n', stop = false, s
     if (stop) writeFileSync(join(t, 'auswahl_stop'), '');
     const r = spawnSync('bash', [process.env.DRIVER || 'automation/auswahl_durchlauf.sh'], {
       cwd: REPO, encoding: 'utf8', timeout: 60000,
-      env: { PATH: process.env.PATH, AUSWAHL_TMP: t, NODE: join(t, 'fake_node.sh'), WORKERS: '1', STUFEN: stufen, BATCH: '40',
-        WARTE: '0', WARTE_VAR: '0', WARTE_FEHL: '0', FAKE_CODES: join(t, 'codes.txt'), FAKE_LOG: join(t, 'aufrufe.txt') },
+      env: { PATH: process.env.PATH, AUSWAHL_TMP: t, NODE: join(t, 'fake_node.sh'), WORKERS: workers, STUFEN: stufen, BATCH: '40',
+        WARTE: '0', WARTE_VAR: '0', WARTE_FEHL: '0', LEDGER: join(t, 'ledger.txt'), FAKE_CODES: join(t, 'codes.txt'), FAKE_LOG: join(t, 'aufrufe.txt'), FAKE_FORCE: join(t, 'force.txt'), ...extra },
     });
     const aufrufe = existsSync(join(t, 'aufrufe.txt')) ? readFileSync(join(t, 'aufrufe.txt'), 'utf8').split('\n').filter(x => x !== '' || false) : [];
     const log = existsSync(join(t, 'auswahl_durchlauf.log')) ? readFileSync(join(t, 'auswahl_durchlauf.log'), 'utf8') : '';
-    return { rc: r.status, aufrufe, anzahl: aufrufe.length, log, out: (r.stdout || '') + (r.stderr || '') };
+    const force = existsSync(join(t, 'force.txt')) ? readFileSync(join(t, 'force.txt'), 'utf8').split('\n').filter(Boolean) : [];
+    return { rc: r.status, aufrufe, anzahl: aufrufe.length, log, force, out: (r.stdout || '') + (r.stderr || '') };
   } finally { rmSync(t, { recursive: true, force: true }); }
 }
 
@@ -79,6 +83,32 @@ ist('leere Scheibe: Exitcode 0 und FERTIG', [r.rc, /FERTIG\s*$/m.test(r.log)], [
 r = lauf(['0'], { stop: true });
 ist('Stopp-Datei: kein Aufruf, Exitcode 0', [r.anzahl, r.rc], [0, 0]);
 ist('Stopp-Datei: Protokoll', /Stopp-Datei gefunden/.test(r.log), true);
+
+// 9) Der Absturzzähler zählt «in Folge»: ein Erfolg dazwischen setzt ihn zurück (Absturz, Stapel voll, Absturz, Stapel voll, Absturz → weiter, nicht aufgeben)
+r = lauf(['1', '0L', '1', '0L', '1', '0']);
+ist('Zähler wird nach Erfolg zurückgesetzt: Exitcode 0, 6 Aufrufe', [r.rc, r.anzahl], [0, 6]);
+
+// 10) CJ-Drosselung (rc 3) und KI-Ausfall (rc 5): warten, aber nicht ewig — ohne neue Ledger-Zeile gibt die Scheibe auf (Fehlermarke, Exitcode 2)
+r = lauf(['3', '3', '3', '3', '3', '3'], { extra: { MAX_STILL: '4' } });
+ist('rc=3 ohne Fortschritt: nach 4 Mal Schluss, Exitcode 2', [r.rc, r.anzahl], [2, 4]);
+ist('rc=3 ohne Fortschritt: Protokoll «gibt auf» und FERTIG MIT FEHLERN', [/gibt auf: 4 Mal rc=3/.test(r.log), /FERTIG MIT FEHLERN/.test(r.log)], [true, true]);
+r = lauf(['5', '5', '5', '5', '5'], { extra: { MAX_STILL: '3' } });
+ist('rc=5 (KI-Ausfall) ohne Fortschritt: nach 3 Mal Schluss, Exitcode 2', [r.rc, r.anzahl, /KI-Dienst fällt aus/.test(r.log)], [2, 3, true]);
+r = lauf(['5', '0']);
+ist('rc=5 einmal, dann Erfolg: weiter, Exitcode 0', [r.rc, r.anzahl], [0, 2]);
+r = lauf(['3', '3', '3', '3', '3', '3', '0'], { extra: { MAX_STILL: '3', FAKE_SCHREIBT: '1' } });
+ist('rc=3 MIT Fortschritt (Ledger wächst): nie aufgeben, Exitcode 0', [r.rc, r.anzahl, /gibt auf/.test(r.log)], [0, 7, false]);
+
+// 11) FORCE wird nicht an das Werkzeug durchgereicht (sonst Endlosschleife über volle Stapel)
+r = lauf(['0'], { extra: { FORCE: '1' } });
+ist('FORCE=1 im Treiber-Aufruf erreicht das Werkzeug nicht', r.force, ['FORCE=leer']);
+
+// 12) Mehrere Scheiben und Stufen: eine festhängende Scheibe blockiert die nächste Stufe nicht für immer
+r = lauf([], { workers: '2', stufen: '1 2', extra: { MAX_STILL: '3' }, liste: 'poison1;1;s;3;g\nok1;1;s;3;g\nok2;2;s;3;g\nok3;2;s;3;g\n' });
+ist('festhängende Scheibe: Stufe 2 läuft trotzdem, Exitcode 2', [r.rc, /Stufe 2: 2 Kandidaten/.test(r.log), r.aufrufe.filter(x => x === 'poison').length], [2, true, 3]);
+ist('festhängende Scheibe: genannt in der Fehlermarke', /Stufe 1 Scheibe 0: rc=3 ohne Fortschritt/.test(r.log), true);
+r = lauf(['0', '0', '0', '0'], { workers: '2', stufen: '1 2', liste: 'a1;1;s;3;g\na2;1;s;3;g\nb1;2;s;3;g\nb2;2;s;3;g\n' });
+ist('zwei Scheiben × zwei Stufen, alles gut: 4 Aufrufe, Exitcode 0', [r.rc, r.anzahl], [0, 4]);
 
 // 8) Fehlende Kandidatenliste: sofort Exitcode 1 mit Hinweis
 {

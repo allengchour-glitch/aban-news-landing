@@ -140,6 +140,13 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+      - name: ffmpeg für den Test des Varianten-Werkzeugs (fehlt auf ubuntu-latest, das Werkzeug prüft es beim Start)
+        run: |
+          for versuch in 1 2 3; do
+            sudo apt-get update -q && sudo apt-get install -y --no-install-recommends ffmpeg && break
+            echo "apt-get gescheitert (Versuch $versuch/3)"; sleep 15
+          done
+          ffmpeg -version | head -1
       - name: Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)
         # 26.10.2026: Diese 21 Tests lagen im Repo, liefen aber in KEINEM Workflow (gefunden mit: jeden *_test.mjs gegen .github/workflows greppen).
         run: |
@@ -176,6 +183,7 @@ jobs:
           node automation/lib/videos_zeile_test.mjs
           node automation/lib/varianten_sicherheit_test.mjs
           node automation/auswahl_durchlauf_test.mjs
+          node automation/cj_varianten_nachziehen_lauf_test.mjs
           node tools/versandregel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |

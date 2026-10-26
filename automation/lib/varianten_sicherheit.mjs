@@ -42,13 +42,16 @@ export function ledgerGedaechtnis(text, { jetzt = Date.now(), force = false } = 
 }
 
 /** Frische Abfrage unmittelbar vor productSet (eine Abfrage je Produkt). */
-export const FRISCH = `query($id:ID!){product(id:$id){descriptionHtml tags variantsCount{count} media(first:100){nodes{id status}}}}`;
+export const FRISCH = `query($id:ID!){product(id:$id){updatedAt descriptionHtml tags variantsCount{count} media(first:100){nodes{id status}}}}`;
 
 /** '' = unverändert (schreiben), sonst der Grund, warum nicht geschrieben wird. */
 export function veraendertSeitPlan(plan, frisch) {
   if (!frisch) return 'Produkt nicht mehr da';
   const n = frisch.variantsCount?.count;
   if (n !== 1) return `inzwischen ${n} Varianten`;
+  // Der Zeitstempel fängt ALLES ab, was die Einzelprüfungen unten nicht sehen (Preis, Kosten, SKU, Metafelder): productSet setzt Preis und Kosten der neuen
+  // Varianten aus dem Plan; hätte eine andere Sitzung den Preis seither erhöht, würde der alte Preis zurückgeschrieben. Pläne aus der Zeit vor dem Feld haben keinen.
+  if (plan.updatedAt && frisch.updatedAt && plan.updatedAt !== frisch.updatedAt) return 'Produkt inzwischen geändert (updatedAt)';
   if (String(frisch.descriptionHtml ?? '') !== String(plan.beschreibungHtml ?? '')) return 'Beschreibung inzwischen geändert';
   const tags = l => [...(l || [])].sort().join('\u0001');
   if (tags(frisch.tags) !== tags(plan.tags)) return 'Tags inzwischen geändert';
@@ -56,5 +59,20 @@ export function veraendertSeitPlan(plan, frisch) {
   const bekannt = new Set(plan.medienIds || []);
   const neu = (frisch.media?.nodes || []).filter(m => m.status === 'READY' && !bekannt.has(m.id));
   if (neu.length) return `${neu.length} Medium/Medien inzwischen hinzugekommen`;
+  // Umgekehrt: nennt `files` ein Bild, das es nicht mehr gibt, scheitert das Schreiben oder hängt ein bewusst gelöschtes Bild wieder an.
+  const da = new Set((frisch.media?.nodes || []).map(m => m.id));
+  const weg = [...bekannt].filter(id => !da.has(id));
+  if (weg.length) return `${weg.length} Medium/Medien inzwischen entfernt`;
   return '';
+}
+
+/**
+ * Ist MEHR ALS DIE HÄLFTE der Variantenbilder unlesbar (Download oder ffmpeg gescheitert)? Dann nicht schreiben: setInput() lässt unlesbare Bilder weg, und der Marker
+ * im Text hielte das Produkt danach für immer aus der Kandidatenliste — die Varianten blieben für immer ohne eigenes Bild (Prüfung 26.10.2026).
+ * Ein einzelner toter CJ-Bildlink unter mehreren guten ist normal und verhindert das Schreiben nicht.
+ */
+export function bilderUnbrauchbar(plan) {
+  const b = plan?.bilder; if (!b) return false;
+  const unlesbar = b.unlesbar || 0, gesamt = (b.zugeordnet || 0) + (b.neuHochzuladen || 0) + unlesbar;
+  return unlesbar > 0 && unlesbar * 2 > gesamt;
 }

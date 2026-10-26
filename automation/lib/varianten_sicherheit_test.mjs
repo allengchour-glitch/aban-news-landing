@@ -1,4 +1,4 @@
-import { ledgerGedaechtnis, veraendertSeitPlan, VORLAEUFIG_MS, ZURUECKGESTELLT_MS, ENDGUELTIG_MS, FRISCH } from './varianten_sicherheit.mjs';
+import { ledgerGedaechtnis, veraendertSeitPlan, bilderUnbrauchbar, VORLAEUFIG_MS, ZURUECKGESTELLT_MS, ENDGUELTIG_MS, FRISCH } from './varianten_sicherheit.mjs';
 let ok = 0, fehl = 0;
 const ist = (n, a, b) => { if (JSON.stringify(a) === JSON.stringify(b)) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
 
@@ -40,9 +40,26 @@ ist('Beschreibung geändert (Text-Lauf)', veraendertSeitPlan(plan, frisch({ desc
 ist('Tag hinzugekommen (Kategorie-Lauf) würde überschrieben', veraendertSeitPlan(plan, frisch({ tags: ['a', 'b', 'sort-damen-kleider'] })), 'Tags inzwischen geändert');
 ist('Tag entfernt', veraendertSeitPlan(plan, frisch({ tags: ['a'] })), 'Tags inzwischen geändert');
 ist('neues READY-Medium ginge beim Schreiben verloren', veraendertSeitPlan(plan, frisch({ media: { nodes: [{ id: 'm1', status: 'READY' }, { id: 'm2', status: 'READY' }, { id: 'm3', status: 'READY' }] } })), '1 Medium/Medien inzwischen hinzugekommen');
-ist('Medium in Verarbeitung zählt nicht (wird ohnehin nicht mitgeschrieben)', veraendertSeitPlan(plan, frisch({ media: { nodes: [{ id: 'm1', status: 'READY' }, { id: 'm9', status: 'PROCESSING' }] } })), '');
-ist('Medium entfernt ist kein Grund (files nennt nur noch vorhandene)', veraendertSeitPlan(plan, frisch({ media: { nodes: [{ id: 'm1', status: 'READY' }] } })), '');
+ist('Medium in Verarbeitung zählt nicht (wird ohnehin nicht mitgeschrieben)', veraendertSeitPlan(plan, frisch({ media: { nodes: [{ id: 'm1', status: 'READY' }, { id: 'm2', status: 'READY' }, { id: 'm9', status: 'PROCESSING' }] } })), '');
+ist('Medium inzwischen entfernt: files nennte ein Bild, das es nicht mehr gibt', veraendertSeitPlan(plan, frisch({ media: { nodes: [{ id: 'm1', status: 'READY' }] } })), '1 Medium/Medien inzwischen entfernt');
 ist('Plan ohne Tags/Medien, Shop auch ohne', veraendertSeitPlan({ beschreibungHtml: '' }, { descriptionHtml: null, tags: [], variantsCount: { count: 1 }, media: { nodes: [] } }), '');
-ist('Abfrage-Text fragt genau die geprüften Felder', ['descriptionHtml', 'tags', 'variantsCount', 'media'].every(f => FRISCH.includes(f)), true);
+ist('Abfrage-Text fragt genau die geprüften Felder', ['updatedAt', 'descriptionHtml', 'tags', 'variantsCount', 'media'].every(f => FRISCH.includes(f)), true);
+
+// Zeitstempel: fängt ab, was die Einzelprüfungen nicht sehen (Preis, Kosten, SKU, Metafelder)
+const planZ = { ...plan, updatedAt: '2026-10-26T10:00:00Z' };
+ist('updatedAt gleich: unverändert', veraendertSeitPlan(planZ, frisch({ updatedAt: '2026-10-26T10:00:00Z' })), '');
+ist('updatedAt neuer (z. B. Preis von anderer Sitzung erhöht): nicht schreiben', veraendertSeitPlan(planZ, frisch({ updatedAt: '2026-10-26T10:05:00Z' })), 'Produkt inzwischen geändert (updatedAt)');
+ist('Plan aus der Zeit vor dem Feld (ohne updatedAt): kein Fehlalarm', veraendertSeitPlan(plan, frisch({ updatedAt: '2026-10-26T10:05:00Z' })), '');
+ist('frische Antwort ohne updatedAt: kein Fehlalarm', veraendertSeitPlan(planZ, frisch()), '');
+
+// Bild-Schranke: mehr als die Hälfte unlesbar = nicht schreiben
+const bp = (zugeordnet, neuHochzuladen, unlesbar) => bilderUnbrauchbar({ bilder: { zugeordnet, neuHochzuladen, unlesbar } });
+ist('alle Bilder lesbar', bp(3, 2, 0), false);
+ist('keine Variantenbilder bei CJ (0/0/0)', bp(0, 0, 0), false);
+ist('ein toter Link unter fünf guten', bp(3, 1, 1), false);
+ist('genau die Hälfte unlesbar (1 von 2): noch schreiben', bp(1, 0, 1), false);
+ist('mehr als die Hälfte (2 von 3)', bp(1, 0, 2), true);
+ist('alle unlesbar (ffmpeg/Download weg)', bp(0, 0, 6), true);
+ist('Plan ohne bilder-Feld', bilderUnbrauchbar({}), false);
 
 console.log(`${ok} ok, ${fehl} Fehler`); process.exit(fehl ? 1 : 0);

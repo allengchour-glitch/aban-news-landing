@@ -9,30 +9,42 @@
 #
 # Aufruf:  STUFEN="1 2 3" BATCH=150 nohup bash automation/auswahl_durchlauf.sh > /tmp/auswahl_durchlauf.out 2>&1 &
 # Exitcode 4 des Werkzeugs = Shopify-Tagesgrenze für neue Varianten (gemessen ~9 500/Tag): der Lauf wartet WARTE_VAR Sekunden (Standard 40 Min.) und versucht es wieder.
+# Exitcode 3 (CJ drosselt/Punkte weg) und 5 (KI-Dienst fällt aus) warten WARTE Sekunden, aber höchstens MAX_STILL Mal hintereinander OHNE dass das Ledger wächst:
+# danach gibt die Scheibe auf (Fehlermarke), statt eine ganze Nacht zu stehen und den Rest der Stufen zu blockieren (Prüfung 26.10.2026).
 # JEDER ANDERE Exitcode ausser 0/3/4 ist ein Absturz (Token, Netz, Shopify-5xx): die Scheibe wird bis zu 3 Mal nach WARTE_FEHL Sekunden wiederholt. Gelingt es
 # nicht, wird die Scheibe in der Fehlermarke vermerkt und der Treiber endet am Schluss mit Exitcode 2 (statt still «FERTIG», Prüfung 26.10.2026).
-# Schalter: LISTE=/tmp/auswahl_kandidaten.csv · BATCH=150 · STUFEN="1 2 3" · WORKERS=3 · LOG=/tmp/auswahl_durchlauf.log · WARTE=1800 · WARTE_FEHL=120
+# Schalter: LISTE=/tmp/auswahl_kandidaten.csv · BATCH=150 · STUFEN="1 2 3" · WORKERS=3 · LOG=/tmp/auswahl_durchlauf.log · WARTE=1800 · WARTE_FEHL=120 · MAX_STILL=4
+#           LEDGER=dropship/cj_varianten_ledger.txt (Fortschrittsmass und Ledger des Werkzeugs)
+# FORCE wird NICHT durchgereicht: mit FORCE=1 ignoriert das Werkzeug seine Ledger-Zeilen, und der Treiber wiederholte jeden vollen Stapel endlos (nur für Einzelläufe des Werkzeugs).
 #           AUSWAHL_TMP=/tmp (Ort von Sperre, Stopp-Datei, Scheibenlisten, Fehlermarke; zum Testen umlenkbar) · NODE=Pfad zu node
 cd "$(dirname "$0")/.." || exit 1
 T=${AUSWAHL_TMP:-/tmp}
 LISTE=${LISTE:-$T/auswahl_kandidaten.csv}; BATCH=${BATCH:-150}; STUFEN=${STUFEN:-"1 2 3"}
-LOG=${LOG:-$T/auswahl_durchlauf.log}; WARTE=${WARTE:-1800}; WARTE_VAR=${WARTE_VAR:-2400}; WARTE_FEHL=${WARTE_FEHL:-120}; NODE=${NODE:-/opt/node22/bin/node}
+LOG=${LOG:-$T/auswahl_durchlauf.log}; WARTE=${WARTE:-1800}; WARTE_VAR=${WARTE_VAR:-2400}; WARTE_FEHL=${WARTE_FEHL:-120}; MAX_STILL=${MAX_STILL:-4}; NODE=${NODE:-/opt/node22/bin/node}
+LEDGER=${LEDGER:-dropship/cj_varianten_ledger.txt}; export LEDGER
+unset FORCE
 [ -f "$LISTE" ] || { echo "Keine Liste: $LISTE (erst node automation/auswahl_kandidaten.mjs)"; exit 1; }
 exec 9>"$T/auswahl_durchlauf.lock"; flock -n 9 || { echo "Läuft schon (Sperre $T/auswahl_durchlauf.lock)"; exit 1; }
 WORKERS=${WORKERS:-3}   # parallele Läufe: die Zeit geht in Bild-Downloads und Shopify-Schreiben, nicht in CJ (CJ erlaubt ~1 Abfrage/s)
 FEHLMARKE="$T/auswahl_scheibe_fehler"; rm -f "$FEHLMARKE"
 
 lauf_scheibe() {   # $1 = Stufe, $2 = Datei mit den Handles dieser Scheibe, $3 = Nummer
-  local st=$1 datei=$2 nr=$3 lauf rc zus fehl=0
+  local st=$1 datei=$2 nr=$3 lauf rc zus fehl=0 still=0 vor nach
   [ "$(wc -l < "$datei")" -le 1 ] && return 0   # nur die Kopfzeile: leere Scheibe, kein Fehler
   while true; do
     [ -e "$T/auswahl_stop" ] && { echo "$(date -u +%FT%TZ) [$st/$nr] Stopp-Datei gefunden" | tee -a "$LOG"; return 0; }
-    lauf=$(mktemp)
+    lauf=$(mktemp); vor=$(wc -l 2>/dev/null < "$LEDGER" || echo 0)
     LIVE=1 LIMIT="$BATCH" HANDLES_DATEI="$datei" "$NODE" automation/cj_varianten_nachziehen.mjs > "$lauf" 2>&1; rc=$?
     cat "$lauf" >> "$LOG"
+    nach=$(wc -l 2>/dev/null < "$LEDGER" || echo 0); [ "$nach" -gt "$vor" ] && still=0   # Fortschritt (irgendeine Scheibe schrieb eine Ledger-Zeile)
     zus=$(grep -E '^Zusammenfassung' "$lauf" | tail -1)
     echo "$(date -u +%FT%TZ) [$st/$nr] rc=$rc $zus" | tee -a "$LOG"
-    if [ "$rc" = 3 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] CJ drosselt/erschöpft — warte ${WARTE}s" | tee -a "$LOG"; rm -f "$lauf"; sleep "$WARTE"; continue; fi
+    if [ "$rc" = 3 ] || [ "$rc" = 5 ]; then
+      still=$((still + 1)); rm -f "$lauf"
+      if [ "$still" -ge "$MAX_STILL" ]; then echo "$(date -u +%FT%TZ) [$st/$nr] gibt auf: $still Mal rc=$rc ohne neue Ledger-Zeile" | tee -a "$LOG"; echo "Stufe $st Scheibe $nr: rc=$rc ohne Fortschritt" >> "$FEHLMARKE"; return 0; fi
+      if [ "$rc" = 3 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] CJ drosselt/erschöpft — warte ${WARTE}s ($still/$MAX_STILL)" | tee -a "$LOG"; else echo "$(date -u +%FT%TZ) [$st/$nr] KI-Dienst fällt aus — warte ${WARTE}s ($still/$MAX_STILL)" | tee -a "$LOG"; fi
+      sleep "$WARTE"; continue
+    fi
     if [ "$rc" = 4 ]; then echo "$(date -u +%FT%TZ) [$st/$nr] Shopify-Tagesgrenze für neue Varianten erreicht — warte ${WARTE_VAR}s" | tee -a "$LOG"; rm -f "$lauf"; sleep "$WARTE_VAR"; continue; fi
     if [ "$rc" != 0 ]; then   # Absturz: NICHT als «Scheibe durch» werten
       fehl=$((fehl + 1)); rm -f "$lauf"

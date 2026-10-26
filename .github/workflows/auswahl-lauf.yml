@@ -37,7 +37,7 @@ on:
         type: string
         default: '6'
       laufzeit_min:
-        description: 'Lauf: Höchstdauer in Minuten (GitHub erlaubt 360 je Job)'
+        description: 'Lauf: Höchstdauer in Minuten (höchstens 330; der Job begrenzt zusätzlich auf seine Restzeit)'
         type: string
         default: '330'
 
@@ -71,6 +71,7 @@ jobs:
       - name: Freigabe prüfen (nächtliche Läufe)
         id: frei
         run: |
+          echo "JOB_START=$(date +%s)" >> "$GITHUB_ENV"
           if [ "$EREIGNIS" = "schedule" ] && [ ! -f dropship/AUSWAHL-ACTIONS-FREI.txt ]; then
             echo "::warning title=Auswahl-Lauf nicht freigegeben::dropship/AUSWAHL-ACTIONS-FREI.txt fehlt, es wurde nichts getan. Erst den Workflow von Hand mit modus=probe starten und die Ausgabe prüfen."
             echo "weiter=0" >> "$GITHUB_OUTPUT"
@@ -83,11 +84,13 @@ jobs:
         # ffmpeg ist auf ubuntu-latest NICHT vorinstalliert. Ohne es gälte jedes Variantenbild als «unlesbar» und die Varianten gingen ohne eigenes Bild live
         # (Prüfung 26.10.2026, drei Prüfer unabhängig). Das Werkzeug prüft ffmpeg zusätzlich selbst und bricht sonst ab.
         run: |
-          sudo apt-get update -q
-          sudo apt-get install -y --no-install-recommends ffmpeg
+          for versuch in 1 2 3; do
+            sudo apt-get update -q && sudo apt-get install -y --no-install-recommends ffmpeg && break
+            echo "apt-get gescheitert (Versuch $versuch/3)"; sleep 15
+          done
           ffmpeg -version | head -1
 
-      - name: KI-Schlüssel für die Übersetzung der Variantennamen prüfen
+      - name: KI-Dienst für die Übersetzung der Variantennamen prüfen (echter Probeaufruf)
         if: ${{ steps.frei.outputs.weiter == '1' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -98,6 +101,13 @@ jobs:
             exit 1
           fi
           echo "KI-Schlüssel: gemini=$([ -n "${GEMINI_API_KEY// }" ] && echo ja || echo nein) groq=$([ -n "${GROQ_API_KEY// }" ] && echo ja || echo nein)"
+          # Ein gesetzter Schlüssel heisst nicht, dass der Dienst antwortet (leeres Guthaben HTTP 402, Ratenlimit, ungültiger Schlüssel): einmal wirklich fragen.
+          node --input-type=module -e "
+            import { nachDeutsch } from './automation/lib/uebersetzen.mjs';
+            const t = await nachDeutsch(['Rose Red']);
+            if (t.weg === 'original') { console.error('KI-Probeaufruf scheiterte: ' + (t.grund || 'ohne Grund')); process.exit(1); }
+            console.log('KI-Probeaufruf ok über', t.weg);
+          "
 
       - name: Shopify-Zugang prüfen (bricht laut ab)
         if: ${{ steps.frei.outputs.weiter == '1' }}
@@ -168,6 +178,13 @@ jobs:
         run: |
           export NODE="$(command -v node)"
           rm -f /tmp/auswahl_stop
+          # Höchstdauer: Eingabe (nur Ziffern, höchstens 330), nie mehr als die Restzeit des Jobs (timeout-minutes 355 minus Vorlauf und 15 Minuten für Zusammenfassung und Ledger), mindestens 20.
+          LAUFZEIT="${LAUFZEIT//[^0-9]/}"; [ -z "$LAUFZEIT" ] && LAUFZEIT=330
+          [ "$LAUFZEIT" -gt 330 ] && LAUFZEIT=330
+          rest=$(( 340 - ( $(date +%s) - JOB_START ) / 60 ))
+          [ "$LAUFZEIT" -gt "$rest" ] && LAUFZEIT=$rest
+          [ "$LAUFZEIT" -lt 20 ] && LAUFZEIT=20
+          echo "Höchstdauer des Laufs: ${LAUFZEIT} Minuten"
           # sanftes Ende 20 Minuten vor der Höchstdauer: laufende Produkte werden fertig geschrieben, dann stoppt der Treiber
           ( sleep $(( (LAUFZEIT - 20) * 60 )); touch /tmp/auswahl_stop ) &
           wache=$!
