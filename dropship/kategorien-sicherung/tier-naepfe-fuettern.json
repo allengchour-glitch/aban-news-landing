@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/691319013761",
+ "title": "Näpfe & Füttern",
+ "productsCount": {
+  "count": 130
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-futter"
+   }
+  ]
+ }
+}

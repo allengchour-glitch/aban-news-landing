@@ -1,0 +1,379 @@
+{
+ "stand": "2026-10-26",
+ "quelle": "Schreib-Agenten der Text-Runde 3 (BEHAUPTUNG, nicht nachgeprüft): Titel widerspricht dem CJ-Datenblatt. Vor jeder Korrektur am Datenblatt prüfen (Skill titel-wahrheit, Vorfilter + Gegenlesen).",
+ "anzahl": 93,
+ "faelle": [
+  {
+   "handle": "automatische-vintage-uhr-herren-wasserdicht-le-619200",
+   "widerspruch": "Titel sagt «wasserdicht». Das CJ-Datenblatt nennt «Waterproof» nur im Produktnamen. In der Beschreibung steht weder «Waterproof: Yes» noch eine Tiefe, ATM oder Schutzklasse. Die Behauptung ist unbelegt, deshalb steht «wasserdicht» nicht im Text."
+  },
+  {
+   "handle": "geburtsstein-ring-mit-zirkonia-627400",
+   "widerspruch": "Titel sagt «mit Zirkonia». Das Datenblatt nennt nur «Diamond-encrusted» (Produktname) und «gemstone setting». Zirkonia kommt nirgends vor. Der Text sagt deshalb nur «Stein in Edelstein-Fassung» und nennt die Steinart nicht."
+  },
+  {
+   "handle": "goldfarbener-kreisring-625700",
+   "widerspruch": "Titel sagt «Kreisring», das liest sich wie ein Fingerring. Das Datenblatt führt ein Armband: Produktname «Bracelet … Bangle For Women», Kategorie «Bracelets & Bangles», Lieferumfang «Bracelet*1». Der Text nennt es Armreif."
+  },
+  {
+   "handle": "golf-rocket-pattern-putter-schutzhulle-626800",
+   "widerspruch": "Titel sagt «Golf-Tee-Muster». Das Datenblatt nennt «Rocket Pattern», also ein Raketen-Muster, und kein Tee. Der Text sagt «Raketen-Muster»."
+  },
+  {
+   "handle": "fahrrad-rahmenmontage-set-bd94ba",
+   "widerspruch": "Titel sagt «Rahmenmontage-Set». Das Datenblatt nennt «Bicycle bowl set installation tool» mit Einbau und Ausbau von Lagerschalen, «BB tool» und «shaft bearing». Von Rahmenmontage steht dort nichts. Zudem sind Modelle wie «Simple/Advanced», «A/B» und «please contact customer service» aufgeführt, im Shop gibt es aber nur die Variante «Silver»."
+  },
+  {
+   "handle": "gesundheits-armband-mit-herzfrequenzmessung-601700",
+   "widerspruch": "Titel sagt «Gesundheits-Armband mit Herzfrequenzmessung». Herzfrequenz, Blutdruck und Blutsauerstoff stehen nur im Produktnamen. Die Beschreibung nennt keine Messfunktion, keinen Sensor, keinen Akku und keine App. Sie nennt nur Zinklegierung, «IML bottom cover», «Starry Sky» und Minimalismus, was nach Modeschmuck aussieht. Das ist eine unbelegte Gesundheits- und Medizinbehauptung."
+  },
+  {
+   "handle": "grosse-schultertasche-aus-leder-289152",
+   "widerspruch": "Titel sagt «Grosse Schultertasche» (Produktname: Large Capacity Shoulder Bag), das Datenblatt führt aber Kategorie Waist Bags, Lieferumfang «Clutch bag» und nur eine Grösse von 8 Zoll. Es ist unklar, ob es eine grosse Schultertasche oder eine kleine Clutch/Gürteltasche ist. Der Text nennt nur die 8 Zoll und behauptet kein grosses Volumen."
+  },
+  {
+   "handle": "graviertes-armband-aus-titanstahl-610900",
+   "widerspruch": "Titel und Produktname sagen «Titanstahl» (Titanium Steel), das Materialfeld im Datenblatt nennt aber «Stainless Steel» (Edelstahl). Der Text nennt Edelstahl als Material und erwähnt «Titanstahl» nur als Namen des Armbands."
+  },
+  {
+   "handle": "grosser-keramik-feeder-fur-hunde-2169e3",
+   "widerspruch": "Titel sagt «Futterspender» (Feeder), das Datenblatt beschreibt einen Keramiknapf (Ceramic Bowl, Pet Bowel Food Water Container, schräge Fläche, Pfotenmotiv). Dazu: «Grosser» im Titel, aber alle Varianten sind Grösse S und es gibt keine Kapazitätsangabe. Der Text nennt ihn Napf und gibt keine Füllmenge an."
+  },
+  {
+   "handle": "grossformat-wanderschuhe-fur-outdoor-abenteuer-579328",
+   "widerspruch": "Titel «Wanderschuhe» und «Grossformat», das Datenblatt nennt im Lieferumfang aber «Cotton Men's Beach Shoes», das Obermaterial ist ein dehnbares Lycra-Gewebe mit niedrigem Schaft (kein klassischer Wanderschuh). «Grossformat» passt nicht zu den angebotenen Grössen 35 bis 45. Der Text beschreibt nur Sohle, Obermaterial, Schaft und Grössen."
+  },
+  {
+   "handle": "gusseisen-waffeleisen-fur-eiswaffeln-80475f",
+   "widerspruch": "Titel sagt «Gusseisen», das Datenblatt nennt «Material: aluminum cast iron» (alter Text: Aluminiumguss). Geschrieben wurde «Aluminiumguss». Ausserdem heisst das Produkt im Datenblatt «Crispy egg roll mold» (Röllchenform), der Zweck lautet aber «to make ice cream»."
+  },
+  {
+   "handle": "handgefertigtes-lederwerkzeug-set-db2fd4",
+   "widerspruch": "Titel «Handgefertigtes Lederwerkzeug-Set» klingt nach von Hand gefertigten Werkzeugen. Das Datenblatt («Leather Craft Package Handmade Leather Hand-sewn Suit») beschreibt ein Set für handgemachte Lederarbeiten und Handnähen. Geschrieben wurde nach dem Datenblatt («Leder von Hand nähen und bearbeiten»)."
+  },
+  {
+   "handle": "haarspangen-set-goldfarben-mit-strass-sternen-3-stuck-620700",
+   "widerspruch": "Titel und Produktname («Diamond-studded Hair Clip») sprechen von Strass, das Datenblattfeld sagt aber «Inlay Material: No inlay». Zudem heisst das Produkt «Moon Sun And Star Hairpin», der Titel nennt nur Sterne. Der Text sagt «Sterne aus Strass», wie im Titel."
+  },
+  {
+   "handle": "haustier-zugseil-set-aus-polyester-verschleiss-612300",
+   "widerspruch": "Titel nennt Polyester; die Materialzeile des Datenblatts nennt Imitationsnylon (nur der Produktname dort nennt Polyester). Text folgt der Materialzeile, schwacher Verdacht."
+  },
+  {
+   "handle": "herren-clutch-aus-pu-leder-6cced9",
+   "widerspruch": "Titel sagt «Umhängetasche»; das Datenblatt nennt «PU leather men clutch» / «Style: Men's clutch bag» (33*25*1cm, flach, ein Trageriemen), Kategorie dagegen Crossbody. Text schreibt «Clutch». Zusätzlich widersprüchlich im Datenblatt: «Capacity: 20-35L» bei 33*25*1 cm, deshalb im Text nicht genannt."
+  },
+  {
+   "handle": "herren-quarz-armbanduhr-mit-strass-inlay-412160",
+   "widerspruch": "Titel sagt «Herren»; das Datenblatt nennt «Applicable population: female» (der Produktname dagegen «Men's Fashion Diamond Inlaid …»). Text nennt deshalb keine Zielgruppe. Ausserdem steht bei den Varianten nur «Gold», die Farbliste nennt «gold, silver»."
+  },
+  {
+   "handle": "herren-quarzuhr-mit-grosser-datumsanzeige-567168",
+   "widerspruch": "Titel sagt «grosse Datumsanzeige»; das Datenblatt hat keine Datums-/Date-Funktion, nur «Large Dial» im Produktnamen (grosses Zifferblatt, 42.6 mm). Text spricht von grossem Zifferblatt und erwähnt kein Datum."
+  },
+  {
+   "handle": "herren-wanderschuhe-weiche-sohle-314880",
+   "widerspruch": "Titel sagt «Wanderschuhe»; das Datenblatt nennt «Men's Fashion Casual Soft Bottom Wide Head Walking Shoes» (lässiger Freizeit-/Gehschuh, Saison Frühling/Herbst, Kategorie Running Shoes), nichts zu Wandern/Outdoor. Obermaterial «synthetic leather», die Variantennamen nennen aber «Mesh» (Netzgewebe). Text schreibt Freizeitschuh zum Gehen und weist auf das Material hin."
+  },
+  {
+   "handle": "herz-bar-seidenanhanger-605500",
+   "widerspruch": "Titel sagt «Seidenanhänger», das Datenblatt nennt «Satin Pendant» mit Material Kunststoff (Plastic); Seide ist nicht belegt."
+  },
+  {
+   "handle": "herzring-mit-moissanit-und-zirkonia-621500",
+   "widerspruch": "Titel nennt Moissanit; Moissanit steht nur im englischen Produktnamen, die Steinangabe bei Farbe/Varianten ist durchgehend «white diamond (cubic zirconia)». Im Text deshalb nur weisser Zirkonia."
+  },
+  {
+   "handle": "hexagonaler-bitkonverter-aus-legierung-1a8492",
+   "widerspruch": "Titel «Schnellspann-Bohrfutter mit Sechskantschaft» (Handle: Bitkonverter); Datenblatt «hexagonal bit converter». Bohrfutter (Dreibackenfutter) gibt es nur in Variante B und C, Variante A ist bloss eine 60-mm-Schnellwechsel-Verlängerungsstange ohne Futter."
+  },
+  {
+   "handle": "hohl-dream-catcher-schmetterling-aus-kohlensto-81068a",
+   "widerspruch": "Titel «Stanzschablone» (Datenblatt: «Knife Mould», «DIY Die»), aber dasselbe Datenblatt sagt «Type: preschool toys», «Decorative pattern: figures and gods», «Applicable scene: home»; der alte Text beschrieb es als Deko-Element. Verwendungszweck ist unklar, der Text bleibt bei Material, Motiven und Massen."
+  },
+  {
+   "handle": "holzarmbanduhr-mit-drei-augen-472e95",
+   "widerspruch": "Titel sagt «Holzarmbanduhr». Die Materialfelder nennen nur Metall und Glas, das Gehäuse ist Edelstahl, Uhrglas Mineralglas. Holz kommt nur in den Farbnamen vor (Ahorn, Sandelholz) und im englischen Produktnamen. Text nach Datenblatt geschrieben, ohne Holzaussage."
+  },
+  {
+   "handle": "hunde-lederjacke-mit-adler-stickerei-99216d",
+   "widerspruch": "Titel sagt «Lederjacke». Das Datenblatt sagt «Fabric: artificial leather», also Kunstleder (das Lieferantenfeld nennt nur «Leather»). Text schreibt Kunstleder."
+  },
+  {
+   "handle": "hunde-pullover-zweiteiler-baumwolle-fleece-609700",
+   "widerspruch": "Titel sagt «Baumwolle». Das Feld «Material» im Datenblatt sagt «Wool» (Wolle) mit Woll-Karo-Muster. Nur Produktname und Lieferumfang nennen «Cotton». Text schreibt Wolle."
+  },
+  {
+   "handle": "huft-und-nackenfacher-mit-digitalanzeige-613000",
+   "widerspruch": "Titel sagt «Fächer». Das Datenblatt beschreibt einen elektrischen Ventilator (bürstenloser Motor, 5 W, 5 V, Lithium-Akku, 5 Windstufen). Text sagt «Ventilator»."
+  },
+  {
+   "handle": "hunde-rucksack-fur-brust-und-rucken-743296",
+   "widerspruch": "Titel sagt «Hunde-Rucksack». Datenblatt und Optionen führen fünf Einzelteile aus Cord auf (Halsband, Führleine, Brustgeschirr, Kotbeutel-Tasche, Gassi-Tasche), jeweils mit Grösse S bis XL. Ein eigentlicher Rucksack ist nicht das Hauptstück. Unklar, ob Set oder Einzelteil. Text bleibt neutral."
+  },
+  {
+   "handle": "hunde-und-katzen-geschirr-mit-leine-bb0eeb",
+   "widerspruch": "Titel sagt «Hunde- und Katzen-Geschirr». Das Datenblatt nennt als Zielgruppe nur «puppy & cat» (Welpen und Katzen). Text schreibt Welpen und Katzen."
+  },
+  {
+   "handle": "hundeleine-8m-nylon-ausziehbar-098560",
+   "widerspruch": "Titel sagt Nylon, das Datenblatt nennt im Feld Material: Polyester (nur der Produktname im Datenblatt sagt Nylon). Text nennt Polyester."
+  },
+  {
+   "handle": "infrarot-kalibrator-e30ae8",
+   "widerspruch": "Titel sagt Infrarot, das Datenblatt nennt einen roten Laser mit 650 nm (sichtbares Rotlicht, nicht infrarot); Typ: infrared laser level. Text spricht von einem Nivellierlaser mit rotem Laser."
+  },
+  {
+   "handle": "hundegeschirr-mit-leine-blumendekor-429184",
+   "widerspruch": "Titel sagt mit Leine, die Packliste im Datenblatt nennt nur Chest strap*1 (Brustgurt). Text behauptet keine Leine im Lieferumfang."
+  },
+  {
+   "handle": "hundeleine-reissfest-stylisch-432960",
+   "widerspruch": "Titel sagt reissfest, das Datenblatt nennt nur Nylon, schlicht, einfarbig; keine Reissfestigkeit belegt. Text erwaehnt reissfest nicht."
+  },
+  {
+   "handle": "hundepullover-im-sport-design-227792",
+   "widerspruch": "Der Produktname im Datenblatt lautet brand three-stripe ... spoof (Marken-Parodie mit Drei-Streifen-Anspielung): Markenrisiko. Text erwaehnt weder Streifen noch Marke."
+  },
+  {
+   "handle": "hundelange-pullover-fruhling-herbst-604600",
+   "widerspruch": "Titel sagt gestreift, das Datenblatt nennt kein Streifenmuster (Color: Color); kein direkter Widerspruch, aber nicht belegt. Text erwaehnt Streifen nicht."
+  },
+  {
+   "handle": "hundeschussel-aus-abs-glas-cd1a07",
+   "widerspruch": "Titel sagt aus ABS, das Datenblatt nennt Base ABS glass, das Lieferantenfeld sagt glass; Material unklar (Handle enthaelt abs-glas)."
+  },
+  {
+   "handle": "hundeleine-mit-faltnapf-und-kotbeutelspender-752512",
+   "widerspruch": "Titel sagt Kotbeutelspender, das Datenblatt nennt nur Toilet Picker Set (koennte Kotaufnehmer statt Beutelspender sein); nicht eindeutig. Text folgt dem Titel."
+  },
+  {
+   "handle": "intelligente-dual-achsen-kamera-697216",
+   "widerspruch": "Titel sagt «Kamera», das Datenblatt nennt aber keine Kameradaten (Auflösung, Objektiv). Es führt nur «Intelligent PTZ» im Lieferumfang, Clip-Montage, Drehwinkel 360° und 20° sowie «Applicable models: mobile phone». Es kann also auch eine motorisierte Dreh- oder Schwenkhalterung sein. Der Text behauptet deshalb nichts über Bildaufnahmen. Ausserdem steht Gewicht 105 g (Product weight) gegen 481 g (Weight); der Text nennt kein Gewicht."
+  },
+  {
+   "handle": "irisierender-opalring-aus-925-sterling-silber-614500",
+   "widerspruch": "Schwacher Verdacht: Titel sagt «Opalring», das Datenblatt sagt «Synthetic opal» (künstlicher Opal, kein Naturstein). Der Text sagt das offen. Der Titel sollte «synthetischer Opal» nennen oder neutral formuliert werden."
+  },
+  {
+   "handle": "intelligenter-handedesinfektionsspender-156960",
+   "widerspruch": "Kein Titelwiderspruch, aber ein Datenfehler: Das Datenblatt nennt «Capacity: above 250L» bei 9,5 x 6 x 19,5 cm. Das ist physikalisch unmöglich (vermutlich 250 ml). Der alte Seitentext («über 250 Litern») ist falsch und wird durch den neuen Text ersetzt. Der neue Text nennt keine Kapazität. Das Datenblatt nennt ausserdem keinen Sensor, der Text behauptet keine berührungslose Funktion."
+  },
+  {
+   "handle": "kabelloses-kragenclip-mikrofon-mit-rauschunter-530816",
+   "widerspruch": "Titel sagt «Kabelloses», das Datenblatt sagt «You have wireless: There is no» und alle Varianten heissen «Style1/2/3-USB». Der Text sagt deshalb, dass das Mikrofon nicht drahtlos arbeitet, sondern per USB."
+  },
+  {
+   "handle": "kapen-tuch-637600",
+   "widerspruch": "Titel «Kapen-Tuch» ist ein Tippfehler oder unklar (vermutlich «Cape»). Das Datenblatt nennt «Childrens Hooded Bath Towel Outdoor Cloak-style Cape» aus Mikrofaser, also ein Kinder-Badetuch mit Kapuze im Umhang-Stil. Die Kategorie «Bathroom Storage» passt ebenfalls nicht dazu. Der Text nennt den Titelbegriff «Kapen-Tuch» einmal, weil die Prüfung ihn verlangt."
+  },
+  {
+   "handle": "kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+   "widerspruch": "Handle und alter Seitentext sagen «Kissenbezug», Titel und Datenblatt sagen Teppich (Bedroom Rug, Blended Fabric, Irregular Shape). Der Text ist nach dem Datenblatt als Teppich geschrieben. Der Titel nennt ausserdem «in Beige», die Auswahl hat sechs Farben."
+  },
+  {
+   "handle": "klammer-set-fur-geflugel-und-kaninchenkafige-688128",
+   "widerspruch": "Titel und alter Text sagen «Set» mit allen Teilen. Das Datenblatt führt drei getrennte Modelle: A = M-Nägel, B = rote verstärkte Binde-Klammer, C = rote verstärkte Käfigzange plus 1 Box M-Nägel. Der Text beschreibt die drei Modelle einzeln."
+  },
+  {
+   "handle": "klassik-retro-wasserdichte-multifunktion-sport-638300",
+   "widerspruch": "Titel verspricht «wasserdichte», im Datenblatt steht Waterproof nur im Produktnamen, ohne Feld, Schutzklasse oder ATM. Der Text behauptet es nicht und nennt, dass keine Wasserschutzklasse angegeben ist. Titel sollte geprüft oder angepasst werden. «Multifunktion» ist im Datenblatt ebenfalls nicht aufgeschlüsselt."
+  },
+  {
+   "handle": "kinder-outdoor-laufschuhe-600500",
+   "widerspruch": "Titel sagt «Laufschuhe». Das Datenblatt beschreibt Barfuss-/Bachlauf-/Watschuhe (upstream shoes, wading shoes, Barefoot). Das Materialfeld sagt «Leather», die Beschreibung nennt Futter aus Mesh und «paint surface»; das Obermaterial ist unklar und im Text nicht genannt."
+  },
+  {
+   "handle": "keramikring-mit-strass-einlage-609100",
+   "widerspruch": "Titel und alter Text sagen «Strass-Einlage», das Datenblatt sagt «Diamond Inlay». Im Text steht nur «funkelnde Einlage» beziehungsweise der Titelname «Strass-Einlage», kein Diamant."
+  },
+  {
+   "handle": "keramische-wellenscheibe-mit-diamantbeschichtu-7854a8",
+   "widerspruch": "Auswahl und Varianten nennen 115 mm und 125 mm, das Datenblatt nennt Aussendurchmesser 105 mm. Der Text nennt 105 mm bewusst nicht. Die beiden Geschwindigkeitsfelder (Maximum linear speed 9000 «rmp», Maximum speed 4000 ohne Einheit) sind widersprüchlich und stehen deshalb nicht im Text."
+  },
+  {
+   "handle": "keramik-teekanne-602400",
+   "widerspruch": "Titel «Teekanne», aber die Auswahl «Farbe» enthält Formen und zwei Nicht-Kannen: «Topfablage» (Teapot Stand) und «Terrine» (Covered Bowl). Der Text weist darauf hin."
+  },
+  {
+   "handle": "klappbarer-kleiderbugel-fur-auto-schwarz-silbe-216448",
+   "widerspruch": "Datenblatt: Mass 65×55×210 mm bei 797 g Gewicht wirkt unstimmig für ABS (Mass oder Gewicht könnten falsch oder Versandgewicht sein). Im Text steht nur das Mass, nicht das Gewicht."
+  },
+  {
+   "handle": "klassische-elektronische-quarzuhr-aus-holz-f13c47",
+   "widerspruch": "Titel «aus Holz», Produktname «wooden», aber das Materialfeld sagt «metal». Das Gehäusematerial wird im Datenblatt nicht ausdrücklich genannt. Im Text steht «aus Holz» nur über den Titelnamen, der Verschluss ist als Edelstahl belegt."
+  },
+  {
+   "handle": "kompass-mit-ledergehause-vintage-taschenuhr-608800",
+   "widerspruch": "Titel sagt «Ledergehäuse», das Datenblatt nennt als Material Zinklegierung (Zinc alloy, Feld Metal); Leder kommt nur im englischen Produktnamen («Leather Case») vor, ob Etui oder Gehäuse, ist offen. Auch eine Zeitanzeige der «Taschenuhr» ist nicht belegt, als Funktion steht nur «compass». Text nach Datenblatt geschrieben, ohne Leder und ohne Zeitanzeige."
+  },
+  {
+   "handle": "kohlenmonoxidmelder-fur-zuhause-camping-607300",
+   "widerspruch": "Sicherheitsgerät mit auffälligen Datenblatt-Lücken: Spannung «110» (kein Schweizer 230-V-Netz, 110-V-Gerät), keine Normangabe (z. B. EN 50291), «Cross-border exclusive», Masse 100*100*58 ohne Einheit, «6-in-1» nicht aufgeschlüsselt, «Applicable to: Carbon monoxide» gegen «CO und Rauch». Kein Text geschrieben; vor einer Aktivierung prüfen, ob das Produkt in der Schweiz überhaupt verkauft werden darf (siehe Stecker-/110-V-Prüfung)."
+  },
+  {
+   "handle": "kompakter-fleischschneider-xf-300-bcf54a",
+   "widerspruch": "Titel «Fleischschneider», der Produktname im Datenblatt lautet «meat cutting artifact meat grinder» (Fleischwolf), das Typ-Feld «Slicer» (Schneider); welches Gerät es ist, bleibt offen. Der alte Seitentext nennt zudem die Marke Xinfeng und erfindet Verwendungen (Hackfleisch, Gulasch)."
+  },
+  {
+   "handle": "kottonstoff-fur-handwerksprojekte-622100",
+   "widerspruch": "Tippfehler im Titel: «Kottonstoff» statt Baumwollstoff (Datenblatt: Cotton Fabric, Material Cotton). Der alte Seitentext sagt «100 % Baumwolle», das Datenblatt nur «Cotton», die 100 stehen für 100 Stück. Mein Text sagt nur «aus Baumwolle»."
+  },
+  {
+   "handle": "kleine-multifunktions-frettsageblatt-4b7793",
+   "widerspruch": "Kein Titelwiderspruch, aber ein Optionsfehler: Die Option heisst «Farbe», die Werte «1 Modell» bis «4 Modell» sind Sägeblatt-Modelle (Upgrade-Modell 400+2, 500+2, 400+8, 500+8), keine Farben. Der Text erklärt die Zuordnung."
+  },
+  {
+   "handle": "kuhlende-baumwolldecke-fur-fruhling-sommer-610700",
+   "widerspruch": "Titel sagt «Baumwolldecke». Das Datenblatt führt «Bedding Subcategory: Synthetic Fiber Blanket» (Kunstfaser), der Produktname nennt dagegen «Cotton». Der Text folgt dem Datenblatt (Kunstfasern) und erwähnt keine Baumwolle."
+  },
+  {
+   "handle": "kuhlwind-reithelm-mit-sto-dampfung-atmungaktiv-965440",
+   "widerspruch": "Titel sagt «Reithelm». Das Datenblatt sagt nur «Riding Helmet» (mehrdeutig), die CJ-Kategorie ist aber «Sports & Outdoors > Cycling > Bicycle Helmets». Es ist unklar, ob ein Reit- oder ein Radhelm gemeint ist. Das ist bei einem Schutzhelm sicherheitsrelevant und gehört vor der Veröffentlichung geklärt. Der Text nennt keine Prüfnorm und weist darauf hin, dass der Helm für die jeweilige Sportart vorgesehen sein muss."
+  },
+  {
+   "handle": "kuhl-luft-reithelmpolsterung-anti-impact-059968",
+   "widerspruch": "Titel sagt «Reithelmpolsterung», das Datenblatt hat Material ABS (Hartschale) und die CJ-Kategorie «Bicycle Helmets». Wahrscheinlich ist es ein ganzer Helm und keine Polsterung dafür, und «Riding» ist mehrdeutig (Reit- oder Radsport). Die Optionen Modell A/B sind unerklärt. Deshalb auch unter zu_duenn und nicht geschrieben."
+  },
+  {
+   "handle": "kuhlventilator-607600",
+   "widerspruch": "Der Titel «Kühlventilator» klingt universell. Das Datenblatt nennt aber nur ein einziges Konsolenmodell als Anwendungsbereich («Scope of Application» und «Applicable products»). Der Markenname darf nicht in den Text, daher verweist der Text nur auf «ein bestimmtes Konsolenmodell» und bittet um Rückfrage. Der Titel sollte das Zielgerät nennen, zum Beispiel «für eine bestimmte Spielkonsole»."
+  },
+  {
+   "handle": "kuehlkopfband-631300",
+   "widerspruch": "Titel «Kuehlkopfband» ist in ue-Umschrift geschrieben, und die Prüfung verlangt dieses Wort im Text. Er steht deshalb einmal so im ersten Satz, sonst «Kühle». Die CJ-Kategorie «Home Storage > Home Office Storage» passt nicht zu einem Kopfband, und das Gewicht 550 g ist für ein Stirnband unplausibel. Das Gewicht wurde deshalb nicht in den Text übernommen."
+  },
+  {
+   "handle": "kupferring-mit-gravur-und-geburtsstein-633600",
+   "widerspruch": "Titel nennt einen Geburtsstein, das Datenblatt sagt 'Inlay Material: Not Inlaid' (kein Stein eingelegt). Text schreibt: kein Stein eingelegt."
+  },
+  {
+   "handle": "kupferring-mit-zirkonia-abschluss-saison-604600",
+   "widerspruch": "Titel sagt 'Zirkonia', das Datenblatt nennt 'Inlay material: Zircon' (Zirkon, ein anderes Material als Zirkonia). Text schreibt Zirkon."
+  },
+  {
+   "handle": "kupferring-mit-zirkonia-einlage-636100",
+   "widerspruch": "Titel sagt 'Zirkonia-Einlage', das Datenblatt nennt 'Copper Ring With Zircon Inlay' (Zirkon, nicht Zirkonia). Text schreibt Zirkon."
+  },
+  {
+   "handle": "langes-vintage-kleid-621700",
+   "widerspruch": "Titel sagt 'Langes' Kleid, das Datenblatt gibt 'Dress Length: Mid-length' an (mittellang; 'Long' bezieht sich nur auf die Aermel). Text schreibt mittellang."
+  },
+  {
+   "handle": "leather-tasche-vintage-stil-992640",
+   "widerspruch": "Titel sagt 'Tasche', das Datenblatt nennt 'Backpack' (Name und Kategorie Men's Backpacks, Variante 'Breathable back'); ausserdem 'Large Capacity' im Namen gegen 'Luggage size: medium, below 20L'. Text schreibt Rucksack, mittlere Grösse, unter 20 Liter."
+  },
+  {
+   "handle": "kupferarmband-mit-magneten-fur-damen-613200",
+   "widerspruch": "Titel sagt 'für Damen', das Datenblatt nennt 'Target Audience: Women', aber zugleich 'Style: Men's'. Text folgt der Zielgruppe Damen und erwähnt den Herren-Stil nicht."
+  },
+  {
+   "handle": "lederriemen-mit-kette-fur-damen-625100",
+   "widerspruch": "Titel sagt «Leder», das Datenblatt nennt als Material PU (Feld Material: PU). Ausserdem steht dort «Category: Sex toys» (Produktname: «Performance Costumes Accessories»), also vermutlich Adult-Ware."
+  },
+  {
+   "handle": "lederhandtasche-retro-bangalor-mit-olgelee-aa50db",
+   "widerspruch": "Titel sagt «Ölgelee», das Datenblatt (nur der Produktname) sagt «oil wax», also Ölwachs. Die Kategorie nennt «Men's Backpacks», der Produktname «satchel» (Umhängetasche). Der alte Seitentext erfindet «Durchschussbereich» und «Ölgelee-Beschichtung schützt vor Feuchtigkeit»."
+  },
+  {
+   "handle": "lederarmbanduhr-mit-vintage-rindsleder-ea7ffa",
+   "widerspruch": "Titel sagt «Armbanduhr», das Datenblatt beschreibt nur ein Band (Type: strap, Style: pin buckle accessories, Breiten 22/24/26 mm, Variante «Brown-22mm»). Von Zifferblatt oder Uhrwerk steht dort nichts; der alte Seitentext erfindet ein Quarzwerk. Text beschreibt deshalb ein Lederarmband."
+  },
+  {
+   "handle": "led-tintenfisch-nachtlicht-1d969a",
+   "widerspruch": "Titel sagt «Tintenfisch», das Datenblatt sagt «jellyfish» (Qualle). Der Text spricht deshalb von einem Quallen-Nachtlicht. Ausserdem widersprüchlich: einmal drei AAA-, einmal drei AA-Batterien; Kategorie «Fish Tanks» passt nicht zu einem Deko-Nachtlicht."
+  },
+  {
+   "handle": "led-schneeflocken-string-mit-farbwechsel-607700",
+   "widerspruch": "Titel sagt «Farbwechsel», das Datenblatt kennt nur Lichtfarben (Blau, Warmweiss, Weiss) und «Colorful», aber keine Farbwechsel-Funktion; der Text behauptet keinen. Titel sagt «Lichterkette», der Produktname «Curtain Icicle Lights» (Lichtervorhang). Der Produktname nennt «Solar String Lights» und die Varianten «Solar energy», die Felder aber «Input Voltage: 220V»: Stromquelle ungeklärt (der Text nennt nur 220V)."
+  },
+  {
+   "handle": "led-lade-indikator-519232",
+   "widerspruch": "Titel sagt «Lade-Indikator», das Datenblatt beschreibt ein Kontakt-Ladegerät für Controller («handle charger» plus USB-Kabel, 7.3*6.5*21 cm) mit atmendem LED-Licht, keinen blossen Indikator. Welche Controller-Modelle passen, ist nicht angegeben. Der alte Seitentext spricht von «Gaming-Konsole»."
+  },
+  {
+   "handle": "lederarmband-im-literatur-stil-fur-samsung-s3-947392",
+   "widerspruch": "Titel nennt ein bestimmtes Uhrenmodell als Ziel, das Datenblatt beschreibt ein Universalband («Flat mouth universal») in sieben Breiten von 12 bis 24 mm; nur eine dieser Breiten kann zur im Titel genannten Uhr passen. Der Text nennt die Marke nicht (Markensperre) und verweist auf «die im Titel genannte Uhr»."
+  },
+  {
+   "handle": "lederarmband-fur-apple-watch-015232",
+   "widerspruch": "Kein Widerspruch, aber Markensperre: Titel enthält einen Markennamen, der Text nennt ihn nicht und verweist auf den Titel. Datenblatt: «Brand: Neutral», Material-Feld «Cloth» steht gegen «genuine leather» (Text folgt «genuine leather»)."
+  },
+  {
+   "handle": "leichter-lederarmband-619300",
+   "widerspruch": "Titel sagt «Lederarmband», das Datenblatt nennt als Material nur «Stainless Steel»; der Produktname nennt «Leather Stainless Steel Bracelet». Text: «verbindet Leder mit Edelstahl, als Material ist Edelstahl angegeben». Leder-Anteil unklar."
+  },
+  {
+   "handle": "led-punktbohrer-mit-wiederaufladbarer-leuchte-257216",
+   "widerspruch": "Titel «Punktbohrer» klingt nach Bohrwerkzeug, das Datenblatt sagt «Rechargeable LED Lighting Point Drill Pen» (Stift mit LED-Licht, 14.5 cm, 30 g), Kategorie «Hand Tools»; die Einsatzorte (Wohnzimmer, Balkon …) wirken wie von einer Leuchte kopiert. Der eigentliche Zweck steht nirgends; der Text sagt das offen. Der alte Seitentext erfindet einen «Bohrer für den nächtlichen Blick»."
+  },
+  {
+   "handle": "lilith-s-gaze-halskette-aus-titanstahl-632200",
+   "widerspruch": "Titel sagt «Titanstahl», das Datenblatt nennt als Material «Stainless steel» und «304 stainless steel» (nur einmal im Freitext «304 titanium steel necklace»). Der Text sagt deshalb Edelstahl 304."
+  },
+  {
+   "handle": "luftung-fur-schwei-arbeiten-628600",
+   "widerspruch": "Titel sagt «Lüftung für Schweissarbeiten», das Datenblatt beschreibt einen kleinen Tisch-Rauchabsauger für Lötkolben und Lötrauch («Soldering Iron Solder Fume Extractor»), nicht fürs Schweissen. Der Text spricht von Lötrauch."
+  },
+  {
+   "handle": "macaron-silikon-hundeleine-wasserfest-620900",
+   "widerspruch": "Titel sagt Silikon-Hundeleine, das Datenblatt-Feld Material nennt PP (Kunststoff); nur der englische Produktname spricht von Silikon. Text nennt deshalb PP-Kunststoff."
+  },
+  {
+   "handle": "malachitring-im-europaischen-stil-612700",
+   "widerspruch": "Titel Malachitring suggeriert Malachit-Stein, das Datenblatt nennt als Material nur Kupfer mit Zirkon (Malachit steht nur im Produktnamen, nicht im Material). Text behauptet keinen Malachit."
+  },
+  {
+   "handle": "mechanische-herrenuhr-fur-schuler-664896",
+   "widerspruch": "Titel sagt «Mechanische Herrenuhr», das Datenblatt nennt ausdrücklich «Movement type: Quartz» (auch die CJ-Kategorie ist Quartz Watches). Text nach Datenblatt: Quarzwerk."
+  },
+  {
+   "handle": "manuelle-nietenpistole-mit-mandrel-383488",
+   "widerspruch": "Titel sagt «Blindnietzange» (setzt Blindnieten). Das Datenblatt beschreibt «Rivet Gun / Nut Gun Fixed With Mandrel» mit Rivet nuts M3 bis M6 und Dornen, also eine Nietmutternzange. Text nach Datenblatt: Nietzange für Nietmuttern M3 bis M6."
+  },
+  {
+   "handle": "mechanische-tastatur-617400",
+   "widerspruch": "Titel nennt fest «104 Tasten», die Auswahl bietet aber 104, 87 und 61 Tasten (Datenblatt-Varianten Black/White-104/87/61 key). Der Titel passt nur zu einer von drei Ausführungen."
+  },
+  {
+   "handle": "marmor-katzenfutternapf-mit-holzrahmen-6c2413",
+   "widerspruch": "Titel sagt «Marmor». Das Datenblatt nennt als Material «ceramic» (Lieferantenfeld «Stone») und als Farbe nur «marbling - pink/blue», also Keramik in Marmormuster, kein Marmor. Text nennt es Keramik mit marmorierter Optik."
+  },
+  {
+   "handle": "mechanische-wasserdichte-herrenuhr-mit-leuchtz-902dd0",
+   "widerspruch": "Titel verspricht «wasserdicht». Das Datenblatt nennt nur «Waterproof performance: 20m» (kein Wert für Duschen oder Schwimmen). Der Text vermeidet das Wort und nennt nur 20 m Wasserbeständigkeit samt Grenze. Zudem steht im Datenblatt nichts von «Leuchtzeigern», nur «luminous»."
+  },
+  {
+   "handle": "mattes-retro-armband-aus-925er-silber-612400",
+   "widerspruch": "Titel sagt «aus 925er Silber». Das Datenblatt hat zwar «Purity: 925 Silver», aber das Materialfeld des Lieferanten lautet nur «Metal» und das Verfahren «Electroplating». Ob massiv 925 oder beschichtet, bleibt offen. Der Text nennt beides sachlich. Ausserdem enthält die Auswahl auch eine Halskette, der Titel nur ein Armband."
+  },
+  {
+   "handle": "metall-uhrenarmband-fur-apple-watch-757120",
+   "widerspruch": "Der Titel sagt «für Apple Watch» (Datenblatt-Name: «Suitable For Applewatch1 To 8»), aber die Auswahl «Grösse» enthält «22MM» mit «Interface type: flat interface / Interface size: 22mm», und das Datenblatt nennt die Breite widersprüchlich (Produktgrösse «20MM», Spezifikation «22 mm»). Die Variante 22 mm sieht nach einem allgemeinen Flachanschluss-Band aus und passt vermutlich nicht zu einer Smartwatch dieser Art. Der Text nennt die Marke nicht, verweist auf «die Smartwatch aus dem Titel» und warnt bei 22 mm ausdrücklich, den Anschluss zu prüfen."
+  },
+  {
+   "handle": "mini-haarstecker-mit-usb-219264",
+   "widerspruch": "Titel sagt «Haarstecker». Das Datenblatt beschreibt eine über USB ladbare Glättklemme (Straightening Board Clip, Mini-Haarglätter mit Tourmalin-Keramik-Heizleiter), keinen Haarstecker. Der Text beschreibt die Glättklemme."
+  },
+  {
+   "handle": "mini-wireless-glattburste-mit-anionenfunktion-281920",
+   "widerspruch": "Titel sagt «Wireless» (kabellos), das Feld «Power supply mode» lautet aber «Wired (AC)» (Netzbetrieb mit Kabel); der Produktname des Lieferanten sagt dagegen «Wireless». Nennleistung «30» und Spannung «5» stehen ohne Einheit da. Option «Leistung» enthält in Wahrheit Farben (Himmelblau, Kirschblütenpuder). Kein Text geschrieben (zu dünn)."
+  },
+  {
+   "handle": "minimalistischer-amethyst-damenring-625900",
+   "widerspruch": "Titel nennt «Amethyst». Beschreibungsfelder und Varianten kennen nur Weisser Diamant, Champagner Gold Weisser Diamant, Bunte Kristalle und Gelber Diamant; «Amethyst» steht nur im Produktnamen. Material ist Legierung (Alloy), galvanisiert. Der Text nennt keinen Amethyst-Stein."
+  },
+  {
+   "handle": "minimalistischer-perlen-kristallring-vergoldet-626300",
+   "widerspruch": "Titel sagt «vergoldet», das Material-Feld lautet aber «Silver-plated» (versilbert); Farben sind Silber und Gold, der Produktname nennt «With Gold Plating». Der Text sagt: versilbert, in der Farbe Gold mit Vergoldung."
+  },
+  {
+   "handle": "modegurtel-quarz-uhr-a4eee7",
+   "widerspruch": "Titel «Modegürtel-Quarz-Uhr»: Das Datenblatt nennt «Belt fashion trend quartz watch» und enthält keinen Hinweis auf einen Gürtel. Vermutlich Fehlübersetzung von «belt» (Armband/Band). Der Text sagt nichts über einen Gürtel."
+  },
+  {
+   "handle": "moissanite-ring-aus-rhodiniertem-925er-silber-600700",
+   "widerspruch": "Titel und Beschreibung sagen «Moissanite» (Set with moissanite), alle Variantenschlüssel im Datenblatt lauten aber «Silver-Zircon-US 4» bzw. «Gold-Zircon-US …». Der Stein ist nicht eindeutig (Moissanit oder Zirkon). Der Text folgt der Beschreibung (Moissanit)."
+  }
+ ]
+}

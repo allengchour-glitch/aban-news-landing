@@ -1,0 +1,2012 @@
+{
+ "abteilung": "herren-bekleidung",
+ "geschlecht_regel": "Seit der gemeinsamen Pruefung gilt fuer ALLE Abteilungen EINE Geschlechtsregel (geschlecht_gemeinsam.mjs, beschrieben in ALLES.json -> geschlecht). Die urspruengliche Regel dieser Abteilung steht unveraendert in `geschlecht_regel_abteilung`; sie ist in der gemeinsamen Regel als Eingabe enthalten.",
+ "kategorien": [
+  {
+   "handle": "herren-sets",
+   "titel": "Sets & Zweiteiler",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outfit Sets",
+    "Apparel & Accessories > Clothing > Shirts & Tops",
+    "Apparel & Accessories > Clothing > Pants",
+    "Apparel & Accessories > Clothing > Shorts",
+    "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Zweiteilige Sets und Outfits für Herren, etwa Hemd mit Hose oder Hoodie mit Jogger. Teile, die zusammen gekauft und kombiniert getragen werden.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 31,
+    "stichprobe": 28,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 28
+   }
+  },
+  {
+   "handle": "herren-anzuege-sakkos",
+   "titel": "Anzüge & Sakkos",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Suits",
+    "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(?<!arbeits|schutz|jagd|ski|regen)anzug",
+    "(^|[^a-zäöüß])(sakko|blazer|smoking|zweireiher|business-?jacke|frack|gehrock)",
+    "(?<!denim[ -])jackett"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Anzüge, Sakkos und Blazer für Herren in Business-, Casual- und Sommerschnitten. Filterbar nach Anzug und Sakko.",
+   "unterfilter": [
+    {
+     "handle": "herren-anzuege",
+     "titel": "Anzüge",
+     "titel_muss": [
+      "(anzug|anzüge|anzuege)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    },
+    {
+     "handle": "herren-sakkos-blazer",
+     "titel": "Sakkos & Blazer",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sakko|blazer|jackett|zweireiher|anzugjacke)"
+     ],
+     "titel_nicht": [],
+     "treffer": 49
+    }
+   ],
+   "gemessen": {
+    "treffer": 66,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 64
+   }
+  },
+  {
+   "handle": "herren-hoodies-sweatshirts",
+   "titel": "Hoodies & Sweatshirts",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(hoodies?|hoodys?|hooded)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(sweat-?shirts?)",
+    "(^|[^a-zäöüß])(kapuzen-?(pullover|pulli|sweat\\w*|shirt|jacke|cardigan|kardigan))",
+    "(^|[^a-zäöüß])(sweatjacke)",
+    "^(?=.*pullover)(?=.*kapuze)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Hoodies, Kapuzenpullover und Sweatshirts für Herren, auch mit Reissverschluss oder Fleecefutter. Filterbar nach Hoodie, Sweatshirt und Zip-Variante.",
+   "unterfilter": [
+    {
+     "handle": "herren-hoodies",
+     "titel": "Hoodies",
+     "titel_muss": [
+      "(hoodies?|hoodys?)(?![a-zäöüß])",
+      "(^|[^a-zäöüß])(kapuzenpullover|kapuzenpulli|kapuzen-sweat)"
+     ],
+     "titel_nicht": [],
+     "treffer": 216
+    },
+    {
+     "handle": "herren-sweatshirts",
+     "titel": "Sweatshirts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sweat-?shirt|rundhals-?sweat)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(kapuze|hoodie|cardigan)"
+     ],
+     "treffer": 44
+    },
+    {
+     "handle": "herren-hoodies-zip",
+     "titel": "Zip-Hoodies & Kapuzenjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(zip|reissverschluss|kapuzenjacke|sweatjacke|cardigan)"
+     ],
+     "titel_nicht": [],
+     "treffer": 41
+    },
+    {
+     "handle": "herren-hoodies-fleece",
+     "titel": "Fleece-Hoodies",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fleece|gefüttert|plüsch|teddy|heavyweight|dick)"
+     ],
+     "titel_nicht": [],
+     "treffer": 29
+    }
+   ],
+   "gemessen": {
+    "treffer": 288,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 281
+   }
+  },
+  {
+   "handle": "herren-poloshirts",
+   "titel": "Poloshirts",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "^(?!.*(pullover|cardigan|strickjacke))(.*[^a-zäöüß])?polo(?!-?(kragen|ausschnitt|hals))"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(hoodies?|hoodys?|hooded)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(sweat-?shirts?)",
+    "(^|[^a-zäöüß])(kapuzen-?(pullover|pulli|sweat\\w*|shirt|jacke|cardigan|kardigan))",
+    "(^|[^a-zäöüß])(sweatjacke)",
+    "^(?=.*pullover)(?=.*kapuze)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Poloshirts und Polohemden für Herren in Kurzarm und Langarm. Filterbar nach Ärmellänge und Business- oder Golf-Look.",
+   "unterfilter": [
+    {
+     "handle": "herren-poloshirts-kurzarm",
+     "titel": "Kurzarm",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kurzarm|kurzärm|kurz-?arm)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(langarm|langärm)"
+     ],
+     "treffer": 53
+    },
+    {
+     "handle": "herren-poloshirts-langarm",
+     "titel": "Langarm",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(langarm|langärm|long)"
+     ],
+     "titel_nicht": [],
+     "treffer": 27
+    },
+    {
+     "handle": "herren-poloshirts-business",
+     "titel": "Business & Golf",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|golf|kontrast|piqu)"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    }
+   ],
+   "gemessen": {
+    "treffer": 208,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 207
+   }
+  },
+  {
+   "handle": "herren-pullover-strick",
+   "titel": "Pullover & Strick",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(pullover|pullis?|sweater|troyer|turtleneck|cardigans?|kardigans?|kardigen|cardigan-?jacke)(?![a-zäöüß])",
+    "^(?!.*hemd)(.*[^a-zäöüß])?strick(?!muster|-?\\s?polo)",
+    "^(?!.*(t-?shirt|hemd)).*rollkragen",
+    "^(?!.*(t-?shirt|hemd)).*(half-?zip|halb-?zip|halbzipfel)",
+    "(^|[^a-zäöüß])(fleece-?(pullover|pulli|sweater|shirt))",
+    "(^|[^a-zäöüß])(wollpullover)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(hoodies?|hoodys?|hooded)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(sweat-?shirts?)",
+    "(^|[^a-zäöüß])(kapuzen-?(pullover|pulli|sweat\\w*|shirt|jacke|cardigan|kardigan))",
+    "(^|[^a-zäöüß])(sweatjacke)",
+    "^(?=.*pullover)(?=.*kapuze)",
+    "^(?!.*(pullover|cardigan|strickjacke))(.*[^a-zäöüß])?polo(?!-?(kragen|ausschnitt|hals))",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Pullover, Strickpullover, Cardigans, Strickjacken und Rollkragenpullover für Herren. Filterbar nach Form, Ausschnitt und Futter.",
+   "unterfilter": [
+    {
+     "handle": "herren-pullover-strickpullover",
+     "titel": "Strickpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strick(?!jacke)|gestrickt|wollpullover|wolle|kaschmir|häkel)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(cardigan|kardigan|strickjacke)"
+     ],
+     "treffer": 110
+    },
+    {
+     "handle": "herren-pullover-cardigans",
+     "titel": "Cardigans & Strickjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cardigan|kardigan|kardigen|strickjacke)"
+     ],
+     "titel_nicht": [],
+     "treffer": 129
+    },
+    {
+     "handle": "herren-pullover-rollkragen",
+     "titel": "Rollkragenpullover",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(rollkragen|turtleneck|mock-?neck)"
+     ],
+     "titel_nicht": [],
+     "treffer": 23
+    },
+    {
+     "handle": "herren-pullover-halbzip",
+     "titel": "Half-Zip & Troyer",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(half-?zip|halb-?zip|halbzipfel|troyer|reissverschluss)"
+     ],
+     "titel_nicht": [],
+     "treffer": 22
+    },
+    {
+     "handle": "herren-pullover-v-ausschnitt",
+     "titel": "V-Ausschnitt",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(v-ausschnitt|v-neck|v-?hals)"
+     ],
+     "titel_nicht": [],
+     "treffer": 28
+    },
+    {
+     "handle": "herren-pullover-fleece",
+     "titel": "Fleece & Thermo",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fleece|thermo|gefüttert|plüsch|teddy)"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    }
+   ],
+   "gemessen": {
+    "treffer": 466,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 459
+   }
+  },
+  {
+   "handle": "herren-hemden",
+   "titel": "Hemden",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(?<!unter|nacht)hemd",
+    "(^|[^a-zäöüß])(overshirt|button-?(down|up)|guayabera|kimono)",
+    "blusen?",
+    "^(?=.*shirt)(?!.*(t-?shirt|henley|henry))(?=.*(knopfleiste|revers|button|stehkragen|kubakragen|mandarin|plaid|kariert|karo|bügelfrei|cord|flanell|oxford|kragen|knöpf))"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(hoodies?|hoodys?|hooded)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(sweat-?shirts?)",
+    "(^|[^a-zäöüß])(kapuzen-?(pullover|pulli|sweat\\w*|shirt|jacke|cardigan|kardigan))",
+    "(^|[^a-zäöüß])(sweatjacke)",
+    "^(?=.*pullover)(?=.*kapuze)",
+    "^(?!.*(pullover|cardigan|strickjacke))(.*[^a-zäöüß])?polo(?!-?(kragen|ausschnitt|hals))",
+    "(pullover|pullis?|sweater|troyer|turtleneck|cardigans?|kardigans?|kardigen|cardigan-?jacke)(?![a-zäöüß])",
+    "^(?!.*hemd)(.*[^a-zäöüß])?strick(?!muster|-?\\s?polo)",
+    "^(?!.*(t-?shirt|hemd)).*rollkragen",
+    "^(?!.*(t-?shirt|hemd)).*(half-?zip|halb-?zip|halbzipfel)",
+    "(^|[^a-zäöüß])(fleece-?(pullover|pulli|sweater|shirt))",
+    "(^|[^a-zäöüß])(wollpullover)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Herrenhemden in Kurzarm und Langarm: Freizeit-, Leinen-, Business-, Karo-, Hawaii- und Cordhemden. Filterbar nach Ärmellänge, Material und Muster.",
+   "unterfilter": [
+    {
+     "handle": "herren-hemden-kurzarm",
+     "titel": "Kurzarmhemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kurzarm|kurzärm|kurz-?arm|halbarm|short)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(langarm|langärm)"
+     ],
+     "treffer": 202
+    },
+    {
+     "handle": "herren-hemden-langarm",
+     "titel": "Langarmhemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(langarm|langärm|long)"
+     ],
+     "titel_nicht": [],
+     "treffer": 260
+    },
+    {
+     "handle": "herren-hemden-leinen",
+     "titel": "Leinenhemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(lein(en|enmix|enartig))"
+     ],
+     "titel_nicht": [],
+     "treffer": 112
+    },
+    {
+     "handle": "herren-hemden-freizeit",
+     "titel": "Freizeithemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(freizeit|casual|lässig|legere|loose)"
+     ],
+     "titel_nicht": [],
+     "treffer": 144
+    },
+    {
+     "handle": "herren-hemden-hawaii-strand",
+     "titel": "Hawaii- & Strandhemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hawai|strand|resort|kubakragen|beach|tropical|palmen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 45
+    },
+    {
+     "handle": "herren-hemden-kariert",
+     "titel": "Karo & Flanell",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kari|karo|plaid|flanell|tartan|gingham)"
+     ],
+     "titel_nicht": [],
+     "treffer": 79
+    },
+    {
+     "handle": "herren-hemden-business",
+     "titel": "Business-Hemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|bügelfrei|manschett|anzug|formell|klassisch|elegant)"
+     ],
+     "titel_nicht": [],
+     "treffer": 73
+    },
+    {
+     "handle": "herren-hemden-jeans-cord",
+     "titel": "Jeans- & Cordhemden",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim|cord|corduroy|samt)"
+     ],
+     "titel_nicht": [],
+     "treffer": 38
+    }
+   ],
+   "gemessen": {
+    "treffer": 879,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 878
+   },
+   "ersetzt_collection": {
+    "handle": "herren-hemden",
+    "titel": "Herren-Hemden",
+    "n_alt": 1000,
+    "regel_alt": "TAG EQUALS herren UND TITLE CONTAINS Hemd UND TITLE NOT_CONTAINS Set",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "herren-t-shirts",
+   "titel": "T-Shirts & Shirts",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(t-?shirts?|tees?(?![a-zäöüß])|tops?(?![a-zäöüß])|tank|singlet|muskel|trikot|henley|longsleeve|unterhemd)",
+    "(shirts?|top)(?![a-zäöüß])",
+    "oberteil|schirt|kurzärml"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(hoodies?|hoodys?|hooded)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(sweat-?shirts?)",
+    "(^|[^a-zäöüß])(kapuzen-?(pullover|pulli|sweat\\w*|shirt|jacke|cardigan|kardigan))",
+    "(^|[^a-zäöüß])(sweatjacke)",
+    "^(?=.*pullover)(?=.*kapuze)",
+    "^(?!.*(pullover|cardigan|strickjacke))(.*[^a-zäöüß])?polo(?!-?(kragen|ausschnitt|hals))",
+    "(pullover|pullis?|sweater|troyer|turtleneck|cardigans?|kardigans?|kardigen|cardigan-?jacke)(?![a-zäöüß])",
+    "^(?!.*hemd)(.*[^a-zäöüß])?strick(?!muster|-?\\s?polo)",
+    "^(?!.*(t-?shirt|hemd)).*rollkragen",
+    "^(?!.*(t-?shirt|hemd)).*(half-?zip|halb-?zip|halbzipfel)",
+    "(^|[^a-zäöüß])(fleece-?(pullover|pulli|sweater|shirt))",
+    "(^|[^a-zäöüß])(wollpullover)",
+    "(?<!unter|nacht)hemd",
+    "(^|[^a-zäöüß])(overshirt|button-?(down|up)|guayabera|kimono)",
+    "blusen?",
+    "^(?=.*shirt)(?!.*(t-?shirt|henley|henry))(?=.*(knopfleiste|revers|button|stehkragen|kubakragen|mandarin|plaid|kariert|karo|bügelfrei|cord|flanell|oxford|kragen|knöpf))",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "T-Shirts, Langarmshirts, Tanktops und weitere Shirts für Herren. Filterbar nach Ärmellänge, Tanktop, Henley und Print.",
+   "unterfilter": [
+    {
+     "handle": "herren-t-shirts-kurzarm",
+     "titel": "Kurzarm",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kurzarm|kurzärm|short-?sleeve|halbarm|kurz-?arm)"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(langarm|langärm|long-?sleeve)"
+     ],
+     "treffer": 130
+    },
+    {
+     "handle": "herren-t-shirts-langarm",
+     "titel": "Langarm",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(langarm|langärm|long-?sleeve|longsleeve|dreiviertel)"
+     ],
+     "titel_nicht": [],
+     "treffer": 203
+    },
+    {
+     "handle": "herren-t-shirts-tanktops",
+     "titel": "Tanktops & Muskelshirts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(tank|ärmellos|singlet|muskel|sleeveless|trägershirt)"
+     ],
+     "titel_nicht": [],
+     "treffer": 18
+    },
+    {
+     "handle": "herren-t-shirts-henley",
+     "titel": "Henley & Knopfleiste",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(henley|knopfleiste|v-ausschnitt mit knöpfen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    },
+    {
+     "handle": "herren-t-shirts-print",
+     "titel": "Print & Grafik",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(print|druck|grafik|aufdruck|motiv|bedruckt)"
+     ],
+     "titel_nicht": [],
+     "treffer": 74
+    }
+   ],
+   "gemessen": {
+    "treffer": 666,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 664
+   }
+  },
+  {
+   "handle": "herren-jacken-maentel",
+   "titel": "Jacken & Mäntel",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(warnjacke|sicherheits)",
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(?<!arbeits|schutz|jagd|ski|regen)anzug",
+    "(^|[^a-zäöüß])(sakko|blazer|smoking|zweireiher|business-?jacke|frack|gehrock)",
+    "(?<!denim[ -])jackett",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Jacken und Mäntel für Herren: Jeans-, Leder-, Bomber-, Übergangs-, Winter-, Outdoor- und Kapuzenjacken sowie Mäntel und Trenchcoats. Filterbar nach Jackenart.",
+   "unterfilter": [
+    {
+     "handle": "herren-jacken-jeans",
+     "titel": "Jeansjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim)"
+     ],
+     "titel_nicht": [],
+     "treffer": 53
+    },
+    {
+     "handle": "herren-jacken-leder",
+     "titel": "Leder- & Kunstlederjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leder|pu-?leder|wildleder|biker|lederimitat)"
+     ],
+     "titel_nicht": [],
+     "treffer": 26
+    },
+    {
+     "handle": "herren-jacken-baseball-bomber",
+     "titel": "Bomber- & Baseballjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(baseball|bomber|college|varsity|pilot|harrington|coach)"
+     ],
+     "titel_nicht": [],
+     "treffer": 27
+    },
+    {
+     "handle": "herren-jacken-uebergang",
+     "titel": "Übergangsjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(übergang|frühling|herbst|freizeitjacke|leicht)"
+     ],
+     "titel_nicht": [],
+     "treffer": 64
+    },
+    {
+     "handle": "herren-jacken-winter",
+     "titel": "Winter- & Daunenjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(winter|daunen|wattiert|gepolstert|pad-?jacke|steppjacke|parka|gefüttert|warm|puffer)"
+     ],
+     "titel_nicht": [],
+     "treffer": 44
+    },
+    {
+     "handle": "herren-jacken-outdoor",
+     "titel": "Outdoor- & Windjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(outdoor|wind|wasserdicht|softshell|regen|taktisch|trekking|wander)"
+     ],
+     "titel_nicht": [],
+     "treffer": 39
+    },
+    {
+     "handle": "herren-jacken-kapuze",
+     "titel": "Kapuzenjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kapuze|hoodie)"
+     ],
+     "titel_nicht": [],
+     "treffer": 54
+    },
+    {
+     "handle": "herren-jacken-maentel-lang",
+     "titel": "Mäntel & Trenchcoats",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mantel|trench|coat|parka|überzieher)"
+     ],
+     "titel_nicht": [],
+     "treffer": 32
+    },
+    {
+     "handle": "herren-jacken-hemdjacke",
+     "titel": "Hemdjacken & Workwear",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(hemdjacke|jeanshemd|overshirt|workwear|arbeits|shacket|cord)"
+     ],
+     "titel_nicht": [],
+     "treffer": 37
+    }
+   ],
+   "gemessen": {
+    "treffer": 424,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 420
+   }
+  },
+  {
+   "handle": "herren-westen",
+   "titel": "Westen",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outerwear > Vests"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(warn|sicherheits|schutz|kampf|angel|fischer|jagd|kühl|heiz|reflekt|trage)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Westen für Herren: Strick-, Anzug-, Daunen-, Steppwesten sowie Outdoor- und Sportwesten. Filterbar nach Art.",
+   "unterfilter": [
+    {
+     "handle": "herren-westen-strick-anzug",
+     "titel": "Strick- & Anzugwesten",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(strick|gestrickt|anzug|business|zweireih|tweed|fischgrat|wolle)"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    },
+    {
+     "handle": "herren-westen-outdoor",
+     "titel": "Outdoor- & Sportwesten",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(outdoor|sport|taktisch|multifunktion|multipocket|fitness|lauf|funktion)"
+     ],
+     "titel_nicht": [],
+     "treffer": 15
+    }
+   ],
+   "gemessen": {
+    "treffer": 87,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 86
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "herren-westen-gesteppt",
+     "titel": "Daunen- & Steppwesten",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(daunen|stepp|gesteppt|wattiert|gepolstert|puffer|fleece|thermo|winterweste|warm)"
+     ],
+     "titel_nicht": [],
+     "treffer": 11
+    }
+   ]
+  },
+  {
+   "handle": "herren-shorts",
+   "titel": "Shorts",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shorts",
+    "Apparel & Accessories > Clothing > Pants"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "^(?!.*(kombination|hemd)).*shorts?(?![a-zäöüß])",
+    "kurzjeans",
+    "kurze (washed )?(denim )?jeans",
+    "(^|[^a-zäöüß])(bermuda)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Shorts für Herren: Jeans-, Cargo-, Chino- und Strandshorts. Filterbar nach Jeansshorts.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 21,
+    "stichprobe": 20,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 20
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "herren-shorts-jeans",
+     "titel": "Jeansshorts",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim)"
+     ],
+     "titel_nicht": [],
+     "treffer": 11
+    }
+   ]
+  },
+  {
+   "handle": "herren-jeans",
+   "titel": "Jeans",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Pants"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(jeans?|jeanshosen?)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(denim)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "^(?!.*(kombination|hemd)).*shorts?(?![a-zäöüß])",
+    "kurzjeans",
+    "kurze (washed )?(denim )?jeans",
+    "(^|[^a-zäöüß])(bermuda)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Jeans für Herren in Straight, Loose, Slim, Bootcut und Destroyed. Filterbar nach Schnitt und Waschung.",
+   "unterfilter": [
+    {
+     "handle": "herren-jeans-straight",
+     "titel": "Straight",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(straight|gerade)"
+     ],
+     "titel_nicht": [],
+     "treffer": 29
+    },
+    {
+     "handle": "herren-jeans-loose",
+     "titel": "Loose & Baggy",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(loose|baggy|weit|wide|relaxed|oversize)"
+     ],
+     "titel_nicht": [],
+     "treffer": 38
+    },
+    {
+     "handle": "herren-jeans-slim",
+     "titel": "Slim & Skinny",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(slim|skinny|schmal|eng(?![a-zäöüß]))"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    },
+    {
+     "handle": "herren-jeans-bootcut",
+     "titel": "Bootcut & Flared",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bootcut|flare|schlag)"
+     ],
+     "titel_nicht": [],
+     "treffer": 15
+    },
+    {
+     "handle": "herren-jeans-destroyed",
+     "titel": "Destroyed & Vintage",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(distress|destroy|ripped|zerrissen|vintage|washed|used|patchwork)"
+     ],
+     "titel_nicht": [],
+     "treffer": 39
+    }
+   ],
+   "gemessen": {
+    "treffer": 146,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "ersetzt_collection": {
+    "handle": "herren-jeans",
+    "titel": "Herren-Jeans",
+    "n_alt": 150,
+    "regel_alt": "TAG EQUALS such-herren-jeans",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "herren-hosen",
+   "titel": "Hosen",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Pants"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(schutz|schürze|skianzug|snowboard)",
+    "(^|[^a-zäöüß])(sets?|outfits?|kombination)(?![a-zäöüß])",
+    "(shirt|hemd|hoodie|oberteil|top|jacke|weste|kurzärmling|pullover)[a-zäöüß-]* ?(und|&|\\+) ?[a-zäöüß-]*(hose|hosen|shorts|jogger)",
+    "^(?!.*(kombination|hemd)).*shorts?(?![a-zäöüß])",
+    "kurzjeans",
+    "kurze (washed )?(denim )?jeans",
+    "(^|[^a-zäöüß])(bermuda)",
+    "(jeans?|jeanshosen?)(?![a-zäöüß])",
+    "(^|[^a-zäöüß])(denim)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Hosen für Herren ohne Jeans: Cargo-, Freizeit-, Jogger-, Outdoor-, Chino- und Stoffhosen sowie Workwear-Hosen. Filterbar nach Hosenart.",
+   "unterfilter": [
+    {
+     "handle": "herren-hosen-cargo",
+     "titel": "Cargohosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cargo|multi-?pocket|taschen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 38
+    },
+    {
+     "handle": "herren-hosen-freizeit",
+     "titel": "Freizeithosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(freizeit|casual|lässig|bequem|loose)"
+     ],
+     "titel_nicht": [],
+     "treffer": 38
+    },
+    {
+     "handle": "herren-hosen-arbeit",
+     "titel": "Workwear- & Arbeitshosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(arbeits|work-?pants|workpants|workwear|work-?hose|latzhose)"
+     ],
+     "titel_nicht": [],
+     "treffer": 23
+    },
+    {
+     "handle": "herren-hosen-outdoor",
+     "titel": "Outdoor-Hosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(outdoor|wasserdicht|trekking|wander|softshell|taktisch|wind|camo|tarn|schnee)"
+     ],
+     "titel_nicht": [],
+     "treffer": 33
+    },
+    {
+     "handle": "herren-hosen-stoff-chino",
+     "titel": "Chino- & Stoffhosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(chino|stoff|anzughose|business|formell|klassisch|trouser|cord|kord|lein(en|enmix|enhose)|schmal)"
+     ],
+     "titel_nicht": [],
+     "treffer": 21
+    }
+   ],
+   "gemessen": {
+    "treffer": 154,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "herren-hosen-jogger",
+     "titel": "Jogger & Sporthosen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jogger|jogging|sweatpants|trainer|sport|fitness|schlabber|kordelzug)"
+     ],
+     "titel_nicht": [],
+     "treffer": 14
+    }
+   ],
+   "ersetzt_collection": {
+    "handle": "herren-hosen",
+    "titel": "Herren-Hosen",
+    "n_alt": 189,
+    "regel_alt": "TAG EQUALS herren UND TITLE CONTAINS hose UND TITLE NOT_CONTAINS Set",
+    "hinweis": "Gleiches Handle, neuer Inhalt: Der URL bleibt erhalten, die Regel wird ersetzt (Details in PRUEFBERICHT.md, Abschnitt Handle-Kollisionen)."
+   }
+  },
+  {
+   "handle": "herren-overalls",
+   "titel": "Overalls & Jumpsuits",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits & Rompers"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(ski-?overall|ringer|einteiler)",
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Overalls und Jumpsuits für Herren, vom Denim-Overall bis zum Cargo-Jumpsuit. Einteiler mit Hosenträgern, Polokragen oder Taschen.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 30,
+    "stichprobe": 30,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 31
+   }
+  },
+  {
+   "handle": "herren-sportbekleidung",
+   "titel": "Sportbekleidung",
+   "eltern": "herren",
+   "geschlecht": "herren",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Activewear"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(taktisch|tactical)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Sportbekleidung für Herren: Fitness- und Laufshirts, Baselayer, Trainingsanzüge, Westen und Hosen. Für Training, Golf und Radfahren.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 30,
+    "stichprobe": 21,
+    "falsch": 0,
+    "falsche_beispiele": [],
+    "treffer_abteilung": 21
+   }
+  }
+ ],
+ "rest": {
+  "anzahl": 47,
+  "beispiele": [
+   "Einteiliger Allover-Badeanzug – Selbst gestalten [Bademode]",
+   "Unisex Wind- und wasserdichter Skianzug [Ski-/Regenanzug]",
+   "Taktische Outdoor Warnweste für Herren [Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste)]",
+   "Atmungsaktive Fischer- und Reiseweste [Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste)]",
+   "Mönchskutte für Cosplay und Bühne [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Saiyu Motorrad Regenkombi mit Überschuhen [Ski-/Regenanzug]",
+   "Stickerei Sonnenschutz Atmungsaktiv Leicht Herren [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Vintage-Fleece mit Buchstaben-Druck [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Winter Heizweste mit Batterie für Herren [Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste)]",
+   "Wasserdichter, winddichter Ski-Overall mit extra-dicker Isolierung [Ski-/Regenanzug]",
+   "Muslimisches langes Herren-Gewand [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Herren Langarm-Tunika mit Stickerei-Bordüre [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Loose Casual Shirtcoat in Schwarz, Weiss, Grau, Grün [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Herren-Robe mit Kapuze und langen Ärmeln [Nachtwäsche/Bademantel/Homewear]",
+   "Herren Badehose schnelltrocknend [Bademode]",
+   "Herren Kimono Nachtgewand [Nachtwäsche/Bademantel/Homewear]",
+   "Leichter Sommerschneider [Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\"]",
+   "Muskulöse Unterwäsche für Herren [Unterwäsche]",
+   "Raver Set Herren schwarz/grün · Gr. S [Kostüm/Perücke/Maske (Google-Kategorie leer)]",
+   "Hippie Shirt für Männer [Kostüm/Perücke/Maske (Google-Kategorie leer)]"
+  ],
+  "vorschlag": "Von 3506 Herren-/Unisex-Produkten in Kleidung nehmen die 14 Kategorien 3459 (98.7 %). Die 47 ohne Kategorie sind Fremdkörper mit eigenem Ziel (siehe fremdkoerper): Bademode 2; Ski-/Regenanzug 3; Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) 5; Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" 13; Nachtwäsche/Bademantel/Homewear 5; Unterwäsche 3; Kostüm/Perücke/Maske (Google-Kategorie leer) 14; Sport-Einteiler 2. Dazu kommen 118 Kleidungsprodukte ganz ohne Geschlechtsangabe (Tag, Titel, Typ; meist taktische Westen, Yoga-Hosen, Capes, Ponchos, Bademäntel, einzelne Hoodies/Winterjacken): sie stehen in keiner Abteilung und brauchen entweder eine Abteilung \"Unisex & Outdoor\" oder Handarbeit; 76 Partnerlook-, Paar- und Familien-Produkte (meist mit Damen-Tag) gehören in eine Querschnitt-Sammlung \"Partnerlook & Paare\"."
+ },
+ "fremdkoerper": [
+  {
+   "handle": "einteiliger-allover-badeanzug-selbst-gestalten",
+   "grund": "Bademode (C > Swimwear)",
+   "gehoert_nach": "sub-bademode"
+  },
+  {
+   "handle": "unisex-wind-und-wasserdichter-skianzug-600300",
+   "grund": "Ski-/Regenanzug (C > Outerwear > Snow Pants & Suits)",
+   "gehoert_nach": "sport-outdoor"
+  },
+  {
+   "handle": "taktische-outdoor-warnweste-fur-herren-623500",
+   "grund": "Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) (C > Outerwear > Vests)",
+   "gehoert_nach": "arbeitskleidung"
+  },
+  {
+   "handle": "atmungsaktive-fischer-und-reiseweste-630600",
+   "grund": "Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) (C > Outerwear > Vests)",
+   "gehoert_nach": "arbeitskleidung"
+  },
+  {
+   "handle": "monchskutte-fur-cosplay-und-buhne-614100",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "saiyu-motorrad-regenkombi-mit-uberschuhen-631700",
+   "grund": "Ski-/Regenanzug (C > Outerwear > Rain Suits)",
+   "gehoert_nach": "sport-outdoor"
+  },
+  {
+   "handle": "stickerei-sonnenschutz-atmungsaktiv-leicht-her-618300",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "vintage-fleece-mit-buchstaben-druck-609400",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Shirts & Tops)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "winter-heizweste-mit-batterie-fur-herren-605000",
+   "grund": "Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) (C > Outerwear > Vests)",
+   "gehoert_nach": "arbeitskleidung"
+  },
+  {
+   "handle": "wasserdichter-winddichter-ski-overall-mit-extr-604900",
+   "grund": "Ski-/Regenanzug (C > One-Pieces > Jumpsuits & Rompers)",
+   "gehoert_nach": "sport-outdoor"
+  },
+  {
+   "handle": "muslimisches-langes-herren-gewand-609100",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Shirts & Tops)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "langarmshirt-mit-reverskragen-625500",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Shirts & Tops)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "loose-casual-shirtcoat-in-schwarz-weiss-grau-g-600100",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Shirts & Tops)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "herren-robe-mit-kapuze-und-langen-armeln-616200",
+   "grund": "Nachtwäsche/Bademantel/Homewear (C > Sleepwear & Loungewear > Robes)",
+   "gehoert_nach": "nachtwaesche-pyjamas"
+  },
+  {
+   "handle": "herren-badehose-schnelltrocknend-616200",
+   "grund": "Bademode (C > Swimwear)",
+   "gehoert_nach": "sub-bademode"
+  },
+  {
+   "handle": "herren-kimono-nachtgewand-611500",
+   "grund": "Nachtwäsche/Bademantel/Homewear (C > Sleepwear & Loungewear > Robes)",
+   "gehoert_nach": "nachtwaesche-pyjamas"
+  },
+  {
+   "handle": "leichter-sommerschneider-606700",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "muskulose-unterwasche-fur-herren-626000",
+   "grund": "Unterwäsche (C > Underwear & Socks)",
+   "gehoert_nach": "unterwaesche"
+  },
+  {
+   "handle": "raver-set-herren-schwarz-grun-gr-s-ftor7990-s",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "hippie-shirt-fur-manner-fga998681",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "piraten-paradefrack-fur-herren-fgss4992",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "paradefrack-fur-herren-fgss5145",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "kostum-blumen-willow-mann-fgssbo8359",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "kostum-safari-fur-mann-fgabo83882",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "kostum-weltraum-mann-fgsseu721111",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "kostum-mime-mann-gr-m-l-fgaeu706941ml",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "kostum-braut-fur-manner-fgapc24549",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "perucke-schwarz-fur-herren-fga902456",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "perucke-fur-herren-haare-weiss-fga902459",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "perucke-braun-fur-herren-fga902458",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "perucke-blond-fur-herren-fga902457",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "latex-kopfmaske-alter-mann-fgabo00168",
+   "grund": "Kostüm/Perücke/Maske (Google-Kategorie leer) ((leer))",
+   "gehoert_nach": "kostueme-fasnacht"
+  },
+  {
+   "handle": "nahtloser-shapewear-bodysuit-fur-herren-638400",
+   "grund": "Unterwäsche (C > Underwear & Socks > Shapewear)",
+   "gehoert_nach": "unterwaesche"
+  },
+  {
+   "handle": "figurbetonter-body-im-boxer-stil-fur-herren-609900",
+   "grund": "Unterwäsche (C > Underwear & Socks > Shapewear)",
+   "gehoert_nach": "unterwaesche"
+  },
+  {
+   "handle": "armelloser-ringer-einteiler-fur-herren-604200",
+   "grund": "Sport-Einteiler (C > One-Pieces > Jumpsuits & Rompers)",
+   "gehoert_nach": "herren-sportbekleidung"
+  },
+  {
+   "handle": "herren-bademantel-aus-baumwolle-fur-herbst-win-600000",
+   "grund": "Nachtwäsche/Bademantel/Homewear (C > Sleepwear & Loungewear > Robes)",
+   "gehoert_nach": "nachtwaesche-pyjamas"
+  },
+  {
+   "handle": "kuhlende-outdoor-und-arbeitsweste-mit-ventilat-604000",
+   "grund": "Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) (C > Outerwear > Vests)",
+   "gehoert_nach": "arbeitskleidung"
+  },
+  {
+   "handle": "herren-sport-rad-einteiler-612300",
+   "grund": "Sport-Einteiler (C > One-Pieces > Jumpsuits & Rompers)",
+   "gehoert_nach": "herren-sportbekleidung"
+  },
+  {
+   "handle": "kuhlende-warnweste-fur-arbeitsschutz-614800",
+   "grund": "Warn-/Heiz-/Kühl-/Angel-/Reiseweste (Schutz- und Funktionsweste) (C > Outerwear > Vests)",
+   "gehoert_nach": "arbeitskleidung"
+  },
+  {
+   "handle": "nahtloses-schnelltrocknendes-baselayer-fur-her-601000",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "kimono-stil-robe-fur-herren-608800",
+   "grund": "Nachtwäsche/Bademantel/Homewear (C > Sleepwear & Loungewear > Robes)",
+   "gehoert_nach": "nachtwaesche-pyjamas"
+  },
+  {
+   "handle": "los-gewand-604500",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Shirts & Tops)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "linienschurz-626700",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "farbenfrohe-buhnenuniform-634100",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "gestepptes-baumwoll-homewear-shirt-mit-koi-pri-605200",
+   "grund": "Nachtwäsche/Bademantel/Homewear (C > Sleepwear & Loungewear > Loungewear)",
+   "gehoert_nach": "nachtwaesche-pyjamas"
+  },
+  {
+   "handle": "stilvoller-arbeitsanzug-600900",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C > Suits)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "chinesische-schrift-und-tuschendesign-621100",
+   "grund": "Gewand/Tunika/Kimono/unspezifische Google-Kategorie \"Clothing\" (C)",
+   "gehoert_nach": "offen (manuell)"
+  },
+  {
+   "handle": "familien-sweatshirts-und-baby-onesies-616100",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Familien-Sweatshirts und Baby-Onesies\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "familien-outfits-fur-eltern-und-kinder-626400",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Familien-Outfits für Eltern und Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "koreanische-familien-outfits-fur-eltern-und-ki-639500",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Koreanische Familien-Outfits für Eltern und Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "partnerlook-herbst-sweatshirts-fur-eltern-kind-636100",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Partnerlook Herbst Sweatshirts für Eltern & Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "elastischer-pyjama-fur-kinder-erwachsene-612400",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Elastischer Pyjama für Kinder & Erwachsene\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "hoodie-mit-leopardenmuster-fur-teenager-619300",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Hoodie mit Leopardenmuster für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "prinzessinnenkleid-fur-teenager-615100",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Prinzessinnenkleid für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "sweatshirt-mit-baby-letter-print-und-kapuze-635600",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Sweatshirt mit Baby Schriftzug-Print und Kapuze\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "herren-strick-kapuzenjacke-mit-stickerei-und-p-637600",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Herren Strick-Kapuzenjacke mit Stickerei und Print\"",
+   "gehoert_nach": "herren-jacken-maentel"
+  },
+  {
+   "handle": "bedrucktes-langarmshirt-fur-teenager-606100",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Bedrucktes Langarmshirt für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "unisex-hoodie-mit-3d-digitaldruck-fur-teenager-623600",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Unisex Hoodie mit 3D-Digitaldruck für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "zuckersu-madchenstil-langarm-einfarbiges-pajam-628100",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "pailletten-disco-hemd-fur-teenager-618700",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Pailletten Disco Hemd für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "madchen-prinzessinnenkleid-aus-baumwolle-613500",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Mädchen Prinzessinnenkleid aus Baumwolle\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "madchen-a-linien-sommerkleid-mit-cartoon-print-632400",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Mädchen A-Linien Sommerkleid mit Cartoon-Print\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "sommerliches-cartoon-shirt-fur-kinder-605100",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Sommerliches Cartoon-Shirt für Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "lapel-t-shirt-fur-babys-616500",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Lapel T-Shirt für Babys\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "cartoon-kleid-fur-madchen-617700",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Cartoon-Kleid für Mädchen\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "herren-langarm-freizeithemd-im-karo-look-623600",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Herren Langarm-Freizeithemd im Karo-Look\"",
+   "gehoert_nach": "herren-hemden"
+  },
+  {
+   "handle": "kinderkleid-mit-stufenrock-628900",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Kinderkleid mit Stufenrock\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "herren-baumwolljacke-mit-entspanntem-schnitt-612100",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Herren-Baumwolljacke mit entspanntem Schnitt\"",
+   "gehoert_nach": "herren-jacken-maentel"
+  },
+  {
+   "handle": "herren-hosen-612300",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Herren-Hosen\"",
+   "gehoert_nach": "herren-hosen"
+  },
+  {
+   "handle": "herren-kurzjeans-mit-doppelbund-628000",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Herren Kurzjeans mit Doppelbund\"",
+   "gehoert_nach": "herren-shorts"
+  },
+  {
+   "handle": "madchen-faux-zweiteiler-langarm-kleid-608400",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Mädchen Faux Zweiteiler Langarm-Kleid\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "retro-camouflage-zip-hoodie-fur-teenager-624400",
+   "grund": "Damen-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Retro Camouflage Zip-Hoodie für Teenager\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "satin-halstuch-armellose-weste-fur-herren-601900",
+   "grund": "Damen-Tag, aber der Titel sagt ausdrücklich Herren: \"Ärmellose Satin-Weste für Herren\"",
+   "gehoert_nach": "herren-westen"
+  },
+  {
+   "handle": "leuchtendes-langarm-shirt-fur-kinder-636000",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Leuchtendes Langarm-Shirt für Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "mao-mao-bagger-langarmshirt-fur-kinder-637800",
+   "grund": "Herren-Tag, aber der Titel nennt Kinder/Jungen/Teenager/Baby: \"Mao Mao Bagger Langarmshirt für Kinder\"",
+   "gehoert_nach": "kinder"
+  },
+  {
+   "handle": "king-queen-partner-shirts-couple-t-shirts-👑",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"King & Queen Partner-Shirts · Couple T-Shirts 👑\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "mr-mrs-partner-shirts-couple-t-shirts-zur-hochzeit-💍",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "her-king-his-queen-partner-shirts-couple-t-shirts-👑",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Her King & His Queen Partner-Shirts · Couple T-Shirts 👑\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "hubby-wifey-partner-shirts-couple-t-shirts-mit-herz-❤️",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-hoodie-fur-die-ganze-familie-619500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Hoodie für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-sweatshirts-fur-familien-609500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Sweatshirts für Familien\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kurbisfarbener-kapuzenpullover-fur-eltern-kind-628500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kürbisfarbener Kapuzenpullover für Eltern & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "familien-sweatshirts-und-baby-onesies-616100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familien-Sweatshirts und Baby-Onesies\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "mutter-tochter-sweater-fur-herbst-winter-608600",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Mutter-Tochter Sweater für Herbst & Winter\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-letter-printed-pullover-529856",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Letter Printed Pullover\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "mountain-ekg-kurzarm-shirt-fur-paare-629700",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Mountain EKG Kurzarm-Shirt für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "loose-fit-t-shirt-fur-paare-familie-617100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Loose-fit T-Shirt für Paare & Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-t-shirt-just-a-dad-who-loves-his-g-597696",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook T-Shirt \"Just A Dad Who Loves His Girl\"\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-langarmkleid-mit-print-489024",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Langarmkleid mit Print\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "color-matching-pocket-family-suit-parent-child-109504",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-t-shirt-fur-die-ganze-familie-494080",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook T-Shirt für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "cartoon-mutter-tochter-t-shirt-436416",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Cartoon Mutter-Tochter T-Shirt\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "familien-outfits-fur-eltern-und-kinder-626400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familien-Outfits für Eltern und Kinder\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-outfits-fur-die-ganze-familie-600800",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook-Outfits für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-bikini-blau-weiss-gestreift-612500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Bikini blau-weiss gestreift\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "koreanische-familien-outfits-fur-eltern-und-ki-639500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Koreanische Familien-Outfits für Eltern und Kinder\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "eltern-kind-baumwoll-set-fur-herbst-633600",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Eltern-Kind Baumwoll-Set für Herbst\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-fur-die-ganze-familie-600900",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Pyjama für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-loungewear-fur-die-ganze-familie-604200",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Loungewear für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-sets-fur-die-ganze-familie-613100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts Pyjama-Sets für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "loungewear-pyjama-set-fur-die-ganze-familie-603800",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Loungewear Pyjama-Set für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-herbst-sweatshirts-fur-eltern-kind-636100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Herbst Sweatshirts für Eltern & Kinder\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-partnerlook-fur-die-ganze-familie-618800",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Partnerlook für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "hoodie-jogginghose-set-im-partnerlook-637400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Hoodie & Jogginghose Set im Partnerlook\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "dinosaurier-pyjama-partnerlook-fur-die-ganze-f-612500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Dinosaurier Pyjama Partnerlook für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "leopard-print-langarm-bademode-fur-mutter-kind-600000",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Leopard Print Langarm Bademode für Mutter & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "bambus-baumwoll-pyjama-fur-eltern-kind-629000",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Bambus-Baumwoll-Pyjama für Eltern & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-hausanzug-fur-die-ganze-familie-617300",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Hausanzug für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kariertes-pyjama-set-fur-die-ganze-familie-600300",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kariertes Pyjama-Set für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-homewear-fur-die-ganze-familie-615600",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Homewear für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-set-fur-die-ganze-familie-615100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Pyjama-Set für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kariertes-familien-pyjama-set-mit-hirschgeweih-616100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kariertes Familien-Pyjama-Set mit Hirschgeweih\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-fur-mutter-tochter-611100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Pyjama für Mutter & Tochter\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-partnerlook-blau-weiss-gestreift-600900",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Partnerlook Blau-Weiss Gestreift\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-hausanzug-fur-die-ganze-familie-622600",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Hausanzug für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "blumen-partnerlook-fur-die-ganze-familie-620400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Blumen-Partnerlook für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachtliches-familien-outfit-im-hirsch-desi-600300",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachtliches Familien-Outfit im Hirsch-Design\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "hawaii-familien-look-fur-4-personen-601500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Hawaii Familien-Look für 4 Personen\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-homewear-im-partnerlook-605400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Homewear im Partnerlook\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-pyjama-set-mit-augen-print-608900",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Pyjama-Set mit Augen-Print\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "pyjama-set-fur-die-ganze-familie-616700",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Pyjama-Set für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-set-mit-elch-muster-fur-die-627800",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts Pyjama-Set mit Elch-Muster für die Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "camo-tie-dye-pullover-fur-mutter-kind-626900",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Camo Tie-Dye Pullover für Mutter & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "dino-weihnachtsbaum-pyjama-fur-die-ganze-famil-602400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Dino-Weihnachtsbaum-Pyjama für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "freizeit-cheongsam-familien-set-im-china-stil-602700",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Freizeit Cheongsam Familien-Set im China-Stil\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "familien-pyjama-set-mit-tiermotiven-616100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familien-Pyjama-Set mit Tiermotiven\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "herz-print-pyjama-set-fur-eltern-kind-620400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Herz-Print Pyjama-Set für Eltern & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "leoparden-look-pullover-schlaghose-fur-mama-ki-906112",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Leoparden-Look: Pullover & Schlaghose für Mama & Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "hanfu-partnerlook-kurzarm-set-091456",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Hanfu Partnerlook Kurzarm-Set\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-pyjama-im-partnerlook-764352",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Pyjama im Partnerlook\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kariertes-freizeit-set-fur-die-ganze-familie-738944",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kariertes Freizeit-Set für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weihnachts-elch-pyjama-fur-die-ganze-familie-884416",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weihnachts-Elch Pyjama für die ganze Familie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "familien-weihnachtsanzuge-mit-streifen-896320",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familien-Weihnachtsanzüge mit Streifen\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-freizeitanzug-schwarz-weiss-777536",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook-Freizeitanzug Schwarz-Weiss\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "gestreiftes-familien-set-fur-weihnachten-246528",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Gestreiftes Familien-Set für Weihnachten\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "partnerlook-pullover-fur-mutter-und-tochter-893504",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partnerlook Pullover für Mutter und Tochter\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kapuzenjacke-im-american-style-fur-paare-607500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kapuzenjacke im American Style für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "king-queen-couple-hoodie-604100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"KING QUEEN Couple Hoodie\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "herren-halterneck-top-fur-den-ausgang-621800",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Herren Halterneck Top für den Ausgang\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "leichter-sonnen-kimono-fur-paare-620800",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Leichter Sonnen-Kimono für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "kariertes-jacquard-hoodie-fur-paare-613000",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Kariertes Jacquard Hoodie für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "gemutlicher-kapuzenpullover-fur-paare-623700",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Gemütlicher Kapuzenpullover für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "winterkleidung-fur-paare-ca24d2",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Winterkleidung für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "liebes-hoodie-449152",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Partner-Hoodie «Love» für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "schlanke-denim-kleid-613500",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Schlanke Denim-Kleid\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "freizeit-hemd-im-retro-look-fur-paare-636700",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Freizeit Hemd im Retro-Look für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "loose-couple-shirt-mit-stickerei-615400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Loose Couple Shirt mit Stickerei\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "leichte-plaid-jacke-fur-paare-622000",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Leichte Plaid-Jacke für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "familien-pack-aus-rotem-baumwoll-remo-fur-elte-601100",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Familienpaket aus rotem Baumwoll-Remo für Eltern und Kind\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "cleveres-paar-t-shirt-622500",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Cleveres Paar-T-Shirt\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "weit-geschnittene-retro-strick-oberteile-fur-p-633600",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Weit geschnittene Retro-Strick-Oberteile für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "print-loose-fit-shortsleeve-t-shirt-fur-paare-624400",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Print-Loose-Fit-Shortsleeve-T-Shirt für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "herren-relax-schulterfreier-langarm-jacke-602600",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Herren-Relax-Schulterfreier Langarm-Jacke\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "ohne-trager-off-shoulder-hollow-out-weste-611400",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Ohne Träger Off-shoulder Hollow-out Weste\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "distressed-leder-off-shoulder-jacke-616700",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Distressed Leder Off-Shoulder Jacke\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "hoodie-mit-3d-digital-katzen-print-fur-paare-616200",
+   "grund": "Partnerlook/Paar-/Familien-Set (Querschnitt, weder Damen noch Herren): \"Hoodie mit 3D Digital Katzen-Print für Paare\"",
+   "gehoert_nach": "partnerlook (Querschnitt)"
+  },
+  {
+   "handle": "high-waisted-capri-jeans-fur-herren-605700",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"High-waisted Capri Jeans für Herren\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "herren-high-waist-loose-fit-flared-jeans-626600",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Herren High-Waist Loose-Fit Flared Jeans\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "high-waist-straight-leg-jeans-fur-herren-606600",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"High Waist Straight-Leg Jeans für Herren\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "eleganter-off-shoulder-hemd-fur-herren-607400",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Eleganter Off-Shoulder Hemd für Herren\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "herren-langarmshirt-mit-ruschen-und-off-should-617100",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Herren Langarmshirt mit Rüschen und Off-Shoulder\"",
+   "gehoert_nach": "damen"
+  },
+  {
+   "handle": "bluse-mit-blumenmuster-und-banddetails-622900",
+   "grund": "Herren-Tag, aber reines Damenstück oder weiblicher Schnitt: \"Bluse mit Blumenmuster und Banddetails\"",
+   "gehoert_nach": "damen"
+  }
+ ],
+ "widersprueche_tag_titel": {
+  "anzahl": 28,
+  "regel": "Gemessen an 11901 Kleidungsprodukten: 28 Produkte tragen ein Damen- oder Herren-Tag, das einer ausdrücklichen Titelangabe widerspricht (Tag damen / Titel kinder: 15; Tag damen / Titel herren: 6; Tag herren / Titel kinder: 7). Entscheidung: Der ausdrückliche Titel gewinnt gegen den Tag, weil der Titel das einzelne Produkt beschreibt und der Tag aus der Sammel-Kategorie des Imports stammt. Ausnahme (häufiger Übersetzungsfehler): nennt der Titel Herren, das Stück ist aber ein reines Damenstück (Kleid, Rock, BH ...) oder hat einen eindeutig weiblichen Schnitt (Off-Shoulder, High-Waist ...), gewinnt Damen. Zusätzlich 102 Produkte wechseln wegen ausdrücklicher Unisex-/Paar-/Familien-Angabe im Titel. Die Herren-Kategorien nehmen dadurch 6 Produkte mit Damen-Tag auf und geben 18 Produkte mit Herren-Tag ab."
+ },
+ "offene_fragen": [
+  "UMSETZUNG: Shopify-Smart-Collections kennen weder Wortgrenzen noch Lookbehind/Lookahead. Die Regeln werden darum lokal ausgewertet (herren-bekleidung_messen.mjs, Funktion passt() in herren_lib.mjs) und als Tag sort-<kategorie-handle> bzw. f:<unterfilter-handle> auf die Produkte geschrieben; die Collection hängt nur am Tag und muss nach jedem Import neu laufen. Unterfilter sind optional und dürfen sich überschneiden (ein Hemd kann Kurzarm UND Leinen sein).",
+  "GESCHLECHT UNBEKANNT: 118 Kleidungsprodukte tragen weder Tag noch Titelwort noch Typ für Damen/Herren/Kinder (31 Shirts & Tops, 21 Coats & Jackets, 18 Vests, 11 Clothing ohne Unterkategorie, 9 Activewear ...; meist taktische Westen, Yoga-/Fitnesshosen, Capes, Ponchos, Bademäntel, einzelne Hoodies/Winterjacken). Sie stehen in keiner Abteilung. Liste: herren-bekleidung_unbekannt.json. Entscheid Besitzer: eigene Abteilung \"Unisex & Outdoor\" oder je Warenart von Hand; ich habe nicht geraten.",
+  "PARTNERLOOK: 76 Produkte (Paare, Couple, Partnerlook, Familie, Eltern-Kind; 62 mit Damen-Tag, 7 mit Herren-Tag) sind weder Herren noch Damen. Vorschlag: Querschnitt-Sammlung \"Partnerlook & Paare\" (Tag sort-partnerlook), nicht in Herren- oder Damen-Kategorien.",
+  "SORTIMENTSLÜCKE: Herren-Basics fehlen fast ganz: Unterwäsche/Shapewear 3, Socken 0, Nachtwäsche/Bademäntel 5, Bademode 2 (zusammen 10 Produkte). Das liegt unter der Mindestgrösse 15, also keine Kategorie; die Herrenabteilung wirkt ohne diese Warenarten unvollständig. Das ist eine Sourcing-Frage, keine Sortierfrage.",
+  "KLEINE KATEGORIEN: Shorts 20, Sportbekleidung 21, Sets 28, Overalls 31 liegen knapp über der Mindestgrösse 15. Alternative, falls das Menü schlanker sein soll: Shorts als Unterfilter von Hosen, Overalls und Sets unter \"Weitere\".",
+  "ARBEITSKLEIDUNG: Kein Kleidungsprodukt trägt das Tag arbeitskleidung oder den Typ Arbeitskleidung (nachgemessen). Die Titel \"Arbeitshose/Workpants/Arbeitsjacke\" (29 Hosen, 7 Jacken) sind Mode im Arbeitsstil (Cargo, Retro); sie stehen darum in Hosen und Jacken, die Hosen mit eigenem Unterfilter \"Workwear- & Arbeitshosen\". Nur Warn-, Sicherheits-, Heiz-, Kühl- und Angelwesten (5) sind Fremdkörper und gehen nach arbeitskleidung. Skihose/Schneehose (3) bleiben in Hosen (Unterfilter Outdoor).",
+  "RANDFÄLLE (nicht falsch, aber auch in der Nachbarkategorie plausibel): 42 Titel \"Langarmshirt/Shirt\" mit Kragen-, Revers- oder Knopfleistenwort stehen in Hemden; 21 \"Strick-Shirt/-T-Shirt/-Top\" stehen in Pullover & Strick (das Material Strick gewinnt); 18 Hemdjacken und 7 Hoodie-/Sweatjacken stehen in Jacken & Mäntel, weil die Google-Kategorie Coats & Jackets lautet; 5 Strickjacken ebenso.",
+  "WEIBLICHE SCHNITTE: 10 Produkte mit Herren-Tag (Off-Shoulder, Halterneck, High-Waist-Jeans, Bluse mit Blumenmuster u. a.) gelten als Damen (Fremdkörper, gehoert_nach damen). Ungeprüft und bei Herren belassen: Herren-Jeans mit Perlenstickerei, \"Cropped\"-Hosen und -Hoodies, weil weder Tag noch Titel Damen sagen; nur ein Blick auf die Produktfotos könnte das entscheiden.",
+  "GOOGLE-KATEGORIE LEER ODER NUR \"Clothing\": 21 Herren-Produkte haben keine Unterkategorie (14 Kostüme/Perücken/Masken ganz ohne g, 7 mit dem blanken Oberbegriff Clothing). Sie lassen sich nicht nach g einordnen und stehen in rest/fremdkoerper (Kostüme -> kostueme-fasnacht).",
+  "ELTERN: \"herren\" ist die Abteilung und kein eigener Eintrag (Summe der 14 Blätter). Heutige Handles, die ersetzt oder umgeleitet werden müssen: herren-hemden, herren-hosen, herren-jeans, herren-pullover, herren-jacken, herren-shirts, herren-sets-sub, herren-mode-sub, fur-ihn (\"Herren-Mode\" mit Schmuck, Uhren, Vatertag). Messung heutiger Tag+Titel-Collections gegen die neue Einteilung (herren-bekleidung_altbestand.json): herren-hemden (Titel \"Hemd\", 892 Treffer) enthält 33 Polohemden, 18 Hemdjacken und 8 Pullover neben 822 Hemden; herren-sets-sub (Titel \"Set\", 43 Treffer) besteht zu 23 aus Uhren-, Ring- und Pflege-Geschenksets; herren-hosen enthält 3 Spielzeuge; herren-shirts (840) mischt T-Shirts (528), Polos (147), Hoodies/Sweatshirts (67) und Hemden (47).",
+  "STICHPROBE: je Kategorie 30 Treffer (bei weniger alle) mit festem Seed 20261026+Kategorie-Nummer gezogen, 399 Titel vollständig gelesen, 0 als falsch gezählt. Das heisst statistisch nur, dass die Fehlerrate pro Kategorie wahrscheinlich unter etwa 10 % liegt (95 %-Konfidenz bei 0 von 30), nicht dass sie 0 ist. Beim Schärfen der Regeln wurden zuvor mehr als 800 weitere Titel aus mehreren anderen Stichproben (andere Seeds) gelesen; die dabei gefundenen Fehlerklassen sind behoben: Polo-Kragen an Pullover/Strickjacke, \"Fleece-Futter\" als Pullover, T-Shirt/Henley mit Revers als Hemd, Material Strick statt Kleidungsstück (\"Hemd Strick\"), Rollkragen/Half-Zip an T-Shirt, Kurzjeans unter Jeans, Sets unter Hosen/Shirts/Jacken, Denim-Jackett als Sakko, Arbeitsjacke/-hose zunächst fälschlich ausgeschlossen.",
+  "GRENZFÄLLE DER STICHPROBE (7, nicht als falsch gezählt, Titel lässt beide Lesarten zu): \"Herren Wolljacke Zweireiher\": Zweireiher-Jacke: Sakko oder Jacke; \"Vintage-Blazer-Shirt\": Blazer-Shirt: Blazer oder Hemd; \"Travel Airbag Hoodie für Herren\": Hoodie mit Airbag-Funktion: Kleidungsstück mit Zusatznutzen, Warenart bleibt Hoodie; \"Herren-Rollkragen-Shirt mit Kristallknopf\": Rollkragen-Shirt: Pullover oder Shirt; \"Herren Baumwoll-Pullover T-Shirt mit Struktur\": Titel nennt Pullover UND T-Shirt; \"Herren-Strandshirt mit UV-Schutz und Kapuze\": Strandshirt mit Kapuze: auch Hoodie denkbar; \"Herren Sommer-Hundet-Shirt Grössen\": Titel unklar (Übersetzungsfehler), Warenart Shirt",
+  "MESSGERÄT: herren-bekleidung_messen.mjs prüft Struktur, ungültige Regex, Doppelzuordnung (0), Treffer ausserhalb Herren-Kleidung im GANZEN Datensatz (0), Mindestgrössen (Kategorie >= 15, Unterfilter >= 10), Verteilung (keine Kategorie > 60 %, grösste ist Hemden mit 25.0 %), reproduziert die Stichprobe und vergleicht sie mit den Urteilen. Gegenprobe: ändert man eine Regel nach dem Lesen, schlägt der Stichproben-Vergleich an."
+ ],
+ "geschlecht_regel_abteilung": "Das Geschlecht eines Produkts (Kleidung = Google-Kategorie beginnt mit \"Apparel & Accessories > Clothing\" oder ist leer) wird in dieser Reihenfolge bestimmt, die erste zutreffende Stufe entscheidet; Titelwörter gelten am Wortanfang, ohne Beachtung von Gross-/Kleinschreibung:\n1. Titel enthält Familie/Familien (jedes Wort, das mit \"famili\" beginnt), Eltern-Kind, \"Eltern und Kind(er)\", Mama, Papa, Mutter (nicht Mutterschutz/-schaft), Vater, Mommy, Daddy, Geschwister, \"für Paare\", Pärchen, Paarlook, Paar-T-Shirt/-Shirt/-Hoodie/-Pullover, Partnerlook/-shirt/-outfit/-hoodie, Couple oder \"Paare\" -> partner (Querschnitt \"Partnerlook & Paare\", in keiner Herren- und in keiner Damen-Kategorie).\n2. Google-Kategorie beginnt mit \"Apparel & Accessories > Clothing > Baby & Toddler Clothing\" ODER Titel enthält Kinder, Mädchen, Jungs, Baby, Kleinkind, Teenager, Teen, Kids, Säugling, Neugeboren, Strampler oder \"Jungen\" (nur gross geschrieben als Substantiv; das kleine Adjektiv \"jungen\" wie in \"im jungen Stil\" zählt nicht) -> kinder. Englisch Boy/Girl zählt nicht (Stilnamen wie \"Mori Girl\").\n3. Titel enthält Unisex, \"Damen und Herren\" (auch & und /, beide Reihenfolgen) oder \"Männer und Frauen\" -> unisex.\n4. Titel nennt Herren/Männer/männlich/Mann/Gentleman (nicht \"herrenlos\") UND Damen/Frauen/weiblich/Ladies/Lady -> unisex.\n5. Titel nennt Herren/Männer/männlich/Mann/Gentleman -> damen, wenn (a) das Stück ein reines Damenstück ist (Titel: Kleid, Rock, BH, Bikini, Tanga, Dessous, Negligé, Babydoll, Bustier, Korsett, Umstandsmode, Stillen; oder Google-Kategorie Dresses, Skirts, Skorts, Bras, Lingerie, Nightgowns) oder (b) ein eindeutig weiblicher Schnitt genannt wird (Off-Shoulder, Halterneck, Neckholder, schulterfrei, trägerlos, bauchfrei, High-Waist, High-Rise, hohe Taille, Tüll, Schwangerschaft, Hollow-out) oder (c) Bluse/Blusen/Camisole im Titel steht und das Produkt KEIN Herren-Tag trägt; sonst -> herren.\n6. Titel nennt Damen/Frauen/weiblich/Ladies/Lady -> damen.\n7. Tag kinder -> kinder.\n8. Tag herren (oder maenner/männer): Trifft 5(a), 5(b) oder Bluse/Camisole zu -> damen. Sonst: Tag herren UND damen, oder Tag unisex -> unisex; nur herren -> herren. Tag damen allein -> damen.\n9. Produkttyp: Herrenmode -> herren (bei 5(a) damen), Damenmode -> damen, Baby & Kinder / Kinder -> kinder.\n10. Google-Kategorie Dresses, Skirts, Skorts, Bras, Lingerie oder Nightgowns, oder Titel mit Yoga, Legging, Umstandsmode, Schwangerschaft, Stillshirt oder Stillen -> damen.\n11. Tag fertig-shirt, pod-shirt oder printful_personalized_product, oder Titel mit \"selbst gestalten\" (Schweizer Edition und Selbst-gestalten-Artikel) -> unisex.\n12. Sonst unbekannt: kommt in KEINER Abteilung vor (siehe rest.vorschlag).\nReferenz-Implementierung (ausführbar, identisch zu dieser Beschreibung): /tmp/mode_taxonomie/herren_gen.mjs, Funktion geschlecht(p).\nEin Produkt mit Geschlecht unisex gehört in Herren- UND Damen-Kategorien (eine Herren-Kategorie nimmt also herren ODER unisex). Alle Herren-Kategorien hier haben geschlecht \"herren\" in diesem Sinn.\nGEMESSEN an 11901 Kleidungsprodukten: damen 7920, herren 3418, unisex 88, kinder 281, partner 76, unbekannt 118. Ein Damen-, Herren- oder Kinder-Tag tragen 11570 Produkte; in 139 (1.2 %) weicht das Ergebnis vom Tag ab (damen -> unisex 19, damen -> partner 62, damen -> kinder 11, beide -> unisex 4, herren -> damen 10, damen -> herren 6, herren -> kinder 9, beide -> damen 1, herren -> partner 7, herren -> unisex 9, kinder -> partner 1). Der Tag stammt aus der CJ-Kategorie des Imports und ist daher meist richtig; er verliert nur gegen eine ausdrückliche Titelangabe oder ein reines Damenstück.",
+ "nachtrag_pruefung": {
+  "datum": "2026-10-26",
+  "werkzeug": "pruefen.mjs / anpassen.mjs",
+  "aenderungen": [
+   "«taktisch/tactical» in allen 14 Herren-Kategorien ausgeschlossen, gleiche Linie wie die Damen-Regel (Einsatzware gehört zu Arbeitskleidung/Sport & Outdoor, nicht in die Mode-Taxonomie). Betrifft im Datensatz 13 Produkte: 4 Westen, 4 Hosen, 3 Jacken, 1 Overall, 1 T-Shirt.",
+   "Tags «fortura» und «kostuem» in tags_nicht von 14 Kategorien ergaenzt (Kinder- und Schuh-Abteilung sperrten «fortura» schon); verhindert, dass Fasnachts-Kostüme und Fanartikel von Fortura durch die gemeinsame Geschlechtsregel in die Alltagsmode rutschen.",
+   "herren-westen: 1 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: herren-westen-gesteppt (11).",
+   "herren-shorts: 1 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: herren-shorts-jeans (11).",
+   "herren-hosen: 1 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: herren-hosen-jogger (14)."
+  ]
+ }
+}

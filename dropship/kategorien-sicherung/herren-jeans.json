@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/755132203399",
+ "title": "Herren-Jeans",
+ "productsCount": {
+  "count": 150
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "such-herren-jeans"
+   }
+  ]
+ }
+}

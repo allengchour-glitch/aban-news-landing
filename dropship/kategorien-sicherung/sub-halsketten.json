@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/688563618177",
+ "title": "Halsketten",
+ "productsCount": {
+  "count": 473
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-halsketten"
+   }
+  ]
+ }
+}

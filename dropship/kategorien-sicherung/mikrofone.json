@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/689775509889",
+ "title": "Mikrofone & Streaming",
+ "productsCount": {
+  "count": 286
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Mikrofon"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Microphone"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Karaoke"
+   }
+  ]
+ }
+}

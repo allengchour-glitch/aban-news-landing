@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/688564502913",
+ "title": "Reise & Outdoor",
+ "productsCount": {
+  "count": 1404
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Reise"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Koffer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Camping"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Picknick"
+   }
+  ]
+ }
+}

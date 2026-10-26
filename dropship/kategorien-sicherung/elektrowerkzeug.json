@@ -1,0 +1,52 @@
+{
+ "id": "gid://shopify/Collection/689718821249",
+ "title": "Elektrowerkzeug",
+ "productsCount": {
+  "count": 158
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "akkuschrauber"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "bohrmaschine"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "winkelschleifer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "stichsäge"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schlagbohrer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Lötkolben"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bohrhammer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Akku-Schlagschrauber"
+   }
+  ]
+ }
+}

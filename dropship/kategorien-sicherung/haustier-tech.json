@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/689253613953",
+ "title": "Haustier-Tech",
+ "productsCount": {
+  "count": 28
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "haustier-tech"
+   }
+  ]
+ }
+}

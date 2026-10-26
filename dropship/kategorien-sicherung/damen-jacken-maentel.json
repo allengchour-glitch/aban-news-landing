@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/689718559105",
+ "title": "Damen-Jacken & Mäntel",
+ "productsCount": {
+  "count": 900
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-damen-jacke"
+   }
+  ]
+ }
+}

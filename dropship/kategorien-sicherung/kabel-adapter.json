@@ -1,0 +1,77 @@
+{
+ "id": "gid://shopify/Collection/689991942529",
+ "title": "Kabel & Adapter",
+ "productsCount": {
+  "count": 660
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "USB-Kabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "HDMI"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ladekabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Verlängerungskabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "USB-C-Kabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Netzwerkkabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Glasfaserkabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "AUX-Kabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Klinkenkabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ladegerät"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Steckdosenleiste"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Adapterstecker"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "OTG-Adapter"
+   }
+  ]
+ }
+}

@@ -29,22 +29,22 @@ function arrayAus(text, anzahl) {
   return arr;
 }
 
-async function gemini(texte, key, fetchFn) {
+async function gemini(texte, key, fetchFn, auftrag = AUFTRAG) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(key)}`;
   const r = await fetchFn(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts: [{ text: AUFTRAG + JSON.stringify(texte) }] }], generationConfig: { temperature: 0.3 } }) });
+    body: JSON.stringify({ contents: [{ parts: [{ text: auftrag + JSON.stringify(texte) }] }], generationConfig: { temperature: 0.3 } }) });
   const roh = await r.text();
   let j = {}; try { j = JSON.parse(roh); } catch {}
   if (!r.ok) throw new Error(`Gemini HTTP ${r.status}: ${String(j?.error?.message || roh).slice(0, 140)}`);
   return arrayAus((j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join(''), texte.length);
 }
 
-async function groq(texte, key, fetchFn, modelle) {
+async function groq(texte, key, fetchFn, modelle, auftrag = AUFTRAG) {
   let letzter = '';
   for (const modell of modelle) {
     const r = await fetchFn('https://api.groq.com/openai/v1/chat/completions', { method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: modell, temperature: 0.3, messages: [{ role: 'user', content: AUFTRAG + JSON.stringify(texte) }] }) });
+      body: JSON.stringify({ model: modell, temperature: 0.3, messages: [{ role: 'user', content: auftrag + JSON.stringify(texte) }] }) });
     const roh = await r.text();
     if (!r.ok) { letzter = `Groq ${modell} HTTP ${r.status}: ${roh.slice(0, 120)}`; continue; }
     let j = {}; try { j = JSON.parse(roh); } catch { letzter = `Groq ${modell}: Antwort nicht lesbar`; continue; }
@@ -66,11 +66,11 @@ export async function nachDeutsch(texte, opt = {}) {
   const modelle = opt.groqModelle ?? GROQ_MODELLE;
   const gruende = [];
   if (gk) {
-    try { const a = await gemini(texte, gk, fetchFn); if (a) return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'gemini' }; gruende.push('Gemini: Antwort passte nicht'); }
+    try { const a = await gemini(texte, gk, fetchFn, opt.auftrag); if (a) return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'gemini' }; gruende.push('Gemini: Antwort passte nicht'); }
     catch (e) { gruende.push(e.message); }
   }
   if (qk) {
-    try { const a = await groq(texte, qk, fetchFn, modelle); return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'groq' }; }
+    try { const a = await groq(texte, qk, fetchFn, modelle, opt.auftrag); return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'groq' }; }
     catch (e) { gruende.push(e.message); }
   }
   return { texte, weg: 'original', grund: gruende.join(' · ') || 'kein Schlüssel gesetzt' };

@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/689775378817",
+ "title": "Sonnenbrillen (alle)",
+ "productsCount": {
+  "count": 695
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Sonnenbrille"
+   }
+  ]
+ }
+}

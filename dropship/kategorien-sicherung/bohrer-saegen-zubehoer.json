@@ -1,0 +1,42 @@
+{
+ "id": "gid://shopify/Collection/689775346049",
+ "title": "Bohrer, Sägen & Werkzeug-Zubehör",
+ "productsCount": {
+  "count": 307
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bohrer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Sägeblatt"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Trennscheibe"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Fräser"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Schleifscheibe"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bohrfutter"
+   }
+  ]
+ }
+}

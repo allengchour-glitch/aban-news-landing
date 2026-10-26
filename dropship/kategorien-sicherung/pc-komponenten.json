@@ -1,0 +1,102 @@
+{
+ "id": "gid://shopify/Collection/689776198017",
+ "title": "PC-Komponenten & Speicher",
+ "productsCount": {
+  "count": 281
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "SSD"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "NVMe"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Festplatte"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Speicherkarte"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "USB-Stick"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "DDR4"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "DDR5"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Arbeitsspeicher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Mainboard"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Motherboard"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Prozessor"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Grafikkarte"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Micro-ATX"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ATX-Netzteil"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ATX-Gehäuse"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ATX-Mainboard"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "CPU-Kühler"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wasserkühlung"
+   }
+  ]
+ }
+}

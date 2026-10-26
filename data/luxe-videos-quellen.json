@@ -1,0 +1,5 @@
+{
+  "_hinweis": "Quellen der Video-Zeile (Shop-Metafeld luxe.videos). TikTok-Konto: https://www.tiktok.com/@luxestyle.ch. Hier eintragen: \"tiktok\" = einzelne Video-Adressen (https://www.tiktok.com/@luxestyle.ch/video/<Nummer>), \"youtube\" = Kanal-IDs (UC… mit 24 Zeichen, die neuesten 6 Videos kommen automatisch) oder einzelne Video-Adressen. Die konkreten Adressen fehlen noch (Stand 26.10.2026). Lauf: node automation/videos_zeile.mjs (Trockenlauf), LIVE=1 schreibt.",
+  "tiktok": [],
+  "youtube": []
+}

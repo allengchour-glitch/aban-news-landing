@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/691318849921",
+ "title": "Hunde",
+ "productsCount": {
+  "count": 1979
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-hunde"
+   }
+  ]
+ }
+}

@@ -1,0 +1,892 @@
+{
+ "abteilung": "Kinder- und Baby-Bekleidung",
+ "geschlecht_regel": "Seit der gemeinsamen Pruefung gilt fuer ALLE Abteilungen EINE Geschlechtsregel (geschlecht_gemeinsam.mjs, beschrieben in ALLES.json -> geschlecht). Die urspruengliche Regel dieser Abteilung steht unveraendert in `geschlecht_regel_abteilung`; sie ist in der gemeinsamen Regel als Eingabe enthalten.",
+ "kategorien": [
+  {
+   "handle": "kinder-baby-sets",
+   "titel": "Baby-Sets & Outfits",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Outfits"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Zwei- und mehrteilige Sets für Babys, vom Strampler-Set bis zum Pullover mit Hose. Dazu Neugeborenen-Sets und Foto-Outfits.",
+   "unterfilter": [
+    {
+     "handle": "kinder-baby-sets-sommer",
+     "titel": "Sommer & Kurzarm",
+     "titel_muss": [
+      "sommer|kurzarm|kurzärm|shorts|ärmellos|träger|t-shirt"
+     ],
+     "titel_nicht": [
+      "pullover|langarm|langärm|lange ärmel|sweatshirt|hoodie|strickpullover"
+     ],
+     "treffer": 21
+    },
+    {
+     "handle": "kinder-baby-sets-langarm",
+     "titel": "Langarm & Pullover",
+     "titel_muss": [
+      "langarm|langärm|lange ärmel|pullover|hoodie|sweatshirt|kapuze|herbst|winter|fleece"
+     ],
+     "titel_nicht": [],
+     "treffer": 18
+    }
+   ],
+   "gemessen": {
+    "treffer": 78,
+    "stichprobe": 78,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-baby-sets-maedchen",
+     "titel": "Für Mädchen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mädchen|maedchen|girls?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 10
+    },
+    {
+     "handle": "kinder-baby-sets-jungen",
+     "titel": "Für Jungen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jungen|jungs|boys?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 6
+    },
+    {
+     "handle": "kinder-baby-sets-strick",
+     "titel": "Strick, Waffel & Wolle",
+     "titel_muss": [
+      "strick|waffel|geripp|lammwoll",
+      "(^|[^a-zäöüß])(woll)"
+     ],
+     "titel_nicht": [],
+     "treffer": 12
+    }
+   ]
+  },
+  {
+   "handle": "kinder-baby-strampler-bodys",
+   "titel": "Strampler, Bodys & Overalls",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby One-Pieces",
+    "Baby & Toddler"
+   ],
+   "g_nicht": [
+    "Baby & Toddler >"
+   ],
+   "titel_muss": [
+    "strampe?l|body|overall|jumpsuit|einteiler|onesie|säuglingsanzug|babysuit"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Strampler, Bodys, Overalls und Jumpsuits für Babys in Kurz- und Langarm. Auch gefütterte Modelle für kältere Tage.",
+   "unterfilter": [
+    {
+     "handle": "kinder-baby-strampler",
+     "titel": "Strampler",
+     "titel_muss": [
+      "strampl"
+     ],
+     "titel_nicht": [],
+     "treffer": 44
+    },
+    {
+     "handle": "kinder-baby-overalls",
+     "titel": "Overalls & Jumpsuits",
+     "titel_muss": [
+      "overall|jumpsuit|einteiler|babysuit"
+     ],
+     "titel_nicht": [],
+     "treffer": 17
+    }
+   ],
+   "gemessen": {
+    "treffer": 70,
+    "stichprobe": 70,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-baby-bodys",
+     "titel": "Bodys",
+     "titel_muss": [
+      "body"
+     ],
+     "titel_nicht": [],
+     "treffer": 7
+    },
+    {
+     "handle": "kinder-baby-gefuettert",
+     "titel": "Gefüttert & warm",
+     "titel_muss": [
+      "fleece|gefütter|plüsch|futter|dick|warm|lammwoll",
+      "(^|[^a-zäöüß])(woll)"
+     ],
+     "titel_nicht": [],
+     "treffer": 7
+    },
+    {
+     "handle": "kinder-baby-aermellos",
+     "titel": "Sommer, ärmellos & kurzarm",
+     "titel_muss": [
+      "ärmellos|kurzärm|kurzarm|kurzen ärmeln|sommer"
+     ],
+     "titel_nicht": [],
+     "treffer": 7
+    }
+   ]
+  },
+  {
+   "handle": "kinder-baby-kleider-oberteile",
+   "titel": "Baby-Kleider, Oberteile & Jacken",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing",
+    "Baby & Toddler"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Outfits",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby One-Pieces",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Sleepwear",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Swimwear",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Toddler Underwear",
+    "Baby & Toddler >"
+   ],
+   "titel_muss": [
+    "kleid|rock|hose|pullover|weste|jacke|strick|shirt|top(?![a-zäöüß])|anzug|hoodie|mantel|cardigan|oberteil"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Einzelteile für Babys: Kleider, Pullover, Strickjacken, Hosen und Westen. Dazu ein Anzug und Kleidung für Neugeborene.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 15,
+    "stichprobe": 15,
+    "falsch": 0,
+    "falsche_beispiele": []
+   }
+  },
+  {
+   "handle": "kinder-sets-outfits",
+   "titel": "Kinder-Sets & Outfits",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Outfit Sets"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])",
+    "handschuh"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Zwei- und dreiteilige Sets für Mädchen und Jungen, etwa Shirt mit Hose, Pullover mit Shorts oder Top mit Rock. Dazu Sweatshirt-Sets und ein Kinderanzug.",
+   "unterfilter": [
+    {
+     "handle": "kinder-sets-pullover",
+     "titel": "Pullover & Langarm",
+     "titel_muss": [
+      "pullover|langarm|herbst|winter|sweatshirt"
+     ],
+     "titel_nicht": [],
+     "treffer": 15
+    }
+   ],
+   "gemessen": {
+    "treffer": 43,
+    "stichprobe": 43,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-sets-maedchen",
+     "titel": "Für Mädchen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mädchen|maedchen)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 6
+    },
+    {
+     "handle": "kinder-sets-jungen",
+     "titel": "Für Jungen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jungen|jungs|jungens)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 9
+    },
+    {
+     "handle": "kinder-sets-sommer",
+     "titel": "Sommer & Kurzarm",
+     "titel_muss": [
+      "sommer|kurzarm|ärmellos|shorts|leinen"
+     ],
+     "titel_nicht": [
+      "pullover|langarm|langärm|lange ärmel|sweatshirt|hoodie|strick"
+     ],
+     "treffer": 10
+    }
+   ]
+  },
+  {
+   "handle": "kinder-oberteile-kleider-hosen",
+   "titel": "Oberteile, Kleider, Hosen & Jacken",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Shirts & Tops",
+    "Apparel & Accessories > Clothing > Outerwear",
+    "Apparel & Accessories > Clothing > Suits",
+    "Apparel & Accessories > Clothing > Dresses",
+    "Apparel & Accessories > Clothing > Skirts",
+    "Apparel & Accessories > Clothing > Pants",
+    "Apparel & Accessories > Clothing > Shorts",
+    "Apparel & Accessories > Clothing > Activewear",
+    "Apparel & Accessories > Clothing > One-Pieces"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Einzelteile für Mädchen, Jungen und Teenager: T-Shirts, Pullover, Kleider, Leggings, Shorts und Overalls. Dazu Jacken, Ponchos und Anzüge.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 37,
+    "stichprobe": 37,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-kleider",
+     "titel": "Kleider",
+     "titel_muss": [
+      "kleid"
+     ],
+     "titel_nicht": [],
+     "treffer": 8
+    },
+    {
+     "handle": "kinder-t-shirts",
+     "titel": "T-Shirts & Shirts",
+     "titel_muss": [
+      "shirt|träger"
+     ],
+     "titel_nicht": [
+      "sweat"
+     ],
+     "treffer": 9
+    },
+    {
+     "handle": "kinder-pullover-hoodies",
+     "titel": "Pullover & Hoodies",
+     "titel_muss": [
+      "pullover|hoodie|sweatshirt|sweater|rollkragen"
+     ],
+     "titel_nicht": [],
+     "treffer": 9
+    },
+    {
+     "handle": "kinder-hosen-leggings",
+     "titel": "Hosen, Leggings & Overalls",
+     "titel_muss": [
+      "leggings|shorts|hose|jeans|overall|jumpsuit"
+     ],
+     "titel_nicht": [
+      "kleid"
+     ],
+     "treffer": 6
+    },
+    {
+     "handle": "kinder-oberteile-maedchen",
+     "titel": "Für Mädchen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mädchen|maedchen)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 10
+    },
+    {
+     "handle": "kinder-teenager",
+     "titel": "Für Teenager",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(teenager|teens?)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 6
+    }
+   ]
+  },
+  {
+   "handle": "kinder-nachtwaesche-bademode",
+   "titel": "Nachtwäsche, Bademode & Unterwäsche",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > Sleepwear & Loungewear",
+    "Apparel & Accessories > Clothing > Swimwear",
+    "Apparel & Accessories > Clothing > Underwear & Socks",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Sleepwear",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Baby & Toddler Swimwear",
+    "Apparel & Accessories > Clothing > Baby & Toddler Clothing > Toddler Underwear"
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))",
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Pyjamas, Schlafanzüge, Schlafsäcke und Bademäntel für Kinder und Babys. Dazu Badeanzüge mit Sonnenschutz sowie Unterwäsche und Socken.",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 31,
+    "stichprobe": 31,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-pyjamas",
+     "titel": "Pyjamas & Schlafanzüge",
+     "titel_muss": [
+      "pyjama|schlafanzug|nachthemd"
+     ],
+     "titel_nicht": [],
+     "treffer": 8
+    },
+    {
+     "handle": "kinder-schlafsaecke",
+     "titel": "Schlafsäcke",
+     "titel_muss": [
+      "schlafsack"
+     ],
+     "titel_nicht": [],
+     "treffer": 6
+    },
+    {
+     "handle": "kinder-bademode",
+     "titel": "Bademode",
+     "titel_muss": [
+      "badeanzug|bademode|bikini|badehose"
+     ],
+     "titel_nicht": [],
+     "treffer": 10
+    },
+    {
+     "handle": "kinder-unterwaesche",
+     "titel": "Unterwäsche & Socken",
+     "titel_muss": [
+      "unterwäsche|socken"
+     ],
+     "titel_nicht": [],
+     "treffer": 5
+    }
+   ]
+  },
+  {
+   "handle": "kinder-familien-looks",
+   "titel": "Familien-Looks",
+   "eltern": "kinder",
+   "geschlecht": "kinder",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing"
+   ],
+   "g_nicht": [
+    "Apparel & Accessories > Clothing Accessories"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])",
+    "^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))",
+    "(erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])",
+    "(^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß])"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(puppe[a-zäöüß]*)",
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid)",
+    "(^|[^a-zäöüß])(reit(leggings|weste|hose))"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Passende Outfits für Eltern und Kinder: Pyjamas, Hausanzüge, Pullover, T-Shirts und Sets im Partnerlook. Dazu viele Weihnachts-Looks.",
+   "unterfilter": [
+    {
+     "handle": "kinder-familie-pyjamas",
+     "titel": "Pyjamas & Hausanzüge",
+     "titel_muss": [
+      "pyjama|schlafanzug|loungewear|hausanzug|homewear"
+     ],
+     "titel_nicht": [],
+     "treffer": 20
+    },
+    {
+     "handle": "kinder-familie-weihnachten",
+     "titel": "Weihnachts-Looks",
+     "titel_muss": [
+      "weihnacht|christmas|hirsch|elch|nikolaus"
+     ],
+     "titel_nicht": [],
+     "treffer": 16
+    }
+   ],
+   "gemessen": {
+    "treffer": 49,
+    "stichprobe": 49,
+    "falsch": 0,
+    "falsche_beispiele": []
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "kinder-familie-shirts",
+     "titel": "Pullover, Shirts & Hoodies",
+     "titel_muss": [
+      "shirt|pullover|hoodie|sweater|sweatshirt"
+     ],
+     "titel_nicht": [],
+     "treffer": 14
+    },
+    {
+     "handle": "kinder-familie-mutter-kind",
+     "titel": "Mutter & Kind",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(mutter|tochter|mama)(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 7
+    }
+   ]
+  },
+  {
+   "handle": "partnerlook-paare",
+   "titel": "Partnerlook & Paar-Outfits",
+   "eltern": "partner",
+   "geschlecht": "partner",
+   "g_prefix": [
+    "Apparel & Accessories > Clothing > "
+   ],
+   "g_nicht": [],
+   "titel_muss": [],
+   "titel_nicht": [
+    "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)"
+   ],
+   "tags_muss_eines": [],
+   "tags_nicht": [
+    "adult-nicht-bewerben",
+    "18plus",
+    "gmc-adult-pull",
+    "google-gesperrt-adult",
+    "raucher-rueckhol-0809",
+    "nicht-bewerben",
+    "compliance-pruefen",
+    "waffenzubehoer-nicht-verkaufen",
+    "stecker-nicht-ch",
+    "lizenz-nicht-bewerben",
+    "fortura",
+    "kostuem"
+   ],
+   "beschreibung": "Passende Outfits für zwei: Partner-Shirts, Couple-Hoodies und Paar-Pullover zum Verschenken oder Selbertragen. Outfits für die ganze Familie stehen unter «Familien-Looks».",
+   "unterfilter": [],
+   "gemessen": {
+    "treffer": 28
+   },
+   "unterfilter_vorgemerkt": [
+    {
+     "handle": "partnerlook-paare-shirts",
+     "titel": "Shirts & T-Shirts",
+     "titel_muss": [
+      "shirt|tee(?![a-zäöüß])"
+     ],
+     "titel_nicht": [],
+     "treffer": 8
+    },
+    {
+     "handle": "partnerlook-paare-pullover",
+     "titel": "Pullover & Hoodies",
+     "titel_muss": [
+      "pullover|hoodie|sweatshirt|pulli|sweater"
+     ],
+     "titel_nicht": [],
+     "treffer": 7
+    },
+    {
+     "handle": "partnerlook-paare-winter",
+     "titel": "Weihnacht & Winter",
+     "titel_muss": [
+      "weihnacht|winter|xmas"
+     ],
+     "titel_nicht": [],
+     "treffer": 3
+    }
+   ]
+  }
+ ],
+ "rest": {
+  "anzahl": 20,
+  "beispiele": [
+   "winter-geschenkset-fur-kinder-654100: Winter-Geschenkset für Kinder (Clothing Accessories)",
+   "warme-wasserdichte-kinder-winterhandschuhe-627700: Warme, wasserdichte Kinder-Winterhandschuhe (Clothing Accessories > Gloves & Mittens)",
+   "kinder-handschuhe-cartoon-winddicht-warm-602500: Kinder-Handschuhe Cartoon – Winddicht & Warm (Clothing Accessories > Gloves & Mittens)",
+   "fleece-gefutterte-kinder-handschuhe-624900: Fleece-gefütterte Kinder-Handschuhe (Clothing Accessories > Gloves & Mittens)",
+   "kaschmir-baby-halswarmer-623400: Kaschmir Baby Halswärmer · 35 × 19 cm (Clothing Accessories > Baby & Toddler Clothing Accessories)",
+   "kinder-strohhut-mit-schleife-629900: Kinder Strohhut mit Schleife (Clothing Accessories > Hats)",
+   "baseball-cap-mit-sonnenschutz-fur-kinder-und-d-638800: Baseball Cap mit Sonnenschutz für Kinder und Damen (Clothing Accessories > Hats)",
+   "kinder-ski-gesichtsschutz-set-609792: Kinder Ski-Gesichtsschutz-Set (Clothing Accessories > Balaclavas)",
+   "haarbancken-fur-madchen-601900: Haarbancken für Mädchen (Clothing Accessories > Hair Accessories)",
+   "haargummi-set-fur-kinder-795840: Haargummi-Set für Kinder (Clothing Accessories > Hair Accessories > Ponytail Holders)",
+   "reitleggings-fur-erwachsene-und-kinder-381888: Reitleggings für Erwachsene und Kinder (Clothing > Activewear)",
+   "kindermutze-mit-hasenohren-bunt-612200: Kindermütze mit Hasenohren, bunt (Clothing Accessories > Hats)",
+   "reitweste-fur-erwachsene-und-kinder-647360: Reitweste für Erwachsene und Kinder (Clothing > Outerwear > Vests)",
+   "mutze-schal-handschuhe-set-fur-kinder-648900: Mütze, Schal & Handschuhe Set für Kinder (Clothing > Outfit Sets)",
+   "hochzeitskleid-set-fur-puppen-612900: Hochzeitskleid-Set für Puppen (Clothing > Outfit Sets)",
+   "puppenkleider-fur-15-cm-stoffpuppen-625800: Puppenkleider für 15 cm Stoffpuppen (Clothing > Dresses)",
+   "bauchgesichtsmutze-mit-buchstaben-614800: Bauchgesichtsmütze mit Buchstaben (Clothing Accessories > Hats)",
+   "sport-visier-fur-kinder-444352: Sport-Visier für Kinder (Clothing Accessories > Hats)",
+   "kostum-dinosaurier-baby-gr-104-fgaor5533104: Kostüm Dinosaurier Baby Gr.104 ((leer))",
+   "nikolaus-baby-strampler-fgssfm118744: Nikolaus Baby-Strampler (Clothing > Baby & Toddler Clothing > Baby One-Pieces)"
+  ],
+  "vorschlag": "20 Produkte sind nach der Kinder-Regel Kinderware, stehen aber in keiner Kinder-Kategorie. 20 davon sind Fremdkörper mit klarem Ziel (siehe fremdkoerper: Kostüme, Puppenkleider, Reitsport, Kinder-Mützen/-Handschuhe/-Haarschmuck für die Accessoires-Abteilung); 0 bleiben ohne Ziel. Kinder-Zubehör (Mützen, Handschuhe, Halswärmer, Strohhut, Sportvisier, Balaclava: 11 Produkte) erreicht die Mindestgrösse 15 nicht und gehört nach Google-Kategorie ohnehin zu Accessoires; als Querschnitt «Kinder-Zubehör» wäre es möglich."
+ },
+ "fremdkoerper": [
+  {
+   "handle": "winter-geschenkset-fur-kinder-654100",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Winter-Geschenkset für Kinder»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "warme-wasserdichte-kinder-winterhandschuhe-627700",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Warme, wasserdichte Kinder-Winterhandschuhe»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "kinder-handschuhe-cartoon-winddicht-warm-602500",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Kinder-Handschuhe Cartoon – Winddicht & Warm»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "fleece-gefutterte-kinder-handschuhe-624900",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Fleece-gefütterte Kinder-Handschuhe»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "kaschmir-baby-halswarmer-623400",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Kaschmir Baby Halswärmer · 35 × 19 cm»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "kinder-strohhut-mit-schleife-629900",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Kinder Strohhut mit Schleife»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "baseball-cap-mit-sonnenschutz-fur-kinder-und-d-638800",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Baseball Cap mit Sonnenschutz für Kinder und Damen»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "kinder-ski-gesichtsschutz-set-609792",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Kinder Ski-Gesichtsschutz-Set»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "haarbancken-fur-madchen-601900",
+   "grund": "Haarschmuck, kein Kleidungsstück («Haarbancken für Mädchen»)",
+   "gehoert_nach": "Accessoires (Haarschmuck)"
+  },
+  {
+   "handle": "haargummi-set-fur-kinder-795840",
+   "grund": "Haarschmuck, kein Kleidungsstück («Haargummi-Set für Kinder»)",
+   "gehoert_nach": "Accessoires (Haarschmuck)"
+  },
+  {
+   "handle": "reitleggings-fur-erwachsene-und-kinder-381888",
+   "grund": "Reitsport-Ware für Erwachsene UND Kinder (gemischte Grössen), kein Kinder-Kleidungsstück und kein Familien-Look; Damen- und Herren-Regel nehmen sie wegen «Kinder» im Titel auch nicht auf («Reitleggings für Erwachsene und Kinder»)",
+   "gehoert_nach": "Sport & Outdoor (Reitsport)"
+  },
+  {
+   "handle": "kindermutze-mit-hasenohren-bunt-612200",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Kindermütze mit Hasenohren, bunt»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "reitweste-fur-erwachsene-und-kinder-647360",
+   "grund": "Reitsport-Ware für Erwachsene UND Kinder (gemischte Grössen), kein Kinder-Kleidungsstück und kein Familien-Look; Damen- und Herren-Regel nehmen sie wegen «Kinder» im Titel auch nicht auf («Reitweste für Erwachsene und Kinder»)",
+   "gehoert_nach": "Sport & Outdoor (Reitsport)"
+  },
+  {
+   "handle": "mutze-schal-handschuhe-set-fur-kinder-648900",
+   "grund": "Winter-Zubehör-Set (Mütze, Schal, Handschuhe), Google-Kategorie «Outfit Sets» ist falsch gewählt («Mütze, Schal & Handschuhe Set für Kinder»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals)"
+  },
+  {
+   "handle": "hochzeitskleid-set-fur-puppen-612900",
+   "grund": "Puppenkleidung, also Spielzeug und keine Kinderkleidung («Hochzeitskleid-Set für Puppen»)",
+   "gehoert_nach": "Spielzeug > Puppen & Puppenhaus (spielzeug-puppen)"
+  },
+  {
+   "handle": "puppenkleider-fur-15-cm-stoffpuppen-625800",
+   "grund": "Puppenkleidung, also Spielzeug und keine Kinderkleidung («Puppenkleider für 15 cm Stoffpuppen»)",
+   "gehoert_nach": "Spielzeug > Puppen & Puppenhaus (spielzeug-puppen)"
+  },
+  {
+   "handle": "bauchgesichtsmutze-mit-buchstaben-614800",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Bauchgesichtsmütze mit Buchstaben»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "sport-visier-fur-kinder-444352",
+   "grund": "Kleidungs-Zubehör (Mütze, Handschuhe, Halswärmer), Google-Kategorie «Clothing Accessories», nicht «Clothing» («Sport-Visier für Kinder»)",
+   "gehoert_nach": "Accessoires (Mützen, Handschuhe, Schals); wer es auch unter Kinder will: Querschnitt-Sammlung"
+  },
+  {
+   "handle": "kostum-dinosaurier-baby-gr-104-fgaor5533104",
+   "grund": "Kostüm (Tag fortura / Titel «Kostüm»), eigene Kostüm-Kategorien («Kostüm Dinosaurier Baby Gr.104»)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "nikolaus-baby-strampler-fgssfm118744",
+   "grund": "Kostüm (Tag fortura / Titel «Kostüm»), eigene Kostüm-Kategorien («Nikolaus Baby-Strampler»)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "zuckersu-madchenstil-langarm-einfarbiges-pajam-628100",
+   "grund": "«Mädchenstil» ist ein Stil, kein Kind: Tag damen, Typ Damenmode, Tag maedchenstil; die Damen- und die Herren-Regel stufen es wegen des Wortanfangs «Mädchen» fälschlich als kinder ein («Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd»)",
+   "gehoert_nach": "damen-nachtwaesche (Abteilung Damen)"
+  },
+  {
+   "handle": "japanisches-langarmhemd-im-jungen-casual-stil-615000",
+   "grund": "Herren-Hemd: «im jungen Casual-Stil» ist ein Adjektiv («jungen»), keine Jungen-Ware; Tag herren («Japanisches Langarmhemd im jungen Casual-Stil»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "herren-hemden (Abteilung Herren)"
+  },
+  {
+   "handle": "pluschjacke-langes-flor-fgssor97992",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschjacke langes Flor»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "pluschmutze-panda-fga90193",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschmütze Panda»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "pluschmutze-hase-fga90196",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschmütze Hase»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "mutze-affe-plusch-fga90202",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Mütze Affe Plüsch»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "pluschjacke-lang-langes-flor-fgssor9985",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschjacke lang, langes Flor»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "pluschmutze-pingu-fga90192",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschmütze Pingu»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  },
+  {
+   "handle": "pluschmutze-eule-fga90203",
+   "grund": "Kostüm-/Plüschartikel (Tag fortura), Erwachsenen- bzw. Verkleidungsware («Plüschmütze Eule»); steht heute in der Collection «Kinder & Baby» (sub-baby-kids, Tag sort-kinder-baby)",
+   "gehoert_nach": "Kostüme (fortura, ft-*)"
+  }
+ ],
+ "widersprueche_tag_titel": {
+  "anzahl": 63,
+  "regel": "Nennt der Titel (Schritt 1-3) ein Kind oder eine Familie und der Tag sagt damen oder herren, gewinnt der Titel. Gemessen 63 von 279 Fällen mit Titelangabe und Tag (22,6 %); Tag damen -> Familie: 45, Tag damen -> Kinder: 9, Tag herren -> Kinder: 9. Der Tag kinder widerspricht dem Titel nie: von 279 Produkten mit starkem Signal und Geschlechts-Tag tragen 216 den Tag kinder, 63 damen oder herren."
+ },
+ "offene_fragen": [
+  "Grösse: nur 323 Produkte sind Kinder-/Baby-Bekleidung (2,7 % der 11864 Kleidungsprodukte). Darum 7 Kategorien: Die im Auftrag genannten Gruppen erreichen einzeln keine 15 Produkte (Kinder-Jacken, Ponchos und Anzüge 4, Bademode 10, Kleider 8), und Mädchen (34 Produkte mit dem Wort im Titel) und Jungen (20) verteilen sich auf alle Warenarten. Sie sind deshalb keine eigenen Kategorien, sondern Unterfilter «Für Mädchen»/«Für Jungen», wo sie mindestens 5 Treffer haben. Wer eine Mädchen- und eine Jungen-Seite will, nimmt eine Querschnitt-Sammlung: Titel «Mädchen» (34) bzw. «Jungen|Jungs|Jungens» (20) über alle sieben Kategorien; das ist erlaubt, weil Querschnitt-Sammlungen nicht zur Blatt-Einteilung zählen.",
+  "Menü-Gruppierung (nur Vorschlag, die Struktur ist flach): Baby = kinder-baby-sets, kinder-baby-strampler-bodys, kinder-baby-kleider-oberteile (163 Produkte); Kinder = kinder-sets-outfits, kinder-oberteile-kleider-hosen; Für alle = kinder-nachtwaesche-bademode (Baby UND Kinder), kinder-familien-looks. Baby-Kategorien heissen nach der CJ-Kategorie «Baby & Toddler Clothing»: ob ein Produkt Baby oder Kind ist, entscheidet allein die Google-Kategorie, nie das Alter (nicht belegt).",
+  "Alter: keine Alterskategorien, weil das Alter nicht belegt ist. Nur 12 Titel nennen es ausdrücklich («Neugeborene», «0-3 Monate», «6–12 Monate», «Gr. 110–180»); das ist unter 15 und taugt nicht als Filter. Wer Alter will, muss es bei der Anlage in Titel oder Tag eintragen.",
+  "Unterfilter sind Facetten (Chips): ein Produkt kann in mehreren stehen, jeder gilt nur innerhalb seiner Kategorie, alle verlangen ein Titelwort und haben mindestens 5 Treffer (Grenze kleiner als bei Damen, weil die ganze Abteilung nur 323 Produkte hat). Treffer: Baby-Sets & Outfits: Für Mädchen 10, Für Jungen 6, Strick, Waffel & Wolle 12, Sommer & Kurzarm 21, Langarm & Pullover 18 | Strampler, Bodys & Overalls: Strampler 44, Overalls & Jumpsuits 17, Bodys 7, Gefüttert & warm 7, Sommer, ärmellos & kurzarm 7 | Kinder-Sets & Outfits: Für Mädchen 6, Für Jungen 9, Sommer & Kurzarm 10, Pullover & Langarm 15 | Oberteile, Kleider, Hosen & Jacken: Kleider 8, T-Shirts & Shirts 9, Pullover & Hoodies 9, Hosen, Leggings & Overalls 6, Für Mädchen 10, Für Teenager 6 | Nachtwäsche, Bademode & Unterwäsche: Pyjamas & Schlafanzüge 8, Schlafsäcke 6, Bademode 10, Unterwäsche & Socken 5 | Familien-Looks: Pyjamas & Hausanzüge 20, Weihnachts-Looks 16, Pullover, Shirts & Hoodies 14, Mutter & Kind 7",
+  "Kategorie «Baby-Kleider, Oberteile & Jacken» hat genau 15 Produkte (Grenze 15). Sie fasst die CJ-Unterkategorien Tops, Bottoms, Dresses und Outerwear, die allgemeine Baby-Kleidung (Google-Kategorie nur «Baby & Toddler Clothing») und den Anzug «Baby Anzug mit Krawatte» (Google-Kategorie nur «Baby & Toddler») zusammen. Fällt sie unter 15, wird sie mit «Baby-Sets & Outfits» zu «Baby-Sets & Einzelteile» zusammengelegt. Die zwei Artikel mit der Google-Kategorie nur «Baby & Toddler» (Anzug, «Baumwoll Body für Neugeborene», der Body steht in Strampler, Bodys & Overalls) kommen über g_prefix «Baby & Toddler» plus Titelwörter in titel_muss in ihre Kategorie; g_nicht «Baby & Toddler >» hält Sitze, Spielzeug und Pflegeartikel draussen.",
+  "Vorrang: Familien-Looks haben Vorrang vor jeder anderen Kinder-Kategorie (alle anderen Kategorien schliessen die Familien-Wörter per titel_nicht aus), darum steht kein Produkt in zwei Kategorien (gemessen: 0 Mehrfachzuordnungen).",
+  "Abgleich mit Damen und Herren (kinder-baby-bekleidung_abgleich.mjs, nur lesen): 1 Überschneidung: «Partnerlook T-Shirt \"Just A Dad Who Loves His Girl\"» (Vater-Tochter-Shirt) steht bei Damen in damen-t-shirts (die Damen-Regel kennt «dad» nicht) UND bei mir in kinder-familien-looks. Entscheid beim Zusammenführen: entweder Damen nimmt «dad» in ihren Schritt 1 auf, oder das Wort «dad» fliegt aus meinem FAMILIE-Muster (dann bleibt das Produkt bei Damen als unisex).",
+  "Waise «Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd»: Damen- UND Herren-Regel stufen es wegen «Mädchen» als kinder ein, ich nicht (Mädchenstil = Erwachsenen-Stil, Tag damen, Tag maedchenstil, Typ Damenmode, g Nightgowns). Folge: es steht in keiner Abteilung. Vorschlag: Damen nimmt es mit Ausnahmemuster «mädchen-?(stil|haft)» in damen-nachtwaesche auf.",
+  "Waisen (Damen oder Herren stufen das Produkt als kinder ein, keine Kinder-Kategorie nimmt es auf, Ziele in fremdkoerper): Reitleggings und Reitweste «für Erwachsene und Kinder» (gemischte Grössen, Ziel Sport/Reitsport), Mützen-Schal-Handschuhe-Set (Accessoires), zwei Puppenkleider (Spielzeug), das Mädchenstil-Nachthemd (Damen). Davon steht keines in Damen oder Herren. Herren führt ausserdem 35 Produkte als «partner» (Paarlooks wie «Couple T-Shirts», «für Paare»), die in keiner Herren-Kategorie stehen und bei Damen als unisex laufen; sie sind keine Kinder-/Familien-Ware und nicht Sache dieser Abteilung. Regeln unterscheiden sich auch bei «Girl(s)» (Herren: kinder, z. B. «Mori Girl Leinenrock», «Spice Girls Stil», «Runaway Girl»; Damen und ich: nicht kinder).",
+  "Damen und Herren behandeln Familien-Sets verschieden (Damen: kinder; Herren: partner). Ich nehme alle Titel mit Familien- oder Eltern-Kind-Wort (48 Produkte, davon 45 mit Tag damen) in «Familien-Looks» auf, weil sie sonst nirgends stehen. Paar-Looks ohne Familienwort gehören nicht dazu.",
+  "Bekannte Grenze der Geschlechtsregel: Ein Erwachsenen-Artikel, der ein Kinderwort nur im Motiv trägt («Kindermotiv», «Baby Schriftzug-Print»), gilt als Kind, weil der Titel das Wort wörtlich nennt. Im heutigen Datensatz betrifft das einen Artikel (Sweatshirt mit Baby Schriftzug-Print, als Grenzfall gezählt; dafür sprechen Typ Kinder und der Tag kat-kinder-baby). Die Gegenproben (kinder-baby-bekleidung_messen.mjs, 28 Fälle) und eine Mutationsprobe der Geschlechtsregel (_mut/lauf.sh: 10 gebrochene Stellen, alle von den Gegenproben erkannt) sichern die übrigen Fehlgriffe ab, die beim Lesen auftauchten (Babydoll, Baby-Tee, Mädchenstil, «im jungen Stil», «Teenage», Elternwort allein, Tag- und Typ-Schritt, Google-Schritt).",
+  "Fremdkörper: 29 Produkte (siehe fremdkoerper): Kostüme/Plüschware mit Tag fortura, Puppenkleider, Reitsport, Kinder-Zubehör (Mützen/Handschuhe/Haarschmuck), ein Erwachsenen-Nachthemd und ein Herrenhemd, das wegen des Adjektivs «jungen» in der alten Collection «Kinder & Baby» (Tag sort-kinder-baby) steht. Die alte Collection ist sonst sauber: von 285 Kleidungs-/Zubehör-Produkten darin sind 8 Erwachsenen- oder Kostümware.",
+  "Kinder-Schuhe (nur genannt, baut die Schuh-Abteilung): 1431 Produkte mit Google-Kategorie Shoes und Kinder-Geschlecht nach dieser Regel, davon 1377 mit Typ «Kinderschuhe»; Handles in kinder-baby-bekleidung_kinderschuhe.json. Kinder-Uhren: 60 (gehören zu Uhren). Schlafsack-/Pucksack-Artikel mit Google-Kategorie «Baby & Toddler > Swaddling» (1: «Baby-Schlafsack Winter-Pucksack für Neugeborene») stehen bei der Baby-Ausstattung (Tag sort-baby), nicht hier, weil ihre Google-Kategorie Zubehör und keine Kleidung ist.",
+  "Bestehende Collections, die sich mit der neuen Struktur ändern: «babykleidung» (251, Shopify-Kategorie), «baby-kinder-sets» (118, Shopify-Kategorie; 78 + 43 = 121 in meinen beiden Set-Kategorien), «weihnachtspyjama-familie» (30, Tag such-weihnachtspyjama; meine Unterfilter «Weihnachts-Looks» 16 und «Pyjamas & Hausanzüge» 20), «baby-kleinkind» (4350, Tag baby/kinder/Titel: enthält Schuhe und Spielzeug), «sub-baby-kids» (4520, Tag sort-kinder-baby) und «baby-kids» (302) sind Sammelbecken und sollten durch diese Kategorien ersetzt werden, nicht ergänzt.",
+  "Kinder-Kleidung steckt heute auch in Damen-/Herren-/Themen-Collections (lokal nach deren Regel gezählt, ungefähre Zahlen): damen-mode 60, loungewear 25, jumpsuits-overalls 23, t-shirts-tops 22, shorts-bermudas 21, nachtwaesche-pyjamas 18, sub-bademode 10, fur-ihn 9, westen-gilets 8, sub-kleider 6. Das ist der eigentliche Fremdkörper-Fall: «damen-mode» (Typ Damenmode ODER Tag kleid …) enthält 60 Kinder-Produkte. Diese Collections müssen ihre Regel auf Geschlecht umstellen (Tag damen/herren allein reicht nicht).",
+  "Sperr-Tags: kein Kinder-Produkt trägt einen der Sperr-Tags (adult-nicht-bewerben, 18plus, lizenz-nicht-bewerben …). Die Sperrliste und «fortura» stehen trotzdem in tags_nicht jeder Kategorie, damit spätere Importe nicht durchrutschen; fortura (Kostüme) betrifft heute 2 Kinder-Produkte.",
+  "Messprotokoll (wiederholbar mit kinder-baby-bekleidung_bauen.mjs; die gelesene Liste steht in kinder-baby-bekleidung_stichproben.txt): weil die ganze Abteilung nur 323 Produkte hat, wurde JEDER Treffer jeder Kategorie einzeln gelesen (nicht nur 30), dazu eine feste Zufallsstichprobe von 30 pro Kategorie markiert. Beim Lesen gefundene und danach per Regel behobene Fehltreffer: «Mütze, Schal & Handschuhe Set für Kinder» in Kinder-Sets (Google-Kategorie Outfit Sets falsch gewählt; Regel: titel_nicht «handschuh»), «Zuckersüss Mädchenstil … Nachthemd» in Nachtwäsche (Regel: Ausnahme «mädchen-?(stil|haft)»), «Baseball-Cap «Mama»» und «Dad-Cap» als Familie (Regel: Elternwort braucht ein Kind-Wort), «Casual Jeans … für Jugendliche» in Kleider/Hosen (Tag herren, Typ Herrenmode, kein Kinderartikel; Regel: «Jugendliche» nicht aufgenommen), «Japanisches Langarmhemd im jungen Casual-Stil» (Adjektiv «jungen»; Regel: Ausnahme). Ausserdem Vollscans: alle 341 Kinder-Produkte des Universums (Google-Kategorie Clothing*, Clothing Accessories oder leer) wurden nach Kategorie oder Fremdkörper-Grund durchgesehen (in Kategorien 321, Fremdkörper 20; dazu 2 Baby-Artikel mit Google-Kategorie nur «Baby & Toddler»), und alle 10 Kleidungstitel mit einem Kinderwort (auch Girl/Boy), die NICHT als kinder gelten, wurden gelesen: «Runaway Girl Off-Shoulder T-Shirt mit Rüschen», «Chiffon-Bluse im Boyfriend-Stil», «Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd», «Pailletten-Fransen-Minikleid im Spice Girls Stil», «Japanisches Langarmhemd im jungen Casual-Stil», «Lässiges Mesh Cowboy Kurzarmhemd für Herren», «Cowboy Hemd für Herren», «Western Cowboy Wildleder Fransen Langarmshirt», «Mori Girl Leinenrock mit Schnürung», «Blumengirlandete Midi-Robe». Grenzfälle, die als richtig gezählt sind: «Sweatshirt mit Baby Schriftzug-Print und Kapuze» (Tag damen, aber Typ Kinder, Tag kat-kinder-baby und «Baby» im Titel; als Kinderware gezählt); «Baby Strampelsack aus Gaze» (ein Schlafsack; steht wegen der Google-Kategorie Baby One-Pieces in Strampler, Bodys & Overalls); «Halloween-Outfit für Mädchen» (könnte eine Verkleidung sein; kein Tag fortura, Google-Kategorie Outfit Sets, Tag kinder); «Weihnachtsbaum-Print Body mit Hose und Mütze · 3 Stück» (ein dreiteiliges Set; steht wegen der Google-Kategorie Baby Bottoms bei den Baby-Einzelteilen); «Sport-Set mit Top und Hose in Schwarz» (Google-Kategorie Swimwear, Tag kinder; ob Bademode, ist nicht belegt); «Neugeborenen-Set aus Spitze: Rock & Kopfschmuck» (eher ein Foto-Set als Alltagskleidung; Google-Kategorie Baby Outfits); «Pailletten Disco Hemd für Teenager» (Tag herren; der Titel nennt Teenager, deshalb Kinder-Abteilung (wie bei Damen und Herren)). Eine Stichprobe beweist keine 97 %; hier ist jedoch jeder Treffer gelesen, falsch 0 von 323."
+ ],
+ "geschlecht_regel_abteilung": "Ergebnis je Produkt: kinder | andere. «kinder» umfasst Baby, Kleinkind, Mädchen, Jungen, Teenager, Familien-/Eltern-Kind-Looks; «andere» heisst: nicht Kind, die Abteilungen Damen/Herren bestimmen damen | herren | unisex nach ihren Regeln (Titelwörter Damen/Herren/Unisex, Tags, Typ, Google-Kategorie; hier nicht neu bestimmt). Alle Muster sind Regex-Strings (JavaScript, Flag i) und werden auf den Produkttitel angewendet; der erste zutreffende Schritt gilt.\n1. FAMILIE: Titel trifft einen dieser Ausdrücke -> kinder (Familien-Look, Kategorie «Familien-Looks»): (^|[^a-zäöüß])(famil[a-zäöüß]*|eltern|geschwister)(?![a-zäöüß])  ODER  ^(?=.*(^|[^a-zäöüß])(mutter|mama|mami|mommy|papa|daddy|dad|vater)(?![a-zäöüß]))(?=.*(^|[^a-zäöüß])(kind(er)?|tochter|töchter|sohn|söhne|baby|girl|boy)(?![a-zäöüß]))  ODER  (erwachsene[a-zäöüß]*|damen|herren)[- ]*(und|&|\\+)[- ]*kind(er)?(?![a-zäöüß])  ODER  (^|[^a-zäöüß])kind(er)?[- ]*(und|&|\\+)[- ]*(erwachsene[a-zäöüß]*|damen|herren)(?![a-zäöüß]). Ein Elternwort allein (z. B. «Baseball-Cap «Mama»», «Dad-Cap») genügt nicht, es muss ein Kind- oder Familienwort dazukommen.\n2. GOOGLE: Google-Kategorie beginnt mit «Apparel & Accessories > Clothing > Baby & Toddler Clothing» (CJ-Kategorie Baby & Toddler Clothing) oder «Apparel & Accessories > Clothing Accessories > Baby & Toddler Clothing Accessories» -> kinder.\n3. TITEL: Titel trifft (^|[^a-zäöüß])(kinder|kleinkind|baby|neugeboren|säugling|mädchen|maedchen|jungen|jungs|jungens|teenager|teens?(?![a-zäöüß])|strampl|strampelsack)  ODER  (^|[^a-zäöüß])(kids?)(?![a-zäöüß]) und trifft keinen dieser Ausnahme-Ausdrücke (baby-?(doll|tee|blau|rosa|pink)  ODER  mädchen-?(stil|haft)  ODER  (^|[^a-zäöüß])(im|am|vom|zum|mit|in|den|dem|einem|der|des) jungen) -> kinder. Die Ausnahmen fangen «Babydoll», «Baby-Tee» und Farbwörter, «Mädchenstil» (Erwachsenen-Stil) und das Adjektiv «im jungen Casual-Stil» ab.\n4. TAG: Tag kinder, baby, kids -> kinder.\n5. TYP: Feld type «Baby & Kinder» oder «Kinder» -> kinder.\n6. Sonst andere.\nNicht bestimmt wird das Alter: CJ liefert keins. «Teenager» im Titel gilt wie bei Damen und Herren als kinder, «Jugendliche» nicht (dort steht der Tag herren/damen, und die Ware ist im Katalog Erwachsenen-Ware in kleinen Grössen).\nGEMESSEN an 11864 Produkten mit Google-Kategorie unter «Clothing > » oder leer (Damen- und Herren-Universum): kinder 325 (davon Schritt 1 Familie 48, Google 173, Titel 93, Tag 11, Typ 0), andere 11539.\nTitel gegen Tag: nennt das starke Signal (Familie, Google, Titel) ein Kind UND ist ein Geschlechts-Tag vorhanden (279 Produkte), widerspricht der Tag in 63 Fällen (22,6 %): Tag damen -> Familie 45, Tag damen -> Kinder 9, Tag herren -> Kinder 9. Der Titel gewinnt, weil er die Zielgruppe wörtlich nennt; der Tag damen/herren ist ein Sammel-Tag des Imports. Er führt alle 45 Familien-Produkte mit Tag damen und 18 Kinder-Artikel (z. B. «Mädchen Prinzessinnenkleid aus Baumwolle», «Bagger Sweatshirt für Jungen», sechs «für Teenager») falsch.\nUmgekehrt: Tag kinder ohne Kinder-Erkennung in Schritt 1-3: 0 (Schritt 4 ergänzt ihn, nur 11 Produkte hängen allein am Tag, z. B. «Wickeloverall», «Sport-Set mit Top und Hose»). Das Feld type «Baby & Kinder»/«Kinder» stimmt: 255 von 255 Produkten mit diesem Typ sind nach Schritt 1-4 schon kinder. Schritt 5 ändert im heutigen Datensatz darum kein Ergebnis (0); er bleibt als Absicherung für künftige Importe.",
+ "nachtrag_pruefung": {
+  "datum": "2026-10-26",
+  "werkzeug": "pruefen.mjs / anpassen.mjs",
+  "aenderungen": [
+   "NEU partnerlook-paare «Partnerlook & Paar-Outfits» (Geschlecht «partner»): Paar-Looks standen bei Damen (Damen-Regel: unisex) aber nicht bei Herren (Herren-Regel: partner) und in keiner Paar-Kategorie. Ein Eintrag im Menue unter Damen UND Herren.",
+   "Ausschluss «verkleid» nur noch am Wortanfang (8 Kategorien); dieselbe Teilwort-Falle vorsorglich geschlossen (am Datensatz kein weiterer Treffer).",
+   "kinder-baby-sets: 3 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-baby-sets-maedchen (10), kinder-baby-sets-jungen (6), kinder-baby-sets-strick (12).",
+   "kinder-baby-strampler-bodys: 3 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-baby-bodys (7), kinder-baby-gefuettert (7), kinder-baby-aermellos (7).",
+   "kinder-sets-outfits: 3 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-sets-maedchen (6), kinder-sets-jungen (9), kinder-sets-sommer (10).",
+   "kinder-oberteile-kleider-hosen: 6 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-kleider (8), kinder-t-shirts (9), kinder-pullover-hoodies (9), kinder-hosen-leggings (6), kinder-oberteile-maedchen (10), kinder-teenager (6).",
+   "kinder-nachtwaesche-bademode: 4 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-pyjamas (8), kinder-schlafsaecke (6), kinder-bademode (10), kinder-unterwaesche (5).",
+   "kinder-familien-looks: 2 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: kinder-familie-shirts (14), kinder-familie-mutter-kind (7).",
+   "partnerlook-paare: 3 Unterfilter unter 15 Treffern nicht aktiv, aber vorgemerkt: partnerlook-paare-shirts (8), partnerlook-paare-pullover (7), partnerlook-paare-winter (3)."
+  ]
+ }
+}

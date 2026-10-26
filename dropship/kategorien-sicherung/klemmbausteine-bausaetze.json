@@ -1,0 +1,37 @@
+{
+ "id": "gid://shopify/Collection/692722303361",
+ "title": "Klemmbausteine & Bausätze",
+ "productsCount": {
+  "count": 558
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Klemmbaustein"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bausteine"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bausatz"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Baukasten"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Klemmbausteine"
+   }
+  ]
+ }
+}

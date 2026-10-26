@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/688564437377",
+ "title": "Kinder & Baby",
+ "productsCount": {
+  "count": 3857
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-kinder-baby"
+   }
+  ]
+ }
+}

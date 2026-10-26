@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/688585965953",
+ "title": "Herren-Hemden",
+ "productsCount": {
+  "count": 1000
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herren"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Hemd"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Set"
+   }
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "id": "gid://shopify/Collection/689027776897",
+ "title": "Rucksäcke",
+ "productsCount": {
+  "count": 2936
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Rucksack"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Backpack"
+   }
+  ]
+ }
+}

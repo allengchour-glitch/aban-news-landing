@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/688564470145",
+ "title": "Haustierwelt",
+ "productsCount": {
+  "count": 3780
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kat-haustier"
+   }
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "gid://shopify/Collection/689991876993",
+ "title": "Tastaturen & Mäuse",
+ "productsCount": {
+  "count": 297
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Tastatur"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Gaming-Maus"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kabellose Maus"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Funkmaus"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Mauspad"
+   }
+  ]
+ }
+}

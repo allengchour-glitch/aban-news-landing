@@ -1,0 +1,37 @@
+{
+ "id": "gid://shopify/Collection/688928915841",
+ "title": "Velo & Radsport",
+ "productsCount": {
+  "count": 365
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "fahrrad"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "velohelm"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "radfahren"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "e-bike"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "mountainbike"
+   }
+  ]
+ }
+}

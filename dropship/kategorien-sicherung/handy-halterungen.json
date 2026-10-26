@@ -1,0 +1,52 @@
+{
+ "id": "gid://shopify/Collection/689870012801",
+ "title": "Halterungen & MagSafe",
+ "productsCount": {
+  "count": 91
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Handyhalterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Handy-Halterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "KFZ-Halterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Autohalterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "MagSafe"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Handyhalter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Smartphone-Halterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Fahrradhalterung"
+   }
+  ]
+ }
+}

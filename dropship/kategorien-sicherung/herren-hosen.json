@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/688585998721",
+ "title": "Herren-Hosen",
+ "productsCount": {
+  "count": 189
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herren"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "hose"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "Set"
+   }
+  ]
+ }
+}
