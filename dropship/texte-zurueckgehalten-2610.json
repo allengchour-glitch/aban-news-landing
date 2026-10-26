@@ -1,0 +1,158 @@
+{
+ "stand": "2026-10-26",
+ "hinweis": "Texte aus Runde 3, die NICHT live gingen. Nach dem Auswahl-Lauf bzw. der Titelkorrektur neu erzeugen: text_eingabe.mjs HANDLES=… → Agenten (dropship/TEXT-AGENT-AUFTRAG.md) → text_pruefen_cli → text_anwenden.",
+ "zurueckgehalten": [
+  {
+   "handle": "kabelloses-ansteckmikrofon-fur-outdoor-aufnahm-620600",
+   "grund": "Befund der zweiten Gegenlese-Runde (sperren)",
+   "stellen": [
+    {
+     "stelle": "Das Mikrofon ist für den Anschluss an Geräte mit Type-C-Anschluss oder mit dem anderen gängigen Smartphone-Anschluss ausgelegt. Prüfe vor dem Kauf, welcher Ansc",
+     "grund": "Das Produkt hat keine Auswahl (optionen leer), im Shop liegt also genau eine Ausführung. Die CJ-Daten kennen aber sowohl Type-C- als auch Apple-Ausführungen. Der Satz stellt beide Anschlussarten als passend dar und lässt die Kundschaft glauben, sie könne wähle",
+     "schwere": "sperren"
+    }
+   ]
+  },
+  {
+   "handle": "kabelloses-kragenclip-mikrofon-mit-rauschunter-530816",
+   "grund": "Befund der zweiten Gegenlese-Runde (sperren)",
+   "stellen": [
+    {
+     "stelle": "Das Mikrofon arbeitet nicht drahtlos, alle Ausführungen sind mit USB bezeichnet.",
+     "grund": "Der Seitentitel lautet «Kabelloses Kragenclip-Mikrofon mit Rauschunterdrückung», der Text sagt jetzt flach das Gegenteil. Das Datenblatt widerspricht sich selbst: Produktname «Wireless Collar Clip Microphone», Sets «1 Drag 2» (typische Funk-Set-Bezeichnung) ge",
+     "schwere": "sperren"
+    }
+   ]
+  },
+  {
+   "handle": "lippenstift-geschenkset-018432",
+   "grund": "Befund der zweiten Gegenlese-Runde (sperren)",
+   "stellen": [
+    {
+     "stelle": "Das Set wiegt zusammen mit der Box 200 g.",
+     "grund": "Die Eingabe nennt nur \"Product weight: 200 g\". Ob die Geschenkbox im Gewicht enthalten ist, steht nirgends. \"Zusammen mit der Box\" ist eine zugefuegte, unbelegte Gewichtsangabe. Einfach \"Das Set wiegt 200 g.\" schreiben. Die frueher beanstandete Wirkaussage (fe",
+     "schwere": "sperren"
+    }
+   ]
+  },
+  {
+   "handle": "lotloser-led-verbinder-9706e3",
+   "grund": "Befund der zweiten Gegenlese-Runde (sperren)",
+   "stellen": [
+    {
+     "stelle": "ist für alle gedacht, die ihre LED-Streifen verbinden wollen",
+     "grund": "Das Datenblatt nennt nur \"LED full color lights with 3pin welding-free head\" (Lichter, Anschlusskopf mit 3 Pins) und \"Hand Tools\". Das Wort Streifen bzw. strip kommt in der Eingabe nirgends vor. Die Anwendung und Kompatibilitaet mit LED-Streifen ist also eine ",
+     "schwere": "sperren"
+    }
+   ]
+  },
+  {
+   "handle": "geburtsstein-ring-im-wassertropfen-design-605800",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Bei einem Ring entscheidet die Grösse darüber, ob er sitzt, miss deshalb vorab deinen Finger.",
+     "grund": "Die früheren Sperr-Funde sind behoben: keine Zwölf-Farben-Anspielung, keine Metallfarben- oder Grössenwahl mehr. Es bleibt eine praktische Lücke: optionen ist leer, die Seite hat keinen Grössenwähler, und der Text sagt nicht, welche Grösse geliefert wird. Ein ",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "gedenkring-mit-gravur-und-geburtsstein-613200",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Bei einem Ring lohnt es sich, die eigene Ringgrösse vorab zu kennen.",
+     "grund": "Früherer Sperr-Fund (Farb- und Grössenwahl ohne Auswahl) ist behoben, ebenso 'einem Zirkonia-Stein'. Es bleibt eine Lücke: ohne Auswahl (optionen leer) nennt der Text keine gelieferte Grösse, der Kunde kann keine wählen. Besser nach dem Auswahl-Lauf setzen. Ke",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "goldfarbener-ring-aus-wolframstahl-mit-zirkoni-602700",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Bei einem Ring ist die richtige Grösse entscheidend. Wenn du dir nicht sicher bist, miss vorab einen Ring, der dir gut passt.",
+     "grund": "Früherer Sperr-Fund (6/8 mm, Gold/Silber, Grössen 6 bis 13 ohne Auswahl) ist behoben. Es bleibt eine Lücke: optionen ist leer, es gibt keinen Grössenwähler, und der Text sagt nicht, welche Grösse oder Breite geliefert wird. Besser erst nach dem Auswahl-Lauf se",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "infrarot-kalibrator-e30ae8",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Titel: Infrarot-Kalibrator (Text: «Lichtquelle: roter Laser, Wellenlänge 650 nm»; «Beschrieben ist hier die Ausführung mit rotem Laser»)",
+     "grund": "Der Text ist datentreu und nennt kein Infrarot mehr, aber der Titel behauptet «Infrarot», während der Text einen sichtbaren roten Laser bei 650 nm beschreibt. Zudem deutet «Beschrieben ist hier die Ausführung mit rotem Laser» weitere Ausführungen an, obwohl de",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "life-tree-lederarmband-fur-apple-watch-755328",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Zu diesem Armband gehören die Zahlenangaben 38/40/41 mm und 42/44/45 mm. Gleiche sie vor dem Kauf mit der Gehäusegrösse deiner Uhr ab.",
+     "grund": "Das Produkt hat keine Auswahl (optionen leer), es wird also nur eine der beiden Groessen geliefert. Der Text nennt beide Zahlenbereiche, ohne zu sagen, welcher geliefert wird. Kunden mit einer 45-mm-Uhr koennten annehmen, das Armband passe, und bekommen die 38",
+     "schwere": "hinweis"
+    },
+    {
+     "stelle": "Das Armband ist für die Smartwatch bestimmt, die im Titel genannt ist",
+     "grund": "Der Verweis \"im Titel genannt\" ist ein Meta-Verweis auf den Titel statt eine Aussage ueber das Produkt und liest sich wie ein Quellenverweis. Die Markennennung muss zwar vermieden werden, eleganter waere z. B. \"fuer die Smartwatch-Modelle gedacht, auf die der ",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "manuelle-nietenpistole-mit-mandrel-383488",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Die manuelle Nietzange ist ein Handwerkzeug, das mit Dornen arbeitet und für Nietmuttern von M3 bis M6 ausgelegt ist.",
+     "grund": "Die Wahl-Versprechen sind behoben (keine Auswahl, keine Wahlformulierung mehr). Offen bleibt das Titelproblem: Der Seitentitel 'Blindnietzange, manuell, mit Nietdornen' nennt ein anderes Werkzeug als das Datenblatt ('Rivet Gun Nut Gun', Nietmuttern). Titel prü",
+     "schwere": "hinweis"
+    }
+   ]
+  },
+  {
+   "handle": "minimalistischer-ring-aus-silber-mit-geometris-601500",
+   "grund": "Seite hat noch keine Auswahl (Auswahl-Lauf nötig)",
+   "stellen": [
+    {
+     "stelle": "Im Lieferumfang ist 1 Ring.",
+     "grund": "Der Text nennt weder Farbe noch Ringgrösse, obwohl das Datenblatt zwei Farben und drei Grössen (HK 13/15/17, US 6/7/8) führt, und die Seite keine Auswahl hat. Der Kunde kann die Grösse nirgends erkennen. Im Text ist das ohne Wahl-Versprechen nicht lösbar, die ",
+     "schwere": "hinweis"
+    }
+   ]
+  }
+ ],
+ "zu_duenn_18": [
+  "fahrrad-rahmenmontage-set-bd94ba",
+  "fitness-rally-dein-vielseitiges-trainingsgerat-1e7123",
+  "fliesenleger-werkzeug-37f2b1",
+  "gamepad-tasten-fur-dein-smartphone-551ec7",
+  "gesundheits-armband-mit-herzfrequenzmessung-601700",
+  "herz-bar-seidenanhanger-605500",
+  "hundeschussel-aus-abs-glas-cd1a07",
+  "keratin-wimpern-lift-606500",
+  "klassische-gitarren-saiten-622900",
+  "kompakter-fleischschneider-xf-300-bcf54a",
+  "kohlenmonoxidmelder-fur-zuhause-camping-607300",
+  "kuhl-luft-reithelmpolsterung-anti-impact-059968",
+  "kunstnagel-patches-a5da18",
+  "lederhandtasche-retro-bangalor-mit-olgelee-aa50db",
+  "magnetisches-armband-im-retro-stil-625100",
+  "make-up-pinselset-four-seasons-green-f045c5",
+  "mechanischer-schwebeprop-fur-zauberkunst-46bd7f",
+  "mini-wireless-glattburste-mit-anionenfunktion-281920"
+ ],
+ "durchgefallen_1": [
+  {
+   "handle": "lederriemen-mit-kette-fur-damen-625100",
+   "grund": "Bewusst NICHT geschrieben (keine Ausgabedatei): Das Datenblatt führt «Category: Sex toys», das Produkt ist also vermutlich Adult-Ware (Sperr-Tags wie adult-nicht-bewerben / 18plus prüfen); ein werbender Fliesstext wäre hier nicht zu verantworten. Dazu: Material ist PU, nicht Leder (siehe titelverdacht). Die Textprüfung selbst wurde nicht ausgelöst; Entscheid liegt bei der Haupt-Sitzung."
+  }
+ ]
+}
