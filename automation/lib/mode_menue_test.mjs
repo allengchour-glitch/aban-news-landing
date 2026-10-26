@@ -1,5 +1,5 @@
 // Tests des Menü-Umbaus für die Mode-Taxonomie (lib/mode_menue.mjs). Das Test-Menü bildet das Live-Menü vom 26.10.2026 nach.
-import { modeMenue, pruefeMenue, ENTFERNEN, PFADE, MIT_FILTER } from './mode_menue.mjs';
+import { modeMenue, pruefeMenue, ENTFERNEN, PFADE, MIT_FILTER, schuheMenue, pruefeSchuhe, SCHUHE } from './mode_menue.mjs';
 import { menueEintraege } from './mode_taxonomie.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -57,6 +57,32 @@ ist('Gegenprobe: Prüfung findet eine veränderte oberste Ebene (Reihenfolge und
 ist('Gegenprobe: unbekannter Elternknoten wird gemeldet, nichts zerstört', (() => { const r = modeMenue(MENU.filter(x => x.title !== 'Herren'), plan, ALLE); return [r.log.some(z => z.includes('ÜBERSPRUNGEN Herren')), titel(r.baum).includes('Damen')]; })(), [true, true]);
 ist('Der Eingabebaum wird nicht verändert', JSON.stringify(MENU).includes('Strampler & Bodys'), true);
 ist('Filter nur für Kleider', [...MIT_FILTER], ['damen-kleider']);
+
+// ── Schuhe (Phase 2) ──
+const SMENU = [I('Damen', [I('Kleider')]), I('Schuhe', [I('Damenschuhe'), I('Herrenschuhe'), I('Sandalen'), I('Kinderschuhe'), I('Lauf- & Sportschuhe'), I('Stiefel & Boots'), I('Arbeits- & Sicherheitsschuhe'), I('Pumps & High Heels')]), I('Taschen', [I('Rucksäcke')])];
+const TAX = { unterpunkte: [
+  { titel: 'Damenschuhe', unterpunkte: [{ handle: 'damen-sneaker', titel: 'Sneaker' }, { handle: 'damen-pumps', titel: 'Pumps & Absatzschuhe' }] },
+  { titel: 'Herrenschuhe', unterpunkte: [{ handle: 'herren-sneaker', titel: 'Sneaker' }] },
+  { titel: 'Kinderschuhe', unterpunkte: [{ handle: 'kinder-sneaker', titel: 'Sneaker & Sportschuhe' }, { handle: 'kinder-stiefel', titel: 'Stiefel & Winterschuhe' }] },
+  { titel: 'Arbeits- & Spezialschuhe', unterpunkte: [{ handle: 'arbeitsschuhe', titel: 'Arbeits- & Sicherheitsschuhe', vorhanden: true }] } ] };
+const SG = { 'damen-sneaker': 'gid://c/ds', 'damen-pumps': 'gid://c/dp', 'herren-sneaker': 'gid://c/hs', 'kinder-sneaker': 'gid://c/ks', 'kinder-stiefel': 'gid://c/kst' };
+const sr = schuheMenue(SMENU, TAX, SG);
+const sast = ast(sr.baum, ['Schuhe']);
+ist('Schuhe: Gruppen vorn in Taxonomie-Reihenfolge, dann «Arbeits- & Sicherheitsschuhe»', titel(sast), ['Damenschuhe', 'Herrenschuhe', 'Kinderschuhe', 'Arbeits- & Sicherheitsschuhe']);
+ist('Schuhe: die flachen Dubletten sind weg', ['Sandalen', 'Lauf- & Sportschuhe', 'Stiefel & Boots', 'Pumps & High Heels'].some(t => titel(sast).includes(t)), false);
+ist('Schuhe: Gruppen behalten ihr bisheriges Ziel', sast.slice(0, 3).map(x => x.resourceId), ['gid://c/Damenschuhe', 'gid://c/Herrenschuhe', 'gid://c/Kinderschuhe']);
+ist('Schuhe: neue Kategorien als dritte Ebene', ast(sr.baum, ['Schuhe', 'Damenschuhe']).map(x => x.title), ['Sneaker', 'Pumps & Absatzschuhe']);
+ist('Schuhe: Prüfung sauber', pruefeSchuhe(SMENU, sr.baum), []);
+ist('Schuhe: andere Äste unberührt', JSON.stringify(sr.baum.filter(x => x.title !== 'Schuhe')), JSON.stringify(SMENU.filter(x => x.title !== 'Schuhe')));
+ist('Schuhe Gegenprobe: fehlende Collection wird gemeldet und übersprungen', (() => { const r = schuheMenue(SMENU, TAX, { ...SG, 'damen-pumps': null }); return [r.log.some(z => z.startsWith('fehlt') && z.includes('damen-pumps')), titel(ast(r.baum, ['Schuhe', 'Damenschuhe']))]; })(), [true, ['Sneaker']]);
+ist('Schuhe Gegenprobe: Gruppe ohne Menüeintrag wird gemeldet, nichts zerstört', (() => { const r = schuheMenue(SMENU.map(x => x.title === 'Schuhe' ? { ...x, items: x.items.filter(i => i.title !== 'Herrenschuhe') } : x), TAX, SG); return [r.log.some(z => z.includes('Gruppe Herrenschuhe')), titel(ast(r.baum, ['Schuhe']))]; })(), [true, ['Damenschuhe', 'Kinderschuhe', 'Arbeits- & Sicherheitsschuhe']]);
+ist('Schuhe Gegenprobe: ohne Ast «Schuhe» wird übersprungen', schuheMenue([I('Damen', [])], TAX, SG).log[0].startsWith('ÜBERSPRUNGEN Schuhe'), true);
+ist('Schuhe Gegenprobe: Prüfung findet verlorenen «Arbeits- & Sicherheitsschuhe»', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); const e = b.find(x => x.title === 'Schuhe'); e.items = e.items.filter(i => i.title !== 'Arbeits- & Sicherheitsschuhe'); return b; })()).some(f => f.includes('Arbeits')), true);
+ist('Schuhe Gegenprobe: Prüfung findet veränderten Nachbar-Ast', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); b.find(x => x.title === 'Taschen').items = []; return b; })()).some(f => f.includes('ausserhalb')), true);
+ist('Schuhe Gegenprobe: Prüfung findet verändertes Gruppen-Ziel', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); b.find(x => x.title === 'Schuhe').items[0].resourceId = 'gid://c/anders'; return b; })()).some(f => f.includes('Ziel der Gruppe')), true);
+ist('Schuhe Gegenprobe: Prüfung findet doppeltes Ziel', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); const e = b.find(x => x.title === 'Schuhe').items[0]; e.items.push({ ...e.items[0], title: 'Doppelt' }); return b; })()).some(f => f.includes('doppeltes Ziel')), true);
+ist('Schuhe Gegenprobe: Prüfung findet 4 Ebenen', pruefeSchuhe(SMENU, (() => { const b = JSON.parse(JSON.stringify(sr.baum)); b.find(x => x.title === 'Schuhe').items[0].items[0].items = [I('vierte Ebene')]; return b; })()).some(f => f.includes('Ebenen')), true);
+ist('Schuhe: SCHUHE benennt Pfad und Gruppen', [SCHUHE.pfad, SCHUHE.gruppen.length], [['Schuhe'], 3]);
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

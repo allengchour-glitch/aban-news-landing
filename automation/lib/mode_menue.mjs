@@ -66,3 +66,58 @@ export function pruefeMenue(alt, neu) {
   return fehler;
 }
 export { alleRessourcen };
+
+// ───────────────────────── Schuhe (Phase 2) ─────────────────────────
+/**
+ * Der Ast «Schuhe» war eine flache Liste mit Dubletten («Sandalen», «Sneaker & Sport», «Pumps & High Heels» …). Die Taxonomie ordnet nach Damen, Herren, Kinder
+ * (je 7 bis 13 Kategorien). Die drei Gruppenknoten (Damenschuhe, Herrenschuhe, Kinderschuhe) BLEIBEN mit ihrem bisherigen Ziel (die Menüebene braucht einen Link)
+ * und bekommen die neuen Kategorien als dritte Ebene; «Arbeits- & Sicherheitsschuhe» bleibt daneben. Die alten flachen Einträge entfallen aus dem Menü
+ * (ihre Collections bleiben bestehen, nur nicht mehr verlinkt).
+ */
+export const SCHUHE = { pfad: ['Schuhe'], gruppen: ['Damenschuhe', 'Herrenschuhe', 'Kinderschuhe'], behalten: ['Arbeits- & Sicherheitsschuhe'] };
+
+/**
+ * @param baum  Menü-Eingabe
+ * @param tax   Taxonomie-Knoten «Schuhe»: { unterpunkte: [{ titel, unterpunkte: [{ handle, titel }] }] }
+ * @param gids  { handle: GID } vorhandener Collections
+ */
+export function schuheMenue(baum, tax, gids) {
+  const b = kopie(baum), log = [];
+  const eltern = suche(b, SCHUHE.pfad);
+  if (!eltern) { log.push(`ÜBERSPRUNGEN Schuhe: «${SCHUHE.pfad.join(' > ')}» nicht gefunden`); return { baum: b, log }; }
+  const alt = eltern.items, neu = [];
+  for (const g of (tax?.unterpunkte || []).filter(u => SCHUHE.gruppen.includes(u.titel))) {
+    const kopf = alt.find(i => i.title === g.titel);
+    if (!kopf) { log.push(`fehlt     Gruppe ${g.titel}: kein Menüeintrag mit diesem Titel — übersprungen`); continue; }
+    const kinder = [];
+    for (const e of g.unterpunkte || []) {
+      const id = gids[e.handle];
+      if (!id) { log.push(`fehlt     ${e.handle}: Collection existiert nicht — Eintrag übersprungen`); continue; }
+      kinder.push({ title: e.titel, type: 'COLLECTION', resourceId: id, items: [] });
+    }
+    neu.push({ ...kopf, items: kinder });
+    log.push(`neu       Schuhe > ${g.titel} (${kinder.length} Kategorien)`);
+  }
+  const behalten = alt.filter(i => SCHUHE.behalten.includes(i.title) && !neu.some(n => n.title === i.title));
+  for (const i of alt) if (!neu.some(n => n.title === i.title) && !behalten.includes(i)) log.push(`entfernt  Schuhe > ${i.title}`);
+  eltern.items = [...neu, ...behalten];
+  return { baum: b, log };
+}
+
+/** Prüfungen für den Schuhe-Ast: Tiefe, doppelte Ziele, oberste Ebene gleich, Gruppen und «Arbeits- & Sicherheitsschuhe» bleiben. */
+export function pruefeSchuhe(alt, neu) {
+  const fehler = [];
+  if (tiefe(neu) > 3) fehler.push(`Menü hätte ${tiefe(neu)} Ebenen (Shopify erlaubt 3)`);
+  (function lauf(l, pfad) {
+    const ziele = new Map();
+    for (const i of l) { if (i.resourceId) { if (ziele.has(i.resourceId)) fehler.push(`doppeltes Ziel unter «${pfad || '(oben)'}»: ${i.title} = ${ziele.get(i.resourceId)}`); ziele.set(i.resourceId, i.title); } lauf(i.items || [], `${pfad}/${i.title}`); }
+  })(neu, '');
+  if (JSON.stringify(alt.map(x => x.title)) !== JSON.stringify(neu.map(x => x.title))) fehler.push('oberste Ebene verändert');
+  const a = suche(alt, SCHUHE.pfad)?.items || [], n = suche(neu, SCHUHE.pfad)?.items || [];
+  for (const t of [...SCHUHE.gruppen, ...SCHUHE.behalten]) if (a.some(i => i.title === t) && !n.some(i => i.title === t)) fehler.push(`verloren: Schuhe > ${t}`);
+  for (const i of n.filter(x => SCHUHE.gruppen.includes(x.title))) { const o = a.find(x => x.title === i.title); if (o && o.resourceId !== i.resourceId) fehler.push(`Ziel der Gruppe «${i.title}» verändert`); }
+  // Alles ausserhalb von «Schuhe» bleibt gleich
+  const ohne = l => JSON.stringify(l.filter(x => x.title !== SCHUHE.pfad[0]));
+  if (ohne(alt) !== ohne(neu)) fehler.push('Äste ausserhalb von «Schuhe» verändert');
+  return fehler;
+}
