@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/689722032513",
+ "title": "Handtaschen & Umhängetaschen",
+ "productsCount": {
+  "count": 1095
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Handtasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Umhängetasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Schultertasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Crossbody"
+   }
+  ]
+ }
+}

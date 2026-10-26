@@ -1,0 +1,47 @@
+{
+ "id": "gid://shopify/Collection/689713054081",
+ "title": "Kopfhörer & Audio",
+ "productsCount": {
+  "count": 764
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kopfhörer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "headset"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "earbuds"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ohrhörer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "lautsprecher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "soundbar"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "bluetooth-box"
+   }
+  ]
+ }
+}

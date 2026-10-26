@@ -1,0 +1,17 @@
+{
+ "id": "gid://shopify/Collection/689884135809",
+ "title": "Lautsprecher & Boxen",
+ "productsCount": {
+  "count": 236
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Lautsprecher"
+   }
+  ]
+ }
+}

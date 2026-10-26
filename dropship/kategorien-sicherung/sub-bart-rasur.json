@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/688564339073",
+ "title": "Bart & Rasur",
+ "productsCount": {
+  "count": 132
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bart"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Rasier"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Rasur"
+   }
+  ]
+ }
+}

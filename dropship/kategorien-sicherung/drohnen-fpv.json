@@ -1,0 +1,27 @@
+{
+ "id": "gid://shopify/Collection/689713283457",
+ "title": "Drohnen & FPV",
+ "productsCount": {
+  "count": 306
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "drohne"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "drone"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "quadrocopter"
+   }
+  ]
+ }
+}

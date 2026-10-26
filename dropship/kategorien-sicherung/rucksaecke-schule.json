@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/689160716673",
+ "title": "Schulrucksäcke",
+ "productsCount": {
+  "count": 193
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schulrucksack"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schulranzen"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kinderrucksack"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "schultasche"
+   }
+  ]
+ }
+}

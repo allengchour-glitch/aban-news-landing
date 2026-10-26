@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/688564371841",
+ "title": "Yoga & Fitness",
+ "productsCount": {
+  "count": 763
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Yoga"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Fitness"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Widerstand"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Faszien"
+   }
+  ]
+ }
+}

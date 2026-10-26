@@ -1,0 +1,22 @@
+{
+ "id": "gid://shopify/Collection/752835494279",
+ "title": "Vorhänge",
+ "productsCount": {
+  "count": 209
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Vorhang"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Gardine"
+   }
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "gid://shopify/Collection/689722196353",
+ "title": "Ventilatoren & Kühlung",
+ "productsCount": {
+  "count": 265
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ventilator"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "abluftschlauch"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "rucksack"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "halterung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "NOT_CONTAINS",
+    "condition": "ersatzteil"
+   }
+  ]
+ }
+}

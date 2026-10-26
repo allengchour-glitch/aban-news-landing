@@ -1,0 +1,32 @@
+{
+ "id": "gid://shopify/Collection/752835527047",
+ "title": "Wanddeko",
+ "productsCount": {
+  "count": 162
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wanddeko"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wandbild"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wandtattoo"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wandbehang"
+   }
+  ]
+ }
+}

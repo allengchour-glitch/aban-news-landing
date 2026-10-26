@@ -1,183 +1,12 @@
 [
  {
-  "handle": "sub-reise",
-  "titel": "Reise & Outdoor",
-  "menue": true,
-  "mit": 983,
-  "n": 220,
-  "kern": "Luggage & Bags + Home & Garden",
-  "bsp": "Mini Bluetooth Speaker Wasserdicht [Electronics>Audio] | Solar Camping-Laterne im Vintage-L [Sporting Goods>Outdoor Recreation] | Reise-Schallzahnbürste – 4 Modi, M [Health & Beauty>Personal Care] | 20W Reise-Ladegerät mit USB-A & US [Electronics>Electronics Accessories] | PD 20W Universal Reiseadapter [Electronics>Electronics Accessories]"
- },
- {
-  "handle": "elektronik-kleinteile",
-  "titel": "Elektronik-Zubehör & Kleinteile",
-  "menue": true,
-  "mit": 799,
-  "n": 59,
-  "kern": "Electronics",
-  "bsp": "3-in-1 Ladestation mit Uhr & Wirel [Apparel & Accessories>Jewelry] | Drohnen-Akku-Ladegerät mit USB-Ada [Toys & Games>Toys] | Magnetische Steckdosenleisten-Halt [Home & Garden>Household Supplies] | Astronomisches Teleskop mit Telefo [Cameras & Optics>Optics] | 2-in-1 Wireless Auto-Adapter [Vehicles & Parts>Vehicle Parts & Accessories]"
- },
- {
-  "handle": "handtaschen-umhaengetaschen",
-  "titel": "Handtaschen & Umhängetaschen",
-  "menue": true,
-  "mit": 862,
-  "n": 53,
-  "kern": "Apparel & Accessories",
-  "bsp": "Crossbody Rucksack aus Vollnarbenl [Luggage & Bags>Backpacks] | Crossbody Mini-Rucksack aus Leder [Luggage & Bags>Backpacks] | Wasserdichte Crossbody-Gürteltasch [Luggage & Bags>Fanny Packs] | Casual Crossbody Gürteltasche mit  [Luggage & Bags>Fanny Packs] | Umhängetasche Leisure Messenger [Luggage & Bags>Messenger Bags]"
- },
- {
-  "handle": "sub-yoga-fitness",
-  "titel": "Yoga & Fitness",
-  "menue": true,
-  "mit": 524,
-  "n": 45,
-  "kern": "Apparel & Accessories + Sporting Goods",
-  "bsp": "Sticker «Yoga Pose» · 1 Stück [Arts & Entertainment>Hobbies & Creative Arts] | Fitness-Tracker «ActiveBand» · Her [Health & Beauty>Health Care] | Fitness-Tracker «StepGo» · Herzfre [Health & Beauty>Health Care] | Smart Ring mit Gesundheits- und Fi [Health & Beauty>Health Care] | Sporttasche für Fitness und Wander [Luggage & Bags>Duffel Bags]"
- },
- {
-  "handle": "make-up",
-  "titel": "Make-up & Kosmetik",
-  "menue": true,
-  "mit": 846,
-  "n": 36,
-  "kern": "Health & Beauty",
-  "bsp": "Make-up-Tasche «Mirror» · Kosmetik [Luggage & Bags>Cosmetic & Toiletry Bags] | XL Make-up Organizer mit Schublade [Home & Garden>Household Supplies] | 360° drehbarer Make-up Pinsel-Orga [Home & Garden>Household Supplies] | Wasserdichte Reisebox für Make-up- [Luggage & Bags>Cosmetic & Toiletry Bags] | Doppellagige Nagellack-Aufbewahrun [Luggage & Bags>Cosmetic & Toiletry Bags]"
- },
- {
-  "handle": "velo-radsport",
-  "titel": "Velo & Radsport",
-  "menue": true,
-  "mit": 266,
-  "n": 34,
-  "kern": "Sporting Goods + Apparel & Accessories",
-  "bsp": "LED-Fahrradrucksack mit Blinker –  [Luggage & Bags>Backpacks] | Sport- & Fahrradkamera mit WLAN [Cameras & Optics>Cameras] | Camouflage-Taktikbrusttasche Outdo [Luggage & Bags] | Hundefahrradleine aus Edelstahl [Animals & Pet Supplies>Pet Supplies] | Fahrrad-Zugseil für Hunde [Animals & Pet Supplies>Pet Supplies]"
- },
- {
-  "handle": "rucksaecke",
-  "titel": "Rucksäcke",
-  "menue": true,
-  "mit": 2522,
-  "n": 27,
-  "kern": "Luggage & Bags",
-  "bsp": "Langarmshirt mit Rucksack-Schnalle [Apparel & Accessories>Clothing] | Trolley-Rucksack für Haustiere mit [Animals & Pet Supplies>Pet Supplies] | Hunde- und Katzenrucksack [Animals & Pet Supplies>Pet Supplies] | Badetuch mit integriertem Rucksack [Home & Garden>Linens & Bedding] | Haustier-Rucksack mit Netzbelüftun [Animals & Pet Supplies>Pet Supplies]"
- },
- {
-  "handle": "pc-homeoffice",
-  "titel": "PC & Homeoffice",
-  "menue": true,
-  "mit": 212,
-  "n": 22,
-  "kern": "Home & Garden + Electronics",
-  "bsp": "Full-HD Webcam mit Ringlicht und M [Cameras & Optics>Cameras] | Schreibtisch-Organizer [Office Supplies>Filing & Organization] | Retro Schreibtischkalender [Office Supplies>Filing & Organization] | Reinigungsstift für Kopfhörer & Ta [Hardware>Tools] | USB Webcam mit LED-Ringlicht [Cameras & Optics>Cameras]"
- },
- {
   "handle": "westen-gilets",
   "titel": "Westen & Gilets",
   "menue": true,
   "mit": 407,
   "n": 22,
   "kern": "Apparel & Accessories + Animals & Pet Supplies",
-  "bsp": "LED-Sportweste für Outdoor-Aktivit [Sporting Goods>Exercise & Fitness] | Wärmeweste mit Leinsamenfüllung [Health & Beauty>Health Care] | LED-Sicherheitsweste für E-Scooter [Sporting Goods>Exercise & Fitness] | Westernteller-Set im nordischen St [Home & Garden>Kitchen & Dining] | Superleichte Marathon-Trinkrucksac [Luggage & Bags>Backpacks]"
- },
- {
-  "handle": "smart-home-gadgets",
-  "titel": "Smart Home & Smarte Gadgets",
-  "menue": true,
-  "mit": 84,
-  "n": 17,
-  "kern": "Home & Garden + Electronics + Cameras & Optics",
-  "bsp": "Universal Smart Ring Fernbedienung [Apparel & Accessories>Jewelry] | Körperanalysewaage mit Bluetooth [Health & Beauty>Health Care] | Smart Ring mit Fitness- und Gesund [Apparel & Accessories>Jewelry] | Babyphone mit HD-Kamera und App-Zu [Baby & Toddler>Baby Safety] | Smart Ring mit Gesundheits- und Fi [Health & Beauty>Health Care]"
- },
- {
-  "handle": "beauty-haar",
-  "titel": "Haarpflege & Styling",
-  "menue": true,
-  "mit": 460,
-  "n": 16,
-  "kern": "Health & Beauty + (ohne)",
-  "bsp": "HD-Lace Haarperücke aus echtem Haa [Apparel & Accessories>Clothing Accessories] | NEX 2-in-1 Fellpfleger: Föhn & Bür [Animals & Pet Supplies>Pet Supplies] | Tierhaarbürste zur Entfernung von  [Animals & Pet Supplies>Pet Supplies] | Trend-Perücke, 40 cm [Apparel & Accessories>Clothing Accessories] | Unice Hair Echthaar-Perücke für je [Apparel & Accessories>Clothing Accessories]"
- },
- {
-  "handle": "kopfhoerer-audio",
-  "titel": "Kopfhörer & Audio",
-  "menue": true,
-  "mit": 299,
-  "n": 14,
-  "kern": "Apparel & Accessories + Electronics",
-  "bsp": "Sticker «Gamer Headset» · 1 Stück [Arts & Entertainment>Hobbies & Creative Arts] | Mountainbike-Headset mit Rücklicht [Sporting Goods>Outdoor Recreation] | Rucksack mit Bluetooth-Lautspreche [Luggage & Bags>Backpacks] | Reinigungsstift für Kopfhörer & Ta [Hardware>Tools] | Bluetooth-Lautsprecher mit Wecker  [Home & Garden>Decor]"
- },
- {
-  "handle": "handy-huellen",
-  "titel": "Handyhüllen & Cases",
-  "menue": true,
-  "mit": 58,
-  "n": 14,
-  "kern": "Electronics + Apparel & Accessories + Animals & Pet Supplies",
-  "bsp": "Schutzhülle für Insta360 GO3 Kamer [Cameras & Optics>Camera & Optic Accessories] | Jacquard-Staubschutzhülle für Holz [Home & Garden>Decor] | Staubschutzhülle für Küchengeräte [Home & Garden>Kitchen & Dining] | Wasserdichte Schutzhülle für Angel [Sporting Goods>Outdoor Recreation] | Staubschutzhülle für Wohnwagen-Arm [Vehicles & Parts>Vehicle Parts & Accessories]"
- },
- {
-  "handle": "kabel-adapter",
-  "titel": "Kabel & Adapter",
-  "menue": true,
-  "mit": 383,
-  "n": 14,
-  "kern": "Electronics",
-  "bsp": "Drohnen-Akku-Ladegerät mit USB-Ada [Toys & Games>Toys] | Magnetische Steckdosenleisten-Halt [Home & Garden>Household Supplies] | Doppel-Ladegerät [Vehicles & Parts>Vehicle Parts & Accessories] | Reflektierende LED-Weste mit USB-L [Apparel & Accessories>Clothing] | Smartwatch-Gehäuse mit kabellosem  [Apparel & Accessories>Jewelry]"
- },
- {
-  "handle": "ventilatoren",
-  "titel": "Ventilatoren & Kühlung",
-  "menue": true,
-  "mit": 88,
-  "n": 13,
-  "kern": "Home & Garden",
-  "bsp": "Mini Gaming-Konsole mit Handventil [Electronics>Video Game Consoles] | Portabler Sonnenhut mit Kühlventil [Apparel & Accessories>Clothing Accessories] | Oktopus Kinderwagen-Ventilator [Baby & Toddler>Baby Transport Accessories] | X Host Kühlventilator für Xbox Ser [Electronics>Video Game Console Accessories] | Bausteine-Set für Ventilator-Model [Toys & Games>Toys]"
- },
- {
-  "handle": "haushaltsgeraete",
-  "titel": "Haushaltsgeräte",
-  "menue": true,
-  "mit": 150,
-  "n": 11,
-  "kern": "Home & Garden",
-  "bsp": "Nagelstaubsauger 80W [Health & Beauty>Personal Care] | Mixer-Klinge aus Edelstahl für The [Hardware>Tools] | Handstaubsauger für das Auto – 12V [Vehicles & Parts>Vehicle Parts & Accessories] | Gesichtslifting-Gerät mit Mikrowel [Health & Beauty>Personal Care] | Pigment Shaker Tattoo Mixer [Business & Industrial>Piercing & Tattooing]"
- },
- {
-  "handle": "sub-bart-rasur",
-  "titel": "Bart & Rasur",
-  "menue": true,
-  "mit": 63,
-  "n": 8,
-  "kern": "Health & Beauty + (ohne)",
-  "bsp": "Manueller Eisrasierer für Zuhause [Home & Garden>Kitchen & Dining] | USB Fusselrasierer [Home & Garden>Household Supplies] | Elegantes matt-schwarzes Bartender [Home & Garden>Kitchen & Dining] | Elektrischer Fusselrasierer für Wo [Hardware>Tools] | Handgestrickter Echthaar-Bart für  [Apparel & Accessories>Costumes & Accessories]"
- },
- {
-  "handle": "handy-halterungen",
-  "titel": "Halterungen & MagSafe",
-  "menue": true,
-  "mit": 61,
-  "n": 8,
-  "kern": "Electronics",
-  "bsp": "Regenschirm mit Handy-Halterung –  [Home & Garden>Parasols & Rain Umbrellas] | LED Selfie Ringlicht mit Handyhalt [Cameras & Optics>Photography] | Magnetischer Handyhalter mit Geldb [Apparel & Accessories>Handbags, Wallets & Cases] | Bauchmuskelrad mit Handyhalterung [Sporting Goods>Exercise & Fitness] | Faltbare Yogamatte mit Handyhalter [Sporting Goods>Exercise & Fitness]"
- },
- {
-  "handle": "drohnen-fpv",
-  "titel": "Drohnen & FPV",
-  "menue": true,
-  "mit": 158,
-  "n": 7,
-  "kern": "Toys & Games",
-  "bsp": "2S Drone Blue Schulter-Messenger B [Luggage & Bags>Messenger Bags] | Drohnen-Rucksack mit Hartschale [Luggage & Bags>Backpacks] | S138 Drohne mit 360° Hinderniserke [Office Supplies] | Wasserdichter Drohnen-Rucksack [Luggage & Bags>Backpacks] | Fotorucksack wasserdicht für SLR/D [Luggage & Bags>Backpacks]"
- },
- {
-  "handle": "lautsprecher",
-  "titel": "Lautsprecher & Boxen",
-  "menue": true,
-  "mit": 86,
-  "n": 7,
-  "kern": "Electronics",
-  "bsp": "Rucksack mit Bluetooth-Lautspreche [Luggage & Bags>Backpacks] | Bluetooth-Lautsprecher mit Wecker  [Home & Garden>Decor] | Aroma Diffuser mit Bluetooth-Lauts [Home & Garden>Decor] | Kabelloser Lade-Bluetooth-Lautspre [Home & Garden>Decor] | Bluetooth Wecker mit Lautsprecher [Home & Garden>Decor]"
+  "bsp": "LED-Sportweste für Outdoor-Aktivit [Sporting Goods>Exercise & Fitness] | Wärmeweste mit Leinsamenfüllung [Health & Beauty>Health Care] | Western Rider Multifunktions-Repar [Hardware>Tools] | Kompakte 5000mAh Powerbank für Hei [Electronics>Electronics Accessories] | Powerbank für Heizwesten & Kleinle [Electronics>Electronics Accessories]"
  },
  {
   "handle": "t-shirts-tops",
@@ -186,43 +15,7 @@
   "mit": 1103,
   "n": 6,
   "kern": "Apparel & Accessories",
-  "bsp": "Trägerloses Bade-T-Shirt mit verst [Home & Garden>Linens & Bedding] | Katzen-T-Shirt mit Krawatte und Ko [Animals & Pet Supplies>Pet Supplies] | T-Shirt Lineal-Set für präzises Au [Arts & Entertainment>Hobbies & Creative Arts] | T-Shirt mit Rüschen für haarlose K [Animals & Pet Supplies>Pet Supplies] | Clip-Fan Desktop mit 5 Geschwindig [Electronics]"
- },
- {
-  "handle": "mikrofone",
-  "titel": "Mikrofone & Streaming",
-  "menue": true,
-  "mit": 169,
-  "n": 6,
-  "kern": "Electronics",
-  "bsp": "Sticker «Microphone» · 1 Stück [Arts & Entertainment>Hobbies & Creative Arts] | Full-HD Webcam mit Ringlicht und M [Cameras & Optics>Cameras] | USB Kondensatormikrofon mit Lichte [Office Supplies] | Iridescent RGB Stehleuchte mit Mik [Home & Garden>Lighting] | USB Kamera mit Mikrofon für Deskto [Cameras & Optics>Cameras]"
- },
- {
-  "handle": "sonnenbrillen-alle",
-  "titel": "Sonnenbrillen (alle)",
-  "menue": true,
-  "mit": 53,
-  "n": 5,
-  "kern": "Apparel & Accessories",
-  "bsp": "Reise-Etui für Sonnenbrillen mit K [Health & Beauty>Personal Care] | Digitale Sonnenbrille mit Bluetoot [Electronics>Computers] | Sonnenbrillenhalter für Sonnenblen [Vehicles & Parts>Vehicle Parts & Accessories] | Sonnenbrillen-Aufbewahrungsbox mit [Health & Beauty>Personal Care] | Bluetooth-Sonnenbrille mit Stereo- [Electronics>Computers]"
- },
- {
-  "handle": "klemmbausteine-bausaetze",
-  "titel": "Klemmbausteine & Bausätze",
-  "menue": true,
-  "mit": 504,
-  "n": 5,
-  "kern": "Toys & Games",
-  "bsp": "Bluetooth Lautsprecher Bausatz zum [Electronics>Audio] | 3D-Holzpuzzle Architektur-Modellba [Arts & Entertainment>Hobbies & Creative Arts] | 24-Raster Weihnachts-Bausteine-Adv [Arts & Entertainment>Party & Celebration] | Big Bee Metall-Bausatz 3D-Modell [Arts & Entertainment>Hobbies & Creative Arts] | Magnetischer Adventskalender Baust [Home & Garden>Decor]"
- },
- {
-  "handle": "vorhaenge",
-  "titel": "Vorhänge",
-  "menue": true,
-  "mit": 135,
-  "n": 5,
-  "kern": "Home & Garden",
-  "bsp": "Transparenter Isolationsvorhang fü [Vehicles & Parts>Vehicle Parts & Accessories] | Kabinett-Sichtschutzvorhang [Arts & Entertainment>Hobbies & Creative Arts] | Smarter Vorhangschalter [Hardware>Power & Electrical Supplies] | Blumengardine-Prinzessinnenbogen S [Apparel & Accessories>Shoes] | Smarter Touch-Vorhangschalter [Hardware>Power & Electrical Supplies]"
+  "bsp": "Trägerloses Bade-T-Shirt mit verst [Home & Garden>Linens & Bedding] | Tanktop-Hundegeschirr für kleine H [Animals & Pet Supplies>Pet Supplies] | Katzen-T-Shirt mit Krawatte und Ko [Animals & Pet Supplies>Pet Supplies] | T-Shirt Lineal-Set für präzises Au [Arts & Entertainment>Hobbies & Creative Arts] | T-Shirt mit Rüschen für haarlose K [Animals & Pet Supplies>Pet Supplies]"
  },
  {
   "handle": "jumpsuits-overalls",
@@ -232,33 +25,6 @@
   "n": 4,
   "kern": "Apparel & Accessories",
   "bsp": "Wasserdichter Hundeoverall [Animals & Pet Supplies>Pet Supplies] | Schwarzes und weisses Streifen-Ove [Animals & Pet Supplies>Pet Supplies] | Hunde-Overall aus Polyester [Animals & Pet Supplies>Pet Supplies] | Hunde-Jumpsuit atmungsaktiv [Animals & Pet Supplies>Pet Supplies]"
- },
- {
-  "handle": "haarstyling-geraete",
-  "titel": "Haarstyling-Geräte",
-  "menue": true,
-  "mit": 408,
-  "n": 4,
-  "kern": "Health & Beauty",
-  "bsp": "Faltbare Kulturtasche für Haartroc [Luggage & Bags>Cosmetic & Toiletry Bags] | Lockenstab-Aufbewahrungsgestell [Home & Garden>Household Supplies] | Friseur-Toolkit mit elektrischer S [Apparel & Accessories>Handbags, Wallets & Cases] | Reisebeutel für Haartrockner [Luggage & Bags]"
- },
- {
-  "handle": "tastatur-maus",
-  "titel": "Tastaturen & Mäuse",
-  "menue": true,
-  "mit": 150,
-  "n": 4,
-  "kern": "Electronics",
-  "bsp": "Reinigungsstift für Kopfhörer & Ta [Hardware>Tools] | Reinigungsbürste für Fenster & Tas [Home & Garden>Household Supplies] | Schokoladenform Tastatur [Home & Garden>Kitchen & Dining] | EVA Tastatur-Aufbewahrungstasche [Home & Garden>Household Supplies]"
- },
- {
-  "handle": "rucksaecke-schule",
-  "titel": "Schulrucksäcke",
-  "menue": true,
-  "mit": 71,
-  "n": 3,
-  "kern": "Luggage & Bags",
-  "bsp": "Rollregal für Spielzeug und Schulr [Furniture>Shelving] | Rollregal für Schultaschen, 2- ode [Furniture>Shelving] | USB-Stick Schultasche – Geschenk f [Electronics>Electronics Accessories]"
  },
  {
   "handle": "shorts-bermudas",
@@ -273,18 +39,9 @@
   "handle": "sub-hausschuhe",
   "titel": "Hausschuhe & Slipper",
   "menue": true,
-  "mit": 201,
+  "mit": 202,
   "n": 3,
   "kern": "Apparel & Accessories",
-  "bsp": "Plüsch Hausschuh für Herren – flac [Toys & Games>Toys] | Badezimmer-Pantoffeln [Hardware>Tools] | Plüschschuhe für Kinder [Toys & Games>Toys]"
- },
- {
-  "handle": "wanddeko",
-  "titel": "Wanddeko",
-  "menue": true,
-  "mit": 103,
-  "n": 3,
-  "kern": "Home & Garden + Arts & Entertainment",
-  "bsp": "Wanddeko Blumen-Bausteine im Nordi [Toys & Games>Toys] | Wanddeko Elefant aus Plüsch [Toys & Games>Toys] | Wandtattoo für Kinderzimmer [Vehicles & Parts>Vehicle Parts & Accessories]"
+  "bsp": "Plüschschuhe für Kinder [Toys & Games>Toys] | Plüsch Hausschuh für Herren – flac [Toys & Games>Toys] | Badezimmer-Pantoffeln [Hardware>Tools]"
  }
 ]

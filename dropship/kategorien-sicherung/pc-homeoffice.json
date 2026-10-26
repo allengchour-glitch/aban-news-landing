@@ -1,0 +1,62 @@
+{
+ "id": "gid://shopify/Collection/689637785985",
+ "title": "PC & Homeoffice",
+ "productsCount": {
+  "count": 393
+ },
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Tastatur"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Mauspad"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Webcam"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Homeoffice"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Schreibtisch"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "USB-Hub"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Monitor-Erhöhung"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Monitor-Lichtleiste"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Monitor-Halter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Monitorständer"
+   }
+  ]
+ }
+}
