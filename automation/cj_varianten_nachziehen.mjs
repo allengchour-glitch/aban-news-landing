@@ -136,6 +136,8 @@ export async function plane({ q, cj, handle, tmp }) {
     if (res?.data) { pid = res.data.pid || (art === 'pid' ? wert : null); break; }
   }
   const c = res?.data;
+  // Dieselbe CJ-Antwort braucht später der Fakten-Block und der Textauftrag: einmal zahlen, zweimal nutzen (gleicher Pfad wie cj_fakten_block.mjs).
+  if (c?.pid) { try { mkdirSync('/tmp/cj_fakten_cache', { recursive: true }); const f = `/tmp/cj_fakten_cache/${handle}.json`; if (!existsSync(f)) writeFileSync(f, JSON.stringify(c)); } catch { /* Zwischenspeicher ist nur eine Hilfe */ } }
   if (!c) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ ohne Daten (code ${res.code})` };
   const vs = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
     bild: v.variantImage || '', laenge: v.variantLength, breite: v.variantWidth, hoehe: v.variantHeight }));

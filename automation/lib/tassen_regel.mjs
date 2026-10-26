@@ -15,9 +15,23 @@ const TASSENSET_RE = /(tassenset|tassen-set|tassengarnitur|teeservice|tee-set|te
 // Zubehör und Becher mit anderem Zweck
 const AUSSCHLUSS_RE = /(halter|halterung|ständer|staender|organizer|abtropf|reiniger|wärmer|waermer|heiz|kühler|kuehler|pad\b|unterlage|regal|korb|lunchbox|kissen|shisha|(^|[^a-zäöüß])auto([^a-zäöüß]|$)|hundefutter|hundenapf|scheinwerfer|vernebler|entsafter|mixer|messlöffel|messloeffel|messbecher|bad-set|zahnbürst|zahnbuerst|ladegerät|ladegeraet|induktion|wireless|kaffeekanne|abnehmbar|sport-becher-dose|magazin)/i;
 
+// «…becher» ist oft kein Trinkgefäss: Aschenbecher, Zahnputzbecher, Würfelbecher, Eisbecher, Stiftebecher (26.10.2026: 38 solche Treffer in der Menü-Kategorie,
+// gefunden mit kategorie_pruefer.mjs). Wir prüfen die Vorsilbe des Wortes: lange Stämme irgendwo, kurze («eis», «ei») nur am Wortanfang — sonst träfe
+// «Reisebecher» (r-EIS-e). «Kaffeebecher», «Thermobecher», «Reisebecher» bleiben Trinkgefässe.
+const KEIN_TRINKGEFAESS_ANYWHERE = /(asche|zahn|würfel|wuerfel|pflanz|blumen|zigarr|zigarett|joghurt|pudding|popcorn|kerzen|farb|wasch|putz|stift|pinsel|tinten|spül|spuel|trichter|sprüh|sprueh|dessert|salat|mess)/i;
+const KEIN_TRINKGEFAESS_ANFANG = /^(eis|ei|eier|mund)/i;
+function istKeinTrinkgefaess(t) {
+  for (const m of t.matchAll(/([a-zäöüß]+)(tassen|tasse|becher)(?![a-zäöüß])/gi)) {
+    const vor = m[1];
+    if (KEIN_TRINKGEFAESS_ANYWHERE.test(vor) || KEIN_TRINKGEFAESS_ANFANG.test(vor)) return true;
+  }
+  return false;
+}
+
 export function istTasseOderBecher(titel) {
   const t = String(titel || '');
   if (!TRINKGEFAESS_RE.test(t)) return false;
+  if (istKeinTrinkgefaess(t) && !/(^|[^a-zäöüß])(tasse|tassen|becher)(?![a-zäöüß])/i.test(t)) return false;
   // Zubehör ausschliessen — aber ein Set, das Tassen ENTHÄLT, bleibt ein Trinkgefäss-Set («Tee-Set mit Tasse und Teetablett»)
   if (AUSSCHLUSS_RE.test(t) && !/^(tee-?set|tee-?tassenset|tragbares teeservice)/i.test(t)) return false;
   return true;

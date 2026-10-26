@@ -38,5 +38,10 @@ for (const t of ['Kung Fu Tee-Set', 'Teeset für unterwegs', 'Panda Tee-Set Gesc
 soll('', false);
 soll(undefined, false);
 
+// ── 26.10.2026: «…becher» ist nicht immer ein Trinkgefäss (Aschenbecher stand unter «Tassen & Becher») ──
+for (const titel of ['Einweg-Aschenbecher mit Schaumsand', 'Kristall-Aschenbecher für Zigarren', 'Stilvoller Tragbarer Zigarrenaschenbecher', 'Zahnputzbecher aus Bambus',
+  'Mundspülbecher', 'Würfelbecher aus Leder', 'Eisbecher Glas 6er Set', 'Stiftebecher aus Holz', 'Pflanzenbecher Kunststoff']) soll(titel, false);
+for (const titel of ['Keramik-Tasse 400 ml', 'Kaffeebecher to go', 'Thermobecher 500 ml', 'Reisebecher mit Deckel', 'Teetasse mit Untersetzer', 'Isolierbecher 350 ml']) soll(titel, true);
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
+
