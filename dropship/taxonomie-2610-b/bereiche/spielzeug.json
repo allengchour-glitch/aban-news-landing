@@ -275,9 +275,11 @@
       "beschreibung": "Spielsachen aus Holz, Miniaturhäuser, Rettungs- und Camper-Spielsets, Schraubspiele und weitere Kinderspielzeuge, die in keine andere Spielwarenkategorie passen."
     },
     {
-      "titel_muss": [],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(auto|autos|car|cars|jeep|truck|kipp[a-zäöüß-]*|panzer|boot|rennboot|buggy|crawler|drift[a-zäöüß-]*|stunt[a-zäöüß-]*|fahrzeug[a-zäöüß-]*|motorrad|tank|u-boot|amphib[a-zäöüß]*|geländ[a-zäöüß]*|offroad|racing|renn[a-zäöüß-]*|tumbler|twist|kletter[a-zäöüß-]*|schneetruck|pickup|lkw|bagger|monstertruck)|(wagen|auto|car|truck|boot|fahrzeug)(?![a-zäöüß])"
+      ],
       "titel_nicht": [
-        "(^|[^a-zäöüß])(zubehör|motorhalter|upgrade|shock|absorber|ersatz)"
+        "(^|[^a-zäöüß])(zubehör|motorhalter|upgrade|shock|absorber|ersatz)|(drohne|drohnen|drone|drones|quadrocopter|quadcopter|copter|uav|fluggerät|drohnenflieger|flugobjekt)(?![a-zäöüß])|(^|[^a-zäöüß])(fpv)"
       ],
       "handle": "rc-autos-trucks",
       "titel": "RC-Autos, Trucks & Boote",
@@ -285,13 +287,22 @@
         "Toys & Games > Toys > Remote Control Toys > Remote Control Cars",
         "Toys & Games > Toys > Remote Control Toys > Remote Control Tanks",
         "Toys & Games > Toys > Remote Control Toys > Remote Control Motorcycles",
-        "Toys & Games > Toys > Remote Control Toys > Remote Control Boats"
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Boats",
+        "Toys & Games > Toys > Remote Control Toys"
+      ],
+      "g_nicht": [
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Helicopters",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Planes",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Airships",
+        "Toys & Games > Toys > Remote Control Toys > Remote Control Robots"
       ],
       "beschreibung": "Ferngesteuerte Autos, Trucks, Panzer und Boote: Rennwagen, Drift-Autos, Geländefahrzeuge und Stunt-Autos."
     },
     {
       "titel_muss": [],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(rennboot|boot|u-boot)"
+      ],
       "handle": "rc-helikopter-flugzeuge",
       "titel": "RC-Helikopter, Flugzeuge & Flugspielzeug",
       "g_prefix": [
@@ -324,7 +335,7 @@
     },
     {
       "titel_muss": [
-        "(^|[^a-zäöüß])(roboter|robot|robo-?[a-zäöüß]*|hund[a-zäöüß]*|hündchen|katze[a-zäöüß]*|dino[a-zäöüß]*|[a-zäöüß]*saurus|triceratops|schlange|insekt[a-zäöüß]*|tierli|spinne|biene|oktopus|wurst|marienkäfer|drache[a-zäöüß]*|hamster|vogel|flugvogel|rakete|kipplaster|jeep|sensor[a-zäöüß-]*|induktions[a-zäöüß-]*|interaktiv[a-zäöüß]*|intelligent[a-zäöüß]*|smart|programmierbar[a-zäöüß]*|tanzend[a-zäöüß]*|linienfolger|malroboter|elektrisch[a-zäöüß]*|elektronisch[a-zäöüß]*|spielzeug|kothaufen[a-zäöüß-]*|deformations[a-zäöüß-]*|verwandlungs[a-zäöüß-]*)"
+        "(^|[^a-zäöüß])(roboter|robot|robo-?[a-zäöüß]*|hund[a-zäöüß]*|hündchen|katze[a-zäöüß]*|dino[a-zäöüß]*|[a-zäöüß]*saurus|triceratops|schlange|insekt[a-zäöüß]*|tierli|spinne|biene|oktopus|wurst|marienkäfer|drache[a-zäöüß]*|hamster|vogel|flugvogel|rakete|sensor[a-zäöüß-]*|induktions[a-zäöüß-]*|interaktiv[a-zäöüß]*|intelligent[a-zäöüß]*|smart|programmierbar[a-zäöüß]*|tanzend[a-zäöüß]*|linienfolger|malroboter|elektrisch[a-zäöüß]*|elektronisch[a-zäöüß]*|spielzeug|kothaufen[a-zäöüß-]*|deformations[a-zäöüß-]*|verwandlungs[a-zäöüß-]*)"
       ],
       "titel_nicht": [
         "(drohne|drohnen|drone|drones|quadrocopter|quadcopter|copter|uav|fluggerät|drohnenflieger|flugobjekt)(?![a-zäöüß])|(^|[^a-zäöüß])(fpv|zubehör|upgrade|motorhalter|ersatz|shock|absorber|akku)"
