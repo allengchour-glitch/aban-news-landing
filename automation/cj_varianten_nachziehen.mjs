@@ -35,6 +35,7 @@ import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_v
 import { steckerUrteil } from './lib/stecker_cj.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
+import { ledgerGedaechtnis, veraendertSeitPlan, FRISCH, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
 
 const LABEL_AUFTRAG = 'Übersetze diese Variantenbezeichnungen eines Online-Shops (Farben, Muster, Modelle) ins Deutsche. Kurz, wie auf einem Etikett, Substantive gross, '
   + 'ohne Erklärung. Eigennamen und Zahlen unverändert lassen. Gib AUSSCHLIESSLICH ein JSON-Array von Strings in exakt gleicher Reihenfolge zurück.\n';
@@ -267,15 +268,17 @@ async function main() {
     const zeilen = readFileSync(process.env.HANDLES_DATEI, 'utf8').split('\n');
     for (const z of /^handle\b/i.test(zeilen[0] || '') ? zeilen.slice(1) : zeilen) { const h = z.split(';')[0].trim(); if (h) handles.push(h); }
   }
-  if (!handles.length) { console.error('Kein Handle angegeben'); process.exit(1); }
-  const erledigt = new Set();
-  if (existsSync(LEDGER)) for (const z of readFileSync(LEDGER, 'utf8').split('\n')) {
-    const [h, zeit, e] = z.split('·').map(s => s.trim());
-    if (!h) continue;
-    if (e === 'GESCHRIEBEN') erledigt.add(h);
-    // Endgültige Überspringer (CJ führt nur eine Variante …) nicht bei jedem Lauf neu bei CJ erfragen — 14 Tage Ruhe, FORCE=1 hebt es auf.
-    else if (e === 'UEBERSPRUNGEN' && process.env.FORCE !== '1' && Date.now() - Date.parse(zeit) < 14 * 24 * 3600 * 1000) erledigt.add(h);
+  if (!handles.length) {
+    // Eine leere Scheibe aus dem Dauerlauf (Kopfzeile ohne Produkte) ist kein Fehler — sonst sähe sie im Treiber wie ein Absturz aus.
+    if (process.env.HANDLES_DATEI) { console.log('Liste leer — nichts zu tun'); process.exit(0); }
+    console.error('Kein Handle angegeben'); process.exit(1);
   }
+  // Ohne ffmpeg gibt bildSig() still null zurück: jedes Variantenbild gälte als «unlesbar», die Varianten gingen ohne eigenes Bild live und trügen
+  // danach den Marker (26.10.2026: auf GitHub-Rechnern fehlt ffmpeg). Darum VOR jedem Schreiben prüfen, auch im Trockenlauf.
+  const ff = spawnSync('ffmpeg', ['-version']);
+  if (ff.error || ff.status !== 0) { console.error('FEHLER: ffmpeg fehlt (apt-get install ffmpeg) — ohne Bild-Signaturen würden Varianten ohne eigenes Bild geschrieben'); process.exit(1); }
+  // Gedächtnis: GESCHRIEBEN für immer, endgültige Überspringer 14 Tage, zurückgestellte 7 Tage, vorläufige und Fehler 20 Stunden (lib/varianten_sicherheit.mjs). FORCE=1 hebt alles ausser GESCHRIEBEN auf.
+  const erledigt = existsSync(LEDGER) ? ledgerGedaechtnis(readFileSync(LEDGER, 'utf8'), { force: process.env.FORCE === '1' }) : new Set();
   const q = await shopifyZugang();
   const cj = await cjToken();
   if (!cj) { console.error('Kein CJ-Token (CJ_EMAIL/CJ_API_KEY)'); process.exit(1); }
@@ -290,6 +293,8 @@ async function main() {
       n++;
       let plan;
       const planPfad = join(PLAN_DIR, h + '.json');
+      // JEDER Ausgang bekommt eine Ledger-Zeile (nur live): ein Produkt ohne Zeile stünde im nächsten Stapel wieder vorn und zählte gegen LIMIT.
+      const merke = (ergebnis, grund) => { if (LIVE) appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · ${ergebnis} · ${String(grund).slice(0, 100)}\n`); };
       // Livelauf: einen frischen Plan aus dem Trockenlauf weiterverwenden (spart CJ-Abfragen und Bild-Downloads)
       if (LIVE && existsSync(planPfad) && Date.now() - statSync(planPfad).mtimeMs < 3 * 3600 * 1000) {
         try { const alt = JSON.parse(readFileSync(planPfad, 'utf8')); if (alt.ergebnis === 'PLAN') plan = alt; } catch { /* neu planen */ }
@@ -306,19 +311,35 @@ async function main() {
       if (LIVE && plan.ergebnis === 'PLAN' && plan.unsicherUebersetzt?.length && process.env.ERLAUBE_UNSICHER !== '1') {
         zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1;
         console.log(h, '→ UEBERSPRUNGEN | unsicher übersetzt:', JSON.stringify(plan.unsicherUebersetzt).slice(0, 160));
+        merke('UEBERSPRUNGEN', `${ZURUECKGESTELLT}: unsicher übersetzt ${JSON.stringify(plan.unsicherUebersetzt)}`);
         continue;
       }
       if (plan.ergebnis !== 'PLAN') {
         zaehl[plan.ergebnis] = (zaehl[plan.ergebnis] || 0) + 1; console.log(h, '→', plan.ergebnis, '|', plan.grund);
-        if (LIVE && plan.ergebnis === 'UEBERSPRUNGEN' && /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung|nur Fremdstecker)/.test(plan.grund || ''))
-          appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · UEBERSPRUNGEN · ${String(plan.grund).slice(0, 100)}\n`);
+        if (plan.ergebnis === 'UEBERSPRUNGEN') {
+          // Endgültige Gründe ändern sich nicht (14 Tage Ruhe); alle anderen (viele Varianten, Auswahl nicht baubar …) ändern sich nicht von selbst und kosten bei jedem Versuch CJ-Punkte → zurückgestellt (7 Tage).
+          const endgueltig = /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung|nur Fremdstecker)/.test(plan.grund || '');
+          merke('UEBERSPRUNGEN', endgueltig ? plan.grund : `${ZURUECKGESTELLT}: ${plan.grund}`);
+        } else if (plan.ergebnis === 'FEHLER') merke('FEHLER', `Plan: ${plan.grund}`);
         continue;
       }
       console.log(`\n${h} → PLAN: ${plan.varianten.length} Varianten, Optionen ${plan.optionen.map(o => `${o.name}(${o.werte.length})`).join(' × ')}, Preise ${[...new Set(plan.varianten.map(v => v.preis))].join('/')}, Bilder: ${plan.bilder.zugeordnet} zugeordnet, ${plan.bilder.neuHochzuladen} neu, ${plan.bilder.unlesbar} unlesbar`);
       if (plan.unsicherUebersetzt.length) console.log('   ⚠ nicht sicher übersetzt:', JSON.stringify(plan.unsicherUebersetzt).slice(0, 200));
       if (plan.hinweise.length) console.log('   Hinweise:', plan.hinweise.map(x => `${x.name}=${x.wert}${x.text ? ' → ' + x.text : ' (unübersetzt)'}`).join('; '));
       if (!LIVE) { zaehl.PLAN = (zaehl.PLAN || 0) + 1; continue; }
+      // productSet ersetzt Beschreibung, Tags und Galerie durch den Stand des Plans (bis zu 3 Stunden alt): unmittelbar vorher frisch lesen,
+      // sonst würde eine Änderung einer anderen Sitzung (Text-Lauf, Kategorie-Tags, neue Bilder) stillschweigend überschrieben.
+      const veraendert = veraendertSeitPlan(plan, (await q(FRISCH, { id: plan.produktId })).product);
+      if (veraendert) {
+        zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1;
+        console.log('   UEBERSPRUNGEN | seit dem Plan verändert:', veraendert);
+        try { rmSync(planPfad, { force: true }); } catch { /* der Plan wird ohnehin nach 3 Stunden verworfen */ }
+        merke('UEBERSPRUNGEN', `${VORLAEUFIG}: seit dem Plan verändert (${veraendert})`);
+        continue;
+      }
       const w = await aufschreiben(q, plan);
+      // Käme das Tageslimit als userError statt als GraphQL-Fehler, wäre es KEIN Fehler des Produkts: weiterreichen (Exitcode 4), nicht als FEHLER merken.
+      if (!w.ok && /VARIANT_THROTTLE|Daily variant creation limit/i.test(w.fehler)) throw new Error(w.fehler);
       if (!w.ok) { zaehl.FEHLER = (zaehl.FEHLER || 0) + 1; console.log('   FEHLER beim Schreiben:', w.fehler); appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · FEHLER · ${w.fehler.slice(0, 120)}\n`); continue; }
       zaehl.GESCHRIEBEN = (zaehl.GESCHRIEBEN || 0) + 1;
       console.log(`   GESCHRIEBEN: ${w.varianten} Varianten`);

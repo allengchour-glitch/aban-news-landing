@@ -7,10 +7,10 @@ name: "Auswahl-Lauf (CJ-Varianten nachziehen, nachts)"
 # Ein langer Lauf pro Nacht nutzt die Tagesmenge aus. Das Repo ist öffentlich: keine Laufminuten-Kosten.
 #
 # Zugang: Repo-Secrets SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Client-Credentials-Grant einer im Shop INSTALLIERTEN
-# Custom-App; sonst «400 app_not_installed»), CJ_EMAIL, CJ_API_KEY, optional GEMINI_API_KEY/GROQ_API_KEY (Übersetzung von Variantenlabels;
-# ohne sie bleiben unsichere Übersetzungen übersprungen — kein Raten).
+# Custom-App; sonst «400 app_not_installed»), CJ_EMAIL, CJ_API_KEY und MINDESTENS EINES von GEMINI_API_KEY/GROQ_API_KEY (Übersetzung von
+# Variantenlabels; ohne beide bliebe rund die Hälfte der Kandidaten ungeschrieben, unsichere Übersetzungen werden nie geraten → der Lauf bricht dann laut ab).
 #
-# Ablauf: Freigabe prüfen → Shopify-Zugang prüfen (bricht laut ab) → CJ-Token einmal holen (CJ erlaubt das nur alle 5 Minuten, die
+# Ablauf: Freigabe prüfen → ffmpeg installieren → KI-Schlüssel prüfen → Shopify-Zugang prüfen (bricht laut ab) → CJ-Token einmal holen (CJ erlaubt das nur alle 5 Minuten, die
 # Läufer teilen den Zwischenspeicher) → Kandidaten aus dem LIVE-Shop bauen (nur Ein-Varianten-Produkte; bereits Nachgezogene fallen
 # von selbst heraus) → Probe (schreibt nichts) oder Lauf (schreibt) → Ledger zurück ins Repo.
 # Nächtliche (geplante) Läufe schreiben erst, wenn dropship/AUSWAHL-ACTIONS-FREI.txt im Repo liegt (nach einer geprüften Probe).
@@ -77,6 +77,27 @@ jobs:
           else
             echo "weiter=1" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: ffmpeg installieren (Bild-Vergleich der Variantenbilder)
+        if: ${{ steps.frei.outputs.weiter == '1' }}
+        # ffmpeg ist auf ubuntu-latest NICHT vorinstalliert. Ohne es gälte jedes Variantenbild als «unlesbar» und die Varianten gingen ohne eigenes Bild live
+        # (Prüfung 26.10.2026, drei Prüfer unabhängig). Das Werkzeug prüft ffmpeg zusätzlich selbst und bricht sonst ab.
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version | head -1
+
+      - name: KI-Schlüssel für die Übersetzung der Variantennamen prüfen
+        if: ${{ steps.frei.outputs.weiter == '1' }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          if [ -z "${GEMINI_API_KEY// }" ] && [ -z "${GROQ_API_KEY// }" ]; then
+            echo "::error title=KI-Schlüssel fehlt::Weder GEMINI_API_KEY noch GROQ_API_KEY ist als Repo-Secret gesetzt. Ohne sie bleibt rund die Hälfte der Kandidaten ungeschrieben, weil unsichere Variantennamen nie geraten werden."
+            exit 1
+          fi
+          echo "KI-Schlüssel: gemini=$([ -n "${GEMINI_API_KEY// }" ] && echo ja || echo nein) groq=$([ -n "${GROQ_API_KEY// }" ] && echo ja || echo nein)"
 
       - name: Shopify-Zugang prüfen (bricht laut ab)
         if: ${{ steps.frei.outputs.weiter == '1' }}
@@ -204,6 +225,10 @@ jobs:
           n=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep -c ' · GESCHRIEBEN · ' || true)
           git config user.name "luxestyle-autopilot"
           git config user.email "bot@users.noreply.github.com"
+          # Das Ledger besteht aus unabhängigen Zeilen: hängt eine andere Seite (Cloud-Sitzung, ein zweiter Lauf) gleichzeitig an, bleiben beim Rebase
+          # beide Seiten erhalten (Union-Merge). .git/info/attributes gilt auch im Sparse-Checkout, eine .gitattributes im Repo-Wurzelordner läge dort nicht aus.
+          mkdir -p .git/info
+          echo 'dropship/cj_varianten_ledger.txt merge=union' >> .git/info/attributes
           git add -- dropship/cj_varianten_ledger.txt
           git commit -m "Auswahl-Ledger: $n Produkte nachgezogen [skip ci]"
           for versuch in 1 2 3 4 5; do
