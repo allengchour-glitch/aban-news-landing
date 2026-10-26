@@ -157,6 +157,8 @@ jobs:
           node automation/optionen_uebersetzen_test.mjs
           node automation/lib/regel_auswerten_test.mjs
           node automation/lib/kategorien_verengt_test.mjs
+          node automation/lib/mode_taxonomie_test.mjs
+          node automation/lib/mode_menue_test.mjs
           node automation/auswahl_scan_test.mjs
           node automation/cj_variantenbilder_test.mjs
           node automation/farbwahl_scan_test.mjs

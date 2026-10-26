@@ -14,6 +14,7 @@
  */
 import { istTasseOderBecher, TASSEN_TAG } from './tassen_regel.mjs';
 import { VERENGT } from './kategorien_verengt.mjs';
+import { MODE } from './mode_taxonomie.mjs';
 
 const BUCH = 'a-zäöüß';
 /** Eigenes Wort: links und rechts kein Buchstabe (ein Bindestrich trennt). */
@@ -511,7 +512,7 @@ const BASIS_KATEGORIEN = [
     passt: p => wort('retro|vintage').test(p.title) },
 ];
 /** Basis + die auf Tags umgestellten, verengten Alt-Collections (Daten: kategorien_verengt_daten.json). */
-export const KATEGORIEN = [...BASIS_KATEGORIEN, ...VERENGT];
+export const KATEGORIEN = [...BASIS_KATEGORIEN, ...VERENGT, ...MODE];
 
 /**
  * Tag-Bereinigungen: entfernen/setzen unabhängig von einer Collection. Jede Regel hat einen Grund (gemessen) und eine Gegenprobe im Test.

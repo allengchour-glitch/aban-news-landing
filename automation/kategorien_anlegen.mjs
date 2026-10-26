@@ -24,6 +24,7 @@ const LIVE = process.env.LIVE === '1';
 const PHASE = process.env.PHASE || 'alle';
 const KATALOG = process.env.KATALOG || '/tmp/katalog_voll.json';
 const IDS = (process.env.IDS || '').split(',').map(s => s.trim()).filter(Boolean);
+const PREFIX = process.env.PREFIX || '';   // z. B. PREFIX=m- für alle Mode-Kategorien (IDS wäre bei ~190 Einträgen zu lang)
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 const FELDER = 'id title type resourceId url tags';
 const MENU_Q = `query($h:String!){menus(first:1,query:$h){nodes{id title handle items{${FELDER} items{${FELDER} items{${FELDER}}}}}}}`;
@@ -43,7 +44,7 @@ async function main() {
   const q = (query, variables) => shopifyGql(SHOP, '2025-01', tok, query, variables);
 
   // ── 1) Mitglieder je Kategorie ──
-  const kats = KATEGORIEN.filter(k => !IDS.length || IDS.includes(k.id));
+  const kats = KATEGORIEN.filter(k => (!IDS.length || IDS.includes(k.id)) && (!PREFIX || k.id.startsWith(PREFIX)));
   const plan = [];
   const tagDazu = new Map(), tagWeg = new Map();           // tag → Set(productId)
   const merke = (m, tag, id) => { if (!m.has(tag)) m.set(tag, new Set()); m.get(tag).add(id); };
@@ -56,7 +57,7 @@ async function main() {
     if (ok) { for (const p of dazu) merke(tagDazu, k.tag, p.id); for (const p of weg) merke(tagWeg, k.tag, p.id); }
   }
   // ── 2) Bereinigungen (nur wenn alle Kategorien gerechnet werden oder ausdrücklich BEREINIGEN=1) ──
-  const bereinigen = !IDS.length || process.env.BEREINIGEN === '1';
+  const bereinigen = (!IDS.length && !PREFIX) || process.env.BEREINIGEN === '1';
   const bereinigung = [];
   if (bereinigen) for (const b of BEREINIGUNG) {
     const treffer = produkte.filter(p => b.wenn(p));
@@ -132,7 +133,7 @@ async function main() {
       const regel = { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: k.tag }] };
       if (c && k.bestehend) {
         writeFileSync(`dropship/kategorien-sicherung/${k.handle}.json`, JSON.stringify(c, null, 1));
-        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel } });
+        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
         if (d.collectionUpdate.userErrors.length) throw new Error(`collectionUpdate ${k.handle} ${JSON.stringify(d.collectionUpdate.userErrors)}`);
         console.log(`Umgestellt: ${k.handle} → TAG ${k.tag}`); ledger(`umgestellt ${k.handle}`);
         // Publish-Falle: eine bestehende Collection kann nie im Onlineshop publiziert worden sein (haustier-tech, 26.10.: HTTP 404, durch eine Umleitung verdeckt).
