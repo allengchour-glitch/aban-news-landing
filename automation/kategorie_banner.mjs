@@ -3,7 +3,7 @@
  * Kategorie-Banner «Pinnwand» (2000×1000) für Collections: ein grosses Bild aus bis zu 12 ECHTEN, von Gemini als sauber bestätigten Bestseller-Fotos
  * des Shops plus Titelband. Layout und Tests: automation/banner/ (Anleitung dropship/BANNER-LIESMICH.md). Kostet kein Bildgenerator, zeigt nur Ware, die es gibt.
  *
- * Ablauf je Collection: 60 Bestseller → Kandidaten (lib/banner_fotos.mjs, bis 2 Fotos je Produkt) → je Foto Gemini-Sauberkeitsprüfung (6 gleichzeitig) bis 12 saubere
+ * Ablauf je Collection: 60 Bestseller → Kandidaten (lib/banner_fotos.mjs, bis 2 Fotos je Produkt) → je Foto Gemini-Sauberkeitsprüfung (PARALLEL=20 gleichzeitig) bis 12 saubere
  * → Banner in Chromium rendern → Gemini prüft das fertige Banner (Titel lesbar, Fotos passen zur Kategorie, kein Fremdtext/Logo) → erst dann Upload.
  * Weniger als 8 saubere Fotos oder durchgefallenes Banner = kein Upload, Grund im Bericht. Gemini nicht erreichbar = kein Upload (nie stillschweigend «ok»).
  *
@@ -32,7 +32,7 @@ const OUT = process.env.OUT || '/tmp/kategorie_banner';
 const ZIEL = Number(process.env.ZIEL || 12), MIN = Number(process.env.MIN || 8), LIMIT = Number(process.env.LIMIT || 0);
 const PY = process.env.PYTHON || '/usr/bin/python3';
 const MARKE = 'LuxeStyle-Pinnwand';
-const GLEICHZEITIG = 6;
+const GLEICHZEITIG = Number(process.env.PARALLEL || 20);   // Gemini vertrug 24 gleichzeitige Aufrufe ohne Fehler (26.10.2026), je Aufruf ~7 s
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 
 async function main() {
