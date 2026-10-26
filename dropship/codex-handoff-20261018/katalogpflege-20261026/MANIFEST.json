@@ -1,0 +1,79 @@
+{
+  "dateEuropeZurich": "2026-10-26",
+  "scope": "review documentation, offline helper drafts and one owner-approved product description receipt; no operational automation deployed",
+  "files": {
+    "KATALOGPFLEGE-PAKET-20261026.md": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/KATALOGPFLEGE-PAKET-20261026.md",
+      "bytes": 22344,
+      "characters": 22014,
+      "sha256": "6ff460a0d2eff07a8aa1e0ef83af2db9de18c873c8eeef0b7ff66ade54529cc0"
+    },
+    "KATALOGPFLEGE-AUFTRAG-20261026.md": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/KATALOGPFLEGE-AUFTRAG-20261026.md",
+      "bytes": 9608,
+      "characters": 9470,
+      "sha256": "6e7892bfe1a6e819f31ccb1e6d47de38197fd8d9911ee1e5463686a0d4eb3772"
+    },
+    "KATALOGPFLEGE-BELEGE-20261026.json": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/KATALOGPFLEGE-BELEGE-20261026.json",
+      "bytes": 490826,
+      "characters": 489176,
+      "sha256": "cc276e563545d0176a716bbf9793dd5e5d93c01d05582dd8d98675f1de564f92"
+    },
+    "TRENCHCOAT-IMPLEMENTIERUNG-20261026.json": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/pilot/TRENCHCOAT-IMPLEMENTIERUNG-20261026.json",
+      "bytes": 1418,
+      "characters": 1418,
+      "sha256": "287c99fd696119ed334cb8a8a99b1ba9310e85a0a79f6eacfc096c13d976b409"
+    },
+    "katalogpflege-20261026/options/triage_options.py": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/options/triage_options.py",
+      "bytes": 26687,
+      "characters": 26675,
+      "sha256": "582e9fd3f142b824b13dea900320f77eea2fe8e6ad242fb56f586458a40e7414"
+    },
+    "katalogpflege-20261026/options/test_triage_options.py": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/options/test_triage_options.py",
+      "bytes": 9941,
+      "characters": 9927,
+      "sha256": "f1d97763cbf2bdfc54761f2e5556a5a73e8cf1d15951594172ce1d2e09c02e15"
+    },
+    "katalogpflege-20261026/swiss-power/stecker_cj-evidence-entwurf.diff": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/swiss-power/stecker_cj-evidence-entwurf.diff",
+      "bytes": 8202,
+      "characters": 8126,
+      "sha256": "996de26052f3b9e5cbdbbac78e2746a6242fd7a941fe8bdd6b830e3133255dc8"
+    },
+    "katalogpflege-20261026/swiss-power/PRUEFBELEGE.json": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/swiss-power/PRUEFBELEGE.json",
+      "bytes": 20472,
+      "characters": 20457,
+      "sha256": "9128278aa43f766b67a3772ff481a298e0eb7570ef4268accfb0b8f5815906f3"
+    },
+    "katalogpflege-20261026/swiss-power/stecker_cj_evidence_test.mjs": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/swiss-power/entwurf/stecker_cj_evidence_test.mjs",
+      "bytes": 4089,
+      "characters": 4078,
+      "sha256": "697137958d97ffd55bc63cfdc30ae8b9af5c32a213b5170b019202e586a3b267"
+    },
+    "katalogpflege-20261026/swiss-power/stecker_cj_completeness_test.mjs": {
+      "localPath": "/workspace/luxestyle-review/katalogpflege-20261026/swiss-power/entwurf/stecker_cj_completeness_test.mjs",
+      "bytes": 6053,
+      "characters": 6038,
+      "sha256": "781a316ff83254613e179e6bde1438f0c3daae51fdb3ccf992a9d97522e6112a"
+    }
+  },
+  "largeSnapshotFiles": {
+    "options/snapshot-v2/triage-products.csv": {
+      "bytes": 16508221,
+      "sha256": "89f931430616e0074f47f423e77d97d6862e67d410c70a519697a0029315cccd",
+      "repositoryUpload": false
+    },
+    "options/snapshot-v2/triage-evidence.jsonl": {
+      "bytes": 102972496,
+      "sha256": "69ff914a8ab617fdce385bafd34b2d5adf651633bc6287a0da629fb70ab7f26f",
+      "repositoryUpload": false
+    }
+  },
+  "largeFileAvailability": "local artifacts/ZIP, not claimed permanently operational or deployed; missing source remains unknown"
+}
