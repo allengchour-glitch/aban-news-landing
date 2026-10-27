@@ -33,6 +33,7 @@ import { lieferurteil } from './lib/lieferbarkeit.mjs';
 import { strategien } from './lib/fakten_block.mjs';
 import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_varianten.mjs';
 import { steckerUrteil } from './lib/stecker_cj.mjs';
+import { skuNachziehen } from './lib/sku_nachziehen.mjs';
 import { nachDeutsch, gleicheGrossschreibung } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
 import { ledgerGedaechtnis, veraendertSeitPlan, bilderUnbrauchbar, FRISCH, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
@@ -155,7 +156,13 @@ export async function plane({ q, cj, handle, tmp }) {
   if (stecker.draft) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `nur Fremdstecker (US/UK/AU/JP) bei CJ — nicht für die Schweiz (${vsRoh.length} Varianten)` };
   const weg = new Set(stecker.loeschen);
   const vs = vsRoh.filter(v => !weg.has(v.vid));
-  if (vs.length <= 1) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
+  if (vs.length <= 1) {
+    // Bleibt nach dem Stecker-Filter genau EINE von mehreren CJ-Varianten, ist die Shop-SKU `CJ-<pid>` mehrdeutig (sie passt auf alle, auch auf die 110-V-Version): die Bestell-Engine
+    // hielte bei jeder Bestellung an (#1029 «Heizbare Kuscheldecke», 27.10.2026). Dann gehört die Nummer der einen übrigen Variante in die SKU (lib/sku_nachziehen.mjs).
+    const nachzug = skuNachziehen({ wege, vsRoh, vs });
+    if (nachzug) return { handle, ergebnis: 'SKU_NACHZIEHEN', produktId: p.id, varianteId: v0.id, alteSku: v0.sku, neueSku: nachzug.neueSku, vid: nachzug.vid, anzahlCj: nachzug.anzahlCj };
+    return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
+  }
   // Shopify erlaubt nur ~9 500 NEUE Varianten pro Tag: ein Produkt mit 84 Varianten kostet so viel wie zwölf normale. Grosse Produkte kommen später (MAX_VARIANTEN=100 erlaubt alle).
   const MAXV = Number(process.env.MAX_VARIANTEN || 40);
   if (vs.length > MAXV) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `viele CJ-Varianten (${vs.length} > ${MAXV}) — später, wenn das Tageskontingent reicht` };
@@ -277,6 +284,27 @@ async function aufschreiben(q, plan) {
 }
 
 // ---------------------------------------------------------------- Lauf
+const SKU_LESEN = `query($id:ID!){product(id:$id){id variantsCount{count} variants(first:3){nodes{id sku}}}}`;
+const SKU_SCHREIBEN = `mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){productVariants{id sku} userErrors{field message}}}`;
+/**
+ * Setzt die SKU der EINEN Standardvariante auf die CJ-Variantennummer (Plan «SKU_NACHZIEHEN»). Liest unmittelbar vorher frisch (noch genau diese eine Variante? noch die alte SKU?)
+ * und prüft die Antwort. Preis, Optionen, Bilder, Text und Tags bleiben unberührt.
+ * → { ok:true } | { ok:true, schonErledigt:true } | { ok:false, uebersprungen:'…' } (verändert seit dem Plan) | { ok:false, fehler:'…' }
+ */
+export async function schreibeSku(q, plan) {
+  const f = (await q(SKU_LESEN, { id: plan.produktId })).product;
+  if (!f) return { ok: false, uebersprungen: 'Produkt nicht mehr da' };
+  const vs = f.variants.nodes;
+  if (f.variantsCount.count !== 1 || vs.length !== 1 || vs[0].id !== plan.varianteId) return { ok: false, uebersprungen: 'Varianten seit dem Plan verändert' };
+  if (vs[0].sku === plan.neueSku) return { ok: true, schonErledigt: true };
+  if (vs[0].sku !== plan.alteSku) return { ok: false, uebersprungen: `SKU seit dem Plan verändert (${vs[0].sku})` };
+  const m = (await q(SKU_SCHREIBEN, { p: plan.produktId, v: [{ id: plan.varianteId, inventoryItem: { sku: plan.neueSku } }] })).productVariantsBulkUpdate;
+  if (m.userErrors?.length) return { ok: false, fehler: JSON.stringify(m.userErrors).slice(0, 160) };
+  const neu = m.productVariants?.[0];
+  if (!neu || neu.id !== plan.varianteId || neu.sku !== plan.neueSku) return { ok: false, fehler: `Rücklesen: SKU ist «${neu?.sku}»` };
+  return { ok: true };
+}
+
 async function main() {
   const handles = process.argv.slice(2);
   if (process.env.HANDLES_DATEI) {
@@ -333,6 +361,25 @@ async function main() {
           plan = { handle: h, ergebnis: 'FEHLER', grund: m.slice(0, 300) };
         }
         writeFileSync(planPfad, JSON.stringify(plan, null, 1));
+      }
+      // Ein Produkt, bei dem nur die SKU mehrdeutig ist (nach dem Stecker-Filter bleibt eine von mehreren CJ-Varianten): nur die SKU setzen, nichts anderes anfassen.
+      if (plan.ergebnis === 'SKU_NACHZIEHEN') {
+        console.log(h, '→ SKU_NACHZIEHEN |', `${plan.alteSku} → ${plan.neueSku} (${plan.anzahlCj} CJ-Varianten, nur eine bleibt nach dem Stecker-Filter)`);
+        if (!LIVE) { zaehl.SKU_NACHZIEHEN = (zaehl.SKU_NACHZIEHEN || 0) + 1; fehlerFolge = 0; continue; }
+        let w;
+        try { w = await schreibeSku(q, plan); } catch (e) { w = { ok: false, fehler: String(e.message).slice(0, 160) }; }
+        if (w.ok) {
+          fehlerFolge = 0; schreibFolge = 0; zaehl.GESCHRIEBEN = (zaehl.GESCHRIEBEN || 0) + 1;
+          console.log(`   GESCHRIEBEN: SKU ${w.schonErledigt ? 'war schon' : 'jetzt'} ${plan.neueSku}`);
+          merke('GESCHRIEBEN', `SKU ${plan.alteSku} → ${plan.neueSku}`);
+        } else if (w.uebersprungen) {
+          zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1; console.log('   UEBERSPRUNGEN |', w.uebersprungen);
+          merke('UEBERSPRUNGEN', `${VORLAEUFIG}: ${w.uebersprungen}`); fehlerFolge = 0;
+        } else {
+          zaehl.FEHLER = (zaehl.FEHLER || 0) + 1; console.log('   FEHLER beim Schreiben der SKU:', w.fehler); merke('FEHLER', `SKU: ${w.fehler}`);
+          if (++schreibFolge >= MAX_FEHLER) { abbruch(1, `${schreibFolge} Schreibfehler in Folge — ein Dienst scheint auszufallen`); break; }
+        }
+        continue;
       }
       // KI-Serie: nur Produkte zählen, bei denen die KI gefragt wurde (kiAusfall = der Dienst hat nicht geantwortet).
       if (plan.ergebnis === 'PLAN') { if (plan.kiAusfall) kiFolge++; else if (plan.kiUebersetzt || plan.unsicherUebersetzt?.length) kiFolge = 0; }

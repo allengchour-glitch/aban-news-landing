@@ -180,6 +180,8 @@ jobs:
           node automation/lib/banner_fotos_test.mjs
           node automation/lib/unterfilter_plan_test.mjs
           node automation/cj_varianten_nachziehen_stecker_test.mjs
+          node automation/cj_varianten_nachziehen_sku_test.mjs
+          node automation/lib/sku_nachziehen_test.mjs
           node automation/auswahl_scan_test.mjs
           node automation/cj_variantenbilder_test.mjs
           node automation/farbwahl_scan_test.mjs
