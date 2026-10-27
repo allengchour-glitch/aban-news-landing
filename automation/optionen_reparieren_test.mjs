@@ -18,5 +18,20 @@ ist('Gegenprobe: ein einziger Wert → nichts', planeOption('Farbe', ['A']), nul
 ist('Gegenprobe: «Pink» bleibt Pink', planeOption('Farbe', ['Pink', 'Schwarz']), null);
 ist('Gegenprobe: «Gray» allein wird hier nicht angefasst', planeOption('Farbe', ['Gray', 'Schwarz']), null);
 
+// Schuhgrössen mit englischem «To» (Abzug vom 26.10.): «36 To 37» → «36–37»
+ist('Grösse «36 To 37» → «36–37»', planeOption('Grösse', ['36 To 37', '38 To 39', '40']), { art: 'groesse', werte: { '36 To 37': '36–37', '38 To 39': '38–39' } });
+ist('Größe (ß) und Size werden erkannt', planeOption('Größe', ['36 to 37', '38']), { art: 'groesse', werte: { '36 to 37': '36–37' } });
+ist('Option «Size» wird erkannt', planeOption('Size', ['40 To 41', '42']), { art: 'groesse', werte: { '40 To 41': '40–41' } });
+ist('Halbgrössen mit Komma', planeOption('Grösse', ['36,5 To 37,5', '38']), { art: 'groesse', werte: { '36,5 To 37,5': '36.5–37.5' } });
+ist('Gegenprobe: schon richtig → nichts', planeOption('Grösse', ['36–37', '38–39']), null);
+ist('Gegenprobe: «S», «M», «One Size» bleiben (nur das To-Muster)', planeOption('Grösse', ['s', 'M', 'One Size']), null);
+ist('Gegenprobe: Kollision mit vorhandenem «36–37» → nichts', planeOption('Grösse', ['36 To 37', '36–37']), null);
+ist('Gegenprobe: «To» in Wörtern (Tommy, Top) bleibt', planeOption('Grösse', ['Top 36', 'Tommy 37', '36 Top']), null);
+ist('Gegenprobe: «36 bis 37» ist schon deutsch → nichts', planeOption('Grösse', ['36 bis 37', '38']), null);
+ist('Gegenprobe: Farbe mit «To»-Wert wird nicht als Grösse behandelt', planeOption('Farbe', ['36 To 37', '38 To 39']), null);
+ist('Gegenprobe: unbekannte Option (Material) → nichts', planeOption('Material', ['36 To 37']), null);
+ist('Gegenprobe: Option «Modell» besteht schon (A/B-Codes daneben) → nichts, nicht raten', planeOption('Farbe', ['A', 'B'], ['Farbe', 'Modell']), null);
+ist('Modell-Kürzel mit anderer zweiter Option (Material) bleibt', planeOption('Farbe', ['A', 'B', 'C'], ['Farbe', 'Material']), { art: 'modell', neuerName: 'Modell', werte: { A: 'Modell A', B: 'Modell B', C: 'Modell C' } });
+
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
