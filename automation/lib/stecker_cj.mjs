@@ -73,10 +73,40 @@ const START = new RegExp(`^(US|UK|AU|JP)${ENDE}-`, 'i'), START_EURO = new RegExp
 /** true, wenn der Schlüssel ausdrücklich den Euro-Stecker nennt (Typ C passt in Typ J). */
 export const euroSteckerKey = key => { const k = String(key ?? '').trim(); return !!k && (EURO_ENDE.test(k) || EURO_WORT.test(k) || START_EURO.test(k)); };
 
-/** Die Zuordnung «Schlüssel → fremd» eines Produkts (mit dem Anfangs-Stecker-Fall). */
+/**
+ * Stecker in der MITTE des Schlüssels («Lotus Pink-EU-28mm» / «-US-28mm» / «-UK-28mm», «100XP Smoke Purifier 15W-US-99»): die Endungs- und Wortregeln sehen ihn nicht, weil hinter dem Land noch eine
+ * Grösse oder Nummer steht (27.10.2026, Prüfung: `automatische-lockenstange-600000` hätte im Auswahl-Bau US und UK als Auswahlwerte bekommen). Ein Land in der Mitte zählt NUR als Stecker, wenn die
+ * STRUKTUR des ganzen Produkts es belegt:
+ *   – alle Schlüssel haben gleich viele Bindestrich-Segmente (mindestens drei),
+ *   – an EINER mittleren Stelle steht bei jeder Variante ein Ländercode (us/usa/uk/gb/au/nz/jp/eu/eur), und es sind mindestens zwei verschiedene,
+ *   – zu jedem Land gehören GENAU DIESELBEN übrigen Segmente (derselbe Farb-/Grössen-Satz wird je Stecker wiederholt).
+ * Schuh- und Kleidergrössen («Black-US-8», «Black-EU-41») erfüllen das nicht (US-Grössen ≠ EU-Grössen) und bleiben unberührt. Rein, ohne Netz.
+ * @returns {null | {fremd:(k:string)=>boolean, euro:(k:string)=>boolean}}
+ */
+const MITTE_LAND = new Set(['us', 'usa', 'uk', 'gb', 'au', 'nz', 'jp', 'eu', 'eur']), MITTE_EURO = new Set(['eu', 'eur']);
+const segmente = k => String(k ?? '').trim().split(/\s*-\s*/).map(x => x.trim().toLowerCase());
+export function mitteStecker(schluessel) {
+  const segs = (schluessel || []).map(segmente), n = segs[0]?.length;
+  if (segs.length < 2 || !(n >= 3) || !segs.every(x => x.length === n)) return null;
+  for (let i = 1; i <= n - 2; i++) {
+    const laender = new Set(segs.map(x => x[i]));
+    if (laender.size < 2 || ![...laender].every(l => MITTE_LAND.has(l))) continue;
+    const reste = new Map();
+    for (const x of segs) { const r = x.filter((_, j) => j !== i).join('\u0001'); if (!reste.has(x[i])) reste.set(x[i], new Set()); reste.get(x[i]).add(r); }
+    if (new Set([...reste.values()].map(m => [...m].sort().join('\u0002'))).size !== 1) continue;   // je Stecker derselbe Satz übriger Segmente
+    const land = k => { const x = segmente(k); return x.length === n ? x[i] : ''; };
+    return { fremd: k => MITTE_LAND.has(land(k)) && !MITTE_EURO.has(land(k)), euro: k => MITTE_EURO.has(land(k)) };
+  }
+  return null;
+}
+
+/** Die Zuordnung «Schlüssel → fremd» eines Produkts (mit dem Anfangs-Stecker-Fall und dem Stecker in der Mitte). `.euro(k)`: nennt der Schlüssel ausdrücklich den Euro-Stecker? */
 function fremdPruefer(schluessel, opt = {}) {
   const startPlug = schluessel.some(k => START_EURO.test(String(k).trim()));      // der Stecker steht in diesem Produkt vorn im Schlüssel
-  return k => fremdSteckerKey(k, opt) || (startPlug && START.test(String(k).trim()) && !euroSteckerKey(k));
+  const mitte = mitteStecker(schluessel);
+  const fremd = k => fremdSteckerKey(k, opt) || (startPlug && START.test(String(k).trim()) && !euroSteckerKey(k)) || (mitte?.fremd(k) ?? false);
+  fremd.euro = k => euroSteckerKey(k) || (mitte?.euro(k) ?? false);
+  return fremd;
 }
 
 /**
@@ -88,7 +118,7 @@ export function alleSchluesselMitStecker(schluessel, opt = {}) {
   const ks = (schluessel || []).map(k => String(k ?? '').trim());
   if (!ks.length) return false;
   const fremd = fremdPruefer(ks, opt);
-  return ks.every(k => !!k && (fremd(k) || euroSteckerKey(k)));
+  return ks.every(k => !!k && (fremd(k) || fremd.euro(k)));
 }
 
 /**
@@ -108,7 +138,7 @@ export function steckerUrteil(shopVarianten, cjSchluessel, opt = {}) {
   for (const v of shopVarianten) {
     const k = cjSchluessel?.[v.sku];
     if (k === undefined) { unbekannt++; (cjAlleFremd ? fremd : rest).push(v); continue; }   // SKU nicht zuzuordnen: nur wenn CJ gar keinen Euro-Stecker führt, ist die Variante sicher fremd
-    if (fremdKey(k)) fremd.push(v); else { rest.push(v); if (euroSteckerKey(k)) euro++; }
+    if (fremdKey(k)) fremd.push(v); else { rest.push(v); if (fremdKey.euro(k)) euro++; }
   }
   if (!fremd.length) return { loeschen: [], draft: false, fremd: 0, euro, unbekannt, grund: 'kein Fremdstecker' };
   if (!rest.length) return { loeschen: [], draft: true, fremd: fremd.length, euro, unbekannt, grund: 'alle Varianten mit Fremdstecker' };

@@ -1,5 +1,5 @@
 // Tests für lib/stecker_cj.mjs. Schlüssel sind echte CJ-Variantenschlüssel aus dem Zwischenspeicher vom 26.10.2026. Gegenproben in BEIDE Richtungen.
-import { fremdSteckerKey, euroSteckerKey, steckerUrteil, steckerUrteilOptionen, alleSchluesselMitStecker } from './stecker_cj.mjs';
+import { fremdSteckerKey, euroSteckerKey, steckerUrteil, steckerUrteilOptionen, alleSchluesselMitStecker, mitteStecker } from './stecker_cj.mjs';
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
 
@@ -78,6 +78,34 @@ ist('leere Eingaben', steckerUrteil([], {}).draft, false);
 
 // S02 (Endprüfung 27.10.2026): «BR» allein ist das Kürzel für Braun/Brasilien und kein Stecker, nur MIT Steckerwort («BR Plug»); der Schutz ist die Trennung der beiden Mengen LAENDER / LAENDER_MIT_STECKERWORT
 ist('S02 «BR» allein ist kein Stecker, «BR Plug» schon', [fremdSteckerKey('Black-BR'), fremdSteckerKey('BR'), fremdSteckerKey('Black-BR Plug')], [false, false, true]);
+
+// ── Stecker in der MITTE des Schlüssels (27.10.2026, Prüfung: automatische-lockenstange-600000, luftung-fur-schwei-arbeiten-628600) ──
+// Echte Schlüssel. Ein Land mitten im Schlüssel zählt nur, wenn die Struktur des ganzen Produkts es belegt (gleiche Segmentzahl, ein Land-Segment mit ≥ 2 Ländern,
+// je Land derselbe Satz übriger Segmente). Schuh- und Kleidergrössen («Black-US-8» / «Black-EU-41») erfüllen das nicht.
+const MK = (...ks) => { const v = ks.map((k, i) => ({ id: 'v' + i, sku: 'S' + i })); return steckerUrteil(v, Object.fromEntries(ks.map((k, i) => ['S' + i, k]))); };
+const LOCKEN = ['Lotus Pink-EU-28mm', 'Lotus Pink-EU-32mm', 'Lotus Pink-US-28mm', 'Lotus Pink-US-32mm', 'Lotus Pink-UK-28mm', 'Lotus Pink-UK-32mm'];
+ist('Lockenstange: US und UK in der Mitte werden gelöscht, beide EU-Grössen bleiben', MK(...LOCKEN), { loeschen: ['v2', 'v3', 'v4', 'v5'], draft: false, fremd: 4, euro: 2, unbekannt: 0, grund: '4 von 6 Varianten mit Fremdstecker' });
+const LUFT = ['100XP Smoke Purifier 15W-US-99', '100XP Smoke Purifier 15W-UK-99', '100XP Smoke Purifier 15W-AU-99', '100XP Smoke Purifier 15W-EU-99'];
+ist('Lüftung für Schweissarbeiten: US/UK/AU in der Mitte werden gelöscht, EU bleibt', [MK(...LUFT).loeschen, MK(...LUFT).euro], [['v0', 'v1', 'v2'], 1]);
+ist('Lockenstange nur mit Fremdstecker → alle Varianten Fremdstecker (draft)', MK('Lotus Pink-US-28mm', 'Lotus Pink-UK-28mm', 'Lotus Pink-US-32mm', 'Lotus Pink-UK-32mm').draft, true);
+// Gegenproben: das darf NICHT als Stecker gelten
+ist('Schuhe «Black-US-8/9», «Black-EU-41/42»: US-/EU-Grössen sind verschieden → unberührt', MK('Black-US-8', 'Black-US-9', 'Black-EU-41', 'Black-EU-42').loeschen, []);
+ist('Schuhe, nur zwei Varianten «Black-US-8» / «Black-EU-41» → unberührt', MK('Black-US-8', 'Black-EU-41').loeschen, []);
+ist('Bekannte Grenze: «Red-US-S» und «Red-EU-S» (Grössennorm, gleicher Rest) sind strukturell nicht von Steckern zu unterscheiden → die US-Variante gilt als Fremdstecker (in 1 688 echten Datenblättern kommt das nie vor)', MK('Red-US-S', 'Red-EU-S').loeschen.length, 1);
+ist('nicht für jedes Land derselbe Satz: EU hat 28 und 32 mm, US nur 28 mm → keine sichere Struktur, unberührt (im Zweifel nichts löschen)', MK('Pink-EU-28mm', 'Pink-EU-32mm', 'Pink-US-28mm').loeschen, []);
+ist('verschiedene Segmentzahl: die Mitten-Regel greift nicht; «Pink-US» fällt unter die Endungsregel, «Pink-EU-28mm» bleibt', MK('Pink-EU-28mm', 'Pink-US').loeschen, ['v1']);
+ist('Mitte nennt kein Land («Pink-Large-28mm», «Pink-Small-28mm») → unberührt', MK('Pink-Large-28mm', 'Pink-Small-28mm').loeschen, []);
+ist('nur EIN Land in der Mitte («Pink-EU-28mm», «Pink-EU-32mm») → unberührt', MK('Pink-EU-28mm', 'Pink-EU-32mm').loeschen, []);
+ist('ein Wort neben dem Land in der Mitte («Pink-US Size-28mm») ist kein Ländercode → unberührt', MK('Pink-US Size-28mm', 'Pink-EU Size-28mm').loeschen, []);
+ist('nur EIN Land in der Mitte, und zwar ein fremdes («Pink-US-28mm», «Pink-US-32mm») → keine Struktur, unberührt (nichts wird zum Entwurf)', [MK('Pink-US-28mm', 'Pink-US-32mm').loeschen, MK('Pink-US-28mm', 'Pink-US-32mm').draft], [[], false]);
+ist('ein Wort in der Mitte, das kein Ländercode ist («Pink-US-28mm», «Pink-Red-28mm») → unberührt', MK('Pink-US-28mm', 'Pink-Red-28mm').loeschen, []);
+ist('mitteStecker: weniger als zwei Schlüssel, leere und ungleiche Eingaben → null', [mitteStecker([]), mitteStecker(['A-EU-1']), mitteStecker(null), mitteStecker(['A-EU-1', 'A-US'])], [null, null, null, null]);
+{
+  const m = mitteStecker(LOCKEN);
+  ist('mitteStecker liefert fremd/euro je Schlüssel', [m.fremd('Lotus Pink-US-28mm'), m.fremd('Lotus Pink-EU-28mm'), m.euro('Lotus Pink-EU-32mm'), m.euro('Lotus Pink-UK-32mm'), m.fremd('Lotus Pink-JP-28mm')], [true, false, true, false, true]);
+}
+ist('alleSchluesselMitStecker: bei Stecker in der Mitte nennt jeder Schlüssel seinen Stecker', [alleSchluesselMitStecker(LOCKEN), alleSchluesselMitStecker(['Black-US-8', 'Black-US-9', 'Black-EU-41'])], [true, false]);
+ist('bestehende Endungsregeln unverändert: «White-US», «Black-EU» weiter wie vorher', MK('Black-EU', 'Black-US', 'Black-UK').loeschen, ['v1', 'v2']);
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
