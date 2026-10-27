@@ -1,0 +1,70 @@
+{
+  "state": "REVIEW_READY_NOT_APPLIED",
+  "shop": "luxestyle.ch",
+  "scope": "Only two known collection descriptionHtml first paragraphs and seo.description; four fields, preserve titles/handles/rules/products/settings",
+  "preparedAtUTC": "2026-10-27T17:34:47.425627+00:00",
+  "approvalContext": "Existing explicit live authorisation covers product descriptions only; category/meta changes remain concrete approval drafts under owner rules. No second approval sought for already authorised product text, DNS or footer.",
+  "changes": [
+    {
+      "id": "gid://shopify/Collection/689681006977",
+      "handle": "elektronik-technik",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "before": {
+        "descriptionHtml": "<p>Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+        "seo": {
+          "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+          "description": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        }
+      },
+      "proposed": {
+        "descriptionHtml": "<p>Elektronik und Technik für Alltag und unterwegs: Entdecke Ladegeräte und Ladestationen, Kopfhörer, Mini-Beamer, Webcams und Zubehör fürs Homeoffice. Prüfe beim einzelnen Artikel die angegebenen Anschlüsse, die Stromversorgung und die Kompatibilität mit deinen Geräten.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+        "seo": {
+          "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+          "description": "Elektronik & Technik bei LuxeStyle: Ladegeräte, Audio und Zubehör entdecken. Vergleiche Anschlüsse, Stromversorgung und die Angaben zur Kompatibilität."
+        }
+      },
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "beforeDescriptionSha256": "839365658d37031acabda3cbc5163e7b1af3ed0f787b8f318ef7ea02aa835d29",
+      "afterDescriptionSha256": "d50a58ae1c0a62ba6d5cbb3ac797397ab57843f0a83a6557f8e27aa3b3f7d608",
+      "followingContentAndLinksByteIdentical": true,
+      "liveWritePerformed": false
+    },
+    {
+      "id": "gid://shopify/Collection/687522775425",
+      "handle": "wohnen-dekoration",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "before": {
+        "descriptionHtml": "<p>Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen &amp; Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+        "seo": {
+          "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+          "description": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        }
+      },
+      "proposed": {
+        "descriptionHtml": "<p>Gestalte dein Zuhause mit Beleuchtung, Aufbewahrung, Wohntextilien und Wanddeko von LuxeStyle. Vergleiche vor der Auswahl die Angaben zu Abmessungen und zur Ausführung des einzelnen Artikels, damit er zu deinem Raum passt. Gratis-Versand in der Schweiz ab CHF 50.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+        "seo": {
+          "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+          "description": "Wohnen & Dekoration bei LuxeStyle: Beleuchtung, Aufbewahrung und Wohntextilien entdecken. Vergleiche die Angaben zu Abmessungen und Ausführung."
+        }
+      },
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "beforeDescriptionSha256": "a71793f8bcc00ce27ac34e04a8f49fce7782d2e25fefa0aaab22b62a4fb7b1fa",
+      "afterDescriptionSha256": "efda75b5a47ef1425cbdf1b8ff992f8c39fed36ab00a853eac13590f8e1b6179",
+      "followingContentAndLinksByteIdentical": true,
+      "liveWritePerformed": false
+    }
+  ],
+  "executionRequirements": [
+    "Only after concrete owner approval of these exact category/meta diffs",
+    "Fresh identity and complete native source must match before hashes/SEO fields; no blind overwrites",
+    "Apply per collection without title/rules/membership/status/settings mutations; preserve full following HTML",
+    "Native readback plus public root-head meta and visible first paragraph; unknown write no automatic retry",
+    "No ranking/indexation claim from field change or HTTP200"
+  ]
+}
