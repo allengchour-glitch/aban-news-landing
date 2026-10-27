@@ -62,16 +62,31 @@ export async function nachDeutsch(texte, opt = {}) {
   if (!texte?.length) return { texte: texte || [], weg: 'original' };
   const fetchFn = opt.fetch ?? fetch;
   const gk = (opt.geminiKey ?? process.env.GEMINI_API_KEY ?? '').trim();
-  const qk = (opt.groqKey ?? process.env.GROQ_API_KEY ?? '').trim();
+  // Groq: bis zu drei Schlüssel (GROQ_API_KEY, _2, _3); jeder hat sein eigenes Tageslimit (gemessen 27.10.2026: 1000 Anfragen je Modell und Tag). Ist einer erschöpft, fragt der nächste.
+  const qks = opt.groqKey !== undefined ? [String(opt.groqKey).trim()] : [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY2, process.env.GROQ_API_KEY3].map(k => (k ?? '').trim());
+  const groqKeys = [...new Set(qks.filter(Boolean))];
   const modelle = opt.groqModelle ?? GROQ_MODELLE;
   const gruende = [];
   if (gk) {
     try { const a = await gemini(texte, gk, fetchFn, opt.auftrag); if (a) return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'gemini' }; gruende.push('Gemini: Antwort passte nicht'); }
     catch (e) { gruende.push(e.message); }
   }
-  if (qk) {
+  for (const qk of groqKeys) {
     try { const a = await groq(texte, qk, fetchFn, modelle, opt.auftrag); return { texte: a.map((s, i) => (s && String(s).trim()) || texte[i]), weg: 'groq' }; }
     catch (e) { gruende.push(e.message); }
   }
   return { texte, weg: 'original', grund: gruende.join(' · ') || 'kein Schlüssel gesetzt' };
 }
+
+/**
+ * Das kleine Groq-Modell (openai/gpt-oss-20b, springt ein, wenn das grosse am Minutenlimit ist) liefert Etikettenwörter klein geschrieben («purpurrot»).
+ * Beginnt das Original gross und die Übersetzung klein, wird der erste Buchstabe der Übersetzung gross gesetzt (nur Buchstaben, sonst unverändert).
+ */
+export function gleicheGrossschreibung(original, uebersetzt) {
+  const o = String(original ?? ''), u = String(uebersetzt ?? '');
+  const a = o.match(/\p{L}/u)?.[0], i = u.search(/\p{L}/u);
+  if (!a || i < 0 || a !== a.toUpperCase() || a === a.toLowerCase()) return u;
+  const b = u[i]; if (b === b.toUpperCase()) return u;
+  return u.slice(0, i) + b.toUpperCase() + u.slice(i + 1);
+}
+

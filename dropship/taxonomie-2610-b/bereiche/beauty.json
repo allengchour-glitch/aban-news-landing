@@ -1,0 +1,1159 @@
+{
+  "bereich": "beauty",
+  "titel": "Beauty, Pflege & Gesundheit",
+  "menue": {
+    "oben": "Beauty & Pflege"
+  },
+  "universum": {
+    "g_prefix": [
+      "Health & Beauty"
+    ],
+    "titel_muss": [],
+    "g_nicht": [
+      "Health & Beauty > Jewelry Cleaning & Care",
+      "Health & Beauty > Health Care > Biometric Monitor"
+    ],
+    "titel_nicht": []
+  },
+  "kategorien": [
+    {
+      "handle": "gesichtscreme-serum",
+      "titel": "Gesichtscreme, Serum & Öl",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Masks",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lip Balms",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Sunscreen",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Toners",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Tanning",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Body Oil",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Makeup Removers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Acne Treatments",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Anti-Aging Skin Care Kits",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Wart",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Kits"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|bein[a-zäöüß-]*|gelenk[a-zäöüß-]*|kopfhaut[a-zäöüß-]*|haar[a-zäöüß-]*|styling|wattepad[a-zäöüß-]*|paraffin[a-zäöüß-]*|perianal[a-zäöüß-]*|schwangerschaft[a-zäöüß-]*|rücken[a-zäöüß-]*|schlaf|tattoo[a-zäöüß-]*|make-up[a-zäöüß-]*)",
+        "(pflaster|maske|bandage|entferner)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(lip)",
+        "(^|[^a-zäöüß])(aromatherapie[a-zäöüß-]*)",
+        "nano|tabletten|^(liftende )?gesichtsstraffung$|^hautrejuvenation$"
+      ],
+      "beschreibung": "Cremes, Seren, Lotionen und Gesichtsöle für die tägliche Pflege: Feuchtigkeitscreme, Nachtcreme, Augencreme und Seren mit Hyaluron, Vitamin C, Retinol oder Kollagen.",
+      "unterfilter": [
+        {
+          "handle": "serum-essenzen-gesicht",
+          "titel": "Seren & Essenzen",
+          "titel_muss": [
+            "serum|essenz|ampull|konzentrat|fluid|liquid|vitamin-?fluid"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "gesichtscremes-lotionen",
+          "titel": "Cremes & Lotionen",
+          "titel_muss": [
+            "creme|cream|lotion|balsam|butter|emulsion|feuchtigkeitspflege|hautpflege|gel"
+          ],
+          "titel_nicht": [
+            "aug|serum"
+          ]
+        }
+      ]
+    },
+    {
+      "handle": "gesichtsmasken-peelings",
+      "titel": "Gesichtsmasken & Peelings",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Masks & Peels"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(viking|ugly|latex|skull|zombie|horror|cosplay|steampunk|tiermaske|stahlgitter|glitzernde|druckmaske|ohrhaken|sonnenmaske|sauerstoffbarriere|doppelkinn|bindi|sticker)",
+        "(^|[^a-zäöüß])(led|usb|beheizt[a-zäöüß-]*|wärme[a-zäöüß-]*|kühl[a-zäöüß-]*|dampf[a-zäöüß-]*|silikon[a-zäöüß-]*|smart)",
+        "licht",
+        "(^|[^a-zäöüß])(brust[a-zäöüß-]*|fuss[a-zäöüß-]*)"
+      ],
+      "beschreibung": "Tuchmasken, Augenpads, Schlammmasken, Peeling-Gele und Abziehmasken zum Auftragen auf Gesicht, Augenpartie, Hals und Körper."
+    },
+    {
+      "handle": "gesichtsreinigung-toner",
+      "titel": "Gesichtsreinigung & Toner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansers",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Facial Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Toners",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Makeup Removers"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(ohr[a-zäöüß-]*)"
+      ],
+      "beschreibung": "Gesichtsreiniger, Reinigungsschäume und -öle, Gesichtswasser, Toner und Abschminkpads zum Reinigen der Haut."
+    },
+    {
+      "handle": "hautpflege-sets",
+      "titel": "Hautpflege-Sets & Geschenkboxen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care"
+      ],
+      "titel_muss": [
+        "(sets?|kits?|box(?:en)?|geschenk[a-zäöüß]*)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(lip[a-zäöüß-]*|lippen[a-zäöüß-]*)",
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|spa|aromatherapie[a-zäöüß-]*)",
+        "brauen|pflaster"
+      ],
+      "beschreibung": "Mehrteilige Pflegesets für das Gesicht, Reise-Sets und Geschenkboxen mit Reiniger, Toner, Serum und Creme."
+    },
+    {
+      "handle": "lippenpflege",
+      "titel": "Lippenpflege",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lip Balms & Treatments"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lippenbalsam, Lippenöl, Lip-Plumper und Lippenmasken zur Pflege der Lippen, teils mit Farbe."
+    },
+    {
+      "handle": "sonnenschutz-braeunung",
+      "titel": "Sonnenschutz & Selbstbräuner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Sunscreen",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Tanning"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(make-?up[a-zäöüß-]*|cushion|bb[ -]cream)"
+      ],
+      "beschreibung": "Sonnencremes, Sonnenstifte und Sonnenöle mit Lichtschutzfaktor sowie Selbstbräuner, Bräunungstropfen und Bräunungslotion."
+    },
+    {
+      "handle": "augen-make-up",
+      "titel": "Augen-Make-up",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Eyebrow",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Lash & Brow"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(augenbrau[a-zäöüß-]*|brauen[a-zäöüß-]*|brow)",
+        "wimpern-?(serum|lift|welle|pflege|fluid|kleber|extension|wickl)|wimpernlift|lash ?(serum|lift|extension)|keratin",
+        "^compact"
+      ],
+      "beschreibung": "Lidschatten-Paletten, flüssige Lidschatten, Eyeliner, Augenstifte und Mascara für die Augen.",
+      "unterfilter": [
+        {
+          "handle": "lidschatten-paletten",
+          "titel": "Lidschatten & Paletten",
+          "titel_muss": [
+            "lidschatten|eyeshadow|schatten|palette"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "eyeliner-kajal",
+          "titel": "Eyeliner & Augenstifte",
+          "titel_muss": [
+            "eyeliner|kajal|augenstift|liner"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "mascara-wimperntusche",
+          "titel": "Mascara",
+          "titel_muss": [
+            "mascara|wimperntusche"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "augenbrauen-wimpernpflege",
+      "titel": "Augenbrauen & Wimpernserum",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(augenbrau[a-zäöüß-]*|brauen[a-zäöüß-]*|brow)",
+        "wimpern-?(serum|lift|welle|pflege|fluid|kleber|extension|wickl)|wimpernlift|lash ?(serum|lift|extension)|keratin"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Augenbrauenstifte, -gele und -puder, Brauenstempel und Wimpernseren sowie Wimpern- und Brauen-Lifting-Sets."
+    },
+    {
+      "handle": "kuenstliche-wimpern",
+      "titel": "Künstliche Wimpern",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > False Eyelashes"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "lösung"
+      ],
+      "beschreibung": "Falsche Wimpern zum Aufkleben, magnetische Wimpern und Einzel-Cluster in verschiedenen Längen und Stärken.",
+      "unterfilter": [
+        {
+          "handle": "magnetische-wimpern",
+          "titel": "Magnetische Wimpern",
+          "titel_muss": [
+            "magnet"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "wimpern-cluster-diy",
+          "titel": "Cluster & DIY-Wimpern",
+          "titel_muss": [
+            "cluster|einzel|segment|diy|extension|verlängerung|y-shape|lash"
+          ],
+          "titel_nicht": [
+            "magnet"
+          ]
+        }
+      ]
+    },
+    {
+      "handle": "lippen-make-up",
+      "titel": "Lippenstift & Lipgloss",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Lip Makeup"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lippenstifte, Lipgloss, Lipliner und Lip Stains in vielen Farben und Texturen.",
+      "unterfilter": [
+        {
+          "handle": "lippenstifte",
+          "titel": "Lippenstifte",
+          "titel_muss": [
+            "lippenstift|lipstick|lippenfarbe"
+          ],
+          "titel_nicht": [
+            "lipgloss|gloss|glaze"
+          ]
+        },
+        {
+          "handle": "lipgloss-lipglaze",
+          "titel": "Lipgloss & Lip Glaze",
+          "titel_muss": [
+            "gloss|glaze|lack|plump|lippen-?glanz|lacquer"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "teint-make-up",
+      "titel": "Foundation, Rouge & Puder",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Face Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Makeup Finishing"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "massage"
+      ],
+      "beschreibung": "Foundation, Concealer, BB-Cream, Puder, Rouge, Bronzer, Highlighter und Fixierspray für den Teint.",
+      "unterfilter": [
+        {
+          "handle": "foundation-concealer",
+          "titel": "Foundation & Concealer",
+          "titel_muss": [
+            "foundation|concealer|abdeck|cushion|bb|cc|primer|make-?up"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "rouge-bronzer-highlighter",
+          "titel": "Rouge, Bronzer & Highlighter",
+          "titel_muss": [
+            "rouge|blush|bronz|kontur|contour|highlight"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "puder-fixierspray",
+          "titel": "Puder & Fixierspray",
+          "titel_muss": [
+            "puder|powder|fixier"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "make-up-sets",
+      "titel": "Make-up-Sets & Paletten",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Sets",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup",
+        "Health & Beauty > Personal Care > Cosmetics"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools",
+        "Health & Beauty > Personal Care > Hair Care",
+        "Health & Beauty > Personal Care > Cosmetics > Bath & Body",
+        "Health & Beauty > Personal Care > Cosmetics > Perfume",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tool Cleansers",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Face Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Lip Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Body Makeup",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Temporary Tattoos",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Costume",
+        "Health & Beauty > Personal Care > Cosmetics > Makeup > Makeup Finishing"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(make-?up[a-zäöüß-]*|kosmetik[a-zäöüß-]*|palette[a-zäöüß-]*|beauty|schmink[a-zäöüß-]*|lidschatten|lippenstift|stiftsatz|eyeshadow)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|spielzeug[a-zäöüß-]*|jungen|mädchen|halloween|meerjungfrau[a-zäöüß-]*|schminkbr[a-zäöüß-]*|beauty-tools|mystery)",
+        "kindermake|kosmetikbox|kosmetik-set mit",
+        "(^|[^a-zäöüß])öl(?![a-zäöüß])"
+      ],
+      "beschreibung": "Fertige Make-up-Sets, Geschenkboxen und Multi-Paletten für Augen, Lippen und Wangen, teils mit Pinseln und Täschchen."
+    },
+    {
+      "handle": "nagellack-gel-lack",
+      "titel": "Nagellack & Gel-Lack",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polish"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
+        "pinsel|mischer|farbkarte|farbtabelle|lippenstift|lidschatten|nagelbad"
+      ],
+      "beschreibung": "Nagellack, Gel-Lack und UV-Lack in Farben, Cat-Eye- und Glitzer-Effekt, dazu Top Coat, Base Coat und Nagellackentferner."
+    },
+    {
+      "handle": "nagelsticker-nail-art",
+      "titel": "Nagelsticker & Nail Art",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Art"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+      ],
+      "beschreibung": "Nagelsticker, Strasssteine, Nail-Art-Stifte, Pinsel, Stempelplatten und Zubehör zum Gestalten der Nägel.",
+      "unterfilter": [
+        {
+          "handle": "nagelsticker-folien",
+          "titel": "Nagelsticker & Folien",
+          "titel_muss": [
+            "sticker|aufkleber|folie|patch|decal|wasserzeichen|tattoo"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "nail-art-stifte-pinsel",
+          "titel": "Stifte, Pinsel & Stempel",
+          "titel_muss": [
+            "stift|pen\\b|pinsel|marker|stempel|schablone|spray"
+          ],
+          "titel_nicht": [
+            "sticker"
+          ]
+        },
+        {
+          "handle": "nagelschmuck-strass",
+          "titel": "Strass & Nagelschmuck",
+          "titel_muss": [
+            "strass|diamant|kristall|stein|schmuck|zirkon|glitzer|perle|ornament|niete|pailletten|puder|piercing|dekor|deko"
+          ],
+          "titel_nicht": [
+            "sticker",
+            "pinsel"
+          ]
+        }
+      ]
+    },
+    {
+      "handle": "nagelverlaengerung-gel",
+      "titel": "Nagelverlängerung & Modellage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > False Nails"
+      ],
+      "titel_muss": [
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Verlängerungsgele, Aufbau-Gel, Polygel, Acrylpulver und Dipping-Pulver samt Sets zur Nagelmodellage."
+    },
+    {
+      "handle": "nagellampen-fraeser",
+      "titel": "Nagellampen & Nagelfräser",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Dryers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Drills"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "^handgemachte|gel-nagellack set",
+        "wimpern|gel nagellack$"
+      ],
+      "beschreibung": "UV- und LED-Nagellampen zum Aushärten von Gel-Lack sowie elektrische Nagelfräser und Polierer.",
+      "unterfilter": [
+        {
+          "handle": "nagellampen-uv-led",
+          "titel": "UV-/LED-Nagellampen",
+          "titel_muss": [
+            "lampe|trockner|licht|uv|led|härt|phototherapie"
+          ],
+          "titel_nicht": [
+            "fräs|bohr|polier|sander"
+          ]
+        },
+        {
+          "handle": "nagelfraeser-polierer",
+          "titel": "Nagelfräser & Polierer",
+          "titel_muss": [
+            "fräs|bohr|polier|sander|schleif"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "nagelpflege-werkzeuge",
+      "titel": "Nagelpflege & Maniküre-Zubehör",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Dryers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools > Nail Drills",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > False Nails",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polish",
+        "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Art"
+      ],
+      "titel_muss": [
+        "knip|clipper|trimmer|schneid|feil|polier|buffer|schleif|fräs|set|pflege|haut|öl|stift|kleber|kleb|haft|zange|staub|absaug|entferner|übung|auflage|halter|gerät|werkzeug|lösung|spray|serum|pinsel|pflaster|manik|pedik"
+      ],
+      "titel_nicht": [
+        "erweiter|verlänger|aufbau-?gel|builder|poly ?-?gel|extension|dipping|acryl-?(puder|pulver)|modellier|modellage|fastextend",
+        "epoxy|piercing|hautentfernung|nagelset|gräfin"
+      ],
+      "beschreibung": "Nagelknipser, Nagelfeilen, Maniküre-Sets, Nagelhautpflege, Nagelpflege-Stifte und Nagelkleber.",
+      "unterfilter": [
+        {
+          "handle": "nagelknipser-trimmer",
+          "titel": "Nagelknipser",
+          "titel_muss": [
+            "knip|clipper|trimmer|schneid"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "manikuere-sets",
+          "titel": "Maniküre- & Pediküre-Sets",
+          "titel_muss": [
+            "set"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "nagelpflege-stifte-oele",
+          "titel": "Nagelpflege-Stifte & Öle",
+          "titel_muss": [
+            "pflege|haut|öl|stift"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "glaetteisen-locken-foehn",
+      "titel": "Glätteisen, Lockenstäbe & Föhne",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tools > Combs & Brushes"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "aufbewahr|tasche|beutel|etui|(^|[^a-zäöüß])box|halter|ständer|gestell|ablage|organizer|koffer|wandhalterung|haarcreme|haarschere|schleuder|entferner|strassierer|friseur ohne|haarwurzel|perms$|dauerwelle|aufsatz für|^(universal |wellen locken )?diffus|föhn-düse",
+        "(^|[^a-zäöüß])(bart)",
+        "(^|[^a-zäöüß])(haarkamm|massagekamm)"
+      ],
+      "beschreibung": "Haarglätter und Glättkämme, Lockenstäbe, Curler und Lockenwickler, Haartrockner und Warmluftbürsten sowie Multistyler für zuhause und unterwegs.",
+      "unterfilter": [
+        {
+          "handle": "glaetteisen-glaettkaemme",
+          "titel": "Glätteisen & Glättkämme",
+          "titel_muss": [
+            "glätt|glaett|straight|klammer|heizkamm|stylingklemme"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "lockenstaebe-curler",
+          "titel": "Lockenstäbe & Curler",
+          "titel_muss": [
+            "locke|curl|wellen|welle|kräusel|kräusler|wickler|egg|eirolle|kurzlocken|wave"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "haartrockner-warmluft",
+          "titel": "Haartrockner & Warmluftbürsten",
+          "titel_muss": [
+            "trockner|föhn|fön(?![a-zäöüß])|warmluft|heissluft|heißluft"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "haarpflege-oele-shampoo",
+      "titel": "Haarpflege, Haaröl & Haarfarbe",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Hair Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tools",
+        "Health & Beauty > Personal Care > Hair Care > Hair Styling Tool Accessories",
+        "Health & Beauty > Personal Care > Hair Care > Hair Shears"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(haar[a-zäöüß-]*|hair|shampoo|kopfhaut[a-zäöüß-]*|perücken[a-zäöüß-]*|rosmarin[a-zäöüß-]*)"
+      ],
+      "titel_nicht": [
+        "flasche|sprüher|sprühgerät|sprühfeucht|dampfer|duscher|tasche|verlänger|stecker|kappe|haube|wachsmaschine|aerosol|temperatur|applicator|ätherisch"
+      ],
+      "beschreibung": "Haaröle, Haarseren, Shampoo, Haarmasken und Kopfhautpflege sowie Haarfarbe, Farbspray und Haaransatz-Puder."
+    },
+    {
+      "handle": "haarschneider-trimmer",
+      "titel": "Haarschneider & Trimmer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers",
+        "Health & Beauty > Personal Care > Hair Care > Hair Shears"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(bart)",
+        "organizer|ladestation|haustier"
+      ],
+      "beschreibung": "Elektrische Haarschneider, Nasenhaartrimmer, Augenbrauentrimmer und Friseurscheren. Bartschneider stehen unter Bart & Rasur."
+    },
+    {
+      "handle": "haarentfernung-epilierer",
+      "titel": "Haarentfernung & Epilierer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Shaving & Grooming > Hair Removal"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "rasier",
+        "shaver"
+      ],
+      "beschreibung": "Epilierer, Haarentfernungsgeräte, Wachswärmer sowie Enthaarungscreme und -spray für Körper und Gesicht."
+    },
+    {
+      "handle": "led-masken-lichtgeraete",
+      "titel": "LED-Masken & Lichtgeräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Skin Care Masks & Peels"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Facial Saunas",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(led|photon[a-zäöüß-]*|licht[a-zäöüß-]*|rotlicht|infrarot|leuchtmaske|blaulicht|farblicht)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|mesotherapie)"
+      ],
+      "beschreibung": "Gesichtsmasken und Handgeräte mit LED-, Rotlicht- oder Photonen-Licht für zuhause."
+    },
+    {
+      "handle": "gesichtsreinigungsgeraete",
+      "titel": "Gesichtsreinigungsgeräte & -bürsten",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "haar"
+      ],
+      "beschreibung": "Elektrische Gesichtsreinigungsbürsten aus Silikon und Ultraschall-Reiniger mit Vibration und Wärme."
+    },
+    {
+      "handle": "porenreiniger-mitesser",
+      "titel": "Porenreiniger & Mitesser-Entferner",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Elektrische Porenreiniger mit Vakuum oder Ultraschall, Mitesser-Sauger und Mitesser-Entferner-Sets aus Edelstahl."
+    },
+    {
+      "handle": "gesichtsdampfer-nanospray",
+      "titel": "Gesichtsdampfer & Nano-Sprayer",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "dampf|nano|ionen|zerstäub|atomi|sprüh|spray|nebel|mist|befeuchter"
+      ],
+      "titel_nicht": [
+        "sprühpistole|compressor|mikrostrom|ems|lifting|(^|[^a-zäöüß])rf|oxygen|sauerstoff|injektor|infusion"
+      ],
+      "beschreibung": "Gesichtsdampfer mit Nano-Ionen und Heissdampf sowie Nano-Sprühgeräte für feinen Wassernebel."
+    },
+    {
+      "handle": "gua-sha-gesichtsroller",
+      "titel": "Gua Sha & Gesichtsroller",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Gua-Sha-Steine, Jade- und Rosenquarz-Roller und Kühlroller für die Gesichtsmassage sowie Microneedling-Roller."
+    },
+    {
+      "handle": "mikrostrom-lifting-geraete",
+      "titel": "Mikrostrom-, EMS- & Ultraschallgeräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Extractors",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Cleansing",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Facial Saunas",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(mikrostrom[a-zäöüß-]*|mikro-strom|microcurrent|ems|rf|radiofrequenz|hochfrequenz|lifting|straffer|v-face|v-shape|ultraschall[a-zäöüß-]*|elektrotherapie|mikrodermabrasion|microneedling|oxygen|sauerstoff[a-zäöüß-]*|injektor|infusion|mesotherapie)"
+      ],
+      "titel_nicht": [
+        "zerstäub|atomi|spray|sprüh|nebel|dampf"
+      ],
+      "beschreibung": "Handgeräte für die Gesichts- und Halspflege mit Mikrostrom, EMS, Radiofrequenz, Hochfrequenz oder Ultraschall sowie Sauerstoff-Injektoren und Microneedling-Geräte."
+    },
+    {
+      "handle": "koerperpflege-bad",
+      "titel": "Körperpflege & Bad",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Cosmetics > Bath & Body",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Body Oil",
+        "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lotion & Moisturizer"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(körper[a-zäöüß-]*|body|dusch[a-zäöüß-]*|shower|bad[a-zäöüß-]*|seife[a-zäöüß-]*|öl(?![a-zäöüß])|rückenbürste|reinigungsbürste)"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(gesicht[a-zäöüß-]*|augen[a-zäöüß-]*|lip[a-zäöüß-]*|ölregulierung)"
+      ],
+      "beschreibung": "Seife, Duschgel, Badesalz, Badebomben, Körperlotion, Körpercreme und Körperöl sowie Bürsten für Bad und Dusche."
+    },
+    {
+      "handle": "fusspflege",
+      "titel": "Fusspflege",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Foot Care",
+        "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Foot Files"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Hornhautentferner, Fussfeilen, Fussbäder, Fersenpolster und Einlagen."
+    },
+    {
+      "handle": "nacken-ruecken-massagegeraete",
+      "titel": "Nacken-, Schulter- & Rückenmassage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(nacken[a-zäöüß-]*|schulter[a-zäöüß-]*|shoulder|rücken[a-zäöüß-]*|lendenwirbel[a-zäöüß-]*|halswirbel[a-zäöüß-]*|hals[a-zäöüß-]*massage[a-zäöüß-]*|halsmassage[a-zäöüß-]*)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)",
+        "faszien|akupressur|meridian"
+      ],
+      "beschreibung": "Elektrische Massagegeräte und Massageschals für Nacken, Schultern und Rücken, teils mit Wärmefunktion."
+    },
+    {
+      "handle": "augenmassagegeraete",
+      "titel": "Augenmassagegeräte",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage"
+      ],
+      "beschreibung": "Elektrische Augenmassagegeräte mit Vibration, Wärme, Farblicht oder Luftdruck."
+    },
+    {
+      "handle": "faszien-massagepistolen",
+      "titel": "Massagepistolen, Faszienbälle & Roller",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(faszien[a-zäöüß-]*|massagepistole|massage gun|massageball|massageroller|massage-roller|massage-stick|massagerad|yoga-massage[a-zäöüß-]*|erdnuss[a-zäöüß-]*|peanut|akupressur[a-zäöüß-]*|meridian[a-zäöüß-]*|fascia)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "beschreibung": "Massagepistolen, Faszienbälle, Massageroller und Akupressur-Sets für Körper, Beine und Füsse."
+    },
+    {
+      "handle": "massagekissen-matten",
+      "titel": "Massagekissen & Massagematten",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "kissen|matte|massagematte|sitzauflage"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye)"
+      ],
+      "beschreibung": "Massagekissen für Nacken, Rücken und Sitz sowie Akupressur-Matten und Fussmassage-Matten."
+    },
+    {
+      "handle": "gesichts-kopf-massagegeraete",
+      "titel": "Gesichts-, Kopf- & Körpermassage",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Massage & Relaxation"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Personal Care > Massage & Relaxation > Massage Oil"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(gesicht[a-zäöüß-]*|kopf[a-zäöüß-]*|fuss[a-zäöüß-]*|hand-?massage[a-zäöüß-]*|waden[a-zäöüß-]*|bauch[a-zäöüß-]*|taille[a-zäöüß-]*|körper[a-zäöüß-]*|bian[a-zäöüß-]*|gua sha|schröpf[a-zäöüß-]*|cupping)"
+      ],
+      "titel_nicht": [
+        "kissen|matte|massagematte|sitzauflage",
+        "(^|[^a-zäöüß])(aug[a-zäöüß-]*|eye|nacken[a-zäöüß-]*|schulter[a-zäöüß-]*|rücken[a-zäöüß-]*|lendenwirbel[a-zäöüß-]*)",
+        "faszien|akupressur|meridian"
+      ],
+      "beschreibung": "Massagegeräte und Massagebürsten für Gesicht, Hals, Kopfhaut, Füsse, Hände, Waden, Bauch und Körper."
+    },
+    {
+      "handle": "heizkissen-waermegurte",
+      "titel": "Heizkissen & Wärmegürtel",
+      "g_prefix": [
+        "Health & Beauty > Health Care > First Aid > Hot & Cold Therapies"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "handwärmer|handwaermer|stichheiler|handschuh"
+      ],
+      "beschreibung": "Elektrische Heizkissen, Wärmegürtel, Wärmflaschen und Wärme-Auflagen für Rücken, Bauch, Nacken und Schultern."
+    },
+    {
+      "handle": "haltungsgurte-ruecken",
+      "titel": "Haltungsgurte & Rückenstützen",
+      "g_prefix": [
+        "Health & Beauty > Health Care > Supports & Braces"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(haltung[a-zäöüß-]*|rücken[a-zäöüß-]*|lenden[a-zäöüß-]*|korsett|korrektur[a-zäöüß-]*|schlüsselbein|wirbel[a-zäöüß-]*|traktion[a-zäöüß-]*|nacken[a-zäöüß-]*|kopfstütze)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Haltungsgurte, Rückenstützgurte und Lendenstützen."
+    },
+    {
+      "handle": "lendenstuetzen-rueckenkissen",
+      "titel": "Lendenkissen & Lordosenstützen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Back Care"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lendenkissen, Lordosenstützen und Rückenpolster für Autositz, Bürostuhl und Sofa, teils mit Nackenstütze."
+    },
+    {
+      "handle": "bandagen-gelenkstuetzen",
+      "titel": "Bandagen & Gelenkstützen",
+      "g_prefix": [
+        "Health & Beauty > Health Care > Supports & Braces"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(knie[a-zäöüß-]*|knöchel[a-zäöüß-]*|handgelenk[a-zäöüß-]*|ellbogen[a-zäöüß-]*|ellenbogen[a-zäöüß-]*|bandage[a-zäöüß-]*|patella[a-zäöüß-]*|fussgelenk[a-zäöüß-]*|schulterstütze|hüft[a-zäöüß-]*|daumen[a-zäöüß-]*|kompression[a-zäöüß-]*|orthese|wrist|stütze|schoner)"
+      ],
+      "titel_nicht": [],
+      "beschreibung": "Bandagen und Stützen für Knie, Knöchel, Handgelenk, Ellbogen und Schulter."
+    },
+    {
+      "handle": "schlafmasken-nackenkissen",
+      "titel": "Schlafmasken, Reisekissen & Schlafhilfen",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Sleeping Aids"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [
+        "baby|babys",
+        "camping"
+      ],
+      "beschreibung": "Schlafmasken, aufblasbare und U-förmige Reisekissen, Nackenstützen, Weissrauschen-Geräte und Anti-Schnarch-Helfer.",
+      "unterfilter": [
+        {
+          "handle": "schlafmasken-augenmasken",
+          "titel": "Schlafmasken",
+          "titel_muss": [
+            "maske|augen"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "reisekissen",
+          "titel": "Reisekissen & Nackenkissen",
+          "titel_muss": [
+            "kissen|nackenstütze"
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "handle": "brillen-brillenzubehoer",
+      "titel": "Brillen & Brillenzubehör",
+      "g_prefix": [
+        "Health & Beauty > Personal Care > Vision Care"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Lesebrillen und Blaulichtfilter-Brillen sowie Brillenetuis, Brillenhalter, Reinigungstücher und Reinigungsspray."
+    },
+    {
+      "handle": "gesundheit-alltagshilfen",
+      "titel": "Alltagshilfen & Gesundheitszubehör",
+      "g_prefix": [
+        "Health & Beauty > Health Care",
+        "Health & Beauty > Personal Care > Ear Care"
+      ],
+      "g_nicht": [
+        "Health & Beauty > Health Care > Biometric Monitor",
+        "Health & Beauty > Health Care > Supports & Braces",
+        "Health & Beauty > Health Care > First Aid > Hot & Cold Therapies"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "beschreibung": "Pillendosen, Ohrenreiniger, Notruf-Armbänder, Gehhilfen, Muskelstimulatoren, Lichttherapie-Lampen und Erste-Hilfe-Zubehör."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Gesicht & Haut",
+      "handle": "beauty-gesicht-haut-gruppe",
+      "kinder": [
+        "gesichtscreme-serum",
+        "gesichtsmasken-peelings",
+        "gesichtsreinigung-toner",
+        "hautpflege-sets",
+        "lippenpflege",
+        "sonnenschutz-braeunung"
+      ]
+    },
+    {
+      "titel": "Make-up & Wimpern",
+      "handle": "beauty-make-up-gruppe",
+      "kinder": [
+        "augen-make-up",
+        "augenbrauen-wimpernpflege",
+        "kuenstliche-wimpern",
+        "lippen-make-up",
+        "teint-make-up",
+        "make-up-sets",
+        "make-up-pinsel-tools",
+        "schminkspiegel"
+      ]
+    },
+    {
+      "titel": "Nägel & Maniküre",
+      "handle": "beauty-naegel-gruppe",
+      "kinder": [
+        "kunstnaegel-press-on",
+        "nagellack-gel-lack",
+        "nagelsticker-nail-art",
+        "nagelverlaengerung-gel",
+        "nagellampen-fraeser",
+        "nagelpflege-werkzeuge"
+      ]
+    },
+    {
+      "titel": "Haare, Rasur & Haarentfernung",
+      "handle": "beauty-haare-rasur-gruppe",
+      "kinder": [
+        "glaetteisen-locken-foehn",
+        "haarbuersten-kaemme",
+        "haarpflege-oele-shampoo",
+        "haarschneider-trimmer",
+        "sub-bart-rasur",
+        "haarentfernung-epilierer"
+      ]
+    },
+    {
+      "titel": "Beauty-Geräte fürs Gesicht",
+      "handle": "beauty-geraete-gesicht-gruppe",
+      "kinder": [
+        "led-masken-lichtgeraete",
+        "gesichtsreinigungsgeraete",
+        "porenreiniger-mitesser",
+        "gesichtsdampfer-nanospray",
+        "gua-sha-gesichtsroller",
+        "mikrostrom-lifting-geraete"
+      ]
+    },
+    {
+      "titel": "Körper, Mund & Düfte",
+      "handle": "beauty-koerper-duefte-gruppe",
+      "kinder": [
+        "koerperpflege-bad",
+        "fusspflege",
+        "mundpflege",
+        "parfum-duefte"
+      ]
+    },
+    {
+      "titel": "Massage & Entspannung",
+      "handle": "beauty-massage-gruppe",
+      "kinder": [
+        "nacken-ruecken-massagegeraete",
+        "augenmassagegeraete",
+        "faszien-massagepistolen",
+        "massagekissen-matten",
+        "gesichts-kopf-massagegeraete",
+        "schlafmasken-nackenkissen"
+      ]
+    },
+    {
+      "titel": "Rücken, Gelenke & Alltagshilfen",
+      "handle": "beauty-gesundheit-gruppe",
+      "kinder": [
+        "haltungsgurte-ruecken",
+        "bandagen-gelenkstuetzen",
+        "lendenstuetzen-rueckenkissen",
+        "heizkissen-waermegurte",
+        "gesundheit-alltagshilfen",
+        "brillen-brillenzubehoer"
+      ]
+    }
+  ],
+  "ausserhalb": [
+    {
+      "text": "Bereits durch VORHANDENE Kategorien abgedeckt, die im Baum als Kinder eingeordnet sind (Zahlen = aktive Produkte im Universum): Kunstnägel & Press-on 590, Make-up Pinsel & Tools 362, Mundpflege & Zähne 65, Haarbürsten & Kämme 50, Bart & Rasur 48, Parfum & Düfte 33, Schminkspiegel 33 (Teilmenge von Pinsel & Tools). Das Messwerkzeug zählt nur die neuen Kategorien (2 852 von 4 300 = 66,3 %); mit den vorhandenen Kindern sind es 3 993 von 4 300 = 92,9 % (eigene Auswertung /tmp/taxo_b/beauty/abdeckung.mjs, gleiche Regelfunktion; von der Gegenlesung am 27.10. mit eigenem Skript nachgerechnet: 307 offen).",
+      "beispiele": [
+        "Press-on-Nails «French» · zum Aufkleben",
+        "Rosenquarz Gua Sha Set",
+        "Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle Box",
+        "Eau de Parfum für Damen, fruchtig-floral"
+      ]
+    },
+    {
+      "text": "19 Produkte der Google-Kategorie «Skin Care Masks & Peels», die keine Gesichtspflege-Masken sind: Kostüm- und Horror-Masken, Sonnen- und Schutzmasken, beheizte USB-Augenmasken, Kühl-/Wärmemasken, Kinn-Masken, Brust-Pads (Körper) und eine Fussmaske (Fuss). Kein Heim in dieser Datei (Kostüm gehört zu Kostüme & Party). Masken dieser Google-Kategorie, deren Titel LED/Licht nennt (2), liegen in LED-Masken & Lichtgeräte.",
+      "beispiele": [
+        "Viking Ugly Latex Maske",
+        "Realistische Tiermaske",
+        "Beheizte USB-Augenmaske mit Dampffunktion",
+        "Leichte, atmungsaktive Sonnenmaske",
+        "Bruststraffende & aufpolsternde Masken-Pads (6 Stk.)",
+        "Peeling-Fussmaske für zarte Füsse"
+      ]
+    },
+    {
+      "text": "18 Produkte Bodypainting, temporäre Tattoos, Bühnen- und Kunstblut-Make-up: Kostümbereich, keine Alltags-Kosmetik.",
+      "beispiele": [
+        "15 Farben Bodypainting-Palette",
+        "Kunstblut-Spray",
+        "Glitzer-Tattoo-Set"
+      ]
+    },
+    {
+      "text": "13 Make-up-Pinselreiniger (Google «Cosmetic Tool Cleansers»): unter der Mindestgrösse 15; sie bleiben in der Gesamtsuche.",
+      "beispiele": [
+        "Elektrischer Make-up Pinselreiniger",
+        "UV-Reinigungsbox für Make-up-Pinsel"
+      ]
+    },
+    {
+      "text": "21 Massagegeräte, deren Titel keine Körperstelle nennt («Massagegerät», «Mini-Massager»), und 4 Massageöle: nie raten, welche Stelle gemeint ist; Massageöl unter 15.",
+      "beispiele": [
+        "Minimassager",
+        "Intelligentes Massagegerät für zu Hause",
+        "Aromatherapie Massageöl-Set"
+      ]
+    },
+    {
+      "text": "16 Gesichts-Beauty-Geräte ohne erkennbare Technik im Titel («Beauty-Gerät», «Hautglätter», «Schönheitsinstrument») und ohne LED/Mikrostrom/Dampf-Wort: nicht belegt, daher keine Kategorie.",
+      "beispiele": [
+        "Hautglätter",
+        "Elektronisches Beauty-Gerät für zuhause",
+        "Feuchtigkeitsspendendes Schönheitsinstrument"
+      ]
+    },
+    {
+      "text": "44 Haarstyling-Zubehör und Haarpflege-Reste: Aufbewahrungstaschen, Halter, Aufsätze (auch für Dyson), Düsen und Diffusoren, Leerflaschen und Sprühgeräte, Satin-Schlafhauben (4); dazu Haarteile und Stylingwerkzeuge ohne Art im Titel. Zubehör gehört nicht in die Gerätekategorie (Regel 3).",
+      "beispiele": [
+        "Föhn-Aufbewahrungstasche",
+        "Wandhalterung für Lockenstab & Föhn",
+        "Seiden-Satin-Haube für Locken & Wellen",
+        "Kontinuierliche Sprühflasche für Haarpflege"
+      ]
+    },
+    {
+      "text": "64 Produkte mit der Google-Kategorie «Cosmetics» ganz ohne Unterkategorie: Mischung aus Gelenk- und Beinpflege, Brust-Pads, Kinder-Make-up, Make-up-Resten ohne Produktart, Geräten und Boxen; die Titel belegen die Art oft nicht (nie raten).",
+      "beispiele": [
+        "Gelenkpflege Salbe",
+        "Kindermake-up-Set mit grüner Tasche",
+        "Tummy Machine",
+        "Mystery Beauty Boxen (12er-Pack)"
+      ]
+    },
+    {
+      "text": "39 Hautpflege-Reste: Pflaster und Patches, Pflege einzelner Körperteile (Beine, Gelenke, Hals), Aromaöle, Sprays/Geräte unter «Lotion», Tabletten, SPF-Make-up (3), kurze Titel ohne Produktart.",
+      "beispiele": [
+        "Laniska Beinpflege-Pflaster (4 Stk.)",
+        "Kräuter-Feuchtigkeitspflege für Gelenke",
+        "Cushion Foundation LSF 50+ (inkl. 2 Nachfüllungen)",
+        "Hautflecken-Entferner"
+      ]
+    },
+    {
+      "text": "13 Make-up-Reste und 16 Nagel-Reste: Kinder-Make-up-Sets (gehören zu Kinder-Schminksets, Spielzeug), Titel ohne Produktart («Natürliche Hautfarbe»), Farbkarten, Pinselsets, Mischer und kurze Titel, die nach Press-on-Nägeln aussehen, aber nicht belegt sind.",
+      "beispiele": [
+        "Make-up-Sets für Jungen",
+        "Naturliche Hautbasis",
+        "Nagellack-Farbkarte mit 120 Farben",
+        "Kurznagel-Art"
+      ]
+    },
+    {
+      "text": "11 Gesundheits-Reste: USB-Handwärmer (vorhandene Collection handwaermer), Heizhandschuhe, Fusshebe-Orthesen, Wärmegurt in Stützen, Stichheiler.",
+      "beispiele": [
+        "USB-Handwärmer \"Warm Treasure\"",
+        "Fussheberorthese mit Airbag",
+        "Thermisches Stichheiler-Gerät"
+      ]
+    },
+    {
+      "text": "29 sonstige Einzelprodukte, die zu keiner Art passen (Rasierer «Lady Shaver», Pinzetten, Menstruationscup, Wattestäbchen, Deodorant, Auto-Duftclip unter Parfum).",
+      "beispiele": [
+        "Menstruationscup für Frauen",
+        "100 Stück Wattestäbchen im Karton",
+        "Zyvarn Invisible Deodorant Stick 50g"
+      ]
+    },
+    {
+      "text": "Bewusst NICHT im Universum (Google Health & Beauty, aber anderer Bereich): Schmuck- und Uhrenpflege 139 (Schmuckkästchen 129 liegen in der vorhandenen Kategorie Schmuckaufbewahrung, Uhrenwerkzeug 9), Fitness-Tracker 32, Körperwaagen 9 und andere Mess-Geräte 6 (Elektronik/Wearables bzw. Küchenwaagen).",
+      "beispiele": [
+        "Schmuckkästchen aus PU-Leder mit Doppelfunktion",
+        "Fitness-Tracker «ActiveBand» · Herzfrequenz & Schritte",
+        "Körperanalysewaage mit Bluetooth",
+        "Uhrenboden-Öffner"
+      ]
+    },
+    {
+      "text": "Perücken (7, Google Apparel > Hair Accessories > Wigs) liegen ausserhalb des Universums und unter 15: keine Kategorie, sie bleiben über die Suche erreichbar; Haarschmuck gehört zu Mode (Haarschmuck).",
+      "beispiele": [
+        "HD-Lace Haarperücke aus echtem Haar",
+        "Bob Perücke aus echtem Haar, halbgenäht, kurz, glatt"
+      ]
+    },
+    {
+      "text": "Aroma-Diffuser (kat-aroma) und Luftbefeuchter sind in wohnen.json (Gruppe Raumluft & Klima) neu gebaut; hier nicht doppelt. Kompressionsstrümpfe und -socken gibt es im Katalog nicht (Treffer nur Kompressions-Beinstulpen 1 und Reise-Kompressionsbeutel); 3 Haltungskorrektoren in Sport (Google Exercise & Fitness) bleiben dort.",
+      "beispiele": [
+        "Magnetischer Haltungskorrektor für Rücken",
+        "Kompressions-Beinstulpen (6 Paar)"
+      ]
+    },
+    {
+      "text": "19 Health-&-Beauty-Produkte mit Sperr-Tags (z. B. fortura, adult-nicht-bewerben) schliesst das Werkzeug automatisch aus.",
+      "beispiele": []
+    },
+    {
+      "text": "4 Produkte, die eine zu weite Regel in die falsche Kategorie gelegt hatte (dazu die Brust-Pads und die Fussmaske im Eintrag zu den Masken) und die jetzt bewusst in keiner Kategorie stehen: eine Lampe für Wimpernkleber und ein Gel-Nagellack mit falscher Google-Kategorie («Nail Dryers») unter Nagellampen, ein Massagegerät ohne Körperstelle («Handliches» wurde als «Hand» gelesen), ein Outdoor-Campingkissen (liegt in sport.json: schlafsaecke-isomatten-luftbetten). Die Brust-Pads und die Fussmaske stehen im Eintrag zu den Masken.",
+      "beispiele": [
+        "UV-Lampe für Wimpernkleber",
+        "Farbvielfalt Smoothie Phototherapie Gel Nagellack",
+        "Handliches Massagegerät – Vibrations-Massage mit mehreren Stufen",
+        "Outdoor Reise-Campingkissen"
+      ]
+    }
+  ],
+  "hinweise": [
+    "ABDECKUNG: 2 852 von 4 300 Produkten des Universums liegen in den 41 neuen Kategorien (Werkzeug-Zahl 66,3 %); mit den 7 vorhandenen Kindern (Kunstnägel, Pinsel & Tools, Mundpflege, Haarbürsten, Bart & Rasur, Parfum, Schminkspiegel) sind es 3 993 = 92,9 %. Rest 307 siehe «ausserhalb».",
+    "ERSETZT (Alt-Sammelbecken, Fremdkörper gemessen): hautpflege-skincare (Tag beauty+hautpflege, 634 aktiv: 29 Sturmhauben, 28 Massagegeräte, 22 Parfums, 21 Make-up, 12 Stützen), ebenso hautpflege, hautpflege-tools, beauty-hautpflege, premium-beauty, beauty-selfcare (alle Titel-/Typ-Regeln) -> gesichtscreme-serum, gesichtsmasken-peelings, gesichtsreinigung-toner, hautpflege-sets, lippenpflege, sonnenschutz-braeunung, koerperpflege-bad.",
+    "ERSETZT: make-up (sort-make-up, 826 aktiv): 27 Fremdkörper = 3,3 % (15 Organizer, 12 Kulturbeutel) und Nagellack-Treffer; die 558 passenden Produkte gehen in augen-make-up, lippen-make-up, teint-make-up, make-up-sets; die Titel-Collections beauty-makeup, make-up-kosmetik gehören dazu. Menüpunkt «Make-up & Kosmetik» sollte auf die Gruppe beauty-make-up-gruppe zeigen.",
+    "ERSETZT: wimpern-lashes (163 aktiv: enthält Mascara, Wimpernzangen, einen Dessous-Body, ein Kissen, Spitzenband) -> kuenstliche-wimpern (96) und augenbrauen-wimpernpflege (59); Wimpernzangen und Wimpernkleber bleiben in make-up-pinsel-tools (Google Makeup Tools).",
+    "ERSETZT: haarstyling-geraete (sort-haarstyling-geraete, 396; Titel-Regel verpasst Glättkämme, Curler, Haarkräusler, Kurzlocken-Geräte) -> glaetteisen-locken-foehn (530, +134) mit den Chips Glätteisen & Glättkämme, Lockenstäbe & Curler, Haartrockner & Warmluftbürsten. Alt-Collections glaetteisen, haarstyling-tools, beauty-haar (285 aktiv, 8 Haarschmuck, 2 Kulturbeutel) entfallen.",
+    "ERSETZT: naegel-manikuere (Tag nagel, 1 013 aktiv, sauber, aber ein Sammelbecken) -> Gruppe beauty-naegel-gruppe mit kunstnaegel-press-on, nagellack-gel-lack, nagelsticker-nail-art, nagelverlaengerung-gel, nagellampen-fraeser, nagelpflege-werkzeuge; Alt-Titel-Collections naegel, nagelstudio, beauty-naegel, nagel-geraete, nagelpflege entfallen. kunstnaegel-press-on enthält 2 Verlängerungs-Produkte (Google False Nails fehlbelegt: «Acrylpulver & Flüssigkeit für French Nails», «Glitzernde Resin-Acryl-Nieten für Nägel»).",
+    "ERSETZT: beauty-geraete (Titel-Regel), gesichtspflege-geraete (58), ipl-haarentfernung, sub-massage (Massage|Faszien, 228 aktiv: enthält Kissen, Sportgeräte), wellness-massage, wellness-gesundheit, waerme-komfort (enthält Heizjacken, Handwärmer), zahnpflege (Doppelung zu mundpflege), haarpflege, haarfarbe-coloration, herren-grooming: die neuen Kategorien in Beauty-Geräte, Massage & Entspannung und Haare, Rasur & Haarentfernung decken sie sauberer ab.",
+    "GRUPPENZAHL: 8 statt 3 bis 6, weil der Katalog acht klar getrennte Käuferabsichten hergibt (andere Bereichsdateien haben bis zu 13 Gruppen); jede Gruppe hat 4 bis 8 Kinder. Gruppen: Gesicht & Haut 6, Make-up & Wimpern 8, Nägel & Maniküre 6, Haare/Rasur/Haarentfernung 6, Beauty-Geräte fürs Gesicht 6, Körper/Mund/Düfte 4, Massage & Entspannung 6, Rücken/Gelenke/Alltagshilfen 6.",
+    "BEWUSSTER VERWEIS: schminkspiegel (35) steht mit 33 Produkten auch in make-up-pinsel-tools (Google Makeup Tools > Face Mirrors); der vorhandene Menüpunkt bleibt als Direktlink. Drei Produkte (zwei Bart-und-Haar-Kämme, ein Bartpflege-Set mit Bürste) stehen in haarbuersten-kaemme und sub-bart-rasur, ein Brauen-Rasierer in sub-bart-rasur und augenbrauen-wimpernpflege, ein Haarschneider («Bart»-Titel) in sub-bart-rasur und haarschneider-trimmer; je ein Meridian-Massagekamm (faszien-massagepistolen und haarbuersten-kaemme) und ein Rasierpinsel (make-up-pinsel-tools und sub-bart-rasur) liegen in verschiedenen Gruppen: Folge der vorhandenen Titel-Regeln, nicht lösbar ohne Eingriff in diese.",
+    "GRENZFALL: sonnenschutz-braeunung hat genau 15 Produkte (11 Sonnenschutz + 4 Bräunung; ohne 3 SPF-Make-ups mit «Make-up/Cushion/BB Cream» im Titel). 3 der 11 sind getönte Produkte, die «Sonnenschutz», «Sonnencreme» oder «Sonnen-BB» im Titel tragen und deshalb drin bleiben. Fällt ein Produkt weg, liegt die Kategorie unter min: dann in koerperpflege-bad aufnehmen.",
+    "UNTERFILTER: 25 Chips in 10 Kategorien (jeder >= 15); die Chips einer Kategorie dürfen sich überlappen (2-in-1-Geräte). Chips mit weniger als 15 Treffern (Augencreme 15 an der Grenze, Cat-Eye-Lack 10, Peelings 9, Lipliner 13) wurden nicht angelegt.",
+    "AUTO-ÜBERLAPP: 11 Lendenstützen und Nackenkissen sind Auto-Zubehör (Google Back Care, Titel «Auto»): bleiben hier, können im Auto-Bereich zusätzlich verlinkt werden. Zwei aufblasbare Outdoor-Kissen stehen unter Reisekissen (Google Travel Pillows); das «Campingkissen» liegt in sport.json und ist hier per titel_nicht «camping» ausgeschlossen.",
+    "KEINE WIRKVERSPRECHEN: Kategorienamen und Beschreibungen nennen nur die Produktart; Produkttitel mit Wirkaussagen («gegen Augenringe», «Hautverjüngung», «Haltungskorrektur») sind Sache der Titel-Wahrheit-Runde und werden hier nicht verändert.",
+    "MESSLÜCKE: Titel ohne Produktart und kurze Titel («Hautrejuvenation», «Gesichtsstraffung», «Kameliennagel») bleiben bewusst ausserhalb; die Kategorie-Regeln sind mit Google-Präfix UND Titel-Wort gebaut, damit falsch einsortierte Google-Kategorien (Massagegerät unter Face Makeup, Pflaster unter Skin Care) herausfallen.",
+    "PRÜFER-VERMERK Fremdkörper-Grenzwerte: beim Bau gefundene und behobene Fremdkörper stehen in /tmp/taxo_b/beauty/fremd.txt (26 Zeilen, jede mit Grund); Rest-Regeln mit hoher Fehlerneigung: nagelpflege-werkzeuge (positive Wortliste), haarpflege-oele-shampoo (positive Wortliste), gesichtscreme-serum (Ausschlussliste), kuenstliche-wimpern (Google-Fehlbelegungen).",
+    "GEGENLESUNG 27.10.2026 (unabhängig, alle 2 856 Titel der neuen Kategorien einzeln gelesen, dazu 237 Titel der vorhandenen Kinder und 952 Titel von Kunstnägel/Pinsel & Tools mechanisch geprüft; Verdachtswort-Grep über alle 2 856 Mitglieder, 3 Stichwort-Greps je Kategorie gegen den ganzen Katalog): 5 Fremdkörper in den neuen Kategorien (0,18 %), keine Heilsversprechen, keine «Sie» in Namen oder Beschreibungen. Geändert: Regeln (gesichtsmasken-peelings, nagellampen-fraeser, gesichts-kopf-massagegeraete, schlafmasken-nackenkissen, led-masken-lichtgeraete), drei Chips (puder-fixierspray, nagelschmuck-strass, lipgloss-lipglaze), drei Titel (lendenstuetzen-rueckenkissen, augenbrauen-wimpernpflege, gesichtsreinigungsgeraete) und zehn Beschreibungen, davon fünf mit Aussagen, die die Mitglieder nicht hergeben (Bart-Trimmer unter Haarschneider, Fussmasken unter Fusspflege, Massagekissen unter Nacken-Massage, «IPL-Geräte» bei nur einem Photon-Gerät, «meist aus Memory-Schaum» bei 8 von 28). Die 5 Fremdkörper: Brust-Pads und eine Fussmaske unter Gesichtsmasken, ein Gel-Nagellack und eine Wimpernkleber-Lampe unter Nagellampen, ein Massagegerät ohne Körperstelle unter Hand-Massage (Teilwort «Handliches»); dazu ein Campingkissen, das auch in sport.json liegt. Nach den Korrekturen 0 von 2 852.",
+    "VORHANDENES KIND haarbuersten-kaemme (54 aktive Produkte) ist NICHT sauber: mindestens 5 Fremdkörper = 9 % («Kostüm Plüsch Wildschwein» (Fortura), «Wildschwein-Ei-Hundezahnbürste Molar Stick», «Haarbürsten-Tasche», «Haarserum mit Applikatorbürste 100ml», «Kopfhaut Massageöl mit Kamm»). Ursache: die Engine-Regel in automation/lib/kategorien.mjs nimmt `wildschwein` und `haarbürste` im Titel ohne Gegenprobe und vertraut Google «Combs & Brushes» bei zwei Pflegeprodukten. Vorschlag (nicht umgesetzt, ausserhalb dieser Datei): `wildschwein` durch `wildschweinborsten|wildschwein-?bürste` ersetzen und `tasche|serum|öl|zahnbürste` ausschliessen. Bleibt als Kind eingeordnet, bis die Regel angepasst ist.",
+    "VORHANDENES KIND parfum-duefte (35 aktiv) enthält 2 Fortura-Kostümartikel («Eau de Parfum Pfeife», «Eau de Parfum Miss Fashionista», Tag fortura): die Collection greift per Tag parfum bzw. Typ «Parfum», die Sperr-Tags des Werkzeugs gelten dort nicht. Vorschlag: Tag parfum bei diesen zwei Produkten entfernen oder die Collection mit «Tag fortura nicht» verengen. Vorhandenes Kind schminkspiegel (35) enthält 1 Wandleuchte («Moderne LED-Spiegelleuchte für das Badezimmer», Google Lighting Fixtures) und überlappt mit make-up-pinsel-tools (57 Face Mirrors dort); mundpflege (65), sub-bart-rasur (48), kunstnaegel-press-on (590) und make-up-pinsel-tools (362) sind sauber (Prüfung der Titel gegen Nagel-/Pinsel-Wörter bzw. Google-Verteilung, 0 Fremdkörper).",
+    "DUBLETTE MIT WOHNEN (nicht behoben, Entscheid beim Besitzer): lendenstuetzen-rueckenkissen (28, Google Personal Care > Back Care) und die vorhandene Wohnen-Kategorie sitz-rueckenkissen «Sitz- & Rückenkissen» (156, Google Decor > Backrest Pillows / Chair & Sofa Cushions, davon 26 mit «Lenden/Lordose» im Titel) führen dieselbe Produktart («Lordosenstütze», «Lendenkissen»), getrennt nur durch die Google-Kategorie. Empfehlung: die Engine-Regel von sitz-rueckenkissen (automation/lib/kategorien.mjs) um Google «Back & Lumbar Support Cushions» erweitern und dann lendenstuetzen-rueckenkissen hier streichen; bis dahin bleibt sie bestehen, damit die 28 Produkte nicht heimatlos sind. Die Umbenennung auf «Lendenkissen & Lordosenstützen» vermeidet wenigstens den doppelten Namen «Rückenkissen».",
+    "OFFEN nach Gegenlesung: (1) Haarstyling-Zubehör (Aufbewahrungstaschen, Halter, Diffusoren, Düsen, Ladestation) ergäbe 17 Produkte, knapp über der Mindestgrösse; bewusst nicht angelegt, Regel zum Nachbauen: g_prefix Hair Care + Hair Clippers & Trimmers, titel_muss «aufbewahr|tasche|beutel|(^|[^a-zäöüß])box|halter|ständer|gestell|ablage|organizer|wandhalterung|diffus|düse|aufsatz|ladestation|multi-?tool», titel_nicht «haartrockner mit|lockenstab mit» (gemessen: 17). (2) 5 LED-Masken ohne Google-Kategorie (Produkte ohne Metafeld) und «Jade-Rollerset für Gesicht» (Google Hardware > Tools) können wegen g_prefix nicht in ihre Kategorie. (3) 64 Produkte mit Google «Cosmetics» ganz ohne Unterkategorie bleiben draussen, obwohl rund 15 davon der Titel eindeutig zuordnet (Lippenfarbe, Augenschatten, 3D-Wimpern, Schlafmaske, Abschminkpads): die Regelsprache kann «Google-Oberbegriff UND Titel» nicht mit «Unterkategorie ohne Titel» verbinden. (4) 3 SPF-Make-ups (Google Sunscreen) fallen zwischen sonnenschutz-braeunung (per titel_nicht ausgeschlossen) und teint-make-up (Google passt nicht).",
+    "WÄRME & KOMFORT: die vorhandene Collection waerme-komfort (56) hängt im Menüzweig «Herbst & Übergang», nicht unter Beauty & Pflege, und enthält Heizjacken und Handwärmer; «ERSETZT» oben meint nur den Beauty-Anteil (Heizkissen, Wärmegürtel). Der Menüpunkt bleibt im Herbst-Zweig bestehen. Chip «Schlafmasken» (schlafmasken-augenmasken) trägt denselben Titel wie die vorhandene Such-Collection schlafmasken (22, Tag such-schlafmaske, nicht im Menü): beim Anlegen entweder die alte Collection löschen oder den Chip anders nennen. Gruppe «Nägel & Maniküre» trägt absichtlich den Titel der ersetzten Collection naegel-manikuere."
+  ]
+}

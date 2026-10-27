@@ -1,0 +1,9 @@
+Freigabe Mengenrabatt (Besitzer, 27.10.2026, Antworten auf vier Fragen — jeweils die Empfehlung gewählt)
+Löschen dieser Datei = Stopp für alle LIVE-Schritte von automation/mengenrabatt.mjs (`stopp` geht immer).
+
+1. Versand: Regel «ab CHF 45» einschalten, «ab CHF 50» ausschalten (nur das Feld `active`, vorher live lesen).
+2. Alt-Rabatte: «Bundle: 2+ Artikel -10%» und «Mengenrabatt — 10% ab 3 Artikeln» beenden. Es bleiben nur die Marge-Stufen:
+   A (Marge >= 45 %): ab 2 Stück -5 %, ab 3 Stück -10 %; B (Marge >= 37 %): ab 3 Stück -5 %.
+3. Ausgeschlossen bleiben: Personalisiertes/Graviertes, Magnetarmbänder (Heilversprechen), Kosmetik mit Wirkwort, LED-/Smart-Haustierartikel
+   (zusätzlich zu allen bisherigen Ausschlüssen: Geräte, Marken, Gesperrtes, Kosten unbekannt, Preis ausserhalb 3–60 CHF).
+4. Grind 2.0 (neue Produkte): Einstand x 1,45, mindestens CHF 14.90 (gehört nicht in diese Datei, steht hier nur zur Vollständigkeit).

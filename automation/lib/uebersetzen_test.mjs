@@ -1,6 +1,6 @@
 /** Test fuer nachDeutsch — gefaelschter fetch, kein Netz.
  *  Lauf: /opt/node22/bin/node automation/lib/uebersetzen_test.mjs   */
-import { nachDeutsch } from './uebersetzen.mjs';
+import { nachDeutsch, gleicheGrossschreibung } from './uebersetzen.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra='') => { if(!ok){ fehler++; console.log(`FAIL ${n} ${extra}`); } else console.log(`ok   ${n}`); };
 const EIN = ['Very good quality','产品很好','Bien emballé'];
@@ -47,6 +47,30 @@ const grq = (arr) => ({ choices:[{ message:{ content: '```json\n'+JSON.stringify
 // 8. Leere Eingabe
 { const r = await nachDeutsch([], { geminiKey:'g', groqKey:'q', fetch: async () => ant(200, gem([])) });
   pruef('leere Eingabe', r.weg==='original' && r.texte.length===0); }
+
+
+// 7. Mehrere Groq-Schluessel: ist der erste erschoepft (429), fragt der zweite; Gemini bleibt zuerst
+{ const gefragt=[]; process.env.GROQ_API_KEY='k1'; process.env.GROQ_API_KEY2='k2'; process.env.GROQ_API_KEY3='';
+  const r = await nachDeutsch(EIN, { geminiKey:'', fetch: async (u, o) => { const k=String(o?.headers?.Authorization||'').replace('Bearer ',''); gefragt.push(k);
+    return k==='k1' ? ant(429, { error:{ message:'rate limit' } }) : ant(200, grq(DE)); } });
+  pruef('1. Groq-Schluessel erschoepft → 2. Schluessel', r.weg==='groq' && JSON.stringify(r.texte)===JSON.stringify(DE), JSON.stringify(r));
+  pruef('Reihenfolge: k1 (zwei Modelle) dann k2', gefragt.join(',')==='k1,k1,k2', gefragt.join(','));
+  pruef('leerer dritter Schluessel wird nie gefragt', !gefragt.includes(''));
+  // alle erschoepft → Originale, Grund nennt jeden Schluessel
+  const r2 = await nachDeutsch(EIN, { geminiKey:'', fetch: async () => ant(429, { error:{ message:'rate limit' } }) });
+  pruef('alle Schluessel erschoepft → Originale', r2.weg==='original' && JSON.stringify(r2.texte)===JSON.stringify(EIN), JSON.stringify(r2));
+  // opt.groqKey gewinnt gegen die Umgebung (bestehendes Verhalten)
+  const gefragt3=[]; await nachDeutsch(EIN, { geminiKey:'', groqKey:'nur', fetch: async (u, o) => { gefragt3.push(String(o?.headers?.Authorization)); return ant(200, grq(DE)); } });
+  pruef('opt.groqKey ersetzt die Umgebungsschluessel', gefragt3.length===1 && gefragt3[0]==='Bearer nur', gefragt3.join('|'));
+  delete process.env.GROQ_API_KEY; delete process.env.GROQ_API_KEY2; delete process.env.GROQ_API_KEY3; }
+
+// 9. Grossschreibung des Originals bleibt erhalten (kleines Groq-Modell liefert «purpurrot»)
+pruef('klein → gross: Purplish Red / purpurrot', gleicheGrossschreibung('Purplish Red','purpurrot')==='Purpurrot');
+pruef('schon gross bleibt', gleicheGrossschreibung('Purplish Red','Purpurrot')==='Purpurrot');
+pruef('Original klein bleibt klein (Masse, Einheiten)', gleicheGrossschreibung('15 pieces','15 stück')==='15 stück');
+pruef('Ziffer vorn: erster BUCHSTABE wird gross', gleicheGrossschreibung('3 Layers','3 lagen')==='3 Lagen');
+pruef('Umlaut: ärmellos', gleicheGrossschreibung('Sleeveless','ärmellos')==='Ärmellos');
+pruef('leer/ohne Buchstaben unverändert', gleicheGrossschreibung('Red','')==='' && gleicheGrossschreibung('Red','123')==='123');
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler?1:0);

@@ -145,6 +145,7 @@ jobs:
         # 26.10.2026: Diese 21 Tests lagen im Repo, liefen aber in KEINEM Workflow (gefunden mit: jeden *_test.mjs gegen .github/workflows greppen).
         run: |
           node automation/lib/kategorien_test.mjs
+          node automation/lib/mengenrabatt_test.mjs
           node automation/lib/tassen_regel_test.mjs
           node automation/lib/fakten_block_test.mjs
           node automation/lib/text_prosa_test.mjs

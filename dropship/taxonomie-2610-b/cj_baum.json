@@ -1,0 +1,1101 @@
+{
+ "quelle": "CJ API product/getCategory, gelesen 26.10.2026",
+ "oben": 14,
+ "gruppen": 89,
+ "blaetter": 578,
+ "baum": [
+  {
+   "name": "Women's Clothing",
+   "gruppen": [
+    {
+     "name": "Accessories",
+     "blaetter": [
+      "Scarves & Wraps",
+      "Face Masks",
+      "Belts & Cummerbunds",
+      "Woman Prescription Glasses",
+      "Eyewear & Accessories",
+      "Woman Gloves & Mittens",
+      "Woman Socks",
+      "Woman Hats & Caps"
+     ]
+    },
+    {
+     "name": "Couple&Parent-Child Clothing",
+     "blaetter": [
+      "Couple&Parent-Child Sweatshirts",
+      "Couple&Parent-Child Short-Sleeves",
+      "Couple&Parent -Child Jackets",
+      "Couple&Parent-Child Tops",
+      "Couple&Parent-Child Suits",
+      "Couple&Parent-Child Pants"
+     ]
+    },
+    {
+     "name": "Women's Jackets",
+     "blaetter": [
+      "Women's Casual Jackets",
+      "Women's Baseball Jackets"
+     ]
+    },
+    {
+     "name": "Women's Sweatshirts & Hoodies",
+     "blaetter": [
+      "Women's Sweatpants",
+      "Women's Sweatsuit Sets",
+      "Women's Sweatshirt Dresses",
+      "Women's Zip-Up Hoodies"
+     ]
+    },
+    {
+     "name": "Women's Sweaters",
+     "blaetter": [
+      "Women's Cardigans",
+      "Women's Knit Sets",
+      "Women's Knit Skirts",
+      "Women's Knit Bottoms",
+      "Women's Sweater Dresses"
+     ]
+    },
+    {
+     "name": "Women's Denim",
+     "blaetter": [
+      "Women's Denim Tops",
+      "Women's Denim Jackets",
+      "Women's Denim Sets",
+      "Women's Denim Skirts",
+      "Women's Denim Dresses"
+     ]
+    },
+    {
+     "name": "Tops & Sets",
+     "blaetter": [
+      "Ladies Short Sleeve",
+      "Women's Camis",
+      "Women's Vests",
+      "Women's Short-Sleeved Shirts",
+      "Women's Long-Sleeved Shirts",
+      "Women's Suit Sets",
+      "Women's Activewear Sets",
+      "Women's Casual Sets",
+      "Women's Three-Piece Sets",
+      "Women's Tube Tops",
+      "Women's Sleeveless Tops",
+      "Blouses & Shirts",
+      "Woman Hoodies & Sweatshirts",
+      "Jumpsuits",
+      "Rompers",
+      "Lady Dresses",
+      "Sweaters",
+      "Suits & Sets"
+     ]
+    },
+    {
+     "name": "Bottoms",
+     "blaetter": [
+      "Women's Skirts",
+      "Women's Overalls",
+      "Women's Flare Pants",
+      "Women's Straight-Leg Pants",
+      "Women's Suit Pants",
+      "Women's Cargo Pants",
+      "Leggings",
+      "Skirts",
+      "Woman Jeans",
+      "Woman Shorts",
+      "Pants & Capris",
+      "Wide Leg Pants"
+     ]
+    },
+    {
+     "name": "Outerwear & Jackets",
+     "blaetter": [
+      "Blazers",
+      "Wool & Blend",
+      "Women's Padded Jackets",
+      "Women's Coats",
+      "Women's Sherpa Jackets",
+      "Women's Fur Coats",
+      "Women's Fur-Paneled Jackets",
+      "Women's Wool Coats",
+      "Women's Outerwear",
+      "Women's Shell Jackets",
+      "Women's Blazers",
+      "Women's Capes",
+      "Woman Trench",
+      "Basic Jacket",
+      "Leather & Suede",
+      "Real Fur"
+     ]
+    },
+    {
+     "name": "Weddings & Events",
+     "blaetter": [
+      "Cocktail Dresses",
+      "Evening Dresses",
+      "Bridesmaid Dresses",
+      "Prom Dresses",
+      "Wedding Dresses",
+      "Flower Girl Dresses"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pet Supplies",
+   "gruppen": [
+    {
+     "name": "Pet Toys",
+     "blaetter": [
+      "Pet Chase Toys",
+      "Pet Chew Toys",
+      "Pet Training and Educational Toys",
+      "Pet Sound Toys",
+      "Pet Tunnel Toys",
+      "Pet Toy Set",
+      "Pet Plush Toys"
+     ]
+    },
+    {
+     "name": "Pet Drinking & Feeding",
+     "blaetter": [
+      "Pet Bowls",
+      "Pet Drinking Tools",
+      "Pet Feeding Tools"
+     ]
+    },
+    {
+     "name": "Pet Outdoor Supplies",
+     "blaetter": [
+      "Barking Control Equipments",
+      "Trainers",
+      "Dog Training Pads & Diapers",
+      "Pet Snacks",
+      "Pet Bags",
+      "Pet Seat Belts",
+      "Pet Car Mats",
+      "Pet Guardrails"
+     ]
+    },
+    {
+     "name": "Bird Supplies",
+     "blaetter": [
+      "Bird Feeders",
+      "Bird Cages",
+      "Bird Swings",
+      "Bird Toys",
+      "Bird Travel Bags",
+      "Bird Accessories"
+     ]
+    },
+    {
+     "name": "Fish & Aquatic Pets",
+     "blaetter": [
+      "Fish Tanks",
+      "Fish Tank Decorations",
+      "Fish Tank Cleaning Supplies"
+     ]
+    },
+    {
+     "name": "Pet Apparels",
+     "blaetter": [
+      "Pet Dresses",
+      "Pet Tops",
+      "Pet Sweaters",
+      "Pet Sweatshirts & Hoodies",
+      "Pet Coats & Jackets",
+      "Pet Jumpsuits",
+      "Pet Pajamas",
+      "Pet Clothings",
+      "Pet Functional Clothings",
+      "Pet Clothing Sets",
+      "Pet Down & Parkas",
+      "Pet Shoes & Socks",
+      "Pet Scarves",
+      "Pet Bags"
+     ]
+    },
+    {
+     "name": "Pet Collars, Harnesses & Accessories",
+     "blaetter": [
+      "Pet Hair Accessories",
+      "Pet Bows & Ties",
+      "Pet Necklaces",
+      "Pet Headwears",
+      "Pet Glasses",
+      "Pet Collars",
+      "Pet Leashes",
+      "Pet Harnesses",
+      "Pet Muzzles",
+      "Pet Collar, Leash & Harness Sets",
+      "Custom Pet tags, Collars, Leashes & Harnesses"
+     ]
+    },
+    {
+     "name": "Pet Groomings",
+     "blaetter": [
+      "Pet Hair Removers & Combs",
+      "Pet Nail Polishers",
+      "Pet Shower Products",
+      "Pet Towels"
+     ]
+    },
+    {
+     "name": "Pet Furnitures",
+     "blaetter": [
+      "Cat Scratching Posts",
+      "Pet Furniture Protectors",
+      "Cat Trees & Condos",
+      "Pet Furniture Tools",
+      "Pet Houses & Cages",
+      "Dog Stairs & Steps",
+      "Pet Tents",
+      "Pet Hammocks"
+     ]
+    },
+    {
+     "name": "Pet Bedding",
+     "blaetter": [
+      "Pet Mats",
+      "Pet Nests",
+      "Pet Beds",
+      "Pet Blankets & Quilts"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Home, Garden & Furniture",
+   "gruppen": [
+    {
+     "name": "Home Textiles",
+     "blaetter": [
+      "Curtains",
+      "Floor Mats",
+      "Cushion Covers",
+      "Towels",
+      "Comforters",
+      "Bedding Sets",
+      "Pillows"
+     ]
+    },
+    {
+     "name": "Arts, Crafts & Sewing",
+     "blaetter": [
+      "Decor Paintings",
+      "Lace",
+      "Apparel Sewing & Fabric",
+      "Cross-Stitch",
+      "Ribbons",
+      "Diamond Painting Cross Stitch",
+      "Fabric"
+     ]
+    },
+    {
+     "name": "Musical Instruments",
+     "blaetter": [
+      "Guitars",
+      "Violins",
+      "Steel Tongue Drum"
+     ]
+    },
+    {
+     "name": "Festive & Party Supplies",
+     "blaetter": [
+      "Christmas Decoration Supplies",
+      "Invitation Cards",
+      "Cake Decorating Supplies",
+      "Decorative Flowers & Wreaths",
+      "Party Masks",
+      "Event & Party Supplies"
+     ]
+    },
+    {
+     "name": "Kitchen, Dining & Bar",
+     "blaetter": [
+      "Dinnerware",
+      "Kitchen Knives & Accessories",
+      "Bakeware",
+      "Barware",
+      "Drinkware",
+      "Cooking Tools"
+     ]
+    },
+    {
+     "name": "Home Storage",
+     "blaetter": [
+      "Adult Wellness",
+      "Seasonal products",
+      "Stationeries",
+      "Furniture",
+      "Storage Bags & Cases & Boxes",
+      "First Aid Supplies",
+      "Kitchen Storage",
+      "Home Office Storage",
+      "Clothing & Wardrobe Storage",
+      "Bathroom Storage",
+      "Storage Bottles & Jars"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Health, Beauty & Hair",
+   "gruppen": [
+    {
+     "name": "Nail Art & Tools",
+     "blaetter": [
+      "Nail Glitters",
+      "Stickers & Decals",
+      "Nail Decorations",
+      "Nail Gel",
+      "Nail Dryers",
+      "Nail Art Kits"
+     ]
+    },
+    {
+     "name": "Food & Health",
+     "blaetter": [
+      "Health Care Products"
+     ]
+    },
+    {
+     "name": "Hair & Accessories",
+     "blaetter": [
+      "Headband & Hair Band & Hairpin",
+      "Human Hair"
+     ]
+    },
+    {
+     "name": "Synthetic Hair",
+     "blaetter": [
+      "Cosplay Wigs"
+     ]
+    },
+    {
+     "name": "Skin Care",
+     "blaetter": [
+      "Razor",
+      "Face Masks",
+      "Sun Care",
+      "Essential Oil",
+      "Body Care",
+      "Facial Care"
+     ]
+    },
+    {
+     "name": "Hair Weaves",
+     "blaetter": [
+      "Pre-Colored One Pack",
+      "Hair Weaving",
+      "Hair Styling",
+      "Salon Bundle Hair",
+      "Pre-Colored Hair Weave"
+     ]
+    },
+    {
+     "name": "Makeup",
+     "blaetter": [
+      "Eyebrow Pencil",
+      "Makeup Set",
+      "Eyeshadow",
+      "Makeup Brushes",
+      "Lipstick",
+      "False Eyelashes"
+     ]
+    },
+    {
+     "name": "Wigs & Extensions",
+     "blaetter": [
+      "Human Hair Wigs",
+      "Synthetic Hair Pieces",
+      "Synthetic Lace Wigs",
+      "Human Hair Lace Wigs",
+      "Hair Braids",
+      "Synthetic Wigs"
+     ]
+    },
+    {
+     "name": "Beauty Tools",
+     "blaetter": [
+      "Mirrors",
+      "Straightening Irons",
+      "Electric Face Cleanser",
+      "Face Skin Care Tools",
+      "Curling Iron",
+      "Facial Steamer"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Jewelry & Watches",
+   "gruppen": [
+    {
+     "name": "Wedding & Engagement",
+     "blaetter": [
+      "Bridal Jewelry Sets",
+      "Wedding Hair Jewelry",
+      "Engagement Rings",
+      "Wedding & Engagement"
+     ]
+    },
+    {
+     "name": "Fashion Jewelry",
+     "blaetter": [
+      "Bracelets & Bangles",
+      "Brooches",
+      "Keychains",
+      "Pocket Watches",
+      "Anklets",
+      "Charms",
+      "Rings",
+      "Body Jewelry",
+      "Fashion Jewelry Sets",
+      "Necklace & Pendants",
+      "Men's Cuff Links",
+      "Earrings"
+     ]
+    },
+    {
+     "name": "Fine Jewelry",
+     "blaetter": [
+      "Various Gemstones",
+      "925 Silver Jewelry",
+      "K-Gold",
+      "Pearls Jewelry",
+      "Fine Earrings",
+      "Men's Fine Jewelry",
+      "Fine Jewelry Sets"
+     ]
+    },
+    {
+     "name": "Men's Watches",
+     "blaetter": [
+      "Quartz Watches",
+      "Mechanical Watches",
+      "Digital Watches",
+      "Dual Display Watches",
+      "Men Sports Watches"
+     ]
+    },
+    {
+     "name": "Women's Watches",
+     "blaetter": [
+      "Watch Accessories",
+      "Women Sports Watches",
+      "Dress Watches",
+      "Creative Watches",
+      "Lovers' Watches",
+      "Women's Bracelet Watches",
+      "Children's Watches"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Men's Clothing",
+   "gruppen": [
+    {
+     "name": "Underwear & Loungewear",
+     "blaetter": [
+      "Men's Sleep & Lounge",
+      "Shorts",
+      "Briefs",
+      "Robes",
+      "Man Pajama Sets",
+      "Boxers",
+      "Long Johns"
+     ]
+    },
+    {
+     "name": "Outerwear & Jackets",
+     "blaetter": [
+      "Suits & Blazer",
+      "Men's Sweaters",
+      "Genuine Leather",
+      "Man Trench",
+      "Men's Shirts",
+      "Men's Jackets",
+      "Men's Suits",
+      "Man Hoodies & Sweatshirts",
+      "Wool & Blends",
+      "Parkas",
+      "Down Jackets"
+     ]
+    },
+    {
+     "name": "Accessories",
+     "blaetter": [
+      "Socks",
+      "Men's Ties",
+      "Scarves",
+      "Man Gloves & Mittens",
+      "Skullies & Beanies",
+      "Belts",
+      "Man Prescription Glasses"
+     ]
+    },
+    {
+     "name": "Bottoms",
+     "blaetter": [
+      "Pajama Sets",
+      "Man Shorts",
+      "Cargo Pants",
+      "Man Jeans",
+      "Harem Pants",
+      "Casual Pants",
+      "Sweatpants"
+     ]
+    },
+    {
+     "name": "T-Shirts",
+     "blaetter": [
+      "Geometric",
+      "Men's Long-Sleeved",
+      "Striped",
+      "Solid",
+      "3D",
+      "Print"
+     ]
+    },
+    {
+     "name": "Hats & Caps",
+     "blaetter": [
+      "Baseball Caps",
+      "Bomber Hats",
+      "Berets",
+      "Fedoras"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Bags & Shoes",
+   "gruppen": [
+    {
+     "name": "Men's Luggage & Bags",
+     "blaetter": [
+      "Briefcases",
+      "Waist Bags",
+      "Girls Bags",
+      "Men's Backpacks",
+      "Luggage & Travel Bags",
+      "Crossbody Bags",
+      "Man Wallets"
+     ]
+    },
+    {
+     "name": "Women's Shoes",
+     "blaetter": [
+      "Woman Boots",
+      "Vulcanize Shoes",
+      "Women's Insoles",
+      "Pumps",
+      "Woman Slippers",
+      "Woman Sandals",
+      "Flats"
+     ]
+    },
+    {
+     "name": "Women's Luggage & Bags",
+     "blaetter": [
+      "Woman Wallets",
+      "Women's Crossbody Bags",
+      "Bag Accessories",
+      "Evening Bags",
+      "Fashion Backpacks",
+      "Shoulder Bags",
+      "Totes",
+      "Boys Bags",
+      "Clutches"
+     ]
+    },
+    {
+     "name": "Men's Shoes",
+     "blaetter": [
+      "Man Boots",
+      "Formal Shoes",
+      "Men's Insoles",
+      "Man Slippers",
+      "Vulcanize Shoe",
+      "Man Sandals",
+      "Casual Shoes"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Toys, Kids & Babies",
+   "gruppen": [
+    {
+     "name": "Toys & Hobbies",
+     "blaetter": [
+      "Electronic Pets",
+      "Blocks",
+      "RC Helicopters",
+      "Stuffed & Plush Animals",
+      "Action & Toy Figures"
+     ]
+    },
+    {
+     "name": "Shoes & Bags",
+     "blaetter": [
+      "Children's Shoes",
+      "Boys Shoes",
+      "School Bags",
+      "Kids Wallets",
+      "Girls Shoes",
+      "Baby's First Walkers"
+     ]
+    },
+    {
+     "name": "Boys Clothing",
+     "blaetter": [
+      "Boy Jeans",
+      "Boy T-Shirts",
+      "Boy Hoodies & Sweatshirts",
+      "Outerwear & Coats",
+      "Boy Clothing Sets",
+      "Boy Accessories"
+     ]
+    },
+    {
+     "name": "Baby Clothing",
+     "blaetter": [
+      "Baby Clothing Sets",
+      "Baby Rompers",
+      "Baby Accessories",
+      "Baby Outerwear",
+      "Baby Dresses",
+      "Baby Pants"
+     ]
+    },
+    {
+     "name": "Baby & Mother",
+     "blaetter": [
+      "Nappy Changing",
+      "Activity & Gear",
+      "Backpacks & Carriers",
+      "Baby Care",
+      "Maternity"
+     ]
+    },
+    {
+     "name": "Girls Clothing",
+     "blaetter": [
+      "Girls Underwear",
+      "Girls' Pants",
+      "Family Matching Outfits",
+      "Sleepwear & Robes",
+      "Tops & Tees",
+      "Girl Clothing Sets",
+      "Girl Accessories",
+      "Girl Dresses"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sports & Outdoors",
+   "gruppen": [
+    {
+     "name": "Sneakers",
+     "blaetter": [
+      "Running Shoes",
+      "Dance Shoes",
+      "Skateboarding Shoes",
+      "Hiking Shoes",
+      "Soccer Shoes",
+      "Basketball Shoes"
+     ]
+    },
+    {
+     "name": "Other Sports Equipment",
+     "blaetter": [
+      "Musical Instruments",
+      "Hunting",
+      "Skiing & Snowboarding",
+      "Fitness & Bodybuilding",
+      "Camping & Hiking",
+      "Golf"
+     ]
+    },
+    {
+     "name": "Swimming",
+     "blaetter": [
+      "One-Piece Suits",
+      "Swimming Goggles",
+      "Inflatable Raft",
+      "Bikini Sets",
+      "Two-Piece Suits",
+      "Men's Swimwear",
+      "Cover-Ups",
+      "Children's Swimwear"
+     ]
+    },
+    {
+     "name": "Cycling",
+     "blaetter": [
+      "Bicycle Lights",
+      "Scooters",
+      "Cycling Gloves",
+      "Bicycle Helmets",
+      "Cycling Eyewear",
+      "Bicycle Frames",
+      "Cycling Jerseys",
+      "Bicycles"
+     ]
+    },
+    {
+     "name": "Sportswear",
+     "blaetter": [
+      "Jerseys",
+      "Sports Accessories",
+      "Outdoor Shorts",
+      "Sports Bags",
+      "Hiking Jackets",
+      "Pants"
+     ]
+    },
+    {
+     "name": "Fishing",
+     "blaetter": [
+      "Fishing Reels",
+      "Rod Combos",
+      "Fishing Tackle Boxes",
+      "Fishing Lures",
+      "Fishing Rods",
+      "Fishing Lines"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Consumer Electronics",
+   "gruppen": [
+    {
+     "name": "Accessories & Parts",
+     "blaetter": [
+      "Digital Cables",
+      "Home Electronic Accessories",
+      "Audio & Video Cables",
+      "Charger",
+      "Batteries",
+      "Digital Gear Bags"
+     ]
+    },
+    {
+     "name": "Home Audio & Video",
+     "blaetter": [
+      "Projectors",
+      "Television",
+      "TV Receivers",
+      "Audio Amplifiers",
+      "Projectors & Acessories",
+      "Home Audio & Video",
+      "TV Sticks"
+     ]
+    },
+    {
+     "name": "Smart Electronics",
+     "blaetter": [
+      "Wearable Devices",
+      "Smart Home Appliances",
+      "Smart Wearable Accessories",
+      "Smart Wristbands",
+      "Smart Watches",
+      "Smart Remote Controls"
+     ]
+    },
+    {
+     "name": "Camera & Photo",
+     "blaetter": [
+      "Photo Studio",
+      "Camera Drones",
+      "Camera & Photo Accessories",
+      "Digital Cameras",
+      "Action Cameras",
+      "Camcorders"
+     ]
+    },
+    {
+     "name": "Video Games",
+     "blaetter": [
+      "Gamepads",
+      "Handheld Game Players",
+      "Video Game Consoles",
+      "Stickers",
+      "Joysticks"
+     ]
+    },
+    {
+     "name": "Portable Audio & Video",
+     "blaetter": [
+      "Microphones",
+      "Speakers",
+      "Earphones & Headphones",
+      "VR & AR Devices",
+      "MP3 Players"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Home Improvement",
+   "gruppen": [
+    {
+     "name": "LED Lighting",
+     "blaetter": [
+      "LED Spotlights"
+     ]
+    },
+    {
+     "name": "Outdoor Lighting",
+     "blaetter": [
+      "Flashlights & Torches",
+      "Floodlights",
+      "Underwater Lights",
+      "String Lights",
+      "Solar Lamps"
+     ]
+    },
+    {
+     "name": "Tools",
+     "blaetter": [
+      "Home Improvement Materials",
+      "Measurement & Analysis",
+      "Welding & Soldering Supplies",
+      "Welding Equipment",
+      "Hand Tools",
+      "Tool Sets",
+      "Tools Storage",
+      "Machine Tools & Accessories",
+      "Power Tools",
+      "Woodworking Machinery",
+      "Garden Tools"
+     ]
+    },
+    {
+     "name": "Home Appliances",
+     "blaetter": [
+      "Personal Care Appliances",
+      "Cleaning Appliances",
+      "Air Conditioning Appliances",
+      "Home Appliance Parts",
+      "Kitchen Appliances"
+     ]
+    },
+    {
+     "name": "Indoor Lighting",
+     "blaetter": [
+      "Chandeliers",
+      "Pendant Lights",
+      "Downlights",
+      "Night Lights",
+      "Wall Lamps",
+      "Ceiling Lights"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Automobiles & Motorcycles",
+   "gruppen": [
+    {
+     "name": "Exterior Accessories",
+     "blaetter": [
+      "Car Stickers",
+      "Other Exterior Accessories",
+      "Car Covers"
+     ]
+    },
+    {
+     "name": "Interior Accessories",
+     "blaetter": [
+      "Floor Mats",
+      "Car Aromatherapy",
+      "Car Perfume",
+      "Key Case for Car",
+      "Steering Covers",
+      "Automobiles Seat Covers",
+      "Stowing Tidying"
+     ]
+    },
+    {
+     "name": "Tools, Maintenance & Care",
+     "blaetter": [
+      "Car Washer",
+      "Diagnostic Tools",
+      "Paint Care",
+      "Other Maintenance Products"
+     ]
+    },
+    {
+     "name": "Car Electronics",
+     "blaetter": [
+      "Vehicle Camera",
+      "DVR & Dash Camera",
+      "Car Monitors",
+      "Vehicle GPS",
+      "Car Mirror Video",
+      "Car Radios",
+      "GPS Trackers",
+      "Car Multimedia Player",
+      "Alarm Systems & Security",
+      "Jump Starter"
+     ]
+    },
+    {
+     "name": "Motorcycle Accessories & Parts",
+     "blaetter": [
+      "Lighting",
+      "Exhaust & Exhaust Systems",
+      "Motor Brake System",
+      "Motorcycle Seat Covers",
+      "Other Motorcycle Accessories",
+      "Helmet Headset",
+      "Body & Frame"
+     ]
+    },
+    {
+     "name": "Auto Replacement Parts",
+     "blaetter": [
+      "Interior Parts",
+      "Car Brake System",
+      "Spark Plugs & Ignition System",
+      "Automobiles Sensors",
+      "Exterior Parts",
+      "Other Replacement Parts",
+      "Car Lights",
+      "Windscreen Wipers & Windows"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Phones & Accessories",
+   "gruppen": [
+    {
+     "name": "Mobile Phone Accessories",
+     "blaetter": [
+      "Cables",
+      "Power Bank",
+      "Screen Protectors",
+      "Lenses",
+      "Holders & Stands",
+      "Chargers"
+     ]
+    },
+    {
+     "name": "Cases & Covers",
+     "blaetter": [
+      "Huawei Cases",
+      "Patterned Cases",
+      "Cases For iPhone 6 & 6 Plus",
+      "Wallet Cases",
+      "Cases For iPhone 7 & 7 Plus",
+      "Galaxy S8 Cases",
+      "IPhone X Cases",
+      "Galaxy S7 Cases",
+      "Cases For iPhone 8 & 8 Plus",
+      "Xiaomi Cases",
+      "Silicone Cases",
+      "Flip Cases",
+      "Waterptoof Cases",
+      "Leather Cases"
+     ]
+    },
+    {
+     "name": "Mobile Phone Parts",
+     "blaetter": [
+      "SIM Card & Tools",
+      "Mobile Batteries",
+      "Housings",
+      "LCDs",
+      "Flex Cables",
+      "Touch Panel"
+     ]
+    },
+    {
+     "name": "Mobile Phones",
+     "blaetter": [
+      "Quad Core",
+      "Single SIM Card",
+      "Dual SIM Card",
+      "3GB RAM",
+      "Octa Core",
+      "5-inch Display"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Computer & Office",
+   "gruppen": [
+    {
+     "name": "Office Electronics",
+     "blaetter": [
+      "Office & School Supplies",
+      "Computer Tablet Accessories",
+      "Printer Supplies",
+      "3D Printers",
+      "3D Pens",
+      "Printers",
+      "Scanners"
+     ]
+    },
+    {
+     "name": "Security & Protection",
+     "blaetter": [
+      "Alarm & Sensor",
+      "Fire Protection",
+      "Workplace Safety Supplies",
+      "Door Intercom",
+      "Surveillance Products"
+     ]
+    },
+    {
+     "name": "Storage Devices",
+     "blaetter": [
+      "SSD",
+      "USB Flash Drives",
+      "HDD Enclosures",
+      "Memory Cards",
+      "External Hard Drives"
+     ]
+    },
+    {
+     "name": "Tablet & Laptop Accessories",
+     "blaetter": [
+      "Tablet LCD Screens",
+      "Laptop Batteries",
+      "Laptop Bags & Cases",
+      "Tablet Cases",
+      "Tablet Accessories"
+     ]
+    },
+    {
+     "name": "Laptop & Tablets",
+     "blaetter": [
+      "Phone Call Tablets",
+      "2 in 1 Tablets",
+      "Laptops",
+      "Tablets",
+      "Gaming Laptops"
+     ]
+    },
+    {
+     "name": "Networking",
+     "blaetter": [
+      "Modem-Router Combos",
+      "Wireless Routers",
+      "Networking Tools",
+      "3G Modems",
+      "Network Cards"
+     ]
+    }
+   ]
+  }
+ ]
+}

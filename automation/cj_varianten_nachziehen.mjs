@@ -33,9 +33,10 @@ import { lieferurteil } from './lib/lieferbarkeit.mjs';
 import { strategien } from './lib/fakten_block.mjs';
 import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_varianten.mjs';
 import { steckerUrteil } from './lib/stecker_cj.mjs';
-import { nachDeutsch } from './lib/uebersetzen.mjs';
+import { nachDeutsch, gleicheGrossschreibung } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
 import { ledgerGedaechtnis, veraendertSeitPlan, bilderUnbrauchbar, FRISCH, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
+const KI_AUS = 'KI-Dienst aus';
 
 const LABEL_AUFTRAG = 'Übersetze diese Variantenbezeichnungen eines Online-Shops (Farben, Muster, Modelle) ins Deutsche. Kurz, wie auf einem Etikett, Substantive gross, '
   + 'ohne Erklärung. Eigennamen und Zahlen unverändert lassen. Gib AUSSCHLIESSLICH ein JSON-Array von Strings in exakt gleicher Reihenfolge zurück.\n';
@@ -162,9 +163,13 @@ export async function plane({ q, cj, handle, tmp }) {
   const zer = zerlegeOptionen(c.productKeyEn, vs.map(v => ({ vid: v.vid, key: v.key })));
   let aw = baueAuswahl(zer);
   let uebersetzung = null, kiAusfall = false;
+  // KI bewusst aus (der Workflow setzt das, wenn der Probeaufruf scheitert: Guthaben leer, Schlüssel fehlt): Produkte mit unsicheren Werten gar nicht erst planen (spart die CJ-Frachtabfragen)
+  // und nur kurz zurückstellen. Alles ohne unsichere Werte läuft normal weiter.
+  if (aw.ok && aw.unsicher.length && process.env.KEIN_KI_UEBERSETZEN) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `${KI_AUS}: Optionswerte brauchen die Übersetzung (${aw.unsicher.length})` };
   if (aw.ok && aw.unsicher.length && !process.env.KEIN_KI_UEBERSETZEN) {
     const roh = [...new Set(aw.unsicher.map(u => u.wert))];
     const t = await nachDeutsch(roh, { auftrag: LABEL_AUFTRAG });
+    if (t.weg !== 'original') t.texte = t.texte.map((x, i) => gleicheGrossschreibung(roh[i], x));
     // weg='original' heisst: der Dienst hat NICHT geantwortet (402/429/5xx/Netz/kein Schlüssel). Das ist etwas anderes als «KI antwortete, Übersetzung nicht brauchbar».
     kiAusfall = t.weg === 'original';
     // Unverändert zurück ist nur bei einem einzelnen Wort ohne englische Wortform in Ordnung («Cyan», «Khaki»); «Oil Painting Blue» unverändert = nicht übersetzt.
@@ -346,7 +351,7 @@ async function main() {
         if (plan.ergebnis === 'UEBERSPRUNGEN') {
           // Endgültige Gründe ändern sich nicht (14 Tage Ruhe); alle anderen (viele Varianten, Auswahl nicht baubar, Lieferbarkeit unbekannt …) ändern sich nicht von selbst und kosten bei jedem Versuch CJ-Punkte → zurückgestellt (7 Tage).
           const endgueltig = /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung|nur Fremdstecker)/.test(plan.grund || '');
-          merke('UEBERSPRUNGEN', endgueltig ? plan.grund : `${ZURUECKGESTELLT}: ${plan.grund}`);
+          merke('UEBERSPRUNGEN', endgueltig ? plan.grund : String(plan.grund).startsWith(KI_AUS) ? `${VORLAEUFIG}: ${plan.grund}` : `${ZURUECKGESTELLT}: ${plan.grund}`);
           fehlerFolge = 0;
         } else if (plan.ergebnis === 'FEHLER') {
           merke('FEHLER', `Plan: ${plan.grund}`);

@@ -94,16 +94,23 @@ jobs:
           ffmpeg -version | head -1
 
       - name: KI-Dienst für die Übersetzung der Variantennamen prüfen (echter Probeaufruf)
+        id: ki
         if: ${{ steps.frei.outputs.weiter == '1' }}
+        # Scheitert die Prüfung (27.10.2026: Gemini HTTP 402 «prepayment credits are depleted», GROQ_API_KEY nicht als Secret gesetzt), bricht die Nacht NICHT ab:
+        # Produkte, deren Optionswerte übersetzt werden müssten, werden 20 Stunden zurückgestellt (KEIN_KI_UEBERSETZEN), alle anderen laufen weiter.
+        # Rot wird der Job trotzdem — am Ende («KI-Ausfall sichtbar machen»), damit es jemand merkt.
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_API_KEY2: ${{ secrets.GROQ_API_KEY2 }}
+          GROQ_API_KEY3: ${{ secrets.GROQ_API_KEY3 }}
         run: |
-          if [ -z "${GEMINI_API_KEY// }" ] && [ -z "${GROQ_API_KEY// }" ]; then
-            echo "::error title=KI-Schlüssel fehlt::Weder GEMINI_API_KEY noch GROQ_API_KEY ist als Repo-Secret gesetzt. Ohne sie bleibt rund die Hälfte der Kandidaten ungeschrieben, weil unsichere Variantennamen nie geraten werden."
+          if [ -z "${GEMINI_API_KEY// }" ] && [ -z "${GROQ_API_KEY// }" ] && [ -z "${GROQ_API_KEY2// }" ] && [ -z "${GROQ_API_KEY3// }" ]; then
+            echo "::error title=KI-Schlüssel fehlt::Weder GEMINI_API_KEY noch GROQ_API_KEY (auch _2/_3) ist als Repo-Secret gesetzt. Ohne sie bleibt rund die Hälfte der Kandidaten ungeschrieben, weil unsichere Variantennamen nie geraten werden."
             exit 1
           fi
-          echo "KI-Schlüssel: gemini=$([ -n "${GEMINI_API_KEY// }" ] && echo ja || echo nein) groq=$([ -n "${GROQ_API_KEY// }" ] && echo ja || echo nein)"
+          echo "KI-Schlüssel: gemini=$([ -n "${GEMINI_API_KEY// }" ] && echo ja || echo nein) groq=$([ -n "${GROQ_API_KEY// }" ] && echo ja || echo nein) groq2=$([ -n "${GROQ_API_KEY2// }" ] && echo ja || echo nein) groq3=$([ -n "${GROQ_API_KEY3// }" ] && echo ja || echo nein)"
           # Ein gesetzter Schlüssel heisst nicht, dass der Dienst antwortet (leeres Guthaben HTTP 402, Ratenlimit, ungültiger Schlüssel): einmal wirklich fragen.
           node --input-type=module -e "
             import { nachDeutsch } from './automation/lib/uebersetzen.mjs';
@@ -157,6 +164,9 @@ jobs:
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_API_KEY2: ${{ secrets.GROQ_API_KEY2 }}
+          GROQ_API_KEY3: ${{ secrets.GROQ_API_KEY3 }}
+          KEIN_KI_UEBERSETZEN: ${{ steps.ki.outcome != 'success' && '1' || '' }}
           HANDLES_DATEI: /tmp/auswahl_kandidaten.csv
           LIMIT: ${{ inputs.probe_anzahl || '5' }}
           LIVE: '0'
@@ -173,6 +183,10 @@ jobs:
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_API_KEY2: ${{ secrets.GROQ_API_KEY2 }}
+          GROQ_API_KEY3: ${{ secrets.GROQ_API_KEY3 }}
+          # leer = KI an; «1» = der Probeaufruf oben ist gescheitert, Produkte mit zu übersetzenden Werten werden 20 Stunden zurückgestellt
+          KEIN_KI_UEBERSETZEN: ${{ steps.ki.outcome != 'success' && '1' || '' }}
           LIVE: '1'
           STUFEN: ${{ inputs.stufen || '1 2 3' }}
           WORKERS: ${{ inputs.workers || '6' }}
@@ -232,6 +246,12 @@ jobs:
             dropship/cj_varianten_ledger.txt
           if-no-files-found: warn
           retention-days: 14
+
+      - name: KI-Ausfall sichtbar machen
+        if: ${{ always() && steps.frei.outputs.weiter == '1' && steps.ki.outcome == 'failure' }}
+        run: |
+          echo "::error title=KI-Dienst für die Übersetzung fiel aus::Der Probeaufruf scheiterte (Gemini-Guthaben leer? GROQ_API_KEY nicht als Repo-Secret gesetzt?). Die Nacht lief ohne KI: Produkte mit zu übersetzenden Optionswerten wurden 20 Stunden zurückgestellt, alle anderen wurden normal bearbeitet. Behebung: Gemini-Guthaben auffüllen (https://ai.studio/projects) oder Repo-Secrets GROQ_API_KEY (und optional GROQ_API_KEY2/GROQ_API_KEY3) setzen."
+          exit 1
 
       - name: Ledger committen (auch nach Teilfehlern)
         if: ${{ always() && steps.frei.outputs.weiter == '1' && env.MODUS == 'lauf' }}

@@ -1,0 +1,733 @@
+{
+  "bereich": "haus-bau",
+  "titel": "Haus, Bau & Garten",
+  "menue": {
+    "oben": "Wohnen & Garten"
+  },
+  "universum": {
+    "g_prefix": [
+      "Hardware",
+      "Home & Garden > Lawn & Garden",
+      "Home & Garden > Plumbing",
+      "Home & Garden > Pool & Spa",
+      "Home & Garden > Business & Home Security",
+      "Home & Garden > Flood, Fire & Gas Safety",
+      "Home & Garden > Parasols & Rain Umbrellas",
+      "Home & Garden > Household Supplies > Pest Control",
+      "Home & Garden > Decor > Lawn Ornaments & Garden Sculptures",
+      "Home & Garden > Decor > Wind Chimes",
+      "Home & Garden > Decor > Bird & Wildlife",
+      "Home & Garden > Decor > Fountains & Ponds",
+      "Home & Garden > Decor > Flags & Windsocks",
+      "Home & Garden > Lighting > Landscape Pathway Lighting",
+      "Home & Garden > Fireplace",
+      "Home & Garden > Plants",
+      "Home & Garden > Emergency Preparedness",
+      "Business & Industrial > Construction",
+      "Business & Industrial > Agriculture",
+      "Business & Industrial > Material Handling",
+      "Business & Industrial > Work Safety Protective Gear",
+      "Furniture > Outdoor Furniture"
+    ],
+    "g_nicht": [
+      "Apparel & Accessories > Clothing",
+      "Apparel & Accessories > Shoes",
+      "Apparel & Accessories > Jewelry",
+      "Toys & Games",
+      "Animals & Pet Supplies",
+      "Health & Beauty",
+      "Vehicles & Parts",
+      "Baby & Toddler",
+      "Hardware > Locks & Keys > Key Caps"
+    ],
+    "titel_muss": [
+      "(^|[^a-zäöüß])[a-zäöüß-]*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)",
+      "^(?=.*(blumen|pflanz|bonsai|orchid|sukkul|zisha|yixing|kräuter|setzling)).*(topf|töpfe|kübel|ampel|bonsai-schale|schale für pflanzen|pflanzgefäss)",
+      "(^|[^a-zäöüß])(anzuchtset|pflanzenhalter|pflanzenständer|blumenhalter|blumenständer|pflanztasche|pflanzenregal|hänger für pflanzen|gartenstake|pflanzenstütze)",
+      "tontopf",
+      "(^|[^a-zäöüß])(garten(deko|figur|stecker|statue|skulptur|ornament|zwerg|fee|dekoration)|windrad|windsack|vogelhaus|vogelfutter|nistkasten|futterstelle|futterstation|vogeltränke|vogelbad|wetterfahne)",
+      "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
+      "skulptur für garten|tiersilhouette für garten|ornament für garten|adler in garten",
+      "garten[a-zäöüß]*(leucht|lampe|licht|beleucht)|aussen(beleucht|leucht|lampe|bereich)|wegeleucht|treppenleucht|strassenleucht|erdspiess|solar[a-zäöüß-]*(lampe|leucht|licht|laterne|strahler|spot|kerze|kugel)|solar-?(wand|tisch|klemm)lampe|solar.*lichterkette|lichterkette.*solar",
+      "(^|[^a-zäöüß])[a-zäöüß]*(wasserhahn|küchenhahn|badezimmerhahn|wandhahn|armatur)(?![a-zäöüß])",
+      "^(?=.*wasser).*(filter|spender|dispenser|aufbereit|reiniger|enthärter)",
+      "vorfilter|rückspülfilter",
+      "fliegengitter|fliegenvorhang|mückennetz|mücken-türvorhang|moskito[a-zäöüß-]*(vorhang|tür|schutz)",
+      "^(?=.*(tür|vorhang|fenster|gitter|netz)).*(insektenschutz|insekten-schutz|mückenschutz)",
+      "(^|[^a-zäöüß])[a-zäöüß]*(werkzeugtasche|werkzeuggürteltasche|werkzeugbox|werkzeugkasten|werkzeuggürtel|werkzeugrolle|werkzeugwand|werkzeug-?tray|werkzeug-?organizer|werkzeugschrank|werkzeugwagen)(?![a-zäöüß])",
+      "(^|[^a-zäöüß])[a-zäöüß]*(sortierbox|sortimentbox|sortimentkasten)(?![a-zäöüß])",
+      "(^|[^a-zäöüß])(magnetisches armband|magnetischer gürtelclip)(?![a-zäöüß])",
+      "tragetasche für kettensäge"
+    ],
+    "titel_nicht": []
+  },
+  "kategorien": [
+    {
+      "g_prefix": [
+        "Hardware",
+        "Apparel & Accessories > Handbags, Wallets & Cases",
+        "Luggage & Bags"
+      ],
+      "g_nicht": [
+        "Hardware > Tools > Tool Sets"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß]*(werkzeugtasche|werkzeuggürteltasche|werkzeugbox|werkzeugkasten|werkzeuggürtel|werkzeugrolle|werkzeugwand|werkzeug-?tray|werkzeug-?organizer|werkzeugschrank|werkzeugwagen)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])[a-zäöüß]*(sortierbox|sortimentbox|sortimentkasten)(?![a-zäöüß])",
+        "(^|[^a-zäöüß])(magnetisches armband|magnetischer gürtelclip)(?![a-zäöüß])",
+        "tragetasche für kettensäge"
+      ],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])velo"
+      ],
+      "handle": "werkzeugtaschen-aufbewahrung",
+      "titel": "Werkzeugtaschen & Aufbewahrung",
+      "beschreibung": "Werkzeugtaschen, Werkzeuggürtel, Sortierboxen und magnetische Halter, damit Schrauben und Werkzeug beim Arbeiten griffbereit bleiben."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Tools > Flashlights & Headlamps",
+        "Hardware > Tools > Work Lights"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "taschenlampen-kopflampen",
+      "titel": "Taschenlampen & Kopflampen",
+      "beschreibung": "Taschenlampen, Stirn- und Kopflampen für Werkstatt, Haushalt und draussen: wiederaufladbar per USB, mit Zoom, Sensor oder UV-Licht."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Tools > Paint Tools",
+        "Hardware > Tool Accessories > Paint Tool Accessories",
+        "Hardware > Tools > Putty Knives & Scrapers",
+        "Hardware > Tools > Caulking Tools",
+        "Hardware > Tools > Masonry Tools",
+        "Hardware > Building Consumables > Painting Consumables",
+        "Hardware > Building Consumables > Wall Patching"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "maler-spachtel-renovieren",
+      "titel": "Maler- & Renovierbedarf",
+      "beschreibung": "Farbroller, Pinsel, Spritzpistolen, Spachtel und Kartuschenpistolen für Anstrich und Wandreparatur."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Lawn & Garden > Gardening > Gardening Tool",
+        "Home & Garden > Lawn & Garden > Outdoor Power Equipment",
+        "Home & Garden > Lawn & Garden > Snow Removal"
+      ],
+      "g_nicht": [
+        "Home & Garden > Lawn & Garden > Outdoor Power Equipment > Pressure Washers",
+        "Home & Garden > Lawn & Garden > Outdoor Power Equipment Accessories > Pressure Washer"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "gartengeraete-gartenpflege",
+      "titel": "Gartengeräte & Gartenpflege",
+      "beschreibung": "Gartenscheren, Sägen, Rechen, Hacken und Jäter sowie Akku-Kettensägen, Heckenscheren, Rasentrimmer und Zubehör für die Gartenarbeit."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Lawn & Garden"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß-]*(hochdruckreiniger|schaumkanone|waschpistole|waschdüse|reinigungspistole|flächenreiniger)"
+      ],
+      "titel_nicht": [],
+      "handle": "hochdruckreiniger-schaumkanonen",
+      "titel": "Hochdruckreiniger & Autowäsche",
+      "beschreibung": "Akku-Hochdruckreiniger, Waschpistolen, Schaumkanonen und Aufsätze für Auto und Haushalt."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Lawn & Garden > Watering & Irrigation",
+        "Hardware > Plumbing > Water Timers",
+        "Home & Garden > Lawn & Garden > Gardening > Rain Barrels"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "(^|[^a-zäöüß])[a-zäöüß-]*(waschpistole|waschdüse|reinigungspistole)"
+      ],
+      "handle": "bewaesserung-gartenschlauch",
+      "titel": "Bewässerung & Gartenschläuche",
+      "beschreibung": "Gartenschläuche, Spritzdüsen, Rasensprenger, Giesskannen, Tropfer, Bewässerungs-Timer und eine Regentonne für Garten und Hof."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Lawn & Garden > Gardening",
+        "Home & Garden > Plants",
+        "Home & Garden > Kitchen & Dining",
+        "Home & Garden > Decor",
+        "Hardware > Tools"
+      ],
+      "g_nicht": [
+        "Home & Garden > Lawn & Garden > Gardening > Gardening Tool",
+        "Home & Garden > Lawn & Garden > Gardening > Rain Barrels"
+      ],
+      "titel_muss": [
+        "^(?=.*(blumen|pflanz|bonsai|orchid|sukkul|zisha|yixing|kräuter|setzling)).*(topf|töpfe|kübel|ampel|bonsai-schale|schale für pflanzen|pflanzgefäss)",
+        "(^|[^a-zäöüß])(anzuchtset|pflanzenhalter|pflanzenständer|blumenhalter|blumenständer|pflanztasche|pflanzenregal|hänger für pflanzen|gartenstake|pflanzenstütze)",
+        "tontopf"
+      ],
+      "titel_nicht": [
+        "silikon|räucher|tasse|tee|kerze|kissen|vorhang|tülle|matcha|deckel|bausteine|kratzbaum|stifte|simulation|getrocknet|raffhalter|kreuzstich"
+      ],
+      "handle": "pflanztoepfe-pflanzenzubehoer",
+      "titel": "Pflanztöpfe & Pflanzenzubehör",
+      "beschreibung": "Blumentöpfe und Pflanzgefässe aus Keramik, Ton und Metall, dazu Blumenampeln, Pflanzenhalter und Anzuchtsets."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Decor",
+        "Arts & Entertainment",
+        "Sporting Goods",
+        "Hardware > Tools"
+      ],
+      "g_nicht": [
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(garten-?(deko|figur|stecker|statue|skulptur|ornament|zwerg|fee|dekoration)|windrad|windsack|wetterfahne|[a-zäöüß-]*windfahne)|(^|[^a-zäöüß])[a-zäöüß-]*(vogelhaus|vogelfutter|nistkasten|futterstelle|futterstation|vogeltränke|vogelbad)",
+        "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
+        "skulptur für garten|tiersilhouette für garten|ornament für garten|adler in garten"
+      ],
+      "titel_nicht": [
+        "traumfänger|diamond|malen|glaskugel|kindergarten|bettwäsche|decke|kissen|vorhang|halloween|weihnacht"
+      ],
+      "handle": "gartendeko-windspiele",
+      "titel": "Gartendeko, Windspiele & Vogelhäuser",
+      "beschreibung": "Gartenstecker, Skulpturen, Windspiele, Vogelhäuser und Futterstellen für Garten, Hof und Balkon."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Lighting",
+        "Arts & Entertainment > Party & Celebration",
+        "Home & Garden > Decor"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "garten[a-zäöüß]*(leucht|lampe|licht|beleucht)|aussen(beleucht|leucht|lampe|bereich)|wegeleucht|treppenleucht|strassenleucht|erdspiess|solar[a-zäöüß-]*(lampe|leucht|licht|laterne|strahler|spot|kerze|kugel)|solar-?(wand|tisch|klemm)lampe|solar.*lichterkette|lichterkette.*solar"
+      ],
+      "titel_nicht": [
+        "weihnacht|halloween"
+      ],
+      "handle": "garten-aussenleuchten",
+      "titel": "Garten- & Aussenleuchten",
+      "beschreibung": "Solar- und Gartenleuchten, Treppenleuchten, Wandlampen für draussen und Solar-Lichterketten für Garten, Hof und Balkon."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Kitchen & Dining",
+        "Electronics"
+      ],
+      "g_nicht": [
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware",
+        "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Griddles & Grills"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß-]*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
+      ],
+      "titel_nicht": [
+        "räucher",
+        "air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform",
+        "küchen-thermometer|back-geschenkset|grillplatten-set"
+      ],
+      "handle": "grills-grillzubehoer",
+      "titel": "Grills & Grillzubehör",
+      "beschreibung": "Holzkohle- und Klappgrills, Grillroste, Grillbesteck, Thermometer und Reinigung für Picknick, Camping und Zuhause.",
+      "unterfilter": [
+        {
+          "handle": "grills-geraete",
+          "titel": "Grills & Feuerstellen",
+          "titel_muss": [],
+          "titel_nicht": [
+            "rost(?![a-zäöüß])|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperaturmess|spiessli|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett(?![a-zäöüß])|-set|set "
+          ]
+        },
+        {
+          "handle": "grills-zubehoer",
+          "titel": "Grillzubehör & Besteck",
+          "titel_muss": [
+            "rost(?![a-zäöüß])|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperaturmess|spiessli|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett(?![a-zäöüß])|-set|set "
+          ],
+          "titel_nicht": []
+        }
+      ]
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Pool & Spa",
+        "Furniture > Outdoor Furniture",
+        "Home & Garden > Lawn & Garden > Outdoor Living > Outdoor Umbrella"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "pool-sonnenschutz-gartenmoebel",
+      "titel": "Pool, Sonnenschutz & Gartenmöbel",
+      "beschreibung": "Pools, Schwimmringe und Poolzubehör, Sonnensegel und Schirmhüllen, dazu Outdoor-Stühle, Picknicktische und Schutzhüllen für Outdoor-Möbel."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Parasols & Rain Umbrellas"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "regen-sonnenschirme",
+      "titel": "Regen- & Sonnenschirme",
+      "beschreibung": "Regenschirme und Sonnenschirme als Stock- oder Taschenschirm, automatisch oder zum Falten, teils mit UV-Schutz."
+    },
+    {
+      "g_prefix": [],
+      "g_nicht": [
+        "Hardware > Plumbing > Plumbing Fixtures > Sinks",
+        "Apparel",
+        "Toys",
+        "Animals",
+        "Vehicles",
+        "Health & Beauty",
+        "Luggage",
+        "Arts & Entertainment",
+        "Sporting Goods",
+        "Electronics",
+        "Baby & Toddler",
+        "Hardware > Tools >",
+        "Hardware > Tool Accessories",
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts",
+        "Home & Garden > Kitchen & Dining > Kitchen Appliances > Water Filters"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß]*(wasserhahn|küchenhahn|badezimmerhahn|wandhahn|armatur)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "durchlauferhitzer für|aufsatz|filter|thermometer|schutz|duscharmatur|rohrschlauch|baby"
+      ],
+      "handle": "wasserhaehne-armaturen",
+      "titel": "Wasserhähne & Armaturen",
+      "beschreibung": "Wasserhähne und Armaturen für Küche und Bad: ausziehbar, aus Kupfer oder Edelstahl, als Wand-, Becken- oder Waschtischarmatur."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Shower Parts",
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories > Bidet Faucets"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "duschkoepfe-handbrausen",
+      "titel": "Duschköpfe & Handbrausen",
+      "beschreibung": "Duschköpfe mit Filter und Wassersparfunktion, Handbrausen, Halterungen und Zubehör für die Dusche."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts",
+        "Hardware > Building Consumables > Chemicals > Drain Cleaners"
+      ],
+      "g_nicht": [
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Shower Parts",
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories > Bidet Faucets"
+      ],
+      "titel_muss": [],
+      "titel_nicht": [],
+      "handle": "abfluss-sanitaerzubehoer",
+      "titel": "Abfluss & Sanitärzubehör",
+      "beschreibung": "Abflüsse, Haarfänger, Abflussfilter, Rohrreiniger, Wasserhahn-Aufsätze und WC-Zubehör für Bad und Küche."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Plumbing > Plumbing Fittings & Supports",
+        "Hardware > Hardware Pumps",
+        "Hardware > Hardware Accessories > Pneumatic Hoses",
+        "Hardware > Tools",
+        "Hardware > Hardware Accessories"
+      ],
+      "g_nicht": [
+        "Hardware > Tools >"
+      ],
+      "titel_muss": [
+        "ventil|rohrschelle|kupplung|flansch|verbinder|adapter|o-ring|dichtungsset|pumpe|luftschlauch|luftrohr|(^|[^a-zäöüß])[a-zäöüß-]*rohr(?![a-zäöüß])|rohr-|armatur für wasserrohr|druckluft"
+      ],
+      "titel_nicht": [
+        "kabel|draht|löt|klemme|kunststoff-eckverbinder|lwl|led|spleiss|solar|schrumpf|thermostat|schloss|zange|ladeventil|wlan|smart|kupferverbinder|kfz|fahrrad|reifen|luftpumpe|abflussrohr|halterung"
+      ],
+      "handle": "rohre-ventile-pumpen",
+      "titel": "Rohre, Ventile & Pumpen",
+      "beschreibung": "Rohre, Verbinder, Kugelventile, Flansche und Kupplungen für Wasserleitungen sowie Wasser- und Dieselpumpen, Zapfventile und Druckluftschläuche."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Plumbing > Water Dispensing & Filtration",
+        "Home & Garden > Kitchen & Dining"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "^(?=.*wasser).*(filter|spender|dispenser|aufbereit|reiniger|enthärter)",
+        "vorfilter|rückspülfilter"
+      ],
+      "titel_nicht": [
+        "haustier|katze|hund|napf|futter|reiniger-flasche|trinkflasche"
+      ],
+      "handle": "wasserfilter-wasserspender",
+      "titel": "Wasserfilter & Wasserspender",
+      "beschreibung": "Wasserfilter, Filterkartuschen, Wasserspender und Aufbereitungsgeräte für Haushalt und Küche."
+    },
+    {
+      "g_prefix": [
+        "Hardware"
+      ],
+      "g_nicht": [
+        "Hardware > Tools >",
+        "Hardware > Tool Accessories",
+        "Hardware > Locks & Keys"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß]*(tür|möbel|schrank|schubladen)[a-zäöüß]*(griff|knopf|knauf|stopper|schliesser|schließer|öffner|puffer|schiene|rolle(?!r)|klinke|feststeller)",
+        "scharnier",
+        "dichtungsstreifen",
+        "holzfuss|holzfüsse",
+        "langer griff für türen",
+        "keramikgriff"
+      ],
+      "titel_nicht": [
+        "klingel|türspion|turspion|türsummer|sprechanlage|ratsche|messer|hammer|berührungslos|bohrhilfe|bohrlehre"
+      ],
+      "handle": "tueren-fenster-moebelbeschlaege",
+      "titel": "Türen, Fenster & Möbelbeschläge",
+      "beschreibung": "Möbelgriffe, Scharniere, Türstopper, Türschliesser, Schubladenschienen und Dichtungsstreifen für Türen und Fenster."
+    },
+    {
+      "g_prefix": [
+        "Hardware"
+      ],
+      "g_nicht": [
+        "Hardware > Tools >",
+        "Hardware > Tool Accessories",
+        "Hardware > Plumbing",
+        "Hardware > Power",
+        "Hardware > Locks",
+        "Hardware > Building"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])[a-zäöüß]*(schraube|schrauben|dübel|mutter|muttern|nägel|nagel|nietmuttern|niete|nieten|seilklemme|spanngurt|lasthaken|kabelschraube|schalhalter|expansionsschrauben|erweiterungsnagel|kunststoff-eckverbinder)(?![a-zäöüß])"
+      ],
+      "titel_nicht": [
+        "sortierbox|magnethülse|extraktor|entferner"
+      ],
+      "handle": "schrauben-duebel-befestigung",
+      "titel": "Schrauben, Dübel & Befestigung",
+      "beschreibung": "Schrauben-Sets, Dübel, Muttern, Nieten, Spanngurte und Haken für Montage und Werkstatt."
+    },
+    {
+      "g_prefix": [
+        "Hardware"
+      ],
+      "g_nicht": [
+        "Hardware > Tools >",
+        "Hardware > Tool Accessories"
+      ],
+      "titel_muss": [
+        "klebeband|klebstoff|dichtungsband|reparaturkleber|reparaturpaste|reparaturstift|lackstift|(^|[^a-zäöüß])[a-zäöüß]*kleber|[a-zäöüß]*leim(?![a-zäöüß])|dichtband|butyl|silikonband|fugenmasse"
+      ],
+      "titel_nicht": [
+        "ohne kleber|schaber|kleberolle|wetzstein|werkzeug|harz|schmuck|uv-|kopfhörer|aufkleber|sticker"
+      ],
+      "handle": "kleber-klebebaender-reparatur",
+      "titel": "Kleber, Klebebänder & Reparaturmasse",
+      "beschreibung": "Klebstoffe, doppelseitiges Klebeband, Dichtband und Reparaturstifte für Holz, Fliesen und Wand."
+    },
+    {
+      "g_prefix": [
+        "Hardware > Power & Electrical Supplies",
+        "Hardware > Tools"
+      ],
+      "g_nicht": [
+        "Hardware > Tools >"
+      ],
+      "titel_muss": [
+        "(^|[^a-zäöüß])(schalttafel|umschalter|zeitschalter|fusssteuerung|schutzschalter|steuerschalter|relais|hutschienen|lampenfassung|schrumpfschlauch|verdrahtungsklemme|kabelverbinder|drahtverbinder|lötverbinder|parallelverbinder|sicherungsbox|klemmen|led-verbinder)"
+      ],
+      "titel_nicht": [
+        "smart|wlan|wifi|wi-fi|zigbee|tuya|alexa|solar|panel|laderegler|motor|generator|roboter|abisolier"
+      ],
+      "handle": "elektro-installation",
+      "titel": "Elektro-Installation & Klemmen",
+      "beschreibung": "Schalter, Relais, Klemmen, Kabelverbinder, Sicherungsboxen und Schrumpfschlauch für Elektroinstallation und Werkstatt."
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Household Supplies > Pest Control"
+      ],
+      "g_nicht": [],
+      "titel_muss": [],
+      "titel_nicht": [
+        "türvorhang"
+      ],
+      "handle": "schaedlingsabwehr-insektenschutz",
+      "titel": "Schädlingsabwehr & Insektenfallen",
+      "beschreibung": "Mückenlampen, Insektenfallen, Mückenklatschen und Ultraschall-Vertreiber gegen Mücken, Fliegen, Mäuse und Vögel.",
+      "unterfilter": [
+        {
+          "handle": "schaedlinge-fallen-lampen",
+          "titel": "Mückenlampen, Fallen & Klatschen",
+          "titel_muss": [
+            "lampe|falle|fänger|klatsche|stecker|killer|vernichter|töten|schnapper|ködergel|köder"
+          ],
+          "titel_nicht": []
+        },
+        {
+          "handle": "schaedlinge-vertreiber",
+          "titel": "Vertreiber & Abwehr",
+          "titel_muss": [
+            "ultraschall|vertreiber|repeller|schreck|abwehr|vertreiben|abwehren|armband|pillen|insektenschutz|gegen wespen"
+          ],
+          "titel_nicht": [
+            "lampe|falle|klatsche"
+          ]
+        }
+      ]
+    },
+    {
+      "g_prefix": [
+        "Home & Garden > Decor > Window Treatments",
+        "Home & Garden > Household Supplies > Pest Control"
+      ],
+      "g_nicht": [],
+      "titel_muss": [
+        "fliegengitter|fliegenvorhang|mückennetz|mücken-türvorhang|moskito[a-zäöüß-]*(vorhang|tür|schutz)",
+        "^(?=.*(tür|vorhang|fenster|gitter|netz)).*(insektenschutz|insekten-schutz|mückenschutz)"
+      ],
+      "titel_nicht": [],
+      "handle": "fliegengitter-insektenschutz-vorhaenge",
+      "titel": "Fliegengitter & Insektenschutz-Vorhänge",
+      "beschreibung": "Magnetische Fliegengitter-Türvorhänge und Insektenschutz für Türen und Fenster, ohne Bohren montiert."
+    }
+  ],
+  "gruppen": [
+    {
+      "titel": "Werkzeug & Maschinen",
+      "handle": "bereich-werkzeug",
+      "kinder": [
+        "handwerkzeug",
+        "elektrowerkzeug",
+        "messwerkzeug",
+        "bohrer-saegen-zubehoer",
+        "werkzeugkoffer-sets",
+        "velo-werkzeug-reparatur",
+        "werkzeugtaschen-aufbewahrung",
+        "taschenlampen-kopflampen"
+      ]
+    },
+    {
+      "titel": "Garten & Pflanzen",
+      "handle": "bereich-garten-pflanzen",
+      "kinder": [
+        "gartengeraete-gartenpflege",
+        "bewaesserung-gartenschlauch",
+        "pflanztoepfe-pflanzenzubehoer",
+        "gartendeko-windspiele",
+        "garten-aussenleuchten",
+        "hochdruckreiniger-schaumkanonen"
+      ]
+    },
+    {
+      "titel": "Outdoor & Sommer",
+      "handle": "bereich-outdoor-sommer",
+      "kinder": [
+        "grills-grillzubehoer",
+        "pool-sonnenschutz-gartenmoebel",
+        "haengematten",
+        "regen-sonnenschirme"
+      ]
+    },
+    {
+      "titel": "Sanitär & Wasser",
+      "handle": "bereich-sanitaer-wasser",
+      "kinder": [
+        "wasserhaehne-armaturen",
+        "duschkoepfe-handbrausen",
+        "abfluss-sanitaerzubehoer",
+        "rohre-ventile-pumpen",
+        "wasserfilter-wasserspender"
+      ]
+    },
+    {
+      "titel": "Bau, Türen & Befestigung",
+      "handle": "bereich-bau-tueren",
+      "kinder": [
+        "tueren-fenster-moebelbeschlaege",
+        "schrauben-duebel-befestigung",
+        "kleber-klebebaender-reparatur",
+        "maler-spachtel-renovieren",
+        "elektro-installation",
+        "schloesser-safes",
+        "tuerklingeln-tuerspione"
+      ]
+    },
+    {
+      "titel": "Schutz & Sicherheit",
+      "handle": "bereich-schutz-sicherheit",
+      "kinder": [
+        "schaedlingsabwehr-insektenschutz",
+        "fliegengitter-insektenschutz-vorhaenge",
+        "alarm-sensoren-melder",
+        "arbeitsschutz-masken",
+        "ueberwachungskameras"
+      ]
+    }
+  ],
+  "ausserhalb": [
+    {
+      "text": "Von den vorhandenen Werkzeug-Kategorien getragen und deshalb nicht neu gebaut (610 Produkte des Universums, gemessen am Tag, Stand 27.10.2026, nach Abzug der Produkte, die eine neue Kategorie dieser Datei trägt): Handwerkzeug 319, Bohrer, Fräser & Zubehör 123, Messen & Prüfen 118, Elektrowerkzeug & Löten 38, Werkzeugsets & Koffer 12. Diese Kategorien stehen als Kinder in der Gruppe «Werkzeug & Maschinen», dazu als Verweis «Velo-Werkzeug & Reparatur» aus sport.json (20, alle gelesen: reine Velo-Werkzeuge). Das alte «Fahrrad- & Autowerkzeug» steht bewusst nicht mehr im Baum (siehe hinweise).",
+      "beispiele": [
+        "Ersatz-Akku für Elektrowerkzeuge (Nickel)",
+        "Induktionsheizspulen-Zubehör für Handgeräte",
+        "Rühr- und Beschichtungsdüse für Oberflächenbehandlung",
+        "Akku für Elektrowerkzeuge 10.8V/12V Li-ion"
+      ]
+    },
+    {
+      "text": "Von Kategorien anderer Bereichsdateien getragen (200 Produkte, gemessen am 27.10.2026 mit den Regeln aller 13 Dateien in bereiche/): computer:alarm-sensoren-melder 36, computer:schloesser-safes 26, computer:arbeitsschutz-masken 22, wohnen:grillpfannen-elektrogrills 19, unterhaltung:smart-home-geraete 17, computer:tuerklingeln-tuerspione 17, sport:picknick-kuehlrucksaecke 13, unterhaltung:solar-panels-ladegeraete 10, hobby-party:epoxidharz-giessformen 6, computer:ueberwachungskameras 4 und 30 Einzelfälle in wohnen, auto, sport, hobby-party und schmuck-uhren. Die computer-Kategorien stehen als Verweis in den Gruppen «Bau, Türen & Befestigung» und «Schutz & Sicherheit». Doppelzuordnungen mit den neuen Kategorien dieser Datei sind unten in hinweise (ÜBERSCHNEIDUNG) gemessen.",
+      "beispiele": [
+        "8W Solar Faltpanel für Outdoor-Stromversorgung",
+        "Faltbares 36W Solarpanel für Outdoor",
+        "Solarpanel-Halterung für Wohnmobile und Dächer",
+        "Mobiles Solar-Panel zum Laden (7W)"
+      ]
+    },
+    {
+      "text": "Hängematten (14): getragen von der vorhandenen Collection «Hängematten» (Titel-Regel «Hängematte», nicht Katze, nicht Yoga; 14 aktive Treffer im ganzen Katalog, also unter der Schwelle von 15). Die Collection steht als Kind in der Gruppe «Outdoor & Sommer»; sport.json führt dieselben Produkte als Unterfilter in «Campingmöbel & Hängematten». Offen bleiben 3 Artikel ohne das Wort «Hängematte» im Titel (Hängesessel, Truck-Hammock, Hammock-Abdeckung).",
+      "beispiele": [
+        "Hängematte mit Moskitonetz, Pop-up",
+        "Reise-Hängematte aus Fallschirm-Nylon",
+        "Hängematte mit Moskitonetz und Tarp 270×270 cm"
+      ]
+    },
+    {
+      "text": "Feuerzeuge und Anzünder (Google «Lighters & Matches», 16 Produkte ohne Sperr-Tag, dazu 3 mit Sperr-Tag 18plus). Die Feuerzeuge liegen heute im Handwerkzeug-Tag, sind aber kein Werkzeug. Ob daraus eine Kategorie (Outdoor/Camping) wird oder sie bei den Raucher-Artikeln bleiben, ist eine Entscheidung des Besitzers (Werbe-Richtlinien); deshalb keine Zuordnung (Regel «nie raten»).",
+      "beispiele": [
+        "Faltbares Sturmfeuerzeug mit Jet-Flamme",
+        "Handlicher Sturmfeuerzeug Brenner",
+        "Windsicheres Feuerzeug für Outdoor",
+        "Handlicher Outdoor-Stabfeuerzeug mit Holzgriff"
+      ]
+    },
+    {
+      "text": "Reifenpumpen und Kompressoren (Google «Compressors», 9; 5 trägt auto:reifen-luftpumpen, 4 sind offen: «Mini-Luftpumpe mit Akku», «Doppel-Port Luftkompressor», «Xiaomi Mijia tragbare Luftpumpe», «Reise-WLAN-Luftdruckpumpe») sowie Poliermaschinen (Google «Polishers & Buffers», 9; 7 mit «Auto» im Titel trägt auto:autopflege-politur-lack, offen sind «Elektrische Polier- und Schleifkopf für Holz» und «Kratzer-Reparaturmaschine für Lackoberflächen») liegen im Tag sort-werkzeug-hand, gehören aber zu Auto, Velo und Fahrzeugpflege.",
+      "beispiele": [
+        "Monkey Pump: Mobiler Reifenfüller mit Akku",
+        "Kabellose Reifen-Luftpumpe mit hoher Leistung",
+        "Kabellose Poliermaschine für dein Auto",
+        "Elektrische Polier- und Schleifkopf für Holz"
+      ]
+    },
+    {
+      "text": "Autoschlüssel-Hüllen (Google «Key Caps», 5) sind per g_nicht aus dem Universum genommen und werden von auto:auto-schluessel-etuis getragen; Fahrzeug-, Scooter- und Boot-Teile unter «Hardware > Tools» (7) bleiben ohne Zuordnung bzw. liegen in auto:e-scooter-e-bike-zubehoer.",
+      "beispiele": [
+        "Auto-Schlüsseletui aus Vollleder",
+        "Schutzhülle für Autoschlüssel aus Carbon",
+        "Wandhalterung für Scooter",
+        "Reifenreparaturset für Rad ohne Kleber"
+      ]
+    },
+    {
+      "text": "Lichtschalter, Dimmer, LED-Controller und Heizungs-Thermostate, die unterhaltung:smart-home-geraete nicht trifft (10, gemessen am 27.10.2026; die Regel dort nimmt Titel mit smart, zigbee, tuya, wlan, wifi, alexa oder gateway): Smart-Home bzw. Beleuchtung. Aufgabe für die Elektronik-Datei.",
+      "beispiele": [
+        "LED Dimmer Wireless RF Controller",
+        "Full Color Dual Output Controller",
+        "Berührungsempfindliches LCD-Thermostat",
+        "Intelligenter Heizkörperventil-Controller",
+        "Radiator-Thermostat"
+      ]
+    },
+    {
+      "text": "Unter der Schwelle von 15 und ohne Bezug zu einer anderen Kategorie: Nutztierhaltung (6), Vermessungsgerät und Wagenheber (3), Kamine und Feuerzange (3), Tisch- und Zimmerbrunnen (4; Wohnen: Deko), Leitern (2), Zaun und Sichtschutz (3), Moskitonetze für Camping, Bett und Baby (5, davon 2 in sport:wander-kletter-survival).",
+      "beispiele": [
+        "Futterport für Geflügel – 6er-Set",
+        "Auto Handkurbel-Wagenheber",
+        "Ovaler Tischkamin – Ethanol-Feuerstelle",
+        "Tischbrunnen «Flowing Water» Deko-Ornament",
+        "Teleskop-Leiter Dreiecks-Arbeitsplattform",
+        "Sichtschutz für Balkon und Garten (HDPE)",
+        "Faltbares Einzel-Moskitonetz für Studenten"
+      ]
+    },
+    {
+      "text": "Kochgeschirr, Küchenhelfer und Elektro-Tischgrills mit dem Wort Grill oder BBQ im Titel (31, bewusst nicht in «grills-grillzubehoer», weil Zubehör ≠ Gerät und Kochgeschirr zu «Töpfe, Pfannen & Backen» gehört): 29 trägt schon eine Kategorie einer anderen Datei (wohnen:grillpfannen-elektrogrills 19, wohnen:backformen-backbleche 2, wohnen:kuechengadgets 2, wohnen:siebe-muehlen-messhilfen 2, wohnen:pfannen-woks 1, wohnen:kochutensilien-sets 1, wohnen:kuechengeraete-zubehoer 1, sport:camping-kocher-gaskocher 1); offen bleiben 2.",
+      "beispiele": [
+        "Multifunktionaler Grill und Zerkleinerer",
+        "Bambus Grillplatten-Set – 3 Stück"
+      ]
+    },
+    {
+      "text": "Treffer-Wort der neuen Kategorien, aber andere Ware (10): Silikonform in Blumentopf-Form, Trockenblumen-Topf, Traumfänger mit Windspiel, Diamond-Painting-Windspiel, Klangspiel als Instrument, Stiftehalter; Wasserfilter für unterwegs (Strohhalme, Flasche) und Filter-Boxen aus Google «Electronics», deren Verwendung der Titel nicht belegt (nie raten); Weihnachts- und Halloween-Gartenlichter (gehören in die Saison-Sammlungen).",
+      "beispiele": [
+        "DIY Diamond Painting Windspiel",
+        "Sukkulenten-Blumentopf Silikonform",
+        "Trinkwasserfilter 14 L/h – 8-Lagen-Aktivkohle",
+        "Wasserfilterbox Low-Water-Level 3-in-1, 850 L, 8 W",
+        "Halloween-Zauberkrug Gartenlicht"
+      ]
+    },
+    {
+      "text": "Rest ohne Platz (216 von 1 648 Produkten des Universums, gemessen am 27.10.2026): 150 davon sind Fremdware und Einzelstücke unter der CJ-Sammelklasse «Hardware > Tools» ohne Werkzeug-Tag und ohne andere Kategorie (Nagel- und Haarpflege, Bastel-, Leder- und Schmuckbedarf, Küchen- und Badartikel, Magnete, Schneidematten, NFC-Karten, Labor-Kleinteile, Lötpaste); kein Titelwort kommt bei mehr als 3 dieser Produkte vor. Dazwischen stecken wenige Streuer, die zu Haus und Garten gehören («Regentonne» ist inzwischen in der Bewässerung, «Berührungsloser Türöffner & Knopfdrücker», «Hitzebeständiger Heat Gun mit Leder-Bauchtasche»). Die übrigen 66 verteilen sich auf Nutztierhaltung 6, Schalter und Dimmer 5, Zimmerbrunnen 4, Heizungsregler 4 und Einzelklassen (Ketten, Seile, Kamine, Lötzubehör, Kochgeschirr).",
+      "beispiele": [
+        "Hufeisen-Hakenkamm aus Kunststoff",
+        "Lamellenkamm zur Klimaanlagen-Reinigung",
+        "Mittelalterlicher Doppel-Schwertgurt aus PU-Leder",
+        "Monopoly Holzknopf, Naturholz",
+        "Urinal-Deo-Stopfen für Abflussrohre",
+        "Dentalmaterialien Sperian Heiss-Spitze",
+        "220V auf 12V 15A Stromwandler für Auto-Zubehör",
+        "Manueller Mini-Pfeilschneider mit Rotation",
+        "Kühlendes Sprühdüse für den Aussenbereich"
+      ]
+    },
+    {
+      "text": "Der Alt-Tag sort-werkzeug-beschlaege (296) hat nach dem Umbau 39 Produkte ohne Platz in irgendeiner Datei: Lichtschalter und Dimmer (6), Halterungen für Fernseher, Multimedia, Boot, Training und Schlauch (8), Schlösser mit der Google-Klasse «Hardware > Tools» (Schubladenschloss, Schiebetürschloss) und ein NFC-Chipkarten-Set, Zaun und Sichtschutz (3), Ladegurt- und Gummiseil (2), Ersatz- und Spezialteile (Magnethülse, Kurbelgriff, Schiebegriff, Haken-Entkoppler, Plattenträger, Reifenreparaturset, Nahtlöcher-Schneider, Kupferverbinder, Glasfaser-Spleissverbinder, Federziehhaken: 10), Gartenschlauch (1), Wandfliesen (1), Fingerroboter (2), Handkurbelgenerator, Kupferwaschbecken, Scheibenmotor. Wird das Sammelbecken im Menü ersetzt, verlieren diese Produkte ihren Menüplatz.",
+      "beispiele": [
+        "Ausziehbarer Gartenschlauch",
+        "Schubladenschloss mit Fortune Bird Design",
+        "Schiebetürschloss für Scheunentor – Edelstahl",
+        "Selbstklebende 3D Wandfliesen",
+        "Spanngerät für Stacheldrahtzäune",
+        "Kupferwaschbecken"
+      ]
+    }
+  ],
+  "hinweise": [
+    "GEGENLESER 27.10.2026 (unabhängige Zweitprüfung): alle 23 Kategorien mit allen 605 Mitgliedern gelesen (17 bis 48 je Kategorie), dazu die Lücke (alle 180 freien Titel ganz, die 254 von anderen Dateien getragenen und die 609 mit Werkzeug-Tag gegrept, 60 verteilte Titel aus messen.mjs) und je Kategorie Stichwort-Greps gegen den ganzen Katalog. Klare Fremdkörper nach Art des Produkts: 2 von 605 (0,3 %: ein Glasfaser-Verbinder, eine Velo-Werkzeugbox mit Doppelzuordnung), beide behoben; dazu 15 Grenzfälle (2,5 %), die bleiben und unten stehen. Behoben: Kind «fahrrad-auto-werkzeug» ersetzt; Chip «Grills & Feuerstellen» (ein Klappgrill stand im Zubehör); Chip «Vertreiber & Abwehr» (2 Produkte ohne Chip); Gartendeko findet zusammengesetzte Wörter (Schmetterlingsfutterstation, Garten-Windfahne); Elektro: LWL-Spleissverbinder raus, LED-Verbinder rein; Rohrreiniger und Regentonne über ihre Google-Klasse ergänzt; Namen «Wasserhähne & Armaturen» (10 von 39 sind Bad) und «Regen- & Sonnenschirme» (6 von 17 sind Sonnenschirme), Handles angepasst; Möbelroller und Bohrlehren aus den Türbeschlägen gehalten; «Nieten» in der Befestigungsregel ergänzt; veraltete Zahlen zu den Nachbardateien neu gemessen (Stand der Dateien 27.10.2026 0:15).",
+    "ABDECKUNG: messen.mjs zählt nur die neuen Kategorien: 608 von 1 648 Produkten des Universums (36,9 %). Dazu kommen 200 Produkte, die Kategorien anderer Bereichsdateien tragen, 610 Produkte der fünf vorhandenen Werkzeug-Kategorien und 14 Hängematten (vorhandene Collection): zusammen 1 432 von 1 648 = 86,9 %. Der Rest von 216 steht oben in «ausserhalb» mit Grund; davon sind 150 Fremdware oder Einzelstücke unter der CJ-Sammelklasse «Hardware > Tools». Ohne diese 150 liegt die Abdeckung bei 95,6 %.",
+    "ERSETZT: sanitaer-schrauben-beschlaege (Tag sort-werkzeug-beschlaege, 296 aktive Produkte). Ein Sammelbecken aus Wasserhähnen, Duschköpfen, Türklingeln, Schlössern, Smart-Schaltern, Solarpanels, Werkzeugtaschen, Schrauben, Klemmen und Fremdware. Die Ware verteilt sich so (gemessen 27.10.2026): 190 auf neue Kategorien dieser Datei (wasserhaehne-armaturen 35, tueren-fenster-moebelbeschlaege 25, abfluss-sanitaerzubehoer 23, duschkoepfe-handbrausen 21, schrauben-duebel-befestigung 21, rohre-ventile-pumpen 17, elektro-installation 17, werkzeugtaschen-aufbewahrung 13, wasserfilter-wasserspender 13, kleber-klebebaender-reparatur 3, bewaesserung-gartenschlauch 2), 35 auf computer.json (schloesser-safes 20, tuerklingeln-tuerspione 15), 22 auf unterhaltung.json (smart-home-geraete 12, solar-panels-ladegeraete 10), 10 auf auto.json und sport.json (auto-schluessel-etuis 5, starthilfe-batterie-wandler 2, e-scooter-e-bike-zubehoer 2, velo-werkzeug-reparatur 1), 39 ohne Platz (siehe ausserhalb). Der Menüpunkt «Sanitär, Schrauben & Beschläge» wird durch die Gruppen «Sanitär & Wasser» und «Bau, Türen & Befestigung» ersetzt.",
+    "ERSETZT: armaturen-duschen (Tag sort-armaturen, 57 aktive): Wasserhähne und Duschköpfe in einem Topf. Nachfolger: wasserhaehne-armaturen, duschkoepfe-handbrausen (dazu Abfluss und Wasserfilter); 55 von 57 liegen in neuen Kategorien dieser Datei (wasserhaehne-armaturen 36, duschkoepfe-handbrausen 15, wasserfilter-wasserspender 2, abfluss-sanitaerzubehoer 2), 2 ohne Platz («Aroma Duschkopf mit Filter», «Durchlauferhitzer für Armaturen mit Seitenanschluss»). wohnen.json führt in der Gruppe «Bad» keinen Verweis auf diese Kategorien (Stand 27.10.2026); Wasserhähne und Duschköpfe sind im Menü nur über «Sanitär & Wasser» erreichbar, solange wohnen.json nicht darauf verweist.",
+    "FREMDKÖRPER in einem vorhandenen Kind: handwerkzeug (Tag sort-werkzeug-hand, 376 aktive) enthält 31 Taschenlampen/Arbeitslampen, 16 Feuerzeuge, 9 Reifenpumpen/Kompressoren und 9 Poliermaschinen = 65 (17,3 %, nachgemessen). Die Taschenlampen bekommen mit «taschenlampen-kopflampen» ein eigenes Zuhause; die Regel werkzeugArt() in automation/lib/kategorien.mjs sollte Google «Flashlights & Headlamps», «Lighters & Matches», «Compressors» und «Polishers & Buffers» aus dem Tag sort-werkzeug-hand herausnehmen. Ebenso liegen in maler-spachtel-renovieren 25 Produkte, die heute im Handwerkzeug-Tag stehen (Farbroller, Spachtel, Spritzpistolen): vor dem Live-Gang entscheiden, ob der Tag sort-werkzeug-hand dort fällt.",
+    "FREMDKÖRPER in weiteren vorhandenen Kindern (alle Mitglieder gelesen, 27.10.2026): messwerkzeug (118) enthält 11 Waagen (9 Küchen-, Fein- und Taschenwaagen, die wohnen:kuechenwaagen-feinwaagen trägt, dazu Kranwaage und Kofferwaage) = 9,3 %; elektrowerkzeug (38) enthält 2 Haushaltsgeräte («Vakuumversiegelungsmaschine für Lebensmittel», «Elektrische Mini-Luftpumpe für Kompressionsbeutel») = 5,3 %; bohrer-saegen-zubehoer (125) enthält 4 Hobby- und Küchenteile («Mixer-Klinge aus Edelstahl für Thermomix TM21», zwei Plotter-Klingen von Roland, eine Schleifscheibe für Nähmaschinen; nach dem Titel beurteilt) = 3,2 %; werkzeugkoffer-sets hat nur 12 aktive Produkte (unter der Schwelle von 15) und keinen einzigen allgemeinen Werkzeugkoffer, sondern Spezialsets (Leder 2, Handy 2, Uhren, Fahrrad, Fahrzeugfolie, Fensterfolie, Ösen, Schweissen, Elektronik, Ratschensatz). Empfehlung: werkzeugkoffer-sets beim Live-Gang mit handwerkzeug zusammenlegen oder umbenennen («Spezial-Werkzeugsets»). Die Waagen sind zusätzlich als Doppelzuordnung mit wohnen zu lösen (Tag sort-werkzeug-mess dort herausnehmen).",
+    "VORSCHLAG Unterfilter für handwerkzeug (nicht in dieser Datei, weil «nur einordnen»): Google-Klassen im Tag: Pliers 57, Screwdrivers 47, Wrenches 46, Hardware > Tools 21, Hammers 15, Cutters 15, Sharpeners 11, Wire & Cable Hand Tools 8 (ohne die Fremdkörper-Klassen und die Malerwerkzeuge). Zangen, Schraubendreher und Schraubenschlüssel erreichen je ≥ 15 und tragen Chips.",
+    "ERSETZT: fahrrad-auto-werkzeug (Tag sort-werkzeug-fahrzeug, 45 aktive) steht NICHT mehr als Kind in «Werkzeug & Maschinen» (der Erstbauer hatte es nur eingeordnet): 17 von 45 sind kein Werkzeug (Fahrrad-Schnellspanner, Sattelstütze, Sattel, Pedale, Kassette, Schaltauge, Fahrradglocke, Bike-Griff, Bidonhalter- und Lenkerschrauben, Kettenschloss, Scheibenbremsenschloss, Handbremsen-Gangschloss, Wandhalterung für Fahrräder, LED-Nebelscheinwerfer, Schaum-Sprühpistole, Auto-Waschbürste) = 37,8 % (auto.json zählt 18 = 40 %), und alle 45 Mitglieder tragen bereits eine Kategorie in auto.json oder sport.json (gemessen 45 von 45; velo-werkzeug-reparatur 11, auto-reparatur-karosseriewerkzeug 12, velo-teile-zubehoer 13 u. a.). Das Kind ist durch den Verweis auf sport:velo-werkzeug-reparatur (20, alle sauber) ersetzt; das Auto-Werkzeug erscheint im Zweig «Auto & Motorrad» (auto:auto-reparatur-karosseriewerkzeug, 23). Wer das Werkzeug-Menü auch für Auto-Werkzeug will, hängt diese Kategorie als Verweis dazu (die Gruppe hat dann 9 Kinder).",
+    "KONFLIKT mit sport.json: taschenlampen-kopflampen (31 aktive, Google «Flashlights & Headlamps» und «Work Lights») und die vorhandene Collection «taschenlampen» (Tag kat-taschenlampen, 23 aktive, im Menü unter «Sport & Party», von sport.json als Kind übernommen) bilden dieselbe Ware. Gemessen: 11 der 31 neuen Produkte fehlen im Alt-Tag («LED Nackenleuchte für Joggen und Lesen», «Kopflampe mit Sensor» …), umgekehrt hat der Alt-Tag 3 Lampen, die die Google-Regel nicht trifft («Mini USB-Taschenlampe – Edelstahl» mit der Google-Klasse Handbags, «LED-Stirnlampe zum Laufen & Fischen» und «Multifunktionale Velo- und Stirnlampe» mit der Klasse Sport Safety Lights; eine Titel-Regel kann dafür nicht zusätzlich greifen, weil titel_muss mit g_prefix UND-verknüpft ist). Empfehlung: die neue Kategorie live nehmen, sport.json und das Menü darauf verweisen lassen, die 3 Lampen beim Tag-Umbau von Hand nachtragen; dann entfällt der Alt-Tag.",
+    "ERSETZT: taschenlampen (Tag kat-taschenlampen, 23 aktive, im Menü unter «Sport & Party»): unvollständig, es fehlen 11 der 31 Taschenlampen, Kopf- und Arbeitslampen (z. B. «LED Nackenleuchte für Joggen und Lesen»). Nachfolger: taschenlampen-kopflampen (siehe KONFLIKT).",
+    "ERSETZT (alte Titel-Regel-Collections, nicht im Menü, Treffer unter den aktiven Produkten, neu gemessen am 27.10.2026): pool und pool-schwimmen (je 30; nur 10 gehören zu Pool-Zubehör, der Rest sind 11 Schwimmbrillen (die 8 Kinder-Schwimmbrillen trägt sport:schwimmen-tauchen-wassersport), 4 Luftmatratzen und Schwimmringe mit Sperr-Tag fortura (schliesst das Werkzeug automatisch aus), 2 Baby-Schwimmhilfen, eine Poolzubehör-Tasche, ein Billard-Überwurf und ein Reparaturkleber) → pool-sonnenschutz-gartenmoebel; grill-bbq (27; 8 fehlen in der neuen Kategorie, weil es Grillplatten, Backformen, Air-Fryer-Roste und Ofen-Grillkörbe sind) → grills-grillzubehoer; garten-pflanzgefaesse (61; nur 22 sind Pflanzgefässe, 28 sind Vasen, 5 Bausteine und Modelle, der Rest Silikonformen, Malsets u. a., weil die Regel «vase» als Teilwort nimmt) → pflanztoepfe-pflanzenzubehoer; garten-leuchten (10, davon 9 in garten-aussenleuchten, das 26 Produkte findet) → garten-aussenleuchten; garten-deko-outdoor (19; 12 in der neuen Kategorie, 7 fehlen dort: Traumfänger, Diamond-Painting-Set, Weihnachts- und Halloween-Figuren, eine Solar-Glaskugel (→ garten-aussenleuchten) und eine Wespen-Attrappe (→ schaedlingsabwehr-insektenschutz)) → gartendeko-windspiele; garten-werkzeug-pflege (12; 8 in gartengeraete-gartenpflege, das 29 findet; dazu eine Giesskanne in der Bewässerung, eine Astschere mit Google-Klasse «Hardware > Tools» und 2 Spielzeug-Rasenmäher) → gartengeraete-gartenpflege.",
+    "vasen-blumentoepfe (Tag sort-vasen, 57 aktive, Menü «Wohnen & Garten»): 22 Töpfe wandern nach pflanztoepfe-pflanzenzubehoer, 5 sind Blumen-Bausteine (Spielzeug, Fremdkörper), der Rest sind Vasen (Verteilung gemessen 27.10.2026: pflanztoepfe-pflanzenzubehoer 22, wohnen:vasen-blumenvasen 19, spielzeug:bausteine-blumen-deko 5, hobby-party 3, tiere:tier-kratzmoebel 1, nirgends 7). Die Kategorie sollte «Vasen» heissen und die Töpfe abgeben.",
+    "solar-energie (Tag sort-solar, 148 aktive): 24 Solar-Leuchten und -Lichterketten wandern nach garten-aussenleuchten, 4 Solar-Vertreiber nach schaedlingsabwehr-insektenschutz, 3 Solar-Bewässerungen nach bewaesserung-gartenschlauch, 2 Solar-Gartenfiguren nach gartendeko-windspiele; der Rest sind Powerbanks, Panels, Radios, Rucksäcke, Uhren und Kameras (handy.json, unterhaltung.json, computer.json).",
+    "vorhaenge (Tag sort-vorhaenge, 102 aktiv): 17 magnetische Fliegenvorhänge wandern nach fliegengitter-insektenschutz-vorhaenge (die neue Kategorie hat 28 Produkte; die übrigen 11 tragen heute keinen Vorhang-Tag, weil sie als Fliegengitter-Tür oder Fenster-Netz keine Vorhänge sind). wohnen.json hat die Fliegenvorhänge aus «Vorhänge, Gardinen & Rollos» ausgenommen (gemessen: 0 gemeinsame Produkte).",
+    "Alt-Sammelbecken im Menü «Wohnen & Garten»: werkzeug-maschinen (Tag werkzeug, 888 aktive; die Mitglieder liegen in neuen Kategorien dieser Datei, in den fünf vorhandenen Werkzeug-Kindern und in Kategorien von auto.json, sport.json, computer.json, schmuck-uhren.json) und outdoor-garten (Tags outdoor, garten, camping; 2 507 Produkte laut Shop, aktiv: Tag outdoor 1 348). Beide werden durch die Gruppen dieser Datei ersetzt.",
+    "DOPPELTE MITGLIEDSCHAFT beim Live-Gang: Produkte der neuen Kategorien tragen noch ihre alten sort-Tags (z. B. die Werkzeugtaschen mit Handtaschen-Tags, die Fliegenvorhänge mit sort-vorhaenge, die Solar-Leuchten mit sort-solar). Die Tag-Phase muss die alten Tags dieser Produkte entfernen oder die alten Kategorien müssen dieselben Regeln verengen.",
+    "ZULASSUNG: elektro-installation (17) enthält Installationsmaterial (z. B. «Fehlerstrom-Schutzschalter TORD4», Klemmen, Sicherungsboxen). Ob diese Ware in der Schweiz angeboten werden darf (Zulassung, Prüfzeichen), ist nicht geprüft; das muss der Besitzer vor dem Live-Gang der Kategorie klären. Gleiches gilt für den «WC-Sitzdeckel im US-Standard (17 Zoll)» in abfluss-sanitaerzubehoer: ob er auf Schweizer Becken passt, sagt der Titel nicht.",
+    "TITEL zu prüfen (Skill titel-wahrheit): Titel wie «Ultraschall Mückenarmband für Schwangerschaft & Baby» sprechen Schwangere und Babys an; ob das Datenblatt das trägt, ist nicht geprüft. In schaedlingsabwehr-insektenschutz liegen 5 solche Armbänder. Ebenso nicht belegt: «Tauchgurt-Werkzeugtasche» (steht in werkzeugtaschen-aufbewahrung, die Schwesterprodukte «Tauchgurt …» sind Taucherzubehör; ob es eine Werkzeugtasche für den Tauchgurt ist, sagt der Titel nicht) und «Klappbare Stahlkabelschraube 316» (Art des Produkts unklar).",
+    "GRENZFÄLLE, die bleiben (15 von 605, 2,5 %; Art des Produkts passt zum Namen, nicht zur Gruppe oder zum Alltagsbegriff): rohre-ventile-pumpen: 5 Kraftstoff- und Druckluft-Artikel («Zapfventil für Diesel und Benzin», «Dayi Lithium-Batterie Dieselpumpe», «Druckluftfilter-Regler mit Wasserabscheider», «Luftrohr 2 m für Kompressor», «Geflochtene Nylon-Luftschlauch 180 cm») gehören nicht zu «Sanitär & Wasser» (5 von 18 = 28 %; ohne sie fiele die Kategorie auf 13 und unter die Schwelle); schrauben-duebel-befestigung: 3 Spanngurte (Verzurren, nicht Schrauben), «Lasthaken mit Widderkopf, 2 Tonnen» (Heben) und das «Muttern-Set für Auto-Reparaturen»; kleber-klebebaender-reparatur: «Doppelseitiges Klebeband für Handybildschirme» (Handy-Reparatur) und «Weisser Holzleim für Teppich-Tufting» (Hobby); tueren-fenster-moebelbeschlaege: «Bimini Deckscharnier» (Boot); werkzeugtaschen-aufbewahrung: «Tauchgurt-Werkzeugtasche» (Taucherzubehör?); elektro-installation: «Spannungssensitives Relais für Wohnmobile & Yachten» (Fahrzeug-Elektrik). Die Kategorien enthalten sonst keine Ware, die der Titel einem anderen Bereich zuordnet.",
+    "SCHWELLE: werkzeugtaschen-aufbewahrung (17), hochdruckreiniger-schaumkanonen (17), wasserfilter-wasserspender (18), rohre-ventile-pumpen (18), regen-sonnenschirme (17), kleber-klebebaender-reparatur (17) und elektro-installation (17) liegen nahe an 15; unter der Schwelle liegen die vorhandenen Kinder haengematten (14) und werkzeugkoffer-sets (12). Sinkt eine neue Kategorie unter 15 (Produkte gehen auf DRAFT), die Kategorie nicht anlegen oder ihr Produkt in die Nachbarin schieben.",
+    "Klassen aus Google, die der Katalog nicht hergibt (unter 15 echte Produkte) und deshalb nicht angelegt wurden: Pool & Spa allein (13 nach Google-Klasse; Pool-Zubehör 13, Sonnenschutz 9 und Outdoor-Möbel 6 sind einzeln unter der Schwelle und stehen deshalb zusammen in pool-sonnenschutz-gartenmoebel), Leitern (2 echte Leitern; die übrigen Titel mit «…leiter» sind Möbelgleiter, RC-Schaumgleiter und Taschen), Heizungs-Regler (9, davon 4 ohne Platz), Pumpen allein (3), Zäune und Sichtschutz (3), Kamine (3), Moskitonetze (5).",
+    "GOOGLE-KLASSE FALSCH, deshalb nicht in der passenden Kategorie (Regel kann sie nicht mitnehmen, weil titel_muss mit g_prefix UND-verknüpft ist; beim Tag-Umbau von Hand nachtragen): «Ausziehbarer Gartenschlauch» (Hardware > Tools) → bewaesserung-gartenschlauch, «Astschere für Obstbäume» (Hardware > Tools) → gartengeraete-gartenpflege, «Schubladenschloss mit Fortune Bird Design» und «Schiebetürschloss für Scheunentor» (Hardware > Tools) → computer:schloesser-safes, «Mini Slim Automatischer UV-Regenschirm mit 6 Rippen» (Google «Kitchen & Dining») und «Faltbarer Regenschirm» (Google «Household Supplies») → regen-sonnenschirme, «Bidet-Aufsatz für die Toilette» und «Bidet-Aufsatz mit Gesäss- und Damendusche» (ohne Google-Klasse) → duschkoepfe-handbrausen, «Aroma Duschkopf mit Filter» (Google «Bathroom Accessories») → duschkoepfe-handbrausen, 3 Taschenlampen (siehe KONFLIKT).",
+    "REGELN mit g_nicht «Hardware > Tools >»: alle Regeln mit g_prefix «Hardware» lassen die Unterklassen der Werkzeug-Kategorien bewusst aus und nehmen nur die Hardware-Einzelware (Google «Hardware > Tools» ohne Unterklasse, «Hardware Accessories», «Building Consumables»). Ändert die Engine die Google-Zuordnung dieser Klasse, müssen die Regeln neu gemessen werden. Einzelne Ausschluss-Regeln und Präfixe ohne aktuellen Treffer (g_nicht in wasserhaehne-armaturen, schrauben-duebel-befestigung, tueren-fenster-moebelbeschlaege, pflanztoepfe-pflanzenzubehoer; Präfix «Decor» in pflanztoepfe-pflanzenzubehoer und garten-aussenleuchten, «Hardware > Tools» in pflanztoepfe-pflanzenzubehoer) bleiben als Wächter für spätere Importe stehen; ein Wächter ohne Treffer ist kein Fehler, solange er nichts Richtiges ausschliesst (gemessen: er schliesst heute nichts aus).",
+    "GRUPPEN: sechs Gruppen mit 8 / 6 / 4 / 5 / 7 / 5 Kindern. Verweise auf Vorhandenes oder auf andere Bereichsdateien (nicht in dieser Datei gebaut): handwerkzeug, elektrowerkzeug, messwerkzeug, bohrer-saegen-zubehoer, werkzeugkoffer-sets, haengematten (Collections/Kategorien des Shops) sowie velo-werkzeug-reparatur (sport.json), schloesser-safes, tuerklingeln-tuerspione, alarm-sensoren-melder, arbeitsschutz-masken, ueberwachungskameras (computer.json). Fällt eine der Verweis-Kategorien in der anderen Datei weg, entfällt der Verweis. Die Gruppe «Outdoor & Sommer» hat nur vier Kinder, weil Pool, Sonnenschutz und Outdoor-Möbel einzeln unter 15 liegen.",
+    "UNTERFILTER: zwei Kategorien tragen aktive Chips: schaedlingsabwehr-insektenschutz (Mückenlampen, Fallen & Klatschen 23 / Vertreiber & Abwehr 25; kein Produkt in beiden, keines in keinem) und grills-grillzubehoer (Grills & Feuerstellen 16 / Grillzubehör & Besteck 32; der Grill-Chip steht an der Schwelle von 15 und fällt weg, sobald zwei Grills auf DRAFT gehen). Gemessene Teilungen, die an der Schwelle scheitern (Treffer / übrige): Taschenlampen nach Stirn-/Kopflampen 14 / 17, Gartengeräte nach Handgeräten 23 / 6, Türbeschläge nach Möbel 13 / 13, Malerbedarf nach Farbe und Spritzen 18 / 11, Fliegengitter nach Vorhang 17 / 11. Wasserhähne nach «Küche» 15 / 24 wären rechnerisch möglich, aber die Titel der übrigen sagen nicht, ob Küche oder Bad (Regel «nie raten»).",
+    "ÜBERSCHNEIDUNG mit anderen Bereichsdateien (neu gemessen am 27.10.2026 mit allen 13 Dateien, 26 Doppelzuordnungen): hochdruckreiniger-schaumkanonen → auto:autowaesche-reinigung 6 und bewaesserung-gartenschlauch → auto:autowaesche-reinigung 2 (Auto-Waschpistolen und -Düsen); grills-grillzubehoer → sport:camping-geschirr-kochsets 9 und sport:camping-kocher-gaskocher 1 (Camping-Grills); pool-sonnenschutz-gartenmoebel → sport:picknick-kuehlrucksaecke 3 (Picknickmatten) und sport:campingmoebel-haengematten 1; schrauben-duebel-befestigung → auto 2 (Motorrad-Spanngurt, Muttern-Set) und sport:wander-kletter-survival 1; gartendeko-windspiele → hobby-party:ornamente-anhaenger-dekofiguren 1. Alle sind Zweitsichten über den Titel (Camping, Auto, Picknick) und gewollt; mit wohnen.json gibt es 0 gemeinsame Produkte (wohnen.json nimmt die Klassen Schädlingsabwehr, Fliegengitter, Armaturen, Duschköpfe, Pflanztöpfe, Gartendeko, Gartenleuchten, Wasserfilter und Outdoor-Grills aus ihrem Universum).",
+    "ERLEDIGT (war ENTSCHEIDUNG): die Doppelung von schaedlingsabwehr-insektenschutz und fliegengitter-insektenschutz-vorhaenge mit einer wohnen-Kategorie «insektenschutz-schaedlingsabwehr» besteht nicht mehr, weil wohnen.json diese Kategorie nicht mehr führt (gemessen: 0 gemeinsame Produkte). Die Schädlingsabwehr gehört auftragsgemäss in diesen Bereich.",
+    "Andere Dateien über Namen aus dieser Datei: wohnen.json nennt in «NACHBAR-ABSTIMMUNG» die Klassen, die haus-bau trägt; auto.json und sport.json nennen hochdruckreiniger-schaumkanonen, bewaesserung-gartenschlauch, grills-grillzubehoer, pool-sonnenschutz-gartenmoebel und schrauben-duebel-befestigung. Wird in dieser Datei ein Handle geändert (hier geschehen: wasserhaehne-armaturen, regen-sonnenschirme), müssen die Texte dort nachgezogen werden; als Kind einer Gruppe in einer anderen Datei steht keiner der beiden."
+  ]
+}
