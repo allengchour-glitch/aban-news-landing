@@ -103,6 +103,12 @@ ist('KI antwortet, Übersetzung unbrauchbar: 7 Tage zurückgestellt', [r.rc, r.L
 r = lauf({ produkte: { a: P('unsicher') }, ki: 'ok', kiMap: { 'Moonlight Fantasy': 'Mondlichtfantasie', 'Starry Dream': 'Sternentraum' } });
 ist('KI übersetzt brauchbar: Produkt wird geschrieben', [r.rc, eng(r), art(r, 'productSet').length], [0, ['a:GESCHRIEBEN'], 1]);
 
+// KI bewusst aus (KEIN_KI_UEBERSETZEN=1, vom Workflow gesetzt wenn der Probeaufruf scheitert): unsichere Produkte nur 20 Stunden zurückgestellt, ohne Fracht, kein Abbruch; sichere laufen weiter
+r = lauf({ produkte: { a: P('unsicher'), b: P(), c: P('unsicher'), d: P('unsicher'), e: P('unsicher'), f: P('unsicher'), g: P('unsicher'), h: P() }, ki: 'down' }, { env: { KEIN_KI_UEBERSETZEN: '1', MAX_KI_FOLGE: '2' } });
+ist('KI aus: kein Abbruch trotz MAX_KI_FOLGE=2, sichere Produkte werden geschrieben', [r.rc, eng(r).filter(x => x.endsWith(':GESCHRIEBEN')), eng(r).filter(x => x.endsWith(':UEBERSPRUNGEN')).length], [0, ['b:GESCHRIEBEN', 'h:GESCHRIEBEN'], 6]);
+ist('KI aus: unsichere nur «vorläufig» (20 h) mit eigenem Grund', r.L.filter(x => x.e === 'UEBERSPRUNGEN').every(x => x.g.startsWith('vorläufig: KI-Dienst aus')), true);
+ist('KI aus: weder die KI noch die CJ-Fracht wurde für die unsicheren Produkte gefragt', [art(r, 'gemini').length, art(r, 'cjFracht').map(x => x.handle).sort()], [0, ['b', 'h']]);
+
 // ── 7) Frisches Lesen unmittelbar vor dem Schreiben
 r = lauf({ produkte: { a: P() }, frisch: { a: { updatedAt: '2026-10-26T10:05:00Z' } } });
 ist('Produkt seit dem Plan geändert: vorläufig übersprungen, NICHT geschrieben', [r.rc, r.L.map(x => `${x.e}:${x.g.startsWith('vorläufig: seit dem Plan verändert') && x.g.includes('updatedAt')}`), art(r, 'productSet').length], [0, ['UEBERSPRUNGEN:true'], 0]);
