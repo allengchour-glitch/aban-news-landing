@@ -30,7 +30,13 @@
  *   <pid> · <ISO> · FEHLER · <Grund>
  * dropship/grind2_freigabe_ledger.txt:  <handle> · <ISO> · FREI | FEHLER | ZURUECK | ZURUECK_FEHLGESCHLAGEN · <Detail>      (ZURUECK steht nur, wenn der Shop DRAFT zurückliest)
  *
- * ANNAHMEN UND SETZUNGEN (keine Messungen — der Besitzer bestätigt sie; Zahlen aus der Probe vom 27.10.2026 stehen in /tmp/grind2/bau/probe.md):
+ * ENTSCHIEDEN (27.10.2026, Besitzer: «grind 2 welche frage schon wieder» — er will dazu NICHT mehr gefragt werden; Claude trifft die Entscheide und meldet nur das Ergebnis):
+ *   · Heikelware (Laser, Medizin, Pyro, Selbstverteidigung, Waffen, Tabak, Erwachsene) und Kinder-/Babyware bleiben GESPERRT (endgültig, nie automatisch ausgewählt oder veröffentlicht): der sichere Standard gilt als bestätigt.
+ *   · Mindestmarge: hart 25 % Brutto (MARGE_HART), Warnung unter 30 %, Standard-Aufschlag 1,45 (≥ 30,74 %). NETTO nach Shopify-Zahlungsgebühr (2,99 % + CHF 0.35, GEMESSEN an Bestellung #1029) bleibt damit bei Preisen ab CHF 14.90 mindestens 25,4 %
+ *     (Marge − 2,99 % − 0,35/Preis); eine zusätzliche Netto-Sperre würde bei den Standard-Einstellungen nie greifen, die Brutto-Sperre fängt Fehleinstellungen ab. Rückgabe-/Retourenkosten sind UNBEKANNT und nicht eingerechnet.
+ *   · Die Setzungen unten gelten als bestätigt; sie ändern sich nur nach Messung (Probe, Verkaufszahlen), nicht durch Rückfrage.
+ *
+ * ANNAHMEN UND SETZUNGEN (keine Messungen — bis zum 27.10.2026 stand hier «der Besitzer bestätigt sie»; jetzt gilt der Entscheid oben; Zahlen aus der Probe vom 27.10.2026 stehen in /tmp/grind2/bau/probe.md):
  *   · Die Fracht wird je GEWICHTSKLASSE gemessen (leichteste, schwerste und bis zu zwei Zwischenstufen, höchstens FRACHT_KLASSEN = 4 Aufrufe à 10 Punkte; spannt das Gewicht weniger als Faktor 2, genügt die
  *     schwerste). Jede Variante bekommt die Fracht der nächst schwereren gemessenen Klasse (nie zu billig). Ist nur die leichteste Variante lieferbar, wird das Produkt zurückgestellt.
  *   · LIEFERZEIT: gepreist wird mit der günstigsten normalen Linie, deren längste Laufzeit höchstens MAX_LIEFERTAGE (20) beträgt — die Produktseite verspricht «ca. 10–20 Tage». SETZUNG; GEMESSEN
