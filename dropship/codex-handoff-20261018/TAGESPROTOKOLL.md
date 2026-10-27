@@ -385,6 +385,9 @@ Tageszwischenstand: erster regulärer Kennzahl-/Flowread am Morgen, erneuter Kon
 | Abend / ein Verkaufsentwurf und Übergabe | Klaviyo-Konto, TTuuTS→VZnxDz und HTML frisch eng gelesen; bestehenden Zwei-Zeilen-Service-Diff exakt gegen Quelle geprüft und Abendpaket samt konsolidierter Tagestabelle gesichert | Quelle unverändert, Haupt-CTA/WELCOME10/Tokens/Tracking und übrige Bytes erhalten. Ein Entwurf, kein Template-/Flowwrite, Mail-/Testversand oder Rabatt-/Budgetchange. CJ-Helfer vorhanden, lokale CJ-Credentials fehlen; keine Actions-Secrets/Workflows. DNS-/Footerfreigaben erhalten, keine neue Umsetzung. Nächster Schritt: Originalaufnahmen exakt zuordnen/abnehmen und nächsten kleinen Produktquellen-/Textbatch fortsetzen |
 
 
+| Follower / konkrete Vorbereitung | Nach «suche follower» bestehende Tagesdaten auf tatsächliche Followerfelder geprüft, zwei aktuelle offizielle Meta-/YouTube-Quellen gelesen und FB-/YouTube-Follow-/Abo-Captionzeilen plus Messfelder vorbereitet [LUXESTYLE_FOLLOWER_FOKUS_20261027] | Bestände/Zuwächse unbekannt, keine Followerwerte heute abgefragt und keine aus Views errechnet. Gültige Feld-IDs sind Metadaten. Zwei Recherche-/Messbelege gespeichert und exakt zurückgelesen. Shop/Metricool passend; keine weiteren Analytics, Kontakte, Posts, Follows, Profil-/Budget-/Zeitplanänderung. Nächster Schritt: bestehender Master erst nach allen Gates; Followerfelder im nächsten regulären Read prüfen, kein neuer Lauf eingerichtet |
+
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
