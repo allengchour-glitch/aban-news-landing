@@ -39,6 +39,7 @@ on:
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
+      - 'dropship/pod-auswahl/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
@@ -95,6 +96,7 @@ jobs:
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
+            dropship/pod-auswahl
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
           sparse-checkout-cone-mode: false
@@ -125,6 +127,8 @@ jobs:
           node --check automation/cj_video_produkte.mjs
           node --check automation/lib/cj_video.mjs
           node --check automation/material_nachtragen.mjs
+          node --check automation/pod_auswahl.mjs
+          node --check automation/printful_sync.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -198,6 +202,15 @@ jobs:
           node automation/cj_varianten_nachziehen_lauf_test.mjs
           node automation/lib/auswahl_abgleich_test.mjs
           node tools/versandregel_test.mjs
+          # «Selbst gestalten»: Material + Modelle, Preisregel, Platzierung der Druckdatei im Printful-Auftrag (27.10.2026). Daten: dropship/pod-auswahl/*.json (kein /tmp nötig).
+          node automation/lib/pod_preise_test.mjs
+          node automation/lib/printful_platzierung_test.mjs
+          node automation/lib/pod_auswahl_plan_test.mjs
+          node automation/lib/pod_auswahl_daten_test.mjs
+          node automation/lib/pod_auswahl_schreiben_test.mjs
+          node automation/pod_auswahl_test.mjs
+      - name: Mutationsprobe «Selbst gestalten» (39 absichtliche Fehler, alle müssen rot werden)
+        run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs

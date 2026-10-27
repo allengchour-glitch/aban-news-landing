@@ -1,0 +1,3852 @@
+{
+ "quelle": "Printful GET /products/{id} (öffentlich), Schnappschuss /tmp/pod/katalog_pod.json",
+ "stand": "2026-10-27",
+ "sha256Quelle": "57d255c95cb0a71a58736c72f717eebe92428b086a2bdabd5569c8d20f5b9c3c",
+ "eu": "avail.EU (availability_status der Region EU)",
+ "farbe": "Textilien nur in White",
+ "produkte": {
+  "3": {
+   "id": 3,
+   "title": "Canvas (in)",
+   "type": "CANVAS",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 19296,
+     "name": "Canvas (in) (10″×10″)",
+     "size": "10″×10″",
+     "color": null,
+     "price": "16.83",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19297,
+     "name": "Canvas (in) (10″×20″)",
+     "size": "10″×20″",
+     "color": null,
+     "price": "26.01",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19298,
+     "name": "Canvas (in) (11″×14″)",
+     "size": "11″×14″",
+     "color": null,
+     "price": "17.34",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19299,
+     "name": "Canvas (in) (12″×18″)",
+     "size": "12″×18″",
+     "color": null,
+     "price": "24.99",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19300,
+     "name": "Canvas (in) (12″×24″)",
+     "size": "12″×24″",
+     "color": null,
+     "price": "28.56",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19301,
+     "name": "Canvas (in) (12″×36″)",
+     "size": "12″×36″",
+     "color": null,
+     "price": "47.43",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19302,
+     "name": "Canvas (in) (14″×14″)",
+     "size": "14″×14″",
+     "color": null,
+     "price": "19.38",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19303,
+     "name": "Canvas (in) (16″×24″)",
+     "size": "16″×24″",
+     "color": null,
+     "price": "31.11",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19304,
+     "name": "Canvas (in) (16″×32″)",
+     "size": "16″×32″",
+     "color": null,
+     "price": "53.55",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19305,
+     "name": "Canvas (in) (16″×48″)",
+     "size": "16″×48″",
+     "color": null,
+     "price": "60.18",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19306,
+     "name": "Canvas (in) (18″×18″)",
+     "size": "18″×18″",
+     "color": null,
+     "price": "29.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19307,
+     "name": "Canvas (in) (18″×26″)",
+     "size": "18″×26″",
+     "color": null,
+     "price": "35.19",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19308,
+     "name": "Canvas (in) (20″×20″)",
+     "size": "20″×20″",
+     "color": null,
+     "price": "34.68",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19309,
+     "name": "Canvas (in) (20″×24″)",
+     "size": "20″×24″",
+     "color": null,
+     "price": "35.65",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19310,
+     "name": "Canvas (in) (20″×28″)",
+     "size": "20″×28″",
+     "color": null,
+     "price": "35.70",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19311,
+     "name": "Canvas (in) (20″×30″)",
+     "size": "20″×30″",
+     "color": null,
+     "price": "36.72",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19312,
+     "name": "Canvas (in) (20″×40″)",
+     "size": "20″×40″",
+     "color": null,
+     "price": "59.16",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19313,
+     "name": "Canvas (in) (20″×60″)",
+     "size": "20″×60″",
+     "color": null,
+     "price": "99.96",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19314,
+     "name": "Canvas (in) (24″×24″)",
+     "size": "24″×24″",
+     "color": null,
+     "price": "42.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19315,
+     "name": "Canvas (in) (24″×30″)",
+     "size": "24″×30″",
+     "color": null,
+     "price": "50.49",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19316,
+     "name": "Canvas (in) (24″×32″)",
+     "size": "24″×32″",
+     "color": null,
+     "price": "51.00",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19317,
+     "name": "Canvas (in) (24″×48″)",
+     "size": "24″×48″",
+     "color": null,
+     "price": "69.36",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19318,
+     "name": "Canvas (in) (26″×26″)",
+     "size": "26″×26″",
+     "color": null,
+     "price": "55.08",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19319,
+     "name": "Canvas (in) (26″×40″)",
+     "size": "26″×40″",
+     "color": null,
+     "price": "88.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19320,
+     "name": "Canvas (in) (28″×28″)",
+     "size": "28″×28″",
+     "color": null,
+     "price": "56.10",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19321,
+     "name": "Canvas (in) (28″×40″)",
+     "size": "28″×40″",
+     "color": null,
+     "price": "68.34",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19322,
+     "name": "Canvas (in) (30″×30″)",
+     "size": "30″×30″",
+     "color": null,
+     "price": "61.20",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19323,
+     "name": "Canvas (in) (30″×40″)",
+     "size": "30″×40″",
+     "color": null,
+     "price": "64.26",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19324,
+     "name": "Canvas (in) (30″×60″)",
+     "size": "30″×60″",
+     "color": null,
+     "price": "114.24",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19325,
+     "name": "Canvas (in) (32″×32″)",
+     "size": "32″×32″",
+     "color": null,
+     "price": "55.08",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19326,
+     "name": "Canvas (in) (32″×48″)",
+     "size": "32″×48″",
+     "color": null,
+     "price": "90.78",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19327,
+     "name": "Canvas (in) (36″×36″)",
+     "size": "36″×36″",
+     "color": null,
+     "price": "88.74",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19328,
+     "name": "Canvas (in) (37″×37″)",
+     "size": "37″×37″",
+     "color": null,
+     "price": "137.70",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19329,
+     "name": "Canvas (in) (40″×55″)",
+     "size": "40″×55″",
+     "color": null,
+     "price": "120.36",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19330,
+     "name": "Canvas (in) (40″×60″)",
+     "size": "40″×60″",
+     "color": null,
+     "price": "137.70",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19291,
+     "name": "Canvas (in) (6″×6″)",
+     "size": "6″×6″",
+     "color": null,
+     "price": "13.72",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19293,
+     "name": "Canvas (in) (8″×10″)",
+     "size": "8″×10″",
+     "color": null,
+     "price": "15.81",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19294,
+     "name": "Canvas (in) (8″×12″)",
+     "size": "8″×12″",
+     "color": null,
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19292,
+     "name": "Canvas (in) (8″×8″)",
+     "size": "8″×8″",
+     "color": null,
+     "price": "15.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19295,
+     "name": "Canvas (in) (9″×12″)",
+     "size": "9″×12″",
+     "color": null,
+     "price": "16.32",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 823,
+     "name": "Canvas 12″×12″",
+     "size": "12″×12″",
+     "color": null,
+     "price": "21.93",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5,
+     "name": "Canvas 12″×16″",
+     "size": "12″×16″",
+     "color": null,
+     "price": "23.41",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 824,
+     "name": "Canvas 16″×16″",
+     "size": "16″×16″",
+     "color": null,
+     "price": "28.05",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6,
+     "name": "Canvas 16″×20″",
+     "size": "16″×20″",
+     "color": null,
+     "price": "28.56",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 7,
+     "name": "Canvas 18″×24″",
+     "size": "18″×24″",
+     "color": null,
+     "price": "33.66",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 825,
+     "name": "Canvas 24″×36″",
+     "size": "24″×36″",
+     "color": null,
+     "price": "52.02",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "71": {
+   "id": 71,
+   "title": "Unisex Staple T-Shirt | Bella + Canvas 3001",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_left:Left chest",
+    "embroidery_chest_center:Center chest",
+    "embroidery_sleeve_left_top:Left sleeve top",
+    "embroidery_sleeve_right_top:Right sleeve top",
+    "default:Front print",
+    "front_dtf:Front print",
+    "front_large:Large front print",
+    "back:Back print",
+    "back_dtf:Back print",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "short_sleeve_left_dtf:Short left sleeve",
+    "short_sleeve_right_dtf:Short right sleeve",
+    "label_inside:Inside label",
+    "label_outside:Outside label",
+    "label_inside_dtf:Inside label",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 4015,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "13.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5294,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "15.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5309,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "17.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12872,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 5XL)",
+     "size": "5XL",
+     "color": "White",
+     "price": "19.92",
+     "in_stock": true,
+     "eu": null
+    },
+    {
+     "id": 4013,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "11.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 4012,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "11.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 4011,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "11.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 4014,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "11.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9526,
+     "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / XS)",
+     "size": "XS",
+     "color": "White",
+     "price": "11.92",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "146": {
+   "id": 146,
+   "title": "Unisex Heavy Blend Hoodie | Gildan 18500",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_center:Center chest",
+    "embroidery_chest_left:Left chest",
+    "embroidery_wrist_left:Left wrist",
+    "embroidery_wrist_right:Right wrist",
+    "default:Front print",
+    "back:Back print",
+    "label_outside:Outside label",
+    "sleeve_right:Right sleeve",
+    "sleeve_left:Left sleeve",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "label_inside_dtf:Inside label",
+    "long_sleeve_right_dtf:Long right sleeve",
+    "long_sleeve_left_dtf:Long left sleeve",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 5526,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "24.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5527,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "26.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5528,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "28.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5529,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / 5XL)",
+     "size": "5XL",
+     "color": "White",
+     "price": "30.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5524,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "22.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5523,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "22.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5522,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "22.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 5525,
+     "name": "Gildan 18500 Unisex Heavy Blend Hooded Sweatshirt (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "22.63",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "171": {
+   "id": 171,
+   "title": "Premium Luster Photo Paper Poster (in)",
+   "type": "POSTER",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 19524,
+     "name": "Premium Luster Photo Paper Poster (in) (20″×30″)",
+     "size": "20″×30″",
+     "color": null,
+     "price": "17.95",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19523,
+     "name": "Premium Luster Photo Paper Poster (in) (5″×7″)",
+     "size": "5″×7″",
+     "color": null,
+     "price": "7.80",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19525,
+     "name": "Premium Luster Photo Paper Poster (in) (A1 (23.3″×33.1″))",
+     "size": "A1 (23.3″×33.1″)",
+     "color": null,
+     "price": "13.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19526,
+     "name": "Premium Luster Photo Paper Poster (in) (A2 (16.5″×23.3″))",
+     "size": "A2 (16.5″×23.3″)",
+     "color": null,
+     "price": "10.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6872,
+     "name": "Premium Luster Photo Paper Poster 10″×10″",
+     "size": "10″×10″",
+     "color": null,
+     "price": "10.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48858,
+     "name": "Premium Luster Photo Paper Poster 10″×24″",
+     "size": "10″×24″",
+     "color": null,
+     "price": "13.94",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48869,
+     "name": "Premium Luster Photo Paper Poster 11.69″×16.54″ (A3)",
+     "size": "11.69″×16.54″",
+     "color": null,
+     "price": "21.15",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 14028,
+     "name": "Premium Luster Photo Paper Poster 11″×14″",
+     "size": "11″×14″",
+     "color": null,
+     "price": "12.33",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48859,
+     "name": "Premium Luster Photo Paper Poster 11″×17″",
+     "size": "11″×17″",
+     "color": null,
+     "price": "13.37",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6873,
+     "name": "Premium Luster Photo Paper Poster 12″×12″",
+     "size": "12″×12″",
+     "color": null,
+     "price": "11.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6875,
+     "name": "Premium Luster Photo Paper Poster 12″×16″",
+     "size": "12″×16″",
+     "color": null,
+     "price": "13.53",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6876,
+     "name": "Premium Luster Photo Paper Poster 12″×18″",
+     "size": "12″×18″",
+     "color": null,
+     "price": "13.79",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6874,
+     "name": "Premium Luster Photo Paper Poster 14″×14″",
+     "size": "14″×14″",
+     "color": null,
+     "price": "12.48",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6877,
+     "name": "Premium Luster Photo Paper Poster 16″×16″",
+     "size": "16″×16″",
+     "color": null,
+     "price": "14.05",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6878,
+     "name": "Premium Luster Photo Paper Poster 16″×20″",
+     "size": "16″×20″",
+     "color": null,
+     "price": "14.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48860,
+     "name": "Premium Luster Photo Paper Poster 16″×24″",
+     "size": "16″×24″",
+     "color": null,
+     "price": "16.19",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6879,
+     "name": "Premium Luster Photo Paper Poster 18″×18″",
+     "size": "18″×18″",
+     "color": null,
+     "price": "15.61",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6880,
+     "name": "Premium Luster Photo Paper Poster 18″×24″",
+     "size": "18″×24″",
+     "color": null,
+     "price": "16.65",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48861,
+     "name": "Premium Luster Photo Paper Poster 20″×20″",
+     "size": "20″×20″",
+     "color": null,
+     "price": "16.34",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48862,
+     "name": "Premium Luster Photo Paper Poster 20″×24″",
+     "size": "20″×24″",
+     "color": null,
+     "price": "17.02",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48863,
+     "name": "Premium Luster Photo Paper Poster 20″×28″",
+     "size": "20″×28″",
+     "color": null,
+     "price": "17.65",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48864,
+     "name": "Premium Luster Photo Paper Poster 24″×24″",
+     "size": "24″×24″",
+     "color": null,
+     "price": "17.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48865,
+     "name": "Premium Luster Photo Paper Poster 24″×32″",
+     "size": "24″×32″",
+     "color": null,
+     "price": "21.09",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 7845,
+     "name": "Premium Luster Photo Paper Poster 24″×36″",
+     "size": "24″×36″",
+     "color": null,
+     "price": "22.89",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48854,
+     "name": "Premium Luster Photo Paper Poster 6″×8″",
+     "size": "6″×8″",
+     "color": null,
+     "price": "8.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48870,
+     "name": "Premium Luster Photo Paper Poster 8.27″×11.69″ (A4)",
+     "size": "8.27″×11.69″",
+     "color": null,
+     "price": "16.19",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 6871,
+     "name": "Premium Luster Photo Paper Poster 8″×10″",
+     "size": "8″×10″",
+     "color": null,
+     "price": "9.36",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48855,
+     "name": "Premium Luster Photo Paper Poster 8″×12″",
+     "size": "8″×12″",
+     "color": null,
+     "price": "10.20",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48856,
+     "name": "Premium Luster Photo Paper Poster 8″×20″",
+     "size": "8″×20″",
+     "color": null,
+     "price": "12.52",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 48857,
+     "name": "Premium Luster Photo Paper Poster 9″×11″",
+     "size": "9″×11″",
+     "color": null,
+     "price": "10.35",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "181": {
+   "id": 181,
+   "title": "Clear Case for iPhone®",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 10996,
+     "name": "Clear Case for iPhone® (iPhone 11 Pro Max)",
+     "size": "iPhone 11 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10995,
+     "name": "Clear Case for iPhone® (iPhone 11 Pro)",
+     "size": "iPhone 11 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10994,
+     "name": "Clear Case for iPhone® (iPhone 11)",
+     "size": "iPhone 11",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11703,
+     "name": "Clear Case for iPhone® (iPhone 12 mini)",
+     "size": "iPhone 12 mini",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11705,
+     "name": "Clear Case for iPhone® (iPhone 12 Pro Max)",
+     "size": "iPhone 12 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11808,
+     "name": "Clear Case for iPhone® (iPhone 12 Pro)",
+     "size": "iPhone 12 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11704,
+     "name": "Clear Case for iPhone® (iPhone 12)",
+     "size": "iPhone 12",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 13428,
+     "name": "Clear Case for iPhone® (iPhone 13 mini)",
+     "size": "iPhone 13 mini",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 13801,
+     "name": "Clear Case for iPhone® (iPhone 13 Pro Max)",
+     "size": "iPhone 13 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 13800,
+     "name": "Clear Case for iPhone® (iPhone 13 Pro)",
+     "size": "iPhone 13 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 13427,
+     "name": "Clear Case for iPhone® (iPhone 13)",
+     "size": "iPhone 13",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16242,
+     "name": "Clear Case for iPhone® (iPhone 14 Plus)",
+     "size": "iPhone 14 Plus",
+     "color": null,
+     "price": "11.17",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16243,
+     "name": "Clear Case for iPhone® (iPhone 14 Pro Max)",
+     "size": "iPhone 14 Pro Max",
+     "color": null,
+     "price": "11.17",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16241,
+     "name": "Clear Case for iPhone® (iPhone 14 Pro)",
+     "size": "iPhone 14 Pro",
+     "color": null,
+     "price": "11.17",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16240,
+     "name": "Clear Case for iPhone® (iPhone 14)",
+     "size": "iPhone 14",
+     "color": null,
+     "price": "11.17",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17617,
+     "name": "Clear Case for iPhone® (iPhone 15 Plus)",
+     "size": "iPhone 15 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17619,
+     "name": "Clear Case for iPhone® (iPhone 15 Pro Max)",
+     "size": "iPhone 15 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17618,
+     "name": "Clear Case for iPhone® (iPhone 15 Pro)",
+     "size": "iPhone 15 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17616,
+     "name": "Clear Case for iPhone® (iPhone 15)",
+     "size": "iPhone 15",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20291,
+     "name": "Clear Case for iPhone® (iPhone 16 Plus)",
+     "size": "iPhone 16 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20293,
+     "name": "Clear Case for iPhone® (iPhone 16 Pro Max)",
+     "size": "iPhone 16 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20292,
+     "name": "Clear Case for iPhone® (iPhone 16 Pro)",
+     "size": "iPhone 16 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20290,
+     "name": "Clear Case for iPhone® (iPhone 16)",
+     "size": "iPhone 16",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33994,
+     "name": "Clear Case for iPhone® (iPhone 17 Air)",
+     "size": "iPhone 17 Air",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33996,
+     "name": "Clear Case for iPhone® (iPhone 17 Pro Max)",
+     "size": "iPhone 17 Pro Max",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33995,
+     "name": "Clear Case for iPhone® (iPhone 17 Pro)",
+     "size": "iPhone 17 Pro",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33993,
+     "name": "Clear Case for iPhone® (iPhone 17)",
+     "size": "iPhone 17",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 7910,
+     "name": "Clear Case for iPhone® (iPhone 7/8)",
+     "size": "iPhone 7/8",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11452,
+     "name": "Clear Case for iPhone® (iPhone SE)",
+     "size": "iPhone SE",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8933,
+     "name": "Clear Case for iPhone® (iPhone X/XS)",
+     "size": "iPhone X/XS",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9621,
+     "name": "Clear Case for iPhone® (iPhone XR)",
+     "size": "iPhone XR",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "267": {
+   "id": 267,
+   "title": "Clear Case for Samsung®",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 11348,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S20 Plus)",
+     "size": "Samsung Galaxy S20 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11349,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S20 Ultra)",
+     "size": "Samsung Galaxy S20 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11347,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S20)",
+     "size": "Samsung Galaxy S20",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12027,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S21 Plus)",
+     "size": "Samsung Galaxy S21 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12026,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S21 Ultra)",
+     "size": "Samsung Galaxy S21 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12025,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S21)",
+     "size": "Samsung Galaxy S21",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 14634,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S22 Plus)",
+     "size": "Samsung Galaxy S22 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 14635,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S22 Ultra)",
+     "size": "Samsung Galaxy S22 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 14633,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S22)",
+     "size": "Samsung Galaxy S22",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21482,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S25 Plus)",
+     "size": "Samsung Galaxy S25 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21483,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S25 Ultra)",
+     "size": "Samsung Galaxy S25 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21481,
+     "name": "Clear Case for Samsung® (Samsung Galaxy S25)",
+     "size": "Samsung Galaxy S25",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18750,
+     "name": "Samsung Case (Samsung Galaxy S23 Plus)",
+     "size": "Samsung Galaxy S23 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18751,
+     "name": "Samsung Case (Samsung Galaxy S23 Ultra)",
+     "size": "Samsung Galaxy S23 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18749,
+     "name": "Samsung Case (Samsung Galaxy S23)",
+     "size": "Samsung Galaxy S23",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18735,
+     "name": "Samsung Case (Samsung Galaxy S24 Plus)",
+     "size": "Samsung Galaxy S24 Plus",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18736,
+     "name": "Samsung Case (Samsung Galaxy S24 Ultra)",
+     "size": "Samsung Galaxy S24 Ultra",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18734,
+     "name": "Samsung Case (Samsung Galaxy S24)",
+     "size": "Samsung Galaxy S24",
+     "color": null,
+     "price": "9.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "268": {
+   "id": 268,
+   "title": "Enhanced Matte Paper Poster (cm)",
+   "type": "POSTER",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 19515,
+     "name": "Enhanced Matte Paper Poster (cm) (A1 (59.4×84.1 cm))",
+     "size": "A1 (59.4×84.1 cm)",
+     "color": null,
+     "price": "17.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19516,
+     "name": "Enhanced Matte Paper Poster (cm) (A2 (42×59.4 cm))",
+     "size": "A2 (42×59.4 cm)",
+     "color": null,
+     "price": "12.89",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8947,
+     "name": "Enhanced Matte Paper Poster 21×30 cm",
+     "size": "21×30 cm",
+     "color": null,
+     "price": "8.32",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8948,
+     "name": "Enhanced Matte Paper Poster 30×40 cm",
+     "size": "30×40 cm",
+     "color": null,
+     "price": "11.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8952,
+     "name": "Enhanced Matte Paper Poster 50×70 cm",
+     "size": "50×70 cm",
+     "color": null,
+     "price": "14.57",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8953,
+     "name": "Enhanced Matte Paper Poster 61×91 cm",
+     "size": "61×91 cm",
+     "color": null,
+     "price": "18.73",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 8954,
+     "name": "Enhanced Matte Paper Poster 70×100 cm",
+     "size": "70×100 cm",
+     "color": null,
+     "price": "20.76",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "304": {
+   "id": 304,
+   "title": "Enhanced Matte Paper Framed Poster (cm)",
+   "type": "FRAMED-POSTER",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 19644,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Black / 30×45 cm)",
+     "size": "30×45 cm",
+     "color": "Black",
+     "price": "32.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19645,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Black / 40×50 cm)",
+     "size": "40×50 cm",
+     "color": "Black",
+     "price": "42.61",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19646,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Black / 45×61 cm)",
+     "size": "45×61 cm",
+     "color": "Black",
+     "price": "46.30",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19642,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Black / A1 (59.4×84.1 cm))",
+     "size": "A1 (59.4×84.1 cm)",
+     "color": "Black",
+     "price": "78.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19643,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Black / A2 (42×59.4 cm))",
+     "size": "A2 (42×59.4 cm)",
+     "color": "Black",
+     "price": "48.50",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19652,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Oak / A1 (59.4×84.1 cm))",
+     "size": "A1 (59.4×84.1 cm)",
+     "color": "Oak",
+     "price": "78.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19653,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (Oak / A2 (42×59.4 cm))",
+     "size": "A2 (42×59.4 cm)",
+     "color": "Oak",
+     "price": "48.50",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19649,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (White / 30×45 cm)",
+     "size": "30×45 cm",
+     "color": "White",
+     "price": "32.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19650,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (White / 40×50 cm)",
+     "size": "40×50 cm",
+     "color": "White",
+     "price": "42.61",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19651,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (White / 45×61 cm)",
+     "size": "45×61 cm",
+     "color": "White",
+     "price": "46.30",
+     "in_stock": true,
+     "eu": null
+    },
+    {
+     "id": 19647,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (White / A1 (59.4×84.1 cm))",
+     "size": "A1 (59.4×84.1 cm)",
+     "color": "White",
+     "price": "77.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 19648,
+     "name": "Enhanced Matte Paper Framed Poster (cm) (White / A2 (42×59.4 cm))",
+     "size": "A2 (42×59.4 cm)",
+     "color": "White",
+     "price": "48.50",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9356,
+     "name": "Enhanced Matte Paper Framed Poster 21×30 cm Black",
+     "size": "21×30 cm",
+     "color": "Black",
+     "price": "22.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11790,
+     "name": "Enhanced Matte Paper Framed Poster 21×30 cm Oak",
+     "size": "21×30 cm",
+     "color": "Oak",
+     "price": "24.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10296,
+     "name": "Enhanced Matte Paper Framed Poster 21×30 cm White",
+     "size": "21×30 cm",
+     "color": "White",
+     "price": "22.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9357,
+     "name": "Enhanced Matte Paper Framed Poster 30×40 cm Black",
+     "size": "30×40 cm",
+     "color": "Black",
+     "price": "32.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11791,
+     "name": "Enhanced Matte Paper Framed Poster 30×40 cm Oak",
+     "size": "30×40 cm",
+     "color": "Oak",
+     "price": "35.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10297,
+     "name": "Enhanced Matte Paper Framed Poster 30×40 cm White",
+     "size": "30×40 cm",
+     "color": "White",
+     "price": "30.12",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9358,
+     "name": "Enhanced Matte Paper Framed Poster 50×70 cm Black",
+     "size": "50×70 cm",
+     "color": "Black",
+     "price": "66.50",
+     "in_stock": true,
+     "eu": null
+    },
+    {
+     "id": 11792,
+     "name": "Enhanced Matte Paper Framed Poster 50×70 cm Oak",
+     "size": "50×70 cm",
+     "color": "Oak",
+     "price": "65.50",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10298,
+     "name": "Enhanced Matte Paper Framed Poster 50×70 cm White",
+     "size": "50×70 cm",
+     "color": "White",
+     "price": "60.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 9359,
+     "name": "Enhanced Matte Paper Framed Poster 61×91 cm Black",
+     "size": "61×91 cm",
+     "color": "Black",
+     "price": "79.02",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11793,
+     "name": "Enhanced Matte Paper Framed Poster 61×91 cm Oak",
+     "size": "61×91 cm",
+     "color": "Oak",
+     "price": "90.25",
+     "in_stock": true,
+     "eu": null
+    },
+    {
+     "id": 10299,
+     "name": "Enhanced Matte Paper Framed Poster 61×91 cm White",
+     "size": "61×91 cm",
+     "color": "White",
+     "price": "78.03",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "380": {
+   "id": 380,
+   "title": "Unisex Premium Pullover Hoodie | Cotton Heritage M2580",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_left:Left chest",
+    "embroidery_chest_center:Center chest",
+    "embroidery_wrist_left:Left wrist",
+    "embroidery_wrist_right:Right wrist",
+    "default:Front print",
+    "back:Back print",
+    "label_outside:Outside label",
+    "label_inside:Inside label",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "label_inside_dtf:Inside label",
+    "long_sleeve_left_dtf:Long left sleeve",
+    "long_sleeve_right_dtf:Long right sleeve",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 10778,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "29.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 13421,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "31.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10776,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "27.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10775,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "27.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10774,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "27.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 10777,
+     "name": "Cotton Heritage M2580 Premium Unisex Hoodie (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "27.84",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 53494,
+     "name": "Cotton Heritage M2580 | Unisex Premium Pullover Hoodie (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "33.84",
+     "in_stock": true,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 53489,
+     "name": "Cotton Heritage M2580 | Unisex Premium Pullover Hoodie (White / XS)",
+     "size": "XS",
+     "color": "White",
+     "price": "27.84",
+     "in_stock": true,
+     "eu": "supplier_out_of_stock"
+    }
+   ]
+  },
+  "438": {
+   "id": 438,
+   "title": "Unisex Classic Tee | Gildan 5000",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_left:Left chest",
+    "embroidery_chest_center:Center chest",
+    "default:Front print",
+    "embroidery_sleeve_left_top:Left sleeve top",
+    "embroidery_sleeve_right_top:Right sleeve top",
+    "back:Back print",
+    "label_outside:Outside label",
+    "label_inside:Inside label",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "label_inside_dtf:Inside label",
+    "short_sleeve_left_dtf:Short left sleeve",
+    "short_sleeve_right_dtf:Short right sleeve",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 11580,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "11.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12650,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "13.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12651,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "15.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 12652,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / 5XL)",
+     "size": "5XL",
+     "color": "White",
+     "price": "17.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11578,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "9.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11577,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "9.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11576,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "9.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11579,
+     "name": "Unisex Classic Tee | Gildan 5000 (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "9.44",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "456": {
+   "id": 456,
+   "title": "Unisex Organic Cotton Creator 2.0 T-Shirt | Stanley/Stella STTU169",
+   "type": "T-SHIRT",
+   "files": [
+    "default:Front print",
+    "back:Back print",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "short_sleeve_left_dtf:Short left sleeve",
+    "short_sleeve_right_dtf:Short right sleeve",
+    "label_inside:Inside label",
+    "label_outside:Outside label",
+    "label_inside_dtf:Inside label",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 53681,
+     "name": "Stanley/Stella STTU169 | Iconic T-Shirt (White / XS)",
+     "size": "XS",
+     "color": "White",
+     "price": "14.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11868,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "15.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17228,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "17.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17232,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "18.75",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17235,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / 5XL)",
+     "size": "5XL",
+     "color": "White",
+     "price": "20.50",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11866,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "14.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11865,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "14.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11864,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "14.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 11867,
+     "name": "Unisex Organic Cotton T-Shirt | Stanley/Stella STTU169 (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "14.25",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "586": {
+   "id": 586,
+   "title": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_left:Left chest",
+    "embroidery_chest_center:Center chest",
+    "embroidery_sleeve_left_top:Left sleeve top",
+    "embroidery_sleeve_right_top:Right sleeve top",
+    "default:Front print",
+    "back:Back print",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "label_outside:Outside label",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "short_sleeve_left_dtf:Short left sleeve",
+    "short_sleeve_right_dtf:Short right sleeve",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 15128,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "17.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16335,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / 3XL)",
+     "size": "3XL",
+     "color": "White",
+     "price": "19.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17508,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / 4XL)",
+     "size": "4XL",
+     "color": "White",
+     "price": "21.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15126,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "15.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15125,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "15.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15124,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "15.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15127,
+     "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717 (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "15.60",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "601": {
+   "id": 601,
+   "title": "Tough Case for iPhone®",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 15383,
+     "name": "Tough iPhone Case (Glossy / iPhone 11 Pro Max)",
+     "size": "iPhone 11 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15382,
+     "name": "Tough iPhone Case (Glossy / iPhone 11 Pro)",
+     "size": "iPhone 11 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15381,
+     "name": "Tough iPhone Case (Glossy / iPhone 11)",
+     "size": "iPhone 11",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15385,
+     "name": "Tough iPhone Case (Glossy / iPhone 12 mini)",
+     "size": "iPhone 12 mini",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15387,
+     "name": "Tough iPhone Case (Glossy / iPhone 12 Pro Max)",
+     "size": "iPhone 12 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15386,
+     "name": "Tough iPhone Case (Glossy / iPhone 12 Pro)",
+     "size": "iPhone 12 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15384,
+     "name": "Tough iPhone Case (Glossy / iPhone 12)",
+     "size": "iPhone 12",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15389,
+     "name": "Tough iPhone Case (Glossy / iPhone 13 mini)",
+     "size": "iPhone 13 mini",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15391,
+     "name": "Tough iPhone Case (Glossy / iPhone 13 Pro Max)",
+     "size": "iPhone 13 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15390,
+     "name": "Tough iPhone Case (Glossy / iPhone 13 Pro)",
+     "size": "iPhone 13 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15388,
+     "name": "Tough iPhone Case (Glossy / iPhone 13)",
+     "size": "iPhone 13",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16128,
+     "name": "Tough iPhone Case (Glossy / iPhone 14 Plus)",
+     "size": "iPhone 14 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16130,
+     "name": "Tough iPhone Case (Glossy / iPhone 14 Pro Max)",
+     "size": "iPhone 14 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16126,
+     "name": "Tough iPhone Case (Glossy / iPhone 14 Pro)",
+     "size": "iPhone 14 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16124,
+     "name": "Tough iPhone Case (Glossy / iPhone 14)",
+     "size": "iPhone 14",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17716,
+     "name": "Tough iPhone Case (Glossy / iPhone 15 Plus)",
+     "size": "iPhone 15 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17720,
+     "name": "Tough iPhone Case (Glossy / iPhone 15 Pro Max)",
+     "size": "iPhone 15 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17718,
+     "name": "Tough iPhone Case (Glossy / iPhone 15 Pro)",
+     "size": "iPhone 15 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17714,
+     "name": "Tough iPhone Case (Glossy / iPhone 15)",
+     "size": "iPhone 15",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20303,
+     "name": "Tough iPhone Case (Glossy / iPhone 16 Plus)",
+     "size": "iPhone 16 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20305,
+     "name": "Tough iPhone Case (Glossy / iPhone 16 Pro Max)",
+     "size": "iPhone 16 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20304,
+     "name": "Tough iPhone Case (Glossy / iPhone 16 Pro)",
+     "size": "iPhone 16 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20302,
+     "name": "Tough iPhone Case (Glossy / iPhone 16)",
+     "size": "iPhone 16",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33986,
+     "name": "Tough iPhone Case (Glossy / iPhone 17 Air)",
+     "size": "iPhone 17 Air",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33988,
+     "name": "Tough iPhone Case (Glossy / iPhone 17 Pro Max)",
+     "size": "iPhone 17 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33987,
+     "name": "Tough iPhone Case (Glossy / iPhone 17 Pro)",
+     "size": "iPhone 17 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33985,
+     "name": "Tough iPhone Case (Glossy / iPhone 17)",
+     "size": "iPhone 17",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 52386,
+     "name": "Tough iPhone Case (Glossy / iPhone 18 Pro Max)",
+     "size": "iPhone 18 Pro Max",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 52384,
+     "name": "Tough iPhone Case (Glossy / iPhone 18 Pro)",
+     "size": "iPhone 18 Pro",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15394,
+     "name": "Tough iPhone Case (Matte / iPhone 11 Pro Max)",
+     "size": "iPhone 11 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15393,
+     "name": "Tough iPhone Case (Matte / iPhone 11 Pro)",
+     "size": "iPhone 11 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15392,
+     "name": "Tough iPhone Case (Matte / iPhone 11)",
+     "size": "iPhone 11",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15396,
+     "name": "Tough iPhone Case (Matte / iPhone 12 mini)",
+     "size": "iPhone 12 mini",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15398,
+     "name": "Tough iPhone Case (Matte / iPhone 12 Pro Max)",
+     "size": "iPhone 12 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15397,
+     "name": "Tough iPhone Case (Matte / iPhone 12 Pro)",
+     "size": "iPhone 12 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15395,
+     "name": "Tough iPhone Case (Matte / iPhone 12)",
+     "size": "iPhone 12",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15400,
+     "name": "Tough iPhone Case (Matte / iPhone 13 mini)",
+     "size": "iPhone 13 mini",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15402,
+     "name": "Tough iPhone Case (Matte / iPhone 13 Pro Max)",
+     "size": "iPhone 13 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15401,
+     "name": "Tough iPhone Case (Matte / iPhone 13 Pro)",
+     "size": "iPhone 13 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 15399,
+     "name": "Tough iPhone Case (Matte / iPhone 13)",
+     "size": "iPhone 13",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16129,
+     "name": "Tough iPhone Case (Matte / iPhone 14 Plus)",
+     "size": "iPhone 14 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16131,
+     "name": "Tough iPhone Case (Matte / iPhone 14 Pro Max)",
+     "size": "iPhone 14 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16127,
+     "name": "Tough iPhone Case (Matte / iPhone 14 Pro)",
+     "size": "iPhone 14 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16125,
+     "name": "Tough iPhone Case (Matte / iPhone 14)",
+     "size": "iPhone 14",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17717,
+     "name": "Tough iPhone Case (Matte / iPhone 15 Plus)",
+     "size": "iPhone 15 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17721,
+     "name": "Tough iPhone Case (Matte / iPhone 15 Pro Max)",
+     "size": "iPhone 15 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17719,
+     "name": "Tough iPhone Case (Matte / iPhone 15 Pro)",
+     "size": "iPhone 15 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17715,
+     "name": "Tough iPhone Case (Matte / iPhone 15)",
+     "size": "iPhone 15",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20307,
+     "name": "Tough iPhone Case (Matte / iPhone 16 Plus)",
+     "size": "iPhone 16 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20309,
+     "name": "Tough iPhone Case (Matte / iPhone 16 Pro Max)",
+     "size": "iPhone 16 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20308,
+     "name": "Tough iPhone Case (Matte / iPhone 16 Pro)",
+     "size": "iPhone 16 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20306,
+     "name": "Tough iPhone Case (Matte / iPhone 16)",
+     "size": "iPhone 16",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33990,
+     "name": "Tough iPhone Case (Matte / iPhone 17 Air)",
+     "size": "iPhone 17 Air",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33992,
+     "name": "Tough iPhone Case (Matte / iPhone 17 Pro Max)",
+     "size": "iPhone 17 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33991,
+     "name": "Tough iPhone Case (Matte / iPhone 17 Pro)",
+     "size": "iPhone 17 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 33989,
+     "name": "Tough iPhone Case (Matte / iPhone 17)",
+     "size": "iPhone 17",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 52387,
+     "name": "Tough iPhone Case (Matte / iPhone 18 Pro Max)",
+     "size": "iPhone 18 Pro Max",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 52385,
+     "name": "Tough iPhone Case (Matte / iPhone 18 Pro)",
+     "size": "iPhone 18 Pro",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "684": {
+   "id": 684,
+   "title": "Snap Case for Samsung",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 16920,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S10 Plus)",
+     "size": "Samsung Galaxy S10 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16918,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S10)",
+     "size": "Samsung Galaxy S10",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16922,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S10e)",
+     "size": "Samsung Galaxy S10e",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16930,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S20 FE)",
+     "size": "Samsung Galaxy S20 FE",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16926,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S20 Plus)",
+     "size": "Samsung Galaxy S20 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16928,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S20 Ultra)",
+     "size": "Samsung Galaxy S20 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16924,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S20)",
+     "size": "Samsung Galaxy S20",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16932,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S21 FE)",
+     "size": "Samsung Galaxy S21 FE",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16936,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S21 Plus)",
+     "size": "Samsung Galaxy S21 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16938,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S21 Ultra)",
+     "size": "Samsung Galaxy S21 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16934,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S21)",
+     "size": "Samsung Galaxy S21",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16942,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S22 Plus)",
+     "size": "Samsung Galaxy S22 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16944,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S22 Ultra)",
+     "size": "Samsung Galaxy S22 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16940,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S22)",
+     "size": "Samsung Galaxy S22",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16948,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S23 Plus)",
+     "size": "Samsung Galaxy S23 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16950,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S23 Ultra)",
+     "size": "Samsung Galaxy S23 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16946,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S23)",
+     "size": "Samsung Galaxy S23",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18738,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S24 Plus)",
+     "size": "Samsung Galaxy S24 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18739,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S24 Ultra)",
+     "size": "Samsung Galaxy S24 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18737,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S24)",
+     "size": "Samsung Galaxy S24",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21477,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S25 Plus)",
+     "size": "Samsung Galaxy S25 Plus",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21479,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S25 Ultra)",
+     "size": "Samsung Galaxy S25 Ultra",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21475,
+     "name": "Snap Case for Samsung® (Glossy / Samsung Galaxy S25)",
+     "size": "Samsung Galaxy S25",
+     "color": "Glossy",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16921,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S10 Plus)",
+     "size": "Samsung Galaxy S10 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16919,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S10)",
+     "size": "Samsung Galaxy S10",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16923,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S10e)",
+     "size": "Samsung Galaxy S10e",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": false,
+     "eu": "supplier_out_of_stock"
+    },
+    {
+     "id": 16931,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S20 FE)",
+     "size": "Samsung Galaxy S20 FE",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16927,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S20 Plus)",
+     "size": "Samsung Galaxy S20 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16929,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S20 Ultra)",
+     "size": "Samsung Galaxy S20 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16925,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S20)",
+     "size": "Samsung Galaxy S20",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16933,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S21 FE)",
+     "size": "Samsung Galaxy S21 FE",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16937,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S21 Plus)",
+     "size": "Samsung Galaxy S21 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16939,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S21 Ultra)",
+     "size": "Samsung Galaxy S21 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16935,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S21)",
+     "size": "Samsung Galaxy S21",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16943,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S22 Plus)",
+     "size": "Samsung Galaxy S22 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16945,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S22 Ultra)",
+     "size": "Samsung Galaxy S22 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16941,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S22)",
+     "size": "Samsung Galaxy S22",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16949,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S23 Plus)",
+     "size": "Samsung Galaxy S23 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16951,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S23 Ultra)",
+     "size": "Samsung Galaxy S23 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16947,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S23)",
+     "size": "Samsung Galaxy S23",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18741,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S24 Plus)",
+     "size": "Samsung Galaxy S24 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18742,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S24 Ultra)",
+     "size": "Samsung Galaxy S24 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18740,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S24)",
+     "size": "Samsung Galaxy S24",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21478,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S25 Plus)",
+     "size": "Samsung Galaxy S25 Plus",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21480,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S25 Ultra)",
+     "size": "Samsung Galaxy S25 Ultra",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21476,
+     "name": "Snap Case for Samsung® (Matte / Samsung Galaxy S25)",
+     "size": "Samsung Galaxy S25",
+     "color": "Matte",
+     "price": "13.07",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "686": {
+   "id": 686,
+   "title": "Tough Case for Samsung",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 16975,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S20 FE)",
+     "size": "Samsung Galaxy S20 FE",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16977,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S20 Plus)",
+     "size": "Samsung Galaxy S20 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16979,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S20 Ultra)",
+     "size": "Samsung Galaxy S20 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16981,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S20)",
+     "size": "Samsung Galaxy S20",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16983,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S21 FE)",
+     "size": "Samsung Galaxy S21 FE",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16985,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S21 Plus)",
+     "size": "Samsung Galaxy S21 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16987,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S21 Ultra)",
+     "size": "Samsung Galaxy S21 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16989,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S21)",
+     "size": "Samsung Galaxy S21",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16991,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S22 Plus)",
+     "size": "Samsung Galaxy S22 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16993,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S22 Ultra)",
+     "size": "Samsung Galaxy S22 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16995,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S22)",
+     "size": "Samsung Galaxy S22",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16997,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S23 Plus)",
+     "size": "Samsung Galaxy S23 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16999,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S23 Ultra)",
+     "size": "Samsung Galaxy S23 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17001,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S23)",
+     "size": "Samsung Galaxy S23",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18744,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S24 Plus)",
+     "size": "Samsung Galaxy S24 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18745,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S24 Ultra)",
+     "size": "Samsung Galaxy S24 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18743,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S24)",
+     "size": "Samsung Galaxy S24",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21471,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S25 Plus)",
+     "size": "Samsung Galaxy S25 Plus",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21473,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S25 Ultra)",
+     "size": "Samsung Galaxy S25 Ultra",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21469,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S25)",
+     "size": "Samsung Galaxy S25",
+     "color": "Glossy",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49328,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S26 Plus)",
+     "size": "Samsung Galaxy S26 Plus",
+     "color": "Glossy",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49329,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S26 Ultra)",
+     "size": "Samsung Galaxy S26 Ultra",
+     "color": "Glossy",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49327,
+     "name": "Tough Case for Samsung® (Glossy / Samsung Galaxy S26)",
+     "size": "Samsung Galaxy S26",
+     "color": "Glossy",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16976,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S20 FE)",
+     "size": "Samsung Galaxy S20 FE",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16978,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S20 Plus)",
+     "size": "Samsung Galaxy S20 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16980,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S20 Ultra)",
+     "size": "Samsung Galaxy S20 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16982,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S20)",
+     "size": "Samsung Galaxy S20",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16984,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S21 FE)",
+     "size": "Samsung Galaxy S21 FE",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16986,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S21 Plus)",
+     "size": "Samsung Galaxy S21 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16988,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S21 Ultra)",
+     "size": "Samsung Galaxy S21 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16990,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S21)",
+     "size": "Samsung Galaxy S21",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16992,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S22 Plus)",
+     "size": "Samsung Galaxy S22 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16994,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S22 Ultra)",
+     "size": "Samsung Galaxy S22 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16996,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S22)",
+     "size": "Samsung Galaxy S22",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 16998,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S23 Plus)",
+     "size": "Samsung Galaxy S23 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17000,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S23 Ultra)",
+     "size": "Samsung Galaxy S23 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 17002,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S23)",
+     "size": "Samsung Galaxy S23",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18747,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S24 Plus)",
+     "size": "Samsung Galaxy S24 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18748,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S24 Ultra)",
+     "size": "Samsung Galaxy S24 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 18746,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S24)",
+     "size": "Samsung Galaxy S24",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21472,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S25 Plus)",
+     "size": "Samsung Galaxy S25 Plus",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21474,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S25 Ultra)",
+     "size": "Samsung Galaxy S25 Ultra",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 21470,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S25)",
+     "size": "Samsung Galaxy S25",
+     "color": "Matte",
+     "price": "14.23",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49330,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S26 Plus)",
+     "size": "Samsung Galaxy S26 Plus",
+     "color": "Matte",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49331,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S26 Ultra)",
+     "size": "Samsung Galaxy S26 Ultra",
+     "color": "Matte",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 49332,
+     "name": "Tough Case for Samsung® (Matte / Samsung Galaxy S26)",
+     "size": "Samsung Galaxy S26",
+     "color": "Matte",
+     "price": "14.77",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "798": {
+   "id": 798,
+   "title": "MagSafe Tough Case for iPhone®",
+   "type": "PHONE-CASE",
+   "files": [
+    "default:Print file",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 20691,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 14 Plus)",
+     "size": "iPhone 14 Plus",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20693,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 14 Pro Max)",
+     "size": "iPhone 14 Pro Max",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20689,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 14 Pro)",
+     "size": "iPhone 14 Pro",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20687,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 14)",
+     "size": "iPhone 14",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20323,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 15 Plus)",
+     "size": "iPhone 15 Plus",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20325,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 15 Pro Max)",
+     "size": "iPhone 15 Pro Max",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20321,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 15 Pro)",
+     "size": "iPhone 15 Pro",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20319,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 15)",
+     "size": "iPhone 15",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20333,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 16 Plus)",
+     "size": "iPhone 16 Plus",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20331,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 16 Pro Max)",
+     "size": "iPhone 16 Pro Max",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20329,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 16 Pro)",
+     "size": "iPhone 16 Pro",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20327,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 16)",
+     "size": "iPhone 16",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34003,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 17 Air)",
+     "size": "iPhone 17 Air",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34007,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 17 Pro Max)",
+     "size": "iPhone 17 Pro Max",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34005,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 17 Pro)",
+     "size": "iPhone 17 Pro",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34001,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 17)",
+     "size": "iPhone 17",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 53190,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 18 Pro Max)",
+     "size": "iPhone 18 Pro Max",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 53188,
+     "name": "MagSafe® Tough Case for iPhone® (Glossy / iPhone 18 Pro)",
+     "size": "iPhone 18 Pro",
+     "color": "Glossy",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20692,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Plus)",
+     "size": "iPhone 14 Plus",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20694,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Pro Max)",
+     "size": "iPhone 14 Pro Max",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20690,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Pro)",
+     "size": "iPhone 14 Pro",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20688,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14)",
+     "size": "iPhone 14",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20322,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Plus)",
+     "size": "iPhone 15 Plus",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20324,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Pro Max)",
+     "size": "iPhone 15 Pro Max",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20320,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Pro)",
+     "size": "iPhone 15 Pro",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20318,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15)",
+     "size": "iPhone 15",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20332,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Plus)",
+     "size": "iPhone 16 Plus",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20330,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Pro Max)",
+     "size": "iPhone 16 Pro Max",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20328,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Pro)",
+     "size": "iPhone 16 Pro",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20326,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16)",
+     "size": "iPhone 16",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34004,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Air)",
+     "size": "iPhone 17 Air",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34008,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Pro Max)",
+     "size": "iPhone 17 Pro Max",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34006,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Pro)",
+     "size": "iPhone 17 Pro",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 34002,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17)",
+     "size": "iPhone 17",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 53191,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 18 Pro Max)",
+     "size": "iPhone 18 Pro Max",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 53189,
+     "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 18 Pro)",
+     "size": "iPhone 18 Pro",
+     "color": "Matte",
+     "price": "16.27",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  },
+  "821": {
+   "id": 821,
+   "title": "Unisex Organic Mid-Weight Drummer 2.0 Hoodie | Stanley/Stella SASU009",
+   "type": "T-SHIRT",
+   "files": [
+    "embroidery_chest_left:Left chest",
+    "embroidery_chest_center:Center chest",
+    "embroidery_wrist_left:Left wrist",
+    "embroidery_wrist_right:Right wrist",
+    "default:Front print",
+    "back:Back print",
+    "sleeve_left:Left sleeve",
+    "sleeve_right:Right sleeve",
+    "label_outside:Outside label",
+    "front_dtf:Front print",
+    "back_dtf:Back print",
+    "back_large_dtf:Large back print",
+    "label_inside_dtf:Inside label",
+    "long_sleeve_left_dtf:Long left sleeve",
+    "long_sleeve_right_dtf:Long right sleeve",
+    "preview:Mockup"
+   ],
+   "variants": [
+    {
+     "id": 20830,
+     "name": "Stanley/Stella SASU009 (White / 2XL)",
+     "size": "2XL",
+     "color": "White",
+     "price": "38.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20817,
+     "name": "Stanley/Stella SASU009 (White / L)",
+     "size": "L",
+     "color": "White",
+     "price": "36.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20811,
+     "name": "Stanley/Stella SASU009 (White / M)",
+     "size": "M",
+     "color": "White",
+     "price": "36.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20805,
+     "name": "Stanley/Stella SASU009 (White / S)",
+     "size": "S",
+     "color": "White",
+     "price": "36.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    },
+    {
+     "id": 20823,
+     "name": "Stanley/Stella SASU009 (White / XL)",
+     "size": "XL",
+     "color": "White",
+     "price": "36.40",
+     "in_stock": true,
+     "eu": "in_stock"
+    }
+   ]
+  }
+ }
+}

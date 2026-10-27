@@ -1,0 +1,619 @@
+{
+ "quelle": "Shopify Admin GraphQL productByHandle (nur Abfrage), au3j0y-hq",
+ "stand": "2026-10-27",
+ "produkte": {
+  "unisex-t-shirt-selbst-gestalten": {
+   "id": "gid://shopify/Product/15422811439489",
+   "handle": "unisex-t-shirt-selbst-gestalten",
+   "title": "Unisex T-Shirt – Selbst gestalten",
+   "status": "ACTIVE",
+   "productType": "T-SHIRT",
+   "vendor": "LuxeStyle",
+   "tags": [
+    "bild-ok",
+    "printful_personalized_product",
+    "sg-bekleidung",
+    "sort-damen-t-shirts",
+    "sort-damen-t-shirts-tshirt",
+    "sort-herren-t-shirts",
+    "wunschdesign"
+   ],
+   "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white.png?v=1783114591\" data-variant=\"55777948008833\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\nDieses T-Shirt ist alles, wovon du geträumt hast und noch mehr. Es fühlt sich weich und leicht an, bietet genau die richtige Dehnbarkeit und sitzt bequem und schmeichelhaft für jede Figur.<br>\n<br>\n• 100 % gekämmte und ringgesponnene Baumwolle (Heather-Farben enthalten Polyester)<br>\n• Stoffgewicht: 142 g/m² (4.2 oz./yd²)<br>\n• Vorgewaschener Stoff<br>\n• Seitennähte für eine bessere Passform<br>\n• Schulter-zu-Schulter-Taping<br>\n<br>\nDisclaimer: Der Stoff ist leicht transparent und kann – insbesondere bei hellen Farben oder bestimmtem Lichteinfall – durchscheinend wirken.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Grösse:</strong> XS, S, M, L, XL, 2XL, 3XL, 4XL u. a.</li>\n<li>\n<strong>Material:</strong> Baumwolle, Polyester</li>\n<li>\n<strong>Muster:</strong> Bedruckt</li>\n</ul>\n</div>\n\n<!--gdetails-->\n\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>\n\n",
+   "seo": {
+    "title": "Unisex T-Shirt – Selbst gestalten | LuxeStyle CH",
+    "description": "Unisex T-Shirt – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+   },
+   "options": [
+    {
+     "name": "Grösse",
+     "position": 1,
+     "values": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL",
+      "4XL",
+      "5XL"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "gid://shopify/ProductVariant/55777948008833",
+     "sku": "5599797_9526",
+     "price": "24.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "XS"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948041601",
+     "sku": "5599797_4011",
+     "price": "24.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "S"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948074369",
+     "sku": "5599797_4012",
+     "price": "24.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "M"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948107137",
+     "sku": "5599797_4013",
+     "price": "24.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "L"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948139905",
+     "sku": "5599797_4014",
+     "price": "24.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948172673",
+     "sku": "5599797_4015",
+     "price": "28.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "2XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948205441",
+     "sku": "5599797_5294",
+     "price": "32.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "3XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948238209",
+     "sku": "5599797_5309",
+     "price": "37.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "4XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777948270977",
+     "sku": "5599797_12872",
+     "price": "41.90",
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "5XL"
+      }
+     ]
+    }
+   ]
+  },
+  "unisex-hoodie-selbst-gestalten": {
+   "id": "gid://shopify/Product/15422815699329",
+   "handle": "unisex-hoodie-selbst-gestalten",
+   "title": "Unisex Hoodie – Selbst gestalten",
+   "status": "ACTIVE",
+   "productType": "T-SHIRT",
+   "vendor": "LuxeStyle",
+   "tags": [
+    "bild-ok",
+    "kat-damen-pullover",
+    "printful_personalized_product",
+    "sg-bekleidung",
+    "sort-damen-hoodies-hoodie",
+    "sort-damen-hoodies-sweatshirts",
+    "sort-herren-hoodies",
+    "sort-herren-hoodies-sweatshirts",
+    "wunschdesign"
+   ],
+   "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-hoodie-neu.jpg?v=1783364028\" data-variant=\"55777955643777\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\nEin robustes und warmes Sweatshirt, das dich in den kälteren Monaten warm hält. Ein vorgeschrumpfter Pullover mit klassischer Passform aus Airjet-Garn für ein weiches Tragegefühl.<br>\n<br>\n• 50 % Baumwolle, 50 % Polyester<br>\n• Vorgeschrumpft<br>\n• Klassischer Schnitt<br>\n• 1x1-Sport-Rippenkragen aus Elastan<br>\n• Airjet-Spinngarn mit weichem Tragegefühl<br>\n• Doppelt genähter Kragen, Schultern, Armausschnitte, Bündchen und Saum<br>\n<br>\nHaftungsausschluss:<br>\n• Aufgrund der Stoffeigenschaften kann die Farbvariante White eher cremefarben als hellweiss erscheinen.<br>\n• Subtile orangefarbene Farbtonverschiebungen durch Beleuchtung in der Farbvariante Orange.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Grösse:</strong> S, M, L, XL, 2XL, 3XL, 4XL, 5XL</li>\n<li>\n<strong>Material:</strong> Baumwolle, Polyester, Elastan</li>\n<li>\n<strong>Muster:</strong> Bedruckt</li>\n</ul>\n</div>\n\n<!--gdetails-->\n\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>\n\n",
+   "seo": {
+    "title": "Unisex Hoodie – Selbst gestalten | LuxeStyle CH",
+    "description": "Unisex Hoodie – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+   },
+   "options": [
+    {
+     "name": "Grösse",
+     "position": 1,
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL",
+      "4XL",
+      "5XL"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "gid://shopify/ProductVariant/55777955643777",
+     "sku": "1726823_5426",
+     "price": "38.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "S"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955676545",
+     "sku": "1726823_5427",
+     "price": "38.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "M"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955709313",
+     "sku": "1726823_5428",
+     "price": "38.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "L"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955742081",
+     "sku": "1726823_5429",
+     "price": "38.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955774849",
+     "sku": "1726823_5430",
+     "price": "43.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "2XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955807617",
+     "sku": "1726823_5431",
+     "price": "47.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "3XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955840385",
+     "sku": "1726823_5432",
+     "price": "51.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "4XL"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55777955873153",
+     "sku": "1726823_5433",
+     "price": "55.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "5XL"
+      }
+     ]
+    }
+   ]
+  },
+  "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten": {
+   "id": "gid://shopify/Product/15422939988353",
+   "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+   "title": "Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten",
+   "status": "ACTIVE",
+   "productType": "Handy-Zubehör",
+   "vendor": "LuxeStyle",
+   "tags": [
+    "bild-ok",
+    "huelle",
+    "natel",
+    "printful_personalized_product",
+    "sg-accessoires",
+    "sort-handy-halterungen",
+    "sort-handy-huellen",
+    "wunschdesign"
+   ],
+   "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magsafe-tough-case-for-iphone-matte-iphone-16-pro-front-6a27161fd25c4.jpg?v=1780946480\" data-variant=\"55778337358209\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\nSchütze dein Handy mit dieser robusten, zweischichtigen Hülle. Die stossfeste Aussenschale und das stossdämpfende Innenfutter schützen dein Gerät, während eingebaute MagSafe®-Magnete für sicheren Halt und schnelleres kabelloses Laden sorgen.<br>\n<br>\n• Aussenschale aus Polycarbonat<br>\n• Innenfutter aus thermoplastischem Polyurethan<br>\n• Zweischichtiger Schutz<br>\n• Präzise ausgerichtete Anschlüsse<br>\n• MagSafe®-kompatibel<br>\n• Kompatibel mit Induktionsladen<br>\n• Mattes oder glänzendes Finish<br>\n• Rohprodukt bezogen aus Korea<br>\n<br>\nHinweis: Von Flüssigkeiten mit hohem Alkoholgehalt fernhalten, da die Designs auf der Hülle sich abreiben könnten. Direkte Sonneneinstrahlung vermeiden, um eine Vergilbung zu verhindern.<br>\n<br>\nWichtig: Dieses Produkt kann nicht nach Südkorea, Hongkong, Taiwan, Japan oder Singapur versendet werden. Wenn sich deine Lieferadresse in einer dieser Regionen befindet, wähle bitte ein anderes Produkt aus.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/premium-geschenke\">Geschenkideen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>",
+   "seo": {
+    "title": null,
+    "description": "Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit…"
+   },
+   "options": [
+    {
+     "name": "Handymodell",
+     "position": 1,
+     "values": [
+      "iPhone 14",
+      "iPhone 14 Plus",
+      "iPhone 14 Pro",
+      "iPhone 14 Pro Max",
+      "iPhone 15",
+      "iPhone 15 Plus",
+      "iPhone 15 Pro",
+      "iPhone 15 Pro Max",
+      "iPhone 16",
+      "iPhone 16 Plus",
+      "iPhone 16 Pro",
+      "iPhone 16 Pro Max",
+      "iPhone 17",
+      "iPhone 17 Air",
+      "iPhone 17 Pro",
+      "iPhone 17 Pro Max"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "gid://shopify/ProductVariant/55778337358209",
+     "sku": "3615382_20688",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 14"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337390977",
+     "sku": "3615382_20692",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 14 Plus"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337423745",
+     "sku": "3615382_20690",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 14 Pro"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337456513",
+     "sku": "3615382_20694",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 14 Pro Max"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337489281",
+     "sku": "3615382_20318",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 15"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337522049",
+     "sku": "3615382_20322",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 15 Plus"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337554817",
+     "sku": "3615382_20320",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 15 Pro"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337587585",
+     "sku": "3615382_20324",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 15 Pro Max"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337620353",
+     "sku": "3615382_20326",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 16"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337653121",
+     "sku": "3615382_20332",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 16 Plus"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337685889",
+     "sku": "3615382_20328",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 16 Pro"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337718657",
+     "sku": "3615382_20330",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 16 Pro Max"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337751425",
+     "sku": "3615382_34002",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 17"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337784193",
+     "sku": "3615382_34004",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 17 Air"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337816961",
+     "sku": "3615382_34006",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 17 Pro"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55778337849729",
+     "sku": "3615382_34008",
+     "price": "33.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Handymodell",
+       "value": "iPhone 17 Pro Max"
+      }
+     ]
+    }
+   ]
+  },
+  "poster-zum-selbstgestalten": {
+   "id": "gid://shopify/Product/15427182330241",
+   "handle": "poster-zum-selbstgestalten",
+   "title": "Poster zum Selbstgestalten",
+   "status": "ACTIVE",
+   "productType": "Poster",
+   "vendor": "LuxeStyle",
+   "tags": [
+    "bild-ok",
+    "pod-poster",
+    "poster",
+    "printful_personalized_product",
+    "selbst-gestalten",
+    "sg-wohnen",
+    "sort-wandbilder",
+    "wunschdesign"
+   ],
+   "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster_2654c2bf-07c3-4ba7-b05b-c829eae2ed28.jpg?v=1783363699\" data-variant=\"55791753298305\" data-ratio=\"1.414\" data-ref=\"2400\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\n<p>Dein eigenes Foto, Motiv oder Design als <strong>Premium-Kunstdruck</strong> – du gestaltest es direkt hier im Editor (Bild hochladen, Text &amp; Sticker hinzufügen, frei platzieren). Mattes Premium-Papier, satte Farben, on-demand in Europa gedruckt &amp; sorgfältig verpackt.</p><ul>\n<li>Lade dein Bild hoch &amp; gestalte es selbst</li>\n<li>Mehrere Grössen (30×40 bis 70×100 cm)</li>\n<li>Premium-Matt-Papier, randlos bedruckt</li>\n</ul><p>Tipp: für beste Druckqualität ein <strong>möglichst grosses/scharfes Bild</strong> hochladen. 🇨🇭 LuxeStyle</p>\n\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Bedruckt</li>\n<li>\n<strong>Grösse:</strong> 30×40 cm, 50×70 cm, 70×100 cm, A2 (42×59,4 cm)</li>\n</ul>\n</div><!--gdetails-->\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+   "seo": {
+    "title": "Poster zum Selbstgestalten | LuxeStyle CH",
+    "description": "Poster zum Selbstgestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+   },
+   "options": [
+    {
+     "name": "Grösse",
+     "position": 1,
+     "values": [
+      "30×40 cm",
+      "50×70 cm",
+      "70×100 cm",
+      "A2 (42×59,4 cm)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "gid://shopify/ProductVariant/55791753298305",
+     "sku": "9000001_8948",
+     "price": "25.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "30×40 cm"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55791753331073",
+     "sku": "9000001_8952",
+     "price": "32.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "50×70 cm"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55791753363841",
+     "sku": "9000001_8954",
+     "price": "46.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "70×100 cm"
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55791753396609",
+     "sku": "9000001_19516",
+     "price": "28.90",
+     "inventoryPolicy": "CONTINUE",
+     "selectedOptions": [
+      {
+       "name": "Grösse",
+       "value": "A2 (42×59,4 cm)"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

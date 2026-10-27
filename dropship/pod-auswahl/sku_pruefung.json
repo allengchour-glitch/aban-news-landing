@@ -1,0 +1,339 @@
+{
+ "quelle": "Printful GET /products/variant/{id} für jede vorhandene SKU",
+ "stand": "2026-10-27",
+ "varianten": {
+  "4011": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / S)",
+   "farbe": "White",
+   "groesse": "S",
+   "preisUsd": 11.92,
+   "imLager": true
+  },
+  "4012": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / M)",
+   "farbe": "White",
+   "groesse": "M",
+   "preisUsd": 11.92,
+   "imLager": true
+  },
+  "4013": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / L)",
+   "farbe": "White",
+   "groesse": "L",
+   "preisUsd": 11.92,
+   "imLager": true
+  },
+  "4014": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / XL)",
+   "farbe": "White",
+   "groesse": "XL",
+   "preisUsd": 11.92,
+   "imLager": true
+  },
+  "4015": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 2XL)",
+   "farbe": "White",
+   "groesse": "2XL",
+   "preisUsd": 13.92,
+   "imLager": true
+  },
+  "5294": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 3XL)",
+   "farbe": "White",
+   "groesse": "3XL",
+   "preisUsd": 15.92,
+   "imLager": true
+  },
+  "5309": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 4XL)",
+   "farbe": "White",
+   "groesse": "4XL",
+   "preisUsd": 17.92,
+   "imLager": true
+  },
+  "5426": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / S)",
+   "farbe": "White",
+   "groesse": "S",
+   "preisUsd": 19.17,
+   "imLager": true
+  },
+  "5427": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / M)",
+   "farbe": "White",
+   "groesse": "M",
+   "preisUsd": 19.17,
+   "imLager": true
+  },
+  "5428": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / L)",
+   "farbe": "White",
+   "groesse": "L",
+   "preisUsd": 19.17,
+   "imLager": true
+  },
+  "5429": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / XL)",
+   "farbe": "White",
+   "groesse": "XL",
+   "preisUsd": 19.17,
+   "imLager": true
+  },
+  "5430": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / 2XL)",
+   "farbe": "White",
+   "groesse": "2XL",
+   "preisUsd": 21.17,
+   "imLager": true
+  },
+  "5431": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / 3XL)",
+   "farbe": "White",
+   "groesse": "3XL",
+   "preisUsd": 23.17,
+   "imLager": true
+  },
+  "5432": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / 4XL)",
+   "farbe": "White",
+   "groesse": "4XL",
+   "preisUsd": 25.17,
+   "imLager": true
+  },
+  "5433": {
+   "produkt": 145,
+   "typ": "T-SHIRT",
+   "name": "Gildan 18000 Unisex Heavy Blend Crewneck Sweatshirt (White / 5XL)",
+   "farbe": "White",
+   "groesse": "5XL",
+   "preisUsd": 27.17,
+   "imLager": true
+  },
+  "8948": {
+   "produkt": 268,
+   "typ": "POSTER",
+   "name": "Enhanced Matte Paper Poster 30×40 cm",
+   "farbe": null,
+   "groesse": "30×40 cm",
+   "preisUsd": 11.44,
+   "imLager": true
+  },
+  "8952": {
+   "produkt": 268,
+   "typ": "POSTER",
+   "name": "Enhanced Matte Paper Poster 50×70 cm",
+   "farbe": null,
+   "groesse": "50×70 cm",
+   "preisUsd": 14.57,
+   "imLager": true
+  },
+  "8954": {
+   "produkt": 268,
+   "typ": "POSTER",
+   "name": "Enhanced Matte Paper Poster 70×100 cm",
+   "farbe": null,
+   "groesse": "70×100 cm",
+   "preisUsd": 20.76,
+   "imLager": true
+  },
+  "9526": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / XS)",
+   "farbe": "White",
+   "groesse": "XS",
+   "preisUsd": 11.92,
+   "imLager": true
+  },
+  "12872": {
+   "produkt": 71,
+   "typ": "T-SHIRT",
+   "name": "Bella + Canvas 3001 Unisex Short Sleeve Jersey T-Shirt with Tear Away Label (White / 5XL)",
+   "farbe": "White",
+   "groesse": "5XL",
+   "preisUsd": 19.92,
+   "imLager": true
+  },
+  "19516": {
+   "produkt": 268,
+   "typ": "POSTER",
+   "name": "Enhanced Matte Paper Poster (cm) (A2 (42×59.4 cm))",
+   "farbe": null,
+   "groesse": "A2 (42×59.4 cm)",
+   "preisUsd": 12.89,
+   "imLager": true
+  },
+  "20318": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15)",
+   "farbe": "Matte",
+   "groesse": "iPhone 15",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20320": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Pro)",
+   "farbe": "Matte",
+   "groesse": "iPhone 15 Pro",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20322": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Plus)",
+   "farbe": "Matte",
+   "groesse": "iPhone 15 Plus",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20324": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 15 Pro Max)",
+   "farbe": "Matte",
+   "groesse": "iPhone 15 Pro Max",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20326": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16)",
+   "farbe": "Matte",
+   "groesse": "iPhone 16",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20328": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Pro)",
+   "farbe": "Matte",
+   "groesse": "iPhone 16 Pro",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20330": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Pro Max)",
+   "farbe": "Matte",
+   "groesse": "iPhone 16 Pro Max",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20332": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 16 Plus)",
+   "farbe": "Matte",
+   "groesse": "iPhone 16 Plus",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20688": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14)",
+   "farbe": "Matte",
+   "groesse": "iPhone 14",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20690": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Pro)",
+   "farbe": "Matte",
+   "groesse": "iPhone 14 Pro",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20692": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Plus)",
+   "farbe": "Matte",
+   "groesse": "iPhone 14 Plus",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "20694": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 14 Pro Max)",
+   "farbe": "Matte",
+   "groesse": "iPhone 14 Pro Max",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "34002": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17)",
+   "farbe": "Matte",
+   "groesse": "iPhone 17",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "34004": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Air)",
+   "farbe": "Matte",
+   "groesse": "iPhone 17 Air",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "34006": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Pro)",
+   "farbe": "Matte",
+   "groesse": "iPhone 17 Pro",
+   "preisUsd": 16.27,
+   "imLager": true
+  },
+  "34008": {
+   "produkt": 798,
+   "typ": "PHONE-CASE",
+   "name": "MagSafe® Tough Case for iPhone® (Matte / iPhone 17 Pro Max)",
+   "farbe": "Matte",
+   "groesse": "iPhone 17 Pro Max",
+   "preisUsd": 16.27,
+   "imLager": true
+  }
+ }
+}

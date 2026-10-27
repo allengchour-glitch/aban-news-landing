@@ -15,6 +15,7 @@
  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { platzierungFuer, neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'';
 const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
@@ -64,10 +65,10 @@ async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine 
 
 // ---------- SKU → Printful-Variante ----------
 function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
-function placementFor(productType,sideKey){ const t=String(productType||'').toUpperCase();
-  // Mehrlagen-Textil → front/back; Einzelplatzierung (Tasse/Hülle/Sticker/Flasche/Poster/Magnet) → default
-  if(['MUG','PHONE-CASE','STICKER','POSTER','CANVAS','MAGNET'].includes(t)) return 'default';
-  return sideKey==='back'?'back':'front'; }
+// Platzierung: aus dem ECHTEN Printful-Produkttyp der Variante (GET /products/variant/<id>), nicht aus der Shopify-productType-Zeichenkette
+// (die heisst «Handy-Zubehör», «Tassen & Becher» … und traf 'PHONE-CASE'/'MUG' nie → Hüllen/Tassen wurden mit 'front' bestellt). Rückfall: alte Zuordnung.
+// Logik und Tests: lib/printful_platzierung.mjs
+const variantProdukt=neuerPlatzierungsCache(async vid=>{ const r=await pf('/products/variant/'+vid); return r.ok?(r.j&&r.j.result):null; });
 
 const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
   id name email tags
@@ -106,9 +107,11 @@ async function tagOrder(tok,id,tags,pfId){ if(DRY) return;
       if(!files.length){ const mf=li.product&&li.product.metafield&&li.product.metafield.value; if(mf && /^https?:\/\//.test(mf)) files=[{side:'front',url:mf}]; }
       if(!vid){ skipped++; reviewMsg.push(`${li.title}: SKU ohne Printful-Variante`); needReview=true; continue; }
       if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
+      const pfProdukt=await variantProdukt(vid);
+      if(!pfProdukt) console.warn(`⚠️ ${o.name}: Printful-Variante ${vid} nicht lesbar → Platzierung nach Shop-Produktart (Rückfall)`);
       const pfFiles=[];
       for(const f of files){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
-        pfFiles.push({type:placementFor(li.product&&li.product.productType,f.side),url:f.url}); }
+        pfFiles.push({type:platzierungFuer({produkt:pfProdukt,seite:f.side,shopTyp:li.product&&li.product.productType}),url:f.url}); }
       items.push({variant_id:vid,quantity:li.quantity||1,files:pfFiles});
     }
     if(!items.length){ continue; }
