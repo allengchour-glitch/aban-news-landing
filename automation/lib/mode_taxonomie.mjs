@@ -42,7 +42,7 @@ export function bereinigeBeschreibung(text) {
   const saetze = String(text).match(/[^.!?]+[.!?]*/g) || [];
   return saetze.map(s => s.trim()).filter(s => s && !/filter/i.test(s) && !/\b(Sie|Ihnen|Ihr|Ihre|Ihren|Ihrem)\b/.test(s)).join(' ');
 }
-const seo = (titel, beschreibung) => {
+export const seo = (titel, beschreibung) => {
   const t = `${titel} online kaufen.`, rest = (beschreibung ? ' ' + beschreibung : '') + FUSS;
   const voll = t + rest;
   return voll.length <= 160 ? voll : (t + FUSS).slice(0, 160);

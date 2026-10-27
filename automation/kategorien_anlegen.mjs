@@ -135,7 +135,7 @@ async function main() {
         // Nie überschreiben: ein zweiter Lauf läse sonst den schon umgebauten Stand und ersetzte den Originalstand (26.10.: 6 Sicherungen waren betroffen).
         const sicherung = `dropship/kategorien-sicherung/${k.handle}.json`;
         if (!existsSync(sicherung)) writeFileSync(sicherung, JSON.stringify(c, null, 1));
-        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
+        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: k.seoTitel || `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
         if (d.collectionUpdate.userErrors.length) throw new Error(`collectionUpdate ${k.handle} ${JSON.stringify(d.collectionUpdate.userErrors)}`);
         console.log(`Umgestellt: ${k.handle} → TAG ${k.tag}`); ledger(`umgestellt ${k.handle}`);
         // Publish-Falle: eine bestehende Collection kann nie im Onlineshop publiziert worden sein (haustier-tech, 26.10.: HTTP 404, durch eine Umleitung verdeckt).
@@ -147,7 +147,7 @@ async function main() {
         }
       } else if (!c) {
         const d = await q(`mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id handle} userErrors{field message}}}`, { i: {
-          title: k.titel, handle: k.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung }, ruleSet: regel } });
+          title: k.titel, handle: k.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: k.seoTitel || `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung }, ruleSet: regel } });
         if (d.collectionCreate.userErrors.length) throw new Error(`collectionCreate ${k.handle} ${JSON.stringify(d.collectionCreate.userErrors)}`);
         const id = d.collectionCreate.collection.id;
         const p = await q(`mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{field message}}}`, { id, i: pubs });

@@ -6,6 +6,9 @@
  * → Collection-IDs der Handles holen → metafieldsSet in Paketen zu 25 → Stichprobe nachlesen.
  *
  * TROCKENLAUF IST VORGABE (LIVE=1 schreibt). Aufruf: MODE_BEREICHE=bekleidung,schuhe,taschen,accessoires [LIVE=1] node automation/kategorie_unterfilter.mjs
+ * Schmuck (Bereichsdatei schmuck-uhren.json, ids s-…): SCHMUCK=1 PREFIX=s- [ANNAHME_ALLE=1] node automation/kategorie_unterfilter.mjs
+ *   PREFIX=<id-Präfix> begrenzt die Kategorien (m- = Mode, s- = Schmuck). ANNAHME_ALLE=1 (nur Trockenlauf) tut so, als gäbe es alle Collections, und zeigt den Plan,
+ *   wie er nach dem Anlegen aussähe (die Schmuck-Collections gibt es erst nach kategorien_anlegen.mjs PHASE=sammlungen).
  * Rückgängig: metafieldsDelete je Eigentümer/Key, oder die Definitionen löschen (löscht die Werte mit).
  */
 import { appendFileSync } from 'node:fs';
@@ -15,15 +18,18 @@ import { KATEGORIEN } from './lib/kategorien.mjs';
 import { planMetafelder, pakete, NAMESPACE, KEY_FILTER, KEY_ELTERN } from './lib/unterfilter_plan.mjs';
 
 const LIVE = process.env.LIVE === '1';
+const PREFIX = process.env.PREFIX || '';
+const ANNAHME = !LIVE && process.env.ANNAHME_ALLE === '1';
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
 const tok = (await r.json()).access_token; if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
 const q = async (a, b) => { for (let n = 0; ; n++) { try { return await shopifyGql(SHOP, '2025-01', tok, a, b); } catch (e) { if (n >= 5 || !/Throttled|THROTTLED|429/.test(e.message)) throw e; await schlaf(10000 * (n + 1)); } } };
 
-const kats = KATEGORIEN.filter(k => k.mode);
+// Mode (k.mode) und die Kategorien aus Bereichsdateien (k.aus_datei, z. B. Schmuck mit SCHMUCK=1) tragen ihre Unterfilter als Chips.
+const kats = KATEGORIEN.filter(k => (k.mode || k.aus_datei) && (!PREFIX || k.id.startsWith(PREFIX)));
 const handles = kats.map(k => k.handle);
-console.log(`Mode-Kategorien: ${kats.filter(k => !k.filter).length} · Unterfilter: ${kats.filter(k => k.filter).length}`);
+console.log(`Kategorien: ${kats.filter(k => !k.filter).length} · Unterfilter: ${kats.filter(k => k.filter).length}`);
 
 // Collection-IDs
 const gids = {};
@@ -32,6 +38,7 @@ for (let i = 0; i < handles.length; i += 25) {
   const d = await q(`{${teil.map((h, n) => `c${n}:collectionByHandle(handle:${JSON.stringify(h)}){id}`).join(' ')}}`);
   teil.forEach((h, n) => { gids[h] = d[`c${n}`]?.id || null; });
 }
+if (ANNAHME) { for (const h of handles) gids[h] ||= `gid://annahme/${h}`; console.log('ANNAHME_ALLE: alle Collections gelten als vorhanden - nur Vorschau des Plans'); }
 const plan = planMetafelder(kats, gids);
 console.log(`Schreibungen: ${plan.writes.length} (Listenfelder ${plan.writes.filter(w => w.key === KEY_FILTER).length}, Rückverweise ${plan.writes.filter(w => w.key === KEY_ELTERN).length}) · fehlende Collections: ${plan.fehlend.length}${plan.fehlend.length ? ' → ' + plan.fehlend.slice(0, 8).join(', ') : ''} · übersprungen: ${plan.uebersprungen.length}`);
 if (!LIVE) { console.log('\nTrockenlauf — nichts geschrieben.'); process.exit(0); }
