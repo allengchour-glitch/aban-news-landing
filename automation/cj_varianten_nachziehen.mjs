@@ -160,7 +160,9 @@ export async function plane({ q, cj, handle, tmp }) {
     // Bleibt nach dem Stecker-Filter genau EINE von mehreren CJ-Varianten, ist die Shop-SKU `CJ-<pid>` mehrdeutig (sie passt auf alle, auch auf die 110-V-Version): die Bestell-Engine
     // hielte bei jeder Bestellung an (#1029 «Heizbare Kuscheldecke», 27.10.2026). Dann gehört die Nummer der einen übrigen Variante in die SKU (lib/sku_nachziehen.mjs).
     const nachzug = skuNachziehen({ wege, vsRoh, vs });
-    if (nachzug) return { handle, ergebnis: 'SKU_NACHZIEHEN', produktId: p.id, varianteId: v0.id, alteSku: v0.sku, neueSku: nachzug.neueSku, vid: nachzug.vid, anzahlCj: nachzug.anzahlCj };
+    if (nachzug?.neueSku) return { handle, ergebnis: 'SKU_NACHZIEHEN', produktId: p.id, varianteId: v0.id, alteSku: v0.sku, neueSku: nachzug.neueSku, vid: nachzug.vid, anzahlCj: nachzug.anzahlCj };
+    // Mehrdeutig, aber nicht sicher zu beheben: NICHT als «kein Auswahlproblem» (endgültig, 14 Tage) verbuchen, sondern zurückgestellt (7 Tage) und zählbar.
+    if (nachzug?.unklar) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `SKU mehrdeutig: ${nachzug.unklar}` };
     return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
   }
   // Shopify erlaubt nur ~9 500 NEUE Varianten pro Tag: ein Produkt mit 84 Varianten kostet so viel wie zwölf normale. Grosse Produkte kommen später (MAX_VARIANTEN=100 erlaubt alle).

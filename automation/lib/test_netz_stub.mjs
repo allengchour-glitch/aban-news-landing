@@ -9,6 +9,10 @@
  *   frisch:   { <handle>: { updatedAt?, tags?, descriptionHtml?, variantsCount? } }  — Abweichungen beim frischen Lesen
  *   cj:       { <handle>: 'ok' | 'http500' | 'quota' }                  (Vorgabe ok)  — Ausgang der CJ-Produktabfrage
  *   fracht:   { <handle>: 'ok' | 'http500' | 'leer' }                   (Vorgabe ok)  — Frachtabfrage: Liste / HTTP 500 / keine Linie (= nicht lieferbar)
+ *   stecker:  { <handle>: [<Schlüssel je CJ-Variante>, …] }   — CJ-Produkt mit Stecker-Varianten (z. B. ['Black-US','Black-EU']); die Shop-SKU bleibt «CJ-<pid>», die CJ-Nummern haben die Engine-Form (CJTST1000100AZ …)
+ *   skus:     { <handle>: [<SKU je CJ-Variante>, …] }                        — eigene CJ-Variantennummern für 'stecker'
+ *   preise:   { <handle>: [<Einkaufspreis je CJ-Variante>, …] }              — eigene Preise für 'stecker'
+ *   sku:      { <handle>: 'ok' | 'usererror' | 'null' | 'errors' | 'schweigt' } (Vorgabe ok)  — Ausgang von productVariantsBulkUpdate (SKU schreiben); 'schweigt' = Antwort ohne userErrors, aber die SKU stimmt nicht
  *   ki:       'ok' | 'down' | 'unveraendert'                            (Vorgabe ok)  — Gemini antwortet / fällt aus / gibt alles unverändert zurück
  *   kiMap:    { <englisch>: <deutsch> }
  * Jede Anfrage wird nach NETZ_LOG geschrieben (eine JSON-Zeile je Anfrage), damit Tests prüfen können, WAS gesendet wurde.
@@ -21,7 +25,9 @@ const LOG = process.env.NETZ_LOG;
 const logge = o => { if (LOG) appendFileSync(LOG, JSON.stringify(o) + '\n'); };
 const antwort = (body, status = 200) => new Response(typeof body === 'string' ? body : JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
+const SHOPSKU = {};   // Shop-SKU nach einem Schreibvorgang (der Stub merkt sie sich, damit das Rücklesen sie sieht)
 const handles = Object.keys(SZ.produkte || {});
+const skuNow = h => (h in SHOPSKU ? SHOPSKU[h] : 'CJ-' + SZ.produkte[h].pid);
 const nummer = h => handles.indexOf(h) + 1;
 const handleZuId = id => handles.find(h => `gid://shopify/Product/${nummer(h)}` === id);
 const handleZuPid = pid => handles.find(h => String(SZ.produkte[h].pid) === String(pid));
@@ -33,13 +39,15 @@ function shopProdukt(h) {
     descriptionHtml: x.descriptionHtml || `<p>Beschreibung ${h}</p>`, updatedAt: x.stand || '2026-10-26T10:00:00Z',
     options: [{ id: 'gid://shopify/ProductOption/1', name: 'Title', values: ['Default Title'] }],
     variantsCount: { count: 1 }, mediaCount: { count: 0 },
-    variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', sku: `CJ-${x.pid}`, price: '19.90', inventoryItem: { id: 'gid://shopify/InventoryItem/1', unitCost: { amount: '5.00' } } }] },
+    variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', sku: skuNow(h), price: '19.90', inventoryItem: { id: 'gid://shopify/InventoryItem/1', unitCost: { amount: '5.00' } } }] },
     media: { nodes: [] },
   };
 }
 
 function cjProdukt(h) {
   const x = SZ.produkte[h], vs = [];
+  if (SZ.stecker?.[h]) return { pid: String(x.pid), productNameEn: 'Test ' + h, productKeyEn: 'Color-Electrical outlet', variants: SZ.stecker[h].map((k, i) => ({ vid: 'vid-' + h + '-' + i,
+    variantSku: SZ.skus?.[h]?.[i] ?? 'CJTST' + (1000000 + nummer(h) * 100 + i) + 'AZ', variantKey: k, variantSellPrice: SZ.preise?.[h]?.[i] ?? 5, variantWeight: 100, variantImage: '' })) };
   for (const f of x.farben) for (const g of x.groessen) {
     const i = vs.length;
     vs.push({ vid: `vid-${h}-${i}`, variantSku: `SKU-${x.pid}-${i}`, variantKey: `${f}-${g}`, variantSellPrice: 5, variantWeight: 100, variantImage: x.bildUrl || '' });
@@ -56,6 +64,19 @@ globalThis.fetch = async (url, init = {}) => {
   if (/\/admin\/api\/[^/]+\/graphql\.json$/.test(u)) {
     const q = String(body?.query || ''), v = body?.variables || {};
     if (q.includes('productByHandle')) { logge({ k: 'PRODUKT', handle: v.h }); return antwort({ data: { productByHandle: SZ.produkte[v.h] ? shopProdukt(v.h) : null } }); }
+    if (q.includes('productVariantsBulkUpdate')) {
+      const h = handleZuId(v.p), modus = (SZ.sku || {})[h] || 'ok';
+      logge({ k: 'SKU_SCHREIBEN', handle: h, modus, vars: v.v });
+      if (modus === 'usererror') return antwort({ data: { productVariantsBulkUpdate: { productVariants: [], userErrors: [{ field: ['variants', '0'], message: 'kaputt' }] } } });
+      if (modus === 'null') return antwort({ data: { productVariantsBulkUpdate: null } });
+      if (modus === 'errors') return antwort({ errors: [{ message: 'Access denied for productVariantsBulkUpdate field' }] });
+      SHOPSKU[h] = v.v[0].inventoryItem.sku;
+      return antwort({ data: { productVariantsBulkUpdate: { productVariants: [{ id: v.v[0].id, sku: modus === 'schweigt' ? 'anderes' : SHOPSKU[h] }], userErrors: [] } } });
+    }
+    if (q.includes('product(id:$id)') && q.includes('variants(first:3)')) {              // SKU_LESEN: frisches Lesen vor/nach dem SKU-Schreiben
+      const h = handleZuId(v.id); logge({ k: 'SKU_LESEN', handle: h });
+      return antwort({ data: { product: { id: v.id, variantsCount: { count: 1 }, variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', sku: skuNow(h) }] } } } });
+    }
     if (q.includes('product(id:$id)')) {                                   // FRISCH: frisches Lesen unmittelbar vor dem Schreiben
       const h = handleZuId(v.id); logge({ k: 'FRISCH', handle: h });
       const p = shopProdukt(h), o = (SZ.frisch || {})[h] || {};

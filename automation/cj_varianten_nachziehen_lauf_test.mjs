@@ -27,6 +27,7 @@ const P = (art = 'sicher', extra = {}) => {
     : art === 'einzeln' ? { farben: ['Black'], groessen: ['S'] }
     : art === 'viele' ? { farben: ['Black', 'White', 'Red', 'Blue', 'Green', 'Pink', 'Gray'], groessen: ['S', 'M', 'L', 'XL', 'XXL', '3XL'] }
     : { farben: ['Black', 'White'], groessen: ['S', 'M'] };
+  P.letzte = pid;
   return { pid, ...basis, ...extra };
 };
 
@@ -149,6 +150,29 @@ ist('Gedächtnis: «zurückgestellt» vor 8 Tagen ist abgelaufen — a kommt wie
 // ── 10) Variantenbilder: mehr als die Hälfte unlesbar → nicht schreiben (sonst Marker und für immer ohne Variantenbilder)
 r = lauf({ produkte: { a: P('sicher', { bildUrl: 'http://127.0.0.1:9/nichts.png' }) } });
 ist('Variantenbild nicht ladbar: vorläufig übersprungen, NICHT geschrieben', [r.rc, r.L.map(x => `${x.e}:${x.g.split(' (')[0]}`), art(r, 'productSet').length], [0, ['UEBERSPRUNGEN:vorläufig: Variantenbilder unlesbar'], 0]);
+
+// ── 10b) SKU nachziehen (27.10.2026, #1029): nach dem Stecker-Filter bleibt EINE von mehreren CJ-Varianten → nur die SKU der Standardvariante wird gesetzt
+const STECKER = ['Black-US', 'Black-EU'];
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } });
+ist('SKU nachziehen live: Exitcode 0, GESCHRIEBEN mit alt → neu', [r.rc, eng(r), r.L[0]?.g], [0, ['a:GESCHRIEBEN'], `SKU CJ-${P.letzte} → CJTST1000101AZ`]);
+ist('SKU nachziehen live: genau EIN frisches Lesen und EIN Schreiben, nur die SKU, kein productSet', [art(r, 'SKU_LESEN').length, art(r, 'SKU_SCHREIBEN').length, art(r, 'productSet').length, JSON.stringify(art(r, 'SKU_SCHREIBEN')[0]?.vars)], [1, 1, 0, JSON.stringify([{ id: 'gid://shopify/ProductVariant/1', inventoryItem: { sku: 'CJTST1000101AZ' } }])]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } }, { live: false });
+ist('SKU nachziehen Trockenlauf: meldet den Plan, schreibt nichts, kein Ledger', [r.rc, /SKU_NACHZIEHEN/.test(r.out), r.L.length, art(r, 'SKU_SCHREIBEN').length, art(r, 'SKU_LESEN').length], [0, true, 0, 0, 0]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } }, { ledger: `a · ${new Date().toISOString()} · GESCHRIEBEN · SKU alt → neu\n` });
+ist('SKU nachziehen: steht GESCHRIEBEN im Ledger, passiert gar nichts (keine einzige Anfrage ausser dem Token)', [r.rc, art(r, 'PRODUKT').length, art(r, 'SKU_SCHREIBEN').length], [0, 0, 0]);
+for (const modus of ['usererror', 'null', 'errors', 'schweigt']) {
+  r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln') }, stecker: { a: STECKER, b: STECKER }, sku: { a: modus } });
+  ist(`SKU-Schreiben «${modus}»: a wird FEHLER «SKU: …» gemerkt (nie GESCHRIEBEN), b läuft weiter`, [r.rc, eng(r), /^SKU: /.test(r.L[0]?.g || '')], [0, ['a:FEHLER', 'b:GESCHRIEBEN'], true]);
+}
+r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln'), c: P('einzeln'), d: P('einzeln') }, stecker: { a: STECKER, b: STECKER, c: STECKER, d: STECKER }, sku: { a: 'usererror', b: 'usererror', c: 'usererror', d: 'usererror' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
+ist('SKU-Schreibfehler-Serie: Exitcode 1 nach 3 Fehlern, das vierte Produkt unberührt', [r.rc, eng(r), art(r, 'PRODUKT').map(x => x.handle)], [1, ['a:FEHLER', 'b:FEHLER', 'c:FEHLER'], ['a', 'b', 'c']]);
+// Unklare Lage (Rest «Black-CN» nennt keinen Euro-Stecker) oder zu teure Euro-Variante: nie schreiben, 7 Tage zurückgestellt (zählbar, nicht «kein Auswahlproblem»)
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: ['Black-US', 'Black-CN'] } });
+ist('SKU unklar (CN-Stecker): zurückgestellt «SKU mehrdeutig», nichts geschrieben', [r.rc, eng(r), r.L[0]?.g.startsWith('zurückgestellt: SKU mehrdeutig'), art(r, 'SKU_SCHREIBEN').length, art(r, 'productSet').length], [0, ['a:UEBERSPRUNGEN'], true, 0, 0]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, preise: { a: [54.9, 66.17] } });
+ist('SKU: Euro-Variante 21 % teurer → zurückgestellt, nichts geschrieben', [eng(r), /SKU mehrdeutig/.test(r.L[0]?.g), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, skus: { a: ['CJYD301744801AZ', 'bogus'] } });
+ist('SKU: CJ-Nummer der Euro-Variante hat nicht die Form der Bestell-Engine → zurückgestellt, nichts geschrieben', [eng(r), /SKU mehrdeutig/.test(r.L[0]?.g), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0]);
 
 // ── 11) ffmpeg fehlt: sofort Exitcode 1, bevor irgendetwas gesendet wird
 const leer = mkdtempSync(join(tmpdir(), 'kein-ffmpeg-'));
