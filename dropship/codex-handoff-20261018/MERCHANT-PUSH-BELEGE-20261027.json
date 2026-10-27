@@ -1,0 +1,263 @@
+{
+  "access": {
+    "checkedAtUTC": "2026-10-27T19:56:33.711Z",
+    "authorization": {
+      "instruction": "merchant push",
+      "interpretedScope": "Existing validated LuxeStyle Merchant feed refresh only; no exclusions/product/price/budget/channel/settings changes",
+      "approvalNeededAgainForThisSameScope": false
+    },
+    "identity": {
+      "shop": {
+        "name": "LuxeStyle",
+        "domain": "luxestyle.ch",
+        "currency": "CHF"
+      },
+      "merchantDiscovery": {
+        "result": [
+          {
+            "id": "google_merchant",
+            "accounts": [
+              {
+                "id": "5797470070",
+                "name": "LuxeStyle CH"
+              }
+            ]
+          }
+        ]
+      },
+      "metricool": {
+        "brandId": 6227837,
+        "timezone": "Europe/Zurich",
+        "networksData": {
+          "facebookData": "1049840534888592",
+          "instagramData": "luxestyle.ch",
+          "threadsData": "luxestyle.ch",
+          "pinterestData": "luxestyleCH",
+          "tiktokData": "luxestyle.ch",
+          "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+          "tiktokAdsData": "7691398659300179974"
+        }
+      }
+    },
+    "supportedMerchantActions": {
+      "result": []
+    },
+    "browser": {
+      "requestedUrl": "https://merchants.google.com/mc/overview?a=5797470070",
+      "observedState": "Google Sign-in screen; this inspection browser not authenticated",
+      "domIndicators": [
+        "Sign in",
+        "Email or phone",
+        "Next"
+      ],
+      "loginAttempted": false,
+      "credentialsReadOrEntered": false,
+      "accountOwnershipFromBrowser": "unknown",
+      "activeMerchantDataSource": "unknown"
+    },
+    "runtime": {
+      "environment_id": "ccarenv_b64_Y2NhcmVudl84ODAxYzRhM2JkYTA4MTkxOWU5MTI0OTYzYmZlMjYyOA",
+      "source_config_id": null,
+      "source_config_version_id": null,
+      "spec_revision": "588",
+      "observed_spec_revision": "588",
+      "observations_current": true,
+      "provider": "cloud",
+      "desired_phase": "running",
+      "observed_phase": "running",
+      "failure": null,
+      "connectivity": "connected",
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "capabilities": [],
+      "secrets": [],
+      "runtime_variables": [],
+      "outbound_identities": [],
+      "network_diagnostics": null
+    },
+    "operations": {
+      "merchantPushCalls": 0,
+      "merchantSettingsChanges": 0,
+      "shopWrites": 0,
+      "newAnalyticsCalls": 0,
+      "workflowStarts": 0,
+      "customerMessages": 0,
+      "paidRenders": 0
+    },
+    "state": "AUTHORISED_NARROW_PUSH_NOT_EXECUTED_NO_SUPPORTED_WRITE_ACTION_OR_AUTHENTICATED_MERCHANT_UI"
+  },
+  "repository": {
+    "checkedAtUTC": "2026-10-27T19:57:08.016438+00:00",
+    "scope": "Read-only existing merchant route review, no runtime workflow, code or credential execution",
+    "currentMainSources": [
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "blobSha": "765c75c8121d5697a25c8200e7366f900718769b",
+        "storedProof": "/workspace/luxestyle-review/merchant-push-20261027/repo/automation__autopilot__merchant_feed.mjs.json",
+        "proofSha256": "e2afc60a04e2db02bb05ae9a8f615a2981f9b95f5e48995109f3155990934ec8"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/gmc_feed_item.mjs",
+        "blobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+        "storedProof": "/workspace/luxestyle-review/merchant-push-20261027/repo/automation__lib__gmc_feed_item.mjs.json",
+        "proofSha256": "5d283fe443b25740621678b6fb6563c3b930dc2c63864d10ba5e4fd38a733a84"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": ".github/workflows/shop-autopilot.yml",
+        "blobSha": "d7762d3ee7f808e5774fa9e6a762bf3c0b14fe0c",
+        "storedProof": "/workspace/luxestyle-review/merchant-push-20261027/repo/.github__workflows__shop-autopilot.yml.json",
+        "proofSha256": "7391f3992c2f3667a9cef15a4bf0e9572753bd9c8990596af5f682cc1a5bb1cf"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": ".gitlab-ci.yml",
+        "blobSha": "69c0d7010b31929d8b8ce12f0fc6dd7e61515802",
+        "storedProof": "/workspace/luxestyle-review/merchant-push-20261027/repo/.gitlab-ci.yml.json",
+        "proofSha256": "cb960b7f038521ad16b3bf02148988b1d7da0d50de8724171b34a872b9530c0a"
+      }
+    ],
+    "publishedFeedPrefix": {
+      "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml",
+      "readAtUTC": "2026-10-27T19:54:50.811656+00:00",
+      "scope": "HEAD plus bounded first5000bytes GET; no full feed download, scan or push",
+      "head": {
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "contentLength": "3180967",
+        "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+        "lastModified": null
+      },
+      "get": {
+        "status": 206,
+        "bytesRead": 5000,
+        "contentRange": "bytes 0-4999/3180967",
+        "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+        "partialResponseSha256": "3305f99d6a2212ed5821c29c666450865e13f60d143d8a6f0e4c47a908e295e3",
+        "fullResponseRead": false,
+        "prefix": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:g=\"http://base.google.com/ns/1.0\">\n<channel>\n<title>LuxeStyle CH — Produktfeed</title>\n<link>https://luxestyle.ch</link>\n<description>LuxeStyle Schweizer Mode-Shop — Google-Merchant-Feed</description>\n<item>\n<g:id>WALLET-BLK</g:id>\n<g:title>Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder</g:title>\n<g:description>📦 Lieferzeit (je nach Land): 🇨🇭 CH / 🇪🇺 EU: 6–12 Tage · 🇺🇸 USA: 9–16 Tage · Werktage, inkl. Produktion Schlank genug für die Vordertasche, edel genug fürs Sakko. Die Slim Wallet aus echtem Vollnarbenleder schützt deine Karten zuverlässig vor unbemerktem Auslesen – und wird mit j"
+      }
+    },
+    "firstCompleteItem": {
+      "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml",
+      "readAtUTC": "2026-10-27T19:55:40.601805+00:00",
+      "scope": "Read exactly first complete item from bounded5000byte prefix, notfullfeed",
+      "httpStatus": 206,
+      "bytesRead": 5000,
+      "contentRange": "bytes 0-4999/3180967",
+      "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+      "partialResponseSha256": "3305f99d6a2212ed5821c29c666450865e13f60d143d8a6f0e4c47a908e295e3",
+      "firstCompleteItem": {
+        "id": "WALLET-BLK",
+        "title": "Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder",
+        "description": "📦 Lieferzeit (je nach Land): 🇨🇭 CH / 🇪🇺 EU: 6–12 Tage · 🇺🇸 USA: 9–16 Tage · Werktage, inkl. Produktion Schlank genug für die Vordertasche, edel genug fürs Sakko. Die Slim Wallet aus echtem Vollnarbenleder schützt deine Karten zuverlässig vor unbemerktem Auslesen – und wird mit jedem Tag, an dem du sie trägst, ein Stück schöner. Deine Vorteile auf einen Blick Integrierter RFID-Schutz – blockiert...",
+        "link": "https://luxestyle.ch/products/premium-leder-geldborse-slim",
+        "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-leder-geldborse-slim.jpg?v=1781959086",
+        "availability": "in stock",
+        "price": "49.90 CHF",
+        "condition": "new",
+        "brand": "LuxeStyle",
+        "product_type": "Accessoires",
+        "identifier_exists": "no"
+      },
+      "itemXMLSha256": "8ba591ecdd486399d0d5518c979e2aabdc8512362bfe551d54cd21471f684be1",
+      "allOtherItemsNotInspected": true
+    },
+    "confirmedCodeFacts": {
+      "generator": "Builds local XML only; no Google Merchant API fetch-now/upload call",
+      "defaultScan": {
+        "queries": 2,
+        "perQueryScanCap": 6000,
+        "perPage": 50
+      },
+      "mainGeneratorFeedId": "handle",
+      "actualFirstPublishedItemId": "WALLET-BLK",
+      "actualFirstPublishedItemHandleFromLink": "premium-leder-geldborse-slim",
+      "firstItemMatchesCurrentGeneratorIdRule": false,
+      "excludedDestinationReadIntoMapping": false,
+      "identifierExistsFallback": "Emits no when no syntactically accepted GTIN and noSKU; absenceofbothisnotindependentproofnoidentifiersareassigned",
+      "variantSelection": "First returned variant only, not a complete per-variant feed",
+      "gitHubShopAutopilot": "Different maintenance workflow; live default1, taskdefaultall, runs automation/shop_autopilot.mjs",
+      "gitLabShopAutopilot": "Compound job: conversion_radar, merchant_feed, shop_seo_guides, shop_pulse, conversion_guard; broadreads+optionalTelegram plusmulti-file force-push brain/intel"
+    },
+    "notEstablished": [
+      "Current Google Merchant configured data source URL/type/id",
+      "Merchant authentication or permission",
+      "Google lastfetch/process/approvalstatus",
+      "Current fullfeed XML validity/itemcount/productmatches",
+      "Current variant/product facts for first wallet",
+      "Anyhistoricalcatalogcounts/approvalratios"
+    ],
+    "recommendedRootAction": "Do not execute either shop-autopilot job or rebuild/overwrite feed for a narrow refresh. Need authenticated exact existing Merchantdatasource and isolated fetch-now capability; current rootconnector/UI result authoritative.",
+    "ownActions": {
+      "remoteReadsOnly": true,
+      "fullFeedDownloads": 0,
+      "boundedFeedRangeGETs": 2,
+      "sourceBytesEachRange": 5000,
+      "additionalMerchantAnalytics": 0,
+      "workflowDispatches": 0,
+      "deployments": 0,
+      "merchantWrites": 0,
+      "shopifyWrites": 0,
+      "secretValuesOrLogsRead": 0
+    }
+  },
+  "publicFeedPrefix": {
+    "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml",
+    "readAtUTC": "2026-10-27T19:54:50.811656+00:00",
+    "scope": "HEAD plus bounded first5000bytes GET; no full feed download, scan or push",
+    "head": {
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "contentLength": "3180967",
+      "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+      "lastModified": null
+    },
+    "get": {
+      "status": 206,
+      "bytesRead": 5000,
+      "contentRange": "bytes 0-4999/3180967",
+      "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+      "partialResponseSha256": "3305f99d6a2212ed5821c29c666450865e13f60d143d8a6f0e4c47a908e295e3",
+      "fullResponseRead": false,
+      "prefix": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:g=\"http://base.google.com/ns/1.0\">\n<channel>\n<title>LuxeStyle CH — Produktfeed</title>\n<link>https://luxestyle.ch</link>\n<description>LuxeStyle Schweizer Mode-Shop — Google-Merchant-Feed</description>\n<item>\n<g:id>WALLET-BLK</g:id>\n<g:title>Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder</g:title>\n<g:description>📦 Lieferzeit (je nach Land): 🇨🇭 CH / 🇪🇺 EU: 6–12 Tage · 🇺🇸 USA: 9–16 Tage · Werktage, inkl. Produktion Schlank genug für die Vordertasche, edel genug fürs Sakko. Die Slim Wallet aus echtem Vollnarbenleder schützt deine Karten zuverlässig vor unbemerktem Auslesen – und wird mit j"
+    }
+  },
+  "singleFirstItem": {
+    "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml",
+    "readAtUTC": "2026-10-27T19:55:40.601805+00:00",
+    "scope": "Read exactly first complete item from bounded5000byte prefix, notfullfeed",
+    "httpStatus": 206,
+    "bytesRead": 5000,
+    "contentRange": "bytes 0-4999/3180967",
+    "etag": "\"e410ae3c552f0f198a705b5f7f0beae98810f6a997d266d452e99201131ac716\"",
+    "partialResponseSha256": "3305f99d6a2212ed5821c29c666450865e13f60d143d8a6f0e4c47a908e295e3",
+    "firstCompleteItem": {
+      "id": "WALLET-BLK",
+      "title": "Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder",
+      "description": "📦 Lieferzeit (je nach Land): 🇨🇭 CH / 🇪🇺 EU: 6–12 Tage · 🇺🇸 USA: 9–16 Tage · Werktage, inkl. Produktion Schlank genug für die Vordertasche, edel genug fürs Sakko. Die Slim Wallet aus echtem Vollnarbenleder schützt deine Karten zuverlässig vor unbemerktem Auslesen – und wird mit jedem Tag, an dem du sie trägst, ein Stück schöner. Deine Vorteile auf einen Blick Integrierter RFID-Schutz – blockiert...",
+      "link": "https://luxestyle.ch/products/premium-leder-geldborse-slim",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-leder-geldborse-slim.jpg?v=1781959086",
+      "availability": "in stock",
+      "price": "49.90 CHF",
+      "condition": "new",
+      "brand": "LuxeStyle",
+      "product_type": "Accessoires",
+      "identifier_exists": "no"
+    },
+    "itemXMLSha256": "8ba591ecdd486399d0d5518c979e2aabdc8512362bfe551d54cd21471f684be1",
+    "allOtherItemsNotInspected": true
+  },
+  "ownMerchantWrites": 0,
+  "workflowStarts": 0,
+  "newAnalyticsReads": 0,
+  "state": "AUTHORISED_NARROW_PUSH_NOT_EXECUTED_ACCESS_AND_SOURCE_UNCONFIRMED"
+}
