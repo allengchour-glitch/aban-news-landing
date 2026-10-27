@@ -12,6 +12,8 @@
  *                                         CJ-Punkte sind knapp: ein Produkt, das gestern an «Retro Gold» unverändert scheiterte, scheitert heute wieder.
  *      UEBERSPRUNGEN · vorläufig: …       20 Stunden Ruhe: vorübergehende Gründe («seit dem Plan verändert»): im selben Lauf (höchstens 6 h) nie doppelt,
  *                                         in der nächsten Nacht wieder
+ *      SKU_GESETZT                        14 Tage Ruhe (nur die SKU der Standardvariante wurde auf die CJ-Variantennummer gesetzt; der Zustand selbst verhindert eine Wiederholung. Bewusst
+ *                                         NICHT «GESCHRIEBEN»: Abgleich, Fortschritt und Nachtbericht zählen das als Auswahl-Bau, und kommen später echte Varianten dazu, soll das Produkt wieder drankommen)
  *      FEHLER                             20 Stunden Ruhe (ein dauerhaft scheiternder Schreibversuch wird nicht in jeder Runde wiederholt)
  *    FORCE hebt alles ausser GESCHRIEBEN auf.
  *
@@ -36,7 +38,8 @@ export function ledgerGedaechtnis(text, { jetzt = Date.now(), force = false } = 
     if (e === 'UEBERSPRUNGEN') {
       const frist = grund.startsWith(VORLAEUFIG) ? VORLAEUFIG_MS : grund.startsWith(ZURUECKGESTELLT) ? ZURUECKGESTELLT_MS : ENDGUELTIG_MS;
       if (alter < frist) erledigt.add(h);
-    } else if (e === 'FEHLER' && alter < VORLAEUFIG_MS) erledigt.add(h);
+    } else if (e === 'SKU_GESETZT') { if (alter < ENDGUELTIG_MS) erledigt.add(h); }
+    else if (e === 'FEHLER' && alter < VORLAEUFIG_MS) erledigt.add(h);
   }
   return erledigt;
 }

@@ -13,6 +13,7 @@
  *   skus:     { <handle>: [<SKU je CJ-Variante>, …] }                        — eigene CJ-Variantennummern für 'stecker'
  *   preise:   { <handle>: [<Einkaufspreis je CJ-Variante>, …] }              — eigene Preise für 'stecker'
  *   sku:      { <handle>: 'ok' | 'usererror' | 'null' | 'errors' | 'schweigt' } (Vorgabe ok)  — Ausgang von productVariantsBulkUpdate (SKU schreiben); 'schweigt' = Antwort ohne userErrors, aber die SKU stimmt nicht
+ *   skuDoppelt: { <SKU>: <Handle eines anderen Produkts> | { handle, sku } }          — ein anderes Shop-Produkt trägt diese SKU schon (Antwort auf die Doppel-Abfrage productVariants(query:"sku:…"))
  *   ki:       'ok' | 'down' | 'unveraendert'                            (Vorgabe ok)  — Gemini antwortet / fällt aus / gibt alles unverändert zurück
  *   kiMap:    { <englisch>: <deutsch> }
  * Jede Anfrage wird nach NETZ_LOG geschrieben (eine JSON-Zeile je Anfrage), damit Tests prüfen können, WAS gesendet wurde.
@@ -64,6 +65,12 @@ globalThis.fetch = async (url, init = {}) => {
   if (/\/admin\/api\/[^/]+\/graphql\.json$/.test(u)) {
     const q = String(body?.query || ''), v = body?.variables || {};
     if (q.includes('productByHandle')) { logge({ k: 'PRODUKT', handle: v.h }); return antwort({ data: { productByHandle: SZ.produkte[v.h] ? shopProdukt(v.h) : null } }); }
+    if (q.includes('productVariants(first:5')) {                                          // SKU_DOPPELT: trägt ein anderes Produkt die Ziel-SKU schon?
+      const ziel = (/sku:"([^"]+)"/.exec(v.q || '') || [])[1], d = (SZ.skuDoppelt || {})[ziel];
+      logge({ k: 'SKU_DOPPELT', sku: ziel });
+      const knoten = d ? [{ id: 'gid://shopify/ProductVariant/999', sku: typeof d === 'object' ? d.sku : ziel, product: { handle: typeof d === 'object' ? d.handle : d } }] : [];
+      return antwort({ data: { productVariants: { nodes: knoten } } });
+    }
     if (q.includes('productVariantsBulkUpdate')) {
       const h = handleZuId(v.p), modus = (SZ.sku || {})[h] || 'ok';
       logge({ k: 'SKU_SCHREIBEN', handle: h, modus, vars: v.v });

@@ -1,5 +1,5 @@
 // Tests für skuNachziehen (kein Netz): wann bekommt die Standardvariante die echte CJ-Variantennummer als SKU, wann «unklar», wann nichts?
-import { skuNachziehen, istCjVariantennummer } from './sku_nachziehen.mjs';
+import { skuNachziehen, istCjVariantennummer, steckerBasis } from './sku_nachziehen.mjs';
 import { strategien } from './fakten_block.mjs';
 let ok = 0, fehl = 0;
 const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
@@ -55,7 +55,8 @@ unklar('dieselbe Nummer zweimal bei CJ → nicht eindeutig', skuNachziehen({ weg
 // Prüfer-Fund «daten»: der Filter erkennt nur Fremdstecker, die er kennt; der Rest muss AUSDRÜCKLICH Euro-Stecker sein
 for (const k of ['Black-CN', 'Black-CH', 'Black-KR', 'Black-BR', 'Black-ZA', 'Black-Type G', 'Black', ''])
   unklar(`Rest «${k}» nennt den Euro-Stecker nicht ausdrücklich`, skuNachziehen({ wege: pid, vsRoh: [roh[0], mit(roh[1], { key: k })], vs: [mit(roh[1], { key: k })] }), 'Euro-Stecker');
-ist('Rest «White-EU» und «EU Plug» zählen als Euro-Stecker', [skuNachziehen({ wege: pid, vsRoh: roh, vs: [mit(roh[1], { key: 'White-EU' })] })?.neueSku, skuNachziehen({ wege: pid, vsRoh: roh, vs: [mit(roh[1], { key: 'Black-EU Plug' })] })?.neueSku], ['CJYD301744802BY', 'CJYD301744802BY']);
+const mitKeys = (stamm, zusatz = '') => roh.map((v, i) => mit(v, { key: `${stamm}-${['US', 'EU', 'UK', 'AU'][i]}${zusatz}` }));
+ist('Rest «White-EU» und «White-EU Plug» (gleiche Basis) zählen als Euro-Stecker', [skuNachziehen({ wege: pid, vsRoh: mitKeys('White'), vs: [mitKeys('White')[1]] })?.neueSku, skuNachziehen({ wege: pid, vsRoh: mitKeys('White', ' Plug'), vs: [mitKeys('White', ' Plug')[1]] })?.neueSku], ['CJYD301744802BY', 'CJYD301744802BY']);
 // Prüfer-Fund «logik»/«daten»: Preis. faszien-massagegerat-219264: EU 66.17 USD, US 54.90 USD → +21 %
 unklar('Einkaufspreis der übrigen Variante 21 % über dem billigsten (Massagegerät)', skuNachziehen({ wege: pid, vsRoh: [mit(roh[0], { ek: 54.9 }), mit(roh[1], { ek: 66.17 })], vs: [mit(roh[1], { ek: 66.17 })] }), '\\+21 %');
 unklar('Einkaufspreis der übrigen Variante unbekannt (NaN)', skuNachziehen({ wege: pid, vsRoh: [roh[0], mit(roh[1], { ek: NaN })], vs: [mit(roh[1], { ek: NaN })] }), 'Einkaufspreis');
@@ -63,6 +64,34 @@ unklar('Einkaufspreis 0', skuNachziehen({ wege: pid, vsRoh: [roh[0], mit(roh[1],
 ist('Preisgrenze: genau +5 % noch akzeptiert, +6 % nicht', [skuNachziehen({ wege: pid, vsRoh: [mit(roh[0], { ek: 100 }), mit(roh[1], { ek: 105 })], vs: [mit(roh[1], { ek: 105 })] })?.neueSku, typeof skuNachziehen({ wege: pid, vsRoh: [mit(roh[0], { ek: 100 }), mit(roh[1], { ek: 106 })], vs: [mit(roh[1], { ek: 106 })] })?.unklar], ['CJYD301744802BY', 'string']);
 ist('Die anderen Varianten ohne Preis stören den Vergleich nicht', skuNachziehen({ wege: pid, vsRoh: [mit(roh[0], { ek: undefined }), roh[1]], vs: eu })?.neueSku, 'CJYD301744802BY');
 ist('Gross-/Kleinschreibung der Nummer wird akzeptiert und unverändert übernommen', skuNachziehen({ wege: pid, vsRoh: [roh[0], mit(roh[1], { sku: 'cjyd301744802by' })], vs: [mit(roh[1], { sku: 'cjyd301744802by' })] })?.neueSku, 'cjyd301744802by');
+
+// ── Basisvergleich (Prüfung 27.10.2026, echte Fälle faszien-massagegerat-219264 und soyamilch-maschine-611200)
+const farbe = (vid, key, ek = 10, sku = 'CJYD1111111' + vid + 'AZ') => ({ vid: String(vid), sku, key, ek });
+const V = (...s) => s.map((k, i) => farbe(i + 1, k));
+let alle = V('Black-US', 'Gray-US', 'Black-EU');
+unklar('Black-US, Gray-US, Black-EU zum gleichen Preis: die graue US-Variante ist nicht nur ein anderer Stecker', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[2]] }), 'unterscheidet sich nicht nur im Stecker');
+alle = V('1200W-US', '800W-US', '800W-EU');
+unklar('1200W-US verworfen, 800W-EU bleibt → andere Leistung', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[2]] }), 'unterscheidet sich nicht nur im Stecker');
+alle = V('Green-American Standard 110V', 'Pearl White 12 Liters EU');
+unklar('Green-American Standard 110V verworfen, Pearl White 12 Liters EU bleibt (soyamilch-maschine)', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'unterscheidet sich nicht nur im Stecker');
+alle = V('Black-US', 'Black-UK', 'Black-EU');
+ist('Gegenprobe: Black-US, Black-UK, Black-EU → schreiben', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[2]] })?.neueSku, 'CJYD11111113AZ');
+alle = V('Silver Gray-800W US', 'Silver Gray-800W EU', 'Silver Gray-800W  UK', 'Silver Gray-800W  AU');
+ist('Gegenprobe: Ladegerät, Leerzeichen und Reihenfolge der Wörter egal → schreiben', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] })?.neueSku, 'CJYD11111112AZ');
+alle = V('VB610-US', 'VB610-EU', 'VB610-UK', 'VB610-AU');
+ist('Gegenprobe: Baby-Kamera VB610 → schreiben', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] })?.neueSku, 'CJYD11111112AZ');
+alle = V('Drill 12V-US', 'Drill 18V-EU');
+unklar('12 V gegen 18 V (Akku) ist KEINE Netzspannung und gehört zur Basis', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'unterscheidet sich nicht nur im Stecker');
+alle = V('White-110-240V US', 'White-220V EU');
+ist('Netzspannung 110–240 V und 220 V fallen weg', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] })?.neueSku, 'CJYD11111112AZ');
+for (const [k, soll] of [['Silver Gray-800W EU', '800w gray silver'], ['Black-Type G', 'black'], ['Plug Type B-White', 'white'], ['Gray -US', 'gray'], ['', ''], [null, ''], ['EU', '']])
+  ist('steckerBasis(' + JSON.stringify(k) + ')', steckerBasis(k), soll);
+
+// ── Zeichensatz der Bestell-Engine (cj_order_engine.py SKU_FORM_B): «+» ist dort nicht erlaubt
+ist('Nummer mit «+» («CJJJJTYS00557-Pink+Blue-2pc») hat die Form, aber nicht den Zeichensatz der Engine', [istCjVariantennummer('CJJJJTYS00557-Pink+Blue-2pc'), istCjVariantennummer('CJJJJTYS00557-Pink Blue-2pc')], [false, true]);
+alle = [farbe(1, 'Pink-US'), farbe(2, 'Pink-EU', 10, 'CJJJJTYS00557-Pink+Blue-2pc')];
+unklar('Euro-Rest mit «+» in der Nummer → nicht schreiben', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'CJ-Nummer');
+ist('Länge: höchstens 80 Zeichen', [istCjVariantennummer('CJABCD12345-' + 'x'.repeat(68)), istCjVariantennummer('CJABCD12345-' + 'x'.repeat(69))], [true, false]);
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

@@ -154,19 +154,35 @@ ist('Variantenbild nicht ladbar: vorläufig übersprungen, NICHT geschrieben', [
 // ── 10b) SKU nachziehen (27.10.2026, #1029): nach dem Stecker-Filter bleibt EINE von mehreren CJ-Varianten → nur die SKU der Standardvariante wird gesetzt
 const STECKER = ['Black-US', 'Black-EU'];
 r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } });
-ist('SKU nachziehen live: Exitcode 0, GESCHRIEBEN mit alt → neu', [r.rc, eng(r), r.L[0]?.g], [0, ['a:GESCHRIEBEN'], `SKU CJ-${P.letzte} → CJTST1000101AZ`]);
+ist('SKU nachziehen live: Exitcode 0, eigener Ausgang SKU_GESETZT (nicht GESCHRIEBEN) mit alt → neu', [r.rc, eng(r), r.L[0]?.g], [0, ['a:SKU_GESETZT'], `SKU CJ-${P.letzte} → CJTST1000101AZ`]);
+ist('SKU nachziehen live: Frachtprüfung der bleibenden Variante VOR dem Schreiben, genau einmal', [art(r, 'cjFracht').length, r.netz.findIndex(x => x.k === 'cjFracht') < r.netz.findIndex(x => x.k === 'SKU_SCHREIBEN')], [1, true]);
+ist('SKU nachziehen live: die Doppel-Abfrage läuft vor dem Schreiben', [art(r, 'SKU_DOPPELT').length, r.netz.findIndex(x => x.k === 'SKU_DOPPELT') < r.netz.findIndex(x => x.k === 'SKU_SCHREIBEN')], [1, true]);
 ist('SKU nachziehen live: genau EIN frisches Lesen und EIN Schreiben, nur die SKU, kein productSet', [art(r, 'SKU_LESEN').length, art(r, 'SKU_SCHREIBEN').length, art(r, 'productSet').length, JSON.stringify(art(r, 'SKU_SCHREIBEN')[0]?.vars)], [1, 1, 0, JSON.stringify([{ id: 'gid://shopify/ProductVariant/1', inventoryItem: { sku: 'CJTST1000101AZ' } }])]);
 r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } }, { live: false });
 ist('SKU nachziehen Trockenlauf: meldet den Plan, schreibt nichts, kein Ledger', [r.rc, /SKU_NACHZIEHEN/.test(r.out), r.L.length, art(r, 'SKU_SCHREIBEN').length, art(r, 'SKU_LESEN').length], [0, true, 0, 0, 0]);
-r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } }, { ledger: `a · ${new Date().toISOString()} · GESCHRIEBEN · SKU alt → neu\n` });
-ist('SKU nachziehen: steht GESCHRIEBEN im Ledger, passiert gar nichts (keine einzige Anfrage ausser dem Token)', [r.rc, art(r, 'PRODUKT').length, art(r, 'SKU_SCHREIBEN').length], [0, 0, 0]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER } }, { ledger: `a · ${new Date().toISOString()} · SKU_GESETZT · SKU alt → neu\n` });
+ist('SKU nachziehen: steht SKU_GESETZT im Ledger (14 Tage), passiert gar nichts (keine einzige Anfrage ausser dem Token)', [r.rc, art(r, 'PRODUKT').length, art(r, 'SKU_SCHREIBEN').length], [0, 0, 0]);
 for (const modus of ['usererror', 'null', 'errors', 'schweigt']) {
   r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln') }, stecker: { a: STECKER, b: STECKER }, sku: { a: modus } });
-  ist(`SKU-Schreiben «${modus}»: a wird FEHLER «SKU: …» gemerkt (nie GESCHRIEBEN), b läuft weiter`, [r.rc, eng(r), /^SKU: /.test(r.L[0]?.g || '')], [0, ['a:FEHLER', 'b:GESCHRIEBEN'], true]);
+  ist(`SKU-Schreiben «${modus}»: a wird FEHLER «SKU: …» gemerkt (nie SKU_GESETZT), b läuft weiter`, [r.rc, eng(r), /^SKU: /.test(r.L[0]?.g || '')], [0, ['a:FEHLER', 'b:SKU_GESETZT'], true]);
 }
 r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln'), c: P('einzeln'), d: P('einzeln') }, stecker: { a: STECKER, b: STECKER, c: STECKER, d: STECKER }, sku: { a: 'usererror', b: 'usererror', c: 'usererror', d: 'usererror' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
 ist('SKU-Schreibfehler-Serie: Exitcode 1 nach 3 Fehlern, das vierte Produkt unberührt', [r.rc, eng(r), art(r, 'PRODUKT').map(x => x.handle)], [1, ['a:FEHLER', 'b:FEHLER', 'c:FEHLER'], ['a', 'b', 'c']]);
 // Unklare Lage (Rest «Black-CN» nennt keinen Euro-Stecker) oder zu teure Euro-Variante: nie schreiben, 7 Tage zurückgestellt (zählbar, nicht «kein Auswahlproblem»)
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: ['Black-US', 'Gray-US', 'Black-EU'] } });
+ist('SKU: graue US-Variante verworfen, schwarze EU bleibt → zurückgestellt, eigener Zähler SKU_MEHRDEUTIG im Bericht', [eng(r), /SKU mehrdeutig: .*unterscheidet sich nicht nur im Stecker/.test(r.L[0]?.g), art(r, 'SKU_SCHREIBEN').length, /"SKU_MEHRDEUTIG":1/.test(r.out)], [['a:UEBERSPRUNGEN'], true, 0, true]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, fracht: { a: 'leer' } });
+ist('SKU: Euro-Variante ohne Frachtlinie nach CH → nicht schreiben, «Lieferbarkeit nicht bewiesen» (endgültig, kein Präfix)', [eng(r), /^Lieferbarkeit nicht bewiesen/.test(r.L[0]?.g), art(r, 'SKU_LESEN').length, art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0, 0]);
+r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, skuDoppelt: { CJTST1000101AZ: 'zwilling-mit-auswahl' } });
+ist('SKU: ein anderes Produkt trägt die Ziel-SKU schon → zurückgestellt (7 Tage), nichts geschrieben', [r.rc, eng(r), r.L[0]?.g, art(r, 'SKU_SCHREIBEN').length], [0, ['a:UEBERSPRUNGEN'], 'zurückgestellt: SKU schon vergeben (zwilling-mit-auswahl)', 0]);
+// Deckel: höchstens MAX_SKU_SCHREIBEN Schreibvorgänge je 20 Stunden, gezählt im Ledger (über alle Stapel)
+const SK4 = { produkte: { a: P('einzeln'), b: P('einzeln'), c: P('einzeln'), d: P('einzeln') }, stecker: { a: STECKER, b: STECKER, c: STECKER, d: STECKER } };
+r = lauf(SK4, { env: { MAX_SKU_SCHREIBEN: '2' } });
+ist('SKU-Deckel 2: zwei werden gesetzt, die anderen zwei «vorläufig: SKU-Deckel erreicht», Exitcode 0', [r.rc, eng(r), art(r, 'SKU_SCHREIBEN').map(x => x.handle), r.L.slice(2).every(x => x.g.startsWith('vorläufig: SKU-Deckel erreicht'))], [0, ['a:SKU_GESETZT', 'b:SKU_GESETZT', 'c:UEBERSPRUNGEN', 'd:UEBERSPRUNGEN'], ['a', 'b'], true]);
+r = lauf(SK4, { env: { MAX_SKU_SCHREIBEN: '2' }, ledger: `x1 · ${new Date(Date.now() - 3600e3).toISOString()} · SKU_GESETZT · SKU alt → neu\nx2 · ${new Date(Date.now() - 2 * 3600e3).toISOString()} · SKU_GESETZT · SKU alt → neu\n` });
+ist('SKU-Deckel zählt die SKU_GESETZT-Zeilen der letzten 20 Stunden aus dem Ledger (frühere Stapel): schon 2 → keines mehr', [eng(r), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN', 'b:UEBERSPRUNGEN', 'c:UEBERSPRUNGEN', 'd:UEBERSPRUNGEN'], 0]);
+r = lauf(SK4, { env: { MAX_SKU_SCHREIBEN: '2' }, ledger: `x1 · ${new Date(Date.now() - 30 * 3600e3).toISOString()} · SKU_GESETZT · SKU alt → neu\nx2 · ${new Date(Date.now() - 40 * 3600e3).toISOString()} · SKU_GESETZT · SKU alt → neu\n` });
+ist('SKU-Deckel: Zeilen älter als 20 Stunden zählen nicht mehr', [eng(r).filter(x => x.endsWith(':SKU_GESETZT')).length], [2]);
 r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: ['Black-US', 'Black-CN'] } });
 ist('SKU unklar (CN-Stecker): zurückgestellt «SKU mehrdeutig», nichts geschrieben', [r.rc, eng(r), r.L[0]?.g.startsWith('zurückgestellt: SKU mehrdeutig'), art(r, 'SKU_SCHREIBEN').length, art(r, 'productSet').length], [0, ['a:UEBERSPRUNGEN'], true, 0, 0]);
 r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, preise: { a: [54.9, 66.17] } });

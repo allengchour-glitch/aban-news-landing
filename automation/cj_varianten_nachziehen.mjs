@@ -160,7 +160,13 @@ export async function plane({ q, cj, handle, tmp }) {
     // Bleibt nach dem Stecker-Filter genau EINE von mehreren CJ-Varianten, ist die Shop-SKU `CJ-<pid>` mehrdeutig (sie passt auf alle, auch auf die 110-V-Version): die Bestell-Engine
     // hielte bei jeder Bestellung an (#1029 «Heizbare Kuscheldecke», 27.10.2026). Dann gehört die Nummer der einen übrigen Variante in die SKU (lib/sku_nachziehen.mjs).
     const nachzug = skuNachziehen({ wege, vsRoh, vs });
-    if (nachzug?.neueSku) return { handle, ergebnis: 'SKU_NACHZIEHEN', produktId: p.id, varianteId: v0.id, alteSku: v0.sku, neueSku: nachzug.neueSku, vid: nachzug.vid, anzahlCj: nachzug.anzahlCj };
+    if (nachzug?.neueSku) {
+      // Lieferbeweis für die EINE Variante, die der Shop verkauft (Prüfung 27.10.2026: die EU-Variante des Babyphones hat bei CJ keine Versandlinie nach CH — «geschrieben» hätte das verdeckt).
+      // Eine Frachtabfrage (rund 10 CJ-Punkte) je Schreibfall; CJ-Drosselung fliegt als CJ_THROTTLED nach oben wie im Auswahl-Pfad.
+      const u = lieferurteil({ cjCode: 200, vid: nachzug.vid, linien: await fracht(cj, nachzug.vid) });
+      if (u.urteil !== 'lieferbar') return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `${u.urteil === 'nicht_lieferbar' ? 'Lieferbarkeit nicht bewiesen' : 'Lieferbarkeit unbekannt'} (${u.grund}; SKU ${v0.sku} unverändert)` };
+      return { handle, ergebnis: 'SKU_NACHZIEHEN', produktId: p.id, varianteId: v0.id, alteSku: v0.sku, neueSku: nachzug.neueSku, vid: nachzug.vid, anzahlCj: nachzug.anzahlCj };
+    }
     // Mehrdeutig, aber nicht sicher zu beheben: NICHT als «kein Auswahlproblem» (endgültig, 14 Tage) verbuchen, sondern zurückgestellt (7 Tage) und zählbar.
     if (nachzug?.unklar) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `SKU mehrdeutig: ${nachzug.unklar}` };
     return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ führt nur ${vs.length} Variante — kein Auswahlproblem` };
@@ -287,6 +293,8 @@ async function aufschreiben(q, plan) {
 
 // ---------------------------------------------------------------- Lauf
 const SKU_LESEN = `query($id:ID!){product(id:$id){id variantsCount{count} variants(first:3){nodes{id sku}}}}`;
+// Trägt die Ziel-SKU (nackt oder mit «CJ-») schon ein ANDERES Shop-Produkt (Zwilling mit Auswahl), würden danach beide in der Bestell-Engine mehrdeutig (sie verlangt genau einen Treffer).
+const SKU_DOPPELT = `query($q:String!){productVariants(first:5,query:$q){nodes{id sku product{handle}}}}`;
 const SKU_SCHREIBEN = `mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){productVariants{id sku} userErrors{field message}}}`;
 /**
  * Setzt die SKU der EINEN Standardvariante auf die CJ-Variantennummer (Plan «SKU_NACHZIEHEN»). Liest unmittelbar vorher frisch (noch genau diese eine Variante? noch die alte SKU?)
@@ -300,6 +308,9 @@ export async function schreibeSku(q, plan) {
   if (f.variantsCount.count !== 1 || vs.length !== 1 || vs[0].id !== plan.varianteId) return { ok: false, uebersprungen: 'Varianten seit dem Plan verändert' };
   if (vs[0].sku === plan.neueSku) return { ok: true, schonErledigt: true };
   if (vs[0].sku !== plan.alteSku) return { ok: false, uebersprungen: `SKU seit dem Plan verändert (${vs[0].sku})` };
+  const andere = ((await q(SKU_DOPPELT, { q: `sku:"${plan.neueSku}" OR sku:"CJ-${plan.neueSku}"` })).productVariants?.nodes || [])
+    .filter(n => n.id !== plan.varianteId && [plan.neueSku, 'CJ-' + plan.neueSku].includes(String(n.sku || '').trim()));
+  if (andere.length) return { ok: false, zurueckgestellt: true, uebersprungen: `SKU schon vergeben (${andere.map(n => n.product?.handle || '?').slice(0, 2).join(', ')})` };
   const m = (await q(SKU_SCHREIBEN, { p: plan.produktId, v: [{ id: plan.varianteId, inventoryItem: { sku: plan.neueSku } }] })).productVariantsBulkUpdate;
   if (m.userErrors?.length) return { ok: false, fehler: JSON.stringify(m.userErrors).slice(0, 160) };
   const neu = m.productVariants?.[0];
@@ -338,6 +349,8 @@ async function main() {
   // fehlerFolge = Plan-Fehler (CJ/Shopify-Lesen), schreibFolge = Schreibfehler. Überspringer setzen NUR fehlerFolge zurück (sie belegen, dass CJ antwortet), nie schreibFolge:
   // sonst bliebe ein dauerhafter Schreibausfall unerkannt, sobald zwischendurch ein Produkt übersprungen wird (Prüfung 26.10.2026).
   let fehlerFolge = 0, schreibFolge = 0, kiFolge = 0, drosselFolge = 0;
+  const MAX_SKU = Number(process.env.MAX_SKU_SCHREIBEN || 25);
+  let skuGesetzt = existsSync(LEDGER) ? readFileSync(LEDGER, 'utf8').split('\n').filter(z => { const [, zeit, e] = z.split('·').map(x => x.trim()); return e === 'SKU_GESETZT' && Date.now() - Date.parse(zeit) < 20 * 3600 * 1000; }).length : 0;
   const abbruch = (code, text) => { console.log('ABBRUCH:', text); process.exitCode = code; };
   try {
     for (const h of handles) {
@@ -348,7 +361,7 @@ async function main() {
       let plan;
       const planPfad = join(PLAN_DIR, h + '.json');
       // JEDER Ausgang bekommt eine Ledger-Zeile (nur live): ein Produkt ohne Zeile stünde im nächsten Stapel wieder vorn und zählte gegen LIMIT.
-      const merke = (ergebnis, grund) => { if (LIVE) appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · ${ergebnis} · ${String(grund).slice(0, 100)}\n`); };
+      const merke = (ergebnis, grund, max = 100) => { if (LIVE) appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · ${ergebnis} · ${String(grund).slice(0, max)}\n`); };
       // Livelauf: einen frischen Plan aus dem Trockenlauf weiterverwenden (spart CJ-Abfragen und Bild-Downloads)
       if (LIVE && existsSync(planPfad) && Date.now() - statSync(planPfad).mtimeMs < 3 * 3600 * 1000) {
         try { const alt = JSON.parse(readFileSync(planPfad, 'utf8')); if (alt.ergebnis === 'PLAN') plan = alt; } catch { /* neu planen */ }
@@ -368,15 +381,21 @@ async function main() {
       if (plan.ergebnis === 'SKU_NACHZIEHEN') {
         console.log(h, '→ SKU_NACHZIEHEN |', `${plan.alteSku} → ${plan.neueSku} (${plan.anzahlCj} CJ-Varianten, nur eine bleibt nach dem Stecker-Filter)`);
         if (!LIVE) { zaehl.SKU_NACHZIEHEN = (zaehl.SKU_NACHZIEHEN || 0) + 1; fehlerFolge = 0; continue; }
+        // Deckel (Prüfung 27.10.2026): höchstens MAX_SKU_SCHREIBEN SKU-Schreibvorgänge je 20 Stunden über alle Stapel (gezählt im Ledger). Der Rest kommt in der nächsten Nacht dran.
+        if (skuGesetzt >= MAX_SKU) {
+          zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1; console.log(`   UEBERSPRUNGEN | SKU-Deckel erreicht (${skuGesetzt} in 20 Stunden, MAX_SKU_SCHREIBEN=${MAX_SKU})`);
+          merke('UEBERSPRUNGEN', `${VORLAEUFIG}: SKU-Deckel erreicht (${MAX_SKU} in 20 Stunden)`); fehlerFolge = 0; continue;
+        }
         let w;
         try { w = await schreibeSku(q, plan); } catch (e) { w = { ok: false, fehler: String(e.message).slice(0, 160) }; }
         if (w.ok) {
-          fehlerFolge = 0; schreibFolge = 0; zaehl.GESCHRIEBEN = (zaehl.GESCHRIEBEN || 0) + 1;
-          console.log(`   GESCHRIEBEN: SKU ${w.schonErledigt ? 'war schon' : 'jetzt'} ${plan.neueSku}`);
-          merke('GESCHRIEBEN', `SKU ${plan.alteSku} → ${plan.neueSku}`);
+          fehlerFolge = 0; schreibFolge = 0; zaehl.SKU_GESETZT = (zaehl.SKU_GESETZT || 0) + 1; skuGesetzt++;
+          console.log(`   SKU_GESETZT: SKU ${w.schonErledigt ? 'war schon' : 'jetzt'} ${plan.neueSku}`);
+          // Eigener Ausgang statt GESCHRIEBEN: die Auswahl-Auswertungen (Abgleich, Fortschritt, Nachtbericht) zählen GESCHRIEBEN als «Auswahl nachgezogen». Die alte pid steht vollständig im Ledger.
+          merke('SKU_GESETZT', `SKU ${plan.alteSku} → ${plan.neueSku}`, 220);
         } else if (w.uebersprungen) {
           zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1; console.log('   UEBERSPRUNGEN |', w.uebersprungen);
-          merke('UEBERSPRUNGEN', `${VORLAEUFIG}: ${w.uebersprungen}`); fehlerFolge = 0;
+          merke('UEBERSPRUNGEN', `${w.zurueckgestellt ? ZURUECKGESTELLT : VORLAEUFIG}: ${w.uebersprungen}`); fehlerFolge = 0;
         } else {
           zaehl.FEHLER = (zaehl.FEHLER || 0) + 1; console.log('   FEHLER beim Schreiben der SKU:', w.fehler); merke('FEHLER', `SKU: ${w.fehler}`);
           if (++schreibFolge >= MAX_FEHLER) { abbruch(1, `${schreibFolge} Schreibfehler in Folge — ein Dienst scheint auszufallen`); break; }
@@ -397,10 +416,11 @@ async function main() {
       }
       if (plan.ergebnis !== 'PLAN') {
         zaehl[plan.ergebnis] = (zaehl[plan.ergebnis] || 0) + 1; console.log(h, '→', plan.ergebnis, '|', plan.grund);
+        if (/^SKU mehrdeutig/.test(plan.grund || '')) zaehl.SKU_MEHRDEUTIG = (zaehl.SKU_MEHRDEUTIG || 0) + 1;   // eigener Zähler: diese Produkte bleiben für Bestellungen mehrdeutig, bis jemand entscheidet
         if (plan.ergebnis === 'UEBERSPRUNGEN') {
           // Endgültige Gründe ändern sich nicht (14 Tage Ruhe); alle anderen (viele Varianten, Auswahl nicht baubar, Lieferbarkeit unbekannt …) ändern sich nicht von selbst und kosten bei jedem Versuch CJ-Punkte → zurückgestellt (7 Tage).
           const endgueltig = /^(CJ führt nur|CJ ohne Daten|Lieferbarkeit nicht bewiesen|kein Standard-Einzelprodukt|zu viele Medien|keine CJ-Kennung|nur Fremdstecker)/.test(plan.grund || '');
-          merke('UEBERSPRUNGEN', endgueltig ? plan.grund : String(plan.grund).startsWith(KI_AUS) ? `${VORLAEUFIG}: ${plan.grund}` : `${ZURUECKGESTELLT}: ${plan.grund}`);
+          merke('UEBERSPRUNGEN', endgueltig ? plan.grund : String(plan.grund).startsWith(KI_AUS) ? `${VORLAEUFIG}: ${plan.grund}` : `${ZURUECKGESTELLT}: ${plan.grund}`, /^SKU mehrdeutig/.test(plan.grund || '') ? 200 : 100);   // «SKU mehrdeutig»: der Grund (Prozentzahl, Schlüssel) ist die Entscheidungsgrundlage, nicht kürzen
           fehlerFolge = 0;
         } else if (plan.ergebnis === 'FEHLER') {
           merke('FEHLER', `Plan: ${plan.grund}`);

@@ -19,6 +19,8 @@
  *      («Black-CN», «Black-CH», neutraler Schlüssel), wäre sie sonst ungeprüft zur einzigen bestellbaren geworden.
  *   5. Der Einkaufspreis der übrigen Variante liegt höchstens 5 % über dem billigsten CJ-Preis (sonst stimmt der Shop-Preis, der an der Ausgangsvariante
  *      hängt, nicht mehr; Beispiel faszien-massagegerat-219264: EU-Version 66.17 USD gegen 54.90 USD der US-Versionen, +21 %).
+ *   6. Die verworfenen Varianten unterscheiden sich von der übrigen NUR im Stecker/in der Spannung (Prüfung 27.10.2026, echte Daten): bei «Black-US, Gray-US, Black-EU» bliebe sonst
+ *      «Black-EU», obwohl der Shop das graue Gerät führt. Verglichen wird die «Basis» des Schlüssels (ohne Steckerwörter) — steckerBasis().
  * Ist die Lage mehrdeutig, aber nicht sicher zu beheben, kommt `{ unklar: 'Grund' }` zurück: das Werkzeug merkt sich das als «zurückgestellt» (zählbar), nicht als
  * «kein Auswahlproblem». `null` heisst: nichts zu tun, kein Problem.
  *
@@ -32,9 +34,29 @@ import { euroSteckerKey } from './stecker_cj.mjs';
 const FORM_A = /^CJ[A-Z]{2,8}\d{5,9}\d{2}[A-Z]{2}$/i;
 const FORM_B = /^CJ[A-Z]{2,8}\d{5,9}(?:-[\s\S]*)?$/i;
 const PREIS_TOLERANZ = 1.05;
+// Zeichensatz und Länge, die die Bestell-Engine für eine Varianten-SKU akzeptiert (cj_order_engine.py SKU_FORM_B). «CJJJJTYS00557-Pink+Blue-2pc» erfüllt die Form, aber nicht den Zeichensatz.
+const ENGINE_ZEICHEN = /^[A-Za-z0-9._ -]{6,80}$/;
+
+// Wörter, die nur den Stecker oder die Netzspannung nennen. Alles andere am CJ-Schlüssel (Farbe, Modell, Leistung, Fassungsvermögen) ist die «Basis».
+const STECKER_WORT = /^(us|usa|eu|eur|uk|au|jp|cn|plug|plugs|stecker|standard|american|america|european|europe|euro|british|britain|australian|australia|japanese|japan|ac|socket|outlet|voltage|schuko)$/;
+/**
+ * Der CJ-Schlüssel ohne Steckerwörter und Netzspannung (100–250 V), kleingeschrieben und sortiert: «Silver Gray-800W EU» und «Silver Gray-800W  AU» haben dieselbe Basis,
+ * «Black-EU» und «Gray-US» nicht. 12 V / 18 V (Akku) bleiben Teil der Basis.
+ */
+export function steckerBasis(key) {
+  let k = String(key ?? '').toLowerCase();
+  k = k.replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*-\s*(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ').replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ');
+  const w = k.split(/[^a-z0-9äöüß.+]+/).filter(Boolean), aus = [];
+  for (let i = 0; i < w.length; i++) {
+    if (w[i] === 'type') { if (/^[a-z]$/.test(w[i + 1] || '')) i++; continue; }   // «Type G»
+    if (STECKER_WORT.test(w[i])) continue;
+    aus.push(w[i]);
+  }
+  return aus.sort().join(' ');
+}
 
 /** true, wenn die Nummer eine Form hat, die die Bestell-Engine als CJ-Variante erkennt. */
-export const istCjVariantennummer = sku => { const s = String(sku ?? '').trim(); return FORM_A.test(s) || FORM_B.test(s); };
+export const istCjVariantennummer = sku => { const s = String(sku ?? '').trim(); return ENGINE_ZEICHEN.test(s) && (FORM_A.test(s) || FORM_B.test(s)); };
 
 /**
  * @param {{wege:Array<[string,string]>, vsRoh:Array<{vid:string,sku:string,key?:string,ek?:number}>, vs:Array<{vid:string,sku:string,key?:string,ek?:number}>}} a
@@ -51,10 +73,14 @@ export function skuNachziehen({ wege, vsRoh, vs }) {
   if (!rest.vid) return { unklar: 'übrige Variante ohne CJ-Variantenkennung' };
   if (vsRoh.filter(v => String(v.sku || '').trim().toUpperCase() === sku.toUpperCase()).length !== 1) return { unklar: 'CJ-Nummer der übrigen Variante nicht eindeutig' };
   if (!euroSteckerKey(rest.key)) return { unklar: `übrige Variante nennt den Euro-Stecker nicht ausdrücklich («${String(rest.key ?? '').slice(0, 40)}»)` };
+  const basis = steckerBasis(rest.key);
+  const andere = vsRoh.find(v => v.vid !== rest.vid && steckerBasis(v.key) !== basis);
+  if (andere) return { unklar: `verworfene Variante «${String(andere.key ?? '').slice(0, 30)}» unterscheidet sich nicht nur im Stecker von «${String(rest.key ?? '').slice(0, 30)}»` };
   const ek = Number(rest.ek);
   if (!(ek > 0)) return { unklar: 'Einkaufspreis der übrigen Variante unbekannt' };
   const preise = vsRoh.map(v => Number(v.ek)).filter(x => x > 0);
   const billigste = Math.min(...preise);
-  if (ek > billigste * PREIS_TOLERANZ) return { unklar: `Einkaufspreis der übrigen Variante ${ek} USD liegt über dem billigsten CJ-Preis ${billigste} USD (+${Math.round((ek / billigste - 1) * 100)} %)` };
+  // Kurz halten: der Grund landet auf 100 Zeichen gekürzt im Ledger, das Wichtige (die Prozentzahl) steht vorn.
+  if (ek > billigste * PREIS_TOLERANZ) return { unklar: `Einkaufspreis +${Math.round((ek / billigste - 1) * 100)} % (${ek} gegen ${billigste} USD)` };
   return { neueSku: sku, vid: String(rest.vid), anzahlCj: vsRoh.length };
 }

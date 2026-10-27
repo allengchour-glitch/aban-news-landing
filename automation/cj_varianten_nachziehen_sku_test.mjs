@@ -5,9 +5,10 @@ const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b
 
 const PLAN = { produktId: 'gid://shopify/Product/1', varianteId: 'gid://shopify/ProductVariant/1', alteSku: 'CJ-2607290840401606000', neueSku: 'CJYD301744802BY' };
 // Nachgebildeter Shop: Stand der Varianten + Antwort der Mutation einstellbar; zählt die Schreibaufrufe
-function shop({ varianten = [{ id: PLAN.varianteId, sku: PLAN.alteSku }], anzahl = varianten.length, produkt = true, userErrors = [], antwortSku = PLAN.neueSku, antwortId = PLAN.varianteId, leer = false } = {}) {
-  const s = { schreibaufrufe: 0, eingaben: [] };
+function shop({ varianten = [{ id: PLAN.varianteId, sku: PLAN.alteSku }], anzahl = varianten.length, produkt = true, userErrors = [], antwortSku = PLAN.neueSku, antwortId = PLAN.varianteId, leer = false, doppelt = [] } = {}) {
+  const s = { schreibaufrufe: 0, eingaben: [], doppelFragen: [] };
   s.q = async (query, vars) => {
+    if (/productVariants\(first:5/.test(query)) { s.doppelFragen.push(vars.q); return { productVariants: { nodes: doppelt } }; }
     if (/productVariantsBulkUpdate/.test(query)) { s.schreibaufrufe++; s.eingaben.push(vars); return { productVariantsBulkUpdate: { productVariants: leer ? [] : [{ id: antwortId, sku: antwortSku }], userErrors } }; }
     return { product: produkt ? { id: PLAN.produktId, variantsCount: { count: anzahl }, variants: { nodes: varianten } } : null };
   };
@@ -44,6 +45,18 @@ ist('Rücklesen leer → Fehler', [r.ok, /Rücklesen/.test(r.fehler)], [false, t
 
 s = shop({ antwortId: 'gid://shopify/ProductVariant/77' }); r = await schreibeSku(s.q, PLAN);
 ist('Rücklesen nennt eine andere Variante → Fehler', [r.ok, /Rücklesen/.test(r.fehler)], [false, true]);
+
+// ── Doppel-Prüfung (Prüfer 27.10.2026): trägt die Ziel-SKU schon ein ANDERES Produkt, würden danach beide in der Bestell-Engine mehrdeutig
+s = shop(); r = await schreibeSku(s.q, PLAN);
+ist('Normalfall: genau eine Doppel-Abfrage, die beide Formen (nackt und «CJ-») nennt', [s.doppelFragen.length, s.doppelFragen[0]], [1, `sku:"${PLAN.neueSku}" OR sku:"CJ-${PLAN.neueSku}"`]);
+s = shop({ doppelt: [{ id: 'gid://shopify/ProductVariant/55', sku: PLAN.neueSku, product: { handle: 'zwilling-mit-auswahl' } }] }); r = await schreibeSku(s.q, PLAN);
+ist('Ein anderes Produkt trägt die nackte Ziel-SKU → nicht schreiben, zurückgestellt', [r.ok, r.zurueckgestellt, /SKU schon vergeben \(zwilling-mit-auswahl\)/.test(r.uebersprungen), s.schreibaufrufe], [false, true, true, 0]);
+s = shop({ doppelt: [{ id: 'gid://shopify/ProductVariant/55', sku: 'CJ-' + PLAN.neueSku, product: { handle: 'von-hand-korrigiert' } }] }); r = await schreibeSku(s.q, PLAN);
+ist('Ein anderes Produkt trägt die Ziel-SKU mit «CJ-» (von Hand gesetzt, wie die Heizdecke) → nicht schreiben', [r.ok, s.schreibaufrufe], [false, 0]);
+s = shop({ doppelt: [{ id: PLAN.varianteId, sku: PLAN.neueSku, product: { handle: 'ich-selbst' } }] }); r = await schreibeSku(s.q, PLAN);
+ist('Treffer ist die eigene Variante → kein Doppel, schreiben', [r.ok, s.schreibaufrufe], [true, 1]);
+s = shop({ doppelt: [{ id: 'gid://shopify/ProductVariant/55', sku: PLAN.neueSku + '-ANDERS', product: { handle: 'aehnlich' } }] }); r = await schreibeSku(s.q, PLAN);
+ist('Treffer mit nur ähnlicher SKU (Suchtreffer ohne exakte Gleichheit) → kein Doppel, schreiben', [r.ok, s.schreibaufrufe], [true, 1]);
 
 // Netzfehler im Lesen fliegt zum Aufrufer (der Hauptlauf macht daraus «FEHLER» und zählt die Serie)
 let geflogen = false; try { await schreibeSku(async () => { throw new Error('Throttled'); }, PLAN); } catch { geflogen = true; }

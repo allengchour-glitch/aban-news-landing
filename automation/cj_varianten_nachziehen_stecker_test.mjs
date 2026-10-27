@@ -12,9 +12,11 @@ const cjAntwort = (keyNames, keys, preise) => ({ code: 200, result: true, messag
   variants: keys.map((k, i) => ({ vid: 'vid' + i, variantSku: 'CJTEST1000' + i, variantKey: k, variantSellPrice: preise ? preise[i] : 5, variantWeight: 200, variantImage: '' })) } });
 const echtesFetch = globalThis.fetch;
 const handles = [];
-async function lauf(handle, keyNames, keys, sku = SKU, preise) {
+// linien: Zahl der Frachtlinien CN→CH, die die nachgebildete Frachtabfrage meldet (0 = nicht versendbar, null = Antwort ohne Liste = unbekannt)
+async function lauf(handle, keyNames, keys, sku = SKU, preise, linien = 3) {
   handles.push(handle);
-  globalThis.fetch = async () => ({ status: 200, json: async () => cjAntwort(keyNames, keys, preise) });
+  const fracht = { code: 200, result: true, message: 'Success', data: linien === null ? null : Array.from({ length: linien }, (_, i) => ({ logisticName: 'Test-Post' + i, logisticPrice: 1.5, logisticAging: '10-15' })) };
+  globalThis.fetch = async url => ({ status: 200, json: async () => (/freightCalculate/.test(String(url)) ? fracht : cjAntwort(keyNames, keys, preise)) });
   try { return await plane({ q: async () => shopProdukt(handle, sku), cj: 'token', handle, tmp: '/tmp' }); } finally { globalThis.fetch = echtesFetch; }
 }
 process.env.MAX_VARIANTEN = '1';   // Zählprobe: ohne Filter meldet plane() «viele CJ-Varianten (n > 1)», mit Filter eine kleinere Zahl bzw. «nur 1 Variante»
@@ -51,6 +53,16 @@ const M = await lauf('zz-stecker-test-m', 'Color-Electrical outlet', ['Black-US'
 ist('EU-Variante billiger als US → schreiben', [M.ergebnis, M.neueSku], ['SKU_NACHZIEHEN', 'CJTEST10001']);
 const N = await lauf('zz-stecker-test-n', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], 'unbekanntes-format');
 ist('Gegenprobe: Shop-SKU in unbekannter Form → nichts nachzuziehen, alter Grund bleibt', [N.ergebnis, /^CJ führt nur 1 Variante/.test(N.grund)], ['UEBERSPRUNGEN', true]);
+
+// Prüfung 27.10.2026 (echte Daten): die verworfenen Varianten dürfen sich nur im Stecker unterscheiden, und die bleibende muss nach CH versendbar sein
+const O = await lauf('zz-stecker-test-o', 'Color-Electrical outlet', ['Black-US', 'Gray-US', 'Black-EU']);
+ist('Black-US, Gray-US, Black-EU: die graue Variante unterscheidet sich nicht nur im Stecker → nicht schreiben', [O.ergebnis, /^SKU mehrdeutig: .*unterscheidet sich nicht nur im Stecker/.test(O.grund)], ['UEBERSPRUNGEN', true]);
+const P = await lauf('zz-stecker-test-p', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, 0);
+ist('Euro-Variante ohne Frachtlinie nach CH (Babyphone) → nicht schreiben, endgültig «Lieferbarkeit nicht bewiesen»', [P.ergebnis, /^Lieferbarkeit nicht bewiesen/.test(P.grund), P.neueSku], ['UEBERSPRUNGEN', true, undefined]);
+const Q = await lauf('zz-stecker-test-q', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, null);
+ist('Fracht nicht messbar (Antwort ohne Liste) → nicht schreiben, «Lieferbarkeit unbekannt»', [Q.ergebnis, /^Lieferbarkeit unbekannt/.test(Q.grund)], ['UEBERSPRUNGEN', true]);
+const R = await lauf('zz-stecker-test-r', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, 1);
+ist('Gegenprobe: eine Frachtlinie genügt → schreiben', [R.ergebnis, R.neueSku], ['SKU_NACHZIEHEN', 'CJTEST10001']);
 
 for (const h of handles) { try { rmSync(`/tmp/cj_fakten_cache/${h}.json`); } catch { /* nie geschrieben */ } }
 console.log(`${ok} ok, ${fehl} Fehler`);
