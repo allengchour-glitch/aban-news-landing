@@ -1,0 +1,209 @@
+{
+  "ownerScope": "all product descriptions only",
+  "writes": 1,
+  "confirmedNative": 1,
+  "confirmedNativeAndPublic": 1,
+  "records": [
+    {
+      "changeId": "luxe_product_description_15412902789505_20261027_visibility",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "continuationInstruction": "verbessere sichtbarkeit auf max",
+      "productId": "gid://shopify/Product/15412902789505",
+      "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+      "beforeSha256": "ce777169b27401df9ef82e34868d6ba98e3bf5988dc683314fc2e759fd7b195e",
+      "afterSha256": "8f56d49a09516e76742dfe3cd78781faf07a8cd5fbd4d111245bbab105d28a71",
+      "before": {
+        "id": "gid://shopify/Product/15412902789505",
+        "title": "Ohrstecker «Lumière» – elegante High-End Studs",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Ohrringe",
+        "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Dezenter Glamour für den Alltag.</strong> Elegante Ohrstecker, die zu jedem Look passen – vom Büro bis zum Abend.</p>\n<ul> <li>✨ High-End-Optik, zeitloses Design</li> <li>🌸 Leicht &amp; angenehm zu tragen</li> <li>🎁 Perfekte kleine Geschenkidee</li>\n</ul>\n<p>👉 <strong><a href=\"https://luxestyle.ch/collections/damen-schmuck-sub\">Mehr Schmuck entdecken →</a></strong></p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Farbe:</strong> Silber</li></ul>\n</div><!--gdetails--><!--xsell--><p>👉 Passt dazu: <a href=\"/collections/premium-schmuck\">💎 Premium Schmuck</a> · <a href=\"/collections/sub-ringe\">💍 Ringe</a></p>",
+        "tags": [
+          "bild-ok",
+          "cj-real",
+          "damen",
+          "damen-schmuck",
+          "dropship",
+          "kat-ohrringe",
+          "mengenrabatt-a",
+          "neu",
+          "ohrringe",
+          "schmuck",
+          "sort-ohrringe",
+          "sort-schmuck"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e5c02e93-4af2-4585-9f4f-e0bc28e290f2_trans.jpg?v=1780240883",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e5c02e93-4af2-4585-9f4f-e0bc28e290f2_trans.jpg?v=1780240883",
+            "altText": "Elegante High-End Ohrstecker «Lumière» – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69551923003777"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bdca9671-243b-463a-a81d-1418866a27c5_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061481345"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b135f88-2519-45dd-886e-95b1c000939c_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061514113"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/470fed08-cfba-4e9c-8254-4b8e8adc707a_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061546881"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/436abf19-8c2b-45da-a3fa-044cb55150d3_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061579649"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c81621a6-9784-4151-acf2-c3b1fd5f743a_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061612417"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ohrstecker-lumiere-elegante-high-end-studs-edit.jpg?v=1781097295",
+            "altText": "LuxeStyle-Edit · Ohrstecker «Lumière» – elegante High-End Studs",
+            "mediaId": "gid://shopify/MediaImage/69650084331905"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55747847389569",
+            "title": "Silber",
+            "sku": "CJST291633101AZ",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "after": {
+        "id": "gid://shopify/Product/15412902789505",
+        "title": "Ohrstecker «Lumière» – elegante High-End Studs",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Ohrringe",
+        "descriptionHtml": "<h2>Geometrische Ohrstecker mit dunklem Akzent</h2>\n<p>Die Ohrstecker «Lumière» verbinden versetzte quadratische Formen mit einem dunkelblau wirkenden, facettierten Schmuckelement. Der offene vordere Rahmen gibt den Blick auf das Motiv dahinter frei. Ein kleiner heller Akzent ergänzt die klare, grafische Gestaltung.</p>\n<h3>Das Design im Überblick</h3>\n<ul>\n<li>Mehrere gegeneinander versetzte Quadrate als sichtbares Gestaltungselement</li>\n<li>Dunkler, facettierter Akzent im Kontrast zum hellen Rahmen</li>\n<li>Kleines rundes Schmuckdetail neben dem zentralen Motiv</li>\n<li>Aktuelle Ausführung im Auswahlfeld: «Silber»</li>\n</ul>\n<h3>So kombinierst du den Look</h3>\n<p>Zu einem schlichten Oberteil kommen die geometrischen Linien besonders zur Geltung. Auch zu einem Blazer oder einer einfarbigen Bluse setzt das Design einen sichtbaren Akzent. Wenn du weiteren Schmuck dazu trägst, können sich klare Formen oder dunkle Farbtöne im Outfit wiederholen.</p>\n<p><a href=\"https://luxestyle.ch/collections/damen-schmuck-sub\">Mehr Schmuck entdecken</a></p>\n<p>Passt dazu: <a href=\"/collections/premium-schmuck\">Premium Schmuck</a> · <a href=\"/collections/sub-ringe\">Ringe</a></p>\n<p>Informationen zu Versand und Rückgabe findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>",
+        "tags": [
+          "bild-ok",
+          "cj-real",
+          "damen",
+          "damen-schmuck",
+          "dropship",
+          "kat-ohrringe",
+          "mengenrabatt-a",
+          "neu",
+          "ohrringe",
+          "schmuck",
+          "sort-ohrringe",
+          "sort-schmuck"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e5c02e93-4af2-4585-9f4f-e0bc28e290f2_trans.jpg?v=1780240883",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e5c02e93-4af2-4585-9f4f-e0bc28e290f2_trans.jpg?v=1780240883",
+            "altText": "Elegante High-End Ohrstecker «Lumière» – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69551923003777"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bdca9671-243b-463a-a81d-1418866a27c5_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061481345"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b135f88-2519-45dd-886e-95b1c000939c_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061514113"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/470fed08-cfba-4e9c-8254-4b8e8adc707a_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061546881"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/436abf19-8c2b-45da-a3fa-044cb55150d3_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061579649"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c81621a6-9784-4151-acf2-c3b1fd5f743a_trans.jpg?v=1780245360",
+            "altText": "Ohrstecker «Lumière» – elegante High-End Studs – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69552061612417"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ohrstecker-lumiere-elegante-high-end-studs-edit.jpg?v=1781097295",
+            "altText": "LuxeStyle-Edit · Ohrstecker «Lumière» – elegante High-End Studs",
+            "mediaId": "gid://shopify/MediaImage/69650084331905"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55747847389569",
+            "title": "Silber",
+            "sku": "CJST291633101AZ",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "publicReadback": {
+        "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs.js",
+        "readAtUTC": "2026-10-27T17:31:55.363211+00:00",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs.js",
+        "bytesRead": 8383,
+        "contentType": "text/javascript; charset=utf-8",
+        "capExceeded": false,
+        "responseSha256": "5e39d684c435a705881227fb6a13943c3a3741317b0a4c84d4d7b6d5de28a900",
+        "responseProductId": "15412902789505",
+        "descriptionExact": true,
+        "afterSha256": "8f56d49a09516e76742dfe3cd78781faf07a8cd5fbd4d111245bbab105d28a71",
+        "variantIds": [
+          "55747847389569"
+        ],
+        "available": true,
+        "productId": "gid://shopify/Product/15412902789505"
+      },
+      "publicHtmlReadback": {
+        "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+        "readAtUTC": "2026-10-27T17:32:03.461742+00:00",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+        "bytesRead": 985621,
+        "contentType": "text/html; charset=utf-8",
+        "capExceeded": false,
+        "responseSha256": "6a26b62b56abcd92355cd30a5f2215e39abd51ddb0d2d937acd015ded2e2914b",
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "headlineInNonScriptText": true,
+        "productId": "gid://shopify/Product/15412902789505",
+        "productIdBinding": "Exact native product URL; same-base public JSON independently returned exact native product ID. HTML response and visible opening separately read."
+      },
+      "independentReviewReference": "/workspace/luxestyle-review/sichtbarkeit-20261027/review/PRODUCT-INDEPENDENT.json",
+      "confirmedAtUTC": "2026-10-27T17:32:38.920415+00:00"
+    }
+  ],
+  "receiptPreparationNote": "First local ingest stopped before any append because HTML productId binding was not explicitly carried in receipt. Added exact URL-to-JSON/native identity correlation already proved, without repeating a Shopify write."
+}
