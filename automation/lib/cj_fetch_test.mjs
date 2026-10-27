@@ -1,6 +1,6 @@
 /** Test fuer cjFetch — gefaelschtes fetch, kein echtes Warten.
  *  Lauf: /opt/node22/bin/node automation/lib/cj_fetch_test.mjs   */
-import { cjFetch, WEICHE_CODES } from './cj_fetch.mjs';
+import { cjFetch, WEICHE_CODES, CJ_ZEITLIMIT_MS } from './cj_fetch.mjs';
 let fehler = 0;
 const pruef = (name, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${name} ${extra}`); } else console.log(`ok   ${name}`); };
 const antwort = (body, status = 200) => ({ status, json: async () => body });
@@ -138,6 +138,31 @@ for (const code of WEICHE_CODES) {
   let g = '';
   try { await lauf([antwort({ success: true, code: 200, message: '' })], { erfolgOhneResult: true }).erg; } catch (e) { g = e.message; }
   pruef('...und ohne data-Feld wirft auch dann CJ_DATA', /^CJ_DATA/.test(g), g);
+}
+
+// 17. Eigenes Zeitlimit (Gegenlesung 27.10.2026): ein stehengebliebener CJ-Aufruf (Verbindung offen, keine Antwort) hielt den Lauf bis zum undici-Standard (5 Minuten je Versuch, bis zu 5 Versuche)
+{
+  let signale = [];
+  const haengt = (u, init) => new Promise((res, rej) => { signale.push(init?.signal); init?.signal?.addEventListener?.('abort', () => rej(Object.assign(new Error('The operation was aborted due to timeout'), { name: 'TimeoutError' }))); });
+  const halte = setInterval(() => {}, 50);      // hält den Prozess am Leben, solange das hängende fetch nichts tut
+  let m = '', ende;
+  const wettlauf = new Promise(r => { ende = setTimeout(r, 4000, 'ZEIT'); });
+  try { const x = await Promise.race([cjFetch('https://cj/x', { fetch: haengt, warte: async () => {}, versuche: 2, timeoutMs: 40, basisMs: 1 }), wettlauf]); if (x === 'ZEIT') m = 'HAENGT'; } catch (e) { m = e.message; }
+  clearTimeout(ende); clearInterval(halte);
+  pruef('hängender CJ-Aufruf: nach dem Zeitlimit CJ_NETZ statt ewigem Warten', /^CJ_NETZ/.test(m), m);
+  pruef('...zwei Versuche, jeder mit einem EIGENEN Signal (ein abgelaufenes bricht den nächsten nicht sofort ab)', signale.length === 2 && signale[0] !== signale[1] && signale.every(x => x && typeof x.addEventListener === 'function'), String(signale.length));
+  // ein vom Aufrufer mitgegebenes Signal gilt unverändert; ohne timeoutMs gilt die Vorgabe von 60 s
+  const eigenes = new AbortController();
+  let gesehen = null;
+  await cjFetch('https://cj/x', { fetch: async (u, init) => { gesehen = init.signal; return gut(); }, init: { signal: eigenes.signal }, warte: async () => {} });
+  pruef('ein mitgegebenes init.signal bleibt unverändert', gesehen === eigenes.signal);
+  let vorgabe = null;
+  await cjFetch('https://cj/x', { fetch: async (u, init) => { vorgabe = init.signal; return gut(); }, warte: async () => {} });
+  pruef('ohne timeoutMs bekommt jeder Versuch ein Signal (Vorgabe CJ_ZEITLIMIT_MS = 60 s)', !!vorgabe && CJ_ZEITLIMIT_MS === 60000);
+  // die Wiederholungslogik bleibt: ein Netzfehler vor dem Erfolg wird weiter abgewartet
+  const l = lauf([new Error('ECONNRESET'), gut()]);
+  const b = await l.erg;
+  pruef('Wiederholung nach Netzfehler funktioniert weiter (mit Zeitlimit)', b?.data?.pid === '123' && l.gewartet.length === 1);
 }
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');

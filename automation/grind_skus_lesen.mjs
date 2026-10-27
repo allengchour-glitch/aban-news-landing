@@ -25,7 +25,7 @@ import { pipeline } from 'node:stream/promises';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { normalizeShopifyHost } from './lib/shopify_host.mjs';
-import { bulkSammler } from './lib/grind_dubletten.mjs';
+import { bulkSammler, BULK_LAUFENDE_ABFRAGE } from './lib/grind_dubletten.mjs';
 
 const AUS = process.argv[2] || '/tmp/grind2/bau/skus.jsonl';
 const ROH = AUS + '.roh', BULKID = AUS + '.bulkid', META = AUS + '.meta.json';
@@ -33,8 +33,8 @@ const VERSION = process.env.SHOPIFY_API_VERSION || '2026-01';
 const WARTEN_MAX_MS = Number(process.env.WARTEN_MAX_MIN || 40) * 60000;
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 
-// Ohne Produkt-Filter: `products` liefert alle Status. Variante nur mit sku (mehr braucht der Index nicht).
-const INNEN = `{ products { edges { node { id handle title status variants { edges { node { sku } } } } } } }`;
+// Ohne Produkt-Filter: `products` liefert alle Status. Variante nur mit sku; `tags` kommen mit, damit der Index die Waise eines abgestürzten Grind-Laufs (Tag grind2, DRAFT) erkennt (der Sammler behält nur die Marken grind2…).
+const INNEN = `{ products { edges { node { id handle title status tags variants { edges { node { sku } } } } } } }`;
 
 async function bulkLesen() {
   // Der Host wird geprüft, BEVOR client_id und client_secret irgendwohin gehen (nur reine *.myshopify.com-Domains).
@@ -59,8 +59,8 @@ async function bulkLesen() {
   // 2. sonst neu starten; läuft eine fremde Abfrage, warten
   const t0 = Date.now();
   while (!id) {
-    // `currentBulkOperation` ist in der Schemafassung 2026-10 veraltet (der MCP lehnt es ab) — `bulkOperations` mit Statusfilter gibt es in beiden und liefert die laufende Abfrage (neueste zuerst).
-    const lauf = (await q(`{ bulkOperations(first:1, query:"status:running OR status:created", sortKey:CREATED_AT, reverse:true){ nodes{ status } } }`)).bulkOperations?.nodes?.[0];
+    // Die neueste laufende Operation (BULK_LAUFENDE_ABFRAGE, Reihenfolge ohne Umkehrung: GEMESSEN 27.10.2026 liefert die umgekehrte Reihenfolge die älteste zuerst).
+    const lauf = (await q(BULK_LAUFENDE_ABFRAGE)).bulkOperations?.nodes?.[0];
     if (lauf && ['CREATED', 'RUNNING'].includes(lauf.status)) {
       if (Date.now() - t0 > WARTEN_MAX_MS) { console.error('Eine fremde Bulk-Abfrage läuft zu lange — abgebrochen, nichts gestartet'); process.exit(2); }
       console.log('andere Bulk-Abfrage läuft, warte 30 s'); await schlaf(30000); continue;

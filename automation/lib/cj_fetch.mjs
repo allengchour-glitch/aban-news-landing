@@ -31,6 +31,8 @@ const QUOTA = /insufficient api points|daily.*(?:quota|limit)|points.*exhaust/i;
  * fatale Antwort als fatal behandeln. Alles andere bleibt hart.
  */
 export const WEICHE_CODES = [1602001, 1602002, 1602003];
+/** Zeitlimit je CJ-Versuch (opt.timeoutMs überschreibt). SETZUNG: die langsamste gemessene Antwort (Fracht) kam nach wenigen Sekunden. */
+export const CJ_ZEITLIMIT_MS = 60000;
 
 export async function cjFetch(url, opt = {}) {
   const context = opt.context || 'CJ';
@@ -43,7 +45,9 @@ export async function cjFetch(url, opt = {}) {
   for (let i = 0; i < versuche; i++) {
     let r;
     try {
-      r = await fetchFn(url, init);
+      // Ohne eigenes Zeitlimit hängt ein stehengebliebener CJ-Aufruf bis zum Standard von undici (5 Minuten je Versuch, bis zu 5 Versuche); die Shopify-Seite hat 30 s (shopify_gql.mjs).
+      // Jeder Versuch bekommt sein EIGENES Signal (ein abgelaufenes darf den nächsten nicht sofort abbrechen); ein vom Aufrufer mitgegebenes `init.signal` gilt unverändert.
+      r = await fetchFn(url, init.signal || typeof AbortSignal?.timeout !== 'function' ? init : { ...init, signal: AbortSignal.timeout(opt.timeoutMs ?? CJ_ZEITLIMIT_MS) });
     } catch (e) {                                  // Netzfehler: auch das ist ein Warte-Fall
       letzter = 'Netzfehler: ' + e.message;
       if (i + 1 < versuche) { await warte(basis * 2 ** i); continue; }

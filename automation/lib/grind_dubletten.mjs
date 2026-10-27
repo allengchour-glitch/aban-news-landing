@@ -168,6 +168,13 @@ export function ledgerHandlesAusText(text, quelle = '') {
 
 // ───────────────────────── Bulk-Ausgabe lesen ─────────────────────────
 
+/**
+ * Die Abfrage nach der LAUFENDEN Bulk-Operation (Shopify erlaubt nur eine Abfrage gleichzeitig). `currentBulkOperation` ist in der Schemafassung 2026-10 veraltet; `bulkOperations` mit Statusfilter gibt es in beiden.
+ * GEMESSEN 27.10.2026 am echten Shop (nur lesen): OHNE `reverse` liefert `sortKey:CREATED_AT` die NEUESTE Operation zuerst (2026-10-27T06:45, 05:33 …), MIT `reverse:true` die ÄLTESTE (2026-10-20T11:10, 12:11 …).
+ * Die Wartelogik fragt nach der laufenden, also nach der neuesten: `reverse:true` war falsch (und der Kommentar «neueste zuerst» daneben).
+ */
+export const BULK_LAUFENDE_ABFRAGE = `{ bulkOperations(first:1, query:"status:running OR status:created", sortKey:CREATED_AT){ nodes{ status } } }`;
+
 /** Sammler für die Bulk-Ausgabe (JSONL): Produktzeilen und Variantenzeilen mit __parentId, Zeile für Zeile, ohne den ganzen Text im Speicher. */
 export function bulkSammler() {
   const produkte = new Map();
@@ -190,7 +197,9 @@ export function bulkSammler() {
       } else if (o && o.id && o.handle !== undefined) {
         stat.produkte++;
         const alt = waisen.get(o.id);
-        produkte.set(o.id, { id: o.id, handle: String(o.handle), title: String(o.title ?? ''), status: String(o.status ?? ''), skus: alt ? alt.splice(0) : [] });
+        // Nur die Marken `grind2…` werden behalten (87 765 Produkte × alle Tags wären Dutzende MB): sie genügen, um die Waise eines abgestürzten Laufs zu erkennen.
+        const marken = (Array.isArray(o.tags) ? o.tags : []).map(String).filter(t => /^grind2/.test(t));
+        produkte.set(o.id, { id: o.id, handle: String(o.handle), title: String(o.title ?? ''), status: String(o.status ?? ''), ...(marken.length ? { tags: marken } : {}), skus: alt ? alt.splice(0) : [] });
         waisen.delete(o.id);
       }
     },
@@ -213,7 +222,8 @@ export function produkteAusJsonl(text) {
 
 // ───────────────────────── Index ─────────────────────────
 
-const kurz = p => ({ id: p.id ?? null, handle: p.handle ?? '', title: p.title ?? '', status: p.status ?? '' });
+/** Kurzform eines Index-Produkts. `tags` (nur die Rücknahme-Marken `grind2…`, siehe bulkSammler) erlauben, eine WAISE eines abgestürzten Grind-Laufs (Tag grind2, DRAFT) von einer fremden Dublette zu unterscheiden. */
+const kurz = p => ({ id: p.id ?? null, handle: p.handle ?? '', title: p.title ?? '', status: p.status ?? '', ...(Array.isArray(p.tags) && p.tags.length ? { tags: p.tags.map(String) } : {}) });
 const push = (m, k, v) => { const a = m.get(k); if (a) a.push(v); else m.set(k, [v]); };
 const untere = (a, x) => { let lo = 0, hi = a.length; while (lo < hi) { const m = (lo + hi) >> 1; if (a[m] < x) lo = m + 1; else hi = m; } return lo; };
 

@@ -10,6 +10,7 @@ import {
   planeNeu, handleAus, slug, pidKurz, galerieAus, normalisiereCj, sortiereGroessen, streicheToteOptionen, preisLeser, schemaPruefen, konsistenzPruefen,
   API_VERSION, MAX_VARIANTEN, MIN_BILDER, VAR_MARKER, BASIS_TAGS, TORE, FRISTEN, PRODUCT_SET_MUTATION, SCHEMA, GOOGLE_TYP, ERWACHSENE_RE, TABAK_RE, MESSGERAET_RE, ANZUENDER_RE,
   SCHEMA_API_VERSION, ziffernKollision, kleinWortImWert, KLEIN_WORT_RE, PRODUKTART_WIDERSPRUCH, fremdsteckerImNamen, heikelWort,
+  kinderWort, kinderImText, kinderware, zusatzSperrwort, heikelImText, STECKDOSE_EN_RE, fremdsteckerImText, steckerKontextVon,
 } from './grind_plan.mjs';
 import { ledgerGedaechtnis } from './varianten_sicherheit.mjs';
 import { zerlege } from './text_prosa.mjs';
@@ -524,7 +525,8 @@ ist('Mode: dieselbe Eingabe über die ganze CJ-Antwort {code, data}', JSON.strin
 // ───────────────────────── Tor: Sperr-Wörter ─────────────────────────
 {
   const lz = lauf(FIX.lizenz, 'Neon-Nagelpuder-Set in klarer Box');
-  ist('Lizenzname «Barbie» im CJ-Namen (echtes Datenblatt) → fällt, endgültig', [tor(lz, 'sperrwoerter').ok, /Barbie/.test(tor(lz, 'sperrwoerter').grund), lz.frist, lz.eingabe], [false, true, 'endgueltig', null]);
+  ist('Lizenzname «Barbie» im CJ-Namen (echtes Datenblatt) → fällt, endgültig', [tor(lz, 'sperrwoerter').ok, /Lizenzname «Barbie»/.test(tor(lz, 'sperrwoerter').grund), lz.frist, lz.eingabe], [false, true, 'endgueltig', null]);
+  ist('F03: das Lizenz-Tor meldet selbst («Lizenzname «Barbie»»), auch wenn die Merchant-Prüfung des CJ-Namens denselben Fall zusätzlich kennt', /Lizenzname «Barbie»/.test(lz.ledgerGrund), true);
   const lzB = lauf(FIX.einzel, 'Wattestäbchen', { beschreibungHtml: '<p>Harry Potter lässt grüssen.</p>' });
   ist('Lizenzname in der BESCHREIBUNG des Aufrufers → fällt (Merchant-Lehre vom 24.10.)', [tor(lzB, 'sperrwoerter').ok, /Harry Potter/.test(tor(lzB, 'sperrwoerter').grund)], [false, true]);
   ist('Gegenprobe: dieselbe Beschreibung ohne Lizenzname', lauf(FIX.einzel, 'Wattestäbchen', { beschreibungHtml: '<p>Ein Zauberer-Kostüm.</p>' }).ok, true);
@@ -909,7 +911,9 @@ ist('Mode: dieselbe Eingabe über die ganze CJ-Antwort {code, data}', JSON.strin
   ist('ledgerGrund vorläufig beginnt mit «vorläufig: »', lg.ledgerGrund.startsWith('vorläufig: titel: '), true);
   ist('Ledger: vorläufig gilt 20 Stunden (nach 10 h erledigt, nach 2 Tagen wieder dran)', [ledgerGedaechtnis(zeile(lg, 'h3'), { jetzt: jetzt + 10 * 3600 * 1000 }).has('h3'), ledgerGedaechtnis(zeile(lg, 'h3'), { jetzt: tage(2) }).has('h3')], [true, false]);
   ist('ledgerGrund enthält weder «·» noch Zeilenumbruch (das Ledger trennt mit «·»)', [hy, lz, lg].every(r => !/[·\n\r]/.test(r.ledgerGrund)), true);
-  const zu = lauf(FIX.zusammen, 'Beruhigendes Kuscheltier', { uebersetzung: { 'New Breathing Rabbit': 'Atmendes Kaninchen', '4speed breathing elephant': 'Elefant, 4 Stufen', Koala: 'Koala', 'White elk': 'White elk', 'Brown elk': 'Brauner Elch' } });
+  // FIX.zusammen ist ein Neugeborenen-Spielzeug (CJ-Kategorie «Toys, Kids & Babies»): seit der Gegenlesung 27.10.2026 sperrt das Tor sperrwoerter es; für den «·»-Test eine neutrale Abwandlung
+  const zusammenNeutral = ableiten(FIX.zusammen, k => { k.productNameEn = 'Breathing Rabbit Soothing Sensory Plush Toy With Relieve Anxiety Bunny Comforter Breathes'; k.categoryName = 'Home & Garden > Decor > Plush'; k.description = '<p>Soft plush.</p>'; });
+  const zu = lauf(zusammenNeutral, 'Beruhigendes Kuscheltier', { uebersetzung: { 'New Breathing Rabbit': 'Atmendes Kaninchen', '4speed breathing elephant': 'Elefant, 4 Stufen', Koala: 'Koala', 'White elk': 'White elk', 'Brown elk': 'Brauner Elch' } });
   ist('Fall mit « · » im Grund (zusammengefasste Auswahl, ein Wert bleibt englisch: «White elk · 30 cm»): der Tor-Grund trägt es, der ledgerGrund nicht', [tor(zu, 'optionswerte-deutsch').grund.includes(' · '), zu.ledgerGrund.includes('·'), zu.ledgerGrund.startsWith('zurückgestellt: optionswerte-deutsch: ')], [true, false, true]);
   ist('ledgerGrund ist höchstens 300 Zeichen', [hy, lz, lg].every(r => r.ledgerGrund.length <= 300), true);
   // Der längste Grund gewinnt
@@ -938,6 +942,161 @@ ist('Mode: dieselbe Eingabe über die ganze CJ-Antwort {code, data}', JSON.strin
     try { const r = planeNeu(m, c); if (r.ok) ok1++; } catch (e) { geworfen++; console.log('  Absturz bei', JSON.stringify(m), JSON.stringify(c), e.message); }
   }
   ist('planeNeu wirft bei keiner Müll-Eingabe (11 × 7 Kombinationen) und bejaht keine', [geworfen, ok1], [0, 0]);
+}
+
+// ───────────────────────── Gegenlesung 27.10.2026 («Geld und Tore», Runde 2): Kinderware, Sperrwörter, Datenblatt-Text, Fremdstecker ─────────────────────────
+// Jeder Test unten lief auf dem Stand VOR der Einarbeitung rot (Mutationsprobe in der Übergabe). Messbasis der Gegenleser: 21 Kinderfälle und 49 heikle englische CJ-Namen mit plausibler deutscher Übersetzung.
+{
+  /** Läuft ein Produkt (englischer CJ-Name, deutscher Titel, CJ-Kategorie, Datenblatt-Text) durch das Tor «sperrwoerter» bzw. «steckdosen-ware»? true = gesperrt. */
+  const sperrFall = (en, de, { kategorie = 'Home Improvement / Tools / Hand Tools', text: beschr = '<p>Ein neutraler Text.</p>' } = {}) => {
+    const r = lauf(ableiten(FIX.einzel, k => { k.productNameEn = en; k.categoryName = kategorie; k.description = beschr; }), de);
+    return { gesperrt: fallen(r).some(n => ['sperrwoerter', 'steckdosen-ware'].includes(n)), grund: (tor(r, 'sperrwoerter')?.grund || '') + (tor(r, 'steckdosen-ware')?.grund || '') };
+  };
+  const KATEGORIE_KINDER = 'Toys, Kids & Babies > Toys & Hobbies > Misc';
+
+  // ── Kinderware auf Produktebene: 21 Fälle der Gegenlesung (englischer Name + plausible deutsche Übersetzung ohne «Kinder»)
+  const KINDER = [
+    ['Kids Smart Watch Waterproof', 'Smartwatch für Kinder'], ['Kids Smart Watch Waterproof', 'Smartwatch Kids'], ['Children Drawing Board LCD', 'LCD-Zeichentafel für Kinder'],
+    ['Infant Teether Silicone Teething Toy', 'Beissring aus Silikon für Säuglinge'], ['Newborn Photography Props Baby Blanket', 'Neugeborenen-Fotografie-Requisiten Decke'],
+    ['Pacifier Clip Chain Silicone Beads', 'Schnullerkette mit Silikonperlen'], ['Toddler Walking Shoes Soft Sole', 'Lauflernschuhe für Kleinkinder'], ['Toddler Walking Shoes Soft Sole', 'Lauflernschuhe mit weicher Sohle'],
+    ['Girls Princess Dress Party', 'Prinzessinnenkleid für Mädchen'], ['Boys Dinosaur Backpack School Bag', 'Dinosaurier-Rucksack für Jungen'], ['Baby Bath Thermometer Duck', 'Badethermometer Ente'],
+    ['Baby Bath Thermometer Duck', 'Babybadethermometer Ente'], ['Child Safety Cabinet Lock 10pcs', 'Schrankschloss Kindersicherung 10 Stück'], ['Child Safety Cabinet Lock 10pcs', 'Schrankschloss 10 Stück zum Schutz vor Zugriff'],
+    ['Kids Night Light Projector Star', 'Sternenprojektor Nachtlicht'], ['Kids Electric Toothbrush Silicone', 'Elektrische Zahnbürste mit Silikonborsten'], ['Baby Monitor Camera WiFi', 'Überwachungskamera für das Kinderzimmer'],
+    ['Teething Necklace Silicone Beads for Mom', 'Beissketten-Set aus Silikon'], ['Kids Slime Kit DIY Toy', 'Schleim-Set zum Selbermachen'],
+    ['Magnetic Building Blocks 100pcs', 'Magnetische Bausteine 100 Stück'], ['Button Cell Battery LED Finger Lights Toy', 'Leuchtende Fingerlichter'],
+  ];
+  const durchgelassen = KINDER.filter(([en, de]) => !sperrFall(en, de, { kategorie: KATEGORIE_KINDER }).gesperrt);
+  ist('Kinderware: alle 21 Fälle der Gegenlesung werden vom Tor «sperrwoerter» gesperrt (vorher 13 von 21 durchgelassen)', durchgelassen, []);
+  ist('Kinderware: die Fälle OHNE Kinderwort (Magnet-Bausteine, Knopfzellen-Fingerlichter) fängt die CJ-KATEGORIE «Toys, Kids & Babies», nicht der Name', [sperrFall('Magnetic Building Blocks 100pcs', 'Magnetische Bausteine 100 Stück').gesperrt, sperrFall('Magnetic Building Blocks 100pcs', 'Magnetische Bausteine 100 Stück', { kategorie: KATEGORIE_KINDER }).gesperrt], [false, true]);
+  ist('Kinderware: der Grund nennt Fundort und Wort', [sperrFall('Infant Teether Silicone Teething Toy', 'Silikon-Zahnungshilfe').grund.includes('Kinder-/Babyware (CJ-Name: «infant»)'), sperrFall('Haarband', 'Haarband für Kinder').grund.includes('Kinder-/Babyware (Titel: «kinder»)'), sperrFall('Plush', 'Plüsch', { kategorie: KATEGORIE_KINDER }).grund.includes('CJ-Kategorie')], [true, true, true]);
+  // Gegenproben: KEINE Kinderware (Fehlalarme kosten Kandidaten) — Farben, Pflanze, Kochen, Warnhinweise, Erwachsenen-Altersangaben
+  const KEINE_KINDER = [
+    ['Baby Pink Hoodie Women Oversized', 'Oversize-Hoodie in Rosa'], ['Baby Blue Denim Jacket Women', 'Jeansjacke Damen'], ["Dried Flowers Baby's Breath Bouquet", 'Trockenblumen-Strauss'],
+    ['Mini Electric Garlic Chopper USB', 'Mini-Zerkleinerer'], ['Boyfriend Jeans Women High Waist', 'Boyfriend-Jeans'], ['Cowboy Hat Western Straw', 'Strohhut'],
+  ];
+  ist('Kinderware-Gegenprobe: Farbe «Baby Pink/Blue», «Baby\'s Breath», «Boyfriend», «Cowboy» sind keine Kinderware', KEINE_KINDER.filter(([en, de]) => sperrFall(en, de).gesperrt), []);
+  const text = h => `<p>${h}</p>`;
+  ist('Kinderware-Gegenprobe im Datenblatt-Text: «Keep out of the reach of children», «Applicable people: women, men, children», «Children\'s Day», «children\'s bedroom», «baby food» sperren NICHT',
+    [text('Please keep this product out of the reach of children. Package Contents: Nail polish*1'), text('Applicable people: women, men, children, teenagers, couples, adults, elderly'),
+      text('Applicable Holidays: Christmas, Valentine\'s Day, Children’s Day, others'), text('Suitable for study room, bedroom, coffee shop, desk, children\'s bedroom, and other home furnishings'),
+      text('You can use it for cooking, baby food, and smoothie drinks. Easy to clean.'), text('Voltage: 18-40 years old buyers prefer black. Warranty: 12 months.')]
+      .filter(h => sperrFall('Kitchen Gadget', 'Küchenhelfer', { text: h }).gesperrt), []);
+  ist('Kinderware im Datenblatt-Text mit Absicht: Alter unter 13, «designed for kids», «toy for boys & girls», «Target audience: Children», Babywörter sperren',
+    [text('Applicable age: 3-8 years old. Material: wood'), text('Adults and children over 6 years old can use this brush'), text('As a teddy bear toy for boys & girls, this lamp is designed for kids to learn'),
+      text('Packaging specifications: Bubble wrap Target audience: Children Style: Fashion'), text('Soft blanket for your newborn and infant'), text('Not a toy. Age range: 3')]
+      .map(h => sperrFall('Desk Lamp', 'Tischlampe', { text: h }).gesperrt), [true, true, true, true, true, true]);
+  ist('kinderWort/kinderImText einzeln: Wörter, Redewendungen und Satzmuster', [kinderWort('Hello Kids'), kinderWort('Baby Pink Dress'), kinderWort('Schnullerkette'), kinderWort('Dog Toy'), kinderImText('Easy for kids to use without making a mess.'), kinderImText('Designed for kids to learn')],
+    ['kids', null, 'schnullerkette', null, null, 'designed for kids']);
+  ist('Z148: «Perfect for kids and adults» (Erwachsenen-Nähe im selben Satz) ist keine Kinderware, «Perfect for kids.» schon', [kinderImText('Perfect for kids and adults.'), kinderImText('Designed for kids, also suitable for women.'), kinderImText('Perfect for kids.')], [null, null, 'perfect for kids']);
+  ist('Z164: Tabak im Datenblatt-Text sperrt («rolling your own cigarettes»), der Zigarettenanzünder-Anschluss im Auto nicht', [text('Ideal for rolling your own cigarettes and tobacco.'), text('Fits the car cigarette lighter socket 12V.')].map(h => sperrFall('Desk Lamp', 'Tischlampe', { text: h }).gesperrt), [true, false]);
+  ist('kinderware(): Reihenfolge Titel, CJ-Name, Kategorie, Datenblatt; ohne Treffer null', [kinderware({ titel: 'Kinder-Uhr' }).wo, kinderware({ cjName: 'Kids Watch' }).wo, kinderware({ kategorie: 'Girls Shoes' }).wo, kinderware({ beschreibung: '<p>Age: 5</p>' }).wo, kinderware({ titel: 'Uhr', cjName: 'Watch', kategorie: 'Jewelry > Watches', beschreibung: '<p>Elegant.</p>' })],
+    ['Titel', 'CJ-Name', 'CJ-Kategorie', 'Datenblatt', null]);
+  ist('FIX.zusammen (Neugeborenen-Spielzeug, «Toys, Kids & Babies») ist seit der Gegenlesung gesperrt — die alte Testannahme «nur die Optionswerte sind das Problem» gilt nicht mehr',
+    [fallen(lauf(FIX.zusammen, 'Beruhigendes Kuscheltier')).includes('sperrwoerter')], [true]);
+
+  // ── Heikle Namen: 49 Fälle der Gegenlesung. Durchkommen dürfen NUR die gewollten Ausnahmen (jede mit Begründung).
+  const HEIKEL = [
+    ['Electric Shock Dog Training Collar Anti Bark', 'Elektro-Erziehungshalsband für Hunde Anti-Bell'], ['Pepper Spray Keychain Self Defense', 'Selbstverteidigungs-Schlüsselanhänger'], ['Self Defense Keychain Alarm 130dB', 'Persönlicher Alarm Schlüsselanhänger 130 dB'],
+    ['Stun Gun Flashlight Tactical', 'Taktische Taschenlampe'], ['Brass Knuckles Keychain', 'Schlüsselanhänger aus Metall'], ['Throwing Stars Ninja Shuriken', 'Wurfsterne aus Edelstahl'], ['Airsoft Gun BB Pistol 6mm', 'Softair-Pistole 6 mm'],
+    ['Hunting Crossbow Mini Toy', 'Mini-Armbrust'], ['Telescopic Baton Retractable', 'Ausziehbarer Schlagstock'], ['Butterfly Comb Knife Trainer', 'Schmetterlingskamm Übungsmesser'], ['Herb Grinder Metal 4 Layer', 'Gewürzmühle Metall 4-teilig'],
+    ['Rolling Tray Smoking Accessories', 'Tablett für Raucherzubehör'], ['Glass Smoking Pipe Handmade', 'Glaspfeife handgefertigt'], ['Mini Hidden Spy Camera Pen WiFi', 'Stift mit Mini-Kamera WLAN'], ['GPS Tracker Magnetic Car Hidden', 'GPS-Tracker magnetisch für Fahrzeuge'],
+    ['Signal Jammer 8 Antennas', 'Signalstörer 8 Antennen'], ['Lock Pick Set 24pcs', 'Dietrich-Set 24-teilig'], ['Posture Corrector Back Brace', 'Geradehalter Rücken'], ['Ear Wax Removal Camera Otoscope', 'Ohrenreiniger mit Kamera'],
+    ['Blood Oxygen Fingertip Monitor', 'Fingerclip Sauerstoffmessgerät'], ['Digital Thermometer Forehead Non Contact', 'Kontaktloses Stirnthermometer'], ['Hearing Amplifier Rechargeable', 'Hörverstärker wiederaufladbar'], ['Teeth Whitening Kit LED', 'Zahnaufhellungs-Set'],
+    ['Breast Enlargement Cream Herbal', 'Brustcreme pflanzlich'], ['Slimming Belly Patch Fat Burning', 'Schlankheits-Bauchpflaster'], ['Hair Growth Serum Minoxidil', 'Haarwuchs-Serum'], ['Erection Delay Spray Men', 'Verzögerungsspray für Männer'],
+    ['Silicone Love Doll Torso', 'Torso-Figur aus Silikon'], ['Nipple Clamps Adjustable', 'Brustwarzenklemmen verstellbar'], ['Fireworks Sparkler Candles Birthday', 'Wunderkerzen Geburtstag'], ['Smoke Grenade Photography', 'Rauchgranate für Fotografie'],
+    ['Laser Pointer 5000mW Green', 'Laserpointer grün'], ['Handheld Laser Torch Burning', 'Brennlaser Taschenlampe'], ['Nike Air Style Sneakers', 'Sneaker im Stil von Air'], ['Pokemon Pikachu Plush 30cm', 'Pikachu Plüschtier'],
+    ['Hello Kitty Style Cat Backpack', 'Katzen-Rucksack'], ['Louis Vuitton Style Wallet', 'Geldbörse im Stil von LV'], ['AirPods Pro Case Cover', 'Hülle für In-Ear-Kopfhörer'], ['Extension Cord 5 Sockets 2m', 'Verlängerungskabel mit 5 Steckdosen'],
+    ['Power Strip with USB 4 AC Outlets UK Plug', 'Steckdosenleiste mit USB'], ['Travel Adapter Universal EU US UK AU', 'Reiseadapter Universal'], ['Electric Blanket 220V', 'Heizdecke 220 V'], ['Hair Dryer 110V US Plug', 'Haartrockner 110 V'],
+    ['Soldering Iron Station 60W', 'Lötstation 60 W'], ['Mini Fridge Cooler 12V Car', 'Mini-Kühlschrank 12 V Auto'], ['Insulin Cooler Travel Case', 'Kühltasche für Insulin'], ['CBD Hemp Oil Dropper Bottle Empty', 'Tropfflasche leer'],
+    ['Nasal Dilator Strips Anti Snoring', 'Nasenpflaster gegen Schnarchen'], ['Anti Snoring Mouthpiece', 'Anti-Schnarch-Schiene'],
+  ];
+  // Gewollte Ausnahmen: ein Zubehör für fremde Markenware ohne Markennamen im deutschen Titel (AirPods-Hülle), ein Universal-Reiseadapter mit EU, eine 220-V-Heizdecke, eine Lötstation, ein Auto-Kühlschrank mit NEUTRALEM Datenblatt
+  // (die Insulin-Kühlbox-Falle fängt der Datenblatt-Text, siehe unten).
+  const GEWOLLT = ['AirPods Pro Case Cover', 'Travel Adapter Universal EU US UK AU', 'Electric Blanket 220V', 'Soldering Iron Station 60W', 'Mini Fridge Cooler 12V Car'];
+  ist(`Sperrwörter: von 49 heiklen Namen kommen nur die 5 gewollten Ausnahmen durch (vorher 27 von 49)`, HEIKEL.filter(([en, de]) => !sperrFall(en, de).gesperrt).map(([en]) => en).sort(), [...GEWOLLT].sort());
+  ist('Sperrwörter: der Fundort steht im Grund (Zusatzliste, Waffen-Wort, Tabak)', [sperrFall('Brass Knuckles Keychain', 'Schlüsselanhänger aus Metall').grund.includes('«brass knuckles»'), sperrFall('Herb Grinder Metal 4 Layer', 'Gewürzmühle').grund.includes('«herb grinder»')], [true, true]);
+  // Gegenproben der Zusatzliste: harmlose Waren mit ähnlichen Wörtern
+  const HARMLOS = [
+    ['Smart Watch Heart Rate Blood Oxygen Sleep Monitor Bracelet', 'Smartwatch mit Herzfrequenz'], ['Coffee Grinder Electric Burr Mill', 'Kaffeemühle'], ['Pepper Grinder Manual Stainless', 'Pfeffermühle'],
+    ['Jam Jar Set 12pcs Glass Preserving', 'Einmachgläser'], ['LED Strip Light 5V USB 5m', 'LED-Streifen USB'], ['Cat Interactive Toy Weight Loss Exercise', 'Katzenspielzeug'], ['Weight Tracker Notebook Planner', 'Notizbuch'],
+    ['Foam Roller Massage Muscle Recovery', 'Faszienrolle'], ['Orthopedic Memory Foam Pillow', 'Nackenkissen'], ['Hidden Storage Box Book Safe', 'Buchversteck'], ['Bluetooth Tracker Key Finder', 'Schlüsselfinder'],
+    ['Laser Level Cross Line Self Leveling', 'Kreuzlinienlaser'], ['Laser Engraving Machine Mini', 'Lasergravierer'], ['Electric Safety Shock Absorber Foam', 'Stossdämpfer'],
+  ];
+  ist('Sperrwörter-Gegenprobe: Smartwatch mit Blutsauerstoff-Sensor, Kaffee-/Pfeffermühle, Einmachglas, Katzenspielzeug, Laser-Wasserwaage/-Gravierer, Hidden Storage, Tracker sperren NICHT', HARMLOS.filter(([en, de]) => sperrFall(en, de).gesperrt).map(([en]) => en), []);
+
+  // ── Datenblatt-Text: Name und Titel neutral, der Text verrät es («Mini-Kühlschrank» war eine Insulin-Kühlbox, STAND-ARCHIV 04.10.2026)
+  const insulin = sperrFall('Mini Fridge Cooler Box 12V Portable', 'Mini-Kühlbox 12 V tragbar', { text: '<p>Portable insulin cooler box for diabetics, keeps medicine cold, 12V car and 220V home.</p>' });
+  ist('Datenblatt-Text: die Insulin-Kühlbox mit neutralem Namen und Titel wird gesperrt, mit Grund «Datenblatt nennt heikle Ware»', [insulin.gesperrt, insulin.grund.includes('Datenblatt nennt heikle Ware («insulin»)')], [true, true]);
+  ist('Datenblatt-Text: Erwachsenen-Ware («Category: Sex toys» im Text eines Damen-Gürtels), Tabak-Zubehör, Pyro, Elektroreizgerät werden gelesen',
+    [sperrFall('Leather Belt Women Chain', 'Damen-Gürtel mit Kette', { text: '<p>Material: PU Category: Sex toys Note: Asian sizes</p>' }).grund.includes('Datenblatt nennt Erwachsenen-Ware («Sex»)'),
+      sperrFall('Metal Tray Set', 'Metalltablett', { text: '<p>Perfect for your rolling tray and herb grinder setup.</p>' }).gesperrt,
+      sperrFall('Party Candle', 'Kerze', { text: '<p>A sparkler effect with a smoke grenade finish.</p>' }).gesperrt,
+      sperrFall('Dog Collar Nylon', 'Hundehalsband', { text: '<p>Includes an electric shock collar remote.</p>' }).gesperrt], [true, true, true, true]);
+  ist('Datenblatt-Text-Gegenprobe: «contact lenses» beim Reinigungsgerät, «laser» und «light» an verschiedenen Stellen (Rohrschelle), «electric shock» in der Sicherheitsanleitung, «self-defense» als Sportart sperren NICHT',
+    ['<p>Suitable for cleaning glasses, contact lenses, jewelry, watches, makeup tools.</p>', '<p>Aluminum alloy; laser cutting process. Product light weight. Colour: Black.</p>', '<p>Warning: to prevent electric shock do not open the housing.</p>',
+      '<p>Applicable sports: boxing, running, self-defense, fitness.</p>', '<p>Smart watch with heart rate and blood oxygen monitoring.</p>'].filter(h => sperrFall('Cleaning Gadget', 'Reinigungsgerät', { text: h }).gesperrt), []);
+  ist('heikelImText: Laser nur in Nachbarschaft von Pointer/Taschenlampe; Medizin-Treffer; contact lens ausgenommen', [heikelImText('A green laser pointer for presentations'), heikelImText('Laser cutting. Light weight.'), heikelImText('cleaning contact lenses'), heikelImText('Measures blood pressure monitor upper arm')],
+    ['Laser-Zeiger/-Lampe', null, null, 'blood pressure monitor']);
+  ist('zusatzSperrwort: Namen und Text (Text lässt «self-defense» und «ear wax» aus)', [zusatzSperrwort('Self Defense Alarm'), zusatzSperrwort('Self Defense Alarm', { textModus: true }), zusatzSperrwort('Ear Wax Spoon'), zusatzSperrwort('Ear Wax Spoon', { textModus: true }), zusatzSperrwort('Otoscope Camera', { textModus: true })], ['self defense', null, 'ear wax', null, 'otoscope']);
+  ist('Steckdosen-Ware englisch: «Extension Cord» wird erkannt, ein Kopfhörer-«Cord Reel» nicht', [STECKDOSE_EN_RE.test('Extension Cord 5 Sockets 2m'), STECKDOSE_EN_RE.test('Cable Reel Extension 10m'), STECKDOSE_EN_RE.test('Donut Silicone Suction Cup Cord Reel Silicone'), STECKDOSE_EN_RE.test('Plug-in Timer Switch Digital')], [true, true, false, true]);
+  ist('PYRO: «Fireworks»/«LED Fireworks Toy» ist heikle Ware (Feuerwerk steht in der Liste)', [heikelWort('LED Fireworks Toy'), heikelWort('Fireworks'), heikelWort('Feuerwerk Set')].map(x => !!x), [true, true, true]);
+
+  // ── Fremdstecker im NAMEN (Gegenlesung: «Heater USA Standard», «Fan 110-240V US», «Charger Brazil/India Plug» blieben unerkannt)
+  const NAMEN_FREMD = ['Hair Dryer 1800W AU Plug', 'Hair Dryer 1800W US-Plug', 'Electric Heater UK Plug 13A', 'Heater 110V US Plug', 'Heater USA Standard', 'Kettle British Standard Plug', 'Kettle Australian Plug Type I', 'Fan 110-240V US', 'Fan 100-240V US Plug', 'Charger Brazil Plug', 'Charger India Plug'];
+  const NAMEN_OK = ['Charger UK/US/EU/AU Universal', 'Hair Straightener 220V EU Plug', 'Travel Charger 110-240V', 'Dual Voltage 110V/220V Hair Dryer EU', 'Fan 100-240V Wide Voltage', 'Bluetooth Speaker American Football Theme'];
+  ist('Fremdstecker im Namen: 11 Schreibweisen erkannt, EU-/Weitbereichs-/Universal-Namen nicht', [NAMEN_FREMD.filter(n => !fremdsteckerImNamen(n)), NAMEN_OK.filter(n => fremdsteckerImNamen(n))], [[], []]);
+
+  // ── Fremdstecker im BESCHREIBUNGSTEXT (echtes Probe-Datenblatt der Lichterkette: «[96 lights with US plug]», nur eine Variante hiess «-EU»)
+  const lichter = (keys, beschr) => ({ pid: '0E413843-30B2-47E9-A62F-4B81BAF3CD07', productNameEn: 'LED String Lights Christmas Fairy', productSku: 'CJLEDS0000001', productKeyEn: 'Color-Size', categoryName: 'Home Improvement > Lighting > String Lights', status: '3', productType: 'ORDINARY_PRODUCT', isTestProduct: false,
+    bigImage: 'https://cf.cjdropshipping.com/l/1.jpg', productImage: JSON.stringify([1, 2, 3, 4].map(i => `https://cf.cjdropshipping.com/l/${i}.jpg`)), description: beschr,
+    variants: keys.map((k, i) => ({ vid: `LV-${i}`, variantSku: `CJLEDS0000001-${i}`, variantKey: k, variantImage: `https://cf.cjdropshipping.com/l/v${i}.jpg`, variantWeight: 200 + i, variantSellPrice: 5 + i })) });
+  const steckerTor = r => tor(r, 'stecker');
+  const rA = lauf(lichter(['White 1.5x1.5M', 'White 3x2M', 'White 10x8M 2000Lamp-EU'], '1.5 m × 1.5 m [96 lights with US plug], 3 m × 2 m [192 lights with US plug]'), 'LED-Lichterkette');
+  ist('Fremdstecker im Text («with US plug»), aber nicht jede Variante nennt ihren Stecker: Tor «stecker» fällt, zurückgestellt (7 Tage), Eingabe fehlt',
+    [steckerTor(rA).ok, /Fremdstecker im Beschreibungstext/.test(steckerTor(rA).grund), rA.frist, rA.eingabe, /^zurückgestellt: stecker: /.test(rA.ledgerGrund)], [false, true, 'zurueckgestellt', null, true]);
+  const rB = lauf(lichter(['White-EU', 'Black-EU', 'White-US'], 'Plug type: EU plug, US plug'), 'LED-Lichterkette');
+  ist('Gegenprobe: nennt JEDE Variante ihren Stecker (EU, EU, US), entscheidet der Schlüssel: die US-Variante fällt weg, das Tor besteht', [steckerTor(rB).ok, rB.ausgelassen.stecker.length, rB.varianten], [true, 1, 2]);
+  const rC = lauf(lichter(['White 5m', 'White 10m'], 'EU plug, 230V. Length: 5 m or 10 m.'), 'LED-Lichterkette');
+  ist('Gegenprobe: ein EU-Stecker im Text sperrt nicht', steckerTor(rC).ok, true);
+  const rD = lauf(lichter(['Black', 'White'], 'Input: AC 100-240V wide voltage. 110V/220V dual voltage.'), 'Netzteil');
+  ist('Gegenprobe: Weitbereichs- und Umschaltspannung (100-240V, 110V/220V) im Text sperren nicht', steckerTor(rD).ok, true);
+  const rE = lauf(lichter(['Black', 'White'], 'Voltage: AC 110V only. Not suitable for 230V.'), 'Netzteil');
+  ist('Eine reine 110-V-Angabe im Text sperrt (Schweiz 230 V)', [steckerTor(rE).ok, /110/.test(steckerTor(rE).grund)], [false, true]);
+  ist('Schraubenbit «Japanese standard» ohne Stecker-/Spannungswort in der Zeile sperrt NICHT, mit «Plug: Japanese standard» schon',
+    [fremdsteckerImText('Hexagon shank. Japanese standard, 6.35 mm'), fremdsteckerImText('Plug: Japanese standard'), fremdsteckerImText('Voltage 110V Japanese standard')].map(x => !!x), [false, true, true]);
+  ist('Z177: «Plug type: US» / «Plug: AU» (Steckertyp-Angabe ohne weiteres Steckerwort) sperrt, «Plug type: EU» nicht', [fremdsteckerImText('Plug type: US'), fremdsteckerImText('Plug: AU'), fremdsteckerImText('Plug type: EU')].map(x => !!x), [true, true, false]);
+  ist('steckerKontextVon: Optionsname oder Produktname nennt den Stecker', [steckerKontextVon({ productKeyEn: 'Color-Plug Type' }), steckerKontextVon({ productNameEn: 'Hair Dryer with EU Plug' }), steckerKontextVon({ productKeyEn: 'Color-Size', productNameEn: 'Brush Set' }), steckerKontextVon({})], [true, true, false, false]);
+  // «Type A/B/G» als Steckertyp NUR mit Steckerkontext: sonst sind es die Ausführungen einer Bürste
+  const typen = ctxKey => lauf(ableiten(lichter(['Type A', 'Type B', 'Type C'], '<p>Text.</p>'), k => { k.productKeyEn = ctxKey; }), 'Haartrockner');
+  ist('Type A/B/C: mit Steckerkontext («Plug Type») fallen A und B weg (US/UK/AU), C (Euro) bleibt; ohne Kontext («Style») bleiben alle drei', [typen('Plug Type').ausgelassen.stecker.length, typen('Plug Type').varianten, typen('Style').ausgelassen.stecker.length, typen('Style').varianten], [2, 1, 0, 3]);
+}
+
+// ── Endtore «eingabe-schema» und «eingabe-konsistent» (Mutanten T28/T29 überlebten): sie sind die letzte Sicherung vor der Eingabe und lösen nur bei Werten aus, die kein CJ-Datenblatt trägt
+{
+  const f = ableiten(FIX.einzel, k => { k.variants[0].variantWeight = Infinity; });
+  const r = lauf(f, 'Wattestäbchen im Karton');
+  ist('Endtor eingabe-schema: ein Gewicht, das kein endlicher Zahlenwert ist (Float erwartet), lässt das Tor fallen — und es gibt KEINE Eingabe (Mutant V26: «Eingabe auch bei Fehler»)', [fallen(r), r.ok, r.eingabe, /weight/.test(tor(r, 'eingabe-schema').grund)], [['eingabe-schema'], false, null, true]);
+  const gut = lauf(ableiten(FIX.einzel, () => {}), 'Wattestäbchen im Karton');
+  ist('Gegenprobe: dasselbe Datenblatt mit endlichem Gewicht besteht und liefert die Eingabe', [gut.ok, gut.eingabe !== null, tor(gut, 'eingabe-schema').ok, tor(gut, 'eingabe-konsistent').ok], [true, true, true, true]);
+  // eingabe-konsistent: ein Optionswert über 255 Zeichen (Shopify lehnt ihn ab) — kommt durch jede Übersetzung (ctx.uebersetzung) durch, bis die Konsistenzprüfung ihn sieht
+  const keys = FIX.unsicher.variants.map(v => v.variantKey);
+  const lang = Object.fromEntries(keys.map((k, i) => [k, String.fromCharCode(65 + i).repeat(300)]));
+  const rl = lauf(FIX.unsicher, 'Make-up-Pinsel in Pastellfarben', { uebersetzung: lang });
+  ist('Endtor eingabe-konsistent: Optionswerte über 255 Zeichen lassen das Tor fallen (alle anderen Tore bestehen), keine Eingabe', [fallen(rl), rl.eingabe, /255 Zeichen/.test(tor(rl, 'eingabe-konsistent').grund)], [['eingabe-konsistent'], null, true]);
+  const kurz = lauf(FIX.unsicher, 'Make-up-Pinsel in Pastellfarben', { uebersetzung: Object.fromEntries(keys.map((k, i) => [k, ['Limette', 'Pfirsich', 'Wassermelonenrot', 'Avocado'][i] ?? 'Weiss'])) });
+  ist('Gegenprobe: kurze Übersetzungen bestehen beide Endtore', [tor(kurz, 'eingabe-schema').ok, tor(kurz, 'eingabe-konsistent').ok], [true, true]);
+}
+
+// ───────────────────────── Die letzten zwei Tore (eingabe-schema, eingabe-konsistent) sind über CJ-Daten erreichbar ─────────────────────────
+// Gegenlesung 27.10.2026, Mutationen T28/T29/V26 blieben grün: kein Test brachte den Plan bis an diese Tore. Frühere Tore brechen ab (abbruch), nur Daten, die sie passieren, kommen an.
+{
+  const gewicht = lauf(ableiten(FIX.mode, k => { k.variants[0].variantWeight = '1e999'; }), T_MODE, MODE);
+  ist('T28: ein Gewicht, das als Zahl unendlich wird («1e999»), lässt das Tor eingabe-schema fallen und ist das EINZIGE gefallene Tor', [fallen(gewicht), /weight\.value/.test(tor(gewicht, 'eingabe-schema').grund)], [['eingabe-schema'], true]);
+  ist('V26: ein nicht bestandener Plan gibt KEINE Eingabe heraus (ok false, eingabe null) — auch wenn sie schon gebaut war', [gewicht.ok, gewicht.eingabe, gewicht.frist], [false, null, 'vorlaeufig']);
+  const lang = 'Gross'.repeat(60);
+  const wert = lauf(ableiten(FIX.mode, k => { k.variants[0].variantKey = 'Black-' + 'X'.repeat(300); }), T_MODE, { ...MODE, uebersetzung: { ['X'.repeat(300)]: lang } });
+  ist('T29: ein (übersetzter) Optionswert über 255 Zeichen lässt das Tor eingabe-konsistent fallen und ist das EINZIGE gefallene Tor', [fallen(wert), /255 Zeichen/.test(tor(wert, 'eingabe-konsistent').grund), wert.eingabe], [['eingabe-konsistent'], true, null]);
+  ist('Gegenprobe: dieselben Daten ohne Gewichtsfehler und mit kurzem Wert bestehen beide Tore und liefern die Eingabe', [tor(lauf(FIX.mode, T_MODE, MODE), 'eingabe-schema').ok, tor(lauf(FIX.mode, T_MODE, MODE), 'eingabe-konsistent').ok, !!lauf(FIX.mode, T_MODE, MODE).eingabe], [true, true, true]);
 }
 
 // ───────────────────────── GraphQL und API ─────────────────────────

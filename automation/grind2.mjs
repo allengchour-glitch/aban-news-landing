@@ -15,7 +15,8 @@
  * SCHALTER UND SCHUTZ (alles Vorgabe = nichts schreiben):
  *   (nichts)         Trockenlauf: liest CJ (kostet Punkte), schreibt Pläne nach /tmp, KEIN Shop-Zugriff, KEINE Ledger-Zeile.
  *   MODUS=probe      Probe: 10 Kandidaten aus 2 Zielblättern (ZIELE=a,b), höchstens PUNKTE_MAX (600) eigene CJ-Punkte, Kontaktbogen als Markdown (OUT=…).
- *   LIVE=1           schreibt — NUR wenn die Datei dropship/GRIND2-FREI.txt existiert (Datei löschen = Stopp, wird vor JEDEM Produkt neu geprüft).
+ *   LIVE=1           schreibt — NUR wenn die Datei dropship/GRIND2-FREI.txt existiert (Datei löschen = Stopp, wird vor JEDEM Produkt UND vor jedem sichtbaren Schritt neu geprüft: Tore lesen, Aktivieren,
+ *                    Kanäle, Freigabe-Zeile; nach dem Aktivieren geht das Produkt dann sofort zurück auf DRAFT). Jeder LIVE-Lauf beginnt damit, ACTIVE-Produkte mit Marke grind2 ohne Kanal (Absturz) zurückzunehmen.
  *   PUBLISH=1        zusätzlich veröffentlichen (ACTIVE + Kanäle), höchstens PUBLISH_MAX (5) je Lauf, nur Produkte, deren Tore alle bestehen. Braucht LIVE=1.
  *
  * BUDGETS: Shopify begrenzt neue Varianten (≈ 10 000 je gleitende 24 h, geteilt mit dem Auswahl-Lauf). Grind darf höchstens GRIND_ANTEIL (5 %) davon,
@@ -27,7 +28,7 @@
  *   <pid> · <ISO> · GESCHRIEBEN · <n> Varianten · <handle> · <gid> · <zielId>
  *   <pid> · <ISO> · UEBERSPRUNGEN · [zurückgestellt: | vorläufig: ]<Grund>      (Fristen von lib/varianten_sicherheit.mjs: 14 Tage / 7 Tage / 20 Stunden)
  *   <pid> · <ISO> · FEHLER · <Grund>
- * dropship/grind2_freigabe_ledger.txt:  <handle> · <ISO> · FREI | FEHLER | ZURUECK · <Detail>
+ * dropship/grind2_freigabe_ledger.txt:  <handle> · <ISO> · FREI | FEHLER | ZURUECK | ZURUECK_FEHLGESCHLAGEN · <Detail>      (ZURUECK steht nur, wenn der Shop DRAFT zurückliest)
  *
  * ANNAHMEN UND SETZUNGEN (keine Messungen — der Besitzer bestätigt sie; Zahlen aus der Probe vom 27.10.2026 stehen in /tmp/grind2/bau/probe.md):
  *   · Die Fracht wird je GEWICHTSKLASSE gemessen (leichteste, schwerste und bis zu zwei Zwischenstufen, höchstens FRACHT_KLASSEN = 4 Aufrufe à 10 Punkte; spannt das Gewicht weniger als Faktor 2, genügt die
@@ -37,7 +38,10 @@
  *   · LAGER: getInventoryByPid (GEMESSEN 10 Punkte): Varianten mit 0 im CN-Lager (CJ und Lieferant) werden weggelassen, unbekannt bleibt im Rennen.
  *   · MARGE: unter 25 % Bruttomarge (MARGE_HART) wird nie angelegt, unter 30 % warnt die Flagge; Kurs ausserhalb 0,6–1,2 sperrt. Beides gilt auch, wenn jemand AUFSCHLAG/USD_CHF falsch setzt.
  *   · HANDPRÜFUNG (Welle R): Kinder-/Babyware (Wickelunterlagen, 3D-Stifte, Kinderuhren, Motorradhelm-Headsets) wird nie automatisch ausgewählt oder veröffentlicht (HANDPRUEFUNG_ZIELE).
- *   · SPERRE: höchstens ein LIVE-Lauf je Ledger (Sperrdatei); Laser/Medizin/Pyro/Selbstverteidigung sind gesperrt (SICHERER STANDARD, der Besitzer entscheidet).
+ *   · SPERRE: höchstens ein LIVE-Lauf je Ledger (Sperrdatei mit Herzschlag: 15 Minuten ohne Lebenszeichen = Überrest); Laser/Medizin/Pyro/Selbstverteidigung sind gesperrt (SICHERER STANDARD, der Besitzer entscheidet).
+ *   · KINDER- UND BABYWARE wird auf PRODUKTEBENE gesperrt (Titel, englischer CJ-Name, CJ-Kategorie, Datenblatt-Text), nicht nur über das Zielblatt; Freigabe nach Einzelprüfung ist Sache des Besitzers.
+ *   · PLAN-ZWISCHENSPEICHER: LIVE verwendet nie einen gespeicherten PLAN (nur gespeicherte Ablehnungen); der Plan-Schlüssel hängt am Abschluss ALLER importierten Dateien (planDateien) samt Sperrlisten und Einstellungen.
+ *   · PFLICHTGRENZEN per Umgebung nie in die unsichere Richtung: PREIS_MIN ≥ 14.90, PREIS_MIN_MODE ≥ 16.90, MIN_EINSTAND_CHF ≥ 2, USD_CHF ±12 % um den festen Kurs, MAX_PREIS nur senkbar (≤ 80). GRIND2_TEST=1 ist ein Testschalter und steht in keinem Workflow (Test).
  *   · Aufschlag 1,45 / Untergrenze 14.90 (Bekleidung 16.90) kommen aus lib/grind_preis.mjs; Obergrenze MAX_PREIS 80 und Mindest-Einstand 2 CHF sind SETZUNGEN.
  *   · Saison-Fenster (Halloween Aug–Sep, Weihnachten Sep–Nov, Ostern Feb–Mär, Valentinstag Dez–Jan) folgen aus 10–20 Werktagen Lieferzeit.
  *   · Nur ORDINARY_PRODUCT mit Lager CN (Hypothese: beide Fälle ohne CH-Fracht waren SUPPLIER_SHIPPED_PRODUCT, n = 2; PRODUKTARTEN erweitert).
@@ -50,7 +54,7 @@ import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync, sta
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { shopifyGql } from './lib/shopify_gql.mjs';
@@ -63,8 +67,8 @@ import { frachtProdukt, frachtJeVariante, frachtKeineZahlGrund, messPlan, ledger
 import { preiseFuerVarianten, ueberObergrenzeWeg, AUFSCHLAG, PREIS_MIN, MARGE_HART } from './lib/grind_preis.mjs';
 import { ladeIndex, istDublette, fuegeHinzu, istFrisch, pidNorm } from './lib/grind_dubletten.mjs';
 import { googlePfad, taxTags, bereichKategorien, kernPhrase, TAXONOMIE } from './lib/grind_google.mjs';
-import { heikelWort, fremdsteckerImNamen } from './lib/grind_plan.mjs';
-import { planeNeu, PRODUCT_SET_MUTATION, API_VERSION, handleAus, galerieAus, normalisiereCj, ERWACHSENE_RE, TABAK_RE, STECKDOSE_EN_RE, ANZUENDER_RE, MAX_VARIANTEN, MIN_BILDER } from './lib/grind_plan.mjs';
+import { heikelWort, fremdsteckerImNamen, kinderWort, zusatzSperrwort } from './lib/grind_plan.mjs';
+import { planeNeu, PRODUCT_SET_MUTATION, API_VERSION, handleAus, galerieAus, normalisiereCj, ERWACHSENE_RE, TABAK_RE, STECKDOSE_EN_RE, ANZUENDER_RE, MAX_VARIANTEN, MIN_BILDER, VAR_MARKER } from './lib/grind_plan.mjs';
 import { topUrteil, LISTED_MIN } from './lib/top_kandidaten.mjs';
 import { KATEGORIEN, WAFFEN, SPERR_TAGS } from './lib/kategorien.mjs';
 import { pruefeProdukt, LIZENZ } from './lib/gmc_feed_item.mjs';
@@ -81,6 +85,8 @@ import { EN_AUSGABE_RE } from './optionen_uebersetzen.mjs';
 const WURZEL = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const EXIT = Object.freeze({ OK: 0, FEHLER: 1, CJ: 3, VARIANTEN: 4, KI: 5 });
 export const FREIGABE_DATEI = 'dropship/GRIND2-FREI.txt';
+/** Vorgaben, die zugleich die Pflichtgrenzen sind (siehe konfigAus). SETZUNGEN nach der Probe vom 27.10.2026; der Besitzer ändert sie im Code, nicht per Umgebung. */
+export const MAX_PREIS_STANDARD = 80, MIN_EINSTAND_STANDARD = 2, PREIS_MIN_MODE = 16.90;
 /** CJ-Punkte je Aufruf (GEMESSEN 26.10.2026, /tmp/grind2/cj_api.md §5.1: Liste 50 unabhängig von der Seitengrösse, Abfrage und Fracht je 10). `kategorien` (product/getCategory) GEMESSEN 27.10.2026: 0 Punkte (usedToday blieb über drei Aufrufe gleich). `bestand` (product/stock/getInventoryByPid) GEMESSEN 27.10.2026 mit EINEM Aufruf zwischen zwei kostenlosen setting/get: 54 463 → 54 453, also genau 10 Punkte (die Messung in cj_api.md war gestört). */
 /** Unter dieser gemessenen Übereinstimmung mit dem Shop (googlePfad → vertrauen) soll ein Mensch den Google-Pfad im Kontaktbogen ansehen. */
 export const VERTRAUEN_HAND = 0.7;
@@ -150,14 +156,17 @@ export function konfigAus(env = process.env, wurzel = WURZEL) {
     produktarten: listeAus(env.PRODUKTARTEN, ['ORDINARY_PRODUCT']),
     reserve: z('GRIND_RESERVE', 15000, { min: 5000, max: 1e6 }),
     punkteMax: z('PUNKTE_MAX', probe ? 600 : 6000, { min: 10, max: 1e6 }),
-    kurs: z('USD_CHF', USD_CHF, { min: 0.6, max: 1.2 }),
+    // PFLICHTGRENZEN: per Umgebung dürfen sie nie in die unsichere Richtung verschoben werden (Gegenlesung 27.10.2026: PREIS_MIN=1, MIN_EINSTAND_CHF=0, USD_CHF=0.65 und MAX_PREIS=100000 wurden angenommen).
+    // Der Kurs darf um ±12 % um den fest verwendeten schwanken (ein Tippfehler liegt weit ausserhalb); Untergrenzen sind die Vorgaben selbst, die Obergrenze des Preises auch.
+    kurs: z('USD_CHF', USD_CHF, { min: USD_CHF * 0.88, max: USD_CHF * 1.13 }),
     aufschlag: z('AUFSCHLAG', AUFSCHLAG, { min: 1.34, max: 10 }),     // 1 / (1 − MARGE_HART): darunter wäre jede Marge unter 25 %
-    preisMin: z('PREIS_MIN', PREIS_MIN, { min: 1, max: 1000 }),
-    preisMinMode: z('PREIS_MIN_MODE', 16.90, { min: 1, max: 1000 }),
+    preisMin: z('PREIS_MIN', PREIS_MIN, { min: PREIS_MIN, max: 1000 }),
+    preisMinMode: z('PREIS_MIN_MODE', PREIS_MIN_MODE, { min: PREIS_MIN_MODE, max: 1000 }),
     // SETZUNG nach der Probe vom 27.10.2026: eine Weihnachts-Lichterkette mit Fracht 49 USD kam auf 61.90–102.90 CHF. Das Sortiment des Shops liegt weit darunter; die Obergrenze gegen den
     // MARKTPREIS (Galaxus) fehlt weiterhin (UNBEKANNT). Der Besitzer legt den Wert fest.
-    maxPreis: z('MAX_PREIS', 80, { min: 5, max: 100000 }),
-    minEinstand: z('MIN_EINSTAND_CHF', 2, { min: 0, max: 1000 }),
+    // Nur senkbar: MAX_PREIS über 80 ist eine Änderung im Code (Besitzerentscheid, PR), keine Umgebungsvariable. GRIND2_TEST=1 (Tests mit schweren Fixtures) hebt die Obergrenze auf.
+    maxPreis: z('MAX_PREIS', MAX_PREIS_STANDARD, { min: 5, max: env.GRIND2_TEST === '1' ? 100000 : MAX_PREIS_STANDARD }),
+    minEinstand: z('MIN_EINSTAND_CHF', MIN_EINSTAND_STANDARD, { min: MIN_EINSTAND_STANDARD, max: 1000 }),
     sensitivAusweg: env.SENSITIV_AUSWEG === '1',
     maxTage: z('MAX_LIEFERTAGE', 20, { min: 5, max: 90, ganz: true }),
     frachtKlassen: z('FRACHT_KLASSEN', 4, { min: 1, max: 6, ganz: true }),     // SETZUNG: höchstens 4 Messungen (40 Punkte) je Produkt mit breiter Gewichtsspanne
@@ -336,7 +345,7 @@ export const quellenSchluessel = (q, seite = 1) => `${q.art}-${String(q.id || q.
 // ════════════════════════════════════════════════════════════════════════════
 // Stufe 3: Vorfilter (ohne CJ-Punkte)
 // ════════════════════════════════════════════════════════════════════════════
-/** Erstes Sperrwort im englischen CJ-Namen (Waffe, Erwachsene, Tabak, Lizenzfigur, Steckdosen-Ware) oder null. */
+/** Erstes Sperrwort im englischen CJ-Namen (Waffe, Erwachsene, Tabak, Lizenzfigur, Steckdosen-Ware, Fremdstecker, heikle Ware, Kinderware) oder null. */
 export function sperrwort(name) {
   const n = String(name ?? '');
   const treffer = (s, re, art, gruppe = 0) => { const x = s.match(re); return x ? `${art} «${text(x[gruppe]).slice(0, 30)}»` : null; };
@@ -344,7 +353,8 @@ export function sperrwort(name) {
   const ohneAnzuender = n.replace(new RegExp(ANZUENDER_RE.source, 'gi'), ' ');
   return treffer(n, WAFFEN, 'Waffe') || treffer(n, ERWACHSENE_RE, 'Erwachsene', 2) || treffer(ohneAnzuender, TABAK_RE, 'Tabak', 2)
     || treffer(n, LIZENZ, 'Lizenz') || treffer(n, STECKDOSE_EN_RE, 'Steckdose')
-    || (fremdsteckerImNamen(n) ? 'Fremdstecker/110 V' : null) || (heikelWort(n) ? `heikel «${heikelWort(n)}»` : null);
+    || (fremdsteckerImNamen(n) ? 'Fremdstecker/110 V' : null) || (heikelWort(n) ? `heikel «${heikelWort(n)}»` : null)
+    || (zusatzSperrwort(n) ? `heikel «${zusatzSperrwort(n)}»` : null) || (kinderWort(n) ? `Kinderware «${kinderWort(n)}»` : null);
 }
 
 /**
@@ -390,6 +400,24 @@ export function zubehoerKonflikt({ titel = '', cjName = '', pfad = '' } = {}) {
   return wort ? { wort: wort.toLowerCase(), quelle: de ? 'Titel' : 'CJ-Name' } : null;
 }
 
+/** Die Waise eines abgestürzten Grind-Laufs: DRAFT mit der Rücknahme-Marke `grind2` (der Index trägt die Marken grind2…, siehe bulkSammler). */
+export const istWaise = p => p?.status === 'DRAFT' && Array.isArray(p.tags) && p.tags.includes('grind2');
+/**
+ * istDublette, mit einer Ausnahme: sind ALLE harten Treffer Waisen eines früheren Grind-Laufs (Shop-Treffer, jedes getroffene Produkt DRAFT mit Tag grind2, kein Ledger-Treffer), ist der Kandidat keine
+ * Dublette, sondern ein halb erledigter Vorgang (productSet kam an, die Ledger-Zeile nicht): anlegen() übernimmt die Waise statt sie zu verdoppeln. GEMESSEN 27.10.2026 (Gegenlesung): vor jedem LIVE-Lauf läuft
+ * grind_skus_lesen, die Waise steht also IMMER im frischen Index — ohne diese Ausnahme sperrte der Vorfilter sie als «Dublette», ohne Ledger-Zeile und ohne Hinweis, und das DRAFT-Produkt blieb für immer ungeprüft.
+ * Ein Ledger-Treffer (GESCHRIEBEN, UEBERSPRUNGEN …) bleibt eine Dublette: dann kennt der Lauf das Produkt schon.
+ */
+export function dublettenUrteil(kandidat, ix, opt = {}) {
+  const d = istDublette(kandidat, ix, opt);
+  if (!d.dublette) return { ...d, waise: false };
+  const harte = d.treffer.filter(t => t.staerke === 'hart');
+  const nurWaisen = harte.length > 0 && harte.every(t => t.quelle === 'shop' && Array.isArray(t.produkte) && t.produkte.length > 0 && t.n === t.produkte.length && t.produkte.every(istWaise));
+  if (!nurWaisen) return { ...d, waise: false };
+  const w = harte[0].produkte[0];
+  return { ...d, dublette: false, waise: true, waisen: eindeutig(harte.flatMap(t => t.produkte.map(p => p.handle))), grund: `Waise eines früheren Laufs im Shop (${w.handle}, DRAFT, Tag grind2): wird übernommen statt verdoppelt` };
+}
+
 /**
  * Darf ein Listentreffer in die teure Prüfung? Billig vor teuer: jede Ablehnung hier kostet nichts.
  * @param {object} t  Treffer aus product/list (v1)
@@ -417,8 +445,9 @@ export function vorfilter(t, { cfg, index, erledigt, monat } = {}) {
   const m = pruefeProdukt({ titel: name, tags: [], bild: 'https://x', preis: 1, id: pid, link: 'x' });
   if (!m.ok) return nein(`merchant:${m.grund}`);
   if (index) {
-    const d = istDublette({ pid, productSku: t.productSku, titel: name }, index);
+    const d = dublettenUrteil({ pid, productSku: t.productSku, titel: name }, index);
     if (d.dublette) return { nehmen: false, grund: 'dublette', detail: d.grund, treffer: d.treffer };
+    if (d.waise) return { nehmen: true, grund: 'kandidat', pid, name, u, waise: d.waisen };
   }
   return { nehmen: true, grund: 'kandidat', pid, name, u };
 }
@@ -436,7 +465,7 @@ export function vorfilterListe(items, ctx) {
     if (pid && gesehen.has(pid)) continue;
     if (pid) gesehen.add(pid);
     const r = vorfilter(t, ctx);
-    if (r.nehmen) { durch.push({ t, pid: r.pid, name: r.name, u: r.u }); continue; }
+    if (r.nehmen) { durch.push({ t, pid: r.pid, name: r.name, u: r.u, ...(r.waise ? { waise: r.waise } : {}) }); continue; }
     const g = r.grund.split(':')[0];
     abgelehnt[g] = (abgelehnt[g] || 0) + 1;
     if (!beispiele[g]) beispiele[g] = text(t?.productNameEn).slice(0, 60);
@@ -662,9 +691,31 @@ export const hatLiveCollection = (sortTags, live) => (sortTags || []).some(t => 
  */
 export function planVersion(inhalte) { return createHash('sha1').update(inhalte.map(x => String(x)).join('\u0000')).digest('hex').slice(0, 12); }
 export const planGueltig = (plan, version) => !!plan && plan.v === version;
-const PLAN_DATEIEN = ['grind2.mjs', 'lib/grind_plan.mjs', 'lib/grind_google.mjs', 'lib/grind_google_daten.json', 'lib/grind_preis.mjs', 'lib/fakten_block.mjs', 'lib/cj_fracht.mjs', 'lib/grind_dubletten.mjs', 'lib/titel_deutsch.mjs', 'lib/uebersetzen.mjs'];
+/**
+ * Alle Dateien, die einen Plan bestimmen: grind2.mjs und der Abschluss ALLER relativen Importe (Sperrlisten wie kategorien/gmc_feed_item/top_kandidaten/stecker_cj, Preisregel, Fracht, Dubletten, Übersetzung, Titel …)
+ * samt den JSON-Dateien, die sie neben sich lesen (`new URL('./x.json', import.meta.url)`). GEMESSEN 27.10.2026 (Gegenlesung): die handgepflegte Liste kannte 10 von 22 Dateien — eine verschärfte Sperrliste
+ * (WAFFEN, SPERR_TAGS, RISIKO, LIZENZ, Stecker, Preisrundung) änderte die Planversion NICHT, und ein Plan aus der Probe galt noch 3 Stunden mit der alten Regel.
+ * @returns {string[]} absolute Pfade, sortiert
+ */
+export function planDateien(start = fileURLToPath(import.meta.url), lies = p => readFileSync(p, 'utf8')) {
+  const importRe = /\b(?:import|export)\b[^'";]*?\bfrom\s+['"](\.{1,2}\/[^'"]+)['"]|\bimport\s+['"](\.{1,2}\/[^'"]+)['"]/g, jsonRe = /new URL\(\s*['"](\.{1,2}\/[^'"]+\.json)['"]\s*,\s*import\.meta\.url/g;
+  // Datendateien, die über eine Vorlage-URL gelesen werden (`new URL(`../../dropship/x/${n}`, import.meta.url)` mit `lies('ALLES.json')`): jede im selben Text genannte *.json-Datei hinter dem festen Vorlagenanfang
+  const vorlageRe = /new URL\(\s*`([^`$]*)\$\{[^}`]*\}[^`]*`\s*,\s*import\.meta\.url/g, jsonNameRe = /['"]([\w.-]+\.json)['"]/g;
+  const gesehen = new Set(), offen = [resolve(start)];
+  while (offen.length) {
+    const f = offen.pop();
+    if (gesehen.has(f)) continue;
+    let t; try { t = lies(f); } catch { continue; }          // unlesbar/fehlend: nicht aufnehmen (ein fehlender Import fällt beim Laden ohnehin auf)
+    gesehen.add(f);
+    if (!f.endsWith('.mjs')) continue;
+    for (const re of [importRe, jsonRe]) { re.lastIndex = 0; let m; while ((m = re.exec(t))) offen.push(resolve(dirname(f), m[1] || m[2])); }
+    vorlageRe.lastIndex = 0; let v;
+    while ((v = vorlageRe.exec(t))) { jsonNameRe.lastIndex = 0; let n; while ((n = jsonNameRe.exec(t))) offen.push(resolve(dirname(f), v[1] + n[1])); }
+  }
+  return [...gesehen].sort();
+}
 function codeStand() {
-  try { return PLAN_DATEIEN.map(f => readFileSync(new URL('./' + f, import.meta.url), 'utf8')); }
+  try { const wo = dirname(fileURLToPath(import.meta.url)); return planDateien().map(f => `${relative(wo, f)}\u0001${readFileSync(f, 'utf8')}`); }     // relativ: derselbe Stand in einem anderen Verzeichnis ergibt dieselbe Version
   catch { return [`unlesbar-${Date.now()}-${Math.random()}`]; }       // Code nicht lesbar: eine Version, die nie wieder vorkommt (kein Plan wird wiederverwendet)
 }
 const CODE_STAND = codeStand();
@@ -691,7 +742,7 @@ export const TORE_ABFRAGE = `query($id:ID!){ product(id:$id){ id handle status t
  * ok: true/false, null = noch nicht entscheidbar (Medien werden noch verarbeitet → der Aufrufer wartet und liest neu).
  * @returns {{ok:boolean, offen:boolean, tore:{name:string, ok:boolean|null, grund:string}[]}}
  */
-export function toreNachAnlage(eingabe, p, { minBilder = MIN_BILDER, nachFreigabe = false } = {}) {
+export function toreNachAnlage(eingabe, p, { minBilder = MIN_BILDER, nachFreigabe = false, streng = false } = {}) {
   const tore = [];
   const tor = (name, ok, grund = '') => tore.push({ name, ok, grund: ok === true ? '' : grund });
   if (!p) return { ok: false, offen: false, tore: [{ name: 'produkt', ok: false, grund: 'Produkt nicht mehr da' }] };
@@ -730,6 +781,16 @@ export function toreNachAnlage(eingabe, p, { minBilder = MIN_BILDER, nachFreigab
   const beschr = String(p.descriptionHtml || '');
   tor('text', TEXT_MARKER.some(m => beschr.includes(m)) && htmlZuText(beschr).length >= 150, 'Beschreibung ohne Fakten-Block/Fliesstext oder zu kurz');
   if (nachFreigabe) tor('kanaele', (p.resourcePublicationsV2?.nodes || []).filter(n => n.isPublished).length >= 1, 'in keinem Kanal veröffentlicht');
+  if (streng) {
+    // Ein übernommener Entwurf (Waise eines abgestürzten Laufs) ist kein Beweis, dass er dem heutigen Plan entspricht: eine ältere Codefassung kann ihn mit englischem Rest und E-Mail-Adresse im Text, mit weniger Bildern
+    // oder anderer Produktart angelegt haben (Gegenlesung 27.10.2026: so wäre er mit altem Text veröffentlicht worden, weil die Tore oben nur Marker und 150 Zeichen prüfen). Beschreibung, Medien und Produktart müssen dem Plan gleichen.
+    const klar = h => htmlZuText(String(h ?? ''));
+    const sollBeschr = String(eingabe.descriptionHtml ?? '');
+    const markerGleich = [...TEXT_MARKER, VAR_MARKER].every(m => beschr.includes(m) === sollBeschr.includes(m));
+    tor('beschreibung-wie-geplant', markerGleich && klar(beschr) === klar(sollBeschr), 'Beschreibung weicht vom Plan ab (andere Codefassung des früheren Laufs?)');
+    tor('medien-wie-geplant', medien.length === (eingabe.files || []).length, `${medien.length} Medien im Shop, ${(eingabe.files || []).length} im Plan`);
+    tor('produktart-wie-geplant', String(p.productType ?? '') === String(eingabe.productType ?? ''), `Produktart «${p.productType ?? ''}» statt «${eingabe.productType ?? ''}»`);
+  }
   const offen = tore.some(t => t.ok === null);
   return { ok: tore.every(t => t.ok === true), offen, tore };
 }
@@ -856,9 +917,17 @@ export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0
   };
 }
 
-/** Ein Aufruf, der JSON liefern muss: Gemini, sonst Groq (wie cj_fakten_block.mjs, dort nicht exportiert). {o:null} = beide ohne brauchbare Antwort. */
-export async function modellJson(prompt, { fetch: fetchFn, geminiKey, groqKey } = {}) {
-  const gk = String(geminiKey ?? process.env.GEMINI_API_KEY ?? '').trim(), qk = String(groqKey ?? process.env.GROQ_API_KEY ?? '').trim();
+/**
+ * Die Groq-Schlüssel: bis zu drei (GROQ_API_KEY, GROQ_API_KEY2, GROQ_API_KEY3 — wie nachDeutsch in lib/uebersetzen.mjs der Hauptlinie); jeder hat sein eigenes Tageslimit (GEMESSEN 27.10.2026: 1000 Anfragen
+ * je Modell und Tag). Ein ausdrücklich übergebener Schlüssel (`groqKey`, auch '') ersetzt die Umgebung.
+ */
+export function groqSchluessel({ groqKey, env = process.env } = {}) {
+  const roh = groqKey !== undefined ? [groqKey] : [env.GROQ_API_KEY, env.GROQ_API_KEY2, env.GROQ_API_KEY3];
+  return [...new Set(roh.map(k => String(k ?? '').trim()).filter(Boolean))];
+}
+/** Ein Aufruf, der JSON liefern muss: Gemini, sonst Groq (alle Schlüssel nacheinander, wie cj_fakten_block.mjs, dort nicht exportiert). {o:null} = alle ohne brauchbare Antwort. */
+export async function modellJson(prompt, { fetch: fetchFn, geminiKey, groqKey, env = process.env } = {}) {
+  const gk = String(geminiKey ?? env.GEMINI_API_KEY ?? '').trim(), qks = groqSchluessel({ groqKey, env });
   const lies = t => { try { const s = String(t || '').replace(/^```(json)?/i, '').replace(/```$/, '').trim(); const a = s.indexOf('{'), b = s.lastIndexOf('}'); return JSON.parse(s.slice(a, b + 1)); } catch { return null; } };
   const gruende = [];
   if (gk) {
@@ -870,40 +939,62 @@ export async function modellJson(prompt, { fetch: fetchFn, geminiKey, groqKey } 
       else gruende.push(`Gemini HTTP ${r.status}`);
     } catch (e) { gruende.push('Gemini: ' + e.message); }
   }
-  if (qk) {
+  for (const [nr, qk] of qks.entries()) {
     for (const modell of GROQ_MODELLE) {
       try {
         const r = await fetchFn('https://api.groq.com/openai/v1/chat/completions', { method: 'POST', headers: { Authorization: `Bearer ${qk}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ model: modell, temperature: 0, messages: [{ role: 'user', content: prompt }] }) });
         const j = await r.json().catch(() => ({}));
-        if (r.ok) { const o = lies(j?.choices?.[0]?.message?.content); if (o) return { o, weg: 'groq' }; gruende.push(`Groq ${modell}: Antwort nicht lesbar`); }
-        else gruende.push(`Groq ${modell} HTTP ${r.status}`);
-      } catch (e) { gruende.push(`Groq ${modell}: ${e.message}`); }
+        if (r.ok) { const o = lies(j?.choices?.[0]?.message?.content); if (o) return { o, weg: 'groq' }; gruende.push(`Groq ${nr + 1} ${modell}: Antwort nicht lesbar`); }
+        else gruende.push(`Groq ${nr + 1} ${modell} HTTP ${r.status}`);
+      } catch (e) { gruende.push(`Groq ${nr + 1} ${modell}: ${e.message}`); }
     }
   }
   return { o: null, weg: 'keins', gruende };
 }
 
 /**
+ * Gesamtgrösse einer Bild-Antwort in Byte oder null (= unbekannt). `Content-Range: bytes 0-0/202913` nennt die Gesamtgrösse einer Bereichsanfrage; `content-length` gilt nur bei einer ganzen
+ * Antwort (HEAD oder 200). `Number(null)` wäre 0: «keine Angabe» ist nie «0 Byte» (so hätte die 20-MB-Grenze am CJ-Bild-CDN nie gegriffen).
+ */
+export function bildGroesse(headers, { ganz = true } = {}) {
+  const cr = /\/(\d+)\s*$/.exec(headers?.get?.('content-range') || '');
+  if (cr) return Number(cr[1]);
+  const cl = headers?.get?.('content-length');
+  if (!ganz || cl === null || cl === undefined || String(cl).trim() === '') return null;
+  const n = Number(cl);
+  return Number.isFinite(n) && n >= 0 ? n : null;
+}
+
+/**
  * Bild-URLs auf HTTP 200 prüfen (Bild-Falle: `quick/product/…` liefert teils 404; ein Zeitfehler ist KEIN 404). HEAD, bei 400/403/405/501 ein GET mit Range.
+ * Shopify nimmt Bilder nur bis 20 MB. GEMESSEN 27.10.2026: das CJ-Bild-CDN (cf./oss-cf.cjdropshipping.com) sendet bei HEAD KEIN content-length (13 von 13 Bildern); die Gesamtgrösse steht nur im Content-Range
+ * einer Bereichsanfrage. Darum folgt auf ein HEAD ohne Grösse eine Anfrage `Range: bytes=0-0` (ein Byte). Bleibt die Grösse auch dann unbekannt, fängt das Tor «medien-fehlerfrei» ein zu grosses Bild nach dem Anlegen.
  * @returns {{ok:Set<string>, schlecht:Map<string,string>}}
  */
 export async function bilderPruefen(urls, { fetch: fetchFn, parallel = 6, timeoutMs = 15000 } = {}) {
   const ok = new Set(), schlecht = new Map();
   const liste = eindeutig(urls.map(text).filter(Boolean));
+  const mitZeit = init => { if (typeof AbortSignal?.timeout === 'function') init.signal = AbortSignal.timeout(timeoutMs); return init; };
   const eins = async u => {
     for (const methode of ['HEAD', 'GET']) {
       try {
-        const init = { method: methode, redirect: 'follow', headers: methode === 'GET' ? { Range: 'bytes=0-1023' } : {} };
-        if (typeof AbortSignal?.timeout === 'function') init.signal = AbortSignal.timeout(timeoutMs);
+        const init = mitZeit({ method: methode, redirect: 'follow', headers: methode === 'GET' ? { Range: 'bytes=0-1023' } : {} });
         const r = await fetchFn(u, init);
         try { await r.body?.cancel?.(); } catch { /* egal */ }
         if (r.status === 200 || r.status === 206) {
           const ct = r.headers?.get?.('content-type') || '';
           // Shopify nimmt als Bild nur PNG, GIF, JPEG, WEBP, HEIC bis 20 MB (Doku «Manage media», 4472 × 4472 px nicht prüfbar ohne Download): alles andere würde als FAILED-Medium enden.
           if (ct && !/^image\/(jpe?g|png|gif|webp|heic)\b/i.test(ct)) { schlecht.set(u, `kein Bild (${ct.slice(0, 30)})`); return; }
-          const laenge = Number(r.headers?.get?.('content-length'));
-          if (methode === 'HEAD' && Number.isFinite(laenge) && laenge > 20 * 1024 * 1024) { schlecht.set(u, `zu gross (${Math.round(laenge / 1048576)} MB, Shopify: höchstens 20 MB)`); return; }
+          let laenge = bildGroesse(r.headers, { ganz: methode === 'HEAD' || r.status === 200 });
+          if (laenge === null && methode === 'HEAD') {
+            try {
+              const g = await fetchFn(u, mitZeit({ method: 'GET', redirect: 'follow', headers: { Range: 'bytes=0-0' } }));
+              try { await g.body?.cancel?.(); } catch { /* egal */ }
+              laenge = bildGroesse(g.headers, { ganz: g.status === 200 });
+            } catch { /* nicht prüfbar: das Tor «medien-fehlerfrei» fängt es nach dem Anlegen (Produkt bleibt DRAFT) */ }
+          }
+          if (laenge !== null && laenge > 20 * 1024 * 1024) { schlecht.set(u, `zu gross (${Math.round(laenge / 1048576)} MB, Shopify: höchstens 20 MB)`); return; }
           ok.add(u); return;
         }
         if (methode === 'HEAD' && [400, 403, 405, 501].includes(r.status)) continue;
@@ -999,7 +1090,7 @@ export async function shopZugang(io, fetchFn, env = process.env) {
     tok = (await r.json().catch(() => ({})))?.access_token;
     if (!tok) throw new Error('Kein Shopify-Token (Client-Credentials-Grant lieferte keinen access_token)');
   }
-  return (q, v) => shopifyGql(shop, API_VERSION, tok, q, v, { fetch: fetchFn, warte: io.warte, basisMs: io.basisMs });
+  return (q, v, opt = {}) => shopifyGql(shop, API_VERSION, tok, q, v, { fetch: fetchFn, warte: io.warte, basisMs: io.basisMs, ...opt });
 }
 
 // ───────────────────────── GraphQL-Texte (alle gegen den Shop gelesen bzw. gegen das Schema geprüft, 27.10.2026)
@@ -1009,6 +1100,16 @@ const KANAL_REFERENZ = `query{ products(first:8, query:"status:active tag:cj-rea
 const TAGS_ADD = `mutation($id:ID!,$t:[String!]!){ tagsAdd(id:$id, tags:$t){ userErrors{ field message } } }`;
 const STATUS_SETZEN = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id status } userErrors{ field message } } }`;
 const VEROEFFENTLICHEN = `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id, input:$p){ userErrors{ field message } } }`;
+/** Status frisch lesen: eine Rücknahme auf DRAFT gilt nur, wenn der Shop DRAFT zurückliest (keine userErrors ist kein Beweis). */
+export const STATUS_LESEN = `query($id:ID!){ product(id:$id){ id status } }`;
+/** Aufräumen nach einem Absturz zwischen ACTIVE und publishablePublish: aktive Produkte mit der Rücknahme-Marke grind2 und ohne veröffentlichten Kanal. */
+export const AKTIV_OHNE_KANAL = `query{ products(first:50, query:"tag:grind2 status:active"){ nodes{ id handle status tags resourcePublicationsV2(first:20, onlyPublished:true){ nodes{ isPublished } } } } }`;
+/** Shopify-Antworten, die sicher NICHT bearbeitet wurden (Drossel): eine Wiederholung ist gefahrlos. */
+export const SHOPIFY_DROSSEL_RE = /GraphQL: HTTP 429|throttled|exceeded.*cost|rate limit/i;
+/** Fehler, bei denen die Anfrage angekommen sein KANN (Netz, 5xx, unlesbare Antwort): vor jeder Wiederholung erst nachsehen. */
+export const SHOPIFY_UNKLAR_RE = /^GraphQL: (?:fetch:|HTTP 5\d\d|Antwort nicht lesbar)/;
+/** Zeitlimit für productSet: synchron mit bis zu 40 Varianten und 13 Dateien (noch nie real gelaufen: UNBEKANNT, wie lange das dauert; die 30 s der Abfragen wären knapp). */
+export const PRODUCT_SET_ZEIT_MS = 120000;
 const esc = s => String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 /** Smart-Collections mit ihren Regeln (nur lesen): welche `sort-…`-Tags filtert im Shop wirklich eine Collection? 921 Collections = 4 Seiten. */
 export const LIVE_SORT_ABFRAGE = `query($after:String){ collections(first:250, after:$after, query:"collection_type:smart"){ nodes{ ruleSet{ rules{ column relation condition } } } pageInfo{ hasNextPage endCursor } } }`;
@@ -1026,25 +1127,44 @@ const frischGenug = (p, stunden, jetzt) => { try { return jetzt - statSync(p).mt
  *   basisMs?:number, index?:object, kategorienExtra?:object, productTypeTab?:Map, bildSig?:Function, bildGleich?:Function, env?:object}} [io]
  * @returns {Promise<{exit:number, bericht:object}>}
  */
-/** Sperrdatei (O_EXCL): höchstens ein LIVE-Lauf je Ledger. Eine Sperre älter als `maxAlterMs` gilt als Überrest eines abgestürzten Laufs. */
-export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = 3 * 3600 * 1000) {
+/**
+ * Sperrdatei (O_EXCL): höchstens ein LIVE-Lauf je Ledger. Der Besitzer meldet sich mit einem HERZSCHLAG (`herz`, alle SPERRE_HERZ_INTERVALL_MS neu geschrieben, solange sein Prozess lebt): eine Sperre,
+ * deren letzter Herzschlag länger als `maxAlterMs` zurückliegt, gilt als Überrest eines abgestürzten Laufs. GEMESSEN 26.10.2026: die Umgebung wird etwa alle 25 Minuten neu gestartet (Prozesse sterben,
+ * /tmp bleibt) — eine reine Altersgrenze von 3 Stunden hätte den Folgelauf dann stundenlang ausgesperrt, und umgekehrt einen langen, lebenden Lauf (LIMIT bis 500) nach 3 Stunden freigegeben.
+ * Ohne Feld `herz` (Sperre aus der Zeit davor) zählt `seit`.
+ */
+export const SPERRE_HERZ_MAX_MS = 15 * 60 * 1000, SPERRE_HERZ_INTERVALL_MS = 60 * 1000;
+export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = SPERRE_HERZ_MAX_MS) {
   for (let versuch = 0; versuch < 2; versuch++) {
-    try { const fd = openSync(pfad, 'wx'); writeSync(fd, JSON.stringify({ pid: process.pid, seit: jetzt })); closeSync(fd); return true; }
+    try { const fd = openSync(pfad, 'wx'); writeSync(fd, JSON.stringify({ pid: process.pid, seit: jetzt, herz: jetzt })); closeSync(fd); return true; }
     catch (e) {
       if (e.code !== 'EEXIST') throw e;
       let alt = null; try { alt = JSON.parse(readFileSync(pfad, 'utf8')); } catch { /* unlesbar = Überrest */ }
-      if (alt && jetzt - alt.seit <= maxAlterMs) return false;
+      const letzter = alt ? Math.max(Number(alt.herz) || 0, Number(alt.seit) || 0) : 0;
+      if (alt && jetzt - letzter <= maxAlterMs) return false;
       try { unlinkSync(pfad); } catch { /* ein anderer war schneller */ }
     }
   }
   return false;
+}
+/** Herzschlag: der Besitzer (dieser Prozess) schreibt `herz` neu. false, wenn die Sperre ihm nicht (mehr) gehört. */
+export function sperreHerz(pfad, jetzt = Date.now()) {
+  try {
+    const alt = JSON.parse(readFileSync(pfad, 'utf8'));
+    if (!alt || alt.pid !== process.pid) return false;
+    writeFileSync(pfad, JSON.stringify({ ...alt, herz: jetzt }));
+    return true;
+  } catch { return false; }
 }
 export async function lauf(cfg, io = {}) {
   schutzPruefen(cfg, { freigabe: existsSync(cfg.pfade.freigabeDatei) });
   if (!cfg.live) return laufOhneSperre(cfg, io);
   const sperre = join(tmpdir(), `grind2-${createHash('sha1').update(resolve(cfg.pfade.ledger)).digest('hex').slice(0, 12)}.lock`);
   if (!sperreHolen(sperre, (io.jetzt || Date.now)())) throw new Error(`SPERRE: ein anderer LIVE-Lauf schreibt gerade (${sperre}); zwei Läufe gleichzeitig legen dasselbe Produkt doppelt an`);
-  try { return await laufOhneSperre(cfg, io); } finally { try { unlinkSync(sperre); } catch { /* egal */ } }
+  const jetztFn = io.jetzt || Date.now;
+  const herz = setInterval(() => sperreHerz(sperre, jetztFn()), SPERRE_HERZ_INTERVALL_MS);
+  herz.unref?.();     // der Herzschlag hält den Prozess nie am Leben
+  try { return await laufOhneSperre(cfg, io); } finally { clearInterval(herz); try { unlinkSync(sperre); } catch { /* egal */ } }
 }
 async function laufOhneSperre(cfg, io = {}) {
   const log = io.log || (() => {});
@@ -1101,7 +1221,8 @@ async function laufOhneSperre(cfg, io = {}) {
   const stand = {};
   const cj = cjClient({ token, fetch: fetchFn, warte, stand, reserve: cfg.reserve, punkteMax: cfg.punkteMax, basisMs: io.basisMs, klassenMax: cfg.frachtKlassen });
   let shopQ = null;
-  const shop = async (q, v) => { if (!shopQ) shopQ = await shopZugang(io, fetchFn, env); return shopQ(q, v); };
+  const shop = async (q, v, opt) => { if (!shopQ) shopQ = await shopZugang(io, fetchFn, env); return shopQ(q, v, opt); };
+  const freigabeDa = () => existsSync(cfg.pfade.freigabeDatei);      // Notbremse: «Datei löschen = Stopp», an jedem Schritt vor einer sichtbaren Änderung geprüft
   const budgetPruefen = betriebsart !== 'probe';
   const budget = variantenBudget({ grind2Text: ledgerText, auswahlText, jetzt: jetzt(), cfg });
   // Der Verbrauch des Auswahl-Laufs steht NUR in dessen Ledger. Ein veralteter Arbeitsbaum zählt ihn zu niedrig (GEMESSEN 27.10.2026: 88 statt 4 508 Varianten in 24 h) und macht die Gesamtgrenze blind.
@@ -1144,6 +1265,8 @@ async function laufOhneSperre(cfg, io = {}) {
 
     // LIVE: die live filternden sort-Tags VOR dem ersten Kandidaten lesen — scheitert das, bricht der Lauf ab (kein FEHLER je Produkt, kein Raten)
     if (live) await liveSortHolen();
+    // LIVE: liegen vom letzten Lauf ACTIVE-Produkte ohne Kanal herum (Absturz zwischen ACTIVE und Veröffentlichen)? Zurück auf DRAFT, bevor etwas Neues entsteht
+    if (live) { await aktivOhneKanalZurueck(); if (bericht.exit) return abschluss(); }
 
     // ── Stufe 2 und 3: Kandidaten holen, Vorfilter
     let knotenCache = null;
@@ -1250,11 +1373,23 @@ async function laufOhneSperre(cfg, io = {}) {
       ledger(ledgerZeileGeschrieben({ pid: k.pid, n: a.varianten, handle: handleLive, gid: a.gid, zielId: ziel.id }, jetzt()));
       verbraucht += Math.max(0, a.varianten - n);     // zählt die Übernahme eines Produkts mit anderer Variantenzahl nach
       datenblattFuerTexte(k.pid, handleLive);
+      // Eine übernommene Waise trägt das Datums-Tag ihres Anlege-Tages (grind2-20261027); der Plan von heute nennt ein anderes. Die Tore sollen die Waise prüfen, nicht das Datum (Gegenlesung: sonst scheiterte
+      // jede Übernahme am «nächsten Tag» an «Tags fehlen: grind2-<neues Datum>»).
+      if (a.uebernommen && Array.isArray(a.tags)) {
+        const altTags = a.tags.filter(t => /^grind2-\d{8}$/.test(t));
+        if (altTags.length) r.plan.eingabe.tags = eindeutig([...r.plan.eingabe.tags.filter(t => !/^grind2-\d{8}$/.test(t)), ...altTags]);
+      }
+      // Notbremse auch HIER (zwischen Anlegen und Toren): das Produkt steht als DRAFT im Shop; wer die Freigabedatei löscht, will keinen weiteren Schritt
+      if (!freigabeDa()) {
+        hinweis(`Freigabedatei ${cfg.pfade.freigabeDatei} ist verschwunden: Stopp vor den Toren (${handleLive} bleibt DRAFT)`);
+        freigabeLedger(ledgerZeile(handleLive, 'FEHLER', 'Stopp: Freigabedatei verschwunden, Tore nicht gelesen', jetzt()));
+        break;
+      }
 
       // ── Stufe 7 und 7b. Das Produkt EXISTIERT jetzt und steht im Ledger: ein Lesefehler hier (HTTP 500, Netz) darf weder den ganzen Lauf beenden noch das Produkt ohne Urteil lassen —
       //    er wird festgehalten (Freigabe-Ledger + Tag), dann geht es mit dem nächsten weiter. Nur das Tageslimit und CJ-Lauffehler beenden den Lauf (sie werfen weiter).
       try {
-        const t = await toreAbwarten(a.gid, r.plan.eingabe);
+        const t = await toreAbwarten(a.gid, r.plan.eingabe, { streng: !!a.uebernommen });
         r.row.tore = { ok: t.tore.filter(x => x.ok === true).length, gesamt: t.tore.length, falsch: t.tore.filter(x => x.ok !== true).map(x => x.name) };
         if (!t.ok) {
           zaehl('TOR_FEHLER');
@@ -1345,12 +1480,15 @@ async function laufOhneSperre(cfg, io = {}) {
     const planPfad = join(cfg.pfade.planDir, `${k.pid}.json`);
     if (cfg.planTtlH > 0 && frischGenug(planPfad, cfg.planTtlH, jetzt())) {
       const alt = jsonLesen(planPfad);
-      // nur ein Plan derselben Version (Code + Einstellungen): ein Plan vor einer Korrektur oder mit anderem Kurs/Aufschlag/Lieferzeit wird neu gebaut
-      if (alt && planGueltig(alt, PLAN_V) && (alt.status === 'PLAN' || alt.status === 'UEBERSPRUNGEN') && alt.row) {
+      // nur ein Plan derselben Version (Code samt allen Sperrlisten-Dateien + Einstellungen): ein Plan vor einer Korrektur oder mit anderem Kurs/Aufschlag/Lieferzeit wird neu gebaut.
+      // LIVE verwendet NIE einen gespeicherten PLAN (nur eine gespeicherte Ablehnung, die immer auf der sicheren Seite liegt): ein Plan aus Probe oder Trockenlauf wurde ohne die Live-Sammlungen des Shops gebaut
+      // (das Tor «sort-Tag mit Collection» war dort nur ein Hinweis) und hätte in LIVE+PUBLISH ein Produkt ohne Kategorieseite angelegt und veröffentlicht (Gegenlesung 27.10.2026, S1/S1c). Ein Plan kostet
+      // höchstens 60 CJ-Punkte (Abfrage 10 + Lager 10 + Fracht bis 40): das ist der Preis dafür, dass in LIVE jedes Tor frisch gegen den echten Shop geprüft wird.
+      if (alt && planGueltig(alt, PLAN_V) && ((alt.status === 'PLAN' && !live) || alt.status === 'UEBERSPRUNGEN') && alt.row) {
         // ein gespeicherter Plan hat die Dublettenprüfung dieses Index NICHT durchlaufen (Shop, Index und Ledger können sich seit dem Plan geändert haben)
         if (alt.status === 'PLAN' && alt.plan?.eingabe) {
-          const dc = istDublette({ pid: k.pid, variantSkus: alt.plan.eingabe.variants.map(v => v.inventoryItem.sku), titel: alt.plan.titel, handle: alt.plan.handle }, index);
-          if (dc.treffer.some(t => t.staerke === 'hart' && (!(t.produkte || []).length || t.produkte.some(p => p.status !== 'GEPLANT')))) return ausgang('UEBERSPRUNGEN', `Dublette: ${dc.grund}`, 'endgueltig');
+          const dc = dublettenUrteil({ pid: k.pid, variantSkus: alt.plan.eingabe.variants.map(v => v.inventoryItem.sku), titel: alt.plan.titel, handle: alt.plan.handle }, index);
+          if (!dc.waise && dc.treffer.some(t => t.staerke === 'hart' && (!(t.produkte || []).length || t.produkte.some(p => p.status !== 'GEPLANT')))) return ausgang('UEBERSPRUNGEN', `Dublette: ${dc.grund}`, 'endgueltig');
         }
         log(`  ${k.pid}: Plan aus dem Zwischenspeicher (kostet keine Punkte)`);
         return { ...alt, row: { ...alt.row, entscheid: alt.status === 'PLAN' ? 'PLAN: alle Tore bestanden (Zwischenspeicher)' : alt.row.entscheid } };
@@ -1370,9 +1508,11 @@ async function laufOhneSperre(cfg, io = {}) {
 
     // 2. Dublette mit allen Schlüsseln (productSku, variantSkus)
     const vSkus = (c.variants || []).map(v => text(v?.variantSku)).filter(Boolean);
-    const d1 = istDublette({ pid: c.pid, productSku: c.productSku, variantSkus: vSkus, titel: c.productNameEn }, index);
+    const d1 = dublettenUrteil({ pid: c.pid, productSku: c.productSku, variantSkus: vSkus, titel: c.productNameEn }, index);
     if (d1.dublette) return fertig(ausgang('UEBERSPRUNGEN', `Dublette: ${d1.grund}`, 'endgueltig'));
     if (d1.unbekannt) hinweis(`${k.pid}: Dublettenprüfung nicht möglich (kein harter Schlüssel)`);
+    // Waise eines abgestürzten Laufs: nicht unsichtbar bleiben lassen (Hinweis, Zählung, Zeile) — anlegen() übernimmt sie (LIVE), die strengen Tore entscheiden, ob sie dem Plan gleicht
+    if (d1.waise) { merke(`Waise im Shop: ${d1.waisen.join(', ')}`); hinweis(`${k.pid}: ${d1.grund}`); zaehl('WAISE'); row.waise = d1.waisen; }
 
     // 3. Titel
     const q = quelleAus(c);
@@ -1403,7 +1543,7 @@ async function laufOhneSperre(cfg, io = {}) {
     // Die gemessene Übereinstimmung des Titelurteils mit dem Shop (GEMESSEN 27.10.2026: unter 0,7 nur 58 % exakt, ab 0,7 89,9 %): schwache Pfade stehen im Kontaktbogen zur Handsicht (keine Sperre).
     if (gp.sicherheit === 'titel' && (gp.vertrauen == null || gp.vertrauen < VERTRAUEN_HAND)) merke(`Google-Pfad von Hand ansehen (${gp.vertrauen == null ? 'Regel ohne Shop-Beleg' : `Vertrauen ${Math.round(gp.vertrauen * 100)} %`})`);
     const tags = tagsFuer({ sortTags, jetzt: jetzt() });
-    const d2 = istDublette({ pid: c.pid, productSku: c.productSku, variantSkus: vSkus, titel, handle }, index);
+    const d2 = dublettenUrteil({ pid: c.pid, productSku: c.productSku, variantSkus: vSkus, titel, handle }, index);
     if (d2.dublette) return fertig(ausgang('UEBERSPRUNGEN', `Dublette: ${d2.grund}`, 'endgueltig', { kiOk: true }));
     if (d2.warnung) merke(`Titelähnlichkeit: ${d2.grund.slice(0, 120)}`);
 
@@ -1415,7 +1555,12 @@ async function laufOhneSperre(cfg, io = {}) {
       const roh = eindeutig(vor.unsicher.map(u => u.wert));
       const t = await nachDeutsch(roh, { ...kiOpt, auftrag: LABEL_AUFTRAG });
       kiAusfall = t.weg === 'original';
-      if (!uebersetzungBrauchbar(t, roh)) break;
+      if (!uebersetzungBrauchbar(t, roh)) {
+        // Fiel die KI aus, gilt «nicht sicher übersetzt» nur 20 Stunden (vorläufig), nicht 7 Tage: den Plan MIT dem Ausfall-Merker neu bewerten, bevor das Ledger den Grund bekommt.
+        // GEMESSEN 27.10.2026: bei 960 von 2 235 echten Datenblättern (43 %) steht der erste Plan an «optionswerte-sicher» und braucht die KI; ein Ausfall hätte sie eine Woche gesperrt.
+        if (kiAusfall) vor = planeNeu(c, basisCtx({ preis: () => ({ preis: 99, kosten: 50 }), uebersetzung, kiAusfall }));
+        break;
+      }
       uebersetzung = { ...(uebersetzung || {}), ...Object.fromEntries(roh.map((w, i) => [w, t.texte[i].replace(/ß/g, 'ss')])) };      // Schweizer Rechtschreibung auch in der Auswahl
       vor = planeNeu(c, basisCtx({ preis: () => ({ preis: 99, kosten: 50 }), uebersetzung, kiAusfall }));
     }
@@ -1496,32 +1641,60 @@ async function laufOhneSperre(cfg, io = {}) {
     } catch { /* der Zwischenspeicher ist nur eine Abkürzung */ }
   }
 
-  /** Stufe 6: als DRAFT anlegen. Vorher SKU- und Handle-Abfrage am Shop: ein Produkt, das ein früherer Lauf vor der Ledger-Zeile angelegt hat, wird übernommen statt verdoppelt. */
+  /**
+   * Stufe 6: als DRAFT anlegen. Vorher SKU- und Handle-Abfrage am Shop: ein Produkt, das ein früherer Lauf vor der Ledger-Zeile angelegt hat, wird übernommen statt verdoppelt.
+   * productSet wird NIE blind wiederholt: nach einem Netzfehler, 5xx oder unlesbarer Antwort KANN die Anfrage angekommen sein (Gegenlesung 27.10.2026: bei einer stillen Umnummerierung des Handles durch Shopify
+   * entstünden zwei DRAFT-Produkte mit denselben SKUs) — dann wird erst nachgesehen (SKU- und Handle-Abfrage), erst danach gegebenenfalls wiederholt. Nur eine Drossel (429, «Throttled»), bei der Shopify die
+   * Anfrage sicher nicht bearbeitet hat, wird ohne Nachsehen wiederholt. Die Suche nach SKU hinkt dem Index teils hinterher; die Handle-Abfrage ist sofort genau.
+   */
   async function anlegen(plan, ziel) {
     const e = plan.eingabe, sku1 = e.variants[0].inventoryItem.sku;
-    const sk = await shop(SKU_ABFRAGE, { q: `sku:"${esc(sku1)}"` });
-    const treffer = sk?.products?.nodes || [];
-    const hd = (await shop(HANDLE_ABFRAGE, { h: e.handle }))?.productByIdentifier;
-    // Ein Produkt mit unserem Rücknahme-Tag, das DIESELBE erste CJ-SKU trägt, ist die Waise eines abgestürzten Laufs (Absturz zwischen productSet und Ledger-Zeile) — auch wenn die KI den Titel
-    // beim zweiten Mal anders formuliert hat und der Handle deshalb abweicht. Übernehmen statt als «Dublette» 14 Tage lang zu sperren (das Produkt bliebe sonst für immer ohne Tore).
     const meins = p => (p.tags || []).includes('grind2');
-    const vorhanden = treffer.find(p => p.handle === e.handle) || hd || treffer.find(meins) || null;
-    if (vorhanden && meins(vorhanden)) {
-      const n = vorhanden.variantsCount?.count ?? 0;
-      // Halbes Produkt (ein früherer Lauf brach mitten im Produkt ab, z. B. am Tageslimit): NICHT als GESCHRIEBEN verbuchen — es wäre unvollständig, und das Ledger vergässe es.
-      // MEHR Varianten als geplant (der frühere Plan hatte eine grössere Auswahl) werden übernommen: das Budget zählt die echte Zahl nach, und das Tor «varianten-zahl» hält das Produkt als DRAFT zur Handprüfung fest.
-      if (n < e.variants.length) return { art: 'FEHLER', grund: `halbes Produkt ${vorhanden.handle} (${vorhanden.id}): ${n} von ${e.variants.length} Varianten — von Hand prüfen oder löschen` };
-      return { art: 'GESCHRIEBEN', uebernommen: true, gid: vorhanden.id, handle: vorhanden.handle, varianten: n };
-    }
-    if (treffer.length) return { art: 'UEBERSPRUNGEN', grund: `Dublette (live): SKU ${sku1} gehört schon ${treffer[0].handle} (${treffer[0].status})`, ledgerText: `Dublette (live): SKU ${sku1} gehört ${treffer[0].handle}` };
-    if (hd) return { art: 'UEBERSPRUNGEN', grund: `Handle ${e.handle} gehört schon einem fremden Produkt (${hd.status})`, ledgerText: `Handle ${e.handle} belegt (${hd.status})` };
+    const suche = async () => {
+      const sk = await shop(SKU_ABFRAGE, { q: `sku:"${esc(sku1)}"` });
+      const hd = (await shop(HANDLE_ABFRAGE, { h: e.handle }))?.productByIdentifier;
+      return { treffer: sk?.products?.nodes || [], hd };
+    };
+    const halb = (v, n) => ({ art: 'FEHLER', grund: `halbes Produkt ${v.handle} (${v.id}): ${n} von ${e.variants.length} Varianten — von Hand prüfen oder löschen` });
+    // Was ist schon da? null = nichts, sonst das Ergebnis (übernehmen, halbes Produkt, fremde Dublette).
+    const bewerte = ({ treffer, hd }) => {
+      // Ein Produkt mit unserem Rücknahme-Tag, das DIESELBE erste CJ-SKU trägt, ist die Waise eines abgestürzten Laufs (Absturz zwischen productSet und Ledger-Zeile) — auch wenn die KI den Titel
+      // beim zweiten Mal anders formuliert hat und der Handle deshalb abweicht. Übernehmen statt als «Dublette» 14 Tage lang zu sperren (das Produkt bliebe sonst für immer ohne Tore).
+      const vorhanden = treffer.find(p => p.handle === e.handle) || hd || treffer.find(meins) || null;
+      if (vorhanden && meins(vorhanden)) {
+        const n = vorhanden.variantsCount?.count ?? 0;
+        // Halbes Produkt (ein früherer Lauf brach mitten im Produkt ab, z. B. am Tageslimit): NICHT als GESCHRIEBEN verbuchen — es wäre unvollständig, und das Ledger vergässe es.
+        // MEHR Varianten als geplant (der frühere Plan hatte eine grössere Auswahl) werden übernommen: das Budget zählt die echte Zahl nach, und das Tor «varianten-zahl» hält das Produkt als DRAFT zur Handprüfung fest.
+        if (n < e.variants.length) return halb(vorhanden, n);
+        return { art: 'GESCHRIEBEN', uebernommen: true, gid: vorhanden.id, handle: vorhanden.handle, varianten: n, tags: vorhanden.tags };
+      }
+      if (treffer.length) return { art: 'UEBERSPRUNGEN', grund: `Dublette (live): SKU ${sku1} gehört schon ${treffer[0].handle} (${treffer[0].status})`, ledgerText: `Dublette (live): SKU ${sku1} gehört ${treffer[0].handle}` };
+      if (hd) return { art: 'UEBERSPRUNGEN', grund: `Handle ${e.handle} gehört schon einem fremden Produkt (${hd.status})`, ledgerText: `Handle ${e.handle} belegt (${hd.status})` };
+      return null;
+    };
+    const schon = bewerte(await suche());
+    if (schon) return schon;
     let res;
-    try { res = await shop(PRODUCT_SET_MUTATION, { input: e }); }     // OHNE identifier: legt NUR an, überschreibt nie
-    catch (err) {
-      // Die Doku beschreibt die Tagesdrossel für neue Varianten als «429 Too Many Requests» (productSet hat keinen Fehlercode dafür: ProductSetUserErrorCode kennt kein THROTTLE).
-      // shopifyGql hat HTTP 429 schon sechsmal mit Wartezeit wiederholt; die Kostendrossel kommt als HTTP 200 + «Throttled» und wird dort ebenfalls wiederholt → ein bleibendes 429 ist die Tagesgrenze.
-      if (/GraphQL: HTTP 429/.test(String(err.message))) throw new Error(`VARIANT_THROTTLE: HTTP 429 bleibt bestehen (${String(err.message).slice(0, 80)})`);
-      throw err;
+    for (let versuch = 0; ; versuch++) {
+      try { res = await shop(PRODUCT_SET_MUTATION, { input: e }, { versuche: 1, timeoutMs: PRODUCT_SET_ZEIT_MS }); break; }     // OHNE identifier: legt NUR an, überschreibt nie; die Wiederholung steuert diese Schleife
+      catch (err) {
+        const m = String(err.message);
+        if (VARIANTEN_LIMIT_RE.test(m)) throw err;
+        if (SHOPIFY_DROSSEL_RE.test(m)) {
+          // Die Doku beschreibt die Tagesdrossel für neue Varianten als «429 Too Many Requests» (productSet hat keinen Fehlercode dafür: ProductSetUserErrorCode kennt kein THROTTLE). 429 und «Throttled» sind
+          // abgelehnte Anfragen: bis zu sechsmal mit wachsender Wartezeit wiederholen; ein bleibendes 429 ist die Tagesgrenze, die Kostendrossel (HTTP 200 + «Throttled») wird so überwunden.
+          if (versuch + 1 < 6) { await warte((io.basisMs ?? 1500) * 2 ** versuch); continue; }
+          if (/GraphQL: HTTP 429/.test(m)) throw new Error(`VARIANT_THROTTLE: HTTP 429 bleibt bestehen (${m.slice(0, 80)})`);
+          throw err;
+        }
+        if (SHOPIFY_UNKLAR_RE.test(m) && versuch + 1 < 4) {
+          await warte((io.basisMs ?? 1500) * 2 ** versuch);
+          const nach = bewerte(await suche());          // nie blind wiederholen: kam die erste Anfrage an, ist das Produkt jetzt da (auch unter einem anderen Handle: die SKU verrät es)
+          if (nach) return nach;
+          continue;
+        }
+        throw err;
+      }
     }
     const ue = res?.productSet?.userErrors || [];
     if (ue.length) {
@@ -1533,8 +1706,8 @@ async function laufOhneSperre(cfg, io = {}) {
         const nach = (await shop(HANDLE_ABFRAGE, { h: e.handle }))?.productByIdentifier;
         if (nach && meins(nach)) {
           const n2 = nach.variantsCount?.count ?? 0;
-          if (n2 < e.variants.length) return { art: 'FEHLER', grund: `halbes Produkt ${nach.handle} (${nach.id}): ${n2} von ${e.variants.length} Varianten — von Hand prüfen oder löschen` };
-          return { art: 'GESCHRIEBEN', uebernommen: true, gid: nach.id, handle: nach.handle, varianten: n2 };
+          if (n2 < e.variants.length) return halb(nach, n2);
+          return { art: 'GESCHRIEBEN', uebernommen: true, gid: nach.id, handle: nach.handle, varianten: n2, tags: nach.tags };
         }
         if (nach) return { art: 'UEBERSPRUNGEN', grund: `Handle ${e.handle} gehört schon einem fremden Produkt (${nach.status})`, ledgerText: `Handle ${e.handle} belegt (${nach.status})` };
       }
@@ -1542,16 +1715,17 @@ async function laufOhneSperre(cfg, io = {}) {
     }
     const p = res?.productSet?.product;
     if (!p?.id) return { art: 'FEHLER', grund: 'productSet ohne Produkt in der Antwort' };
-    return { art: 'GESCHRIEBEN', gid: p.id, varianten: p.variantsCount?.count ?? e.variants.length };
+    // Der Handle der Antwort zählt, nicht der geplante: legt Shopify bei einer Kollision eine Zahl an (UNBEKANNT, ob productSet das still tut), muss das Ledger den echten nennen; das Tor «handle» hält das Produkt dann als DRAFT fest.
+    return { art: 'GESCHRIEBEN', gid: p.id, handle: p.handle || e.handle, varianten: p.variantsCount?.count ?? e.variants.length };
   }
 
   /** Stufe 7: frisch lesen, bis die Medien verarbeitet sind (höchstens medienWarteS Sekunden). */
-  async function toreAbwarten(id, eingabe, { nachFreigabe = false } = {}) {
+  async function toreAbwarten(id, eingabe, { nachFreigabe = false, streng = false } = {}) {
     const polls = Math.max(1, Math.ceil(cfg.medienWarteS / 5));
     let t;
     for (let i = 0; i < polls; i++) {
       const d = await shop(TORE_ABFRAGE, { id });
-      t = toreNachAnlage(eingabe, d?.product, { minBilder: cfg.minBilder, nachFreigabe });
+      t = toreNachAnlage(eingabe, d?.product, { minBilder: cfg.minBilder, nachFreigabe, streng });
       if (!t.offen) return t;
       await warte(5000);
     }
@@ -1594,20 +1768,54 @@ async function laufOhneSperre(cfg, io = {}) {
   }
 
   /**
+   * Zurück auf DRAFT, und das Ledger sagt die Wahrheit: «ZURUECK» steht NUR, wenn der Shop den Status DRAFT frisch zurückliest. «Keine userErrors» ist kein Beweis (Gegenlesung 27.10.2026: eine leere Antwort
+   * {productUpdate:null} liess das Ledger «ZURUECK» sagen, während das Produkt weiter ACTIVE war). Bis zu zwei Versuche (setzen, zurücklesen); sonst «ZURUECK_FEHLGESCHLAGEN», Exit 1, und der Lauf
+   * fasst nichts mehr an, denn das Produkt kann LIVE sein.
+   */
+  async function aufDraft(gid, handle, grund) {
+    let ok = false;
+    for (let versuch = 0; versuch < 2 && !ok; versuch++) {
+      try {
+        const r = await shop(STATUS_SETZEN, { p: { id: gid, status: 'DRAFT' } });
+        if (r?.productUpdate?.userErrors?.length) hinweis(`Rücknahme von ${handle}: ${saniere(JSON.stringify(r.productUpdate.userErrors), 100)}`);
+        const l = await shop(STATUS_LESEN, { id: gid });
+        ok = l?.product?.status === 'DRAFT';
+        if (!ok) hinweis(`Rücknahme von ${handle} nicht bestätigt: der Shop meldet ${l?.product?.status ?? 'kein Produkt'}`);
+      } catch (x) { hinweis(`Rücknahme auf DRAFT fehlgeschlagen: ${saniere(x.message, 80)}`); }
+    }
+    freigabeLedger(ledgerZeile(handle, ok ? 'ZURUECK' : 'ZURUECK_FEHLGESCHLAGEN', grund, jetzt()));
+    if (!ok) stoppe(EXIT.FEHLER, `Rücknahme von ${handle} auf DRAFT fehlgeschlagen — das Produkt kann LIVE sein (${saniere(grund, 80)})`);
+    return ok;
+  }
+
+  /**
+   * Aufräumen nach einem Absturz ZWISCHEN «ACTIVE» und «publishablePublish» (Gegenlesung 27.10.2026, SIGKILL nach dem ACTIVE-Commit): das Produkt ist vollständig, aber ACTIVE ohne Kanal und bliebe still
+   * liegen — bis publish_guard.mjs (Shop Guards, montags, LIVE=1 APPROVE_PUBLISH=1) es ohne Nachprüfung in alle Kanäle zöge. Darum: jedes aktive Produkt mit der Marke grind2 und ohne veröffentlichten Kanal
+   * geht beim nächsten LIVE-Lauf zurück auf DRAFT (bestätigt durch Zurücklesen). Nur lesen schlägt nie fehl: scheitert die Abfrage, bricht der Lauf ab (kein Schreiben ohne dieses Netz).
+   * ACHTUNG Besitzer: ein von Hand auf ACTIVE gesetztes grind2-Produkt OHNE Kanal wird ebenfalls zurückgenommen — erst Kanäle setzen, dann aktivieren.
+   */
+  async function aktivOhneKanalZurueck() {
+    const d = await shop(AKTIV_OHNE_KANAL, {});
+    if (!Array.isArray(d?.products?.nodes)) throw new Error('WIEDERAUFNAHME: Antwort ohne products');
+    const liste = d.products.nodes.filter(p => p.status === 'ACTIVE' && (p.tags || []).includes('grind2') && !(p.resourcePublicationsV2?.nodes || []).some(n => n.isPublished));
+    for (const p of liste) {
+      hinweis(`${p.handle}: ACTIVE ohne Kanal mit Marke grind2 (Absturz zwischen ACTIVE und Veröffentlichen?) — wird auf DRAFT zurückgenommen`);
+      zaehl('AUFGERAEUMT');
+      if (!await aufDraft(p.id, p.handle, 'Wiederaufnahme: ACTIVE ohne Kanal (Marke grind2), nie ungeprüft liegen lassen')) break;
+    }
+    return liste.length;
+  }
+
+  /**
    * Aktiv setzen und in die Kanäle der übrigen CJ-Produkte veröffentlichen; danach frisch lesen und die Seite abrufen, sonst zurück auf DRAFT.
-   * Das Ledger lügt nie: «ZURUECK» steht nur, wenn die Rücknahme bestätigt ist (userErrors leer); sonst «ZURUECK_FEHLGESCHLAGEN», der Lauf endet mit Exit 1 und fasst nichts mehr an,
+   * Das Ledger lügt nie: «ZURUECK» steht nur, wenn der Shop DRAFT zurückliest (aufDraft); sonst «ZURUECK_FEHLGESCHLAGEN», der Lauf endet mit Exit 1 und fasst nichts mehr an,
    * denn das Produkt kann LIVE sein. Jeder Fehler NACH dem Setzen auf ACTIVE (auch ein Netzfehler, auch beim Setzen selbst) nimmt das Produkt zurück: nie ein ungeprüftes Produkt live lassen.
+   * Die Notbremse (Freigabedatei) gilt vor dem Aktivieren und nach jedem Schritt danach: wer die Datei löscht, bekommt das Produkt zurück auf DRAFT.
    */
   async function veroeffentlichen(gid, plan, handle = plan.handle) {
     const e = plan.eingabe;
     let aktiv = false;
-    const zurueck = async grund => {
-      let ok = false;
-      try { const r = await shop(STATUS_SETZEN, { p: { id: gid, status: 'DRAFT' } }); ok = !(r?.productUpdate?.userErrors?.length); } catch (x) { hinweis(`Rücknahme auf DRAFT fehlgeschlagen: ${saniere(x.message, 80)}`); }
-      freigabeLedger(ledgerZeile(handle, ok ? 'ZURUECK' : 'ZURUECK_FEHLGESCHLAGEN', grund, jetzt()));
-      if (!ok) stoppe(EXIT.FEHLER, `Rücknahme von ${handle} auf DRAFT fehlgeschlagen — das Produkt kann LIVE sein (${saniere(grund, 80)})`);
-      return { art: ok ? 'ZURUECKGENOMMEN' : 'ZURUECK_FEHLGESCHLAGEN', grund };
-    };
+    const zurueck = async grund => ({ art: await aufDraft(gid, handle, grund) ? 'ZURUECKGENOMMEN' : 'ZURUECK_FEHLGESCHLAGEN', grund });
     try {
       const kanaele = await kanalListe();
       if (!kanaele) return { art: 'NICHT_VEROEFFENTLICHT', grund: 'Kanalliste aus den Referenzprodukten nicht ableitbar' };
@@ -1617,11 +1825,14 @@ async function laufOhneSperre(cfg, io = {}) {
       const dup = await shop(SKU_ABFRAGE, { q: `sku:"${esc(e.variants[0].inventoryItem.sku)}"` });
       const fremd = (dup?.products?.nodes || []).filter(p => p.id !== gid);
       if (fremd.length) return { art: 'NICHT_VEROEFFENTLICHT', grund: `SKU ${e.variants[0].inventoryItem.sku} gehört auch ${fremd[0].handle} (${fremd[0].status}): Dublette` };
+      if (!freigabeDa()) return { art: 'NICHT_VEROEFFENTLICHT', grund: 'Freigabedatei ist verschwunden: Stopp vor dem Aktivieren' };
       aktiv = true;     // ab hier kann das Produkt live sein, auch wenn der Aufruf selbst scheitert
       const s = await shop(STATUS_SETZEN, { p: { id: gid, status: 'ACTIVE' } });
       if (s?.productUpdate?.userErrors?.length) return { art: 'FEHLER', grund: `ACTIVE: ${JSON.stringify(s.productUpdate.userErrors).slice(0, 160)}` };
+      if (!freigabeDa()) return await zurueck('Freigabedatei verschwunden: Stopp nach dem Aktivieren');
       const pv = await shop(VEROEFFENTLICHEN, { id: gid, p: ek.erlaubt.map(k => ({ publicationId: k.id })) });
       if (pv?.publishablePublish?.userErrors?.length) return await zurueck(`publishablePublish: ${JSON.stringify(pv.publishablePublish.userErrors).slice(0, 160)}`);
+      if (!freigabeDa()) return await zurueck('Freigabedatei verschwunden: Stopp nach dem Veröffentlichen');
       const t = await toreAbwarten(gid, e, { nachFreigabe: true });
       if (!t.ok) return await zurueck(`Tore nach dem Veröffentlichen: ${t.tore.filter(x => x.ok !== true).map(x => x.name).join(', ')}`);
       const url = `https://${env.SHOP_DOMAIN || 'luxestyle.ch'}/products/${e.handle}?cb=${jetzt()}`;
@@ -1631,6 +1842,7 @@ async function laufOhneSperre(cfg, io = {}) {
         if (status !== 200) await warte(5000);
       }
       if (status !== 200) return await zurueck(`Produktseite nicht erreichbar (HTTP ${status})`);
+      if (!freigabeDa()) return await zurueck('Freigabedatei verschwunden: Stopp vor der Freigabe-Zeile');
       freigabeLedger(ledgerZeile(handle, 'FREI', `veröffentlicht in ${ek.erlaubt.length} Kanälen, Seite HTTP 200`, jetzt()));
       return { art: 'VEROEFFENTLICHT', grund: `${ek.erlaubt.length} Kanäle, Seite HTTP 200` };
     } catch (x) {

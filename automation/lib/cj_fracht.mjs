@@ -314,18 +314,25 @@ export async function frachtHolen({ vid, token, menge = 1, start = 'CN', ziel = 
   }
   const wartet = warte ?? schlaf;
   let antwort, fehlerErgebnis;
-  try {
-    antwort = await cjFetch(FRACHT_URL, {
-      context, headers: { 'CJ-Access-Token': token, 'Content-Type': 'application/json' },
-      init: { method: 'POST', body: JSON.stringify(body) }, fetch: fetchFn, warte, versuche, basisMs,
-    });
-  } catch (e) {
-    const k = fehlerKlasse(e);
-    if (k.lauf) {
-      await wartet(pauseMs);
-      throw LAUF_FEHLER_RE.test(String(e.message)) ? e : new Error(`${k.fehler === 'quota' ? 'CJ_QUOTA' : 'CJ_THROTTLED'}: ${String(e.message).slice(0, 200)}`);
+  for (let anlauf = 0; ; anlauf++) {
+    try {
+      antwort = await cjFetch(FRACHT_URL, {
+        context, headers: { 'CJ-Access-Token': token, 'Content-Type': 'application/json' },
+        init: { method: 'POST', body: JSON.stringify(body) }, fetch: fetchFn, warte, versuche, basisMs,
+      });
+      break;
+    } catch (e) {
+      // CJs Sekundentakt (Code 1600200, als HTTP 200 gemeldet): zweimal kurz warten wie bei allen anderen CJ-Aufrufen (grind2.mjs → cjClient.rufe), erst die zweite Wiederholung ist eine Drossel.
+      // GEMESSEN im Netz-Simulator (Gegenlesung 27.10.2026): ein einzelner Ausreisser mitten in der Messung (bis zu 4 bezahlte Aufrufe je Produkt) sperrte das Produkt 20 Stunden und verbrannte bis zu 30 bezahlte Punkte.
+      if (/^CJ_API.*code=1600200\b/.test(String(e.message)) && anlauf < 2) { await wartet(2500 * (anlauf + 1)); continue; }
+      const k = fehlerKlasse(e);
+      if (k.lauf) {
+        await wartet(pauseMs);
+        throw LAUF_FEHLER_RE.test(String(e.message)) ? e : new Error(`${k.fehler === 'quota' ? 'CJ_QUOTA' : 'CJ_THROTTLED'}: ${String(e.message).slice(0, 200)}`);
+      }
+      fehlerErgebnis = unbekannt(k.fehler, `${String(e.message).slice(0, 160)} — sagt nichts über die Lieferbarkeit`);
+      break;
     }
-    fehlerErgebnis = unbekannt(k.fehler, `${String(e.message).slice(0, 160)} — sagt nichts über die Lieferbarkeit`);
   }
   await wartet(pauseMs);
   const r = fehlerErgebnis ?? frachtAuswerten(antwort, { status: 200, vid: body.products[0].vid });

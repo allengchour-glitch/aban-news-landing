@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  FORM_BEKANNT, LEDGER_HANDLES, LEDGER_PIDS, MIN_KERN, baueIndex, bulkSammler, fuegeHinzu, indexKennzahlen, istDublette, istFrisch, jaccard, kandidatAus, ladeIndex,
+  FORM_BEKANNT, LEDGER_HANDLES, LEDGER_PIDS, MIN_KERN, BULK_LAUFENDE_ABFRAGE, baueIndex, bulkSammler, fuegeHinzu, indexKennzahlen, istDublette, istFrisch, jaccard, kandidatAus, ladeIndex,
   ledgerHandlesAusText, ledgerPidsAusText, naheTitel, pidAusSku, pidNorm, produktSkuOk, produkteAusJsonl, restOk, skuNorm, titelKern,
 } from './grind_dubletten.mjs';
 
@@ -394,6 +394,42 @@ ist('kandidatAus: Shopify-gid als id ist keine pid', kandidatAus({ id: 'gid://sh
   ist('Standard-Ledgerlisten: drei pid- und fünf Handle-Quellen; das Prüf-Ledger cj_top_ledger zählt nicht als Import', [LEDGER_PIDS.map(l => l[0]), LEDGER_HANDLES.map(l => l[0])], [
     ['cj_niche_done.txt', 'cj_gaps_done.txt', 'grind2_ledger.txt'],
     ['cj_varianten_ledger.txt', 'cj_variantenbilder_ledger.txt', 'cj_sourcing_ledger.txt', 'grind2_ledger.txt', 'grind2_freigabe_ledger.txt']]);
+}
+
+// ───────────────────────── Gegenlesung 27.10.2026 («Geld und Tore»; «CJ und Shopify»): Waisen im Index, productSku des geplanten Produkts, Bulk-Reihenfolge ─────────────────────────
+{
+  // Y07 (Mutationsprobe): fuegeHinzu trägt die productSku des geplanten Produkts ein — ein zweiter Kandidat mit derselben productSku (anderer Titel, andere Varianten-SKUs) ist eine Dublette
+  const ix = baueIndex({ produkte: [{ id: 'gid://shopify/Product/9', handle: 'altes-999999', title: 'Altes Produkt', status: 'ACTIVE', skus: ['CJ-2999999999999999999'] }] }, { stand: new Date().toISOString() });
+  fuegeHinzu(ix, { handle: 'neues-123456', title: 'Neues Produkt', status: 'GEPLANT', pid: '2000000000000000001', productSku: 'CJTS1234567', skus: [] });
+  const d = istDublette({ pid: '2000000000000000777', productSku: 'CJTS1234567', variantSkus: ['CJTS123456799ZZ'], titel: 'Ganz anders formuliert' }, ix);
+  ist('Y07: die productSku eines GEPLANTEN Produkts steht im Index: ein zweiter Kandidat mit derselben productSku (andere pid, andere Varianten-SKU) ist eine Dublette über den Schlüssel productSku', [d.dublette, d.treffer.find(t => t.staerke === 'hart')?.art], [true, 'productSku']);
+  ist('Y07-Gegenprobe: eine andere productSku ist keine Dublette', istDublette({ pid: '2000000000000000778', productSku: 'CJTS7654321', titel: 'Ganz anders formuliert' }, ix).dublette, false);
+
+  // Waisen: der Sammler behält von den Tags nur die Marken grind2…, der Index trägt sie, die Trefferliste nennt sie
+  const sam = bulkSammler();
+  sam.add(JSON.stringify({ id: 'gid://shopify/Product/1', handle: 'waise-000001', title: 'Waise', status: 'DRAFT', tags: ['cj-real', 'dropship', 'grind2', 'grind2-20261027', 'text-offen', 'sort-haushalt'] }));
+  sam.add(JSON.stringify({ id: 'gid://shopify/ProductVariant/11', sku: 'CJTS123456701AZ', __parentId: 'gid://shopify/Product/1' }));
+  sam.add(JSON.stringify({ id: 'gid://shopify/Product/2', handle: 'fremd-000002', title: 'Fremd', status: 'ACTIVE', tags: ['sort-haushalt', 'f:farbe'] }));
+  sam.add(JSON.stringify({ id: 'gid://shopify/Product/3', handle: 'alt-000003', title: 'Alt', status: 'ACTIVE' }));
+  const erg = sam.ergebnis();
+  ist('Bulk-Sammler: nur die Marken grind2… bleiben (keine 87 765 Tag-Listen im Index), Produkte ohne tags gehen weiter', erg.produkte.map(p => [p.handle, p.tags ?? null]), [['waise-000001', ['grind2', 'grind2-20261027']], ['fremd-000002', null], ['alt-000003', null]]);
+  const ix2 = baueIndex({ produkte: erg.produkte }, { stand: new Date().toISOString() });
+  const dw = istDublette({ pid: '2000000000000000001', productSku: 'CJTS1234567', variantSkus: ['CJTS123456701AZ'], titel: 'x' }, ix2);
+  ist('Index: der Treffer der Waise trägt ihre Marken und den Status DRAFT (daran erkennt der Lauf sie)', dw.treffer.find(t => t.staerke === 'hart').produkte.map(p => [p.handle, p.status, p.tags]), [['waise-000001', 'DRAFT', ['grind2', 'grind2-20261027']]]);
+
+  // Bulk: die laufende Operation ist die NEUESTE → ohne reverse (GEMESSEN 27.10.2026: mit reverse:true kommt die älteste zuerst)
+  ist('BULK_LAUFENDE_ABFRAGE: nach Erstellung sortiert, Status running/created, OHNE reverse', [/sortKey:CREATED_AT/.test(BULK_LAUFENDE_ABFRAGE), /status:running OR status:created/.test(BULK_LAUFENDE_ABFRAGE), /reverse/i.test(BULK_LAUFENDE_ABFRAGE)], [true, true, false]);
+  const lesen = readFileSync(fileURLToPath(new URL('../grind_skus_lesen.mjs', import.meta.url)), 'utf8');
+  {
+    // das Leseskript (offline, NUR_AUFBEREITEN) schreibt die Marken grind2… in die Zeile des Produkts
+    const skript = fileURLToPath(new URL('../grind_skus_lesen.mjs', import.meta.url)), dir = mkdtempSync(join(tmpdir(), 'skus-tags-')), ziel = join(dir, 'skus.jsonl');
+    writeFileSync(ziel + '.roh', [JSON.stringify({ id: 'gid://shopify/Product/1', handle: 'waise-000001', title: 'Waise', status: 'DRAFT', tags: ['cj-real', 'grind2', 'grind2-20261027'] }), JSON.stringify({ id: 'gid://shopify/ProductVariant/11', sku: 'CJ-1', __parentId: 'gid://shopify/Product/1' })].join('\n') + '\n');
+    writeFileSync(ziel + '.meta.json', JSON.stringify({ objectCount: 2 }));
+    const r = spawnSync(process.execPath, [skript, ziel], { env: { PATH: process.env.PATH, NUR_AUFBEREITEN: '1' }, encoding: 'utf8', timeout: 30000 });
+    ist('SKU-Leser: die Zeile des Produkts trägt die Marken grind2… (und nur sie), Exit 0', [r.status, JSON.parse(readFileSync(ziel, 'utf8').trim().split('\n')[0]).tags], [0, ['grind2', 'grind2-20261027']]);
+    rmSync(dir, { recursive: true, force: true });
+  }
+  ist('grind_skus_lesen.mjs benutzt BULK_LAUFENDE_ABFRAGE (keine eigene Abfrage mit reverse:true) und liest die Tags mit', [/q\(BULK_LAUFENDE_ABFRAGE\)/.test(lesen), /reverse\s*:\s*true/.test(lesen), /status tags variants/.test(lesen)], [true, false, true]);
 }
 
 console.log(`${bestanden} ok, ${fehl} Fehler`);

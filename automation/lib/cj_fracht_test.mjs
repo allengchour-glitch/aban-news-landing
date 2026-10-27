@@ -279,6 +279,25 @@ const lauf = (n, extra = {}) => { const gewartet = []; return { gewartet, opt: {
   const n = netz([antwortObj({ result: false, code: 1600200, message: 'Too many requests per second' })]), l = lauf(n);
   await wirftAsync('CJ-Code 1600200 (zu viele Aufrufe je Sekunde) → CJ_THROTTLED fliegt', () => frachtHolen({ ...l.opt, vid: VID_A }), /^CJ_THROTTLED/);
 }
+// Gegenlesung 27.10.2026: ein EINZELNES 1600200 (CJs Sekundentakt, als HTTP 200 gemeldet) mitten in der Messung sperrte das Produkt 20 Stunden; alle anderen CJ-Aufrufe warten zweimal und versuchen es neu
+{
+  const D = () => antwortObj({ result: false, code: 1600200, message: 'Too many requests per second', data: null });
+  const n = netz([D(), antwortObj(gut(BETT_1250))]), l = lauf(n);
+  const r = await frachtHolen({ ...l.opt, vid: VID_A });
+  ist('1600200 EINMAL: abgewartet (2,5 s), dann Erfolg — das Produkt ist lieferbar, zwei Anfragen', [r.lieferbar, n.log.length, l.gewartet.slice(0, 1)], [true, 2, [2500]]);
+  const n2 = netz([D(), D(), antwortObj(gut(BETT_1250))]), l2 = lauf(n2);
+  const r2 = await frachtHolen({ ...l2.opt, vid: VID_A });
+  ist('1600200 ZWEIMAL in Folge: ebenfalls überwunden (Wartezeit wächst 2,5 s, 5 s)', [r2.lieferbar, n2.log.length, l2.gewartet.slice(0, 2)], [true, 3, [2500, 5000]]);
+  const n3 = netz([D()]), l3 = lauf(n3);
+  await wirftAsync('1600200 DREIMAL (bleibt bestehen): erst die zweite Wiederholung ist eine Drossel → CJ_THROTTLED', () => frachtHolen({ ...l3.opt, vid: VID_A }), /^CJ_THROTTLED/);
+  ist('...nach genau drei Anfragen (30 Punkte, nicht mehr)', n3.log.length, 3);
+  // in der Messung mehrerer Gewichtsklassen: ein Ausreisser in Klasse 2 kostet nicht das ganze Produkt
+  const V = [['A1-AAAAAAAAAA', 170], ['A2-AAAAAAAAAA', 900], ['A3-AAAAAAAAAA', 3770]].map(([vid, variantWeight]) => ({ vid, variantWeight }));
+  let k = 0;
+  const n4 = netz([() => (++k === 2 ? D() : antwortObj(gut(BETT_1250)))]), l4 = lauf(n4);
+  const r4 = await frachtProdukt({ ...l4.opt, varianten: V, klassenMax: 3 });
+  ist('frachtProdukt: ein einzelnes 1600200 bei der zweiten Klasse wirft nicht, alle drei Klassen werden gemessen', [r4.urteil, r4.klassen.length, r4.unbekannt], ['lieferbar', 3, false]);
+}
 {
   const n = netz([antwortObj(gut(BETT_1250))]), l = lauf(n);
   const r = await frachtHolen({ ...l.opt, vid: ['a', 'b'] });

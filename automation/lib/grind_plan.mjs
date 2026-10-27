@@ -45,7 +45,7 @@
  *   unsicher ≠ [] → Aufrufer übersetzt die Werte (nachDeutsch) und ruft mit ctx.uebersetzung erneut auf.
  */
 import { zerlegeOptionen, baueAuswahl, hinweisText } from './cj_varianten.mjs';
-import { steckerUrteil } from './stecker_cj.mjs';
+import { steckerUrteil, alleSchluesselMitStecker } from './stecker_cj.mjs';
 import { WAFFEN, SPERR_TAGS } from './kategorien.mjs';
 import { pruefeProdukt, LIZENZ } from './gmc_feed_item.mjs';
 import { topUrteil } from './top_kandidaten.mjs';
@@ -110,9 +110,37 @@ export const ANZUENDER_RE = /(cigarette|zigaretten) ?(lighter|anz[üu]nder|buchs
 // Zum Ersetzen brauchen die beiden das Flag g; als eigene Kopien, damit die exportierten Muster mit .test() ohne lastIndex-Falle benutzbar bleiben.
 const MESSGERAET_G = new RegExp(MESSGERAET_RE.source, 'gi'), ANZUENDER_G = new RegExp(ANZUENDER_RE.source, 'gi');
 
-/** Fremdstecker oder 110-V-Gerät im NAMEN (die Varianten-Prüfung steckerUrteil sieht nur variantKey): «Hair Dryer 1800W AU Plug», «Electric Heater 110V US Plug». Nennt der Name auch EU, entscheidet die Varianten-Prüfung. */
-export const FREMDSTECKER_NAME_RE = /(^|[^a-z])(us|usa|uk|gb|au|jp|american|british|australian|japanese|amerikanische[rn]?|britische[rn]?|australische[rn]?|japanische[rn]?)[ -]?(standard[ -]?)?(plug|socket|outlet|stecker|steckdose)s?([^a-z]|$)|(^|[^0-9.])(100|110|115|120)\s?v(?:ac)?(?!\s*(?:-|~|–|to|bis)\s*2\d\d)([^a-z0-9]|$)/i;
+/**
+ * Fremdstecker oder 110-V-Gerät im NAMEN (die Varianten-Prüfung steckerUrteil sieht nur variantKey): «Hair Dryer 1800W AU Plug», «Electric Heater 110V US Plug». Nennt der Name auch EU, entscheidet die Varianten-Prüfung.
+ * Erweitert 27.10.2026 (Gegenlesung): «Heater USA Standard», «Fan 110-240V US» (Weitbereich mit US-Stecker), «Charger Brazil Plug», «Charger India Plug»; «110V/220V» (umschaltbar) zählt nicht als 110-V-Gerät.
+ */
+const FS_LAND_STECKER = /(^|[^a-z])(us|usa|uk|gb|au|jp|american|british|australian|japanese|brazil(?:ian)?|india|indian|korean|chinese|amerikanische[rn]?|britische[rn]?|australische[rn]?|japanische[rn]?)[ -]?(standard[ -]?)?(plug|socket|outlet|stecker|steckdose)s?([^a-z]|$)/i;
+const FS_LAND_STANDARD = /(^|[^a-z])(usa|american|british|australian|japanese)\s+standard([^a-z]|$)/i;
+const FS_SPANNUNG = /(^|[^0-9.])(100|110|115|120)\s?v(?:ac)?(?!\s*(?:-|~|–|\/|to|bis)\s*2\d\d)([^a-z0-9]|$)/i;
+const FS_WEITBEREICH_LAND = /\d{2,3}\s?[-~–]\s?2\d\d\s?v(?:ac)?[\s,/-]*(?:us|usa|uk|au|jp)([^a-z]|$)/i;
+export const FREMDSTECKER_NAME_RE = new RegExp([FS_LAND_STECKER, FS_LAND_STANDARD, FS_SPANNUNG, FS_WEITBEREICH_LAND].map(r => r.source).join('|'), 'i');
 export const fremdsteckerImNamen = s => FREMDSTECKER_NAME_RE.test(String(s ?? '')) && !/(^|[^a-z])eu([^a-z]|$)/i.test(String(s ?? ''));
+/** Steckertyp-Angabe im Datenblatt-Text: «Plug type: EU plug, US plug», «Plug: US/UK». */
+export const FREMDSTECKER_TYP_RE = /plug(?:\s*type)?\s*[:：]\s*[^.\n]{0,24}?\b(?:us|usa|uk|gb|au|jp)\b/i;
+/**
+ * Fremdstecker oder 110-V-Angabe im BESCHREIBUNGSTEXT des Datenblatts («1.5 m × 1.5 m [96 lights with US plug]»). steckerUrteil liest nur den Variantenschlüssel, fremdsteckerImNamen nur den Namen.
+ * GEMESSEN 27.10.2026 am echten Probe-Datenblatt der Lichterkette (pid 0E413843-…): die Grössen 1.5×1.5 und 3×2 trugen «US plug», nur die 10×8-Variante hiess «-EU»; der Plan behielt die US-Varianten.
+ * An den 2 235 bekannten Datenblättern nennen 6 (0,27 %) einen Fremdstecker im Text, bei 4 davon nennt jeder Variantenschlüssel seinen Stecker (dort entscheidet der Schlüssel). Im Gegensatz zum Namen
+ * gilt hier KEINE Ausnahme für «EU»: ein Text nennt oft alle Stecker nebeneinander («Plug type: EU plug, US plug»).
+ * @param {string} klartext  der Text (htmlZuText), nicht das HTML  @returns {string|null} die Fundstelle
+ */
+export function fremdsteckerImText(klartext) {
+  for (const zeile of String(klartext ?? '').split('\n')) {
+    // «Japanese standard» steht auch bei Schrauben-Bits; als Stecker zählt es nur in einer Zeile, die von Stecker, Spannung oder Strom spricht
+    const m = zeile.match(FS_LAND_STECKER) || zeile.match(FS_SPANNUNG) || zeile.match(FS_WEITBEREICH_LAND) || zeile.match(FREMDSTECKER_TYP_RE)
+      || (/plug|socket|outlet|voltage|spannung|power|charger|adapter|\bac\b|\bdc\b/i.test(zeile) ? zeile.match(FS_LAND_STANDARD) : null);
+    if (m) return text(m[0]).slice(0, 40);
+  }
+  return null;
+}
+/** Steckerkontext: das Produkt hat eine Stecker-Option oder nennt einen Stecker im Namen → «Type A/B/G/I» in den Schlüsseln sind Steckertypen (siehe lib/stecker_cj.mjs). */
+export const STECKER_KONTEXT_RE = /plug|stecker|steckdose|outlet|socket|electrical/i;
+export const steckerKontextVon = cj => STECKER_KONTEXT_RE.test(String(cj?.productKeyEn ?? '')) || /(^|[^a-z])(plugs?|sockets?|outlets?)([^a-z]|$)|stecker|steckdose/i.test(String(cj?.productNameEn ?? ''));
 /** Waren, die nicht automatisch ins Sortiment gehören (Auflagen der Lückenanalyse, Schweizer Recht — BEHAUPTUNG, der Besitzer bestätigt): Laser-Zeiger/-Lampen, Medizinprodukte, Pyrotechnik, Selbstverteidigung, Spielzeugwaffen. Bewusst streng: ein Fehlalarm kostet einen Kandidaten. */
 export const MEDIZIN_RE = /(blood pressure (?:monitor|meter|machine|cuff|gauge)(?!ing)|blutdruck(?:messger(?:ä|ae)t|-?messer|manschette)|blood glucose (?:meter|monitor|test)(?!ing)|glucose meter|blutzucker(?:messger(?:ä|ae)t|-?teststreifen)|hearing aid|h(?:ö|oe)rger(?:ä|ae)t|pulse oximeter|pulsoximeter|\btens\b|muscle stimulator|muskelstimulator|insulin|pregnancy test|schwangerschaftstest|(?:medical|surgical) (?:face |disposable )?(?:mask|device|grade)|mundschutz|op-maske|medizinprodukt|medizinische[rsmn]? (?:maske|ger(?:ä|ae)t|produkt)|contact lens|kontaktlinse|\bcpap\b|nebuli[sz]er|inhalator|catheter|katheter|syringe|einwegspritze|slimming (?:pill|capsule|patch)|weight loss (?:pill|capsule)|abnehm(?:kapsel|tablette|pille|tee|mittel)\w*|fat burner|fatburner|teeth whitening|zahnaufhell\w*|(?:fieber|stirn|ohr|forehead|infrared|infrarot)[- ]*thermometer|thermometer[- ]*(?:fieber|stirn))/i;
 export const PYRO_WAFFENAEHNLICH_RE = /(firework|feuerwerk|firecracker|knallk(?:ö|oe)rper|smoke bomb|rauchbombe|sparkler|wunderkerze|tear gas|reizgas|pepper spray|stun gun|slingshot|steinschleuder|handcuff|handschelle|lock ?pick|dietrich|nunchaku|toy gun|spielzeugpistole|blaster)/i;
@@ -124,8 +152,117 @@ export function heikelWort(s) {
   return /laser/i.test(t) && LASER_GERAET_RE.test(t) && !LASER_HARMLOS_RE.test(t) ? 'Laser-Zeiger/-Lampe' : null;
 }
 
+/**
+ * Kinder- und Babyware auf PRODUKTEBENE (CLAUDE.md «Kinderware … nie automatisch»). Die Welle R sperrt nur ganze Zielblätter; ein Kinderprodukt in einem allgemeinen Zielblatt («Nachtlicht»,
+ * «Zahnbürste», «Schuhe») kam bisher nur durch, wenn der DEUTSCHE Titel «Kinder» oder «Baby» enthielt (Merchant-RISIKO, gmc_feed_item). GEMESSEN 27.10.2026 (Gegenlesung, 21 Fälle mit englischem CJ-Namen
+ * und plausiblem deutschem Titel): 13 von 21 kamen durch («Infant Teether» → «Beissring für Säuglinge», «Pacifier Clip Chain» → «Schnullerkette», «Toddler Walking Shoes» → «Lauflernschuhe»), dazu die
+ * eigene Test-Fixture «Newborn … Baby». Drei Schichten, jede mit Gegenprobe an den 2 235 echten Datenblättern des Shops (Zahlen in grind_plan_test.mjs):
+ *   1. NAME (englischer CJ-Name und deutscher Titel): KINDER_RE. Farben und Redewendungen («Baby Pink», «Baby's Breath») fallen vorher heraus.
+ *   2. KATEGORIE des CJ-Datenblatts: «Toys, Kids & Babies > …», «Girls Shoes» … (KINDER_KAT_RE). Das fängt Waren ohne Kinderwort im Namen (Magnet-Bausteine, Knopfzellen-Fingerlichter).
+ *   3. DATENBLATT-TEXT, nur mit ABSICHT: ein Alter unter 13 («Age: 3-8», «children over 6 years old»), «designed for kids», «toys for boys & girls», «Target audience: Children», eindeutige Babywörter
+ *      (Infant, Newborn, Toddler, Pacifier, Teether). NICHT: «keep out of the reach of children» (steht auf Nagellack), «Applicable people: women, men, children» (Smartwatch), «Children's Day» (Hundegeschirr),
+ *      «children's bedroom» (Lampe), «baby food» (Mixer). Bewusst streng: ein Fehlalarm kostet einen Kandidaten (Handprüfung), ein durchgelassenes Beissspielzeug eine Haftungsfrage.
+ */
+export const KINDER_RE = /(^|[^a-zäöüß])(kids?|child(?:ren)?|toddlers?|infants?|newborns?|new-?born|babys?|babies|pacifiers?|teethers?|teething|kinder\w*|kleinkind\w*|s[äa]ugling\w*|neugeboren\w*|schnuller\w*|beiss(?:ring|kette|spielzeug)\w*|m[äa]dchen|jungen|buben)([^a-zäöüß]|$)/i;
+/** Redewendungen mit «baby», die keine Babyware sind (Farben, Pflanze, Küche) — vor dem Prüfen entfernt. */
+export const BABY_AUSNAHME_RE = /baby[\s-]*(?:blue|pink|green|yellow|purple|white|gr[ae]y|lilac|mint|food|foods|feeding|supplement)|baby['’]?s[\s-]*breath|babyblau|babyrosa|babynahrung/gi;
+/** CJ-Kategorien für Kinder: «Toys, Kids & Babies», «Mother & Kids», «Girls Shoes», «Boys´ Clothing» … */
+export const KINDER_KAT_RE = /(^|[^a-zäöüß])(kids?|child(?:ren)?|toddlers?|infants?|newborns?|babys?|babies|girls?|boys?|mother|kinder\w*)([^a-zäöüß]|$)/i;
+/** Erstes Kinderwort im Namen (englisch oder deutsch) oder null. */
+export function kinderWort(s) {
+  const m = String(s ?? '').replace(BABY_AUSNAHME_RE, ' ').match(KINDER_RE);
+  return m ? text(m[2]).toLowerCase() : null;
+}
+const BABY_TEXT_RE = /(^|[^a-zäöüß])(infants?|newborns?|new-?born|toddlers?|pacifiers?|teethers?|teething|babies|babys?|s[äa]ugling\w*|neugeboren\w*|kleinkind\w*|schnuller\w*)([^a-zäöüß]|$)/i;
+const ALTER_RE = /(?:\b(?:applicable |suitable |recommended )?ages?\b[\s:：-]*(?:range[\s:：-]*)?|\bab\s+)(\d{1,2})(?:\s*\+|\s*-\s*\d{1,2}|\s*(?:years?|yrs?|jahren?|months?))?|\b(\d{1,2})\s*(?:-\s*\d{1,2}\s*)?\+?\s*(?:years?|yrs?)[\s-]*old\b|\b(?:children|kids?|child)\s+(?:over|under|above|aged|from)\s+(\d{1,2})\b/i;
+const ZIEL_ABSICHT_RE = /(?:designed for|made for|toys? for|games? for|especially for|specially for|suitable for|ideal for|perfect for)\s+(?:little\s+|young\s+|small\s+)?(?:kids?|children|boys?\s*(?:and|&|,)\s*girls?|girls?\s*(?:and|&|,)\s*boys?)(?![a-zäöüß])/i;
+const ZIELGRUPPE_RE = /(?:target audience|applicable people|applicable age|suitable for|age group)[\s:：]*(?:kids?|children|child|boys|girls|toddlers?)[\s,.;]*(?:style|packing|package|color|material|size|brand|product|$)/i;
+const ERWACHSEN_NAEHE_RE = /\b(adults?|women|men|elderly|family|everyone|all ages|couples|seniors?|girlfriend|friends)\b/i;
+/** Kinderware im Datenblatt-TEXT (nur Absicht, siehe oben). @returns {string|null} die Fundstelle */
+export function kinderImText(klartext) {
+  const t = String(klartext ?? '').replace(BABY_AUSNAHME_RE, ' ');
+  const b = t.match(BABY_TEXT_RE); if (b) return text(b[2]).toLowerCase();
+  for (const satz of t.split(/(?<=[.!?])\s+|\n+/)) {
+    const a = satz.match(ALTER_RE);
+    if (a) { const n = Number(a[1] ?? a[2] ?? a[3]); if (Number.isFinite(n) && n <= 12 && /\b(?:ages?|years?|yrs?|jahre\w*|months?|old|children|kids?|child)\b/i.test(satz)) return `Alter ${n}`; }
+    const z = satz.match(ZIEL_ABSICHT_RE); if (z && !ERWACHSEN_NAEHE_RE.test(satz)) return text(z[0]).toLowerCase().slice(0, 40);
+    const g = satz.match(ZIELGRUPPE_RE); if (g) return text(g[0]).toLowerCase().slice(0, 40);
+  }
+  return null;
+}
+/**
+ * Kinderware nach allen drei Schichten. `kategorie` = categoryName des CJ-Datenblatts, `beschreibung` = dessen description (HTML).
+ * @returns {{wo:'Titel'|'CJ-Name'|'CJ-Kategorie'|'Datenblatt', wort:string}|null}
+ */
+export function kinderware({ titel = '', cjName = '', kategorie = '', beschreibung = '' } = {}) {
+  let w = kinderWort(titel); if (w) return { wo: 'Titel', wort: w };
+  w = kinderWort(cjName); if (w) return { wo: 'CJ-Name', wort: w };
+  const k = String(kategorie ?? '').match(KINDER_KAT_RE); if (k) return { wo: 'CJ-Kategorie', wort: text(k[2]).toLowerCase() };
+  w = kinderImText(htmlZuText(beschreibung)); if (w) return { wo: 'Datenblatt', wort: w };
+  return null;
+}
+
+/**
+ * Weitere Sperrwörter, englisch UND deutsch (Titel, CJ-Name, Datenblatt): Waffen und Schlagwerkzeug, Elektroreizgeräte für Tiere, Selbstverteidigung, Tabak-Zubehör, versteckte Kameras, Störsender,
+ * Dietriche, Medizin-/Gesundheitsversprechen, Erwachsenen- und Pyro-Ware. GEMESSEN 27.10.2026 (Gegenlesung, 49 heikle CJ-Namen mit plausibler deutscher Übersetzung): 27 kamen durch — «Brass Knuckles»
+ * (WAFFEN kennt nur «schlagring»), «Herb Grinder», «Glass Smoking Pipe», «Hidden Spy Camera Pen», «Signal Jammer», «Blood Oxygen Monitor», «Hearing Amplifier», «Minoxidil», «Nipple Clamps» … Der Name allein
+ * reicht nicht: ein «Mini-Kühlschrank 12 V» war eine Insulin-Kühlbox (STAND-ARCHIV 04.10.2026); darum liest planeNeu auch den Datenblatt-Text (siehe heikelImText). SETZUNG, nicht erschöpfend: jede
+ * Erweiterung braucht eine Probe (Positiv- UND Gegenprobe) in grind_plan_test.mjs. Elektroreizgeräte für Tiere sind nach meiner Kenntnis in der Schweiz verboten (UNBELEGT, der Besitzer prüft das Recht).
+ */
+const ZUSATZ_BEIDE = [
+  // Waffen und Schlagwerkzeug
+  'brass[\\s-]*knuckles?', 'knuckle[\\s-]*dusters?', 'schlagring\\w*', 'throwing[\\s-]*(?:stars?|knives|knife|axes?)', 'wurfst(?:ern|erne)\\w*', 'wurfmesser\\w*',
+  '(?:telescopic|retractable|extendable|expandable|collapsible)[\\s-]*(?:baton|truncheon)s?', 'truncheons?', 'billy[\\s-]*clubs?', 'schlagst[öo]ck\\w*',
+  'bb[\\s-]*guns?', 'pellet[\\s-]*guns?', 'air[\\s-]*(?:rifles?|pistols?)', 'airguns?', 'blow[\\s-]*guns?',
+  // Elektroreizgeräte für Tiere («electric shock» allein steht in jeder Sicherheitsanleitung: nur mit Halsband/Hund/Training)
+  '(?:anti[\\s-]*)?bark(?:ing)?[\\s-]*collars?', 'shock[\\s-]*collars?', 'electric[\\s-]*shock[\\s-]*(?:\\w+[\\s-]*){0,2}(?:collar|dog|pet|training|trainer)\\w*', 'e[\\s-]*collars?',
+  'elektro\\w*[\\s-]*(?:erziehungs|dressur)?[\\s-]*halsband\\w*', 'erziehungshalsband\\w*', 'teletakt\\w*',
+  // Tabak-Zubehör
+  'herb[\\s-]*grinders?', 'weed[\\s-]*grinders?', 'smoking[\\s-]*(?:pipes?|accessor\\w*|sets?|tools?)', 'glass[\\s-]*pipes?', 'bongs?', 'rolling[\\s-]*(?:trays?|machines?)', 'cigarette[\\s-]*roll\\w*',
+  'raucherzubeh\\w*', 'dab[\\s-]*(?:rig|pen|tool)s?', 'wax[\\s-]*pens?',
+  // Überwachung, Funk, Einbruch
+  '(?:hidden|covert|spy)[\\s-]*(?:\\w+[\\s-]*){0,2}(?:camera|cam|recorder|microphone|listening)\\w*', 'nanny[\\s-]*cams?', 'versteckte?[rn]?[\\s-]*(?:mini[\\s-]*)?kamera\\w*', 'spionage\\w*',
+  '(?:hidden|covert)[\\s-]*(?:\\w+[\\s-]*){0,3}(?:gps|tracker)', '(?:gps|tracker)[\\s-]*(?:\\w+[\\s-]*){0,4}hidden',
+  '(?:signal|gps|wifi|phone|cell(?:ular)?|mobile|radio|wireless)[\\s-]*(?:blocker[\\s-]*)?jammers?', 'jammers?', 'st[öo]rsender\\w*',
+  'lock[\\s-]*pick\\w*', 'bump[\\s-]*(?:key|hammer)s?',
+  // Medizin und Gesundheitsversprechen. Das Messgerät selbst, nicht die Smartwatch mit Blutsauerstoff-Sensor (7 von 2 235 echten Titeln, ein gängiges Wearable).
+  'oximeters?', '(?:blood[\\s-]*)?oxygen[\\s-]*(?:saturation[\\s-]*)?(?:fingertip|finger[\\s-]*clip|monitors?|meters?)', 'fingertip[\\s-]*(?:pulse[\\s-]*)?(?:blood[\\s-]*)?oxygen',
+  'hearing[\\s-]*amplifiers?', 'h[öo]rverst[äa]rker\\w*', 'otoscopes?', 'ohrenschmalz',
+  'minoxidil', 'breast[\\s-]*(?:enlargement|enhanc\\w*|pumps?)', 'brustvergr[öo]sserung\\w*', 'milchpumpe\\w*',
+  'slimming[\\s-]*(?:\\w+[\\s-]*){0,2}(?:patch|patches|pills?|capsules?|tea|cream|belt|gel)',
+  'nasal[\\s-]*dilators?', 'anti[\\s-]*snor\\w*', 'schnarch\\w*', 'sleep[\\s-]*apn\\w*', 'posture[\\s-]*(?:corrector|brace|support)s?', 'back[\\s-]*brace', 'haltungs?korrektur\\w*', 'geradehalter\\w*',
+  // Erwachsenen-Ware
+  'nipple[\\s-]*(?:clamps?|clips?|pasties)', 'nippelklemmen\\w*', 'brustwarzenklemmen\\w*', 'bondage', 'erection', 'erektion', 'ejaculat\\w*', 'delay[\\s-]*sprays?',
+  // Pyro
+  'smoke[\\s-]*(?:grenades?|cakes?)', 'rauchgranate\\w*', '(?:signal|road|marine|emergency|distress)[\\s-]*flares?', 'leuchtrakete\\w*',
+];
+/** Nur im NAMEN sperren: im Text stehen diese Wörter in harmlosen Zusammenhängen («Applicable sports: boxing, self-defense», «ear wax» als Reinigungsthema, «bullet-proof» bei Handschuhen). */
+const ZUSATZ_NUR_NAME = [
+  'self[\\s-]*defen[cs]e', 'selbstverteidigung\\w*', 'bullet[\\s-]*proof', 'stab[\\s-]*proof', 'body[\\s-]*armou?r', 'ear[\\s-]*wax', 'earwax',
+];
+const zusatzMuster = l => new RegExp('(^|[^a-zäöüß])(' + l.join('|') + ')([^a-zäöüß]|$)', 'i');
+export const ZUSATZ_SPERR_RE = zusatzMuster([...ZUSATZ_BEIDE, ...ZUSATZ_NUR_NAME]);
+/** Dieselben Wörter ohne die, die im Text zu viele Fehlalarme erzeugen. */
+export const ZUSATZ_TEXT_RE = zusatzMuster(ZUSATZ_BEIDE);
+/** Erstes zusätzliches Sperrwort in einem Text oder null. */
+export function zusatzSperrwort(s, { textModus = false } = {}) {
+  const m = String(s ?? '').match(textModus ? ZUSATZ_TEXT_RE : ZUSATZ_SPERR_RE);
+  return m ? text(m[2]).toLowerCase() : null;
+}
+/**
+ * Heikle Ware im Datenblatt-TEXT (cj.description als Klartext). Wie heikelWort, aber für lange Texte angepasst: «contact lens» (Reinigungsgerät: «suitable for cleaning glasses, contact lenses …»)
+ * zählt nicht, und der Laser-Zeiger braucht die Nachbarschaft von «laser» und «pointer/torch/flashlight» (ein Rohrschellen-Text nannte «laser» und «light» an ganz verschiedenen Stellen).
+ */
+export function heikelImText(klartext) {
+  const t = String(klartext ?? '').replace(/contact lenses|contact lens|kontaktlinsen?/gi, ' ');
+  const m = t.match(MEDIZIN_RE) || t.match(PYRO_WAFFENAEHNLICH_RE);
+  if (m) return m[0].trim();
+  if (/laser[\s-]*(?:pointers?|pens?|torch|flashlights?|zeiger|taschenlampe)|(?:pointers?|zeiger|torch|flashlights?|taschenlampe)[\s-]*(?:with[\s-]*|mit[\s-]*)?laser/i.test(t)) return 'Laser-Zeiger/-Lampe';
+  return zusatzSperrwort(t, { textModus: true });
+}
+
 /** Englische Steckdosen-Ware (stecker_bereinigen.STECKDOSE_RE ist deutsch und prüft Shop-Titel; der CJ-Name ist englisch). */
-export const STECKDOSE_EN_RE = /power strips?|socket strips?|extension sockets?|extension lead|surge protector|smart (plug|socket|outlet)s?|wifi (plug|socket|outlet)|wall (socket|outlet)s?|timer socket|multi-?socket/i;
+export const STECKDOSE_EN_RE = /power strips?|socket strips?|extension sockets?|extension lead|extension cords?|extension (?:cable |cord )?reel|cable reel extension|surge protector|smart (plug|socket|outlet)s?|wifi (plug|socket|outlet)|wall (socket|outlet)s?|timer socket|multi-?socket|plug-?in timer/i;
 
 /**
  * Kleingeschriebenes Wort mit mindestens 4 Buchstaben in einem deutschen Optionswert = englischer Rest. Deutsche Werte sind GROSSGESCHRIEBEN oder Kurzwörter («Schwarz», «Weiss», «L», «XXL»),
@@ -452,10 +589,22 @@ export function planeNeu(cjRoh, ctx) {
     const er = beide.match(ERWACHSENE_RE); if (er) g.push(`Erwachsenen-Ware («${er[2]}»)`);
     const tb = beide.replace(ANZUENDER_G, ' ').match(TABAK_RE); if (tb) g.push(`Tabak/Nikotin («${tb[2]}»)`);
     const hk = heikelWort(beide); if (hk) g.push(`heikle Ware («${hk}») nie automatisch`);
+    const zs = zusatzSperrwort(beide); if (zs) g.push(`heikle Ware («${zs}») nie automatisch`);
+    const kd = kinderware({ titel, cjName, kategorie: cj.categoryName, beschreibung: cj.description }); if (kd) g.push(`Kinder-/Babyware (${kd.wo}: «${kd.wort}») nur von Hand`);
+    // Das Datenblatt selbst: Name und Titel eines «Mini-Kühlschranks 12 V» waren neutral, der Text sprach von Insulin (STAND-ARCHIV 04.10.2026). Dieselben Sperren wie für Name und Titel, auf den Klartext.
+    const dtext = htmlZuText(cj.description);
+    if (dtext) {
+      const hkD = heikelImText(dtext); if (hkD) g.push(`Datenblatt nennt heikle Ware («${hkD}»)`);
+      const erD = dtext.match(ERWACHSENE_RE); if (erD) g.push(`Datenblatt nennt Erwachsenen-Ware («${erD[2]}»)`);
+      const tbD = dtext.replace(ANZUENDER_G, ' ').match(TABAK_RE); if (tbD) g.push(`Datenblatt nennt Tabak/Nikotin («${tbD[2]}»)`);
+    }
     const spt = tags.filter(t => SPERR_TAGS.includes(t)); if (spt.length) g.push(`Sperr-Tag ${spt.join(', ')}`);
     // Merchant-Prüfung des Repos (Sperr-Tags per Muster, Marken-/Safety-Risiko wie «kinder», «baby», Lizenznamen in Titel UND Beschreibung)
     const m = pruefeProdukt({ titel: titel || 'x', beschreibung, tags, bild: galerie0[0] || 'https://x', preis: 1, id: pid || 'x', link: 'x' });
     if (!m.ok) g.push(`Merchant: ${m.grund}`);
+    // Auch der ENGLISCHE CJ-Name: der deutsche Titel nennt die Marke oft nicht mehr («Sneaker im Stil von Air» zu «Nike Air Style Sneakers»); der Vorfilter prüft den Namen, das Tor muss es allein können.
+    const mn = cjName ? pruefeProdukt({ titel: cjName.replace(BABY_AUSNAHME_RE, ' '), tags, bild: galerie0[0] || 'https://x', preis: 1, id: pid || 'x', link: 'x' }) : { ok: true };
+    if (!mn.ok && m.ok) g.push(`Merchant (CJ-Name): ${mn.grund}`);
     if (LIZENZ.test(htmlZuText(cj.description))) warn('Lizenzname im CJ-Beschreibungstext: den Text nicht übernehmen');
     tor('sperrwoerter', !g.length, eindeutig(g).join('; '), 'endgueltig');
   }
@@ -572,9 +721,14 @@ export function planeNeu(cjRoh, ctx) {
   // ── 11. Stecker: Fremdstecker-Varianten (US/UK/AU/JP) nie anlegen
   let nachStecker = rows;
   {
-    const st = steckerUrteil(rows.map(v => ({ id: v.vid, sku: v.sku })), Object.fromEntries(rows.map(v => [v.sku, v.key])));
+    const skOpt = { steckerKontext: steckerKontextVon(cj) };
+    const st = steckerUrteil(rows.map(v => ({ id: v.vid, sku: v.sku })), Object.fromEntries(rows.map(v => [v.sku, v.key])), skOpt);
+    // Fremdstecker nur im Beschreibungstext: nennt nicht JEDE Variante ihren Stecker, ist die Zuordnung Grösse → Stecker aus dem Text nicht sicher lesbar → zurückgestellt (Handprüfung)
+    const fst = fremdsteckerImText(htmlZuText(cj.description));
     if (st.draft) {
       tor('stecker', false, `nur Fremdstecker (US/UK/AU/JP) bei CJ — nicht für die Schweiz (${rows.length} Varianten)`, 'endgueltig');
+    } else if (fst && !alleSchluesselMitStecker(rows.map(v => v.key), skOpt)) {
+      tor('stecker', false, `Fremdstecker im Beschreibungstext («${fst}»), aber nicht jede Variante nennt ihren Stecker: Zuordnung Grösse → Stecker nicht sicher lesbar`, 'zurueckgestellt');
     } else {
       const weg = new Set(st.loeschen);
       nachStecker = rows.filter(v => !weg.has(v.vid));
