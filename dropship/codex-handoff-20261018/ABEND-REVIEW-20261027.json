@@ -1,0 +1,470 @@
+{
+  "checkedAtUTC": "2026-10-27T18:04:37.293466+00:00",
+  "state": "PASS_OFFLINE_EVIDENCE_AND_PLAN_ARITHMETIC_NOT_FINAL_FILM_APPROVAL",
+  "checks": [
+    {
+      "name": "same_one_master_identity",
+      "passed": true
+    },
+    {
+      "name": "not_rendered_not_publishable",
+      "passed": true
+    },
+    {
+      "name": "hook_a_continuous_duration",
+      "passed": true
+    },
+    {
+      "name": "hook_a_frame_counts",
+      "passed": true
+    },
+    {
+      "name": "hook_a_source_crop_inside960x540",
+      "passed": true
+    },
+    {
+      "name": "bedienung_continuous_duration",
+      "passed": true
+    },
+    {
+      "name": "bedienung_frame_counts",
+      "passed": true
+    },
+    {
+      "name": "bedienung_source_crop_inside960x540",
+      "passed": true
+    },
+    {
+      "name": "projektion_continuous_duration",
+      "passed": true
+    },
+    {
+      "name": "projektion_frame_counts",
+      "passed": true
+    },
+    {
+      "name": "projektion_source_crop_inside960x540",
+      "passed": true
+    },
+    {
+      "name": "detail_continuous_duration",
+      "passed": true
+    },
+    {
+      "name": "detail_frame_counts",
+      "passed": true
+    },
+    {
+      "name": "detail_source_crop_inside960x540",
+      "passed": true
+    },
+    {
+      "name": "cta_continuous_duration",
+      "passed": true
+    },
+    {
+      "name": "cta_frame_counts",
+      "passed": true
+    },
+    {
+      "name": "cta_source_crop_inside960x540",
+      "passed": true
+    },
+    {
+      "name": "18s540targets450source90repeat",
+      "passed": true
+    },
+    {
+      "name": "overlay_hook_and_product_title_inside_9:16",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          660
+        ],
+        "cropEnd": [
+          1080,
+          1920
+        ]
+      }
+    },
+    {
+      "name": "overlay_cta_and_brand_inside_9:16",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          1360
+        ],
+        "cropEnd": [
+          1080,
+          1920
+        ]
+      }
+    },
+    {
+      "name": "overlay_hook_and_product_title_inside_4:5_center",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          660
+        ],
+        "cropEnd": [
+          1080,
+          1635
+        ]
+      }
+    },
+    {
+      "name": "overlay_cta_and_brand_inside_4:5_center",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          1360
+        ],
+        "cropEnd": [
+          1080,
+          1635
+        ]
+      }
+    },
+    {
+      "name": "overlay_hook_and_product_title_inside_1:1_center",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          660
+        ],
+        "cropEnd": [
+          1080,
+          1500
+        ]
+      }
+    },
+    {
+      "name": "overlay_cta_and_brand_inside_1:1_center",
+      "passed": true,
+      "detail": {
+        "textEnd": [
+          888,
+          1360
+        ],
+        "cropEnd": [
+          1080,
+          1500
+        ]
+      }
+    },
+    {
+      "name": "geometric_crops_not_platform_qa",
+      "passed": true
+    },
+    {
+      "name": "P_PROOF_minimumframes",
+      "passed": true
+    },
+    {
+      "name": "P_OPERATION_minimumframes",
+      "passed": true
+    },
+    {
+      "name": "P_OPERATION_usable_plus_handles",
+      "passed": true
+    },
+    {
+      "name": "P_PROJECTION_minimumframes",
+      "passed": true
+    },
+    {
+      "name": "P_PROJECTION_usable_plus_handles",
+      "passed": true
+    },
+    {
+      "name": "P_PROJECTION_nonoverlap_windows",
+      "passed": true
+    },
+    {
+      "name": "P_DETAIL_minimumframes",
+      "passed": true
+    },
+    {
+      "name": "P_DETAIL_usable_plus_handles",
+      "passed": true
+    },
+    {
+      "name": "P_DETAIL_nonoverlap_windows",
+      "passed": true
+    },
+    {
+      "name": "P_HERO_minimumframes",
+      "passed": true
+    },
+    {
+      "name": "P_HERO_usable_plus_handles",
+      "passed": true
+    },
+    {
+      "name": "all_shots_native_required",
+      "passed": true
+    },
+    {
+      "name": "audio_only_canonical_no_voice",
+      "passed": true
+    },
+    {
+      "name": "sound_raw_measurement_not_finalapproval",
+      "passed": true
+    },
+    {
+      "name": "two_hooks_distinct_shots_no_fabricated_timecode",
+      "passed": true
+    },
+    {
+      "name": "sixuniquechannelsurls",
+      "passed": true
+    },
+    {
+      "name": "instagram_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "instagram_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "tiktok_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "tiktok_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "youtube_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "youtube_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "facebook_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "facebook_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "threads_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "threads_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "pinterest_utm_exact_variant",
+      "passed": true
+    },
+    {
+      "name": "pinterest_blocked_master",
+      "passed": true
+    },
+    {
+      "name": "ig_tt_bio_gates",
+      "passed": true
+    },
+    {
+      "name": "youtube_already_general_no_clickable_short",
+      "passed": true
+    },
+    {
+      "name": "pinterest_board_unknown",
+      "passed": true
+    },
+    {
+      "name": "18posts_uuidstrings",
+      "passed": true
+    },
+    {
+      "name": "31pending_bychannel",
+      "passed": true
+    },
+    {
+      "name": "16common_2new_3outside",
+      "passed": true
+    },
+    {
+      "name": "common_content_-7289213762748006017",
+      "passed": true
+    },
+    {
+      "name": "common_content_7159397983996628078",
+      "passed": true
+    },
+    {
+      "name": "common_content_-4313698764087147701",
+      "passed": true
+    },
+    {
+      "name": "common_content_5422556514800451906",
+      "passed": true
+    },
+    {
+      "name": "common_content_6638701680568649025",
+      "passed": true
+    },
+    {
+      "name": "common_content_6949901535401824082",
+      "passed": true
+    },
+    {
+      "name": "common_content_-1907404935308818459",
+      "passed": true
+    },
+    {
+      "name": "common_content_8599624041512978720",
+      "passed": true
+    },
+    {
+      "name": "common_content_-4161958612308901750",
+      "passed": true
+    },
+    {
+      "name": "common_content_8825326286574078154",
+      "passed": true
+    },
+    {
+      "name": "common_content_7686029963411803895",
+      "passed": true
+    },
+    {
+      "name": "common_content_-1970243383549213009",
+      "passed": true
+    },
+    {
+      "name": "common_content_3832103242401204926",
+      "passed": true
+    },
+    {
+      "name": "common_content_2383637826676869482",
+      "passed": true
+    },
+    {
+      "name": "common_content_4429839409975411400",
+      "passed": true
+    },
+    {
+      "name": "common_content_-884200541558521239",
+      "passed": true
+    },
+    {
+      "name": "no_ownposts_no_replacement",
+      "passed": true
+    },
+    {
+      "name": "metricssourcehashes",
+      "passed": true
+    },
+    {
+      "name": "instagram_IGEV23_partial",
+      "passed": true
+    },
+    {
+      "name": "instagram_IGEV25_partial",
+      "passed": true
+    },
+    {
+      "name": "facebook_FBEV22_partial",
+      "passed": true
+    },
+    {
+      "name": "facebook_FBEV26_partial",
+      "passed": true
+    },
+    {
+      "name": "tiktok_TKEV02_partial",
+      "passed": true
+    },
+    {
+      "name": "tiktok_TKEV06_partial",
+      "passed": true
+    },
+    {
+      "name": "youtube_YTEV17_partial",
+      "passed": true
+    },
+    {
+      "name": "youtube_YTEV14_partial",
+      "passed": true
+    },
+    {
+      "name": "youtube_YTEV16_partial",
+      "passed": true
+    },
+    {
+      "name": "youtube_YTEV18_partial",
+      "passed": true
+    },
+    {
+      "name": "threads_THEV06_partial",
+      "passed": true
+    },
+    {
+      "name": "threads_THEV05_partial",
+      "passed": true
+    },
+    {
+      "name": "pinterest_PIEV01_partial",
+      "passed": true
+    },
+    {
+      "name": "pinterest_PIEV04_partial",
+      "passed": true
+    },
+    {
+      "name": "14partialmetrics_allweekunknown",
+      "passed": true
+    },
+    {
+      "name": "saleshashbeforeafter",
+      "passed": true
+    },
+    {
+      "name": "exactly2servicelinereplacements",
+      "passed": true
+    },
+    {
+      "name": "oneproposal_noflowchange",
+      "passed": true
+    },
+    {
+      "name": "currenciesseparate_noreportrefetch",
+      "passed": true
+    }
+  ],
+  "checkCount": 96,
+  "manualReview": {
+    "hooks": "A real room projection vs B actual device-detail reveal; B remains required new original shot, not invented existing source selection.",
+    "captions": "Six distinct channeltexts and UTMs; no invented features/reviews/materials/power/source rights; link and board gates honest.",
+    "footage": "All required takes native quality; old960x540/25fps cannot become premium by container30fps or two new takes.",
+    "rights": "Commercial video rights and exact CJvid/motif/power remain unknown. Music provenance evidence retained; final listening/mix unapproved.",
+    "planning": "Existing records, not own publication. Future-window missing3 older records not proof published/deleted.2new records belong supplied existing queue.",
+    "metrics": "All14metrics preserve null/missing dates, explicit zero only observed dates. No wholeweek/crosschannel sales inference.",
+    "sales": "Single unchanged source-matched serviceproposal,2line replacements, not applied; oldCTAproposal not second recommendation."
+  },
+  "networkReads": 0,
+  "analyticsCalls": 0,
+  "shopifyCalls": 0,
+  "mutations": 0,
+  "githubWrites": 0,
+  "limitations": [
+    "No final MP4, visual product identity/crop/readability/listening or platform publication approval.",
+    "No live account/data call by reviewer.",
+    "No new revenue, conversion, sync or Merchant conclusions."
+  ]
+}
