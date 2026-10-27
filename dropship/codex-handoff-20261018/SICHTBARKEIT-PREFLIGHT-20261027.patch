@@ -1,0 +1,129 @@
+--- a/seo_landing_preflight.mjs
++++ b/seo_landing_preflight.mjs
+@@ -60,12 +60,16 @@
+   const rawNames = new Set(['script', 'style', 'title', 'textarea', 'xmp', 'iframe',
+     'noembed', 'noframes', 'noscript']);
+   let state = 'before_head', templateDepth = 0, rawName = null, end = 0, baseHref = null;
+-  const links = [], metas = [];
++  let activeTitle = false;
++  const links = [], metas = [], titles = [];
++  const titleText = text => decodeAttr(text).replace(/\s+/g, ' ').trim();
+   while (true) {
+     if (rawName) {
+       const closeRaw = new RegExp(`</${rawName}(?=[\\s/>])(?:"[^"]*"|'[^']*'|[^'">])*>`, 'gi');
+       closeRaw.lastIndex = end;
+       const closing = closeRaw.exec(html);
++      if (activeTitle) titles.push(titleText(html.slice(end, closing ? closing.index : html.length)));
++      activeTitle = false;
+       if (!closing) break;
+       end = closing.index + closing[0].length;
+       tokens.lastIndex = end;
+@@ -100,7 +104,11 @@
+     if (!headNames.has(name)) { state = 'after_head'; continue; }
+     if (closing) continue;
+     if (name === 'template') { templateDepth = 1; continue; }
+-    if (rawNames.has(name)) { rawName = name; continue; }
++    if (rawNames.has(name)) {
++      rawName = name;
++      activeTitle = name === 'title';
++      continue;
++    }
+     const a = attributes(m[0]);
+     if (name === 'meta') metas.push(a);
+     if (name === 'base' && baseHref === null && a.href) baseHref = decodeAttr(a.href);
+@@ -108,7 +116,7 @@
+       links.push(decodeAttr(a.href));
+     }
+   }
+-  return { links, baseHref, metas };
++  return { links, baseHref, metas, titles };
+ }
+ 
+ function blocksIndexing(content) {
+@@ -157,7 +165,7 @@
+ export function analyseHtml(html, expectedCanonical, documentUrl = null) {
+   // The expected canonical is only a comparison target, never the URL base.
+   const clean = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '');
+-  const { links, baseHref, metas } = headMetadata(html);
++  const { links, baseHref, metas, titles } = headMetadata(html);
+   const descriptions = metas.filter(a => metaName(a) === 'description');
+   const robotsMeta = metas.filter(a => ['robots', 'googlebot'].includes(metaName(a)))
+     .map(a => ({ name: metaName(a), content: decodeAttr(a.content ?? ''), noindex: blocksIndexing(decodeAttr(a.content ?? '')) }));
+@@ -179,7 +187,12 @@
+     metaDescriptionCount: descriptions.length,
+     robotsMeta,
+     htmlNoindex: robotsMeta.some(x => x.noindex),
+-    titlePresent: /<title\b[^>]*>\s*[^<\s]/i.test(clean),
++    // For this head-only preflight, the first active title is authoritative.
++    // A later duplicate must not hide an empty first title; body/inert/embedded
++    // examples cannot establish active head metadata. This is not a browser DOM.
++    title: titles[0] || null,
++    titleCount: titles.length,
++    titlePresent: Boolean(titles[0]),
+     h1Present: /<h1\b[^>]*>[\s\S]*?\S[\s\S]*?<\/h1\s*>/i.test(clean)
+   };
+ }
+--- a/seo_landing_preflight_test.mjs
++++ b/seo_landing_preflight_test.mjs
+@@ -293,4 +293,61 @@
+     assert.equal(r.results[0].googleIndexStatus, 'unknown');
+   });
+ }
++
++
++// 27.10.2026: title evidence must come from the same active document head.
++for (const [name, html] of [
++  ['inert title', '<head><template><title>Fake</title></template></head>'],
++  ['nested inert title', '<head><template><template></template><title>Fake</title></template></head>'],
++  ['embedded srcdoc title', '<head></head><body><iframe srcdoc="<title>Embedded</title>"></iframe></body>'],
++  ['body title', '<head></head><body><title>Wrong scope</title></body>'],
++  ['comment title', '<head><!-- <title>Fake</title> --></head>'],
++  ['script title', '<head><script>const html="<title>Fake</title>";</script></head>'],
++  ['noscript title', '<head><noscript><title>Fake</title></noscript></head>'],
++  ['implicit body title', '<div>Body</div><title>Wrong scope</title>']
++]) test(`${name} cannot establish a page title`, () => {
++  const result = analyseHtml(html, url, url);
++  assert.equal(result.titlePresent, false);
++  assert.equal(result.title, null);
++  assert.equal(result.titleCount, 0);
++});
++test('active title text decodes once and normalises whitespace', () => {
++  const r = analyseHtml('<head><title>  Mode &amp; Wohnen \n bei LuxeStyle </title></head>', url, url);
++  assert.equal(r.title, 'Mode & Wohnen bei LuxeStyle');
++  assert.equal(r.titlePresent, true);
++  assert.equal(r.titleCount, 1);
++});
++test('active title survives a fake head boundary inside inert template', () => {
++  const html = '<head><template></head><title>Fake</title></template><title>Real</title></head>';
++  const r = analyseHtml(html, url, url);
++  assert.equal(r.title, 'Real');
++  assert.equal(r.titleCount, 1);
++});
++test('RCDATA title retains literal markup and does not invent a canonical', () => {
++  const r = analyseHtml('<head><title>Real <b>Title</b></title></head>', url, url);
++  assert.equal(r.title, 'Real <b>Title</b>');
++  assert.equal(r.titleCount, 1);
++  assert.equal(r.canonicalCount, 0);
++});
++test('unclosed active title retains its text to end of document', () => {
++  const r = analyseHtml('<head><title>Real title', url, url);
++  assert.equal(r.title, 'Real title');
++  assert.equal(r.titlePresent, true);
++});
++test('empty first active title remains empty despite nonempty duplicate', () => {
++  const r = analyseHtml('<head><title> </title><title>Second</title></head>', url, url);
++  assert.equal(r.title, null);
++  assert.equal(r.titlePresent, false);
++  assert.equal(r.titleCount, 2);
++});
++test('nonempty first active title stays authoritative with duplicate', () => {
++  const r = analyseHtml('<head><title>First</title><title>Second</title></head>', url, url);
++  assert.equal(r.title, 'First');
++  assert.equal(r.titlePresent, true);
++  assert.equal(r.titleCount, 2);
++});
++test('numeric title entities decode only once', () => {
++  const r = analyseHtml('<head><title>&#x4c;uxeStyle &amp;#65;</title></head>', url, url);
++  assert.equal(r.title, 'LuxeStyle &#65;');
++});
+ console.log(`${checks} checks passed`);
