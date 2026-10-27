@@ -64,6 +64,14 @@ const grq = (arr) => ({ choices:[{ message:{ content: '```json\n'+JSON.stringify
   pruef('opt.groqKey ersetzt die Umgebungsschluessel', gefragt3.length===1 && gefragt3[0]==='Bearer nur', gefragt3.join('|'));
   delete process.env.GROQ_API_KEY; delete process.env.GROQ_API_KEY2; delete process.env.GROQ_API_KEY3; }
 
+// 7b. Vierter Groq-Schluessel (27.10.2026: GROQ_API_KEY4 gesetzt): sind die ersten drei erschoepft, antwortet der vierte
+{ const gefragt=[]; process.env.GROQ_API_KEY='k1'; process.env.GROQ_API_KEY2='k2'; process.env.GROQ_API_KEY3='k3'; process.env.GROQ_API_KEY4='k4';
+  const r = await nachDeutsch(EIN, { geminiKey:'', fetch: async (u, o) => { const k=String(o?.headers?.Authorization||'').replace('Bearer ',''); gefragt.push(k);
+    return k==='k4' ? ant(200, grq(DE)) : ant(429, { error:{ message:'rate limit' } }); } });
+  pruef('drei Schluessel erschoepft → 4. Schluessel antwortet', r.weg==='groq' && JSON.stringify(r.texte)===JSON.stringify(DE), JSON.stringify(r));
+  pruef('alle vier Schluessel werden der Reihe nach gefragt', gefragt.filter((k,i)=>i===0||k!==gefragt[i-1]).join(',')==='k1,k2,k3,k4', gefragt.join(','));
+  delete process.env.GROQ_API_KEY; delete process.env.GROQ_API_KEY2; delete process.env.GROQ_API_KEY3; delete process.env.GROQ_API_KEY4; }
+
 // 9. Grossschreibung des Originals bleibt erhalten (kleines Groq-Modell liefert «purpurrot»)
 pruef('klein → gross: Purplish Red / purpurrot', gleicheGrossschreibung('Purplish Red','purpurrot')==='Purpurrot');
 pruef('schon gross bleibt', gleicheGrossschreibung('Purplish Red','Purpurrot')==='Purpurrot');
