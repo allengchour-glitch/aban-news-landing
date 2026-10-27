@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_SICHTBARKEIT_20261027
+
+[Belegte Sichtbarkeitsarbeit](SICHTBARKEIT-20261027.md), [Quellen-/Prüfbelege](SICHTBARKEIT-BELEGE-20261027.json), [ein bestätigter Produkttext](SICHTBARKEIT-PRODUKTTEXT-20261027.json) und [vier native Kategorie-Felddiffs](SICHTBARKEIT-KATEGORIE-DIFFS-20261027.json). Genau die Ohrsteckerbeschreibung nach frischem Quellen-/Bildreview geschrieben; nur descriptionHtml, nativ sowie öffentliches JSON/sichtbares HTML exakt bestätigt. Heute 14, kumuliert 16 Beschreibungen; übriger Katalog offen. Arbeitsliste 22 Events mit früheren 20 unverändert. Ring 15412902855041 wegen zwei Formen/unklarer Variante1/2-Zuordnung bewusst nicht geändert.
+
+Neun Landingpages, robots/Sitemapindex und genau eine Collection-Sitemap frisch geprüft: HTTP 200/passende Canonicals; 123 Sitemapreferenzen, 792 deklarierte deutsche Collection-URLs, 31 ausgewählte Ziele darin vorhanden. Kein Beweis von Google-Indexierung oder Ranking. Zwei Kategorie-Entwürfe nun mit aktuellen vollständigen nativen Beschreibungen/IDs/SEO-Ausgangswerten; keine Live-Kategorie-/Metaänderung. Versand-Schema CHF 40.50 versus verbindliche CHF 50 öffentlich erneut bestätigt; [bestehender enger Template-Diff](SICHTBARKEIT-VERSAND-ENTWURF-20261027.diff) bleibt Freigabeentwurf, native Quelle zuletzt 26.10. Kein Tarif-/Themechange.
+
+[Lokalen Titelprüfer](sichtbarkeit-20261027/preflight/seo_landing_preflight.mjs) mit [Testquelle](sichtbarkeit-20261027/preflight/seo_landing_preflight_test.mjs) und [Patch](SICHTBARKEIT-PREFLIGHT-20261027.patch) weiterentwickelt: 73 Baseline/88 Gesamtchecks, unabhängige 10 Zusatz-/6 Headerfälle; kein Deployment oder aktueller Shop-Titeldefekt behauptet. Shop/Metricool frisch passend, keine weiteren Tageskennzahl-/Flow-/Verkaufsreports, Social-/Workflow-/DNS-/Budget-/Rabatt-/Einstellungsänderung. Master-/Rechte-/Produkt-/Strom-/Ledgergrenzen, bereits erteilte DNS-/Footerfreigaben, CHF 50/45 und Kundendomäne erhalten.
+
 ## LUXESTYLE_PRODUKTTEXTE_FORTSETZUNG_1440_20261027
 
 [Vier weitere Beschreibungen](PRODUKTTEXTE-FORTSETZUNG-20261027-1440.md), [vier bestätigte Writes/Rücklesungen](PRODUKTTEXTE-IMPLEMENTIERUNGEN-20261027-1440.json) und [Quellen-/Bild-/Textreview](PRODUKTTEXTE-PRUEFBELEGE-20261027-1440.json). Nach «weiter» die ausdrückliche Beschreibungstextfreigabe fortgesetzt: Cap, Mini-Smartphone-Schirm, Messerschärfer und Umhängetasche einzeln frisch geprüft, nur descriptionHtml geschrieben und nativ/öffentliches JSON/sichtbares HTML exakt zurückgelesen. Preis-/Varianten-/Bild-/Tag-/Statusfelder unverändert. Keine erneute Umsetzung dieser vier Texte oder neue Freigabefrage.
