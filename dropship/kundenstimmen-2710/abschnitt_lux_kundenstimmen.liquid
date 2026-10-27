@@ -1,0 +1,78 @@
+{%- assign jm = shop.metafields.judgeme -%}
+{%- assign ks = shop.metafields.lux.kundenstimmen.value -%}
+{%- if jm.featured_carousel != blank or ks.size > 5 -%}
+{%- assign n = jm.all_reviews_count | plus: 0 -%}
+{%- assign tsd = n | divided_by: 1000 -%}
+{%- assign rest = n | modulo: 1000 | prepend: "00" | slice: -3, 3 -%}
+<style id="lx-ks-fix">.lx-kundenstimmen .jdgm-carousel-wrapper{padding:0!important} .lx-kundenstimmen .jdgm-carousel{margin:.75rem 0 .5rem!important} .lx-kundenstimmen .jdgm-carousel__item-container,.lx-kundenstimmen .jdgm-carousel__item-wrapper,.lx-kundenstimmen .jdgm-carousel-item{height:285px!important} .lx-kundenstimmen .jdgm-carousel-wrapper .jdgm-carousel-item__review{height:auto!important;max-height:120px} .lx-kundenstimmen .jdgm-carousel-item__product{margin-top:.6rem!important} .lx-kundenstimmen .jdgm-carousel-item__product-image{width:120px!important;height:120px!important;max-width:none!important;object-fit:contain;border-radius:12px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08)} .lx-kundenstimmen .jdgm-carousel__arrows{margin:.25rem 0 0!important}</style>
+<div class="lx-kundenstimmen" style="max-width:min(var(--page-width,1400px),100%);margin:0 auto;padding:0 var(--page-margin,1rem);overflow-x:clip">
+  <div style="text-align:center;margin-bottom:.75rem">
+    <h2 class="h3" style="margin:0 0 .35rem">Das sagen Käuferinnen und Käufer zu unseren Produkten</h2>
+    <p style="margin:0;opacity:.8">
+      <span class="jdgm-all-reviews-rating" data-score="{{ jm.all_reviews_rating }}" role="img" aria-label="{{ jm.all_reviews_rating }} von 5 Sternen" style="display:inline-block;vertical-align:middle"></span>
+      <span style="vertical-align:middle">{{ jm.all_reviews_rating }} von 5 · {% if tsd > 0 %}{{ tsd }}'{{ rest }}{% else %}{{ n }}{% endif %} Bewertungen</span>
+    </p>
+    <p style="margin:.25rem 0 0;font-size:.8rem;opacity:.65">Bewertungen von Käufer:innen dieser Produkte, teils vom Hersteller übernommen und ins Deutsche übersetzt.</p>
+  </div>
+  {%- if ks.size > 5 -%}
+  {%- comment -%} Je Produkt EINE echte Bewertung (automation/kundenstimmen_bauen.mjs → shop.metafields.lux.kundenstimmen), bei jedem Aufruf neu gemischt: md5 aus Produkt und Sekunde, danach sortiert. {%- endcomment -%}
+  {%- assign seed = 'now' | date: '%s' -%}
+  {%- assign keys = '' | split: '' -%}
+  {%- for p in ks -%}
+    {%- capture k -%}{{ p.h | append: seed | md5 }}|{{ forloop.index0 }}{%- endcapture -%}
+    {%- assign one = k | split: '~' -%}
+    {%- assign keys = keys | concat: one -%}
+  {%- endfor -%}
+  {%- assign sorted = keys | sort -%}
+  <style id="lx-ks2">
+    .lx-ks2{position:relative}
+    .lx-ks2__track{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.5rem .25rem .75rem}
+    .lx-ks2__track::-webkit-scrollbar{display:none}
+    .lx-ks2__card{flex:0 0 calc((100% - 2.5rem) / 3);scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;min-width:0}
+    .lx-ks2__stars{color:#c9a35f;letter-spacing:.12em;font-size:1.05rem;line-height:1}
+    .lx-ks2__text{margin:0;font-size:.95rem;line-height:1.45;min-height:5.8em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .lx-ks2__name{font-size:.8rem;opacity:.6}
+    .lx-ks2__img{display:block;width:120px;height:120px;object-fit:contain;border-radius:12px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+    .lx-ks2__titel{font-size:.8rem;line-height:1.3;opacity:.75;max-width:16rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-decoration:none;color:inherit}
+    .lx-ks2__bild{text-decoration:none}
+    .lx-ks2__pfeile{display:flex;justify-content:center;gap:1.25rem;margin-top:.25rem}
+    .lx-ks2__pfeile button{border:0;background:none;cursor:pointer;font-size:2rem;line-height:1;padding:.1rem .6rem;color:inherit;opacity:.55}
+    .lx-ks2__pfeile button:hover:not(:disabled){opacity:1}
+    .lx-ks2__pfeile button:disabled{opacity:.18;cursor:default}
+    @media (max-width:899px){.lx-ks2__card{flex-basis:calc((100% - 1.25rem) / 1.35)}}
+  </style>
+  <div class="lx-ks2">
+    <div class="lx-ks2__track" role="list" aria-label="Kundenstimmen">
+      {%- assign gezeigt = 0 -%}{%- assign gesehen = '|' -%}
+      {%- for s in sorted -%}
+        {%- if gezeigt >= 12 -%}{%- break -%}{%- endif -%}
+        {%- assign idx = s | split: '|' | last | plus: 0 -%}
+        {%- assign p = ks[idx] -%}
+        {%- assign hk = '|' | append: p.h | append: '|' -%}
+        {%- unless gesehen contains hk -%}
+          {%- assign gesehen = gesehen | append: p.h | append: '|' -%}
+          {%- assign gezeigt = gezeigt | plus: 1 -%}
+          <article class="lx-ks2__card" role="listitem">
+            <div class="lx-ks2__stars" role="img" aria-label="{{ p.r }} von 5 Sternen">★★★★★</div>
+            <p class="lx-ks2__text">{{ p.b | escape }}</p>
+            {%- if p.n != blank -%}<div class="lx-ks2__name">{{ p.n | escape }}</div>{%- endif -%}
+            <a class="lx-ks2__bild" href="/products/{{ p.h }}" aria-label="Zum Produkt: {{ p.t | escape }}"><img class="lx-ks2__img" src="{{ p.i | escape }}" alt="{{ p.t | escape }}" width="120" height="120" loading="lazy"></a>
+            <a class="lx-ks2__titel" href="/products/{{ p.h }}">{{ p.t | escape }}</a>
+          </article>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+    <div class="lx-ks2__pfeile"><button type="button" data-ks-prev aria-label="Vorherige Bewertungen">‹</button><button type="button" data-ks-next aria-label="Nächste Bewertungen">›</button></div>
+    <script>(function(){var r=document.currentScript&&document.currentScript.parentNode;if(!r)return;var t=r.querySelector('.lx-ks2__track'),v=r.querySelector('[data-ks-prev]'),x=r.querySelector('[data-ks-next]');if(!t)return;
+function s(d){t.scrollBy({left:d*t.clientWidth*0.9,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+function u(){if(v)v.disabled=t.scrollLeft<=2;if(x)x.disabled=t.scrollLeft>=t.scrollWidth-t.clientWidth-2;}
+if(v)v.addEventListener('click',function(){s(-1)});if(x)x.addEventListener('click',function(){s(1)});
+t.addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();})();</script>
+  </div>
+  {%- else -%}
+  <div class="jdgm-carousel-wrapper" data-auto-install="false" style="max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch">
+    {{ jm.featured_carousel }}
+  </div>
+  {%- endif -%}
+</div>
+{%- endif -%}
