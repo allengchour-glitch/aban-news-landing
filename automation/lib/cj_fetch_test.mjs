@@ -122,5 +122,23 @@ for (const code of WEICHE_CODES) {
   pruef('Erfolg unveraendert mit weicheCodes', b?.data?.pid === 'xyz');
 }
 
+// 16. getInventoryByPid antwortet OHNE «result» (nur success:true + code:200): Erfolg NUR mit der ausdrücklichen Angabe erfolgOhneResult; alle anderen Aufrufer bleiben streng
+{
+  const bestand = () => antwort({ success: true, code: 200, message: '', data: { inventories: [], variantInventories: [] } });
+  let geflogen = '';
+  try { await lauf([bestand()]).erg; } catch (e) { geflogen = e.message; }
+  pruef('ohne erfolgOhneResult bleibt eine Antwort ohne result ein Fehler (CJ_API)', /^CJ_API/.test(geflogen), geflogen);
+  const b = await lauf([bestand()], { erfolgOhneResult: true }).erg;
+  pruef('mit erfolgOhneResult ist success:true + code:200 ein Erfolg', b?.success === true && Array.isArray(b.data.variantInventories));
+  for (const [name, body] of [['nur code 200 (ohne success)', { code: 200, data: {} }], ['success mit anderem code', { success: true, code: 500, data: {} }], ['result:false trotz success:true', { success: true, code: 200, result: false, data: {} }], ['success:false', { success: false, code: 200, data: {} }]]) {
+    let f = '';
+    try { await lauf([antwort(body)], { erfolgOhneResult: true }).erg; } catch (e) { f = e.message; }
+    pruef(`erfolgOhneResult bleibt streng: ${name} wirft`, /^CJ_API/.test(f), f);
+  }
+  let g = '';
+  try { await lauf([antwort({ success: true, code: 200, message: '' })], { erfolgOhneResult: true }).erg; } catch (e) { g = e.message; }
+  pruef('...und ohne data-Feld wirft auch dann CJ_DATA', /^CJ_DATA/.test(g), g);
+}
+
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

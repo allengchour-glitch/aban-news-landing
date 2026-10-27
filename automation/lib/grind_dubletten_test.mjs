@@ -2,6 +2,11 @@
 // Lauf: /opt/node22/bin/node automation/lib/grind_dubletten_test.mjs
 // Die Fälle sind ECHTE Datensätze aus dem Shop (Bulk vom 27.10.2026, 87 765 Produkte) und aus dem CJ-Datenblatt-Zwischenspeicher; Handles, Titel, SKUs und pids
 // wörtlich übernommen. Erfundene Fälle sind als «gebaut» gekennzeichnet. Gegenproben in BEIDE Richtungen; die Zusammenfassung steht am ENDE.
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   FORM_BEKANNT, LEDGER_HANDLES, LEDGER_PIDS, MIN_KERN, baueIndex, bulkSammler, fuegeHinzu, indexKennzahlen, istDublette, istFrisch, jaccard, kandidatAus, ladeIndex,
   ledgerHandlesAusText, ledgerPidsAusText, naheTitel, pidAusSku, pidNorm, produktSkuOk, produkteAusJsonl, restOk, skuNorm, titelKern,
@@ -346,6 +351,46 @@ ist('kandidatAus: Shopify-gid als id ist keine pid', kandidatAus({ id: 'gid://sh
   wirft('ladeIndex: ohne SKU-Datei Fehler mit Hinweis auf das Lese-Skript', () => ladeIndex({ ...opt, skusDatei: '/s/fehlt.jsonl' }), /grind_skus_lesen\.mjs/);
   const ohneMeta = ladeIndex({ ...opt, existiert: p => p in dateien && !p.endsWith('.meta.json'), lies: p => { if (p.endsWith('.meta.json')) throw new Error('weg'); return dateien[p]; } });
   ist('ladeIndex: ohne Meta-Datei kein Stand → nicht frisch, im Bericht vermerkt', [ohneMeta.index.stand, istFrisch(ohneMeta.index), ohneMeta.bericht.fehlend.some(f => f.includes('meta.json'))], [null, false, true]);
+  // Geld F5 (Prüfung 27.10.2026): ein unvollständiger oder leerer Index darf nie als «frisch» durchgehen
+  {
+    const jetzt = new Date().toISOString();
+    const mit = (meta, skus = dateien['/s/skus.jsonl'], min) => ladeIndex({ ...opt, mindestProdukte: min, lies: p => (p === '/s/skus.jsonl.meta.json' ? JSON.stringify(meta) : p === '/s/skus.jsonl' ? skus : dateien[p]) });
+    const frisch = (meta, skus, min) => { const r = mit(meta, skus, min); return [istFrisch(r.index, 24), r.bericht.unvollstaendig ?? null]; };
+    ist('ladeIndex: vollständige Meta + genug Produkte = frisch, ohne Lücken im Bericht', frisch({ stand: jetzt, vollstaendig: true, waisen: 0, kaputteZeilen: 0 }, undefined, 4), [true, null]);
+    ist('ladeIndex: vollstaendig:false → nicht frisch, Grund im Bericht', (r => [r[0], /vollstaendig=false/.test(r[1]?.join(' '))])(frisch({ stand: jetzt, vollstaendig: false })), [false, true]);
+    ist('ladeIndex: verwaiste Zeilen in der Meta → nicht frisch', (r => [r[0], /3 verwaiste/.test(r[1]?.join(' '))])(frisch({ stand: jetzt, vollstaendig: true, waisen: 3 })), [false, true]);
+    ist('ladeIndex: kaputte Zeilen in der Meta → nicht frisch', (r => [r[0], /5 kaputte/.test(r[1]?.join(' '))])(frisch({ stand: jetzt, vollstaendig: true, kaputteZeilen: 5 })), [false, true]);
+    ist('ladeIndex: eine abgeschnittene SKU-Datei (kaputte letzte Zeile) → nicht frisch, Zahl der kaputten Zeilen im Bericht', (r => [r[0], /2 kaputte Zeilen in der Datei/.test(r[1]?.join(' '))])(frisch({ stand: jetzt, vollstaendig: true }, dateien['/s/skus.jsonl'] + '{"id":"gid://x","handle":"abge\n{nicht json\n')), [false, true]);
+    ist('ladeIndex: eine LEERE Datei ist nicht frisch (sonst fehlte die ganze Dublettenprüfung)', frisch({ stand: jetzt, vollstaendig: true }, '', 1)[0], false);
+    ist('ladeIndex: weniger Produkte als erwartet (abgeschnittene Datei) → nicht frisch, Zahl im Bericht', (r => [r[0], /nur 4 Produkte \(erwartet mindestens 50000\)/.test(r[1]?.join(' '))])(frisch({ stand: jetzt, vollstaendig: true }, undefined, 50000)), [false, true]);
+    ist('ladeIndex: ohne mindestProdukte (alte Aufrufer) bleibt die Zahl unbeachtet', frisch({ stand: jetzt, vollstaendig: true })[0], true);
+    ist('ladeIndex: ein Index mit Lücken trägt keinen Stand', mit({ stand: jetzt, vollstaendig: false }).index.stand, null);
+  }
+  // Das Leseskript (grind_skus_lesen.mjs) stempelt «stand» NUR, wenn die Datei vollständig ist (offline: NUR_AUFBEREITEN=1 liest eine fertige Bulk-Rohdatei, kein Netz)
+  {
+    const skript = fileURLToPath(new URL('../grind_skus_lesen.mjs', import.meta.url));
+    const dir = mkdtempSync(join(tmpdir(), 'skus-lesen-'));
+    const lauf = (roh, kopf) => {
+      const ziel = join(dir, 'skus-' + Math.random().toString(36).slice(2) + '.jsonl');
+      writeFileSync(ziel + '.roh', roh);
+      if (kopf) writeFileSync(ziel + '.meta.json', JSON.stringify(kopf));
+      const r = spawnSync(process.execPath, [skript, ziel], { env: { PATH: process.env.PATH, NUR_AUFBEREITEN: '1' }, encoding: 'utf8', timeout: 30000 });
+      return { exit: r.status, meta: existsSync(ziel + '.meta.json') ? JSON.parse(readFileSync(ziel + '.meta.json', 'utf8')) : null, out: ziel };
+    };
+    const P = (n, sku) => [JSON.stringify({ id: 'gid://shopify/Product/' + n, handle: 'h' + n, title: 'T' + n, status: 'ACTIVE' }), JSON.stringify({ id: 'gid://shopify/ProductVariant/' + n + '1', sku, __parentId: 'gid://shopify/Product/' + n })].join('\n') + '\n';
+    const ganz = lauf(P(1, 'CJ-1') + P(2, 'CJ-2'), { objectCount: 4 });
+    ist('SKU-Leser: vollständige Rohdatei (4 von 4 Objekten) → Exit 0, «stand» gestempelt, vollstaendig true', [ganz.exit, typeof ganz.meta.stand, ganz.meta.vollstaendig, ganz.meta.produkte, ganz.meta.varianten], [0, 'string', true, 2, 2]);
+    const zuWenig = lauf(P(1, 'CJ-1'), { objectCount: 4 });
+    ist('SKU-Leser: Shopify meldete 4 Objekte, die Datei hat nur 2 → Exit 3, KEIN «stand» (der Index gilt dann nie als frisch)', [zuWenig.exit, zuWenig.meta.stand, zuWenig.meta.vollstaendig, typeof zuWenig.meta.gelesenAm], [3, null, false, 'string']);
+    const kaputt = lauf(P(1, 'CJ-1') + '{abgeschnitten\n', { objectCount: 3 });
+    ist('SKU-Leser: eine kaputte Zeile → Exit 3, KEIN «stand», Zahl der kaputten Zeilen in der Meta', [kaputt.exit, kaputt.meta.stand, kaputt.meta.kaputteZeilen], [3, null, 1]);
+    const waise = lauf(JSON.stringify({ id: 'gid://shopify/ProductVariant/91', sku: 'CJ-9', __parentId: 'gid://shopify/Product/999' }) + '\n' + P(1, 'CJ-1'), { objectCount: 3 });
+    ist('SKU-Leser: eine Variante ohne Produkt (Waise) → Exit 3, KEIN «stand»', [waise.exit, waise.meta.stand, waise.meta.waisen], [3, null, 1]);
+    // ohne Zugang oder mit fremdem Host: Exit 1 BEVOR irgendetwas gesendet wird
+    const fremd = spawnSync(process.execPath, [skript, join(dir, 'x.jsonl')], { env: { PATH: process.env.PATH, SHOPIFY_SHOP: 'evil.example.com', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim' }, encoding: 'utf8', timeout: 30000 });
+    ist('SKU-Leser: fremder Host → Exit 1 mit Meldung, ohne Netzzugriff (client_secret geht nie an evil.example.com)', [fremd.status, /myshopify\.com/.test(fremd.stderr), /evil\.example\.com\/admin/.test(fremd.stderr + fremd.stdout)], [1, true, false]);
+    rmSync(dir, { recursive: true, force: true });
+  }
   ist('Standard-Ledgerlisten: drei pid- und fünf Handle-Quellen; das Prüf-Ledger cj_top_ledger zählt nicht als Import', [LEDGER_PIDS.map(l => l[0]), LEDGER_HANDLES.map(l => l[0])], [
     ['cj_niche_done.txt', 'cj_gaps_done.txt', 'grind2_ledger.txt'],
     ['cj_varianten_ledger.txt', 'cj_variantenbilder_ledger.txt', 'cj_sourcing_ledger.txt', 'grind2_ledger.txt', 'grind2_freigabe_ledger.txt']]);

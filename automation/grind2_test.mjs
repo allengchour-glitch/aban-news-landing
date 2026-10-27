@@ -1,7 +1,7 @@
 // Tests für grind2.mjs («Grind 2.0», die Pipeline). Teil 1: reine Funktionen mit Gegenproben in BEIDE Richtungen. Teil 2: der ganze Lauf gegen ein SIMULIERTES Netz
 // (CJ, Shopify, Gemini/Groq, Bild-Server, Produktseite — nichts davon ist echt; jede unbekannte Adresse wirft). Die Zusammenfassung steht am ENDE, Exit 1 bei einem Fehler.
 // Lauf: node automation/grind2_test.mjs
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync, appendFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync, appendFileSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import {
@@ -9,8 +9,14 @@ import {
   sperrwort, vorfilter, rangiere, vorfilterListe, verteile, titelBereinigen, titelPruefen, uebersetzungBrauchbar, TITEL_AUFTRAG, LABEL_AUFTRAG,
   productTypeTabelle, productTypeFuer, tagsFuer, preisMinFuer, preisUrteil, fristKopf, ledgerZeile, ledgerZeileGeschrieben, variantenVerbrauch, variantenBudget,
   toreNachAnlage, kanaeleAusReferenz, kontaktbogen, cjClient, modellJson, bilderPruefen, bildAliasBauen, ladeKategorienExtra, lauf, saisonSperre, zubehoerKonflikt, istEnglisch, faktenSprachfilter, faktenBlock,
+  bestandJeVid, ledgerNeuesterStand, auswahlLedgerWaehlen, liveSortTags, hatLiveCollection, planVersion, planGueltig, planSchluessel, HANDPRUEFUNG_ZIELE, istHandpruefung, sperreHolen, shopZugang,
+  auswahlLedgerAndere, VARIANTEN_LIMIT_RE, CJ_LAUF_RE, VERTRAUEN_HAND,
 } from './grind2.mjs';
+import * as GM from './grind2.mjs';
+import * as PL from './lib/grind_plan.mjs';
+import * as DB from './lib/grind_dubletten.mjs';
 import { ledgerGedaechtnis } from './lib/varianten_sicherheit.mjs';
+import { KATEGORIEN } from './lib/kategorien.mjs';
 import { baueIndex } from './lib/grind_dubletten.mjs';
 import { preiseFuerVarianten } from './lib/grind_preis.mjs';
 
@@ -282,7 +288,11 @@ ist('Vorfilter: ...im Fenster (Monat 9) geht sie durch; ohne Monat wird nicht ge
 const WEBCAMS = 'Cameras & Optics > Cameras > Webcams';
 ist('Zubehör: «Abdeckung» im Titel, Pfad nennt das Gerät → Konflikt (der Fall der ersten Probe)', zubehoerKonflikt({ titel: 'Webcam Laptop Linse Tablet Privatsphäre Kamera Abdeckung', cjName: 'Webcam cover', pfad: WEBCAMS }), { wort: 'abdeckung', quelle: 'Titel' });
 ist('Zubehör: Wortende zählt auch in Zusammensetzungen («Kameraabdeckung»)', zubehoerKonflikt({ titel: 'Kameraabdeckung', pfad: WEBCAMS })?.wort, 'abdeckung');
-ist('Zubehör: Zubehörwort nur im englischen CJ-Namen', zubehoerKonflikt({ titel: 'Webcam Schutz', cjName: 'Webcam Privacy Cover Slider', pfad: WEBCAMS }), { wort: 'cover', quelle: 'CJ-Name' });
+ist('Zubehör: Zubehörwort nur im englischen CJ-Namen (Kopfglied «… Cover»)', zubehoerKonflikt({ titel: 'Webcam Schutz', cjName: 'Webcam Privacy Cover', pfad: WEBCAMS }), { wort: 'cover', quelle: 'CJ-Name' });
+ist('Zubehör: Fälle der Probe fallen weiter durch (Sticker/Schieber, Halterung, Ständer)', ['Webcam Laptop Linse Sticker Tablet Kamera Telefon Schieber', 'Halterung für Webcam', 'Webcam Ständer'].map(t => zubehoerKonflikt({ titel: t, pfad: WEBCAMS })?.wort), ['sticker', 'halterung', 'ständer']);
+ist('Zubehör: Beigaben nach «mit» sind keine Sperre (Mikrofon mit Stativ, Beamer mit Halterung, Schale mit Holzdeckel)', [zubehoerKonflikt({ titel: 'USB Kondensator-Mikrofon mit Stativ', cjName: 'USB Condenser Microphone with Stand', pfad: 'Electronics > Audio > Audio Components > Microphones' }), zubehoerKonflikt({ titel: 'Smart Beamer mit PTZ-Halterung', cjName: 'Smart Projector with PTZ Mount', pfad: 'Electronics > Video > Projectors' }), zubehoerKonflikt({ titel: 'Keramik-Schale mit Holzdeckel', cjName: 'Ceramic Bowl with Wooden Lid', pfad: 'Home & Garden > Kitchen & Dining > Tableware > Serveware > Serving Bowls' })], [null, null, null]);
+ist('Zubehör: Kissenbezug ist die Ware («Pillow Cover»), nie Zubehör', [zubehoerKonflikt({ titel: 'Kissenbezug mit Fransen', cjName: 'Denim Ribbon Fringe Jacquard Pillow Cover', pfad: 'Home & Garden > Decor > Throw Pillows' }), zubehoerKonflikt({ titel: 'Bettbezug 200x200', cjName: 'Duvet Cover', pfad: 'Home & Garden > Linens & Bedding > Bedding' })], [null, null]);
+ist('Zubehör: Wortgrenze am Ende («Ständerlampe» ist kein Ständer), Zusammensetzungen am Ende zählen («Netzadapter»)', [zubehoerKonflikt({ titel: 'Ständerlampe Holz', pfad: 'Home & Garden > Lighting' }), zubehoerKonflikt({ titel: 'Netzadapter', pfad: 'Electronics > Computers > Laptops' })?.wort], [null, 'adapter']);
 ist('Zubehör: Pfad nennt Zubehör (Cases, Tripods …) → kein Konflikt', [zubehoerKonflikt({ titel: 'Handyhülle Etui', pfad: 'Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases' }), zubehoerKonflikt({ titel: 'Webcam Stativ', pfad: 'Cameras & Optics > Camera & Optic Accessories > Tripods' })], [null, null]);
 ist('Zubehör: eine echte Webcam («mit Mikrofon») löst nichts aus', zubehoerKonflikt({ titel: 'Full HD USB-Webcam mit Mikrofon', cjName: 'Hot Sale Full HD 1080P USB Webcam With Microphone For PC Laptop', pfad: WEBCAMS }), null);
 ist('Zubehör: «Zubehör» allein ist kein Konflikt (Küchenzubehör ist ein Hauptprodukt)', zubehoerKonflikt({ titel: 'Küchenzubehör Set', pfad: 'Home & Garden > Kitchen & Dining' }), null);
@@ -336,7 +346,7 @@ const EINGABE = {
   variants: [{ price: '14.90', file: { originalSource: 'a' }, inventoryItem: { sku: 'S1', cost: '9.00' } }, { price: '14.90', file: { originalSource: 'b' }, inventoryItem: { sku: 'S2', cost: '9.00' } }],
   files: [{}, {}, {}, {}], metafields: [{ namespace: 'mm-google-shopping', key: 'google_product_category', value: 'Cameras & Optics > Cameras > Webcams' }],
 };
-const FRISCH = () => ({ id: 'gid://shopify/Product/1', status: 'DRAFT', title: EINGABE.title, tags: [...EINGABE.tags], descriptionHtml: `<!-- ls-var-v1 --><!-- ls-fakten-v1 -->${'<li>Angabe</li>'.repeat(30)}`,
+const FRISCH = () => ({ id: 'gid://shopify/Product/1', status: 'DRAFT', title: EINGABE.title, handle: EINGABE.handle, tags: [...EINGABE.tags], descriptionHtml: `<!-- ls-var-v1 --><!-- ls-fakten-v1 -->${'<li>Angabe</li>'.repeat(30)}`,
   variantsCount: { count: 2 }, options: [{ name: 'Farbe', values: ['Weiss', 'Schwarz'] }],
   variants: { nodes: [{ sku: 'S1', price: '14.90', media: { nodes: [{ id: 'm1' }] }, inventoryItem: { unitCost: { amount: '9.00' } } }, { sku: 'S2', price: '14.90', media: { nodes: [{ id: 'm2' }] }, inventoryItem: { unitCost: { amount: '9.00' } } }] },
   media: { nodes: [{ id: 'a', status: 'READY' }, { id: 'b', status: 'READY' }, { id: 'c', status: 'READY' }, { id: 'd', status: 'READY' }] },
@@ -450,6 +460,25 @@ const keineWarte = async () => {};
   ist('Bilder: 404 fällt NICHT auf GET zurück (nur 400/403/405/501)', log.filter(([, u]) => u.endsWith('/tot.jpg')).map(([m]) => m), ['HEAD']);
 }
 
+// ── Bilder: Shopify nimmt PNG, GIF, JPEG, WEBP, HEIC bis 20 MB
+{
+  const MB = 1024 * 1024;
+  const f = async (u, init) => {
+    const kopf = (typ, groesse) => new Response(null, { status: 200, headers: { 'content-type': typ, ...(groesse ? { 'content-length': String(groesse) } : {}) } });
+    if (u.endsWith('/gross.jpg')) return kopf('image/jpeg', 30 * MB);
+    if (u.endsWith('/genau20.jpg')) return kopf('image/jpeg', 20 * MB);
+    if (u.endsWith('/knapp.jpg')) return kopf('image/jpeg', 20 * MB + 1);
+    if (u.endsWith('/heic.heic')) return kopf('image/heic', MB);
+    if (u.endsWith('/svg.svg')) return kopf('image/svg+xml', 1000);
+    if (u.endsWith('/avif.avif')) return kopf('image/avif', 1000);
+    if (u.endsWith('/webp.webp')) return kopf('image/webp', 1000);
+    throw new Error('unerwartet ' + u);
+  };
+  const r = await bilderPruefen(['gross.jpg', 'genau20.jpg', 'knapp.jpg', 'heic.heic', 'svg.svg', 'avif.avif', 'webp.webp'].map(x => 'https://c/' + x), { fetch: f });
+  ist('Bilder: bis genau 20 MB sowie HEIC und WEBP sind gut', [...r.ok].sort(), ['https://c/genau20.jpg', 'https://c/heic.heic', 'https://c/webp.webp']);
+  ist('Bilder: über 20 MB, SVG und AVIF sind schlecht, mit Grund (kein stiller FAILED-Upload später)', Object.fromEntries(r.schlecht), { 'https://c/gross.jpg': 'zu gross (30 MB, Shopify: höchstens 20 MB)', 'https://c/knapp.jpg': 'zu gross (20 MB, Shopify: höchstens 20 MB)', 'https://c/svg.svg': 'kein Bild (image/svg+xml)', 'https://c/avif.avif': 'kein Bild (image/avif)' });
+}
+
 // ── bildAliasBauen
 {
   const sig = u => (u.includes('fehl') ? null : u);
@@ -498,7 +527,7 @@ function welt(sz = {}, env = {}) {
   const e = {
     GRIND2_BEDARF: p('luecken.json'), GRIND_SKUS_DATEI: p('skus.jsonl'), LEDGER: p('dropship/grind2_ledger.txt'), FREIGABE_LEDGER: p('dropship/grind2_freigabe_ledger.txt'),
     VARIANTEN_LEDGER: p('dropship/cj_varianten_ledger.txt'), FREIGABE_DATEI: p('dropship/GRIND2-FREI.txt'), GRIND2_BEREICHE: p('keine-bereiche'), GRIND2_KATALOG: p('kein-katalog.json'),
-    PLAN_DIR: p('plan'), GRIND2_CACHE: p('cache'), CJ_FAKTEN_CACHE: p('faktenCache'), OUT: p('bericht.md'), BILDHASH: '0', ...env,
+    GRIND2_TEST: '1', INDEX_MIN_PRODUKTE: '0', AUSWAHL_LEDGER_MAX_H: '0', PLAN_DIR: p('plan'), GRIND2_CACHE: p('cache'), CJ_FAKTEN_CACHE: p('faktenCache'), OUT: p('bericht.md'), BILDHASH: '0', ...env,
   };
   const cfg = konfigAus(e, dir);
   const log = [];                                              // jede Anfrage
@@ -541,6 +570,7 @@ function welt(sz = {}, env = {}) {
       const pfad = new URL(u).pathname.replace('/api2.0/v1/', '');
       log.push({ k: 'cj', pfad });
       if (pfad === 'setting/get') return cjOk({ qpsLimit: 100 }, u);
+      if (pfad === 'product/stock/getInventoryByPid') { punkte.remaining -= 10; const pid = new URL(u).searchParams.get('pid'); return antwort({ success: true, code: 200, message: '', data: { inventories: [], variantInventories: (sz.bestand || {})[pid] || [] }, pointsInfo: { total: 70171, usedToday: 1, remaining: punkte.remaining } }); }
       if (pfad === 'product/getCategory') return cjOk(sz.baum || [{ categoryFirstName: 'Home Improvement', categoryFirstList: [{ categorySecondName: 'Outdoor Lighting', categorySecondList: [{ categoryId: 'CAT-STRING-LIGHTS', categoryName: 'String Lights' }] }] }], u);
       if (pfad === 'product/list') {
         if (sz.quotaBeiListe) return antwort({ code: 16900500, result: false, message: 'Insufficient API points' });
@@ -577,6 +607,14 @@ function welt(sz = {}, env = {}) {
         if (modus === 'usererror') return antwort({ data: { productSet: { product: null, userErrors: [{ field: ['input'], message: 'Ungültig', code: 'INVALID' }] } } });
         const id = `gid://shopify/Product/${++shop.n}`; shop.produkte.set(id, { input: v.input, status: 'DRAFT', pubs: [] });
         return antwort({ data: { productSet: { product: { id, handle: v.input.handle, status: 'DRAFT', variantsCount: { count: v.input.variants.length }, options: [], media: { nodes: [] } }, userErrors: [] } } });
+      }
+      if (q.includes('collections(first:250')) {
+        // Smart-Collections mit sort-Tag-Regeln; Vorgabe: jedes Tag der Basis-Kategorien existiert als Collection. sz.liveSort = Tag-Liste (leer = keine), sz.liveSortSeiten = [[…],[…]] (mehrere Seiten)
+        const seiten = sz.liveSortSeiten || [sz.liveSort || [...KATEGORIEN.map(k => k.tag).filter(Boolean), 'sort-test-lichterketten']];
+        const i = v.after ? Number(String(v.after).replace('cursor', '')) : 0;
+        log.push({ k: 'sammlungen', after: v.after || null });
+        const knoten = (seiten[i] || []).map(t => ({ ruleSet: { rules: [{ column: 'TAG', relation: 'EQUALS', condition: t }] } }));
+        return antwort({ data: { collections: { nodes: knoten, pageInfo: { hasNextPage: i + 1 < seiten.length, endCursor: 'cursor' + (i + 1) } } } });
       }
       if (q.includes('products(first:3')) { log.push({ k: 'sku-abfrage', q: v.q }); const sku = (v.q.match(/sku:"(.*)"/) || [])[1]; const f = (sz.fremdSku || {})[sku]; const eigene = [...shop.produkte.entries()].filter(([, s]) => s.input.variants.some(x => x.inventoryItem.sku === sku)).map(([id, s]) => ({ id, handle: s.input.handle, status: s.status, tags: s.input.tags, variantsCount: { count: s.input.variants.length } })); return antwort({ data: { products: { nodes: f ? [f] : eigene } } }); }
       if (q.includes('productByIdentifier')) { log.push({ k: 'handle-abfrage', h: v.h }); const w = (sz.vorhanden || {})[v.h]; const s = [...shop.produkte.entries()].find(([, x]) => x.input.handle === v.h); return antwort({ data: { productByIdentifier: w || (s ? { id: s[0], handle: v.h, status: s[1].status, tags: s[1].input.tags, variantsCount: { count: s[1].input.variants.length } } : null) } }); }
@@ -616,12 +654,12 @@ const lesen = p => (existsSync(p) ? readFileSync(p, 'utf8') : '');
   ist('Probe: Titel und Google-Pfad je Kandidat', zeilen.map(z => [z.titel, z.google]), [['Full HD USB-Webcam mit Mikrofon', 'Cameras & Optics > Cameras > Webcams'], ['Solarbetriebene Lichterkette für den Garten', 'Home & Garden > Lighting > Light Ropes & Strings']]);
   wahr('Probe: Webcam hat sort-Tags aus den live bekannten Kategorien (KATEGORIEN)', zeilen[0].sortTags.length > 0 && zeilen[0].sortTags.every(t => t.startsWith('sort-')));
   ist('Probe: Lichterkette bekommt den Tag aus der übergebenen Bereichskategorie nicht allein (kein Muss), aber mindestens einen sort-Tag', zeilen[1].sortTags.length > 0, true);
-  ist('Probe: Tore 22 von 22 beim Endplan', zeilen.map(z => z.tore), [{ ok: 22, gesamt: 22, falsch: [] }, { ok: 22, gesamt: 22, falsch: [] }]);
+  ist('Probe: Tore 23 von 23 beim Endplan', zeilen.map(z => z.tore), [{ ok: 23, gesamt: 23, falsch: [] }, { ok: 23, gesamt: 23, falsch: [] }]);
   ist('Probe: Preise und Marge stehen im Kontaktbogen (Einstand = (EK + Fracht 4.20) × 0.82435, auf Rappen)', zeilen.map(z => [z.frachtUsd, z.einstandMin, z.preisMin]), [[4.2, 8.0, 14.9], [4.2, 6.1, 14.9]]);
   wahr('Probe: Marge mindestens 30 %', zeilen.every(z => z.margeMin >= 0.3));
   ist('Probe: Auswahl wird gebaut (Webcam Farbe 2; Lichterkette Farbe × Länge, «Warm White» wurde per KI übersetzt)', zeilen.map(z => z.optionen), ['Farbe 2', 'Farbe 2 × Länge 2']);
-  ist('Probe: Punkte nach Preisliste: 3 Listen (150) + Baum (0, gemessen) + 2 Abfragen (20) + 2 Frachten (20)', [W.punkte.remaining, 40000 - W.punkte.remaining], [39810, 190]);
-  ist('Probe: Bericht nennt Start, Ende, eigene Aufrufe', [r.bericht.punkte.start, r.bericht.punkte.ende, r.bericht.punkte.eigene], [40000, 39810, 190]);
+  ist('Probe: Punkte nach Preisliste: 3 Listen (150) + Baum (0, gemessen) + 2 Abfragen (20) + 2 Lagerabfragen (20) + 2 Frachten (20)', [W.punkte.remaining, 40000 - W.punkte.remaining], [39790, 210]);
+  ist('Probe: Bericht nennt Start, Ende, eigene Aufrufe', [r.bericht.punkte.start, r.bericht.punkte.ende, r.bericht.punkte.eigene], [40000, 39790, 210]);
   const md = lesen(W.cfg.pfade.out);
   wahr('Probe: Kontaktbogen-Datei mit beiden Kandidaten und Betriebsart', md.includes('probe') && md.includes('Solarbetriebene Lichterkette für den Garten') && md.includes('Full HD USB-Webcam mit Mikrofon') && md.includes('## Vorfilter'));
   ist('Probe: Plan-Dateien liegen im Zwischenspeicher', [existsSync(join(W.cfg.pfade.planDir, '2000000000000000001.json')), existsSync(join(W.cfg.pfade.planDir, '2000000000000000002.json'))], [true, true]);
@@ -1090,6 +1128,964 @@ function handleVon(titel, pid) { return `${titel.toLowerCase().replace(/ß/g, 's
   const r3 = await faktenBlock(webcam(), 'Webcam', { fetch: async () => (++n === 1 ? antwort({}, 500) : gem(reich)), geminiKey: 'g', groqKey: '', warte: keineWarte });
   ist('faktenBlock: der zweite Versuch gelingt', [r3.ok, n], [true, 2]);
 }
+
+
+
+
+// >>> EINSCHUB PRUEFUNG-2710 (von spleisse.mjs)
+
+// ═══════════════════════════ PRÜFUNG 27.10.2026, TEIL I: reine Funktionen ═══════════════════════════
+// Jeder Fund der drei unabhängigen Prüfungen (Schnittstellen, Geld/Sicherheit, Qualität) hat hier oder im Lauf-Teil darunter einen Test, der auf dem alten Code rot war.
+
+// ── Konfiguration: unsinnige Werte werfen (Geld F4/F13), neue Schalter
+{
+  const c = konfigAus({}, '/x');
+  ist('Vorgaben: Fracht-Klassen 4, Lieferzeit 20 Tage, Bestand wird geprüft, Index mindestens 50 000 Produkte, Auswahl-Ledger höchstens 14 h alt', [c.frachtKlassen, c.maxTage, c.bestandPruefen, c.indexMin, c.auswahlLedgerMaxH], [4, 20, true, 50000, 14]);
+  ist('BESTAND_PRUEFEN=0 schaltet die Lagerabfrage ab (nur zum Sparen im Trockenlauf)', konfigAus({ BESTAND_PRUEFEN: '0' }, '/x').bestandPruefen, false);
+  wirft('AUFSCHLAG=1 wirft (Marge 2,5 %, Preis 28.90 bei Kosten 28.19 — gemessen)', () => konfigAus({ AUFSCHLAG: '1' }), /AUFSCHLAG/);
+  wirft('AUFSCHLAG=1.1 wirft (Marge 11,6 %)', () => konfigAus({ AUFSCHLAG: '1.1' }), /AUFSCHLAG/);
+  ist('AUFSCHLAG=1.34 (kleinste Marge 25,4 %) ist die Untergrenze und geht', konfigAus({ AUFSCHLAG: '1.34' }, '/x').aufschlag, 1.34);
+  wirft('USD_CHF=0.5 wirft (unitCost 17.10 bei wahren Landekosten 28.19)', () => konfigAus({ USD_CHF: '0.5' }), /USD_CHF/);
+  wirft('USD_CHF=1.5 wirft', () => konfigAus({ USD_CHF: '1.5' }), /USD_CHF/);
+  wirft('GRIND_RESERVE=0 wirft (die Reserve schützt den Auswahl-Lauf)', () => konfigAus({ GRIND_RESERVE: '0' }), /GRIND_RESERVE/);
+  wirft('TAGESLIMIT=50000 wirft (Shopify erlaubt 10 000 je 24 h)', () => konfigAus({ TAGESLIMIT: '50000' }), /TAGESLIMIT/);
+  wirft('GESAMT_MAX=20000 wirft', () => konfigAus({ GESAMT_MAX: '20000' }), /GESAMT_MAX/);
+  wirft('FRACHT_KLASSEN=0 wirft', () => konfigAus({ FRACHT_KLASSEN: '0' }), /FRACHT_KLASSEN/);
+  wirft('FRACHT_KLASSEN=7 wirft (jede Klasse kostet 10 CJ-Punkte; höchstens 6 Messungen je Produkt)', () => konfigAus({ FRACHT_KLASSEN: '7' }), /FRACHT_KLASSEN/);
+  ist('FRACHT_KLASSEN=6 und MAX_LIEFERTAGE=5/90 liegen noch in der Spanne', [konfigAus({ FRACHT_KLASSEN: '6' }).frachtKlassen, konfigAus({ MAX_LIEFERTAGE: '5' }).maxTage, konfigAus({ MAX_LIEFERTAGE: '90' }).maxTage], [6, 5, 90]);
+  wirft('MAX_LIEFERTAGE=91 wirft (ein Lieferversprechen über 90 Tage ist keins)', () => konfigAus({ MAX_LIEFERTAGE: '91' }), /MAX_LIEFERTAGE/);
+  ist('Handsicht-Schwelle ist 0,7 (gemessen: unter 0,7 nur 58 % exakt, ab 0,7 89,9 %)', VERTRAUEN_HAND, 0.7);
+  wirft('MAX_LIEFERTAGE=2 wirft (kein Versand ist so schnell)', () => konfigAus({ MAX_LIEFERTAGE: '2' }), /MAX_LIEFERTAGE/);
+  ist('F13: FREIGABE_DATEI wirkt nur mit GRIND2_TEST=1 (sonst genügte jede vorhandene Datei als «Freigabe»)', [konfigAus({ FREIGABE_DATEI: '/etc/hostname' }, '/x').pfade.freigabeDatei, konfigAus({ FREIGABE_DATEI: '/etc/hostname', GRIND2_TEST: '1' }, '/x').pfade.freigabeDatei], ['/x/dropship/GRIND2-FREI.txt', '/etc/hostname']);
+}
+
+// ── Preisurteil: hartes Margen- und Kurs-Tor
+{
+  const cfg = konfigAus({}, '/x');
+  const p = (extra = {}) => ({ ok: true, varianten: [{ ok: true, kosten: 28 }], maxPreis: 40.9, margeMin: 0.311, flaggen: [], ...extra });
+  ist('Marge 31,1 % geht durch', preisUrteil(p(), cfg).ok, true);
+  ist('Marge genau 25 % geht durch, 24,9 % nicht (hartes Tor, Grenze scharf)', [preisUrteil(p({ margeMin: 0.25 }), cfg).ok, preisUrteil(p({ margeMin: 0.249 }), cfg).ok], [true, false]);
+  ist('Marge 10 % (AUFSCHLAG=1.1) wird gesperrt, zurückgestellt', (r => [r.ok, r.frist, /Bruttomarge 10\.0 %/.test(r.grund)])(preisUrteil(p({ margeMin: 0.1 }), cfg)), [false, 'zurueckgestellt', true]);
+  ist('Marge unlesbar (null/fehlt/NaN) gilt als zu klein — nie raten', [preisUrteil(p({ margeMin: null }), cfg).ok, preisUrteil(p({ margeMin: undefined }), cfg).ok, preisUrteil(p({ margeMin: NaN }), cfg).ok], [false, false, false]);
+  ist('Flagge kurs_ungewoehnlich sperrt (Preise und unitCost wären falsch)', (r => [r.ok, /Kurs/.test(r.grund)])(preisUrteil(p({ flaggen: ['kurs_ungewoehnlich'] }), cfg)), [false, true]);
+  ist('Flagge marge_unter_30 allein sperrt NICHT (sie warnt im Kontaktbogen; gesperrt wird unter 25 %)', preisUrteil(p({ margeMin: 0.27, flaggen: ['marge_unter_30'] }), cfg).ok, true);
+  ist('Weggelassene Varianten (ok:false) zählen nicht beim Mindest-Einstand', preisUrteil(p({ varianten: [{ ok: false, kosten: 0.5 }, { ok: true, kosten: 28 }] }), cfg).ok, true);
+  ist('Ohne eine einzige gültige Variante: nicht anlegen', preisUrteil(p({ varianten: [{ ok: false, kosten: 28 }] }), cfg).ok, false);
+}
+
+// ── Lagerbestand: je vid, nur das CN-Lager, unbekannt ist nie 0 (Schnittstellen 6)
+{
+  const inv = (vid, zeilen) => ({ vid, inventory: zeilen });
+  const cn = n => ({ countryCode: 'CN', totalInventory: n, cjInventory: 0, factoryInventory: n });
+  const a = { success: true, code: 200, data: { inventories: [], variantInventories: [inv('v1', [cn(500)]), inv('v2', [cn(0)]), inv('v3', [{ countryCode: 'DE', totalInventory: 80 }]), inv('v4', [cn(20), cn(30)]), inv('v5', [{ countryCode: 'CN', totalInventory: null }]), inv('v6', [{ countryCode: 'CN', totalInventory: '7' }]), { vid: 7, inventory: [cn(3)] }, inv('v8', 'kaputt')] } };
+  const m = bestandJeVid(a);
+  ist('bestandJeVid: CN-Bestand je vid; DE-Bestand zählt nicht; mehrere CN-Zeilen werden addiert; Textzahl geht', [m.get('v1'), m.get('v2'), m.get('v4'), m.get('v6')], [500, 0, 50, 7]);
+  ist('bestandJeVid: ohne CN-Zeile, mit unlesbarer Zahl, mit Zahl als vid oder kaputter Liste fehlt die vid (unbekannt, nie 0)', [m.has('v3'), m.has('v5'), m.has(7), m.has('v8')], [false, false, false, false]);
+  ist('bestandJeVid: unbekannte Form ergibt null (kein Urteil)', [bestandJeVid(null), bestandJeVid({ data: null }), bestandJeVid({ data: { variantInventories: 'x' } })], [null, null, null]);
+  ist('bestandJeVid: eine fremde vid in der Antwort stört nicht (getInventoryByPid nennt mehr vids als product/query)', bestandJeVid({ data: { variantInventories: [inv('fremd', [cn(1)])] } }).get('fremd'), 1);
+  const echt = '/tmp/grind2/raw/20_stock_getInventoryByPid.json';
+  if (existsSync(echt)) { const e = bestandJeVid(JSON.parse(readFileSync(echt, 'utf8'))); ist('bestandJeVid gegen die ECHTE Rohantwort (26.10.2026): 9 vids, alle mit CN-Bestand', [e.size, [...e.values()].every(x => x > 0)], [9, true]); }
+}
+
+// ── Auswahl-Ledger: der jüngste Stand zählt (Geld F14)
+{
+  ist('ledgerNeuesterStand: jüngster Zeitstempel, unlesbare Zeilen zählen nicht', ledgerNeuesterStand('a · 2026-10-27T01:00:00.000Z · GESCHRIEBEN · 3 Varianten\nkaputt\nb · 2026-10-27T05:00:00.000Z · GESCHRIEBEN · 4 Varianten\nc · gestern · x'), Date.parse('2026-10-27T05:00:00.000Z'));
+  ist('ledgerNeuesterStand: leer = 0', [ledgerNeuesterStand(''), ledgerNeuesterStand(null)], [0, 0]);
+  const alt = 'x · 2026-10-26T12:08:00.000Z · GESCHRIEBEN · 88 Varianten', neu = 'x · 2026-10-27T06:07:00.000Z · GESCHRIEBEN · 4508 Varianten';
+  const w = auswahlLedgerWaehlen([{ quelle: 'Arbeitsbaum', text: alt }, { quelle: 'Hauptrepo', text: neu }]);
+  ist('auswahlLedgerWaehlen: der Hauptrepo-Stand (4 508 Varianten) schlägt den veralteten Arbeitsbaum (88)', [w.quelle, w.text === neu, w.alleQuellen.map(q => q.quelle)], ['Hauptrepo', true, ['Arbeitsbaum', 'Hauptrepo']]);
+  ist('auswahlLedgerWaehlen: bei gleichem Stand gewinnt der längere Text, ohne Kandidaten bleibt ein leerer Stand', [auswahlLedgerWaehlen([{ quelle: 'a', text: alt }, { quelle: 'b', text: alt + '\n' }]).quelle, auswahlLedgerWaehlen([]).stand], ['b', 0]);
+  ist('auswahlLedgerAndere: VARIANTEN_LEDGER_ALT (Komma-Liste), der eigene Pfad fällt heraus, kein git bei ausdrücklichem VARIANTEN_LEDGER', auswahlLedgerAndere({ VARIANTEN_LEDGER: '/a/led.txt', VARIANTEN_LEDGER_ALT: '/b/led.txt, /a/led.txt, /c/led.txt' }, '/wurzel'), ['/b/led.txt', '/c/led.txt']);
+  ist('auswahlLedgerAndere: ohne Angaben und ohne git-Repo (Test) nichts', auswahlLedgerAndere({ GRIND2_TEST: '1' }, '/wurzel-ohne-git'), []);
+}
+
+// ── Live-Sammlungen (Qualität 1)
+{
+  const live = liveSortTags([{ ruleSet: { rules: [{ column: 'TAG', relation: 'EQUALS', condition: 'sort-bueroelektronik' }] } }, { ruleSet: { rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'sort-x' }] } }, { ruleSet: { rules: [{ column: 'TITLE', relation: 'EQUALS', condition: 'sort-y' }] } }, { ruleSet: { rules: [{ column: 'TAG', relation: 'EQUALS', condition: 'kein-sort-tag' }] } }, { ruleSet: null }, null]);
+  ist('liveSortTags: nur Spalte TAG, Beziehung EQUALS und Präfix sort- zählen', [[...live], live.size], [['sort-bueroelektronik'], 1]);
+  ist('liveSortTags: Spalte TAG mit anderer Beziehung (CONTAINS, STARTS_WITH, NOT_EQUALS) führt auf keine Kategorieseite und zählt nicht', [...liveSortTags([{ ruleSet: { rules: [{ column: 'TAG', relation: 'CONTAINS', condition: 'sort-z' }, { column: 'TAG', relation: 'STARTS_WITH', condition: 'sort-q' }, { column: 'TAG', relation: 'NOT_EQUALS', condition: 'sort-n' }] } }])], []);
+  ist('hatLiveCollection: ein Tag mit Collection genügt; ohne eines nicht; leere Liste nicht', [hatLiveCollection(['sort-webcams-uebersetzer-rechner', 'sort-bueroelektronik'], live), hatLiveCollection(['sort-smartwatches', 'sort-smartwatches-anruf'], live), hatLiveCollection([], live)], [true, false, false]);
+}
+
+// ── Planversion (Qualität 9)
+{
+  const v1 = planVersion(['a', 'b']), v2 = planVersion(['a', 'c']);
+  ist('planVersion/planGueltig: andere Inhalte = andere Version; Plan ohne oder mit alter Version ist ungültig', [v1 !== v2, planGueltig({ v: v1 }, v1), planGueltig({ v: v1 }, v2), planGueltig({}, v1), planGueltig(null, v1)], [true, true, false, false, false]);
+  const c = konfigAus({}, '/x');
+  ist('planSchluessel: gleiche Einstellungen = gleicher Schlüssel; Kurs, Aufschlag, Lieferzeit und Fracht-Klassen ändern ihn', [planSchluessel(c) === planSchluessel(konfigAus({}, '/y')), ...[{ USD_CHF: '0.9' }, { AUFSCHLAG: '1.6' }, { MAX_LIEFERTAGE: '12' }, { FRACHT_KLASSEN: '2' }, { MAX_PREIS: '60' }, { BESTAND_PRUEFEN: '0' }].map(e => planSchluessel(konfigAus(e, '/x')) !== planSchluessel(c))], [true, true, true, true, true, true, true]);
+}
+
+// ── Handprüfung: Kinder- und Babyware nie automatisch (Geld, offen)
+{
+  ist('HANDPRUEFUNG_ZIELE: Wickelunterlagen, 3D-Stifte, Kinderuhren, Motorradhelm-Headsets', Object.keys(HANDPRUEFUNG_ZIELE).sort(), ['3dstifte', 'kinderuhren', 'motorradheadset', 'wickelunterlagen']);
+  ist('istHandpruefung: die vier Ziele, jedes Ziel mit Baby/Kind/Knopfzelle in Risiko oder Auflage; ein harmloses nicht', [istHandpruefung({ id: 'wickelunterlagen' }), istHandpruefung({ id: 'neu', risiko: 'Knopfzelle (Kinder-Sicherheit)' }), istHandpruefung({ id: 'neu', auflage: 'Alterskennzeichnung Kinderprodukt' }), istHandpruefung({ id: 'neu2', risiko: 'Babyprodukt' }), istHandpruefung({ id: 'webcams', risiko: 'Markenwettbewerb (Logitech)', auflage: 'ohne Funk (nur USB)' })], [true, true, true, true, false]);
+  const l = { ziele: [{ id: 'wickelunterlagen', name: 'W', rang: 1, welle: '1', ziel: 45, luecke: 44, cj: '', cjSuche: 'x' }, { id: 'webcams', name: 'C', rang: 2, welle: '1', ziel: 45, luecke: 40, cj: '', cjSuche: 'y' }, { id: 'kinderuhren', name: 'K', rang: 3, welle: 'S (Saison jetzt)', ziel: 45, luecke: 20, cj: '', cjSuche: 'z', risiko: 'Knopfzelle (Kinder-Sicherheit)' }] };
+  ist('Bedarf: Handprüfung-Ziele bekommen Welle R und kommen nie in die automatische Auswahl (auch nicht als Saison-Ziel)', bedarfAus(l).map(z => z.id), ['webcams']);
+  ist('Bedarf: ausdrücklich gewählt bleibt es möglich (DRAFTs zur Handprüfung), mit Welle R', bedarfAus(l, { ziele: ['wickelunterlagen'] }).map(z => [z.id, z.welle]), [['wickelunterlagen', 'R']]);
+}
+
+// ── Sperre gegen zwei gleichzeitige LIVE-Läufe (Geld F6)
+{
+  const f = join(mkdtempSync(join(tmpdir(), 'lk-')), 'x.lock'), t0 = Date.now();
+  ist('Sperre: der erste holt sie, der zweite nicht, nach 3 h gilt sie als Überrest eines abgestürzten Laufs', [sperreHolen(f, t0), sperreHolen(f, t0 + 1000), sperreHolen(f, t0 + 4 * 3600e3)], [true, false, true]);
+  writeFileSync(f, 'kein json');
+  ist('Sperre: eine unlesbare Sperrdatei gilt als Überrest', sperreHolen(f, t0), true);
+  rmSync(dirname(f), { recursive: true, force: true });
+}
+
+// ── Zugangsdaten gehen nur an eine geprüfte Adresse (Schnittstellen 11)
+{
+  const anfragen = [];
+  const spion = async (url, init) => { anfragen.push(String(url)); return antwort({ access_token: 'tok' }); };
+  const env = { SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim' };
+  await wirftAsync('shopZugang: fremde Adresse wirft, BEVOR client_id/client_secret gesendet werden', () => shopZugang({}, spion, { ...env, SHOPIFY_SHOP: 'evil.example.com' }), /SHOPIFY_HOST/);
+  await wirftAsync('shopZugang: myshopify.com mit Pfad/Zugangsdaten in der URL wirft', () => shopZugang({}, spion, { ...env, SHOPIFY_SHOP: 'https://user:pw@x.myshopify.com/' }), /SHOPIFY_HOST/);
+  ist('shopZugang: nach den Fehlversuchen wurde NICHTS gesendet', anfragen.length, 0);
+  await shopZugang({}, spion, { ...env, SHOPIFY_SHOP: 'https://Test-Shop.myshopify.com/' });
+  ist('shopZugang: gültige Adresse (auch mit https:// und Grossschreibung) geht an den Token-Endpunkt der normalisierten Domain', anfragen, ['https://test-shop.myshopify.com/admin/oauth/access_token']);
+  anfragen.length = 0;
+  await shopZugang({ shopToken: 'tok', shop: 'a.myshopify.com' }, spion, env);
+  ist('shopZugang: mit fertigem Token (Tests) kein Token-Aufruf', anfragen.length, 0);
+}
+
+// ── Handsicht-Hinweis im Lauf: ein Google-Pfad aus einer Handregel ohne Shop-Beleg (oder unter 70 %) steht mit Grund im Hinweis der Zeile; ein belegter Pfad (80 %) nicht
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams,lichterketten', LIMIT: '4' });
+  const r = await lauf(W.cfg, W.io);
+  const z = Object.fromEntries(r.bericht.zeilen.map(x => [/Webcam/.test(x.titel) ? 'webcam' : 'kette', x]));
+  ist('Handsicht: Webcam-Pfad aus Handregel ohne Shop-Beleg → Hinweis «von Hand ansehen» mit Grund', [z.webcam.googleSicherheit, z.webcam.vertrauen, /Google-Pfad von Hand ansehen \(Regel ohne Shop-Beleg\)/.test(z.webcam.hinweis || '')], ['titel', null, true]);
+  ist('Handsicht: Lichterketten-Pfad mit Vertrauen 80 % → kein Hinweis, das Urteil bleibt PLAN', [z.kette.vertrauen, /Von Hand ansehen/i.test(z.kette.hinweis || ''), z.kette.entscheid], [0.8, false, 'PLAN: alle Tore bestanden']);
+  W.weg();
+}
+
+// ── Kontaktbogen zeigt Fracht-Spanne, Vertrauen und Hinweise
+{
+  const md = kontaktbogen([{ titel: 'T', zielName: 'Z', blatt: 'B', frachtMin: 6.77, frachtUsd: 49.44, frachtLinie: 'CJPacket Ordinary VIP', preisMin: 14.9, preisMax: 63.9, margeMin: 0.31, varianten: 4, googleSicherheit: 'titel', vertrauen: 0.58, google: 'A > B', entscheid: 'PLAN', hinweis: '1 Variante ohne Bestand weggelassen' }], {});
+  ist('Kontaktbogen: Fracht 6.77–49.44, Vertrauen 58 %, Hinweis hinter dem Entscheid', [md.includes('6.77–49.44'), md.includes('[titel 58 %]'), md.includes('PLAN — 1 Variante ohne Bestand weggelassen')], [true, true, true]);
+}
+
+// ── Vorfilter: Fremdstecker/110 V, Laser/Medizin/Pyro schon im englischen Namen (Geld F7/F8)
+{
+  ist('Sperrwort: Fremdstecker und 110 V im Namen', [sperrwort('Electric Heater 110V US Plug'), sperrwort('Hair Dryer 1800W AU Plug'), sperrwort('Wall Charger 65W GaN UK Plug')].map(x => /Fremdstecker/.test(x ?? '')), [true, true, true]);
+  ist('Sperrwort: Laser-Taschenlampe, Blutdruckmessgerät, Hörgerät, Pulsoximeter, Pfefferspray, Feuerwerk', ['Tactical Flashlight with Laser', 'Blood Pressure Monitor Upper Arm', 'Rechargeable Hearing Aid', 'Fingertip Pulse Oximeter', 'Pepper Spray Keychain', 'Firework Smoke Bomb'].map(x => /heikel/.test(sperrwort(x) ?? '')), [true, true, true, true, true, true]);
+  ist('Sperrwort: keine Fehlalarme (110-240V Weitbereich, Laser-Entfernungsmesser, Laser-Gravur, abnehmbar, Mediziner)', ['Travel Charger 110-240V', 'Laser Distance Meter 40m', 'Laser Engraver Machine', 'Removable Hip Bag', 'Doctor Costume'].map(x => sperrwort(x)), [null, null, null, null, null]);
+}
+
+
+// ═══════════════════════════ PRÜFUNG 27.10.2026, TEIL II: der ganze Lauf gegen das simulierte Netz ═══════════════════════════
+const frei = W => writeFileSync(W.cfg.pfade.freigabeDatei, 'frei');
+/** Anfrage abfangen: f(url, init, echt) liefert eine Antwort oder undefined (dann geht sie ans simulierte Netz). */
+const mit = (W, f) => { const echt = W.io.fetch; W.io.fetch = async (u, init = {}) => { const r = await f(String(u), init, echt); return r === undefined ? echt(u, init) : r; }; };
+const gqlText = init => { try { return JSON.parse(init.body).query || ''; } catch { return ''; } };
+const gqlVars = init => { try { return JSON.parse(init.body).variables || {}; } catch { return {}; } };
+const istGql = u => /graphql\.json/.test(u);
+const invCn = (vid, n) => ({ vid, inventory: [{ countryCode: 'CN', totalInventory: n, cjInventory: 0, factoryInventory: n }] });
+const linie = (name, preis, tage) => ({ logisticName: name, logisticPrice: preis, logisticAging: tage, totalPostageFee: preis });
+const zeilenTypen = pfad => lesen(pfad).trim().split('\n').filter(Boolean).map(z => z.split(' · ')[2]);
+
+// ── Schnittstellen 1: productSet-Tagesdrossel als HTTP 429 (die Doku) UND als «Daily variant creation limit» im GraphQL-Fehler → beides Exit 4, nie FEHLER-Zeilen
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  let versuche = 0;
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('productSet(')) { versuche++; return antwort({ errors: 'Too Many Requests' }, 429); } });
+  const r = await lauf(W.cfg, W.io);
+  ist('productSet bleibt bei HTTP 429: Exit 4 (Variantenlimit), der Lauf endet nach dem ersten Produkt', [r.exit, r.bericht.hinweise.some(h => /ABBRUCH.*Tageslimit/.test(h)), versuche > 0], [EXIT.VARIANTEN, true, true]);
+  ist('...das ist kein Fehler des Produkts: weder FEHLER noch GESCHRIEBEN im Ledger (jedes Produkt einzeln zu verbuchen kostete je ~46 s Wartezeit)', [lesen(W.cfg.pfade.ledger).includes('FEHLER'), lesen(W.cfg.pfade.ledger).includes('GESCHRIEBEN'), r.bericht.zaehl.FEHLER ?? 0], [false, false, 0]);
+  W.weg();
+}
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('productSet(')) return antwort({ errors: [{ message: 'Daily variant creation limit reached. Try again in 24 hours.' }] }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('productSet mit GraphQL-Fehler «Daily variant creation limit»: ebenfalls Exit 4', r.exit, EXIT.VARIANTEN);
+  W.weg();
+}
+ist('VARIANTEN_LIMIT_RE und CJ_LAUF_RE erkennen die Fehlertexte, die der Lauf wirft', [VARIANTEN_LIMIT_RE.test('VARIANT_THROTTLE: HTTP 429 bleibt bestehen'), VARIANTEN_LIMIT_RE.test('Daily variant creation limit reached'), CJ_LAUF_RE.test('CJ_QUOTA: code=16900500 (query)'), CJ_LAUF_RE.test('CJ_THROTTLED: code=1600200 bleibt bestehen (liste)')], [true, true, true, true]);
+
+// ── Schnittstellen 2: CJ-Drosselung (1600200) und leere Punkte (16900500) als HTTP-200-Antwort beenden den Lauf mit Exit 3, statt jedes Produkt zu einer FEHLER-Zeile zu machen
+{
+  const W = welt(standardSz(), { LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  let n = 0;
+  mit(W, async u => { if (/product\/query/.test(u)) { n++; return antwort({ code: 1600200, result: false, message: 'Too Many Requests', data: null, pointsInfo: { remaining: 39000 } }); } });
+  const r = await lauf(W.cfg, W.io);
+  ist('product/query mit code 1600200 (HTTP 200): Exit 3, höchstens ein Produkt als FEHLER verbucht, der Lauf wirft nicht', [r.exit, (r.bericht.zaehl.FEHLER ?? 0) <= 1, n >= 3], [EXIT.CJ, true, true]);
+  W.weg();
+}
+{
+  const W = welt(standardSz(), { LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  mit(W, async u => { if (/product\/list/.test(u)) return antwort({ code: 1600200, result: false, message: 'Too Many Requests', data: null }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('product/list mit code 1600200 (HTTP 200): Exit 3 statt Absturz', r.exit, EXIT.CJ);
+  W.weg();
+}
+{
+  const W = welt(standardSz(), { LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  mit(W, async u => { if (/product\/list/.test(u)) return antwort({ code: 1600200, result: false, message: 'Too Many Requests' }, 429); });
+  const r = await lauf(W.cfg, W.io);
+  ist('product/list mit HTTP 429 dauerhaft: Exit 3', r.exit, EXIT.CJ);
+  W.weg();
+}
+{
+  const W = welt(standardSz(), { LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  mit(W, async u => { if (/product\/query/.test(u)) return antwort({ code: 16900500, result: false, message: 'Quota gone', data: null }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('Punkte leer als code 16900500 (ohne die Wörter «insufficient points» in der Meldung): Exit 3, kein FEHLER-Haufen', [r.exit, r.bericht.zaehl.FEHLER ?? 0], [EXIT.CJ, 0]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIMIT: '4', ZIELE: 'webcams' });
+  mit(W2, async u => { if (/freightCalculate/.test(u)) return antwort({ code: 16900500, result: false, message: 'Quota gone', data: null }); });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('...auch bei der Fracht-Abfrage: Exit 3', r2.exit, EXIT.CJ);
+  W2.weg();
+}
+
+// ── Schnittstellen 3 / Geld F2, F3: ein Ausfall NACH dem Anlegen verliert das Produkt nicht und lässt kein ungeprüftes Produkt live
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('product(id:$id)')) return antwort({}, 500); });
+  let fehler = null, r;
+  try { r = await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+  ist('Tore-Abfrage HTTP 500 nach productSet: der Lauf wirft nicht, geht mit dem nächsten Produkt weiter, beide stehen als GESCHRIEBEN im Ledger', [fehler, r?.exit, W.aus('productSet').length, zeilenTypen(W.cfg.pfade.ledger)], [null, 0, 2, ['GESCHRIEBEN', 'GESCHRIEBEN']]);
+  ist('...beide bekommen im Freigabe-Ledger ein FEHLER und den Tag grind2-tor-fehler (kein Entwurf bleibt ohne Urteil)', [zeilenTypen(W.cfg.pfade.freigabeLedger), W.aus('tagsAdd').map(x => x.t[0]), r?.bericht.zaehl.TOR_AUSFALL], [['FEHLER', 'FEHLER'], ['grind2-tor-fehler', 'grind2-tor-fehler'], 2]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4', MAX_FEHLER_FOLGE: '1' }); frei(W2);
+  mit(W2, async (u, init) => { if (istGql(u) && gqlText(init).includes('product(id:$id)')) return antwort({}, 500); });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('...bei MAX_FEHLER_FOLGE=1 endet der Lauf nach dem ersten Ausfall mit Exit 1 (ein Dienst scheint auszufallen)', [r2.exit, W2.aus('productSet').length], [EXIT.FEHLER, 1]);
+  W2.weg();
+}
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('publishablePublish')) return antwort({}, 500); });
+  let fehler = null, r;
+  try { r = await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+  ist('publishablePublish HTTP 500 nach ACTIVE: der Lauf wirft nicht, BEIDE Produkte stehen wieder auf DRAFT (kein ACTIVE ohne Kanal)', [fehler, [...W.shop.produkte.values()].map(s => s.status), r?.exit], [null, ['DRAFT', 'DRAFT'], 0]);
+  ist('...das Freigabe-Ledger sagt ZURUECK (die Rücknahme ist bestätigt), nicht FREI', [zeilenTypen(W.cfg.pfade.freigabeLedger)], [['FREI', 'ZURUECK', 'FREI', 'ZURUECK']]);
+  W.weg();
+}
+
+{
+  // Das Tageslimit für neue Varianten meldet sich beim Lesen nach dem Anlegen: der Lauf endet mit Exit 4 (VARIANTEN), es ist kein «Tore nicht möglich»-Ausfall
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('product(id:$id)')) return antwort({ errors: [{ message: 'Daily variant creation limit reached' }] }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('Tageslimit beim Lesen der Tore: Exit 4, nur EIN Produkt angelegt, kein TOR_AUSFALL', [r.exit, W.aus('productSet').length, r.bericht.zaehl.TOR_AUSFALL ?? 0], [EXIT.VARIANTEN, 1, 0]);
+  W.weg();
+}
+{
+  // Ausfälle nach dem Anlegen zählen IN FOLGE: Ausfall, Erfolg, Ausfall bei MAX_FEHLER_FOLGE=2 stoppt den Lauf nicht
+  const sz = standardSz();
+  // zwei weitere Webcams (eigene pid, SKU, vid, Bilder, Titel), damit ein Lauf drei Produkte anlegt
+  const extra = n => {
+    const w = webcam('200000000000000000' + n);
+    w.productSku = 'CJTS765432' + n; w.productNameEn = `Pro ${n}K USB Webcam With Microphone For PC Laptop`;
+    w.variants = w.variants.map((v, k) => ({ ...v, vid: `20000000000000003${n}${k}`, variantSku: `CJTS765432${n}0${k + 1}AZ`, variantImage: img(`w${n}v${k}`) }));
+    w.bigImage = img(`w${n}1`); w.productImage = JSON.stringify([1, 2, 3, 4, 5].map(m => img(`w${n}${m}`)));
+    sz.produkte[w.pid] = w; sz.titel[w.productNameEn] = `Pro ${n}K USB-Webcam mit Mikrofon`;
+    return w;
+  };
+  sz.listen['suche:webcam'] = [...sz.listen['suche:webcam'], listeneintrag(extra(2)), listeneintrag(extra(3))];
+  const lauf3 = async (fail) => {
+    const W = welt(sz, { LIVE: '1', ZIELE: 'webcams', LIMIT: '6', PRO_ZIEL: '6', MAX_FEHLER_FOLGE: '2' }); frei(W);
+    const reihe = new Map();
+    mit(W, async (u, init) => {
+      if (!(istGql(u) && gqlText(init).includes('product(id:$id)'))) return undefined;
+      const id = gqlVars(init).id; if (!reihe.has(id)) reihe.set(id, reihe.size + 1);
+      if (fail.includes(reihe.get(id))) return antwort({}, 500);
+    });
+    const r = await lauf(W.cfg, W.io);
+    const aus = { exit: r.exit, angelegt: W.aus('productSet').length, ausfall: r.bericht.zaehl.TOR_AUSFALL ?? 0 };
+    W.weg();
+    return aus;
+  };
+  const a = await lauf3([1, 3]);
+  ist('Ausfall, Erfolg, Ausfall (MAX_FEHLER_FOLGE=2): der Zähler wurde nach dem Erfolg zurückgesetzt, alle drei Produkte angelegt, Exit 0', [a.exit, a.angelegt, a.ausfall], [0, 3, 2]);
+  const b = await lauf3([1, 2]);
+  ist('Gegenprobe: zwei Ausfälle IN FOLGE stoppen den Lauf mit Exit 1 (ein Dienst scheint auszufallen)', [b.exit, b.ausfall], [EXIT.FEHLER, 2]);
+}
+
+// ── Geld F2 (Blocker): Netzfehler beim Lesen NACH dem Veröffentlichen → Rücknahme erzwungen
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  let reads = 0;
+  mit(W, async (u, init) => { if (istGql(u) && gqlText(init).includes('product(id:$id)') && ++reads >= 2) throw new Error('fetch failed (simuliert)'); });
+  let fehler = null, r;
+  try { r = await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+  ist('F2: Lesen der Tore nach dem Veröffentlichen scheitert dauerhaft: Lauf wirft nicht, das Produkt steht wieder auf DRAFT', [fehler, [...W.shop.produkte.values()].map(s => s.status)], [null, ['DRAFT']]);
+  ist('F2: ZURUECK mit Grund «Fehler nach dem Aktivieren» im Freigabe-Ledger, Exit 0', [/ZURUECK · Fehler nach dem Aktivieren/.test(lesen(W.cfg.pfade.freigabeLedger)), r?.exit], [true, 0]);
+  W.weg();
+}
+// ── Geld F3: scheitert die Rücknahme, steht «ZURUECK_FEHLGESCHLAGEN» im Ledger (nie «ZURUECK»), Exit 1, das nächste Produkt wird nicht mehr angefasst
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  mit(W, async (u, init) => { if (/luxestyle\.ch\/products/.test(u)) return new Response('x', { status: 404 }); if (istGql(u) && gqlText(init).includes('productUpdate') && gqlVars(init).p?.status === 'DRAFT') throw new Error('fetch failed (simuliert)'); });
+  const r = await lauf(W.cfg, W.io);
+  const fl = lesen(W.cfg.pfade.freigabeLedger);
+  ist('F3: Rücknahme scheitert: Exit 1, Ledger ZURUECK_FEHLGESCHLAGEN (nicht ZURUECK), das zweite Produkt wird nicht mehr angelegt', [r.exit, /ZURUECK_FEHLGESCHLAGEN/.test(fl), / · ZURUECK · /.test(fl), W.aus('productSet').length], [EXIT.FEHLER, true, false, 1]);
+  ist('F3: der Abbruchgrund nennt das Produkt, das live sein kann', r.bericht.hinweise.some(h => /ABBRUCH: Rücknahme von .* fehlgeschlagen.*LIVE/.test(h)), true);
+  W.weg();
+}
+// ── Rücknahme mit userErrors zählt als gescheitert
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  mit(W, async (u, init) => { if (/luxestyle\.ch\/products/.test(u)) return new Response('x', { status: 404 }); if (istGql(u) && gqlText(init).includes('productUpdate') && gqlVars(init).p?.status === 'DRAFT') return antwort({ data: { productUpdate: { product: null, userErrors: [{ field: ['id'], message: 'gesperrt' }] } } }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('Rücknahme mit userErrors: ebenfalls ZURUECK_FEHLGESCHLAGEN und Exit 1', [r.exit, /ZURUECK_FEHLGESCHLAGEN/.test(lesen(W.cfg.pfade.freigabeLedger))], [EXIT.FEHLER, true]);
+  W.weg();
+}
+
+// ── Schnittstellen 4: Waisen abgestürzter Läufe
+{
+  const sz = standardSz();
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams', LIMIT: '2' }); frei(W);
+  await lauf(W.cfg, W.io);
+  const handle1 = W.aus('productSet')[0].handle;
+  rmSync(W.cfg.pfade.ledger, { force: true }); rmSync(W.cfg.pfade.freigabeLedger, { force: true }); rmSync(W.cfg.pfade.planDir, { recursive: true, force: true });
+  sz.titel[webcam().productNameEn] = 'USB-Webcam Full HD mit Mikrofon und Autofokus';       // die KI formuliert beim zweiten Lauf anders → anderer Handle
+  const r2 = await lauf(W.cfg, W.io);
+  ist('Waise (Absturz vor der Ledger-Zeile) mit ANDEREM Titel: übernommen statt 14 Tage als «Dublette» gesperrt, kein zweites productSet, kein zweites Produkt im Shop', [W.aus('productSet').length, W.shop.produkte.size, r2.bericht.zaehl.GESCHRIEBEN], [1, 1, 1]);
+  ist('...das Ledger nennt den ECHTEN Handle des Shops (nicht den geplanten) und die Tore melden die Abweichung für die Handprüfung', [lesen(W.cfg.pfade.ledger).includes(handle1), (r2.bericht.zeilen[0].tore?.falsch || []).includes('titel'), (r2.bericht.zeilen[0].tore?.falsch || []).includes('handle'), r2.bericht.zaehl.TOR_FEHLER], [true, true, true, 1]);
+  W.weg();
+}
+{
+  const sz = standardSz();
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams', LIMIT: '2' }); frei(W);
+  await lauf(W.cfg, W.io);
+  rmSync(W.cfg.pfade.ledger, { force: true }); rmSync(W.cfg.pfade.freigabeLedger, { force: true }); rmSync(W.cfg.pfade.planDir, { recursive: true, force: true });
+  const r2 = await lauf(W.cfg, W.io);
+  ist('Waise mit GLEICHEM Titel: übernommen, alle Tore bestehen', [W.aus('productSet').length, r2.bericht.zaehl.GESCHRIEBEN, r2.bericht.zaehl.TOR_FEHLER ?? 0], [1, 1, 0]);
+  W.weg();
+}
+{
+  const sz = standardSz();
+  const h = 'full-hd-usb-webcam-mit-mikrofon-000001';
+  const halb = { id: 'gid://shopify/Product/777', handle: h, status: 'DRAFT', tags: ['grind2', 'cj-real'], variantsCount: { count: 1 } };
+  sz.fremdSku = { CJTS123456701AZ: halb }; sz.vorhanden = { [h]: halb };
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams', LIMIT: '2' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('Halbes Produkt (1 von 2 Varianten, Lauf brach mitten im Produkt ab): NICHT als GESCHRIEBEN verbucht, FEHLER «halbes Produkt … von Hand prüfen», nichts neu angelegt', [r.bericht.zaehl.GESCHRIEBEN ?? 0, W.aus('productSet').length, /FEHLER · .*halbes Produkt/.test(lesen(W.cfg.pfade.ledger))], [0, 0, true]);
+  W.weg();
+}
+{
+  // Der erste productSet kam an, die Antwort ging verloren; die Wiederholung bekommt HANDLE_NOT_UNIQUE → das vorhandene eigene Produkt wird übernommen, nicht als Fehler verbucht
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  let erster = true;
+  mit(W, async (u, init, echt) => {
+    if (istGql(u) && gqlText(init).includes('productSet(') && erster) { erster = false; await echt(u, init); return antwort({ data: { productSet: { product: null, userErrors: [{ field: ['input', 'handle'], message: 'Handle already in use', code: 'HANDLE_NOT_UNIQUE' }] } } }); }
+  });
+  const r = await lauf(W.cfg, W.io);
+  ist('HANDLE_NOT_UNIQUE nach einem Zeitfehler: das eigene Produkt wird übernommen (GESCHRIEBEN), nicht als FEHLER verbucht, kein zweites Produkt', [r.bericht.zaehl.GESCHRIEBEN, r.bericht.zaehl.FEHLER ?? 0, W.shop.produkte.size], [1, 0, 1]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W2);
+  mit(W2, async (u, init) => { if (istGql(u) && gqlText(init).includes('productSet(')) return antwort({ data: { productSet: { product: null, userErrors: [{ field: ['input', 'handle'], message: 'Handle already in use', code: 'HANDLE_NOT_UNIQUE' }] } } }); });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('HANDLE_NOT_UNIQUE, aber der Handle gehört keinem eigenen Produkt: wird nicht übernommen, bleibt ein FEHLER', [r2.bericht.zaehl.GESCHRIEBEN ?? 0, r2.bericht.zaehl.FEHLER], [0, 1]);
+  W2.weg();
+}
+
+{
+  // Der Handle ist beim Anlegen noch frei (erste Abfrage leer), productSet meldet aber HANDLE_NOT_UNIQUE (jemand war schneller): die ZWEITE Abfrage entscheidet
+  const h = 'full-hd-usb-webcam-mit-mikrofon-000001';
+  const nicht = { data: { productSet: { product: null, userErrors: [{ field: ['input', 'handle'], message: 'Handle already in use', code: 'HANDLE_NOT_UNIQUE' }] } } };
+  const fall = async (vorhanden) => {
+    const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+    let abfragen = 0;
+    mit(W, async (u, init) => {
+      if (!istGql(u)) return undefined;
+      const q = gqlText(init);
+      if (q.includes('productByIdentifier') && ++abfragen >= 2) return antwort({ data: { productByIdentifier: vorhanden } });
+      if (q.includes('productSet(')) return antwort(nicht);
+    });
+    const r = await lauf(W.cfg, W.io);
+    const aus = { geschrieben: r.bericht.zaehl.GESCHRIEBEN ?? 0, fehler: r.bericht.zaehl.FEHLER ?? 0, uebersprungen: r.bericht.zaehl.UEBERSPRUNGEN ?? 0, ledger: lesen(W.cfg.pfade.ledger) };
+    W.weg();
+    return aus;
+  };
+  const fremd = await fall({ id: 'gid://shopify/Product/555', handle: h, status: 'ACTIVE', tags: ['dropship'], variantsCount: { count: 2 } });
+  ist('HANDLE_NOT_UNIQUE, zweite Abfrage zeigt ein FREMDES Produkt (ohne Tag grind2): nie übernommen, UEBERSPRUNGEN «Handle belegt», nicht GESCHRIEBEN', [fremd.geschrieben, fremd.uebersprungen, /Handle .* belegt \(ACTIVE\)/.test(fremd.ledger)], [0, 1, true]);
+  const halb = await fall({ id: 'gid://shopify/Product/556', handle: h, status: 'DRAFT', tags: ['grind2', 'cj-real'], variantsCount: { count: 1 } });
+  ist('HANDLE_NOT_UNIQUE, zweite Abfrage zeigt ein HALBES eigenes Produkt (1 von 2 Varianten): FEHLER «halbes Produkt», nicht GESCHRIEBEN', [halb.geschrieben, halb.fehler, /halbes Produkt/.test(halb.ledger)], [0, 1, true]);
+  const ganz = await fall({ id: 'gid://shopify/Product/557', handle: h, status: 'DRAFT', tags: ['grind2', 'cj-real'], variantsCount: { count: 2 } });
+  ist('HANDLE_NOT_UNIQUE, zweite Abfrage zeigt ein VOLLSTÄNDIGES eigenes Produkt: übernommen (GESCHRIEBEN)', [ganz.geschrieben, ganz.fehler], [1, 0]);
+}
+
+// ── Schnittstellen 8: die Punkte-Reserve ist nie still wirkungslos
+{
+  const W = welt(standardSz(), { LIVE: '1', GRIND_RESERVE: '15000', LIMIT: '4', ZIELE: 'webcams,lichterketten' }); frei(W);
+  mit(W, async (u, init, echt) => { if (!/developers\.cjdropshipping/.test(u)) return undefined; const r = await echt(u, init); const j = await r.json(); delete j.pointsInfo; return antwort(j); });
+  const r = await lauf(W.cfg, W.io);
+  ist('LIVE ohne pointsInfo.remaining: sofort Exit 3 (Reserve wäre wirkungslos), nur der kostenlose Einstellungsaufruf, nichts geschrieben', [r.exit, W.aus('cj').length, W.aus('productSet').length, r.bericht.hinweise.some(h => /pointsInfo\.remaining/.test(h))], [EXIT.CJ, 1, 0, true]);
+  W.weg();
+  const W2 = welt(standardSz(), { GRIND_RESERVE: '15000', LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  mit(W2, async (u, init, echt) => { if (!/developers\.cjdropshipping/.test(u)) return undefined; const r = await echt(u, init); const j = await r.json(); delete j.pointsInfo; return antwort(j); });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Trockenlauf ohne pointsInfo läuft weiter, meldet aber laut, dass die Reserve nicht greift', [r2.exit, r2.bericht.hinweise.some(h => /Reserve greift nicht/.test(h)), (r2.bericht.zaehl.PLAN ?? 0) > 0], [0, true, true]);
+  W2.weg();
+}
+
+// ── Schnittstellen 5 + Qualität: Lieferzeit der Frachtlinie
+{
+  const sz = standardSz(); const w = webcam();
+  sz.fracht = { [w.variants[0].vid]: [linie('CJPacket Eub', 3.1, '12-50'), linie('PostNL', 3.9, '15-45')], [w.variants[1].vid]: [linie('CJPacket Eub', 3.1, '12-50')] };
+  const W = welt(sz, { LIMIT: '2', ZIELE: 'webcams' });
+  const r = await lauf(W.cfg, W.io);
+  ist('Nur langsame normale Linien (Eub 12–50, PostNL 15–45 Tage): zurückgestellt mit Grund Lieferzeit — früher «PLAN: alle Tore bestanden»', [r.bericht.zaehl, /höchstens 20 Tagen/.test(r.bericht.zeilen[0].entscheid), /zurueckgestellt/.test(r.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true, true]);
+  W.weg();
+  const sz2 = standardSz(); const w2 = webcam();
+  const gemischt = [linie('CJPacket Eub', 3.1, '12-50'), linie('CJPacket Ordinary VIP', 5.0, '7-10'), linie('YunExpress Ordinary', 6.0, '8-15')];
+  sz2.fracht = { [w2.variants[0].vid]: gemischt, [w2.variants[1].vid]: gemischt };
+  const W2 = welt(sz2, { LIMIT: '2', ZIELE: 'webcams' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Gemischte Linien: gerechnet wird mit der günstigsten SCHNELLEN (5.00 statt 3.10), das Produkt wird geplant', [r2.bericht.zaehl, r2.bericht.zeilen[0].frachtUsd], [{ PLAN: 1 }, 5]);
+  W2.weg();
+  const W3 = welt(sz2, { LIMIT: '2', ZIELE: 'webcams', MAX_LIEFERTAGE: '9' });
+  const r3 = await lauf(W3.cfg, W3.io);
+  ist('MAX_LIEFERTAGE=9: nur 7–10 und 8–15 sind zu langsam → zurückgestellt (Grenze wirkt)', r3.bericht.zaehl, { UEBERSPRUNGEN: 1 });
+  W3.weg();
+}
+
+// ── Qualität 2: Fracht je Gewichtsklasse (GEMESSEN 27.10.2026: 170 g 6.77 / 348 g 9.17 / 1386 g 21.59 / 3770 g 49.44 USD)
+{
+  const kamera = () => {
+    const w = webcam(); w.productKeyEn = 'Color';
+    const gew = [170, 348, 1386, 3770], ek = [1.74, 3.69, 12.0, 35.61], key = ['Black', 'White', 'Red', 'Blue'];
+    w.variants = gew.map((g, i) => ({ vid: `20000000000000003${String(i).padStart(2, '0')}`, variantSku: `CJTS1234567${String(i + 1).padStart(2, '0')}KL`, variantKey: key[i], variantImage: img('kv' + i), variantWeight: g, variantSellPrice: ek[i] }));
+    return w;
+  };
+  const szKlassen = () => {
+    const sz = standardSz(), w = kamera(); sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+    const preis = [6.77, 9.17, 21.59, 49.44];
+    sz.fracht = Object.fromEntries(w.variants.map((v, i) => [v.vid, [linie('CJPacket Ordinary VIP', preis[i], '7-10'), linie('CJPacket Eub', preis[i] - 1, '12-50')]]));
+    return { sz, w };
+  };
+  const { sz, w } = szKlassen();
+  const W = welt(sz, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0', MAX_PREIS: '1000' });
+  const r = await lauf(W.cfg, W.io);
+  const z = r.bericht.zeilen[0];
+  ist('Vier Gewichtsklassen: vier Fracht-Aufrufe (40 Punkte), Fracht 6.77–49.44 im Bericht', [W.aus('fracht').length, z.frachtMin, z.frachtUsd, r.bericht.zaehl], [4, 6.77, 49.44, { PLAN: 1 }]);
+  const e = JSON.parse(lesen(join(W.cfg.pfade.planDir, `${w.pid}.json`))).plan.eingabe;
+  const preise = e.variants.map(v => Number(v.price)), kosten = e.variants.map(v => Number(v.inventoryItem.cost));
+  ist('...jede Variante bekommt IHRE Fracht: die leichte Variante ist billig (unter 20 CHF), die schwere teuer, die Preise steigen mit dem Gewicht', [preise[0] < 20, preise[3] > 60, preise.every((p, i) => i === 0 || p > preise[i - 1])], [true, true, true]);
+  ist('...die Kosten (unitCost) folgen derselben Fracht: (EK + Fracht) × Kurs', kosten.map((k, i) => Math.abs(k - (([1.74, 3.69, 12.0, 35.61][i] + [6.77, 9.17, 21.59, 49.44][i]) * 0.82435)) <= 0.011), [true, true, true, true]);
+  W.weg();
+  // Altes Verhalten zum Vergleich: FRACHT_KLASSEN=1 → eine Messung, die schwerste Fracht für alle (die leichte Variante wäre ein Mehrfaches teurer)
+  const { sz: sz1 } = szKlassen();
+  const W1 = welt(sz1, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0', FRACHT_KLASSEN: '1', MAX_PREIS: '1000' });
+  const r1 = await lauf(W1.cfg, W1.io);
+  ist('FRACHT_KLASSEN=1: eine Messung (10 Punkte) wie bisher, die schwerste Fracht gilt für alle (Preis der 170-g-Variante über 60 CHF)', [W1.aus('fracht').length, r1.bericht.zeilen[0].frachtMin ?? null, r1.bericht.zeilen[0].preisMin > 60], [1, 49.44, true]);
+  W1.weg();
+}
+{
+  // Varianten über der Preis-Obergrenze fallen weg, wenn mindestens zwei bleiben (früher: das ganze Produkt abgelehnt)
+  const w = webcam(); w.variants = [170, 348, 1386, 3770].map((g, i) => ({ vid: `20000000000000004${String(i).padStart(2, '0')}`, variantSku: `CJTS1234567${String(i + 1).padStart(2, '0')}MN`, variantKey: ['Black', 'White', 'Red', 'Blue'][i], variantImage: img('mv' + i), variantWeight: g, variantSellPrice: [1.74, 3.69, 12.0, 35.61][i] }));
+  const sz = standardSz(); sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+  const preis = [6.77, 9.17, 21.59, 49.44];
+  sz.fracht = Object.fromEntries(w.variants.map((v, i) => [v.vid, [linie('CJPacket Ordinary VIP', preis[i], '7-10')]]));
+  const W = welt(sz, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0', MAX_PREIS: '60' });
+  const r = await lauf(W.cfg, W.io);
+  const e = JSON.parse(lesen(join(W.cfg.pfade.planDir, `${w.pid}.json`))).plan.eingabe;
+  ist('Obergrenze 60: die schwerste Variante (über 60 CHF) fällt weg, die drei anderen bleiben — das Produkt wird nicht komplett abgelehnt', [r.bericht.zaehl, e.variants.length, Math.max(...e.variants.map(v => Number(v.price))) <= 60, /über der Preisobergrenze/.test(r.bericht.zeilen[0].hinweis)], [{ PLAN: 1 }, 3, true, true]);
+  W.weg();
+  const W2 = welt(sz, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0', MAX_PREIS: '15' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Obergrenze 25: nur eine Variante bliebe — dann wird das ganze Produkt zurückgestellt (kein Einzelstück statt einer Auswahl)', [r2.bericht.zaehl, /Obergrenze/.test(r2.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true]);
+  W2.weg();
+  // Lieferzeit je Klasse: die schwerste Klasse hat nur langsame Linien → ihre Variante fällt weg, der Rest wird geplant
+  const sz3 = standardSz(); sz3.produkte[w.pid] = w; sz3.listen['suche:webcam'] = [listeneintrag(w)];
+  sz3.fracht = Object.fromEntries(w.variants.map((v, i) => [v.vid, i === 3 ? [linie('CJPacket Eub', 30, '12-50')] : [linie('CJPacket Ordinary VIP', preis[i], '7-10')]]));
+  const W3 = welt(sz3, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0' });
+  const r3 = await lauf(W3.cfg, W3.io);
+  const e3 = JSON.parse(lesen(join(W3.cfg.pfade.planDir, `${w.pid}.json`))).plan.eingabe;
+  ist('Klasse ohne schnelle Linie (3770 g nur Eub 12–50): diese Variante fällt weg, die drei leichteren werden geplant', [r3.bericht.zaehl, e3.variants.length, /ohne Versandlinie/.test(r3.bericht.zeilen[0].hinweis)], [{ PLAN: 1 }, 3, true]);
+  W3.weg();
+  // Eine leichtere Klasse kann nicht versendet werden (0 Linien): diese Variante fällt weg
+  const sz4 = standardSz(); sz4.produkte[w.pid] = w; sz4.listen['suche:webcam'] = [listeneintrag(w)];
+  sz4.fracht = Object.fromEntries(w.variants.map((v, i) => [v.vid, i === 0 ? 'leer' : [linie('CJPacket Ordinary VIP', preis[i], '7-10')]]));
+  const W4 = welt(sz4, { LIMIT: '1', ZIELE: 'webcams', PLAN_TTL_H: '0', MAX_PREIS: '1000' });
+  const r4 = await lauf(W4.cfg, W4.io);
+  const e4 = JSON.parse(lesen(join(W4.cfg.pfade.planDir, `${w.pid}.json`))).plan.eingabe;
+  ist('Leichteste Klasse ohne Versandlinie: nicht verkauft (nie raten), die schwereren bleiben', [r4.bericht.zaehl, e4.variants.length], [{ PLAN: 1 }, 3]);
+  W4.weg();
+}
+
+// ── Schnittstellen 6: CJ-Lagerbestand (10 Punkte je Kandidat, GEMESSEN)
+{
+  const sz = standardSz(); const w = webcam(), l = lichterkette();
+  sz.bestand = { [w.pid]: [invCn(w.variants[0].vid, 500), invCn(w.variants[1].vid, 0), invCn('FREMD-VID-000000', 99)], [l.pid]: l.variants.map(v => invCn(v.vid, 0)) };
+  const W = welt(sz, { LIMIT: '4', ZIELE: 'webcams,lichterketten' });
+  const r = await lauf(W.cfg, W.io);
+  ist('Lager: Webcam eine Variante 0 → bleibt eine (planeNeu verlangt bei 2 CJ-Varianten mindestens 2: zurückgestellt); Lichterkette alle 0 → «kein Bestand bei CJ und Lieferant»', [r.bericht.zaehl, r.bericht.zeilen.map(z => /kein Bestand bei CJ/.test(z.entscheid))], [{ UEBERSPRUNGEN: 2 }, [false, true]]);
+  ist('Lager: eine Bestandsabfrage je Kandidat (10 Punkte), gebucht als «bestand»', [W.aus('cj').filter(x => x.pfad === 'product/stock/getInventoryByPid').length, r.bericht.punkte.aufrufe.bestand], [2, 2]);
+  W.weg();
+  const sz2 = standardSz(); const l2 = lichterkette();
+  sz2.bestand = { [l2.pid]: [invCn(l2.variants[0].vid, 0), invCn(l2.variants[1].vid, 80), invCn(l2.variants[2].vid, 80), invCn(l2.variants[3].vid, 80)] };
+  const W2 = welt(sz2, { LIMIT: '4', ZIELE: 'lichterketten' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  const e2 = JSON.parse(lesen(join(W2.cfg.pfade.planDir, `${l2.pid}.json`))).plan.eingabe;
+  ist('Lager: bei 4 Varianten und einer mit Bestand 0 wird diese weggelassen (3 geplant, Hinweis im Bericht)', [r2.bericht.zaehl, e2.variants.length, /1 Variante\(n\) ohne Bestand weggelassen/.test(r2.bericht.zeilen[0].hinweis)], [{ PLAN: 1 }, 3, true]);
+  ist('Lager: Bestand in DE hilft nicht — eine vid ohne CN-Zeile bleibt als «unbekannt» im Rennen', (() => { const m = bestandJeVid({ data: { variantInventories: [{ vid: 'a', inventory: [{ countryCode: 'DE', totalInventory: 50 }] }] } }); return m.has('a'); })(), false);
+  W2.weg();
+  const W3 = welt(sz, { LIMIT: '4', ZIELE: 'webcams,lichterketten', BESTAND_PRUEFEN: '0' });
+  const r3 = await lauf(W3.cfg, W3.io);
+  ist('BESTAND_PRUEFEN=0: keine Lagerabfrage, die Lichterkette mit Bestand 0 wird (wie früher) geplant', [W3.aus('cj').filter(x => x.pfad === 'product/stock/getInventoryByPid').length, r3.bericht.zaehl.PLAN], [0, 2]);
+  W3.weg();
+  // Die echte Antwort hat kein `result`-Feld: cjFetch lässt sie NUR mit der ausdrücklichen Angabe durch (die anderen Aufrufer bleiben streng)
+  const W4 = welt(standardSz(), {});
+  const c = cjClient({ token: 'cj', fetch: W4.io.fetch, warte: keineWarte, basisMs: 0, pauseMs: 0 });
+  const b = await c.bestand(webcam().pid);
+  ist('cjClient.bestand: die Antwort ohne «result» wird als Erfolg gelesen und kostet 10 Punkte', [b.success, b.code, c.z.punkte], [true, 200, 10]);
+  W4.weg();
+}
+
+// ── Qualität 1: sort-Tag ohne Collection im Shop → zurückgestellt (die Seite wäre leer)
+{
+  const W = welt({ ...standardSz(), liveSort: ['sort-test-lichterketten'] }, { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('Live-Sammlungen: die Webcam trägt nur sort-Tags ohne Collection → zurückgestellt (kein productSet), die Lichterkette hat eine → angelegt', [r.bericht.zaehl, W.aus('productSet').length, /kein sort-Tag mit Collection im Shop/.test(r.bericht.zeilen.find(z => z.zielId === 'webcams').entscheid)], [{ UEBERSPRUNGEN: 1, PLAN: 1, GESCHRIEBEN: 1 }, 1, true]);
+  ist('...genau EINMAL je Lauf gelesen (nur lesen), und im Ledger steht «zurückgestellt»', [W.aus('sammlungen').length, /zurückgestellt: kein sort-Tag mit Collection/.test(lesen(W.cfg.pfade.ledger))], [1, true]);
+  W.weg();
+  const W2 = welt({ ...standardSz(), liveSortSeiten: [['sort-a', 'sort-b'], ['sort-test-lichterketten']] }, { LIVE: '1', ZIELE: 'lichterketten', LIMIT: '4' }); frei(W2);
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Live-Sammlungen: mehrere Seiten werden gelesen (hasNextPage), das Tag der zweiten Seite zählt', [W2.aus('sammlungen').map(x => x.after), r2.bericht.zaehl.GESCHRIEBEN], [[null, 'cursor1'], 1]);
+  W2.weg();
+  const W3 = welt({ ...standardSz(), liveSort: [] }, { LIVE: '1', ZIELE: 'lichterketten', LIMIT: '4' }); frei(W3);
+  let fehler = '';
+  try { await lauf(W3.cfg, W3.io); } catch (e) { fehler = e.message; }
+  ist('Live-Sammlungen: filtert im Shop KEINE Collection auf ein sort-Tag, bricht LIVE ab (nie auf einer leeren Menge entscheiden)', /SAMMLUNGEN/.test(fehler), true);
+  W3.weg();
+  // Trockenlauf: kein Shop-Zugriff; mit Datei wird das Tor geprüft, ohne Datei nur gemeldet
+  const W4 = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1', LIVE_SORT_DATEI: join(tmpdir(), 'gibt-es-nicht-' + Date.now() + '.json') });
+  const r4 = await lauf(W4.cfg, W4.io);
+  ist('Trockenlauf ohne Datei: kein Shop-Zugriff, das Tor wird ausdrücklich als NICHT geprüft gemeldet', [W4.aus('sammlungen').length, r4.bericht.hinweise.some(h => /nicht bekannt.*NICHT geprüft/.test(h)), r4.bericht.zaehl], [0, true, { PLAN: 1 }]);
+  W4.weg();
+  const W5 = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' });
+  const datei = join(W5.dir, 'live_sort.json'); writeFileSync(datei, JSON.stringify(['sort-gibts-nicht']));
+  W5.cfg.pfade.liveSort = datei;
+  const r5 = await lauf(W5.cfg, W5.io);
+  ist('Trockenlauf mit Datei der live filternden Tags: das Tor greift ohne Shop-Zugriff', [W5.aus('sammlungen').length, r5.bericht.zaehl], [0, { UEBERSPRUNGEN: 1 }]);
+  W5.weg();
+}
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  W.io.kategorienExtra = { kategorien: [], geladen: [], fehler: ['keine Bereichsdateien unter /x'] };
+  let fehler = '';
+  try { await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+  ist('Bereichsdateien fehlen: LIVE bricht vor dem ersten Schreiben ab (sonst stellte der Lauf die meisten Kandidaten still als «keine passende Kategorie» zurück)', [/BEREICHE/.test(fehler), W.aus('productSet').length], [true, 0]);
+  W.weg();
+  const W2 = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' });
+  W2.io.kategorienExtra = { kategorien: [], geladen: [], fehler: ['keine Bereichsdateien unter /x'] };
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('...im Trockenlauf nur ein Hinweis', [r2.exit, r2.bericht.hinweise.some(h => /Probleme: keine Bereichsdateien/.test(h))], [0, true]);
+  W2.weg();
+}
+
+// ── Qualität 9: der Plan-Zwischenspeicher hat einen Versionsschlüssel
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' });
+  await lauf(W.cfg, W.io);
+  const q1 = W.aus('cj').filter(x => x.pfad === 'product/query').length, f1 = W.aus('fracht').length;
+  await lauf(W.cfg, W.io);
+  ist('Planversion: derselbe Plan derselben Version wird wiederverwendet (keine neue Fracht-Abfrage)', W.aus('fracht').length, f1);
+  const datei = join(W.cfg.pfade.planDir, '2000000000000000001.json'), plan = JSON.parse(lesen(datei));
+  ist('...der Plan trägt seine Version', typeof plan.v === 'string' && plan.v.length === 12, true);
+  plan.v = 'alte-version'; writeFileSync(datei, JSON.stringify(plan));
+  await lauf(W.cfg, W.io);
+  ist('Planversion: ein Plan anderer Version (vor einer Korrektur) wird NICHT wiederverwendet, sondern neu gebaut (neue Fracht-Abfrage)', W.aus('fracht').length > f1, true);
+  delete plan.v; writeFileSync(datei, JSON.stringify(plan));
+  const f2 = W.aus('fracht').length;
+  await lauf(W.cfg, W.io);
+  ist('Planversion: ein Plan ohne Version (Altbestand) wird nicht wiederverwendet', W.aus('fracht').length > f2, true);
+  W.weg();
+  const W2 = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' });
+  await lauf(W2.cfg, W2.io);
+  const f3 = W2.aus('fracht').length;
+  W2.cfg.maxTage = 12;
+  await lauf(W2.cfg, W2.io);
+  ist('Planversion: ändert sich eine Einstellung im Plan (Lieferzeit), gilt der gespeicherte Plan nicht mehr', W2.aus('fracht').length > f3, true);
+  W2.weg();
+}
+
+// ── Geld F14 / Hauptrepo: der Verbrauch des Auswahl-Laufs muss frisch sein
+{
+  const alt = new Date(Date.now() - 20 * 3600e3).toISOString(), neu = new Date(Date.now() - 2 * 3600e3).toISOString();
+  const a = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1', AUSWAHL_LEDGER_MAX_H: '14' }); frei(a);
+  writeFileSync(a.cfg.pfade.auswahlLedger, `ein-produkt · ${alt} · GESCHRIEBEN · 12 Varianten\n`);
+  let msg = ''; try { await lauf(a.cfg, a.io); } catch (e) { msg = e.message; }
+  ist('Auswahl-Ledger 20 h alt (erlaubt 14 h): LIVE bricht ab, bevor irgendetwas geschrieben wird', [/Auswahl-Ledger ist 20 h alt/.test(msg), a.aus('productSet').length], [true, 0]);
+  a.weg();
+  const b = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1', AUSWAHL_LEDGER_MAX_H: '14' }); frei(b);
+  writeFileSync(b.cfg.pfade.auswahlLedger, `ein-produkt · ${neu} · GESCHRIEBEN · 12 Varianten\n`);
+  const r = await lauf(b.cfg, b.io);
+  ist('Auswahl-Ledger 2 h alt: LIVE läuft und zählt den Verbrauch (12) mit', [r.bericht.zaehl.GESCHRIEBEN, r.bericht.budget.auswahl], [1, 12]);
+  b.weg();
+  const c = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1', AUSWAHL_LEDGER_MAX_H: '14' });
+  const r3 = await lauf(c.cfg, c.io);
+  ist('Trockenlauf mit leerem Auswahl-Ledger: nur ein Hinweis', [r3.exit, r3.bericht.hinweise.some(h => /Auswahl-Ledger ist leer/.test(h))], [0, true]);
+  c.weg();
+  // Stand im Hauptrepo (VARIANTEN_LEDGER_ALT) ist frischer als der veraltete Arbeitsbaum → er zählt (4 508 Varianten statt 88)
+  const d = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1', AUSWAHL_LEDGER_MAX_H: '14' }); frei(d);
+  const haupt = join(d.dir, 'haupt-ledger.txt');
+  writeFileSync(d.cfg.pfade.auswahlLedger, `ein-produkt · ${alt} · GESCHRIEBEN · 88 Varianten\n`);
+  writeFileSync(haupt, `ein-produkt · ${neu} · GESCHRIEBEN · 8990 Varianten\n`);
+  d.cfg.pfade.auswahlLedgerAlt = [haupt];
+  const r4 = await lauf(d.cfg, d.io);
+  ist('Hauptrepo-Ledger frischer als der Arbeitsbaum: LIVE läuft, der Verbrauch ist 8 990 (nicht 88), die Webcam (2 Varianten) passt gerade noch in die Gesamtgrenze 9 000 — Quelle im Bericht', [r4.bericht.budget.auswahl, r4.bericht.budget.frei, r4.bericht.auswahlLedger.quelle === haupt], [8990, 10, true]);
+  d.weg();
+}
+
+// ── Geld F1: dieselbe pid in zwei Zielblättern wird nur einmal angelegt
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams,kameras2', LIMIT: '10' });
+  const l = JSON.parse(lesen(W.cfg.pfade.bedarf)); l.ziele.push({ id: 'kameras2', name: 'Kameras 2', rang: 2, welle: '1', ziel: 60, luecke: 57, cj: '', cjSuche: 'webcam' }); writeFileSync(W.cfg.pfade.bedarf, JSON.stringify(l)); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('F1 dieselbe pid in zwei Zielblättern: ein productSet, eine GESCHRIEBEN-Zeile, kein Tor-Fehler-Tag auf dem veröffentlichten Produkt', [W.aus('productSet').length, zeilenTypen(W.cfg.pfade.ledger).filter(t => t === 'GESCHRIEBEN').length, W.aus('tagsAdd').length, r.bericht.zaehl.TOR_FEHLER ?? 0, r.bericht.zaehl.DOPPELT], [1, 1, 0, 0, 1]);
+  W.weg();
+}
+
+// ── Handprüfung (Welle R): Kinder-/Babyware wird angelegt, wenn man sie ausdrücklich wählt, aber nie veröffentlicht
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' });
+  const l = JSON.parse(lesen(W.cfg.pfade.bedarf)); l.ziele.find(z => z.id === 'webcams').risiko = 'Babyprodukt'; writeFileSync(W.cfg.pfade.bedarf, JSON.stringify(l)); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('Handprüfung: das Zielblatt mit Risiko «Babyprodukt» wird als DRAFT angelegt, die Tore laufen, aber trotz PUBLISH=1 wird NICHT veröffentlicht (kein ACTIVE, kein publishablePublish)', [r.bericht.zaehl.GESCHRIEBEN, W.aus('status').length, W.aus('publish').length, [...W.shop.produkte.values()].map(s => s.status), /Handprüfung/.test(r.bericht.zeilen[0].entscheid)], [1, 0, 0, ['DRAFT'], true]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W2);
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Gegenprobe: dasselbe Zielblatt ohne Risiko wird veröffentlicht', [r2.bericht.zaehl.VEROEFFENTLICHT, [...W2.shop.produkte.values()].map(s => s.status)], [1, ['ACTIVE']]);
+  W2.weg();
+}
+
+// ── Geld F5/F6: unvollständiger Index, gleichzeitige Läufe
+{
+  const dir = mkdtempSync(join(tmpdir(), 'ix-')); mkdirSync(join(dir, 'led'));
+  const mk = (z, meta) => { const f = join(dir, 's' + Math.random().toString(36).slice(2) + '.jsonl'); writeFileSync(f, z); writeFileSync(f + '.meta.json', JSON.stringify(meta)); return f; };
+  const p1 = JSON.stringify({ id: 'gid://shopify/Product/1', handle: 'a', title: 'Webcam', status: 'ACTIVE', skus: ['CJ-2000000000000000001'] }) + '\n', jetzt = new Date().toISOString();
+  const frisch = (z, meta, min) => DB.istFrisch(DB.ladeIndex({ skusDatei: mk(z, meta), ledgerDir: join(dir, 'led'), mindestProdukte: min }).index, 24);
+  ist('F5 Index: vollständig = frisch; vollstaendig:false, verwaiste Zeilen, kaputte Zeilen, leere Datei oder zu wenige Produkte = NICHT frisch', [frisch(p1, { stand: jetzt, vollstaendig: true }, 1), frisch(p1, { stand: jetzt, vollstaendig: false }, 1), frisch(p1, { stand: jetzt, vollstaendig: true, waisen: 4 }, 1), frisch(p1, { stand: jetzt, vollstaendig: true, kaputteZeilen: 3 }, 1), frisch('', { stand: jetzt, vollstaendig: true }, 1), frisch(p1, { stand: jetzt, vollstaendig: true }, 50000)], [true, false, false, false, false, false]);
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1', INDEX_MIN_PRODUKTE: '50000' }); frei(W);
+  let msg = ''; try { await lauf(W.cfg, W.io); } catch (e) { msg = e.message; }
+  ist('F5: LIVE mit zu kleinem Index bricht ab und nennt die Lücke', [/nicht frisch/.test(msg), /UNVOLLSTÄNDIG: nur 1 Produkte/.test(msg), W.aus('productSet').length], [true, true, 0]);
+  W.weg(); rmSync(dir, { recursive: true, force: true });
+}
+{
+  const A = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }), B = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' });
+  B.shop.produkte = A.shop.produkte; B.cfg.pfade.ledger = A.cfg.pfade.ledger; B.cfg.pfade.freigabeLedger = A.cfg.pfade.freigabeLedger;
+  Object.defineProperty(B.shop, 'n', { get: () => A.shop.n, set: v => { A.shop.n = v; } }); frei(A); frei(B);
+  const [ra, rb] = await Promise.allSettled([lauf(A.cfg, A.io), lauf(B.cfg, B.io)]);
+  ist('F6: zwei LIVE-Läufe gleichzeitig auf demselben Ledger: nur EIN Produkt im Shop, der zweite wird abgewiesen', [A.shop.produkte.size, ra.status, rb.status, /SPERRE/.test(String(rb.reason?.message))], [1, 'fulfilled', 'rejected', true]);
+  const r3 = await lauf(A.cfg, A.io).catch(e => e);
+  ist('F6: nach dem Ende ist die Sperre frei (ein dritter Lauf wird nicht abgewiesen)', r3 instanceof Error && /SPERRE/.test(r3.message), false);
+  A.weg(); B.weg();
+}
+{
+  // vor dem Aktivieren: eine SKU, die im Shop schon einem anderen Produkt gehört, verhindert das Veröffentlichen (Geld F6, Zweitnetz)
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  let n = 0;
+  mit(W, async (u, init, echt) => {
+    if (istGql(u) && gqlText(init).includes('products(first:3') && ++n === 2) return antwort({ data: { products: { nodes: [{ id: 'gid://shopify/Product/999', handle: 'anderes-produkt', status: 'ACTIVE', tags: [], variantsCount: { count: 2 } }] } } });
+  });
+  const r = await lauf(W.cfg, W.io);
+  ist('Veröffentlichen: gehört die erste SKU im ganzen Shop auch einem anderen Produkt, wird NICHT aktiviert (Dublette)', [W.aus('status').length, [...W.shop.produkte.values()].map(s => s.status), /Dublette/.test(r.bericht.zeilen[0].entscheid)], [0, ['DRAFT'], true]);
+  W.weg();
+}
+
+// ── Geld F9–F12: Handle-Tor, Ledger ohne Zeilenende, Gewicht, Links
+{
+  const E = { title: 'T', handle: 'webcam-000001', tags: [], productOptions: [], variants: [], files: [], metafields: [] };
+  const t = toreNachAnlage(E, { status: 'DRAFT', title: 'T', handle: 'webcam-000001-1', tags: [], variantsCount: { count: 0 }, options: [], variants: { nodes: [] }, media: { nodes: [] } });
+  ist('F9: Shopify hängt «-1» an den Handle (Kollision): das Tor «handle» schlägt an', t.tore.find(x => x.name === 'handle')?.ok, false);
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  mkdirSync(dirname(W.cfg.pfade.ledger), { recursive: true });
+  writeFileSync(W.cfg.pfade.ledger, '1999999999999999999 · 2026-10-27T00:00:00.000Z · UEBERSPRUNGEN · alter Eintrag ohne Zeilenende');
+  await lauf(W.cfg, W.io);
+  ist('F10: ein Ledger ohne Zeilenende klebt die neue Zeile nicht an — zwei Zeilen, das Gedächtnis kennt die neue pid', [lesen(W.cfg.pfade.ledger).trim().split('\n').length, ledgerGedaechtnis(lesen(W.cfg.pfade.ledger), { jetzt: Date.now() + 1000 }).has('2000000000000000001')], [2, true]);
+  W.weg();
+  const sz = standardSz(), w = webcam(); w.variants.forEach(v => { v.variantWeight = 0; }); sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+  const W2 = welt(sz, { ZIELE: 'webcams', LIMIT: '1' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('F11: Gewicht 0 bei allen Varianten → zurückgestellt (Fracht nicht belastbar)', [r2.bericht.zaehl, /Gewicht bei 2 von 2 Varianten unbekannt: Fracht nicht belastbar/.test(r2.bericht.zeilen[0].entscheid), /zurueckgestellt/.test(r2.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true, true]);
+  W2.weg();
+  const roh = { daten: [{ label: 'Material', wert: 'ABS' }, { label: 'Hinweis', wert: 'Mehr auf www.evil-shop.example' }], lieferumfang: ['1 Webcam', 'Kontakt info@evil.example'], anleitung: [], hinweise: ['Bestellung unter https://evil.example/kaufen'] };
+  const s = faktenSprachfilter(roh);
+  ist('F12: Links und E-Mail-Adressen des Lieferanten fallen aus dem Fakten-Block', [s.daten.length, s.lieferumfang, s.hinweise], [1, ['1 Webcam'], []]);
+  ist('F12: ein Titel mit Link wird abgelehnt', titelPruefen('Webcam www.evil-shop.example 1080p', { cjName: 'Webcam 1080p', quelle: 'Product name: Webcam 1080p' }).ok, false);
+  ist('F12: Gegenprobe — «USB 2.0», «1.5 m», «3.6 mm» sind keine Domains', [faktenSprachfilter({ daten: [{ label: 'Anschluss', wert: 'USB 2.0' }, { label: 'Länge', wert: '1.5 m' }], lieferumfang: [], anleitung: [], hinweise: [] }).daten.length], [2]);
+}
+
+// ── Geld F7/F8 im Lauf: ein Laser-Pointer wird schon im Vorfilter abgelehnt (kostet keine Abfrage)
+{
+  const sz = standardSz(), w = webcam(); w.productNameEn = 'Tactical LED Flashlight With Laser Pointer Zoom'; sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+  const W = welt(sz, { ZIELE: 'webcams', LIMIT: '1' });
+  const r = await lauf(W.cfg, W.io);
+  ist('F8 im Lauf: Laser-Lampe wird im Vorfilter abgelehnt, ohne eine CJ-Abfrage zu bezahlen', [W.aus('cj').filter(x => x.pfad === 'product/query').length, r.bericht.vorfilter[0].abgelehnt], [0, { sperrwort: 1 }]);
+  W.weg();
+  const sz2 = standardSz(), w2 = webcam(); w2.productNameEn = 'Electric Heater 110V US Plug Mini Desktop Warmer'; sz2.produkte[w2.pid] = w2; sz2.listen['suche:webcam'] = [listeneintrag(w2)];
+  const W2 = welt(sz2, { ZIELE: 'webcams', LIMIT: '1' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('F7 im Lauf: 110-V-Heizung mit US-Stecker wird im Vorfilter abgelehnt', [W2.aus('cj').filter(x => x.pfad === 'product/query').length, r2.bericht.vorfilter[0].abgelehnt], [0, { sperrwort: 1 }]);
+  W2.weg();
+}
+
+// ── Schnittstellen 9: leere Kategorieliste ist ein Hinweis; Seite 2 der Liste, wenn Seite 1 verbraucht ist
+{
+  const sz = standardSz(); sz.listen = { 'suche:webcam': [], 'suche:string lights': [], 'suche:fairy lights': [], 'kategorie:CAT-STRING-LIGHTS': [] };
+  const W = welt(sz, { LIMIT: '4', ZIELE: 'lichterketten' });
+  const r = await lauf(W.cfg, W.io);
+  ist('Leere Liste (veraltete Kategorie-ID): ein Hinweis «0 Treffer», nicht still «kein Bedarf»', [r.bericht.hinweise.some(h => /lieferte 0 Treffer/.test(h)), r.bericht.vorfilter.every(v => v.treffer === 0)], [true, true]);
+  W.weg();
+}
+{
+  // 20 Treffer auf Seite 1 (LISTE_GROESSE=20 = voll), alle schon im Shop → Seite 2 liefert den Kandidaten
+  const w = webcam(), voll = Array.from({ length: 20 }, (_, i) => listeneintrag({ ...w, pid: `20000000000000009${String(i).padStart(2, '0')}`, productSku: `CJVOLL00000${i}` }));
+  const sz = standardSz();
+  const seitenListe = { 1: voll, 2: [listeneintrag(w)] };
+  const W = welt(sz, { LIMIT: '1', ZIELE: 'webcams', LISTE_GROESSE: '20', SEITEN_MAX: '2' });
+  W.io.index = baueIndex({ produkte: voll.map((t, i) => ({ id: `g${i}`, handle: `voll-${i}`, title: `Voll ${i}`, status: 'ACTIVE', skus: [`CJ-${t.pid}`] })) }, { stand: new Date().toISOString() });
+  mit(W, async (u, init, echt) => {
+    if (/product\/list/.test(u)) { const q = new URL(u).searchParams; const items = seitenListe[Number(q.get('pageNum'))] || []; W.log.push({ k: 'liste', seite: Number(q.get('pageNum')) }); W.punkte.remaining -= 50; return antwort({ code: 200, result: true, data: { pageNum: Number(q.get('pageNum')), pageSize: 20, total: 21, list: items }, pointsInfo: { total: 70171, usedToday: 1, remaining: W.punkte.remaining } }); }
+  });
+  const r = await lauf(W.cfg, W.io);
+  ist('Seite 2: sind die 20 besten Treffer von Seite 1 durch Dubletten verbraucht und war die Seite voll, kommt Seite 2 (50 Punkte) und liefert den Kandidaten', [W.log.filter(x => x.k === 'liste').map(x => x.seite), r.bericht.zaehl.PLAN], [[1, 2], 1]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIMIT: '1', ZIELE: 'webcams', LISTE_GROESSE: '20', SEITEN_MAX: '1' });
+  W2.io.index = W.io.index;
+  mit(W2, async (u, init) => { if (/product\/list/.test(u)) { const q = new URL(u).searchParams; W2.log.push({ k: 'liste', seite: Number(q.get('pageNum')) }); W2.punkte.remaining -= 50; return antwort({ code: 200, result: true, data: { pageNum: 1, pageSize: 20, total: 21, list: voll }, pointsInfo: { remaining: W2.punkte.remaining } }); } });
+  await lauf(W2.cfg, W2.io);
+  ist('SEITEN_MAX=1 begrenzt die Listenaufrufe je Zielblatt: keine Seite 2', W2.log.filter(x => x.k === 'liste').map(x => x.seite), [1]);
+  W2.weg();
+}
+
+// ── Schnittstellen 7/11 im Lauf: eine Adresse, die kein Shop ist, bekommt nie die Zugangsdaten
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  W.io.shopToken = undefined; W.io.shop = undefined; W.io.env = { SHOPIFY_SHOP: 'evil.example.com', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim' };
+  let fehler = ''; try { await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+  ist('LIVE mit fremder SHOPIFY_SHOP-Adresse: Abbruch ohne Token-Anfrage (client_secret geht nie an evil.example.com)', [/SHOPIFY_HOST/.test(fehler), W.aus('shop-token').length, W.aus('productSet').length], [true, 0, 0]);
+  ist('...und noch VOR dem ersten CJ-Aufruf (kein Punkt und keine Fracht werden für einen Lauf bezahlt, der nicht schreiben kann)', [W.aus('cj').length, W.aus('liste').length, W.aus('fracht').length], [0, 0, 0]);
+  W.weg();
+}
+
+
+// ═══════════════════════════ PRÜFUNG 27.10.2026, TEIL III: Tests der Geld-und-Sicherheit-Prüfung, die 26 von 39 grün gebliebenen Mutationen an Pflicht-Toren schliessen ═══════════════════════════
+// (TA1–TA23 stammen aus neue_tests_A.mjs des Prüfers; jeder lief gegen den ursprünglichen Code grün und gegen den Mutanten rot.)
+const abfangen = (W, f) => { const echt = W.io.fetch; W.io.fetch = async (url, init = {}) => { const b = init.body ? (() => { try { return JSON.parse(init.body); } catch { return {}; } })() : {}; const r = await f(String(url), b, init, echt); return r === undefined ? echt(url, init) : r; }; };
+const json = (o, status = 200) => antwort(o, status);
+const alleFracht = (c, modus) => Object.fromEntries(c.variants.map(v => [v.vid, modus]));
+const jetztFest = Date.UTC(2026, 9, 27, 12);
+// TA1 (S6) — Trockenlauf mit einem übersprungenen Kandidaten schreibt KEIN Ledger (die Ledger-Zeile würde den Kandidaten 14 Tage sperren)
+{
+  const sz = standardSz(); sz.fracht = alleFracht(webcam(), 'leer');
+  const W = welt(sz, { ZIELE: 'webcams', LIMIT: '1' });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA1 Trockenlauf: Kandidat ohne CH-Linie wird übersprungen …', r.bericht.zaehl, { UEBERSPRUNGEN: 1 });
+  ist('TA1 … und es entsteht weder Ledger noch Freigabe-Ledger', [existsSync(W.cfg.pfade.ledger), existsSync(W.cfg.pfade.freigabeLedger)], [false, false]);
+  W.weg();
+}
+// TA1b — dasselbe in der Probe
+{
+  const sz = standardSz(); sz.fracht = alleFracht(webcam(), 'leer');
+  const W = welt(sz, { MODUS: 'probe', ZIELE: 'webcams', LIMIT: '1' });
+  await lauf(W.cfg, W.io);
+  ist('TA1b Probe: übersprungener Kandidat hinterlässt kein Ledger', existsSync(W.cfg.pfade.ledger), false);
+  W.weg();
+}
+// TA2 (S7) — Freigabedatei zwischen zwei Kandidaten gelöscht: der nächste Kandidat wird nicht mehr abgefragt (spart CJ-Punkte)
+{
+  const sz = standardSz(); sz.fracht = alleFracht(webcam(), 'leer');
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  abfangen(W, async (u) => { if (/freightCalculate/.test(u) && existsSync(W.cfg.pfade.freigabeDatei)) unlinkSync(W.cfg.pfade.freigabeDatei); });
+  await lauf(W.cfg, W.io);
+  ist('TA2 Freigabedatei nach dem ersten (übersprungenen) Kandidaten gelöscht: nur eine Produktabfrage, kein productSet', [W.aus('cj').filter(x => x.pfad === 'product/query').length, W.aus('productSet').length], [1, 0]);
+  W.weg();
+}
+// TA3 (S16, S17) — ein fremdes Produkt mit demselben Handle (ohne grind2-Tag) wird weder überschrieben, noch übernommen, noch mit Zahlsuffix daneben angelegt
+{
+  const h = handleVon('Full HD USB-Webcam mit Mikrofon', '2000000000000000001');
+  const W = welt({ ...standardSz(), vorhanden: { [h]: { id: 'gid://shopify/Product/55', handle: h, status: 'ACTIVE', tags: ['cj-real'], variantsCount: { count: 3 } } } }, { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('TA3 Handle gehört einem fremden Produkt: kein productSet, keine Übernahme, UEBERSPRUNGEN', [W.aus('productSet').length, r.bericht.zaehl.GESCHRIEBEN ?? 0, r.bericht.zaehl.UEBERSPRUNGEN], [0, 0, 1]);
+  ist('TA3 … im Ledger steht «Handle … belegt»', /UEBERSPRUNGEN · Handle .* belegt/.test(lesen(W.cfg.pfade.ledger)), true);
+  W.weg();
+}
+// TA4 (S19) — «Daily variant creation limit» in den userErrors: Exit 4, kein FEHLER im Ledger
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  abfangen(W, async (u, b) => { if (/graphql/.test(u) && String(b.query).includes('productSet(')) return json({ data: { productSet: { product: null, userErrors: [{ field: ['input'], message: 'Daily variant creation limit reached. Try again in 24 hours.', code: 'VARIANT_THROTTLE_EXCEEDED' }] } } }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA4 Tageslimit als userError: Exit 4 und genau ein Versuch', [r.exit, W.log.filter(x => x.k === 'tore').length], [EXIT.VARIANTEN, 0]);
+  ist('TA4 … kein FEHLER im Ledger (kein Fehler des Produkts)', lesen(W.cfg.pfade.ledger).includes('FEHLER'), false);
+  W.weg();
+}
+// TA5 (B11) — eigene Punktegrenze gilt auch für die Fracht: 50 (Liste) + 10 (Abfrage) passen, 20 für die Fracht nicht mehr
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1', PUNKTE_MAX: '70', GRIND_RESERVE: '5000' });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA5 PUNKTE_MAX=70: Exit 3 und keine einzige Fracht-Abfrage', [r.exit, W.aus('fracht').length], [EXIT.CJ, 0]);
+  W.weg();
+}
+// TA6 (B14) — Schreibfehler in Folge stoppen den Lauf
+{
+  const W = welt({ ...standardSz(), set: 'usererror' }, { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4', MAX_FEHLER_FOLGE: '1' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('TA6 MAX_FEHLER_FOLGE=1: nach dem ersten Schreibfehler Schluss (Exit 1, ein productSet)', [r.exit, W.aus('productSet').length], [EXIT.FEHLER, 1]);
+  W.weg();
+}
+// TA7 (P5) — Preisurteil im Lauf: Preis über der Obergrenze → übersprungen
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams,lichterketten', LIMIT: '4', MAX_PREIS: '10' });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA7 MAX_PREIS=10: beide übersprungen, Grund «Obergrenze»', [r.bericht.zaehl, r.bericht.zeilen.every(z => /Obergrenze/.test(z.entscheid))], [{ UEBERSPRUNGEN: 2 }, true]);
+  W.weg();
+}
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams,lichterketten', LIMIT: '4', MIN_EINSTAND_CHF: '50' });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA7b MIN_EINSTAND_CHF=50: beide übersprungen, Grund «Einstand»', [r.bericht.zaehl, r.bericht.zeilen.every(z => /Einstand/.test(z.entscheid))], [{ UEBERSPRUNGEN: 2 }, true]);
+  W.weg();
+}
+// TA8 (P8) — eine Variante mit unlesbarem Einkaufspreis lässt das ganze Produkt durchfallen (nicht still eine Variante weglassen)
+{
+  const sz = standardSz(); const l = lichterkette(); l.variants[2].variantSellPrice = 'abc'; sz.produkte[l.pid] = l; sz.listen['kategorie:CAT-STRING-LIGHTS'] = [listeneintrag(l)];
+  const W = welt(sz, { ZIELE: 'lichterketten', LIMIT: '1' });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA8 eine von vier Varianten ohne lesbaren Preis: Produkt übersprungen (Preis unbekannt)', [r.bericht.zaehl, /Preis unbekannt bei 1 von 4/.test(r.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true]);
+  W.weg();
+}
+// TA9 (P12) — Dublette nur über eine Varianten-SKU (productSku passt nicht): im Lauf erkannt
+{
+  const sz = standardSz(); const w = webcam(); w.variants[0].variantSku = 'ALT777A'; w.variants[1].variantSku = 'ALT777B'; sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+  const W = welt(sz, { ZIELE: 'webcams', LIMIT: '1' });
+  W.io.index = baueIndex({ produkte: [{ id: 'gid://shopify/Product/70', handle: 'altes-kamerapaket-777', title: 'Altes Kamerapaket', status: 'ACTIVE', skus: ['ALT777A', 'ALT777B'] }] }, { stand: new Date().toISOString() });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA9 Varianten-SKU steht schon im Shop: Dublette, und zwar VOR dem Titel (kein KI-Aufruf)', [r.bericht.zaehl, /Dublette/.test(r.bericht.zeilen[0].entscheid), /variantSku|Varianten-SKUs/.test(r.bericht.zeilen[0].entscheid), W.aus('ki').length], [{ UEBERSPRUNGEN: 1 }, true, true, 0]);
+  W.weg();
+}
+// TA10 (P13) — Dublette nur über den Handle (anderer pid, andere SKUs, anderer Titel im Shop)
+{
+  const h = handleVon('Full HD USB-Webcam mit Mikrofon', '2000000000000000001');
+  const W = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' });
+  W.io.index = baueIndex({ produkte: [{ id: 'gid://shopify/Product/71', handle: h, title: 'Etwas ganz anderes', status: 'DRAFT', skus: ['XYZ-1'] }] }, { stand: new Date().toISOString() });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA10 Handle gehört schon einem Shop-Produkt: Dublette', [r.bericht.zaehl, /Dublette: Handle/.test(r.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true]);
+  W.weg();
+}
+// TA11 (P19) — Saisonware nur im DEUTSCHEN Titel erkennbar (der englische CJ-Name nennt das Fest nicht)
+{
+  const sz = standardSz(); sz.titel = { ...sz.titel, [lichterkette().productNameEn]: 'Halloween-Lichterkette für den Garten' };
+  const W = welt(sz, { ZIELE: 'lichterketten', LIMIT: '1' });
+  W.io.jetzt = () => jetztFest; W.io.index = baueIndex({ produkte: [] }, { stand: new Date(jetztFest - 3600e3).toISOString() });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA11 «Halloween» im deutschen Titel im Oktober: übersprungen', [r.bericht.zaehl, /Saisonware Halloween/.test(r.bericht.zeilen[0].entscheid)], [{ UEBERSPRUNGEN: 1 }, true]);
+  W.weg();
+}
+// TA12 (E1) — weniger als 3 Referenzprodukte: nicht veröffentlichen, nicht abstürzen
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  abfangen(W, async (u, b) => { if (/graphql/.test(u) && String(b.query).includes('sortKey:CREATED_AT')) return json({ data: { products: { nodes: [{ id: 'r0', resourcePublicationsV2: { nodes: [{ isPublished: true, publication: { id: 'gid://P1' } }] } }, { id: 'r1', resourcePublicationsV2: { nodes: [{ isPublished: true, publication: { id: 'gid://P1' } }] } }] } } }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA12 zwei Referenzprodukte: nicht veröffentlicht, Produkt bleibt DRAFT, Lauf endet ohne Absturz', [r.bericht.zaehl.VEROEFFENTLICHT ?? 0, [...W.shop.produkte.values()].map(s => s.status), W.aus('status').length], [0, ['DRAFT'], 0]);
+  ist('TA12 ...und der Grund ist die fehlende Kanalliste (NICHT_VEROEFFENTLICHT), kein Absturz in der Kanalabfrage (FEHLER «vor dem Aktivieren»)', [/NICHT_VEROEFFENTLICHT: Kanalliste aus den Referenzprodukten nicht ableitbar/.test(r.bericht.zeilen[0].entscheid), /Veröffentlichen vor dem Aktivieren/.test(r.bericht.zeilen[0].entscheid)], [true, false]);
+  W.weg();
+}
+// TA12b (E2) — ein Sperr-Tag (hier über ein Kategorie-Tag «adult») stoppt schon den PLAN (Tor sperrwoerter): nichts wird angelegt. Die zweite Sperre in veroeffentlichen() ist damit nur Absicherung
+// (nicht erreichbar, solange das Tor sperrwoerter gilt) und per Test nicht auslösbar.
+{
+  const kat = { kategorien: [{ tag: 'sort-test-adult-lichterketten', passt: pr => /lichterkette/i.test(pr.title) }], geladen: ['test'], fehler: [] };
+  const W = welt({ ...standardSz(), kategorienExtra: kat, liveSort: ['sort-test-adult-lichterketten'] }, { LIVE: '1', PUBLISH: '1', ZIELE: 'lichterketten', LIMIT: '1' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('TA12b Sperr-Tag im Kategorie-Tag: Tor sperrwoerter fällt, NICHTS wird angelegt oder veröffentlicht', [r.bericht.zaehl.UEBERSPRUNGEN, W.aus('productSet').length, /Sperrtag: sort-test-adult-lichterketten/.test(r.bericht.zeilen[0].entscheid)], [1, 0, true]);
+  W.weg();
+  const W2 = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'lichterketten', LIMIT: '1' }); frei(W2);
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('TA12b Gegenprobe: ohne Sperr-Tag wird veröffentlicht', [r2.bericht.zaehl.VEROEFFENTLICHT ?? 0, [...W2.shop.produkte.values()].map(s => s.status)], [1, ['ACTIVE']]);
+  W2.weg();
+}
+// TA13 (E3) — die Tore NACH dem Veröffentlichen entscheiden: fehlt der Kanal, geht das Produkt zurück auf DRAFT
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  let reads = 0;
+  abfangen(W, async (u, b, init, echt) => { if (/graphql/.test(u) && String(b.query).includes('product(id:$id)') && ++reads === 2) { const r = await echt(u, init); const j = await r.json(); j.data.product.resourcePublicationsV2.nodes = []; return json(j); } });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA13 Kanal fehlt nach dem Veröffentlichen: zurück auf DRAFT, ZURUECK im Freigabe-Ledger', [r.bericht.zaehl.VEROEFFENTLICHT ?? 0, [...W.shop.produkte.values()].map(s => s.status), lesen(W.cfg.pfade.freigabeLedger).includes(' · ZURUECK · ')], [0, ['DRAFT'], true]);
+  W.weg();
+}
+// TA14 (K6, K10, K11, K14) — Vorgaben und Grenzen der Konfiguration
+{
+  const c = konfigAus({}, '/x');
+  ist('TA14 Vorgaben: MAX_VARIANTEN 40, PUBLISH_MAX 5, MIN_BILDER 3, LIMIT 10, MAX_PREIS 80, Reserve 15000', [c.maxVarianten, c.publishMax, c.minBilder, c.limit, c.maxPreis, c.reserve], [40, 5, 3, 10, 80, 15000]);
+  wirft('TA14 MIN_BILDER=0 wirft', () => konfigAus({ MIN_BILDER: '0' }), /MIN_BILDER/);
+  wirft('TA14 USD_CHF=0.01 wirft (unsinniger Kurs)', () => konfigAus({ USD_CHF: '0.01' }), /USD_CHF/);
+  wirft('TA14 USD_CHF=100 wirft', () => konfigAus({ USD_CHF: '100' }), /USD_CHF/);
+}
+// TA15 (N21) — LIMIT begrenzt auch die teuren Listenaufrufe (50 Punkte je Aufruf)
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams,lichterketten', LIMIT: '1' });
+  await lauf(W.cfg, W.io);
+  ist('TA15 LIMIT=1: das zweite Zielblatt wird gar nicht erst gelistet', W.aus('liste').map(x => x.key), ['suche:webcam']);
+  W.weg();
+}
+// TA16 (N5) — ein ausdrücklich genanntes Ziel ohne Restbedarf bleibt draussen
+{
+  const bed = bedarfAus({ ziele: [{ id: 'voll', name: 'V', rang: 1, welle: '1', ziel: 30, luecke: 5, cj: '', cjSuche: 'v' }] }, { ziele: ['voll'], geschrieben: new Map([['voll', 5]]) });
+  ist('TA16 genanntes, erfülltes Ziel: kein Bedarf', bed.length, 0);
+}
+// TA17 (N8) — Anführungszeichen in einer SKU zerstören die SKU-Abfrage nicht
+{
+  const sz = standardSz(); const w = webcam(); w.variants[0].variantSku = 'CJTS"X01AZ'; sz.produkte[w.pid] = w; sz.listen['suche:webcam'] = [listeneintrag(w)];
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  await lauf(W.cfg, W.io);
+  ist('TA17 SKU mit «"»: maskiert in der Abfrage', W.aus('sku-abfrage')[0]?.q, 'sku:"CJTS\\"X01AZ"');
+  W.weg();
+}
+// TA18 (B1) — Variantenbudget aufgebraucht: gar nicht erst prüfen (keine CJ-Punkte für Kandidaten, die nicht geschrieben werden dürfen)
+{
+  const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4' }); frei(W);
+  writeFileSync(W.cfg.pfade.auswahlLedger, `ein-produkt · ${new Date().toISOString()} · GESCHRIEBEN · 9500 Varianten\n`);
+  const r = await lauf(W.cfg, W.io);
+  ist('TA18 Auswahl-Lauf hat das Tagesbudget aufgebraucht: Exit 4, keine Produktabfrage, nichts geschrieben', [r.exit, W.aus('cj').filter(x => x.pfad === 'product/query').length, W.aus('productSet').length], [EXIT.VARIANTEN, 0, 0]);
+  W.weg();
+}
+// TA19 (B14) — Prüffehler in Folge (hier: CJ antwortet mit HTML) stoppen den Lauf
+{
+  const W = welt(standardSz(), { ZIELE: 'webcams,lichterketten', LIMIT: '4', MAX_FEHLER_FOLGE: '1' });
+  abfangen(W, async (u) => { if (/product\/query/.test(u)) return new Response('<html>Wartung</html>', { status: 200 }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA19 MAX_FEHLER_FOLGE=1: nach dem ersten Prüffehler Exit 1', [r.exit, r.bericht.zaehl.FEHLER], [EXIT.FEHLER, 1]);
+  W.weg();
+}
+// TA20 (N15) — ACTIVE-Setzen scheitert (userErrors): nicht veröffentlichen
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  abfangen(W, async (u, b) => { if (/graphql/.test(u) && String(b.query).includes('productUpdate')) return json({ data: { productUpdate: { product: null, userErrors: [{ field: ['id'], message: 'kann nicht aktiviert werden' }] } } }); });
+  const r = await lauf(W.cfg, W.io);
+  ist('TA20 ACTIVE scheitert: kein publishablePublish, Produkt bleibt DRAFT', [W.aus('publish').length, [...W.shop.produkte.values()].map(x => x.status), r.bericht.zaehl.VEROEFFENTLICHT ?? 0], [0, ['DRAFT'], 0]);
+  W.weg();
+}
+// TA21 (N16) — publishablePublish scheitert (userErrors): sofort zurück auf DRAFT, Grund im Ledger
+{
+  const W = welt(standardSz(), { LIVE: '1', PUBLISH: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+  abfangen(W, async (u, b) => { if (/graphql/.test(u) && String(b.query).includes('publishablePublish')) return json({ data: { publishablePublish: { userErrors: [{ field: ['id'], message: 'Kanal gesperrt' }] } } }); });
+  await lauf(W.cfg, W.io);
+  ist('TA21 publishablePublish scheitert: DRAFT, ZURUECK mit Grund publishablePublish', [[...W.shop.produkte.values()].map(x => x.status), /ZURUECK · publishablePublish/.test(lesen(W.cfg.pfade.freigabeLedger))], [['DRAFT'], true]);
+  W.weg();
+}
+// TA22 (N18) — Übernahme eines Produkts mit mehr Varianten als geplant belastet das Budget mit der echten Zahl
+{
+  const h = handleVon('Full HD USB-Webcam mit Mikrofon', '2000000000000000001');
+  const sz = standardSz(); sz.vorhanden = { [h]: { id: 'gid://shopify/Product/77', handle: h, status: 'DRAFT', tags: ['grind2', 'cj-real'], variantsCount: { count: 48 } } };
+  const W = welt(sz, { LIVE: '1', ZIELE: 'webcams,lichterketten', LIMIT: '4', GESAMT_MAX: '50' }); frei(W);
+  const r = await lauf(W.cfg, W.io);
+  ist('TA22 Übernahme mit 48 Varianten verbraucht das Budget (50): die Lichterkette (4 Varianten) passt nicht mehr', [r.bericht.zaehl.BUDGET ?? 0, W.aus('productSet').length], [1, 0]);
+  W.weg();
+}
+// TA23 (H23) — mehr als 250 Medien (Shopify-Grenze) lassen den Plan durchfallen
+{
+  const P = PL, { TAXONOMIE } = await import('./lib/grind_google.mjs');
+  const w = webcam(); w.productImage = JSON.stringify(Array.from({ length: 260 }, (_, i) => `https://cf.cjdropshipping.com/test/g${i}.jpg`));
+  const r = P.planeNeu(w, { titel: 'USB-Webcam mit Mikrofon', googlePfad: 'Cameras & Optics > Cameras > Webcams', googleVokabular: TAXONOMIE, tags: [], preis: () => ({ preis: 19.9, kosten: 9 }) });
+  ist('TA23 260 Galeriebilder (+ Variantenbilder) > 250 Medien: Plan lehnt ab', [r.ok, r.tore.find(x => x.name === 'varianten-bilder')?.ok], [false, false]);
+}
+
+// <<< ENDE EINSCHUB PRUEFUNG-2710
 
 // ── Zusammenfassung
 console.log(`\n${ok} ok, ${fehl} Fehler`);

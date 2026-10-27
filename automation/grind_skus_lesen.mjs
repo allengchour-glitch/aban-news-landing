@@ -24,6 +24,7 @@ import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { normalizeShopifyHost } from './lib/shopify_host.mjs';
 import { bulkSammler } from './lib/grind_dubletten.mjs';
 
 const AUS = process.argv[2] || '/tmp/grind2/bau/skus.jsonl';
@@ -36,7 +37,10 @@ const schlaf = ms => new Promise(r => setTimeout(r, ms));
 const INNEN = `{ products { edges { node { id handle title status variants { edges { node { sku } } } } } } }`;
 
 async function bulkLesen() {
-  const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
+  // Der Host wird geprüft, BEVOR client_id und client_secret irgendwohin gehen (nur reine *.myshopify.com-Domains).
+  let SHOP = '';
+  try { SHOP = normalizeShopifyHost(process.env.SHOPIFY_SHOP); } catch (e) { console.error(String(e.message)); process.exit(1); }
+  const CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
   if (!SHOP || !process.env.SHOPIFY_CLIENT_ID || !CS) { console.error('SHOPIFY_SHOP / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET fehlen'); process.exit(1); }
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
@@ -55,7 +59,8 @@ async function bulkLesen() {
   // 2. sonst neu starten; läuft eine fremde Abfrage, warten
   const t0 = Date.now();
   while (!id) {
-    const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
+    // `currentBulkOperation` ist in der Schemafassung 2026-10 veraltet (der MCP lehnt es ab) — `bulkOperations` mit Statusfilter gibt es in beiden und liefert die laufende Abfrage (neueste zuerst).
+    const lauf = (await q(`{ bulkOperations(first:1, query:"status:running OR status:created", sortKey:CREATED_AT, reverse:true){ nodes{ status } } }`)).bulkOperations?.nodes?.[0];
     if (lauf && ['CREATED', 'RUNNING'].includes(lauf.status)) {
       if (Date.now() - t0 > WARTEN_MAX_MS) { console.error('Eine fremde Bulk-Abfrage läuft zu lange — abgebrochen, nichts gestartet'); process.exit(2); }
       console.log('andere Bulk-Abfrage läuft, warte 30 s'); await schlaf(30000); continue;
@@ -98,7 +103,8 @@ const aus = createWriteStream(AUS);
 for (const p of produkte) aus.write(JSON.stringify(p) + '\n');
 await new Promise((ok, fehl) => { aus.on('error', fehl); aus.end(ok); });
 const nachStatus = {}; for (const p of produkte) nachStatus[p.status] = (nachStatus[p.status] || 0) + 1;
-const meta = { stand: new Date().toISOString(), ...kopf, produkte: stat.produkte, varianten: stat.varianten, variantenOhneSku: stat.variantenOhneSku, waisen: stat.waisen, kaputteZeilen: stat.kaputt, nachStatus,
+const komplett = !stat.kaputt && !stat.waisen && (kopf.objectCount ? kopf.objectCount === stat.produkte + stat.varianten : true);
+const meta = { stand: komplett ? new Date().toISOString() : null, gelesenAm: new Date().toISOString(), ...kopf, produkte: stat.produkte, varianten: stat.varianten, variantenOhneSku: stat.variantenOhneSku, waisen: stat.waisen, kaputteZeilen: stat.kaputt, nachStatus,
   vollstaendig: kopf.objectCount ? kopf.objectCount === stat.produkte + stat.varianten : null };
 writeFileSync(META, JSON.stringify(meta, null, 1));
 if (process.env.ROH_BEHALTEN !== '1') { try { unlinkSync(ROH); } catch { /* egal */ } }

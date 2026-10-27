@@ -19,3 +19,13 @@ test('CJ-Fachfehler und kaputte JSON-Daten stoppen den Import', async () => {
   assert.throws(() => assertCjSuccess({ result: true }, 200), /CJ_DATA/);
   await assert.rejects(readCjResponse({ status: 200, json: async () => { throw new Error('bad json'); } }, 'test'), /CJ_JSON/);
 });
+
+test('Antwort ohne result ist nur mit ausdrücklicher Angabe ein Erfolg (getInventoryByPid)', () => {
+  const bestand = { success: true, code: 200, message: '', data: { variantInventories: [] } };
+  assert.throws(() => assertCjSuccess(bestand, 200, 'x'), /CJ_API/);
+  assert.equal(assertCjSuccess(bestand, 200, 'x', { ohneResult: true }).code, 200);
+  for (const body of [{ code: 200, data: {} }, { success: true, code: 500, data: {} }, { success: true, code: 200, result: false, data: {} }, { success: false, code: 200, data: {} }]) {
+    assert.throws(() => assertCjSuccess(body, 200, 'x', { ohneResult: true }), /CJ_API/);
+  }
+  assert.throws(() => assertCjSuccess({ success: true, code: 200 }, 200, 'x', { ohneResult: true }), /CJ_DATA/);
+});

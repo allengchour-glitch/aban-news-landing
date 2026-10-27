@@ -59,7 +59,7 @@ import { ENGLISCH_RE } from '../farbwahl_scan.mjs';
 // ───────────────────────── Konstanten ─────────────────────────
 
 /** Admin-API-Version für productSet. GEMESSEN 26.10.2026 (`publicApiVersions`): unterstützt sind 2026-01, 2026-04, 2026-07, 2026-10; die alten Skripte pinnen 2025-01/2024-10. */
-export const API_VERSION = '2026-01';
+export const API_VERSION = '2026-01';      // = SCHEMA_API_VERSION weiter unten (ein Test hält beide gleich)
 /** Wie im Nachzieher (MAX_VARIANTEN=100): grössere Produkte kosten zu viel vom Tageslimit für neue Varianten. */
 export const MAX_VARIANTEN = 100;
 /** Mindestzahl Galeriebilder (Hero-Regel des Audits, SETZUNG). GEMESSEN an 2 235 Datenblättern: 39 (1,7 %) haben weniger als 3. */
@@ -76,7 +76,7 @@ export const GOOGLE_TYP = 'single_line_text_field';
 export const FRISTEN = ['endgueltig', 'zurueckgestellt', 'vorlaeufig'];
 /** Namen der Tore in der Reihenfolge, in der sie im Ergebnis stehen. */
 export const TORE = ['titel', 'produktart', 'sperrwoerter', 'steckdosen-ware', 'google-pfad', 'tags', 'handle', 'metafelder', 'bilder', 'cj-varianten', 'stecker', 'preis',
-  'preis>kosten', 'variantenzahl', 'auswahl', 'tote-optionen', 'optionswerte-sicher', 'optionswerte-deutsch', 'zahl-als-modell', 'varianten-bilder', 'eingabe-schema', 'eingabe-konsistent'];
+  'preis>kosten', 'variantenzahl', 'auswahl', 'tote-optionen', 'optionswerte-sicher', 'optionswerte-deutsch', 'zahl-als-modell', 'farbwerte-unterscheidbar', 'varianten-bilder', 'eingabe-schema', 'eingabe-konsistent'];
 
 /**
  * Das Admin-GraphQL für die Anlage. Felder und Argumente gegen das Schema gelesen (mcp__Shopify__graphql_schema, 27.10.2026): productSet(identifier, input, synchronous) →
@@ -110,8 +110,56 @@ export const ANZUENDER_RE = /(cigarette|zigaretten) ?(lighter|anz[üu]nder|buchs
 // Zum Ersetzen brauchen die beiden das Flag g; als eigene Kopien, damit die exportierten Muster mit .test() ohne lastIndex-Falle benutzbar bleiben.
 const MESSGERAET_G = new RegExp(MESSGERAET_RE.source, 'gi'), ANZUENDER_G = new RegExp(ANZUENDER_RE.source, 'gi');
 
+/** Fremdstecker oder 110-V-Gerät im NAMEN (die Varianten-Prüfung steckerUrteil sieht nur variantKey): «Hair Dryer 1800W AU Plug», «Electric Heater 110V US Plug». Nennt der Name auch EU, entscheidet die Varianten-Prüfung. */
+export const FREMDSTECKER_NAME_RE = /(^|[^a-z])(us|usa|uk|gb|au|jp|american|british|australian|japanese|amerikanische[rn]?|britische[rn]?|australische[rn]?|japanische[rn]?)[ -]?(standard[ -]?)?(plug|socket|outlet|stecker|steckdose)s?([^a-z]|$)|(^|[^0-9.])(100|110|115|120)\s?v(?:ac)?(?!\s*(?:-|~|–|to|bis)\s*2\d\d)([^a-z0-9]|$)/i;
+export const fremdsteckerImNamen = s => FREMDSTECKER_NAME_RE.test(String(s ?? '')) && !/(^|[^a-z])eu([^a-z]|$)/i.test(String(s ?? ''));
+/** Waren, die nicht automatisch ins Sortiment gehören (Auflagen der Lückenanalyse, Schweizer Recht — BEHAUPTUNG, der Besitzer bestätigt): Laser-Zeiger/-Lampen, Medizinprodukte, Pyrotechnik, Selbstverteidigung, Spielzeugwaffen. Bewusst streng: ein Fehlalarm kostet einen Kandidaten. */
+export const MEDIZIN_RE = /(blood pressure (?:monitor|meter|machine|cuff|gauge)(?!ing)|blutdruck(?:messger(?:ä|ae)t|-?messer|manschette)|blood glucose (?:meter|monitor|test)(?!ing)|glucose meter|blutzucker(?:messger(?:ä|ae)t|-?teststreifen)|hearing aid|h(?:ö|oe)rger(?:ä|ae)t|pulse oximeter|pulsoximeter|\btens\b|muscle stimulator|muskelstimulator|insulin|pregnancy test|schwangerschaftstest|(?:medical|surgical) (?:face |disposable )?(?:mask|device|grade)|mundschutz|op-maske|medizinprodukt|medizinische[rsmn]? (?:maske|ger(?:ä|ae)t|produkt)|contact lens|kontaktlinse|\bcpap\b|nebuli[sz]er|inhalator|catheter|katheter|syringe|einwegspritze|slimming (?:pill|capsule|patch)|weight loss (?:pill|capsule)|abnehm(?:kapsel|tablette|pille|tee|mittel)\w*|fat burner|fatburner|teeth whitening|zahnaufhell\w*|(?:fieber|stirn|ohr|forehead|infrared|infrarot)[- ]*thermometer|thermometer[- ]*(?:fieber|stirn))/i;
+export const PYRO_WAFFENAEHNLICH_RE = /(firework|feuerwerk|firecracker|knallk(?:ö|oe)rper|smoke bomb|rauchbombe|sparkler|wunderkerze|tear gas|reizgas|pepper spray|stun gun|slingshot|steinschleuder|handcuff|handschelle|lock ?pick|dietrich|nunchaku|toy gun|spielzeugpistole|blaster)/i;
+const LASER_GERAET_RE = /(pointer|zeiger|flashlight|taschenlampe|torch|\bmw\b|tactical|taktisch|\bpen\b|stift|lampe|licht)/i, LASER_HARMLOS_RE = /(entfernungsmesser|distance meter|measur|level|nivellier|gravur|engrav|cutting|schneid|haarentfern|hair removal|epilat|printer|drucker)/i;
+export function heikelWort(s) {
+  const t = String(s ?? '');
+  const m = t.match(MEDIZIN_RE) || t.match(PYRO_WAFFENAEHNLICH_RE);
+  if (m) return m[0].trim();
+  return /laser/i.test(t) && LASER_GERAET_RE.test(t) && !LASER_HARMLOS_RE.test(t) ? 'Laser-Zeiger/-Lampe' : null;
+}
+
 /** Englische Steckdosen-Ware (stecker_bereinigen.STECKDOSE_RE ist deutsch und prüft Shop-Titel; der CJ-Name ist englisch). */
 export const STECKDOSE_EN_RE = /power strips?|socket strips?|extension sockets?|extension lead|surge protector|smart (plug|socket|outlet)s?|wifi (plug|socket|outlet)|wall (socket|outlet)s?|timer socket|multi-?socket/i;
+
+/**
+ * Kleingeschriebenes Wort mit mindestens 4 Buchstaben in einem deutschen Optionswert = englischer Rest. Deutsche Werte sind GROSSGESCHRIEBEN oder Kurzwörter («Schwarz», «Weiss», «L», «XXL»),
+ * ausser den kleinen Funktionswörtern «mit/ohne/und/oder/inkl». GEMESSEN 27.10.2026 an 623 baubaren Mehrvarianten-Plänen: 13 (2,1 %) trugen solche Reste («4 sections 1.6m», «15 pieces», «Pink gold»,
+ * «Schwarz / gold», «12 inch»), die EN_AUSGABE_RE nicht kennt; 0 Fehlalarme («Roségold», «Schwarz / Weiss», «mit Fernbedienung», «150 × 200 cm»). Wörter mit Ziffer davor («1.6m») zählen nicht,
+ * Einheiten («cm», «mm») sind kürzer als 4 Buchstaben.
+ */
+export const KLEIN_WORT_RE = /(?:^|[\s\/,(])(?!(?:mit|ohne|und|oder|inkl)(?![a-zäöüß]))[a-zäöüß]{4,}(?![a-zäöüß])/;
+export const kleinWortImWert = w => KLEIN_WORT_RE.test(String(w ?? ''));
+
+/**
+ * Farbwerte, die sich nur durch eine angehängte Ziffer unterscheiden («Schwarz» + «Schwarz1»; CJ: «Black» + «Black1»), sind für die Kundin zwei gleich benannte Farben mit verschiedenem Preis
+ * und KEINE Auswahl. Nicht reparierbar (welche Ziffer meint was?) → nie raten, zurückstellen. GEMESSEN 27.10.2026: 19 von 1 678 Mehrvarianten-Datenblättern (1,1 %); im Shop steht derselbe Fehler schon live
+ * (3d-teddy-lampe-a92a5f: «Weiss, Riss, Schwarz1, Riss1, Weiss1, Schwarz»). Nur ein Wert OHNE Ziffer neben einem MIT Ziffer gilt als Kollision: «Black Zone2»/«Black Zone4» und «Black1»/«White1» sind
+ * echte Unterschiede.
+ * @returns {string[][]} Gruppen kollidierender Werte, z. B. [['Schwarz1', 'Schwarz']]
+ */
+export function ziffernKollision(werte) {
+  const stamm = w => String(w ?? '').trim().toLowerCase().replace(/[\s_-]*0?\d{1,2}$/, '');
+  const m = new Map();
+  for (const w of werte || []) { const st = stamm(w); if (!m.has(st)) m.set(st, []); m.get(st).push(String(w ?? '').trim()); }
+  return [...m.values()].filter(l => l.length > 1 && l.some(w => w.toLowerCase() === stamm(w)) && l.some(w => /\d$/.test(w)));
+}
+
+/**
+ * Widerspruch zwischen Datenblatt und Produktart: der Google-Pfad sagt «Webcam», das Datenblatt beschreibt eine Netzwerk-/Gun-/Bullet-Kamera (CCTV). Beispiel (27.10.2026, pid 5C86453E):
+ * «Webcam with microphone» mit «Type: Network Camera, Style: Gun Camera, Lens: 3.6 (mm), Power supply voltage: 3.7 (V)» — kein Wort zu Mikrofon oder USB. Der Titel stützt sich dann nur auf den
+ * Lieferantennamen; ob es eine USB-Webcam ist, kann nur CJ oder eine Probebestellung klären → zurückgestellt, nie anlegen. Je Eintrag: Pfad-Muster, Datenblatt-Muster, Klartext.
+ */
+export const PRODUKTART_WIDERSPRUCH = Object.freeze([
+  { pfad: /Cameras & Optics > Cameras > Webcams/, text: /network camera|gun camera|bullet camera|\bcctv\b|\bip camera/i, was: 'Netzwerk-/Überwachungskamera' },
+]);
+/** Masse ohne Achsenwort in einer «Modell»-Option: Breite? Länge? Leistung? Der Optionsname liesse sich nur raten. */
+const MASS_WERT_RE = /^\s*\d+(?:[.,]\d+)?\s*(?:mm|cm|m|zoll|inch|in|"|w|v|a|ah|mah|kg|g)\b[^a-zäöüß]*$/i;
 
 // ───────────────────────── Kleine Helfer ─────────────────────────
 
@@ -219,19 +267,24 @@ export function preisLeser(preis) {
 // ───────────────────────── Schema-Prüfung (gegen die echten Eingabetypen) ─────────────────────────
 
 /**
- * Teilmenge des Admin-Schemas: GENAU die Eingabetypen, die `planeNeu` benutzt, mit ALLEN ihren Feldern. Gelesen am 27.10.2026 mit
- * mcp__Shopify__graphql_schema (ProductSetInput, ProductVariantSetInput, OptionSetInput, OptionValueSetInput, FileSetInput, VariantOptionValueInput,
- * InventoryItemInput, InventoryItemMeasurementInput, WeightInput, MetafieldInput, SEOInput + Enums). Welche API-Version die feste Schemafassung des MCP ist, ist
- * UNBEKANNT (die Doku-Suche nennt 2026-10); die benutzten Felder gibt es auch in den Versionen ab 2025-01 (productSet des Nachziehers läuft damit live), `measurement` ist
- * die einzige, die dort nicht live benutzt wurde.
+ * Die Admin-API-Version, gegen die SCHEMA per Introspektion der ECHTEN API gelesen wurde (27.10.2026). Sie MUSS `API_VERSION` sein: die Mutation läuft in genau dieser Version, ein anderes
+ * Schema wäre eine Täuschung (ein Test hält beide gleich). Wer API_VERSION ändert, liest SCHEMA neu: `node automation/grind_schema_pruefen.mjs` (nur lesen, Exit 1 bei Abweichung).
+ */
+export const SCHEMA_API_VERSION = '2026-01';
+
+/**
+ * Teilmenge des Admin-Schemas: GENAU die Eingabetypen, die `planeNeu` benutzt, mit ALLEN ihren Feldern. Gelesen am 27.10.2026 per Introspektion der echten Admin-API `SCHEMA_API_VERSION`
+ * (ProductSetInput, ProductVariantSetInput, OptionSetInput, OptionValueSetInput, FileSetInput, VariantOptionValueInput, InventoryItemInput, InventoryItemMeasurementInput, WeightInput,
+ * MetafieldInput, SEOInput + Enums). Der MCP-Schemaleser (mcp__Shopify__graphql_schema) ist auf Admin 2026-10 gepinnt und weicht in EINEM Typ ab: ProductVariantSetInput kennt dort
+ * `barcodes` und `published` statt `barcode` (18 statt 17 Felder) — das war die erste Fassung dieser Tabelle, und sie hätte ein Feld durchgewinkt, das 2026-01 ablehnt.
  * Notation: GraphQL-Typ als Text; `!` = Pflicht; 'offen' = Typ nicht eingebettet (jede Benutzung ist ein Fehler, damit nichts ungeprüft durchrutscht).
  */
 export const SCHEMA = {
   ProductSetInput: { category: 'ID', claimOwnership: 'offen', collections: '[ID!]', combinedListingRole: 'offen', descriptionHtml: 'String', files: '[FileSetInput!]', giftCard: 'Boolean',
     giftCardTemplateSuffix: 'String', handle: 'String', metafields: '[MetafieldInput!]', productOptions: '[OptionSetInput!]', productType: 'String', redirectNewHandle: 'Boolean',
     requiresSellingPlan: 'Boolean', seo: 'SEOInput', status: 'ProductStatus', tags: '[String!]', templateSuffix: 'String', title: 'String', variants: '[ProductVariantSetInput!]', vendor: 'String' },
-  ProductVariantSetInput: { barcodes: 'offen', compareAtPrice: 'Money', file: 'FileSetInput', id: 'ID', inventoryItem: 'InventoryItemInput', inventoryPolicy: 'ProductVariantInventoryPolicy',
-    inventoryQuantities: 'offen', metafields: '[MetafieldInput!]', optionValues: '[VariantOptionValueInput!]!', position: 'Int', price: 'Money', published: 'Boolean', requiresComponents: 'Boolean',
+  ProductVariantSetInput: { barcode: 'String', compareAtPrice: 'Money', file: 'FileSetInput', id: 'ID', inventoryItem: 'InventoryItemInput', inventoryPolicy: 'ProductVariantInventoryPolicy',
+    inventoryQuantities: 'offen', metafields: '[MetafieldInput!]', optionValues: '[VariantOptionValueInput!]!', position: 'Int', price: 'Money', requiresComponents: 'Boolean',
     showUnitPrice: 'Boolean', sku: 'String', taxCode: 'String', taxable: 'Boolean', unitPriceMeasurement: 'offen' },
   OptionSetInput: { id: 'ID', linkedMetafield: 'offen', name: 'String', position: 'Int', values: '[OptionValueSetInput!]' },
   OptionValueSetInput: { id: 'ID', name: 'String' },
@@ -374,6 +427,9 @@ export function planeNeu(cjRoh, ctx) {
     if (!ctx.diyErlaubt && (cj.productType === 'DIY_PRODUCT' || cj.customizationVersion)) { g.push('Personalisierungsprodukt (DIY): ob CJ Kundenangaben (Aufdruck, Gravur) braucht, ist UNBEKANNT, der Shop erfasst keine'); mehr('endgueltig'); }
     // ANNAHME: Status «3» = im Verkauf. Alle 2 235 Datenblätter und alle 160 Listentreffer (saleStatus) tragen 3; was die anderen Werte bedeuten, ist UNBEKANNT → nicht anlegen, später wieder prüfen.
     if (cj.status != null && String(cj.status) !== '3') { g.push(`CJ-Status ${cj.status} (3 = im Verkauf)`); mehr('zurueckgestellt'); }
+    for (const w of PRODUKTART_WIDERSPRUCH) {
+      if (w.pfad.test(googlePfad) && w.text.test(`${cjName}\n${htmlZuText(cj.description)}`)) { g.push(`Datenblatt widerspricht der Produktart: ${w.was} beschrieben, Google-Pfad «${googlePfad}»`); mehr('zurueckgestellt'); }
+    }
     tor('produktart', !g.length, g.join('; '), frist ?? 'endgueltig');
   }
 
@@ -395,6 +451,7 @@ export function planeNeu(cjRoh, ctx) {
     if (lz) g.push(`Lizenzname «${lz}»`);
     const er = beide.match(ERWACHSENE_RE); if (er) g.push(`Erwachsenen-Ware («${er[2]}»)`);
     const tb = beide.replace(ANZUENDER_G, ' ').match(TABAK_RE); if (tb) g.push(`Tabak/Nikotin («${tb[2]}»)`);
+    const hk = heikelWort(beide); if (hk) g.push(`heikle Ware («${hk}») nie automatisch`);
     const spt = tags.filter(t => SPERR_TAGS.includes(t)); if (spt.length) g.push(`Sperr-Tag ${spt.join(', ')}`);
     // Merchant-Prüfung des Repos (Sperr-Tags per Muster, Marken-/Safety-Risiko wie «kinder», «baby», Lizenznamen in Titel UND Beschreibung)
     const m = pruefeProdukt({ titel: titel || 'x', beschreibung, tags, bild: galerie0[0] || 'https://x', preis: 1, id: pid || 'x', link: 'x' });
@@ -406,7 +463,8 @@ export function planeNeu(cjRoh, ctx) {
   // ── 4. Steckdosen-Ware (Schuko passt nicht in die Schweizer Steckdose)
   {
     const ist = istSteckdosenWare({ title: titel, g: googlePfad }) || STECKDOSE_EN_RE.test(cjName) || istSteckdosenWare({ title: cjName, g: '' });
-    tor('steckdosen-ware', !ist, 'Steckdosen-Ware (Leiste, Smart-Steckdose …): Schuko/Euro-Aufbau passt nicht', 'endgueltig');
+    const fremd = fremdsteckerImNamen(cjName) || fremdsteckerImNamen(titel);
+    tor('steckdosen-ware', !ist && !fremd, fremd && !ist ? 'Fremdstecker (US/UK/AU/JP) oder 110-V-Gerät im Namen: passt nicht in die Schweizer Steckdose' : 'Steckdosen-Ware (Leiste, Smart-Steckdose …): Schuko/Euro-Aufbau passt nicht', 'endgueltig');
   }
 
   // ── 5. Google-Pfad
@@ -616,17 +674,25 @@ export function planeNeu(cjRoh, ctx) {
 
   // ── 16–18. Werte: sicher übersetzt, deutsch, keine Zahlen als Modell/Farbe
   if (!optReif) {
-    for (const n of ['optionswerte-sicher', 'optionswerte-deutsch', 'zahl-als-modell']) nichtGeprueft(n, 'Auswahl');
+    for (const n of ['optionswerte-sicher', 'optionswerte-deutsch', 'zahl-als-modell', 'farbwerte-unterscheidbar']) nichtGeprueft(n, 'Auswahl');
   } else {
     // Fiel der Übersetzungsdienst aus, ist auch der englische Rest nur eine Folge davon → beide Tore gelten nur vorläufig.
     const uFrist = ctx.kiAusfall ? 'vorlaeufig' : 'zurueckgestellt';
     tor('optionswerte-sicher', !unsicher.length, `nicht sicher übersetzt: ${JSON.stringify(unsicher).slice(0, 200)}`, uFrist);
     const alle = einzel ? [] : [...finalOpt.map(o => o.name), ...finalOpt.flatMap(o => o.werte)];
-    const en = alle.filter(x => EN_AUSGABE_RE.test(x) || CJK_RE.test(x));
+    const en = alle.filter(x => EN_AUSGABE_RE.test(x) || CJK_RE.test(x) || KLEIN_WORT_RE.test(x));
     for (const o of einzel ? [] : finalOpt) for (const w of o.werte) if (en.includes(w) && !unsicher.some(u => u.wert === w)) fremd.push({ option: o.name, wert: w, grund: 'englischer Rest' });
     tor('optionswerte-deutsch', !en.length, `englische/fremdsprachige Optionswerte: ${eindeutig(en).slice(0, 5).map(x => `«${x}»`).join(', ')}`, uFrist);
     const zahl = finalOpt.filter(o => (/^Modell/.test(o.name) || o.art === 'farbe') && o.werte.some(w => ZAHL_RE.test(text(w))));
-    tor('zahl-als-modell', !zahl.length, `Zahlen unter «${zahl.map(o => o.name).join(', ')}» (Ringgrössen und Stil-Nummern sind weder Modell noch Farbe): ${zahl.map(o => o.werte.filter(w => ZAHL_RE.test(text(w))).slice(0, 4).join('/')).join(' ; ')}`);
+    const massModell = finalOpt.filter(o => /^Modell/.test(o.name) && o.werte.length && o.werte.every(w => MASS_WERT_RE.test(text(w))));
+    tor('zahl-als-modell', !zahl.length && !massModell.length, zahl.length
+      ? `Zahlen unter «${zahl.map(o => o.name).join(', ')}» (Ringgrössen und Stil-Nummern sind weder Modell noch Farbe): ${zahl.map(o => o.werte.filter(w => ZAHL_RE.test(text(w))).slice(0, 4).join('/')).join(' ; ')}`
+      : `«Modell» enthält nur Masse (${massModell.map(o => o.werte.slice(0, 4).join('/')).join(' ; ')}): ob Breite, Länge oder Leistung, lässt sich nicht erraten`);
+    {
+      const g = [];
+      for (const o of finalOpt.filter(o => o.art === 'farbe')) for (const l of ziffernKollision(o.werte)) g.push(`«${o.name}»: ${l.join(' / ')}`);
+      tor('farbwerte-unterscheidbar', !g.length, `Werte unterscheiden sich nur durch eine Ziffer: ${g.slice(0, 3).join('; ')}`);
+    }
   }
   if (tore.some(t => t.ok === false) || !optReif) return abbruch('vorheriges Tor', 'varianten-bilder', { varianten: verkauf.length, optionen: finalOpt.map(o => ({ name: o.name, werte: o.werte })), unsicher: [...unsicher, ...fremd], hinweise });
 

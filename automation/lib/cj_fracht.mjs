@@ -159,11 +159,34 @@ export function punkteMerken(stand, antwort) {
 /**
  * Welche Frachtzahl geht in die Landekosten? Standard: nur die günstigste NORMALE Linie. Batterie-/Flüssigware kann nur Sonderlinien haben (gemessen: Lötpaste): dann null (Aufrufer
  * stellt zurück), ausser er erlaubt ausdrücklich den Ausweg über die Sonderlinie. Unbekannt und nicht lieferbar liefern nie eine Zahl.
+ *
+ * LIEFERZEIT (`maxTage`, Prüfung 27.10.2026): die günstigste Linie ist oft die langsamste (GEMESSEN: CJPacket Eub und Postal 12–50 Tage, PostNL 15–45, Sensitive Pro 15–35, dagegen
+ * CJPacket Ordinary VIP 7–10, EQ 5–9). Die Produktseite verspricht «Lieferung ca. 10–20 Tage» (so auch die Saison-Fenster in grind2.mjs): gepreist wird darum mit der günstigsten Linie,
+ * deren LÄNGSTE Laufzeit höchstens `maxTage` beträgt. Eine Linie ohne lesbare Laufzeit gilt als unbekannt, nicht als schnell. Gibt es normale Linien, aber keine schnelle, ist das Ergebnis
+ * null (zurückstellen) — auch mit `sensitivAlsAusweg` springt dann keine Sonderlinie ein: wer Batterieware schnell versenden will, entscheidet das ausdrücklich (Besitzer), nicht hier.
+ * Ohne normale Linie und mit `sensitivAlsAusweg` zählt die günstigste SCHNELLE Sonderlinie. `maxTage = null` (Vorgabe) ist das alte Verhalten ohne Laufzeitprüfung.
  */
-export function frachtFuerKosten(r, { sensitivAlsAusweg = false } = {}) {
+export function frachtFuerKosten(r, { sensitivAlsAusweg = false, maxTage = null } = {}) {
   if (!r || r.unbekannt || !r.lieferbar) return null;
+  if (maxTage != null && Array.isArray(r.linien)) {
+    const schnell = l => !!l.tage && l.tage.max <= maxTage;          // linien sind nach Preis sortiert
+    const normal = r.linien.filter(l => l.art === 'normal');
+    if (normal.length) return normal.find(schnell)?.preisUsd ?? null;
+    return sensitivAlsAusweg ? (r.linien.filter(l => l.art === 'sensitiv').find(schnell)?.preisUsd ?? null) : null;
+  }
   if (typeof r.guenstigsteUsd === 'number') return r.guenstigsteUsd;
   return sensitivAlsAusweg && typeof r.guenstigsteSensitivUsd === 'number' ? r.guenstigsteSensitivUsd : null;
+}
+
+/** Warum liefert frachtFuerKosten keine Zahl? Klartext für Kontaktbogen und Ledger (nur aufrufen, wenn das Ergebnis null ist). */
+export function frachtKeineZahlGrund(r, { sensitivAlsAusweg = false, maxTage = null } = {}) {
+  if (!r || r.unbekannt) return 'Fracht unbekannt';
+  if (!r.lieferbar) return 'keine Versandlinie CN→CH';
+  const normal = (r.linien || []).filter(l => l.art === 'normal');
+  if (maxTage != null && normal.length) {
+    return `keine normale Versandlinie CN→CH mit höchstens ${maxTage} Tagen Lieferzeit (Linien: ${normal.slice(0, 4).map(l => `${l.name} ${l.tage ? l.tage.min + '-' + l.tage.max : '?'}`).join(', ')})`;
+  }
+  return sensitivAlsAusweg && maxTage != null ? `keine Sonderlinie CN→CH mit höchstens ${maxTage} Tagen Lieferzeit` : 'nur Sonderlinien (Sensitive/Liquid) nach CH, keine normale Linie';
 }
 
 /** Projektformel (im Shop gemessen): Kosten je Stück = (EK + Fracht) × Kurs, auf Rappen. Fehlt oder irrt eine Angabe → null, nie 0. */
@@ -190,6 +213,51 @@ export function waehleMessvarianten(varianten) {
 }
 
 /**
+ * Welche Gewichte werden gemessen, wenn mehrere Gewichtsklassen gelten? Die LEICHTESTE und die SCHWERSTE immer, dazu bis zu `max - 2` Zwischenstufen (gleichmässig nach Rang unter den
+ * VERSCHIEDENEN Gewichten). Höchstens `max` Gewichte. Bis `max` verschiedene Gewichte werden alle gemessen.
+ * @param {number[]} gewichte Gramm (Werte ≤ 0 und Nicht-Zahlen fallen weg)  @returns {number[]} aufsteigend
+ */
+export function messKlassen(gewichte, max = 4) {
+  const g = [...new Set((Array.isArray(gewichte) ? gewichte : []).map(x => zahl(x)).filter(x => x !== null && x > 0))].sort((a, b) => a - b);
+  if (g.length <= max) return g;
+  const aus = new Set([g[0], g[g.length - 1]]);
+  for (let i = 1; i <= max - 2; i++) aus.add(g[Math.round(i * (g.length - 1) / (max - 1))]);
+  return [...aus].sort((a, b) => a - b);
+}
+
+/**
+ * Messplan für ein Produkt: Welche Varianten werden gemessen (je EINE vid pro Gewichtsklasse)? Spannt das Gewicht weniger als `spanneFaktor` (Vorgabe 2), genügt die SCHWERSTE
+ * (wie bisher: ihre Fracht gilt für alle, leichtere sind dann eher zu teuer als zu billig). Sonst die Klassen aus `messKlassen`.
+ * Ohne Gewicht bei allen Varianten (gewichtUnbekannt) wird nur eine gemessen. @returns {{vid:string, gewichtG:number}[]} aufsteigend nach Gewicht, die schwerste zuletzt
+ */
+export function messPlan(varianten, { klassenMax = 1, spanneFaktor = 2 } = {}) {
+  const w = waehleMessvarianten(varianten);
+  if (!w.schwerste) return [];
+  if (w.gewichtUnbekannt || klassenMax <= 1 || !(w.schwerste.gewichtG > w.leichteste.gewichtG * spanneFaktor)) return [{ vid: w.schwerste.vid, gewichtG: w.schwerste.gewichtG }];
+  const alle = (Array.isArray(varianten) ? varianten : [])
+    .map(v => ({ vid: typeof v?.vid === 'string' ? v.vid.trim() : '', gewichtG: zahl(v?.gewichtG ?? v?.variantWeight) })).filter(v => VID_RE.test(v.vid) && v.gewichtG !== null && v.gewichtG > 0);
+  return messKlassen(alle.map(v => v.gewichtG), klassenMax).map(g => ({ vid: (g === w.schwerste.gewichtG ? w.schwerste : alle.find(v => v.gewichtG === g)).vid, gewichtG: g }));
+}
+
+/**
+ * Fracht je Variante aus den gemessenen Gewichtsklassen: jede Variante bekommt die Fracht der NÄCHST SCHWEREREN gemessenen Klasse (konservativ: nie zu billig), ohne Gewicht die der
+ * schwersten. `klassen` = [{gewichtG, r}] mit r = Ergebnis von frachtAuswerten. Das Ergebnis je Variante: {vid, klasseG, frachtUsd|null, grund?}. null = diese Klasse hat keine Zahl
+ * (nicht lieferbar, unbekannt, keine schnelle Linie): die Variante wird NICHT verkauft (nie raten). Ohne jede gemessene Klasse null (nichts zu verteilen).
+ * @returns {{vid:string, gewichtG:number|null, klasseG:number, frachtUsd:number|null, grund?:string}[]|null}
+ */
+export function frachtJeVariante(varianten, klassen, opt = {}) {
+  const k = (Array.isArray(klassen) ? klassen : []).filter(x => Number.isFinite(x?.gewichtG) && x.gewichtG > 0 && x.r).sort((a, b) => a.gewichtG - b.gewichtG);
+  if (!k.length) return null;
+  const schwerste = k[k.length - 1];
+  return (Array.isArray(varianten) ? varianten : []).map(v => {
+    const g = zahl(v?.gewichtG ?? v?.variantWeight);
+    const kl = g !== null && g > 0 ? (k.find(x => x.gewichtG >= g) || schwerste) : schwerste;
+    const usd = frachtFuerKosten(kl.r, opt);
+    return { vid: v.vid, gewichtG: g, klasseG: kl.gewichtG, frachtUsd: usd, ...(usd == null ? { grund: frachtKeineZahlGrund(kl.r, opt) } : {}) };
+  });
+}
+
+/**
  * Text für die Ledger-Zeile (`<handle> · <Zeit> · UEBERSPRUNGEN · <Grund>`) oder null, wenn nichts zu überspringen ist.
  * nicht lieferbar → endgültiger Grund (lib/varianten_sicherheit.mjs: 14 Tage Ruhe). unbekannt → «vorläufig:» (20 Stunden), NIE 14 Tage.
  */
@@ -207,6 +275,7 @@ const schlaf = ms => new Promise(r => setTimeout(r, ms));
 function fehlerKlasse(e) {
   const m = String(e?.message ?? e);
   if (/^CJ_QUOTA/.test(m)) return { fehler: 'quota', lauf: true };
+  if (/^CJ_API.*code=16900500\b/.test(m)) return { fehler: 'quota', lauf: true };      // Punkte leer, als HTTP 200 mit result:false gemeldet
   if (/^CJ_THROTTLED/.test(m)) return { fehler: 'drosselung', lauf: true };
   if (/^CJ_API.*code=1600200\b/.test(m)) return { fehler: 'drosselung', lauf: true };
   if (/^CJ_NETZ/.test(m)) return { fehler: 'netz', lauf: false };
@@ -254,7 +323,7 @@ export async function frachtHolen({ vid, token, menge = 1, start = 'CN', ziel = 
     const k = fehlerKlasse(e);
     if (k.lauf) {
       await wartet(pauseMs);
-      throw LAUF_FEHLER_RE.test(String(e.message)) ? e : new Error(`CJ_THROTTLED: ${String(e.message).slice(0, 200)}`);
+      throw LAUF_FEHLER_RE.test(String(e.message)) ? e : new Error(`${k.fehler === 'quota' ? 'CJ_QUOTA' : 'CJ_THROTTLED'}: ${String(e.message).slice(0, 200)}`);
     }
     fehlerErgebnis = unbekannt(k.fehler, `${String(e.message).slice(0, 160)} — sagt nichts über die Lieferbarkeit`);
   }
@@ -264,21 +333,25 @@ export async function frachtHolen({ vid, token, menge = 1, start = 'CN', ziel = 
 }
 
 /**
- * Fracht für EIN Produkt: höchstens zwei Anfragen, jede mit genau einer Variante.
+ * Fracht für EIN Produkt, jede Anfrage mit genau einer Variante:
  *   1. die schwerste Variante (Obergrenze der Landekosten, zugleich Lieferbarkeitsprobe);
  *   2. nur wenn die schwerste KEINE Linie hat: die leichteste — ein Produkt gilt nicht als nicht lieferbar, bloss weil die schwerste Variante zu schwer ist.
- * Fehler bei der ersten Anfrage → unbekannt, keine zweite (kostet nur Punkte).
+ *   3. nur mit `klassenMax` > 1 UND wenn die schwerste lieferbar ist UND das Gewicht um mehr als `spanneFaktor` (2) spannt: die übrigen Gewichtsklassen (messPlan: leichteste und bis zu
+ *      `klassenMax - 2` Zwischenstufen). Grund (GEMESSEN 27.10.2026, Lichterkette mit 170 bis 3770 g): 6.77 / 9.17 / 21.59 / 49.44 USD — die Fracht der schwersten Variante für alle machte
+ *      die 170-g-Variante von 14.90 auf 61.90 CHF und das ganze Produkt für den Shop unverkäuflich. Kosten: bis `klassenMax` × 10 statt 10 Punkte.
+ * Fehler bei der ersten Anfrage → unbekannt, keine weitere (kostet nur Punkte); ein unbekanntes Ergebnis einer weiteren Klasse macht das ganze Produkt unbekannt und beendet die Messung.
  * @returns Ergebnis von frachtAuswerten für die MASSGEBLICHE Variante + `schwerste`, `leichteste?`, `gemessen` (vids), `teilweise` (schwerste nicht, leichteste doch
- *   lieferbar: die schweren Varianten gehören weg) + `punkte`, `reserveUnterschritten`.
+ *   lieferbar: die schweren Varianten gehören weg), `klassen` ([{gewichtG, vid, r}] aufsteigend, die schwerste zuletzt; für frachtJeVariante) + `punkte`, `reserveUnterschritten`.
  */
-export async function frachtProdukt({ varianten, stand = {}, ...opt } = {}) {
+export async function frachtProdukt({ varianten, stand = {}, klassenMax = 1, spanneFaktor = 2, ...opt } = {}) {
   const w = waehleMessvarianten(varianten);
   if (!w.schwerste) {
-    return { ...unbekannt('keine-variante', 'Produkt ohne verwertbare Variante (vid) — nichts gemessen'), schwerste: null, gemessen: [], teilweise: false, punkte: null, reserveUnterschritten: false };
+    return { ...unbekannt('keine-variante', 'Produkt ohne verwertbare Variante (vid) — nichts gemessen'), schwerste: null, gemessen: [], teilweise: false, klassen: [], punkte: null, reserveUnterschritten: false };
   }
   const kurz = (r, v) => ({ vid: v.vid, gewichtG: v.gewichtG, urteil: r.urteil, lieferbar: r.lieferbar, guenstigsteUsd: r.guenstigsteUsd, ...(r.fehler ? { fehler: r.fehler } : {}) });
   const rs = await frachtHolen({ ...opt, stand, vid: w.schwerste.vid });
   const gemessen = [w.schwerste.vid];
+  const klassen = [{ gewichtG: w.schwerste.gewichtG, vid: w.schwerste.vid, r: rs }];
   let massgeblich = rs, letzte = rs, leichteste, teilweise = false;
   if (rs.urteil === 'nicht_lieferbar' && w.leichteste.vid !== w.schwerste.vid) {
     const rl = await frachtHolen({ ...opt, stand, vid: w.leichteste.vid });
@@ -287,7 +360,16 @@ export async function frachtProdukt({ varianten, stand = {}, ...opt } = {}) {
     leichteste = kurz(rl, w.leichteste);
     if (rl.urteil === 'lieferbar') { massgeblich = rl; teilweise = true; }
     else if (rl.unbekannt) massgeblich = rl;                     // nicht bewiesen → unbekannt, nicht «nicht lieferbar»
+  } else if (rs.urteil === 'lieferbar' && klassenMax > 1) {
+    for (const m of messPlan(varianten, { klassenMax, spanneFaktor }).filter(x => x.vid !== w.schwerste.vid)) {
+      const rk = await frachtHolen({ ...opt, stand, vid: m.vid });
+      gemessen.push(m.vid); letzte = rk;
+      klassen.unshift({ gewichtG: m.gewichtG, vid: m.vid, r: rk });
+      if (m.gewichtG === w.leichteste.gewichtG) leichteste = kurz(rk, m);
+      if (rk.unbekannt) { massgeblich = rk; break; }            // nicht bewiesen → das ganze Produkt ist unbekannt (vorläufig), weitere Messungen wären verlorene Punkte
+    }
+    klassen.sort((x, y) => x.gewichtG - y.gewichtG);
   }
-  return { ...massgeblich, schwerste: kurz(rs, w.schwerste), ...(leichteste ? { leichteste } : {}), gemessen, teilweise,
+  return { ...massgeblich, schwerste: kurz(rs, w.schwerste), ...(leichteste ? { leichteste } : {}), gemessen, teilweise, klassen,
     gewichtUnbekannt: w.gewichtUnbekannt, ohneGewicht: w.ohneGewicht, punkte: letzte.punkte, reserveUnterschritten: letzte.reserveUnterschritten };
 }

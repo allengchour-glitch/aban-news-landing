@@ -9,6 +9,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import {
   planeNeu, handleAus, slug, pidKurz, galerieAus, normalisiereCj, sortiereGroessen, streicheToteOptionen, preisLeser, schemaPruefen, konsistenzPruefen,
   API_VERSION, MAX_VARIANTEN, MIN_BILDER, VAR_MARKER, BASIS_TAGS, TORE, FRISTEN, PRODUCT_SET_MUTATION, SCHEMA, GOOGLE_TYP, ERWACHSENE_RE, TABAK_RE, MESSGERAET_RE, ANZUENDER_RE,
+  SCHEMA_API_VERSION, ziffernKollision, kleinWortImWert, KLEIN_WORT_RE, PRODUKTART_WIDERSPRUCH, fremdsteckerImNamen, heikelWort,
 } from './grind_plan.mjs';
 import { ledgerGedaechtnis } from './varianten_sicherheit.mjs';
 import { zerlege } from './text_prosa.mjs';
@@ -787,6 +788,76 @@ ist('Mode: dieselbe Eingabe über die ganze CJ-Antwort {code, data}', JSON.strin
   ist('Zahlen mit Einheit unter Grösse sind in Ordnung (Gegenprobe: «Grösse» 36, 38 …)', (() => { const g = ableiten(FIX.mode, k => { const gr = ['36', '38', '40', '42', '44']; k.variants.forEach((v, i) => { v.variantKey = `${v.variantKey.split('-')[0]}-${gr[i % 5]}`; }); }); const r = lauf(g, T_MODE, MODE); return [r.ok, r.eingabe.productOptions[1].name, r.eingabe.productOptions[1].values.map(v => v.name)]; })(), [true, 'Grösse', ['36', '38', '40', '42', '44']]);
 }
 
+// ───────────────────────── Prüfung 27.10.2026: Farbwerte, Massangaben, Produktart, Fremdstecker, heikle Ware ─────────────────────────
+{
+  // Ziffernkollision: «Schwarz» neben «Schwarz1» ist für die Kundin keine Auswahl (im Shop live: 3d-teddy-lampe-a92a5f)
+  ist('ziffernKollision: «Schwarz1» + «Schwarz» sind zwei gleich benannte Farben', ziffernKollision(['Schwarz1', 'Schwarz']), [['Schwarz1', 'Schwarz']]);
+  ist('ziffernKollision: «Black Zone2»/«Black Zone4» sind echte Unterschiede', ziffernKollision(['Black Zone2', 'Black Zone4']), []);
+  ist('ziffernKollision: Werte ohne Ziffern', ziffernKollision(['Rot', 'Blau']), []);
+  ist('ziffernKollision: zwei getrennte Kollisionen', ziffernKollision(['Weiss', 'Weiss1', 'Riss', 'Riss1']).length, 2);
+  ist('ziffernKollision: «Black1»/«White1» ohne Gegenstück ohne Ziffer ist keine Kollision', ziffernKollision(['Black1', 'White1']), []);
+  ist('ziffernKollision: Eingabe nicht lesbar → leer, kein Wurf', [ziffernKollision(null), ziffernKollision([]), ziffernKollision([null, undefined])], [[], [], []]);
+  const kol = ableiten(FIX.mode, k => { for (const v of k.variants) v.variantKey = v.variantKey.replace(/^White/, 'Black1'); });
+  const rk = lauf(kol, T_MODE, { ...MODE, uebersetzung: { Black1: 'Schwarz1' } });
+  ist('Tor farbwerte-unterscheidbar: «Schwarz» + «Schwarz1» (abgeleitet) → fällt, zurückgestellt, KEINE Eingabe', [tor(rk, 'farbwerte-unterscheidbar').ok, /Schwarz \/ Schwarz1/.test(tor(rk, 'farbwerte-unterscheidbar').grund), rk.frist, rk.eingabe], [false, true, 'zurueckgestellt', null]);
+  ist('Gegenprobe: das echte Datenblatt (Schwarz/Weiss) besteht das Tor', tor(M, 'farbwerte-unterscheidbar').ok, true);
+  ist('Tor farbwerte-unterscheidbar steht in der Torliste (23 Tore) und läuft in jedem Ergebnis', [TORE.length, TORE.includes('farbwerte-unterscheidbar'), M.tore.some(t => t.name === 'farbwerte-unterscheidbar')], [23, true, true]);
+
+  // kleine Wörter in Optionswerten («4 sections 1.6m», «Pink gold» sind englischer Rest, auch wenn kein Wörterbuch-Treffer da ist)
+  for (const w of ['4 sections 1.6m', '15 pieces', 'L plus', 'Pink gold', 'Schwarz / gold', '12 inch']) ist(`KLEIN_WORT_RE: «${w}» ist englischer Rest`, kleinWortImWert(w), true);
+  for (const w of ['Roségold', 'Schwarz / Weiss', 'mit Fernbedienung', 'ohne Akku', 'Grün', '150 × 200 cm', 'S', 'XXL', 'Gold', 'Rot, Blau']) ist(`KLEIN_WORT_RE: «${w}» bleibt erlaubt`, kleinWortImWert(w), false);
+  ist('kleinWortImWert: null/undefined werfen nicht', [kleinWortImWert(null), kleinWortImWert(undefined)], [false, false]);
+  ist('KLEIN_WORT_RE hat kein g-Flag (sonst springt test() zwischen Aufrufen)', KLEIN_WORT_RE.global, false);
+
+  // «Modell» mit nur Massen: Breite? Länge? Leistung? → nie raten
+  const mm = ableiten(FIX.zahl, k => { k.variants.forEach((v, i) => { v.variantKey = ['60cm', '80cm', '100cm'][i % 3]; }); });
+  const rm = lauf(mm, 'Schneidebrett-Set mit Marmorbeschichtung');
+  ist('«Modell» aus lauter Massen (60 cm, 80 cm; abgeleitet) → Tor zahl-als-modell fällt mit Klartext', [tor(rm, 'zahl-als-modell').ok, /nur Masse/.test(tor(rm, 'zahl-als-modell').grund), rm.frist, rm.eingabe], [false, true, 'zurueckgestellt', null]);
+  const gr = ableiten(FIX.zahl, k => { k.productKeyEn = 'Size'; k.variants.forEach((v, i) => { v.variantKey = ['60cm', '80cm', '100cm'][i % 3]; }); });
+  ist('Gegenprobe: dieselben Masse unter «Size» heissen «Grösse» und gehen durch', (() => { const r = lauf(gr, 'Schneidebrett-Set mit Marmorbeschichtung'); return [tor(r, 'zahl-als-modell').ok, r.eingabe?.productOptions[0].name]; })(), [true, 'Grösse']);
+
+  const gemischt = ableiten(FIX.zahl, k => { k.variants.forEach((v, i) => { v.variantKey = ['60cm', 'Standard', '100cm'][i % 3]; }); });
+  ist('Gegenprobe: «Modell» mit Massen UND einem Wort («Standard») ist keine reine Massangabe → Tor zahl-als-modell besteht', tor(lauf(gemischt, 'Schneidebrett-Set mit Marmorbeschichtung', { uebersetzung: { Standard: 'Standard' } }), 'zahl-als-modell').ok, true);
+
+  // kleine englische Wörter in Optionswerten («pieces», «sections», «plus») fängt nur KLEIN_WORT_RE: das Tor optionswerte-deutsch muss fallen
+  for (const [a1, b1] of [['15 pieces', '30 pieces'], ['4 sections', '5 sections'], ['L plus', 'XL plus']]) {
+    const gr = ableiten(FIX.mode, k => { k.variants.forEach(v => { const [c, g] = v.variantKey.split('-'); v.variantKey = `${c}-${{ S: a1, M: b1, L: 'XXL', XL: '3XL', XXL: '4XL' }[g]}`; }); });
+    const rg = lauf(gr, T_MODE, MODE);
+    ist(`Tor optionswerte-deutsch: «${a1}» / «${b1}» sind englischer Rest → fällt, zurückgestellt, KEINE Eingabe`, [tor(rg, 'optionswerte-deutsch').ok, tor(rg, 'optionswerte-deutsch').grund.includes(`«${a1}»`), rg.frist, rg.eingabe], [false, true, 'zurueckgestellt', null]);
+  }
+
+  // Produktart: der Pfad sagt «Webcam», das Datenblatt beschreibt eine Netzwerk-Kamera (echter Fall pid 5C86453E, 27.10.2026)
+  const WEBCAM = 'Cameras & Optics > Cameras > Webcams';
+  const wc = ableiten(FIX.einzel, k => { k.productNameEn = 'Webcam with microphone'; k.description = '<p>Type: Network Camera</p><p>Style: Gun Camera</p><p>Lens: 3.6 (mm)</p><p>Power supply voltage: 3.7 (V)</p>'; });
+  const rw = lauf(wc, 'Webcam mit Mikrofon', { googlePfad: WEBCAM });
+  ist('Webcam-Titel, Datenblatt «Network Camera / Gun Camera» → Tor produktart fällt (zurückgestellt), Klartext nennt Überwachungskamera', [tor(rw, 'produktart').ok, /Netzwerk-\/Überwachungskamera/.test(tor(rw, 'produktart').grund), rw.frist, rw.eingabe], [false, true, 'zurueckgestellt', null]);
+  const wc2 = ableiten(FIX.einzel, k => { k.productNameEn = 'Webcam with microphone'; k.description = '<p>USB webcam, 1080P, built-in microphone</p>'; });
+  ist('Gegenprobe: echte USB-Webcam mit gleichem Pfad besteht das Tor', tor(lauf(wc2, 'Webcam mit Mikrofon', { googlePfad: WEBCAM }), 'produktart').ok, true);
+  ist('Gegenprobe: dasselbe Datenblatt unter einem anderen Pfad (Überwachungskamera) wird nicht gesperrt', tor(lauf(wc, 'Überwachungskamera', { googlePfad: 'Electronics > Video > Video Surveillance Cameras' }), 'produktart').ok, true);
+  ist('PRODUKTART_WIDERSPRUCH ist eingefroren (Liste und Einträge)', [Object.isFrozen(PRODUKTART_WIDERSPRUCH), PRODUKTART_WIDERSPRUCH.every(w => w.pfad instanceof RegExp && w.text instanceof RegExp && w.was)], [true, true]);
+
+  // Fremdstecker / 110 V im NAMEN (nicht nur in den Varianten)
+  const stecker = (nameEn, titel) => { const r = lauf(ableiten(FIX.einzel, k => { k.productNameEn = nameEn; }), titel); return [tor(r, 'steckdosen-ware').ok, r.frist]; };
+  ist('Fremdstecker: «Heater 110V US Plug» im CJ-Namen → Tor steckdosen-ware fällt', stecker('Electric Heater 110V US Plug Mini Desktop Warmer', 'Elektroheizung Mini')[0], false);
+  ist('Fremdstecker: «Hair Dryer 1800W AU Plug»', stecker('Hair Dryer 1800W AU Plug', 'Haartrockner 1800 W')[0], false);
+  ist('Fremdstecker: «Wall Charger 65W GaN UK Plug»', stecker('Wall Charger 65W GaN UK Plug', 'Wandladegerät 65 W')[0], false);
+  ist('Fremdstecker: deutscher Titel «mit US-Stecker» ohne EU', stecker('LED Night Light Mushroom', 'LED-Nachtlicht Pilz mit US-Stecker')[0], false);
+  ist('Gegenprobe: «Wall Charger 65W GaN» ohne Steckerangabe', stecker('Wall Charger 65W GaN', 'Wandladegerät 65 W')[0], true);
+  ist('Gegenprobe: «(EU/US Plug)» nennt EU, die Varianten-Prüfung entscheidet', stecker('LED Night Light Mushroom (EU/US Plug)', 'LED-Nachtlicht Pilz (EU/US Stecker)')[0], true);
+  ist('fremdsteckerImNamen: 110-240V ist Weitbereich, 110V / 110 V nicht', [fremdsteckerImNamen('Travel Charger 110-240V'), fremdsteckerImNamen('Mini Heater 110V'), fremdsteckerImNamen('Mini Heater 110 V'), fremdsteckerImNamen('Waffelmaschine Herzform 110 V')], [false, true, true, true]);
+  ist('fremdsteckerImNamen: Wortteile («Business»), 1100V und «Auction» lösen nicht aus', [fremdsteckerImNamen('Business Backpack'), fremdsteckerImNamen('Capacitor 1100V'), fremdsteckerImNamen('Auction Hammer'), fremdsteckerImNamen(null), fremdsteckerImNamen('')], [false, false, false, false, false]);
+
+  // heikle Ware (sicherer Standard = sperren, der Besitzer entscheidet über eine Lockerung)
+  ist('heikelWort: Laser-Zeiger, Blutdruck, Hörgerät, Steinschleuder, Pfefferspray, Feuerwerk', ['Taktische Taschenlampe mit Laser', 'Laserpointer 5000 mW', 'Blutdruckmessgerät Oberarm', 'Hörgerät wiederaufladbar', 'Steinschleuder Jagd', 'Pepper Spray Keychain', 'Feuerwerk Rauchbombe'].map(x => !!heikelWort(x)), [true, true, true, true, true, true, true]);
+  ist('heikelWort: kein Fehlalarm bei abnehmbar, Gerichtsmediziner, Feldspritze, Laser-Entfernungsmesser, Laser-Graviermaschine, Haarentfernung', ['Abnehmbarer Hüftbeutel', 'Kostüm Gerichtsmediziner', 'Anhängefeldspritze', 'Laser-Entfernungsmesser 40 m', 'Laser Engraver Machine', 'IPL Laser Hair Removal'].map(x => !!heikelWort(x)), [false, false, false, false, false, false]);
+  ist('heikelWort: null/leer wirft nicht', [heikelWort(null), heikelWort(''), heikelWort(undefined)], [null, null, null]);
+  const hk = lauf(ableiten(FIX.einzel, k => { k.productNameEn = 'Laser Pointer 5000mW Green'; }), 'Laserpointer 5000 mW');
+  ist('heikle Ware im Plan: Laserpointer → Tor sperrwoerter fällt mit Klartext', [tor(hk, 'sperrwoerter').ok, /heikle Ware/.test(tor(hk, 'sperrwoerter').grund)], [false, true]);
+
+  // Schema-Pin: die Konstante im Schema ist die gefahrene API-Version
+  ist('SCHEMA_API_VERSION ist API_VERSION (das Schema gilt für die Version, mit der gefahren wird)', [SCHEMA_API_VERSION, SCHEMA_API_VERSION === API_VERSION], ['2026-01', true]);
+}
+
 // ───────────────────────── Schema und Konsistenz ─────────────────────────
 {
   const g = klon(E);
@@ -804,7 +875,8 @@ ist('Mode: dieselbe Eingabe über die ganze CJ-Antwort {code, data}', JSON.strin
   ist('Schema: contentType IMAGE ist erlaubt, «PHOTO» nicht', [mut(k => { k.files[0].contentType = 'IMAGE'; }).length, mut(k => { k.files[0].contentType = 'PHOTO'; }).length], [0, 1]);
   ist('Schema: Metafeld ohne value ist formal gültig (value optional im Schema); die Pflicht prüft planeNeu', mut(k => { delete k.metafields[0].value; }), []);
   ist('Schema: kein Objekt', schemaPruefen(null).length, 1);
-  ist('SCHEMA enthält alle Felder von ProductSetInput (21) und ProductVariantSetInput (18), wie mcp__Shopify__graphql_schema sie am 27.10.2026 lieferte', [Object.keys(SCHEMA.ProductSetInput).length, Object.keys(SCHEMA.ProductVariantSetInput).length], [21, 18]);
+  ist('SCHEMA enthält alle Felder von ProductSetInput (21) und ProductVariantSetInput (17), wie die ECHTE Admin-API 2026-01 sie per Introspektion am 27.10.2026 liefert (der MCP kennt 2026-10: dort barcodes/published statt barcode, 18 Felder)', [Object.keys(SCHEMA.ProductSetInput).length, Object.keys(SCHEMA.ProductVariantSetInput).length], [21, 17]);
+  ist('SCHEMA: ProductVariantSetInput kennt barcode (2026-01), aber weder barcodes noch published (nur 2026-10)', 'barcode' in SCHEMA.ProductVariantSetInput && !('barcodes' in SCHEMA.ProductVariantSetInput) && !('published' in SCHEMA.ProductVariantSetInput), true);
 
   const kon = (f) => { const k = klon(E); f(k); return konsistenzPruefen(k); };
   ist('Konsistenz: gültige Eingabe', konsistenzPruefen(klon(E)), []);

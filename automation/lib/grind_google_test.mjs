@@ -388,12 +388,12 @@ const POSITIV = [
   ['Kinderuhr mit Lernfunktion', 'Watches'], ['Fusskettchen aus Silber', 'Anklets'], ['Arcade Joystick USB', 'Joystick Controllers'], ['Lötkolben 60 W einstellbar', 'Soldering Irons'],
   ['Angelrute Teleskop 2,4 m', 'Fishing Rods'], ['Angelschnur geflochten 275 m', 'Fishing Lines & Leaders'], ['HDMI-Kabel 2 m 4K', 'Audio & Video Cables'], ['AirPods Hülle aus Silikon', 'Headphone & Headset Accessories'],
   ['Perücke Aya blau mit schwarz', 'Wigs'], ['Fahrradhandschuhe Halbfinger', 'Bicycle Gloves'], ['Atmungsaktive Anti-Rutsch Velo-Handschuhe', 'Bicycle Gloves'], ['Solar-Gartenleuchte «Lumio» · Aluminium, automatisch', 'Landscape Pathway Lighting'],
-  ['Schnüffelteppich für Hunde', 'Dog Toys'], ['Katzen Tunnel zum Spielen', 'Cat Toys'], ['Niedliches Halstuch für Haustiere im Schottenmuster', 'Dog Apparel'], ['Dicker Strickpullover für kleine Hunde und Katzen', 'Dog Apparel'],
+  ['Katzen Tunnel zum Spielen', 'Cat Toys'], ['Niedliches Halstuch für Haustiere im Schottenmuster', 'Dog Apparel'], ['Dicker Strickpullover für kleine Hunde und Katzen', 'Dog Apparel'],
   ['Wintermantel für Sphynx-Katzen', 'Cat Apparel'], ['Hunde-Trinkflasche mit Napf – 800ml', 'Pet Bowls, Feeders & Waterers'],
   // Lexikon: gemessene Schlüssel
   ['Hundebett mit Kissen', 'Dog Beds'], ['Fressnapf aus Edelstahl', 'Pet Bowls, Feeders & Waterers'], ['Langleine für grosse Hunde', 'Pet Leashes'], ['Kabellose Powerbank 10000mAh', 'Power Adapters & Chargers'],
   ['Press-on Nägel mit 3D Blumen', 'False Nails'], ['Malen nach Zahlen – Landschaft, Tier oder Blume', 'Drawing & Painting Kits'], ['Klemmbausteine Set 500 Teile', 'Interlocking Blocks'], ['Holzbausteine für Kinder', 'Wooden Blocks'],
-  ['Kopfkissenbezug Satin 80x80', 'Pillowcases & Shams'], ['Polarisierte Sonnenbrille mit UV400', 'Sunglasses'], ['Edelstahl-Bratpfanne mit Wabenstruktur', 'Skillets & Frying Pans'], ['Retro-Spielkonsole mit 2 Controllern', 'Video Game Consoles'],
+  ['Polarisierte Sonnenbrille mit UV400', 'Sunglasses'], ['Edelstahl-Bratpfanne mit Wabenstruktur', 'Skillets & Frying Pans'], ['Retro-Spielkonsole mit 2 Controllern', 'Video Game Consoles'],
   ['Gesichtsdampfer', 'Facial Saunas'], ['Mini-Lockenstab mit zwei Thermostaten', 'Curling Irons'], ['Verdunkelungsvorhang 140x245', 'Curtains & Drapes'], ['Rattan Vintage Wandlampe', 'Wall Light Fixtures'],
   ['Elegantes Sommerkleid aus Baumwolle', 'Dresses'], ['Casual Muffin Stiefel mit dicker Sohle', 'Shoes'], ['Wasserdichter Quartz-Uhr', 'Watches'], ['Plissee-Midirock', 'Skirts'], ['Herren-Smartwatch mit Anruffunktion', 'Watches'],
   // von Hand gelesene Einträge
@@ -417,7 +417,7 @@ for (const [titel, nicht] of NEGATIV) {
   const u = titelUrteil(titel);
   ist(`Gegenprobe «${titel}» ist NICHT «${nicht}»`, !(u && !u.konflikt && letzte(u.pfad) === nicht), true);
 }
-ist('Konflikt: Powerbank-Schlüsselanhänger ist beides', titelUrteil('Mini Powerbank Schlüsselanhänger 1200 mAh'), { konflikt: true, pfade: ['Apparel & Accessories > Handbag & Wallet Accessories > Keychains', 'Electronics > Electronics Accessories > Power > Power Adapters & Chargers'].sort((a, b) => 0), regel: ['schluesselanhaenger', 'powerbank'] });
+ist('Powerbank-Schlüsselanhänger: die Regel «schluesselanhaenger» ist gestrichen (9 von 57), die Powerbank-Regel entscheidet allein', titelUrteil('Mini Powerbank Schlüsselanhänger 1200 mAh'), { pfad: 'Electronics > Electronics Accessories > Power > Power Adapters & Chargers', quelle: 'regel', regel: ['powerbank'] });
 ist('Konflikt: leerer Titel ist kein Konflikt, nur unbekannt', titelUrteil('   '), null);
 ist('Titel ohne Warenart → null', titelUrteil('Neu 2024 Bestseller'), null);
 ist('Titel: Pfad der Regel gewinnt vor dem Lexikon («Hundeschuhe» endet auf «schuhe» = Shoes)', letzte(titelUrteil('Hundeschuhe wasserdicht').pfad), 'Dog Apparel');
@@ -554,6 +554,42 @@ ist('Echt: Blattname allein aus dem CJ-Pfad (ohne id)', pf('', { categoryName: '
   ist('kategorieFuer: Sperr-Tag → keine Tags → nicht anlegen', [d.sicherheit, d.tags, d.anlegen], ['titel', [], false]);
   const e = kategorieFuer({ titel: 'Elegantes Abendkleid für Damen', handle: 'abendkleid-test-123456', tags: ['damen'], productType: 'Damenmode' });
   ist('kategorieFuer: Handle, Tags und Typ des geplanten Produkts werden an die Mode-Regeln weitergegeben', [e.pfad, e.tags.includes('sort-damen-kleider-abend')], [G.kleider, true]);
+}
+
+// ─────────────────────────── Prüfung 27.10.2026: schwache Handregeln, Guards, hundekleidung-titel ───────────────────────────
+{
+  const regelIds = new Set(DATEN.regeln.map(r => r.id));
+  // Streichung statt Raten: Regeln, die im Shop-Abgleich unter 70 % lagen und deren Fehlgriff ein falsches Zielblatt wäre
+  for (const id of ['3d-stift', 'kopfkissenbezug', 'schnueffelmatte', 'fensterfolie', 'schluesselanhaenger', 'kranz']) ist(`gestrichene Handregel «${id}» steht nicht mehr in den Daten`, regelIds.has(id), false);
+  for (const t of ['Schnüffelteppich für Hunde', 'Kopfkissenbezug Satin 80x80', 'Schlüsselanhänger Leder', 'Kranz Tür Weihnachten']) ist(`gestrichene Regel: «${t}» bleibt ohne Pfad (unklar statt geraten)`, titelUrteil(t), null);
+  // Richtlinie: eine Handregel mit `n >= 5`, die unter 70 % beim Shop liegt, trägt eine bewusste Begründung (sonst streichen oder schärfen)
+  const schwach = DATEN.regeln.filter(r => r.beleg.n >= 5 && r.beleg.gleich / r.beleg.n < 0.7);
+  ist('jede Handregel unter 70 % Übereinstimmung (n >= 5) trägt «bewusst» mit Begründung', schwach.filter(r => !(typeof r.bewusst === 'string' && r.bewusst.length > 30)).map(r => r.id), []);
+  ist('«bewusst» steht nur bei Regeln, die wirklich unter 70 % liegen', DATEN.regeln.filter(r => r.bewusst && !(r.beleg.n >= 5 && r.beleg.gleich / r.beleg.n < 0.7)).map(r => r.id), []);
+  // hundekleidung-titel: Wasserschale ist keine Hundekleidung, Pullover und Schal bleiben es
+  for (const t of ['Hunde Wasserschale faltbar', 'Hunde-Trinkschale Silikon', 'Zuggeschirr Hund Weste', 'Hunde Zugweste']) ist(`hundekleidung-titel: «${t}» ist keine Hundekleidung`, titelUrteil(t)?.pfad === G.hundekleidung, false);
+  for (const t of ['Hundepullover warm', 'Hundeschal Winter', 'Dicker Strickpullover für kleine Hunde und Katzen']) ist(`hundekleidung-titel: «${t}» bleibt Hundekleidung`, titelUrteil(t)?.pfad, G.hundekleidung);
+  // Guards an Lexikon-Einträgen und Regeln: gleiche Wörter, andere Bedeutung → kein Pfad
+  for (const t of ['Grillzange aus Edelstahl', 'Futterteller für Katzen', 'Futterteller aus Keramik', 'Fressteller aus Keramik', 'Schallplatten-Uhr Wanduhr Vinyl', 'Uhr aus Vinyl-Schallplatte', 'Fahrrad Transporttasche', 'VR-Transporttasche', 'Manschettenknopf Uhr Box']) ist(`Guard: «${t}» bleibt unklar`, titelUrteil(t), null);
+  // Titel, bei denen genau EIN Guard den Unterschied macht (gemessen: ohne den Guard liefert das Lexikon bzw. die Regel hier einen falschen Pfad)
+  ist('Guard «uhr»: «Uhr aus Vinyl-Schallplatte» ist keine Armbanduhr', titelUrteil('Uhr aus Vinyl-Schallplatte'), null);
+  ist('Guard «teller»: «Futterteller aus Keramik» ist kein Essgeschirr', titelUrteil('Futterteller aus Keramik'), null);
+  ist('Guard «essteller»: «Fressteller aus Keramik» (Haustier) ist kein Essteller; echte Essteller bleiben', [titelUrteil('Fressteller aus Keramik'), letzte(titelUrteil('Keramik-Essteller mit Doppelraster')?.pfad)], [null, 'Plates']);
+  ist('hundekleidung-titel: «Schallschutz»/«Schallplatte» enthalten «schal» und sind trotzdem keine Hundekleidung (Wortende nach «schal»)', ['Hunde Schallplatte', 'Hunde Schallschutz Ohrenschützer'].map(t => titelUrteil(t)?.pfad === G.hundekleidung), [false, false]);
+  // ...und die Fälle, für die der Eintrag gedacht ist, laufen weiter
+  ist('Guard: «Herren Business Uhr» bleibt Uhr', letzte(titelUrteil('Herren Business Uhr – Multifunktional')?.pfad), 'Watches');
+  ist('Guard: «Sporttasche für Männer» bleibt Sporttasche', letzte(titelUrteil('Sporttasche für Männer')?.pfad), 'Duffel Bags');
+  ist('Guard: «Manschettenknöpfe aus Edelstahl» bleiben Manschettenknöpfe', letzte(titelUrteil('Manschettenknöpfe aus Edelstahl mit Alphabet')?.pfad), 'Cufflinks');
+  // der Beleg einer geänderten Regel ist neu gemessen (nicht mehr der alte, unlesbar grosse Wert)
+  const beleg = id => DATEN.regeln.find(r => r.id === id)?.beleg;
+  ist('Beleg manschettenknopf neu gemessen (3 von 3)', beleg('manschettenknopf'), { n: 3, gleich: 3 });
+  ist('Beleg katzenkleidung neu gemessen (26 von 26)', beleg('katzenkleidung'), { n: 26, gleich: 26 });
+  ist('Beleg haustier-transport neu gemessen (18 von 24)', beleg('haustier-transport'), { n: 24, gleich: 18 });
+  ist('Beleg tablet-halter neu gemessen (3 von 3)', beleg('tablet-halter'), { n: 3, gleich: 3 });
+  ist('Beleg hundeschuhe neu gemessen (4 von 4)', beleg('hundeschuhe'), { n: 4, gleich: 4 });
+  // Lexikon: der Guard steht im Eintrag (nicht in einer Nebenliste)
+  const lex = k => DATEN.lexikon.find(e => e.k === k);
+  for (const k of ['uhr', 'zange', 'teller', 'sporttasche']) ist(`Lexikon «${k}» trägt einen Ausschluss (nicht)`, Array.isArray(lex(k)?.nicht) && lex(k).nicht.length > 0, true);
 }
 
 // ─────────────────────────── Zusammenfassung ───────────────────────────

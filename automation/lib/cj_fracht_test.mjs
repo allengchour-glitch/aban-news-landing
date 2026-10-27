@@ -5,7 +5,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import {
   FRACHT_PUNKTE, FRACHT_URL, PAUSE_MS, USD_CHF, frachtAnfrage, frachtAuswerten, frachtFuerKosten, frachtHolen, frachtProdukt, landekostenChf, ledgerGrund,
-  linienArt, parseTage, punkteMerken, punkteStand, waehleMessvarianten,
+  linienArt, parseTage, punkteMerken, punkteStand, waehleMessvarianten, messKlassen, messPlan, frachtJeVariante, frachtKeineZahlGrund,
 } from './cj_fracht.mjs';
 import { lieferurteil } from './lieferbarkeit.mjs';
 import { ledgerGedaechtnis } from './varianten_sicherheit.mjs';
@@ -421,6 +421,91 @@ const nurEine = log => log.every(x => x.body.products.length === 1);
     ist('Rohdatei cj_phase2: alle 10 echten Antworten werden gelesen, keine ist unbekannt', [alle.length, alle.filter(f => frachtAuswerten(f, { status: 200 }).unbekannt).length], [10, 0]);
     ist('Rohdatei cj_phase2: nur die Lötpaste (beide Mengen) hat ausschliesslich Sonderlinien', alle.map(f => frachtAuswerten(f).nurSensitiv).filter(Boolean).length, 2);
   }
+}
+
+
+// ── Lieferzeit-Grenze (maxTage): die günstigste NORMALE Linie, die höchstens maxTage braucht (Prüfung Schnittstellen 27.10.2026; Laufzeiten GEMESSEN: Eub/Postal 12-50, PostNL 15-45, Sensitive Pro 15-35)
+{
+  const mk = linien => frachtAuswerten({ code: 200, result: true, data: linien.map(([n, p, t]) => ({ logisticName: n, logisticPrice: p, logisticAging: t, totalPostageFee: p })) });
+  const gemischt = mk([['CJPacket Eub', 3.1, '12-50'], ['CJPacket Ordinary VIP', 5.0, '7-10'], ['YunExpress Ordinary', 6.0, '8-15']]);
+  ist('maxTage 20: die billigere, aber langsame Linie (Eub 12-50) wird übersprungen → 5.00', frachtFuerKosten(gemischt, { maxTage: 20 }), 5.0);
+  ist('ohne maxTage bleibt es bei der günstigsten (3.10): das alte Verhalten ist unverändert', frachtFuerKosten(gemischt), 3.1);
+  ist('maxTage 9: nur die Linie mit 7-10 Tagen fällt auch heraus → keine passende Linie', frachtFuerKosten(gemischt, { maxTage: 9 }), null);
+  ist('maxTage 10: genau die Grenze zählt (7-10 passt)', frachtFuerKosten(gemischt, { maxTage: 10 }), 5.0);
+  ist('nur langsame normale Linien → null (zurückstellen, nicht raten)', frachtFuerKosten(mk([['CJPacket Eub', 3.1, '12-50'], ['PostNL', 3.9, '15-45']]), { maxTage: 20 }), null);
+  ist('Linie ohne lesbare Laufzeit gilt nicht als schnell', frachtFuerKosten(mk([['CJPacket Ordinary VIP', 5.0, 'schnell'], ['PostNL', 7.0, '15-45']]), { maxTage: 20 }), null);
+  ist('Sonderlinien zählen nicht als normale: schnelle Sensitive-Linie ohne Ausweg → null', frachtFuerKosten(mk([['CJPacket Sensitive', 4.0, '5-10']]), { maxTage: 20 }), null);
+  ist('...mit sensitivAlsAusweg wie bisher die Sonderlinie', frachtFuerKosten(mk([['CJPacket Sensitive', 4.0, '5-10']]), { maxTage: 20, sensitivAlsAusweg: true }), 4.0);
+  ist('unbekannt und nicht lieferbar liefern auch mit maxTage nie eine Zahl', [frachtFuerKosten(frachtAuswerten({ code: 200, result: true, data: [] }), { maxTage: 20 }), frachtFuerKosten(frachtAuswerten(null), { maxTage: 20 })], [null, null]);
+}
+
+
+// ── Sonderlinie MIT Lieferzeit: auch der Ausweg über «Sensitive» muss schnell sein; normale Linien, aber keine schnelle → keine Sonderlinie als Ersatz
+{
+  const mk = linien => frachtAuswerten({ code: 200, result: true, data: linien.map(([n, p, t]) => ({ logisticName: n, logisticPrice: p, logisticAging: t, totalPostageFee: p })) });
+  ist('Ausweg über die Sonderlinie gilt nur für eine SCHNELLE (Sensitive Pro 15-35 ist zu langsam) → null', frachtFuerKosten(mk([['CJPacket Sensitive Pro', 4.0, '15-35']]), { maxTage: 20, sensitivAlsAusweg: true }), null);
+  ist('...die schnellere Sonderlinie wird gewählt, die günstigere langsame übersprungen', frachtFuerKosten(mk([['CJPacket Sensitive Pro', 4.0, '15-35'], ['CJPacket Sensitive', 5.5, '5-10']]), { maxTage: 20, sensitivAlsAusweg: true }), 5.5);
+  ist('Normale Linien nur langsam + schnelle Sonderlinie vorhanden: auch MIT Ausweg keine Sonderlinie als Ersatz (null)', frachtFuerKosten(mk([['CJPacket Eub', 3.1, '12-50'], ['CJPacket Sensitive', 4.0, '5-10']]), { maxTage: 20, sensitivAlsAusweg: true }), null);
+  ist('frachtKeineZahlGrund: nennt die Linien mit ihren Tagen / «nur Sonderlinien» / «unbekannt» / «keine Versandlinie»', [
+    frachtKeineZahlGrund(mk([['CJPacket Eub', 3.1, '12-50'], ['PostNL', 3.9, '15-45']]), { maxTage: 20 }),
+    frachtKeineZahlGrund(mk([['CJPacket Sensitive', 4.0, '5-10']]), { maxTage: 20 }),
+    frachtKeineZahlGrund(frachtAuswerten(null), { maxTage: 20 }),
+    frachtKeineZahlGrund(frachtAuswerten({ code: 200, result: true, data: [] }), { maxTage: 20 })],
+  ['keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Eub 12-50, PostNL 15-45)', 'nur Sonderlinien (Sensitive/Liquid) nach CH, keine normale Linie', 'Fracht unbekannt', 'keine Versandlinie CN→CH']);
+}
+
+// ── Gewichtsklassen (Prüfung Qualität 27.10.2026: Lichterkette 170 / 348 / 1386 / 3770 g = 6.77 / 9.17 / 21.59 / 49.44 USD)
+{
+  ist('messKlassen: bis zu vier verschiedene Gewichte werden alle gemessen, Doppelte zählen einmal, Nicht-Zahlen und ≤ 0 fallen weg', [messKlassen([170, 170, 348, 1386, 3770], 4), messKlassen([0, -5, 'x', null, 100], 4)], [[170, 348, 1386, 3770], [100]]);
+  ist('messKlassen: leichteste und schwerste sind immer dabei, höchstens max Klassen', [messKlassen([100, 200, 300, 400, 500, 600, 700], 4).length, messKlassen([100, 700], 4), messKlassen([100, 200, 300, 400, 500, 600, 700], 4)[0], messKlassen([100, 200, 300, 400, 500, 600, 700], 4).at(-1)], [4, [100, 700], 100, 700]);
+  ist('messKlassen: keine Liste → leer', [messKlassen(undefined), messKlassen('x')], [[], []]);
+  const vs = (gew) => gew.map((g, i) => ({ vid: `V${i + 1}-AAAAAAAAAA`, variantWeight: g }));
+  ist('messPlan: Gewicht spannt weniger als Faktor 2 → nur die schwerste (wie bisher)', messPlan(vs([300, 350, 400, 590]), { klassenMax: 4 }), [{ vid: 'V4-AAAAAAAAAA', gewichtG: 590 }]);
+  ist('messPlan: spannt es mehr als Faktor 2 → vier Klassen, aufsteigend, die schwerste zuletzt', messPlan(vs([170, 348, 1386, 3770]), { klassenMax: 4 }).map(m => m.gewichtG), [170, 348, 1386, 3770]);
+  ist('messPlan: klassenMax 1 (altes Verhalten) → nur die schwerste, auch bei breiter Spanne', messPlan(vs([170, 3770]), { klassenMax: 1 }).map(m => m.gewichtG), [3770]);
+  ist('messPlan: ohne Gewicht → eine Messung (gewichtUnbekannt), ohne Varianten → leer', [messPlan([{ vid: 'V1-AAAAAAAAAA' }, { vid: 'V2-AAAAAAAAAA' }], { klassenMax: 4 }).length, messPlan([], { klassenMax: 4 })], [1, []]);
+  ist('messPlan: Gleichstand beim Gewicht → eine Variante je Gewicht', messPlan(vs([100, 100, 100, 1000]), { klassenMax: 4 }).map(m => [m.vid, m.gewichtG]), [['V1-AAAAAAAAAA', 100], ['V4-AAAAAAAAAA', 1000]]);
+
+  const mk = (preis, tage = '7-10') => frachtAuswerten({ code: 200, result: true, data: [{ logisticName: 'CJPacket Ordinary VIP', logisticPrice: preis, logisticAging: tage, totalPostageFee: preis }] });
+  const klassen = [{ gewichtG: 170, r: mk(6.77) }, { gewichtG: 348, r: mk(9.17) }, { gewichtG: 1386, r: mk(21.59) }, { gewichtG: 3770, r: mk(49.44) }];
+  const fj = frachtJeVariante([{ vid: 'a', gewichtG: 170 }, { vid: 'b', gewichtG: 400 }, { vid: 'c', gewichtG: 3770 }, { vid: 'd' }, { vid: 'e', gewichtG: 5000 }, { vid: 'f', gewichtG: 1 }], klassen);
+  ist('frachtJeVariante: die nächst SCHWERERE gemessene Klasse (400 g → 1386-g-Klasse), ohne Gewicht und über der schwersten die schwerste, leichter als alle → die leichteste Klasse', fj.map(x => x.frachtUsd), [6.77, 21.59, 49.44, 49.44, 49.44, 6.77]);
+  ist('frachtJeVariante: ohne gemessene Klasse null (nie raten), unsortierte Eingabe wird sortiert', [frachtJeVariante([{ vid: 'a', gewichtG: 5 }], []), frachtJeVariante([{ vid: 'a', gewichtG: 200 }], [klassen[3], klassen[0]])[0].frachtUsd], [null, 49.44]);
+  const langsam = [{ gewichtG: 170, r: mk(6.77) }, { gewichtG: 3770, r: mk(30, '12-50') }];
+  const fl = frachtJeVariante([{ vid: 'a', gewichtG: 170 }, { vid: 'b', gewichtG: 3770 }], langsam, { maxTage: 20 });
+  ist('frachtJeVariante: eine Klasse ohne schnelle Linie bekommt null mit Grund, die andere behält ihre Zahl', [fl.map(x => x.frachtUsd), /höchstens 20 Tagen/.test(fl[1].grund), fl[0].grund], [[6.77, null], true, undefined]);
+  const leerKl = [{ gewichtG: 170, r: frachtAuswerten({ code: 200, result: true, data: [] }) }, { gewichtG: 3770, r: mk(49.44) }];
+  ist('frachtJeVariante: eine nicht versendbare Klasse (0 Linien) → null «keine Versandlinie», nie die Zahl der schwereren', frachtJeVariante([{ vid: 'a', gewichtG: 170 }], leerKl)[0], { vid: 'a', gewichtG: 170, klasseG: 170, frachtUsd: null, grund: 'keine Versandlinie CN→CH' });
+}
+{
+  // frachtProdukt mit Klassen: Aufrufe, Reihenfolge, Abbruch bei Unbekanntem
+  const V = [['A1-AAAAAAAAAA', 170], ['A2-AAAAAAAAAA', 348], ['A3-AAAAAAAAAA', 1386], ['A4-AAAAAAAAAA', 3770]].map(([vid, variantWeight]) => ({ vid, variantWeight }));
+  const preisVon = { 'A1-AAAAAAAAAA': 6.77, 'A2-AAAAAAAAAA': 9.17, 'A3-AAAAAAAAAA': 21.59, 'A4-AAAAAAAAAA': 49.44 };
+  const n = netz([b => antwortObj(gut([['CJPacket Ordinary VIP', preisVon[b.products[0].vid], '7-10']]))]), l = lauf(n);
+  const r = await frachtProdukt({ ...l.opt, varianten: V, klassenMax: 4 });
+  ist('frachtProdukt mit Klassen: vier Anfragen (die schwerste zuerst), jede mit EINER vid, Klassen aufsteigend', [n.log.map(x => x.body.products[0].vid), nurEine(n.log), r.klassen.map(k => [k.gewichtG, k.r.guenstigsteUsd]), r.gemessen.length], [['A4-AAAAAAAAAA', 'A1-AAAAAAAAAA', 'A2-AAAAAAAAAA', 'A3-AAAAAAAAAA'], true, [[170, 6.77], [348, 9.17], [1386, 21.59], [3770, 49.44]], 4]);
+  ist('...massgeblich bleibt die schwerste (Lieferbarkeit), das Ergebnis trägt die leichteste', [r.lieferbar, r.guenstigsteUsd, r.leichteste?.vid, r.schwerste.vid], [true, 49.44, 'A1-AAAAAAAAAA', 'A4-AAAAAAAAAA']);
+  const n1 = netz([antwortObj(gut(BETT_1250))]), l1 = lauf(n1);
+  const r1 = await frachtProdukt({ ...l1.opt, varianten: V });
+  ist('frachtProdukt ohne klassenMax (Vorgabe 1): wie bisher EINE Anfrage; das Ergebnis trägt trotzdem die eine Klasse', [n1.log.length, r1.klassen.length], [1, 1]);
+  const nl = netz([b => antwortObj(b.products[0].vid === 'A4-AAAAAAAAAA' ? gut(BETT_1250) : b.products[0].vid === 'A1-AAAAAAAAAA' ? FEHLER_1602000 : gut(BETT_1250))]), ll = lauf(nl);
+  const rl = await frachtProdukt({ ...ll.opt, varianten: V, klassenMax: 4 });
+  ist('frachtProdukt: ein FEHLER in einer leichteren Klasse macht das ganze Produkt unbekannt und beendet die Messung (nur 2 Anfragen)', [rl.unbekannt, rl.fehler, nl.log.length], [true, 'api-1602000', 2]);
+  const nn = netz([b => antwortObj(b.products[0].vid === 'A4-AAAAAAAAAA' ? LEER() : gut(BETT_1250))]), ln = lauf(nn);
+  const rn = await frachtProdukt({ ...ln.opt, varianten: V, klassenMax: 4 });
+  ist('frachtProdukt: ist die schwerste nicht lieferbar, gilt weiter der alte Weg (leichteste → teilweise), keine Klassen-Messungen', [rn.teilweise, nn.log.length], [true, 2]);
+  const gleich = [['B1-AAAAAAAAAA', 300], ['B2-AAAAAAAAAA', 350], ['B3-AAAAAAAAAA', 400]].map(([vid, variantWeight]) => ({ vid, variantWeight }));
+  const ng = netz([antwortObj(gut(BETT_1250))]), lg = lauf(ng);
+  await frachtProdukt({ ...lg.opt, varianten: gleich, klassenMax: 4 });
+  ist('frachtProdukt: Gewichtsspanne unter Faktor 2 → trotz klassenMax 4 nur EINE Anfrage (kein Punkteverbrauch ohne Nutzen)', ng.log.length, 1);
+}
+
+// ── Punkte leer (16900500) als HTTP-200-Antwort ist ein Lauf-Fehler (CJ_QUOTA), keine Aussage über das Produkt
+{
+  const n = netz([antwortObj({ code: 16900500, result: false, message: 'Quota gone', data: null })]), l = lauf(n);
+  await wirftAsync('frachtHolen: code 16900500 → CJ_QUOTA (nicht «unbekannt» und nicht CJ_THROTTLED)', () => frachtHolen({ ...l.opt, vid: VID_A }), /^CJ_QUOTA/);
+  const n2 = netz([antwortObj({ code: 1600200, result: false, message: 'Too Many Requests', data: null })]), l2 = lauf(n2);
+  await wirftAsync('frachtHolen: code 1600200 → CJ_THROTTLED', () => frachtHolen({ ...l2.opt, vid: VID_A }), /^CJ_THROTTLED/);
 }
 
 console.log(`${bestanden} ok, ${fehl} Fehler`);

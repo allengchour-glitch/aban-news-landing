@@ -41,6 +41,12 @@ export const PREIS_MIN = 14.90;
 /** SETZUNG: unter 30 % Bruttomarge wird gewarnt (Flagge `marge_unter_30`). Der Standard-Aufschlag 1,45 kann sie nicht unterschreiten (31,03 %). */
 export const MARGE_WARN = 0.30;
 /**
+ * SETZUNG: unter 25 % Bruttomarge SPERRT der Orchestrator ein Produkt (grind2.mjs → preisUrteil), statt nur zu warnen: eine unsinnige Einstellung (AUFSCHLAG=1, USD_CHF=0.5 …) soll nie als «alle Tore bestanden»
+ * durchgehen (Prüfung 27.10.2026: AUFSCHLAG=1 ergab Marge 2,5 %, Preis 28.90 bei Kosten 28.19). Mit dem Standard-Aufschlag 1,45 liegt die kleinste Marge bei 30,74 % (300 000 Zufallsfälle), die Sperre greift also nur bei Fehlkonfiguration.
+ * Brutto heisst: vor MWST und Zahlungsgebühren (bei Einstand 10 CHF bleiben danach rund 20 %, Annahme des Prüfers, MWST-Status des Shops UNBEKANNT) — ob 25 % reicht, entscheidet der Besitzer.
+ */
+export const MARGE_HART = 0.25;
+/**
  * Marge-Schwellen der Mengenrabatt-Stufen: KOPIE aus `automation/lib/mengenrabatt.mjs` (STUFEN.a/b.margeMin; dort noch nicht in `main`, Stand 27.10.2026).
  * Ändern sich die Schwellen dort, hier mitziehen. Gerechnet wird mit der kleinsten Marge über alle Varianten.
  */
@@ -277,4 +283,27 @@ export function preiseFuerVarianten(varianten, opt) {
     margeMin, mengenrabatt: mengenrabattStufe(margeMin),
     flaggen: [...new Set(gut.flatMap(r => r.flaggen))], ungueltig, varianten: rows,
   };
+}
+
+// ───────────────────────── Obergrenze je Variante ─────────────────────────
+
+/**
+ * Varianten über der Preis-Obergrenze WEGLASSEN, statt das ganze Produkt abzulehnen — aber nur, wenn mindestens `minRest` Varianten bleiben (eine Auswahl, kein Einzelstück).
+ * Anlass (GEMESSEN 27.10.2026, Prüfung «Qualität»): eine Lichterkette mit 10 Varianten (170 bis 3770 g) wurde komplett zurückgestellt («Preis bis 102.90 über Obergrenze 80»), obwohl 9 von 10
+ * Varianten unter 80 CHF lagen; nur die schwerste (49 USD Fracht) war zu teuer.
+ * Die weggelassene Variante bekommt `ok:false` und `grund` (planeNeu lässt Varianten mit ok:false aus, mit Warnung). Unverändert zurück (`entfernt: []`), wenn nichts über der Grenze liegt, zu
+ * wenige übrig blieben, oder wenn schon eine Variante ohne gültigen Preis dabei ist (dann entscheidet der Aufrufer über das ganze Produkt).
+ * @param {ReturnType<typeof preiseFuerVarianten>} preise  @param {number} maxPreis  @param {number} [minRest=2]
+ * @returns {{preise:object, entfernt:string[]}}  entfernt = vids der weggelassenen Varianten
+ */
+export function ueberObergrenzeWeg(preise, maxPreis, minRest = 2) {
+  if (!preise || !Array.isArray(preise.varianten) || !Number.isFinite(maxPreis)) return { preise, entfernt: [] };
+  const gut = preise.varianten.filter(v => v.ok);
+  const zu = gut.filter(v => v.preis > maxPreis), rest = gut.filter(v => v.preis <= maxPreis);
+  if (!zu.length || rest.length < minRest || gut.length !== preise.varianten.length) return { preise, entfernt: [] };
+  const weg = new Set(zu.map(v => v.vid));
+  const varianten = preise.varianten.map(v => (weg.has(v.vid) ? { ...v, ok: false, preis: null, grund: `Preis ${v.preis} über der Obergrenze ${maxPreis}` } : v));
+  const p = rest.map(v => v.preis);
+  const flaggen = [...new Set(rest.flatMap(v => v.flaggen || []))];
+  return { preise: { ...preise, ok: true, ungueltig: [], varianten, minPreis: Math.min(...p), maxPreis: Math.max(...p), margeMin: Math.min(...rest.map(v => v.marge)), mengenrabatt: mengenrabattStufe(Math.min(...rest.map(v => v.marge))), flaggen }, entfernt: [...weg] };
 }

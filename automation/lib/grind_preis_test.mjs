@@ -3,7 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import {
   AUFSCHLAG, PREIS_MIN, MARGE_WARN, MENGENRABATT_MARGE, USD_CHF, KURS_PLAUSIBEL, FLAGGEN_TEXT,
-  parseSpanne, runde2, margeVon, margeErreicht, mengenrabattStufe, preisAusKosten, preisNeu, preiseFuerVarianten,
+  parseSpanne, runde2, margeVon, margeErreicht, mengenrabattStufe, preisAusKosten, preisNeu, preiseFuerVarianten, ueberObergrenzeWeg, MARGE_HART,
 } from './grind_preis.mjs';
 import { aufrunden90, preisFuer } from './cj_varianten.mjs';
 
@@ -436,6 +436,30 @@ if (existsSync(new URL('./mengenrabatt.mjs', import.meta.url))) {
   ist('Schwellen wie in mengenrabatt.mjs (STUFEN)', { a: m.STUFEN.a.margeMin, b: m.STUFEN.b.margeMin }, MENGENRABATT_MARGE);
   ist('Warnschwelle wie MARGE_ZIEL_MIN in mengenrabatt.mjs', m.MARGE_ZIEL_MIN, MARGE_WARN);
 } else console.log('  (Info: mengenrabatt.mjs liegt hier noch nicht im Repo — Schwellen-Abgleich übersprungen)');
+
+
+// ─────────────────────────── Hartes Margen-Tor und Obergrenze je Variante (Prüfungen 27.10.2026) ───────────────────────────
+ist('Hartes Margen-Tor 25 %, unter der Warnschwelle von 30 %', [MARGE_HART, MARGE_HART < MARGE_WARN], [0.25, true]);
+{
+  // GEMESSEN 27.10.2026 (Lichterkette 0E413843): 170 g 6.77 USD, 348 g 9.17, 1386 g 21.59, 3770 g 49.44 Fracht; EK 1.74 / 3.69 / 12 / 35.61
+  const vs = [{ vid: 'a', ekUsd: 1.74, frachtUsd: 6.77 }, { vid: 'b', ekUsd: 3.69, frachtUsd: 9.17 }, { vid: 'c', ekUsd: 35.61, frachtUsd: 49.44 }];
+  const pr = preiseFuerVarianten(vs, { kurs: K });
+  const r1 = ueberObergrenzeWeg(pr, 80);
+  ist('Obergrenze: nur die Variante über 80 CHF fällt weg (ok:false mit Grund), die anderen bleiben unverändert', [r1.entfernt, r1.preise.varianten.map(v => v.ok), /über der Obergrenze 80/.test(r1.preise.varianten[2].grund), r1.preise.varianten[0].preis === pr.varianten[0].preis], [['c'], [true, true, false], true, true]);
+  ist('Obergrenze: der Rest wird neu zusammengefasst (ok, höchster Preis ≤ 80, Marge und Flaggen nur der Verbliebenen, Auswertung planeNeu-tauglich)', [r1.preise.ok, r1.preise.maxPreis <= 80, r1.preise.maxPreis === Math.max(r1.preise.varianten[0].preis, r1.preise.varianten[1].preis), r1.preise.ungueltig, r1.preise.margeMin === Math.min(r1.preise.varianten[0].marge, r1.preise.varianten[1].marge)], [true, true, true, [], true]);
+  ist('Obergrenze: bleiben weniger als minRest, wird nichts weggelassen (dann entscheidet das Preisurteil über das ganze Produkt)', [ueberObergrenzeWeg(pr, 80, 3).entfernt, ueberObergrenzeWeg(pr, 80, 3).preise === pr, ueberObergrenzeWeg(pr, 15).entfernt], [[], true, []]);
+  {
+    // genau AN der Obergrenze bleibt die Variante (die Grenze ist «höchstens», nicht «weniger als»); einen Rappen darüber fällt sie weg
+    const preise = pr.varianten.map(v => v.preis);
+    const grenze = Math.max(...preise);
+    ist('Obergrenze: Preis genau auf der Grenze bleibt, nichts wird weggelassen', [ueberObergrenzeWeg(pr, grenze).entfernt, ueberObergrenzeWeg(pr, grenze).preise === pr], [[], true]);
+    ist('Obergrenze: ein Rappen unter dem höchsten Preis lässt genau diese Variante weg', ueberObergrenzeWeg(pr, Math.round((grenze - 0.01) * 100) / 100).entfernt, ['c']);
+  }
+  ist('Obergrenze: nichts über der Grenze → unverändert', [ueberObergrenzeWeg(pr, 500).entfernt, ueberObergrenzeWeg(pr, 500).preise === pr], [[], true]);
+  ist('Obergrenze: eine Variante ohne gültigen Preis → unverändert (nicht zusätzlich Varianten wegwerfen)', ueberObergrenzeWeg(preiseFuerVarianten([...vs, { vid: 'x', ekUsd: 'abc', frachtUsd: 5 }], { kurs: K }), 80).entfernt, []);
+  ist('Obergrenze: unsinnige Eingaben ergeben keine Änderung und keinen Absturz', [ueberObergrenzeWeg(null, 80).entfernt, ueberObergrenzeWeg(pr, NaN).entfernt, ueberObergrenzeWeg({}, 80).entfernt], [[], [], []]);
+  ist('Fracht je Variante: dieselbe EK, andere Fracht → andere Kosten und ein höherer Preis (die Fracht der leichten Klasse macht die Variante nicht teurer als nötig)', (p => [p.varianten[0].kosten < p.varianten[1].kosten, p.varianten[0].preis < p.varianten[1].preis])(preiseFuerVarianten([{ vid: 'l', ekUsd: 5, frachtUsd: 6.77 }, { vid: 's', ekUsd: 5, frachtUsd: 49.44 }], { kurs: K })), [true, true]);
+}
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

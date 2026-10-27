@@ -65,7 +65,7 @@ export async function cjFetch(url, opt = {}) {
     // Nur wenn er sie ausdruecklich angefordert hat — sonst bleibt alles hart wie bisher.
     const weich = opt.weicheCodes || [];
     if (weich.length && body.result !== true && weich.includes(Number(body.code))) return body;
-    return assertCjSuccess(body, r.status, context);   // echte Fehler fliegen hier unveraendert
+    return assertCjSuccess(body, r.status, context, { ohneResult: opt.erfolgOhneResult === true });   // echte Fehler fliegen hier unveraendert (erfolgOhneResult: nur getInventoryByPid)
   }
   throw new Error(`CJ_THROTTLED: ${letzter} (${context})`);
 }

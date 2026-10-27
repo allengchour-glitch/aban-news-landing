@@ -437,8 +437,14 @@ export function ladeIndex(opt = {}) {
   const bericht = { skusDatei, ledger: [], fehlend: [] };
   if (!gibt(skusDatei)) throw new Error(`Shop-SKU-Datei fehlt: ${skusDatei} (erst automation/grind_skus_lesen.mjs laufen lassen)`);
   const produkte = produkteAusJsonl(lies(skusDatei));
-  let stand = null;
-  try { stand = JSON.parse(lies(skusDatei + '.meta.json')).stand || null; } catch { bericht.fehlend.push(skusDatei + '.meta.json (Stand unbekannt → istFrisch() sagt nein)'); }
+  let stand = null, meta = null;
+  try { meta = JSON.parse(lies(skusDatei + '.meta.json')); stand = meta.stand || null; } catch { bericht.fehlend.push(skusDatei + '.meta.json (Stand unbekannt → istFrisch() sagt nein)'); }
+  const luecken = [];
+  if (meta && meta.vollstaendig === false) luecken.push('Meta: vollstaendig=false (Objektzahl passt nicht)');
+  if (meta && (meta.waisen > 0 || meta.kaputteZeilen > 0)) luecken.push(`Meta: ${meta.waisen || 0} verwaiste, ${meta.kaputteZeilen || 0} kaputte Zeilen`);
+  if (produkte.kaputt) luecken.push(`${produkte.kaputt} kaputte Zeilen in der Datei`);
+  if (produkte.length < (opt.mindestProdukte ?? 0)) luecken.push(`nur ${produkte.length} Produkte (erwartet mindestens ${opt.mindestProdukte})`);
+  if (luecken.length) { bericht.unvollstaendig = luecken; stand = null; }     // ohne Stand sagt istFrisch() nein → ein LIVE-Lauf bricht ab
   bericht.kaputteZeilen = produkte.kaputt;
   const pids = [], handles = [];
   const lese = (liste, ziel, feld, fn) => {

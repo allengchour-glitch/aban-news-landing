@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { MARKER, schonDa, strategien, htmlZuText, quelleAus, zahlen, zahlenBelegt, saeubern, genug, renderBlock, einsetzen, wissenFuer, auftrag, VERBOTEN } from './fakten_block.mjs';
+import { MARKER, schonDa, massLabelBelegt, strategien, htmlZuText, quelleAus, zahlen, zahlenBelegt, saeubern, genug, renderBlock, einsetzen, wissenFuer, auftrag, VERBOTEN } from './fakten_block.mjs';
 
 let n = 0; const t = (name, f) => { try { f(); n++; } catch (e) { console.error('✗', name, '\n  ', e.message); process.exitCode = 1; } };
 
@@ -97,6 +97,25 @@ t('Zweiter Lauf ändert nichts (idempotent)', () => { const a = einsetzen('<p>T<
 t('Diamond Painting bekommt die allgemeine Anleitung', () => assert.ok(wissenFuer('Diamond Painting Weisser Tiger', '')));
 t('Gegenprobe: Armband bekommt keine', () => assert.equal(wissenFuer('Edelstahl-Armband', 'Jewelry'), null));
 t('Anleitung wird als «allgemein» gekennzeichnet', () => assert.match(renderBlock(S, { wissen: wissenFuer('Diamond Painting', '') }), /allgemein/));
+
+// ---- Mass-Beschriftungen brauchen ihr Achsenwort im Quelltext (Prüfung 27.10.2026, pid 5C86453E: «Lens: 3.6 (mm)» wurde zu «Durchmesser 3.6 mm»)
+const QCAM = 'Description:\nLens: 3.6 (mm)\nPower supply voltage: 3.7 (V)\nProduct size: 70mm*50.7mm*44mm\nDiameter: 12 mm';
+t('«Lens» ist kein Durchmesser', () => assert.equal(massLabelBelegt('Durchmesser', '3.6 mm', QCAM), false));
+t('«Diameter: 12 mm» belegt den Durchmesser', () => assert.equal(massLabelBelegt('Durchmesser', '12 mm', QCAM), true));
+t('Dreierangabe «size: 70*50.7*44» belegt keine einzelne Länge', () => assert.equal(massLabelBelegt('Länge', '70 mm', QCAM), false));
+t('... und keine Breite und keine Höhe', () => { assert.equal(massLabelBelegt('Breite', '50.7 mm', QCAM), false); assert.equal(massLabelBelegt('Höhe', '44 mm', QCAM), false); });
+t('«Masse» im Format 70 × 50.7 × 44 mm bleibt erlaubt', () => assert.equal(massLabelBelegt('Masse', '70 × 50.7 × 44 mm', QCAM), true));
+t('andere Beschriftungen bleiben unberührt (Gewicht, Material)', () => { assert.equal(massLabelBelegt('Gewicht', '95 g', QCAM), true); assert.equal(massLabelBelegt('Material', 'Edelstahl', QCAM), true); });
+t('Länge mit englischem Achsenwort und derselben Zahl in einer Zeile ist belegt (Komma wie Punkt)', () => { assert.equal(massLabelBelegt('Länge', '25 cm', 'Length: 25 cm'), true); assert.equal(massLabelBelegt('Breite', '2,5 cm', 'Width: 2.5cm'), true); });
+t('Gegenprobe: das Achsenwort in einer ANDEREN Zeile als die Zahl belegt nichts', () => assert.equal(massLabelBelegt('Länge', '25 cm', 'Length of cable: 30 cm\nSize: 25 cm'), false));
+t('Wert ohne Zahl ist nie belegt; kein Quelltext ist nie belegt; null wirft nicht', () => { assert.equal(massLabelBelegt('Länge', 'lang', 'Length: 25 cm'), false); assert.equal(massLabelBelegt('Länge', '25 cm', ''), false); assert.equal(massLabelBelegt(null, null, null), true); });
+t('saeubern verwirft «Durchmesser 3.6 mm», wenn nur «Lens: 3.6» im Quelltext steht, und nennt den Grund', () => {
+  const r = saeubern({ daten: [{ label: 'Durchmesser', wert: '3.6 mm' }, { label: 'Masse', wert: '70 × 50.7 × 44 mm' }] }, QCAM);
+  assert.deepEqual(r.daten.map(d => d.label), ['Masse']);
+  assert.ok(r.verworfen.some(v => /Mass-Beschriftung ohne Beleg/.test(v) && /Durchmesser/.test(v)), JSON.stringify(r.verworfen));
+});
+t('saeubern behält «Durchmesser 12 mm», wenn «Diameter: 12 mm» im Quelltext steht', () => assert.deepEqual(saeubern({ daten: [{ label: 'Durchmesser', wert: '12 mm' }] }, QCAM).daten.map(d => d.label), ['Durchmesser']));
+t('Auftrag an die KI nennt die Achsenwort-Regel («Lens» ist kein Durchmesser)', () => assert.match(auftrag('Q', 'T'), /«Lens» ist kein Durchmesser/));
 
 // ---- Auftrag
 t('Auftrag verbietet Ergänzen, Umrechnen, Marken', () => { const a = auftrag('Q', 'T'); assert.match(a, /Nichts ergänzen/); assert.match(a, /Nichts umrechnen/); assert.match(a, /Keine Marken/); });

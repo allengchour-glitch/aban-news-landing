@@ -7,8 +7,8 @@
  *   2 Kandidaten   CJ product/list je Zielblatt (Kategorie oder Suchwort, orderBy=listedNum, 200 je Seite, Zwischenspeicher).                 50 Punkte je Aufruf
  *   3 Vorfilter    Produktart, Lager CN, Preis, listedNum, Marke/Klinge/Waffe/Erwachsene/Tabak, Dublette (Shop-SKU-Index + Ledger).         0 Punkte
  *   4 Prüfung      product/query (10), Titel DE (KI + mechanische Titel-Wahrheit), Google-Pfad + sort-Tags, Bilder HTTP 200,                 10 + 10 je Fracht
- *                  Stecker/Auswahl-Tore (planeNeu ohne Preis), Fracht CN→CH (schwerste Variante), Preis, Fakten-Block.
- *   5 Plan         planeNeu() mit ALLEN 22 Toren: nur wenn jedes besteht, gibt es eine productSet-Eingabe (DRAFT, volle Auswahl).
+ *                  Stecker/Auswahl-Tore (planeNeu ohne Preis), Lager (getInventoryByPid, 10), Fracht CN→CH je Gewichtsklasse und Lieferzeit, Preis, Fakten-Block.
+ *   5 Plan         planeNeu() mit ALLEN 23 Toren: nur wenn jedes besteht, gibt es eine productSet-Eingabe (DRAFT, volle Auswahl).
  *   6 Anlegen      productSet als DRAFT, idempotent (SKU- und Handle-Abfrage vorher, Übernahme statt Dublette), Variantenbudget.             nur LIVE
  *   7 Tore         frisch am Shop lesen (Medien, Varianten, SKUs, Google-Pfad, Tags, Preise, Text); Veröffentlichen NUR mit PUBLISH=1.        nur LIVE
  *
@@ -30,8 +30,14 @@
  * dropship/grind2_freigabe_ledger.txt:  <handle> · <ISO> · FREI | FEHLER | ZURUECK · <Detail>
  *
  * ANNAHMEN UND SETZUNGEN (keine Messungen — der Besitzer bestätigt sie; Zahlen aus der Probe vom 27.10.2026 stehen in /tmp/grind2/bau/probe.md):
- *   · Die Fracht der SCHWERSTEN Variante gilt für alle Varianten des Produkts (konstant je Produkt, wie `unitCost` im Shop; leichtere Varianten sind dadurch eher zu teuer als zu billig).
- *     Ist nur die leichteste Variante lieferbar, wird das Produkt zurückgestellt (Gewichtsklassen dazwischen werden nicht einzeln gemessen).
+ *   · Die Fracht wird je GEWICHTSKLASSE gemessen (leichteste, schwerste und bis zu zwei Zwischenstufen, höchstens FRACHT_KLASSEN = 4 Aufrufe à 10 Punkte; spannt das Gewicht weniger als Faktor 2, genügt die
+ *     schwerste). Jede Variante bekommt die Fracht der nächst schwereren gemessenen Klasse (nie zu billig). Ist nur die leichteste Variante lieferbar, wird das Produkt zurückgestellt.
+ *   · LIEFERZEIT: gepreist wird mit der günstigsten normalen Linie, deren längste Laufzeit höchstens MAX_LIEFERTAGE (20) beträgt — die Produktseite verspricht «ca. 10–20 Tage». SETZUNG; GEMESSEN
+ *     sind Eub/Postal 12–50, PostNL 15–45, Sensitive Pro 15–35 Tage, Ordinary VIP 7–10, EQ 5–9. Klassen ohne solche Linie verkaufen nicht (Variante fällt weg), ohne jede Klasse wird zurückgestellt.
+ *   · LAGER: getInventoryByPid (GEMESSEN 10 Punkte): Varianten mit 0 im CN-Lager (CJ und Lieferant) werden weggelassen, unbekannt bleibt im Rennen.
+ *   · MARGE: unter 25 % Bruttomarge (MARGE_HART) wird nie angelegt, unter 30 % warnt die Flagge; Kurs ausserhalb 0,6–1,2 sperrt. Beides gilt auch, wenn jemand AUFSCHLAG/USD_CHF falsch setzt.
+ *   · HANDPRÜFUNG (Welle R): Kinder-/Babyware (Wickelunterlagen, 3D-Stifte, Kinderuhren, Motorradhelm-Headsets) wird nie automatisch ausgewählt oder veröffentlicht (HANDPRUEFUNG_ZIELE).
+ *   · SPERRE: höchstens ein LIVE-Lauf je Ledger (Sperrdatei); Laser/Medizin/Pyro/Selbstverteidigung sind gesperrt (SICHERER STANDARD, der Besitzer entscheidet).
  *   · Aufschlag 1,45 / Untergrenze 14.90 (Bekleidung 16.90) kommen aus lib/grind_preis.mjs; Obergrenze MAX_PREIS 80 und Mindest-Einstand 2 CHF sind SETZUNGEN.
  *   · Saison-Fenster (Halloween Aug–Sep, Weihnachten Sep–Nov, Ostern Feb–Mär, Valentinstag Dez–Jan) folgen aus 10–20 Werktagen Lieferzeit.
  *   · Nur ORDINARY_PRODUCT mit Lager CN (Hypothese: beide Fälle ohne CH-Fracht waren SUPPLIER_SHIPPED_PRODUCT, n = 2; PRODUKTARTEN erweitert).
@@ -40,20 +46,24 @@
  *
  * Dieses Modul exportiert seine reinen Funktionen (getestet in grind2_test.mjs); der Lauf `lauf(cfg, io)` nimmt fetch/warte/jetzt von aussen (simuliertes Netz).
  */
-import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync, statSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync, statSync, readdirSync, openSync, writeSync, closeSync, unlinkSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { shopifyGql } from './lib/shopify_gql.mjs';
+import { normalizeShopifyHost } from './lib/shopify_host.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { cjToken } from './lib/cj_token.mjs';
 import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { ledgerGedaechtnis, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
-import { frachtProdukt, frachtFuerKosten, ledgerGrund, punkteMerken, USD_CHF, CJ_BASE, PAUSE_MS, FRACHT_PUNKTE } from './lib/cj_fracht.mjs';
-import { preiseFuerVarianten, AUFSCHLAG, PREIS_MIN } from './lib/grind_preis.mjs';
+import { frachtProdukt, frachtJeVariante, frachtKeineZahlGrund, messPlan, ledgerGrund, punkteMerken, USD_CHF, CJ_BASE, PAUSE_MS, FRACHT_PUNKTE } from './lib/cj_fracht.mjs';
+import { preiseFuerVarianten, ueberObergrenzeWeg, AUFSCHLAG, PREIS_MIN, MARGE_HART } from './lib/grind_preis.mjs';
 import { ladeIndex, istDublette, fuegeHinzu, istFrisch, pidNorm } from './lib/grind_dubletten.mjs';
-import { googlePfad, taxTags, bereichKategorien, TAXONOMIE } from './lib/grind_google.mjs';
+import { googlePfad, taxTags, bereichKategorien, kernPhrase, TAXONOMIE } from './lib/grind_google.mjs';
+import { heikelWort, fremdsteckerImNamen } from './lib/grind_plan.mjs';
 import { planeNeu, PRODUCT_SET_MUTATION, API_VERSION, handleAus, galerieAus, normalisiereCj, ERWACHSENE_RE, TABAK_RE, STECKDOSE_EN_RE, ANZUENDER_RE, MAX_VARIANTEN, MIN_BILDER } from './lib/grind_plan.mjs';
 import { topUrteil, LISTED_MIN } from './lib/top_kandidaten.mjs';
 import { KATEGORIEN, WAFFEN, SPERR_TAGS } from './lib/kategorien.mjs';
@@ -71,8 +81,10 @@ import { EN_AUSGABE_RE } from './optionen_uebersetzen.mjs';
 const WURZEL = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const EXIT = Object.freeze({ OK: 0, FEHLER: 1, CJ: 3, VARIANTEN: 4, KI: 5 });
 export const FREIGABE_DATEI = 'dropship/GRIND2-FREI.txt';
-/** CJ-Punkte je Aufruf (GEMESSEN 26.10.2026, /tmp/grind2/cj_api.md §5.1: Liste 50 unabhängig von der Seitengrösse, Abfrage und Fracht je 10). `kategorien` (product/getCategory) GEMESSEN 27.10.2026: 0 Punkte (usedToday blieb über drei Aufrufe gleich). */
-export const KOSTEN = Object.freeze({ liste: 50, query: 10, fracht: FRACHT_PUNKTE, kategorien: 0 });
+/** CJ-Punkte je Aufruf (GEMESSEN 26.10.2026, /tmp/grind2/cj_api.md §5.1: Liste 50 unabhängig von der Seitengrösse, Abfrage und Fracht je 10). `kategorien` (product/getCategory) GEMESSEN 27.10.2026: 0 Punkte (usedToday blieb über drei Aufrufe gleich). `bestand` (product/stock/getInventoryByPid) GEMESSEN 27.10.2026 mit EINEM Aufruf zwischen zwei kostenlosen setting/get: 54 463 → 54 453, also genau 10 Punkte (die Messung in cj_api.md war gestört). */
+/** Unter dieser gemessenen Übereinstimmung mit dem Shop (googlePfad → vertrauen) soll ein Mensch den Google-Pfad im Kontaktbogen ansehen. */
+export const VERTRAUEN_HAND = 0.7;
+export const KOSTEN = Object.freeze({ liste: 50, query: 10, fracht: FRACHT_PUNKTE, kategorien: 0, bestand: 10 });
 const TAG_MS = 24 * 3600 * 1000;
 /** Marker, die eine fertige Beschreibung tragen muss, damit veröffentlicht werden darf (Fakten-Block oder Fliesstext v2). */
 const TEXT_MARKER = ['<!-- ls-fakten-v1 -->', '<!-- ls-text-v2 -->'];
@@ -98,6 +110,23 @@ function zahlAus(env, name, vorgabe, { min = -Infinity, max = Infinity, ganz = f
 }
 const listeAus = (roh, vorgabe = []) => (roh === undefined || roh === '' ? vorgabe : String(roh).split(',').map(s => s.trim()).filter(Boolean));
 
+/**
+ * Weitere Stände des Auswahl-Ledgers: VARIANTEN_LEDGER_ALT (Komma-Liste) und, solange VARIANTEN_LEDGER nicht ausdrücklich gesetzt ist, das Ledger im HAUPT-Arbeitsbaum des Repos
+ * (bei einem Worktree: das Verzeichnis über `git rev-parse --git-common-dir`). Dort hängt der Auswahl-Lauf an; der Worktree trägt nur den eingecheckten, oft Tage alten Stand.
+ */
+export function auswahlLedgerAndere(env, wurzel) {
+  const liste = listeAus(env.VARIANTEN_LEDGER_ALT);
+  if (!env.VARIANTEN_LEDGER && env.GRIND2_TEST !== '1') {
+    try {
+      const r = spawnSync('git', ['rev-parse', '--git-common-dir'], { cwd: wurzel, encoding: 'utf8', timeout: 5000 });
+      const gd = r.status === 0 ? resolve(wurzel, String(r.stdout).trim()) : '';
+      if (gd && gd.endsWith('.git')) liste.push(join(dirname(gd), 'dropship/cj_varianten_ledger.txt'));
+    } catch { /* kein git: nur der eigene Stand */ }
+  }
+  const eigen = resolve(env.VARIANTEN_LEDGER || join(wurzel, 'dropship/cj_varianten_ledger.txt'));
+  return [...new Set(liste.map(p => resolve(p)))].filter(p => p !== eigen);
+}
+
 /** Umgebung → Konfiguration. `wurzel` ist die Repo-Wurzel (Tests setzen ein Temp-Verzeichnis). */
 export function konfigAus(env = process.env, wurzel = WURZEL) {
   if (env.MODUS && !['probe', 'lauf'].includes(env.MODUS)) throw new RangeError(`MODUS=«${env.MODUS}» unbekannt (probe | lauf)`);
@@ -119,10 +148,10 @@ export function konfigAus(env = process.env, wurzel = WURZEL) {
     listedMin: z('LISTED_MIN', LISTED_MIN, { min: 0, max: 1e6 }),
     maxEk: z('MAX_EK', 40, { min: 1, max: 1000 }),
     produktarten: listeAus(env.PRODUKTARTEN, ['ORDINARY_PRODUCT']),
-    reserve: z('GRIND_RESERVE', 15000, { min: 0, max: 1e6 }),
+    reserve: z('GRIND_RESERVE', 15000, { min: 5000, max: 1e6 }),
     punkteMax: z('PUNKTE_MAX', probe ? 600 : 6000, { min: 10, max: 1e6 }),
-    kurs: z('USD_CHF', USD_CHF, { min: 0.3, max: 3 }),
-    aufschlag: z('AUFSCHLAG', AUFSCHLAG, { min: 1, max: 10 }),
+    kurs: z('USD_CHF', USD_CHF, { min: 0.6, max: 1.2 }),
+    aufschlag: z('AUFSCHLAG', AUFSCHLAG, { min: 1.34, max: 10 }),     // 1 / (1 − MARGE_HART): darunter wäre jede Marge unter 25 %
     preisMin: z('PREIS_MIN', PREIS_MIN, { min: 1, max: 1000 }),
     preisMinMode: z('PREIS_MIN_MODE', 16.90, { min: 1, max: 1000 }),
     // SETZUNG nach der Probe vom 27.10.2026: eine Weihnachts-Lichterkette mit Fracht 49 USD kam auf 61.90–102.90 CHF. Das Sortiment des Shops liegt weit darunter; die Obergrenze gegen den
@@ -130,11 +159,14 @@ export function konfigAus(env = process.env, wurzel = WURZEL) {
     maxPreis: z('MAX_PREIS', 80, { min: 5, max: 100000 }),
     minEinstand: z('MIN_EINSTAND_CHF', 2, { min: 0, max: 1000 }),
     sensitivAusweg: env.SENSITIV_AUSWEG === '1',
+    maxTage: z('MAX_LIEFERTAGE', 20, { min: 5, max: 90, ganz: true }),
+    frachtKlassen: z('FRACHT_KLASSEN', 4, { min: 1, max: 6, ganz: true }),     // SETZUNG: höchstens 4 Messungen (40 Punkte) je Produkt mit breiter Gewichtsspanne
+    bestandPruefen: env.BESTAND_PRUEFEN !== '0',                                // getInventoryByPid je Kandidat (+10 Punkte); 0 nur zum Sparen im Trockenlauf     // SETZUNG: wie das Lieferversprechen «ca. 10–20 Tage» der Produktseite
     maxVarianten: z('MAX_VARIANTEN', 40, { min: 1, max: MAX_VARIANTEN, ganz: true }),
     minBilder: z('MIN_BILDER', MIN_BILDER, { min: 1, max: 20, ganz: true }),
-    tageslimit: z('TAGESLIMIT', 10000, { min: 1, max: 1e6, ganz: true }),
+    tageslimit: z('TAGESLIMIT', 10000, { min: 1, max: 10000, ganz: true }),
     anteil: z('GRIND_ANTEIL', 0.05, { min: 0, max: 0.5 }),
-    gesamtMax: z('GESAMT_MAX', 9000, { min: 1, max: 1e6, ganz: true }),
+    gesamtMax: z('GESAMT_MAX', 9000, { min: 1, max: 9500, ganz: true }),
     publishMax: z('PUBLISH_MAX', 5, { min: 0, max: 100, ganz: true }),
     medienWarteS: z('MEDIEN_WARTE_S', 120, { min: 0, max: 900 }),
     maxKiFolge: z('MAX_KI_FOLGE', 5, { min: 1, max: 100, ganz: true }),
@@ -142,13 +174,17 @@ export function konfigAus(env = process.env, wurzel = WURZEL) {
     planTtlH: z('PLAN_TTL_H', 3, { min: 0, max: 72 }),
     datenblattTtlH: z('DATENBLATT_TTL_H', 6, { min: 0, max: 72 }),
     indexMaxH: z('INDEX_MAX_H', 24, { min: 1, max: 240 }),
+    indexMin: z('INDEX_MIN_PRODUKTE', 50000, { min: 0, max: 1e7, ganz: true }),     // der Shop hat 87 765 Produkte (27.10.2026); ein kleinerer Index ist abgeschnitten
+    auswahlLedgerMaxH: z('AUSWAHL_LEDGER_MAX_H', 14, { min: 0, max: 720 }),     // 0 = nicht prüfen (nur Tests): ohne frischen Stand des Auswahl-Ledgers ist die Gesamtgrenze blind
     bildHash: env.BILDHASH !== '0',
     duennOk: env.DUENN_OK === '1',
     pfade: {
       ledger: env.LEDGER || frei('dropship/grind2_ledger.txt'),
       freigabeLedger: env.FREIGABE_LEDGER || frei('dropship/grind2_freigabe_ledger.txt'),
       auswahlLedger: env.VARIANTEN_LEDGER || frei('dropship/cj_varianten_ledger.txt'),
-      freigabeDatei: env.FREIGABE_DATEI || frei(FREIGABE_DATEI),
+      auswahlLedgerAlt: auswahlLedgerAndere(env, wurzel),     // weitere Stände desselben Ledgers (Hauptrepo eines Worktrees, VARIANTEN_LEDGER_ALT): der jüngste zählt
+      liveSort: env.LIVE_SORT_DATEI || '/tmp/grind2/live_sort_tags.json',     // Trockenlauf/Probe: JSON-Liste der live filternden sort-Tags (kein Shop-Zugriff dort)
+      freigabeDatei: (env.GRIND2_TEST === '1' && env.FREIGABE_DATEI) || frei(FREIGABE_DATEI),
       bedarf, skus: env.GRIND_SKUS_DATEI || '/tmp/grind2/bau/skus.jsonl',
       bereiche: env.GRIND2_BEREICHE || frei('dropship/taxonomie-2610-b'),
       katalog,
@@ -176,7 +212,16 @@ export function schutzPruefen(cfg, { freigabe } = {}) {
 // Stufe 1: Bedarf
 // ════════════════════════════════════════════════════════════════════════════
 const WELLE_RANG = { S: 0, 1: 1, Z: 2, R: 3 };
-const welleCode = z => text(z?.welle).charAt(0).toUpperCase();
+/**
+ * Handprüfung = Welle R: Zielblätter mit Kinder-, Baby- und Sicherheitsware werden NIE automatisch ausgewählt und NIE automatisch veröffentlicht (CLAUDE.md «Kinderware … nie automatisch»;
+ * die Lückenanalyse nennt für sie Auflagen wie «Material/Schadstoffangaben belegen», «Alterskennzeichnung», «Knopfzelle»). Wer sie ausdrücklich wählt (ZIELE=…), bekommt DRAFTs zur Handprüfung,
+ * aber kein PUBLISH. SICHERER STANDARD (SETZUNG, der Besitzer entscheidet): Wickelunterlagen (Babyprodukt), 3D-Stifte (Kinder, heisse Düse, Netzteil), Kinderuhren (Knopfzelle),
+ * Motorradhelm-Headsets (Funk-Konformität). Dazu jedes Zielblatt, dessen Spalte «risiko» oder «auflage» Baby, Kind oder Knopfzelle nennt — gleichgültig, was die Welle in der Datei sagt.
+ */
+export const HANDPRUEFUNG_ZIELE = Object.freeze({ wickelunterlagen: 'Babyprodukt', '3dstifte': 'Kinderprodukt-Sicherheit (heisse Düse, Netzteil)', kinderuhren: 'Knopfzelle (Kinder-Sicherheit)', motorradheadset: 'Funk-Konformität' });
+export const HANDPRUEFUNG_RISIKO_RE = /baby|kinder|knopfzelle/i;
+export const istHandpruefung = z => !!HANDPRUEFUNG_ZIELE[z?.id] || HANDPRUEFUNG_RISIKO_RE.test(`${z?.risiko ?? ''} ${z?.auflage ?? ''}`);
+const welleCode = z => (istHandpruefung(z) ? 'R' : text(z?.welle).charAt(0).toUpperCase());
 
 /** Ledger-Text → Anzahl GESCHRIEBENER Produkte je Zielblatt (7. Feld der GESCHRIEBEN-Zeile). */
 export function schreibZaehlerAusLedger(ledgerText) {
@@ -298,7 +343,8 @@ export function sperrwort(name) {
   // Auto-Zigarettenanzünder ist ein Steckplatz, kein Tabak (wie in planeNeu)
   const ohneAnzuender = n.replace(new RegExp(ANZUENDER_RE.source, 'gi'), ' ');
   return treffer(n, WAFFEN, 'Waffe') || treffer(n, ERWACHSENE_RE, 'Erwachsene', 2) || treffer(ohneAnzuender, TABAK_RE, 'Tabak', 2)
-    || treffer(n, LIZENZ, 'Lizenz') || treffer(n, STECKDOSE_EN_RE, 'Steckdose');
+    || treffer(n, LIZENZ, 'Lizenz') || treffer(n, STECKDOSE_EN_RE, 'Steckdose')
+    || (fremdsteckerImNamen(n) ? 'Fremdstecker/110 V' : null) || (heikelWort(n) ? `heikel «${heikelWort(n)}»` : null);
 }
 
 /**
@@ -322,17 +368,25 @@ export function saisonSperre(name, monat) {
 /**
  * Zubehör im Gerätepfad: «Webcam Laptop Linse Tablet Privatsphäre Kamera Abdeckung» trägt das Kopfwort «Webcam» und landete im Probelauf (27.10.2026) in
  * Cameras & Optics > Cameras > Webcams — es ist eine Linsenabdeckung. Das Kopfwort-Lexikon versteht Nachstellungen nicht (bekannte Grenze von grind_google).
- * Regel: nennt der deutsche Titel oder der englische CJ-Name ein Zubehörwort, der Google-Pfad aber kein Zubehör, ist die Einordnung unsicher → nicht anlegen.
- * Falsch-Positive kosten einen Kandidaten (zurückgestellt), Falsch-Negative eine falsch einsortierte Kategorieseite: die Regel ist bewusst streng. «Zubehör» selbst steht NICHT
- * in der Liste (Küchenzubehör ist ein Hauptprodukt mit allgemeinem Pfad).
+ * Regel: nennt die WARE des deutschen Titels (die Kernphrase vor «mit/für/aus …») oder das Kopfwort des englischen CJ-Namens ein Zubehörwort, der Google-Pfad aber kein Zubehör, ist die
+ * Einordnung unsicher → nicht anlegen. Falsch-Positive kosten einen Kandidaten (zurückgestellt), Falsch-Negative eine falsch einsortierte Kategorieseite: die Regel ist streng, aber nicht blind.
+ * GEMESSEN 27.10.2026 an 2 223 Shop-Produkten mit Datenblatt: die erste Fassung (ganzer Titel, jedes englische Wort) löste bei 36 aus, darunter Fehlalarme für Kissenbezug («Pillow Cover»),
+ * «Kondensator-Mikrofon mit Stativ» (Beigabe), «Beamer mit PTZ-Halterung»; die jetzige bei 11, und die Fälle der Probe fallen weiter durch.
+ *  · Deutsch: Zubehörwort nur am Wortende (Zusammensetzungen wie «Kameraabdeckung» zählen, «Ständerlampe» nicht) und nur in der Kernphrase, nicht in einer Beigabe nach «mit».
+ *  · Englisch: nur das LETZTE Wort des Kopfglieds vor «for/with/of/and» («Pillow Cover» ja, «Microphone with Stand» nein), und nicht, wenn der deutsche Titel sagt, dass die Ware selbst
+ *    ein Bezug/Deckel/Notizbuch ist («Kissenbezug», «Bettbezug», «Sammelkarten», «Notizbuch», «Deckel»).
+ * «Zubehör» selbst steht NICHT in der Liste (Küchenzubehör ist ein Hauptprodukt mit allgemeinem Pfad).
  */
-export const ZUBEHOER_DE_RE = /(abdeckung|abdeckkappe|schutzfolie|halterung|ständer|stativ|aufkleber|adapter|ersatz(?:teil)?|wischtuch|wischtücher|etui|objektivdeckel)(?![a-zäöüß])/i;
-export const ZUBEHOER_EN_RE = /(^|[^a-z])(covers?|cases?|holders?|stands?|mounts?|brackets?|stickers?|protectors?|sleeves?|replacement|spare parts?|lens cap|dust cap|tripods?|adapters?)([^a-z]|$)/i;
+export const ZUBEHOER_DE_RE = /(abdeckung|abdeckkappe|schutzfolie|halterung|ständer|stativ|aufkleber|sticker|schieber|adapter|ersatz(?:teil)?|wischtuch|wischtücher|etui|objektivdeckel)(?![a-zäöüß])/i;
+export const ZUBEHOER_EN_KOPF_RE = /^(covers?|cases?|holders?|stands?|mounts?|brackets?|stickers?|protectors?|sleeves?|replacements?|tripods?|adapters?)$/;
+export const KEIN_ZUBEHOER_DE_RE = /kissen(?:bezug|bezüge|hülle|hüllen)|bettbezug|bezug|sammelkarten|notizbuch|deckel/i;
 export const ZUBEHOER_PFAD_RE = /Accessor|Parts|Cases|Covers|Holders|Stands|Mounts|Bags|Straps|Adapters|Replacement|Stickers|Cleaning|Tripods|Brackets|Protectors/i;
+const kopfEn = name => { const w = String(name ?? '').split(/\s+(?:for|with|of|and)\s+/i)[0].trim().split(/\s+/); return (w[w.length - 1] || '').toLowerCase(); };
 export function zubehoerKonflikt({ titel = '', cjName = '', pfad = '' } = {}) {
   if (!pfad || ZUBEHOER_PFAD_RE.test(pfad)) return null;
-  const de = String(titel).match(ZUBEHOER_DE_RE), en = String(cjName).match(ZUBEHOER_EN_RE);
-  const wort = de ? de[1] : en ? en[2] : null;
+  const de = kernPhrase(titel).match(ZUBEHOER_DE_RE);
+  const enWort = kopfEn(cjName), en = ZUBEHOER_EN_KOPF_RE.test(enWort) && !KEIN_ZUBEHOER_DE_RE.test(titel) ? enWort : null;
+  const wort = de ? de[1] : en;
   return wort ? { wort: wort.toLowerCase(), quelle: de ? 'Titel' : 'CJ-Name' } : null;
 }
 
@@ -450,6 +504,7 @@ export function titelPruefen(titel, { cjName = '', quelle = '' } = {}) {
   if (t.length < 6) probleme.push('Titel zu kurz');
   if (t.length > 90) probleme.push(`Titel zu lang (${t.length} Zeichen)`);
   if (CJK_RE.test(t)) probleme.push('chinesische/japanische/koreanische Zeichen im Titel');
+  if (FREMDLINK_RE.test(t)) probleme.push('Link oder E-Mail im Titel');
   const en = t.match(ENGLISCH_RE); if (en) probleme.push(`englischer Rest «${en[0]}»`);
   const vb = VERBOTEN.exec(t); if (vb) probleme.push(`verbotenes Wort «${vb[0]}»`);
   const erlaubt = new Set([...zahlen(quelle), ...zahlen(cjName)]); for (const z of [...erlaubt]) erlaubt.add(String(Number(z)));
@@ -525,9 +580,13 @@ export function preisMinFuer(g, cfg) {
 export function preisUrteil(preise, cfg) {
   if (!preise || !Array.isArray(preise.varianten) || !preise.varianten.length) return { ok: false, grund: 'keine Preise berechnet', frist: 'vorlaeufig' };
   if (!preise.ok) return { ok: false, grund: `Preis unbekannt bei ${preise.ungueltig.length} von ${preise.varianten.length} Varianten (${preise.grund || ''})`, frist: 'zurueckgestellt' };
-  const kosten = preise.varianten.map(v => v.kosten);
+  const kosten = preise.varianten.filter(v => v.ok).map(v => v.kosten);      // weggelassene Varianten (ok:false) zählen nicht
+  if (!kosten.length) return { ok: false, grund: 'keine Variante mit gültigem Preis', frist: 'zurueckgestellt' };
   const einstand = Math.min(...kosten);
   if (einstand < cfg.minEinstand) return { ok: false, grund: `Einstand ${einstand.toFixed(2)} CHF unter ${cfg.minEinstand.toFixed(2)} CHF: die Preisuntergrenze wäre ein Vielfaches des Einstands, am Markt nicht haltbar`, frist: 'zurueckgestellt' };
+  // Hartes Margen-Tor: unter MARGE_HART (25 %) wird nie angelegt; eine nicht lesbare Marge zählt als zu klein (nie raten). Die Flagge marge_unter_30 warnt weiter im Kontaktbogen.
+  if (!(preise.margeMin >= MARGE_HART - 1e-9)) return { ok: false, grund: `Bruttomarge ${Number.isFinite(preise.margeMin) ? (preise.margeMin * 100).toFixed(1) + ' %' : 'unbekannt'} unter ${MARGE_HART * 100} %`, frist: 'zurueckgestellt' };
+  if ((preise.flaggen || []).includes('kurs_ungewoehnlich')) return { ok: false, grund: 'Kurs ausserhalb 0,6–1,2: Preise und unitCost wären falsch', frist: 'zurueckgestellt' };
   if (preise.maxPreis > cfg.maxPreis) return { ok: false, grund: `Preis bis ${preise.maxPreis.toFixed(2)} CHF über der Obergrenze ${cfg.maxPreis.toFixed(2)} CHF`, frist: 'zurueckgestellt' };
   return { ok: true, einstandMin: einstand };
 }
@@ -569,6 +628,53 @@ export function variantenBudget({ grind2Text = '', auswahlText = '', jetzt, cfg 
   return { grind2: g, auswahl: a, gesamt: g + a, anteilMax, gesamtMax: cfg.gesamtMax, frei: Math.max(0, Math.min(anteilMax - g, cfg.gesamtMax - (g + a))) };
 }
 
+/** Jüngster Zeitstempel (2. Feld, ISO) eines Ledger-Textes in Millisekunden; 0 = keine lesbare Zeile. */
+export function ledgerNeuesterStand(text) {
+  let m = 0;
+  for (const z of String(text ?? '').split('\n')) { const t = Date.parse(z.split(' · ')[1]); if (Number.isFinite(t) && t > m) m = t; }
+  return m;
+}
+
+/**
+ * Welcher Stand des Auswahl-Ledgers zählt? Der Verbrauch des Auswahl-Laufs steht NUR in dessen Ledger (dropship/cj_varianten_ledger.txt); es wird nachts angehängt und nur gelegentlich
+ * eingecheckt. Ein veralteter Arbeitsbaum zählt ihn zu niedrig (GEMESSEN 27.10.2026: Arbeitsbaum 88, Hauptrepo 4 508 Varianten in 24 h) und macht die Gesamtgrenze blind.
+ * Gewählt wird der Kandidat mit dem JÜNGSTEN Eintrag (das Ledger wird nur angehängt: der jüngste ist der vollständigste); bei Gleichstand der längere Text.
+ * @param {{quelle:string, text:string}[]} kandidaten  @returns {{quelle:string, text:string, stand:number, alleQuellen:{quelle:string, stand:number}[]}}
+ */
+export function auswahlLedgerWaehlen(kandidaten) {
+  const liste = (kandidaten || []).map(k => ({ ...k, stand: ledgerNeuesterStand(k.text) }));
+  const beste = [...liste].sort((a, b) => b.stand - a.stand || String(b.text).length - String(a.text).length)[0] || { quelle: '', text: '', stand: 0 };
+  return { quelle: beste.quelle, text: beste.text, stand: beste.stand, alleQuellen: liste.map(k => ({ quelle: k.quelle, stand: k.stand })) };
+}
+
+/** `sort-…`-Tags, auf die im Shop wirklich eine Smart-Collection filtert (ruleSet.rules: Spalte TAG, Beziehung EQUALS). Ein Tag ohne Collection führt auf keine Kategorieseite. */
+export function liveSortTags(collections) {
+  const s = new Set();
+  for (const c of collections || []) for (const r of c?.ruleSet?.rules || []) if (r.column === 'TAG' && r.relation === 'EQUALS' && /^sort-/.test(r.condition)) s.add(r.condition);
+  return s;
+}
+/** Trägt mindestens eines der Tags eine live Collection? */
+export const hatLiveCollection = (sortTags, live) => (sortTags || []).some(t => live.has(t));
+
+/**
+ * Version des Plan-Zwischenspeichers = Hash der Dateien, die einen Plan bestimmen, und der Einstellungen, die in ihn eingehen. Ein Plan mit anderer Version wird nie wiederverwendet:
+ * GEMESSEN 27.10.2026 lagen noch Pläne vor einer Korrektur im Speicher (englischer Fakten-Block, Titel mit «mit Mikrofon», das im Datenblatt fehlt) und hätten sie bis zu 3 Stunden überlebt.
+ */
+export function planVersion(inhalte) { return createHash('sha1').update(inhalte.map(x => String(x)).join('\u0000')).digest('hex').slice(0, 12); }
+export const planGueltig = (plan, version) => !!plan && plan.v === version;
+const PLAN_DATEIEN = ['grind2.mjs', 'lib/grind_plan.mjs', 'lib/grind_google.mjs', 'lib/grind_google_daten.json', 'lib/grind_preis.mjs', 'lib/fakten_block.mjs', 'lib/cj_fracht.mjs', 'lib/grind_dubletten.mjs', 'lib/titel_deutsch.mjs', 'lib/uebersetzen.mjs'];
+function codeStand() {
+  try { return PLAN_DATEIEN.map(f => readFileSync(new URL('./' + f, import.meta.url), 'utf8')); }
+  catch { return [`unlesbar-${Date.now()}-${Math.random()}`]; }       // Code nicht lesbar: eine Version, die nie wieder vorkommt (kein Plan wird wiederverwendet)
+}
+const CODE_STAND = codeStand();
+/** Einstellungen, die in einen Plan eingehen (Kurs, Aufschlag, Preisgrenzen, Fracht und Lieferzeit, Variantenzahl …): ändert sich eine, ist der alte Plan ungültig. */
+export function planSchluessel(cfg) {
+  const e = { kurs: cfg.kurs, aufschlag: cfg.aufschlag, preisMin: cfg.preisMin, preisMinMode: cfg.preisMinMode, maxPreis: cfg.maxPreis, minEinstand: cfg.minEinstand, maxTage: cfg.maxTage,
+    frachtKlassen: cfg.frachtKlassen, bestandPruefen: cfg.bestandPruefen, sensitivAusweg: cfg.sensitivAusweg, maxVarianten: cfg.maxVarianten, minBilder: cfg.minBilder, duennOk: cfg.duennOk, bildHash: cfg.bildHash };
+  return planVersion([...CODE_STAND, JSON.stringify(e)]);
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // Stufe 7: Tore nach dem Anlegen (frisch am Shop gelesen) und Kanäle
 // ════════════════════════════════════════════════════════════════════════════
@@ -590,6 +696,7 @@ export function toreNachAnlage(eingabe, p, { minBilder = MIN_BILDER, nachFreigab
   const tor = (name, ok, grund = '') => tore.push({ name, ok, grund: ok === true ? '' : grund });
   if (!p) return { ok: false, offen: false, tore: [{ name: 'produkt', ok: false, grund: 'Produkt nicht mehr da' }] };
   tor('status', nachFreigabe ? p.status === 'ACTIVE' : p.status === 'DRAFT', `Status ${p.status}`);
+  tor('handle', p.handle === eingabe.handle, `Handle «${p.handle}» statt «${eingabe.handle}» (Shopify hängt bei Kollision eine Zahl an)`);
   tor('titel', p.title === eingabe.title, `Titel «${p.title}» statt «${eingabe.title}»`);
   const vs = p.variants?.nodes || [], soll = eingabe.variants || [];
   tor('varianten-zahl', p.variantsCount?.count === soll.length && vs.length === soll.length, `${p.variantsCount?.count} Varianten im Shop, ${soll.length} im Plan`);
@@ -656,7 +763,7 @@ export function kontaktbogen(zeilen, { titel = 'Kontaktbogen', kopf = '', vorfil
     const spanne = (a, b) => (a == null ? '–' : a === b ? chf(a) : `${chf(a)}–${chf(b)}`);
     const tore = r.tore ? `${r.tore.ok}/${r.tore.gesamt}${r.tore.falsch?.length ? ' ✗ ' + r.tore.falsch.join(', ') : ''}` : '–';
     const marge = r.margeMin == null ? '–' : `${(r.margeMin * 100).toFixed(1)} %`;
-    l.push(`| ${i + 1} | ${bild} | ${zelle(r.titel || r.titelEn)} | ${zelle(r.zielName)} / ${zelle(r.blatt)} | ${spanne(r.einstandMin, r.einstandMax)} | ${chf(r.frachtUsd)}${r.frachtLinie ? ` (${zelle(r.frachtLinie)})` : ''} | ${spanne(r.preisMin, r.preisMax)}${(r.preisFlaggen || []).filter(f => f !== 'spanne').length ? ` ⚑ ${zelle(r.preisFlaggen.filter(f => f !== 'spanne').join(', '))}` : ''} | ${marge} | ${r.varianten ?? '–'}${r.optionen ? ` (${zelle(r.optionen)})` : ''} | ${zelle(r.google) || '–'}${r.googleSicherheit ? ` [${r.googleSicherheit}]` : ''}${r.productType ? ` · Typ ${zelle(r.productType)}` : ''} | ${zelle((r.sortTags || []).join(', ')) || '–'} | ${tore} | ${zelle(r.entscheid)} |`);
+    l.push(`| ${i + 1} | ${bild} | ${zelle(r.titel || r.titelEn)} | ${zelle(r.zielName)} / ${zelle(r.blatt)} | ${spanne(r.einstandMin, r.einstandMax)} | ${r.frachtMin != null && r.frachtMin !== r.frachtUsd ? `${chf(r.frachtMin)}–${chf(r.frachtUsd)}` : chf(r.frachtUsd)}${r.frachtLinie ? ` (${zelle(r.frachtLinie)})` : ''} | ${spanne(r.preisMin, r.preisMax)}${(r.preisFlaggen || []).filter(f => f !== 'spanne').length ? ` ⚑ ${zelle(r.preisFlaggen.filter(f => f !== 'spanne').join(', '))}` : ''} | ${marge} | ${r.varianten ?? '–'}${r.optionen ? ` (${zelle(r.optionen)})` : ''} | ${zelle(r.google) || '–'}${r.googleSicherheit ? ` [${r.googleSicherheit}${r.vertrauen != null ? ` ${Math.round(r.vertrauen * 100)} %` : ''}]` : ''}${r.productType ? ` · Typ ${zelle(r.productType)}` : ''} | ${zelle((r.sortTags || []).join(', ')) || '–'} | ${tore} | ${zelle(r.entscheid)}${r.hinweis ? ` — ${zelle(r.hinweis)}` : ''} |`);
   });
   if (vf.length) {
     l.push('', '## Vorfilter (Stufe 3, ohne Punkte)', '', '| Zielblatt | Quelle | Treffer | durch | abgelehnt nach Grund |', '|---|---|---|---|---|');
@@ -672,10 +779,32 @@ export const CJ_LAUF_RE = /^CJ_(?:QUOTA|THROTTLED|RESERVE|BUDGET)\b/;
 export const VARIANTEN_LIMIT_RE = /VARIANT_THROTTLE|Daily variant creation limit/i;
 
 /**
+ * Bestand je Variante aus getInventoryByPid: Summe von `totalInventory` (= CJ-Lager + Lieferant) über die Zeilen des CN-LAGERS — die Fracht wird ab CN gerechnet und der Vorfilter verlangt ein
+ * CN-Lager, Bestand in DE hilft einer Bestellung ab CN nicht. Die Antwort nennt auch vids, die product/query nicht kennt (GEMESSEN 26.10.2026: 9 statt 6) — darum je vid, nie die Summe über das Produkt.
+ * UNBEKANNT ist nie 0: eine vid ohne CN-Zeile oder mit nicht lesbarer Zahl fehlt in der Tabelle (der Aufrufer behält die Variante), und eine unlesbare Form ergibt null (kein Urteil).
+ * Bestand beweist keine Lieferbarkeit (die entscheidet die Fracht), aber 0 bei CJ UND beim Lieferant im CN-Lager ist ein klares Nein.
+ * @returns {Map<string, number>|null}
+ */
+export function bestandJeVid(antwort) {
+  const liste = antwort?.data?.variantInventories;
+  if (!Array.isArray(liste)) return null;
+  const m = new Map();
+  for (const v of liste) {
+    if (!v || typeof v.vid !== 'string' || !Array.isArray(v.inventory)) continue;
+    const cn = v.inventory.filter(l => l && l.countryCode === 'CN');
+    if (!cn.length) continue;
+    const zahlen = cn.map(l => (l.totalInventory === null || l.totalInventory === undefined || l.totalInventory === '' ? NaN : Number(l.totalInventory)));
+    if (zahlen.some(z => !Number.isFinite(z))) continue;
+    m.set(v.vid, zahlen.reduce((x, z) => x + Math.max(0, z), 0));
+  }
+  return m;
+}
+
+/**
  * CJ-Zugriff mit Punkte-Buchführung. Jeder Aufruf: eigene Obergrenze (punkteMax) und Reserve (GRIND_RESERVE) VOR dem Aufruf prüfen, `pointsInfo` NACH dem Aufruf lesen, 1,2 s Pause.
  * Die Kosten sind die gemessenen Listenpreise (KOSTEN); der tatsächliche Verbrauch steht in stand.remaining (enthält fremden Verbrauch auf demselben Konto).
  */
-export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0, punkteMax = Infinity, pauseMs = PAUSE_MS, basisMs } = {}) {
+export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0, punkteMax = Infinity, pauseMs = PAUSE_MS, basisMs, klassenMax = 1 } = {}) {
   const z = { punkte: 0, aufrufe: {} };
   const wartet = warte || schlafen;
   const pruefe = (art, kosten) => {
@@ -685,7 +814,21 @@ export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0
   const buche = (art, kosten) => { z.punkte += kosten; z.aufrufe[art] = (z.aufrufe[art] || 0) + 1; };
   async function rufe(art, url, kosten, extra = {}) {
     pruefe(art, kosten);
-    const a = await cjFetch(url, { context: art, headers: { 'CJ-Access-Token': token }, fetch: fetchFn, warte: wartet, basisMs, ...extra });
+    // CJ meldet die Sekunden-Drosselung (1600200) und leere Punkte (16900500) teils als HTTP 200 mit result:false → cjFetch wirft «CJ_API … code=…».
+    // Das ist KEIN Fehler des Produkts: zweimal kurz warten, dann den ganzen Lauf beenden (Exit 3) statt jedes Produkt als FEHLER abzuhaken (Altwerkzeuge prüfen j.code === 1600200).
+    let a;
+    for (let versuch = 0; ; versuch++) {
+      try { a = await cjFetch(url, { context: art, headers: { 'CJ-Access-Token': token }, fetch: fetchFn, warte: wartet, basisMs, ...extra }); break; }
+      catch (e) {
+        const m = String(e.message);
+        if (/^CJ_API.*code=16900500\b/.test(m)) throw new Error(`CJ_QUOTA: code=16900500 (${art})`);
+        if (/^CJ_API.*code=1600200\b/.test(m)) {
+          if (versuch >= 2) throw new Error(`CJ_THROTTLED: code=1600200 bleibt bestehen (${art})`);
+          await wartet(2500 * (versuch + 1)); continue;
+        }
+        throw e;
+      }
+    }
     punkteMerken(stand, a);
     buche(art, kosten);
     await wartet(pauseMs);
@@ -696,11 +839,16 @@ export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0
     liste: p => rufe('liste', listeUrl(p), KOSTEN.liste),
     query: pid => rufe('query', `${CJ_BASE}/product/query?pid=${encodeURIComponent(pid)}`, KOSTEN.query, { weicheCodes: WEICHE_CODES }),
     kategorien: () => rufe('kategorien', `${CJ_BASE}/product/getCategory`, KOSTEN.kategorien),
+    /** Lager je Variante (getInventoryByPid, 10 Punkte; die Antwort hat KEIN `result`-Feld, nur `success`/`code` → lib/cj_response.mjs lässt das zu). Liefert auch fremde vids: je vid auswerten (bestandJeVid). */
+    bestand: pid => rufe('bestand', `${CJ_BASE}/product/stock/getInventoryByPid?pid=${encodeURIComponent(pid)}`, KOSTEN.bestand, { weicheCodes: WEICHE_CODES, erfolgOhneResult: true }),
     einstellungen: () => rufe('einstellungen', `${CJ_BASE}/setting/get`, 0),
-    /** Fracht CN→CH für EIN Produkt (schwerste Variante, bei 0 Linien zusätzlich die leichteste): höchstens zwei Aufrufe à 10 Punkte. */
+    /**
+     * Fracht CN→CH für EIN Produkt: die schwerste Variante, bei 0 Linien zusätzlich die leichteste, bei breiter Gewichtsspanne bis zu `klassenMax` Gewichtsklassen (lib/cj_fracht.mjs).
+     * Die Punktegrenze und die Reserve werden VOR dem ersten Aufruf für die ganze Messung geprüft (n × 10 Punkte, mindestens 2 × 10 wie bisher).
+     */
     async fracht(varianten) {
-      pruefe('fracht', 2 * FRACHT_PUNKTE);
-      const r = await frachtProdukt({ varianten, token, fetch: fetchFn, warte: wartet, stand, reserve, pauseMs, basisMs });
+      pruefe('fracht', Math.max(2, messPlan(varianten, { klassenMax }).length) * FRACHT_PUNKTE);
+      const r = await frachtProdukt({ varianten, token, fetch: fetchFn, warte: wartet, stand, reserve, pauseMs, basisMs, klassenMax });
       const n = Array.isArray(r.gemessen) ? r.gemessen.length : 0;
       z.punkte += n * FRACHT_PUNKTE; z.aufrufe.fracht = (z.aufrufe.fracht || 0) + n;
       return r;
@@ -752,7 +900,10 @@ export async function bilderPruefen(urls, { fetch: fetchFn, parallel = 6, timeou
         try { await r.body?.cancel?.(); } catch { /* egal */ }
         if (r.status === 200 || r.status === 206) {
           const ct = r.headers?.get?.('content-type') || '';
-          if (ct && !/^image\//i.test(ct)) { schlecht.set(u, `kein Bild (${ct.slice(0, 30)})`); return; }
+          // Shopify nimmt als Bild nur PNG, GIF, JPEG, WEBP, HEIC bis 20 MB (Doku «Manage media», 4472 × 4472 px nicht prüfbar ohne Download): alles andere würde als FAILED-Medium enden.
+          if (ct && !/^image\/(jpe?g|png|gif|webp|heic)\b/i.test(ct)) { schlecht.set(u, `kein Bild (${ct.slice(0, 30)})`); return; }
+          const laenge = Number(r.headers?.get?.('content-length'));
+          if (methode === 'HEAD' && Number.isFinite(laenge) && laenge > 20 * 1024 * 1024) { schlecht.set(u, `zu gross (${Math.round(laenge / 1048576)} MB, Shopify: höchstens 20 MB)`); return; }
           ok.add(u); return;
         }
         if (methode === 'HEAD' && [400, 403, 405, 501].includes(r.status)) continue;
@@ -793,11 +944,12 @@ export async function bildAliasBauen(galerie, variantenUrls, { sig, gleich, max 
  */
 export const EN_FUNKTION_RE = /(^|[^a-zäöüß])(the|are|is|can|be|used|this|that|from|your|you|for|of|to|or|it|on|at)(?![a-zäöüß])/i;
 /** Stoffe und Werkstoffe, die im Datenblatt englisch stehen und in EN_AUSGABE_RE fehlen («Material Metal» stand im Probelauf in einer deutschen Seite). */
-export const EN_STOFF_RE = /(^|[^a-zäöüß])(metal|wood|glass|rubber|iron|copper|ceramic|paper|alloy|aluminum|brass|zinc|resin|silicone|foam|fabric|canvas|acrylic|crystal)(?![a-zäöüß])/i;
+export const EN_STOFF_RE = /(^|[^a-zäöüß])(metal|wood|glass|rubber|iron|copper|ceramic|paper|alloy|aluminum|brass|zinc|resin|silicone|foam|fabric|canvas|acrylic|crystal|velvet|cloth|felt|linen|bamboo|stone|titanium|fiber)(?![a-zäöüß])/i;
+export const FREMDLINK_RE = /(https?:\/\/|www\.|[\w.+-]+@[\w-]+\.[a-z]{2,}|(?:^|[^a-z0-9-])[a-z0-9-]{2,}\.(?:com|net|org|ch|de|cn|shop|store|info|biz|ru|xyz)(?:[^a-z]|$))/i;
 export const istEnglisch = t => EN_AUSGABE_RE.test(String(t)) || EN_FUNKTION_RE.test(String(t)) || EN_STOFF_RE.test(String(t));
 export function faktenSprachfilter(s) {
   const verworfen = [...(s?.verworfen || [])];
-  const behalte = (liste, f) => (liste || []).filter(x => { const t = f(x); if (istEnglisch(t)) { verworfen.push(`englischer Rest: ${String(t).slice(0, 50)}`); return false; } return true; });
+  const behalte = (liste, f) => (liste || []).filter(x => { const t = f(x); if (FREMDLINK_RE.test(String(t))) { verworfen.push(`Link/E-Mail: ${String(t).slice(0, 50)}`); return false; } if (istEnglisch(t)) { verworfen.push(`englischer Rest: ${String(t).slice(0, 50)}`); return false; } return true; });
   const aus = { daten: behalte(s.daten, d => `${d.label} ${d.wert}`), lieferumfang: behalte(s.lieferumfang, x => x), anleitung: behalte(s.anleitung, x => x), hinweise: behalte(s.hinweise, x => x) };
   aus.belegt = aus.daten.length + aus.lieferumfang.length + aus.anleitung.length + aus.hinweise.length;
   aus.verworfen = verworfen;
@@ -837,7 +989,8 @@ export async function ladeKategorienExtra(dir) {
 
 /** Shopify-Zugang: Client-Credentials-Grant (CLAUDE.md), Admin-API-Version aus planeNeu. */
 export async function shopZugang(io, fetchFn, env = process.env) {
-  const shop = io.shop || env.SHOPIFY_SHOP;
+  // Der Host wird geprüft, BEVOR client_id und client_secret irgendwohin gehen (normalizeShopifyHost: nur reine *.myshopify.com-Domains, sonst wirft es).
+  const shop = normalizeShopifyHost(io.shop || env.SHOPIFY_SHOP);
   let tok = io.shopToken;
   if (!tok) {
     if (!shop || !env.SHOPIFY_CLIENT_ID || !env.SHOPIFY_CLIENT_SECRET) throw new Error('Kein Shopify-Zugang (SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET)');
@@ -857,6 +1010,8 @@ const TAGS_ADD = `mutation($id:ID!,$t:[String!]!){ tagsAdd(id:$id, tags:$t){ use
 const STATUS_SETZEN = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id status } userErrors{ field message } } }`;
 const VEROEFFENTLICHEN = `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id, input:$p){ userErrors{ field message } } }`;
 const esc = s => String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+/** Smart-Collections mit ihren Regeln (nur lesen): welche `sort-…`-Tags filtert im Shop wirklich eine Collection? 921 Collections = 4 Seiten. */
+export const LIVE_SORT_ABFRAGE = `query($after:String){ collections(first:250, after:$after, query:"collection_type:smart"){ nodes{ ruleSet{ rules{ column relation condition } } } pageInfo{ hasNextPage endCursor } } }`;
 
 // ════════════════════════════════════════════════════════════════════════════
 // Der Lauf
@@ -871,7 +1026,27 @@ const frischGenug = (p, stunden, jetzt) => { try { return jetzt - statSync(p).mt
  *   basisMs?:number, index?:object, kategorienExtra?:object, productTypeTab?:Map, bildSig?:Function, bildGleich?:Function, env?:object}} [io]
  * @returns {Promise<{exit:number, bericht:object}>}
  */
+/** Sperrdatei (O_EXCL): höchstens ein LIVE-Lauf je Ledger. Eine Sperre älter als `maxAlterMs` gilt als Überrest eines abgestürzten Laufs. */
+export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = 3 * 3600 * 1000) {
+  for (let versuch = 0; versuch < 2; versuch++) {
+    try { const fd = openSync(pfad, 'wx'); writeSync(fd, JSON.stringify({ pid: process.pid, seit: jetzt })); closeSync(fd); return true; }
+    catch (e) {
+      if (e.code !== 'EEXIST') throw e;
+      let alt = null; try { alt = JSON.parse(readFileSync(pfad, 'utf8')); } catch { /* unlesbar = Überrest */ }
+      if (alt && jetzt - alt.seit <= maxAlterMs) return false;
+      try { unlinkSync(pfad); } catch { /* ein anderer war schneller */ }
+    }
+  }
+  return false;
+}
 export async function lauf(cfg, io = {}) {
+  schutzPruefen(cfg, { freigabe: existsSync(cfg.pfade.freigabeDatei) });
+  if (!cfg.live) return laufOhneSperre(cfg, io);
+  const sperre = join(tmpdir(), `grind2-${createHash('sha1').update(resolve(cfg.pfade.ledger)).digest('hex').slice(0, 12)}.lock`);
+  if (!sperreHolen(sperre, (io.jetzt || Date.now)())) throw new Error(`SPERRE: ein anderer LIVE-Lauf schreibt gerade (${sperre}); zwei Läufe gleichzeitig legen dasselbe Produkt doppelt an`);
+  try { return await laufOhneSperre(cfg, io); } finally { try { unlinkSync(sperre); } catch { /* egal */ } }
+}
+async function laufOhneSperre(cfg, io = {}) {
   const log = io.log || (() => {});
   const jetzt = io.jetzt || (() => Date.now());
   const fetchFn = io.fetch || globalThis.fetch;
@@ -880,6 +1055,8 @@ export async function lauf(cfg, io = {}) {
   const live = cfg.live;
   const monat = new Date(jetzt()).getUTCMonth() + 1;     // für die Saison-Sperre
   const betriebsart = schutzPruefen(cfg, { freigabe: existsSync(cfg.pfade.freigabeDatei) });
+  // LIVE: ein ungültiger Shop-Host ist ein Fehler der ganzen Einrichtung, kein Fehler eines Produkts — Abbruch VOR jedem Zugriff (und vor jedem Versand von Zugangsdaten)
+  if (live && !normalizeShopifyHost(io.shop || env.SHOPIFY_SHOP || '')) throw new Error('Kein Shopify-Zugang (SHOPIFY_SHOP fehlt)');
   const bericht = { betriebsart, start: new Date(jetzt()).toISOString(), zaehl: {}, zeilen: [], vorfilter: [], hinweise: [], exit: EXIT.OK, punkte: null, budget: null, veroeffentlicht: [] };
   const zaehl = n => { bericht.zaehl[n] = (bericht.zaehl[n] || 0) + 1; };
   const hinweis = t => { if (!bericht.hinweise.includes(t)) bericht.hinweise.push(t); log('  Hinweis:', t); };
@@ -890,23 +1067,26 @@ export async function lauf(cfg, io = {}) {
   const luecken = jsonLesen(cfg.pfade.bedarf);
   if (!luecken) throw new Error(`Bedarfsdatei fehlt oder ist kein JSON: ${cfg.pfade.bedarf}`);
   let ledgerText = lies(cfg.pfade.ledger);
-  const auswahlText = lies(cfg.pfade.auswahlLedger);
+  const awStand = auswahlLedgerWaehlen([{ quelle: cfg.pfade.auswahlLedger, text: lies(cfg.pfade.auswahlLedger) }, ...(cfg.pfade.auswahlLedgerAlt || []).map(p => ({ quelle: p, text: lies(p) }))]);
+  const auswahlText = awStand.text;
   const erledigt = ledgerGedaechtnis(ledgerText, { jetzt: jetzt(), force: cfg.force });
   const ziele = bedarfAus(luecken, { geschrieben: schreibZaehlerAusLedger(ledgerText), wellen: cfg.wellen, ziele: cfg.ziele });
   log(`Stufe 1 Bedarf: ${ziele.length} Zielblätter mit Restbedarf${cfg.ziele.length ? ` (gewählt: ${cfg.ziele.join(', ')})` : ` (Wellen ${cfg.wellen.join('/')})`}`);
 
   let index = io.index;
   if (!index) {
-    const r = ladeIndex({ skusDatei: cfg.pfade.skus, ledgerDir: dirname(cfg.pfade.ledger) });
+    const r = ladeIndex({ skusDatei: cfg.pfade.skus, ledgerDir: dirname(cfg.pfade.ledger), mindestProdukte: cfg.indexMin });
     index = r.index; bericht.indexBericht = r.bericht;
     for (const f of r.bericht.fehlend) hinweis(`Index: ${f} fehlt`);
   }
   if (!istFrisch(index, cfg.indexMaxH, jetzt())) {
-    const t = `Shop-SKU-Index ist nicht frisch (Stand ${index.stand || 'unbekannt'}, erlaubt ${cfg.indexMaxH} h): erst node automation/grind_skus_lesen.mjs`;
+    const t = `Shop-SKU-Index ist nicht frisch (Stand ${index.stand || 'unbekannt'}, erlaubt ${cfg.indexMaxH} h${bericht.indexBericht?.unvollstaendig ? '; UNVOLLSTÄNDIG: ' + bericht.indexBericht.unvollstaendig.join(' / ') : ''}): erst node automation/grind_skus_lesen.mjs`;
     if (live) throw new Error(t);
     hinweis(t);
   }
   const extra = io.kategorienExtra || await ladeKategorienExtra(cfg.pfade.bereiche);
+  // Ohne die Bereichsdateien kennt der Lauf nur die 303 Basis-Kategorien und stellte die meisten Kandidaten still als «keine passende Kategorie» zurück: LIVE bricht lieber ab (Trockenlauf: Hinweis).
+  if (live && (extra.fehler.length || !extra.kategorien.length)) throw new Error(`BEREICHE: Bereichsdateien unter ${cfg.pfade.bereiche} fehlen oder sind fehlerhaft (${extra.fehler.join('; ').slice(0, 200) || 'keine Kategorie geladen'}): dropship/taxonomie-2610-b muss im Checkout liegen`);
   const kategorien = [...KATEGORIEN, ...extra.kategorien];
   hinweis(`Kategorien für sort-Tags: ${KATEGORIEN.length} live bekannt + ${extra.kategorien.length} aus Bereichsdateien (${extra.geladen.join(', ') || 'keine'})${extra.fehler.length ? `; Probleme: ${extra.fehler.join('; ').slice(0, 160)}` : ''}`);
   let ptTab = io.productTypeTab ?? null;
@@ -919,16 +1099,31 @@ export async function lauf(cfg, io = {}) {
   const token = io.cjToken ?? await cjToken();
   if (!token) throw new Error('Kein CJ-Token (CJ_EMAIL/CJ_API_KEY)');
   const stand = {};
-  const cj = cjClient({ token, fetch: fetchFn, warte, stand, reserve: cfg.reserve, punkteMax: cfg.punkteMax, basisMs: io.basisMs });
+  const cj = cjClient({ token, fetch: fetchFn, warte, stand, reserve: cfg.reserve, punkteMax: cfg.punkteMax, basisMs: io.basisMs, klassenMax: cfg.frachtKlassen });
   let shopQ = null;
   const shop = async (q, v) => { if (!shopQ) shopQ = await shopZugang(io, fetchFn, env); return shopQ(q, v); };
   const budgetPruefen = betriebsart !== 'probe';
   const budget = variantenBudget({ grind2Text: ledgerText, auswahlText, jetzt: jetzt(), cfg });
+  // Der Verbrauch des Auswahl-Laufs steht NUR in dessen Ledger. Ein veralteter Arbeitsbaum zählt ihn zu niedrig (GEMESSEN 27.10.2026: 88 statt 4 508 Varianten in 24 h) und macht die Gesamtgrenze blind.
+  // Es zählt der JÜNGSTE Stand (eigener Arbeitsbaum oder Hauptrepo); ist auch der älter als AUSWAHL_LEDGER_MAX_H, ist der Verbrauch unbekannt → LIVE bricht ab.
+  const aAlterH = awStand.stand ? (jetzt() - awStand.stand) / 3600e3 : Infinity;
+  bericht.auswahlLedgerAlterH = aAlterH; bericht.auswahlLedger = { quelle: awStand.quelle, staende: awStand.alleQuellen };
+  if (cfg.auswahlLedgerMaxH > 0 && aAlterH > cfg.auswahlLedgerMaxH) {
+    const t = `Auswahl-Ledger ${Number.isFinite(aAlterH) ? 'ist ' + aAlterH.toFixed(0) + ' h alt' : 'ist leer'} (erlaubt ${cfg.auswahlLedgerMaxH} h; geprüft: ${awStand.alleQuellen.map(q => q.quelle).join(', ')}): sein Verbrauch ist unbekannt — erst frischen Stand holen (git pull / frischer Checkout nach dem Nachtlauf, VARIANTEN_LEDGER_ALT)`;
+    if (live) throw new Error(t);
+    hinweis(t);
+  }
   bericht.budget = { ...budget, genutzt: 0 };
   let verbraucht = 0, budgetStopp = false;
-  let kanaeleCache;      // vor dem try-Block: die Funktionen unten laufen aus ihm heraus
+  let kanaeleCache, liveSortCache;      // vor dem try-Block: die Funktionen unten laufen aus ihm heraus
 
-  const ledgerAnhaengen = (datei, zeile) => { if (!live) return; mkdirSync(dirname(datei), { recursive: true }); appendFileSync(datei, zeile); };
+  const ledgerAnhaengen = (datei, zeile) => {
+    if (!live) return;
+    mkdirSync(dirname(datei), { recursive: true });
+    const alt = existsSync(datei) ? readFileSync(datei, 'utf8') : '';
+    if (alt && !alt.endsWith('\n')) zeile = '\n' + zeile;      // eine Datei ohne Zeilenende würde die neue Zeile ankleben und deren pid fürs Gedächtnis verlieren
+    appendFileSync(datei, zeile);
+  };
   const ledger = (zeile) => { ledgerAnhaengen(cfg.pfade.ledger, zeile); if (live) ledgerText += zeile; };
   const freigabeLedger = zeile => ledgerAnhaengen(cfg.pfade.freigabeLedger, zeile);
 
@@ -937,10 +1132,18 @@ export async function lauf(cfg, io = {}) {
     await cj.einstellungen();     // kostenlos, liefert pointsInfo (gemessen 27.10.2026)
     bericht.punkte = { start: stand.remaining ?? null, total: stand.total ?? null };
     log(`CJ-Punkte vor dem Lauf: ${stand.remaining ?? 'unbekannt'} (Reserve ${cfg.reserve}, eigene Grenze ${cfg.punkteMax})`);
+    // Ohne pointsInfo.remaining ist die Reserve blind (pruefe() überspringt sie still). Live läuft dann nichts: unbekannt ist kein Freibrief.
+    if (!Number.isFinite(stand.remaining)) {
+      if (live) { stoppe(EXIT.CJ, 'CJ liefert kein pointsInfo.remaining: die Punkte-Reserve wäre wirkungslos'); return abschluss(); }
+      hinweis('CJ liefert kein pointsInfo.remaining: die Punkte-Reserve greift nicht (nur der Trockenlauf läuft weiter)');
+    }
     if (Number.isFinite(stand.remaining) && stand.remaining < cfg.reserve + KOSTEN.liste) {
       stoppe(EXIT.CJ, `nur noch ${stand.remaining} CJ-Punkte, Reserve ${cfg.reserve}`);
       return abschluss();
     }
+
+    // LIVE: die live filternden sort-Tags VOR dem ersten Kandidaten lesen — scheitert das, bricht der Lauf ab (kein FEHLER je Produkt, kein Raten)
+    if (live) await liveSortHolen();
 
     // ── Stufe 2 und 3: Kandidaten holen, Vorfilter
     let knotenCache = null;
@@ -969,12 +1172,18 @@ export async function lauf(cfg, io = {}) {
       if (!quellen.length) hinweis(`Zielblatt ${ziel.id}: keine CJ-Quelle (weder Kategorie noch Suchwort)`);
       const kand = []; let seiten = 0;
       for (const q of quellen) {
-        if (seiten >= cfg.seitenMax || kand.length >= cfg.proZiel) break;
-        const { items, aus, total } = await listeHolen(q, 1); seiten++;
-        const vf = vorfilterListe(items, { cfg, index, erledigt, monat });
-        bericht.vorfilter.push({ ziel: ziel.name, quelle: `${q.art === 'kategorie' ? `Kategorie ${q.name}` : `Suche «${q.wort}»`} (${aus}${total ? `, ${total} insgesamt` : ''})`, treffer: items.length, durch: vf.durch.length, abgelehnt: vf.abgelehnt });
-        log(`Stufe 2/3 ${ziel.id} · ${q.art === 'kategorie' ? q.name : `«${q.wort}»`}: ${items.length} Treffer (${aus}) → ${vf.durch.length} durch den Vorfilter`);
-        for (const d of vf.durch) if (!kand.some(x => x.pid === d.pid)) kand.push(d);
+        // Eine Quelle liefert ihre besten `listeGroesse` Treffer; sind die durch Ledger, Dubletten und Filter verbraucht und die Seite war voll, kommt die nächste Seite (50 Punkte je Aufruf).
+        // `seiten` zählt Listenaufrufe je Zielblatt (SEITEN_MAX), nicht Quellen.
+        for (let seite = 1; seiten < cfg.seitenMax && kand.length < cfg.proZiel; seite++) {
+          const { items, aus, total } = await listeHolen(q, seite); seiten++;
+          // CJ antwortet auf eine unbekannte oder veraltete categoryId mit Erfolg und leerer Liste (GEMESSEN 27.10.2026: code 200, total 0, list [], 50 Punkte) — das darf nicht wie «kein Bedarf» aussehen.
+          if (!items.length) hinweis(`Zielblatt ${ziel.id}: ${q.art === 'kategorie' ? `Kategorie «${q.name}» (${q.id})` : `Suche «${q.wort}»`} lieferte ${seite > 1 ? 'auf Seite ' + seite + ' ' : ''}0 Treffer${q.art === 'kategorie' ? ' — ID veraltet oder Blatt leer?' : ''}`);
+          const vf = vorfilterListe(items, { cfg, index, erledigt, monat });
+          bericht.vorfilter.push({ ziel: ziel.name, quelle: `${q.art === 'kategorie' ? `Kategorie ${q.name}` : `Suche «${q.wort}»`} Seite ${seite} (${aus}${total ? `, ${total} insgesamt` : ''})`, treffer: items.length, durch: vf.durch.length, abgelehnt: vf.abgelehnt });
+          log(`Stufe 2/3 ${ziel.id} · ${q.art === 'kategorie' ? q.name : `«${q.wort}»`} S.${seite}: ${items.length} Treffer (${aus}) → ${vf.durch.length} durch den Vorfilter`);
+          for (const d of vf.durch) if (!kand.some(x => x.pid === d.pid)) kand.push(d);
+          if (items.length < cfg.listeGroesse) break;          // die Seite war nicht voll: es gibt keine nächste
+        }
       }
       jeZiel.push({ ziel, kandidaten: rangiere(kand) });
       aussicht += Math.min(cfg.proZiel, ziel.rest, kand.length);
@@ -983,8 +1192,12 @@ export async function lauf(cfg, io = {}) {
     log(`Stufe 4: ${auswahl.length} Kandidaten kommen in die Prüfung`);
 
     // ── Stufe 4/5: Prüfung und Plan
-    let kiFolge = 0, fehlerFolge = 0, schreibFolge = 0, drosselFolge = 0, veroeffentlicht = 0;
+    let kiFolge = 0, fehlerFolge = 0, schreibFolge = 0, drosselFolge = 0, veroeffentlicht = 0, toreFolge = 0;
+    const gesehenPid = new Set();
     for (const { ziel, k } of auswahl) {
+      // dieselbe CJ-pid kann in zwei Zielblättern auftauchen: sie darf nur EINMAL geplant und angelegt werden (sonst zweimal GESCHRIEBEN, zweite «Übernahme» → Tag grind2-tor-fehler auf einem veröffentlichten Produkt)
+      if (gesehenPid.has(k.pid)) { hinweis(`${k.pid}: steht auch im Zielblatt ${ziel.id} — in diesem Lauf nur einmal bearbeitet`); zaehl('DOPPELT'); continue; }
+      gesehenPid.add(k.pid);
       if (live && !existsSync(cfg.pfade.freigabeDatei)) { hinweis(`Freigabedatei ${cfg.pfade.freigabeDatei} ist verschwunden: Stopp`); break; }
       if (budgetPruefen && budget.frei - verbraucht <= 0) { budgetStopp = true; break; }
       let r;
@@ -1032,27 +1245,43 @@ export async function lauf(cfg, io = {}) {
       if (a.art === 'UEBERSPRUNGEN') { zaehl('UEBERSPRUNGEN'); ledger(ledgerZeile(k.pid, 'UEBERSPRUNGEN', a.ledgerText || a.grund, jetzt())); continue; }
       zaehl('GESCHRIEBEN'); schreibFolge = 0;
       ziel.rest = Math.max(0, ziel.rest - 1);
-      ledger(ledgerZeileGeschrieben({ pid: k.pid, n: a.varianten, handle: r.plan.handle, gid: a.gid, zielId: ziel.id }, jetzt()));
+      // Der Handle kommt aus der Antwort des Shops (bei einer Waise mit abweichendem Titel ist er ein anderer als der geplante): Ledger, Textspeicher und Freigabe-Ledger nennen den echten.
+      const handleLive = a.handle || r.plan.handle;
+      ledger(ledgerZeileGeschrieben({ pid: k.pid, n: a.varianten, handle: handleLive, gid: a.gid, zielId: ziel.id }, jetzt()));
       verbraucht += Math.max(0, a.varianten - n);     // zählt die Übernahme eines Produkts mit anderer Variantenzahl nach
-      datenblattFuerTexte(k.pid, r.plan.handle);
+      datenblattFuerTexte(k.pid, handleLive);
 
-      // ── Stufe 7: Tore
-      const t = await toreAbwarten(a.gid, r.plan.eingabe);
-      r.row.tore = { ok: t.tore.filter(x => x.ok === true).length, gesamt: t.tore.length, falsch: t.tore.filter(x => x.ok !== true).map(x => x.name) };
-      if (!t.ok) {
-        zaehl('TOR_FEHLER');
-        r.row.entscheid += ` · Tore: ${r.row.tore.falsch.join(', ')}`;
-        freigabeLedger(ledgerZeile(r.plan.handle, 'FEHLER', t.tore.filter(x => x.ok !== true).map(x => `${x.name}: ${x.grund}`).join('; '), jetzt()));
-        try { await shop(TAGS_ADD, { id: a.gid, t: ['grind2-tor-fehler'] }); } catch (e) { hinweis(`Tag grind2-tor-fehler nicht gesetzt: ${saniere(e.message, 80)}`); }
-        continue;
-      }
-      freigabeLedger(ledgerZeile(r.plan.handle, 'FREI', 'alle Tore bestanden (DRAFT)', jetzt()));
+      // ── Stufe 7 und 7b. Das Produkt EXISTIERT jetzt und steht im Ledger: ein Lesefehler hier (HTTP 500, Netz) darf weder den ganzen Lauf beenden noch das Produkt ohne Urteil lassen —
+      //    er wird festgehalten (Freigabe-Ledger + Tag), dann geht es mit dem nächsten weiter. Nur das Tageslimit und CJ-Lauffehler beenden den Lauf (sie werfen weiter).
+      try {
+        const t = await toreAbwarten(a.gid, r.plan.eingabe);
+        r.row.tore = { ok: t.tore.filter(x => x.ok === true).length, gesamt: t.tore.length, falsch: t.tore.filter(x => x.ok !== true).map(x => x.name) };
+        if (!t.ok) {
+          zaehl('TOR_FEHLER');
+          r.row.entscheid += ` · Tore: ${r.row.tore.falsch.join(', ')}`;
+          freigabeLedger(ledgerZeile(handleLive, 'FEHLER', t.tore.filter(x => x.ok !== true).map(x => `${x.name}: ${x.grund}`).join('; '), jetzt()));
+          try { await shop(TAGS_ADD, { id: a.gid, t: ['grind2-tor-fehler'] }); } catch (e) { hinweis(`Tag grind2-tor-fehler nicht gesetzt: ${saniere(e.message, 80)}`); }
+          continue;
+        }
+        toreFolge = 0;
+        freigabeLedger(ledgerZeile(handleLive, 'FREI', 'alle Tore bestanden (DRAFT)', jetzt()));
 
-      // ── Stufe 7b: veröffentlichen, nur mit PUBLISH=1
-      if (cfg.publish && veroeffentlicht < cfg.publishMax) {
-        const v = await veroeffentlichen(a.gid, r.plan);
-        r.row.entscheid += ` · ${v.art}${v.grund ? `: ${v.grund}` : ''}`;
-        if (v.art === 'VEROEFFENTLICHT') { veroeffentlicht++; zaehl('VEROEFFENTLICHT'); bericht.veroeffentlicht.push(r.plan.handle); }
+        // ── Stufe 7b: veröffentlichen, nur mit PUBLISH=1 (Handprüfung-Zielblätter der Welle R nie)
+        if (cfg.publish && ziel.welle !== 'R' && veroeffentlicht < cfg.publishMax) {
+          const v = await veroeffentlichen(a.gid, r.plan, handleLive);
+          r.row.entscheid += ` · ${v.art}${v.grund ? `: ${v.grund}` : ''}`;
+          if (v.art === 'VEROEFFENTLICHT') { veroeffentlicht++; zaehl('VEROEFFENTLICHT'); bericht.veroeffentlicht.push(handleLive); }
+          if (v.art === 'ZURUECK_FEHLGESCHLAGEN') break;     // ein Produkt könnte live sein: nichts weiter anfassen
+        } else if (cfg.publish && ziel.welle === 'R') {
+          r.row.entscheid += ' · nicht veröffentlicht: Zielblatt der Welle R (Handprüfung)';
+        }
+      } catch (e) {
+        const m = String(e.message);
+        if (VARIANTEN_LIMIT_RE.test(m) || CJ_LAUF_RE.test(m)) throw e;
+        zaehl('TOR_AUSFALL'); r.row.entscheid += ` · Tore/Veröffentlichen nicht möglich: ${saniere(m, 80)}`;
+        freigabeLedger(ledgerZeile(handleLive, 'FEHLER', `Tore/Veröffentlichen: ${saniere(m, 140)}`, jetzt()));
+        try { await shop(TAGS_ADD, { id: a.gid, t: ['grind2-tor-fehler'] }); } catch { /* der Shop ist gerade nicht erreichbar */ }
+        if (++toreFolge >= cfg.maxFehlerFolge) { stoppe(EXIT.FEHLER, `${toreFolge} Ausfälle nach dem Anlegen in Folge: ein Dienst scheint auszufallen`); break; }
       }
     }
     if (budgetStopp && !bericht.exit) stoppe(EXIT.VARIANTEN, `Variantenbudget für das 24-h-Fenster aufgebraucht (Anteil ${budget.anteilMax}, bisher ${budget.grind2} + ${verbraucht} in diesem Lauf)`);
@@ -1105,7 +1334,9 @@ export async function lauf(cfg, io = {}) {
 
   /** Stufen 4 und 5 für EINEN Kandidaten. Wirft nur Lauf-Fehler (CJ_*) und unerwartete Fehler; jedes andere Ergebnis ist ein Rückgabewert. */
   async function pruefeKandidat(k, ziel) {
+    const PLAN_V = planSchluessel(cfg);
     const row = zeileFuer(k, ziel);
+    const merke = t => { row.hinweis = [row.hinweis, t].filter(Boolean).join('; '); };      // mehrere Hinweise je Kandidat sammeln, nie überschreiben
     const ausgang = (status, grund, frist, extra = {}) => {
       const lt = extra.ledgerText ?? (fristKopf(frist) + saniere(grund, 200));
       const r = { status, grund, frist, ledgerText: lt, row: { ...row, entscheid: status === 'PLAN' ? 'PLAN: alle Tore bestanden' : `übersprungen (${frist || 'endgueltig'}): ${saniere(grund, 160)}` }, ...extra };
@@ -1114,12 +1345,18 @@ export async function lauf(cfg, io = {}) {
     const planPfad = join(cfg.pfade.planDir, `${k.pid}.json`);
     if (cfg.planTtlH > 0 && frischGenug(planPfad, cfg.planTtlH, jetzt())) {
       const alt = jsonLesen(planPfad);
-      if (alt && (alt.status === 'PLAN' || alt.status === 'UEBERSPRUNGEN') && alt.row) {
+      // nur ein Plan derselben Version (Code + Einstellungen): ein Plan vor einer Korrektur oder mit anderem Kurs/Aufschlag/Lieferzeit wird neu gebaut
+      if (alt && planGueltig(alt, PLAN_V) && (alt.status === 'PLAN' || alt.status === 'UEBERSPRUNGEN') && alt.row) {
+        // ein gespeicherter Plan hat die Dublettenprüfung dieses Index NICHT durchlaufen (Shop, Index und Ledger können sich seit dem Plan geändert haben)
+        if (alt.status === 'PLAN' && alt.plan?.eingabe) {
+          const dc = istDublette({ pid: k.pid, variantSkus: alt.plan.eingabe.variants.map(v => v.inventoryItem.sku), titel: alt.plan.titel, handle: alt.plan.handle }, index);
+          if (dc.treffer.some(t => t.staerke === 'hart' && (!(t.produkte || []).length || t.produkte.some(p => p.status !== 'GEPLANT')))) return ausgang('UEBERSPRUNGEN', `Dublette: ${dc.grund}`, 'endgueltig');
+        }
         log(`  ${k.pid}: Plan aus dem Zwischenspeicher (kostet keine Punkte)`);
         return { ...alt, row: { ...alt.row, entscheid: alt.status === 'PLAN' ? 'PLAN: alle Tore bestanden (Zwischenspeicher)' : alt.row.entscheid } };
       }
     }
-    const fertig = r => { jsonSchreiben(planPfad, { status: r.status, grund: r.grund, frist: r.frist, ledgerText: r.ledgerText, row: r.row, plan: r.plan, kiAusfall: r.kiAusfall }); return r; };
+    const fertig = r => { jsonSchreiben(planPfad, { v: PLAN_V, status: r.status, grund: r.grund, frist: r.frist, ledgerText: r.ledgerText, row: r.row, plan: r.plan, kiAusfall: r.kiAusfall }); return r; };
 
     // 1. Datenblatt
     const dbPfad = join(cfg.pfade.cacheDir, 'datenblatt', `${k.pid}.json`);
@@ -1159,10 +1396,16 @@ export async function lauf(cfg, io = {}) {
     const sortTags = taxTags({ title: titel, g: gp.pfad, tags: [], productType: pt, handle }, { kategorien });
     row.sortTags = sortTags;
     if (!sortTags.length) return fertig(ausgang('UEBERSPRUNGEN', `keine passende Kategorie (kein sort-Tag) für ${gp.pfad}`, 'zurueckgestellt', { kiOk: true }));
+    // Ein sort-Tag ohne Collection im Shop führt auf KEINE Kategorieseite (GEMESSEN 27.10.2026: bei 600 Shop-Produkten hatten 20,9 % Tags, aber keine einzige live Collection): zurückstellen, bis sie live ist.
+    const liveSort = await liveSortHolen();
+    if (liveSort && !hatLiveCollection(sortTags, liveSort)) return fertig(ausgang('UEBERSPRUNGEN', `kein sort-Tag mit Collection im Shop (${sortTags.join(', ')})`, 'zurueckgestellt', { kiOk: true }));
+    row.vertrauen = gp.vertrauen;
+    // Die gemessene Übereinstimmung des Titelurteils mit dem Shop (GEMESSEN 27.10.2026: unter 0,7 nur 58 % exakt, ab 0,7 89,9 %): schwache Pfade stehen im Kontaktbogen zur Handsicht (keine Sperre).
+    if (gp.sicherheit === 'titel' && (gp.vertrauen == null || gp.vertrauen < VERTRAUEN_HAND)) merke(`Google-Pfad von Hand ansehen (${gp.vertrauen == null ? 'Regel ohne Shop-Beleg' : `Vertrauen ${Math.round(gp.vertrauen * 100)} %`})`);
     const tags = tagsFuer({ sortTags, jetzt: jetzt() });
     const d2 = istDublette({ pid: c.pid, productSku: c.productSku, variantSkus: vSkus, titel, handle }, index);
     if (d2.dublette) return fertig(ausgang('UEBERSPRUNGEN', `Dublette: ${d2.grund}`, 'endgueltig', { kiOk: true }));
-    if (d2.warnung) row.hinweis = `Titelähnlichkeit: ${d2.grund.slice(0, 120)}`;
+    if (d2.warnung) merke(`Titelähnlichkeit: ${d2.grund.slice(0, 120)}`);
 
     // 5. Vorplan: alle Tore AUSSER Preis (Platzhalterpreis), samt Übersetzung unsicherer Optionswerte (höchstens zwei Runden)
     const basisCtx = extraCtx => ({ titel, googlePfad: gp.pfad, googleVokabular: TAXONOMIE, productType: pt, tags, maxVarianten: cfg.maxVarianten, minBilder: cfg.minBilder, ...extraCtx });
@@ -1178,7 +1421,7 @@ export async function lauf(cfg, io = {}) {
     }
     if (!vor.ok) return fertig(ausgang('UEBERSPRUNGEN', vor.grund, vor.frist, { ledgerText: vor.ledgerGrund, kiAusfall, kiOk: !kiAusfall }));
     const bleibt = new Set(vor.eingabe.variants.map(v => v.inventoryItem.sku));
-    const vs = (c.variants || []).filter(v => bleibt.has(text(v.variantSku)));
+    let vs = (c.variants || []).filter(v => bleibt.has(text(v.variantSku)));
 
     // 6. Bilder: HTTP 200 (Bild-Falle) und Hash-Alias gegen doppelte Uploads
     const varUrls = eindeutig(vs.map(v => text(v.variantImage)).filter(Boolean));
@@ -1189,17 +1432,40 @@ export async function lauf(cfg, io = {}) {
       alias = ar.alias; if (ar.grund) hinweis(`${k.pid}: Bildvergleich ${ar.grund}`);
     }
 
-    // 7. Fracht CN→CH (Lieferbarkeit entscheidet allein diese Messung) und Preis
+    // 6b. Lager: product/query hat keinen Bestand (inventoryNum null bei 16 902 von 16 902 Varianten). Eine Variante mit 0 im CN-Lager (CJ UND Lieferant) wird nicht verkauft (inventoryPolicy CONTINUE
+    //     würde sie sonst anbieten); ohne jede lagernde Variante kein Produkt. Unbekannt (Form nicht lesbar, vid oder CN-Zeile fehlt) bleibt im Rennen: Bestand ist kein Lieferbarkeitsbeweis.
+    const vsAlle = vs;
+    if (cfg.bestandPruefen) {
+      const bst = bestandJeVid(await cj.bestand(k.pid));
+      vs = vs.filter(v => !bst || !bst.has(text(v.vid)) || bst.get(text(v.vid)) > 0);
+      if (!vs.length) return fertig(ausgang('UEBERSPRUNGEN', `kein Bestand bei CJ und Lieferant (${vsAlle.length} Variante(n) mit 0)`, 'zurueckgestellt', { kiOk: true }));
+      if (vs.length < vsAlle.length) merke(`${vsAlle.length - vs.length} Variante(n) ohne Bestand weggelassen`);
+    }
+
+    // 7. Fracht CN→CH (Lieferbarkeit entscheidet allein diese Messung) und Preis. Die Fracht wird je GEWICHTSKLASSE gemessen (höchstens cfg.frachtKlassen Aufrufe) und jeder Variante die
+    //    Fracht der nächst schwereren Klasse zugeteilt: die Fracht der schwersten Variante für alle machte eine 170-g-Variante von 14.90 auf 61.90 CHF (GEMESSEN 27.10.2026).
     const fr = await cj.fracht(vs.map(v => ({ vid: v.vid, gewichtG: Number(v.variantWeight) || 0 })));
     row.frachtLinie = fr.guenstigsteLinie;
     if (fr.urteil === 'nicht_lieferbar') return fertig(ausgang('UEBERSPRUNGEN', ledgerGrund(fr), 'endgueltig', { kiOk: true }));
     if (fr.unbekannt || fr.urteil === 'unbekannt') return fertig(ausgang('UEBERSPRUNGEN', ledgerGrund(fr), 'vorlaeufig', { ledgerText: ledgerGrund(fr), kiOk: true }));
     if (fr.teilweise) return fertig(ausgang('UEBERSPRUNGEN', 'nur die leichteste Variante lieferbar, die schwerste nicht (Gewichtsklassen dazwischen nicht einzeln gemessen)', 'zurueckgestellt', { kiOk: true }));
-    const frachtUsd = frachtFuerKosten(fr, { sensitivAlsAusweg: cfg.sensitivAusweg });
-    if (frachtUsd == null) return fertig(ausgang('UEBERSPRUNGEN', 'nur Sonderlinien (Sensitive/Liquid) nach CH, keine normale Linie', 'zurueckgestellt', { kiOk: true }));
-    row.frachtUsd = frachtUsd;
-    const preise = preiseFuerVarianten(vs.map(v => ({ vid: v.vid, ekUsd: v.variantSellPrice })),
-      { kurs: cfg.kurs, frachtUsd, aufschlag: cfg.aufschlag, preisMin: preisMinFuer(gp.pfad, cfg) });
+    if (fr.gewichtUnbekannt || fr.ohneGewicht > 0) return fertig(ausgang('UEBERSPRUNGEN', `Gewicht bei ${fr.ohneGewicht || vs.length} von ${vs.length} Varianten unbekannt: Fracht nicht belastbar`, 'zurueckgestellt', { kiOk: true }));
+    // Lieferzeit: die Produktseite verspricht «ca. 10–20 Tage». Die günstigste Linie ist oft die langsamste (gemessen: CJPacket Eub und Postal 12–50, PostNL 15–45, Sensitive Pro 15–35 Tage):
+    // gerechnet wird je Klasse mit der günstigsten NORMALEN Linie, die höchstens cfg.maxTage braucht. Eine Klasse ohne solche Linie verkauft nicht (die Variante fällt weg), ohne jede: zurückgestellt.
+    const frachtOpt = { sensitivAlsAusweg: cfg.sensitivAusweg, maxTage: cfg.maxTage };
+    const je = frachtJeVariante(vs.map(v => ({ vid: v.vid, gewichtG: Number(v.variantWeight) || 0 })), fr.klassen, frachtOpt);
+    if (!je) return fertig(ausgang('UEBERSPRUNGEN', 'Fracht: keine Gewichtsklasse gemessen', 'vorlaeufig', { kiOk: true }));
+    const frachtVon = new Map(je.map(x => [x.vid, x]));
+    const mitFracht = vs.filter(v => frachtVon.get(v.vid)?.frachtUsd != null);
+    if (!mitFracht.length) return fertig(ausgang('UEBERSPRUNGEN', je[0]?.grund || frachtKeineZahlGrund(fr, frachtOpt), 'zurueckgestellt', { kiOk: true }));
+    if (mitFracht.length < vs.length) merke(`${vs.length - mitFracht.length} Variante(n) ohne Versandlinie mit höchstens ${cfg.maxTage} Tagen weggelassen`);
+    const frachtZahlen = mitFracht.map(v => frachtVon.get(v.vid).frachtUsd);
+    row.frachtUsd = Math.max(...frachtZahlen); row.frachtMin = Math.min(...frachtZahlen);
+    const kurs = { kurs: cfg.kurs, aufschlag: cfg.aufschlag, preisMin: preisMinFuer(gp.pfad, cfg) };
+    let preise = preiseFuerVarianten(mitFracht.map(v => ({ vid: v.vid, ekUsd: v.variantSellPrice, frachtUsd: frachtVon.get(v.vid).frachtUsd })), kurs);
+    // Varianten über der Preis-Obergrenze fallen weg, wenn mindestens zwei bleiben (sonst entscheidet preisUrteil über das ganze Produkt)
+    const ob = ueberObergrenzeWeg(preise, cfg.maxPreis, 2);
+    if (ob.entfernt.length) { preise = ob.preise; merke(`${ob.entfernt.length} Variante(n) über der Preisobergrenze ${cfg.maxPreis} weggelassen`); }
     const kosten = preise.varianten.filter(v => v.ok).map(v => v.kosten);
     if (kosten.length) { row.einstandMin = Math.min(...kosten); row.einstandMax = Math.max(...kosten); row.preisMin = preise.minPreis; row.preisMax = preise.maxPreis; row.margeMin = preise.margeMin; row.preisFlaggen = preise.flaggen; }
     const pu = preisUrteil(preise, cfg);
@@ -1210,7 +1476,7 @@ export async function lauf(cfg, io = {}) {
     if (!fb.ok && fb.kiAusfall) return fertig(ausgang('UEBERSPRUNGEN', `KI-Dienst nicht erreichbar (Text): ${saniere(fb.grund, 80)}`, 'vorlaeufig', { kiAusfall: true }));
     if (!fb.ok && !cfg.duennOk) return fertig(ausgang('UEBERSPRUNGEN', `Text offen: ${fb.grund}`, 'zurueckgestellt', { kiOk: true }));
 
-    // 9. Endplan mit allen 22 Toren
+    // 9. Endplan mit allen 23 Toren
     const plan = planeNeu(c, basisCtx({ preis: preise, beschreibungHtml: fb.ok ? fb.html : '', uebersetzung, kiAusfall, bildOk: bp.ok, bildAlias: alias }));
     if (!plan.ok) return fertig(ausgang('UEBERSPRUNGEN', plan.grund, plan.frist, { ledgerText: plan.ledgerGrund, kiOk: true }));
     if (plan.handle !== handle) return fertig(ausgang('UEBERSPRUNGEN', `Handle weicht ab (${plan.handle} statt ${handle})`, 'vorlaeufig', { kiOk: true }));
@@ -1236,17 +1502,42 @@ export async function lauf(cfg, io = {}) {
     const sk = await shop(SKU_ABFRAGE, { q: `sku:"${esc(sku1)}"` });
     const treffer = sk?.products?.nodes || [];
     const hd = (await shop(HANDLE_ABFRAGE, { h: e.handle }))?.productByIdentifier;
-    const vorhanden = treffer.find(p => p.handle === e.handle) || hd || null;
-    if (vorhanden && (vorhanden.tags || []).includes('grind2') && vorhanden.handle === e.handle) {
-      return { art: 'GESCHRIEBEN', uebernommen: true, gid: vorhanden.id, varianten: vorhanden.variantsCount?.count ?? e.variants.length };
+    // Ein Produkt mit unserem Rücknahme-Tag, das DIESELBE erste CJ-SKU trägt, ist die Waise eines abgestürzten Laufs (Absturz zwischen productSet und Ledger-Zeile) — auch wenn die KI den Titel
+    // beim zweiten Mal anders formuliert hat und der Handle deshalb abweicht. Übernehmen statt als «Dublette» 14 Tage lang zu sperren (das Produkt bliebe sonst für immer ohne Tore).
+    const meins = p => (p.tags || []).includes('grind2');
+    const vorhanden = treffer.find(p => p.handle === e.handle) || hd || treffer.find(meins) || null;
+    if (vorhanden && meins(vorhanden)) {
+      const n = vorhanden.variantsCount?.count ?? 0;
+      // Halbes Produkt (ein früherer Lauf brach mitten im Produkt ab, z. B. am Tageslimit): NICHT als GESCHRIEBEN verbuchen — es wäre unvollständig, und das Ledger vergässe es.
+      // MEHR Varianten als geplant (der frühere Plan hatte eine grössere Auswahl) werden übernommen: das Budget zählt die echte Zahl nach, und das Tor «varianten-zahl» hält das Produkt als DRAFT zur Handprüfung fest.
+      if (n < e.variants.length) return { art: 'FEHLER', grund: `halbes Produkt ${vorhanden.handle} (${vorhanden.id}): ${n} von ${e.variants.length} Varianten — von Hand prüfen oder löschen` };
+      return { art: 'GESCHRIEBEN', uebernommen: true, gid: vorhanden.id, handle: vorhanden.handle, varianten: n };
     }
     if (treffer.length) return { art: 'UEBERSPRUNGEN', grund: `Dublette (live): SKU ${sku1} gehört schon ${treffer[0].handle} (${treffer[0].status})`, ledgerText: `Dublette (live): SKU ${sku1} gehört ${treffer[0].handle}` };
     if (hd) return { art: 'UEBERSPRUNGEN', grund: `Handle ${e.handle} gehört schon einem fremden Produkt (${hd.status})`, ledgerText: `Handle ${e.handle} belegt (${hd.status})` };
-    const res = await shop(PRODUCT_SET_MUTATION, { input: e });     // OHNE identifier: legt NUR an, überschreibt nie
+    let res;
+    try { res = await shop(PRODUCT_SET_MUTATION, { input: e }); }     // OHNE identifier: legt NUR an, überschreibt nie
+    catch (err) {
+      // Die Doku beschreibt die Tagesdrossel für neue Varianten als «429 Too Many Requests» (productSet hat keinen Fehlercode dafür: ProductSetUserErrorCode kennt kein THROTTLE).
+      // shopifyGql hat HTTP 429 schon sechsmal mit Wartezeit wiederholt; die Kostendrossel kommt als HTTP 200 + «Throttled» und wird dort ebenfalls wiederholt → ein bleibendes 429 ist die Tagesgrenze.
+      if (/GraphQL: HTTP 429/.test(String(err.message))) throw new Error(`VARIANT_THROTTLE: HTTP 429 bleibt bestehen (${String(err.message).slice(0, 80)})`);
+      throw err;
+    }
     const ue = res?.productSet?.userErrors || [];
     if (ue.length) {
       const t = JSON.stringify(ue).slice(0, 300);
       if (VARIANTEN_LIMIT_RE.test(t)) throw new Error(t);
+      // «Handle already in use» (HANDLE_NOT_UNIQUE): der Handle gehört jetzt jemandem — wiederholte Anfrage nach einem Zeitfehler (das erste productSet kam an) oder fremdes Produkt.
+      // Beides entscheidet die Handle-Abfrage mit denselben Regeln wie oben, statt es als Fehler zu verbuchen.
+      if (ue.some(x => x?.code === 'HANDLE_NOT_UNIQUE')) {
+        const nach = (await shop(HANDLE_ABFRAGE, { h: e.handle }))?.productByIdentifier;
+        if (nach && meins(nach)) {
+          const n2 = nach.variantsCount?.count ?? 0;
+          if (n2 < e.variants.length) return { art: 'FEHLER', grund: `halbes Produkt ${nach.handle} (${nach.id}): ${n2} von ${e.variants.length} Varianten — von Hand prüfen oder löschen` };
+          return { art: 'GESCHRIEBEN', uebernommen: true, gid: nach.id, handle: nach.handle, varianten: n2 };
+        }
+        if (nach) return { art: 'UEBERSPRUNGEN', grund: `Handle ${e.handle} gehört schon einem fremden Produkt (${nach.status})`, ledgerText: `Handle ${e.handle} belegt (${nach.status})` };
+      }
       return { art: 'FEHLER', grund: `productSet: ${t}` };
     }
     const p = res?.productSet?.product;
@@ -1268,6 +1559,33 @@ export async function lauf(cfg, io = {}) {
     return { ...t, ok: false, tore: t.tore.map(x => (x.ok === null ? { ...x, ok: false, grund: `${x.grund} (nach ${cfg.medienWarteS} s noch nicht fertig)` } : x)) };
   }
 
+  /**
+   * Die `sort-…`-Tags, auf die im Shop wirklich eine Collection filtert. LIVE: aus dem Shop gelesen (nur lesen, einmal je Lauf; nicht lesbar → der Lauf bricht ab, nie raten).
+   * Trockenlauf/Probe lesen den Shop nicht: dort zählt eine Datei (LIVE_SORT_DATEI) oder io.liveSortTags; fehlt beides, wird das Tor übersprungen (Hinweis) und im Bericht vermerkt.
+   * @returns {Promise<Set<string>|null>} null = nicht prüfbar (nur Trockenlauf/Probe)
+   */
+  async function liveSortHolen() {
+    if (liveSortCache !== undefined) return liveSortCache;
+    if (io.liveSortTags) return (liveSortCache = new Set(io.liveSortTags));
+    if (live) {
+      const alle = []; let nach = null;
+      for (let seite = 0; seite < 12; seite++) {
+        const d = (await shop(LIVE_SORT_ABFRAGE, { after: nach }))?.collections;
+        if (!d) throw new Error('SAMMLUNGEN: Antwort ohne collections');
+        alle.push(...(d.nodes || []));
+        if (!d.pageInfo?.hasNextPage) break;
+        nach = d.pageInfo.endCursor;
+      }
+      const set = liveSortTags(alle);
+      if (!set.size) throw new Error('SAMMLUNGEN: im Shop filtert keine einzige Collection auf ein sort-Tag — gelesen wurde offenbar nichts Brauchbares');
+      return (liveSortCache = set);
+    }
+    const d = jsonLesen(cfg.pfade.liveSort);
+    if (Array.isArray(d) && d.length) return (liveSortCache = new Set(d));
+    hinweis(`Live-Sammlungen nicht bekannt (Trockenlauf liest den Shop nicht, ${cfg.pfade.liveSort} fehlt): das Tor «sort-Tag mit Collection» ist NICHT geprüft`);
+    return (liveSortCache = null);
+  }
+
   async function kanalListe() {
     if (kanaeleCache !== undefined) return kanaeleCache;
     const d = await shop(KANAL_REFERENZ, {});
@@ -1275,33 +1593,50 @@ export async function lauf(cfg, io = {}) {
     return (kanaeleCache = kanaeleAusReferenz(refs));
   }
 
-  /** Aktiv setzen und in die Kanäle der übrigen CJ-Produkte veröffentlichen; danach frisch lesen und die Seite abrufen, sonst zurück auf DRAFT. */
-  async function veroeffentlichen(gid, plan) {
+  /**
+   * Aktiv setzen und in die Kanäle der übrigen CJ-Produkte veröffentlichen; danach frisch lesen und die Seite abrufen, sonst zurück auf DRAFT.
+   * Das Ledger lügt nie: «ZURUECK» steht nur, wenn die Rücknahme bestätigt ist (userErrors leer); sonst «ZURUECK_FEHLGESCHLAGEN», der Lauf endet mit Exit 1 und fasst nichts mehr an,
+   * denn das Produkt kann LIVE sein. Jeder Fehler NACH dem Setzen auf ACTIVE (auch ein Netzfehler, auch beim Setzen selbst) nimmt das Produkt zurück: nie ein ungeprüftes Produkt live lassen.
+   */
+  async function veroeffentlichen(gid, plan, handle = plan.handle) {
     const e = plan.eingabe;
-    const kanaele = await kanalListe();
-    if (!kanaele) return { art: 'NICHT_VEROEFFENTLICHT', grund: 'Kanalliste aus den Referenzprodukten nicht ableitbar' };
-    const ek = erlaubteKanaele(e.tags, kanaele.map(id => ({ id, name: id })));
-    if (ek.sperrTags.length) return { art: 'NICHT_VEROEFFENTLICHT', grund: `Sperr-Tags ${ek.sperrTags.join(', ')}` };
+    let aktiv = false;
     const zurueck = async grund => {
-      try { await shop(STATUS_SETZEN, { p: { id: gid, status: 'DRAFT' } }); } catch (x) { hinweis(`Rücknahme auf DRAFT fehlgeschlagen: ${saniere(x.message, 80)}`); }
-      freigabeLedger(ledgerZeile(plan.handle, 'ZURUECK', grund, jetzt()));
-      return { art: 'ZURUECKGENOMMEN', grund };
+      let ok = false;
+      try { const r = await shop(STATUS_SETZEN, { p: { id: gid, status: 'DRAFT' } }); ok = !(r?.productUpdate?.userErrors?.length); } catch (x) { hinweis(`Rücknahme auf DRAFT fehlgeschlagen: ${saniere(x.message, 80)}`); }
+      freigabeLedger(ledgerZeile(handle, ok ? 'ZURUECK' : 'ZURUECK_FEHLGESCHLAGEN', grund, jetzt()));
+      if (!ok) stoppe(EXIT.FEHLER, `Rücknahme von ${handle} auf DRAFT fehlgeschlagen — das Produkt kann LIVE sein (${saniere(grund, 80)})`);
+      return { art: ok ? 'ZURUECKGENOMMEN' : 'ZURUECK_FEHLGESCHLAGEN', grund };
     };
-    const s = await shop(STATUS_SETZEN, { p: { id: gid, status: 'ACTIVE' } });
-    if (s?.productUpdate?.userErrors?.length) return { art: 'FEHLER', grund: `ACTIVE: ${JSON.stringify(s.productUpdate.userErrors).slice(0, 160)}` };
-    const pv = await shop(VEROEFFENTLICHEN, { id: gid, p: ek.erlaubt.map(k => ({ publicationId: k.id })) });
-    if (pv?.publishablePublish?.userErrors?.length) return zurueck(`publishablePublish: ${JSON.stringify(pv.publishablePublish.userErrors).slice(0, 160)}`);
-    const t = await toreAbwarten(gid, e, { nachFreigabe: true });
-    if (!t.ok) return zurueck(`Tore nach dem Veröffentlichen: ${t.tore.filter(x => x.ok !== true).map(x => x.name).join(', ')}`);
-    const url = `https://${env.SHOP_DOMAIN || 'luxestyle.ch'}/products/${e.handle}?cb=${jetzt()}`;
-    let status = 0;
-    for (let i = 0; i < 3 && status !== 200; i++) {
-      try { const r = await fetchFn(url, { method: 'GET', redirect: 'follow' }); status = r.status; try { await r.body?.cancel?.(); } catch { /* egal */ } } catch { status = 0; }
-      if (status !== 200) await warte(5000);
+    try {
+      const kanaele = await kanalListe();
+      if (!kanaele) return { art: 'NICHT_VEROEFFENTLICHT', grund: 'Kanalliste aus den Referenzprodukten nicht ableitbar' };
+      const ek = erlaubteKanaele(e.tags, kanaele.map(id => ({ id, name: id })));
+      if (ek.sperrTags.length) return { art: 'NICHT_VEROEFFENTLICHT', grund: `Sperr-Tags ${ek.sperrTags.join(', ')}` };
+      // jede SKU muss im ganzen Shop einmalig sein (zwei gleichzeitige Läufe oder ein Altprodukt) — vor dem Aktivieren, nicht danach
+      const dup = await shop(SKU_ABFRAGE, { q: `sku:"${esc(e.variants[0].inventoryItem.sku)}"` });
+      const fremd = (dup?.products?.nodes || []).filter(p => p.id !== gid);
+      if (fremd.length) return { art: 'NICHT_VEROEFFENTLICHT', grund: `SKU ${e.variants[0].inventoryItem.sku} gehört auch ${fremd[0].handle} (${fremd[0].status}): Dublette` };
+      aktiv = true;     // ab hier kann das Produkt live sein, auch wenn der Aufruf selbst scheitert
+      const s = await shop(STATUS_SETZEN, { p: { id: gid, status: 'ACTIVE' } });
+      if (s?.productUpdate?.userErrors?.length) return { art: 'FEHLER', grund: `ACTIVE: ${JSON.stringify(s.productUpdate.userErrors).slice(0, 160)}` };
+      const pv = await shop(VEROEFFENTLICHEN, { id: gid, p: ek.erlaubt.map(k => ({ publicationId: k.id })) });
+      if (pv?.publishablePublish?.userErrors?.length) return await zurueck(`publishablePublish: ${JSON.stringify(pv.publishablePublish.userErrors).slice(0, 160)}`);
+      const t = await toreAbwarten(gid, e, { nachFreigabe: true });
+      if (!t.ok) return await zurueck(`Tore nach dem Veröffentlichen: ${t.tore.filter(x => x.ok !== true).map(x => x.name).join(', ')}`);
+      const url = `https://${env.SHOP_DOMAIN || 'luxestyle.ch'}/products/${e.handle}?cb=${jetzt()}`;
+      let status = 0;
+      for (let i = 0; i < 3 && status !== 200; i++) {
+        try { const r = await fetchFn(url, { method: 'GET', redirect: 'follow' }); status = r.status; try { await r.body?.cancel?.(); } catch { /* egal */ } } catch { status = 0; }
+        if (status !== 200) await warte(5000);
+      }
+      if (status !== 200) return await zurueck(`Produktseite nicht erreichbar (HTTP ${status})`);
+      freigabeLedger(ledgerZeile(handle, 'FREI', `veröffentlicht in ${ek.erlaubt.length} Kanälen, Seite HTTP 200`, jetzt()));
+      return { art: 'VEROEFFENTLICHT', grund: `${ek.erlaubt.length} Kanäle, Seite HTTP 200` };
+    } catch (x) {
+      if (!aktiv) return { art: 'FEHLER', grund: `Veröffentlichen vor dem Aktivieren: ${saniere(x.message, 100)}` };
+      return await zurueck(`Fehler nach dem Aktivieren: ${saniere(x.message, 100)}`);
     }
-    if (status !== 200) return zurueck(`Produktseite nicht erreichbar (HTTP ${status})`);
-    freigabeLedger(ledgerZeile(plan.handle, 'FREI', `veröffentlicht in ${ek.erlaubt.length} Kanälen, Seite HTTP 200`, jetzt()));
-    return { art: 'VEROEFFENTLICHT', grund: `${ek.erlaubt.length} Kanäle, Seite HTTP 200` };
   }
 }
 

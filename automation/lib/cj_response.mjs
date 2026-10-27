@@ -1,5 +1,9 @@
 /** CJ-Fehler sind keine leeren Produkt-/Bewertungslisten. Keine Zugangsdaten loggen. */
-export function assertCjSuccess(body, status, context = 'CJ') {
+/**
+ * @param {{ohneResult?:boolean}} [opt]  ohneResult: nur für Endpunkte, die KEIN `result`-Feld senden (getInventoryByPid: `{success:true, code:200, message:'', data}`, GEMESSEN 26.10.2026).
+ *   Dann zählt `success:true` UND `code:200` zusammen als Erfolg; `result:false` bleibt auch dort ein Fehler. Ohne diese Angabe (Vorgabe, alle anderen Aufrufer) gilt wie bisher nur `result:true`.
+ */
+export function assertCjSuccess(body, status, context = 'CJ', opt = {}) {
   const message = String(body?.message || '');
   if (/insufficient api points|daily.*(?:quota|limit)|points.*exhaust/i.test(message)) {
     throw new Error(`CJ_QUOTA: Tagespunkte erschöpft (${context})`);
@@ -7,7 +11,8 @@ export function assertCjSuccess(body, status, context = 'CJ') {
   if (status < 200 || status >= 300) {
     throw new Error(`CJ_HTTP: HTTP ${status} (${context})`);
   }
-  if (!body || body.result !== true) {
+  const erfolg = !!body && (body.result === true || (opt.ohneResult === true && body.result === undefined && body.success === true && Number(body.code) === 200));
+  if (!erfolg) {
     const code = String(body?.code ?? 'unbekannt').replace(/[^0-9A-Za-z_-]/g, '').slice(0, 40);
     throw new Error(`CJ_API: Antwort nicht erfolgreich, code=${code} (${context})`);
   }
