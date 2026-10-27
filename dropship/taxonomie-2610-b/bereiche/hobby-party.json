@@ -49,7 +49,7 @@
      "handle": "mnz-tiere",
      "titel": "Tiere",
      "titel_muss": [
-      "(^|[^a-zäöüß])(pferd[a-zäöüß]*|tier[a-zäöüß-]*|hund[a-zäöüß]*|katze|kätzchen|kater|vogel[a-zäöüß-]*|löwe[a-zäöüß]*|elefant[a-zäöüß]*|zebra|tiger|eule|papagei|kuh|adler|welpe|weisswedelhirsch|schmetterling|hochlandrind|einhörner|fisch|affe)(?![a-zäöüß])"
+      "(^|[^a-zäöüß])(pferd[a-zäöüß]*|tier[a-zäöüß-]*|hund[a-zäöüß]*|katze|kätzchen|kater|vogel[a-zäöüß-]*|löwe[a-zäöüß]*|elefant[a-zäöüß]*|zebra|tiger|eule|papagei|kuh|adler|welpe|weisswedelhirsch|schmetterling|hochlandrind|einhörner|fisch|affe|puppy|peacock|tigerblick)(?![a-zäöüß])"
      ],
      "titel_nicht": [
       "frau|hände"
@@ -59,7 +59,7 @@
   },
   {
    "handle": "mal-zeichenbedarf",
-   "titel": "Malen & Zeichnen: Farben, Pinsel & Vorlagen",
+   "titel": "Farben, Pinsel & Zeichenbedarf",
    "g_prefix": [
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts",
     "Office Supplies"
@@ -107,7 +107,7 @@
   },
   {
    "handle": "bastelwerkzeug-schneiden-kleben",
-   "titel": "Bastelwerkzeug: Scheren, Kleber & Co",
+   "titel": "Bastelwerkzeug & Scheren",
    "g_prefix": [
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools",
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Craft Organization"
@@ -144,7 +144,10 @@
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits",
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Jewelry Making Kits"
    ],
-   "beschreibung": "Kunstleder, Lederimitat und Wildlederimitat zum Beziehen und Basteln sowie Werkzeug zum Schneiden, Prägen und Stechen von Leder."
+   "beschreibung": "Kunstleder, Lederimitat und Wildlederimitat zum Beziehen und Basteln sowie Werkzeug zum Schneiden, Prägen und Stechen von Leder.",
+   "titel_nicht": [
+    "lederglas"
+   ]
   },
   {
    "handle": "kerzen-seifenformen",
@@ -203,7 +206,7 @@
   },
   {
    "handle": "handarbeitssets-sticken-haekeln",
-   "titel": "Handarbeitssets: Sticken, Häkeln & Nähen",
+   "titel": "Stick-, Häkel- & Nähsets",
    "g_prefix": [
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits > Needlecraft Kits",
     "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Frames, Hoops & Stretchers",
@@ -320,7 +323,6 @@
     "Home & Garden > Linens",
     "Electronics",
     "Office Supplies",
-    "Luggage",
     "Home & Garden > Decor > Artificial Flora",
     "Home & Garden > Household Supplies"
    ],
@@ -412,6 +414,7 @@
    "handle": "naehen-sticken-stricken-gruppe",
    "kinder": [
     "stoffe-meterware",
+    "kunstleder-lederhandwerk",
     "handarbeitssets-sticken-haekeln",
     "naehmaschinen-naehzubehoer",
     "garn-wolle-nadeln"
@@ -449,7 +452,7 @@
  ],
  "ausserhalb": [
   {
-   "text": "Saison-Titel (127 Produkte): Titel mit Weihnachts-, Halloween-, Advents-, Oster-, Valentins-, Kürbis-, Christbaum- oder Lebkuchen-Wörtern sind aus dem Universum geschnitten (Party Supplies 79, Arts & Crafts 34, Wreaths & Garlands 8, Gift Giving 4, Model Making 1, Artificial Flora 1). Sie bleiben in den bestehenden Saison-Collections (weihnachten-2026, halloween). Einzige Ausnahme: 4 Weihnachts-Geschenkbeutel stehen in «Geschenkverpackung & Boxen», weil sie Verpackung sind.",
+   "text": "Saison-Titel (127 Produkte): Titel mit Weihnachts-, Halloween-, Advents-, Oster-, Valentins-, Kürbis-, Christbaum- oder Lebkuchen-Wörtern sind aus dem Universum geschnitten (Party Supplies 79, Arts & Crafts 34, Wreaths & Garlands 8, Gift Giving 4, Model Making 1, Artificial Flora 1). Diese bleiben in den bestehenden Saison-Collections (weihnachten-2026, halloween). Ausnahme (Gegenleser-Messung): 20 Produkte mit einem dieser Saison-Wörter im Titel stehen trotzdem in den Sachkategorien, weil deren Regeln Saison-Wörter nicht ausschliessen und die Ware dort der Art nach hingehört: Geschenkverpackung & Boxen 4 (Weihnachts-Geschenkbeutel und -taschen), Bastelsets & DIY-Kits 5, Malen nach Zahlen 3, Bänder, Borten & Verzierungen 3, Stick-, Häkel- & Nähsets 3 (Weihnachtskissen-Stickset, Christbaumschmuck-Set, Kürbis-Nähset), Kerzen- & Seifenformen 1 (Samichlaus-Form), Stoffe & Meterware 1.",
    "beispiele": [
     "Weihnachtskugeln – Antik-Look",
     "Halloween Totenkranz-Dekoration",
@@ -458,7 +461,7 @@
    ]
   },
   {
-   "text": "Fortura-Ware (87 Produkte der Google-Gruppe Arts & Entertainment tragen den Sperr-Tag fortura): messen.mjs nimmt sie automatisch aus. Hier liegt die eigentliche Partyware: der Tag ballone trägt 28 aktive Produkte, alle gesperrt; dazu Luftballons, Girlanden, Luftschlangen, Discokugeln und Konfetti. Sie gehören zu den Fortura-Collections (Kostüme & Party) und sind nicht Teil dieser Aufgabe.",
+   "text": "Fortura-Ware (87 Produkte der Google-Gruppe Arts & Entertainment tragen den Sperr-Tag fortura): messen.mjs nimmt sie automatisch aus. Hier liegt die eigentliche Partyware: der Tag ballone trägt 28 aktive Produkte, alle gesperrt; dazu Luftballons, Girlanden, Luftschlangen, Discokugeln und Konfetti. Diese gehören zu den Fortura-Collections (Kostüme & Party) und sind nicht Teil dieser Aufgabe.",
    "beispiele": [
     "Luftballons gold · 100 Stück",
     "Ballongirlande in rosé-gold",
@@ -487,7 +490,7 @@
    ]
   },
   {
-   "text": "Diamond Painting ohne Tag diamond-painting (24 Produkte: 12 Mosaic Kits und 12 Titel mit Diamanten ohne Produktart): die bestehende Kategorie diamond-painting (203 aktive, alle 203 Titel nennen Diamond, Diamant, Edelstein oder Strass) ist sauber, aber unvollständig. Lösung ist der Tag, keine neue Kategorie; Liste in /tmp/taxo_b/hobby-party/diamond_ohne_tag.txt.",
+   "text": "Diamond Painting ohne Tag diamond-painting (24 Produkte): die bestehende Kategorie diamond-painting (203 aktive, alle 203 Titel nennen Diamond, Diamant, Edelstein oder Strass) ist sauber, aber unvollständig. Lösung ist der Tag, keine neue Kategorie. Belegt ist die Zugehörigkeit bei 14 Produkten: 12 mit der Google-Klasse Mosaic Kits (CJ führt dort Diamond Painting) und 2 mit «Diamanten-Malerei» bzw. «Diamanten-Kreuzstich» im Titel. Bei den übrigen 10 (z. B. «Resin-Diamant-Block», «Glitzeraffe», «Turteldiamanten», «Diamanten-Design», «Edelstein-Bild für Baum») belegt der Titel die Produktart nicht: erst das Bild prüfen, dann taggen (Regel «Nie raten»). Liste /tmp/taxo_b/hobby-party/diamond_ohne_tag.txt.",
    "beispiele": [
     "Diamant-Mosaik-Schlüsselanhänger - Adler-Muster",
     "Diamond-Painting-Stift mit LED-Licht, wiederaufladbar",
@@ -505,17 +508,18 @@
    ]
   },
   {
-   "text": "Titel ohne Produktart (27 Produkte mit der Google-Klasse Arts & Crafts ohne Unterklasse und nur einem Motiv oder Namen im Titel, davon 4 mit «Stickerei» im Titel): ob Diamond-Painting-, Kreuzstich- oder Malen-nach-Zahlen-Set, belegt der Titel nicht. Nicht geraten, bis die Titel überarbeitet sind (Skill titel-wahrheit).",
+   "text": "Titel ohne Produktart (28 Produkte mit der Google-Klasse Arts & Crafts ohne Unterklasse und nur einem Motiv oder Namen im Titel, davon 4 mit «Stickerei» im Titel und 1 mit «Artifizielles Lederglas», das Material und Art nicht belegt und deshalb nicht in «Kunstleder & Lederhandwerk» steht): ob Diamond-Painting-, Kreuzstich- oder Malen-nach-Zahlen-Set, belegt der Titel nicht. Nicht geraten, bis die Titel überarbeitet sind (Skill titel-wahrheit).",
    "beispiele": [
     "Leopard und ihr Junges",
     "Regenachtstrasse",
     "Panda im Schaukelstuhl",
     "Blumenstickerei",
-    "Wohnzimmer-Quadrat-Stickerei"
+    "Wohnzimmer-Quadrat-Stickerei",
+    "Artifizielles Lederglas"
    ]
   },
   {
-   "text": "Einzelne Deko-Artikel mit der Google-Klasse Arts & Crafts oder Party Supplies (20 Produkte), die weder eine Ornament-/Figuren- noch eine Blumen-Regel trifft: Kühlschrankmagnete, Windfahne, Schmuckkästchen, Kerzenhalter, Hochzeitskleid-Modell, Baby-Mobile u. a. Sie gehören zu Wohnen (deko-objekte-accessoires) oder Garten; dazu 1 Fee-Hocker. Darunter 2 Hobby-Artikel ohne passende Google-Unterklasse: «Häkel-Set für dekorativen Pflanzen-Anhänger» und «Faltbarer Multi-Ständer für Leuchtplatten» (Diamond Painting). Ausserdem liegen 3 Garten-Deko-Artikel in haus-bau.json (gartendeko-windspiele 2, garten-aussenleuchten 1) und 1 Kinderkleber in spielzeug.json (kinder-malen-basteln); sie stehen in der Zählung unter «andere Bereichsdateien».",
+   "text": "Einzelne Deko-Artikel mit der Google-Klasse Arts & Crafts oder Party Supplies (20 Produkte), die weder eine Ornament-/Figuren- noch eine Blumen-Regel trifft: Kühlschrankmagnete, Windfahne, Schmuckkästchen, Kerzenhalter, Hochzeitskleid-Modell, Baby-Mobile u. a. Diese gehören zu Wohnen (deko-objekte-accessoires) oder Garten; dazu 1 Fee-Hocker. Darunter 2 Hobby-Artikel ohne passende Google-Unterklasse: «Häkel-Set für dekorativen Pflanzen-Anhänger» und «Faltbarer Multi-Ständer für Leuchtplatten» (Diamond Painting). Ausserdem liegen 3 Garten-Deko-Artikel in haus-bau.json (gartendeko-windspiele 2, garten-aussenleuchten 1) und 1 Kinderkleber in spielzeug.json (kinder-malen-basteln); sie stehen in der Zählung unter «andere Bereichsdateien».",
    "beispiele": [
     "Kühlschrankmagnet Bösewicht mit Kleeblatt",
     "Garten-Windfahne aus Metall",
@@ -547,21 +551,26 @@
   }
  ],
  "hinweise": [
-  "ABDECKUNG: Universum 1 379 Produkte (Rohuniversum 1 506 aus der Google-Gruppe «Arts & Entertainment» sowie Home & Garden > Decor > Artificial Flora, Dried Flowers und Wreaths & Garlands, minus 127 Produkte mit Saison-Wörtern im Titel). messen.mjs zählt die neuen Kategorien: 712 (51,6 %). Dazu 493 Produkte, die nur in den eingeordneten bestehenden Kindern liegen (Tag-Zugehörigkeit, gemessen mit /tmp/taxo_b/hobby-party/coverage.mjs): zusammen 1 205 (87,4 %). Rest 174 (12,6 %) steht mit Grund in «ausserhalb». party-deko-ch hat keine reine Tag-Regel und ist nicht eingerechnet.",
-  "STRUKTUR: 18 neue Kategorien in 6 Gruppen mit 3, 6, 4, 3, 2 und 6 Kindern; dazu 4 eingeordnete bestehende Kinder (diamond-painting, sticker-aufkleber, notizbuecher-journaling, modellbau) und 2 bestehende Verweise (party-deko-ch, hochzeitsgeschenke). Die neuen Kategorien enthalten 746 verschiedene Produkte ohne jede Überlappung. 8 Unterfilter-Chips in 4 Kategorien, jeder mit mindestens 15 Treffern. Die Gruppe «Musik» hat nur 2 Kinder, weil der Katalog nur 52 Produkte der Google-Klassen «Musical Instruments» und «Musical Instrument & Orchestra Accessories» hergibt.",
+  "GEGENLESUNG (unabhängig, 27.10.2026): Ausgangsfassung vom 26.10. gegen den Katalog /tmp/katalog_taxo.json (56 620 aktive Produkte) gemessen, nicht dem Vorbefund vertraut. Methode: alle 746 Mitgliedertitel ganz gelesen (nicht Stichprobe); alle 174 Titel der Lücke (_rest) und alle Titel der vier eingeordneten Kinder (notizbuecher 36 und modellbau 34 ganz, diamond-painting und sticker-aufkleber über Kennwort je Titel); Google-Klassen-Tabelle des Universums; rund 20 Stichwort-Greps gegen den ganzen Katalog (Malerei, Basteln, Perlen, Instrumente, Party, Geschenkverpackung, Stoffe, Garn und Nadeln, Harz und Formen, Kerzen, Leder, Bänder, Kunstblumen, Ornamente, Brauen, Sammeln, Zauber); jede Regex-Alternative einzeln; alle Überlappungen gegen die 12 anderen Bereichsdateien; die Zählungen in «ausserhalb» und «hinweise» nachgerechnet (Universum 1 379, Saison 127, Fortura 87, ballone 28, Ersatz-Zahlen für naehen/harz/malen-nach-zahlen stimmten). Korrekturen: Lederglas ausgeschlossen; Geschenktaschen der Klasse Luggage & Bags aufgenommen (Geschenkverpackung 16 auf 18); Chip «Tiere» um Puppy, Peacock, Tigerblick ergänzt (32 auf 35); drei Titel mit Doppelpunkt auf die Schreibweise «A, B & C» gebracht; Kunstleder zusätzlich in die Gruppe Nähen; falsche Aussagen zu Saison-Titeln (20 statt 4), Retag der Diamond-Painting-Titel (14 belegt statt 24), veralteter Doppelungs-Hinweis zu wohnen.json und zum Prüfskript tote.mjs berichtigt. Nicht lösbar in dieser Datei: Dublette zu wohnen:figuren-skulpturen, Sammelbecken party-deko-ch, falsch klassierte Instrumente.",
+  "ABDECKUNG: Universum 1 379 Produkte (Rohuniversum 1 506 aus der Google-Gruppe «Arts & Entertainment» sowie Home & Garden > Decor > Artificial Flora, Dried Flowers und Wreaths & Garlands, minus 127 Produkte mit Saison-Wörtern im Titel). messen.mjs zählt die neuen Kategorien: 711 (51,6 %). Dazu 493 Produkte, die nur in den eingeordneten bestehenden Kindern liegen (Tag-Zugehörigkeit, gemessen mit /tmp/taxo_b/hobby-party/coverage.mjs): zusammen 1 204 (87,3 %). Rest 175 (12,7 %) steht mit Grund in «ausserhalb». party-deko-ch hat keine reine Tag-Regel und ist nicht eingerechnet.",
+  "STRUKTUR: 18 neue Kategorien in 6 Gruppen mit 3, 6, 5, 3, 2 und 6 Kindern («Kunstleder & Lederhandwerk» steht zusätzlich als Verweis in «Nähen, Sticken & Stricken», weil Kunstleder wie die Stoffe als Meterware verkauft wird); dazu 4 eingeordnete bestehende Kinder (diamond-painting, sticker-aufkleber, notizbuecher-journaling, modellbau) und 2 bestehende Verweise (party-deko-ch, hochzeitsgeschenke). Die neuen Kategorien enthalten 747 verschiedene Produkte ohne jede Überlappung. 8 Unterfilter-Chips in 4 Kategorien, jeder mit mindestens 15 Treffern. Die Gruppe «Musik» hat nur 2 Kinder, weil der Katalog nur 52 Produkte der Google-Klassen «Musical Instruments» und «Musical Instrument & Orchestra Accessories» hergibt.",
   "MENÜVORSCHLAG (Entscheid beim Besitzer): Gruppen 1 bis 4 («Malen, Zeichnen & Mosaik», «Basteln & Verzieren», «Nähen, Sticken & Stricken», «Sticker, Journaling & Modelle») als Unterpunkte von «Wohnen & Garten > Basteln & DIY», das heute eine flache Liste ist (Malen nach Zahlen, Diamond Painting, Notizbücher & Journaling, Nähen, Sticken & Stricken, Harz & Giessformen, Modellbau & Sammelfiguren). Gruppe 6 «Party, Deko & Geschenk» unter «Sport & Party» anstelle des flachen Punkts «Partydeko & Ballone» (der bleibt als Kind). Gruppe 5 «Musik» hat heute keinen Menüplatz: neuer Punkt unter «Sport & Party» oder neben «Kopfhörer & Audio» unter «Elektronik». Die Saison-Collections weihnachten-2026 und halloween sowie «Kostüme & Party» bleiben unverändert.",
   "ersetzt: malen-nach-zahlen (Tag malen-nach-zahlen, 68 aktiv). Alle 68 stehen in der neuen Kategorie «Malen nach Zahlen» (163 Produkte der Google-Klasse Drawing & Painting Kits ohne die drei Zeichen- und Aquarell-Sets); bei 95 fehlt der alte Tag. Beim Go-Live Tag und Menüeintrag der alten Kategorie entfernen.",
   "ersetzt: harz-giessformen (Tag sort-harz, 52 aktiv). 36 davon stehen in den neuen Kategorien «Kerzen- & Seifenformen» (21) und «Epoxidharz, Pigmente & Giessformen» (16), 16 (31 %) gehören nicht dorthin: Harz-Deko (Skulpturen, Anhänger, Ornamente; 4 davon jetzt in «Ornamente, Anhänger & Dekofiguren»), ein Nachtlicht, ein Duschvorhanghaken, eine Tastenkappe, ein Stoff mit Pigmentdruck, ein Stifthalter, ein Tattoo-Farbmischer, eine Stickvorlage und Weihnachts-Deko aus Harz. Die Altkategorie ist ein Sammelbecken; beim Go-Live Tag und Menüeintrag entfernen.",
   "ersetzt: naehen-sticken-stricken (Tag sort-naehen, 243 aktiv). 235 stehen in den vier neuen Kategorien (Stoffe, Handarbeitssets, Nähmaschinen & Nähzubehör, Garn), 5 sind gesperrt (fortura: Leinwand- und Dekostoff-Artikel), 2 stehen in «Bastelwerkzeug» (Aufbewahrungsboxen), 1 (Diamond-Painting-Aufbewahrungsbox) in keiner neuen Kategorie. Die vier neuen Kategorien enthalten 261 Produkte, 26 davon ohne den alten Tag. Die Gruppe «Nähen, Sticken & Stricken» ersetzt die Einzelkategorie im Menü.",
-  "ersetzt: geschenkverpackung (Titelregel «Geschenkpapier/-tüte/-beutel/-box/-band/-anhänger/-schleife»; 40 aktive Treffer im Katalog). Nur 9 sind Verpackung und stehen in «Geschenkverpackung & Boxen»; 30 sind Produkte MIT Geschenkbox im Titel (Schmuck, Deko, Kosmetik, Spielzeug, Küche), 1 ist gesperrt (fortura). Die neue Kategorie enthält 16 Produkte, davon 4 Weihnachts-Geschenkbeutel; ohne sie wären es 12 und die Kategorie fiele unter die Schwelle.",
-  "party-deko-ch («Party & Deko», Typ «Partydeko & Ballone» oder Tag partydeko, 322 aktive Produkte) ist als bestehender Verweis in Gruppe 6 eingeordnet. 96 sind Fortura-Ware (gesperrt, hier nicht messbar), von den übrigen 226 tragen 163 (72 %) ein Saison-Wort im Titel (Weihnacht, Christ, Advent, Halloween, Schneemann, Ostern, Kürbis, Lebkuchen, Tannen, Valentin, Santa, Rentier). Vorschlag für den Go-Live: nur den Typ «Partydeko & Ballone» führen und die Saison-Ware den Saison-Collections überlassen.",
-  "diamond-painting (Tag, 203 aktive) ist sauber, aber unvollständig: 24 Diamond-Painting-Produkte tragen den Tag nicht (Liste /tmp/taxo_b/hobby-party/diamond_ohne_tag.txt). Tag setzen statt neue Kategorie. notizbuecher-journaling (36): 10 tragen auch den Tag diamond-painting und stehen so in Gruppe 1 und Gruppe 4 (bewusster Verweis); computer.json meldet zusätzlich eine Überschneidung mit kalender-planer.",
-  "DOPPELUNGEN mit anderen Bereichsdateien (gemessen mit allen Kategorie-Regeln in bereiche/): 8 Produkte mit spielzeug:kinder-malen-basteln (Titel mit «Kinder»: 3 Malen nach Zahlen, 2 Bastelwerkzeug, 2 Handarbeitssets, 1 Nähzubehör); 16 Produkte von «Kunstblumen, Kränze & Girlanden» auch in wohnen:deko-objekte-accessoires (12) und wohnen:saison-weihnachtsdeko (4; deren Regel nimmt alle Wreaths & Garlands, auch Sonnenblumen- und Tulpenkränze ohne Saisonbezug); 1 Produkt von «Ornamente, Anhänger & Dekofiguren» auch in haus-bau:gartendeko-windspiele. Vorschlag: in wohnen.json bei deko-objekte-accessoires Artificial Flora und Dried Flowers ausnehmen und bei saison-weihnachtsdeko Kränze ohne Saison-Wort ausschliessen. «Malen & Zeichnen» enthält 8 Produkte, die schon sort-Tags tragen (u. a. Schreibwaren & Stifte): Zeichenstifte, Marker und Staffelei, bewusste Doppelung mit computer.json.",
-  "KNAPPE KATEGORIEN (unter 20 Treffer): «Epoxidharz, Pigmente & Giessformen» 16, «Geschenkverpackung & Boxen» 16, «Bastelsets & DIY-Kits» 17, «Partyzubehör & Lichteffekte» 17, «Musikinstrumente» 18. Fällt eine unter 15, wird sie nicht angelegt und ihre Produkte wandern nach «ausserhalb». Echte Partyware (Ballons, Luftschlangen, Girlanden, Konfetti, Discokugeln) trägt den Sperr-Tag fortura und ist nicht messbar; «Partyzubehör & Lichteffekte» bildet nur den nicht gesperrten Rest ab.",
+  "ersetzt: geschenkverpackung (Titelregel «Geschenkpapier/-tüte/-beutel/-box/-band/-anhänger/-schleife»; 40 aktive Treffer im Katalog). Nur 9 sind Verpackung und stehen in «Geschenkverpackung & Boxen»; 30 sind Produkte MIT Geschenkbox im Titel (Schmuck, Deko, Kosmetik, Spielzeug, Küche), 1 ist gesperrt (fortura). Die neue Kategorie enthält 18 Produkte, davon 4 Weihnachts-Geschenkbeutel und -taschen und 2 Geschenktaschen mit der Google-Klasse Luggage & Bags («Broschen-Geschenktasche», «Personalisierte bestickte Geschenktasche 50×70 cm»; sie fehlten, solange «Luggage» in g_nicht stand); ohne die 4 Weihnachts-Stücke wären es 14 und die Kategorie fiele unter die Schwelle.",
+  "party-deko-ch («Party & Deko», Typ «Partydeko & Ballone» oder Tag partydeko, 322 aktive Produkte) ist als bestehender Verweis in Gruppe 6 eingeordnet. 96 sind Fortura-Ware (gesperrt, hier nicht messbar), von den übrigen 226 tragen 163 (72 %) ein Saison-Wort im Titel (Weihnacht, Christ, Advent, Halloween, Schneemann, Ostern, Kürbis, Lebkuchen, Tannen, Valentin, Santa, Rentier). Vorschlag für den Go-Live: nur den Typ «Partydeko & Ballone» führen und die Saison-Ware den Saison-Collections überlassen. Gegenleser-Messung der übrigen Ware: Typ «Partydeko & Ballone» 316 Produkte (96 gesperrt), Tag partydeko 263; von den rund 60 nicht gesperrten Produkten ohne Saison-Wort gehören mindestens 13 nicht zu Party und Deko (Teig- und Backformen, Kuchen-Etagere, Kerzenformen und eine Geburtstagskerze, Schmuckablagen, Wandleuchte, Wanddeko, Baby-Mobile, Fledermaus-Lampe, Geschenkbox mit Spielfiguren). Die Collection bleibt ein Sammelbecken: als Kind nur mit der Typ-Regel und einem Ausschluss dieser Warengruppen führen.",
+  "diamond-painting (Tag, 203 aktive) ist sauber, aber unvollständig: 14 belegte Diamond-Painting-Produkte (12 Mosaic Kits, 2 mit «Diamanten-Malerei»/«-Kreuzstich» im Titel) tragen den Tag nicht, dazu 10 weitere Titel mit «Diamanten», bei denen die Produktart unbelegt ist (Liste /tmp/taxo_b/hobby-party/diamond_ohne_tag.txt). Tag setzen statt neue Kategorie, bei den 10 erst nach Bildprüfung. notizbuecher-journaling (36): 12 sind Diamond-Painting-Notizbücher, 10 davon tragen auch den Tag diamond-painting und stehen so in Gruppe 1 und Gruppe 4 (bewusster Verweis); computer.json meldet zusätzlich eine Überschneidung mit kalender-planer.",
+  "DOPPELUNGEN mit anderen Bereichsdateien (Gegenleser-Messung am 27.10.2026 mit allen Kategorie-Regeln in bereiche/): 8 Produkte mit spielzeug:kinder-malen-basteln (Titel mit «Kinder»: 3 Malen nach Zahlen, 2 Bastelwerkzeug, 2 Handarbeitssets, 1 Nähzubehör); 1 Produkt von «Ornamente, Anhänger & Dekofiguren» auch in haus-bau:gartendeko-windspiele (Windmühlen-Gartenstatue). Mit wohnen.json gibt es keine Überlappung mehr (deko-objekte-accessoires nimmt Artificial Flora und Dried Flowers aus, saison-weihnachtsdeko lässt Kränze und Girlanden ohne Saison-Wort aus), der frühere Vorschlag entfällt. «Farben, Pinsel & Zeichenbedarf» enthält 8 Produkte, die schon sort-Tags tragen (u. a. Schreibwaren & Stifte): Zeichenstifte, Marker und Staffelei, bewusste Doppelung mit den vorhandenen Kindern sort-buero und sort-schreibwaren in computer.json.",
+  "KNAPPE KATEGORIEN (unter 20 Treffer): «Epoxidharz, Pigmente & Giessformen» 16, «Geschenkverpackung & Boxen» 18 (14 ohne die Weihnachts-Beutel), «Bastelsets & DIY-Kits» 17 (12 ohne die 5 Weihnachts-Kits), «Partyzubehör & Lichteffekte» 17, «Musikinstrumente» 18. Fällt eine unter 15, wird sie nicht angelegt und ihre Produkte wandern nach «ausserhalb». Echte Partyware (Ballons, Luftschlangen, Girlanden, Konfetti, Discokugeln) trägt den Sperr-Tag fortura und ist nicht messbar; «Partyzubehör & Lichteffekte» bildet nur den nicht gesperrten Rest ab.",
   "FALSCHE GOOGLE-KLASSE: Von 242 Produkten mit der Klasse «Hardware > Tools» ohne Unterklasse haben 14 Kreativ-Wörter im Titel. 6 stehen in «Epoxidharz, Pigmente & Giessformen» (Epoxykleber, UV-Harzkleber, Pigmentpulver, Blumen-Pigment, Harz-Schmuckfarbe, Polierpaste), 6 bleiben ohne Platz (Diamant-Malerei-Zubehör-Set, Papierwickler für Bastelarbeiten, Rubbelbuch mit Stift, Glitzerpulver und Pailletten, Einweg-Spender für Schmuck-Bastelarbeiten, Panda Leinwandposter), 2 sind keine Kreativ-Artikel (Wellenscheibe, Schleifkopf).",
-  "FREMDKÖRPER (Lesung): alle 746 Titel der 18 neuen Kategorien in der Endfassung gelesen, dazu Verdachtswort-Greps je Kategorie. 1 unklar («Artifizielles Lederglas» in «Kunstleder & Lederhandwerk»), 2 Grenzfälle («Zeichenstift-Set für Schule und Büro» in «Malen & Zeichnen: Farben, Pinsel & Vorlagen», «Kreative Cartoon Meow Studenten-Glückwunschkarte» in «Partyzubehör & Lichteffekte»): 3 von 746 (0,4 %). Lückenseite: alle 174 Produkte des Universums ohne neue Kategorie gelesen und in «ausserhalb» nach Ursache geordnet. Die bestehenden Kinder wurden am Titelwort geprüft: diamond-painting 203, sticker-aufkleber 262, notizbuecher-journaling 36 und modellbau 34 ohne Fremdkörper.",
-  "REGELN: alle 191 Regex-Alternativen wirken am Katalog (tote Alternativen entfernt; Prüfskript /tmp/taxo_b/hobby-party/tote.mjs meldet 0 tot). Titelregeln stehen nur dort, wo die Google-Klasse allein nicht trennt (Malen & Zeichnen, Kunstleder, Epoxidharz, Nähzubehör, Instrumenten-Zubehör, Geschenkverpackung, Kunstblumen, Partyzubehör, Ornamente); alle anderen Kategorien folgen allein der Google-Klasse (CJ ordnet diese Klassen hier verlässlich: Drawing & Painting Kits trägt ausschliesslich Malsets, Textiles ausschliesslich Stoffe).",
+  "DUBLETTE (Entscheid beim Zusammenführen, in dieser Datei nicht lösbar): «Ornamente, Anhänger & Dekofiguren» (31) ist inhaltlich dasselbe wie wohnen:figuren-skulpturen («Figuren & Skulpturen», Google-Klasse Decor > Figurines, 38 Produkte) und teils wohnen:deko-objekte-accessoires; die Warenart ist gleich, nur die Google-Klasse des Lieferanten ist eine andere (Arts & Crafts bzw. Party Supplies statt Decor). Etwa die Hälfte (16 von 31 nach Titelwort) sind Figuren, Statuen oder Skulpturen (z. B. «Pferdeskulptur aus Harz», «Maitreya Buddha Statue», «Nashorn-Dekoration aus Acryl»); Gegenstück im Wohnbereich etwa «Korallenornament – europäisch-geometrisch» zu «Korallen-Ornament mit Kristallbasis». Ein Kunde findet gleiche Ware in zwei Menüzweigen. Vorschlag: wohnen.json nimmt die Figuren aus Arts & Crafts und Party Supplies in «Figuren & Skulpturen» auf, hier bleiben nur Ornamente und Anhänger (15) unter einem Titel ohne «Dekofiguren», oder die Kategorie entfällt ganz.",
+  "HOCHZEITSGESCHENKE (vorhandenes Kind, Tag geschenkwelt-hochzeit, 190 aktive): eine Geschenkauswahl und kein Warentyp. Nach Google-Klasse 76 Dekoartikel (v. a. Aroma-Diffuser, Vasen, Fotorahmen, Kerzenhalter), 43 Bettwäsche und Decken, 33 Küchenartikel (Dekanter, Tassen-Sets), 8 Haushaltsgeräte, 6 Spielzeug; kaum Party- oder Hochzeitsware. Als Kind unter «Party, Deko & Geschenk» nur als Geschenk-Verweis tragbar, nicht als Hochzeitsdeko.",
+  "FEHLENDE ZUORDNUNG durch falsche Google-Klasse (nicht über g_prefix lösbar): Instrumente und Zubehör liegen in Elektronik- und Taschen-Klassen und stehen heute in sort-pc-komponenten, in einer Taschen-Kategorie oder in keiner Kategorie: «Faltbares E-Keyboard mit 49 Tasten & Lautsprecher», «Verstellbarer X-Keyboardständer für E-Orgel», «USB-MIDI-Adapterkabel für elektronische Keyboards», «Overload Sound Pedal für E-Gitarre», «Gitarren-Gig-Tasche», «Kleine Umhängetasche für Musikinstrumente», «Akkordeon-Tasche mit doppelten Schultergurten» (7 Produkte). Dazu 1 Malset in Office Supplies: «Malen nach Zahlen – Van Gogh Sonnenblumen» (trägt sort-buero). Vorschlag: einmalig von Hand umhängen oder beim Retag eine Titelregel ohne g_prefix (gitarr|ukulele|keyboard-ständer|MIDI…) mit g_nicht für Mode und Computer-Tastaturen bauen.",
+  "DUBLETTEN IM KATALOG (Titel, nicht Kategorie): «Strobe Licht-Set mit Fernbedienung» und «Strobe Light Set mit Fernbedienung» (beide in Partyzubehör & Lichteffekte) sind vermutlich dieselbe Ware (gleicher Titel bis auf die Sprache); «1cm Keramik Mosaik Fliesen für DIY-Projekte» und «1cm Keramik Mosaik Fliesen für DIY» ebenfalls (Letztere stehen in keiner Kategorie). «Kreuzstich-Stickbild für Ihr Wohnzimmer» (Stick-, Häkel- & Nähsets) spricht den Kunden mit «Ihr» an, was der Markenstimme widerspricht: bei der nächsten Titelrunde (Skill titel-wahrheit) mitnehmen.",
+  "FREMDKÖRPER (Lesung, vom Gegenleser wiederholt): alle 746 Titel der Ausgangsfassung der 18 neuen Kategorien ganz gelesen, dazu Verdachtswort-Greps je Kategorie. Befund: 1 unbelegt («Artifizielles Lederglas» in «Kunstleder & Lederhandwerk», jetzt per titel_nicht ausgeschlossen) und 5 Grenzfälle, die bleiben: «Zeichenstift-Set für Schule und Büro» (Farben, Pinsel & Zeichenbedarf; trägt schon sort-schreibwaren), «Büroschere mit elastischem Band» (Bastelwerkzeug & Scheren; Google: Craft & Office Scissors), «Kreative Cartoon Meow Studenten-Glückwunschkarte» (Partyzubehör), «Farbige Trinkhalme aus Borosilikatglas» (Typ im Shop «Küche & Bar») und «Auslaufsichere Silikon-Stöpsel für Trinkhalme» (beide Partyzubehör; ohne sie fiele die Kategorie auf genau 15). Endfassung 747 Titel: 0 unbelegt, 5 Grenzfälle (0,7 %). Lückenseite: alle 175 Produkte des Universums ohne neue Kategorie gelesen. Die bestehenden Kinder wurden am Titelwort geprüft: diamond-painting 203 und sticker-aufkleber 262 (jeder Titel nennt das Kennwort), notizbuecher-journaling 36 und modellbau 34 ganz gelesen, ohne Fremdkörper; party-deko-ch und hochzeitsgeschenke dagegen sind Sammelbecken (siehe dort und unten).",
+  "REGELN: Titelregeln stehen nur dort, wo die Google-Klasse allein nicht trennt (Malen & Zeichnen, Kunstleder, Epoxidharz, Nähzubehör, Instrumenten-Zubehör, Geschenkverpackung, Kunstblumen, Partyzubehör, Ornamente); alle anderen Kategorien folgen allein der Google-Klasse (CJ ordnet diese Klassen hier verlässlich: Drawing & Painting Kits trägt ausschliesslich Malsets, Textiles ausschliesslich Stoffe). Tote Regex (Gegenleser-Messung, jede Alternative einzeln gegen den Katalog): 205 Regex-Alternativen in Kategorien, Chips und Universum, davon 1 ohne Treffer: «kunstblume» in titel_muss von «Kunstblumen, Kränze & Girlanden» (kein Titel des Katalogs nennt das Wort; bleibt als Kernbegriff stehen). Das früher genannte Prüfskript tote.mjs liegt nicht im Ordner; die Messung ist mit /tmp/taxo_b/hobby-party/gl/tote3.mjs und tote4.mjs wiederholbar. Einzelne g_nicht-Einträge (Absicherungen, z. B. Electronics, Household Supplies) treffen heute kein Produkt.",
   "ALT-COLLECTIONS: basteln-diy (Tag basteln, 1 030 aktive Produkte = die ganze Klasse Arts & Crafts) bleibt als Oberseite des Zweigs; bastel-diy (Titelregel «DIY», «Bastel» usw. ohne Wortgrenze, 638 laut Shop, nicht im Menü) und spielzeug-basteln (Titelregel, nicht im Menü) nicht weiterverwenden.",
-  "OFFEN (Entscheid beim Besitzer): Menüform und Platz für «Musik»; Retag der 24 Diamond-Painting- und 6 Sticker-Produkte; ein Platz in wohnen.json für die 31 Wand-, Foto-, Fenster- und Uhren-Artikel; Titelüberarbeitung der 27 Produkte ohne Produktart."
+  "OFFEN (Entscheid beim Besitzer): Menüform und Platz für «Musik»; Retag der 14 belegten Diamond-Painting- und 6 Sticker-Produkte (die 10 unbelegten «Diamanten»-Titel erst nach Bildprüfung); ein Platz in wohnen.json für die 31 Wand-, Foto-, Fenster- und Uhren-Artikel; Titelüberarbeitung der 28 Produkte ohne Produktart; Dublette «Ornamente, Anhänger & Dekofiguren» gegen wohnen:figuren-skulpturen; party-deko-ch nur noch mit Typ-Regel führen; 7 Instrument-Artikel und 1 Malen-nach-Zahlen-Set von Hand umhängen."
  ]
 }

@@ -50,7 +50,8 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(spritzschutz|bonsai|blumentopf|pflanz[a-zäöüß]*|hunde[a-zäöüß-]*|katzen[a-zäöüß-]*|kochfeld|pfannenring|[a-zäöüß-]*halter)(?![a-zäöüß])",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping|outdoor|fire maple"
    ],
    "beschreibung": "Bratpfannen, Woks und Crêpe-Pfannen aus Edelstahl, Gusseisen, Aluminium und mit Antihaft-Beschichtung — für Herd, Induktion und Gas.",
    "unterfilter": [
@@ -106,7 +107,8 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(bonsai|blumen-?topf|sandblumen|pflanz[a-zäöüß]*|[a-zäöüß-]*einsatz|fermentier[a-zäöüß-]*|wärmeleit[a-zäöüß-]*|[a-zäöüß-]*pressplatte|druckplatte|küchenhelfer|silikon-?deckel|gussform|dampfgarform)",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping|outdoor|fire maple"
    ],
    "beschreibung": "Kochtöpfe, Suppentöpfe, Milchtöpfe, Schmortöpfe, Gusseisen-Töpfe und komplette Kochgeschirr-Sets für Herd und Ofen.",
    "unterfilter": [
@@ -146,7 +148,8 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(blumen-?topf|schmuck[a-zäöüß-]*|vase|gesichts-?vase|diy-?kreationen)",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping"
    ],
    "beschreibung": "Kuchenformen, Springformen, Backbleche, Brotformen, Auflaufformen und Backmatten aus Silikon, Metall und Keramik.",
    "unterfilter": [
@@ -220,17 +223,6 @@
    "beschreibung": "Elektrische Tischgrills, Grillplatten sowie Crêpe- und Takoyaki-Geräte mit Heizplatte für drinnen, dazu Grillpfannen, Grillplatten aus Gusseisen und Edelstahl, Teppanyaki-Platten und Grillpressen für Herd und Induktion."
   },
   {
-   "handle": "campingkocher-outdoor-kocher",
-   "titel": "Campingkocher & Outdoor-Kocher",
-   "g_prefix": [
-    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves"
-   ],
-   "beschreibung": "Tragbare Gaskocher, Spirituskocher, Holzöfen und Kochsysteme für Camping, Wandern und Picknick.",
-   "titel_nicht": [
-    "gasgrill"
-   ]
-  },
-  {
    "handle": "schneidebretter-bretter",
    "titel": "Schneidebretter",
    "g_prefix": [
@@ -241,7 +233,8 @@
     "(^|[^a-zäöüß])(messerhalter)",
     "(^|[^a-zäöüß])(bento)",
     "(^|[^a-zäöüß])(besteck-?set)",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping|outdoor|fire maple"
    ],
    "beschreibung": "Schneidebretter und Küchenbretter aus Holz, Bambus, Kunststoff und Edelstahl — auch als Set, mit Saftrille oder doppelseitig nutzbar.",
    "unterfilter": [
@@ -395,15 +388,15 @@
     },
     {
      "handle": "siebe-muehlen-messbecher",
-     "titel": "Messbecher, Waagen & Thermometer",
+     "titel": "Messbecher, Thermometer & Timer",
      "titel_muss": [
-      "messbecher|messlöffel|thermometer|timer|waage|messhilfe"
+      "messbecher|messlöffel|thermometer|timer|messhilfe"
      ],
      "titel_nicht": []
     },
     {
      "handle": "siebe-muehlen-oelspender",
-     "titel": "Öl- & Essigspender",
+     "titel": "Öl- & Essigspender, Mörser",
      "titel_muss": [
       "öl|essig|sprüh|mörser|spender"
      ],
@@ -556,9 +549,11 @@
     "fritteuse[a-zäöüß]*|friteuse[a-zäöüß]*|fritür|air ?fryer|heissluft[a-zäöüß-]*|frittiertopf|grill[a-zäöüß]*|grillpfanne|grillplatte|kochfeld|induktions?-?(herd|kochfeld|platte)[a-zäöüß]*|induktionsherd|hot ?pot[a-zäöüß]*|shabu|teppanyaki|raclette|elektroherd|herdplatte|backofen|kastenofen|ofen",
     "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
     "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
-    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)",
+    "(^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)",
+    "(^|[^0-9])(12|24) ?v(?![a-zäöüß])|12v/24v"
    ],
-   "beschreibung": "Reiskocher, Dampfgarer, Eierkocher, Slow Cooker und elektrische Kochtöpfe für Reis, Eintöpfe, Eier und schonendes Garen."
+   "beschreibung": "Reiskocher, Dampfgarer, Eierkocher, Slow Cooker und elektrische Kochtöpfe für Reis, Eintöpfe und Eier sowie zum Dampfgaren."
   },
   {
    "handle": "waffeleisen-sandwichmaker-toaster",
@@ -590,7 +585,8 @@
     "reiskocher|eierkocher|eier-?roll|dampfgar[a-zäöüß]*|dampfkoch[a-zäöüß]*|dampftopf|schongarer|slow ?cooker|multikocher|schmortopf|(elektro|elektrischer?|mini)-?(koch)?topf|kochtopf|kochmaschine|kocher|gesundheitstopf",
     "(^|[^a-zäöüß])(zerkleiner|reiniger|wäscher|waschmaschine|ozon|abdeckung für|zubehör)",
     "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
-    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)"
+    "^(?!.*(räucher|air fryer|ofen-grillkorb|gasbrenner|sprühflasche|campingkocher|zerkleinerer|backform|küchen-thermometer|back-geschenkset|grillplatten-set)).*(grill|bbq|barbecue|holzkohle|feuerschale|lagerfeuer)",
+    "(^|[^0-9])(110|115|120) ?v(?![a-zäöüß])"
    ],
    "beschreibung": "Waffeleisen, Sandwichmaker, Toaster, Pancake- und Crêpe-Maker für das Frühstück und für Snacks am Tisch."
   },
@@ -669,7 +665,8 @@
    ],
    "g_nicht": [
     "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories",
-    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Outdoor Grill Accessories"
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Outdoor Grill Accessories",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Portable Cooking Stove Accessories"
    ],
    "beschreibung": "Zubehör und Ersatzteile für Küchengeräte: Silikon-Einsätze und Gitter für Heissluftfritteusen, Spülmaschinen-Körbe, Kühlschrank-Filter, Mixer-Ersatzteile und Schutzhüllen.",
    "titel_nicht": [
@@ -683,8 +680,7 @@
    "titel": "Küchen- & Feinwaagen",
    "g_prefix": [
     "Home & Garden > Kitchen & Dining > ",
-    "Hardware > Tools > Measuring",
-    "Office Supplies"
+    "Hardware > Tools > Measuring"
    ],
    "titel_muss": [
     "waage"
@@ -742,7 +738,8 @@
     }
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "(^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)"
    ]
   },
   {
@@ -782,9 +779,11 @@
      "handle": "bar-wein-cocktail",
      "titel": "Cocktail- & Bar-Zubehör",
      "titel_muss": [
-      "cocktail|shaker|bar-?set|eis|kühlstab|whisky|flachmann|zapfturm|sieb|messbecher|untersetzer"
+      "cocktail|shaker|bar-?set|(^|[^a-zäöüß])eis[a-zäöüß-]*|kühlstab|whisky|flachmann|zapfturm|sieb|messbecher|untersetzer"
      ],
-     "titel_nicht": []
+     "titel_nicht": [
+      "(^|[^a-zäöüß])eisen"
+     ]
     }
    ],
    "titel_nicht": [
@@ -878,7 +877,8 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(whisky[a-zäöüß-]*)",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping|outdoor|fire maple"
    ],
    "beschreibung": "Isolierte Thermobecher, Reisebecher, Trinkbecher mit Strohhalm und Coffee-to-go-Becher aus Edelstahl, Glas und Kunststoff.",
    "unterfilter": [
@@ -908,7 +908,8 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(feuerschale|sammelkarten|seifenschale|hartschale)",
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "camping|outdoor|fire maple"
    ],
    "beschreibung": "Speisetteller, Suppenteller, Schalen, Schüsseln und komplette Geschirrsets aus Keramik, Porzellan, Glas und Bambus.",
    "unterfilter": [
@@ -978,6 +979,28 @@
    ]
   },
   {
+   "handle": "besteck-essstaebchen",
+   "titel": "Besteck & Essstäbchen",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Tableware > Flatware"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "spork|picknick|camping|outdoor"
+   ],
+   "beschreibung": "Besteck-Sets, Gabeln, Löffel und Essstäbchen samt Stäbchenhaltern aus Edelstahl, Titan, Holz und Keramik.",
+   "unterfilter": [
+    {
+     "handle": "besteck-essstaebchen-sets",
+     "titel": "Besteck-Sets",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(set|sets|teilig)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
    "handle": "lunchboxen-kuehltaschen",
    "titel": "Lunchboxen & Kühltaschen",
    "g_prefix": [
@@ -1006,7 +1029,8 @@
     }
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)"
+    "(^|[^a-zäöüß])(kinder[a-zäöüß-]*|baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|kleinkind[a-zäöüß]*|kids?)",
+    "(^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)"
    ]
   },
   {
@@ -1106,7 +1130,8 @@
     "Home & Garden > Household Appliance Accessories > Vacuum Accessories"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(phototherapie)"
+    "(^|[^a-zäöüß])(phototherapie)",
+    "(^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)"
    ],
    "beschreibung": "Handstaubsauger, Akku-Staubsauger, Saugroboter und Zubehör wie Bürsten, Filter und Aufsätze für die Reinigung zuhause.",
    "unterfilter": [
@@ -1120,17 +1145,9 @@
     },
     {
      "handle": "staubsauger-handstaubsauger",
-     "titel": "Handstaubsauger & Akku-Sauger",
+     "titel": "Handstaubsauger & Zubehör",
      "titel_muss": [
-      "handstaubsauger|akku-|kabellos|mini|tragbar|handsauger|auto"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "staubsauger-zubehoer-teile",
-     "titel": "Zubehör & Ersatzteile",
-     "titel_muss": [
-      "zubehör|ersatz|adapter|akku|filter|beutel|bürste|aufsatz|schlauch|dyson|kit|bügel"
+      "^(?!.*roboter)"
      ],
      "titel_nicht": []
     }
@@ -1190,7 +1207,28 @@
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
-   "beschreibung": "Schubladen-Organizer, Ordnungsboxen, Kosmetik-Organizer und Hänge-Organizer für Schrank, Schublade, Bad und Schreibtisch."
+   "beschreibung": "Schubladen-Organizer, Ordnungsboxen und Hänge-Organizer für Schrank, Schublade, Bad und Schreibtisch."
+  },
+  {
+   "handle": "kosmetik-schmuck-organizer",
+   "titel": "Kosmetik- & Schmuck-Organizer",
+   "g_prefix": [
+    "Home & Garden > Household Supplies > Storage & Organization"
+   ],
+   "g_nicht": [
+    "Home & Garden > Household Supplies > Storage & Organization > Household Storage Containers",
+    "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+    "Home & Garden > Household Supplies > Storage & Organization > Storage Hooks & Racks",
+    "Home & Garden > Household Supplies > Storage & Organization > Household Storage Bags"
+   ],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(kosmetik[a-zäöüß-]*|make-?up[a-zäöüß-]*|schmink[a-zäöüß-]*|pinsel[a-zäöüß-]*|lippenstift[a-zäöüß-]*|nagellack[a-zäöüß-]*|beauty[a-zäöüß-]*|schmuck[a-zäöüß-]*)"
+   ],
+   "titel_nicht": [
+    "mahjong"
+   ],
+   "beschreibung": "Make-up-Organizer, Kosmetik-Boxen, Pinselhalter, Lippenstift- und Nagellack-Ständer sowie Schmuck-Organizer für Schminktisch, Bad und Schublade.",
+   "unterfilter": []
   },
   {
    "handle": "kleiderbuegel-schuhregale",
@@ -1211,7 +1249,8 @@
     "Home & Garden > Decor > Coat & Hat Racks"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(dartboard)"
+    "(^|[^a-zäöüß])(dartboard)",
+    "(^|[^a-zäöüß])[a-zäöüß-]*helm"
    ],
    "beschreibung": "Wandhaken, Hakenleisten, Kleiderhaken, Schlüsselhalter und Garderobenhalter zum Aufhängen — mit Klebepad oder zum Schrauben."
   },
@@ -1299,7 +1338,7 @@
     "Home & Garden > Bathroom Accessories > Shower Rods",
     "Home & Garden > Bathroom Accessories > Shower Curtain Rings"
    ],
-   "beschreibung": "Duschvorhänge mit Motiven und in Uni, dazu Duschstangen und Vorhangringe — wasserdicht und schimmelresistent."
+   "beschreibung": "Duschvorhänge mit Motiven und in Uni, dazu Duschstangen und Vorhangringe."
   },
   {
    "handle": "seifenspender-bad-accessoires",
@@ -1369,7 +1408,7 @@
    "g_prefix": [
     "Home & Garden > Linens & Bedding > Bedding > Pillows"
    ],
-   "beschreibung": "Kopfkissen, Nackenstützkissen, Memory-Schaum-Kissen, Seitenschläferkissen und Beinkissen für erholsamen Schlaf.",
+   "beschreibung": "Kopfkissen, Nackenstützkissen, Memory-Schaum-Kissen, Seitenschläferkissen und Beinkissen für das Bett und für unterwegs.",
    "unterfilter": [
     {
      "handle": "kopfkissen-memory-schaum",
@@ -1445,7 +1484,8 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(plüschkissen|heizschal|kissen in|reisekissen)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
-    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))",
+    "camping"
    ],
    "beschreibung": "Kuscheldecken, Wolldecken, Strickdecken, Sommerdecken, Kühldecken und Plaids für Sofa und Bett.",
    "unterfilter": [
@@ -1485,7 +1525,8 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(knüpfteppich-?set|diy)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
-    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))",
+    "schnüffel"
    ],
    "beschreibung": "Teppiche, Läufer, Küchenmatten und Fussmatten für Wohnzimmer, Kinderzimmer, Küche und Eingang."
   },
@@ -1619,7 +1660,7 @@
    "g_nicht": [
     "Home & Garden > Decor > Clocks > Alarm Clocks"
    ],
-   "beschreibung": "Wanduhren, Tischuhren und Standuhren aus Holz, Metall und Acryl — mit leisem Uhrwerk und in vielen Stilen.",
+   "beschreibung": "Wanduhren und Tischuhren aus Holz, Metall und Acryl in vielen Stilen.",
    "titel_nicht": [
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
@@ -1675,7 +1716,9 @@
     "Home & Garden > Decor > Wallpaper",
     "Home & Garden > Decor > Coat & Hat Racks",
     "Home & Garden > Decor > Lawn Ornaments & Garden Sculptures",
-    "Home & Garden > Decor > Fountains & Ponds"
+    "Home & Garden > Decor > Fountains & Ponds",
+    "Home & Garden > Decor > Artificial Flora",
+    "Home & Garden > Decor > Dried Flowers"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(vogel[a-zäöüß-]*|nistkasten|futterstation|futterhaus|uhrwerk|uhrenzeiger|federwelle|blechschild|messlatte|grössenmess[a-zäöüß]*)",
@@ -1687,7 +1730,7 @@
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
     "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
    ],
-   "beschreibung": "Dekoschalen, Deko-Tabletts, Kunstblumen, Buchstützen, Spieluhren, Spardosen, Windspiele und weitere Dekoobjekte für Regal, Tisch und Fensterbank."
+   "beschreibung": "Dekoschalen, Deko-Tabletts, Buchstützen, Spieluhren, Spardosen, Kühlschrankmagnete, Spiegel, Traumfänger und weitere Dekoobjekte für Regal, Tisch und Fensterbank."
   },
   {
    "handle": "saison-weihnachtsdeko",
@@ -1699,7 +1742,8 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(keksstempel|spielzeug|aufbewahrungstasse|wc-set)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
-    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))",
+    "^(?!.*(weihnacht|halloween|metall))(?=.*(kranz|girlande))"
    ],
    "beschreibung": "Weihnachtsdeko, Christbaumschmuck, Türkränze, Girlanden, Adventskalender und Halloween-Deko für die Festtage.",
    "unterfilter": [
@@ -1790,9 +1834,11 @@
     "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers"
    ],
    "titel_nicht": [
-    "(^|[^a-zäöüß])(luftreiniger)"
+    "(^|[^a-zäöüß])(luftreiniger)",
+    "(^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)",
+    "gesichts"
    ],
-   "beschreibung": "Luftbefeuchter für Zimmer, Schreibtisch und Auto — als Ultraschall-Vernebler mit Nachtlicht, Aroma-Funktion oder USB-Anschluss.",
+   "beschreibung": "Luftbefeuchter für Zimmer und Schreibtisch — als Ultraschall-Vernebler mit Nachtlicht, Aroma-Funktion oder USB-Anschluss.",
    "unterfilter": [
     {
      "handle": "luftbefeuchter-aroma",
@@ -1829,7 +1875,8 @@
    "titel_nicht": [
     "(^|[^a-zäöüß])(cpu|pc(?![a-zäöüß])|laptop|computer|rgb|sonnenschirm|trinkflasche|abluft|rohr[a-zäöüß-]*ventilator|küchen-rohr|delta)",
     "^(?=.*((^|[^a-zäöüß])(kinderzimmer[a-zäöüß-]*|kinder-?[a-zäöüß-]*|kids?|spielzeug[a-zäöüß-]*|stofftier[a-zäöüß-]*)))(?=.*((^|[^a-zäöüß])(zimmer|kissen|kissenbezug|decke|teppich|vorhang|deckenleuchte|nachtlicht|projektor|wandsticker|wandtattoo|wandbild|wanduhr|bettwäsche|spielteppich|schreibtisch|regal|badetuch|handtuch)(?![a-zäöüß])|(^|[^a-zäöüß])(aufbewahr[a-zäöüß]*|spielzeug-?aufbewahr[a-zäöüß]*|box|kiste|korb|beutel|behälter)|(regal)(?![a-zäöüß])|kinderzimmer))",
-    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))"
+    "^(?!.*(?:badetuch|badehandtuch))(?=.*((^|[^a-zäöüß])(baby[a-zäöüß-]*|babys|neugeboren[a-zäöüß]*|säugling[a-zäöüß]*|kleinkind[a-zäöüß]*|kinderbett)))(?=.*((kissen|decke|decken|nest|nestchen|matratze|schlafsack|pucktuch|swaddle|bett-?netz|babybett|wiege|schlafunterlage|bettchen|lagerung|kopfschutz|kopfkissen|schlafhilfe|krepp-tuch|mulltuch|tuch|bettdecke|essstuhl|hochstuhl|babybett|schlafpolster|bettbezug|bezug)(?![a-zäöüß])|(^|[^a-zäöüß])(anti-[a-zäöüß]+|schlaf[a-zäöüß]*|lagerung[a-zäöüß]*|reisebett[a-zäöüß]*)))",
+    "camping"
    ],
    "beschreibung": "Tischventilatoren, Standventilatoren, Deckenventilatoren, USB-Ventilatoren und Handventilatoren mit Sprühnebel für heisse Tage zuhause, im Büro und unterwegs.",
    "unterfilter": [
@@ -1860,9 +1907,10 @@
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(lampe?n?halter)",
-    "solar"
+    "solar",
+    "camping"
    ],
-   "beschreibung": "LED-Streifen, Lichterketten, Lichtervorhänge, Solar-Lichterketten und Steuergeräte für Ambiente-Licht in Wohnung, Garten und Fest."
+   "beschreibung": "LED-Streifen, Lichterketten, Lichtervorhänge sowie Controller und Dimmer für Ambiente-Licht in der Wohnung."
   }
  ],
  "gruppen": [
@@ -1874,8 +1922,7 @@
     "toepfe-kochgeschirr-sets",
     "backformen-backbleche",
     "kuechenformen-tortendeko",
-    "grillpfannen-elektrogrills",
-    "campingkocher-outdoor-kocher"
+    "grillpfannen-elektrogrills"
    ]
   },
   {
@@ -1893,7 +1940,7 @@
    ]
   },
   {
-   "titel": "Elektrische Küchengeräte",
+   "titel": "Küchengeräte",
    "handle": "kuechengeraete-gruppe",
    "kinder": [
     "mixer-entsafter-zerkleinerer",
@@ -1924,7 +1971,7 @@
    "kinder": [
     "teller-schalen-geschirrsets",
     "servierplatten-etageren",
-    "besteck",
+    "besteck-essstaebchen",
     "tischdecken-schuerzen",
     "lunchboxen-kuehltaschen"
    ]
@@ -1947,6 +1994,7 @@
     "koerbe-behaelter",
     "aufbewahrungsbeutel-taschen",
     "schubladen-organizer",
+    "kosmetik-schmuck-organizer",
     "kleiderbuegel-schuhregale",
     "haken-garderobenhalter",
     "regale-wandregale",
@@ -2064,27 +2112,20 @@
    ]
   },
   {
-   "text": "Im Universum, aber in keiner Kategorie dieser Datei, weil eine andere Bereichsdatei die Produkte trägt (85): haus-bau 44, spielzeug 37, unterhaltung 4. Aufgeschlüsselt nach der tragenden Kategorie: kindergeschirr-trinken 37, grills-grillzubehoer 16, garten-aussenleuchten 10, fliegengitter-insektenschutz-vorhaenge 6, pflanztoepfe-pflanzenzubehoer 6, smart-home-geraete 4, wasserhaehne-kuechenarmaturen 3, gartendeko-windspiele 2, wasserfilter-wasserspender 1.",
+   "text": "Im Universum, aber in keiner Kategorie dieser Datei, weil eine andere Bereichsdatei die Produkte trägt (197, Stand 27.10.2026 nach der Gegenlesung): sport 63, haus-bau 44, spielzeug 39, auto 30, hobby-party 16, unterhaltung 4, schmuck-uhren 1. Aufgeschlüsselt nach der tragenden Kategorie: kindergeschirr-trinken 39, camping-kocher-gaskocher 32, camping-geschirr-kochsets 21, grills-grillzubehoer 16, kunstblumen-kraenze-girlanden 16, garten-aussenleuchten 10, auto-duft-luft 9, auto-komfort-reise 9, autowaesche-reinigung 9, pflanztoepfe-pflanzenzubehoer 6, fliegengitter-insektenschutz-vorhaenge 6, smart-home-geraete 4, wasserhaehne-armaturen 3, camping-licht-zubehoer 3, dazu 14 weitere in 11 Kategorien. Ein Teil davon ist erst durch die Gegenlesung dorthin gewandert (Campingkocher und Camping-Geschirr nach sport, Auto-Ware nach auto, Kunstblumen und Kränze nach hobby-party; siehe GEGENLESUNG).",
    "beispiele": [
     "LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balkon",
-    "Solar-Strassenleuchte für Hof und Garten",
-    "Solar-Vogelfutterhaus mit Kronen-Design",
-    "Smarter Rollladen- & Jalousienmotor",
-    "Smarter Vorhang-Controller",
-    "Smarter Vorhangmotor mit Fernbedienung",
-    "Isolierter Edelstahlbecher für Kinder",
-    "Kinder Wasserflasche Cartoon Design",
-    "Trinkbecher für Kinder"
+    "Tragbares Camping-Topfset, 10-teilig",
+    "Auto Luftbefeuchter & Aroma Diffuser",
+    "Künstlicher Sonnenblumen-Türkranz"
    ]
   },
   {
-   "text": "Kosmetik-, Make-up- und Nagellack-Organizer in der Google-Klasse Storage & Organization (32): gehören nach Art zum Bereich Beauty; beauty.json trägt sie nicht (gemessen). Hier bewusst nicht in «Organizer & Schubladenboxen», damit Beauty-Ware nicht im Haushalt landet.",
+   "text": "Kosmetik-, Make-up- und Schmuck-Organizer in der Google-Klasse Storage & Organization: nach der Gegenlesung in der neuen Kategorie «Kosmetik- & Schmuck-Organizer» (29 Produkte; 10 davon tragen zusätzlich den Tag der vorhandenen Beauty-Kategorie «Make-up & Kosmetik»). Übrig bleiben 3 Produkte, die das Titelmuster nicht trifft.",
    "beispiele": [
-    "Kosmetik-Organizer für den Schminktisch",
-    "Minimalistischer Kosmetik-Organizer aus Metall",
-    "16er Silikon-Organizer für Lippenstifte",
-    "Grosses vertikales Kosmetik-Organizer mit Tragegriff",
-    "Multifunktionaler Kosmetik-Organizer mit viel Platz"
+    "Lockenstab-Aufbewahrungsgestell",
+    "Haar-Schutzüberzug",
+    "Mahjong Set Multifunktionaler Make-up Organizer"
    ]
   },
   {
@@ -2108,10 +2149,9 @@
    ]
   },
   {
-   "text": "Sport-, Outdoor-, Tier- und Werkzeug-Aufbewahrung in Storage & Organization (15): Taschen für Helme, Camping-Geschirr und Scooter, Ball-Organizer. Passen in keine Kategorie dieser Datei und werden von keiner anderen Bereichsdatei getragen.",
+   "text": "Sport-, Outdoor-, Tier- und Werkzeug-Aufbewahrung in Storage & Organization (15): Taschen für Helme, Camping-Geschirr und Scooter, Ball-Organizer. Passen in keine Kategorie dieser Datei. Einzelne Produkte dieser Art tragen inzwischen auto.json oder sport.json (zum Beispiel Scooter-Tragegurt, Fahrrad-Toolbox, Tasche für Camping-Geschirr; siehe oben), der Rest wird von keiner anderen Bereichsdatei getragen.",
    "beispiele": [
     "Basketball-Organizer für Bälle",
-    "Tragbarer Scooter-Tragegurt",
     "Taktische Helm-Aufbewahrungstasche, 10 L",
     "Portabler Outdoor-Fächer",
     "Taktische Camouflage Outdoor-Aufbewahrungstasche"
@@ -2140,7 +2180,7 @@
    ]
   },
   {
-   "text": "Leuchten ohne passende Kategorie (33): Camping- und Notleuchten, Studio- und Bühnenlicht, Mückenlampen, UV-Lampen, Glühbirnen, Einbaustrahler und Lampenhalter. Keine Kategorie dieser Datei und keine andere Bereichsdatei trägt sie (gemessen).",
+   "text": "Leuchten ohne passende Kategorie (33): Camping- und Notleuchten, Studio- und Bühnenlicht, Mückenlampen, UV-Lampen, Glühbirnen, Einbaustrahler und Lampenhalter. Keine Kategorie dieser Datei; Camping-Leuchten trägt inzwischen sport.json (camping-licht-zubehoer), die übrigen trägt keine andere Bereichsdatei (gemessen).",
    "beispiele": [
     "Deformierbare LED-Garagenleuchte",
     "LED-Lampe rund, wetterfest, staub- und insektengeschützt",
@@ -2215,27 +2255,49 @@
     "Heissluftfritteusen-Zubehör-Set aus Silikon",
     "Holz Etagere für Früchte"
    ]
+  },
+  {
+   "text": "Bei der Gegenlesung bewusst herausgenommen (8), weil sie nicht in den Haushalt passen oder nicht an die Schweizer Netzspannung passen und keine Bereichsdatei sie trägt: Gesichtsbefeuchter mit Kaltspray (Pflegegerät, kein Raumluftgerät; beauty.json trägt es nicht), Waffelmaschine mit 110 V (Netzspannung in der Schweiz 230 V), Reise-Reiskocher 12V/24V (Fahrzeugbetrieb), Halloween-Gartenstecker mit Kunstblumen (Gartenstecker; hobby-party schliesst Halloween aus), Schnüffelteppich (Tierzubehör, der Titel nennt kein Tier), «Fire Maple Outdoor Kochsystem» (Campingkocher; sport.json trägt es mangels Titelwort nicht) sowie Ofenkopf und Vorheizrohr für Campingkocher (Zubehör für Campingkocher).",
+   "beispiele": [
+    "Gesichtsbefeuchter mit Kaltspray-Funktion",
+    "Waffelmaschine Herzform 110 V",
+    "Reise-Reiskocher 12V/24V",
+    "Schnüffelteppich Blumen-Schatzsuche"
+   ]
+  },
+  {
+   "text": "Produkte, deren Titel die Art eindeutig nennt, die aber in einer CJ-Klasse ohne passende Unterklasse stehen (bis zu 68 im Rest ohne Träger, gemessen mit groben Titelmustern für Topf/Pfanne, Vase, Becher, Sofabezug, Kissen, Regal, Backform und Untersetzer; mehrfach gezählt, ein Teil davon ist Zubehör und gehört bewusst nicht in die Kategorie). Die Regelsprache verbindet Klasse und Titel nur mit UND, ein Einschluss «Klasse ODER Titel» ist in einer Kategorie nicht möglich; darum bleiben diese Produkte unzugeordnet, statt dass die Regel für alle Produkte der Kategorie verwässert wird.",
+   "beispiele": [
+    "Keramiktopf",
+    "Kupfer-Induktions-Kochtopf",
+    "Keramik-Bratpfanne mit Antihaftbeschichtung",
+    "Zepterförmige Vase aus Yixing-Ton",
+    "Thermobecher mit Strohhalm"
+   ]
   }
  ],
  "hinweise": [
-  "ABDECKUNG: Universum 6 989 Produkte (Rohuniversum 7 194 der Google-Klassen Decor, Kitchen & Dining, Household Supplies, Linens & Bedding, Household Appliances, Bathroom Accessories, Lighting, Fireplaces, Furniture, minus 205 Produkte aus Nachbarklassen, von denen 194 haus-bau oder spielzeug tragen und 11 keine Datei). messen.mjs zählt nur die neuen Kategorien: 4 245 von 6 989 (60,7 %). Dazu kommen 2 147 Produkte, die nur in den 15 eingeordneten vorhandenen Kategorien liegen (Tag-Zugehörigkeit gemessen mit coverage.mjs): zusammen 6 392 (91,5 %). Der Rest von 597 steht in «ausserhalb» mit Grund; davon tragen andere Bereichsdateien 85 Produkte. 35 Produkte in neuen Kategorien liegen ausserhalb des Universums, weil CJ sie unter Arts & Entertainment (Wandbilder) oder Hardware > Tools (Küchen- und Feinwaagen) führt.",
-  "STRUKTUR: 67 neue Kategorien und 15 vorhandene Kategorien (nur eingeordnet) in 13 Gruppen. Das sind mehr als die 3 bis 6 Gruppen der Vorgabe, weil der Bereich Küche, Putzen, Aufbewahrung, Bad, Textilien, Wand, Deko und Licht umfasst und keine Gruppe mehr als 8 Kinder haben soll. Vorschlag für die Menü-Äste unter «Wohnen & Garten» (13 Gruppen in 6 Ästen): Kochen & Küche = Kochen, Grillen & Backen · Küchenhelfer & Vorrat · Elektrische Küchengeräte; Essen & Trinken = Kaffee, Tee & Trinken · Geschirr, Besteck & Tisch; Haushalt = Putzen & Haushalt · Aufbewahrung & Möbel; Bad = Bad; Wohntextilien & Wand = Kissen, Decken & Bettwäsche · Fenster, Wand & Uhren; Deko & Licht = Deko & Kerzen · Raumluft & Klima · Beleuchtung. Die Entscheidung über die Äste liegt beim Besitzer.",
+  "ABDECKUNG (nach der Gegenlesung vom 27.10.2026 neu gemessen): Universum 6 989 Produkte. messen.mjs zählt nur die neuen Kategorien: 4 218 von 6 989 (60,4 %). Dazu kommen 2 096 Produkte, die nur in den 14 eingeordneten vorhandenen Kategorien liegen (Tag-Zugehörigkeit gemessen): zusammen 6 314 (90,3 %). Der Rest von 675 besteht aus 197 Produkten, die andere Bereichsdateien tragen (sport 63, haus-bau 44, spielzeug 39, auto 30, hobby-party 16, unterhaltung 4, schmuck-uhren 1), und 478 ohne Träger; sie stehen in «ausserhalb» mit Grund. Der Wert liegt unter den 91,5 % des ersten Laufs, weil die vorhandene Kategorie «besteck» durch eine engere neue ersetzt wurde und weil 94 Produkte an auto, sport und hobby-party abgegeben wurden (mit den Produkten, die andere Dateien tragen, sind es 93,2 %). 35 Produkte in neuen Kategorien liegen ausserhalb des Universums, weil CJ sie unter Arts & Entertainment (Wandbilder) oder Hardware > Tools (Küchen- und Feinwaagen) führt.",
+  "STRUKTUR: 68 neue Kategorien und 14 vorhandene Kategorien (nur eingeordnet) in 13 Gruppen. Das sind mehr als die 3 bis 6 Gruppen der Vorgabe, weil der Bereich Küche, Putzen, Aufbewahrung, Bad, Textilien, Wand, Deko und Licht umfasst und keine Gruppe mehr als 8 Kinder haben soll. Vorschlag für die Menü-Äste unter «Wohnen & Garten» (13 Gruppen in 6 Ästen): Kochen & Küche = Kochen, Grillen & Backen · Küchenhelfer & Vorrat · Küchengeräte; Essen & Trinken = Kaffee, Tee & Trinken · Geschirr, Besteck & Tisch; Haushalt = Putzen & Haushalt · Aufbewahrung & Möbel; Bad = Bad; Wohntextilien & Wand = Kissen, Decken & Bettwäsche · Fenster, Wand & Uhren; Deko & Licht = Deko & Kerzen · Raumluft & Klima · Beleuchtung. Die Entscheidung über die Äste liegt beim Besitzer.",
   "ersetzt: waagen (Tag sort-waagen; 34 aktiv, 17 in neuen Kategorien dieser Datei, 17 in keiner). Ausserhalb der neuen Kategorien liegen: 9× Health & Beauty > Health Care; 4× Animals & Pet Supplies > Pet Supplies; 2× Hardware > Tools; 1× Kitchen & Dining > Kitchen Tools & Utensils. Die Altkategorie mischt Küchenwaagen mit Körperanalysewaagen und Tierfutterwaagen; die neue Kategorie «Küchen- & Feinwaagen» nimmt nur die Küchen- und Feinwaagen. Beim Go-Live Tag und Menüeintrag der alten Kategorie entfernen. 9 der 17 Produkte der neuen Kategorie tragen auch den Tag der vorhandenen Kategorie «Messen & Prüfen» (messen.mjs, Spalte SCHON-DA); sie liegen dann in beiden, wenn der Tag dort bleibt.",
-  "ersetzt: vasen-blumentoepfe (Tag sort-vasen; 57 aktiv, 20 in neuen Kategorien dieser Datei, 37 in keiner). Ausserhalb der neuen Kategorien liegen: 15× Kitchen & Dining; 10× Lawn & Garden > Gardening; 5× Toys & Games > Toys; 2× Kitchen & Dining > Cookware & Bakeware. Die Altkategorie enthält ausser Vasen Pflanztöpfe (haus-bau trägt sie), Spielzeug-Bausteinsets und Produkte mit der Google-Klasse Kitchen & Dining; die neue Kategorie «Vasen» nimmt nur die Google-Klasse Vasen.",
+  "ersetzt: vasen-blumentoepfe (Tag sort-vasen; 57 aktiv, 19 in neuen Kategorien dieser Datei, 38 in keiner). Ausserhalb der neuen Kategorien liegen: 15× Kitchen & Dining; 10× Lawn & Garden > Gardening; 5× Toys & Games > Toys; 2× Kitchen & Dining > Cookware & Bakeware. Die Altkategorie enthält ausser Vasen Pflanztöpfe (haus-bau trägt sie), Spielzeug-Bausteinsets und Produkte mit der Google-Klasse Kitchen & Dining; die neue Kategorie «Vasen» nimmt nur die Google-Klasse Vasen.",
   "ersetzt: ventilatoren (Tag sort-ventilatoren; 78 aktiv, 62 in neuen Kategorien dieser Datei, 16 in keiner). Ausserhalb der neuen Kategorien liegen: 6× Household Appliances > Climate Control Appliances; 3× Baby & Toddler > Baby Transport Accessories; 2× Sporting Goods > Exercise & Fitness; 1× Apparel & Accessories > Clothing Accessories. Die Altkategorie enthält ausser Ventilatoren Klimageräte, Kinderwagen-Ventilatoren und Ventilator-Hüte; «Ventilatoren & Handventilatoren» nimmt die Ventilator-Klassen.",
   "ersetzt: vorhaenge (Tag sort-vorhaenge; 102 aktiv, 79 in neuen Kategorien dieser Datei, 23 in keiner). Ausserhalb der neuen Kategorien liegen: 17× Decor > Window Treatments; 3× Decor > Window Treatment Accessories; 1× Household Supplies > Pest Control; 1× Arts & Entertainment > Hobbies & Creative Arts. Die Altkategorie enthält Fliegenvorhänge (haus-bau trägt sie) und smarte Vorhang-Controller (unterhaltung trägt sie); «Vorhänge, Gardinen & Rollos» nimmt die Google-Klasse Window Treatments ohne Insektenschutz.",
   "ersetzt: wanddeko (Tag sort-wanddeko; 95 aktiv, 80 in neuen Kategorien dieser Datei, 15 in keiner). Ausserhalb der neuen Kategorien liegen: 5× Arts & Entertainment > Hobbies & Creative Arts; 3× Decor > Artwork; 2× Decor > Baskets; 1× Decor > Dreamcatchers. Die Altkategorien «wanddeko» und «wandbilder-poster» überlappen (60 von 95 Produkten von «wanddeko» tragen auch den Tag sort-wandbilder, 63,2 %) und enthalten Bastelsets (Diamond Painting, Bilderrahmen aus Bausteinen); sie gehen in «Wandbilder & Wanddeko» und «Bilderrahmen, Wandtattoos & Klebefolien» auf.",
   "ersetzt: wandbilder-poster (Tag sort-wandbilder; 171 aktiv, 132 in neuen Kategorien dieser Datei, 39 in keiner). Ausserhalb der neuen Kategorien liegen: 21× Arts & Entertainment > Hobbies & Creative Arts; 7× Decor > Artwork; 4× Toys & Games > Toys; 2× Vehicles & Parts > Vehicle Parts & Accessories. Siehe wanddeko: Wandbilder ohne Bastelsets liegen in «Wandbilder & Wanddeko» (117 Produkte).",
-  "ersetzt: tassen-becher (Tag tassen-becher; 238 aktiv, 211 in neuen Kategorien dieser Datei, 27 in keiner). Ausserhalb der neuen Kategorien liegen: 15× Kitchen & Dining > Tableware; 6× Animals & Pet Supplies > Pet Supplies; 1× Electronics > Electronics Accessories; 1× Kitchen & Dining > Food & Beverage Carriers. Die Altkategorie mischt Tassen, Thermobecher, Haustier-Näpfe und Kinderbecher (spielzeug trägt diese); die neuen Kategorien «Tassen & Kaffeebecher» und «Thermobecher & Trinkbecher» folgen der Google-Klasse (Mugs, Coffee & Tea Cups bzw. Tumblers).",
-  "UEBERLAGERT (vorhandene Menü-Kategorien, deren Inhalt jetzt feiner in den neuen Kategorien liegt; Tag und Menüeintrag beim Go-Live abräumen, sonst gibt es doppelte Mitgliedschaft): toepfe-pfannen-backen (sort-kochgeschirr, 323 aktiv, 296 in neuen Kategorien dieser Datei); kuechenmaschinen-geraete (sort-kuechengeraete, 344 aktiv, 317 in neuen Kategorien dieser Datei); kuechenhelfer (sort-kuechenhelfer, 437 aktiv, 424 in neuen Kategorien dieser Datei); geschirr-teller (sort-geschirr, 288 aktiv, 275 in neuen Kategorien dieser Datei); haushaltsgeraete (sort-haushaltsgeraete, 109 aktiv, 104 in neuen Kategorien dieser Datei); schneidebretter (kat-schneidebretter, 73 aktiv, 71 in neuen Kategorien dieser Datei); lunchboxen (kat-lunchboxen, 37 aktiv, 34 in neuen Kategorien dieser Datei); woks (kat-woks, 14 aktiv, 13 in neuen Kategorien dieser Datei); etageren (kat-etageren, 15 aktiv, 13 in neuen Kategorien dieser Datei); teppiche (kat-teppiche, 34 aktiv, 33 in neuen Kategorien dieser Datei); bettwaesche (kat-bettwaesche, 31 aktiv, 28 in neuen Kategorien dieser Datei); duschvorhaenge (kat-duschvorhaenge, 19 aktiv, 18 in neuen Kategorien dieser Datei); wanduhren (kat-wanduhren, 22 aktiv, 18 in neuen Kategorien dieser Datei); wecker (kat-wecker, 24 aktiv, 23 in neuen Kategorien dieser Datei); wandregale (kat-wandregale, 18 aktiv, 16 in neuen Kategorien dieser Datei); waeschekoerbe (kat-waeschekoerbe, 15 aktiv, 15 in neuen Kategorien dieser Datei); wandteppiche (kat-wandteppiche, 77 aktiv, 75 in neuen Kategorien dieser Datei); sub-aroma-diffuser (kat-aroma, 282 aktiv, 256 in neuen Kategorien dieser Datei); luftbefeuchter (such-luftbefeuchter, 149 aktiv, 146 in neuen Kategorien dieser Datei); handstaubsauger (such-handstaubsauger, 20 aktiv, 19 in neuen Kategorien dieser Datei); staubsauger-haushalt (staubsauger, 11 aktiv, 9 in neuen Kategorien dieser Datei); handtuchhalter (such-handtuchhalter, 16 aktiv, 14 in neuen Kategorien dieser Datei); aufbewahrungsboxen (such-aufbewahrungsbox, 76 aktiv, 13 in neuen Kategorien dieser Datei). Die Differenz je Altkategorie besteht aus Produkten, die in keiner neuen Kategorie dieser Datei liegen (Fremdware wie Haustier- und Gartenartikel, Produkte mit der Google-Oberklasse ohne Unterklasse, Produkte anderer Bereichsdateien). Bei aufbewahrungsboxen ist die Differenz gross (63 von 76; ausserhalb liegen: 44× Household Supplies > Storage & Organization; 15× Decor > Baskets; 1× Vehicles & Parts > Vehicle Parts & Accessories; 1× Arts & Entertainment > Hobbies & Creative Arts): den Tag such-aufbewahrungsbox erst abräumen, wenn geklärt ist, wohin diese Produkte gehören.",
-  "MENUE-ELTERN, DIE DURCH GRUPPEN ERSETZT WERDEN: wohnen-dekoration, aufbewahrung-sub, sub-kueche, kissen-wohntextilien (kat-kissen, 1618 aktiv, davon 310 in neuen Kategorien dieser Datei; der Rest sind vor allem Kissen und Bezüge der Google-Klassen Throw Pillows, Chair & Sofa Cushions und Backrest Pillows, für die die vorhandenen Kinder «Kissen», «Kissenbezüge & Kissenhüllen» und «Sitz- & Rückenkissen» eingeordnet sind), sub-deko (kat-deko, 171 aktiv, davon 75 in neuen Kategorien), sub-beleuchtung, licht-led-strip (Titel-Regel mit LED-Strip- und Lichterketten-Wörtern; ersetzt durch «LED-Streifen & Lichterketten») und kuschel-heizdecken (Titel-Regel Heizdecke, Kuscheldecke, Wärmedecke; ersetzt durch «Decken & Plaids»). Die Sammelbecken kueche-tisch (Regel: Tag home UND küche) und deko-wohnaccessoires (Regel: Tag home UND deko) sind durch die neuen Kategorien überholt.",
-  "EINGEORDNETE VORHANDENE KATEGORIEN (15, nicht kopiert, weil Fremdkörper unter 3 %): kuechen-organizer, vorratsdosen, besteck, koerbe-behaelter, kissen, kissenbezuege, sitz-rueckenkissen, sofa-moebelueberzuege, luftreiniger-klimageraete, tisch-nachttischlampen, nachttischlampen, wandleuchten, deckenleuchten, nachtlichter-ambiente, schreibtischlampen. Alle haben einen Tag der Engine (sort-...), den coverage.mjs für die Abdeckung nutzt.",
+  "ersetzt: tassen-becher (Tag tassen-becher; 238 aktiv, 208 in neuen Kategorien dieser Datei, 30 in keiner). Ausserhalb der neuen Kategorien liegen: 18× Kitchen & Dining > Tableware; 6× Animals & Pet Supplies > Pet Supplies; 1× Electronics > Electronics Accessories; 1× Kitchen & Dining > Food & Beverage Carriers. Die Altkategorie mischt Tassen, Thermobecher, Haustier-Näpfe und Kinderbecher (spielzeug trägt diese); die neuen Kategorien «Tassen & Kaffeebecher» und «Thermobecher & Trinkbecher» folgen der Google-Klasse (Mugs, Coffee & Tea Cups bzw. Tumblers).",
+  "ersetzt: besteck (Tag sort-besteck; 77 aktiv, Engine-Regel: Google-Klasse Flatware ODER Titelende «löffel-set»). 27 der 77 stammen nicht aus der Klasse Flatware; 22 davon sind Fremdkörper (8 Messlöffel- und Messbecher-Sets, 6 Kochlöffel- und Küchenhelfer-Sets, 2 Spatel-Sets, 4 Abtropfgestelle, 1 Futterwaage, 1 Grillbesteck für Camping), das sind 28,6 %. Die neue Kategorie «Besteck & Essstäbchen» (besteck-essstaebchen) nimmt nur die Klasse Flatware (46 Produkte; Kinder- und Camping-Besteck gehören zu spielzeug bzw. sport). Beim Go-Live Tag und Menüeintrag der alten Kategorie entfernen; Besteck-Organizer und Besteckkästen (5) liegen schon in «Küchen-Organizer & Abtropfgestelle» und «Organizer & Schubladenboxen».",
+  "UEBERLAGERT (vorhandene Menü-Kategorien, deren Inhalt jetzt feiner in den neuen Kategorien liegt; Tag und Menüeintrag beim Go-Live abräumen, sonst gibt es doppelte Mitgliedschaft): toepfe-pfannen-backen (sort-kochgeschirr, 323 aktiv, 286 in neuen Kategorien dieser Datei); kuechenmaschinen-geraete (sort-kuechengeraete, 344 aktiv, 312 in neuen Kategorien dieser Datei); kuechenhelfer (sort-kuechenhelfer, 437 aktiv, 424 in neuen Kategorien dieser Datei); geschirr-teller (sort-geschirr, 288 aktiv, 274 in neuen Kategorien dieser Datei); haushaltsgeraete (sort-haushaltsgeraete, 109 aktiv, 96 in neuen Kategorien dieser Datei); schneidebretter (kat-schneidebretter, 73 aktiv, 70 in neuen Kategorien dieser Datei); lunchboxen (kat-lunchboxen, 37 aktiv, 31 in neuen Kategorien dieser Datei); woks (kat-woks, 14 aktiv, 13 in neuen Kategorien dieser Datei); etageren (kat-etageren, 15 aktiv, 13 in neuen Kategorien dieser Datei); teppiche (kat-teppiche, 34 aktiv, 33 in neuen Kategorien dieser Datei); bettwaesche (kat-bettwaesche, 31 aktiv, 28 in neuen Kategorien dieser Datei); duschvorhaenge (kat-duschvorhaenge, 19 aktiv, 18 in neuen Kategorien dieser Datei); wanduhren (kat-wanduhren, 22 aktiv, 18 in neuen Kategorien dieser Datei); wecker (kat-wecker, 24 aktiv, 23 in neuen Kategorien dieser Datei); wandregale (kat-wandregale, 18 aktiv, 16 in neuen Kategorien dieser Datei); waeschekoerbe (kat-waeschekoerbe, 15 aktiv, 15 in neuen Kategorien dieser Datei); wandteppiche (kat-wandteppiche, 77 aktiv, 75 in neuen Kategorien dieser Datei); sub-aroma-diffuser (kat-aroma, 282 aktiv, 248 in neuen Kategorien dieser Datei); luftbefeuchter (such-luftbefeuchter, 149 aktiv, 138 in neuen Kategorien dieser Datei); handstaubsauger (such-handstaubsauger, 20 aktiv, 10 in neuen Kategorien dieser Datei); staubsauger-haushalt (staubsauger, 11 aktiv, 6 in neuen Kategorien dieser Datei); handtuchhalter (such-handtuchhalter, 16 aktiv, 14 in neuen Kategorien dieser Datei); aufbewahrungsboxen (such-aufbewahrungsbox, 76 aktiv, 13 in neuen Kategorien dieser Datei). Die Differenz je Altkategorie besteht aus Produkten, die in keiner neuen Kategorie dieser Datei liegen (Fremdware wie Haustier- und Gartenartikel, Produkte mit der Google-Oberklasse ohne Unterklasse, Produkte anderer Bereichsdateien). Bei aufbewahrungsboxen ist die Differenz gross (63 von 76; ausserhalb liegen: 44× Household Supplies > Storage & Organization; 15× Decor > Baskets; 1× Vehicles & Parts > Vehicle Parts & Accessories; 1× Arts & Entertainment > Hobbies & Creative Arts): den Tag such-aufbewahrungsbox erst abräumen, wenn geklärt ist, wohin diese Produkte gehören.",
+  "MENUE-ELTERN, DIE DURCH GRUPPEN ERSETZT WERDEN: wohnen-dekoration, aufbewahrung-sub, sub-kueche, kissen-wohntextilien (kat-kissen, 1618 aktiv, davon 310 in neuen Kategorien dieser Datei; der Rest sind vor allem Kissen und Bezüge der Google-Klassen Throw Pillows, Chair & Sofa Cushions und Backrest Pillows, für die die vorhandenen Kinder «Kissen», «Kissenbezüge & Kissenhüllen» und «Sitz- & Rückenkissen» eingeordnet sind), sub-deko (kat-deko, 171 aktiv, davon 74 in neuen Kategorien), sub-beleuchtung, licht-led-strip (Titel-Regel mit LED-Strip- und Lichterketten-Wörtern; ersetzt durch «LED-Streifen & Lichterketten») und kuschel-heizdecken (Titel-Regel Heizdecke, Kuscheldecke, Wärmedecke; ersetzt durch «Decken & Plaids»). Die Sammelbecken kueche-tisch (Regel: Tag home UND küche) und deko-wohnaccessoires (Regel: Tag home UND deko) sind durch die neuen Kategorien überholt.",
+  "EINGEORDNETE VORHANDENE KATEGORIEN (14, nicht kopiert): kuechen-organizer, vorratsdosen, koerbe-behaelter, kissen, kissenbezuege, sitz-rueckenkissen, sofa-moebelueberzuege, luftreiniger-klimageraete, tisch-nachttischlampen, nachttischlampen, wandleuchten, deckenleuchten, nachtlichter-ambiente, schreibtischlampen. Alle haben einen Tag der Engine (sort-...). Die Gegenlesung hat ihre Mitglieder am Tag-Bestand gelesen (siehe GEGENLESUNG, offene Punkte); «besteck» ist wegen 28,6 % Fremdkörpern durch eine neue Kategorie ersetzt (siehe «ersetzt: besteck»).",
   "UEBERLAPPUNG IN DER GRUPPE «Beleuchtung»: 17 Produkte liegen in zwei vorhandenen Kategorien derselben Gruppe (nachttischlampen mit deckenleuchten 6, mit nachtlichter-ambiente 6, mit wandleuchten 3; tisch-nachttischlampen mit wandleuchten 1; nachtlichter-ambiente mit schreibtischlampen 1). Das sind Überschneidungen der Tags der vorhandenen Kategorien (gemessen mit coverage.mjs), nicht der neuen Regeln; ob sie beim Go-Live bleiben, hängt von den Tag-Regeln der Engine ab und ist nicht geprüft. Zwischen neuen Kategorien dieser Datei gibt es 0 Überlappungen (messen.mjs), und gegen alle anderen Bereichsdateien 0 gemeinsame Produkte (cross-Prüfung über alle sechs Dateien).",
-  "SCHWELLE: Die kleinste neue Kategorie ist «kuechenwaagen-feinwaagen» mit 17 Produkten. Nahe an der Schwelle von 15: kuechenwaagen-feinwaagen 17, handtuchhalter-badregale 18, vasen-blumenvasen 19, led-streifen-lichterketten 19, muelleimer-abfall 20, desinfektion-reinigungsgeraete 20. Die vorhandene Kategorie schreibtischlampen hat 13 aktive Produkte (unter 15) und steht nur als Verweis im Baum; computer.json verweist ebenfalls auf sie. Bei den Chips gilt: 31 Kategorien tragen 86 Unterfilter-Chips, jeder mit mindestens 15 Produkten (messen.mjs, Spalte <15 leer).",
-  "NACHBAR-ABSTIMMUNG: haus-bau trägt Schädlingsabwehr, Fliegengitter, Armaturen und Duschköpfe, Pflanztöpfe, Gartendeko, Garten-Aussenleuchten, Wasserfilter und Outdoor-Grills samt Zubehör; diese Klassen sind aus dem Universum ausgenommen oder in den Kategorien dieser Datei per Titel-Ausschluss herausgehalten. spielzeug trägt Kinder- und Babygeschirr (Titel mit Kinder- oder Baby-Wort in Kitchen & Dining) sowie Kinderzimmer-Textilien und Babyschlaf-Ware: hier gilt für Küche der Titel-Ausschluss auf diese Wörter, für Textilien und Deko der Ausschluss mit den unveränderten Titelmustern von spielzeug (Stand beim Bauen; ändert spielzeug.json seine Muster, ist cross neu zu laufen). unterhaltung trägt smarte Rollladen- und Vorhangmotoren (smart-home-geraete); computer.json verweist auf schreibtischlampen. Die Kinder- und Baby-Titel, die in spielzeug.json KEINE Kategorie tragen (25 Produkte), stehen hier, damit sie nicht verwaisen.",
-  "NEU IN DIESER FASSUNG GEGENÜBER DEM ERSTEN LAUF: «Grillpfannen & Elektrogrills» (22 Produkte; Google-Klassen Electric Griddles & Grills, Griddles & Grill Pans, Grill Presses; das Universum nimmt Grill-Titel nicht mehr aus, nur die Google-Klassen Outdoor Grills und Outdoor Grill Accessories) und «Campingkocher & Outdoor-Kocher» (33 Produkte; Google-Klasse Portable Cooking Stoves). Beide waren zuvor von keiner Bereichsdatei getragen; sollte ein Sport- oder Camping-Bereich entstehen, gehören die Campingkocher dorthin, und die Kategorie ist hier zu streichen (cross-Prüfung zeigt die Doppelung).",
-  "TITEL MIT GESUNDHEITS- ODER HYGIENEWORT: 18 Produkte in neuen Kategorien tragen Wörter wie antibakteriell, Sterilisator, Desinfektion (Beispiele: Schneidebretter «antibakteriell», UV-Sterilisatoren, Kissen «mit antibakterieller Füllung»). Ob das Datenblatt das belegt, ist nicht geprüft; vor dem Live-Gang mit dem Skill titel-wahrheit gegen das CJ-Datenblatt prüfen.",
-  "STECKER UND SPANNUNG: 4 Produkte in neuen Kategorien nennen Stecker oder 110 V im Titel (eine Waffelmaschine «110 V», zwei Schäler mit «EU-Stecker», ein Gartenstecker ohne Strombezug); 4 nennen 12 V oder 24 V (LED-Streifen, ein Reise-Reiskocher, ein Ventilator). Die Stecker-Bereinigung des Shops (Skill shop-auswahl-varianten) ist für diese Produkte vor dem Live-Gang zu wiederholen.",
-  "GRENZE DER MESSUNG: Die Fremdkörper-Prüfung besteht aus gelesenen Mitgliederlisten (kleine und Sammel-Kategorien ganz, grosse in verteilten Stichproben), einem Verdachtswort-Abgleich über alle 4 280 Mitgliedschaften (Tier-, Fahrzeug-, Elektronik-, Mode-, Kosmetik-, Garten-Wörter) und dem Lesen der Lücke und des Rests. Im letzten Durchgang fand sie in «Dekoobjekte & Accessoires» 1 Fremdkörper (ein Taillen-Massagegerät), 16 falsch einsortierte Textilien (Sofabezüge, Kissen, Bettläufer) und eine Futterstation; alle sind behoben. In den Durchgängen davor waren es rund 100 Fremdkörper vor dem Schärfen der Titel-Ausschlüsse (Zählung aus der Arbeit, nicht neu gemessen). Ein Produkt, dessen Titel keines der Verdachtswörter trägt, kann trotzdem falsch liegen; die Kategorien folgen deshalb wo möglich der Google-Klasse und nicht dem Titel."
+  "SCHWELLE: Die kleinste neue Kategorie ist «kuechenwaagen-feinwaagen» mit 17 Produkten. Nahe an der Schwelle von 15: kuechenwaagen-feinwaagen 17, handtuchhalter-badregale 18, led-streifen-lichterketten 18, vasen-blumenvasen 19, muelleimer-abfall 20, desinfektion-reinigungsgeraete 20. Die vorhandene Kategorie schreibtischlampen hat 13 aktive Produkte (unter 15) und steht nur als Verweis im Baum; computer.json verweist ebenfalls auf sie. Bei den Chips gilt: 32 Kategorien tragen 86 Unterfilter-Chips, jeder mit mindestens 15 Produkten (messen.mjs, Spalte <15 leer).",
+  "NACHBAR-ABSTIMMUNG: haus-bau trägt Schädlingsabwehr, Fliegengitter, Armaturen und Duschköpfe, Pflanztöpfe, Gartendeko, Garten-Aussenleuchten, Wasserfilter und Outdoor-Grills samt Zubehör; diese Klassen sind aus dem Universum ausgenommen oder in den Kategorien dieser Datei per Titel-Ausschluss herausgehalten. spielzeug trägt Kinder- und Babygeschirr (Titel mit Kinder- oder Baby-Wort in Kitchen & Dining) sowie Kinderzimmer-Textilien und Babyschlaf-Ware: hier gilt für Küche der Titel-Ausschluss auf diese Wörter, für Textilien und Deko der Ausschluss mit den unveränderten Titelmustern von spielzeug (Stand beim Bauen; ändert spielzeug.json seine Muster, ist cross neu zu laufen). unterhaltung trägt smarte Rollladen- und Vorhangmotoren (smart-home-geraete); computer.json verweist auf schreibtischlampen. Die Kinder- und Baby-Titel, die in spielzeug.json KEINE Kategorie tragen (25 Produkte), stehen hier, damit sie nicht verwaisen. Nach der Gegenlesung kommen drei weitere Nachbarn dazu (gemessen mit allen 12 anderen Bereichsdateien, 0 gemeinsame Produkte): auto trägt Auto-Luftbefeuchter, Auto-Staubsauger, Kühl- und Lunchboxen fürs Auto, Wasserkessel, Thermobecher und Reiskocher fürs Auto sowie den Motorradhelm-Halter; sport trägt Campingkocher, Camping-Geschirr (Töpfe, Pfannen, Becher, Schneidebrett, Backblech), Campingdecke, Camping-Lichterkette und Camping-Lüfter; hobby-party trägt Kunstblumen, Kränze und Girlanden. Wohnen schliesst diese Produkte über titel_nicht bzw. g_nicht aus, die den Titelmustern der anderen Dateien am 27.10.2026 entsprechen; ändert eine der Dateien ihre Regel, ist die cross-Prüfung neu zu laufen, sonst entstehen Doppelungen oder verwaiste Produkte. «Kunstblumen, Kränze & Girlanden» (hobby-party) wäre im Menü unter «Deko & Kerzen» ein sinnvoller Verweis; die Entscheidung liegt bei der Koordination.",
+  "NEU IN DIESER FASSUNG GEGENÜBER DEM ERSTEN LAUF: «Grillpfannen & Elektrogrills» (22 Produkte; Google-Klassen Electric Griddles & Grills, Griddles & Grill Pans, Grill Presses; das Universum nimmt Grill-Titel nicht mehr aus, nur die Google-Klassen Outdoor Grills und Outdoor Grill Accessories). «Campingkocher & Outdoor-Kocher» (33 Produkte) war ebenfalls neu, ist nach der Gegenlesung aber gestrichen, weil sport.json mit «camping-kocher-gaskocher» 32 der 33 Produkte trägt; das 33. («Fire Maple Outdoor Kochsystem») trägt keine Datei. sport.json sieht vor, die Kategorie im Wohnen-Baum zu verlinken (Verweis in der Gruppe «Kochen, Grillen & Backen»); als Kind eingetragen ist sie hier nicht, weil messen.mjs ohne --alle nur eigene und Shop-Handles kennt und die Datei sonst als fehlerhaft gälte. Beim Zusammenführen der Menüs nachtragen.",
+  "TITEL MIT GESUNDHEITS- ODER HYGIENEWORT: 40 Produkte in neuen Kategorien tragen Wörter wie antibakteriell (10), Sterilisation (7) oder Desinfektion (23) (Beispiele: Schneidebretter «antibakteriell», UV-Sterilisatoren, Kissen «mit antibakterieller Füllung»); weitere nennen Schimmel (5) oder Milben (3). Der erste Lauf nannte 18; die Gegenlesung hat mit denselben Wörtern neu gezählt. Ob das Datenblatt das belegt, ist nicht geprüft; vor dem Live-Gang mit dem Skill titel-wahrheit gegen das CJ-Datenblatt prüfen.",
+  "STECKER UND SPANNUNG: 2 Produkte in neuen Kategorien nennen «EU-Stecker» (zwei Schäler; der Euro-Stecker Typ C passt in Schweizer Steckdosen, das Datenblatt ist trotzdem zu prüfen). Die Waffelmaschine «110 V» und der Reise-Reiskocher «12V/24V» wurden bei der Gegenlesung aus den Kategorien genommen (siehe «ausserhalb»). Drei Produkte nennen 12 V (zwei LED-Streifen und ein Kühlventilator) und brauchen ein Netzteil; ob es im Lieferumfang liegt, ist nicht geprüft. Die Stecker-Bereinigung des Shops (Skill shop-auswahl-varianten) ist für diese Produkte vor dem Live-Gang zu wiederholen.",
+  "GRENZE DER MESSUNG: Die Fremdkörper-Prüfung besteht aus gelesenen Mitgliederlisten (kleine und Sammel-Kategorien ganz, grosse in verteilten Stichproben), einem Verdachtswort-Abgleich über alle 4 280 Mitgliedschaften (Tier-, Fahrzeug-, Elektronik-, Mode-, Kosmetik-, Garten-Wörter) und dem Lesen der Lücke und des Rests. Im letzten Durchgang fand sie in «Dekoobjekte & Accessoires» 1 Fremdkörper (ein Taillen-Massagegerät), 16 falsch einsortierte Textilien (Sofabezüge, Kissen, Bettläufer) und eine Futterstation; alle sind behoben. In den Durchgängen davor waren es rund 100 Fremdkörper vor dem Schärfen der Titel-Ausschlüsse (Zählung aus der Arbeit, nicht neu gemessen). Ein Produkt, dessen Titel keines der Verdachtswörter trägt, kann trotzdem falsch liegen; die Kategorien folgen deshalb wo möglich der Google-Klasse und nicht dem Titel. Die Gegenlesung am 27.10.2026 hat diese Grenze verkleinert: gelesen wurden alle Mitgliedschaften Titel für Titel (nicht nur Stichproben), siehe GEGENLESUNG. Ein Produkt, dessen Titel keine Art nennt und dessen Google-Klasse falsch ist, bleibt auch dann unentdeckt.",
+  "GEGENLESUNG (unabhängige Prüfung, 27.10.2026, Messstand 56 620 aktive Produkte): Gelesen wurden alle 4 280 Mitgliedschaften der damaligen 67 Kategorien Titel für Titel (nicht als Stichprobe), die 498 Produkte des Universums ohne Kategorie und ohne Träger (die übrigen 99 des damaligen Rests tragen andere Dateien), alle 86 Unterfilter-Chips des ersten Laufs mit je 4 Beispielen und die Mitglieder der 15 vorhandenen Kinder nach Tag (bis 160 ganz, darüber 60 bis 85 verteilt). Dazu 38 Stichwort-Suchen gegen den ganzen Katalog (je Treffer: in einer Kategorie dieser Datei, in einer anderen Datei oder ungedeckt) und eine Verdachtswort-Suche über alle Mitgliedschaften (12 Wortgruppen: Tier, Spielzeug, Kostüm, Schmuck, Werkzeug, Mode, Elektronik, Kosmetik, Garten, Sport, Medizin, Sonstiges). Fremdkörper vorher: 102 von 4 280 (2,4 %), davon 94 Produkte, die eine andere Bereichsdatei trägt (auto 27, sport 51, hobby-party 16), und 8 ohne Träger; nachher 0 von 4 253 (0,0 %) nach derselben Methode. Funde und Stand: (1) Die ganze Kategorie «Campingkocher & Outdoor-Kocher» war bis auf 1 Produkt doppelt in sport.json: gestrichen. (2) Auto-Ware in Haushaltsklassen (Luftbefeuchter 9, Staubsauger 9, Kühl- und Lunchboxen 5, Wasserkessel und Thermobecher 2, Reiskocher 1, Motorradhelm-Halter 1): per titel_nicht an auto abgegeben. (3) Camping-Ware (Pfannen 4, Töpfe und Kochsets 5, Thermobecher 4, Teller 1, Schneidebrett 1, Backblech 1, Decke 1, Lüfter 1, Lichterkette 1): an sport abgegeben. (4) Kunstblumen und Kränze (12 in «Dekoobjekte & Accessoires», 4 in «Weihnachts- & Saisondeko»): an hobby-party abgegeben. (5) Das vorhandene Kind «besteck» enthielt 28,6 % Fremdkörper: durch eine neue Kategorie ersetzt. (6) 29 Kosmetik-, Make-up- und Schmuck-Organizer hatten keinen Träger, und die Beschreibung von «Organizer & Schubladenboxen» versprach sie: neue Kategorie «Kosmetik- & Schmuck-Organizer». (7) 110-V-Waffelmaschine und 12V/24V-Reiskocher herausgenommen; Schnüffelteppich (Tierzubehör), Gesichtsbefeuchter und 2 Campingkocher-Teile herausgenommen. (8) Unterfilter: der Chip «Öl- & Essigspender» enthielt Mörser (umbenannt), «Messbecher, Waagen & Thermometer» nannte Waagen, die per Regel ausgeschlossen sind (umbenannt), im Cocktail-Chip traf «eis» auch «Eisen», bei den Staubsaugern lagen Saugroboter im Handstaubsauger-Chip und der Zubehör-Chip hatte nur 12 echte Zubehörteile (zwei Chips neu geschnitten). (9) Acht Beschreibungen versprachen Inhalte, die die Kategorie nicht (mehr) enthält oder die nicht belegt sind (Auto, Windspiele, Kunstblumen, Solar-Lichterketten, Kosmetik-Organizer, «leises Uhrwerk», «wasserdicht und schimmelresistent», «erholsamer Schlaf», «schonendes Garen»): sachlich neu gefasst. (10) Der Hinweis zu Hygiene-Wörtern nannte 18 Produkte; gezählt sind 40. (11) Die Gruppe «Elektrische Küchengeräte» enthielt «Messerschärfer» (24 Produkte, nur 4 elektrisch): Gruppe heisst jetzt «Küchengeräte». Die Zahlen der übrigen «ausserhalb»-Einträge stammen vom ersten Lauf und wurden nur bei Einträgen angepasst, die die Gegenlesung ändert. Messskripte der Gegenlesung (nur lesend, nicht im Repo): /tmp/taxo_b/wohnen/gl_*.mjs.",
+  "GEGENLESUNG, OFFENE PUNKTE (vorhandene Kinder und Regelgrenzen, in dieser Datei nicht behebbar): (a) «luftreiniger-klimageraete» (55): 11 Auto-Luftreiniger (20 %; auto.json trägt dieselben Produkte), 4 Halskettenreiniger, 9 Heizlüfter; die Engine-Regel nimmt Luftreiniger mit der Google-Klasse Vehicles & Parts ausdrücklich auf. (b) «kissen» (458): 53 Kissenbezüge (11,6 %), weil BEZUG_RE in automation/lib/kategorien.mjs nur den Wortanfang prüft (anfang()) und Zusammensetzungen wie «Sofakissenbezug» oder «Seidenkissenbezug» durchrutschen; umgekehrt nennen 12 von 541 «Kissenbezüge» im Titel «Füllung» oder «oder Kissen». (c) «nachttischlampen» (34) überlappt mit Decken- und Pendelleuchten (6), Nachtlichtern (6) und Wandleuchten (3) derselben Gruppe. (d) Die 14 vorhandenen Kinder teilen 38 Zuordnungen mit anderen Bereichsdateien (zum Beispiel Solar- und Camping-Lampen in Tisch- und Wandleuchten, Kinderzimmer-Ware in Kissen, Körben und Nachtlichtern; gemessen mit den Skripten der Gegenlesung). (e) Weinregale stehen zweimal: «Wine Bottle Holders» in «Bar- & Weinzubehör», «Wine Racks» in «Regale & Wandregale». (f) Zitruspressen sind zweigeteilt: 3 in «Küchengadgets» (CJ-Klasse Kitchen Tools), 8 in «Mixer, Entsafter & Zerkleinerer» (Klasse Juicers). (g) Grenzfälle, die bewusst bleiben: 25 Kinder- und Baby-Titel, die spielzeug.json nicht trägt (Kinderkissen, Baby-Badetücher), ein Gebetsteppich für Kinder, 4 Wecker mit Bluetooth-Lautsprecher (tragen zusätzlich den Tag «Lautsprecher & Boxen»), der Wandteppich «Gras-Hanfblatt» (Hanfblatt-Motiv; ob der Händler das bewerben will, entscheidet der Besitzer). (h) Die Kategorie «Kosmetik- & Schmuck-Organizer» ist eine Entscheidung der Gegenlesung; trägt beauty.json später dieselben Produkte, ist eine der beiden zu streichen."
  ]
 }

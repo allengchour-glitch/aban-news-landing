@@ -44,10 +44,11 @@
       "handle": "lenkradbezuege",
       "titel": "Lenkradbezüge & Lenkradhüllen",
       "g_prefix": [
-        "Vehicles & Parts"
+        "Vehicles & Parts",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures"
       ],
       "titel_muss": [
-        "lenkradbezug|lenkradhülle|lenkradschutz|lenkradabdeckung|lenkradgriff|lenkradschoner|lenkrad-set|lenkradüberzug|steuerrad-abdeckung|steuerungshülle|lenkrad-abdeckung|lenkrad-set"
+        "lenkradbezug|lenkradhülle|lenkradschutz|lenkradabdeckung|lenkradgriff|lenkradschoner|lenkrad-set|lenkradüberzug|steuerrad-abdeckung|steuerungshülle|lenkrad-abdeckung|lenkrad-set|autolosetuch|lenkergriffe für alle jahreszeiten"
       ],
       "titel_nicht": [],
       "beschreibung": "Bezüge und Hüllen fürs Lenkrad aus Leder, Kunstleder, Plüsch, Wolle oder Carbon-Optik, universal oder passend für einzelne Fahrzeugmodelle.",
@@ -64,7 +65,7 @@
           "handle": "lenkradbezuege-sport",
           "titel": "Sportlich & rutschfest",
           "titel_muss": [
-            "sport|rutschfest|anti-?rutsch|ultra-?dünn|ultraflach|ultra-dünn"
+            "sport|rutschfest|anti-?rutsch"
           ],
           "titel_nicht": []
         }
@@ -216,7 +217,7 @@
     },
     {
       "handle": "auto-karosserie-wetterschutz",
-      "titel": "Karosserie, Anbauteile & Wetterschutz",
+      "titel": "Karosserie, Ersatzteile & Wetterschutz",
       "g_prefix": [
         "Vehicles & Parts"
       ],
@@ -226,7 +227,7 @@
       "titel_nicht": [
         "reparatur"
       ],
-      "beschreibung": "Teile und Schutz rund um Karosserie und Anbauteile: Türkantenschutz, Stossstangen-Streifen und -halter, Anhängerkupplung, Zündkerze und Zündspule, Sonnen- und Frostschutz für die Scheiben, Eiskratzer und Abschleppseil.",
+      "beschreibung": "Teile und Schutz rund um Karosserie und Anbauteile: Türkantenschutz, Stossstangen-Streifen und -halter, Anhängerkupplung, Ersatzteile wie Zündkerze und Zündspule, Sonnen- und Frostschutz für die Scheiben, Eiskratzer und Seil für Bergungen.",
       "unterfilter": []
     },
     {
@@ -241,7 +242,8 @@
       "titel_muss": [
         "^(?=.*((^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*|wagen)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)|autositz|autoschlüssel))(?=.*(schlüssel|key|rfid))",
         "^(?=.*(bmw|mazda|ford|geely|peugeot|(^|[^a-zäöüß])(vw)(?![a-zäöüß])|volkswagen|chevrolet|fiat|toyota|honda|audi|mercedes|tesla|opel|renault|citroën|hyundai|kia|nissan|suzuki|skoda|volvo|land rover|jeep|porsche))(?=.*(schlüssel|key))",
-        "funkschlüssel|fernbedienungsschlüssel|fernbedienungsgehäuse|smart key|smart remote key|key card|auto-schlüssel|rfid-schutz|schlüsselgehäuse für"
+        "funkschlüssel|fernbedienungsschlüssel|fernbedienungsgehäuse|smart key|smart remote key|key card|auto-schlüssel|rfid-schutz|schlüsselgehäuse für",
+        "^(schlüsseletui aus crazy horse leder|schlüsseletui aus leder mit sichtfenster|handgemachtes schlüssel-etui aus rindsleder|schlüsselhüllen-sleeve aus aluminiumlegierung)$"
       ],
       "titel_nicht": [
         "schlüssel-?anhänger"
@@ -283,7 +285,9 @@
       "titel_muss": [
         "dashcam|rekorder|recorder|aufzeichner|driving recorder|fahrkamera|rückfahrkamera|rückfahrdisplay|rückspiegel-display|fahrzeug-?kamera"
       ],
-      "titel_nicht": [],
+      "titel_nicht": [
+        "motorr(a|ä)d"
+      ],
       "beschreibung": "Kameras fürs Fahrzeug: Dashcams mit Nachtsicht, Mehrkamera-Systeme mit Aufzeichnung vorne und hinten, Rückspiegel-Dashcams sowie Rückfahrkameras und Rückfahrdisplays.",
       "unterfilter": []
     },
@@ -303,12 +307,13 @@
       ],
       "titel_muss": [
         "^(?=.*((^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*|wagen)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)|autositz|autoschlüssel))(?=.*(radio|mp3|mp5|player|lautsprecher|navi|navigator|gps|transmitter|bluetooth|carplay|android auto|signalverstärker|funkgerät))",
-        "carplay|android auto|infotainment|mp5-player|(^|[^a-zäöüß])(hud)(?![a-zäöüß])|hud-|head-up|kopf-display|bildschirmprojektor|lenkrad-controller"
+        "carplay|android auto|infotainment|mp5-player|(^|[^a-zäöüß])(hud)(?![a-zäöüß])|hud-|head-up|kopf-display|bildschirmprojektor|lenkrad-controller",
+        "^(bluetooth-transmitter|2-in-1 wireless auto-adapter)$"
       ],
       "titel_nicht": [
         "lader|lade|vintage|diagnose|funkgerät"
       ],
-      "beschreibung": "Unterhaltung und Orientierung im Auto: MP5- und Bluetooth-Player, Infotainment-Systeme, CarPlay- und Android-Auto-Adapter, Bluetooth-Empfänger, FM-Transmitter, Navigationsgeräte, Lautsprecher und Head-up-Displays.",
+      "beschreibung": "Unterhaltung und Orientierung im Auto: MP5- und Bluetooth-Player, Infotainment-Systeme, CarPlay-, Android-Auto- und Wireless-Adapter, Bluetooth-Empfänger, FM-Transmitter, Navigationsgeräte, Lautsprecher und Head-up-Displays.",
       "unterfilter": []
     },
     {
@@ -329,7 +334,7 @@
         "starthilfe|notstart|starter-booster|polklemmen|batterie-schalter"
       ],
       "titel_nicht": [],
-      "beschreibung": "Strom und Batterie im Fahrzeug: Starthilfegeräte mit Powerbank-Funktion, Batterieladegeräte, Wechselrichter von 12 auf 220 Volt, Krokodilklemmen, Polklemmen und Batterieschalter.",
+      "beschreibung": "Strom und Batterie im Fahrzeug: Starthilfegeräte mit Powerbank-Funktion, Batterieladegeräte, Wechselrichter von 12 auf 220 Volt, Krokodilklemmen, Polklemmen, Batterieschalter und eine Ladebox fürs Elektrofahrzeug.",
       "unterfilter": []
     },
     {
@@ -412,7 +417,8 @@
       "g_prefix": [
         "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Repair & Specialty Tools",
         "Hardware > Tools",
-        "Hardware > Hardware Accessories > Hardware Fasteners"
+        "Hardware > Hardware Accessories > Hardware Fasteners",
+        "Business & Industrial > Material Handling > Lifts & Hoists"
       ],
       "g_nicht": [
         "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Repair & Specialty Tools > Vehicle Diagnostic Scanners",
@@ -425,12 +431,13 @@
       ],
       "titel_muss": [
         "^(?=.*((^|[^a-zäöüß])(auto|autos|kfz|pkw|lkw|fahrzeug[a-zäöüß]*|wagen)(?!mat|fokus|-fokus|focus|-focus|-reverse|-clicker|clicker|-leveling|-rotation|-tracking)|autositz|autoschlüssel))(?=.*(hammer|werkzeug|rohrschellen|muttern|folien|wagenheber|reparatur|stossstangen|umhüllung))",
-        "land rover|klimaanlagen öl|schwungrad|ventil-einstell|ventileinsatz|dellen|beulen|alufelgen|motor-timing|kettentrieb|karosserie|(^|[^a-zäöüß])(pdr)(?![a-zäöüß])|kantenpress|kühlerdruck|bremsen-werkzeug|stossstangen[- ]reparatur|scheiben-demontage"
+        "land rover|klimaanlagen öl|schwungrad|ventil-einstell|ventileinsatz|dellen|beulen|alufelgen|motor-timing|kettentrieb|karosserie|(^|[^a-zäöüß])(pdr)(?![a-zäöüß])|kantenpress|kühlerdruck|bremsen-werkzeug|stossstangen[- ]reparatur|scheiben-demontage|ölfilterschlüssel"
       ],
       "titel_nicht": [
-        "nothammer"
+        "nothammer",
+        "motorr(a|ä)d"
       ],
-      "beschreibung": "Werkzeug zum Reparieren: Dellen- und Beulenzieher, Karosseriezangen, Bremsen- und Motorwerkzeug, Ventil-Werkzeug sowie Reparatur-Sets für Stossstange und Felgen.",
+      "beschreibung": "Werkzeug zum Reparieren: Dellen- und Beulenzieher, Karosseriezangen, Bremsen- und Motorwerkzeug, Ölfilterschlüssel, Ventil-Werkzeug, Wagenheber sowie Reparatur-Sets für Stossstange und Felgen.",
       "unterfilter": []
     },
     {
@@ -475,11 +482,9 @@
           "titel_nicht": []
         },
         {
-          "handle": "motorrad-satteltaschen",
-          "titel": "Sattel-, Seiten- & Hecktaschen",
-          "titel_muss": [
-            "sattel|seiten|heck|rücksitz|gepäck|pack|koffer|tank|bein|hüft|bauch|brust"
-          ],
+          "handle": "motorrad-taschen-koffer",
+          "titel": "Taschen, Koffer & Beutel",
+          "titel_muss": [],
           "titel_nicht": [
             "rucksack"
           ]
@@ -508,9 +513,10 @@
         "^(?=.*(motorr(a|ä)d))(?=.*(helm|stiefel|jacke|hose|kombi|knie|handschutz|schutz|protekt|sturmhaube|gesichtsmaske|schuh|weste|headset))"
       ],
       "titel_nicht": [
-        "-stil|plateau|fernbedienung|reithelm|motorradtasche"
+        "-stil|plateau|fernbedienung|reithelm|motorradtasche",
+        "wandhalter|lichtleiste"
       ],
-      "beschreibung": "Für die Fahrt: Motorradhelme samt Zubehör, Knieschützer und Handschutz, Helm-Headsets, Regenkombi, Hosen und Jacken sowie Motorradstiefel und Sturmhauben.",
+      "beschreibung": "Für die Fahrt: Motorradhelme und Helmtaschen, Knieschützer und Handschutz, Helm-Headsets, Regenkombi, Hosen und Jacken sowie Motorradstiefel und Sturmhauben.",
       "unterfilter": []
     },
     {
@@ -521,20 +527,22 @@
         "Cameras & Optics > Cameras > Video Cameras",
         "Hardware",
         "Sporting Goods > Outdoor Recreation > Cycling",
-        "Electronics > Electronics Accessories > Power"
+        "Electronics > Electronics Accessories > Power",
+        "Home & Garden > Household Supplies"
       ],
       "titel_muss": [
         "^(?=.*(motorr(a|ä)d))"
       ],
       "titel_nicht": [
-        "tasche|beutel|knie|reifendruckmesser|helm|handschutz"
+        "tasche|beutel|knie|reifendruckmesser|^(?!.*(wandhalter|lichtleiste)).*helm|handschutz",
+        "(^|[^a-zäöüß])auto(?![a-zäöüß])"
       ],
-      "beschreibung": "Zubehör und Teile fürs Motorrad: Scheinwerfer, Kameras und Recorder, Bremsscheibenschloss, Kettennieter und Spezialwerkzeug, Halterungen, Spanngurte und Ladegeräte.",
+      "beschreibung": "Zubehör und Teile fürs Motorrad: Scheinwerfer, Kameras und Recorder, Bremsscheibenschloss, Kettennieter und Spezialwerkzeug, Halterungen, Spanngurte und Ladegeräte sowie Wandhalter und Lichtleiste für den Helm.",
       "unterfilter": []
     },
     {
       "handle": "e-scooter-e-bike-zubehoer",
-      "titel": "E-Scooter- & E-Bike-Zubehör",
+      "titel": "Scooter- & E-Bike-Zubehör",
       "g_prefix": [
         "Vehicles & Parts",
         "Electronics",
@@ -548,9 +556,10 @@
         "(^|[^a-zäöüß])(e-scooter|escooter|scooter|e-bike|e-bikes|ebike|e-fahrzeug|e-fahrzeuge)"
       ],
       "titel_nicht": [
-        "velohelm"
+        "velohelm",
+        "motorr(a|ä)d"
       ],
-      "beschreibung": "Zubehör für Elektro-Scooter und E-Bikes: Ladegeräte und Ersatzbatterie, Taschen und Lenkertaschen, LED-Scheinwerfer, Rücklicht und Sicherheitsweste, Griffe, Wandhalterung und Falt-Helm.",
+      "beschreibung": "Zubehör für Scooter, E-Scooter und E-Bikes: Ladegeräte und Ersatzbatterie, Taschen und Lenkertaschen, LED-Scheinwerfer, Rücklicht und Sicherheitsweste, Griffe, Wandhalterung und Falt-Helm.",
       "unterfilter": []
     }
   ],
@@ -613,34 +622,32 @@
   ],
   "ausserhalb": [
     {
-      "text": "Google-Kategorie «Vehicles & Parts», aber kein belegbarer Fahrzeugbezug im Titel oder das Produkt gehört offensichtlich woandershin (24 Produkte): Wandsticker und Wandtattoo, Computermaus, Karten-Tracker, Gürtelaufkleber, Weihnachtsbaum-Anhänger, Kinder-Spielmatte, Schlüssel-Organizer für die Hosentasche, Wassertank, Hochdruckreiniger ohne Auto-Bezug, Polster-Reparatursticker, «Bluetooth-Transmitter» und fünf Schlüsseletuis, deren Titel weder Auto noch eine Marke nennt, dazu Titel, deren Sinn unklar ist («Hochsteller · 37 × 49 cm», «Autolosetuch Rund D-Form Carbon-Optik», «3D Luftkissen Airbag», «Glaskräusler mit Teleskopstange»). Nach der Regel «nie raten» in keiner Kategorie; gehören in Nacharbeit zu Deko, Kinder, Schlüsselzubehör oder Werkzeug. Dazu «Stauraum-Innentasche für K1600 Modelle»: eine Motorradtasche, aber ohne Wort «Motorrad» im Titel, deshalb nicht in «Motorrad-Taschen & Gepäck».",
+      "text": "Google-Kategorie «Vehicles & Parts», aber kein belegbarer Fahrzeugbezug im Titel oder das Produkt gehört offensichtlich woandershin (17 Produkte): Wandsticker und Wandtattoo, Computermaus, Karten-Tracker (laut Beschreibung ein Tracker für Geldbörse und Gepäck), Gürtelaufkleber, Weihnachtsbaum-Anhänger, Kinder-Spielmatte, Schlüssel-Organizer für den Schlüsselbund, Wassertank, Hochdruckreiniger ohne Auto-Bezug, Polster-Reparatursticker, «Glaskräusler mit Teleskopstange» (laut Beschreibung ein Fensterreiniger, die Google-Klasse stimmt nicht), «Nackenkissen für Kinder» (laut Beschreibung für Auto, Zug oder Flugzeug), «Schutzhülle für Fernbedienung» (laut Beschreibung für Autoschlüssel und Fernbedienungen), «3D Luftkissen Airbag» (laut Beschreibung ein Spandex-Kissen ohne Fahrzeugbezug) und «Hochsteller · 37 × 49 cm» (laut Beschreibung nur «Zubehör für dein Auto»). Nach der Regel «nie raten» in keiner Kategorie; gehören in Nacharbeit zu Deko, Kinder, Schlüsselzubehör oder Werkzeug. Dazu «Stauraum-Innentasche für K1600 Modelle»: eine Motorradtasche, aber ohne Wort «Motorrad» im Titel, deshalb nicht in «Motorrad-Taschen & Gepäck». Die Gegenlesung hat acht Titel aus dieser Gruppe in Kategorien geholt, weil ihre Beschreibung im Shop den Fahrzeugbezug belegt: «Autolosetuch Rund D-Form Carbon-Optik» und «Nicht rutschige, abriebfeste Lenkergriffe für alle Jahreszeiten» (beide ein Lenkradschutz für 38 cm Durchmesser), vier Autoschlüssel-Etuis, «Bluetooth-Transmitter» (fürs Autoradio) und «2-in-1 Wireless Auto-Adapter».",
       "beispiele": [
         "Wandsticker Traumfänger Feder Muster",
         "Wandtattoo für Kinderzimmer",
         "Kabellose Computermaus für Auto",
         "Karten-Tracker",
         "Hochsteller · 37 × 49 cm",
-        "Autolosetuch Rund D-Form Carbon-Optik",
         "Spiel- und Aufbewahrungsmatte für Kinder, Meerjungfrau-Motiv",
         "Stauraum-Innentasche für K1600 Modelle",
-        "Bluetooth-Transmitter",
-        "Schlüsseletui aus Leder mit Sichtfenster",
-        "Schutzhülle für Fernbedienung"
+        "Schutzhülle für Fernbedienung",
+        "Glaskräusler mit Teleskopstange",
+        "3D Luftkissen Airbag"
       ]
     },
     {
-      "text": "Andere Fahrzeugarten und Fahrrad-Teile unter «Vehicles & Parts» (7 Produkte): Kart, Yacht, Modellschiff, Golf-Cart sowie zwei Mountainbike-Schutzfolien und Lenkergriffe ohne Angabe, ob Velo oder Motorrad. Die Mountainbike-Folien gehören zu «Velo & Radsport» (Regel «mountainbike»).",
+      "text": "Andere Fahrzeugarten und Fahrrad-Teile unter «Vehicles & Parts» (6 Produkte): Kart, Yacht, Modellschiff, Golf-Cart sowie zwei Mountainbike-Schutzfolien. Die Mountainbike-Folien gehören zu «Velo & Radsport» (Regel «mountainbike»). Die früher hier genannten «Lenkergriffe für alle Jahreszeiten» sind laut Beschreibung ein Lenkradschutz und stehen jetzt in «Lenkradbezüge & Lenkradhüllen».",
       "beispiele": [
         "Lenkrad für Vierradkarts 27 cm Durchmesser",
         "Yacht-Steuerhebel 320/350mm Universal-Sport-Design",
         "Fahrtregler für Modellschiffe und -autos",
         "Handgemachter Smartphone-Halter fürs Golf-Cart-Lenkrad",
-        "Mountainbike-Schutzfolie",
-        "Nicht rutschige, abriebfeste Lenkergriffe für alle Jahreszeiten"
+        "Mountainbike-Schutzfolie"
       ]
     },
     {
-      "text": "Mode, Taschen und Schmuck mit Auto- oder Motorrad-Wort im Titel (13 Produkte): Motorrad als Stilbegriff (Jacke, Hose, Top, Plateau-Schuhe, Crossbody- und Schultertasche «im Motorrad-Stil»), Sonnenschutz-Gesichtsmaske für Reiter, Kinder-Badeschlappen mit Auto-Motiv, Auto-Schlüsselanhänger, Versicherungs-Deckel für Fahrzeugpapiere, Aufbewahrungsbeutel und Zubehörtasche. Gehören zur Mode-Taxonomie, zu Schmuck oder Taschen.",
+      "text": "Mode, Taschen und Schmuck mit Auto- oder Motorrad-Wort im Titel (13 Produkte): Motorrad als Stilbegriff (Jacke, Hose, Top, Plateau-Schuhe, Crossbody- und Schultertasche «im Motorrad-Stil»), Sonnenschutz-Gesichtsmaske für Reiter, Kinder-Badeschlappen mit Auto-Motiv, Auto-Schlüsselanhänger, Versicherungs-Deckel für Fahrzeugpapiere, Aufbewahrungsbeutel und Zubehörtasche. Gehören zur Mode-Taxonomie, zu Schmuck oder Taschen. Zwei davon sind laut Beschreibung Auto-Zubehör: «Kfz-Versicherungs-Deckel für Fahrzeugpapiere» (Dokumentenhülle) und «Auto-Aufbewahrungsbeutel vorne – 600D Oxford» (Beutel fürs Armaturenbrett). Beide liegen in den Google-Klassen für Handtaschen; die Regel von «Auto-Organizer & Ablagen» liest diese Klasse nicht mit, weil sonst dieselben Wörter (Aufbewahrung, Tasche, Hänge-) über 540 Umhängetaschen und Rucksäcke treffen (Probe der Gegenlesung: 59 → 604 Mitglieder).",
       "beispiele": [
         "Herren Kunstlederjacke im Motorrad-Stil",
         "High-Rise Bootcut Hose im Motorrad-Stil",
@@ -702,16 +709,17 @@
   ],
   "hinweise": [
     "Aufbau: 5 Gruppen nach dem Vorbild von CJ «Automobiles & Motorcycles» und nach Kundensicht: Innenraum (7 Kategorien) · Aussen, Schlüssel & Sicherheit (4) · Elektronik & Laden (4 neue + auto-ladegeraete aus dem Bereich handy) · Pflege & Werkzeug (4) · Motorrad, E-Scooter & Velo (4 neue + das vorhandene velo-radsport). Zusammen 23 neue Kategorien, alle mit eigener Beschreibung, 11 Unterfilter-Chips (alle mit mindestens 15 Treffern), Handles frei im Shop und in allen anderen Bereichsdateien (messen.mjs --alle: keine Kollision).",
-    "Universum 733 Produkte: Google «Vehicles & Parts» (534 aktive, davon 6 mit Sperr-Tag: fünf Fortura-Radsocken und ein Laser-Scheinwerfer mit compliance-pruefen, die das Werkzeug automatisch ausschliesst) plus alle Titel mit Auto, Kfz, Pkw, Lkw, Fahrzeug, Motorrad, Motorroller, Scooter, E-Bike, Wohnmobil, Dashcam, OBD oder Kofferraum in allen Google-Klassen ausser Tier, Spielzeug, Baby, Schmuck, Kunst, Gesundheit, Möbel, Deko, Telefon und GPS-Tracker, abzüglich der Auto-Ladegeräte des Bereichs handy. Abdeckung 671 von 733 (91,5 %); die 62 übrigen stehen mit Grund in «ausserhalb». Die Aufgabe nannte «Vehicles & Parts» mit 494 Produkten ohne Kategorie und das Wort «Anhänger»; «Anhänger» wurde nicht als Suchwort genommen (Schmuck-Anhänger: 100+ Fehltreffer), Anhängerteile stehen über «Anhängerkupplung» und «Handbremse für Anhänger» in den Anbauteilen.",
-    "CJ-Abgleich (Automobiles & Motorcycles: 6 Gruppen, 32 Blätter). Mit eigener Kategorie: Car Stickers, Other Exterior Accessories, Car Lights (zusammen «Aufkleber, Folien & Beleuchtung» und «Karosserie, Anbauteile & Wetterschutz»), Steering Covers, Automobiles Seat Covers, Stowing Tidying, Key Case for Car, Car Aromatherapy und Car Perfume (zusammen «Autoduft, Luftreiniger & Luftbefeuchter»), Car Washer, Paint Care, Diagnostic Tools, Other Maintenance Products («Karosserie-, Motor- & Spezialwerkzeug» und «Reifen, Luftpumpen & Reifendruck»), DVR & Dash Camera mit Vehicle Camera, Car Mirror Video und Car Monitors («Dashcams & Rückfahrkameras»), Car Radios mit Car Multimedia Player («Auto-Multimedia, CarPlay & Navigation»), Alarm Systems & Security, Jump Starter, Other Motorcycle Accessories. Zu wenige Produkte, daher in grösseren Kategorien aufgegangen: Car Covers (4 Sonnen- und Frostschutz-Produkte, in «Karosserie, Anbauteile & Wetterschutz»), Floor Mats (2, in «Armlehnen, Schaltknäufe & Zierteile»), Vehicle GPS (3 Navigationsgeräte, in «Auto-Multimedia, CarPlay & Navigation»), Helmet Headset (2, in «Motorradhelme, Schutz & Bekleidung»), Motorcycle Lighting (1 Scheinwerfer), Spark Plugs & Ignition System (2). GPS Trackers liegt im Bereich computer. Im Katalog nicht vorhanden (0 Titeltreffer): Exhaust, Motor Brake System, Motorcycle Seat Covers, Windscreen Wipers, Car Brake System (ein Handbremsen-Teil für Anhänger). Zusätzlich zu CJ: Komfort (Heizen, Kühlen, Kochen im Auto, 16), Reifen und Pumpen (16), Motorrad-Taschen (59), E-Scooter und E-Bike (22).",
-    "Vorhandene Sammelbecken, die durch die neuen Kategorien ersetzt werden («ersetzt: ...»): auto-kfz-zubehoer (Tag auto, im Menü unter Elektronik; 769 Produkte insgesamt, 482 aktive, davon 359 = 74 % in den neuen Auto-Kategorien; die übrigen 123 sind Fremdes oder gehören woanders hin: 29 «Vehicles & Parts»-Produkte ohne Fahrzeugbezug im Titel oder falsch einsortiert, 17 Rückenstützen und Massagekissen in Gesundheit, 14 Baby-Autositz-Zubehör, 8 GPS-Tracker und Radar, 8 Hochdruckreiniger und Garten-Düsen ohne Auto im Titel, 7 Ladegeräte, Auto-Clicker und 3D-Druck-Zubehör, 7 Haustier-Zubehör, 6 Schlüsselanhänger, 5 gesperrte Fortura-Radsocken, 4 Spielzeug und 18 Einzelfälle), dieselbe Tag-Regel steckt in auto-zubehoer (770 insgesamt) und auto-halterungen (769 insgesamt, zusätzlich Tags Auto-Halterung, Auto-Power, Auto-Reinigung), auto-pflege (Titelregel mit Sonax, Rain-X, «Innenraum» usw.; 8 aktive, 6 davon in den neuen Kategorien), auto-handy (Titelregel «Handyhalter», «KFZ», «Auto-Halterung»; 54 aktive, davon 40 in den Handy-Kategorien und nur 2 in den Auto-Kategorien: ersetzt durch handy/handyhalter-staender), auto-reinigung, auto-power und auto-handy-laden (alle ohne aktive Produkte). Der Menüpunkt auto-kfz-zubehoer wird durch den neuen Zweig ersetzt; die anderen alten Collections sind nicht im Menü und bleiben es nicht.",
+    "Universum 733 Produkte: Google «Vehicles & Parts» (534 aktive, davon 6 mit Sperr-Tag: fünf Fortura-Radsocken und ein Laser-Scheinwerfer mit compliance-pruefen, die das Werkzeug automatisch ausschliesst) plus alle Titel mit Auto, Kfz, Pkw, Lkw, Fahrzeug, Motorrad, Motorroller, Scooter, E-Bike, Wohnmobil, Dashcam, OBD oder Kofferraum in allen Google-Klassen ausser Tier, Spielzeug, Baby, Schmuck, Kunst, Gesundheit, Möbel, Deko, Telefon und GPS-Tracker, abzüglich der Auto-Ladegeräte des Bereichs handy. Abdeckung nach der Gegenlesung 679 von 733 (92,6 %; vorher 671 = 91,5 %); die 54 übrigen stehen mit Grund in «ausserhalb». Die Aufgabe nannte «Vehicles & Parts» mit 494 Produkten ohne Kategorie und das Wort «Anhänger»; «Anhänger» wurde nicht als Suchwort genommen (Schmuck-Anhänger: 100+ Fehltreffer), Anhängerteile stehen über «Anhängerkupplung» und «Handbremse für Anhänger» in den Anbauteilen.",
+    "CJ-Abgleich (Automobiles & Motorcycles: 6 Gruppen, 32 Blätter). Mit eigener Kategorie: Car Stickers, Other Exterior Accessories, Car Lights (zusammen «Aufkleber, Folien & Beleuchtung» und «Karosserie, Ersatzteile & Wetterschutz»), Steering Covers, Automobiles Seat Covers, Stowing Tidying, Key Case for Car, Car Aromatherapy und Car Perfume (zusammen «Autoduft, Luftreiniger & Luftbefeuchter»), Car Washer, Paint Care, Diagnostic Tools, Other Maintenance Products («Karosserie-, Motor- & Spezialwerkzeug» und «Reifen, Luftpumpen & Reifendruck»), DVR & Dash Camera mit Vehicle Camera, Car Mirror Video und Car Monitors («Dashcams & Rückfahrkameras»), Car Radios mit Car Multimedia Player («Auto-Multimedia, CarPlay & Navigation»), Alarm Systems & Security, Jump Starter, Other Motorcycle Accessories. Zu wenige Produkte, daher in grösseren Kategorien aufgegangen: Car Covers (4 Sonnen- und Frostschutz-Produkte, in «Karosserie, Ersatzteile & Wetterschutz»), Floor Mats (2, in «Armlehnen, Schaltknäufe & Zierteile»), Vehicle GPS (3 Navigationsgeräte, in «Auto-Multimedia, CarPlay & Navigation»), Helmet Headset (2, in «Motorradhelme, Schutz & Bekleidung»), Motorcycle Lighting (1 Scheinwerfer), Spark Plugs & Ignition System (2). GPS Trackers liegt im Bereich computer. Im Katalog nicht vorhanden (0 Titeltreffer): Exhaust, Motor Brake System, Motorcycle Seat Covers, Windscreen Wipers, Car Brake System (ein Handbremsen-Teil für Anhänger). Zusätzlich zu CJ: Komfort (Heizen, Kühlen, Kochen im Auto, 16), Reifen und Pumpen (16), Motorrad-Taschen (59), E-Scooter und E-Bike (22).",
+    "Vorhandene Sammelbecken, die durch die neuen Kategorien ersetzt werden («ersetzt: ...»): auto-kfz-zubehoer (Tag auto, im Menü unter Elektronik; 769 Produkte insgesamt, 482 aktive, davon 359 = 74 % in den neuen Auto-Kategorien; die übrigen 123 sind Fremdes oder gehören woanders hin: 29 «Vehicles & Parts»-Produkte ohne Fahrzeugbezug im Titel oder falsch einsortiert, 17 Rückenstützen und Massagekissen in Gesundheit, 14 Baby-Autositz-Zubehör, 8 GPS-Tracker und Radar, 8 Hochdruckreiniger und Garten-Düsen ohne Auto im Titel, 7 Ladegeräte, Auto-Clicker und 3D-Druck-Zubehör, 7 Haustier-Zubehör, 6 Schlüsselanhänger, 5 gesperrte Fortura-Radsocken, 4 Spielzeug und 18 Einzelfälle), dieselbe Tag-Regel steckt in auto-zubehoer (770 insgesamt) und auto-halterungen (769 insgesamt, zusätzlich Tags Auto-Halterung, Auto-Power, Auto-Reinigung), auto-pflege (Titelregel mit Sonax, Rain-X, «Innenraum» usw.; 8 aktive, 6 davon in den neuen Kategorien), auto-handy (Titelregel «Handyhalter», «KFZ», «Auto-Halterung»; 54 aktive, davon 40 in den Handy-Kategorien und nur 2 in den Auto-Kategorien: ersetzt durch handy/handyhalter-staender), auto-reinigung, auto-power und auto-handy-laden (alle ohne aktive Produkte). Der Menüpunkt auto-kfz-zubehoer wird durch den neuen Zweig ersetzt; die anderen alten Collections sind nicht im Menü und bleiben es nicht. Dazu e-scooter-trottinett (Tag e-scooter, laut Bestand 12 Produkte, im Katalog 0 aktive; nicht im Menü): ersetzt durch «Scooter- & E-Bike-Zubehör» (die Scooter-Produkte tragen im Shop den Tag trottinett, 18 aktive).",
     "fahrrad-auto-werkzeug (Tag sort-werkzeug-fahrzeug, 45 aktive) wird NICHT als Kind eingeordnet: 18 von 45 sind keine Werkzeuge (Sattel, Sattelstütze, Pedale, Kassette, Schaltauge, Fahrradglocke, Lenkergriff, Schlösser, Wandhalterung, dazu LED-Nebelscheinwerfer, Schaum-Sprühpistole, Auto-Waschbürste und Handbremsen-Schloss) = 40 % Fremdkörper. (Der Besitzer-Auftrag nannte die Datei nicht; Messung am Katalog vom 26.10. 20:14.) Die Auto-Hälfte ersetzt «Karosserie-, Motor- & Spezialwerkzeug» (21 der 45 stehen dort); die Fahrrad-Werkzeuge bleiben im Werkzeug-Baum des Bereichs haus-bau. velo-radsport (256 aktive) ist dagegen sauber und wird als Kind eingeordnet: 158 der 256 Titel gelesen (alle 59 mit Google-Klasse ausserhalb von «Cycling» und jeder zweite der 197 aus «Cycling»), kein Fremdkörper; zweifelhaft nur zwei Kinder-Helme «für Skate & Roller», die als Velohelm verkauft werden.",
-    "Überschneidungen in dieser Datei (messen.mjs: 7 Produkte in je zwei Kategorien, alle als bewusster Verweis): die drei Batterieladegeräte «für Auto und Motorrad» stehen in «Starthilfe, Batterieladegeräte & Spannungswandler» und in «Motorrad-Zubehör, Teile & Werkzeug»; der Motorrad-Recorder zusätzlich in «Dashcams & Rückfahrkameras»; das Kratzer-Reparaturwachs «für Auto & Motorrad» in «Politur, Wachs & Scheibenpflege»; das Ventil-Einstellwerkzeug für Motorräder in «Karosserie-, Motor- & Spezialwerkzeug»; das Bremsscheibenschloss «für Motorräder & E-Bikes» in «E-Scooter- & E-Bike-Zubehör». Nur das Bremsscheibenschloss liegt innerhalb derselben Gruppe doppelt (Titel nennt Motorrad und E-Bike); alle anderen Verweise gehen über Gruppengrenzen. Ohne diese Verweise hätte «Motorrad-Zubehör, Teile & Werkzeug» nur 11 Produkte.",
+    "Überschneidungen in dieser Datei: 0. Die erste Fassung hatte 7 bewusste Verweise (drei Batterieladegeräte «für Auto und Motorrad», Motorrad-Recorder, Reparaturwachs «für Auto & Motorrad», Ventil-Einstellwerkzeug für Motorräder, Bremsscheibenschloss «für Motorräder & E-Bikes»); die Gegenlesung hat sie aufgelöst, damit jedes Produkt in dieser Datei genau eine Heimat hat: Titel mit «Auto» und «Motorrad» gehören zur Auto-Kategorie (Batterieladegeräte → Starthilfe, Reparaturwachs → Politur), reine Motorrad-Produkte zu «Motorrad-Zubehör, Teile & Werkzeug» (Recorder, Ventil-Einstellwerkzeug, Bremsscheibenschloss). Damit «Motorrad-Zubehör» über der Schwelle bleibt (die Verweise allein trugen es auf 18, ohne sie 11), wechselten Wandhalter und Lichtleiste für den Helm von «Motorradhelme, Schutz & Bekleidung» dorthin (Zubehör statt Schutz): jetzt 16 und 26. «Dashcams & Rückfahrkameras» liegt damit genau auf der Schwelle von 15.",
     "Verweise auf Kategorien anderer Bereiche (gemessen mit den Regeln der anderen Dateien, Stand 26.10. 23:10; die Dateien ändern sich noch): Auto-Luftbefeuchter und -Luftreiniger (9) auch in wohnen/luftbefeuchter-raumbefeuchter, Auto-Staubsauger (9) in wohnen/staubsauger-zubehoer, Auto-Hochdruckreiniger und -Waschpistolen (6) in haus-bau/hochdruckreiniger-schaumkanonen und Auto-Düsen (2) in haus-bau/bewaesserung-gartenschlauch, Lunch- und Kühlboxen (5) in wohnen/lunchboxen-kuehltaschen, Wasserkessel und Thermobecher (2) in wohnen/wasserkocher-kaffeemaschinen, Reiskocher (1) in wohnen/reiskocher-dampfgarer, Auto-Betten (3) in sport/schlafsaecke-isomatten-luftbetten, Kühlbox (1) in sport/picknick-kuehltaschen, Auto-Lautsprecher und FM-Transmitter (3) in unterhaltung, Helm-Headsets (2) in unterhaltung/bluetooth-headsets-telefon, Motorradhelm-Wandhalter (1) in wohnen/haken-garderobenhalter, Motorrad-Kameras (2) in unterhaltung/action-sport-wildkameras, Motorrad-Ladegerät und -Lade-Halter (2) in handy/auto-ladegeraete, Motorrad-Spanngurt und Muttern-Set (2) in haus-bau/schrauben-duebel-befestigung, E-Bike-Licht, Akku-Tasche und Falt-Helm (7) in sport/velolichter-reflektoren, velotaschen-rucksaecke und velohelme, E-Scooter-Batterie (1) in unterhaltung/batterien-akkus, 27 Motorrad-Rucksäcke auch in der Mode-Kategorie sort-rucksaecke und alle 9 Motorradstiefel in den Herren-Stiefeln der Mode. Empfehlung: im Menü beide Wege zulassen, die Tags sind unabhängig. Baut der Bereich sport die Gruppe «Rad & Velo» mit sechs Kategorien live, ersetzt sie das Kind velo-radsport («ersetzt: velo-radsport»); in Gruppe 5 bleiben dann Motorrad und E-Scooter.",
-    "Fremdkörper in Regeln anderer Dateien, beim Kreuzprüfen gefunden (nicht behoben, nur gemeldet): sport/camping-kochen-geschirr nimmt «Auto Windschutzscheibenabdeckung für Schnee & Frost» und «Reinigungs-Paste für Windschutzscheiben» auf (das Wort «Windschutz» meint dort den Campingkocher-Windschutz); sport/protektoren-schoner nimmt «Fell-Lenkradschoner Anti-Rutsch Saison» auf (Wort «schoner»); sport/velo-werkzeug-reparatur nimmt «Scheiben-Demontagewerkzeug für Fahrzeuge» auf. In allen drei Fällen sollten die Regeln Titel mit Auto, Fahrzeug und Lenkrad ausschliessen.",
+    "Fremdkörper in Regeln anderer Dateien, vom ersten Bearbeiter beim Kreuzprüfen gemeldet (sport/camping-kochen-geschirr, sport/protektoren-schoner, sport/velo-werkzeug-reparatur): bei der Gegenlesung am 27.10. mit den heutigen Regeln aller Bereichsdateien nachgemessen, die vier genannten Titel («Auto Windschutzscheibenabdeckung für Schnee & Frost», «Reinigungs-Paste für Windschutzscheiben», «Fell-Lenkradschoner Anti-Rutsch Saison», «Scheiben-Demontagewerkzeug für Fahrzeuge») stehen jetzt nur noch in Auto-Kategorien. Die Meldung ist damit erledigt.",
     "Zählung der Lesung: 691 verschiedene Titel in den Mitgliederlisten der 23 Kategorien (698 Zeilen, 7 Verweise) vollständig gelesen, dazu alle 62 Titel der Lücke, 158 Titel von velo-radsport und 24 Titel von fahrrad-auto-werkzeug ausserhalb der Überlappung: zusammen 935. Sicher falsche Treffer in den Endlisten: 0. Zweifelsfall ohne Beleg im Titel und ohne Fahrzeug-Klasse bei Google: 1 («Motorrad Crossbody Bag Elite Schwarz», Handtaschen-Klasse; 0,1 %). Nur durch die Google-Klasse «Vehicles & Parts» belegt, ohne Fahrzeug-Wort im Titel: 17 (2,4 %), nämlich 12 Sitzkissen und Stützen («Sitzkissen mit Höhenverstellung», «Sitzkissen aus Leder» u. a.), zwei Anhänger für Rückspiegel und Sitz sowie drei Schwangeren-Gurte; sie bleiben, weil die Google-Klasse unabhängig vom Titel auf Fahrzeug zeigt. Mit zwei Zwecken im Titel («für Haushalt & Auto», «für Auto & Zuhause»), aber ausdrücklich Auto genannt: 3 (Ozon-Gerät, Aschenbecher mit Luftreiniger, Poliermaschine). In den ersten Fassungen der Regeln fanden sich etwa 120 Fremdkörper (vor allem Haushalts- und Gartenwerkzeug, Gamepads, Scanner, Schlüsseletuis für Hausschlüssel, Lampen für Tisch und Schlafzimmer), die durch engere Google-Klassen und Kontextwörter («Auto», «Kfz», Automarken) entfernt wurden.",
     "Aus der Messung gelernt (für den Lauf, der später die Tags setzt): (1) Die Regelsprache verknüpft Google-Klasse und Titel mit UND. Kategorien, die auch Produkte aus Küche, Gesundheit oder Hardware mit «Auto» im Titel holen (Duft, Komfort, Waschen, Schlüssel, Reparaturwerkzeug, Starthilfe), brauchen deshalb ein Kontext-Wort im Titel; reine Fahrzeug-Klassen (Lenkradbezüge, Sitzbezüge, Organizer) brauchen es nicht. (2) «Auto» ist in Titeln oft Teil eines anderen Worts: «Automatik», «Auto-Fokus», «Auto-Clicker», «Auto-Leveling», «Auto-Sensing», «Autopush-Nieten» sind keine Autos und stehen als Ausnahme in den Regeln. (3) «Roller» trifft Jade-Roller, Massage-Roller und Rollschuhe, «e-bike» trifft «Balance-Bikes» (Wortanfang prüfen), «Anhänger» trifft Schmuck. (4) «Motorräder» hat ein ä: die Regel heisst motorr(a|ä)d.",
     "Motorrad-Kleidung und -Stiefel (Motorradhelm, Knieschützer, Protektorenjacke, Regenkombi, 9 Motorradstiefel, Hose, Jacke): aufgenommen nur mit dem Wort «Motorrad» im Titel; Schutzklassen oder Prüfzeichen nennt kein Titel, und die Beschreibung der Kategorie verspricht keine. Stil-Kleidung («im Motorrad-Stil», Biker-Boots, Plateau-Schuhe) bleibt draussen. Vor dem Anlegen prüfen, ob Helme und Protektoren ohne Prüfnachweis überhaupt verkauft werden sollen.",
-    "Offene Entscheidungen für den Besitzer: (a) neuer Menü-Zweig «Auto & Motorrad» statt Punkt unter «Elektronik»; (b) Motorrad-Rucksäcke (27) und Motorradstiefel (9) in Auto und in Mode doppelt führen oder nur in Auto; (c) die 22 Auto-Kissen und -Stützen aus Gesundheit und Deko zusätzlich in den Auto-Baum hängen (dafür reicht ein Tag-Zusatz beim Anlegen, die Regel allein kann es nicht); (d) die drei Auto-Zubehör-Produkte ohne Heimat (siehe ausserhalb) in handy aufnehmen."
+    "Offene Entscheidungen für den Besitzer: (a) neuer Menü-Zweig «Auto & Motorrad» statt Punkt unter «Elektronik»; (b) Motorrad-Rucksäcke (27) und Motorradstiefel (9) in Auto und in Mode doppelt führen oder nur in Auto; (c) die 22 Auto-Kissen und -Stützen aus Gesundheit und Deko zusätzlich in den Auto-Baum hängen (dafür reicht ein Tag-Zusatz beim Anlegen, die Regel allein kann es nicht); (d) die drei Auto-Zubehör-Produkte ohne Heimat (siehe ausserhalb) in handy aufnehmen.",
+    "Gegenlesung (unabhängig, 27.10.2026). Gelesen: alle 698 Mitgliederzeilen der 23 Kategorien (691 verschiedene Titel, jeder einzeln), die 62 Titel der Lücke, alle 45 Titel von fahrrad-auto-werkzeug, 125 der 256 Titel von velo-radsport (alle 59 ausserhalb der Google-Klasse «Cycling», jeder dritte der 197 übrigen) und die 75 Titel von handy/auto-ladegeraete. Dazu ein Verdachtswort-Grep über alle Mitglieder (Hund, Katze, Tier, Spielzeug, Kostüm, Kinder, Baby, Puppe, Schmuck, Armband, Damen, Herren, Kleid, Uhr, Handy, Smartphone, Tablet, Laptop, Küche, Garten, Weste, Western, Tasse, Kameratasche, Stoss, Spiel), 17 Katalog-Greps mit zusammengesetzten Stichwortlisten ausserhalb der Kategorien (Auto/Kfz/Fahrzeug, Lenkrad, Sitzbezug, Fussmatte, Scheinwerfer, Wagenheber und Pannenhilfe, Reifen und Pumpen, Dashcam, OBD, Politur, Motorrad und Helm, Scooter und E-Bike, Dach- und Abdeckteile, Motorteile, 12 V) und 24 Produktbeschreibungen im Shop (nur Lesezugriff) für Zweifelsfälle. Fremdkörper in den Mitgliederlisten: 0 sichere Fehlgriffe von 691 verschiedenen Titeln, 6 Randfälle = 0,9 % (Schalterpanel 6-fach: ein 12-Volt-Schalter, nur über den Namen «Ersatzteile» noch vertretbar; Motorradhelm-Wandhalter; drei Schlauchdüsen «für Garten & Auto» oder «für Auto & Haushalt»; Aschenbecher mit Luftreiniger). Zwei Titel sind nach der Beschreibung im Shop unsicher: «Motorrad Crossbody Bag Elite Schwarz» (Retro-Stil, «für Motorradfahrten oder den täglichen Gebrauch») und «Universaler Scooter-Griff aus Canvas» (die Beschreibung spricht von einem Faltschirm, vermutlich ein Übersetzungsfehler). Nach den Änderungen: 704 verschiedene Titel in den Listen, dieselben 6 Randfälle = 0,9 %. Behoben: (1) 4 Lenkradbezüge fehlten (2 Plüschbezüge mit falscher Google-Klasse «Spielzeug», beide tragen im Shop noch die Tags sort-kinder-baby und sort-puppen, die beim Anlegen entfernt werden müssen; «Autolosetuch» und «Lenkergriffe für alle Jahreszeiten» sind laut Beschreibung ein Lenkradschutz für 38 cm); (2) 4 Autoschlüssel-Etuis fehlten (Beschreibungen nennen Autoschlüssel); (3) «Bluetooth-Transmitter» (Beschreibung: fürs Autoradio) und «2-in-1 Wireless Auto-Adapter» fehlten in Multimedia; (4) Wagenheber und 2 Ölfilterschlüssel fehlten im Werkzeug; (5) «Karosserie, Anbauteile & Wetterschutz» enthielt Zündkerze, Zündspule und Zylinderabschaltung, der Name nannte keine Ersatzteile (jetzt «Karosserie, Ersatzteile & Wetterschutz»), die Beschreibung nannte ein Abschleppseil, der Titel sagt «Schakel Seil für Bergungen»; (6) «E-Scooter- & E-Bike-Zubehör» überversprach: 6 der 22 Titel sagen nur «Scooter» (Tragegurt, Wandhalterung, Griff, Falt-Helm, Ladegerät, Ersatzbatterie), jetzt «Scooter- & E-Bike-Zubehör»; (7) Chip «Sattel-, Seiten- & Hecktaschen» enthielt auch Tank-, Bein-, Hüft-, Bauch- und Brusttaschen und liess 6 Taschen aus, jetzt «Taschen, Koffer & Beutel» (alle 32 Nicht-Rucksäcke); (8) Chip «Sportlich & rutschfest» enthielt 3 Titel nur wegen «ultradünn», Stichwort entfernt (jetzt 16 Treffer). Die Beschreibung von «Starthilfe …» nennt jetzt auch die Ladebox fürs Elektrofahrzeug. Nicht behebbar mit der Regelsprache (Google-Klasse und Titelregel sind UND-verknüpft): «Auto-Aufbewahrungsbeutel vorne» und «Kfz-Versicherungs-Deckel» (Klasse Handtaschen), die Auto-Rückenstützen und -Kissen in Gesundheit und Deko (Besitzerentscheid c), «Schlüsseletui» ohne Auto im Titel in der Klasse «Keychains» (Probe: brächte 4 Fremde). Fehlende Heimat in der Datei handy (nicht Teil dieser Aufgabe): «Doppel-Ladegerät» (Beschreibung: lädt zwei Batterien im Auto), «Auto-Halterung mit Ladefunktion und Ablage» und «Auto-Zigarettenanzünder mit USB & Type-C» gehören in keine Kategorie irgendeiner Bereichsdatei. Zusätzlich behoben (9): die 7 Überschneidungen (siehe oben)."
   ]
 }
