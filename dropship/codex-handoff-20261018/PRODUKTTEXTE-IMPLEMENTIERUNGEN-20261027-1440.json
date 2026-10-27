@@ -1,0 +1,1379 @@
+{
+  "ownerScope": "all product descriptions only",
+  "writes": 4,
+  "confirmedNative": 4,
+  "confirmedNativeAndPublic": 4,
+  "records": [
+    {
+      "changeId": "luxe_product_description_15412302020993_20261027_1440",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "continuationInstruction": "weiter",
+      "productId": "gid://shopify/Product/15412302020993",
+      "url": "https://luxestyle.ch/products/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben",
+      "beforeSha256": "c6d88e172e8bb3ed3621bb13364128cf6d3843c2273684d642d5c50e80e61641",
+      "afterSha256": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+      "before": {
+        "id": "gid://shopify/Product/15412302020993",
+        "title": "Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Accessoires",
+        "descriptionHtml": "<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Lässiger Vintage-Look mit Glitzer-Detail.</strong> Die washed Baseball-Cap aus 100 % Baumwolle kommt im angesagten Used-Look mit funkelnder Strass-Schneeflocke – verstellbar und unisex für jeden Style.</p>\n<ul>\n<li>🧢 <strong>100 % gewaschene Baumwolle</strong> – weich &amp; atmungsaktiv</li>\n<li>✨ <strong>Strass-Schneeflocke</strong> als Eyecatcher vorne</li>\n<li>🔧 <strong>Verstellbarer Metallverschluss</strong> – passt 55–60 cm</li>\n<li>🎨 <strong>6 Farben</strong> – für jeden Look</li>\n<li>🧵 6-Panel-Bau mit verstärkten Nähten</li>\n</ul>\n<p><em></em></p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Glitzer</li>\n<li>\n<strong>Material:</strong> Baumwolle</li>\n</ul>\n</div><!--gdetails--><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "Hut",
+          "mengenrabatt-a",
+          "mode",
+          "neu",
+          "sommer-2026",
+          "sort-damen-kopfbedeckung",
+          "sort-damen-kopfbedeckung-caps",
+          "sort-herren-kopfbedeckung",
+          "sort-herren-kopfbedeckung-caps",
+          "sort-retro",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5b5a130-963b-4090-8734-24e95f2492d9.png?v=1780217616",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5b5a130-963b-4090-8734-24e95f2492d9.png?v=1780217616",
+            "altText": "Vintage Baseball-Cap Strass",
+            "mediaId": "gid://shopify/MediaImage/69550337589633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bbbf09c-e7fc-4f52-bf2a-8583529f49c7.png?v=1780217617",
+            "altText": "Cap Schneeflocke verstellbar",
+            "mediaId": "gid://shopify/MediaImage/69550337622401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111b91ba-1116-40d3-8b19-1232b64056f2.png?v=1780217617",
+            "altText": "Baseball-Cap Unisex",
+            "mediaId": "gid://shopify/MediaImage/69550337655169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d1b3341-22b4-4501-8ff6-300b8847f7fb.png?v=1780217617",
+            "altText": "Cap Vintage Washed",
+            "mediaId": "gid://shopify/MediaImage/69550337687937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/de0375be-5687-4a9e-ab20-5160edca0724.png?v=1780217617",
+            "altText": "Baseball-Cap 6 Farben",
+            "mediaId": "gid://shopify/MediaImage/69550337720705"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-uni-edit.jpg?v=1781097159",
+            "altText": "LuxeStyle-Edit · Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+            "mediaId": "gid://shopify/MediaImage/69650060181889"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/980e58c0-e719-4fc6-bff1-d3a81330c891.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702222215"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0d38c340-70d0-4bd4-b1ed-373942551520.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702254983"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18f4c326-6819-4c80-a4c6-59fbf24f01a3.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702287751"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac652daa-0ab6-4fd3-a717-d29988f895c8.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702320519"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be1af96d-5278-4032-b3ac-4d188b39a372.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702353287"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6486f3cd-4598-4e2b-81f6-ea6064c77477.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702386055"
+          }
+        ],
+        "totalVariants": 6,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788966560135",
+            "title": "Marineblau",
+            "sku": "CJBQ291456801AZ",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966592903",
+            "title": "Grau",
+            "sku": "CJBQ291456802BY",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966625671",
+            "title": "Schwarz",
+            "sku": "CJBQ291456803CX",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966658439",
+            "title": "Khaki",
+            "sku": "CJBQ291456804DW",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966691207",
+            "title": "Bordeaux",
+            "sku": "CJBQ291456805EV",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966723975",
+            "title": "Rosa",
+            "sku": "CJBQ291456806FU",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein Vintage-Akzent für deinen Alltagslook.</strong> Die Cap verbindet einen gebogenen Schirm mit einer rund aufgebauten Kopfform. Sichtbare Nahtlinien gliedern die Oberseite; mehrere Nahtreihen zeichnen den Rand des Schirms nach. Ein heller Dekorakzent hebt sich auf der Vorderseite von der verwaschen wirkenden Farbfläche ab.</p>\n<h3>So kombinierst du den Look</h3>\n<p>Mit einem einfarbigen T-Shirt, Jeans und schlichten Sneakern bleibt die Cap der Blickfang. Greife für eine ruhigere Kombination einen ähnlichen Farbton in deinem Oberteil auf oder setze mit hellen Kleidungsstücken einen Kontrast.</p>\n<h3>Deine Farbbezeichnung wählen</h3>\n<p>Die aktuelle Auswahl führt Marineblau, Grau, Schwarz, Khaki, Bordeaux und Rosa. Wähle deine gewünschte Farbbezeichnung aus und vergleiche die zugehörigen Produktansichten.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "diff": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,19 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Lässiger Vintage-Look mit Glitzer-Detail.</strong> Die washed Baseball-Cap aus 100 % Baumwolle kommt im angesagten Used-Look mit funkelnder Strass-Schneeflocke – verstellbar und unisex für jeden Style.</p>\n-<ul>\n-<li>🧢 <strong>100 % gewaschene Baumwolle</strong> – weich &amp; atmungsaktiv</li>\n-<li>✨ <strong>Strass-Schneeflocke</strong> als Eyecatcher vorne</li>\n-<li>🔧 <strong>Verstellbarer Metallverschluss</strong> – passt 55–60 cm</li>\n-<li>🎨 <strong>6 Farben</strong> – für jeden Look</li>\n-<li>🧵 6-Panel-Bau mit verstärkten Nähten</li>\n-</ul>\n-<p><em></em></p>\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Muster:</strong> Glitzer</li>\n-<li>\n-<strong>Material:</strong> Baumwolle</li>\n-</ul>\n-</div><!--gdetails--><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Ein Vintage-Akzent für deinen Alltagslook.</strong> Die Cap verbindet einen gebogenen Schirm mit einer rund aufgebauten Kopfform. Sichtbare Nahtlinien gliedern die Oberseite; mehrere Nahtreihen zeichnen den Rand des Schirms nach. Ein heller Dekorakzent hebt sich auf der Vorderseite von der verwaschen wirkenden Farbfläche ab.</p>\n+<h3>So kombinierst du den Look</h3>\n+<p>Mit einem einfarbigen T-Shirt, Jeans und schlichten Sneakern bleibt die Cap der Blickfang. Greife für eine ruhigere Kombination einen ähnlichen Farbton in deinem Oberteil auf oder setze mit hellen Kleidungsstücken einen Kontrast.</p>\n+<h3>Deine Farbbezeichnung wählen</h3>\n+<p>Die aktuelle Auswahl führt Marineblau, Grau, Schwarz, Khaki, Bordeaux und Rosa. Wähle deine gewünschte Farbbezeichnung aus und vergleiche die zugehörigen Produktansichten.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15412302020993",
+        "title": "Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+        "url": "https://luxestyle.ch/products/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T13:41:57+00:00",
+        "beforeSha256": "c6d88e172e8bb3ed3621bb13364128cf6d3843c2273684d642d5c50e80e61641",
+        "afterSha256": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+        "source": "NATIVE-FRESH.json",
+        "coreWords": 104,
+        "imageSources": "IMAGE-SOURCES.json",
+        "actualImagesViewed": 9,
+        "nativeVariantCount": 6,
+        "nativeVariantLabels": [
+          "Marineblau",
+          "Grau",
+          "Schwarz",
+          "Khaki",
+          "Bordeaux",
+          "Rosa"
+        ],
+        "sourceAssertionsRemoved": [
+          "unverified textile/material claims",
+          "unverified physical dimensions or weight",
+          "adjustability/fit and functions not demonstrated",
+          "delivery10–20days/country-only badge"
+        ],
+        "serviceChange": "Removed unsupported description-local delivery badge; neutral shipping/refund links added. No policy/settings changed.",
+        "originalHrefTargets": [
+          "/collections/sommer",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "originalHrefTargetsPreserved": true,
+        "fieldsToWrite": [
+          "id",
+          "descriptionHtml"
+        ],
+        "writes": 0,
+        "rootMustFreshReadBeforeWrite": true,
+        "remainingSourceLimits": [
+          "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+          "Current source images/variants must still match before description-only write",
+          "Old main/detail images contain different decorative motifs (snowflake/cross/shield). Latest six appended images all show snowflake in the six native colours; exact supplier binding is not independently authenticated. New body deliberately only says front decorative accent and shared cap geometry; no motif selection or exact motif guarantee. Existing title untouched."
+        ]
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15412302020993",
+        "title": "Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Accessoires",
+        "descriptionHtml": "<p><strong>Ein Vintage-Akzent für deinen Alltagslook.</strong> Die Cap verbindet einen gebogenen Schirm mit einer rund aufgebauten Kopfform. Sichtbare Nahtlinien gliedern die Oberseite; mehrere Nahtreihen zeichnen den Rand des Schirms nach. Ein heller Dekorakzent hebt sich auf der Vorderseite von der verwaschen wirkenden Farbfläche ab.</p>\n<h3>So kombinierst du den Look</h3>\n<p>Mit einem einfarbigen T-Shirt, Jeans und schlichten Sneakern bleibt die Cap der Blickfang. Greife für eine ruhigere Kombination einen ähnlichen Farbton in deinem Oberteil auf oder setze mit hellen Kleidungsstücken einen Kontrast.</p>\n<h3>Deine Farbbezeichnung wählen</h3>\n<p>Die aktuelle Auswahl führt Marineblau, Grau, Schwarz, Khaki, Bordeaux und Rosa. Wähle deine gewünschte Farbbezeichnung aus und vergleiche die zugehörigen Produktansichten.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "Hut",
+          "mengenrabatt-a",
+          "mode",
+          "neu",
+          "sommer-2026",
+          "sort-damen-kopfbedeckung",
+          "sort-damen-kopfbedeckung-caps",
+          "sort-herren-kopfbedeckung",
+          "sort-herren-kopfbedeckung-caps",
+          "sort-retro",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5b5a130-963b-4090-8734-24e95f2492d9.png?v=1780217616",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5b5a130-963b-4090-8734-24e95f2492d9.png?v=1780217616",
+            "altText": "Vintage Baseball-Cap Strass",
+            "mediaId": "gid://shopify/MediaImage/69550337589633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bbbf09c-e7fc-4f52-bf2a-8583529f49c7.png?v=1780217617",
+            "altText": "Cap Schneeflocke verstellbar",
+            "mediaId": "gid://shopify/MediaImage/69550337622401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111b91ba-1116-40d3-8b19-1232b64056f2.png?v=1780217617",
+            "altText": "Baseball-Cap Unisex",
+            "mediaId": "gid://shopify/MediaImage/69550337655169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d1b3341-22b4-4501-8ff6-300b8847f7fb.png?v=1780217617",
+            "altText": "Cap Vintage Washed",
+            "mediaId": "gid://shopify/MediaImage/69550337687937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/de0375be-5687-4a9e-ab20-5160edca0724.png?v=1780217617",
+            "altText": "Baseball-Cap 6 Farben",
+            "mediaId": "gid://shopify/MediaImage/69550337720705"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-uni-edit.jpg?v=1781097159",
+            "altText": "LuxeStyle-Edit · Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+            "mediaId": "gid://shopify/MediaImage/69650060181889"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/980e58c0-e719-4fc6-bff1-d3a81330c891.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702222215"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0d38c340-70d0-4bd4-b1ed-373942551520.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702254983"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18f4c326-6819-4c80-a4c6-59fbf24f01a3.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702287751"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac652daa-0ab6-4fd3-a717-d29988f895c8.png?v=1792980151",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702320519"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be1af96d-5278-4032-b3ac-4d188b39a372.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702353287"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6486f3cd-4598-4e2b-81f6-ea6064c77477.png?v=1792980150",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829702386055"
+          }
+        ],
+        "totalVariants": 6,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788966560135",
+            "title": "Marineblau",
+            "sku": "CJBQ291456801AZ",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966592903",
+            "title": "Grau",
+            "sku": "CJBQ291456802BY",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966625671",
+            "title": "Schwarz",
+            "sku": "CJBQ291456803CX",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966658439",
+            "title": "Khaki",
+            "sku": "CJBQ291456804DW",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966691207",
+            "title": "Bordeaux",
+            "sku": "CJBQ291456805EV",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788966723975",
+            "title": "Rosa",
+            "sku": "CJBQ291456806FU",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T13:49:40.791Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15412302020993",
+        "url": "https://luxestyle.ch/products/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T13:50:34.061058+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15412302020993",
+        "descriptionExact": true,
+        "afterSha256": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+        "variantCount": 6,
+        "pricesCents": [
+          1990
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15412302020993",
+        "url": "https://luxestyle.ch/products/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben",
+        "rawHtmlStored": false,
+        "checkedAtUTC": "2026-10-27T13:50:34.061058+00:00",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein Vintage-Akzent für deinen Alltagslook. Die Cap verbindet einen gebogenen Schirm mit einer rund aufgebauten Kopfform. Sichtbare Nahtlinien gliedern die Obers",
+        "responseSha256": "eb7323facabb0df8cf2b59a7a35b1780f9b68e088f6b7ac47580e3e902dd4d14"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15412302512513_20261027_1440",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "continuationInstruction": "weiter",
+      "productId": "gid://shopify/Product/15412302512513",
+      "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+      "beforeSha256": "a967f27acd88db6f1b6971d190f4f39509b13c7ee96bf34c6849287d622c8345",
+      "afterSha256": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+      "before": {
+        "id": "gid://shopify/Product/15412302512513",
+        "title": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Accessoires",
+        "descriptionHtml": "<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Hände frei bei Regen &amp; Sonne.</strong> Dieser clevere Schirm hat eine integrierte Handy-Halterung – perfekt zum Filmen, Streamen oder Telefonieren unterwegs, beim Angeln oder bei Outdoor-Aufnahmen.</p>\n<ul>\n<li>📱 <strong>Integrierte Handy-Klemme</strong> – freihändig bedienen</li>\n<li>☔ <strong>8 stabile Streben</strong> aus Stahl</li>\n<li>☀️ <strong>Silberbeschichtung</strong> – Regen- &amp; Sonnenschutz</li>\n\n<li>🎣 Ideal für Content-Creator, Angeln &amp; Outdoor</li>\n</ul>\n<p><em></em></p>\n\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff, Metall</li>\n<li>\n<strong>Gewicht:</strong> ca. 50 g</li>\n<li>\n<strong>Masse:</strong> 28cm</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "freihaendig",
+          "gadget",
+          "natel",
+          "neu",
+          "sommer-2026",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65394640-afa2-4003-a5a0-44fcc04a6569_trans.jpg?v=1780218019",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65394640-afa2-4003-a5a0-44fcc04a6569_trans.jpg?v=1780218019",
+            "altText": "Regenschirm UV-Schutz",
+            "mediaId": "gid://shopify/MediaImage/69550341816705"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fb4e943-89f1-4c1c-9d17-151680b858ea_trans.jpg?v=1780218019",
+            "altText": "Regenschirm mit Handy-Halterung",
+            "mediaId": "gid://shopify/MediaImage/69550341718401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c441cb91-2f88-45ab-bc6a-b880eaa7795e_trans.jpg?v=1780218019",
+            "altText": "Schirm freihändig Handy",
+            "mediaId": "gid://shopify/MediaImage/69550341751169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4980cf15-c589-454a-8d95-dbdfea685116.jpg?v=1780218019",
+            "altText": "Schirm Handy-Mount",
+            "mediaId": "gid://shopify/MediaImage/69550341783937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8bfb491a-e5cb-4064-9944-dda961acd9c0_trans.jpg?v=1780218019",
+            "altText": "Schirm Outdoor Creator",
+            "mediaId": "gid://shopify/MediaImage/69550341849473"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-besc-edit.jpg?v=1781097171",
+            "altText": "LuxeStyle-Edit · Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+            "mediaId": "gid://shopify/MediaImage/69650063098241"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706187143"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5e5f26c-51a6-4ed0-9c65-993bb6997b97_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706219911"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a943523-9b2d-4776-ae82-4ebb5d4aa8f6_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706252679"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fafb2a29-3976-4d5a-85d9-14d0d7906c92_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706285447"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8713e52a-c7fd-478c-867a-ac0c15cce5c4_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706318215"
+          }
+        ],
+        "totalVariants": 12,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788980650375",
+            "title": "Schwarz",
+            "sku": "CJYD289701201AZ",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980683143",
+            "title": "Rosa",
+            "sku": "CJYD289701202BY",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980715911",
+            "title": "Gelb",
+            "sku": "CJYD289701203CX",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980748679",
+            "title": "Rot",
+            "sku": "CJYD289701204DW",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980781447",
+            "title": "Saphir Blau",
+            "sku": "CJYD289701205EV",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980814215",
+            "title": "Orange",
+            "sku": "CJYD289701206FU",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980846983",
+            "title": "Camouflage",
+            "sku": "CJYD289701207GT",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980879751",
+            "title": "Silber",
+            "sku": "CJYD289701208HS",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980912519",
+            "title": "Rosenrot",
+            "sku": "CJYD289701209IR",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980945287",
+            "title": "Grün",
+            "sku": "CJYD289701210JQ",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980978055",
+            "title": "Violett",
+            "sku": "CJYD289701211KP",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788981010823",
+            "title": "Himmelblau",
+            "sku": "CJYD289701212LO",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein kleiner Schirm am Smartphone.</strong> Die Produktansichten zeigen eine gewölbte Schirmfläche an einer schmalen Stange mit seitlicher Klemme. In mehreren Bildern ist der Schirm oberhalb eines Smartphones dargestellt. Die unterteilten Bahnen und die kleinen Endstücke am Rand prägen die Optik.</p>\n<h3>Die gezeigten Details vergleichen</h3>\n<p>Gesamtansichten und Nahaufnahmen zeigen den Aufbau von der Seite und von vorn. Vergleiche dabei die gezeigten Klemmenformen und Farbdarstellungen.</p>\n<h3>Deine Auswahlbezeichnung wählen</h3>\n<p>Aktuell stehen «Schwarz», «Rosa», «Gelb», «Rot», «Saphir Blau», «Orange», «Camouflage», «Silber», «Rosenrot», «Grün», «Violett» und «Himmelblau» zur Auswahl. Die Bezeichnungen werden als eigene Varianten geführt. Wähle den vollständigen Namen deiner gewünschten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weitere Ideen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "diff": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,22 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Hände frei bei Regen &amp; Sonne.</strong> Dieser clevere Schirm hat eine integrierte Handy-Halterung – perfekt zum Filmen, Streamen oder Telefonieren unterwegs, beim Angeln oder bei Outdoor-Aufnahmen.</p>\n-<ul>\n-<li>📱 <strong>Integrierte Handy-Klemme</strong> – freihändig bedienen</li>\n-<li>☔ <strong>8 stabile Streben</strong> aus Stahl</li>\n-<li>☀️ <strong>Silberbeschichtung</strong> – Regen- &amp; Sonnenschutz</li>\n-\n-<li>🎣 Ideal für Content-Creator, Angeln &amp; Outdoor</li>\n-</ul>\n-<p><em></em></p>\n-\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Material:</strong> Kunststoff, Metall</li>\n-<li>\n-<strong>Gewicht:</strong> ca. 50 g</li>\n-<li>\n-<strong>Masse:</strong> 28cm</li>\n-</ul>\n-</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Ein kleiner Schirm am Smartphone.</strong> Die Produktansichten zeigen eine gewölbte Schirmfläche an einer schmalen Stange mit seitlicher Klemme. In mehreren Bildern ist der Schirm oberhalb eines Smartphones dargestellt. Die unterteilten Bahnen und die kleinen Endstücke am Rand prägen die Optik.</p>\n+<h3>Die gezeigten Details vergleichen</h3>\n+<p>Gesamtansichten und Nahaufnahmen zeigen den Aufbau von der Seite und von vorn. Vergleiche dabei die gezeigten Klemmenformen und Farbdarstellungen.</p>\n+<h3>Deine Auswahlbezeichnung wählen</h3>\n+<p>Aktuell stehen «Schwarz», «Rosa», «Gelb», «Rot», «Saphir Blau», «Orange», «Camouflage», «Silber», «Rosenrot», «Grün», «Violett» und «Himmelblau» zur Auswahl. Die Bezeichnungen werden als eigene Varianten geführt. Wähle den vollständigen Namen deiner gewünschten Ausführung.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weitere Ideen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "sourceManifest": {
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "productId": "gid://shopify/Product/15412302512513",
+        "title": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+        "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+        "beforeSha256": "a967f27acd88db6f1b6971d190f4f39509b13c7ee96bf34c6849287d622c8345",
+        "afterSha256": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+        "sourceCapturedAtUTC": "2026-10-27T13:42:10Z",
+        "source": "NATIVE-FRESH.json",
+        "coreWords": 98,
+        "imageFilesViewed": 11,
+        "imageProof": "IMAGE-SOURCES.json",
+        "originalHrefTargets": [
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "hrefsAfter": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "serviceChange": "Removed description-local unproven delivery/location assurance and technical claims; neutral policy references only. Actual policies/settings untouched.",
+        "writeScope": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "nativeVariantCount": 12,
+        "variantIdentityAndLabels": [
+          {
+            "id": "gid://shopify/ProductVariant/67788980650375",
+            "title": "Schwarz",
+            "sku": "CJYD289701201AZ"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980683143",
+            "title": "Rosa",
+            "sku": "CJYD289701202BY"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980715911",
+            "title": "Gelb",
+            "sku": "CJYD289701203CX"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980748679",
+            "title": "Rot",
+            "sku": "CJYD289701204DW"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980781447",
+            "title": "Saphir Blau",
+            "sku": "CJYD289701205EV"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980814215",
+            "title": "Orange",
+            "sku": "CJYD289701206FU"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980846983",
+            "title": "Camouflage",
+            "sku": "CJYD289701207GT"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980879751",
+            "title": "Silber",
+            "sku": "CJYD289701208HS"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980912519",
+            "title": "Rosenrot",
+            "sku": "CJYD289701209IR"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980945287",
+            "title": "Grün",
+            "sku": "CJYD289701210JQ"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980978055",
+            "title": "Violett",
+            "sku": "CJYD289701211KP"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788981010823",
+            "title": "Himmelblau",
+            "sku": "CJYD289701212LO"
+          }
+        ],
+        "reviewLimits": [
+          "Photo appearance not an independent supplier, function, conformity or rights approval",
+          "No stock/delivery/returns/payment promise",
+          "Existing title outside description-only write scope remains source caveat",
+          "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+        ],
+        "notPromised": [
+          "full-size rain umbrella for person",
+          "UV or rain/wind/thermal protection",
+          "clamp fit/security or broad phone compatibility",
+          "material/streben count/measurements/weight",
+          "phone or any separately pictured accessory included"
+        ],
+        "titleCaveat": "Native title suggests rain umbrella with phone holder; image evidence consistently shows miniature clip-on phone sunshade. New body explicitly clarifies small phone setup without editing title."
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15412302512513",
+        "title": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Accessoires",
+        "descriptionHtml": "<p><strong>Ein kleiner Schirm am Smartphone.</strong> Die Produktansichten zeigen eine gewölbte Schirmfläche an einer schmalen Stange mit seitlicher Klemme. In mehreren Bildern ist der Schirm oberhalb eines Smartphones dargestellt. Die unterteilten Bahnen und die kleinen Endstücke am Rand prägen die Optik.</p>\n<h3>Die gezeigten Details vergleichen</h3>\n<p>Gesamtansichten und Nahaufnahmen zeigen den Aufbau von der Seite und von vorn. Vergleiche dabei die gezeigten Klemmenformen und Farbdarstellungen.</p>\n<h3>Deine Auswahlbezeichnung wählen</h3>\n<p>Aktuell stehen «Schwarz», «Rosa», «Gelb», «Rot», «Saphir Blau», «Orange», «Camouflage», «Silber», «Rosenrot», «Grün», «Violett» und «Himmelblau» zur Auswahl. Die Bezeichnungen werden als eigene Varianten geführt. Wähle den vollständigen Namen deiner gewünschten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weitere Ideen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "freihaendig",
+          "gadget",
+          "natel",
+          "neu",
+          "sommer-2026",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65394640-afa2-4003-a5a0-44fcc04a6569_trans.jpg?v=1780218019",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65394640-afa2-4003-a5a0-44fcc04a6569_trans.jpg?v=1780218019",
+            "altText": "Regenschirm UV-Schutz",
+            "mediaId": "gid://shopify/MediaImage/69550341816705"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fb4e943-89f1-4c1c-9d17-151680b858ea_trans.jpg?v=1780218019",
+            "altText": "Regenschirm mit Handy-Halterung",
+            "mediaId": "gid://shopify/MediaImage/69550341718401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c441cb91-2f88-45ab-bc6a-b880eaa7795e_trans.jpg?v=1780218019",
+            "altText": "Schirm freihändig Handy",
+            "mediaId": "gid://shopify/MediaImage/69550341751169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4980cf15-c589-454a-8d95-dbdfea685116.jpg?v=1780218019",
+            "altText": "Schirm Handy-Mount",
+            "mediaId": "gid://shopify/MediaImage/69550341783937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8bfb491a-e5cb-4064-9944-dda961acd9c0_trans.jpg?v=1780218019",
+            "altText": "Schirm Outdoor Creator",
+            "mediaId": "gid://shopify/MediaImage/69550341849473"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-besc-edit.jpg?v=1781097171",
+            "altText": "LuxeStyle-Edit · Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+            "mediaId": "gid://shopify/MediaImage/69650063098241"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706187143"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5e5f26c-51a6-4ed0-9c65-993bb6997b97_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706219911"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a943523-9b2d-4776-ae82-4ebb5d4aa8f6_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706252679"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fafb2a29-3976-4d5a-85d9-14d0d7906c92_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706285447"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8713e52a-c7fd-478c-867a-ac0c15cce5c4_trans.jpg?v=1792980176",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77829706318215"
+          }
+        ],
+        "totalVariants": 12,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788980650375",
+            "title": "Schwarz",
+            "sku": "CJYD289701201AZ",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980683143",
+            "title": "Rosa",
+            "sku": "CJYD289701202BY",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980715911",
+            "title": "Gelb",
+            "sku": "CJYD289701203CX",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980748679",
+            "title": "Rot",
+            "sku": "CJYD289701204DW",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980781447",
+            "title": "Saphir Blau",
+            "sku": "CJYD289701205EV",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980814215",
+            "title": "Orange",
+            "sku": "CJYD289701206FU",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980846983",
+            "title": "Camouflage",
+            "sku": "CJYD289701207GT",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980879751",
+            "title": "Silber",
+            "sku": "CJYD289701208HS",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980912519",
+            "title": "Rosenrot",
+            "sku": "CJYD289701209IR",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980945287",
+            "title": "Grün",
+            "sku": "CJYD289701210JQ",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788980978055",
+            "title": "Violett",
+            "sku": "CJYD289701211KP",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788981010823",
+            "title": "Himmelblau",
+            "sku": "CJYD289701212LO",
+            "price": "16.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T13:49:44.931Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15412302512513",
+        "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T13:50:34.069348+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15412302512513",
+        "descriptionExact": true,
+        "afterSha256": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+        "variantCount": 12,
+        "pricesCents": [
+          1690
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15412302512513",
+        "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+        "rawHtmlStored": false,
+        "checkedAtUTC": "2026-10-27T13:50:34.069348+00:00",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein kleiner Schirm am Smartphone. Die Produktansichten zeigen eine gewölbte Schirmfläche an einer schmalen Stange mit seitlicher Klemme. In mehreren Bildern ist",
+        "responseSha256": "e417eb2b0eed2313a74c014a986a27d3fa84ace834d904bb09c25127fd88a51c"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15412304773505_20261027_1440",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "continuationInstruction": "weiter",
+      "productId": "gid://shopify/Product/15412304773505",
+      "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+      "beforeSha256": "8634cbb8317eb5a9abe2b43777ebe47c186bdcab2a0cace45c553ed065d447d8",
+      "afterSha256": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+      "before": {
+        "id": "gid://shopify/Product/15412304773505",
+        "title": "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Küche & Bar",
+        "descriptionHtml": "<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Stumpfe Messer adé.</strong> Der kompakte Präzisions-Messerschärfer bringt Küchen- und Taschenmesser in Sekunden zurück auf Rasiermesser-Schärfe – einfach, sicher und ohne Vorkenntnisse.</p>\n<ul>\n<li>🔪 <strong>Schnelle Präzisions-Schärfung</strong> für jedes Messer</li>\n<li>🛡️ <strong>Sicherer Griff</strong> – Finger bleiben geschützt</li>\n<li>⚙️ <strong>Mehrstufig</strong> – Schleifen &amp; Polieren in einem</li>\n<li>🧼 Kompakt &amp; leicht zu verstauen</li>\n<li>🍳 Ideal für jede Küche &amp; Outdoor</li>\n</ul>\n<p><em></em></p>\n<!--xsell--><div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 150 g – 180 g (je nach Variante)</li></ul>\n</div>\n<p>👉 Passt dazu: <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>",
+        "tags": [
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "gadget",
+          "haushalt",
+          "kueche",
+          "kuechenmesser",
+          "messer",
+          "messerschaerfer",
+          "neu",
+          "praezisions",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg?v=1780218397",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg?v=1780218397",
+            "altText": "Knife Sharpener Tool",
+            "mediaId": "gid://shopify/MediaImage/69550363050369"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg?v=1780218395",
+            "altText": "Profi Messerschärfer Präzision",
+            "mediaId": "gid://shopify/MediaImage/69550362984833"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/650669bb-1dcf-4dd3-aa0c-951a6b0bddb8.jpg?v=1780218396",
+            "altText": "Messerschärfer Küche",
+            "mediaId": "gid://shopify/MediaImage/69550363017601"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e260ef1-cee0-48ce-bea8-a579cc2d9a53.jpg?v=1780218396",
+            "altText": "Messerschärfer Schleifen",
+            "mediaId": "gid://shopify/MediaImage/69550363083137"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc72a7c6-6d15-476a-853d-00a265f98753.jpg?v=1780218395",
+            "altText": "Messerschärfer kompakt",
+            "mediaId": "gid://shopify/MediaImage/69550363115905"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchen-edit.jpg?v=1781097176",
+            "altText": "LuxeStyle-Edit · Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+            "mediaId": "gid://shopify/MediaImage/69650063720833"
+          }
+        ],
+        "totalVariants": 2,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788989235591",
+            "title": "Schärfer",
+            "sku": "CJYD291530101AZ",
+            "price": "21.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788989268359",
+            "title": "Mit 2 Schleifscheiben",
+            "sku": "CJYD291530102BY",
+            "price": "23.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein Messerschärfer mit markanter Bauform.</strong> Der längliche schwarze Korpus hat eine breite Aussparung im unteren Bereich. Darüber verläuft eine helle Leiste mit mittig angeordneten Elementen in V-Form. Seitliche Drehknöpfe ergänzen die klare Linienführung.</p>\n<h3>Details aus verschiedenen Blickwinkeln</h3>\n<p>Die Produktansichten zeigen die Oberseite, das Profil und eine Anwendungsszene mit einem Messer. So kannst du Aufbau und Konturen vor der Auswahl näher betrachten.</p>\n<h3>Deine Ausführung auswählen</h3>\n<p>In der aktuellen Auswahl stehen «Schärfer» und «Mit 2 Schleifscheiben». Wähle die vollständige Bezeichnung deiner gewünschten Variante. Der angezeigte Preis bezieht sich auf die ausgewählte Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weitere Ideen:</strong> <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>\n",
+      "diff": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,16 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Stumpfe Messer adé.</strong> Der kompakte Präzisions-Messerschärfer bringt Küchen- und Taschenmesser in Sekunden zurück auf Rasiermesser-Schärfe – einfach, sicher und ohne Vorkenntnisse.</p>\n-<ul>\n-<li>🔪 <strong>Schnelle Präzisions-Schärfung</strong> für jedes Messer</li>\n-<li>🛡️ <strong>Sicherer Griff</strong> – Finger bleiben geschützt</li>\n-<li>⚙️ <strong>Mehrstufig</strong> – Schleifen &amp; Polieren in einem</li>\n-<li>🧼 Kompakt &amp; leicht zu verstauen</li>\n-<li>🍳 Ideal für jede Küche &amp; Outdoor</li>\n-</ul>\n-<p><em></em></p>\n-<!--xsell--><div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul><li>\n-<strong>Gewicht:</strong> ca. 150 g – 180 g (je nach Variante)</li></ul>\n-</div>\n-<p>👉 Passt dazu: <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>+<p><strong>Ein Messerschärfer mit markanter Bauform.</strong> Der längliche schwarze Korpus hat eine breite Aussparung im unteren Bereich. Darüber verläuft eine helle Leiste mit mittig angeordneten Elementen in V-Form. Seitliche Drehknöpfe ergänzen die klare Linienführung.</p>\n+<h3>Details aus verschiedenen Blickwinkeln</h3>\n+<p>Die Produktansichten zeigen die Oberseite, das Profil und eine Anwendungsszene mit einem Messer. So kannst du Aufbau und Konturen vor der Auswahl näher betrachten.</p>\n+<h3>Deine Ausführung auswählen</h3>\n+<p>In der aktuellen Auswahl stehen «Schärfer» und «Mit 2 Schleifscheiben». Wähle die vollständige Bezeichnung deiner gewünschten Variante. Der angezeigte Preis bezieht sich auf die ausgewählte Ausführung.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weitere Ideen:</strong> <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>\n",
+      "sourceManifest": {
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "productId": "gid://shopify/Product/15412304773505",
+        "title": "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+        "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+        "beforeSha256": "8634cbb8317eb5a9abe2b43777ebe47c186bdcab2a0cace45c553ed065d447d8",
+        "afterSha256": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+        "sourceCapturedAtUTC": "2026-10-27T13:42:10Z",
+        "source": "NATIVE-FRESH.json",
+        "coreWords": 90,
+        "imageFilesViewed": 6,
+        "imageProof": "IMAGE-SOURCES.json",
+        "originalHrefTargets": [
+          "/collections/kuechenhelfer",
+          "/collections/kochen-backen"
+        ],
+        "hrefsAfter": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/kuechenhelfer",
+          "/collections/kochen-backen"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "serviceChange": "Removed description-local unproven delivery/location assurance and technical claims; neutral policy references only. Actual policies/settings untouched.",
+        "writeScope": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "nativeVariantCount": 2,
+        "variantIdentityAndLabels": [
+          {
+            "id": "gid://shopify/ProductVariant/67788989235591",
+            "title": "Schärfer",
+            "sku": "CJYD291530101AZ"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788989268359",
+            "title": "Mit 2 Schleifscheiben",
+            "sku": "CJYD291530102BY"
+          }
+        ],
+        "reviewLimits": [
+          "Photo appearance not an independent supplier, function, conformity or rights approval",
+          "No stock/delivery/returns/payment promise",
+          "Existing title outside description-only write scope remains source caveat",
+          "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+        ],
+        "notPromised": [
+          "universal knife compatibility",
+          "sharpness speed/result",
+          "finger protection/safety",
+          "material/weight/multistage function",
+          "additional pictured component inclusion beyond quoting actual variant label"
+        ],
+        "titleCaveat": "Native precision/profi title remains unchanged; no performance approval inferred."
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15412304773505",
+        "title": "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Küche & Bar",
+        "descriptionHtml": "<p><strong>Ein Messerschärfer mit markanter Bauform.</strong> Der längliche schwarze Korpus hat eine breite Aussparung im unteren Bereich. Darüber verläuft eine helle Leiste mit mittig angeordneten Elementen in V-Form. Seitliche Drehknöpfe ergänzen die klare Linienführung.</p>\n<h3>Details aus verschiedenen Blickwinkeln</h3>\n<p>Die Produktansichten zeigen die Oberseite, das Profil und eine Anwendungsszene mit einem Messer. So kannst du Aufbau und Konturen vor der Auswahl näher betrachten.</p>\n<h3>Deine Ausführung auswählen</h3>\n<p>In der aktuellen Auswahl stehen «Schärfer» und «Mit 2 Schleifscheiben». Wähle die vollständige Bezeichnung deiner gewünschten Variante. Der angezeigte Preis bezieht sich auf die ausgewählte Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weitere Ideen:</strong> <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>\n",
+        "tags": [
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "gadget",
+          "haushalt",
+          "kueche",
+          "kuechenmesser",
+          "messer",
+          "messerschaerfer",
+          "neu",
+          "praezisions",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg?v=1780218397",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg?v=1780218397",
+            "altText": "Knife Sharpener Tool",
+            "mediaId": "gid://shopify/MediaImage/69550363050369"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg?v=1780218395",
+            "altText": "Profi Messerschärfer Präzision",
+            "mediaId": "gid://shopify/MediaImage/69550362984833"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/650669bb-1dcf-4dd3-aa0c-951a6b0bddb8.jpg?v=1780218396",
+            "altText": "Messerschärfer Küche",
+            "mediaId": "gid://shopify/MediaImage/69550363017601"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e260ef1-cee0-48ce-bea8-a579cc2d9a53.jpg?v=1780218396",
+            "altText": "Messerschärfer Schleifen",
+            "mediaId": "gid://shopify/MediaImage/69550363083137"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc72a7c6-6d15-476a-853d-00a265f98753.jpg?v=1780218395",
+            "altText": "Messerschärfer kompakt",
+            "mediaId": "gid://shopify/MediaImage/69550363115905"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchen-edit.jpg?v=1781097176",
+            "altText": "LuxeStyle-Edit · Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+            "mediaId": "gid://shopify/MediaImage/69650063720833"
+          }
+        ],
+        "totalVariants": 2,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788989235591",
+            "title": "Schärfer",
+            "sku": "CJYD291530101AZ",
+            "price": "21.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788989268359",
+            "title": "Mit 2 Schleifscheiben",
+            "sku": "CJYD291530102BY",
+            "price": "23.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T13:49:48.803Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15412304773505",
+        "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T13:50:34.080687+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15412304773505",
+        "descriptionExact": true,
+        "afterSha256": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+        "variantCount": 2,
+        "pricesCents": [
+          2190,
+          2390
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15412304773505",
+        "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+        "rawHtmlStored": false,
+        "checkedAtUTC": "2026-10-27T13:50:34.080687+00:00",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein Messerschärfer mit markanter Bauform. Der längliche schwarze Korpus hat eine breite Aussparung im unteren Bereich. Darüber verläuft eine helle Leiste mit mi",
+        "responseSha256": "99bc097dd37570b0bae658086855f28cac03a8dd1886b93be869190f4f06c11c"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15412304806273_20261027_1440",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "continuationInstruction": "weiter",
+      "productId": "gid://shopify/Product/15412304806273",
+      "url": "https://luxestyle.ch/products/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben",
+      "beforeSha256": "19dc2f0f67f464a8e5c650576df41dbd9ee2a0aad6b2c33f5a83df0be0d8dfa5",
+      "afterSha256": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+      "before": {
+        "id": "gid://shopify/Product/15412304806273",
+        "title": "Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Stilvoller Begleiter für jeden Anlass.</strong> Die schicke Crossbody-Tasche in glänzender Lack-Optik ist der perfekte Mix aus Eleganz und Alltagstauglichkeit – für Stadt, Date oder Büro.</p>\n<ul>\n<li>👜 <strong>Hochwertiges PU in Lack-Optik</strong> – edler Glanz</li>\n<li>📏 <strong>Kompaktes Querformat</strong> mit Innenfach</li>\n<li>🔗 <strong>Verstellbarer Kettenriemen</strong> – Crossbody oder Schulter</li>\n<li>🎨 <strong>3 Farben</strong> – Schwarz, Gelb, Creme</li>\n<li>🌆 Urbaner Minimalismus für jeden Look</li>\n</ul>\n<p><em></em></p><p>👉 <strong><a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken →</a></strong></p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> PU-Leder</li>\n<li>\n<strong>Gewicht:</strong> ca. 245 g</li>\n</ul>\n</div>",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "damen-taschen",
+          "dropship",
+          "kat-taschen",
+          "mode",
+          "neu",
+          "sort-damen-umhaengetaschen",
+          "sort-damen-umhaengetaschen-crossbody",
+          "sort-handtaschen-umhaengetaschen",
+          "sort-herren-umhaengetaschen",
+          "sort-herren-umhaengetaschen-crossbody",
+          "tasche",
+          "taschen",
+          "umhaengetasche",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b048eb27-9023-4123-98aa-f43e8fc23052_water.jpg?v=1780218407",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b048eb27-9023-4123-98aa-f43e8fc23052_water.jpg?v=1780218407",
+            "altText": "Elegante Crossbody-Umhängetasche in Lack-Optik, kompakt – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69550363181441"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd91feeb-5c8c-476b-a142-371b646f9edc_water.jpg?v=1780218407",
+            "altText": "Crossbody Tasche elegant",
+            "mediaId": "gid://shopify/MediaImage/69550363214209"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06c7d46f-4891-4bf3-bb28-891dd3db20a6_water.jpg?v=1780218407",
+            "altText": "Lacktasche Damen",
+            "mediaId": "gid://shopify/MediaImage/69550363246977"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/094a1a51-c7f2-4d22-be0b-8ff1315a2d76_water.jpg?v=1780218407",
+            "altText": "Umhängetasche Kette",
+            "mediaId": "gid://shopify/MediaImage/69550363279745"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8d50956-89c4-4851-9a56-8b1a068b2592_water.jpg?v=1780218407",
+            "altText": "Crossbody Bag Farben",
+            "mediaId": "gid://shopify/MediaImage/69550363312513"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-far-edit.jpg?v=1781097179",
+            "altText": "LuxeStyle-Edit · Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+            "mediaId": "gid://shopify/MediaImage/69650064179585"
+          }
+        ],
+        "totalVariants": 3,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788109218183",
+            "title": "Schwarz",
+            "sku": "CJNS291461101AZ",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788109250951",
+            "title": "Gelb",
+            "sku": "CJNS291461102BY",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788109283719",
+            "title": "Beige",
+            "sku": "CJNS291461103CX",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Klare Konturen mit glänzenden Akzenten.</strong> Die Umhängetasche zeigt ein längliches Querformat und eine grosse Frontklappe mit leicht zugespitzter Unterkante. Eine goldfarbene Zierlinie betont die Form der Klappe; eine Gliederkette ergänzt den Look. In den hellen und gelben Produktansichten spiegelt sich das Licht auf der Oberfläche.</p>\n<h3>Eine Idee für dein Outfit</h3>\n<p>Kombiniere die Tasche mit einem schlichten Kleid oder einer geradlinigen Bluse, damit Klappenform und Kettendetail zur Geltung kommen. Ein einzelnes goldfarbenes Accessoire kann den Ton der Zierlinie aufgreifen.</p>\n<h3>Die passende Farbe auswählen</h3>\n<p>In der aktuellen Variantenauswahl findest du Schwarz, Gelb und Beige. Wähle die gewünschte Farbbezeichnung aus und sieh dir die entsprechende Produktansicht an.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weiter entdecken:</strong> <a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken</a></p>\n",
+      "diff": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,19 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Stilvoller Begleiter für jeden Anlass.</strong> Die schicke Crossbody-Tasche in glänzender Lack-Optik ist der perfekte Mix aus Eleganz und Alltagstauglichkeit – für Stadt, Date oder Büro.</p>\n-<ul>\n-<li>👜 <strong>Hochwertiges PU in Lack-Optik</strong> – edler Glanz</li>\n-<li>📏 <strong>Kompaktes Querformat</strong> mit Innenfach</li>\n-<li>🔗 <strong>Verstellbarer Kettenriemen</strong> – Crossbody oder Schulter</li>\n-<li>🎨 <strong>3 Farben</strong> – Schwarz, Gelb, Creme</li>\n-<li>🌆 Urbaner Minimalismus für jeden Look</li>\n-</ul>\n-<p><em></em></p><p>👉 <strong><a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken →</a></strong></p>\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Material:</strong> PU-Leder</li>\n-<li>\n-<strong>Gewicht:</strong> ca. 245 g</li>\n-</ul>\n-</div>+<p><strong>Klare Konturen mit glänzenden Akzenten.</strong> Die Umhängetasche zeigt ein längliches Querformat und eine grosse Frontklappe mit leicht zugespitzter Unterkante. Eine goldfarbene Zierlinie betont die Form der Klappe; eine Gliederkette ergänzt den Look. In den hellen und gelben Produktansichten spiegelt sich das Licht auf der Oberfläche.</p>\n+<h3>Eine Idee für dein Outfit</h3>\n+<p>Kombiniere die Tasche mit einem schlichten Kleid oder einer geradlinigen Bluse, damit Klappenform und Kettendetail zur Geltung kommen. Ein einzelnes goldfarbenes Accessoire kann den Ton der Zierlinie aufgreifen.</p>\n+<h3>Die passende Farbe auswählen</h3>\n+<p>In der aktuellen Variantenauswahl findest du Schwarz, Gelb und Beige. Wähle die gewünschte Farbbezeichnung aus und sieh dir die entsprechende Produktansicht an.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weiter entdecken:</strong> <a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken</a></p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15412304806273",
+        "title": "Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+        "url": "https://luxestyle.ch/products/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T13:41:57+00:00",
+        "beforeSha256": "19dc2f0f67f464a8e5c650576df41dbd9ee2a0aad6b2c33f5a83df0be0d8dfa5",
+        "afterSha256": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+        "source": "NATIVE-FRESH.json",
+        "coreWords": 104,
+        "imageSources": "IMAGE-SOURCES.json",
+        "actualImagesViewed": 3,
+        "nativeVariantCount": 3,
+        "nativeVariantLabels": [
+          "Schwarz",
+          "Gelb",
+          "Beige"
+        ],
+        "sourceAssertionsRemoved": [
+          "unverified textile/material claims",
+          "unverified physical dimensions or weight",
+          "adjustability/fit and functions not demonstrated",
+          "delivery10–20days/country-only badge"
+        ],
+        "serviceChange": "Removed unsupported description-local delivery badge; neutral shipping/refund links added. No policy/settings changed.",
+        "originalHrefTargets": [
+          "https://luxestyle.ch/collections/taschen-sub"
+        ],
+        "originalHrefTargetsPreserved": true,
+        "fieldsToWrite": [
+          "id",
+          "descriptionHtml"
+        ],
+        "writes": 0,
+        "rootMustFreshReadBeforeWrite": true,
+        "remainingSourceLimits": [
+          "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+          "Current source images/variants must still match before description-only write",
+          "Native colour label is Beige, not old Creme. Black view is less reflective; new copy restricts reflection wording to light/yellow photos. No adjustable strap, internal pocket or real PU/weight claim."
+        ]
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15412304806273",
+        "title": "Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<p><strong>Klare Konturen mit glänzenden Akzenten.</strong> Die Umhängetasche zeigt ein längliches Querformat und eine grosse Frontklappe mit leicht zugespitzter Unterkante. Eine goldfarbene Zierlinie betont die Form der Klappe; eine Gliederkette ergänzt den Look. In den hellen und gelben Produktansichten spiegelt sich das Licht auf der Oberfläche.</p>\n<h3>Eine Idee für dein Outfit</h3>\n<p>Kombiniere die Tasche mit einem schlichten Kleid oder einer geradlinigen Bluse, damit Klappenform und Kettendetail zur Geltung kommen. Ein einzelnes goldfarbenes Accessoire kann den Ton der Zierlinie aufgreifen.</p>\n<h3>Die passende Farbe auswählen</h3>\n<p>In der aktuellen Variantenauswahl findest du Schwarz, Gelb und Beige. Wähle die gewünschte Farbbezeichnung aus und sieh dir die entsprechende Produktansicht an.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<p><strong>Weiter entdecken:</strong> <a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken</a></p>\n",
+        "tags": [
+          "accessoires",
+          "bild-ok",
+          "cj-real",
+          "damen-taschen",
+          "dropship",
+          "kat-taschen",
+          "mode",
+          "neu",
+          "sort-damen-umhaengetaschen",
+          "sort-damen-umhaengetaschen-crossbody",
+          "sort-handtaschen-umhaengetaschen",
+          "sort-herren-umhaengetaschen",
+          "sort-herren-umhaengetaschen-crossbody",
+          "tasche",
+          "taschen",
+          "umhaengetasche",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b048eb27-9023-4123-98aa-f43e8fc23052_water.jpg?v=1780218407",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b048eb27-9023-4123-98aa-f43e8fc23052_water.jpg?v=1780218407",
+            "altText": "Elegante Crossbody-Umhängetasche in Lack-Optik, kompakt – LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69550363181441"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd91feeb-5c8c-476b-a142-371b646f9edc_water.jpg?v=1780218407",
+            "altText": "Crossbody Tasche elegant",
+            "mediaId": "gid://shopify/MediaImage/69550363214209"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06c7d46f-4891-4bf3-bb28-891dd3db20a6_water.jpg?v=1780218407",
+            "altText": "Lacktasche Damen",
+            "mediaId": "gid://shopify/MediaImage/69550363246977"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/094a1a51-c7f2-4d22-be0b-8ff1315a2d76_water.jpg?v=1780218407",
+            "altText": "Umhängetasche Kette",
+            "mediaId": "gid://shopify/MediaImage/69550363279745"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8d50956-89c4-4851-9a56-8b1a068b2592_water.jpg?v=1780218407",
+            "altText": "Crossbody Bag Farben",
+            "mediaId": "gid://shopify/MediaImage/69550363312513"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-far-edit.jpg?v=1781097179",
+            "altText": "LuxeStyle-Edit · Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+            "mediaId": "gid://shopify/MediaImage/69650064179585"
+          }
+        ],
+        "totalVariants": 3,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67788109218183",
+            "title": "Schwarz",
+            "sku": "CJNS291461101AZ",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788109250951",
+            "title": "Gelb",
+            "sku": "CJNS291461102BY",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67788109283719",
+            "title": "Beige",
+            "sku": "CJNS291461103CX",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T13:49:53.054Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15412304806273",
+        "url": "https://luxestyle.ch/products/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T13:50:35.715219+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15412304806273",
+        "descriptionExact": true,
+        "afterSha256": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+        "variantCount": 3,
+        "pricesCents": [
+          1490
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15412304806273",
+        "url": "https://luxestyle.ch/products/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben",
+        "rawHtmlStored": false,
+        "checkedAtUTC": "2026-10-27T13:50:35.715219+00:00",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Klare Konturen mit glänzenden Akzenten. Die Umhängetasche zeigt ein längliches Querformat und eine grosse Frontklappe mit leicht zugespitzter Unterkante. Eine g",
+        "responseSha256": "56549bcea36046564437e51da6892efa606eb12b47ebb7da9554d32971cd80c4"
+      }
+    }
+  ]
+}
