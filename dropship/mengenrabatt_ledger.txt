@@ -1,0 +1,11 @@
+6508 Tags gesetzt (A 4761, B 1747), Fehler 0, Rücklesen 12/12 · 2026-10-27T06:14:04Z (Einzelzeilen nicht im Repo; der Lauf stand in /tmp/mr/tags_live.out)
+sammlung mengenrabatt-ab-2-stueck gid://shopify/Collection/755517522311 · 2026-10-27T06:14:11.739Z
+veroeffentlicht gid://shopify/Collection/755517522311 7 Kanäle · 2026-10-27T06:14:12.761Z
+sammlung mengenrabatt-ab-3-stueck gid://shopify/Collection/755517555079 · 2026-10-27T06:14:13.495Z
+veroeffentlicht gid://shopify/Collection/755517555079 7 Kanäle · 2026-10-27T06:14:14.392Z
+rabatt Mengenrabatt: ab 2 Stück 5 % Rabatt gid://shopify/DiscountAutomaticNode/2441790882183 ab 2026-10-27T06:36:00Z · 2026-10-27T06:23:50.761Z
+rabatt Mengenrabatt: ab 3 Stück 10 % Rabatt gid://shopify/DiscountAutomaticNode/2441790914951 ab 2026-10-27T06:36:00Z · 2026-10-27T06:23:51.113Z
+rabatt Mengenrabatt: ab 3 Stück 5 % Rabatt gid://shopify/DiscountAutomaticNode/2441790947719 ab 2026-10-27T06:36:00Z · 2026-10-27T06:23:51.477Z
+versand Kostenloser Versand ab 45 EIN (1527737287047), ab 50 AUS (1540193485191) · 2026-10-27T06:18:00Z
+rabatt-ende Bundle: 2+ Artikel -10% (2343829766529) und Mengenrabatt — 10% ab 3 Artikeln (2363896299905): endsAt 2026-10-27T06:36:00Z · 2026-10-27T06:24:30Z
+kundensicht Warenkorb gemessen 2026-10-27T06:52Z: A 1x/2x/3x = 0/-5/-10 %, B 2x/3x = 0/-5 %, Produkt ohne Tag 3x = 0; Versand frei ab 45.63
