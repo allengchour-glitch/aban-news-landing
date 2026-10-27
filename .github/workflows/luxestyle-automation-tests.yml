@@ -126,6 +126,7 @@ jobs:
           node --check automation/lib/cj_video.mjs
           node --check automation/material_nachtragen.mjs
           node --check automation/kundenstimmen_bauen.mjs
+          node --check automation/unterteilung_audit.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
