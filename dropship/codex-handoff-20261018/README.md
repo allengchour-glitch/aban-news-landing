@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_MERCHANT_PUSH_20261027
+
+[Genehmigter enger Merchant-Push](MERCHANT-PUSH-20261027.md) und [aktuelle Zugriff-/Code-/Feedbelege](MERCHANT-PUSH-BELEGE-20261027.json). Inhaberauftrag «merchant push» gilt für Refresh der bestehenden geprüften LuxeStyle-Quelle, nicht erneut genehmigen lassen. Nicht ausgeführt: Windsor bestätigt google_merchant5797470070/LuxeStyle CH, bietet aber keine Aktion; direkter Merchant-Prüfbrowser zeigt Google-Anmeldung und wurde ohne Eingabe beendet. Aktive Datenquelle/Source-ID/URL nicht authentifiziert bestätigt; neuer Schreibzugang erforderlich.
+
+Vier aktuelle main-Codequellen geprüft. Generator nur lokale XML, keine Push-Aktion und keine Übernahme von excluded_destination. GHA-/GitLab-shop-autopilot sind zusammengesetzte Wartungs-/Read-/Melde-/Writejobs und wurden nicht gestartet. Bekanntes öffentliches Feedziel erreichbar, nur erste 5000 Bytes/ein vollständiges Item geprüft: WALLET-BLK statt aktuellem Generatorhandle ist Herkunfts-/ID-Strategieabweichung, kein Frische-/Zulassungsbeweis. Keine neue Quelle, Vollscan, Upload, Ausschluss-/Shop-/Budgetänderung, Meldung oder zusätzliche Kennzahlabfrage. Shop/Metricool samt sechs Identitäten passend, alle übrigen Grenzen erhalten.
+
 ## LUXESTYLE_FOLLOWER_FOKUS_20261027
 
 [Organischer Facebook-/YouTube-Follower-Fokus](FOLLOWER-FOKUS-20261027.md) und [Mess-/Quellenbelege](FOLLOWER-BELEGE-20261027.json) gesichert und exakt zurückgelesen. Nach «suche follower» zwei aktuelle offizielle Meta-/YouTube-Seiten recherchiert, zwei konkrete Follow-/Abo-Captionzeilen und vorhandene gültige Bestands-/Gewonnen-/Verloren-IDs für den nächsten regulären Read vorbereitet. Heute tatsächlich keine Followerfelder abgefragt: Bestände/Zuwächse unbekannt, nicht null; keine Zusage neuer Follower aus Views. Kein zusätzlicher Kennzahlread, Post, Kontakt, Follow/Unfollow, Gruppenbeitritt, Profil- oder Zeitplanchange.
