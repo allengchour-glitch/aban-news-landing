@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { planeAlles, pfIdAusSku, PLATZHALTER_VARIANTE, PLATZHALTER_BILD } from './pod_auswahl_plan.mjs';
 import { ladePaket } from './pod_auswahl_daten.mjs';
-import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK } from './pod_auswahl_schreiben.mjs';
+import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK, endeCode, EXIT_TEXT, zusammenfassung, bestaetigt } from './pod_auswahl_schreiben.mjs';
 import { MARKE_AUF } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -14,7 +14,9 @@ const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 const klon = (x) => JSON.parse(JSON.stringify(x));
 
 const paket = ladePaket();
-const planVon = (nur = null, bestand = paket.bestand) => planeAlles({ katalog: paket.katalog, beschreibungen: paket.beschreibungen, versand: paket.versand, bestand, skuPruefung: paket.skuPruefung, nur });
+const planVon = (nur = null, bestand = paket.bestand, extra = {}) => planeAlles({ katalog: paket.katalog, beschreibungen: paket.beschreibungen, versand: paket.versand, bestand, skuPruefung: paket.skuPruefung, skuIndex: paket.skuIndex, skuIndexAbgeschnitten: paket.skuIndexAbgeschnitten, nur, ...extra });
+/** «<handle>:<code>» für jeden Blocker-Befund des Plans (so, als hätte der Besitzer alles bestätigt). */
+const alleBestaetigt = (plan) => plan.produkte.flatMap((p) => [...new Set(p.befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code))].map((c) => `${p.handle}:${c}`));
 const HANDLES = { poster: 'poster-zum-selbstgestalten', hoodie: 'unisex-hoodie-selbst-gestalten', shirt: 'unisex-t-shirt-selbst-gestalten', iphone: 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', samsung: 'samsung-huelle-selbst-gestalten' };
 
 // ───────────────────────────────────────────────────────── Shopify-Attrappe (so streng wie nötig: neue Optionswerte müssen vorher angelegt sein)
@@ -35,6 +37,7 @@ function neuerShop(bestand, o = {}) {
     const name = (query.match(/(productByHandle|productOptionsCreate|productOptionUpdate|productVariantsBulkCreate|productUpdate|productSet|metafieldsSet)/) || [])[1];
     aufrufe.push({ name, v });
     if (name !== 'productByHandle' && o.alleFehlschlagen) return { errors: [{ message: 'Internal error' }] };
+    if (name !== 'productByHandle' && o.fehlerFuerHandle && [v.pid, v.p?.id].includes(produkte.get(o.fehlerFuerHandle)?.id)) return { errors: [{ message: 'Internal error' }] };
     if (name === 'productByHandle') { const p = produkte.get(v.h); return { data: { productByHandle: p ? alsAntwort(p) : null } }; }
     if (name === 'productOptionsCreate') {
       const p = nachId(v.pid);
@@ -87,7 +90,8 @@ function neuerShop(bestand, o = {}) {
   return { gql, produkte, aufrufe, zaehle: (nm) => aufrufe.filter((a) => a.name === nm).length, reihenfolge: () => aufrufe.map((a) => a.name) };
 }
 
-const tmp = () => mkdtempSync(join(tmpdir(), 'pod-auswahl-test-'));
+const angelegt = [];
+const tmp = () => { const d = mkdtempSync(join(tmpdir(), 'pod-auswahl-test-')); angelegt.push(d); return d; };   // alle Ordner werden am Ende entfernt
 const still = () => {};
 const cfg = (dir, extra = {}) => ({ ledgerPfad: join(dir, 'ledger.txt'), sicherungsDir: join(dir, 'sicherung'), log: still, jetzt: () => '2026-10-27T12:00:00.000Z', ...extra });
 
@@ -150,10 +154,16 @@ ist('CHUNK ist 50', CHUNK, 50);
 // ───────────────────────────────────────────────────────── 3. Hoodie: Blocker-Befund sperrt, mit BEFUND_OK läuft er
 {
   const dir = tmp(); const plan = planVon([HANDLES.hoodie]); const shop = neuerShop(paket.bestand);
+  const codes = plan.produkte[0].befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code).sort();
+  ist('Hoodie: zwei Blocker-Befunde (Sweatshirt-SKUs, Premium-Hoodie schon als eigenes Produkt)', codes, ['sku-anderes-produkt', 'sku-in-anderem-produkt']);
   const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
-  ist('Hoodie: ohne Bestätigung GESPERRT, nichts geschrieben', [r.exit, r.ergebnisse.map((x) => x.status), shop.aufrufe.length], [0, ['GESPERRT'], 0]);
-  const r2 = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
-  ist('Hoodie: mit Bestätigung OK, 19 Varianten', [r2.exit, r2.ergebnisse.map((x) => x.status), shop.produkte.get(HANDLES.hoodie).variants.length], [0, ['OK'], 19]);
+  ist('Hoodie: ohne Bestätigung GESPERRT (Exit 5), nichts geschrieben', [r.exit, r.ergebnisse.map((x) => x.status), shop.aufrufe.length], [5, ['GESPERRT'], 0]);
+  const r1 = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie + ':sku-anderes-produkt'] }) });
+  ist('Hoodie: nur EIN Befund bestätigt → bleibt GESPERRT durch den anderen (keine Pauschalbestätigung)', [r1.exit, r1.ergebnisse.map((x) => [x.status, x.befunde]), shop.aufrufe.length], [5, [['GESPERRT', ['sku-in-anderem-produkt']]], 0]);
+  const rp = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
+  ist('Hoodie: der blosse Handle bestätigt nichts mehr', [rp.exit, rp.ergebnisse.map((x) => x.status), shop.aufrufe.length], [5, ['GESPERRT'], 0]);
+  const r2 = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
+  ist('Hoodie: mit beiden Bestätigungen OK, 19 Varianten', [r2.exit, r2.ergebnisse.map((x) => x.status), shop.produkte.get(HANDLES.hoodie).variants.length], [0, ['OK'], 19]);
   rmSync(dir, { recursive: true, force: true });
 }
 
@@ -185,7 +195,7 @@ ist('CHUNK ist 50', CHUNK, 50);
 {
   const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand);
   const vorab = Object.values(paket.bestand).map((b) => b.variants.length).reduce((a, c) => a + c, 0);
-  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
   ist('Alle fünf: Exit 0, fünf OK', [r.exit, r.ergebnisse.map((x) => x.status)], [0, ['OK', 'OK', 'OK', 'OK', 'OK']]);
   const gesamt = [...shop.produkte.values()].reduce((a, p) => a + p.variants.length, 0);
   ist('Alle fünf: 165 Varianten mehr als vorher', gesamt - vorab, 165);
@@ -210,7 +220,7 @@ ist('CHUNK ist 50', CHUNK, 50);
   // gleiche Kombination mehrfach ist in der Attrappe erlaubt (nur SKU zählt)
   pr.neu = mehr; pr.summe = { ...pr.summe, neu: 120, gesamt: 136 };
   const shop = neuerShop(bestand);
-  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir), maxFehlerFolge: 3 });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }), maxFehlerFolge: 3 });
   const stuecke = shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate').map((a) => a.v.vs.length);
   ist('Stückelung: 120 Varianten → 50 + 50 + 20', stuecke, [50, 50, 20]);
   wahr('Stückelung: Ergebnis nicht Exit 1 (Zustand weicht wegen der künstlichen Plan-Änderung höchstens ab)', [0, 3].includes(r.exit));
@@ -220,7 +230,7 @@ ist('CHUNK ist 50', CHUNK, 50);
 // ───────────────────────────────────────────────────────── 7. Tageslimit: Exit 4, vorherige Produkte bleiben im Ledger, spätere unberührt
 {
   const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { tageslimitAb: 14 + 11 + 5 });   // Poster (14) + Hoodie (11) gehen, das T-Shirt (24) scheitert
-  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
   ist('Tageslimit: Exit 4', r.exit, 4);
   ist('Tageslimit: Poster und Hoodie OK, T-Shirt TAGESLIMIT, nichts danach', r.ergebnisse.map((x) => `${x.handle.slice(0, 12)}:${x.status}`), ['poster-zum-s:OK', 'unisex-hoodi:OK', 'unisex-t-shi:TAGESLIMIT']);
   ist('Tageslimit: iPhone und Samsung nicht angefasst', [shop.produkte.get(HANDLES.iphone).variants.length, shop.produkte.has(HANDLES.samsung)], [16, false]);
@@ -274,7 +284,7 @@ ist('CHUNK ist 50', CHUNK, 50);
 // ───────────────────────────────────────────────────────── 9. Drei Fehler in Folge → Abbruch (Exit 1)
 {
   const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { alleFehlschlagen: true });
-  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
   ist('Fehlerfolge: Exit 1 nach dem dritten Fehler', [r.exit, r.ergebnisse.map((x) => x.status)], [1, ['FEHLER', 'FEHLER', 'FEHLER']]);
   ist('Fehlerfolge: iPhone und Samsung nie versucht', [shop.produkte.get(HANDLES.iphone).variants.length, shop.produkte.has(HANDLES.samsung)], [16, false]);
   rmSync(dir, { recursive: true, force: true });
@@ -282,7 +292,11 @@ ist('CHUNK ist 50', CHUNK, 50);
 { // ein Fehler dazwischen setzt die Folge nicht fort, wenn danach etwas gelingt (hier: Hoodie gesperrt zählt nicht als Fehler)
   const dir = tmp(); const plan = planVon([HANDLES.hoodie, HANDLES.poster]); const shop = neuerShop(paket.bestand);
   const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
-  ist('Gesperrtes Produkt (Hoodie) bremst die übrigen nicht, Reihenfolge wie in der Spezifikation', [r.exit, r.ergebnisse.map((x) => x.status)], [0, ['OK', 'GESPERRT']]);
+  ist('Gesperrtes Produkt (Hoodie) bremst die übrigen nicht, Reihenfolge wie in der Spezifikation; der Lauf endet mit Exit 5 (nicht alles ausgeführt)', [r.exit, r.ergebnisse.map((x) => x.status)], [5, ['OK', 'GESPERRT']]);
+  const nurPoster = await lauf({ plan: planVon([HANDLES.hoodie, HANDLES.poster]), gql: neuerShop(paket.bestand).gql, ...cfg(tmp()), nur: [HANDLES.poster] });
+  ist('Mit ONLY (nur) ausserhalb des gesperrten Produkts: Exit 0', [nurPoster.exit, nurPoster.ergebnisse.map((x) => x.status)], [0, ['OK']]);
+  const nurHoodie = await lauf({ plan: planVon([HANDLES.hoodie]), gql: neuerShop(paket.bestand).gql, ...cfg(tmp()), nur: [HANDLES.hoodie] });
+  ist('Mit ONLY auf das gesperrte Produkt selbst: Exit 5 (nichts ausgeführt ist kein Erfolg)', [nurHoodie.exit, nurHoodie.ergebnisse.map((x) => x.status)], [5, ['GESPERRT']]);
   rmSync(dir, { recursive: true, force: true });
 }
 
@@ -312,5 +326,47 @@ ist('CHUNK ist 50', CHUNK, 50);
   ist('vergleiche: nicht lesbares Produkt', vergleiche(pr, null), [`Produkt ${HANDLES.poster} nicht lesbar`]);
 }
 
+// ───────────────────────────────────────────────────────── 12. Exit-Codes: Exit 0 NUR, wenn alles Geplante ausgeführt ist
+{ // ein FEHLER unter fünf Produkten (die Folge wird durch Erfolge unterbrochen, also kein «drei Fehler in Folge») → Exit 1
+  const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { fehlerFuerHandle: HANDLES.shirt });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
+  ist('Ein FEHLER unter fünf OK → Exit 1 (nicht 0)', [r.exit, r.ergebnisse.map((x) => x.status)], [1, ['OK', 'OK', 'FEHLER', 'OK', 'OK']]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // FEHLER und GESPERRT zugleich: FEHLER gewinnt (1 vor 5)
+  const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { fehlerFuerHandle: HANDLES.shirt });
+  const bestaetigt = alleBestaetigt(plan).filter((x) => !x.startsWith(HANDLES.iphone));
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: bestaetigt }) });
+  ist('FEHLER + GESPERRT → Exit 1', [r.exit, r.ergebnisse.map((x) => x.status)], [1, ['OK', 'OK', 'FEHLER', 'GESPERRT', 'OK']]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Tageslimit und Abweichung behalten Vorrang (Exit 4 / 3), auch wenn vorher etwas GESPERRT war
+  const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { tageslimitAb: 14 });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan).filter((x) => x.startsWith(HANDLES.iphone)) }) });   // Poster geht, Hoodie und T-Shirt GESPERRT, iPhone (bestätigt) scheitert am Limit
+  ist('Tageslimit nach gesperrten Produkten: Exit 4, danach nichts mehr', [r.exit, r.ergebnisse.map((x) => x.status)], [4, ['OK', 'GESPERRT', 'GESPERRT', 'TAGESLIMIT']]);
+  rmSync(dir, { recursive: true, force: true });
+}
+ist('endeCode: leer → 0, nur OK/UEBERSPRUNGEN/NICHTS_ZU_TUN → 0', [endeCode([]), endeCode([{ status: 'OK' }, { status: 'UEBERSPRUNGEN' }, { status: 'NICHTS_ZU_TUN' }])], [0, 0]);
+ist('endeCode: GESPERRT → 5, FEHLER → 1, beides → 1', [endeCode([{ status: 'OK' }, { status: 'GESPERRT' }]), endeCode([{ status: 'FEHLER' }]), endeCode([{ status: 'GESPERRT' }, { status: 'FEHLER' }])], [5, 1, 1]);
+ist('EXIT_TEXT kennt 0, 1, 3, 4, 5', Object.keys(EXIT_TEXT).map(Number), [0, 1, 3, 4, 5]);
+{
+  const z = zusammenfassung({ ergebnisse: [{ handle: 'a', status: 'OK' }, { handle: 'b', status: 'GESPERRT' }, { handle: 'c', status: 'FEHLER' }], exit: 1 }).split('\n');
+  ist('zusammenfassung: Ergebnis, Zähler, ENDE als letzte Zeile', [z.length, z[0].startsWith('Ergebnis:'), z[1], z[2].startsWith('ENDE: Exit 1 – ')], [3, true, 'Zähler: OK 1 · GESPERRT 1 · FEHLER 1', true]);
+  ist('zusammenfassung: leerer Lauf', zusammenfassung({ ergebnisse: [], exit: 0 }).split('\n')[1], 'Zähler: keine Produkte');
+}
+ist('bestaetigt: nur «handle:code» zählt', [bestaetigt(['h:c'], 'h', 'c'), bestaetigt(['h'], 'h', 'c'), bestaetigt(['h:x'], 'h', 'c'), bestaetigt(undefined, 'h', 'c'), bestaetigt(['hh:c'], 'h', 'c')], [true, false, false, false, false]);
+
+// ───────────────────────────────────────────────────────── 13. OHNE: ein Material weglassen entfernt den Befund, der Rest läuft ohne Bestätigung
+{
+  const dir = tmp(); const ohne = [{ handle: HANDLES.shirt, material: 'Klassische Baumwolle' }];
+  const plan = planVon([HANDLES.shirt], paket.bestand, { ohne }); const shop = neuerShop(paket.bestand);
+  ist('OHNE Klassische Baumwolle: kein Blocker mehr, 16 statt 24 neue Varianten', [plan.produkte[0].befunde.filter((b) => b.schwere === 'blocker').length, plan.produkte[0].neu.length], [0, 16]);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const t = shop.produkte.get(HANDLES.shirt);
+  ist('OHNE: Lauf ohne Bestätigung OK, keine Variante der ausgelassenen SKUs (8481330 …/Printful 11576–12652) im Shop', [r.exit, r.ergebnisse.map((x) => x.status), t.variants.length, t.variants.some((v) => /_(11576|11577|11578|11579|11580|12650|12651|12652)$/.test(v.sku)), t.options[0].values.includes('Klassische Baumwolle')], [0, ['OK'], 9 + 16, false, false]);
+  rmSync(dir, { recursive: true, force: true });
+}
+
+for (const d of angelegt) rmSync(d, { recursive: true, force: true });
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

@@ -8,6 +8,10 @@
  *   • Vorhandene Varianten werden NIE geändert oder gelöscht (SKU, Preis, ID bleiben). Es kommen nur eine Option «Material» (Position 1) und neue Varianten dazu.
  *   • SKU neuer Varianten: «<skuPraefix>_<Printful-Katalog-Variantennummer>» (printful_sync decodiert die Zahl hinter dem letzten «_»).
  *   • Jede Printful-Nummer steht entweder ausdrücklich hier (Poster) oder wird aus dem Printful-Katalog gelesen (Farbe/Grösse bzw. Modell). Was der Katalog nicht belegt, entfällt.
+ *   • textKonflikte: Aussagen im TITEL oder im Haupttext AUSSERHALB des Blocks, die nicht für alle neuen Materialien stimmen (Titel/Text werden NICHT angefasst, harte Regel
+ *     «Beschreibung nur zwischen den Kommentarmarken ändern»). Der Plan sucht die Stellen frisch im Shop-Text und meldet sie als Befund mit wörtlichem Zitat:
+ *     schwere 'blocker' sperrt LIVE für dieses Produkt, bis der Besitzer entschieden hat (BEFUND_OK=<handle>:<code>), 'hinweis' wird nur gemeldet.
+ *     `muster` ist ein regulärer Ausdruck (ohne Gross-/Kleinschreibung) auf den Titel bzw. den KLARTEXT des Haupttextes (ohne HTML); `gilt` = Materialien, für die die Aussage stimmt.
  *   • Texte («Materialien im Vergleich»): jede Angabe trägt einen Beleg (Produktnummer + Textstelle der englischen Printful-Beschreibung); der Test prüft, dass die
  *     Textstelle wirklich in /tmp/pod/beschreibungen.json (hier: dropship/pod-auswahl/beschreibungen.json) steht und jede Zahl im deutschen Text im Beleg vorkommt.
  */
@@ -16,7 +20,7 @@
 export const MARKE_AUF = '<!-- lx-material-v1 -->';
 export const MARKE_ZU = '<!-- /lx-material-v1 -->';
 
-const Z = (p, z, feld = 'desc') => ({ p, z, feld });   // Beleg: Printful-Produkt, wörtliche Textstelle (Englisch), Feld der Beschreibungsdatei
+const Z = (p, z, feld = 'desc', extra = {}) => ({ p, z, feld, ...extra });   // Beleg: Printful-Produkt, wörtliche Textstelle (Englisch), Feld der Beschreibungsdatei; extra: { fehlt, vergleichMit } für «ohne …»-Angaben (siehe Test)
 const F = (t, b) => ({ t, b });                         // Angabe: deutscher Text + Beleg
 
 export const OPTION_MATERIAL = Object.freeze({ name: 'Material', position: 1 });
@@ -35,6 +39,16 @@ export const SPEC = [
       { wert: 'Gerahmt · Weiss', printfulProdukt: 304, zuordnung: { art: 'zeilen', zeilen: [['30×40 cm', 10297], ['50×70 cm', 10298], ['A2 (42×59,4 cm)', 19648]] } },
       { wert: 'Gerahmt · Eiche', printfulProdukt: 304, zuordnung: { art: 'zeilen', zeilen: [['30×40 cm', 11791], ['50×70 cm', 11792], ['A2 (42×59,4 cm)', 19653]] } },
     ],
+    textKonflikte: [
+      { code: 'text-ausserhalb-block', schwere: 'hinweis',
+        stellen: [
+          { muster: 'Mattes Premium-Papier', gilt: ['Poster matt', 'Gerahmt · Schwarz', 'Gerahmt · Weiss', 'Gerahmt · Eiche'] },
+          { muster: 'Premium-Matt-Papier, randlos bedruckt', gilt: ['Poster matt'] },
+          { muster: 'Mehrere Grössen \\(30×40 bis 70×100 cm\\)', gilt: ['Poster matt', 'Leinwand'] },
+        ],
+        problem: 'Der Haupttext beschreibt das Material «Poster matt» (Papier, Randlosigkeit, Grössenbereich). Für Foto-Glanzpapier, Leinwand und Rahmen stimmt er nicht oder nur teilweise.',
+        vorschlag: 'Text materialneutral fassen («Premium-Kunstdruck in mehreren Materialien und Grössen») und Papier, Randlosigkeit und Grössen nur im Block «Materialien im Vergleich» nennen.' },
+    ],
     zollMasse: ['Foto-Glanzpapier', 'Leinwand'],   // diese Materialien sind in Zoll bestellbar: der Materialtext nennt «12×16″ ≈ 30×40 cm» (Katalogbezeichnung ↔ Grösse im Shop)
     vergleich: [
       { werte: ['Poster matt'], fakten: [
@@ -50,7 +64,7 @@ export const SPEC = [
         F('Papier aus Japan', Z(171, 'Paper sourced from Japan')),
       ] },
       { werte: ['Leinwand'], fakten: [
-        F('Poly-Baumwoll-Mischgewebe, 3,18 cm (1,25″) dick', Z(3, '1.25″ (3.18 cm) thick poly-cotton blend canvas')),
+        F('Poly-Baumwoll-Mischgewebe; Leinwand insgesamt 3,18 cm (1,25″) dick', Z(3, '1.25″ (3.18 cm) thick poly-cotton blend canvas')),
         F('Stoffgewicht 344 g/m² (± 25 g/m²)', Z(3, '(344 g/m² +/- 25g/m²)')),
         F('verblassungsresistent', Z(3, 'Fade-resistant')),
         F('von Hand über Massivholz-Keilrahmen gespannt', Z(3, 'Hand-stretched over solid wood stretcher bars')),
@@ -81,6 +95,16 @@ export const SPEC = [
     // Der Besitzer nennt «Gildan 18500» (Hoodie, Printful 146). GEMESSEN am 27.10.2026 (GET /products/variant/5426): die vorhandenen SKUs 5426–5433 sind
     // Printful-Produkt 145 «Unisex Crew Neck Sweatshirt | Gildan 18000» (White), also ein Sweatshirt OHNE Kapuze. Das ist ein Befund (siehe Plan), keine Änderung.
     bestand: { wert: 'Baumwoll-Mix', printfulProdukt: 146, farbe: 'White', erwartet: 'Hoodie Gildan 18500' },
+    textKonflikte: [
+      { code: 'text-ausserhalb-block', schwere: 'hinweis',
+        stellen: [
+          { muster: 'Ein robustes und warmes Sweatshirt', gilt: ['Baumwoll-Mix'] },
+          { muster: '50 % Baumwolle, 50 % Polyester', gilt: ['Baumwoll-Mix'] },
+          { muster: 'Material: Baumwolle, Polyester, Elastan', gilt: ['Baumwoll-Mix'] },
+        ],
+        problem: 'Der Haupttext beschreibt das Rundhals-Sweatshirt (Material «Baumwoll-Mix», Printful 145). Premium-Baumwolle (100 % Baumwolle aussen) und Bio-Baumwolle (85 % Bio-Baumwolle, 15 % Polyester) sind Kapuzenpullover mit anderer Zusammensetzung.',
+        vorschlag: 'Text materialneutral fassen (Zusammensetzung nur im Block «Materialien im Vergleich» nennen), «Material» in den Produktdetails auf «je nach Auswahl» stellen.' },
+    ],
     materialien: [
       { wert: 'Baumwoll-Mix', bestand: true, printfulProdukt: 146 },
       { wert: 'Premium-Baumwolle', printfulProdukt: 380, zuordnung: { art: 'farbeGroesse', farbe: 'White' } },
@@ -96,12 +120,12 @@ export const SPEC = [
         F('Weiss kann eher cremefarben als hellweiss wirken', Z(145, 'the White color variant may appear off-white rather than bright white')),
       ] },
       { werte: ['Premium-Baumwolle'], fakten: [
-        F('Aussenseite 100 % Baumwolle', Z(380, '100% cotton face')),
-        F('weitere Herstellerangabe: 65 % ringgesponnene Baumwolle, 35 % Polyester', Z(380, '65% ring-spun cotton, 35% polyester')),
+        // Die Quelle nennt zwei Zeilen untereinander und sagt nicht, wofür die zweite gilt. Darum EINE Angabe, die beides wörtlich und ohne Zuordnung wiedergibt.
+        F('Stoff laut Hersteller: Aussenseite 100 % Baumwolle; zusätzlich ohne Zuordnung genannt: 65 % ringgesponnene Baumwolle, 35 % Polyester', Z(380, '100% cotton face • 65% ring-spun cotton, 35% polyester')),
         F('Kapuzenpullover (Pullover Hoodie)', Z(380, 'Pullover Hoodie', 'title')),
         F('Kängurutasche vorne', Z(380, 'Front pouch pocket')),
         F('3-teilige Kapuze', Z(380, '3-panel hood')),
-        F('fällt klein aus: eine Grösse grösser bestellen', Z(380, 'This hoodie runs small. For the perfect fit, we recommend ordering one size larger than your usual size.')),
+        F('fällt klein aus: bei diesem Material eine Grösse grösser bestellen', Z(380, 'This hoodie runs small. For the perfect fit, we recommend ordering one size larger than your usual size.')),
       ] },
       { werte: ['Bio-Baumwolle'], fakten: [
         F('85 % Bio-Baumwolle (gekämmt, ringgesponnen), 15 % recyceltes Polyester (Produktion in Europa)', Z(821, '85% organic combed ring-spun cotton, 15% recycled polyester for production in Europe')),
@@ -109,7 +133,7 @@ export const SPEC = [
         F('Halbmond-Detail auf dem Rücken', Z(821, 'Half-moon detail on the back')),
         F('Bio-Baumwolle nach GOTS und OCS zertifiziert', Z(821, 'holds certifications for its organic cotton content under GOTS (Global Organic Textile Standard) and OCS (Organic Content Standard)')),
         F('Recyclinganteil nach GRS zertifiziert', Z(821, 'GRS (Global Recycled Standard) certifies the recycled content')),
-        F('fällt in Europa eine Grösse grösser aus: eine Grösse kleiner bestellen', Z(821, 'The sizes correspond to a bigger size in the European market, customers from that region should order a size down.')),
+        F('fällt in Europa eine Grösse grösser aus: bei diesem Material eine Grösse kleiner bestellen', Z(821, 'The sizes correspond to a bigger size in the European market, customers from that region should order a size down.')),
       ] },
     ],
   },
@@ -118,6 +142,18 @@ export const SPEC = [
   {
     handle: 'unisex-t-shirt-selbst-gestalten', art: 'erweitern', skuPraefix: '5599797', zweiteOption: 'Grösse',
     bestand: { wert: 'Ringgarn-Baumwolle', printfulProdukt: 71, farbe: 'White' },
+    textKonflikte: [
+      { code: 'text-ausserhalb-block', schwere: 'hinweis',
+        stellen: [
+          { muster: '100 % gekämmte und ringgesponnene Baumwolle', gilt: ['Ringgarn-Baumwolle'] },
+          { muster: 'Stoffgewicht: 142 g/m²', gilt: ['Ringgarn-Baumwolle'] },
+          { muster: 'Vorgewaschener Stoff', gilt: ['Ringgarn-Baumwolle'] },
+          { muster: 'Der Stoff ist leicht transparent', gilt: ['Ringgarn-Baumwolle'] },
+          { muster: 'Material: Baumwolle, Polyester', gilt: [] },
+        ],
+        problem: 'Der Haupttext beschreibt das Material «Ringgarn-Baumwolle» (142 g/m², leicht durchscheinend). Der Block nennt für Bio 180 g/m² und für Heavyweight 206,8 g/m²; «Polyester» in den Produktdetails trifft für keines der vier Materialien in Weiss zu.',
+        vorschlag: 'Text materialneutral fassen (Gewicht und Zusammensetzung nur im Block «Materialien im Vergleich» nennen), «Material» in den Produktdetails auf «Baumwolle (je nach Auswahl)» stellen.' },
+    ],
     materialien: [
       { wert: 'Ringgarn-Baumwolle', bestand: true, printfulProdukt: 71 },
       { wert: 'Klassische Baumwolle', printfulProdukt: 438, zuordnung: { art: 'farbeGroesse', farbe: 'White' } },
@@ -160,6 +196,17 @@ export const SPEC = [
   {
     handle: 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', art: 'erweitern', skuPraefix: '3615382', zweiteOption: 'Handymodell',
     bestand: { wert: 'Hartschale MagSafe', printfulProdukt: 798, finish: 'Matte' },
+    textKonflikte: [
+      // FEHLKAUF-RISIKO: bei personalisierter Ware ist die Rückgabe ausgeschlossen (ls-pod-retoure). Wer wegen «MagSafe» im Titel eine «Hartschale» oder «Klare Hülle» wählt, bekommt eine Hülle ohne MagSafe-Magnete.
+      { code: 'magsafe-irrefuehrend', schwere: 'blocker',
+        stellen: [ { muster: 'MagSafe', gilt: ['Hartschale MagSafe'] } ],
+        problem: 'Titel und Haupttext versprechen MagSafe®, aber nur das Material «Hartschale MagSafe» hat die Magnete; «Hartschale» (Printful 601) und «Klare Hülle» (Printful 181) haben keine. Rückgabe ist bei personalisierter Ware ausgeschlossen, ein Fehlkauf wäre nicht rückgängig zu machen.',
+        vorschlag: 'Vor LIVE einen der drei Wege wählen: (1) Titel und Fliesstext entmagsafen und MagSafe® nur beim Material «Hartschale MagSafe» nennen (Titel und Text von Hand ändern, danach verschwindet dieser Befund von selbst); (2) die Materialien «Hartschale» und «Klare Hülle» nicht anbieten (OHNE=<handle>:Hartschale,<handle>:Klare Hülle); (3) statt «Klare Hülle» (181) die MagSafe®-Klarhülle (Printful 799, gleiche Modelle) nehmen – das braucht eine Änderung der Spezifikation. Die Materialtexte im Block sagen bei «Hartschale» und «Klare Hülle» schon ausdrücklich «ohne MagSafe®-Magnete».' },
+      { code: 'text-ausserhalb-block', schwere: 'hinweis',
+        stellen: [ { muster: 'Mattes oder glänzendes Finish', gilt: [] } ],
+        problem: 'Alle Varianten sind matt («Hartschale MagSafe», «Hartschale») oder klar («Klare Hülle»); ein glänzendes Finish gibt es hier nicht.',
+        vorschlag: 'Satz streichen oder «Mattes Finish» schreiben.' },
+    ],
     materialien: [
       { wert: 'Hartschale MagSafe', bestand: true, printfulProdukt: 798 },
       // «Hartschale»: Printful 601 Tough Case, MATTE vorhanden (29 Modelle) → matt, passend zur vorhandenen matten MagSafe-Variante
@@ -168,6 +215,7 @@ export const SPEC = [
     ],
     vergleich: [
       { werte: ['Hartschale MagSafe'], fakten: [
+        F('eingebaute MagSafe®-Magnete', Z(798, 'built-in MagSafe® magnets')),
         F('Aussenschale aus Polycarbonat', Z(798, 'Polycarbonate outer shell')),
         F('Innenfutter aus thermoplastischem Polyurethan (TPU)', Z(798, 'Thermoplastic Polyurethane inner liner')),
         F('zweischichtiger Schutz', Z(798, 'Dual-layer protection')),
@@ -175,17 +223,21 @@ export const SPEC = [
         F('Induktionsladen möglich', Z(798, 'Induction charging-compatible')),
       ] },
       { werte: ['Hartschale'], fakten: [
+        // «ohne MagSafe»: die Beschreibung von 601 nennt MagSafe® nirgends, der Hersteller führt die MagSafe®-Ausführung als eigenes Produkt (798, Titel mit «MagSafe»). Der Test prüft beides.
+        F('ohne MagSafe®-Magnete (MagSafe® gibt es nur beim Material «Hartschale MagSafe»)', Z(601, 'Tough Case for iPhone®', 'title', { fehlt: 'MagSafe', vergleichMit: 798 })),
         F('Aussenschale aus schlagfestem Polycarbonat', Z(601, 'impact-resistant polycarbonate')),
         F('Innenfutter aus thermoplastischem Polyurethan (TPU)', Z(601, 'Thermoplastic Polyurethane TPU inner liner')),
         F('zweischichtiger Schutz', Z(601, 'Dual-layer protection')),
         F('Induktionsladen möglich', Z(601, 'Induction charging compatible')),
       ] },
       { werte: ['Klare Hülle'], fakten: [
+        // wie oben: 181 nennt MagSafe® nirgends; die MagSafe®-Klarhülle ist beim Hersteller ein eigenes Produkt (799)
+        F('ohne MagSafe®-Magnete (MagSafe® gibt es nur beim Material «Hartschale MagSafe»)', Z(181, 'Clear Case for iPhone®', 'title', { fehlt: 'MagSafe', vergleichMit: 799 })),
         F('feste Rückseite aus Polycarbonat', Z(181, 'Solid polycarbonate back')),
         F('flexible, durchsichtige Seiten aus Polyurethan', Z(181, 'Flexible, see-through polyurethane sides')),
         F('0,5 mm erhöhter Rand', Z(181, '.5 mm raised bezel')),
         F('kabelloses Laden möglich', Z(181, 'Wireless charging compatible')),
-        F('Schutzfolie auf der Innenseite vor dem Gebrauch entfernen', Z(181, 'The case may include a protective film on the inside that needs to be removed before use.')),
+        F('kann innen eine Schutzfolie enthalten, die vor dem Gebrauch entfernt werden muss', Z(181, 'The case may include a protective film on the inside that needs to be removed before use.')),
       ] },
     ],
   },

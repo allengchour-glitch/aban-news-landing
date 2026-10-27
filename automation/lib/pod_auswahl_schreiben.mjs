@@ -13,6 +13,12 @@
  *
  * Fehlerregeln: VARIANT_THROTTLE_EXCEEDED / «Daily variant creation limit» → TageslimitFehler (Exit 4, sauber beenden, nicht wiederholen);
  * drei Fehler in Folge → Abbruch; Abweichung nach dem Schreiben → sofort Abbruch (Exit 3). Ledger: nur Erfolge werden übersprungen.
+ *
+ * EXIT-CODES (ein Wrapper oder eine Action darf «Exit 0» nur sehen, wenn WIRKLICH alles Geplante ausgeführt ist):
+ *   0 alles ausgeführt (oder laut Ledger schon erledigt)      1 mindestens ein Produkt mit FEHLER, oder drei Fehler in Folge
+ *   3 Abweichung: Zustand ≠ Plan                               4 Tageslimit für neue Varianten erreicht (nicht wiederholen)
+ *   5 mindestens ein Produkt im Lauf ist GESPERRT (Blocker-Befund nicht bestätigt) – mit ONLY=… ausserhalb der gesperrten Produkte wird daraus 0
+ * Vorrang: 4 und 3 beenden den Lauf sofort; sonst gewinnt 1 vor 5 vor 0.
  */
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
@@ -110,6 +116,9 @@ export function vergleiche(p, ist) {
   }
   return a;
 }
+
+/** Bestätigung eines Blocker-Befunds: nur ausdrücklich je Befund («<handle>:<code>»), nie pauschal für ein ganzes Produkt (sonst deckt eine alte Bestätigung neue Befunde zu). */
+export const bestaetigt = (befundOk, handle, code) => (befundOk || []).includes(`${handle}:${code}`);
 
 export const sicherungsName = (handle) => String(handle).replace(/[^A-Za-z0-9._-]/g, '_') + '.json';
 
@@ -235,8 +244,8 @@ async function neuAnlegen(p, { gql, log, jetzt }) {
 }
 
 /**
- * Ganzer LIVE-Lauf. Gibt {ergebnisse, exit} zurück (Exit 0 = ok, 1 = Fehlerfolge, 3 = Abweichung, 4 = Tageslimit).
- * `plan` ist der geprüfte Plan (pod_auswahl_plan.planeAlles), `befundOk` = Handles, deren Blocker-Befund der Besitzer bestätigt hat.
+ * Ganzer LIVE-Lauf. Gibt {ergebnisse, exit} zurück (Exit-Codes: siehe Kopf der Datei).
+ * `plan` ist der geprüfte Plan (pod_auswahl_plan.planeAlles), `befundOk` = Liste «<handle>:<code>» der Blocker-Befunde, die der Besitzer bestätigt hat.
  */
 export async function lauf({ plan, gql, ledgerPfad, sicherungsDir, befundOk = [], log = console.log, jetzt = () => new Date().toISOString(), maxFehlerFolge = 3, nur = null }) {
   const ledger = ledgerLesen(ledgerPfad);
@@ -245,10 +254,11 @@ export async function lauf({ plan, gql, ledgerPfad, sicherungsDir, befundOk = []
   for (const p of plan.produkte) {
     if (nur && !nur.includes(p.handle)) continue;
     if (!p.neu.length && !p.schonDa.length && !p.beschreibung.block) { ergebnisse.push({ handle: p.handle, status: 'NICHTS_ZU_TUN' }); continue; }
-    const blocker = p.befunde.filter((b) => b.schwere === 'blocker');
-    if (blocker.length && !befundOk.includes(p.handle)) {
-      log(`✗ ${p.handle}: GESPERRT durch Befund (${blocker.map((b) => b.code).join(', ')}) – mit BEFUND_OK=${p.handle} bestätigen, wenn der Besitzer entschieden hat`);
-      ergebnisse.push({ handle: p.handle, status: 'GESPERRT', befunde: blocker.map((b) => b.code) });
+    const offen = p.befunde.filter((b) => b.schwere === 'blocker' && !bestaetigt(befundOk, p.handle, b.code));
+    if (offen.length) {
+      const codes = [...new Set(offen.map((b) => b.code))];
+      log(`✗ ${p.handle}: GESPERRT durch Befund (${codes.join(', ')}) – erst nach dem Entscheid des Besitzers mit BEFUND_OK=${codes.map((c) => p.handle + ':' + c).join(',')} bestätigen`);
+      ergebnisse.push({ handle: p.handle, status: 'GESPERRT', befunde: codes });
       continue;
     }
     if (ledger.has(ledgerSchluessel(p))) { log(`= ${p.handle}: laut Ledger schon erledigt`); ergebnisse.push({ handle: p.handle, status: 'UEBERSPRUNGEN' }); continue; }
@@ -265,5 +275,30 @@ export async function lauf({ plan, gql, ledgerPfad, sicherungsDir, befundOk = []
       if (folge >= maxFehlerFolge) { log(`ABBRUCH: ${folge} Fehler in Folge`); return { ergebnisse, exit: 1 }; }
     }
   }
-  return { ergebnisse, exit: 0 };
+  return { ergebnisse, exit: endeCode(ergebnisse) };
+}
+
+/** Exit-Code nach einem Lauf, der nicht vorzeitig (Tageslimit, Abweichung, drei Fehler in Folge) beendet wurde: FEHLER → 1, GESPERRT → 5, sonst 0. */
+export function endeCode(ergebnisse) {
+  if (ergebnisse.some((r) => r.status === 'FEHLER')) return 1;
+  if (ergebnisse.some((r) => r.status === 'GESPERRT')) return 5;
+  return 0;
+}
+
+export const EXIT_TEXT = Object.freeze({
+  0: 'alles Geplante ausgeführt (oder laut Ledger schon erledigt)',
+  1: 'mindestens ein Produkt mit FEHLER (oder drei Fehler in Folge): nicht alles ist ausgeführt',
+  3: 'ABWEICHUNG: der Zustand im Shop weicht vom Plan ab (Lauf sofort beendet)',
+  4: 'TAGESLIMIT für neue Varianten erreicht (nicht wiederholen, morgen neu planen)',
+  5: 'mindestens ein Produkt GESPERRT: Blocker-Befund nicht bestätigt, dieses Produkt wurde nicht angefasst',
+});
+
+/** Letzte Zeilen der Ausgabe: Ergebnis je Produkt, Zähler und der Grund des Endes (damit «Exit 0» nie etwas verdeckt). */
+export function zusammenfassung(res) {
+  const z = {}; for (const r of res.ergebnisse) z[r.status] = (z[r.status] || 0) + 1;
+  return [
+    `Ergebnis: ${JSON.stringify(res.ergebnisse.map((r) => `${r.handle}: ${r.status}`))}`,
+    `Zähler: ${Object.entries(z).map(([k, v]) => `${k} ${v}`).join(' · ') || 'keine Produkte'}`,
+    `ENDE: Exit ${res.exit} – ${EXIT_TEXT[res.exit] ?? 'unbekannt'}`,
+  ].join('\n');
 }

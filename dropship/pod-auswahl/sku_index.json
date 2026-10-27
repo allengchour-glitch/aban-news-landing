@@ -1,0 +1,274 @@
+{
+ "quelle": "Shopify Admin GraphQL products (nur Abfrage), Suche «tag:wunschdesign OR tag:printful_personalized_product OR sku:*_*», SKU «<Präfix>_<Printful-Variantennummer>» der neuen Varianten",
+ "stand": "2026-10-27",
+ "produkteGelesen": 491,
+ "abgeschnitten": [],
+ "treffer": {
+  "10774": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_10774",
+    "preis": "56.90",
+    "optionen": "S"
+   }
+  ],
+  "10775": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_10775",
+    "preis": "56.90",
+    "optionen": "M"
+   }
+  ],
+  "10776": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_10776",
+    "preis": "56.90",
+    "optionen": "L"
+   }
+  ],
+  "10777": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_10777",
+    "preis": "56.90",
+    "optionen": "XL"
+   }
+  ],
+  "10778": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_10778",
+    "preis": "60.90",
+    "optionen": "2XL"
+   }
+  ],
+  "11576": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_11576",
+    "preis": "23.90",
+    "optionen": "S"
+   }
+  ],
+  "11577": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_11577",
+    "preis": "23.90",
+    "optionen": "M"
+   }
+  ],
+  "11578": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_11578",
+    "preis": "23.90",
+    "optionen": "L"
+   }
+  ],
+  "11579": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_11579",
+    "preis": "23.90",
+    "optionen": "XL"
+   }
+  ],
+  "11580": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_11580",
+    "preis": "26.90",
+    "optionen": "2XL"
+   }
+  ],
+  "12650": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_12650",
+    "preis": "30.90",
+    "optionen": "3XL"
+   }
+  ],
+  "12651": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_12651",
+    "preis": "34.90",
+    "optionen": "4XL"
+   }
+  ],
+  "12652": [
+   {
+    "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+    "titel": "Klassisches Unisex T-Shirt – Selbst gestalten",
+    "status": "ACTIVE",
+    "tags": [
+     "bild-ok",
+     "koll-shirts",
+     "sg-bekleidung",
+     "sort-damen-t-shirts",
+     "sort-damen-t-shirts-tshirt",
+     "sort-herren-t-shirts",
+     "wunschdesign"
+    ],
+    "sku": "8481330_12652",
+    "preis": "38.90",
+    "optionen": "5XL"
+   }
+  ],
+  "13421": [
+   {
+    "handle": "premium-hoodie-selbst-gestalten",
+    "titel": "Premium-Hoodie – Selbst gestalten",
+    "status": "DRAFT",
+    "tags": [
+     "bild-ok",
+     "ghost-sale-risiko",
+     "kat-damen-pullover",
+     "keine-lieferanten-ref",
+     "printful_personalized_product",
+     "sg-bekleidung",
+     "wunschdesign"
+    ],
+    "sku": "9448929_13421",
+    "preis": "64.90",
+    "optionen": "3XL"
+   }
+  ]
+ }
+}

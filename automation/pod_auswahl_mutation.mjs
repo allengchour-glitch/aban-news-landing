@@ -10,13 +10,13 @@ import { fileURLToPath } from 'node:url';
 
 const REPO = fileURLToPath(new URL('..', import.meta.url));
 const DATEIEN = [
-  'automation/pod_auswahl.mjs', 'automation/pod_auswahl_test.mjs', 'automation/printful_sync.mjs',
-  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_spec', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben'].map((n) => `automation/lib/${n}.mjs`),
-  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben'].map((n) => `automation/lib/${n}_test.mjs`),
+  'automation/pod_auswahl.mjs', 'automation/pod_auswahl_test.mjs', 'automation/printful_sync.mjs', 'automation/printful_reprice.mjs',
+  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_spec', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}.mjs`),
+  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}_test.mjs`),
   'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_host.mjs',
   ...readdirSync(join(REPO, 'dropship/pod-auswahl')).filter((f) => f.endsWith('.json')).map((f) => `dropship/pod-auswahl/${f}`),
 ];
-const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
+const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
 const ALLE = [...LIB, 'pod_auswahl_test.mjs'];
 
 // { name, datei, von, zu, alle? (alle Vorkommen ersetzen, sonst muss `von` genau einmal vorkommen), tests }
@@ -57,10 +57,44 @@ export const MUTANTEN = [
   { name: 'Abweichung beendet mit Exit 2 statt 3', datei: L('pod_auswahl_schreiben'), von: 'return { ergebnisse, exit: 3 };', zu: 'return { ergebnisse, exit: 2 };', tests: ALLE },
   { name: 'Abbruch erst nach 99 Fehlern', datei: L('pod_auswahl_schreiben'), von: 'if (folge >= maxFehlerFolge) {', zu: 'if (folge >= 99) {', tests: ALLE },
   { name: 'Stücke zu 500 statt 50', datei: L('pod_auswahl_schreiben'), von: 'export const CHUNK = 50;', zu: 'export const CHUNK = 500;', tests: ALLE },
-  { name: 'Blocker-Befund sperrt nicht mehr', datei: L('pod_auswahl_schreiben'), von: 'if (blocker.length && !befundOk.includes(p.handle)) {', zu: 'if (false) {', tests: ALLE },
+  { name: 'Blocker-Befund sperrt nicht mehr', datei: L('pod_auswahl_schreiben'), von: 'if (offen.length) {', zu: 'if (false) {', tests: ALLE },
   { name: 'Preisabweichung nach dem Schreiben wird nicht bemerkt', datei: L('pod_auswahl_schreiben'), von: 'Math.abs(Number(v.price) - s.preisChf) > 0.001', zu: 'Math.abs(Number(v.price) - s.preisChf) > 999', tests: ALLE },
   { name: 'Optionswerte werden nicht vorab angelegt', datei: L('pod_auswahl_schreiben'), von: 'if (!fehlt.length) continue;', zu: 'continue;', tests: ALLE },
   { name: 'Samsung bleibt nicht DRAFT', datei: L('pod_auswahl_schreiben'), von: "title: np.titel, handle: np.handle, status: 'DRAFT',", zu: "title: np.titel, handle: np.handle, status: 'ACTIVE',", tests: ALLE },
+  // ── Korrekturrunde 27.10.2026: doppelte Printful-Varianten, Texte, Preisleiter, Netto ohne Kundenversand, OHNE, Umstellungsrechnung
+  { name: 'Kollision mit einem anderen Produkt wird nicht gefunden', datei: L('pod_auswahl_plan'), von: 'if (a.handle === handle) continue;', zu: 'continue;', tests: ALLE },
+  { name: 'Kollision mit dem EIGENEN Produkt zählt auch', datei: L('pod_auswahl_plan'), von: 'if (a.handle === handle) continue;', zu: '', tests: ALLE },
+  { name: 'Kollisionsbefund sperrt LIVE nicht mehr (nur Hinweis)', datei: L('pod_auswahl_plan'), von: "return { schwere: 'blocker', code: 'sku-in-anderem-produkt'", zu: "return { schwere: 'hinweis', code: 'sku-in-anderem-produkt'", tests: ALLE },
+  { name: 'Netto des Einzelprodukts wird gegen 0 statt gegen die Regel gemessen', datei: L('pod_auswahl_plan'), von: 'k.andererNettoChf < regel.nettoMin);', zu: 'k.andererNettoChf < 0);', tests: ALLE },
+  { name: 'OHNE schliesst nichts mehr aus', datei: L('pod_auswahl_plan'), von: '(o) => o.handle === handle && o.material === material)', zu: '(o) => false)', tests: ALLE },
+  { name: 'OHNE darf das vorhandene Material ausschliessen', datei: L('pod_auswahl_plan'), von: 'if (m.bestand) throw new Error(', zu: 'if (false) throw new Error(', tests: ALLE },
+  { name: 'OHNE ändert den Plan-Hash nicht', datei: L('pod_auswahl_plan'), von: "ausgeschlossen: (p.nichtAngelegt || []).filter((n) => n.code === 'ausgeschlossen').map((n) => n.material), ", zu: '', tests: ALLE },
+  { name: 'Netto ohne Kundenversand rechnet die Gebühr nicht ab', datei: L('pod_preise'), von: 'return preisRp - gebuehrRp(preisRp, regel) - einkaufRp - versandRp;', zu: 'return preisRp - einkaufRp - versandRp;', tests: ALLE },
+  { name: 'Hinweis «Netto nur mit Kundenversand» kommt nie', datei: L('pod_auswahl_plan'), von: 'if (schwach.length) {', zu: 'if (false) {', tests: ALLE },
+  { name: 'Preisleiter: grösseres, billigeres Format fällt nicht auf', datei: L('pod_auswahl_plan'), von: 'reihe[i].e.preisChf < reihe[i - 1].e.preisChf', zu: 'reihe[i].e.preisChf > reihe[i - 1].e.preisChf', tests: ALLE },
+  { name: 'Katalog-Lücken bei festen Zeilen werden verschwiegen', datei: L('pod_auswahl_plan'), von: 'if (zeilen.some((z) => z.zweiter === w)) continue;', zu: 'continue;', tests: ALLE },
+  { name: 'Texte ausserhalb des Blocks werden nie gemeldet', datei: L('pod_auswahl_plan'), von: 'if (!nicht.length) continue;', zu: 'continue;', tests: ALLE },
+  { name: 'Texte: Stelle zählt auch, wenn sie für ALLE Materialien gilt', datei: L('pod_auswahl_plan'), von: 'if (!nicht.length) continue;', zu: '', tests: ALLE },
+  { name: 'Block verschweigt, dass der Haupttext nur das vorhandene Material beschreibt', datei: L('pod_auswahl_plan'), von: 'grundWert && vorhandeneWerte.length > 1 ?', zu: 'false ?', tests: ALLE },
+  { name: 'MagSafe-Aussage im Block der Hartschale fehlt (ohne MagSafe®-Magnete)', datei: L('pod_auswahl_spec'), von: "F('ohne MagSafe®-Magnete (MagSafe® gibt es nur beim Material «Hartschale MagSafe»)', Z(601,", zu: "F('mit MagSafe®-Magneten (MagSafe® gibt es bei diesem Material)', Z(601,", tests: ALLE },
+  { name: 'Umstellungsrechnung: Einkauf des gemeinten Produkts halbiert', datei: L('pod_auswahl_plan'), von: 'endpreis({ einkaufUsd: Number(alt.price), versandUsd }, ctx.regel)', zu: 'endpreis({ einkaufUsd: Number(alt.price) / 2, versandUsd }, ctx.regel)', tests: ALLE },
+  { name: 'Versandraten des gemeinten Produkts werden nicht angefordert', datei: L('pod_auswahl_plan'), von: 'if (b && gemeint) for', zu: 'if (false && gemeint) for', tests: ALLE },
+  // ── Exit-Codes und Bestätigung
+  { name: 'Produkt mit FEHLER beendet den Lauf mit Exit 0', datei: L('pod_auswahl_schreiben'), von: "if (ergebnisse.some((r) => r.status === 'FEHLER')) return 1;", zu: "if (ergebnisse.some((r) => r.status === 'FEHLER')) return 0;", tests: ALLE },
+  { name: 'GESPERRTES Produkt beendet den Lauf mit Exit 0', datei: L('pod_auswahl_schreiben'), von: "if (ergebnisse.some((r) => r.status === 'GESPERRT')) return 5;", zu: "if (ergebnisse.some((r) => r.status === 'GESPERRT')) return 0;", tests: ALLE },
+  { name: 'Lauf gibt immer Exit 0 zurück (alter Fehler)', datei: L('pod_auswahl_schreiben'), von: 'return { ergebnisse, exit: endeCode(ergebnisse) };', zu: 'return { ergebnisse, exit: 0 };', tests: ALLE },
+  { name: 'Bestätigung gilt pauschal für das ganze Produkt', datei: L('pod_auswahl_schreiben'), von: '(befundOk || []).includes(`${handle}:${code}`);', zu: '(befundOk || []).includes(handle) || (befundOk || []).includes(`${handle}:${code}`);', tests: ALLE },
+  { name: 'Die Ausgabe nennt den Grund des Endes nicht', datei: L('pod_auswahl_schreiben'), von: "`ENDE: Exit ${res.exit} – ${EXIT_TEXT[res.exit] ?? 'unbekannt'}`", zu: "''", tests: ALLE },
+  // ── Schreibweg: Mutationen nie still wiederholen
+  { name: 'Mutation wird bei 5xx still wiederholt (Doppelanlage möglich)', datei: L('pod_auswahl_gql'), von: 'const NICHT_AUSGEFUEHRT = /throttled|HTTP 429/i;', zu: 'const NICHT_AUSGEFUEHRT = /throttled|HTTP 429|HTTP 5\\d\\d|fetch/i;', tests: ALLE },
+  { name: 'Mutation bekommt die Geduld einer Abfrage (6 Versuche in shopifyGql)', datei: L('pod_auswahl_gql'), von: '...(mutation ? { versuche: 1 } : {})', zu: '...({})', tests: ALLE },
+  { name: 'Tageslimit wird als Drosselung wiederholt', datei: L('pod_auswahl_gql'), von: '&& !TAGESLIMIT.test(m) && i < drosselVersuche', zu: '&& i < drosselVersuche', tests: ALLE },
+  { name: 'Schemafehler einer Abfrage werden geworfen statt als {errors} gemeldet', datei: L('pod_auswahl_gql'), von: 'if (/^GraphQL: \\[/.test(m)) return { errors: [{ message: m }] };', zu: '', tests: ALLE },
+  // ── SKU-Index und Reprice-Sperre
+  { name: 'SKU-Index zählt die eigenen Produkte mit', datei: L('pod_auswahl_daten'), von: 'if (eigene.has(p.handle)) continue;', zu: '', tests: ALLE },
+  { name: 'SKU-Index merkt sich nicht, dass er Produkte mit über 100 Varianten nur zu Teilen las', datei: L('pod_auswahl_daten'), von: 'if (p.variants?.pageInfo?.hasNextPage) abgeschnitten.push(p.handle);', zu: '', tests: ALLE },
+  { name: 'SKU-Index liest nur die erste Seite', datei: L('pod_auswahl_daten'), von: 'cursor = seite.pageInfo.hasNextPage ? seite.pageInfo.endCursor : null;', zu: 'cursor = null;', tests: ALLE },
+  { name: 'printful_reprice senkt die «Selbst gestalten»-Preise wieder', datei: 'automation/printful_reprice.mjs', von: 'if(!MIT_AUSWAHL && AUSWAHL.has(p.handle)){', zu: 'if(false){', tests: ALLE },
   // ── Kommando
   { name: 'LIVE prüft den geprüften Plan nicht mehr', datei: 'automation/pod_auswahl.mjs', von: 'if (geprueft.hash !== plan.hash) {', zu: 'if (false) {', tests: ALLE },
   { name: 'LIVE zusammen mit OFFLINE wird nicht abgelehnt', datei: 'automation/pod_auswahl.mjs', von: 'if (LIVE && OFFLINE) throw', zu: 'if (false) throw', tests: ALLE },

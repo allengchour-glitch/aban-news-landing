@@ -2,7 +2,7 @@
 import { mkdtempSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR } from './pod_auswahl_daten.mjs';
+import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE } from './pod_auswahl_daten.mjs';
 import { SPEC } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -14,11 +14,13 @@ const keinePause = async () => {};
 // ── Paket lesen
 {
   const p = ladePaket();
-  ist('Paket: alle fünf Dateien vorhanden', Object.values(DATEIEN).every((f) => existsSync(join(PAKET_DIR, f))), true);
-  ist('Paket: Stände 27.10.2026', [p.meta.katalog.stand, p.meta.versand.stand, p.meta.bestand.stand, p.meta.skuPruefung.stand], Array(4).fill('2026-10-27'));
+  ist('Paket: alle sechs Dateien vorhanden', [Object.keys(DATEIEN).length, Object.values(DATEIEN).every((f) => existsSync(join(PAKET_DIR, f)))], [6, true]);
+  ist('Paket: Stände 27.10.2026', [p.meta.katalog.stand, p.meta.versand.stand, p.meta.bestand.stand, p.meta.skuPruefung.stand, p.meta.skuIndex.stand], Array(5).fill('2026-10-27'));
+  ist('Paket: SKU-Index hat 491 gelesene Produkte, nichts abgeschnitten, 14 Treffer-Nummern (8 Gildan-5000-T-Shirt, 6 Premium-Hoodie)', [p.meta.skuIndex.produkteGelesen, p.skuIndexAbgeschnitten, Object.keys(p.skuIndex).length], [491, [], 14]);
+  ist('Paket: SKU-Index enthält keine eigenen Handles und nur Nummern, die der Plan anlegen könnte', [Object.values(p.skuIndex).flat().some((x) => SPEC.some((s) => s.handle === x.handle)), Object.keys(p.skuIndex).every((k) => kandidatenIds(SPEC, p.katalog).includes(Number(k)))], [false, true]);
   ist('Paket: vier vorhandene Produkte im Bestand (die fünfte, Samsung, ist neu)', Object.keys(p.bestand).sort(), ['hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', 'poster-zum-selbstgestalten', 'unisex-hoodie-selbst-gestalten', 'unisex-t-shirt-selbst-gestalten']);
   ist('Paket: Katalog = Spezifikation (alle gebrauchten Printful-Produkte)', katalogIdsAusSpec(SPEC).every((id) => p.katalog[String(id)]), true);
-  ist('Paket: Beschreibungen = alle Beleg-Produkte', belegIdsAusSpec(SPEC).every((id) => p.beschreibungen[String(id)]?.desc), true);
+  ist('Paket: Beschreibungen = alle Beleg-Produkte (auch die MagSafe-Vergleichsprodukte 798 und 799)', [belegIdsAusSpec(SPEC).every((id) => p.beschreibungen[String(id)]?.desc), belegIdsAusSpec(SPEC).includes(799)], [true, true]);
   ist('Paket: Textilien nur in White gespeichert', ['146', '380', '821', '71', '438', '456', '586'].every((id) => p.katalog[id].variants.every((v) => v.color === 'White')), true);
   ist('Paket: Farben aus der Spezifikation', farbenAusSpec(SPEC), { 146: 'White', 380: 'White', 821: 'White', 71: 'White', 438: 'White', 456: 'White', 586: 'White' });
   ist('Paket: jede vorhandene SKU ist bei Printful geprüft', Object.values(p.bestand).every((b) => b.variants.every((v) => p.skuPruefung[String(v.sku.split('_').pop())]?.produkt)), true);
@@ -95,6 +97,32 @@ const keinePause = async () => {};
   schreibeJson(f, { a: 1 });
   ist('schreibeJson: Datei da, keine .tmp-Datei übrig', [JSON.parse(readFileSync(f, 'utf8')), existsSync(f + '.tmp')], [{ a: 1 }, false]);
   rmSync(d, { recursive: true, force: true });
+}
+
+// ── SKU-Index (Shopify, nur Abfrage)
+{
+  const knoten = (handle, status, skus, extra = {}) => ({ handle, title: handle.toUpperCase(), status, tags: ['b', 'a'], variants: { pageInfo: { hasNextPage: !!extra.mehr }, edges: skus.map(([sku, preis, opt]) => ({ node: { sku, price: preis, selectedOptions: [{ name: 'Grösse', value: opt || 'S' }] } })) } });
+  const roh = [knoten('fremd', 'ACTIVE', [['1_100', '10.00'], ['1_101', '11.00'], ['x_nicht-numerisch', '5.00'], ['', '1.00']]), knoten('eigen', 'ACTIVE', [['2_100', '9.00']]), knoten('gross', 'DRAFT', [['3_102', '12.00', 'M']], { mehr: true })];
+  const r = baueSkuIndex(roh, [100, 102], ['eigen']);
+  ist('baueSkuIndex: nur gesuchte Nummern, eigene Handles ignoriert, Tags sortiert, Optionen als Text', r.treffer, { 100: [{ handle: 'fremd', titel: 'FREMD', status: 'ACTIVE', tags: ['a', 'b'], sku: '1_100', preis: '10.00', optionen: 'S' }], 102: [{ handle: 'gross', titel: 'GROSS', status: 'DRAFT', tags: ['a', 'b'], sku: '3_102', preis: '12.00', optionen: 'M' }] });
+  ist('baueSkuIndex: Produkt mit mehr als 100 Varianten wird als «abgeschnitten» gemeldet', r.abgeschnitten, ['gross']);
+  ist('baueSkuIndex: leer → leer', baueSkuIndex([], [1]), { treffer: {}, abgeschnitten: [] });
+  // alle Seiten lesen
+  const seiten = [{ data: { products: { pageInfo: { hasNextPage: true, endCursor: 'c1' }, edges: [{ node: roh[0] }] } } }, { data: { products: { pageInfo: { hasNextPage: false, endCursor: null }, edges: [{ node: roh[1] }, { node: roh[2] }] } } }];
+  const aufrufe = []; let i = 0;
+  const idx = await leseSkuIndex(async (q, v) => { aufrufe.push([q === SKU_INDEX_Q, v.q, v.c]); return seiten[i++]; }, [100, 101, 102], ['eigen']);
+  ist('leseSkuIndex: liest beide Seiten mit Cursor, Suche wie bei der Prüfung', [aufrufe, idx.produkteGelesen, Object.keys(idx.treffer)], [[[true, SKU_INDEX_SUCHE, null], [true, SKU_INDEX_SUCHE, 'c1']], 3, ['100', '101', '102']]);
+  wahr('Suche deckt die POD-Tags und SKUs mit Unterstrich ab', /tag:wunschdesign/.test(SKU_INDEX_SUCHE) && /printful_personalized_product/.test(SKU_INDEX_SUCHE) && /sku:\*_\*/.test(SKU_INDEX_SUCHE));
+  wahr('Abfrage liest nur (query), mit Tags und Varianten-Seiteninfo', /^query/.test(SKU_INDEX_Q) && !/mutation/i.test(SKU_INDEX_Q) && /tags/.test(SKU_INDEX_Q) && /hasNextPage/.test(SKU_INDEX_Q));
+  let m = ''; try { await leseSkuIndex(async () => ({ errors: [{ message: 'Throttled' }] }), [1]); } catch (e) { m = e.message; }
+  wahr('leseSkuIndex: GraphQL-Fehler → Fehler (kein unvollständiger Index)', /SKU-Index-Abfrage/.test(m));
+  m = ''; try { await leseSkuIndex(async () => ({ data: {} }), [1]); } catch (e) { m = e.message; }
+  wahr('leseSkuIndex: Antwort ohne products → Fehler', /ohne products/.test(m));
+  // kandidatenIds: nur Varianten hinter NEUEN Materialien
+  const kat = { 3: { variants: [{ id: 1 }, { id: 2 }] }, 71: { variants: [{ id: 9 }] } };
+  const spec = [{ materialien: [{ wert: 'a', bestand: true, printfulProdukt: 71 }, { wert: 'b', printfulProdukt: 3 }] }];
+  ist('kandidatenIds: Katalogvarianten der neuen Materialien, nicht die des vorhandenen', kandidatenIds(spec, kat), [1, 2]);
+  ist('kandidatenIds mit echten Daten: ohne Bella-3001-Nummern 4011–4015 (das vorhandene T-Shirt-Material)', [4011, 4012, 4013, 4014, 4015].some((id) => kandidatenIds(SPEC, ladePaket().katalog).includes(id)), false);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

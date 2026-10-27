@@ -207,9 +207,10 @@ jobs:
           node automation/lib/printful_platzierung_test.mjs
           node automation/lib/pod_auswahl_plan_test.mjs
           node automation/lib/pod_auswahl_daten_test.mjs
+          node automation/lib/pod_auswahl_gql_test.mjs
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
-      - name: Mutationsprobe «Selbst gestalten» (39 absichtliche Fehler, alle müssen rot werden)
+      - name: Mutationsprobe «Selbst gestalten» (69 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |

@@ -1,6 +1,6 @@
 // Tests für die Preisregel der «Selbst gestalten»-Varianten (kein Netz). Lauf: /opt/node22/bin/node automation/lib/pod_preise_test.mjs
 // Jedes Beispiel ist unten VON HAND gerechnet (in Rappen); die Zahlen stehen in den Kommentaren, nicht aus dem Code abgeleitet.
-import { REGEL, endpreis, nettoBeiPreis, usdZuRp, richtwertRp, erloesRp, gebuehrRp, nettoRp } from './pod_preise.mjs';
+import { REGEL, endpreis, nettoBeiPreis, nettoOhneKundenversand, nettoOhneKundenversandRp, usdZuRp, richtwertRp, erloesRp, gebuehrRp, nettoRp } from './pod_preise.mjs';
 let ok = 0, fehl = 0;
 const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
 const wirft = (n, f, teil) => { let m = ''; try { f(); } catch (e) { m = String(e.message); } ist(n, m.includes(teil), true); };
@@ -69,6 +69,17 @@ ist('Beispiel 8: grosse Leinwand bleibt knapp unter der Grenze', kurz(endpreis({
 // ── nettoBeiPreis (vorhandener Preis gegen die Regel): Hoodie S 38.90, Einkauf 19.17 USD → 1725 Rp, Versand 10.50 → 945
 //    Erlös 3890+700 = 4590, Gebühr round(156.06)+30 = 186, Netto 4590−186−1725−945 = 1734
 ist('Netto eines vorhandenen Preises', nettoBeiPreis({ preisChf: 38.90, einkaufUsd: 19.17, versandUsd: 10.5 }), 17.34);
+
+// ── Netto OHNE Versandbeitrag des Kunden (Warenkorb ab CHF 50 mit anderer Ware): die Regel «Netto ≥ 12» gilt unter CHF 50 nur MIT den CHF 7
+//    Beispiel 3 (T-Shirt 24.90, Einkauf 850 Rp, Versand 945 Rp): MIT Versandbeitrag Erlös 3190 → Netto 1257 (12.57).
+//    OHNE: Erlös 2490, Gebühr round(84.66) + 30 = 115, Netto 2490 − 115 − 850 − 945 = 580 → 5.80 (nicht 12.57 − 7.00 = 5.57: die Gebühr auf die 7 CHF entfällt mit)
+ist('ohne Kundenversand: 24.90 → Netto 5.80 (statt 12.57 mit Versandbeitrag)', [nettoRp(2490, 850, 945), nettoOhneKundenversandRp(2490, 850, 945)], [1257, 580]);
+ist('ohne Kundenversand (CHF-Form): 24.90, Einkauf 9.44 USD, Versand 10.50 USD → 5.80', nettoOhneKundenversand({ preisChf: 24.90, einkaufUsd: 9.44, versandUsd: 10.5 }), 5.80);
+//    ab CHF 50 gibt es nie einen Versandbeitrag: beide Rechnungen sind gleich. Beispiel 4: 50.90, Einkauf 2200, Versand 1000 → 1687
+ist('ab CHF 50 ist das Netto mit und ohne Versandbeitrag gleich (Beispiel 4: 16.87)', [nettoRp(5090, 2200, 1000), nettoOhneKundenversandRp(5090, 2200, 1000)], [1687, 1687]);
+//    49.90 (Beispiel 5): mit Versandbeitrag 2317; ohne: 4990 − (round(169.66) + 30 = 200) − 2150 − 1000 = 1640
+ist('49.90: mit Versandbeitrag 23.17, ohne 16.40', [nettoRp(4990, 2150, 1000), nettoOhneKundenversandRp(4990, 2150, 1000)], [2317, 1640]);
+wirft('ohne Kundenversand: Preis 0 → Fehler', () => nettoOhneKundenversand({ preisChf: 0, einkaufUsd: 5, versandUsd: 5 }), 'preisChf');
 
 // ── Eingaben
 wirft('Einkauf 0 → Fehler', () => endpreis({ einkaufUsd: 0, versandUsd: 5 }), 'einkaufUsd');

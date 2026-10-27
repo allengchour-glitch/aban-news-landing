@@ -10,6 +10,10 @@
  *   Netto      = Erlös − Gebühr − Einkauf_CHF − Versand_CHF(Printful, CH, je Variante)
  *   Endpreis   = kleinster Wert X.90, für den Preis ≥ Richtwert UND Netto ≥ 12 gilt; über 149.90 → keine Variante.
  *
+ * ANNAHME (vom Besitzer so vorgegeben): Netto ≥ 12 gilt bei Preisen unter CHF 50 nur, solange der Kunde die CHF 7 Versand zahlt, also wenn die Variante
+ * allein im Warenkorb liegt. Liegt sie zusammen mit anderer Ware im Warenkorb ab CHF 50, entfällt der Versandbeitrag und das Netto sinkt (siehe
+ * nettoOhneKundenversand); der Plan weist diese Zahl in einer eigenen Spalte aus.
+ *
  * Gerechnet wird in Rappen (ganze Zahlen). Jeder Posten wird einzeln auf Rappen gerundet (Einkauf, Versand, Gebühr), damit
  * die Rechnung von Hand nachvollziehbar bleibt: die Gebühr ist round(Erlös_Rp × 0.034) + 30.
  *
@@ -97,6 +101,21 @@ export function endpreis({ einkaufUsd, versandUsd }, regel = REGEL) {
   }
   return { ok: false, preisChf: null, grund: `Endpreis läge über CHF ${regel.maxPreis.toFixed(2)}`, ...basis,
     erloesChf: null, gebuehrChf: null, nettoChf: null, bindend: 'keiner' };
+}
+
+/**
+ * Netto in Rappen, wenn der Kunde KEINEN Versand zahlt (Warenkorb ab CHF 50 mit anderer Ware): Erlös = Preis.
+ * Die Regel «Netto ≥ 12» gilt für Preise unter CHF 50 nur MIT dem Versandbeitrag des Kunden (CHF 7); ohne ihn sinkt das Netto um 7 CHF
+ * minus die Gebühr auf diese 7 CHF. Ab CHF 50 ist der Wert gleich dem normalen Netto.
+ */
+export function nettoOhneKundenversandRp(preisRp, einkaufRp, versandRp, regel = REGEL) {
+  return preisRp - gebuehrRp(preisRp, regel) - einkaufRp - versandRp;
+}
+
+/** Wie nettoBeiPreis, aber ohne Versandbeitrag des Kunden (CHF). */
+export function nettoOhneKundenversand({ preisChf, einkaufUsd, versandUsd }, regel = REGEL) {
+  zahl('preisChf', preisChf);
+  return chfVonRp(nettoOhneKundenversandRp(rp(preisChf), usdZuRp(zahl('einkaufUsd', einkaufUsd), regel), usdZuRp(zahl('versandUsd', versandUsd, true), regel), regel));
 }
 
 /** Prüft einen vorhandenen Preis (CHF) gegen die Regel, ohne ihn zu ändern: Netto bei diesem Preis. */

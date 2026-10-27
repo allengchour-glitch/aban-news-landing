@@ -6,6 +6,7 @@
  *   versand.json       Printful-Versand nach CH je Variante (POST /shipping/rates = reine Berechnung, schreibt nichts)
  *   bestand.json       vorhandene Shopify-Produkte (Abfrage, schreibt nichts)
  *   sku_pruefung.json  was die vorhandenen SKUs bei Printful WIRKLICH sind (GET /products/variant/{id})
+ *   sku_index.json     welche Printful-Variantennummern des Katalogs im Shop schon in ANDEREN Produkten als SKU «<Präfix>_<Nummer>» vorkommen (Abfrage)
  *
  * Alles hier ist lesend. Die Netzfunktionen nehmen `fetchFn` entgegen (Tests reichen eine Attrappe hinein).
  */
@@ -14,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 export const PAKET_DIR = fileURLToPath(new URL('../../dropship/pod-auswahl/', import.meta.url));
-export const DATEIEN = Object.freeze({ katalog: 'katalog.json', beschreibungen: 'beschreibungen.json', versand: 'versand.json', bestand: 'bestand.json', skuPruefung: 'sku_pruefung.json' });
+export const DATEIEN = Object.freeze({ katalog: 'katalog.json', beschreibungen: 'beschreibungen.json', versand: 'versand.json', bestand: 'bestand.json', skuPruefung: 'sku_pruefung.json', skuIndex: 'sku_index.json' });
 
 const lies = (pfad) => JSON.parse(readFileSync(pfad, 'utf8'));
 export function schreibeJson(pfad, daten) {   // atomar: erst .tmp, dann umbenennen (eine volle Platte hinterlässt keine halbe Datei)
@@ -34,7 +35,9 @@ export function ladePaket({ dir = PAKET_DIR, pfade = {} } = {}) {
   }
   return {
     katalog: roh.katalog.produkte, beschreibungen: roh.beschreibungen.eintraege, versand: roh.versand.raten, bestand: roh.bestand.produkte, skuPruefung: roh.skuPruefung.varianten,
-    meta: { katalog: { quelle: roh.katalog.quelle, stand: roh.katalog.stand }, versand: { stand: roh.versand.stand, ziel: roh.versand.ziel }, bestand: { stand: roh.bestand.stand }, skuPruefung: { stand: roh.skuPruefung.stand } },
+    skuIndex: roh.skuIndex.treffer, skuIndexAbgeschnitten: roh.skuIndex.abgeschnitten || [],
+    meta: { katalog: { quelle: roh.katalog.quelle, stand: roh.katalog.stand }, versand: { stand: roh.versand.stand, ziel: roh.versand.ziel }, bestand: { stand: roh.bestand.stand }, skuPruefung: { stand: roh.skuPruefung.stand },
+      skuIndex: { stand: roh.skuIndex.stand, produkteGelesen: roh.skuIndex.produkteGelesen ?? null } },
   };
 }
 
@@ -140,6 +143,58 @@ export async function leseBestand(gql, handles) {
   return out;
 }
 
+// ─────────────────────────────────────────────────────────────── SKU-Index: gibt es die Printful-Variante im Shop schon in einem anderen Produkt?
+/** Alle Produkte, die Printful-SKUs («<Präfix>_<Zahl>») tragen können: Tags der POD-Familie ODER eine SKU mit Unterstrich (Suche wie bei der Prüfung am 27.10.2026: 491 Produkte). */
+export const SKU_INDEX_SUCHE = 'tag:wunschdesign OR tag:printful_personalized_product OR sku:*_*';
+export const SKU_INDEX_Q = `query($q:String!,$c:String){ products(first:50, query:$q, after:$c){ pageInfo{ hasNextPage endCursor } edges{ node{ handle title status tags
+  variants(first:100){ pageInfo{ hasNextPage } edges{ node{ sku price selectedOptions{ name value } } } } } } } }`;
+
+/**
+ * Printful-Variantennummern, die der Plan als NEUE Variante anlegen könnte: alle Katalogvarianten der Produkte hinter den neuen Materialien
+ * (nicht die der vorhandenen Materialien: diese SKUs tragen die Zielprodukte selbst und viele fertige Motiv-Produkte auf gleichem Rohling mit Absicht).
+ */
+export function kandidatenIds(spec, katalog) {
+  const ids = new Set();
+  for (const s of spec) for (const m of s.materialien) {
+    if (m.bestand) continue;
+    for (const v of katalog[String(m.printfulProdukt)]?.variants || []) ids.add(v.id);
+  }
+  return [...ids].sort((a, b) => a - b);
+}
+
+/**
+ * Rein: Produkt-Knoten (Antwort von SKU_INDEX_Q) → Treffer je Printful-Variantennummer. Eigene Produkte (`eigeneHandles`) zählen nicht, ebenso keine SKU ohne «_<Zahl>».
+ * Produkte mit mehr als 100 Varianten sind nur zu Teilen gelesen: ihre Handles stehen in `abgeschnitten` (der Plan meldet dann «Index unvollständig»).
+ */
+export function baueSkuIndex(produkte, pfIds, eigeneHandles = []) {
+  const ids = new Set(pfIds.map(String)), eigene = new Set(eigeneHandles), treffer = {}, abgeschnitten = [];
+  for (const p of produkte) {
+    if (eigene.has(p.handle)) continue;
+    if (p.variants?.pageInfo?.hasNextPage) abgeschnitten.push(p.handle);
+    for (const e of p.variants?.edges || []) {
+      const v = e.node, m = String(v.sku || '').match(/_(\d+)\s*$/);
+      if (!m || !ids.has(m[1])) continue;
+      (treffer[m[1]] ||= []).push({ handle: p.handle, titel: p.title, status: p.status, tags: [...(p.tags || [])].sort(), sku: v.sku, preis: v.price, optionen: (v.selectedOptions || []).map((o) => o.value).join(' / ') });
+    }
+  }
+  for (const k of Object.keys(treffer)) treffer[k].sort((a, b) => a.handle.localeCompare(b.handle) || a.sku.localeCompare(b.sku));
+  return { treffer, abgeschnitten: abgeschnitten.sort() };
+}
+
+/** `gql(query, variables)` → Antwort-JSON. Liest ALLE Seiten (nur Abfrage). Wirft bei GraphQL-Fehlern, statt einen unvollständigen Index zu liefern. */
+export async function leseSkuIndex(gql, pfIds, eigeneHandles = []) {
+  const produkte = []; let cursor = null;
+  do {
+    const j = await gql(SKU_INDEX_Q, { q: SKU_INDEX_SUCHE, c: cursor });
+    if (j.errors) throw new Error('SKU-Index-Abfrage: ' + JSON.stringify(j.errors).slice(0, 200));
+    const seite = j.data?.products;
+    if (!seite) throw new Error('SKU-Index-Abfrage: Antwort ohne products');
+    produkte.push(...seite.edges.map((e) => e.node));
+    cursor = seite.pageInfo.hasNextPage ? seite.pageInfo.endCursor : null;
+  } while (cursor);
+  return { produkteGelesen: produkte.length, ...baueSkuIndex(produkte, pfIds, eigeneHandles) };
+}
+
 // ─────────────────────────────────────────────────────────────── was die Spezifikation an Daten braucht
 /** Printful-Produkte, die im Katalog-Datenpaket stehen müssen. */
 export const katalogIdsAusSpec = (spec) => [...new Set(spec.flatMap((s) => s.materialien.map((m) => m.printfulProdukt)))].sort((a, b) => a - b);
@@ -153,4 +208,4 @@ export function farbenAusSpec(spec) {
   return f;
 }
 /** Printful-Produkte, deren Beschreibung als Beleg dient. */
-export const belegIdsAusSpec = (spec) => [...new Set(spec.flatMap((s) => s.vergleich.flatMap((e) => e.fakten.map((x) => x.b.p))))].sort((a, b) => a - b);
+export const belegIdsAusSpec = (spec) => [...new Set(spec.flatMap((s) => s.vergleich.flatMap((e) => e.fakten.flatMap((x) => [x.b.p, ...(x.b.vergleichMit ? [x.b.vergleichMit] : [])]))))].sort((a, b) => a - b);
