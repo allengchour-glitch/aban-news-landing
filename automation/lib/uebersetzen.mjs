@@ -77,3 +77,16 @@ export async function nachDeutsch(texte, opt = {}) {
   }
   return { texte, weg: 'original', grund: gruende.join(' · ') || 'kein Schlüssel gesetzt' };
 }
+
+/**
+ * Das kleine Groq-Modell (openai/gpt-oss-20b, springt ein, wenn das grosse am Minutenlimit ist) liefert Etikettenwörter klein geschrieben («purpurrot»).
+ * Beginnt das Original gross und die Übersetzung klein, wird der erste Buchstabe der Übersetzung gross gesetzt (nur Buchstaben, sonst unverändert).
+ */
+export function gleicheGrossschreibung(original, uebersetzt) {
+  const o = String(original ?? ''), u = String(uebersetzt ?? '');
+  const a = o.match(/\p{L}/u)?.[0], i = u.search(/\p{L}/u);
+  if (!a || i < 0 || a !== a.toUpperCase() || a === a.toLowerCase()) return u;
+  const b = u[i]; if (b === b.toUpperCase()) return u;
+  return u.slice(0, i) + b.toUpperCase() + u.slice(i + 1);
+}
+

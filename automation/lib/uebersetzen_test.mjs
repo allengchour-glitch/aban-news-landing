@@ -1,6 +1,6 @@
 /** Test fuer nachDeutsch — gefaelschter fetch, kein Netz.
  *  Lauf: /opt/node22/bin/node automation/lib/uebersetzen_test.mjs   */
-import { nachDeutsch } from './uebersetzen.mjs';
+import { nachDeutsch, gleicheGrossschreibung } from './uebersetzen.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra='') => { if(!ok){ fehler++; console.log(`FAIL ${n} ${extra}`); } else console.log(`ok   ${n}`); };
 const EIN = ['Very good quality','产品很好','Bien emballé'];
@@ -63,6 +63,14 @@ const grq = (arr) => ({ choices:[{ message:{ content: '```json\n'+JSON.stringify
   const gefragt3=[]; await nachDeutsch(EIN, { geminiKey:'', groqKey:'nur', fetch: async (u, o) => { gefragt3.push(String(o?.headers?.Authorization)); return ant(200, grq(DE)); } });
   pruef('opt.groqKey ersetzt die Umgebungsschluessel', gefragt3.length===1 && gefragt3[0]==='Bearer nur', gefragt3.join('|'));
   delete process.env.GROQ_API_KEY; delete process.env.GROQ_API_KEY2; delete process.env.GROQ_API_KEY3; }
+
+// 9. Grossschreibung des Originals bleibt erhalten (kleines Groq-Modell liefert «purpurrot»)
+pruef('klein → gross: Purplish Red / purpurrot', gleicheGrossschreibung('Purplish Red','purpurrot')==='Purpurrot');
+pruef('schon gross bleibt', gleicheGrossschreibung('Purplish Red','Purpurrot')==='Purpurrot');
+pruef('Original klein bleibt klein (Masse, Einheiten)', gleicheGrossschreibung('15 pieces','15 stück')==='15 stück');
+pruef('Ziffer vorn: erster BUCHSTABE wird gross', gleicheGrossschreibung('3 Layers','3 lagen')==='3 Lagen');
+pruef('Umlaut: ärmellos', gleicheGrossschreibung('Sleeveless','ärmellos')==='Ärmellos');
+pruef('leer/ohne Buchstaben unverändert', gleicheGrossschreibung('Red','')==='' && gleicheGrossschreibung('Red','123')==='123');
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler?1:0);
