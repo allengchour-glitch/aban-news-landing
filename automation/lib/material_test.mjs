@@ -15,7 +15,7 @@ ist('echtes Leder → Echtleder', bereinige('echtes Leder'), 'Echtleder');
 ist('PU-Leder bleibt', bereinige('PU Leder'), 'PU-Leder');
 ist('Klammer mit Stoffwort → mehrdeutig, verworfen', bereinige('Edelstahl (Titanstahl)'), null);
 ist('andere Klammer fällt weg', bereinige('Polyester (Dacron)'), 'Polyester');
-ist('Kürzel ABS', bereinige('ABS'), 'ABS');
+ist('Kürzel ABS wird erklärt', bereinige('ABS'), 'ABS-Kunststoff');
 ist('Marketingsatz → null', bereinige('Selbstklebender Sticker'), null);
 ist('Satz mit «für» → null', bereinige('Elektrochemisches Aluminium für hochwertige Prägungen'), null);
 ist('ein Teil kein Stoff → ganz null', bereinige('Polyester, Rüschenärmel'), null);
@@ -90,7 +90,8 @@ ist('CJ: «Tpu printing compound glue»', materialAusCj({ description: 'Material
 ist('CJ: «Nylon silk»', materialAusCj({ description: 'Material: Nylon silk' }), { ungeklaert: 'kein Stoffname: Nylon silk' });
 ist('PC wird ausgeschrieben', bereinige('PC'), 'Polycarbonat');
 ist('PP wird ausgeschrieben', bereinige('Robustes PP'), 'Polypropylen');
-ist('Kürzel gross: «tpe»', bereinige('tpe'), 'TPE');
+ist('Kürzel gross und erklärt: «tpe»', bereinige('tpe'), 'TPE-Kunststoff');
+ist('Kürzel gross im Kompositum: «PU-Leder»', bereinige('pu-leder'), 'PU-Leder');
 ist('Elastan und Lycra sind derselbe Stoff', bereinige('Elastan, Lycra'), 'Elastan');
 ist('CJ: Spandex/Lycra', materialAusCj({ description: 'Fabric: Spandex/Lycra' }).wert, 'Elastan');
 ist('Oberbegriff «Stoff» sagt nichts', bereinige('Stoff'), null);
@@ -124,6 +125,25 @@ ist('Titel/Wert passend: frei', pruefeWert('Leder', { titel: 'Lederarmband', des
 ist('Titelkonflikt gilt bei reiner Übersetzung nicht', pruefeWert('Silber', { titel: 'Holzring', descriptionHtml: '' }, { uebersetzung: true }), null);
 ist('Ladestation: Kunststoff bleibt erlaubt', pruefeWert('Kunststoff', { titel: 'Multifunktionale Ladestation', descriptionHtml: '' }), null);
 ist('Übersetzung ändert nur die Sprache: Gerät/Titel-Regeln gelten nicht', pruefeWert('Metall', { titel: 'Ionen-Massagebürste', descriptionHtml: '' }, { uebersetzung: true }), null);
+
+// ── zweite Stichprobe (B1/B2, 136 Einträge)
+ist('ABS allein wird erklärt', bereinige('Robustes ABS'), 'ABS-Kunststoff');
+ist('ABS im Kompositum bleibt', bereinige('ABS-Kunststoff'), 'ABS-Kunststoff');
+ist('ABS mit Metall', bereinige('ABS, Metall'), 'ABS-Kunststoff, Metall');
+ist('EVA allein wird erklärt', bereinige('EVA'), 'EVA-Kunststoff');
+ist('Titanstahl ist ein Handelsname', bereinige('Titanstahl'), null);
+ist('Titanstahl in Liste', bereinige('Titanstahl, Silikon'), null);
+ist('95 % Polyesterfaser lässt 5 % offen', bereinige('95% Polyesterfaser'), null);
+ist('95 % + 5 % mit zwei Teilen bleibt', bereinige('95% Polyester, 5% Elastan'), 'Polyester, Elastan');
+ist('100 % Baumwolle bleibt', bereinige('100% Baumwolle'), 'Baumwolle');
+ist('Baumwolle ist nicht Wolle im Titel: Schafwolle ↔ Baumwolle', titelKonflikt('Baby-Schafwolle Mütze', 'Baumwolle'), true);
+ist('Wolle ↔ Wolle', titelKonflikt('Strickmütze aus Wolle', 'Wolle'), false);
+ist('Baumwoll-Leinen im Titel, Wert nur Leinen', titelKonflikt('Shorts aus Baumwoll-Leinen', 'Leinen'), true);
+ist('Leinen und Baumwolle im Titel, Wert nur Leinen', titelKonflikt('Bluse aus Leinen und Baumwolle', 'Leinen'), true);
+ist('Baumwoll-Leinen im Titel, Wert nennt beide', titelKonflikt('Shorts aus Baumwoll-Leinen', 'Baumwolle, Leinen'), false);
+ist('Seegras im Titel, Wert Rattan, Stroh', titelKonflikt('Seegras-gewebter Korb', 'Rattan, Stroh'), true);
+ist('Seegras im Titel, Wert Seegras', titelKonflikt('Seegras-gewebter Korb', 'Seegras'), false);
+ist('Titel mit zwei Stoffen (kein Mix-Wort): ein gemeinsamer genügt', titelKonflikt('Ring aus Edelstahl mit Glasstein', 'Edelstahl'), false);
 
 // ── «Leather» von CJ: nur mit Beleg
 ist('Leather: PU im Text → PU-Leder', lederWert({ titel: 'Tasche', descriptionHtml: '<p>Aussen aus PU-Leder gefertigt</p>' }), 'PU-Leder');

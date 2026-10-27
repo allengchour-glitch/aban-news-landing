@@ -46,6 +46,7 @@ const FUELL = new Set(['reine', 'reiner', 'reines', 'reinen', 'recycelte', 'recy
   'synthetischer', 'synthetisches', 'synthetik', 'mikro', 'hartes', 'weiches']);
 // Kürzel: mehrdeutige werden ausgeschrieben («PC» heisst auf einer deutschen Seite Computer), die übrigen gross geschrieben
 const KURZ_VOLL = { pc: 'Polycarbonat', pp: 'Polypropylen', pe: 'Polyethylen', pa: 'Polyamid' };
+const KURZ_ALLEIN = { abs: 'ABS-Kunststoff', eva: 'EVA-Kunststoff', tpu: 'TPU-Kunststoff', tpe: 'TPE-Kunststoff', pet: 'PET-Kunststoff', pmma: 'Acryl (PMMA)', mdf: 'MDF-Holzfaserplatte', tpr: 'TPR-Kunststoff', pvc: 'PVC-Kunststoff' };
 const SYNONYM = { lycra: 'Elastan', spandex: 'Elastan', elasthan: 'Elastan', elastane: 'Elastan' };
 const OBERBEGRIFF = new Set(['stoff', 'stoffe', 'textil', 'textilien', 'gewebe', 'material', 'materialien']);
 const wortOk = w => STAMM.some(x => w.includes(x)) || KURZ.has(w) || FUELL.has(w) || /^\d+(?:er)?$/.test(w);
@@ -55,15 +56,17 @@ export function teil(roh) {
   let t = norm(roh).replace(/[.;:!]+$/, '').replace(/^[^\p{L}\p{N}]+/u, '').trim();
   t = t.replace(/^\d{1,3}(?:[.,]\d+)?\s*%\s*/, '');          // «100 % Baumwolle» → «Baumwolle» (der Anteil steht nur bei einem Stoff sicher)
   for (let i = 0; i < 3; i++) t = t.replace(VORSILBEN, '');
-  t = t.replace(/^echtes?\s+leder$/i, 'Echtleder').replace(/^echt\s?leder$/i, 'Echtleder').replace(/^pu\s*leder$/i, 'PU-Leder');
+  t = t.replace(/^echtes?\s+leder$/i, 'Echtleder').replace(/^echt\s?leder$/i, 'Echtleder').replace(/^pu[\s-]*leder$/i, 'PU-Leder');
   if (!t || t.length > 40 || /\d{3,}/.test(t) && !/925|999|750|585/.test(t)) return null;
   if (SATZ.test(t) || t.split(' ').length > 4) return null;
   const k = t.toLowerCase();
   if (SYNONYM[k]) return SYNONYM[k];
+  if (/titanstahl|titan[- ]stahl/i.test(t)) return null;      // Handelsname für Edelstahl, klingt nach Titan
   if (OBERBEGRIFF.has(k)) return null;
   if (/^pu[- ]/i.test(t) && !/^pu[- ]?(leder|kunstleder|schaum)/i.test(t)) return null;   // «PU-Leichtmetall» ist Unsinn
   if (!istStoff(t)) return null;
   if (!t.toLowerCase().split(/[\s\-/]+/).filter(Boolean).every(wortOk)) return null;      // jedes Wort ein Stoffwort oder Füllwort
+  if (KURZ_ALLEIN[k]) return KURZ_ALLEIN[k];                    // «ABS» allein ist erklärungsbedürftig → «ABS-Kunststoff»
   t = t.replace(/\b(pc|pp|pe|pa)\b/gi, m => KURZ_VOLL[m.toLowerCase()]).replace(/\b(abs|pvc|eva|tpu|tpe|pet|pmma|mdf|tpr|pu)\b/gi, m => m.toUpperCase());
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
@@ -77,6 +80,7 @@ export function bereinige(roh) {
   if (!s || s.length > 80) return null;
   const teile = s.split(/\s*(?:[,;/&+]|\bund\b|\bsowie\b|\boder\b)\s*/i).map(x => x.trim()).filter(Boolean);
   if (!teile.length || teile.length > 4) return null;
+  if (teile.length === 1 && /^(\d{1,3})(?:[.,]\d+)?\s*%/.test(teile[0]) && Number(teile[0].match(/^(\d{1,3})/)[1]) < 100) return null;   // «95 % Polyester» lässt 5 % offen
   const aus = [];
   for (const t of teile) { const w = teil(t); if (!w) return null; if (!aus.some(a => a.toLowerCase() === w.toLowerCase())) aus.push(w); }
   return aus.join(', ');
@@ -108,7 +112,7 @@ export function materialAusText(html) {
 // Englische CJ-Angaben → deutsch. Unbekanntes Wort = Angabe verwerfen.
 const EN = { alloy: 'Legierung', 'zinc alloy': 'Zinklegierung', 'aluminum alloy': 'Aluminiumlegierung', 'aluminium alloy': 'Aluminiumlegierung', aluminum: 'Aluminium', aluminium: 'Aluminium',
   'stainless steel': 'Edelstahl', steel: 'Stahl', 'titanium steel': 'Titanstahl', titanium: 'Titan', copper: 'Kupfer', brass: 'Messing', bronze: 'Bronze', iron: 'Eisen', metal: 'Metall',
-  silver: 'Silber', '925 silver': '925er Silber', 'sterling silver': 'Sterlingsilber', gold: 'Gold', plastic: 'Kunststoff', abs: 'ABS', pvc: 'PVC', pu: 'PU', tpu: 'TPU', silicone: 'Silikon',
+  silver: 'Silber', '925 silver': '925er Silber', 'sterling silver': 'Sterlingsilber', gold: 'Gold', plastic: 'Kunststoff', abs: 'ABS-Kunststoff', pvc: 'PVC-Kunststoff', pu: 'PU', tpu: 'TPU-Kunststoff', silicone: 'Silikon',
   silica: 'Silikon', rubber: 'Gummi', resin: 'Kunstharz', acrylic: 'Acryl', wood: 'Holz', bamboo: 'Bambus', cork: 'Kork', glass: 'Glas', crystal: 'Kristall', ceramic: 'Keramik',
   porcelain: 'Porzellan', stone: 'Stein', marble: 'Marmor', paper: 'Papier', cotton: 'Baumwolle', 'pure cotton': 'Baumwolle', linen: 'Leinen', silk: 'Seide', wool: 'Wolle', cashmere: 'Kaschmir',
   polyester: 'Polyester', nylon: 'Nylon', spandex: 'Elastan', elastane: 'Elastan', lycra: 'Elastan', viscose: 'Viskose', rayon: 'Viskose', velvet: 'Samt', flannel: 'Flanell', fleece: 'Fleece',
@@ -173,13 +177,17 @@ export function lederWert({ titel, descriptionHtml, cj }) {
 const UHR = /(uhr|smartwatch)/i;
 const GERAET = /(stab\b|bürste|massag|glätter|haartrockner|rasierer|trimmer|lockenwickler|haarstyler|kamera|ladegerät|ladestation|lautsprecher|kopfhörer|drohne|controller|power ?bank|ladekabel|adapter|display|lampe|föhn|fön\b|epilier|elektr)/i;
 const GERAET_WERT = /^(metall|keramik|legierung|aluminium|edelstahl|stahl|eisen|zinklegierung|aluminiumlegierung)$/i;
-// Stoffwörter, die ein Titel nennen darf; Wert und Titel müssen mindestens eines davon teilen
-const TITEL_STOFF = ['steinzeug', 'porzellan', 'keramik', 'silikon', 'leder', 'holz', 'edelstahl', 'glas', 'baumwoll', 'leinen', 'seide', 'wolle', 'bambus', 'kupfer', 'messing', 'titan',
-  'acryl', 'samt', 'denim', 'fleece', 'plüsch', 'nylon', 'polyester', 'kunststoff', 'gummi', 'aluminium', 'marmor', 'filz'];
+// Stoffwörter, die ein Titel nennen darf; Wert und Titel müssen mindestens eines davon teilen. «wolle» nur ohne «baum» davor (Baumwolle ist keine Wolle).
+const TITEL_STOFF = [/steinzeug/, /porzellan/, /keramik/, /silikon/, /leder/, /holz/, /edelstahl/, /glas(?!ur)/, /baumwoll/, /leinen/, /seide/, /schafwolle|(?<!baum)wolle/, /bambus/,
+  /kupfer/, /messing/, /titan/, /acryl/, /samt/, /denim/, /fleece/, /plüsch/, /nylon/, /polyester/, /kunststoff/, /gummi/, /aluminium/, /marmor/, /filz/, /seegras/, /rattan/,
+  /stroh/, /jute/, /hanf/, /kork/, /weide/];
+const MISCH = /(baumwoll\w*[- ]?leinen|leinen\w*[- ]?(?:und |&)?baumwoll|polyester\w*[- ]?baumwoll|baumwoll\w*[- ]?polyester|\bmix\b|mischung|mischgewebe)/i;
 export function titelKonflikt(titel, wert) {
   const t = String(titel || '').toLowerCase(), w = String(wert || '').toLowerCase();
-  const imTitel = TITEL_STOFF.filter(x => t.includes(x));
-  return imTitel.length > 0 && !imTitel.some(x => w.includes(x));
+  const imTitel = TITEL_STOFF.filter(r => r.test(t));
+  if (!imTitel.length) return false;
+  if (MISCH.test(t) && imTitel.length > 1) return !imTitel.every(r => r.test(w));   // Mischung im Titel: der Wert muss alle genannten Stoffe nennen
+  return !imTitel.some(r => r.test(w));
 }
 /** Letzte Sperre vor dem Schreiben: Wert, der mehr verspricht, als die übrigen Quellen hergeben, bleibt weg. `uebersetzung`: nur die Sprache ändert sich, der Wert stand schon da. */
 export function pruefeWert(wert, { descriptionHtml, titel, cj }, { uebersetzung = false } = {}) {
