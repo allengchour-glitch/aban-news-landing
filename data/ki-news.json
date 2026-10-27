@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-26T10:03:39Z",
+ "stand": "2026-10-27T09:47:19Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "„Benotung ist sinnlos geworden“: Warum dieser Mathe-Professor den Zweck von Hausaufgaben anzweifelt",
-   "u": "https://t3n.de/news/benotung-ist-sinnlos-geworden-warum-dieser-mathe-professor-den-zweck-von-hausaufgaben-anzweifelt-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-26T09:35:48Z",
-   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Wenn Smartwatch und Co. mithören: Was bei Aufnahme und Transkription erlaubt ist",
-   "u": "https://www.heise.de/ratgeber/Wenn-Smartwatch-und-Co-mithoeren-Was-bei-Aufnahme-und-Transkription-erlaubt-ist-11426877.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-10-26T09:30:00Z",
-   "s": "Smarte Gadgets haben Mikrofone, KI transkribiert in Sekunden. Doch für Tonaufnahmen gelten strenge Gesetze. Dieser Ratgeber erklärt die Spielregeln.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Film: Grok veröffentlicht sieben Minuten seiner Odyssee",
-   "u": "https://www.golem.de/news/ki-film-grok-veroeffentlicht-sieben-minuten-seiner-odyssee-2610-214500.html",
+   "t": "Nvidia, OpenAI, Oracle: Wie sich die KI-Konzerne gegenseitig Milliarden zuschieben",
+   "u": "https://www.golem.de/news/nvidia-openai-oracle-wie-sich-die-ki-konzerne-gegenseitig-milliarden-zuschieben-2610-214529.html",
    "q": "Golem",
-   "d": "2026-10-26T09:12:01Z",
-   "s": "Elon Musk hatte einen abendfüllenden Film angekündigt. Nun zeigt Grok Episode 1 seiner KI-Odyssee, gemacht mit Wonder Studios. (Grok, Elon Musk)",
+   "d": "2026-10-27T09:34:02Z",
+   "s": "Nvidia investiert in eigene Kunden, die sich für neue KI-Rechenzentren hoch verschulden. Solange der Boom anhält, funktioniert das. Aber wer trägt das Risiko, wenn er endet? Eine Analyse von Björn Mes…",
    "sprache": "de"
   },
   {
-   "t": "Nach Hacking-Vorfällen: OpenAI trainiert Spitzenmodelle nur noch in einer Kopie des Webs",
-   "u": "https://t3n.de/news/openai-training-simulation-web-1769746/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-26T08:55:00Z",
-   "s": "Nach wiederholten Sicherheitsvorfällen zieht das KI-Labor jetzt die Reißleine. Dabei hatten Expert:innen zuvor argumentiert, dass es nahezu unmöglich sei, eine Sandbox komplett von der Außenwelt abzus…",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Grenzen lokaler KI: Was iPhone, Galaxy, Pixel und iPad leisten",
-   "u": "https://www.heise.de/hintergrund/Grenzen-lokaler-KI-Was-iPhone-Galaxy-Pixel-und-iPad-leisten-11492816.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "GPT-6.1 Terra: Günstiges Modell für effiziente Computerarbeit",
+   "u": "https://www.heise.de/news/GPT-6-1-Terra-Guenstiges-Modell-fuer-effiziente-Computerarbeit-11501275.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-26T08:00:00Z",
-   "s": "Transkribieren, Übersetzen, Zusammenfassen: Wie gut KI lokal auf iPhone, Galaxy, Pixel und iPad funktioniert, zeigen aktuelle Tests und Benchmarks.",
+   "d": "2026-10-27T09:17:00Z",
+   "s": "OpenAI bringt GPT-6.1 Terra als günstigeres Modell für KI-Agenten. Unabhängige Tests zeigen starke Effizienzgewinne.",
    "sprache": "de"
   },
   {
-   "t": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
-   "u": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-25T21:31:16Z",
-   "s": "The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest.",
+   "t": "ChatGPT für Teilchenphysiker? Warum das Cern mit Mistral ein eigenes KI-Modell entwickelt",
+   "u": "https://t3n.de/news/chatgpt-fuer-teilchenphysiker-warum-das-cern-mit-mistral-ein-eigenes-ki-modell-entwickelt-1769962/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-27T09:00:01Z",
+   "s": "Werden jetzt auch Kernphysiker wegrationalisiert? Das Forschungszentrum Cern will gemeinsam mit Mistral ein KI-Modell für Teilchenphysik entwickeln.weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "How solid-state transformers could help power the AI boom",
+   "u": "https://www.technologyreview.com/2026/10/27/1147684/solid-state-transformers/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-27T09:00:00Z",
+   "s": "Transformers are a crucial but nearly invisible part of our grid. The devices help efficiently move power across long distances, but they’re complicated and in short supply. And given that their basic…",
    "sprache": "en"
   },
   {
-   "t": "AI delivers ‘zero financial payoff’ to most companies, Apollo economist says",
-   "u": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-25T16:57:32Z",
-   "s": "\"Despite massive investments and widespread hype around artificial intelligence, the technology has delivered zero financial payoff to corporate America outside of tech.\"",
-   "sprache": "en"
-  },
-  {
-   "t": "Risikoprüfungen werden Pflicht: China will KI-Jobverluste abfedern",
-   "u": "https://www.golem.de/news/risikopruefungen-werden-pflicht-china-will-ki-jobverluste-abfedern-2610-214487.html",
+   "t": "Proton: Angestellte müssen erneut ins Bewerbungsgespräch",
+   "u": "https://www.golem.de/news/proton-angestellte-muessen-erneut-ins-bewerbungsgespraech-2610-214537.html",
    "q": "Golem",
-   "d": "2026-10-25T13:10:02Z",
-   "s": "China will den KI-Einsatz am Arbeitsplatz steuern und Beschäftigte mit Risikoprüfungen, Umschulung und Schutz vor den Folgen der Automatisierung absichern. (KI, Politik)",
+   "d": "2026-10-27T08:26:02Z",
+   "s": "Proton will laut einer internen E-Mail die Angestellten finden, die mit der KI-Strategie kompatibel sind. Andere werden gehen müssen. (Softwareentwicklung, KI)",
    "sprache": "de"
   },
   {
-   "t": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-   "u": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+   "t": "heise-Angebot: iX-Workshop: Microsoft 365 Copilot für IT-Administratoren",
+   "u": "https://www.heise.de/news/iX-Workshop-Microsoft-365-Copilot-fuer-IT-Administratoren-11413796.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-27T07:00:00Z",
+   "s": "Lernen Sie, wie Sie Microsoft 365 Copilot sicher und datenschutzkonform implementieren.",
+   "sprache": "de"
+  },
+  {
+   "t": "How OpenAI turned its coding tools into dots, an always-on personal assistant",
+   "u": "https://techcrunch.com/2026/10/26/how-openai-turned-its-coding-tools-into-dots-an-always-on-personal-assistant/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-27T02:00:00Z",
+   "s": "Alexander Embiricos, the OpenAI executive responsible for dots, never wants to have a meeting with someone else's AI agent.",
+   "sprache": "en"
+  },
+  {
+   "t": "Cohere says Alibaba’s Qwen model tried to send a file to Beijing",
+   "u": "https://techcrunch.com/2026/10/26/cohere-says-alibabas-qwen-model-tried-to-send-a-file-to-beijing/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-27T01:12:21Z",
+   "s": "An AI model said it wouldn’t use any tools, then tried to send something to a server in Beijing anyway, and while researchers say it’s probably a training quirk and not espionage, the whole thing has …",
+   "sprache": "en"
+  },
+  {
+   "t": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+   "u": "https://openai.com/index/greptile-code-review-codex-astra",
    "q": "OpenAI",
-   "d": "2026-10-23T17:00:00Z",
-   "s": "Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster reads for ChatGPT.",
+   "d": "2026-10-26T22:00:00Z",
+   "s": "How Greptile uses GPT-6 Astra to test user workflows, Daybreak to strengthen security, and Codex to reduce rework.",
    "sprache": "en"
   },
   {
-   "t": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
-   "u": "https://huggingface.co/blog/allenai/litpivot",
-   "q": "Hugging Face",
-   "d": "2026-10-23T16:15:50Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Wegen hoher KI-Investitionen: Microsoft bietet 60.000 Mitarbeitern Abfindungen an",
+   "u": "https://t3n.de/news/ki-microsoft-abfindungen-1770007/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-26T20:33:09Z",
+   "s": "Die hohen KI-Investitionen setzen Microsoft offenbar zu. Der Konzern muss Kosten sparen – und setzt dafür beim Personal an. 60.000 Mitarbeiter:innen werden über ein entsprechendes Programm Abfindungen…",
+   "sprache": "de"
   }
  ]
 }
