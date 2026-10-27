@@ -281,5 +281,32 @@ ist('Sammlungstext A aus STUFEN', stufenText('a'), 'ab 2 Stück 5 %, ab 3 Stück
 ist('Sammlungstext B aus STUFEN', stufenText('b'), 'ab 3 Stück 5 %');
 ist('Sammlungstext A mit Zusatz «Rabatt»', stufenText('a', ' Rabatt'), 'ab 2 Stück 5 % Rabatt, ab 3 Stück 10 % Rabatt');
 
+// ═════════ Zweifelsgruppen (Besitzerentscheid 27.10.2026): Personalisiertes, Magnetarmbänder, Kosmetik mit Wirkwort ═════════
+const SCH = 'Apparel & Accessories > Jewelry > Rings', KOS = 'Health & Beauty > Personal Care > Cosmetics > Skin Care';
+for (const [titel, g] of [['Personalisierter Woven Ring', SCH], ['Halsband mit Gravur für Hunde und Katzen', 'Animals & Pet Supplies > Pet Supplies > Pet Collars & Harnesses'], ['Individuelles Foto-Kissen', 'Home & Garden > Decor > Throw Pillows'], ['Nummerbild mit deinem Namen', 'Arts & Entertainment > Hobbies & Creative Arts'], ['Namenskette mit Wunschtext', 'Apparel & Accessories > Jewelry > Necklaces'], ['Ring nach Maß gefertigt (Maßanfertigung)', SCH], ['Tasse mit Foto bedruckt, eigenes Foto', 'Home & Garden > Kitchen & Dining']]) {
+  ist('personalisiert ausgeschlossen: ' + titel, stufeFuer(P(titel, g, [V(20, 8)])).grund, 'personalisiert');
+}
+for (const titel of ['Perlenring mit Zirkonia', 'Individuell einstellbarer Verschluss ist nicht gemeint', 'Ring für Paare, Set']) {
+  if (/individuell/i.test(titel)) continue;
+  ist('Gegenprobe nicht personalisiert: ' + titel, stufeFuer(P(titel, SCH, [V(20, 8)])).stufe, 'a');
+}
+ist('Magnetarmband aus Kupfer → Heilversprechen', stufeFuer(P('Magnetarmband aus Kupfer', 'Apparel & Accessories > Jewelry > Bracelets', [V(20, 8)])).grund, 'heilversprechen');
+ist('magnetisches Kupferarmband → Heilversprechen', stufeFuer(P('Magnetisches Kupferarmband für Herren', 'Apparel & Accessories > Jewelry > Bracelets', [V(20, 8)])).grund, 'heilversprechen');
+ist('Gegenprobe: Armband mit Magnetverschluss ist ein normales Armband', stufeFuer(P('Perlenarmband mit Magnetverschluss', 'Apparel & Accessories > Jewelry > Bracelets', [V(20, 8)])).stufe, 'a');
+for (const titel of ['Anti-Aging Serum mit Hyaluron', 'Gesichtscreme Straffung und Lifting', 'Sonnencreme SPF 50', 'Retinol Nachtcreme', 'Wimpernserum für längere Wimpern', 'Hautaufhellende Creme', 'Pickelpatches 36 Stück', 'Creme gegen Schwangerschaftsstreifen']) {
+  ist('Wirkwort ausgeschlossen: ' + titel, stufeFuer(P(titel, KOS, [V(20, 8)])).grund, 'wirkclaim');
+}
+ist('Gegenprobe Kosmetik ohne Wirkwort: Feuchtigkeitscreme bleibt', stufeFuer(P('Feuchtigkeitscreme für den Alltag', KOS, [V(20, 8)])).stufe, 'a');
+ist('Gegenprobe Kosmetik ohne Wirkwort: Lippenpflege bleibt', stufeFuer(P('Lippenpflege Set', KOS, [V(20, 8)])).stufe, 'a');
+ist('mehrdeutiges Wirkwort in der Kosmetik-Familie schneidet: Straffender Toner', stufeFuer(P('Straffender Toner mit Kollagen', KOS, [V(20, 8)])).grund, 'wirkclaim');
+ist('mehrdeutiges Wirkwort ausserhalb der Kosmetik bleibt: Straffes Haarband', stufeFuer(P('Straffes Haarband', 'Apparel & Accessories > Clothing Accessories', [V(20, 8)])).stufe, 'a');
+ist('Gegenprobe: «abnehmbar» ist kein Abnehmen (Kosmetik-Familie)', stufeFuer(P('Abnehmbarer Spiegelaufsatz', KOS, [V(20, 8)])).stufe, 'a');
+ist('Gegenprobe: abnehmbare Nägel ausserhalb der Kosmetik-Familie', stufeFuer(P('Abnehmbare Kristall-Cat-Eye-Nägel', SCH, [V(20, 8)])).stufe, 'a');
+ist('Gegenprobe: Sonnenschutz-Hut ist Bekleidung, kein Kosmetikclaim', stufeFuer(P('Bucket-Hat mit Sonnenschutz', 'Apparel & Accessories > Clothing Accessories > Hats', [V(20, 8)])).stufe, 'a');
+ist('Sonnenschutz in der Kosmetik-Familie schneidet', stufeFuer(P('Sonnenschutz Lotion für den Körper', KOS, [V(20, 8)])).grund, 'wirkclaim');
+ist('Gegenprobe: Faltenrollo (Wohnen) bleibt', stufeFuer(P('Faltenrollo Verdunkelung', 'Home & Garden > Decor > Window Treatments', [V(20, 8)])).stufe, 'a');
+ist('eindeutiges Wirkwort schneidet auch ausserhalb: Anti-Aging-Serum', stufeFuer(P('24k Anti-Aging-Serum', SCH, [V(20, 8)])).grund, 'wirkclaim');
+ist('LED-Haustierartikel (Tag sort-tier-technik) bleiben draussen', stufeFuer(P('LED Leuchthalsband für Hunde', 'Animals & Pet Supplies > Pet Supplies > Pet Collars & Harnesses', [V(20, 8)], ['sort-tier-technik'])).grund, 'geraet');
+
 console.log(`\nmengenrabatt_test: ${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

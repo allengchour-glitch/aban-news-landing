@@ -77,6 +77,19 @@ export const GERAET_G_EXAKT = [PC + 'Hair Care > Hair Styling Tools'];
 export const AUSSCHLUSS_TITEL_2 = /(^|[^a-zäöüß])(lockenstab|lockenstäbe|glätteisen|haarglätter|glättbürste|glättkamm|glättungs-?kamm|haarstyler|haarstyling-gerät|haarschneider|bartschneider|trimmer|rasierer|epilierer|bedampfer|entsafter|toaster|reiskocher|gaskocher|fritür|powerbank|power bank|netzteil|ladestation(?!-kabel)|ladegerät|lade-?dock|lade-?pad|lade-?mauspad|wireless[- ]charger|schnelllader|rapid-lader|gamepad|game-? ?controller|gaming-controller|joystick|gaming-maus|fernbedienung|drohne|quadcopter|uav|ferngesteuert\w*|akku\w*|lithium-\w+|diffusor|diffuser|massagegerät|nagellampe|lichthärt\w+|beauty-gerät|schönheitsgerät|wecker|duftspender|blutstill\w*|uvc|desinfektions\w*|sterilisations\w*|gps|ortungs?\w*|tierortung\w*|tracker|futterautomat\w*|trinkbrunnen|wasserautomat\w*|ladefunktion|(wieder)?aufladbar\w*|usb-?(ladung|lade\w*|aufladbar)|elektro(?!platt|stat|schrauber|fahrzeug)\w*|elektronisch\w*|smart[- ]ring|smart[- ]bracelet|sport-smartwatch|lutschhemm\w*|halskrause|leckschutz|schutzkragen|(?:[1-9][0-9])er[- ]?pack|[a-zäöüß-]*gerät(?!e))|(?<!für )luftbefeuchter/i;
 /** Markenware, die nur im Titel steht (belegt am 26.10. in A/B): Kosmetik «Better Than Sex», WRC-Modellauto, Nintendo-Tastenkappe, Dyson-Aufsatz, Suunto-Kabel. */
 export const MARKE_TITEL = /better than sex|animal crossing|ford fiesta|(^|[^a-zäöüß])(dyson|suunto)([^a-zäöüß]|$)/i;
+/**
+ * Von den drei Zweifelsgruppen ausgeschlossen (Besitzerentscheid 27.10.2026, Empfehlung der Prüfer): (a) Personalisiertes: jedes Stück ist eine Einzelanfertigung,
+ * ein Umtausch gegen ein anderes Stück geht nicht; (b) Magnetarmbänder: klassische Heilversprechen-Ware; (c) Kosmetik mit Wirkwort im Titel (Anti-Aging, Retinol, SPF …):
+ * Wirkclaims sind im Kosmetikrecht heikel. Die vierte Gruppe (LED-/Smart-Haustierartikel) fällt schon über das Tag sort-tier-technik (TECHNIK_TAGS).
+ * GEMESSEN 26.10.2026 im Plan vor dem Ausschluss: 104 / 25 / 40 Produkte.
+ */
+export const PERSONALISIERT_TITEL = /(^|[^a-zäöüß])(personalis\w*|gravur\w*|gravier\w*|individuell\w*|maßanfert\w*|massanfert\w*|wunsch(text|name|motiv)\w*|nach mass|custom)([^a-zäöüß]|$)|mit (deinem |ihrem |eigenem |eigenen )?(namen|foto|bild|logo|text)([^a-zäöüß]|$)|eigenem? (name|foto|bild|logo)/i;
+export const MAGNETARMBAND_TITEL = /magnet\w*armband|magnetarmband|magnetisch\w* kupfer|kupfer\w*magnet/i;
+// Eindeutige Wirkwörter schneiden überall; mehrdeutige («Faltenrollo», «abnehmbar», «Straffes Haarband», Sonnenschutz-Hut) nur in der Kosmetik-Familie.
+export const WIRKCLAIM_EINDEUTIG = /(^|[^a-zäöüß])(anti-?aging|anti-?falten|retinol|sonnencreme|wimpern-?serum|wimpernwachstum|haarwuchs\w*|haarwachstum\w*|schwangerschaftsstreifen|dehnungsstreifen|akne|cellulite|pickel-?patch\w*|pickel-?pflaster\w*)/i;
+export const WIRKCLAIM_KOSMETIK = /(^|[^a-zäöüß])(falten\w*|straff\w*|lifting|sonnenschutz|spf|abnehm(?!bar)\w*|schlankheit\w*|entgift\w*|pickel\w*)|aufhell\w*|bleaching|whitening/i;
+export const KOSMETIK_G = 'Health & Beauty';
+export const wirkclaim = (title, g) => WIRKCLAIM_EINDEUTIG.test(title) || (String(g || '').startsWith(KOSMETIK_G) && WIRKCLAIM_KOSMETIK.test(title));
 export const AUSSCHLUSS_TITEL = new RegExp([
   'kratzbaum', 'aquarium', 'transportbox', 'hundehütte', 'hundehuette', 'staubsauger', 'haartrockner', 'luftreiniger', 'massagepistole', 'massagegerät', 'smartwatch', 'armbanduhr',
   'ladegerät', 'ladegeraet', 'kamera', 'lautsprecher', 'drohne', 'kühlschrank', 'fritteuse', 'ventilator', 'matratze', 'schreibtisch', 'gartenhaus',
@@ -141,6 +154,9 @@ export function stufeFuer(p) {
   if (TECHNIK_TAGS.some(t => tags.includes(t)) || GERAET_G_EXAKT.includes(g) || (GERAET_G.some(x => g.startsWith(x)) && !GERAET_G_AUSNAHME.some(x => g.startsWith(x)))) return aus('geraet');
   if (!/^sticker/i.test(title) && AUSSCHLUSS_TITEL_2.test(title)) return aus('geraet');
   if (MARKE_TITEL.test(title)) return aus('marke');
+  if (PERSONALISIERT_TITEL.test(title)) return aus('personalisiert');
+  if (MAGNETARMBAND_TITEL.test(title)) return aus('heilversprechen');
+  if (wirkclaim(title, g)) return aus('wirkclaim');
   const marge = produktMarge(p.variants);
   if (marge == null) return aus('kosten');
   const preis = Math.min(...p.variants.map(v => Number(v.price)));
