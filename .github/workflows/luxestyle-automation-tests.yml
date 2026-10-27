@@ -39,6 +39,7 @@ on:
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
+      - 'dropship/taxonomie-2610-b/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
@@ -95,6 +96,7 @@ jobs:
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
+            dropship/taxonomie-2610-b
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
           sparse-checkout-cone-mode: false
@@ -125,6 +127,11 @@ jobs:
           node --check automation/cj_video_produkte.mjs
           node --check automation/lib/cj_video.mjs
           node --check automation/material_nachtragen.mjs
+          node --check automation/schmuck_gruppen.mjs
+          node --check automation/schmuck_menue.mjs
+          node --check automation/lib/collection_web.mjs
+          node --check automation/lib/beleg_woerter.mjs
+          node --check automation/lib/sperr_tags.mjs
           node --check automation/kundenstimmen_bauen.mjs
           node --check automation/unterteilung_audit.mjs
       - name: Existing helper checks
@@ -173,6 +180,9 @@ jobs:
           node automation/lib/kategorien_verengt_test.mjs
           node automation/lib/mode_taxonomie_test.mjs
           node automation/lib/mode_menue_test.mjs
+          # Schmuck-Taxonomie (Bereichsdatei schmuck-uhren.json): Adapter gegen das Orakel des Messwerkzeugs, Menue-Umbau, Gruppen-Sammlungen; ohne Netz
+          node automation/lib/bereich_taxonomie_test.mjs
+          node automation/lib/schmuck_menue_test.mjs
           node automation/lib/stecker_cj_test.mjs
           # Grind 2.0 (Pipeline, Fracht, Preis, Dubletten, Google-Kategorie, Plan, Schema): 27.10.2026 (Gegenlesung) lief KEIN Test davon in einem Workflow.
           # Der Test grind2_test.mjs prueft, dass jede Grind-Testdatei hier steht. Daten unter /tmp fehlen im frischen Checkout: die Tests melden «uebersprungen» statt zu scheitern.

@@ -8,11 +8,12 @@
  *   tags_nicht : Produkt trägt keinen dieser Tags (die globalen Sperr-Tags gelten immer)
  * Wortgrenzen: JavaScript-`\b` kennt keine Umlaute. Anfang: `(^|[^a-zäöüß])wort`, Ende: `wort(?![a-zäöüß])`.
  */
+import { SPERR_TAGS_TAXONOMIE } from '../../automation/lib/sperr_tags.mjs';
+
 const rxCache = new Map();
 export const R = s => { let r = rxCache.get(s); if (!r) { r = new RegExp(s, 'i'); rxCache.set(s, r); } return r; };
 
-export const SPERR_TAGS = ['adult-nicht-bewerben', '18plus', 'gmc-adult-pull', 'raucher-rueckhol-0809', 'nicht-bewerben', 'compliance-pruefen', 'waffenzubehoer-nicht-verkaufen', 'stecker-nicht-ch',
-  'google-gesperrt-adult', 'lizenz-nicht-bewerben', 'fortura'];
+export const SPERR_TAGS = SPERR_TAGS_TAXONOMIE;   // = Basisliste der Engine + google-gesperrt-adult, lizenz-nicht-bewerben, fortura (automation/lib/sperr_tags.mjs)
 export const gesperrt = p => (p.tags || []).some(t => SPERR_TAGS.includes(t));
 
 /** Produkt aus dem Katalog (productType, g) in die Form der Regeln bringen. */

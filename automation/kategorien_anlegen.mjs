@@ -13,10 +13,11 @@
  *
  * Gelernt (25.10.2026): ein Tag-Wechsel ist die Grundlage, die Collection hängt nur am Tag. Vor LIVE die Listen LESEN — beide Seiten.
  */
-import { readFileSync, writeFileSync, mkdirSync, appendFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, appendFileSync, existsSync, statSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { KATEGORIEN, BEREINIGUNG, MENUE_NUR, gehoertIn } from './lib/kategorien.mjs';
+import { KATEGORIEN, BEREINIGUNG, MENUE_NUR, SCHMUCK_AN, gehoertIn } from './lib/kategorien.mjs';
+import { ladeOrakel, orakelAbweichungen } from './lib/bereich_taxonomie.mjs';
 import { UMBAU, anwenden, einfuegenPfad, alleRessourcen, tiefe, gleicherBaum, flach } from './lib/menue_plan.mjs';
 import { eingabeAus } from './menu_eintrag_einfuegen.mjs';
 
@@ -32,6 +33,12 @@ const MENU_Q = `query($h:String!){menus(first:1,query:$h){nodes{id title handle 
 async function main() {
   if (!existsSync(KATALOG)) { console.error(`Katalogdatei ${KATALOG} fehlt — erst katalog_titel_scan.mjs laufen lassen`); process.exit(1); }
   const katalog = JSON.parse(readFileSync(KATALOG, 'utf8'));
+  // Schmuck (SCHMUCK=1): Tag und Collection hängen am Katalog. Das Orakel der Tests stammt aus einem Schnappschuss (26.10. 20:14, bei der Gegenlesung 26 Stunden alt) -
+  // LIVE nur mit frisch gelesenem Katalog (KATALOG_MAX_STUNDEN, Vorgabe 12; KATALOG_ALT_OK=1 hebt die Sperre bewusst auf).
+  if (LIVE && SCHMUCK_AN && process.env.KATALOG_ALT_OK !== '1') {
+    const alter = (Date.now() - statSync(KATALOG).mtimeMs) / 3.6e6, grenze = Number(process.env.KATALOG_MAX_STUNDEN || 12);
+    if (!(alter <= grenze)) { console.error(`ABBRUCH: der Katalog ${KATALOG} ist ${alter.toFixed(1)} Stunden alt (erlaubt ${grenze}). Erst katalog_titel_scan.mjs neu laufen lassen, oder bewusst KATALOG_ALT_OK=1.`); process.exit(2); }
+  }
   if (!katalog.vollstaendig) console.log('WARNUNG: Katalog ist unvollständig gelesen — Stale-Tags werden nicht bereinigt.');
   const produkte = katalog.produkte;
   console.log(`Katalog: ${produkte.length} aktive Produkte (${produkte.filter(p => p.g).length} mit Google-Kategorie)`);
@@ -72,6 +79,11 @@ async function main() {
   // ── 3) Bericht ──
   console.log('\nKATEGORIE'.padEnd(26), 'MIN'.padStart(4), 'MITGL'.padStart(6), 'TAG+'.padStart(6), 'TAG-'.padStart(6), ' STATUS');
   for (const { k, mit, ok, dazu, weg } of plan) console.log(k.id.padEnd(25), String(k.min).padStart(4), String(mit.length).padStart(6), String(dazu.length).padStart(6), String(weg.length).padStart(6), ' ', ok ? (k.bestehend ? 'umstellen' : 'neu') : 'ZU KLEIN → wird nicht angelegt');
+  if (SCHMUCK_AN) { // Katalogdrift gegen den Schnappschuss, aus dem das Orakel der Tests stammt
+    const zahlen = Object.fromEntries(plan.filter(p => p.k.aus_datei).map(p => [p.k.handle, p.mit.length])), abw = orakelAbweichungen(zahlen, ladeOrakel());
+    console.log(`\nSchmuck gegen das Orakel (Katalog vom 26.10.2026): ${abw.length ? `${abw.length} Abweichungen über 10 % und 3 Produkten` : 'keine Abweichung über 10 % und 3 Produkten'}`);
+    for (const a of abw.slice(0, 20)) console.log(`  ${a.handle.padEnd(44)} ${String(a.alt).padStart(5)} → ${String(a.neu).padStart(5)} (${a.diff > 0 ? '+' : ''}${a.diff})`);
+  }
   for (const b of bereinigung) console.log(`\nBereinigung ${b.id}: ${b.treffer} Treffer · Tag entfernen ${b.weg} · Tag setzen ${b.dazu}\n   Grund: ${b.grund}`);
   if (process.env.LISTE) {
     const zeilen = [];
@@ -135,7 +147,7 @@ async function main() {
         // Nie überschreiben: ein zweiter Lauf läse sonst den schon umgebauten Stand und ersetzte den Originalstand (26.10.: 6 Sicherungen waren betroffen).
         const sicherung = `dropship/kategorien-sicherung/${k.handle}.json`;
         if (!existsSync(sicherung)) writeFileSync(sicherung, JSON.stringify(c, null, 1));
-        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
+        const d = await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{id} userErrors{field message}}}`, { i: { id: c.id, ruleSet: regel, ...(k.aktualisiere ? { title: k.titel, descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: k.seoTitel || `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung } } : {}) } });
         if (d.collectionUpdate.userErrors.length) throw new Error(`collectionUpdate ${k.handle} ${JSON.stringify(d.collectionUpdate.userErrors)}`);
         console.log(`Umgestellt: ${k.handle} → TAG ${k.tag}`); ledger(`umgestellt ${k.handle}`);
         // Publish-Falle: eine bestehende Collection kann nie im Onlineshop publiziert worden sein (haustier-tech, 26.10.: HTTP 404, durch eine Umleitung verdeckt).
@@ -147,7 +159,7 @@ async function main() {
         }
       } else if (!c) {
         const d = await q(`mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id handle} userErrors{field message}}}`, { i: {
-          title: k.titel, handle: k.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung }, ruleSet: regel } });
+          title: k.titel, handle: k.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${k.beschreibung}</p>`, seo: { title: k.seoTitel || `${k.titel} online kaufen | LuxeStyle CH`, description: k.seoBeschreibung }, ruleSet: regel } });
         if (d.collectionCreate.userErrors.length) throw new Error(`collectionCreate ${k.handle} ${JSON.stringify(d.collectionCreate.userErrors)}`);
         const id = d.collectionCreate.collection.id;
         const p = await q(`mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{field message}}}`, { id, i: pubs });
