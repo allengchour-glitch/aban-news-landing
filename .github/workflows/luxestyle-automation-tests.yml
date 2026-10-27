@@ -161,6 +161,7 @@ jobs:
           node automation/lib/top_kandidaten_test.mjs
           node automation/auswahl_kandidaten_test.mjs
           node automation/optionen_reparieren_test.mjs
+          node automation/lieferzeit_fortura_test.mjs
           node automation/optionen_uebersetzen_test.mjs
           node automation/lib/regel_auswerten_test.mjs
           node automation/lib/kategorien_verengt_test.mjs
