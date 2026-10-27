@@ -74,6 +74,9 @@ export function groesseNormal(wert) {
     const zahlen = [m[1], m[2], m[3]].filter(Boolean).map(z => z.replace(',', '.'));
     return `${zahlen.join(' × ')} ${(m[4] || 'cm').toLowerCase()}`;
   }
+  // «36 To 37» (CJ-Schuhgrössen, 26.10.2026 live gesehen): englisches «To» zwischen zwei Zahlen → «36–37»
+  const bis = /^(\d{1,3}(?:[.,]\d)?)\s*(?:to|bis)\s*(\d{1,3}(?:[.,]\d)?)$/i.exec(roh);
+  if (bis) return `${bis[1].replace(',', '.')}–${bis[2].replace(',', '.')}`;
   if (/^(one|free|universal) size$/i.test(roh)) return 'Einheitsgrösse';
   if (/^[xsml0-9]{1,4}$/i.test(roh)) return roh.toUpperCase();
   return roh;
