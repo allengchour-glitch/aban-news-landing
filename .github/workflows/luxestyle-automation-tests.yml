@@ -132,6 +132,8 @@ jobs:
           node --check automation/lib/collection_web.mjs
           node --check automation/lib/beleg_woerter.mjs
           node --check automation/lib/sperr_tags.mjs
+          node --check automation/kundenstimmen_bauen.mjs
+          node --check automation/unterteilung_audit.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -197,6 +199,7 @@ jobs:
           node automation/cj_varianten_nachziehen_sku_test.mjs
           node automation/lib/sku_nachziehen_test.mjs
           node automation/lib/material_test.mjs
+          node automation/lib/kundenstimmen_test.mjs
           node automation/auswahl_scan_test.mjs
           node automation/cj_variantenbilder_test.mjs
           node automation/farbwahl_scan_test.mjs
