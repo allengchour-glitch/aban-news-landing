@@ -5,7 +5,9 @@ Die Zahlen stammen von den Live-Seiten `luxestyle.ch/pages/versand-lieferung` un
 
 ---
 
-## Block A: Google Merchant Center, Versand und Rückgabe eintragen
+## Block A: Google Merchant Center, Versand und Rückgabe eintragen (ERLEDIGT 27.10. 22:3x UTC, per Screenshot gegengelesen)
+
+> Ergebnis: CH-Versand «flat_7.00» (CHF 7.00, Bearbeitung 1–3 + Transit 9–17) und «kostenloser versand» (ab CHF 50.00; Google erlaubte «gratis ab» plus Mindestwert nicht gemeinsam, darum nur Mindestwert 50.00 mit «Free shipping»). LI «LI_flat_14.90_CHF». Die Altregel «flat_15.00 … international» (nur CH, alle Produkte) wurde auf Anweisung gelöscht. Rückgabe: «Standard for Switzerland» und «Standard for Liechtenstein», beide Verified, 30 Tage, Customer responsibility, Link /pages/rueckgabe, Erstattung 14 Tage, Umtausch nicht akzeptiert. Die Gratis-Schwelle bleibt bei Google 50 (Versprechen), im Shopify-Checkout 45 (Puffer für Rabattcodes), siehe `dropship/VERSAND-SCHWELLE.md`. Offen: Google prüft die Richtlinien bis zu 10 Tage.
 
 ```
 Du bist in meinem eingeloggten Browser. Ich bin Inhaber von LuxeStyle CH (luxestyle.ch).
@@ -75,6 +77,19 @@ Regeln:
 - Steht bei einer Adresse schon "URL ist bei Google" und "Indexiert": nicht erneut beantragen, nur melden.
 
 Bericht: je Adresse "beantragt", "schon indexiert" oder "Kontingent erschöpft".
+```
+
+---
+
+## Block C: alte Rückgaberegel «luxestyle return policy» aufräumen (zusammen mit Block B am 28.10.)
+
+Im Merchant Center steht unter «Standard for Switzerland» eine Unterzeile «luxestyle return policy» mit «30 days» und «Free» (0 Produkte, laut Browser-Claude). «Free» widerspricht der Seite (Kunde zahlt die Rücksendung).
+
+```
+Öffne im Merchant Center Versand und Rückgabe > Rückgaberichtlinien. Prüfe die Zeile «luxestyle return policy»
+(30 days, Free): Wie viele Produkte nutzen sie, hat sie ein Rückgabelabel, und was bedeutet das «+ 1» in der Zeile
+«Standard for Switzerland»? Hat sie 0 Produkte und kein Label, lösche genau diese eine Richtlinie (hiermit erlaubt).
+Sonst nichts löschen, sondern melden. Danach beide Zeilen (Schweiz, Liechtenstein) neu laden und abfotografieren.
 ```
 
 ---
