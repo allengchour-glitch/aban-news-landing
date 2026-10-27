@@ -41,7 +41,30 @@ ist('Rückweg ergibt den Originaltext (2–3)', p2.neu.replace(NEU, ALT_PROFIL),
 ist('Ergebnis aus dem 2–3-Satz ist idempotent', planeText(p2.neu).art, 'sauber');
 ist('Beide Sätze im selben Text → Sonderfall', planeText(`${alt}${profilSatz}`).art, 'sonderfall');
 ist('Leerzeichen zwischen den Listenpunkten (Megafon-Fall) ändert nichts', planeText('<ul>\n<li>🇨🇭 <strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 2–3 Werktagen bei dir</li> <li>↩️ 30 Tage Rückgaberecht</li>\n</ul>').art, 'ersetzen');
-ist('Gegenprobe: Satz mit anderer Zahl «meist in 3–4 Werktagen» ist unbekannt → bleibt sauber (nicht raten)', planeText('<li><strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 3–4 Werktagen bei dir</li>').art, 'sauber');
+ist('Satz mit anderer Zahl «meist in 3–4 Werktagen» ist unbekannt → Sonderfall (melden, nicht raten, nicht still durchlassen)', planeText('<li><strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 3–4 Werktagen bei dir</li>').art, 'sonderfall');
+ist('Importer-Satz mit geschütztem Leerzeichen → Sonderfall statt «sauber»', planeText('<li><strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 2–3 Werktagen bei dir</li>').art, 'sonderfall');
+
+// Kennung für das Ledger: A = alter 1–2-Satz, P = Importer-Satz 2–3
+ist('Kennung A für den alten Satz', planeText(alt).alt, 'A');
+ist('Kennung P für den 2–3-Satz', p2.alt, 'P');
+
+// Erkennung weiterer Kurz-Zusagen (Prüfung 27.10.: Em-Dash, «to», «working days», Arbeitstage, Entities)
+const mitZusatz = z => planeText(`${alt}<p>${z}</p>`).art;
+ist('Em-Dash «1—2 Tage» blockiert', mitZusatz('Versand in 1—2 Tagen'), 'sonderfall');
+ist('«1 to 2 days» blockiert', mitZusatz('Delivery in 1 to 2 days'), 'sonderfall');
+ist('«1-2 working days» blockiert', mitZusatz('Delivery 1-2 working days'), 'sonderfall');
+ist('«1–2 Arbeitstage» blockiert', mitZusatz('Lieferung 1–2 Arbeitstage'), 'sonderfall');
+ist('«1 – 2 Arbeitstage» (Leerzeichen um den Strich) blockiert', mitZusatz('Lieferung 1 – 2 Arbeitstage'), 'sonderfall');
+ist('Entity «&#x2013;» blockiert', mitZusatz('Lieferung 1&#x2013;2 Werktage'), 'sonderfall');
+ist('«1 bis 2 Werktage» blockiert', mitZusatz('Lieferung 1 bis 2 Werktage'), 'sonderfall');
+ist('«ein bis zwei Arbeitstage» blockiert', mitZusatz('in ein bis zwei Arbeitstagen'), 'sonderfall');
+ist('Gegenprobe: «11 to 22 days» ist keine Kurz-Zusage', mitZusatz('Lieferung in 11 to 22 days'), 'ersetzen');
+ist('Gegenprobe: «Version 1.2 Tag» ist keine Kurz-Zusage', mitZusatz('Version 1.2 Tag'), 'ersetzen');
+ist('Gegenprobe: «10–20 Werktage» ist keine Kurz-Zusage', mitZusatz('Direktversand 10–20 Werktage'), 'ersetzen');
+
+// Nach dem Ersetzen darf weder der Orts-Satz noch ein weiterer «meist in N–M Werktagen»-Satz übrig sein
+ist('Alter Satz + abweichender «Versand aus der Schweiz»-Satz → Sonderfall', planeText(`${alt}<li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 2 Werktagen (DPD)</li>`).art, 'sonderfall');
+ist('Profil-Satz + zweiter abweichender «meist in»-Satz → Sonderfall', planeText(`${alt2}<p>Ware kommt meist in 3–4 Werktagen</p>`).art, 'sonderfall');
 ist('Gegenprobe: «Grösse 1–2 Jahre» ist kein Werktag', planeText('<p>Für Kinder von 1–2 Jahren</p>').art, 'sauber');
 ist('Gegenprobe: «Set aus 1–2 Teilen» ist kein Tag', planeText('<p>Set aus 1–2 Teilen</p>').art, 'sauber');
 ist('Gegenprobe: «Durchmesser 11–2» wird nicht als 1–2 gelesen', planeText('<p>Mass 11–2 Tage</p>').art, 'sauber');
