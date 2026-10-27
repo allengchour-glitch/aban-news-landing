@@ -33,7 +33,13 @@ den Rest morgen und notieren, ab welcher Seite das war).
 Bereits gemessen und nicht mehr nötig: `damen-strick-pullover`, `damen-kleider-blumen`. Noch offen für die nächsten Tage: `kinder-lauflernschuhe` (373, entdeckt),
 `damen-strickjacken-cardigan` (187, unbekannt), `damen-jacken-blazer` (24, dünn), `herren-hemden-business` (74) und die übrigen rund 100 Mode-Kategorien aus der Sitemap.
 
-## 3. Routine
+## 3. Nachtrag: `/collections/geschenke-fuer-kinder` neu beantragen
+
+Search Console meldet die Seite als «Gecrawlt – zurzeit nicht indexiert» (letzter Abruf 10.09.). Der Text der Seite wurde am 26.10. erneuert, Google hat ihn noch nicht gesehen.
+Mit dem Weihnachtsgeschäft vor der Tür ist sie der wichtigste Kandidat der Woche: statt einer der unteren Zeilen aus Abschnitt 2 (z. B. `herren-geldboersen`)
+zuerst diese Seite unter «URL prüfen» eintragen und «Indexierung beantragen» wählen.
+
+## 4. Routine
 
 Weiterlaufen lassen: Schritt 4 schaltet die Routine ab, sobald keine Kandidaten mehr übrig sind. Es liegen aber weiter über hundert Mode-Kategorien ohne Index
 vor, also bleibt sie an (Änderungen an geplanten Aufgaben entscheidet der Besitzer).

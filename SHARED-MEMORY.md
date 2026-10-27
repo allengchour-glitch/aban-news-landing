@@ -206,6 +206,18 @@
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
 
+### 🚚 LIEFERZEIT-SATZ AUSSERHALB DES PROFILS «CH-LAGER» (27.10.2026) — für die Sitzung mit `ch_lager_profil.py`
+747 aktive Fortura-Artikel (Tag `ch-lager`, OHNE `profil-ch-lager`) sagten «Lieferung in nur 1–2 Werktagen (DPD)» (734) bzw. «meist in 2–3 Werktagen bei dir» (13),
+während Seite und Kasse für sie 10–20 Werktage zeigen (z. B. «11.–25. Nov.») und der Satz im JSON-LD steht. Am 27.10. ersetzt durch **«Versand ab Schweizer Lager mit DPD –
+der voraussichtliche Lieferzeitraum steht beim Artikel und in der Kasse»** (keine Zahl), dazu 565 Entwürfe mit `ch-lager`. Werkzeug: `automation/lieferzeit_fortura.mjs`
+(Trockenlauf Vorgabe, Ledger `dropship/lieferzeit_fortura_ledger.tsv`, 1312 Zeilen; nur Produkte OHNE `profil-ch-lager`).
+- **Euer Wächter** (`kassen_lieferdatum_wache.py`, nur Produkte MIT Marke) bleibt unberührt und lässt die neue Zeile in Ruhe (keine Zahl). Die Importer
+  (`fortura_import*.mjs`, `fortura_enrich_live.mjs`) schreiben für NEUE Artikel weiter «meist in 2–3 Werktagen bei dir», auch wenn der Artikel erst später ins Profil kommt:
+  **nach neuen Importen oder einem Stufenwechsel `node automation/lieferzeit_fortura.mjs` (Trockenlauf) laufen lassen**, bei «zu ersetzen» mit `LIVE=1` (erst `LIMIT=3`).
+- **Offen, nicht erledigt:** Akkordeon in `templates/product.json`, FAQ-Assistent, Versand-Seiten und die Kollektion `blitzversand-schweiz` sagen weiter «ab Schweizer Lager meist 2–3 Werktage»
+  neben dem 10–20-Werktage-Datum. Heilung = Profil Stufe 3 (Euer Entscheid). Bis dahin ist nur der **Produkttext** korrigiert.
+- Nicht mit `dry_run=false` starten: `delivery_block.mjs` (würde auch diesen 747 einen «CH / EU: 6–12 Tage»-Block voranstellen).
+
 ### ⚠️ VERALTETE ARBEITSBRANCHES LIEFERN VERALTETE ANWEISUNGEN (16.10.2026)
 Eine Sitzung startete auf `claude/lade-projekt-luxestyle-fUo70`. Der Branch steht auf dem **27. Juni** —
 **1131 Commits hinter `main`** — und sein `CLAUDE.md` wurde als Projektanweisung geladen: alter
