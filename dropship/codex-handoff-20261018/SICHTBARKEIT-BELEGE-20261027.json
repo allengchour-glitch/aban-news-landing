@@ -1,0 +1,887 @@
+{
+  "status": "BOUNDED_VISIBILITY_REVIEW_ONE_CONFIRMED_PRODUCT_DESCRIPTION",
+  "capturedAtUTC": "2026-10-27T17:36:35.650709+00:00",
+  "identity": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "freshIdentityMatchedAtTurnStart": true
+  },
+  "scope": {
+    "uniqueLandingPageGETs": 9,
+    "homepage": 1,
+    "collections": 8,
+    "firecrawlPageReads": 4,
+    "rootRobotsAndSitemapGETs": 2,
+    "collectionChildSitemapGETs": 1,
+    "productChildSitemapsFetched": 0,
+    "targetProductsNativelyRead": 2,
+    "productDescriptionLiveWrites": 1,
+    "categoryMetaThemeFeedSettingsWrites": 0,
+    "socialWrites": 0,
+    "newMetricFlowSalesReads": 0,
+    "searchConsoleReadsOrIndexRequests": 0,
+    "installsOrWorkflowStartsOrDeployments": 0
+  },
+  "rootPublicReads": [
+    {
+      "url": "https://luxestyle.ch/",
+      "readAtUTC": "2026-10-27T17:28:11.477561+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/",
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "bytesRead": 2840667,
+      "capExceeded": false,
+      "sha256": "be67fd1bb5e81815321cd3d52cc69673d33fff88716e5160e9b0492657467b34",
+      "rootHeadClosed": true,
+      "titles": [
+        "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz"
+      ],
+      "descriptions": [
+        "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein."
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/"
+      ],
+      "robots": [],
+      "mainH1": [
+        "Premium-Style. Schweizer Shop."
+      ],
+      "mainCollectionLinks": [
+        "/collections/sub-kleider",
+        "/collections/damenmode-favoriten",
+        "/collections/hype-jetzt",
+        "/collections/halloween",
+        "/collections/herbst-favoriten",
+        "/collections/weihnachten-2026",
+        "/collections/damen-mode",
+        "/collections/fur-ihn",
+        "/collections/schuhe",
+        "/collections/sub-taschen",
+        "/collections/beauty-pflege",
+        "/collections/parfum-duefte",
+        "/collections/wohnen-dekoration",
+        "/collections/sub-kueche",
+        "/collections/elektronik-technik",
+        "/collections/smartwatches-wearables",
+        "/collections/kopfhoerer-audio",
+        "/collections/spielzeug",
+        "/collections/klemmbausteine-bausaetze",
+        "/collections/fitness-training",
+        "/collections/premium-geschenke",
+        "/collections/bestseller",
+        "/collections/neu-eingetroffen",
+        "/collections/selbst-gestalten",
+        "/collections/blitzversand-highlights",
+        "/collections/premium-schmuck",
+        "/collections/schuhe-sneaker",
+        "/collections/sport-outdoor",
+        "/collections/make-up",
+        "/collections/jacken-outdoor"
+      ],
+      "indexStatus": "unknown",
+      "rankings": "unknown"
+    },
+    {
+      "url": "https://luxestyle.ch/robots.txt",
+      "readAtUTC": "2026-10-27T17:28:15.747881+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/robots.txt",
+      "contentType": "text/plain; charset=utf-8",
+      "xRobotsTag": null,
+      "bytesRead": 3678,
+      "capExceeded": false,
+      "sha256": "cb0603cc7715bdd00f30f162918d7f3fb6d253d309fdf3a50d649c93f7dbbf86",
+      "sitemapReferences": [
+        "https://luxestyle.ch/sitemap.xml"
+      ],
+      "groups": [
+        "*",
+        "adsbot-google"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/sitemap.xml",
+      "readAtUTC": "2026-10-27T17:28:17.706937+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/sitemap.xml",
+      "contentType": "application/xml; charset=utf-8",
+      "xRobotsTag": null,
+      "bytesRead": 15872,
+      "capExceeded": false,
+      "sha256": "1d1ef53e545d83ba7af74011b0e1b8fc6d09e1ff7cc8e4da00fe92144330941b",
+      "rootTag": "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex",
+      "childReferences": 123,
+      "uniqueChildReferences": 123,
+      "collectionSitemaps": [
+        "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755517555079",
+        "https://luxestyle.ch/fr/sitemap_collections_1.xml?from=687295136129&to=755517555079"
+      ],
+      "pageSitemaps": [
+        "https://luxestyle.ch/sitemap_pages_1.xml?from=697899417985&to=700975022465",
+        "https://luxestyle.ch/fr/sitemap_pages_1.xml?from=697899417985&to=700975022465"
+      ],
+      "productChildrenNotFetched": 114
+    }
+  ],
+  "primaryCategoryReads": [
+    {
+      "url": "https://luxestyle.ch/collections/fur-ihn",
+      "readAtUTC": "2026-10-27T17:29:08.278223+00:00",
+      "googlebotAllowedByParsedRobots": true,
+      "indexStatus": "unknown",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/fur-ihn",
+      "xRobotsTag": null,
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 1991933,
+      "capExceeded": false,
+      "sha256": "6ed5fbf1284540c0145f7814105fd3cc5ac08388776546c284add9fe4dff9d9d",
+      "rootHeadClosed": true,
+      "titles": [
+        "Herrenmode: Shirts, Hemden, Pullover & Schuhe | LuxeStyle"
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/collections/fur-ihn"
+      ],
+      "descriptions": [
+        "Herrenmode bei LuxeStyle: Langarmshirts, Poloshirts, Hemden, Hoodies, Strickpullover, Winterjacken, Westen und Herrenschuhe. Versand in die ganze Schweiz."
+      ],
+      "robots": [],
+      "mainH1": [
+        "Herren-Mode"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/collections/schuhe",
+      "readAtUTC": "2026-10-27T17:29:12.666713+00:00",
+      "googlebotAllowedByParsedRobots": true,
+      "indexStatus": "unknown",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/schuhe",
+      "xRobotsTag": null,
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 2006535,
+      "capExceeded": false,
+      "sha256": "e565ecd2be724d178c90a482d75d751df97516e1ad04b73d83b3a477af161158",
+      "rootHeadClosed": true,
+      "titles": [
+        "Schuhe online kaufen – Sandalen, Pumps & Sneaker | LuxeStyle CH"
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/collections/schuhe"
+      ],
+      "descriptions": [
+        "Damen- & Herrenschuhe bei LuxeStyle Schweiz: Sandalen, Pumps, Loafer & Sneaker. Bequem & stilvoll, Lieferzeit auf jeder Produktseite."
+      ],
+      "robots": [],
+      "mainH1": [
+        "Schuhe"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/collections/beauty-pflege",
+      "readAtUTC": "2026-10-27T17:29:15.866748+00:00",
+      "googlebotAllowedByParsedRobots": true,
+      "indexStatus": "unknown",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/beauty-pflege",
+      "xRobotsTag": null,
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 2024371,
+      "capExceeded": false,
+      "sha256": "a72e64ac55bddd68a1b72515ff5d2dcbb83d0e48442685b3590d0fdd42301d16",
+      "rootHeadClosed": true,
+      "titles": [
+        "Beauty & Pflege online entdecken | LuxeStyle Schweiz"
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/collections/beauty-pflege"
+      ],
+      "descriptions": [
+        "Beauty & Pflege für Make-up, Nägel und Hautpflege bei LuxeStyle Schweiz. Produktdetails, Preise und Verfügbarkeit online ansehen."
+      ],
+      "robots": [],
+      "mainH1": [
+        "Beauty & Pflege"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/collections/parfum-duefte",
+      "readAtUTC": "2026-10-27T17:29:20.674563+00:00",
+      "googlebotAllowedByParsedRobots": true,
+      "indexStatus": "unknown",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/parfum-duefte",
+      "xRobotsTag": null,
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 1433385,
+      "capExceeded": false,
+      "sha256": "db8fd1820ab86b2aa05b911019fd08041971aeccff6cdf347f877e31903811d0",
+      "rootHeadClosed": true,
+      "titles": [
+        "Parfum & Düfte kaufen | LuxeStyle Schweiz"
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/collections/parfum-duefte"
+      ],
+      "descriptions": [
+        "Parfum & Düfte online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+      ],
+      "robots": [],
+      "mainH1": [
+        "Parfum & Düfte"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/collections/sub-kueche",
+      "readAtUTC": "2026-10-27T17:29:22.784718+00:00",
+      "googlebotAllowedByParsedRobots": true,
+      "indexStatus": "unknown",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/sub-kueche",
+      "xRobotsTag": null,
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 1996816,
+      "capExceeded": false,
+      "sha256": "1175969ccf2a37c9061a0ffd1bde6f8bfdd0339a6cfe689cbc955b6cbe237fc8",
+      "rootHeadClosed": true,
+      "titles": [
+        "Küche & Kochen online entdecken | LuxeStyle Schweiz"
+      ],
+      "canonicals": [
+        "https://luxestyle.ch/collections/sub-kueche"
+      ],
+      "descriptions": [
+        "Küchenhelfer und Produkte für Küche und Kochen bei LuxeStyle Schweiz. Produktdetails, Preise und Verfügbarkeit online ansehen."
+      ],
+      "robots": [],
+      "mainH1": [
+        "Küche & Kochen"
+      ]
+    }
+  ],
+  "threeIndependentLandingReads": [
+    {
+      "checkedAtUTC": "2026-10-27T17:27:16.724376+00:00",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "finalUrl": "https://luxestyle.ch/collections/elektronik-technik",
+      "httpStatus": 200,
+      "fullResponseBytes": 2001423,
+      "fullResponseSha256": "5731d6ee99d0c5a5fcccba8b33baa26db91819029772c58ed1ee5924b73cc6b8",
+      "completeHtml": true,
+      "xRobotsTag": null,
+      "rootHead": {
+        "complete": true,
+        "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+        "meta": [
+          {
+            "name": "description",
+            "content": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          }
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/elektronik-technik"
+        ]
+      },
+      "h1": [
+        "Elektronik & Technik"
+      ],
+      "firstIntroductionParagraphHtml": "<p>Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu.</p>",
+      "introductionParagraphSha256": "e20296e2ca667f84119bd6217af3194b424eda3539178b77c5d4a79fd940fdd1"
+    },
+    {
+      "checkedAtUTC": "2026-10-27T17:27:41.571023+00:00",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "httpStatus": 200,
+      "fullResponseBytes": 2200468,
+      "fullResponseSha256": "1cfe03b96e54624680cff00664b2ee0508f32ff529c929ef7bcb24cb417dbf45",
+      "completeHtml": true,
+      "xRobotsTag": null,
+      "rootHead": {
+        "complete": true,
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "meta": [
+          {
+            "name": "description",
+            "content": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          }
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/wohnen-dekoration"
+        ]
+      },
+      "h1": [
+        "Wohnen & Dekoration"
+      ],
+      "firstIntroductionParagraphHtml": "<p>Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen &amp; Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>",
+      "introductionParagraphSha256": "14a9683db1205885d441daf63f2b21cace52e906f0bffddd8f08fba9693864df"
+    },
+    {
+      "checkedAtUTC": "2026-10-27T17:27:45.419069+00:00",
+      "url": "https://luxestyle.ch/collections/damen-schuhe",
+      "finalUrl": "https://luxestyle.ch/collections/damen-schuhe",
+      "httpStatus": 200,
+      "fullResponseBytes": 1861146,
+      "fullResponseSha256": "93f8a2ff078e348cfb33b7cccf13da4605e16d44c7ed0c2cdcc8d2053c9cbdd5",
+      "completeHtml": true,
+      "xRobotsTag": null,
+      "rootHead": {
+        "complete": true,
+        "title": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+        "meta": [
+          {
+            "name": "description",
+            "content": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz."
+          }
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/damen-schuhe"
+        ]
+      },
+      "h1": [
+        "Damen-Schuhe"
+      ],
+      "firstIntroductionParagraphHtml": "<p>Entdecke Damenschuhe für jeden Anlass: flache Loafer und Ballerinas für den Alltag, Slingback-Pumps und Stiletto-Sandaletten für den Abend, Plateau-Sneaker und Keil-Sandalen für den Sommer. Dazu Stiefeletten und Boots für die kühle Jahreszeit – die Auswahl wächst laufend.</p>",
+      "introductionParagraphSha256": "32ef02951bdbb092813e8472a68ccc9939af85a95b8166765f3d985d2310eab1"
+    }
+  ],
+  "sitemap": {
+    "url": "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755517555079",
+    "readAtUTC": "2026-10-27T17:29:07.562100+00:00",
+    "scope": "One primary-language collection sitemap; no product/page/fr sitemap fetched",
+    "httpStatus": 200,
+    "finalUrl": "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755517555079",
+    "bytesRead": 300563,
+    "contentType": "application/xml; charset=utf-8",
+    "sha256": "b229aac545d6e5f5860b556b1859b5e63a7398f26bfa561e398f473f041d2566",
+    "capExceeded": false,
+    "rootTag": "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset",
+    "collectionUrls": 792,
+    "uniqueCollectionUrls": 792,
+    "membership": [
+      {
+        "url": "https://luxestyle.ch/collections/sub-kleider",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/damenmode-favoriten",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/hype-jetzt",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/halloween",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/herbst-favoriten",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/weihnachten-2026",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/damen-mode",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/fur-ihn",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/schuhe",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/sub-taschen",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/beauty-pflege",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/parfum-duefte",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/sub-kueche",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/smartwatches-wearables",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/spielzeug",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/klemmbausteine-bausaetze",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/fitness-training",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/premium-geschenke",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/bestseller",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/neu-eingetroffen",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/selbst-gestalten",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/blitzversand-highlights",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/premium-schmuck",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/schuhe-sneaker",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/sport-outdoor",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/make-up",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/jacken-outdoor",
+        "declaredInThisSitemap": true
+      },
+      {
+        "url": "https://luxestyle.ch/collections/damen-schuhe",
+        "declaredInThisSitemap": true
+      }
+    ]
+  },
+  "currentStructuredShippingConditions": {
+    "source": "Current public homepage JSONLD body script; Firecrawl maxAge0",
+    "checkedAtUTC": "2026-10-27T17:34:46.338Z",
+    "services": [
+      {
+        "hasShippingService": [
+          {
+            "@type": "ShippingService",
+            "name": "Versand Schweiz",
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CH"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "currency": "CHF",
+                  "minValue": 0,
+                  "maxValue": 40.49
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 7,
+                  "currency": "CHF"
+                }
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CH"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "currency": "CHF",
+                  "minValue": 40.5
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 0,
+                  "currency": "CHF"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "ShippingService",
+            "name": "Versand Liechtenstein",
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "LI"
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 14.9,
+                  "currency": "CHF"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "confirmedPublicThreshold": 50,
+    "internalThresholdPreserved": 45,
+    "implementation": false,
+    "conclusion": "Structured CH free threshold40.50 differs from owner publicCHF50; existing two-number template diff remains unapplied review proposal, no real tariffs independently audited here."
+  },
+  "fourCategoryFieldDrafts": "KATEGORIE-FREIGABEDIFFS.json",
+  "nativeSEOProof": {
+    "checkedAtUTC": "2026-10-27T17:31:16.059Z",
+    "validator": "Skipped by tool; executed successfully actual API",
+    "query": "query LuxeVisibilityCollectionSEO { technik: collection(id: \"gid://shopify/Collection/689681006977\") { id handle seo { title description } } wohnen: collection(id: \"gid://shopify/Collection/687522775425\") { id handle seo { title description } } }",
+    "data": {
+      "technik": {
+        "id": "gid://shopify/Collection/689681006977",
+        "handle": "elektronik-technik",
+        "seo": {
+          "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+          "description": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        }
+      },
+      "wohnen": {
+        "id": "gid://shopify/Collection/687522775425",
+        "handle": "wohnen-dekoration",
+        "seo": {
+          "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+          "description": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        }
+      }
+    }
+  },
+  "productWrite": {
+    "productId": "gid://shopify/Product/15412902789505",
+    "changeId": "luxe_product_description_15412902789505_20261027_visibility",
+    "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+    "writeAttempts": 1,
+    "changedFields": [
+      "descriptionHtml"
+    ],
+    "beforeSha256": "ce777169b27401df9ef82e34868d6ba98e3bf5988dc683314fc2e759fd7b195e",
+    "afterSha256": "8f56d49a09516e76742dfe3cd78781faf07a8cd5fbd4d111245bbab105d28a71",
+    "publicReadback": {
+      "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs.js",
+      "readAtUTC": "2026-10-27T17:31:55.363211+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs.js",
+      "bytesRead": 8383,
+      "contentType": "text/javascript; charset=utf-8",
+      "capExceeded": false,
+      "responseSha256": "5e39d684c435a705881227fb6a13943c3a3741317b0a4c84d4d7b6d5de28a900",
+      "responseProductId": "15412902789505",
+      "descriptionExact": true,
+      "afterSha256": "8f56d49a09516e76742dfe3cd78781faf07a8cd5fbd4d111245bbab105d28a71",
+      "variantIds": [
+        "55747847389569"
+      ],
+      "available": true,
+      "productId": "gid://shopify/Product/15412902789505"
+    },
+    "publicHtmlReadback": {
+      "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+      "readAtUTC": "2026-10-27T17:32:03.461742+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+      "bytesRead": 985621,
+      "contentType": "text/html; charset=utf-8",
+      "capExceeded": false,
+      "responseSha256": "6a26b62b56abcd92355cd30a5f2215e39abd51ddb0d2d937acd015ded2e2914b",
+      "completeDocument": true,
+      "newOpeningInNonScriptText": true,
+      "headlineInNonScriptText": true,
+      "productId": "gid://shopify/Product/15412902789505",
+      "productIdBinding": "Exact native product URL; same-base public JSON independently returned exact native product ID. HTML response and visible opening separately read."
+    }
+  },
+  "ringSourceBlocker": {
+    "productId": "gid://shopify/Product/15412902855041",
+    "state": "SOURCE_MAPPING_BLOCKER_NO_WRITE",
+    "reason": "Zwei deutlich unterschiedliche Formen (Ring mit rundem hellem Zentrum und Blütenbesatz; breiter durchbrochener Blüten-/Rankenring) in Originalbildern. Native Optionen nur Variante1/2; genaue Bild-/Ausführungszuordnung unbekannt. Kein neutraler materialgenauer Haupttext für beide als sicher zugeordnet freigegeben.",
+    "sourceImageViewsActuallyViewed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55747847815553",
+        "title": "Variante 1",
+        "sku": "CJLX291587201AZ"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55747847848321",
+        "title": "Variante 2",
+        "sku": "CJLX291587202BY"
+      }
+    ],
+    "unsupportedClaimsNotRepeated": [
+      "Mondstein echt",
+      "Metalllegierung",
+      "3g",
+      "Ringgrösse/Passform",
+      "Lieferzeit10–20Werktage"
+    ],
+    "changes": 0,
+    "nextStep": "CJ-Varianten anhand tatsächlicher SKUs und Original-Mapping read-only zuordnen; erst danach Beschreibung/Grössenhilfe neu entwerfen. Keine Optionen selbst umbenennen."
+  },
+  "codeValidation": {
+    "preparedAtUTC": "2026-10-27T17:28:53.966149+00:00",
+    "mode": "local_review_draft_only",
+    "liveChanges": false,
+    "deployed": false,
+    "networkScansByTests": 0,
+    "node": "v24.19.0",
+    "baseline": {
+      "exitCode": 0,
+      "summary": "73 checks passed"
+    },
+    "updated": {
+      "exitCode": 0,
+      "summary": "88 checks passed"
+    },
+    "syntaxChecks": [
+      {
+        "file": "after/seo_landing_preflight.mjs",
+        "exitCode": 0
+      },
+      {
+        "file": "after/seo_landing_preflight_test.mjs",
+        "exitCode": 0
+      }
+    ],
+    "vendorMainGitBlob": "63105713ade2d626e6eacc9ea526defc6b1f766d",
+    "files": {
+      "seo_landing_preflight.mjs": {
+        "beforeSha256": "0756cea042c665ef4362c0ff8f89097545ebba786dcbae39eb63db6a8ff14719",
+        "afterSha256": "bda649023b396f049c4bfdcf5111596bfe0273ac57b0365f7c92bd747a0faffd",
+        "originalPreserved": true,
+        "changed": true
+      },
+      "seo_landing_preflight_test.mjs": {
+        "beforeSha256": "caed4d77bf75b647a395ab9c2aaee7bb3d34872090b4c39b90ca7024638d8263",
+        "afterSha256": "6d6a4ead45e6302fc66c8e16fd26460974d2db88cbc1f6f046785b24732d4ce0",
+        "originalPreserved": true,
+        "changed": true
+      },
+      "vendor/url_status.mjs": {
+        "beforeSha256": "b1548ac95d83cc649c9532c6fe878a7a15b181d8d9c75fa59fac14bf0644f9e0",
+        "afterSha256": "b1548ac95d83cc649c9532c6fe878a7a15b181d8d9c75fa59fac14bf0644f9e0",
+        "originalPreserved": true,
+        "changed": false
+      },
+      "vendor/SOURCE.md": {
+        "beforeSha256": "b953077dde6adc3281e9afa2ce90ab5c89a44236abcaf9a617e85716447cafea",
+        "afterSha256": "b953077dde6adc3281e9afa2ce90ab5c89a44236abcaf9a617e85716447cafea",
+        "originalPreserved": true,
+        "changed": false
+      }
+    },
+    "unchangedScope": [
+      "MAX_URLS=6",
+      "LuxeStyle HTTPS product/collection targets only",
+      "manual redirects",
+      "bounded status retries",
+      "Auth/Quota/transport unknown",
+      "canonical parser",
+      "robots metadata",
+      "X-Robots raw field treatment",
+      "googleIndexStatus always unknown",
+      "no discovery or write connector"
+    ]
+  },
+  "independentCodeReview": {
+    "checkedAtUTC": "2026-10-27T17:29:19.099Z",
+    "status": "PASS_WITH_DOCUMENTED_CONSERVATIVE_SCANNER_SCOPE",
+    "manualCases": [
+      {
+        "name": "attribute-close",
+        "pass": true,
+        "title": "Reale Technik",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "mixed-case-title",
+        "pass": true,
+        "title": "Technik & Audio",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "title-in-script-after-real",
+        "pass": true,
+        "title": "Real",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "inert-before-real",
+        "pass": true,
+        "title": "Active",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "comment-in-title-text",
+        "pass": true,
+        "title": "Visible <!-- comment-like title text -->",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "noscript-after-real",
+        "pass": true,
+        "title": "Real",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "head-closed-before-title",
+        "pass": true,
+        "title": null,
+        "titleCount": 0,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "implicit-head-title",
+        "pass": true,
+        "title": "Implicit",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "literal-end-title-prefix",
+        "pass": true,
+        "title": "Has </titlex> literal",
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      },
+      {
+        "name": "empty-only",
+        "pass": true,
+        "title": null,
+        "titleCount": 1,
+        "nonTitleFieldsIdentical": true
+      }
+    ],
+    "headerRegressionCases": 6,
+    "liveWrites": 0,
+    "networkReads": 0,
+    "assertions": "10 title cases, all preexisting non-title result fields unchanged, deterministic repeat, 6 header cases unchanged. No full-browser HTML conformance claimed."
+  },
+  "independentProductReview": {
+    "checkedAtUTC": "2026-10-27T17:30:38.959522+00:00",
+    "productId": "gid://shopify/Product/15412902789505",
+    "reviewState": "PASS_REQUIRES_FRESH_ROOT_SOURCE_AND_NATIVE_PUBLIC_READBACK",
+    "beforeSha256": "ce777169b27401df9ef82e34868d6ba98e3bf5988dc683314fc2e759fd7b195e",
+    "afterSha256": "8f56d49a09516e76742dfe3cd78781faf07a8cd5fbd4d111245bbab105d28a71",
+    "allSevenImagesIndependentlyActuallyViewed": true,
+    "imageIndices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "factsChecked": [
+      "Offset square frames, faceted dark-blue-appearing centre and small pale circular decorative accent visible consistently across seven images.",
+      "Exactly one current native variant label Silber; body correctly treats it as an option label, not silver purity or alloy.",
+      "Styling paragraph editorial suggestion, not compatibility, comfort or performance guarantee.",
+      "All three preexisting category URLs retained; five link-health proofs from preparer read.",
+      "Unverified dimensions, gemstones, weight, comfort, material, allergy protection and delivery claims absent."
+    ],
+    "sourceObjectDescriptionMatchesBefore": true,
+    "onlyPreparedMutationFields": [
+      "id",
+      "descriptionHtml"
+    ],
+    "nativeSnapshotFreshness": "2026-10-27T17:27:05.845827+00:00; root must fetch again immediately before write",
+    "noLiveWriteByReviewer": true,
+    "limitations": [
+      "No supplier certificate or independent physical measurement read.",
+      "Not a social, safety, material or rights approval.",
+      "Does not validate any untouched High-End title wording."
+    ]
+  },
+  "worklist": {
+    "confirmed": 16,
+    "todayConfirmed": 14,
+    "events": 22,
+    "prior20EventsUnchanged": true,
+    "summary": {
+      "version": "text-worklist-1.1.0",
+      "shop": "luxestyle.ch",
+      "sourceRows": 56630,
+      "states": {
+        "CONFIRMED_LIVE_PREVIOUSLY_READ_BACK": 16,
+        "NEEDS_QUALITY_REVIEW": 5510,
+        "NEEDS_SOURCE_OR_IDENTITY_REVIEW": 205,
+        "NEEDS_SUBSTANTIVE_TEXT_REVIEW": 50899
+      },
+      "events": 22,
+      "ownApiOrShopWritesByThisTool": 0,
+      "meaning": "Worklist routes and previously confirmed external receipts, not new descriptions or current live facts."
+    },
+    "notPublicationLedger": true
+  },
+  "limitations": [
+    "Nine landing pages are a sample, not whole site proof",
+    "792 declared unique collection URLs not a count of indexed/valid/useful collection pages",
+    "HTTP200/roothead/canonical/sitemap membership do not establish Google indexing/rankings",
+    "No Google-selected canonical, keyword/search-demand/CTR/traffic/backlink/CWV measurement",
+    "MAIN template shipping source last checked26Oct; today public structured contradiction freshly reproduced",
+    "Metrics/flow reused from one earlier daily read; no repeat analytics",
+    "No paid ads, no rank or sales promise"
+  ]
+}
