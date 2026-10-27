@@ -22,6 +22,11 @@ ist('140x183cm', groesseNormal('140x183cm'), '140 × 183 cm');
 ist('140*244', groesseNormal('140*244'), '140 × 244 cm');
 ist('30,5x20', groesseNormal('30,5x20'), '30.5 × 20 cm');
 ist('XL bleibt', groesseNormal('xl'), 'XL');
+ist('36 To 37 → 36–37', groesseNormal('36 To 37'), '36–37');
+ist('36to37 ohne Leerzeichen ebenfalls', groesseNormal('36to37'), '36–37');
+ist('Wort statt Zahl bleibt (kein Raten)', groesseNormal('Tomato'), 'Tomato');
+ist('7.5 To 8 mit Halbgrösse', groesseNormal('7,5 To 8'), '7.5–8');
+ist('Zahl allein bleibt', groesseNormal('38'), '38');
 ist('One Size', groesseNormal('One Size'), 'Einheitsgrösse');
 ist('Gegenprobe: Freitext bleibt', groesseNormal('Für Hunde bis 10 kg'), 'Für Hunde bis 10 kg');
 
