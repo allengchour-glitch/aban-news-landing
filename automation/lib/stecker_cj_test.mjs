@@ -76,5 +76,8 @@ ist('leere Eingaben', steckerUrteil([], {}).draft, false);
     [true, false, false, true, false, false]);
 }
 
+// S02 (Endprüfung 27.10.2026): «BR» allein ist das Kürzel für Braun/Brasilien und kein Stecker, nur MIT Steckerwort («BR Plug»); der Schutz ist die Trennung der beiden Mengen LAENDER / LAENDER_MIT_STECKERWORT
+ist('S02 «BR» allein ist kein Stecker, «BR Plug» schon', [fremdSteckerKey('Black-BR'), fremdSteckerKey('BR'), fremdSteckerKey('Black-BR Plug')], [false, false, true]);
+
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

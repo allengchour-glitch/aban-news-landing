@@ -1105,6 +1105,18 @@ ist('Mutation: productSet mit ProductSetInput, optionalem identifier, synchron',
 ist('Mutation: liest userErrors und Medienstatus zurück (nicht dem Schreiben glauben)', [/userErrors \{ field message code \}/.test(PRODUCT_SET_MUTATION), /media\(first: 100\) \{ nodes \{ id status \} \}/.test(PRODUCT_SET_MUTATION)], [true, true]);
 ist('Mutation: Klammern ausgeglichen', [...PRODUCT_SET_MUTATION].reduce((n, c) => n + (c === '{' ? 1 : c === '}' ? -1 : 0), 0), 0);
 
+// ───────────────────────── Endprüfung 27.10.2026: Lücken der Mutationsprobe (jede Prüfung ist rot, wenn ihr Wort aus der Liste fällt) ─────────────────────────
+// P09: die Mehrzahl «babies» (Foto-Requisiten, Strampler) ist Kinderware; «babys?» allein erkennt sie nicht
+ist('P09 «Babies» (Mehrzahl) im Namen gesperrt', kinderWort('Cute Babies Photo Props'), 'babies');
+ist('P09 Gegenprobe: die Farbe «Baby Pink» und «Baby\'s Breath» bleiben frei', [kinderWort('Baby Pink Hoodie Women'), kinderWort("Baby's Breath Dried Flowers")], [null, null]);
+// P28: «Oximeter» ist allein ein Medizinprodukt (nicht erst mit «SpO2» oder «Blood Oxygen»)
+ist('P28 Oximeter allein gesperrt', zusatzSperrwort('Fingertip Oximeter Monitor SpO2'), 'oximeter');
+ist('P28 Oximeter ohne weiteres Merkmal ebenfalls gesperrt', zusatzSperrwort('Fingertip Oximeter'), 'oximeter');
+// P29: Anti-Bark-Halsband (Stromschlag-/Ultraschall-Erziehungsgerät) ist heikle Ware
+ist('P29 Anti-Bark-Halsband gesperrt', zusatzSperrwort('Anti Bark Collar for Dogs'), 'anti bark collar');
+// P30: «infant» im Fliesstext des Datenblatts weist auf Kinderware hin
+ist('P30 «infant» im Datenblatt-Text gesperrt', kinderImText('Soft cotton for infant skin'), 'infant');
+
 // ───────────────────────── Reihentest über alle echten Datenblätter (nur auf Wunsch) ─────────────────────────
 const CACHE = process.env.GRIND_PLAN_CACHE;
 if (CACHE && existsSync(CACHE)) {

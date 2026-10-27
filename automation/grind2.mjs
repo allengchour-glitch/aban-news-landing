@@ -50,7 +50,7 @@
  *
  * Dieses Modul exportiert seine reinen Funktionen (getestet in grind2_test.mjs); der Lauf `lauf(cfg, io)` nimmt fetch/warte/jetzt von aussen (simuliertes Netz).
  */
-import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync, statSync, readdirSync, openSync, writeSync, closeSync, unlinkSync } from 'node:fs';
+import { existsSync, readFileSync, appendFileSync, mkdirSync, writeFileSync, statSync, readdirSync, openSync, writeSync, closeSync, unlinkSync, renameSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -1102,8 +1102,14 @@ const STATUS_SETZEN = `mutation($p:ProductUpdateInput!){ productUpdate(product:$
 const VEROEFFENTLICHEN = `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id, input:$p){ userErrors{ field message } } }`;
 /** Status frisch lesen: eine Rücknahme auf DRAFT gilt nur, wenn der Shop DRAFT zurückliest (keine userErrors ist kein Beweis). */
 export const STATUS_LESEN = `query($id:ID!){ product(id:$id){ id status } }`;
-/** Aufräumen nach einem Absturz zwischen ACTIVE und publishablePublish: aktive Produkte mit der Rücknahme-Marke grind2 und ohne veröffentlichten Kanal. */
-export const AKTIV_OHNE_KANAL = `query{ products(first:50, query:"tag:grind2 status:active"){ nodes{ id handle status tags resourcePublicationsV2(first:20, onlyPublished:true){ nodes{ isPublished } } } } }`;
+/**
+ * Aufräumen nach einem Absturz zwischen ACTIVE und publishablePublish: aktive Produkte mit der Rücknahme-Marke grind2 und ohne veröffentlichten Kanal.
+ * Das Tag grind2 bleibt auf veröffentlichten Produkten dauerhaft stehen (kein tagsRemove). Darum NEUESTE ZUERST (UPDATED_AT, absteigend: ein frischer Absturz-Rest steht vorn) UND mit Seitenwechsel:
+ * die Standardsortierung ist ID aufsteigend, ab 50 aktiven Grind-Produkten läge ein Rest sonst hinter der Grenze und würde nie zurückgenommen (Endprüfung 27.10.2026).
+ */
+export const AKTIV_OHNE_KANAL = `query($after:String){ products(first:50, after:$after, query:"tag:grind2 status:active", sortKey:UPDATED_AT, reverse:true){ nodes{ id handle status tags resourcePublicationsV2(first:20, onlyPublished:true){ nodes{ isPublished } } } pageInfo{ hasNextPage endCursor } } }`;
+/** Höchstens so viele Seiten (je 50 Produkte) liest das Aufräumen; liegt danach noch eine weitere vor, meldet der Lauf es als Hinweis (nie still). */
+export const AKTIV_OHNE_KANAL_SEITEN = 20;
 /** Shopify-Antworten, die sicher NICHT bearbeitet wurden (Drossel): eine Wiederholung ist gefahrlos. */
 export const SHOPIFY_DROSSEL_RE = /GraphQL: HTTP 429|throttled|exceeded.*cost|rate limit/i;
 /** Fehler, bei denen die Anfrage angekommen sein KANN (Netz, 5xx, unlesbare Antwort): vor jeder Wiederholung erst nachsehen. */
@@ -1134,12 +1140,21 @@ const frischGenug = (p, stunden, jetzt) => { try { return jetzt - statSync(p).mt
  * Ohne Feld `herz` (Sperre aus der Zeit davor) zählt `seit`.
  */
 export const SPERRE_HERZ_MAX_MS = 15 * 60 * 1000, SPERRE_HERZ_INTERVALL_MS = 60 * 1000;
-export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = SPERRE_HERZ_MAX_MS) {
+/** Synchrone Pause (die Sperre wird synchron geholt): Atomics.wait auf einem eigenen Puffer, ohne Last und ohne Zeitgeber. */
+const kurzPause = ms => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch { /* ohne Pause weiter: schlimmstenfalls ein Versuch weniger */ } };
+export const SPERRE_NACHLESEN_MS = 50;
+/**
+ * `pause` ist austauschbar, damit der Test den Zeitpunkt des zweiten Lesens bestimmt. Eine UNLESBARE Sperrdatei (leer, halb geschrieben) zählt erst nach einem zweiten Lesen
+ * nach SPERRE_NACHLESEN_MS als Überrest: wer gerade schreibt, hat sie für einen Augenblick leer gesehen (gemessen 27.10.2026: 214 618 unlesbare von 417 180 Lesungen bei nicht atomarem Schreiben).
+ */
+export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = SPERRE_HERZ_MAX_MS, pause = kurzPause) {
+  const lesen = () => { try { return JSON.parse(readFileSync(pfad, 'utf8')); } catch { return null; } };
   for (let versuch = 0; versuch < 2; versuch++) {
     try { const fd = openSync(pfad, 'wx'); writeSync(fd, JSON.stringify({ pid: process.pid, seit: jetzt, herz: jetzt })); closeSync(fd); return true; }
     catch (e) {
       if (e.code !== 'EEXIST') throw e;
-      let alt = null; try { alt = JSON.parse(readFileSync(pfad, 'utf8')); } catch { /* unlesbar = Überrest */ }
+      let alt = lesen();
+      if (!alt) { pause(SPERRE_NACHLESEN_MS); alt = lesen(); }    // unlesbar: erst nach einem zweiten Versuch ein Überrest
       const letzter = alt ? Math.max(Number(alt.herz) || 0, Number(alt.seit) || 0) : 0;
       if (alt && jetzt - letzter <= maxAlterMs) return false;
       try { unlinkSync(pfad); } catch { /* ein anderer war schneller */ }
@@ -1147,14 +1162,19 @@ export function sperreHolen(pfad, jetzt = Date.now(), maxAlterMs = SPERRE_HERZ_M
   }
   return false;
 }
-/** Herzschlag: der Besitzer (dieser Prozess) schreibt `herz` neu. false, wenn die Sperre ihm nicht (mehr) gehört. */
+/**
+ * Herzschlag: der Besitzer (dieser Prozess) schreibt `herz` neu. false, wenn die Sperre ihm nicht (mehr) gehört.
+ * ATOMAR: in eine Temp-Datei neben der Sperre schreiben und darüber umbenennen (rename ersetzt in einem Schritt), nie die Sperre selbst abschneiden — ein Leser sähe sonst eine leere Datei und löschte die lebende Sperre.
+ */
 export function sperreHerz(pfad, jetzt = Date.now()) {
+  const tmp = `${pfad}.${process.pid}.tmp`;
   try {
     const alt = JSON.parse(readFileSync(pfad, 'utf8'));
     if (!alt || alt.pid !== process.pid) return false;
-    writeFileSync(pfad, JSON.stringify({ ...alt, herz: jetzt }));
+    writeFileSync(tmp, JSON.stringify({ ...alt, herz: jetzt }));
+    renameSync(tmp, pfad);
     return true;
-  } catch { return false; }
+  } catch { try { unlinkSync(tmp); } catch { /* war nie da */ } return false; }
 }
 export async function lauf(cfg, io = {}) {
   schutzPruefen(cfg, { freigabe: existsSync(cfg.pfade.freigabeDatei) });
@@ -1793,11 +1813,25 @@ async function laufOhneSperre(cfg, io = {}) {
    * liegen — bis publish_guard.mjs (Shop Guards, montags, LIVE=1 APPROVE_PUBLISH=1) es ohne Nachprüfung in alle Kanäle zöge. Darum: jedes aktive Produkt mit der Marke grind2 und ohne veröffentlichten Kanal
    * geht beim nächsten LIVE-Lauf zurück auf DRAFT (bestätigt durch Zurücklesen). Nur lesen schlägt nie fehl: scheitert die Abfrage, bricht der Lauf ab (kein Schreiben ohne dieses Netz).
    * ACHTUNG Besitzer: ein von Hand auf ACTIVE gesetztes grind2-Produkt OHNE Kanal wird ebenfalls zurückgenommen — erst Kanäle setzen, dann aktivieren.
+   * Gelesen wird NEUESTE ZUERST und seitenweise (bis AKTIV_OHNE_KANAL_SEITEN × 50 Produkte); erst danach wird gefiltert und geschrieben, damit die Rücknahmen die Seitenfolge nicht verschieben.
+   * Fehlt `pageInfo` in der Antwort, endet die Schleife nach der ersten Seite. Liegt nach der letzten erlaubten Seite noch eine weitere vor, steht das als Hinweis im Bericht (nie still).
    */
   async function aktivOhneKanalZurueck() {
-    const d = await shop(AKTIV_OHNE_KANAL, {});
-    if (!Array.isArray(d?.products?.nodes)) throw new Error('WIEDERAUFNAHME: Antwort ohne products');
-    const liste = d.products.nodes.filter(p => p.status === 'ACTIVE' && (p.tags || []).includes('grind2') && !(p.resourcePublicationsV2?.nodes || []).some(n => n.isPublished));
+    const alle = [];
+    let after = null, seiten = 0, offen = '';
+    for (;;) {
+      const d = await shop(AKTIV_OHNE_KANAL, after ? { after } : {});
+      if (!Array.isArray(d?.products?.nodes)) throw new Error('WIEDERAUFNAHME: Antwort ohne products');
+      alle.push(...d.products.nodes);
+      seiten++;
+      const pi = d.products.pageInfo;
+      if (!pi?.hasNextPage) break;
+      if (!pi.endCursor || pi.endCursor === after) { offen = 'der Seitenwechsel liefert keinen neuen Cursor'; break; }
+      if (seiten >= AKTIV_OHNE_KANAL_SEITEN) { offen = `nach ${seiten} Seiten (${alle.length} Produkte) liegen noch weitere aktive Produkte mit der Marke grind2 vor`; break; }
+      after = pi.endCursor;
+    }
+    if (offen) hinweis(`Aufräumen unvollständig: ${offen}; die ältesten wurden nicht auf einen fehlenden Kanal geprüft (neueste zuerst gelesen)`);
+    const liste = alle.filter(p => p.status === 'ACTIVE' && (p.tags || []).includes('grind2') && !(p.resourcePublicationsV2?.nodes || []).some(n => n.isPublished));
     for (const p of liste) {
       hinweis(`${p.handle}: ACTIVE ohne Kanal mit Marke grind2 (Absturz zwischen ACTIVE und Veröffentlichen?) — wird auf DRAFT zurückgenommen`);
       zaehl('AUFGERAEUMT');

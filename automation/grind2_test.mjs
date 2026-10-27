@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
+import { spawn } from 'node:child_process';
 import {
   EXIT, KOSTEN, konfigAus, schutzPruefen, bedarfAus, schreibZaehlerAusLedger, baumAbflachen, cjPfadVertraut, cjQuellenFuer, listeUrl, quellenSchluessel,
   sperrwort, vorfilter, rangiere, vorfilterListe, verteile, titelBereinigen, titelPruefen, uebersetzungBrauchbar, TITEL_AUFTRAG, LABEL_AUFTRAG,
@@ -2565,6 +2566,214 @@ const jetztFest = Date.UTC(2026, 9, 27, 12);
       ['Kids Smart Watch', 'Infant Teether Silicone', 'Toddler Walking Shoes', 'Newborn Photo Props', 'Pacifier Clip Chain'].map(n => /^Kinderware/.test(sperrwort(n) ?? '')).concat(['Brass Knuckles Keychain', 'Herb Grinder Metal', 'Mini Hidden Spy Camera Pen'].map(n => /^heikel/.test(sperrwort(n) ?? ''))), [true, true, true, true, true, true, true, true]);
     ist('sperrwort(): Gegenproben (Farbe «Baby Pink», «Baby\'s Breath», Kaffeemühle) bleiben frei', ['Baby Pink Hoodie Women', "Baby's Breath Dried Flowers", 'Coffee Grinder Electric Burr Mill', 'Smart Watch Blood Oxygen Heart Rate'].map(n => sperrwort(n)), [null, null, null, null]);
     const W = welt(standardSz(), {}); void W; W.weg();
+  }
+}
+
+// ═══════════════════════════ ENDPRÜFUNG 27.10.2026: die Auflagen (1 Aufräumen mit Seitenwechsel, 2 Lückenprüfungen aus der Mutationsprobe, 3 Sperrdatei atomar) ═══════════════════════════
+// Jede Prüfung lief gegen ihren Mutanten rot (Mutationsprobe in der Übergabe); die Stellen stehen am Ende jeder Gruppe.
+{
+  const gqlVarsEP = init => { try { return JSON.parse(init.body).variables || {}; } catch { return {}; } };
+
+  // ── Auflage 1: AKTIV_OHNE_KANAL liest seitenweise und neueste zuerst. Das Tag grind2 bleibt auf veröffentlichten Produkten stehen: ab 50 aktiven Grind-Produkten
+  //    lag ein frischer Absturz-Rest (ACTIVE ohne Kanal) hinter der Grenze der ersten Seite und wurde nie zurückgenommen. Der Simulator hielt `first` nicht ein und zeigte das nicht.
+  {
+    ist('AKTIV_OHNE_KANAL: Variable $after, 50 je Seite, neueste zuerst (UPDATED_AT, absteigend) und pageInfo', [/^query\(\$after:String\)/.test(GM.AKTIV_OHNE_KANAL), /products\(first:50, after:\$after,/.test(GM.AKTIV_OHNE_KANAL), /sortKey:UPDATED_AT, reverse:true/.test(GM.AKTIV_OHNE_KANAL), /pageInfo\{ hasNextPage endCursor \}/.test(GM.AKTIV_OHNE_KANAL), GM.AKTIV_OHNE_KANAL_SEITEN], [true, true, true, true, 20]);
+
+    // Der Eingabesatz eines echten Plans, damit die Seeds im simulierten Shop vollständig sind
+    const Wp = welt(standardSz(), { ZIELE: 'webcams', LIMIT: '1' }); await lauf(Wp.cfg, Wp.io);
+    const eingabe0 = klon(JSON.parse(lesen(join(Wp.cfg.pfade.planDir, '2000000000000000001.json'))).plan.eingabe); Wp.weg();
+
+    /** n aktive grind2-Produkte im simulierten Shop. Nummer 1 = das älteste (kleinste ID, zuletzt aktualisiert = Nummer n). ohneKanal = Nummern ohne veröffentlichten Kanal. */
+    const aktive = (n, ohneKanal, extra = {}) => {
+      const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+      const stand = new Map();
+      for (let i = 1; i <= n; i++) {
+        const id = `gid://shopify/Product/${100 + i}`;
+        W.shop.produkte.set(id, { input: { ...eingabe0, handle: `seed-${i}`, tags: ['grind2', 'cj-real'] }, status: 'ACTIVE', pubs: ohneKanal.includes(i) ? [] : ['gid://P1'] });
+        stand.set(id, i);
+      }
+      W.shop.n = 100000;
+      // der Simulator hält first/after ein und sortiert nach UPDATED_AT absteigend, wenn die Abfrage es verlangt (sonst Standard: ID aufsteigend = Einfügereihenfolge)
+      const aufrufe = [];
+      mit(W, async (u, init) => {
+        if (!(istGql(u) && gqlText(init) === GM.AKTIV_OHNE_KANAL)) return undefined;
+        const q = gqlText(init), v = gqlVarsEP(init);
+        const first = Number((q.match(/products\(first:(\d+)/) || [])[1]);
+        const neuesteZuerst = /sortKey:UPDATED_AT/.test(q) && /reverse:true/.test(q);
+        const liste = [...W.shop.produkte.entries()].filter(([, st]) => st.status === 'ACTIVE' && st.input.tags.includes('grind2'));
+        if (neuesteZuerst) liste.sort((a, b) => stand.get(b[0]) - stand.get(a[0]));
+        const ab = v.after ? Number(String(v.after).replace('c', '')) : 0;
+        const seite = liste.slice(ab, ab + first);
+        aufrufe.push({ after: v.after ?? null, n: seite.length });
+        if (extra.seitenwechsel) return antwort({ data: { products: { nodes: seite.map(([id, st]) => ({ id, handle: st.input.handle, status: st.status, tags: [...st.input.tags], resourcePublicationsV2: { nodes: (st.pubs || []).map(() => ({ isPublished: true })) } })), pageInfo: extra.seitenwechsel(ab, first, liste.length) } } });
+        return antwort({ data: { products: { nodes: seite.map(([id, st]) => ({ id, handle: st.input.handle, status: st.status, tags: [...st.input.tags], resourcePublicationsV2: { nodes: (st.pubs || []).map(() => ({ isPublished: true })) } })), pageInfo: { hasNextPage: ab + first < liste.length, endCursor: 'c' + (ab + first) } } } });
+      });
+      return { W, aufrufe, status: nr => W.shop.produkte.get(`gid://shopify/Product/${100 + nr}`).status };
+    };
+
+    // 60 aktive, 59 mit Kanal, das JÜNGSTE (Nummer 60) ohne: in ID-Reihenfolge läge es auf Platz 60 hinter der ersten Seite (vorher: nie gefunden)
+    {
+      const { W, aufrufe, status } = aktive(60, [60]);
+      const r = await lauf(W.cfg, W.io);
+      ist('Aufräumen: bei 60 aktiven Grind-Produkten wird das jüngste ohne Kanal gefunden und zurückgenommen (genau eines), die 59 mit Kanal bleiben ACTIVE', [r.bericht.zaehl.AUFGERAEUMT, status(60), status(59), status(1), W.aus('status').length, r.exit], [1, 'DRAFT', 'ACTIVE', 'ACTIVE', 1, 0]);
+      ist('Aufräumen: zwei Seiten (50 + 10), die zweite mit dem Cursor der ersten; danach geht der Lauf normal weiter (die Webcam wird angelegt)', [aufrufe, r.bericht.zaehl.GESCHRIEBEN], [[{ after: null, n: 50 }, { after: 'c50', n: 10 }], 1]);
+      ist('Aufräumen: ein vollständiges Lesen ist kein Hinweis «unvollständig»', r.bericht.hinweise.some(h => /Aufräumen unvollständig/.test(h)), false);
+      W.weg();
+    }
+    // 60 aktive, das ÄLTESTE (Nummer 1) ohne Kanal: neueste zuerst steht es auf Platz 60 und liegt nur auf der zweiten Seite
+    {
+      const { W, aufrufe, status } = aktive(60, [1]);
+      const r = await lauf(W.cfg, W.io);
+      ist('Aufräumen: das älteste ohne Kanal liegt auf Seite 2 und wird nur MIT Seitenwechsel gefunden', [r.bericht.zaehl.AUFGERAEUMT, status(1), status(60), aufrufe.length], [1, 'DRAFT', 'ACTIVE', 2]);
+      W.weg();
+    }
+    // genau 50 aktive: eine Seite, kein zweiter Aufruf
+    {
+      const { W, aufrufe } = aktive(50, []);
+      await lauf(W.cfg, W.io);
+      ist('Aufräumen: genau 50 aktive = eine Seite, kein Seitenwechsel, nichts zurückgenommen', [aufrufe, W.aus('status').length], [[{ after: null, n: 50 }], 0]);
+      W.weg();
+    }
+    // 1 050 aktive (21 Seiten): das jüngste ohne Kanal steht auf Seite 1 und wird gefunden; nach 20 Seiten bleibt eine Seite ungelesen und das steht im Bericht
+    {
+      const { W, aufrufe, status } = aktive(1050, [1050]);
+      const r = await lauf(W.cfg, W.io);
+      ist('Aufräumen: bei 1 050 aktiven wird das jüngste ohne Kanal gefunden (neueste zuerst), nach höchstens 20 Seiten ist Schluss', [r.bericht.zaehl.AUFGERAEUMT, status(1050), aufrufe.length, aufrufe.reduce((a, x) => a + x.n, 0)], [1, 'DRAFT', 20, 1000]);
+      ist('Aufräumen: die ungelesene Rest-Seite steht als Hinweis im Bericht (nicht still), der Lauf bricht nicht ab', [r.bericht.hinweise.filter(h => /Aufräumen unvollständig: nach 20 Seiten \(1000 Produkte\) liegen noch weitere/.test(h)).length, r.exit, r.bericht.zaehl.GESCHRIEBEN], [1, 0, 1]);
+      W.weg();
+    }
+    // 1 050 aktive, das älteste ohne Kanal liegt hinter der Seitengrenze: es bleibt liegen, aber der Lauf SAGT es
+    {
+      const { W, aufrufe } = aktive(1050, [1]);
+      const r = await lauf(W.cfg, W.io);
+      ist('Aufräumen: ein Rest hinter 20 Seiten wird nicht gefunden, aber als «unvollständig» gemeldet', [r.bericht.zaehl.AUFGERAEUMT ?? 0, aufrufe.length, r.bericht.hinweise.some(h => /Aufräumen unvollständig/.test(h))], [0, 20, true]);
+      W.weg();
+    }
+    // ein Shop, der hasNextPage meldet und denselben Cursor wiederholt, darf die Schleife nicht festhalten
+    {
+      const { W, aufrufe } = aktive(60, [], { seitenwechsel: () => ({ hasNextPage: true, endCursor: 'immer-gleich' }) });
+      const r = await lauf(W.cfg, W.io);
+      ist('Aufräumen: ein wiederholter Cursor beendet die Schleife nach der zweiten Seite, mit Hinweis', [aufrufe.length, r.bericht.hinweise.some(h => /Aufräumen unvollständig: der Seitenwechsel liefert keinen neuen Cursor/.test(h)), r.exit], [2, true, 0]);
+      W.weg();
+    }
+    // hasNextPage ohne brauchbaren Cursor (fehlt, leer, null): die Schleife endet sofort, mit Hinweis — auch wenn der Cursor «nichts» ist und mit dem Anfangswert (null) verwechselt werden könnte
+    for (const [name, pi] of [['fehlt', { hasNextPage: true }], ['leer', { hasNextPage: true, endCursor: '' }], ['null', { hasNextPage: true, endCursor: null }]]) {
+      const { W, aufrufe } = aktive(60, [], { seitenwechsel: () => pi });
+      const r = await lauf(W.cfg, W.io);
+      ist(`Aufräumen: hasNextPage ohne Cursor (${name}) beendet die Schleife nach einer Seite, mit Hinweis`, [aufrufe.length, r.bericht.hinweise.some(h => /Aufräumen unvollständig: der Seitenwechsel liefert keinen neuen Cursor/.test(h))], [1, true]);
+      W.weg();
+    }
+  }
+
+  // ── Auflage 3: die Sperrdatei wird ATOMAR geschrieben; eine unlesbare Datei gilt erst nach einem zweiten Lesen als Überrest
+  {
+    const dir = mkdtempSync(join(tmpdir(), 'sperre-atomar-')), f = join(dir, 'x.lock'), t0 = Date.now(), MIN = 60 * 1000;
+    // (a) Schreib-Schleife gegen einen LESEPROZESS: kein einziger unlesbarer Zustand (vorher gemessen: 214 618 unlesbare von 417 180 Lesungen)
+    {
+      const stop = join(dir, 'stop');
+      const leser = `import { readFileSync, existsSync } from 'node:fs';
+        const [pfad, stop] = process.argv.slice(1); let gut = 0, schlecht = 0, bereit = false;
+        while (!existsSync(stop)) { for (let i = 0; i < 200; i++) { try { JSON.parse(readFileSync(pfad, 'utf8')); gut++; } catch { schlecht++; } } if (!bereit) { bereit = true; console.log('bereit'); } }
+        console.log(JSON.stringify({ gut, schlecht }));`;
+      sperreHolen(f, t0);
+      const kind = spawn(process.execPath, ['--input-type=module', '-e', leser, f, stop], { stdio: ['ignore', 'pipe', 'inherit'] });
+      let aus = ''; let bereit; const bereitP = new Promise(res => { bereit = res; });
+      kind.stdout.on('data', d => { aus += d; if (/bereit/.test(aus)) bereit(); });
+      const ende = new Promise(res => kind.on('close', res));
+      const frist = setTimeout(() => kind.kill(), 20000);
+      await bereitP;
+      let schlaege = 0, falsch = 0; const bis = Date.now() + 500;
+      while (Date.now() < bis) { if (sperreHerz(f, t0 + (++schlaege))) { /* ok */ } else falsch++; }
+      writeFileSync(stop, '1');
+      await ende; clearTimeout(frist);
+      const m = JSON.parse(aus.trim().split('\n').pop());
+      ist('Sperre atomar: 500 ms Herzschläge gegen einen Leseprozess — der Leser sieht nie eine leere oder halbe Datei, und jeder Herzschlag gelingt', [m.schlecht, m.gut >= 1000, schlaege >= 100, falsch], [0, true, true, 0]);
+      ist('Sperre atomar: nach den Herzschlägen liegt keine Temp-Datei neben der Sperre', readdirSync(dir).filter(x => x !== 'stop').sort(), ['x.lock']);
+      ist('Sperre atomar: der letzte Herzschlag steht in der Datei, die Sperre gehört weiter diesem Prozess', [JSON.parse(readFileSync(f, 'utf8')).herz, JSON.parse(readFileSync(f, 'utf8')).pid], [t0 + schlaege, process.pid]);
+      unlinkSync(f); unlinkSync(stop);
+    }
+    // (b) eine unlesbare Datei, die beim zweiten Versuch lesbar ist: die Sperre BLEIBT (der Schreiber war nur mitten im Schreiben)
+    {
+      const zeiten = [];
+      writeFileSync(f, '');
+      const r = sperreHolen(f, t0, GM.SPERRE_HERZ_MAX_MS, ms => { zeiten.push(ms); writeFileSync(f, JSON.stringify({ pid: 4242, seit: t0, herz: t0 })); });
+      ist('Sperre: eine leere Datei, die beim zweiten Lesen die lebende Sperre eines anderen zeigt, bleibt gehalten (nicht gestohlen), nach einer Pause von 50 ms', [r, zeiten, JSON.parse(readFileSync(f, 'utf8')).pid], [false, [50], 4242]);
+      unlinkSync(f);
+      writeFileSync(f, '{"pid":4242,"se');
+      const r2 = sperreHolen(f, t0, GM.SPERRE_HERZ_MAX_MS, () => writeFileSync(f, JSON.stringify({ pid: 4242, seit: t0, herz: t0 })));
+      ist('Sperre: eine halb geschriebene Datei, die beim zweiten Lesen ganz ist, bleibt gehalten', [r2, JSON.parse(readFileSync(f, 'utf8')).pid], [false, 4242]);
+      unlinkSync(f);
+    }
+    // (c) dauerhaft unlesbar: Überrest, wird übernommen — nach genau einer Pause
+    for (const inhalt of ['', 'kaputt', '{"pid":4242,"se']) {
+      writeFileSync(f, inhalt);
+      let n = 0;
+      const r = sperreHolen(f, t0, GM.SPERRE_HERZ_MAX_MS, () => { n++; });
+      ist(`Sperre: dauerhaft unlesbare Datei (${JSON.stringify(inhalt)}) = Überrest, wird nach einer Pause übernommen`, [r, n, JSON.parse(readFileSync(f, 'utf8')).pid], [true, 1, process.pid]);
+      unlinkSync(f);
+    }
+    // (d) eine lesbare Sperre kostet keine Pause: weder die lebende noch die abgelaufene
+    {
+      let n = 0; const keine = () => { n++; };
+      sperreHolen(f, t0);
+      const lebend = sperreHolen(f, t0 + MIN, GM.SPERRE_HERZ_MAX_MS, keine);
+      const abgelaufen = sperreHolen(f, t0 + 20 * MIN, GM.SPERRE_HERZ_MAX_MS, keine);
+      ist('Sperre: eine lesbare Sperre (lebend oder abgelaufen) wird ohne Pause beurteilt', [lebend, abgelaufen, n], [false, true, 0]);
+      unlinkSync(f);
+    }
+    // (e) die vorgegebene Pause wartet wirklich (synchron, ohne Zeitgeber)
+    {
+      writeFileSync(f, 'kaputt');
+      const a = Date.now(); const r = sperreHolen(f, t0); const dauer = Date.now() - a;
+      ist('Sperre: die vorgegebene Pause vor dem zweiten Lesen dauert mindestens 45 ms und höchstens 2 s', [r, dauer >= 45, dauer < 2000, GM.SPERRE_NACHLESEN_MS], [true, true, true, 50]);
+      unlinkSync(f);
+    }
+    // (f) ein fremder Besitzer: kein Herzschlag, keine Temp-Datei
+    {
+      writeFileSync(f, JSON.stringify({ pid: 1, seit: t0, herz: t0 }));
+      ist('Herzschlag: eine fremde Sperre bleibt unberührt und es entsteht keine Temp-Datei', [sperreHerz(f, t0 + MIN), JSON.parse(readFileSync(f, 'utf8')).herz, readdirSync(dir).sort()], [false, t0, ['x.lock']]);
+      unlinkSync(f);
+    }
+    rmSync(dir, { recursive: true, force: true });
+  }
+
+  // ── Auflage 2: Lückenprüfungen der Mutationsprobe (M06, M29, M37, M62; P09 P28 P29 P30 in grind_plan_test.mjs, S02 in stecker_cj_test.mjs)
+  // M06: zwei verschiedene harte Treffer (Waise per SKU, fremdes ACTIVE per Handle) = Dublette — «some» statt «every» in dublettenUrteil ließe die Waise gewinnen
+  {
+    const mk = produkte => DB.baueIndex({ produkte }, { stand: new Date().toISOString() });
+    const P = (id, status, tags, skus, handle) => ({ id: `gid://shopify/Product/${id}`, handle: handle || `h-${id}`, title: `Titel ${id}`, status, ...(tags ? { tags } : {}), skus });
+    const ix = mk([P(1, 'DRAFT', ['grind2'], ['CJZZ1234567-A']), P(2, 'ACTIVE', undefined, ['ANDERE-1'], 'ziel-handle')]);
+    const k = { productSku: 'CJZZ1234567', variantSkus: ['CJZZ1234567-A'], titel: 'Ziel Handle', handle: 'ziel-handle' };
+    const r = GM.dublettenUrteil(k, ix);
+    ist('M06 Waise (SKU) + fremdes ACTIVE (Handle) = Dublette, nicht Waise', [r.dublette, r.waise], [true, false]);
+    const r2 = GM.dublettenUrteil({ ...k, handle: 'frei-handle' }, ix);
+    ist('M06 Gegenprobe: trifft nur die Waise, ist es eine Waise und keine Dublette', [r2.dublette, r2.waise], [false, true]);
+  }
+  // M29: ein Server, der den Range ignoriert (200 + content-length 30 MB), ist «zu gross»
+  {
+    const R = (status, h) => new Response(null, { status, headers: { 'content-type': 'image/jpeg', ...h } });
+    const f = async (u, init) => init.method === 'HEAD' ? R(200, {}) : R(200, { 'content-length': String(30 * 1048576) });
+    const r = await bilderPruefen(['https://oss-cf.cjdropshipping.com/a.jpg'], { fetch: f });
+    ist('M29 Bildserver ignoriert den Range (200 mit 30 MB) -> zu gross, nicht gut', [r.ok.size, [...r.schlecht.values()].map(x => x.slice(0, 8))], [0, ['zu gross']]);
+  }
+  // M37: productSet antwortet 502, obwohl das Produkt angekommen ist -> kein Abbruch, kein zweites Produkt, GESCHRIEBEN im Ledger
+  {
+    const W = welt(standardSz(), { LIVE: '1', ZIELE: 'webcams', LIMIT: '1' }); frei(W);
+    let n = 0; const echt = W.io.fetch;
+    W.io.fetch = async (u, init = {}) => { const q = istGql(String(u)) ? gqlText(init) : ''; if (q.includes('productSet(')) { n++; const r = await echt(u, init); if (n === 1) return antwort({}, 502); return r; } return echt(u, init); };
+    let fehler = null; try { await lauf(W.cfg, W.io); } catch (e) { fehler = e.message; }
+    ist('M37 productSet HTTP 502 nach der Ankunft: kein Abbruch, genau 1 Produkt, 1 Aufruf, Ledger GESCHRIEBEN', [fehler, W.shop.produkte.size, n, zeilenTypen(W.cfg.pfade.ledger)], [null, 1, 1, ['GESCHRIEBEN']]);
+    W.weg();
+  }
+  // M62: eine gespeicherte Ablehnung (Fracht leer) gilt in LIVE ohne neue Fracht-Messung
+  {
+    const sz = standardSz(); const w0 = webcam(); sz.fracht = { [w0.variants[0].vid]: 'leer', [w0.variants[1].vid]: 'leer' };
+    const W = welt(sz, { ZIELE: 'webcams', LIMIT: '1' });
+    await lauf(W.cfg, W.io);
+    const f1 = W.aus('fracht').length; frei(W);
+    const r = await lauf({ ...W.cfg, live: true }, W.io);
+    ist('M62 Ablehnung aus dem Zwischenspeicher: LIVE misst keine Fracht erneut und überspringt', [r.bericht.zaehl, W.aus('fracht').length], [{ UEBERSPRUNGEN: 1 }, f1]);
+    W.weg();
   }
 }
 
