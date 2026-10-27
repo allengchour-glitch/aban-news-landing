@@ -2,7 +2,7 @@
 // Anlass (26.10.2026, zwei unabhängige Prüfdurchläufe des Nacht-Workflows): Die Schleife entscheidet, was ins Ledger kommt, wann ein Lauf endet und welcher
 // Exitcode den Treiber steuert. Das lässt sich mit den reinen Bibliotheksfunktionen allein nicht prüfen.
 // Jedes Szenario startet das Werkzeug als eigenen Prozess; geprüft werden Exitcode, Ledger-Zeilen und die tatsächlich gesendeten Anfragen.
-import { spawnSync } from 'node:child_process';
+import { spawnSync, spawn } from 'node:child_process';
 import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, mkdirSync, chmodSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -189,6 +189,61 @@ r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, preise: { a: 
 ist('SKU: Euro-Variante 21 % teurer → zurückgestellt, nichts geschrieben', [eng(r), /SKU mehrdeutig/.test(r.L[0]?.g), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0]);
 r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, skus: { a: ['CJYD301744801AZ', 'bogus'] } });
 ist('SKU: CJ-Nummer der Euro-Variante hat nicht die Form der Bestell-Engine → zurückgestellt, nichts geschrieben', [eng(r), /SKU mehrdeutig/.test(r.L[0]?.g), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0]);
+
+// ── 10c) Prüfung 27.10.2026 (zweite Runde): Deckel über parallele Läufer, Standardwert, Trockenlauf-Ledger, Rennfälle, Ledger-Länge, Fehlerserie, Zähler
+// Deckel über PARALLELE Läufer: der Nacht-Workflow startet bis zu 6 Prozesse auf dasselbe Ledger. Gemessen mit der Fassung «Zählung nur beim Start»: 6 × 25 = 150 statt 25.
+function parallelLauf(szenario, { prozesse = 3, env = {} } = {}) {
+  const t = mkdtempSync(join(tmpdir(), 'nachziehen-par-'));
+  const alle = Object.keys(szenario.produkte), je = Math.ceil(alle.length / prozesse);
+  writeFileSync(join(t, 'szenario.json'), JSON.stringify(szenario)); writeFileSync(join(t, 'ledger.txt'), '');
+  writeFileSync(join(t, 'cjtoken.json'), JSON.stringify({ token: 'stub', exp: Date.now() + 864e5 })); mkdirSync(join(t, 'cache'));
+  const lauefe = Array.from({ length: prozesse }, (_, i) => {
+    mkdirSync(join(t, 'plan' + i)); writeFileSync(join(t, `handles${i}.csv`), 'handle;stufe\n' + alle.slice(i * je, (i + 1) * je).map(h => `${h};1`).join('\n') + '\n');
+    return new Promise(fertig => {
+      const k = spawn(process.execPath, ['--import', STUB, WERKZEUG], { cwd: REPO, env: { PATH: `${SHIM}:${process.env.PATH}`, HOME: t, NETZ_SZENARIO: join(t, 'szenario.json'), NETZ_LOG: join(t, `netz${i}.jsonl`),
+        SHOPIFY_SHOP: 'test-shop.myshopify.com', SHOPIFY_CLIENT_ID: 'cid', SHOPIFY_CLIENT_SECRET: 'shpss_' + 'a'.repeat(32), CJ_EMAIL: 'a@b.ch', CJ_API_KEY: 'key', CJ_TOKEN_CACHE: join(t, 'cjtoken.json'),
+        GEMINI_API_KEY: 'stub', GROQ_API_KEY: '', LEDGER: join(t, 'ledger.txt'), PLAN_DIR: join(t, 'plan' + i), CJ_FAKTEN_CACHE: join(t, 'cache'), CJ_PAUSE_MS: '0', CJ_BACKOFF_MS: '0',
+        LIVE: '1', LIMIT: '50', HANDLES_DATEI: join(t, `handles${i}.csv`), ...env } });
+      let aus = ''; k.stdout.on('data', d => { aus += d; }); k.stderr.on('data', d => { aus += d; }); k.on('close', rc => fertig({ rc, aus }));
+    });
+  });
+  return Promise.all(lauefe).then(erg => { const z = readFileSync(join(t, 'ledger.txt'), 'utf8').split('\n').filter(Boolean); rmSync(t, { recursive: true, force: true }); return { erg, zeilen: z }; });
+}
+const VIELE = (n, extra = {}) => ({ produkte: Object.fromEntries(Array.from({ length: n }, (_, i) => ['p' + String(i).padStart(2, '0'), P('einzeln')])), stecker: Object.fromEntries(Array.from({ length: n }, (_, i) => ['p' + String(i).padStart(2, '0'), STECKER])), ...extra });
+{
+  const par = await parallelLauf(VIELE(12), { prozesse: 3, env: { MAX_SKU_SCHREIBEN: '2' } });
+  const n = par.zeilen.filter(z => z.includes(' · SKU_GESETZT · ')).length;
+  ist('Deckel 2 über 3 parallele Läufer auf einem Ledger: höchstens Deckel + Läufer − 1 = 4 (die Fassung «Zählung nur beim Start» schrieb 3 × 2 = 6)', [par.erg.every(e => e.rc === 0), n >= 2, n <= 4], [true, true, true]);
+}
+// Standardwert des Deckels (ohne Umgebungsvariable): 25 je 20 Stunden
+r = lauf(VIELE(27));
+ist('Standard-Deckel 25 (ohne MAX_SKU_SCHREIBEN): 25 gesetzt, die übrigen 2 «vorläufig: SKU-Deckel erreicht (25 in 20 Stunden)»', [r.rc, r.L.filter(x => x.e === 'SKU_GESETZT').length, r.L.filter(x => x.g === 'vorläufig: SKU-Deckel erreicht (25 in 20 Stunden)').length], [0, 25, 2]);
+// Zählfenster: 19 Stunden zählen, 21 Stunden nicht
+{
+  const vor = h => new Date(Date.now() - h * 3600e3).toISOString();
+  r = lauf(VIELE(4), { env: { MAX_SKU_SCHREIBEN: '2' }, ledger: `x1 · ${vor(19)} · SKU_GESETZT · SKU alt → neu\nx2 · ${vor(21)} · SKU_GESETZT · SKU alt → neu\nx3 · ${vor(25)} · SKU_GESETZT · SKU alt → neu\n` });
+  ist('Zählfenster 20 Stunden: die Zeile von vor 19 h zählt, die von vor 21 h und 25 h nicht → genau EIN weiteres Schreiben bei Deckel 2', [r.L.filter(x => x.e === 'SKU_GESETZT').length, r.L.filter(x => /SKU-Deckel erreicht/.test(x.g)).length], [1, 3]);
+}
+// Trockenlauf schreibt nie ins Ledger, auch nicht bei Überspringern (sie sperren sonst 7 bis 14 Tage)
+r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln') }, stecker: { a: ['Black-US', 'Black-CN'], b: ['Black-EU'] } }, { live: false });
+ist('Trockenlauf mit «SKU mehrdeutig» und «CJ führt nur 1 Variante»: Ledger bleibt leer, Bericht zählt SKU_MEHRDEUTIG', [r.rc, r.L.length, /"SKU_MEHRDEUTIG":1/.test(r.out)], [0, 0, true]);
+// SKU_MEHRDEUTIG zählt nur diesen Grund, nicht jeden Überspringer
+r = lauf({ produkte: { a: P('einzeln'), b: P('einzeln') }, stecker: { a: ['Black-US', 'Black-CN'], b: ['Black-EU'] } });
+ist('Zähler SKU_MEHRDEUTIG zählt nur «SKU mehrdeutig» (1), UEBERSPRUNGEN beide (2)', [/"SKU_MEHRDEUTIG":1/.test(r.out), /"UEBERSPRUNGEN":2/.test(r.out)], [true, true]);
+// Fehlerserie: ein Erfolg setzt die Serie zurück (Fehler, Erfolg, Fehler, Fehler bei Grenze 3 → kein Abbruch)
+r = lauf({ ...VIELE(4), sku: { p00: 'usererror', p02: 'usererror', p03: 'usererror' } }, { env: { MAX_FEHLER_FOLGE: '3' } });
+ist('SKU-Schreibfehler: ein Erfolg dazwischen setzt die Serie zurück → Exitcode 0, alle vier verbucht', [r.rc, eng(r)], [0, ['p00:FEHLER', 'p01:SKU_GESETZT', 'p02:FEHLER', 'p03:FEHLER']]);
+// Rennfälle zwischen Plan und Schreiben: nur «vorläufig» (20 Stunden), nie 7 Tage, nie geschrieben
+for (const [modus, text] of [['weg', 'Produkt nicht mehr da'], ['zwei', 'Varianten seit dem Plan verändert'], ['andere', 'SKU seit dem Plan verändert']]) {
+  r = lauf({ produkte: { a: P('einzeln') }, stecker: { a: STECKER }, skuLesen: { a: modus } });
+  ist(`Rennfall «${modus}»: «vorläufig: ${text}», nichts geschrieben`, [eng(r), r.L[0]?.g.startsWith(`vorläufig: ${text}`), art(r, 'SKU_SCHREIBEN').length], [['a:UEBERSPRUNGEN'], true, 0]);
+}
+// Ledger-Zeile: die alte pid steht vollständig drin (UUID-pid plus lange Nummer = 120 Zeichen, nicht auf 100 gekürzt)
+{
+  const uuid = 'A1B2C3D4-0000-4000-8000-123456789ABC', lang = 'CJAB123456-' + 'x'.repeat(63);
+  r = lauf({ produkte: { a: P('einzeln', { pid: uuid }) }, stecker: { a: STECKER }, skus: { a: ['CJYD301744801AZ', lang] } });
+  ist('UUID-pid und 74-stellige Nummer: die Ledger-Zeile nennt beide vollständig', [eng(r), r.L[0]?.g], [['a:SKU_GESETZT'], `SKU CJ-${uuid} → ${lang}`]);
+}
 
 // ── 11) ffmpeg fehlt: sofort Exitcode 1, bevor irgendetwas gesendet wird
 const leer = mkdtempSync(join(tmpdir(), 'kein-ffmpeg-'));

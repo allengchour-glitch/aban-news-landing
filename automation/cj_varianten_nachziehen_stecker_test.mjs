@@ -13,10 +13,16 @@ const cjAntwort = (keyNames, keys, preise) => ({ code: 200, result: true, messag
 const echtesFetch = globalThis.fetch;
 const handles = [];
 // linien: Zahl der Frachtlinien CN→CH, die die nachgebildete Frachtabfrage meldet (0 = nicht versendbar, null = Antwort ohne Liste = unbekannt)
+// linien als Objekt {vid0: 3, vid1: 0}: Linien je Variante (nicht angegebene = 0); `gefragt` sammelt die vids, für die die Fracht abgefragt wurde
+const gefragt = [];
 async function lauf(handle, keyNames, keys, sku = SKU, preise, linien = 3) {
-  handles.push(handle);
-  const fracht = { code: 200, result: true, message: 'Success', data: linien === null ? null : Array.from({ length: linien }, (_, i) => ({ logisticName: 'Test-Post' + i, logisticPrice: 1.5, logisticAging: '10-15' })) };
-  globalThis.fetch = async url => ({ status: 200, json: async () => (/freightCalculate/.test(String(url)) ? fracht : cjAntwort(keyNames, keys, preise)) });
+  handles.push(handle); gefragt.length = 0;
+  const liste = n => ({ code: 200, result: true, message: 'Success', data: n === null ? null : Array.from({ length: n }, (_, i) => ({ logisticName: 'Test-Post' + i, logisticPrice: 1.5, logisticAging: '10-15' })) });
+  globalThis.fetch = async (url, init) => {
+    if (!/freightCalculate/.test(String(url))) return { status: 200, json: async () => cjAntwort(keyNames, keys, preise) };
+    const vid = JSON.parse(init.body).products[0].vid; gefragt.push(vid);
+    return { status: 200, json: async () => liste(typeof linien === 'object' && linien !== null ? (linien[vid] ?? 0) : linien) };
+  };
   try { return await plane({ q: async () => shopProdukt(handle, sku), cj: 'token', handle, tmp: '/tmp' }); } finally { globalThis.fetch = echtesFetch; }
 }
 process.env.MAX_VARIANTEN = '1';   // Zählprobe: ohne Filter meldet plane() «viele CJ-Varianten (n > 1)», mit Filter eine kleinere Zahl bzw. «nur 1 Variante»
@@ -63,6 +69,12 @@ const Q = await lauf('zz-stecker-test-q', 'Color-Electrical outlet', ['Black-US'
 ist('Fracht nicht messbar (Antwort ohne Liste) → nicht schreiben, «Lieferbarkeit unbekannt»', [Q.ergebnis, /^Lieferbarkeit unbekannt/.test(Q.grund)], ['UEBERSPRUNGEN', true]);
 const R = await lauf('zz-stecker-test-r', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, 1);
 ist('Gegenprobe: eine Frachtlinie genügt → schreiben', [R.ergebnis, R.neueSku], ['SKU_NACHZIEHEN', 'CJTEST10001']);
+
+// Der Lieferbeweis gilt der BLEIBENDEN Variante, nicht irgendeiner (Mutant «fracht(cj, vsRoh[0].vid)» überlebte, solange die Attrappe alle vids gleich beantwortete)
+const S = await lauf('zz-stecker-test-s', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, { vid0: 3, vid1: 0 });
+ist('US-Variante hat Linien, die bleibende EU-Variante keine → nicht schreiben; gefragt wurde nur die EU-Variante', [S.ergebnis, /^Lieferbarkeit nicht bewiesen/.test(S.grund), [...gefragt]], ['UEBERSPRUNGEN', true, ['vid1']]);
+const U = await lauf('zz-stecker-test-u', 'Color-Electrical outlet', ['Black-US', 'Black-EU'], SKU, undefined, { vid0: 0, vid1: 3 });
+ist('US-Variante ohne Linie, die bleibende EU-Variante mit Linien → schreiben (vid der EU-Variante)', [U.ergebnis, U.vid, [...gefragt]], ['SKU_NACHZIEHEN', 'vid1', ['vid1']]);
 
 for (const h of handles) { try { rmSync(`/tmp/cj_fakten_cache/${h}.json`); } catch { /* nie geschrieben */ } }
 console.log(`${ok} ok, ${fehl} Fehler`);

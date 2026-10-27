@@ -84,7 +84,7 @@ alle = V('Drill 12V-US', 'Drill 18V-EU');
 unklar('12 V gegen 18 V (Akku) ist KEINE Netzspannung und gehört zur Basis', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'unterscheidet sich nicht nur im Stecker');
 alle = V('White-110-240V US', 'White-220V EU');
 ist('Netzspannung 110–240 V und 220 V fallen weg', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] })?.neueSku, 'CJYD11111112AZ');
-for (const [k, soll] of [['Silver Gray-800W EU', '800w gray silver'], ['Black-Type G', 'black'], ['Plug Type B-White', 'white'], ['Gray -US', 'gray'], ['', ''], [null, ''], ['EU', '']])
+for (const [k, soll] of [['Silver Gray-800W EU', '800w gray silver'], ['Black-Type G', 'black g type'], ['Plug Type B-White', 'b type white'], ['Gray -US', 'gray'], ['', ''], [null, ''], ['EU', '']])
   ist('steckerBasis(' + JSON.stringify(k) + ')', steckerBasis(k), soll);
 
 // ── Zeichensatz der Bestell-Engine (cj_order_engine.py SKU_FORM_B): «+» ist dort nicht erlaubt
@@ -92,6 +92,45 @@ ist('Nummer mit «+» («CJJJJTYS00557-Pink+Blue-2pc») hat die Form, aber nicht
 alle = [farbe(1, 'Pink-US'), farbe(2, 'Pink-EU', 10, 'CJJJJTYS00557-Pink+Blue-2pc')];
 unklar('Euro-Rest mit «+» in der Nummer → nicht schreiben', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'CJ-Nummer');
 ist('Länge: höchstens 80 Zeichen', [istCjVariantennummer('CJABCD12345-' + 'x'.repeat(68)), istCjVariantennummer('CJABCD12345-' + 'x'.repeat(69))], [true, false]);
+
+// ── steckerBasis: Wortlisten festnageln (Prüfer 27.10.2026: 4 der 30 echten Kandidaten brauchen genau diese Wörter)
+const gleich = (a, b) => ist(`gleiche Basis: «${a}» ≈ «${b}»`, steckerBasis(a) === steckerBasis(b), true);
+const anders = (a, b) => ist(`verschiedene Basis: «${a}» ≠ «${b}»`, steckerBasis(a) === steckerBasis(b), false);
+gleich('Light Source Not Included-American Standard', 'Light Source Not Included-European Standard');   // rattan-vintage-wandlampe
+gleich('G42 British Standard', 'G42 European Standard');                                                   // 3d-hologramm-projektor
+gleich('White-European Standard 220V', 'White-American Standard 110V');                                    // 9mm-mini-haarglatter
+gleich('Silver Gray-US/Japanese Standard', 'Silver Gray-EU');                                              // multifunktionaler-mixer-entsafter
+gleich('Black-US 120V', 'Black-EU 230V'); gleich('Black-US 240V', 'Black-EU 250V'); gleich('Black-US 100V', 'Black-EU 220V');
+gleich('Black-JP', 'Black-EU'); gleich('Black-CN Plug', 'Black-EU'); gleich('Black AC Socket', 'Black-EU'); gleich('Black-UK Plug', 'Black-AU Plug');
+anders('Pro-US', 'Lite-EU'); anders('Plus-US', 'Mini-EU'); anders('Type Blue-EU', 'Type Red-US'); anders('Type 2-US', 'Type 3-EU'); anders('Standard-US', 'Premium-EU');
+anders('Black-EU 12V', 'Black-EU 24V'); anders('Black-EU 5V', 'Black-US 9V');
+anders('Type C-EU', 'Type A-US');          // USB-C gegen USB-A wäre ein anderer Anschluss, kein anderer Stecker
+anders('Black-EU', 'Black Standard-US');   // «Standard» allein ist eine Ausführung
+
+// ── SKU-Form und Zeichensatz der Engine (Vektoren aus der Prüfung; 0 Abweichungen über 17 269 echte CJ-Variantennummern)
+for (const gut of ['CJJZGJSD00802-7.5X7.5CM-Q4PCS', 'CJJZGJSD02145-10x10x5.5cm', 'CJABCDEFGH12345', 'CJAB123456789', ' CJYD301744802BY '])
+  ist('Form gültig: ' + JSON.stringify(gut), istCjVariantennummer(gut), true);
+for (const schlecht of ['CJYD12', 'XCJYD225829901AZ', 'CJ 123', 'CJYD301744802BYX', 'CJYD12345AB', 'CJYD123456AB', 'CJYD12345 x', 'CJ12345', 'CJABCDEFGHI12345', 'CJAB1234567890-X',
+  'CJYD301744802BY-a/b', 'CJYD301744802BY-a#b', 'CJYD301744802BY-(1)', 'CJYD301744802BY-a,b', 'CJYD301744802BY-a&b', 'CJYD301744802BY-a+b'])
+  ist('Form ungültig: ' + JSON.stringify(schlecht), istCjVariantennummer(schlecht), false);
+{
+  const alle = [farbe(1, 'Black-US'), farbe(2, 'Black-EU', 10, ' CJYD111111102AZ ')];
+  ist('Die Nummer wird getrimmt übernommen', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] })?.neueSku, 'CJYD111111102AZ');
+}
+
+// ── Preisvergleich (Prüfer 27.10.2026): eine andere Variante ohne lesbaren Preis darf die Grenze nicht abschalten
+{
+  const alle = [farbe(1, 'Black-US', NaN), farbe(2, 'Black-UK', 54.9), farbe(3, 'Black-EU', 66.17)];
+  unklar('Eine andere Variante mit Preis NaN schaltet die 5-%-Grenze nicht ab (EU +21 %)', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[2]] }), '\\+21 %');
+  const mitNull = [farbe(1, 'Black-US', 0), farbe(2, 'Black-EU', 10)];
+  ist('Preis 0 einer anderen Variante wird ignoriert → schreiben', skuNachziehen({ wege: pid, vsRoh: mitNull, vs: [mitNull[1]] })?.neueSku, 'CJYD11111112AZ');
+}
+
+// ── Eindeutigkeit der CJ-Nummer ohne Beachtung der Schreibweise (die Bestell-Engine vergleicht mit .upper())
+{
+  const alle = [farbe(1, 'Black-EU', 10, 'CJYD111111102AZ'), farbe(2, 'Black-US', 10, 'cjyd111111102az')];
+  unklar('Dieselbe CJ-Nummer in anderer Schreibweise bei einer verworfenen Variante → nicht eindeutig', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[0]] }), 'nicht eindeutig');
+}
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

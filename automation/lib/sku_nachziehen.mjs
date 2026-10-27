@@ -38,7 +38,9 @@ const PREIS_TOLERANZ = 1.05;
 const ENGINE_ZEICHEN = /^[A-Za-z0-9._ -]{6,80}$/;
 
 // Wörter, die nur den Stecker oder die Netzspannung nennen. Alles andere am CJ-Schlüssel (Farbe, Modell, Leistung, Fassungsvermögen) ist die «Basis».
-const STECKER_WORT = /^(us|usa|eu|eur|uk|au|jp|cn|plug|plugs|stecker|standard|american|america|european|europe|euro|british|britain|australian|australia|japanese|japan|ac|socket|outlet|voltage|schuko)$/;
+const STECKER_WORT = /^(us|usa|eu|eur|uk|au|jp|cn|plug|plugs|stecker|american|america|european|europe|euro|british|britain|australian|australia|japanese|japan|ac|socket|outlet|voltage|schuko)$/;
+// «Standard» ist nur hinter einem Länderwort ein Steckerwort («American Standard», «US/Japanese Standard»); allein steht es für eine Ausführung («Black Standard-US» ≠ «Black-EU»).
+const LAND_WORT = /^(us|usa|eu|eur|uk|au|jp|cn|american|america|european|europe|euro|british|britain|australian|australia|japanese|japan|chinese)$/;
 /**
  * Der CJ-Schlüssel ohne Steckerwörter und Netzspannung (100–250 V), kleingeschrieben und sortiert: «Silver Gray-800W EU» und «Silver Gray-800W  AU» haben dieselbe Basis,
  * «Black-EU» und «Gray-US» nicht. 12 V / 18 V (Akku) bleiben Teil der Basis.
@@ -47,9 +49,10 @@ export function steckerBasis(key) {
   let k = String(key ?? '').toLowerCase();
   k = k.replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*-\s*(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ').replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ');
   const w = k.split(/[^a-z0-9äöüß.+]+/).filter(Boolean), aus = [];
+  // «Type A/C/G» wird NICHT gestrichen: es kann einen Stecker oder einen Anschluss meinen (USB-A/USB-C). Im Zweifel bleibt es Teil der Basis → «unklar», sichtbar und ohne Schaden.
   for (let i = 0; i < w.length; i++) {
-    if (w[i] === 'type') { if (/^[a-z]$/.test(w[i + 1] || '')) i++; continue; }   // «Type G»
     if (STECKER_WORT.test(w[i])) continue;
+    if (w[i] === 'standard' && LAND_WORT.test(w[i - 1] || '')) continue;
     aus.push(w[i]);
   }
   return aus.sort().join(' ');

@@ -14,6 +14,7 @@
  *   preise:   { <handle>: [<Einkaufspreis je CJ-Variante>, …] }              — eigene Preise für 'stecker'
  *   sku:      { <handle>: 'ok' | 'usererror' | 'null' | 'errors' | 'schweigt' } (Vorgabe ok)  — Ausgang von productVariantsBulkUpdate (SKU schreiben); 'schweigt' = Antwort ohne userErrors, aber die SKU stimmt nicht
  *   skuDoppelt: { <SKU>: <Handle eines anderen Produkts> | { handle, sku } }          — ein anderes Shop-Produkt trägt diese SKU schon (Antwort auf die Doppel-Abfrage productVariants(query:"sku:…"))
+ *   skuLesen: { <handle>: 'weg' | 'zwei' | 'andere' }                             — Zustand beim frischen Lesen vor dem SKU-Schreiben: Produkt gelöscht / inzwischen zwei Varianten / SKU von jemand anderem geändert
  *   ki:       'ok' | 'down' | 'unveraendert'                            (Vorgabe ok)  — Gemini antwortet / fällt aus / gibt alles unverändert zurück
  *   kiMap:    { <englisch>: <deutsch> }
  * Jede Anfrage wird nach NETZ_LOG geschrieben (eine JSON-Zeile je Anfrage), damit Tests prüfen können, WAS gesendet wurde.
@@ -81,8 +82,12 @@ globalThis.fetch = async (url, init = {}) => {
       return antwort({ data: { productVariantsBulkUpdate: { productVariants: [{ id: v.v[0].id, sku: modus === 'schweigt' ? 'anderes' : SHOPSKU[h] }], userErrors: [] } } });
     }
     if (q.includes('product(id:$id)') && q.includes('variants(first:3)')) {              // SKU_LESEN: frisches Lesen vor/nach dem SKU-Schreiben
-      const h = handleZuId(v.id); logge({ k: 'SKU_LESEN', handle: h });
-      return antwort({ data: { product: { id: v.id, variantsCount: { count: 1 }, variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', sku: skuNow(h) }] } } } });
+      const h = handleZuId(v.id), modus = (SZ.skuLesen || {})[h]; logge({ k: 'SKU_LESEN', handle: h, modus });
+      if (modus === 'weg') return antwort({ data: { product: null } });
+      // Feldgenau wie die echte API: nur was die Abfrage verlangt, kommt zurück (ein gelöschtes Feld in der Abfrage fiele sonst erst in der ersten Live-Nacht auf)
+      const knoten = [{ id: 'gid://shopify/ProductVariant/1', ...(/nodes\{[^}]*\bsku\b/.test(q) ? { sku: modus === 'andere' ? 'CJ-ANDERE-SKU-123456' : skuNow(h) } : {}) }];
+      if (modus === 'zwei') knoten.push({ id: 'gid://shopify/ProductVariant/2', ...(/nodes\{[^}]*\bsku\b/.test(q) ? { sku: 'X' } : {}) });
+      return antwort({ data: { product: { id: v.id, ...(q.includes('variantsCount{count}') ? { variantsCount: { count: knoten.length } } : {}), variants: { nodes: knoten } } } });
     }
     if (q.includes('product(id:$id)')) {                                   // FRISCH: frisches Lesen unmittelbar vor dem Schreiben
       const h = handleZuId(v.id); logge({ k: 'FRISCH', handle: h });

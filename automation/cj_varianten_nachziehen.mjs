@@ -292,29 +292,35 @@ async function aufschreiben(q, plan) {
 }
 
 // ---------------------------------------------------------------- Lauf
-const SKU_LESEN = `query($id:ID!){product(id:$id){id variantsCount{count} variants(first:3){nodes{id sku}}}}`;
+export const SKU_LESEN = `query($id:ID!){product(id:$id){id variantsCount{count} variants(first:3){nodes{id sku}}}}`;
 // Trägt die Ziel-SKU (nackt oder mit «CJ-») schon ein ANDERES Shop-Produkt (Zwilling mit Auswahl), würden danach beide in der Bestell-Engine mehrdeutig (sie verlangt genau einen Treffer).
-const SKU_DOPPELT = `query($q:String!){productVariants(first:5,query:$q){nodes{id sku product{handle}}}}`;
-const SKU_SCHREIBEN = `mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){productVariants{id sku} userErrors{field message}}}`;
+export const SKU_DOPPELT = `query($q:String!){productVariants(first:5,query:$q){nodes{id sku product{handle}}}}`;
+export const SKU_SCHREIBEN = `mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){productVariants{id sku} userErrors{field message}}}`;
 /**
  * Setzt die SKU der EINEN Standardvariante auf die CJ-Variantennummer (Plan «SKU_NACHZIEHEN»). Liest unmittelbar vorher frisch (noch genau diese eine Variante? noch die alte SKU?)
  * und prüft die Antwort. Preis, Optionen, Bilder, Text und Tags bleiben unberührt.
  * → { ok:true } | { ok:true, schonErledigt:true } | { ok:false, uebersprungen:'…' } (verändert seit dem Plan) | { ok:false, fehler:'…' }
  */
-export async function schreibeSku(q, plan) {
+const IM_LAUF_GESETZT = new Set();
+export async function schreibeSku(q, plan, gesetzt = IM_LAUF_GESETZT) {
   const f = (await q(SKU_LESEN, { id: plan.produktId })).product;
   if (!f) return { ok: false, uebersprungen: 'Produkt nicht mehr da' };
   const vs = f.variants.nodes;
   if (f.variantsCount.count !== 1 || vs.length !== 1 || vs[0].id !== plan.varianteId) return { ok: false, uebersprungen: 'Varianten seit dem Plan verändert' };
   if (vs[0].sku === plan.neueSku) return { ok: true, schonErledigt: true };
   if (vs[0].sku !== plan.alteSku) return { ok: false, uebersprungen: `SKU seit dem Plan verändert (${vs[0].sku})` };
+  // Shopify sucht ohne Beachtung der Gross-/Kleinschreibung, die Bestell-Engine vergleicht mit .upper(): hier genauso (Prüfung 27.10.2026: 32 Shop-SKUs tragen «cj-CJ…»).
+  const ziel = String(plan.neueSku).trim().toUpperCase(), ziele = [ziel, 'CJ-' + ziel];
   const andere = ((await q(SKU_DOPPELT, { q: `sku:"${plan.neueSku}" OR sku:"CJ-${plan.neueSku}"` })).productVariants?.nodes || [])
-    .filter(n => n.id !== plan.varianteId && [plan.neueSku, 'CJ-' + plan.neueSku].includes(String(n.sku || '').trim()));
+    .filter(n => n.id !== plan.varianteId && ziele.includes(String(n.sku || '').trim().toUpperCase()));
   if (andere.length) return { ok: false, zurueckgestellt: true, uebersprungen: `SKU schon vergeben (${andere.map(n => n.product?.handle || '?').slice(0, 2).join(', ')})` };
+  // Zwei Shop-Produkte derselben CJ-Variante binnen Sekunden: der Suchindex kennt die eben gesetzte SKU vielleicht noch nicht. Darum merkt sich der Prozess seine eigenen Schreibvorgänge.
+  if (gesetzt.has(ziel)) return { ok: false, zurueckgestellt: true, uebersprungen: 'SKU schon vergeben (in diesem Lauf an ein anderes Produkt)' };
   const m = (await q(SKU_SCHREIBEN, { p: plan.produktId, v: [{ id: plan.varianteId, inventoryItem: { sku: plan.neueSku } }] })).productVariantsBulkUpdate;
   if (m.userErrors?.length) return { ok: false, fehler: JSON.stringify(m.userErrors).slice(0, 160) };
   const neu = m.productVariants?.[0];
   if (!neu || neu.id !== plan.varianteId || neu.sku !== plan.neueSku) return { ok: false, fehler: `Rücklesen: SKU ist «${neu?.sku}»` };
+  gesetzt.add(ziel);
   return { ok: true };
 }
 
@@ -350,7 +356,9 @@ async function main() {
   // sonst bliebe ein dauerhafter Schreibausfall unerkannt, sobald zwischendurch ein Produkt übersprungen wird (Prüfung 26.10.2026).
   let fehlerFolge = 0, schreibFolge = 0, kiFolge = 0, drosselFolge = 0;
   const MAX_SKU = Number(process.env.MAX_SKU_SCHREIBEN || 25);
-  let skuGesetzt = existsSync(LEDGER) ? readFileSync(LEDGER, 'utf8').split('\n').filter(z => { const [, zeit, e] = z.split('·').map(x => x.trim()); return e === 'SKU_GESETZT' && Date.now() - Date.parse(zeit) < 20 * 3600 * 1000; }).length : 0;
+  // Frisch aus dem Ledger gezählt (SKU_GESETZT der letzten 20 Stunden): der Nacht-Workflow startet bis zu 6 Läufer parallel auf DASSELBE Ledger, ein einmal beim Start gelesener Stand
+  // liesse jeden von ihnen bis zum Deckel schreiben (gemessen: 6 × 25 = 150 statt 25). Ein Rest-Rennen um die letzte Stelle (höchstens Läuferzahl − 1) bleibt.
+  const zaehleSkuGesetzt = () => existsSync(LEDGER) ? readFileSync(LEDGER, 'utf8').split('\n').filter(z => { const [, zeit, e] = z.split('·').map(x => x.trim()); return e === 'SKU_GESETZT' && Date.now() - Date.parse(zeit) < 20 * 3600 * 1000; }).length : 0;
   const abbruch = (code, text) => { console.log('ABBRUCH:', text); process.exitCode = code; };
   try {
     for (const h of handles) {
@@ -382,6 +390,7 @@ async function main() {
         console.log(h, '→ SKU_NACHZIEHEN |', `${plan.alteSku} → ${plan.neueSku} (${plan.anzahlCj} CJ-Varianten, nur eine bleibt nach dem Stecker-Filter)`);
         if (!LIVE) { zaehl.SKU_NACHZIEHEN = (zaehl.SKU_NACHZIEHEN || 0) + 1; fehlerFolge = 0; continue; }
         // Deckel (Prüfung 27.10.2026): höchstens MAX_SKU_SCHREIBEN SKU-Schreibvorgänge je 20 Stunden über alle Stapel (gezählt im Ledger). Der Rest kommt in der nächsten Nacht dran.
+        const skuGesetzt = zaehleSkuGesetzt();
         if (skuGesetzt >= MAX_SKU) {
           zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1; console.log(`   UEBERSPRUNGEN | SKU-Deckel erreicht (${skuGesetzt} in 20 Stunden, MAX_SKU_SCHREIBEN=${MAX_SKU})`);
           merke('UEBERSPRUNGEN', `${VORLAEUFIG}: SKU-Deckel erreicht (${MAX_SKU} in 20 Stunden)`); fehlerFolge = 0; continue;
@@ -389,7 +398,7 @@ async function main() {
         let w;
         try { w = await schreibeSku(q, plan); } catch (e) { w = { ok: false, fehler: String(e.message).slice(0, 160) }; }
         if (w.ok) {
-          fehlerFolge = 0; schreibFolge = 0; zaehl.SKU_GESETZT = (zaehl.SKU_GESETZT || 0) + 1; skuGesetzt++;
+          fehlerFolge = 0; schreibFolge = 0; zaehl.SKU_GESETZT = (zaehl.SKU_GESETZT || 0) + 1;
           console.log(`   SKU_GESETZT: SKU ${w.schonErledigt ? 'war schon' : 'jetzt'} ${plan.neueSku}`);
           // Eigener Ausgang statt GESCHRIEBEN: die Auswahl-Auswertungen (Abgleich, Fortschritt, Nachtbericht) zählen GESCHRIEBEN als «Auswahl nachgezogen». Die alte pid steht vollständig im Ledger.
           merke('SKU_GESETZT', `SKU ${plan.alteSku} → ${plan.neueSku}`, 220);
