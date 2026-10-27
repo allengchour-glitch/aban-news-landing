@@ -64,7 +64,7 @@ globalThis.fetch = async (url, init = {}) => {
     }
     if (q.includes('productSet')) {
       const h = handleZuId(v.i?.id), modus = (SZ.set || {})[h] || 'ok';
-      logge({ k: 'productSet', handle: h, modus, varianten: v.i?.variants?.length, optionen: (v.i?.productOptions || []).map(o => o.name), mitDatei: (v.i?.variants || []).filter(x => x.file).length, beschreibungMarker: String(v.i?.descriptionHtml || '').includes('ls-var-v1'), tags: v.i?.tags });
+      logge({ k: 'productSet', handle: h, modus, varianten: v.i?.variants?.length, optionen: (v.i?.productOptions || []).map(o => o.name), werte: (v.i?.productOptions || []).flatMap(o => (o.values || []).map(x => x.name)), mitDatei: (v.i?.variants || []).filter(x => x.file).length, beschreibungMarker: String(v.i?.descriptionHtml || '').includes('ls-var-v1'), tags: v.i?.tags });
       if (modus === 'limit') return antwort({ errors: [{ message: 'Daily variant creation limit reached' }] });
       if (modus === 'fehler') return antwort({ errors: [{ message: 'Internal error. Looks like something went wrong on our end.' }] });
       if (modus === 'usererror') return antwort({ data: { productSet: { product: null, userErrors: [{ field: ['input'], message: 'Ungültig', code: 'INVALID' }] } } });

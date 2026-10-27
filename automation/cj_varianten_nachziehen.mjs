@@ -33,7 +33,7 @@ import { lieferurteil } from './lib/lieferbarkeit.mjs';
 import { strategien } from './lib/fakten_block.mjs';
 import { zerlegeOptionen, baueAuswahl, preisFuer, hinweisText } from './lib/cj_varianten.mjs';
 import { steckerUrteil } from './lib/stecker_cj.mjs';
-import { nachDeutsch } from './lib/uebersetzen.mjs';
+import { nachDeutsch, gleicheGrossschreibung } from './lib/uebersetzen.mjs';
 import { ENGLISCH_RE } from './farbwahl_scan.mjs';
 import { ledgerGedaechtnis, veraendertSeitPlan, bilderUnbrauchbar, FRISCH, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
 const KI_AUS = 'KI-Dienst aus';
@@ -169,6 +169,7 @@ export async function plane({ q, cj, handle, tmp }) {
   if (aw.ok && aw.unsicher.length && !process.env.KEIN_KI_UEBERSETZEN) {
     const roh = [...new Set(aw.unsicher.map(u => u.wert))];
     const t = await nachDeutsch(roh, { auftrag: LABEL_AUFTRAG });
+    if (t.weg !== 'original') t.texte = t.texte.map((x, i) => gleicheGrossschreibung(roh[i], x));
     // weg='original' heisst: der Dienst hat NICHT geantwortet (402/429/5xx/Netz/kein Schlüssel). Das ist etwas anderes als «KI antwortete, Übersetzung nicht brauchbar».
     kiAusfall = t.weg === 'original';
     // Unverändert zurück ist nur bei einem einzelnen Wort ohne englische Wortform in Ordnung («Cyan», «Khaki»); «Oil Painting Blue» unverändert = nicht übersetzt.

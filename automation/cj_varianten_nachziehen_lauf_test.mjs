@@ -109,6 +109,10 @@ ist('KI aus: kein Abbruch trotz MAX_KI_FOLGE=2, sichere Produkte werden geschrie
 ist('KI aus: unsichere nur «vorläufig» (20 h) mit eigenem Grund', r.L.filter(x => x.e === 'UEBERSPRUNGEN').every(x => x.g.startsWith('vorläufig: KI-Dienst aus')), true);
 ist('KI aus: weder die KI noch die CJ-Fracht wurde für die unsicheren Produkte gefragt', [art(r, 'gemini').length, art(r, 'cjFracht').map(x => x.handle).sort()], [0, ['b', 'h']]);
 
+// Das kleine Groq-Modell liefert Etikettenwörter klein: die Grossschreibung des Originals wird wiederhergestellt, bevor die Werte im Shop landen
+r = lauf({ produkte: { a: P('unsicher') }, ki: 'ok', kiMap: { 'Moonlight Fantasy': 'mondlichtfantasie', 'Starry Dream': 'sternentraum' } });
+ist('KI liefert klein: Werte im Shop beginnen gross', [r.rc, art(r, 'productSet').length, (art(r, 'productSet')[0]?.werte || []).filter(w => /^(Mondlichtfantasie|Sternentraum)$/.test(w)).length], [0, 1, 2]);
+
 // ── 7) Frisches Lesen unmittelbar vor dem Schreiben
 r = lauf({ produkte: { a: P() }, frisch: { a: { updatedAt: '2026-10-26T10:05:00Z' } } });
 ist('Produkt seit dem Plan geändert: vorläufig übersprungen, NICHT geschrieben', [r.rc, r.L.map(x => `${x.e}:${x.g.startsWith('vorläufig: seit dem Plan verändert') && x.g.includes('updatedAt')}`), art(r, 'productSet').length], [0, ['UEBERSPRUNGEN:true'], 0]);
