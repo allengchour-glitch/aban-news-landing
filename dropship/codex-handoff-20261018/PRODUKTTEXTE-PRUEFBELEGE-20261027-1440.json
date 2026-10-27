@@ -1,0 +1,798 @@
+{
+  "15412302020993/MANIFEST.json": {
+    "sha256": "761499b4c7b7715aa1fa6c1a00d48d221b2a1d59a134bf0cbe2f16e579601142",
+    "content": {
+      "productId": "gid://shopify/Product/15412302020993",
+      "title": "Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)",
+      "url": "https://luxestyle.ch/products/vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben",
+      "state": "PASS_REQUIRES_FRESH_SOURCE",
+      "sourceCapturedAtUTC": "2026-10-27T13:41:57+00:00",
+      "beforeSha256": "c6d88e172e8bb3ed3621bb13364128cf6d3843c2273684d642d5c50e80e61641",
+      "afterSha256": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+      "source": "NATIVE-FRESH.json",
+      "coreWords": 104,
+      "imageSources": "IMAGE-SOURCES.json",
+      "actualImagesViewed": 9,
+      "nativeVariantCount": 6,
+      "nativeVariantLabels": [
+        "Marineblau",
+        "Grau",
+        "Schwarz",
+        "Khaki",
+        "Bordeaux",
+        "Rosa"
+      ],
+      "sourceAssertionsRemoved": [
+        "unverified textile/material claims",
+        "unverified physical dimensions or weight",
+        "adjustability/fit and functions not demonstrated",
+        "delivery10–20days/country-only badge"
+      ],
+      "serviceChange": "Removed unsupported description-local delivery badge; neutral shipping/refund links added. No policy/settings changed.",
+      "originalHrefTargets": [
+        "/collections/sommer",
+        "/collections/bestseller-premium-heroes"
+      ],
+      "originalHrefTargetsPreserved": true,
+      "fieldsToWrite": [
+        "id",
+        "descriptionHtml"
+      ],
+      "writes": 0,
+      "rootMustFreshReadBeforeWrite": true,
+      "remainingSourceLimits": [
+        "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+        "Current source images/variants must still match before description-only write",
+        "Old main/detail images contain different decorative motifs (snowflake/cross/shield). Latest six appended images all show snowflake in the six native colours; exact supplier binding is not independently authenticated. New body deliberately only says front decorative accent and shared cap geometry; no motif selection or exact motif guarantee. Existing title untouched."
+      ]
+    }
+  },
+  "15412302020993/CLAIMS.md": {
+    "sha256": "7e370b8910957fe2634f74bd93d433ab3b4311b2069842c2ca12657d1ae0a51b",
+    "content": "# Cap: Quellen und Grenzen des Beschreibungstexts\n\nFrische native Quelle: ACTIVE, sechs tatsächliche Farbvarianten. Marineblau, Grau, Schwarz, Khaki, Bordeaux und Rosa sind die exakten aktuellen Labels. Die neue Beschreibung übernimmt diese Auswahlbezeichnungen, ohne Lieferung oder Verfügbarkeit zu versprechen.\n\nNeun zugeordnete Originalbilder wurden tatsächlich geladen und angesehen: die ersten drei alten Haupt-/Detailbilder und alle sechs neu angehängten Farbfotos. Sichtbar sind die rund gegliederte Kopfform, der gebogene Schirm, sichtbare Nähte und eine unregelmässig aufgehellte Oberfläche. Diese Form-/Bildmerkmale und als Idee gekennzeichnete Stylingvorschläge bilden die neue Kopie.\n\nDie alten Haupt-/Detailbilder zeigen neben der Schneeflocke auch Kreuz-/schildartige Dekore. Die sechs später hinzugefügten Farbfotos zeigen jeweils einen Schneeflockendekor. Die exakte Lieferantenbindung ist dadurch nicht unabhängig bewiesen. Der neue Beschreibungstext nennt bewusst nur einen hellen Dekorakzent an der Front. Er verspricht weder eine zusätzliche Motivauswahl noch ein bestimmtes geliefertes Motiv für jede Farbe. Der bestehende Produkttitel wird nicht geändert und ist dadurch nicht pauschal bestätigt.\n\nMaterial 100 Prozent Baumwolle, Waschprozess, Atmungsaktivität, Passbereich 55–60 cm, genaue Konstruktion und verstellbarer Metallverschluss werden im neuen Text nicht behauptet. Gedruckte Bildmasse und Materialoverlays sind keine unabhängig verifizierte Lieferanten-/Ausführungsquelle.\n\nDie unbelegte Beschreibungskachel mit 10–20 Werktagen und eingeschränktem Liefergebiet entfällt; neutrale Versand-/Rückgabebedingungen werden verlinkt. Alle beiden ursprünglichen Collectionziele bleiben erhalten. Keine Regeln, Tarife, Rückgabepolitik oder Shop-Einstellungen geändert. Kein Livewrite durch diesen Teilauftrag.\n"
+  },
+  "15412302020993/IMAGE-SOURCES.json": {
+    "sha256": "d29213c31cd9dd1f402278473b238de3c344c624d557ae08f1830260e605ce5e",
+    "content": [
+      {
+        "index": 1,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5b5a130-963b-4090-8734-24e95f2492d9.png?v=1780217616",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-1.jpg",
+        "httpStatus": 200,
+        "bytes": 282210,
+        "sha256": "c8b2bf07e0123dfa3e706a28399fd9b8e97a559d605d51ddaffdf304ac2168c0",
+        "capturedAtUTC": "2026-10-27T13:42:05.631003+00:00"
+      },
+      {
+        "index": 2,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bbbf09c-e7fc-4f52-bf2a-8583529f49c7.png?v=1780217617",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-2.jpg",
+        "httpStatus": 200,
+        "bytes": 185760,
+        "sha256": "ae11183ac8a414aae771d037db3af1f867e35dc413d422b931bc8221d7528a91",
+        "capturedAtUTC": "2026-10-27T13:42:07.193785+00:00"
+      },
+      {
+        "index": 3,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111b91ba-1116-40d3-8b19-1232b64056f2.png?v=1780217617",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-3.jpg",
+        "httpStatus": 200,
+        "bytes": 180673,
+        "sha256": "124b9ae6021e1bde74fe6422baa793c13aaa2b268720f48bdeb92519941a1ea8",
+        "capturedAtUTC": "2026-10-27T13:42:10.945806+00:00"
+      },
+      {
+        "index": 7,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/980e58c0-e719-4fc6-bff1-d3a81330c891.png?v=1792980151",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-7.jpg",
+        "httpStatus": 200,
+        "bytes": 193725,
+        "sha256": "97708678f3298a787537d98d52af2660a6b3fddbe95db8d73645280a1449d551",
+        "capturedAtUTC": "2026-10-27T13:42:11.727517+00:00"
+      },
+      {
+        "index": 8,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0d38c340-70d0-4bd4-b1ed-373942551520.png?v=1792980151",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-8.jpg",
+        "httpStatus": 200,
+        "bytes": 190239,
+        "sha256": "0244c7489972019d5c2868bd53f54ed7564ca2fb1430145554439049ef402652",
+        "capturedAtUTC": "2026-10-27T13:44:11.125116+00:00"
+      },
+      {
+        "index": 9,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18f4c326-6819-4c80-a4c6-59fbf24f01a3.png?v=1792980150",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-9.jpg",
+        "httpStatus": 200,
+        "bytes": 179537,
+        "sha256": "7906a0d9173e60dbe77fc3eeeafe32eeab2330f6aac89402a46e1f38c8a2a705",
+        "capturedAtUTC": "2026-10-27T13:44:11.393648+00:00"
+      },
+      {
+        "index": 10,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac652daa-0ab6-4fd3-a717-d29988f895c8.png?v=1792980151",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-10.jpg",
+        "httpStatus": 200,
+        "bytes": 189520,
+        "sha256": "98a0e9ec73a07a7487589136d24e6658be8be0888cbf332386c063335682831c",
+        "capturedAtUTC": "2026-10-27T13:44:11.845439+00:00"
+      },
+      {
+        "index": 11,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be1af96d-5278-4032-b3ac-4d188b39a372.png?v=1792980150",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-11.jpg",
+        "httpStatus": 200,
+        "bytes": 190049,
+        "sha256": "d183cb291dc1da149cf6bde2b88880be5ad2bc521a4eca522d5ab61a9f61b32d",
+        "capturedAtUTC": "2026-10-27T13:44:12.184731+00:00"
+      },
+      {
+        "index": 12,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6486f3cd-4598-4e2b-81f6-ea6064c77477.png?v=1792980150",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302020993/image-12.jpg",
+        "httpStatus": 200,
+        "bytes": 185351,
+        "sha256": "086de2f3e749c933d52123af901763e6ba74ffaa1c29b9405a9c811382acb76c",
+        "capturedAtUTC": "2026-10-27T13:44:12.499524+00:00"
+      }
+    ]
+  },
+  "15412302020993/description.diff": {
+    "sha256": "ff496bce1d3403aa6c618ad938ad0d2d863868048f75d1d1037166fdb8f6b633",
+    "content": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,19 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Lässiger Vintage-Look mit Glitzer-Detail.</strong> Die washed Baseball-Cap aus 100 % Baumwolle kommt im angesagten Used-Look mit funkelnder Strass-Schneeflocke – verstellbar und unisex für jeden Style.</p>\n-<ul>\n-<li>🧢 <strong>100 % gewaschene Baumwolle</strong> – weich &amp; atmungsaktiv</li>\n-<li>✨ <strong>Strass-Schneeflocke</strong> als Eyecatcher vorne</li>\n-<li>🔧 <strong>Verstellbarer Metallverschluss</strong> – passt 55–60 cm</li>\n-<li>🎨 <strong>6 Farben</strong> – für jeden Look</li>\n-<li>🧵 6-Panel-Bau mit verstärkten Nähten</li>\n-</ul>\n-<p><em></em></p>\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Muster:</strong> Glitzer</li>\n-<li>\n-<strong>Material:</strong> Baumwolle</li>\n-</ul>\n-</div><!--gdetails--><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Ein Vintage-Akzent für deinen Alltagslook.</strong> Die Cap verbindet einen gebogenen Schirm mit einer rund aufgebauten Kopfform. Sichtbare Nahtlinien gliedern die Oberseite; mehrere Nahtreihen zeichnen den Rand des Schirms nach. Ein heller Dekorakzent hebt sich auf der Vorderseite von der verwaschen wirkenden Farbfläche ab.</p>\n+<h3>So kombinierst du den Look</h3>\n+<p>Mit einem einfarbigen T-Shirt, Jeans und schlichten Sneakern bleibt die Cap der Blickfang. Greife für eine ruhigere Kombination einen ähnlichen Farbton in deinem Oberteil auf oder setze mit hellen Kleidungsstücken einen Kontrast.</p>\n+<h3>Deine Farbbezeichnung wählen</h3>\n+<p>Die aktuelle Auswahl führt Marineblau, Grau, Schwarz, Khaki, Bordeaux und Rosa. Wähle deine gewünschte Farbbezeichnung aus und vergleiche die zugehörigen Produktansichten.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/sommer\">Sommer</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n"
+  },
+  "15412302512513/MANIFEST.json": {
+    "sha256": "6a295bdd05f3a04922dda010c94ecbd5da04784814159c4b1a3f5e7f63de23db",
+    "content": {
+      "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+      "productId": "gid://shopify/Product/15412302512513",
+      "title": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+      "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+      "beforeSha256": "a967f27acd88db6f1b6971d190f4f39509b13c7ee96bf34c6849287d622c8345",
+      "afterSha256": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+      "sourceCapturedAtUTC": "2026-10-27T13:42:10Z",
+      "source": "NATIVE-FRESH.json",
+      "coreWords": 98,
+      "imageFilesViewed": 11,
+      "imageProof": "IMAGE-SOURCES.json",
+      "originalHrefTargets": [
+        "/collections/trends-gadgets",
+        "/collections/bestseller-premium-heroes"
+      ],
+      "hrefsAfter": [
+        "/policies/shipping-policy",
+        "/policies/refund-policy",
+        "/collections/trends-gadgets",
+        "/collections/bestseller-premium-heroes"
+      ],
+      "allOriginalHrefTargetsPreserved": true,
+      "serviceChange": "Removed description-local unproven delivery/location assurance and technical claims; neutral policy references only. Actual policies/settings untouched.",
+      "writeScope": [
+        "id",
+        "descriptionHtml"
+      ],
+      "liveWrites": 0,
+      "nativeVariantCount": 12,
+      "variantIdentityAndLabels": [
+        {
+          "id": "gid://shopify/ProductVariant/67788980650375",
+          "title": "Schwarz",
+          "sku": "CJYD289701201AZ"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980683143",
+          "title": "Rosa",
+          "sku": "CJYD289701202BY"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980715911",
+          "title": "Gelb",
+          "sku": "CJYD289701203CX"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980748679",
+          "title": "Rot",
+          "sku": "CJYD289701204DW"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980781447",
+          "title": "Saphir Blau",
+          "sku": "CJYD289701205EV"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980814215",
+          "title": "Orange",
+          "sku": "CJYD289701206FU"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980846983",
+          "title": "Camouflage",
+          "sku": "CJYD289701207GT"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980879751",
+          "title": "Silber",
+          "sku": "CJYD289701208HS"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980912519",
+          "title": "Rosenrot",
+          "sku": "CJYD289701209IR"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980945287",
+          "title": "Grün",
+          "sku": "CJYD289701210JQ"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788980978055",
+          "title": "Violett",
+          "sku": "CJYD289701211KP"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788981010823",
+          "title": "Himmelblau",
+          "sku": "CJYD289701212LO"
+        }
+      ],
+      "reviewLimits": [
+        "Photo appearance not an independent supplier, function, conformity or rights approval",
+        "No stock/delivery/returns/payment promise",
+        "Existing title outside description-only write scope remains source caveat",
+        "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+      ],
+      "notPromised": [
+        "full-size rain umbrella for person",
+        "UV or rain/wind/thermal protection",
+        "clamp fit/security or broad phone compatibility",
+        "material/streben count/measurements/weight",
+        "phone or any separately pictured accessory included"
+      ],
+      "titleCaveat": "Native title suggests rain umbrella with phone holder; image evidence consistently shows miniature clip-on phone sunshade. New body explicitly clarifies small phone setup without editing title."
+    }
+  },
+  "15412302512513/CLAIMS.md": {
+    "sha256": "203cabe54bc12c949061e20818fe78969e4e871c23d2eca970b0d6042b182fdc",
+    "content": "# Quellen und Grenzen\n\nProdukt gid://shopify/Product/15412302512513. Nur Beschreibungstext-Entwurf, kein Write.\n\n| Aussage | Quelle | Grenze |\n|---|---|---|\n| Kleiner Schirm über einem Smartphone, schmale Stange, seitliche Klemme, gegliederte Schirmfläche | Alle elf aktuell zugeordneten Bilder visuell geprüft, frisch HTTP 200 und SHA gesichert | Kein grosser Personenschirm; keine Schutz-/Temperatur-/Wind-/UV-Zusage oder Montage-/Kompatibilitätsprüfung |\n| Zwölf genaue Auswahlbezeichnungen | Zwölf native Varianten mit stabilen IDs/SKUs und exakten Titeln | Keine Varianten neu angelegt; keine vollständige Variante-zu-Bild-/Lieferantenzuordnung behauptet |\n| Unterschiede bei Klemmenformen in den Bildern | Fotos zeigen V-artige Klemmen und eine andere silberne Ausführung | Keine universelle konkrete Klemmenform für jede Farbe oder Funktion behauptet |\n| Neutrale Versand-/Rückgabelinks | Bestehende Shop-Policyrouten aus aktueller Projektgrundlage | Keine Lieferfrist, Rückgabedauer, Zahlung oder Lagerposition zugesagt; keine tatsächliche Policy geändert |\n\nVor Write aktuelle Quelle und angezeigte Auswahl nochmals lesen. Das frühere Delivery-/Schutz-/Technikversprechen wird durch diesen Entwurf nicht neu verifiziert.\n"
+  },
+  "15412302512513/IMAGE-SOURCES.json": {
+    "sha256": "10039ffb364e6365a6405853c2e4451e97686dcd8dc368bbd594f8dabca285d8",
+    "content": [
+      {
+        "index": 1,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65394640-afa2-4003-a5a0-44fcc04a6569_trans.jpg?v=1780218019",
+        "nativeMediaId": "gid://shopify/MediaImage/69550341816705",
+        "capturedAtUTC": "2026-10-27T13:42:18.850715+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-1.jpg",
+        "bytes": 26623,
+        "sha256": "90d30e020f207615b72bbcb3db0b6833ec90f2f7769153f962b71549c74a0dda"
+      },
+      {
+        "index": 2,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fb4e943-89f1-4c1c-9d17-151680b858ea_trans.jpg?v=1780218019",
+        "nativeMediaId": "gid://shopify/MediaImage/69550341718401",
+        "capturedAtUTC": "2026-10-27T13:42:18.864185+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-2.jpg",
+        "bytes": 50429,
+        "sha256": "d1bd4b35ad8821e8890892524e9618dabf53b51e698d6936a8ca08f95fdba530"
+      },
+      {
+        "index": 3,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c441cb91-2f88-45ab-bc6a-b880eaa7795e_trans.jpg?v=1780218019",
+        "nativeMediaId": "gid://shopify/MediaImage/69550341751169",
+        "capturedAtUTC": "2026-10-27T13:42:18.889978+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-3.jpg",
+        "bytes": 77541,
+        "sha256": "18c70e6df894afcac86fc1a0d8936cd06bd216ded3ecd84f06021e2b552f18c0"
+      },
+      {
+        "index": 4,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4980cf15-c589-454a-8d95-dbdfea685116.jpg?v=1780218019",
+        "nativeMediaId": "gid://shopify/MediaImage/69550341783937",
+        "capturedAtUTC": "2026-10-27T13:42:20.928659+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-4.jpg",
+        "bytes": 130051,
+        "sha256": "b2d70f343b6ccd3f9b46f20cf48f2f155a856c4c36569e9edaedacff3209ee52"
+      },
+      {
+        "index": 5,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8bfb491a-e5cb-4064-9944-dda961acd9c0_trans.jpg?v=1780218019",
+        "nativeMediaId": "gid://shopify/MediaImage/69550341849473",
+        "capturedAtUTC": "2026-10-27T13:42:21.144652+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-5.jpg",
+        "bytes": 25799,
+        "sha256": "6d1e3638c52055b0c616868e1b01b164000b69e6605e47050c78212a41137800"
+      },
+      {
+        "index": 6,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-besc-edit.jpg?v=1781097171",
+        "nativeMediaId": "gid://shopify/MediaImage/69650063098241",
+        "capturedAtUTC": "2026-10-27T13:42:21.167649+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-6.jpg",
+        "bytes": 83266,
+        "sha256": "a5114bea70d108aef18a0399b00fbabea038db423877381f667f6a7fca281fcc"
+      },
+      {
+        "index": 7,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+        "nativeMediaId": "gid://shopify/MediaImage/77829706187143",
+        "capturedAtUTC": "2026-10-27T13:42:22.268675+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-7.jpg",
+        "bytes": 22190,
+        "sha256": "a15a33921440f5a910957a2c8c411a76a3b8584d7079eced973a292d64c79593"
+      },
+      {
+        "index": 8,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5e5f26c-51a6-4ed0-9c65-993bb6997b97_trans.jpg?v=1792980176",
+        "nativeMediaId": "gid://shopify/MediaImage/77829706219911",
+        "capturedAtUTC": "2026-10-27T13:42:22.333106+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-8.jpg",
+        "bytes": 28606,
+        "sha256": "fa8641834dfd5c64f7b2c1461c99def199c6c8f8a2fbb61ab7a9016eff19e278"
+      },
+      {
+        "index": 9,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a943523-9b2d-4776-ae82-4ebb5d4aa8f6_trans.jpg?v=1792980176",
+        "nativeMediaId": "gid://shopify/MediaImage/77829706252679",
+        "capturedAtUTC": "2026-10-27T13:42:22.435901+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-9.jpg",
+        "bytes": 65171,
+        "sha256": "278fcaa513afdfb7f7d627c5d9c7dc75469cc25849ef3ea3432ed69bbce87dfe"
+      },
+      {
+        "index": 10,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fafb2a29-3976-4d5a-85d9-14d0d7906c92_trans.jpg?v=1792980176",
+        "nativeMediaId": "gid://shopify/MediaImage/77829706285447",
+        "capturedAtUTC": "2026-10-27T13:42:23.107355+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-10.jpg",
+        "bytes": 28536,
+        "sha256": "4a5a2f76751413dc801151e810bef8d3cb5f44032495466f498a53f310b39c12"
+      },
+      {
+        "index": 11,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8713e52a-c7fd-478c-867a-ac0c15cce5c4_trans.jpg?v=1792980176",
+        "nativeMediaId": "gid://shopify/MediaImage/77829706318215",
+        "capturedAtUTC": "2026-10-27T13:42:23.127913+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412302512513/image-11.jpg",
+        "bytes": 62128,
+        "sha256": "2fc1a70c59a3063e9028a22f8f706da5c0fb09224f254abacb07884c7b0009ac"
+      }
+    ]
+  },
+  "15412302512513/description.diff": {
+    "sha256": "4484d689f9f1ae68015bb95d1d130c0fce6a94ee8c9c4755fa2ee68cdaaa3459",
+    "content": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,22 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Hände frei bei Regen &amp; Sonne.</strong> Dieser clevere Schirm hat eine integrierte Handy-Halterung – perfekt zum Filmen, Streamen oder Telefonieren unterwegs, beim Angeln oder bei Outdoor-Aufnahmen.</p>\n-<ul>\n-<li>📱 <strong>Integrierte Handy-Klemme</strong> – freihändig bedienen</li>\n-<li>☔ <strong>8 stabile Streben</strong> aus Stahl</li>\n-<li>☀️ <strong>Silberbeschichtung</strong> – Regen- &amp; Sonnenschutz</li>\n-\n-<li>🎣 Ideal für Content-Creator, Angeln &amp; Outdoor</li>\n-</ul>\n-<p><em></em></p>\n-\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Material:</strong> Kunststoff, Metall</li>\n-<li>\n-<strong>Gewicht:</strong> ca. 50 g</li>\n-<li>\n-<strong>Masse:</strong> 28cm</li>\n-</ul>\n-</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Ein kleiner Schirm am Smartphone.</strong> Die Produktansichten zeigen eine gewölbte Schirmfläche an einer schmalen Stange mit seitlicher Klemme. In mehreren Bildern ist der Schirm oberhalb eines Smartphones dargestellt. Die unterteilten Bahnen und die kleinen Endstücke am Rand prägen die Optik.</p>\n+<h3>Die gezeigten Details vergleichen</h3>\n+<p>Gesamtansichten und Nahaufnahmen zeigen den Aufbau von der Seite und von vorn. Vergleiche dabei die gezeigten Klemmenformen und Farbdarstellungen.</p>\n+<h3>Deine Auswahlbezeichnung wählen</h3>\n+<p>Aktuell stehen «Schwarz», «Rosa», «Gelb», «Rot», «Saphir Blau», «Orange», «Camouflage», «Silber», «Rosenrot», «Grün», «Violett» und «Himmelblau» zur Auswahl. Die Bezeichnungen werden als eigene Varianten geführt. Wähle den vollständigen Namen deiner gewünschten Ausführung.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weitere Ideen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n"
+  },
+  "15412304773505/MANIFEST.json": {
+    "sha256": "0eb44d3cfb36f13d43ae2ce18ba97bccb868d5bf4c2901571bea3691dc5af915",
+    "content": {
+      "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+      "productId": "gid://shopify/Product/15412304773505",
+      "title": "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+      "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+      "beforeSha256": "8634cbb8317eb5a9abe2b43777ebe47c186bdcab2a0cace45c553ed065d447d8",
+      "afterSha256": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+      "sourceCapturedAtUTC": "2026-10-27T13:42:10Z",
+      "source": "NATIVE-FRESH.json",
+      "coreWords": 90,
+      "imageFilesViewed": 6,
+      "imageProof": "IMAGE-SOURCES.json",
+      "originalHrefTargets": [
+        "/collections/kuechenhelfer",
+        "/collections/kochen-backen"
+      ],
+      "hrefsAfter": [
+        "/policies/shipping-policy",
+        "/policies/refund-policy",
+        "/collections/kuechenhelfer",
+        "/collections/kochen-backen"
+      ],
+      "allOriginalHrefTargetsPreserved": true,
+      "serviceChange": "Removed description-local unproven delivery/location assurance and technical claims; neutral policy references only. Actual policies/settings untouched.",
+      "writeScope": [
+        "id",
+        "descriptionHtml"
+      ],
+      "liveWrites": 0,
+      "nativeVariantCount": 2,
+      "variantIdentityAndLabels": [
+        {
+          "id": "gid://shopify/ProductVariant/67788989235591",
+          "title": "Schärfer",
+          "sku": "CJYD291530101AZ"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67788989268359",
+          "title": "Mit 2 Schleifscheiben",
+          "sku": "CJYD291530102BY"
+        }
+      ],
+      "reviewLimits": [
+        "Photo appearance not an independent supplier, function, conformity or rights approval",
+        "No stock/delivery/returns/payment promise",
+        "Existing title outside description-only write scope remains source caveat",
+        "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+      ],
+      "notPromised": [
+        "universal knife compatibility",
+        "sharpness speed/result",
+        "finger protection/safety",
+        "material/weight/multistage function",
+        "additional pictured component inclusion beyond quoting actual variant label"
+      ],
+      "titleCaveat": "Native precision/profi title remains unchanged; no performance approval inferred."
+    }
+  },
+  "15412304773505/CLAIMS.md": {
+    "sha256": "37d7ace0ace423969c6081fa93d40fcd2f18934d7d654c161e975288a23b0402",
+    "content": "# Quellen und Grenzen\n\nProdukt gid://shopify/Product/15412304773505. Nur Beschreibungstext-Entwurf, kein Write.\n\n| Aussage | Quelle | Grenze |\n|---|---|---|\n| Länglicher schwarzer Körper, Aussparung, helle Leiste, zentrale V-Elemente und seitliche Drehknöpfe | Alle sechs zugeordneten Originalbilder visuell geprüft und frisch HTTP 200/SHA gesichert | Kein Material, Schleifwinkel, Sicherheits- oder Leistungsnachweis |\n| Anwendungsszene mit Messer | Bilder 4/5 zeigen Messer am Gerät | Kein Nachweis universeller Messerkompatibilität oder eines bestimmten Ergebnisses |\n| «Schärfer» und «Mit 2 Schleifscheiben» | Zwei aktuelle native Varianten mit exakten Titeln/IDs/SKUs | Auswahlbezeichnungen werden zitiert; kein zusätzlicher Lieferumfang erfunden |\n| Neutrale Versand-/Rückgabelinks | Bestehende Shop-Policyrouten aus aktueller Projektgrundlage | Keine Lieferfrist, Rückgabedauer, Zahlung oder Lagerposition zugesagt; keine tatsächliche Policy geändert |\n\nVor Write aktuelle Quelle und angezeigte Auswahl nochmals lesen. Das frühere Delivery-/Schutz-/Technikversprechen wird durch diesen Entwurf nicht neu verifiziert.\n"
+  },
+  "15412304773505/IMAGE-SOURCES.json": {
+    "sha256": "fe578bd189954b37beebaf82e1468bc623b51025951b71532729a0e22be869b9",
+    "content": [
+      {
+        "index": 1,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg?v=1780218397",
+        "nativeMediaId": "gid://shopify/MediaImage/69550363050369",
+        "capturedAtUTC": "2026-10-27T13:42:24.895391+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-1.jpg",
+        "bytes": 32907,
+        "sha256": "b3b37f5e8b66e6f7d20e74b31b0f08a4037eae6f37b25cad900443a33d73cc05"
+      },
+      {
+        "index": 2,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg?v=1780218395",
+        "nativeMediaId": "gid://shopify/MediaImage/69550362984833",
+        "capturedAtUTC": "2026-10-27T13:42:24.897986+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-2.jpg",
+        "bytes": 15898,
+        "sha256": "3bb4128e5a853d2d68bc932319e04b43d625fef365550f7a9f6b0c45a1badced"
+      },
+      {
+        "index": 3,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/650669bb-1dcf-4dd3-aa0c-951a6b0bddb8.jpg?v=1780218396",
+        "nativeMediaId": "gid://shopify/MediaImage/69550363017601",
+        "capturedAtUTC": "2026-10-27T13:42:24.898784+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-3.jpg",
+        "bytes": 12622,
+        "sha256": "836f8889d0b6f85befdab2805a674e23fcd972ac40dc1228bc0116deb653653e"
+      },
+      {
+        "index": 4,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e260ef1-cee0-48ce-bea8-a579cc2d9a53.jpg?v=1780218396",
+        "nativeMediaId": "gid://shopify/MediaImage/69550363083137",
+        "capturedAtUTC": "2026-10-27T13:42:26.298256+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-4.jpg",
+        "bytes": 32520,
+        "sha256": "56396202a3a0a7b584a714e8bd25b4fdc95eb9be1d6f1bc2cb0435e1f976c8dc"
+      },
+      {
+        "index": 5,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc72a7c6-6d15-476a-853d-00a265f98753.jpg?v=1780218395",
+        "nativeMediaId": "gid://shopify/MediaImage/69550363115905",
+        "capturedAtUTC": "2026-10-27T13:42:26.844786+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-5.jpg",
+        "bytes": 24827,
+        "sha256": "71321f5d084c9c350053f90b4aae9550b0fabea446e1158dec5c0e624b4bc7e2"
+      },
+      {
+        "index": 6,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchen-edit.jpg?v=1781097176",
+        "nativeMediaId": "gid://shopify/MediaImage/69650063720833",
+        "capturedAtUTC": "2026-10-27T13:42:27.007815+00:00",
+        "httpStatus": 200,
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304773505/image-6.jpg",
+        "bytes": 44859,
+        "sha256": "ffcf9b4f6a8f07876a5a4b4c656d9303cfd3e2912a9352ddba83c37c92e2f12c"
+      }
+    ]
+  },
+  "15412304773505/description.diff": {
+    "sha256": "ab62fa2c8fd0d21778b5770324fda5bec0a779e3a9a35f80cc21c3267da9b9c7",
+    "content": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,16 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Stumpfe Messer adé.</strong> Der kompakte Präzisions-Messerschärfer bringt Küchen- und Taschenmesser in Sekunden zurück auf Rasiermesser-Schärfe – einfach, sicher und ohne Vorkenntnisse.</p>\n-<ul>\n-<li>🔪 <strong>Schnelle Präzisions-Schärfung</strong> für jedes Messer</li>\n-<li>🛡️ <strong>Sicherer Griff</strong> – Finger bleiben geschützt</li>\n-<li>⚙️ <strong>Mehrstufig</strong> – Schleifen &amp; Polieren in einem</li>\n-<li>🧼 Kompakt &amp; leicht zu verstauen</li>\n-<li>🍳 Ideal für jede Küche &amp; Outdoor</li>\n-</ul>\n-<p><em></em></p>\n-<!--xsell--><div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul><li>\n-<strong>Gewicht:</strong> ca. 150 g – 180 g (je nach Variante)</li></ul>\n-</div>\n-<p>👉 Passt dazu: <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>+<p><strong>Ein Messerschärfer mit markanter Bauform.</strong> Der längliche schwarze Korpus hat eine breite Aussparung im unteren Bereich. Darüber verläuft eine helle Leiste mit mittig angeordneten Elementen in V-Form. Seitliche Drehknöpfe ergänzen die klare Linienführung.</p>\n+<h3>Details aus verschiedenen Blickwinkeln</h3>\n+<p>Die Produktansichten zeigen die Oberseite, das Profil und eine Anwendungsszene mit einem Messer. So kannst du Aufbau und Konturen vor der Auswahl näher betrachten.</p>\n+<h3>Deine Ausführung auswählen</h3>\n+<p>In der aktuellen Auswahl stehen «Schärfer» und «Mit 2 Schleifscheiben». Wähle die vollständige Bezeichnung deiner gewünschten Variante. Der angezeigte Preis bezieht sich auf die ausgewählte Ausführung.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weitere Ideen:</strong> <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p>\n"
+  },
+  "15412304806273/MANIFEST.json": {
+    "sha256": "cee7f698b22bf83122315bee20ffc68a88dfe222adeed9fb6dafb4962333c44a",
+    "content": {
+      "productId": "gid://shopify/Product/15412304806273",
+      "title": "Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)",
+      "url": "https://luxestyle.ch/products/elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben",
+      "state": "PASS_REQUIRES_FRESH_SOURCE",
+      "sourceCapturedAtUTC": "2026-10-27T13:41:57+00:00",
+      "beforeSha256": "19dc2f0f67f464a8e5c650576df41dbd9ee2a0aad6b2c33f5a83df0be0d8dfa5",
+      "afterSha256": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+      "source": "NATIVE-FRESH.json",
+      "coreWords": 104,
+      "imageSources": "IMAGE-SOURCES.json",
+      "actualImagesViewed": 3,
+      "nativeVariantCount": 3,
+      "nativeVariantLabels": [
+        "Schwarz",
+        "Gelb",
+        "Beige"
+      ],
+      "sourceAssertionsRemoved": [
+        "unverified textile/material claims",
+        "unverified physical dimensions or weight",
+        "adjustability/fit and functions not demonstrated",
+        "delivery10–20days/country-only badge"
+      ],
+      "serviceChange": "Removed unsupported description-local delivery badge; neutral shipping/refund links added. No policy/settings changed.",
+      "originalHrefTargets": [
+        "https://luxestyle.ch/collections/taschen-sub"
+      ],
+      "originalHrefTargetsPreserved": true,
+      "fieldsToWrite": [
+        "id",
+        "descriptionHtml"
+      ],
+      "writes": 0,
+      "rootMustFreshReadBeforeWrite": true,
+      "remainingSourceLimits": [
+        "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+        "Current source images/variants must still match before description-only write",
+        "Native colour label is Beige, not old Creme. Black view is less reflective; new copy restricts reflection wording to light/yellow photos. No adjustable strap, internal pocket or real PU/weight claim."
+      ]
+    }
+  },
+  "15412304806273/CLAIMS.md": {
+    "sha256": "430d820dd748b41a41c8c9ff2da29a504f459e56ca49e098e021819234c57af5",
+    "content": "# Umhängetasche: Quellen und Grenzen des Beschreibungstexts\n\nFrische native Quelle: ACTIVE, drei tatsächliche Farbvarianten Schwarz, Gelb und Beige. Die alte Beschreibung «Creme» wird durch das aktuelle Label Beige ersetzt. Daraus folgt keine allgemeine Bestands- oder Lieferzusage.\n\nDrei echte zugeordnete Originalbilder wurden heruntergeladen und angesehen: Front in hellem Ton, schwarze Handansicht und gelbe Frontansicht. Bildlich gedeckt sind das lange Querformat, die grosse Klappe mit leicht zugespitzter Unterkante, die goldfarbene Zierlinie und eine sichtbare Gliederkette. Die Oberfläche reflektiert in den hellen und gelben Bildern Licht; die schwarze Ansicht wirkt matter. Die neue Formulierung beschränkt die Spiegelung deshalb auf die tatsächlich entsprechenden Bilder.\n\nDer neue Text nennt weder PU-/Lederzusammensetzung noch 245 g, Kapazität, Innenfach, verstellbaren Riemen oder besondere Tragfunktion. Eine goldfarbene Kette ist keine Aussage über das tatsächliche Metall. Stylingideen sind als Kombinationen formuliert und keine Eigenschaften des gelieferten Produkts.\n\nDie unbelegte Beschreibungskachel mit Lieferfrist/Liefergebiet entfällt. Neutrale Shipping-/Refund-Policylinks ergänzen den Text; das bestehende absolute Collectionziel https://luxestyle.ch/collections/taschen-sub bleibt unverändert. Preise, Optionen, Titel, Bilder, Tags, Status und Shopregeln bleiben ausserhalb des Beschreibungstext-Diffs. Kein Livewrite durch diesen Teilauftrag.\n"
+  },
+  "15412304806273/IMAGE-SOURCES.json": {
+    "sha256": "68f9937c63df61ce8b8d5e979b5c0ddcd37b6efc8def7ceb87e51282a0b822ba",
+    "content": [
+      {
+        "index": 1,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b048eb27-9023-4123-98aa-f43e8fc23052_water.jpg?v=1780218407",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304806273/image-1.jpg",
+        "httpStatus": 200,
+        "bytes": 91890,
+        "sha256": "0abd1ec4f999e94c8ac9e11a0ed91a0ff71ebfc609bbdadbe7619364aace1628",
+        "capturedAtUTC": "2026-10-27T13:42:13.718447+00:00"
+      },
+      {
+        "index": 2,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd91feeb-5c8c-476b-a142-371b646f9edc_water.jpg?v=1780218407",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304806273/image-2.jpg",
+        "httpStatus": 200,
+        "bytes": 174093,
+        "sha256": "383098a6b9193b753eae096857715ffc5f302cc54f65d09f39cbef353ccce468",
+        "capturedAtUTC": "2026-10-27T13:42:14.536590+00:00"
+      },
+      {
+        "index": 4,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/094a1a51-c7f2-4d22-be0b-8ff1315a2d76_water.jpg?v=1780218407",
+        "path": "/workspace/luxestyle-review/weiter-20261027-1440/15412304806273/image-4.jpg",
+        "httpStatus": 200,
+        "bytes": 37397,
+        "sha256": "6b545d781ad885464a1924e80f2b18e51882a76d15bb6f5ad6c8d505d38eba32",
+        "capturedAtUTC": "2026-10-27T13:42:16.068687+00:00"
+      }
+    ]
+  },
+  "15412304806273/description.diff": {
+    "sha256": "8b4fc82666f526340b8592a0b9ad356fb6a451848620d020765681724adca558",
+    "content": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,19 +1,8 @@\n-<!-- ls-var-v1 --><p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n-<p><strong>Stilvoller Begleiter für jeden Anlass.</strong> Die schicke Crossbody-Tasche in glänzender Lack-Optik ist der perfekte Mix aus Eleganz und Alltagstauglichkeit – für Stadt, Date oder Büro.</p>\n-<ul>\n-<li>👜 <strong>Hochwertiges PU in Lack-Optik</strong> – edler Glanz</li>\n-<li>📏 <strong>Kompaktes Querformat</strong> mit Innenfach</li>\n-<li>🔗 <strong>Verstellbarer Kettenriemen</strong> – Crossbody oder Schulter</li>\n-<li>🎨 <strong>3 Farben</strong> – Schwarz, Gelb, Creme</li>\n-<li>🌆 Urbaner Minimalismus für jeden Look</li>\n-</ul>\n-<p><em></em></p><p>👉 <strong><a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken →</a></strong></p>\n-<div class=\"ls-produktdetails\">\n-<h4>Produktdetails</h4>\n-<ul>\n-<li>\n-<strong>Material:</strong> PU-Leder</li>\n-<li>\n-<strong>Gewicht:</strong> ca. 245 g</li>\n-</ul>\n-</div>+<p><strong>Klare Konturen mit glänzenden Akzenten.</strong> Die Umhängetasche zeigt ein längliches Querformat und eine grosse Frontklappe mit leicht zugespitzter Unterkante. Eine goldfarbene Zierlinie betont die Form der Klappe; eine Gliederkette ergänzt den Look. In den hellen und gelben Produktansichten spiegelt sich das Licht auf der Oberfläche.</p>\n+<h3>Eine Idee für dein Outfit</h3>\n+<p>Kombiniere die Tasche mit einem schlichten Kleid oder einer geradlinigen Bluse, damit Klappenform und Kettendetail zur Geltung kommen. Ein einzelnes goldfarbenes Accessoire kann den Ton der Zierlinie aufgreifen.</p>\n+<h3>Die passende Farbe auswählen</h3>\n+<p>In der aktuellen Variantenauswahl findest du Schwarz, Gelb und Beige. Wähle die gewünschte Farbbezeichnung aus und sieh dir die entsprechende Produktansicht an.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<p><strong>Weiter entdecken:</strong> <a href=\"https://luxestyle.ch/collections/taschen-sub\">Mehr Taschen entdecken</a></p>\n"
+  },
+  "review/REVIEW.json": {
+    "reviewId": "luxe_description_batch_weiter_20261027_1440",
+    "recordedAtUTC": "2026-10-27T13:48:02.440350+00:00",
+    "status": "COMPLETE_4_OF_4",
+    "ownLiveApiCalls": 0,
+    "ownShopWrites": 0,
+    "ownRepoWrites": 0,
+    "separateUnitTestsForCopy": 0,
+    "actualSourceAndFragmentChecks": true,
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15412302020993",
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "beforeSha256": "c6d88e172e8bb3ed3621bb13364128cf6d3843c2273684d642d5c50e80e61641",
+        "afterSha256": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+        "sourceNativeExact": true,
+        "assignedImageRecordsChecked": 9,
+        "originalHrefTargets": [
+          "/collections/sommer",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/sommer",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "htmlFragmentBalanced": true,
+        "serviceChange": "Unverified description-local delivery/technical/service claims removed and replaced with neutral policy links. Actual policy or settings unchanged.",
+        "onlyPermittedWriteFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "reviewedFiles": {
+          "NATIVE-FRESH.json": "3de6766ba429349c6e3bb727af1497164829a0b54cd9c37db560975b0249f9a5",
+          "BEFORE.html": "c6d88e172e8bb3ed3621bb13364128cf6d3843c2273684d642d5c50e80e61641",
+          "AFTER.html": "bc56fb7625f75e01c5428058f1cab40ecf64ef0e4b306b01f32f8f90373abe2f",
+          "MANIFEST.json": "761499b4c7b7715aa1fa6c1a00d48d221b2a1d59a134bf0cbe2f16e579601142",
+          "description.diff": "ff496bce1d3403aa6c618ad938ad0d2d863868048f75d1d1037166fdb8f6b633",
+          "CLAIMS.md": "7e370b8910957fe2634f74bd93d433ab3b4311b2069842c2ca12657d1ae0a51b",
+          "IMAGE-SOURCES.json": "d29213c31cd9dd1f402278473b238de3c344c624d557ae08f1830260e605ce5e"
+        },
+        "sourceLimits": [
+          "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+          "Current source images/variants must still match before description-only write",
+          "Old main/detail images contain different decorative motifs (snowflake/cross/shield). Latest six appended images all show snowflake in the six native colours; exact supplier binding is not independently authenticated. New body deliberately only says front decorative accent and shared cap geometry; no motif selection or exact motif guarantee. Existing title untouched."
+        ],
+        "claims": "Shared cap geometry/seams/washed-looking visual colour texture plus6exactnativecolourlabels and styling. No exact motif delivery/material/circumference/adjustment guarantee.",
+        "independentVisualScope": "Original image1 andimage3 directly viewed; all9freshimage-recordbytes bound and author-reviewed; differing motifs retained as source caveat."
+      },
+      {
+        "productId": "gid://shopify/Product/15412304806273",
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "beforeSha256": "19dc2f0f67f464a8e5c650576df41dbd9ee2a0aad6b2c33f5a83df0be0d8dfa5",
+        "afterSha256": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+        "sourceNativeExact": true,
+        "assignedImageRecordsChecked": 3,
+        "originalHrefTargets": [
+          "https://luxestyle.ch/collections/taschen-sub"
+        ],
+        "afterHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "https://luxestyle.ch/collections/taschen-sub"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "htmlFragmentBalanced": true,
+        "serviceChange": "Unverified description-local delivery/technical/service claims removed and replaced with neutral policy links. Actual policy or settings unchanged.",
+        "onlyPermittedWriteFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "reviewedFiles": {
+          "NATIVE-FRESH.json": "3bc8f34a5ac6319868a98a78384cad1edbe8f6dfb8208dcdb4507447120585fa",
+          "BEFORE.html": "19dc2f0f67f464a8e5c650576df41dbd9ee2a0aad6b2c33f5a83df0be0d8dfa5",
+          "AFTER.html": "b326282cabea4e557e869d34443e76a7d514615c09f5b3c856a8d48f45d9f4ee",
+          "MANIFEST.json": "cee7f698b22bf83122315bee20ffc68a88dfe222adeed9fb6dafb4962333c44a",
+          "description.diff": "8b4fc82666f526340b8592a0b9ad356fb6a451848620d020765681724adca558",
+          "CLAIMS.md": "430d820dd748b41a41c8c9ff2da29a504f459e56ca49e098e021819234c57af5",
+          "IMAGE-SOURCES.json": "68f9937c63df61ce8b8d5e979b5c0ddcd37b6efc8def7ceb87e51282a0b822ba"
+        },
+        "sourceLimits": [
+          "No independent supplier/conformity/material/measurement/fit or fulfilment evidence",
+          "Current source images/variants must still match before description-only write",
+          "Native colour label is Beige, not old Creme. Black view is less reflective; new copy restricts reflection wording to light/yellow photos. No adjustable strap, internal pocket or real PU/weight claim."
+        ],
+        "claims": "Rectangular envelope-flap geometry, gold-coloured trim/chain appearance and reflection restricted to light/yellow views;3exactnativecolourlabels. No material/capacity/weight/interior/strap adjustment promise.",
+        "independentVisualScope": "Original image1 andimage4 directly viewed; all3freshassignedimage-recordhashes checked."
+      },
+      {
+        "productId": "gid://shopify/Product/15412302512513",
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "beforeSha256": "a967f27acd88db6f1b6971d190f4f39509b13c7ee96bf34c6849287d622c8345",
+        "afterSha256": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+        "sourceNativeExact": true,
+        "assignedImageRecordsChecked": 11,
+        "originalHrefTargets": [
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "htmlFragmentBalanced": true,
+        "serviceChange": "Unverified description-local delivery/technical/service claims removed and replaced with neutral policy links. Actual policy or settings unchanged.",
+        "onlyPermittedWriteFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "reviewedFiles": {
+          "NATIVE-FRESH.json": "41ae6e8e61d874893bf7ef35dfab97ca41055bc631f691d270bac755bc7582f9",
+          "BEFORE.html": "a967f27acd88db6f1b6971d190f4f39509b13c7ee96bf34c6849287d622c8345",
+          "AFTER.html": "9711afd9625328bcb5e9ed2d7813717567ab7755b92bf11ccfa74c67020a677d",
+          "MANIFEST.json": "6a295bdd05f3a04922dda010c94ecbd5da04784814159c4b1a3f5e7f63de23db",
+          "description.diff": "4484d689f9f1ae68015bb95d1d130c0fce6a94ee8c9c4755fa2ee68cdaaa3459",
+          "CLAIMS.md": "203cabe54bc12c949061e20818fe78969e4e871c23d2eca970b0d6042b182fdc",
+          "IMAGE-SOURCES.json": "10039ffb364e6365a6405853c2e4451e97686dcd8dc368bbd594f8dabca285d8"
+        },
+        "sourceLimits": [
+          "Photo appearance not an independent supplier, function, conformity or rights approval",
+          "No stock/delivery/returns/payment promise",
+          "Existing title outside description-only write scope remains source caveat",
+          "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+        ],
+        "claims": "Mini smartphone umbrella context corrected explicitly; canopy/stem/clamp appearance and12exactnativevariantlabels. No body-sized umbrella, UV/rain/wind/thermal/securefit/compatibility claim.",
+        "independentVisualScope": "Original image3 directly viewed; contact sheet of all11assignedoriginals viewed. Title retains unverified rain/UV wording outside this field scope."
+      },
+      {
+        "productId": "gid://shopify/Product/15412304773505",
+        "state": "PASS_REQUIRES_FRESH_ROOT_SOURCE",
+        "beforeSha256": "8634cbb8317eb5a9abe2b43777ebe47c186bdcab2a0cace45c553ed065d447d8",
+        "afterSha256": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+        "sourceNativeExact": true,
+        "assignedImageRecordsChecked": 6,
+        "originalHrefTargets": [
+          "/collections/kuechenhelfer",
+          "/collections/kochen-backen"
+        ],
+        "afterHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/kuechenhelfer",
+          "/collections/kochen-backen"
+        ],
+        "allOriginalHrefTargetsPreserved": true,
+        "htmlFragmentBalanced": true,
+        "serviceChange": "Unverified description-local delivery/technical/service claims removed and replaced with neutral policy links. Actual policy or settings unchanged.",
+        "onlyPermittedWriteFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "reviewedFiles": {
+          "NATIVE-FRESH.json": "4759e7c4280a74977b70b62a2b514b2369e3cd59be494db8f487e42fd4b68b06",
+          "BEFORE.html": "8634cbb8317eb5a9abe2b43777ebe47c186bdcab2a0cace45c553ed065d447d8",
+          "AFTER.html": "422d5e2e60986c07d825b6711ccc851d2be4c4cffe757b4cd234b288f3aac79b",
+          "MANIFEST.json": "0eb44d3cfb36f13d43ae2ce18ba97bccb868d5bf4c2901571bea3691dc5af915",
+          "description.diff": "ab62fa2c8fd0d21778b5770324fda5bec0a779e3a9a35f80cc21c3267da9b9c7",
+          "CLAIMS.md": "37d7ace0ace423969c6081fa93d40fcd2f18934d7d654c161e975288a23b0402",
+          "IMAGE-SOURCES.json": "fe578bd189954b37beebaf82e1468bc623b51025951b71532729a0e22be869b9"
+        },
+        "sourceLimits": [
+          "Photo appearance not an independent supplier, function, conformity or rights approval",
+          "No stock/delivery/returns/payment promise",
+          "Existing title outside description-only write scope remains source caveat",
+          "Root must read native exact BEFORE, image identities and current variant labels before writing; after already present is no-op"
+        ],
+        "claims": "Visible elongated black frame/gap/light strip/V-elements/knobs and exact2nativeoptionlabels; no speed/universal compatibility/sharpness/finger protection/multistage/material/weight guarantee.",
+        "independentVisualScope": "Contact sheet of all6assignedoriginals viewed, including actual pictured knife context; no function test inferred."
+      }
+    ],
+    "rootPrewriteRequired": "Fresh known product identity/status, exact BEFORE, assigned images and current variant labels. Existing target means no-op; changed source means new diff, not blind overwrite. Only descriptionHtml, then native/public exact readback.",
+    "notGranted": [
+      "supplier/fulfilment or exact-package approval",
+      "media or commercial rights approval",
+      "electrical/safety/performance/conformity certification",
+      "stock/delivery or Social publication approval"
+    ],
+    "independentVisualSourceCount": 21,
+    "downloadedImageRecordsHashChecked": 29
+  },
+  "WORKLIST-DELTA.json": {
+    "priorEvents": 12,
+    "newEvents": 20,
+    "newEventIds": [
+      "luxe_product_description_15412302020993_20261027_1440::CONFIRMED",
+      "luxe_product_description_15412302020993_20261027_1440::INFLIGHT",
+      "luxe_product_description_15412302512513_20261027_1440::CONFIRMED",
+      "luxe_product_description_15412302512513_20261027_1440::INFLIGHT",
+      "luxe_product_description_15412304773505_20261027_1440::CONFIRMED",
+      "luxe_product_description_15412304773505_20261027_1440::INFLIGHT",
+      "luxe_product_description_15412304806273_20261027_1440::CONFIRMED",
+      "luxe_product_description_15412304806273_20261027_1440::INFLIGHT"
+    ],
+    "previousEventsUnchanged": true,
+    "confirmedBefore": 11,
+    "confirmedAfter": 15,
+    "ownProductWritesThisContinuation": 4,
+    "worklistOwnApiWrites": 0
+  }
+}
