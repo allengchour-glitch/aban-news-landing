@@ -1,0 +1,65 @@
+{%- doc -%}
+  Mega-Menü von LuxeStyle (27.10.2026): Fliess-Spalten mit klaren Überschriften statt starrem Raster, keine Silbentrennung,
+  oben «Alles ansehen». Ersetzt die Vorlage von Horizon; die Parameter bleiben gleich.
+  Produktkacheln rechts wurden getestet und verworfen: die ersten zwei Produkte einer Kategorie sind nicht die schönsten,
+  und die Spalten für die Kacheln kosten Platz (die Liste müsste im Menü scrollen).
+
+  @param {object} parent_link - The linklist to render.
+  @param {string} id - Unique ID to assign to the wrapper element.
+  @param {object} [section] - The section object.
+{%- enddoc -%}
+
+<div class="lxm" data-menu-list-id="{{ id }}">
+<div class="lxm__wrap">
+  <div class="lxm__main">
+    <a class="lxm__all" href="{{ parent_link.url }}"><span class="wrap-text">Alles in «{{ parent_link.title }}» ansehen</span> <span aria-hidden="true">→</span></a>
+    <ul class="lxm__cols list-unstyled">
+      {%- assign leaf_i = 0 -%}
+      {%- for link in parent_link.links -%}
+        {%- if link.links == blank and link.url != parent_link.url -%}
+          {%- assign leaf_rest = leaf_i | modulo: 9 -%}
+          {%- if leaf_rest == 0 -%}
+            {%- if leaf_i > 0 -%}</ul></li>{%- endif -%}
+            <li class="lxm__col lxm__col--plain"><ul class="lxm__links list-unstyled">
+          {%- endif -%}
+          <li><a class="lxm__link" href="{{ link.url }}"><span class="wrap-text">{{ link.title }}</span></a></li>
+          {%- assign leaf_i = leaf_i | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if leaf_i > 0 -%}</ul></li>{%- endif -%}
+      {%- for link in parent_link.links -%}
+        {%- if link.links != blank -%}
+          <li class="lxm__col">
+            <a class="lxm__head" href="{{ link.url }}"><span class="wrap-text">{{ link.title }}</span></a>
+            <ul class="lxm__links list-unstyled">
+              {%- for child in link.links -%}
+                <li><a class="lxm__link" href="{{ child.url }}"><span class="wrap-text">{{ child.title }}</span></a></li>
+              {%- endfor -%}
+            </ul>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+</div>
+
+{% stylesheet %}
+  .mega-menu__grid > .lxm { grid-column: 1 / -1; }
+  .lxm { container-type: inline-size; padding-block: 6px 12px; }
+  .lxm__wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 40px; }
+  .lxm__main { min-width: 0; }
+  .lxm__all { display: inline-flex; gap: 8px; align-items: baseline; margin: 0 0 16px; padding: 7px 16px; border-radius: 999px; background: #2c2c2c; color: #fff; font-size: 13.5px; font-weight: 600; text-decoration: none; transition: background .35s ease; }
+  .lxm__all:hover, .lxm__all:focus-visible { background: #8b7355; color: #fff; }
+  .lxm__cols { display: block; margin: 0; padding: 0; column-width: 205px; column-gap: 40px; }
+  .lxm__col { display: block; break-inside: avoid; margin: 0 0 22px; padding: 0; }
+  .lxm__head { display: block; margin: 0 0 8px; padding: 0 0 7px; border-bottom: 1px solid rgba(44, 44, 44, .16); color: #2c2c2c; font-size: 14.5px; font-weight: 700; letter-spacing: .01em; text-decoration: none; }
+  .lxm__links { margin: 0; padding: 0; }
+  .lxm__link { display: block; padding: 4px 0; color: rgba(44, 44, 44, .85); font-size: 14.5px; line-height: 1.35; text-decoration: none; transition: color .3s ease, transform .3s ease; }
+  .lxm__link:hover, .lxm__link:focus-visible, .lxm__head:hover { color: #8b7355; }
+  .lxm__link:hover { transform: translateX(3px); }
+  .lxm__head, .lxm__link, .lxm__all, .lxm .wrap-text { hyphens: none; -webkit-hyphens: none; overflow-wrap: normal; word-break: normal; white-space: normal; max-width: 100%; }
+  .lxm__link .wrap-text, .lxm__head .wrap-text { display: block; }
+  @container (max-width: 700px) { .lxm__cols { column-width: 180px; column-gap: 28px; } }
+  @media (prefers-reduced-motion: reduce) { .lxm__link, .lxm__all { transition: none; } }
+{% endstylesheet %}
