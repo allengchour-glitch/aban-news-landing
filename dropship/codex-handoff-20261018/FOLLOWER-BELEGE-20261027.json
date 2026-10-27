@@ -1,0 +1,328 @@
+{
+  "checkedAtUTC": "2026-10-27T19:04:41.401379+00:00",
+  "scope": "Local prior27Oct evidence only; no platform/profile search or new analytical read",
+  "source": {
+    "path": "/workspace/luxestyle-review/tagespruefung-20261027/metricool/METRIKEN-QUELLEN.json",
+    "sha256": "2658740e5869ab64e94258e261c44558bb7923e0c0e649aa924112ba302306b3",
+    "originalReadAtUTC": "2026-10-27T07:06:14.554Z",
+    "period": {
+      "from": "2026-10-20T00:00:00+02:00",
+      "to": "2026-10-26T23:59:59+01:00",
+      "completedZurichDates": [
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26"
+      ],
+      "dst": "Europe/Zurich changed +02 to +01 on25Oct; offsets explicit"
+    }
+  },
+  "brandId": 6227837,
+  "availableFollowerMetrics": {
+    "instagram": [
+      {
+        "fieldId": "IGEV01",
+        "network": "instagram",
+        "connector": "evolution",
+        "index": 1,
+        "metricName": "followers",
+        "metricLabel": "Instagram Evolution > Followers",
+        "description": "Current number of followers.",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "IGEV43",
+        "network": "instagram",
+        "connector": "evolution",
+        "index": 43,
+        "metricName": "followersGained",
+        "metricLabel": "Instagram Evolution > Followers Gained",
+        "description": "Number of followers gained.",
+        "dataAggregation": "SUM"
+      },
+      {
+        "fieldId": "IGEV44",
+        "network": "instagram",
+        "connector": "evolution",
+        "index": 44,
+        "metricName": "followersLost",
+        "metricLabel": "Instagram Evolution > Followers Lost",
+        "description": "Number of followers lost.",
+        "dataAggregation": "SUM"
+      }
+    ],
+    "facebook": [
+      {
+        "fieldId": "FBEV17",
+        "network": "facebook",
+        "connector": "evolution",
+        "index": 17,
+        "metricName": "fbFollowers",
+        "metricLabel": "Facebook Evolution > Page Followers",
+        "description": "Number of people following this page",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "FBEV47",
+        "network": "facebook",
+        "connector": "evolution",
+        "index": 47,
+        "metricName": "followersAcquired",
+        "metricLabel": "Facebook Evolution > Page Followers Acquired",
+        "description": "Followers acquired.",
+        "dataAggregation": "SUM"
+      },
+      {
+        "fieldId": "FBEV48",
+        "network": "facebook",
+        "connector": "evolution",
+        "index": 48,
+        "metricName": "followersLost",
+        "metricLabel": "Facebook Evolution > Page Followers Lost",
+        "description": "Followers lost.",
+        "dataAggregation": "SUM"
+      }
+    ],
+    "youtube": [
+      {
+        "fieldId": "YTEV01",
+        "network": "youtube",
+        "connector": "evolution",
+        "index": 1,
+        "metricName": "subscribers",
+        "metricLabel": "Youtube Evolution > Subscribers",
+        "description": "Current number of subscribers",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "YTEV05",
+        "network": "youtube",
+        "connector": "evolution",
+        "index": 5,
+        "metricName": "gained",
+        "metricLabel": "Youtube Evolution > Followers Gained",
+        "description": "Subscribers gained in the period selected.",
+        "dataAggregation": "SUM"
+      },
+      {
+        "fieldId": "YTEV06",
+        "network": "youtube",
+        "connector": "evolution",
+        "index": 6,
+        "metricName": "lost",
+        "metricLabel": "Youtube Evolution > Followers Lost",
+        "description": "Subscribers lost in the period selected.",
+        "dataAggregation": "SUM"
+      }
+    ],
+    "tiktok": [
+      {
+        "fieldId": "TKEV07",
+        "network": "tiktok",
+        "connector": "evolution",
+        "index": 7,
+        "metricName": "followers",
+        "metricLabel": "TikTok Evolution > Followers",
+        "description": "Current number of followers.",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "TKEV08",
+        "network": "tiktok",
+        "connector": "evolution",
+        "index": 8,
+        "metricName": "newFollowers",
+        "metricLabel": "TikTok Evolution > New Followers",
+        "description": "Balance of daily followers gained or lost",
+        "dataAggregation": "SUM"
+      },
+      {
+        "fieldId": "TKEV16",
+        "network": "tiktok",
+        "connector": "evolution",
+        "index": 16,
+        "metricName": "followersAcquired",
+        "metricLabel": "TikTok Evolution > Followers Acquired",
+        "description": "Number of followers acquireds",
+        "dataAggregation": "SUM"
+      },
+      {
+        "fieldId": "TKEV17",
+        "network": "tiktok",
+        "connector": "evolution",
+        "index": 17,
+        "metricName": "followersLost",
+        "metricLabel": "TikTok Evolution > Followers Losted",
+        "description": "Number of followers losted",
+        "dataAggregation": "SUM"
+      }
+    ],
+    "threads": [
+      {
+        "fieldId": "THEV01",
+        "network": "threads",
+        "connector": "evolution",
+        "index": 1,
+        "metricName": "followers",
+        "metricLabel": "Threads Evolution >  Followers",
+        "description": "Current number of followers.",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "THEV03",
+        "network": "threads",
+        "connector": "evolution",
+        "index": 3,
+        "metricName": "deltaFollowers",
+        "metricLabel": "Threads Evolution > Delta Followers",
+        "description": "Balance of daily followers gained or lost",
+        "dataAggregation": "SUM"
+      }
+    ],
+    "pinterest": [
+      {
+        "fieldId": "PIEV09",
+        "network": "pinterest",
+        "connector": "evolution",
+        "index": 9,
+        "metricName": "pinterestFollowers",
+        "metricLabel": "Pinterest Evolution > Followers",
+        "description": "Number of users that follow an account",
+        "dataAggregation": "LAST"
+      },
+      {
+        "fieldId": "PIEV10",
+        "network": "pinterest",
+        "connector": "evolution",
+        "index": 10,
+        "metricName": "pinterestDeltaFollowers",
+        "metricLabel": "Pinterest Evolution > Delta followers",
+        "description": "Increase / Decrease of followers an account has",
+        "dataAggregation": "SUM"
+      }
+    ]
+  },
+  "actuallyQueriedMetricIds": {
+    "instagram": [
+      "IGEV23",
+      "IGEV25"
+    ],
+    "facebook": [
+      "FBEV22",
+      "FBEV26"
+    ],
+    "tiktok": [
+      "TKEV02",
+      "TKEV06"
+    ],
+    "youtube": [
+      "YTEV17",
+      "YTEV14",
+      "YTEV16",
+      "YTEV18"
+    ],
+    "threads": [
+      "THEV06",
+      "THEV05"
+    ],
+    "pinterest": [
+      "PIEV01",
+      "PIEV04"
+    ]
+  },
+  "actualFollowerFieldsQueried": [],
+  "verifiedFollowerCounts": {
+    "instagram": null,
+    "facebook": null,
+    "youtube": null,
+    "tiktok": null,
+    "threads": null,
+    "pinterest": null
+  },
+  "verifiedFollowerGains": {
+    "instagram": null,
+    "facebook": null,
+    "youtube": null,
+    "tiktok": null,
+    "threads": null,
+    "pinterest": null
+  },
+  "meaning": "None is unknown/not queried; IDs are available metadata, not measured followers. Existing views/interactions do not establish follower growth.",
+  "plan": {
+    "primaryChannels": [
+      "facebook",
+      "youtube"
+    ],
+    "focus": "One professional current projector master after existing quality/product/rights/history/channel approval gates",
+    "facebookCaptionFollowLine": "Wenn dich Einrichtungsideen und klare Produktansichten interessieren: Folge LuxeStyle.",
+    "youtubeDescriptionFollowLine": "Produktdetails für dein Zuhause interessieren dich? Abonniere LuxeStyle.",
+    "mainFilmCTA": "Produkt ansehen",
+    "followLinePlacement": "Optional prepared caption/description sentence; existing film CTA preserved, not edited or posted",
+    "topics": [
+      "Sternenlicht-Projektor im Detail; exact original device/motif proof required",
+      "Wohnen und Einrichtung für Schweizer Publikum; geography is audience, no Swiss-made/CH-stock claim",
+      "Actual product selection/variant orientation only after exact source mapping"
+    ]
+  },
+  "measurementNextRegularRead": {
+    "facebook": [
+      "FBEV17",
+      "FBEV47",
+      "FBEV48"
+    ],
+    "youtube": [
+      "YTEV01",
+      "YTEV05",
+      "YTEV06"
+    ],
+    "doNotSumStocks": true,
+    "gainedLostDifferenceOnlyWithCompleteIdenticalDateCoverage": true,
+    "clipAttributedFollowerConversion": "unknown; account-level follower change cannot be assigned to a particular clip without source attribution",
+    "noAdditionalRunOrScheduleCreated": true
+  },
+  "actions": {
+    "newMetricCalls": 0,
+    "publicSearchByThisWorker": 0,
+    "contactMessages": 0,
+    "socialPostsOrChanges": 0,
+    "adsOrBudgetChanges": 0,
+    "followUnfollowActions": 0,
+    "shopOrKlaviyoReadsOrWrites": 0,
+    "githubWrites": 0
+  },
+  "officialSourceReads": [
+    {
+      "readAtUTC": "2026-10-27T19:05:49.015Z",
+      "url": "https://support.google.com/youtube/answer/13363900?hl=de",
+      "httpStatus": 200,
+      "excerpt": "[Zum Hauptinhalt springen](https://support.google.com/youtube/answer/13363900?hl=de#hcfe-content)\n\n# Vorteile von Kurzvideos auf YouTube Shorts\n\nYouTube Shorts ist das ideale Format, um sich kurze, maximal 3 Minuten lange Videos auf YouTube anzusehen, sie mit anderen zu teilen oder eigene aufzunehmen.\n\nDu kannst deiner Kreativität freien Lauf lassen, neue Ideen entwickeln und ausprobieren und dich mit anderen austauschen. Dafür brauchst du keine teure Ausrüstung und deiner Fantasie sind keine Grenzen gesetzt.\n\n[Inhalte auf YouTube erstellen: Videos, Kurzvideos und Livestreams](https://www.youtube.com/watch?v=PfTKqh_aqJE)\n\nAbonniere den [YouTube Creators-Kanal](https://www.youtube.com/channel/UCJZEk_r5_jeaV3HFGZgKV3g?sub_confirmation=1), um über Videos mit den neuesten Nachrichten, Updates und Tipps auf dem Laufenden zu bleiben.\n\n### Tipps\n\n#### Welche Vorteile haben Kurzvideos für Zuschauer?\n\n- Es gibt verschiedene Möglichkeiten, wie und wo Nutzer **Kurzvideos finden und ansehen** können:\n\n\n  - auf der YouTube-Startseite\n  - auf dem Tab „Shorts“ in der YouTube App\n  - auf der Startseite eines Kanals\n- Die Wiedergabe von Kurzvideos ist auf jedem Gerät möglich – sei es auf dem Fernseher oder auf einem Mobilgerät. So ist es **ganz einfach**, Lieblingsinhalte zu teilen und anzusehen.\n- Kurzvideos sind ideal, wenn man nach interessanten und unterhaltsamen Inhalten sucht, in denen kreative Ideen **zum Leben erweckt werden**.\n\n#### Welche Vorteile haben Kurzvideos für Creator?\n\n- Du hast Zugang zu **Millionen** YouTube-Zuschauern, die sich **jeden Tag** Kurzvideos ansehen.\n- Wird ein beliebter Clip von dir in anderen Remix-Kurzvideos wiederverwendet? Durch **Verweise auf das Originalvideo** können Zuschauer **deine Inhalte schnell finden und aufrufen**.\n- Haben wir eigentlich schon über die finanzielle Seite gesprochen?Du kannst [YouTube Shorts](https://www.youtube.com/creators/shorts/) als **weitere Einnahmequelle** nutzen und so deine Werbeeinnahmen aus dem YPP aufstocken.\n\n\n### Unsere Empfehlung\n\n- **Beginne mit dem, was du hast:** Alles, was du brauchst, ist ein Smartphone und ein Thema, über das du sprechen möchtest. Ansonsten sind deiner Kreativität quasi keine Grenzen gesetzt.\n- **Versuche, ein möglichst breites Publikum anzusprechen:** Du hast eine kreative Blockade? Mach dir keinen Druck. Wähle einfach Themen, in denen sich jeder irgendwie wiederfinden kann – so sprichst du viele Zuschauer an.\n- **Mach deine Inhalte interaktiv:** Um mehr Reaktionen deiner Zuschauer zu erhalten, reicht es oft schon aus, wenn du z. B. sagst: „Wenn euch das Kurzvideo gefallen hat, könnt ihr es mit ‚Mag ich‘ bewerten und [kommentieren](https://support.google.com/youtube/answer/12816427).“\n- Suche nach anderen Formaten wie [Videos im Langformat](https://support.google.com/youtube/answer/13362274) und [Livestreams](https://support.google.com/youtube/answer/13361370), um zu sehen, ob sie dich interessieren könnten.\n\n",
+      "interpretation": "Shorts can be discovered on home, Shorts tab and channel; suggestions for interactivity. No numeric gain forecast."
+    },
+    {
+      "readAtUTC": "2026-10-27T19:05:49.642Z",
+      "url": "https://about.fb.com/news/2026/03/rewarding-original-creators-on-facebook/",
+      "httpStatus": 200,
+      "excerpt": "[Skip to content](https://about.fb.com/news/2026/03/rewarding-original-creators-on-facebook/#content)\n\n[Back to Newsroom](https://about.fb.com/news)\n\n[Facebook](https://about.fb.com/news/category/technologies/facebook-app/)\n\nMarch 13, 2026March 12, 2026\n\nListen to Article 10Pause 10\n\n0.25×0.5×1×1.25×1.5×2×\n\n![](https://about.fb.com/wp-content/uploads/2026/03/Originality-on-Facebook_Header.jpg)\n\n![](https://about.fb.com/wp-content/plugins/post-media-zip/assets/downloadicon_arrowimg.png)Download image\n\n## Takeaways\n\n- We’resharingourprogressonrewardingcreatorswhopostoriginalcontentonFacebookwithgreaterreachandmonetization,whiledeprioritizingunoriginalcontent.\n- We’veupdatedouroriginalcontentguidelinestogivecreatorsmoreclarityonhowtogettheirworkseenandrecommendedinFeedandReels.\n- We’realsotestingenhancementstoourcontentprotectiontooltohelpcreatorsmorequicklydetectpotentialimpersonationacrossourplatformsandsubmitreportsmoreeasily.\n\nOverthepastyear,we’vemadeFacebookFeedandReelsmorerelevantby[crackingdownonspammycontent](https://about.fb.com/news/2025/04/cracking-down-spammy-content-facebook/?locale=en_US)andmakingitharderfor[copycatsandimpersonators](https://creators.facebook.com/blog/combating-unoriginal-content?locale=en_US)tocrowdoutauthenticcreatorvoices.Today,we’resharingourprogressandhighlightinghowcreatorswhopostoriginalcontentarebeingrewardedonFacebook.\n\nWe’veupdatedourcontentguidelinestoclarifywhatitmeanstobe“original”onFacebook,andwe’restartingtorolloutnewtoolstohelpcreatorsreportpotentialimpersonatorsandprotecttheirwork—givingthemmorecontrolovertheircontent,helpingthemgrowtheirfollowing,andimprovingtheFacebookexperienceforeveryone.\n\n## MoreViews,HigherPayouts,andFewerCopycats\n\nWe’recommittedtoprioritizingoriginalcontentinFacebookFeedandReels,whilereducingthereachofunoriginalcontent.Theseeffortshavedrivenmeasurableimpact:bothviewsandtimespentwatchingoriginalReelsonFacebookapproximatelydoubledinthesecondhalfof2025,comparedwiththesameperiodin2024.AsweinvestinexpandingdistributionfororiginalcontentacrossFeedandReels,payoutopportunitiesfororiginalcreatorsonFacebookcontinuetogrow.\n\nWe’realsotacklingimpersonationhead-on.In2025,weremovedmorethan20millionaccountsimpersonatinglargecontentcreatorsandimpersonationreportsrelatedtolargecontentcreatorsdroppedby33%.\n\n## ClearerGuidelinesforOriginalContent\n\nWe’veupdatedour [contentguidelines](https://www.facebook.com/business/help/262834734651607)tomoreclearlydefinewhatkindofcontentisclassifiedasoriginal,encouragehigh-qualitycontentproduction,andimprovewhatisshowninrecommendations.Here’swhatthismeansinpractice:\n\n- **ContentfilmedorproduceddirectlybyacreatororownerofaProfileorPage** isconsideredoriginalcontentonFacebook.\n- **Reelsselectivelyincorporatingthird-partycontent(suchasremixesoroverlays)** areconsideredoriginalwhenthefocusisanon-screenpresencefromacreatorpresentingsomethinggenuinelynew—likefreshinformation,analysis,orsubstantialimprovementstoastoryline.Simplywatchingalong,reactingwithfacialexpressions,stitchingmultipleclipstogether,ornarratingwhat’salreadyonscreen—withoutaddinganythingmeaningful—isconsideredunoriginalandwilllikelybedeprioritizedinFeedandReels.\n- **Contentthatisduplicativeorinvolvesminoreditstoanothercreator’spost**willbeconsideredunoriginalanddeprioritized.Thisincludesre-uploadingpoststhePageorProfilehadnoroleincreating,ormakinglow-valuechangestosomeoneelse’scontentlikeaddingborders,insertingcaptions,andchangingthereel’sspeed,amongthebehaviorssharedhereandinourhelpcenter.\n\nWhencreatorstransformcontentwithcreativity,theirvideoswillbeeligibleforrecommendationinReelsandFeed,andmaybenefitfromincreaseddistribution.Creatorswhoarenotaddingsubstantialcreativevaluewillseetheircontentdeprioritized,andtheymayseetheiraccountdeemednon-recommendableanddemonetized,iftheycontinuetopostprimarilyunoriginalcontent.\n\nCreatorsalwayshavetheoptiontoappealdecisionsregardingoriginality,andwearecontinuallyworkingtoimprovetheaccuracyofourenforcement.Creatorscanlearnmoreaboutourappealsprocess[here](https://www.facebook.com/business/help/304874908436039?id=2520940424820218).\n\n",
+      "interpretation": "Meta prioritises creator-produced original material. Reused material with minor caption/border/speed edits not necessarily eligible; rights and originality are separate checks."
+    }
+  ],
+  "rootIdentity": {
+    "shop": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "sixChannelsMatchedFresh": true
+  },
+  "rootActions": {
+    "publicSearches": 2,
+    "officialPageReads": 2,
+    "searchFeedbackBothSuccessful": true,
+    "newAnalyticsCalls": 0,
+    "socialWrites": 0,
+    "outreach": 0,
+    "newSchedulesOrProfileChanges": 0
+  }
+}
