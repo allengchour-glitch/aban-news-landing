@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_FOLLOWER_FOKUS_20261027
+
+[Organischer Facebook-/YouTube-Follower-Fokus](FOLLOWER-FOKUS-20261027.md) und [Mess-/Quellenbelege](FOLLOWER-BELEGE-20261027.json) gesichert und exakt zurückgelesen. Nach «suche follower» zwei aktuelle offizielle Meta-/YouTube-Seiten recherchiert, zwei konkrete Follow-/Abo-Captionzeilen und vorhandene gültige Bestands-/Gewonnen-/Verloren-IDs für den nächsten regulären Read vorbereitet. Heute tatsächlich keine Followerfelder abgefragt: Bestände/Zuwächse unbekannt, nicht null; keine Zusage neuer Follower aus Views. Kein zusätzlicher Kennzahlread, Post, Kontakt, Follow/Unfollow, Gruppenbeitritt, Profil- oder Zeitplanchange.
+
+Shop/Metricool samt sechs Identitäten frisch passend. Selber offener Master und End-CTA erhalten; Nutzungsrechte an CJ-Material und Originalität für Facebook-Empfehlungen getrennt. Keine neue Film-/Rechte-/Qualitätsfreigabe, MP4 oder Publikation. Bestehender Abendstand und Tagesprotokoll erhalten.
+
 ## LUXESTYLE_ABENDPAKET_20261027
 
 [Abendpaket mit Storyboard, sechs Kanaltexten/UTMs, einem Verkaufsentwurf und konsolidierter Tagestabelle](ABENDPAKET-20261027.md), [vollständige Belege](ABEND-BELEGE-20261027.json), [unabhängiger 96-Prüfungen-Review](ABEND-REVIEW-20261027.json). Shop/Metricool samt sechs Identitäten passend. Planung ab 18:58 CET: 18 bestehende Posts / 31 PENDING (FB 13, IG 13, Pinterest 4, Threads 1). 16 gemeinsame UUIDs in Inhalts-/Termin-/Medien-/Flagfeldern unverändert; zwei zusätzliche bestehende Foto-Posts und drei frühere Termine vor dem Fenster, kein eigener Social-Write/Publikations- oder Löschbeweis. TT/YT im Fenster ohne gelieferten Termin; keine Lücken mit ungeprüftem Material gefüllt.
