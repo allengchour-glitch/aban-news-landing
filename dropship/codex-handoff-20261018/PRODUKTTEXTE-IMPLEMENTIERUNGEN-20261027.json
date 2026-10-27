@@ -1,0 +1,2696 @@
+{
+  "ownerScope": "all product descriptions only",
+  "writes": 9,
+  "confirmedNative": 9,
+  "confirmedNativeAndPublic": 9,
+  "records": [
+    {
+      "changeId": "luxe_product_description_15408458236289_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only; prior explicit product-text instruction remains in force"
+      },
+      "productId": "gid://shopify/Product/15408458236289",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "beforeSha256": "a9100c7847375c68dba273ca5531845b4311b7845c45896f7880623e38f1cc61",
+      "afterSha256": "30490bcb988d82b7ccca7cf3f8cff51512ae09ded386580653dd636f79c4b093",
+      "before": {
+        "id": "gid://shopify/Product/15408458236289",
+        "title": "Kosmetik-Organizer für den Schminktisch",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Bambus & Badezimmer",
+        "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Ein übersichtlicher Platz für deine Pflegeprodukte.</strong> Der Kosmetik-Organizer ergänzt die Ablage auf deinem Schminktisch.</p>\n<h2>Deine Routine im Blick</h2>\n<p>Ordne Kosmetik und kleine Alltagsgegenstände an einem festen Platz.</p>\n<p>Entdecke den Organizer auf den Produktfotos und sieh dir den aktuellen Preis bei LuxeStyle an.</p>\n</div><div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "Aufbewahrung",
+          "bambus",
+          "bambus-badezimmer",
+          "beauty aufbewahrung",
+          "bild-ok",
+          "kosmetik organizer",
+          "kuratiert",
+          "luxestyle-ch",
+          "nachhaltig",
+          "premium",
+          "schminktisch",
+          "swiss-brand",
+          "vegan"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+            "altText": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+            "mediaId": "gid://shopify/MediaImage/69731159474561"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479590785",
+            "title": "Default Title",
+            "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+            "price": "29.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Deine Düfte übersichtlich in Szene gesetzt.</strong> Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine Auswahl nach vorn und hinten staffeln und deinen Schminktisch bewusst gestalten.</p>\n<h2>Gestaffelte Form, warme Optik</h2>\n<p>Mehrere nach hinten ansteigende Ebenen prägen das Design. Naturfarbene Ablageflächen mit sichtbarer Maserung treffen auf einen dunklen Unterbau. Die Vorderseite wird durch einen quer verlaufenden Griff ergänzt.</p>\n<h3>Eine Anordnung für deine Routine</h3>\n<p>Eine mögliche Anordnung: Platziere häufig verwendete Flakons im vorderen Bereich und kombiniere dahinter weitere Lieblingsprodukte. Die unterschiedlichen Höhen bringen Struktur in die Präsentation, ohne alle Stücke in einer Reihe aufzustellen.</p>\n</div><div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "diff": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,9 +1,10 @@\n \n <div class=\"luxestyle-product-body\">\n-<p><strong>Ein übersichtlicher Platz für deine Pflegeprodukte.</strong> Der Kosmetik-Organizer ergänzt die Ablage auf deinem Schminktisch.</p>\n-<h2>Deine Routine im Blick</h2>\n-<p>Ordne Kosmetik und kleine Alltagsgegenstände an einem festen Platz.</p>\n-<p>Entdecke den Organizer auf den Produktfotos und sieh dir den aktuellen Preis bei LuxeStyle an.</p>\n+<p><strong>Deine Düfte übersichtlich in Szene gesetzt.</strong> Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine Auswahl nach vorn und hinten staffeln und deinen Schminktisch bewusst gestalten.</p>\n+<h2>Gestaffelte Form, warme Optik</h2>\n+<p>Mehrere nach hinten ansteigende Ebenen prägen das Design. Naturfarbene Ablageflächen mit sichtbarer Maserung treffen auf einen dunklen Unterbau. Die Vorderseite wird durch einen quer verlaufenden Griff ergänzt.</p>\n+<h3>Eine Anordnung für deine Routine</h3>\n+<p>Eine mögliche Anordnung: Platziere häufig verwendete Flakons im vorderen Bereich und kombiniere dahinter weitere Lieblingsprodukte. Die unterschiedlichen Höhen bringen Struktur in die Präsentation, ohne alle Stücke in einer Reihe aufzustellen.</p>\n </div><div class=\"luxestyle-service-info\">\n <h2>Versand und Rückgabe</h2>\n <p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15408458236289",
+        "title": "Kosmetik-Organizer für den Schminktisch",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Bambus & Badezimmer",
+        "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Deine Düfte übersichtlich in Szene gesetzt.</strong> Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine Auswahl nach vorn und hinten staffeln und deinen Schminktisch bewusst gestalten.</p>\n<h2>Gestaffelte Form, warme Optik</h2>\n<p>Mehrere nach hinten ansteigende Ebenen prägen das Design. Naturfarbene Ablageflächen mit sichtbarer Maserung treffen auf einen dunklen Unterbau. Die Vorderseite wird durch einen quer verlaufenden Griff ergänzt.</p>\n<h3>Eine Anordnung für deine Routine</h3>\n<p>Eine mögliche Anordnung: Platziere häufig verwendete Flakons im vorderen Bereich und kombiniere dahinter weitere Lieblingsprodukte. Die unterschiedlichen Höhen bringen Struktur in die Präsentation, ohne alle Stücke in einer Reihe aufzustellen.</p>\n</div><div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "Aufbewahrung",
+          "bambus",
+          "bambus-badezimmer",
+          "beauty aufbewahrung",
+          "bild-ok",
+          "kosmetik organizer",
+          "kuratiert",
+          "luxestyle-ch",
+          "nachhaltig",
+          "premium",
+          "schminktisch",
+          "swiss-brand",
+          "vegan"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+            "altText": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+            "mediaId": "gid://shopify/MediaImage/69731159474561"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479590785",
+            "title": "Default Title",
+            "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+            "price": "29.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:09:40.002Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15408458236289",
+        "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium.js",
+        "checkedAtUTC": "2026-10-27T07:13:00.231183+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "responseProductId": "15408458236289",
+        "descriptionExact": true,
+        "afterSha256": "30490bcb988d82b7ccca7cf3f8cff51512ae09ded386580653dd636f79c4b093",
+        "variantCount": 1,
+        "pricesCents": [
+          2990
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15408458236289",
+        "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+        "capturedAtUTC": "2026-10-27T07:16:09.941547+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Deine Düfte übersichtlich in Szene gesetzt. Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine ",
+        "responseSha256": "fceb90fc504e9339ae16615375d1c83c0e3d5e7590f51c8131597966d2821801",
+        "rawHtmlStored": false
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15450856292737_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only; prior explicit product-text instruction remains in force"
+      },
+      "productId": "gid://shopify/Product/15450856292737",
+      "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "beforeSha256": "ea2a6b86489abf4468a3bd4d98b082c2f373501e1c4ffdcf7a05f12c710a8826",
+      "afterSha256": "109c008158845309188206ac46a24f34aa783be266bd7fa76f05d2b30c25f168",
+      "before": {
+        "id": "gid://shopify/Product/15450856292737",
+        "title": "Reise-Hängematte aus Fallschirm-Nylon",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Garten & Pflanzen",
+        "descriptionHtml": "<p>Diese leichte und robuste Hängematte ist dein idealer Begleiter für unterwegs. Gefertigt aus hochwertigem 210T Fallschirm-Nylon, bietet sie Komfort und Langlebigkeit. Sie ist perfekt für Einzelpersonen geeignet und trägt ein Gewicht von bis zu 150 kg. Dank des schnelltrocknenden Materials ist die Reinigung unkompliziert und die Hängematte rasch wieder einsatzbereit. Ob beim Camping, auf Reisen oder einfach im Garten – geniesst du entspannte Momente in der Natur.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Aus strapazierfähigem 210T Fallschirm-Nylon gefertigt</li>\n<li>Tragkraft bis 150 kg, ideal für eine Person</li>\n<li>Schnell trocknend und leicht zu reinigen</li>\n<li>Einfache Befestigung an Bäumen oder Pfählen</li>\n<li>Leicht und kompakt im mitgelieferten Sack verstaubar</li>\n<li>Reissfest und angenehm weich</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "auto-entwurf-0926",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "gfeed-anstupsen-260929",
+          "haengematte",
+          "hype-jetzt",
+          "kunden-liebling",
+          "nachfrage-liebling",
+          "neu",
+          "sort-sub-reise",
+          "trend",
+          "video-hit",
+          "viral"
+        ],
+        "totalInventory": 759999,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490359681"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1680386651096.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490392449"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22961703074356.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490425217"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515510.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490457985"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/194122439106.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490490753"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/891259662615.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490523521"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515523.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490556289"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/32400994333790.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490589057"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1093517017807.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 9 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490621825"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3366722675446.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 10 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490654593"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/740477604342.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 11 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490687361"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3973693322045.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 12 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490720129"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1224400469662.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490752897"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1441131066666.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490785665"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/123528126762.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490818433"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2267110259424.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490851201"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5799272155674.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490883969"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/604999090314.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490916737"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26067607890140.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490949505"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2049401677374.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490982273"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772167228.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114151303"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515523_4016a814-1e05-4a26-8a72-2fb6ce8e34fd.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114184071"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515510_56a9bff0-baa5-4868-a444-a93addd6db34.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114216839"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2049401677374_49cc999f-1976-4fa1-b9b0-dce590f8f963.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114249607"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4fbb00d1-b63c-4aef-8b1a-f5d65bfbe703.png?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114282375"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1304979766846.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114315143"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/123528126762_32ed319a-b678-4ced-b5d7-9c8277c4e1cf.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114347911"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2034868870305.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114380679"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22961703074356_09de4c13-7b61-4aa7-a1c4-4483e8ef4553.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114413447"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1368989448894.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114446215"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5799272155674_8ce90284-bfc2-425e-bfb9-b97bc48d7f8e.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114478983"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6456720657245.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114511751"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1441131066666_f4a6b71e-638f-4407-b31e-21941b582e66.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114544519"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/194122439106_34f076b8-2394-4c9e-bda1-4124d8ec49fc.jpg?v=1790778652",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114577287"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1688091228777.jpg?v=1790778647",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114610055"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/784466426128.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114642823"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111_0ff4e5b9-09ad-43db-926b-84f427d1a0e3.jpg?v=1790778647",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114675591"
+          }
+        ],
+        "totalVariants": 33,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55889985634689",
+            "title": "Grün + Grau",
+            "sku": "CJ-CJYDQTLY00023-Green + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985667457",
+            "title": "Camel",
+            "sku": "CJ-CJYDQTLY00023-Camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985700225",
+            "title": "Grau, 300 × 140 cm",
+            "sku": "CJ-CJYDQTLY00023-Grey300x140cm",
+            "price": "51.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985732993",
+            "title": "Grün, 300 × 140 cm",
+            "sku": "CJ-CJYDQTLY00023-Green300x140cm",
+            "price": "51.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985765761",
+            "title": "Orangegrün",
+            "sku": "CJ-CJYDQTLY00023-Orange green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985798529",
+            "title": "Schwarz-Grün + Camel",
+            "sku": "CJ-CJYDQTLY00023-Black green + camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985831297",
+            "title": "Schwarzorange",
+            "sku": "CJ-CJYDQTLY00023-Black Orange",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985864065",
+            "title": "Orange + Grau",
+            "sku": "CJ-CJYDQTLY00023-Orange + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985896833",
+            "title": "Himmelblau",
+            "sku": "CJ-CJYDQTLY00023-Sky blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985929601",
+            "title": "Schwarz",
+            "sku": "CJ-CJYDQTLY00023-Black",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985962369",
+            "title": "Grau + Blau",
+            "sku": "CJ-CJYDQTLY00023-Gray + blue",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985995137",
+            "title": "Blauorange",
+            "sku": "CJ-CJYDQTLY00023-Blue orange",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986027905",
+            "title": "Himmelblau + Grau",
+            "sku": "CJ-CJYDQTLY00023-Sky + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986060673",
+            "title": "Amrygreen+camel",
+            "sku": "CJ-CJYDQTLY00023-Amrygreen+camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986093441",
+            "title": "Schwarz-Grün + Apfelgrün",
+            "sku": "CJ-CJYDQTLY00023-Black green + apple green",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986126209",
+            "title": "Dunkelgrün",
+            "sku": "CJ-CJYDQTLY00023-Deep green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986158977",
+            "title": "Lila",
+            "sku": "CJ-CJYDQTLY00023-Purple",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986191745",
+            "title": "Gelbblau",
+            "sku": "CJ-CJYDQTLY00023-Yellow blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986224513",
+            "title": "Orange",
+            "sku": "CJ-CJYDQTLY00023-Orange",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986257281",
+            "title": "Grau + Lila",
+            "sku": "CJ-CJYDQTLY00023-Gray + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986290049",
+            "title": "Fruchtgrün",
+            "sku": "CJ-CJYDQTLY00023-Fruit green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986322817",
+            "title": "Dunkelgrün-Orange",
+            "sku": "CJ-CJYDQTLY00023-Dark green orange",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986355585",
+            "title": "Blaugelb",
+            "sku": "CJ-CJYDQTLY00023-Blue yellow",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986388353",
+            "title": "Blau",
+            "sku": "CJ-CJYDQTLY00023-Blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986421121",
+            "title": "Dunkelgrün + Lila",
+            "sku": "CJ-CJYDQTLY00023-Dark green + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986453889",
+            "title": "Armeegrün",
+            "sku": "CJ-CJYDQTLY00023-Army green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986486657",
+            "title": "Blau + Lila",
+            "sku": "CJ-CJYDQTLY00023-Blue + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986519425",
+            "title": "Gelb + Lila",
+            "sku": "CJ-CJYDQTLY00023-Yellow + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986552193",
+            "title": "Camel + Lila",
+            "sku": "CJ-CJYDQTLY00023-Camel + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986584961",
+            "title": "Orangegelb",
+            "sku": "CJ-CJYDQTLY00023-Orange yellow",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986617729",
+            "title": "Grau",
+            "sku": "CJ-CJYDQTLY00023-Gray",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986650497",
+            "title": "Gelb + Grün",
+            "sku": "CJ-CJYDQTLY00023-Yellow + green",
+            "price": "34.90",
+            "inventoryQuantity": 39999
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986683265",
+            "title": "Himmelblau-Blau",
+            "sku": "CJ-CJYDQTLY00023-Sky blue blue",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\n<h3>Deine Farbe, deine Ausführung</h3>\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "diff": "--- fresh-live/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,10 +1,7 @@\n-<p>Diese leichte und robuste Hängematte ist dein idealer Begleiter für unterwegs. Gefertigt aus hochwertigem 210T Fallschirm-Nylon, bietet sie Komfort und Langlebigkeit. Sie ist perfekt für Einzelpersonen geeignet und trägt ein Gewicht von bis zu 150 kg. Dank des schnelltrocknenden Materials ist die Reinigung unkompliziert und die Hängematte rasch wieder einsatzbereit. Ob beim Camping, auf Reisen oder einfach im Garten – geniesst du entspannte Momente in der Natur.</p><h3>Das zeichnet es aus</h3><ul>\n-<li>Aus strapazierfähigem 210T Fallschirm-Nylon gefertigt</li>\n-<li>Tragkraft bis 150 kg, ideal für eine Person</li>\n-<li>Schnell trocknend und leicht zu reinigen</li>\n-<li>Einfache Befestigung an Bäumen oder Pfählen</li>\n-<li>Leicht und kompakt im mitgelieferten Sack verstaubar</li>\n-<li>Reissfest und angenehm weich</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\n+<h3>Deine Farbe, deine Ausführung</h3>\n+<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\n+<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15450856292737",
+        "title": "Reise-Hängematte aus Fallschirm-Nylon",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Garten & Pflanzen",
+        "descriptionHtml": "<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\n<h3>Deine Farbe, deine Ausführung</h3>\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "auto-entwurf-0926",
+          "bild-ok",
+          "cj-real",
+          "dropship",
+          "gfeed-anstupsen-260929",
+          "haengematte",
+          "hype-jetzt",
+          "kunden-liebling",
+          "nachfrage-liebling",
+          "neu",
+          "sort-sub-reise",
+          "trend",
+          "video-hit",
+          "viral"
+        ],
+        "totalInventory": 759999,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490359681"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1680386651096.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490392449"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22961703074356.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490425217"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515510.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490457985"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/194122439106.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490490753"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/891259662615.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490523521"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515523.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490556289"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/32400994333790.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490589057"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1093517017807.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 9 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490621825"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3366722675446.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 10 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490654593"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/740477604342.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 11 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490687361"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3973693322045.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 12 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490720129"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1224400469662.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490752897"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1441131066666.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490785665"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/123528126762.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490818433"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2267110259424.jpg?v=1783476912",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490851201"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5799272155674.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490883969"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/604999090314.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490916737"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26067607890140.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490949505"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2049401677374.jpg?v=1783476913",
+            "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69887490982273"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772167228.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114151303"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515523_4016a814-1e05-4a26-8a72-2fb6ce8e34fd.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114184071"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617772515510_56a9bff0-baa5-4868-a444-a93addd6db34.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114216839"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2049401677374_49cc999f-1976-4fa1-b9b0-dce590f8f963.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114249607"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4fbb00d1-b63c-4aef-8b1a-f5d65bfbe703.png?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114282375"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1304979766846.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114315143"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/123528126762_32ed319a-b678-4ced-b5d7-9c8277c4e1cf.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114347911"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2034868870305.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114380679"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22961703074356_09de4c13-7b61-4aa7-a1c4-4483e8ef4553.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114413447"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1368989448894.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114446215"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5799272155674_8ce90284-bfc2-425e-bfb9-b97bc48d7f8e.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114478983"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6456720657245.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114511751"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1441131066666_f4a6b71e-638f-4407-b31e-21941b582e66.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114544519"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/194122439106_34f076b8-2394-4c9e-bda1-4124d8ec49fc.jpg?v=1790778652",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114577287"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1688091228777.jpg?v=1790778647",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114610055"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/784466426128.jpg?v=1790778646",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114642823"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111_0ff4e5b9-09ad-43db-926b-84f427d1a0e3.jpg?v=1790778647",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77413114675591"
+          }
+        ],
+        "totalVariants": 33,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55889985634689",
+            "title": "Grün + Grau",
+            "sku": "CJ-CJYDQTLY00023-Green + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985667457",
+            "title": "Camel",
+            "sku": "CJ-CJYDQTLY00023-Camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985700225",
+            "title": "Grau, 300 × 140 cm",
+            "sku": "CJ-CJYDQTLY00023-Grey300x140cm",
+            "price": "51.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985732993",
+            "title": "Grün, 300 × 140 cm",
+            "sku": "CJ-CJYDQTLY00023-Green300x140cm",
+            "price": "51.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985765761",
+            "title": "Orangegrün",
+            "sku": "CJ-CJYDQTLY00023-Orange green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985798529",
+            "title": "Schwarz-Grün + Camel",
+            "sku": "CJ-CJYDQTLY00023-Black green + camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985831297",
+            "title": "Schwarzorange",
+            "sku": "CJ-CJYDQTLY00023-Black Orange",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985864065",
+            "title": "Orange + Grau",
+            "sku": "CJ-CJYDQTLY00023-Orange + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985896833",
+            "title": "Himmelblau",
+            "sku": "CJ-CJYDQTLY00023-Sky blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985929601",
+            "title": "Schwarz",
+            "sku": "CJ-CJYDQTLY00023-Black",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985962369",
+            "title": "Grau + Blau",
+            "sku": "CJ-CJYDQTLY00023-Gray + blue",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889985995137",
+            "title": "Blauorange",
+            "sku": "CJ-CJYDQTLY00023-Blue orange",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986027905",
+            "title": "Himmelblau + Grau",
+            "sku": "CJ-CJYDQTLY00023-Sky + gray",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986060673",
+            "title": "Amrygreen+camel",
+            "sku": "CJ-CJYDQTLY00023-Amrygreen+camel",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986093441",
+            "title": "Schwarz-Grün + Apfelgrün",
+            "sku": "CJ-CJYDQTLY00023-Black green + apple green",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986126209",
+            "title": "Dunkelgrün",
+            "sku": "CJ-CJYDQTLY00023-Deep green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986158977",
+            "title": "Lila",
+            "sku": "CJ-CJYDQTLY00023-Purple",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986191745",
+            "title": "Gelbblau",
+            "sku": "CJ-CJYDQTLY00023-Yellow blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986224513",
+            "title": "Orange",
+            "sku": "CJ-CJYDQTLY00023-Orange",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986257281",
+            "title": "Grau + Lila",
+            "sku": "CJ-CJYDQTLY00023-Gray + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986290049",
+            "title": "Fruchtgrün",
+            "sku": "CJ-CJYDQTLY00023-Fruit green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986322817",
+            "title": "Dunkelgrün-Orange",
+            "sku": "CJ-CJYDQTLY00023-Dark green orange",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986355585",
+            "title": "Blaugelb",
+            "sku": "CJ-CJYDQTLY00023-Blue yellow",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986388353",
+            "title": "Blau",
+            "sku": "CJ-CJYDQTLY00023-Blue",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986421121",
+            "title": "Dunkelgrün + Lila",
+            "sku": "CJ-CJYDQTLY00023-Dark green + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986453889",
+            "title": "Armeegrün",
+            "sku": "CJ-CJYDQTLY00023-Army green",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986486657",
+            "title": "Blau + Lila",
+            "sku": "CJ-CJYDQTLY00023-Blue + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986519425",
+            "title": "Gelb + Lila",
+            "sku": "CJ-CJYDQTLY00023-Yellow + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986552193",
+            "title": "Camel + Lila",
+            "sku": "CJ-CJYDQTLY00023-Camel + purple",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986584961",
+            "title": "Orangegelb",
+            "sku": "CJ-CJYDQTLY00023-Orange yellow",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986617729",
+            "title": "Grau",
+            "sku": "CJ-CJYDQTLY00023-Gray",
+            "price": "34.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986650497",
+            "title": "Gelb + Grün",
+            "sku": "CJ-CJYDQTLY00023-Yellow + green",
+            "price": "34.90",
+            "inventoryQuantity": 39999
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889986683265",
+            "title": "Himmelblau-Blau",
+            "sku": "CJ-CJYDQTLY00023-Sky blue blue",
+            "price": "34.90",
+            "inventoryQuantity": 40000
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:09:44.960Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15450856292737",
+        "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20.js",
+        "checkedAtUTC": "2026-10-27T07:13:00.233424+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "responseProductId": "15450856292737",
+        "descriptionExact": true,
+        "afterSha256": "109c008158845309188206ac46a24f34aa783be266bd7fa76f05d2b30c25f168",
+        "variantCount": 33,
+        "pricesCents": [
+          3490,
+          5190
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15450856292737",
+        "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "capturedAtUTC": "2026-10-27T07:16:09.943632+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine",
+        "responseSha256": "2125cfffa6ff321b5acad0a0cda04cca4b87d442a29e5a78e3a7b6e637fd1cea",
+        "rawHtmlStored": false
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15501902381441_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15501902381441",
+      "url": "https://luxestyle.ch/products/edelstahl-eisbecher-709888",
+      "beforeSha256": "c9d44fd1b382dde33b24fb2f6295b9ea387e9e90b57b4bc6d22a34bee8984488",
+      "afterSha256": "84ccabe79e0741c67acfb3fdf32c6306af3ddaa3d061795b20e3a03e81716d1a",
+      "before": {
+        "id": "gid://shopify/Product/15501902381441",
+        "title": "Edelstahl Eisbecher",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Küche & Bar",
+        "descriptionHtml": "<p>Der Edelstahl Eisbecher ist ein praktisches Gefäss für Eis und Getränke.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Material: Edelstahl</li>\n<li>Design: Europäische Einfachheit</li>\n\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "becher",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kochen",
+          "kueche"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad30aa5-36c6-4749-be28-c646c4e82744.jpg?v=1786948880",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad30aa5-36c6-4749-be28-c646c4e82744.jpg?v=1786948880",
+            "altText": "Edelstahl Eisbecher | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367561601"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18ca2841-6a52-4a2e-93c0-9dcd67ef659b.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367594369"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/763ec4e8-a26e-4194-a75a-a7627e00ee97.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367627137"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2400bb49-ade8-4fde-9911-0e585fe53d5e.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367659905"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10e7ad97-adf7-4942-8abb-c9259a7af4e4.jpg?v=1786948880",
+            "altText": "Edelstahl Eisbecher – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367692673"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56115130499457",
+            "title": "Default Title",
+            "sku": "CJ-1412590378124709888",
+            "price": "35.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein eigener Platz für deine Getränkerunde.</strong> Der hohe, runde Behälter setzt Flaschen am Tisch oder auf einer Servierfläche in Szene. Die Produktansichten zeigen einen offenen Rand, einen nach unten schmaler werdenden Korpus und seitliche Griffe.</p>\n<h3>Klare Form für deine Tischgestaltung</h3>\n<p>Die grosszügige Öffnung und die ruhige Aussenfläche prägen den Look. Du kannst den Behälter mit schlichten Gläsern und einer Karaffe kombinieren oder ihn als einzelnen Akzent auf dem Sideboard platzieren.</p>\n<h3>So richtest du deine Getränkeecke ein</h3>\n<p>Stelle Flaschen und Gläser nebeneinander bereit und halte die Fläche rundherum frei. Servietten und Untersetzer kannst du farblich auf deine Tischdekoration abstimmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "sourceManifest": {
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "preparedAtUTC": "2026-10-27T07:08:23.770159+00:00",
+        "productId": "gid://shopify/Product/15501902381441",
+        "title": "Edelstahl Eisbecher",
+        "url": "https://luxestyle.ch/products/edelstahl-eisbecher-709888",
+        "sourceNativePath": "/workspace/luxestyle-review/alle-produkttexte-20261026/kueche/15501902381441/NATIVE-FRESH.json",
+        "sourceNativeReadAtUTC": "2026-10-26T22:41:28.187Z",
+        "sourceIsNotFresh27": true,
+        "beforePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/eisbecher/BEFORE.html",
+        "afterPath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/eisbecher/AFTER.html",
+        "beforeSha256": "c9d44fd1b382dde33b24fb2f6295b9ea387e9e90b57b4bc6d22a34bee8984488",
+        "afterSha256": "84ccabe79e0741c67acfb3fdf32c6306af3ddaa3d061795b20e3a03e81716d1a",
+        "previousDraftSha256": "31ddd862ee1fbee85e9553974496207b823e14d549f2fffd6dbc1b9149a0a3eb",
+        "newCoreSameAsIndependentlyVisuallyReviewed": true,
+        "neutralPolicyReplacement": true,
+        "oldBadgeRemoved": [
+          "checked-data assurance",
+          "10–20workingdaydelivery",
+          "30dayreturns",
+          "country/payment assertions"
+        ],
+        "existingHrefTargetsPreserved": true,
+        "hrefsBefore": [
+          "/collections/sub-kueche",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "hrefsAfter": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy",
+          "/collections/sub-kueche",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "imagesReviewed": [
+          {
+            "index": 1,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad30aa5-36c6-4749-be28-c646c4e82744.jpg?v=1786948880",
+            "path": "/workspace/luxestyle-review/alle-produkttexte-20261026/kueche/15501902381441/image-1.jpg",
+            "sha256": "c82314e8276766e590c0c28ba92b6ff853f0d7424b34b83c236bdb9685800ee2",
+            "bytes": 67654,
+            "status": 200,
+            "capturedAtUTC": "2026-10-26T22:41:41.493775+00:00"
+          },
+          {
+            "index": 2,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18ca2841-6a52-4a2e-93c0-9dcd67ef659b.jpg?v=1786948881",
+            "path": "/workspace/luxestyle-review/alle-produkttexte-20261026/kueche/15501902381441/image-2.jpg",
+            "sha256": "b123941692283fdfabff9fe8bf19a357855b0d1f8b591e981d90547f0ed9e877",
+            "bytes": 85515,
+            "status": 200,
+            "capturedAtUTC": "2026-10-26T22:41:41.806030+00:00"
+          }
+        ],
+        "remainingUnknowns": [
+          "Actual supplied finish",
+          "Tray inclusion",
+          "Material",
+          "Cooling/thermal performance",
+          "No supplier/fulfilment/conformity approval"
+        ],
+        "requiredBeforeWrite": [
+          "Fresh shop/product identity and ACTIVE status",
+          "Exact current description BEFORE hash or already-after no-op",
+          "Fresh assigned image identity binding matches recorded view evidence",
+          "Only descriptionHtml; exact native after and all other returned fields unchanged"
+        ],
+        "fieldsToWrite": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "reviewScope": "New product core independently viewed against both assigned bucket images; photographed bottle/tray not promised included."
+      },
+      "after": {
+        "id": "gid://shopify/Product/15501902381441",
+        "title": "Edelstahl Eisbecher",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Küche & Bar",
+        "descriptionHtml": "<p><strong>Ein eigener Platz für deine Getränkerunde.</strong> Der hohe, runde Behälter setzt Flaschen am Tisch oder auf einer Servierfläche in Szene. Die Produktansichten zeigen einen offenen Rand, einen nach unten schmaler werdenden Korpus und seitliche Griffe.</p>\n<h3>Klare Form für deine Tischgestaltung</h3>\n<p>Die grosszügige Öffnung und die ruhige Aussenfläche prägen den Look. Du kannst den Behälter mit schlichten Gläsern und einer Karaffe kombinieren oder ihn als einzelnen Akzent auf dem Sideboard platzieren.</p>\n<h3>So richtest du deine Getränkeecke ein</h3>\n<p>Stelle Flaschen und Gläser nebeneinander bereit und halte die Fläche rundherum frei. Servietten und Untersetzer kannst du farblich auf deine Tischdekoration abstimmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "becher",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kochen",
+          "kueche"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad30aa5-36c6-4749-be28-c646c4e82744.jpg?v=1786948880",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad30aa5-36c6-4749-be28-c646c4e82744.jpg?v=1786948880",
+            "altText": "Edelstahl Eisbecher | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367561601"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18ca2841-6a52-4a2e-93c0-9dcd67ef659b.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367594369"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/763ec4e8-a26e-4194-a75a-a7627e00ee97.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367627137"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2400bb49-ade8-4fde-9911-0e585fe53d5e.jpg?v=1786948881",
+            "altText": "Edelstahl Eisbecher – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367659905"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10e7ad97-adf7-4942-8abb-c9259a7af4e4.jpg?v=1786948880",
+            "altText": "Edelstahl Eisbecher – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70559367692673"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56115130499457",
+            "title": "Default Title",
+            "sku": "CJ-1412590378124709888",
+            "price": "35.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:12:17.206Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15501902381441",
+        "url": "https://luxestyle.ch/products/edelstahl-eisbecher-709888.js",
+        "checkedAtUTC": "2026-10-27T07:13:00.234694+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "responseProductId": "15501902381441",
+        "descriptionExact": true,
+        "afterSha256": "84ccabe79e0741c67acfb3fdf32c6306af3ddaa3d061795b20e3a03e81716d1a",
+        "variantCount": 1,
+        "pricesCents": [
+          3590
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15501902381441",
+        "url": "https://luxestyle.ch/products/edelstahl-eisbecher-709888",
+        "capturedAtUTC": "2026-10-27T07:16:09.944525+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein eigener Platz für deine Getränkerunde. Der hohe, runde Behälter setzt Flaschen am Tisch oder auf einer Servierfläche in Szene. Die Produktansichten zeigen e",
+        "responseSha256": "0590549ccb7605baa8aef8991e724d722eac5239f0bc5555aacf4c9a1dfe062f",
+        "rawHtmlStored": false
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15500743639425_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15500743639425",
+      "url": "https://luxestyle.ch/products/sommer-sitzkissen-295360",
+      "beforeSha256": "aff3e089a3f332d452c3e4dd4519b1f53a0746030e4ef47ed4cf4db8f706b6b0",
+      "afterSha256": "2d62ef846e3b008c9f1ab4db533be0fb11dd27e313e6a73eef2a66b9b73f57bb",
+      "before": {
+        "id": "gid://shopify/Product/15500743639425",
+        "title": "Sommer-Sitzkissen",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Wohnen & Deko",
+        "descriptionHtml": "<p>Das Sommer-Sitzkissen besteht aus Canvas mit einem Stripes-Muster.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Material: Canvas</li>\n<li>Muster: Streifen</li>\n<li>Füllstoff: 90-100%</li>\n\n<li>Abmessungen: 45x45cm</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dekoration",
+          "dropship",
+          "haushalt",
+          "kat-kissen",
+          "kissen",
+          "sort-sitzkissen",
+          "wohnen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083d92a-2176-439f-b025-f2a761d32600.jpg?v=1786828472",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083d92a-2176-439f-b025-f2a761d32600.jpg?v=1786828472",
+            "altText": "Sommer-Sitzkissen – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574396289"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/768a57b2-e9f1-4e18-8b3e-adeb7204275d.jpg?v=1786828471",
+            "altText": "Sommer-Sitzkissen – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574232449"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6887f2eb-9716-49fc-91ed-9b7be3598927.jpg?v=1786828473",
+            "altText": "Sommer-Sitzkissen – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574429057"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba333274-a800-46e8-8a24-93573506fd6b.jpg?v=1786828472",
+            "altText": "Sommer-Sitzkissen – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574461825"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/90a805e0-735b-48d9-a464-af7a016f6e68.jpg?v=1786828471",
+            "altText": "Sommer-Sitzkissen – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574494593"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56110056636801",
+            "title": "Default Title",
+            "sku": "CJ-1613743153201295360",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Klare Streifen für deinen Sitzplatz.</strong> Breite weisse Streifen wechseln sich in den Produktansichten mit kräftigen Farbbahnen ab. Der quadratische Umriss und die punktuell abgesteppten Flächen geben dem Kissen eine klar gegliederte Optik. An den Seiten sind schmale Bänder zu sehen.</p>\n<h3>Ein Muster, das du bewusst kombinieren kannst</h3>\n<p>Greife die Streifen als Blickfang auf und kombiniere sie mit einer schlichten Sitzfläche oder einfarbigen Accessoires. Auf dunklem Holz entsteht ein deutlicher Kontrast; mit hellen Möbeln wirkt die Zusammenstellung ruhiger.</p>\n<p>Die Bilder zeigen das Streifenmuster aus der Nähe und verschiedene Farbdarstellungen. Nutze diese Ansichten, um Muster und Verarbeitung mit deiner Einrichtung abzustimmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15500743639425",
+        "title": "Sommer-Sitzkissen",
+        "url": "https://luxestyle.ch/products/sommer-sitzkissen-295360",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T07:06:08.083Z",
+        "beforeSha256": "aff3e089a3f332d452c3e4dd4519b1f53a0746030e4ef47ed4cf4db8f706b6b0",
+        "afterSha256": "2d62ef846e3b008c9f1ab4db533be0fb11dd27e313e6a73eef2a66b9b73f57bb",
+        "source": "NATIVE-FRESH.json",
+        "beforePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/wohnen/15500743639425/BEFORE.html",
+        "afterPath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/wohnen/15500743639425/AFTER.html",
+        "images": "IMAGE-SOURCES.json",
+        "imageFilesViewed": 2,
+        "nativeVariantCount": 1,
+        "submittedFieldsIfApplied": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "serviceChange": "Replaced unsupported Geprüfte-Angaben/10–20-days/30-day/payment badge with neutral shipping/refund policy links inside descriptionHtml; actual policies/settings unchanged.",
+        "collectionHrefTargetsPreserved": true,
+        "unverifiedFactsRemoved": [
+          "material",
+          "measurements",
+          "fill percentage"
+        ],
+        "notClaimed": [
+          "exact supplied colour or multiple selectable colours",
+          "performance/care or power/sensor function",
+          "availability/delivery guarantee"
+        ],
+        "reviewBasis": "Fresh native source, two assigned images re-fetched HTTP200/SHA-equal and visually reviewed; visible appearance and clearly phrased styling/placement ideas only.",
+        "notVerified": [
+          "supplier-to-exact-variant mapping",
+          "full supplied configuration",
+          "current storefront purchase availability",
+          "inventory policy"
+        ]
+      },
+      "after": {
+        "id": "gid://shopify/Product/15500743639425",
+        "title": "Sommer-Sitzkissen",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Wohnen & Deko",
+        "descriptionHtml": "<p><strong>Klare Streifen für deinen Sitzplatz.</strong> Breite weisse Streifen wechseln sich in den Produktansichten mit kräftigen Farbbahnen ab. Der quadratische Umriss und die punktuell abgesteppten Flächen geben dem Kissen eine klar gegliederte Optik. An den Seiten sind schmale Bänder zu sehen.</p>\n<h3>Ein Muster, das du bewusst kombinieren kannst</h3>\n<p>Greife die Streifen als Blickfang auf und kombiniere sie mit einer schlichten Sitzfläche oder einfarbigen Accessoires. Auf dunklem Holz entsteht ein deutlicher Kontrast; mit hellen Möbeln wirkt die Zusammenstellung ruhiger.</p>\n<p>Die Bilder zeigen das Streifenmuster aus der Nähe und verschiedene Farbdarstellungen. Nutze diese Ansichten, um Muster und Verarbeitung mit deiner Einrichtung abzustimmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dekoration",
+          "dropship",
+          "haushalt",
+          "kat-kissen",
+          "kissen",
+          "sort-sitzkissen",
+          "wohnen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083d92a-2176-439f-b025-f2a761d32600.jpg?v=1786828472",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083d92a-2176-439f-b025-f2a761d32600.jpg?v=1786828472",
+            "altText": "Sommer-Sitzkissen – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574396289"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/768a57b2-e9f1-4e18-8b3e-adeb7204275d.jpg?v=1786828471",
+            "altText": "Sommer-Sitzkissen – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574232449"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6887f2eb-9716-49fc-91ed-9b7be3598927.jpg?v=1786828473",
+            "altText": "Sommer-Sitzkissen – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574429057"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba333274-a800-46e8-8a24-93573506fd6b.jpg?v=1786828472",
+            "altText": "Sommer-Sitzkissen – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574461825"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/90a805e0-735b-48d9-a464-af7a016f6e68.jpg?v=1786828471",
+            "altText": "Sommer-Sitzkissen – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545574494593"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56110056636801",
+            "title": "Default Title",
+            "sku": "CJ-1613743153201295360",
+            "price": "14.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:12:21.412Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15500743639425",
+        "url": "https://luxestyle.ch/products/sommer-sitzkissen-295360.js",
+        "checkedAtUTC": "2026-10-27T07:13:00.724396+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "responseProductId": "15500743639425",
+        "descriptionExact": true,
+        "afterSha256": "2d62ef846e3b008c9f1ab4db533be0fb11dd27e313e6a73eef2a66b9b73f57bb",
+        "variantCount": 1,
+        "pricesCents": [
+          1490
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15500743639425",
+        "url": "https://luxestyle.ch/products/sommer-sitzkissen-295360",
+        "capturedAtUTC": "2026-10-27T07:16:10.679924+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Klare Streifen für deinen Sitzplatz. Breite weisse Streifen wechseln sich in den Produktansichten mit kräftigen Farbbahnen ab. Der quadratische Umriss und die p",
+        "responseSha256": "2db0e729bc5e5d6a216fba61f09344998337628c00b752759aa759a47e4934c6",
+        "rawHtmlStored": false
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15501053329793_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15501053329793",
+      "url": "https://luxestyle.ch/products/intelligenter-mullbehalter-601100",
+      "beforeSha256": "593afde2eba0e197dcc6bd6c95790f47e644238cf59e7820467f6408717071a7",
+      "afterSha256": "a5503be2b4cd313e372a53fc95757ab22e2149eba17e1f6ae69006ae5775b693",
+      "before": {
+        "id": "gid://shopify/Product/15501053329793",
+        "title": "Intelligenter Müllbehälter",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Aufbewahrung & Organizer",
+        "descriptionHtml": "<p>Der intelligente Müllbehälter ist aus hochwertigem PP-Material gefertigt und bietet eine quadratische Form.</p><h3>Das zeichnet es aus</h3><ul><li>Wasserdicht und feuchtigkeitsbeständig</li></ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "aufbewahrung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "organizer",
+          "wohnen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6926421-4a5a-439c-bc63-cd60c1464ba3_trans.jpg?v=1786884689",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6926421-4a5a-439c-bc63-cd60c1464ba3_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916839297"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8476b3ba-9f7b-437e-b89c-1850bf8cdb39_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916183937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c529a79-9d60-4615-bff3-73625db3d8e5_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916740993"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5f5fb1ac-860c-4584-b2aa-58185c2c41e5_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916773761"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0077a9dc-e215-4375-ba77-db774a0c670b_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916806529"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8018bf33-959f-45af-9a0e-8f1eafd98d89_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916872065"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abb39ee4-6b7b-405f-81dc-099b31571aac_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916904833"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56111546139009",
+            "title": "Default Title",
+            "sku": "CJ-2511080611251601100",
+            "price": "29.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein aufgeräumter Look für den Abfallplatz.</strong> Die Produktansichten zeigen einen Müllbehälter mit geschlossenem Deckel, abgerundeten Seiten und einer dunklen Oberfläche. Ein senkrecht geriffelter Bereich setzt einen dezenten Kontrast zu den glatten Flächen.</p>\n<h3>Schlichte Form statt auffälliger Dekoration</h3>\n<p>Die zurückhaltende Gestaltung lässt sich neben klaren Möbelfronten oder in einer ruhig eingerichteten Ecke aufgreifen. Plane den Standort so, dass du den oberen Bereich gut erreichst und der Behälter deine Laufwege frei lässt.</p>\n<p>Sieh dir die Gesamtansicht und die Details des Deckels an, um Form und Linienführung mit deinem vorgesehenen Platz abzugleichen. Die dunkle Farbgebung der gezeigten Ausführung passt zu hellen wie dunklen Einrichtungstönen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15501053329793",
+        "title": "Intelligenter Müllbehälter",
+        "url": "https://luxestyle.ch/products/intelligenter-mullbehalter-601100",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T07:06:11.330Z",
+        "beforeSha256": "593afde2eba0e197dcc6bd6c95790f47e644238cf59e7820467f6408717071a7",
+        "afterSha256": "a5503be2b4cd313e372a53fc95757ab22e2149eba17e1f6ae69006ae5775b693",
+        "source": "NATIVE-FRESH.json",
+        "beforePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/wohnen/15501053329793/BEFORE.html",
+        "afterPath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/wohnen/15501053329793/AFTER.html",
+        "images": "IMAGE-SOURCES.json",
+        "imageFilesViewed": 2,
+        "nativeVariantCount": 1,
+        "submittedFieldsIfApplied": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "serviceChange": "Replaced unsupported Geprüfte-Angaben/10–20-days/30-day/payment badge with neutral shipping/refund policy links inside descriptionHtml; actual policies/settings unchanged.",
+        "collectionHrefTargetsPreserved": true,
+        "unverifiedFactsRemoved": [
+          "PP material",
+          "waterproof/moisture-resistance",
+          "quadratic shape"
+        ],
+        "notClaimed": [
+          "exact supplied colour or multiple selectable colours",
+          "performance/care or power/sensor function",
+          "availability/delivery guarantee"
+        ],
+        "reviewBasis": "Fresh native source, two assigned images re-fetched HTTP200/SHA-equal and visually reviewed; visible appearance and clearly phrased styling/placement ideas only.",
+        "notVerified": [
+          "supplier-to-exact-variant mapping",
+          "full supplied configuration",
+          "current storefront purchase availability",
+          "inventory policy"
+        ]
+      },
+      "after": {
+        "id": "gid://shopify/Product/15501053329793",
+        "title": "Intelligenter Müllbehälter",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Aufbewahrung & Organizer",
+        "descriptionHtml": "<p><strong>Ein aufgeräumter Look für den Abfallplatz.</strong> Die Produktansichten zeigen einen Müllbehälter mit geschlossenem Deckel, abgerundeten Seiten und einer dunklen Oberfläche. Ein senkrecht geriffelter Bereich setzt einen dezenten Kontrast zu den glatten Flächen.</p>\n<h3>Schlichte Form statt auffälliger Dekoration</h3>\n<p>Die zurückhaltende Gestaltung lässt sich neben klaren Möbelfronten oder in einer ruhig eingerichteten Ecke aufgreifen. Plane den Standort so, dass du den oberen Bereich gut erreichst und der Behälter deine Laufwege frei lässt.</p>\n<p>Sieh dir die Gesamtansicht und die Details des Deckels an, um Form und Linienführung mit deinem vorgesehenen Platz abzugleichen. Die dunkle Farbgebung der gezeigten Ausführung passt zu hellen wie dunklen Einrichtungstönen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "aufbewahrung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "organizer",
+          "wohnen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6926421-4a5a-439c-bc63-cd60c1464ba3_trans.jpg?v=1786884689",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6926421-4a5a-439c-bc63-cd60c1464ba3_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916839297"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8476b3ba-9f7b-437e-b89c-1850bf8cdb39_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916183937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c529a79-9d60-4615-bff3-73625db3d8e5_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916740993"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5f5fb1ac-860c-4584-b2aa-58185c2c41e5_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916773761"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0077a9dc-e215-4375-ba77-db774a0c670b_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916806529"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8018bf33-959f-45af-9a0e-8f1eafd98d89_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916872065"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abb39ee4-6b7b-405f-81dc-099b31571aac_trans.jpg?v=1786884689",
+            "altText": "Intelligenter Müllbehälter – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70551916904833"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56111546139009",
+            "title": "Default Title",
+            "sku": "CJ-2511080611251601100",
+            "price": "29.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:12:26.020Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15501053329793",
+        "url": "https://luxestyle.ch/products/intelligenter-mullbehalter-601100.js",
+        "checkedAtUTC": "2026-10-27T07:13:00.749088+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "responseProductId": "15501053329793",
+        "descriptionExact": true,
+        "afterSha256": "a5503be2b4cd313e372a53fc95757ab22e2149eba17e1f6ae69006ae5775b693",
+        "variantCount": 1,
+        "pricesCents": [
+          2990
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15501053329793",
+        "url": "https://luxestyle.ch/products/intelligenter-mullbehalter-601100",
+        "capturedAtUTC": "2026-10-27T07:16:10.918737+00:00",
+        "method": "GET",
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein aufgeräumter Look für den Abfallplatz. Die Produktansichten zeigen einen Müllbehälter mit geschlossenem Deckel, abgerundeten Seiten und einer dunklen Oberfl",
+        "responseSha256": "dcae8ae6e9e31b21ed337f4ba2783440779709662eb5fbaca041ebbc5e1cb543",
+        "rawHtmlStored": false
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15453726605697_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15453726605697",
+      "url": "https://luxestyle.ch/products/stylisches-casual-kleid-614000",
+      "beforeSha256": "7ccb3160baa86f67a0fd46e01afb4e54dfa5135434c543ff288c6e0bee0d4095",
+      "afterSha256": "49a926a3517b68498c89defffb13bcc1e9919f4aa534a21dd0252347c805d531",
+      "before": {
+        "id": "gid://shopify/Product/15453726605697",
+        "title": "Stylisches Casual-Kleid",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenmode",
+        "descriptionHtml": "<!-- ls-var-v1 --><p>Ein neues, stylisches Casual-Kleid für Damen mit einem auffälligen Druck.</p><h3>Das zeichnet es aus</h3><ul>\n<li>casualer Stil</li>\n<li>attraktiver Druck</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-feed-details\">\n<h4>Produktdetails</h4>\n<ul>\n\n<li>\n<strong>Muster:</strong> Unifarben</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kategorie-kleid",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-kleider",
+          "sort-damen-kleider-freizeit",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d9353ec0-1206-4c4d-9543-153406d8ac53.jpg?v=1783791172",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d9353ec0-1206-4c4d-9543-153406d8ac53.jpg?v=1783791172",
+            "altText": "Stylisches Casual-Kleid – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69926153257345"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3dd7635-4f52-420b-a085-cae228386c97.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718005633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5f2b2d9-0585-4559-a39b-d528dbea2e68.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718038401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/967d6c55-f790-4050-8a4a-e8dbdfb6edbe.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718071169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cfbfb480-e709-4176-bfb0-39dec8132933.jpg?v=1786639147",
+            "altText": "Stylisches Casual-Kleid – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718103937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a8e9e222-9523-4871-abc1-658afba43bcf.jpg?v=1793075890",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77836967510407"
+          }
+        ],
+        "totalVariants": 5,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67797795340679",
+            "title": "S",
+            "sku": "CJLY297903301AZ",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795373447",
+            "title": "M",
+            "sku": "CJLY297903302BY",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795406215",
+            "title": "L",
+            "sku": "CJLY297903303CX",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795438983",
+            "title": "XL",
+            "sku": "CJLY297903304DW",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795471751",
+            "title": "2XL",
+            "sku": "CJLY297903305EV",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Grafische Akzente für deinen Look.</strong> Dieses ärmellose Kleid zeigt ein grossflächiges Gesichtsmotiv auf dunklem Grund. Rote Lippen und eine rote Blütenform treffen auf weisse und graue Linien. Der runde Ausschnitt wird vorn durch einen kleinen Schlitz unterbrochen; zum Saum hin öffnet sich die lange Silhouette.</p>\n<h3>Das Motiv steht im Mittelpunkt</h3>\n<p>Kombiniere das Kleid mit schlichten Sandalen und einer zurückhaltenden Tasche, damit der Druck zur Geltung kommt. Für einen weiteren Akzent kannst du das Rot des Motivs mit einem einzelnen Accessoire aufnehmen.</p>\n<h3>Deine Grössenbezeichnung wählen</h3>\n<p>Die aktuelle Auswahl führt S, M, L, XL und 2XL. Wähle deine gewünschte Grössenbezeichnung aus. Die Bilder zeigen das Motiv von vorn, hinten und aus der Nähe.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "diff": "--- fresh/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,15 +1,8 @@\n-<!-- ls-var-v1 --><p>Ein neues, stylisches Casual-Kleid für Damen mit einem auffälligen Druck.</p><h3>Das zeichnet es aus</h3><ul>\n-<li>casualer Stil</li>\n-<li>attraktiver Druck</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n-\n-<div class=\"ls-feed-details\">\n-<h4>Produktdetails</h4>\n-<ul>\n-\n-<li>\n-<strong>Muster:</strong> Unifarben</li>\n-</ul>\n-</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Grafische Akzente für deinen Look.</strong> Dieses ärmellose Kleid zeigt ein grossflächiges Gesichtsmotiv auf dunklem Grund. Rote Lippen und eine rote Blütenform treffen auf weisse und graue Linien. Der runde Ausschnitt wird vorn durch einen kleinen Schlitz unterbrochen; zum Saum hin öffnet sich die lange Silhouette.</p>\n+<h3>Das Motiv steht im Mittelpunkt</h3>\n+<p>Kombiniere das Kleid mit schlichten Sandalen und einer zurückhaltenden Tasche, damit der Druck zur Geltung kommt. Für einen weiteren Akzent kannst du das Rot des Motivs mit einem einzelnen Accessoire aufnehmen.</p>\n+<h3>Deine Grössenbezeichnung wählen</h3>\n+<p>Die aktuelle Auswahl führt S, M, L, XL und 2XL. Wähle deine gewünschte Grössenbezeichnung aus. Die Bilder zeigen das Motiv von vorn, hinten und aus der Nähe.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15453726605697",
+        "title": "Stylisches Casual-Kleid",
+        "url": "https://luxestyle.ch/products/stylisches-casual-kleid-614000",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T07:17:29.258Z",
+        "beforeSha256": "7ccb3160baa86f67a0fd46e01afb4e54dfa5135434c543ff288c6e0bee0d4095",
+        "afterSha256": "49a926a3517b68498c89defffb13bcc1e9919f4aa534a21dd0252347c805d531",
+        "coreWords": 111,
+        "source": "NATIVE-FRESH.json",
+        "images": "IMAGE-SOURCES.json",
+        "allAssignedImagesViewed": 6,
+        "serviceChange": "Replaced unsupported checked/delivery/returns/payment badge with neutral policy links inside descriptionHtml; actual policies/settings unchanged.",
+        "feedDetailsInDescription": "Casual contradictory Unifarben table replaced by visually proven printed-motif copy; summer same visible plain appearance described in prose. No external feed or metafield change.",
+        "existingHrefTargetsPreserved": true,
+        "fieldsToWrite": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "sourceLimits": [
+          "No independent material, actual garment measurements, fit, stock, care, delivery or fulfilment proof",
+          "Image appearance does not authenticate supplier/rights",
+          "rueckhol retained; no Social preparation"
+        ],
+        "sourceFresh27": true
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15453726605697",
+        "title": "Stylisches Casual-Kleid",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenmode",
+        "descriptionHtml": "<p><strong>Grafische Akzente für deinen Look.</strong> Dieses ärmellose Kleid zeigt ein grossflächiges Gesichtsmotiv auf dunklem Grund. Rote Lippen und eine rote Blütenform treffen auf weisse und graue Linien. Der runde Ausschnitt wird vorn durch einen kleinen Schlitz unterbrochen; zum Saum hin öffnet sich die lange Silhouette.</p>\n<h3>Das Motiv steht im Mittelpunkt</h3>\n<p>Kombiniere das Kleid mit schlichten Sandalen und einer zurückhaltenden Tasche, damit der Druck zur Geltung kommt. Für einen weiteren Akzent kannst du das Rot des Motivs mit einem einzelnen Accessoire aufnehmen.</p>\n<h3>Deine Grössenbezeichnung wählen</h3>\n<p>Die aktuelle Auswahl führt S, M, L, XL und 2XL. Wähle deine gewünschte Grössenbezeichnung aus. Die Bilder zeigen das Motiv von vorn, hinten und aus der Nähe.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kategorie-kleid",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-kleider",
+          "sort-damen-kleider-freizeit",
+          "varianten-nachgezogen-1025"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d9353ec0-1206-4c4d-9543-153406d8ac53.jpg?v=1783791172",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d9353ec0-1206-4c4d-9543-153406d8ac53.jpg?v=1783791172",
+            "altText": "Stylisches Casual-Kleid – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69926153257345"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3dd7635-4f52-420b-a085-cae228386c97.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718005633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5f2b2d9-0585-4559-a39b-d528dbea2e68.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718038401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/967d6c55-f790-4050-8a4a-e8dbdfb6edbe.jpg?v=1786639148",
+            "altText": "Stylisches Casual-Kleid – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718071169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cfbfb480-e709-4176-bfb0-39dec8132933.jpg?v=1786639147",
+            "altText": "Stylisches Casual-Kleid – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70518718103937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a8e9e222-9523-4871-abc1-658afba43bcf.jpg?v=1793075890",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77836967510407"
+          }
+        ],
+        "totalVariants": 5,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67797795340679",
+            "title": "S",
+            "sku": "CJLY297903301AZ",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795373447",
+            "title": "M",
+            "sku": "CJLY297903302BY",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795406215",
+            "title": "L",
+            "sku": "CJLY297903303CX",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795438983",
+            "title": "XL",
+            "sku": "CJLY297903304DW",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67797795471751",
+            "title": "2XL",
+            "sku": "CJLY297903305EV",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:22:15.823Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15453726605697",
+        "url": "https://luxestyle.ch/products/stylisches-casual-kleid-614000.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.927977+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15453726605697",
+        "descriptionExact": true,
+        "afterSha256": "49a926a3517b68498c89defffb13bcc1e9919f4aa534a21dd0252347c805d531",
+        "variantCount": 5,
+        "pricesCents": [
+          1790
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15453726605697",
+        "url": "https://luxestyle.ch/products/stylisches-casual-kleid-614000",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.927977+00:00",
+        "rawHtmlStored": false,
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Grafische Akzente für deinen Look. Dieses ärmellose Kleid zeigt ein grossflächiges Gesichtsmotiv auf dunklem Grund. Rote Lippen und eine rote Blütenform treffen",
+        "responseSha256": "2c248e26be4483a3c02ab6151c6715388f32a4a49f36687399fbf8dfd184a269"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15453729980801_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15453729980801",
+      "url": "https://luxestyle.ch/products/sommerkleid-rundhals-600100",
+      "beforeSha256": "0609e7d1a9d618fe40f7bed5ab6667bab17b180ca34f16e83e117c087da632e5",
+      "afterSha256": "567b95b92ec023c10b87568ff509320118241a2a66a24ac428c203060d65aafe",
+      "before": {
+        "id": "gid://shopify/Product/15453729980801",
+        "title": "Sommerkleid Rundhals",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenmode",
+        "descriptionHtml": "<p>Ein lässiges Sommerkleid mit lockerer Passform und Rundhals.</p><h3>Das zeichnet es aus</h3><ul>\n<li>lockere, bequeme Passform</li>\n<li>Rundhals</li>\n<li>ideales Sommeroutfit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-feed-details\">\n<h4>Produktdetails</h4>\n<ul>\n\n<li>\n<strong>Muster:</strong> Unifarben</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kategorie-kleid",
+          "kleid",
+          "kleider",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-kleider",
+          "sort-damen-kleider-sommer"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2115d28e-e337-45c5-988a-274291d3e836.jpg?v=1783791969",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2115d28e-e337-45c5-988a-274291d3e836.jpg?v=1783791969",
+            "altText": "Sommerkleid Rundhals – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69926175506817"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e088300a-1e0c-40cc-a77e-3b0081e90a18.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825738113"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc10dfa9-536f-4b1f-89ba-6a4370f2e62e.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825770881"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26fdf46b-b6b5-41bd-a44a-ea344c78ccc3.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825803649"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24bcc64d-14ee-42a1-92a7-f6e0a1785d16.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825836417"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55904504709505",
+            "title": "Default Title",
+            "sku": "CJ-2607100539111600100",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Klare Linien mit einem verspielten Detail.</strong> Das ärmellose Sommerkleid verbindet einen runden Ausschnitt mit schmalen, senkrechten Falten im vorderen Oberteil. Darunter öffnet sich die lange Silhouette zu einem ausgestellten Saum. Die Produktansichten zeigen eine einfarbige Gestaltung ohne aufgedrucktes Motiv.</p>\n<h3>Deinen Look bewusst ergänzen</h3>\n<p>Mit schlichten Sandalen und einer geflochtenen Tasche greifst du die Stylingidee der Bilder auf. Möchtest du die Faltendetails betonen, wähle eine kurze Kette; ein einzelnes Armband setzt einen weiteren Akzent, ohne das Oberteil zu verdecken.</p>\n<p>Sieh dir die Gesamtansicht und den Ausschnitt näher an, um Linienführung und Falten mit deinen Stilvorstellungen abzugleichen. Die Fotos dienen als Inspiration für deine eigene Kombination.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "diff": "--- fresh/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,16 +1,7 @@\n-<p>Ein lässiges Sommerkleid mit lockerer Passform und Rundhals.</p><h3>Das zeichnet es aus</h3><ul>\n-<li>lockere, bequeme Passform</li>\n-<li>Rundhals</li>\n-<li>ideales Sommeroutfit</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n-\n-<div class=\"ls-feed-details\">\n-<h4>Produktdetails</h4>\n-<ul>\n-\n-<li>\n-<strong>Muster:</strong> Unifarben</li>\n-</ul>\n-</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>+<p><strong>Klare Linien mit einem verspielten Detail.</strong> Das ärmellose Sommerkleid verbindet einen runden Ausschnitt mit schmalen, senkrechten Falten im vorderen Oberteil. Darunter öffnet sich die lange Silhouette zu einem ausgestellten Saum. Die Produktansichten zeigen eine einfarbige Gestaltung ohne aufgedrucktes Motiv.</p>\n+<h3>Deinen Look bewusst ergänzen</h3>\n+<p>Mit schlichten Sandalen und einer geflochtenen Tasche greifst du die Stylingidee der Bilder auf. Möchtest du die Faltendetails betonen, wähle eine kurze Kette; ein einzelnes Armband setzt einen weiteren Akzent, ohne das Oberteil zu verdecken.</p>\n+<p>Sieh dir die Gesamtansicht und den Ausschnitt näher an, um Linienführung und Falten mit deinen Stilvorstellungen abzugleichen. Die Fotos dienen als Inspiration für deine eigene Kombination.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n+<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15453729980801",
+        "title": "Sommerkleid Rundhals",
+        "url": "https://luxestyle.ch/products/sommerkleid-rundhals-600100",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "sourceCapturedAtUTC": "2026-10-27T07:17:31.826Z",
+        "beforeSha256": "0609e7d1a9d618fe40f7bed5ab6667bab17b180ca34f16e83e117c087da632e5",
+        "afterSha256": "567b95b92ec023c10b87568ff509320118241a2a66a24ac428c203060d65aafe",
+        "coreWords": 104,
+        "source": "NATIVE-FRESH.json",
+        "images": "IMAGE-SOURCES.json",
+        "allAssignedImagesViewed": 5,
+        "serviceChange": "Replaced unsupported checked/delivery/returns/payment badge with neutral policy links inside descriptionHtml; actual policies/settings unchanged.",
+        "feedDetailsInDescription": "Casual contradictory Unifarben table replaced by visually proven printed-motif copy; summer same visible plain appearance described in prose. No external feed or metafield change.",
+        "existingHrefTargetsPreserved": true,
+        "fieldsToWrite": [
+          "id",
+          "descriptionHtml"
+        ],
+        "liveWrites": 0,
+        "sourceLimits": [
+          "No independent material, actual garment measurements, fit, stock, care, delivery or fulfilment proof",
+          "Image appearance does not authenticate supplier/rights",
+          "rueckhol retained; no Social preparation",
+          "One Default Title variant; assigned photos show several colour depictions. No delivered colour or available colour choice asserted; common neckline/fold/hem features only."
+        ],
+        "sourceFresh27": true
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15453729980801",
+        "title": "Sommerkleid Rundhals",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenmode",
+        "descriptionHtml": "<p><strong>Klare Linien mit einem verspielten Detail.</strong> Das ärmellose Sommerkleid verbindet einen runden Ausschnitt mit schmalen, senkrechten Falten im vorderen Oberteil. Darunter öffnet sich die lange Silhouette zu einem ausgestellten Saum. Die Produktansichten zeigen eine einfarbige Gestaltung ohne aufgedrucktes Motiv.</p>\n<h3>Deinen Look bewusst ergänzen</h3>\n<p>Mit schlichten Sandalen und einer geflochtenen Tasche greifst du die Stylingidee der Bilder auf. Möchtest du die Faltendetails betonen, wähle eine kurze Kette; ein einzelnes Armband setzt einen weiteren Akzent, ohne das Oberteil zu verdecken.</p>\n<p>Sieh dir die Gesamtansicht und den Ausschnitt näher an, um Linienführung und Falten mit deinen Stilvorstellungen abzugleichen. Die Fotos dienen als Inspiration für deine eigene Kombination.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weitere Ideen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kategorie-kleid",
+          "kleid",
+          "kleider",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-kleider",
+          "sort-damen-kleider-sommer"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2115d28e-e337-45c5-988a-274291d3e836.jpg?v=1783791969",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2115d28e-e337-45c5-988a-274291d3e836.jpg?v=1783791969",
+            "altText": "Sommerkleid Rundhals – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69926175506817"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e088300a-1e0c-40cc-a77e-3b0081e90a18.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825738113"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc10dfa9-536f-4b1f-89ba-6a4370f2e62e.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825770881"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26fdf46b-b6b5-41bd-a44a-ea344c78ccc3.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825803649"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24bcc64d-14ee-42a1-92a7-f6e0a1785d16.jpg?v=1786620495",
+            "altText": "Sommerkleid Rundhals – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70515825836417"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55904504709505",
+            "title": "Default Title",
+            "sku": "CJ-2607100539111600100",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:22:21.005Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15453729980801",
+        "url": "https://luxestyle.ch/products/sommerkleid-rundhals-600100.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.930114+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15453729980801",
+        "descriptionExact": true,
+        "afterSha256": "567b95b92ec023c10b87568ff509320118241a2a66a24ac428c203060d65aafe",
+        "variantCount": 1,
+        "pricesCents": [
+          1590
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15453729980801",
+        "url": "https://luxestyle.ch/products/sommerkleid-rundhals-600100",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.930114+00:00",
+        "rawHtmlStored": false,
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Klare Linien mit einem verspielten Detail. Das ärmellose Sommerkleid verbindet einen runden Ausschnitt mit schmalen, senkrechten Falten im vorderen Oberteil. Da",
+        "responseSha256": "9f1cda99a2cb02f3a8133ca429e4694e79d2f08d3271b8f2dfb634974dc39ba5"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15453951328641_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15453951328641",
+      "url": "https://luxestyle.ch/products/retro-sportstasche-620400",
+      "beforeSha256": "1af92241bcbc05c7fc951c965b1ff2366b4eee7c6484e2e9c38cff274b7d18f9",
+      "afterSha256": "a859135e4bbac0e1051b8452380b90164106dde57a6d50ca2c6c4c4bf7767b63",
+      "before": {
+        "id": "gid://shopify/Product/15453951328641",
+        "title": "Retro Sportstasche",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<p>Diese Tasche vereint Stil und Funktion. </p><h3>Das zeichnet es aus</h3><ul>\n<li>Verstellbare Tragevorrichtung</li>\n<li>Robuste PU-Material</li>\n<li>Schloss als stylisches Detail</li>\n<li>Medium harte Konstruktion</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+        "tags": [
+          "accessoire",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "kat-taschen",
+          "kategorie-tasche",
+          "rueckhol-0907",
+          "sort-damen-weitere-taschen",
+          "sort-herren-weitere-taschen",
+          "sort-retro",
+          "tasche",
+          "taschen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77888ce8-7d56-4e57-94ad-06d4b76c0e49.jpg?v=1783854394",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77888ce8-7d56-4e57-94ad-06d4b76c0e49.jpg?v=1783854394",
+            "altText": "Retro Sportstasche – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396404609"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eb55345-4733-4742-8ab5-5e81e87f08fc.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396437377"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b6a3665b-9e0c-437e-bc36-ec45fe0384f8.jpg?v=1783854394",
+            "altText": "Retro Sportstasche – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396470145"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e339a9d9-1d22-46b1-acdc-2d8b03724bd5.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396502913"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0567e332-fa5e-4d4f-85aa-2d5afb0b944f.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396535681"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55905584382337",
+            "title": "Default Title",
+            "sku": "CJ-2410141433521620400",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Retro-Details für deinen Alltagslook.</strong> Die Produktansichten zeigen eine seitlich an der Hüfte getragene Tasche mit einer grossen Frontklappe und einer kleineren Klappe daneben. Runde Metallakzente, ein sichtbarer Reissverschluss und betonte Nähte prägen das Design.</p>\n<h3>Markante Linien, abgerundete Konturen</h3>\n<p>Die grosse Klappe läuft an den unteren Ecken rund aus. Darüber verläuft eine waagerechte Reissverschlusslinie, während die kleineren Flächen seitlich einen weiteren Akzent setzen. So treffen klare Formen auf auffällige Details.</p>\n<h3>Eine Idee für dein Outfit</h3>\n<p>Greife die Kombination aus den Tragebildern auf: ein schlichtes Oberteil, Jeans und die Tasche als Blickfang an der Seite. Halte weitere Accessoires zurückhaltend, damit die Konturen und Metallakzente sichtbar bleiben.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+      "diff": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,8 +1,7 @@\n-<p>Diese Tasche vereint Stil und Funktion. </p><h3>Das zeichnet es aus</h3><ul>\n-<li>Verstellbare Tragevorrichtung</li>\n-<li>Robuste PU-Material</li>\n-<li>Schloss als stylisches Detail</li>\n-<li>Medium harte Konstruktion</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>+<p><strong>Retro-Details für deinen Alltagslook.</strong> Die Produktansichten zeigen eine seitlich an der Hüfte getragene Tasche mit einer grossen Frontklappe und einer kleineren Klappe daneben. Runde Metallakzente, ein sichtbarer Reissverschluss und betonte Nähte prägen das Design.</p>\n+<h3>Markante Linien, abgerundete Konturen</h3>\n+<p>Die grosse Klappe läuft an den unteren Ecken rund aus. Darüber verläuft eine waagerechte Reissverschlusslinie, während die kleineren Flächen seitlich einen weiteren Akzent setzen. So treffen klare Formen auf auffällige Details.</p>\n+<h3>Eine Idee für dein Outfit</h3>\n+<p>Greife die Kombination aus den Tragebildern auf: ein schlichtes Oberteil, Jeans und die Tasche als Blickfang an der Seite. Halte weitere Accessoires zurückhaltend, damit die Konturen und Metallakzente sichtbar bleiben.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15453951328641",
+        "title": "Retro Sportstasche",
+        "url": "https://luxestyle.ch/products/retro-sportstasche-620400",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "preparedAtUTC": "2026-10-27T07:20:12.510130+00:00",
+        "beforeSha256": "1af92241bcbc05c7fc951c965b1ff2366b4eee7c6484e2e9c38cff274b7d18f9",
+        "afterSha256": "a859135e4bbac0e1051b8452380b90164106dde57a6d50ca2c6c4c4bf7767b63",
+        "coreWords": 104,
+        "beforePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15453951328641/BEFORE.html",
+        "afterPath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15453951328641/AFTER.html",
+        "sourcePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15453951328641/NATIVE-FRESH.json",
+        "sourceCapturedAtUTC": "2026-10-27T07:17:53.870Z",
+        "imageProof": "IMAGE-SOURCES.json",
+        "allAssignedImagesViewed": 5,
+        "nativeVariantCount": 1,
+        "nativePrices": [
+          "17.90"
+        ],
+        "originalHrefTargets": [],
+        "allOriginalHrefsPreserved": true,
+        "newHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy"
+        ],
+        "serviceChange": "Removed unsupported checked-data/delivery10–20days/30dayreturn/country/payment badge and replaced with neutral policy references within descriptionHtml only. Actual policies untouched.",
+        "factsRemovedAsUnverified": [
+          "material",
+          "hardness/robustness",
+          "adjustable carrying system",
+          "security lock"
+        ],
+        "notPromised": [
+          "exact delivered or selectable colour",
+          "straps/accessories included",
+          "material/capacity/dimensions/weight",
+          "protection/security/weatherproof function",
+          "availability/delivery/returns/payment assurance"
+        ],
+        "tagNote": "rueckhol-0907 retained; no Social copy/publication allowed from this text task.",
+        "writeFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "writes": 0,
+        "rootPreflight": "Fresh exact native BEFORE/status/identity; current assigned images/variant identity must still match; after must be read back natively and publicly; unexpected source change => stop.",
+        "titleCaveat": "Body describes image-visible side/hip bag neutrally; no title or productType rename."
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15453951328641",
+        "title": "Retro Sportstasche",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<p><strong>Retro-Details für deinen Alltagslook.</strong> Die Produktansichten zeigen eine seitlich an der Hüfte getragene Tasche mit einer grossen Frontklappe und einer kleineren Klappe daneben. Runde Metallakzente, ein sichtbarer Reissverschluss und betonte Nähte prägen das Design.</p>\n<h3>Markante Linien, abgerundete Konturen</h3>\n<p>Die grosse Klappe läuft an den unteren Ecken rund aus. Darüber verläuft eine waagerechte Reissverschlusslinie, während die kleineren Flächen seitlich einen weiteren Akzent setzen. So treffen klare Formen auf auffällige Details.</p>\n<h3>Eine Idee für dein Outfit</h3>\n<p>Greife die Kombination aus den Tragebildern auf: ein schlichtes Oberteil, Jeans und die Tasche als Blickfang an der Seite. Halte weitere Accessoires zurückhaltend, damit die Konturen und Metallakzente sichtbar bleiben.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+        "tags": [
+          "accessoire",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "kat-taschen",
+          "kategorie-tasche",
+          "rueckhol-0907",
+          "sort-damen-weitere-taschen",
+          "sort-herren-weitere-taschen",
+          "sort-retro",
+          "tasche",
+          "taschen"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77888ce8-7d56-4e57-94ad-06d4b76c0e49.jpg?v=1783854394",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77888ce8-7d56-4e57-94ad-06d4b76c0e49.jpg?v=1783854394",
+            "altText": "Retro Sportstasche – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396404609"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eb55345-4733-4742-8ab5-5e81e87f08fc.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396437377"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b6a3665b-9e0c-437e-bc36-ec45fe0384f8.jpg?v=1783854394",
+            "altText": "Retro Sportstasche – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396470145"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e339a9d9-1d22-46b1-acdc-2d8b03724bd5.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396502913"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0567e332-fa5e-4d4f-85aa-2d5afb0b944f.jpg?v=1783854393",
+            "altText": "Retro Sportstasche – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69929396535681"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55905584382337",
+            "title": "Default Title",
+            "sku": "CJ-2410141433521620400",
+            "price": "17.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:23:47.293Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15453951328641",
+        "url": "https://luxestyle.ch/products/retro-sportstasche-620400.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.930822+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15453951328641",
+        "descriptionExact": true,
+        "afterSha256": "a859135e4bbac0e1051b8452380b90164106dde57a6d50ca2c6c4c4bf7767b63",
+        "variantCount": 1,
+        "pricesCents": [
+          1790
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15453951328641",
+        "url": "https://luxestyle.ch/products/retro-sportstasche-620400",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:10.930822+00:00",
+        "rawHtmlStored": false,
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Retro-Details für deinen Alltagslook. Die Produktansichten zeigen eine seitlich an der Hüfte getragene Tasche mit einer grossen Frontklappe und einer kleineren ",
+        "responseSha256": "9389737c18225690ed3e8226672756fa516beb97d45611d92f123823e1a11e11"
+      }
+    },
+    {
+      "changeId": "luxe_product_description_15454078697857_20261027",
+      "state": "CONFIRMED_NATIVE_PUBLIC_JSON_AND_HTML",
+      "authorization": {
+        "ownerInstructions": [
+          "nur text verbessern bei produkt",
+          "alle produkten"
+        ],
+        "scope": "descriptionHtml only"
+      },
+      "productId": "gid://shopify/Product/15454078697857",
+      "url": "https://luxestyle.ch/products/sport-taille-rucksack-826624",
+      "beforeSha256": "38c3fc8ad8a75e4a4d935614de44e3771cb20c18bc858b5788fb319513285894",
+      "afterSha256": "90a1fb49a26ffa35846aa748379a4b9798e58390861bd73ac5b020de9562826f",
+      "before": {
+        "id": "gid://shopify/Product/15454078697857",
+        "title": "Sport-Taille-Rucksack",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<p>Dieser praktische Rucksack ist ideal für den Outdoor-Einsatz konzipiert. </p><h3>Das zeichnet es aus</h3><ul>\n<li>Robustes Nylon-Material</li>\n<li>Praktische Hüfttasche für den täglichen Gebrauch</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+        "tags": [
+          "accessoire",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "kat-taschen",
+          "kategorie-tasche",
+          "rueckhol-0907",
+          "sort-damen-weitere-taschen",
+          "sort-herren-weitere-taschen",
+          "sort-rucksaecke",
+          "tasche"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7bdc720-39bc-48ed-8a3f-23a9c6f4d4e2.jpg?v=1783879625",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7bdc720-39bc-48ed-8a3f-23a9c6f4d4e2.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973921665"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/968feb94-5ce6-4420-972b-d3768a36acf0.jpg?v=1783879626",
+            "altText": "Sport-Taille-Rucksack – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973954433"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/df31e6ce-bc15-4190-85c3-c24b3be2370d.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973987201"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa9818d5-eca3-48da-ab60-7400259e9dd5.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974019969"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/940232af-9d1b-44f1-afd1-e7cc1deca035.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974052737"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77479cc3-f6e5-4d3c-9dfb-0490cb8e9662.jpg?v=1783879626",
+            "altText": "Sport-Taille-Rucksack – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974085505"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a25ae382-915d-43c5-92b0-4e46aec8d5f6.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974118273"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f3761110-74b3-42bb-871a-7a7da4cb92cf.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974151041"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55907279044993",
+            "title": "Default Title",
+            "sku": "CJ-1770324744940826624",
+            "price": "21.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "proposedAfterHtml": "<p><strong>Ein Querformat mit klaren Konturen.</strong> Die Produktansichten zeigen eine flache Tasche mit abgerundeten unteren Ecken. Waagerechte Reissverschlusslinien und kurze Kordeln an den Zippern gliedern die Vorderseite. Eine strukturierte Fläche hebt sich von den umliegenden Partien ab.</p>\n<h3>Details, die den Look bestimmen</h3>\n<p>Das längliche Format und die seitlichen Schlaufen geben der Tasche eine funktional wirkende Optik. In den Detailansichten lassen sich Linienführung, Nähte und die Anordnung der Reissverschlüsse gut vergleichen.</p>\n<h3>Bewusst zusammenstellen</h3>\n<p>Überlege vor dem Packen, welche kleinen Alltagsgegenstände du mitnehmen möchtest. Für einen ruhigen Look kannst du die gezeigte Form mit einem schlichten Sportoutfit kombinieren und weitere Taschen oder Accessoires optisch zurücknehmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+      "diff": "--- fresh-native/descriptionHtml\n+++ proposed/descriptionHtml\n@@ -1,6 +1,7 @@\n-<p>Dieser praktische Rucksack ist ideal für den Outdoor-Einsatz konzipiert. </p><h3>Das zeichnet es aus</h3><ul>\n-<li>Robustes Nylon-Material</li>\n-<li>Praktische Hüfttasche für den täglichen Gebrauch</li>\n-</ul>\n-<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>+<p><strong>Ein Querformat mit klaren Konturen.</strong> Die Produktansichten zeigen eine flache Tasche mit abgerundeten unteren Ecken. Waagerechte Reissverschlusslinien und kurze Kordeln an den Zippern gliedern die Vorderseite. Eine strukturierte Fläche hebt sich von den umliegenden Partien ab.</p>\n+<h3>Details, die den Look bestimmen</h3>\n+<p>Das längliche Format und die seitlichen Schlaufen geben der Tasche eine funktional wirkende Optik. In den Detailansichten lassen sich Linienführung, Nähte und die Anordnung der Reissverschlüsse gut vergleichen.</p>\n+<h3>Bewusst zusammenstellen</h3>\n+<p>Überlege vor dem Packen, welche kleinen Alltagsgegenstände du mitnehmen möchtest. Für einen ruhigen Look kannst du die gezeigte Form mit einem schlichten Sportoutfit kombinieren und weitere Taschen oder Accessoires optisch zurücknehmen.</p>\n+<h3>Versand und Rückgabe</h3>\n+<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+      "sourceManifest": {
+        "productId": "gid://shopify/Product/15454078697857",
+        "title": "Sport-Taille-Rucksack",
+        "url": "https://luxestyle.ch/products/sport-taille-rucksack-826624",
+        "state": "PASS_REQUIRES_FRESH_SOURCE",
+        "preparedAtUTC": "2026-10-27T07:20:12.511556+00:00",
+        "beforeSha256": "38c3fc8ad8a75e4a4d935614de44e3771cb20c18bc858b5788fb319513285894",
+        "afterSha256": "90a1fb49a26ffa35846aa748379a4b9798e58390861bd73ac5b020de9562826f",
+        "coreWords": 102,
+        "beforePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15454078697857/BEFORE.html",
+        "afterPath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15454078697857/AFTER.html",
+        "sourcePath": "/workspace/luxestyle-review/tagespruefung-20261027/texte/mode/15454078697857/NATIVE-FRESH.json",
+        "sourceCapturedAtUTC": "2026-10-27T07:17:54.910Z",
+        "imageProof": "IMAGE-SOURCES.json",
+        "allAssignedImagesViewed": 8,
+        "nativeVariantCount": 1,
+        "nativePrices": [
+          "21.90"
+        ],
+        "originalHrefTargets": [],
+        "allOriginalHrefsPreserved": true,
+        "newHrefTargets": [
+          "/policies/shipping-policy",
+          "/policies/refund-policy"
+        ],
+        "serviceChange": "Removed unsupported checked-data/delivery10–20days/30dayreturn/country/payment badge and replaced with neutral policy references within descriptionHtml only. Actual policies untouched.",
+        "factsRemovedAsUnverified": [
+          "material",
+          "hardness/robustness",
+          "adjustable carrying system",
+          "outdoor suitability"
+        ],
+        "notPromised": [
+          "exact delivered or selectable colour",
+          "straps/accessories included",
+          "material/capacity/dimensions/weight",
+          "protection/security/weatherproof function",
+          "availability/delivery/returns/payment assurance"
+        ],
+        "tagNote": "rueckhol-0907 retained; no Social copy/publication allowed from this text task.",
+        "writeFields": [
+          "id",
+          "descriptionHtml"
+        ],
+        "writes": 0,
+        "rootPreflight": "Fresh exact native BEFORE/status/identity; current assigned images/variant identity must still match; after must be read back natively and publicly; unexpected source change => stop.",
+        "titleCaveat": "Body describes image-visible side/hip bag neutrally; no title or productType rename."
+      },
+      "writeAttempts": 1,
+      "blindRetries": 0,
+      "after": {
+        "id": "gid://shopify/Product/15454078697857",
+        "title": "Sport-Taille-Rucksack",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Taschen",
+        "descriptionHtml": "<p><strong>Ein Querformat mit klaren Konturen.</strong> Die Produktansichten zeigen eine flache Tasche mit abgerundeten unteren Ecken. Waagerechte Reissverschlusslinien und kurze Kordeln an den Zippern gliedern die Vorderseite. Eine strukturierte Fläche hebt sich von den umliegenden Partien ab.</p>\n<h3>Details, die den Look bestimmen</h3>\n<p>Das längliche Format und die seitlichen Schlaufen geben der Tasche eine funktional wirkende Optik. In den Detailansichten lassen sich Linienführung, Nähte und die Anordnung der Reissverschlüsse gut vergleichen.</p>\n<h3>Bewusst zusammenstellen</h3>\n<p>Überlege vor dem Packen, welche kleinen Alltagsgegenstände du mitnehmen möchtest. Für einen ruhigen Look kannst du die gezeigte Form mit einem schlichten Sportoutfit kombinieren und weitere Taschen oder Accessoires optisch zurücknehmen.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n",
+        "tags": [
+          "accessoire",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "kat-taschen",
+          "kategorie-tasche",
+          "rueckhol-0907",
+          "sort-damen-weitere-taschen",
+          "sort-herren-weitere-taschen",
+          "sort-rucksaecke",
+          "tasche"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7bdc720-39bc-48ed-8a3f-23a9c6f4d4e2.jpg?v=1783879625",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7bdc720-39bc-48ed-8a3f-23a9c6f4d4e2.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973921665"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/968feb94-5ce6-4420-972b-d3768a36acf0.jpg?v=1783879626",
+            "altText": "Sport-Taille-Rucksack – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973954433"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/df31e6ce-bc15-4190-85c3-c24b3be2370d.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930973987201"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa9818d5-eca3-48da-ab60-7400259e9dd5.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974019969"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/940232af-9d1b-44f1-afd1-e7cc1deca035.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974052737"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77479cc3-f6e5-4d3c-9dfb-0490cb8e9662.jpg?v=1783879626",
+            "altText": "Sport-Taille-Rucksack – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974085505"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a25ae382-915d-43c5-92b0-4e46aec8d5f6.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974118273"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f3761110-74b3-42bb-871a-7a7da4cb92cf.jpg?v=1783879625",
+            "altText": "Sport-Taille-Rucksack – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69930974151041"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55907279044993",
+            "title": "Default Title",
+            "sku": "CJ-1770324744940826624",
+            "price": "21.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "changedReturnedFields": [
+        "descriptionHtml"
+      ],
+      "confirmedAtUTC": "2026-10-27T07:23:53.607Z",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15454078697857",
+        "url": "https://luxestyle.ch/products/sport-taille-rucksack-826624.js",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:11.917102+00:00",
+        "httpStatus": 200,
+        "responseProductId": "15454078697857",
+        "descriptionExact": true,
+        "afterSha256": "90a1fb49a26ffa35846aa748379a4b9798e58390861bd73ac5b020de9562826f",
+        "variantCount": 1,
+        "pricesCents": [
+          2190
+        ]
+      },
+      "publicHtmlReadback": {
+        "productId": "gid://shopify/Product/15454078697857",
+        "url": "https://luxestyle.ch/products/sport-taille-rucksack-826624",
+        "method": "GET",
+        "checkedAtUTC": "2026-10-27T07:25:11.917102+00:00",
+        "rawHtmlStored": false,
+        "httpStatus": 200,
+        "completeDocument": true,
+        "newOpeningInNonScriptText": true,
+        "opening": "Ein Querformat mit klaren Konturen. Die Produktansichten zeigen eine flache Tasche mit abgerundeten unteren Ecken. Waagerechte Reissverschlusslinien und kurze K",
+        "responseSha256": "861d604123238e3dc3cd4f082c6a0c24aa6c248c68f855105f085df3cd12a136"
+      }
+    }
+  ],
+  "confirmedNativePublicJsonAndHtml": 9
+}
