@@ -96,6 +96,7 @@ jobs:
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
             automation/auswahl_durchlauf.sh
+            .github/workflows/luxestyle-automation-tests.yml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -166,6 +167,15 @@ jobs:
           node automation/lib/mode_taxonomie_test.mjs
           node automation/lib/mode_menue_test.mjs
           node automation/lib/stecker_cj_test.mjs
+          # Grind 2.0 (Pipeline, Fracht, Preis, Dubletten, Google-Kategorie, Plan, Schema): 27.10.2026 (Gegenlesung) lief KEIN Test davon in einem Workflow.
+          # Der Test grind2_test.mjs prueft, dass jede Grind-Testdatei hier steht. Daten unter /tmp fehlen im frischen Checkout: die Tests melden «uebersprungen» statt zu scheitern.
+          node automation/lib/cj_fracht_test.mjs
+          node automation/lib/grind_preis_test.mjs
+          node automation/lib/grind_dubletten_test.mjs
+          node automation/lib/grind_google_test.mjs
+          node automation/lib/grind_plan_test.mjs
+          node automation/lib/grind_schema_test.mjs
+          node automation/grind2_test.mjs
           node automation/lib/banner_fotos_test.mjs
           node automation/lib/unterfilter_plan_test.mjs
           node automation/cj_varianten_nachziehen_stecker_test.mjs

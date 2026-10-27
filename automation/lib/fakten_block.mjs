@@ -65,6 +65,20 @@ const VERARBEITUNG = /galvani|poliert|gebürstet|beschichtet|vergoldet|versilber
 const ZIELGRUPPE = /damen|herren|kinder|mädchen|jungen|unisex|erwachsene|baby|babys|teenager|senioren|frauen|männer|hund|katze|haustier/i;
 const STIL_FALSCH = /taille|bund|länge|höhe|dicke|elastizität|schnitt/i;
 const MASS_LABELS = /^(länge|breite|höhe|tiefe|durchmesser|masse)$/i;
+/**
+ * Steht für ein einzelnes Mass (Länge, Breite, Höhe, Tiefe, Durchmesser) im Quelltext eine Zeile mit dem passenden ENGLISCHEN Achsenwort UND dieser Zahl?
+ * Anlass (27.10.2026, pid 5C86453E): «Lens: 3.6 (mm)» erschien als «Durchmesser 3.6 mm» (im Quelltext steht «Lens», nie «diameter»), und «Product size: 70mm*50.7mm*44mm» wurde in Länge/Breite/Höhe
+ * zerlegt, obwohl die Achsen nicht benannt sind. Die Zahlen-Gegenprobe prüft nur, DASS die Zahl vorkommt, nicht was sie bedeutet. Andere Beschriftungen («Masse», «Gewicht» …) bleiben unberührt.
+ */
+const MASS_WORT = { 'länge': /length|\blong\b/i, 'breite': /width|\bwide\b/i, 'höhe': /height|\bhigh\b|\btall\b/i, 'tiefe': /depth|\bdeep\b|thick/i, 'durchmesser': /diameter|\bdia\b|[øØ⌀φ]/i };
+export function massLabelBelegt(label, wert, quelle) {
+  const re = MASS_WORT[String(label ?? '').trim().toLowerCase()];
+  if (!re) return true;
+  const zahl = (String(wert ?? '').match(/\d+(?:[.,]\d+)?/) || [])[0];
+  if (!zahl) return false;
+  const z = zahl.replace(',', '.');
+  return String(quelle ?? '').split('\n').some(zeile => re.test(zeile) && zeile.replace(/,/g, '.').includes(z));
+}
 const woerter = t => new Set((String(t).toLowerCase().match(/[a-zäöüß]{6,}/g) || []));
 /** Steht der Sinn eines Eintrags schon auf der Seite? (≥ 60 % der längeren Wörter). Rein, getestet. */
 export function schonDa(eintrag, vorhanden) {
@@ -101,6 +115,7 @@ export function saeubern(roh, quelle, vorhandenerText = '') {
     if (/:/.test(wert)) { verworfen.push(`zwei Angaben in einer: ${label} ${kurz(wert, 40)}`); continue; }
     if (/^verarbeitung$/i.test(label) && !VERARBEITUNG.test(wert)) { verworfen.push(`Verarbeitung ohne Verfahren: ${kurz(wert, 40)}`); continue; }
     if (massOhneEinheit(label, wert)) { verworfen.push(`Mass ohne Zahl/Einheit: ${label} ${kurz(wert, 40)}`); continue; }
+    if (!massLabelBelegt(label, wert, quelle)) { verworfen.push(`Mass-Beschriftung ohne Beleg im Datenblatt: ${label} ${kurz(wert, 40)}`); continue; }
     const k = label.toLowerCase();
     if (sehen.has(k)) continue; sehen.add(k);
     if (vorh && vorh.includes(k + ':')) { verworfen.push(`steht schon auf der Seite: ${label}`); continue; }
@@ -169,6 +184,7 @@ STRENGE REGELN:
 - «Stil» nur für Stilbezeichnungen (Vintage, Boho, Casual, Elegant, Sport); Taillenhöhe, Länge, Bund gehören unter «Passform» oder weg. «Zielgruppe» nur Damen, Herren, Kinder, Mädchen, Jungen, Unisex oder Erwachsene; bei «General» oder «Allgemein» weglassen.
 - Ein Wert ist EINE Angabe, kein Doppelpunkt, keine zwei Angaben in einem Wert. Grössen (S, M, L, 38, 40 …) NICHT aufführen — sie stehen schon in der Auswahl.
 - Masse nur mit Zahl UND Einheit, im Format «2400 × 700 mm» oder «25 cm». Steht im Quelltext keine Einheit dabei, lass das Mass weg.
+- Länge, Breite, Höhe, Tiefe, Durchmesser nur, wenn der Quelltext genau dieses Wort (length, width, height, depth, diameter) bei dieser Zahl nennt. «Lens» ist kein Durchmesser, «size» ist keine Länge. Eine Dreierangabe wie «size: 70*50*44mm» ohne Achsenwörter nur als Beschriftung «Masse» im Format «70 × 50 × 44 mm», nie als Länge/Breite/Höhe.
 - «lieferumfang»: nur, wenn der Quelltext ein Packing list / Package includes nennt; Teile ins Deutsche übersetzen («1 Luftbett», nicht «1 Polyester Airbed»). Höchstens 6.
 - «anleitung»: nur, wenn der Quelltext Schritte oder eine Bedienung beschreibt. Höchstens 8.
 - «hinweise»: nur echte Hinweise des Quelltexts (Messtoleranz, Farbabweichung, Montage, Pflege, Sicherheit). Jeden Hinweis einmal, kurz, ohne Wiederholung. Höchstens 5.
