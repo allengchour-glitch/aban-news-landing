@@ -1,0 +1,170 @@
+{
+  "version": "master-original-acceptance-1",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "state": "DRAFT_AWAITING_ALL_REQUIRED_NATIVE_ORIGINALS_AND_PROOFS",
+  "actuallyReceivedNewTakes": 0,
+  "actuallyRenderedMasterMP4": null,
+  "shootCommissionedOrSent": false,
+  "newProgress": "Converts the existing shot request into a finite per-take original/identity/power/rights/quality acceptance record; all values below are requirements, not observations.",
+  "identityRequired": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "knownShopSku": "CJ-1477820492730732544",
+    "exactCJVariantId": null,
+    "motifIncludedByActualVariant": null,
+    "powerAdapterAndCHPlugAssignment": null,
+    "commercialVideoRightsProof": null
+  },
+  "originalCaptureRequirements": {
+    "minimumWidth": 1080,
+    "minimumHeight": 1920,
+    "nativeFramesPerSecond": 30,
+    "constantFrameRateRequired": true,
+    "higherNativeResolutionPermitted": true,
+    "retainedOriginalSha256Required": true,
+    "noMetadataOnlyFpsProof": true,
+    "noOldClipUpscaleOrGeneratedIntermediateFrames": true,
+    "allNeededShotsMustPass": true,
+    "notSufficient": "Two new HD takes do not make inherited960×540 projection/hero sections premium."
+  },
+  "takes": [
+    {
+      "takeId": "P_PROOF",
+      "includeInFilm": false,
+      "purpose": "One continuous evidence take/photo sequence binds actual purchased variant to filmed unit, projection and included supply; not an advertising scene.",
+      "minimumCaptureSeconds": 8,
+      "minimumCapturedFramesAt30": 240,
+      "requirements": [
+        "Full front/rear device and distinguishable housing/buttons/bracket/logo if any",
+        "Actual model label and packaging/SKU readable, no new CJvid inferred from PID",
+        "Actual cable and any included adapter/plug shown; label voltage/current/frequency and connector visible; inclusion and CH suitability independently verified before claims",
+        "Same unit proceeds in unbroken evidence recording to its actual projection; no composed or substituted pattern",
+        "Commercial filming/editing/advertising permission proof with exact asset/variant scope remains required"
+      ]
+    },
+    {
+      "takeId": "P_OPERATION",
+      "includeInFilm": true,
+      "purpose": "Real currently verified button operation with full device and entire hand in frame. No new function demonstrated by inference.",
+      "minimumCaptureSeconds": 8,
+      "minimumCapturedFramesAt30": 240,
+      "usableSecondsNeeded": 5.6,
+      "handlesSeconds": {
+        "before": 1,
+        "after": 1
+      },
+      "requirements": [
+        "Native portrait1080×1920/30fps or better proven original, no upscale/interpolation as quality substitute",
+        "Full hand, controls and product remain visible throughout actual action",
+        "Do not stage an unsupported function or claim a full one-button installation",
+        "Locked exposure/WB/focus; check banding under actual lighting"
+      ]
+    },
+    {
+      "takeId": "P_PROJECTION",
+      "includeInFilm": true,
+      "purpose": "Actual projection of the same exact unit and confirmed motif, covers2sHookA and4.8s projection body without repeating footage.",
+      "minimumCaptureSeconds": 9,
+      "minimumCapturedFramesAt30": 270,
+      "usableSecondsNeeded": 6.8,
+      "nonOverlappingReferenceWindowsSeconds": [
+        {
+          "in": 1,
+          "outExclusive": 3
+        },
+        {
+          "in": 3.2,
+          "outExclusive": 8
+        }
+      ],
+      "handlesSeconds": {
+        "before": 1,
+        "after": 1
+      },
+      "requirements": [
+        "Native quality gate applies to the complete needed projection footage, not only operation/detail replacement",
+        "Recorded pattern physically matches verified current sale variant/motif evidence",
+        "Keep real brightness/colours; no synthetic glow/starfield or stock replacement",
+        "No clipping focus hunt or exposure pumping at dark-to-light transition"
+      ]
+    },
+    {
+      "takeId": "P_DETAIL",
+      "includeInFilm": true,
+      "purpose": "Continuous real device detail; can cover2sHookB choice and separate1.6s detail insert without replay.",
+      "minimumCaptureSeconds": 6,
+      "minimumCapturedFramesAt30": 180,
+      "usableSecondsNeeded": 3.6,
+      "nonOverlappingReferenceWindowsSeconds": [
+        {
+          "in": 1,
+          "outExclusive": 3
+        },
+        {
+          "in": 3.4,
+          "outExclusive": 5
+        }
+      ],
+      "handlesSeconds": {
+        "before": 1,
+        "after": 1
+      },
+      "requirements": [
+        "Same current exact product form/colour/logo and real gentle movement",
+        "No inappropriate cover lift or cut inside selected detail",
+        "No invented crop padding or hand reconstruction",
+        "HookA/B are choices for same first master, not an instruction for two exports"
+      ]
+    },
+    {
+      "takeId": "P_HERO",
+      "includeInFilm": true,
+      "purpose": "Quiet continuous hero ending with actual product and matching projection visible together where physically possible.",
+      "minimumCaptureSeconds": 6,
+      "minimumCapturedFramesAt30": 180,
+      "usableSecondsNeeded": 4,
+      "handlesSeconds": {
+        "before": 1,
+        "after": 1
+      },
+      "requirements": [
+        "Same exact device and real same-pattern projection, no photocomposite",
+        "Leave clear space for4sCTA at specified lower box without covering product controls",
+        "Native sharpness and colour gate applies to all4s, not freeze-frame/photo zoom"
+      ]
+    }
+  ],
+  "finalMasterRequirements": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540,
+    "codec": "H264/yuv420p",
+    "audio": "Only canonical luxe-premium.wav, AAC stereo; no voiceover/no source audio/no other effects",
+    "musicStartReferenceSeconds": 0,
+    "musicEndReferenceSeconds": 18,
+    "musicFadeInSeconds": 0.15,
+    "musicFadeOutSeconds": 0.6,
+    "musicSelectionAndPhraseListeningApproved": false,
+    "stableMasterId": "luxe_sternenprojektor_master_20261018",
+    "approvalRequiredBeforeVariants": true,
+    "mp4Sha256AndPerChannelEvidenceRequired": true
+  },
+  "acceptanceRecordForEachActualOriginal": {
+    "filename": null,
+    "sha256": null,
+    "actualWidth": null,
+    "actualHeight": null,
+    "actualRate": null,
+    "actualFrameCount": null,
+    "actualDuration": null,
+    "sourceOfOriginal": null,
+    "unitAndMotifProofReference": null,
+    "commercialRightsReference": null,
+    "visualReviewer": null,
+    "reviewedAtUTC": null,
+    "passed": false
+  },
+  "publishable": false
+}
