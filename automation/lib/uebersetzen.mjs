@@ -62,8 +62,8 @@ export async function nachDeutsch(texte, opt = {}) {
   if (!texte?.length) return { texte: texte || [], weg: 'original' };
   const fetchFn = opt.fetch ?? fetch;
   const gk = (opt.geminiKey ?? process.env.GEMINI_API_KEY ?? '').trim();
-  // Groq: bis zu drei Schlüssel (GROQ_API_KEY, _2, _3); jeder hat sein eigenes Tageslimit (gemessen 27.10.2026: 1000 Anfragen je Modell und Tag). Ist einer erschöpft, fragt der nächste.
-  const qks = opt.groqKey !== undefined ? [String(opt.groqKey).trim()] : [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY2, process.env.GROQ_API_KEY3].map(k => (k ?? '').trim());
+  // Groq: bis zu vier Schlüssel (GROQ_API_KEY, _2, _3, _4); jeder hat sein eigenes Tageslimit (gemessen 27.10.2026: 1000 Anfragen je Modell und Tag). Ist einer erschöpft, fragt der nächste.
+  const qks = opt.groqKey !== undefined ? [String(opt.groqKey).trim()] : [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY2, process.env.GROQ_API_KEY3, process.env.GROQ_API_KEY4].map(k => (k ?? '').trim());
   const groqKeys = [...new Set(qks.filter(Boolean))];
   const modelle = opt.groqModelle ?? GROQ_MODELLE;
   const gruende = [];

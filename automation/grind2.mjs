@@ -918,11 +918,11 @@ export function cjClient({ token, fetch: fetchFn, warte, stand = {}, reserve = 0
 }
 
 /**
- * Die Groq-Schlüssel: bis zu drei (GROQ_API_KEY, GROQ_API_KEY2, GROQ_API_KEY3 — wie nachDeutsch in lib/uebersetzen.mjs der Hauptlinie); jeder hat sein eigenes Tageslimit (GEMESSEN 27.10.2026: 1000 Anfragen
+ * Die Groq-Schlüssel: bis zu vier (GROQ_API_KEY, GROQ_API_KEY2, GROQ_API_KEY3, GROQ_API_KEY4 — wie nachDeutsch in lib/uebersetzen.mjs der Hauptlinie); jeder hat sein eigenes Tageslimit (GEMESSEN 27.10.2026: 1000 Anfragen
  * je Modell und Tag). Ein ausdrücklich übergebener Schlüssel (`groqKey`, auch '') ersetzt die Umgebung.
  */
 export function groqSchluessel({ groqKey, env = process.env } = {}) {
-  const roh = groqKey !== undefined ? [groqKey] : [env.GROQ_API_KEY, env.GROQ_API_KEY2, env.GROQ_API_KEY3];
+  const roh = groqKey !== undefined ? [groqKey] : [env.GROQ_API_KEY, env.GROQ_API_KEY2, env.GROQ_API_KEY3, env.GROQ_API_KEY4];
   return [...new Set(roh.map(k => String(k ?? '').trim()).filter(Boolean))];
 }
 /** Ein Aufruf, der JSON liefern muss: Gemini, sonst Groq (alle Schlüssel nacheinander, wie cj_fakten_block.mjs, dort nicht exportiert). {o:null} = alle ohne brauchbare Antwort. */
