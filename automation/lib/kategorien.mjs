@@ -15,7 +15,8 @@
 import { istTasseOderBecher, TASSEN_TAG } from './tassen_regel.mjs';
 import { VERENGT } from './kategorien_verengt.mjs';
 import { MODE } from './mode_taxonomie.mjs';
-import { SCHMUCK } from './bereich_taxonomie.mjs';
+import { SCHMUCK, bereichAuswahl } from './bereich_taxonomie.mjs';
+import { BASIS_SPERR_TAGS, ZUSATZ_SPERR_TAGS_TAXONOMIE } from './sperr_tags.mjs';
 
 const BUCH = 'a-zäöüß';
 /** Eigenes Wort: links und rechts kein Buchstabe (ein Bindestrich trennt). */
@@ -517,7 +518,15 @@ const BASIS_KATEGORIEN = [
  * + Schmuck-Taxonomie (Bereichsdatei schmuck-uhren.json; ids `s-…`) NUR mit SCHMUCK=1: ohne den Schalter bleiben alle bisherigen Läufe und Tests unverändert.
  */
 export const SCHMUCK_AN = process.env.SCHMUCK === '1';
-export const KATEGORIEN = [...BASIS_KATEGORIEN, ...VERENGT, ...MODE, ...(SCHMUCK_AN ? SCHMUCK : [])];
+/**
+ * Die vorhandenen Collections im Schmuck-Ast (sub-ringe, sub-ohrringe, sub-armbaender, schmuck-sets, broschen-pins …) behalten Regel und Tag, schliessen mit SCHMUCK=1 aber
+ * dieselben Zusatz-Sperr-Tags aus wie die neuen Schmuck-Kategorien (fortura, lizenz-nicht-bewerben, google-gesperrt-adult; lib/sperr_tags.mjs). Gegenlesung 27.10.2026 (pruef23): fünf
+ * Fortura-Kostümstücke («Armband Cleopatra», «Keltisches Armband silber», «Schmuckset Gangster Rapper» …) standen in diesen Seiten, obwohl die neuen sie ausschliessen. Sie bleiben über
+ * ihre Kostüm-Collections (Tag kostuem-accessoire) und die Suche erreichbar. Ohne den Schalter bleibt jede bisherige Regel wie sie war (die Engine sperrt fortura sonst bewusst nicht).
+ */
+const SCHMUCK_VORHANDEN = SCHMUCK_AN ? new Set(bereichAuswahl().bestehend) : new Set();
+export const KATEGORIEN = [...BASIS_KATEGORIEN, ...VERENGT, ...MODE, ...(SCHMUCK_AN ? SCHMUCK : [])]
+  .map(k => SCHMUCK_VORHANDEN.has(k.handle) ? { ...k, sperrZusatz: ZUSATZ_SPERR_TAGS_TAXONOMIE } : k);
 
 /**
  * Tag-Bereinigungen: entfernen/setzen unabhängig von einer Collection. Jede Regel hat einen Grund (gemessen) und eine Gegenprobe im Test.
@@ -546,13 +555,14 @@ export const istGeschenkUngeeignet = p => gp(p, ...GESCHENK_NEIN_G) || /(^|[^a-z
 
 /** Wer als nicht zu bewerben markiert ist (Erwachsene, Tabak, Waffen, kein CH-Stecker …), wird in KEINE Themenkategorie einsortiert:
  *  eine «Muskelmann»-Lampe mit Tag adult-nicht-bewerben stand sonst im Büro-Bereich (User-Seite, 25.10.). Über die Suche bleibt das Produkt erreichbar. */
-export const SPERR_TAGS = ['adult-nicht-bewerben', '18plus', 'gmc-adult-pull', 'raucher-rueckhol-0809', 'nicht-bewerben', 'compliance-pruefen', 'waffenzubehoer-nicht-verkaufen', 'stecker-nicht-ch'];
+export const SPERR_TAGS = BASIS_SPERR_TAGS;   // Liste und Begründung: lib/sperr_tags.mjs (die Taxonomie «Rest des Shops» sperrt drei Tags zusätzlich)
 export const istGesperrt = p => (p.tags || []).some(t => SPERR_TAGS.includes(t));
 
 /** @returns {boolean} gehört das Produkt (Objekt oder nur Titel-String) in die Kategorie? */
 export function gehoertIn(kat, p) {
   const prod = typeof p === 'string' ? { title: p, g: '', tags: [] } : p;
   if (istGesperrt(prod)) return false;
+  if (kat.sperrZusatz && (prod.tags || []).some(t => kat.sperrZusatz.includes(t))) return false;   // Zusatz-Sperr-Tags nur dieser Kategorie (vorhandene Schmuck-Collections mit SCHMUCK=1)
   if (kat.passt) return !!kat.passt(prod);
   if (!kat.einschluss.test(prod.title || '')) return false;
   return !(kat.ausschluss && kat.ausschluss.test(prod.title || ''));

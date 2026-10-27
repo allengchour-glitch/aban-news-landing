@@ -88,12 +88,36 @@ export function anwenden(baum, op) {
 export function flach(baum, pfad = '') {
   return baum.flatMap(i => [`${pfad}/${i.title}|${i.type}|${i.resourceId || i.url || ''}`, ...flach(i.items || [], `${pfad}/${i.title}`)]);
 }
-/** Gleich, wenn Pfad, Titel, Typ, Ziel und Reihenfolge übereinstimmen (Shopify-IDs und URLs von Collections zählen nicht). */
+/** Gleich, wenn Pfad, Titel, Typ und Reihenfolge übereinstimmen. ACHTUNG: das Ziel (resourceId, Adresse) wird hier abgeschnitten und NICHT verglichen (Shopify-IDs und URLs von Collections zählen nicht) - dafür `gleicheZiele`. */
 export function gleicherBaum(gesendet, zurueck) {
   const norm = l => l.map(x => x.replace(/\|(COLLECTION|HTTP|PAGE|BLOG|CATALOG|COLLECTIONS|FRONTPAGE|SEARCH|SHOP_POLICY|PRODUCT|METAOBJECT|ARTICLE)\|.*$/, '|$1'));
   // Ziele unterscheiden sich bei Collections nur im Format (GID vs. URL) — Titel/Typ/Pfad/Reihenfolge entscheiden
   const a = norm(flach(gesendet)), b = norm(flach(zurueck));
   return { gleich: JSON.stringify(a) === JSON.stringify(b), nurGesendet: a.filter(x => !b.includes(x)), nurZurueck: b.filter(x => !a.includes(x)) };
+}
+
+/**
+ * Ziel eines Eintrags in einer Form, die Eingabe (resourceId, url) und Nachlesen (resourceId UND url) gleich macht:
+ * Collection/Seite/Produkt → die GID; sonst die Adresse ohne den eigenen Host (luxestyle.ch, *.myshopify.com; fremde Hosts bleiben stehen) und ohne den Sprachpräfix `/en/`, den die Admin-API vor Shop-Pfade setzt.
+ */
+export function ziel(eintrag) {
+  if (eintrag.resourceId) return eintrag.resourceId;
+  const u = String(eintrag.url || '').replace(/^https?:\/\/(www\.)?(luxestyle\.ch|[a-z0-9-]+\.myshopify\.com)(?=\/|$)/i, '').replace(/^\/[a-z]{2}(-[a-z]{2})?\/(?=(collections|pages|products|blogs|policies|search|cart)(\/|$|\?))/i, '/');
+  return u;
+}
+/** Flache Form MIT Ziel: Pfad, Titel, Typ, Ziel - in Reihenfolge. `gleicherBaum` lässt das Ziel bewusst weg (GID-/URL-Format), dieses hier nicht. */
+export function flachMitZiel(baum, pfad = '') {
+  return baum.flatMap(i => [`${pfad}/${i.title}|${i.type}|${ziel(i)}`, ...flachMitZiel(i.items || [], `${pfad}/${i.title}`)]);
+}
+/**
+ * Streng: Pfad, Titel, Typ, Reihenfolge UND Ziel müssen übereinstimmen. Nach `menuUpdate` zählt das: vertauscht oder verliert Shopify ein Ziel
+ * (eine resourceId, eine Adresse), stimmen Titel und Reihenfolge trotzdem, und `gleicherBaum` meldet «gleich».
+ * @returns {{gleich:boolean, abweichungen:{pfad:string, gesendet:string|null, zurueck:string|null}[]}}
+ */
+export function gleicheZiele(gesendet, zurueck) {
+  const a = flachMitZiel(gesendet), b = flachMitZiel(zurueck), abweichungen = [];
+  for (let n = 0; n < Math.max(a.length, b.length); n++) if (a[n] !== b[n]) abweichungen.push({ pfad: (a[n] ?? b[n]).split('|')[0], gesendet: a[n] ?? null, zurueck: b[n] ?? null });
+  return { gleich: abweichungen.length === 0, abweichungen };
 }
 
 /** Der Umbau dieser Sitzung, in dieser Reihenfolge (Verschieben vor Einfügen). `ressourceHandle` wird zur Laufzeit zur GID aufgelöst. */

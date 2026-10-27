@@ -12,7 +12,12 @@
  *
  * TROCKENLAUF IST VORGABE (liest nur): Tabelle der Gruppen und Kinder; mit KATALOG=<Datei> zusätzlich Mitgliederzahlen. LIVE=1 legt an.
  * Idempotent: gibt es den Handle schon mit DERSELBEN Regel, wird nichts angelegt (fehlende Veröffentlichungskanäle werden nachgeholt); mit anderer Regel wird
- * nichts überschrieben, es wird gemeldet (Exit 2). Exit 2 auch bei LIVE, wenn eine vorhandene Kind-Collection nicht das Tag der Engine als Regel hat
+ * nichts überschrieben, es wird gemeldet (Exit 2).
+ * PUBLISH-FALLE: Angelegt und «veröffentlicht» heisst nicht erreichbar (resourcePublicationsV2 täuscht in beide Richtungen, Skill kategorien-nach-google Falle 4).
+ * Mit LIVE=1 wird darum jede der sechs Sammlungen am Schluss im Onlineshop abgerufen (lib/collection_web.mjs: HTTP 200 ohne Weiterleitung UND mindestens ein Produkt,
+ * mit Wiederholungen, weil Shopify die Mitgliedschaft verzögert füllt); eine «vorhandene» Sammlung, die der Onlineshop nicht zeigt, wird trotz gegenteiliger Auskunft der API
+ * in allen Kanälen neu veröffentlicht. Besteht eine Sammlung die Prüfung nicht, Exit 2 (das Menü darf sie nicht verlinken). Ohne `web` bricht LIVE ab (Exit 1).
+ * WEB_PRUEFEN=1 macht die Prüfung auch im Trockenlauf (nur Bericht). Exit 2 auch bei LIVE, wenn eine vorhandene Kind-Collection nicht das Tag der Engine als Regel hat
  * (die Gruppen-Sammlung verfehlte dann ihre Mitglieder), und wenn die Vorbild-Collection «hype-jetzt» keine Kanäle hat. Im Trockenlauf sind diese Fälle nur Meldungen.
  * Reihenfolge: Tags (kategorien_anlegen.mjs PHASE=tags) → Collections der Kategorien (PHASE=sammlungen) → dieses Skript → schmuck_menue.mjs.
  */
@@ -22,6 +27,7 @@ import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { gehoertIn } from './lib/kategorien.mjs';
 import { gruppenPlan, gleicheRegel, kategorieVon } from './lib/schmuck_menue.mjs';
+import { collectionsImWeb } from './lib/collection_web.mjs';
 
 const LEDGER = 'dropship/kategorien_ledger.txt';
 const COLL_Q = `query($h:String!){collectionByHandle(handle:$h){id title productsCount{count} ruleSet{appliedDisjunctively rules{column relation condition}}}}`;
@@ -34,9 +40,11 @@ export const kindTagStimmt = (c, tag) => !!c?.ruleSet && !c.ruleSet.appliedDisju
 
 /**
  * Der ganze Lauf mit eingespeister Abfrage `q(query, variables)` (Tests spielen eine Attrappe ein).
- * @returns {Promise<{code:number, ergebnis:object[], kinder:object[]}>}  code 0 = in Ordnung, 2 = ein Handle ist mit anderer Regel belegt
+ * `web(handles)` → { handle: {ok, status, n, grund} } ist die HTTP-Prüfung im Onlineshop (Tests spielen eine Attrappe ein).
+ * @returns {Promise<{code:number, ergebnis:object[], kinder:object[]}>}  code 0 = in Ordnung, 1 = Aufruffehler, 2 = ein Handle ist mit anderer Regel belegt oder eine Sammlung ist im Onlineshop nicht erreichbar/leer
  */
-export async function gruppenLauf(q, { live = false, katalog = null, ledger = LEDGER, jetzt = () => new Date(), warte = schlaf, out = console.log, err = console.error } = {}) {
+export async function gruppenLauf(q, { live = false, katalog = null, web = null, ledger = LEDGER, jetzt = () => new Date(), warte = schlaf, out = console.log, err = console.error } = {}) {
+  if (live && !web) { err('LIVE braucht die HTTP-Prüfung der neuen Sammlungen (Publish-Falle): ohne sie wird nichts angelegt'); return { code: 1, ergebnis: [], kinder: [] }; }
   const plan = gruppenPlan();
   const produkte = katalog?.produkte || null;
   // ── Kinder: welches Tag tragen die Mitglieder wirklich? ──
@@ -71,7 +79,13 @@ export async function gruppenLauf(q, { live = false, katalog = null, ledger = LE
     if (status.startsWith('BELEGT')) err(`  ⚠ ${g.handle}: Handle ist belegt mit anderer Regel (${regelText(c)}) -> wird NICHT überschrieben`);
   }
   const belegt = ergebnis.filter(e => e.status.startsWith('BELEGT'));
-  if (!live) { out('\nTrockenlauf - nichts geschrieben.'); return { code: belegt.length ? 2 : 0, ergebnis, kinder }; }
+  if (!live) {
+    if (web) { // Bericht: wie sieht der Onlineshop die vorhandenen Sammlungen?
+      const vorhanden = ergebnis.filter(e => e.id), erg = vorhanden.length ? await web(vorhanden.map(e => e.handle)) : {};
+      for (const e of vorhanden) { e.web = erg[e.handle]; out(`  Onlineshop ${e.handle.padEnd(34)} ${e.web.ok ? `ok (HTTP ${e.web.status}, Produkte vorhanden)` : 'NICHT in Ordnung: ' + e.web.grund}`); }
+    }
+    out('\nTrockenlauf - nichts geschrieben.'); return { code: belegt.length ? 2 : 0, ergebnis, kinder };
+  }
   if (belegt.length) { err(`\nABBRUCH, nichts geschrieben: ${belegt.length} Handles sind mit anderer Regel belegt (${belegt.map(e => e.handle).join(', ')}). Entscheid beim Menschen.`); return { code: 2, ergebnis, kinder }; }
   if (abweichend.length) { err(`\nABBRUCH, nichts geschrieben: ${abweichend.length} vorhandene Kind-Collections haben nicht das Tag der Engine (${abweichend.map(z => z.handle).join(', ')}); die Gruppen-Sammlung würde ihre Mitglieder verfehlen.`); return { code: 2, ergebnis, kinder }; }
 
@@ -84,7 +98,9 @@ export async function gruppenLauf(q, { live = false, katalog = null, ledger = LE
     if (e.status !== 'neu') {
       // Idempotent UND heilend: bricht ein Lauf zwischen Anlegen und Veröffentlichen ab, bliebe die Sammlung sonst für immer unveröffentlicht (404).
       const kanaele = (await q(`query($id:ID!){collection(id:$id){resourcePublicationsV2(first:30){nodes{isPublished publication{id name}}}}}`, { id: e.id })).collection.resourcePublicationsV2.nodes;
-      const fehlt = pubs.filter(x => !kanaele.some(n => n.isPublished && n.publication.id === x.publicationId));
+      let fehlt = pubs.filter(x => !kanaele.some(n => n.isPublished && n.publication.id === x.publicationId));
+      // resourcePublicationsV2 täuscht: «veröffentlicht» laut API, aber der Onlineshop liefert 404 → dann in allen Kanälen erneut veröffentlichen (idempotent)
+      if (!fehlt.length && (await web([g.handle]))[g.handle]?.status === 404) fehlt = pubs;
       if (fehlt.length) {
         const p2 = await q(`mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{field message}}}`, { id: e.id, i: fehlt });
         if (p2.publishablePublish.userErrors.length) throw new Error(`publishablePublish ${g.handle} ${JSON.stringify(p2.publishablePublish.userErrors)}`);
@@ -104,12 +120,25 @@ export async function gruppenLauf(q, { live = false, katalog = null, ledger = LE
     appendFileSync(ledger, `${jetzt().toISOString()} · angelegt ${g.handle}\n`);
   }
   // Mitgliedschaft entsteht verzögert (Shopify füllt Smart-Collections nachträglich)
-  await warte(20000);
+  if (ergebnis.some(x => x.angelegt)) await warte(20000);
   for (const e of ergebnis.filter(x => x.angelegt)) {
     let n = 0;
     for (let i = 0; i < 6; i++) { n = (await q(`query($id:ID!){collection(id:$id){productsCount{count}}}`, { id: e.id })).collection.productsCount.count; if (e.erwartet === null || n >= e.erwartet * 0.9) break; await warte(8000); }
     e.mitglieder = n;
     out(`  ${e.handle.padEnd(34)} Mitglieder ${String(n).padStart(5)}${e.erwartet !== null ? ` / erwartet ${e.erwartet}` : ''}`);
+  }
+  // Kundensicht: jede der sechs Sammlungen muss im Onlineshop mit HTTP 200 (ohne Weiterleitung) Produkte zeigen. Die Mitgliedschaft füllt Shopify verzögert, darum mehrere Versuche.
+  const zuPruefen = ergebnis.filter(e => e.id);
+  for (const e of zuPruefen) {
+    let r = null;
+    for (let i = 0; i < 5; i++) { r = (await web([e.handle]))[e.handle]; if (r?.ok) break; if (i < 4) await warte(8000); }
+    e.web = r || { ok: false, status: 0, n: 0, grund: 'keine Antwort' };
+    out(`  Onlineshop ${e.handle.padEnd(34)} ${e.web.ok ? 'ok (HTTP 200, Produkte vorhanden)' : 'NICHT in Ordnung: ' + e.web.grund}`);
+  }
+  const nichtImWeb = zuPruefen.filter(e => !e.web.ok);
+  if (nichtImWeb.length) {
+    err(`\nFEHLER: ${nichtImWeb.length} Sammlungen sind im Onlineshop nicht erreichbar oder leer (${nichtImWeb.map(e => `${e.handle}: ${e.web.grund}`).join('; ')}). Das Menü darf sie nicht verlinken; nach einer Weile erneut laufen lassen (veröffentlicht wird idempotent nachgeholt).`);
+    return { code: 2, ergebnis, kinder };
   }
   return { code: 0, ergebnis, kinder };
 }
@@ -125,7 +154,9 @@ async function main() {
   const tok = (await r.json()).access_token;
   if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
   const q = (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b);
-  const res = await gruppenLauf(q, { live: process.env.LIVE === '1', katalog });
+  const live = process.env.LIVE === '1';
+  const web = live || process.env.WEB_PRUEFEN === '1' ? hs => collectionsImWeb(hs) : null;
+  const res = await gruppenLauf(q, { live, katalog, web });
   process.exit(res.code);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(e => { console.error('FEHLER', e.message); process.exit(1); });

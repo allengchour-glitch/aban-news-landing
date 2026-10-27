@@ -8,7 +8,7 @@
  *
  * Aufbau (höchstens 3 Ebenen): Schmuck (Ebene 1, bleibt) → Kopf (Ebene 2, mit Link) → Kind (Ebene 3).
  */
-import { suche, tiefe } from './menue_plan.mjs';
+import { suche, tiefe, gleicheZiele, ziel } from './menue_plan.mjs';
 import { KATEGORIEN } from './kategorien.mjs';
 import { SCHMUCK } from './bereich_taxonomie.mjs';
 import { seo } from './mode_taxonomie.mjs';
@@ -31,13 +31,13 @@ export const AESTE = [
   { titel: 'Halsketten & Anhänger', kopf: 'halsketten-alle', kinder: ['perlenketten', 'choker-layering-ketten', 'glieder-hiphop-ketten', 'ketten-mit-anhaenger', 'silberketten', 'edelstahl-titanketten', 'zirkonia-moissanit-ketten'] },
   { titel: 'Armbänder & Armreifen', kopf: 'sub-armbaender', kinder: ['armreifen-bangles', 'lederarmbaender', 'perlen-edelsteinarmbaender', 'gliederarmbaender', 'kupfer-magnetarmbaender', 'geflochtene-wickelarmbaender', 'silberarmbaender', 'edelstahl-titanarmbaender', 'vergoldete-armbaender', 'zirkonia-strassarmbaender'] },
   { titel: 'Für Herren', kopf: 'schmuck-herren-gruppe', kinder: ['herrenringe', 'herrenarmbaender'],
-    gruppe: { titel: 'Schmuck für Herren', beschreibung: 'Herren- und Unisex-Ringe aus Edelstahl, Titan, Wolfram und Silber sowie Armbänder für Herren aus Leder, Stahl, Kupfer und Naturstein.' } },
+    gruppe: { titel: 'Schmuck für Herren', beschreibung: 'Herren- und Unisex-Ringe aus Edelstahl, Titan, Wolfram und Silber sowie Armbänder für Herren aus Leder, Stahl und Kupfer.' } },
   { titel: 'Gravur & Namen', kopf: 'schmuck-personalisiert-gruppe', kinder: ['personalisierte-ringe', 'personalisierte-armbaender', 'personalisierte-ketten'],
     gruppe: { titel: 'Personalisierter Schmuck', beschreibung: 'Ringe, Armbänder und Halsketten mit Gravur, Namen oder Buchstaben als persönliches Geschenk.' } },
   { titel: 'Motive', kopf: 'schmuck-motiv-gruppe', kinder: ['herz-schmuck', 'blumen-schmetterlingsschmuck', 'stern-mond-schmuck', 'tier-schmuck', 'gluecks-schutzschmuck', 'kreuz-schmuck'],
     gruppe: { titel: 'Schmuck nach Motiv', beschreibung: 'Schmuck mit Herz, Blumen, Schmetterling, Stern, Mond und Sonne, Tiermotiven, Kreuz sowie Glücks- und Schutzsymbolen.' } },
   { titel: 'Stile', kopf: 'schmuck-stil-gruppe', kinder: ['minimalistischer-schmuck', 'vintage-retro-schmuck', 'boho-ethno-schmuck', 'punk-gothic-schmuck', 'geometrischer-schmuck', 'korea-frankreich-oldmoney-schmuck'],
-    gruppe: { titel: 'Schmuck nach Stil', beschreibung: 'Schmuck im minimalistischen, Vintage-, Retro-, Boho-, Ethno-, Punk- und Gothic-Stil, mit geometrischen Formen sowie im Korea-, Frankreich- und Old-Money-Stil.' } },
+    gruppe: { titel: 'Schmuck nach Stil', beschreibung: 'Schmuck im minimalistischen, Vintage-, Retro-, Boho-, Ethno-, Punk-, Gothic- und Hip-Hop-Stil, mit geometrischen Formen sowie im Korea-, Frankreich- und Old-Money-Stil.' } },
   { titel: 'Sets & Besonderes', kopf: 'schmuck-sets-gruppe', kinder: ['schmuck-sets', 'kombisets-kette-armband-ohrringe', 'broschen-pins', 'koerper-fussschmuck', 'premium-schmuck'],
     gruppe: { titel: 'Sets, Broschen & Körperschmuck', beschreibung: 'Schmuck-Sets und Kombi-Sets, Broschen und Pins sowie Körper- und Fussschmuck.' } },
   { titel: 'Zubehör', kopf: 'schmuck-zubehoer-gruppe', kinder: ['schmuck-selbermachen', 'schluessel-taschenanhaenger', 'schmuckaufbewahrung', 'sonnenbrillen-alle'],
@@ -139,18 +139,21 @@ function eintraege(baum) {
 }
 
 /**
- * Prüfungen vor dem Schreiben (und nach dem Nachlesen): Tiefe, nur Collections, keine Dopplung, nichts anderes verändert.
+ * Prüfungen vor dem Schreiben UND nach dem Nachlesen (menueLauf ruft beides auf): Tiefe, nur Collections, keine Dopplung, nichts anderes verändert.
+ * `nachlesen: true` vergleicht den von Shopify zurückgelesenen Baum: Ids und Adress-Format dürfen abweichen (ein Eintrag zählt über Titel, Typ und Ziel),
+ * der Rest des Menüs und der Kopf «Schmuck» müssen aber mit ihrem Ziel (resourceId bzw. Adresse) unverändert sein.
  * @returns {string[]} Fehler (leer = in Ordnung)
  */
-export function pruefeSchmuck(alt, neu) {
+export function pruefeSchmuck(alt, neu, { nachlesen = false } = {}) {
   const fehler = [];
   if (tiefe(neu) > 3) fehler.push(`Menü hätte ${tiefe(neu)} Ebenen (Shopify erlaubt 3)`);
   if (JSON.stringify(alt.map(x => x.title)) !== JSON.stringify(neu.map(x => x.title))) fehler.push('oberste Ebene verändert (Titel oder Reihenfolge)');
   const sa = suche(alt, PFAD), sn = suche(neu, PFAD);
   if (!sa || !sn) { fehler.push(`oberster Punkt «${PFAD.join(' > ')}» fehlt`); return fehler; }
-  const kopf = x => JSON.stringify({ id: x.id, title: x.title, type: x.type, resourceId: x.resourceId, url: x.url, tags: x.tags });
+  const kopf = x => JSON.stringify(nachlesen ? { title: x.title, type: x.type, ziel: ziel(x), tags: x.tags || [] } : { id: x.id, title: x.title, type: x.type, resourceId: x.resourceId, url: x.url, tags: x.tags });
   if (kopf(sa) !== kopf(sn)) fehler.push('der Punkt «Schmuck» selbst wurde verändert (Titel, Typ oder Ziel)');
-  if (JSON.stringify(ohneSchmuckKinder(alt)) !== JSON.stringify(ohneSchmuckKinder(neu))) fehler.push('Äste ausserhalb von «Schmuck > …» verändert');
+  const aussen = nachlesen ? gleicheZiele(ohneSchmuckKinder(alt), ohneSchmuckKinder(neu)) : { gleich: JSON.stringify(ohneSchmuckKinder(alt)) === JSON.stringify(ohneSchmuckKinder(neu)), abweichungen: [] };
+  if (!aussen.gleich) fehler.push('Äste ausserhalb von «Schmuck > …» verändert' + (aussen.abweichungen.length ? `: ${aussen.abweichungen.slice(0, 3).map(a => `${a.pfad} (${a.gesendet ?? 'fehlt'} ↔ ${a.zurueck ?? 'fehlt'})`).join('; ')}` : ''));
   for (const { pfad, eintrag } of eintraege(neu)) {
     if (eintrag.type !== 'COLLECTION' || !eintrag.resourceId) fehler.push(`Ziel ist keine Collection: ${pfad.join(' > ')} (${eintrag.type}${eintrag.resourceId ? '' : ', ohne resourceId'})`);
   }

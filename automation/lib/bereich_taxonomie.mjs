@@ -61,19 +61,49 @@ export function waehleKategorien(B, gruppen) {
   return { gewaehlt, bauen, ausgelassen, bestehend };
 }
 
+/** Längster Suchmaschinen-Titel (Google kürzt darüber ab; Mode: höchstens 64). */
+export const SEO_TITEL_MAX = 60;
+/** «<Titel> online kaufen | LuxeStyle CH»; passt das nicht in SEO_TITEL_MAX Zeichen, entfällt erst die Marke, dann «online kaufen». */
+export function seoTitel(titel) {
+  for (const s of [`${titel} online kaufen | LuxeStyle CH`, `${titel} online kaufen`, titel]) if (s.length <= SEO_TITEL_MAX) return s;
+  return titel;
+}
+
 function baue(B, datei, praefix, k) {
   const eigen = p => passt(k, normiereKern(p));
   const beschr = bereinigeBeschreibung(k.beschreibung) || `${k.titel} aus unserem Sortiment.`;
   const kat = { id: `${praefix}${k.handle}`, handle: k.handle, titel: k.titel, tag: `sort-${k.handle}`, min: 15, bestehend: false, aus_datei: datei, bereich: B.bereich,
-    beschreibung: beschr, seoBeschreibung: seo(k.titel, beschr), passt: eigen };
+    beschreibung: beschr, seoTitel: seoTitel(k.titel), seoBeschreibung: seo(k.titel, beschr), passt: eigen };
   const filter = (k.unterfilter || []).map(u => {
+    // Der Chip-Titel trägt den Bezug zur Eltern-Kategorie selbst («Herz-Ringe», «Silber-Ohrstecker»): er ist zugleich Seitenüberschrift der Chip-Collection
+    // und kommt höchstens zweimal vor (getestet). Die Chip-Zeile zeigt denselben Titel.
     const b = `${u.titel} aus unserer Auswahl «${k.titel}».`;
-    // Der Chip-Titel («Mit Zirkonia») wiederholt sich bei mehreren Eltern: Suchmaschinen-Titel und -Text tragen darum den Eltern-Titel mit.
     return { id: `${praefix}${u.handle}`, handle: u.handle, titel: u.titel, tag: `sort-${u.handle}`, min: 15, bestehend: false, aus_datei: datei, filter: true, eltern_id: kat.id, bereich: B.bereich,
-      beschreibung: b, seoTitel: `${k.titel}: ${u.titel} online kaufen | LuxeStyle CH`, seoBeschreibung: seo(`${k.titel}: ${u.titel}`, ''),
+      beschreibung: b, seoTitel: seoTitel(u.titel), seoBeschreibung: seo(u.titel, ''),
       passt: p => { const q = normiereKern(p); return passt(k, q) && imUnterfilter(u, q); } };
   });
   return [kat, ...filter];
+}
+
+/** Das Orakel der Tests (Trefferzahl je Kategorie und Chip aus dem Messwerkzeug, Katalogstand 26.10.2026 20:14). */
+export const ladeOrakel = () => JSON.parse(readFileSync(new URL('../../dropship/taxonomie-2610-b/orakel/schmuck-orakel.json', import.meta.url), 'utf8'));
+
+/**
+ * Vergleich frisch gezählter Mitglieder mit dem Orakel: wo hat sich der Katalog seit dem Schnappschuss verschoben?
+ * Gegenlesung 27.10.2026: Das Orakel stammt aus demselben `kern.passt()` wie der Adapter und aus einem 26 Stunden alten Katalog; es fängt Verdrahtungsfehler, keinen Katalogdrift.
+ * Vor jedem LIVE-Lauf zählt kategorien_anlegen.mjs (SCHMUCK=1) mit dem frischen Katalog und zeigt hier die Abweichungen.
+ * @param {Record<string, number>} zahlen  { handle: frisch gezählte Mitglieder } für Kategorien und Chips
+ * @returns {{handle:string, alt:number, neu:number, diff:number}[]}  nur Abweichungen über `prozent` UND `mindest` Produkte, grösste zuerst; Handles ohne Orakel-Eintrag fehlen
+ */
+export function orakelAbweichungen(zahlen, orakel, { prozent = 10, mindest = 3 } = {}) {
+  const aus = [];
+  for (const [handle, neu] of Object.entries(zahlen)) {
+    const alt = orakel.kategorien?.[handle]?.n ?? orakel.unterfilter?.[handle];
+    if (typeof alt !== 'number') continue;
+    const diff = neu - alt;
+    if (Math.abs(diff) >= mindest && Math.abs(diff) >= alt * prozent / 100) aus.push({ handle, alt, neu, diff });
+  }
+  return aus.sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff));
 }
 
 const vorgabeDatei = () => (process.env.BEREICH_DATEI || STANDARD_DATEI).replace(/\.json$/, '');

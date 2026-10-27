@@ -7,8 +7,9 @@ import { join } from 'node:path';
 import { AESTE, KURZ, MAX_TITEL, alleHandles, neueHandles, planTitel, menueTitel, tagVon, kategorieVon, gruppenPlan, gleicheRegel, schmuckMenue, ohneSchmuckKinder, pruefeSchmuck, titelWarnungen, PFAD } from './schmuck_menue.mjs';
 import { SCHMUCK, bereichAuswahl } from './bereich_taxonomie.mjs';
 import { eingabeAus } from '../menu_eintrag_einfuegen.mjs';
-import { tiefe, suche } from './menue_plan.mjs';
-import { menueLauf } from '../schmuck_menue.mjs';
+import { tiefe, suche, gleicherBaum, gleicheZiele, flachMitZiel, ziel } from './menue_plan.mjs';
+import { menueLauf, sammlungenLesen } from '../schmuck_menue.mjs';
+import { collectionImWeb, collectionsImWeb } from './collection_web.mjs';
 import { gruppenLauf, kindTagStimmt } from '../schmuck_gruppen.mjs';
 
 let ok = 0, fehl = 0;
@@ -167,21 +168,48 @@ ist('Prüfer: oberste Ebene - Reihenfolge getauscht', hat(pruefeSchmuck(MENU, [b
 ist('Prüfer: «Schmuck» fehlt ganz', hat(pruefeSchmuck(MENU, baum.filter(x => x.title !== 'Schmuck')), 'oberste Ebene'), true);
 ist('Titel-Hinweis: ein Menütitel über 34 Zeichen wird gemeldet, ein kurzer nicht', [titelWarnungen(mut(b => { schmuckAst(b)[0].items[0].title = 'Ein sehr langer Menütitel über vierunddreissig Zeichen'; })).length, titelWarnungen(baum).length], [1, 0]);
 
+// ── Gegenlesung 27.10.2026: das Nachlesen war für Menüziele blind (gleicherBaum schneidet resourceId/Adresse ab) ──
+{
+  const gleichBaum = kopie(baum);
+  // 1) Das alte Messgerät: ein vertauschtes Ziel ('Damen > Kleider') und ein vertauschter Schmuck-Kopf bleiben für gleicherBaum unsichtbar
+  const damen = kopie(baum); { const d = damen.find(x => x.title === 'Damen'); const [a, b] = d.items.filter(x => x.type === 'COLLECTION'); [a.resourceId, b.resourceId] = [b.resourceId, a.resourceId]; a.url = '/en/collections/vertauscht'; }
+  ist('alt: gleicherBaum übersieht zwei vertauschte Collection-Ziele im Ast «Damen»', gleicherBaum(baum, damen).gleich, true);
+  ist('neu: gleicheZiele erkennt dieselben zwei Ziele', gleicheZiele(baum, damen).abweichungen.length, 2);
+  const kopfVertauscht = kopie(baum); { const s = suche(kopfVertauscht, PFAD); s.resourceId = 'gid://shopify/Collection/fremd'; }
+  ist('alt/neu: der Kopf «Schmuck» zeigt auf eine fremde Collection: gleicherBaum übersieht es, gleicheZiele nicht', [gleicherBaum(baum, kopfVertauscht).gleich, gleicheZiele(baum, kopfVertauscht).gleich], [true, false]);
+  const httpAnders = kopie(baum); { const h = httpAnders.flatMap(function sammle(x) { return [x, ...x.items.flatMap(sammle)]; }).find(x => x.type === 'HTTP'); h.url = '/collections/anderswo'; }
+  ist('alt/neu: eine HTTP-Adresse, die anderswohin zeigt (Typ-Ziel wird von gleicherBaum abgeschnitten)', [gleicherBaum(baum, httpAnders).gleich, gleicheZiele(baum, httpAnders).gleich], [true, false]);
+  // 2) Kein Fehlalarm: Format-Unterschiede, die Shopify beim Zurücklesen macht
+  const format = kopie(baum); (function lauf(l) { for (const i of l) { if (i.type === 'COLLECTION') i.url = 'https://luxestyle.ch/en/collections/x'; if (i.type === 'HTTP' && i.url?.startsWith('/')) i.url = 'https://luxestyle.ch/en' + i.url; i.id = 'gid://shopify/MenuItem/' + Math.random(); lauf(i.items || []); } })(format);
+  ist('kein Fehlalarm: andere Item-Ids, Host und Sprachpräfix /en/ vor Shop-Pfaden', gleicheZiele(baum, format).gleich, true);
+  ist('ziel(): GID gewinnt; Adresse verliert Host und /en/; fremde Hosts bleiben', [ziel({ resourceId: 'gid://1', url: '/x' }), ziel({ url: 'https://luxestyle.ch/en/collections/a?x=1' }), ziel({ url: '/en/pages/ueber-uns' }), ziel({ url: 'https://instagram.com/luxestyle' }), ziel({})], ['gid://1', '/collections/a?x=1', '/pages/ueber-uns', 'https://instagram.com/luxestyle', '']);
+  ist('gleicheZiele: fehlender oder zusätzlicher Eintrag wird mit Pfad gemeldet', [gleicheZiele(baum, baum.slice(1)).gleich, gleicheZiele(baum.slice(1), baum).abweichungen.length > 0], [false, true]);
+  ist('flachMitZiel: ein Eintrag je Knoten, mit Pfad, Typ und Ziel', flachMitZiel([{ title: 'A', type: 'COLLECTION', resourceId: 'gid://1', items: [{ title: 'B', type: 'HTTP', url: '/collections/b', items: [] }] }]), ['/A|COLLECTION|gid://1', '/A/B|HTTP|/collections/b']);
+  // 3) pruefeSchmuck im Nachlese-Modus (Kommentar im Code versprach das, aufgerufen wurde es nie)
+  ist('pruefeSchmuck(nachlesen): ein sauber zurückgelesener Baum (andere Ids/Formate) ist in Ordnung', pruefeSchmuck(MENU, format, { nachlesen: true }), []);
+  ist('Gegenprobe: derselbe Baum ohne Nachlese-Modus meldet den Kopf «Schmuck» als verändert (Ids/Adressen)', hat(pruefeSchmuck(MENU, format), 'Schmuck'), true);
+  ist('pruefeSchmuck(nachlesen): Ziele ausserhalb von «Schmuck» vertauscht → gemeldet, mit dem Pfad', pruefeSchmuck(MENU, damen, { nachlesen: true }).filter(z => z.includes('ausserhalb') && z.includes('/Damen/')).length, 1);
+  ist('pruefeSchmuck(nachlesen): der Kopf «Schmuck» zeigt woanders hin → gemeldet', hat(pruefeSchmuck(MENU, kopfVertauscht, { nachlesen: true }), 'Schmuck'), true);
+  ist('pruefeSchmuck(nachlesen): ein HTTP-Ziel im Ast Uhren geändert → gemeldet', hat(pruefeSchmuck(MENU, (() => { const b = kopie(baum); const u = b.find(x => x.title === 'Uhren'); u.items[0].url = '/collections/anderswo'; u.items[0].type = 'HTTP'; delete u.items[0].resourceId; return b; })(), { nachlesen: true }), 'ausserhalb'), true);
+}
+
 // ── Die Läufe mit einer Attrappe der Shopify-Abfrage ──
 const TMP = mkdtempSync(join(tmpdir(), 'schmuck-test-'));
-function attrappe({ collections = {}, kanaele = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }], menuUpdateFehler = [], verfaelsche = false } = {}) {
-  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0, pub: {} };
+function attrappe({ collections = {}, kanaele = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }], menuUpdateFehler = [], verfaelsche = false, nachSchreiben = null, beimLesen = null } = {}) {
+  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0 };
   const aufrufe = [];
   const lesbar = items => items.map(i => ({ id: i.id || `gid://shopify/MenuItem/neu-${++z.n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? (i.type === 'COLLECTION' ? '/collections/x' : null), tags: i.tags || [], items: lesbar(i.items || []) }));
   const q = async (query, v = {}) => {
     aufrufe.push({ query, v: kopie(v) });
-    if (/menus\(first/.test(query)) return { menus: { nodes: [kopie(z.menu)] } };
+    if (/menus\(first/.test(query)) { z.gelesen++; if (beimLesen && beimLesen.nr === z.gelesen) z.menu = beimLesen.aendere(kopie(z.menu)); return { menus: { nodes: [kopie(z.menu)] } }; }
     if (/menuUpdate/.test(query)) {
       if (menuUpdateFehler.length) return { menuUpdate: { menu: null, userErrors: menuUpdateFehler } };
       z.menu = { ...z.menu, items: lesbar(v.i) };
       if (verfaelsche) z.menu.items.find(x => x.title === 'Schmuck').items[0].items.pop();
+      if (nachSchreiben) z.menu = nachSchreiben(kopie(z.menu));
       return { menuUpdate: { menu: { id: z.menu.id }, userErrors: [] } };
     }
+    if (/c\d+:collectionByHandle\(handle:/.test(query)) { const aus = {}; for (const [, n, h] of query.matchAll(/c(\d+):collectionByHandle\(handle:"([^"]+)"\)/g)) aus['c' + n] = z.collections[h] ? kopie(z.collections[h]) : null; return aus; }
     if (/collectionByHandle\(handle:"hype-jetzt"\)/.test(query)) return { collectionByHandle: { resourcePublicationsV2: { nodes: kanaele } } };
     if (/collectionByHandle\(handle:\$h\)/.test(query)) { const c = z.collections[v.h]; return { collectionByHandle: c ? kopie(c) : null }; }
     if (/collectionCreate/.test(query)) {
@@ -196,6 +224,13 @@ function attrappe({ collections = {}, kanaele = [{ isPublished: true, publicatio
   };
   const schreibend = () => aufrufe.filter(a => /mutation/.test(a.query));
   return { q, aufrufe, z, schreibend };
+}
+// HTTP-Prüfung im Onlineshop (lib/collection_web.mjs): die Attrappe kennt `schlecht` = { handle: Ergebnis } und meldet sonst «erreichbar, gefüllt»
+function webAttrappe(schlecht = {}) {
+  const aufrufe = [];
+  const web = async hs => { aufrufe.push([...hs]); return Object.fromEntries(hs.map(h => [h, schlecht[h] || { ok: true, status: 200, n: 3, grund: '' }])); };
+  web.aufrufe = aufrufe;
+  return web;
 }
 const sammlung = h => ({ id: GID(h), title: planTitel(h) });
 const ALLE_COLL = Object.fromEntries(alleHandles().map(h => [h, sammlung(h)]));
@@ -220,45 +255,116 @@ const frisch = n => { mkdirSync(join(TMP, n), { recursive: true }); return datei
 }
 {
   const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m3');
-  const r = await menueLauf(a.q, { live: true, annahmeAlle: true, ...d, out: s.out, err: s.err });
+  const r = await menueLauf(a.q, { live: true, annahmeAlle: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
   ist('LIVE zusammen mit ANNAHME_ALLE wird abgelehnt (Exit 1), nichts gelesen oder geschrieben', [r.code, a.aufrufe.length], [1, 0]);
 }
 {
   const a = attrappe({ collections: SHOP_COLL }), s = still(), d = frisch('m4');
-  const r = await menueLauf(a.q, { live: true, ...d, out: s.out, err: s.err });
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
   ist('LIVE mit fehlenden Collections: Exit 2, kein menuUpdate, keine Sicherung', [r.code, a.schreibend().length, existsSync(d.sicherung)], [2, 0, false]);
   ist('…die Meldung nennt die Lücken und den Ausweg', s.zeilen.some(z => z.includes('57 Collections fehlen') && z.includes('ERLAUBE_LUECKEN')), true);
 }
 {
   const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m5');
   const vorher = kopie(a.z.menu);
-  const r = await menueLauf(a.q, { live: true, ...d, jetzt: () => new Date('2026-10-28T08:00:00Z'), out: s.out, err: s.err });
+  const web = webAttrappe(), r = await menueLauf(a.q, { live: true, web, ...d, jetzt: () => new Date('2026-10-28T08:00:00Z'), out: s.out, err: s.err });
   ist('LIVE mit allen Collections: Exit 0, genau ein menuUpdate', [r.code, a.schreibend().length, a.aufrufe.filter(x => /menuUpdate/.test(x.query)).length], [0, 1, 1]);
   ist('…die Sicherung ist das ganze Hauptmenü vorher', JSON.stringify(JSON.parse(readFileSync(d.sicherung, 'utf8'))) === JSON.stringify(vorher), true);
   ist('…das Ledger vermerkt den Umbau', readFileSync(d.ledger, 'utf8'), '2026-10-28T08:00:00.000Z · menü schmuck umgebaut\n');
   ist('…im Shop steht danach der neue Ast, alles andere ist gleich', [titel(schmuckAst(eingabeAus(a.z.menu.items))), JSON.stringify(ohneSchmuckKinder(eingabeAus(a.z.menu.items)).map(strip)) === JSON.stringify(ohneSchmuckKinder(MENU).map(strip))], [SPEC.map(s => s[0]), true]);
   // zweiter Lauf: die erste Sicherung darf nicht überschrieben werden
   const erste = readFileSync(d.sicherung, 'utf8');
-  const r2 = await menueLauf(a.q, { live: true, ...d, jetzt: () => new Date('2026-10-28T09:00:00Z'), out: s.out, err: s.err });
+  const r2 = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, jetzt: () => new Date('2026-10-28T09:00:00Z'), out: s.out, err: s.err });
   ist('zweiter LIVE-Lauf: Exit 0, die erste Sicherung bleibt unverändert, die zweite trägt einen Zeitstempel', [r2.code, readFileSync(d.sicherung, 'utf8') === erste, existsSync(d.sicherung.replace('.json', '-2026-10-28T09-00-00-000Z.json'))], [0, true, true]);
 }
 {
   const a = attrappe({ collections: ALLE_COLL, verfaelsche: true }), s = still(), d = frisch('m6');
-  const r = await menueLauf(a.q, { live: true, ...d, out: s.out, err: s.err });
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
   ist('Nachlesen weicht ab: Exit 3, die Sicherung liegt vor, das Ledger bleibt leer', [r.code, existsSync(d.sicherung), existsSync(d.ledger)], [3, true, false]);
 }
 {
   const a = attrappe({ collections: SHOP_COLL }), s = still(), d = frisch('m7');
-  const r = await menueLauf(a.q, { live: true, erlaubeLuecken: true, ...d, out: s.out, err: s.err });
+  const r = await menueLauf(a.q, { live: true, erlaubeLuecken: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
   ist('ERLAUBE_LUECKEN=1: Lücken werden live übersprungen (Exit 0, ein menuUpdate)', [r.code, a.schreibend().length], [0, 1]);
 }
 {
   const a = attrappe({ collections: ALLE_COLL, menuUpdateFehler: [{ field: ['items'], message: 'zu tief', code: 'INVALID' }] }), s = still(), d = frisch('m8');
-  let msg = null; try { await menueLauf(a.q, { live: true, ...d, out: s.out, err: s.err }); } catch (e) { msg = e.message; }
+  let msg = null; try { await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err }); } catch (e) { msg = e.message; }
   ist('menuUpdate mit Fehlermeldung: der Lauf wirft und schreibt kein Ledger', [/menuUpdate/.test(msg || ''), existsSync(d.ledger)], [true, false]);
 }
 
-// Gruppen-Lauf
+// Gegenlesung 27.10.2026, Menü-Lauf (a): Nachlesen prüft die ZIELE. Vorher meldete der Lauf «OK», Exit 0, auch wenn Shopify nach menuUpdate zwei Ziele vertauscht hatte.
+const tauscheZiele = (b, pfadA, pfadB) => { const A = suche(b, pfadA), B2 = suche(b, pfadB); [A.resourceId, B2.resourceId] = [B2.resourceId, A.resourceId]; return b; };
+{
+  const a = attrappe({ collections: ALLE_COLL, nachSchreiben: m => { tauscheZiele(m.items, ['Schmuck', 'Ringe', 'Silberringe'], ['Schmuck', 'Ringe', 'Edelstahl- & Titanringe']); return m; } }), s = still(), d = frisch('m9');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Nachlesen: zwei vertauschte Ziele unter «Schmuck» (Titel und Reihenfolge stimmen!) → Exit 3, Sicherung liegt vor, kein Ledger', [r.code, existsSync(d.sicherung), existsSync(d.ledger)], [3, true, false]);
+  ist('…die Meldung nennt die Ziel-Abweichungen', s.zeilen.some(z => z.startsWith('ERR ABWEICHUNG') && z.includes('Silberringe')), true);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, nachSchreiben: m => { tauscheZiele(m.items, ['Damen', 'Kleider'], ['Damen', 'Röcke']); return m; } }), s = still(), d = frisch('m10');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Nachlesen: zwei vertauschte Ziele AUSSERHALB von «Schmuck» (Damen > Kleider/Röcke) → Exit 3', r.code, 3);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, nachSchreiben: m => { const h = (function suchen(l) { for (const i of l) { if (i.type === 'HTTP') return i; const g = suchen(i.items); if (g) return g; } return null; })(m.items); h.url = '/collections/anderswo'; return m; } }), s = still(), d = frisch('m11');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Nachlesen: eine HTTP-Adresse im übrigen Menü zeigt danach anderswohin → Exit 3', r.code, 3);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, nachSchreiben: m => { (function lauf(l) { for (const i of l) { if (i.type === 'COLLECTION') i.url = 'https://luxestyle.ch/en/collections/anders-geschrieben'; if (i.type === 'HTTP' && i.url?.startsWith('/')) i.url = 'https://luxestyle.ch/en' + i.url; lauf(i.items); } })(m.items); return m; } }), s = still(), d = frisch('m12');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Kein Fehlalarm: Shopify liest Adressen mit Host und /en/ zurück → Exit 0, das Ledger vermerkt den Umbau', [r.code, existsSync(d.ledger)], [0, true]);
+}
+// (b) Publish-Falle: «existiert» heisst nicht «im Onlineshop erreichbar und gefüllt»
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m13');
+  const web = webAttrappe({ silberringe: { ok: false, status: 404, n: 0, grund: 'HTTP 404' }, 'schmuck-herren-gruppe': { ok: false, status: 200, n: 0, grund: 'HTTP 200, aber leer (keine Produkte)' } });
+  const r = await menueLauf(a.q, { live: true, web, ...d, out: s.out, err: s.err });
+  ist('Publish-Falle: existierende, aber im Onlineshop unveröffentlichte (404) oder leere Collection → LIVE Exit 2, kein menuUpdate, keine Sicherung', [r.code, a.schreibend().length, existsSync(d.sicherung)], [2, 0, false]);
+  ist('…die Meldung nennt beide Handles mit dem Grund (404 / leer)', [s.zeilen.some(z => z.includes('silberringe') && z.includes('HTTP 404')), s.zeilen.some(z => z.includes('schmuck-herren-gruppe') && z.includes('leer'))], [true, true]);
+  ist('…die Collections sind laut Admin-API vorhanden (id und title genügten dem alten Lauf): alle 66 gelesen', s.zeilen.some(z => z.startsWith('Collections im Shop: 66 von 66')), true);
+  ist('…geprüft wurden genau die 66 vorhandenen Ziele, einmal', [web.aufrufe.length, web.aufrufe[0].length], [1, 66]);
+  const a2 = attrappe({ collections: ALLE_COLL }), s2 = still(), d2 = frisch('m13b');
+  const r2 = await menueLauf(a2.q, { live: true, erlaubeLuecken: true, web: webAttrappe({ silberringe: { ok: false, status: 404, n: 0, grund: 'HTTP 404' } }), ...d2, out: s2.out, err: s2.err });
+  ist('ERLAUBE_LUECKEN=1: die unerreichbare Collection fällt weg, der Rest wird geschrieben (Exit 0, ein menuUpdate)', [r2.code, a2.schreibend().length, JSON.stringify(a2.z.menu).includes(GID('silberringe')), JSON.stringify(a2.z.menu).includes(GID('edelstahl-titanringe'))], [0, 1, false, true]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m14');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe({ 'sub-ringe': { ok: false, status: 301, n: 0, grund: 'HTTP 301 (Weiterleitung: nicht veröffentlicht oder umbenannt)' } }), ...d, out: s.out, err: s.err });
+  ist('Publish-Falle: ein Kopf ohne Onlineshop-Seite (Weiterleitung) → Exit 2, der Ast «Ringe» würde samt Kindern entfallen', [r.code, a.schreibend().length], [2, 0]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m15');
+  const r = await menueLauf(a.q, { live: true, ...d, out: s.out, err: s.err });
+  ist('LIVE ohne HTTP-Prüfung wird abgelehnt (Exit 1), nichts gelesen, nichts geschrieben', [r.code, a.aufrufe.length], [1, 0]);
+  const a2 = attrappe({ collections: SHOP_COLL }), web2 = webAttrappe(), s2 = still(), d2 = frisch('m16');
+  const r2 = await menueLauf(a2.q, { live: false, web: web2, ...d2, out: s2.out, err: s2.err });
+  ist('Trockenlauf mit HTTP-Prüfung (WEB_PRUEFEN=1): prüft nur die 9 vorhandenen, schreibt nichts', [r2.code, web2.aufrufe[0].length, a2.schreibend().length], [0, 9, 0]);
+  const a3 = attrappe({ collections: SHOP_COLL }), web3 = webAttrappe(), s3 = still(), d3 = frisch('m17');
+  await menueLauf(a3.q, { live: false, ...d3, out: s3.out, err: s3.err });
+  ist('Trockenlauf ohne web (Vorgabe): kein HTTP-Abruf nötig, offline lauffähig', web3.aufrufe.length, 0);
+}
+// (c) Lese-Schreib-Fenster: das Menü wird direkt vor dem Schreiben noch einmal gelesen; menuUpdate ersetzt den ganzen Baum
+{
+  const a = attrappe({ collections: ALLE_COLL, beimLesen: { nr: 2, aendere: m => { m.items.push({ id: 'gid://shopify/MenuItem/fremd', title: 'Neu von Kollegin', type: 'HTTP', resourceId: null, url: '/collections/neu', tags: [], items: [] }); return m; } } }), s = still(), d = frisch('m18');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Fenster: jemand fügt dem Menü zwischen erstem Lesen und Schreiben einen Punkt hinzu → Exit 4, NICHTS geschrieben, keine Sicherung, kein Ledger', [r.code, a.schreibend().length, existsSync(d.sicherung), existsSync(d.ledger)], [4, 0, false, false]);
+  ist('…die Meldung nennt den neuen Punkt und fordert zum Neustart auf', s.zeilen.some(z => z.includes('verändert') && z.includes('Neu von Kollegin') && z.includes('neu starten')), true);
+  ist('…das Menü wurde nur zweimal gelesen (erstes und frisches Lesen), das dritte Lesen nach dem Schreiben entfällt', a.aufrufe.filter(x => /menus\(first/.test(x.query)).length, 2);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, beimLesen: { nr: 2, aendere: m => { const k = suche(m.items, ['Damen']); [k.items[0], k.items[1]] = [k.items[1], k.items[0]]; return m; } } }), s = still(), d = frisch('m19');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Fenster: nur eine umsortierte Reihenfolge im Ast «Damen» genügt für Exit 4', [r.code, a.schreibend().length], [4, 0]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m20');
+  const r = await menueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Erfolg: das Menü wird dreimal gelesen (vorher, direkt vor dem Schreiben, nachher) und die Ziel-Collections in Paketen (66 Handles → 3 Abfragen statt 66)', [a.aufrufe.filter(x => /menus\(first/.test(x.query)).length, a.aufrufe.filter(x => /c\d+:collectionByHandle/.test(x.query)).length, a.aufrufe.filter(x => /collectionByHandle\(handle:\$h\)/.test(x.query)).length], [3, 3, 0]);
+  ist('…die Sicherung ist das frisch gelesene Menü (gleiche Ids wie die Attrappe vorher)', JSON.parse(readFileSync(d.sicherung, 'utf8')).id, MENU_ROH.id);
+  ist('sammlungenLesen: Pakete zu 25 (25 + 25 + 16 für 66 Handles), fehlende Handles → null', await (async () => { const n = []; const res = await sammlungenLesen(async query => { n.push((query.match(/collectionByHandle/g) || []).length); return {}; }, alleHandles()); return [n, Object.values(res.gids).every(g => g === null)]; })(), [[25, 25, 16], true]);
+}
 const PUB = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }, { isPublished: true, publication: { id: 'gid://pub/2', name: 'Shop' } }, { isPublished: false, publication: { id: 'gid://pub/3', name: 'Entwurf' } }];
 const KATALOG_KLEIN = { produkte: [
   { handle: 'a', title: 'Herren-Ring aus Wolframstahl', g: 'Apparel & Accessories > Jewelry > Rings', tags: ['sort-herrenringe'] },
@@ -279,19 +385,19 @@ const KATALOG_KLEIN = { produkte: [
 }
 {
   const a = attrappe({ collections: { ...SHOP_COLL, 'broschen-pins': { id: GID('broschen-pins'), title: 'Broschen & Pins', productsCount: { count: 5 }, ruleSet: ruleSetAus('TITLE CONTAINS Brosche') } }, kanaele: PUB }), s = still(), d = frisch('g1b');
-  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const r = await gruppenLauf(a.q, { live: true, web: webAttrappe(), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
   ist('Gruppen-LIVE: weicht die Regel eines vorhandenen Kindes vom Tag der Engine ab, bricht der Lauf ab (Exit 2, nichts angelegt)', [r.code, a.schreibend().length], [2, 0]);
 }
 {
   const gp = gruppenPlan()[2];
   const a = attrappe({ collections: { 'schmuck-motiv-gruppe': { id: GID('schmuck-motiv-gruppe'), title: 'Motive', productsCount: { count: 3 }, ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'Herz' }] } } }, kanaele: PUB }), s = still(), d = frisch('g2');
-  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const r = await gruppenLauf(a.q, { live: true, web: webAttrappe(), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
   ist('Gruppen-Lauf: ein Handle mit anderer Regel wird NICHT überschrieben - Exit 2, nichts angelegt (auch die anderen fünf nicht)', [r.code, a.schreibend().length, r.ergebnis.find(e => e.handle === gp.handle).status], [2, 0, 'BELEGT, andere Regel']);
 }
 {
   const gp = gruppenPlan();
   const a = attrappe({ collections: { 'schmuck-herren-gruppe': { id: GID('schmuck-herren-gruppe'), title: 'Schmuck für Herren', productsCount: { count: 71 }, ruleSet: { appliedDisjunctively: true, rules: [...gp[0].regel.rules].reverse() } } }, kanaele: PUB }), s = still(), d = frisch('g3');
-  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const r = await gruppenLauf(a.q, { live: true, web: webAttrappe(), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
   const create = a.aufrufe.filter(x => /collectionCreate/.test(x.query)).map(x => x.v.i);
   ist('Gruppen-LIVE: Exit 0, genau fünf neue Sammlungen (die sechste existiert schon mit derselben Regel)', [r.code, create.length, r.ergebnis.find(e => e.handle === 'schmuck-herren-gruppe').status], [0, 5, 'vorhanden (gleiche Regel)']);
   ist('…jede neue Sammlung: Handle, Titel, BEST_SELLING, ODER-Regel mit TAG EQUALS je Kind', create.map(i => [i.handle, i.title, i.sortOrder, i.ruleSet.appliedDisjunctively, i.ruleSet.rules.map(x => x.condition)]), gp.slice(1).map(g => [g.handle, g.titel, 'BEST_SELLING', true, g.regel.rules.map(x => x.condition)]));
@@ -299,13 +405,77 @@ const KATALOG_KLEIN = { produkte: [
   ist('…jede wird in den Kanälen von «hype-jetzt» veröffentlicht (nur die veröffentlichten zwei); die schon vorhandene, aber unveröffentlichte Herren-Sammlung wird nachpubliziert (6 Aufrufe)', [pubs.length, pubs.every(p => JSON.stringify(p.v.i) === JSON.stringify([{ publicationId: 'gid://pub/1' }, { publicationId: 'gid://pub/2' }]))], [6, true]);
   ist('…SEO-Titel und Beschreibung stammen aus dem Plan', create.every((i, n) => i.seo.title === `${gp[n + 1].titel} online kaufen | LuxeStyle CH` && i.seo.description === gp[n + 1].seoBeschreibung && i.descriptionHtml === `<p>${gp[n + 1].beschreibung}</p>`), true);
   ist('…das Ledger vermerkt fünf Anlagen und eine Nachpublikation', readFileSync(d.ledger, 'utf8').trim().split('\n').map(z => z.split(' · ')[1].split(' ')[0]), ['nachpubliziert', 'angelegt', 'angelegt', 'angelegt', 'angelegt', 'angelegt']);
-  const r2 = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const r2 = await gruppenLauf(a.q, { live: true, web: webAttrappe(), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
   ist('zweiter LIVE-Lauf: idempotent - alle sechs «vorhanden (gleiche Regel)», kein weiteres collectionCreate, keine weitere Veröffentlichung (alle sind schon in beiden Kanälen)', [r2.code, r2.ergebnis.map(e => e.status), a.aufrufe.filter(x => /collectionCreate/.test(x.query)).length, a.aufrufe.filter(x => /publishablePublish/.test(x.query)).length], [0, Array(6).fill('vorhanden (gleiche Regel)'), 5, 6]);
 }
 {
   const a = attrappe({ collections: SHOP_COLL, kanaele: [] }), s = still(), d = frisch('g4');
-  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const r = await gruppenLauf(a.q, { live: true, web: webAttrappe(), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
   ist('Gruppen-LIVE ohne Veröffentlichungskanäle der Vorbild-Collection: Exit 2, nichts angelegt (Publish-Falle)', [r.code, a.schreibend().length], [2, 0]);
+}
+
+// Gegenlesung 27.10.2026, Gruppen-Lauf: «angelegt» und «veröffentlicht» heisst nicht «im Onlineshop erreichbar» (Publish-Falle, Skill Falle 4)
+{
+  const a = attrappe({ collections: SHOP_COLL, kanaele: PUB }), s = still(), d = frisch('g5');
+  const warten = []; const web = webAttrappe({ 'schmuck-motiv-gruppe': { ok: false, status: 404, n: 0, grund: 'HTTP 404' } });
+  const r = await gruppenLauf(a.q, { live: true, web, ledger: d.ledger, out: s.out, err: s.err, warte: async ms => { warten.push(ms); } });
+  ist('Gruppen-LIVE: eine neue Sammlung bleibt im Onlineshop 404 → Exit 2 (obwohl alle sechs angelegt und «publiziert» wurden)', [r.code, r.ergebnis.filter(e => e.angelegt).length], [2, 6]);
+  ist('…die Meldung nennt die Sammlung und den Grund, das Menü darf sie nicht verlinken', s.zeilen.some(z => z.startsWith('ERR') && z.includes('schmuck-motiv-gruppe: HTTP 404') && z.includes('nicht verlinken')), true);
+  ist('…geprüft wurde mit Wiederholungen (fünf Versuche für die kranke, je einer für die fünf gesunden), dazwischen gewartet', [web.aufrufe.filter(h => h[0] === 'schmuck-motiv-gruppe').length, web.aufrufe.filter(h => h[0] !== 'schmuck-motiv-gruppe').length, warten.filter(ms => ms === 8000).length >= 4], [5, 5, true]);
+}
+{
+  const gp = gruppenPlan();
+  const a = attrappe({ collections: { 'schmuck-herren-gruppe': { id: GID('schmuck-herren-gruppe'), title: 'Schmuck für Herren', productsCount: { count: 71 }, ruleSet: { appliedDisjunctively: true, rules: [...gp[0].regel.rules] } } }, kanaele: PUB }), s = still(), d = frisch('g6');
+  a.z.pub[GID('schmuck-herren-gruppe')] = ['gid://pub/1', 'gid://pub/2'];       // die Admin-API behauptet: in beiden Kanälen veröffentlicht
+  const web = async hs => ({ [hs[0]]: hs[0] === 'schmuck-herren-gruppe' && !a.aufrufe.some(x => /publishablePublish/.test(x.query) && x.v.id === GID('schmuck-herren-gruppe')) ? { ok: false, status: 404, n: 0, grund: 'HTTP 404' } : { ok: true, status: 200, n: 5, grund: '' } });
+  const r = await gruppenLauf(a.q, { live: true, web, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  const p = a.aufrufe.filter(x => /publishablePublish/.test(x.query) && x.v.id === GID('schmuck-herren-gruppe'));
+  ist('Gruppen-LIVE: die API sagt «veröffentlicht», der Onlineshop 404 → die vorhandene Sammlung wird trotzdem neu veröffentlicht, danach Exit 0', [r.code, p.length, p[0]?.v.i.length], [0, 1, 2]);
+  ist('…das Ledger vermerkt die Nachveröffentlichung', readFileSync(d.ledger, 'utf8').includes('nachpubliziert schmuck-herren-gruppe'), true);
+}
+{
+  const a = attrappe({ collections: SHOP_COLL, kanaele: PUB }), s = still(), d = frisch('g7');
+  const r = await gruppenLauf(a.q, { live: true, web: webAttrappe({ 'schmuck-stil-gruppe': { ok: false, status: 200, n: 0, grund: 'HTTP 200, aber leer (keine Produkte)' } }), ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  ist('Gruppen-LIVE: eine Sammlung ist im Onlineshop erreichbar, aber leer → Exit 2', r.code, 2);
+}
+{
+  const a = attrappe({ collections: SHOP_COLL, kanaele: PUB }), s = still(), d = frisch('g8');
+  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  ist('Gruppen-LIVE ohne HTTP-Prüfung wird abgelehnt (Exit 1), nichts gelesen oder geschrieben', [r.code, a.aufrufe.length], [1, 0]);
+  const a2 = attrappe({ collections: SHOP_COLL, kanaele: PUB }), web2 = webAttrappe(), s2 = still();
+  const r2 = await gruppenLauf(a2.q, { live: false, web: web2, out: s2.out, err: s2.err });
+  ist('Gruppen-Trockenlauf mit HTTP-Prüfung: nichts vorhanden → kein Abruf, nichts geschrieben', [r2.code, web2.aufrufe.length, a2.schreibend().length], [0, 0, 0]);
+  const a3 = attrappe({ collections: { 'schmuck-herren-gruppe': { id: GID('schmuck-herren-gruppe'), title: 'x', productsCount: { count: 71 }, ruleSet: { appliedDisjunctively: true, rules: gruppenPlan()[0].regel.rules } } }, kanaele: PUB }), web3 = webAttrappe(), s3 = still();
+  const r3 = await gruppenLauf(a3.q, { live: false, web: web3, out: s3.out, err: s3.err });
+  ist('Gruppen-Trockenlauf mit HTTP-Prüfung: die eine vorhandene Sammlung wird abgerufen und berichtet', [r3.code, web3.aufrufe, s3.zeilen.some(z => z.includes('Onlineshop schmuck-herren-gruppe') && z.includes('ok')), a3.schreibend().length], [0, [['schmuck-herren-gruppe']], true, 0]);
+}
+
+// ── lib/collection_web.mjs: die Kundensicht einer Collection (Fetch-Attrappe, kein Netz) ──
+{
+  const antwort = (status, json) => ({ status, json: async () => { if (json === undefined) throw new Error('kein JSON'); return json; } });
+  const mit = (...folge) => { const aufrufe = []; let i = 0; const fetchFn = async (url, opt) => { aufrufe.push({ url, opt }); const a = folge[Math.min(i++, folge.length - 1)]; if (a instanceof Error) throw a; return a; }; fetchFn.aufrufe = aufrufe; return fetchFn; };
+  const nie = async () => {};
+  const f1 = mit(antwort(200, { products: [{ id: 1 }] }));
+  const r1 = await collectionImWeb('silberringe', { fetchFn: f1, jetzt: () => 42, warte: nie });
+  ist('Web: HTTP 200 mit Produkt → ok; abgerufen wird products.json ohne Weiterleitung, mit Cache-Brecher', [r1.ok, r1.n, f1.aufrufe[0].url, f1.aufrufe[0].opt.redirect], [true, 1, 'https://luxestyle.ch/collections/silberringe/products.json?limit=1&cb=42', 'manual']);
+  ist('Web: HTTP 200, aber leer → nicht ok (leere Smart-Collection)', (await collectionImWeb('x-y', { fetchFn: mit(antwort(200, { products: [] })), warte: nie })).grund, 'HTTP 200, aber leer (keine Produkte)');
+  ist('Web: HTTP 200 ohne Produktliste (HTML statt JSON) → nicht ok', (await collectionImWeb('x-y', { fetchFn: mit(antwort(200)), warte: nie })).ok, false);
+  const r404 = await collectionImWeb('x-y', { fetchFn: mit(antwort(404)), warte: nie });
+  ist('Web: HTTP 404 (unveröffentlicht) → nicht ok, sofort (kein Wiederholen)', [r404.ok, r404.status, r404.grund], [false, 404, 'HTTP 404']);
+  const f301 = mit(antwort(301));
+  const r301 = await collectionImWeb('x-y', { fetchFn: f301, warte: nie });
+  ist('Web: eine Weiterleitung zählt NICHT als erreichbar (haustier-tech 26.10.: 404 durch eine Umleitung verdeckt)', [r301.ok, r301.status, /Weiterleitung/.test(r301.grund), f301.aufrufe.length], [false, 301, true, 1]);
+  const f429 = mit(antwort(429), antwort(503), antwort(200, { products: [{ id: 1 }] }));
+  const warten = []; const r429 = await collectionImWeb('x-y', { fetchFn: f429, warte: async ms => { warten.push(ms); } });
+  ist('Web: Drosselung (429) und Serverfehler (503) werden wiederholt, dann ok', [r429.ok, f429.aufrufe.length, warten], [true, 3, [1500, 3000]]);
+  const fAus = mit(antwort(503));
+  ist('Web: dauerhafter Serverfehler → nach drei Versuchen nicht ok', [(await collectionImWeb('x-y', { fetchFn: fAus, warte: nie })).ok, fAus.aufrufe.length], [false, 3]);
+  const rNetz = await collectionImWeb('x-y', { fetchFn: mit(new Error('ECONNRESET')), warte: nie });
+  ist('Web: Netzfehler → nicht ok mit Grund, kein Absturz', [rNetz.ok, /ECONNRESET/.test(rNetz.grund)], [false, true]);
+  ist('Web: ein Handle mit Umlaut oder Schrägstrich wird nicht abgerufen', [(await collectionImWeb('../etc', { fetchFn: mit(antwort(200, { products: [1] })), warte: nie })).ok, (await collectionImWeb('schmuck-für-herren', { fetchFn: mit(antwort(200, { products: [1] })), warte: nie })).ok], [false, false]);
+  const fMehr = mit(antwort(200, { products: [{}] }));
+  const mehr = await collectionsImWeb(['a-b', 'c-d', 'a-b', 'e-f'], { fetchFn: fMehr, warte: nie }, 2);
+  ist('Web: mehrere Handles, doppelte nur einmal', [Object.keys(mehr), fMehr.aufrufe.length, Object.values(mehr).every(v => v.ok)], [['a-b', 'c-d', 'e-f'], 3, true]);
 }
 
 rmSync(TMP, { recursive: true, force: true });

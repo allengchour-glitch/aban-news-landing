@@ -6,6 +6,7 @@
  *   schmuck-katalog.json.gz schlanker Katalogauszug: alle Produkte der Google-Klasse «Jewelry» plus alle Mitglieder des Orakels
  *                           ([handle, titel, google, sperr-tags]); damit läuft der Orakel-Vergleich auch in der CI, wo /tmp leer ist
  *
+ * GRENZE (Gegenlesung 27.10.2026): die Mitgliederlisten stammen aus messen.mjs, das dieselbe Funktion kern.passt() aufruft wie der Adapter - das Orakel prüft die Verdrahtung, nicht die Regeln.
  * Voraussetzung: node dropship/taxonomie-2610-b/messen.mjs dropship/taxonomie-2610-b/bereiche/schmuck-uhren.json lief frisch auf demselben Katalog
  *                (Mitgliederlisten /tmp/taxo_b/schmuck-uhren/<handle>.txt) und die Messausgabe liegt in einer Datei (MESSUNG=…, Vorgabe _messen_gl2_final.txt).
  * Aufruf: node dropship/taxonomie-2610-b/orakel_bauen.mjs        (ENV: KATALOG, LISTEN, MESSUNG)
@@ -46,7 +47,7 @@ mkdirSync(`${HIER}/orakel`, { recursive: true });
 writeFileSync(`${HIER}/orakel/schmuck-orakel.json`, JSON.stringify({
   stand: 'Katalog /tmp/katalog_taxo.json, gelesen 26.10.2026 20:14', katalogProdukte: katalog.produkte.length,
   quelle: 'Mitgliederlisten und Messausgabe von dropship/taxonomie-2610-b/messen.mjs (bereiche/schmuck-uhren.json), Stand 27.10.2026 05:48',
-  hinweis: 'sha1 = SHA-1 der sortierten Mitglieder-Handles, durch Zeilenumbruch verbunden. Neu bauen: node dropship/taxonomie-2610-b/orakel_bauen.mjs',
+  hinweis: 'sha1 = SHA-1 der sortierten Mitglieder-Handles, durch Zeilenumbruch verbunden. Neu bauen: node dropship/taxonomie-2610-b/orakel_bauen.mjs (nach jeder Regeländerung: erst messen.mjs, dann dieses Skript). Das Orakel ist NICHT unabhängig von den Regeln: messen.mjs und der Adapter rufen dieselbe Funktion kern.passt() auf, es fängt Verdrahtungsfehler im Adapter, keine Regelfehler, und es ist ein Schnappschuss des Katalogs: vor jedem LIVE-Lauf den Katalog frisch lesen und die Zahlen von kategorien_anlegen.mjs (SCHMUCK=1) gegen das Orakel halten (Abschnitt «Schmuck gegen das Orakel»).',
   kategorien, unterfilter }, null, 1) + '\n');
 writeFileSync(`${HIER}/orakel/schmuck-katalog.json.gz`, gzipSync(JSON.stringify({ stand: 'Auszug aus /tmp/katalog_taxo.json (26.10.2026 20:14): Google-Klasse Jewelry plus alle Orakel-Mitglieder', felder: ['handle', 'title', 'g', 'sperrTags'], produkte: auszug }), { level: 9 }));
 console.log(`Orakel: ${handles.length} Kategorien, ${Object.keys(unterfilter).length} Unterfilter, ${alleMitglieder.size} Mitglieder; Katalogauszug ${auszug.length} von ${katalog.produkte.length} Produkten`);
