@@ -36,7 +36,7 @@ const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
 const handlesAusLedger = () => {
   const datei = process.env.HANDLES_DATEI || new URL('../dropship/cj_varianten_ledger.txt', import.meta.url).pathname;
   const txt = readFileSync(datei, 'utf8');
-  if (process.env.HANDLES_DATEI && !/ · (GESCHRIEBEN|UEBERSPRUNGEN|FEHLER) · /.test(txt)) return [...new Set(txt.split('\n').map((z) => z.trim()).filter(Boolean))];
+  if (process.env.HANDLES_DATEI && !/ · (GESCHRIEBEN|SKU_GESETZT|UEBERSPRUNGEN|FEHLER) · /.test(txt)) return [...new Set(txt.split('\n').map((z) => z.trim()).filter(Boolean))];
   return [...new Set(txt.split('\n').filter((z) => z.includes(' · GESCHRIEBEN · ')).map((z) => z.split(' ')[0]))];
 };
 const hash = (h) => createHash('sha1').update(SEED + h).digest('hex');

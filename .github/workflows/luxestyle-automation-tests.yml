@@ -142,6 +142,9 @@ jobs:
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
       - name: Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)
+        # CJ_PAUSE_MS=0: die Tests des Varianten-Werkzeugs sprechen nur mit Attrappen; ohne diese Zeile wartet jeder plane()-Aufruf 1,1 s (der Stecker-Test: 28 s statt 5 s, Job-Limit 5 Minuten).
+        env:
+          CJ_PAUSE_MS: '0'
         # 26.10.2026: Diese 21 Tests lagen im Repo, liefen aber in KEINEM Workflow (gefunden mit: jeden *_test.mjs gegen .github/workflows greppen).
         run: |
           node automation/lib/kategorien_test.mjs
@@ -180,6 +183,8 @@ jobs:
           node automation/lib/banner_fotos_test.mjs
           node automation/lib/unterfilter_plan_test.mjs
           node automation/cj_varianten_nachziehen_stecker_test.mjs
+          node automation/cj_varianten_nachziehen_sku_test.mjs
+          node automation/lib/sku_nachziehen_test.mjs
           node automation/auswahl_scan_test.mjs
           node automation/cj_variantenbilder_test.mjs
           node automation/farbwahl_scan_test.mjs

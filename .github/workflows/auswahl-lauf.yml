@@ -192,6 +192,8 @@ jobs:
           WORKERS: ${{ inputs.workers || '6' }}
           LAUFZEIT: ${{ inputs.laufzeit_min || '330' }}
           BATCH: '40'
+          # SKU auf die CJ-Variantennummer (Bestellung #1029): höchstens so viele Schreibvorgänge je 20 Stunden über alle Läufer. Erwartet sind 0 bis 2 pro Nacht; erst nach sauberen Nächten anheben.
+          MAX_SKU_SCHREIBEN: '5'
         run: |
           export NODE="$(command -v node)"
           rm -f /tmp/auswahl_stop
@@ -224,10 +226,13 @@ jobs:
           var=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep ' · GESCHRIEBEN · ' | awk -F' · ' '{split($4,a," "); s+=a[1]} END{print s+0}')
           skip=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep -c ' · UEBERSPRUNGEN · ' || true)
           fehl=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep -c ' · FEHLER · ' || true)
+          skugesetzt=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep -c ' · SKU_GESETZT · ' || true)
+          skumehr=$(git diff -U0 -- dropship/cj_varianten_ledger.txt | grep '^+[^+]' | grep -c 'SKU mehrdeutig' || true)
           {
             echo "### Auswahl-Lauf"
             echo "- Nachgezogen: **$neu** Produkte mit **$var** neuen Varianten"
             echo "- Übersprungen (CJ führt nur eine Variante o. ä.): $skip · Fehler beim Schreiben: $fehl"
+            echo "- SKU auf die CJ-Variantennummer gesetzt: **$skugesetzt** · SKU mehrdeutig (zurückgestellt, Entscheid offen): $skumehr"
             echo "- Treiber-Code: ${{ steps.lauf.outputs.rc }}"
             echo "- Letzte Zeilen:"
             echo '```'

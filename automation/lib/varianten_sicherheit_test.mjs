@@ -9,6 +9,8 @@ const zeile = (h, ms, e, g = '') => `${h} · ${vor(ms)} · ${e}${g ? ' · ' + g 
 const g = (zeilen, opt = {}) => [...ledgerGedaechtnis(zeilen.join('\n'), { jetzt: JETZT, ...opt })].sort();
 
 // ── Ledger-Gedächtnis ────────────────────────────────────────────────────
+ist('SKU_GESETZT: 13 Tage alt = erledigt, 15 Tage alt = wieder dran (kommen später echte Varianten dazu, soll das Produkt wieder drankommen)', [g([zeile('s', 13 * 24 * H, 'SKU_GESETZT', 'SKU CJ-1 → CJX')]), g([zeile('s', 15 * 24 * H, 'SKU_GESETZT', 'SKU CJ-1 → CJX')])], [['s'], []]);
+ist('SKU_GESETZT: FORCE hebt es auf (anders als GESCHRIEBEN)', g([zeile('s', 1 * H, 'SKU_GESETZT', 'SKU CJ-1 → CJX')], { force: true }), []);
 ist('GESCHRIEBEN bleibt für immer', g([zeile('a', 400 * 24 * H, 'GESCHRIEBEN', '7 Varianten')]), ['a']);
 ist('endgültiger Überspringer: 13 Tage alt = erledigt', g([zeile('b', 13 * 24 * H, 'UEBERSPRUNGEN', 'CJ führt nur 1 Variante — kein Auswahlproblem')]), ['b']);
 ist('endgültiger Überspringer: 15 Tage alt = wieder dran', g([zeile('b', 15 * 24 * H, 'UEBERSPRUNGEN', 'CJ führt nur 1 Variante')]), []);
