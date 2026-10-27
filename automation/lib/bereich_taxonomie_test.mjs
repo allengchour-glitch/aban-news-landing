@@ -2,7 +2,9 @@
 // Orakel = Mitgliederlisten des Messwerkzeugs (dropship/taxonomie-2610-b/messen.mjs), festgehalten in dropship/taxonomie-2610-b/orakel/ (Trefferzahl + SHA-1 der Mitglieder).
 // Katalog: der volle Katalog /tmp/katalog_taxo.json, wenn er denselben Stand hat (gleiche Produktzahl wie im Orakel), sonst der eingecheckte Auszug (Google-Klasse
 // «Jewelry» plus alle Orakel-Mitglieder; in der CI ist /tmp leer). Titel der Gegenproben stammen aus dem echten Katalog vom 26.10.2026.
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, utimesSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -316,6 +318,28 @@ ist('Gegenprobe: ein Wort mit einem einzigen Titel fällt bei min 2 durch', unbe
   ist('Drift: Chips sind im Orakel und werden verglichen; ein unbekannter Handle wird übersprungen', orakelAbweichungen({ 'herz-schmuck-ringe': 40, 'gibt-es-nicht': 5 }, o).map(a => a.handle), ['herz-schmuck-ringe']);
   ist('Orakel: alle 51 Kategorien und alle 31 Chips des Adapters sind im Orakel', [KAT.filter(k => !(k.handle in o.kategorien)).length, FIL.filter(f => typeof o.unterfilter[f.handle] !== 'number').length], [0, 0]);
   ist('Orakel: der Hinweis nennt die Grenze (nicht unabhängig, Schnappschuss)', /NICHT unabhängig/.test(o.hinweis) && /frisch lesen/.test(o.hinweis), true);
+}
+
+// ── Frische-Sperre von kategorien_anlegen.mjs (SCHMUCK=1 + LIVE=1): ein Katalog über KATALOG_MAX_STUNDEN alt bricht VOR dem Shopify-Zugriff ab (Exit 2) ──
+// Sicherheit des Tests: Shop-Adresse 127.0.0.1:9 (kein Dienst) und ein Platzhalter-Secret - selbst bei einem Fehler im Schutz käme kein Token und es würde nichts geschrieben.
+{
+  const dir = mkdtempSync(join(tmpdir(), 'katalog-')), alt = join(dir, 'alt.json'), neu = join(dir, 'neu.json');
+  for (const d of [alt, neu]) writeFileSync(d, JSON.stringify({ vollstaendig: true, produkte: [] }));
+  const vor30h = new Date(Date.now() - 30 * 3600e3); utimesSync(alt, vor30h, vor30h);
+  const skript = new URL('../kategorien_anlegen.mjs', import.meta.url).pathname;
+  const lauf = (katalog, extra) => {
+    const env = { ...process.env, SHOPIFY_SHOP: '127.0.0.1:9', SHOPIFY_CLIENT_ID: 'x', SHOPIFY_CLIENT_SECRET: 'shpss_platzhalter', KATALOG: katalog, PREFIX: 's-', ...extra };
+    for (const k of ['LIVE', 'SCHMUCK', 'KATALOG_ALT_OK', 'KATALOG_MAX_STUNDEN']) if (!(k in extra)) delete env[k];
+    const r = spawnSync(process.execPath, [skript], { env, encoding: 'utf8', timeout: 60000 });
+    return { code: r.status, alt: /Stunden alt/.test(r.stderr) };
+  };
+  ist('Frische-Sperre: SCHMUCK=1 + LIVE=1 mit einem 30 Stunden alten Katalog → Exit 2 und Meldung «Stunden alt», vor jedem Netzzugriff', lauf(alt, { SCHMUCK: '1', LIVE: '1' }), { code: 2, alt: true });
+  ist('Frische-Sperre: ein frischer Katalog passiert die Sperre (kein Exit 2)', lauf(neu, { SCHMUCK: '1', LIVE: '1' }).alt, false);
+  ist('Frische-Sperre: KATALOG_ALT_OK=1 hebt sie bewusst auf', lauf(alt, { SCHMUCK: '1', LIVE: '1', KATALOG_ALT_OK: '1' }).alt, false);
+  ist('Frische-Sperre: KATALOG_MAX_STUNDEN=48 erlaubt den 30 Stunden alten Katalog', lauf(alt, { SCHMUCK: '1', LIVE: '1', KATALOG_MAX_STUNDEN: '48' }).alt, false);
+  ist('Frische-Sperre: ohne SCHMUCK=1 (bisherige Läufe) gilt sie nicht', lauf(alt, { LIVE: '1' }).alt, false);
+  ist('Frische-Sperre: der Trockenlauf (ohne LIVE=1) ist nicht gesperrt', lauf(alt, { SCHMUCK: '1' }).alt, false);
+  rmSync(dir, { recursive: true, force: true });
 }
 
 // ── Sperr-Tags: EINE Quelle (lib/sperr_tags.mjs) statt zweier Listen (8 und 11 Tags), die unbemerkt auseinanderliefen ──
