@@ -170,7 +170,7 @@ ist('Titel-Hinweis: ein Menütitel über 34 Zeichen wird gemeldet, ein kurzer ni
 // ── Die Läufe mit einer Attrappe der Shopify-Abfrage ──
 const TMP = mkdtempSync(join(tmpdir(), 'schmuck-test-'));
 function attrappe({ collections = {}, kanaele = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }], menuUpdateFehler = [], verfaelsche = false } = {}) {
-  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0 };
+  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0, pub: {} };
   const aufrufe = [];
   const lesbar = items => items.map(i => ({ id: i.id || `gid://shopify/MenuItem/neu-${++z.n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? (i.type === 'COLLECTION' ? '/collections/x' : null), tags: i.tags || [], items: lesbar(i.items || []) }));
   const q = async (query, v = {}) => {
@@ -189,7 +189,8 @@ function attrappe({ collections = {}, kanaele = [{ isPublished: true, publicatio
       z.collections[i.handle] = { id, title: i.title, productsCount: { count: 0 }, ruleSet: i.ruleSet };
       return { collectionCreate: { collection: { id, handle: i.handle }, userErrors: [] } };
     }
-    if (/publishablePublish/.test(query)) return { publishablePublish: { userErrors: [] } };
+    if (/publishablePublish/.test(query)) { z.pub[v.id] = (z.pub[v.id] || []).concat(v.i.map(x => x.publicationId)); return { publishablePublish: { userErrors: [] } }; }
+    if (/collection\(id:\$id\)\{resourcePublicationsV2/.test(query)) return { collection: { resourcePublicationsV2: { nodes: (z.pub[v.id] || []).map(id => ({ isPublished: true, publication: { id, name: id } })) } } };
     if (/collection\(id:\$id\)\{productsCount/.test(query)) return { collection: { productsCount: { count: 7 } } };
     throw new Error('unerwartete Abfrage: ' + query.slice(0, 90));
   };
@@ -277,6 +278,11 @@ const KATALOG_KLEIN = { produkte: [
   ist('Gruppen-Trockenlauf: ein vorhandenes Kind mit anderem Tag wird als Abweichung gemeldet', [r.kinder.find(k => k.handle === 'broschen-pins').stimmt, s.zeilen.some(z => z.includes('WARNUNG') && z.includes('broschen-pins'))], [false, true]);
 }
 {
+  const a = attrappe({ collections: { ...SHOP_COLL, 'broschen-pins': { id: GID('broschen-pins'), title: 'Broschen & Pins', productsCount: { count: 5 }, ruleSet: ruleSetAus('TITLE CONTAINS Brosche') } }, kanaele: PUB }), s = still(), d = frisch('g1b');
+  const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
+  ist('Gruppen-LIVE: weicht die Regel eines vorhandenen Kindes vom Tag der Engine ab, bricht der Lauf ab (Exit 2, nichts angelegt)', [r.code, a.schreibend().length], [2, 0]);
+}
+{
   const gp = gruppenPlan()[2];
   const a = attrappe({ collections: { 'schmuck-motiv-gruppe': { id: GID('schmuck-motiv-gruppe'), title: 'Motive', productsCount: { count: 3 }, ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TITLE', relation: 'CONTAINS', condition: 'Herz' }] } } }, kanaele: PUB }), s = still(), d = frisch('g2');
   const r = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
@@ -290,11 +296,11 @@ const KATALOG_KLEIN = { produkte: [
   ist('Gruppen-LIVE: Exit 0, genau fünf neue Sammlungen (die sechste existiert schon mit derselben Regel)', [r.code, create.length, r.ergebnis.find(e => e.handle === 'schmuck-herren-gruppe').status], [0, 5, 'vorhanden (gleiche Regel)']);
   ist('…jede neue Sammlung: Handle, Titel, BEST_SELLING, ODER-Regel mit TAG EQUALS je Kind', create.map(i => [i.handle, i.title, i.sortOrder, i.ruleSet.appliedDisjunctively, i.ruleSet.rules.map(x => x.condition)]), gp.slice(1).map(g => [g.handle, g.titel, 'BEST_SELLING', true, g.regel.rules.map(x => x.condition)]));
   const pubs = a.aufrufe.filter(x => /publishablePublish/.test(x.query));
-  ist('…jede wird in den Kanälen von «hype-jetzt» veröffentlicht (nur die veröffentlichten zwei)', [pubs.length, pubs.every(p => JSON.stringify(p.v.i) === JSON.stringify([{ publicationId: 'gid://pub/1' }, { publicationId: 'gid://pub/2' }]))], [5, true]);
+  ist('…jede wird in den Kanälen von «hype-jetzt» veröffentlicht (nur die veröffentlichten zwei); die schon vorhandene, aber unveröffentlichte Herren-Sammlung wird nachpubliziert (6 Aufrufe)', [pubs.length, pubs.every(p => JSON.stringify(p.v.i) === JSON.stringify([{ publicationId: 'gid://pub/1' }, { publicationId: 'gid://pub/2' }]))], [6, true]);
   ist('…SEO-Titel und Beschreibung stammen aus dem Plan', create.every((i, n) => i.seo.title === `${gp[n + 1].titel} online kaufen | LuxeStyle CH` && i.seo.description === gp[n + 1].seoBeschreibung && i.descriptionHtml === `<p>${gp[n + 1].beschreibung}</p>`), true);
-  ist('…das Ledger vermerkt fünf Anlagen', readFileSync(d.ledger, 'utf8').trim().split('\n').length, 5);
+  ist('…das Ledger vermerkt fünf Anlagen und eine Nachpublikation', readFileSync(d.ledger, 'utf8').trim().split('\n').map(z => z.split(' · ')[1].split(' ')[0]), ['nachpubliziert', 'angelegt', 'angelegt', 'angelegt', 'angelegt', 'angelegt']);
   const r2 = await gruppenLauf(a.q, { live: true, ledger: d.ledger, out: s.out, err: s.err, warte: async () => {} });
-  ist('zweiter LIVE-Lauf: idempotent - alle sechs «vorhanden (gleiche Regel)», kein weiteres collectionCreate', [r2.code, r2.ergebnis.map(e => e.status), a.aufrufe.filter(x => /collectionCreate/.test(x.query)).length], [0, Array(6).fill('vorhanden (gleiche Regel)'), 5]);
+  ist('zweiter LIVE-Lauf: idempotent - alle sechs «vorhanden (gleiche Regel)», kein weiteres collectionCreate, keine weitere Veröffentlichung (alle sind schon in beiden Kanälen)', [r2.code, r2.ergebnis.map(e => e.status), a.aufrufe.filter(x => /collectionCreate/.test(x.query)).length, a.aufrufe.filter(x => /publishablePublish/.test(x.query)).length], [0, Array(6).fill('vorhanden (gleiche Regel)'), 5, 6]);
 }
 {
   const a = attrappe({ collections: SHOP_COLL, kanaele: [] }), s = still(), d = frisch('g4');

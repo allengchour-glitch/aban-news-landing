@@ -11,7 +11,9 @@
  * kann keine Tag-Regel stellen: steht unter «ohne Tag» im Bericht.
  *
  * TROCKENLAUF IST VORGABE (liest nur): Tabelle der Gruppen und Kinder; mit KATALOG=<Datei> zusätzlich Mitgliederzahlen. LIVE=1 legt an.
- * Idempotent: gibt es den Handle schon mit DERSELBEN Regel, geschieht nichts; mit anderer Regel wird nichts überschrieben, es wird gemeldet (Exit 2).
+ * Idempotent: gibt es den Handle schon mit DERSELBEN Regel, wird nichts angelegt (fehlende Veröffentlichungskanäle werden nachgeholt); mit anderer Regel wird
+ * nichts überschrieben, es wird gemeldet (Exit 2). Exit 2 auch bei LIVE, wenn eine vorhandene Kind-Collection nicht das Tag der Engine als Regel hat
+ * (die Gruppen-Sammlung verfehlte dann ihre Mitglieder), und wenn die Vorbild-Collection «hype-jetzt» keine Kanäle hat. Im Trockenlauf sind diese Fälle nur Meldungen.
  * Reihenfolge: Tags (kategorien_anlegen.mjs PHASE=tags) → Collections der Kategorien (PHASE=sammlungen) → dieses Skript → schmuck_menue.mjs.
  */
 import { readFileSync, existsSync, appendFileSync } from 'node:fs';
@@ -71,6 +73,7 @@ export async function gruppenLauf(q, { live = false, katalog = null, ledger = LE
   const belegt = ergebnis.filter(e => e.status.startsWith('BELEGT'));
   if (!live) { out('\nTrockenlauf - nichts geschrieben.'); return { code: belegt.length ? 2 : 0, ergebnis, kinder }; }
   if (belegt.length) { err(`\nABBRUCH, nichts geschrieben: ${belegt.length} Handles sind mit anderer Regel belegt (${belegt.map(e => e.handle).join(', ')}). Entscheid beim Menschen.`); return { code: 2, ergebnis, kinder }; }
+  if (abweichend.length) { err(`\nABBRUCH, nichts geschrieben: ${abweichend.length} vorhandene Kind-Collections haben nicht das Tag der Engine (${abweichend.map(z => z.handle).join(', ')}); die Gruppen-Sammlung würde ihre Mitglieder verfehlen.`); return { code: 2, ergebnis, kinder }; }
 
   // ── Schreiben: nur die neuen ──
   const vorbild = (await q(`{collectionByHandle(handle:"hype-jetzt"){resourcePublicationsV2(first:30){nodes{isPublished publication{id name}}}}}`)).collectionByHandle;
@@ -78,7 +81,17 @@ export async function gruppenLauf(q, { live = false, katalog = null, ledger = LE
   if (!pubs.length) { err('ABBRUCH: die Vorbild-Collection «hype-jetzt» hat keine Veröffentlichungskanäle - neue Collections blieben unpubliziert (404).'); return { code: 2, ergebnis, kinder }; }
   for (const g of plan) {
     const e = ergebnis.find(x => x.handle === g.handle);
-    if (e.status !== 'neu') { out(`übersprungen (${e.status}): ${g.handle}`); continue; }
+    if (e.status !== 'neu') {
+      // Idempotent UND heilend: bricht ein Lauf zwischen Anlegen und Veröffentlichen ab, bliebe die Sammlung sonst für immer unveröffentlicht (404).
+      const kanaele = (await q(`query($id:ID!){collection(id:$id){resourcePublicationsV2(first:30){nodes{isPublished publication{id name}}}}}`, { id: e.id })).collection.resourcePublicationsV2.nodes;
+      const fehlt = pubs.filter(x => !kanaele.some(n => n.isPublished && n.publication.id === x.publicationId));
+      if (fehlt.length) {
+        const p2 = await q(`mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{field message}}}`, { id: e.id, i: fehlt });
+        if (p2.publishablePublish.userErrors.length) throw new Error(`publishablePublish ${g.handle} ${JSON.stringify(p2.publishablePublish.userErrors)}`);
+        out(`übersprungen (${e.status}), aber in ${fehlt.length} Kanälen nachpubliziert: ${g.handle}`); appendFileSync(ledger, `${jetzt().toISOString()} · nachpubliziert ${g.handle}\n`);
+      } else out(`übersprungen (${e.status}): ${g.handle}`);
+      continue;
+    }
     const d = await q(`mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id handle} userErrors{field message}}}`, { i: {
       title: g.titel, handle: g.handle, sortOrder: 'BEST_SELLING', descriptionHtml: `<p>${g.beschreibung}</p>`,
       seo: { title: `${g.titel} online kaufen | LuxeStyle CH`, description: g.seoBeschreibung }, ruleSet: g.regel } });
