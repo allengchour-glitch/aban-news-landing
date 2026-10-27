@@ -69,8 +69,7 @@
         "Luggage & Bags"
       ],
       "g_nicht": [
-        "Hardware > Tools > Tool Sets",
-        "Hardware > Tools > Measuring"
+        "Hardware > Tools > Tool Sets"
       ],
       "titel_muss": [
         "(^|[^a-zäöüß])[a-zäöüß]*(werkzeugtasche|werkzeuggürteltasche|werkzeugbox|werkzeugkasten|werkzeuggürtel|werkzeugrolle|werkzeugwand|werkzeug-?tray|werkzeug-?organizer|werkzeugschrank|werkzeugwagen)(?![a-zäöüß])",
@@ -79,7 +78,7 @@
         "tragetasche für kettensäge"
       ],
       "titel_nicht": [
-        "haarwerkzeug|schmuck"
+        "(^|[^a-zäöüß])velo"
       ],
       "handle": "werkzeugtaschen-aufbewahrung",
       "titel": "Werkzeugtaschen & Aufbewahrung",
@@ -146,7 +145,8 @@
     {
       "g_prefix": [
         "Home & Garden > Lawn & Garden > Watering & Irrigation",
-        "Hardware > Plumbing > Water Timers"
+        "Hardware > Plumbing > Water Timers",
+        "Home & Garden > Lawn & Garden > Gardening > Rain Barrels"
       ],
       "g_nicht": [],
       "titel_muss": [],
@@ -155,7 +155,7 @@
       ],
       "handle": "bewaesserung-gartenschlauch",
       "titel": "Bewässerung & Gartenschläuche",
-      "beschreibung": "Gartenschläuche, Spritzdüsen, Rasensprenger, Giesskannen, Tropfer und Bewässerungs-Timer für Garten und Hof."
+      "beschreibung": "Gartenschläuche, Spritzdüsen, Rasensprenger, Giesskannen, Tropfer, Bewässerungs-Timer und eine Regentonne für Garten und Hof."
     },
     {
       "g_prefix": [
@@ -192,7 +192,7 @@
         "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments"
       ],
       "titel_muss": [
-        "(^|[^a-zäöüß])(garten(deko|figur|stecker|statue|skulptur|ornament|zwerg|fee|dekoration)|windrad|windsack|vogelhaus|vogelfutter|nistkasten|futterstelle|futterstation|vogeltränke|vogelbad|wetterfahne)",
+        "(^|[^a-zäöüß])(garten-?(deko|figur|stecker|statue|skulptur|ornament|zwerg|fee|dekoration)|windrad|windsack|wetterfahne|[a-zäöüß-]*windfahne)|(^|[^a-zäöüß])[a-zäöüß-]*(vogelhaus|vogelfutter|nistkasten|futterstelle|futterstation|vogeltränke|vogelbad)",
         "(^|[^a-zäöüß])[a-zäöüß-]*(windspiel|klangspiel)",
         "skulptur für garten|tiersilhouette für garten|ornament für garten|adler in garten"
       ],
@@ -200,7 +200,7 @@
         "traumfänger|diamond|malen|glaskugel|kindergarten|bettwäsche|decke|kissen|vorhang|halloween|weihnacht"
       ],
       "handle": "gartendeko-windspiele",
-      "titel": "Gartendeko & Windspiele",
+      "titel": "Gartendeko, Windspiele & Vogelhäuser",
       "beschreibung": "Gartenstecker, Skulpturen, Windspiele, Vogelhäuser und Futterstellen für Garten, Hof und Balkon."
     },
     {
@@ -246,14 +246,14 @@
           "titel": "Grills & Feuerstellen",
           "titel_muss": [],
           "titel_nicht": [
-            "rost|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperatur|spiess|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett|-set|set "
+            "rost(?![a-zäöüß])|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperaturmess|spiessli|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett(?![a-zäöüß])|-set|set "
           ]
         },
         {
           "handle": "grills-zubehoer",
           "titel": "Grillzubehör & Besteck",
           "titel_muss": [
-            "rost|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperatur|spiess|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett|-set|set "
+            "rost(?![a-zäöüß])|zange|besteck|bürste|bürstenkopf|korb|abdeckung|thermomet|messgerät|temperaturmess|spiessli|werkzeug|schürze|gebläse|fettauffang|ständer|rauchgenerator|bbq-set|grillhandschuh|fett(?![a-zäöüß])|-set|set "
           ],
           "titel_nicht": []
         }
@@ -279,9 +279,9 @@
       "g_nicht": [],
       "titel_muss": [],
       "titel_nicht": [],
-      "handle": "regenschirme-taschenschirme",
-      "titel": "Regenschirme & Taschenschirme",
-      "beschreibung": "Regenschirme als Stock- und Taschenschirm, automatisch oder zum Falten, teils mit UV-Schutz."
+      "handle": "regen-sonnenschirme",
+      "titel": "Regen- & Sonnenschirme",
+      "beschreibung": "Regenschirme und Sonnenschirme als Stock- oder Taschenschirm, automatisch oder zum Falten, teils mit UV-Schutz."
     },
     {
       "g_prefix": [],
@@ -308,9 +308,9 @@
       "titel_nicht": [
         "durchlauferhitzer für|aufsatz|filter|thermometer|schutz|duscharmatur|rohrschlauch|baby"
       ],
-      "handle": "wasserhaehne-kuechenarmaturen",
-      "titel": "Wasserhähne & Küchenarmaturen",
-      "beschreibung": "Wasserhähne für Küche und Bad: ausziehbar, aus Kupfer oder Edelstahl, als Wand- oder Beckenarmatur."
+      "handle": "wasserhaehne-armaturen",
+      "titel": "Wasserhähne & Armaturen",
+      "beschreibung": "Wasserhähne und Armaturen für Küche und Bad: ausziehbar, aus Kupfer oder Edelstahl, als Wand-, Becken- oder Waschtischarmatur."
     },
     {
       "g_prefix": [
@@ -326,7 +326,8 @@
     },
     {
       "g_prefix": [
-        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts"
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts",
+        "Hardware > Building Consumables > Chemicals > Drain Cleaners"
       ],
       "g_nicht": [
         "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Shower Parts",
@@ -357,7 +358,7 @@
       ],
       "handle": "rohre-ventile-pumpen",
       "titel": "Rohre, Ventile & Pumpen",
-      "beschreibung": "Rohre, Verbinder, Kugelventile, Flansche und Kupplungen für Wasserleitungen sowie Pumpen und Druckluftschläuche."
+      "beschreibung": "Rohre, Verbinder, Kugelventile, Flansche und Kupplungen für Wasserleitungen sowie Wasser- und Dieselpumpen, Zapfventile und Druckluftschläuche."
     },
     {
       "g_prefix": [
@@ -386,7 +387,7 @@
         "Hardware > Locks & Keys"
       ],
       "titel_muss": [
-        "(^|[^a-zäöüß])[a-zäöüß]*(tür|möbel|schrank|schubladen)[a-zäöüß]*(griff|knopf|knauf|stopper|schliesser|schließer|öffner|puffer|schiene|rolle|klinke|feststeller)",
+        "(^|[^a-zäöüß])[a-zäöüß]*(tür|möbel|schrank|schubladen)[a-zäöüß]*(griff|knopf|knauf|stopper|schliesser|schließer|öffner|puffer|schiene|rolle(?!r)|klinke|feststeller)",
         "scharnier",
         "dichtungsstreifen",
         "holzfuss|holzfüsse",
@@ -394,7 +395,7 @@
         "keramikgriff"
       ],
       "titel_nicht": [
-        "klingel|türspion|turspion|türsummer|sprechanlage|ratsche|messer|hammer|berührungslos"
+        "klingel|türspion|turspion|türsummer|sprechanlage|ratsche|messer|hammer|berührungslos|bohrhilfe|bohrlehre"
       ],
       "handle": "tueren-fenster-moebelbeschlaege",
       "titel": "Türen, Fenster & Möbelbeschläge",
@@ -413,7 +414,7 @@
         "Hardware > Building"
       ],
       "titel_muss": [
-        "(^|[^a-zäöüß])[a-zäöüß]*(schraube|schrauben|dübel|mutter|muttern|nägel|nagel|nietmuttern|niete|seilklemme|spanngurt|lasthaken|kabelschraube|schalhalter|expansionsschrauben|erweiterungsnagel|kunststoff-eckverbinder)(?![a-zäöüß])"
+        "(^|[^a-zäöüß])[a-zäöüß]*(schraube|schrauben|dübel|mutter|muttern|nägel|nagel|nietmuttern|niete|nieten|seilklemme|spanngurt|lasthaken|kabelschraube|schalhalter|expansionsschrauben|erweiterungsnagel|kunststoff-eckverbinder)(?![a-zäöüß])"
       ],
       "titel_nicht": [
         "sortierbox|magnethülse|extraktor|entferner"
@@ -449,7 +450,7 @@
         "Hardware > Tools >"
       ],
       "titel_muss": [
-        "(^|[^a-zäöüß])(schalttafel|umschalter|zeitschalter|fusssteuerung|schutzschalter|steuerschalter|relais|hutschienen|lampenfassung|schrumpfschlauch|verdrahtungsklemme|kabelverbinder|drahtverbinder|lötverbinder|parallelverbinder|sicherungsbox|klemmen|spleissverbinder)"
+        "(^|[^a-zäöüß])(schalttafel|umschalter|zeitschalter|fusssteuerung|schutzschalter|steuerschalter|relais|hutschienen|lampenfassung|schrumpfschlauch|verdrahtungsklemme|kabelverbinder|drahtverbinder|lötverbinder|parallelverbinder|sicherungsbox|klemmen|led-verbinder)"
       ],
       "titel_nicht": [
         "smart|wlan|wifi|wi-fi|zigbee|tuya|alexa|solar|panel|laderegler|motor|generator|roboter|abisolier"
@@ -483,7 +484,7 @@
           "handle": "schaedlinge-vertreiber",
           "titel": "Vertreiber & Abwehr",
           "titel_muss": [
-            "ultraschall|vertreiber|repeller|schreck|abwehr|vertreiben|abwehren|armband|pillen"
+            "ultraschall|vertreiber|repeller|schreck|abwehr|vertreiben|abwehren|armband|pillen|insektenschutz|gegen wespen"
           ],
           "titel_nicht": [
             "lampe|falle|klatsche"
@@ -517,7 +518,7 @@
         "messwerkzeug",
         "bohrer-saegen-zubehoer",
         "werkzeugkoffer-sets",
-        "fahrrad-auto-werkzeug",
+        "velo-werkzeug-reparatur",
         "werkzeugtaschen-aufbewahrung",
         "taschenlampen-kopflampen"
       ]
@@ -541,14 +542,14 @@
         "grills-grillzubehoer",
         "pool-sonnenschutz-gartenmoebel",
         "haengematten",
-        "regenschirme-taschenschirme"
+        "regen-sonnenschirme"
       ]
     },
     {
       "titel": "Sanitär & Wasser",
       "handle": "bereich-sanitaer-wasser",
       "kinder": [
-        "wasserhaehne-kuechenarmaturen",
+        "wasserhaehne-armaturen",
         "duschkoepfe-handbrausen",
         "abfluss-sanitaerzubehoer",
         "rohre-ventile-pumpen",
@@ -582,7 +583,7 @@
   ],
   "ausserhalb": [
     {
-      "text": "Von den vorhandenen Werkzeug-Kategorien getragen und deshalb nicht neu gebaut (577 Produkte des Universums ohne Fremdkörper-Klassen, gemessen am Tag): Bohrer, Fräser & Zubehör 123, Messen & Prüfen 118, Elektrowerkzeug & Löten 38, Handwerkzeug 286, Werkzeugsets & Koffer 12. Diese Kategorien stehen als Kinder in der Gruppe «Werkzeug & Maschinen», zusammen mit der vorhandenen Kategorie «Fahrrad- & Autowerkzeug» (45, Google-Klasse nicht Hardware).",
+      "text": "Von den vorhandenen Werkzeug-Kategorien getragen und deshalb nicht neu gebaut (610 Produkte des Universums, gemessen am Tag, Stand 27.10.2026, nach Abzug der Produkte, die eine neue Kategorie dieser Datei trägt): Handwerkzeug 319, Bohrer, Fräser & Zubehör 123, Messen & Prüfen 118, Elektrowerkzeug & Löten 38, Werkzeugsets & Koffer 12. Diese Kategorien stehen als Kinder in der Gruppe «Werkzeug & Maschinen», dazu als Verweis «Velo-Werkzeug & Reparatur» aus sport.json (20, alle gelesen: reine Velo-Werkzeuge). Das alte «Fahrrad- & Autowerkzeug» steht bewusst nicht mehr im Baum (siehe hinweise).",
       "beispiele": [
         "Ersatz-Akku für Elektrowerkzeuge (Nickel)",
         "Induktionsheizspulen-Zubehör für Handgeräte",
@@ -591,7 +592,7 @@
       ]
     },
     {
-      "text": "Von Kategorien anderer Bereichsdateien getragen (165 Produkte; gemessen mit den Regeln der Dateien, Stand computer.json, handy.json, spielzeug.json, unterhaltung.json, wohnen.json): computer:alarm-sensoren-melder 36, computer:schloesser-safes 26, computer:arbeitsschutz-masken 22, unterhaltung:smart-home-geraete 17, computer:tuerklingeln-tuerspione 17, wohnen:fritteusen-grills-kochfelder 11, unterhaltung:solar-panels-ladegeraete 10, wohnen:pfannen-woks 7, wohnen:deko-objekte-accessoires 4, computer:ueberwachungskameras 4, wohnen:siebe-muehlen-messhilfen 2, wohnen:saison-weihnachtsdeko 2, wohnen:backformen-backbleche 2, wohnen:kuechengadgets 2, wohnen:kuechengeraete-zubehoer 1, wohnen:trinkflaschen-thermosflaschen 1, wohnen:kochutensilien-sets 1. Die Kategorien stehen als Verweis in den Gruppen «Bau, Türen & Befestigung» und «Schutz & Sicherheit». Doppelzuordnungen mit den neuen Kategorien dieser Datei: 0 (gemessen).",
+      "text": "Von Kategorien anderer Bereichsdateien getragen (200 Produkte, gemessen am 27.10.2026 mit den Regeln aller 13 Dateien in bereiche/): computer:alarm-sensoren-melder 36, computer:schloesser-safes 26, computer:arbeitsschutz-masken 22, wohnen:grillpfannen-elektrogrills 19, unterhaltung:smart-home-geraete 17, computer:tuerklingeln-tuerspione 17, sport:picknick-kuehlrucksaecke 13, unterhaltung:solar-panels-ladegeraete 10, hobby-party:epoxidharz-giessformen 6, computer:ueberwachungskameras 4 und 30 Einzelfälle in wohnen, auto, sport, hobby-party und schmuck-uhren. Die computer-Kategorien stehen als Verweis in den Gruppen «Bau, Türen & Befestigung» und «Schutz & Sicherheit». Doppelzuordnungen mit den neuen Kategorien dieser Datei sind unten in hinweise (ÜBERSCHNEIDUNG) gemessen.",
       "beispiele": [
         "8W Solar Faltpanel für Outdoor-Stromversorgung",
         "Faltbares 36W Solarpanel für Outdoor",
@@ -600,7 +601,7 @@
       ]
     },
     {
-      "text": "Hängematten (14): getragen von der vorhandenen Collection «Hängematten» (Titel-Regel «Hängematte», nicht Katze, nicht Yoga; 14 aktive Treffer im ganzen Katalog). Die Collection steht als Kind in der Gruppe «Outdoor & Sommer»; kein Neubau nötig. Offen bleiben 3 Artikel ohne das Wort «Hängematte» im Titel (Hängesessel, Truck-Hammock, Hammock-Abdeckung).",
+      "text": "Hängematten (14): getragen von der vorhandenen Collection «Hängematten» (Titel-Regel «Hängematte», nicht Katze, nicht Yoga; 14 aktive Treffer im ganzen Katalog, also unter der Schwelle von 15). Die Collection steht als Kind in der Gruppe «Outdoor & Sommer»; sport.json führt dieselben Produkte als Unterfilter in «Campingmöbel & Hängematten». Offen bleiben 3 Artikel ohne das Wort «Hängematte» im Titel (Hängesessel, Truck-Hammock, Hammock-Abdeckung).",
       "beispiele": [
         "Hängematte mit Moskitonetz, Pop-up",
         "Reise-Hängematte aus Fallschirm-Nylon",
@@ -617,7 +618,7 @@
       ]
     },
     {
-      "text": "Reifenpumpen und Kompressoren (Google «Compressors», 9) sowie Poliermaschinen (Google «Polishers & Buffers», 9, davon 7 mit «Auto» im Titel) liegen im Handwerkzeug-Tag, gehören aber zu Auto, Velo und Fahrzeugpflege. Aufgabe für die Auto- und die Sport-Datei.",
+      "text": "Reifenpumpen und Kompressoren (Google «Compressors», 9; 5 trägt auto:reifen-luftpumpen, 4 sind offen: «Mini-Luftpumpe mit Akku», «Doppel-Port Luftkompressor», «Xiaomi Mijia tragbare Luftpumpe», «Reise-WLAN-Luftdruckpumpe») sowie Poliermaschinen (Google «Polishers & Buffers», 9; 7 mit «Auto» im Titel trägt auto:autopflege-politur-lack, offen sind «Elektrische Polier- und Schleifkopf für Holz» und «Kratzer-Reparaturmaschine für Lackoberflächen») liegen im Tag sort-werkzeug-hand, gehören aber zu Auto, Velo und Fahrzeugpflege.",
       "beispiele": [
         "Monkey Pump: Mobiler Reifenfüller mit Akku",
         "Kabellose Reifen-Luftpumpe mit hoher Leistung",
@@ -626,15 +627,7 @@
       ]
     },
     {
-      "text": "Picknickdecken und -matten (Google «Picnic Blankets», 14): 13 davon tragen schon den Tag «Reise & Outdoor» (Bereich Sport/Camping) und gehören dorthin; allein lägen sie auch unter der Schwelle von 15.",
-      "beispiele": [
-        "Picknick-Matte XXL · faltbar, wasserdicht, isoliert (Camping & Strand)",
-        "Picknickmatte mit Wetterschutz",
-        "Picknickdecke Outdoor"
-      ]
-    },
-    {
-      "text": "Autoschlüssel-Hüllen (Google «Key Caps», 5) sind per g_nicht aus dem Universum genommen; Fahrzeug-, Scooter- und Boot-Teile unter «Hardware > Tools» (7) bleiben ohne Zuordnung. Beides gehört zu Auto-Zubehör.",
+      "text": "Autoschlüssel-Hüllen (Google «Key Caps», 5) sind per g_nicht aus dem Universum genommen und werden von auto:auto-schluessel-etuis getragen; Fahrzeug-, Scooter- und Boot-Teile unter «Hardware > Tools» (7) bleiben ohne Zuordnung bzw. liegen in auto:e-scooter-e-bike-zubehoer.",
       "beispiele": [
         "Auto-Schlüsseletui aus Vollleder",
         "Schutzhülle für Autoschlüssel aus Carbon",
@@ -643,31 +636,32 @@
       ]
     },
     {
-      "text": "Lichtschalter, Dimmer, LED-Controller und Heizungs-Thermostate (13): Smart-Home bzw. Beleuchtung. In unterhaltung.json fängt «smart-home-geraete» nur Titel mit smart, zigbee, tuya, wlan, wifi, alexa oder gateway ab; die ohne diese Wörter (z. B. «Intelligenter Lichtschalter», «Radiator-Thermostat») bleiben dort offen. Aufgabe für die Elektronik-Datei.",
+      "text": "Lichtschalter, Dimmer, LED-Controller und Heizungs-Thermostate, die unterhaltung:smart-home-geraete nicht trifft (10, gemessen am 27.10.2026; die Regel dort nimmt Titel mit smart, zigbee, tuya, wlan, wifi, alexa oder gateway): Smart-Home bzw. Beleuchtung. Aufgabe für die Elektronik-Datei.",
       "beispiele": [
         "LED Dimmer Wireless RF Controller",
         "Full Color Dual Output Controller",
         "Berührungsempfindliches LCD-Thermostat",
-        "Intelligenter Heizkörperventil-Controller"
+        "Intelligenter Heizkörperventil-Controller",
+        "Radiator-Thermostat"
       ]
     },
     {
-      "text": "Unter der Schwelle von 15 und ohne Bezug zu einer anderen Kategorie: Nutztierhaltung (6), Vermessungsgerät und Wagenheber (3), Kamine und Feuerzange (3), Tisch- und Zimmerbrunnen (4; Wohnen: Deko).",
+      "text": "Unter der Schwelle von 15 und ohne Bezug zu einer anderen Kategorie: Nutztierhaltung (6), Vermessungsgerät und Wagenheber (3), Kamine und Feuerzange (3), Tisch- und Zimmerbrunnen (4; Wohnen: Deko), Leitern (2), Zaun und Sichtschutz (3), Moskitonetze für Camping, Bett und Baby (5, davon 2 in sport:wander-kletter-survival).",
       "beispiele": [
         "Futterport für Geflügel – 6er-Set",
         "Auto Handkurbel-Wagenheber",
         "Ovaler Tischkamin – Ethanol-Feuerstelle",
-        "Tischbrunnen «Flowing Water» Deko-Ornament"
+        "Tischbrunnen «Flowing Water» Deko-Ornament",
+        "Teleskop-Leiter Dreiecks-Arbeitsplattform",
+        "Sichtschutz für Balkon und Garten (HDPE)",
+        "Faltbares Einzel-Moskitonetz für Studenten"
       ]
     },
     {
-      "text": "Kochgeschirr und Küchenhelfer mit dem Wort Grill oder BBQ im Titel: 15 trägt schon wohnen.json (Grillpfannen, Backformen, Air-Fryer-Roste, Kochutensilien), 6 bleiben offen (Grill-Zerkleinerer, Campingkocher mit Grillfunktion, Steakpresse, Bambus-Grillplatten, Grillthermo-Tasche). Bewusst nicht in «grills-grillzubehoer», weil Zubehör ≠ Gerät und Kochgeschirr zu «Töpfe, Pfannen & Backen» (Wohnen) gehört. Ebenso sind die Elektro-Tischgrills (Google «Electric Griddles & Grills», 11 mit Grill im Titel) per g_nicht aus «grills-grillzubehoer» genommen, weil sie Küchengeräte sind (wohnen:fritteusen-grills-kochfelder).",
+      "text": "Kochgeschirr, Küchenhelfer und Elektro-Tischgrills mit dem Wort Grill oder BBQ im Titel (31, bewusst nicht in «grills-grillzubehoer», weil Zubehör ≠ Gerät und Kochgeschirr zu «Töpfe, Pfannen & Backen» gehört): 29 trägt schon eine Kategorie einer anderen Datei (wohnen:grillpfannen-elektrogrills 19, wohnen:backformen-backbleche 2, wohnen:kuechengadgets 2, wohnen:siebe-muehlen-messhilfen 2, wohnen:pfannen-woks 1, wohnen:kochutensilien-sets 1, wohnen:kuechengeraete-zubehoer 1, sport:camping-kocher-gaskocher 1); offen bleiben 2.",
       "beispiele": [
         "Multifunktionaler Grill und Zerkleinerer",
-        "Tragbarer Campingkocher mit Grillfunktion",
-        "Eisen-Steakpressplatte für Grill & Teppanyaki",
-        "Bambus Grillplatten-Set – 3 Stück",
-        "Tyvek Grillthermo-Tasche 23\" (braun)"
+        "Bambus Grillplatten-Set – 3 Stück"
       ]
     },
     {
@@ -681,60 +675,59 @@
       ]
     },
     {
-      "text": "Fremdware unter der CJ-Sammelklasse «Hardware > Tools» (84, ohne Werkzeug-Tag): Nagel- und Haarpflege, Bastel-, Leder- und Schmuckbedarf, Küchen- und Badartikel, Magnete, Schneidematten, NFC-Karten und Labor-Kleinteile. Dazwischen stecken wenige Streuer, die eigentlich zu Haus und Garten gehören («Hitzebeständiger Heat Gun mit Leder-Bauchtasche», «Regentonne mit Sonnenblumenkopf», «Berührungsloser Türöffner & Knopfdrücker»); sie bleiben ohne Zuordnung. Kein Titelwort kommt bei mehr als 3 dieser Produkte vor.",
+      "text": "Rest ohne Platz (216 von 1 648 Produkten des Universums, gemessen am 27.10.2026): 150 davon sind Fremdware und Einzelstücke unter der CJ-Sammelklasse «Hardware > Tools» ohne Werkzeug-Tag und ohne andere Kategorie (Nagel- und Haarpflege, Bastel-, Leder- und Schmuckbedarf, Küchen- und Badartikel, Magnete, Schneidematten, NFC-Karten, Labor-Kleinteile, Lötpaste); kein Titelwort kommt bei mehr als 3 dieser Produkte vor. Dazwischen stecken wenige Streuer, die zu Haus und Garten gehören («Regentonne» ist inzwischen in der Bewässerung, «Berührungsloser Türöffner & Knopfdrücker», «Hitzebeständiger Heat Gun mit Leder-Bauchtasche»). Die übrigen 66 verteilen sich auf Nutztierhaltung 6, Schalter und Dimmer 5, Zimmerbrunnen 4, Heizungsregler 4 und Einzelklassen (Ketten, Seile, Kamine, Lötzubehör, Kochgeschirr).",
       "beispiele": [
         "Hufeisen-Hakenkamm aus Kunststoff",
         "Lamellenkamm zur Klimaanlagen-Reinigung",
         "Mittelalterlicher Doppel-Schwertgurt aus PU-Leder",
         "Monopoly Holzknopf, Naturholz",
         "Urinal-Deo-Stopfen für Abflussrohre",
-        "Dentalmaterialien Sperian Heiss-Spitze"
-      ]
-    },
-    {
-      "text": "Fremdware, die schon in der passenden Kategorie eines anderen Bereichs liegt (21; Tags Harz, Besteck, Haarbürsten, PC, Velo, Retro, Kinder, Netzwerk, Solar, Ventilatoren): Epoxid-Kleber und Pigmente für Harz, Dessertlöffel, Holzbürste, Fahrradpumpe, Solar-Helm mit Ventilator.",
-      "beispiele": [
-        "Solar Helm mit Ventilator",
-        "Reinigungsstift für Kopfhörer & Tastaturen",
-        "TV-Box & Router Wandhalterung ohne Bohren",
-        "Retro Mahagoni Herz-Patch 12x15mm"
-      ]
-    },
-    {
-      "text": "Einzelstücke (82) ohne gemeinsames Muster, überwiegend «Hardware > Tools», dazu einzelne Zaun- und Sichtschutz-Artikel (3), Lötpaste und Flussmittel (2), Stromwandler und Wechselrichter fürs Auto (2), Notfall-Generator, Kupfer-Waschbecken, Mausefalle, Gartenschlauch, Schubladen- und Schiebetürschloss (beide verfehlt die Regel von «schloesser-safes», weil ihre Google-Klasse nur «Hardware > Tools» ist). Kein Titelwort kommt bei mehr als 3 dieser Produkte vor.",
-      "beispiele": [
+        "Dentalmaterialien Sperian Heiss-Spitze",
         "220V auf 12V 15A Stromwandler für Auto-Zubehör",
-        "Verstellbares Ladegurt-Seil",
         "Manueller Mini-Pfeilschneider mit Rotation",
-        "T-Nut Schieber für Holzbearbeitung",
-        "Klappbarer Dreieckshalter aus Metall",
         "Kühlendes Sprühdüse für den Aussenbereich"
+      ]
+    },
+    {
+      "text": "Der Alt-Tag sort-werkzeug-beschlaege (296) hat nach dem Umbau 39 Produkte ohne Platz in irgendeiner Datei: Lichtschalter und Dimmer (6), Halterungen für Fernseher, Multimedia, Boot, Training und Schlauch (8), Schlösser mit der Google-Klasse «Hardware > Tools» (Schubladenschloss, Schiebetürschloss) und ein NFC-Chipkarten-Set, Zaun und Sichtschutz (3), Ladegurt- und Gummiseil (2), Ersatz- und Spezialteile (Magnethülse, Kurbelgriff, Schiebegriff, Haken-Entkoppler, Plattenträger, Reifenreparaturset, Nahtlöcher-Schneider, Kupferverbinder, Glasfaser-Spleissverbinder, Federziehhaken: 10), Gartenschlauch (1), Wandfliesen (1), Fingerroboter (2), Handkurbelgenerator, Kupferwaschbecken, Scheibenmotor. Wird das Sammelbecken im Menü ersetzt, verlieren diese Produkte ihren Menüplatz.",
+      "beispiele": [
+        "Ausziehbarer Gartenschlauch",
+        "Schubladenschloss mit Fortune Bird Design",
+        "Schiebetürschloss für Scheunentor – Edelstahl",
+        "Selbstklebende 3D Wandfliesen",
+        "Spanngerät für Stacheldrahtzäune",
+        "Kupferwaschbecken"
       ]
     }
   ],
   "hinweise": [
-    "ABDECKUNG: messen.mjs zählt nur die neuen Kategorien: 605 von 1 648 (36,7 %). Dazu kommen 165 Produkte, die Kategorien anderer Bereichsdateien tragen, 577 Produkte der fünf vorhandenen Werkzeug-Kategorien und 14 Hängematten (vorhandene Collection): zusammen 1 361 von 1 648 = 82,6 %. Der Rest steht oben in «ausserhalb» mit Grund. Davon sind 121 Produkte (7,3 % des Universums) Fremdware, die das Universum nur wegen der CJ-Sammelklasse «Hardware > Tools» oder eines Titelworts enthält; ohne sie liegt die Abdeckung bei 89,1 %.",
-    "ERSETZT: sanitaer-schrauben-beschlaege (Tag sort-werkzeug-beschlaege, 296 aktive Produkte). Ein Sammelbecken aus Wasserhähnen, Duschköpfen, Türklingeln, Schlössern, Smart-Schaltern, Solarpanels, Werkzeugtaschen, Schrauben, Klemmen und Fremdware. Die Ware verteilt sich so: 191 auf neue Kategorien dieser Datei (wasserhaehne-kuechenarmaturen 35, tueren-fenster-moebelbeschlaege 25, abfluss-sanitaerzubehoer 23, duschkoepfe-handbrausen 21, schrauben-duebel-befestigung 21, rohre-ventile-pumpen 17, elektro-installation 17, werkzeugtaschen-aufbewahrung 14, wasserfilter-wasserspender 13, kleber-klebebaender-reparatur 3, bewaesserung-gartenschlauch 2), 35 auf computer.json (computer:schloesser-safes 20, computer:tuerklingeln-tuerspione 15), 22 auf unterhaltung.json (unterhaltung:smart-home-geraete 12, unterhaltung:solar-panels-ladegeraete 10), 48 ohne Platz (Einzelstücke und Fremdware, siehe «ausserhalb»). Der Menüpunkt «Sanitär, Schrauben & Beschläge» wird durch die Gruppen «Sanitär & Wasser» und «Bau, Türen & Befestigung» ersetzt.",
-    "ERSETZT: armaturen-duschen (Tag sort-armaturen, 57 aktive): Wasserhähne und Duschköpfe in einem Topf. Nachfolger: wasserhaehne-kuechenarmaturen, duschkoepfe-handbrausen (dazu Abfluss und Wasserfilter); 55 von 57 liegen in neuen Kategorien dieser Datei (wasserhaehne-kuechenarmaturen 36, duschkoepfe-handbrausen 15, wasserfilter-wasserspender 2, abfluss-sanitaerzubehoer 2), 2 ohne Platz («Aroma Duschkopf mit Filter», «Durchlauferhitzer für Armaturen mit Seitenanschluss»).",
-    "FREMDKÖRPER in einem vorhandenen Kind: handwerkzeug (Tag sort-werkzeug-hand, 376 aktive) enthält 31 Taschenlampen/Arbeitslampen, 16 Feuerzeuge, 9 Reifenpumpen/Kompressoren und 9 Poliermaschinen = 65 (17,3 %). Die Taschenlampen bekommen mit «taschenlampen-kopflampen» ein eigenes Zuhause; die Regel werkzeugArt() in automation/lib/kategorien.mjs sollte Google «Flashlights & Headlamps», «Lighters & Matches», «Compressors» und «Polishers & Buffers» aus dem Tag sort-werkzeug-hand herausnehmen. Ebenso liegen in maler-spachtel-renovieren 29 Produkte, die heute im Handwerkzeug-Tag stehen (Farbroller, Spachtel, Spritzpistolen): vor dem Live-Gang entscheiden, ob der Tag sort-werkzeug-hand dort fällt.",
+    "GEGENLESER 27.10.2026 (unabhängige Zweitprüfung): alle 23 Kategorien mit allen 605 Mitgliedern gelesen (17 bis 48 je Kategorie), dazu die Lücke (alle 180 freien Titel ganz, die 254 von anderen Dateien getragenen und die 609 mit Werkzeug-Tag gegrept, 60 verteilte Titel aus messen.mjs) und je Kategorie Stichwort-Greps gegen den ganzen Katalog. Klare Fremdkörper nach Art des Produkts: 2 von 605 (0,3 %: ein Glasfaser-Verbinder, eine Velo-Werkzeugbox mit Doppelzuordnung), beide behoben; dazu 15 Grenzfälle (2,5 %), die bleiben und unten stehen. Behoben: Kind «fahrrad-auto-werkzeug» ersetzt; Chip «Grills & Feuerstellen» (ein Klappgrill stand im Zubehör); Chip «Vertreiber & Abwehr» (2 Produkte ohne Chip); Gartendeko findet zusammengesetzte Wörter (Schmetterlingsfutterstation, Garten-Windfahne); Elektro: LWL-Spleissverbinder raus, LED-Verbinder rein; Rohrreiniger und Regentonne über ihre Google-Klasse ergänzt; Namen «Wasserhähne & Armaturen» (10 von 39 sind Bad) und «Regen- & Sonnenschirme» (6 von 17 sind Sonnenschirme), Handles angepasst; Möbelroller und Bohrlehren aus den Türbeschlägen gehalten; «Nieten» in der Befestigungsregel ergänzt; veraltete Zahlen zu den Nachbardateien neu gemessen (Stand der Dateien 27.10.2026 0:15).",
+    "ABDECKUNG: messen.mjs zählt nur die neuen Kategorien: 608 von 1 648 Produkten des Universums (36,9 %). Dazu kommen 200 Produkte, die Kategorien anderer Bereichsdateien tragen, 610 Produkte der fünf vorhandenen Werkzeug-Kategorien und 14 Hängematten (vorhandene Collection): zusammen 1 432 von 1 648 = 86,9 %. Der Rest von 216 steht oben in «ausserhalb» mit Grund; davon sind 150 Fremdware oder Einzelstücke unter der CJ-Sammelklasse «Hardware > Tools». Ohne diese 150 liegt die Abdeckung bei 95,6 %.",
+    "ERSETZT: sanitaer-schrauben-beschlaege (Tag sort-werkzeug-beschlaege, 296 aktive Produkte). Ein Sammelbecken aus Wasserhähnen, Duschköpfen, Türklingeln, Schlössern, Smart-Schaltern, Solarpanels, Werkzeugtaschen, Schrauben, Klemmen und Fremdware. Die Ware verteilt sich so (gemessen 27.10.2026): 190 auf neue Kategorien dieser Datei (wasserhaehne-armaturen 35, tueren-fenster-moebelbeschlaege 25, abfluss-sanitaerzubehoer 23, duschkoepfe-handbrausen 21, schrauben-duebel-befestigung 21, rohre-ventile-pumpen 17, elektro-installation 17, werkzeugtaschen-aufbewahrung 13, wasserfilter-wasserspender 13, kleber-klebebaender-reparatur 3, bewaesserung-gartenschlauch 2), 35 auf computer.json (schloesser-safes 20, tuerklingeln-tuerspione 15), 22 auf unterhaltung.json (smart-home-geraete 12, solar-panels-ladegeraete 10), 10 auf auto.json und sport.json (auto-schluessel-etuis 5, starthilfe-batterie-wandler 2, e-scooter-e-bike-zubehoer 2, velo-werkzeug-reparatur 1), 39 ohne Platz (siehe ausserhalb). Der Menüpunkt «Sanitär, Schrauben & Beschläge» wird durch die Gruppen «Sanitär & Wasser» und «Bau, Türen & Befestigung» ersetzt.",
+    "ERSETZT: armaturen-duschen (Tag sort-armaturen, 57 aktive): Wasserhähne und Duschköpfe in einem Topf. Nachfolger: wasserhaehne-armaturen, duschkoepfe-handbrausen (dazu Abfluss und Wasserfilter); 55 von 57 liegen in neuen Kategorien dieser Datei (wasserhaehne-armaturen 36, duschkoepfe-handbrausen 15, wasserfilter-wasserspender 2, abfluss-sanitaerzubehoer 2), 2 ohne Platz («Aroma Duschkopf mit Filter», «Durchlauferhitzer für Armaturen mit Seitenanschluss»). wohnen.json führt in der Gruppe «Bad» keinen Verweis auf diese Kategorien (Stand 27.10.2026); Wasserhähne und Duschköpfe sind im Menü nur über «Sanitär & Wasser» erreichbar, solange wohnen.json nicht darauf verweist.",
+    "FREMDKÖRPER in einem vorhandenen Kind: handwerkzeug (Tag sort-werkzeug-hand, 376 aktive) enthält 31 Taschenlampen/Arbeitslampen, 16 Feuerzeuge, 9 Reifenpumpen/Kompressoren und 9 Poliermaschinen = 65 (17,3 %, nachgemessen). Die Taschenlampen bekommen mit «taschenlampen-kopflampen» ein eigenes Zuhause; die Regel werkzeugArt() in automation/lib/kategorien.mjs sollte Google «Flashlights & Headlamps», «Lighters & Matches», «Compressors» und «Polishers & Buffers» aus dem Tag sort-werkzeug-hand herausnehmen. Ebenso liegen in maler-spachtel-renovieren 25 Produkte, die heute im Handwerkzeug-Tag stehen (Farbroller, Spachtel, Spritzpistolen): vor dem Live-Gang entscheiden, ob der Tag sort-werkzeug-hand dort fällt.",
+    "FREMDKÖRPER in weiteren vorhandenen Kindern (alle Mitglieder gelesen, 27.10.2026): messwerkzeug (118) enthält 11 Waagen (9 Küchen-, Fein- und Taschenwaagen, die wohnen:kuechenwaagen-feinwaagen trägt, dazu Kranwaage und Kofferwaage) = 9,3 %; elektrowerkzeug (38) enthält 2 Haushaltsgeräte («Vakuumversiegelungsmaschine für Lebensmittel», «Elektrische Mini-Luftpumpe für Kompressionsbeutel») = 5,3 %; bohrer-saegen-zubehoer (125) enthält 4 Hobby- und Küchenteile («Mixer-Klinge aus Edelstahl für Thermomix TM21», zwei Plotter-Klingen von Roland, eine Schleifscheibe für Nähmaschinen; nach dem Titel beurteilt) = 3,2 %; werkzeugkoffer-sets hat nur 12 aktive Produkte (unter der Schwelle von 15) und keinen einzigen allgemeinen Werkzeugkoffer, sondern Spezialsets (Leder 2, Handy 2, Uhren, Fahrrad, Fahrzeugfolie, Fensterfolie, Ösen, Schweissen, Elektronik, Ratschensatz). Empfehlung: werkzeugkoffer-sets beim Live-Gang mit handwerkzeug zusammenlegen oder umbenennen («Spezial-Werkzeugsets»). Die Waagen sind zusätzlich als Doppelzuordnung mit wohnen zu lösen (Tag sort-werkzeug-mess dort herausnehmen).",
     "VORSCHLAG Unterfilter für handwerkzeug (nicht in dieser Datei, weil «nur einordnen»): Google-Klassen im Tag: Pliers 57, Screwdrivers 47, Wrenches 46, Hardware > Tools 21, Hammers 15, Cutters 15, Sharpeners 11, Wire & Cable Hand Tools 8 (ohne die Fremdkörper-Klassen und die Malerwerkzeuge). Zangen, Schraubendreher und Schraubenschlüssel erreichen je ≥ 15 und tragen Chips.",
-    "ERSETZT: taschenlampen (Tag kat-taschenlampen, 23 aktive, im Menü unter «Sport & Party»): unvollständig, es fehlen 11 der 31 Taschenlampen, Kopf- und Arbeitslampen (z. B. «LED Nackenleuchte für Joggen und Lesen»). Nachfolger: taschenlampen-kopflampen.",
-    "ERSETZT (alte Titel-Regel-Collections, nicht im Menü, Treffer unter den aktiven Produkten): pool und pool-schwimmen (je 23; nur 10 gehören zu Pool-Zubehör, der Rest sind 8 Schwimmbrillen u. a. → Sport) → pool-sonnenschutz-gartenmoebel; grill-bbq (27; 8 fehlen in der neuen Kategorie, weil es Grillplatten, Backformen, Air-Fryer-Roste und Ofen-Grillkörbe sind) → grills-grillzubehoer; garten-pflanzgefaesse (61; nur 22 sind Pflanzgefässe, 28 sind Vasen, 5 Bausteine und Modelle, der Rest Silikonformen, Malsets u. a., weil die Regel «vase» als Teilwort nimmt) → pflanztoepfe-pflanzenzubehoer; garten-leuchten (10, alle in garten-aussenleuchten, das 26 Produkte findet) → garten-aussenleuchten; garten-deko-outdoor (19; 7 fehlen in der neuen Kategorie: Traumfänger, Diamond-Painting-Set, Weihnachts- und Halloween-Figuren, eine Solar-Glaskugel (→ garten-aussenleuchten) und eine Wespen-Attrappe (→ schaedlingsabwehr-insektenschutz)) → gartendeko-windspiele; garten-werkzeug-pflege (10; 8 in gartengeraete-gartenpflege, das 29 findet) → gartengeraete-gartenpflege.",
-    "vasen-blumentoepfe (Tag sort-vasen, 57 aktive, Menü «Wohnen & Garten»): 22 Töpfe wandern nach pflanztoepfe-pflanzenzubehoer, 5 sind Blumen-Bausteine (Spielzeug, Fremdkörper), der Rest sind Vasen (Verteilung gemessen: pflanztoepfe-pflanzenzubehoer 22, wohnen:vasen-blumenvasen 19, (nirgends) 10, spielzeug:bausteine-blumen-deko 5, wohnen:deko-objekte-accessoires 1). Die Kategorie sollte «Vasen» heissen und die Töpfe abgeben.",
-    "solar-energie (Tag sort-solar, 148 aktive): 24 Solar-Leuchten und -Lichterketten wandern nach garten-aussenleuchten, 4 Solar-Vertreiber nach schaedlingsabwehr-insektenschutz, 3 Solar-Bewässerungen nach bewaesserung-gartenschlauch; der Rest sind Powerbanks, Panels, Radios, Rucksäcke, Uhren und Kameras (handy.json, unterhaltung.json, computer.json).",
-    "vorhaenge (Tag sort-vorhaenge, 102 aktive): 17 magnetische Fliegenvorhänge wandern nach fliegengitter-insektenschutz-vorhaenge (die neue Kategorie hat 28 Produkte; die übrigen 11 tragen heute keinen Vorhang-Tag, weil sie als Fliegengitter-Tür oder Fenster-Netz keine Vorhänge sind).",
-    "fahrrad-auto-werkzeug (Tag sort-werkzeug-fahrzeug, 45 aktive, als Verweis in «Werkzeug & Maschinen»): 17 davon sind Fahrradteile, Schlösser, Lampen oder Autowäsche und kein Werkzeug (z. B. «Fahrrad-Schnellspanner für Achsnabe», «Vollcarbon-Sattelstütze für Mountain- und Rennvelos») = 37,8 %. Gehört der Auto-/Sport-Datei zur Bereinigung; hier nur eingeordnet.",
-    "Alt-Sammelbecken im Menü «Wohnen & Garten»: werkzeug-maschinen (Tag werkzeug, 886 aktive; 158 liegen in neuen Kategorien dieser Datei, 498 in den fünf vorhandenen Werkzeug-Kindern, 230 sonst: Hardware > Tools 102, Sporting Goods > Outdoor Recreation 28, Vehicles & Parts > Vehicle Parts & Accessories 20, Electronics > Electronics Accessories 10) und outdoor-garten (Tags outdoor, garten, camping; 2 507 Produkte laut Shop). Beide werden durch die Gruppen dieser Datei ersetzt.",
-    "DOPPELTE MITGLIEDSCHAFT beim Live-Gang: Produkte der neuen Kategorien tragen noch ihre alten sort-Tags (z. B. die vier Werkzeugtaschen mit Handtaschen-Tags, die Fliegenvorhänge mit sort-vorhaenge, die Solar-Leuchten mit sort-solar). Die Tag-Phase muss die alten Tags dieser Produkte entfernen oder die alten Kategorien müssen dieselben Regeln verengen.",
-    "ZULASSUNG: elektro-installation (17) enthält Installationsmaterial (z. B. «Fehlerstrom-Schutzschalter TORD4», Klemmen, Sicherungsboxen). Ob diese Ware in der Schweiz angeboten werden darf (Zulassung, Prüfzeichen), ist nicht geprüft; das muss der Besitzer vor dem Live-Gang der Kategorie klären.",
-    "TITEL zu prüfen (Skill titel-wahrheit): Titel wie «Ultraschall Mückenarmband für Schwangerschaft & Baby» sprechen Schwangere und Babys an; ob das Datenblatt das trägt, ist nicht geprüft. In schaedlingsabwehr-insektenschutz liegen 5 solche Armbänder.",
-    "SCHWELLE: werkzeugtaschen-aufbewahrung (18), hochdruckreiniger-schaumkanonen (17), wasserfilter-wasserspender (18), rohre-ventile-pumpen (18) und regenschirme-taschenschirme (17) liegen nahe an 15. Sinkt eine unter 15 (Produkte gehen auf DRAFT), die Kategorie nicht anlegen oder ihr Produkt in die Nachbarin schieben.",
-    "Klassen aus Google, die der Katalog nicht hergibt (unter 15 echte Produkte) und deshalb nicht angelegt wurden: Pool & Spa allein (13 nach Google-Klasse, deshalb zusammen mit Sonnenschutz und Outdoor-Möbeln in pool-sonnenschutz-gartenmoebel), Leitern (10 Titel mit «…leiter», davon nur 2 in Hardware, der Rest Möbelgleiter, RC-Schaumgleiter und Taschen), Heizungs-Regler (9), Pumpen allein (3), Zäune und Sichtschutz (3), Kamine (3).",
-    "REGELN mit g_nicht «Hardware > Tools >»: alle Regeln mit g_prefix «Hardware» lassen die Unterklassen der Werkzeug-Kategorien bewusst aus und nehmen nur die Hardware-Einzelware (Google «Hardware > Tools» ohne Unterklasse, «Hardware Accessories», «Building Consumables»). Ändert die Engine die Google-Zuordnung dieser Klasse, müssen die Regeln neu gemessen werden.",
-    "GRUPPEN: sechs Gruppen mit 8 / 6 / 4 / 5 / 7 / 5 Kindern. Verweise auf Vorhandenes oder auf andere Bereichsdateien (nicht in dieser Datei gebaut): handwerkzeug, elektrowerkzeug, messwerkzeug, bohrer-saegen-zubehoer, werkzeugkoffer-sets, fahrrad-auto-werkzeug, haengematten (Collections/Kategorien des Shops) sowie schloesser-safes, tuerklingeln-tuerspione, alarm-sensoren-melder, arbeitsschutz-masken, ueberwachungskameras (computer.json). Fällt eine der computer.json-Kategorien weg, entfällt der Verweis. Die Gruppe «Outdoor & Sommer» hat nur vier Kinder, weil Pool, Sonnenschutz und Outdoor-Möbel einzeln unter 15 liegen.",
-    "UNTERFILTER: zwei Kategorien tragen aktive Chips: schaedlingsabwehr-insektenschutz (Mückenlampen, Fallen & Klatschen 23 / Vertreiber & Abwehr 23) und grills-grillzubehoer (Grills & Feuerstellen 15 / Grillzubehör & Besteck 33; der Grill-Chip steht genau an der Schwelle von 15 und fällt weg, sobald ein Grill auf DRAFT geht). Gemessene Teilungen, die an der Schwelle scheitern (Treffer / übrige): Taschenlampen nach Stirn-/Kopflampen 14 / 17, Gartengeräte nach Handgeräten 23 / 6, Türbeschläge nach Möbel 13 / 13, Malerbedarf nach Farbe und Spritzen 18 / 11, Fliegengitter nach Vorhang 17 / 11. Wasserhähne nach «Küche» 15 / 24 wären rechnerisch möglich, aber die Titel der übrigen sagen nicht, ob Küche oder Bad (Regel «nie raten»).",
-    "ÜBERSCHNEIDUNG mit anderen Bereichsdateien (gemessen, Stand computer, handy, spielzeug, unterhaltung, wohnen; 103 Doppelzuordnungen): gartendeko-windspiele → wohnen:deko-objekte-accessoires 7, wohnen:figuren-skulpturen 1; garten-aussenleuchten → wohnen:led-streifen-lichterketten 5; grills-grillzubehoer → wohnen:kochutensilien-sets 4, wohnen:fritteusen-grills-kochfelder 3, wohnen:siebe-muehlen-messhilfen 3, wohnen:kuechengadgets 2, wohnen:tischdecken-schuerzen 1; wasserfilter-wasserspender → wohnen:kuechengeraete-zubehoer 1; schaedlingsabwehr-insektenschutz → wohnen:insektenschutz-schaedlingsabwehr 48; fliegengitter-insektenschutz-vorhaenge → wohnen:insektenschutz-schaedlingsabwehr 28. Zur Einordnung: Windspiele (Google «Wind Chimes») und Solar-Lichterketten stehen bewusst auch in Dekoration bzw. Beleuchtung (zwei Türen zur selben Ware); bei Grills sind es BBQ-Sets, Thermometer und Grillschürzen, die auch Küchenhelfer sind. Auftragsgemäss gehört die Schädlingsabwehr in diesen Bereich.",
-    "ENTSCHEIDUNG nötig: wohnen:insektenschutz-schaedlingsabwehr (82) deckt dieselbe Ware wie schaedlingsabwehr-insektenschutz und fliegengitter-insektenschutz-vorhaenge (zusammen 76); 76 Produkte stehen in beiden. Die wohnen-Regel nimmt zusätzlich 6 Produkte («Magnetischer Türvorhang, schwarz», «Magnetischer Türvorhang mit Sonnenblumen-Print», «Magnetischer Türvorhang, atmungsaktiv, braun»), davon 6 ohne Insektenbezug im Titel (meine Regel verlangt den Bezug, Regel «nie raten»); 0 Produkte meiner Kategorien findet die wohnen-Regel nicht. Empfehlung: nur eine Fassung live nehmen, die Schädlingsabwehr gehört auftragsgemäss in diesen Bereich; in wohnen.json dann als Verweis führen.",
-    "Andere Dateien führen Kategorien als Kinder, die hier ersetzt oder geteilt werden: wohnen.json «Bad»: armaturen-duschen. Für «armaturen-duschen» ersetzen wasserhaehne-kuechenarmaturen und duschkoepfe-handbrausen den Eintrag (55 von 57 Produkten liegen dort); die Gruppe «Bad» in wohnen.json sollte auf diese beiden verweisen."
+    "ERSETZT: fahrrad-auto-werkzeug (Tag sort-werkzeug-fahrzeug, 45 aktive) steht NICHT mehr als Kind in «Werkzeug & Maschinen» (der Erstbauer hatte es nur eingeordnet): 17 von 45 sind kein Werkzeug (Fahrrad-Schnellspanner, Sattelstütze, Sattel, Pedale, Kassette, Schaltauge, Fahrradglocke, Bike-Griff, Bidonhalter- und Lenkerschrauben, Kettenschloss, Scheibenbremsenschloss, Handbremsen-Gangschloss, Wandhalterung für Fahrräder, LED-Nebelscheinwerfer, Schaum-Sprühpistole, Auto-Waschbürste) = 37,8 % (auto.json zählt 18 = 40 %), und alle 45 Mitglieder tragen bereits eine Kategorie in auto.json oder sport.json (gemessen 45 von 45; velo-werkzeug-reparatur 11, auto-reparatur-karosseriewerkzeug 12, velo-teile-zubehoer 13 u. a.). Das Kind ist durch den Verweis auf sport:velo-werkzeug-reparatur (20, alle sauber) ersetzt; das Auto-Werkzeug erscheint im Zweig «Auto & Motorrad» (auto:auto-reparatur-karosseriewerkzeug, 23). Wer das Werkzeug-Menü auch für Auto-Werkzeug will, hängt diese Kategorie als Verweis dazu (die Gruppe hat dann 9 Kinder).",
+    "KONFLIKT mit sport.json: taschenlampen-kopflampen (31 aktive, Google «Flashlights & Headlamps» und «Work Lights») und die vorhandene Collection «taschenlampen» (Tag kat-taschenlampen, 23 aktive, im Menü unter «Sport & Party», von sport.json als Kind übernommen) bilden dieselbe Ware. Gemessen: 11 der 31 neuen Produkte fehlen im Alt-Tag («LED Nackenleuchte für Joggen und Lesen», «Kopflampe mit Sensor» …), umgekehrt hat der Alt-Tag 3 Lampen, die die Google-Regel nicht trifft («Mini USB-Taschenlampe – Edelstahl» mit der Google-Klasse Handbags, «LED-Stirnlampe zum Laufen & Fischen» und «Multifunktionale Velo- und Stirnlampe» mit der Klasse Sport Safety Lights; eine Titel-Regel kann dafür nicht zusätzlich greifen, weil titel_muss mit g_prefix UND-verknüpft ist). Empfehlung: die neue Kategorie live nehmen, sport.json und das Menü darauf verweisen lassen, die 3 Lampen beim Tag-Umbau von Hand nachtragen; dann entfällt der Alt-Tag.",
+    "ERSETZT: taschenlampen (Tag kat-taschenlampen, 23 aktive, im Menü unter «Sport & Party»): unvollständig, es fehlen 11 der 31 Taschenlampen, Kopf- und Arbeitslampen (z. B. «LED Nackenleuchte für Joggen und Lesen»). Nachfolger: taschenlampen-kopflampen (siehe KONFLIKT).",
+    "ERSETZT (alte Titel-Regel-Collections, nicht im Menü, Treffer unter den aktiven Produkten, neu gemessen am 27.10.2026): pool und pool-schwimmen (je 30; nur 10 gehören zu Pool-Zubehör, der Rest sind 11 Schwimmbrillen (die 8 Kinder-Schwimmbrillen trägt sport:schwimmen-tauchen-wassersport), 4 Luftmatratzen und Schwimmringe mit Sperr-Tag fortura (schliesst das Werkzeug automatisch aus), 2 Baby-Schwimmhilfen, eine Poolzubehör-Tasche, ein Billard-Überwurf und ein Reparaturkleber) → pool-sonnenschutz-gartenmoebel; grill-bbq (27; 8 fehlen in der neuen Kategorie, weil es Grillplatten, Backformen, Air-Fryer-Roste und Ofen-Grillkörbe sind) → grills-grillzubehoer; garten-pflanzgefaesse (61; nur 22 sind Pflanzgefässe, 28 sind Vasen, 5 Bausteine und Modelle, der Rest Silikonformen, Malsets u. a., weil die Regel «vase» als Teilwort nimmt) → pflanztoepfe-pflanzenzubehoer; garten-leuchten (10, davon 9 in garten-aussenleuchten, das 26 Produkte findet) → garten-aussenleuchten; garten-deko-outdoor (19; 12 in der neuen Kategorie, 7 fehlen dort: Traumfänger, Diamond-Painting-Set, Weihnachts- und Halloween-Figuren, eine Solar-Glaskugel (→ garten-aussenleuchten) und eine Wespen-Attrappe (→ schaedlingsabwehr-insektenschutz)) → gartendeko-windspiele; garten-werkzeug-pflege (12; 8 in gartengeraete-gartenpflege, das 29 findet; dazu eine Giesskanne in der Bewässerung, eine Astschere mit Google-Klasse «Hardware > Tools» und 2 Spielzeug-Rasenmäher) → gartengeraete-gartenpflege.",
+    "vasen-blumentoepfe (Tag sort-vasen, 57 aktive, Menü «Wohnen & Garten»): 22 Töpfe wandern nach pflanztoepfe-pflanzenzubehoer, 5 sind Blumen-Bausteine (Spielzeug, Fremdkörper), der Rest sind Vasen (Verteilung gemessen 27.10.2026: pflanztoepfe-pflanzenzubehoer 22, wohnen:vasen-blumenvasen 19, spielzeug:bausteine-blumen-deko 5, hobby-party 3, tiere:tier-kratzmoebel 1, nirgends 7). Die Kategorie sollte «Vasen» heissen und die Töpfe abgeben.",
+    "solar-energie (Tag sort-solar, 148 aktive): 24 Solar-Leuchten und -Lichterketten wandern nach garten-aussenleuchten, 4 Solar-Vertreiber nach schaedlingsabwehr-insektenschutz, 3 Solar-Bewässerungen nach bewaesserung-gartenschlauch, 2 Solar-Gartenfiguren nach gartendeko-windspiele; der Rest sind Powerbanks, Panels, Radios, Rucksäcke, Uhren und Kameras (handy.json, unterhaltung.json, computer.json).",
+    "vorhaenge (Tag sort-vorhaenge, 102 aktiv): 17 magnetische Fliegenvorhänge wandern nach fliegengitter-insektenschutz-vorhaenge (die neue Kategorie hat 28 Produkte; die übrigen 11 tragen heute keinen Vorhang-Tag, weil sie als Fliegengitter-Tür oder Fenster-Netz keine Vorhänge sind). wohnen.json hat die Fliegenvorhänge aus «Vorhänge, Gardinen & Rollos» ausgenommen (gemessen: 0 gemeinsame Produkte).",
+    "Alt-Sammelbecken im Menü «Wohnen & Garten»: werkzeug-maschinen (Tag werkzeug, 888 aktive; die Mitglieder liegen in neuen Kategorien dieser Datei, in den fünf vorhandenen Werkzeug-Kindern und in Kategorien von auto.json, sport.json, computer.json, schmuck-uhren.json) und outdoor-garten (Tags outdoor, garten, camping; 2 507 Produkte laut Shop, aktiv: Tag outdoor 1 348). Beide werden durch die Gruppen dieser Datei ersetzt.",
+    "DOPPELTE MITGLIEDSCHAFT beim Live-Gang: Produkte der neuen Kategorien tragen noch ihre alten sort-Tags (z. B. die Werkzeugtaschen mit Handtaschen-Tags, die Fliegenvorhänge mit sort-vorhaenge, die Solar-Leuchten mit sort-solar). Die Tag-Phase muss die alten Tags dieser Produkte entfernen oder die alten Kategorien müssen dieselben Regeln verengen.",
+    "ZULASSUNG: elektro-installation (17) enthält Installationsmaterial (z. B. «Fehlerstrom-Schutzschalter TORD4», Klemmen, Sicherungsboxen). Ob diese Ware in der Schweiz angeboten werden darf (Zulassung, Prüfzeichen), ist nicht geprüft; das muss der Besitzer vor dem Live-Gang der Kategorie klären. Gleiches gilt für den «WC-Sitzdeckel im US-Standard (17 Zoll)» in abfluss-sanitaerzubehoer: ob er auf Schweizer Becken passt, sagt der Titel nicht.",
+    "TITEL zu prüfen (Skill titel-wahrheit): Titel wie «Ultraschall Mückenarmband für Schwangerschaft & Baby» sprechen Schwangere und Babys an; ob das Datenblatt das trägt, ist nicht geprüft. In schaedlingsabwehr-insektenschutz liegen 5 solche Armbänder. Ebenso nicht belegt: «Tauchgurt-Werkzeugtasche» (steht in werkzeugtaschen-aufbewahrung, die Schwesterprodukte «Tauchgurt …» sind Taucherzubehör; ob es eine Werkzeugtasche für den Tauchgurt ist, sagt der Titel nicht) und «Klappbare Stahlkabelschraube 316» (Art des Produkts unklar).",
+    "GRENZFÄLLE, die bleiben (15 von 605, 2,5 %; Art des Produkts passt zum Namen, nicht zur Gruppe oder zum Alltagsbegriff): rohre-ventile-pumpen: 5 Kraftstoff- und Druckluft-Artikel («Zapfventil für Diesel und Benzin», «Dayi Lithium-Batterie Dieselpumpe», «Druckluftfilter-Regler mit Wasserabscheider», «Luftrohr 2 m für Kompressor», «Geflochtene Nylon-Luftschlauch 180 cm») gehören nicht zu «Sanitär & Wasser» (5 von 18 = 28 %; ohne sie fiele die Kategorie auf 13 und unter die Schwelle); schrauben-duebel-befestigung: 3 Spanngurte (Verzurren, nicht Schrauben), «Lasthaken mit Widderkopf, 2 Tonnen» (Heben) und das «Muttern-Set für Auto-Reparaturen»; kleber-klebebaender-reparatur: «Doppelseitiges Klebeband für Handybildschirme» (Handy-Reparatur) und «Weisser Holzleim für Teppich-Tufting» (Hobby); tueren-fenster-moebelbeschlaege: «Bimini Deckscharnier» (Boot); werkzeugtaschen-aufbewahrung: «Tauchgurt-Werkzeugtasche» (Taucherzubehör?); elektro-installation: «Spannungssensitives Relais für Wohnmobile & Yachten» (Fahrzeug-Elektrik). Die Kategorien enthalten sonst keine Ware, die der Titel einem anderen Bereich zuordnet.",
+    "SCHWELLE: werkzeugtaschen-aufbewahrung (17), hochdruckreiniger-schaumkanonen (17), wasserfilter-wasserspender (18), rohre-ventile-pumpen (18), regen-sonnenschirme (17), kleber-klebebaender-reparatur (17) und elektro-installation (17) liegen nahe an 15; unter der Schwelle liegen die vorhandenen Kinder haengematten (14) und werkzeugkoffer-sets (12). Sinkt eine neue Kategorie unter 15 (Produkte gehen auf DRAFT), die Kategorie nicht anlegen oder ihr Produkt in die Nachbarin schieben.",
+    "Klassen aus Google, die der Katalog nicht hergibt (unter 15 echte Produkte) und deshalb nicht angelegt wurden: Pool & Spa allein (13 nach Google-Klasse; Pool-Zubehör 13, Sonnenschutz 9 und Outdoor-Möbel 6 sind einzeln unter der Schwelle und stehen deshalb zusammen in pool-sonnenschutz-gartenmoebel), Leitern (2 echte Leitern; die übrigen Titel mit «…leiter» sind Möbelgleiter, RC-Schaumgleiter und Taschen), Heizungs-Regler (9, davon 4 ohne Platz), Pumpen allein (3), Zäune und Sichtschutz (3), Kamine (3), Moskitonetze (5).",
+    "GOOGLE-KLASSE FALSCH, deshalb nicht in der passenden Kategorie (Regel kann sie nicht mitnehmen, weil titel_muss mit g_prefix UND-verknüpft ist; beim Tag-Umbau von Hand nachtragen): «Ausziehbarer Gartenschlauch» (Hardware > Tools) → bewaesserung-gartenschlauch, «Astschere für Obstbäume» (Hardware > Tools) → gartengeraete-gartenpflege, «Schubladenschloss mit Fortune Bird Design» und «Schiebetürschloss für Scheunentor» (Hardware > Tools) → computer:schloesser-safes, «Mini Slim Automatischer UV-Regenschirm mit 6 Rippen» (Google «Kitchen & Dining») und «Faltbarer Regenschirm» (Google «Household Supplies») → regen-sonnenschirme, «Bidet-Aufsatz für die Toilette» und «Bidet-Aufsatz mit Gesäss- und Damendusche» (ohne Google-Klasse) → duschkoepfe-handbrausen, «Aroma Duschkopf mit Filter» (Google «Bathroom Accessories») → duschkoepfe-handbrausen, 3 Taschenlampen (siehe KONFLIKT).",
+    "REGELN mit g_nicht «Hardware > Tools >»: alle Regeln mit g_prefix «Hardware» lassen die Unterklassen der Werkzeug-Kategorien bewusst aus und nehmen nur die Hardware-Einzelware (Google «Hardware > Tools» ohne Unterklasse, «Hardware Accessories», «Building Consumables»). Ändert die Engine die Google-Zuordnung dieser Klasse, müssen die Regeln neu gemessen werden. Einzelne Ausschluss-Regeln und Präfixe ohne aktuellen Treffer (g_nicht in wasserhaehne-armaturen, schrauben-duebel-befestigung, tueren-fenster-moebelbeschlaege, pflanztoepfe-pflanzenzubehoer; Präfix «Decor» in pflanztoepfe-pflanzenzubehoer und garten-aussenleuchten, «Hardware > Tools» in pflanztoepfe-pflanzenzubehoer) bleiben als Wächter für spätere Importe stehen; ein Wächter ohne Treffer ist kein Fehler, solange er nichts Richtiges ausschliesst (gemessen: er schliesst heute nichts aus).",
+    "GRUPPEN: sechs Gruppen mit 8 / 6 / 4 / 5 / 7 / 5 Kindern. Verweise auf Vorhandenes oder auf andere Bereichsdateien (nicht in dieser Datei gebaut): handwerkzeug, elektrowerkzeug, messwerkzeug, bohrer-saegen-zubehoer, werkzeugkoffer-sets, haengematten (Collections/Kategorien des Shops) sowie velo-werkzeug-reparatur (sport.json), schloesser-safes, tuerklingeln-tuerspione, alarm-sensoren-melder, arbeitsschutz-masken, ueberwachungskameras (computer.json). Fällt eine der Verweis-Kategorien in der anderen Datei weg, entfällt der Verweis. Die Gruppe «Outdoor & Sommer» hat nur vier Kinder, weil Pool, Sonnenschutz und Outdoor-Möbel einzeln unter 15 liegen.",
+    "UNTERFILTER: zwei Kategorien tragen aktive Chips: schaedlingsabwehr-insektenschutz (Mückenlampen, Fallen & Klatschen 23 / Vertreiber & Abwehr 25; kein Produkt in beiden, keines in keinem) und grills-grillzubehoer (Grills & Feuerstellen 16 / Grillzubehör & Besteck 32; der Grill-Chip steht an der Schwelle von 15 und fällt weg, sobald zwei Grills auf DRAFT gehen). Gemessene Teilungen, die an der Schwelle scheitern (Treffer / übrige): Taschenlampen nach Stirn-/Kopflampen 14 / 17, Gartengeräte nach Handgeräten 23 / 6, Türbeschläge nach Möbel 13 / 13, Malerbedarf nach Farbe und Spritzen 18 / 11, Fliegengitter nach Vorhang 17 / 11. Wasserhähne nach «Küche» 15 / 24 wären rechnerisch möglich, aber die Titel der übrigen sagen nicht, ob Küche oder Bad (Regel «nie raten»).",
+    "ÜBERSCHNEIDUNG mit anderen Bereichsdateien (neu gemessen am 27.10.2026 mit allen 13 Dateien, 26 Doppelzuordnungen): hochdruckreiniger-schaumkanonen → auto:autowaesche-reinigung 6 und bewaesserung-gartenschlauch → auto:autowaesche-reinigung 2 (Auto-Waschpistolen und -Düsen); grills-grillzubehoer → sport:camping-geschirr-kochsets 9 und sport:camping-kocher-gaskocher 1 (Camping-Grills); pool-sonnenschutz-gartenmoebel → sport:picknick-kuehlrucksaecke 3 (Picknickmatten) und sport:campingmoebel-haengematten 1; schrauben-duebel-befestigung → auto 2 (Motorrad-Spanngurt, Muttern-Set) und sport:wander-kletter-survival 1; gartendeko-windspiele → hobby-party:ornamente-anhaenger-dekofiguren 1. Alle sind Zweitsichten über den Titel (Camping, Auto, Picknick) und gewollt; mit wohnen.json gibt es 0 gemeinsame Produkte (wohnen.json nimmt die Klassen Schädlingsabwehr, Fliegengitter, Armaturen, Duschköpfe, Pflanztöpfe, Gartendeko, Gartenleuchten, Wasserfilter und Outdoor-Grills aus ihrem Universum).",
+    "ERLEDIGT (war ENTSCHEIDUNG): die Doppelung von schaedlingsabwehr-insektenschutz und fliegengitter-insektenschutz-vorhaenge mit einer wohnen-Kategorie «insektenschutz-schaedlingsabwehr» besteht nicht mehr, weil wohnen.json diese Kategorie nicht mehr führt (gemessen: 0 gemeinsame Produkte). Die Schädlingsabwehr gehört auftragsgemäss in diesen Bereich.",
+    "Andere Dateien über Namen aus dieser Datei: wohnen.json nennt in «NACHBAR-ABSTIMMUNG» die Klassen, die haus-bau trägt; auto.json und sport.json nennen hochdruckreiniger-schaumkanonen, bewaesserung-gartenschlauch, grills-grillzubehoer, pool-sonnenschutz-gartenmoebel und schrauben-duebel-befestigung. Wird in dieser Datei ein Handle geändert (hier geschehen: wasserhaehne-armaturen, regen-sonnenschirme), müssen die Texte dort nachgezogen werden; als Kind einer Gruppe in einer anderen Datei steht keiner der beiden."
   ]
 }

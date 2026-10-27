@@ -23,10 +23,11 @@
    "Home & Garden > Decor",
    "Vehicles & Parts",
    "Furniture > Baby & Toddler Furniture",
-   "Business & Industrial"
+   "Business & Industrial",
+   "Home & Garden > Kitchen & Dining"
   ],
   "titel_muss": [
-   "fitness|hantel|kettlebell|yoga|pilates|widerstandsband|springseil|bauchroller|liegestütz|klimmzug|faszienroll|camping|zelt(?![a-zäöüß])|schlafsack|isomatte|hängematte|picknick|gaskocher|holzofen|survival|wanderstock|wanderstöcke|trekkingstock|kompass|karabiner|trinkblase|angelrute|angelrolle|angelzubehör|angelhaken|schwimmbrille|taucherbrille|tauchmaske|schnorchel|fahrrad|velo(?!urs)|mountainbike|e-bike|rennrad|boxsack|boxhandschuh|taekwondo|karate|tischtennis|badminton|skateboard|skihelm|reithelm|knieschoner|kühlbox|trampolin|kletter"
+   "fitness|hantel|kettlebell|yoga|pilates|widerstandsband|springseil|bauchroller|liegestütz|klimmzug|faszienroll|camping|zelt(?![a-zäöüß])|schlafsack|isomatte|hängematte|picknick|gaskocher|holzofen|survival|wanderstock|wanderstöcke|trekkingstock|kompass|karabiner|trinkblase|angelrute|angelrolle|angelzubehör|angelhaken|schwimmbrille|taucherbrille|tauchmaske|schnorchel|fahrrad|velo(?!urs)|mountainbike|e-bike|rennrad|boxsack|boxhandschuh|taekwondo|karate|tischtennis|badminton|skateboard|skihelm|reithelm|knieschoner|trampolin|kletter"
   ],
   "titel_nicht": []
  },
@@ -42,8 +43,7 @@
    ],
    "titel_nicht": [
     "elektroauto",
-    "taillight",
-    "velo- und helmlicht"
+    "taillight"
    ],
    "beschreibung": "Velohelme für Erwachsene und Kinder: Mountainbike-, Stadt- und Rennvelohelme, teils mit Visier, Schutzbrille oder LED-Licht.",
    "unterfilter": [
@@ -67,7 +67,7 @@
      "handle": "velohelme-mit-licht",
      "titel": "Mit Licht",
      "titel_muss": [
-      "licht|led|leucht|blinker"
+      "licht|(^|[^a-zäöüß])led(?![a-zäöüß])|leucht|blinker"
      ],
      "titel_nicht": []
     }
@@ -84,17 +84,13 @@
     "licht|rücklich|light|leucht|lampe|scheinwerfer|blinker|strahler|reflekt|warnweste|sicherheitsweste|sportweste|beleuchtung"
    ],
    "titel_nicht": [
-    "helm(e|en|s)?(?![a-zäöüß])",
+    "(?<!für )(?<!fürs )helm(e|en|s)?(?![a-zäöüß])",
     "tasche",
     "sattel mit rücklicht",
-    "schloss",
-    "pumpe",
-    "uhr",
     "pedal",
-    "^(?!.*(velo|fahrrad|bike)).*stirnlampe",
-    "klapplichthalter"
+    "^(?!.*(velo|fahrrad|bike)).*stirnlampe"
    ],
-   "beschreibung": "Front- und Rücklichter, Bremslichter, Blinker, Speichenlichter und Reflektoren fürs Velo, dazu LED-Westen und Sicherheitslichter für Laufen und Scooter.",
+   "beschreibung": "Front- und Rücklichter, Bremslichter, Blinker und Speichenlichter fürs Velo, dazu LED-Westen und Sicherheitslichter für Outdoor-Sport und Scooter.",
    "unterfilter": [
     {
      "handle": "velolichter-ruecklichter",
@@ -150,15 +146,10 @@
     "Cameras & Optics"
    ],
    "titel_nicht": [
-    "kindersitz",
     "motorrad",
-    "helmfach",
-    "helmbeutel",
     "camping",
     "wander",
-    "trekking",
-    "werkzeug",
-    "toolbox"
+    "trekking"
    ],
    "beschreibung": "Taschen fürs Velo: Lenker-, Rahmen-, Sattel- und Gepäckträgertaschen sowie Fahrradrucksäcke, oft wasserdicht oder faltbar.",
    "unterfilter": [
@@ -177,14 +168,6 @@
       "rucksack|rucksäcke"
      ],
      "titel_nicht": []
-    },
-    {
-     "handle": "velotaschen-lenker-rahmen-front",
-     "titel": "Lenker-, Rahmen- & Fronttaschen",
-     "titel_muss": [
-      "lenker|rahmen|oberrohr|front|vorder"
-     ],
-     "titel_nicht": []
     }
    ]
   },
@@ -192,7 +175,7 @@
    "handle": "velo-werkzeug-reparatur",
    "titel": "Velo-Werkzeug & Reparatur",
    "titel_muss": [
-    "^(?=.*(fahrrad|velo(?!urs)|bike|mtb|mountainbike|rennrad|rennvelo|radfahr|e-bike|ebike|bmx|radsport))(?=.*(werkzeug|reparatur|pumpe|toolbox|tool-?set|flick|reifenheber|innensechskant|multitool|montage|kettenreiniger))",
+    "^(?=.*(fahrrad|velo(?!urs)|bike|mtb|mountainbike|rennrad|rennvelo|radfahr|e-bike|ebike|bmx|radsport))(?=.*(werkzeug|reparatur|pumpe|toolbox|tool-?set|flick|reifenheber|innensechskant|multitool|montage|kettenreiniger|schlüssel))",
     "kettennieter|kettenzange|kettenwerkzeug|kurbelabzieher|kurbelarm-?werkzeug|freilaufmontage|steuersatz-?kralle|ventilschlüssel|co2-kartuschen|reifendichtmittel|reifenheber|speichenschlüssel"
    ],
    "g_nicht": [
@@ -210,9 +193,8 @@
     "Home & Garden > Decor"
    ],
    "titel_nicht": [
-    "auto",
-    "schutzfolie",
-    "handy"
+    "licht|lampe|leucht|scheinwerfer",
+    "^(?!.*(velo|fahrrad|bike)).*motorrad"
    ],
    "beschreibung": "Werkzeug und Reparaturzubehör fürs Velo: Kettennieter, Kurbelabzieher, Reifenheber, Reifendichtmittel, Mini-Pumpen und Montagewerkzeug.",
    "unterfilter": []
@@ -227,13 +209,11 @@
     "sattel|sattelstütze|pedal|lenker|schaltauge|kassette|schnellspanner|kurbel|bidonhalter|griff|vorbau|ratsche|nabe|schloss|halterung|ständer|wandhalter|klingel|glocke|hupe|spiegel|computer|tacho|abdeckung|schutzhülle|kindersitz|stoppuhr|stopuhr|schutzfolie|motor|schweissfänger|schutz|kraftrad|pedal"
    ],
    "titel_nicht": [
-    "^(?!.*(sattel|pedal)).*(licht|rücklich|lampe|leucht)",
+    "^(?!.*(sattel|pedal)).*(licht|rücklich|lampe|leucht|scheinwerfer|strahler)",
     "tasche",
-    "beutel",
     "helm(e|en|s)?(?![a-zäöüß])",
     "werkzeug",
     "kettennieter",
-    "kettenzange",
     "kurbelabzieher",
     "blinker"
    ],
@@ -258,11 +238,6 @@
    "titel_muss": [
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
-   "titel_nicht": [
-    "boxball",
-    "taekwondo",
-    "box-?target"
-   ],
    "beschreibung": "Kurzhanteln, Hantelsets, Kettlebells, Gewichtssäcke und Gewichtsmanschetten fürs Krafttraining zu Hause.",
    "unterfilter": []
   },
@@ -273,33 +248,22 @@
     "Sporting Goods > Exercise & Fitness"
    ],
    "titel_muss": [
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)"
    ],
    "titel_nicht": [
     "matte",
-    "zugriemen",
     "bauchtrainer",
-    "uhrenarmband",
     "push-up",
     "outdoor-tools",
-    "gummiband für yoga",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
-   "beschreibung": "Widerstandsbänder, Expander, Fitnessbänder und Zugseile in verschiedenen Stärken — für Kraft, Dehnung und Reha-Übungen zu Hause.",
+   "beschreibung": "Widerstandsbänder, Expander, Fitnessbänder und Zugseile, einzeln oder im Set, für Kraft- und Dehnübungen zu Hause.",
    "unterfilter": [
     {
      "handle": "widerstandsbaender-sets",
      "titel": "Bänder-Sets",
      "titel_muss": [
       "set|[0-9]+-teil"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "widerstandsbaender-hueft-bein",
-     "titel": "Hüft-, Bein- & Pedalbänder",
-     "titel_muss": [
-      "hüft|hip|bein|po-|squat|pedal|taille"
      ],
      "titel_nicht": []
     }
@@ -315,23 +279,10 @@
     "springseil|sprungseil|seilspringen|skipping|schwungseil|trainingsseil|fitness-?seil|leatherreep"
    ],
    "titel_nicht": [
-    "golf",
-    "matte",
-    "taper rope grip",
-    "grip",
-    "kraft"
+    "matte"
    ],
    "beschreibung": "Springseile für Ausdauer und Koordination: klassische Seile mit Stahlkabel, Zählseile und kabellose Smart-Springseile.",
-   "unterfilter": [
-    {
-     "handle": "springseile-mit-zaehler",
-     "titel": "Mit Zähler oder App",
-     "titel_muss": [
-      "zähl|zähler|smart|lcd|digital|bluetooth|tracker|kalorien|app"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "unterfilter": []
   },
   {
    "handle": "bauchtrainer-liegestuetz-klimmzug",
@@ -343,18 +294,12 @@
     "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad"
    ],
    "titel_nicht": [
-    "hose",
     "bootcut",
     "gürtel",
-    "stützband",
-    "bauchgurt",
-    "bandage",
-    "taille",
     "boosterta",
     "hilfsgurt",
     "griffhaken",
     "sit-up boxball",
-    "hantel",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
    "beschreibung": "Bauchroller, Liegestützgriffe, Push-up-Boards, Türreckstangen und Klimmzughilfen für das Training mit dem eigenen Körpergewicht.",
@@ -389,9 +334,6 @@
    ],
    "titel_nicht": [
     "tennis power chain",
-    "yogamatte",
-    "yoga-matte",
-    "hantel",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
    "beschreibung": "Balance Boards, Wackelbretter, Gymnastik- und Yogabälle, Aerobic-Steps und Gleitscheiben für Gleichgewicht, Rumpf und Koordination.",
@@ -399,7 +341,7 @@
   },
   {
    "handle": "kraftsport-handschuhe-guertel",
-   "titel": "Kraftsport-Zubehör: Handschuhe, Gürtel & Bandagen",
+   "titel": "Kraftsport-Handschuhe, Gürtel & Bandagen",
    "g_prefix": [
     "Sporting Goods > Exercise & Fitness"
    ],
@@ -407,15 +349,8 @@
     "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt"
    ],
    "titel_nicht": [
-    "hose",
-    "bootcut",
-    "taillenmieder",
-    "sweat",
-    "fettreduktion",
-    "widerstand",
-    "resistance",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)"
    ],
    "beschreibung": "Zubehör fürs Krafttraining: Gewichthebergürtel, Handschuhe, Handgelenkbandagen, Zughilfen und Polster für Hantelstangen.",
    "unterfilter": []
@@ -430,10 +365,7 @@
     "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen|bauchformung|bauchgurt mit griff"
    ],
    "titel_nicht": [
-    "hantel",
-    "hose",
-    "gewichtheb",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)",
     "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
@@ -452,30 +384,15 @@
    "titel_nicht": [
     "beckenboden",
     "pelvik",
-    "springseil",
-    "target",
-    "box(en|ball)",
-    "hantel",
-    "balance",
-    "laufbandabdeckung",
-    "tennis",
     "schwimmtrainer",
-    "taille",
-    "sit-?up",
-    "plank",
-    "bauch",
-    "klimmzug",
-    "push-?up",
-    "liegestütz",
-    "widerstandsband",
-    "zugseil",
-    "expander",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)",
     "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
     "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance|gegengewichts|fitness-?ball",
     "gewichthebe|gewichtheber|fitness-?handschuh|trainingshandschuh|zughilfe|zugriemen|handflächenschutz|power hook|hip thrust|bankdrück|kniebeugen|handgelenkbandage|handgelenkschutz für klimm|klimmzug-?(haken|griffhaken|hilfsgurt)|booster|fitness haken|fitness-haken|griffhaken|fitness[ -]gürtel für (kniebeugen|klimm)|squat fuss|squat-?pad|hantelstangen-?(verschluss|schutz)|bauchgurt für krafttraining|thrust gurt|glute|bench press|handgelenk-?trainingsgurt",
-    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen|bauchformung|bauchgurt mit griff"
+    "taille|hula|sweat |schwitz|waist|vibrationsgürtel|bauch-?trainingsgürtel|massage-twisting|massage-reifen|sportreifen|bauchformung|bauchgurt mit griff",
+    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sport-?matte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
+    "(^|[^a-zäöüß])(box\\w*|boxing\\w*|speedball|taekwondo|karate|muay|kickbox\\w*|kampfsport\\w*|judo|sanda|mma|pratze\\w*|schlagpolster|kick-?pad|fusstarget)(?![a-zäöüß])"
    ],
    "beschreibung": "Hand-, Arm-, Brust- und Beintrainer, Pedaltrainer, Heimtrainer und Ganzkörper-Fitnessgeräte für das Training zu Hause.",
    "unterfilter": []
@@ -487,22 +404,13 @@
     "Sporting Goods"
    ],
    "titel_muss": [
-    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)"
+    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sport-?matte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)"
    ],
    "titel_nicht": [
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk"
    ],
    "beschreibung": "Yogamatten, Fitness- und Gymnastikmatten aus TPE, EVA oder Naturkautschuk, teils faltbar oder als Reisematte.",
-   "unterfilter": [
-    {
-     "handle": "yogamatten-faltbar-reise",
-     "titel": "Faltbar & Reise",
-     "titel_muss": [
-      "falt|reise|mini|klein|kompakt|travel"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "unterfilter": []
   },
   {
    "handle": "yoga-pilates-zubehoer",
@@ -515,33 +423,16 @@
    ],
    "titel_nicht": [
     "haustier",
-    "hose",
-    "resistance",
-    "faszien",
-    "foam",
-    "massage",
-    "yoga-?rolle",
-    "yoga-säule",
-    "hantel",
     "board",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)",
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)",
     "balance ?(board|pad|brett)|wackelbrett|rotationsbrett|gymnastikball|yoga-?ball|medizinball|reaktionsball|slackline|gleitscheibe|gleitpad|gleitbrett|aerobic-?(step|trittbrett)|fit step|hüpfball|sprungbrett|gymnastikring|turnring|holzringe|schlingentraining|stretchboard|drehscheibe|wippe|balancierbrett|körperbrett|foot balance|gegengewichts|fitness-?ball",
-    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sportmatte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
+    "^(?!.*(tasche|handtuch|gummiband|bauch|futon)).*(yoga[- ]?matte|fitness-?matte|gymnastikmatte|pilatesmatte|sport-?matte|trainingsmatte|bodenschutzmatte|fitness-?unterlage|gummisportmatte|diatomeen|fitness- und yogamatte|fitness-yogamatte|yoga- ?und ?fitness-?matte)",
     "bauch(trainer|roller|rad|muskelrad|muskel-?trainer|muskelplatte)|ab ?wheel|abdominal|liegestütz|push-?up|klimmzug|türreck|reckstange|pull-?up|sit-?up|plank|dip-?station|rückholseil|bauchrad|bauchmuskel-?trainingsgerät|bauchmuskel-?trainingsmatte|bauchmuskel-trainingsstab|trainingsrad|abdomen|fitnessrad|rad für den bauch|bauchmuskel-?trainingsrad",
     "faszien|foam ?roller|massage-?(roller|rolle|ball|kugel|stab)|yoga-?(roller|rolle|säule)|schaumstoff-?rolle|peanut|pilates rolle|muskelentspannung|muskel-?massage"
    ],
    "beschreibung": "Zubehör für Yoga und Pilates: Blöcke, Gurte, Yogaräder, Pilates-Ringe und -Stäbe, Mattentaschen, Yogahandtücher und Meditationskissen.",
-   "unterfilter": [
-    {
-     "handle": "yoga-pilates-bloecke-gurte-raeder",
-     "titel": "Blöcke, Gurte & Räder",
-     "titel_muss": [
-      "block|gurt|strap|rad(?![a-zäöüß])|wheel|ring"
-     ],
-     "titel_nicht": []
-    }
-   ]
+   "unterfilter": []
   },
   {
    "handle": "faszienrollen-massagebaelle",
@@ -553,10 +444,8 @@
     "faszien|foam ?roller|massage-?(roller|rolle|ball|kugel|stab)|yoga-?(roller|rolle|säule)|schaumstoff-?rolle|peanut|pilates rolle|muskelentspannung|muskel-?massage"
    ],
    "titel_nicht": [
-    "hantel",
-    "bluetooth lautsprecher",
     "hantel|kettlebell|gewichtssack|gewichtsmanschette|gewichtsarmband|dumbbell|barbell|sandsack|gewichtsweste|gewichtete handgelenk",
-    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band|yoga ligament|gummiband(?! für yoga)"
+    "widerstandsband|widerstandsbänder|widerstandsseil|fitnessband|fitnessbänder|resistance|expander|trainingsband|dehnband|dehnungsband|zugseil|spannband|latexband|kraftband|kraftbänder|rehabilitations-?trainings|elastikband|elastikseil|stretchband|hüftband|hip ring|hüftring|trapezband|trainingselastik|yoga-?band|bindeband|seilzug|pedal-?widerstand|fitness-?schnur|fitness-?band(?![a-zäöüß])|fitness-?bänder|yoga ligament|gummiband(?! für yoga)"
    ],
    "beschreibung": "Faszienrollen, Massagebälle und Schaumstoffrollen zum Lockern und Dehnen nach dem Training, teils mit Noppen oder Vibration.",
    "unterfilter": []
@@ -585,21 +474,12 @@
     "Luggage & Bags"
    ],
    "titel_nicht": [
-    "katze",
-    "haustier",
-    "hund",
-    "kinderzelt",
-    "spiel",
-    "bausatz",
-    "kugelzelt",
-    "bausteine",
     "feldbett",
     "moskito",
     "ofen",
-    "zeltlampe",
     "schlafzelt mit licht"
    ],
-   "beschreibung": "Campingzelte für 1 bis 5 Personen, Strandzelte und Pop-up-Zelte sowie Zeltstangen, Heringe, Bodentücher und Abspannleinen.",
+   "beschreibung": "Campingzelte, Strandzelte und Schnellaufbau-Zelte sowie Zeltstangen, Zeltstifte, Bodentücher und Spanner.",
    "unterfilter": []
   },
   {
@@ -624,20 +504,7 @@
     "Furniture > Baby"
    ],
    "titel_nicht": [
-    "baby",
-    "kleinkind",
-    "kinderschlafsack",
-    "kinder-?schlafsack",
-    "hund",
-    "katze",
-    "haustier",
-    "seidenstrumpf",
-    "neugeboren",
-    "pucksack",
     "schlafsackzelt",
-    "sofa",
-    "hängematte",
-    "kleber",
     "reparatur"
    ],
    "beschreibung": "Schlafsäcke, Isomatten, Schlafpads, Feldbetten und aufblasbare Luftbetten für Camping, Trekking und die Autoreise.",
@@ -664,17 +531,9 @@
     "Home & Garden > Decor"
    ],
    "titel_nicht": [
-    "katze",
-    "katzen",
-    "hund",
-    "haustier",
-    "yoga",
     "aerial",
-    "baby",
-    "futter",
     "bezug",
     "schutzhülle",
-    "rücksitz",
     "organizer",
     "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
     "(^|[^a-zäöüß])tent(?![a-zäöüß])",
@@ -693,13 +552,22 @@
    ]
   },
   {
-   "handle": "camping-kochen-geschirr",
-   "titel": "Camping-Küche: Kocher & Geschirr",
-   "titel_muss": [
-    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
-    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
-    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)"
+   "handle": "camping-kocher-gaskocher",
+   "titel": "Campingkocher & Gaskocher",
+   "g_prefix": [
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves",
+    "Sporting Goods",
+    "Electronics"
    ],
+   "titel_muss": [
+    "kocher|holzofen|gasbrenner|gasherd(?![a-zäöüß-])|kochfeld|feuerrost|windschutz"
+   ],
+   "beschreibung": "Tragbare Gaskocher, Spirituskocher und Holzöfen für Camping und Wandern, dazu Windschutz und Feuerroste.",
+   "unterfilter": []
+  },
+  {
+   "handle": "camping-geschirr-kochsets",
+   "titel": "Camping-Geschirr, Kochsets & Grills",
    "g_nicht": [
     "Apparel & Accessories > Clothing",
     "Apparel & Accessories > Shoes",
@@ -716,36 +584,23 @@
     "Luggage & Bags",
     "Health & Beauty",
     "Electronics > Electronics Accessories",
-    "Vehicles & Parts"
+    "Vehicles & Parts",
+    "Home & Garden > Kitchen & Dining > Kitchen Appliances > Portable Cooking Stoves"
+   ],
+   "titel_muss": [
+    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill|bbq))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
+    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)|klappgrill|holzkohlegrill für unterwegs"
    ],
    "titel_nicht": [
-    "sandwich",
-    "futternapf",
-    "haustier",
-    "lichterkette",
-    "lüfter",
-    "glätt",
-    "ladestation",
-    "windschutzscheibe",
-    "heizer",
-    "dusche",
-    "zünder",
-    "zündkerze",
-    "küche und grill",
     "abdeckung für outdoor-grill",
-    "lampe",
-    "laterne",
-    "wok",
-    "druckkochtopf",
-    "induktion",
-    "universal"
+    "kocher|holzofen|gasbrenner|gasherd(?![a-zäöüß-])|kochfeld|feuerrost|windschutz"
    ],
-   "beschreibung": "Kocher, Kochgeschirr, Becher und Grills für unterwegs: Gaskocher, Holzöfen, Campingtopfsets, Kochsets aus Titan oder Aluminium und faltbare Camping-Grills.",
+   "beschreibung": "Geschirr und Kochgeschirr für unterwegs: Campingtopfsets, Kochsets aus Titan oder Aluminium, Pfannen, Becher und Besteck sowie faltbare Camping-Grills.",
    "unterfilter": []
   },
   {
-   "handle": "picknick-kuehlboxen",
-   "titel": "Picknick & Kühlboxen",
+   "handle": "picknick-kuehlrucksaecke",
+   "titel": "Picknick & Kühlrucksäcke",
    "titel_muss": [
     "picknick|kühlbox|kühlboxen"
    ],
@@ -761,37 +616,20 @@
     "Arts & Entertainment",
     "Health & Beauty > Personal Care > Cosmetics",
     "Furniture > Baby & Toddler Furniture",
-    "Home & Garden > Decor"
+    "Home & Garden > Decor",
+    "Home & Garden > Kitchen & Dining"
    ],
    "titel_nicht": [
     "kochset",
-    "besteck",
-    "gasherd",
-    "grill(?![a-zäöüß])",
-    "bbq",
-    "brettspiel",
-    "lunch",
-    "kupfer, 300",
-    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz",
-    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
-    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
-    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)"
+    "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz"
    ],
-   "beschreibung": "Picknickdecken und -matten, Picknickkörbe und -taschen, Kühlboxen und Picknickrucksäcke für Ausflug, Park und Strand.",
+   "beschreibung": "Picknickdecken und -matten, Picknicktische, Picknickrucksäcke und Kühltaschen im Rucksack- oder Taschenformat für Ausflug, Park und Strand.",
    "unterfilter": [
     {
-     "handle": "picknick-decken-matten",
-     "titel": "Decken & Matten",
+     "handle": "picknick-rucksaecke-taschen",
+     "titel": "Rucksäcke & Taschen",
      "titel_muss": [
-      "decke|matte|teppich"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "picknick-kuehlboxen-nur",
-     "titel": "Kühlboxen & Kühltaschen",
-     "titel_muss": [
-      "kühl"
+      "rucksack|tasche"
      ],
      "titel_nicht": []
     }
@@ -820,24 +658,19 @@
     "Luggage & Bags"
    ],
    "titel_nicht": [
-    "stirn",
-    "taschenlampe",
     "hund",
-    "futter",
-    "haustier",
-    "stiefel",
-    "sandwich",
     "toaster",
     "ladegerät",
     "kohlenmonoxid",
+    "moskito",
     "(^|[^a-zäöüß])[a-zäöüß-]*zelt(e|en|s)?(?![a-zäöüß])",
     "(^|[^a-zäöüß])tent(?![a-zäöüß])",
     "zelt(stange|stangen|pfosten|stift|stifte|leine|boden|haken|zubehör)",
     "schlafsack|schlafsäcke|isomatte|schlafmatte|schlafpad|luftmatratze|luftbett|airbett|feldbett|campingmatte|auto-?(bett|matratze)|reisebett fürs auto|thermodecke|isolationsmatte|outdoor-?matte|outdoor faltmatte|outdoor-?isomatte|outdoor-?kissen|camping[ -]?kissen|campingdecke|aufblasbare (outdoor-)?matte|winddichte bodenmatte für outdoor",
     "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz",
-    "gaskocher|gasbrenner|gasherd(?![a-zäöüß-])|holzkocher|holzofen|spirituskocher|campingkocher|outdoor-?kocher|infrarot-gaskocher|feuerrost|windschutz für outdoor|mini windschutz",
-    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
-    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)",
+    "kocher|holzofen|gasbrenner|gasherd(?![a-zäöüß-])|kochfeld|feuerrost|windschutz",
+    "^(?=.*(kochset|koch-set|topfset|töpfe|topf|pfanne|kessel|geschirr|besteck|spork|pot(?![a-zäöüß])|teller|becher|wasserglas|backblech|schneidebrett|gewürzbox|grill|bbq))(?=.*(camping|outdoor|wander|picknick|trekking|unterwegs|ultraleicht|aluminiumoxid|wärmesammel|faltegriff|fire maple|1-2 personen|4-5 personen))",
+    "titan-?(töpfe|topf|holzofen|pot)|titanium (camping|spork)|camping-?(topf|kochset|grill)|klappgrill|holzkohlegrill für unterwegs",
     "picknick|kühlbox|kühlboxen"
    ],
    "beschreibung": "Campinglampen und -laternen, Lichterketten, Campingtaschen, Duschen, Heizer, Ventilatoren und weiteres Zubehör für den Zeltplatz.",
@@ -845,7 +678,7 @@
   },
   {
    "handle": "wander-kletter-survival",
-   "titel": "Wanderstöcke, Klettern & Survival-Ausrüstung",
+   "titel": "Wanderstöcke, Kletter- & Survival-Ausrüstung",
    "titel_muss": [
     "wanderstock|wanderstöcke|trekkingstock|trekkingstöcke|faltstock|kompass|karabiner|survival|notfall-?set|wasserfilter-?strohhalm|trinkblase|wasserbeutel|wassertasche|wasserspeicher|moskitonetz|mückennetz|outdoor-?hammer|zelt- und outdoor-hammer|klettergurt|kletterkarabiner|klettern|kletter-|magnesiumbeutel|seilklemme|einzelrolle für bergsteiger|bergsteiger|kniepolster für wander|seilrolle|rettungsrolle|kraftbrett"
    ],
@@ -869,17 +702,8 @@
     "Home & Garden > Kitchen"
    ],
    "titel_nicht": [
-    "kühlschrank",
-    "abwasser",
     "bohrer",
-    "campingstuhl",
-    "handwärmer",
-    "kinder-?moskito",
     "baby",
-    "hund",
-    "fahrrad",
-    "wasserfilter-kartusche",
-    "kartusche",
     "helm(e|en|s)?(?![a-zäöüß])",
     "schrittzähler",
     "powerbank",
@@ -921,21 +745,7 @@
     "Hardware > Tool Accessories > Flash"
    ],
    "titel_nicht": [
-    "kakerlaken",
-    "little angel",
-    "angel wing",
-    "angel wings",
     "luftbefeuchter",
-    "highlighter",
-    "fischerhut",
-    "fischer-sandalen",
-    "fischerstiefel",
-    "angelspiel",
-    "weste",
-    "hose",
-    "stuhl",
-    "stirnlampe",
-    "kopflampe",
     "camp\\w*-?(stuhl|tisch|schrank|hocker|möbel|sofa|liege)|klappstuhl|faltstuhl|klapptisch|falttisch|klapphocker|outdoor-?(stuhl|stühle|tisch|sofa|möbel|schaukelstuhl)|faltbare outdoor-?stühle|aluminium klapp|hängematte|(camping|truck)-?hammock|angel-?schaukelstuhl|tisch- und stuhl-set|jagd-stuhl|aufblasbares sofa (für|zum) (outdoor|camping)|ultraleichter klapptisch|sitzkissen für outdoor|outdoor-?sitzkissen|sitzkissen, ?schmutz"
    ],
    "beschreibung": "Angelzubehör: Rollen, Schnüre, Haken und Köder-Sets, Angeltaschen und -rucksäcke, Zangen sowie Netze und Reusen.",
@@ -945,7 +755,7 @@
    "handle": "schwimmen-tauchen-wassersport",
    "titel": "Schwimmen, Tauchen & Wassersport",
    "titel_muss": [
-    "schwimmbrille|taucherbrille|tauchmaske|schnorchel|tauchgurt|schwimmweste|schwimmboje|schwimmlernhilfe|schwimmhilfe|schwimmflügel|badekappe|schwimmhandschuh|kajak|paddel|bilgepumpe|nasenklammer|flossen|signalboje|taucher|tauchen|schwimmtrainer|tauch"
+    "schwimmbrille|taucherbrille|tauchmaske|schnorchel|schwimmweste|schwimmboje|schwimmlernhilfe|schwimmhilfe|schwimmflügel|badekappe|schwimmhandschuh|kajak|paddel|bilgepumpe|nasenklammer|flossen|signalboje|(^|[^a-zäöüß])(taucher|tauch)\\w*|schwimmtrainer"
    ],
    "g_nicht": [
     "Apparel & Accessories > Clothing",
@@ -961,21 +771,12 @@
     "Furniture > Baby & Toddler Furniture",
     "Home & Garden > Decor",
     "Luggage & Bags",
-    "Animals & Pet Supplies",
     "Hardware",
-    "Home & Garden > Pool",
+    "Home & Garden",
+    "Vehicles & Parts",
     "Apparel & Accessories > Handbag"
    ],
    "titel_nicht": [
-    "hund",
-    "uhr",
-    "armband",
-    "schuh",
-    "stiefel",
-    "schwimmring",
-    "mixer",
-    "computer",
-    "smartwatch",
     "helm(e|en|s)?(?![a-zäöüß])"
    ],
    "beschreibung": "Schwimmbrillen, Taucher- und Schnorchelmasken, Schwimmhilfen, Schwimmwesten, Paddel und Zubehör für Wassersport.",
@@ -991,10 +792,7 @@
     "(^|[^a-zäöüß])(box\\w*|boxing\\w*|speedball|taekwondo|karate|muay|kickbox\\w*|kampfsport\\w*|judo|sanda|mma|pratze\\w*|schlagpolster|kick-?pad|fusstarget)(?![a-zäöüß])"
    ],
    "titel_nicht": [
-    "bauchtrainer",
-    "sandsack",
-    "resistance",
-    "boxer-style"
+    "resistance"
    ],
    "beschreibung": "Boxhandschuhe, Boxsäcke, Pratzen, Schlagpolster und Schutzausrüstung für Boxen, Taekwondo, Muay Thai und andere Kampfsportarten.",
    "unterfilter": []
@@ -1013,12 +811,9 @@
     "badminton",
     "tennis",
     "cap(?![a-zäöüß])",
-    "shorts",
-    "jacke",
-    "hose",
-    "tunika",
     "schutzshorts",
-    "mundschutz"
+    "mundschutz",
+    "knieschutz"
    ],
    "beschreibung": "Bälle, Tore, Netze und Trainingshilfen für Fussball, Basketball, Volleyball und weitere Mannschaftssportarten.",
    "unterfilter": []
@@ -1032,7 +827,6 @@
    "titel_muss": [
     "tischtennis|tennis|badminton|padel|squash|pickleball|federball|schläger|ping ?pong|racket|racquet"
    ],
-   "titel_nicht": [],
    "beschreibung": "Schläger, Bälle, Netze, Griffbänder und Taschen für Tischtennis, Tennis, Badminton und Padel.",
    "unterfilter": []
   },
@@ -1045,7 +839,6 @@
    "titel_muss": [
     "golf|billard|pool-?tisch|queue"
    ],
-   "titel_nicht": [],
    "beschreibung": "Golfzubehör wie Taschen, Schlägerhüllen, Trainingshilfen und Bälle sowie Billard- und Queue-Zubehör.",
    "unterfilter": []
   },
@@ -1059,8 +852,8 @@
     "Sporting Goods > Outdoor Recreation > Cycling"
    ],
    "titel_muss": [
-    "helm(e|en|s)?(?![a-zäöüß])",
-    "knieschoner|knieschutz|ellenbogenschoner|ellbogenschoner|protektor|schienbeinschoner|schienbeinschutz|handgelenkschutz|handgelenkschoner|mundschutz|zahnschutz|kopfschutz|tiefschutz|brustschutz|schutzset|schutzweste|schutzhose|schutzshorts|schoner"
+    "^(?=.*helm(e|en|s)?(?![a-zäöüß]))(?=.*(ski|skate|reit|kletter|berg|wassersport|kajak|rollsport|scooter|eisschnelllauf|hockey|sport|outdoor|visier))",
+    "knieschoner|knieschutz|ellenbogenschoner|ellbogenschoner|protektor|schienbeinschoner|schienbeinschutz|handgelenkschutz|handgelenkschoner|mundschutz|zahnschutz|kopfschutz|tiefschutz|brustschutz|schutzset|schutzweste|schutzhose|schutzshorts|schoner|brust- und rückenschutz"
    ],
    "titel_nicht": [
     "box",
@@ -1069,20 +862,13 @@
     "sanda",
     "kampfsport",
     "klimm",
-    "sonnenschutz",
-    "lenkrad",
-    "seitenlage",
     "sportbrille",
     "überzug",
-    "taktisch",
-    "arbeits",
-    "schweisser",
     "fahrrad",
-    "velo(?!urs)",
     "shorts",
-    "patella"
+    "balance scooter"
    ],
-   "beschreibung": "Schutzhelme für Skifahren, Skateboard, Reiten und Wassersport sowie Knie-, Ellbogen- und Handgelenkschoner und Mundschutz.",
+   "beschreibung": "Helme für Ski, Skateboard, Reiten, Klettern und Wassersport sowie Knieschoner, Schutzwesten und Mundschutz.",
    "unterfilter": [
     {
      "handle": "sport-schutzausruestung-helme",
@@ -1091,16 +877,6 @@
       "helm(e|en|s)?(?![a-zäöüß])"
      ],
      "titel_nicht": []
-    },
-    {
-     "handle": "sport-schutzausruestung-schoner",
-     "titel": "Schoner & Protektoren",
-     "titel_muss": [
-      "schoner|schutz(?!helm)|protektor"
-     ],
-     "titel_nicht": [
-      "helm"
-     ]
     }
    ]
   }
@@ -1136,8 +912,9 @@
     "zelte-zeltzubehoer",
     "schlafsaecke-isomatten-luftbetten",
     "campingmoebel-haengematten",
-    "camping-kochen-geschirr",
-    "picknick-kuehlboxen",
+    "camping-kocher-gaskocher",
+    "camping-geschirr-kochsets",
+    "picknick-kuehlrucksaecke",
     "camping-licht-zubehoer"
    ]
   },
@@ -1175,6 +952,200 @@
    ]
   }
  ],
- "ausserhalb": [],
- "hinweise": []
+ "ausserhalb": [
+  {
+   "text": "Helme, deren Titel keine Sportart nennt (Google: Sporting Goods > Exercise & Fitness, «Vier-Seasons-Helm», «Pneumatik-Helm», «Riding Helm» …): nach «Nie raten» nicht in sport-schutzausruestung; sie könnten Motorrad- oder E-Bike-Helme sein. Sobald der Titel eine Sportart nennt, rutschen sie von selbst hinein. (10 Titel)",
+   "beispiele": [
+    "Kinder Kart Helm",
+    "Faltbarer Sommerhelm",
+    "Universell Winter-Heizhelm",
+    "Pneumatik-Helm",
+    "Sicherheitshelm mit Licht"
+   ]
+  },
+  {
+   "text": "Velo-Grenzfälle: «Fahrradhelm mit Visier» trägt die Google-Kategorie Fitness statt Radsport (die Regel velohelme liest nur Cycling), das Kinder-Elektroautohelm-Produkt ist kein Velohelm, eine Velo-Stirnlampe gehört zu den Taschenlampen, Halter und Sportbrille für Helme sind Einzelstücke. (5 Titel)",
+   "beispiele": [
+    "Magnetische Sportbrille für Helm",
+    "Aluminiumlegierung Klapplichthalter für Fahrrad",
+    "Fahrradhelm mit Visier",
+    "Kinder-Elektroautohelm",
+    "Velo-Stirnlampe mit 600 Lumen"
+   ]
+  },
+  {
+   "text": "Kleidung mit Sportwort im Titel (Leggings, Shorts, Röcke, Tunika, Cap), teils mit Google-Kategorie «Exercise & Fitness» oder «Handbags»: gehört in die Mode-Taxonomie, nicht hierher. (9 Titel)",
+   "beispiele": [
+    "Yoga Sport Maxirock mit Taschen",
+    "Atmungsaktiver Yoga Skort mit Taschen",
+    "Bootcut Fitnesshose mit Hüft-Push-up",
+    "High-Waist Leggings für Fitness & Yoga",
+    "Damen-Tunika mit Halloween-Aufdruck"
+   ]
+  },
+  {
+   "text": "Sport-, Yoga- und Badmintontaschen mit Google-Kategorie Handtaschen: Taschen-Bereich (Mode), nicht Sportgerät. Die Rucksack-Sicht liefert die vorhandene Kategorie rucksaecke-sport. (8 Titel)",
+   "beispiele": [
+    "Schultertasche Fitness",
+    "Mehrzwecktasche für Yoga und Alltag",
+    "Badmintontasche für Damen, Umhängetasche",
+    "Sport-Fitness-Tasche 20-35 L, Oxford, schwarz-rosa",
+    "Badmintontasche wasserdicht"
+   ]
+  },
+  {
+   "text": "Elektronik-Zubehör mit Sportwort: Velo-Handyhalterungen, Action-/Fahrradkamera, Bluetooth-Stirnbänder und Helm-Headsets, Solar-Powerbanks mit Kompass und Camping-Ladegeräte, Joy-Con-Armbänder. Gehört zu handy-halterungen, Kopfhörer, Kameras und Powerbanks in den Elektronik-Bereichen. (12 Titel)",
+   "beispiele": [
+    "Sport- & Fahrradkamera mit WLAN",
+    "Bluetooth-Stirnband für Fitness & Yoga",
+    "Universal Handyhalterung für Velo und Motorrad",
+    "Velo-Halterung aus Aluminium für Filmaufnahmen",
+    "Tanz- & Fitness-Armbänder für Switch Joy-Con"
+   ]
+  },
+  {
+   "text": "Gesundheits- und Stützartikel ohne Sportart im Titel: Beckenbodentrainer, Haltungs- und Rückengurte, Bauchbänder, Nackenmassage, ein «Gewichtsreduktions-Zubehör». Das sind Gesundheitsprodukte; Entscheid beim Besitzer, ob eine Kategorie «Haltung & Beckenboden» im Gesundheits-Bereich entstehen soll. (17 Titel)",
+   "beispiele": [
+    "Haltungsstab für Kinder",
+    "Beckenboden-Muskeltrainer mit Zählfunktion",
+    "Multifunktionales Gewichtsreduktions-Zubehör",
+    "Beckenboden-Trainingsgerät für Frauen",
+    "Bauchgurt Fitness-Bandage"
+   ]
+  },
+  {
+   "text": "Wintersport unter der Mindestgrösse: Skibrillen, Ski-/Snowboardtaschen, Skihelm-Überzug und Skischutzkappe. Die Skihelme selbst stehen in sport-schutzausruestung. Ab 15 Titeln neu messen. (7 Titel)",
+   "beispiele": [
+    "Doppelschichtige Anti-Beschlag Ski- und Bergbrille",
+    "Skihelm-Überzug mit integriertem Visier",
+    "Skischutzkappe",
+    "Ski Board Bag mit Rollen – Grosses Fassungsvermögen",
+    "Schwarze Ski-Board-Tasche mit Doppelschulter"
+   ]
+  },
+  {
+   "text": "Reitsport unter der Mindestgrösse: Pferdezaumzeug, Reithelm-Polsterung, Reithose, Leuchthalterung für Pferde. Die Reithelme stehen in sport-schutzausruestung. (5 Titel)",
+   "beispiele": [
+    "Pferdezaumzeug aus PU-Leder, schwarz",
+    "Pferdezaumzeug, anpassbar",
+    "Kühl-Luft Reithelmpolsterung Anti-Impact",
+    "Leuchthalterung für Pferde",
+    "Reitpeitschenhose"
+   ]
+  },
+  {
+   "text": "Bogensport und Jagd-/Paintball-Optik (Pfeile, Zielscheibe, Befiederungshilfe, Nachtsichtgerät): Jagd- und Waffenzubehör bewusst nicht kategorisiert, zudem unter der Mindestgrösse. (4 Titel)",
+   "beispiele": [
+    "ANPVS-31 Binokulares Nachtsichtgerät Modell",
+    "Bogenpfeil-Set für Bogensport",
+    "Würfelförmige 3D-Zielscheibe für Bogenschiessen",
+    "SPG Metall Befiederungshilfe"
+   ]
+  },
+  {
+   "text": "Rollsport unter der Mindestgrösse: Rollschuhe, Skateboard-Teile, Drift Board. Inline-Skates und Rollschuhe als Schuhe liegen in sportschuhe.json (inline-skates-rollschuhe). (4 Titel)",
+   "beispiele": [
+    "Farbring-Set für Skateboard-Rollen",
+    "2-in-1 Rollschuhe für Sport und Freizeit",
+    "Kinder Balance Scooter mit Helm",
+    "Drift Board – 2-Rad-Freestyle-Skateboard"
+   ]
+  },
+  {
+   "text": "Mini-Luftpumpen ohne Fahrradbezug (für Reifen, Bälle, Luftmatratzen): vier Titel, unter der Mindestgrösse; Fahrradpumpen stehen in velo-werkzeug-reparatur, Reifenpumpen in auto.json. (4 Titel)",
+   "beispiele": [
+    "Kabellose Luftpumpe für Reifen und Bälle",
+    "Tragbare Mini-Luftpumpe mit Licht",
+    "Mini tragbare Luftpumpe – Dual-Purpose",
+    "Mini-Luftpumpe für Outdoor"
+   ]
+  },
+  {
+   "text": "Stoppuhren und Fitness-Timer (Google «Stopwatches»): zwei Titel, unter der Mindestgrösse. (2 Titel)",
+   "beispiele": [
+    "Magnetischer Fitness-Timer mit App-Steuerung",
+    "Stoppuhr mit grossem Display und Zyklus-Timer"
+   ]
+  },
+  {
+   "text": "Allgemeine LED-Leuchten und Stirnlampen ohne Sport- oder Campingbezug im Titel (Google «Exercise & Fitness»): Taschenlampen-Bereich (taschenlampen bzw. haus-bau/taschenlampen-kopflampen). (5 Titel)",
+   "beispiele": [
+    "LED-Stirnlampe zum Laufen & Fischen",
+    "Leuchte LED tragbar",
+    "Aufladbare Vintage-Hundelampe für Camping",
+    "Magnetische LED-Lampe zum Aufkleben, kabellos",
+    "Starke LED-Scheinwerfer"
+   ]
+  },
+  {
+   "text": "Taktisches und Waffenähnliches (Taktikpeitsche, Schnellverschluss-Adapter, doppelgelenkiger Stock, Schraubendreher-Karabiner): bewusst keine Kategorie. (4 Titel)",
+   "beispiele": [
+    "Multifunktions-Taktikpeitsche, tragbar",
+    "Schraubendreher-Karabiner mit Licht",
+    "Doppelgelenkiger Taekwondo-Stock aus Edelstahl",
+    "Taktischer Modularer Schnellverschluss-Adapter"
+   ]
+  },
+  {
+   "text": "Moskitonetze fürs Bett, für Kinder und Babys (Google «Mosquito Nets»): Haushalts- und Babyartikel, keine Campingausrüstung; die Camping-Netze stehen in wander-kletter-survival und campingmoebel-haengematten. (3 Titel)",
+   "beispiele": [
+    "Faltbares Einzel-Moskitonetz für Studenten",
+    "Kinder-Moskitonetz-Zelt · 54 × 44 cm",
+    "Faltbares Anti-Mückennetz für Babys & Kleinkinder"
+   ]
+  },
+  {
+   "text": "Baby- und Kinderartikel mit Zelt-, Schwimm- oder Schutz-Wort (Baby-Schwimmring, Kinder-Schlafzelt, Kinder-Schutzkappe, Kinder-Mikroskop): gehören in den Kinder-Bereich. (4 Titel)",
+   "beispiele": [
+    "Kinderzelt Schlafzelt mit Licht",
+    "Kinder-Digitalmikroskop mit 1000-fach Vergrösserung",
+    "Kinder-Schutzkappe",
+    "Schwimmring mit Sonnenschutz für Babys"
+   ]
+  },
+  {
+   "text": "Einzelstücke ohne Gruppe: Einweg-Handwärmer, Faltwagen, Laufband-Abdeckung, Läufer-Alarm, Tür-Anker, Federziehhaken, Ball ohne Sportart, Trinkflasche (wohnen: trinkflaschen-thermosflaschen), Kohlenmonoxidmelder, Futon-Haustierkissen. (11 Titel)",
+   "beispiele": [
+    "OUHOE Einweg-Handwärmer",
+    "Runner Personal Alarm",
+    "Wasserdichte Laufbandabdeckung für Innen & Aussen",
+    "Outdoor Faltwagen",
+    "Indoor-Training-Ball No.5 aus PU"
+   ]
+  },
+  {
+   "text": "Fremdware in der Google-Kategorie «Sporting Goods» (meist «Exercise & Fitness»), die mit Sport nichts zu tun hat: Zange, Dampfgarer, Bidet, Windspiel, Dinosaurier-Versteck, Seifenspender, Wecker, Mikroskop, Bienenfutterautomat, Pfeife, Schmuck-Armband, Uhrenarmband und ähnliches. Google-Kategorie bei Gelegenheit korrigieren. (24 Titel)",
+   "beispiele": [
+    "Fitness-Handtuch für Herren und Damen",
+    "Doppelt Verstärkter Verschlussgurt",
+    "Rebound Stossdämpfer für Surfbretter",
+    "Elastisches Uhrenarmband Set",
+    "Magnetisches Dekompressionsspielzeug aus Metall"
+   ]
+  }
+ ],
+ "hinweise": [
+  "Ergebnis der Messung am Katalog vom 26.10.2026 (56 620 aktive Produkte, Sperr-Tags ausgeschlossen): 31 neue Kategorien in 6 Gruppen und 15 Unterfilter (alle mit mindestens 15 Treffern, GEMESSEN). Universum 1 355 Produkte: 1 249 mit der Google-Kategorie «Sporting Goods» plus 106 aus anderen Google-Kategorien, deren Titel ein Sport- oder Campingwort trägt (Rucksäcke, Kleidung, Schuhe, Schmuck, Tier- und Kinderartikel gehören nicht zum Universum). 1 217 davon stehen in einer Kategorie (89,8 %), die übrigen 138 stehen mit Grund in «ausserhalb». Überlappungen innerhalb der Datei: 0 (die Summe der Treffer, 1 364, entspricht 1 364 verschiedenen Produkten). Kleinste Kategorie: golf-billard mit 16 Treffern. Gruppengrössen (verschiedene Produkte): Fitness & Training 350, Yoga/Pilates/Dehnen 110, Camping 223, Wandern/Angeln/Wasser 92 (ohne die zwei vorhandenen Collections), Rad & Velo 430, Ball-/Kampf-/Schutzsport 159.",
+  "Lesung in sechs Fassungen (messen, Mitgliederlisten beider Seiten lesen, Fremdkörper-Wörter greppen, Regeln schärfen, Überlappungen auflösen). Endfassung: alle 1 364 Mitglieder-Titel und alle 138 Titel der Lücke einzeln gelesen (1 502 Titel), dazu Verdachtswort-Greps über sämtliche Mitgliederlisten (Hund, Katze, Baby, Kostüm, Schmuck, Kleid, Hose, Schuh, Socken, Uhr, Auto, Motorrad, Handy, Küche, Deko, Lampe, Garten, Kosmetik, Geschenk u. a.). Befund der Endfassung: kein sicherer Fremdkörper; 8 Grenzfälle (0,6 %), die nach Wortlaut des Titels passen könnten (BEHAUPTUNG nach Titel, kein Bildurteil): velolichter-reflektoren «Mobiltelefonhalterung mit starkem Licht für Radsport»; trainingsgeraete-arm-bein-ganzkoerper «Ersatz-Verstellschraube für Fitnessgeräte»; camping-geschirr-kochsets «Outdoor Schultertasche für Freizeit & Kessel»; velotaschen-rucksaecke «Camouflage-Taktikbrusttasche Outdoor & Fahrrad»; sport-schutzausruestung «Helm für Outdoor-Sport & Requisiten» und «Knieschoner mit Patella-Stabilisierung»; camping-kocher-gaskocher «Tragbarer Reisekocher 400ml»; picknick-kuehlrucksaecke «Faltbarer Picknick- und Einkaufshelfer».",
+  "Was die Messung an den ersten Fassungen gefunden hat (weit über 100 Fremdkörper, alle behoben): blanke Teilwörter wie «tauch» in «Ölgetauchte Zündspule», «helm» in «Schnorchelmaske», «hammock» in «Schmetterlingsfutterstation Banana Hammock», «ski» in «Moskitonetz», «titanium» in Haarglättern und Pfannen, «bodenmatte» bei Bad- und Wohnteppichen, «laterne» bei Deko-Laternen, «bohrer-set» und Kühlschrank-Wasserfilter bei Survival, «innensechskant» und Handy-Werkzeug bei Velo-Werkzeug; dazu Dutzende Bratpfannen und Töpfe, die wegen «Gasherd» oder «Pfanne» in der Camping-Küche standen. Gegenmittel: Wortgrenzen, Camping- oder Outdoor-Beleg im Titel zusätzlich zum Küchenwort, die Google-Kategorie als Filter (g_nicht). Alle handgeschriebenen titel_nicht-Regeln ohne Wirkung wurden entfernt (187 Einträge, Gegenprobe: die Mitglieder aller 31 Kategorien sind vor und nach dem Entfernen identisch).",
+  "Zweite Sicht, Überlappung mit dem Bestand gewollt: 674 der 1 364 Mitglieder (49,4 %) tragen schon ein sort-Tag der Engine (z. B. sort-sub-yoga-fitness, sort-velo-radsport, sort-sub-reise, sort-rucksaecke). Die neuen Kategorien bekommen zusätzlich ihr eigenes Tag sort-<handle>.",
+  "ersetzt: sub-yoga-fitness («Yoga & Fitness», Tag sort-sub-yoga-fitness, 458 aktive Produkte): 213 davon «Sporting Goods», aber 206 Kleidung, Schuhe oder Schmuck und 8 Taschen; die Titel-Regel holt Yogahosen und Leggings. Die Gruppen «Fitness & Training» und «Yoga, Pilates & Dehnen» führen die Geräte sauber; die Kleidung liegt in der Mode-Taxonomie (z. B. damen-sport-yogahosen).",
+  "ersetzt: fitness-training, fitness und fitness-sub (alle Tag fitness; Nachstellung am aktiven Katalog: 1 457 Produkte, davon 198 Kleidung, Schuhe oder Schmuck und 90 Taschen oder Rucksäcke; im Menü als «Sport & Fitness»). Sammelbecken, nicht mehr als Menüziel. fitness-geraete («Fitness-Geräte & Home-Gym», 73 aktive Produkte, 68 «Sporting Goods») ist sauber, wird aber von den feineren Kategorien (Hanteln, Bänder, Bauchtrainer, Trainingsgeräte) abgelöst.",
+  "ersetzt: yoga-pilates und yoga (Titel Yoga oder Pilates, 289 aktive Produkte): 161 davon Kleidung (56 %), nur 110 «Sporting Goods». Abgelöst durch yogamatten-fitnessmatten und yoga-pilates-zubehoer.",
+  "ersetzt: velo-radsport (Tag sort-velo-radsport, 256 aktive Produkte, davon 17 Taschen und 8 Kleidung oder Schuhe). Die Titelwörter fahrrad, velohelm, radfahren, e-bike und mountainbike verfehlen Titel wie «Velo-Rücklicht»; die 5 Velo-Kategorien führen 430 Produkte. Die Collection velo (Tag velo) ist leer (0 aktive Produkte).",
+  "ersetzt: camping-outdoor, camping-sub, camping-schlafen, camping-kueche, camping-licht-outdoor. camping-outdoor (Nachstellung der Regel: 310 aktive Produkte; der Shop zählt 669 inklusive Entwürfe) enthält 100 Taschen oder Rucksäcke, 21 Kleidung, Schuhe oder Schmuck und 8 Tierartikel; camping-schlafen (54 aktive Produkte) enthält Kinder-, Baby- und Hunde-Schlafsäcke sowie Katzenzelte (7 Kleidung, 3 Tier, 2 Spielzeug). Die Camping-Gruppe trennt nach Produktart.",
+  "ersetzt: wandern-trekking (Nachstellung: 193 aktive Produkte): 91 Schuhe oder Kleidung, 76 Rucksäcke, nur 8 «Sporting Goods». Ein Gemisch aus Wanderschuhen und Rucksäcken, die eigene Kategorien haben (wanderschuhe-trekking in sportschuhe.json, rucksaecke-sport). Nicht ins Menü hängen.",
+  "nicht verwendet: schwimmen-badi (97 aktive Produkte, davon 74 Bademode) und pool-schwimmen (30 aktive Produkte, Pool gehört zu haus-bau.json); angeln (25 aktive Produkte, 10 Rucksäcke; angeln-angelzubehoer ist die Obermenge); haengematten (14 aktive Produkte, unter 15; steht als Unterfilter in campingmoebel-haengematten); fussball-fanshop (29 aktive Produkte: 10 Trikots oder Kleidung, 5 Tierspielzeug; bleibt als Fanartikel-Collection stehen, ballsport-teamsport nimmt nur Sportgeräte).",
+  "Abstimmung mit den anderen Bereichsdateien (gemessen: dieselben Produkte in Kategorien anderer Dateien). camping-kocher-gaskocher entspricht wohnen.json/campingkocher-outdoor-kocher: 32 von 33 Produkten gleich (beide lesen die Google-Kategorie «Portable Cooking Stoves»). Gleiche Produkte, zwei Tags: nur eine der beiden Kategorien anlegen, hier wegen der Camping-Sicht, und im Wohnen-Baum verlinken. Hier kommen 5 Kocher und Öfen ausserhalb dieses Google-Pfads dazu (Holzofen für Zelte, Feuerrost, Windschutz).",
+  "Weitere Überschneidungen mit anderen Dateien, als Zweitsicht gewollt, weil der Titel Camping, Outdoor oder E-Bike nennt: camping-geschirr-kochsets teilt 9 Produkte mit haus-bau.json/grills-grillzubehoer (Camping-Grills), 5 mit wohnen.json/toepfe-kochgeschirr-sets, 4 mit pfannen-woks und 4 mit thermobecher-trinkbecher; velolichter-reflektoren teilt 5 und velotaschen-rucksaecke 4 mit auto.json/e-scooter-e-bike-zubehoer; schlafsaecke-isomatten-luftbetten teilt 3 (Auto-Luftbetten) mit auto.json/auto-komfort-reise; picknick-kuehlrucksaecke teilt 3 (Picknickmatten) mit haus-bau.json/pool-sonnenschutz-gartenmoebel. Kühltaschen, Lunchboxen und Picknickkörbe nach Google «Food & Beverage Carriers» bleiben bei wohnen.json/lunchboxen-kuehltaschen (Überlappung 0, weil picknick-kuehlrucksaecke die Google-Kategorie «Kitchen & Dining» ausschliesst). Insgesamt stehen 83 der 1 364 Mitglieder (6,1 %) auch in einer Kategorie einer anderen Bereichsdatei (GEMESSEN, Stand der Dateien 26.10.2026 23:20).",
+  "Vorhandene Collections als Kinder eingeordnet (alle Mitglieder gelesen): taschenlampen (Tag kat-taschenlampen, 23 aktive Produkte, alle echte Taschen- oder Stirnlampen, 0 Fremdkörper) und rucksaecke-sport (Nachstellung der Titel-Regel: 190 aktive Produkte, 189 Rucksäcke, 1 Koffer-Rucksack, 0 Fremdkörper). haus-bau.json baut mit taschenlampen-kopflampen dieselbe Google-Kategorie noch einmal: eine von beiden wählen. wanderschuhe-trekking steht schon in sportschuhe.json (Gruppe «Outdoor, Wasser & Rad») und wird hier nicht doppelt geführt. Wasser-, Rad-, Skate-, Tanz-, Ball- und Kampfsport-Schuhe liegen ganz in sportschuhe.json. Musikinstrumente (22 Titel mit Google «Musical Instruments», bei CJ unter «Sports & Outdoors») liegen in hobby-party.json. Faszienrollen: beauty.json baut «Massagepistolen, Faszienbälle & Roller» aus der Google-Kategorie «Massage & Relaxation», diese Datei nur aus «Sporting Goods» (Überlappung gemessen 0).",
+  "CJ-Abgleich «Sports & Outdoors» (6 Gruppen, 40 Blätter, gegen cj_baum.json): Sneakers (Running, Dance, Skateboarding, Hiking, Soccer, Basketball Shoes) in sportschuhe.json; Other Sports Equipment: Fitness & Bodybuilding = Gruppen «Fitness & Training» und «Yoga, Pilates & Dehnen» (11 Kategorien), Camping & Hiking = Gruppe «Camping» plus wander-kletter-survival, Golf = golf-billard (16 Titel mit Billard), Skiing & Snowboarding = 7 Titel in «ausserhalb» plus Skihelme in sport-schutzausruestung (unter 15), Hunting = 4 Titel, bewusst nicht kategorisiert, Musical Instruments = hobby-party.json; Swimming: Bademode (One-Piece, Bikini, Two-Piece, Men's Swimwear, Cover-Ups, Children's Swimwear) in der Mode-Taxonomie, Swimming Goggles = schwimmen-tauchen-wassersport, Inflatable Raft = Pool in haus-bau.json; Cycling: Bicycle Lights = velolichter-reflektoren, Bicycle Helmets = velohelme, Scooters = auto.json/e-scooter-e-bike-zubehoer, Cycling Gloves und Cycling Jerseys = Mode, Cycling Eyewear = Sonnenbrillen, Bicycle Frames und Bicycles = 0 Titel (der Katalog führt keine kompletten Velos oder Rahmen, nur Zubehör); Sportswear (Jerseys, Sports Accessories, Outdoor Shorts, Sports Bags, Hiking Jackets, Pants) = Mode (Sportbekleidung, Reise- und Sporttaschen, Outdoor-Jacken und -Hosen); Fishing: Reels 3, Rods 3, Lures 3, Hooks 2, Lines 1, Tackle Boxes 0 Titel, einzeln weit unter 15, zusammen mit den Angeltaschen und Angelrucksäcken (13 Rucksäcke) 40 Titel in angeln-angelzubehoer.",
+  "Nicht gebaut (unter 15 Titeln oder bewusst): Laufen (2 Laufgürtel; Sportarmbänder sind Smartwatches), Trampolin (1 Titel, ein Hundebett), Reiten (5 Titel in «ausserhalb» plus die Reithelme in sport-schutzausruestung), Wintersport (7 plus Skihelme), Rollsport und Skateboard (4), Bogensport und Nachtsicht (4), Stoppuhren (2), Mini-Luftpumpen (4). Die 4 Bogen- und Nachtsicht-Titel tragen keinen Sperr-Tag: Entscheid beim Besitzer, ob Jagd- und Schiesssport-Zubehör im Shop bleibt (Projektregel zu Waffen und Jagd). «Doppelgelenkiger Taekwondo-Stock» und «Multifunktions-Taktikpeitsche» wirken waffenähnlich (BEHAUPTUNG nach Titel); prüfen, ob sie für Google und Meta zulässig sind.",
+  "Texte und Werbung: die 19 Produkte in taillentrainer-hula-hoop tragen im Titel teils Abnehm- oder Körperformversprechen («Fettverlust», «Fettreduktion», «Beinschlankheitsgurt»); die Kategorie-Beschreibung nennt nichts davon. Produkttexte und Anzeigen vor dem Einsatz bei Google und Meta auf Gesundheitsversprechen prüfen. Dasselbe gilt für die 17 Gesundheits- und Stützartikel in «ausserhalb» (6 Beckenbodentrainer, 11 Haltungs- und Bauchbänder): Entscheid beim Besitzer, ob dafür im Gesundheits-Bereich eine Kategorie «Haltung & Beckenboden» entstehen soll.",
+  "Grenzfälle der Sportart-Zuordnung (BEHAUPTUNG nach Titel): sport-schutzausruestung nimmt Helme nur auf, wenn der Titel eine Sportart oder «Sport»/«Outdoor» nennt; 10 Helme ohne belegte Sportart («Vier-Seasons-Helm», «Pneumatik-Helm», «Riding Helm», «Smart Bluetooth Helm» …) stehen in «ausserhalb», weil sie Motorrad- oder E-Bike-Helme sein könnten; Bildkontrolle durch den Besitzer wäre der nächste Schritt. Die 8 Kinder-Schwimmbrillen und die Kinder-Balance-Boards sind nach Titel Sportartikel für Kinder und bleiben in den Sport-Kategorien. «Fahrradhelm mit Visier» trägt die Google-Kategorie Fitness statt Radsport und fehlt deshalb in velohelme (1 Produkt, siehe «ausserhalb»).",
+  "Vorrangregeln: die langen Wortlisten in titel_nicht, die zu anderen Kategorien dieser Datei gehören (z. B. in camping-licht-zubehoer die Regeln von Zelten, Schlafsäcken, Möbeln, Kochern, Geschirr und Picknick), sind Absicht: ein neues Produkt soll nie in zwei Kategorien derselben Gruppe landen, auch wenn heute keines davon betroffen ist. Reihenfolge: Hanteln, dann Bänder, dann Bauchtrainer, Balance und Kraftsport-Zubehör, dann Taillentrainer, Trainingsgeräte, Matten, Yoga-Zubehör und Faszienrollen; Zelte, dann Schlafen, Möbel, Kocher, Geschirr, Picknick, Camping-Zubehör.",
+  "Aktive Unterfilter (je mindestens 15 Treffer, GEMESSEN): Velohelme Kinder 17 / Mountainbike 23 / Mit Licht 18; Velolichter Rücklichter 71 / Frontlichter 39 / USB 54; Velotaschen Heck und Gepäckträger 16 / Fahrradrucksäcke 33; Velo-Teile Sättel und Komponenten 19; Widerstandsbänder Sets 16; Bauchtrainer Bauchroller 36 / Liegestütz und Klimmzug 22; Hängematten 16; Picknick Rucksäcke und Taschen 19; Schutz Helme 26. Unterfilter unter 15 Treffern (Kinderhelme-Varianten, Yogamatten faltbar, Springseile mit Zähler u. a.) wurden gestrichen.",
+  "Menü: die 6 Gruppen hängen unter «Sport & Party» und ersetzen dort «Sport & Fitness» (fitness-training), «Yoga & Fitness» (sub-yoga-fitness), «Wandern & Trekking», «Camping & Outdoor» und «Velo & Radsport»; «Rucksäcke», «Taschenlampen & Stirnlampen» und «Fussball & Fanshop» bleiben. Kostüme, Partydeko und Halloween regelt hobby-party.json, Sportschuhe sportschuhe.json (eigener Ast). Die Gruppen-Collections (sport-fitness-training-gruppe, sport-yoga-pilates-gruppe, sport-camping-gruppe, sport-wandern-angeln-wasser-gruppe, sport-rad-velo-gruppe, sport-ball-kampf-schutz-gruppe) sammeln als «eines dieser Tags» alle Kinder; die zwei vorhandenen Kinder bringen ihre bestehenden Regeln mit.",
+  "Nichts davon ist live: kein Tag, keine Collection, kein Menüpunkt geschrieben. Anlegen erst nach dem Auswahl-Lauf, mit Trockenlauf und Gegenprobe der Mitgliederzahlen am frischen Katalog (die Zahlen hier gelten für den Katalog vom 26.10.2026, 20:14)."
+ ]
 }
