@@ -48,7 +48,8 @@ const LAND_WORT = /^(us|usa|eu|eur|uk|au|jp|cn|american|america|european|europe|
 export function steckerBasis(key) {
   let k = String(key ?? '').toLowerCase();
   k = k.replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*-\s*(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ').replace(/\b(1[0-2]\d|2[0-4]\d|250)\s*v(?:olt)?\b/g, ' ');
-  const w = k.split(/[^a-z0-9äöüß.+]+/).filter(Boolean), aus = [];
+  // Unicode-Buchstaben bleiben Teil des Schlüssels: mit [^a-z0-9äöüß] verschwanden «红色»/«蓝色» (rot/blau) und Akzentbuchstaben, zwei verschiedene Farben hatten dieselbe leere Basis (Codex-Zweitmeinung 27.10.2026).
+  const w = k.split(/[^\p{L}\p{N}.+]+/u).filter(Boolean), aus = [];
   // «Type A/C/G» wird NICHT gestrichen: es kann einen Stecker oder einen Anschluss meinen (USB-A/USB-C). Im Zweifel bleibt es Teil der Basis → «unklar», sichtbar und ohne Schaden.
   for (let i = 0; i < w.length; i++) {
     if (STECKER_WORT.test(w[i])) continue;
@@ -67,23 +68,28 @@ export const istCjVariantennummer = sku => { const s = String(sku ?? '').trim();
  * @returns {null | {unklar:string} | {neueSku:string, vid:string, anzahlCj:number}}
  */
 export function skuNachziehen({ wege, vsRoh, vs }) {
-  if (!Array.isArray(wege) || wege.length !== 1 || wege[0][0] !== 'pid') return null;   // die SKU nennt schon eine Variante (oder ist unbekannt)
+  if (!Array.isArray(wege) || wege.length !== 1 || wege[0]?.[0] !== 'pid') return null;   // die SKU nennt schon eine Variante (oder ist unbekannt)
   if (!Array.isArray(vsRoh) || !Array.isArray(vs)) return null;
   if (vsRoh.length <= 1 || vs.length !== 1) return null;                                // wirklich nur eine CJ-Variante: pid ist eindeutig
+  if (vsRoh.some(v => !v || typeof v !== 'object')) return { unklar: 'CJ-Variantendaten unvollständig' };   // statt TypeError mitten im Lauf
   const rest = vs[0] || {};
   const sku = String(rest.sku || '').trim();
   if (!sku || !istCjVariantennummer(sku)) return { unklar: `übrige Variante ohne brauchbare CJ-Nummer («${sku.slice(0, 40)}»)` };
   if (!rest.vid) return { unklar: 'übrige Variante ohne CJ-Variantenkennung' };
+  // vs ist eine Teilmenge von vsRoh (so baut es cj_varianten_nachziehen.mjs); stimmen vid und SKU nicht mit der Rohvariante überein, gehört die Nummer nicht zu dieser Variante.
+  const orig = vsRoh.find(v => String(v.vid) === String(rest.vid));
+  if (!orig || String(orig.sku || '').trim().toUpperCase() !== sku.toUpperCase()) return { unklar: 'übrige Variante stimmt nicht mit den CJ-Rohdaten überein' };
   if (vsRoh.filter(v => String(v.sku || '').trim().toUpperCase() === sku.toUpperCase()).length !== 1) return { unklar: 'CJ-Nummer der übrigen Variante nicht eindeutig' };
   if (!euroSteckerKey(rest.key)) return { unklar: `übrige Variante nennt den Euro-Stecker nicht ausdrücklich («${String(rest.key ?? '').slice(0, 40)}»)` };
   const basis = steckerBasis(rest.key);
   const andere = vsRoh.find(v => v.vid !== rest.vid && steckerBasis(v.key) !== basis);
   if (andere) return { unklar: `verworfene Variante «${String(andere.key ?? '').slice(0, 30)}» unterscheidet sich nicht nur im Stecker von «${String(rest.key ?? '').slice(0, 30)}»` };
   const ek = Number(rest.ek);
-  if (!(ek > 0)) return { unklar: 'Einkaufspreis der übrigen Variante unbekannt' };
+  if (!(Number.isFinite(ek) && ek > 0)) return { unklar: 'Einkaufspreis der übrigen Variante unbekannt' };
   const preise = vsRoh.map(v => Number(v.ek)).filter(x => x > 0);
   const billigste = Math.min(...preise);
+  // Vergleich in Zehntel-Cent: 3.8 × 1.05 ergibt 3.9899999999999998, «genau +5 %» (3.99) wäre sonst abgewiesen worden.
   // Kurz halten: der Grund landet auf 100 Zeichen gekürzt im Ledger, das Wichtige (die Prozentzahl) steht vorn.
-  if (ek > billigste * PREIS_TOLERANZ) return { unklar: `Einkaufspreis +${Math.round((ek / billigste - 1) * 100)} % (${ek} gegen ${billigste} USD)` };
+  if (Math.round(ek * 10000) > Math.round(billigste * 10000 * PREIS_TOLERANZ)) return { unklar: `Einkaufspreis +${Math.round((ek / billigste - 1) * 100)} % (${ek} gegen ${billigste} USD)` };
   return { neueSku: sku, vid: String(rest.vid), anzahlCj: vsRoh.length };
 }
