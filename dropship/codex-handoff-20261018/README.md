@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_ABENDPAKET_20261027
+
+[Abendpaket mit Storyboard, sechs Kanaltexten/UTMs, einem Verkaufsentwurf und konsolidierter Tagestabelle](ABENDPAKET-20261027.md), [vollständige Belege](ABEND-BELEGE-20261027.json), [unabhängiger 96-Prüfungen-Review](ABEND-REVIEW-20261027.json). Shop/Metricool samt sechs Identitäten passend. Planung ab 18:58 CET: 18 bestehende Posts / 31 PENDING (FB 13, IG 13, Pinterest 4, Threads 1). 16 gemeinsame UUIDs in Inhalts-/Termin-/Medien-/Flagfeldern unverändert; zwei zusätzliche bestehende Foto-Posts und drei frühere Termine vor dem Fenster, kein eigener Social-Write/Publikations- oder Löschbeweis. TT/YT im Fenster ohne gelieferten Termin; keine Lücken mit ungeprüftem Material gefüllt.
+
+Projektor/Diffuser frisch unverändert ACTIVE/kaufbar zu CHF 34.90/44.90, tracked=false/CONTINUE; aktueller Tagwächter plus rueckhol/Leertags angewandt, auswahl-offen sowie Modell-/Stromfragen bleiben. Keine neuen Produktwrites; heute 14 / insgesamt 16 Beschreibungen und bestehende Arbeitsliste 22 Events erhalten. Morgenkennzahlen und Flowreport einmalig wiederverwendet, ganze Wochenwerte unbekannt, CHF/USD getrennt.
+
+Derselbe [18s-Masterplan](MASTER-PLAN-ABEND-20261027.json): neu Titel-/CTA-Rechtecke innerhalb zentrierter 9:16/4:5/1:1 rechnerisch geprüft sowie [Original-/Geräte-/Strom-/Rechte-Abnahmebogen](MASTER-ORIGINALTAKES-20261027.json); sämtliche nötigen Szenen müssen nativ bestehen. Musikdatei/Repo-Blob/Provenienz gegengeprüft und rohe 18 s nur technisch zuNull gemessen. Keine neue MP4, kein Mix-/Hör-/Plattform- oder Rechtepass. [Sechs Texte/UTMs](MASTER-CAPTIONS-ABEND-20261027.json) bewusst erhalten, kein neuer Inhalt durch Kopie; Bio-/Board-/Ledgergates offen, YouTube bereits allgemein.
+
+Einziger aktueller Flowvorschlag bleibt [Welcome-Serviceabschnitt](WELCOME-SERVICE-ABEND-20261027.diff): frische TTuuTS→VZnxDz-Bindung und unveränderter HTML-Quellhash, genau zwei Zeilen/sonstige Bytes unverändert. Nicht angewendet, kein Versand. CJ-Helfer in aktuellem main vorhanden; drei nötige lokale CJ-Credential-Präsenzwerte false, keine Actions-Secrets/Workflows. Bereits genehmigte DNS-/Footeraufträge nicht erneut genehmigen lassen; keine neue Umsetzung oder bestätigter Schreibzugang. CHF 50/45, Kundendomäne und Zeitplan erhalten.
+
 ## LUXESTYLE_SICHTBARKEIT_20261027
 
 [Belegte Sichtbarkeitsarbeit](SICHTBARKEIT-20261027.md), [Quellen-/Prüfbelege](SICHTBARKEIT-BELEGE-20261027.json), [ein bestätigter Produkttext](SICHTBARKEIT-PRODUKTTEXT-20261027.json) und [vier native Kategorie-Felddiffs](SICHTBARKEIT-KATEGORIE-DIFFS-20261027.json). Genau die Ohrsteckerbeschreibung nach frischem Quellen-/Bildreview geschrieben; nur descriptionHtml, nativ sowie öffentliches JSON/sichtbares HTML exakt bestätigt. Heute 14, kumuliert 16 Beschreibungen; übriger Katalog offen. Arbeitsliste 22 Events mit früheren 20 unverändert. Ring 15412902855041 wegen zwei Formen/unklarer Variante1/2-Zuordnung bewusst nicht geändert.
