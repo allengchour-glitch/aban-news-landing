@@ -123,8 +123,10 @@ async function liesBestellte() {
     }
   } catch (e) { return { ids: new Set(), vollstaendig: false, gelesen: alle.length, gesamt, fehler: String(e.message).slice(0, 160) }; }
   const b = bestellteIds(alle);
-  const vollstaendig = b.vollstaendig && (gesamt == null || gesamt === alle.length);
-  return { ids: b.ids, vollstaendig, gelesen: alle.length, gesamt, fehler: vollstaendig ? null : `gelesen ${alle.length} von ${gesamt ?? '?'} Bestellungen${b.vollstaendig ? '' : ' (Positionen abgeschnitten)'}` };
+  // Fehlt ordersCount, ist die Vollständigkeit unbelegt: dann gilt die Liste als unvollständig (fail-closed; GEMESSEN 28.10.: Shopify liefert {"count":29,"precision":"EXACT"}).
+  const vollstaendig = b.vollstaendig && gesamt != null && gesamt === alle.length;
+  const grund = gesamt == null ? 'ordersCount fehlt' : `gelesen ${alle.length} von ${gesamt} Bestellungen${b.vollstaendig ? ' (Recht read_all_orders prüfen)' : ' (Positionen abgeschnitten)'}`;
+  return { ids: b.ids, vollstaendig, gelesen: alle.length, gesamt, fehler: vollstaendig ? null : grund };
 }
 
 function liesManifest() {
@@ -171,6 +173,10 @@ const bestellt = await liesBestellte();
 for (const x of alle) x.bestellt = bestellt.ids.has(x.id);
 console.log(`BEWÄHRT: ${bestellt.ids.size} Produkte aus bezahlten Bestellungen (${bestellt.gelesen} Bestellungen gelesen${bestellt.gesamt != null ? `, Shopify zählt ${bestellt.gesamt}` : ''}) · dazu ${alle.filter(x => !x.bestellt && bewaehrt(x)).length} mit guter Bewertung`);
 if (!bestellt.vollstaendig) console.log(`WARNUNG: Bestellungen unvollständig gelesen (${bestellt.fehler}): bestellte Produkte sind nicht sicher geschützt.`);
+/** Bewertungsfelder: GEMESSEN 28.10. tragen 2 076 von 56 618 Produkten eines. Viel weniger heisst: nicht (richtig) gelesen, etwa eine alte KATALOG-Datei ohne reviews.rating. */
+const MIN_BEWERTET = 200;
+const mitRating = alle.filter(x => x.rating != null).length;
+console.log(`BEWERTUNGSFELDER: bei ${mitRating} Produkten gelesen${mitRating < MIN_BEWERTET ? ` (unter ${MIN_BEWERTET}: Stufe 0 gilt dann nur für bestellte Produkte, schwach Bewertete werden nicht erkannt)` : ''}`);
 if (ONLY.length) console.log(`ONLY: Stichprobe von ${ONLY.length} Handles (der Plan rechnet trotzdem über alle ${alle.length} Produkte).`);
 const man = liesManifest();
 if (man.kaputt) console.log(`HINWEIS: ${man.kaputt} kaputte Manifest-Zeilen (werden nicht beachtet).`);
@@ -196,7 +202,8 @@ if (PHASE === 'pruefen') {
   process.exit(0);
 }
 
-if (PHASE === 'abwaehlen' && LIVE && !bestellt.vollstaendig) { console.log('ABBRUCH: Die Bestellungen sind unvollständig gelesen; ohne sie würden verkaufte Produkte vom Kanal gehen (Recht read_all_orders prüfen).'); process.exit(1); }
+if (PHASE === 'abwaehlen' && LIVE && !bestellt.vollstaendig) { console.log(`ABBRUCH: Die Bestellungen sind unvollständig gelesen (${bestellt.fehler}); ohne sie würden verkaufte Produkte vom Kanal gehen.`); process.exit(1); }
+if (PHASE === 'abwaehlen' && LIVE && mitRating < MIN_BEWERTET) { console.log(`ABBRUCH: Nur ${mitRating} Produkte mit Bewertungsfeld gelesen (erwartet über ${MIN_BEWERTET}); ohne sie würden gut bewertete Produkte vom Kanal gehen.`); process.exit(1); }
 if (!p.ok && PHASE !== 'zuruecksetzen') process.exit(2);   // die volle Rücknahme darf auch bei verdächtigem Plan laufen: sie stellt nur Eigenes zurück
 const art = PHASE === 'abwaehlen' ? 'abwaehlen' : 'aufnehmen';           // Art der Mutation (Unpublish oder Publish)
 let ziele = PHASE === 'abwaehlen' ? p.abwaehlen : PHASE === 'aufnehmen' ? p.aufnehmen : p.zuruecksetzen;

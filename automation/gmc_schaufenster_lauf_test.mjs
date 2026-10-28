@@ -36,20 +36,44 @@ globalThis.fetch = async (url, opt = {}) => {
   if (u.includes('/admin/oauth/access_token')) return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
   if (u === 'https://fake.local/bulk.jsonl') {
     const z = lies();
-    return new Response(z.produkte.map(p => JSON.stringify({ id: p.id, handle: p.handle, title: p.titel || ('Produkt ' + p.handle), tags: p.tags, variantsCount: p.varianten === null ? null : { count: p.varianten },
-      gp: p.gp, ex: p.ex ? { value: p.ex } : null, cat: p.cat ? { value: p.cat } : null,
-      rt: p.rating == null ? null : { value: JSON.stringify({ value: String(p.rating), scale_min: '1.0', scale_max: '5.0' }) }, rc: p.stimmen == null ? null : { value: String(p.stimmen) } })).join('\\n'), { status: 200 });
+    // Ein Fake ist ein Messgerät: ein Feld kommt NUR, wenn die Bulk-Abfrage des Werkzeugs es verlangt (sonst bliebe eine kaputte Abfrage unbemerkt).
+    const bq = z.bulkQuery || '', hat = t => bq.includes(t);
+    return new Response(z.produkte.map(p => JSON.stringify({ id: p.id, handle: p.handle, title: hat(' title ') ? (p.titel || ('Produkt ' + p.handle)) : undefined,
+      tags: hat(' tags ') ? p.tags : undefined, variantsCount: hat('variantsCount{count}') ? (p.varianten === null ? null : { count: p.varianten }) : undefined,
+      gp: hat('gp:publishedOnPublication(publicationId:"' + GOOGLE + '")') ? p.gp : undefined,
+      ex: hat('ex:metafield(namespace:"mm-google-shopping", key:"excluded_destination")') ? (p.ex ? { value: p.ex } : null) : undefined,
+      cat: hat('cat:metafield(namespace:"mm-google-shopping", key:"google_product_category")') ? (p.cat ? { value: p.cat } : null) : undefined,
+      rt: hat('rt:metafield(namespace:"reviews", key:"rating")') ? (p.rating == null ? null : { value: JSON.stringify({ value: String(p.rating), scale_min: '1.0', scale_max: '5.0' }) }) : undefined,
+      rc: hat('rc:metafield(namespace:"reviews", key:"rating_count")') ? (p.stimmen == null ? null : { value: String(p.stimmen) }) : undefined })).join('\\n'), { status: 200 });
   }
   if (u.includes('/graphql.json')) {
     const q = JSON.parse(opt.body).query;
     const z = lies();
     if (q.includes('currentBulkOperation(type:QUERY){status errorCode objectCount url}')) return antwort({ currentBulkOperation: { status: 'COMPLETED', errorCode: null, objectCount: String(z.produkte.length), url: 'https://fake.local/bulk.jsonl' } });
     if (q.includes('currentBulkOperation(type:QUERY){status}')) return antwort({ currentBulkOperation: z.bulkBelegt ? { status: 'RUNNING' } : null });
-    if (q.includes('bulkOperationRunQuery')) return antwort({ bulkOperationRunQuery: { bulkOperation: { id: 'gid://shopify/BulkOperation/1' }, userErrors: [] } });
+    if (q.includes('bulkOperationRunQuery')) {
+      z.bulkQuery = String((JSON.parse(opt.body).variables || {}).q || ''); schreibe(z);
+      return antwort({ bulkOperationRunQuery: { bulkOperation: { id: 'gid://shopify/BulkOperation/1' }, userErrors: [] } });
+    }
     if (q.includes('orders(first')) {
       if (z.bestellungenFehler) throw new Error('Access denied for orders field. Required access: read_orders');
-      const b = z.bestellungen || [];
-      return antwort({ ordersCount: { count: z.bestellungenZaehlt ?? b.length }, orders: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: b } });
+      const hat = t => q.includes(t);
+      const alleB = z.bestellungen || [], start = Number((JSON.parse(opt.body).variables || {}).c || 0), seite = alleB.slice(start, start + 100);
+      const nodes = seite.map(o => {
+        const n = {};
+        if (hat(' test ')) n.test = o.test;
+        if (hat(' cancelledAt ')) n.cancelledAt = o.cancelledAt;
+        if (hat(' displayFinancialStatus ')) n.displayFinancialStatus = o.displayFinancialStatus;
+        if (hat('lineItems(first:100)')) {
+          n.lineItems = { nodes: o.lineItems.nodes.map(x => hat('product{ id }') ? x : { product: {} }) };
+          if (hat('lineItems(first:100){ pageInfo{ hasNextPage }')) n.lineItems.pageInfo = o.lineItems.pageInfo;
+        }
+        return n;
+      });
+      const aus = { orders: { nodes } };
+      if (hat('pageInfo{ hasNextPage endCursor }')) aus.orders.pageInfo = { hasNextPage: start + 100 < alleB.length, endCursor: String(start + 100) };
+      if (hat('ordersCount(limit:null){ count }')) aus.ordersCount = z.bestellungenOhneZaehler ? null : { count: z.bestellungenZaehlt ?? alleB.length, precision: 'EXACT' };
+      return antwort(aus);
     }
     if (q.includes('publishableUnpublish') || q.includes('publishablePublish')) {
       const aus = {};
@@ -75,7 +99,7 @@ globalThis.fetch = async (url, opt = {}) => {
 `);
 
 let nr = 0;
-const P = (o = {}) => ({ id: `gid://shopify/Product/${100000 + nr++}`, handle: `p-${nr}`, tags: [], varianten: 1, gp: true, ex: null, cat: 'Home & Garden > Decor', ...o });
+const P = (o = {}) => ({ id: `gid://shopify/Product/${100000 + nr++}`, handle: `p-${nr}`, tags: [], varianten: 1, gp: true, ex: null, cat: 'Home & Garden > Decor', rating: 4.5, stimmen: 1, ...o });   // 4,5 Sterne bei 1 Stimme: lesbar, aber nicht bewährt
 const viele = (n, o) => Array.from({ length: n }, () => P(o));
 const AUS = '["Shopping_ads"]';
 
@@ -270,6 +294,49 @@ const manifest = () => parseManifest(existsSync(join(dir, 'manifest.jsonl')) ? r
   const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
   const weg = r.lies().produkte.filter(p => p.gp === false).map(p => p.handle);
   pruef('Lizenzname (auch Fortura) und Prüf-Tag gehen, das harmlose Produkt bleibt', [r.code, weg.includes('maus'), weg.includes('stecker'), weg.includes('harmlos')], [0, true, true, false]);
+}
+// 15) Bestellungen auf mehreren Seiten (Seitenblättern), ordersCount fehlt (fail-closed)
+{
+  neu();
+  const pos = id => ({ test: false, cancelledAt: null, displayFinancialStatus: 'PAID', lineItems: { pageInfo: { hasNextPage: false }, nodes: id ? [{ product: { id } }] : [] } });
+  const w = welt();
+  const spaet = P({ ex: AUS, handle: 'spaet-verkauft' });
+  w.produkte.push(spaet);
+  w.bestellungen = [...Array.from({ length: 249 }, () => pos(null)), pos(spaet.id)];   // 250 Bestellungen, das geschützte Produkt steht erst auf Seite 3
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const weg = r.lies().produkte.filter(p => p.gp === false).map(p => p.handle);
+  pruef('250 Bestellungen auf 3 Seiten: das Produkt von Seite 3 bleibt', [r.code, weg.includes('spaet-verkauft'), /250 Bestellungen gelesen, Shopify zählt 250/.test(r.aus)], [0, false, true]);
+  neu();
+  const o = welt(); o.bestellungenOhneZaehler = true;
+  const k = los(o, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('ordersCount fehlt: fail-closed, Exit 1, nichts angefasst', [k.code, k.aus.includes('ordersCount fehlt'), k.lies().log.length], [1, true, 0]);
+}
+// 16) Bewertungsfelder fehlen oder sind zu wenige: ein Schreiblauf bricht ab (alte Datei, falscher Schlüssel)
+{
+  neu();
+  const w = { produkte: [...viele(1200, { rating: null, stimmen: null }), ...viele(300, { ex: AUS, rating: null, stimmen: null })], log: [], mutationen: 0 };
+  const p1 = los(w, { PHASE: 'plan' });
+  pruef('ohne Bewertungsfelder: Plan läuft, nennt es', [p1.code, /BEWERTUNGSFELDER: bei 0 Produkten gelesen \(unter 200/.test(p1.aus)], [0, true]);
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('ohne Bewertungsfelder + LIVE abwaehlen: Exit 1, nichts angefasst', [r.code, r.aus.includes('Bewertungsfeld gelesen'), r.lies().log.length], [1, true, 0]);
+}
+// 17) Schwach bewertete Produkte und Lizenzfiguren (auch ausserhalb der Wortliste des Feeds) gehen
+{
+  neu();
+  const w = welt();
+  w.produkte.push(P({ handle: 'schwach', rating: 3.0, stimmen: 6 }), P({ handle: 'schwach-wenige', rating: 2.0, stimmen: 2 }), P({ handle: 'pika', titel: 'Plüsch Pikachu 30 cm', tags: ['fortura'] }), P({ handle: 'hund', titel: 'Hundeleine Pingufrei' }));
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const weg = r.lies().produkte.filter(p => p.gp === false).map(p => p.handle);
+  pruef('schwach bewertet (3,0 bei 6 Stimmen) geht, bei 2 Stimmen bleibt es; Pikachu (Fortura) geht; harmloser Titel bleibt', [r.code, weg.includes('schwach'), weg.includes('schwach-wenige'), weg.includes('pika'), weg.includes('hund')], [0, true, false, true, false]);
+}
+// 18) Die Abfragen des Werkzeugs nennen jedes Feld, das die Regeln brauchen (der Fake liefert nur, was verlangt wird)
+{
+  neu();
+  const r = los(welt(), { PHASE: 'plan' });
+  const z = r.lies();
+  const q = z.bulkQuery || '';
+  pruef('Bulk-Abfrage nennt Titel, Tags, Varianten, Kanal, Ausschlussfeld, Kategorie, Rating und Anzahl',
+    [' title ', ' tags ', 'variantsCount{count}', 'publishedOnPublication', 'excluded_destination', 'google_product_category', 'key:"rating")', 'key:"rating_count")'].map(t => q.includes(t)), [true, true, true, true, true, true, true, true]);
 }
 
 rmSync(dir, { recursive: true, force: true });

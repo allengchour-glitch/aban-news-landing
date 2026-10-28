@@ -1,7 +1,7 @@
 /** Test für die Schaufenster-Auswahl (Google-Kanal). Lauf: /opt/node22/bin/node automation/lib/gmc_schaufenster_test.mjs */
 import {
   stufe, waehle, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ausschlussGilt,
-  PRUEF_TAGS, BEWAEHRT_MIN_RATING, BEWAEHRT_MIN_ANZAHL, ratingAus, bewaehrt, bestellteIds,
+  PRUEF_TAGS, BEWAEHRT_MIN_RATING, BEWAEHRT_MIN_ANZAHL, SCHWACH_MAX_RATING, SCHWACH_MIN_ANZAHL, LIZENZ_PLUS, ratingAus, bewaehrt, bestellteIds,
   GOOGLE_PUBLICATION, BUDGET_VARIANTEN, HARTE_GRENZE, MIN_PRODUKTE, MIN_ZEILEN, MIN_BUDGET, MAX_ABWAHL_ANTEIL, MAX_OHNE_KATEGORIE, KATEGORIE_DECKEL,
 } from './gmc_schaufenster.mjs';
 import { AUSSCHLUSS_TAGS } from './mengenrabatt.mjs';
@@ -326,6 +326,46 @@ pruef('ratingAus: Text statt Zahl = null', ratingAus('gut', 'viele'), null);
   // Gleichlauf: jedes Tag der Liste «nie bewerben» (mengenrabatt.mjs) hält auch hier vom Kanal fern; nur fortura/kostuem sind hier Stufe 1 bzw. normale Ware
   const offen = AUSSCHLUSS_TAGS.filter(t => !['fortura', 'kostuem'].includes(t) && stufe(P({ tags: [t] })).stufe !== null);
   pruef('Gleichlauf mit AUSSCHLUSS_TAGS: kein Tag der Liste lässt ein Produkt auf Google', offen, []);
+}
+
+// --- Schwach bewertet, Lizenzfiguren ausserhalb der Feed-Liste, Stufe 0 im Plan (Prüfer 28.10.)
+{
+  const AUS = '["Shopping_ads"]';
+  pruef('Konstanten schwach: 3,8 Sterne, 3 Stimmen', [SCHWACH_MAX_RATING, SCHWACH_MIN_ANZAHL], [3.8, 3]);
+  pruef('3,8 Sterne bei 3 Stimmen = schwach (Grenze gilt)', stufe(P({ rating: 3.8, bewertungen: 3 })), { stufe: null, grund: 'schwach-bewertet' });
+  pruef('Gegenprobe: 3,9 Sterne bei 10 Stimmen = Stufe 3', stufe(P({ rating: 3.9, bewertungen: 10 })).stufe, 3);
+  pruef('Gegenprobe: 2,0 Sterne bei 2 Stimmen = Stufe 3 (zu wenige Stimmen)', stufe(P({ rating: 2, bewertungen: 2 })).stufe, 3);
+  pruef('schwach bewertet UND bestellt = draussen (Sperre vor bewährt)', stufe(P({ rating: 3, bewertungen: 9, bestellt: true })).grund, 'schwach-bewertet');
+  pruef('schwach bewertet UND Fortura = draussen (Sperre vor Stufe 1)', stufe(P({ rating: 3, bewertungen: 9, tags: ['fortura'] })).grund, 'schwach-bewertet');
+  for (const t of ['Plüsch Pikachu', 'Plüsch Garfield 60 cm', 'Plüschmütze Pingu', 'Halskette Morticia Wednesday', 'Plüsch Patrick Star Classic', 'Zelda Legend Print Rucksack'])
+    pruef(`Lizenzfigur «${t}» geht (auch Fortura)`, stufe(P({ titel: t, tags: ['fortura'] })).grund, 'lizenz-titel');
+  pruef('Gegenprobe: Pinguin / Mittwoch / Hundeleine / Zeldaweiss bleiben', ['Pinguin Figur', 'Mittwoch Kalender', 'Hundeleine Pingufrei', 'Zeldaweiss Kissen'].map(t => LIZENZ_PLUS.test(t)), [false, false, false, false]);
+  // Plan: Stufe 0 in allen Wegen (0 ist falsy)
+  const mach = (o = {}) => Array.from({ length: 1100 }, () => P(o));
+  const bew = P({ bestellt: true, aufGoogle: false, ausschluss: AUS, varianten: 3, handle: 'zurueck' });
+  const pl = plan([...mach(), bew], new Set([bew.id]), { budget: 5000, katDeckel: 1 });
+  pruef('plan: bewährtes Produkt aus dem Manifest kommt zurück (aufnehmen, Stufe 0)', pl.aufnehmen.map(a => [a.handle, a.stufe]), [['zurueck', 0]]);
+  pruef('plan: nachher zählt Stufe 0 mit (1100 + 3)', pl.varianten.nachher, 1103);
+  const z = waehle([P({ bestellt: true, varianten: 4 }), P({ rating: 4.5, bewertungen: 5, varianten: 6 }), P({ tags: ['fortura'], varianten: 1 })], { budget: 100, katDeckel: 1 }).zahlen;
+  pruef('zahlen: Produkte, drin und Varianten je Stufe inkl. Stufe 0', [z.produkte, z.drin, z.varianten], [{ 0: 2, 1: 1, 2: 0, 3: 0 }, { 0: 2, 1: 1, 2: 0, 3: 0 }, { 0: 10, 1: 1, 2: 0, 3: 0, gesamt: 11 }]);
+  // Grund «budget» und «kategorie-deckel» bleiben unterscheidbar, wenn Stufe 0 Platz belegt
+  const gross = P({ bestellt: true, varianten: 50, kategorie: 'A > B' }), kl = P({ varianten: 1, kategorie: 'A > B' });
+  pruef('Stufe 0 über dem Budget: der Rest geht mit Grund «budget»', waehle([gross, kl], { budget: 10, katDeckel: 0.1 }).draussen.find(d => d.id === kl.id).grund, 'budget');
+  const gross2 = P({ bestellt: true, varianten: 50, kategorie: 'A > B' }), kl2 = P({ varianten: 60, kategorie: 'A > B' });
+  pruef('Stufe 0 füllt die Kategorie: der Rest geht mit Grund «kategorie-deckel»', waehle([gross2, kl2], { budget: 1000, katDeckel: 0.1 }).draussen.find(d => d.id === kl2.id).grund, 'kategorie-deckel');
+  pruef('Stufe 0 ist selbst nie vom Deckel betroffen', waehle([gross2], { budget: 1000, katDeckel: 0.01 }).drin.get(gross2.id), 0);
+  // bestellt + Sperrtag im Plan
+  const sp = P({ bestellt: true, tags: ['adult-nicht-bewerben'], handle: 'gesperrt' });
+  const pl2 = plan([...mach(), sp], new Set(), { budget: 5000, katDeckel: 1 });
+  pruef('plan: bestellt, aber Sperrtag → wird abgewählt mit Grund sperrtag', pl2.abwaehlen.filter(a => a.handle === 'gesperrt').map(a => a.grund), ['sperrtag']);
+}
+// --- Gleichlauf der Tag-Listen in beide Richtungen, nicht leer bestehbar
+{
+  const frei = AUSSCHLUSS_TAGS.filter(t => !['fortura', 'kostuem'].includes(t));
+  pruef('AUSSCHLUSS_TAGS ist nicht leer (der Gleichlauf-Test prüft etwas)', frei.length > 20, true);
+  const pruefListe = ['waffenzubehoer-nicht-verkaufen', 'stecker-nicht-ch', 'stecker-unklar', 'marken-pruefen', 'waffe-pruefen', 'versand-pruefen', 'google-policy-waffen', 'heilversprechen-risiko', 'google-kanal-markenware-unklar', 'lieferumfang-unklar', 'preis-pruefen-cj-spanne'];
+  pruef('Jedes Prüf-Tag steht auch in AUSSCHLUSS_TAGS der Mengenrabatt-Regel (sonst driftet die Liste)', pruefListe.filter(t => PRUEF_TAGS.test(t) && !AUSSCHLUSS_TAGS.includes(t)), []);
+  pruef('Start-Anker: «xstecker-unklar» sperrt nicht', PRUEF_TAGS.test('xstecker-unklar'), false);
 }
 
 // --- Manifest: BOM am Anfang

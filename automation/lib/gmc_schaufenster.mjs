@@ -15,13 +15,14 @@
  *   wächst, ohne dass ein Produkt dazukommt.
  *
  * DIE REGEL: bleiben darf, was Google zeigen soll, bis die Zahl der Varianten unter dem Budget liegt.
- *   nie      zuerst: Sperrtag (`kanal_sperren.mjs`), keine Google-Kategorie, Lieferbarkeit/Bild negativ getaggt,
- *            offene Prüf-Tags (`PRUEF_TAGS`), Lizenzname im Titel (`LIZENZ` aus gmc_feed_item.mjs),
- *            Variantenzahl unbekannt (Unbekannt ist kein Befund: es wird nichts erfunden)
+ *   nie      zuerst (auch vor Fortura und vor «bewährt»): Sperrtag (`kanal_sperren.mjs`), keine Google-Kategorie, Lieferbarkeit/Bild negativ
+ *            getaggt, offene Prüf-Tags (`PRUEF_TAGS`), schwach bewertet (höchstens 3,8 Sterne bei mindestens 3 Stimmen, wie rating_guard.mjs),
+ *            Lizenzname im Titel (`LIZENZ` aus gmc_feed_item.mjs plus `LIZENZ_PLUS`), Variantenzahl unbekannt (Unbekannt ist kein Befund)
  *   Stufe 1  Fortura/CH-Lager (Schweizer Lager, Kostüme): immer, auch mit Ausschlussfeld
- *   Stufe 0  «bewährt»: bestellt (bezahlt, nicht storniert/erstattet) ODER mindestens BEWAEHRT_MIN_RATING Sterne bei mindestens
- *            BEWAEHRT_MIN_ANZAHL Bewertungen: immer, auch mit Ausschlussfeld, ohne Kategorie-Deckel (Prüfer 28.10.: ohne diese Stufe
- *            gingen 7 von 14 verkauften und 971 von 1 993 gut bewerteten Produkten vom Kanal)
+ *   Stufe 0  «bewährt»: bestellt (bezahlt oder teilerstattet, nicht storniert, kein Test) ODER mindestens BEWAEHRT_MIN_RATING Sterne bei
+ *            mindestens BEWAEHRT_MIN_ANZAHL Bewertungen: immer, auch mit Ausschlussfeld, ohne Kategorie-Deckel (Prüfer 28.10.: ohne diese
+ *            Stufe gingen 7 von 14 verkauften Produkten und 904 von 971 gut bewerteten allein wegen des Ausschlussfelds vom Kanal).
+ *            ACHTUNG: die Bewertungen sind importierte CJ-Käuferbewertungen (verified_buyer überall false), kein Beleg für LuxeStyle-Nachfrage.
  *   Stufe 2  Marge A oder B (Tags `mengenrabatt-a`/`-b`) ohne Ausschlussfeld: immer (GEMESSEN 28.10.: 4 424 Marge-Produkte tragen das Ausschlussfeld und gehen mit)
  *   Stufe 3  der Rest ohne Ausschlussfeld, bis das Budget voll ist; wenige Varianten zuerst (jede Variante
  *            kostet einen Platz), je Google-Kategorie (zwei Ebenen) höchstens KATEGORIE_DECKEL des Budgets
@@ -59,9 +60,17 @@ export const PRODUKT_GID = /^gid:\/\/shopify\/Product\/\d+$/;
  * `stecker-unklar`, `versand-pruefen`, `lieferumfang-unklar`, `preis-pruefen-cj-spanne` blieben sonst auf Google). NICHT dabei: `auto-entwurf-0926`, die
  * Charge vom 26.09. ist die einzige Entwurfs-Familie OHNE harten Grund (dropship/BEWERTUNGEN-SICHTBARKEIT-1710.md); ihre 30 aktiven Produkte sind bewusst
  * freigegeben und verkaufen (GEMESSEN 28.10.: Hängematte, Midikleid und Blumenkleid aus Bestellungen #1011/#1013 tragen das Tag).
- * Quelle der Liste: AUSSCHLUSS_TAGS in lib/mengenrabatt.mjs; der Test hält beide gleich (ausser `fortura`/`kostuem`, die hier Stufe 1 sind).
+ * Quelle der Liste: AUSSCHLUSS_TAGS in lib/mengenrabatt.mjs; der Test prüft beide Richtungen (ausser `fortura`/`kostuem`, die hier Stufe 1 bzw. normale Ware sind).
  */
 export const PRUEF_TAGS = /^(waffenzubehoer-nicht-verkaufen|stecker-nicht-ch|stecker-unklar|marken-pruefen|waffe-pruefen|versand-pruefen|google-policy-waffen|heilversprechen-risiko|google-kanal-markenware-unklar|lieferumfang-unklar|preis-pruefen-cj-spanne)$/;
+/** Schwach bewertet (wie rating_guard.mjs: RATING_MAX 3.8, MIN_COUNT 3): geht vom Kanal, auch wenn es sonst bewährt wäre. */
+export const SCHWACH_MAX_RATING = 3.8;
+export const SCHWACH_MIN_ANZAHL = 3;
+/**
+ * Lizenzfiguren, die LIZENZ aus dem Feed nicht kennt (Prüfer 28.10., an allen 56 618 Titeln ohne Fehltreffer gemessen: pikachu 2, garfield 1,
+ * pingu 1, wednesday 14, morticia 4, patrick star 1, zelda 1). Der Feed bleibt unverändert; das Schaufenster liest nur Titel, nicht Beschreibungen.
+ */
+export const LIZENZ_PLUS = /\b(pikachu|garfield|pingu|wednesday|morticia|patrick star|zelda)\b/i;
 /** «Bewährt» (SETZUNG): mindestens so viele Sterne bei mindestens so vielen Bewertungen. */
 export const BEWAEHRT_MIN_RATING = 4;
 export const BEWAEHRT_MIN_ANZAHL = 3;
@@ -115,7 +124,8 @@ export function stufe(p) {
   if (sperrTags(tags).length) return { stufe: null, grund: 'sperrtag' };
   if (tags.some(t => NEGATIV_TAGS.test(t))) return { stufe: null, grund: 'nicht-lieferbar-oder-bild' };
   if (tags.some(t => PRUEF_TAGS.test(t))) return { stufe: null, grund: 'pruef-tag' };
-  if (p.titel && LIZENZ.test(String(p.titel))) return { stufe: null, grund: 'lizenz-titel' };
+  if (Number.isFinite(p.rating) && Number.isFinite(p.bewertungen) && p.rating <= SCHWACH_MAX_RATING && p.bewertungen >= SCHWACH_MIN_ANZAHL) return { stufe: null, grund: 'schwach-bewertet' };
+  if (p.titel && (LIZENZ.test(String(p.titel)) || LIZENZ_PLUS.test(String(p.titel)))) return { stufe: null, grund: 'lizenz-titel' };
   if (hatTag(p, 'fortura') || hatTag(p, 'ch-lager')) return { stufe: 1 };
   if (bewaehrt(p)) return { stufe: 0 };
   if (ausschlussGilt(p.ausschluss)) return { stufe: null, grund: 'ausschluss-shopping-ads' };
