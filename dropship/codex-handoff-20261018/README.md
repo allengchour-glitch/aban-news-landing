@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Produktangaben: geprüfte Korrekturen und Quellenkonflikt
+
+[LUXESTYLE_ATTRIBUTE_WORK_20261029]
+
+Neu: [Weiterarbeitsbericht](PRODUKTANGABEN-WEITERARBEIT-20261029.md), [Codepaket](CODEPAKET-PRODUKTANGABEN-20261029.json), [Patch](PRODUKTANGABEN-KORREKTUREN-20261029.patch), [Produktgegenproben mit Auswahltext-Diffs](PRODUKTANGABEN-GEGENPROBEN-20261029.json) und [Reviewpaket r1](aufgaben/product-attribute-completeness.r1.packet.json). Basis main b708c809…; 218 lokale Prüfungen grün. Voll-CI an `unshare: Operation not permitted` blockiert, kein Merge/Deployment/Produktlauf bestätigt.
+
+Lokal korrigiert: falsche 100-%-Anzeige bei fehlender Kandidatenliste, Imitat-/Titanstahl- und manuelle Material-Umgehungen sowie Überschreiben von Rücksetzplänen. Aktuell zwei Auswahltext-Diffs für 13 unveränderte Variantenbindungen vorbereitet; bei Damen-Schneestiefeln Materialfeld «Baumwolle» gegenüber «Baumwollfutter»/«Kunststoff» als Quellenkonflikt festgestellt. Produktangaben bleiben höchste Priorität im [Arbeitsstand mit neun Aufgaben](ARBEITSSTAND.json). Aktuelle Lieferantenquelle und vollständiger Nenner fehlen; keine neue Katalogquote.
+
+Vor Live-Nutzung bleiben weitere Runner-Prüfungen erforderlich, im Bericht einzeln benannt. Ein früher lokaler Test berührte und entfernte den temporären Legacy-Planpfad; Vorzustand unbekannt, korrigierter Harness isoliert. Keine Shop-Mutation dabei. Claude-Kenntnisnahme unbekannt; älteres Kooperationspaket R3 unverändert erhalten. Getrennte Workflow-Diffs bei Integration zusammenführen.
+
 ## 28.10.2026, Projektgedächtnis eingerichtet
 
 [LUXESTYLE_PROJEKTGEDAECHTNIS_20261028]
