@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 1,
-  "updatedAt": "2026-10-28T22:52:28.185Z",
+  "revision": 2,
+  "updatedAt": "2026-10-28T23:09:29.000Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -47,6 +47,38 @@
     "claudeReceipt": "unknown_requires_fresh_read"
   },
   "tasks": [
+    {
+      "id": "product-attribute-completeness",
+      "priority": 5,
+      "priorityKind": "SETZUNG",
+      "state": "offen",
+      "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Historischer Vollabgleich vom 27.10.: 28’170 von 56’618 ohne belegte Materialquelle, 49,8 %. Aktuelle native Gegenprobe: 56’620 ACTIVE und acht von acht gespeicherten Materialwerten vorhanden. Claude: 4’538 Materialwrites = 1’387 neue Angaben + 3’151 Übersetzungen; Auswahlledger mit 4’111 geschriebenen Produkten. Heutiger Auswahl-Gesamtnenner und Massequote unbekannt.",
+      "nextAllowedStep": "Claudes aktuelle Übergabe, Kandidatenliste und Fortschrittsledger gezielt lesen; vorhandenen Prozess anhand stabiler Produkt-/Varianten-IDs abstimmen. Je Merkmal relevanten Nenner, belegte vollständige Angaben, offene Quellen und nicht anwendbare Fälle führen. Vorhandene Varianten und sichtbare Details berücksichtigen; keine identische Anreicherung parallel starten. Engen produktgetreuen Korrekturdiff für einen belegten Fall vorbereiten.",
+      "blockers": [
+        "Aktuelle vollständige Auswahlkandidatenliste nicht im Repo",
+        "Für viele Materialangaben fehlt verlässlicher Produktnachweis",
+        "Echte Mass-/Grössentabellenquote noch nicht katalogweit gemessen"
+      ],
+      "acceptance": [
+        "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
+        "Keine erfundenen Angaben oder Teilmaterial als Ganzprodukt ausgegeben",
+        "Aktuelle gemeinsame Nenner und stabile IDs statt gemischter alter Zähler",
+        "Jeder zulässige Write frisch zurückgelesen; Claudes Fortschritt nicht doppelt gezählt"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-STAND-20261029.md",
+          "gitBlobSha": "8da2dc358f6842b7f22224bd871d4fd2c15ba41d",
+          "readAt": "2026-10-28T23:09:29.000Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "claude_enrichment_codex_measurement_and_review",
+      "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln."
+    },
     {
       "id": "merchant-overlay-gray-15447560978817",
       "priority": 10,
@@ -314,6 +346,12 @@
       "at": "2026-10-28T22:52:28.185Z",
       "actor": "codex",
       "action": "Initialer Index auf ausdrücklichen Auftrag eingerichtet; keine Live-Geschäftsänderung oder bestehende Historie ersetzt."
+    },
+    {
+      "revision": 2,
+      "at": "2026-10-28T23:09:29.000Z",
+      "actor": "codex",
+      "action": "Produktangaben auf aktuellen ausdrücklichen Inhaberwunsch priorisiert; Material-Restschätzung und Grenzen bei Grösse/Farbe/Massen dokumentiert. Bestehende Aufgaben und Claudes laufende Arbeit erhalten."
     }
   ]
 }
