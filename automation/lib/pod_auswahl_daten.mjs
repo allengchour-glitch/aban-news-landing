@@ -36,9 +36,35 @@ export function ladePaket({ dir = PAKET_DIR, pfade = {} } = {}) {
   return {
     katalog: roh.katalog.produkte, beschreibungen: roh.beschreibungen.eintraege, versand: roh.versand.raten, bestand: roh.bestand.produkte, skuPruefung: roh.skuPruefung.varianten,
     skuIndex: roh.skuIndex.treffer, skuIndexAbgeschnitten: roh.skuIndex.abgeschnitten || [],
-    meta: { katalog: { quelle: roh.katalog.quelle, stand: roh.katalog.stand }, versand: { stand: roh.versand.stand, ziel: roh.versand.ziel }, bestand: { stand: roh.bestand.stand }, skuPruefung: { stand: roh.skuPruefung.stand },
+    meta: { katalog: { quelle: roh.katalog.quelle, stand: roh.katalog.stand }, beschreibungen: { stand: roh.beschreibungen.stand }, versand: { stand: roh.versand.stand, ziel: roh.versand.ziel }, bestand: { stand: roh.bestand.stand }, skuPruefung: { stand: roh.skuPruefung.stand },
       skuIndex: { stand: roh.skuIndex.stand, produkteGelesen: roh.skuIndex.produkteGelesen ?? null } },
   };
+}
+
+// ─────────────────────────────────────────────────────────────── Alter des Datenpakets (LIVE verweigert veraltete Daten)
+/** Höchstalter der Printful-Daten (Katalog mit EU-Lager und Einkaufspreisen, Beschreibungen, Versandraten, SKU-Prüfung) bei LIVE=1. Ausdrücklich änderbar: DATEN_MAX_ALTER_H. */
+export const DATEN_MAX_ALTER_H = 72;
+
+/** Alter in Stunden eines Standes «JJJJ-MM-TT» (0 Uhr UTC); null, wenn der Stand fehlt oder kein Datum ist. */
+export function standAlterH(stand, jetzt = new Date()) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(stand ?? ''))) return null;
+  const t = Date.parse(`${stand}T00:00:00Z`);
+  return Number.isFinite(t) ? (jetzt.getTime() - t) / 3.6e6 : null;
+}
+
+/**
+ * Welche Dateien des Datenpakets sind älter als `maxStunden` (oder haben keinen lesbaren Stand)? Leere Liste = frisch genug.
+ * Geprüft werden die Dateien, die Preise, Lager und Texte bei Printful festhalten: katalog, beschreibungen, versand, skuPruefung.
+ * Der Shopify-Bestand und der SKU-Index zählen nicht: sie werden bei LIVE ohnehin frisch aus dem Shop gelesen.
+ */
+export function pruefeDatenAlter(meta, { jetzt = new Date(), maxStunden = DATEN_MAX_ALTER_H } = {}) {
+  const out = [];
+  for (const k of ['katalog', 'beschreibungen', 'versand', 'skuPruefung']) {
+    const stand = meta?.[k]?.stand, h = standAlterH(stand, jetzt);
+    if (h === null) out.push({ datei: DATEIEN[k], stand: stand ?? null, alterH: null, grund: `${DATEIEN[k]}: kein lesbarer Stand` });
+    else if (h > maxStunden) out.push({ datei: DATEIEN[k], stand, alterH: Math.round(h), grund: `${DATEIEN[k]}: Stand ${stand} ist ${Math.round(h)} Stunden alt (erlaubt: ${maxStunden})` });
+  }
+  return out;
 }
 
 // ─────────────────────────────────────────────────────────────── Printful (lesend)
@@ -54,6 +80,26 @@ export async function pfGet(pfad, { key, store, fetchFn = fetch, versuche = 4, p
     return { status: r.status, j };
   }
   return { status: 429, j: {} };
+}
+
+/**
+ * Vor dem Schreiben jede NEUE Variante des Plans bei Printful nachfragen (GET /products/variant/<id>, nur lesend): Einkaufspreis wie im Plan, EU-Lager lieferbar.
+ * Gibt die Abweichungen zurück (leer = alles wie geplant). Eine Variante, die nicht lesbar ist, zählt als Abweichung (nichts raten).
+ */
+export async function pruefeNeueVarianten(plan, { key, store, fetchFn = fetch, pause = warte, pauseMs = 700, log = () => {} } = {}) {
+  const abw = []; const gesehen = new Set(); let n = 0;
+  for (const p of plan.produkte) for (const v of p.neu) {
+    if (gesehen.has(v.pf)) continue; gesehen.add(v.pf);
+    const { status, j } = await pfGet('/products/variant/' + v.pf, { key, store, fetchFn, pause });
+    n++; await pause(pauseMs);
+    const pv = j?.result?.variant;
+    if (status !== 200 || !pv) { abw.push(`Printful ${v.pf} (${v.sku}): nicht lesbar (HTTP ${status})`); continue; }
+    if (!(Math.abs(Number(pv.price) - Number(v.einkaufUsd)) <= 0.005)) abw.push(`Printful ${v.pf} (${v.sku}): Einkauf jetzt ${pv.price} USD, im Plan ${Number(v.einkaufUsd).toFixed(2)} USD`);
+    const eu = Array.isArray(pv.availability_status) ? pv.availability_status.find((a) => a.region === 'EU')?.status : undefined;
+    if (eu === undefined ? pv.in_stock !== true : eu !== 'in_stock') abw.push(`Printful ${v.pf} (${v.sku}): Lager EU jetzt ${eu ?? (pv.in_stock === true ? 'in_stock' : 'nicht lieferbar')}, im Plan lieferbar`);
+  }
+  log(`Gegenprüfung bei Printful: ${n} Varianten gelesen, ${abw.length} Abweichungen`);
+  return abw;
 }
 
 /** Katalogprodukte holen und kürzen: Textilien nur in `farbe`; Felder wie im Datenpaket. */
@@ -120,7 +166,8 @@ export async function holeSkuIdentitaet(vid, opt) {
 }
 
 // ─────────────────────────────────────────────────────────────── Shopify (lesend)
-export const BESTAND_Q = `query($h:String!){ productByHandle(handle:$h){ id handle title status productType vendor tags descriptionHtml seo{ title description }
+export const BESTAND_Q = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description }
+  materialMetafeld: metafield(namespace:"mm-google-shopping", key:"material"){ value }
   options{ name position values }
   variants(first:250){ edges{ node{ id sku price inventoryPolicy selectedOptions{ name value } } } } } }`;
 
@@ -128,6 +175,8 @@ export const ohneKnoten = (p) => ({
   id: p.id, handle: p.handle, title: p.title, status: p.status, productType: p.productType, vendor: p.vendor, tags: p.tags, descriptionHtml: p.descriptionHtml, seo: p.seo,
   options: p.options.map((o) => ({ name: o.name, position: o.position, values: o.values })),
   variants: p.variants.edges.map((e) => ({ id: e.node.id, sku: e.node.sku, price: e.node.price, inventoryPolicy: e.node.inventoryPolicy, selectedOptions: e.node.selectedOptions })),
+  // Produkt-Metafeld mm-google-shopping.material: EIN Wert je Produkt (speist Merchant-Attribut UND die Zeile «Material» in «Spezifikationen & Details»). Fehlt der Schlüssel, wurde es nicht gelesen.
+  ...('materialMetafeld' in p ? { materialMetafeld: p.materialMetafeld?.value ?? null } : {}),
 });
 
 /** `gql(query, variables)` → Antwort-JSON. Liest die vorhandenen Produkte (nur Abfrage). */
@@ -136,7 +185,7 @@ export async function leseBestand(gql, handles) {
   for (const h of handles) {
     const j = await gql(BESTAND_Q, { h });
     if (j.errors) throw new Error('Shopify-Abfrage: ' + JSON.stringify(j.errors).slice(0, 200));
-    const p = j.data?.productByHandle;
+    const p = j.data?.productByIdentifier;
     if (!p) throw new Error(`Produkt «${h}» nicht gefunden`);
     out[h] = ohneKnoten(p);
   }

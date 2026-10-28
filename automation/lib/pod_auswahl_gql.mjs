@@ -16,6 +16,14 @@
  */
 import { shopifyGql } from './shopify_gql.mjs';
 
+/**
+ * Admin-API-Version des ganzen Werkzeugs (eine Stelle). GEMESSEN 27.10.2026 (`publicApiVersions`): unterstützt sind 2026-01, 2026-04, 2026-07, 2026-10.
+ * '2025-01' wird nicht mehr unterstützt: Shopify antwortet dann mit der ÄLTESTEN unterstützten Version (Header x-shopify-api-version), die bei jedem
+ * Auslauf weiterrückt – das Schema wäre nicht mehr das, wogegen gebaut wurde. Darum fest auf 2026-01 (wie lib/grind_plan.mjs), und `productByIdentifier`
+ * statt des veralteten `productByHandle`. Ein Test hält Version und Abfragetexte zusammen.
+ */
+export const API_VERSION = '2026-01';
+
 /** Das Tageslimit für neue Varianten ist KEINE Drosselung, die sich durch Warten löst. */
 const TAGESLIMIT = /VARIANT_THROTTLE|Daily variant creation limit/i;
 /** Die Anfrage wurde von Shopify abgewiesen, bevor sie etwas getan hat: sicher zu wiederholen. */

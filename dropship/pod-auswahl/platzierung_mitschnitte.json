@@ -1,0 +1,587 @@
+{
+ "quelle": "Printful GET /products/variant/{id} → result.product (gekürzt auf id, type, title, files; je Produkt die erste Katalogvariante), nur lesend gemessen. Dient als Prüfdaten für die Platzierung der Druckdatei (lib/printful_platzierung.mjs); NICHT erfunden.",
+ "stand": "2026-10-27",
+ "hinweis": "Dateien tragen id UND type: beim T-Shirt ist id «default» und type «front» (Vorderseite); bei der Jogginghose ist id «right_leg» und type «leg_right». Die Platzierung des Auftrags wird aus der id gebildet (siehe lib/printful_platzierung.mjs).",
+ "mitschnitte": {
+  "3": {
+   "variante": 19296,
+   "produkt": {
+    "id": 3,
+    "type": "CANVAS",
+    "title": "Canvas (in)",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "19": {
+   "variante": 1320,
+   "produkt": {
+    "id": 19,
+    "type": "MUG",
+    "title": "White Glossy Mug",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "71": {
+   "variante": 4025,
+   "produkt": {
+    "id": 71,
+    "type": "T-SHIRT",
+    "title": "Unisex Staple T-Shirt | Bella + Canvas 3001",
+    "files": [
+     {
+      "id": "embroidery_chest_left",
+      "type": "embroidery_chest_left",
+      "title": "Left chest"
+     },
+     {
+      "id": "embroidery_chest_center",
+      "type": "embroidery_chest_center",
+      "title": "Center chest"
+     },
+     {
+      "id": "embroidery_sleeve_left_top",
+      "type": "embroidery_sleeve_left_top",
+      "title": "Left sleeve top"
+     },
+     {
+      "id": "embroidery_sleeve_right_top",
+      "type": "embroidery_sleeve_right_top",
+      "title": "Right sleeve top"
+     },
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print"
+     },
+     {
+      "id": "front_dtf",
+      "type": "front_dtf",
+      "title": "Front print"
+     },
+     {
+      "id": "front_large",
+      "type": "front_large",
+      "title": "Large front print"
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print"
+     },
+     {
+      "id": "back_dtf",
+      "type": "back_dtf",
+      "title": "Back print"
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve"
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve"
+     },
+     {
+      "id": "short_sleeve_left_dtf",
+      "type": "short_sleeve_left_dtf",
+      "title": "Short left sleeve"
+     },
+     {
+      "id": "short_sleeve_right_dtf",
+      "type": "short_sleeve_right_dtf",
+      "title": "Short right sleeve"
+     },
+     {
+      "id": "label_inside",
+      "type": "label_inside",
+      "title": "Inside label"
+     },
+     {
+      "id": "label_outside",
+      "type": "label_outside",
+      "title": "Outside label"
+     },
+     {
+      "id": "label_inside_dtf",
+      "type": "label_inside_dtf",
+      "title": "Inside label"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "83": {
+   "variante": 49853,
+   "produkt": {
+    "id": 83,
+    "type": "CUT-SEW",
+    "title": "All-Over Print Basic Pillow",
+    "files": [
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print"
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "84": {
+   "variante": 4533,
+   "produkt": {
+    "id": 84,
+    "type": "CUT-SEW",
+    "title": "All-Over Print Tote Bag",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "146": {
+   "variante": 20556,
+   "produkt": {
+    "id": 146,
+    "type": "T-SHIRT",
+    "title": "Unisex Heavy Blend Hoodie | Gildan 18500",
+    "files": [
+     {
+      "id": "embroidery_chest_center",
+      "type": "embroidery_chest_center",
+      "title": "Center chest"
+     },
+     {
+      "id": "embroidery_chest_left",
+      "type": "embroidery_chest_left",
+      "title": "Left chest"
+     },
+     {
+      "id": "embroidery_wrist_left",
+      "type": "embroidery_wrist_left",
+      "title": "Left wrist"
+     },
+     {
+      "id": "embroidery_wrist_right",
+      "type": "embroidery_wrist_right",
+      "title": "Right wrist"
+     },
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print"
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print"
+     },
+     {
+      "id": "label_outside",
+      "type": "label_outside",
+      "title": "Outside label"
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve"
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve"
+     },
+     {
+      "id": "front_dtf",
+      "type": "front_dtf",
+      "title": "Front print"
+     },
+     {
+      "id": "back_dtf",
+      "type": "back_dtf",
+      "title": "Back print"
+     },
+     {
+      "id": "label_inside_dtf",
+      "type": "label_inside_dtf",
+      "title": "Inside label"
+     },
+     {
+      "id": "long_sleeve_right_dtf",
+      "type": "long_sleeve_right_dtf",
+      "title": "Long right sleeve"
+     },
+     {
+      "id": "long_sleeve_left_dtf",
+      "type": "long_sleeve_left_dtf",
+      "title": "Long left sleeve"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "181": {
+   "variante": 10996,
+   "produkt": {
+    "id": 181,
+    "type": "PHONE-CASE",
+    "title": "Clear Case for iPhone®",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "268": {
+   "variante": 19515,
+   "produkt": {
+    "id": 268,
+    "type": "POSTER",
+    "title": "Enhanced Matte Paper Poster (cm)",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "279": {
+   "variante": 9063,
+   "produkt": {
+    "id": 279,
+    "type": "CUT-SEW",
+    "title": "All-Over Print Backpack",
+    "files": [
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front & Pocket"
+     },
+     {
+      "id": "top",
+      "type": "top",
+      "title": "Top panel"
+     },
+     {
+      "id": "bottom",
+      "type": "bottom",
+      "title": "Bottom panel"
+     },
+     {
+      "id": "pocket",
+      "type": "pocket",
+      "title": "Inside Pocket"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "304": {
+   "variante": 19644,
+   "produkt": {
+    "id": 304,
+    "type": "FRAMED-POSTER",
+    "title": "Enhanced Matte Paper Framed Poster (cm)",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "380": {
+   "variante": 24991,
+   "produkt": {
+    "id": 380,
+    "type": "T-SHIRT",
+    "title": "Unisex Premium Pullover Hoodie | Cotton Heritage M2580",
+    "files": [
+     {
+      "id": "embroidery_chest_left",
+      "type": "embroidery_chest_left",
+      "title": "Left chest"
+     },
+     {
+      "id": "embroidery_chest_center",
+      "type": "embroidery_chest_center",
+      "title": "Center chest"
+     },
+     {
+      "id": "embroidery_wrist_left",
+      "type": "embroidery_wrist_left",
+      "title": "Left wrist"
+     },
+     {
+      "id": "embroidery_wrist_right",
+      "type": "embroidery_wrist_right",
+      "title": "Right wrist"
+     },
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print"
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print"
+     },
+     {
+      "id": "label_outside",
+      "type": "label_outside",
+      "title": "Outside label"
+     },
+     {
+      "id": "label_inside",
+      "type": "label_inside",
+      "title": "Inside label"
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve"
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve"
+     },
+     {
+      "id": "front_dtf",
+      "type": "front_dtf",
+      "title": "Front print"
+     },
+     {
+      "id": "back_dtf",
+      "type": "back_dtf",
+      "title": "Back print"
+     },
+     {
+      "id": "label_inside_dtf",
+      "type": "label_inside_dtf",
+      "title": "Inside label"
+     },
+     {
+      "id": "long_sleeve_left_dtf",
+      "type": "long_sleeve_left_dtf",
+      "title": "Long left sleeve"
+     },
+     {
+      "id": "long_sleeve_right_dtf",
+      "type": "long_sleeve_right_dtf",
+      "title": "Long right sleeve"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "400": {
+   "variante": 11038,
+   "produkt": {
+    "id": 400,
+    "type": "CUT-SEW",
+    "title": "All-Over Print Recycled Men’s Joggers",
+    "files": [
+     {
+      "id": "right_leg",
+      "type": "leg_right",
+      "title": "Right leg"
+     },
+     {
+      "id": "left_leg",
+      "type": "leg_left",
+      "title": "Left leg"
+     },
+     {
+      "id": "label_inside",
+      "type": "label_inside",
+      "title": "Inside label"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "583": {
+   "variante": 14943,
+   "produkt": {
+    "id": 583,
+    "type": "SUBLIMATION",
+    "title": "Gaming Mouse Pad",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "656": {
+   "variante": 16366,
+   "produkt": {
+    "id": 656,
+    "type": "STICKER",
+    "title": "Die-Cut Magnets",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "686": {
+   "variante": 16975,
+   "produkt": {
+    "id": 686,
+    "type": "PHONE-CASE",
+    "title": "Tough Case for Samsung",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "798": {
+   "variante": 20691,
+   "produkt": {
+    "id": 798,
+    "type": "PHONE-CASE",
+    "title": "MagSafe Tough Case for iPhone®",
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file"
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup"
+     }
+    ]
+   }
+  },
+  "1553": {
+   "variante": 49313,
+   "produkt": {
+    "id": 1553,
+    "type": "DTFILM",
+    "title": "Cotton Color Tote Bag | Westford Mill W101",
+    "files": [
+     {
+      "id": "embroidery_apparel_front",
+      "type": "embroidery_apparel_front",
+      "title": "Front"
+     },
+     {
+      "id": "embroidery_apparel_back",
+      "type": "embroidery_apparel_back",
+      "title": "Back"
+     }
+    ]
+   }
+  }
+ }
+}

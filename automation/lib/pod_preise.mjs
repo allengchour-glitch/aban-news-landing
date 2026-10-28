@@ -19,7 +19,7 @@
  *
  * Abweichung zu printful_reprice.priced(): dort ist der Preis ceil(Richtwert) − 0.10. Das liegt UNTER dem Richtwert, wenn dessen
  * Nachkommateil über .90 liegt (Richtwert 20.95 → 20.90; Richtwert 21.00 → 20.90). Hier gilt «kleinster X.90, der ≥ Richtwert ist».
- * Außerdem: Der Erlös ist NICHT monoton im Preis (bei 49.90 kommen 7 Versand dazu, bei 50.90 nicht), darum wird jeder X.90 der
+ * Ausserdem: Der Erlös ist NICHT monoton im Preis (bei 49.90 kommen 7 Versand dazu, bei 50.90 nicht), darum wird jeder X.90 der
  * Reihe nach geprüft, statt eine Formel umzukehren.
  */
 

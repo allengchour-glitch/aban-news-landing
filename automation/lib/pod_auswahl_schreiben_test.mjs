@@ -5,7 +5,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { planeAlles, pfIdAusSku, PLATZHALTER_VARIANTE, PLATZHALTER_BILD } from './pod_auswahl_plan.mjs';
 import { ladePaket } from './pod_auswahl_daten.mjs';
-import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK, endeCode, EXIT_TEXT, zusammenfassung, bestaetigt } from './pod_auswahl_schreiben.mjs';
+import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK, endeCode, EXIT_TEXT, zusammenfassung, bestaetigt,
+  beschreibungSeitPlanVeraendert, pruefeVorhandenesProdukt, Q_PRODUKT, M_REORDER, M_OPTION_WERTE_LOESCHEN } from './pod_auswahl_schreiben.mjs';
 import { MARKE_AUF } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -20,42 +21,74 @@ const alleBestaetigt = (plan) => plan.produkte.flatMap((p) => [...new Set(p.befu
 const HANDLES = { poster: 'poster-zum-selbstgestalten', hoodie: 'unisex-hoodie-selbst-gestalten', shirt: 'unisex-t-shirt-selbst-gestalten', iphone: 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', samsung: 'samsung-huelle-selbst-gestalten' };
 
 // ───────────────────────────────────────────────────────── Shopify-Attrappe (so streng wie nötig: neue Optionswerte müssen vorher angelegt sein)
+// Optionen der Attrappe (alle optional):
+//   alleFehlschlagen, fehlerFuerHandle, tageslimitAb (ganzer Aufruf scheitert, wenn er das Limit überschritte), verschluckeSku, preisAendern, beschreibungVerfaelschen
+//   positionIgnorieren   productOptionsCreate ignoriert `position` und hängt die Option hinten an (die Doku verspricht nur «Position of the option»)
+//   reorderIgnoriert     productOptionsReorder meldet Erfolg, ändert aber nichts
+//   beiErsterVariantenanlage(p)   Hook im ersten productVariantsBulkCreate (ein anderer Prozess ändert gerade etwas)
+//   wertLoeschenFehler   productOptionUpdate mit optionValuesToDelete scheitert (Aufräumen nicht möglich)
 function neuerShop(bestand, o = {}) {
-  const produkte = new Map(); let n = 5000; const aufrufe = [];
+  const produkte = new Map(); let n = 5000; const aufrufe = []; let hookGelaufen = false;
   for (const b of Object.values(bestand)) produkte.set(b.handle, {
     id: b.id, handle: b.handle, title: b.title, status: b.status, productType: b.productType, vendor: b.vendor, tags: [...b.tags], descriptionHtml: b.descriptionHtml, seo: b.seo, category: null,
     options: b.options.map((x, i) => ({ id: `gid://shopify/ProductOption/${b.handle.length}${i}`, name: x.name, position: x.position, values: [...x.values] })),
     variants: b.variants.map((v) => ({ id: v.id, sku: v.sku, price: v.price, inventoryPolicy: v.inventoryPolicy, selectedOptions: v.selectedOptions.map((s) => ({ ...s })), inventoryItem: { tracked: true, requiresShipping: true } })),
     media: [], metafields: [] });
   let angelegteVarianten = 0;
+  const wertId = (p, x, v) => `gid://shopify/ProductOptionValue/${p.handle.length}-${x.name}-${v}`;   // eindeutig je Wert (für optionValuesToDelete)
   const alsAntwort = (p) => ({ id: p.id, handle: p.handle, title: p.title, status: p.status, productType: p.productType, vendor: p.vendor, tags: p.tags, descriptionHtml: p.descriptionHtml, seo: p.seo, category: p.category && { id: p.category },
-    options: p.options.map((x) => ({ ...x, optionValues: x.values.map((v) => ({ id: 'v', name: v })) })),
+    options: p.options.map((x) => ({ ...x, optionValues: x.values.map((v) => ({ id: wertId(p, x, v), name: v })) })),
     variants: { edges: p.variants.map((v) => ({ node: v })) }, media: { edges: p.media.map((m) => ({ node: m })) }, metafields: { edges: p.metafields.map((m) => ({ node: m })) } });
   const nachId = (id) => [...produkte.values()].find((p) => p.id === id);
   const sortiere = (p) => { p.options.sort((a, b) => a.position - b.position); p.options.forEach((x, i) => { x.position = i + 1; }); for (const v of p.variants) v.selectedOptions.sort((a, b) => p.options.findIndex((x) => x.name === a.name) - p.options.findIndex((x) => x.name === b.name)); };
   async function gql(query, v) {
-    const name = (query.match(/(productByHandle|productOptionsCreate|productOptionUpdate|productVariantsBulkCreate|productUpdate|productSet|metafieldsSet)/) || [])[1];
+    const name = (query.match(/(productByIdentifier|productOptionsCreate|productOptionsReorder|productOptionUpdate|productVariantsBulkCreate|productUpdate|productSet|metafieldsSet)/) || [])[1];
     aufrufe.push({ name, v });
-    if (name !== 'productByHandle' && o.alleFehlschlagen) return { errors: [{ message: 'Internal error' }] };
-    if (name !== 'productByHandle' && o.fehlerFuerHandle && [v.pid, v.p?.id].includes(produkte.get(o.fehlerFuerHandle)?.id)) return { errors: [{ message: 'Internal error' }] };
-    if (name === 'productByHandle') { const p = produkte.get(v.h); return { data: { productByHandle: p ? alsAntwort(p) : null } }; }
+    if (name !== 'productByIdentifier' && o.alleFehlschlagen) return { errors: [{ message: 'Internal error' }] };
+    if (name !== 'productByIdentifier' && o.fehlerFuerHandle && [v.pid, v.p?.id].includes(produkte.get(o.fehlerFuerHandle)?.id)) return { errors: [{ message: 'Internal error' }] };
+    if (name === 'productByIdentifier') { const p = produkte.get(v.h); return { data: { productByIdentifier: p ? alsAntwort(p) : null } }; }
     if (name === 'productOptionsCreate') {
       const p = nachId(v.pid);
       for (const op of v.opts) {
         if (p.options.some((x) => x.name === op.name)) return { data: { productOptionsCreate: { userErrors: [{ code: 'OPTION_ALREADY_EXISTS', message: 'exists' }] } } };
-        p.options.forEach((x) => { if (x.position >= op.position) x.position++; });
-        p.options.push({ id: 'gid://shopify/ProductOption/neu' + (n++), name: op.name, position: op.position, values: [op.values[0].name] });
+        const pos = o.positionIgnorieren ? p.options.length + 1 : op.position;
+        p.options.forEach((x) => { if (x.position >= pos) x.position++; });
+        p.options.push({ id: 'gid://shopify/ProductOption/neu' + (n++), name: op.name, position: pos, values: [op.values[0].name] });
         for (const va of p.variants) va.selectedOptions.push({ name: op.name, value: op.values[0].name });   // LEAVE_AS_IS: alle vorhandenen bekommen den ersten Wert
       }
-      sortiere(p); return { data: { productOptionsCreate: { product: alsAntwort(p), userErrors: [] } } };
+      p.options.sort((a, b) => a.position - b.position);   // die Positionen bleiben, wie die API sie vergibt (bei positionIgnorieren: hinten)
+      for (const x of p.options) x.position = p.options.indexOf(x) + 1;
+      for (const va of p.variants) va.selectedOptions.sort((a, b) => p.options.findIndex((x) => x.name === a.name) - p.options.findIndex((x) => x.name === b.name));
+      return { data: { productOptionsCreate: { product: alsAntwort(p), userErrors: [] } } };
+    }
+    if (name === 'productOptionsReorder') {
+      const p = nachId(v.pid);
+      if (!o.reorderIgnoriert) {
+        const namen = v.opts.map((x) => x.name);
+        if (namen.length !== p.options.length || namen.some((x) => !p.options.some((q) => q.name === x))) return { data: { productOptionsReorder: { userErrors: [{ code: 'OPTIONS_MISMATCH', message: 'alle Optionen angeben' }] } } };
+        p.options.forEach((x) => { x.position = namen.indexOf(x.name) + 1; });
+        sortiere(p);
+      }
+      return { data: { productOptionsReorder: { product: alsAntwort(p), userErrors: [] } } };
     }
     if (name === 'productOptionUpdate') {
       const p = nachId(v.pid), op = p.options.find((x) => x.id === v.opt.id);
+      if (v.del) {
+        if (o.wertLoeschenFehler) return { data: { productOptionUpdate: { userErrors: [{ code: 'KAPUTT', message: 'Löschen nicht möglich' }] } } };
+        for (const id of v.del) {
+          const wert = op.values.find((w) => wertId(p, op, w) === id);
+          if (!wert) return { data: { productOptionUpdate: { userErrors: [{ code: 'OPTION_VALUE_DOES_NOT_EXIST', message: id }] } } };
+          if (p.variants.some((va) => va.selectedOptions.some((s) => s.name === op.name && s.value === wert))) return { data: { productOptionUpdate: { userErrors: [{ code: 'VALUE_IN_USE', message: 'Wert trägt Varianten: sie würden mitgelöscht' }] } } };
+          op.values = op.values.filter((w) => w !== wert);
+        }
+        return { data: { productOptionUpdate: { product: alsAntwort(p), userErrors: [] } } };
+      }
       for (const a of v.add) { if (op.values.includes(a.name)) return { data: { productOptionUpdate: { userErrors: [{ code: 'OPTION_VALUE_ALREADY_EXISTS', message: 'exists' }] } } }; op.values.push(a.name); }
       return { data: { productOptionUpdate: { product: alsAntwort(p), userErrors: [] } } };
     }
     if (name === 'productVariantsBulkCreate') {
       const p = nachId(v.pid);
+      if (o.beiErsterVariantenanlage && !hookGelaufen) { hookGelaufen = true; o.beiErsterVariantenanlage(p); }
       if (o.tageslimitAb !== undefined && angelegteVarianten + v.vs.length > o.tageslimitAb) return { data: { productVariantsBulkCreate: { productVariants: null, userErrors: [{ field: null, code: 'VARIANT_THROTTLE_EXCEEDED', message: 'Daily variant creation limit reached. Try again tomorrow.' }] } } };
       const erzeugt = [];
       for (const x of v.vs) {
@@ -93,7 +126,9 @@ function neuerShop(bestand, o = {}) {
 const angelegt = [];
 const tmp = () => { const d = mkdtempSync(join(tmpdir(), 'pod-auswahl-test-')); angelegt.push(d); return d; };   // alle Ordner werden am Ende entfernt
 const still = () => {};
-const cfg = (dir, extra = {}) => ({ ledgerPfad: join(dir, 'ledger.txt'), sicherungsDir: join(dir, 'sicherung'), log: still, jetzt: () => '2026-10-27T12:00:00.000Z', ...extra });
+// Vorgabe der Tests: Der Besitzer hat das Produkt-Metafeld «Material» des POSTERS entschieden (BEFUND_OK=poster…:material-metafeld). Alle anderen Befunde sind offen, solange ein Test sie nicht ausdrücklich bestätigt.
+const POSTER_MF = [HANDLES.poster + ':material-metafeld'];
+const cfg = (dir, extra = {}) => ({ ledgerPfad: join(dir, 'ledger.txt'), sicherungsDir: join(dir, 'sicherung'), log: still, jetzt: () => '2026-10-27T12:00:00.000Z', befundOk: POSTER_MF, ...extra });
 
 // ───────────────────────────────────────────────────────── 1. Bausteine
 ist('variantenEingabe: Form (Optionen in Reihenfolge, Preis als Text, kein sku auf oberster Ebene)', variantenEingabe([{ sku: '9000001_6875', preisChf: 28.9, optionen: { Material: 'Foto-Glanzpapier', 'Grösse': '30×40 cm' } }], ['Material', 'Grösse']),
@@ -121,11 +156,15 @@ ist('CHUNK ist 50', CHUNK, 50);
   ist('Poster: Material-Werte im Shop', p.options[0].values, ['Poster matt', 'Foto-Glanzpapier', 'Leinwand', 'Gerahmt · Schwarz', 'Gerahmt · Weiss', 'Gerahmt · Eiche']);
   wahr('Poster: neue Varianten tracked=false, CONTINUE', p.variants.filter((v) => !vorher.variants.some((q) => q.id === v.id)).every((v) => v.inventoryItem.tracked === false && v.inventoryPolicy === 'CONTINUE'));
   wahr('Poster: Beschreibung mit Block', p.descriptionHtml.includes(MARKE_AUF) && p.descriptionHtml.includes('Materialien im Vergleich'));
-  const reihe = shop.reihenfolge().filter((x) => x !== 'productByHandle');
-  ist('Poster: Reihenfolge der Schreibaufrufe: Option → Optionswerte → Varianten → Beschreibung', reihe, ['productOptionsCreate', 'productOptionUpdate', 'productVariantsBulkCreate', 'productUpdate']);
-  ist('Poster: erste Mutation kommt NACH dem ersten Lesen', shop.reihenfolge()[0], 'productByHandle');
+  const reihe = shop.reihenfolge().filter((x) => x !== 'productByIdentifier');
+  ist('Poster: Reihenfolge der Schreibaufrufe: Option → je Material (EIN Optionswert, direkt danach seine Varianten) → Beschreibung; kein Reorder nötig, kein Metafeld geschrieben', reihe,
+    ['productOptionsCreate', ...Array(5).fill(['productOptionUpdate', 'productVariantsBulkCreate']).flat(), 'productUpdate']);
+  ist('Poster: erste Mutation kommt NACH dem ersten Lesen', shop.reihenfolge()[0], 'productByIdentifier');
   ist('Poster: Option mit LEAVE_AS_IS-Eingabe (Position 1, erster Wert = «Poster matt»)', shop.aufrufe.find((a) => a.name === 'productOptionsCreate').v.opts, [{ name: 'Material', position: 1, values: [{ name: 'Poster matt' }] }]);
-  ist('Poster: Optionswerte vor den Varianten ergänzt (5 neue Material-Werte)', shop.aufrufe.find((a) => a.name === 'productOptionUpdate').v.add.map((x) => x.name), ['Foto-Glanzpapier', 'Leinwand', 'Gerahmt · Schwarz', 'Gerahmt · Weiss', 'Gerahmt · Eiche']);
+  { const adds = shop.aufrufe.filter((a) => a.name === 'productOptionUpdate').map((a) => a.v.add.map((x) => x.name));
+    ist('Poster: ein Optionswert je Aufruf, in Planreihenfolge (5 neue Material-Werte)', adds, [['Foto-Glanzpapier'], ['Leinwand'], ['Gerahmt · Schwarz'], ['Gerahmt · Weiss'], ['Gerahmt · Eiche']]);
+    const vs = shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate').map((a) => [...new Set(a.v.vs.map((x) => x.optionValues[0].name))]);
+    ist('Poster: jeder Variantenaufruf trägt genau das Material, dessen Wert eben angelegt wurde', vs, adds); }
   // Sicherung
   const sf = join(dir, 'sicherung', sicherungsName(HANDLES.poster));
   wahr('Poster: Sicherung des Ausgangszustands geschrieben', existsSync(sf));
@@ -155,11 +194,11 @@ ist('CHUNK ist 50', CHUNK, 50);
 {
   const dir = tmp(); const plan = planVon([HANDLES.hoodie]); const shop = neuerShop(paket.bestand);
   const codes = plan.produkte[0].befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code).sort();
-  ist('Hoodie: zwei Blocker-Befunde (Sweatshirt-SKUs, Premium-Hoodie schon als eigenes Produkt)', codes, ['sku-anderes-produkt', 'sku-in-anderem-produkt']);
+  ist('Hoodie: drei Blocker-Befunde (Sweatshirt-SKUs, Premium-Hoodie schon als eigenes Produkt, Produkt-Metafeld «Material»)', codes, ['material-metafeld', 'sku-anderes-produkt', 'sku-in-anderem-produkt']);
   const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
   ist('Hoodie: ohne Bestätigung GESPERRT (Exit 5), nichts geschrieben', [r.exit, r.ergebnisse.map((x) => x.status), shop.aufrufe.length], [5, ['GESPERRT'], 0]);
   const r1 = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie + ':sku-anderes-produkt'] }) });
-  ist('Hoodie: nur EIN Befund bestätigt → bleibt GESPERRT durch den anderen (keine Pauschalbestätigung)', [r1.exit, r1.ergebnisse.map((x) => [x.status, x.befunde]), shop.aufrufe.length], [5, [['GESPERRT', ['sku-in-anderem-produkt']]], 0]);
+  ist('Hoodie: nur EIN Befund bestätigt → bleibt GESPERRT durch den anderen (keine Pauschalbestätigung)', [r1.exit, r1.ergebnisse.map((x) => [x.status, x.befunde]), shop.aufrufe.length], [5, [['GESPERRT', ['material-metafeld', 'sku-in-anderem-produkt']]], 0]);
   const rp = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [HANDLES.hoodie] }) });
   ist('Hoodie: der blosse Handle bestätigt nichts mehr', [rp.exit, rp.ergebnisse.map((x) => x.status), shop.aufrufe.length], [5, ['GESPERRT'], 0]);
   const r2 = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
@@ -181,7 +220,7 @@ ist('CHUNK ist 50', CHUNK, 50);
   wahr('Samsung: data-variant ist die Nummer der ersten geplanten Variante', p.descriptionHtml.includes(`data-variant="${v1.id.split('/').pop()}"`));
   wahr('Samsung: Tags wie im Plan, nicht «bild-ok»', p.tags.includes('wunschdesign') && !p.tags.includes('bild-ok'));
   wahr('Samsung: Kategorie wie beim iPhone-Produkt', p.category === 'gid://shopify/TaxonomyCategory/el-4-8-4-2');
-  ist('Samsung: vier Bilder', p.media.length, 4);
+  ist('Samsung: drei Bilder (Hartschale, Klar, Slim; matt und glänzend waren byte-identisch)', p.media.length, 3);
   ist('Samsung: Plan-Eingabe von productSet = was der Trockenlauf zeigt', produktSetEingabe(plan.produkte[0]).variants.length, 84);
   wahr('Samsung: Sicherung entfällt (es gibt keinen Ausgangszustand)', !existsSync(join(dir, 'sicherung', sicherungsName(HANDLES.samsung))));
   // zweiter Lauf ohne Ledger: Produkt gibt es schon → ergänzt nur, legt es nicht noch einmal an
@@ -203,8 +242,8 @@ ist('CHUNK ist 50', CHUNK, 50);
   ist('Alle: Option «Material» steht überall an Position 1', [...shop.produkte.values()].map((p) => p.options[0].name + p.options[0].position), Array(5).fill('Material1'));
   ist('Alle: SKUs je Produkt eindeutig', [...shop.produkte.values()].map((p) => new Set(p.variants.map((v) => v.sku)).size === p.variants.length), Array(5).fill(true));
   wahr('Alle: jede SKU endet auf eine Printful-Nummer', [...shop.produkte.values()].every((p) => p.variants.every((v) => pfIdAusSku(v.sku))));
-  ist('Alle: iPhone braucht nur einen Variantenaufruf (32 ≤ 50)', shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate' && a.v.pid === paket.bestand[HANDLES.iphone].id).length, 1);
-  ist('Alle: T-Shirt braucht einen Aufruf (24 ≤ 50)', shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate' && a.v.pid === paket.bestand[HANDLES.shirt].id).length, 1);
+  ist('Alle: iPhone braucht zwei Variantenaufrufe (je Material einer: 16 + 16 ≤ 50)', shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate' && a.v.pid === paket.bestand[HANDLES.iphone].id).length, 2);
+  ist('Alle: T-Shirt braucht drei Aufrufe (je Material einer: 3 × 8 ≤ 50)', shop.aufrufe.filter((a) => a.name === 'productVariantsBulkCreate' && a.v.pid === paket.bestand[HANDLES.shirt].id).length, 3);
   ist('Ledger: fünf Erfolge', [...ledgerLesen(join(dir, 'ledger.txt')).keys()].length, 5);
   ist('Sicherungen: vier Dateien (Samsung hat keinen Ausgangszustand)', readdirSync(join(dir, 'sicherung')).length, 4);
   rmSync(dir, { recursive: true, force: true });
@@ -270,7 +309,7 @@ ist('CHUNK ist 50', CHUNK, 50);
   const b2 = klon(paket.bestand); b2[HANDLES.poster].variants[0].price = '27.90';
   const shop = neuerShop(b2);
   const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
-  ist('Vorab: geänderter Preis seit dem Plan → Exit 3, keine Mutation, keine Sicherung', [r.exit, r.ergebnisse[0].status, shop.aufrufe.filter((a) => a.name !== 'productByHandle').length, existsSync(join(dir, 'sicherung'))], [3, 'ABWEICHUNG', 0, false]);
+  ist('Vorab: geänderter Preis seit dem Plan → Exit 3, keine Mutation, keine Sicherung', [r.exit, r.ergebnisse[0].status, shop.aufrufe.filter((a) => a.name !== 'productByIdentifier').length, existsSync(join(dir, 'sicherung'))], [3, 'ABWEICHUNG', 0, false]);
   rmSync(dir, { recursive: true, force: true });
 }
 { // Produkt-ID im Shop ≠ Plan
@@ -342,7 +381,7 @@ ist('CHUNK ist 50', CHUNK, 50);
 }
 { // Tageslimit und Abweichung behalten Vorrang (Exit 4 / 3), auch wenn vorher etwas GESPERRT war
   const dir = tmp(); const plan = planVon(); const shop = neuerShop(paket.bestand, { tageslimitAb: 14 });
-  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan).filter((x) => x.startsWith(HANDLES.iphone)) }) });   // Poster geht, Hoodie und T-Shirt GESPERRT, iPhone (bestätigt) scheitert am Limit
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: [...alleBestaetigt(plan).filter((x) => x.startsWith(HANDLES.iphone)), ...POSTER_MF] }) });   // Poster geht, Hoodie und T-Shirt GESPERRT, iPhone (bestätigt) scheitert am Limit
   ist('Tageslimit nach gesperrten Produkten: Exit 4, danach nichts mehr', [r.exit, r.ergebnisse.map((x) => x.status)], [4, ['OK', 'GESPERRT', 'GESPERRT', 'TAGESLIMIT']]);
   rmSync(dir, { recursive: true, force: true });
 }
@@ -364,6 +403,176 @@ ist('bestaetigt: nur «handle:code» zählt', [bestaetigt(['h:c'], 'h', 'c'), be
   const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
   const t = shop.produkte.get(HANDLES.shirt);
   ist('OHNE: Lauf ohne Bestätigung OK, keine Variante der ausgelassenen SKUs (8481330 …/Printful 11576–12652) im Shop', [r.exit, r.ergebnisse.map((x) => x.status), t.variants.length, t.variants.some((v) => /_(11576|11577|11578|11579|11580|12650|12651|12652)$/.test(v.sku)), t.options[0].values.includes('Klassische Baumwolle')], [0, ['OK'], 9 + 16, false, false]);
+  rmSync(dir, { recursive: true, force: true });
+}
+
+
+// ───────────────────────────────────────────────────────── 14. Tageslimit MITTEN im Produkt (Befund 10): kein ausgegrauter Wert bleibt stehen, Wiederaufnahme mit gleichem Hash
+/** Bestand in der Form von bestand.json aus dem Zustand der Attrappe: so rechnet ein neuer Trockenlauf/LIVE-Lauf den Plan «aus dem Halbzustand» neu. */
+const bestandAusShop = (shop, handle) => {
+  const pj = shop.produkte.get(handle), b = klon(paket.bestand);
+  b[handle] = { ...b[handle], descriptionHtml: pj.descriptionHtml, options: pj.options.map((o) => ({ name: o.name, position: o.position, values: [...o.values] })),
+    variants: pj.variants.map((v) => ({ id: v.id, sku: v.sku, price: v.price, inventoryPolicy: v.inventoryPolicy, selectedOptions: v.selectedOptions.map((x) => ({ ...x })) })) };
+  return b;
+};
+/** Optionswerte ohne jede Variante im Shop («Option=Wert»): so sähe ein ausgegrauter Wert aus. */
+const leereWerte = (shop, handle) => { const p = shop.produkte.get(handle); return p.options.flatMap((o) => o.values.filter((w) => !p.variants.some((v) => v.selectedOptions.some((q) => q.name === o.name && q.value === w))).map((w) => `${o.name}=${w}`)); };
+const nurSchreib = (shop) => shop.aufrufe.filter((a) => a.name !== 'productByIdentifier').length;
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const pr = plan.produkte[0];
+  const g = pr.optionen.nachher[0].werte.slice(1).map((w) => pr.neu.filter((n) => n.optionen.Material === w).length);
+  const opt = { tageslimitAb: g[0] + g[1] };      // die ersten zwei Materialien gehen, das dritte scheitert am Tageslimit
+  const shop = neuerShop(paket.bestand, opt);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const p = shop.produkte.get(HANDLES.poster);
+  ist('Tageslimit mitten im Produkt: Exit 4, Status TAGESLIMIT, Zustandstext mit Wiederaufnahme', [r.exit, r.ergebnisse.map((x) => x.status), /Wiederaufnahme: denselben Befehl später wiederholen/.test(r.ergebnisse[0].zustand), /leerer Wert wieder entfernt/.test(r.ergebnisse[0].zustand)], [4, ['TAGESLIMIT'], true, true]);
+  ist('Tageslimit mitten im Produkt: nur fertige Materialien im Shop, KEIN Optionswert ohne Variante', [p.options[0].values, leereWerte(shop, HANDLES.poster)], [['Poster matt', 'Foto-Glanzpapier', 'Leinwand'], []]);
+  ist('Tageslimit mitten im Produkt: Varianten der fertigen Materialien da, Produkt bleibt ACTIVE', [p.variants.length, p.status], [4 + g[0] + g[1], 'ACTIVE']);
+  ist('Tageslimit mitten im Produkt: genau ein Aufräumen (productOptionUpdate mit optionValuesToDelete), Beschreibung unberührt', [shop.aufrufe.filter((a) => a.name === 'productOptionUpdate' && a.v.del).length, shop.zaehle('productUpdate'), shop.zaehle('metafieldsSet')], [1, 0, 0]);
+  ist('Tageslimit mitten im Produkt: Ledger kennt das Produkt nicht', existsSync(join(dir, 'ledger.txt')) ? [...ledgerLesen(join(dir, 'ledger.txt')).keys()].length : 0, 0);
+  // Wiederaufnahme: neuer Plan aus dem Halbzustand
+  const plan2 = planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster));
+  ist('Wiederaufnahme: der Plan aus dem Halbzustand hat DENSELBEN Hash (der geprüfte Plan gilt weiter)', plan2.hash, plan.hash);
+  ist('Wiederaufnahme: nur die fehlenden Varianten sind neu, die angelegten zählen als «schonDa»', [plan2.produkte[0].neu.length, plan2.produkte[0].schonDa.length], [pr.neu.length - g[0] - g[1], g[0] + g[1]]);
+  delete opt.tageslimitAb;
+  const r2 = await lauf({ plan: plan2, gql: shop.gql, ...cfg(dir) });
+  ist('Wiederaufnahme: Exit 0, 18 Varianten, Option «Material» nicht noch einmal angelegt', [r2.exit, p.variants.length, shop.zaehle('productOptionsCreate'), leereWerte(shop, HANDLES.poster)], [0, 18, 1, []]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Limit schon beim ersten Material: nichts Halbes, Material-Option nur mit dem vorhandenen Wert
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const shop = neuerShop(paket.bestand, { tageslimitAb: 0 });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const p = shop.produkte.get(HANDLES.poster);
+  ist('Tageslimit sofort: Exit 4; «Material» hat nur den vorhandenen Wert, kein Wert ohne Variante, 4 Varianten', [r.exit, p.options.map((o) => [o.name, o.position, o.values.length]), leereWerte(shop, HANDLES.poster), p.variants.length], [4, [['Material', 1, 1], ['Grösse', 2, 4]], [], 4]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Aufräumen scheitert: der Zustandstext sagt es laut; die Wiederholung legt die Varianten zum stehengebliebenen Wert an
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const opt = { tageslimitAb: 0, wertLoeschenFehler: true }; const shop = neuerShop(paket.bestand, opt);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Aufräumen scheitert: Exit 4, Zustandstext nennt den stehengebliebenen Wert (ACHTUNG), der Wert steht noch', [r.exit, /ACHTUNG: leerer Wert «Foto-Glanzpapier»/.test(r.ergebnisse[0].zustand), leereWerte(shop, HANDLES.poster)], [4, true, ['Material=Foto-Glanzpapier']]);
+  delete opt.tageslimitAb; delete opt.wertLoeschenFehler;
+  const r2 = await lauf({ plan: planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster)), gql: shop.gql, ...cfg(dir) });
+  ist('Aufräumen scheitert: die Wiederholung füllt den leeren Wert (Exit 0, 18 Varianten, kein Wert ohne Variante)', [r2.exit, shop.produkte.get(HANDLES.poster).variants.length, leereWerte(shop, HANDLES.poster)], [0, 18, []]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Aufräumen löscht NIE einen Wert, der Varianten trägt: das Limit trifft den zweiten Stück-Aufruf desselben Materials (50 + 50 + 20), der Wert trägt dann schon 50 Varianten
+  const dir = tmp(); const plan = planVon([HANDLES.iphone]); const pr = plan.produkte[0];
+  const basis = pr.neu[0]; const mehr = [];
+  for (let i = 0; i < 120; i++) mehr.push({ ...basis, sku: `3615382_9${String(i).padStart(4, '0')}`, optionen: { Material: 'Klare Hülle', Handymodell: pr.optionen.nachher[1].werte[i % 16] } });
+  pr.neu = mehr;
+  const shop = neuerShop(paket.bestand, { tageslimitAb: 60 });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
+  const p = shop.produkte.get(HANDLES.iphone);
+  ist('Limit im zweiten Stück: Exit 4, der Wert «Klare Hülle» trägt 50 Varianten und BLEIBT (kein Löschversuch, kein «ACHTUNG»)',
+    [r.exit, p.variants.filter((v) => v.sku.startsWith('3615382_9')).length, p.options[0].values.includes('Klare Hülle'), shop.aufrufe.filter((a) => a.name === 'productOptionUpdate' && a.v.del).length, /ACHTUNG/.test(r.ergebnisse[0].zustand ?? ''), /leerer Wert wieder entfernt/.test(r.ergebnisse[0].zustand ?? '')],
+    [4, 50, true, 0, false, false]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Aufräumen löscht NIE einen Wert, der Varianten trägt (frisch gelesen): ein Fehlschlag NACH einer angelegten Variante lässt den Wert stehen
+  const dir = tmp(); const plan = planVon([HANDLES.iphone]); const opt = { tageslimitAb: 16 + 5 }; const shop = neuerShop(paket.bestand, opt);   // Hartschale (16) geht, Klare Hülle (16) scheitert
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
+  const p = shop.produkte.get(HANDLES.iphone);
+  ist('iPhone: Hartschale fertig, Klare Hülle am Limit: Exit 4, Hartschale bleibt, kein leerer Wert', [r.exit, p.options[0].values, p.variants.length, leereWerte(shop, HANDLES.iphone)], [4, ['Hartschale MagSafe', 'Hartschale'], 32, []]);
+  rmSync(dir, { recursive: true, force: true });
+}
+
+// ───────────────────────────────────────────────────────── 15. Vorprüfung des Variantenbudgets (VARIANT_BUDGET): ein Produkt, das nicht mehr hineinpasst, wird gar nicht erst begonnen
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster, HANDLES.shirt]); const shop = neuerShop(paket.bestand);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }), variantenBudget: 5 });
+  ist('Budget 5 < 14 neue Poster-Varianten: Exit 4 VOR dem ersten Aufruf (nichts gelesen, nichts geschrieben)', [r.exit, r.ergebnisse.map((x) => [x.status, x.vorab, x.geplant, x.budget]), shop.aufrufe.length], [4, [['TAGESLIMIT', true, 14, 5]], 0]);
+  const shop2 = neuerShop(paket.bestand);
+  const r2 = await lauf({ plan, gql: shop2.gql, ...cfg(tmp(), { befundOk: alleBestaetigt(plan) }), variantenBudget: 30 });
+  ist('Budget 30: Poster (14) geht, das T-Shirt (24 > 16 Rest) wird nicht begonnen: Exit 4, T-Shirt unberührt', [r2.exit, r2.ergebnisse.map((x) => x.status), shop2.produkte.get(HANDLES.shirt).variants.length, shop2.produkte.get(HANDLES.shirt).options.length], [4, ['OK', 'TAGESLIMIT'], 9, 1]);
+  const shop3 = neuerShop(paket.bestand);
+  const r3 = await lauf({ plan, gql: shop3.gql, ...cfg(tmp(), { befundOk: alleBestaetigt(plan) }), variantenBudget: 38 });
+  ist('Budget 38 = 14 + 24: beides geht (Exit 0)', [r3.exit, r3.ergebnisse.map((x) => x.status)], [0, ['OK', 'OK']]);
+  const shop4 = neuerShop(paket.bestand);
+  const r4 = await lauf({ plan, gql: shop4.gql, ...cfg(tmp(), { befundOk: alleBestaetigt(plan) }) });
+  ist('ohne Budget keine Vorprüfung (Exit 0)', r4.exit, 0);
+}
+
+// ───────────────────────────────────────────────────────── 16. Optionsreihenfolge HERSTELLEN (Befund 12), wiederholbar
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const shop = neuerShop(paket.bestand, { positionIgnorieren: true });   // die API hängt «Material» hinten an
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const p = shop.produkte.get(HANDLES.poster);
+  ist('Reihenfolge: «Material» landet hinten → productOptionsReorder stellt Material (1) → Grösse (2) her, Exit 0, 18 Varianten', [r.exit, p.options.map((o) => [o.name, o.position]), p.variants.length], [0, [['Material', 1], ['Grösse', 2]], 18]);
+  ist('Reihenfolge: genau ein Reorder mit allen Optionen in Planreihenfolge, VOR dem ersten Optionswert', [shop.aufrufe.filter((a) => a.name === 'productOptionsReorder').map((a) => a.v.opts), shop.reihenfolge().filter((x) => x !== 'productByIdentifier').slice(0, 3)],
+    [[[{ name: 'Material' }, { name: 'Grösse' }]], ['productOptionsCreate', 'productOptionsReorder', 'productOptionUpdate']]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // Reorder wirkungslos: Exit 3, nichts weiter geschrieben; später (API richtig) repariert derselbe Befehl den Zustand
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const opt = { positionIgnorieren: true, reorderIgnoriert: true }; const shop = neuerShop(paket.bestand, opt);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Reihenfolge nicht herstellbar: Exit 3, keine Variante, kein Optionswert angelegt', [r.exit, r.ergebnisse[0].status, shop.zaehle('productVariantsBulkCreate'), shop.zaehle('productOptionUpdate'), r.ergebnisse[0].liste.some((x) => /Optionen/.test(x))], [3, 'ABWEICHUNG', 0, 0, true]);
+  delete opt.reorderIgnoriert; delete opt.positionIgnorieren;
+  const r2 = await lauf({ plan: planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster)), gql: shop.gql, ...cfg(dir) });
+  const p = shop.produkte.get(HANDLES.poster);
+  ist('Reihenfolge: die Wiederholung stellt sie her (Option nicht noch einmal angelegt), Exit 0', [r2.exit, p.options.map((o) => [o.name, o.position]), shop.zaehle('productOptionsCreate'), p.variants.length], [0, [['Material', 1], ['Grösse', 2]], 1, 18]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // fremde Option im Shop (Namen passen nicht zum Plan): keine Raterei, Exit 3
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const shop = neuerShop(paket.bestand, { positionIgnorieren: true });
+  const p = shop.produkte.get(HANDLES.poster); p.options.push({ id: 'gid://shopify/ProductOption/fremd', name: 'Rahmenfarbe', position: 2, values: ['x'] });
+  for (const v of p.variants) v.selectedOptions.push({ name: 'Rahmenfarbe', value: 'x' });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Reihenfolge: eine Option, die der Plan nicht kennt → Exit 3, kein Reorder, keine Variante', [r.exit, shop.zaehle('productOptionsReorder'), shop.zaehle('productVariantsBulkCreate')], [3, 0, 0]);
+  rmSync(dir, { recursive: true, force: true });
+}
+wahr('M_REORDER und M_OPTION_WERTE_LOESCHEN sind Mutationen mit den geprüften Feldnamen', /^mutation/.test(M_REORDER) && /productOptionsReorder\(productId:\$pid, options:\$opts\)/.test(M_REORDER) && /^mutation/.test(M_OPTION_WERTE_LOESCHEN) && /optionValuesToDelete:\$del/.test(M_OPTION_WERTE_LOESCHEN));
+
+// ───────────────────────────────────────────────────────── 17. Beschreibung: frisch gelesen, fremde Änderungen werden nie überschrieben (Befund 15)
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const shop = neuerShop(paket.bestand);
+  shop.produkte.get(HANDLES.poster).descriptionHtml = '<p>NEU VON ANDEREM PROZESS</p>' + shop.produkte.get(HANDLES.poster).descriptionHtml;
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Beschreibung schon vor dem Lauf von einem anderen Prozess geändert: Exit 3, KEINE Mutation, Änderung bleibt', [r.exit, nurSchreib(shop), shop.produkte.get(HANDLES.poster).descriptionHtml.includes('NEU VON ANDEREM PROZESS')], [3, 0, true]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster]);
+  const shop = neuerShop(paket.bestand, { beiErsterVariantenanlage: (p) => { p.descriptionHtml = '<p>NEU VON ANDEREM PROZESS</p>' + p.descriptionHtml; } });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Beschreibung WÄHREND des Laufs geändert: Exit 3, productUpdate nie gesendet, Änderung bleibt', [r.exit, shop.zaehle('productUpdate'), shop.produkte.get(HANDLES.poster).descriptionHtml.includes('NEU VON ANDEREM PROZESS')], [3, 0, true]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{
+  const p = { beschreibung: { vorher: '<p>Text</p>\n<!-- lx-material-v1 -->alt<!-- /lx-material-v1 -->' } };
+  ist('beschreibungSeitPlanVeraendert: Block und Markup egal, fremder Text zählt; ohne «vorher» (neues Produkt) nie',
+    [beschreibungSeitPlanVeraendert(p, '<p>Text</p>'), beschreibungSeitPlanVeraendert(p, '<div>Text</div><!-- lx-material-v1 -->neu<!-- /lx-material-v1 -->'), beschreibungSeitPlanVeraendert(p, '<p>Text</p><p>fremd</p>'), beschreibungSeitPlanVeraendert({ beschreibung: { vorher: null } }, '<p>egal</p>')], [false, false, true, false]);
+}
+
+// ───────────────────────────────────────────────────────── 18. Neues Produkt: ein vorhandener Handle wird nur übernommen, wenn es das eigene DRAFT ist (Befund 19)
+{
+  const fremd = (extra = {}) => ({ id: 'gid://shopify/Product/777', handle: HANDLES.samsung, title: 'Fremdes Produkt', status: 'ACTIVE', productType: 'Anderes', vendor: 'Jemand', tags: ['fremd'], descriptionHtml: '<p>x</p>', seo: {}, category: null,
+    options: [{ id: 'gid://shopify/ProductOption/777', name: 'Titel', position: 1, values: ['Default Title'] }], variants: [{ id: 'gid://shopify/ProductVariant/777', sku: 'FREMD-1', price: '1.00', inventoryPolicy: 'DENY', selectedOptions: [{ name: 'Titel', value: 'Default Title' }], inventoryItem: { tracked: true } }], media: [], metafields: [], ...extra });
+  const dir = tmp(); const plan = planVon([HANDLES.samsung]); const shop = neuerShop(paket.bestand);
+  shop.produkte.set(HANDLES.samsung, fremd());
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('Handle gehört einem fremden ACTIVE-Produkt: Exit 3, nichts geschrieben (kein productSet, keine Metafelder, kein productUpdate)', [r.exit, r.ergebnisse[0].status, nurSchreib(shop), shop.produkte.get(HANDLES.samsung).metafields.length], [3, 'ABWEICHUNG', 0, 0]);
+  wahr('Befund nennt Status, Titel und fremde SKU', ['Status ACTIVE ≠ DRAFT', 'Titel «Fremdes Produkt»', 'SKU FREMD-1 gehört nicht zum Plan'].every((t) => r.ergebnisse[0].liste.some((x) => x.includes(t))), JSON.stringify(r.ergebnisse[0].liste));
+  // DRAFT mit den richtigen Tags, aber fremder SKU: ebenfalls abgelehnt
+  const np = plan.produkte[0].neuesProdukt;
+  const shop2 = neuerShop(paket.bestand);
+  shop2.produkte.set(HANDLES.samsung, fremd({ status: 'DRAFT', title: np.titel, vendor: np.vendor, productType: np.produktart, tags: [...np.tags], options: plan.produkte[0].optionen.nachher.map((o, i) => ({ id: 'o' + i, name: o.name, position: o.position, values: o.werte })) }));
+  const r2 = await lauf({ plan, gql: shop2.gql, ...cfg(tmp()) });
+  ist('Eigener Titel, DRAFT, Tags, Optionen – aber eine fremde SKU: Exit 3, nichts geschrieben', [r2.exit, nurSchreib(shop2), r2.ergebnisse[0].liste], [3, 0, ['SKU FREMD-1 gehört nicht zum Plan']]);
+  // das eigene halb fertige Produkt (nach einem ersten Lauf) wird übernommen
+  const shop3 = neuerShop(paket.bestand);
+  const ok1 = await lauf({ plan, gql: shop3.gql, ...cfg(tmp()) });
+  const eigen = shop3.produkte.get(HANDLES.samsung);
+  ist('Das eigene DRAFT aus einem früheren Lauf besteht die Prüfung (keine Befunde)', [ok1.exit, pruefeVorhandenesProdukt(plan.produkte[0], await leseFrisch(shop3.gql, HANDLES.samsung))], [0, []]);
+  eigen.tags.push('fremd-dazu');
+  ist('pruefeVorhandenesProdukt: zusätzlicher Tag fällt auf', pruefeVorhandenesProdukt(plan.produkte[0], await leseFrisch(shop3.gql, HANDLES.samsung)).length, 1);
+  rmSync(dir, { recursive: true, force: true });
+}
+
+// ───────────────────────────────────────────────────────── 19. Das Metafeld «Material» wird bei vorhandenen Produkten NIE geschrieben (Befund 13)
+{
+  const dir = tmp(); const plan = planVon([HANDLES.poster, HANDLES.hoodie, HANDLES.shirt, HANDLES.iphone]); const shop = neuerShop(paket.bestand);
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { befundOk: alleBestaetigt(plan) }) });
+  ist('Vier vorhandene Produkte geschrieben (alle Befunde bestätigt): kein einziger metafieldsSet-Aufruf, die Metafelder bleiben unberührt', [r.exit, shop.zaehle('metafieldsSet'), [...shop.produkte.values()].filter((p) => p.metafields.length).length], [0, 0, 0]);
   rmSync(dir, { recursive: true, force: true });
 }
 

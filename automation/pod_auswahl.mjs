@@ -23,6 +23,11 @@
  *   BEFUND_OK=<handle:code,…>  bestätigt EINEN Blocker-Befund (nach Entscheid des Besitzers), nie pauschal ein ganzes Produkt
  *   VERSAND_HOLEN=1   fehlende Printful-Versandraten holen (900 ms Pause), Zwischenspeicher /tmp/pod/versand_cache.json
  *   KATALOG/BESCHREIBUNGEN/VERSAND/BESTAND/SKU_PRUEFUNG=<pfad>   einzelne Dateien des Datenpakets ersetzen
+ *   DATEN_MAX_ALTER_H=<Stunden>  Höchstalter von Katalog (EU-Lager, Einkaufspreise), Beschreibungen, Versandraten und SKU-Prüfung bei LIVE=1 (Vorgabe 72). Ältere Daten:
+ *                     LIVE verweigert (Exit 1) → DATEN=holen, neuen Trockenlauf ansehen. Im Trockenlauf nur eine Warnung.
+ *   PRINTFUL_PRUEFEN=0  schaltet die Gegenprüfung der neuen Varianten bei Printful vor dem Schreiben ab (Vorgabe: mit PRINTFUL_API_KEY an; GET /products/variant/<id>: Einkauf, EU-Lager)
+ *   PF_PAUSE_FAKTOR=<Zahl>  Faktor für die Pausen zwischen Printful-Aufrufen bei DATEN=holen (Vorgabe 1; 0 nur für Tests)
+ *   VARIANT_BUDGET=<n>  Rest des Shopify-Tageslimits für neue Varianten, wenn bekannt (Shopify nennt ihn nicht): ein Produkt, das nicht mehr hineinpasst, wird gar nicht begonnen (Exit 4)
  *   PRINTFUL_API_KEY, [PRINTFUL_STORE_ID], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN)
  * Exit: 0 alles Geplante ausgeführt · 1 Fehler (Produkt mit FEHLER, drei Fehler in Folge, Eingabefehler) · 3 Abweichung (Zustand ≠ Plan)
  *       4 Tageslimit für neue Varianten (nicht wiederholen) · 5 mindestens ein Produkt im Lauf GESPERRT (Blocker-Befund nicht bestätigt)
@@ -33,10 +38,10 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
-import { gqlFuer } from './lib/pod_auswahl_gql.mjs';
+import { gqlFuer, API_VERSION } from './lib/pod_auswahl_gql.mjs';
 import { SPEC } from './lib/pod_auswahl_spec.mjs';
 import { planeAlles, benoetigteVersandIds, tabelleMarkdown, tabelleCsv, pfIdAusSku } from './lib/pod_auswahl_plan.mjs';
-import { ladePaket, schreibeJson, PAKET_DIR, DATEIEN, pfGet, kuerzeProdukt, holeFehlendeRaten, holeSkuIdentitaet, leseBestand, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, leseSkuIndex, kandidatenIds, SKU_INDEX_SUCHE } from './lib/pod_auswahl_daten.mjs';
+import { ladePaket, schreibeJson, PAKET_DIR, DATEIEN, pfGet, kuerzeProdukt, holeFehlendeRaten, holeSkuIdentitaet, leseBestand, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, leseSkuIndex, kandidatenIds, SKU_INDEX_SUCHE, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H } from './lib/pod_auswahl_daten.mjs';
 import { lauf, produktSetEingabe, zusammenfassung, EXIT_TEXT } from './lib/pod_auswahl_schreiben.mjs';
 
 const E = process.env;
@@ -45,6 +50,13 @@ const ONLY = (E.ONLY || '').split(',').map((s) => s.trim()).filter(Boolean);
 const OUT = E.OUT || '/tmp/pod_auswahl';
 const PLAN = E.PLAN || join(OUT, 'plan.json');
 const BEFUND_OK = (E.BEFUND_OK || '').split(',').map((s) => s.trim()).filter(Boolean);
+/** Zahl aus der Umgebung: leer → `leer`; sonst eine Zahl ≥ `min` (sonst Fehler, nichts raten). */
+export function parseZahl(name, text, { leer = null, min = 0 } = {}) {
+  if (text === undefined || String(text).trim() === '') return leer;
+  const n = Number(text);
+  if (!Number.isFinite(n) || n < min) throw new Error(`${name}: «${text}» ist keine Zahl ≥ ${min}`);
+  return n;
+}
 /** OHNE=«handle:Material,handle:Material» → [{handle, material}] (Material darf Leerzeichen und «·» enthalten, aber kein Komma). */
 export function parseOhne(text) {
   return String(text || '').split(',').map((x) => x.trim()).filter(Boolean).map((x) => {
@@ -53,7 +65,7 @@ export function parseOhne(text) {
     return { handle: x.slice(0, i).trim(), material: x.slice(i + 1).trim() };
   });
 }
-const API = '2025-01';
+const API = API_VERSION;   // 2026-01 (eine Stelle: lib/pod_auswahl_gql.mjs)
 const REPO = fileURLToPath(new URL('..', import.meta.url));
 const LEDGER = E.LEDGER || join(REPO, 'dropship/pod_auswahl_ledger.txt');
 const SICHERUNG = E.SICHERUNG || join(REPO, 'dropship/pod-sicherung');
@@ -86,7 +98,8 @@ async function datenHolen() {
   if (!PF_KEY) throw new Error('PRINTFUL_API_KEY fehlt');
   const dir = E.DATEN_DIR || PAKET_DIR, heute = new Date().toISOString().slice(0, 10);
   const pf = { key: PF_KEY, store: PF_STORE };
-  const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+  const faktor = parseZahl('PF_PAUSE_FAKTOR', E.PF_PAUSE_FAKTOR, { leer: 1, min: 0 });   // Pausen zwischen Printful-Aufrufen (700 ms / 900 ms) mal Faktor; nur für Tests auf 0
+  const pause = (ms) => new Promise((r) => setTimeout(r, ms * faktor));
   // 1. Katalog + Beschreibungen (GET /products/{id}, öffentlich)
   const ids = [...new Set([...katalogIdsAusSpec(SPEC), ...belegIdsAusSpec(SPEC)])].sort((a, b) => a - b);
   const farben = farbenAusSpec(SPEC), produkte = {}, eintraege = {};
@@ -104,7 +117,7 @@ async function datenHolen() {
   if (!hatShopify) throw new Error('Shopify-Zugangsdaten fehlen (DATEN=holen liest den Bestand)');
   const gql = gqlMit(await shopifyToken());
   const bestand = await leseBestand(gql, SPEC.filter((s) => s.art === 'erweitern').map((s) => s.handle));
-  schreibeJson(join(dir, DATEIEN.bestand), { quelle: 'Shopify Admin GraphQL productByHandle (nur Abfrage)', stand: heute, produkte: bestand });
+  schreibeJson(join(dir, DATEIEN.bestand), { quelle: `Shopify Admin GraphQL productByIdentifier (nur Abfrage), API ${API}`, stand: heute, produkte: bestand });
   const varianten = {};
   for (const p of Object.values(bestand)) for (const v of p.variants) {
     const id = pfIdAusSku(v.sku); if (!id || varianten[id]) continue;
@@ -113,11 +126,13 @@ async function datenHolen() {
   schreibeJson(join(dir, DATEIEN.skuPruefung), { quelle: 'Printful GET /products/variant/{id} für jede vorhandene SKU', stand: heute, varianten });
   await skuIndexSchreiben(dir, gql, produkte, heute);
   // 3. Versandraten (POST /shipping/rates ist eine reine Berechnung)
+  // ALLE Raten neu holen (keine alten übernehmen): der Stand «heute» gilt für die ganze Datei, und LIVE=1 verlässt sich auf ihn (DATEN_MAX_ALTER_H)
   const vp = join(dir, DATEIEN.versand);
-  const datei = existsSync(vp) ? JSON.parse(readFileSync(vp, 'utf8')) : { stand: heute, ziel: 'CH 8001 (Printful /shipping/rates, STANDARD, 1 Stück, USD)', raten: {} };
+  const ziel = existsSync(vp) ? JSON.parse(readFileSync(vp, 'utf8')).ziel : null;
+  const datei = { stand: heute, ziel: ziel || 'CH 8001 (Printful /shipping/rates, STANDARD, 1 Stück, USD)', raten: {} };
   const bedarf = benoetigteVersandIds({ katalog: produkte, bestand });
-  const n = await holeFehlendeRaten(bedarf, datei.raten, { ...pf, sichern: () => schreibeJson(vp, datei), log: (id, r) => log(`Versand ${id}:`, r.usd ?? r.fehler) });
-  datei.stand = heute; schreibeJson(vp, datei);
+  const n = await holeFehlendeRaten(bedarf, datei.raten, { ...pf, pause, log: (id, r) => log(`Versand ${id}:`, r.usd ?? r.fehler) });
+  schreibeJson(vp, datei);
   log(`Datenpaket aufgefrischt in ${dir}: ${Object.keys(produkte).length} Produkte, ${Object.keys(bestand).length} Bestandsprodukte, ${n} neue Versandraten.`);
 }
 
@@ -136,8 +151,29 @@ async function skuIndexHolen() {
 }
 
 // ───────────────────────────────────────────────────────────── Plan
+/**
+ * Das LIVE-Tor als eigene Funktion, damit ein Test es AUSFÜHREN kann (mit Attrappen statt Shopify): erst die Plandatei, dann der Hash, dann (optional) die Gegenprüfung
+ * der neuen Varianten bei Printful, erst danach kommt der Zugang zu Shopify und der Schreibweg. Gibt {exit} zurück; ein fehlender geprüfter Plan wirft.
+ */
+export async function liveAusfuehren({ plan, planPfad, gqlHolen, pruefeVarianten = null, laufFn = lauf, ledgerPfad, sicherungsDir, befundOk = [], nur = null, variantenBudget = null,
+  log = (...a) => console.log(...a), err = (...a) => console.error(...a), existiert = existsSync, lies = (p) => readFileSync(p, 'utf8') }) {
+  if (!existiert(planPfad)) throw new Error(`LIVE=1 braucht den geprüften Plan (${planPfad}): zuerst den Trockenlauf machen und ansehen`);
+  const geprueft = JSON.parse(lies(planPfad));
+  if (geprueft.hash !== plan.hash) { err(`ABWEICHUNG: der frisch berechnete Plan (${plan.hash.slice(0, 16)}) ist nicht der geprüfte (${String(geprueft.hash).slice(0, 16)}). Trockenlauf wiederholen und neu prüfen.`); err(`ENDE: Exit 3 – ${EXIT_TEXT[3]}`); return { exit: 3 }; }
+  if (pruefeVarianten) {
+    const abw = await pruefeVarianten(plan);
+    if (abw.length) { err(`ABWEICHUNG: Printful meldet für die neuen Varianten andere Werte als der Plan (${abw.length}):\n  ${abw.slice(0, 20).join('\n  ')}\nDatenpaket auffrischen (DATEN=holen), Trockenlauf wiederholen und neu prüfen.`); err(`ENDE: Exit 3 – ${EXIT_TEXT[3]}`); return { exit: 3 }; }
+  }
+  const gql = await gqlHolen();
+  const res = await laufFn({ plan, gql, ledgerPfad, sicherungsDir, befundOk, nur, variantenBudget, log });
+  log('\n' + zusammenfassung(res));   // Ergebnis je Produkt, Zähler und «ENDE: Exit n – Grund» als LETZTE Zeilen
+  return { exit: res.exit, res };
+}
+
 async function main() {
   const ohne = parseOhne(E.OHNE);
+  const maxAlterH = parseZahl('DATEN_MAX_ALTER_H', E.DATEN_MAX_ALTER_H, { leer: DATEN_MAX_ALTER_H, min: 1 });
+  const variantenBudget = parseZahl('VARIANT_BUDGET', E.VARIANT_BUDGET, { leer: null, min: 0 });
   if (LIVE && OFFLINE) throw new Error('LIVE=1 und OFFLINE=1 widersprechen sich: LIVE liest den Shop frisch');
   if (ONLY.length) { const unbekannt = ONLY.filter((h) => !SPEC.some((s) => s.handle === h)); if (unbekannt.length) throw new Error(`ONLY: unbekannte Handles ${unbekannt.join(', ')} (bekannt: ${SPEC.map((s) => s.handle).join(', ')})`); }
   if (E.DATEN === 'holen') return datenHolen();
@@ -149,6 +185,14 @@ async function main() {
     p.versand = VERSAND_CACHE;
   }
   const paket = ladePaket({ pfade: p });
+  // Alter der Printful-Daten: LIVE rechnet nur mit frischen Katalog-, Lager-, Preis- und Versanddaten (der Plan-Hash prüft das nicht: Trockenlauf und LIVE lesen dieselbe Datei).
+  // VERSAND_HOLEN holt nur FEHLENDE Raten und macht die vorhandenen nicht jünger; aufgefrischt wird mit DATEN=holen (holt alles neu).
+  const zuAlt = pruefeDatenAlter(paket.meta, { maxStunden: maxAlterH });
+  if (zuAlt.length) {
+    const text = zuAlt.map((x) => x.grund).join('; ');
+    if (LIVE) throw new Error(`LIVE=1 verweigert: Printful-Daten zu alt (${text}). Zuerst DATEN=holen (Katalog, EU-Lager, Einkaufspreise, Versand, SKU-Prüfung), dann den Trockenlauf neu ansehen. Mit DATEN_MAX_ALTER_H=<Stunden> lässt sich die Grenze (Vorgabe ${DATEN_MAX_ALTER_H}) ausdrücklich ändern.`);
+    log(`⚠️ Printful-Daten älter als ${maxAlterH} Stunden (${text}) – LIVE=1 würde so verweigert. Auffrischen: DATEN=holen`);
+  }
   let bestand = paket.bestand, bestandQuelle = `Datenpaket (Stand ${paket.meta.bestand.stand})`;
   let skuIndex = paket.skuIndex, skuIndexAbgeschnitten = paket.skuIndexAbgeschnitten, skuIndexQuelle = `Datenpaket (Stand ${paket.meta.skuIndex.stand})`;
   if ((LIVE || !OFFLINE) && hatShopify && !E.BESTAND) {
@@ -173,13 +217,11 @@ async function main() {
   if (plan.verstoesse.length) { console.error('✗ VERSTÖSSE im Plan:\n  ' + plan.verstoesse.join('\n  ')); console.error(`ENDE: Exit 1 – ${EXIT_TEXT[1]}`); process.exit(1); }
   if (!LIVE) { schreibeJson(PLAN, plan); log(`\nTrockenlauf fertig – nichts geschrieben. Plan: ${PLAN} · Hash ${plan.hash.slice(0, 16)}`); return; }
 
-  // ── LIVE: nur den vorher geprüften Plan ausführen
-  if (!existsSync(PLAN)) throw new Error(`LIVE=1 braucht den geprüften Plan (${PLAN}): zuerst den Trockenlauf machen und ansehen`);
-  const geprueft = JSON.parse(readFileSync(PLAN, 'utf8'));
-  if (geprueft.hash !== plan.hash) { console.error(`ABWEICHUNG: der frisch berechnete Plan (${plan.hash.slice(0, 16)}) ist nicht der geprüfte (${String(geprueft.hash).slice(0, 16)}). Trockenlauf wiederholen und neu prüfen.`); console.error(`ENDE: Exit 3 – ${EXIT_TEXT[3]}`); process.exit(3); }
-  const gql = gqlMit(await shopifyToken());
-  const res = await lauf({ plan, gql, ledgerPfad: LEDGER, sicherungsDir: SICHERUNG, befundOk: BEFUND_OK, nur: ONLY.length ? ONLY : null, log });
-  log('\n' + zusammenfassung(res));   // Ergebnis je Produkt, Zähler und «ENDE: Exit n – Grund» als LETZTE Zeilen
+  // ── LIVE: nur den vorher geprüften Plan ausführen (das Tor: liveAusfuehren)
+  const pruefen = PF_KEY && E.PRINTFUL_PRUEFEN !== '0';
+  if (!pruefen) log('Hinweis: keine Gegenprüfung der neuen Varianten bei Printful (PRINTFUL_API_KEY fehlt oder PRINTFUL_PRUEFEN=0); es schützt nur die Altersgrenze der Daten.');
+  const res = await liveAusfuehren({ plan, planPfad: PLAN, gqlHolen: async () => gqlMit(await shopifyToken()), pruefeVarianten: pruefen ? (pl) => pruefeNeueVarianten(pl, { key: PF_KEY, store: PF_STORE, log }) : null,
+    ledgerPfad: LEDGER, sicherungsDir: SICHERUNG, befundOk: BEFUND_OK, nur: ONLY.length ? ONLY : null, variantenBudget, log });
   process.exit(res.exit);
 }
 

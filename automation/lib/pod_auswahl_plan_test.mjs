@@ -2,7 +2,7 @@
 // Lauf: /opt/node22/bin/node automation/lib/pod_auswahl_plan_test.mjs
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { planeAlles, pfIdAusSku, setzeMaterialBlock, materialBlock, modellVergleich, benoetigteVersandIds, tabellenZeilen, tabelleCsv, tabelleMarkdown, zollZeile, kanonisch, formatCm, passendeFormate, preisleiterBefunde, textBefunde, kollisionenVon, kollisionsBefunde, umstellungsRechnung, umstellungsText, aktionenFuerHash, hashVon } from './pod_auswahl_plan.mjs';
+import { planeAlles, materialMetafeldBefund, pfIdAusSku, setzeMaterialBlock, materialBlock, modellVergleich, benoetigteVersandIds, tabellenZeilen, tabelleCsv, tabelleMarkdown, zollZeile, kanonisch, formatCm, passendeFormate, preisleiterBefunde, textBefunde, kollisionenVon, kollisionsBefunde, umstellungsRechnung, umstellungsText, aktionenFuerHash, hashVon } from './pod_auswahl_plan.mjs';
 import { SPEC, MARKE_AUF, MARKE_ZU, ZUSATZ_BELEGE } from './pod_auswahl_spec.mjs';
 import { ladePaket } from './pod_auswahl_daten.mjs';
 import { endpreis, nettoOhneKundenversand, REGEL } from './pod_preise.mjs';
@@ -147,7 +147,8 @@ ist('iPhone/Hoodie/T-Shirt/Poster: nichts wegen fehlender Versandrate oder zu ho
   ist('Hoodie: genau ein Blocker-Befund «sku-anderes-produkt»', b.map((x) => [x.code, x.printfulProdukt, x.erwartet, x.skus.length]), [['sku-anderes-produkt', 145, 146, 8]]);
   wahr('Hoodie-Befund nennt Printful-Produkt und Gildan 18000', /145/.test(b[0].text) && /Gildan 18000/.test(b[0].text));
   const blocker = (h) => P(h).befunde.filter((x) => x.schwere === 'blocker').map((x) => x.code).sort();
-  ist('Blocker-Befunde je Produkt (Codes)', HANDLES.map(blocker), [[], ['sku-anderes-produkt', 'sku-in-anderem-produkt'], ['sku-in-anderem-produkt'], ['magsafe-irrefuehrend'], []]);
+  ist('Blocker-Befunde je Produkt (Codes): Poster, Hoodie und iPhone tragen zusätzlich «material-metafeld» (T-Shirt hat kein Material-Metafeld, Samsung ist neu)', HANDLES.map(blocker),
+    [['material-metafeld'], ['material-metafeld', 'sku-anderes-produkt', 'sku-in-anderem-produkt'], ['sku-in-anderem-produkt'], ['magsafe-irrefuehrend', 'material-metafeld'], []]);
   ist('Farbe der vorhandenen Hoodie-SKUs ist White (wie die neuen Materialien)', skuPruefung['5426'].farbe, 'White');
 }
 
@@ -225,7 +226,11 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
   ist('Samsung: Metafelder (Lieferzeit pod, Google-Kategorie Handyhüllen, gender, age)', np.metafelder.filter((m) => ['lieferzeit', 'google_product_category', 'gender', 'age_group'].includes(m.key)).map((m) => `${m.namespace}.${m.key}=${m.value}`).sort(),
     ['custom.lieferzeit={"ch":"7–14","tier":"pod","weg":"Druck auf Bestellung"}', 'mm-google-shopping.age_group=adult', 'mm-google-shopping.gender=unisex', 'mm-google-shopping.google_product_category=Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases']);
   ist('Samsung: Metafelder gleich dem iPhone-Produkt bei Lieferzeit', JSON.parse(np.metafelder.find((m) => m.key === 'lieferzeit').value), { ch: '7–14', tier: 'pod', weg: 'Druck auf Bestellung' });
-  ist('Samsung: vier Bilder vom Printful-Katalog, https', [np.bilder.length, np.bilder.every((b) => /^https:\/\/files\.cdn\.printful\.com\//.test(b.url) && b.alt.includes('Samsung'))], [4, true]);
+  ist('Samsung: drei Bilder vom Printful-Katalog, https (Hartschale, Klar, Slim)', [np.bilder.length, np.bilder.every((b) => /^https:\/\/files\.cdn\.printful\.com\//.test(b.url) && b.alt.includes('Samsung'))], [3, true]);
+  ist('Samsung: keine zwei Bilder mit derselben Adresse oder demselben Alt-Text (matt und glänzend waren byte-identisch)', [new Set(np.bilder.map((b) => b.url)).size, new Set(np.bilder.map((b) => b.alt)).size], [3, 3]);
+  wahr('Samsung: kein Alt-Text behauptet «matt» oder «glänzend» (das Bild zeigt es nicht)', np.bilder.every((b) => !/matt|glänzend/i.test(b.alt)));
+  { const m = np.metafelder.find((x) => x.key === 'material').value;
+    wahr('Samsung: Metafeld «material» nennt Polycarbonat für alle und das TPU-Innenfutter ausdrücklich nur bei der Hartschale', /^Polycarbonat/.test(m) && /Hartschale/.test(m) && /Polyurethan \(TPU\)/.test(m), m); }
   const h = s.beschreibung.nachher;
   wahr('Samsung: Beschreibung ohne iPhone/MagSafe/Apple', !/iphone|magsafe|apple/i.test(h));
   wahr('Samsung: Beschreibung nennt Samsung und den Editor-Baustein mit Platzhaltern', /Samsung/.test(h) && h.includes('class="lspod-designer"') && h.includes('__ERSTE_VARIANTE__') && h.includes('__ERSTES_BILD__'));
@@ -351,7 +356,7 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
   const x = planen({ ohne });
   const T = x.produkte.find((p) => p.handle === 'unisex-t-shirt-selbst-gestalten'), H = x.produkte.find((p) => p.handle === 'unisex-hoodie-selbst-gestalten');
   ist('OHNE: T-Shirt 16 neue Varianten ohne «Klassische Baumwolle», Hoodie 5 ohne «Premium-Baumwolle»', [T.neu.length, H.neu.length, T.optionen.nachher[0].werte, H.optionen.nachher[0].werte], [16, 5, ['Ringgarn-Baumwolle', 'Bio-Baumwolle', 'Heavyweight-Baumwolle'], ['Baumwoll-Mix', 'Bio-Baumwolle']]);
-  ist('OHNE: keine Kollisions-Blocker mehr, der Hoodie behält den Sweatshirt-Blocker', [T.befunde.filter((b) => b.schwere === 'blocker').length, H.befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code)], [0, ['sku-anderes-produkt']]);
+  ist('OHNE: keine Kollisions-Blocker mehr, der Hoodie behält den Sweatshirt-Blocker', [T.befunde.filter((b) => b.schwere === 'blocker').length, H.befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code)], [0, ['sku-anderes-produkt', 'material-metafeld']]);
   ist('OHNE: ausgeschlossene Materialien stehen als «ausgeschlossen» im Bericht', [T, H].map((p) => p.nichtAngelegt.filter((n) => n.code === 'ausgeschlossen').map((n) => n.material)), [['Klassische Baumwolle'], ['Premium-Baumwolle']]);
   wahr('OHNE: Plan-Hash ändert sich', x.hash !== plan.hash);
   ist('OHNE: Block nennt das ausgelassene Material nicht', [T.beschreibung.block.includes('Klassische Baumwolle'), H.beschreibung.block.includes('Premium-Baumwolle')], [false, false]);
@@ -472,6 +477,35 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
   // benoetigteVersandIds nennt die Nummern des gemeinten Produkts, damit die Rechnung nie auf eine fehlende Rate trifft
   const ids = benoetigteVersandIds({ katalog, bestand });
   ist('benoetigteVersandIds enthält 5522–5529 (gemeintes Produkt in White)', [5522, 5523, 5524, 5525, 5526, 5527, 5528, 5529].map((i) => ids.includes(i)), Array(8).fill(true));
+}
+
+// ── Produkt-Metafeld «Material» (Befund 13): ein Wert, mehrere Materialien → Blocker, nie geschrieben
+{
+  const mf = (h, wert) => { const b = klon(bestand); if (wert === 'fehlt') delete b[h].materialMetafeld; else b[h].materialMetafeld = wert; return planeAlles({ katalog, beschreibungen, versand, bestand: b, skuPruefung, skuIndex, skuIndexAbgeschnitten, nur: [h] }).produkte[0]; };
+  const code = (p) => p.befunde.filter((x) => x.code.startsWith('material-metafeld')).map((x) => [x.schwere, x.code]);
+  const PO = 'poster-zum-selbstgestalten';
+  ist('Datenpaket: Metafeld «Material» gelesen (Poster, Hoodie, iPhone gesetzt, T-Shirt leer; am 27.10.2026 frisch gemessen)', ['poster-zum-selbstgestalten', 'unisex-hoodie-selbst-gestalten', 'unisex-t-shirt-selbst-gestalten', 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten'].map((h) => bestand[h].materialMetafeld),
+    ['Papier (matt)', 'Baumwolle, Polyester, Elastan', null, 'Polycarbonat, Polyurethan (TPU)']);
+  ist('Poster mit Wert «Papier (matt)» → Blocker material-metafeld', code(mf(PO, 'Papier (matt)')), [['blocker', 'material-metafeld']]);
+  const b = mf(PO, 'Papier (matt)').befunde.find((x) => x.code === 'material-metafeld');
+  wahr('Befundtext: nennt den Wert, beide Verwendungen, dass das Werkzeug das Feld NIE schreibt, beide Wege und den Bestätigungsbefehl',
+    [/«Papier \(matt\)»/, /Merchant-Center-Attribut/, /Spezifikationen & Details/, /schreibt dieses Feld NIE/, /\(a\) das Feld vor LIVE leeren/, /\(b\) es bewusst stehen lassen/, /BEFUND_OK=poster-zum-selbstgestalten:material-metafeld/].every((re) => re.test(b.text)), b.text.slice(0, 200));
+  ist('Poster mit leerem Feld (null, leer, Leerzeichen) → kein Befund: er verschwindet von selbst, sobald der Besitzer es geleert hat', [code(mf(PO, null)), code(mf(PO, '')), code(mf(PO, '  '))], [[], [], []]);
+  ist('Datenpaket ohne dieses Feld → nur Hinweis «material-metafeld-ungeprueft», kein stilles Durchwinken, keine Sperre', code(mf(PO, 'fehlt')), [['hinweis', 'material-metafeld-ungeprueft']]);
+  ist('Mit nur EINEM Material (alles ausgeschlossen) gibt es nichts zu widersprechen', materialMetafeldBefund({ handle: 'h', bestandWert: 'a', materialWerte: ['a'], wert: 'x' }), []);
+  ist('Das Metafeld ändert den Plan-Hash nicht (es wird nie geschrieben)', [mf(PO, 'Papier (matt)').beschreibung.nachher === mf(PO, null).beschreibung.nachher, hashVon(aktionenFuerHash({ produkte: [mf(PO, 'A')] })) === hashVon(aktionenFuerHash({ produkte: [mf(PO, 'B')] }))], [true, true]);
+}
+
+// ── Plan-Hash bei der Wiederaufnahme (Befund 10): neu + schon angelegt zählen zusammen
+{
+  const p0 = P('poster-zum-selbstgestalten');
+  const halb = klon(bestand); const hb = halb['poster-zum-selbstgestalten'];
+  hb.options = [{ name: 'Material', position: 1, values: ['Poster matt', 'Foto-Glanzpapier'] }, { name: 'Grösse', position: 2, values: [...hb.options[0].values] }];
+  hb.variants = hb.variants.map((v) => ({ ...v, selectedOptions: [{ name: 'Material', value: 'Poster matt' }, ...v.selectedOptions] }));
+  for (const n of p0.neu.filter((x) => x.optionen.Material === 'Foto-Glanzpapier')) hb.variants.push({ id: 'gid://shopify/ProductVariant/' + n.pf, sku: n.sku, price: n.preisChf.toFixed(2), inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Material', value: n.optionen.Material }, { name: 'Grösse', value: n.optionen['Grösse'] }] });
+  const p1 = planeAlles({ katalog, beschreibungen, versand, bestand: halb, skuPruefung, skuIndex, skuIndexAbgeschnitten, nur: ['poster-zum-selbstgestalten'] });
+  ist('Halbzustand (ein Material schon da): weniger neue, mehr schonDa, gleiche Summe', [p1.produkte[0].neu.length, p1.produkte[0].schonDa.length, p1.produkte[0].neu.length + p1.produkte[0].schonDa.length], [p0.neu.length - 3, 3, p0.neu.length]);
+  ist('Halbzustand: DERSELBE Plan-Hash wie vor dem Abbruch (der geprüfte Plan bleibt gültig)', p1.hash, planeAlles({ katalog, beschreibungen, versand, bestand, skuPruefung, skuIndex, skuIndexAbgeschnitten, nur: ['poster-zum-selbstgestalten'] }).hash);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

@@ -10,14 +10,15 @@ import { fileURLToPath } from 'node:url';
 
 const REPO = fileURLToPath(new URL('..', import.meta.url));
 const DATEIEN = [
-  'automation/pod_auswahl.mjs', 'automation/pod_auswahl_test.mjs', 'automation/printful_sync.mjs', 'automation/printful_reprice.mjs',
+  'automation/pod_auswahl.mjs', 'automation/pod_auswahl_test.mjs', 'automation/printful_sync.mjs', 'automation/printful_sync_test.mjs', 'automation/printful_reprice.mjs',
   ...['pod_preise', 'printful_platzierung', 'pod_auswahl_spec', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}.mjs`),
   ...['pod_preise', 'printful_platzierung', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}_test.mjs`),
   'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_host.mjs',
   ...readdirSync(join(REPO, 'dropship/pod-auswahl')).filter((f) => f.endsWith('.json')).map((f) => `dropship/pod-auswahl/${f}`),
+  'dropship/pod-auswahl/README.md', 'automation/pod_auswahl_mutation.mjs',   // vom Test «kein Eszett» gelesen
 ];
 const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
-const ALLE = [...LIB, 'pod_auswahl_test.mjs'];
+const ALLE = [...LIB, 'pod_auswahl_test.mjs', 'printful_sync_test.mjs'];
 
 // { name, datei, von, zu, alle? (alle Vorkommen ersetzen, sonst muss `von` genau einmal vorkommen), tests }
 const L = (n) => `automation/lib/${n}.mjs`;
@@ -45,10 +46,33 @@ export const MUTANTEN = [
   { name: 'Preis wird NICHT gegen den Katalogpreis gerechnet (Einkauf 1 USD)', datei: L('pod_auswahl_plan'), von: 'einkaufUsd: Number(kv.price), versandUsd: rate.usd }, ctx.regel)', zu: 'einkaufUsd: 1, versandUsd: rate.usd }, ctx.regel)', alle: true, tests: ALLE },
   // ── Platzierung
   { name: 'PHONE-CASE fehlt in den Einzel-Typen', datei: L('printful_platzierung'), von: "['MUG', 'PHONE-CASE', 'STICKER', 'POSTER', 'FRAMED-POSTER'", zu: "['MUG', 'STICKER', 'POSTER', 'FRAMED-POSTER'", tests: ALLE },
-  { name: 'eine einzige Platzierung wird nicht erkannt', datei: L('printful_platzierung'), von: 'if (dr.length === 1) return dr[0];', zu: 'if (false) return dr[0];', tests: ALLE },
-  { name: 'Rückseite wird immer zu «front»', datei: L('printful_platzierung'), von: 'MEHRLAGEN_TYPEN.includes(typ)) return s === \'back\' ? \'back\' : \'front\';', zu: "MEHRLAGEN_TYPEN.includes(typ)) return 'front';", tests: ALLE },
-  { name: 'Rückfall vergisst «POSTER»', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET'].includes(t)", zu: "'STICKER', 'CANVAS', 'MAGNET'].includes(t)", tests: ALLE },
-  { name: 'printful_sync ignoriert den Printful-Produkttyp', datei: 'automation/printful_sync.mjs', von: 'platzierungFuer({produkt:pfProdukt', zu: 'platzierungFuer({produkt:null', tests: ALLE },
+  { name: 'eine einzige Platzierung wird nicht erkannt', datei: L('printful_platzierung'), von: 'if (dr.length === 1) return { platzierung: dr[0]', zu: 'if (false) return { platzierung: dr[0]', tests: ALLE },
+  { name: 'Rückseite wird immer zu «front»', datei: L('printful_platzierung'), von: "return { platzierung: s, gesichert, quelle: 'printful-typ'", zu: "return { platzierung: 'front', gesichert, quelle: 'printful-typ'", tests: ALLE },
+  { name: 'Rückfall vergisst «POSTER»', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET']);", zu: "'STICKER', 'CANVAS', 'MAGNET']);", tests: ALLE },
+  { name: 'Rückfall vergisst «CANVAS»', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET']);", zu: "'STICKER', 'POSTER', 'MAGNET']);", tests: ALLE },
+  { name: 'Rückfall vergisst «MAGNET» (echte Shop-Produktart, 7 Produkte)', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET']);", zu: "'STICKER', 'POSTER', 'CANVAS']);", tests: ALLE },
+  { name: 'Rückfall vergisst «MUG»', datei: L('printful_platzierung'), von: "const ALTE_LISTE = Object.freeze(['MUG', 'PHONE-CASE'", zu: "const ALTE_LISTE = Object.freeze(['PHONE-CASE'", tests: ALLE },
+  { name: 'EINZEL_TYPEN nimmt das unbelegte «MAGNET» wieder auf', datei: L('printful_platzierung'), von: "'POSTER', 'FRAMED-POSTER', 'CANVAS']);", zu: "'POSTER', 'FRAMED-POSTER', 'CANVAS', 'MAGNET']);", tests: ALLE },
+  { name: 'MEHRLAGEN_TYPEN nimmt das unbelegte «DIRECT-TO-FABRIC» wieder auf', datei: L('printful_platzierung'), von: "['T-SHIRT', 'CUT-SEW']);", zu: "['T-SHIRT', 'CUT-SEW', 'DIRECT-TO-FABRIC']);", tests: ALLE },
+  { name: 'Rückfall gilt ohne bekannte Shop-Art als gesichert', datei: L('printful_platzierung'), von: "return { platzierung, gesichert: bekannt, quelle: 'rueckfall'", zu: "return { platzierung, gesichert: true, quelle: 'rueckfall'", tests: ALLE },
+  { name: 'die Dateiliste wird für die gewünschte Seite nicht befragt', datei: L('printful_platzierung'), von: 'const gesichert = dr.length ? kennt : true;', zu: 'const gesichert = true;', tests: ALLE },
+  { name: 'Rückseite wird in der Dateiliste nicht gesucht (vorne zählt)', datei: L('printful_platzierung'), von: "const kennt = s === 'back' ? dr.includes('back') :", zu: "const kennt = s === 'back' ? (dr.includes('default') || dr.includes('front')) :", tests: ALLE },
+  { name: 'vorübergehender Fehler wird dauerhaft gemerkt', datei: L('printful_platzierung'), von: "if (erg.art !== 'nicht-lesbar') m.set(k, erg);", zu: 'm.set(k, erg);', tests: ALLE },
+  { name: 'HTTP 5xx und 429 werden nicht wiederholt', datei: L('printful_platzierung'), von: 'status === 0 || status === 408 || status === 429 || status >= 500;', zu: 'status === 0;', tests: ALLE },
+  { name: 'HTTP 404 wird wie ein vorübergehender Fehler wiederholt', datei: L('printful_platzierung'), von: 'status === 0 || status === 408 || status === 429 || status >= 500;', zu: 'status === 0 || status === 404 || status === 408 || status === 429 || status >= 500;', tests: ALLE },
+  { name: 'Retry-After von Printful wird ignoriert', datei: L('printful_platzierung'), von: '((r && Number(r.retryAfter)) || 0) * 1000', zu: '0', tests: ALLE },
+  { name: 'ungesicherte Platzierung setzt needReview nicht', datei: L('printful_platzierung'), von: 'needReview: hinweise.length > 0,', zu: 'needReview: false,', tests: ALLE },
+  // ── Bestellweg (printful_sync.mjs): Verhalten gegen gefälschtes fetch (printful_sync_test.mjs), nicht nur Quelltext
+  { name: 'Bestellweg: Seite der Druckdatei geht verloren (alles «front»)', datei: 'automation/printful_sync.mjs', von: 'pfFiles.push(plz.files[i]);', zu: "pfFiles.push({type:'front',url:f.url});", tests: ALLE },
+  { name: 'Bestellweg: Shop-Produktart wird nicht als Rückfall mitgegeben', datei: 'automation/printful_sync.mjs', von: 'shopTyp:li.product&&li.product.productType', zu: "shopTyp:''", tests: ALLE },
+  { name: 'Bestellweg: falscher Printful-Pfad (/products/<id> statt /products/variant/<id>)', datei: 'automation/printful_sync.mjs', von: "pf('/products/variant/'+vid", zu: "pf('/products/'+vid", tests: ALLE },
+  { name: 'Bestellweg: Variantennummer geht nicht an die Abfrage', datei: 'automation/printful_sync.mjs', von: 'platzierungenFuerDateien({vid,dateien:files', zu: 'platzierungenFuerDateien({vid:0,dateien:files', tests: ALLE },
+  { name: 'Bestellweg: die Druckdateien gehen nicht an die Platzierung', datei: 'automation/printful_sync.mjs', von: 'platzierungenFuerDateien({vid,dateien:files', zu: 'platzierungenFuerDateien({vid,dateien:[]', tests: ALLE },
+  { name: 'Bestellweg: HTTP-Status der Variantenabfrage geht verloren (alles gilt als 200)', datei: 'automation/printful_sync.mjs', von: 'return {status:r.status,result:', zu: 'return {status:200,result:', tests: ALLE },
+  { name: 'Bestellweg: ungesicherte Platzierung macht den Auftrag nicht zum Entwurf', datei: 'automation/printful_sync.mjs', von: 'if(plz.needReview){ needReview=true;', zu: 'if(plz.needReview){', tests: ALLE },
+  { name: 'Bestellweg: Variantenabfrage ohne Zeitlimit', datei: 'automation/printful_sync.mjs', von: 'signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined', zu: 'signal:undefined', tests: ALLE },
+  { name: 'Bestellweg: die Bestellung selbst bekommt ein Zeitlimit (eine zweite Bestellung wäre möglich)', datei: 'automation/printful_sync.mjs', von: "const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items});", zu: "const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items},20000);", tests: ALLE },
+  { name: 'Bestellweg: ein Entwurf wird trotzdem bestätigt', datei: 'automation/printful_sync.mjs', von: 'const confirm = AUTO_CONFIRM && !needReview;', zu: 'const confirm = AUTO_CONFIRM;', tests: ALLE },
   // ── Schreibweg
   { name: 'Tageslimit wird nicht erkannt', datei: L('pod_auswahl_schreiben'), von: 'const DROSSEL = /VARIANT_THROTTLE|Daily variant creation limit/i;', zu: 'const DROSSEL = /NIE_TREFFER/i;', tests: ALLE },
   { name: 'neue Varianten werden mit Bestandsführung angelegt', datei: L('pod_auswahl_schreiben'), von: 'inventoryItem: { sku: v.sku, tracked: false, requiresShipping: true },', zu: 'inventoryItem: { sku: v.sku, tracked: true, requiresShipping: true },', tests: ALLE },
@@ -98,17 +122,58 @@ export const MUTANTEN = [
   // ── Kommando
   { name: 'LIVE prüft den geprüften Plan nicht mehr', datei: 'automation/pod_auswahl.mjs', von: 'if (geprueft.hash !== plan.hash) {', zu: 'if (false) {', tests: ALLE },
   { name: 'LIVE zusammen mit OFFLINE wird nicht abgelehnt', datei: 'automation/pod_auswahl.mjs', von: 'if (LIVE && OFFLINE) throw', zu: 'if (false) throw', tests: ALLE },
+  // ── Korrekturrunde 2 (27.10.2026): Tageslimit mitten im Produkt, Optionsreihenfolge, Beschreibung, Handle, Budget, Datenalter, Metafeld, API-Version
+  { name: 'Alle Optionswerte VOR allen Varianten (alter Fehler: ausgegraute Werte bei Tageslimit)', datei: L('pod_auswahl_schreiben'), von: 'const gruppen = reihe.map((w) => ({ wert: w, varianten: offen.filter((n) => n.optionen[matName] === w) })).filter((g) => g.varianten.length);', zu: "const gruppen = offen.length ? [{ wert: 'alle', varianten: offen }] : [];", tests: ALLE },
+  { name: 'Leerer Optionswert wird nach gescheitertem Aufruf nicht entfernt', datei: L('pod_auswahl_schreiben'), von: 'try { entfernt = await leereWerteEntfernen({ gql, log, handle: p.handle, hinzu }); }', zu: 'try { entfernt = []; }', tests: ALLE },
+  { name: 'Aufräumen löscht auch Optionswerte, die Varianten tragen', datei: L('pod_auswahl_schreiben'), von: 'if (!ov || ist.variants.some((v) => v.optionen[h.optionName] === h.wert)) continue;', zu: 'if (!ov) continue;', tests: ALLE },
+  { name: 'Zustandstext nach dem Tageslimit nennt die Wiederaufnahme nicht', datei: L('pod_auswahl_schreiben'), von: 'Wiederaufnahme: denselben Befehl später wiederholen', zu: 'Danach ist Schluss', tests: ALLE },
+  { name: 'Optionsreihenfolge wird nur geprüft, nicht hergestellt', datei: L('pod_auswahl_schreiben'), von: 'if (ok(ist)) return ist;', zu: 'return ist;', tests: ALLE },
+  { name: 'Reihenfolge nach productOptionsReorder wird nicht mehr frisch geprüft', datei: L('pod_auswahl_schreiben'), von: 'if (!ok(neu)) throw new AbweichungFehler(', zu: 'if (false) throw new AbweichungFehler(', tests: ALLE },
+  { name: 'Reihenfolge wird nur direkt nach dem Anlegen hergestellt, nicht bei der Wiederaufnahme', datei: L('pod_auswahl_schreiben'), von: "    log(`   Option «${matName}» angelegt, vorhandene Varianten = «${p.optionen.bestandsWert}»`);\n  }\n  // 3b. Optionsreihenfolge herstellen (auch bei Wiederaufnahme: eine halbe Vorrunde kann «Material» an falscher Stelle zurückgelassen haben)\n  ist = await stelleReihenfolgeHer({ gql, log, p, ist });", zu: "    log(`   Option «${matName}» angelegt, vorhandene Varianten = «${p.optionen.bestandsWert}»`);\n    ist = await stelleReihenfolgeHer({ gql, log, p, ist });\n  }", tests: ALLE },
+  { name: 'Fremde Option im Shop wird nicht erkannt (Reorder rät)', datei: L('pod_auswahl_schreiben'), von: "if ([...optionsReihe(ist)].sort().join('|') !== [...soll].sort().join('|')) throw new AbweichungFehler(", zu: "if (false) throw new AbweichungFehler(", tests: ALLE },
+  { name: 'Beschreibung: fremde Änderung VOR dem Lauf wird nicht bemerkt', datei: L('pod_auswahl_schreiben'), von: "if (beschreibungSeitPlanVeraendert(p, ist.descriptionHtml)) vorab.push(", zu: "if (false) vorab.push(", tests: ALLE },
+  { name: 'Beschreibung: fremde Änderung WÄHREND des Laufs wird überschrieben', datei: L('pod_auswahl_schreiben'), von: "if (beschreibungSeitPlanVeraendert(p, aktuell.descriptionHtml)) throw new AbweichungFehler(", zu: "if (false) throw new AbweichungFehler(", tests: ALLE },
+  { name: 'Beschreibungsvergleich zählt den eigenen Block als fremde Änderung mit', datei: L('pod_auswahl_schreiben'), von: "return nurText(ohneBlock(String(html ?? ''))) !== nurText(ohneBlock(String(p.beschreibung.vorher)));", zu: "return nurText(String(html ?? '')) !== nurText(ohneBlock(String(p.beschreibung.vorher)));", tests: ALLE },
+  { name: 'Vorhandener Handle wird ohne Prüfung übernommen', datei: L('pod_auswahl_schreiben'), von: 'if (fremd.length) throw new AbweichungFehler(', zu: 'if (false) throw new AbweichungFehler(', tests: ALLE },
+  { name: 'Vorhandenes Produkt: Status ACTIVE fällt nicht auf', datei: L('pod_auswahl_schreiben'), von: "if (schon.status !== 'DRAFT') a.push(", zu: 'if (false) a.push(', tests: ALLE },
+  { name: 'Vorhandenes Produkt: fremde SKU fällt nicht auf', datei: L('pod_auswahl_schreiben'), von: 'for (const v of schon.variants) if (!erlaubt.has(v.sku)) a.push(', zu: 'for (const v of schon.variants) if (false) a.push(', tests: ALLE },
+  { name: 'Vorhandenes Produkt: zusätzliche Tags fallen nicht auf', datei: L('pod_auswahl_schreiben'), von: 'if (tags !== soll) a.push(', zu: 'if (false) a.push(', tests: ALLE },
+  { name: 'Budget-Vorprüfung fehlt', datei: L('pod_auswahl_schreiben'), von: 'if (budget !== null && p.neu.length > budget) {', zu: 'if (false) {', tests: ALLE },
+  { name: 'Budget wird nach einem fertigen Produkt nicht abgezogen', datei: L('pod_auswahl_schreiben'), von: 'if (budget !== null) budget -= r.neu;', zu: '', tests: ALLE },
+  { name: 'Das Werkzeug überschreibt das Material-Metafeld eines vorhandenen Produkts', datei: L('pod_auswahl_schreiben'), von: '  return { varianten: nach.variants.length, neu: offen.length };\n}', zu: "  await gql(M_META, { mf: [{ ownerId: ist.id, namespace: 'mm-google-shopping', key: 'material', type: 'single_line_text_field', value: 'X' }] });\n  return { varianten: nach.variants.length, neu: offen.length };\n}", tests: ALLE },
+  { name: 'Plan-Hash zählt schon angelegte Varianten nicht mit (Wiederaufnahme ändert den Hash)', datei: L('pod_auswahl_plan'), von: 'neu: [...(p.schonDa || []), ...p.neu].map(', zu: 'neu: [...p.neu].map(', tests: ALLE },
+  { name: 'Metafeld «Material» sperrt LIVE nicht mehr (nur Hinweis)', datei: L('pod_auswahl_plan'), von: "return [{ schwere: 'blocker', code: 'material-metafeld', wert: w,", zu: "return [{ schwere: 'hinweis', code: 'material-metafeld', wert: w,", tests: ALLE },
+  { name: 'Leeres Metafeld «Material» zählt als Befund', datei: L('pod_auswahl_plan'), von: '  if (!w) return [];\n', zu: '', tests: ALLE },
+  { name: 'Nicht gelesenes Metafeld «Material» wird stillschweigend durchgewinkt', datei: L('pod_auswahl_plan'), von: "if (wert === undefined) return [{ schwere: 'hinweis', code: 'material-metafeld-ungeprueft',", zu: "if (wert === undefined) return []; if (false) return [{ schwere: 'hinweis', code: 'material-metafeld-ungeprueft',", tests: ALLE },
+  { name: 'Metafeld «Material» wird bei nur einem Material gemeldet', datei: L('pod_auswahl_plan'), von: 'if (materialWerte.length < 2) return [];', zu: '', tests: ALLE },
+  { name: 'Samsung: Hartschale matt und glänzend wieder als zwei (byte-identische) Bilder', datei: L('pod_auswahl_spec'), von: "    bilder: [\n      { url: 'https://files.cdn.printful.com/products/686/21474_1737960312.jpg', alt: 'Samsung-Hülle Hartschale – blanko, selbst gestalten – LuxeStyle' },", zu: "    bilder: [\n      { url: 'https://files.cdn.printful.com/products/686/21474_1737960312.jpg', alt: 'Samsung-Hülle Hartschale matt – blanko, selbst gestalten – LuxeStyle' },\n      { url: 'https://files.cdn.printful.com/products/686/21473_1738068080.jpg', alt: 'Samsung-Hülle Hartschale glänzend – blanko, selbst gestalten – LuxeStyle' },", tests: ALLE },
+  { name: 'Samsung: Material-Metafeld behauptet für alle vier Ausführungen Polyurethan (TPU)', datei: L('pod_auswahl_spec'), von: "value: 'Polycarbonat (PC), bei der Hartschale mit Innenfutter aus Polyurethan (TPU)' },", zu: "value: 'Polycarbonat, Polyurethan (TPU)' },", tests: ALLE },
+  { name: 'API-Version fällt auf das nicht mehr unterstützte 2025-01 zurück', datei: L('pod_auswahl_gql'), von: "export const API_VERSION = '2026-01';", zu: "export const API_VERSION = '2025-01';", tests: ALLE },
+  { name: 'Schreibabfrage nutzt wieder das veraltete productByHandle', datei: L('pod_auswahl_schreiben'), von: 'productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description } category{ id }', zu: 'productByHandle(handle:$h){ id handle title status productType vendor tags descriptionHtml seo{ title description } category{ id }', tests: ALLE },
+  { name: 'Bestandsabfrage nutzt wieder das veraltete productByHandle', datei: L('pod_auswahl_daten'), von: 'query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description }\n  materialMetafeld', zu: 'query($h:String!){ productByHandle(handle:$h){ id handle title status productType vendor tags descriptionHtml seo{ title description }\n  materialMetafeld', tests: ALLE },
+  { name: 'Datenpaket: zu altes Alter wird nicht bemerkt', datei: L('pod_auswahl_daten'), von: 'else if (h > maxStunden) out.push(', zu: 'else if (false) out.push(', tests: ALLE },
+  { name: 'Datenpaket: fehlender Stand gilt als frisch', datei: L('pod_auswahl_daten'), von: 'if (h === null) out.push(', zu: 'if (false) out.push(', tests: ALLE },
+  { name: 'Datenpaket: Beschreibungen und SKU-Prüfung werden nicht auf ihr Alter geprüft', datei: L('pod_auswahl_daten'), von: "for (const k of ['katalog', 'beschreibungen', 'versand', 'skuPruefung']) {", zu: "for (const k of ['katalog', 'versand']) {", tests: ALLE },
+  { name: 'LIVE verweigert alte Daten nicht (nur Warnung)', datei: 'automation/pod_auswahl.mjs', von: 'if (LIVE) throw new Error(`LIVE=1 verweigert: Printful-Daten zu alt', zu: 'if (false) throw new Error(`LIVE=1 verweigert: Printful-Daten zu alt', tests: ALLE },
+  { name: 'Das Tor ruft die Gegenprüfung bei Printful nicht auf', datei: 'automation/pod_auswahl.mjs', von: 'const abw = await pruefeVarianten(plan);', zu: 'const abw = [];', tests: ALLE },
+  { name: 'Das Tor lässt auch einen fremden Hash passieren', datei: 'automation/pod_auswahl.mjs', von: 'if (geprueft.hash !== plan.hash) { err(', zu: 'if (false) { err(', tests: ALLE },
+  { name: 'Das Tor reicht das Variantenbudget nicht an den Schreibweg', datei: 'automation/pod_auswahl.mjs', von: 'ledgerPfad, sicherungsDir, befundOk, nur, variantenBudget, log });', zu: 'ledgerPfad, sicherungsDir, befundOk, nur, log });', tests: ALLE },
+  { name: 'Gegenprüfung bei Printful ignoriert den Einkaufspreis', datei: L('pod_auswahl_daten'), von: 'if (!(Math.abs(Number(pv.price) - Number(v.einkaufUsd)) <= 0.005)) abw.push(', zu: 'if (false) abw.push(', tests: ALLE },
+  { name: 'Gegenprüfung bei Printful ignoriert das EU-Lager', datei: L('pod_auswahl_daten'), von: "if (eu === undefined ? pv.in_stock !== true : eu !== 'in_stock') abw.push(", zu: 'if (false) abw.push(', tests: ALLE },
+  { name: 'Gegenprüfung bei Printful: nicht lesbare Variante gilt als in Ordnung', datei: L('pod_auswahl_daten'), von: "if (status !== 200 || !pv) { abw.push(`Printful ${v.pf} (${v.sku}): nicht lesbar (HTTP ${status})`); continue; }", zu: 'if (status !== 200 || !pv) { continue; }', tests: ALLE },
+  { name: 'DATEN=holen übernimmt alte Versandraten (der Stand «heute» wäre gelogen)', datei: 'automation/pod_auswahl.mjs', von: "const datei = { stand: heute, ziel: ziel || 'CH 8001 (Printful /shipping/rates, STANDARD, 1 Stück, USD)', raten: {} };", zu: "const datei = existsSync(vp) ? JSON.parse(readFileSync(vp, 'utf8')) : { stand: heute, ziel: 'CH', raten: {} }; datei.stand = heute;", tests: ALLE },
   // ── Daten
   { name: 'Versand: nicht STANDARD, sondern die erste Rate', datei: L('pod_auswahl_daten'), von: "liste.find((x) => x.id === 'STANDARD') ||", zu: 'liste[0] ||', tests: ALLE },
   { name: 'EU-Lager des Katalogs wird immer als lieferbar gespeichert', datei: L('pod_auswahl_daten'), von: 'eu: (v.avail && v.avail.EU) ?? null', zu: "eu: 'in_stock'", tests: ALLE },
 ];
 
 function zaehle(text, teil) { let n = 0, i = -1; while ((i = text.indexOf(teil, i + 1)) >= 0) n++; return n; }
-function testen(wurzel, tests) {
+/** Führt die Testdateien aus und gibt die roten zurück. `stopp`: beim ersten roten aufhören (für Mutanten genügt EIN roter Test; die schnellen Dateien stehen vorn, so bleibt die Probe in der CI kurz). */
+function testen(wurzel, tests, stopp = false) {
   const fehler = [];
   for (const t of tests) {
     const r = spawnSync(process.execPath, [join(wurzel, 'automation', t)], { cwd: wurzel, encoding: 'utf8', timeout: 120000, env: { PATH: process.env.PATH, HOME: process.env.HOME } });
-    if (r.status !== 0) fehler.push(t.replace(/^lib\//, ''));
+    if (r.status !== 0) { fehler.push(t.replace(/^lib\//, '')); if (stopp) break; }
   }
   return fehler;
 }
@@ -127,7 +192,7 @@ export function mutationsprobe({ log = console.log, nur = null } = {}) {
       const n = zaehle(original, m.von);
       if (n === 0 || (n > 1 && !m.alle)) { log(`✗ Mutation nicht anwendbar (${n}× gefunden): ${m.name}`); return { exit: 2, ueberlebt, erkannt }; }
       writeFileSync(pfad, original.split(m.von).join(m.zu));
-      const rot = testen(wurzel, m.tests);
+      const rot = testen(wurzel, m.tests, true);
       writeFileSync(pfad, original);                                    // zurücksetzen
       if (rot.length) { erkannt++; log(`✓ erkannt  ${m.name.padEnd(78)} ← ${rot.join(', ')}`); } else { ueberlebt.push(m.name); log(`✗ ÜBERLEBT ${m.name}`); }
     }

@@ -15,7 +15,7 @@
  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { platzierungFuer, neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
+import { platzierungenFuerDateien, neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'';
 const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
@@ -43,9 +43,10 @@ async function clientCredentials(){ const r=await fetch(`https://${SHOP}/admin/o
 async function resolveToken(){ if(ADMIN_TOKEN){ const s=await works(ADMIN_TOKEN); if(s) return ADMIN_TOKEN; } if(CID&&CSEC){ const t=await clientCredentials(); if(t&&await works(t)) return t; } console.error('❌ Keine funktionierende Shopify-Auth.'); process.exit(0); }
 
 // ---------- Printful ----------
-async function pf(path,method,body){ const headers={'Authorization':'Bearer '+PF_KEY,'Content-Type':'application/json'}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;
-  const r=await fetch('https://api.printful.com'+path,{method:method||'GET',headers,body:body?JSON.stringify(body):undefined});
-  const j=await r.json().catch(()=>({})); return {ok:r.ok,status:r.status,j}; }
+// timeoutMs: nur für Abfragen (GET) gesetzt; ohne Zeitlimit hinge ein Lauf an einer nicht antwortenden Printful-API. retryAfter: Sekunden aus dem Kopf «Retry-After» (bei 429).
+async function pf(path,method,body,timeoutMs){ const headers={'Authorization':'Bearer '+PF_KEY,'Content-Type':'application/json'}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;
+  const r=await fetch('https://api.printful.com'+path,{method:method||'GET',headers,body:body?JSON.stringify(body):undefined,signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined});
+  const j=await r.json().catch(()=>({})); return {ok:r.ok,status:r.status,j,retryAfter:parseInt((r.headers&&r.headers.get&&r.headers.get('retry-after'))||'0',10)||0}; }
 
 // ---------- Telegram ----------
 async function tg(text){ if(!TG_TOKEN||!TG_CHAT) return; try{ await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text,parse_mode:'HTML',disable_web_page_preview:true})}); }catch{} }
@@ -66,9 +67,11 @@ async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine 
 // ---------- SKU → Printful-Variante ----------
 function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
 // Platzierung: aus dem ECHTEN Printful-Produkttyp der Variante (GET /products/variant/<id>), nicht aus der Shopify-productType-Zeichenkette
-// (die heisst «Handy-Zubehör», «Tassen & Becher» … und traf 'PHONE-CASE'/'MUG' nie → Hüllen/Tassen wurden mit 'front' bestellt). Rückfall: alte Zuordnung.
-// Logik und Tests: lib/printful_platzierung.mjs
-const variantProdukt=neuerPlatzierungsCache(async vid=>{ const r=await pf('/products/variant/'+vid); return r.ok?(r.j&&r.j.result):null; });
+// (die heisst «Handy-Zubehör», «Tassen & Becher» … und traf 'PHONE-CASE'/'MUG' nie → diese Produkte bekamen 'front'; der Printful-Katalog führt dort nur 'default' und 'preview').
+// Ist die Variante nicht lesbar (Netz, 429, 5xx: nach Wiederholung; 404), gilt die alte Zuordnung über die Shop-Produktart; ist die nicht belegt, bleibt der Auftrag Entwurf (needReview).
+// Logik: lib/printful_platzierung.mjs (platzierungenFuerDateien, rein); Verhalten dieses Klebers: automation/printful_sync_test.mjs (gefälschtes fetch).
+const PLATZ_PAUSE_MS=Math.max(0,parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS||'2000',10)||0);
+const variantProdukt=neuerPlatzierungsCache(async vid=>{ const r=await pf('/products/variant/'+vid,'GET',null,20000); return {status:r.status,result:r.ok?(r.j&&r.j.result):null,retryAfter:r.retryAfter}; },{pauseMs:PLATZ_PAUSE_MS});
 
 const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
   id name email tags
@@ -107,11 +110,11 @@ async function tagOrder(tok,id,tags,pfId){ if(DRY) return;
       if(!files.length){ const mf=li.product&&li.product.metafield&&li.product.metafield.value; if(mf && /^https?:\/\//.test(mf)) files=[{side:'front',url:mf}]; }
       if(!vid){ skipped++; reviewMsg.push(`${li.title}: SKU ohne Printful-Variante`); needReview=true; continue; }
       if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
-      const pfProdukt=await variantProdukt(vid);
-      if(!pfProdukt) console.warn(`⚠️ ${o.name}: Printful-Variante ${vid} nicht lesbar → Platzierung nach Shop-Produktart (Rückfall)`);
+      const plz=await platzierungenFuerDateien({vid,dateien:files,shopTyp:li.product&&li.product.productType,holeProdukt:variantProdukt});
+      if(plz.needReview){ needReview=true; for(const h of plz.hinweise){ reviewMsg.push(`${li.title}: ${h}`); console.warn(`⚠️ ${o.name}: ${h} → Auftrag bleibt Entwurf`); } }
       const pfFiles=[];
-      for(const f of files){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
-        pfFiles.push({type:platzierungFuer({produkt:pfProdukt,seite:f.side,shopTyp:li.product&&li.product.productType}),url:f.url}); }
+      for(const [i,f] of files.entries()){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
+        pfFiles.push(plz.files[i]); }
       items.push({variant_id:vid,quantity:li.quantity||1,files:pfFiles});
     }
     if(!items.length){ continue; }

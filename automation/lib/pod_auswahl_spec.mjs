@@ -253,13 +253,16 @@ export const SPEC = [
     tags: ['huelle', 'natel', 'printful_personalized_product', 'samsung', 'sg-accessoires', 'sort-handy-huellen', 'wunschdesign'],
     maxVarianten: 100,
     modelle: { quellen: [686, 267, 684] },                            // Vereinigung der lieferbaren Modelle aus den drei Katalogen
-    bilder: [  // Printful-Katalogbilder (HTTP 200 am 27.10.2026 gemessen), je Material eines
-      { url: 'https://files.cdn.printful.com/products/686/21474_1737960312.jpg', alt: 'Samsung-Hülle Hartschale matt – blanko, selbst gestalten – LuxeStyle' },
-      { url: 'https://files.cdn.printful.com/products/686/21473_1738068080.jpg', alt: 'Samsung-Hülle Hartschale glänzend – blanko, selbst gestalten – LuxeStyle' },
+    // Printful-Katalogbilder (HTTP 200 am 27.10.2026 gemessen), je Ausführung eines. Die Hartschale hat nur EIN Bild: «matt» (686/21474) und «glänzend» (686/21473) sind
+    // byte-identisch (md5 40a33932fc6a72b8dc93722d5c7de61e, je 31 841 Byte, gemessen 27.10.2026); zwei Medien mit den Alt-Texten «matt» und «glänzend» behaupteten etwas, das das Bild nicht zeigt.
+    bilder: [
+      { url: 'https://files.cdn.printful.com/products/686/21474_1737960312.jpg', alt: 'Samsung-Hülle Hartschale – blanko, selbst gestalten – LuxeStyle' },
       { url: 'https://files.cdn.printful.com/products/267/21483_1738053270.jpg', alt: 'Samsung-Hülle klar – blanko, selbst gestalten – LuxeStyle' },
       { url: 'https://files.cdn.printful.com/products/684/21480_1738586483.jpg', alt: 'Samsung-Hülle Slim – blanko, selbst gestalten – LuxeStyle' },
     ],
-    // Metafelder wie beim iPhone-Produkt (gelesen am 27.10.2026): Lieferzeit «pod», Google-Kategorie Handyhüllen, gender/age; Material aus der Printful-Beschreibung 686
+    // Metafelder wie beim iPhone-Produkt (gelesen am 27.10.2026): Lieferzeit «pod», Google-Kategorie Handyhüllen, gender/age.
+    // «material» ist EIN Wert für vier Ausführungen (Merchant-Attribut UND Zeile «Material» in den Produktdetails): nur, was für ALLE vier belegt ist. Polycarbonat (PC) steht bei allen
+    // vier in den Printful-Beschreibungen (686, 267, 684); das Innenfutter aus Polyurethan (TPU) nur bei der Hartschale (686). Darum nennt der Wert das TPU ausdrücklich nur dort.
     metafelder: [
       { namespace: 'custom', key: 'lieferzeit', type: 'json', value: JSON.stringify({ ch: '7–14', tier: 'pod', weg: 'Druck auf Bestellung' }) },
       { namespace: 'mm-google-shopping', key: 'condition', type: 'single_line_text_field', value: 'new' },
@@ -267,7 +270,7 @@ export const SPEC = [
       { namespace: 'mm-google-shopping', key: 'age_group', type: 'single_line_text_field', value: 'adult' },
       { namespace: 'mm-google-shopping', key: 'gender', type: 'single_line_text_field', value: 'unisex' },
       { namespace: 'mm-google-shopping', key: 'google_product_category', type: 'single_line_text_field', value: 'Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases' },
-      { namespace: 'mm-google-shopping', key: 'material', type: 'single_line_text_field', value: 'Polycarbonat, Polyurethan (TPU)' },
+      { namespace: 'mm-google-shopping', key: 'material', type: 'single_line_text_field', value: 'Polycarbonat (PC), bei der Hartschale mit Innenfutter aus Polyurethan (TPU)' },
       // global.title_tag / global.description_tag setzt Shopify aus `seo` (siehe unten) – nicht doppelt als Metafeld schreiben
     ],
     category: 'gid://shopify/TaxonomyCategory/el-4-8-4-2',            // wie beim iPhone-Produkt (Mobile Phone Cases)

@@ -1,5 +1,5 @@
 {
- "quelle": "Shopify Admin GraphQL productByHandle (nur Abfrage), au3j0y-hq",
+ "quelle": "Shopify Admin GraphQL productByIdentifier (nur Abfrage), API 2026-01; Metafeld mm-google-shopping.material am 27.10.2026 ergänzt",
  "stand": "2026-10-27",
  "produkte": {
   "unisex-t-shirt-selbst-gestalten": {
@@ -23,6 +23,7 @@
     "title": "Unisex T-Shirt – Selbst gestalten | LuxeStyle CH",
     "description": "Unisex T-Shirt – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
    },
+   "materialMetafeld": null,
    "options": [
     {
      "name": "Grösse",
@@ -174,6 +175,7 @@
     "title": "Unisex Hoodie – Selbst gestalten | LuxeStyle CH",
     "description": "Unisex Hoodie – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
    },
+   "materialMetafeld": "Baumwolle, Polyester, Elastan",
    "options": [
     {
      "name": "Grösse",
@@ -311,6 +313,7 @@
     "title": null,
     "description": "Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit…"
    },
+   "materialMetafeld": "Polycarbonat, Polyurethan (TPU)",
    "options": [
     {
      "name": "Handymodell",
@@ -552,6 +555,7 @@
     "title": "Poster zum Selbstgestalten | LuxeStyle CH",
     "description": "Poster zum Selbstgestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
    },
+   "materialMetafeld": "Papier (matt)",
    "options": [
     {
      "name": "Grösse",

@@ -1,7 +1,10 @@
 // Tests für den GraphQL-Zugang des Schreibwegs (lib/pod_auswahl_gql.mjs): Mutationen werden NIE still wiederholt, Abfragen schon.
 // Kein Netz: die echte shopifyGql läuft gegen eine fetch-Attrappe. Lauf: /opt/node22/bin/node automation/lib/pod_auswahl_gql_test.mjs
-import { gqlFuer, istMutation } from './pod_auswahl_gql.mjs';
-import { pruefeAntwort, TageslimitFehler } from './pod_auswahl_schreiben.mjs';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { gqlFuer, istMutation, API_VERSION } from './pod_auswahl_gql.mjs';
+import { pruefeAntwort, TageslimitFehler, Q_PRODUKT, M_OPTION, M_OPTION_WERTE, M_OPTION_WERTE_LOESCHEN, M_REORDER, M_VARIANTEN, M_UPDATE, M_SET, M_META } from './pod_auswahl_schreiben.mjs';
+import { BESTAND_Q, SKU_INDEX_Q } from './pod_auswahl_daten.mjs';
 
 let ok = 0, fehl = 0;
 const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 400)}\n   soll: ${JSON.stringify(b).slice(0, 400)}`); } };
@@ -121,6 +124,17 @@ for (const [name, antwort] of [['HTTP 503', 503], ['HTTP 500', 500], ['Netzfehle
   const g = gqlFuer({ shop: 's', api: 'a', token: 't', shopifyGql: sg });
   await g(Q, {}); await g(M, {});
   ist('shopifyGql erhält versuche:1 nur bei Mutationen', gesehen, [[false, null], [true, 1]]);
+}
+
+// ── API-Version und Abfragetexte gehören zusammen (Befund 14): eine Stelle, 2026-01, kein veraltetes productByHandle
+{
+  ist('API_VERSION ist 2026-01 (gemessen 27.10.2026: unterstützt 2026-01 … 2026-10; 2025-01 wird nicht mehr unterstützt)', API_VERSION, '2026-01');
+  const alle = { Q_PRODUKT, BESTAND_Q, SKU_INDEX_Q, M_OPTION, M_OPTION_WERTE, M_OPTION_WERTE_LOESCHEN, M_REORDER, M_VARIANTEN, M_UPDATE, M_SET, M_META };
+  ist('kein GraphQL-Text nutzt das veraltete productByHandle', Object.entries(alle).filter(([, t]) => /productByHandle/.test(t)).map(([k]) => k), []);
+  ist('Q_PRODUKT und BESTAND_Q lesen über productByIdentifier(identifier:{handle:$h})', [Q_PRODUKT, BESTAND_Q].map((t) => /productByIdentifier\(identifier:\{handle:\$h\}\)/.test(t)), [true, true]);
+  const cli = readFileSync(fileURLToPath(new URL('../pod_auswahl.mjs', import.meta.url)), 'utf8');
+  wahr('das Kommando nimmt die Version aus pod_auswahl_gql.mjs und pinnt keine zweite (kein «2025-01»)', /const API = API_VERSION;/.test(cli) && !/2025-01/.test(cli.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '')));
+  ist('alle Schreib-Mutationen sind «mutation»-Texte (nur sie gehen ohne stille Wiederholung)', Object.entries(alle).filter(([k]) => k.startsWith('M_')).map(([, t]) => istMutation(t)).every(Boolean), true);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

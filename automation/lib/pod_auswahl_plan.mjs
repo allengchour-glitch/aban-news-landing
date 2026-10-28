@@ -168,6 +168,23 @@ export function umstellungsText(spec, handle, rechnung) {
   return ` Entscheid des Besitzers, erst danach BEFUND_OK=${handle}:sku-anderes-produkt setzen: ${wege.join('; ')}.`;
 }
 
+// ───────────────────────────────────────────────────────── Produkt-Metafeld «Material» (EIN Wert für mehrere Materialien)
+/**
+ * `mm-google-shopping.material` ist EIN Wert je Produkt und speist das Merchant-Center-Attribut «material» UND die Zeile «Material» in «Spezifikationen & Details»
+ * (Theme-Block lux_spezifikationen, Stand 27.10.2026). Sobald ein Produkt mehrere Materialien zur Auswahl hat, beschreibt ein einzelner Wert höchstens EINES davon.
+ * DAS WERKZEUG SCHREIBT DIESES FELD NIE (weder Leeren noch Überschreiben bei vorhandenen Produkten): ein stilles Überschreiben wäre ebenso ein Falschbild.
+ * Darum sperrt ein gesetzter Wert LIVE (Blocker `material-metafeld`), bis der Besitzer entschieden hat. Ein leeres Feld ist kein Befund.
+ * `wert`: undefined = im Datenpaket nicht gelesen, null/'' = leer, sonst der Text.
+ */
+export function materialMetafeldBefund({ handle, bestandWert, materialWerte, wert }) {
+  if (materialWerte.length < 2) return [];
+  if (wert === undefined) return [{ schwere: 'hinweis', code: 'material-metafeld-ungeprueft', text: 'Das Produkt-Metafeld mm-google-shopping.material wurde nicht gelesen (Datenpaket ohne dieses Feld). Vor LIVE mit DATEN=holen bzw. frischer Shopify-Abfrage prüfen: ein gesetzter Wert würde für die neuen Materialien nicht stimmen.' }];
+  const w = String(wert ?? '').trim();
+  if (!w) return [];
+  return [{ schwere: 'blocker', code: 'material-metafeld', wert: w,
+    text: `Das Produkt-Metafeld mm-google-shopping.material steht auf «${w}» und ist EIN Wert für das ganze Produkt. Es speist das Merchant-Center-Attribut «material» UND die Zeile «Material» in «Spezifikationen & Details». Nach LIVE gibt es ${materialWerte.length} Materialien (${materialWerte.join(', ')}); der Wert beschreibt nur «${bestandWert}». Das Werkzeug schreibt dieses Feld NIE (nichts wird überschrieben oder geleert), es bleibt, wie es ist. Entscheid des Besitzers: (a) das Feld vor LIVE leeren (dann entfallen die Zeile «Material» und das Merchant-Attribut; der Befund verschwindet danach von selbst) oder (b) es bewusst stehen lassen: Feed und Spezifikationen nennen dann auch für die neuen Materialien nur «${w}» (bei personalisierter Ware ohne Rückgabe ein Falschbild), dann BEFUND_OK=${handle}:material-metafeld.` }];
+}
+
 // ───────────────────────────────────────────────────────── Aussagen in Titel/Haupttext, die nicht für alle Materialien stimmen
 const ohneMarkenBlock = (html) => { const a = html.indexOf(MARKE_AUF), z = html.indexOf(MARKE_ZU); return a >= 0 && z > a ? html.slice(0, a) + html.slice(z + MARKE_ZU.length) : html; };
 const klartext = (h) => String(h ?? '').replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -364,6 +381,9 @@ function planeErweitern(spec, ctx) {
   const unter = bestehende.filter((v) => v.nettoChf !== null && v.nettoChf < ctx.regel.nettoMin);
   if (unter.length) befunde.push({ schwere: 'hinweis', code: 'vorhandener-preis-unter-regel', text: `${unter.length} vorhandene Variante(n) liegen mit dem aktuellen Preis unter CHF ${ctx.regel.nettoMin} Netto (z. B. ${unter[0].sku}: CHF ${unter[0].preisChf.toFixed(2)} → Netto ${unter[0].nettoChf.toFixed(2)}). Unverändert gelassen.` });
 
+  // Produkt-Metafeld «Material» (ein Wert, mehrere Materialien)
+  befunde.push(...materialMetafeldBefund({ handle: spec.handle, bestandWert: spec.bestand.wert, materialWerte, wert: b.materialMetafeld }));
+
   // Gemeinsame Befunde (Kollision mit anderen Produkten, Netto ohne Kundenversand, Preisleiter, Texte ausserhalb des Blocks)
   befunde.push(...gemeinsameBefunde({ spec, ctx, neuUndDa: neu.concat(schonDa), alle: [...bestehende.map((v) => ({ ...v, zweiter: v.optionen[spec.zweiteOption], material: spec.bestand.wert })), ...schonDa, ...neu], erlaubt, titel: b.title, html: b.descriptionHtml, materialWerte }));
 
@@ -482,7 +502,8 @@ export function planeAlles({ spec = SPEC, katalog, beschreibungen = {}, versand,
 export function aktionenFuerHash(plan) {
   return plan.produkte.map((p) => ({
     handle: p.handle, art: p.art, id: p.produktId, optionen: p.optionen.nachher, ausgeschlossen: (p.nichtAngelegt || []).filter((n) => n.code === 'ausgeschlossen').map((n) => n.material), bestehendeSkus: p.bestehende.map((v) => [v.sku, v.preisChf]),
-    neu: p.neu.map((v) => [v.sku, v.optionen, v.preisChf]), nachher: p.beschreibung.nachher, neuesProdukt: p.neuesProdukt || null,
+    // neu UND schon angelegt zusammen, nach SKU geordnet: legt ein abgebrochener Lauf (Tageslimit) einen Teil an, bleibt der Hash bei der Wiederaufnahme gleich (der geprüfte Plan gilt weiter)
+    neu: [...(p.schonDa || []), ...p.neu].map((v) => [v.sku, v.optionen, v.preisChf]).sort((a, c) => (a[0] < c[0] ? -1 : a[0] > c[0] ? 1 : 0)), nachher: p.beschreibung.nachher, neuesProdukt: p.neuesProdukt || null,
   }));
 }
 

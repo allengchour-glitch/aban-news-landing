@@ -2,7 +2,7 @@
 import { mkdtempSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE } from './pod_auswahl_daten.mjs';
+import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE, BESTAND_Q, standAlterH, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
 import { SPEC } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -83,13 +83,49 @@ const keinePause = async () => {};
 {
   const knoten = { id: 'gid://p/1', handle: 'h', title: 'T', status: 'ACTIVE', productType: 'Poster', vendor: 'V', tags: ['a'], descriptionHtml: '<p>x</p>', seo: { title: null, description: 'd' },
     options: [{ name: 'Grösse', position: 1, values: ['A', 'B'] }], variants: { edges: [{ node: { id: 'v1', sku: 's1', price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'A' }] } }] } };
-  const b = await leseBestand(async (q, v) => ({ data: { productByHandle: v.h === 'h' ? knoten : null } }), ['h']);
+  const b = await leseBestand(async (q, v) => ({ data: { productByIdentifier: v.h === 'h' ? knoten : null } }), ['h']);
   ist('leseBestand: Form des Datenpakets', b.h, ohneKnoten(knoten));
   ist('ohneKnoten: Varianten ohne Kanten', b.h.variants, [{ id: 'v1', sku: 's1', price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'A' }] }]);
-  let m = ''; try { await leseBestand(async () => ({ data: { productByHandle: null } }), ['fehlt']); } catch (e) { m = e.message; }
+  let m = ''; try { await leseBestand(async () => ({ data: { productByIdentifier: null } }), ['fehlt']); } catch (e) { m = e.message; }
   wahr('leseBestand: unbekanntes Produkt → Fehler mit Handle', /fehlt/.test(m));
   m = ''; try { await leseBestand(async () => ({ errors: [{ message: 'x' }] }), ['h']); } catch (e) { m = e.message; }
   wahr('leseBestand: GraphQL-Fehler → Fehler', /Shopify-Abfrage/.test(m));
+}
+// ── Bestandsabfrage: productByIdentifier (productByHandle ist veraltet) und Metafeld «Material»
+{
+  wahr('BESTAND_Q: productByIdentifier(identifier:{handle:$h}) statt productByHandle', /productByIdentifier\(identifier:\{handle:\$h\}\)/.test(BESTAND_Q) && !/productByHandle/.test(BESTAND_Q));
+  wahr('BESTAND_Q: liest das Metafeld mm-google-shopping.material als materialMetafeld', /materialMetafeld: metafield\(namespace:"mm-google-shopping", key:"material"\)\{ value \}/.test(BESTAND_Q));
+  const knoten = { id: 'p', handle: 'h', title: 'T', status: 'ACTIVE', productType: 'x', vendor: 'V', tags: [], descriptionHtml: '', seo: {}, options: [], variants: { edges: [] } };
+  ist('ohneKnoten: Metafeld gesetzt → Text, leer → null, nicht gelesen → Schlüssel fehlt (nicht null!)',
+    [ohneKnoten({ ...knoten, materialMetafeld: { value: 'Papier (matt)' } }).materialMetafeld, ohneKnoten({ ...knoten, materialMetafeld: null }).materialMetafeld, 'materialMetafeld' in ohneKnoten(knoten)], ['Papier (matt)', null, false]);
+}
+// ── Alter des Datenpakets (LIVE verweigert veraltete Daten)
+{
+  const jetzt = new Date('2026-10-30T00:00:00Z');
+  ist('standAlterH: 27.10. 0 Uhr bis 30.10. 0 Uhr = 72 Stunden; ungültige Stände → null', [standAlterH('2026-10-27', jetzt), standAlterH('27.10.2026', jetzt), standAlterH(undefined, jetzt), standAlterH('2026-13-45', jetzt), standAlterH('', jetzt)], [72, null, null, null, null]);
+  ist('Höchstalter vorgegeben 72 Stunden', DATEN_MAX_ALTER_H, 72);
+  const meta = (st) => ({ katalog: { stand: st }, beschreibungen: { stand: st }, versand: { stand: st }, skuPruefung: { stand: st } });
+  ist('pruefeDatenAlter: genau 72 Stunden alt ist noch erlaubt', pruefeDatenAlter(meta('2026-10-27'), { jetzt }), []);
+  const alt = pruefeDatenAlter(meta('2026-10-27'), { jetzt: new Date('2026-10-30T00:00:01Z') });
+  ist('pruefeDatenAlter: eine Sekunde mehr → alle vier Dateien zu alt, mit Datei und Alter', [alt.map((x) => x.datei), alt[0].alterH], [['katalog.json', 'beschreibungen.json', 'versand.json', 'sku_pruefung.json'], 72]);
+  ist('pruefeDatenAlter: eine einzige alte Datei genügt (Versand von 2025)', pruefeDatenAlter({ ...meta('2026-10-29'), versand: { stand: '2025-01-01' } }, { jetzt }).map((x) => x.datei), ['versand.json']);
+  ist('pruefeDatenAlter: fehlender oder unlesbarer Stand zählt als zu alt (nichts raten)', pruefeDatenAlter({ katalog: { stand: '2026-10-29' }, beschreibungen: {}, versand: { stand: 'gestern' } }, { jetzt }).map((x) => x.datei), ['beschreibungen.json', 'versand.json', 'sku_pruefung.json']);
+  ist('pruefeDatenAlter: mit grösserer Grenze (ausdrücklich) wieder frisch genug', pruefeDatenAlter(meta('2026-10-01'), { jetzt, maxStunden: 24 * 40 }), []);
+  ist('pruefeDatenAlter: das echte Datenpaket hat Stand und beschreibungen.stand', ladePaket().meta.beschreibungen.stand, '2026-10-27');
+}
+// ── Gegenprüfung der neuen Varianten bei Printful (nur GET)
+{
+  const plan = { produkte: [{ neu: [{ pf: 1, sku: 'S_1', einkaufUsd: 10 }, { pf: 2, sku: 'S_2', einkaufUsd: 12.5 }, { pf: 1, sku: 'S_1', einkaufUsd: 10 }] }, { neu: [{ pf: 3, sku: 'S_3', einkaufUsd: 5 }] }] };
+  const var1 = (id, price, eu, extra = {}) => ({ id, price, in_stock: true, availability_status: [{ region: 'US', status: 'in_stock' }, { region: 'EU', status: eu }], ...extra });
+  const holen = (tabelle) => { const aufrufe = []; const fetchFn = async (url, opt) => { aufrufe.push({ url, methode: opt?.method || 'GET' }); const id = Number(String(url).split('/').pop()); const t = tabelle[id]; return t === undefined ? antwort(404, {}) : antwort(200, { result: { variant: t } }); }; return { fetchFn, aufrufe }; };
+  const a = holen({ 1: var1(1, '10.00', 'in_stock'), 2: var1(2, '12.50', 'in_stock'), 3: var1(3, '5.00', 'in_stock') });
+  ist('Gegenprüfung: alles wie im Plan → keine Abweichung; jede Nummer nur einmal gelesen, nur GET', [await pruefeNeueVarianten(plan, { key: 'K', fetchFn: a.fetchFn, pause: keinePause }), a.aufrufe.map((x) => x.methode + ' ' + x.url.split('/').slice(-3).join('/'))], [[], ['GET products/variant/1', 'GET products/variant/2', 'GET products/variant/3']]);
+  const b = holen({ 1: var1(1, '11.20', 'in_stock'), 2: var1(2, '12.50', 'supplier_out_of_stock'), 3: undefined });
+  const ab = await pruefeNeueVarianten(plan, { key: 'K', fetchFn: b.fetchFn, pause: keinePause });
+  ist('Gegenprüfung: Preis geändert, EU-Lager weg, Variante nicht lesbar → drei Abweichungen mit Nummer und SKU', ab, ['Printful 1 (S_1): Einkauf jetzt 11.20 USD, im Plan 10.00 USD', 'Printful 2 (S_2): Lager EU jetzt supplier_out_of_stock, im Plan lieferbar', 'Printful 3 (S_3): nicht lesbar (HTTP 404)']);
+  const c = holen({ 1: { id: 1, price: '10.00', in_stock: false }, 2: { id: 2, price: '12.50', in_stock: true }, 3: var1(3, '5.00', 'in_stock') });
+  ist('Gegenprüfung: ohne availability_status zählt in_stock', await pruefeNeueVarianten(plan, { key: 'K', fetchFn: c.fetchFn, pause: keinePause }), ['Printful 1 (S_1): Lager EU jetzt nicht lieferbar, im Plan lieferbar']);
+  ist('Gegenprüfung: Plan ohne neue Varianten → keine Anfrage', (await pruefeNeueVarianten({ produkte: [{ neu: [] }] }, { key: 'K', fetchFn: async () => { throw new Error('darf nicht aufgerufen werden'); }, pause: keinePause })), []);
 }
 // ── Schreiben atomar: keine halbe Datei
 {
