@@ -14,7 +14,8 @@
  *   pruefen       NUR LESEN: liest frisch und vergleicht mit Manifest und Plan, nennt die Varianten auf Google.
  *
  * SICHERHEIT
- *   - Scharf nur mit LIVE=1 UND der Freigabedatei dropship/GMC-SCHAUFENSTER-FREI.txt (löschen = Stopp); KATALOG (fertige Datei) nie mit LIVE=1.
+ *   - Scharf nur mit LIVE=1 UND der Freigabedatei dropship/GMC-SCHAUFENSTER-FREI.txt (löschen = Stopp, auch mitten im Lauf: sie wird vor jedem
+ *     Stück neu geprüft, Exit 4; ein Lauf auf GitHub Actions sieht nur seine Kopie, dort stoppt «Run abbrechen»); KATALOG (fertige Datei) nie mit LIVE=1.
  *   - Ein Plan mit Fehlern (zu wenige Zeilen, leeres oder zu grosses Schaufenster, zu viele unklare Zeilen, über 70 % abzuwählen, über 5 %
  *     ohne Google-Kategorie) schreibt nichts (Exit 2). BUDGET unter 40 000 wird nie angenommen.
  *   - Manifest (dropship/gmc_schaufenster_manifest.jsonl): eine Zeile je Produkt VOR dem Aufruf («ab-versucht»: Teilfehler oder Absturz
@@ -230,6 +231,11 @@ try {
 let gut = 0, schlecht = 0, runde = 0; const t0 = Date.now();
 const nameVon = new Map(bereit.map(x => [x.id, x.handle]));
 for (const st of stuecke(bereit.map(x => x.id), STUECK)) {
+  // Die Freigabe gilt nicht nur beim Start: wer die Datei löscht, stoppt den Lauf vor dem nächsten Stück (Zweitmeinung Codex 28.10.2026, am Code bestätigt).
+  if (LIVE && !existsSync(FREIGABE)) {
+    console.log(`ABBRUCH nach ${gut} erfolgreichen: die Freigabedatei ist weg (Stopp). Das nächste Stück wurde nicht begonnen, der Rest bleibt für den nächsten Lauf.`);
+    process.exit(4);
+  }
   // Absicht VOR dem Aufruf: stürzt der Lauf mitten im Stück ab (oder meldet Shopify einen Teilfehler), bleiben die schon entveröffentlichten Produkte rückholbar.
   if (PHASE === 'abwaehlen') anhaengen(MANIFEST, st.map(id => manifestZeile(id, undefined, heute(), 'ab-versucht')).join('\n') + '\n');
   let antwort;
