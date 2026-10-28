@@ -45,6 +45,10 @@ Wie im Claude-Mod, nur nach dem ausdrücklichen Ja des Besitzers im Chat: `LUXE_
 - Ob `${CLAUDE_PLUGIN_ROOT}` im Hook-Befehl von der Shell oder von Codex ersetzt wird (beides funktioniert).
 - Ob das Feld `timeout` in Sekunden gilt.
 
+## Modell des Zweitmeinung-Läufers
+
+Vorgabe ist **`gpt-6.1-sol` mit Aufwand `medium`**, nicht Astra: Der Besitzer hat am 28.10.2026 angewiesen, Codex nicht mit Astra zu nutzen, weil das Token-Kontingent seines Tarifs (Plus) zu schnell aufgebraucht ist. Der Modellkatalog der Codex CLI nennt Sol «near-Astra performance at a lower cost»; die Credit-Preise je Million Token sind bei Sol rund 5-mal niedriger als bei Astra (QUELLE learn.chatgpt.com/docs/pricing, 28.10.2026). Umstellen geht mit `ZWEITMEINUNG_MODELL` und `ZWEITMEINUNG_AUFWAND` (Läufer-Kopf), Astra nur nach ausdrücklichem Wort des Besitzers. Jeder Aufruf hat einen Grundaufwand (ein leerer Mini-Aufruf kostete 4 805 Token).
+
 ## Tests
 
 ```bash
