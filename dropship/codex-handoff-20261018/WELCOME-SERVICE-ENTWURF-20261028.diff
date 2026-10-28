@@ -1,0 +1,18 @@
+--- template-VZnxDz/current-20261028
++++ template-VZnxDz/service-proposal
+@@ -44,13 +44,13 @@
+ <tr>
+ <td align="center" style="padding:20px 32px 8px;">
+ <p style="margin:0;font-size:14px;line-height:1.6;color:#888;">
+-Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna oder TWINT.<br/>Die Lieferzeit steht auf jeder Produktseite – ein Teil unserer Ware liegt im Schweizer Lager und ist in 1–2 Werktagen bei dir.
++Gratis-Versand ab CHF 50.<br/>Informationen zu Lieferung und Versand findest du in unseren <a href="https://luxestyle.ch/policies/shipping-policy">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href="https://luxestyle.ch/policies/refund-policy">Rückgabebedingungen</a>.
+ </p>
+ </td>
+ </tr>
+ <tr>
+ <td align="center" style="padding:4px 32px 28px;">
+-<a href="https://luxestyle.ch/collections/blitzversand-schweiz" style="font-size:14px;color:#b8915a;text-decoration:underline;">🇨🇭 Ab Schweizer Lager · 1–2 Tage ansehen</a>
++<a href="https://luxestyle.ch/policies/shipping-policy" style="font-size:14px;color:#b8915a;text-decoration:underline;">Versandinformationen ansehen</a>
+ </td>
+ </tr>
+ <tr>
