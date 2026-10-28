@@ -6,6 +6,7 @@ on:
       - 'automation/lib/**'
       - 'codex-mods/**'
       - 'AGENTS.md'
+      - 'automation/autopilot/shop_pulse.mjs'
       - 'automation/*.mjs'
       - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
@@ -74,6 +75,7 @@ jobs:
             automation/*.mjs
             codex-mods
             AGENTS.md
+            automation/autopilot/shop_pulse.mjs
             tools/versandregel.mjs
             tools/versandregel_test.mjs
             automation/seo-optimizer.mjs
