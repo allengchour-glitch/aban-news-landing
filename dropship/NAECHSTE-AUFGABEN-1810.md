@@ -38,7 +38,7 @@ Sobald Punkte da sind, in dieser Reihenfolge (heute gemessene Segmentgrössen):
 | Mode / Kostüme / Haushalt | Rest | **nahe 0** |
 
 ```
-QUERY='status:active AND tag:cj-real AND tag:gadgets' LIMIT=1500 node automation/cj_reviews_import.mjs
+DRY_RUN=0 QUERY='status:active AND tag:cj-real AND tag:gadgets' LIMIT=1500 node automation/cj_reviews_import.mjs   # live nur mit DRY_RUN=0 (Vorgabe Trockenlauf)
 ```
 
 Belegt am 17.10.: gezielt `tag:gaming` = 11,7 % Treffer gegen blind 2,4 % — **mehr Bewertungen aus

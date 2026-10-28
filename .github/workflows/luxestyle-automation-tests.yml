@@ -121,6 +121,7 @@ jobs:
             dropship/taxonomie-2610-b
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
+            .github/workflows/cj-reviews.yml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:

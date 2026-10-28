@@ -93,8 +93,9 @@ test('Preiswächter schreibt selbst mit LIVE=1 keine Bestandsregel', t => {
 test('CJ-Kommentar-Quota vergiftet das Leer-Ledger nicht', t => {
   const f = fixture(t, 'cj_reviews_import.mjs');
   fs.mkdirSync(path.join(f.root, 'dropship'));
+  // DRY_RUN:'0' ausdruecklich: ohne die Variable ist der Importer ein Trockenlauf und schreibt nie ins Leer-Ledger, der Test pruefte dann nichts.
   const r = run(f, { CJ_EMAIL:'test@example.invalid', CJ_API_KEY:'fake', JUDGEME_PRIVATE_TOKEN:'fake',
-    SHOPIFY_SHOP:'test.myshopify.com', SHOPIFY_ADMIN_TOKEN:'fake',
+    SHOPIFY_SHOP:'test.myshopify.com', SHOPIFY_ADMIN_TOKEN:'fake', DRY_RUN:'0',
     CJ_TOKEN_CACHE:path.join(f.root,'fake-token.json'), LIMIT:'1', SCAN:'1' }, `
     globalThis.fetch=async (url, opts={}) => {
       if (url.includes('graphql.json')) {
@@ -119,7 +120,7 @@ test('CJ-Scan endet am Deckel, auch wenn jede Seite schon erledigt ist', t => {
   fs.mkdirSync(path.join(f.root,'dropship'));
   fs.writeFileSync(path.join(f.root,'dropship/cj_reviews_done.txt'),'1\n');
   const r=run(f,{CJ_EMAIL:'test@example.invalid',CJ_API_KEY:'fake',JUDGEME_PRIVATE_TOKEN:'fake',
-    SHOPIFY_SHOP:'test.myshopify.com',SHOPIFY_ADMIN_TOKEN:'fake',LIMIT:'1',SCAN:'2',
+    SHOPIFY_SHOP:'test.myshopify.com',SHOPIFY_ADMIN_TOKEN:'fake',DRY_RUN:'0',LIMIT:'1',SCAN:'2',
     CJ_TOKEN_CACHE:path.join(f.root,'fake-token.json')},`
     let pages=0;
     globalThis.fetch=async (url,opts={})=>{

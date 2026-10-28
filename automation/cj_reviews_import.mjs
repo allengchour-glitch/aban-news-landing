@@ -11,16 +11,42 @@
  *
  * No-op-safe: ohne CJ-/Judge.me-/Shopify-Creds passiert nichts (Exit 0). Idempotent über Ledger.
  * ENV: CJ_EMAIL, CJ_API_KEY · JUDGEME_PRIVATE_TOKEN [, JUDGEME_SHOP_DOMAIN] · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP
- *      [GEMINI_API_KEY | GROQ_API_KEY → DE-Übersetzung] · [QUERY="tag:cj-real"] · [ONLY=handle,handle] · [LIMIT=25] · [PER=6]
- *      [MIN_SCORE=4] · [DRY_RUN=1] · [LEER_TAGE=60] · [SORT=CREATED_AT REVERSE=1]
+ *      [GEMINI_API_KEY | GROQ_API_KEY (auch _2 bis _4) → DE-Übersetzung] · [QUERY="tag:cj-real"] · [ONLY=handle,handle] · [LIMIT=25] · [PER=6]
+ *      [MIN_SCORE=4] · [LEER_TAGE=60] · [SORT=CREATED_AT REVERSE=1]
+ *      DRY_RUN: **live NUR bei DRY_RUN=0**. Fehlt die Variable oder hat sie einen anderen Wert ('1', 'true', leer ...), ist es ein Trockenlauf.
+ *      ALLOW_ORIGINAL=1: erlaubt ausdrücklich, Kommentare UNübersetzt zu senden (sonst wartet das Produkt, bis die Übersetzung geht).
+ *
+ * SICHERHEITSREGELN (Funde der Prüfung 28.10.2026):
+ *  - Shop-Abgleich nicht lesbar (HTTP-Fehler/Netz) → NICHT senden. „Unbekannt" ist nicht „nicht im Shop".
+ *  - Übersetzung fällt aus (und der Text ist nicht schon deutsch) → Produkt in dieser Runde NICHT senden, Fehler zählen, Exit 1.
+ *  - Judge.me drosselt: HTTP 429 beim POST → einmal warten (Retry-After, sonst 5 s) und wiederholen, bei erneutem 429 Lauf beenden.
+ *    HTTP 503 beim POST → Ergebnis unbekannt: „uncertain", NICHT wiederholt, Lauf beenden. Widget 429/503 → Lauf beenden. Nie umgehen.
+ *  - „sending"/„uncertain" im Ledger → zuerst im Shop abgleichen: Text da → „sent"; sonst bleibt es unklar. Nie blind wiederholen.
+ *  - Fällt etwas anderes als 429/503 aus, wird nicht je Bewertung neu gefragt: ein unlesbares Widget gilt für das Produkt bis Laufende als
+ *    „unbekannt", nach 3 unlesbaren Produkten in Folge endet der Lauf. Dasselbe gilt für die Übersetzung (3 Produkte in Folge zurückgehalten).
+ *  - Sternewerte: nur ganze Zahlen 1 bis 5 zählen. Fehlt der Wert (leer/null), zählt der Kommentar als „unter MIN_SCORE" (leer erlaubt). Ist er
+ *    vorhanden, aber unbrauchbar (6, 4.5, 'abc', [5]), wird er gemeldet; sind ALLE Werte eines Produkts so, ist das ein Fehler (Exit 1, kein „leer").
+ *
+ * DUBLETTENSCHUTZ — was geschützt ist und was nicht (die Übersetzung ist NICHT deterministisch, temperature 0.3):
+ *  1. Ledger-Schlüssel (reviewKey) + Zustand je Bewertung in dropship/cj_review_items.jsonl. Schützt, solange das Ledger da ist.
+ *  2. Die GESENDETE (übersetzte) Fassung steht im Ledger-Eintrag (Feld body) und wird beim Wiederaufnehmen wiederverwendet, statt neu
+ *     zu übersetzen. Nur so kann der Shop-Abgleich einen unklaren Eintrag später auflösen.
+ *  3. Textabgleich gegen das öffentliche Judge.me-Widget: verglichen werden die gesendete Fassung UND der CJ-Originaltext. Das Widget
+ *     liefert nur, was im Shop steht — der Originaltext trifft also nur Bewertungen, die früher UNübersetzt gesendet wurden.
+ *  NICHT geschützt: Ist das Ledger ganz verloren (oder der Schlüssel geändert) UND wurde übersetzt gesendet, trifft der Textabgleich
+ *  nicht (eine neue Übersetzung formuliert anders) → Doppelte möglich. Dann vor dem Lauf den Shop prüfen.
+ *  Nicht gelöst (bewusst, kleine Funde): gleicher Text eines anderen Käufers gilt als vorhanden; nur Kommentarseite 1; nur die erste
+ *  Variante bestimmt die CJ-SKU; ein Kommentar, den der Übersetzer dauerhaft leer zurückgibt, hält sein ganzes Produkt zurück (Entscheid offen:
+ *  die übrigen senden oder alles zurückhalten). Kein Zeitlimit am CJ-Token-Abruf.
  */
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { nachDeutsch } from './lib/uebersetzen.mjs';
+import { nachDeutsch, wirktDeutsch } from './lib/uebersetzen.mjs';
+import { maskiereName } from './lib/kundenstimmen.mjs';
 import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { bewerteAntwort } from './lib/judgeme_antwort.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
-import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
+import { reviewKey, loadReviewStates, recordReviewState, reviewBody } from './lib/cj_review_ledger.mjs';
 import { normalizeShopifyHost } from './lib/shopify_host.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
@@ -28,7 +54,6 @@ const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
 const JM_TOKEN = (process.env.JUDGEME_PRIVATE_TOKEN || '').trim();
 const JM_DOMAIN = (process.env.JUDGEME_SHOP_DOMAIN || 'au3j0y-hq.myshopify.com').trim();
 const GKEY = (process.env.GEMINI_API_KEY || '').trim();
-const GROQKEY = (process.env.GROQ_API_KEY || '').trim();   // Rückfall, s. lib/uebersetzen.mjs
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = shopifyClientSecret();  // s. automation/lib/shopify_secret.mjs (vertauschte Env-Felder)
@@ -40,7 +65,9 @@ const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '250', 10) || 250);
 const SCAN = Math.min(5000, Math.max(1, parseInt(process.env.SCAN || String(LIMIT * 5), 10) || LIMIT * 5));
 const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
-const DRY = process.env.DRY_RUN === '1';
+// Live NUR bei ausdrücklich DRY_RUN=0 (Vorgabe = Trockenlauf). Ein Tippfehler ('true', 'TRUE', leer) kostet sonst echte, nicht zurückholbare Bewertungen.
+const DRY = process.env.DRY_RUN !== '0';
+const ALLOW_ORIGINAL = process.env.ALLOW_ORIGINAL === '1';   // bewusstes Original (ohne Übersetzung) nur mit ausdrücklichem Schalter
 const LEER_TAGE = Math.max(1, parseInt(process.env.LEER_TAGE || '60', 10) || 60);  // so lange gilt „CJ hat nichts"
 const SORT = (process.env.SORT || '').toUpperCase();        // z. B. UPDATED_AT, CREATED_AT, TITLE
 const REVERSE = process.env.REVERSE === '1';                // mit SORT: andere Katalogregion abgrasen
@@ -124,21 +151,47 @@ async function cjGet(tok, path, params, weicheCodes) {
 
 // ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
 // Begründung + Tests in automation/lib/uebersetzen.mjs. Kurz: die Gemini-Credits sind
-// aufgebraucht (HTTP 402), GROQ_API_KEY ist gesetzt und funktioniert. Scheitert beides,
-// kommen die ORIGINALTEXTE zurück — eine Bewertung in der Originalsprache ist ehrlich,
-// eine erfundene Übersetzung wäre es nicht.
+// aufgebraucht (HTTP 402); Groq springt ein, mit bis zu vier Schlüsseln (GROQ_API_KEY, _2 bis _4,
+// jeder mit eigenem Tageslimit). Die Bibliothek liest sie selbst aus der Umgebung: hier KEIN groqKey
+// übergeben, sonst bliebe es bei Schlüssel 1 und ein erschöpfter Schlüssel legte den Import lahm.
+// Scheitert alles, kommen die Originaltexte zurück, aber der Aufrufer SENDET sie nicht
+// (nur mit ALLOW_ORIGINAL=1 oder wenn sie schon deutsch wirken).
+//
+// Liefert {texte, weg, grund, fehlt}: `fehlt` nennt die Stellen, an denen NICHT übersetzt wurde (alle bei weg 'original').
 let uebersetzWeg = '';
 async function translateDE(texts) {
-  const r = await nachDeutsch(texts, { geminiKey: GKEY, groqKey: GROQKEY });
+  const r = await nachDeutsch(texts, { geminiKey: GKEY });
   if (r.weg !== uebersetzWeg) {
     uebersetzWeg = r.weg;
-    if (r.weg === 'original') console.error(`  Übersetzung nicht möglich, nutze Originalsprache: ${r.grund}`);
+    if (r.weg === 'original') console.error(`  Übersetzung nicht möglich: ${r.grund}${ALLOW_ORIGINAL ? ' → sende Originalsprache (ALLOW_ORIGINAL=1)' : ' → Texte ohne deutsche Fassung bleiben liegen'}`);
     else console.log(`  Übersetzung über ${r.weg}.`);
   }
-  return r.texte;
+  return r;
 }
 
+// ── Anzeigename: nur die von CJ schon maskierte Form („C***t") darf durch; sonst wird maskiert ──
+// Ein Klarname oder eine E-Mail-Adresse stünde sonst öffentlich im Schweizer Shop (nDSG).
+const MASKIERT = /^\p{L}\*{3}\p{L}$/u;
+function anzeigeName(roh) {
+  const n = String(roh ?? '').trim();
+  if (MASKIERT.test(n)) return n;
+  return maskiereName(n) || 'CJ-Kundenbewertung';
+}
+
+// ── Sterne: nur ganze Zahlen 1 bis 5. Alles andere ist eine kaputte Quelle und wird verworfen, nicht geklemmt ──
+function sterneAus(wert) {
+  if (typeof wert !== 'number' && !(typeof wert === 'string' && wert.trim() !== '')) return null;
+  const n = Number(wert);
+  return Number.isInteger(n) && n >= 1 && n <= 5 ? n : null;
+}
+// „Keine Angabe" (fehlt, null, leer) ist etwas anderes als ein kaputter Wert (6, 4.5, 'abc', [5]): nur der kaputte wird gemeldet.
+const sterneOhneAngabe = (wert) => wert === undefined || wert === null || (typeof wert === 'string' && wert.trim() === '');
+
 // ── Judge.me POST ──
+// Zeitlimit auf jedem Judge.me-Aufruf: ein hängender Aufruf darf den Lauf nicht bis zum Workflow-Limit blockieren.
+// Beim POST heisst Abbruch „Ergebnis unbekannt" (Aufrufer: uncertain), nie „nicht gesendet".
+const JM_ZEITLIMIT_MS = 30000;
+const JM_PAUSE_MS = 5000;     // Wartezeit nach HTTP 429, wenn Judge.me keinen Retry-After nennt
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
     name: r.name || 'CJ-Kundenbewertung',
@@ -146,12 +199,15 @@ async function jmPost(pid, r) {
     rating: Math.max(1, Math.min(5, Number(r.rating) || 5)), title: r.title || '', body: r.body || '', api_token: JM_TOKEN };
   if (r.created_at) body.created_at = r.created_at;
   if (Array.isArray(r.picture_urls) && r.picture_urls.length) body.picture_urls = r.picture_urls.slice(0, 3);
-  const res = await fetch(JM_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const res = await fetch(JM_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(JM_ZEITLIMIT_MS) });
   const text = await res.text();
   let result;
   try { result = JSON.parse(text); } catch {}
+  // Retry-After in Sekunden, begrenzt auf 1–30 s; ein Datum oder Unsinn gilt als „nicht genannt".
+  const ra = Number(res.headers?.get?.('retry-after'));
+  const warteMs = Number.isFinite(ra) && ra > 0 ? Math.min(ra, 30) * 1000 : JM_PAUSE_MS;
   // Lesart der Antwort samt Gegenproben: automation/lib/judgeme_antwort.mjs
-  return { ...bewerteAntwort(res.status, result), status: res.status };
+  return { ...bewerteAntwort(res.status, result), status: res.status, warteMs };
 }
 
 // Gegenprobe zum Abgleich: der Produktfilter der Judge.me-Liste wird STILL IGNORIERT
@@ -172,6 +228,20 @@ function nurText(html) {
   return String(html || '').replace(/<[^>]*>/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
 }
+// Liefert das Set der Texte — oder NULL, wenn der Shop nicht lesbar war (HTTP-Fehler, Netz, kein JSON-Objekt).
+// NULL heisst „unbekannt", NICHT „nichts im Shop": ein leeres Set als Ersatz liess den Importer bei HTTP 429 live posten (Dubletten).
+// 429/503 setzt zusätzlich jmGedrosselt: Drosselung wird nie umgangen, der Lauf endet.
+// Jeder andere Ausfall (HTTP 500, Netz, Zeitlimit, Antwort ohne Daten) gilt für dieses Produkt bis Laufende als „unbekannt" (null im Zwischenspeicher):
+// sonst fragt jede Bewertung neu, mit 30 s Zeitlimit je Frage. Nach WIDGET_FEHLER_MAX unlesbaren Produkten in Folge endet der Lauf wie bei Drosselung.
+let jmGedrosselt = '';
+let widgetFehlerFolge = 0;
+const WIDGET_FEHLER_MAX = 3;
+function widgetUnlesbar(schluessel, grund, frisch) {
+  console.error(`  Shop-Abgleich nicht moeglich: ${grund} (Produkt ${schluessel})`);
+  if (!frisch) textCache.set(schluessel, null);
+  if (++widgetFehlerFolge >= WIDGET_FEHLER_MAX && !jmGedrosselt) jmGedrosselt = `Widget bei ${WIDGET_FEHLER_MAX} Produkten in Folge unlesbar`;
+  return null;
+}
 async function jmProduktTexte(pid, frisch = false) {
   const schluessel = String(pid);
   if (!frisch && textCache.has(schluessel)) return textCache.get(schluessel);
@@ -179,22 +249,32 @@ async function jmProduktTexte(pid, frisch = false) {
   const qs = new URLSearchParams({ url: JM_DOMAIN, shop_domain: JM_DOMAIN, platform: 'shopify',
     product_id: schluessel, per_page: '100' });
   try {
-    const res = await fetch(`${JM_WIDGET}?${qs}`);
-    if (!res.ok) { console.error(`  Shop-Abgleich nicht moeglich: Judge.me HTTP ${res.status} (Produkt ${schluessel})`); return texte; }
+    const res = await fetch(`${JM_WIDGET}?${qs}`, { signal: AbortSignal.timeout(JM_ZEITLIMIT_MS) });
+    if (!res.ok) {
+      if (res.status === 429 || res.status === 503) jmGedrosselt = `Widget HTTP ${res.status}`;
+      return widgetUnlesbar(schluessel, `Judge.me HTTP ${res.status}`, frisch);
+    }
     const j = await res.json();
+    if (!j || typeof j !== 'object') return widgetUnlesbar(schluessel, 'Antwort ohne Daten', frisch);
     for (const r of (Array.isArray(j?.reviews) ? j.reviews : [])) {
       const t = nurText(r?.body_html ?? r?.body);
       if (t) texte.add(t);
     }
-  } catch (e) { console.error(`  Shop-Abgleich nicht moeglich: ${e.message} (Produkt ${schluessel})`); return texte; }
+  } catch (e) { return widgetUnlesbar(schluessel, e.message, frisch); }
+  widgetFehlerFolge = 0;
   textCache.set(schluessel, texte);
   return texte;
 }
 
+// Liegt einer der Texte (gesendete Fassung, CJ-Original) beim Produkt im Shop?
+const imShop = (bekannt, ...texte) => texte.some(t => { const x = nurText(t) || String(t ?? '').trim(); return !!x && bekannt.has(x); });
+
 // Nach einem POST mit HTTP 201 OHNE Review-ID: frisch nachlesen und auf den Text pruefen.
+// Ist der Shop dabei nicht lesbar, gilt NICHTS als gefunden (→ uncertain, nie „gesendet" raten).
 async function jmAbgleich(pid, bodies) {
   const vorhanden = await jmProduktTexte(pid, true);
   const treffer = new Set();
+  if (!vorhanden) return treffer;
   for (const b of bodies) {
     const t = nurText(b) || String(b).trim();
     if (vorhanden.has(t)) treffer.add(String(b).trim());
@@ -257,6 +337,7 @@ const merkeLeer = (id, grund) => {
     await sleep(250);
   }
   console.log(`Teilmessung: ${scanned} Produkte geprüft; weitere Seiten: ${hasMore ? 'ja' : 'nein'}.`);
+  if (DRY) console.log('TROCKENLAUF: nichts wird gesendet oder gespeichert (live nur mit DRY_RUN=0).');
   console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT}${SORT ? `, SORT=${SORT}${REVERSE ? ' umgekehrt' : ''}` : ''})${DRY ? ' [DRY]' : ''}`
     + (leerUebersprungen ? ` · ${leerUebersprungen} übersprungen, weil CJ dort vor < ${LEER_TAGE} Tagen nichts hatte` : ''));
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
@@ -323,6 +404,8 @@ const merkeLeer = (id, grund) => {
   }
 
   let totalReviews = 0, prodWith = 0, fails = 0, ausgelistet = 0;
+  let uebersetzAusfaelleFolge = 0;
+  const UEBERSETZ_AUSFALL_MAX = 3;
   for (const p of prods) {
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
@@ -340,74 +423,154 @@ const merkeLeer = (id, grund) => {
       const list = cr?.data?.list ?? cr?.data?.comments ?? cr?.data?.content ?? cr?.data?.commentList ?? (Array.isArray(cr?.data) ? cr.data : null);
       if (!Array.isArray(list)) throw new Error('CJ_DATA: Kommentar-Liste fehlt; nicht als leeres Produkt speichern');
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
+      // Sterne: nur ganze Zahlen 1 bis 5. Ein vorhandener, aber unbrauchbarer Wert wird verworfen und gemeldet (nicht auf 5 klemmen, nicht als „4,5" senden).
+      // Fehlt der Wert ganz (leer/null), zählt der Kommentar wie bisher als „unter MIN_SCORE".
+      let ungueltig = 0, gueltig = 0, beispielScore;
       const picked = (list || [])
-        .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
+        .filter(c => {
+          const stern = sterneAus(c.score);
+          if (stern === null) {
+            if (!sterneOhneAngabe(c.score)) { ungueltig++; beispielScore ??= c.score; }
+            return false;
+          }
+          gueltig++;
+          return stern >= MIN_SCORE && (c.comment || '').trim().length >= 8;
+        })
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); merkeLeer(pidNum, 'keine-kommentare'); continue; }
+      if (ungueltig) console.log(`· ${p.handle}: ${ungueltig} Kommentar(e) mit unplausibler Sternezahl verworfen (z. B. ${JSON.stringify(beispielScore)})`);
+      if (!picked.length) {
+        console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`);
+        if (ungueltig && !gueltig) {
+          // NUR kaputte Sternewerte, kein einziger brauchbarer: vermutlich hat CJ sein Format geändert. „Unbekannt" ist nicht „leer" (kein 60-Tage-Vermerk)
+          // und darf nicht als grüner Lauf enden.
+          fails++;
+          console.error(`✗ ${p.handle}: alle ${ungueltig} Sternewerte unbrauchbar (z. B. ${JSON.stringify(beispielScore)}) → nicht als leer vermerkt; CJ-Format prüfen`);
+        } else merkeLeer(pidNum, 'keine-kommentare');
+        continue;
+      }
 
-      const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
-      let sent = 0, schonDa = 0, complete = true;
+      // Übersetzt wird nur, was es noch braucht: nicht gesendet, nicht unklar und noch keine gespeicherte Fassung.
+      // Die Übersetzung ist nicht deterministisch — eine einmal gesendete Fassung wird wiederverwendet, nie neu gewürfelt.
+      const keys = picked.map(c => reviewKey(pidNum,cjpid,c));
+      const braucht = picked.map((c, i) => {
+        const st = reviewStates.get(keys[i]);
+        return st !== 'sent' && st !== 'sending' && st !== 'uncertain' && !reviewBody(reviewStates, keys[i]);
+      });
+      const bodiesDE = new Map();
+      if (braucht.some(Boolean)) {
+        const stellen = picked.map((_, i) => i).filter(i => braucht[i]);
+        const tr = await translateDE(stellen.map(i => picked[i].comment.trim()));
+        // Fehlt die Übersetzung (Ausfall, Limit, leerer Eintrag) und ist der Text nicht schon deutsch → dieses Produkt NICHT senden.
+        // Kein „sent", kein „done": ein späterer Lauf holt es nach. Ein bewusstes Original gibt es nur mit ALLOW_ORIGINAL=1.
+        const ohne = stellen.filter((i, j) => tr.fehlt.includes(j) && !wirktDeutsch(picked[i].comment));
+        if (tr.weg !== 'original') uebersetzAusfaelleFolge = 0;
+        if (ohne.length && !ALLOW_ORIGINAL) {
+          fails++;
+          console.error(`✗ ${p.handle}: Übersetzung fehlt für ${ohne.length} von ${stellen.length} Kommentar(en) (${tr.grund || 'Antwort unvollständig'}) → nichts gesendet; ein späterer Lauf holt es nach (bewusstes Original nur mit ALLOW_ORIGINAL=1)`);
+          // Fällt der Dienst ganz aus, kostet jedes weitere Produkt CJ-Abfragen und wird doch zurückgehalten: nach UEBERSETZ_AUSFALL_MAX Produkten in Folge Schluss.
+          if (tr.weg === 'original' && ++uebersetzAusfaelleFolge >= UEBERSETZ_AUSFALL_MAX) {
+            console.error(`\n⏳ ÜBERSETZUNG FÄLLT AUS (${UEBERSETZ_AUSFALL_MAX} Produkte in Folge ohne Übersetzung; ${tr.grund || 'kein Grund genannt'}) — Lauf hier beendet.`);
+            console.error('   Die uebrigen Produkte sind NICHT geprueft und NICHT als leer vermerkt. Spaeter erneut laufen lassen (Schluessel/Limit pruefen).');
+            break;
+          }
+          continue;
+        }
+        stellen.forEach((i, j) => bodiesDE.set(i, tr.texte[j]));
+      }
+      let sent = 0, schonDa = 0, complete = true, gedrosselt = false;
       const offen = [];   // gesendet, Antwort ohne ID → wird gleich nachgelesen
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
-        const key = reviewKey(pidNum,cjpid,c);
+        const key = keys[i];
         const previous = reviewStates.get(key);
+        const gespeichert = reviewBody(reviewStates, key);
         if (previous === 'sent') { console.log(`  Bereits importierte Bewertung übersprungen (${key.slice(0,12)})`); continue; }
         if (previous === 'sending' || previous === 'uncertain') {
+          // „Unklar" heilt nicht von selbst: zuerst im Shop nachsehen. Text da → sent; sonst bleibt es unklar (nie blind wiederholen).
+          // Trockenlauf: kein Zugriff, nur melden.
+          const bekannt = DRY ? null : await jmProduktTexte(pidNum);
+          if (bekannt && imShop(bekannt, gespeichert, c.comment)) {
+            recordReviewState(ITEM_LEDGER,reviewStates,key,'sent',gespeichert); schonDa++;
+            console.log(`  Unklarer Zustand aufgelöst: Bewertung liegt im Shop (${key.slice(0,12)})`);
+            continue;
+          }
           complete = false; fails++;
-          console.error(`  CJ_REVIEW_UNCERTAIN: ${key.slice(0,12)} vor erneutem Import in Judge.me abgleichen`);
+          console.error(`  CJ_REVIEW_UNCERTAIN: ${key.slice(0,12)} ${bekannt ? 'im Shop nicht gefunden' : DRY ? 'Trockenlauf, kein Shop-Abgleich' : 'Shop-Abgleich nicht möglich'}; vor erneutem Import in Judge.me abgleichen`);
+          if (jmGedrosselt) { gedrosselt = true; break; }
           continue;
         }
         const rev = {
-          name: (c.commentUser || '').trim() || 'CJ-Kundenbewertung',
-          rating: Number(c.score) || 5,
-          body: bodiesDE[i] || c.comment.trim(),
+          name: anzeigeName(c.commentUser),
+          rating: sterneAus(c.score),
+          body: gespeichert || bodiesDE.get(i) || c.comment.trim(),
           created_at: (c.commentDate || '').slice(0, 10) || undefined,
           picture_urls: (Array.isArray(c.commentUrls) ? c.commentUrls : []).filter(u => /^https?:\/\//.test(u)),
         };
         if (DRY) { console.log(`  [DRY] ${p.handle} ★${rev.rating} ${rev.body.slice(0, 50)}`); sent++; continue; }
         // Liegt genau dieser Text beim Produkt schon im Shop, ist er importiert — egal unter
         // welchem Schluessel. Dann nur den Zustand nachfuehren, nicht erneut senden.
+        // Verglichen werden die gesendete Fassung UND der CJ-Originaltext (früher unübersetzt gesendete Bewertungen).
+        // Ist der Shop NICHT lesbar (null), ist das „unbekannt" — dann wird nichts gesendet.
+        // Kein Ledger-Eintrag dafür: es wurde ja nichts gesendet, und „uncertain" würde die Bewertung dauerhaft sperren.
         const bekannt = await jmProduktTexte(pidNum);
-        if (bekannt.has(nurText(rev.body) || rev.body.trim())) {
-          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); schonDa++;
+        if (!bekannt) {
+          complete = false; fails++;
+          console.error(`  CJ_ABGLEICH_FEHLT: ${key.slice(0,12)} Shop nicht lesbar → NICHT gesendet; ein späterer Lauf wiederholt (nichts im Ledger vermerkt)`);
+          if (jmGedrosselt) { gedrosselt = true; break; }
+          continue;
+        }
+        if (imShop(bekannt, rev.body, c.comment)) {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent',rev.body); schonDa++;
           console.log(`  Im Shop schon vorhanden, nicht erneut gesendet (${key.slice(0,12)})`);
           continue;
         }
-        // Intent vor dem externen POST dauerhaft festhalten. Ein abgebrochener Lauf
-        // mit unbekanntem Ergebnis darf denselben Kommentar nicht blind wiederholen.
-        recordReviewState(ITEM_LEDGER,reviewStates,key,'sending');
+        // Intent vor dem externen POST dauerhaft festhalten, samt der Fassung, die gesendet wird.
+        // Ein abgebrochener Lauf mit unbekanntem Ergebnis darf denselben Kommentar nicht blind wiederholen
+        // und kann ihn später mit genau diesem Text im Shop wiederfinden.
+        recordReviewState(ITEM_LEDGER,reviewStates,key,'sending',rev.body);
         let out;
-        try { out = await jmPost(pidNum, rev); }
+        try {
+          out = await jmPost(pidNum, rev);
+          // HTTP 429 heisst „abgelehnt, nicht verarbeitet": einmal warten (Retry-After, sonst kurz) und wiederholen. Nie umgehen.
+          if (out.status === 429) {
+            console.error(`  Judge.me drosselt (HTTP 429) → warte ${Math.round(out.warteMs / 1000)} s, dann ein zweiter Versuch`);
+            await sleep(out.warteMs);
+            out = await jmPost(pidNum, rev);
+          }
+        }
         catch {
-          recordReviewState(ITEM_LEDGER,reviewStates,key,'uncertain');
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'uncertain',rev.body);
           complete = false; fails++;
           console.error(`  CJ_REVIEW_UNCERTAIN: Netzwerkfehler bei ${key.slice(0,12)}; erst abgleichen`);
           continue;
         }
         if (out.ok) {
-          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); sent++;
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent',rev.body); sent++;
         } else if (out.abgleichen) {
           // Zustand bleibt 'sending': bricht der Lauf hier ab, gilt die Bewertung beim
           // naechsten Mal als unklar und wird NICHT blind ein zweites Mal gesendet.
           offen.push({ key, body: rev.body });
         } else {
-          recordReviewState(ITEM_LEDGER,reviewStates,key,out.uncertain?'uncertain':'failed');
+          recordReviewState(ITEM_LEDGER,reviewStates,key,out.uncertain?'uncertain':'failed',rev.body);
           complete = false; fails++; console.error(`  Import nicht bestätigt: ${p.handle}, HTTP ${out.status}${out.uncertain ? '; vor Wiederholung abgleichen' : '; Anfrage abgelehnt'}`);
+          // Drosselung (429 auch nach der Wartezeit, 503): weitermachen hiesse hämmern. Lauf beenden wie bei CJ_THROTTLED.
+          if (out.status === 429 || out.status === 503) { jmGedrosselt = `POST HTTP ${out.status}`; gedrosselt = true; break; }
         }
         await sleep(700);
       }
       if (offen.length) {
-        const gefunden = await jmAbgleich(pidNum, offen.map(o => o.body));
+        // Drosselt Judge.me schon, wird nicht noch einmal gefragt: die Einträge bleiben dann „uncertain" und werden beim nächsten Lauf aufgelöst.
+        const gefunden = jmGedrosselt ? new Set() : await jmAbgleich(pidNum, offen.map(o => o.body));
         for (const o of offen) {
           if (gefunden.has(String(o.body).trim())) {
-            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'sent'); sent++;
+            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'sent',o.body); sent++;
           } else {
-            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'uncertain');
+            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'uncertain',o.body);
             complete = false; fails++;
             console.error(`  CJ_REVIEW_UNCERTAIN: ${o.key.slice(0,12)} im Shop nicht gefunden; vor Wiederholung abgleichen`);
           }
         }
+        if (jmGedrosselt) gedrosselt = true;   // der Abgleich selbst kann in die Drosselung laufen
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
       else if (schonDa) console.log(`· ${p.handle}: ${schonDa} Bewertung(en) lagen schon im Shop`);
@@ -418,6 +581,12 @@ const merkeLeer = (id, grund) => {
       if (!DRY && complete) {
         try { fs.appendFileSync(LEDGER, pidNum + '\n'); }
         catch (e) { console.error(`  ⚠️  LEDGER NICHT GESCHRIEBEN fuer ${p.handle} (${pidNum}): ${e.message}`); console.error('     Ohne Eintrag importiert der naechste Lauf diese Reviews doppelt.'); }
+      }
+      // Judge.me drosselt: weiterlaufen hiesse hämmern. Die übrigen Produkte sind NICHT geprüft und NICHT als leer vermerkt.
+      if (gedrosselt) {
+        console.error(`\n⏳ JUDGE.ME DROSSELT ODER FÄLLT AUS (${jmGedrosselt}) — Lauf hier beendet.`);
+        console.error('   Spaeter erneut laufen lassen; unklare Eintraege werden dann zuerst im Shop abgeglichen.');
+        break;
       }
     } catch (e) {
       if (String(e.message).startsWith('CJ_QUOTA')) {
