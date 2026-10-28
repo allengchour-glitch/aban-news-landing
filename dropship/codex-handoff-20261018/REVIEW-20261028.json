@@ -1,0 +1,835 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent offline content/source review only, not operational approval",
+  "reviews": [
+    {
+      "path": "review/FINAL-PACKAGE-REVIEW.json",
+      "sha256": "8081bbe28f6a4c1934665742066189b0eaee78f948917ca005525f33ffcad67c",
+      "data": {
+        "checkedAtUTC": "2026-10-28T09:06:00.717916+00:00",
+        "status": "CONTENT_AND_SOURCE_STATUS_REVIEW_PASS_NOT_OPERATIONAL_APPROVAL",
+        "packageSha256": "b14f940fc53744a1568b98bb2580507d9eb2b8d625e4e758883847b40f03e0ca",
+        "checksPassed": 19,
+        "checks": [
+          {
+            "name": "date and Claude lead explicit",
+            "result": "PASS"
+          },
+          {
+            "name": "local candidate versus production",
+            "result": "PASS"
+          },
+          {
+            "name": "current theme and source hashes",
+            "result": "PASS"
+          },
+          {
+            "name": "shipping values and customer domain preserved",
+            "result": "PASS"
+          },
+          {
+            "name": "planning and completed metric windows",
+            "result": "PASS"
+          },
+          {
+            "name": "sparse cells unknown, explicit zero limited",
+            "result": "PASS"
+          },
+          {
+            "name": "own and other execution distinguished",
+            "result": "PASS"
+          },
+          {
+            "name": "all six exact channel UTM targets included",
+            "result": "PASS"
+          },
+          {
+            "name": "projector actual native product/variant URL",
+            "result": "PASS"
+          },
+          {
+            "name": "diffuser actual native product/variant URL",
+            "result": "PASS"
+          },
+          {
+            "name": "one stable master, storyboard and blocked",
+            "result": "PASS"
+          },
+          {
+            "name": "rights power and channel blockers",
+            "result": "PASS"
+          },
+          {
+            "name": "sound and cleared audience",
+            "result": "PASS"
+          },
+          {
+            "name": "one Klaviyo proposal and actual recovery",
+            "result": "PASS"
+          },
+          {
+            "name": "required table headers",
+            "result": "PASS"
+          },
+          {
+            "name": "DNS footer not re-requested",
+            "result": "PASS"
+          },
+          {
+            "name": "16 common queue values unchanged",
+            "result": "PASS"
+          },
+          {
+            "name": "two absent entries before current window",
+            "result": "PASS"
+          },
+          {
+            "name": "19 chosen metrics present in fresh catalog",
+            "result": "PASS"
+          }
+        ],
+        "noNewApiReads": true,
+        "archives": "root constructing; storage/readback not claimed by this content review",
+        "limits": [
+          "No final master/filmrights approval",
+          "No Merchant runtime/source-map approval",
+          "No Theme write or full Liquid validation",
+          "Final archive upload/readback checked separately by root"
+        ],
+        "archiveChecks": {
+          "relativeDocumentLinksResolve": [
+            "CLAUDE-MERCHANT-REVIEW-20261028.json",
+            "VERSAND-JSONLD-20261028.diff",
+            "MASTER-REFERENZEN-20261028.json",
+            "WELCOME-SERVICE-ENTWURF-20261028.diff"
+          ],
+          "afterSourceFilesMatchManifestAndTestedLocalBytes": 4,
+          "beforeSourceFilesMatchHashes": 3,
+          "dependencyFilesMatchHashes": 4,
+          "patchHashMatches": true,
+          "noRuntimeIntegrationOrLivePush": true,
+          "remoteStorageAndReadback": "not_checked_by_this_reviewer"
+        },
+        "reviewedCodeSources": [
+          {
+            "path": "automation/lib/gmc_feed_item.mjs",
+            "beforeGitBlobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+            "afterSha256": "045f6a8f5845361947241384dd37b17859ccc301fcf336362ff65ffb9edd229c"
+          },
+          {
+            "path": "automation/lib/gmc_feed_item_test.mjs",
+            "beforeGitBlobSha": "6208b7f2b7bad909165afd6b8dbf508ba1dda73c",
+            "afterSha256": "48846cea2d1ae8d4ee43519ce0228bbb1d23eab1552921db4708d36f60faa7be"
+          },
+          {
+            "path": "automation/autopilot/merchant_feed.mjs",
+            "beforeGitBlobSha": "765c75c8121d5697a25c8200e7366f900718769b",
+            "afterSha256": "8a1cad70823bbc4ba17fd5a1b3c7590784ffe03d46e8e36f19f5953ecb044083"
+          },
+          {
+            "path": "automation/autopilot/merchant_feed_test.mjs",
+            "beforeGitBlobSha": null,
+            "afterSha256": "71a7c150592dbec66dd01954c659efb71c9593e5656f3e5e7e75405fa88268f8"
+          }
+        ],
+        "packageEmojiCheck": "PASS",
+        "dataWindows": {
+          "completedMetricDaysEuropeZurich": "2026-10-21 through2026-10-27; DST-aware 169-hour full window",
+          "futureQueueEuropeZurich": "2026-10-28T09:46+01:00 to2026-11-04T09:46+01:00",
+          "productScope": "2 explicitlyselectedproducts; no catalog coverage claim",
+          "themeScope": "MAIN212656488839 literalShippingService JSON only",
+          "KlaviyoScope": "One 4-flowreport; 2resultrows, missingcheckoutrowsunknown, USD separateCHF"
+        }
+      }
+    },
+    {
+      "path": "review/KLAVIYO-INDEPENDENT-REVIEW.json",
+      "sha256": "194d22bb3d1a290edd349568ca63ce67a4b17e0e22464d48d5b3d4bf37a9b23e",
+      "data": {
+        "checkedAt": "2026-10-28T09:00:26.919076+00:00",
+        "checksPassed": 13,
+        "checks": [
+          {
+            "name": "right accountUSD",
+            "result": "PASS"
+          },
+          {
+            "name": "two reportedflows only",
+            "result": "PASS"
+          },
+          {
+            "name": "welcome4deliveredlive",
+            "result": "PASS"
+          },
+          {
+            "name": "post3delivered1clicklive",
+            "result": "PASS"
+          },
+          {
+            "name": "newrecoveryliveolddraft",
+            "result": "PASS"
+          },
+          {
+            "name": "checkoutperformanceabsentunknown",
+            "result": "PASS"
+          },
+          {
+            "name": "freshTTuuTSbindsVZnxDz",
+            "result": "PASS"
+          },
+          {
+            "name": "htmlsourceexactnative",
+            "result": "PASS"
+          },
+          {
+            "name": "beforeandafterhashes",
+            "result": "PASS"
+          },
+          {
+            "name": "exacttwochangedlines",
+            "result": "PASS"
+          },
+          {
+            "name": "public50andsameexistingdiscount",
+            "result": "PASS"
+          },
+          {
+            "name": "twopolicytargetsfreshHTTP200",
+            "result": "PASS"
+          },
+          {
+            "name": "proposalnotappliednosend",
+            "result": "PASS"
+          }
+        ],
+        "scope": "Independent stored raw-source/report/hash/diff checks; no extra API/data reads",
+        "limits": [
+          "Attribution zeros are not a no-orders or no-sync result",
+          "Absent checkout report entries are unknown",
+          "HTTP200 proves target reachability, not exhaustive policy/legal review",
+          "PolicyHTTPproof is root additional read; worker originalvalidation correctlydescribes earlierlimitedscope",
+          "One existing service-section proposal, no applied change"
+        ]
+      }
+    },
+    {
+      "path": "review/MASTER-PACKAGE-INDEPENDENT-REVIEW.json",
+      "sha256": "68d2114dd9bbd28d12202f28e3b9bd297d50ab6f55f9cdcbed2400b17d08e6c4",
+      "data": {
+        "checkedAt": "2026-10-28T08:59:22.812844+00:00",
+        "scope": "Independent saved-plan/UTM/hash/crop arithmetic check plus actual viewing of product photo and two reference frames; not MP4 motion/sound/rights approval",
+        "checksPassed": 21,
+        "checks": [
+          {
+            "name": "same stable masterId",
+            "result": "PASS"
+          },
+          {
+            "name": "one18s1080x1920plan30fpsnotrendered",
+            "result": "PASS"
+          },
+          {
+            "name": "no voiceover or additional music",
+            "result": "PASS"
+          },
+          {
+            "name": "five contiguoussegments and540targetframes",
+            "result": "PASS"
+          },
+          {
+            "name": "450true frames90repeat explicitlyunapproved",
+            "result": "PASS"
+          },
+          {
+            "name": "criticalrects inside9x16andcentred4x5andsquare",
+            "result": "PASS"
+          },
+          {
+            "name": "six channelsunique",
+            "result": "PASS"
+          },
+          {
+            "name": "instagramexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "tiktokexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "youtubeexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "facebookexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "threadsexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "pinterestexactproductvariantUTM",
+            "result": "PASS"
+          },
+          {
+            "name": "sixdistinctUTMlinks",
+            "result": "PASS"
+          },
+          {
+            "name": "IGTTcorrectbioqualification",
+            "result": "PASS"
+          },
+          {
+            "name": "YTnonclickableShorts andaudiencealreadyknown",
+            "result": "PASS"
+          },
+          {
+            "name": "noinventedPinterestboard",
+            "result": "PASS"
+          },
+          {
+            "name": "actual reference photo hash",
+            "result": "PASS"
+          },
+          {
+            "name": "binding unknown andnotpublishable",
+            "result": "PASS"
+          },
+          {
+            "name": "resolved historicalplanreference HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+            "result": "PASS"
+          },
+          {
+            "name": "resolved historicalplanreference HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+            "result": "PASS"
+          }
+        ],
+        "visualIndependentObservation": "Product/reference outer form and button layout look similar. Source hand is cropped. No exact CJ variant, included motif, electrical specification, CH plug, rights or final film quality proved.",
+        "noFinalMP4Reviewed": true,
+        "noPublicationOrLedgerInit": true
+      }
+    },
+    {
+      "path": "review/MERCHANT-FINAL-REVIEW.json",
+      "sha256": "25031773693868bd6b19e2b80df07759372e1a51617a28f9d0033eb60934a36e",
+      "data": {
+        "checkedAt": "2026-10-28T08:58:03.833673+00:00",
+        "status": "OFFLINE_CANDIDATE_REVIEWED_NOT_PRODUCTION_APPROVED",
+        "versionChecks": [
+          {
+            "path": "automation/lib/gmc_feed_item.mjs",
+            "afterSha256": "045f6a8f5845361947241384dd37b17859ccc301fcf336362ff65ffb9edd229c",
+            "byteExact": true
+          },
+          {
+            "path": "automation/lib/gmc_feed_item_test.mjs",
+            "afterSha256": "48846cea2d1ae8d4ee43519ce0228bbb1d23eab1552921db4708d36f60faa7be",
+            "byteExact": true
+          },
+          {
+            "path": "automation/autopilot/merchant_feed.mjs",
+            "afterSha256": "8a1cad70823bbc4ba17fd5a1b3c7590784ffe03d46e8e36f19f5953ecb044083",
+            "byteExact": true
+          },
+          {
+            "path": "automation/autopilot/merchant_feed_test.mjs",
+            "afterSha256": "71a7c150592dbec66dd01954c659efb71c9593e5656f3e5e7e75405fa88268f8",
+            "byteExact": true
+          }
+        ],
+        "dependenciesByteUnchanged": [
+          "automation/lib/kanal_sperren.mjs",
+          "automation/lib/shopify_gql.mjs",
+          "automation/lib/shopify_secret.mjs",
+          "automation/lib/shopify_host.mjs"
+        ],
+        "patchSha256": "24b2c34f413528ab43413e646209334c9e738bf2ab4951544a26a71e1f42ded4",
+        "baselineBugsIndependentlyReproduced": 5,
+        "itemCandidateOwnChecksPassed": 21,
+        "outputRaceAliasOwnChecksPassed": 9,
+        "mixedTwoItemCandidateOwnChecksPassed": 9,
+        "agentProvidedTestsIndependentlyExecuted": {
+          "itemChecks": 151,
+          "generatorTests": 37
+        },
+        "sourceAndSchemaReadLimitations": [
+          "No actual Merchant data source or ID-map authenticated",
+          "Map evidence object shape is not source/authenticity proof",
+          "GraphQL validator said SKIPPED; no new candidate query executed",
+          "GTIN format is not GS1 assignment verification",
+          "No feed upload/runtime integration or publication",
+          "Multiple-variant products intentionally blocked by candidate until reader reviewed",
+          "Per-item shipping omission requires authenticated account-policy countercheck before integration"
+        ],
+        "findingsHandled": [
+          "Atomic no-clobber race and broken-symlink protection",
+          "Output aliases of identity map blocked before credentials",
+          "Inherited per-item CHF7 override removed from candidate default and legacy overrides blocked",
+          "Full source description reaches safety filter before XML truncation"
+        ]
+      }
+    },
+    {
+      "path": "review/MERCHANT-INDEPENDENT-PROBES.json",
+      "sha256": "024484660c949bf42a589bb4d01eb967cce6e692a43eb09a729cb22c245121d6",
+      "data": {
+        "checkedAt": "2026-10-28T08:53:20.588Z",
+        "scope": "Independent offline item probes; no API/network/writes except this report",
+        "baseline": [
+          {
+            "name": "missing identifiers become asserted absent",
+            "found": true
+          },
+          {
+            "name": "Shopping_ads exclusion omitted",
+            "found": true
+          },
+          {
+            "name": "unknown availability becomes in stock",
+            "found": true
+          },
+          {
+            "name": "merchant SKU used as manufacturer MPN",
+            "found": true
+          },
+          {
+            "name": "seller name invented as manufacturer brand",
+            "found": true
+          }
+        ],
+        "checksPassed": 5,
+        "fixed": {
+          "checksPassed": 21
+        }
+      }
+    },
+    {
+      "path": "review/MERCHANT-WHOLE-CANDIDATE-PROBES.json",
+      "sha256": "0502bfe5855fc6cea5dedb01cfde0d54f8324365af2b23d412f97b2fb20d79be",
+      "data": {
+        "checkedAt": "2026-10-28T08:55:05.856Z",
+        "scope": "Independent mixed-valid-invalid two-item candidate probes with synthetic source map; no production-source approval",
+        "checks": [
+          {
+            "name": "missing second exclusion field",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "malformed second exclusion",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "unknown second availability",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "truncated second barcode connection",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "second product has unreviewed multiple variants",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "second product tags empty",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "second product tag list missing",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "second product now safety blocked",
+            "result": "PASS",
+            "priorOutputPreserved": true
+          },
+          {
+            "name": "late licensed name after900 chars reaches filter before XML truncation",
+            "result": "PASS"
+          }
+        ],
+        "checksPassed": 9,
+        "networkCalls": 0,
+        "liveWrites": 0
+      }
+    },
+    {
+      "path": "review/MERCHANT-WRITE-INDEPENDENT-PROBES.json",
+      "sha256": "981b7ce7a1fd15dc30d9d5a936c7b1828f8045c28880653b4288fb90ebc223fa",
+      "data": {
+        "checkedAt": "2026-10-28T08:53:20.651Z",
+        "scope": "Independent offline candidate-output tests; fixture source is not operational evidence",
+        "checks": [
+          {
+            "name": "existing output preserved by default",
+            "result": "PASS"
+          },
+          {
+            "name": "racing output atomically preserved",
+            "result": "PASS"
+          },
+          {
+            "name": "owned race temp removed",
+            "result": "PASS"
+          },
+          {
+            "name": "broken output symlink not overwritten",
+            "result": "PASS"
+          },
+          {
+            "name": "explicit replacement stays supported",
+            "result": "PASS"
+          },
+          {
+            "name": "identity-map alias blocked: identity-map.json",
+            "result": "PASS"
+          },
+          {
+            "name": "identity-map alias blocked: map-hard.json",
+            "result": "PASS"
+          },
+          {
+            "name": "identity-map alias blocked: map-link.json",
+            "result": "PASS"
+          },
+          {
+            "name": "all output preflights happen before token/network",
+            "result": "PASS"
+          }
+        ],
+        "checksPassed": 9,
+        "networkCalls": 0,
+        "merchantPushPerformed": false
+      }
+    },
+    {
+      "path": "review/METRIC-INDEPENDENT-REVIEW.json",
+      "sha256": "9993b711c0277b0b09b3e54a025817a5c94b68d4646277703cf03a98625b523a",
+      "data": {
+        "checkedAt": "2026-10-28T08:50:41.569046+00:00",
+        "scope": "Independent recomputation from saved raw read responses; no new API call",
+        "metricChecks": [
+          {
+            "channel": "facebook",
+            "metricId": "FBEV49",
+            "coverageDays": 7,
+            "fullWeekValue": 1380.0,
+            "result": "PASS"
+          },
+          {
+            "channel": "facebook",
+            "metricId": "FBEV34",
+            "coverageDays": 2,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "facebook",
+            "metricId": "FBEV17",
+            "coverageDays": 7,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "facebook",
+            "metricId": "FBEV47",
+            "coverageDays": 7,
+            "fullWeekValue": 0.0,
+            "result": "PASS"
+          },
+          {
+            "channel": "facebook",
+            "metricId": "FBEV48",
+            "coverageDays": 7,
+            "fullWeekValue": 1.0,
+            "result": "PASS"
+          },
+          {
+            "channel": "instagram",
+            "metricId": "IGEV05",
+            "coverageDays": 7,
+            "fullWeekValue": 1605.0,
+            "result": "PASS"
+          },
+          {
+            "channel": "instagram",
+            "metricId": "IGEV38",
+            "coverageDays": 4,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "tiktok",
+            "metricId": "TKEV02",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "tiktok",
+            "metricId": "TKEV06",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV02",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV14",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV18",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV01",
+            "coverageDays": 7,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV05",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "youtube",
+            "metricId": "YTEV06",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "threads",
+            "metricId": "THEV06",
+            "coverageDays": 3,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "threads",
+            "metricId": "THEV05",
+            "coverageDays": 1,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "pinterest",
+            "metricId": "PIEV01",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          },
+          {
+            "channel": "pinterest",
+            "metricId": "PIEV04",
+            "coverageDays": 5,
+            "fullWeekValue": null,
+            "result": "PASS"
+          }
+        ],
+        "planCount": 16,
+        "planUuidStringsUnique": true,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "state": "PENDING",
+            "count": 12
+          },
+          {
+            "network": "instagram",
+            "state": "PENDING",
+            "count": 12
+          },
+          {
+            "network": "pinterest",
+            "state": "PENDING",
+            "count": 4
+          }
+        ],
+        "limitations": [
+          "No inference of sales or ranking from these metrics",
+          "Historical master publication ledger not proved by this future window",
+          "Scope does not independently validate claims in every existing scheduled post"
+        ]
+      }
+    },
+    {
+      "path": "review/SHIPPING-SCHEMA-INDEPENDENT-REVIEW.json",
+      "sha256": "0962bc9f2951ba81a272cd1072598fbfacba950885b68fcbba553375173841bc",
+      "data": {
+        "checkedAt": "2026-10-28T08:55:58.587463+00:00",
+        "scope": "Independent saved-source data and schema-field checks; no API calls or live theme/feed writes",
+        "shippingChanges": [
+          {
+            "pointer": "/hasShippingService/0/shippingConditions/0/orderValue/maxValue",
+            "before": 40.49,
+            "after": 49.99
+          },
+          {
+            "pointer": "/hasShippingService/0/shippingConditions/1/orderValue/minValue",
+            "before": 40.5,
+            "after": 50
+          }
+        ],
+        "shippingCases": [
+          {
+            "orderValueCHF": 0,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 40.49,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 40.5,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 44.99,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 45,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 49.98,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 49.99,
+            "shippingRateCHF": 7.0
+          },
+          {
+            "orderValueCHF": 50,
+            "shippingRateCHF": 0
+          },
+          {
+            "orderValueCHF": 50.01,
+            "shippingRateCHF": 0
+          },
+          {
+            "orderValueCHF": 100,
+            "shippingRateCHF": 0
+          }
+        ],
+        "allOtherShippingFieldsPreserved": true,
+        "sourceBytesHashAndNativeMd5Match": true,
+        "schemaFieldChecks": [
+          {
+            "type": "Product",
+            "requiredFieldsFound": [
+              "id",
+              "status",
+              "title",
+              "handle",
+              "onlineStoreUrl",
+              "vendor",
+              "productType",
+              "tags",
+              "description",
+              "featuredMedia",
+              "media",
+              "metafield",
+              "variants"
+            ]
+          },
+          {
+            "type": "ProductVariant",
+            "requiredFieldsFound": [
+              "id",
+              "sku",
+              "price",
+              "compareAtPrice",
+              "availableForSale",
+              "barcodes"
+            ]
+          },
+          {
+            "type": "Shop",
+            "requiredFieldsFound": [
+              "myshopifyDomain",
+              "currencyCode",
+              "primaryDomain"
+            ]
+          },
+          {
+            "type": "Media",
+            "requiredFieldsFound": [
+              "mediaContentType"
+            ]
+          },
+          {
+            "type": "MediaImage",
+            "requiredFieldsFound": [
+              "image"
+            ]
+          },
+          {
+            "type": "ProductVariantBarcode",
+            "requiredFieldsFound": [
+              "type",
+              "value"
+            ]
+          },
+          {
+            "type": "Image",
+            "requiredFieldsFound": [
+              "url"
+            ]
+          }
+        ],
+        "barcodeEnumsMatched": true,
+        "fullGraphqlValidation": "SKIPPED, not PASS; no native query executed",
+        "fullThemeLiquidValidation": "not performed; only literal ShippingService data compared"
+      }
+    }
+  ],
+  "reviewInstructions": "# Unabhängige Gegenprüfung für Claude, 28.10.2026\n\nStatus: lokale Entwürfe und gespeicherte Prüfbelege gegengelesen. Keine Freigabe für produktive Ausführung, kein Merchant-Push und keine Filmabnahme. Claude führt die Gesamtarbeit. Dieser Review führte keine zusätzlichen Kontoabfragen, Nachrichten, Installationen oder externen Writes aus.\n\n## Merchant-Kandidat\n\nFünf Fehler im frisch gespeicherten Ausgangshelper unabhängig offline reproduziert: verlorener Zielausschluss, unbekannte Verfügbarkeit als lieferbar, Händler-SKU als MPN, Händlername als Herstellerbrand und fehlende Kennungen als `identifier_exists=no`.\n\nAm lokalen Kandidaten sind 151 Itemchecks und 37 Generator-Tests durch diesen Reviewer ausgeführt worden. Zusätzlich bestanden 21 eigene Itemproben, neun eigene Dateischutzproben und neun gemischte Zwei-Item-Proben. Die letzte Gruppe bestätigt insbesondere: Wenn das erste Angebot gültig und das zweite unbekannt, unvollständig oder inzwischen gesperrt ist, wird kein verkleinerter Ersatz geschrieben; die vorhandene Datei bleibt erhalten.\n\nVier konkrete Reviewpunkte wurden im Kandidaten bearbeitet und anschliessend gegengeprüft: atomarer No-Clobber bei konkurrierender Ausgabe; Map-/Symlink-/Hardlink-Aliasse vor Credentialzugriff; vollständiger Beschreibungstext für die bestehende Lizenzprüfung vor der XML-Kürzung; kein ungeprüfter pauschaler CHF-7-Versandblock als Standard. Letzteres ist vor einer Integration gegen die authentifizierte Merchant-Kontopolicy zu prüfen und ändert hier keine reale Versandregel.\n\nAlle vier Kandidatdateien stimmen bytegenau mit dem finalen Manifest überein; Patch-SHA256 `24b2c34f413528ab43413e646209334c9e738bf2ab4951544a26a71e1f42ded4`. Vier Abhängigkeiten sind bytegleich zur Ausgangsquelle. Der geteilte Produktfilter bleibt unverändert; das zusätzliche Social-Verbot für jedes rueckhol wurde nicht als pauschales Merchant-Verbot eingeführt.\n\nDie tatsächlich gespeicherten Schemafelder und Barcode-Enums passen zu den verwendeten Feldnamen. Der native Validator meldete ausdrücklich **SKIPPED**. Der Kandidat hat keine neue Shopify-Abfrage ausgeführt. Die Form einer behaupteten Map-/Herstellerreferenz ist kein unabhängiger Quellenbeweis. Aktive Merchant-Datenquelle, vollständige bestehende ID-Zuordnung, Laufzeitvertrag und legitimer Schreibzugang bleiben vor Integration/Abruf zu klären. Mehrvariantenprodukte blockiert dieser vorläufige Reader bewusst. GTIN-Formatprüfung ist kein GS1-Vergabe- oder vollständiger Prüfziffernbeweis.\n\nBeleg: MERCHANT-FINAL-REVIEW.json und die drei getrennten MERCHANT-*-PROBES.json.\n\n## Versanddaten\n\nGespeicherte MAIN-Headerquelle: 50’468 Bytes; SHA256 und native MD5 stimmen. Im reinen ShippingService-Datenentwurf ändern sich exakt zwei Zahlen: 40.49 auf 49.99 und 40.5 auf 50. Alle anderen Felder einschliesslich CH CHF 7/0 und LI CHF 14.90 bleiben identisch. Zehn Grenzproben, darunter CHF 40.50, 45, 49.99 und 50, bestanden. Keine Liquid-Gesamtvalidierung und kein Theme-/Tarifwrite.\n\nBeleg: SHIPPING-SCHEMA-INDEPENDENT-REVIEW.json.\n\n## Tagesdaten, Master und ein Flowvorschlag\n\nAlle 19 abgefragten Metrikfelder aus den sechs gespeicherten Rohantworten unabhängig neu gerechnet: Tageswerte, Summe beziehungsweise letzter Bestand, Deckung, Lücken und explizite Nullwerte stimmen. Facebook 1’380 und Instagram 1’605 Views haben volle Sieben-Tage-Deckung. Andere unvollständige Wochenwerte bleiben unbekannt. Die 16 Plan-UUIDs sind Strings und eindeutig; 28 gelieferte Kanalzustände sind PENDING. Das Zukunftsfenster beweist keine frühere Master-Historie oder Publikation; bestehende Postbehauptungen wurden nicht pauschal inhaltlich freigegeben. Keine Käufe aus Views.\n\nAm selben 18-Sekunden-Master 21 Plan-/UTM-/Hash-/Crop-Prüfungen bestanden. Das aktuelle echte Produktfoto und zwei vorhandene Quellframes tatsächlich angesehen: äussere Ähnlichkeit, angeschnittene Hand; keine exakte CJ-Ausführung, Motive, Stromnorm, Schweizer Stecker oder Rechte daraus bewiesen. Alle sechs Entwürfe bleiben blockiert. Bio-/Board-Gates sind ausdrücklich offen, YouTube allgemein/nicht speziell Kinder bereits geklärt. Keine fertige MP4 oder Film-/Tonabnahme.\n\n13 Klaviyo-Rohdaten-/HTML-/Diffproben bestanden: richtiges USD-Konto, Welcome vier Zustellungen, Post-Purchase drei Zustellungen/ein eindeutiger Klick; neuer Recovery live, alter Checkout draft. Fehlende Checkout-Reportzeilen bleiben unbekannt, Attributionsnullen sind kein Beweis fehlender Käufe oder fehlenden Syncs. Genau ein bestehender Zwei-Zeilen-Servicevorschlag ist quellgleich vorbereitet, nicht angewendet. Beide Ziel-URLs sind frisch HTTP 200 erreichbar; das ist keine umfassende Richtlinienprüfung. CHF und USD bleiben getrennt.\n\nBelege: METRIC-INDEPENDENT-REVIEW.json, MASTER-PACKAGE-INDEPENDENT-REVIEW.json und KLAVIYO-INDEPENDENT-REVIEW.json.\n\nDas abschliessende Gesamtpaket-Markdown wird nach Bereitstellung separat auf Widersprüche und korrekte Statusangaben gegengelesen. Diese Datei behauptet noch keinen solchen Abschluss.\n",
+  "reproductionSources": [
+    {
+      "path": "review/final-package-review.py",
+      "sha256": "f1ae802282772a5c4f4f8d64105e5f4779ad74607a600723b096352b4a3b4632",
+      "utf8": "from pathlib import Path\nimport json, hashlib, datetime\n\nb=Path('/workspace/luxestyle-review/tagespruefung-20261028')\nmd=b/'TAGESPAKET-20261028.md'\ns=md.read_text()\nchecks=[]\ndef check(name,val):\n    assert val,name\n    checks.append({'name':name,'result':'PASS'})\ndef phrases(name,*need):\n    check(name,all(x.casefold() in s.casefold() for x in need))\nphrases('date and Claude lead explicit','28.10.2026','Claude führt','direkter Zugriff','nicht verifiziert')\nphrases('local candidate versus production','Lokaler Reviewkandidat, keine produktive Korrektur','Kein Merchant-Push ausgeführt','SKIPPED','nicht live gegen Shopify')\nphrases('current theme and source hashes','212656488839','1fda77909b8d96d7b3d0f3bc65f8ed65','5f3da62675c1b6407c1bfd541cd45cabc021be4282beb89c98fa1c8842c1bcdf')\nphrases('shipping values and customer domain preserved','interne CHF 45','öffentlich CHF 50','account.luxestyle.com.co bleiben erhalten')\nphrases('planning and completed metric windows','28.10.09:46 bis 04.11.09:46 CET','21.–27.10.','Zeitumstellung')\nphrases('sparse cells unknown, explicit zero limited','26./27. und ganze Woche unbekannt','Explizit 0 Interaktionen nur am 27.10.')\nphrases('own and other execution distinguished','keine neue eigene Veröffentlichung oder Terminierung','deren Veröffentlichung oder Löschung ist unbekannt','fremde dokumentierte Tätigkeiten')\ncaps=json.loads((b/'master/CAPTIONS-UTM.json').read_text())\ncheck('all six exact channel UTM targets included',len(caps)==6 and all(x['utmProductUrl'] in s for x in caps))\nraw=json.loads((b/'products/AVAILABILITY-NATIVE.json').read_text())\ndata=json.loads(next(c['text'] for c in raw['content'] if c['type']=='text' and c['text'].startswith('{')))['data']\nfor key,variant in [('projector','56197916361089'),('diffuser','55743280021889')]:\n    check(key+' actual native product/variant URL',data[key]['onlineStoreUrl']+'?variant='+variant in s)\nphrases('one stable master, storyboard and blocked','luxe_sternenprojektor_master_20261018','Storyboard, keine fertige Master-MP4','Alle sechs neuen Master-Ausspielungen bleiben')\nphrases('rights power and channel blockers','Schweizer Stecker und kommerzielle Bearbeitungs-/Werberechte bleiben unbelegt','IG/TikTok zusätzlich Bio-Ziel unbestätigt','Pinterest-Board unbekannt und unbenannt')\nphrases('sound and cleared audience','Kein Voiceover','automation/music/luxe-premium.wav','YouTube-Zielgruppe bereits allgemein/nicht speziell für Kinder')\nphrases('one Klaviyo proposal and actual recovery','Genau ein bestehender Flow-/Mailtextvorschlag','Neuer Recovery XEGbTB frisch live','alten Draft nicht zusätzlich aktivieren','Kontowährung **USD**, Shop **CHF** separat')\nphrases('required table headers','| Bereich | Was Codex gemacht hat | Ergebnis / Status |')\nphrases('DNS footer not re-requested','werden nicht erneut zur Genehmigung vorgelegt','kein neuer bestätigter DNS-/Footer-Schreibzugang')\ndef unwrap(x):\n    return json.loads(next(c['text'] for c in x['content'] if c['type']=='text'))\nnow=unwrap(json.loads((b/'metricool/FRESH-PLAN.json').read_text())['result'])['data']\nold=json.loads(Path('/workspace/luxestyle-review/abend-20261027/metricool/FRESH-PLAN.json').read_text())['plan']['data']\na={x['uuid']:x for x in old};z={x['uuid']:x for x in now}\nfields=['publicationDate','text','firstCommentText','providers','media','autoPublish','draft','facebookData','instagramData','tiktokData','youtubeData','pinterestData','threadsData','brandTags']\ncheck('16 common queue values unchanged',len(set(a)&set(z))==16 and all(a[u].get(f)==z[u].get(f) for u in set(a)&set(z) for f in fields))\ncheck('two absent entries before current window',len(set(a)-set(z))==2 and all(a[u]['publicationDate']['dateTime']<'2026-10-28T09:46:00' for u in set(a)-set(z)))\ndefs=json.loads((b/'metricool/IDENTITY-AND-METRIC-DEFINITIONS.json').read_text())\ncheck('19 chosen metrics present in fresh catalog',sum(map(len,defs['chosen'].values()))==19 and all(set(ids)<={x['fieldId'] for x in defs['available'][n]} for n,ids in defs['chosen'].items()))\nout={'checkedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'CONTENT_AND_SOURCE_STATUS_REVIEW_PASS_NOT_OPERATIONAL_APPROVAL','packageSha256':hashlib.sha256(md.read_bytes()).hexdigest(),'checksPassed':len(checks),'checks':checks,'noNewApiReads':True,'archives':'root constructing; storage/readback not claimed by this content review','limits':['No final master/filmrights approval','No Merchant runtime/source-map approval','No Theme write or full Liquid validation','Final archive upload/readback checked separately by root']}\n(b/'review/FINAL-PACKAGE-REVIEW.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps(out,ensure_ascii=False))\n"
+    },
+    {
+      "path": "review/merchant-independent-probes.mjs",
+      "sha256": "ae53276cb210b4201697eb8e280d1a3117ea01fca79f5d8d8b502893eab6ad44",
+      "utf8": "import fs from 'node:fs';\nimport assert from 'node:assert/strict';\nimport { pathToFileURL } from 'node:url';\n\nconst base = '/workspace/luxestyle-review/tagespruefung-20261028';\nconst before = await import(pathToFileURL(`${base}/merchant/before/automation/lib/gmc_feed_item.mjs`).href);\nconst fixture = {\n  id:'existing-merchant-id', handle:'testprodukt', titel:'Deko-Leuchte',\n  beschreibung:'Dekorative Leuchte.', preis:'34.90', waehrung:'CHF',\n  link:'https://luxestyle.ch/products/testprodukt',\n  bild:'https://cdn.shopify.com/s/files/1/test/leuchte.jpg',\n  tags:['cj-real'], verfuegbar:true, excludedDestinations:[],\n};\nconst source = fs.readFileSync(`${base}/merchant/before/automation/lib/gmc_feed_item.mjs`,'utf8');\nconst baseline = [\n  {name:'missing identifiers become asserted absent', found:before.feedItem(fixture).includes('<g:identifier_exists>no</g:identifier_exists>')},\n  {name:'Shopping_ads exclusion omitted', found:!before.feedItem({...fixture,excludedDestinations:['Shopping_ads']}).includes('<g:excluded_destination>Shopping_ads</g:excluded_destination>')},\n  {name:'unknown availability becomes in stock', found:before.feedItem({...fixture,verfuegbar:undefined}).includes('<g:availability>in stock</g:availability>')},\n  {name:'merchant SKU used as manufacturer MPN', found:before.feedItem({...fixture,sku:'CJ-123'}).includes('<g:mpn>CJ-123</g:mpn>')},\n  {name:'seller name invented as manufacturer brand', found:before.feedItem(fixture).includes('<g:brand>LuxeStyle</g:brand>')},\n];\nfor(const p of baseline) assert.equal(p.found,true,p.name);\nconst result={checkedAt:new Date().toISOString(),scope:'Independent offline item probes; no API/network/writes except this report',baseline,checksPassed:baseline.length};\nconst fixedPath=`${base}/merchant/after/automation/lib/gmc_feed_item.mjs`;\nif(fs.existsSync(fixedPath)) {\n  const after=await import(pathToFileURL(fixedPath).href);\n  let count=0;\n  const check=(condition,name)=>{assert.ok(condition,name);count++;};\n  const rejects=(p,name)=>{assert.throws(()=>after.feedItem(p),undefined,name);count++;};\n  const xml=after.feedItem(fixture);\n  check(!xml.includes('<g:identifier_exists>'),'unknown UPI absence omitted');\n  check(!xml.includes('<g:brand>'),'unproven default seller-brand omitted');\n  check(!after.feedItem({...fixture,sku:'CJ-123'}).includes('<g:mpn>'),'retailer SKU omitted as MPN');\n  check(after.feedItem({...fixture,excludedDestinations:['Shopping_ads']}).includes('<g:excluded_destination>Shopping_ads</g:excluded_destination>'),'Shopping_ads preserved');\n  check(!after.feedItem({...fixture,excludedDestinations:['Shopping_ads']}).includes('<g:excluded_destination>Free_listings</g:excluded_destination>'),'Shopping_ads does not imply Free_listings');\n  const both=after.feedItem({...fixture,excludedDestinations:['Shopping_ads','Free_listings']});\n  check(both.includes('<g:excluded_destination>Shopping_ads</g:excluded_destination>') && both.includes('<g:excluded_destination>Free_listings</g:excluded_destination>'),'both independent exclusions preserved');\n  for(const value of [undefined,null,0,1,'false','true']) rejects({...fixture,verfuegbar:value},`unknown availability ${String(value)}`);\n  for(const value of [undefined,null,'Shopping_ads',['unknown'],['Shopping_ads',null]]) rejects({...fixture,excludedDestinations:value},`malformed exclusions ${JSON.stringify(value)}`);\n  // Empty-tag source completeness is checked by the generator; the shared\n  // legacy safety filter must stay unchanged for its other consumers.\n  check(after.feedItem({...fixture,verfuegbar:false}).includes('<g:availability>out of stock</g:availability>'),'explicit false preserved');\n  check(after.feedItem({...fixture,verfuegbar:true}).includes('<g:availability>in stock</g:availability>'),'explicit true preserved');\n  check(after.feedItem({...fixture,tags:['cj-real','rueckhol-0907']})!==null,'social-only rueckhol restriction not broadened into Merchant policy');\n  const shared=(s)=>s.slice(s.indexOf('export function pruefeProdukt'),s.indexOf('\\n/**\\n * Baut den'));\n  check(shared(source)===shared(fs.readFileSync(fixedPath,'utf8')),'shared safety filter byte unchanged');\n  result.fixed={checksPassed:count};\n}\nfs.writeFileSync(`${base}/review/MERCHANT-INDEPENDENT-PROBES.json`,JSON.stringify(result,null,2)+'\\n');\nconsole.log(JSON.stringify(result));\n"
+    },
+    {
+      "path": "review/merchant-whole-candidate-probes.mjs",
+      "sha256": "98774073444d56a14fc274ab89933f344734e854e0ae5ed01962e0fb2b0d0d43",
+      "utf8": "import fs from 'node:fs';\nimport path from 'node:path';\nimport os from 'node:os';\nimport assert from 'node:assert/strict';\nimport { pathToFileURL } from 'node:url';\n\nconst base='/workspace/luxestyle-review/tagespruefung-20261028';\nconst {runMerchantFeed,SHOP_QUERY,PAGE_QUERY}=await import(pathToFileURL(`${base}/merchant/after/automation/autopilot/merchant_feed.mjs`).href);\nconst record=n=>({productId:`gid://shopify/Product/${n}`,variantId:`gid://shopify/ProductVariant/${n+100}`,handle:`test-${n}`,feedId:`OLD-OPAQUE-${n}`});\nconst product=n=>({id:record(n).productId,status:'ACTIVE',title:'Schlichte Deko',handle:record(n).handle,onlineStoreUrl:`https://luxestyle.ch/products/test-${n}`,vendor:'LuxeStyle',productType:'Deko',tags:['cj-real'],beschreibung:'Schlichte Dekoration.',featuredMedia:{mediaContentType:'IMAGE',image:{url:'https://cdn.shopify.com/fixture.jpg'}},media:{edges:[]},excludedDestination:null,googleKategorie:null,altersgruppe:null,geschlecht:null,zustand:null,variants:{pageInfo:{hasNextPage:false},edges:[{node:{id:record(n).variantId,sku:'CJ-MERCHANT-SKU',price:'59.90',compareAtPrice:null,availableForSale:true,barcodes:{pageInfo:{hasNextPage:false},edges:[]}}}]}});\nconst map={version:1,shopDomain:'luxestyle.ch',merchantAccountId:'5797470070',idPolicy:'preserve-existing',complete:true,dataSourceId:'OFFLINE-NOT-AN-ACTUAL-SOURCE',sourceSnapshotSha256:'a'.repeat(64),reviewReference:'SYNTHETIC REVIEW FIXTURE ONLY',entries:[record(1),record(2)]};\nconst dir=fs.mkdtempSync(path.join(os.tmpdir(),'luxe-whole-candidate-'));const mapFile=path.join(dir,'map.json'),output=path.join(dir,'candidate.xml');fs.writeFileSync(mapFile,JSON.stringify(map));\nconst checks=[];let networkCalls=0;const savedFetch=globalThis.fetch;globalThis.fetch=async()=>{networkCalls++;throw Error('NETWORK FORBIDDEN');};\ntry {\n const invalid=[\n  ['missing second exclusion field',p=>delete p.excludedDestination],\n  ['malformed second exclusion',p=>{p.excludedDestination={type:'list.single_line_text_field',value:'[\"Shopping_ads\",null]'};}],\n  ['unknown second availability',p=>{delete p.variants.edges[0].node.availableForSale;}],\n  ['truncated second barcode connection',p=>{p.variants.edges[0].node.barcodes.pageInfo.hasNextPage=true;}],\n  ['second product has unreviewed multiple variants',p=>{p.variants.pageInfo.hasNextPage=true;}],\n  ['second product tags empty',p=>{p.tags=[];}],\n  ['second product tag list missing',p=>{delete p.tags;}],\n  ['second product now safety blocked',p=>{p.tags=['cj-real','nicht-bewerben'];}],\n ];\n for(const [name,alter] of invalid) {\n  fs.writeFileSync(output,'PREVIOUS COMPLETE CANDIDATE');const first=product(1),second=product(2);alter(second);let writes=0;\n  await assert.rejects(runMerchantFeed({env:{FEED_IDENTITY_MAP:mapFile,OUT:output,FEED_ALLOW_REPLACE:'1',SHOPIFY_ADMIN_TOKEN:'OFFLINE-FAKE-NOT-A-CREDENTIAL'},gql:async(_shop,_api,_token,query)=>query===SHOP_QUERY?{shop:{myshopifyDomain:'au3j0y-hq.myshopify.com',currencyCode:'CHF',primaryDomain:{url:'https://luxestyle.ch'}}}:{products:{edges:[{node:first},{node:second}],pageInfo:{hasNextPage:false,endCursor:null}}},write:()=>{writes++;}}));\n  assert.equal(writes,0);assert.equal(fs.readFileSync(output,'utf8'),'PREVIOUS COMPLETE CANDIDATE');checks.push({name,result:'PASS',priorOutputPreserved:true});\n }\n const second=product(2);second.beschreibung='Neutraler Text. '.repeat(100)+'Harry Potter';let writes=0;\n await assert.rejects(runMerchantFeed({env:{FEED_IDENTITY_MAP:mapFile,OUT:output,FEED_ALLOW_REPLACE:'1',SHOPIFY_ADMIN_TOKEN:'OFFLINE-FAKE-NOT-A-CREDENTIAL'},gql:async(_shop,_api,_token,query)=>query===SHOP_QUERY?{shop:{myshopifyDomain:'au3j0y-hq.myshopify.com',currencyCode:'CHF',primaryDomain:{url:'https://luxestyle.ch'}}}:{products:{edges:[{node:product(1)},{node:second}],pageInfo:{hasNextPage:false,endCursor:null}}},write:()=>{writes++;}}),/Lizenzname/);\n assert.equal(writes,0);assert.ok(!/beschreibung:\\s*description\\s*\\(\\s*truncateAt/.test(PAGE_QUERY),'policy review requires full source description');checks.push({name:'late licensed name after900 chars reaches filter before XML truncation',result:'PASS'});\n assert.equal(networkCalls,0);const result={checkedAt:new Date().toISOString(),scope:'Independent mixed-valid-invalid two-item candidate probes with synthetic source map; no production-source approval',checks,checksPassed:checks.length,networkCalls,liveWrites:0};fs.writeFileSync(`${base}/review/MERCHANT-WHOLE-CANDIDATE-PROBES.json`,JSON.stringify(result,null,2)+'\\n');console.log(JSON.stringify(result));\n}finally{globalThis.fetch=savedFetch;fs.rmSync(dir,{recursive:true,force:true});}\n"
+    },
+    {
+      "path": "review/merchant-write-independent-probes.mjs",
+      "sha256": "0705ef0a3a1f8ffe43cab4813d38d7fa68be05d7ee5854071b110dcb089dc067",
+      "utf8": "import fs from 'node:fs';\nimport path from 'node:path';\nimport assert from 'node:assert/strict';\nimport os from 'node:os';\nimport { pathToFileURL } from 'node:url';\n\nconst base='/workspace/luxestyle-review/tagespruefung-20261028';\nconst modulePath=`${base}/merchant/after/automation/autopilot/merchant_feed.mjs`;\nconst savedFetch=globalThis.fetch;\nlet networkCalls=0;\nglobalThis.fetch=async()=>{networkCalls++;throw Error('network forbidden in independent review');};\nconst merchant=await import(pathToFileURL(modulePath).href);\nassert.equal(networkCalls,0,'module import must not fetch');\nconst dir=fs.mkdtempSync(path.join(os.tmpdir(),'luxe-merchant-independent-'));\nconst checks=[];\nconst ok=name=>checks.push({name,result:'PASS'});\ntry {\n const existing=path.join(dir,'existing.xml');fs.writeFileSync(existing,'EXISTING');\n assert.throws(()=>merchant.writeCandidate(existing,'REPLACEMENT'),/FEED_OUTPUT_EXISTS/);\n assert.equal(fs.readFileSync(existing,'utf8'),'EXISTING');ok('existing output preserved by default');\n\n const race=path.join(dir,'race.xml'),savedLink=fs.linkSync;\n fs.linkSync=(from,to)=>{if(to===race)fs.writeFileSync(race,'CONCURRENT FOREIGN OUTPUT',{flag:'wx'});return savedLink(from,to);};\n try{assert.throws(()=>merchant.writeCandidate(race,'REPLACEMENT'),/FEED_OUTPUT_EXISTS/);}finally{fs.linkSync=savedLink;}\n assert.equal(fs.readFileSync(race,'utf8'),'CONCURRENT FOREIGN OUTPUT');ok('racing output atomically preserved');\n assert.ok(!fs.existsSync(`${race}.tmp-${process.pid}`));ok('owned race temp removed');\n\n const broken=path.join(dir,'broken.xml');fs.symlinkSync(path.join(dir,'absent.xml'),broken);\n assert.throws(()=>merchant.writeCandidate(broken,'REPLACEMENT'),/FEED_OUTPUT_EXISTS/);\n assert.ok(fs.lstatSync(broken).isSymbolicLink());ok('broken output symlink not overwritten');\n\n merchant.writeCandidate(existing,'APPROVED REPLACEMENT',{allowReplace:true});\n assert.equal(fs.readFileSync(existing,'utf8'),'APPROVED REPLACEMENT');ok('explicit replacement stays supported');\n\n const mapFile=path.join(dir,'identity-map.json');const map={version:1,shopDomain:'luxestyle.ch',merchantAccountId:'5797470070',idPolicy:'preserve-existing',complete:true,dataSourceId:'offline-fixture-only',sourceSnapshotSha256:'a'.repeat(64),reviewReference:'offline-test; not a real source',entries:[{productId:'gid://shopify/Product/1',variantId:'gid://shopify/ProductVariant/11',handle:'fixture-product',feedId:'EXISTING-ID'}]};\n fs.writeFileSync(mapFile,JSON.stringify(map));const source=fs.readFileSync(mapFile,'utf8');\n const hard=path.join(dir,'map-hard.json');fs.linkSync(mapFile,hard);\n const sym=path.join(dir,'map-link.json');fs.symlinkSync(mapFile,sym);\n for(const target of [mapFile,hard,sym]) {\n  await assert.rejects(merchant.runMerchantFeed({env:{FEED_IDENTITY_MAP:mapFile,OUT:target,FEED_ALLOW_REPLACE:'1'},gql:async()=>{throw Error('gql forbidden');}}),/FEED_OUTPUT_ALIAS/);\n  assert.equal(fs.readFileSync(mapFile,'utf8'),source);ok(`identity-map alias blocked: ${path.basename(target)}`);\n }\n assert.equal(networkCalls,0);ok('all output preflights happen before token/network');\n const report={checkedAt:new Date().toISOString(),scope:'Independent offline candidate-output tests; fixture source is not operational evidence',checks,checksPassed:checks.length,networkCalls,merchantPushPerformed:false};\n fs.writeFileSync(`${base}/review/MERCHANT-WRITE-INDEPENDENT-PROBES.json`,JSON.stringify(report,null,2)+'\\n');console.log(JSON.stringify(report));\n} finally {globalThis.fetch=savedFetch;fs.rmSync(dir,{recursive:true,force:true});}\n"
+    }
+  ]
+}
