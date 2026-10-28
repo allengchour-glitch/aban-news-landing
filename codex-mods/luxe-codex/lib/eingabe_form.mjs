@@ -123,7 +123,7 @@ export function heredocTexte(befehl) {
   for (const m of s.matchAll(/<<-?\s*(['"]?)(\w+)\1([^\n]*)\n([\s\S]*?)\n\s*\2(?=\s|$)/g)) {
     const kopf = s.slice(s.lastIndexOf('\n', m.index - 1) + 1, m.index) + m[3];
     const schreibt = /\btee\b/.test(kopf) || (/\bcat\b/.test(kopf) && /(?:^|[^<>&|\d-])>>?\s*[^\s>&|;]/.test(kopf));
-    if (schreibt) aus.push(m[4]);
+    aus.push(m[4]);
   }
   return aus;
 }
