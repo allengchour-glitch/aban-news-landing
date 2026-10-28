@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 3,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-28T22:37:29.718Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Abschliessender Abgleich: aktuelle Codebasis und konkrete Merchant-Artikel",
+  "summary": "Dokumentationskonflikt gezielt auf main b708c8 aufgelöst; getesteter JS-/Workflowcode unverändert. Claudes neue Laufbelege erhalten, nicht als eigene Ausführung gewertet. Drei CSVs, 70 technische Prüfkandidaten und drei aktuelle Gegenproben dokumentiert; keine operativen Writes. Keine echte Claude-Quittung.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-ZUSAMMENARBEIT-20261028-R3.json",
+      "sha256": "59d06d3428d229c88ece30e93d1ff0792fb3db79f014a44a0535f96ca61d3cc3",
+      "gitBlobSha": "070fb15b92ba089ec798d87f2f7582839561483b"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
+      "sha256": "f6471d69ad3988747d33ccc5ff16dc5504877609f42912c32e21816904675d76",
+      "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-BELEGE-20261028.json",
+      "sha256": "6212ec444af7caf58fb93d8412565c194df82e9764e54ee98130d8d5ffb1629a",
+      "gitBlobSha": "0009c02fc4d9f4be5cf755520c464314f99dc1ee"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/INTEGRATIONSSTAND-20261028-R3.md",
+      "sha256": "499b44c4a4a537055a5f87f197d406353a2b74f209504f99397a73c01ec06306",
+      "gitBlobSha": "daca418ca3425d6a5983759b310c00731b3ba325"
+    }
+  ],
+  "previousPacketSha256": "8df64727613962b353c2d83ef1dcca382ab2e10e25abd1014295dbd5d420411e"
+}
