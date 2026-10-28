@@ -3,7 +3,7 @@
  * der Kontext-Hook als Prozess, der Skill sparmodus (SKILL.md) und sein Skript schalten.mjs als Prozess.
  */
 import { spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -240,6 +240,77 @@ const schalten = (z, arg) => spawnSync(process.execPath, [join(SKILL, 'scripts',
   const r = spawnSync(process.execPath, [join(SKILL, 'scripts', 'schalten.mjs'), 'an'], { env: nurShell, encoding: 'utf8' });
   const h = spawnSync(process.execPath, [KONTEXT], { input: JSON.stringify(eingabe('UserPromptSubmit')), env: { ...nurShell, CLAUDE_PLUGIN_DATA: join(z, 'plugin-daten'), CLAUDE_PLUGIN_ROOT: WURZEL }, encoding: 'utf8' });
   ist('Hook mit CLAUDE_PLUGIN_DATA und Skript ohne lesen/schreiben denselben Schalter (CODEX_HOME/luxe-codex)', [r.status, existsSync(join(z, 'codex', 'luxe-codex', 'sparmodus')), JSON.parse(h.stdout).hookSpecificOutput.additionalContext], [0, true, ERINNERUNG]);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// === 8. Nachprüfung vom 28.10.: bestätigte Funde F1, F2, F9, F21 (rot gegen den Stand vor der Behebung) ===============
+const VERBOTEN = ['continue', 'decision', 'reason', 'stopReason', 'suppressOutput'];
+
+// --- F1: der Kontext-Hook gibt nie blockierende Felder aus (die Schemas erlauben sie, darum prüft das Schema es nicht) ----
+{
+  const z = tmp();
+  const aus = { LUXE_CODEX_ZUSTAND: z };
+  const an = { LUXE_CODEX_ZUSTAND: join(z, 'an') };
+  stelleSchalter(an, true);
+  const s0 = kontextAusgabe(eingabe('SessionStart'), aus);
+  const s1 = kontextAusgabe(eingabe('SessionStart'), an);
+  const p1 = kontextAusgabe(eingabe('UserPromptSubmit'), an);
+  ist('F1 SessionStart AUS: genau {hookSpecificOutput: {hookEventName, additionalContext}}', s0, { hookSpecificOutput: { hookEventName: 'SessionStart', additionalContext: PROJEKTREGELN } });
+  ist('F1 SessionStart AN: genau {hookSpecificOutput: {hookEventName, additionalContext}}', s1, { hookSpecificOutput: { hookEventName: 'SessionStart', additionalContext: `${PROJEKTREGELN}\n\n${STIL_TEXT}` } });
+  ist('F1 UserPromptSubmit AN: genau {hookSpecificOutput: {hookEventName, additionalContext}}', p1, { hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: ERINNERUNG } });
+  ist('F1 keine Kontext-Ausgabe trägt ein blockierendes Feld (continue, decision, reason, stopReason, suppressOutput)', [s0, s1, p1].map(a => VERBOTEN.filter(k => k in a)), [[], [], []]);
+  ist('F1 keine Kontext-Ausgabe trägt systemMessage (nur der Zähler spricht den Menschen an)', [s0, s1, p1].map(a => 'systemMessage' in a), [false, false, false]);
+  const r0 = proz(z, eingabe('SessionStart'));
+  stelleSchalter({ LUXE_CODEX_ZUSTAND: join(z, 'zustand') }, true);
+  const r1 = proz(z, eingabe('SessionStart'));
+  const r2 = proz(z, eingabe('UserPromptSubmit'));
+  ist('F1 Prozess SessionStart AUS: genau das Objekt, nichts sonst', r0.json, s0);
+  ist('F1 Prozess SessionStart AN: genau das Objekt, nichts sonst', r1.json, s1);
+  ist('F1 Prozess UserPromptSubmit AN: genau das Objekt, nichts sonst', r2.json, p1);
+  ist('F1 Prozess: kein blockierendes Feld, Exit 0', [r0, r1, r2].map(r => [r.code, VERBOTEN.filter(k => k in r.json)]), [[0, []], [0, []], [0, []]]);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F2: die Kontext-Befehle aus hooks.json selbst ausführen, mit Leerzeichen im Plugin-Pfad ---------------------------
+{
+  const hooks = JSON.parse(readFileSync(join(WURZEL, 'hooks', 'hooks.json'), 'utf8')).hooks;
+  const kontextBefehle = ev => (hooks[ev] ?? []).flatMap(g => g.hooks).filter(h => /\/kontext\.mjs"/.test(h.command));
+  ist('F2 hooks.json: kontext.mjs hängt an SessionStart und UserPromptSubmit, je genau einmal, mit ganzzahligem Zeitlimit 1 bis 60', [
+    kontextBefehle('SessionStart').length, kontextBefehle('UserPromptSubmit').length,
+    [...kontextBefehle('SessionStart'), ...kontextBefehle('UserPromptSubmit')].every(h => h.type === 'command' && Number.isInteger(h.timeout) && h.timeout >= 1 && h.timeout <= 60 && !('async' in h)),
+  ], [1, 1, true]);
+  const z = tmp();
+  const wurzel = join(z, 'a b', 'luxe-codex');
+  mkdirSync(wurzel, { recursive: true });
+  for (const teil of ['lib', 'hooks']) cpSync(join(WURZEL, teil), join(wurzel, teil), { recursive: true });
+  const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], { input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000, env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') } });
+  const a = lauf(kontextBefehle('SessionStart')[0].command, eingabe('SessionStart'));
+  ist('F2 Befehlszeile SessionStart bei Leerzeichen im Plugin-Pfad: Exit 0, keine Fehlermeldung, Projektregeln', [a.status, a.stderr, JSON.parse(a.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', PROJEKTREGELN]);
+  schalten(z, ['an']);
+  const b = lauf(kontextBefehle('UserPromptSubmit')[0].command, eingabe('UserPromptSubmit'));
+  ist('F2 Befehlszeile UserPromptSubmit bei Leerzeichen im Plugin-Pfad (Sparmodus AN): Exit 0, Erinnerung', [b.status, b.stderr, JSON.parse(b.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', ERINNERUNG]);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F9 / F21: ein gescheitertes Umbenennen lässt keine .tmp-Datei im Zustandsordner liegen -------------------------------
+{
+  const z = tmp();
+  const ordner = join(z, 'zustand');
+  mkdirSync(join(ordner, 'sparmodus'), { recursive: true }); // ein Ordner an der Stelle des Schalters
+  const env = { LUXE_CODEX_ZUSTAND: ordner };
+  let meldung = '';
+  try { stelleSchalter(env, true); } catch (fehler) { meldung = String(fehler?.code ?? fehler); }
+  ist('F21 stelleSchalter(an) scheitert am Ordner, der Stand bleibt AUS und es bleibt kein *.tmp liegen', [meldung !== '', istAn(env), readdirSync(ordner)], [true, false, ['sparmodus']]);
+  const e1 = schalten(z, ['an']);
+  const e2 = schalten(z, ['an']);
+  ist('F9 schalten.mjs an (zweimal) bei einem Ordner an der Stelle: Exit 1, «Stand unverändert», kein *.tmp', [e1.status, e2.status, e1.stderr.includes('Stand unverändert: AUS'), readdirSync(ordner)], [1, 1, true, ['sparmodus']]);
+  const aus = schalten(z, ['aus']);
+  ist('F9 schalten.mjs aus bei einem Ordner an der Stelle: Exit 1, kein *.tmp', [aus.status, readdirSync(ordner)], [1, ['sparmodus']]);
+  rmSync(join(ordner, 'sparmodus'), { recursive: true });
+  stelleSchalter(env, true);
+  ist('F21 Gegenprobe: gelingt das Schreiben, liegt nur der Schalter selbst im Ordner (kein *.tmp)', [istAn(env), readdirSync(ordner)], [true, ['sparmodus']]);
+  stelleSchalter(env, true);
+  ist('F21 …auch beim zweiten Einschalten', readdirSync(ordner), ['sparmodus']);
   rmSync(z, { recursive: true, force: true });
 }
 

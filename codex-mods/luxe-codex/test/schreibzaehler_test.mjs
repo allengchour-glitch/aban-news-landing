@@ -3,7 +3,7 @@
  * (fehlend, kaputt, parallel), Ausgaben gegen die Schemas und der Hook als Prozess über stdin/stdout.
  */
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, utimesSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, utimesSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -441,6 +441,462 @@ const SCHEMA_POST = 'post-tool-use.command.output';
   ist('hooks.json: SessionStart ruft schreibzaehler.mjs mit «start»', befehle('SessionStart').some(c => /schreibzaehler\.mjs"? start$/.test(c)), true);
   ist('hooks.json: PostToolUse ruft schreibzaehler.mjs ohne Argument', befehle('PostToolUse').some(c => /schreibzaehler\.mjs"?$/.test(c)), true);
   ist('hooks.json: die Hook-Datei gibt es', existsSync(HOOK), true);
+}
+
+// === 10. Nachprüfung vom 28.10.: die 21 bestätigten Funde (jeder Test trägt seine Nummer, F1 … F21) ================
+// Jeder Fund wurde zuerst als fehlschlagender Test eingebaut (rot gegen den Stand vor der Behebung), dann behoben.
+const alle = (titel, liste, soll, f) => { for (const x of liste) ist(`${titel}: ${JSON.stringify(x)}`, f(x), soll); };
+const zeitMs = f => { const t0 = Date.now(); const r = f(); return [r, Date.now() - t0]; };
+const zaehlt = (cmd, antwort = ok0, name = 'exec_command') => gruppeFuer(name, { cmd }, antwort) === 'live';
+
+// --- F4: rohe Programmausgabe in output/stdout ist kein Antwortkopf -------------------------------------------
+for (const [name, antwort, soll] of [
+  ['stdout trägt rohe Ausgabe «Exit code: 1», Prozess-Code 0', { exit_code: 0, stdout: 'Exit code: 1\nTeilfehler ignoriert, 12 Produkte aktualisiert' }, 'erfolg'],
+  ['output (klassisch) trägt rohe Ausgabe «Exit code: 1», metadata 0', { output: 'Exit code: 1\nfoo', metadata: { exit_code: 0 } }, 'erfolg'],
+  ['stdout «Process exited with code 3», Prozess-Code 0', { exit_code: 0, stdout: 'Process exited with code 3' }, 'erfolg'],
+  ['stdout mit rohem Kopfwort «Chunk ID: …», Prozess-Code 0', { exit_code: 0, stdout: 'Chunk ID: ab\nWall time: 1 seconds\nProcess exited with code 2' }, 'erfolg'],
+  ['output formatiert (mit «Output:»): Kopf Exit 0, die Ausgabe druckt «Exit code: 1»', { output: 'Chunk ID: ab\nExit code: 0\nOutput:\nExit code: 1', metadata: { exit_code: 0 } }, 'erfolg'],
+  ['Gegenprobe: output formatiert (mit «Output:») mit Kopf Exit 1, sonst nichts', { output: 'Exit code: 1\nWall time: 1 seconds\nOutput:\nboese' }, 'fehler'],
+  ['Gegenprobe: rohes stdout mit Kopfwort ohne strukturierten Code ist unbekannt', { stdout: 'Exit code: 1\nfoo' }, 'unbekannt'],
+  ['JSON-Text mit rohem stdout «Exit code: 1», Code 0', '{"exit_code":0,"stdout":"Exit code: 1\\nrest"}', 'erfolg'],
+  ['MCP-Inhalt mit rohem Text «Exit code: 1» (ohne Output-Marker), Code 0', { exit_code: 0, content: [{ type: 'text', text: 'Exit code: 1\nTeilfehler' }] }, 'erfolg'],
+  // F10 (Testlücken G8 und timedOut): Leerraum um den JSON-Text, camelCase-Zeitüberschreitung
+  ['F10 JSON-Text mit führendem Leerzeichen', ' {"exit_code":0}', 'erfolg'],
+  ['F10 JSON-Text mit Zeilenumbrüchen drumherum', '\n{"exit_code":0}\n', 'erfolg'],
+  ['F10 timedOut (camelCase) gewinnt gegen Exit 0', { exit_code: 0, timedOut: true }, 'fehler'],
+]) ist(`F4 ausgang: ${name}`, ausgang(antwort), soll);
+ist('F4 gruppeFuer: Lauf mit Exit 0 zählt, auch wenn stdout «Exit code: 1» druckt', gruppeFuer('exec_command', { cmd: B }, { exit_code: 0, stdout: 'Exit code: 1\nTeilfehler ignoriert, 12 Produkte aktualisiert' }), 'live');
+{
+  const z = tmp();
+  const r = hook(z, nach(1, { tool_name: 'exec_command', tool_input: { cmd: B }, tool_response: { exit_code: 0, stdout: 'Exit code: 1\nTeilfehler ignoriert' } }));
+  ist('F4 Prozess: ein gelungener LIVE-Lauf mit «Exit code: 1» in der Ausgabe wird gezählt', [r.code, r.json?.systemMessage], [0, 'Schreibzugriffe · Live 1']);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F12 / F19: Heredocs (Rest der Öffnungszeile, ungewöhnliche Begrenzer, kein Abschluss) -----------------------
+alle('F12 Heredoc: der Rest der Öffnungszeile bleibt Befehl, LIVE=1 erkannt', [
+  "cat <<'EOF' | LIVE=1 node automation/x.mjs\n{\"a\":1}\nEOF",
+  'cat > h.txt <<EOF && LIVE=1 node automation/x.mjs\na\nEOF',
+  "bash <<'EOF'\nLIVE=1 node automation/x.mjs\nEOF",
+  "LIVE=1 node x.mjs <<'EOF'\ndaten\nEOF",
+  'cat <<EOF > a.txt; LIVE=1 node x.mjs\ntext\nEOF',
+  'sh -s <<EOF\nLIVE=1 node x.mjs\nEOF',
+  'cat <<A <<B | LIVE=1 node x.mjs\n1\nA\n2\nB',
+  'cat <<EOF\ntext\nEOF\ncat <<EOF2\nmehr\nEOF2\nLIVE=1 node x.mjs',
+], true, istLiveBefehl);
+alle('F12 Heredoc (Gegenprobe): der Körper bleibt Körper, keine LIVE-Zuweisung am Befehl', [
+  "cat <<'EOF' | grep x\nLIVE=1 node x.mjs\nEOF",
+  'cat <<EOF | tee a.txt\nLIVE=1 node x.mjs\nEOF',
+  'cat <<A <<B\nLIVE=1 node x.mjs\nA\nLIVE=1 node y.mjs\nB',
+  "bash <<'EOF'\necho LIVE=1 node x.mjs\nEOF",
+  'cat <<EOF\ntext\nEOF\nnode x.mjs',
+], false, istLiveBefehl);
+alle('F19 Heredoc-Begrenzer mit \\, - oder . (Gegenprobe): der Körper ist kein Befehl', [
+  'cat <<\\EOF > notiz.md\nLIVE=1 node x.mjs\nEOF',
+  "cat <<'END-DOC' > notiz.md\nLIVE=1 node x.mjs\nEND-DOC",
+  "git commit -F - <<'MSG-1'\nLIVE=1 node automation/x.mjs\nMSG-1",
+  "cat <<'END.DOC' > n.md\nLIVE=1 node x.mjs\nEND.DOC",
+  'cat <<"END-DOC" > n.md\nLIVE=1 node x.mjs\nEND-DOC',
+  'cat <<EOF\nLIVE=1 node x.mjs',
+  'cat <<-EOF\n\tLIVE=1 node x.mjs\n\tEOF',
+  "cat <<-'EOF'\n\tLIVE=1 node x.mjs\n\tEOF",
+], false, istLiveBefehl);
+alle('F19 Heredoc-Begrenzer: nach dem Abschluss geht es weiter', [
+  'cat <<\\EOF > n.md\nLIVE=1 node x.mjs\nEOF\nLIVE=1 node y.mjs',
+  "cat <<'END-DOC' > n.md\nx\nEND-DOC\nLIVE=1 node y.mjs",
+], true, istLiveBefehl);
+ist('F19 Heredoc: ein eingerückter Abschluss ohne «-» beendet den Körper nicht (wie in bash)', istLiveBefehl('cat <<EOF\ntext\n  EOF\nLIVE=1 node x.mjs'), false);
+
+// --- F5: Laufzeit wächst nicht mehr quadratisch ---------------------------------------------------------------
+{
+  const [r1, ms1] = zeitMs(() => istLiveBefehl(`LIVE=1 node x.mjs\n${'a<<b '.repeat(60000)}`));
+  ist('F5 292 KB mit unbeendeten «<<wort» in unter 3 s (vorher 15 s)', [r1, ms1 < 3000], [true, true]);
+  const [r2, ms2] = zeitMs(() => istLiveBefehl(`LIVE=1 node x.mjs\n${'cat <<EOF\n'.repeat(20000)}`));
+  ist('F5 195 KB mit 20 000 «cat <<EOF» in unter 3 s (vorher 8 s)', [r2, ms2 < 3000], [true, true]);
+  const [r3, ms3] = zeitMs(() => istLiveBefehl(`cat > a.cpp <<\\EOF\n${'cout << "wort" << endl;\n'.repeat(12000)}`));
+  ist('F19 F5 Quelltext mit «<<» in einem Heredoc: 300 KB in unter 3 s', [r3, ms3 < 3000], [false, true]);
+  const [r4, ms4] = zeitMs(() => istLiveBefehl(`${'echo hallo; '.repeat(80000)}LIVE=1 node x.mjs`));
+  ist('F5 Gegenprobe: 1 MB gewöhnlicher Befehle in unter 3 s und das LIVE=1 am Ende wird gefunden', [r4, ms4 < 3000], [true, true]);
+  const [r5, ms5] = zeitMs(() => gruppeFuer('exec_command', { cmd: `LIVE=1 node x.mjs\n${'a<<b '.repeat(60000)}` }, ok0));
+  ist('F5 gruppeFuer mit dem 292-KB-Befehl: in unter 3 s', ms5 < 3000, true);
+  ist('F5 …und das Ergebnis ist bekannt: der erste Befehl ist gefolgt von weiterem Text, also nicht beweisbar', r5, undefined);
+}
+
+// --- F13: LIVE=1 vor einer Zuweisung mit $(…) oder Backticks ---------------------------------------------------
+alle('F13 Zuweisung mit Befehlsersetzung: LIVE=1 erkannt', [
+  'LIVE=1 HANDLES=$(cat /tmp/h.txt) node automation/x.mjs',
+  'LIVE=1 STAMP=$(date +%F) node automation/x.mjs',
+  'LIVE=1 HANDLES=`paste -sd, /tmp/h.txt` node automation/x.mjs',
+  'HANDLES=$(cat /tmp/h.txt) LIVE=1 node x.mjs',
+  'LIVE=1 node x.mjs --handles "$(cat h)"',
+  'LIVE=1 HANDLES="$(cat /tmp/h.txt)" node x.mjs',
+  'LIVE=1 X=$(echo "a)b") node x.mjs',
+  'LIVE=1 X=$(echo $(date)) node x.mjs',
+  'X=$(LIVE=1 node x.mjs)',
+  'echo "$(LIVE=1 node x.mjs)"',
+  'echo `LIVE=1 node x.mjs`',
+], true, istLiveBefehl);
+alle('F13 Befehlsersetzung (Gegenprobe): LIVE=1 steht nicht vor einem Befehl', [
+  'echo $(cat h) LIVE=1',
+  'X=$(date) node x.mjs',
+  'echo $(cat h)',
+  'node x.mjs HANDLES=$(cat h) LIVE=1',
+  "echo '$(LIVE=1 node x.mjs)'",
+  'echo `echo LIVE=1 node x.mjs`',
+  'echo $((1 + 2)) LIVE=1',
+  'LIVE=1 HANDLES=$(cat h)',
+], false, istLiveBefehl);
+ist('F13 gruppeFuer: LIVE=1 mit $(…) in der Zuweisung und Exit 0 zählt', zaehlt('LIVE=1 HANDLES=$(cat /tmp/h.txt) node automation/x.mjs'), true);
+
+// --- F14: Wrapper vor env/bash -c und Shell-Optionen vor -c ---------------------------------------------------
+alle('F14 Wrapper und Shell-Optionen: LIVE=1 erkannt', [
+  'timeout 600 env LIVE=1 node automation/x.mjs',
+  'nohup env LIVE=1 node automation/x.mjs &',
+  "nohup bash -c 'LIVE=1 node automation/x.mjs' > /tmp/l.log 2>&1 &",
+  "setsid -f bash -c 'LIVE=1 node automation/x.mjs'",
+  "timeout 3000 bash -c 'LIVE=1 node automation/x.mjs'",
+  'exec env LIVE=1 node x.mjs',
+  'command env LIVE=1 node x.mjs',
+  'nice env LIVE=1 node x.mjs',
+  'nice -n 10 env LIVE=1 node x.mjs',
+  '/usr/bin/env LIVE=1 node x.mjs',
+  'env -C /tmp LIVE=1 node x.mjs',
+  'env "LIVE=1" node x.mjs',
+  "env 'LIVE=1' node x.mjs",
+  'env -u FOO LIVE=1 node x.mjs',
+  'bash -euo pipefail -c "LIVE=1 node x.mjs"',
+  'bash -o pipefail -c "LIVE=1 node x.mjs"',
+  'bash -x -e -c "LIVE=1 node x.mjs"',
+  'timeout -s KILL 10 env LIVE=1 node x.mjs',
+  'timeout --signal=KILL 10 env LIVE=1 node x.mjs',
+  'stdbuf -oL env LIVE=1 node x.mjs',
+  'sudo -u www env LIVE=1 node x.mjs',
+  'eval "LIVE=1 node x.mjs"',
+  'LIVE=1 nohup node x.mjs',
+  'env LIVE=1 timeout 600 node x.mjs',
+  'unset LIVE; LIVE=1 node x.mjs',
+], true, istLiveBefehl);
+alle('F14 Wrapper und Shell-Optionen (Gegenprobe): kein LIVE=1 am Befehl', [
+  'timeout 600 node x.mjs',
+  'nohup node x.mjs &',
+  'timeout 600 env FOO=1 node x.mjs',
+  "nohup bash -c 'node x.mjs'",
+  'env -C /tmp node x.mjs LIVE=1',
+  'bash -o pipefail -c "node x.mjs"',
+  'bash -euo pipefail -c "echo LIVE=1"',
+  'env -i node x.mjs',
+  'env LIVE=1',
+  'LIVE=1 env -i node x.mjs',
+  'timeout 600 env LIVE=0 node x.mjs',
+  'nice -n 10 node x.mjs LIVE=1',
+  'command -v node',
+  'eval "echo LIVE=1"',
+], false, istLiveBefehl);
+for (const [name, form] of [
+  ['shell', { command: ['timeout', '600', 'env', 'LIVE=1', 'node', 'x.mjs'] }],
+  ['shell', { command: ['bash', '-o', 'pipefail', '-lc', 'LIVE=1 node x.mjs'] }],
+  ['local_shell', { action: { command: ['nohup', 'env', 'LIVE=1', 'node', 'x.mjs'] } }],
+]) ist(`F14 argv ${JSON.stringify(form.command ?? form.action.command)} mit Exit 0 zählt`, gruppeFuer(name, form, ok0), 'live');
+ist('F14 argv mit «-o pipefail» behält die Option, damit die Pipe im Skript beweisbar bleibt', gruppeFuer('shell', { command: ['bash', '-o', 'pipefail', '-lc', 'LIVE=1 node x.mjs | tail'] }, ok0), 'live');
+ist('F14 argv mit einfacher Option liefert weiter das Skript selbst', befehleAus('shell', { command: ['bash', '-lc', B] }), [B]);
+ist('F14 gruppeFuer: Wrapper-Befehl mit Exit 1 zählt nicht', zaehlt('timeout 600 env LIVE=1 node automation/x.mjs', { exit_code: 1 }), false);
+
+// --- F17: export LIVE=1 allein, überschrieben oder entfernt ----------------------------------------------------
+alle('F17 export (Gegenprobe): LIVE=1 erreicht keinen Befehl', [
+  'export LIVE=1',
+  'export LIVE=1; echo gesetzt',
+  'export LIVE=1; unset LIVE; node x.mjs',
+  'export LIVE=1; export LIVE=0; node x.mjs',
+  'export LIVE=1; LIVE=0; node x.mjs',
+  'LIVE=1 LIVE=0 node x.mjs',
+  'LIVE=1 env -u LIVE node x.mjs',
+  'LIVE=1 env --unset=LIVE node x.mjs',
+  'LIVE=1; node x.mjs',
+  'export -n LIVE; LIVE=1; node x.mjs',
+  'export LIVE=1\necho gesetzt\n',
+  'LIVE=1 echo hallo',
+  'LIVE=1 printf "%s" x',
+], false, istLiveBefehl);
+alle('F17 export: LIVE=1 erreicht einen Befehl', [
+  'export LIVE=1; node x.mjs',
+  'export LIVE=1 && node x.mjs',
+  'export LIVE=1\nnode x.mjs',
+  'LIVE=0 LIVE=1 node x.mjs',
+  'export LIVE=0; export LIVE=1; node x.mjs',
+  'LIVE=1; export LIVE; node x.mjs',
+  'export LIVE=1; env node x.mjs',
+  'export LIVE=1; bash -c "node x.mjs"',
+  'unset LIVE; LIVE=1 node x.mjs',
+], true, istLiveBefehl);
+ist('F17 gruppeFuer: «export LIVE=1» allein mit Exit 0 zählt nicht', zaehlt('export LIVE=1'), false);
+{
+  const z = tmp();
+  const r = hook(z, nach(1, { tool_name: 'exec_command', tool_input: { cmd: 'export LIVE=1' }, tool_response: { exit_code: 0 } }));
+  ist('F17 Prozess: «export LIVE=1» allein gibt nichts aus', [r.code, r.out], [0, '']);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F18: Erfolg ist nur beweisbar, wenn nichts den Exit-Code des LIVE-Befehls verdeckt -----------------------------
+alle('F18 Exit 0 beweist den Erfolg des LIVE-Befehls', [
+  'LIVE=1 node x.mjs',
+  'cd a && LIVE=1 node x.mjs',
+  'echo a; LIVE=1 node x.mjs',
+  'LIVE=1 node x.mjs && echo ok',
+  'LIVE=1 node x.mjs;',
+  'LIVE=1 node x.mjs\n',
+  'cat ids.txt | LIVE=1 node x.mjs',
+  'set -o pipefail; LIVE=1 node x.mjs 2>&1 | tail -5',
+  'bash -o pipefail -c "LIVE=1 node x.mjs | tail"',
+  'if true; then LIVE=1 node x.mjs; fi',
+  'nohup env LIVE=1 node x.mjs &',
+  'export LIVE=1; node x.mjs',
+  "bash -lc 'LIVE=1 node x.mjs'",
+  '(LIVE=1 node x.mjs)',
+  'LIVE=1 node x.mjs # Kommentar',
+  'LIVE=1 node x.mjs <<EOF\ndaten\nEOF',
+  'LIVE=1 node a.mjs; LIVE=1 node b.mjs',
+], true, c => zaehlt(c));
+alle('F18 Exit 0 beweist den Erfolg NICHT (Pipe, Semikolon, || true, Schleife): kein Zählen', [
+  'LIVE=1 node automation/x.mjs; echo "exit=$?"',
+  'LIVE=1 node x.mjs 2>&1 | tail -5',
+  'LIVE=1 node x.mjs | tee log.txt',
+  'LIVE=1 node x.mjs || true',
+  'LIVE=1 node x.mjs; echo fertig',
+  'LIVE=1 node x.mjs || echo kaputt',
+  'LIVE=1 node x.mjs && echo ok || echo fehler',
+  "bash -lc 'LIVE=1 node x.mjs; echo fertig'",
+  'bash -lc "LIVE=1 node x.mjs | tail"',
+  'for f in a b; do LIVE=1 node x.mjs $f; done',
+  'while read f; do LIVE=1 node x.mjs $f; done < ids.txt',
+  'echo $(LIVE=1 node x.mjs)',
+  'if LIVE=1 node x.mjs; then echo ok; fi',
+  'export LIVE=1; node x.mjs; echo fertig',
+  'LIVE=1 node x.mjs\necho fertig',
+  'LIVE=1 node x.mjs |& tee log.txt',
+], false, c => zaehlt(c));
+ist('F18 …die Befehle werden trotzdem als LIVE erkannt (nur der Erfolg ist unbewiesen)', ['LIVE=1 node x.mjs 2>&1 | tail -5', 'LIVE=1 node x.mjs || true', 'echo $(LIVE=1 node x.mjs)'].map(c => istLiveBefehl(c)), [true, true, true]);
+ist('F18 Fundfall: stdout «Fehler: Throttled / exit=3» bei «; echo exit=$?» zählt nicht', gruppeFuer('exec_command', { cmd: 'LIVE=1 node automation/x.mjs; echo "exit=$?"' }, { exit_code: 0, stdout: 'Fehler: Throttled\nexit=3' }), undefined);
+ist('F18 Fundfall: «| tail -5» mit Fehlertext in der Ausgabe zählt nicht', gruppeFuer('exec_command', { cmd: 'LIVE=1 node x.mjs 2>&1 | tail -5' }, { exit_code: 0, stdout: 'Error: SHOPIFY_TOKEN fehlt' }), undefined);
+{
+  const z = tmp();
+  const r = hook(z, nach(1, { tool_name: 'exec_command', tool_input: { cmd: 'LIVE=1 node x.mjs 2>&1 | tail -5' }, tool_response: { exit_code: 0, stdout: 'Error: SHOPIFY_TOKEN fehlt' } }));
+  ist('F18 Prozess: ein durch «| tail» maskierter Lauf wird nicht gezählt', [r.code, r.out], [0, '']);
+  const r2 = hook(z, nach(2, { tool_name: 'exec_command', tool_input: { cmd: 'set -o pipefail; LIVE=1 node x.mjs 2>&1 | tail -5' }, tool_response: { exit_code: 0, stdout: 'ok' } }));
+  ist('F18 Prozess: mit «set -o pipefail» ist der Erfolg beweisbar und der Lauf zählt', [r2.code, r2.json?.systemMessage], [0, 'Schreibzugriffe · Live 1']);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F10: Testlücken der Befehls-Erkennung ---------------------------------------------------------------------
+alle('F10 maskierte Zeichen ergeben keine Zuweisung (bash führt «\\LIVE=1» als Befehl aus)', ['\\LIVE=1 node x.mjs', 'L\\IVE=1 node x.mjs', 'LIVE\\=1 node x.mjs'], false, istLiveBefehl);
+ist('F10 exec-Eingabe mit mehreren Textfeldern: das Feld ohne exec_command bricht die Suche nicht ab', befehleAus('exec', { description: 'Deploy', code: `await tools.exec_command({ cmd: "${B}" })` }), [B]);
+ist('F10 exec-Eingabe: erst ein Feld mit exec_command, dann ein weiteres', befehleAus('exec', { code: `await tools.exec_command({ cmd: "${B}" })`, hinweis: 'nur Text' }), [B]);
+ist('F10 \\u0026 im JS-Literal wird zu «&» entschlüsselt, der LIVE-Befehl danach erkannt', [
+  befehleAus('exec', 'await tools.exec_command({ cmd: "echo start \\u0026 LIVE=1 node x.mjs" })'),
+  istLiveBefehl(befehleAus('exec', 'await tools.exec_command({ cmd: "echo start \\u0026 LIVE=1 node x.mjs" })')[0]),
+], [['echo start & LIVE=1 node x.mjs'], true]);
+ist('F10 \\x26 im JS-Literal wird ebenso entschlüsselt', befehleAus('exec', 'await tools.exec_command({ cmd: "a \\x26 b" })'), ['a & b']);
+
+// --- F15: Wort exec_command / Feld command allein macht keinen Shell-Befehl --------------------------------------
+{
+  const js = 'await tools.exec_command({ cmd: "LIVE=1 node x.mjs" })';
+  const patch = `*** Begin Patch\n*** Update File: test/x.mjs\n@@\n+ ${js}\n*** End Patch`;
+  const patchKontext = `*** Begin Patch\n*** Update File: test/x.mjs\n@@\n ${B.replace('node automation/x.mjs', 'PHASE=tags node automation/kategorien.mjs')}\n+ neu\n*** End Patch`;
+  for (const antwort of [ok0, { success: true }, KOPF(0)]) {
+    ist(`F15 apply_patch {input} mit JS-Beispieltext zählt nicht (Antwort ${typeof antwort === 'string' ? 'Textkopf' : JSON.stringify(antwort)})`, gruppeFuer('apply_patch', { input: patch }, antwort), undefined);
+  }
+  ist('F15 apply_patch mit Patch als reinem Text zählt nicht', gruppeFuer('apply_patch', patch, ok0), undefined);
+  ist('F15 befehleAus: Patch mit JS-Beispieltext liefert nichts', [befehleAus('apply_patch', { input: patch }), befehleAus('apply_patch', patch)], [[], []]);
+  ist('F15 git commit mit «exec_command … cmd: \'LIVE=1 …\'» im Text zählt nicht', zaehlt('git commit -m "Zähler: erkennt exec_command mit cmd: \'LIVE=1 node x.mjs\'"'), false);
+  ist('F15 Heredoc mit JS-Quelltext (cat > t.mjs <<EOF) zählt nicht', zaehlt(`cat > t.mjs <<'EOF'\n${js}\nEOF`), false);
+  ist('F15 echo mit JS-Quelltext zählt nicht', zaehlt(`echo '${js}'`), false);
+  ist('F15 Feld command trägt einen Patch (apply_patch): zählt nicht', gruppeFuer('apply_patch', { command: patchKontext }, ok0), undefined);
+  ist('F15 Feld command trägt einen Patch (update_plan): zählt nicht', gruppeFuer('update_plan', { command: patchKontext }, ok0), undefined);
+  ist('F15 befehleAus: Patch im Feld command liefert nichts', [befehleAus('apply_patch', { command: patchKontext }), befehleAus('update_plan', { cmd: patchKontext })], [[], []]);
+  ist('F15 Dateischreib-Werkzeug mit JS-Text im Inhalt zählt nicht', gruppeFuer('Write', { file_path: 't.mjs', content: js }, ok0), undefined);
+  ist('F15 Dateischreib-Werkzeug (new_string) mit JS-Text zählt nicht', gruppeFuer('Edit', { file_path: 't.mjs', old_string: 'x', new_string: js }, ok0), undefined);
+  ist('F15 Gegenprobe: der Code-Modus (exec) mit demselben JS zählt weiter', [gruppeFuer('exec', js, ok0), gruppeFuer('exec', { code: js }, ok0), gruppeFuer('exec', { input: js }, ok0)], ['live', 'live', 'live']);
+  ist('F15 Gegenprobe: Shell-Werkzeug mit {cmd} zählt weiter', gruppeFuer('exec_command', { cmd: B }, ok0), 'live');
+  ist('F15 Gegenprobe: Shell-Name mit Text, der exec_command nur als Argument nennt, bleibt ein Shell-Befehl', befehleAus('exec_command', `${B} --tool exec_command`), [`${B} --tool exec_command`]);
+  ist('F15 exec: andere Eigenschaften vor cmd (Zeichenketten mit Klammern, Objekt)', befehleAus('exec', 'tools.exec_command({ workdir: "/x}y", env: { A: "1" }, yield_time_ms: 500, cmd: "LIVE=1 node x.mjs" })'), ['LIVE=1 node x.mjs']);
+  ist('F15 exec: Schlüssel in Anführungszeichen', befehleAus('exec', 'tools.exec_command({ "cmd": "LIVE=1 node x.mjs" })'), ['LIVE=1 node x.mjs']);
+  ist('F15 exec: cmd steht nicht im Aufruf von exec_command, sondern woanders', befehleAus('exec', 'const a = { cmd: "LIVE=1 node x.mjs" }; tools.exec_command(a)'), []);
+  ist('F15 exec: cmd aus zusammengesetztem Ausdruck ist unbekannt', befehleAus('exec', 'tools.exec_command({ cmd: "LIVE=1 " + "node x.mjs" })'), []);
+  ist('F15 exec: zwei Aufrufe liefern beide Befehle', befehleAus('exec', 'tools.exec_command({ cmd: "echo a" });\ntools.exec_command({ cmd: \'LIVE=1 node x.mjs\' })'), ['echo a', 'LIVE=1 node x.mjs']);
+}
+
+// --- F16: Gruppenmuster ---------------------------------------------------------------------------------------
+const tt = n => `mcp__TikTok_Ads__${n}`;
+alle('F16 TikTok schreibt (Löschen, Verschieben, Hochladen, Einladen …): zählt als Social', [
+  'comment_delete', 'creative_asset_delete', 'catalog_product_delete', 'dmp_custom_audience_delete', 'bc_transfer', 'bc_pixel_transfer',
+  'bc_member_invite', 'bc_asset_assign', 'bc_asset_unassign', 'catalog_product_upload', 'file_video_ad_upload', 'file_image_ad_upload', 'adgroup_appeal', 'smart_plus_ad_appeal',
+  'rf_order_cancel', 'audience_segment_operate', 'bc_advertiser_disable', 'campaign_gmv_max_session_delete', 'subscription_unsubscribe_cancel',
+  'bc_partner_add', 'search_ad_negative_keyword_add', 'catalog_eventsource_bind', 'catalog_eventsource_unbind', 'tt_video_authorize_apply', 'tt_video_unbind',
+  'tto_tcm_campaign_link', 'playable_save', 'term_confirm', 'catalog_capitalize_migrate', 'page_library_transfer', 'split_test_promote_run', 'comment_post_create',
+  'campaign_copy_task_create', 'blockedword_create', 'creative_auto_message_create',
+].map(tt), 'social', gruppeVon);
+alle('F16 TikTok-Berichts- und Prüfaufträge, Vorschau (Gegenprobe): zählt nie', [
+  'report_task_create', 'changelog_task_create', 'blockedword_task_create', 'comment_task_create', 'page_lead_task_create', 'bc_invoice_task_create',
+  'diagnostic_catalog_product_task_create', 'creative_ads_preview_create', 'video_fix_task_create', 'report_task_cancel',
+  'report_task_check', 'report_task_download', 'report_integrated_get', 'changelog_task_download', 'campaign_copy_task_check',
+  'catalog_eventsource_bind_get', 'bc_pixel_link_get', 'dmp_custom_audience_apply_log_get', 'dmp_custom_audience_share_get', 'comment_list_get',
+  'smart_plus_material_report_breakdown_run', 'smart_plus_material_report_overview_run', 'blockedword_check', 'tool_url_validate', 'playable_validate',
+  'tiktok_ads_diagnosis_agent', 'ad_audience_size_estimate', 'rf_inventory_estimate', 'file_name_check', 'bc_invoice_task_get',
+].map(tt), undefined, gruppeVon);
+alle('F16 Klaviyo: plant den Versand an Empfänger → Mail', ['mcp__Klaviyo__schedule_campaign_message', 'mcp__Klaviyo__send_campaign', 'mcp__klaviyo__schedule_campaign_message'], 'mail', gruppeVon);
+alle('F16 Klaviyo (Gegenprobe): Entwurf, Lesen, Absage, Zeitplan-Änderung zählt nicht', [
+  'mcp__Klaviyo__create_campaign', 'mcp__Klaviyo__get_campaign', 'mcp__Klaviyo__cancel_campaign_send', 'mcp__Klaviyo__update_campaign_message_schedule',
+  'mcp__Klaviyo__schedule_campaign_message_vorschau', 'mcp__Klaviyo__reschedule_campaign_message',
+], undefined, gruppeVon);
+alle('F16 Shopify: Hochladen und Importieren in den Shop → Shop', [
+  'mcp__Shopify__upload-digital-product-file', 'mcp__Shopify__upload-digital-product-media', 'mcp__Shopify__import-mock-shop-catalog', 'mcp__shopify__upload_digital_product_file',
+], 'shop', gruppeVon);
+alle('F16 Shopify (Gegenprobe): Suchen, Vorschau, Verbindung prüfen zählt nicht', [
+  'mcp__Shopify__find-mock-shop-catalogs', 'mcp__Shopify__open-digital-products-install', 'mcp__Shopify__test-digital-products-connection', 'mcp__Shopify__generate-business-names',
+  'mcp__Shopify__generate-domain-names', 'mcp__Shopify__switch-shop', 'mcp__Shopify__show-collective-products', 'mcp__Shopify__get-new-store-previews',
+  'mcp__Shopify__upload', 'mcp__Shopify__import', 'mcp__Shopify__uploads-digital-product-file',
+], undefined, gruppeVon);
+ist('F16 Ende zu Ende: bc_transfer (Guthaben verschieben) mit Antwort ohne Fehler zählt als Social', gruppeFuer(tt('bc_transfer'), {}, { content: [] }), 'social');
+ist('F16 Ende zu Ende: report_task_create zählt nicht', gruppeFuer(tt('report_task_create'), {}, { content: [] }), undefined);
+{
+  const z = tmp();
+  let r = hook(z, nach(1, { tool_name: tt('bc_transfer'), tool_input: {}, tool_response: { content: [] } }));
+  ist('F16 Prozess: bc_transfer wird gezählt', [r.code, r.json?.systemMessage], [0, 'Schreibzugriffe · Social 1']);
+  r = hook(z, nach(2, { tool_name: tt('report_task_create'), tool_input: {}, tool_response: { content: [] } }));
+  ist('F16 Prozess: report_task_create gibt nichts aus', [r.code, r.out], [0, '']);
+  r = hook(z, nach(3, { tool_name: 'mcp__Klaviyo__schedule_campaign_message', tool_input: {}, tool_response: { content: [] } }));
+  ist('F16 Prozess: schedule_campaign_message wird als Mail gezählt', [r.code, r.json?.systemMessage], [0, 'Schreibzugriffe · Social 1 · Mail 1']);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F3 / F7 / F8: Aufräumen, Zustandsordner, Dateiname ---------------------------------------------------------
+{
+  const z = tmp();
+  const ordner = join(z, 'zustand');
+  mkdirSync(ordner);
+  const altern = (name, tage, inhalt = 'shop\nshop\n') => {
+    const d = zaehlerDatei(ordner, name);
+    writeFileSync(d, inhalt);
+    const t = new Date(Date.now() - tage * 86_400_000);
+    utimesSync(d, t, t);
+    return d;
+  };
+  const d = { freitag: altern('freitag', 5), zwoelf: altern('zwoelf', 12), dreizehn: altern('dreizehn', 13), halb: altern('vierzehnhalb', 14.5), fuenfzehn: altern('fuenfzehn', 15), uralt: altern('uralt', 30) };
+  const weg = raeumeAuf(ordner, { behalte: zaehlerDatei(ordner, 'montag') });
+  ist('F3 Aufräumen: nur Dateien über 14 Tage fallen weg (14,5 / 15 / 30), 5 / 12 / 13 Tage bleiben', [weg, Object.fromEntries(Object.entries(d).map(([k, v]) => [k, existsSync(v)]))], [3, { freitag: true, zwoelf: true, dreizehn: true, halb: false, fuenfzehn: false, uralt: false }]);
+  const d2 = altern('uralt2', 30);
+  const d3 = altern('mittel', 20);
+  ist('F3 Aufräumen: eine kleinere Frist wird beachtet (tage: 10 löscht die 12 Tage alte)', [raeumeAuf(ordner, { tage: 10 }), existsSync(d.zwoelf), existsSync(d.freitag)], [4, false, true]);
+  ist('F3 …die Reste (uralt2, mittel) sind schon weg', [existsSync(d2), existsSync(d3)], [false, false]);
+  rmSync(z, { recursive: true, force: true });
+}
+{
+  // Ende zu Ende über den Hook-Prozess: der SessionStart räumt auf, die Wiederaufnahme der 5 Tage alten Sitzung behält ihren Stand
+  const z = tmp();
+  const ordner = join(z, 'zustand');
+  mkdirSync(ordner);
+  const altern = (name, tage) => {
+    const d = zaehlerDatei(ordner, name);
+    writeFileSync(d, 'shop\nshop\n');
+    const t = new Date(Date.now() - tage * 86_400_000);
+    utimesSync(d, t, t);
+    return d;
+  };
+  const freitag = altern('freitag', 5); const uralt = altern('uralt', 30); const halb = altern('halb', 14.5);
+  const start = hook(z, eingabe('SessionStart', { session_id: 'montag' }), ['start']);
+  ist('F3 Prozess: SessionStart einer neuen Sitzung beginnt bei «keine» und räumt Zählerdateien über 14 Tage weg', [start.code, start.json?.systemMessage, existsSync(uralt), existsSync(halb), existsSync(freitag)], [0, 'Schreibzugriffe · keine', false, false, true]);
+  const wieder = hook(z, eingabe('SessionStart', { session_id: 'freitag', source: 'resume' }), ['start']);
+  ist('F3 Prozess: die Wiederaufnahme der 5 Tage alten Sitzung zeigt ihren Stand (Shop 2)', wieder.json?.systemMessage, 'Schreibzugriffe · Shop 2');
+  rmSync(z, { recursive: true, force: true });
+}
+{
+  const z = tmp();
+  const tief = join(z, 'a', 'b', 'c');
+  const r = await behandle(eingabe('PostToolUse', { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }), { LUXE_CODEX_ZUSTAND: tief });
+  ist('F7 Zustandsordner mit mehreren neuen Ebenen wird angelegt, der Zähler zählt', [r?.systemMessage, existsSync(zaehlerDatei(tief, 's-1'))], ['Schreibzugriffe · Shop 1', true]);
+  const p1 = hook(z, nach(1, { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }), [], { LUXE_CODEX_ZUSTAND: join(z, 'x', 'y', 'z') });
+  ist('F7 Prozess: LUXE_CODEX_ZUSTAND mit mehreren neuen Ebenen zählt (kein ENOENT)', [p1.code, p1.json?.systemMessage], [0, 'Schreibzugriffe · Shop 1']);
+  const p2 = hook(z, nach(2, { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }), [], { LUXE_CODEX_ZUSTAND: undefined, CLAUDE_PLUGIN_DATA: join(z, 'daten', 'plugin', 'luxe') });
+  ist('F7 Prozess: ein noch nicht angelegtes CLAUDE_PLUGIN_DATA zählt (kein ENOENT)', [p2.code, p2.json?.systemMessage], [0, 'Schreibzugriffe · Shop 1']);
+  rmSync(z, { recursive: true, force: true });
+}
+{
+  const verschieden = ['a/b', 'a?b', 'a b', 'a.b', 'a:b'].map(sichererName);
+  ist('F8 Dateiname: fünf verschieden veränderte Kennungen mit gleichem Rest bleiben alle verschieden', new Set(verschieden).size, 5);
+  ist('F8 Dateiname: veränderte Kennung trägt eine 8-stellige Prüfsumme', verschieden.every(n => /^a_b-[0-9a-f]{8}$/.test(n)), true);
+  const z = tmp();
+  const datei = join(z, 'zaehler-crlf.log');
+  writeFileSync(datei, '\r\nshop\r\n\r\nshop\r\nmail\r\n');
+  ist('F8 Zählerdatei mit Windows-Zeilenenden (CRLF) wird gezählt', leseStand(datei).stand, { shop: 2, social: 0, mail: 1, live: 0 });
+  writeFileSync(datei, ' shop \n\tmail\t\n');
+  ist('F8 Zählerdatei mit Leerzeichen und Tabs um die Zeile wird gezählt', leseStand(datei).stand, { shop: 1, social: 0, mail: 1, live: 0 });
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F1: die Hooks geben nie blockierende Felder aus (continue, decision, reason, stopReason, suppressOutput) ---------
+{
+  const VERBOTEN = ['continue', 'decision', 'reason', 'stopReason', 'suppressOutput'];
+  const z = tmp();
+  const env = { LUXE_CODEX_ZUSTAND: z };
+  const a1 = await behandle(eingabe('SessionStart'), env, true);
+  const a2 = await behandle(eingabe('PostToolUse', { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }), env);
+  const a3 = await behandle(eingabe('PostToolUse', { tool_name: 'exec_command', tool_input: { cmd: B }, tool_response: ok0, tool_use_id: 't-2' }), env);
+  const a4 = await behandle(eingabe('SessionStart', { source: 'resume' }), env, true);
+  ist('F1 behandle SessionStart: genau {systemMessage}', a1, { systemMessage: 'Schreibzugriffe · keine' });
+  ist('F1 behandle PostToolUse (Shop): genau {systemMessage}', a2, { systemMessage: 'Schreibzugriffe · Shop 1' });
+  ist('F1 behandle PostToolUse (Live): genau {systemMessage}', a3, { systemMessage: 'Schreibzugriffe · Shop 1 · Live 1' });
+  ist('F1 behandle Wiederaufnahme: genau {systemMessage}', a4, { systemMessage: 'Schreibzugriffe · Shop 1 · Live 1' });
+  ist('F1 keine Ausgabe trägt ein blockierendes Feld', [a1, a2, a3, a4].map(a => VERBOTEN.filter(k => k in a)), [[], [], [], []]);
+  const p = hook(z, nach(9, { tool_name: 'mcp__Gmail__send_message', tool_input: {}, tool_response: {} }));
+  ist('F1 Prozess: genau {systemMessage} und nichts sonst', p.json, { systemMessage: 'Schreibzugriffe · Mail 1' });
+  writeFileSync(join(z, 'im-weg'), 'x');
+  const fehler = hook(z, nach(10, { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }), [], { LUXE_CODEX_ZUSTAND: join(z, 'im-weg', 'unten') });
+  ist('F1 Prozess (Fehlerpfad): nur systemMessage, kein blockierendes Feld, Exit 0', [fehler.code, Object.keys(fehler.json ?? {}), VERBOTEN.filter(k => k in (fehler.json ?? {}))], [0, ['systemMessage'], []]);
+  rmSync(z, { recursive: true, force: true });
+}
+
+// --- F2: hooks.json: Aufbau und die Befehlszeilen selbst ausführen (auch bei Leerzeichen im Plugin-Pfad) ---------------
+{
+  const hooks = JSON.parse(readFileSync(join(HIER, '..', 'hooks', 'hooks.json'), 'utf8')).hooks;
+  const ERLAUBT = new Set(['type', 'command', 'timeout', 'statusMessage']);
+  const gruppen = Object.entries(hooks).flatMap(([ereignis, gs]) => gs.map(g => ({ ereignis, g })));
+  const handler = gruppen.flatMap(({ ereignis, g }) => (g.hooks ?? []).map(h => ({ ereignis, g, h })));
+  ist('F2 hooks.json: genau diese Ereignisse', Object.keys(hooks).sort(), ['PostToolUse', 'PreToolUse', 'SessionStart', 'UserPromptSubmit']);
+  ist('F2 hooks.json: keine Gruppe hat einen matcher (sonst schweigt der Zähler bei MCP-Zugriffen)', gruppen.filter(({ g }) => g.matcher !== undefined).map(x => x.ereignis), []);
+  ist('F2 hooks.json: Gruppen tragen nur das Feld hooks', gruppen.map(({ g }) => Object.keys(g)), gruppen.map(() => ['hooks']));
+  ist('F2 hooks.json: jeder Handler ist vom Typ command', handler.filter(({ h }) => h.type !== 'command').map(x => x.h), []);
+  ist('F2 hooks.json: jeder Handler hat ein ganzzahliges Zeitlimit zwischen 1 und 60', handler.filter(({ h }) => !(Number.isInteger(h.timeout) && h.timeout >= 1 && h.timeout <= 60)).map(x => x.h), []);
+  ist('F2 hooks.json: kein Handler ist async', handler.filter(({ h }) => 'async' in h).map(x => x.h), []);
+  ist('F2 hooks.json: nur bekannte Felder im Handler (ein Tippfehler wie «timout» fällt auf)', handler.flatMap(({ h }) => Object.keys(h).filter(k => !ERLAUBT.has(k))), []);
+  ist('F2 hooks.json: jeder Befehl setzt den Pfad in Anführungszeichen', handler.filter(({ h }) => !/^node "\$\{CLAUDE_PLUGIN_ROOT\}\/hooks\/[a-z]+\.mjs"( start)?$/.test(h.command)).map(x => x.h.command), []);
+  const befehleVon = (ev, datei) => handler.filter(x => x.ereignis === ev).map(x => x.h.command).filter(c => c.includes(`/${datei}"`));
+  ist('F2 hooks.json: SessionStart ruft kontext.mjs und schreibzaehler.mjs «start», in dieser Reihenfolge', handler.filter(x => x.ereignis === 'SessionStart').map(x => x.h.command), ['node "${CLAUDE_PLUGIN_ROOT}/hooks/kontext.mjs"', 'node "${CLAUDE_PLUGIN_ROOT}/hooks/schreibzaehler.mjs" start']);
+  ist('F2 hooks.json: UserPromptSubmit ruft genau kontext.mjs', handler.filter(x => x.ereignis === 'UserPromptSubmit').map(x => x.h.command), ['node "${CLAUDE_PLUGIN_ROOT}/hooks/kontext.mjs"']);
+  ist('F2 hooks.json: PostToolUse ruft genau schreibzaehler.mjs ohne Argument', handler.filter(x => x.ereignis === 'PostToolUse').map(x => x.h.command), ['node "${CLAUDE_PLUGIN_ROOT}/hooks/schreibzaehler.mjs"']);
+  ist('F2 hooks.json: PreToolUse ruft leitplanken.mjs', befehleVon('PreToolUse', 'leitplanken.mjs').length, 1);
+
+  // Die Befehlszeilen selbst ausführen, mit einem Plugin-Pfad MIT Leerzeichen (so, wie Codex sie über die Shell startet)
+  const z = tmp();
+  const wurzel = join(z, 'a b', 'luxe-codex');
+  mkdirSync(wurzel, { recursive: true });
+  for (const teil of ['lib', 'hooks']) cpSync(join(HIER, '..', teil), join(wurzel, teil), { recursive: true });
+  const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], {
+    input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000,
+    env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') },
+  });
+  const EINGABE_JE = {
+    SessionStart: eingabe('SessionStart'),
+    UserPromptSubmit: eingabe('UserPromptSubmit'),
+    PreToolUse: eingabe('PreToolUse', { tool_name: 'exec_command', tool_input: { cmd: 'ls' } }),
+    PostToolUse: eingabe('PostToolUse', { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }),
+  };
+  const ergebnisse = handler.map(({ ereignis, h }) => ({ ereignis, h, r: lauf(h.command, EINGABE_JE[ereignis]) }));
+  ist('F2 Befehlszeilen mit Leerzeichen im Plugin-Pfad: alle enden mit Exit 0 ohne Fehlermeldung', ergebnisse.map(({ r }) => [r.status, r.stderr]), ergebnisse.map(() => [0, '']));
+  const aus = (ereignis, datei) => ergebnisse.find(x => x.ereignis === ereignis && x.h.command.includes(`/${datei}"`))?.r.stdout;
+  ist('F2 …kontext.mjs liefert beim SessionStart die Projektregeln', JSON.parse(aus('SessionStart', 'kontext.mjs') || '{}').hookSpecificOutput?.additionalContext?.startsWith('LuxeStyle-Projektregeln'), true);
+  ist('F2 …schreibzaehler.mjs «start» zeigt «keine»', JSON.parse(aus('SessionStart', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · keine');
+  ist('F2 …schreibzaehler.mjs zählt die Shopify-Mutation', JSON.parse(aus('PostToolUse', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · Shop 1');
+  ist('F2 …kontext.mjs schweigt beim Prompt (Sparmodus AUS)', aus('UserPromptSubmit', 'kontext.mjs'), '');
+  rmSync(z, { recursive: true, force: true });
 }
 
 fertig();
