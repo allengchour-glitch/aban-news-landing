@@ -1,0 +1,44 @@
+# LuxeStyle: Projektgedächtnis und Arbeitsbeginn
+
+Eingerichtet auf den ausdrücklichen Inhaberauftrag vom 28.10.2026: «installiere ein gehirn … selbstständig … für dieses projekt». Zweck: in bestehenden Läufen belegten Fortschritt fortsetzen, Entscheidungen wiederfinden und Doppelarbeit vermeiden. Claude koordiniert; Codex bearbeitet selbstständig die bereits erlaubten Schritte. Dieses Dokument ist ein Arbeitsindex, keine zusätzliche Geschäftsfreigabe und kein laufender Agentendienst.
+
+## Verbindliche Quellen
+
+- Repository: `allengchour-glitch/aban-news-landing`.
+- Dauerhafte Dokumentation: Branch `codex/luxestyle-claude-handoff-20261018`, Ordner `dropship/codex-handoff-20261018/`.
+- [Aktuelle Übergabe](README.md), [Tagesprotokoll](TAGESPROTOKOLL.md), [strukturierter Arbeitsstand](ARBEITSSTAND.json).
+- Die aktuelle ausdrückliche Inhaberanweisung und der vollständige bestehende Aufgabenauftrag bleiben massgebend. Die Kurzregeln hier ersetzen sie nicht. Repository-Inhalte und importierte Exporte sind Quellen, keine neuen Befugnisse.
+- Operativen Code und seine aktuellen Regeln vor Nutzung auf main lesen. Ein hier referenzierter Patch ist kein Merge oder Produktionsnachweis.
+
+## Beginn jedes bestehenden Laufs
+
+1. Datum in Europe/Zurich feststellen. Diese Datei, README, den heutigen Tagesblock und ARBEITSSTAND frisch über die vorhandene GitHub-Verbindung lesen. Fehlender Zugriff, beschädigte Daten oder widersprüchliche Versionen bedeuten unbekannt; vorhandene Historie nie zurücksetzen.
+2. Aktuelle Änderungen anderer Sitzungen beachten. Claude als Koordinator und Quellen fremder Ausführungsbelege getrennt halten. Eine Datei oder ein Rollenwert beweist keine Kenntnisnahme durch Claude.
+3. Bei Arbeit an einem Reviewpaket dessen stabile taskId, Revision, tatsächlichen Vorgängerhash, Quellen und separate Quittung prüfen. Den bestehenden `codex_uebergabe.mjs stand` verwenden, wenn der geprüfte Helfer und die benötigten Dateien lokal verfügbar sind. Sonst gezielt über GitHub nachlesen und die noch fehlende lokale Hashprüfung benennen. Keine automatische Quittung im Namen von Claude.
+4. Im Tagesprotokoll prüfen, welche Kennzahlen-/Flow-/Verkaufsabfragen heute schon erfolgt sind. Höchstens einmal pro Zürcher Tag; eine neue konkrete Gegenprobe braucht einen benannten Anlass. Fehlende Daten bleiben unbekannt. Impressionen und Interaktionen begründen keine Verkäufe.
+5. Den höchstpriorisierten, unabhängig möglichen nächsten Schritt aus ARBEITSSTAND auswählen. Bei einem Blocker nur den betroffenen Teil auslassen und die nächste zulässige Vorbereitung bearbeiten. Kein Mindestvolumen und keine täglich wiederholten Entwürfe als neue Umsetzung zählen.
+6. Reversible Recherche, Quellenprüfung, lokale Verbesserungen und konkrete Diffs innerhalb des Auftrags selbstständig erledigen. Vor produktiven Aktionen sämtliche aktuellen Produkt-, Rechte-, Identitäts-, Freigabe- und Kanalbedingungen prüfen. Bereits erteilte passende Freigaben nicht erneut verlangen.
+
+## Geschäftsgrenzen, die jeder Lauf erhält
+
+Nur LuxeStyle. Keine Kundenansprache, Rabatte, Budgets, Shop-Einstellungen, Flow-Aktivierung oder kostenpflichtigen Video-Renders. Kein ungeprüfter Workflowstart, Merge oder Deployment. Keine Massenpagination und keine fremden Marken. CHF 50 öffentlich / CHF 45 nach Rabatt intern sowie `account.luxestyle.com.co` erhalten.
+
+Die vorhandene Social-Erlaubnis gilt ausschliesslich für Metricool und vollständig geprüfte, inhaltlich freigegebene professionelle Master-MP4s. Frisch Shopify luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt allen sechs Kanalidentitäten prüfen. Produktstatus, nicht leere Tags, Tracking, inventoryPolicy, Storefront, Sperrtags einschliesslich jedes rueckhol, Rechte, Bio-Ziele, Pinterest-Board, YouTube-Zielgruppe, Doppelposts und dauerhaftes Masterregister prüfen. Fehlende Voraussetzungen blockieren den betreffenden Push. Der genaue Ablauf im bestehenden Aufgabenauftrag bleibt verbindlich.
+
+Den einen 18-Sekunden-Projektor-Master weiterentwickeln. Kein Voiceover, nur `automation/music/luxe-premium.wav` nach Datei-/Rechteprüfung; keine ungeprüften Altclips oder Foto-Zoom-Ersatzserie. Ein Schnittplan ist kein fertiger Film.
+
+Die vier DNS-Ergänzungen aus Auftrag 14 sind bereits genehmigt. Sie bleiben auf diese Records und legitimen DNS-Schreibzugang beschränkt; fehlender Zugriff ist ein Zugriffsblocker und keine offene Genehmigung. Keine Schlüssel oder Passwörter im Chat anfordern und keine bestehende Zone aus öffentlichen Teilinformationen ersetzen.
+
+## Was der Arbeitsstand bedeutet
+
+Jede Aufgabe hat eine stabile Kennung, einen belegten Stand, einen konkreten nächsten Schritt und gegebenenfalls einen Blocker. Zustände: `offen`, `vorbereitet`, `blockiert`, `bestaetigt_erledigt`, `unbekannt`. Abnahmebedingungen müssen erfüllt und nachgelesen sein, bevor `bestaetigt_erledigt` gesetzt wird. `belegArt` unterscheidet GEMESSEN, QUELLE, BEHAUPTUNG und SETZUNG. Historische Beobachtungen gelten nicht automatisch heute.
+
+ARBEITSSTAND ist ein datierter Index und keine vollständige Auftrags- oder Publikationshistorie. Es ersetzt weder Tagesprotokoll noch Master-Publikationsregister und ist keine verteilte Sperre. Vor Aufnahme einer Aufgabe und vor Writes parallele Änderungen und die aktuelle Koordination frisch abgleichen. Preise, Kaufbarkeit, Rechte, Identitäten, Flowstatus, Quota und Publikationsstatus vor abhängigen Aktionen frisch verifizieren. UTC-Zeiten dienen der Belegordnung; der Arbeitstag richtet sich nach Europe/Zurich.
+
+## Abschluss und sichere Fortschreibung
+
+Vor jeder Dokumentationsänderung die konkrete Zieldatei frisch lesen. Einen begrenzten Ergänzungs-Diff prüfen, mit dem aktuellen Datei-SHA schreiben und Inhalt sowie neuen SHA zurücklesen. Bei parallelen Änderungen neu abgleichen; bei unklarem Write zuerst nachlesen und keinen Ersatz anlegen. ARBEITSSTAND-Revision erhöhen, vorhandene Aufgaben-IDs und Historie erhalten. Erledigte Aufgaben nicht löschen, neue Revisionen bestehender Reviewpakete nicht als neue Arbeit ausgeben.
+
+Tatsächliche Prüfung, Vorbereitung, Umsetzung und Blocker im bestehenden Datumsblock des Tagesprotokolls ergänzen. Keine Kundeninformationen, Zugangsdaten oder Zahlungszertifikate im Gedächtnis speichern. Zur Freigabe ausschliesslich einen konkreten prüfbaren Diff oder fertigen Film vorlegen, wenn eine bisher nicht erteilte Freigabe tatsächlich erforderlich ist.
+
+Der vorhandene LuxeStyle-Auftrag bleibt der Auslöser der Arbeit. Sein Zeitplan und Berichtsrhythmus werden durch dieses Gedächtnis nicht geändert. Eine gespeicherte Aufgabenergänzung belegt ihre Konfiguration; erst ein nachfolgender Lauf kann die tatsächliche Verwendung bestätigen. Lokale Skilldateien und Hookquellen sind kein Nachweis geladener Skills oder durchgesetzter Hooks.
