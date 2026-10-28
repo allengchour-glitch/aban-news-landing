@@ -8,7 +8,7 @@
  * Geheimnisse im Test sind aus Teilen zusammengesetzt, damit hier kein echt aussehender Wert steht.
  */
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -561,6 +561,309 @@ const jetzt = (name, ti, extra = {}) => {
   ist('Parallel: zwölf gleichzeitige Hooks → alle Exit 0 ohne Ausgabe', [ergebnisse.map(r => r.code), ergebnisse.map(r => r.aus)], [Array(12).fill(0), Array(12).fill('')]);
   ist('Parallel: alle zwölf Trockenläufe stehen in der Zustandsdatei', leseTrocken({ LUXE_CODEX_ZUSTAND: ordner }, 'parallel').sort(), [...skripte].sort());
   ist('Parallel: es gibt genau eine Zustandsdatei (kein Rest einer Zwischendatei)', readdirSync(ordner).length, 1);
+}
+
+// ================================================================ 9. Funde der unabhängigen Prüfung (23)
+// Jeder Fund wurde ZUERST als Test eingebaut (rot gegen den alten Code), erst dann der Code geändert.
+// In den Zeichenketten ist `\\\n` ein Backslash mit Zeilenumbruch (Zeilenfortsetzung der Shell), `\n` ein echter Zeilenumbruch.
+// Wie der Hook: alle ausgepackten Befehle (bash -lc, Heredoc, Pipe an eine Shell …) werden einzeln geprüft.
+const gesperrtGanz = (c, trocken = []) => ziehePruefgut({ cmd: c }).befehle.some(b => typeof pruefeBash(b, trocken)?.deny === 'string');
+const grundGanz = (c, trocken = []) => { for (const b of ziehePruefgut({ cmd: c }).befehle) { const d = pruefeBash(b, trocken)?.deny; if (d) return d; } return ''; };
+const mitGrund = (name, liste, teil, trocken) => { for (const c of liste) ist(`${name}: ${JSON.stringify(c).slice(0, 80)}`, [gesperrtGanz(c, trocken), teil ? grundGanz(c, trocken).includes(teil) : true], [true, true]); };
+const frei = (name, liste, trocken) => { for (const c of liste) ist(`${name}: ${JSON.stringify(c).slice(0, 80)}`, gesperrtGanz(c, trocken), false); };
+const freiStreng = (name, liste, trocken) => { for (const c of liste) ist(`${name}: ${JSON.stringify(c).slice(0, 80)}`, urteil(c, trocken), undefined); };
+const imKind = (quelle, frist = 25000) => {
+  const t0 = Date.now();
+  const k = spawnSync(process.execPath, ['--input-type=module', '-e', quelle], { encoding: 'utf8', timeout: frist });
+  return { status: k.status, signal: k.signal, aus: (k.stdout ?? '').trim(), fehler: (k.stderr ?? '').trim(), ms: Date.now() - t0 };
+};
+const FORM_URL = pathToFileURL(join(HIER, '..', 'lib', 'eingabe_form.mjs')).href;
+const REGELN_URL = pathToFileURL(join(HIER, '..', 'lib', 'regeln.mjs')).href;
+const BT = '`';
+const entscheidung = aus => { try { return JSON.parse(aus).hookSpecificOutput.permissionDecision; } catch { return aus === '' ? 'keine Ausgabe' : 'kaputt'; } };
+
+// ---- F1/F16 Zeilenfortsetzung (Backslash, Zeilenumbruch, Einrückung) verdeckt Force-Push, git add, touch, pkill
+mitGrund('F1/F16 Force-Push mit Zeilenfortsetzung', ['git push \\\n  --force origin x', 'git push origin x \\\n  -f', 'git push \\\n  origin \\\n  --force', 'git push \\\n--force origin x', 'git push \\\r\n  --force origin x', 'git pu\\\nsh --force origin x', 'git push origin \\\n  +main'], 'Force-Push');
+mitGrund('F1/F16 git add mit Zeilenfortsetzung', ['git add \\\n  -A', 'git add \\\n  .', 'git add a.md \\\n  b.md \\\n  -A'], 'git add -A');
+mitGrund('F16 touch mit Zeilenfortsetzung', ['touch \\\n  dropship/_SOCIAL_STOPP'], 'Besitzer');
+mitGrund('F1 pkill mit Zeilenfortsetzung', ['pkill \\\n  -f x', 'sleep 1; \\\n  pkill node'], 'pkill/killall');
+frei('F1 Zeilenfortsetzung ohne Treffer bleibt frei', ['git push \\\n  origin x', 'git push origin x \\\n  --follow-tags', 'git commit -m "a \\\n  git push --force"', "echo 'a \\\n git push --force'"]);
+
+// ---- F2 LIVE="1" (Wert in Anführungszeichen) ist scharf und wird nie als Trockenlauf gemerkt
+mitGrund('F2 LIVE mit Anführungszeichen ist scharf', ['LIVE="1" node automation/seo-optimizer.mjs', "LIVE='1' node automation/seo-optimizer.mjs", 'export LIVE="1"; node automation/seo-optimizer.mjs', 'env LIVE="1" node automation/seo-optimizer.mjs', 'LIVE=\'1\' bash -lc "node automation/seo-optimizer.mjs"'], 'Trockenlauf');
+for (const c of ['LIVE=0 node automation/x.mjs', 'LIVE= node automation/x.mjs', 'LIVE="" node automation/x.mjs', 'LIVE=11 node automation/x.mjs', 'LIVE=true node automation/x.mjs']) {
+  ist(`F2 nicht scharf, also ein Trockenlauf: ${c}`, urteil(c, []), { merke: 'automation/x.mjs' });
+}
+{
+  const ordner = neuerOrdner();
+  const env = { LUXE_CODEX_ZUSTAND: ordner };
+  const sitz = 'f2-sitzung';
+  const e = c => eingabe('PreToolUse', { tool_name: 'exec_command', tool_input: { cmd: c }, session_id: sitz });
+  const a = await leitplanken(e('LIVE="1" node automation/seo-optimizer.mjs'), env);
+  const b = await leitplanken(e('LIVE=1 node automation/seo-optimizer.mjs'), env);
+  ist('F2 LIVE="1" wird gesperrt und NICHT als Trockenlauf gemerkt: das spätere LIVE=1 bleibt gesperrt', [a?.hookSpecificOutput?.permissionDecision, b?.hookSpecificOutput?.permissionDecision, leseTrocken(env, sitz)], ['deny', 'deny', []]);
+}
+
+// ---- F3 JS-Leser: Regex-Literale mit Apostroph, Anführungszeichen, Backtick, // oder / in der Klasse
+const RX_QUELLEN = [
+  ['Shell-Quote-Idiom mit /\'/g', `const sh = s => "'" + s.replace(/'/g, "'\\\\''") + "'"; await tools.exec_command({ cmd: ${BT}git push --force origin $` + `{sh(b)}${BT} });`, 'Force-Push'],
+  ['/\'/g, dann pkill', `msg.replace(/'/g, ""); await tools.exec_command({ cmd: "pkill -f laufen.py" })`, 'pkill/killall'],
+  ['/\\//: das // ist kein Kommentar', `const r = /\\//; await tools.exec_command({ cmd: "git push --force origin x" });`, 'Force-Push'],
+  ['/"/g', `x = s.replace(/"/g, ''); await tools.exec_command({ cmd: "git add -A" })`, 'git add -A'],
+  ['Backtick im Regex', `x = s.replace(/${BT}/g, ''); await tools.exec_command({ cmd: "git add -A" })`, 'git add -A'],
+  ['Zeichenklasse [/\']', `const p = s.split(/[/']/); await tools.exec_command({ cmd: "pkill x" })`, 'pkill/killall'],
+  ['Regex nach if (…)', `if (ok) /'/.test(b); await tools.exec_command({ cmd: "pkill x" })`, 'pkill/killall'],
+  ['Regex nach return', `function f() { return /'/.test(b); } await tools.exec_command({ cmd: "pkill x" })`, 'pkill/killall'],
+];
+for (const [name, quelle, teil] of RX_QUELLEN) await verboten(`F3 ${name}`, 'exec', quelle, teil);
+ist('F3 liesJs: Befehl nach dem Regex-Literal wird gelesen', liesJs(RX_QUELLEN[2][1]).befehle, ['git push --force origin x']);
+for (const [name, quelle] of [['Division', 'const q = 10 / 2 / 5; await tools.exec_command({ cmd: "ls" })'], ['Division nach Klammer', 'const m = (a + b) / 2 / c; await tools.exec_command({ cmd: "ls" })'], ['Division nach Namen', 'const m = a / b / c; await tools.exec_command({ cmd: "ls" })'], ['/ ohne Schluss in der Zeile', 'const m = a /\n b; await tools.exec_command({ cmd: "ls" })']]) {
+  ist(`F3 ${name} ist keine Regex: der Befehl danach bleibt sichtbar`, liesJs(quelle).befehle, ['ls']);
+}
+
+// ---- F4/F14/F15/F20 LIVE-Regel: je Teilbefehl, Skript nur wenn es wirklich ausgeführt wird
+mitGrund('F4 LIVE=1 auf dem zweiten Skript, nur das erste gesehen', ['ls automation/seen.mjs && LIVE=1 node automation/b.mjs', 'node automation/seen.mjs; LIVE=1 node automation/b.mjs', 'cd automation && LIVE=1 node b.mjs', 'LIVE=1 node "automation/b.mjs"', "LIVE=1 node 'automation/b.mjs'"], 'automation/b.mjs', ['automation/seen.mjs']);
+ist('F4 cd, cd .., cd dropship: das Skript trägt das Verzeichnis dropship/', grundGanz('cd automation; cd ..; cd dropship && LIVE=1 node b.mjs', []).includes('dropship/b.mjs'), true);
+frei('F4 gleiche Skripte mit Trockenlauf sind frei', ['cd automation && LIVE=1 node b.mjs', 'LIVE=1 node "automation/b.mjs"', "LIVE=1 node 'automation/b.mjs'", '(cd automation && LIVE=1 node b.mjs)'], ['automation/b.mjs']);
+ist('F4 cd in Klammern wirkt nicht nach aussen', urteil('(cd automation && node a.mjs); node a.mjs'), { merke: 'automation/a.mjs', weitere: ['a.mjs'] });
+mitGrund('F15 mehrere Skripte in einer Kette: jedes eigene LIVE', ['LIVE=1 node automation/a.mjs && LIVE=1 node automation/b.mjs', 'node automation/a.mjs --prep && LIVE=1 node automation/b.mjs', 'for s in automation/a.mjs automation/b.mjs; do LIVE=1 node $s; done', 's=automation/b.mjs; LIVE=1 node $s'], 'automation/b.mjs', ['automation/a.mjs']);
+ist('F15 nur b gesehen: a läuft nicht scharf, also keine Sperre wegen a (alt: falsche Begründung), a wird gemerkt', urteil('node automation/a.mjs && LIVE=1 node automation/b.mjs', ['automation/b.mjs']), { merke: 'automation/a.mjs' });
+ist('F15 nichts gesehen: die Sperre nennt b, nicht a', [grundGanz('node automation/a.mjs && LIVE=1 node automation/b.mjs', []).includes('für automation/b.mjs'), grundGanz('node automation/a.mjs && LIVE=1 node automation/b.mjs', []).includes('für automation/a.mjs')], [true, false]);
+ist('F15 beide gesehen: frei', [urteil('LIVE=1 node automation/a.mjs && LIVE=1 node automation/b.mjs', ['automation/a.mjs', 'automation/b.mjs']), urteil('for s in automation/a.mjs automation/b.mjs; do LIVE=1 node $s; done', ['automation/a.mjs', 'automation/b.mjs'])], [undefined, undefined]);
+ist('F15 mehrere Trockenläufe in einer Kette werden alle gemerkt', urteil('node automation/a.mjs && node automation/b.mjs'), { merke: 'automation/a.mjs', weitere: ['automation/b.mjs'] });
+ist('F15 ein schon gesehenes Skript wird nicht erneut gemerkt', urteil('node automation/a.mjs && node automation/b.mjs', ['automation/a.mjs']), { merke: 'automation/b.mjs' });
+ist('F15 dasselbe Skript zweimal in der Kette wird einmal gemerkt', urteil('node automation/a.mjs; node automation/a.mjs'), { merke: 'automation/a.mjs' });
+ist('F15 export LIVE=1 gilt für die folgenden Teilbefehle, ein Prefix nur für seinen eigenen', [gesperrtGanz('export LIVE=1; node automation/a.mjs; node automation/b.mjs', []), urteil('LIVE=1 node automation/a.mjs; node automation/b.mjs', ['automation/a.mjs'])], [true, { merke: 'automation/b.mjs' }]);
+{
+  const ordner = neuerOrdner();
+  const env = { LUXE_CODEX_ZUSTAND: ordner };
+  const sitz = 'f15-sitzung';
+  const e = (c, w = 'exec_command') => eingabe('PreToolUse', { tool_name: w, tool_input: { cmd: c }, session_id: sitz });
+  await leitplanken(e('node automation/a.mjs && node automation/b.mjs'), env);
+  ist('F15 Hook: beide Trockenläufe einer Kette stehen in der Zustandsdatei', leseTrocken(env, sitz).sort(), ['automation/a.mjs', 'automation/b.mjs']);
+  ist('F15 Hook: danach ist LIVE=1 auf b erlaubt', await leitplanken(e('LIVE=1 node automation/b.mjs'), env), undefined);
+}
+freiStreng('F14 Lesen oder Anfassen eines Skripts ist kein Trockenlauf', ['cat automation/cross_sell_durchlauf.sh', 'chmod +x automation/x.sh', 'git add automation/x.sh', 'grep -n LIVE dropship/run.sh', 'node -v && ls automation/seo-optimizer.mjs', 'echo node automation/a.mjs', 'grep node automation/a.mjs', 'ls dropship/a.sh', 'head -3 dropship/a.sh', 'wc -l automation/x.py', 'python3 --version; cat automation/x.py', 'git commit -m "node automation/a.mjs"']);
+mitGrund('F14 der dokumentierte scharfe Aufruf eines .sh-Skripts braucht den Trockenlauf', ['AB=2026-07-25T02:07:10Z RUNDEN=20 LIVE=1 bash automation/cross_sell_durchlauf.sh'], 'automation/cross_sell_durchlauf.sh');
+ist('F14 bash-Skript ohne LIVE=1 ist ein Trockenlauf', urteil('RUNDEN=20 bash automation/cross_sell_durchlauf.sh'), { merke: 'automation/cross_sell_durchlauf.sh' });
+{
+  const ordner = neuerOrdner();
+  const env = { LUXE_CODEX_ZUSTAND: ordner };
+  const sitz = 'f14-sitzung';
+  const e = c => eingabe('PreToolUse', { tool_name: 'exec_command', tool_input: { cmd: c }, session_id: sitz });
+  await leitplanken(e('cat automation/cross_sell_durchlauf.sh'), env);
+  const r = await leitplanken(e('AB=2026-07-25T02:07:10Z RUNDEN=20 LIVE=1 bash automation/cross_sell_durchlauf.sh'), env);
+  ist('F14 Hook: nach dem blossen Lesen des Skripts bleibt der scharfe Aufruf gesperrt', [r?.hookSpecificOutput?.permissionDecision, leseTrocken(env, sitz)], ['deny', []]);
+}
+mitGrund('F20 LIVE=1 mit Skriptpfaden ausserhalb des alten Musters', ['LIVE=1 node "$PWD/automation/seo-optimizer.mjs"', 'LIVE=1 node ./seo-optimizer.mjs', 'LIVE=1 node automation/x.cjs', 'LIVE=1 npx tsx automation/x.ts', 'LIVE=1 node workers/shop-brain/seed.mjs', 'LIVE=1 node scripts/x.mjs', 'LIVE=1 python3 -u scripts/x.py', 'LIVE=1 deno run --allow-all tools/x.ts', 'LIVE=1 ./automation/x.sh', 'LIVE=1 node --env-file .env automation/x.mjs', 'LIVE=1 node -r ./register.js automation/x.mjs', 'LIVE=1 sudo -u shop node automation/x.mjs', 'LIVE=1 timeout 60 node automation/x.mjs', 'LIVE=1 source automation/x.sh'], 'LUXE_LIVE_OK=1');
+ist('F20 die Sperre nennt das Skript, nicht -r register.js', grundGanz('LIVE=1 node -r ./register.js automation/x.mjs', []).includes('automation/x.mjs'), true);
+ist('F20 gleiche Kennung = gleiches Skript', [urteil('LIVE=1 node workers/shop-brain/seed.mjs', ['workers/shop-brain/seed.mjs']), urteil('LIVE=1 node ./seo-optimizer.mjs', ['seo-optimizer.mjs']), urteil('LIVE=1 node ./b.mjs', ['automation/b.mjs']), urteil('LIVE=1 node "$PWD/automation/seo-optimizer.mjs"', ['automation/seo-optimizer.mjs']), urteil('LIVE=1 node automation/../automation/a.mjs', ['automation/a.mjs'])], [undefined, undefined, undefined, undefined, undefined]);
+ist('F20 verschiedene Verzeichnisse bleiben verschiedene Skripte', gesperrtGanz('LIVE=1 node automation/b.mjs', ['dropship/b.mjs']), true);
+frei('F20 ohne Skript wird nicht geraten', ['LIVE=1 node -e "1"', 'LIVE=1 npm run build', 'LIVE=1 echo hi', 'LIVE=1 node --check automation/a.mjs', 'LIVE=1 python3 -m http.server', 'LIVE=1 node "$X"', 'LIVE=1 bash -c "ls"']);
+
+// ---- F8 Auswege zählen nur als Zuweisung des betroffenen Befehls, nicht als blosses Wort
+mitGrund('F8 Ausweg nur genannt (echo, Commit-Nachricht, grep) hebt nichts auf', ['echo LUXE_FORCE_OK=1; git push --force origin x', 'git commit -m "doc: Ausweg LUXE_FORCE_OK=1 beschrieben" && git push --force origin x', 'grep -rn LUXE_KILL_OK=1 . ; pkill -f laufen.py', 'echo LUXE_ADD_OK=1 && git add -A', 'echo LUXE_LIVE_OK=1; LIVE=1 node automation/x.mjs', 'LUXE_FORCE_OK=1 git status && git push --force origin x', 'LUXE_FORCE_OK=0 git push -f', 'LUXE_FORCE_OK=11 git push -f', 'LUXE_FORCE_OK= git push -f']);
+frei('F8 echte Auswege', ['LUXE_FORCE_OK=1 git push --force origin x', 'export LUXE_FORCE_OK=1; git push --force origin x', 'env LUXE_FORCE_OK=1 git push -f', 'LUXE_FORCE_OK=1; git push -f', 'LUXE_KILL_OK=1 sudo pkill x', 'LUXE_FORCE_OK=1 git push -f && LUXE_ADD_OK=1 git add -A', 'LUXE_FORCE_OK="1" git push -f', 'LUXE_LIVE_OK=1 LIVE=1 node automation/x.mjs']);
+
+// ---- F9/F13 gebündelte Kurzoptionen
+mitGrund('F9/F13 Force-Push mit gebündelten Kurzoptionen', ['git push -fu origin x', 'git push -uf origin x', 'git push -vf origin x', 'git push -qf origin x', 'git push -nf origin x', 'git push -fq origin x', 'git push -u -f origin x', 'git push origin x -fu'], 'Force-Push');
+frei('F9/F13 Push ohne f in den Kurzoptionen', ['git push -u origin x', 'git push -vu origin x', 'git push -o ci.skip origin x', 'git push -ofoo origin x', 'git push -4 origin x', 'git push -n origin x', 'git push origin x --follow-tags -u']);
+mitGrund('F13 git add mit gebündelten Kurzoptionen', ['git add -vA', 'git add -Av', 'git add -fA', 'git add -A -v', 'git add --all -v', 'git add -f .', 'git add "*"', "git add '.'", 'git add ./', 'git stage -A'], 'git add -A');
+frei('F13/F19 git add ohne alles', ['git add -v automation/x.mjs', 'git add -u .', 'git add -n .', 'git add -p .', 'git add --dry-run .', 'git add -un .', 'git add --update .', 'git add *.md', 'git add *.mjs automation/x.mjs', 'git add "*.md"', 'git add -u', 'git add -N automation/x.mjs']);
+
+// ---- F12 Skript über Heredoc, Here-String oder Pipe an eine Shell
+const SHELL_ZU = [
+  "bash <<'EOF'\ngit push --force origin x\nEOF", "bash -s <<'EOF'\ngit push -f origin x\nEOF", 'sh <<EOF\ngit push --force origin x\nEOF', "cat <<'EOF' | bash\ngit push --force origin x\nEOF",
+  "echo 'git push -f origin x' | sh", "printf 'git push --force origin x\\n' | bash", "bash <<'EOF'\npkill -f x\nEOF", "bash <<'EOF'\ngit add -A\nEOF", "bash <<'EOF'\ntouch dropship/_SOCIAL_STOPP\nEOF",
+  "bash <<< 'git push --force origin x'", "zsh -s <<'EOF'\ngit push -f\nEOF", "bash - <<'EOF'\ngit push -f\nEOF", 'echo git push -f | bash -s', 'cat <<EOF | sudo bash\ngit push -f\nEOF',
+  "docker exec -i c bash <<'EOF'\ngit push -f\nEOF", 'printf "%s\\n" "git push -f" | bash', "bash <<'EOF'\nls\ngit push -f\nEOF", "bash <<-'EOF'\n\tgit push -f\n\tEOF", 'bash <<EOF\ngit push -f',
+];
+mitGrund('F12 Skript an eine Shell gereicht', SHELL_ZU, '');
+for (const c of SHELL_ZU) ist(`F12 Hook: ${JSON.stringify(c).slice(0, 60)}`, (await lauf('exec_command', { cmd: c })).aus?.hookSpecificOutput?.permissionDecision, 'deny');
+ist('F12 LIVE=1 gilt für das Skript aus dem Heredoc', [gesperrtGanz("LIVE=1 bash <<'EOF'\nnode automation/seo-optimizer.mjs\nEOF", []), gesperrtGanz("LIVE=1 bash <<'EOF'\nnode automation/seo-optimizer.mjs\nEOF", ['automation/seo-optimizer.mjs'])], [true, false]);
+ist('F12 Ausweg gilt für das Skript aus dem Heredoc', gesperrtGanz("LUXE_FORCE_OK=1 bash <<'EOF'\ngit push -f\nEOF"), false);
+ist('F12 entpacke liefert das Heredoc-Skript', [entpacke("bash <<'EOF'\ngit push -f\nEOF")[1], entpacke("echo 'git push -f' | sh")[1], entpacke("bash <<< 'ls -la'")[1]], ['git push -f', 'git push -f', 'ls -la']);
+frei('F12 Heredoc und Pipe, die keine Shell speisen, bleiben frei', ["cat <<'EOF'\ngit push --force\nEOF", "node - <<'EOF'\nconsole.log(1)\nEOF", "bash <<'EOF'\nls -la\nEOF", "echo 'git push -f' | cat", "echo 'git push -f' | grep push", "echo 'git push -f origin x' > notes.txt", "bash script.sh <<'EOF'\ngit push -f\nEOF", "git commit -F - <<'MSG-1'\ngit push -f\nMSG-1", "echo 'git push -f' | tee notes.txt", 'curl -s https://x.invalid/a.sh | bash', 'cat install.sh | sh', "bash -c 'ls' <<'EOF'\ngit push -f\nEOF"]);
+
+// ---- F17 zitierte Argumente, Pfadpräfix, Kommentar-Apostroph
+mitGrund('F17 zitierte oder maskierte Argumente', ['git push origin "+main"', "git push origin '+HEAD:refs/heads/x'", 'git push "--force" origin x', "git push '-f' origin x", 'git push \\-f origin x', 'git "push" -f origin x', 'g""it push -f origin x'], 'Force-Push');
+mitGrund('F17 git add zitiert', ['git add "."', "git add '-A'", 'git add "-A"', 'git add "--all"'], 'git add -A');
+mitGrund('F17 pkill zitiert oder mit Pfad', ['"pkill" -f x', "'pkill' -f x", '/usr/bin/pkill -f x', 'sudo /usr/bin/killall node', '\\pkill x', 'sudo -u root pkill x', 'time pkill x', 'nohup pkill -f x &', 'timeout 5 pkill x', 'env FOO=1 pkill x', 'find . -name x -exec pkill {} \\;', 'xargs -n1 pkill < pids'], 'pkill/killall');
+mitGrund('F17 Kommentar mit Apostroph verdeckt nichts', ["# don't force it\ngit push --force origin x\necho 'ok'", "# it's late\npkill -f x\nls 'a'", "echo 'say \"hi'; git push --force origin x; echo 'x\"'", 'echo a#b; git push -f', 'ls # kommentar\ngit push -f'], '');
+frei('F17 Kommentare und Zitate, die nur nennen', ['git push origin "main"', '# git push --force\nls', 'echo a#b', 'git commit -m "# kein Kommentar"', "echo \"it's\"; ls 'a'", "git commit -m 'it'\"'\"'s' --amend", 'echo "a" "b" # git push -f']);
+
+// ---- F19 Falsch-Positive und ihre Gegenstücke
+frei('F19 harmlos, bisher gesperrt', ['command -v pkill', 'git log -S pkill', 'git log --all --grep pkill', 'time grep -rn pkill .', 'FOO=1 grep pkill f', 'npm run killall', 'echo git push -f origin x > notes.txt', 'echo git add -A >> notes.txt', 'git push origin x # never use -f', "cat <<'END-OF-TEXT'\ngit push -f\nEND-OF-TEXT", "git commit -F - <<'MSG-1'\ngit push -f\nMSG-1", 'cp dropship/_SOCIAL_STOPP /tmp/backup.txt', 'mv dropship/_SOCIAL_STOPP /tmp/weg', 'tee /tmp/x < dropship/_SOCIAL_STOPP', 'mv dropship/_SOCIAL_STOPP dropship/_SOCIAL_STOPP.alt', 'cp dropship/_SOCIAL_STOPP /tmp/', 'man pkill', 'which killall', 'pgrep -fl node', 'yarn run pkill', 'type -a pkill']);
+mitGrund('F19 die Gegenstücke bleiben gesperrt', ['cp /tmp/backup.txt dropship/_SOCIAL_STOPP', 'mv /tmp/weg dropship/_SOCIAL_STOPP', 'tee dropship/_SOCIAL_STOPP < /tmp/x', 'cp -t dropship /tmp/_SOCIAL_STOPP', 'mv /tmp/_SOCIAL_STOPP dropship/', 'git mv /tmp/x dropship/_SOCIAL_STOPP', 'cat /tmp/x > dropship/_SOCIAL_STOPP', 'cat /tmp/x | tee -a dropship/_SOCIAL_STOPP'], 'Besitzer');
+
+// ---- F21 weitere Schreibwege auf dropship/_SOCIAL_STOPP
+mitGrund('F21 weitere Schreibwege (Shell)', ['truncate -s 0 dropship/_SOCIAL_STOPP', 'dd if=/dev/null of=dropship/_SOCIAL_STOPP', 'curl -o dropship/_SOCIAL_STOPP http://x', 'curl --output dropship/_SOCIAL_STOPP http://x', 'curl -sSLo dropship/_SOCIAL_STOPP http://x', 'wget -O dropship/_SOCIAL_STOPP http://x', 'wget --output-document=dropship/_SOCIAL_STOPP http://x', 'rsync -a a dropship/_SOCIAL_STOPP', `python3 -c "open('dropship/_SOCIAL_STOPP','w')"`, `node -e "require('fs').writeFileSync('dropship/_SOCIAL_STOPP','')"`, 'install -m 644 a dropship/_SOCIAL_STOPP', 'ln -s a dropship/_SOCIAL_STOPP', 'sudo tee dropship/_SOCIAL_STOPP', ': > dropship/_SOCIAL_STOPP', 'exec 3> dropship/_SOCIAL_STOPP', 'printf x |tee -a dropship/_SOCIAL_STOPP', `perl -e 'open(F, ">dropship/_SOCIAL_STOPP")'`, 'echo x &> dropship/_SOCIAL_STOPP', 'echo x >| dropship/_SOCIAL_STOPP'], 'Besitzer');
+frei('F21 Lesen und Schreiben anderswo bleibt frei', [`python3 -c "print(open('dropship/_SOCIAL_STOPP').read())"`, 'curl -o /tmp/x http://x', 'dd if=dropship/_SOCIAL_STOPP of=/tmp/x', 'rsync -a dropship/_SOCIAL_STOPP /tmp/', 'truncate -s 0 /tmp/x', 'wget -O /tmp/x http://x', 'ln -s dropship/_SOCIAL_STOPP /tmp/link', 'install -m 644 dropship/_SOCIAL_STOPP /tmp/x', `node -e "console.log(require('fs').readFileSync('dropship/_SOCIAL_STOPP','utf8'))"`, 'echo x 2>&1', 'echo x >&2', 'ls > /tmp/liste']);
+{
+  const JS_SOCIAL = ['fs.writeFileSync("dropship/_SOCIAL_STOPP", new Date().toISOString())', 'fs.writeFileSync("dropship/_SOCIAL_STOPP", JSON.stringify({a:1}))', 'fs.copyFileSync("a.txt", "dropship/_SOCIAL_STOPP")', 'fs.closeSync(fs.openSync("dropship/_SOCIAL_STOPP","w"))', 'fs.renameSync("a", "dropship/_SOCIAL_STOPP")', 'fs.createWriteStream("dropship/_SOCIAL_STOPP")', 'fs.symlinkSync("a", "dropship/_SOCIAL_STOPP")', 'await fs.promises.writeFile("dropship/_SOCIAL_STOPP", String(Date.now()))', 'fs.appendFileSync("dropship/_SOCIAL_STOPP", x)', 'fs.truncateSync("dropship/_SOCIAL_STOPP")', 'await fs.promises.copyFile("a", "dropship/_SOCIAL_STOPP")', 'fs.linkSync("a", "dropship/_SOCIAL_STOPP")', 'const p = "dropship/_SOCIAL_STOPP"; fs.writeFileSync(p, Date.now().toString())'];
+  for (const q of JS_SOCIAL) {
+    await verboten(`F21 JavaScript ${q.slice(0, 48)}`, 'exec', q, '_SOCIAL_STOPP');
+    await verboten(`F21 JavaScript im Feld code ${q.slice(0, 40)}`, 'exec', { code: q }, '_SOCIAL_STOPP');
+  }
+  for (const q of ['fs.readFileSync("dropship/_SOCIAL_STOPP", "utf8")', 'fs.unlinkSync("dropship/_SOCIAL_STOPP")', 'fs.copyFileSync("dropship/_SOCIAL_STOPP", "/tmp/b")', 'fs.openSync("dropship/_SOCIAL_STOPP", "r")', 'fs.renameSync("dropship/_SOCIAL_STOPP", "/tmp/x")', 'fs.writeFileSync("dropship/ok.txt", String(Date.now()))', 'fs.symlinkSync("dropship/_SOCIAL_STOPP", "/tmp/l")', 'fs.rmSync("dropship/_SOCIAL_STOPP")']) {
+    await erlaubt(`F21 JavaScript lesend oder anderswo ${q.slice(0, 48)}`, 'exec', q);
+  }
+}
+
+// ---- F22 Geheimnis-Muster: Lücken
+const GEHEIM_LUECKEN = {
+  'Google-Schlüssel endet auf - (in Anführungszeichen)': `k = "AI${'za'}${'B'.repeat(34)}-"`,
+  'Google-Schlüssel endet auf - (Zeilenende)': `key=AI${'za'}${'B'.repeat(34)}-\nweiter`,
+  'Google-Schlüssel endet auf - (vor Leerzeichen)': `key AI${'za'}${'B'.repeat(34)}- x`,
+  'Google-Schlüssel mit _ am Ende': `AI${'za'}${'B'.repeat(34)}_`,
+  'PEM verschlüsselt': `-----BEGIN ${'ENCRYPTED PRIVATE KEY'}-----`,
+  'PEM PGP': `-----BEGIN ${'PGP PRIVATE KEY BLOCK'}-----`,
+  'PEM EC': `-----BEGIN ${'EC PRIVATE KEY'}-----`,
+  'PEM OPENSSH': `-----BEGIN ${'OPENSSH PRIVATE KEY'}-----`,
+  'PEM DSA': `-----BEGIN ${'DSA PRIVATE KEY'}-----`,
+  'PEM ohne Art': `-----BEGIN ${'PRIVATE KEY'}-----`,
+  'sk-admin-': `sk${'-admin-'}${'g'.repeat(48)}`,
+  'sk-None-': `sk${'-None-'}${'h'.repeat(48)}`,
+  'sk-svcacct-': `sk${'-svcacct-'}${'i'.repeat(48)}`,
+  'Altformat sk- + 48 Zeichen': `sk${'-'}${'j'.repeat(48)}`,
+  'AWS-Sitzungsschlüssel ASIA': `AS${'IA'}${'ABCDEFGH12345678'}`,
+  'GitHub ghs_': `gh${'s_'}${'c'.repeat(40)}`,
+  'GitHub ghr_': `gh${'r_'}${'c'.repeat(40)}`,
+  'GitHub gho_': `gh${'o_'}${'c'.repeat(40)}`,
+  'GitHub ghu_': `gh${'u_'}${'c'.repeat(40)}`,
+  'Shopify shpca_': `shp${'ca_'}${HEX32}`,
+  'Shopify shppa_': `shp${'pa_'}${HEX32}`,
+  'Slack xoxp-': `xox${'p-'}1234567890-abcdef`,
+};
+for (const [name, text] of Object.entries(GEHEIM_LUECKEN)) ist(`F22 Geheimnis erkannt: ${name}`, [typeof pruefeInhalt(text)?.deny, typeof pruefeInhalt(`// Zeile davor\nconst t = '${text}';\n`)?.deny], ['string', 'string']);
+for (const [name, text] of Object.entries({
+  'Google-Schlüssel zu lang': `AI${'za'}${'B'.repeat(37)}`, 'sk- mit 47 Zeichen': `sk-${'a'.repeat(47)}`, 'sk- mit 49 Zeichen': `sk-${'a'.repeat(49)}`, 'ASIA mit 15 Zeichen': `AS${'IA'}${'A'.repeat(15)}`,
+  'PEM öffentlich': '-----BEGIN PUBLIC KEY-----', 'Zertifikat': '-----BEGIN CERTIFICATE-----', 'Wort davor an sk-': `desk-${'a'.repeat(48)}`, 'Kurzform ghs': `gh${'s_'}kurz`,
+})) ist(`F22 kein Geheimnis: ${name}`, pruefeInhalt(text), undefined);
+
+// ---- F23 JS-Leser: Schleifen, Listen, Rückruffunktionen, neu zugewiesene Variablen
+const JS_LISTEN = [
+  ['for…of über Literal', 'for (const cmd of ["git status", "git push --force"]) { await tools.exec_command({ cmd }); }', ['git status', 'git push --force'], 'Force-Push'],
+  ['for…of über Variable', 'const cmds = ["pkill node","git add -A"]; for (const c of cmds) await tools.exec_command({ cmd: c });', ['pkill node', 'git add -A'], 'pkill/killall'],
+  ['map mit Pfeilfunktion', 'await Promise.all(["git push -f","pkill x"].map(cmd => tools.exec_command({cmd})))', ['git push -f', 'pkill x'], 'Force-Push'],
+  ['Neuzuweisung', 'let c = "ls"; c = "git push --force"; await tools.exec_command({ cmd: c });', ['ls', 'git push --force'], 'Force-Push'],
+  ['forEach mit function', '["a","git push -f"].forEach(function (c) { tools.exec_command({ cmd: c }); })', ['a', 'git push -f'], 'Force-Push'],
+  ['map mit Klammer um den Namen', '["git add -A"].map((c) => tools.exec_command({ cmd: c }))', ['git add -A'], 'git add -A'],
+  ['for…of mit Variable über Variable', 'const a = ["git push -f"]; const b = a; for (const x of b) { await tools.exec_command({ cmd: x }) }', ['git push -f'], 'Force-Push'],
+];
+for (const [name, quelle, soll, teil] of JS_LISTEN) {
+  ist(`F23 liesJs ${name}`, liesJs(quelle).befehle, soll);
+  await verboten(`F23 ${name}`, 'exec', quelle, teil);
+}
+ist('F23 Kontrollen: Schleife ohne Befehl, Liste ohne Aufruf, argv-Variable bleibt ein Befehl', [
+  liesJs('for (const x of ["a","b"]) { console.log(x); } await tools.exec_command({ cmd: "ls" })').befehle,
+  liesJs('const q = ["git push -f"]; console.log(q)').befehle,
+  liesJs('const args = ["git","status"]; await tools.exec_command({ command: args })').befehle,
+], [['ls'], [], ['git status']]);
+await erlaubt('F23 Schleife über harmlose Befehle', 'exec', 'for (const c of ["git status", "ls -la"]) { await tools.exec_command({ cmd: c }); }');
+
+// ---- F5 Lücken der Testabdeckung: jede Menge einzeln (jeder Eintrag war ein überlebender Mutant)
+{
+  const CRLF = '*** Begin Patch\r\n*** Add File: dropship/_SOCIAL_STOPP\r\n+x\r\n*** End Patch\r\n';
+  await verboten('F5 Patch mit Windows-Zeilenenden als ganze Eingabe', 'apply_patch', CRLF, '_SOCIAL_STOPP');
+  await verboten('F5 Patch mit Windows-Zeilenenden im Feld input', 'apply_patch', { input: CRLF }, '_SOCIAL_STOPP');
+  await verboten('F5 Geheimnis in Patch mit Windows-Zeilenenden', 'apply_patch', { patch: `*** Begin Patch\r\n*** Add File: a.mjs\r\n+t = "${S.shopify}"\r\n*** End Patch\r\n` }, 'Shopify');
+  ist('F5 liesPatch-Pfade: CRLF-Patch über ziehePruefgut', ziehePruefgut(CRLF).pfade, ['dropship/_SOCIAL_STOPP']);
+  await verboten('F5 Zeilenkommentar mit Apostroph vor dem Aufruf', 'exec', "// don't panic\nawait tools.exec_command({ cmd: \"git push --force origin x\" })", 'Force-Push');
+  for (const k of ['command', 'cmd', 'script', 'argv', 'command_line', 'commandline', 'shell_command', 'chars']) {
+    ist(`F5 Befehlsfeld ${k} (Text und Liste)`, [ziehePruefgut({ [k]: 'git push --force' }).befehle, ziehePruefgut({ [k]: ['git', 'push', '--force'] }).befehle], [['git push --force'], ['git push --force']]);
+  }
+  for (const k of ['file_path', 'filepath', 'path', 'file', 'filename', 'file_name', 'target_file', 'target_path', 'new_path', 'output_path', 'destination', 'dest', 'target']) {
+    ist(`F5 Pfadfeld ${k}`, [ziehePruefgut({ [k]: 'dropship/_SOCIAL_STOPP', content: 'x' }).pfade, (await lauf('Write', { [k]: 'dropship/_SOCIAL_STOPP', content: 'x' })).aus?.hookSpecificOutput?.permissionDecision], [['dropship/_SOCIAL_STOPP'], 'deny']);
+  }
+  for (const k of ['content', 'contents', 'file_text', 'file_content', 'new_string', 'new_str', 'new_text', 'new_content', 'text', 'replacement', 'insert_text']) {
+    ist(`F5 Inhaltsfeld ${k}`, [ziehePruefgut({ path: 'a.txt', [k]: 'NEU' }).texte.map(t => t.text), (await lauf('Write', { path: 'a.txt', [k]: `t="${S.shopify}"` })).aus?.hookSpecificOutput?.permissionDecision], [['NEU'], 'deny']);
+  }
+  for (const k of ['old_string', 'old_str', 'old_text', 'old_content']) {
+    ist(`F5 altes Feld ${k} wird nie geprüft`, [ziehePruefgut({ path: 'a.txt', [k]: `t="${S.shopify}"`, new_string: 'NEU' }).texte.map(t => t.text), (await lauf('Edit', { path: 'a.txt', [k]: `t="${S.shopify}"`, new_string: 'NEU' })).aus], [['NEU'], undefined]);
+  }
+  for (const k of ['input', 'code', 'source', 'js', 'javascript', 'patch', 'diff', 'program']) {
+    ist(`F5 Eingabefeld ${k}: JavaScript und Patch`, [ziehePruefgut({ [k]: 'await tools.exec_command({ cmd: "pkill x" })' }).befehle, ziehePruefgut({ [k]: patch('*** Add File: dropship/_SOCIAL_STOPP', '+x') }).pfade], [['pkill x'], ['dropship/_SOCIAL_STOPP']]);
+  }
+  for (const n of ['exec_command', 'shell', 'shell_command', 'local_shell', 'bash', 'exec', 'execSync', 'run_command', 'system']) {
+    ist(`F5 JS-Aufruf ${n}(…)`, [liesJs(`await ${n}("pkill x")`).befehle, liesJs(`await tools.${n}({ cmd: "pkill x" })`).befehle], [['pkill x'], ['pkill x']]);
+  }
+  for (const n of ['spawn', 'spawnSync', 'execFile', 'execFileSync']) ist(`F5 JS-Aufruf ${n}(…, […])`, [liesJs(`${n}("git", ["push", "--force"])`).befehle, ziehePruefgut(`${n}("git", ["push", "--force"])`).befehle], [['git push --force'], ['git push --force']]);
+  for (const n of ['writeFileSync', 'writeFile', 'appendFileSync', 'appendFile']) {
+    ist(`F5 JS-Aufruf ${n}(Pfad, Text)`, [liesJs(`${n}("dropship/_SOCIAL_STOPP", "x")`).pfade, liesJs(`${n}("a.txt", "NEU")`).texte.map(t => t.text), (await lauf('exec', `${n}("dropship/_SOCIAL_STOPP", "x")`)).aus?.hookSpecificOutput?.permissionDecision], [['dropship/_SOCIAL_STOPP'], ['NEU'], 'deny']);
+  }
+  const SHELLS = ['sh', 'bash', 'zsh', 'dash', 'ksh', 'ash', 'fish', '/bin/bash', '/usr/bin/zsh', 'mksh', 'csh', 'tcsh'];
+  for (const s of SHELLS) {
+    for (const form of [`${s} -c "git push --force origin x"`, `${s} -lc 'git push --force origin x'`, `${s} -ec "git push --force origin x"`, `sudo ${s} -c "git push -f"`, `env A=1 ${s} -c "git push -f"`, `${s} --login -c "git push -f"`, `${s} -o pipefail -c "git push -f"`, `${s} -x -c "git push -f"`]) {
+      ist(`F5 Hülle ${form.slice(0, 50)}`, [gesperrtGanz(form), entpacke(form).length >= 2], [true, true]);
+    }
+  }
+  for (const form of ['eval "git push --force origin x"', 'eval git push -f', "powershell -Command 'git push -f'", 'pwsh -c "git push -f"', 'powershell.exe -NoProfile -Command git push -f', 'cmd /c "git push -f"', 'cmd.exe /k git push -f', 'PowerShell -command "git push -f"']) {
+    ist(`F5 Hülle ${form.slice(0, 50)}`, [gesperrtGanz(form), entpacke(form).length >= 2], [true, true]);
+  }
+  for (const v of ['touch', 'tee', 'cp', 'mv', 'install', 'ln']) ist(`F5 Verb ${v} legt _SOCIAL_STOPP an`, [gesperrtGanz(`${v} a dropship/_SOCIAL_STOPP`), gesperrtGanz(`sudo ${v} a dropship/_SOCIAL_STOPP`)], [true, true]);
+  ist('F5 --force-if-includes', [gesperrtGanz('git push --force-if-includes origin x'), gesperrtGanz('git push --force-with-lease=main:abc origin x')], [true, true]);
+}
+
+// ---- F10 Start des Hooks über einen Symlink (Codex könnte den Hook so aufrufen): realpathSync muss greifen
+{
+  const ordner = neuerOrdner();
+  const link = join(ordner, 'hook-link.mjs');
+  symlinkSync(HOOK, link);
+  const lauf1 = spawnSync(process.execPath, [link], { input: jetzt('exec_command', { cmd: 'git push --force origin x' }), encoding: 'utf8', env: { PATH: process.env.PATH ?? '', LUXE_CODEX_ZUSTAND: ordner }, timeout: 30000 });
+  ist('F10 Start über Symlink: Exit 0 und das Urteil kommt (deny), nicht stumm', [lauf1.status, entscheidung(lauf1.stdout)], [0, 'deny']);
+  const ordner2 = neuerOrdner();
+  const link2 = join(ordner2, 'ein', 'zwei');
+  mkdirSync(join(ordner2, 'ein'));
+  symlinkSync(link, link2);
+  const lauf2 = spawnSync(process.execPath, [link2], { input: jetzt('exec_command', { cmd: 'pkill -f x' }), encoding: 'utf8', env: { PATH: process.env.PATH ?? '', LUXE_CODEX_ZUSTAND: ordner2 }, timeout: 30000 });
+  ist('F10 Start über Symlink auf Symlink', [lauf2.status, entscheidung(lauf2.stdout)], [0, 'deny']);
+}
+
+// ---- F7/F18 Lernprotokoll: Geheimnisse stehen nie im Klartext, Datei nur für den Besitzer lesbar
+{
+  const lernOrdner = join(neuerOrdner(), 'neu');
+  const TOKEN = S.shopify;
+  const curl = `curl -s -H "X-Shopify-Access-Token: ${TOKEN}" https://x.myshopify.com/admin/api/x.json`;
+  const lauf1 = prozess(jetzt('exec_command', { cmd: curl }), { LUXE_CODEX_ZUSTAND: lernOrdner, LUXE_CODEX_LERNEN: '1' });
+  const lauf2 = prozess(jetzt('Write', { file_path: '/r/a.mjs', content: `const t = '${TOKEN}'` }), { LUXE_CODEX_ZUSTAND: lernOrdner, LUXE_CODEX_LERNEN: '1' });
+  const protokoll = join(lernOrdner, 'gesehen.jsonl');
+  const text = existsSync(protokoll) ? readFileSync(protokoll, 'utf8') : '';
+  ist('F7/F18 Lernprotokoll: das Token steht weder im Befehl noch im (gesperrten) Schreibaufruf', [lauf1.code, entscheidung(lauf2.aus), text.includes(TOKEN), text.includes(TOKEN.slice(0, 12)), text.includes('myshopify.com')], [0, 'deny', false, false, true]);
+  ist('F7/F18 Lernprotokoll: Datei 0600, Ordner 0700', process.platform === 'win32' ? [0o600, 0o700] : [statSync(protokoll).mode & 0o777, statSync(lernOrdner).mode & 0o777], [0o600, 0o700]);
+}
+
+// ---- F6/F11 Laufzeit: Eingaben, die den Hook über das Zeitlimit (10 s) trieben
+for (const d of [30, 60, 400]) {
+  const r = imKind(`import { liesJs } from ${JSON.stringify(FORM_URL)};
+    const d = ${d};
+    const s = 'const a = ' + '['.repeat(d) + '1' + ']'.repeat(d) + ';\\nawait tools.exec_command({ cmd: "ls" });';
+    console.log(JSON.stringify(liesJs(s).befehle));`, 8000);
+  ist(`F6 verschachtelte Array-Literale (Tiefe ${d}) brauchen keine Ewigkeit und der Befehl danach wird gelesen`, [r.status, r.signal, r.aus, r.ms < 5000], [0, null, '["ls"]', true]);
+}
+{
+  const aufgaben = {
+    'a| x40000, dann Force-Push': "'a|'.repeat(40000) + '; git push --force origin main'",
+    '; x40000, dann Force-Push': "'a;'.repeat(40000) + 'git push --force origin main'",
+    'Force-Push, dann <<A x40000': "'git push --force origin main\\n' + '<<A\\n'.repeat(40000)",
+    'node -e mit 30 KB Zuweisungen': "'node -e ' + 'a=1;b=2;c=3;'.repeat(2500) + '; git push -f'",
+    'Heredoc ohne Ende, 8000 Leerzeilen': "'cat <<EOF\\n' + '\\n'.repeat(8000) + '; git push -f'",
+    '$( x20000 ungeschlossen, dann pkill': "'echo $('.repeat(20000) + '; pkill x'",
+    '"-Zeichen x20001 (das letzte bleibt offen)': "'echo \"'.repeat(20001) + '; git push -f'",
+  };
+  for (const [name, ausdruck] of Object.entries(aufgaben)) {
+    const r = imKind(`import { ziehePruefgut } from ${JSON.stringify(FORM_URL)};
+      import { pruefeBash } from ${JSON.stringify(REGELN_URL)};
+      const text = ${ausdruck};
+      const g = ziehePruefgut({ cmd: text });
+      const urteile = g.befehle.map(b => pruefeBash(b, [])).filter(Boolean);
+      console.log(JSON.stringify([g.befehle.length > 0, urteile.length > 0]));`, 20000);
+    ist(`F11 ${name}: unter 5 s im Kindprozess, und das Verbot kommt`, [r.status, r.signal, r.aus, r.ms < 5000], [0, null, '[true,true]', true]);
+  }
+  const grosse = "a|".repeat(40000) + '; git push --force origin main';
+  const t0 = Date.now();
+  const lauf1 = prozess(jetzt('exec_command', { cmd: grosse }), { LUXE_CODEX_ZUSTAND: neuerOrdner() });
+  ist('F11 echter Hook-Prozess mit 80 KB Befehl: deny innerhalb von 5 s (Zeitlimit des Hooks ist 10 s)', [lauf1.code, entscheidung(lauf1.aus), Date.now() - t0 < 5000], [0, 'deny', true]);
 }
 
 ist('Alle Eingaben der Prozess-Tests sind laut Eingabe-Schema gültig', prozessEingabeFehler, []);

@@ -6,14 +6,24 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { inspect, isDeepStrictEqual } from 'node:util';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 let ok = 0, fehler = 0;
 
+/**
+ * Gleich heisst: tief UND streng gleich (undefined ≠ null, NaN ≠ null, ein fehlendes Feld ≠ ein Feld mit undefined)
+ * UND dieselbe JSON-Schreibweise wie bisher (auch die Schlüsselreihenfolge): nie lockerer als der alte Vergleich.
+ * Der alte Vergleich allein über JSON.stringify hielt [undefined] und [null], {a: undefined} und {}, NaN, Infinity und null
+ * für gleich, so dass Mutanten mit null statt undefined unbemerkt blieben.
+ */
+function gleich(a, b) {
+  return isDeepStrictEqual(a, b) && JSON.stringify(a) === JSON.stringify(b);
+}
+
 export function ist(name, ist_, soll) {
-  const a = JSON.stringify(ist_), b = JSON.stringify(soll);
-  if (a === b) ok += 1;
-  else { fehler += 1; console.log(`FEHLER ${name}\n   ist:  ${a}\n   soll: ${b}`); }
+  if (gleich(ist_, soll)) ok += 1;
+  else { fehler += 1; console.log(`FEHLER ${name}\n   ist:  ${inspect(ist_, { depth: 6, breakLength: Infinity })}\n   soll: ${inspect(soll, { depth: 6, breakLength: Infinity })}`); }
 }
 
 export function schema(name) {
