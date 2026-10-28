@@ -185,6 +185,23 @@ export function materialMetafeldBefund({ handle, bestandWert, materialWerte, wer
     text: `Das Produkt-Metafeld mm-google-shopping.material steht auf «${w}» und ist EIN Wert für das ganze Produkt. Es speist das Merchant-Center-Attribut «material» UND die Zeile «Material» in «Spezifikationen & Details». Nach LIVE gibt es ${materialWerte.length} Materialien (${materialWerte.join(', ')}); der Wert beschreibt nur «${bestandWert}». Das Werkzeug schreibt dieses Feld NIE (nichts wird überschrieben oder geleert), es bleibt, wie es ist. Entscheid des Besitzers: (a) das Feld vor LIVE leeren (dann entfallen die Zeile «Material» und das Merchant-Attribut; der Befund verschwindet danach von selbst) oder (b) es bewusst stehen lassen: Feed und Spezifikationen nennen dann auch für die neuen Materialien nur «${w}» (bei personalisierter Ware ohne Rückgabe ein Falschbild), dann BEFUND_OK=${handle}:material-metafeld.` }];
 }
 
+// ───────────────────────────────────────────────────────── Vorhandene Option «Material» muss zum Plan passen (Szenario S6)
+/**
+ * Gibt es im Shop schon eine Option «Material», darf das Werkzeug sie nur dann weiterführen, wenn sie ERKENNBAR sein eigener Halbzustand ist: jeder ihrer Werte
+ * steht im Plan, die vorhandenen (ursprünglichen) Varianten tragen den Bestandswert, die schon angelegten Varianten ihr Plan-Material. Sonst (zum Beispiel von Hand
+ * angelegt, «Holz») würde der Schreibweg erst nach elf Schreibaufrufen merken, dass er etwas Fremdes überschreibt. REIN: gibt die Abweichungen zurück, leer = passt oder keine Option.
+ * `optionWerte`: Werte der Option «Material» im Shop oder null/undefined, wenn es sie nicht gibt. `materialVon(sku)`: Material der Variante im Shop (undefined = Variante fehlt, darüber
+ * berichtet die Vorab-Prüfung der vorhandenen Varianten gesondert).
+ */
+export function materialOptionAbweichungen({ matName, bestandsWert, planWerte, optionWerte, bestehende = [], schonDa = [], materialVon }) {
+  if (!Array.isArray(optionWerte)) return [];
+  const a = [], fremd = optionWerte.filter((w) => !planWerte.includes(w));
+  if (fremd.length) a.push(`Option «${matName}» im Shop hat Werte, die der Plan nicht kennt: ${fremd.map((w) => `«${w}»`).join(', ')} (Plan: ${planWerte.join(', ')})`);
+  for (const b of bestehende) { const w = materialVon(b.sku); if (w !== undefined && w !== bestandsWert) a.push(`Variante ${b.sku}: ${matName} «${w ?? '–'}» ≠ «${bestandsWert}» (Bestandswert der vorhandenen Varianten)`); }
+  for (const s of schonDa) { const w = materialVon(s.sku); if (w !== undefined && w !== s.optionen[matName]) a.push(`Variante ${s.sku}: ${matName} «${w ?? '–'}» ≠ «${s.optionen[matName]}» (Plan)`); }
+  return a;
+}
+
 // ───────────────────────────────────────────────────────── Aussagen in Titel/Haupttext, die nicht für alle Materialien stimmen
 const ohneMarkenBlock = (html) => { const a = html.indexOf(MARKE_AUF), z = html.indexOf(MARKE_ZU); return a >= 0 && z > a ? html.slice(0, a) + html.slice(z + MARKE_ZU.length) : html; };
 const klartext = (h) => String(h ?? '').replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -370,6 +387,9 @@ function planeErweitern(spec, ctx) {
   const alleNeuWerte = [...new Set(neu.concat(schonDa).map((n) => n.optionen[matName]))];
   const materialWerte = [spec.bestand.wert, ...spec.materialien.filter((m) => !m.bestand && alleNeuWerte.includes(m.wert)).map((m) => m.wert)];
   const nachher = [{ name: matName, position: 1, werte: materialWerte }, ...vorher.filter((o) => o.name !== matName).map((o, i) => ({ name: o.name, position: i + 2, werte: [...o.werte] }))];
+  // Eine schon vorhandene Option «Material» muss erkennbar der eigene Halbzustand sein (sonst Verstoss: der Plan ist nicht ausführbar, schon im Trockenlauf)
+  const optionPruefung = materialOptionAbweichungen({ matName, bestandsWert: spec.bestand.wert, planWerte: materialWerte, optionWerte: hatMaterial ? vorher.find((o) => o.name === matName).werte : null, bestehende, schonDa,
+    materialVon: (sku) => { const v = b.variants.find((x) => x.sku === sku); return v ? (v.selectedOptions.find((o) => o.name === matName)?.value ?? null) : undefined; } });
 
   // Beschreibung
   const zollZeilen = {};
@@ -389,7 +409,7 @@ function planeErweitern(spec, ctx) {
 
   return {
     handle: spec.handle, art: 'erweitern', produktId: b.id, titel: b.title, status: b.status, skuPraefix: spec.skuPraefix,
-    optionen: { vorher, nachher, materialOption: matName, bestandsWert: spec.bestand.wert, optionSchonDa: hatMaterial },
+    optionen: { vorher, nachher, materialOption: matName, bestandsWert: spec.bestand.wert, optionSchonDa: hatMaterial }, optionPruefung,
     bestehende, neu, schonDa, nichtAngelegt, befunde,
     beschreibung: { vorher: b.descriptionHtml, block, nachher: nachherHtml },
     summe: { bestehend: bestehende.length + schonDa.length, neu: neu.length, gesamt: bestehende.length + schonDa.length + neu.length, max: MAX_VARIANTEN },
@@ -533,6 +553,7 @@ export function pruefePlan(plan, { katalog, skuPruefung = {}, spec = SPEC } = {}
       if (pr && s?.bestand?.farbe && pr.farbe !== s.bestand.farbe) v.push(`${p.handle}: vorhandene SKU ${x.sku} hat Farbe ${pr.farbe}`);
     }
     if (p.art === 'erweitern' && !p.beschreibung.nachher.includes(MARKE_AUF) && p.beschreibung.block) v.push(`${p.handle}: Materialblock fehlt in der Beschreibung`);
+    for (const a of p.optionPruefung || []) v.push(`${p.handle}: ${a}`);
   }
   return v;
 }

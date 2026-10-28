@@ -30,7 +30,7 @@
  *   VARIANT_BUDGET=<n>  Rest des Shopify-Tageslimits für neue Varianten, wenn bekannt (Shopify nennt ihn nicht): ein Produkt, das nicht mehr hineinpasst, wird gar nicht begonnen (Exit 4)
  *   PRINTFUL_API_KEY, [PRINTFUL_STORE_ID], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN)
  * Exit: 0 alles Geplante ausgeführt · 1 Fehler (Produkt mit FEHLER, drei Fehler in Folge, Eingabefehler) · 3 Abweichung (Zustand ≠ Plan)
- *       4 Tageslimit für neue Varianten (nicht wiederholen) · 5 mindestens ein Produkt im Lauf GESPERRT (Blocker-Befund nicht bestätigt)
+ *       4 Tageslimit für neue Varianten (später denselben Befehl wiederholen) · 5 mindestens ein Produkt im Lauf GESPERRT (Blocker-Befund nicht bestätigt)
  *       Die letzte Zeile der Ausgabe nennt den Grund («ENDE: Exit n – …»).
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';

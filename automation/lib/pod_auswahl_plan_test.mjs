@@ -2,7 +2,7 @@
 // Lauf: /opt/node22/bin/node automation/lib/pod_auswahl_plan_test.mjs
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { planeAlles, materialMetafeldBefund, pfIdAusSku, setzeMaterialBlock, materialBlock, modellVergleich, benoetigteVersandIds, tabellenZeilen, tabelleCsv, tabelleMarkdown, zollZeile, kanonisch, formatCm, passendeFormate, preisleiterBefunde, textBefunde, kollisionenVon, kollisionsBefunde, umstellungsRechnung, umstellungsText, aktionenFuerHash, hashVon } from './pod_auswahl_plan.mjs';
+import { planeAlles, materialMetafeldBefund, pfIdAusSku, setzeMaterialBlock, materialBlock, modellVergleich, benoetigteVersandIds, tabellenZeilen, tabelleCsv, tabelleMarkdown, zollZeile, kanonisch, formatCm, passendeFormate, preisleiterBefunde, textBefunde, kollisionenVon, kollisionsBefunde, umstellungsRechnung, umstellungsText, aktionenFuerHash, hashVon, materialOptionAbweichungen, pruefePlan } from './pod_auswahl_plan.mjs';
 import { SPEC, MARKE_AUF, MARKE_ZU, ZUSATZ_BELEGE } from './pod_auswahl_spec.mjs';
 import { ladePaket } from './pod_auswahl_daten.mjs';
 import { endpreis, nettoOhneKundenversand, REGEL } from './pod_preise.mjs';
@@ -506,6 +506,40 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
   const p1 = planeAlles({ katalog, beschreibungen, versand, bestand: halb, skuPruefung, skuIndex, skuIndexAbgeschnitten, nur: ['poster-zum-selbstgestalten'] });
   ist('Halbzustand (ein Material schon da): weniger neue, mehr schonDa, gleiche Summe', [p1.produkte[0].neu.length, p1.produkte[0].schonDa.length, p1.produkte[0].neu.length + p1.produkte[0].schonDa.length], [p0.neu.length - 3, 3, p0.neu.length]);
   ist('Halbzustand: DERSELBE Plan-Hash wie vor dem Abbruch (der geprüfte Plan bleibt gültig)', p1.hash, planeAlles({ katalog, beschreibungen, versand, bestand, skuPruefung, skuIndex, skuIndexAbgeschnitten, nur: ['poster-zum-selbstgestalten'] }).hash);
+}
+
+// ── Vorhandene Option «Material» muss zum Plan passen (Szenario S6: von Hand angelegt, Fremdwerte): schon der Plan meldet es als Verstoss, der Plan ist dann nicht ausführbar
+{
+  const planWerte = ['Poster matt', 'Foto-Glanzpapier', 'Leinwand'];
+  const basis = { matName: 'Material', bestandsWert: 'Poster matt', planWerte, bestehende: [{ sku: 'A' }, { sku: 'B' }], schonDa: [{ sku: 'C', optionen: { Material: 'Foto-Glanzpapier' } }] };
+  const mat = (m) => (sku) => (sku in m ? m[sku] : undefined);
+  ist('materialOptionAbweichungen: keine Option «Material» → nichts zu melden', materialOptionAbweichungen({ ...basis, optionWerte: null, materialVon: mat({}) }), []);
+  ist('materialOptionAbweichungen: nicht gelesen (undefined) zählt wie keine Option', materialOptionAbweichungen({ ...basis, optionWerte: undefined, materialVon: mat({}) }), []);
+  ist('materialOptionAbweichungen: eigener Halbzustand (Werte im Plan, Bestandswert, Plan-Material) → leer', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt', 'Foto-Glanzpapier'], materialVon: mat({ A: 'Poster matt', B: 'Poster matt', C: 'Foto-Glanzpapier' }) }), []);
+  const fremd = materialOptionAbweichungen({ ...basis, optionWerte: ['Holz'], materialVon: mat({ A: 'Holz', B: 'Holz' }) });
+  ist('materialOptionAbweichungen: Fremdwert «Holz» und Varianten mit «Holz» statt dem Bestandswert → 3 Meldungen', [fremd.length, /Werte, die der Plan nicht kennt: «Holz»/.test(fremd[0]), /Variante A: Material «Holz» ≠ «Poster matt»/.test(fremd[1])], [3, true, true]);
+  ist('materialOptionAbweichungen: nur ein Fremdwert (leer, kein Variante) genügt', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt', 'Holz'], materialVon: mat({ A: 'Poster matt', B: 'Poster matt', C: 'Foto-Glanzpapier' }) }).length, 1);
+  ist('materialOptionAbweichungen: nur eine vorhandene Variante mit anderem Material genügt', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt'], materialVon: mat({ A: 'Poster matt', B: 'Leinwand', C: 'Foto-Glanzpapier' }) }).length, 1);
+  ist('materialOptionAbweichungen: schon angelegte Variante mit falschem Material wird gemeldet', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt'], materialVon: mat({ A: 'Poster matt', B: 'Poster matt', C: 'Leinwand' }) }).map((x) => /Variante C/.test(x)), [true]);
+  ist('materialOptionAbweichungen: fehlende Variante (undefined) meldet diese Funktion nicht, das tut die Vorab-Prüfung der vorhandenen Varianten', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt'], materialVon: mat({}) }), []);
+  ist('materialOptionAbweichungen: Variante ohne Wert für die Option (null) wird gemeldet', materialOptionAbweichungen({ ...basis, optionWerte: ['Poster matt'], materialVon: mat({ A: null, B: 'Poster matt', C: 'Foto-Glanzpapier' }) }).length, 1);
+
+  // im echten Plan: vorhandene Option «Material» von Hand mit «Holz» angelegt
+  const holz = klon(bestand); const hp = holz['poster-zum-selbstgestalten'];
+  hp.options.unshift({ name: 'Material', position: 1, values: ['Holz'] }); hp.options.forEach((o, i) => { o.position = i + 1; });
+  hp.variants.forEach((v) => v.selectedOptions.unshift({ name: 'Material', value: 'Holz' }));
+  const ph = planen({ bestand: holz, nur: ['poster-zum-selbstgestalten'] });
+  ist('Plan mit von Hand angelegter Option «Material» («Holz»): optionPruefung nennt Fremdwert und die vier Varianten, schon der Trockenlauf hat Verstösse', [ph.produkte[0].optionPruefung.length, ph.verstoesse.filter((x) => /Option «Material» im Shop hat Werte, die der Plan nicht kennt: «Holz»/.test(x)).length, ph.verstoesse.length], [5, 1, 5]);
+  ist('Plan mit «Holz»: Verstoss beginnt mit dem Handle (Ausgabe des Trockenlaufs)', ph.verstoesse[0].startsWith('poster-zum-selbstgestalten: '), true);
+  ist('echter Plan (keine Option «Material» im Shop): optionPruefung leer, keine Verstösse', [plan.produkte.map((p) => (p.optionPruefung || []).length), plan.verstoesse], [[0, 0, 0, 0, 0], []]);
+  ist('Halbzustand (eigene Option mit Plan-Werten und Bestandswert) ist KEIN Verstoss', (() => {
+    const halb = klon(bestand); const hb = halb['poster-zum-selbstgestalten'];
+    hb.options = [{ name: 'Material', position: 1, values: ['Poster matt', 'Foto-Glanzpapier'] }, { name: 'Grösse', position: 2, values: [...hb.options[0].values] }];
+    hb.variants = hb.variants.map((v) => ({ ...v, selectedOptions: [{ name: 'Material', value: 'Poster matt' }, ...v.selectedOptions] }));
+    const px = planen({ bestand: halb, nur: ['poster-zum-selbstgestalten'] }); return [px.produkte[0].optionen.optionSchonDa, px.produkte[0].optionPruefung, px.verstoesse];
+  })(), [true, [], []]);
+  ist('optionPruefung ändert den Plan-Hash nicht (nur die Ausführbarkeit)', hashVon(aktionenFuerHash({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: ['x'] }] })), hashVon(aktionenFuerHash({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: [] }] })));
+  ist('pruefePlan meldet jede Abweichung der Option «Material» mit Handle', pruefePlan({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: ['a', 'b'] }], regel: plan.regel }, { katalog, skuPruefung }).filter((x) => /^poster-zum-selbstgestalten: [ab]$/.test(x)), ['poster-zum-selbstgestalten: a', 'poster-zum-selbstgestalten: b']);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

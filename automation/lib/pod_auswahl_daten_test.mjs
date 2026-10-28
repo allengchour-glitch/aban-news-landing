@@ -2,7 +2,7 @@
 import { mkdtempSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE, BESTAND_Q, standAlterH, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
+import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE, BESTAND_Q, standAlterH, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H, ZUKUNFT_TOLERANZ_H } from './pod_auswahl_daten.mjs';
 import { SPEC } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -112,6 +112,13 @@ const keinePause = async () => {};
   ist('pruefeDatenAlter: fehlender oder unlesbarer Stand zählt als zu alt (nichts raten)', pruefeDatenAlter({ katalog: { stand: '2026-10-29' }, beschreibungen: {}, versand: { stand: 'gestern' } }, { jetzt }).map((x) => x.datei), ['beschreibungen.json', 'versand.json', 'sku_pruefung.json']);
   ist('pruefeDatenAlter: mit grösserer Grenze (ausdrücklich) wieder frisch genug', pruefeDatenAlter(meta('2026-10-01'), { jetzt, maxStunden: 24 * 40 }), []);
   ist('pruefeDatenAlter: das echte Datenpaket hat Stand und beschreibungen.stand', ladePaket().meta.beschreibungen.stand, '2026-10-27');
+  // Stand in der Zukunft = NICHT frisch (wie lib/grind_dubletten_test.mjs «Stand in der Zukunft = nicht frisch»): ein Tippfehler im Jahr oder eine falsch gehende Uhr darf die Altersgrenze nicht umgehen
+  const zuk = pruefeDatenAlter({ ...meta('2026-10-29'), katalog: { stand: '2099-01-01' } }, { jetzt });
+  ist('pruefeDatenAlter: Jahr vertippt (2099) → nicht frisch, mit Datei, Zukunft im Grund, negatives Alter', [zuk.map((x) => x.datei), /Zukunft/.test(zuk[0]?.grund), zuk[0]?.alterH < 0], [['katalog.json'], true, true]);
+  ist('pruefeDatenAlter: auch ein Datum nur einen Tag voraus (31.10. bei jetzt 30.10.) ist nicht frisch', pruefeDatenAlter(meta('2026-10-31'), { jetzt }).map((x) => x.datei), ['katalog.json', 'beschreibungen.json', 'versand.json', 'sku_pruefung.json']);
+  ist('pruefeDatenAlter: Toleranz ZUKUNFT_TOLERANZ_H = 1 Stunde (Uhrenabweichung): 30 Minuten voraus ist frisch, 90 Minuten voraus nicht', [ZUKUNFT_TOLERANZ_H, pruefeDatenAlter(meta('2026-10-30'), { jetzt: new Date('2026-10-29T23:30:00Z') }).length, pruefeDatenAlter(meta('2026-10-30'), { jetzt: new Date('2026-10-29T22:30:00Z') }).length], [1, 0, 4]);
+  ist('pruefeDatenAlter: heutiges Datum um 0:00 Uhr (Alter 0) ist frisch', pruefeDatenAlter(meta('2026-10-30'), { jetzt }), []);
+  ist('standAlterH: nur ein Teil des Datums («2026-10», «2026») ist KEIN Stand (das Format wird geprüft, Date.parse allein nähme sie an)', [standAlterH('2026-10', jetzt), standAlterH('2026', jetzt), standAlterH('2026-10-27T10:00:00Z', jetzt)], [null, null, null]);
 }
 // ── Gegenprüfung der neuen Varianten bei Printful (nur GET)
 {

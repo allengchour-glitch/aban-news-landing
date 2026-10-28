@@ -97,6 +97,12 @@ const tmp = () => { const d = mkdtempSync(join(tmpdir(), 'pod-cli-')); angelegt.
   ist('Trockenlauf mit demselben Katalog: Exit 0, aber Warnung (LIVE würde verweigert)', [r2.status, /⚠️ Printful-Daten älter als 72 Stunden \(katalog\.json/.test(r2.stdout), /Trockenlauf fertig/.test(r2.stdout)], [0, true, true]);
   const r3 = lauf({ LIVE: '1', OUT: tmp(), KATALOG: alt, DATEN_MAX_ALTER_H: '1000000' });
   ist('LIVE=1 mit ausdrücklich grosser Grenze: das Alter verweigert nicht mehr (es fehlt dann nur der Shopify-Zugang)', [r3.status, /Zugangsdaten/.test(r3.stderr), /zu alt/.test(r3.stderr)], [1, true, false]);
+  // Stand in der Zukunft (Jahr vertippt, Uhr falsch) umgeht die Altersgrenze NICHT
+  const zuk = join(d, 'katalog_zukunft.json'); writeFileSync(zuk, JSON.stringify({ ...kat, stand: '2099-01-01' }));
+  const rz = lauf({ LIVE: '1', OUT: tmp(), KATALOG: zuk, DATEN_MAX_ALTER_H: '72' });
+  ist('LIVE=1 mit Katalog-Stand 2099: Exit 1, «liegt in der Zukunft», verweist auf DATEN=holen, schreibt/liest nichts', [rz.status, /katalog\.json: Stand 2099-01-01 liegt in der Zukunft/.test(rz.stderr), /DATEN=holen/.test(rz.stderr), /Trockenlauf fertig/.test(rz.stdout)], [1, true, true, false]);
+  const rz2 = lauf({ OFFLINE: '1', OUT: tmp(), KATALOG: zuk, DATEN_MAX_ALTER_H: '72' });
+  ist('Trockenlauf mit Katalog-Stand 2099: Exit 0, aber Warnung (LIVE würde verweigert)', [rz2.status, /Stand 2099-01-01 liegt in der Zukunft/.test(rz2.stdout), /Trockenlauf fertig/.test(rz2.stdout)], [0, true, true]);
   const r4 = lauf({ OFFLINE: '1', OUT: tmp(), DATEN_MAX_ALTER_H: 'abc' });
   ist('DATEN_MAX_ALTER_H keine Zahl: Exit 1', [r4.status, /DATEN_MAX_ALTER_H: «abc» ist keine Zahl/.test(r4.stderr)], [1, true]);
   const r5 = lauf({ OFFLINE: '1', OUT: tmp(), VARIANT_BUDGET: '-3' });
@@ -169,6 +175,17 @@ globalThis.fetch = async (url, o = {}) => {
     ist('Tor: Gegenprüfung ohne Abweichung → weiter zum Schreibweg', [r.exit, z.pruef, z.lauf], [0, 1, 1]); }
 }
 
+// ── Szenario S6: eine von Hand angelegte Option «Material» («Holz») wird schon im TROCKENLAUF als Verstoss gemeldet (Plan nicht ausführbar, Exit 1, kein Plan geschrieben)
+{
+  const d = tmp(); const best = JSON.parse(readFileSync(new URL('../dropship/pod-auswahl/bestand.json', import.meta.url), 'utf8'));
+  const hp = best.produkte['poster-zum-selbstgestalten'];
+  hp.options.unshift({ name: 'Material', position: 1, values: ['Holz'] }); hp.options.forEach((o, i) => { o.position = i + 1; });
+  hp.variants.forEach((v) => v.selectedOptions.unshift({ name: 'Material', value: 'Holz' }));
+  const pf = join(d, 'bestand_holz.json'); writeFileSync(pf, JSON.stringify(best));
+  const out = tmp(); const r = lauf({ OFFLINE: '1', OUT: out, BESTAND: pf });
+  ist('Trockenlauf mit Option «Material» = «Holz» im Bestand: Exit 1, Verstoss nennt Fremdwert und Varianten, kein Plan geschrieben', [r.status, /VERSTÖSSE im Plan/.test(r.stderr), /Option «Material» im Shop hat Werte, die der Plan nicht kennt: «Holz»/.test(r.stderr), /Material «Holz» ≠ «Poster matt»/.test(r.stderr), existsSync(join(out, 'plan.json'))], [1, true, true, true, false]);
+}
+
 // ── Aufbau der Quelle: Schreibzugriffe nur über die Schreibbibliothek, hinter dem LIVE-Tor
 {
   wahr('Kommando enthält selbst keinen GraphQL-Mutationstext (die steht nur in lib/pod_auswahl_schreiben.mjs)', !/[`'"]\s*mutation[\s(]/.test(QUELLE) && !/gql\(\s*M_/.test(QUELLE));
@@ -199,6 +216,26 @@ globalThis.fetch = async (url, o = {}) => {
     const anzahl = (readFileSync(fileURLToPath(new URL('./pod_auswahl_mutation.mjs', import.meta.url)), 'utf8').match(/^  \{ name: /gm) || []).length;
     wahr(`Der Schrittname im Workflow nennt die Zahl der Mutanten (${anzahl})`, t.includes(`(${anzahl} absichtliche Fehler`), String(anzahl));
   }
+}
+
+// ── Wortlaut zu Exit 4, Wiederaufnahme und Teilzustand: Kopfkommentare, Ausgabe und README sagen dasselbe (Prüfer Klein 3, Codex 3)
+{
+  const schreiben = readFileSync(fileURLToPath(new URL('./lib/pod_auswahl_schreiben.mjs', import.meta.url)), 'utf8');
+  const readme = readFileSync(fileURLToPath(new URL('../dropship/pod-auswahl/README.md', import.meta.url)), 'utf8');
+  const mutation = readFileSync(fileURLToPath(new URL('./pod_auswahl_mutation.mjs', import.meta.url)), 'utf8');
+  for (const [name, text] of [['pod_auswahl.mjs', QUELLE], ['lib/pod_auswahl_schreiben.mjs', schreiben], ['README.md', readme]]) wahr(`${name}: sagt nirgends «nicht wiederholen» oder «morgen neu planen» (die Wiederaufnahme ist vorgesehen)`, !/nicht wiederholen|morgen neu planen/.test(text));
+  wahr('Kopf von pod_auswahl.mjs: Exit 4 = später denselben Befehl wiederholen', /4 Tageslimit für neue Varianten \(später denselben Befehl wiederholen\)/.test(QUELLE));
+  wahr('Kopf von pod_auswahl_schreiben.mjs: Exit 4 = später denselben Befehl wiederholen; Fehlerregel «nicht sofort»', /4 Tageslimit für neue Varianten erreicht \(später denselben Befehl wiederholen\)/.test(schreiben) && /Exit 4, sauber beenden; später denselben Befehl wiederholen, nicht sofort/.test(schreiben));
+  wahr('Kopf von pod_auswahl_schreiben.mjs: Aufräumen zustandsbasiert, Teilzustand bleibt («teilweise»), Anlage und Zurücklesen in EINER Fehlerbehandlung', /ZUSTANDSBASIERT/.test(schreiben) && /BLEIBT bestehen[\s\S]{0,200}«teilweise»/.test(schreiben) && /EINER Fehlerbehandlung/.test(schreiben));
+  wahr('Kopf von pod_auswahl_schreiben.mjs: kein Versprechen «höchstens EIN Wert ohne Variante» mehr', !/höchstens EIN Wert ohne Variante/.test(schreiben));
+  wahr('README, Absatz zur Wiederaufnahme: NICHT sofort, später derselbe Befehl, nur solange die Daten höchstens 72 Stunden alt sind (sonst DATEN=holen)', /NICHT sofort wiederholen, sondern später denselben Befehl\.\*\*[^\n]*solange die Daten höchstens 72 Stunden alt sind[^\n]*`DATEN=holen`/.test(readme));
+  wahr('README, Exit-Tabelle Zeile 4: nicht sofort wiederholen, später derselbe Befehl, Altersgrenze der Daten', /\| 4 \|[^\n]*nicht sofort wiederholen, später derselbe Befehl[^\n]*höchstens 72 Stunden alt/.test(readme));
+  wahr('README: Aufräumen zustandsbasiert; ein Material mit nur Teil seiner Grössen BLEIBT und heisst «TEILWEISE angelegt» (n von m)', /zustandsbasiert/.test(readme) && /nur \*\*Teil\*\* seiner Grössen[\s\S]{0,160}\*\*bleibt bestehen\*\*/.test(readme) && /TEILWEISE angelegt: Leinwand \(50 von 60 Grössen\)/.test(readme));
+  wahr('README: kein «höchstens EIN Wert ohne Variante»-Versprechen', !/höchstens EIN Wert ohne Variante/.test(readme));
+  wahr('README «Offen»: Samsung ohne Wiederaufnahme für fehlende Varianten, productSet-Atomarität nicht belegt, Teilzustand von Hand bereinigen', /\*\*Samsung ohne Wiederaufnahme für fehlende Varianten\.\*\*/.test(readme) && /nicht belegt/.test(readme) && /von Hand zu bereinigen/.test(readme));
+  wahr('README Schritt 1: Vorab-Prüfung der vorhandenen Option «Material» (Fremdwerte, «Holz») und Lesegrenze von 250 Varianten', /vorhandene Option «Material» wie im Plan/.test(readme) && /«Holz»/.test(readme) && /250 Varianten/.test(readme));
+  const anzahl = (mutation.match(/^  \{ name: /gm) || []).length;
+  wahr(`README nennt die Zahl der Mutanten (${anzahl})`, readme.includes(`(${anzahl} absichtliche Fehler)`), String(anzahl));
 }
 
 // ── Schweizer Schreibweise: kein Eszett in den Dateien dieses Bereichs

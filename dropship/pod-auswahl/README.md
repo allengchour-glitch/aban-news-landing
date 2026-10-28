@@ -3,7 +3,7 @@
 Stand 27.10.2026. Auftrag des Besitzers (drei Screenshots): Poster nur «Grösse» (er will **Material**), Handyhülle nur iPhone-Modelle (er will auch **Samsung**),
 Hoodie nur «Grösse» (er will **Material mit Preis** und «alle anderen Produkte auch zur Auswahl»). Druckpartner ist **Printful**.
 
-**Zustand: gebaut, nach zwei unabhängigen Prüfungen korrigiert (Korrekturrunden 1 und 2, 27.10.2026), im Trockenlauf geprüft. Nichts wurde im Shop, bei Printful oder sonst wo geschrieben.**
+**Zustand: gebaut, nach zwei unabhängigen Prüfungen korrigiert (Korrekturrunden 1 und 2, 27.10.2026), dazu Korrekturrunde 3 (28.10.2026) nach den Funden eines zweiten Modells (Codex, nur Lesen) und des ersten Prüfers der zweiten Runde (Tageslimit/Halbzustand, Lesegrenze, Vorab-Prüfung, Budget, Mutanten); im Trockenlauf geprüft. Nichts wurde im Shop, bei Printful oder sonst wo geschrieben.**
 Der Schreibweg (`LIVE=1`) ist nur gegen eine Attrappe getestet, nie gegen den echten Shop.
 **LIVE ist für vier der fünf Produkte gesperrt, bis der Besitzer entschieden hat** (Abschnitt «Blocker-Befunde»). Frei ist nur die neue Samsung-Hülle (bleibt auch dann DRAFT, siehe «Freischalten»).
 
@@ -27,16 +27,18 @@ Gibt es mehrere Materialien, sagt der Block ausdrücklich, dass sich der Text we
 ## Ablauf des Schreibwegs, Tageslimit und Wiederaufnahme
 
 Je vorhandenem Produkt (`erweitern`), alles gegen den frisch gelesenen Zustand und mit Rücklesen am Ende:
-1. **Vorab prüfen** (ohne Schreibzugriff): Produkt-ID, vorhandene Varianten (SKU, Preis) UND Beschreibung ausserhalb unseres Blocks wie im Plan, sonst Exit 3.
+1. **Vorab prüfen** (ohne Schreibzugriff): Produkt-ID, vorhandene Varianten (SKU, Preis), Beschreibung ausserhalb unseres Blocks UND eine schon vorhandene Option «Material» wie im Plan, sonst Exit 3 vor dem ersten Schreibaufruf. Zur Option «Material»: alle ihre Werte müssen im Plan stehen, die ursprünglichen Varianten tragen den Bestandswert (z. B. «Poster matt»), schon angelegte ihr Plan-Material. Eine von Hand angelegte Option (z. B. mit dem Wert «Holz») wird so abgelehnt, statt erst nach elf Schreibaufrufen aufzufallen; dieselbe Prüfung macht schon der **Trockenlauf** (Verstoss im Plan, Exit 1). Liest die Abfrage 250 Varianten oder gibt es eine weitere Seite (die Abfrage blättert nicht; alle Produkte des Plans haben höchstens 84), bricht das Werkzeug kontrolliert mit Exit 3 und klarer Meldung ab, statt eine falsche Wiederaufnahme zu berechnen.
 2. Sicherung des Ausgangszustands nach `dropship/pod-sicherung/<handle>.json` (nie überschrieben).
 3. Option «Material» anlegen (nur mit dem vorhandenen Wert; vorhandene Varianten bekommen ihn) und **die Optionsreihenfolge herstellen**: steht «Material» danach nicht an Position 1 (die Shopify-Doku verspricht für `position` nur «Position of the option»), sortiert `productOptionsReorder` alle Optionen in Planreihenfolge; wirkt das nicht, Exit 3, bevor irgendein Wert oder eine Variante entsteht. Der Schritt läuft bei **jeder** Ausführung, auch bei der Wiederaufnahme.
-4. **Je neues Material, in Planreihenfolge: erst sein Optionswert, direkt danach seine Varianten** (Stücke zu 50). Es steht also höchstens EIN Wert ohne Variante im Shop, und nur während dieses einen Aufrufs. Scheitert der Aufruf (Tageslimit!), wird der Wert wieder entfernt, sofern er keine Variante trägt (vorher frisch gelesen: ein Wert mit Varianten wird nie gelöscht). Vorher legte der Lauf **alle** neuen Werte an und erst dann die erste Variante: ein Limit bei der ersten Anlage hätte ein ACTIVE-Produkt mit ausgegrauten Werten zurückgelassen (Theme-Liquid `option_value.available = false`).
+4. **Je neues Material, in Planreihenfolge: erst sein Optionswert, direkt danach seine Varianten** (Stücke zu 50). Anlegen des Wertes, Zurücklesen und Variantenanlage stehen in **einer** Fehlerbehandlung: jeder Abbruch dort löst das Aufräumen aus, auch ein Netzfehler **nach** dem Anlegen, dessen Antwort verloren ging. Das Aufräumen ist **zustandsbasiert**: nach frischem Lesen werden alle Werte der Option «Material» ohne jede Variante entfernt (nach der Vorab-Prüfung ist diese Option die eigene; nur Werte des Plans), Werte anderer Optionen (Grösse, Modell) nur, wenn dieser Aufruf sie ergänzt hat. Ein Wert mit mindestens einer Variante wird nie gelöscht, ein fremder Wert nie angefasst (er wird nur genannt). Darum repariert auch eine Wiederaufnahme, die sofort wieder am Tageslimit scheitert, einen liegengebliebenen leeren Wert. Vorher legte der Lauf **alle** neuen Werte an und erst dann die erste Variante: ein Limit bei der ersten Anlage hätte ein ACTIVE-Produkt mit ausgegrauten Werten zurückgelassen (Theme-Liquid `option_value.available = false`).
+   **Was nicht zugesagt wird:** Ein Material mit nur **Teil** seiner Grössen (Abbruch zwischen zwei Stücken zu 50, z. B. 50 von 60) **bleibt bestehen**: Varianten werden nie gelöscht. Die Ausgabe nennt es «TEILWEISE angelegt: Leinwand (50 von 60 Grössen)»; die Wiederaufnahme legt die übrigen an. Kunden sehen bis dahin für dieses Material nur die angelegten Grössen. Auch ein Prozessabsturz (kill) mitten im Aufruf kann einen leeren Wert zurücklassen; den entfernt oder füllt die nächste Ausführung.
 5. Beschreibung: nur der Block zwischen den Kommentarmarken, **vorher frisch gelesen**: hat ein anderer Prozess (Text-Pipeline, Lieferzeit-Korrektur, Editor-Skript) den Text ausserhalb des Blocks geändert, Exit 3 und nichts überschrieben.
 6. Zurücklesen und mit dem Plan vergleichen (Abweichung = Exit 3).
 
 **Das Produkt bleibt ACTIVE**: es wird nie auf DRAFT gesetzt (das nähme ein verkaufendes Produkt aus dem Shop). Neue Produkte (Samsung) entstehen als DRAFT. Ein vorhandener Handle wird nur übernommen, wenn es das eigene halb fertige DRAFT ist (Status, Titel, Verkäufer, Produktart, Tags, Optionsnamen wie im Plan, jede SKU aus dem Plan); sonst Exit 3 ohne jeden Schreibzugriff.
 
-**Nach Exit 4 (Tageslimit) denselben Befehl später wiederholen.** Jeder Schritt legt nur an, was fehlt. Der Plan-Hash zählt neue und schon angelegte Varianten zusammen und bleibt darum bei der Wiederaufnahme **gleich** (der geprüfte Plan gilt weiter, kein neuer Trockenlauf nötig). Die Ausgabe nennt den Zustand («n von m Varianten angelegt, leerer Wert wieder entfernt, Wiederaufnahme: …»). Scheitert das Aufräumen selbst, steht «ACHTUNG: leerer Wert …» da; die Wiederholung füllt ihn dann.
+**Nach Exit 4 (Tageslimit) NICHT sofort wiederholen, sondern später denselben Befehl.** (Gilt ebenso nach einem anderen Abbruch, sobald die Ursache behoben ist.) Jeder Schritt legt nur an, was fehlt. Der Plan-Hash zählt neue und schon angelegte Varianten zusammen und bleibt darum bei der Wiederaufnahme **gleich** (der geprüfte Plan gilt weiter, kein neuer Trockenlauf nötig, **solange die Daten höchstens 72 Stunden alt sind**: sonst verweigert LIVE, zuerst `DATEN=holen`; ein Stand in der Zukunft gilt als nicht frisch). Die Ausgabe nennt den Zustand, aus dem frisch gelesenen Shop gebaut («n von m geplanten neuen Varianten im Shop, TEILWEISE angelegt: …, leerer Wert wieder entfernt, Wiederaufnahme: …»). Bleibt nach dem Aufräumen ein leerer Wert stehen, steht «ACHTUNG: leerer Wert …» da; die Wiederholung füllt oder entfernt ihn.
+**Variantenbudget:** `VARIANT_BUDGET` wird bei jedem Produkt um das gekürzt, was es im Shop angelegt hat, auch wenn es mit einem gewöhnlichen Fehler endet (gezählt wird, was frisch gelesen im Shop steht, nicht nur was bestätigt wurde).
 Shopify nennt den Rest des Tageslimits **nicht** (gemessen ca. 9 500 neue Varianten je Tag für den ganzen Shop, geteilt mit dem Nachtlauf um 21:50 UTC). Ist er bekannt (z. B. aus dem Nachtlauf-Protokoll), gibt `VARIANT_BUDGET=<n>` ihn vor: ein Produkt, das nicht mehr hineinpasst, wird gar nicht begonnen (Exit 4, nichts Halbes). Empfehlung: **nicht parallel zum Nachtlauf starten** und das erste echte Produkt allein (`ONLY=`), mit Blick auf das Protokoll.
 
 ## Blocker-Befunde: LIVE für das Produkt gesperrt, bis der Besitzer entschieden hat
@@ -100,7 +102,7 @@ und das Netto sinkt (Beispiel 5599797_11576: Preis 24.90, Erlös 31.90 → Netto
 | `automation/lib/printful_platzierung.mjs` + `automation/printful_sync.mjs` | Fix der Druckplatzierung (siehe unten) |
 | `dropship/pod-auswahl/*.json` | Datenpaket (Katalog, Beschreibungen, Versand, Bestand mit Material-Metafeld, SKU-Prüfung, SKU-Index), gemessen 27.10.2026; `platzierung_mitschnitte.json` = ECHTE Printful-Antworten (GET /products/variant/<id>, gekürzt) als Prüfdaten der Platzierung |
 | `automation/printful_sync_test.mjs` | Verhaltenstest des Bestellwegs: `printful_sync.mjs` läuft in einem Kindprozess gegen gefälschtes `fetch` (Hülle/Tasse/Poster/Shirt, 503/429/404/Netzfehler); geprüft wird, was an Printful geht |
-| `automation/pod_auswahl_mutation.mjs` | Mutationsprobe (130 absichtliche Fehler) |
+| `automation/pod_auswahl_mutation.mjs` | Mutationsprobe (173 absichtliche Fehler) |
 
 `sku_index.json`: welche der neuen Printful-Nummern im Shop schon in **anderen** Produkten als SKU stehen (Abfrage `tag:wunschdesign OR tag:printful_personalized_product OR sku:*_*`, 491 Produkte gelesen).
 Ohne den Index meldet der Plan «nicht geprüft» statt zu raten.
@@ -132,8 +134,8 @@ Ledger `dropship/pod_auswahl_ledger.txt` (nur Erfolge werden übersprungen). Rü
 |---|---|
 | 0 | alles Geplante ausgeführt (oder laut Ledger schon erledigt) |
 | 1 | mindestens ein Produkt mit FEHLER, drei Fehler in Folge, Eingabefehler oder Verstoss im Plan |
-| 3 | Abweichung: Zustand im Shop ≠ Plan (Lauf sofort beendet) |
-| 4 | `VARIANT_THROTTLE_EXCEEDED`: Tageslimit für neue Varianten erreicht, oder `VARIANT_BUDGET` reicht für das nächste Produkt nicht (heute nicht weiter; **derselbe Befehl später wiederholt den Lauf**, der Plan-Hash bleibt gleich; der Auswahl-Lauf der Nacht braucht dasselbe Limit, 165 neue Varianten) |
+| 3 | Abweichung: Zustand im Shop ≠ Plan (Lauf sofort beendet); auch eine fremde Option «Material», ein Produkt mit 250 oder mehr Varianten (nicht vollständig lesbar) |
+| 4 | `VARIANT_THROTTLE_EXCEEDED`: Tageslimit für neue Varianten erreicht, oder `VARIANT_BUDGET` reicht für das nächste Produkt nicht (heute nicht weiter; **nicht sofort wiederholen, später derselbe Befehl setzt den Lauf fort**, der Plan-Hash bleibt gleich, solange die Daten höchstens 72 Stunden alt sind; der Auswahl-Lauf der Nacht braucht dasselbe Limit, 165 neue Varianten) |
 | 5 | mindestens ein Produkt im Lauf GESPERRT (Blocker-Befund nicht bestätigt); mit `ONLY=` ausserhalb der gesperrten Produkte wird daraus 0 |
 
 **Mutationen werden nie still wiederholt** (`pod_auswahl_gql.mjs`). `lib/shopify_gql.mjs` ist für lesende Wächter gebaut und wiederholt bei Netzfehler, Zeitüberschreitung und HTTP 5xx bis zu sechsmal. Bei einer Mutation wäre das gefährlich:
@@ -165,12 +167,13 @@ Darum **überspringt `printful_reprice.mjs` die fünf Produkte aus `pod_auswahl_
 for t in automation/lib/pod_preise_test.mjs automation/lib/printful_platzierung_test.mjs automation/lib/pod_auswahl_plan_test.mjs \
          automation/lib/pod_auswahl_daten_test.mjs automation/lib/pod_auswahl_gql_test.mjs automation/lib/pod_auswahl_schreiben_test.mjs automation/pod_auswahl_test.mjs \
          automation/printful_sync_test.mjs; do /opt/node22/bin/node $t | tail -1; done
-/opt/node22/bin/node automation/pod_auswahl_mutation.mjs     # alle 130 Mutanten müssen erkannt werden
+/opt/node22/bin/node automation/pod_auswahl_mutation.mjs     # alle Mutanten müssen erkannt werden (Zahl: siehe Schrittname im Workflow)
 bash automation/ci_simulation.sh                              # CI nachspielen (nach dem Commit)
 ```
 
 ## Offen (Entscheide des Besitzers, keine Fehler im Code)
 
+- **Samsung ohne Wiederaufnahme für fehlende Varianten.** Die Wiederaufnahme (Aufräumen, Nachziehen, Hash) gilt nur für die vier vorhandenen Produkte (`erweitern`). Die neue Samsung-Hülle entsteht mit **einem** `productSet`; ob Shopify bei Erreichen des Tageslimits atomar scheitert (alles oder nichts), ist **nicht belegt**. Ein vorhandenes eigenes DRAFT mit weniger Varianten als geplant besteht die Vorprüfung des Handles, schreibt die Metafelder erneut und endet mit Exit 3 («Variantenzahl 44 ≠ 84»), **ohne Varianten nachzuziehen**. Ein solcher Teilzustand ist von Hand zu bereinigen (das DRAFT löschen und neu anlegen lassen, oder fehlende Varianten ergänzen). Schutz davor: `VARIANT_BUDGET` (Vorprüfung, optional) und das Anlegen als DRAFT.
 - Die sieben Blocker-Befunde oben (Poster 1, Hoodie 3, T-Shirt 1, iPhone 2).
 - Texte ausserhalb des Blocks materialneutral fassen (Poster, T-Shirt, Hoodie, iPhone); Preisleiter Foto-Glanzpapier A2.
 - Vorhandene Preise tragen teils unter 12 CHF Netto (nur Hinweis, nicht geändert): Poster 30×40 (11.74), mehrere T-Shirt-Grössen (z. B. 5599797_9526: 10.44).

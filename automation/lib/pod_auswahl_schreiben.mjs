@@ -3,32 +3,40 @@
  * hineingereichte Funktion `gql(query, variables)` → Antwort-JSON; die Tests reichen eine Attrappe hinein (es wird nie ein echter Dienst berührt).
  *
  * Ablauf je Produkt (art «erweitern»):
- *   1. frisch lesen, mit dem Plan vergleichen (vorhandene Varianten UND Beschreibung ausserhalb des Blocks unverändert?) → sonst AbweichungFehler, ohne Schreibzugriff
+ *   1. frisch lesen, mit dem Plan vergleichen (vorhandene Varianten, Beschreibung ausserhalb des Blocks UND eine schon vorhandene Option «Material»: Werte, Material der Varianten)
+ *      → sonst AbweichungFehler, ohne Schreibzugriff. Liest die Abfrage 250 Varianten oder gibt es eine weitere Seite: kontrollierter Abbruch (Exit 3), nichts wird geraten
  *   2. Sicherung des Ausgangszustands nach dropship/pod-sicherung/<handle>.json (nie überschreiben)
  *   3. productOptionsCreate: Option «Material» (nur mit dem vorhandenen Wert), variantStrategy LEAVE_AS_IS (vorhandene Varianten bekommen den Wert);
  *      danach Optionsreihenfolge HERSTELLEN (productOptionsReorder, falls «Material» nicht an Position 1 steht; auch bei Wiederaufnahme) und frisch prüfen
  *   4. je neues Material, in Planreihenfolge: ZUERST sein Optionswert (productOptionUpdate), DIREKT DANACH seine Varianten (productVariantsBulkCreate in Stücken zu 50;
- *      optionValues, price, inventoryPolicy CONTINUE, inventoryItem{sku, tracked:false, requiresShipping:true}). Es steht also höchstens EIN Wert ohne Variante im Shop,
- *      und zwar nur während dieses einen Aufrufs. Scheitert er (Tageslimit!), wird der Wert wieder entfernt, sofern er keine Variante trägt: kein ausgegrauter Wert bleibt sichtbar.
+ *      optionValues, price, inventoryPolicy CONTINUE, inventoryItem{sku, tracked:false, requiresShipping:true}). Anlegen des Wertes, Zurücklesen und Variantenanlage stehen in
+ *      EINER Fehlerbehandlung: jeder Abbruch dort (Tageslimit, anderer Fehler, auch ein Netzfehler NACH dem Anlegen mit verlorener Antwort) löst das AUFRÄUMEN aus.
+ *      Das Aufräumen ist ZUSTANDSBASIERT: nach frischem Lesen werden alle Werte der Option «Material» ohne jede Variante entfernt (nach der Vorab-Prüfung ist die Option die eigene;
+ *      nur Werte des Plans), Werte anderer Optionen (Grösse, Modell) nur, wenn dieser Aufruf sie ergänzt hat. Nie ein Wert mit mindestens einer Variante, nie ein fremder Wert.
+ *      Darum repariert auch eine Wiederaufnahme, die sofort wieder am Tageslimit scheitert, einen liegengebliebenen leeren Wert.
+ *      Ein Material mit nur TEIL seiner Varianten (Abbruch zwischen zwei Stücken zu 50) BLEIBT bestehen (Varianten werden nie gelöscht) und wird als «teilweise» (n von m) genannt;
+ *      nur ein Prozessabsturz mitten im Aufruf kann einen leeren Wert zurücklassen, den die Wiederaufnahme dann entfernt oder füllt.
  *   5. Beschreibung: nur der Block zwischen den Kommentarmarken; vorher FRISCH gelesen: hat ein anderer Prozess den Text ausserhalb des Blocks geändert → AbweichungFehler, nichts überschrieben
  *   6. FRISCH zurücklesen und mit dem Plan vergleichen → Abweichung = AbweichungFehler (Exit 3)
- * WIEDERAUFNAHME nach Exit 4 (Tageslimit): denselben Befehl später wiederholen. Jeder Schritt legt nur an, was fehlt; der Plan-Hash bleibt gleich (neu und schon angelegt zählen zusammen),
- * der geprüfte Plan gilt weiter. Das Produkt bleibt ACTIVE (es wird nie auf DRAFT gesetzt: das nähme ein verkaufendes Produkt aus dem Shop).
- * art «neu» (Samsung-Hülle, DRAFT): productSet (synchron) → Metafelder → Editor-Baustein füllen → zurücklesen und vergleichen.
+ * WIEDERAUFNAHME nach Exit 4 (Tageslimit) oder einem anderen Abbruch: denselben Befehl SPÄTER wiederholen. Jeder Schritt legt nur an, was fehlt; der Plan-Hash bleibt gleich (neu und schon angelegt zählen zusammen),
+ * der geprüfte Plan gilt weiter, solange die Daten höchstens DATEN_MAX_ALTER_H Stunden alt sind (sonst verweigert LIVE: zuerst DATEN=holen). Das Produkt bleibt ACTIVE (es wird nie auf DRAFT gesetzt: das nähme ein verkaufendes Produkt aus dem Shop).
+ * art «neu» (Samsung-Hülle, DRAFT): productSet (synchron) → Metafelder → Editor-Baustein füllen → zurücklesen und vergleichen. KEINE Wiederaufnahme für fehlende Varianten (siehe README «Offen»).
  *
- * Fehlerregeln: VARIANT_THROTTLE_EXCEEDED / «Daily variant creation limit» → TageslimitFehler (Exit 4, sauber beenden, nicht wiederholen);
+ * Fehlerregeln: VARIANT_THROTTLE_EXCEEDED / «Daily variant creation limit» → TageslimitFehler (Exit 4, sauber beenden; später denselben Befehl wiederholen, nicht sofort);
  * drei Fehler in Folge → Abbruch; Abweichung nach dem Schreiben → sofort Abbruch (Exit 3). Ledger: nur Erfolge werden übersprungen.
+ * Variantenbudget (VARIANT_BUDGET): jedes Produkt zieht ab, was es angelegt hat, auch wenn es mit einem gewöhnlichen Fehler endet (frisch gelesen gezählt, nicht nur die bestätigten Antworten).
  *
  * EXIT-CODES (ein Wrapper oder eine Action darf «Exit 0» nur sehen, wenn WIRKLICH alles Geplante ausgeführt ist):
  *   0 alles ausgeführt (oder laut Ledger schon erledigt)      1 mindestens ein Produkt mit FEHLER, oder drei Fehler in Folge
- *   3 Abweichung: Zustand ≠ Plan                               4 Tageslimit für neue Varianten erreicht (nicht wiederholen)
+ *   3 Abweichung: Zustand ≠ Plan                               4 Tageslimit für neue Varianten erreicht (später denselben Befehl wiederholen)
  *   5 mindestens ein Produkt im Lauf ist GESPERRT (Blocker-Befund nicht bestätigt) – mit ONLY=… ausserhalb der gesperrten Produkte wird daraus 0
  * Vorrang: 4 und 3 beenden den Lauf sofort; sonst gewinnt 1 vor 5 vor 0.
  */
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { hashVon, pfIdAusSku, PLATZHALTER_BILD, PLATZHALTER_VARIANTE } from './pod_auswahl_plan.mjs';
+import { hashVon, pfIdAusSku, PLATZHALTER_BILD, PLATZHALTER_VARIANTE, materialOptionAbweichungen } from './pod_auswahl_plan.mjs';
 import { MARKE_AUF, MARKE_ZU } from './pod_auswahl_spec.mjs';
+import { DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
 
 export class AbweichungFehler extends Error { constructor(m, liste = []) { super(m); this.name = 'AbweichungFehler'; this.liste = liste; } }
 export class TageslimitFehler extends Error { constructor(m, zustand = null) { super(m); this.name = 'TageslimitFehler'; this.zustand = zustand; } }
@@ -38,12 +46,12 @@ const DROSSEL = /VARIANT_THROTTLE|Daily variant creation limit/i;
 // ───────────────────────────────────────────────────────── GraphQL-Texte
 export const Q_PRODUKT = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description } category{ id }
   options{ id name position values optionValues{ id name } }
-  variants(first:250){ edges{ node{ id sku price compareAtPrice inventoryPolicy taxable selectedOptions{ name value } inventoryItem{ tracked requiresShipping } } } }
+  variants(first:250){ edges{ node{ id sku price compareAtPrice inventoryPolicy taxable selectedOptions{ name value } inventoryItem{ tracked requiresShipping } } } pageInfo{ hasNextPage } }
   media(first:50){ edges{ node{ ... on MediaImage{ id alt image{ url } } } } }
   metafields(first:100){ edges{ node{ namespace key type value } } } } }`;
 export const M_OPTION = `mutation($pid:ID!,$opts:[OptionCreateInput!]!){ productOptionsCreate(productId:$pid, options:$opts, variantStrategy:LEAVE_AS_IS){ product{ id options{ name position values } } userErrors{ field message code } } }`;
 export const M_OPTION_WERTE = `mutation($pid:ID!,$opt:OptionUpdateInput!,$add:[OptionValueCreateInput!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToAdd:$add){ product{ id options{ name position values } } userErrors{ field message code } } }`;
-/** Optionswerte ENTFERNEN (nur Werte ohne Variante, die dieser Lauf selbst angelegt hat: Aufräumen nach einem abgebrochenen Aufruf). */
+/** Optionswerte ENTFERNEN (nur Werte ohne Variante: Aufräumen nach einem abgebrochenen Aufruf, siehe leereWerteEntfernen). */
 export const M_OPTION_WERTE_LOESCHEN = `mutation($pid:ID!,$opt:OptionUpdateInput!,$del:[ID!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToDelete:$del){ product{ id options{ name position values } } userErrors{ field message code } } }`;
 /** Optionsreihenfolge herstellen: alle Optionen in der gewollten Reihenfolge (Namen); die Positionen müssen lückenlos sein. */
 export const M_REORDER = `mutation($pid:ID!,$opts:[OptionReorderInput!]!){ productOptionsReorder(productId:$pid, options:$opts){ product{ id options{ name position values } } userErrors{ field message code } } }`;
@@ -65,10 +73,18 @@ export function pruefeAntwort(j, was, pfad) {
 export const knoten = (p) => ({ ...p, options: p.options, variants: p.variants.edges.map((e) => ({ ...e.node, optionen: Object.fromEntries(e.node.selectedOptions.map((o) => [o.name, o.value])) })),
   media: (p.media?.edges || []).map((e) => e.node).filter(Boolean), metafields: (p.metafields?.edges || []).map((e) => e.node) });
 
+/** Die Abfrage liest höchstens so viele Varianten, ohne Seitenblätterung (alle Produkte des Plans haben höchstens 100). Bei diesem Wert oder einer weiteren Seite wird NICHT weitergerechnet. */
+export const LESEGRENZE_VARIANTEN = 250;
+
 export async function leseFrisch(gql, handle) {
   const j = await gql(Q_PRODUKT, { h: handle });
   if (j.errors) throw new Error('Abfrage: ' + JSON.stringify(j.errors).slice(0, 300));
-  return j.data?.productByIdentifier ? knoten(j.data.productByIdentifier) : null;
+  const p = j.data?.productByIdentifier;
+  if (!p) return null;
+  // Unvollständig gelesen? Dann wären «vorhandene» Varianten ausserhalb der Seite scheinbar fehlend (falsche Wiederaufnahme-Rechnung, Konfliktfehler, nie bestätigbare Abschlussprüfung).
+  const n = p.variants?.edges?.length ?? 0, weitere = p.variants?.pageInfo?.hasNextPage === true;
+  if (n >= LESEGRENZE_VARIANTEN || weitere) throw new AbweichungFehler(`${handle}: ${n} Varianten gelesen, die Abfrage liest höchstens ${LESEGRENZE_VARIANTEN} ohne Seitenblätterung${weitere ? ' (weitere Seite vorhanden)' : ''} – der Zustand ist nicht vollständig lesbar, Lauf beendet statt falsch weiterzurechnen`, [`Varianten: ${n}${weitere ? ' + weitere Seite' : ''} ≥ Lesegrenze ${LESEGRENZE_VARIANTEN}`]);
+  return knoten(p);
 }
 
 export function variantenEingabe(neu, optionNamen) {
@@ -183,41 +199,114 @@ export async function stelleReihenfolgeHer({ gql, log, p, ist }) {
 }
 
 /**
- * Entfernt die Optionswerte, die dieser Lauf angelegt hat (`hinzu`: [{optionName, wert}]) und die KEINE Variante tragen. Liest vorher frisch: ein Wert mit Variante
- * bleibt, ein unbekannter Ausgang (Netzfehler nach dem Senden) kann so nichts Falsches löschen. Gibt die entfernten Werte zurück.
+ * Optionswerte OHNE jede Variante im frisch gelesenen Zustand `ist`.
+ *   eigene: Werte der Option `materialOption`, die im Plan stehen (`planWerte`), plus Werte anderer Optionen, die dieser Aufruf ergänzt hat (`hinzu`: [{optionName, wert}], VOR dem Senden notiert,
+ *           damit auch eine verlorene Antwort aufgeräumt wird). Nur diese darf das Werkzeug entfernen.
+ *   fremde: Werte der Option `materialOption` ohne Variante, die der Plan nicht kennt: werden nie angefasst, nur genannt.
+ * Werte anderer Optionen, die der Aufruf nicht ergänzt hat (zum Beispiel ein von Hand angelegter Grössenwert), kommen nirgends vor. REIN.
  */
-export async function leereWerteEntfernen({ gql, log, handle, hinzu }) {
+export function leereWerte(ist, { materialOption, planWerte = [], hinzu = [] }) {
+  const eigene = [], fremde = [];
+  for (const o of ist.options) {
+    for (const ov of o.optionValues || []) {
+      if (ist.variants.some((v) => v.optionen[o.name] === ov.name)) continue;
+      const e = { optionName: o.name, optionId: o.id, wert: ov.name, id: ov.id };
+      if (o.name === materialOption) (planWerte.includes(ov.name) ? eigene : fremde).push(e);
+      else if (hinzu.some((h) => h.optionName === o.name && h.wert === ov.name)) eigene.push(e);
+    }
+  }
+  return { eigene, fremde };
+}
+
+/**
+ * AUFRÄUMEN, ZUSTANDSBASIERT: liest frisch und entfernt die `eigene`n leeren Optionswerte (siehe leereWerte). Ein Wert mit mindestens einer Variante bleibt immer (die Prüfung gegen den frisch
+ * gelesenen Zustand ersetzt jede Annahme über den Ausgang eines Aufrufs mit unbekanntem Ergebnis). Gibt die entfernten Werte («Option=Wert») zurück.
+ */
+export async function leereWerteEntfernen({ gql, log, handle, materialOption, planWerte = [], hinzu = [] }) {
   const ist = await leseFrisch(gql, handle);
   if (!ist) return [];
-  const weg = new Map();   // optionId → { option, ids:[], namen:[] }
-  for (const h of hinzu) {
-    const o = ist.options.find((x) => x.name === h.optionName), ov = o?.optionValues?.find((x) => x.name === h.wert);
-    if (!ov || ist.variants.some((v) => v.optionen[h.optionName] === h.wert)) continue;
-    const e = weg.get(o.id) || weg.set(o.id, { option: o, ids: [], namen: [] }).get(o.id);
-    e.ids.push(ov.id); e.namen.push(`${h.optionName}=${h.wert}`);
+  const weg = new Map();   // optionId → { ids:[], namen:[] }
+  for (const e of leereWerte(ist, { materialOption, planWerte, hinzu }).eigene) {
+    const g = weg.get(e.optionId) || weg.set(e.optionId, { ids: [], namen: [] }).get(e.optionId);
+    g.ids.push(e.id); g.namen.push(`${e.optionName}=${e.wert}`);
   }
   const entfernt = [];
-  for (const e of weg.values()) {
-    pruefeAntwort(await gql(M_OPTION_WERTE_LOESCHEN, { pid: ist.id, opt: { id: e.option.id }, del: e.ids }), `${handle}: leere Optionswerte entfernen`, 'productOptionUpdate');
-    entfernt.push(...e.namen);
+  for (const [optionId, g] of weg) {
+    pruefeAntwort(await gql(M_OPTION_WERTE_LOESCHEN, { pid: ist.id, opt: { id: optionId }, del: g.ids }), `${handle}: leere Optionswerte entfernen`, 'productOptionUpdate');
+    entfernt.push(...g.namen);
   }
   if (entfernt.length) log(`   Aufgeräumt: Optionswert(e) ohne Variante wieder entfernt: ${entfernt.join(', ')}`);
   return entfernt;
 }
 
+/**
+ * Was vom Plan ist im frisch gelesenen Zustand `ist` angekommen? `offenSkus`: die SKUs, die dieser Aufruf anlegen wollte (Plan-`neu`, die zu Beginn noch fehlten).
+ * Je Material: Varianten im Shop (`da`) von den geplanten (`soll`, neue UND schon angelegte): fertig = alle, teilweise = einige, ohneVariante = keine. REIN.
+ */
+export function materialStand(p, ist, offenSkus = []) {
+  const matName = p.optionen.materialOption, imShopSkus = new Set(ist.variants.map((v) => v.sku)), je = new Map();
+  for (const s of [...(p.schonDa || []), ...p.neu]) {
+    const w = s.optionen[matName], e = je.get(w) || je.set(w, { wert: w, da: 0, soll: 0 }).get(w);
+    e.soll++; if (imShopSkus.has(s.sku)) e.da++;
+  }
+  const m = [...je.values()];
+  return {
+    geplant: m.reduce((a, x) => a + x.soll, 0), imShop: m.reduce((a, x) => a + x.da, 0), neuAngelegt: offenSkus.filter((k) => imShopSkus.has(k)).length,
+    fertig: m.filter((x) => x.da === x.soll).map((x) => x.wert), teilweise: m.filter((x) => x.da > 0 && x.da < x.soll), ohneVariante: m.filter((x) => x.da === 0).map((x) => x.wert),
+    werte: ist.options.find((o) => o.name === matName)?.values ?? [],
+  };
+}
+
+const mehrzahl = (optionName) => ({ 'Grösse': 'Grössen', Handymodell: 'Handymodelle' }[optionName] ?? 'Varianten');
+
+/**
+ * Der Zustandstext nach einem Abbruch, aus dem frisch gelesenen BEFUND gebaut (nicht aus Annahmen): `stand` (materialStand) oder null, wenn das Lesen scheiterte;
+ * `uebrig`/`fremde` (leereWerte nach dem Aufräumen), `entfernt` (was das Aufräumen entfernt hat), `aufraeumFehler`. REIN.
+ */
+export function zustandsText({ handle, matName, zweiteOption = null, stand, entfernt = [], uebrig = [], fremde = [], aufraeumFehler = null, tageslimit = false }) {
+  const t = [];
+  if (stand) {
+    t.push(`Option «${matName}» mit den Werten ${stand.werte.join(', ')}; ${stand.imShop} von ${stand.geplant} geplanten neuen Varianten im Shop, ${stand.geplant - stand.imShop} fehlen noch`);
+    if (stand.teilweise.length) t.push(`TEILWEISE angelegt: ${stand.teilweise.map((x) => `${x.wert} (${x.da} von ${x.soll} ${mehrzahl(zweiteOption)})`).join(', ')}; diese Materialien bleiben mit ihren vorhandenen Varianten im Shop stehen (es werden nie Varianten gelöscht), die Wiederaufnahme legt die übrigen an`);
+  } else t.push('ACHTUNG: der Zustand nach dem Abbruch ist nicht lesbar, ob leere Optionswerte im Shop stehen, ist unbekannt (der nächste Lauf liest frisch und räumt auf)');
+  if (entfernt.length) t.push(`leerer Wert wieder entfernt (${entfernt.join(', ')})`);
+  for (const e of uebrig) t.push(`ACHTUNG: leerer Wert «${e.wert}»${e.optionName === matName ? '' : ` (${e.optionName})`} konnte nicht entfernt werden${aufraeumFehler ? ` (${String(aufraeumFehler.message).slice(0, 120)})` : ''} (der nächste Lauf legt seine Varianten an oder entfernt ihn)`);
+  for (const e of fremde) t.push(`Hinweis: leerer Wert «${e.wert}» der Option «${matName}» steht nicht im Plan und wurde nicht angefasst`);
+  const wieder = tageslimit
+    ? `Wiederaufnahme: denselben Befehl später wiederholen (der geprüfte Plan bleibt gültig, der Hash ändert sich nicht; die Daten dürfen höchstens ${DATEN_MAX_ALTER_H} Stunden alt sein, sonst zuerst DATEN=holen)`
+    : 'Wiederaufnahme: nach Behebung der Ursache denselben Befehl wiederholen (der Hash ändert sich nicht)';
+  return `Zustand ${handle}: ${t.join('; ')}. ${wieder}.`;
+}
+
+/**
+ * Nach einem Abbruch in Schritt 4: aufräumen (zustandsbasiert), frisch lesen, Zustandstext bauen. Wirft nie (jeder Fehler wird Teil des Textes).
+ * Gibt {text, neuAngelegt} zurück; `neuAngelegt` = wie viele der `offen`en Varianten wirklich im Shop stehen (für das Variantenbudget; null = nicht lesbar).
+ */
+async function nachAbbruch({ gql, log, p, planWerte, hinzu, offen, tageslimit }) {
+  const matName = p.optionen.materialOption;
+  let entfernt = [], aufraeumFehler = null, ist = null;
+  try { entfernt = await leereWerteEntfernen({ gql, log, handle: p.handle, materialOption: matName, planWerte, hinzu }); } catch (e2) { aufraeumFehler = e2; log(`   ⚠️ Aufräumen nicht möglich: ${e2.message}`); }
+  try { ist = await leseFrisch(gql, p.handle); } catch (e3) { log(`   ⚠️ Zustand nach dem Abbruch nicht lesbar: ${e3.message}`); }
+  const stand = ist ? materialStand(p, ist, offen.map((n) => n.sku)) : null, rest = ist ? leereWerte(ist, { materialOption: matName, planWerte, hinzu }) : { eigene: [], fremde: [] };
+  return { neuAngelegt: stand ? stand.neuAngelegt : null,
+    text: zustandsText({ handle: p.handle, matName, zweiteOption: p.optionen.nachher[1]?.name ?? null, stand, entfernt, uebrig: rest.eigene, fremde: rest.fremde, aufraeumFehler, tageslimit }) };
+}
+
 // ───────────────────────────────────────────────────────── ein Produkt schreiben
-async function erweitern(p, { gql, log, sicherungsDir, jetzt }) {
+async function erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch = { varianten: 0 } }) {
   const matName = p.optionen.materialOption;
   let ist = await leseFrisch(gql, p.handle);
   if (!ist) throw new AbweichungFehler(`${p.handle}: Produkt nicht gefunden`);
   if (ist.id !== p.produktId) throw new AbweichungFehler(`${p.handle}: Produkt-ID ${ist.id} ≠ Plan ${p.produktId}`);
-  // 1. Ausgangszustand = Plan? (vorhandene Varianten unverändert)
+  // 1. Ausgangszustand = Plan? (vorhandene Varianten unverändert; eine vorhandene Option «Material» muss der erkennbare eigene Halbzustand sein)
   const vorab = [];
   for (const b of p.bestehende) {
     const v = ist.variants.find((x) => x.sku === b.sku);
     if (!v) vorab.push(`vorhandene Variante ${b.sku} fehlt`);
     else if (Math.abs(Number(v.price) - b.preisChf) > 0.001) vorab.push(`Preis ${b.sku}: ${v.price} ≠ Plan ${b.preisChf}`);
   }
+  vorab.push(...materialOptionAbweichungen({ matName, bestandsWert: p.optionen.bestandsWert, planWerte: p.optionen.nachher[0].werte, optionWerte: ist.options.find((o) => o.name === matName)?.values ?? null,
+    bestehende: p.bestehende, schonDa: p.schonDa, materialVon: (sku) => { const v = ist.variants.find((x) => x.sku === sku); return v ? (v.optionen[matName] ?? null) : undefined; } }));
   if (beschreibungSeitPlanVeraendert(p, ist.descriptionHtml)) vorab.push('Beschreibung ausserhalb des Blocks seit dem Plan verändert (anderer Prozess?)');
   if (vorab.length) throw new AbweichungFehler(`${p.handle}: seit dem Plan verändert`, vorab);
   // 2. Sicherung
@@ -235,7 +324,7 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt }) {
   }
   // 3b. Optionsreihenfolge herstellen (auch bei Wiederaufnahme: eine halbe Vorrunde kann «Material» an falscher Stelle zurückgelassen haben)
   ist = await stelleReihenfolgeHer({ gql, log, p, ist });
-  // 4. je Material: Optionswert, DIREKT DANACH seine Varianten (höchstens ein Wert ohne Variante, und nur während dieses Aufrufs)
+  // 4. je Material: Optionswert, DIREKT DANACH seine Varianten. Alles in EINER Fehlerbehandlung: jeder Abbruch (auch ein Netzfehler nach dem Anlegen) räumt zustandsbasiert auf.
   const namen = p.optionen.nachher.map((o) => o.name);
   const offen = p.neu.filter((n) => !ist.variants.some((v) => v.sku === n.sku));
   const reihe = p.optionen.nachher[0].werte;
@@ -243,35 +332,33 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt }) {
   if (unbekannt.length) throw new AbweichungFehler(`${p.handle}: neue Variante mit Material ausserhalb des Plans`, unbekannt.map((n) => `${n.sku}: «${n.optionen[matName]}»`));
   const gruppen = reihe.map((w) => ({ wert: w, varianten: offen.filter((n) => n.optionen[matName] === w) })).filter((g) => g.varianten.length);
   let angelegt = 0;
-  for (const g of gruppen) {
-    const hinzu = [];
-    for (const o of p.optionen.nachher) {
-      const io = ist.options.find((x) => x.name === o.name);
-      const fehlt = [...new Set(g.varianten.map((v) => v.optionen[o.name]))].filter((w) => !io.values.includes(w));
-      if (!fehlt.length) continue;
-      pruefeAntwort(await gql(M_OPTION_WERTE, { pid: ist.id, opt: { id: io.id }, add: fehlt.map((w) => ({ name: w })) }), `${p.handle}: Optionswerte «${o.name}»`, 'productOptionUpdate');
-      for (const w of fehlt) hinzu.push({ optionName: o.name, wert: w });
-      log(`   Optionswerte «${o.name}» ergänzt: ${fehlt.join(', ')}`);
-    }
-    if (hinzu.length) ist = await leseFrisch(gql, p.handle);
-    try {
+  const hinzu = [];   // Werte, die DIESER Aufruf ergänzt: VOR dem Senden notiert (eine verlorene Antwort darf sie nicht der Aufräumhilfe entziehen)
+  try {
+    for (const g of gruppen) {
+      let ergaenzt = false;
+      for (const o of p.optionen.nachher) {
+        const io = ist.options.find((x) => x.name === o.name);
+        const fehlt = [...new Set(g.varianten.map((v) => v.optionen[o.name]))].filter((w) => !io.values.includes(w));
+        if (!fehlt.length) continue;
+        for (const w of fehlt) hinzu.push({ optionName: o.name, wert: w });
+        ergaenzt = true;
+        pruefeAntwort(await gql(M_OPTION_WERTE, { pid: ist.id, opt: { id: io.id }, add: fehlt.map((w) => ({ name: w })) }), `${p.handle}: Optionswerte «${o.name}»`, 'productOptionUpdate');
+        log(`   Optionswerte «${o.name}» ergänzt: ${fehlt.join(', ')}`);
+      }
+      if (ergaenzt) { ist = await leseFrisch(gql, p.handle); if (!ist) throw new Error(`${p.handle}: nach dem Ergänzen der Optionswerte nicht mehr lesbar`); }
       for (let i = 0; i < g.varianten.length; i += CHUNK) {
         const stueck = g.varianten.slice(i, i + CHUNK);
         const j = await gql(M_VARIANTEN, { pid: ist.id, vs: variantenEingabe(stueck, namen) });
         const r = pruefeAntwort(j, `${p.handle}: Varianten anlegen (${g.wert})`, 'productVariantsBulkCreate');
-        angelegt += stueck.length;
+        angelegt += stueck.length; verbrauch.varianten = angelegt;
         log(`   ${r.productVariants?.length ?? stueck.length} Varianten angelegt: ${g.wert} (${i + stueck.length}/${g.varianten.length}), insgesamt ${angelegt}/${offen.length}`);
       }
-    } catch (e) {
-      // Der Aufruf ist gescheitert (Tageslimit!): einen Wert ohne Variante nicht im Shop stehen lassen.
-      let entfernt = [], aufraeumFehler = null;
-      try { entfernt = await leereWerteEntfernen({ gql, log, handle: p.handle, hinzu }); } catch (e2) { aufraeumFehler = e2; log(`   ⚠️ Aufräumen nicht möglich: ${e2.message}`); }
-      if (e instanceof TageslimitFehler) {
-        const rest = offen.length - angelegt;
-        e.zustand = `Zustand ${p.handle}: Option «${matName}» mit allen fertigen Materialien; ${angelegt} von ${offen.length} neuen Varianten angelegt, ${rest} fehlen noch${entfernt.length ? '; leerer Wert wieder entfernt (' + entfernt.join(', ') + ')' : ''}${aufraeumFehler ? '; ACHTUNG: leerer Wert «' + g.wert + '» konnte nicht entfernt werden (der nächste Lauf legt seine Varianten an)' : ''}. Wiederaufnahme: denselben Befehl später wiederholen (der geprüfte Plan bleibt gültig, der Hash ändert sich nicht).`;
-      }
-      throw e;
     }
+  } catch (e) {
+    const nach = await nachAbbruch({ gql, log, p, planWerte: reihe, hinzu, offen, tageslimit: e instanceof TageslimitFehler });
+    if (nach.neuAngelegt !== null) verbrauch.varianten = Math.max(verbrauch.varianten, nach.neuAngelegt);
+    if (e && typeof e === 'object') e.zustand = nach.text;
+    throw e;
   }
   // 5. Beschreibung (nur wenn nötig; vorher frisch gelesen, fremde Änderungen werden nie überschrieben)
   const aktuell = await leseFrisch(gql, p.handle);
@@ -373,16 +460,19 @@ export async function lauf({ plan, gql, ledgerPfad, sicherungsDir, befundOk = []
       return { ergebnisse, exit: 4 };
     }
     log(`→ ${p.handle} (${p.art}): ${p.neu.length} neue Varianten`);
+    const verbrauch = { varianten: 0 };   // was dieses Produkt im Shop angelegt hat (auch bei einem Abbruch), für das Variantenbudget
     try {
-      const r = p.art === 'neu' ? await neuAnlegen(p, { gql, log, jetzt }) : await erweitern(p, { gql, log, sicherungsDir, jetzt });
+      const r = p.art === 'neu' ? await neuAnlegen(p, { gql, log, jetzt }) : await erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch });
       ledgerSchreiben(ledgerPfad, p, `OK ${r.varianten} Varianten (${r.neu} neu)`, jetzt);
       if (budget !== null) budget -= r.neu;
       ergebnisse.push({ handle: p.handle, status: 'OK', ...r }); folge = 0;
       log(`✓ ${p.handle}: ${r.varianten} Varianten, Zustand frisch gelesen und gleich dem Plan`);
     } catch (e) {
-      if (e instanceof TageslimitFehler) { log(`TAGESLIMIT: ${e.message}`); if (e.zustand) log(`   ${e.zustand}`); ergebnisse.push({ handle: p.handle, status: 'TAGESLIMIT', ...(e.zustand ? { zustand: e.zustand } : {}) }); return { ergebnisse, exit: 4 }; }
-      if (e instanceof AbweichungFehler) { log(`ABWEICHUNG: ${e.message}`); for (const x of e.liste.slice(0, 20)) log('   · ' + x); ergebnisse.push({ handle: p.handle, status: 'ABWEICHUNG', liste: e.liste }); return { ergebnisse, exit: 3 }; }
-      folge++; log(`✗ ${p.handle}: ${e.message}`); ergebnisse.push({ handle: p.handle, status: 'FEHLER', fehler: e.message });
+      if (budget !== null) budget -= verbrauch.varianten;   // auch ein Produkt, das nach angelegten Varianten mit einem gewöhnlichen Fehler endet, hat Tageslimit verbraucht
+      const zustand = e.zustand ? { zustand: e.zustand } : {};
+      if (e instanceof TageslimitFehler) { log(`TAGESLIMIT: ${e.message}`); if (e.zustand) log(`   ${e.zustand}`); ergebnisse.push({ handle: p.handle, status: 'TAGESLIMIT', ...zustand }); return { ergebnisse, exit: 4 }; }
+      if (e instanceof AbweichungFehler) { log(`ABWEICHUNG: ${e.message}`); for (const x of e.liste.slice(0, 20)) log('   · ' + x); if (e.zustand) log(`   ${e.zustand}`); ergebnisse.push({ handle: p.handle, status: 'ABWEICHUNG', liste: e.liste, ...zustand }); return { ergebnisse, exit: 3 }; }
+      folge++; log(`✗ ${p.handle}: ${e.message}`); if (e.zustand) log(`   ${e.zustand}`); ergebnisse.push({ handle: p.handle, status: 'FEHLER', fehler: e.message, ...zustand });
       if (folge >= maxFehlerFolge) { log(`ABBRUCH: ${folge} Fehler in Folge`); return { ergebnisse, exit: 1 }; }
     }
   }
@@ -400,7 +490,7 @@ export const EXIT_TEXT = Object.freeze({
   0: 'alles Geplante ausgeführt (oder laut Ledger schon erledigt)',
   1: 'mindestens ein Produkt mit FEHLER (oder drei Fehler in Folge): nicht alles ist ausgeführt',
   3: 'ABWEICHUNG: der Zustand im Shop weicht vom Plan ab (Lauf sofort beendet)',
-  4: 'TAGESLIMIT für neue Varianten erreicht (nicht wiederholen, morgen neu planen)',
+  4: `TAGESLIMIT für neue Varianten erreicht: nicht sofort wiederholen, später denselben Befehl (der geprüfte Plan bleibt gültig, solange die Daten höchstens ${DATEN_MAX_ALTER_H} Stunden alt sind; sonst zuerst DATEN=holen)`,
   5: 'mindestens ein Produkt GESPERRT: Blocker-Befund nicht bestätigt, dieses Produkt wurde nicht angefasst',
 });
 

@@ -45,7 +45,10 @@ export function ladePaket({ dir = PAKET_DIR, pfade = {} } = {}) {
 /** Höchstalter der Printful-Daten (Katalog mit EU-Lager und Einkaufspreisen, Beschreibungen, Versandraten, SKU-Prüfung) bei LIVE=1. Ausdrücklich änderbar: DATEN_MAX_ALTER_H. */
 export const DATEN_MAX_ALTER_H = 72;
 
-/** Alter in Stunden eines Standes «JJJJ-MM-TT» (0 Uhr UTC); null, wenn der Stand fehlt oder kein Datum ist. */
+/** Wie weit ein Stand in der Zukunft liegen darf (Uhrenabweichung zwischen zwei Rechnern), ohne dass er verdächtig wird. Ein Datum weiter vorn gilt als NICHT frisch (Tippfehler im Jahr, falsch gehende Uhr). */
+export const ZUKUNFT_TOLERANZ_H = 1;
+
+/** Alter in Stunden eines Standes «JJJJ-MM-TT» (0 Uhr UTC); null, wenn der Stand fehlt oder kein Datum ist. Negativ = der Stand liegt in der Zukunft. */
 export function standAlterH(stand, jetzt = new Date()) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(stand ?? ''))) return null;
   const t = Date.parse(`${stand}T00:00:00Z`);
@@ -54,7 +57,7 @@ export function standAlterH(stand, jetzt = new Date()) {
 
 /**
  * Welche Dateien des Datenpakets sind älter als `maxStunden` (oder haben keinen lesbaren Stand)? Leere Liste = frisch genug.
- * Geprüft werden die Dateien, die Preise, Lager und Texte bei Printful festhalten: katalog, beschreibungen, versand, skuPruefung.
+ * Geprüft werden die Dateien, die Preise, Lager und Texte bei Printful festhalten: katalog, beschreibungen, versand, skuPruefung. Ein Stand in der Zukunft (mehr als ZUKUNFT_TOLERANZ_H) zählt wie ein unlesbarer: nicht frisch.
  * Der Shopify-Bestand und der SKU-Index zählen nicht: sie werden bei LIVE ohnehin frisch aus dem Shop gelesen.
  */
 export function pruefeDatenAlter(meta, { jetzt = new Date(), maxStunden = DATEN_MAX_ALTER_H } = {}) {
@@ -62,6 +65,7 @@ export function pruefeDatenAlter(meta, { jetzt = new Date(), maxStunden = DATEN_
   for (const k of ['katalog', 'beschreibungen', 'versand', 'skuPruefung']) {
     const stand = meta?.[k]?.stand, h = standAlterH(stand, jetzt);
     if (h === null) out.push({ datei: DATEIEN[k], stand: stand ?? null, alterH: null, grund: `${DATEIEN[k]}: kein lesbarer Stand` });
+    else if (h < -ZUKUNFT_TOLERANZ_H) out.push({ datei: DATEIEN[k], stand, alterH: Math.round(h), grund: `${DATEIEN[k]}: Stand ${stand} liegt in der Zukunft (Uhr falsch oder Datum vertippt?), er gilt als nicht frisch` });
     else if (h > maxStunden) out.push({ datei: DATEIEN[k], stand, alterH: Math.round(h), grund: `${DATEIEN[k]}: Stand ${stand} ist ${Math.round(h)} Stunden alt (erlaubt: ${maxStunden})` });
   }
   return out;
