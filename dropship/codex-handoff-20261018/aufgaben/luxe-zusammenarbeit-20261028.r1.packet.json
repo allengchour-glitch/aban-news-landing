@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 1,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-28T22:09:17.000Z",
+  "baseCommit": "c371b708a4dc40078570ba3e5da675ec07bca04f",
+  "title": "Merchant-Korrekturen, Übergabemod und konkrete Verkaufsbefunde",
+  "summary": "14 geänderte Code-/Test-/Dokupfade, 1059 lokale Prüfungen bestanden. Keine produktive Übernahme; volle CI und globales Plugininstall/CLI-Laden blockiert. Hängematten-SKU/Return- und iPhone-Textentwürfe vorbereitet. Acht native Skilldateien projektlokal eingerichtet; keine echte Claude-Quittung, keine direkte Sitzungsverbindung.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-ZUSAMMENARBEIT-20261028.json",
+      "sha256": "29c45ca48f3595b2a757b84f810b08063734e38965481888b1487751a28ce47f",
+      "gitBlobSha": "aea13b109f2ea7cd20f87ea53b74b09f4813978e"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-UND-VERKAUF-20261028.md",
+      "sha256": "1cb94b6c999203eb0701431b8418aabfc7287a891dcbaaa219f57348a219dfa7",
+      "gitBlobSha": "951afa9cc777be1b3737c0770a41e0030e68dd63"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CHATGPT-ANTWORT-2810.md",
+      "sha256": "d27224ecf1da0385ae70091af50a88f46828af32b3dbf8e2e169477d4b36d3e7",
+      "gitBlobSha": "cb29df41e71c3c78d835136d08d9e90f0a16bab3"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-KORREKTUREN-20261028.patch",
+      "sha256": "d00c3a261f72b9bc81d7fdfb85b5fdd20e038a62d7589f0ac8ace39418289258",
+      "gitBlobSha": "463c8b323aa6af0127ddf502f0efb0b15ec7e2cd"
+    }
+  ],
+  "previousPacketSha256": null
+}
