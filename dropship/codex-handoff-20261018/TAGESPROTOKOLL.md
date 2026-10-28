@@ -432,6 +432,15 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Nächster Arbeitsschritt | Einen engen Bild-Reparaturauftrag aus dem bestätigten Overlay-Fall abgeleitet | VORBEREITET: echtes graues Bild für SKU CJ-CJSJ290134301AZ ohne Zusatztext, Rechte und Feedroute prüfen, danach konkreter Diff. Technische Freigabe blockiert, bis Material/Route belegt sind. Bestehende rueckhol-Sperre erhalten; keine pauschalen Freischaltungen oder Kundenansprache |
 
 
+[LUXESTYLE_PROJEKTGEDAECHTNIS_20261028] Ausdrücklicher Installationsauftrag des Inhabers; Nachtrag vor Mitternacht, Europe/Zurich.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Projektgedächtnis | Aktuelle Übergabe und Tagesprotokoll gelesen; dauerhaften Arbeitsindex mit acht stabilen Aufgaben, Quellen, Blockern und nächsten Schritten erstellt; Start-Skill lokal installiert | UMGESETZT: vier neue LuxeStyle-Dokumente im bestehenden Handoff gespeichert und vollständig mit Git-SHAs zurückgelesen. Neun lokale Skilldateien/Frontmatter geprüft; CLI-Laden weiterhin unbekannt. Zwei irreführende lokale Skill-/Hookformulierungen korrigiert. Keine neue Agent-Laufzeit |
+| Bestehende Automation | Genau einen aktiven LuxeStyle-Auftrag frisch gelesen, konkreten Prompt-Anhang geprüft und geschrieben; danach gezielt zurückgelesen | UMGESETZT: Originalprompt vollständig erhalten, Gedächtnis-Anhang genau einmal vorhanden. ID, Titel, Aktivierungszustand, Europe/Zurich und 08:00/14:00/19:00 unverändert. Kein Zusatzlauf/neuer Zeitplan. Konfiguration bestätigt; tatsächliche Verwendung durch späteren Lauf noch unbekannt |
+| Nächster Schritt | Priorität auf tatsächliche graue Bildquelle und Feed-Zuordnung der Ladestation gelegt; Quelle für Master-Abnahmepunkte nach unabhängiger Gegenlese ergänzt | VORBEREITET: unabhängig mögliche Quellen-/Routenprüfung im nächsten bestehenden Lauf. Bisherige Geschäfts-/Rechte-/Publikationsgrenzen und Claude-Koordination erhalten. Keine neuen Kennzahl-/Flow-/Verkaufsabfragen oder operativen Shop-/Feedänderungen für diese Installation |
+
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
