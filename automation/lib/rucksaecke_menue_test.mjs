@@ -95,6 +95,16 @@ ist('ohne Fehlende: nichts fehlt, 3 entfernt, 3 neu, 1 umgehängt im Protokoll',
   ist('…und der Vergleich ohne Umhängen unterscheidet sich in genau einer Zeile (Gegenprobe: das Messgerät sieht den Umhänger)', flachMitZiel(aussen(MENU)).filter((z, n) => z !== flachMitZiel(aussen(b))[n]).length, 1);
   ist('der Kopf «Taschen & Rucksäcke» selbst ist unverändert', [suche(b, PFAD).id, suche(b, PFAD).resourceId, suche(b, PFAD).title], [suche(MENU, PFAD).id, suche(MENU, PFAD).resourceId, suche(MENU, PFAD).title]);
   ist('pruefeRucksack: der Umbau besteht die eigene Prüfung', pruefeRucksack(MENU, b, ALLE), []);
+  {
+    // Umhängen nur für reine COLLECTION-Einträge: HTTP-Link und Filter-Link auf rucksaecke-laptop bleiben, wie sie sind
+    const m = kopie(MENU), ast = suche(m, ['Elektronik', 'Büro & Home Office']) || suche(m, ['Elektronik']);
+    ast.items.push({ id: 'gid://shopify/MenuItem/lap-http', title: 'Laptop-Rucksäcke (Link)', type: 'HTTP', resourceId: null, tags: [], url: 'https://luxestyle.ch/collections/rucksaecke-laptop', items: [] });
+    ast.items.push({ id: 'gid://shopify/MenuItem/lap-filter', title: 'Laptop-Rucksäcke (Filter)', type: 'COLLECTION', resourceId: vorher.resourceId, tags: ['x'], url: '/en/collections/rucksaecke-laptop', items: [] });
+    const log = [], u = umhaengenAn(kopie(m), ALLE, log), gef = id => { let r; (function l(x) { for (const i of x) { if (i.id === id) r = i; l(i.items || []); } })(u); return r; };
+    ist('ein HTTP-Link auf rucksaecke-laptop bleibt unverändert (sonst Ziel ohne Adresse)', [gef('gid://shopify/MenuItem/lap-http').url, gef('gid://shopify/MenuItem/lap-http').resourceId], ['https://luxestyle.ch/collections/rucksaecke-laptop', null]);
+    ist('ein Eintrag mit Filter-Tag bleibt auf rucksaecke-laptop (er würde den alten Filter auf die neue Sammlung übertragen)', [gef('gid://shopify/MenuItem/lap-filter').url, gef('gid://shopify/MenuItem/lap-filter').resourceId], ['/en/collections/rucksaecke-laptop', vorher.resourceId]);
+    ist('…beide stehen im Log als «bleibt», der reine Eintrag wird weiter umgehängt', [log.filter(z => z.startsWith('bleibt')).length, log.filter(z => z.startsWith('umgehängt')).length], [2, 1]);
+  }
   ist('keine neuen Menütitel über 34 Zeichen (die zwei vorhandenen Herren-Einträge sind nicht Teil des Umbaus)', titelWarnungen(b), titelWarnungen(MENU));
   ist('…und es sind genau diese zwei', titelWarnungen(MENU).length, 2);
 }
