@@ -6,8 +6,14 @@
  * und aktualisiert die Shopify-Variantenpreise. DRY_RUN=1 → nur Vorschau-Tabelle, keine Änderung.
  *
  * ENV: PRINTFUL_API_KEY (Pflicht) · [PRINTFUL_STORE_ID] · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN)
- *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=1]
+ *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=1] · [AUCH_AUSWAHL=1]
+ *
+ * ACHTUNG «Selbst gestalten» (27.10.2026): die Produkte aus lib/pod_auswahl_spec.mjs (Poster, Hoodie, T-Shirt, iPhone-Hülle, Samsung-Hülle) werden hier
+ * ÜBERSPRUNGEN. Ihre Preise (auch die der neuen Material-Varianten) kommen aus lib/pod_preise.mjs und berücksichtigen Printful-Versand und Zahlungsgebühr
+ * (Netto ≥ 12 CHF); diese Formel kennt beides nicht, würde 43 der 165 neuen Preise senken (davon 40 unter Netto 12; gerechnet am 27.10.2026 mit dem Plan
+ * von automation/pod_auswahl.mjs) und rundet auf ceil(x) − 0.10, in 3 Fällen also UNTER den Richtwert. AUCH_AUSWAHL=1 hebt die Sperre auf (nur mit Absicht).
  */
+import { SPEC as AUSWAHL_SPEC } from './lib/pod_auswahl_spec.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'';
 const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
@@ -21,6 +27,8 @@ const MIN_MARGE=parseFloat(process.env.MIN_MARGE||'12')||12;
 const TAG=process.env.TAG||'printful_personalized_product';
 const MAXP=Math.max(1,parseInt(process.env.MAX||'300',10)||300);
 const DRY=process.env.DRY_RUN==='1';
+const AUSWAHL=new Set(AUSWAHL_SPEC.map(s=>s.handle));
+const MIT_AUSWAHL=process.env.AUCH_AUSWAHL==='1';
 const API='2025-01';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim();
 if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
@@ -43,7 +51,7 @@ async function pfCost(vid){ if(costCache.has(vid)) return costCache.get(vid);
 function variantId(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?m[1]:null; }
 function priced(costChf){ const target=Math.max(costChf*MARKUP, costChf+MIN_MARGE); return (Math.ceil(target)-0.10); }
 
-const Q=`query($q:String!,$cursor:String){ products(first:50, query:$q, after:$cursor){ pageInfo{hasNextPage endCursor} edges{ node{ id title variants(first:100){ edges{ node{ id sku price } } } } } } }`;
+const Q=`query($q:String!,$cursor:String){ products(first:50, query:$q, after:$cursor){ pageInfo{hasNextPage endCursor} edges{ node{ id handle title variants(first:100){ edges{ node{ id sku price } } } } } } }`;
 
 (async()=>{
   const tok=await token();
@@ -55,6 +63,7 @@ const Q=`query($q:String!,$cursor:String){ products(first:50, query:$q, after:$c
 
   let changes=0, unknown=0;
   for(const p of products){
+    if(!MIT_AUSWAHL && AUSWAHL.has(p.handle)){ console.log(`  ⏭ ${p.title} übersprungen: «Selbst gestalten»-Preise kommen aus lib/pod_preise.mjs (Versand + Gebühr, Netto ≥ 12 CHF). AUCH_AUSWAHL=1 hebt das auf.`); continue; }
     const updates=[];
     for(const {node:v} of p.variants.edges){
       const vid=variantId(v.sku); if(!vid){ unknown++; continue; }

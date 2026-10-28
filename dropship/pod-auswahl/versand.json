@@ -1,0 +1,2106 @@
+{
+ "stand": "2026-10-27",
+ "ziel": "CH 8001 (Printful POST /shipping/rates, Versandart STANDARD, 1 Stück, USD; reine Berechnung)",
+ "raten": {
+  "5": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    7
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "4011": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "4012": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "4013": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "4014": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "4015": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5294": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5309": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5426": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5427": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5428": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5429": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5430": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5431": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5432": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5433": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5522": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5523": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5524": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5525": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5526": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5527": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5528": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "5529": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate (Estimated delivery: Nov 2⁠–4) ",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "6875": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "8948": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "8952": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "8954": {
+   "usd": 10.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "9357": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "9526": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10297": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10298": {
+   "usd": 51.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10774": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10775": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10776": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10777": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "10778": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11347": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11348": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11349": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11576": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11577": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11578": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11579": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11580": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11791": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11792": {
+   "usd": 51.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11864": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11865": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11866": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11867": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "11868": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12025": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12026": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12027": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12650": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12651": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12652": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "12872": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "13421": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "14633": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "14634": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "14635": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "15124": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "15125": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "15126": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "15127": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "15128": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16125": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16127": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16129": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16131": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16240": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16241": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16242": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16243": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16335": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16925": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16927": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16929": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16931": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16933": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16935": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16937": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16939": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16941": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16943": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16945": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16947": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16949": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16951": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16975": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16976": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16977": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16978": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16979": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16980": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16981": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16982": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16983": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16984": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16985": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16986": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16987": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16988": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16989": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16990": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16991": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16992": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16993": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16994": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16995": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16996": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16997": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16998": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "16999": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17000": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17001": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17002": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17228": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17232": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17235": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17508": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17616": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17617": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17618": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17619": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17715": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17717": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17719": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "17721": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18734": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18735": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18736": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18740": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18741": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18742": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18743": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18744": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18745": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18746": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18747": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18748": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18749": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18750": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "18751": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19310": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    7
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19321": {
+   "usd": 57.19,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    7
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19516": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19526": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19643": {
+   "usd": 51.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19648": {
+   "usd": 51.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "19653": {
+   "usd": 51.99,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20290": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20291": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20292": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20293": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20306": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20307": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20308": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20309": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20318": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20320": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20322": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20324": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20326": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20328": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20330": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20332": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20688": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20690": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20692": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20694": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20805": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20811": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20817": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20823": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "20830": {
+   "usd": 11.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21469": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21470": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21471": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21472": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21473": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21474": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21476": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21478": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21480": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21481": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21482": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "21483": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33989": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33990": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33991": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33992": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33993": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33994": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33995": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "33996": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "34002": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "34004": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "34006": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "34008": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "48863": {
+   "usd": 10.49,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49327": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49328": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49329": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49330": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49331": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "49332": {
+   "usd": 7.29,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    6,
+    9
+   ],
+   "gemessen": "2026-10-27"
+  },
+  "53681": {
+   "usd": 10.39,
+   "id": "STANDARD",
+   "name": "Flat Rate",
+   "tage": [
+    3,
+    6
+   ],
+   "gemessen": "2026-10-27"
+  }
+ }
+}
