@@ -1,0 +1,1159 @@
+{
+  "schemaVersion": 1,
+  "role": "review_only",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "renderedProfessionalMaster": null,
+  "status": "all six new master publications blocked",
+  "report": "# LuxeStyle: gleicher Master und konkreter Zielkonflikt, Abend 28.10.2026\n\nStabile masterId luxe_sternenprojektor_master_20261018. Claude führt. Ein professioneller Master bleibt in Entwicklung; keine neue MP4, kein Render, kein Upload, kein Social-/Profilwrite. Die morgendlichen Quellenprüfungen werden nicht als neue Produktion ausgegeben.\n\n## Tatsächlicher neuer Arbeitsschritt\n\nSETZUNG: MASTER-KONTINUITAET-20261028.json ergänzt vier konkret benannte Schnitt-Abnahmen bei Zielbild60/228/372/420, also2.00/7.60/12.40/14.00s in einem18s-/540-Bilder-Master. Jeweils die letzten und ersten sechs Bilder sollen am späteren echten Master auf Geräteidentität, Motivbindung, Farb-/Belichtungskonsistenz und nachvollziehbare Handlung geprüft werden. Die Nachweisfelder bleiben null/unbekannt: kein Qualitäts-Pass aus dem Plan. Beim Bedienungs-/Projektionswechsel keine erfundene sofortige Wirkung; beim Detail kein Hauben-Abheben oder verdeckter Quell-Zwischenschnitt; Schluss vier echte kontinuierliche Sekunden, keine Foto-Zoom-Ersetzung. Alle erforderlichen nativen Originale bleiben Pflicht.\n\nDer bekannte Ablauf bleibt erhalten:0–2s HookA «Dein Raum. Neues Licht.» oder HookB «Licht im Detail.»;2–7.6s reale Bedienung;7.6–12.4s echte Projektion desselben Geräts/Motivs;12.4–14s Detail;14–18s «Produkt ansehen»/Marke. SETZUNG:1080×1920/30fps, clean/premium, taupe/cream für Textflächen; Produkt-/Projektionsfarben unverändert. Nur ein Einstieg für die erste Masterabnahme, keine zwei Exporte oder neue Serie.\n\n## Bio-Ziel: aktuelle Entscheidung beachten\n\nQUELLE: frisch gelesenes main dropship/BROWSER-BEFEHL-BIO-LINKS-2810.md, Blobd964f034e1950d1f5826d78bad3c3797e9db5176. Der darin dokumentierte Inhaberauftrag führt Instagram/TikTok auf die Sammlung kostueme-ch-lager, nicht auf diesen Projektor. Die tatsächliche gespeicherte Profil-Umsetzung wurde hier nicht bestätigt. Weder diesen Bioauftrag überschrieben noch einen Produkt-Bio-Link als vorhanden behauptet.\n\nCAPTIONS-UTM-ABEND.json ändert daher nur die zwei Captiontexte und ihre Gatehinweise: neutraler Website-Produktsuchhinweis statt unbelegtem Projektor-Link-in-Bio. Instagram: «Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach ‹Sternenlicht-Projektor›.» TikTok: «Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach ‹Sternenlicht-Projektor› suchen.»\n\nGEMESSEN am Entwurf: Alle sechs eindeutigen Produkt-UTM-Adressen, Produkt-/Variantenbindung und masterId bleiben unverändert; andere vier Captions wortgleich. Die Produkt-UTMs sind vorbereitete spätere Ziele, keine vorgenommenen Bioänderungen oder klickbaren IG-/TikTok-Caption-Links. CAPTION-BIO-KORREKTUR.diff hält den konkreten Unterschied fest. Auch diese neutralen Texte erteilen keine Publikationsfreigabe; alle sechs Kanäle bleiben blockiert. Pinterest-Board bleibt unbekannt; YouTube allgemein/nicht speziell für Kinder ist bereits geklärt.\n\n## Quellen, Musik und Blocker\n\nGEMESSEN: Planungsquelle heute frisch gehasht und technisch gelesen:960×540/25fps/27.960s, SHA2562bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57. Sie bleibt Qualitätsblocker; Umkodierung ersetzt keine native30fps-/Premiumquelle. Keine neue Sichtabnahme der vollständigen Filmquelle behauptet. Heute wurden die frischen Produktbilder angesehen, nicht ein fertiger Master.\n\nKanonische Musik automation/music/luxe-premium.wav frisch vorhanden: lokale SHA256a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688. Aus echten lokalen Bytes berechneter Gitblob61de48704b2b3ae22fb028e6cf0a3c88e4826a7c stimmt mit aktuellem main überein. CREDITS.txt und tatsächlicher Produzent automation/music/produce/make_premium.sh frisch unverändert gelesen; Repo-Provenienz ist keine neue unabhängige rechtliche oder akustische Endabnahme. Kein Voiceover, keine andere Musik oder neue Effekte. Frühe technische Audio-/Overlayprüfungen ausdrücklich als historische27.10.-Belege kopiert, nicht neu gemessen.\n\nAktueller CJ-Tokenhelfer main6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf ist vorhanden. Drei lokale Credential-Präsenzwerte false; keine Werte/Secrets gelesen. Das beweist keinen fehlenden CJ-Zugang bei Claude oder GitHub Actions. Keine CJ-Anfrage, Authentifizierung, Kauf-, Installations- oder Workflowaktion. Ein zunächst fälschlich angefragter Producerpfad lieferte echtes404; danach korrekten dokumentierten make_premium.sh-Pfad gelesen. Kein Auth-/Quota-Fehler als404 ausgegeben.\n\nBlocker unverändert konkret: hochwertige zugeordnete Originale aller Szenen; genaue Ausführung/Motive; Strom-/Netzteil-/Schweizer-Steckerbindung; kommerzielle Film-/Bearbeitungs-/Werberechte; fertige Bild-/Ton-/Lesbarkeits-/Ausschnitt-Abnahme und dauerhaftes Publikationsregister. Bei IG/TikTok zusätzlich passender tatsächlich bestätigter Produktpfad; Pinterest bestätigtes Kontoboard. Kein Register initialisiert, kein Altclip aktiviert.\n\nPLAN-VALIDATION.json prüft nur Plan-, Referenz- und Caption-/UTM-Konsistenz. Keine zusätzlichen Kennzahl-, Flow- oder Verkaufsreports. Nächster Schritt für Claude: denselben Master anhand der konkreten Originaltake-/Kontinuitätsanforderungen abnahmefähig machen und die getrennte Kostüm-Biostrategie erhalten.\n",
+  "newCaptionDiff": "--- same-master/captions-morning\n+++ same-master/captions-evening-bio-conflict\n@@ -3,23 +3,29 @@\n     \"channel\": \"instagram\",\n     \"masterId\": \"luxe_sternenprojektor_master_20261018\",\n     \"title\": \"Sternenlicht-Projektor im Detail\",\n-    \"caption\": \"Ein Detail für deinen Nachttisch. Entdecke den Sternenlicht-Projektor in den Produktansichten bei LuxeStyle. Produktdetails über den Link in der Bio.\",\n+    \"caption\": \"Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach «Sternenlicht-Projektor».\",\n     \"utmProductUrl\": \"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig\",\n-    \"captionUrlPlacement\": \"bio target only, not printed as clickable caption link\",\n-    \"channelGate\": \"Bio product target not verified; link is prepared only for confirmed bio target and is not a clickable caption link.\",\n+    \"captionUrlPlacement\": \"Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link\",\n+    \"channelGate\": \"Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.\",\n     \"state\": \"DRAFT_BLOCKED_NO_APPROVED_MASTER\",\n-    \"commercialClaimsVerified\": \"Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.\"\n+    \"commercialClaimsVerified\": \"Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.\",\n+    \"bioProductTargetVerified\": false,\n+    \"ownerApprovedBioDestination\": \"https://luxestyle.ch/collections/kostueme-ch-lager\",\n+    \"ownerBioChangeImplemented\": \"unknown\"\n   },\n   {\n     \"channel\": \"tiktok\",\n     \"masterId\": \"luxe_sternenprojektor_master_20261018\",\n     \"title\": \"Dein Raum. Neues Licht.\",\n-    \"caption\": \"Ein Detail für deine Abendroutine: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben: Link in der Bio.\",\n+    \"caption\": \"Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.\",\n     \"utmProductUrl\": \"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt\",\n-    \"captionUrlPlacement\": \"bio target only, not printed as clickable caption link\",\n-    \"channelGate\": \"Bio product target not verified; no clickable caption URL claimed.\",\n+    \"captionUrlPlacement\": \"Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link\",\n+    \"channelGate\": \"Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.\",\n     \"state\": \"DRAFT_BLOCKED_NO_APPROVED_MASTER\",\n-    \"commercialClaimsVerified\": \"Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.\"\n+    \"commercialClaimsVerified\": \"Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.\",\n+    \"bioProductTargetVerified\": false,\n+    \"ownerApprovedBioDestination\": \"https://luxestyle.ch/collections/kostueme-ch-lager\",\n+    \"ownerBioChangeImplemented\": \"unknown\"\n   },\n   {\n     \"channel\": \"youtube\",\n",
+  "files": [
+    {
+      "path": "master/BIO-AUFTRAG-QUELLE.json",
+      "sha256": "45c116c90b2cb7b4f2bc6deb9aed0290a1f3188d9472ff78bcdffe004bbe7bbb",
+      "bytes": 3177,
+      "data": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "content": "# Befehl für Claude im Browser (PC-Claude mit Brave): Bio-Links mit UTM · Stand 28.10.2026\n\nAuftrag des Besitzers am 28.10. («5. ja»): Der Link in der Bio von TikTok und Instagram bekommt UTM-Angaben, damit sichtbar wird, ob die Beiträge Besuche im Shop bringen.\nGemessen am 28.10. (Shopify, 30 Tage): TikTok 530 Sitzungen, davon 0 Käufe, Instagram höchstens 9 Besuche aus 7 063 Aufrufen. Ohne UTM landen Klicks aus der Bio im Topf «direct».\n\nZiel-Seite: die Sammlung «Kostüme ab Schweizer Lager» (`/collections/kostueme-ch-lager`, lädt mit HTTP 200). Sie ist der Nachfolger der Halloween-Seiten und hatte den\nniedrigsten Absprung der Einstiege (29 % bei 14 Sitzungen, dünne Messung). Später (ab etwa 1.12.) wechselt das Ziel auf Geschenke; dann meldet sich Claude mit einem neuen Befehl.\n\n```\nDu bist in meinem eingeloggten Browser. Ich bin Inhaber von LuxeStyle CH (luxestyle.ch).\nAuftrag: Den Link in der Bio meiner beiden Profile ändern: TikTok (@luxestyle.ch) und Instagram (@luxestyle.ch).\n\n1. TikTok: Profil bearbeiten (tiktok.com > Profil > \"Profil bearbeiten\"), Feld \"Website\"/\"Link\".\n   Notiere zuerst den AKTUELLEN Link wörtlich. Trage dann genau diesen ein:\n   https://luxestyle.ch/collections/kostueme-ch-lager?utm_source=tiktok&utm_medium=bio&utm_campaign=bio-link\n\n2. Instagram: Profil bearbeiten (instagram.com > Profil > \"Profil bearbeiten\"), Feld \"Links\"/\"Website\".\n   Notiere zuerst den AKTUELLEN Link wörtlich. Trage dann genau diesen ein:\n   https://luxestyle.ch/collections/kostueme-ch-lager?utm_source=instagram&utm_medium=bio&utm_campaign=bio-link\n\n3. Je Profil speichern, die Profilseite neu laden und den Link anklicken: Er muss die Sammlung\n   \"Kostüme ab Schweizer Lager\" öffnen (Kostüme sichtbar, kein 404).\n\nRegeln:\n- Nur den Link ändern. Name, Beschreibung, Bild und alle anderen Einstellungen bleiben, wie sie sind.\n- Bei Login, 2FA, Captcha oder einer unklaren Option: anhalten und mich fragen. Nichts raten.\n- Lässt TikTok den Link nicht ändern (bei Privatkonten ohne Link-Freischaltung möglich): melde das und erzwinge nichts.\n- Den UTM-Teil (alles ab dem Fragezeichen) nicht kürzen und nicht ändern, auch wenn die App ihn hässlich findet.\n\nBericht am Schluss, kurz, je Profil:\n- alter Link (wörtlich), neuer Link, gespeichert ja/nein (mit Grund)\n- ein Screenshot der gespeicherten Profilseite\n```\n\nNachmessung (Claude, nach 14 Tagen): Sitzungen je Quelle `utm_source=tiktok|instagram` und `utm_medium=bio` in Shopify (ShopifyQL `FROM sessions SHOW sessions, sessions_with_cart_additions GROUP BY utm_source, utm_medium`).\nUnter einer Sitzung pro Tag aus einer Bio wird die Menge der Beiträge neu entschieden (Entscheid beim Besitzer).\n",
+          "encoding": "utf-8",
+          "sha": "d964f034e1950d1f5826d78bad3c3797e9db5176",
+          "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/dropship/BROWSER-BEFEHL-BIO-LINKS-2810.md",
+          "display_title": "BROWSER-BEFEHL-BIO-LINKS-2810.md"
+        },
+        "isError": false
+      }
+    },
+    {
+      "path": "master/CAPTIONS-UTM-ABEND.json",
+      "sha256": "99b48e144735cf96be7cce9e072dfb66267b68f930f63296de1e40eb6f557014",
+      "bytes": 6192,
+      "data": [
+        {
+          "channel": "instagram",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail",
+          "caption": "Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+          "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+          "bioProductTargetVerified": false,
+          "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+          "ownerBioChangeImplemented": "unknown"
+        },
+        {
+          "channel": "tiktok",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Dein Raum. Neues Licht.",
+          "caption": "Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+          "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+          "bioProductTargetVerified": false,
+          "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+          "ownerBioChangeImplemented": "unknown"
+        },
+        {
+          "channel": "youtube",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+          "caption": "Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben findest du unter der folgenden Adresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; die Adresse im Browser öffnen.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+          "captionUrlPlacement": "address not clickable in Shorts",
+          "channelGate": "Audience already owner-confirmed: general audience, not specifically made for kids. No verified profile product link.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "facebook",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Licht im Detail.",
+          "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle und sieh dir die aktuelle Ausführung und die Produktangaben an.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "threads",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Ein Detail für deinen Raum",
+          "caption": "Ein Detail für deinen Raum: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten und Angaben zur aktuellen Ausführung:",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "pinterest",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+          "caption": "Eine Produktidee für deinen Nachttisch. Entdecke den Sternenlicht-Projektor und die aktuellen Produktangaben bei LuxeStyle.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        }
+      ]
+    },
+    {
+      "path": "master/FILES-MANIFEST.json",
+      "sha256": "702ad8fb65585c75def6393bc1c05159c94de558bfb0f9d5dcaddee5b276559e",
+      "bytes": 4666,
+      "data": [
+        {
+          "path": "products/AVAILABILITY-NATIVE.json",
+          "bytes": 3288,
+          "sha256": "88c495f487fd1384e4c7238e584ad22d0eb499c014c8144c96c4144f771b0d24"
+        },
+        {
+          "path": "products/BERICHT.md",
+          "bytes": 3173,
+          "sha256": "3d6f2c2d2c20e889b1241835dd32d9cedfdbafd53b6c59bc3ea57d78282f7b50"
+        },
+        {
+          "path": "products/NATIVE-DELTAS-VS-MORNING.json",
+          "bytes": 798,
+          "sha256": "a4592ba8cbb643157bfbf4db723dcd28328f69fa728f2212144e7966c7a90c55"
+        },
+        {
+          "path": "products/PUBLIC-AND-MEDIA-READS.json",
+          "bytes": 21235,
+          "sha256": "f4606926a140807a6c2de9544720bba335208c9b00ebc4ee7c2667ab70f72454"
+        },
+        {
+          "path": "products/QUERY-VALIDATION.json",
+          "bytes": 807,
+          "sha256": "cdf58ace0dca44d0a12a65bfd892a31d85bfe7273c8a3a95ec1e6d6429df9867"
+        },
+        {
+          "path": "products/SCHEMA-SELECTED.json",
+          "bytes": 13583,
+          "sha256": "5931cf75aff30ec2ec5ec19d1c319b5bc334aabb6929616de03334db415868c3"
+        },
+        {
+          "path": "products/SHIPPING-EXTRACT.json",
+          "bytes": 3746,
+          "sha256": "91f2866f1419876b7ba8302da985294613f8baa57a0cb37fb96674e9bc7aa702"
+        },
+        {
+          "path": "products/TAG-GATE.json",
+          "bytes": 1459,
+          "sha256": "fe453095b7224a9a6ac26e2d3d5dc95c8bb878c672ecc492e5b622b45b51894d"
+        },
+        {
+          "path": "products/diffuser-json.json",
+          "bytes": 11000,
+          "sha256": "b4be4933b532f3c5cf1fd644e2eb33ba35e5b815626dfc9d16c51615ec387c1e"
+        },
+        {
+          "path": "products/diffuser-native.json",
+          "bytes": 13890,
+          "sha256": "f053e975501d88d8b345bb41c92f95bebce601a78994ceeefd533a70aee6419b"
+        },
+        {
+          "path": "products/guard-source.json",
+          "bytes": 3756,
+          "sha256": "ce1efa0f094db8ecd35e1675d873aa2f2dd64c29f58b12d6c0aa6bde1ed54adc"
+        },
+        {
+          "path": "products/projector-json.json",
+          "bytes": 15197,
+          "sha256": "e8c24630c226812e5b674f6473e40de81951a05553840ae2b7e798682a0cf815"
+        },
+        {
+          "path": "products/projector-native.json",
+          "bytes": 18914,
+          "sha256": "eee9038f35a4757d928fa5311dd61f2c5a12085a5ff8e7b046ffdb55fc0488fd"
+        },
+        {
+          "path": "master/BERICHT.md",
+          "bytes": 5347,
+          "sha256": "d494ea4ce26722aae09e134452493d30af82dcb5cc9b03429a6089e70135019e"
+        },
+        {
+          "path": "master/BIO-AUFTRAG-QUELLE.json",
+          "bytes": 3177,
+          "sha256": "45c116c90b2cb7b4f2bc6deb9aed0290a1f3188d9472ff78bcdffe004bbe7bbb"
+        },
+        {
+          "path": "master/CAPTION-BIO-KORREKTUR.diff",
+          "bytes": 3735,
+          "sha256": "9c95f7b8b0d323894db33615b522a8beca58ca932b1d5fbdca0fa7ae25b7953e"
+        },
+        {
+          "path": "master/CAPTIONS-UTM-ABEND.json",
+          "bytes": 6192,
+          "sha256": "99b48e144735cf96be7cce9e072dfb66267b68f930f63296de1e40eb6f557014"
+        },
+        {
+          "path": "master/HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+          "bytes": 1242,
+          "sha256": "90fbaac6164b633895e9a1fe719dacbc3925d3525ccf9814a417a97fc29a8566"
+        },
+        {
+          "path": "master/HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+          "bytes": 1956,
+          "sha256": "def94a989e34f2cae5656207a839e678c1f6eb365fa68bc3c6a9215228bb546f"
+        },
+        {
+          "path": "master/HISTORISCHE-QUELLEN-MAPPING.json",
+          "bytes": 1585,
+          "sha256": "7a3307cd73c6da741ed43fb4329102311bd9ed514bce0fc12bcd350ad1bcaba1"
+        },
+        {
+          "path": "master/LOCAL-ASSET-PROOF.json",
+          "bytes": 1669,
+          "sha256": "51976cd2d7559764af0529462ca5e7aed04de27802209a7068758d590ba90193"
+        },
+        {
+          "path": "master/MASTER-KONTINUITAET-20261028.json",
+          "bytes": 3859,
+          "sha256": "0d0db708076d1e60170648fcec4385a79edca73519e550b7a1a4957f6085afac"
+        },
+        {
+          "path": "master/MASTER-PLAN-ABEND.json",
+          "bytes": 7810,
+          "sha256": "198d1eda84a7770e3e6fd2e9f8fa211d2671b1ce77948e2c01315e39117695d5"
+        },
+        {
+          "path": "master/ORIGINALTAKES-ABNAHME.json",
+          "bytes": 6713,
+          "sha256": "34e7b6efd68614cd15347a776a2fe8ad80cfd7cd91fc9da1bff78fd89c613c00"
+        },
+        {
+          "path": "master/PLAN-VALIDATION.json",
+          "bytes": 582,
+          "sha256": "c0591667cb9f2900184531fd6325da598e106654cc1bcdf01e1739efb9fc88b9"
+        },
+        {
+          "path": "master/REPO-CHECK-0.json",
+          "bytes": 2368,
+          "sha256": "4f0fd4765d61069260fee6a9964da792d494a8bd75596c210955b9cb007b2341"
+        },
+        {
+          "path": "master/REPO-CHECK-1.json",
+          "bytes": 472,
+          "sha256": "addfcabd5e1eadbf2cf0dc590b5b5395182d83e64a7c1a666028928fcbc740dd"
+        },
+        {
+          "path": "master/REPO-CHECK-2.json",
+          "bytes": 2042,
+          "sha256": "584b6060f8c773fc1de8d042f5bc984c4f1200b82a75c661eb07857f8c817c04"
+        },
+        {
+          "path": "master/REPO-CHECK-3.json",
+          "bytes": 742,
+          "sha256": "ff3deee2b2c7c692dbefc7f69c35dddd5a5433cf7f109ae70e8c50d1dac9a78b"
+        },
+        {
+          "path": "master/REPO-PRODUCER.json",
+          "bytes": 1561,
+          "sha256": "ce366a07118bfd1f12b80e45e71ac6c5ffe65019eae905f905f15103b84337a9"
+        }
+      ]
+    },
+    {
+      "path": "master/HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+      "sha256": "90fbaac6164b633895e9a1fe719dacbc3925d3525ccf9814a417a97fc29a8566",
+      "bytes": 1242,
+      "data": {
+        "measuredAtUTC": "2026-10-27T18:00:10.956952+00:00",
+        "mode": "Read-only FFmpeg analysis to null sink; no output audio/video export",
+        "music": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+        "segmentSeconds": {
+          "in": 0,
+          "outExclusive": 18
+        },
+        "sampleGainDb": 0,
+        "fadesApplied": false,
+        "measurementFilter": "ebur128=peak=true",
+        "integratedLUFS": -13.2,
+        "loudnessRangeLU": 0.2,
+        "truePeakAsPrintedDbFS": -1.6,
+        "finalMasterMixApproved": false,
+        "listeningApproved": false,
+        "limits": [
+          "Raw music segment measurement; not rendered MP4 or platform transcode",
+          "No additional gain warranted solely by filename or full-track Credits statement",
+          "Final fade/edit/AAC encoding and actual listening need new finite final-file QA"
+        ],
+        "retainedSoundfontLicence": {
+          "sourceUrl": "https://sources.debian.org/data/main/f/fluid-soundfont/3.1-5.3/debian/copyright",
+          "historicalSourceCheckedAt": "2026-10-18T06:23:21.824955+00:00",
+          "retainedFile": "/workspace/luxestyle-review/owner-review-20261018/repo/fluid-soundfont-copyright.txt",
+          "sha256": "f2f5e6358fc7c1fe62aafc6c8229c4c5898e5afb0d4ce1322b15362a8cbd600e",
+          "containsMIT": true,
+          "currentWebRefetch": false
+        }
+      }
+    },
+    {
+      "path": "master/HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+      "sha256": "def94a989e34f2cae5656207a839e678c1f6eb365fa68bc3c6a9215228bb546f",
+      "bytes": 1956,
+      "data": {
+        "state": "GEOMETRY_CHECK_PASSED_FINAL_FILM_AND_PLATFORM_UI_QA_UNKNOWN",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "basis": "Morning working box began y250; a centred square excerpt starts y420. New explicit critical overlay boxes all lie inside centred9:16/4:5/1:1 excerpts. This does not prove actual UI/crop readability.",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "crops": {
+          "9:16": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920
+          },
+          "4:5_center": {
+            "x": 0,
+            "y": 285,
+            "width": 1080,
+            "height": 1350
+          },
+          "1:1_center": {
+            "x": 0,
+            "y": 420,
+            "width": 1080,
+            "height": 1080
+          }
+        },
+        "criticalOverlayBoxes": {
+          "hook_and_product_title": {
+            "x": 108,
+            "y": 470,
+            "width": 780,
+            "height": 190
+          },
+          "cta_and_brand": {
+            "x": 108,
+            "y": 1180,
+            "width": 780,
+            "height": 180
+          }
+        },
+        "textRules": {
+          "hookAndProductFontPx": 64,
+          "ctaFontPx": 72,
+          "brandFontPx": 42,
+          "maximumLinesPerOverlay": 2,
+          "plate": "Solid cream or dark taupe, contrast to be tested on final file",
+          "criticalTextBoundaries": "x108–888,y470–1360",
+          "productColourPreservation": true
+        },
+        "tests": [
+          {
+            "box": "hook_and_product_title",
+            "crop": "9:16",
+            "inside": true
+          },
+          {
+            "box": "hook_and_product_title",
+            "crop": "4:5_center",
+            "inside": true
+          },
+          {
+            "box": "hook_and_product_title",
+            "crop": "1:1_center",
+            "inside": true
+          },
+          {
+            "box": "cta_and_brand",
+            "crop": "9:16",
+            "inside": true
+          },
+          {
+            "box": "cta_and_brand",
+            "crop": "4:5_center",
+            "inside": true
+          },
+          {
+            "box": "cta_and_brand",
+            "crop": "1:1_center",
+            "inside": true
+          }
+        ],
+        "platformOfficialUISafeAreasVerified": false,
+        "actualFilmReadabilityApproved": false
+      }
+    },
+    {
+      "path": "master/HISTORISCHE-QUELLEN-MAPPING.json",
+      "sha256": "7a3307cd73c6da741ed43fb4329102311bd9ed514bce0fc12bcd350ad1bcaba1",
+      "bytes": 1585,
+      "data": {
+        "reviewDate": "2026-10-28",
+        "purpose": "Wiederauffindbare historische Befundteile im eigenständigen Übergabepaket. Keine neue Audio- oder Geometrie-Messung.",
+        "evidence": [
+          {
+            "role": "rawMusicFirst18TechnicalMeasurement",
+            "bundlePath": "HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+            "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/MUSIC-TECHNICAL-REVIEW.json",
+            "originalEvidenceDate": "2026-10-27",
+            "sha256": "90fbaac6164b633895e9a1fe719dacbc3925d3525ccf9814a417a97fc29a8566",
+            "copiedByteIdentical": true,
+            "repeatedMeasurementOn28Oct": false,
+            "scope": "Historischer roher Musikabschnitt ohne finale Mix-/Hörabnahme"
+          },
+          {
+            "role": "cropValidationReference",
+            "bundlePath": "HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+            "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/OVERLAY-CROP-PRUEFUNG.json",
+            "originalEvidenceDate": "2026-10-27",
+            "sha256": "def94a989e34f2cae5656207a839e678c1f6eb365fa68bc3c6a9215228bb546f",
+            "copiedByteIdentical": true,
+            "repeatedMeasurementOn28Oct": false,
+            "scope": "Historische rechnerische Geometrie; keine tatsächliche Film-/UI-/Lesbarkeitsabnahme"
+          }
+        ],
+        "originalTakeAcceptance": {
+          "bundlePath": "ORIGINALTAKES-ABNAHME.json",
+          "originalEvidenceDate": "2026-10-27",
+          "copiedByteIdentical": true,
+          "observedNewTakes": 0
+        },
+        "unchangedCaptions": {
+          "bundlePath": "CAPTIONS-UTM.json",
+          "originalEvidenceDate": "2026-10-27",
+          "newCreativeCreated": false
+        }
+      }
+    },
+    {
+      "path": "master/LOCAL-ASSET-PROOF.json",
+      "sha256": "51976cd2d7559764af0529462ca5e7aed04de27802209a7068758d590ba90193",
+      "bytes": 1669,
+      "data": {
+        "checkedAtUTC": "2026-10-28T18:07:56.773907+00:00",
+        "files": [
+          {
+            "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+            "exists": true,
+            "bytes": 3679836,
+            "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+            "gitBlobSha1": "05f7bc2a5fe6d9347d8f32f9c46f4fbf3d58d742",
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "codec_name": "h264",
+                  "width": 960,
+                  "height": 540,
+                  "avg_frame_rate": "25/1"
+                },
+                {
+                  "codec_name": "aac",
+                  "sample_rate": "44100",
+                  "channels": 2,
+                  "avg_frame_rate": "0/0"
+                }
+              ],
+              "format": {
+                "duration": "27.960000"
+              }
+            }
+          },
+          {
+            "path": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+            "exists": true,
+            "bytes": 11343950,
+            "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+            "gitBlobSha1": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "codec_name": "pcm_s16le",
+                  "sample_rate": "44100",
+                  "channels": 2,
+                  "avg_frame_rate": "0/0"
+                }
+              ],
+              "format": {
+                "duration": "64.307664"
+              }
+            }
+          }
+        ],
+        "credentialPresenceOnly": {
+          "CJ_API_KEY": false,
+          "CJ_EMAIL": false,
+          "CJ_ACCESS_TOKEN": false
+        },
+        "valuesReadOrPrinted": false,
+        "renderStarted": false
+      }
+    },
+    {
+      "path": "master/MASTER-KONTINUITAET-20261028.json",
+      "sha256": "0d0db708076d1e60170648fcec4385a79edca73519e550b7a1a4957f6085afac",
+      "bytes": 3859,
+      "data": {
+        "version": 1,
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "createdAtUTC": "2026-10-28T18:09:42.326959+00:00",
+        "classification": "SETZUNG: konkrete Produktions-/Abnahmeanforderungen, keine gemessene Filmfreigabe",
+        "masterCount": 1,
+        "target": {
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "durationSeconds": 18,
+          "frames": 540
+        },
+        "sameMasterAfterReencodingOrCaptionChange": true,
+        "cuts": [
+          {
+            "cutId": "HOOK_ZU_BEDIENUNG",
+            "targetFrameAt30": 60,
+            "targetSeconds": 2.0,
+            "takeBinding": "P_PROJECTION oder P_DETAIL → P_OPERATION",
+            "identityRequirement": "Gleiches Gehäuse, Halterung, Farbe und Tastenlage",
+            "actionRequirement": "Keine Schnittillusion, die sofortige Auslösung oder eine unbekannte Funktion behauptet",
+            "comparisonWindowBeforeFrames": 6,
+            "comparisonWindowAfterFrames": 6,
+            "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+            "evidenceBeforeSha256": null,
+            "evidenceAfterSha256": null,
+            "actualMasterSha256": null,
+            "reviewState": "unknown_no_final_master"
+          },
+          {
+            "cutId": "BEDIENUNG_ZU_PROJEKTION",
+            "targetFrameAt30": 228,
+            "targetSeconds": 7.6,
+            "takeBinding": "P_OPERATION → P_PROJECTION",
+            "identityRequirement": "Nachweislich dasselbe Gerät und enthaltene Motivscheibe",
+            "actionRequirement": "Tatsächliche Bedienhandlung und Projektion nachvollziehbar verbinden; kein anderes Motiv einmontieren",
+            "comparisonWindowBeforeFrames": 6,
+            "comparisonWindowAfterFrames": 6,
+            "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+            "evidenceBeforeSha256": null,
+            "evidenceAfterSha256": null,
+            "actualMasterSha256": null,
+            "reviewState": "unknown_no_final_master"
+          },
+          {
+            "cutId": "PROJEKTION_ZU_DETAIL",
+            "targetFrameAt30": 372,
+            "targetSeconds": 12.4,
+            "takeBinding": "P_PROJECTION → P_DETAIL",
+            "identityRequirement": "Gleiche Gerätestellung/Abdeckung und tatsächliche Farbwirkung",
+            "actionRequirement": "Keine Hauben-Abhebung oder unpassender versteckter Zwischenschnitt",
+            "comparisonWindowBeforeFrames": 6,
+            "comparisonWindowAfterFrames": 6,
+            "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+            "evidenceBeforeSha256": null,
+            "evidenceAfterSha256": null,
+            "actualMasterSha256": null,
+            "reviewState": "unknown_no_final_master"
+          },
+          {
+            "cutId": "DETAIL_ZU_SCHLUSS",
+            "targetFrameAt30": 420,
+            "targetSeconds": 14.0,
+            "takeBinding": "P_DETAIL → P_HERO",
+            "identityRequirement": "Gleiche Einheit, Farbe und physisch passende Projektion",
+            "actionRequirement": "Schluss mindestens vier echte kontinuierliche Sekunden; kein Standbild/Zoomersatz",
+            "comparisonWindowBeforeFrames": 6,
+            "comparisonWindowAfterFrames": 6,
+            "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+            "evidenceBeforeSha256": null,
+            "evidenceAfterSha256": null,
+            "actualMasterSha256": null,
+            "reviewState": "unknown_no_final_master"
+          }
+        ],
+        "sourceQualityState": "GEMESSEN: vorhandene Planungsquelle 960x540/25fps; keine native Premium-30fps-Quelle",
+        "allNativeOriginalsRequired": true,
+        "approvedCommercialRightsReference": null,
+        "powerCHPlugReference": null,
+        "musicalRule": "Kein Voiceover. Nur kanonisches luxe-premium.wav nach Endmix-/Hör-/Rechteprüfung. Keine neuen Effekte.",
+        "ownerApprovalBeforeVariants": true,
+        "publishable": false,
+        "newRenderedMaster": null
+      }
+    },
+    {
+      "path": "master/MASTER-PLAN-ABEND.json",
+      "sha256": "198d1eda84a7770e3e6fd2e9f8fa211d2671b1ce77948e2c01315e39117695d5",
+      "bytes": 7810,
+      "data": {
+        "status": "same_open_master_plan_not_rendered_not_publishable",
+        "master_count": 1,
+        "source": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+        "source_sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+        "source_fps": 25,
+        "target_fps": 30,
+        "duration_seconds": 18,
+        "speed": 1,
+        "optical_flow": false,
+        "audio": {
+          "only_permitted_music": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+          "voiceover": false,
+          "source_audio": false,
+          "listening_approval": false,
+          "rawMusicFirst18TechnicalMeasurement": "HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+          "musicGainDbPlanned": 0,
+          "additionalSoundEffects": false,
+          "finalMixAndListeningApproved": false
+        },
+        "segments": [
+          {
+            "name": "hook_a",
+            "master_in": "0.00",
+            "master_out": "2.00",
+            "source_in": "20.52",
+            "source_out": "22.52",
+            "crop": {
+              "w": 540,
+              "h": 540,
+              "x": 210,
+              "y": 0
+            },
+            "text": [
+              "Dein Raum. Neues Licht."
+            ],
+            "source_first_frame": 513,
+            "source_out_exclusive_frame": 563,
+            "source_frame_count": 50,
+            "target_first_frame": 0,
+            "target_out_exclusive_frame": 60,
+            "target_frame_count": 60
+          },
+          {
+            "name": "bedienung",
+            "master_in": "2.00",
+            "master_out": "7.60",
+            "source_in": "3.00",
+            "source_out": "8.60",
+            "crop": {
+              "w": 540,
+              "h": 540,
+              "x": 300,
+              "y": 0
+            },
+            "text": [
+              "Sternenlicht-Projektor",
+              "Aus der Nähe entdecken."
+            ],
+            "text_change_master": "4.60",
+            "source_first_frame": 75,
+            "source_out_exclusive_frame": 215,
+            "source_frame_count": 140,
+            "target_first_frame": 60,
+            "target_out_exclusive_frame": 228,
+            "target_frame_count": 168
+          },
+          {
+            "name": "projektion",
+            "master_in": "7.60",
+            "master_out": "12.40",
+            "source_in": "12.36",
+            "source_out": "17.16",
+            "crop": {
+              "w": 540,
+              "h": 540,
+              "x": 210,
+              "y": 0
+            },
+            "text": [
+              "Für besondere Lichtmomente."
+            ],
+            "source_first_frame": 309,
+            "source_out_exclusive_frame": 429,
+            "source_frame_count": 120,
+            "target_first_frame": 228,
+            "target_out_exclusive_frame": 372,
+            "target_frame_count": 144
+          },
+          {
+            "name": "detail",
+            "master_in": "12.40",
+            "master_out": "14.00",
+            "source_in": "17.20",
+            "source_out": "18.80",
+            "crop": {
+              "w": 540,
+              "h": 540,
+              "x": 210,
+              "y": 0
+            },
+            "text": [],
+            "source_first_frame": 430,
+            "source_out_exclusive_frame": 470,
+            "source_frame_count": 40,
+            "target_first_frame": 372,
+            "target_out_exclusive_frame": 420,
+            "target_frame_count": 48
+          },
+          {
+            "name": "cta",
+            "master_in": "14.00",
+            "master_out": "18.00",
+            "source_in": "23.52",
+            "source_out": "27.52",
+            "crop": {
+              "w": 540,
+              "h": 540,
+              "x": 210,
+              "y": 0
+            },
+            "text": [
+              "Produkt ansehen",
+              "LuxeStyle · luxestyle.ch"
+            ],
+            "price_recheck_before_publication": true,
+            "source_first_frame": 588,
+            "source_out_exclusive_frame": 688,
+            "source_frame_count": 100,
+            "target_first_frame": 420,
+            "target_out_exclusive_frame": 540,
+            "target_frame_count": 120
+          }
+        ],
+        "open_gates": [
+          "native_premium_source_quality",
+          "commercial_video_editing_rights",
+          "default_sku_motif_assignment",
+          "final_motion_platform_crop_and_audio_review",
+          "fresh_identity_tags_availability_price_link_preflight",
+          "all_required_shots_native_quality_not_only_two_new_takes",
+          "exact_device_power_adapter_swiss_plug_binding",
+          "durable_publication_history_and_channel_prerequisites"
+        ],
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "reviewDate": "2026-10-28-abend",
+        "width": 1080,
+        "height": 1920,
+        "stableMasterIdAfterEncodingOrHookChanges": true,
+        "technicalReview": {
+          "sourceMotionCadence": 25,
+          "targetContainerCadence": 30,
+          "sourceUniqueFramesUsed": 450,
+          "repeatedTargetFrames": 90,
+          "method": "Segment-local floor(targetFrame*25/30), actual captured frames only; no optical flow or fabricated action",
+          "nativeSmooth30fpsProven": false,
+          "premiumSourceReplacementStillRequired": true,
+          "hookB": "Alternative production take: product-detail reveal with Licht im Detail.; no invented source timecode or additional export before first master approval.",
+          "inheritedMorningProgress": "Explicit 540-frame mapping for inherited 25fps reference; final CTA avoids volatile price in locked master overlay. Neither creates new content nor passes quality gates."
+        },
+        "overlayDesign": {
+          "backgroundPalette": [
+            "taupe",
+            "cream"
+          ],
+          "actualProductColoursPreserved": true,
+          "workingSafeBox": {
+            "x": 90,
+            "y": 250,
+            "width": 810,
+            "height": 1250
+          },
+          "titleFontSizePx": 64,
+          "ctaFontSizePx": 72,
+          "brandFontSizePx": 42,
+          "maxTwoLines": true,
+          "contrastPlate": "Solid cream or dark taupe behind overlay; contrast and exact platform UI/crop still tested on actual final MP4.",
+          "platformCropQA": "No platform excerpt approved before final file review.",
+          "criticalTextRectangles": {
+            "hook_and_product_title": {
+              "x": 108,
+              "y": 470,
+              "width": 780,
+              "height": 190
+            },
+            "cta_and_brand": {
+              "x": 108,
+              "y": 1180,
+              "width": 780,
+              "height": 180
+            }
+          },
+          "cropValidationReference": "HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json"
+        },
+        "eveningReviewDate": "2026-10-27",
+        "eveningPreparation": {
+          "newCreativeOrExport": false,
+          "originalSourceAndCurrentMusicRechecked": true,
+          "specificNewPreparation": "Two explicit text rectangles validated mathematically inside centred9:16/4:5/1:1 crops; missing-native-original acceptance manifest; first18s raw music measured without media export",
+          "morningStoryboardAndSourceTimecodesRetainedAsReferenceOnly": true,
+          "currentNativeQualityOfAllNeededShotsStillRequired": true
+        },
+        "reviewStatus": "same_open_master_plan_not_rendered_not_approved",
+        "freshProductReview": "../products/AVAILABILITY-NATIVE.json",
+        "newProgress": "Vier konkrete Schnitt-Kontinuitätsprüfungen und Bio-Zielkonflikt als Voraussetzungen; kein neuer Export.",
+        "historicalEvidenceMapping": [
+          {
+            "role": "rawMusicFirst18TechnicalMeasurement",
+            "bundlePath": "HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+            "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/MUSIC-TECHNICAL-REVIEW.json",
+            "originalEvidenceDate": "2026-10-27",
+            "sha256": "90fbaac6164b633895e9a1fe719dacbc3925d3525ccf9814a417a97fc29a8566",
+            "copiedByteIdentical": true,
+            "repeatedMeasurementOn28Oct": false,
+            "scope": "Historischer roher Musikabschnitt ohne finale Mix-/Hörabnahme"
+          },
+          {
+            "role": "cropValidationReference",
+            "bundlePath": "HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+            "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/OVERLAY-CROP-PRUEFUNG.json",
+            "originalEvidenceDate": "2026-10-27",
+            "sha256": "def94a989e34f2cae5656207a839e678c1f6eb365fa68bc3c6a9215228bb546f",
+            "copiedByteIdentical": true,
+            "repeatedMeasurementOn28Oct": false,
+            "scope": "Historische rechnerische Geometrie; keine tatsächliche Film-/UI-/Lesbarkeitsabnahme"
+          }
+        ],
+        "historicalMeasurementsReusedNotRepeatedOn28Oct": true,
+        "continuityAcceptanceReference": "MASTER-KONTINUITAET-20261028.json",
+        "currentCaptionReference": "CAPTIONS-UTM-ABEND.json"
+      }
+    },
+    {
+      "path": "master/ORIGINALTAKES-ABNAHME.json",
+      "sha256": "34e7b6efd68614cd15347a776a2fe8ad80cfd7cd91fc9da1bff78fd89c613c00",
+      "bytes": 6713,
+      "data": {
+        "version": "master-original-acceptance-1",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "state": "DRAFT_AWAITING_ALL_REQUIRED_NATIVE_ORIGINALS_AND_PROOFS",
+        "actuallyReceivedNewTakes": 0,
+        "actuallyRenderedMasterMP4": null,
+        "shootCommissionedOrSent": false,
+        "newProgress": "Converts the existing shot request into a finite per-take original/identity/power/rights/quality acceptance record; all values below are requirements, not observations.",
+        "identityRequired": {
+          "productId": "gid://shopify/Product/15521256604033",
+          "variantId": "gid://shopify/ProductVariant/56197916361089",
+          "knownShopSku": "CJ-1477820492730732544",
+          "exactCJVariantId": null,
+          "motifIncludedByActualVariant": null,
+          "powerAdapterAndCHPlugAssignment": null,
+          "commercialVideoRightsProof": null
+        },
+        "originalCaptureRequirements": {
+          "minimumWidth": 1080,
+          "minimumHeight": 1920,
+          "nativeFramesPerSecond": 30,
+          "constantFrameRateRequired": true,
+          "higherNativeResolutionPermitted": true,
+          "retainedOriginalSha256Required": true,
+          "noMetadataOnlyFpsProof": true,
+          "noOldClipUpscaleOrGeneratedIntermediateFrames": true,
+          "allNeededShotsMustPass": true,
+          "notSufficient": "Two new HD takes do not make inherited960×540 projection/hero sections premium."
+        },
+        "takes": [
+          {
+            "takeId": "P_PROOF",
+            "includeInFilm": false,
+            "purpose": "One continuous evidence take/photo sequence binds actual purchased variant to filmed unit, projection and included supply; not an advertising scene.",
+            "minimumCaptureSeconds": 8,
+            "minimumCapturedFramesAt30": 240,
+            "requirements": [
+              "Full front/rear device and distinguishable housing/buttons/bracket/logo if any",
+              "Actual model label and packaging/SKU readable, no new CJvid inferred from PID",
+              "Actual cable and any included adapter/plug shown; label voltage/current/frequency and connector visible; inclusion and CH suitability independently verified before claims",
+              "Same unit proceeds in unbroken evidence recording to its actual projection; no composed or substituted pattern",
+              "Commercial filming/editing/advertising permission proof with exact asset/variant scope remains required"
+            ]
+          },
+          {
+            "takeId": "P_OPERATION",
+            "includeInFilm": true,
+            "purpose": "Real currently verified button operation with full device and entire hand in frame. No new function demonstrated by inference.",
+            "minimumCaptureSeconds": 8,
+            "minimumCapturedFramesAt30": 240,
+            "usableSecondsNeeded": 5.6,
+            "handlesSeconds": {
+              "before": 1,
+              "after": 1
+            },
+            "requirements": [
+              "Native portrait1080×1920/30fps or better proven original, no upscale/interpolation as quality substitute",
+              "Full hand, controls and product remain visible throughout actual action",
+              "Do not stage an unsupported function or claim a full one-button installation",
+              "Locked exposure/WB/focus; check banding under actual lighting"
+            ]
+          },
+          {
+            "takeId": "P_PROJECTION",
+            "includeInFilm": true,
+            "purpose": "Actual projection of the same exact unit and confirmed motif, covers2sHookA and4.8s projection body without repeating footage.",
+            "minimumCaptureSeconds": 9,
+            "minimumCapturedFramesAt30": 270,
+            "usableSecondsNeeded": 6.8,
+            "nonOverlappingReferenceWindowsSeconds": [
+              {
+                "in": 1,
+                "outExclusive": 3
+              },
+              {
+                "in": 3.2,
+                "outExclusive": 8
+              }
+            ],
+            "handlesSeconds": {
+              "before": 1,
+              "after": 1
+            },
+            "requirements": [
+              "Native quality gate applies to the complete needed projection footage, not only operation/detail replacement",
+              "Recorded pattern physically matches verified current sale variant/motif evidence",
+              "Keep real brightness/colours; no synthetic glow/starfield or stock replacement",
+              "No clipping focus hunt or exposure pumping at dark-to-light transition"
+            ]
+          },
+          {
+            "takeId": "P_DETAIL",
+            "includeInFilm": true,
+            "purpose": "Continuous real device detail; can cover2sHookB choice and separate1.6s detail insert without replay.",
+            "minimumCaptureSeconds": 6,
+            "minimumCapturedFramesAt30": 180,
+            "usableSecondsNeeded": 3.6,
+            "nonOverlappingReferenceWindowsSeconds": [
+              {
+                "in": 1,
+                "outExclusive": 3
+              },
+              {
+                "in": 3.4,
+                "outExclusive": 5
+              }
+            ],
+            "handlesSeconds": {
+              "before": 1,
+              "after": 1
+            },
+            "requirements": [
+              "Same current exact product form/colour/logo and real gentle movement",
+              "No inappropriate cover lift or cut inside selected detail",
+              "No invented crop padding or hand reconstruction",
+              "HookA/B are choices for same first master, not an instruction for two exports"
+            ]
+          },
+          {
+            "takeId": "P_HERO",
+            "includeInFilm": true,
+            "purpose": "Quiet continuous hero ending with actual product and matching projection visible together where physically possible.",
+            "minimumCaptureSeconds": 6,
+            "minimumCapturedFramesAt30": 180,
+            "usableSecondsNeeded": 4,
+            "handlesSeconds": {
+              "before": 1,
+              "after": 1
+            },
+            "requirements": [
+              "Same exact device and real same-pattern projection, no photocomposite",
+              "Leave clear space for4sCTA at specified lower box without covering product controls",
+              "Native sharpness and colour gate applies to all4s, not freeze-frame/photo zoom"
+            ]
+          }
+        ],
+        "finalMasterRequirements": {
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "durationSeconds": 18,
+          "frames": 540,
+          "codec": "H264/yuv420p",
+          "audio": "Only canonical luxe-premium.wav, AAC stereo; no voiceover/no source audio/no other effects",
+          "musicStartReferenceSeconds": 0,
+          "musicEndReferenceSeconds": 18,
+          "musicFadeInSeconds": 0.15,
+          "musicFadeOutSeconds": 0.6,
+          "musicSelectionAndPhraseListeningApproved": false,
+          "stableMasterId": "luxe_sternenprojektor_master_20261018",
+          "approvalRequiredBeforeVariants": true,
+          "mp4Sha256AndPerChannelEvidenceRequired": true
+        },
+        "acceptanceRecordForEachActualOriginal": {
+          "filename": null,
+          "sha256": null,
+          "actualWidth": null,
+          "actualHeight": null,
+          "actualRate": null,
+          "actualFrameCount": null,
+          "actualDuration": null,
+          "sourceOfOriginal": null,
+          "unitAndMotifProofReference": null,
+          "commercialRightsReference": null,
+          "visualReviewer": null,
+          "reviewedAtUTC": null,
+          "passed": false
+        },
+        "publishable": false
+      }
+    },
+    {
+      "path": "master/PLAN-VALIDATION.json",
+      "sha256": "c0591667cb9f2900184531fd6325da598e106654cc1bcdf01e1739efb9fc88b9",
+      "bytes": 582,
+      "data": {
+        "checkedAtUTC": "2026-10-28T18:09:42.326959+00:00",
+        "scope": "Plan- und Zielkonsistenz, keine Filmqualität/Rechteabnahme",
+        "sameMasterIdPreserved": true,
+        "sixChannels": true,
+        "uniqueUTMUrls": true,
+        "allBlocked": true,
+        "productAndVariantTargetsPreserved": true,
+        "onlyTwoCaptionsChanged": [
+          "instagram",
+          "tiktok"
+        ],
+        "otherFourCaptionsUnchanged": true,
+        "fourContinuityCuts": true,
+        "cutFrames": [
+          60,
+          228,
+          372,
+          420
+        ],
+        "targetFrames": 540,
+        "historicalReferencesPresent": true,
+        "noNewMasterMP4": true,
+        "noRemoteWrites": true
+      }
+    },
+    {
+      "path": "master/REPO-CHECK-0.json",
+      "sha256": "4f0fd4765d61069260fee6a9964da792d494a8bd75596c210955b9cb007b2341",
+      "bytes": 2368,
+      "data": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "/**\n * CJ-Zugangsmarke holen und auf der Platte zwischenspeichern.\n *\n * WARUM (gemessen 24.10.2026): `authentication/getAccessToken` darf nur **alle fünf Minuten**\n * gerufen werden. Danach antwortet CJ mit `16900202`, und das sieht aus wie ein kaputter\n * Zugang, ist aber nur eine Drosselung. Mehrere Läufe hintereinander — genau das, was ein\n * Trockenlauf-vor-Scharflauf erzeugt — laufen ohne Zwischenspeicher zuverlässig hinein.\n *\n * Die Marke gilt laut Antwort rund 15 Tage. Zwischengespeichert wird sie mit ihrem\n * Ablaufzeitpunkt und einem Sicherheitsabstand; eine abgelaufene Marke wird verworfen, nicht\n * geraten. Lässt sich die Datei nicht lesen oder schreiben, läuft alles weiter — der\n * Zwischenspeicher ist eine Abkürzung, keine Bedingung.\n */\nimport { readFile, writeFile } from 'node:fs/promises';\nimport { cjFetch } from './cj_fetch.mjs';\n\nconst BASE = 'https://developers.cjdropshipping.com/api2.0/v1';\nconst PUFFER_MS = 5 * 60 * 1000;\n\nexport async function cjToken({ email = process.env.CJ_EMAIL, key = process.env.CJ_API_KEY,\n  cache = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json', jetzt = Date.now() } = {}) {\n  if (!email || !key) return '';\n  try {\n    const d = JSON.parse(await readFile(cache, 'utf8'));\n    if (d?.token && Number(d.exp) - PUFFER_MS > jetzt) return d.token;\n  } catch { /* kein Zwischenspeicher: normal holen */ }\n\n  const r = await cjFetch(`${BASE}/authentication/getAccessToken`, {\n    context: 'CJ-Anmeldung', headers: { 'Content-Type': 'application/json' },\n    init: { method: 'POST', body: JSON.stringify({ email, password: key }) },\n  });\n  const token = r?.data?.accessToken || '';\n  const exp = Date.parse(r?.data?.accessTokenExpiryDate || '') || (jetzt + 24 * 3600 * 1000);\n  if (token) { try { await writeFile(cache, JSON.stringify({ token, exp })); } catch { /* egal */ } }\n  return token;\n}\n",
+            "encoding": "utf-8",
+            "sha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf",
+            "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/cj_token.mjs",
+            "display_title": "cj_token.mjs"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "path": "master/REPO-CHECK-1.json",
+      "sha256": "addfcabd5e1eadbf2cf0dc590b5b5395182d83e64a7c1a666028928fcbc740dd",
+      "bytes": 472,
+      "data": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "",
+            "encoding": "utf-8",
+            "sha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+            "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/luxe-premium.wav",
+            "display_title": "luxe-premium.wav"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "path": "master/REPO-CHECK-2.json",
+      "sha256": "584b6060f8c773fc1de8d042f5bc984c4f1200b82a75c661eb07857f8c817c04",
+      "bytes": 2042,
+      "data": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "Techno-/Electronic-Tracks für LuxeStyle-Reels — royalty-free, lizenzkonform.\nQuelle: Kevin MacLeod (incompetech.com) · Lizenz: Creative Commons BY 4.0\n(https://creativecommons.org/licenses/by/4.0/). Bei Verwendung wird die\nQuellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).\n\n- voltaic.mp3          → \"Voltaic\" by Kevin MacLeod\n- electrodoodle.mp3    → \"Electrodoodle\" by Kevin MacLeod\n- digital-lemonade.mp3 → \"Digital Lemonade\" by Kevin MacLeod\n\n— ORIGINAL (selbst synthetisiert, automation/make_hype_music.py) — 100% royalty-free, keine Attribution nötig:\n- luxe-hype1.wav  (dark/drive, ~150 BPM)\n- luxe-hype2.wav  (bouncy, ~146 BPM)\n- luxe-hype3.wav  (energetic, ~152 BPM)\n- luxe-house1.wav  (House, 124 BPM, A-Moll)\n- luxe-house2.wav  (House, 126 BPM, treibend)\n\n— ORIGINAL PRO (echte GM-Instrumente via FluidSynth, automation/music/produce/) — 100% royalty-free:\n- luxe-hype-pro.mp3  (Hype/Trap, 150 BPM half-time, c-Moll; gleitendes 808-Sub, Hi-Hat-Rolls,\n  Vibraphon-Lead, warmes Pad; Intro→Drop @6,4s mit Noise-Riser + Sub-Impact; gemastert -13,4 LUFS/-0,4 dBTP).\n  Reproduzierbar: bash automation/music/produce/make_hype_pro.sh\n  (braucht fluidsynth + fluid-soundfont-gm + sox + ffmpeg + numpy/scipy).\n\n- luxe-premium.wav  (ELEGANT/PREMIUM, F-Dur, 96 BPM, ~64s; Grand Piano + warme Streicher +\n  Akustik-Bass + Glockenspiel + dezenter Soft-Groove, Progression F-C-Dm-Bb mit Aufbau;\n  gemastert -14 LUFS. Für Marken-/Premium-Reels. Reproduzierbar: bash automation/music/produce/make_premium.sh)\n",
+            "encoding": "utf-8",
+            "sha": "159e308cf68e88841b810a88882856101fdefb42",
+            "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/CREDITS.txt",
+            "display_title": "CREDITS.txt"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "path": "master/REPO-CHECK-3.json",
+      "sha256": "ff3deee2b2c7c692dbefc7f69c35dddd5a5433cf7f109ae70e8c50d1dac9a78b",
+      "bytes": 742,
+      "data": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+            }
+          ],
+          "structuredContent": {
+            "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}",
+            "error_code": "NOT_FOUND",
+            "error_data": {
+              "message": "Not Found",
+              "documentation_url": "https://docs.github.com/rest/repos/contents#get-repository-content",
+              "status": "404"
+            }
+          },
+          "isError": true
+        }
+      }
+    },
+    {
+      "path": "master/REPO-PRODUCER.json",
+      "sha256": "ce366a07118bfd1f12b80e45e71ac6c5ffe65019eae905f905f15103b84337a9",
+      "bytes": 1561,
+      "data": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "content": "#!/usr/bin/env bash\n# LuxeStyle Producer — regeneriert automation/music/luxe-premium.wav reproduzierbar.\n# Elegante Premium-Spur (Grand Piano + Streicher + Akustik-Bass + Glockenspiel + Soft-Groove),\n# F-Dur, 96 BPM, ~64s, mit Aufbau. Für Marken-/Premium-Reels (render_brand_video.py).\n# Voraussetzungen (ephemerer Container, einmalig):\n#   apt-get install -y fluidsynth fluid-soundfont-gm sox ffmpeg python3-numpy python3-scipy\nset -euo pipefail\nHERE=\"$(cd \"$(dirname \"$0\")\" && pwd)\"\nOUT=\"$(cd \"$HERE/..\" && pwd)/luxe-premium.wav\"\nSF=\"${SF2:-/usr/share/sounds/sf2/FluidR3_GM.sf2}\"\n[ -f \"$SF\" ] || { echo \"SoundFont fehlt: $SF (apt install fluid-soundfont-gm)\"; exit 1; }\n\npython3 \"$HERE/build_premium_midi.py\"\nfluidsynth -ni -g 0.9 -r 44100 \"$SF\" /tmp/premium.mid -F /tmp/premium_raw.wav\nsox /tmp/premium_raw.wav /tmp/premium_rev.wav reverb 28 50 100 norm -2\nffmpeg -hide_banner -loglevel error -y -i /tmp/premium_rev.wav \\\n  -af \"acompressor=threshold=-20dB:ratio=2.5:attack=8:release=180:makeup=3,highpass=f=32,loudnorm=I=-14:TP=-1.2,alimiter=limit=0.92:asc=true\" \\\n  -ar 44100 \"$OUT\"\necho \">> $OUT\"\n",
+          "encoding": "utf-8",
+          "sha": "c4f66163742cbfc7e4fc93c1f1834b96df559186",
+          "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/produce/make_premium.sh",
+          "display_title": "make_premium.sh"
+        },
+        "isError": false
+      }
+    }
+  ],
+  "morningArchiveReference": {
+    "path": "dropship/codex-handoff-20261018/MASTER-REFERENZEN-20261028.json",
+    "gitBlobSha": "917808f94652c8b4ab6e9ec63bc84dbdea7ddfd7"
+  }
+}
