@@ -149,6 +149,9 @@ jobs:
           node --check automation/printful_sync.mjs
           node --check automation/schmuck_gruppen.mjs
           node --check automation/schmuck_menue.mjs
+          node --check automation/rucksaecke_gruppen.mjs
+          node --check automation/rucksaecke_menue.mjs
+          node --check automation/kategorie_seo_dubletten.mjs
           node --check automation/lib/collection_web.mjs
           node --check automation/lib/beleg_woerter.mjs
           node --check automation/lib/sperr_tags.mjs
@@ -203,6 +206,10 @@ jobs:
           # Schmuck-Taxonomie (Bereichsdatei schmuck-uhren.json): Adapter gegen das Orakel des Messwerkzeugs, Menue-Umbau, Gruppen-Sammlungen; ohne Netz
           node automation/lib/bereich_taxonomie_test.mjs
           node automation/lib/schmuck_menue_test.mjs
+          # Rucksack-Taxonomie (Bereichsdatei rucksaecke.json): Menue-Umbau «Taschen & Rucksaecke», Gruppen-Sammlungen; ohne Netz
+          node automation/lib/rucksaecke_menue_test.mjs
+          # Doppelte Seitentitel bei Sammlungen (Damen/Herren-Paare, Rucksack-Chips): Plan und Lauf mit Attrappe; ohne Netz
+          node automation/lib/seo_dubletten_test.mjs
           node automation/lib/stecker_cj_test.mjs
           # Grind 2.0 (Pipeline, Fracht, Preis, Dubletten, Google-Kategorie, Plan, Schema): 27.10.2026 (Gegenlesung) lief KEIN Test davon in einem Workflow.
           # Der Test grind2_test.mjs prueft, dass jede Grind-Testdatei hier steht. Daten unter /tmp fehlen im frischen Checkout: die Tests melden «uebersprungen» statt zu scheitern.

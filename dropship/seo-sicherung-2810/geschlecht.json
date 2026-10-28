@@ -1,0 +1,550 @@
+{
+ "gesichertAm": "2026-10-28T09:02:03.820Z",
+ "aenderungen": [
+  {
+   "handle": "herren-hemden",
+   "id": "gid://shopify/Collection/688585965953",
+   "alt": "Hemden online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-blusen-hemd",
+   "id": "gid://shopify/Collection/755404931463",
+   "alt": "Hemden online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-hosen",
+   "id": "gid://shopify/Collection/688585998721",
+   "alt": "Hosen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-hosen",
+   "id": "gid://shopify/Collection/688586654081",
+   "alt": "Hosen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-jacken-maentel",
+   "id": "gid://shopify/Collection/689718559105",
+   "alt": "Jacken & Mäntel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-jacken-maentel",
+   "id": "gid://shopify/Collection/755406668167",
+   "alt": "Jacken & Mäntel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-hoodies-sweatshirts",
+   "id": "gid://shopify/Collection/755404243335",
+   "alt": "Hoodies & Sweatshirts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-hoodies-sweatshirts",
+   "id": "gid://shopify/Collection/755405685127",
+   "alt": "Hoodies & Sweatshirts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-jeans",
+   "id": "gid://shopify/Collection/755132203399",
+   "alt": "Jeans online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-jeans",
+   "id": "gid://shopify/Collection/755403817351",
+   "alt": "Jeans online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sportbekleidung",
+   "id": "gid://shopify/Collection/755402408327",
+   "alt": "Sportbekleidung online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sportbekleidung",
+   "id": "gid://shopify/Collection/755407520135",
+   "alt": "Sportbekleidung online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-jacken-winter",
+   "id": "gid://shopify/Collection/755403653511",
+   "alt": "Winter- & Daunenjacken online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-jacken-winter",
+   "id": "gid://shopify/Collection/755406832007",
+   "alt": "Winter- & Daunenjacken online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-jacken-westen",
+   "id": "gid://shopify/Collection/755403686279",
+   "alt": "Westen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-westen",
+   "id": "gid://shopify/Collection/755407028615",
+   "alt": "Westen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-shorts",
+   "id": "gid://shopify/Collection/755404177799",
+   "alt": "Shorts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-shorts",
+   "id": "gid://shopify/Collection/755407126919",
+   "alt": "Shorts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-hoodies-hoodie",
+   "id": "gid://shopify/Collection/755404276103",
+   "alt": "Hoodies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-hoodies",
+   "id": "gid://shopify/Collection/755405717895",
+   "alt": "Hoodies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-hoodies-sweatshirt",
+   "id": "gid://shopify/Collection/755404308871",
+   "alt": "Sweatshirts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sweatshirts",
+   "id": "gid://shopify/Collection/755405750663",
+   "alt": "Sweatshirts online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-pullover",
+   "id": "gid://shopify/Collection/755404603783",
+   "alt": "Pullover & Strick online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-pullover-strick",
+   "id": "gid://shopify/Collection/755405980039",
+   "alt": "Pullover & Strick online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-pullover-rollkragen",
+   "id": "gid://shopify/Collection/755404636551",
+   "alt": "Rollkragenpullover online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-pullover-rollkragen",
+   "id": "gid://shopify/Collection/755406078343",
+   "alt": "Rollkragenpullover online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-pullover-strick",
+   "id": "gid://shopify/Collection/755404669319",
+   "alt": "Strickpullover online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-pullover-strickpullover",
+   "id": "gid://shopify/Collection/755406012807",
+   "alt": "Strickpullover online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-poloshirts-kurzarm",
+   "id": "gid://shopify/Collection/755405881735",
+   "alt": "Kurzarm online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-t-shirts-kurzarm",
+   "id": "gid://shopify/Collection/755406504327",
+   "alt": "Kurzarm online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-poloshirts-langarm",
+   "id": "gid://shopify/Collection/755405914503",
+   "alt": "Langarm online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-t-shirts-langarm",
+   "id": "gid://shopify/Collection/755406537095",
+   "alt": "Langarm online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-overalls",
+   "id": "gid://shopify/Collection/755407487367",
+   "alt": "Overalls & Jumpsuits online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "kinder-baby-overalls",
+   "id": "gid://shopify/Collection/755407716743",
+   "alt": "Overalls & Jumpsuits online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-wanderschuhe",
+   "id": "gid://shopify/Collection/755410141575",
+   "alt": "Wanderschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-wanderschuhe",
+   "id": "gid://shopify/Collection/755412369799",
+   "alt": "Wanderschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-winterschuhe",
+   "id": "gid://shopify/Collection/755410174343",
+   "alt": "Winterschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-winterschuhe",
+   "id": "gid://shopify/Collection/755412402567",
+   "alt": "Winterschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-stiefel",
+   "id": "gid://shopify/Collection/755410207111",
+   "alt": "Stiefel & Stiefeletten online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-stiefel",
+   "id": "gid://shopify/Collection/755412435335",
+   "alt": "Stiefel & Stiefeletten online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-stiefel-stiefeletten",
+   "id": "gid://shopify/Collection/755410239879",
+   "alt": "Stiefeletten & Ankle Boots online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-stiefel-stiefeletten",
+   "id": "gid://shopify/Collection/755412468103",
+   "alt": "Stiefeletten & Ankle Boots online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-stiefel-cowboy-worker",
+   "id": "gid://shopify/Collection/755410305415",
+   "alt": "Cowboy-, Worker- & Bikerstiefel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-stiefel-cowboy-worker",
+   "id": "gid://shopify/Collection/755412500871",
+   "alt": "Cowboy-, Worker- & Bikerstiefel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-pantoletten",
+   "id": "gid://shopify/Collection/755410403719",
+   "alt": "Pantoletten, Mules & Clogs online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sandalen-pantoletten-mules",
+   "id": "gid://shopify/Collection/755412599175",
+   "alt": "Pantoletten, Mules & Clogs online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-hausschuhe",
+   "id": "gid://shopify/Collection/755410698631",
+   "alt": "Hausschuhe & Pantoffeln online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-hausschuhe",
+   "id": "gid://shopify/Collection/755412664711",
+   "alt": "Hausschuhe & Pantoffeln online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "kinder-hausschuhe",
+   "id": "gid://shopify/Collection/755414237575",
+   "alt": "Hausschuhe & Pantoffeln online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sportschuhe",
+   "id": "gid://shopify/Collection/755410731399",
+   "alt": "Sport-, Lauf- & Tanzschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sportschuhe",
+   "id": "gid://shopify/Collection/755412697479",
+   "alt": "Sport-, Lauf- & Tanzschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sportschuhe-laufschuhe",
+   "id": "gid://shopify/Collection/755410764167",
+   "alt": "Laufschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sportschuhe-laufschuhe",
+   "id": "gid://shopify/Collection/755412730247",
+   "alt": "Laufschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sportschuhe-training-fitness",
+   "id": "gid://shopify/Collection/755410796935",
+   "alt": "Trainings- & Fitnessschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sportschuhe-training-fitness",
+   "id": "gid://shopify/Collection/755412763015",
+   "alt": "Trainings- & Fitnessschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sneaker",
+   "id": "gid://shopify/Collection/755410829703",
+   "alt": "Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sneaker",
+   "id": "gid://shopify/Collection/755412861319",
+   "alt": "Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sneaker-plateau-chunky",
+   "id": "gid://shopify/Collection/755410862471",
+   "alt": "Plateau- & Chunky-Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sneaker-plateau-chunky",
+   "id": "gid://shopify/Collection/755412959623",
+   "alt": "Plateau- & Chunky-Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sneaker-leder-sneaker",
+   "id": "gid://shopify/Collection/755410895239",
+   "alt": "Leder-Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sneaker-leder-sneaker",
+   "id": "gid://shopify/Collection/755413057927",
+   "alt": "Leder-Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sneaker-mesh-atmungsaktiv",
+   "id": "gid://shopify/Collection/755410928007",
+   "alt": "Mesh- & Atmungsaktive Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sneaker-mesh-atmungsaktiv",
+   "id": "gid://shopify/Collection/755413090695",
+   "alt": "Mesh- & Atmungsaktive Sneaker online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-reisetaschen",
+   "id": "gid://shopify/Collection/755411321223",
+   "alt": "Reise- & Sporttaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-reisetaschen",
+   "id": "gid://shopify/Collection/755413320071",
+   "alt": "Reise- & Sporttaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-shopper",
+   "id": "gid://shopify/Collection/755411353991",
+   "alt": "Shopper & Tragetaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-shopper",
+   "id": "gid://shopify/Collection/755413451143",
+   "alt": "Shopper & Tragetaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-handtaschen",
+   "id": "gid://shopify/Collection/755411386759",
+   "alt": "Handtaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-handtaschen",
+   "id": "gid://shopify/Collection/755413483911",
+   "alt": "Handtaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-umhaengetaschen",
+   "id": "gid://shopify/Collection/755411419527",
+   "alt": "Umhänge- & Schultertaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-umhaengetaschen",
+   "id": "gid://shopify/Collection/755413516679",
+   "alt": "Umhänge- & Schultertaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-umhaengetaschen-crossbody",
+   "id": "gid://shopify/Collection/755411452295",
+   "alt": "Crossbody Bags online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-umhaengetaschen-crossbody",
+   "id": "gid://shopify/Collection/755413549447",
+   "alt": "Crossbody Bags online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-umhaengetaschen-schultertaschen",
+   "id": "gid://shopify/Collection/755411485063",
+   "alt": "Schultertaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-umhaengetaschen-schultertaschen",
+   "id": "gid://shopify/Collection/755413582215",
+   "alt": "Schultertaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-umhaengetaschen-leder",
+   "id": "gid://shopify/Collection/755411517831",
+   "alt": "Leder-Umhängetaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-umhaengetaschen-leder",
+   "id": "gid://shopify/Collection/755413614983",
+   "alt": "Leder-Umhängetaschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-umhaengetaschen-nylon-canvas",
+   "id": "gid://shopify/Collection/755411550599",
+   "alt": "Nylon- & Canvas-Taschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-umhaengetaschen-nylon-canvas",
+   "id": "gid://shopify/Collection/755413647751",
+   "alt": "Nylon- & Canvas-Taschen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-weitere-taschen",
+   "id": "gid://shopify/Collection/755411583367",
+   "alt": "Weitere Taschen & Rucksäcke online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-weitere-taschen",
+   "id": "gid://shopify/Collection/755413680519",
+   "alt": "Weitere Taschen & Rucksäcke online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-kartenetuis",
+   "id": "gid://shopify/Collection/755411616135",
+   "alt": "Kartenetuis & Kartenhalter online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-kartenetuis",
+   "id": "gid://shopify/Collection/755413713287",
+   "alt": "Kartenetuis & Kartenhalter online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-geldboersen",
+   "id": "gid://shopify/Collection/755411648903",
+   "alt": "Geldbörsen & Portemonnaies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-geldboersen",
+   "id": "gid://shopify/Collection/755413746055",
+   "alt": "Geldbörsen & Portemonnaies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-geldboersen-kurz",
+   "id": "gid://shopify/Collection/755411714439",
+   "alt": "Kurze Geldbörsen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-geldboersen-kurz",
+   "id": "gid://shopify/Collection/755413778823",
+   "alt": "Kurze Geldbörsen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-geldboersen-leder",
+   "id": "gid://shopify/Collection/755411747207",
+   "alt": "Leder-Geldbörsen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-geldboersen-leder",
+   "id": "gid://shopify/Collection/755413811591",
+   "alt": "Leder-Geldbörsen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-guertel",
+   "id": "gid://shopify/Collection/755411779975",
+   "alt": "Gürtel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-guertel",
+   "id": "gid://shopify/Collection/755413844359",
+   "alt": "Gürtel online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sturmhauben-gesichtsmasken",
+   "id": "gid://shopify/Collection/755411878279",
+   "alt": "Sturmhauben & Gesichtsmasken online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sturmhauben-gesichtsmasken",
+   "id": "gid://shopify/Collection/755413877127",
+   "alt": "Sturmhauben & Gesichtsmasken online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-kopfbedeckung",
+   "id": "gid://shopify/Collection/755411911047",
+   "alt": "Mützen, Hüte & Caps online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-kopfbedeckung",
+   "id": "gid://shopify/Collection/755413909895",
+   "alt": "Mützen, Hüte & Caps online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-kopfbedeckung-caps",
+   "id": "gid://shopify/Collection/755411943815",
+   "alt": "Caps & Kappen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-kopfbedeckung-caps",
+   "id": "gid://shopify/Collection/755413942663",
+   "alt": "Caps & Kappen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-kopfbedeckung-muetzen",
+   "id": "gid://shopify/Collection/755411976583",
+   "alt": "Mützen & Beanies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-kopfbedeckung-muetzen",
+   "id": "gid://shopify/Collection/755413975431",
+   "alt": "Mützen & Beanies online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-kopfbedeckung-huete",
+   "id": "gid://shopify/Collection/755412042119",
+   "alt": "Hüte online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-kopfbedeckung-huete",
+   "id": "gid://shopify/Collection/755414008199",
+   "alt": "Hüte online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-handschuhe",
+   "id": "gid://shopify/Collection/755412205959",
+   "alt": "Handschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-handschuhe",
+   "id": "gid://shopify/Collection/755414040967",
+   "alt": "Handschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-handschuhe-sport-outdoor",
+   "id": "gid://shopify/Collection/755412271495",
+   "alt": "Ski-, Velo- & Outdoor-Handschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-handschuhe-sport-outdoor",
+   "id": "gid://shopify/Collection/755414073735",
+   "alt": "Ski-, Velo- & Outdoor-Handschuhe online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "damen-sonnenbrillen",
+   "id": "gid://shopify/Collection/755412304263",
+   "alt": "Sonnenbrillen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sonnenbrillen",
+   "id": "gid://shopify/Collection/755414106503",
+   "alt": "Sonnenbrillen online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "herren-sandalen",
+   "id": "gid://shopify/Collection/755412533639",
+   "alt": "Sandalen & Pantoletten online kaufen | LuxeStyle CH"
+  },
+  {
+   "handle": "kinder-sandalen",
+   "id": "gid://shopify/Collection/755414204807",
+   "alt": "Sandalen & Pantoletten online kaufen | LuxeStyle CH"
+  }
+ ]
+}
