@@ -5,12 +5,12 @@ import { readFileSync, mkdtempSync, rmSync, existsSync, mkdirSync } from 'node:f
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { AESTE, ERSETZT, UMHAENGEN, KURZ, MAX_TITEL, PFAD, RUCKSACK_GRUPPEN, RUCKSAECKE, alleHandles, neueHandles, planTitel, menueTitel, tagVon, kategorieVon, gruppenPlan, handleVon,
-  rucksackMenue, umhaengenAn, ohneRucksackEintraege, pruefeRucksack, titelWarnungen } from './rucksaecke_menue.mjs';
+  rucksackMenue, umhaengenAn, ohneRucksackEintraege, pruefeRucksack, titelWarnungen, ERSETZT_ALLE } from './rucksaecke_menue.mjs';
 import { bereichAuswahl } from './bereich_taxonomie.mjs';
 import { eingabeAus } from '../menu_eintrag_einfuegen.mjs';
 import { tiefe, suche, gleicheZiele, flachMitZiel } from './menue_plan.mjs';
-import { rucksackMenueLauf } from '../rucksaecke_menue.mjs';
-import { rucksackGruppenLauf } from '../rucksaecke_gruppen.mjs';
+import { rucksackMenueLauf, optionenAusEnv as menueOptionen } from '../rucksaecke_menue.mjs';
+import { rucksackGruppenLauf, optionenAusEnv as gruppenOptionen } from '../rucksaecke_gruppen.mjs';
 import { gruppenLauf } from '../schmuck_gruppen.mjs';
 
 let ok = 0, fehl = 0;
@@ -178,15 +178,16 @@ ist('ohne Fehlende: nichts fehlt, 3 entfernt, 3 neu, 1 umgehängt im Protokoll',
 // ── Die Läufe mit einer Attrappe der Shopify-Abfrage ──
 const TMP = mkdtempSync(join(tmpdir(), 'rucksack-test-'));
 const URL_VON_GID = Object.fromEntries(alleHandles().map(h => [GID(h), `/en/collections/${h}`]));
-function attrappe({ collections = {}, kanaele = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }], menuUpdateFehler = [], verfaelsche = false, nachSchreiben = null, beimLesen = null } = {}) {
-  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0 };
+function attrappe({ collections = {}, kanaele = [{ isPublished: true, publication: { id: 'gid://pub/1', name: 'Online Store' } }], menuUpdateFehler = [], verfaelsche = false, nachSchreiben = null, beimLesen = null, menu = null, nachLeseFehler = false } = {}) {
+  const z = { menu: kopie(menu || MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0, geschrieben: false };
   const aufrufe = [];
   const lesbar = items => items.map(i => ({ id: i.id || `gid://shopify/MenuItem/neu-${++z.n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? URL_VON_GID[i.resourceId] ?? (i.type === 'COLLECTION' ? '/collections/x' : null), tags: i.tags || [], items: lesbar(i.items || []) }));
   const q = async (query, v = {}) => {
     aufrufe.push({ query, v: kopie(v) });
-    if (/menus\(first/.test(query)) { z.gelesen++; if (beimLesen && beimLesen.nr === z.gelesen) z.menu = beimLesen.aendere(kopie(z.menu)); return { menus: { nodes: [kopie(z.menu)] } }; }
+    if (/menus\(first/.test(query)) { z.gelesen++; if (nachLeseFehler && z.geschrieben) throw new Error('Netzfehler beim Nachlesen'); if (beimLesen && beimLesen.nr === z.gelesen) z.menu = beimLesen.aendere(kopie(z.menu)); return { menus: { nodes: [kopie(z.menu)] } }; }
     if (/menuUpdate/.test(query)) {
       if (menuUpdateFehler.length) return { menuUpdate: { menu: null, userErrors: menuUpdateFehler } };
+      z.menuUpdateVariablen = { id: v.id, t: v.t, h: v.h }; z.geschrieben = true;
       z.menu = { ...z.menu, items: lesbar(v.i) };
       if (verfaelsche) taschen(z.menu.items).find(x => x.title === 'Spezial-Rucksäcke').items.pop();
       if (nachSchreiben) z.menu = nachSchreiben(kopie(z.menu));
@@ -254,7 +255,9 @@ const frisch = n => { mkdirSync(join(TMP, n), { recursive: true }); return datei
   const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('m5');
   const web = webAttrappe(), r = await rucksackMenueLauf(a.q, { live: true, web, ...d, jetzt: () => new Date('2026-10-28T08:00:00Z'), out: s.out, err: s.err });
   ist('LIVE, alles da: Exit 0, genau ein menuUpdate, HTTP-Prüfung für alle 17 Ziele', [r.code, a.schreibend().length, web.aufrufe[0].length], [0, 1, 17]);
-  ist('Sicherung = das gelesene Menü vor dem Umbau; Ledger-Zeile geschrieben', [JSON.parse(readFileSync(d.sicherung, 'utf8')).items.length, JSON.parse(readFileSync(d.sicherung, 'utf8')).items.map(x => x.id), readFileSync(d.ledger, 'utf8').includes('menü rucksäcke umgebaut')], [18, MENU_ROH.items.map(x => x.id), true]);
+  ist('Sicherung = das gelesene Menü vor dem Umbau, Eintrag für Eintrag (nicht nur die oberste Ebene); Ledger-Zeile geschrieben', [JSON.stringify(JSON.parse(readFileSync(d.sicherung, 'utf8')).items) === JSON.stringify(MENU_ROH.items), readFileSync(d.ledger, 'utf8').includes('menü rucksäcke umgebaut')], [true, true]);
+  ist('Sicherung unterscheidet sich vom neuen Menü (Gegenprobe: der Taschen-Ast hatte vorher die drei alten Einträge)', [taschen(JSON.parse(readFileSync(d.sicherung, 'utf8')).items).some(x => x.title === 'Schulrucksäcke'), taschen(a.z.menu.items).some(x => x.title === 'Schulrucksäcke')], [true, false]);
+  ist('menuUpdate bekommt Menü-Id, Titel und Handle des gelesenen Menüs unverändert', a.z.menuUpdateVariablen, { id: MENU_ROH.id, t: MENU_ROH.title, h: MENU_ROH.handle });
   ist('im Shop steht danach der Zielbaum: drei Köpfe, der umgehängte Elektronik-Eintrag, alles andere gleich', [titel(taschen(a.z.menu.items)).filter(t => KOPF_TITEL.includes(t)), handleVon(suche(a.z.menu.items, ['Elektronik', 'Büro & Home Office', 'Laptop- & Business-Rucksäcke']))], [KOPF_TITEL, 'laptop-business-rucksaecke']);
   const gesendet = a.schreibend()[0].v.i;
   ist('gesendet: unveränderte Einträge behalten ihre Ids («Damen», «Reisegepäck»), neue Köpfe haben keine', [gesendet.find(x => x.title === 'Damen').id === MENU.find(x => x.title === 'Damen').id, taschen(gesendet).find(x => x.title === 'Reisegepäck').id === taschen(MENU).find(x => x.title === 'Reisegepäck').id, taschen(gesendet).find(x => x.title === 'Spezial-Rucksäcke').id], [true, true, undefined]);
@@ -303,6 +306,86 @@ const frisch = n => { mkdirSync(join(TMP, n), { recursive: true }); return datei
   const a = attrappe({ collections: ALLE_COLL, nachSchreiben: m => { (function lauf(l) { for (const i of l) { if (i.type === 'COLLECTION') i.url = 'https://luxestyle.ch/en' + i.url.replace(/^https:\/\/luxestyle\.ch\/en/, ''); if (i.type === 'HTTP' && i.url?.startsWith('/')) i.url = 'https://luxestyle.ch/en' + i.url; lauf(i.items); } })(m.items); return m; } }), s = still(), d = frisch('m13');
   const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
   ist('Shopify liefert Adressen mit Host und Sprachpräfix → kein Fehlalarm (Exit 0)', r.code, 0);
+}
+
+
+// Härtung nach der unabhängigen Prüfung (28.10.2026)
+{
+  const mitExtra = kopie(MENU_ROH); suche(mitExtra.items, PFAD).items.push({ id: 'gid://shopify/MenuItem/extra-1', title: 'Rucksack-Angebote', type: 'HTTP', resourceId: null, url: '/collections/rucksaecke?filter.p.tag=sale', tags: [], items: [] });
+  const a = attrappe({ collections: ALLE_COLL, menu: mitExtra }), s = still(), d = frisch('h1');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('zusätzlicher Link auf /collections/rucksaecke im Ast: Exit 2, nichts geschrieben (er würde sonst still verschwinden)', [r.code, a.schreibend().length, existsSync(d.sicherung), s.zeilen.some(z => z.includes('mehrere Einträge für rucksaecke'))], [2, 0, false, true]);
+  ist('…und der Fund steht auch in der reinen Prüfung', hat(pruefeRucksack(eingabeAus(mitExtra.items), rucksackMenue(eingabeAus(mitExtra.items), ALLE).baum, ALLE), 'mehrere Einträge für rucksaecke'), true);
+}
+{
+  const mitKind = kopie(MENU_ROH); suche(mitKind.items, [...PFAD, 'Schulrucksäcke']).items.push({ id: 'gid://shopify/MenuItem/kind-1', title: 'Grundschule', type: 'COLLECTION', resourceId: 'gid://shopify/Collection/grundschule', url: '/en/collections/grundschule', tags: [], items: [] });
+  const a = attrappe({ collections: ALLE_COLL, menu: mitKind }), s = still(), d = frisch('h2');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Unterpunkt unter einem ersetzten Eintrag: Exit 2, nichts geschrieben (er ginge sonst verloren)', [r.code, a.schreibend().length, s.zeilen.some(z => z.includes('Grundschule') && z.includes('Unterpunkte'))], [2, 0, true]);
+  // Wiederholung mit einem von Hand ergänzten Kind unter einem Kopf (Zustand nach dem Umbau)
+  const fertig = attrappe({ collections: ALLE_COLL }), s2 = still();
+  await rucksackMenueLauf(fertig.q, { live: true, web: webAttrappe(), ...frisch('h2b'), out: s2.out, err: s2.err });
+  const nachher = kopie(fertig.z.menu); taschen(nachher.items).find(x => x.title === 'Spezial-Rucksäcke').items.push({ id: 'gid://shopify/MenuItem/hand-1', title: 'Von Hand', type: 'COLLECTION', resourceId: 'gid://shopify/Collection/von-hand', url: '/en/collections/von-hand', tags: [], items: [] });
+  const wieder = attrappe({ collections: ALLE_COLL, menu: nachher }), s3 = still();
+  const r3 = await rucksackMenueLauf(wieder.q, { live: true, web: webAttrappe(), ...frisch('h2c'), out: s3.out, err: s3.err });
+  ist('Wiederholung auf dem umgebauten Menü mit einem von Hand ergänzten Kind unter einem Kopf: Exit 2 statt stilles Löschen', [r3.code, wieder.schreibend().length], [2, 0]);
+  const ohne = attrappe({ collections: ALLE_COLL, menu: fertig.z.menu }), s4 = still();
+  const r4 = await rucksackMenueLauf(ohne.q, { live: true, web: webAttrappe(), ...frisch('h2d'), out: s4.out, err: s4.err });
+  ist('Wiederholung auf dem unveränderten umgebauten Menü: Exit 0 und derselbe Baum (kein Fehlalarm der neuen Prüfung)', [r4.code, gleicheZiele(eingabeAus(ohne.z.menu.items), eingabeAus(fertig.z.menu.items)).gleich], [0, true]);
+}
+{
+  const mitLink = kopie(MENU_ROH); suche(mitLink.items, PFAD).items.push({ id: 'gid://shopify/MenuItem/link-1', title: 'Taschen Sale', type: 'HTTP', resourceId: null, url: '/collections/taschen-sale', tags: [], items: [] });
+  const a = attrappe({ collections: ALLE_COLL, menu: mitLink }), s = still(), d = frisch('h3');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('ein fremder HTTP-Link im Ast blockiert den Umbau nicht (Exit 0) und bleibt stehen', [r.code, taschen(a.z.menu.items).some(x => x.title === 'Taschen Sale')], [0, true]);
+}
+{
+  const R2 = rucksackMenue(MENU, ALLE).baum;
+  const ohneKopf = kopie(R2); taschen(ohneKopf).splice(taschen(ohneKopf).findIndex(x => x.title === 'Spezial-Rucksäcke'), 1);
+  ist('ein Kopf fehlt im Baum, obwohl seine Collection da ist → gemeldet', hat(pruefeRucksack(MENU, ohneKopf, ALLE), 'Kopf «Spezial-Rucksäcke» fehlt'), true);
+  const alleWeg = kopie(R2); suche(alleWeg, PFAD).items = suche(alleWeg, PFAD).items.filter(x => !KOPF_TITEL.includes(x.title));
+  ist('alle drei Köpfe fehlen → gemeldet (dreimal)', pruefeRucksack(MENU, alleWeg, ALLE).filter(f => f.includes('fehlt im Ast')).length, 3);
+  const altStehen = kopie(R2); taschen(altStehen).push(kopie(taschen(MENU).find(x => x.title === 'Schulrucksäcke')));
+  ist('ein alter Eintrag steht zusätzlich im neuen Baum → gemeldet', pruefeRucksack(MENU, altStehen, ALLE).length > 0, true);
+  ist('Gegenprobe: fehlt auch die Collection des Kopfes, ist ein fehlender Kopf kein Prüffehler (das meldet `fehlend`)', hat(pruefeRucksack(MENU, rucksackMenue(MENU, { ...ALLE, 'rucksaecke-spezial-gruppe': null }).baum, { ...ALLE, 'rucksaecke-spezial-gruppe': null }), 'fehlt im Ast'), false);
+  ist('ERSETZT_ALLE enthält die drei alten Handles und die drei Köpfe (ohne Doppelte)', [ERSETZT_ALLE.length, [...ERSETZT].every(h => ERSETZT_ALLE.includes(h))], [5, true]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still(), d = frisch('h4');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe({ 'rucksaecke-spezial-gruppe': { ok: false, status: 404, n: 0, grund: 'HTTP 404' } }), ...d, out: s.out, err: s.err });
+  ist('Kopf-Sammlung im Onlineshop tot (Publish-Falle): Exit 2, nichts geschrieben', [r.code, a.schreibend().length, r.fehlend], [2, 0, ['rucksaecke-spezial-gruppe']]);
+  const b = attrappe({ collections: ALLE_COLL }), s2 = still(), d2 = frisch('h5');
+  const r2 = await rucksackMenueLauf(b.q, { live: true, web: webAttrappe({ rucksaecke: { ok: false, status: 200, n: 0, grund: 'leer' } }), ...d2, out: s2.out, err: s2.err });
+  ist('Kopf «rucksaecke» leer im Onlineshop: Exit 2, nichts geschrieben', [r2.code, b.schreibend().length], [2, 0]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, menu: { ...MENU_ROH, handle: 'main-menu-entwurf' } }), s = still(), d = frisch('h6');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('die Suche liefert ein anderes Menü als «main-menu»: Exit 1, nichts geschrieben', [r.code, a.schreibend().length], [1, 0]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL, nachLeseFehler: true }), s = still(), d = frisch('h7');
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('Netzfehler beim Nachlesen NACH dem Schreiben: Exit 3 (nicht 1), Hinweis auf die Sicherung, Menü ist umgebaut', [r.code, existsSync(d.sicherung), s.zeilen.some(z => z.includes('NACH dem Schreiben') && z.includes('Sicherung')), a.z.geschrieben], [3, true, true, true]);
+}
+{
+  const a = attrappe({ collections: ALLE_COLL }), s = still();
+  const r = await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), sicherung: join(TMP, 'h8', 'sich.json'), ledger: join(TMP, 'gibt-es-nicht', 'ledger.txt'), out: s.out, err: s.err });
+  ist('Ledger-Eintrag scheitert nach dem Nachlesen: Exit 0 mit Hinweis (das Menü ist in Ordnung)', [r.code, s.zeilen.some(z => z.includes('Ledger-Eintrag ging nicht'))], [0, true]);
+}
+{
+  const a = attrappe({ collections: { ...ALLE_COLL, 'laptop-business-rucksaecke': { id: GID('laptop-business-rucksaecke'), title: 'Laptop-Rucksäcke (Shop-Titel)', productsCount: { count: 5 } } } }), s = still(), d = frisch('h9');
+  await rucksackMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: s.out, err: s.err });
+  ist('der Titel der Collection im Shop gewinnt vor dem Plan-Titel (Menükind trägt den Shop-Titel)', taschen(a.z.menu.items).find(x => x.title === 'Rucksäcke').items[0].title, 'Laptop-Rucksäcke (Shop-Titel)');
+}
+// Schalter aus der Umgebung: Trockenlauf ist Vorgabe
+{
+  const web = () => 'web';
+  ist('Menü-Schalter: ohne Umgebung kein LIVE, keine Annahme, keine Lücken, keine HTTP-Prüfung', menueOptionen({}, web), { live: false, annahmeAlle: false, erlaubeLuecken: false, web: null });
+  ist('Menü-Schalter: LIVE=1 schreibt und prüft HTTP; LIVE=0 oder «true» zählt nicht als LIVE', [menueOptionen({ LIVE: '1' }, web).live, menueOptionen({ LIVE: '1' }, web).web === web, menueOptionen({ LIVE: '0' }, web).live, menueOptionen({ LIVE: 'true' }, web).live], [true, true, false, false]);
+  ist('Menü-Schalter: WEB_PRUEFEN=1 prüft im Trockenlauf, schreibt aber nicht', [menueOptionen({ WEB_PRUEFEN: '1' }, web).live, menueOptionen({ WEB_PRUEFEN: '1' }, web).web === web], [false, true]);
+  ist('Menü-Schalter: ANNAHME_ALLE und ERLAUBE_LUECKEN nur mit «1»', [menueOptionen({ ANNAHME_ALLE: '1' }, web).annahmeAlle, menueOptionen({ ERLAUBE_LUECKEN: '1' }, web).erlaubeLuecken, menueOptionen({ ANNAHME_ALLE: 'ja' }, web).annahmeAlle], [true, true, false]);
+  ist('Gruppen-Schalter: ohne Umgebung Trockenlauf ohne HTTP-Prüfung; LIVE=1 schreibt und prüft; WEB_PRUEFEN=1 nur prüfen', [gruppenOptionen({}, web), gruppenOptionen({ LIVE: '1' }, web).live, gruppenOptionen({ LIVE: '1' }, web).web === web, gruppenOptionen({ WEB_PRUEFEN: '1' }, web).live], [{ live: false, web: null }, true, true, false]);
 }
 
 // Gruppen-Läufe

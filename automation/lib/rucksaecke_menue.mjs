@@ -37,7 +37,7 @@ export const AESTE = [
 /** Die Menü-Einträge, die durch die Köpfe ersetzt werden (Collection-Handles; das erste Vorkommen bestimmt die Stelle). */
 export const ERSETZT = ['rucksaecke-sport', 'rucksaecke-schule', 'rucksaecke'];
 /** Ersetzt wird auch ein früher schon eingesetzter Kopf (Wiederholbarkeit: ein zweiter Lauf auf dem umgebauten Menü ergibt denselben Baum, keine doppelten Köpfe). */
-const ERSETZT_ALLE = [...new Set([...ERSETZT, ...AESTE.map(a => a.kopf)])];
+export const ERSETZT_ALLE = [...new Set([...ERSETZT, ...AESTE.map(a => a.kopf)])];
 const istErsetzt = i => ERSETZT_ALLE.includes(handleVon(i));
 /** Der Eintrag ausserhalb des Astes, der auf die neue Kategorie umgehängt wird: alter Handle → neuer Handle (Titel, Platz und Geschwister bleiben). */
 export const UMHAENGEN = { 'rucksaecke-laptop': 'laptop-business-rucksaecke' };
@@ -158,6 +158,20 @@ export function pruefeRucksack(alt, neu, gids, { nachlesen = false } = {}) {
   const kopf = x => JSON.stringify(nachlesen ? { title: x.title, type: x.type, ziel: ziel(x), tags: x.tags || [] } : { id: x.id, title: x.title, type: x.type, resourceId: x.resourceId, url: x.url, tags: x.tags });
   if (kopf(sa) !== kopf(sn)) fehler.push(`der Punkt «${PFAD.join(' > ')}» selbst wurde verändert (Titel, Typ oder Ziel)`);
 
+  // Was ersetzt wird, muss dem Plan entsprechen (Prüfung 28.10.2026): je Handle höchstens ein Eintrag, und nur die Kinder des Plans dürfen unter einem ersetzten Eintrag hängen.
+  // Sonst würde ein zusätzlicher Link auf /collections/rucksaecke oder ein von Hand ergänzter Unterpunkt ohne Meldung verschwinden.
+  const weg = sa.items.filter(istErsetzt);
+  for (const h of ERSETZT_ALLE) {
+    const l = weg.filter(i => handleVon(i) === h);
+    if (l.length > 1) fehler.push(`mehrere Einträge für ${h} im Ast (${l.map(i => `«${i.title}»`).join(', ')}): nichts geändert, bitte von Hand klären`);
+  }
+  for (const i of weg) {
+    const plan = AESTE.find(x => x.kopf === handleVon(i));
+    const erlaubt = new Set(plan ? plan.kinder.map(h => gids[h]).filter(Boolean) : []);
+    const fremde = (i.items || []).filter(k => !erlaubt.has(ziel(k)));
+    if (fremde.length) fehler.push(`«${i.title}» hat Unterpunkte, die der Umbau entfernen würde: ${fremde.map(k => `«${k.title}»`).join(', ')}`);
+  }
+
   // Erwartung für alles ausserhalb der Köpfe: das alte Menü, nur mit dem umgehängten Eintrag
   const erwartet = umhaengenAn(kopie(alt), gids);
   const vgl = (a, b) => nachlesen ? gleicheZiele(a, b) : { gleich: JSON.stringify(a) === JSON.stringify(b), abweichungen: [] };
@@ -166,17 +180,21 @@ export function pruefeRucksack(alt, neu, gids, { nachlesen = false } = {}) {
 
   // Die Köpfe selbst: Titel, Ziel und Kinder wie geplant
   const kopfTitel = AESTE.map(a => a.titel);
+  // Ein alter Eintrag (Sport-/Schulrucksäcke …) darf nach dem Umbau nicht mehr im Ast stehen; der Vergleich «ausserhalb» lässt ihn bewusst aus, darum hier eigens.
+  const altGeblieben = sn.items.filter(i => istErsetzt(i) && !kopfTitel.includes(i.title));
+  if (altGeblieben.length) fehler.push(`alter Eintrag steht noch im Ast: ${altGeblieben.map(i => `«${i.title}» (${handleVon(i)})`).join(', ')}`);
   const vorhanden = sn.items.filter(i => kopfTitel.includes(i.title));
   if (JSON.stringify(vorhanden.map(i => i.title)) !== JSON.stringify(kopfTitel.filter(t => vorhanden.some(i => i.title === t)))) fehler.push('Reihenfolge der Rucksack-Köpfe weicht vom Plan ab');
   for (const a of AESTE) {
     const k = vorhanden.find(i => i.title === a.titel);
-    if (!k) continue; // Kopf fehlt: das meldet `fehlend` des Umbaus, der Lauf bricht dann live ab
+    if (!k) { if (gids[a.kopf]) fehler.push(`Kopf «${a.titel}» fehlt im Ast, obwohl seine Collection da ist`); continue; } // fehlt auch die Collection, meldet das `fehlend` des Umbaus
     if (gids[a.kopf] && ziel(k) !== gids[a.kopf]) fehler.push(`Kopf «${a.titel}» zeigt nicht auf ${a.kopf}`);
     const soll = a.kinder.filter(h => gids[h]).map(h => gids[h]);
     if (JSON.stringify((k.items || []).map(ziel)) !== JSON.stringify(soll)) fehler.push(`Kinder von «${a.titel}» weichen vom Plan ab`);
   }
-  for (const { pfad, eintrag } of eintraege(neu)) {
-    if (eintrag.type !== 'COLLECTION' || !eintrag.resourceId) fehler.push(`Ziel ist keine Collection: ${pfad.join(' > ')} (${eintrag.type}${eintrag.resourceId ? '' : ', ohne resourceId'})`);
+  // Nur die Köpfe und ihre Kinder müssen Collections sein; ein vorhandener Link im Ast (z. B. ein HTTP-Eintrag) ist nicht Sache dieses Umbaus.
+  for (const k of vorhanden) for (const eintrag of [k, ...(k.items || [])]) {
+    if (eintrag.type !== 'COLLECTION' || !eintrag.resourceId) fehler.push(`Ziel ist keine Collection: ${PFAD.join(' > ')} > ${k.title}${eintrag === k ? '' : ' > ' + eintrag.title} (${eintrag.type}${eintrag.resourceId ? '' : ', ohne resourceId'})`);
   }
   const pruefeGeschwister = (liste, pfad) => {
     const ziele = new Map(), titel = new Set();

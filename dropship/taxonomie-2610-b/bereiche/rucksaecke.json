@@ -82,7 +82,7 @@
    "unterfilter": [
     {
      "handle": "schul-studenten",
-     "titel": "Studenten & Uni",
+     "titel": "Studenten- & Uni-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(student|studierende|studium|uni(?![a-zäöüß]|[- ]?(farb|colou?r)))"
      ],
@@ -149,7 +149,7 @@
    "unterfilter": [
     {
      "handle": "velo-velo",
-     "titel": "Velo & Fahrrad",
+     "titel": "Velo- & Fahrradrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(velo|fahrrad|radsport|radrucksack|radfahr|bike|biking|cycling|rad(?![a-zäöüß]))"
      ],
@@ -157,7 +157,7 @@
     },
     {
      "handle": "velo-lauf",
-     "titel": "Laufen, Trail & Cross-Country",
+     "titel": "Lauf- & Trailrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trail(?!er)|triathlon|cross-?country)"
      ],
@@ -165,7 +165,7 @@
     },
     {
      "handle": "velo-trink",
-     "titel": "Mit Trinksystem",
+     "titel": "Rucksäcke mit Trinksystem",
      "titel_muss": [
       "(^|[^a-zäöüß])(trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter)"
      ],
@@ -196,7 +196,7 @@
    "unterfilter": [
     {
      "handle": "takt-tarn",
-     "titel": "Tarnmuster",
+     "titel": "Rucksäcke mit Tarnmuster",
      "titel_muss": [
       "(^|[^a-zäöüß])(tarn|camouflage)"
      ],
@@ -212,7 +212,7 @@
     },
     {
      "handle": "takt-militaer",
-     "titel": "Militär & Kampf",
+     "titel": "Militär- & Kampfrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(militär|military|kampf(?!kunst|sport)|assault|molle|spezialeinheit|armee|feldrucksack)"
      ],
@@ -242,7 +242,7 @@
    "unterfilter": [
     {
      "handle": "laptop-mit-usb",
-     "titel": "Mit USB-Ladeanschluss",
+     "titel": "Laptop-Rucksäcke mit USB-Anschluss",
      "titel_muss": [
       "(^|[^a-zäöüß])(usb|ladeanschluss|ladefunktion|lade-?rucksack|lade-?port|aufladbar|wiederaufladbar|ladeschnittstelle)"
      ],
@@ -252,7 +252,7 @@
     },
     {
      "handle": "laptop-anti-diebstahl",
-     "titel": "Anti-Diebstahl",
+     "titel": "Anti-Diebstahl-Laptoprucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß]|anti)diebstahl|(^|[^a-zäöüß])(anti-?theft|zahlenschloss|passwort|fingerprint)"
      ],
@@ -260,7 +260,7 @@
     },
     {
      "handle": "laptop-leder",
-     "titel": "Leder & Kunstleder",
+     "titel": "Laptoprucksäcke aus Leder & Kunstleder",
      "titel_muss": [
       "leder|leather|crazy horse"
      ],
@@ -270,7 +270,7 @@
     },
     {
      "handle": "laptop-wasserdicht",
-     "titel": "Wasserdicht",
+     "titel": "Wasserdichte Laptop-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
      ],
@@ -280,7 +280,7 @@
     },
     {
      "handle": "laptop-kompression",
-     "titel": "Erweiterbar & Kompression",
+     "titel": "Erweiterbare Laptop-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(erweiterbar|kompress|vakuum)"
      ],
@@ -288,7 +288,7 @@
     },
     {
      "handle": "laptop-reise",
-     "titel": "Für Geschäftsreisen",
+     "titel": "Laptop-Rucksäcke für Geschäftsreisen",
      "titel_muss": [
       "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])(travel|trolley)"
      ],
@@ -296,7 +296,7 @@
     },
     {
      "handle": "laptop-gross",
-     "titel": "Ab 36 Liter",
+     "titel": "Grosse Laptop-Rucksäcke ab 36 Liter",
      "titel_muss": [
       "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
      ],
@@ -332,7 +332,7 @@
    "unterfilter": [
     {
      "handle": "wander-klettern",
-     "titel": "Klettern & Bergsteigen",
+     "titel": "Kletter- & Bergsteigerrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(kletter|bergsteig|mountaineering|alpin|expedition)"
      ],
@@ -340,7 +340,7 @@
     },
     {
      "handle": "wander-wasserdicht",
-     "titel": "Wasserdicht",
+     "titel": "Wasserdichte Wanderrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
      ],
@@ -350,7 +350,7 @@
     },
     {
      "handle": "wander-gross",
-     "titel": "Ab 36 Liter",
+     "titel": "Grosse Wanderrucksäcke ab 36 Liter",
      "titel_muss": [
       "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
      ],
@@ -383,7 +383,7 @@
    "unterfilter": [
     {
      "handle": "reise-leder",
-     "titel": "Leder & Kunstleder",
+     "titel": "Reiserucksäcke aus Leder & Kunstleder",
      "titel_muss": [
       "leder|leather|crazy horse"
      ],
@@ -393,7 +393,7 @@
     },
     {
      "handle": "reise-canvas",
-     "titel": "Canvas & Retro",
+     "titel": "Canvas- & Retro-Reiserucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß]|baumwoll|militär)canvas|(^|[^a-zäöüß])(leinen|baumwoll|retro|vintage)"
      ],
@@ -401,7 +401,7 @@
     },
     {
      "handle": "reise-wasserdicht",
-     "titel": "Wasserdicht",
+     "titel": "Wasserdichte Reiserucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
      ],
@@ -456,7 +456,7 @@
     },
     {
      "handle": "freizeit-mode",
-     "titel": "Mode & Stil",
+     "titel": "Mode- & Stil-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(fashion|modisch|mode(?![a-zäöüß])|trend|stylisch|elegant|minimalist|korea|japan|harajuku|mori(?![a-zäöüß])|preppy|college|campus|hip-?hop|hipster|lässig)|(^|[^a-zäöüß]|steam)punk"
      ],
@@ -464,7 +464,7 @@
     },
     {
      "handle": "freizeit-alltag",
-     "titel": "Alltag & Stadt",
+     "titel": "Alltags- & Stadtrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(alltag|city|stadt|städtisch|strassen|urban|street|tages|daypack|casual|freizeit)"
      ],
@@ -472,7 +472,7 @@
     },
     {
      "handle": "freizeit-leder",
-     "titel": "Leder & Kunstleder",
+     "titel": "Freizeitrucksäcke aus Leder & Kunstleder",
      "titel_muss": [
       "leder|leather|crazy horse"
      ],
@@ -482,7 +482,7 @@
     },
     {
      "handle": "freizeit-wasserdicht",
-     "titel": "Wasserdicht",
+     "titel": "Wasserdichte Freizeitrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
      ],
@@ -492,7 +492,7 @@
     },
     {
      "handle": "freizeit-herren",
-     "titel": "Herren",
+     "titel": "Freizeitrucksäcke für Herren",
      "titel_muss": [
       "(^|[^a-zäöüß])(herren|männer|männlich)"
      ],
@@ -519,7 +519,7 @@
    "unterfilter": [
     {
      "handle": "leder-echt",
-     "titel": "Echtleder, Rindsleder & Crazy Horse",
+     "titel": "Echtleder-Rucksäcke (Rindsleder, Crazy Horse)",
      "titel_muss": [
       "leder|leather|crazy horse"
      ],
@@ -529,7 +529,7 @@
     },
     {
      "handle": "leder-kunst",
-     "titel": "Kunstleder",
+     "titel": "Kunstleder-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(pu|kunst|imitat|vegan|faux)[- ]?(leder|leather)|lederimitat"
      ],
@@ -537,7 +537,7 @@
     },
     {
      "handle": "leder-business",
-     "titel": "Business & Laptop",
+     "titel": "Lederrucksäcke für Business & Laptop",
      "titel_muss": [
       "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro|geschäft|unternehmens)"
      ],
@@ -545,7 +545,7 @@
     },
     {
      "handle": "leder-retro",
-     "titel": "Retro & Vintage",
+     "titel": "Retro- & Vintage-Lederrucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(retro|vintage)"
      ],
@@ -553,7 +553,7 @@
     },
     {
      "handle": "leder-reise",
-     "titel": "Reise",
+     "titel": "Leder-Reiserucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
      ],
@@ -561,7 +561,7 @@
     },
     {
      "handle": "leder-herren",
-     "titel": "Herren",
+     "titel": "Lederrucksäcke für Herren",
      "titel_muss": [
       "(^|[^a-zäöüß])(herren|männer|männlich)"
      ],
@@ -586,7 +586,7 @@
    "unterfilter": [
     {
      "handle": "canvas-canvas",
-     "titel": "Canvas",
+     "titel": "Canvas-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß]|baumwoll|militär)canvas|(^|[^a-zäöüß])segeltuch"
      ],
@@ -594,7 +594,7 @@
     },
     {
      "handle": "canvas-retro",
-     "titel": "Retro & Vintage",
+     "titel": "Retro- & Vintage-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(retro|vintage)"
      ],
@@ -602,7 +602,7 @@
     },
     {
      "handle": "canvas-laptop",
-     "titel": "Laptop & Business",
+     "titel": "Canvas-Rucksäcke für Laptop & Business",
      "titel_muss": [
       "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
      ],
@@ -610,7 +610,7 @@
     },
     {
      "handle": "canvas-reise",
-     "titel": "Reise",
+     "titel": "Canvas-Reiserucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
      ],
@@ -618,7 +618,7 @@
     },
     {
      "handle": "canvas-herren",
-     "titel": "Herren",
+     "titel": "Canvas-Rucksäcke für Herren",
      "titel_muss": [
       "(^|[^a-zäöüß])(herren|männer|männlich)"
      ],
@@ -644,7 +644,7 @@
    "unterfilter": [
     {
      "handle": "usb-business",
-     "titel": "Business & Laptop",
+     "titel": "USB-Rucksäcke für Business & Laptop",
      "titel_muss": [
       "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
      ],
@@ -652,7 +652,7 @@
     },
     {
      "handle": "usb-wasserdicht",
-     "titel": "Wasserdicht",
+     "titel": "Wasserdichte USB-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
      ],
@@ -681,7 +681,7 @@
    "unterfilter": [
     {
      "handle": "wd-business",
-     "titel": "Business & Laptop",
+     "titel": "Wasserdichte Business-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
      ],
@@ -689,7 +689,7 @@
     },
     {
      "handle": "wd-outdoor",
-     "titel": "Outdoor & Wandern",
+     "titel": "Wasserdichte Outdoor-Rucksäcke",
      "titel_muss": [
       "(^|[^a-zäöüß])(outdoor|wander|trekking|berg|kletter|camping)"
      ],
@@ -697,7 +697,7 @@
     },
     {
      "handle": "wd-reise",
-     "titel": "Reise",
+     "titel": "Wasserdichte Rucksäcke für Reisen",
      "titel_muss": [
       "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
      ],
@@ -705,7 +705,7 @@
     },
     {
      "handle": "wd-gross",
-     "titel": "Ab 36 Liter",
+     "titel": "Grosse wasserdichte Rucksäcke",
      "titel_muss": [
       "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
      ],

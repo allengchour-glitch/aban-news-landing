@@ -42,6 +42,8 @@ export async function rucksackMenueLauf(q, { live = false, annahmeAlle = false, 
   if (live && !web) { err('LIVE braucht die HTTP-Prüfung der Ziel-Collections (Publish-Falle): ohne sie wird nichts geschrieben'); return { code: 1 }; }
   const m = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];
   if (!m) { err('Hauptmenü nicht gefunden'); return { code: 1 }; }
+  // menuUpdate schreibt den gelesenen Handle zurück: ein anderes Menü (Entwurf, Kopie) würde umbenannt bzw. überschrieben.
+  if (m.handle !== 'main-menu') { err(`ABBRUCH: die Suche lieferte das Menü «${m.handle}» statt «main-menu»`); return { code: 1 }; }
   const alt = eingabeAus(m.items);
   const { gids, titel, anzahl } = await sammlungenLesen(q, alleHandles());
   const imShop = Object.values(gids).filter(Boolean).length;
@@ -89,8 +91,12 @@ export async function rucksackMenueLauf(q, { live = false, annahmeAlle = false, 
   out(`Sicherung: ${datei}`);
   const w = await q(`mutation($id:ID!,$t:String!,$h:String!,$i:[MenuItemUpdateInput!]!){menuUpdate(id:$id,title:$t,handle:$h,items:$i){menu{id} userErrors{field message code}}}`, { id: frisch.id, t: frisch.title, h: frisch.handle, i: baum });
   if (w.menuUpdate.userErrors.length) throw new Error('menuUpdate ' + JSON.stringify(w.menuUpdate.userErrors));
-  const zurueck = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];
-  const zurueckEingabe = eingabeAus(zurueck.items);
+  // Ab hier ist das Menü GESCHRIEBEN: ein Fehler beim Nachlesen oder Ledger ist kein Aufruffehler (Exit 1), sondern Exit 3 mit Hinweis auf die Sicherung.
+  let zurueck, zurueckEingabe;
+  try {
+    zurueck = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];
+    zurueckEingabe = eingabeAus(zurueck.items);
+  } catch (e) { err(`FEHLER beim Nachlesen NACH dem Schreiben (${e.message}): das Menü ist umgebaut, nicht geprüft. Sicherung: ${datei}`); return { code: 3, baum, fehlend, fehler: ['Nachlesen fehlgeschlagen'] }; }
   // Streng nachlesen: Titel, Typ, Reihenfolge UND Ziel jedes Eintrags, plus die Prüfregeln von vorhin am zurückgelesenen Baum.
   const v = gleicherBaum(baum, zurueckEingabe), z = gleicheZiele(baum, zurueckEingabe), pf = pruefeRucksack(alt, zurueckEingabe, gids, { nachlesen: true });
   out('Vergleich gesendet ↔ zurückgelesen:', JSON.stringify({ gleich: v.gleich && z.gleich, nurGesendet: v.nurGesendet.length, nurZurueck: v.nurZurueck.length, zielAbweichungen: z.abweichungen.length, pruefFehler: pf.length }));
@@ -98,10 +104,13 @@ export async function rucksackMenueLauf(q, { live = false, annahmeAlle = false, 
     err('ABWEICHUNG!', v.nurGesendet.slice(0, 8), v.nurZurueck.slice(0, 8), z.abweichungen.slice(0, 8).map(a => `${a.pfad}: gesendet ${a.gesendet} ↔ zurück ${a.zurueck}`), pf, '- Sicherung liegt in', datei);
     return { code: 3, baum, fehlend, fehler: pf };
   }
-  appendFileSync(ledger, `${jetzt().toISOString()} · menü rucksäcke umgebaut\n`);
+  try { appendFileSync(ledger, `${jetzt().toISOString()} · menü rucksäcke umgebaut\n`); } catch (e) { err(`HINWEIS: Menü umgebaut und nachgelesen, aber der Ledger-Eintrag ging nicht (${e.message}); bitte von Hand in ${ledger} nachtragen.`); }
   out('OK: Menü umgebaut und streng nachgelesen. Oberste Ebene:', zurueck.items.map(x => x.title).join(' | '));
   return { code: 0, baum, fehlend };
 }
+
+/** Die Schalter aus der Umgebung. Trockenlauf ist Vorgabe: nur LIVE=1 schreibt; die HTTP-Prüfung läuft bei LIVE oder WEB_PRUEFEN=1. */
+export const optionenAusEnv = (env, web) => ({ live: env.LIVE === '1', annahmeAlle: env.ANNAHME_ALLE === '1', erlaubeLuecken: env.ERLAUBE_LUECKEN === '1', web: env.LIVE === '1' || env.WEB_PRUEFEN === '1' ? web : null });
 
 async function main() {
   const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
@@ -110,9 +119,7 @@ async function main() {
   const tok = (await r.json()).access_token;
   if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
   const q = (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b);
-  const live = process.env.LIVE === '1';
-  const web = live || process.env.WEB_PRUEFEN === '1' ? hs => collectionsImWeb(hs) : null;
-  const res = await rucksackMenueLauf(q, { live, annahmeAlle: process.env.ANNAHME_ALLE === '1', erlaubeLuecken: process.env.ERLAUBE_LUECKEN === '1', web });
+  const res = await rucksackMenueLauf(q, optionenAusEnv(process.env, hs => collectionsImWeb(hs)));
   process.exit(res.code);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(e => { console.error('FEHLER', e.message); process.exit(1); });

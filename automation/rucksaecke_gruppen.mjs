@@ -23,6 +23,9 @@ import { gruppenPlan, kategorieVon } from './lib/rucksaecke_menue.mjs';
 /** Der Lauf mit dem Rucksack-Plan (Tests spielen die Abfrage `q` und die Web-Prüfung ein). */
 export const rucksackGruppenLauf = (q, opt = {}) => gruppenLauf(q, { ...opt, plan: gruppenPlan(), kategorieVonHandle: kategorieVon });
 
+/** Die Schalter aus der Umgebung: Trockenlauf ist Vorgabe, nur LIVE=1 schreibt; die HTTP-Prüfung läuft bei LIVE oder WEB_PRUEFEN=1. */
+export const optionenAusEnv = (env, web) => ({ live: env.LIVE === '1', web: env.LIVE === '1' || env.WEB_PRUEFEN === '1' ? web : null });
+
 async function main() {
   const KATALOG = process.env.KATALOG || '/tmp/katalog_rucksaecke.json';
   const katalog = existsSync(KATALOG) ? JSON.parse(readFileSync(KATALOG, 'utf8')) : null;
@@ -34,9 +37,7 @@ async function main() {
   const tok = (await r.json()).access_token;
   if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
   const q = (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b);
-  const live = process.env.LIVE === '1';
-  const web = live || process.env.WEB_PRUEFEN === '1' ? hs => collectionsImWeb(hs) : null;
-  const res = await rucksackGruppenLauf(q, { live, katalog, web });
+  const res = await rucksackGruppenLauf(q, { ...optionenAusEnv(process.env, hs => collectionsImWeb(hs)), katalog });
   process.exit(res.code);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(e => { console.error('FEHLER', e.message); process.exit(1); });
