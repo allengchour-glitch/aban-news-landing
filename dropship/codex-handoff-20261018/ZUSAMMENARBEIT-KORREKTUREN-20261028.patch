@@ -1,0 +1,1238 @@
+--- a/automation/gmc_schaufenster.mjs
++++ b/automation/gmc_schaufenster.mjs
+@@ -30,16 +30,26 @@
+  * Exit  0 ok · 1 Zugang/Einstellung · 2 Plan nicht erlaubt · 3 Fehlschläge oder Defekt (abgewählt, aber noch auf Google) · 4 Drosselung/Abbruch
+  *       5 pruefen: Google trägt noch Produkte ausserhalb des Schaufensters
+  */
++import { randomUUID } from 'node:crypto';
+ import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+ import { dirname } from 'node:path';
+ import { fileURLToPath } from 'node:url';
++import { normalizeShopifyHost } from './lib/shopify_host.mjs';
+ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+ import { shopifyGql } from './lib/shopify_gql.mjs';
+ import {
+   GOOGLE_PUBLICATION, BUDGET_VARIANTEN, MIN_BUDGET, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ratingAus, bestellteIds, bewaehrt,
+ } from './lib/gmc_schaufenster.mjs';
+ 
+-const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
++const ERWARTETER_SHOP = 'au3j0y-hq.myshopify.com';
++let SHOP;
++try {
++  SHOP = normalizeShopifyHost(process.env.SHOPIFY_SHOP ?? ERWARTETER_SHOP);
++  if (SHOP !== ERWARTETER_SHOP) throw new Error('fremder Shop');
++} catch {
++  console.log('ABBRUCH: SHOPIFY_SHOP muss der bestätigte LuxeStyle-Shop sein.');
++  process.exit(1);
++}
+ const API = '2026-01';   // 2025-01 ist abgelaufen: Shopify antwortete still mit 2026-01 (Prüfer 28.10.)
+ const LIVE = process.env.LIVE === '1';
+ const PHASE = (process.env.PHASE || 'plan').trim();
+@@ -68,10 +78,17 @@
+ async function holeToken() {
+   const id = process.env.SHOPIFY_CLIENT_ID, sec = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
+   if (!id || !sec) { console.log('ABBRUCH: SHOPIFY_CLIENT_ID oder _SECRET fehlt.'); return null; }
+-  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+-    body: JSON.stringify({ client_id: id, client_secret: sec, grant_type: 'client_credentials' }) });
+-  const txt = await r.text(); let j = {}; try { j = JSON.parse(txt); } catch { /* unten gemeldet */ }
+-  if (!j.access_token) { console.log(`ABBRUCH: Token HTTP ${r.status} · ${txt.slice(0, 200)}`); return null; }
++  let r;
++  try {
++    r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
++      method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' },
++      body: JSON.stringify({ client_id: id, client_secret: sec, grant_type: 'client_credentials' }),
++    });
++  } catch { console.log('ABBRUCH: Token-Anfrage fehlgeschlagen.'); return null; }
++  if (!r.ok) { console.log(`ABBRUCH: Token HTTP ${r.status}`); return null; }
++  let j;
++  try { j = await r.json(); } catch { console.log('ABBRUCH: Token-Antwort nicht lesbar.'); return null; }
++  if (typeof j?.access_token !== 'string' || !j.access_token) { console.log('ABBRUCH: Token fehlt in der Antwort.'); return null; }
+   return j.access_token;
+ }
+ const TOKEN = await holeToken();
+@@ -131,7 +148,7 @@
+ }
+ 
+ function liesManifest() {
+-  if (!existsSync(MANIFEST)) return { ids: new Set(), kaputt: 0 };
++  if (!existsSync(MANIFEST)) return { ids: new Set(), generationen: new Map(), kaputt: 0, veraltet: 0 };
+   return parseManifest(readFileSync(MANIFEST, 'utf8'));
+ }
+ /** Zeilen anhängen; endet die Datei nicht auf einen Zeilenumbruch, steht vor der ersten neuen Zeile einer (sonst verschmölzen zwei Einträge). */
+@@ -180,15 +197,18 @@
+ console.log(`BEWERTUNGSFELDER: bei ${mitRating} Produkten gelesen${mitRating < MIN_BEWERTET ? ` (unter ${MIN_BEWERTET}: Stufe 0 gilt dann nur für bestellte Produkte, schwach Bewertete werden nicht erkannt)` : ''}`);
+ if (ONLY.length) console.log(`ONLY: Stichprobe von ${ONLY.length} Handles (der Plan rechnet trotzdem über alle ${alle.length} Produkte).`);
+ const man = liesManifest();
+-if (man.kaputt) console.log(`HINWEIS: ${man.kaputt} kaputte Manifest-Zeilen (werden nicht beachtet).`);
++if (man.kaputt) console.log(`HINWEIS: ${man.kaputt} kaputte Manifest-Zeilen: Zustand unbekannt, keine Schreibfreigabe.`);
++if (man.veraltet) console.log(`HINWEIS: ${man.veraltet} veraltete Manifest-Antworten oder Wiederholungen wurden nicht übernommen.`);
++if (LIVE && SCHREIBT.includes(PHASE) && man.kaputt) { console.log('ABBRUCH: Manifest prüfen, unbekannte Historie wird nicht überschrieben.'); process.exit(1); }
+ const p = plan(alle, man.ids, { budget: BUDGET });
+ bericht(p, alle);
+ writeFileSync(PLAN_AUS, JSON.stringify({ am: new Date().toISOString(), zahlen: p.zahlen, varianten: p.varianten, fehler: p.fehler, abwaehlen: p.abwaehlen, aufnehmen: p.aufnehmen, zuruecksetzen: p.zuruecksetzen }));
+ console.log(`  Plan geschrieben: ${PLAN_AUS}`);
+ 
+-if (PHASE === 'plan') process.exit(p.ok ? 0 : 2);
++if (PHASE === 'plan') process.exit(p.ok && !man.kaputt ? 0 : 2);
+ 
+ if (PHASE === 'pruefen') {
++  if (man.kaputt) { console.log('PRÜFUNG unbekannt: Manifest beschädigt.'); process.exit(2); }
+   if (!p.ok) { console.log('\nPRÜFUNG nicht aussagekräftig: der Plan ist nicht erlaubt (siehe oben).'); process.exit(2); }
+   const nachId = new Map(alle.map(x => [x.id, x]));
+   const falsch = [];
+@@ -219,7 +239,6 @@
+ console.log(`\n${PHASE.toUpperCase()}: ${bereit.length} von ${ziele.length} Produkten${bereit.length < ziele.length - gesperrt.length ? ` (MAX ${MAX} erreicht, der Rest folgt im nächsten Lauf)` : ''}`);
+ if (!LIVE) { console.log('TROCKENLAUF: nichts geschrieben.'); process.exit(0); }
+ if (!bereit.length) { console.log('Nichts zu tun.'); process.exit(0); }
+-if (PHASE !== 'abwaehlen' && man.kaputt) { console.log(`ABBRUCH: ${man.kaputt} kaputte Manifest-Zeilen: eine Rücknahme könnte Produkte übersehen. Manifest prüfen.`); process.exit(1); }
+ 
+ // Das Manifest muss schreibbar sein, BEVOR das erste Produkt vom Kanal geht (sonst gäbe es abgewählte Produkte ohne Spur).
+ try {
+@@ -237,7 +256,10 @@
+     process.exit(4);
+   }
+   // Absicht VOR dem Aufruf: stürzt der Lauf mitten im Stück ab (oder meldet Shopify einen Teilfehler), bleiben die schon entveröffentlichten Produkte rückholbar.
+-  if (PHASE === 'abwaehlen') anhaengen(MANIFEST, st.map(id => manifestZeile(id, undefined, heute(), 'ab-versucht')).join('\n') + '\n');
++  if (PHASE === 'abwaehlen') {
++    const operationId = randomUUID();
++    anhaengen(MANIFEST, st.map(id => manifestZeile(id, undefined, heute(), 'ab-versucht', { operationId })).join('\n') + '\n');
++  }
+   let antwort;
+   try { antwort = await q(mutation(st, art)); }
+   catch (e) {
+@@ -245,7 +267,7 @@
+     process.exit(4);
+   }
+   const r = auswerten(antwort, st, art);
+-  if (r.ok.length && PHASE !== 'abwaehlen') anhaengen(MANIFEST, r.ok.map(id => manifestZeile(id, undefined, heute(), 'auf')).join('\n') + '\n');
++  if (r.ok.length && PHASE !== 'abwaehlen') anhaengen(MANIFEST, r.ok.map(id => manifestZeile(id, undefined, heute(), 'auf', { closesOperationId: man.generationen.get(id) })).join('\n') + '\n');
+   if (r.fehlgeschlagen.length) appendFileSync(FEHLERDATEI, r.fehlgeschlagen.map(f => `${f.id}\t${heute()}\t${String(f.meldung).replace(/\s+/g, ' ').slice(0, 120)}`).join('\n') + '\n');
+   gut += r.ok.length; schlecht += r.fehlgeschlagen.length;
+   for (const f of r.fehlgeschlagen.slice(0, 3)) console.log(`  FEHLER ${nameVon.get(f.id)}: ${f.meldung}`);
+--- a/automation/lib/gmc_schaufenster.mjs
++++ b/automation/lib/gmc_schaufenster.mjs
+@@ -32,6 +32,7 @@
+  *   wird nie hinzugefügt. WER das Ausschlussfeld schreibt, ist unbekannt (siehe gmc_ausschluss.mjs); ob die
+  *   Google-App es beachtet, ist unbelegt: die Regel hängt nicht davon ab, sie entfernt die Produkte vom Kanal.
+  */
++import { createHash } from 'node:crypto';
+ import { sperrTags } from './kanal_sperren.mjs';
+ import { LIZENZ } from './gmc_feed_item.mjs';
+ 
+@@ -260,21 +261,76 @@
+ }
+ 
+ /**
+- * Manifest lesen: eine JSON-Zeile je Aktion («ab-versucht» = Absicht VOR dem Aufruf, «ab» = belegt abgewählt,
+- * «auf» = wieder aufgenommen). Die LETZTE Aktion je Produkt gilt; `ids` sind alle, deren letzte Aktion nicht «auf»
+- * ist, also auch Produkte, bei denen ein Aufruf mitten im Stück abbrach (die Absicht steht vor dem Aufruf, nie danach;
+- * ein Produkt, das trotzdem noch auf Google liegt, nimmt `plan` ohnehin nicht an). Kaputte Zeilen werden gezählt.
+- */
++ * Legacy-Zeilen bleiben lesbar. Neue Absichten tragen eine Generation; eine Rücknahme
++ * schliesst nur diese Generation. Verspätete oder alte Antworten löschen nichts Neueres.
++ */
++const VORGANG = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/;
++const eigen = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
++const gueltigerVorgang = v => typeof v === 'string' && VORGANG.test(v);
++
+ export function parseManifest(text) {
+-  const letzte = new Map(); let kaputt = 0;
+-  for (const z of String(text || '').replace(/^\uFEFF/, '').split('\n')) {
++  const offen = new Map(), geschuetzt = new Set(), gesehen = new Map(), geschlossen = new Map();
++  let kaputt = 0, veraltet = 0, zeile = 0;
++  for (const z of String(text ?? '').replace(/^\uFEFF/, '').split('\n')) {
++    zeile++;
+     if (!z.trim()) continue;
+-    try {
+-      const o = JSON.parse(z);
+-      const aktion = o?.aktion ?? 'ab';
+-      if (o && PRODUKT_GID.test(String(o.id)) && (aktion === 'ab' || aktion === 'auf' || aktion === 'ab-versucht')) letzte.set(o.id, aktion); else kaputt++;
+-    } catch { kaputt++; }
+-  }
+-  return { ids: new Set([...letzte].filter(([, a]) => a !== 'auf').map(([id]) => id)), kaputt };
+-}
+-export const manifestZeile = (id, handle, datum, aktion = 'ab') => JSON.stringify({ id, handle, am: datum, aktion });
++    let o;
++    try { o = JSON.parse(z); } catch { kaputt++; continue; }
++    if (!o || typeof o.id !== 'string' || !PRODUKT_GID.test(o.id)) { kaputt++; continue; }
++    const id = o.id, aktion = o.aktion ?? 'ab';
++    const neu = eigen(o, 'operationId') || eigen(o, 'closesOperationId');
++    const unklar = () => {
++      kaputt++; geschuetzt.add(id);
++      if (!offen.has(id)) offen.set(id, { generation: null });
++    };
++    if (!['ab', 'ab-versucht', 'auf'].includes(aktion)) {
++      if (neu) unklar(); else kaputt++;
++      continue;
++    }
++    if (aktion === 'auf') {
++      if (eigen(o, 'operationId') || neu && !gueltigerVorgang(o.closesOperationId)) { unklar(); continue; }
++      const aktuell = offen.get(id);
++      if (!neu) {
++        if (geschuetzt.has(id)) { veraltet++; continue; }
++        offen.delete(id);
++      } else {
++        geschuetzt.add(id);
++        if (aktuell?.generation === o.closesOperationId) {
++          offen.delete(id);
++          if (!geschlossen.has(id)) geschlossen.set(id, new Set());
++          geschlossen.get(id).add(o.closesOperationId);
++        } else if (gesehen.get(id)?.has(o.closesOperationId) || geschlossen.get(id)?.has(o.closesOperationId)) {
++          veraltet++;
++        } else {
++          unklar();
++        }
++      }
++      continue;
++    }
++    if (neu && (eigen(o, 'closesOperationId') || !gueltigerVorgang(o.operationId))) { unklar(); continue; }
++    let generation;
++    if (neu) {
++      geschuetzt.add(id);
++      if (!gesehen.has(id)) gesehen.set(id, new Set());
++      if (gesehen.get(id).has(o.operationId)) { veraltet++; continue; }
++      gesehen.get(id).add(o.operationId);
++      generation = o.operationId;
++    } else {
++      generation = `legacy:${zeile}:${createHash('sha256').update(z).digest('hex').slice(0, 24)}`;
++      if (!gesehen.has(id)) gesehen.set(id, new Set());
++      gesehen.get(id).add(generation);
++    }
++    offen.set(id, { generation });
++  }
++  return { ids: new Set(offen.keys()), generationen: new Map([...offen].map(([id, o]) => [id, o.generation])), kaputt, veraltet };
++}
++
++export function manifestZeile(id, handle, datum, aktion = 'ab', generation = undefined) {
++  if (generation === undefined) return JSON.stringify({ id, handle, am: datum, aktion });
++  if (!generation || typeof generation !== 'object' || Array.isArray(generation)) throw new Error('Manifest: Vorgang fehlt');
++  const k = aktion === 'auf' ? 'closesOperationId' : 'operationId';
++  if (!['ab', 'ab-versucht', 'auf'].includes(aktion) || !gueltigerVorgang(generation[k]) || Object.keys(generation).some(x => x !== k)) {
++    throw new Error('Manifest: ungültige Vorgangsbindung');
++  }
++  return JSON.stringify({ id, handle, am: datum, aktion, [k]: generation[k] });
++}
+--- a/automation/lib/gmc_schaufenster_test.mjs
++++ b/automation/lib/gmc_schaufenster_test.mjs
+@@ -373,5 +373,44 @@
+ pruef('Manifest: CRLF-Zeilenenden sind in Ordnung', [...parseManifest(manifestZeile('gid://shopify/Product/6', undefined, 'd') + '\r\n' + manifestZeile('gid://shopify/Product/7', undefined, 'd') + '\r\n').ids].sort(), ['gid://shopify/Product/6', 'gid://shopify/Product/7']);
+ pruef('Grenzen sind gesetzt', [HARTE_GRENZE > BUDGET_VARIANTEN, HARTE_GRENZE < 150000, MIN_PRODUKTE > 0], [true, true, true]);
+ 
++// --- Generationsgebundene Rücknahme: eine alte Bestätigung löscht niemals eine neuere Absicht.
++{
++  const id = 'gid://shopify/Product/77';
++  const ab = op => manifestZeile(id, undefined, '2026-10-28', 'ab-versucht', { operationId: op });
++  const auf = op => manifestZeile(id, undefined, '2026-10-28', 'auf', { closesOperationId: op });
++  const lies = (...z) => parseManifest(z.join('\n'));
++  const a = lies(ab('A'));
++  pruef('Generation A: offen mit Kennung', [a.ids.has(id), a.generationen.get(id), a.kaputt], [true, 'A', 0]);
++  const seriell = lies(ab('A'), auf('A'));
++  pruef('seriell A zurück: geschlossen', [seriell.ids.has(id), seriell.kaputt], [false, 0]);
++  const spaet = lies(ab('A'), ab('B'), auf('A'));
++  pruef('späte Rücknahme A löscht B nicht', [spaet.ids.has(id), spaet.generationen.get(id), spaet.veraltet, spaet.kaputt], [true, 'B', 1, 0]);
++  const fertig = lies(ab('A'), ab('B'), auf('A'), auf('B'));
++  pruef('erst belegte Rücknahme B schliesst B', [fertig.ids.has(id), fertig.kaputt], [false, 0]);
++  const duplikat = lies(ab('A'), ab('B'), ab('A'));
++  pruef('doppelte alte Absicht setzt Generation nicht zurück', [duplikat.ids.has(id), duplikat.generationen.get(id), duplikat.veraltet], [true, 'B', 1]);
++  const geschlossen = lies(ab('A'), auf('A'), ab('A'));
++  pruef('doppelte schon geschlossene Absicht öffnet nicht erneut', [geschlossen.ids.has(id), geschlossen.veraltet], [false, 1]);
++  const doppeltAuf = lies(ab('A'), auf('A'), auf('A'));
++  pruef('doppelte Bestätigung bleibt geschlossen', [doppeltAuf.ids.has(id), doppeltAuf.kaputt, doppeltAuf.veraltet], [false, 0, 1]);
++  const legacy = manifestZeile(id, undefined, 'd', 'ab');
++  const lg = lies(legacy);
++  const legacyZu = lies(legacy, auf(lg.generationen.get(id)));
++  pruef('Legacy-Absicht kann mit exakt gebundener Kennung zurück', [legacyZu.ids.has(id), legacyZu.kaputt], [false, 0]);
++  const legacySpaet = lies(legacy, ab('B'), auf(lg.generationen.get(id)));
++  pruef('gebundene alte Legacy-Rücknahme erhält B', [legacySpaet.ids.has(id), legacySpaet.generationen.get(id), legacySpaet.kaputt], [true, 'B', 0]);
++  const ungeordnet = lies(ab('A'), manifestZeile(id, undefined, 'd', 'auf'));
++  pruef('ungebundene Legacy-Rücknahme erhält geschützte Generation', [ungeordnet.ids.has(id), ungeordnet.generationen.get(id), ungeordnet.veraltet], [true, 'A', 1]);
++  const orphan = lies(auf('nie-gesehen'));
++  pruef('verwaiste Rücknahme wird unbekannt statt geschlossen', [orphan.ids.has(id), orphan.kaputt], [true, 1]);
++  const mismatch = lies(ab('A'), auf('nie-gesehen'));
++  pruef('unbekannte Rücknahme erhält A und markiert Defekt', [mismatch.ids.has(id), mismatch.generationen.get(id), mismatch.kaputt], [true, 'A', 1]);
++  const kaputt = lies(ab('A'), JSON.stringify({ id, aktion: 'ab-versucht', operationId: '' }), manifestZeile(id, undefined, 'd', 'auf'));
++  pruef('kaputte Generation plus Legacy-Auf verliert bekannte Identität nicht', [kaputt.ids.has(id), kaputt.generationen.get(id), kaputt.kaputt], [true, 'A', 1]);
++  pruef('falscher ID-Typ wird nicht koerziert', lies(JSON.stringify({ id: [id], aktion: 'ab-versucht', operationId: 'A' })).kaputt, 1);
++  wirft('Absicht braucht gültige operationId', () => ab(''), 'Vorgangsbindung');
++  wirft('Aufnahme darf keine operationId statt closesOperationId tragen', () => manifestZeile(id, undefined, 'd', 'auf', { operationId: 'A' }), 'Vorgangsbindung');
++}
++
+ console.log(`${ok} ok, ${fehler} Fehler`);
+ process.exit(fehler ? 1 : 0);
+--- a/automation/gmc_schaufenster_lauf_test.mjs
++++ b/automation/gmc_schaufenster_lauf_test.mjs
+@@ -9,7 +9,8 @@
+ import { tmpdir } from 'node:os';
+ import { join } from 'node:path';
+ import { fileURLToPath } from 'node:url';
+-import { parseManifest } from './lib/gmc_schaufenster.mjs';
++import { randomUUID } from 'node:crypto';
++import { parseManifest, manifestZeile, stuecke, mutation, auswerten, plan } from './lib/gmc_schaufenster.mjs';
+ 
+ const CLI = fileURLToPath(new URL('./gmc_schaufenster.mjs', import.meta.url));
+ const GOOGLE = 'gid://shopify/Publication/302872297857';   // das Literal, nicht die Konstante der Bibliothek (sonst prüft der Test sich selbst)
+@@ -30,10 +31,22 @@
+ globalThis.setTimeout = (f, ms, ...a) => echt(f, Math.min(ms || 0, 2), ...a);   // keine echten Wartezeiten
+ const lies = () => JSON.parse(readFileSync(ZUSTAND, 'utf8'));
+ const schreibe = z => writeFileSync(ZUSTAND, JSON.stringify(z));
++const env = process.env;
++process.env = new Proxy(env, { get(o, key) {
++  if (key === 'SHOPIFY_CLIENT_ID' || key === 'SHOPIFY_CLIENT_SECRET') {
++    const z = lies(); z.credentialReads = (z.credentialReads || 0) + 1; schreibe(z);
++  }
++  return Reflect.get(o, key);
++} });
+ const antwort = d => new Response(JSON.stringify({ data: d }), { status: 200, headers: { 'content-type': 'application/json' } });
+ globalThis.fetch = async (url, opt = {}) => {
+   const u = String(url);
+-  if (u.includes('/admin/oauth/access_token')) return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
++  const f = lies(); f.fetchCalls = (f.fetchCalls || 0) + 1; schreibe(f);
++  if (u.includes('/admin/oauth/access_token')) {
++    const z = lies(); z.tokenCalls = (z.tokenCalls || 0) + 1; z.tokenUrl = u; z.tokenRedirect = opt.redirect; schreibe(z);
++    if (z.tokenFehler) return new Response('fake-vertrauliche-antwort', { status: z.tokenFehler });
++    return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
++  }
+   if (u === 'https://fake.local/bulk.jsonl') {
+     const z = lies();
+     // Ein Fake ist ein Messgerät: ein Feld kommt NUR, wenn die Bulk-Abfrage des Werkzeugs es verlangt (sonst bliebe eine kaputte Abfrage unbemerkt).
+@@ -117,7 +130,7 @@
+   const frei = join(dir, 'FREI.txt');
+   if (mitFreigabe) writeFileSync(frei, 'ok'); else rmSync(frei, { force: true });
+   const r = spawnSync(process.execPath, ['--import', VORLADEN, CLI], {
+-    env: { PATH: process.env.PATH, HOME: dir, SHOPIFY_SHOP: 'fake-shop.myshopify.com', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim',
++    env: { PATH: process.env.PATH, SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim',
+       FAKE_STATE: state, MANIFEST: join(dir, 'manifest.jsonl'), FEHLERDATEI: join(dir, 'fehler.txt'), FREIGABE: frei, PLAN_AUS: join(dir, 'plan.json'), ...env },
+     encoding: 'utf8', timeout: 60000,
+   });
+@@ -358,6 +371,87 @@
+   pruef('Freigabe bleibt: alle 300 Produkte gehen, Exit 0', [r2.code, r2.lies().log.length], [0, 300]);
+ }
+ 
++// 20) Hostbindung vor Zugangsdaten und erstem Netzaufruf; keine echten Zugangsdaten oder Netzwerkverbindung.
++for (const host of ['anderer-shop.myshopify.com', 'example.test', 'https://example.test/', 'https://au3j0y-hq.myshopify.com@evil.test/', '', 'au3j0y-hq.myshopify.com.evil.test']) {
++  neu();
++  const r = los(welt(), { SHOPIFY_SHOP: host, PHASE: 'plan' });
++  const z = r.lies();
++  pruef('Host abweisen vor Credential-/Fetchzugriff: ' + host, [r.code, z.credentialReads || 0, z.fetchCalls || 0], [1, 0, 0]);
++}
++{
++  neu();
++  const r = los(welt(), { SHOPIFY_SHOP: 'https://AU3J0Y-HQ.myshopify.com/', PHASE: 'plan' });
++  const z = r.lies();
++  pruef('kanonischer Host erlaubt, normalisiert und ohne Redirect', [r.code, z.tokenUrl, z.tokenCalls, z.tokenRedirect, z.credentialReads], [0, 'https://au3j0y-hq.myshopify.com/admin/oauth/access_token', 1, 'error', 2]);
++  neu();
++  const w = welt(); w.tokenFehler = 503;
++  const t = los(w, { PHASE: 'plan' });
++  pruef('Tokenfehler: kein blindes Retry oder Antwort-Logging', [t.code, t.lies().tokenCalls, t.aus.includes('fake-vertrauliche-antwort')], [1, 1, false]);
++}
++// 21) Unbekannte Manifesthistorie sperrt auch Abwahl vor der ersten Mutation.
++for (const inhalt of [
++  '{abgeschnitten',
++  JSON.stringify({ id: 'gid://shopify/Product/7', aktion: 'ab-versucht', operationId: '' }),
++  JSON.stringify({ id: 'gid://shopify/Product/7', aktion: 'auf', closesOperationId: 'nie-gesehen' }),
++]) {
++  neu(); writeFileSync(join(dir, 'manifest.jsonl'), inhalt + '\n');
++  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
++  pruef('kaputte Generationshistorie sperrt vor Mutation', [r.code, r.lies().log.length, readFileSync(join(dir, 'manifest.jsonl'), 'utf8')], [1, 0, inhalt + '\n']);
++}
++
++// 22) Exakter CLI-Mutationsteil mit künstlich verzögerter Rücknahmeantwort und gemeinsamem Manifest.
++// Kein neu gebauter Ersatzalgorithmus: die auszuführenden Bytes werden aus dem zu prüfenden CLI gelesen.
++{
++  const quelle = readFileSync(CLI, 'utf8');
++  const helper = quelle.slice(quelle.indexOf('let umbruchNoetig = false;'), quelle.indexOf('function liesFehler()'));
++  const schleife = quelle.slice(quelle.indexOf('let gut = 0, schlecht = 0, runde = 0;'));
++  if (!helper.includes('function anhaengen') || !schleife.includes('for (const st of stuecke(')) throw new Error('Prüfquelle des Mutationsteils fehlt');
++  const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
++  const ausfuehren = new AsyncFunction('bereit', 'PHASE', 'art', 'stuecke', 'mutation', 'heute', 'MANIFEST', 'q', 'auswerten', 'appendFileSync', 'FEHLERDATEI', 'console', 'process', 'STUECK', 'manifestZeile', 'randomUUID', 'man', 'LIVE', 'existsSync', 'FREIGABE', helper + '\n' + schleife);
++  const id = 'gid://shopify/Product/77';
++  const mf = join(dir, 'gegenprobe.jsonl');
++  const freiProbe = join(dir, 'gegenprobe-frei.txt');
++  const basis = Array.from({ length: 1100 }, (_, i) => ({ id: `gid://shopify/Product/${1000000 + i}`, handle: `basis-${i}`, titel: 'Prüfprodukt', tags: ['cj-real'], varianten: 1, kategorie: 'Home > Storage', aufGoogle: true }));
++  async function probe(verspaetet) {
++    writeFileSync(mf, '');
++    writeFileSync(freiProbe, 'künstliche Freigabe nur für die isolierte Codeprobe');
++    let publiziert = true, freigeben, gestartet;
++    const start = new Promise(resolve => { gestartet = resolve; });
++    const halt = new Promise(resolve => { freigeben = resolve; });
++    async function lauf(phase, verzug = false) {
++      const art = phase === 'abwaehlen' ? 'abwaehlen' : 'aufnehmen';
++      const man = parseManifest(readFileSync(mf, 'utf8'));
++      const q = async abfrage => {
++        if (!abfrage.includes('publicationId:"gid://shopify/Publication/302872297857"')) throw new Error('Falscher Zielkanal');
++        publiziert = art === 'aufnehmen';
++        if (verzug) { gestartet(); await halt; }
++        return { a0: { userErrors: [] } };
++      };
++      try {
++        await ausfuehren([{ id, handle: 'probe-ziel' }], phase, art, stuecke, mutation, () => '2026-10-28', mf, q, auswerten,
++          (p, s) => { const b = readFileSync(p); if (s) writeFileSync(p, Buffer.concat([b, Buffer.from(s)])); },
++          join(dir, 'probe-fehler.txt'), { log() {} }, { exit(code) { throw { testExit: code }; } }, 10, manifestZeile, randomUUID, man, true, existsSync, freiProbe);
++      } catch (e) { if (e?.testExit !== 0) throw e; }
++    }
++    await lauf('abwaehlen');
++    const generationA = parseManifest(readFileSync(mf, 'utf8')).generationen.get(id);
++    if (verspaetet) {
++      const offen = lauf('zuruecksetzen', true);
++      await start;
++      await lauf('abwaehlen');
++      freigeben(); await offen;
++    } else await lauf('zuruecksetzen');
++    const text = readFileSync(mf, 'utf8'), m = parseManifest(text);
++    const ziel = { id, handle: 'probe-ziel', titel: 'Prüfprodukt', tags: ['cj-real'], varianten: 1, kategorie: 'Home > Storage', ausschluss: '["Shopping_ads"]', aufGoogle: publiziert };
++    const p = plan([...basis, ziel], m.ids, { budget: 40000 });
++    return { publiziert, offen: m.ids.has(id), generationNeu: m.generationen.get(id) !== generationA, rueckholbar: p.zuruecksetzen.some(x => x.id === id), planOk: p.ok, kaputt: m.kaputt };
++  }
++  const seriell = await probe(false);
++  pruef('exakter CLI-Teil seriell: zurück, keine offene Absicht', [seriell.publiziert, seriell.offen, seriell.rueckholbar, seriell.planOk, seriell.kaputt], [true, false, false, true, 0]);
++  const spaet = await probe(true);
++  pruef('exakter CLI-Teil konkurrierend: alte Antwort erhält neue Rücknahmeidentität', [spaet.publiziert, spaet.offen, spaet.generationNeu, spaet.rueckholbar, spaet.planOk, spaet.kaputt], [false, true, true, true, true, 0]);
++}
++
+ rmSync(dir, { recursive: true, force: true });
+ console.log(`${ok} ok, ${fehler} Fehler`);
+ process.exit(fehler ? 1 : 0);
+--- /dev/null
++++ b/automation/codex_uebergabe.mjs
+@@ -0,0 +1,45 @@
++#!/usr/bin/env node
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { neuesPaket, quittieren, stand, UebergabeFehler } from '../codex-mods/luxe-codex/lib/uebergabe.mjs';
++
++export const HILFE = `Lokale LuxeStyle-Übergabe; kein Git-, Netz-, Modell- oder Shopaufruf.
++Vorgabe: stand (nur lesen). Die Repo-Wurzel muss absolut angegeben sein.
++
++node automation/codex_uebergabe.mjs stand --repo ROOT --packet RELPFAD
++node automation/codex_uebergabe.mjs neu --repo ROOT --input RELJSON --packet RELPFAD
++node automation/codex_uebergabe.mjs quittieren --repo ROOT --packet RELPFAD --expect SHA256 --decision accepted|blocked --note TEXT
++
++Pakete: dropship/codex-handoff-20261018/aufgaben/<taskId>.r<revision>.packet.json
++Quittung: gleicher Name mit .receipt.json, create-only, actor=claude als Selbstauskunft.
++Neue Revisionen behalten die taskId und benötigen previousPacketSha256.
++Keine Quittung bedeutet unbekannte Kenntnisnahme, nicht erledigt.
++Exit: 0 Ergebnis gelesen/geschrieben; 2 Eingabe; 3 unbekannte Daten; 4 Schreibzustand unklar; 5 Quellen/Paket veraltet.
++`;
++
++export function main(args, io = { out: s => console.log(s), err: s => console.error(s) }) {
++  try {
++    if (args.includes('--help') || args.includes('-h')) { io.out(HILFE); return 0; }
++    const a = [...args]; const command = a[0] && !a[0].startsWith('--') ? a.shift() : 'stand';
++    if (!['stand', 'neu', 'quittieren'].includes(command)) throw new UebergabeFehler('FORMAT', 'Unbekannter Befehl.');
++    const erlaubt = command === 'stand' ? ['repo', 'packet'] : command === 'neu' ? ['repo', 'packet', 'input'] : ['repo', 'packet', 'expect', 'decision', 'note'];
++    const opt = {};
++    for (let i = 0; i < a.length; i += 2) {
++      const key = a[i]?.slice(2);
++      if (!a[i]?.startsWith('--') || !erlaubt.includes(key) || Object.hasOwn(opt, key) || typeof a[i + 1] !== 'string' || a[i + 1].startsWith('--')) throw new UebergabeFehler('FORMAT', 'Option fehlt, ist doppelt oder unbekannt.');
++      opt[key] = a[i + 1];
++    }
++    if (erlaubt.some(k => !Object.hasOwn(opt, k))) throw new UebergabeFehler('FORMAT', 'Pflichtoption fehlt; --help zeigt den Aufruf.');
++    const cfg = { root: opt.repo, packet: opt.packet, input: opt.input, expect: opt.expect, decision: opt.decision, note: opt.note };
++    const out = command === 'stand' ? stand(cfg) : command === 'neu' ? neuesPaket(cfg) : quittieren(cfg);
++    io.out(JSON.stringify(out, null, 2));
++    return out.sourceState === 'verified' ? 0 : 5;
++  } catch (e) {
++    io.err(`ABBRUCH: ${e instanceof UebergabeFehler ? e.message : 'Lokaler Datei-/Lesezustand ist unbekannt.'}`);
++    if (e.code === 'SCHREIBEN_UNKLAR') return 4;
++    if (e.code === 'VERALTET') return 5;
++    return ['FORMAT', 'PFAD', 'VERTRAULICH', 'EXISTIERT'].includes(e.code) ? 2 : 3;
++  }
++}
++
++if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) process.exitCode = main(process.argv.slice(2));
+--- a/codex-mods/README.md
++++ b/codex-mods/README.md
+@@ -61,3 +61,20 @@
+ ```
+ 
+ Alle Tests laufen ohne Netz und ohne Modell; der Test des Läufers benutzt einen falschen `codex`.
++
++## Versionierte Übergabe zwischen Codex und Claude
++
++Der zusätzliche Skill `uebergabe` verwendet `automation/codex_uebergabe.mjs`. Der Standardbefehl `stand` liest ausschliesslich ein ausdrücklich genanntes lokales Paket. Kein Git-, Netz-, Modell- oder Shopaufruf, keine Hintergrundroutine.
++
++Ein Prüfpaket liegt unter `dropship/codex-handoff-20261018/aufgaben/<taskId>.r<revision>.packet.json`. Es enthält LuxeStyle-Markenbindung, stabile Aufgabenkennung, Basis-Commit, begrenzte Zusammenfassung und Hashreferenzen auf Quellen/Belege. Quellinhalte, Zugangsdaten und Kundendaten gehören nicht in Metadaten. Quellen und Belege werden vor Erstellung und beim späteren Lesen frisch verglichen. Fehlende, geänderte oder unlesbare Dateien bleiben unbekannt.
++
++```bash
++node automation/codex_uebergabe.mjs stand --repo /absoluter/pfad/zum/repo --packet dropship/codex-handoff-20261018/aufgaben/beispiel-aufgabe.r1.packet.json
++```
++
++`neu` legt aus einem geprüften lokalen Eingabe-JSON ein Paket ausschliesslich neu an. `quittieren` legt eine separate Quittung ausschliesslich neu an; es braucht `--expect` mit dem SHA-256 der exakten Paketdatei, eine ausdrückliche Entscheidung `accepted` oder `blocked` und eine Notiz. Bestehende Paket-/Quittungsdateien werden nicht überschrieben. Neue Revisionen behalten die taskId und benötigen den Hash der vorigen Revision. Eine alte Quittung gilt nicht für eine neue Revision.
++
++`actor=claude` ist ausdrücklich Selbstauskunft, keine authentifizierte Sitzungsidentität. Ohne tatsächlich vorliegende Quittung bleibt die Kenntnisnahme unbekannt. Auch `accepted` ist nur eine Prüfübergabe: keine bestätigte Umsetzung, kein Merge, keine Veröffentlichung und keine Rechte-/Qualitätsfreigabe. Das Werkzeug ersetzt kein Master-Publikationsregister. Gleiche Metadaten auf getrennten Rechnern sind kein verteilter Lock.
++
++Diese Erweiterung muss vor Integration lokal geprüft werden. Sie installiert sich nicht selbst und aktiviert keine Hooks oder produktiven Abläufe. Der GitHub-Transport erfolgt im bestehenden dokumentierten Reviewprozess, mit aktuellem Datei-SHA und Rücklesung.
++
+--- /dev/null
++++ b/codex-mods/luxe-codex/lib/uebergabe.mjs
+@@ -0,0 +1,192 @@
++import fs from 'node:fs';
++import path from 'node:path';
++import crypto from 'node:crypto';
++
++export const AUFGABEN = 'dropship/codex-handoff-20261018/aufgaben';
++export const GRENZEN = Object.freeze({ dokument: 128 * 1024, referenzen: 20, quelldateien: 512 * 1024 });
++const HASH = /^[a-f0-9]{64}$/;
++const GIT = /^[a-f0-9]{40}$/;
++const ID = /^[a-z0-9][a-z0-9_-]{2,79}$/;
++const passt = (muster, wert) => typeof wert === 'string' && muster.test(wert);
++const EIGEN = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
++const SHA = b => crypto.createHash('sha256').update(b).digest('hex');
++const objekt = v => v !== null && typeof v === 'object' && !Array.isArray(v) && Object.getPrototypeOf(v) === Object.prototype;
++
++export class UebergabeFehler extends Error {
++  constructor(code, meldung) { super(meldung); this.code = code; }
++}
++function abbruch(code, meldung) { throw new UebergabeFehler(code, meldung); }
++function felder(o, erlaubt, pflicht = erlaubt) {
++  if (!objekt(o) || Object.keys(o).some(k => !erlaubt.includes(k)) || pflicht.some(k => !EIGEN(o, k))) abbruch('FORMAT', 'Unbekannte oder fehlende Metadatenfelder.');
++}
++function text(v, max, leer = false) {
++  if (typeof v !== 'string' || v.length > max || !leer && !v.trim() || /[\u0000-\u0008\u000b-\u001f\u007f\u202a-\u202e\u2066-\u2069]/.test(v)) abbruch('FORMAT', 'Text fehlt oder enthält ungültige Zeichen.');
++  if (/\b(?:shpat_|shpss_|xox[baprs]-)|-----BEGIN[^\n]*PRIVATE KEY|\bAKIA[A-Z0-9]{16}\b|(?:authorization|cookie|client_secret|access_token)\s*[:=]|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(v)) abbruch('VERTRAULICH', 'Keine Zugangsdaten oder E-Mail-Adressen in Übergabemetadaten.');
++}
++function zeit(v) {
++  if (typeof v !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(v) || !Number.isFinite(Date.parse(v)) || new Date(v).toISOString() !== v) abbruch('FORMAT', 'Ungültiger UTC-Zeitpunkt.');
++}
++function relativ(v) {
++  if (typeof v !== 'string' || v.length > 240 || !/^[A-Za-z0-9_.\/-]+$/.test(v) || v.startsWith('/') || v.split('/').some(t => !t || t === '.' || t === '..')) abbruch('PFAD', 'Nur eindeutige relative Repo-Pfade sind erlaubt.');
++  return v;
++}
++export function referenzPfad(v) {
++  relativ(v);
++  const teile = v.toLowerCase().split('/');
++  if (teile.some(t => t === '.git' || t === 'node_modules' || t.startsWith('.env') || ['.aws', '.ssh', '.kube', '.docker'].includes(t))) abbruch('PFAD', 'Zugangs- und Verwaltungsordner sind keine Übergabequellen.');
++  const name = teile.at(-1);
++  if (/\.(?:pem|key|p12|pfx|env|csv|tsv|jsonl)$/.test(name) || /(?:^|[-_.])(?:orders?|bestellungen|customers?|kunden|profiles?|credentials|auth|secrets?|tokens?)(?:[-_.]|$)/.test(name) && !/^shopify_secret\.mjs$/.test(name)) abbruch('PFAD', 'Kunden- und Zugangsdateien sind keine Übergabequellen.');
++  const code = /^codex-mods\/luxe-codex\/(?:lib|hooks|skills|test)\//.test(v) || /^automation\/(?:lib\/)?(?:codex_|gmc_)[A-Za-z0-9_.-]+\.mjs$/.test(v) || /^automation\/lib\/(?:shopify_host|shopify_gql|shopify_secret|kanal_sperren)\.mjs$/.test(v);
++  const beleg = v.startsWith('dropship/codex-handoff-20261018/') && !v.startsWith(`${AUFGABEN}/`) && /\.(?:md|json|diff|patch|txt)$/.test(v);
++  if (!code && !beleg) abbruch('PFAD', 'Pfad liegt ausserhalb der erlaubten LuxeStyle-Code-/Belegbereiche.');
++  return v;
++}
++function referenzen(liste, mindestens) {
++  if (!Array.isArray(liste) || liste.length < mindestens || liste.length > GRENZEN.referenzen) abbruch('FORMAT', 'Unzulässige Zahl von Dateireferenzen.');
++  for (const r of liste) {
++    felder(r, ['path', 'sha256', 'gitBlobSha'], ['path', 'sha256']);
++    referenzPfad(r.path);
++    if (!passt(HASH, r.sha256) || EIGEN(r, 'gitBlobSha') && !passt(GIT, r.gitBlobSha)) abbruch('FORMAT', 'Dateireferenz benötigt gültige Hashwerte.');
++  }
++}
++export function validierePaket(p) {
++  felder(p, ['schemaVersion', 'kind', 'brand', 'taskId', 'revision', 'producer', 'coordinator', 'purpose', 'createdAt', 'baseCommit', 'title', 'summary', 'sources', 'evidence', 'previousPacketSha256']);
++  if (p.schemaVersion !== 1 || p.kind !== 'luxestyle.review.packet' || p.brand !== 'luxestyle.ch' || p.coordinator !== 'claude' || !['codex', 'claude'].includes(p.producer) || p.purpose !== 'review_only') abbruch('FORMAT', 'Nur LuxeStyle-Prüfpakete mit Claude als Koordinator sind erlaubt.');
++  if (!passt(ID, p.taskId) || !Number.isSafeInteger(p.revision) || p.revision < 1 || p.revision > 1000000 || !passt(GIT, p.baseCommit)) abbruch('FORMAT', 'Aufgabenkennung, Revision oder Commit ist ungültig.');
++  if (p.revision === 1 ? p.previousPacketSha256 !== null : !passt(HASH, p.previousPacketSha256)) abbruch('FORMAT', 'Neue Revision braucht den Hash der vorherigen Paketdatei.');
++  text(p.title, 160); text(p.summary, 4000); zeit(p.createdAt);
++  referenzen(p.sources, 1); referenzen(p.evidence, 0);
++  const alle = [...p.sources, ...p.evidence];
++  if (new Set(alle.map(r => r.path)).size !== alle.length) abbruch('FORMAT', 'Dateireferenzen dürfen sich nicht wiederholen.');
++  return p;
++}
++function wurzel(root) {
++  if (typeof root !== 'string' || !path.isAbsolute(root)) abbruch('PFAD', 'Repo-Wurzel muss ausdrücklich und absolut angegeben sein.');
++  let real;
++  try { real = fs.realpathSync(root); if (!fs.statSync(real).isDirectory()) throw new Error(); } catch { abbruch('UNBEKANNT', 'Repo-Wurzel ist nicht lesbar.'); }
++  return real;
++}
++function pfad(root, rel, anlegen = false) {
++  relativ(rel);
++  const teile = rel.split('/'); let aktuell = wurzel(root);
++  for (let i = 0; i < teile.length; i++) {
++    aktuell = path.join(aktuell, teile[i]);
++    try {
++      const st = fs.lstatSync(aktuell);
++      if (st.isSymbolicLink() || i < teile.length - 1 && !st.isDirectory()) abbruch('PFAD', 'Symlinks und uneindeutige Elternpfade sind nicht erlaubt.');
++    } catch (e) {
++      if (e instanceof UebergabeFehler) throw e;
++      if (e.code !== 'ENOENT') abbruch('UNBEKANNT', 'Pfad konnte nicht sicher gelesen werden.');
++      if (!anlegen) throw e;
++      if (i < teile.length - 1) {
++        try { fs.mkdirSync(aktuell, { mode: 0o700 }); } catch (x) { if (x.code !== 'EEXIST') throw x; }
++        const st = fs.lstatSync(aktuell); if (!st.isDirectory() || st.isSymbolicLink()) abbruch('PFAD', 'Elternpfad ist kein sicherer Ordner.');
++      }
++    }
++  }
++  return aktuell;
++}
++function lesen(root, rel, grenze) {
++  const abs = pfad(root, rel);
++  const fd = fs.openSync(abs, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0));
++  try {
++    const st = fs.fstatSync(fd);
++    if (!st.isFile() || st.nlink !== 1 || st.size > grenze) abbruch('UNBEKANNT', 'Datei ist nicht regulär, mehrfach verknüpft oder zu gross.');
++    const b = Buffer.alloc(st.size + 1); let n = 0;
++    while (n < b.length) { const k = fs.readSync(fd, b, n, b.length - n, null); if (!k) break; n += k; }
++    if (n !== st.size) abbruch('UNBEKANNT', 'Datei änderte sich während des Lesens.');
++    return b.subarray(0, n);
++  } finally { fs.closeSync(fd); }
++}
++function json(root, rel) {
++  const bytes = lesen(root, rel, GRENZEN.dokument); let value;
++  try { value = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)); } catch { abbruch('UNBEKANNT', 'JSON-Datei ist beschädigt oder nicht als UTF-8 lesbar.'); }
++  return { value, bytes, sha256: SHA(bytes) };
++}
++function paketName(p) { return `${AUFGABEN}/${p.taskId}.r${p.revision}.packet.json`; }
++function quittungName(p) { return `${AUFGABEN}/${p.taskId}.r${p.revision}.receipt.json`; }
++export function liesPaket(root, rel) {
++  relativ(rel);
++  if (!rel.startsWith(`${AUFGABEN}/`) || !rel.endsWith('.packet.json')) abbruch('PFAD', 'Paket muss im festen Aufgabenordner liegen.');
++  const out = json(root, rel); validierePaket(out.value);
++  if (paketName(out.value) !== rel) abbruch('PFAD', 'Dateiname passt nicht zu Aufgabe und Revision.');
++  return out;
++}
++export function pruefeQuellen(p, root) {
++  validierePaket(p); let summe = 0;
++  const checks = [...p.sources, ...p.evidence].map(r => {
++    let bytes;
++    try { bytes = lesen(root, r.path, GRENZEN.quelldateien - summe); summe += bytes.length; }
++    catch (e) { return { path: r.path, expectedSha256: r.sha256, actualSha256: null, state: e.code === 'ENOENT' ? 'missing' : 'unknown', gitBlobMatches: null }; }
++    const hash = SHA(bytes);
++    const git = EIGEN(r, 'gitBlobSha') ? crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex') === r.gitBlobSha : null;
++    return { path: r.path, expectedSha256: r.sha256, actualSha256: hash, state: hash === r.sha256 && git !== false ? 'verified' : 'changed', gitBlobMatches: git };
++  });
++  return { state: checks.every(c => c.state === 'verified') ? 'verified' : 'stale_or_unknown', checks, bytesRead: summe };
++}
++function serialisiere(value) { const b = Buffer.from(JSON.stringify(value, null, 2) + '\n'); if (b.length > GRENZEN.dokument) abbruch('FORMAT', 'Übergabedokument ist zu gross.'); return b; }
++function erzeugen(root, rel, bytes) {
++  const abs = pfad(root, rel, true); const temp = `${abs}.tmp-${process.pid}-${crypto.randomUUID()}`; let fd, eigen = false, sichtbar = false;
++  try {
++    fd = fs.openSync(temp, 'wx', 0o600); eigen = true;
++    let n = 0; while (n < bytes.length) { const k = fs.writeSync(fd, bytes, n, bytes.length - n); if (!k) throw new Error('Schreibabbruch'); n += k; }
++    fs.fsyncSync(fd); fs.closeSync(fd); fd = undefined;
++    fs.linkSync(temp, abs); sichtbar = true; fs.unlinkSync(temp); eigen = false;
++    const dir = fs.openSync(path.dirname(abs), 'r'); try { fs.fsyncSync(dir); } finally { fs.closeSync(dir); }
++    if (!lesen(root, rel, GRENZEN.dokument).equals(bytes)) abbruch('SCHREIBEN_UNKLAR', 'Rücklesen stimmt nicht; nicht erneut schreiben.');
++  } catch (e) {
++    if (e.code === 'EEXIST' && !sichtbar) abbruch('EXISTIERT', 'Datei existiert bereits; zuerst stand lesen, nicht überschreiben.');
++    if (sichtbar) abbruch('SCHREIBEN_UNKLAR', 'Datei könnte bereits angelegt sein; zuerst stand lesen, nicht blind wiederholen.');
++    throw e;
++  } finally { if (fd !== undefined) fs.closeSync(fd); if (eigen) { try { fs.unlinkSync(temp); } catch {} } }
++}
++export function neuesPaket({ root, input, packet }) {
++  referenzPfad(input);
++  const p = validierePaket(json(root, input).value);
++  if (packet !== paketName(p)) abbruch('PFAD', 'Ausgabename muss Aufgabe und Revision entsprechen.');
++  if (p.revision > 1) {
++    const prev = liesPaket(root, paketName({ ...p, revision: p.revision - 1 }));
++    if (prev.sha256 !== p.previousPacketSha256 || prev.value.taskId !== p.taskId) abbruch('VERALTET', 'Vorherige Paketrevision stimmt nicht.');
++  }
++  const vorher = pruefeQuellen(p, root); if (vorher.state !== 'verified') abbruch('VERALTET', 'Quellen oder Belege stimmen vor Paketerstellung nicht.');
++  const bytes = serialisiere(p); erzeugen(root, packet, bytes);
++  const nachher = pruefeQuellen(p, root);
++  return { packet, packetSha256: SHA(bytes), taskId: p.taskId, revision: p.revision, sourceState: nachher.state, created: true, receiptState: 'unknown_missing_receipt', sourceChecks: nachher.checks };
++}
++function validiereQuittung(q, paket, hash) {
++  felder(q, ['schemaVersion', 'kind', 'brand', 'taskId', 'revision', 'packetSha256', 'actor', 'identityAssurance', 'purpose', 'decision', 'note', 'createdAt', 'sourceChecks']);
++  if (q.schemaVersion !== 1 || q.kind !== 'luxestyle.review.receipt' || q.brand !== 'luxestyle.ch' || q.taskId !== paket.taskId || q.revision !== paket.revision || q.packetSha256 !== hash || q.actor !== 'claude' || q.identityAssurance !== 'self_declared' || q.purpose !== 'review_receipt_only' || !['accepted', 'blocked'].includes(q.decision)) abbruch('UNBEKANNT', 'Quittung gehört nicht zu den exakten Paketbytes oder hat ungültige Rollenfelder.');
++  text(q.note, 2000); zeit(q.createdAt);
++  const refs = [...paket.sources, ...paket.evidence];
++  if (!Array.isArray(q.sourceChecks) || q.sourceChecks.length !== refs.length) abbruch('UNBEKANNT', 'Quittung enthält keine vollständige Dateigegenprobe.');
++  q.sourceChecks.forEach((c, i) => {
++    felder(c, ['path', 'expectedSha256', 'actualSha256', 'state', 'gitBlobMatches']);
++    if (c.path !== refs[i].path || c.expectedSha256 !== refs[i].sha256 || ![null, true, false].includes(c.gitBlobMatches) || !['verified', 'changed', 'missing', 'unknown'].includes(c.state) || c.actualSha256 !== null && !passt(HASH, c.actualSha256)) abbruch('UNBEKANNT', 'Quittungsgegenprobe passt nicht zum Paket.');
++    if (c.state === 'verified' && (c.actualSha256 !== c.expectedSha256 || c.gitBlobMatches === false || EIGEN(refs[i], 'gitBlobSha') && c.gitBlobMatches !== true)) abbruch('UNBEKANNT', 'Quittung behauptet eine widersprüchliche Dateiprüfung.');
++  });
++  if (q.decision === 'accepted' && q.sourceChecks.some(c => c.state !== 'verified')) abbruch('UNBEKANNT', 'Angenommene Quittung enthält ungeprüfte Quellen.');
++  return q;
++}
++export function quittieren({ root, packet, expect, decision, note, now = new Date().toISOString() }) {
++  if (!passt(HASH, expect) || !['accepted', 'blocked'].includes(decision)) abbruch('FORMAT', 'Erwarteter Pakethash und Entscheidung sind Pflicht.');
++  text(note, 2000); zeit(now);
++  const p = liesPaket(root, packet); if (p.sha256 !== expect) abbruch('VERALTET', 'Paketbytes haben sich geändert; erst neu lesen.');
++  const checks = pruefeQuellen(p.value, root); if (decision === 'accepted' && checks.state !== 'verified') abbruch('VERALTET', 'Quellen oder Belege sind veraltet oder unbekannt.');
++  const q = { schemaVersion: 1, kind: 'luxestyle.review.receipt', brand: 'luxestyle.ch', taskId: p.value.taskId, revision: p.value.revision, packetSha256: p.sha256, actor: 'claude', identityAssurance: 'self_declared', purpose: 'review_receipt_only', decision, note, createdAt: now, sourceChecks: checks.checks };
++  validiereQuittung(q, p.value, p.sha256);
++  const erneut = liesPaket(root, packet); if (erneut.sha256 !== expect) abbruch('VERALTET', 'Paket änderte sich während der Gegenprobe.');
++  const rel = quittungName(p.value); erzeugen(root, rel, serialisiere(q));
++  return stand({ root, packet });
++}
++export function stand({ root, packet }) {
++  const p = liesPaket(root, packet); const checks = pruefeQuellen(p.value, root); let receipt = null;
++  try { receipt = validiereQuittung(json(root, quittungName(p.value)).value, p.value, p.sha256); }
++  catch (e) { if (e.code !== 'ENOENT') throw e; }
++  return {
++    taskId: p.value.taskId, revision: p.value.revision, packet, packetSha256: p.sha256, producer: p.value.producer, coordinator: p.value.coordinator,
++    sourceState: checks.state, sourceChecks: checks.checks,
++    receiptState: receipt ? checks.state === 'verified' ? receipt.decision : 'stale_or_unknown' : 'unknown_missing_receipt',
++    receipt,
++    notice: 'Rollenwert ist Selbstauskunft. Keine Live-Sitzungsverbindung, keine Umsetzung oder Veröffentlichung bestätigt.',
++  };
++}
+--- /dev/null
++++ b/codex-mods/luxe-codex/test/uebergabe_test.mjs
+@@ -0,0 +1,215 @@
++import assert from 'node:assert/strict';
++import fs from 'node:fs';
++import os from 'node:os';
++import path from 'node:path';
++import crypto from 'node:crypto';
++import { spawn, spawnSync } from 'node:child_process';
++import { fileURLToPath } from 'node:url';
++import { AUFGABEN, validierePaket, referenzPfad, neuesPaket, quittieren, stand } from '../lib/uebergabe.mjs';
++import { main } from '../../../automation/codex_uebergabe.mjs';
++
++// Ausschliesslich künstliche Dateien und lokale Prozesse; keine echte Quittung.
++const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'luxe-uebergabe-test-'));
++const cli = fileURLToPath(new URL('../../../automation/codex_uebergabe.mjs', import.meta.url));
++const hash = b => crypto.createHash('sha256').update(b).digest('hex');
++const blob = b => crypto.createHash('sha1').update(`blob ${Buffer.byteLength(b)}\0`).update(b).digest('hex');
++let ok = 0, fehler = 0, zaehler = 0;
++async function test(name, fn) {
++  try { await fn(); ok++; } catch (e) { fehler++; console.error(`FEHLER ${name}: ${e.stack}`); }
++}
++function wirft(fn, code) { assert.throws(fn, e => e.code === code); }
++function schreibe(root, rel, bytes) { const p = path.join(root, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, bytes); }
++function fixture() {
++  const root = path.join(tmp, `fall-${++zaehler}`); fs.mkdirSync(root);
++  const quelle = 'automation/lib/gmc_fixture.mjs', beleg = 'dropship/codex-handoff-20261018/fixture.md';
++  schreibe(root, quelle, 'export const wert = 1;\n'); schreibe(root, beleg, '# Künstlicher Testbeleg\n');
++  const ref = rel => { const b = fs.readFileSync(path.join(root, rel)); return { path: rel, sha256: hash(b), gitBlobSha: blob(b) }; };
++  const paket = {
++    schemaVersion: 1, kind: 'luxestyle.review.packet', brand: 'luxestyle.ch', taskId: 'fixture-task', revision: 1,
++    producer: 'codex', coordinator: 'claude', purpose: 'review_only', createdAt: '2026-10-28T21:00:00.000Z',
++    baseCommit: 'a'.repeat(40), title: 'Künstlicher Prüfauftrag', summary: 'Nur Testmetadaten, keine echte Kenntnisnahme.',
++    sources: [ref(quelle)], evidence: [ref(beleg)], previousPacketSha256: null,
++  };
++  const input = 'dropship/codex-handoff-20261018/input.json';
++  const packet = `${AUFGABEN}/${paket.taskId}.r1.packet.json`;
++  const receipt = packet.replace('.packet.json', '.receipt.json');
++  const speichern = p => schreibe(root, input, JSON.stringify(p)); speichern(paket);
++  const anlegen = () => neuesPaket({ root, input, packet });
++  return { root, quelle, beleg, paket, input, packet, receipt, speichern, anlegen };
++}
++const annehmen = (f, out) => quittieren({ root: f.root, packet: f.packet, expect: out.packetSha256, decision: 'accepted', note: 'Künstlicher Verhaltenstest.', now: '2026-10-28T21:01:00.000Z' });
++function baum(root) {
++  const out = [];
++  function gehen(dir) { for (const name of fs.readdirSync(dir).sort()) { const p = path.join(dir, name), s = fs.lstatSync(p); out.push([path.relative(root, p), s.isDirectory() ? 'dir' : hash(fs.readFileSync(p))]); if (s.isDirectory()) gehen(p); } }
++  gehen(root); return out;
++}
++function prozess(args) {
++  return new Promise(resolve => {
++    const p = spawn(process.execPath, [cli, ...args], { env: { PATH: process.env.PATH }, stdio: ['ignore', 'pipe', 'pipe'] });
++    let out = '', err = ''; p.stdout.on('data', d => out += d); p.stderr.on('data', d => err += d);
++    const timer = setTimeout(() => p.kill(), 10000);
++    p.on('close', code => { clearTimeout(timer); resolve({ code, out, err }); });
++  });
++}
++
++try {
++  await test('Frische Quellen, fehlende Quittung und unveränderte Quellenbytes', () => {
++    const f = fixture(), vorher = fs.readFileSync(path.join(f.root, f.quelle)); const out = f.anlegen();
++    assert.equal(out.sourceState, 'verified'); assert.equal(out.receiptState, 'unknown_missing_receipt');
++    assert.deepEqual(fs.readFileSync(path.join(f.root, f.quelle)), vorher);
++    assert.equal(stand({ root: f.root, packet: f.packet }).receipt, null);
++    const p = fs.readFileSync(path.join(f.root, f.packet), 'utf8'); assert(!p.includes('export const wert'));
++  });
++  await test('Paket kann nicht überschrieben werden', () => {
++    const f = fixture(); f.anlegen(); const vorher = fs.readFileSync(path.join(f.root, f.packet));
++    wirft(f.anlegen, 'EXISTIERT'); assert.deepEqual(fs.readFileSync(path.join(f.root, f.packet)), vorher);
++  });
++  await test('Künstliche Annahme bindet Paket und Quellen, bleibt Selbstauskunft', () => {
++    const f = fixture(), out = f.anlegen(), s = annehmen(f, out);
++    assert.equal(s.receiptState, 'accepted'); assert.equal(s.receipt.identityAssurance, 'self_declared');
++    assert.equal(s.receipt.packetSha256, out.packetSha256); assert.equal(s.receipt.purpose, 'review_receipt_only');
++    assert.match(s.notice, /Keine Live-Sitzungsverbindung/);
++    assert.equal(s.receipt.sourceChecks[0].gitBlobMatches, true);
++  });
++  await test('Bestehende Quittung bleibt unverändert', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out); const vorher = fs.readFileSync(path.join(f.root, f.receipt));
++    wirft(() => annehmen(f, out), 'EXISTIERT'); assert.deepEqual(fs.readFileSync(path.join(f.root, f.receipt)), vorher);
++  });
++  await test('Geänderte Quelle verhindert Annahme', () => {
++    const f = fixture(), out = f.anlegen(); schreibe(f.root, f.quelle, 'export const wert = 2;\n');
++    wirft(() => annehmen(f, out), 'VERALTET'); assert(!fs.existsSync(path.join(f.root, f.receipt)));
++  });
++  await test('Geänderter Beleg verhindert Annahme', () => {
++    const f = fixture(), out = f.anlegen(); schreibe(f.root, f.beleg, '# Anderer Beleg\n');
++    wirft(() => annehmen(f, out), 'VERALTET');
++  });
++  await test('Geänderte Quelle macht frühere Annahme veraltet', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out); schreibe(f.root, f.quelle, 'neu');
++    assert.equal(stand({ root: f.root, packet: f.packet }).receiptState, 'stale_or_unknown');
++  });
++  await test('Fehlende Quelle bleibt missing, Blockierungsquittung ist möglich', () => {
++    const f = fixture(), out = f.anlegen(); fs.unlinkSync(path.join(f.root, f.quelle));
++    const s = quittieren({ root: f.root, packet: f.packet, expect: out.packetSha256, decision: 'blocked', note: 'Künstliche Quelle fehlt.' });
++    assert.equal(s.sourceChecks[0].state, 'missing'); assert.equal(s.receipt.decision, 'blocked');
++    assert.equal(s.receiptState, 'stale_or_unknown');
++  });
++  await test('Falscher erwarteter Pakethash wird abgelehnt', () => {
++    const f = fixture(); f.anlegen(); wirft(() => quittieren({ root: f.root, packet: f.packet, expect: '0'.repeat(64), decision: 'accepted', note: 'Test' }), 'VERALTET');
++  });
++  await test('Gleicher JSON-Inhalt mit anderen Bytes entwertet vorhandene Quittung', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out);
++    const p = JSON.parse(fs.readFileSync(path.join(f.root, f.packet))); schreibe(f.root, f.packet, JSON.stringify(p));
++    wirft(() => stand({ root: f.root, packet: f.packet }), 'UNBEKANNT');
++  });
++  await test('Revision 2 behält taskId und verlangt den genauen Vorgänger', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out);
++    const p2 = { ...f.paket, revision: 2, previousPacketSha256: out.packetSha256 }; f.speichern(p2);
++    const packet = `${AUFGABEN}/${p2.taskId}.r2.packet.json`, s = neuesPaket({ root: f.root, input: f.input, packet });
++    assert.equal(s.taskId, f.paket.taskId); assert.equal(s.receiptState, 'unknown_missing_receipt');
++    schreibe(f.root, packet.replace('.packet.json', '.receipt.json'), fs.readFileSync(path.join(f.root, f.receipt)));
++    wirft(() => stand({ root: f.root, packet }), 'UNBEKANNT');
++  });
++  await test('Falscher Vorgänger und fehlende Revision werden abgelehnt', () => {
++    const f = fixture(); f.anlegen(); f.speichern({ ...f.paket, revision: 2, previousPacketSha256: '0'.repeat(64) });
++    wirft(() => neuesPaket({ root: f.root, input: f.input, packet: `${AUFGABEN}/fixture-task.r2.packet.json` }), 'VERALTET');
++    f.speichern({ ...f.paket, revision: 3, previousPacketSha256: '0'.repeat(64) });
++    wirft(() => neuesPaket({ root: f.root, input: f.input, packet: `${AUFGABEN}/fixture-task.r3.packet.json` }), 'ENOENT');
++  });
++  await test('Fehlendes Paket wird nicht initialisiert', () => {
++    const f = fixture(), vorher = baum(f.root); wirft(() => stand({ root: f.root, packet: f.packet }), 'ENOENT'); assert.deepEqual(baum(f.root), vorher);
++  });
++  await test('Beschädigtes Paket und beschädigte Quittung bleiben Fehler', () => {
++    const f = fixture(); f.anlegen(); schreibe(f.root, f.receipt, '{'); wirft(() => stand({ root: f.root, packet: f.packet }), 'UNBEKANNT');
++    schreibe(f.root, f.packet, Buffer.from([0xff])); wirft(() => stand({ root: f.root, packet: f.packet }), 'UNBEKANNT');
++  });
++  await test('Dateiname und taskId/Revision müssen übereinstimmen', () => {
++    const f = fixture(); wirft(() => neuesPaket({ root: f.root, input: f.input, packet: `${AUFGABEN}/fremde-task.r1.packet.json` }), 'PFAD');
++  });
++  await test('taskId muss ein String sein, keine RegExp-Koerzierung', () => {
++    const f = fixture(); for (const taskId of [123, ['fixture-task']]) wirft(() => validierePaket({ ...f.paket, taskId }), 'FORMAT');
++  });
++  await test('Hashwerte und Basiscommit dürfen nicht zu Strings koerziert werden', () => {
++    const f = fixture();
++    wirft(() => validierePaket({ ...f.paket, baseCommit: ['a'.repeat(40)] }), 'FORMAT');
++    wirft(() => validierePaket({ ...f.paket, sources: [{ ...f.paket.sources[0], sha256: [f.paket.sources[0].sha256] }] }), 'FORMAT');
++    wirft(() => validierePaket({ ...f.paket, sources: [{ ...f.paket.sources[0], gitBlobSha: [f.paket.sources[0].gitBlobSha] }] }), 'FORMAT');
++  });
++  await test('Gepinnte Git-Quelle verlangt belegten Git-Hash auch in Quittung', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out);
++    const q = JSON.parse(fs.readFileSync(path.join(f.root, f.receipt))); q.sourceChecks[0].gitBlobMatches = null; schreibe(f.root, f.receipt, JSON.stringify(q));
++    wirft(() => stand({ root: f.root, packet: f.packet }), 'UNBEKANNT');
++  });
++  await test('Anderer Git-Hash verhindert Paketerstellung', () => {
++    const f = fixture(); f.paket.sources[0].gitBlobSha = '0'.repeat(40); f.speichern(f.paket); wirft(f.anlegen, 'VERALTET');
++  });
++  await test('Doppelte Quellen und zusätzliche Statusfelder sind unzulässig', () => {
++    const f = fixture(); wirft(() => validierePaket({ ...f.paket, evidence: f.paket.sources }), 'FORMAT');
++    wirft(() => validierePaket({ ...f.paket, status: 'published' }), 'FORMAT');
++  });
++  await test('Metadaten dürfen keine E-Mail oder Zugangsdatenmarker enthalten', () => {
++    const f = fixture(); for (const summary of ['test@example.test', 'access_token=fixture', 'shpat_test']) wirft(() => validierePaket({ ...f.paket, summary }), 'VERTRAULICH');
++  });
++  await test('Traversierung, Verwaltungsordner und Kundenpfade sind gesperrt', () => {
++    for (const p of ['../x', '/tmp/x', 'automation/../x', 'codex-mods/luxe-codex/lib/.env', 'dropship/codex-handoff-20261018/customers.json', 'dropship/codex-handoff-20261018/orders.csv', `${AUFGABEN}/f.r1.packet.json`]) wirft(() => referenzPfad(p), 'PFAD');
++  });
++  await test('Symlink-Quelle ist unknown und kann nicht angenommen werden', () => {
++    const f = fixture(); fs.unlinkSync(path.join(f.root, f.quelle)); fs.symlinkSync(path.join(f.root, f.beleg), path.join(f.root, f.quelle));
++    wirft(f.anlegen, 'VERALTET');
++  });
++  await test('Hardlink-Quelle ist unknown', () => {
++    const f = fixture(); fs.linkSync(path.join(f.root, f.quelle), path.join(f.root, 'alias')); wirft(f.anlegen, 'VERALTET');
++  });
++  await test('Symlink im Ausgabe-Elternpfad wird abgewiesen', () => {
++    const f = fixture(); fs.mkdirSync(path.join(f.root, 'ziel')); fs.symlinkSync(path.join(f.root, 'ziel'), path.join(f.root, AUFGABEN));
++    wirft(f.anlegen, 'PFAD'); assert.deepEqual(fs.readdirSync(path.join(f.root, 'ziel')), []);
++  });
++  await test('Symlink- und Hardlink-Quittung sind keine gültige Historie', () => {
++    const f = fixture(), out = f.anlegen(); annehmen(f, out);
++    const alias = path.join(f.root, 'quittung-alias.json'); fs.renameSync(path.join(f.root, f.receipt), alias);
++    fs.symlinkSync(alias, path.join(f.root, f.receipt)); wirft(() => stand({ root: f.root, packet: f.packet }), 'PFAD');
++    fs.unlinkSync(path.join(f.root, f.receipt)); fs.linkSync(alias, path.join(f.root, f.receipt)); wirft(() => stand({ root: f.root, packet: f.packet }), 'UNBEKANNT');
++  });
++  await test('Unbekannte Marke, unsichere Zeit und relative Wurzel werden abgelehnt', () => {
++    const f = fixture(); wirft(() => validierePaket({ ...f.paket, brand: 'andere.test' }), 'FORMAT');
++    wirft(() => validierePaket({ ...f.paket, createdAt: '2026-02-31T21:00:00.000Z' }), 'FORMAT');
++    wirft(() => stand({ root: '.', packet: f.packet }), 'PFAD');
++  });
++  await test('Zu grosse Quelle bleibt unknown', () => {
++    const f = fixture(); schreibe(f.root, f.quelle, 'x'.repeat(512 * 1024 + 1)); f.paket.sources[0].sha256 = hash(fs.readFileSync(path.join(f.root, f.quelle))); f.speichern(f.paket); wirft(f.anlegen, 'VERALTET');
++  });
++  await test('Import startet weder Netz noch Dateien oder Ausgabe', () => {
++    const f = fixture(), vorher = baum(f.root);
++    const code = `globalThis.fetch=()=>{throw new Error('Netz verboten')}; await import(${JSON.stringify(new URL('../../../automation/codex_uebergabe.mjs', import.meta.url).href)});`;
++    const r = spawnSync(process.execPath, ['--input-type=module', '-e', code], { cwd: f.root, env: { PATH: process.env.PATH }, encoding: 'utf8', timeout: 10000 });
++    assert.equal(r.status, 0); assert.equal(r.stdout, ''); assert.equal(r.stderr, ''); assert.deepEqual(baum(f.root), vorher);
++  });
++  await test('CLI ohne Argumente und default stand schreiben nichts', () => {
++    const f = fixture(); f.anlegen(); const vorher = baum(f.root), out = [], err = [], io = { out: s => out.push(s), err: s => err.push(s) };
++    assert.equal(main([], io), 2); assert.equal(main(['--repo', f.root, '--packet', f.packet], io), 0);
++    assert.equal(JSON.parse(out.at(-1)).receiptState, 'unknown_missing_receipt'); assert.deepEqual(baum(f.root), vorher);
++  });
++  await test('Unbekannte oder doppelte CLI-Optionen sind Eingabefehler', () => {
++    const f = fixture(), io = { out() {}, err() {} };
++    assert.equal(main(['stand', '--repo', f.root, '--repo', f.root, '--packet', f.packet], io), 2);
++    assert.equal(main(['publish', '--repo', f.root], io), 2); assert.equal(main(['stand', '--repo', f.root, '--packet', f.packet, '--live', '1'], io), 2);
++  });
++  await test('CLI zeigt beschädigte Historie als unbekannten Datenfehler', () => {
++    const f = fixture(); f.anlegen(); schreibe(f.root, f.receipt, '{'); const out = [], err = [];
++    assert.equal(main(['stand', '--repo', f.root, '--packet', f.packet], { out: s => out.push(s), err: s => err.push(s) }), 3);
++    assert.equal(out.length, 0); assert(err[0].includes('beschädigt'));
++  });
++  await test('Zwei gleichzeitige Paketanlagen erzeugen genau eine vollständige Datei', async () => {
++    const f = fixture(), args = ['neu', '--repo', f.root, '--input', f.input, '--packet', f.packet];
++    const r = await Promise.all([prozess(args), prozess(args)]); assert.deepEqual(r.map(x => x.code).sort(), [0, 2]);
++    assert.equal(stand({ root: f.root, packet: f.packet }).sourceState, 'verified');
++    assert.deepEqual(fs.readdirSync(path.dirname(path.join(f.root, f.packet))), ['fixture-task.r1.packet.json']);
++  });
++  await test('Zwei gleichzeitige Quittungen überschreiben sich nicht', async () => {
++    const f = fixture(), out = f.anlegen();
++    const args = ['quittieren', '--repo', f.root, '--packet', f.packet, '--expect', out.packetSha256, '--decision', 'accepted', '--note', 'Künstlicher Paralleltest.'];
++    const r = await Promise.all([prozess(args), prozess(args)]); assert.deepEqual(r.map(x => x.code).sort(), [0, 2]);
++    assert.equal(stand({ root: f.root, packet: f.packet }).receiptState, 'accepted');
++    assert.equal(fs.readdirSync(path.dirname(path.join(f.root, f.packet))).filter(n => n.includes('.tmp-')).length, 0);
++  });
++} finally { fs.rmSync(tmp, { recursive: true, force: true }); }
++console.log(`${ok} ok, ${fehler} Fehler`); process.exitCode = fehler ? 1 : 0;
+--- a/codex-mods/luxe-codex/test/befehle_test.mjs
++++ b/codex-mods/luxe-codex/test/befehle_test.mjs
+@@ -27,7 +27,7 @@
+ const SKILLS = join(WURZEL, 'skills');
+ const NODE = process.execPath;
+ const MEINE = ['stand', 'shop-puls', 'lieferbar', 'trend', 'regeln'];
+-const ANDERE = ['sparmodus', 'zweitmeinung'];
++const ANDERE = ['sparmodus', 'zweitmeinung', 'uebergabe'];
+ const NODE_PFAD_IN_SKILLS = '/opt/node22/bin/node';
+ const tmp = () => mkdtempSync(join(tmpdir(), 'luxe-befehle-'));
+ const lauf = (befehl, args, opt = {}) => spawnSync(befehl, args, { encoding: 'utf8', timeout: 30000, ...opt });
+@@ -282,7 +282,7 @@
+ const ordner = vorhanden.filter(d => d.isDirectory()).map(d => d.name).sort();
+ {
+   const inv = inventar(ordner, MEINE, ANDERE);
+-  ist('Skill-Inventar: keine fremden Skills (erwartet sind nur die fünf Befehle plus sparmodus und zweitmeinung)', inv.fremd, []);
++  ist('Skill-Inventar: keine fremden Skills (erwartet sind nur die fünf Befehle plus sparmodus, zweitmeinung und uebergabe)', inv.fremd, []);
+   ist('Skill-Inventar: alle fünf Befehls-Skills sind da', inv.fehlt, []);
+   ist('Skill-Inventar: im Ordner skills/ liegen nur Skill-Ordner, keine losen Dateien', vorhanden.filter(d => !d.isDirectory()).map(d => d.name), []);
+   ist('Skill-Inventar: jeder Skill-Ordner hat eine SKILL.md', ordner.filter(n => !existsSync(join(SKILLS, n, 'SKILL.md'))), []);
+--- /dev/null
++++ b/codex-mods/luxe-codex/skills/uebergabe/SKILL.md
+@@ -0,0 +1,21 @@
++---
++name: uebergabe
++description: Liest ein versioniertes LuxeStyle-Prüfpaket und prüft seine Quellhashes und separate Quittung. Claude bleibt Koordinator.
++---
++
++Lies zuerst die aktuelle Inhabervorgabe, Übergabe und das Tagesprotokoll. Dieser Skill erteilt keine zusätzliche Befugnis.
++
++Verwende nur ein ausdrücklich identifiziertes Paket im Aufgabenordner. Ein fehlendes Paket oder eine fehlende Quittung ist unbekannt, kein leerer Verlauf. Suche begrenzt nach einer konkreten taskId; lege keine Ersatzaufgabe aus Unwissen an.
++
++Führe standardmässig ausschliesslich aus:
++
++```bash
++node automation/codex_uebergabe.mjs stand --repo /absoluter/pfad/zum/repo --packet dropship/codex-handoff-20261018/aufgaben/<taskId>.r<revision>.packet.json
++```
++
++Melde Aufgabenkennung, Revision, Hashprüfung und tatsächlich vorhandene Quittung. Rollenwerte sind Selbstauskunft. Behaupte weder direkte Chat-Verbindung noch Kenntnisnahme durch Claude ohne Beleg.
++
++`neu` und `quittieren` sind ausdrückliche lokale Dateischreibaktionen; zuerst `--help`, Originalpaket und Quellen lesen. Keine blinden Wiederholungen nach unklarem Write. Bestehendes bleibt erhalten; eine neue Revision muss auf den tatsächlichen Hash der vorigen zeigen. Keine automatische Quittung im Namen einer anderen Sitzung.
++
++Quittungen bestätigen nur die Prüfübergabe. Nie daraus Shopänderung, produktive Ausführung, Merge, Rechtefreigabe oder Social-Veröffentlichung ableiten. Kein Modellstart, Netzaufruf, Git-Write, Workflowstart oder Hook-Install ist Teil dieses Skills.
++
+--- a/.github/workflows/gmc-schaufenster.yml
++++ b/.github/workflows/gmc-schaufenster.yml
+@@ -7,7 +7,7 @@
+ # Zwei Stufen, bewusst getrennt:
+ #   - LESEN (jeden Tag, ohne Freigabe): Plan rechnen und prüfen, ob Google noch Produkte ausserhalb des Schaufensters trägt. Schreibt nichts.
+ #   - SCHREIBEN (abwaehlen/aufnehmen): nur von Hand (workflow_dispatch) mit der Freigabe dropship/GMC-SCHAUFENSTER-FREI.txt, und im
+-#     Zeitplan nur, wenn ZUSÄTZLICH dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt im Repo liegt (Dauerfreigabe des Besitzers; löschen = Stopp).
++#     Zeitplan nur, wenn ZUSÄTZLICH dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt im Repo liegt (Dauerfreigabe des Besitzers; Stopp = laufenden Lauf abbrechen UND Datei löschen).
+ #     Die Freigabe vom 28.10.2026 («aber zuerst merchant fix») gilt dem einmaligen Lauf, nicht einer täglichen Automatik.
+ #
+ # Zugang: Repo-Secrets SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Client-Credentials-Grant einer im Shop INSTALLIERTEN Custom-App).
+@@ -28,6 +28,10 @@
+         type: string
+         default: 'alle'
+ 
++defaults:
++  run:
++    shell: bash
++
+ permissions:
+   contents: write
+ 
+@@ -41,6 +45,8 @@
+     timeout-minutes: 340
+     env:
+       EREIGNIS: ${{ github.event_name }}
++      QUELL_REF: ${{ github.ref }}
++      STANDARDZWEIG: ${{ github.event.repository.default_branch }}
+       MODUS_EINGABE: ${{ inputs.modus }}
+       MAX_EINGABE: ${{ inputs.max }}
+     steps:
+@@ -68,21 +74,30 @@
+           fi
+           case "$modus" in
+             plan|pruefen|abwaehlen|aufnehmen|zuruecksetzen) ;;
+-            *) echo "::error title=Unbekannter Modus::«$modus» ist nicht erlaubt."; exit 1 ;;
++            *) echo "::error title=Unbekannter Modus::Die Moduseingabe ist nicht erlaubt."; exit 1 ;;
+           esac
+           max="${MAX_EINGABE:-alle}"
+           case "$max" in
+             alle) ;;
+-            ''|*[!0-9]*) echo "::error title=Ungültige Höchstzahl::«$max» ist weder «alle» noch eine Zahl."; exit 1 ;;
++            ''|*[!0-9]*) echo "::error title=Ungültige Höchstzahl::Die Höchstzahl ist weder «alle» noch eine Zahl."; exit 1 ;;
+           esac
+           live=0
+           case "$modus" in abwaehlen|aufnehmen|zuruecksetzen) live=1 ;; esac
++          if [ "$live" = "1" ] && { [ -z "$STANDARDZWEIG" ] || [ "$QUELL_REF" != "refs/heads/$STANDARDZWEIG" ]; }; then
++            echo "::error title=Standardzweig erforderlich::Schreibende Modi sind nur auf dem bestätigten Standardzweig erlaubt."
++            exit 1
++          fi
+           if [ "$live" = "1" ] && [ ! -f dropship/GMC-SCHAUFENSTER-FREI.txt ]; then
+             echo "::error title=Nicht freigegeben::dropship/GMC-SCHAUFENSTER-FREI.txt fehlt (Freigabe des Besitzers oder Stopp). Es wurde nichts geschrieben."
+             exit 1
+           fi
+           if [ "$EREIGNIS" = "schedule" ] && [ "$modus" = "pruefen" ]; then
+-            echo "::notice title=Zeitplan liest nur::dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt fehlt: der nächtliche Lauf prüft nur und schreibt nichts."
++            if [ ! -f dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt ]; then
++              echo "::notice title=Zeitplan liest nur::dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt fehlt: Dauerfreigabe nicht vorhanden."
++            fi
++            if [ ! -f dropship/GMC-SCHAUFENSTER-FREI.txt ]; then
++              echo "::notice title=Zeitplan liest nur::dropship/GMC-SCHAUFENSTER-FREI.txt fehlt: Einmalfreigabe nicht vorhanden oder gestoppt."
++            fi
+           fi
+           echo "modus=$modus" >> "$GITHUB_OUTPUT"
+           echo "max=$max" >> "$GITHUB_OUTPUT"
+@@ -111,32 +126,58 @@
+           PLAN_AUS: /tmp/gmc_schaufenster_plan.json
+         run: |
+           set +e
+-          node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_lauf.log
++          timeout 325m node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_lauf.log
+           rc=${PIPESTATUS[0]}
+           set -e
++          if [ "$rc" = "124" ]; then
++            echo "::warning title=Zeitlimit::Der Lauf wurde begrenzt; Zustand unvollständig, Manifest wird gesichert."
++            rc=4
++          fi
+           echo "rc=$rc" >> "$GITHUB_OUTPUT"
+           echo "Exit: $rc"
+-          # Exit 0 ok · 4 Drosselung (der nächste Lauf macht idempotent weiter) sind keine Fehler; alles andere macht den Job rot.
+-          if [ "$rc" != "0" ] && [ "$rc" != "4" ]; then exit "$rc"; fi
++          if [ "$rc" = "4" ]; then
++            if [ "$LIVE" = "1" ]; then
++              echo "::warning title=Schreiblauf unvollständig::Abbruch oder Drosselung; Manifest sichern und Zustand frisch prüfen."
++              exit 0
++            fi
++            echo "::error title=Nicht geprüft::Leselauf abgebrochen; Prüfergebnis unbekannt."
++            exit 4
++          fi
++          exit "$rc"
+ 
+       - name: Nachprüfen (frisch lesen, nach 2 Minuten Abstand)
+         id: nach
+-        if: ${{ always() && steps.lauf.outcome != 'skipped' && steps.modus.outputs.live == '1' && (steps.lauf.outputs.rc == '0' || steps.lauf.outputs.rc == '4') }}
++        if: ${{ always() && steps.lauf.outcome != 'skipped' && steps.modus.outputs.live == '1' && (steps.lauf.outputs.rc == '0' || steps.lauf.outputs.rc == '3' || steps.lauf.outputs.rc == '4') }}
+         env:
+           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+           PHASE: pruefen
+           LIVE: '0'
++          LAUF_MODUS: ${{ steps.modus.outputs.modus }}
++          LAUF_MAX: ${{ steps.modus.outputs.max }}
++          LAUF_RC: ${{ steps.lauf.outputs.rc }}
+           PLAN_AUS: /tmp/gmc_schaufenster_plan2.json
+         run: |
+           sleep 120
+           set +e
+-          node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_nach.log
++          timeout 7m node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_nach.log
+           rc=${PIPESTATUS[0]}
+           set -e
++          if [ "$rc" = "124" ]; then
++            echo "::warning title=Nachprüfung begrenzt::Zeitlimit; Prüfergebnis unbekannt, kein Defektnachweis."
++            rc=4
++          fi
+           echo "rc=$rc" >> "$GITHUB_OUTPUT"
+           echo "Exit der Nachprüfung: $rc"
++          if [ "$rc" = "4" ]; then
++            echo "::warning title=Nachprüfung unbekannt::Abbruch oder Drosselung; Protokoll und Manifest bleiben gesichert."
++            exit 0
++          fi
++          if [ "$rc" = "5" ] && { [ "$LAUF_MODUS" != "abwaehlen" ] || [ "$LAUF_MAX" != "alle" ] || [ "$LAUF_RC" != "0" ]; }; then
++            echo "::notice title=Weitere Produkte ausserhalb::Nach Rücknahme oder Teil-/Abbruchlauf ist dies kein Defektnachweis."
++            exit 0
++          fi
+           exit "$rc"
+ 
+       - name: Zusammenfassung
+@@ -147,7 +188,7 @@
+             echo "- Modus: **${{ steps.modus.outputs.modus }}** · Höchstzahl: ${{ steps.modus.outputs.max }} · Auslöser: $EREIGNIS"
+             echo "- Exit des Laufs: ${{ steps.lauf.outputs.rc }} · Exit der Nachprüfung: ${{ steps.nach.outputs.rc }}"
+             echo '```'
+-            grep -E "^(BEWÄHRT|BEWERTUNGSFELDER|SCHAUFENSTER|PRÜFUNG)|^  (gelesen|zulässig|im Schaufenster|Varianten auf Google|ABWÄHLEN|AUFNEHMEN)|FERTIG|ABBRUCH|Defekt|DEFEKT" /tmp/gmc_schaufenster_lauf.log /tmp/gmc_schaufenster_nach.log 2>/dev/null | head -40 | cut -c1-240 || true
++            grep -E "^(BEWÄHRT|BEWERTUNGSFELDER|SCHAUFENSTER|PRÜFUNG)|^  (gelesen|zulässig|im Schaufenster|Varianten auf Google|ABWÄHLEN|AUFNEHMEN)|FERTIG|ABBRUCH|Defekt|DEFEKT|PLAN NICHT ERLAUBT|WARNUNG|ABWAEHLEN:|AUFNEHMEN:|Google trägt" /tmp/gmc_schaufenster_lauf.log /tmp/gmc_schaufenster_nach.log 2>/dev/null | head -40 | cut -c1-240 || true
+             echo '```'
+           } >> "$GITHUB_STEP_SUMMARY"
+ 
+@@ -168,7 +209,7 @@
+       - name: Manifest committen (auch nach Teilfehlern)
+         if: ${{ always() && steps.modus.outputs.live == '1' }}
+         env:
+-          ZIEL: ${{ github.ref_name }}
++          ZIEL: ${{ github.event.repository.default_branch }}
+         run: |
+           if [ -z "$(git status --porcelain -- dropship/gmc_schaufenster_manifest.jsonl dropship/gmc_schaufenster_fehler.txt)" ]; then
+             echo "Kein Manifest-Update."
+--- a/automation/gmc_schaufenster_workflow_test.mjs
++++ b/automation/gmc_schaufenster_workflow_test.mjs
+@@ -36,7 +36,7 @@
+ wahr('Schritt «Modus und Freigabe festlegen» mit run-Block gefunden', typeof SKRIPT === 'string' && SKRIPT.length > 300, String(SKRIPT?.length));
+ 
+ /** Führt den Modus-Schritt aus. dateien: welche Freigabedateien liegen. */
+-function lauf({ ereignis, modus = '', max = '', frei = false, taeglich = false }) {
++function lauf({ ereignis, modus = '', max = '', frei = false, taeglich = false, ref = 'refs/heads/main', standard = 'main' }) {
+   const d = mkdtempSync(join(tmpdir(), 'gmcwf-'));
+   try {
+     mkdirSync(join(d, 'dropship'));
+@@ -46,7 +46,7 @@
+     writeFileSync(out, ''); writeFileSync(env, '');
+     const r = spawnSync('bash', ['-eo', 'pipefail', '-c', SKRIPT], {
+       cwd: d, encoding: 'utf8', timeout: 20000,
+-      env: { PATH: process.env.PATH, EREIGNIS: ereignis, MODUS_EINGABE: modus, MAX_EINGABE: max, GITHUB_OUTPUT: out, GITHUB_ENV: env },
++      env: { PATH: process.env.PATH, EREIGNIS: ereignis, QUELL_REF: ref, STANDARDZWEIG: standard, MODUS_EINGABE: modus, MAX_EINGABE: max, GITHUB_OUTPUT: out, GITHUB_ENV: env },
+     });
+     const o = Object.fromEntries(readFileSync(out, 'utf8').split('\n').filter(Boolean).map(z => z.split(/=(.*)/s).slice(0, 2)));
+     return { rc: r.status, o, text: (r.stdout || '') + (r.stderr || '') };
+@@ -103,7 +103,7 @@
+   const sh = (cmd, cwd = d) => spawnSync('bash', ['-ec', cmd], { cwd, encoding: 'utf8', timeout: 30000, env: { PATH: process.env.PATH, HOME: d, GIT_CONFIG_NOSYSTEM: '1' } });
+   try {
+     sh('git init -q --bare origin.git && git clone -q origin.git arbeit 2>/dev/null; cd arbeit && git config user.email t@t && git config user.name t && git checkout -q -b main && mkdir -p dropship automation && echo x > automation/a.txt'
+-      + (vorhanden ? " && echo '{\"id\":\"alt\"}' > dropship/gmc_schaufenster_manifest.jsonl" : '') + ' && git add -A && git commit -q -m init && git push -q origin main');
++      + (vorhanden ? " && echo '{\"id\":\"alt\"}' > dropship/gmc_schaufenster_manifest.jsonl" : '') + ' && git add -- automation/a.txt dropship && git commit -q -m init && git push -q origin main');
+     const w = join(d, 'arbeit');
+     if (manifest) writeFileSync(join(w, 'dropship/gmc_schaufenster_manifest.jsonl'), (vorhanden ? '{"id":"alt"}\n' : '') + '{"id":"gid://shopify/Product/1","aktion":"ab-versucht"}\n');
+     if (fehler) writeFileSync(join(w, 'dropship/gmc_schaufenster_fehler.txt'), 'gid://shopify/Product/1\t2026-10-28\tfake\n');
+@@ -130,10 +130,88 @@
+ wahr('Eingaben gelangen nur über env in den Job (jede Zeile mit inputs.* ist MODUS_EINGABE oder MAX_EINGABE)', WF.split('\n').filter(l => /\$\{\{\s*inputs\./.test(l) && !/^\s+(MODUS_EINGABE|MAX_EINGABE):/.test(l)).length === 0);
+ wahr('Sparse-Checkout enthält Manifest, Fehlerliste und beide Freigabedateien', ['gmc_schaufenster_manifest.jsonl', 'gmc_schaufenster_fehler.txt', 'GMC-SCHAUFENSTER-FREI.txt', 'GMC-SCHAUFENSTER-TAEGLICH-FREI.txt'].every(n => WF.includes('/dropship/' + n)));
+ wahr('Nur ein Lauf zugleich (concurrency), ohne Abbruch eines laufenden', /concurrency:\s*\n\s*group: gmc-schaufenster\s*\n\s*cancel-in-progress: false/.test(WF));
+-wahr('Exit 0 und 4 (Drosselung) sind keine Fehler, alles andere macht den Job rot', /\[ "\$rc" != "0" \] && \[ "\$rc" != "4" \]; then exit "\$rc"/.test(WF));
++
+ wahr('Manifest und Fehlerliste werden mit Union-Merge zurückgelegt', /gmc_schaufenster_manifest\.jsonl merge=union/.test(WF) && /gmc_schaufenster_fehler\.txt merge=union/.test(WF));
+ wahr('Manifest wird auch nach Teilfehlern committet (always) und nur wenn der Lauf schrieb', /name: Manifest committen[^\n]*\n\s+if: \$\{\{ always\(\) && steps\.modus\.outputs\.live == '1' \}\}/.test(WF));
+ wahr('Commit trägt [skip ci] (kein Test-Lauf für Manifest-Zeilen)', /\[skip ci\]/.test(WF));
+ 
++
++// Zusätzliche Regeln: echte extrahierte Shellblöcke, ausschliesslich lokale Attrappen.
++for (const m of ['abwaehlen', 'aufnehmen', 'zuruecksetzen']) {
++  const r = lauf({ ereignis: 'workflow_dispatch', modus: m, frei: true, ref: 'refs/heads/fremd' });
++  wahr(`Schreibmodus ${m} auf fremdem Zweig gesperrt vor live-Ausgabe`, r.rc === 1 && !r.o.live && /Standardzweig/.test(r.text), JSON.stringify(r));
++}
++{
++  const r = lauf({ ereignis: 'workflow_dispatch', modus: 'plan', ref: 'refs/heads/fremd' });
++  wahr('Lesemodus darf fremden Zweig prüfen', r.rc === 0 && r.o.live === '0');
++  const r2 = lauf({ ereignis: 'workflow_dispatch', modus: 'abwaehlen', frei: true, standard: '', ref: 'refs/heads/main' });
++  wahr('Unbekannter Standardzweig sperrt Schreiben', r2.rc === 1 && !r2.o.live);
++  for (const f of ['modus', 'max']) {
++    const r3 = lauf({ ereignis: 'workflow_dispatch', modus: f === 'modus' ? 'x\n::error title=injiziert::TEST' : 'plan', max: f === 'max' ? '3\n::error title=injiziert::TEST' : '' });
++    wahr(`Ungültige Eingabe ${f} erzeugt keine zusätzliche Workflow-Kommandozeile`, r3.rc === 1 && !r3.text.includes('::error title=injiziert') && r3.text.split('\n').filter(l => l.startsWith('::')).length === 1);
++  }
++  const ohneBeide = lauf({ ereignis: 'schedule' });
++  const ohneEinmal = lauf({ ereignis: 'schedule', taeglich: true });
++  const ohneDauer = lauf({ ereignis: 'schedule', frei: true });
++  wahr('Hinweis nennt beide fehlenden Dateien getrennt', /GMC-SCHAUFENSTER-FREI\.txt fehlt/.test(ohneBeide.text) && /GMC-SCHAUFENSTER-TAEGLICH-FREI\.txt fehlt/.test(ohneBeide.text));
++  wahr('Hinweis bei nur fehlender Einmalfreigabe ist korrekt', /GMC-SCHAUFENSTER-FREI\.txt fehlt/.test(ohneEinmal.text) && !/TAEGLICH-FREI\.txt fehlt/.test(ohneEinmal.text));
++  wahr('Hinweis bei nur fehlender Dauerfreigabe ist korrekt', /TAEGLICH-FREI\.txt fehlt/.test(ohneDauer.text) && !/GMC-SCHAUFENSTER-FREI\.txt fehlt/.test(ohneDauer.text));
++}
++function schrittLauf(name, extra = {}) {
++  const d = mkdtempSync(join(tmpdir(), 'gmcwf-schritt-'));
++  try {
++    const bin = join(d, 'bin'); mkdirSync(bin);
++    writeFileSync(join(bin, 'node'), '#!/usr/bin/env bash\nprintf "%s\\n" "$FAKE_TEXT"\nexit "$FAKE_RC"\n', { mode: 0o755 });
++    writeFileSync(join(bin, 'sleep'), '#!/usr/bin/env bash\nexit 0\n', { mode: 0o755 });
++    writeFileSync(join(bin, 'timeout'), '#!/usr/bin/env bash\nprintf "%s\\n" "$1" >> "$FAKE_TIMEOUT_LOG"\nshift\nexec "$@"\n', { mode: 0o755 });
++    const out = join(d, 'out'); writeFileSync(out, '');
++    const script = schritt(name)?.replaceAll('/tmp/gmc_schaufenster_', d + '/gmc_schaufenster_');
++    if (!script) return { rc: null, text: 'Schritt fehlt', out: '', timeout: '' };
++    const r = spawnSync('bash', ['-eo', 'pipefail', '-c', script], {
++      cwd: d, encoding: 'utf8', timeout: 5000,
++      env: { PATH: bin + ':' + process.env.PATH, GITHUB_OUTPUT: out, FAKE_RC: '0', FAKE_TEXT: 'Attrappe', FAKE_TIMEOUT_LOG: join(d, 'timeout.txt'), LIVE: '0', LAUF_MODUS: 'abwaehlen', LAUF_MAX: 'alle', LAUF_RC: '0', ...extra },
++    });
++    const optional = n => { try { return readFileSync(join(d, n), 'utf8'); } catch { return ''; } };
++    return { rc: r.status, text: (r.stdout || '') + (r.stderr || ''), out: optional('out'), timeout: optional('timeout.txt') };
++  } finally { rmSync(d, { recursive: true, force: true }); }
++}
++{
++  const name = 'Schaufenster (${{ steps.modus.outputs.modus }})';
++  let r = schrittLauf(name, { FAKE_RC: '4', LIVE: '0' });
++  wahr('Exit4 beim Lesen ist rot und nennt unbekannte Prüfung', r.rc === 4 && /nicht geprüft|unbekannt/.test(r.text), JSON.stringify(r));
++  r = schrittLauf(name, { FAKE_RC: '4', LIVE: '1' });
++  wahr('Exit4 beim Schreiben erhält Manifest-Pfad und warnt', r.rc === 0 && /::warning/.test(r.text) && r.out.includes('rc=4'));
++  r = schrittLauf(name, { FAKE_RC: '124', LIVE: '1' });
++  wahr('Eigenes Zeitlimit wird als Exit4 protokolliert', r.rc === 0 && r.out.includes('rc=4') && /Zeitlimit/.test(r.text) && r.timeout.trim() === '325m', JSON.stringify(r));
++  r = schrittLauf(name, { FAKE_RC: '124', LIVE: '0' });
++  wahr('Zeitlimit beim Lesen ist unbekannt und nicht grün', r.rc === 4 && r.out.includes('rc=4'));
++  for (const rc of [0,1,2,3,5]) {
++    r = schrittLauf(name, { FAKE_RC: String(rc), LIVE: '1' });
++    wahr(`Lauf-Exit${rc} bleibt sichtbar`, r.rc === rc && r.out.includes(`rc=${rc}`));
++  }
++}
++{
++  const name = 'Nachprüfen (frisch lesen, nach 2 Minuten Abstand)';
++  for (const c of [{LAUF_MODUS:'aufnehmen'},{LAUF_MODUS:'zuruecksetzen'},{LAUF_MAX:'50'},{LAUF_RC:'4'},{LAUF_RC:'3'}]) {
++    const r = schrittLauf(name, { FAKE_RC: '5', ...c });
++    wahr(`Nachprüfung Exit5 bei ${JSON.stringify(c)} ist erklärter Hinweis`, r.rc === 0 && /::notice/.test(r.text) && r.out.includes('rc=5'), JSON.stringify(r));
++  }
++  let r = schrittLauf(name, { FAKE_RC:'5' });
++  wahr('Vollständige erfolgreiche Abwahl mit Resten bleibt rot', r.rc === 5 && r.out.includes('rc=5'));
++  for (const rc of [2,3]) {
++    r = schrittLauf(name, { FAKE_RC: String(rc), LAUF_MODUS:'aufnehmen', LAUF_MAX:'5', LAUF_RC:'4' });
++    wahr(`Nachprüfung Exit${rc} bleibt trotz Teil-/Rücknahmelauf rot`, r.rc === rc);
++  }
++  r = schrittLauf(name, { FAKE_RC:'124' });
++  wahr('Auch Nachprüfung ist begrenzt und nennt unbekannt statt Defekt', r.rc === 0 && r.out.includes('rc=4') && /::warning/.test(r.text) && r.timeout.trim() === '7m');
++}
++wahr('Shell in der Praxis ausdrücklich bash', /defaults:\s*\n\s+run:\s*\n\s+shell: bash/.test(WF));
++wahr('Branchdaten kommen über env und Manifestziel ist Standardzweig', /QUELL_REF: \$\{\{ github\.ref \}\}/.test(WF) && /STANDARDZWEIG: \$\{\{ github\.event\.repository\.default_branch \}\}/.test(WF) && /ZIEL: \$\{\{ github\.event\.repository\.default_branch \}\}/.test(WF) && !/ZIEL: \$\{\{ github\.ref_name/.test(WF));
++wahr('Nachprüfung auch nach Teilfehler Exit3', /steps\.lauf\.outputs\.rc == '3'/.test(WF));
++for (const text of ['PLAN NICHT ERLAUBT','WARNUNG','ABWAEHLEN:','AUFNEHMEN:','Google trägt']) wahr(`Zusammenfassung enthält ${text}`, schritt('Zusammenfassung')?.includes(text));
++wahr('Workflow-Kopf nennt Lauf abbrechen UND Datei löschen', /laufenden Lauf abbrechen UND Datei löschen/.test(WF));
++const DOKU = readFileSync(fileURLToPath(new URL('../dropship/GMC-SCHAUFENSTER-2810.md', import.meta.url)), 'utf8');
++wahr('Doku nennt Stopp und wartende Läufe vor Rücknahme', /laufenden Lauf abbrechen UND Datei löschen/.test(DOKU) && /wartet|wartenden/.test(DOKU));
++
+ console.log(`${ok} ok, ${fehl} Fehler`);
+ process.exit(fehl ? 1 : 0);
+--- a/dropship/GMC-SCHAUFENSTER-2810.md
++++ b/dropship/GMC-SCHAUFENSTER-2810.md
+@@ -34,7 +34,7 @@
+ ## Ablauf und Sicherheit
+ 
+ 1. `node automation/gmc_schaufenster.mjs` (Vorgabe `PHASE=plan`, nur lesen): Zahlen, Gründe, Beispiele auf beiden Seiten, Plan nach `/tmp/gmc_schaufenster_plan.json`.
+-2. `LIVE=1 PHASE=abwaehlen [ONLY=handle,handle] [MAX=n|alle]`: `publishableUnpublish`, 10 je Anfrage. Nur mit der Freigabedatei `dropship/GMC-SCHAUFENSTER-FREI.txt` (löschen = Stopp). Das Manifest `dropship/gmc_schaufenster_manifest.jsonl` bekommt vor jedem Aufruf eine Zeile `ab-versucht` (ein Absturz verliert nichts); ein Produkt gilt erst nach frischem Rücklesen als abgewählt.
++2. `LIVE=1 PHASE=abwaehlen [ONLY=handle,handle] [MAX=n|alle]`: `publishableUnpublish`, 10 je Anfrage. Nur mit der Freigabedatei `dropship/GMC-SCHAUFENSTER-FREI.txt` (Stopp = laufenden Lauf abbrechen UND Datei löschen). Das Manifest `dropship/gmc_schaufenster_manifest.jsonl` bekommt vor jedem Aufruf eine Zeile `ab-versucht` (ein Absturz verliert nichts); ein Produkt gilt erst nach frischem Rücklesen als abgewählt.
+ 3. `PHASE=pruefen`: liest frisch und vergleicht mit Manifest und Plan (Exit 3 bei Abweichung).
+ 4. **Rücknahme:** `LIVE=1 PHASE=aufnehmen` stellt zurück, was das Werkzeug abgewählt hat und was wieder passt (nie ein Produkt ohne Manifest-Eintrag, nie eines mit Sperrtag). `LIVE=1 PHASE=zuruecksetzen` ist die volle Rücknahme: alles zurück, was das Werkzeug abgewählt hat (ausser Sperrtag), auch Produkte mit Ausschlussfeld oder ausserhalb des Budgets.
+ 5. Ein Plan mit Fehlern (unter 1 000 Zeilen, unter 500 Schaufenster-Produkten, über 140 000 Varianten danach, über 2 % unklare Zeilen, über 70 % abzuwählen, über 5 % ohne Google-Kategorie) schreibt nichts. Drosselung wird nie umgangen (Exit 4, der nächste Lauf macht idempotent weiter).
+@@ -43,7 +43,7 @@
+ ## Wiederholung als Workflow (`.github/workflows/gmc-schaufenster.yml`)
+ 
+ - **Täglich 04:41 UTC, nur lesen:** ohne Dauerfreigabe prüft der Zeitplan (`PHASE=pruefen`) und schreibt nichts. Zeigt Google wieder Produkte ausserhalb des Schaufensters, endet der Job mit Exit 5 (rot) und sagt es in der Zusammenfassung.
+-- **Schreiben im Zeitplan nur mit einer zweiten Datei:** `dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt` (Dauerfreigabe des Besitzers, löschen = Stopp) UND `GMC-SCHAUFENSTER-FREI.txt`. Die Freigabe vom 28.10.2026 («aber zuerst merchant fix») gilt dem einmaligen Lauf; **die Dauerfreigabe habe ich nicht angelegt**, das entscheidet der Besitzer.
++- **Schreiben im Zeitplan nur mit einer zweiten Datei:** `dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt` (Dauerfreigabe des Besitzers; Stopp = laufenden Lauf abbrechen UND Datei löschen) UND `GMC-SCHAUFENSTER-FREI.txt`. Die Freigabe vom 28.10.2026 («aber zuerst merchant fix») gilt dem einmaligen Lauf; **die Dauerfreigabe habe ich nicht angelegt**, das entscheidet der Besitzer.
+ - **Von Hand** (Actions → «Google-Schaufenster», `workflow_dispatch`): `plan`, `pruefen` ohne Freigabe; `abwaehlen`, `aufnehmen`, `zuruecksetzen` nur mit `GMC-SCHAUFENSTER-FREI.txt`. Nach jedem schreibenden Lauf liest der Workflow 2 Minuten später frisch nach (die Anzeige hinkt rund eine Minute hinterher) und legt das Manifest mit Union-Merge zurück ins Repo.
+ - Test: `automation/gmc_schaufenster_workflow_test.mjs` (45 Prüfungen: führt den Modus-Schritt in bash gegen Attrappen-Dateien aus und den Schritt «Manifest committen» in einem Wegwerf-Repo mit lokalem Origin; Mutationsprobe 12 von 12 plus 6 von 6 erkannt).
+ - **Zweitmeinung Codex (GPT-6.1 Sol, 28.10.2026, 3 Dateien), 2 Funde, beide am echten Code nachgestellt und behoben:** (1) `git add` mit der Fehlerliste, die es nach einem fehlerfreien Lauf nicht gibt, brach mit Exit 128 ab und das Manifest blieb ohne Commit (jetzt wird nur hinzugefügt, was da ist); (2) die Freigabedatei wurde nur beim Start geprüft, «löschen = Stopp» galt nicht mitten im Lauf (jetzt vor jedem Stück, Exit 4; Test «Freigabe nach dem ersten Stück gelöscht», Lauf-Test 47 Prüfungen). Auf GitHub Actions sieht ein Lauf nur seine Kopie der Datei: dort stoppt «Run abbrechen».
+@@ -64,3 +64,14 @@
+ - Die Produktseiten im Onlineshop liefern weiter HTTP 200 (4 von 4 abgewählten geprüft); die Mutation berührt nur den einen Kanal.
+ - Stand danach: vier Produkte (alle ausser `induktionsheizspulen-…`) sind vom Kanal, das Manifest `dropship/gmc_schaufenster_manifest.jsonl` hat 6 Zeilen (5 × `ab-versucht`, 1 × `auf`). Rückgängig: `LIVE=1 PHASE=zuruecksetzen`.
+ - **Der volle Lauf (27 931 Produkte) steht aus:** das Berechtigungssystem der Sitzung blockierte `LIVE=1 PHASE=abwaehlen MAX=alle` als Massenänderung an einer geteilten Ressource; das wurde nicht umgangen (auch nicht in Teilläufen). Der Besitzer entscheidet, wie er laufen soll (Befehl oben unter «Ablauf»).
++
++
++## Workflow-Härtung, lokaler Entwurf 28.10.2026
++
++Schreibende Modi sind nur auf dem Standardzweig zugelassen; Manifest und Fehlerliste gehen immer dorthin zurück. Roh eingegebene Fehlerwerte erscheinen nicht in Workflow-Kommandos. Ein abgebrochener Leselauf bleibt «nicht geprüft» (Exit 4), kein bestätigtes Ergebnis.
++
++Der Lauf ist auf 325 Minuten begrenzt; die Nachprüfung zusätzlich auf sieben Minuten nach zwei Minuten Abstand, damit vor dem 340-Minuten-Joblimit Zeit für Sicherung bleibt. Joblimit, Runner-Ausfall oder ein zuvor verzögerter Schritt können trotzdem eine Sicherung verhindern; das Artefakt ersetzt keinen bestätigten Manifest-Push. Exit 124 wird als Abbruch 4 protokolliert. Bei einer unvollständigen Nachprüfung steht ausdrücklich unbekannt; ein grüner Job allein beweist keine abgeschlossene Prüfung.
++
++Nach Rücknahme, Teillauf oder Abbruch bedeutet Exit 5 («weitere Produkte ausserhalb») nur einen Hinweis; nach vollständiger erfolgreicher Abwahl bleibt er ein Fehler. Defekt 3 und Planfehler 2 bleiben rot. Auch nach Teilfehler 3 läuft eine begrenzte Nachprüfung.
++
++Stopp = laufenden Lauf abbrechen UND Datei löschen. Vor einer Rücknahme prüfen, dass kein anderer Lauf aktiv ist oder wartet; zuerst die bestehende Queue prüfen und laufende schreibende Arbeit beenden. Kein paralleler Rücknahme-/Abwahllauf und keine blinde Wiederholung unklarer Writes. Das sind Entwurfsänderungen, bis Integration und tatsächlich produktive Ausführung belegt sind.
+--- a/.github/workflows/luxestyle-automation-tests.yml
++++ b/.github/workflows/luxestyle-automation-tests.yml
+@@ -199,6 +199,7 @@
+           node codex-mods/luxe-codex/test/modus_test.mjs
+           node codex-mods/luxe-codex/test/befehle_test.mjs
+           node automation/lib/codex_zweitmeinung_test.mjs
++          node codex-mods/luxe-codex/test/uebergabe_test.mjs
+       - name: Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)
+         # CJ_PAUSE_MS=0: die Tests des Varianten-Werkzeugs sprechen nur mit Attrappen; ohne diese Zeile wartet jeder plane()-Aufruf 1,1 s (der Stecker-Test: 28 s statt 5 s, Job-Limit 5 Minuten).
+         env:
+@@ -296,3 +297,4 @@
+           node --test automation/lib/shopify_host_test.mjs automation/social_queue_test.mjs automation/publish_guard_test.mjs dropship/cj_enrich_test.mjs
+       - name: Content preflight (offline evidence only)
+         run: python3 -B -m unittest discover -s automation -p 'test_content_preflight.py' -v
++
