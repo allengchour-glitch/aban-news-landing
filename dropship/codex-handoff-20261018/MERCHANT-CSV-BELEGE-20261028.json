@@ -1,0 +1,4822 @@
+{
+  "PROVENANCE.json": {
+    "readAtUtc": "2026-10-28T22:21:26Z",
+    "readDateZurich": "2026-10-28",
+    "files": [
+      {
+        "id": "1EyfcG0Y_cJgTBWIxE6QHwrn0pS9TTCsi",
+        "name": "product_issues_2026-10-28_15-11-55.csv",
+        "mimeType": "text/csv",
+        "bytes": 43374787,
+        "sha256": "cfd75e028db223b4643d53912229e366068a43ca8a56b80c2aaab129da38a9dd",
+        "url": "https://drive.google.com/file/d/1EyfcG0Y_cJgTBWIxE6QHwrn0pS9TTCsi/view",
+        "metadataRead": "success",
+        "authenticatedRawFetch": "success",
+        "localByteCountMatchesMetadata": true
+      },
+      {
+        "id": "1LlsIJSyzXlO6Gkqp5rUSjgfyXcyiNVqv",
+        "name": "product_issues_2026-10-28_15-12-13.csv",
+        "mimeType": "text/csv",
+        "bytes": 38423364,
+        "sha256": "4c82f3992a6751e7cc301cf8229bf7bbb2b69652e0ac37dc3a2c4fdc5a4a7699",
+        "url": "https://drive.google.com/file/d/1LlsIJSyzXlO6Gkqp5rUSjgfyXcyiNVqv/view",
+        "metadataRead": "success",
+        "authenticatedRawFetch": "success",
+        "localByteCountMatchesMetadata": true
+      },
+      {
+        "id": "1gm9naYrw7La9KOrWuvsnY80hUEDNA932",
+        "name": "product_issues_2026-10-28_15-12-40.csv",
+        "mimeType": "text/csv",
+        "bytes": 203644,
+        "sha256": "0cb767fa38e964723bd4d4f44a2ce8495a2917e5964602600317867cbf458da0",
+        "url": "https://drive.google.com/file/d/1gm9naYrw7La9KOrWuvsnY80hUEDNA932/view",
+        "metadataRead": "success",
+        "authenticatedRawFetch": "success",
+        "localByteCountMatchesMetadata": true
+      }
+    ],
+    "accessErrors": [],
+    "externalWrites": 0,
+    "shopQueries": 0,
+    "productHttpRequests": 0,
+    "sensitiveFilesRead": false,
+    "notes": [
+      "No account-ID or product-URL column exists. Item ID decoding is candidate mapping, not a native verification.",
+      "Filename times15:11/15:12 have no verified timezone or proven export timestamp; Drive creation22:13–22:14UTC is upload metadata.",
+      "No bearer/download/file_uri URLs or credentials included. Original raw fetch references are not persisted."
+    ]
+  },
+  "CSV-COUNTS.json": {
+    "readDateZurich": "2026-10-28",
+    "scope": "complete local streaming count of exactly3 supplied CSV files; no live Merchant/Shopify requests and no writes",
+    "sourceTime": "CSV filenames say2026-10-28 around15:12; timezone unknown. Drive modified22:12UTC, uploaded22:13–22:14UTC. No live-state timestamp inferred.",
+    "files": [
+      {
+        "name": "product_issues_2026-10-28_15-11-55.csv",
+        "bytes": 43374787,
+        "sha256": "cfd75e028db223b4643d53912229e366068a43ca8a56b80c2aaab129da38a9dd",
+        "columns": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "rows": 110516,
+        "uniqueItemIds": 35644,
+        "uniqueEncodedProductIds": 18143,
+        "unparsedIdRows": 0,
+        "firstFiveRows": [
+          {
+            "Item ID": "shopify_ZZ_15447615046017_56063678185857",
+            "Title": "Minimalistische Crossbody Bag für Herren – 18×25×8cm Grau",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15447615046017_56063678185857",
+            "Title": "Minimalistische Crossbody Bag für Herren – 18×25×8cm Grau",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15447615046017_56063678185857",
+            "Title": "Minimalistische Crossbody Bag für Herren – 18×25×8cm Grau",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Liechtenstein",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15447615046017_56063678185857",
+            "Title": "Minimalistische Crossbody Bag für Herren – 18×25×8cm Grau",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Liechtenstein",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15479485333889_56001290961281",
+            "Title": "Multifunktions-Smartwatch für Kinder",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          }
+        ],
+        "issues": [
+          {
+            "issue": "Shopping ads quota limit reached (outside of CSS program)",
+            "rows": 71288,
+            "uniqueItemIds": 35644,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Over capacity for Shopping ads (in CSS program)",
+            "rows": 38670,
+            "uniqueItemIds": 19335,
+            "contexts": [
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Promotional overlay on image",
+            "rows": 300,
+            "uniqueItemIds": 50,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: personal hardships",
+            "rows": 154,
+            "uniqueItemIds": 77,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Product page unavailable",
+            "rows": 60,
+            "uniqueItemIds": 10,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Alcoholic beverages",
+            "rows": 8,
+            "uniqueItemIds": 4,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: legal restrictions",
+            "rows": 8,
+            "uniqueItemIds": 4,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: Sexual interests",
+            "rows": 6,
+            "uniqueItemIds": 3,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Restricted adult content",
+            "rows": 6,
+            "uniqueItemIds": 3,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Local Requirements",
+            "rows": 6,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Tobacco products & related equipment",
+            "rows": 6,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Adult-oriented content",
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: Identity and belief",
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-13.csv",
+        "bytes": 38423364,
+        "sha256": "4c82f3992a6751e7cc301cf8229bf7bbb2b69652e0ac37dc3a2c4fdc5a4a7699",
+        "columns": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "rows": 99424,
+        "uniqueItemIds": 29960,
+        "uniqueEncodedProductIds": 14326,
+        "unparsedIdRows": 0,
+        "firstFiveRows": [
+          {
+            "Item ID": "shopify_ZZ_15448877531521_56063891669377",
+            "Title": "Harz-Metall-Denim-Ketten-Armband für Smartwatches Dunkelgrün",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15448877531521_56063891669377",
+            "Title": "Harz-Metall-Denim-Ketten-Armband für Smartwatches Dunkelgrün",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15448660312449_55876809916801",
+            "Title": "Elegante Langarm-Bluse mit Blumenmuster | LuxeStyle CH Grau / 4XL",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15448660312449_55876809916801",
+            "Title": "Elegante Langarm-Bluse mit Blumenmuster | LuxeStyle CH Grau / 4XL",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15500350751105_56107434213761",
+            "Title": "Lichtgelbe Hemden | LuxeStyle CH XL",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          }
+        ],
+        "issues": [
+          {
+            "issue": "Over capacity for Shopping ads (in CSS program)",
+            "rows": 60408,
+            "uniqueItemIds": 29960,
+            "contexts": [
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Shopping ads quota limit reached (outside of CSS program)",
+            "rows": 38660,
+            "uniqueItemIds": 19330,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Promotional overlay on image",
+            "rows": 156,
+            "uniqueItemIds": 26,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: personal hardships",
+            "rows": 109,
+            "uniqueItemIds": 55,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Product page unavailable",
+            "rows": 51,
+            "uniqueItemIds": 9,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Alcoholic beverages",
+            "rows": 8,
+            "uniqueItemIds": 4,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: legal restrictions",
+            "rows": 8,
+            "uniqueItemIds": 4,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Sale of live animals",
+            "rows": 6,
+            "uniqueItemIds": 2,
+            "contexts": [
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Tobacco products & related equipment",
+            "rows": 6,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Free listings"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Free listings"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: Sexual interests",
+            "rows": 4,
+            "uniqueItemIds": 2,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Restricted adult content",
+            "rows": 4,
+            "uniqueItemIds": 2,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Adult-oriented content",
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Personalized advertising: Identity and belief",
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-40.csv",
+        "bytes": 203644,
+        "sha256": "0cb767fa38e964723bd4d4f44a2ce8495a2917e5964602600317867cbf458da0",
+        "columns": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "rows": 495,
+        "uniqueItemIds": 112,
+        "uniqueEncodedProductIds": 60,
+        "unparsedIdRows": 0,
+        "firstFiveRows": [
+          {
+            "Item ID": "shopify_ZZ_15510835134849_56163102392705",
+            "Title": "Schwangerschafts-Stützkissen für Seitenlage | LuxeStyle CH",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15510835134849_56163102392705",
+            "Title": "Schwangerschafts-Stützkissen für Seitenlage | LuxeStyle CH",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Shopping ads",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15510835134849_56163102392705",
+            "Title": "Schwangerschafts-Stützkissen für Seitenlage | LuxeStyle CH",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Personalized advertising: personal hardships",
+            "Issue additional information": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or personal hardships",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15510835134849_56163102392705",
+            "Title": "Schwangerschafts-Stützkissen für Seitenlage | LuxeStyle CH",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Personalized advertising: personal hardships",
+            "Issue additional information": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or personal hardships",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Liechtenstein",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          },
+          {
+            "Item ID": "shopify_ZZ_15500901941633_56110649639297",
+            "Title": "Maternitätsshirt mit kurzer Röckchen | LuxeStyle CH M",
+            "Click potential": "Low",
+            "Feed label": "CHF_99383214465",
+            "Language": "de",
+            "Item status": "ELIGIBLE_LIMITED",
+            "Channels": "ONLINE",
+            "Issue title": "Over capacity for Shopping ads (in CSS program)",
+            "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+            "Traffic type": "Dynamic remarketing",
+            "Country": "Switzerland",
+            "Issue severity": "SEVERITY_DISAPPROVED"
+          }
+        ],
+        "issues": [
+          {
+            "issue": "Personalized advertising: personal hardships",
+            "rows": 227,
+            "uniqueItemIds": 112,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ]
+            ]
+          },
+          {
+            "issue": "Shopping ads quota limit reached (outside of CSS program)",
+            "rows": 154,
+            "uniqueItemIds": 77,
+            "contexts": [
+              [
+                "Liechtenstein",
+                "Dynamic remarketing"
+              ],
+              [
+                "Liechtenstein",
+                "Shopping ads"
+              ]
+            ]
+          },
+          {
+            "issue": "Over capacity for Shopping ads (in CSS program)",
+            "rows": 114,
+            "uniqueItemIds": 55,
+            "contexts": [
+              [
+                "Switzerland",
+                "Dynamic remarketing"
+              ],
+              [
+                "Switzerland",
+                "Shopping ads"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "unionUniqueItemIds": 46074,
+    "unionUniqueEncodedProductIds": 21059,
+    "unionIssues": [
+      {
+        "issue": "Adult-oriented content",
+        "uniqueItemIdsAcrossFiles": 2
+      },
+      {
+        "issue": "Alcoholic beverages",
+        "uniqueItemIdsAcrossFiles": 4
+      },
+      {
+        "issue": "Local Requirements",
+        "uniqueItemIdsAcrossFiles": 1
+      },
+      {
+        "issue": "Over capacity for Shopping ads (in CSS program)",
+        "uniqueItemIdsAcrossFiles": 29965
+      },
+      {
+        "issue": "Personalized advertising: Identity and belief",
+        "uniqueItemIdsAcrossFiles": 1
+      },
+      {
+        "issue": "Personalized advertising: Sexual interests",
+        "uniqueItemIdsAcrossFiles": 3
+      },
+      {
+        "issue": "Personalized advertising: legal restrictions",
+        "uniqueItemIdsAcrossFiles": 4
+      },
+      {
+        "issue": "Personalized advertising: personal hardships",
+        "uniqueItemIdsAcrossFiles": 112
+      },
+      {
+        "issue": "Product page unavailable",
+        "uniqueItemIdsAcrossFiles": 13
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "uniqueItemIdsAcrossFiles": 56
+      },
+      {
+        "issue": "Restricted adult content",
+        "uniqueItemIdsAcrossFiles": 3
+      },
+      {
+        "issue": "Sale of live animals",
+        "uniqueItemIdsAcrossFiles": 2
+      },
+      {
+        "issue": "Shopping ads quota limit reached (outside of CSS program)",
+        "uniqueItemIdsAcrossFiles": 35644
+      },
+      {
+        "issue": "Tobacco products & related equipment",
+        "uniqueItemIdsAcrossFiles": 1
+      }
+    ],
+    "note": "Issue/context rows overlap; no sum across issues is a count of unique products. Country and traffic contexts preserved. No product URLs column exists."
+  },
+  "COUNTERCHECKS.json": {
+    "method": "independent csv.reader positional column pass, newline-safe; complete local supplied file count only",
+    "checks": [
+      {
+        "name": "product_issues_2026-10-28_15-11-55.csv",
+        "secondParserRowCount": 110516,
+        "secondParserUniqueItems": 35644,
+        "countMatches": true,
+        "exactDuplicateRows": 0,
+        "rowSumMatchesIssueCounts": true,
+        "sizeMatchesMetadata": true
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-13.csv",
+        "secondParserRowCount": 99424,
+        "secondParserUniqueItems": 29960,
+        "countMatches": true,
+        "exactDuplicateRows": 0,
+        "rowSumMatchesIssueCounts": true,
+        "sizeMatchesMetadata": true
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-40.csv",
+        "secondParserRowCount": 495,
+        "secondParserUniqueItems": 112,
+        "countMatches": true,
+        "exactDuplicateRows": 0,
+        "rowSumMatchesIssueCounts": true,
+        "sizeMatchesMetadata": true
+      }
+    ]
+  },
+  "IDENTITY-DIMENSIONS.json": {
+    "definition": "All previous uniqueItemIds counts mean distinct Item-ID strings only. This pass separately counts all available CSV identity dimensions; account ID absent, so not a complete Merchant primary-key assertion. Country/Traffic type are issue contexts, not folded into Item-ID string count.",
+    "unionUniqueKnownCsvKeys": 46539,
+    "files": [
+      {
+        "name": "product_issues_2026-10-28_15-11-55.csv",
+        "uniqueKnownCsvKeys": 35644,
+        "keyFields": [
+          "Channels",
+          "Language",
+          "Feed label",
+          "Item ID"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "languages": [
+          "de"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-13.csv",
+        "uniqueKnownCsvKeys": 30204,
+        "keyFields": [
+          "Channels",
+          "Language",
+          "Feed label",
+          "Item ID"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "languages": [
+          "de",
+          "fr"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "name": "product_issues_2026-10-28_15-12-40.csv",
+        "uniqueKnownCsvKeys": 116,
+        "keyFields": [
+          "Channels",
+          "Language",
+          "Feed label",
+          "Item ID"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "languages": [
+          "de",
+          "fr"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      }
+    ]
+  },
+  "PRIORITY-ITEMS.json": {
+    "kind": "review_candidates",
+    "nativeMappingVerified": false,
+    "items": [
+      {
+        "issue": "Local Requirements",
+        "itemId": "shopify_ZZ_15523818045825_56215831413121",
+        "title": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15523818045825",
+        "encodedVariantId": "56215831413121",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15448020582785_55873968701825",
+        "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH L",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15448020582785",
+        "encodedVariantId": "55873968701825",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15448907776385_56053861515649",
+        "title": "Sportliche Herrenuhr mit Magnetschwebe-Kugel | LuxeStyle CH Black shell green-Steel strip style",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15448907776385",
+        "encodedVariantId": "56053861515649",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15448917606785_55878277824897",
+        "title": "Vintage Umhängetasche für Herren | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15448917606785",
+        "encodedVariantId": "55878277824897",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15449119818113_55879466516865",
+        "title": "Robuste Sportuhr für Herren | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15449119818113",
+        "encodedVariantId": "55879466516865",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15450729808257_55887554281857",
+        "title": "Mary Jane Slingback mit spitzem Zeh | LuxeStyle CH Lila / 40",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450729808257",
+        "encodedVariantId": "55887554281857",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15450834370945_55889750393217",
+        "title": "Glowing Gaming Maus | LuxeStyle CH A867RGB macro programming",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450834370945",
+        "encodedVariantId": "55889750393217",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15465273065857_55947570348417",
+        "title": "Macaron Silikon-Hundeleine, wasserfest | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15465273065857",
+        "encodedVariantId": "55947570348417",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15486374117761_56037366792577",
+        "title": "Roségoldene Chunky-Heel Sandalen für Damen 37",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15486374117761",
+        "encodedVariantId": "56037366792577",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15496335458689_56094207869313",
+        "title": "Kleid mit Leo-Print & Streifen-Patchwork | LuxeStyle CH Bunt / 3XL",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15496335458689",
+        "encodedVariantId": "56094207869313",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15508564574593_56151342121345",
+        "title": "Rückenfreies Satin-Minikleid mit Schleife | LuxeStyle CH L",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15508564574593",
+        "encodedVariantId": "56151342121345",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15509311684993_56156096102785",
+        "title": "Retro Worker-Boots für Herren | LuxeStyle CH Khaki / 43",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15509311684993",
+        "encodedVariantId": "56156096102785",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15523989193089_56217529418113",
+        "title": "Brusttasche aus Oxford-Stoff | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15523989193089",
+        "encodedVariantId": "56217529418113",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "fr"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15524866392449_56222393368961",
+        "title": "Katzengeschirr mit Reflektor | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15524866392449",
+        "encodedVariantId": "56222393368961",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447560978817_56063588598145",
+        "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH Grau-Einzeln",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447560978817",
+        "encodedVariantId": "56063588598145",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052961542529",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 100 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052961542529",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052962001281",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 150 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052962001281",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052962230657",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 175 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052962230657",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052962460033",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 200 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052962460033",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052962689409",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 225 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052962689409",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052962918785",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 250 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052962918785",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447919722881_56052963148161",
+        "title": "Magnetische Lesebrille zum Umhängen | LuxeStyle CH 275 degrees-Black Frame Gray Rope",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447919722881",
+        "encodedVariantId": "56052963148161",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447933550977_56052990968193",
+        "title": "10 Paar Damen Füsslinge Seidig Glatt | LuxeStyle CH Schwarz",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447933550977",
+        "encodedVariantId": "56052990968193",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15448882938241_55878125060481",
+        "title": "WLAN Garagentor-Steuerung mit App | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15448882938241",
+        "encodedVariantId": "55878125060481",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889669620097",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Schwarz-Apple",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889669620097",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670537601",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Weiss-Apple · 2 Stück",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670537601",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670570369",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte 1Black 1White-Apple",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670570369",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670635905",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte 3 Stück Schwarz-Apple",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670635905",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670799745",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Schwarz-Samsung · 2 Stück",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670799745",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670832513",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte 3 Stück Weiss-Apple",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670832513",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889670865281",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte 1Black 1White-Samsung",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889670865281",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671094657",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Weiss-Samsung · 2 Stück",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671094657",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671258497",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte 3 Stück Schwarz-Samsung",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671258497",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671324033",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Weiss-Apple",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671324033",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671356801",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Schwarz-Apple · 2 Stück",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671356801",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671389569",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Schwarz-Samsung",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671389569",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450828636545_55889671487873",
+        "title": "3-in-1 Wireless Ladestation für mehrere Geräte Weiss-Samsung",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450828636545",
+        "encodedVariantId": "55889671487873",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450829357441_55889689018753",
+        "title": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht Schwarz-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450829357441",
+        "encodedVariantId": "55889689018753",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732567425",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Pink-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732567425",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732600193",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Pink Englisch Verpackung-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732600193",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732632961",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Grün Englisch Verpackung-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732632961",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732665729",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH 3 Stück Grün-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732665729",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732698497",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH 5 Stück Grün-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732698497",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732796801",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH 3 Stück Pink-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732796801",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732862337",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH 3 Stück Pink Englisch Verpackung-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732862337",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889732960641",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Bundle1-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889732960641",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889733058945",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Grün Englisch Verpackung · 2 Stück-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889733058945",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450832961921_55889733091713",
+        "title": "Intelligenter Rollball für Katzen | LuxeStyle CH Pink Englisch Verpackung · 2 Stück-USB",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450832961921",
+        "encodedVariantId": "55889733091713",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15450836566401_55889781588353",
+        "title": "LED Wasserwellen Projektionsleuchte | LuxeStyle CH 3 W-Set 8-1 Stück",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15450836566401",
+        "encodedVariantId": "55889781588353",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15455004688769_56068424630657",
+        "title": "Faltbare HD-Drohne mit Hinderniserkennung | LuxeStyle CH Matte Black-Dual Battery",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15455004688769",
+        "encodedVariantId": "56068424630657",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15455004688769_56068424663425",
+        "title": "Faltbare HD-Drohne mit Hinderniserkennung | LuxeStyle CH Matte Black-Three Batteries",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15455004688769",
+        "encodedVariantId": "56068424663425",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15455081824641_56068468605313",
+        "title": "Gesichtshochheber & Nackenmassagegerät | LuxeStyle CH Weiss",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15455081824641",
+        "encodedVariantId": "56068468605313",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15460660085121_55929529762177",
+        "title": "Mini-Drohne mit Kamera und Fernsteuerung | LuxeStyle",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15460660085121",
+        "encodedVariantId": "55929529762177",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15466886824321_55955519504769",
+        "title": "S68 Mini-Drohne mit 4K Dual-Kamera | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15466886824321",
+        "encodedVariantId": "55955519504769",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15470027080065_55970898870657",
+        "title": "MAN TGS Abschlepp-LKW mit BRUDER Roadster und Light &...",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15470027080065",
+        "encodedVariantId": "55970898870657",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15493830181249_56080321872257",
+        "title": "Smartwatch mit Herzfrequenzmessung · Herren",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15493830181249",
+        "encodedVariantId": "56080321872257",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15495222722945_67652514382215",
+        "title": "Elite Bluetooth Controller für PS4/PC/Android | LuxeStyle CH Schwarz",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15495222722945",
+        "encodedVariantId": "67652514382215",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de",
+          "fr"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15496703181185_56096079184257",
+        "title": "Bluetooth Audio Empfänger fürs Auto | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15496703181185",
+        "encodedVariantId": "56096079184257",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15502390591873_56116653949313",
+        "title": "Megapixel Wifi Aussenkamera 4K | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15502390591873",
+        "encodedVariantId": "56116653949313",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15507580649857_56147913113985",
+        "title": "Kabelloses 15W Schnellladepad | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15507580649857",
+        "encodedVariantId": "56147913113985",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15508294467969_56150240067969",
+        "title": "Langanhaltender Lidschatten Pen – 12er Set | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15508294467969",
+        "encodedVariantId": "56150240067969",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15508418855297_56150621290881",
+        "title": "Elektrisches Fussbad mit Heizfunktion | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15508418855297",
+        "encodedVariantId": "56150621290881",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15508422295937_56150636790145",
+        "title": "Türreck für Klimmzüge | LuxeStyle CH 65–96 cm",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15508422295937",
+        "encodedVariantId": "56150636790145",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "fr"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15508716224897_56152234819969",
+        "title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15508716224897",
+        "encodedVariantId": "56152234819969",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15510409675137_56160666878337",
+        "title": "Intelligenter Sprachübersetzer | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15510409675137",
+        "encodedVariantId": "56160666878337",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15510922199425_56164308418945",
+        "title": "18-Farben Lidschatten-Palette Rose Gold | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15510922199425",
+        "encodedVariantId": "56164308418945",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15522213986689_56204490834305",
+        "title": "FOCALLURE PLUMPMAX Lip Glow High Shine | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15522213986689",
+        "encodedVariantId": "56204490834305",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15523129852289_56209715855745",
+        "title": "Kompakter Bluetooth Subwoofer mit Mikrofon | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15523129852289",
+        "encodedVariantId": "56209715855745",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15525458248065_56225314734465",
+        "title": "6‐Farben wasserfester Nude‐Matt‐Lippenstift | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15525458248065",
+        "encodedVariantId": "56225314734465",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_16603590033799_67610886340999",
+        "title": "Rouge-Creme in sechs Farbnuancen | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "16603590033799",
+        "encodedVariantId": "67610886340999",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      }
+    ]
+  },
+  "ROOT-CANDIDATES.json": {
+    "scope": "CSV review candidates only; native Shopify mapping not verified here; identity dimensions preserved",
+    "candidates": [
+      {
+        "issue": "Promotional overlay on image",
+        "itemId": "shopify_ZZ_15447560978817_56063588598145",
+        "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH Grau-Einzeln",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15447560978817",
+        "encodedVariantId": "56063588598145",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Product page unavailable",
+        "itemId": "shopify_ZZ_15448020582785_55873968701825",
+        "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH L",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15448020582785",
+        "encodedVariantId": "55873968701825",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv",
+          "product_issues_2026-10-28_15-12-13.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      },
+      {
+        "issue": "Local Requirements",
+        "itemId": "shopify_ZZ_15523818045825_56215831413121",
+        "title": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH",
+        "itemStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "encodedProductId": "15523818045825",
+        "encodedVariantId": "56215831413121",
+        "mappingStatus": "decoded candidate from CSV Item ID, not native Shopify-verified",
+        "contexts": [
+          [
+            "Liechtenstein",
+            "Dynamic remarketing"
+          ],
+          [
+            "Liechtenstein",
+            "Free listings"
+          ],
+          [
+            "Liechtenstein",
+            "Shopping ads"
+          ],
+          [
+            "Switzerland",
+            "Dynamic remarketing"
+          ],
+          [
+            "Switzerland",
+            "Free listings"
+          ],
+          [
+            "Switzerland",
+            "Shopping ads"
+          ]
+        ],
+        "sourceFiles": [
+          "product_issues_2026-10-28_15-11-55.csv"
+        ],
+        "languages": [
+          "de"
+        ],
+        "feedLabels": [
+          "CHF_99383214465"
+        ],
+        "channels": [
+          "ONLINE"
+        ]
+      }
+    ]
+  },
+  "ROOT-CSV-GEGENZAEHLUNG.json": {
+    "rows": 495,
+    "itemIdStrings": 112,
+    "compositeKeys": 116,
+    "issues": {
+      "Over capacity for Shopping ads (in CSS program)": 114,
+      "Personalized advertising: personal hardships": 227,
+      "Shopping ads quota limit reached (outside of CSS program)": 154
+    },
+    "sourceSha256": "0cb767fa38e964723bd4d4f44a2ce8495a2917e5964602600317867cbf458da0"
+  },
+  "ROOT-GEGENPROBE.json": {
+    "native": {
+      "p0": {
+        "id": "gid://shopify/ProductVariant/56063588598145",
+        "title": "Grau-Einzeln",
+        "price": "196.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15447560978817",
+          "title": "3-in-1 Magnetische Ladestation",
+          "handle": "3-in-1-magnetische-ladestation-621500",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "kat-laden",
+            "rueckhol-0907",
+            "sort-elektronik-kleinteile",
+            "tech"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500",
+          "descriptionHtml": "<p>Diese elegante 3-in-1 Ladestation aus Aluminiumlegierung bietet eine praktische Lösung, um deine Apple-Geräte gleichzeitig und kabellos zu laden. Verfügbar in den Farben Deep Space Gray und Ice River Silver, fügt sie sich nahtlos in jede Umgebung ein. Mit ihrem kompakten Design ist sie ideal für den Schreibtisch oder Nachttisch und sorgt für Ordnung ohne Kabelsalat.</p><p>Die Ladestation wird über ein Type-C Kabel mit Strom versorgt und ist bereit für den sofortigen Einsatz. Geniesse die Bequemlichkeit des kabellosen Ladens für dein Smartphone, deine AirPods und deine Apple Watch an einem zentralen Ort.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Magnetische kabellose Ladeleistung: 5W/7.5W/10W/15W (Maximal)</li>\n<li>AirPods kabellose Ladeleistung: 5W (Maximal)</li>\n<li>Apple Watch kabellose Ladeleistung: 3W/5W (Maximal)</li>\n<li>Eingangsleistung: 9V - 3A, 12V - 3A</li>\n<li>Material: Hochwertige Aluminiumlegierung</li>\n<li>Anschluss: Type-C Kabel</li>\n<li>Farben: Deep Space Gray, Ice River Silver</li>\n</ul>\n\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/wireless-charger-3in1-ratgeber\">3 in 1 Wireless Charger: Der Ratgeber für iPhone, AirPods und Apple Watch</a>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>"
+        }
+      },
+      "p1": {
+        "id": "gid://shopify/ProductVariant/55873968701825",
+        "title": "L",
+        "price": "18.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448020582785",
+          "title": "Elegantes Langarmshirt mit Spitze",
+          "handle": "elegantes-langarmshirt-mit-spitze-617600",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "damen",
+            "dropship",
+            "koll-shirts",
+            "mode",
+            "rueckhol-0907",
+            "shirt",
+            "sort-damen-t-shirts",
+            "sort-damen-t-shirts-langarm"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600",
+          "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Grössen:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> verschiedene Farben</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>"
+        }
+      },
+      "p2": {
+        "id": "gid://shopify/ProductVariant/56215831413121",
+        "title": "Default Title",
+        "price": "29.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15523818045825",
+          "title": "Elektrischer Milchshaker mit konstanter Temperatur",
+          "handle": "elektrischer-milchshaker-mit-konstanter-temper-619200",
+          "status": "ACTIVE",
+          "tags": [
+            "aufbewahrung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "haushalt",
+            "organizer",
+            "sort-kuechengeraete",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200",
+          "descriptionHtml": "<p>Der Milchshaker hilft dir, Babymilch schnell und gleichmässig zu rühren, ohne dass die Temperatur sinkt. Er arbeitet mit 11 W Leistung und lässt sich über USB, Lithiumbatterie oder Type‑C aufladen. Das Gerät ist in Milchspeck‑weiss‑gelb erhältlich. Das verbesserte Modell zeigt die Temperatur digital an und bietet vier Geschwindigkeiten zum Schütteln. Es verhindert Auslaufen und besteht aus strapazierfähigem Polypropylen. Im Lieferumfang enthalten: Milchshaker, Ladekabel, Anleitung.</p><h3>Das zeichnet es aus</h3><ul>\n<li>11 W Leistung</li>\n<li>USB/Type‑C Aufladung</li>\n<li>Digitale Temperaturanzeige</li>\n<li>4‑Geschwindigkeits‑Schütteln</li>\n<li>Anti‑Dumping‑Funktion</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 493 g</li>\n<li>\n<strong>Leistung:</strong> 11</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>"
+        }
+      }
+    },
+    "publics": [
+      {
+        "url": "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500",
+        "status": 200,
+        "canonical": "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500\">",
+        "productType": "ProductGroup",
+        "matchedVariant": "/products/3-in-1-magnetische-ladestation-621500?variant=56063588598145#variant",
+        "image": "https://luxestyle.ch/cdn/shop/files/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans_1a3769d2-7cfb-40d2-bbe0-ddbcb0d29681.jpg?v=1786910681&width=1920",
+        "sku": "CJ-CJSJ290134301AZ",
+        "offer": {
+          "@id": "/products/3-in-1-magnetische-ladestation-621500?variant=56063588598145#offer",
+          "@type": "Offer",
+          "availability": "http://schema.org/InStock",
+          "price": "196.90",
+          "priceCurrency": "CHF",
+          "url": "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500?variant=56063588598145"
+        },
+        "robots": [],
+        "isGoogleFetch": false
+      },
+      {
+        "url": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600",
+        "status": 200,
+        "canonical": "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600\">",
+        "productType": "ProductGroup",
+        "matchedVariant": "/products/elegantes-langarmshirt-mit-spitze-617600?variant=55873968701825#variant",
+        "image": "https://luxestyle.ch/cdn/shop/files/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg?v=1783119651&width=1920",
+        "sku": "CJ-CJCS295862003CX",
+        "offer": {
+          "@id": "/products/elegantes-langarmshirt-mit-spitze-617600?variant=55873968701825#offer",
+          "@type": "Offer",
+          "availability": "http://schema.org/InStock",
+          "price": "18.90",
+          "priceCurrency": "CHF",
+          "url": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600?variant=55873968701825"
+        },
+        "robots": [],
+        "isGoogleFetch": false
+      },
+      {
+        "url": "https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200",
+        "status": 200,
+        "canonical": "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200\">",
+        "productType": "Product",
+        "matchedVariant": "/products/elektrischer-milchshaker-mit-konstanter-temper-619200#product",
+        "image": "https://luxestyle.ch/cdn/shop/files/0028f3de-e83a-4de0-be44-1c875d155a3d_trans.jpg?v=1788383356&width=1920",
+        "sku": "CJ-2408080235051619200",
+        "offer": {
+          "@id": "/products/elektrischer-milchshaker-mit-konstanter-temper-619200?variant=56215831413121#offer",
+          "@type": "Offer",
+          "availability": "http://schema.org/InStock",
+          "price": "29.90",
+          "priceCurrency": "CHF",
+          "url": "https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200?variant=56215831413121"
+        },
+        "robots": [],
+        "isGoogleFetch": false
+      }
+    ],
+    "media": {
+      "data": {
+        "productVariant": {
+          "id": "gid://shopify/ProductVariant/56063588598145",
+          "sku": "CJ-CJSJ290134301AZ",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/70553173688705",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans_1a3769d2-7cfb-40d2-bbe0-ddbcb0d29681.jpg?v=1786910681",
+                  "altText": "LuxeStyle 3-in-1 Magnetische Ladestation – Bild 9 – LuxeStyle Schweiz"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo3MDU1MzE3MzY4ODcwNSwibGFzdF92YWx1ZSI6NzA1NTMxNzM2ODg3MDV9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15447560978817",
+            "featuredMedia": {
+              "id": "gid://shopify/MediaImage/69850936246657",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a613515-a52b-4658-a4d4-b058c52e2abf_trans.jpg?v=1783103091",
+                "altText": "3-in-1 Magnetische Ladestation"
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69850936246657",
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a613515-a52b-4658-a4d4-b058c52e2abf_trans.jpg?v=1783103091",
+                    "altText": "3-in-1 Magnetische Ladestation"
+                  }
+                },
+                {
+                  "id": "gid://shopify/MediaImage/69850936279425",
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e0b6a4b-634d-4471-9a57-4ddbd80c8096.jpg?v=1783103091",
+                    "altText": "3-in-1 Magnetische Ladestation – Ansicht 2"
+                  }
+                },
+                {
+                  "id": "gid://shopify/MediaImage/69850936312193",
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6628c823-d659-42d9-b468-68a3671b1803.jpg?v=1783103091",
+                    "altText": "3-in-1 Magnetische Ladestation – Ansicht 3"
+                  }
+                },
+                {
+                  "id": "gid://shopify/MediaImage/69850936344961",
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d21f394-0198-4ead-ab65-0d70e11b4668.jpg?v=1783103091",
+                    "altText": "3-in-1 Magnetische Ladestation – Ansicht 4"
+                  }
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": true,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg1MDkzNjM0NDk2MSwibGFzdF92YWx1ZSI6IjQifQ=="
+              }
+            }
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "name": "variant-associated",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans_1a3769d2-7cfb-40d2-bbe0-ddbcb0d29681.jpg?v=1786910681",
+        "altText": "LuxeStyle 3-in-1 Magnetische Ladestation – Bild 9 – LuxeStyle Schweiz"
+      },
+      {
+        "name": "product-main",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a613515-a52b-4658-a4d4-b058c52e2abf_trans.jpg?v=1783103091",
+        "altText": "3-in-1 Magnetische Ladestation"
+      },
+      {
+        "name": "gallery-2",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e0b6a4b-634d-4471-9a57-4ddbd80c8096.jpg?v=1783103091",
+        "altText": "3-in-1 Magnetische Ladestation – Ansicht 2"
+      }
+    ],
+    "validation": "native validator SKIPPED; queries successful; not independent schema pass"
+  },
+  "BILD-GEGENPROBE.json": [
+    {
+      "name": "variant-associated",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans_1a3769d2-7cfb-40d2-bbe0-ddbcb0d29681.jpg?v=1786910681",
+      "http": 200,
+      "bytes": 33359,
+      "sha256": "72fea4239ef957ae21ed6f701295e775f079db7eaf2658aac66041bdd83d024e",
+      "size": [
+        573,
+        583
+      ],
+      "local": "variant-associated.jpg"
+    },
+    {
+      "name": "product-main",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a613515-a52b-4658-a4d4-b058c52e2abf_trans.jpg?v=1783103091",
+      "http": 200,
+      "bytes": 31842,
+      "sha256": "93f35317996bfb89f3bc75076d640c010351014bd33fb19c653961824d8002ce",
+      "size": [
+        574,
+        582
+      ],
+      "local": "product-main.jpg"
+    },
+    {
+      "name": "gallery-2",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e0b6a4b-634d-4471-9a57-4ddbd80c8096.jpg?v=1783103091",
+      "http": 200,
+      "bytes": 58171,
+      "sha256": "2ef385c0df45288f330c1756ba85ce60132e73c51c51df669dbcbba81551f027",
+      "size": [
+        800,
+        800
+      ],
+      "local": "gallery-2.jpg"
+    }
+  ],
+  "VISUELLE-PRUEFUNG.json": {
+    "checkedDateZurich": "2026-10-28",
+    "filesSeen": [
+      "variant-associated.jpg",
+      "product-main.jpg",
+      "gallery-2.jpg"
+    ],
+    "observations": [
+      {
+        "file": "variant-associated.jpg",
+        "variant": "56063588598145 / Grau-Einzeln",
+        "visible": "grey charger pictured twice with devices; lower-left text Deep Space Gray",
+        "overlayPresent": true
+      },
+      {
+        "file": "product-main.jpg",
+        "visible": "silver charger pictured twice with devices; lower-left text Glacier Silver",
+        "overlayPresent": true
+      },
+      {
+        "file": "gallery-2.jpg",
+        "visible": "silver charger with devices, no obvious added text overlay outside the device displays in this sample",
+        "overlayPresent": false,
+        "notSuitableAsGreyReplacement": "different visible colour; exact grey SKU reference not proved"
+      }
+    ],
+    "rightsOrCertificationConfirmed": false,
+    "changesMade": false
+  }
+}
