@@ -174,14 +174,19 @@ jobs:
             echo "Kein Manifest-Update."
             exit 0
           fi
-          n=$(git diff -U0 -- dropship/gmc_schaufenster_manifest.jsonl | grep -c '^+[^+]' || true)
           git config user.name "luxestyle-autopilot"
           git config user.email "bot@users.noreply.github.com"
           # Manifest und Fehlerliste bestehen aus unabhängigen Zeilen: hängt eine andere Seite gleichzeitig an, bleiben beim Rebase beide Seiten erhalten.
           mkdir -p .git/info
           echo 'dropship/gmc_schaufenster_manifest.jsonl merge=union' >> .git/info/attributes
           echo 'dropship/gmc_schaufenster_fehler.txt merge=union' >> .git/info/attributes
-          git add -- dropship/gmc_schaufenster_manifest.jsonl dropship/gmc_schaufenster_fehler.txt
+          # Die Fehlerliste entsteht nur nach einem Fehlschlag: git add mit einem Pfad, den es nicht gibt, bricht den ganzen Befehl ab (Exit 128,
+          # nachgestellt am 28.10.2026, Fund der Codex-Zweitmeinung) und das Manifest bliebe ohne Commit. Darum nur, was da ist.
+          for f in dropship/gmc_schaufenster_manifest.jsonl dropship/gmc_schaufenster_fehler.txt; do
+            if [ -e "$f" ]; then git add -- "$f"; fi
+          done
+          # gezählt nach dem Vormerken: git diff ohne --cached sähe ein ganz neues Manifest nicht
+          n=$(git diff --cached -U0 -- dropship/gmc_schaufenster_manifest.jsonl | grep -c '^+[^+]' || true)
           git commit -m "Google-Schaufenster: Manifest, $n neue Zeilen [skip ci]"
           for versuch in 1 2 3 4 5; do
             if git push origin "HEAD:refs/heads/$ZIEL"; then exit 0; fi

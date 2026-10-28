@@ -24,7 +24,7 @@ const pruef = (name, ist, soll) => {
 // --- Der Fake-Shop: eine Vorladedatei, die fetch ersetzt. Zustand liegt in einer JSON-Datei (überlebt einen abgebrochenen Kindprozess).
 const VORLADEN = join(dir, 'fake_shop.mjs');
 writeFileSync(VORLADEN, `
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, rmSync } from 'node:fs';
 const ZUSTAND = process.env.FAKE_STATE, GOOGLE = '${GOOGLE}';
 const echt = globalThis.setTimeout;
 globalThis.setTimeout = (f, ms, ...a) => echt(f, Math.min(ms || 0, 2), ...a);   // keine echten Wartezeiten
@@ -89,6 +89,7 @@ globalThis.fetch = async (url, opt = {}) => {
       }
       z.mutationen = (z.mutationen || 0) + 1;
       schreibe(z);
+      if (z.freigabeWegNach && z.mutationen >= z.freigabeWegNach) rmSync(process.env.FREIGABE, { force: true });   // der Besitzer löscht die Freigabe mitten im Lauf
       if (z.absturzNach && z.mutationen >= z.absturzNach) process.exit(137);   // wie SIGKILL: Shopify hat gebucht, die Antwort kommt nie an
       return antwort(aus);
     }
@@ -337,6 +338,24 @@ const manifest = () => parseManifest(existsSync(join(dir, 'manifest.jsonl')) ? r
   const q = z.bulkQuery || '';
   pruef('Bulk-Abfrage nennt Titel, Tags, Varianten, Kanal, Ausschlussfeld, Kategorie, Rating und Anzahl',
     [' title ', ' tags ', 'variantsCount{count}', 'publishedOnPublication', 'excluded_destination', 'google_product_category', 'key:"rating")', 'key:"rating_count")'].map(t => q.includes(t)), [true, true, true, true, true, true, true, true]);
+}
+
+// 19) Die Freigabe gilt auch mitten im Lauf (Zweitmeinung Codex 28.10.2026): wird die Datei nach dem ersten Stück gelöscht, endet der Lauf vor dem zweiten
+{
+  neu();
+  const w = welt(); w.freigabeWegNach = 1;
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const z = r.lies();
+  const ab = manifest();
+  pruef('Freigabe nach dem ersten Stück gelöscht: Exit 4, genau eine Mutation, nur dieses Stück im Manifest',
+    [r.code, z.mutationen, z.log.length, ab.ids.size, /Freigabedatei ist weg/.test(r.aus)], [4, 1, 10, 10, true]);
+  pruef('Freigabe weg: das nächste Stück wurde nicht begonnen (kein «ab-versucht» ohne Aufruf, Rest bleibt auf Google)',
+    [z.produkte.filter(p => p.gp === false).length, z.produkte.filter(p => p.gp === true && p.ex).length], [10, 290]);
+  // Gegenprobe: bleibt die Freigabe liegen, läuft alles durch
+  neu();
+  const w2 = welt();
+  const r2 = los(w2, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('Freigabe bleibt: alle 300 Produkte gehen, Exit 0', [r2.code, r2.lies().log.length], [0, 300]);
 }
 
 rmSync(dir, { recursive: true, force: true });

@@ -94,6 +94,35 @@ if (SKRIPT) {
   }
 }
 
+// Der Schritt «Manifest committen» in einem Wegwerf-Repo mit lokalem Origin (Fund der Codex-Zweitmeinung 28.10.2026: git add mit einer
+// Fehlerdatei, die es nicht gibt, bricht mit Exit 128 ab und das Manifest bliebe ohne Commit).
+const COMMIT = schritt('Manifest committen (auch nach Teilfehlern)');
+wahr('Schritt «Manifest committen» mit run-Block gefunden', typeof COMMIT === 'string' && COMMIT.length > 300, String(COMMIT?.length));
+function commitLauf({ manifest, fehler, vorhanden = false }) {
+  const d = mkdtempSync(join(tmpdir(), 'gmcwf-git-'));
+  const sh = (cmd, cwd = d) => spawnSync('bash', ['-ec', cmd], { cwd, encoding: 'utf8', timeout: 30000, env: { PATH: process.env.PATH, HOME: d, GIT_CONFIG_NOSYSTEM: '1' } });
+  try {
+    sh('git init -q --bare origin.git && git clone -q origin.git arbeit 2>/dev/null; cd arbeit && git config user.email t@t && git config user.name t && git checkout -q -b main && mkdir -p dropship automation && echo x > automation/a.txt'
+      + (vorhanden ? " && echo '{\"id\":\"alt\"}' > dropship/gmc_schaufenster_manifest.jsonl" : '') + ' && git add -A && git commit -q -m init && git push -q origin main');
+    const w = join(d, 'arbeit');
+    if (manifest) writeFileSync(join(w, 'dropship/gmc_schaufenster_manifest.jsonl'), (vorhanden ? '{"id":"alt"}\n' : '') + '{"id":"gid://shopify/Product/1","aktion":"ab-versucht"}\n');
+    if (fehler) writeFileSync(join(w, 'dropship/gmc_schaufenster_fehler.txt'), 'gid://shopify/Product/1\t2026-10-28\tfake\n');
+    const r = spawnSync('bash', ['-eo', 'pipefail', '-c', COMMIT], { cwd: w, encoding: 'utf8', timeout: 30000, env: { PATH: process.env.PATH, HOME: d, ZIEL: 'main', GIT_CONFIG_NOSYSTEM: '1' } });
+    const oben = sh('git log --oneline main | head -3; git show --stat --format= main | tail -3', join(d, 'origin.git'));
+    return { rc: r.status, text: (r.stdout || '') + (r.stderr || ''), oben: oben.stdout };
+  } finally { rmSync(d, { recursive: true, force: true }); }
+}
+if (COMMIT) {
+  let r = commitLauf({ manifest: true, fehler: false });
+  wahr('Commit: nur das Manifest vorhanden (keine Fehlerliste) wird committet und gepusht', r.rc === 0 && /Manifest, 1 neue Zeilen/.test(r.oben) && /gmc_schaufenster_manifest\.jsonl/.test(r.oben), `rc ${r.rc} ${r.text.slice(-200)} ${r.oben}`);
+  r = commitLauf({ manifest: true, fehler: true });
+  wahr('Commit: Manifest und Fehlerliste zusammen', r.rc === 0 && /gmc_schaufenster_manifest\.jsonl/.test(r.oben) && /gmc_schaufenster_fehler\.txt/.test(r.oben), `rc ${r.rc} ${r.oben}`);
+  r = commitLauf({ manifest: false, fehler: true });
+  wahr('Commit: nur die Fehlerliste vorhanden', r.rc === 0 && /gmc_schaufenster_fehler\.txt/.test(r.oben), `rc ${r.rc} ${r.text.slice(-200)} ${r.oben}`);
+  r = commitLauf({ manifest: false, fehler: false });
+  wahr('Commit: nichts geändert → Exit 0 ohne Commit', r.rc === 0 && /Kein Manifest-Update/.test(r.text) && !/Manifest, /.test(r.oben), `rc ${r.rc} ${r.text.slice(-200)}`);
+}
+
 // Aufbau des Workflows
 wahr('Zeitplan vorhanden (täglich 04:41 UTC, nicht beim Auswahl-Lauf um 21:50)', /schedule:\s*\n\s*- cron: '41 4 \* \* \*'/.test(WF));
 wahr('LIVE ist nirgends fest auf 1 gesetzt (kommt nur aus dem Modus-Schritt)', !/LIVE:\s*['"]?1['"]?\s*$/m.test(WF) && /LIVE: \$\{\{ steps\.modus\.outputs\.live \}\}/.test(WF));
