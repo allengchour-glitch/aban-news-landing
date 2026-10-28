@@ -1,0 +1,195 @@
+name: "Google-Schaufenster (Merchant-Center-Quote einhalten)"
+
+# Hält die Zahl der Varianten auf dem Verkaufskanal «Google & YouTube» unter der Quote des Merchant Centers
+# (automation/gmc_schaufenster.mjs, Doku dropship/GMC-SCHAUFENSTER-2810.md). Ohne regelmässigen Lauf füllt sich der Kanal wieder: neue Produkte,
+# neue Varianten (Auswahl-Lauf) und neue Bestellungen/Bewertungen verschieben, welche Produkte ins Schaufenster gehören.
+#
+# Zwei Stufen, bewusst getrennt:
+#   - LESEN (jeden Tag, ohne Freigabe): Plan rechnen und prüfen, ob Google noch Produkte ausserhalb des Schaufensters trägt. Schreibt nichts.
+#   - SCHREIBEN (abwaehlen/aufnehmen): nur von Hand (workflow_dispatch) mit der Freigabe dropship/GMC-SCHAUFENSTER-FREI.txt, und im
+#     Zeitplan nur, wenn ZUSÄTZLICH dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt im Repo liegt (Dauerfreigabe des Besitzers; löschen = Stopp).
+#     Die Freigabe vom 28.10.2026 («aber zuerst merchant fix») gilt dem einmaligen Lauf, nicht einer täglichen Automatik.
+#
+# Zugang: Repo-Secrets SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Client-Credentials-Grant einer im Shop INSTALLIERTEN Custom-App).
+# Das Manifest (dropship/gmc_schaufenster_manifest.jsonl) besteht aus unabhängigen Zeilen und wird nach jedem schreibenden Lauf zurück ins Repo
+# gelegt (Union-Merge bei gleichzeitigen Änderungen). Zeitplan 04:41 UTC: nicht neben dem Auswahl-Lauf (21:50 UTC) und seiner Bulk-Abfrage.
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: 'plan = nur rechnen · pruefen = frisch lesen und vergleichen · abwaehlen = schreibt LIVE · aufnehmen = stellt Abgewählte zurück, die wieder passen · zuruecksetzen = VOLLE Rücknahme'
+        type: choice
+        options: [plan, pruefen, abwaehlen, aufnehmen, zuruecksetzen]
+        default: plan
+      max:
+        description: 'Höchstzahl Produkte je Lauf (Zahl oder alle)'
+        type: string
+        default: 'alle'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gmc-schaufenster
+  cancel-in-progress: false
+
+jobs:
+  schaufenster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      MODUS_EINGABE: ${{ inputs.modus }}
+      MAX_EINGABE: ${{ inputs.max }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            /automation/
+            /dropship/gmc_schaufenster_manifest.jsonl
+            /dropship/gmc_schaufenster_fehler.txt
+            /dropship/GMC-SCHAUFENSTER-FREI.txt
+            /dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Modus und Freigabe festlegen
+        id: modus
+        run: |
+          # Eingaben nur aus der Liste erlaubter Werte, nie ungeprüft in einen Befehl.
+          modus="$MODUS_EINGABE"
+          if [ "$EREIGNIS" = "schedule" ]; then
+            if [ -f dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt ] && [ -f dropship/GMC-SCHAUFENSTER-FREI.txt ]; then modus="abwaehlen"; else modus="pruefen"; fi
+          fi
+          case "$modus" in
+            plan|pruefen|abwaehlen|aufnehmen|zuruecksetzen) ;;
+            *) echo "::error title=Unbekannter Modus::«$modus» ist nicht erlaubt."; exit 1 ;;
+          esac
+          max="${MAX_EINGABE:-alle}"
+          case "$max" in
+            alle) ;;
+            ''|*[!0-9]*) echo "::error title=Ungültige Höchstzahl::«$max» ist weder «alle» noch eine Zahl."; exit 1 ;;
+          esac
+          live=0
+          case "$modus" in abwaehlen|aufnehmen|zuruecksetzen) live=1 ;; esac
+          if [ "$live" = "1" ] && [ ! -f dropship/GMC-SCHAUFENSTER-FREI.txt ]; then
+            echo "::error title=Nicht freigegeben::dropship/GMC-SCHAUFENSTER-FREI.txt fehlt (Freigabe des Besitzers oder Stopp). Es wurde nichts geschrieben."
+            exit 1
+          fi
+          if [ "$EREIGNIS" = "schedule" ] && [ "$modus" = "pruefen" ]; then
+            echo "::notice title=Zeitplan liest nur::dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt fehlt: der nächtliche Lauf prüft nur und schreibt nichts."
+          fi
+          echo "modus=$modus" >> "$GITHUB_OUTPUT"
+          echo "max=$max" >> "$GITHUB_OUTPUT"
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          echo "JOB_START=$(date +%s)" >> "$GITHUB_ENV"
+          echo "Modus: $modus · Höchstzahl: $max · schreibt: $([ "$live" = 1 ] && echo ja || echo nein)"
+
+      - name: Shopify-Zugang prüfen (bricht laut ab)
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          CJ_PROBE: '0'
+        run: node automation/diagnose_actions_zugang.mjs
+
+      - name: Schaufenster (${{ steps.modus.outputs.modus }})
+        id: lauf
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          PHASE: ${{ steps.modus.outputs.modus }}
+          MAX: ${{ steps.modus.outputs.max }}
+          LIVE: ${{ steps.modus.outputs.live }}
+          PLAN_AUS: /tmp/gmc_schaufenster_plan.json
+        run: |
+          set +e
+          node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_lauf.log
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          echo "Exit: $rc"
+          # Exit 0 ok · 4 Drosselung (der nächste Lauf macht idempotent weiter) sind keine Fehler; alles andere macht den Job rot.
+          if [ "$rc" != "0" ] && [ "$rc" != "4" ]; then exit "$rc"; fi
+
+      - name: Nachprüfen (frisch lesen, nach 2 Minuten Abstand)
+        id: nach
+        if: ${{ always() && steps.lauf.outcome != 'skipped' && steps.modus.outputs.live == '1' && (steps.lauf.outputs.rc == '0' || steps.lauf.outputs.rc == '4') }}
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          PHASE: pruefen
+          LIVE: '0'
+          PLAN_AUS: /tmp/gmc_schaufenster_plan2.json
+        run: |
+          sleep 120
+          set +e
+          node automation/gmc_schaufenster.mjs 2>&1 | tee /tmp/gmc_schaufenster_nach.log
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          echo "Exit der Nachprüfung: $rc"
+          exit "$rc"
+
+      - name: Zusammenfassung
+        if: ${{ always() }}
+        run: |
+          {
+            echo "### Google-Schaufenster"
+            echo "- Modus: **${{ steps.modus.outputs.modus }}** · Höchstzahl: ${{ steps.modus.outputs.max }} · Auslöser: $EREIGNIS"
+            echo "- Exit des Laufs: ${{ steps.lauf.outputs.rc }} · Exit der Nachprüfung: ${{ steps.nach.outputs.rc }}"
+            echo '```'
+            grep -E "^(BEWÄHRT|BEWERTUNGSFELDER|SCHAUFENSTER|PRÜFUNG)|^  (gelesen|zulässig|im Schaufenster|Varianten auf Google|ABWÄHLEN|AUFNEHMEN)|FERTIG|ABBRUCH|Defekt|DEFEKT" /tmp/gmc_schaufenster_lauf.log /tmp/gmc_schaufenster_nach.log 2>/dev/null | head -40 | cut -c1-240 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Protokoll sichern
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gmc-schaufenster-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            /tmp/gmc_schaufenster_lauf.log
+            /tmp/gmc_schaufenster_nach.log
+            /tmp/gmc_schaufenster_plan.json
+            dropship/gmc_schaufenster_manifest.jsonl
+            dropship/gmc_schaufenster_fehler.txt
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Manifest committen (auch nach Teilfehlern)
+        if: ${{ always() && steps.modus.outputs.live == '1' }}
+        env:
+          ZIEL: ${{ github.ref_name }}
+        run: |
+          if [ -z "$(git status --porcelain -- dropship/gmc_schaufenster_manifest.jsonl dropship/gmc_schaufenster_fehler.txt)" ]; then
+            echo "Kein Manifest-Update."
+            exit 0
+          fi
+          n=$(git diff -U0 -- dropship/gmc_schaufenster_manifest.jsonl | grep -c '^+[^+]' || true)
+          git config user.name "luxestyle-autopilot"
+          git config user.email "bot@users.noreply.github.com"
+          # Manifest und Fehlerliste bestehen aus unabhängigen Zeilen: hängt eine andere Seite gleichzeitig an, bleiben beim Rebase beide Seiten erhalten.
+          mkdir -p .git/info
+          echo 'dropship/gmc_schaufenster_manifest.jsonl merge=union' >> .git/info/attributes
+          echo 'dropship/gmc_schaufenster_fehler.txt merge=union' >> .git/info/attributes
+          git add -- dropship/gmc_schaufenster_manifest.jsonl dropship/gmc_schaufenster_fehler.txt
+          git commit -m "Google-Schaufenster: Manifest, $n neue Zeilen [skip ci]"
+          for versuch in 1 2 3 4 5; do
+            if git push origin "HEAD:refs/heads/$ZIEL"; then exit 0; fi
+            if ! git pull --rebase --autostash origin "$ZIEL"; then
+              echo "Rebase fehlgeschlagen — das Manifest liegt im Artefakt dieses Laufs." >&2
+              exit 1
+            fi
+            sleep 3
+          done
+          echo "Push nach 5 Versuchen gescheitert — das Manifest liegt im Artefakt dieses Laufs." >&2
+          exit 1

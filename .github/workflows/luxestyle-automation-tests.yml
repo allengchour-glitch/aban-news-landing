@@ -55,6 +55,7 @@ on:
       - '.github/workflows/cj-reviews.yml'
       - '.github/workflows/metricool-schedule.yml'
       - '.github/workflows/auswahl-lauf.yml'
+      - '.github/workflows/gmc-schaufenster.yml'
       - 'automation/auswahl_durchlauf.sh'
   workflow_dispatch: {}
 
@@ -122,6 +123,7 @@ jobs:
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
             .github/workflows/cj-reviews.yml
+            .github/workflows/gmc-schaufenster.yml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -165,6 +167,7 @@ jobs:
           node --check automation/kundenstimmen_bauen.mjs
           node --check automation/unterteilung_audit.mjs
           node --check automation/gmc_schaufenster.mjs
+          node --check automation/gmc_schaufenster_workflow_test.mjs
           node --check automation/codex_zweitmeinung.mjs
           node --check codex-mods/luxe-codex/hooks/leitplanken.mjs
           node --check codex-mods/luxe-codex/hooks/schreibzaehler.mjs
@@ -218,6 +221,8 @@ jobs:
           # Google-Schaufenster (Merchant-Center-Quote, 150 000 Artikel je Bereich): Regel und Ablauf mit Attrappen-Shop; ohne Netz
           node automation/lib/gmc_schaufenster_test.mjs
           node automation/gmc_schaufenster_lauf_test.mjs
+          # Workflow gmc-schaufenster.yml: Zeitplan schreibt nur mit Dauerfreigabe, Eingaben nur aus der Liste, LIVE nie fest
+          node automation/gmc_schaufenster_workflow_test.mjs
           node automation/lib/sourcing_kandidaten_test.mjs
           node automation/lib/top_kandidaten_test.mjs
           node automation/auswahl_kandidaten_test.mjs

@@ -40,6 +40,13 @@ Gegenprobe «bestellt»: 0 der 18 bezahlten Produkte stehen im Abwahl-Plan (14 l
 5. Ein Plan mit Fehlern (unter 1 000 Zeilen, unter 500 Schaufenster-Produkten, über 140 000 Varianten danach, über 2 % unklare Zeilen, über 70 % abzuwählen, über 5 % ohne Google-Kategorie) schreibt nichts. Drosselung wird nie umgangen (Exit 4, der nächste Lauf macht idempotent weiter).
 6. Der Publish-Guard (`INCLUDE_GOOGLE` aus) und `kanal_sperren.mjs` ziehen Google nicht nach, abgewählte Produkte kommen also nicht von selbst zurück.
 
+## Wiederholung als Workflow (`.github/workflows/gmc-schaufenster.yml`)
+
+- **Täglich 04:41 UTC, nur lesen:** ohne Dauerfreigabe prüft der Zeitplan (`PHASE=pruefen`) und schreibt nichts. Zeigt Google wieder Produkte ausserhalb des Schaufensters, endet der Job mit Exit 5 (rot) und sagt es in der Zusammenfassung.
+- **Schreiben im Zeitplan nur mit einer zweiten Datei:** `dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt` (Dauerfreigabe des Besitzers, löschen = Stopp) UND `GMC-SCHAUFENSTER-FREI.txt`. Die Freigabe vom 28.10.2026 («aber zuerst merchant fix») gilt dem einmaligen Lauf; **die Dauerfreigabe habe ich nicht angelegt**, das entscheidet der Besitzer.
+- **Von Hand** (Actions → «Google-Schaufenster», `workflow_dispatch`): `plan`, `pruefen` ohne Freigabe; `abwaehlen`, `aufnehmen`, `zuruecksetzen` nur mit `GMC-SCHAUFENSTER-FREI.txt`. Nach jedem schreibenden Lauf liest der Workflow 2 Minuten später frisch nach (die Anzeige hinkt rund eine Minute hinterher) und legt das Manifest mit Union-Merge zurück ins Repo.
+- Test: `automation/gmc_schaufenster_workflow_test.mjs` (40 Prüfungen: führt den Modus-Schritt in bash gegen Attrappen-Dateien aus; Mutationsprobe 12 von 12 erkannt).
+
 ## Offen / Entscheide
 
 - **Wirkung im Merchant Center** ist von hier nicht messbar (kein Zugang): nach dem Lauf braucht Google Stunden bis Tage. Der Besitzer schickt dann den Screenshot «Needs attention» und «All products» (Zahl der Artikel).
