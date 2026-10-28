@@ -6,7 +6,8 @@
  * PHASEN (PHASE=…, Vorgabe plan)
  *   plan          NUR LESEN: liest alle aktiven Produkte (Bulk), rechnet das Schaufenster, nennt Zahlen, Gründe und Beispiele
  *                 auf BEIDEN Seiten (bleibt / geht) und schreibt den Plan nach PLAN_AUS.
- *   abwaehlen     LIVE=1: nimmt Produkte, die nicht ins Schaufenster passen, vom Kanal (publishableUnpublish, 10 je Anfrage).
+ *   abwaehlen     LIVE=1: nimmt Produkte, die nicht ins Schaufenster passen, vom Kanal (publishableUnpublish, 10 je Anfrage). Bestellte und gut bewertete
+ *                 Produkte (Stufe 0) bleiben; sind die Bestellungen nicht vollständig lesbar, bricht der Lauf ab.
  *   aufnehmen     LIVE=1: stellt Produkte zurück, die dieses Werkzeug früher abgewählt hat UND die wieder ins Schaufenster passen.
  *   zuruecksetzen LIVE=1: VOLLE Rücknahme: stellt alles zurück, was dieses Werkzeug abgewählt hat (ausser Sperrtag), auch Produkte mit
  *                 Ausschlussfeld oder ausserhalb des Budgets. Danach wählt ein neuer Lauf wieder ab; zum Stoppen die Freigabedatei löschen.
@@ -34,7 +35,7 @@ import { fileURLToPath } from 'node:url';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import {
-  GOOGLE_PUBLICATION, BUDGET_VARIANTEN, MIN_BUDGET, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile,
+  GOOGLE_PUBLICATION, BUDGET_VARIANTEN, MIN_BUDGET, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ratingAus, bestellteIds, bewaehrt,
 } from './lib/gmc_schaufenster.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
@@ -81,7 +82,7 @@ async function liesProdukte() {
   if (process.env.KATALOG) return zeilen(readFileSync(process.env.KATALOG, 'utf8'), null);
   const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
   if (lauf && ['CREATED', 'RUNNING', 'CANCELING'].includes(lauf.status)) { console.log('ABBRUCH: Es läuft schon eine Bulk-Abfrage, später wiederholen.'); process.exit(4); }
-  const inner = `{ products(query:"status:active") { edges { node { id handle tags variantsCount{count} gp:publishedOnPublication(publicationId:"${GOOGLE_PUBLICATION}") ex:metafield(namespace:"mm-google-shopping", key:"excluded_destination"){ value } cat:metafield(namespace:"mm-google-shopping", key:"google_product_category"){ value } } } } }`;
+  const inner = `{ products(query:"status:active") { edges { node { id handle title tags variantsCount{count} gp:publishedOnPublication(publicationId:"${GOOGLE_PUBLICATION}") ex:metafield(namespace:"mm-google-shopping", key:"excluded_destination"){ value } cat:metafield(namespace:"mm-google-shopping", key:"google_product_category"){ value } rt:metafield(namespace:"reviews", key:"rating"){ value } rc:metafield(namespace:"reviews", key:"rating_count"){ value } } } } }`;
   const m = (await q(`mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}`, { q: inner })).bulkOperationRunQuery;
   if (m.userErrors?.length) {
     const belegt = m.userErrors.some(e => /already in progress|bereits|in progress/i.test(String(e.message)));
@@ -98,11 +99,32 @@ async function liesProdukte() {
 function zeilen(text, erwartet) {
   const aus = text.split('\n').filter(Boolean).map(z => {
     const o = JSON.parse(z);
-    return { id: o.id, handle: o.handle, tags: o.tags || [], varianten: o.variantsCount?.count, aufGoogle: typeof o.gp === 'boolean' ? o.gp : null,
-      ausschluss: o.ex?.value || null, kategorie: o.cat?.value || null };
+    const b = ratingAus(o.rt?.value, o.rc?.value);
+    return { id: o.id, handle: o.handle, titel: o.title || '', tags: o.tags || [], varianten: o.variantsCount?.count, aufGoogle: typeof o.gp === 'boolean' ? o.gp : null,
+      ausschluss: o.ex?.value || null, kategorie: o.cat?.value || null, rating: b ? b.rating : null, bewertungen: b ? b.anzahl : null, bestellt: false };
   });
   if (erwartet != null && aus.length !== erwartet) { console.log(`ABBRUCH: ${aus.length} Zeilen gelesen, Shopify meldet ${erwartet}.`); process.exit(1); }
   return aus;
+}
+
+/**
+ * Produkte aus bezahlten Bestellungen (Stufe 0 «bewährt»). Nur lesen. Ältere Bestellungen als 60 Tage liefert Shopify nur mit dem Recht `read_all_orders`:
+ * `ordersCount` gegen die gelesene Zahl ist deshalb die Probe; stimmt sie nicht, gilt die Liste als unvollständig (und ein Schreiblauf bricht ab).
+ */
+async function liesBestellte() {
+  const alle = []; let nach = null, gesamt = null;
+  try {
+    for (let i = 0; i < 100; i++) {
+      const d = await q(`query($c:String){ ordersCount(limit:null){ count } orders(first:100, after:$c, sortKey:CREATED_AT){ pageInfo{ hasNextPage endCursor } nodes{ test cancelledAt displayFinancialStatus lineItems(first:100){ pageInfo{ hasNextPage } nodes{ product{ id } } } } } }`, { c: nach });
+      gesamt = d.ordersCount?.count ?? gesamt;
+      alle.push(...(d.orders?.nodes || []));
+      if (!d.orders?.pageInfo?.hasNextPage) break;
+      nach = d.orders.pageInfo.endCursor;
+    }
+  } catch (e) { return { ids: new Set(), vollstaendig: false, gelesen: alle.length, gesamt, fehler: String(e.message).slice(0, 160) }; }
+  const b = bestellteIds(alle);
+  const vollstaendig = b.vollstaendig && (gesamt == null || gesamt === alle.length);
+  return { ids: b.ids, vollstaendig, gelesen: alle.length, gesamt, fehler: vollstaendig ? null : `gelesen ${alle.length} von ${gesamt ?? '?'} Bestellungen${b.vollstaendig ? '' : ' (Positionen abgeschnitten)'}` };
 }
 
 function liesManifest() {
@@ -126,8 +148,8 @@ function bericht(p, alle) {
   const z = p.zahlen, v = p.varianten;
   console.log(`\nSCHAUFENSTER (Budget ${z.budget} Varianten, Deckel je Kategorie ${z.katDeckel})`);
   console.log(`  gelesen ${alle.length} aktive Produkte · auf Google jetzt ${alle.filter(x => x.aufGoogle === true).length} · unklar ${p.unklar}`);
-  console.log(`  zulässig: Stufe 1 (Fortura/CH-Lager) ${z.produkte[1]} · Stufe 2 (Marge A/B) ${z.produkte[2]} · Stufe 3 (Rest) ${z.produkte[3]}`);
-  console.log(`  im Schaufenster: S1 ${z.drin[1]} / ${z.varianten[1]} Var. · S2 ${z.drin[2]} / ${z.varianten[2]} Var. · S3 ${z.drin[3]} / ${z.varianten[3]} Var. · zusammen ${z.varianten.gesamt} Varianten`);
+  console.log(`  zulässig: Stufe 0 (bewährt: bestellt oder gut bewertet) ${z.produkte[0]} · Stufe 1 (Fortura/CH-Lager) ${z.produkte[1]} · Stufe 2 (Marge A/B) ${z.produkte[2]} · Stufe 3 (Rest) ${z.produkte[3]}`);
+  console.log(`  im Schaufenster: S0 ${z.drin[0]} / ${z.varianten[0]} Var. · S1 ${z.drin[1]} / ${z.varianten[1]} Var. · S2 ${z.drin[2]} / ${z.varianten[2]} Var. · S3 ${z.drin[3]} / ${z.varianten[3]} Var. · zusammen ${z.varianten.gesamt} Varianten`);
   console.log(`  Varianten auf Google: jetzt ${v.vorher} → nach dem Lauf ${v.nachher}   (Quote 150000, Budget ${z.budget})`);
   console.log(`  ABWÄHLEN ${p.abwaehlen.length} Produkte, Gründe ${JSON.stringify(p.gruende)}`);
   console.log(`  AUFNEHMEN ${p.aufnehmen.length} Produkte (aus dem Manifest, passen wieder) · ZURÜCKSETZEN ${p.zuruecksetzen.length} (alles aus dem Manifest, ausser Sperrtag)`);
@@ -136,7 +158,7 @@ function bericht(p, alle) {
   console.log('  grösste Kategorien im Schaufenster (Varianten): ' + Object.entries(proKat).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, n]) => `${k}=${n}`).join(' · '));
   const proben = (liste, n) => liste.filter((_, i) => i % Math.max(1, Math.floor(liste.length / n)) === 0).slice(0, n);
   console.log('  BLEIBEN (Beispiele je Stufe):');
-  for (const s of [1, 2, 3]) for (const x of proben(alle.filter(a => p.drin.get(a.id) === s && a.aufGoogle === true), 4)) console.log(`    S${s} ${x.handle} · ${x.varianten} Var.`);
+  for (const s of [0, 1, 2, 3]) for (const x of proben(alle.filter(a => p.drin.get(a.id) === s && a.aufGoogle === true), 4)) console.log(`    S${s} ${x.handle} · ${x.varianten} Var.`);
   console.log('  GEHEN (Beispiele, über die Gründe verteilt):');
   const proGrund = {};
   for (const x of p.abwaehlen) (proGrund[x.grund] ||= []).push(x);
@@ -145,6 +167,10 @@ function bericht(p, alle) {
 }
 
 const alle = await liesProdukte();
+const bestellt = await liesBestellte();
+for (const x of alle) x.bestellt = bestellt.ids.has(x.id);
+console.log(`BEWÄHRT: ${bestellt.ids.size} Produkte aus bezahlten Bestellungen (${bestellt.gelesen} Bestellungen gelesen${bestellt.gesamt != null ? `, Shopify zählt ${bestellt.gesamt}` : ''}) · dazu ${alle.filter(x => !x.bestellt && bewaehrt(x)).length} mit guter Bewertung`);
+if (!bestellt.vollstaendig) console.log(`WARNUNG: Bestellungen unvollständig gelesen (${bestellt.fehler}): bestellte Produkte sind nicht sicher geschützt.`);
 if (ONLY.length) console.log(`ONLY: Stichprobe von ${ONLY.length} Handles (der Plan rechnet trotzdem über alle ${alle.length} Produkte).`);
 const man = liesManifest();
 if (man.kaputt) console.log(`HINWEIS: ${man.kaputt} kaputte Manifest-Zeilen (werden nicht beachtet).`);
@@ -170,6 +196,7 @@ if (PHASE === 'pruefen') {
   process.exit(0);
 }
 
+if (PHASE === 'abwaehlen' && LIVE && !bestellt.vollstaendig) { console.log('ABBRUCH: Die Bestellungen sind unvollständig gelesen; ohne sie würden verkaufte Produkte vom Kanal gehen (Recht read_all_orders prüfen).'); process.exit(1); }
 if (!p.ok && PHASE !== 'zuruecksetzen') process.exit(2);   // die volle Rücknahme darf auch bei verdächtigem Plan laufen: sie stellt nur Eigenes zurück
 const art = PHASE === 'abwaehlen' ? 'abwaehlen' : 'aufnehmen';           // Art der Mutation (Unpublish oder Publish)
 let ziele = PHASE === 'abwaehlen' ? p.abwaehlen : PHASE === 'aufnehmen' ? p.aufnehmen : p.zuruecksetzen;

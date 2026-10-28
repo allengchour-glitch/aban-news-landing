@@ -36,8 +36,9 @@ globalThis.fetch = async (url, opt = {}) => {
   if (u.includes('/admin/oauth/access_token')) return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
   if (u === 'https://fake.local/bulk.jsonl') {
     const z = lies();
-    return new Response(z.produkte.map(p => JSON.stringify({ id: p.id, handle: p.handle, tags: p.tags, variantsCount: p.varianten === null ? null : { count: p.varianten },
-      gp: p.gp, ex: p.ex ? { value: p.ex } : null, cat: p.cat ? { value: p.cat } : null })).join('\\n'), { status: 200 });
+    return new Response(z.produkte.map(p => JSON.stringify({ id: p.id, handle: p.handle, title: p.titel || ('Produkt ' + p.handle), tags: p.tags, variantsCount: p.varianten === null ? null : { count: p.varianten },
+      gp: p.gp, ex: p.ex ? { value: p.ex } : null, cat: p.cat ? { value: p.cat } : null,
+      rt: p.rating == null ? null : { value: JSON.stringify({ value: String(p.rating), scale_min: '1.0', scale_max: '5.0' }) }, rc: p.stimmen == null ? null : { value: String(p.stimmen) } })).join('\\n'), { status: 200 });
   }
   if (u.includes('/graphql.json')) {
     const q = JSON.parse(opt.body).query;
@@ -45,6 +46,11 @@ globalThis.fetch = async (url, opt = {}) => {
     if (q.includes('currentBulkOperation(type:QUERY){status errorCode objectCount url}')) return antwort({ currentBulkOperation: { status: 'COMPLETED', errorCode: null, objectCount: String(z.produkte.length), url: 'https://fake.local/bulk.jsonl' } });
     if (q.includes('currentBulkOperation(type:QUERY){status}')) return antwort({ currentBulkOperation: z.bulkBelegt ? { status: 'RUNNING' } : null });
     if (q.includes('bulkOperationRunQuery')) return antwort({ bulkOperationRunQuery: { bulkOperation: { id: 'gid://shopify/BulkOperation/1' }, userErrors: [] } });
+    if (q.includes('orders(first')) {
+      if (z.bestellungenFehler) throw new Error('Access denied for orders field. Required access: read_orders');
+      const b = z.bestellungen || [];
+      return antwort({ ordersCount: { count: z.bestellungenZaehlt ?? b.length }, orders: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: b } });
+    }
     if (q.includes('publishableUnpublish') || q.includes('publishablePublish')) {
       const aus = {};
       const re = /a(\\d+): (publishableUnpublish|publishablePublish)\\(id:"([^"]+)", input:\\[\\{publicationId:"([^"]+)"\\}\\]\\)/g;
@@ -222,6 +228,48 @@ const manifest = () => parseManifest(existsSync(join(dir, 'manifest.jsonl')) ? r
   neu();
   const vor = los(welt(), { PHASE: 'pruefen' });
   pruef('pruefen vor dem Lauf: Google trägt noch Produkte ausserhalb des Schaufensters = Exit 5', vor.code, 5);
+}
+// 12) Stufe 0 «bewährt»: bestellte und gut bewertete Produkte bleiben, auch mit Ausschlussfeld
+{
+  neu();
+  const bestellung = (...ids) => ({ test: false, cancelledAt: null, displayFinancialStatus: 'PAID', lineItems: { pageInfo: { hasNextPage: false }, nodes: ids.map(id => ({ product: { id } })) } });
+  const w = welt();
+  const verkauft = P({ ex: AUS, handle: 'verkauft' }), erstattet = P({ ex: AUS, handle: 'erstattet' }), gut = P({ ex: AUS, handle: 'gut', rating: 4.6, stimmen: 12 }), schwach = P({ ex: AUS, handle: 'schwach', rating: 3.9, stimmen: 40 }), wenige = P({ ex: AUS, handle: 'wenige', rating: 5, stimmen: 2 });
+  w.produkte.push(verkauft, erstattet, gut, schwach, wenige);
+  w.bestellungen = [bestellung(verkauft.id), { ...bestellung(erstattet.id), displayFinancialStatus: 'REFUNDED' }];
+  const pl = los(w, { PHASE: 'plan' });
+  pruef('Plan nennt «BEWÄHRT: 1 Produkte» und 1 mit guter Bewertung', [pl.code, /BEWÄHRT: 1 Produkte aus bezahlten Bestellungen/.test(pl.aus), /dazu 1 mit guter Bewertung/.test(pl.aus)], [0, true, true]);
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const z = r.lies();
+  const weg = z.produkte.filter(p => p.gp === false).map(p => p.handle);
+  pruef('bestellt und gut bewertet bleiben; erstattet, schwach bewertet, zu wenige Stimmen gehen', [r.code, weg.includes('verkauft'), weg.includes('gut'), weg.includes('erstattet'), weg.includes('schwach'), weg.includes('wenige')], [0, false, false, true, true, true]);
+  pruef('die 300 Ausschluss-Produkte der Welt gehen weiter (300 + 3 = 303)', weg.length, 303);
+}
+// 13) Bestellungen nicht (vollständig) lesbar: Plan warnt, ein Schreiblauf bricht ab und fasst nichts an
+{
+  neu();
+  const a = welt(); a.bestellungenFehler = true;
+  const p1 = los(a, { PHASE: 'plan' });
+  pruef('Bestellungen nicht lesbar: Plan läuft (nur lesen), warnt aber', [p1.code, /WARNUNG: Bestellungen unvollständig gelesen/.test(p1.aus)], [0, true]);
+  const l1 = los(a, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('Bestellungen nicht lesbar + LIVE abwaehlen: Exit 1, nichts angefasst, kein Manifest', [l1.code, l1.aus.includes('Bestellungen sind unvollständig'), l1.lies().log.length, existsSync(join(dir, 'manifest.jsonl'))], [1, true, 0, false]);
+  neu();
+  const b = welt(); b.bestellungen = [{ test: false, cancelledAt: null, displayFinancialStatus: 'PAID', lineItems: { pageInfo: { hasNextPage: false }, nodes: [] } }]; b.bestellungenZaehlt = 29;   // Shopify zählt 29, geliefert wird 1 (älter als 60 Tage ohne read_all_orders)
+  const l2 = los(b, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('ordersCount 29, gelesen 1: unvollständig, Exit 1, nichts angefasst', [l2.code, /Shopify zählt 29/.test(l2.aus), l2.lies().log.length], [1, true, 0]);
+  neu();
+  const c = welt(); c.bestellungenFehler = true;
+  const rueck = los(c, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('die volle Rücknahme braucht die Bestellungen nicht', rueck.code, 0);
+}
+// 14) Lizenznamen und Prüf-Tags gehen vom Kanal
+{
+  neu();
+  const w = welt();
+  w.produkte.push(P({ handle: 'maus', titel: 'Mickey Mouse Folienballon', tags: ['fortura'] }), P({ handle: 'stecker', tags: ['stecker-unklar'] }), P({ handle: 'harmlos', titel: 'Ultraschall Zahnbürste' }));
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const weg = r.lies().produkte.filter(p => p.gp === false).map(p => p.handle);
+  pruef('Lizenzname (auch Fortura) und Prüf-Tag gehen, das harmlose Produkt bleibt', [r.code, weg.includes('maus'), weg.includes('stecker'), weg.includes('harmlos')], [0, true, true, false]);
 }
 
 rmSync(dir, { recursive: true, force: true });

@@ -1,8 +1,10 @@
 /** Test für die Schaufenster-Auswahl (Google-Kanal). Lauf: /opt/node22/bin/node automation/lib/gmc_schaufenster_test.mjs */
 import {
   stufe, waehle, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ausschlussGilt,
+  PRUEF_TAGS, BEWAEHRT_MIN_RATING, BEWAEHRT_MIN_ANZAHL, ratingAus, bewaehrt, bestellteIds,
   GOOGLE_PUBLICATION, BUDGET_VARIANTEN, HARTE_GRENZE, MIN_PRODUKTE, MIN_ZEILEN, MIN_BUDGET, MAX_ABWAHL_ANTEIL, MAX_OHNE_KATEGORIE, KATEGORIE_DECKEL,
 } from './gmc_schaufenster.mjs';
+import { AUSSCHLUSS_TAGS } from './mengenrabatt.mjs';
 
 let ok = 0, fehler = 0;
 const pruef = (name, ist, soll) => {
@@ -44,7 +46,7 @@ pruef('Gegenprobe: tags fehlen ganz (null) = Stufe 3, kein Absturz', stufe({ id:
   const z = [P({ tags: ['fortura'], varianten: 5 }), P({ tags: ['mengenrabatt-a'], varianten: 7 }), P({ varianten: 3, handle: 'b' }), P({ varianten: 1, handle: 'a' }), P({ varianten: 2, handle: 'c' })];
   const w = waehle(z, { budget: 100, katDeckel: 1 });
   pruef('alle zulässigen drin, wenn das Budget reicht', [...w.drin.values()].sort(), [1, 2, 3, 3, 3]);
-  pruef('Zahlen: Varianten je Stufe', w.zahlen.varianten, { 1: 5, 2: 7, 3: 6, gesamt: 18 });
+  pruef('Zahlen: Varianten je Stufe', w.zahlen.varianten, { 0: 0, 1: 5, 2: 7, 3: 6, gesamt: 18 });
 }
 {
   // Budget 10: Stufe 1 (5) + Stufe 2 (3) = 8, Platz für 2 Varianten: nur das Produkt mit 1 und das nächste mit 1 passt, das mit 2 nicht mehr
@@ -251,6 +253,79 @@ pruef('stufe(): Ausschlussfeld mit Local_inventory_ads sperrt nicht', stufe(P({ 
   pruef('über 5 % ohne Google-Kategorie: Plan abgelehnt', r.fehler.some(f => f.startsWith('zu-viele-ohne-kategorie')), true);
   const s = plan([...viele(1900), ...viele(50, { kategorie: null })], new Set(), { budget: 5000, katDeckel: 1 });   // 2,6 %
   pruef('2,6 % ohne Google-Kategorie ist erlaubt (sie gehen mit Grund)', [s.ok, s.gruende['keine-google-kategorie']], [true, 50]);
+}
+
+// --- Stufe 0 «bewährt» (Prüfer 28.10.: 7 von 14 verkauften und 971 von 1 993 gut bewerteten Produkten wären vom Kanal gegangen)
+{
+  const AUS = '["Shopping_ads"]';
+  pruef('bestellt, mit Ausschlussfeld = Stufe 0', stufe(P({ bestellt: true, ausschluss: AUS })).stufe, 0);
+  pruef('bestellt, ohne Ausschlussfeld = Stufe 0 (nicht Stufe 3)', stufe(P({ bestellt: true })).stufe, 0);
+  pruef('Gegenprobe: nicht bestellt, mit Ausschlussfeld = draussen', stufe(P({ bestellt: false, ausschluss: AUS })), { stufe: null, grund: 'ausschluss-shopping-ads' });
+  pruef('4,0 Sterne bei 3 Stimmen = Stufe 0 (Grenze gilt)', stufe(P({ rating: 4, bewertungen: 3, ausschluss: AUS })).stufe, 0);
+  pruef('Gegenprobe: 3,9 Sterne bei 10 Stimmen = nicht bewährt', stufe(P({ rating: 3.9, bewertungen: 10, ausschluss: AUS })).grund, 'ausschluss-shopping-ads');
+  pruef('Gegenprobe: 5,0 Sterne bei 2 Stimmen = nicht bewährt', stufe(P({ rating: 5, bewertungen: 2, ausschluss: AUS })).grund, 'ausschluss-shopping-ads');
+  pruef('Gegenprobe: Rating ohne Anzahl (null) = nicht bewährt, kein Absturz', stufe(P({ rating: 5, bewertungen: null, ausschluss: AUS })).grund, 'ausschluss-shopping-ads');
+  pruef('Gegenprobe: Felder fehlen ganz = Stufe 3, kein Absturz', stufe(P()).stufe, 3);
+  pruef('Konstanten: 4 Sterne, 3 Stimmen', [BEWAEHRT_MIN_RATING, BEWAEHRT_MIN_ANZAHL], [4, 3]);
+  // Sperren gehen VOR «bewährt»
+  pruef('bestellt, aber ohne Google-Kategorie = draussen', stufe(P({ bestellt: true, kategorie: null })).grund, 'keine-google-kategorie');
+  pruef('bestellt, aber Sperrtag = draussen', stufe(P({ bestellt: true, tags: ['adult-nicht-bewerben'] })).grund, 'sperrtag');
+  pruef('bestellt, aber ausgelistet = draussen', stufe(P({ bestellt: true, tags: ['cj-ausgelistet'] })).grund, 'nicht-lieferbar-oder-bild');
+  pruef('gut bewertet, aber Prüf-Tag = draussen', stufe(P({ rating: 4.8, bewertungen: 20, tags: ['stecker-unklar'] })).grund, 'pruef-tag');
+  pruef('bestellt, aber Lizenzname im Titel = draussen', stufe(P({ bestellt: true, titel: 'Mickey Mouse Folienballon' })).grund, 'lizenz-titel');
+  pruef('Fortura und bewährt = Stufe 1 (Fortura zuerst)', stufe(P({ tags: ['fortura'], bestellt: true })).stufe, 1);
+  pruef('Marge A und bestellt = Stufe 0', stufe(P({ tags: ['mengenrabatt-a'], bestellt: true, ausschluss: AUS })).stufe, 0);
+  // Stufe 0 ist immer drin: über Budget und über dem Kategorie-Deckel
+  const gross = P({ bestellt: true, varianten: 50, kategorie: 'A > B' }), klein = P({ varianten: 1, kategorie: 'A > B' });
+  const w = waehle([gross, klein], { budget: 10, katDeckel: 0.1 });
+  pruef('Stufe 0 über Budget und Deckel: drin; der Rest nicht', [w.drin.get(gross.id), w.drin.has(klein.id), w.zahlen.varianten[0]], [0, false, 50]);
+  const pl = plan([...Array.from({ length: 1100 }, () => P()), P({ bestellt: true, ausschluss: AUS, varianten: 2, handle: 'verkauft' }), P({ ausschluss: AUS, handle: 'unbekannt' })], new Set(), { budget: 5000, katDeckel: 1 });
+  pruef('plan: das bestellte Produkt mit Ausschlussfeld wird NICHT abgewählt, das unbekannte schon', [pl.abwaehlen.some(a => a.handle === 'verkauft'), pl.abwaehlen.some(a => a.handle === 'unbekannt')], [false, true]);
+  pruef('bewaehrt(): bestellt true / Zahlen', [bewaehrt({ bestellt: true }), bewaehrt({ rating: 4.5, bewertungen: 3 }), bewaehrt({ rating: 4.5, bewertungen: 2 }), bewaehrt({})], [true, true, false, false]);
+}
+
+// --- Rating-Metafelder lesen
+pruef('ratingAus: JSON-Wert', ratingAus('{"value":"4.5","scale_min":"1.0","scale_max":"5.0"}', '12'), { rating: 4.5, anzahl: 12 });
+pruef('ratingAus: einfache Zahl', ratingAus('4.2', '3'), { rating: 4.2, anzahl: 3 });
+pruef('ratingAus: Zahl im JSON', ratingAus('{"value":4.9}', '7'), { rating: 4.9, anzahl: 7 });
+pruef('ratingAus: kaputtes JSON = null', ratingAus('{"value":', '5'), null);
+pruef('ratingAus: Rating 0 = null', ratingAus('0', '5'), null);
+pruef('ratingAus: Anzahl 0 oder fehlend = null', [ratingAus('4.5', '0'), ratingAus('4.5', null), ratingAus('4.5', undefined), ratingAus(null, '5')], [null, null, null, null]);
+pruef('ratingAus: Text statt Zahl = null', ratingAus('gut', 'viele'), null);
+
+// --- Bestellungen: nur bezahlte, nicht stornierte, nicht erstattete, keine Testbestellungen
+{
+  const pos = (...ids) => ({ nodes: ids.map(id => ({ product: id === null ? null : { id } })), pageInfo: { hasNextPage: false } });
+  const A = 'gid://shopify/Product/11', B = 'gid://shopify/Product/12', C = 'gid://shopify/Product/13', D = 'gid://shopify/Product/14', E = 'gid://shopify/Product/15', F = 'gid://shopify/Product/16';
+  const b = bestellteIds([
+    { displayFinancialStatus: 'PAID', lineItems: pos(A, null, 'kaputt') },
+    { displayFinancialStatus: 'PARTIALLY_REFUNDED', lineItems: pos(B) },
+    { displayFinancialStatus: 'REFUNDED', lineItems: pos(C) },
+    { displayFinancialStatus: 'PAID', test: true, lineItems: pos(D) },
+    { displayFinancialStatus: 'PAID', cancelledAt: '2026-10-01T00:00:00Z', lineItems: pos(E) },
+    { displayFinancialStatus: 'PENDING', lineItems: pos(F) },
+  ]);
+  pruef('Bestellungen: bezahlt und teilerstattet zählen, null-Produkt und fremde ID nicht', [[...b.ids].sort(), b.vollstaendig], [[A, B], true]);
+  pruef('Bestellungen: erstattet, Test, storniert, offen zählen nicht', [b.ids.has(C), b.ids.has(D), b.ids.has(E), b.ids.has(F)], [false, false, false, false]);
+  const lang = bestellteIds([{ displayFinancialStatus: 'PAID', lineItems: { nodes: [{ product: { id: A } }], pageInfo: { hasNextPage: true } } }]);
+  pruef('Bestellung mit abgeschnittenen Positionen: unvollständig, gelesenes zählt trotzdem', [lang.vollstaendig, lang.ids.has(A)], [false, true]);
+  pruef('Bestellungen: undefined / leer / Müll ohne Absturz', [bestellteIds(undefined).ids.size, bestellteIds([]).vollstaendig, bestellteIds([null, {}, { displayFinancialStatus: 'PAID' }]).ids.size], [0, true, 0]);
+}
+
+// --- Prüf-Tags, Lizenznamen, Gleichlauf mit der Liste «nie bewerben» der Mengenrabatt-Regel
+{
+  for (const t of ['stecker-unklar', 'marken-pruefen', 'waffe-pruefen', 'versand-pruefen', 'google-policy-waffen', 'heilversprechen-risiko', 'google-kanal-markenware-unklar', 'lieferumfang-unklar', 'preis-pruefen-cj-spanne'])
+    pruef(`Prüf-Tag ${t} sperrt`, stufe(P({ tags: [t] })), { stufe: null, grund: 'pruef-tag' });
+  pruef('Gegenprobe: stecker-ok / versand-pruefen-x sperren nicht', [PRUEF_TAGS.test('stecker-ok'), PRUEF_TAGS.test('versand-pruefen-x')], [false, false]);
+  pruef('Gegenprobe: auto-entwurf-0926 (Charge ohne harten Grund, 30 aktive, verkauft) sperrt NICHT', stufe(P({ tags: ['auto-entwurf-0926', 'cj-real'] })).stufe, 3);
+  pruef('Gegenprobe: auto-entwurf-0926 und bestellt = Stufe 0', stufe(P({ tags: ['auto-entwurf-0926'], bestellt: true })).stufe, 0);
+  pruef('Gegenprobe: Fortura mit Prüf-Tag geht (Sperre vor Stufe 1)', stufe(P({ tags: ['fortura', 'stecker-unklar'] })).grund, 'pruef-tag');
+  for (const [titel, soll] of [['Mickey Mouse Folienballon', 'lizenz-titel'], ['Plüsch Sonic Igel', 'lizenz-titel'], ['Minions HD Überwachungskamera', 'lizenz-titel'], ['Iron Man QI Wireless Charger Stand', 'lizenz-titel']])
+    pruef(`Lizenzname «${titel}» geht`, stufe(P({ titel, tags: ['fortura'] })).grund, soll);
+  pruef('Gegenprobe: Ultraschall-Zahnbürste / Titel fehlt / leer = bleibt', [stufe(P({ titel: 'Ultraschall Zahnbürste' })).stufe, stufe(P()).stufe, stufe(P({ titel: '' })).stufe], [3, 3, 3]);
+  // Gleichlauf: jedes Tag der Liste «nie bewerben» (mengenrabatt.mjs) hält auch hier vom Kanal fern; nur fortura/kostuem sind hier Stufe 1 bzw. normale Ware
+  const offen = AUSSCHLUSS_TAGS.filter(t => !['fortura', 'kostuem'].includes(t) && stufe(P({ tags: [t] })).stufe !== null);
+  pruef('Gleichlauf mit AUSSCHLUSS_TAGS: kein Tag der Liste lässt ein Produkt auf Google', offen, []);
 }
 
 // --- Manifest: BOM am Anfang

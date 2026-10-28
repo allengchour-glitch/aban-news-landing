@@ -15,12 +15,16 @@
  *   wächst, ohne dass ein Produkt dazukommt.
  *
  * DIE REGEL: bleiben darf, was Google zeigen soll, bis die Zahl der Varianten unter dem Budget liegt.
+ *   nie      zuerst: Sperrtag (`kanal_sperren.mjs`), keine Google-Kategorie, Lieferbarkeit/Bild negativ getaggt,
+ *            offene Prüf-Tags (`PRUEF_TAGS`), Lizenzname im Titel (`LIZENZ` aus gmc_feed_item.mjs),
+ *            Variantenzahl unbekannt (Unbekannt ist kein Befund: es wird nichts erfunden)
  *   Stufe 1  Fortura/CH-Lager (Schweizer Lager, Kostüme): immer, auch mit Ausschlussfeld
+ *   Stufe 0  «bewährt»: bestellt (bezahlt, nicht storniert/erstattet) ODER mindestens BEWAEHRT_MIN_RATING Sterne bei mindestens
+ *            BEWAEHRT_MIN_ANZAHL Bewertungen: immer, auch mit Ausschlussfeld, ohne Kategorie-Deckel (Prüfer 28.10.: ohne diese Stufe
+ *            gingen 7 von 14 verkauften und 971 von 1 993 gut bewerteten Produkten vom Kanal)
  *   Stufe 2  Marge A oder B (Tags `mengenrabatt-a`/`-b`) ohne Ausschlussfeld: immer (GEMESSEN 28.10.: 4 424 Marge-Produkte tragen das Ausschlussfeld und gehen mit)
  *   Stufe 3  der Rest ohne Ausschlussfeld, bis das Budget voll ist; wenige Varianten zuerst (jede Variante
  *            kostet einen Platz), je Google-Kategorie (zwei Ebenen) höchstens KATEGORIE_DECKEL des Budgets
- *   nie      Sperrtag (`kanal_sperren.mjs`), keine Google-Kategorie, Lieferbarkeit/Bild negativ getaggt,
- *            Variantenzahl unbekannt (Unbekannt ist kein Befund: es wird nichts erfunden)
  *
  * GRENZEN: Das Werkzeug arbeitet NUR innerhalb dessen, was schon auf Google liegt, und nimmt ausschliesslich
  *   zurück, was es selbst abgewählt hat (Manifest). Ein Produkt, das nie auf Google war (Sperrtag, Policy),
@@ -28,6 +32,7 @@
  *   Google-App es beachtet, ist unbelegt: die Regel hängt nicht davon ab, sie entfernt die Produkte vom Kanal.
  */
 import { sperrTags } from './kanal_sperren.mjs';
+import { LIZENZ } from './gmc_feed_item.mjs';
 
 export const GOOGLE_PUBLICATION = 'gid://shopify/Publication/302872297857';
 /** Wunschgrösse des Schaufensters in Varianten (SETZUNG: 60 000 Varianten Platz unter der Grenze von 150 000 für das Wachstum der nächtlichen Auswahl-Läufe bis zum nächsten Lauf). */
@@ -49,6 +54,46 @@ export const MAX_UNKLAR = 0.02;
 /** Zusätzlich zu den Sperrtags (`cj-nicht-versendbar-ch` trifft schon das Muster `nicht-versendbar` in kanal_sperren.mjs). */
 export const NEGATIV_TAGS = /^(cj-ausgelistet|bild-zu-klein)$/;
 export const PRODUKT_GID = /^gid:\/\/shopify\/Product\/\d+$/;
+/**
+ * Offene Prüf- und Policy-Tags des Katalogs, die NICHT schon unter die Sperrtags von kanal_sperren.mjs fallen (Prüfer 28.10.: 59 Produkte mit
+ * `stecker-unklar`, `versand-pruefen`, `lieferumfang-unklar`, `preis-pruefen-cj-spanne` blieben sonst auf Google). NICHT dabei: `auto-entwurf-0926`, die
+ * Charge vom 26.09. ist die einzige Entwurfs-Familie OHNE harten Grund (dropship/BEWERTUNGEN-SICHTBARKEIT-1710.md); ihre 30 aktiven Produkte sind bewusst
+ * freigegeben und verkaufen (GEMESSEN 28.10.: Hängematte, Midikleid und Blumenkleid aus Bestellungen #1011/#1013 tragen das Tag).
+ * Quelle der Liste: AUSSCHLUSS_TAGS in lib/mengenrabatt.mjs; der Test hält beide gleich (ausser `fortura`/`kostuem`, die hier Stufe 1 sind).
+ */
+export const PRUEF_TAGS = /^(waffenzubehoer-nicht-verkaufen|stecker-nicht-ch|stecker-unklar|marken-pruefen|waffe-pruefen|versand-pruefen|google-policy-waffen|heilversprechen-risiko|google-kanal-markenware-unklar|lieferumfang-unklar|preis-pruefen-cj-spanne)$/;
+/** «Bewährt» (SETZUNG): mindestens so viele Sterne bei mindestens so vielen Bewertungen. */
+export const BEWAEHRT_MIN_RATING = 4;
+export const BEWAEHRT_MIN_ANZAHL = 3;
+/** Bestellungen in diesen Zuständen zählen als verkauft (nicht storniert, nicht Test). Vollständig erstattete und nicht bezahlte nicht. */
+const BEZAHLT = new Set(['PAID', 'PARTIALLY_REFUNDED']);
+
+/** `reviews.rating` ist JSON (`{"value":"4.5",…}`) oder eine Zahl; `reviews.rating_count` eine ganze Zahl als Text. Unlesbar → null. */
+export function ratingAus(ratingWert, anzahlWert) {
+  let r = ratingWert;
+  if (typeof r === 'string' && r.trim().startsWith('{')) { try { r = JSON.parse(r).value; } catch { return null; } }
+  const rating = Number.parseFloat(String(r ?? '')), anzahl = Number.parseInt(String(anzahlWert ?? ''), 10);
+  if (!Number.isFinite(rating) || !Number.isFinite(anzahl) || rating <= 0 || anzahl < 1) return null;
+  return { rating, anzahl };
+}
+/** Ist das Produkt bewährt? `p.bestellt` (true/false) und `p.rating`/`p.bewertungen` (Zahl oder null). */
+export function bewaehrt(p) {
+  if (p.bestellt === true) return true;
+  return Number.isFinite(p.rating) && Number.isFinite(p.bewertungen) && p.rating >= BEWAEHRT_MIN_RATING && p.bewertungen >= BEWAEHRT_MIN_ANZAHL;
+}
+/**
+ * Produkt-IDs aus bezahlten Bestellungen. `bestellungen`: [{test, cancelledAt, displayFinancialStatus, lineItems:{nodes:[{product:{id}}], pageInfo:{hasNextPage}}}].
+ * Hat eine Bestellung mehr Positionen als gelesen, ist die Liste unvollständig (`vollstaendig:false`): wer sich darauf verlässt, schreibt nicht.
+ */
+export function bestellteIds(bestellungen) {
+  const ids = new Set(); let vollstaendig = true;
+  for (const b of bestellungen || []) {
+    if (!b || b.test || b.cancelledAt || !BEZAHLT.has(b.displayFinancialStatus)) continue;
+    if (b.lineItems?.pageInfo?.hasNextPage) vollstaendig = false;
+    for (const n of b.lineItems?.nodes || []) { const id = n?.product?.id; if (PRODUKT_GID.test(String(id))) ids.add(id); }
+  }
+  return { ids, vollstaendig };
+}
 
 const hatTag = (p, t) => Array.isArray(p.tags) && p.tags.includes(t);
 
@@ -63,44 +108,47 @@ export function ausschlussGilt(wert) {
 }
 const katSchluessel = p => String(p.kategorie || '').split(' > ').slice(0, 2).join(' > ');
 
-/** Stufe 1 bis 3 oder null (mit Grund). Reihenfolge ist Absicht: Sperren zuerst, Fortura vor dem Ausschlussfeld. */
+/** Stufe 0 bis 3 oder null (mit Grund). Reihenfolge ist Absicht: Sperren zuerst (auch vor Fortura und vor «bewährt»), dann Fortura, dann bewährt, dann das Ausschlussfeld. */
 export function stufe(p) {
   const tags = Array.isArray(p.tags) ? p.tags : [];
   if (!p.kategorie) return { stufe: null, grund: 'keine-google-kategorie' };
   if (sperrTags(tags).length) return { stufe: null, grund: 'sperrtag' };
   if (tags.some(t => NEGATIV_TAGS.test(t))) return { stufe: null, grund: 'nicht-lieferbar-oder-bild' };
+  if (tags.some(t => PRUEF_TAGS.test(t))) return { stufe: null, grund: 'pruef-tag' };
+  if (p.titel && LIZENZ.test(String(p.titel))) return { stufe: null, grund: 'lizenz-titel' };
   if (hatTag(p, 'fortura') || hatTag(p, 'ch-lager')) return { stufe: 1 };
+  if (bewaehrt(p)) return { stufe: 0 };
   if (ausschlussGilt(p.ausschluss)) return { stufe: null, grund: 'ausschluss-shopping-ads' };
   if (hatTag(p, 'mengenrabatt-a') || hatTag(p, 'mengenrabatt-b')) return { stufe: 2 };
   return { stufe: 3 };
 }
 
 /**
- * Wählt das Schaufenster. `zeilen`: [{id, handle, tags, varianten, kategorie, ausschluss}].
+ * Wählt das Schaufenster. `zeilen`: [{id, handle, titel, tags, varianten, kategorie, ausschluss, bestellt, rating, bewertungen}].
  * @returns {{drin: Map<string, number>, draussen: Array<{id:string, grund:string}>, zahlen: object}}
  */
 export function waehle(zeilen, opt = {}) {
   const budget = opt.budget ?? BUDGET_VARIANTEN;
   const deckel = Math.ceil((opt.katDeckel ?? KATEGORIE_DECKEL) * budget);
-  const stufen = { 1: [], 2: [], 3: [] };
+  const stufen = { 0: [], 1: [], 2: [], 3: [] };
   const draussen = [];
   for (const p of zeilen) {
     const v = Number(p.varianten);
     if (!Number.isFinite(v) || v < 1) { draussen.push({ id: p.id, grund: 'varianten-unbekannt' }); continue; }
     const s = stufe(p);
-    if (!s.stufe) { draussen.push({ id: p.id, grund: s.grund }); continue; }
+    if (s.stufe === null) { draussen.push({ id: p.id, grund: s.grund }); continue; }   // Stufe 0 ist gültig (und falsy)
     stufen[s.stufe].push({ ...p, v });
   }
   const drin = new Map();
   const proKat = new Map();
-  const summen = { 1: 0, 2: 0, 3: 0 };
+  const summen = { 0: 0, 1: 0, 2: 0, 3: 0 };
   const nimm = (p, s) => {
     drin.set(p.id, s); summen[s] += p.v;
     const k = katSchluessel(p); proKat.set(k, (proKat.get(k) || 0) + p.v);
   };
-  for (const s of [1, 2]) for (const p of stufen[s]) nimm(p, s);
+  for (const s of [0, 1, 2]) for (const p of stufen[s]) nimm(p, s);
   const rest = stufen[3].sort((a, b) => a.v - b.v || String(a.handle).localeCompare(String(b.handle)) || String(a.id).localeCompare(String(b.id)));
-  let gesamt = summen[1] + summen[2];
+  let gesamt = summen[0] + summen[1] + summen[2];
   for (const p of rest) {
     if (gesamt + p.v > budget) { draussen.push({ id: p.id, grund: 'budget' }); continue; }
     if ((proKat.get(katSchluessel(p)) || 0) + p.v > deckel) { draussen.push({ id: p.id, grund: 'kategorie-deckel' }); continue; }
@@ -110,9 +158,9 @@ export function waehle(zeilen, opt = {}) {
     drin, draussen,
     zahlen: {
       budget, katDeckel: deckel,
-      produkte: { 1: stufen[1].length, 2: stufen[2].length, 3: stufen[3].length },
-      drin: { 1: [...drin.values()].filter(s => s === 1).length, 2: [...drin.values()].filter(s => s === 2).length, 3: [...drin.values()].filter(s => s === 3).length },
-      varianten: { 1: summen[1], 2: summen[2], 3: summen[3], gesamt },
+      produkte: { 0: stufen[0].length, 1: stufen[1].length, 2: stufen[2].length, 3: stufen[3].length },
+      drin: { 0: [...drin.values()].filter(s => s === 0).length, 1: [...drin.values()].filter(s => s === 1).length, 2: [...drin.values()].filter(s => s === 2).length, 3: [...drin.values()].filter(s => s === 3).length },
+      varianten: { 0: summen[0], 1: summen[1], 2: summen[2], 3: summen[3], gesamt },
     },
   };
 }
