@@ -441,6 +441,17 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Nächster Schritt | Priorität auf tatsächliche graue Bildquelle und Feed-Zuordnung der Ladestation gelegt; Quelle für Master-Abnahmepunkte nach unabhängiger Gegenlese ergänzt | VORBEREITET: unabhängig mögliche Quellen-/Routenprüfung im nächsten bestehenden Lauf. Bisherige Geschäfts-/Rechte-/Publikationsgrenzen und Claude-Koordination erhalten. Keine neuen Kennzahl-/Flow-/Verkaufsabfragen oder operativen Shop-/Feedänderungen für diese Installation |
 
 
+## 29.10.2026
+
+[LUXESTYLE_PRODUKTANGABEN_20261029] Auf ausdrückliche Nachfrage zur ungefähren Restquote; begrenzte neue Produkt-Gegenprobe, keine Umsatz-/Flowreports.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Produktangaben / Claude-Stand | Materialplan/-ledger und Auswahlfortschritt samt Nennerlogik gelesen und Zahlen gegengeprüft | QUELLE: Material am 27.10. 28’170/56’618 ohne belegte Quelle = 49,8 %, grob 50 %. 4’538 Writes enthalten 1’387 neue Angaben und 3’151 Übersetzungen. Auswahl: 4’111 geschrieben, 2’338 übersprungen; darunter 1’695 echte Einzelvarianten. Keine Gesamtquote aus veralteter Kandidatenliste gebildet |
+| Begrenzte Live-Gegenprobe | Shop/Metricool-Identitäten frisch geprüft, aktive Produkte serverseitig exakt gezählt und acht Materialänderungen gezielt nativ zurückgelesen | GEMESSEN: 56’620 ACTIVE, 8/8 gespeicherte Werte wie Plan. Gezielte Erfolgsstichprobe, keine Hochrechnung oder unabhängige Material-Qualitätsfreigabe. Auswahlfehlerbeispiele: Wattwerte unter Farbe sowie gemischte Sprachwerte. Keine Produktwrites |
+| Gedächtnis / nächste Arbeit | Restschätzungsbericht dauerhaft gespeichert und zurückgelesen; Produktangaben als neue Aufgabe mit Priorität 5 und bestehenden Quellen eingereiht | UMGESETZT: Arbeitsstand-Revision 2, vorhandene acht Aufgaben erhalten. Nächster Schritt: Claudes aktuelle Kandidaten/Belege abgleichen, je Merkmal saubere Nenner und nicht anwendbare Fälle erfassen; bestehende Anreicherung nicht parallel neu starten. Tagesprotokoll und Bericht sind keine Live-Verkaufswirkung |
+
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
