@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 28.10.2026, abschliessender CSV-Abgleich und Revision 3
+
+[LUXESTYLE_MERCHANT_CSV_R3_20261028]
+
+Aktuell zur Integration: [Codepaket R3](CODEPAKET-ZUSAMMENARBEIT-20261028-R3.json), [Patch R3](ZUSAMMENARBEIT-KORREKTUREN-20261028-R3.patch), [Integrationsstand](INTEGRATIONSSTAND-20261028-R3.md) und [Aufgabenpaket Revision 3](aufgaben/luxe-zusammenarbeit-20261028.r3.packet.json). Basis main b708c809…; nur der Dokumentationskonflikt wurde nachgeführt. Getesteter JS-/Workflowcode unverändert, Claudes neue Laufbelege erhalten. Ältere Anlagen bleiben historisch erhalten; für eine Integration R3 verwenden und erwartete Originalhashes frisch prüfen. Keine produktive Übernahme oder bestätigte Kenntnisnahme durch Claude.
+
+Die [drei Merchant-CSV-Exporte](MERCHANT-CSV-ABGLEICH-20261028.md) liefern jetzt konkrete Artikel-IDs für 70 technische Problem-/Item-Kandidaten: 56 Overlay, 13 frühere Erreichbarkeitsmeldungen und ein Local-Requirements-Fall. Drei aktuelle native/öffentliche Gegenproben sind mit Bildnachweisen in den [CSV-Belegen](MERCHANT-CSV-BELEGE-20261028.json) dokumentiert. Vier andere Screenshot-Problemarten sind nicht abgedeckt; unbekannt statt null.
+
+Nächster enger Verkaufshebel: echtes, rechtegeprüftes Bild der grauen Ladestation ohne Zusatztext samt tatsächlicher Feed-Bildroute prüfen und einen konkreten Diff erstellen. Saubere silberne Aufnahme nicht für Grau verwenden. Shirt-URL heute HTTP 200; Google-Ziel-URL/-Crawl noch offen. Milchshaker: genaue Richtlinienursache und Modellnachweise fehlen. Keine neue Ausspielung für rueckhol-Produkte.
+
+
 ## 28.10.2026, späte Zuarbeit und Skills
 
 [LUXESTYLE_ZUSAMMENARBEIT_SKILLS_20261028]
