@@ -51,7 +51,7 @@ for (const p of plan.produkte) ist(`${p.handle}: Positionen 1..n`, p.optionen.na
 const werte = (h, n) => P(h).optionen.nachher.find((o) => o.name === n).werte;
 ist('Poster: Material-Werte exakt', werte('poster-zum-selbstgestalten', 'Material'), ['Poster matt', 'Foto-Glanzpapier', 'Leinwand', 'Gerahmt · Schwarz', 'Gerahmt · Weiss', 'Gerahmt · Eiche']);
 ist('Poster: Grösse-Beschriftungen unverändert', werte('poster-zum-selbstgestalten', 'Grösse'), ['30×40 cm', '50×70 cm', '70×100 cm', 'A2 (42×59,4 cm)']);
-ist('Hoodie: Material-Werte exakt', werte('unisex-hoodie-selbst-gestalten', 'Material'), ['Baumwoll-Mix', 'Premium-Baumwolle', 'Bio-Baumwolle']);
+ist('Hoodie: Material-Werte exakt', werte('unisex-hoodie-selbst-gestalten', 'Material'), ['Sweatshirt (Rundhals)', 'Premium-Baumwolle', 'Bio-Baumwolle']);
 ist('T-Shirt: Material-Werte exakt', werte('unisex-t-shirt-selbst-gestalten', 'Material'), ['Ringgarn-Baumwolle', 'Klassische Baumwolle', 'Bio-Baumwolle', 'Heavyweight-Baumwolle']);
 ist('iPhone: Material-Werte exakt', werte('hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', 'Material'), ['Hartschale MagSafe', 'Hartschale', 'Klare Hülle']);
 ist('Samsung: Material-Werte exakt', werte('samsung-huelle-selbst-gestalten', 'Material'), ['Hartschale matt', 'Hartschale glänzend', 'Klare Hülle', 'Slim-Hülle']);
@@ -210,7 +210,7 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
 }
 { // der Block enthält das Hoodie-Sweatshirt-Merkmal und den «fällt klein aus»-Hinweis
   const h = P('unisex-hoodie-selbst-gestalten').beschreibung.block;
-  wahr('Hoodie-Block nennt «Rundhals-Sweatshirt» beim Baumwoll-Mix', /Baumwoll-Mix:<\/strong>[^<]*Rundhals-Sweatshirt/.test(h));
+  wahr('Hoodie-Block nennt «Rundhals-Sweatshirt» beim Sweatshirt (Rundhals)', /Sweatshirt \(Rundhals\):<\/strong>[^<]*Rundhals-Sweatshirt/.test(h));
   wahr('Hoodie-Block: Premium «fällt klein aus»', /Premium-Baumwolle:<\/strong>[^<]*fällt klein aus/.test(h));
   wahr('HTML-Zeichen im Block sind maskiert (keine rohen & < >)', !/&(?!amp;|lt;|gt;)/.test(h.replace(/<!--[\s\S]*?-->/g, '')));
 }
@@ -355,7 +355,7 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
   const ohne = [{ handle: 'unisex-t-shirt-selbst-gestalten', material: 'Klassische Baumwolle' }, { handle: 'unisex-hoodie-selbst-gestalten', material: 'Premium-Baumwolle' }];
   const x = planen({ ohne });
   const T = x.produkte.find((p) => p.handle === 'unisex-t-shirt-selbst-gestalten'), H = x.produkte.find((p) => p.handle === 'unisex-hoodie-selbst-gestalten');
-  ist('OHNE: T-Shirt 16 neue Varianten ohne «Klassische Baumwolle», Hoodie 5 ohne «Premium-Baumwolle»', [T.neu.length, H.neu.length, T.optionen.nachher[0].werte, H.optionen.nachher[0].werte], [16, 5, ['Ringgarn-Baumwolle', 'Bio-Baumwolle', 'Heavyweight-Baumwolle'], ['Baumwoll-Mix', 'Bio-Baumwolle']]);
+  ist('OHNE: T-Shirt 16 neue Varianten ohne «Klassische Baumwolle», Hoodie 5 ohne «Premium-Baumwolle»', [T.neu.length, H.neu.length, T.optionen.nachher[0].werte, H.optionen.nachher[0].werte], [16, 5, ['Ringgarn-Baumwolle', 'Bio-Baumwolle', 'Heavyweight-Baumwolle'], ['Sweatshirt (Rundhals)', 'Bio-Baumwolle']]);
   ist('OHNE: keine Kollisions-Blocker mehr, der Hoodie behält den Sweatshirt-Blocker', [T.befunde.filter((b) => b.schwere === 'blocker').length, H.befunde.filter((b) => b.schwere === 'blocker').map((b) => b.code)], [0, ['sku-anderes-produkt', 'material-metafeld']]);
   ist('OHNE: ausgeschlossene Materialien stehen als «ausgeschlossen» im Bericht', [T, H].map((p) => p.nichtAngelegt.filter((n) => n.code === 'ausgeschlossen').map((n) => n.material)), [['Klassische Baumwolle'], ['Premium-Baumwolle']]);
   wahr('OHNE: Plan-Hash ändert sich', x.hash !== plan.hash);
@@ -442,7 +442,7 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
 // ── Block: Haupttext-Bezug, MagSafe-Klarstellung, Wortlaut der Angaben
 {
   const bl = (h) => P(h).beschreibung.block;
-  ist('Block nennt, worauf sich der Haupttext bezieht (Poster matt, Baumwoll-Mix, Ringgarn-Baumwolle, Hartschale MagSafe)', ['poster-zum-selbstgestalten', 'unisex-hoodie-selbst-gestalten', 'unisex-t-shirt-selbst-gestalten', 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten'].map((h) => /Die Beschreibung weiter oben bezieht sich auf «([^»]+)»/.exec(bl(h))?.[1]), ['Poster matt', 'Baumwoll-Mix', 'Ringgarn-Baumwolle', 'Hartschale MagSafe']);
+  ist('Block nennt, worauf sich der Haupttext bezieht (Poster matt, Sweatshirt (Rundhals), Ringgarn-Baumwolle, Hartschale MagSafe)', ['poster-zum-selbstgestalten', 'unisex-hoodie-selbst-gestalten', 'unisex-t-shirt-selbst-gestalten', 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten'].map((h) => /Die Beschreibung weiter oben bezieht sich auf «([^»]+)»/.exec(bl(h))?.[1]), ['Poster matt', 'Sweatshirt (Rundhals)', 'Ringgarn-Baumwolle', 'Hartschale MagSafe']);
   wahr('Samsung-Block (neues Produkt) trägt diesen Satz nicht', !bl('samsung-huelle-selbst-gestalten').includes('Die Beschreibung weiter oben'));
   const ip = bl('hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten');
   ist('iPhone-Block: «ohne MagSafe®-Magnete» bei «Hartschale» und «Klare Hülle», «eingebaute MagSafe®-Magnete» bei «Hartschale MagSafe»', [/Hartschale:<\/strong>[^<]*ohne MagSafe®-Magnete/.test(ip), /Klare Hülle:<\/strong>[^<]*ohne MagSafe®-Magnete/.test(ip), /Hartschale MagSafe:<\/strong>[^<]*eingebaute MagSafe®-Magnete/.test(ip), (ip.match(/ohne MagSafe®-Magnete/g) || []).length], [true, true, true, 2]);

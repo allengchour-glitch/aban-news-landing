@@ -1,0 +1,350 @@
+{
+ "gesichertAm": "2026-10-28T21:21:30.078Z",
+ "handle": "unisex-hoodie-selbst-gestalten",
+ "zustand": {
+  "id": "gid://shopify/Product/15422815699329",
+  "handle": "unisex-hoodie-selbst-gestalten",
+  "title": "Unisex Hoodie – Selbst gestalten",
+  "status": "ACTIVE",
+  "productType": "T-SHIRT",
+  "vendor": "LuxeStyle",
+  "tags": [
+   "bild-ok",
+   "kat-damen-pullover",
+   "printful_personalized_product",
+   "sg-bekleidung",
+   "sort-damen-hoodies-hoodie",
+   "sort-damen-hoodies-sweatshirts",
+   "sort-herren-hoodies",
+   "sort-herren-hoodies-sweatshirts",
+   "wunschdesign"
+  ],
+  "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-hoodie-neu.jpg?v=1783364028\" data-variant=\"55777955643777\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\nEin robustes und warmes Sweatshirt, das dich in den kälteren Monaten warm hält. Ein vorgeschrumpfter Pullover mit klassischer Passform aus Airjet-Garn für ein weiches Tragegefühl.<br>\n<br>\n• 50 % Baumwolle, 50 % Polyester<br>\n• Vorgeschrumpft<br>\n• Klassischer Schnitt<br>\n• 1x1-Sport-Rippenkragen aus Elastan<br>\n• Airjet-Spinngarn mit weichem Tragegefühl<br>\n• Doppelt genähter Kragen, Schultern, Armausschnitte, Bündchen und Saum<br>\n<br>\nHaftungsausschluss:<br>\n• Aufgrund der Stoffeigenschaften kann die Farbvariante White eher cremefarben als hellweiss erscheinen.<br>\n• Subtile orangefarbene Farbtonverschiebungen durch Beleuchtung in der Farbvariante Orange.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Grösse:</strong> S, M, L, XL, 2XL, 3XL, 4XL, 5XL</li>\n<li>\n<strong>Material:</strong> Baumwolle, Polyester, Elastan</li>\n<li>\n<strong>Muster:</strong> Bedruckt</li>\n</ul>\n</div>\n\n<!--gdetails-->\n\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>\n\n",
+  "seo": {
+   "title": "Unisex Hoodie – Selbst gestalten | LuxeStyle CH",
+   "description": "Unisex Hoodie – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  },
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/aa-1"
+  },
+  "options": [
+   {
+    "id": "gid://shopify/ProductOption/17849448235393",
+    "name": "Grösse",
+    "position": 1,
+    "values": [
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL",
+     "3XL",
+     "4XL",
+     "5XL"
+    ],
+    "optionValues": [
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918760321",
+      "name": "S",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918367105",
+      "name": "M",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918399873",
+      "name": "L",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918432641",
+      "name": "XL",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918465409",
+      "name": "2XL",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918498177",
+      "name": "3XL",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918530945",
+      "name": "4XL",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11855918563713",
+      "name": "5XL",
+      "hasVariants": true
+     }
+    ]
+   }
+  ],
+  "variants": [
+   {
+    "id": "gid://shopify/ProductVariant/55777955643777",
+    "sku": "1726823_5426",
+    "price": "38.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "S"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955676545",
+    "sku": "1726823_5427",
+    "price": "38.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "M"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955709313",
+    "sku": "1726823_5428",
+    "price": "38.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "L"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955742081",
+    "sku": "1726823_5429",
+    "price": "38.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "XL"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955774849",
+    "sku": "1726823_5430",
+    "price": "43.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "2XL"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955807617",
+    "sku": "1726823_5431",
+    "price": "47.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "3XL"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955840385",
+    "sku": "1726823_5432",
+    "price": "51.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "4XL"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955873153",
+    "sku": "1726823_5433",
+    "price": "55.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": true,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "5XL"
+    }
+   }
+  ],
+  "media": [
+   {
+    "id": "gid://shopify/MediaImage/69681923785089",
+    "alt": "Unisex-Hoodie weiss blanko zum Selbstgestalten",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-hoodie-selbst-gestalten.jpg?v=1781356271"
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69711676637569",
+    "alt": "Unisex Hoodie – selbst gestalten, am Model getragen",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/qxuosn8swfogdv3v5lzu.png?v=1781719037"
+    }
+   }
+  ],
+  "metafields": [
+   {
+    "namespace": "judgeme",
+    "key": "badge",
+    "type": "string",
+    "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> No reviews </span> </div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "widget",
+    "type": "string",
+    "value": "<div></div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "review_widget_data",
+    "type": "json",
+    "value": "{\"number_of_reviews\":0,\"average_rating\":\"0.00\",\"number_of_questions\":0,\"product_name\":\"Unisex Hoodie – Selbst gestalten\",\"product_external_id\":15422815699329,\"product_coupons_enabled\":true,\"image_url\":null,\"histogram\":[{\"rating\":5,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":4,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":3,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":2,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":1,\"frequency\":0,\"percentage\":0,\"extra_class\":null}],\"review_keywords\":null,\"product_medals\":[],\"custom_form_filters_and_averages\":null,\"photo_gallery\":null,\"review_summary_text\":\"Be the first to write a review\",\"ai_summary_text\":\"\",\"sort_key\":\"created_at\",\"multi_language_sorting_enabled\":false,\"metafield_updated_at\":\"2026-06-08T17:48:02Z\",\"reviews\":[],\"pagination\":{\"total_pages\":0,\"current_page\":1,\"per_page\":5}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "lieferzeit",
+    "type": "json",
+    "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "condition",
+    "type": "single_line_text_field",
+    "value": "new"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "age_group",
+    "type": "single_line_text_field",
+    "value": "adult"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "google_product_category",
+    "type": "single_line_text_field",
+    "value": "Apparel & Accessories > Clothing > Shirts & Tops"
+   },
+   {
+    "namespace": "mc-facebook",
+    "key": "google_product_category",
+    "type": "string",
+    "value": "1604"
+   },
+   {
+    "namespace": "global",
+    "key": "description_tag",
+    "type": "string",
+    "value": "Unisex Hoodie – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "custom_product",
+    "type": "boolean",
+    "value": "true"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "gender",
+    "type": "single_line_text_field",
+    "value": "unisex"
+   },
+   {
+    "namespace": "global",
+    "key": "title_tag",
+    "type": "string",
+    "value": "Unisex Hoodie – Selbst gestalten | LuxeStyle CH"
+   }
+  ]
+ }
+}
