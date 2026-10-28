@@ -1,0 +1,226 @@
+{
+  "scope": "project-local native Codex skills, not global plugin install",
+  "projectRoot": "/workspace/luxestyle-codex",
+  "codexVersion": "0.159.2",
+  "baseCommit": "c371b708a4dc40078570ba3e5da675ec07bca04f",
+  "skills": [
+    "lieferbar",
+    "regeln",
+    "shop-puls",
+    "sparmodus",
+    "stand",
+    "trend",
+    "uebergabe",
+    "zweitmeinung"
+  ],
+  "hooksRegistered": false,
+  "hooksTrusted": false,
+  "globalConfigChanged": false,
+  "modelCalls": 0,
+  "shopWrites": 0,
+  "credentialsCopied": false,
+  "sourceManifest": [
+    {
+      "path": "codex-mods/luxe-codex/.codex-plugin/plugin.json",
+      "sourceGitBlob": "e171a1b0db8883e399f8375ad524ac20581820e2",
+      "sha256": "8f6307b50a3fc65ea7269167152423c98f5c8952531e613cb36149b97abf9a3f"
+    },
+    {
+      "path": "codex-mods/luxe-codex/hooks/hooks.json",
+      "sourceGitBlob": "3e099340c247fbc0f4ed66ecfa3c41ee53d754b1",
+      "sha256": "1ed0d23399b0621d780079ef20335c8c5c4bf866d97e9a6e76ac93157e92a3f0"
+    },
+    {
+      "path": "codex-mods/luxe-codex/hooks/kontext.mjs",
+      "sourceGitBlob": "2963d5f1a97d68223e6050849c729d1b1af4029d",
+      "sha256": "c210b3086766214272213ce81c3f6d58f718c42fb4e76f1d1d2cd67f985037ca"
+    },
+    {
+      "path": "codex-mods/luxe-codex/hooks/leitplanken.mjs",
+      "sourceGitBlob": "9d632065c0a1e902d152b0a8894847167aaffce4",
+      "sha256": "6a279cca2e854eec9e11b3b8de31dfce8e2e5d83881fb9440fd95158a4854a34"
+    },
+    {
+      "path": "codex-mods/luxe-codex/hooks/schreibzaehler.mjs",
+      "sourceGitBlob": "4b3d23b7d0de50ebaae1abb908bfa58a1601d299",
+      "sha256": "413c8d35c8a0f56e4a3245494c5f46a5882501ba203484df19fa511c6b9e65ef"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/eingabe_form.mjs",
+      "sourceGitBlob": "7da4bef50b4335ae4f2a479917f6e96b19c2b024",
+      "sha256": "e2ff38573914db2e47fac921ccb6d9319565a93e63c868dcb52dd571a0dbd272"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/gruppen.mjs",
+      "sourceGitBlob": "6f805bae07e0637f4ad6755cd937e1dea2da41c0",
+      "sha256": "3730606200c5f570edcb1d96f10049f5430c37b1769829a480b60b8f2a934c7f"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/handles.mjs",
+      "sourceGitBlob": "ec1f7490f82c7281d161402bf0a703c89034e951",
+      "sha256": "1ace3361005e7ffa85ff2aba2dd9ba26adab5ee88b82b550ed122c9fc28592d9"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/hook_io.mjs",
+      "sourceGitBlob": "0019327ec0d442215c320b124e9a7fcdb93a9ea1",
+      "sha256": "a4b0db2c8ad7a4148e7b53444bf481dc4cd905b5f822e0dda00c7078f2bce821"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/modus.mjs",
+      "sourceGitBlob": "c4940016bedc5b3e1685cd7ea560873b71d7b105",
+      "sha256": "dd64bdd1e82ca33f33a4cea3ed26ce476cd38c39bd0a092a8f0d3112a8bf767f"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/regeln.mjs",
+      "sourceGitBlob": "7e0a085334cb3b00ca3f88e8e7c5be6fd3f6190a",
+      "sha256": "356b6b24b05c5a9c8c7d5d7bcbe67d43ada45544f70d43a75a3e112b0ffc635a"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/regeln_bericht.mjs",
+      "sourceGitBlob": "27bc6bb06994228fb7a132631d3faff6ff4f61ee",
+      "sha256": "d17bb846e9ae3654ebe82d87421027231a789d70a8882694068098670f1e6839"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/shell_live.mjs",
+      "sourceGitBlob": "a112e9b32c030dc20be79cb86a825aec575f1960",
+      "sha256": "988df186f8bb4f119c652909fcd0dc87409b790b4f6deb124af8c92d6272e217"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/trockenlauf.mjs",
+      "sourceGitBlob": "a0d680afef0db56fc215d995d01b895a00665eb5",
+      "sha256": "79739afd81a6f64f47ba3b5e9deed470cb3bebcc30b6171e121d1029cfadca36"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/zaehler.mjs",
+      "sourceGitBlob": "35c1544634816234524e2009babe3c7945d73108",
+      "sha256": "ca825a8adf742f06412a486c83a64dfd7a0534a039f1fd422d02ac226f3b2eef"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/lieferbar/SKILL.md",
+      "sourceGitBlob": "9af5755a51301cda10eff8e0af53bd3f20c402e8",
+      "sha256": "111bec394a9127b69e029a8f9a91de96fc7a2de20f65e7ad22ee2d7b4e8cd465"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/lieferbar/scripts/handles.mjs",
+      "sourceGitBlob": "4fa9f3efb75fce436d29e47585111c1340001637",
+      "sha256": "3269c19a82232525e5e202ecd0f902a58c9418d5c617c0a5eb2d19c2e64cae80"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/regeln/SKILL.md",
+      "sourceGitBlob": "f7728404e3518c4a9b0a1e5adcb8fa622d365040",
+      "sha256": "fc20062d4488131c2c31b2ef9accda0ecc966b961041e8606d1540ada066d8cd"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/regeln/scripts/regeln.mjs",
+      "sourceGitBlob": "a4270b10e9f53baf536e22375b261f6beb18fad8",
+      "sha256": "13094f5c8cd02d70f4dac8c576976813a79a16947906691f226a20bbb8f818b6"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/shop-puls/SKILL.md",
+      "sourceGitBlob": "3a55826b3812b007aee9b038fa8f03edeb58a789",
+      "sha256": "f002638bef9cbb08ee160f0b0a2d90813c08ba009fc9ca8aabcab93e0fc2233b"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/sparmodus/SKILL.md",
+      "sourceGitBlob": "26411fea99ccb9f6b1c683f40cca0ea0c0b68ae7",
+      "sha256": "e16d2e0b323acee549eddd5a08f557137ca7abee2c9e839103e693f4f2e856d9"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/sparmodus/scripts/schalten.mjs",
+      "sourceGitBlob": "830237b039c664347f533b124e000c60584cca40",
+      "sha256": "2ee598f5b8dceeefc39c2d2838825c2f0f7159626afa2a64ae4c6835076eef74"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/stand/SKILL.md",
+      "sourceGitBlob": "c6ec17d836a874b4e43d1239ee58aa470c7cf002",
+      "sha256": "f17e0c5fd4116c519276eb34a863d120798df7368bc4f479a983d0a5e6161c42"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/trend/SKILL.md",
+      "sourceGitBlob": "cda19ea2d077072a913c631bbaa93ed57375574c",
+      "sha256": "bfe89667ba3473175a9c27f800a90de604e0b25fc49f32526a4949032233f287"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/zweitmeinung/RUBRIK.md",
+      "sourceGitBlob": "be4d127d63001c190d846340258d1824d12c38f3",
+      "sha256": "9d4cd18687b1851a72280f679c7371d5dcd96b4b62e29ec91f931e6a1af06562"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/zweitmeinung/SKILL.md",
+      "sourceGitBlob": "3fc62d60ee45656e65ba3d1c0a16d75f5094fab9",
+      "sha256": "fa36d3b8c5779d4268fcb8ff2cd068bd1903923b2fa8c13189259cadf917ebb7"
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/uebergabe.mjs",
+      "source": "locally tested review candidate",
+      "sha256": "54547f449be8f8b633c434a7854bde0870ebad6f60e5fdb9bee96f443740c316"
+    },
+    {
+      "path": "codex-mods/luxe-codex/skills/uebergabe/SKILL.md",
+      "source": "locally tested review candidate",
+      "sha256": "746942377c6152c0f17b217aaad863b8348798bb72af82e1d247899a0e8b7a64"
+    },
+    {
+      "path": "codex-mods/README.md",
+      "source": "locally tested review candidate",
+      "sha256": "80bf2e327fb06222f91c7f6ff9b16c203138c589136b91c6d1c45c4e8162cbb5"
+    },
+    {
+      "path": "automation/codex_uebergabe.mjs",
+      "source": "locally tested review candidate",
+      "sha256": "8d1ca56a7ffdbfcf8451e12f7a1a2682b1db57d719697cb482960bfe22f06570"
+    }
+  ],
+  "limitations": [
+    "Plugin marketplace install failed read-only CODEX_HOME; remote plugin catalogue451. No bypass.",
+    "Shop/CJ workflows require legitimate runtime credentials and full current repo scripts; not executed or copied here as active workflows.",
+    "This workspace installation is not installation on owner PC or Claude session."
+  ],
+  "verification": {
+    "nativeCliDiscovery": "blocked before initialize: SQLite state runtime cannot initialize in read-only CODEX_HOME",
+    "actualDiscoveredSkills": "unknown; no successful skills/list response",
+    "frontmatterValid": [
+      "lieferbar",
+      "regeln",
+      "shop-puls",
+      "sparmodus",
+      "stand",
+      "trend",
+      "uebergabe",
+      "zweitmeinung"
+    ],
+    "helperRegeln": "Messung: alle6Regeln wieerwartet; exit0",
+    "helperSparmodus": "AUS; statusread exit0; no switch",
+    "globalMarketplaceInstall": "failed with Read-only file system under /run/codex-environment/codex-home/.tmp/marketplaces, also with requested scoped write permission",
+    "remotePluginCatalogue": "451 no_biscuit_no_service; no connection/auth changes",
+    "modelCalls": 0
+  },
+  "documentation": "https://developers.openai.com/codex/skills: repository-local .agents/skills and symlink folders supported; automatic detection documented but not confirmed in this blocked CLI runtime.",
+  "globalPluginInstalled": false,
+  "workspaceSkillFilesInstalled": 8,
+  "googlePayScreenshot": {
+    "scope": "user screenshot",
+    "merchantId": "BCR2DN5TR6AOP3K4",
+    "website": "luxestyle.ch",
+    "webIntegrationState": "incomplete",
+    "stepsDone": 1,
+    "stepsTotal": 3,
+    "shopifyCheckoutGooglePay": "unknown; different integration"
+  },
+  "promotionsScreenshot": {
+    "scope": "user screenshot Merchant5797470070",
+    "summary": {
+      "notApproved": 0,
+      "underReview": 0,
+      "approved": 0
+    },
+    "historicalVisible": {
+      "title": "Buy2,get10%off (modified by Google)",
+      "dates": "Jun29–Jul6,2026",
+      "policyReview": "approved",
+      "skuReview": "approved"
+    },
+    "currentActiveFromHistoricalReview": "not established; dates in the past",
+    "changesMade": false
+  }
+}
