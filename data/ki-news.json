@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-27T09:47:19Z",
+ "stand": "2026-10-28T10:32:41Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Nvidia, OpenAI, Oracle: Wie sich die KI-Konzerne gegenseitig Milliarden zuschieben",
-   "u": "https://www.golem.de/news/nvidia-openai-oracle-wie-sich-die-ki-konzerne-gegenseitig-milliarden-zuschieben-2610-214529.html",
-   "q": "Golem",
-   "d": "2026-10-27T09:34:02Z",
-   "s": "Nvidia investiert in eigene Kunden, die sich für neue KI-Rechenzentren hoch verschulden. Solange der Boom anhält, funktioniert das. Aber wer trägt das Risiko, wenn er endet? Eine Analyse von Björn Mes…",
-   "sprache": "de"
-  },
-  {
-   "t": "GPT-6.1 Terra: Günstiges Modell für effiziente Computerarbeit",
-   "u": "https://www.heise.de/news/GPT-6-1-Terra-Guenstiges-Modell-fuer-effiziente-Computerarbeit-11501275.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-27T09:17:00Z",
-   "s": "OpenAI bringt GPT-6.1 Terra als günstigeres Modell für KI-Agenten. Unabhängige Tests zeigen starke Effizienzgewinne.",
-   "sprache": "de"
-  },
-  {
-   "t": "ChatGPT für Teilchenphysiker? Warum das Cern mit Mistral ein eigenes KI-Modell entwickelt",
-   "u": "https://t3n.de/news/chatgpt-fuer-teilchenphysiker-warum-das-cern-mit-mistral-ein-eigenes-ki-modell-entwickelt-1769962/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Reicht schon ein Macbook mit M1? Diese Hardware brauchst du für lokale KI",
+   "u": "https://t3n.de/news/lokale-ki-modelle-mac-pc-grafikkarte-hardware-voraussetzungen-1760193/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-27T09:00:01Z",
-   "s": "Werden jetzt auch Kernphysiker wegrationalisiert? Das Forschungszentrum Cern will gemeinsam mit Mistral ein KI-Modell für Teilchenphysik entwickeln.weiterlesen auf t3n.de",
+   "d": "2026-10-28T10:00:00Z",
+   "s": "KI-Modelle lokal auf dem Computer zu betreiben, bringt einen entscheidenden Vorteil: Eure Daten bleiben bei euch. Doch nicht jedes Modell läuft auf jedem Endgerweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "How solid-state transformers could help power the AI boom",
-   "u": "https://www.technologyreview.com/2026/10/27/1147684/solid-state-transformers/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-27T09:00:00Z",
-   "s": "Transformers are a crucial but nearly invisible part of our grid. The devices help efficiently move power across long distances, but they’re complicated and in short supply. And given that their basic…",
-   "sprache": "en"
-  },
-  {
-   "t": "Proton: Angestellte müssen erneut ins Bewerbungsgespräch",
-   "u": "https://www.golem.de/news/proton-angestellte-muessen-erneut-ins-bewerbungsgespraech-2610-214537.html",
-   "q": "Golem",
-   "d": "2026-10-27T08:26:02Z",
-   "s": "Proton will laut einer internen E-Mail die Angestellten finden, die mit der KI-Strategie kompatibel sind. Andere werden gehen müssen. (Softwareentwicklung, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: iX-Workshop: Microsoft 365 Copilot für IT-Administratoren",
-   "u": "https://www.heise.de/news/iX-Workshop-Microsoft-365-Copilot-fuer-IT-Administratoren-11413796.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-27T07:00:00Z",
-   "s": "Lernen Sie, wie Sie Microsoft 365 Copilot sicher und datenschutzkonform implementieren.",
-   "sprache": "de"
-  },
-  {
-   "t": "How OpenAI turned its coding tools into dots, an always-on personal assistant",
-   "u": "https://techcrunch.com/2026/10/26/how-openai-turned-its-coding-tools-into-dots-an-always-on-personal-assistant/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-27T02:00:00Z",
-   "s": "Alexander Embiricos, the OpenAI executive responsible for dots, never wants to have a meeting with someone else's AI agent.",
-   "sprache": "en"
-  },
-  {
-   "t": "Cohere says Alibaba’s Qwen model tried to send a file to Beijing",
-   "u": "https://techcrunch.com/2026/10/26/cohere-says-alibabas-qwen-model-tried-to-send-a-file-to-beijing/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-27T01:12:21Z",
-   "s": "An AI model said it wouldn’t use any tools, then tried to send something to a server in Beijing anyway, and while researchers say it’s probably a training quirk and not espionage, the whole thing has …",
-   "sprache": "en"
-  },
-  {
-   "t": "Greptile takes bug detection beyond code review with GPT-6 Astra",
-   "u": "https://openai.com/index/greptile-code-review-codex-astra",
+   "t": "Legora is building the agentic operating system for legal work",
+   "u": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
    "q": "OpenAI",
-   "d": "2026-10-26T22:00:00Z",
-   "s": "How Greptile uses GPT-6 Astra to test user workflows, Daybreak to strengthen security, and Codex to reduce rework.",
+   "d": "2026-10-28T09:30:00Z",
+   "s": "See how Legora uses OpenAI models, ChatGPT, and Codex to accelerate legal workflows, expand contract analysis, and free lawyers to focus on higher-value work.",
    "sprache": "en"
   },
   {
-   "t": "Wegen hoher KI-Investitionen: Microsoft bietet 60.000 Mitarbeitern Abfindungen an",
-   "u": "https://t3n.de/news/ki-microsoft-abfindungen-1770007/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-26T20:33:09Z",
-   "s": "Die hohen KI-Investitionen setzen Microsoft offenbar zu. Der Konzern muss Kosten sparen – und setzt dafür beim Personal an. 60.000 Mitarbeiter:innen werden über ein entsprechendes Programm Abfindungen…",
+   "t": "heise+ | Vibe-Coding statt Abo-Falle: Wie KI Adobe & Microsoft Konkurrenz macht",
+   "u": "https://www.heise.de/hintergrund/Vibe-Coding-statt-Abo-Falle-Wie-KI-Adobe-Microsoft-Konkurrenz-macht-11497499.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-28T09:30:00Z",
+   "s": "Mithilfe von KI schießen Klone großer Software aus dem Boden, Chatbots übernehmen deren Aufgaben direkt selbst. Doch ist das überhaupt sinnvoll? Eine Analyse.",
    "sprache": "de"
+  },
+  {
+   "t": "Google Genie 4: KI-Simulator für interaktive 3D-Umgebungen wird realistischer",
+   "u": "https://www.heise.de/news/Google-Genie-4-KI-Simulator-fuer-interaktive-3D-Umgebungen-wird-realistischer-11502733.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-28T09:03:00Z",
+   "s": "Googles Genie 4 erzeugt interaktive KI-Welten mit Ton und Sprache. Gemini verbessert die Simulation, doch die Technologie bleibt experimentell.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Boom: Fujifilm investiert massiv in Magnetbandproduktion",
+   "u": "https://www.golem.de/news/ki-boom-fujifilm-investiert-massiv-in-magnetbandproduktion-2610-214580.html",
+   "q": "Golem",
+   "d": "2026-10-28T08:50:02Z",
+   "s": "Fujifilm will seine Produktionskapazitäten von Magnetspeicher stark ausbauen - Grund ist eine KI-getriebene hohe Nachfrage. (Fujifilm, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Google Deepmind: Genie 4 baut Welten mit Ton und lässt sich live umbauen",
+   "u": "https://www.golem.de/news/google-deepmind-genie-4-baut-welten-mit-ton-und-laesst-sich-live-umbauen-2610-214579.html",
+   "q": "Golem",
+   "d": "2026-10-28T08:17:02Z",
+   "s": "Google Deepmind startet Genie 4 als Research-Preview. Das Weltmodell erzeugt Ton und folgt Textbefehlen live. (Deepmind, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "VCs will make billions on Anthropic’s IPO, but Amazon is set to make much (much) more",
+   "u": "https://techcrunch.com/2026/10/27/vcs-will-make-billions-on-anthropics-ipo-but-amazon-is-set-to-make-much-much-more/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-28T01:15:28Z",
+   "s": "Massive note conversions reveal the true extent of Amazon's ownership in Anthropic.",
+   "sprache": "en"
+  },
+  {
+   "t": "Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication",
+   "u": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-27T23:34:27Z",
+   "s": "A family is suing OpenAI, saying ChatGPT coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in February.",
+   "sprache": "en"
+  },
+  {
+   "t": "Build specialized multimodal models with LFM3",
+   "u": "https://huggingface.co/blog/LiquidAI/lfm3",
+   "q": "Hugging Face",
+   "d": "2026-10-27T17:16:52Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Can we trust LLMs to judge whether a research idea is novel?",
+   "u": "https://huggingface.co/blog/allenai/novelty-bench",
+   "q": "Hugging Face",
+   "d": "2026-10-27T16:12:42Z",
+   "s": "",
+   "sprache": "en"
   }
  ]
 }
