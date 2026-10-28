@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 2,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-28T22:27:52.993Z",
+  "baseCommit": "c371b708a4dc40078570ba3e5da675ec07bca04f",
+  "title": "Nachtrag: Merchant-CSV-IDs mit drei aktuellen Gegenproben",
+  "summary": "Drei bereitgestellte Exporte vollständig lokal gezählt; 70 technische Problem-/Item-Kandidaten, keine Live-Katalogzahl. Drei Produkt-/Variantenmitgliedschaften nativ bestätigt und aktuelle Seiten HTTP200. Graues Overlaybild belegt; silberne Alternative ungeeignet. Codepaket unverändert; keine Shop-/Feedwrites oder echte Claude-Quittung. Revision1 und ihre Belege bleiben erhalten.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-ZUSAMMENARBEIT-20261028.json",
+      "sha256": "29c45ca48f3595b2a757b84f810b08063734e38965481888b1487751a28ce47f",
+      "gitBlobSha": "aea13b109f2ea7cd20f87ea53b74b09f4813978e"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
+      "sha256": "f6471d69ad3988747d33ccc5ff16dc5504877609f42912c32e21816904675d76",
+      "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-BELEGE-20261028.json",
+      "sha256": "6212ec444af7caf58fb93d8412565c194df82e9764e54ee98130d8d5ffb1629a",
+      "gitBlobSha": "0009c02fc4d9f4be5cf755520c464314f99dc1ee"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CODEX-SKILLS-INSTALLATION-20261028.md",
+      "sha256": "1d42efbd78927a39f2704b5ad3d36b5ab068836182b8d0f1fb728c96c0a7fe91",
+      "gitBlobSha": "f4defce0df20b6e861c3f00fab8ce77e74f8bd48"
+    }
+  ],
+  "previousPacketSha256": "36f3b4b3fe06bf2b037161ec263f72e780114d81e031a47d437038954364ee27"
+}
