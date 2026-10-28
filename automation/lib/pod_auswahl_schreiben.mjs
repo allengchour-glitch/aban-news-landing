@@ -22,10 +22,10 @@
  * LESEN (Korrekturrunde 4): Optionen immer über `optionValues { id name hasVariants }` (OPTIONEN_FELDER in pod_auswahl_daten.mjs), NIE über `ProductOption.values`: dort fehlen Werte OHNE Variante
  * (Schema: «including values not assigned to any variants» steht nur bei optionValues). Existenz eines Werts = in optionValues; «leer» = hasVariants false (und keine gelesene Variante trägt ihn);
  * Löschen über die Wert-ID aus optionValues. Sonst wäre ein liegengebliebener leerer Wert für die Wiederaufnahme unsichtbar: sie legte ihn neu an und bekäme für den schon vorhandenen Namen einen userError (Exit 1).
- * NICHT GEMESSEN: welchen Code Shopify dafür nennt, steht im Schema nicht (ProductOptionUpdateUserErrorCode kennt OPTION_VALUE_ALREADY_EXISTS, DUPLICATED_OPTION_VALUE und OPTION_VALUE_HAS_VARIANTS);
- * OPTION_VALUE_ALREADY_EXISTS ist die Antwort der Test-Attrappe nach Schema, nicht eine Messung. Der Code verlässt sich auf keinen dieser Codes: pruefeAntwort behandelt JEDEN userError als Fehler.
- * Ob hasVariants false, das Löschen über optionValuesToDelete und das Anlegen fehlender Werte durch productVariantsBulkCreate sich so verhalten, belegen bisher nur Schema und Doku:
- * die Wegwerf-Probe dafür steht in dropship/pod-auswahl/README.md («Vor dem ersten LIVE-Lauf: Wegwerf-Probe»).
+ * GEMESSEN (Wegwerf-Probe 28.10.2026, 19:13 UTC, Admin-API 2026-01): Shopify nennt dafür OPTION_VALUE_ALREADY_EXISTS ("Option value already exists."), `product` kommt mit zurück.
+ * Der Code verlässt sich trotzdem auf keinen Code: pruefeAntwort behandelt JEDEN userError als Fehler. Gemessen ist auch: productVariantsBulkCreate legt einen fehlenden Wert selbst an (die Test-Attrappe verlangt ihn vorher), das Löschen eines Werts mit Variante ergibt OPTION_VALUE_HAS_VARIANTS ohne Mitlöschen.
+ * Das Verhalten von hasVariants false, das Löschen über optionValuesToDelete und das Anlegen fehlender Werte durch productVariantsBulkCreate ist in der Wegwerf-Probe gemessen
+ * (dropship/pod-auswahl/README.md, Abschnitt «Wegwerf-Probe»); ungemessen bleiben productSet (Samsung, 84 Varianten) und das Verhalten am Tageslimit.
  * WIEDERAUFNAHME nach Exit 4 (Tageslimit) oder einem anderen Abbruch: denselben Befehl SPÄTER wiederholen. Jeder Schritt legt nur an, was fehlt; der Plan-Hash bleibt gleich (neu und schon angelegt zählen zusammen),
  * der geprüfte Plan gilt weiter, solange die Daten höchstens DATEN_MAX_ALTER_H Stunden alt sind (sonst verweigert LIVE: zuerst DATEN=holen). Das Produkt bleibt ACTIVE (es wird nie auf DRAFT gesetzt: das nähme ein verkaufendes Produkt aus dem Shop).
  * art «neu» (Samsung-Hülle, DRAFT): productSet (synchron) → Metafelder → Editor-Baustein füllen → zurücklesen und vergleichen. KEINE Wiederaufnahme für fehlende Varianten (siehe README «Offen»).

@@ -4,7 +4,7 @@ Stand 27.10.2026. Auftrag des Besitzers (drei Screenshots): Poster nur «Grösse
 Hoodie nur «Grösse» (er will **Material mit Preis** und «alle anderen Produkte auch zur Auswahl»). Druckpartner ist **Printful**.
 
 **Zustand: gebaut, nach zwei unabhängigen Prüfungen korrigiert (Korrekturrunden 1 und 2, 27.10.2026), dazu Korrekturrunde 3 (28.10.2026) nach den Funden eines zweiten Modells (Codex, nur Lesen) und des ersten Prüfers der zweiten Runde (Tageslimit/Halbzustand, Lesegrenze, Vorab-Prüfung, Budget, Mutanten) und Korrekturrunde 4 (28.10.2026) nach dem Fund des Prüfers der dritten Runde (Optionswerte ohne Variante waren über `ProductOption.values` unsichtbar, siehe «Optionen lesen») und Korrekturrunde 5 (28.10.2026) nach den drei Funden des Prüfers der vierten Runde (Abschlussvergleich der Optionswerte mit Test und Mutanten, Vorab-Prüfung der Werte aller Optionen, Fehlercodes nicht mehr als Tatsache, Wegwerf-Probe); im Trockenlauf geprüft. Nichts wurde im Shop, bei Printful oder sonst wo geschrieben.**
-Der Schreibweg (`LIVE=1`) ist nur gegen eine Attrappe getestet, nie gegen den echten Shop. **Vor dem ersten LIVE-Lauf ist die Wegwerf-Probe an einem einzelnen Wegwerf-Produkt zu machen** (Abschnitt «Vor dem ersten LIVE-Lauf: Wegwerf-Probe»): mehrere Verhaltensannahmen des Schreibwegs belegen bisher nur Schema und Doku.
+Der Schreibweg (`LIVE=1`) ist als Ganzes nur gegen eine Attrappe getestet, nie gegen den echten Shop. Die **Wegwerf-Probe** an einem einzelnen Wegwerf-Produkt (Abschnitt «Wegwerf-Probe») wurde am **28.10.2026 ausgeführt** und hat die vier Verhaltensannahmen der Einzelaufrufe bestätigt (`optionValues`/`hasVariants`, doppelter Wert, Löschen, `productVariantsBulkCreate` mit neuem Wert); nicht gemessen ist weiter `productSet` (Samsung) und das Verhalten am Tageslimit.
 **LIVE ist für vier der fünf Produkte gesperrt, bis der Besitzer entschieden hat** (Abschnitt «Blocker-Befunde»). Frei ist nur die neue Samsung-Hülle (bleibt auch dann DRAFT, siehe «Freischalten»).
 
 ## Was das Werkzeug tut
@@ -43,13 +43,13 @@ Shopify nennt den Rest des Tageslimits **nicht** (gemessen ca. 9 500 neue Varian
 
 ### Optionen lesen: `optionValues { id name hasVariants }`, nie `ProductOption.values` (Korrekturrunde 4)
 
-Der Prüfer der dritten Runde fand eine falsche Annahme über Shopify: Das Werkzeug las `options { name position values }`, und die Attrappe der Tests lieferte dort auch Werte **ohne** Variante. Laut Schema und Doku tut Shopify das nicht (nicht live gemessen: siehe «Vor dem ersten LIVE-Lauf: Wegwerf-Probe»).
+Der Prüfer der dritten Runde fand eine falsche Annahme über Shopify: Das Werkzeug las `options { name position values }`, und die Attrappe der Tests lieferte dort auch Werte **ohne** Variante. Laut Schema und Doku tut Shopify das nicht (live gemessen am 28.10.2026 an einem Wegwerf-Produkt, Annahme bestätigt: siehe «Wegwerf-Probe»).
 Beleg (Schema und Doku, am 28.10.2026 abgefragt): `ProductOption.values` = «The corresponding value to the product option name», `ProductOption.optionValues` = «Similar to values, option_values returns all the corresponding option value objects to the product option,
 including values not assigned to any variants». Die Doku von `productOptionUpdate` (Beispiel «Add and update product option values», Version 2026-01) zeigt es: nach dem Anlegen von «Yellow» und «Red» antwortet Shopify
 `values: ["Purple"]`, aber `optionValues`: Purple `hasVariants: true`, Yellow `false`, Red `false`. `optionValuesToDelete` verlangt die ID aus `optionValues` (`ProductOptionValue`), die Option wird über ihre ID genannt.
 Ein liegengebliebener leerer Wert war über `values` für die Wiederaufnahme **unsichtbar**: sie legte ihn erneut an und bekam für den schon vorhandenen Namen einen userError, der Lauf endete mit Exit 1 statt 0 oder 4, und der Wert wurde erst im übernächsten Lauf gefüllt.
-Welchen Fehlercode Shopify dabei nennt, ist **NICHT gemessen** (es wurde nie etwas geschrieben): `ProductOptionUpdateUserErrorCode` kennt `OPTION_VALUE_ALREADY_EXISTS`, `DUPLICATED_OPTION_VALUE` und `OPTION_VALUE_HAS_VARIANTS`; welcher bei einem vorhandenen Namen kommt, steht im Schema nicht. `OPTION_VALUE_ALREADY_EXISTS` ist die Antwort der **Test-Attrappe** (Annahme nach dem Schema).
-Der Code des Werkzeugs verlässt sich auf keinen dieser Codes: `pruefeAntwort` behandelt **jeden** userError als Fehler (ein Test hält das für alle drei Codes und einen unbekannten fest). Ebenso sind das Löschen eines leeren Werts über `optionValuesToDelete` (mit `option: {id}` und der Wert-ID aus `optionValues`) und das Verhalten von `hasVariants: false` bisher nur durch Schema, Doku und Attrappe belegt, nie gegen einen echten leeren Wert: dafür ist die Wegwerf-Probe unten da.
+Welchen Fehlercode Shopify dabei nennt, ist **GEMESSEN (28.10.2026, 19:13 UTC, Admin-API 2026-01)**: `OPTION_VALUE_ALREADY_EXISTS`, Meldung «Option value already exists.», Feld `["optionValuesToAdd","0","name"]`; `product` kommt trotzdem mit zurück und die vorhandenen Werte bleiben unverändert (Schritt C der Wegwerf-Probe).
+Der Code des Werkzeugs verlässt sich weiterhin auf keinen dieser Codes: `pruefeAntwort` behandelt **jeden** userError als Fehler (ein Test hält das für alle drei Codes und einen unbekannten fest). Gemessen sind jetzt auch das Löschen eines leeren Werts über `optionValuesToDelete` (mit `option: {id}` und der Wert-ID aus `optionValues`: Wert weg, keine Variante verloren, Schritt F) und die Ablehnung beim Löschen eines Werts mit Variante (`OPTION_VALUE_HAS_VARIANTS`, Meldung «Cannot delete an option value that is currently associated with a variant with the selected variant strategy.», Varianten vorher und nachher 3, Schritt F2).
 
 Seitdem gilt in **allen** Lesepfaden (`BESTAND_Q`, `Q_PRODUKT`, `leseFrisch`, Antworten der Schreibaufrufe; eine Stelle: `OPTIONEN_FELDER` in `lib/pod_auswahl_daten.mjs`):
 - **Existenz** eines Werts = er steht in `optionValues` (die Namen heissen im Werkzeug `values`, bewusst **nicht** Shopifys `values`);
@@ -66,16 +66,16 @@ Gemessen ist damit nur der Normalfall; den **leeren** Wert belegen Schema und Do
 Folgen: (a) die Wiederaufnahme füllt einen liegengebliebenen leeren Wert, ohne ihn neu anzulegen; (b) scheitert sie wieder am Tageslimit, wird er entfernt; (c) eine von Hand angelegte Option «Material» mit leerem Fremdwert («Holz») meldet schon der **Trockenlauf** (Verstoss) und der Schreibweg **vor dem ersten Schreibaufruf** (Exit 3).
 **Grenze:** Blieb nach einem doppelten Fehler (Antwort verloren und Aufräumen gescheitert) ein leerer Wert einer anderen Option (Grösse, Modell) stehen, den dieser Aufruf ergänzt hatte, gehört er beim nächsten Trockenlauf zu den vorhandenen Werten dieser Option; der Plan-Hash kann sich dann ändern (neuer Trockenlauf nötig, statt dass der Rest unbemerkt bleibt).
 
-## Vor dem ersten LIVE-Lauf: Wegwerf-Probe
+## Wegwerf-Probe (ausgeführt am 28.10.2026, 19:13 UTC)
 
-**Warum:** Vier Annahmen des Schreibwegs und der Test-Attrappe belegen bisher nur das Schema und die Shopify-Doku, **keine Messung**:
+**Warum:** Vier Annahmen des Schreibwegs und der Test-Attrappe belegten bis zur Probe nur das Schema und die Shopify-Doku, **keine Messung**:
 (1) ein per `productOptionUpdate` angelegter Wert ohne Variante steht in `optionValues` mit `hasVariants: false`, fehlt aber in `ProductOption.values`;
 (2) das erneute Anlegen desselben Namens ist ein userError (welcher Code, steht im Schema nicht: siehe «Optionen lesen»; der Code des Werkzeugs braucht keinen bestimmten);
 (3) `optionValuesToDelete` mit der Wert-ID aus `optionValues` entfernt einen leeren Wert;
 (4) `productVariantsBulkCreate` mit einem noch nicht vorhandenen Wert legt ihn laut Doku selbst an (die Attrappe verlangt ihn vorher).
-**Stand: NICHT ausgeführt.** Am 28.10.2026 meldete Shopify auf `productCreate` «Das Tageslimit für die Erstellung von Varianten wurde erreicht» (Versuch einer Probe-Anlage); die Probe wartet auf ein freies Limit. Gemessen ist darum nichts, alle Spalten «Gemessen» unten sind offen.
+**Stand: AUSGEFÜHRT am 28.10.2026, 19:13:58 UTC** (Admin-API 2026-01, Skript im Sitzungs-Arbeitsordner, Rohergebnis `probe-ergebnis.json` dort). Das Variantenlimit war frei (Schritt A legte das Produkt an; um 14:3x UTC am selben Tag war es noch erreicht, die Reset-Zeit liegt also zwischen beiden Messungen). Das Wegwerf-Produkt wurde gelöscht, die Suche nach `tag:zz-test-loeschen` und `sku:ZZ-TEST-*` fand **0 Treffer**. Alle vier Annahmen sind bestätigt, es gab keine Abweichung, die vor dem ersten LIVE-Lauf zu beheben wäre.
 
-**Tageslimit:** Neue Varianten sind je Tag begrenzt, gemessen ca. 9 500 für den ganzen Shop (siehe «Variantenbudget» und `dropship/STAND-ARCHIV.md`), geteilt mit Nachtlauf, CJ-Import und jeder anderen Sitzung. Die Probe braucht nur wenige Varianten (A, D und E je eine, also rund 3), **scheitert aber bei erreichtem Limit**: schon Schritt A. Dann ist nichts angelegt und nichts aufzuräumen; die Probe wird später wiederholt, nicht gleichzeitig mit dem Nachtlauf.
+**Tageslimit:** Neue Varianten sind je Tag begrenzt, gemessen ca. 9 500 für den ganzen Shop (siehe «Variantenbudget» und `dropship/STAND-ARCHIV.md`), geteilt mit Nachtlauf, CJ-Import und jeder anderen Sitzung. Die Probe brauchte 3 Varianten (A, D und E je eine) und **scheitert bei erreichtem Limit** schon in Schritt A (dann ist nichts angelegt); sie wurde darum erst bei freiem Limit gestartet, nicht gleichzeitig mit dem Nachtlauf.
 
 **Admin-API-Version:** die des Werkzeugs, `2026-01` (`API_VERSION` in `automation/lib/pod_auswahl_gql.mjs`), nicht die eines anderen Zugangs: die hier abgefragten Schema- und Doku-Seiten tragen `2026-10`, eine Probe mit anderer Version belegt das Verhalten der gepinnten Version nicht.
 
@@ -89,18 +89,18 @@ Folgen: (a) die Wiederaufnahme füllt einen liegengebliebenen leeren Wert, ohne 
   **F2** (zusätzlich, nur an diesem Wegwerf-Produkt): dasselbe mit dem Wert B, der jetzt eine Variante trägt. Zu messen: Das Schema sagt für `LEAVE_AS_IS` ausdrücklich: «In cases where deleting a variant would be necessary to complete the operation, an error will be returned.» Offen ist nur, welcher Code kommt (die Attrappe nimmt `OPTION_VALUE_HAS_VARIANTS` an) und dass wirklich nichts still mitgelöscht wird. Das Werkzeug löscht nie einen Wert mit Variante; diese Messung zeigt, wie wichtig dieser Schutz ist.
 - **G** Aufräumen: `productDelete(input: { id: <Produkt-ID> })`. Restprüfung: `products(first: 5, query: "tag:zz-test-loeschen")` und `products(first: 5, query: "sku:ZZ-TEST-*")` liefern 0 Treffer. Bleibt etwas übrig (auch nach einem Abbruch), von Hand löschen: ein Produkt mit dem Tag `zz-test-loeschen` darf nicht im Shop bleiben.
 
-| Schritt | Erwartung nach Schema/Doku (nicht gemessen) | Gemessen |
+| Schritt | Erwartung nach Schema/Doku | Gemessen (28.10.2026) |
 |---|---|---|
-| A | Produkt mit Option «Material» = A und einer Variante | offen |
-| B | `values` = [A]; `optionValues` = A (`hasVariants` true), B (`hasVariants` false) | offen |
-| C | userError «Wert existiert schon» (Doku-Beispiel; Code vermutlich `OPTION_VALUE_ALREADY_EXISTS`, nicht gesehen), vorhandene Werte unverändert, `product` kommt zurück | offen |
-| D | Shopify legt C selbst an; C hat danach `hasVariants` true | offen |
-| E | B: `hasVariants` true, B steht danach auch in `values` | offen |
-| F | D ist entfernt, keine Variante verloren | offen |
-| F2 | userError laut Schema (`LEAVE_AS_IS`); Code unbekannt (`OPTION_VALUE_HAS_VARIANTS`?), Varianten bleiben | offen |
-| G | Produkt gelöscht, Suche nach dem Tag: 0 Treffer | offen |
+| A | Produkt mit Option «Material» = A und einer Variante | **bestätigt**: eine Variante (SKU leer), `values` = [A], `optionValues` = A (`hasVariants` true) |
+| B | `values` = [A]; `optionValues` = A (`hasVariants` true), B (`hasVariants` false) | **bestätigt**: genau so, auch beim Zurücklesen |
+| C | userError «Wert existiert schon», vorhandene Werte unverändert, `product` kommt zurück | **bestätigt**: `OPTION_VALUE_ALREADY_EXISTS`, «Option value already exists.», Feld `optionValuesToAdd.0.name`, `product` mit den unveränderten Werten zurück |
+| D | Shopify legt C selbst an; C hat danach `hasVariants` true | **bestätigt**: keine userErrors, `values` = [A, C], C `hasVariants` true, Variante A noch da (die Attrappe verlangt den Wert weiter vorher: strenger als Shopify, bewusst) |
+| E | B: `hasVariants` true, B steht danach auch in `values` | **bestätigt**: `values` = [A, C, B], B `hasVariants` true |
+| F | D ist entfernt, keine Variante verloren | **bestätigt**: keine userErrors, D fehlt in `optionValues`, 3 Varianten wie vorher |
+| F2 | userError laut Schema (`LEAVE_AS_IS`); Code unbekannt, Varianten bleiben | **bestätigt**: `OPTION_VALUE_HAS_VARIANTS`, «Cannot delete an option value that is currently associated with a variant with the selected variant strategy.», Varianten vorher/nachher 3/3, nichts still mitgelöscht |
+| G | Produkt gelöscht, Suche nach dem Tag: 0 Treffer | **bestätigt**: `deletedProductId` gesetzt, keine userErrors, 0 Treffer nach Tag und nach SKU |
 
-**Danach (Pflicht):** jedes Ergebnis zurück ins Werkzeug übertragen, mit Datum: (1) in die Spalte «Gemessen» und in «Optionen lesen» dieser README; (2) in die Attrappe `neuerShop` in `automation/lib/pod_auswahl_schreiben_test.mjs` (Code beim doppelten Anlegen, Verhalten von `productVariantsBulkCreate` mit fehlendem Wert, Löschen eines Werts mit Variante) und in den Kopf von `automation/lib/pod_auswahl_schreiben.mjs`; (3) weicht ein Ergebnis von der Erwartung ab (zum Beispiel nennt `values` leere Werte doch, oder das Löschen eines Werts mit Variante löscht Varianten), ist das ein Befund, der **vor** dem ersten LIVE-Lauf zu beheben ist (Lesepfade, Aufräumen, Tests, Mutanten).
+**Danach (erledigt am 28.10.2026):** die Ergebnisse stehen in der Spalte «Gemessen» und in «Optionen lesen» dieser README, im Kopf von `automation/lib/pod_auswahl_schreiben.mjs` und in den Kommentaren der Attrappe `neuerShop` (`automation/lib/pod_auswahl_schreiben_test.mjs`); die Attrappe verhält sich in allen gemessenen Punkten wie Shopify, ausser dass sie einen fehlenden Wert bei `productVariantsBulkCreate` ablehnt (Shopify legt ihn an). **Weiter ungemessen:** `productSet` für die neue Samsung-Hülle (84 Varianten, 3 Bilder), das Verhalten am Tageslimit bei einem Aufruf mit vielen Varianten (atomar oder nicht).
 
 ## Blocker-Befunde: LIVE für das Produkt gesperrt, bis der Besitzer entschieden hat
 
@@ -235,7 +235,7 @@ bash automation/ci_simulation.sh                              # CI nachspielen (
 ## Offen (Entscheide des Besitzers, keine Fehler im Code)
 
 - **Samsung ohne Wiederaufnahme für fehlende Varianten.** Die Wiederaufnahme (Aufräumen, Nachziehen, Hash) gilt nur für die vier vorhandenen Produkte (`erweitern`). Die neue Samsung-Hülle entsteht mit **einem** `productSet`; ob Shopify bei Erreichen des Tageslimits atomar scheitert (alles oder nichts), ist **nicht belegt**. Ein vorhandenes eigenes DRAFT mit weniger Varianten als geplant besteht die Vorprüfung des Handles, schreibt die Metafelder erneut und endet mit Exit 3 («Variantenzahl 44 ≠ 84»), **ohne Varianten nachzuziehen**. Ein solcher Teilzustand ist von Hand zu bereinigen (das DRAFT löschen und neu anlegen lassen, oder fehlende Varianten ergänzen). Schutz davor: `VARIANT_BUDGET` (Vorprüfung, optional) und das Anlegen als DRAFT.
-- **Wegwerf-Probe vor dem ersten LIVE-Lauf** (Abschnitt oben): `hasVariants: false`, Löschweg über `optionValuesToDelete`, Fehlercode beim doppelten Anlegen und das Anlegen fehlender Werte durch `productVariantsBulkCreate` sind nur durch Schema, Doku und Attrappe belegt. Nicht ausgeführt (Tageslimit für Varianten am 28.10.2026 erreicht); die Ergebnisse gehören danach in diese README und in die Attrappe.
+- **Wegwerf-Probe** (Abschnitt oben): ausgeführt am 28.10.2026, 19:13 UTC; `hasVariants: false`, Löschweg über `optionValuesToDelete`, Fehlercode beim doppelten Anlegen und das Anlegen fehlender Werte durch `productVariantsBulkCreate` sind gemessen und stehen in der Tabelle. Offen bleibt `productSet` (Samsung) mit 84 Varianten.
 - Die sieben Blocker-Befunde oben (Poster 1, Hoodie 3, T-Shirt 1, iPhone 2).
 - Texte ausserhalb des Blocks materialneutral fassen (Poster, T-Shirt, Hoodie, iPhone); Preisleiter Foto-Glanzpapier A2.
 - Vorhandene Preise tragen teils unter 12 CHF Netto (nur Hinweis, nicht geändert): Poster 30×40 (11.74), mehrere T-Shirt-Grössen (z. B. 5599797_9526: 10.44).
