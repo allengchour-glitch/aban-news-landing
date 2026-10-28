@@ -61,7 +61,7 @@ for (const [handle, ziel] of Object.entries(tabelle)) {
   const neu = setzeEditorAttribute(p.descriptionHtml, { front: ziel.front, back: ziel.back, map: ziel.map });
   if (neu === p.descriptionHtml) { console.log(`= ${handle}: schon so, nichts zu tun`); gleich++; continue; }
   const nz = leseEditorAttribute(neu);
-  console.log(`${LIVE ? '→' : 'DRY'} ${handle}: front ${(alt.front || '–').split('/').pop().split('?')[0]} → ${(nz.front || '–').split('/').pop().split('?')[0]}; Karte ${alt.map ? Object.keys(alt.map).length : 0} → ${nz.map ? Object.keys(nz.map).length : 0} Modelle`);
+  console.log(`${LIVE ? '→' : 'DRY'} ${handle}: front ${(alt.front || '–').split('/').pop().split('?')[0]} → ${(nz.front || '–').split('/').pop().split('?')[0]}${nz.back || alt.back ? '; back ' + (alt.back || '–').split('/').pop().split('?')[0] + ' → ' + (nz.back || '–').split('/').pop().split('?')[0] : ''}; Karte ${alt.map ? Object.keys(alt.map).length : 0} → ${nz.map ? Object.keys(nz.map).length : 0} Modelle`);
   const urls = [...new Set([nz.front, nz.back, ...Object.values(nz.map || {})].filter(Boolean))];
   for (const u of urls) { const s = await http(u); if (s !== 200) { console.error(`  ✗ Adresse nicht erreichbar (${s}): ${u}`); nichtErreichbar++; } }
   if (!LIVE) { geaendert++; continue; }
@@ -76,10 +76,10 @@ for (const [handle, ziel] of Object.entries(tabelle)) {
   // FRISCH lesen, nie dem Rückgabewert glauben
   const f = (await shopifyGql(SHOP, API, tok, Q, { h: handle })).productByIdentifier;
   const l = leseEditorAttribute(f.descriptionHtml);
-  const stimmt = l && l.front === nz.front && (ziel.map ? JSON.stringify(l.map) === JSON.stringify(nz.map) : true) && l.variant === alt.variant && JSON.stringify(l.andere) === JSON.stringify(alt.andere);
+  const stimmt = l && l.front === nz.front && l.back === nz.back && (ziel.map ? JSON.stringify(l.map) === JSON.stringify(nz.map) : true) && l.variant === alt.variant && JSON.stringify(l.andere) === JSON.stringify(alt.andere);
   const restGleich = f.descriptionHtml.replace(/<div class="lspod-designer"[^>]*><\/div>/, '§') === p.descriptionHtml.replace(/<div class="lspod-designer"[^>]*><\/div>/, '§');
   if (!stimmt || !restGleich) { console.error(`  ✗ ${handle}: nach dem Schreiben frisch gelesen NICHT wie geplant (Baustein ${stimmt}, Rest gleich ${restGleich})`); schlecht++; continue; }
-  appendLedger(`${handle}\t${new Date().toISOString()}\tOK\tfront ${(nz.front || '').split('/').pop().split('?')[0]}; Karte ${nz.map ? Object.keys(nz.map).length : 0}`);
+  appendLedger(`${handle}\t${new Date().toISOString()}\tOK\tfront ${(nz.front || '').split('/').pop().split('?')[0]}${nz.back ? '; back ' + nz.back.split('/').pop().split('?')[0] : ''}; Karte ${nz.map ? Object.keys(nz.map).length : 0}`);
   console.log(`  ✓ geschrieben und frisch zurückgelesen (Baustein stimmt, übrige Beschreibung Byte für Byte gleich)`);
   geaendert++;
 }
