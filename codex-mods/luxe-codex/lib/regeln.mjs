@@ -42,8 +42,8 @@ export function ohneTextAusserPfaden(befehl) {
 const GIT = String.raw`\bgit\s+(?:(?:-[Cc]\s+\S+|-(?![Cc](?:\s|$))\S+)\s+)*`;
 const FORCE = new RegExp(String.raw`${GIT}push\b[^\n;&|]*?(?:\s--force(?:-with-lease|-if-includes)?\b|\s-f\b|\s\+[^\s:])`);
 const SELBSTMORD = /(?:^|\s)(?:pkill|killall)\b/;
-/** Wer nur liest, sucht oder ausgibt, beendet nichts: `rg pkill`, `ps aux | grep killall`, `echo pkill`. */
-const LESER = /^\s*(?:rg|grep|egrep|fgrep|ag|ack|git\s+grep|sed|awk|cat|echo|printf|head|tail|less|man|which|whereis|type|ls|wc|diff|find)\b/;
+/** Wer nur liest, sucht oder ausgibt, beendet nichts: `rg pkill`, `ps aux | grep killall`, `echo pkill`. (`find` fehlt mit Absicht: `-exec pkill` beendet.) */
+const LESER = /^\s*(?:rg|grep|egrep|fgrep|ag|ack|git\s+grep|sed|awk|cat|echo|printf|head|tail|less|man|which|whereis|type|ls|wc|diff)\b/;
 /** pkill/killall als Befehl irgendwo in einer Befehlskette (je einfachem Befehl geprüft). */
 const killt = b => b.split(/[;&|(`\n]+/).some(teil => SELBSTMORD.test(teil) && !LESER.test(teil));
 const ADD_ALLES = new RegExp(String.raw`${GIT}add\b[^\n;&|]*?(?:\s-A\b|\s--all\b|\s\.\/?(?=[\s;&|)]|$)|\s\*)`);

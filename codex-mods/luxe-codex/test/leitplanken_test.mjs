@@ -11,7 +11,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { eingabe, fertig, gueltig, ist } from './kern.mjs';
 import { AUSWEGE, GEHEIMNISSE, ohneText, ohneTextAusserPfaden, pruefeBash, pruefeInhalt, pruefePfad, umgebungsAnteile } from '../lib/regeln.mjs';
 import { befehlAusListe, entpacke, heredocTexte, liesJs, liesPatch, ziehePruefgut } from '../lib/eingabe_form.mjs';
@@ -94,9 +94,13 @@ ist('-n als Skriptargument ist weiter ein Trockenlauf', urteil('node automation/
 ist('Befehl ohne Skript und ohne Regel: nichts', [urteil('ls -la'), urteil(''), urteil(undefined)], [undefined, undefined, undefined]);
 ist('trocken darf auch ein Set sein', urteil(LIVE_SEO, new Set(['automation/seo-optimizer.mjs'])), undefined);
 {
-  const t0 = Date.now();
-  const ergebnisse = [pruefeBash('git ' + '-C '.repeat(80) + 'x'), pruefeBash('git ' + '-c a=b '.repeat(80) + 'push'), pruefeBash('git ' + '-C a '.repeat(60) + 'push --force')];
-  ist('Regex: viele git-Optionen hintereinander brauchen keine Ewigkeit (kein exponentielles Zurücksetzen)', [Date.now() - t0 < 1500, ergebnisse[0], ergebnisse[1], typeof ergebnisse[2]?.deny], [true, undefined, undefined, 'string']);
+  // Im Kindprozess mit Frist: ein Rückfall in exponentielles Zurücksetzen lässt den Test fehlschlagen statt hängen.
+  const regelnUrl = pathToFileURL(join(HIER, '..', 'lib', 'regeln.mjs')).href;
+  const quelle = `import { pruefeBash } from ${JSON.stringify(regelnUrl)};
+    const r = [pruefeBash('git ' + '-C '.repeat(80) + 'x'), pruefeBash('git ' + '-c a=b '.repeat(80) + 'push'), pruefeBash('git ' + '-C a '.repeat(60) + 'push --force')];
+    console.log(JSON.stringify([r[0] ?? null, r[1] ?? null, typeof r[2]?.deny]));`;
+  const k = spawnSync(process.execPath, ['--input-type=module', '-e', quelle], { encoding: 'utf8', timeout: 8000 });
+  ist('Regex: viele git-Optionen hintereinander brauchen keine Ewigkeit (kein exponentielles Zurücksetzen)', [k.status, k.signal, k.stdout.trim()], [0, null, '[null,null,"string"]']);
 }
 ist('git -C ohne Wert und git -c mit Wert', [verbietet('git -C push --force'), verbietet('git -c a=b push --force'), verbietet('git -C /r -c a=b push -f')], [false, true, true]);
 ist('Reihenfolge der Regeln: Force-Push vor LIVE', grundZu('git push -f && LIVE=1 node automation/x.mjs').includes('Force-Push'), true);
@@ -478,7 +482,12 @@ function prozess(stdin, zusatz = {}) {
   const r = spawnSync(process.execPath, [HOOK], { input: stdin, encoding: 'utf8', env: { PATH: process.env.PATH ?? '', ...zusatz }, timeout: 30000 });
   return { code: r.status, aus: r.stdout, fehler: r.stderr, signal: r.signal };
 }
-const jetzt = (name, ti, extra = {}) => JSON.stringify(eingabe('PreToolUse', { tool_name: name, tool_input: ti, ...extra }));
+const prozessEingabeFehler = [];
+const jetzt = (name, ti, extra = {}) => {
+  const e = eingabe('PreToolUse', { tool_name: name, tool_input: ti, ...extra });
+  prozessEingabeFehler.push(...gueltig(e, 'pre-tool-use.command.input'));
+  return JSON.stringify(e);
+};
 {
   const ordner = neuerOrdner();
   const Z = { LUXE_CODEX_ZUSTAND: ordner };
@@ -520,7 +529,9 @@ const jetzt = (name, ti, extra = {}) => JSON.stringify(eingabe('PreToolUse', { t
   const k = prozess(jetzt('shell', { command: ['bash', '-lc', 'git add -A'] }), Z);
   ist('Prozess 10: Argumentliste mit bash -lc → deny', [k.code, JSON.parse(k.aus).hookSpecificOutput.permissionDecisionReason.includes('git add')], [0, true]);
 
-  const l = prozess(JSON.stringify({ ...eingabe('PostToolUse', { tool_input: { cmd: 'git push --force' } }) }), Z);
+  const postEingabe = eingabe('PostToolUse', { tool_input: { cmd: 'git push --force' } });
+  const l = prozess(JSON.stringify(postEingabe), Z);
+  ist('Prozess 11 (Vorbedingung): die PostToolUse-Eingabe ist laut Schema gültig', gueltig(postEingabe, 'post-tool-use.command.input'), []);
   ist('Prozess 11: PostToolUse-Eingabe → keine Ausgabe', [l.code, l.aus], [0, '']);
 
   const datei = join(ordner, 'ist-eine-datei');
@@ -551,6 +562,8 @@ const jetzt = (name, ti, extra = {}) => JSON.stringify(eingabe('PreToolUse', { t
   ist('Parallel: alle zwölf Trockenläufe stehen in der Zustandsdatei', leseTrocken({ LUXE_CODEX_ZUSTAND: ordner }, 'parallel').sort(), [...skripte].sort());
   ist('Parallel: es gibt genau eine Zustandsdatei (kein Rest einer Zwischendatei)', readdirSync(ordner).length, 1);
 }
+
+ist('Alle Eingaben der Prozess-Tests sind laut Eingabe-Schema gültig', prozessEingabeFehler, []);
 
 for (const o of temp) rmSync(o, { recursive: true, force: true });
 fertig();
