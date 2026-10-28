@@ -1,0 +1,19 @@
+{
+  "name": "luxe-codex",
+  "version": "0.1.0",
+  "description": "LuxeStyle-Regeln für die Codex CLI: Leitplanken (kein Force-Push, kein git add -A, Trockenlauf vor LIVE=1, keine Geheimnisse im Code), Schreibzähler, Sparmodus, lesende Befehle und die Zweitmeinung-Rubrik.",
+  "author": { "name": "LuxeStyle" },
+  "license": "UNLICENSED",
+  "keywords": ["luxestyle", "leitplanken", "shopify", "zweitmeinung"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "LuxeStyle für Codex",
+    "shortDescription": "Projektregeln, Leitplanken und lesende Befehle",
+    "longDescription": "Setzt die LuxeStyle-Projektregeln in Codex maschinell durch (PreToolUse-Leitplanken), zählt schreibende Zugriffe nach aussen, bietet einen schaltbaren Sparmodus und lesende Befehle als Skills.",
+    "developerName": "LuxeStyle",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read"],
+    "defaultPrompt": ["Zeig den Git-Stand", "Welche Regeln gelten hier?", "Sparmodus an"]
+  }
+}

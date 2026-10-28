@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'automation/lib/**'
+      - 'codex-mods/**'
+      - 'AGENTS.md'
+      - 'automation/autopilot/shop_pulse.mjs'
       - 'automation/*.mjs'
       - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
@@ -70,6 +73,9 @@ jobs:
           sparse-checkout: |
             automation/lib
             automation/*.mjs
+            codex-mods
+            AGENTS.md
+            automation/autopilot/shop_pulse.mjs
             tools/versandregel.mjs
             tools/versandregel_test.mjs
             automation/seo-optimizer.mjs
@@ -157,6 +163,10 @@ jobs:
           node --check automation/lib/sperr_tags.mjs
           node --check automation/kundenstimmen_bauen.mjs
           node --check automation/unterteilung_audit.mjs
+          node --check automation/codex_zweitmeinung.mjs
+          node --check codex-mods/luxe-codex/hooks/leitplanken.mjs
+          node --check codex-mods/luxe-codex/hooks/schreibzaehler.mjs
+          node --check codex-mods/luxe-codex/hooks/kontext.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -174,6 +184,16 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+      - name: Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)
+        # 28.10.2026: luxe-codex (codex-mods/) und der Läufer automation/codex_zweitmeinung.mjs; die Tests prüfen die Hook-Ausgabe gegen die Schemas aus der Codex-Binärdatei
+        # (codex-mods/luxe-codex/test/schemas) und nutzen einen falschen codex. Fake-Zugangsdaten entstehen darin erst zur Laufzeit (GitHub-Push-Protection).
+        run: |
+          node codex-mods/luxe-codex/test/hook_io_test.mjs
+          node codex-mods/luxe-codex/test/leitplanken_test.mjs
+          node codex-mods/luxe-codex/test/schreibzaehler_test.mjs
+          node codex-mods/luxe-codex/test/modus_test.mjs
+          node codex-mods/luxe-codex/test/befehle_test.mjs
+          node automation/lib/codex_zweitmeinung_test.mjs
       - name: Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)
         # CJ_PAUSE_MS=0: die Tests des Varianten-Werkzeugs sprechen nur mit Attrappen; ohne diese Zeile wartet jeder plane()-Aufruf 1,1 s (der Stecker-Test: 28 s statt 5 s, Job-Limit 5 Minuten).
         env:
