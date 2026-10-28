@@ -10,6 +10,7 @@ const SICH = '../../dropship/pod-editor-sicherung-2810/';
 const iphone = lies(SICH + 'hardcase-iphone_-hulle-mit-magsafe_-selbst-gestalten.json');
 const sticker = lies(SICH + 'kiss-cut-aufkleber-selbst-gestalten.json');
 const tshirt = lies(SICH + 'klassisches-unisex-t-shirt-selbst-gestalten.json');
+const trikot = lies(SICH + 'wm-trikot-selbst-gestalten.json');
 const tabelle = lies('../../pod/editor-hintergruende.json');
 const HIPH = 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten';
 const BAUSTEIN = /<div class="lspod-designer"[^>]*><\/div>/;
@@ -93,7 +94,9 @@ const ohne = (html) => html.replace(BAUSTEIN, '§');
     return [l.front === e.front, JSON.stringify(l.map) === JSON.stringify(e.map), l.variant, ohne(n) === ohne(iphone.descriptionHtml)];
   })(), [true, true, '55778337358209', true]);
   ist('Aufkleber: Tabelle nennt nur front, die neue Vorlage (nicht mehr sticker-template.png)', [Object.keys(tabelle['kiss-cut-aufkleber-selbst-gestalten']), /luxe-editor-aufkleber-vorlage\.png/.test(tabelle['kiss-cut-aufkleber-selbst-gestalten'].front)], [['front'], true]);
-  ist('Sicherung: die drei Beschreibungen haben je genau einen Baustein', [iphone, sticker, tshirt].map((p) => (p.descriptionHtml.match(/class="lspod-designer"/g) || []).length), [1, 1, 1]);
+  ist('Trikot: die Tabelle nennt vorne und hinten, beides die neuen leeren Vorlagen (ohne Hinweistext), sonst nichts', [Object.keys(tabelle['wm-trikot-selbst-gestalten']), /luxe-editor-trikot-vorne\.png/.test(tabelle['wm-trikot-selbst-gestalten'].front), /luxe-editor-trikot-hinten\.png/.test(tabelle['wm-trikot-selbst-gestalten'].back)], [['front', 'back'], true, true]);
+  ist('Trikot: die Sicherung hielt die alten Vorlagen mit Hinweistext fest (v2, vorne und hinten)', [/wm-trikot-rot-front-v2\.png/.test(leseEditorAttribute(trikot.descriptionHtml).front), /wm-trikot-rot-back-v2\.png/.test(leseEditorAttribute(trikot.descriptionHtml).back)], [true, true]);
+  ist('Sicherung: die vier Beschreibungen haben je genau einen Baustein', [iphone, sticker, tshirt, trikot].map((p) => (p.descriptionHtml.match(/class="lspod-designer"/g) || []).length), [1, 1, 1, 1]);
   ist('Sicherung: die iPhone-Galerie hatte 7 Medien, davon 6 Printful-Mockups mit «Dein Design»', [iphone.media.length, iphone.media.filter((m) => istPrintfulMockup(m.image.url)).length], [7, 6]);
   ist('Sicherung: das T-Shirt hatte 4 Medien, alle Printful-Mockups (hinten, rechts, links, vorne), Text eingebrannt nur auf links, rechts, vorne', [tshirt.media.length, tshirt.media.every((m) => istPrintfulMockup(m.image.url))], [4, true]);
 }
