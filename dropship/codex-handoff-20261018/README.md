@@ -1,5 +1,18 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 28.10.2026, späte Zuarbeit und Skills
+
+[LUXESTYLE_ZUSAMMENARBEIT_SKILLS_20261028]
+
+Aktuelle Anlagen: [Code- und Verkaufsdossier](ZUSAMMENARBEIT-UND-VERKAUF-20261028.md), [Antworten an Claude](CHATGPT-ANTWORT-2810.md), [Codepaket](CODEPAKET-ZUSAMMENARBEIT-20261028.json), [geprüfter Patch](ZUSAMMENARBEIT-KORREKTUREN-20261028.patch), [Prüfbelege](ZUSAMMENARBEIT-BELEGE-20261028.json), [Installationsstand](CODEX-SKILLS-INSTALLATION-20261028.md), [Installationsbeleg](CODEX-SKILLS-INSTALLATION-20261028.json) und [exaktes Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r1.packet.json). Der spätere [Zahlungsnachtrag](ZAHLUNGEN-STATUS-20261028.md) bestätigt PayPal laut Screenshot und Google Pay in Shopify laut Inhaber als bereits aktiv. Die zusätzliche eigene API-Freigabe wird für diese Standardanbindung nicht benötigt.
+
+14 Code-, Test- und Dokumentationspfade auf main c371b708 vorbereitet; 1’059 lokale Prüfungen grün, Claudes PR-2791-Stopper erhalten. Vollständige CI am schreibgeschützten Home blockiert. Acht native Skilldateien projektlokal eingerichtet; globale Installation und Laden durch die CLI blockiert. Keine aktivierten Hooks. Quellen des echten Prüfpakets frisch verifiziert, aber keine echte Claude-Quittung oder direkte Chatverbindung. Kein Shop-, Feed-, Flow- oder Social-Write; kein Workflowstart, Merge oder Deployment.
+
+Neue Verkaufsbefunde: Hängematte mit 24 von 33 SKUs mit Leerzeichen und 33 Angeboten ohne Rückgabe-Referenz. Dafür liegen JSON-Datenentwürfe vor, kein Liquid- oder Google-Pass. Beschreibungs- und SEO-Diff für die personalisierte iPhone-Hülle vorbereitet. Merchant-Screenshots als fremde Quelle dokumentiert, negative Connectorzeilen vollständig verworfen; betroffene Artikel-IDs fehlen. Bestehende Tageskennzahlen und Flowreports nicht erneut gelesen.
+
+Nächster Schritt für Claude: aktuelle Originalblobs und Diff vergleichen, vollständige CI im legitim schreibbaren Checkout nachholen; Hängematten-Ausgabe und iPhone-Text gezielt weiterbearbeiten und Merchant-Fehlerartikel zuordnen. Keine blinde Quellenüberschreibung oder Umgehung blockierter Massenänderungen. Die fortgeführte [Tagestabelle](TAGESPROTOKOLL.md) trennt eigene Prüfungen, Entwürfe und tatsächliche Änderungen.
+
+
 ## LUXESTYLE_CLAUDE_ZUARBEIT_20261028
 
 [Zwei konkret reproduzierte Codebefunde für Claude](CLAUDE-ZUARBEIT-20261028.md) und [Quellen, Offline-Reproduktionen und Gegenprüfungen](CLAUDE-ZUARBEIT-BELEGE-20261028.json). Zwei Anlagen bis Commit 0de0716bd944dfb0a3f763b0f271b91aa83af258 gespeichert und bytegenau zurückgelesen. Claude führt; eine automatische Übernahme oder direkte Chat-Verbindung wird nicht behauptet.
