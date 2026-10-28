@@ -44,6 +44,6 @@ Beispiel (erfunden, gib es nie als Fund aus):
 ]
 ```
 
-Keine Funde: `[]`.
+Keine Funde: antworte mit genau `[]` und der Schlusszeile, ohne weiteren Text. Schreibe `[]` oder `[ ]` sonst nirgends in die Antwort (auch nicht in Sätzen oder als Checkbox).
 
 Die allerletzte Zeile der Antwort ist `ENDE`.

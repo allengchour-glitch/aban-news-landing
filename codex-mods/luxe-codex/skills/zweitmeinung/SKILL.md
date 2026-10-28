@@ -18,9 +18,9 @@ Du bist hier der Gegenleser aus einer anderen Modellfamilie als der Autor des Co
 ## Grenzen
 
 - Enthält eine Datei Zugangsdaten oder Personendaten, gib den Wert nie wieder. Melde nur «Datei:Zeile: enthält Zugangsdaten» und mache dort keinen Fund daraus.
-- Keine Stilfunde, keine erfundenen Funde. Keine Funde heisst die leere Liste `[]`.
+- Keine Stilfunde, keine erfundenen Funde. Keine Funde heisst die leere Liste `[]` allein, ohne weiteren Text; `[]` oder `[ ]` steht sonst nirgends in der Antwort.
 - Du führst nichts aus, das nach aussen schreibt (Shop, Lieferant, Zahlung, Social), auch nicht zum Testen.
 
 ## Von aussen starten
 
-Wer Codex nicht von Hand fragt, nutzt `automation/codex_zweitmeinung.mjs` im Repo: Trockenlauf ist die Vorgabe, `LIVE=1` startet den Lauf in einem leeren Sandkasten mit leerer Umgebung. Es erkennt das Nutzungslimit (Exit 4) und meldet es nie als «keine Funde».
+Wer Codex nicht von Hand fragt, nutzt `automation/codex_zweitmeinung.mjs` im Repo: Trockenlauf ist die Vorgabe, `LIVE=1` startet den Lauf in einem leeren Sandkasten mit leerer Umgebung. Es erkennt das Nutzungslimit (Exit 4) und meldet es nie als «keine Funde»; ebenso nie eine Antwort ohne lesbare Liste (Exit 5) oder eine unsichere (Exit 6, Funde können fehlen). Nur Exit 0 ist ein sicheres Ergebnis.

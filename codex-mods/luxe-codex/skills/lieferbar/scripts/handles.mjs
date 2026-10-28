@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * Prüft die Handles für den Skill lieferbar: `node handles.mjs <<'ENDWORT'` … die Handles auf stdin … `ENDWORT`.
- * Gibt die geprüfte Liste in EINER Zeile aus (Komma getrennt, nur a-z, 0-9, «-» und «,»), sonst einen deutschen Fehler.
+ * Prüft die Handles für den Skill lieferbar: `node handles.mjs <<'ENDWORT'` … die Handles auf stdin … `ENDWORT`
+ * (das Endwort bildet der Aufrufer für jeden Aufruf neu und zufällig, siehe SKILL.md).
+ * Die Handles sind durch Komma, Leerzeichen oder Zeilenumbruch getrennt (eine Spalte geht). Gibt die geprüfte Liste in EINER
+ * Zeile aus (Komma getrennt, nur a-z, 0-9, «-» und «,»), sonst einen deutschen Fehler.
  *
  * Exit 0 = geprüft, die Zeile auf stdout ist die Liste.
  * Exit 2 = Eingabe abgewiesen (Grund auf stderr) oder Aufruf falsch (Argumente, kein stdin): nichts weiter starten.

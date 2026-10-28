@@ -14,19 +14,37 @@ import { spawn, spawnSync } from 'node:child_process';
 import {
   chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync,
 } from 'node:fs';
+import fsAlle from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fertig, ist } from '../../codex-mods/luxe-codex/test/kern.mjs';
 import * as L from './codex_zweitmeinung.mjs';
-import { fuehreAus, main } from '../codex_zweitmeinung.mjs';
+import * as K from '../codex_zweitmeinung.mjs';
 
+const { fuehreAus, main } = K;
 const HIER = dirname(fileURLToPath(import.meta.url));
 const ECHTES_REPO = realpathSync(join(HIER, '..', '..'));
 const CLI = join(ECHTES_REPO, 'automation', 'codex_zweitmeinung.mjs');
 const RUBRIK = join(ECHTES_REPO, 'codex-mods', 'luxe-codex', 'skills', 'zweitmeinung', 'RUBRIK.md');
 const SKILL = join(ECHTES_REPO, 'codex-mods', 'luxe-codex', 'skills', 'zweitmeinung', 'SKILL.md');
 const schlafe = ms => new Promise(r => setTimeout(r, ms));
+/** Eine Prüfung, die eine Ausnahme wirft, zählt als Fehler und bricht den Testlauf nicht ab. */
+const sicher = f => { try { return f(); } catch (e) { return `Ausnahme: ${e.message}`; } };
+const sicherAsync = async f => { try { return await f(); } catch (e) { return `Ausnahme: ${e.message}`; } };
+/** Wartet höchstens `ms`; hängt der Lauf, kommt { keinEnde: true } statt eines endlosen Tests. */
+const mitFrist = (p, ms) => Promise.race([p, new Promise(r => setTimeout(() => r({ keinEnde: true }), ms))]);
+/** Lebt der Prozess noch? Ein Zombie (Zustand Z) zählt als beendet. */
+const lebtNoch = pid => {
+  try { process.kill(pid, 0); } catch { return false; }
+  try {
+    const s = readFileSync(`/proc/${pid}/stat`, 'utf8');
+    const k = s.lastIndexOf(')');
+    return s.slice(k + 2, k + 3) !== 'Z';
+  } catch { return true; }
+};
+const toete = pid => { try { process.kill(pid, 'SIGKILL'); } catch { /* schon weg */ } };
+const rnd = (n, z = 'A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0') => z.repeat(Math.ceil(n / z.length)).slice(0, n);
 
 // ------------------------------------------------------------------------------------------------
 // Erfundene Prüfwerte, zur Laufzeit gebaut
@@ -62,7 +80,8 @@ const sicherLeer = (obj, werte) => !werte.some(w => JSON.stringify(obj).includes
 // ------------------------------------------------------------------------------------------------
 // 0. Rubrik und Skill sind Teil des Werkzeugs: der Parser versteht ihr Beispiel
 {
-  const rubrik = readFileSync(RUBRIK, 'utf8');
+  // Windows-Checkout (autocrlf): Zeilenenden normalisieren, sonst fände leseBeispiel() nichts und der Test stürzte ab.
+  const rubrik = readFileSync(RUBRIK, 'utf8').replace(/\r\n?/g, '\n');
   const zeilen = rubrik.trimEnd().split('\n');
   ist('Rubrik: höchstens 60 Zeilen', zeilen.length <= 60, true);
   ist('Rubrik: nennt alle sieben Felder in der Ausgabeliste', L.FELDER.every(f => rubrik.includes(`- \`${f}\``)), true);
@@ -71,10 +90,12 @@ const sicherLeer = (obj, werte) => !werte.some(w => JSON.stringify(obj).includes
   ist('Rubrik: die allerletzte Zeile verlangt ENDE', zeilen[zeilen.length - 1].includes('ENDE'), true);
   const beispiel = leseBeispiel(rubrik);
   const ohneListe = L.leseFunde(beispiel);
-  ist('Rubrik: das Beispiel ist ein vollständiger Fund im Format des Parsers', [ohneListe.ok, ohneListe.zaehlung.gelesen, ohneListe.zaehlung.ausgewertet, ohneListe.zaehlung.unvollstaendig], [true, 1, 1, 0]);
+  ist('Rubrik: das Beispiel ist ein vollständiger Fund im Format des Parsers', [ohneListe.ok, ohneListe.zaehlung?.gelesen, ohneListe.zaehlung?.ausgewertet, ohneListe.zaehlung?.unvollstaendig], [true, 1, 1, 0]);
   const mitListe = L.leseFunde(beispiel, { dateien: [{ rel: 'a.mjs', zeilen: 5 }] });
-  ist('Rubrik: das erfundene Beispiel fällt als Fund auf, wenn Codex es abschreibt (Datei nicht in der Liste)', [mitListe.zaehlung.unvollstaendig, mitListe.funde[0].luecken], [1, ['datei steht nicht in der Dateiliste']]);
-  const skill = readFileSync(SKILL, 'utf8');
+  ist('Rubrik: das erfundene Beispiel fällt als Fund auf, wenn Codex es abschreibt (Datei nicht in der Liste)', [mitListe.zaehlung?.unvollstaendig, mitListe.funde[0]?.luecken], [1, ['datei steht nicht in der Dateiliste']]);
+  ist('Rubrik mit Windows-Zeilenenden (CRLF): das Beispiel wird trotzdem gefunden', leseBeispiel(rubrik.replace(/\n/g, '\r\n')), beispiel);
+  ist('Rubrik: keine Funde heisst nur «[]», ohne weiteren Text', rubrik.includes('ohne weiteren Text'), true);
+  const skill = readFileSync(SKILL, 'utf8').replace(/\r\n?/g, '\n');
   ist('Skill: Kopf mit name und description, verweist auf RUBRIK.md, verlangt das Nachstellen und ENDE',
     [/^---\nname: zweitmeinung\ndescription: .+\n---\n/.test(skill), skill.includes('RUBRIK.md'), skill.includes('am echten Code nach'), skill.includes('ENDE')], [true, true, true, true]);
   for (const [name, pfad] of [['RUBRIK.md', RUBRIK], ['SKILL.md', SKILL], ['lib', join(ECHTES_REPO, 'automation/lib/codex_zweitmeinung.mjs')], ['CLI', CLI]]) {
@@ -82,7 +103,7 @@ const sicherLeer = (obj, werte) => !werte.some(w => JSON.stringify(obj).includes
   }
 }
 function leseBeispiel(text) {
-  const m = /Beispiel[^\n]*\n\n```json\n([\s\S]*?)\n```/.exec(text);
+  const m = /Beispiel[^\n]*\n\n```json\n([\s\S]*?)\n```/.exec(String(text).replace(/\r\n?/g, '\n'));
   return m ? m[1] : '';
 }
 
@@ -131,6 +152,78 @@ ist('kein Treffer: nur der JWT-Anfang', sauber('eyJhbGciOiJIUzI1NiJ9.eyJ'), true
 ist('kein Treffer: Adresse ohne Zugang (http://localhost:3000/api, https://host.ch/pfad@x)', sauber('http://localhost:3000/api und https://host.ch/pfad@x'), true);
 ist('kein Treffer: öffentlicher Schlüssel (PUBLIC KEY)', sauber('-----BEGIN PUBLIC KEY-----'), true);
 
+// --- weitere Schlüsselformate, Personendaten und Ausnahmen (Fund-Runde 2)
+Object.assign(W, {
+  telegram: `${'123456789'}:${'AA'}H${rnd(32)}`,
+  aws: `${'AK'}${'IA'}${'ABCDEFGHIJKLMNOP'}`,
+  awsGeheim: `${'aws_secret'}${'_access_key'} = ${rnd(40)}`,
+  gocspx: `${'GOC'}${'SPX-'}${rnd(28)}`,
+  fb: `${'EA'}${'AG'}${rnd(60)}`,
+  ya29: `${'ya'}${'29.'}${rnd(60)}`,
+  refresh: `${'1/'}${'/0g'}${rnd(50)}`,
+  cj: `${'CJ'}${'5452995'}${'@api@'}${HEX32}`,
+  passwort: `${'DB_PASS'}${'WORD'}=${'hunter2'}${'hunter2'}`,
+  festnetz: '044 123 45 67', // luxe-geheim-ok
+  festnetzKlammer: '(031) 123 45 67', // luxe-geheim-ok
+  mobilKlammer: '(079) 123 45 67', // luxe-geheim-ok
+  plus41Klammer: '(+41) 79 123 45 67', // luxe-geheim-ok
+  ibanDe: `${'DE89'} ${'3704 0044 0532 0130 00'}`,
+  ibanLi: `${'LI21'} ${'0881 0000 2324 013A A'}`,
+  ibanChBuchstabe: `${'CH93'} ${'0076 2011 623A 5295 7'}`,
+  ibanAt: `${'AT61'} ${'1904 3002 3457 3201'}`,
+  ibanFr: `${'FR14'} ${'2004 1010 0505 0001 3M02 606'}`,
+  umlautMail: `${'max'}${'@'}${'bücher.ch'}`,
+});
+ist('Treffer Telegram-Bot-Token', trifft(`TELEGRAM_BOT_TOKEN=${W.telegram}`, 'Telegram'), true);
+ist('Treffer AWS-Zugangsschlüssel (AKIA)', trifft(`aws_access_key_id = ${W.aws}`, 'AWS'), true);
+ist('Treffer AWS-Geheimschlüssel (Zuweisung mit 40 Zeichen)', trifft(W.awsGeheim, 'AWS'), true);
+ist('Treffer Google-OAuth-Geheimnis (GOCSPX-)', trifft(`client_secret = "${W.gocspx}"`, 'Google'), true);
+ist('Treffer Facebook-Token (EAA…)', trifft(`FB_PAGE_TOKEN='${W.fb}'`, 'Facebook'), true);
+ist('Treffer Google-Zugriffstoken ya29.', trifft(`Bearer ${W.ya29}`, 'Google'), true);
+ist('Treffer Google-Refresh-Token 1//0', trifft(`"refresh_token":"${W.refresh}"`, 'Google'), true);
+ist('Treffer CJ-Schlüssel (CJnnnn@api@…)', trifft(`const KEY='${W.cj}'`, 'CJ'), true);
+ist('Treffer Passwort-Zuweisung im .env-Stil', trifft(W.passwort, 'Passwort'), true);
+ist('Treffer Passwort-Zuweisung mit export und Anführungszeichen', trifft(`export API_TOKEN="${rnd(16)}"`, 'Passwort'), true);
+ist('Treffer Festnetz CH (044)', trifft(`Rückruf unter ${W.festnetz}`, 'Telefon'), true);
+ist('Treffer Festnetz in Klammern, Mobil in Klammern, (+41) in Klammern', [trifft(`Tel ${W.festnetzKlammer}`, 'Telefon'), trifft(`Tel ${W.mobilKlammer}`, 'Telefon'), trifft(`Tel ${W.plus41Klammer}`, 'Telefon')], [true, true, true]);
+ist('Treffer IBAN DE, LI, AT, FR und CH mit Buchstaben in der Kontonummer', [W.ibanDe, W.ibanLi, W.ibanAt, W.ibanFr, W.ibanChBuchstabe].map(i => trifft(`IBAN ${i}`, 'IBAN')), [true, true, true, true, true]);
+ist('Treffer E-Mail mit Umlaut-Domain', trifft(`Mail ${W.umlautMail}`, 'E-Mail'), true);
+ist('Treffer: Schlüssel mit Namen davor (MY_shpat_…, STRIPE_sk_live_…)', [trifft(`MY_${W.shopify}`, 'Shopify'), trifft(`STRIPE_${W.stripe}`, 'Stripe')], [true, true]);
+ist('Treffer: Google-Schlüssel, der auf «-» endet, in Anführungszeichen', trifft(`key="${'AI'}${'za'}${rnd(34)}-"`, 'Google'), true);
+ist('Treffer: Google-Schlüssel mit «_» am Ende (Gegenprobe zum «-»)', trifft(`key="${'AI'}${'za'}${rnd(34)}_"`, 'Google'), true);
+
+ist('kein Treffer: Telegram-Muster ohne «AA» oder zu kurz', [sauber(`${'123456789'}:BBH${rnd(32)}`), sauber(`${'123456789'}:AAH${rnd(20)}`)], [true, true]);
+ist('kein Treffer: AKIA mit 15 Zeichen, mit Buchstabe davor, mit 17 Zeichen', [sauber(W.aws.slice(0, -1)), sauber(`M${W.aws}`), sauber(`${W.aws}Q`)], [true, true, true]);
+ist('kein Treffer: aws_secret_access_key mit zu kurzem Wert', sauber('aws_secret_access_key = abc123'), true);
+ist('kein Treffer: GOCSPX- mit zu kurzem Rest, EAA mit zu kurzem Rest, ya29. kurz, 1//0 kurz', [sauber('GOCSPX-abc'), sauber('EAAG1234'), sauber('ya29.abc'), sauber('1//0abc')], [true, true, true, true]);
+ist('kein Treffer: CJ-Schlüssel mit 31 statt 32 Hexzeichen', sauber(W.cj.slice(0, -1)), true);
+ist('kein Treffer: Passwort-Zuweisung mit Platzhalter, Befehl, Umgebung, leer, zu kurz, JS-Zeile, Doppelpunkt', [
+  sauber('DB_PASSWORD=${DB_PASSWORD}'), sauber('PASSWORD=$(cat /run/secret)'), sauber('API_TOKEN=process.env.TOKEN_WERT'), sauber('API_TOKEN='),
+  sauber('API_KEY=kurz'), sauber('const TOKEN_URL = config.tokenUrl;'), sauber('SECRET_KEY: abcdefgh12345'),
+], [true, true, true, true, true, true, true]);
+ist('kein Treffer: Platzhalter in Anleitungen (sk-ant-..., dein-key-hier, your_client_secret, xxxx)', [sauber('export ANTHROPIC_API_KEY="sk-ant-..."'), sauber('API_KEY="dein-key-hier"'), sauber('CLIENT_SECRET=your_client_secret'), sauber('export TELEGRAM_BOT_TOKEN="xxxxxxxxxxx"')], [true, true, true, true]);
+ist('kein Treffer: Matrix-Operator «A@B.sum()» (Ein-Zeichen-Name und -Domain); ein echter Name wie ab@cd.ch wird gefunden', [sauber('W = A@B.sum()'), trifft('Mail ab@cd.ch', 'E-Mail')], [true, true]);
+ist('kein Treffer: Festnetz-Vorwahl, die es nicht gibt (010, 0800), zu lange Ziffernfolge, Ziffer davor', [sauber('Tel 010 123 45 67'), sauber('Gratis 0800 123 456'), sauber('Nr 0441234567890123'), sauber('Rechnung 10441234567')], [true, true, true, true]);
+ist('kein Treffer: IBAN DE mit fehlender oder überzähliger Ziffer, unbekanntes Land', [sauber('DE89 3704 0044 0532 0130'), sauber('DE89 3704 0044 0532 0130 000'), sauber('XX89 3704 0044 0532 0130 00')], [true, true, true]);
+ist('kein Treffer: Bot-, Git- und Aktionsadressen (noreply-Domain, git@host, bot@, actions@)', sauber('git config user.email "actions@users.noreply.github.com" und git clone git@github.com:foo/bar.git und bot@abannews.com'), true);
+ist('kein Treffer: reservierte Endungen (.example, .test, .invalid, .localhost)', sauber('ssh root@vps.example und a@b.test und c@d.invalid und e@f.localhost'), true);
+ist('kein Treffer: Adresse mit Platzhalter in der URL (${TOKEN}, $TOKEN, {{ secrets.X }}) statt Passwort', sauber('https://x-access-token:${GH_PUSH_TOKEN}@github.com/o/r.git und https://u:$TOKEN@h.ch/x und https://u:{{ secrets.X }}@h.ch/x'), true);
+ist('kein Treffer: JSON-LD mit "@type" ist keine Adresse mit Zugang', sauber('{"url":"https://abannews.com","logo":{"@type":"ImageObject","url":"https://abannews.com/logo.png"}}'), true);
+ist('kein Treffer: Schlüssel-Name ohne Wortgrenze davor (ask_live_…, mit Buchstabe davor)', sauber(`ask_live_${rnd(20)}`), true);
+
+ist('lange Schlüssel (JWT mit 3000 Zeichen, Stripe und GitHub mit 260 Zeichen): erkannt und vollständig verdeckt', (() => {
+  const jwtLang = `${'eyJ'}${rnd(3000)}.${'eyJ'}${rnd(3000)}.${rnd(3000)}`;
+  return [trifft(`t=${jwtLang}`, 'JWT'), L.verdecke(`x ${jwtLang} y`), L.verdecke(`k=${'sk'}${'_live_'}${rnd(250)}`), L.verdecke(`k=${'gh'}${'p_'}${rnd(256)}`)];
+})(), [true, 'x [verdeckt] y', 'k=[verdeckt]', 'k=[verdeckt]']);
+{
+  const t0 = Date.now();
+  L.sucheText('eyJaaaa-'.repeat(50_000), 'jwt1');
+  L.sucheText('eyJ'.repeat(130_000), 'jwt2');
+  L.sucheText(`${'gh'}${'p_'}`.repeat(100_000) + 'AKIA'.repeat(100_000), 'g');
+  L.sucheText('1234567890'.repeat(38_000), 'z');
+  L.sucheText('A'.repeat(380_000), 'v');
+  ist('ohne Obergrenzen bleibt die Suche linear (JWT, ghp_, AKIA, Ziffernfolge, Grossbuchstaben)', Date.now() - t0 < 4000, true);
+}
 ist('Marke luxe-geheim-ok in derselben Zeile erlaubt Testdaten', sauber(`const t = "${W.shopify}"; // luxe-geheim-ok`), true);
 ist('Marke gilt nur für ihre Zeile: Zeile 2 wird gemeldet, Zeile 1 nicht', L.sucheText(`// luxe-geheim-ok ${W.email}\n${W.email}\n`, 'f.txt').map(f => [f.datei, f.zeile]), [['f.txt', 2]]);
 ist('Zeilennummer stimmt auch bei CRLF', L.sucheText(`a\r\nb\r\n${W.email}\r\n`, 'f').map(f => f.zeile), [3]);
@@ -187,6 +280,12 @@ w('schluessel.pem', 'x');
 w('.npmrc', 'x');
 w('leer.txt', '');
 w('ohne-umbruch.txt', 'eine Zeile');
+w('..foo.txt');
+w('..daten/b.mjs');
+w('..ausgabe/x.txt');
+w('dropship/README.md', 'dropship-README\n');
+w('dropship/nur-hier.md', 'nur hier\n');
+for (const n of ['production.env', 'prod.env', '.pgpass', '.htpasswd', 'id_rsa', 'credentials.json', 'client_secret_1.json', 'token.json', '.aws/credentials', 'keystore.jks']) w(n, 'x\n');
 for (let i = 1; i <= 41; i += 1) w(`viele/f${String(i).padStart(2, '0')}.txt`);
 w('gross/g1.txt', 'x'.repeat(409_600));
 w('gross/g2.txt', 'x'.repeat(409_601));
@@ -228,6 +327,18 @@ ist('.env, .env.local und .envrc werden abgelehnt', [abgelehnt(['.env'], 'ist ei
 ist('env.example (ohne Punkt) wird angenommen', gut(['env.example']), [true, ['env.example']]);
 ist('node_modules/ wird abgelehnt', abgelehnt(['node_modules/pkg/index.js'], 'liegt in node_modules/'), [false, true]);
 ist('Zugangs- und Schlüsseldateien werden abgelehnt (auth.json, .npmrc, .pem)', [abgelehnt(['auth.json'], 'Zugangsdaten'), abgelehnt(['.npmrc'], 'Zugangsdaten'), abgelehnt(['schluessel.pem'], 'Schlüsseldatei')], [[false, true], [false, true], [false, true]]);
+{
+  const gesperrt = ['production.env', 'prod.env', 'local.env', '.pgpass', '.htpasswd', '.pypirc', '.git-credentials', '.dockercfg', '.aws/credentials', '.ssh/id_ed25519', 'id_rsa', 'credentials', 'credentials.json', 'service-account.json', 'client_secret_123.json', 'token.json', 'secrets.yml', 'secrets.json', 'keystore.jks', 'cert.p8', '_netrc', 'terraform.tfstate', '.flaskenv', 'sub/.kube/config', 'Production.ENV'];
+  ist('Zugangs- und Schlüsseldateien über .env/.npmrc hinaus sind gesperrt (Namen)', gesperrt.filter(n => sicher(() => L.verbotenerPfad(n)) === null), []);
+  const erlaubt = ['src/credentials.mjs', 'lib/secrets.mjs', 'docs/credentials-howto.md', 'id_rsa.pub', 'keys.js', 'tokens.json', 'myenv.txt', 'env.example', 'README.md', 'token-handler.json'];
+  ist('Gegenprobe: ähnliche Namen mit Code oder Doku bleiben erlaubt', erlaubt.filter(n => L.verbotenerPfad(n) !== null), []);
+  ist('im Lauf: eine Zugangsdatei wie production.env oder .aws/credentials wird abgelehnt', ['production.env', 'prod.env', '.pgpass', '.htpasswd', 'id_rsa', 'credentials.json', 'client_secret_1.json', 'token.json', '.aws/credentials', 'keystore.jks'].filter(n => pr([n]).ok), []);
+}
+ist('Name mit «..» am Anfang, der kein Elternverweis ist, gehört zum Repo und wird angenommen', gut(['..foo.txt', '..daten/b.mjs']), [true, ['..foo.txt', '..daten/b.mjs']]);
+ist('Ausgabeordner <Repo>/..ausgabe liegt im Repo und wird abgelehnt (Exit 2)', (() => { try { L.pruefeOrdnerAusserhalb(join(REPO, '..ausgabe'), REPO, 'Ausgabe'); return 'ok'; } catch (e) { return [e.exit, e.message.includes('im Repo')]; } })(), [2, true]);
+ist('relative Namen gelten ab dem Arbeitsordner, wenn der im Repo liegt (dropship/README.md, nicht die Wurzel-README)', (() => { const r = L.pruefeDateien(['README.md'], REPO, undefined, join(REPO, 'dropship')); return [r.ok, r.dateien.map(d => d.rel), r.dateien[0]?.inhalt.toString('utf8')]; })(), [true, ['dropship/README.md'], 'dropship-README\n']);
+ist('ein Name, den es nur im Arbeitsordner gibt, wird gefunden; ohne Arbeitsordner im Repo gilt die Repo-Wurzel', [sicher(() => L.pruefeDateien(['nur-hier.md'], REPO, undefined, join(REPO, 'dropship')).ok), L.pruefeDateien(['README.md'], REPO, undefined, AUSSEN).dateien.map(d => d.rel), L.pruefeDateien(['nur-hier.md'], REPO).ok], [true, ['README.md'], false]);
+ist('Arbeitsordner im Repo: absolute Pfade und «..» verhalten sich wie vorher', [L.pruefeDateien([join(REPO, 'a.mjs')], REPO, undefined, join(REPO, 'dropship')).dateien.map(d => d.rel), L.pruefeDateien(['../a.mjs'], REPO, undefined, join(REPO, 'dropship')).ok], [['a.mjs'], false]);
 ist('Verbotsliste gross/klein: .GIT und NODE_MODULES', [L.verbotenerPfad('x/.GIT/HEAD') !== null, L.verbotenerPfad('NODE_MODULES/a') !== null, L.verbotenerPfad('src/index.js')], [true, true, null]);
 ist('Binärdatei (NUL-Byte) wird abgelehnt', abgelehnt(['daten.bin'], 'Binär'), [false, true]);
 ist('Ordner statt Datei wird abgelehnt', abgelehnt(['sub'], 'keine reguläre Datei'), [false, true]);
@@ -325,7 +436,7 @@ const LIMITTEXT = "ERROR: You've hit your usage limit. Upgrade to Pro or try aga
 const FUND = (rest = {}) => ({ titel: 'Rabatt doppelt', schwere: 'wichtig', datei: 'a.mjs', zeile: 1, fehlerfall: 'preis(100) → 80 (richtig 90)', beleg: 'node -e gibt 80', unklar: false, ...rest });
 const DATEIEN = [{ rel: 'a.mjs', zeilen: 2 }, { rel: 'sub/b.mjs', zeilen: 1 }];
 const lesen = (text, d = DATEIEN) => L.leseFunde(text, { dateien: d });
-const zahl = r => [r.zaehlung.gelesen, r.zaehlung.ausgewertet, r.zaehlung.unvollstaendig, r.zaehlung.stimmt];
+const zahl = r => (r.zaehlung ? [r.zaehlung.gelesen, r.zaehlung.ausgewertet, r.zaehlung.unvollstaendig, r.zaehlung.stimmt] : ['keine Zählung', r.grund]);
 {
   const f2 = [FUND(), FUND({ titel: 'Rand', schwere: 'klein', datei: 'sub/b.mjs', unklar: 'unsicher, ob Wert negativ' })];
   ist('Funde: Codeblock', zahl(lesen('Ergebnis:\n```json\n' + JSON.stringify(f2, null, 2) + '\n```')), [2, 2, 0, true]);
@@ -366,6 +477,45 @@ const zahl = r => [r.zaehlung.gelesen, r.zaehlung.ausgewertet, r.zaehlung.unvoll
   ist('Bericht: jeder Fund hat den Hinweis (3 Funde + Kopf)', b.split(L.HINWEIS).length - 1, 4);
 }
 
+// 5b. Funde lesen: «[]» im Text, mehrere Listen, Gegenzählung, Steuerzeichen, Geheimnisse in der Antwort
+{
+  const f2 = [FUND(), FUND({ titel: 'Rand', schwere: 'klein', datei: 'sub/b.mjs' })];
+  const prosa = 'Fund (wichtig): In a.mjs Zeile 1 wird der Rabatt doppelt abgezogen, preis(100) liefert 80 statt 90. Die Liste `acc = []` bleibt leer.';
+  ist('Prosa mit Inline-Code «[]» ist KEIN «keine Funde» (Fehler, nicht Exit 0)', sicher(() => lesen(prosa).ok), false);
+  ist('Markdown-Checkbox «- [ ] …» ist KEIN «keine Funde»', sicher(() => lesen('Funde:\n- [ ] a.mjs:1 Rabatt doppelt abgezogen').ok), false);
+  ist('«[ ]» und «[]» allein (auch im Codeblock) bleiben «keine Funde»', [sicher(() => lesen('[ ]').ok), sicher(() => lesen('[]').zaehlung.gelesen), sicher(() => lesen('```json\n[]\n```').ok), sicher(() => lesen('  \n[\n]\n').ok)], [true, 0, true, true]);
+  ist('«[]» zwischen anderem Text: Fehler mit Grund «nicht eindeutig»', sicher(() => lesen('Keine Funde: []').grund?.includes('nicht eindeutig')), true);
+  const hinten = lesen(`${JSON.stringify(f2)}\nHinweis: ohne Funde wäre die Antwort [].`);
+  ist('Liste mit 2 Funden, danach «[]» im Text: die 2 Funde bleiben erhalten, aber als unsicher gekennzeichnet', [hinten.ok, sicher(() => hinten.zaehlung.gelesen), sicher(() => hinten.status), sicher(() => hinten.pruefen.length)], [true, 2, 'pruefen', 1]);
+  const offen = lesen(JSON.stringify({ funde: f2, offen: [] }));
+  ist('{"funde":[…],"offen":[]}: die Funde bleiben erhalten, unsicher gekennzeichnet', [offen.ok, sicher(() => offen.zaehlung.gelesen), sicher(() => offen.status)], [true, 2, 'pruefen']);
+  ist('301 mal «[] » vor der Liste: die Liste wird gelesen (keine Grenze von 300 Regionen), Status ok', (() => { const r = lesen(`${'[] '.repeat(301)}\n${JSON.stringify(f2)}`); return [r.ok, sicher(() => r.zaehlung.gelesen), sicher(() => r.status)]; })(), [true, 2, 'ok']);
+  ist('«[]» VOR der Liste (Schemahinweis) stört nicht und ist nicht unsicher', (() => { const r = lesen(`Ohne Funde: []\n${JSON.stringify(f2)}`); return [r.ok, sicher(() => r.zaehlung.gelesen), sicher(() => r.status)]; })(), [true, 2, 'ok']);
+  const zwei = lesen(`Wichtig:\n${JSON.stringify([FUND()])}\n\nKlein:\n${JSON.stringify([FUND({ titel: 'a' }), FUND({ titel: 'b' })])}`);
+  ist('zwei Listen (Wichtig/Klein): nur die letzte wird gelesen, der Rest ist als MÖGLICHER VERLUST gekennzeichnet', [zwei.ok, sicher(() => zwei.zaehlung.gelesen), sicher(() => zwei.zaehlung.rohtitel), sicher(() => zwei.status), sicher(() => zwei.pruefen.some(g => g.includes('3 «titel»-Felder')))], [true, 2, 3, 'pruefen', true]);
+  ist('Schema zuerst, dann die Antwort: gelesen wird die Antwort, Status «pruefen» (nicht unterscheidbar von zwei Gruppen)', (() => { const r = lesen(`Schema: ${JSON.stringify([FUND({ titel: 'Beispiel' })])}\nAntwort: ${JSON.stringify(f2)}`); return [zahl(r), r.status]; })(), [[2, 2, 0, true], 'pruefen']);
+  ist('eine frühere kaputte Liste vor einer gültigen: Status «pruefen»', sicher(() => lesen(`[{"titel": "x" "schwere": }]\n${JSON.stringify(f2)}`).status), 'pruefen');
+  ist('sauberer Fall: Status ok, keine Hinweise', (() => { const r = lesen(JSON.stringify(f2)); return [r.status, r.pruefen]; })(), ['ok', []]);
+  ist('weniger «titel»-Felder als gelesen (Funde ohne Titel) ist kein Verlust: Status ok', sicher(() => lesen(JSON.stringify([FUND(), 'Text', 7])).status), 'ok');
+  ist('ziehListe meldet Hinweise getrennt vom Fehler', (() => { const r = L.ziehListe(`${JSON.stringify(f2)} [] `); return [r.ok, r.liste?.length, r.hinweise?.length]; })(), [true, 2, 1]);
+}
+{
+  const b = zaehlung => L.baueBericht({ funde: [], zaehlung, pruefen: [], modell: 'm', aufwand: 'high', dateien: DATEIEN });
+  ist('Bericht: Zählabweichung wird als Warnung gezeigt, Übereinstimmung als «stimmt»', [b({ gelesen: 2, ausgewertet: 2, unvollstaendig: 0, rohtitel: 3, stimmt: true, abweichung: true }).includes('Warnung: im Rohtext stehen 3 «titel»-Felder, gelesen wurden 2'), b({ gelesen: 2, ausgewertet: 2, unvollstaendig: 0, rohtitel: 2, stimmt: true, abweichung: false }).includes('Gegenzählung im Rohtext: 2 «titel»-Felder, stimmt.')], [true, true]);
+  const mitHinweis = L.baueBericht({ funde: [], zaehlung: { gelesen: 0, ausgewertet: 0, unvollstaendig: 0, rohtitel: 1, stimmt: true, abweichung: true }, pruefen: ['möglicher Verlust'], modell: 'm', aufwand: 'high', dateien: DATEIEN });
+  ist('Bericht: Hinweise zur Sicherheit stehen oben mit «ACHTUNG» und «nie als keine Funde lesen»', [mitHinweis.includes('ACHTUNG'), mitHinweis.includes('möglicher Verlust'), mitHinweis.includes('nie als «keine Funde»')], [true, true, true]);
+  const bose = L.baueBericht({
+    funde: [{ nr: 1, status: 'ausgewertet', schwere: 'wichtig', hinweis: L.HINWEIS, zeile: 1, titel: 'Harmlos\u001b[2J\u001b[H\u001b]0;gefaelscht\u0007\u009b31m‮RTL', datei: 'x\u001b[31mROT', fehlerfall: 'x\n2. [klein] Alles in Ordnung, nichts zu tun\n   a.mjs:1', beleg: 'ok\r\u001b[1A\u001b[2KFunde: 0 gelesen = 0 ausgewertet + 0 unvollständig', unklar: 'frei\u0000\u007f' }],
+    zaehlung: { gelesen: 1, ausgewertet: 1, unvollstaendig: 0, rohtitel: 1, stimmt: true, abweichung: false }, pruefen: [], modell: 'm', aufwand: 'high', dateien: DATEIEN,
+  });
+  ist('Bericht: keine Steuerzeichen aus der Antwort (ESC, BEL, CR, C1, Bidi, NUL)', /[\u0000-\u0009\u000b-\u001f\u007f-\u009f‪-‮⁦-⁩]/.test(bose), false);
+  ist('Bericht: eingebettete Zeilenumbrüche fälschen keinen Eintrag (genau ein «1. [wichtig]»)', bose.split('\n').filter(l => /^\d+\. \[/.test(l)).length, 1);
+  ist('Bericht: der Text bleibt lesbar (Titel und Beleg sind noch da)', [bose.includes('Harmlos'), bose.includes('Alles in Ordnung'), bose.includes('gelesen = 0 ausgewertet')], [true, true, true]);
+  const g = sicher(() => L.verdeckeFunde([{ nr: 1, titel: `Token ${W.shopify}`, datei: 'a.mjs', fehlerfall: 'x', beleg: `const t = "${W.shopify}"`, unklar: `Mail ${W.email}`, luecken: [`steht ${W.email}`] }, { nr: 2, titel: 'sauber', beleg: '' }])) ?? {};
+  ist('verdeckeFunde: Geheimnisse in allen Textfeldern werden verdeckt, Zahl der Treffer gemeldet, sauberer Fund bleibt', sicher(() => [sicherLeer(g.funde, [HEX32, 'max.muster']), g.funde[0].titel, g.funde[1].titel, g.anzahl >= 4]), [true, 'Token [verdeckt]', 'sauber', true]);
+  ist('rein: Steuerzeichen werden zu «?», Zeilenumbrüche je nach Modus', sicher(() => [L.rein('a\u001b[2Jb'), L.rein('a\nb\r\nc', { einzeilig: true }), L.rein('a\r\nb')]), ['a?[2Jb', 'a b c', 'a\nb']);
+}
+
 // ------------------------------------------------------------------------------------------------
 // 6. Ganzer Lauf gegen den falschen codex
 const FAKE_DIR = join(BASIS, 'fake');
@@ -389,6 +539,8 @@ const funde = [
   { titel: 'Rabatt doppelt', schwere: 'wichtig', datei: 'a.mjs', zeile: 1, fehlerfall: 'preis(100) -> 80 (richtig 90)', beleg: 'node -e gibt 80', unklar: false },
   { titel: 'Randfall', schwere: 'klein', datei: 'sub/b.mjs', zeile: 1, fehlerfall: 'a -> b', beleg: '', unklar: 'ob Wert negativ sein darf' },
 ];
+if (fall.loesche) fs.rmSync(fall.loesche, { recursive: true, force: true });
+if (fall.stderrText) process.stderr.write(fall.stderrText);
 switch (fall.fall) {
   case 'ok': process.stdout.write('Hier die Funde:\n\n' + ZAUN + 'json\n' + JSON.stringify(funde, null, 2) + '\n' + ZAUN + '\nENDE\n'); process.stderr.write('tokens used: 123\n'); break;
   case 'leereliste': process.stdout.write('[]\nENDE\n'); break;
@@ -405,6 +557,17 @@ switch (fall.fall) {
   case 'endemitfehler': process.stdout.write('[]\nENDE\n'); process.exit(1); break;
   case 'viel': process.stdout.write('x'.repeat(200000)); break;
   case 'haengt': setInterval(() => {}, 1000); break;
+  case 'roh': process.stdout.write(fall.text); if (fall.exit) process.exit(fall.exit); break;
+  case 'riesig': process.stdout.write('Vorueberlegung '.repeat(Math.ceil(fall.bytes / 15)).slice(0, fall.bytes) + '\n' + JSON.stringify(funde) + '\nENDE\n'); break;
+  case 'ignoriertterm': process.on('SIGTERM', function () {}); setInterval(function () {}, 1000); break;
+  case 'endlos': setInterval(function () { process.stdout.write('x'.repeat(10000)); }, 1); break;
+  case 'enkel': {
+    const g = require('child_process').spawn('sleep', ['25'], { stdio: 'inherit', detached: !!fall.detached });
+    fs.writeFileSync(fall.pidDatei, String(g.pid));
+    g.unref();
+    if (fall.antwort) process.stdout.write(JSON.stringify(funde) + '\nENDE\n'); else setInterval(function () {}, 1000);
+    break;
+  }
   default: process.stderr.write('unbekannter Fall'); process.exit(9);
 }
 `);
@@ -414,6 +577,10 @@ mkdirSync(CODEXHOME);
 writeFileSync(join(CODEXHOME, 'auth.json'), '{}');
 const AUS = join(BASIS, 'ausgabe');
 mkdirSync(AUS);
+// Eigener Temp-Ordner: zwei Testläufe gleichzeitig (oder ein echter Lauf daneben) sehen die Sandkästen des anderen nicht.
+const TEMP = join(BASIS, 'temp');
+mkdirSync(TEMP);
+const FREMD = mkdtempSync(join(tmpdir(), 'zweitmeinung-sandkasten-'));
 const setzeFall = (fall, rest = {}) => {
   writeFileSync(join(FAKE_DIR, 'fall.json'), JSON.stringify({ fall, pruefe: ['sub/b.mjs', 'README.md', '.git', '.env', 'gross', 'node_modules'], ...rest }));
   writeFileSync(join(FAKE_DIR, 'aufruf.json'), '');
@@ -425,10 +592,10 @@ const UMG = (rest = {}) => ({ PATH: process.env.PATH, LIVE: '1', CODEX_BIN: FAKE
 const fahre = async (args, env, opt = {}) => {
   const aus = [];
   const fehl = [];
-  const code = await main(args, env, { wurzel: REPO, io: { aus: t => aus.push(t), fehler: t => fehl.push(t) }, ...opt });
+  const code = await main(args, env, { wurzel: REPO, temp: TEMP, io: { aus: t => aus.push(t), fehler: t => fehl.push(t) }, ...opt });
   return { code, aus: aus.join('\n'), fehl: fehl.join('\n') };
 };
-const sandkaesten = () => readdirSync(tmpdir()).filter(n => n.startsWith('zweitmeinung-sandkasten-') || n.startsWith('zweitmeinung-home-'));
+const sandkaesten = () => readdirSync(TEMP).filter(n => n.startsWith('zweitmeinung-sandkasten-') || n.startsWith('zweitmeinung-home-'));
 const SK0 = sandkaesten();
 const dateienIn = ordner => readdirSync(ordner).sort();
 const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsWith(ende)); return n.map(x => join(ordner, x)); };
@@ -442,8 +609,8 @@ const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsW
   ist('Lauf ok: Exit 0, Bericht mit Zählung 2 gelesen = 1 ausgewertet + 1 unvollständig', [r.code, r.aus.includes('2 gelesen = 1 ausgewertet + 1 unvollständig')], [0, true]);
   ist('Lauf ok: die Umgebung des falschen codex enthält NUR PATH, HOME, CODEX_HOME', Object.keys(a.env).sort(), ['CODEX_HOME', 'HOME', 'PATH']);
   ist('Lauf ok: CODEX_HOME kommt aus CODEX_HOME_ZWEITMEINUNG, PATH ist der bereinigte Pfad', [a.env.CODEX_HOME, a.env.PATH], [CODEXHOME, L.bereinigterPfad(process.env.PATH)]);
-  ist('Lauf ok: HOME ist ein neuer leerer Ordner im Temp', [a.home.startsWith(join(tmpdir(), 'zweitmeinung-home-')), a.homeListe], [true, []]);
-  ist('Lauf ok: Arbeitsverzeichnis ist der Sandkasten, ein neuer Ordner im Temp mit Rechten 0700', [a.cwd.startsWith(join(tmpdir(), 'zweitmeinung-sandkasten-')), a.cwdMode.toString(8)], [true, '700']);
+  ist('Lauf ok: HOME ist ein neuer leerer Ordner im Temp', [a.home.startsWith(join(TEMP, 'zweitmeinung-home-')), a.homeListe], [true, []]);
+  ist('Lauf ok: Arbeitsverzeichnis ist der Sandkasten, ein neuer Ordner im Temp mit Rechten 0700', [a.cwd.startsWith(join(TEMP, 'zweitmeinung-sandkasten-')), a.cwdMode.toString(8)], [true, '700']);
   ist('Lauf ok: im Sandkasten liegen genau die zwei Dateien (0600), sonst nichts', a.baum, ['a.mjs:600', 'sub/b.mjs:600']);
   ist('Lauf ok: Repo und seine übrigen Dateien sind im Sandkasten nicht zu sehen', a.sichtbar, [true, false, false, false, false, false]);
   ist('Lauf ok: genau die vorgegebene Argumentliste, -C zeigt auf den Sandkasten', a.argv, ['exec', '-m', 'gpt-6-astra', '-c', 'model_reasoning_effort=high', '-s', 'read-only', '--skip-git-repo-check', '-C', a.cwd, '-']);
@@ -590,7 +757,7 @@ const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsW
 // 6h. der echte Einstieg als eigener Prozess (mit dem falschen codex)
 {
   const rel = 'automation/codex_zweitmeinung.mjs';
-  const prozess = (rest = {}) => spawnSync(process.execPath, [CLI, rel], { cwd: ECHTES_REPO, encoding: 'utf8', env: { PATH: process.env.PATH, ZWEITMEINUNG_AUSGABE_ORDNER: AUS, ...rest } });
+  const prozess = (rest = {}) => spawnSync(process.execPath, [CLI, rel], { cwd: ECHTES_REPO, encoding: 'utf8', env: { PATH: process.env.PATH, TMPDIR: TEMP, ZWEITMEINUNG_AUSGABE_ORDNER: AUS, ...rest } });
   setzeFall('ok');
   const trocken = prozess();
   ist('Prozess: Trockenlauf von der Kommandozeile, Exit 0, Codex nicht gestartet', [trocken.status, trocken.stdout.includes('TROCKENLAUF'), aufruf()], [0, true, null]);
@@ -605,21 +772,203 @@ const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsW
   ist('Prozess: Absturz endet mit Exit-Code 5', prozess({ LIVE: '1', CODEX_BIN: FAKE, CODEX_HOME_ZWEITMEINUNG: CODEXHOME }).status, 5);
   ist('Prozess: Geheimnis → Exit-Code 3', spawnSync(process.execPath, [CLI, 'codex-mods/luxe-codex/test/kern.mjs', '--auftrag', `Mail ${W.email}`], { cwd: ECHTES_REPO, encoding: 'utf8', env: { PATH: process.env.PATH } }).status, 3);
   ist('Prozess: Datei ausserhalb → Exit-Code 2', spawnSync(process.execPath, [CLI, '/etc/passwd'], { cwd: ECHTES_REPO, encoding: 'utf8', env: { PATH: process.env.PATH } }).status, 2);
-  // SIGTERM an den laufenden Läufer: Kind beenden, aufräumen
-  setzeFall('haengt');
-  const kind = spawn(process.execPath, [CLI, rel], { cwd: ECHTES_REPO, env: { PATH: process.env.PATH, LIVE: '1', CODEX_BIN: FAKE, CODEX_HOME_ZWEITMEINUNG: CODEXHOME, ZWEITMEINUNG_AUSGABE_ORDNER: AUS }, stdio: ['ignore', 'pipe', 'pipe'] });
-  let fehlText = '';
-  kind.stderr.on('data', c => { fehlText += c; });
-  const ende = new Promise(res => kind.on('close', (code, sig) => res([code, sig])));
-  for (let i = 0; i < 100 && !aufruf(); i += 1) await schlafe(50);
-  const b = aufruf();
-  kind.kill('SIGTERM');
-  const [code, sig] = await ende;
-  await schlafe(150);
-  let lebt = true;
-  try { process.kill(b.pid, 0); } catch { lebt = false; }
-  ist('SIGTERM an den Läufer: Exit 5 „Signal“, falscher codex beendet, Sandkasten und HOME gelöscht', [code, sig, fehlText.includes('Signal'), lebt, existsSync(b.cwd), existsSync(b.home)], [5, null, true, false, false, false]);
+  // Ein Signal an den laufenden Läufer: Kind beenden, aufräumen, Exit 5 (auch SIGHUP bei geschlossenem Terminal und SIGQUIT)
+  for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP', 'SIGQUIT']) {
+    setzeFall('haengt');
+    const kind = spawn(process.execPath, [CLI, rel], { cwd: ECHTES_REPO, env: { PATH: process.env.PATH, TMPDIR: TEMP, LIVE: '1', CODEX_BIN: FAKE, CODEX_HOME_ZWEITMEINUNG: CODEXHOME, ZWEITMEINUNG_AUSGABE_ORDNER: AUS }, stdio: ['ignore', 'pipe', 'pipe'] });
+    let fehlText = '';
+    kind.stderr.on('data', c => { fehlText += c; });
+    const ende = new Promise(res => kind.on('close', (code, sig) => res([code, sig])));
+    for (let i = 0; i < 100 && !aufruf(); i += 1) await schlafe(50);
+    const b = aufruf();
+    kind.kill(signal);
+    const erg = await mitFrist(ende, 20_000);
+    const [code, sig] = Array.isArray(erg) ? erg : ['kein Ende', null];
+    await schlafe(150);
+    const lebt = b ? lebtNoch(b.pid) : 'kein Kind gestartet';
+    ist(`${signal} an den Läufer: Exit 5 „Signal“, falscher codex beendet, Sandkasten und HOME gelöscht`, [code, sig, fehlText.includes('Signal'), lebt, b ? existsSync(b.cwd) : null, b ? existsSync(b.home) : null], [5, null, true, false, false, false]);
+    if (b) toete(b.pid);
+    kind.kill('SIGKILL');
+  }
+  // zweites Signal kurz nach dem ersten: kein ungeschützter Abbruch (process.once liess das zweite Signal den Läufer töten)
+  {
+    setzeFall('haengt');
+    const kind = spawn(process.execPath, [CLI, rel], { cwd: ECHTES_REPO, env: { PATH: process.env.PATH, TMPDIR: TEMP, LIVE: '1', CODEX_BIN: FAKE, CODEX_HOME_ZWEITMEINUNG: CODEXHOME, ZWEITMEINUNG_AUSGABE_ORDNER: AUS }, stdio: ['ignore', 'pipe', 'pipe'] });
+    const ende = new Promise(res => kind.on('close', (code, sig) => res([code, sig])));
+    for (let i = 0; i < 100 && !aufruf(); i += 1) await schlafe(50);
+    const b = aufruf();
+    kind.kill('SIGINT');
+    kind.kill('SIGINT');
+    const erg = await mitFrist(ende, 20_000);
+    const [code, sig] = Array.isArray(erg) ? erg : ['kein Ende', null];
+    await schlafe(150);
+    ist('zwei Signale hintereinander: Exit 5, falscher codex beendet, Sandkasten gelöscht', [code, sig, b ? lebtNoch(b.pid) : null, b ? existsSync(b.cwd) : null], [5, null, false, false]);
+    if (b) toete(b.pid);
+    kind.kill('SIGKILL');
+  }
 }
 
+// ------------------------------------------------------------------------------------------------
+// 6i. Fund-Runde 2: «[]» im Text, Exit 6, Steuerzeichen, Geheimnisse in der Antwort, Schreibfehler, Prozessende
+{
+  const F1 = { titel: 'Rabatt doppelt', schwere: 'wichtig', datei: 'a.mjs', zeile: 1, fehlerfall: 'preis(100) -> 80 (richtig 90)', beleg: 'node -e gibt 80', unklar: false };
+  const F2 = { ...F1, titel: 'Randfall', schwere: 'klein', datei: 'sub/b.mjs' };
+  const roh = async (text, rest = {}, env = {}) => {
+    setzeFall('roh', { text, ...rest });
+    const vorher = dateienIn(AUS);
+    const r = await fahre(['a.mjs', 'sub/b.mjs'], UMG(env));
+    const neu = dateienIn(AUS).filter(n => !vorher.includes(n));
+    const fj = neu.find(n => n.endsWith('.funde.json'));
+    const tx = neu.find(n => n.endsWith('.txt') && !n.endsWith('.stderr.txt'));
+    return { ...r, neu, funde: fj ? JSON.parse(readFileSync(join(AUS, fj), 'utf8')) : null, txt: tx ? readFileSync(join(AUS, tx), 'utf8') : null };
+  };
+  const p1 = await roh('Fund (wichtig): In a.mjs Zeile 1 wird der Rabatt doppelt abgezogen. Die Liste `acc = []` bleibt leer.\nENDE\n');
+  ist('Lauf: Prosa mit «[]» im Text → Exit 5 (nicht Exit 0 «keine Funde»), keine Funde-Datei, nichts auf stdout', [p1.code, p1.fehl.includes('nicht eindeutig'), p1.funde, p1.aus], [5, true, null, '']);
+  const p2 = await roh('Funde:\n- [ ] a.mjs:1 Rabatt doppelt abgezogen\nENDE\n');
+  ist('Lauf: Markdown-Checkbox «- [ ]» → Exit 5, keine Funde-Datei', [p2.code, p2.funde], [5, null]);
+  const p3 = await roh(`Wichtig:\n${JSON.stringify([F1])}\n\nKlein:\n${JSON.stringify([F2, { ...F2, titel: 'drei' }])}\nENDE\n`);
+  ist('Lauf: zwei Listen → Exit 6 (nicht 0), Bericht mit ACHTUNG, Funde-Datei mit Status «pruefen», Warnung auf stderr', [p3.code, p3.aus.includes('ACHTUNG'), p3.funde?.status, p3.funde?.zaehlung.gelesen, p3.fehl.includes('nie als «keine Funde»')], [6, true, 'pruefen', 2, true]);
+  const p4 = await roh(`${JSON.stringify([F1, F2])}\nHinweis: ohne Funde wäre die Antwort [].\nENDE\n`);
+  ist('Lauf: Liste mit 2 Funden, danach «[]» → Exit 6 und die 2 Funde stehen in der Datei (nicht funde:[])', [p4.code, p4.funde?.funde.length, p4.funde?.status], [6, 2, 'pruefen']);
+  const p5 = await roh(`${JSON.stringify([F1, F2])}\nENDE\n`);
+  ist('Lauf: saubere Liste → Exit 0, Status ok, kein ACHTUNG', [p5.code, p5.funde?.status, p5.aus.includes('ACHTUNG')], [0, 'ok', false]);
+  const bose = { ...F1, titel: 'Harmlos\u001b[2J\u001b]0;gefaelscht\u0007', fehlerfall: 'x\n2. [klein] Alles in Ordnung, nichts zu tun', beleg: 'ok\r\u001b[1A\u001b[2KFunde: 0 gelesen = 0 ausgewertet + 0 unvollständig' };
+  const p6 = await roh(`${JSON.stringify([bose])}\nENDE\n`);
+  ist('Lauf: Steuerzeichen und Zeilenumbrüche der Antwort erreichen das Terminal nicht, funde.json bleibt unverfälscht', [p6.code, /[\u0000-\u0009\u000b-\u001f\u007f-\u009f]/.test(p6.aus), p6.aus.split('\n').filter(l => /^\d+\. \[/.test(l)).length, p6.funde?.funde[0].titel.includes('\u001b')], [0, false, 1, true]);
+  const p7 = await roh(`${JSON.stringify([{ ...F1, beleg: `const t = "${W.shopify}" und ${W.email}` }])}\nENDE\n`);
+  ist('Lauf: ein Geheimnis in der Antwort steht weder im Bericht noch in der Antwortdatei noch in der Funde-Datei, der Bericht sagt es', [p7.code, sicherLeer([p7.aus, p7.fehl, p7.txt, p7.funde], [HEX32, 'max.muster']), p7.aus.includes('verdeckt')], [0, true, true]);
+  setzeFall('ok', { stderrText: `Fehler bei ${W.email} und ${W.shopify}\n` });
+  {
+    const vorher = dateienIn(AUS);
+    const r = await fahre(['a.mjs', 'sub/b.mjs'], UMG());
+    const se = dateienIn(AUS).filter(n => !vorher.includes(n) && n.endsWith('.stderr.txt'));
+    const seText = se.length ? readFileSync(join(AUS, se[0]), 'utf8') : '';
+    ist('stderr-Datei: Geheimnisse und Adressen aus der Fehlerausgabe von Codex sind verdeckt', [r.code, seText.includes('[verdeckt]'), sicherLeer(seText, [HEX32, 'max.muster'])], [0, true, true]);
+  }
+
+  // Ausgabeordner verschwindet während des Laufs: Limit/Absturz behalten ihren Exit-Code, nichts geht still verloren
+  for (const [fall, erwartet, wort] of [['limit', 4, '12:06 PM'], ['absturz', 5, 'Code 101'], ['ok', 0, 'Rabatt doppelt']]) {
+    const AUS2 = join(BASIS, `ausgabe-weg-${fall}`);
+    mkdirSync(AUS2);
+    setzeFall(fall, { loesche: AUS2 });
+    const r = await fahre(['a.mjs', 'sub/b.mjs'], UMG({ ZWEITMEINUNG_AUSGABE_ORDNER: AUS2 }));
+    ist(`Ausgabeordner verschwindet während des Laufs (${fall}): Exit ${erwartet} statt 1, «nicht gespeichert» gemeldet, ${fall === 'ok' ? 'Bericht und Antwort erscheinen trotzdem' : 'der Grund bleibt sichtbar'}`, [r.code, r.fehl.includes(wort), r.fehl.includes('nicht gespeichert'), fall === 'ok' ? r.aus.includes('Funde: 2 gelesen') : true], [erwartet, true, true, true]);
+  }
+  setzeFall('ok');
+  const x = await fahre(['a.mjs'], UMG(), { wurzel: join(AUSSEN, 'gibt-es-nicht') });
+  ist('unerwarteter Fehler (Repo-Ordner fehlt) → Exit 1 mit «unerwarteter Fehler», Codex nicht gestartet', [x.code, x.fehl.includes('unerwarteter Fehler'), aufruf()], [1, true, null]);
+
+  // Schreibbarkeit wird VOR dem Start geprüft (kein Kontingent für eine Antwort, die nirgends hin kann)
+  {
+    const vor = readdirSync(AUSSEN).sort();
+    ist('pruefeSchreibbar: ein schreibbarer Ordner → null, und keine Probedatei bleibt liegen', [sicher(() => L.pruefeSchreibbar(AUSSEN, 'der Ausgabeordner')), readdirSync(AUSSEN).sort()], [null, vor]);
+    const kaputtFs = { ...fsAlle, openSync: () => { const e = new Error('Zugriff verweigert'); e.code = 'EACCES'; throw e; } };
+    ist('pruefeSchreibbar: ein Fehler wird als Grund mit Fehlercode gemeldet', String(sicher(() => L.pruefeSchreibbar(AUSSEN, 'der Ausgabeordner', kaputtFs))).includes('EACCES'), true);
+  }
+  if (existsSync('/proc/self/fdinfo')) {
+    setzeFall('ok');
+    const t = await fahre(['a.mjs'], UMG({ LIVE: undefined, ZWEITMEINUNG_AUSGABE_ORDNER: '/proc/self/fdinfo' }));
+    ist('Ausgabeordner, in dem man nicht schreiben kann: der Trockenlauf sagt «Bereit für LIVE=1: NEIN … nicht beschreibbar»', [t.code, t.aus.includes('Bereit für LIVE=1: NEIN'), t.aus.includes('nicht beschreibbar')], [0, true, true]);
+    const l = await fahre(['a.mjs'], UMG({ ZWEITMEINUNG_AUSGABE_ORDNER: '/proc/self/fdinfo' }));
+    ist('… und LIVE=1 endet mit Exit 2, BEVOR Codex startet', [l.code, aufruf(), sandkaesten()], [2, null, SK0]);
+    const tl = await fahre(['a.mjs'], UMG(), { temp: '/proc/self/fdinfo' });
+    ist('Temp-Ordner, in dem man nicht schreiben kann: Exit 2 vor dem Start', [tl.code, tl.fehl.includes('nicht beschreibbar'), aufruf()], [2, true, null]);
+  }
+  ist('pruefeStart: ein Programmname ohne «/» wird in den PATH-Ordnern gesucht', [sicher(() => L.pruefeStart({ bin: 'codex', codexHome: AUSSEN, pfad: FAKE_DIR })), sicher(() => L.pruefeStart({ bin: 'codex', codexHome: AUSSEN, pfad: AUSSEN }).length)], [[], 1]);
+  setzeFall('ok');
+  const t2 = await fahre(['a.mjs'], UMG({ LIVE: undefined, CODEX_BIN: 'codexx-gibt-es-nicht' }));
+  ist('CODEX_BIN ohne «/», den es im PATH nicht gibt: der Trockenlauf sagt «Bereit für LIVE=1: NEIN»', [t2.aus.includes('Bereit für LIVE=1: NEIN'), t2.aus.includes('in keinem Ordner des PATH')], [true, true]);
+  const l2 = await fahre(['a.mjs'], UMG({ CODEX_BIN: 'codexx-gibt-es-nicht' }));
+  ist('… und LIVE=1 endet mit Exit 2 vor dem Sandkasten', [l2.code, sandkaesten(), aufruf()], [2, SK0, null]);
+
+  // Teilschreibung
+  {
+    const teilFs = { ...fsAlle, writeSync: (fd, buf, off = 0, len = buf.length - off) => fsAlle.writeSync(fd, buf, off, Math.min(len, 1000)) };
+    const ordner = mkdtempSync(join(BASIS, 'teil-'));
+    const text = 'Zeile mit Umlaut ä\n'.repeat(500);
+    const pfad = sicher(() => K.schreibeDatei(ordner, 'a.txt', text, teilFs));
+    ist('schreibeDatei: eine Teilschreibung (höchstens 1000 Bytes je Aufruf) wird bis zum Ende fortgesetzt', sicher(() => readFileSync(pfad, 'utf8') === text), true);
+    const nullFs = { ...fsAlle, writeSync: () => 0 };
+    ist('schreibeDatei: kommt nichts mehr hinaus, ist es ein Fehler ohne Endlosschleife, und die halbe Datei bleibt nicht liegen', [String(sicher(() => K.schreibeDatei(ordner, 'b.txt', 'abc', nullFs))).startsWith('Ausnahme'), existsSync(join(ordner, 'b.txt'))], [true, false]);
+    ist('schreibeDatei: Rechte 0600 und eine leere Antwort ergibt eine leere Datei', sicher(() => { const q = K.schreibeDatei(ordner, 'c.txt', ''); return [statSync(q).size, (statSync(q).mode & 0o777).toString(8)]; }), [0, '600']);
+  }
+  if (spawnSync('bash', ['-c', 'exit 0']).status === 0) {
+    const AUS3 = join(BASIS, 'ausgabe-ulimit');
+    mkdirSync(AUS3);
+    setzeFall('riesig', { bytes: 110_000 });
+    const u = spawnSync('bash', ['-c', 'ulimit -f 64 && exec "$0" "$@"', process.execPath, CLI, 'automation/codex_zweitmeinung.mjs'], { cwd: ECHTES_REPO, encoding: 'utf8', env: { PATH: process.env.PATH, TMPDIR: TEMP, LIVE: '1', CODEX_BIN: FAKE, CODEX_HOME_ZWEITMEINUNG: CODEXHOME, ZWEITMEINUNG_AUSGABE_ORDNER: AUS3 } });
+    const txts = readdirSync(AUS3).filter(n => n.endsWith('.txt') && !n.endsWith('.stderr.txt'));
+    ist('Dateigrössen-Limit (ulimit -f 64) bei einer 110-KB-Antwort: kein abgeschnittener Beleg bleibt liegen, der Fehler wird gemeldet', [u.stderr.includes('nicht gespeichert'), txts.every(n => readFileSync(join(AUS3, n), 'utf8').trimEnd().endsWith('ENDE'))], [true, true]);
+  }
+
+  // Namen relativ zum Arbeitsordner, Ordner mit «..»-Namen im Repo
+  {
+    const r = spawnSync(process.execPath, [CLI, 'kern.mjs'], { cwd: join(ECHTES_REPO, 'codex-mods', 'luxe-codex', 'test'), encoding: 'utf8', env: { PATH: process.env.PATH, TMPDIR: TEMP } });
+    ist('Prozess aus einem Unterordner des Repos: ein Name ohne Pfad meint die Datei in diesem Ordner', [r.status, r.stdout.includes('codex-mods/luxe-codex/test/kern.mjs'), r.stdout.includes('Dateien: 1')], [0, true, true]);
+    const rc = await fahre(['README.md'], UMG({ LIVE: undefined }), { cwd: join(REPO, 'dropship') });
+    ist('main mit Arbeitsordner im Repo: README.md ist dropship/README.md, nicht die Datei der Wurzel', [rc.code, rc.aus.includes('dropship/README.md  ')], [0, true]);
+    setzeFall('ok');
+    ist('Ausgabeordner und Temp-Ordner mit Namen «..ausgabe» im Repo → Exit 2, Codex nicht gestartet', [(await fahre(['a.mjs'], UMG({ ZWEITMEINUNG_AUSGABE_ORDNER: join(REPO, '..ausgabe') }))).code, (await fahre(['a.mjs'], UMG(), { temp: join(REPO, '..ausgabe') })).code, aufruf()], [2, 2, null]);
+  }
+
+  // Ergebnis einordnen: Stichwörter nur in echten Fehlermeldungen
+  {
+    const g = rest => { const k = L.klassifiziere(R(rest)); return [k.exit, k.grund.includes('ENDE fehlt')]; };
+    ist('«401» im Text der Antwort ist kein Anmeldefehler (der Grund bleibt «ENDE fehlt»)', g({ stdout: '[{"titel":"Shopify-Client wiederholt bei 401 endlos"}]\n' }), [5, true]);
+    ist('«12,401» im Token-Zähler von stderr ist kein Anmeldefehler', g({ stdout: '[{"titel": "Halb', stderr: 'tokens used: 12,401\n' }), [5, true]);
+    ist('«timed out» im Text der Antwort ist kein Netzfehler', g({ stdout: '[{"titel":"Abfrage läuft in ein timed out' }), [5, true]);
+    const grund = rest => L.klassifiziere(R(rest)).grund;
+    ist('die Stichwörter zählen nur in Fehlermeldungen: «HTTP 401» und «request timed out» als Befund IN der Antwort (Exit 0, ohne ENDE) bleiben «ENDE fehlt»', [g({ stdout: '[{"titel":"Antwort hat HTTP 401 Unauthorized als Fehlerfall"}]\n' }), g({ stdout: '[{"titel":"Der request timed out nach 30 s"}]\n' })], [[5, true], [5, true]]);
+    ist('… aber bei einem Fehlercode mit kurzem Text auf stdout werden sie erkannt (Codex meldet den Fehler dort)', [grund({ code: 1, stdout: 'Error: not logged in\n' }).includes('Anmeldefehler'), grund({ code: 1, stdout: 'Error: request timed out\n' }).includes('Netzfehler')], [true, true]);
+    ist('echte Fehler bleiben erkannt: «HTTP 401», «Request timed out», «connection timed out»', [grund({ code: 1, stderr: 'HTTP 401\n' }).includes('Anmeldefehler'), grund({ code: 1, stderr: 'Error: request timed out after 30s\n' }).includes('Netzfehler'), grund({ code: 1, stderr: 'connection timed out\n' }).includes('Netzfehler')], [true, true, true]);
+  }
+
+  // Prozessende: Gruppe, Eskalation, Überlauf, Enkel mit geerbten Pipes
+  {
+    const umg = { PATH: process.env.PATH, HOME: FAKE_DIR, CODEX_HOME: CODEXHOME };
+    const PID = join(FAKE_DIR, 'enkel.pid');
+    const start = opt => fuehreAus({ bin: FAKE, argv: [], env: umg, cwd: FAKE_DIR, stdin: '', ...opt });
+    setzeFall('enkel', { pidDatei: PID, detached: false, antwort: false });
+    let t0 = Date.now();
+    let e = await mitFrist(start({ zeitlimitMs: 1500 }), 40_000);
+    let enkel = Number(sicher(() => readFileSync(PID, 'utf8')));
+    await schlafe(200);
+    ist('Zeitlimit beendet auch den Enkelprozess (Prozessgruppe), und der Lauf kehrt nach dem Limit zurück, nicht erst wenn der Enkel endet', [e.zeitueberschreitung, Date.now() - t0 < 15_000, lebtNoch(enkel)], [true, true, false]);
+    toete(enkel);
+
+    setzeFall('ignoriertterm');
+    t0 = Date.now();
+    e = await mitFrist(start({ zeitlimitMs: 1500 }), 30_000);
+    const ig = aufruf();
+    await schlafe(200);
+    ist('ein Kind, das SIGTERM ignoriert, wird mit SIGKILL beendet und der Lauf kehrt zurück', [e.zeitueberschreitung === true, Date.now() - t0 < 12_000, ig ? lebtNoch(ig.pid) : 'kein Kind'], [true, true, false]);
+    if (ig) toete(ig.pid);
+
+    setzeFall('endlos');
+    t0 = Date.now();
+    e = await mitFrist(start({ zeitlimitMs: 20_000, maxBytes: 1000 }), 30_000);
+    const en = aufruf();
+    await schlafe(200);
+    ist('Überlauf: das endlos schreibende Kind wird sofort beendet, nicht erst beim Zeitlimit', [e.ueberlauf, Date.now() - t0 < 8000, en ? lebtNoch(en.pid) : 'kein Kind'], [true, true, false]);
+    if (en) toete(en.pid);
+
+    setzeFall('enkel', { pidDatei: PID, detached: false, antwort: true });
+    t0 = Date.now();
+    const f10 = await mitFrist(fahre(['a.mjs', 'sub/b.mjs'], UMG({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: '0.1' })), 40_000);
+    enkel = Number(sicher(() => readFileSync(PID, 'utf8')));
+    await schlafe(200);
+    ist('vollständige Antwort, aber ein Enkel hält die Pipes offen: Exit 0 (kein falsches «Zeitlimit»), schnell, der Enkel wird beendet', [f10.code, Date.now() - t0 < 5000, lebtNoch(enkel)], [0, true, false]);
+    toete(enkel);
+
+    setzeFall('enkel', { pidDatei: PID, detached: true, antwort: false });
+    t0 = Date.now();
+    const f21 = await mitFrist(fahre(['a.mjs'], UMG({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: '0.05' })), 40_000);
+    enkel = Number(sicher(() => readFileSync(PID, 'utf8')));
+    ist('das Zeitlimit gilt auch, wenn ein abgelöster Enkel (eigene Sitzung) die Pipes hält: Exit 5 nach dem Limit, nicht erst wenn der Enkel endet', [f21.code, String(f21.fehl).includes('Zeitlimit'), Date.now() - t0 < 12_000], [5, true, true]);
+    toete(enkel);
+  }
+}
+
+rmSync(FREMD, { recursive: true, force: true });
 rmSync(BASIS, { recursive: true, force: true });
 fertig();

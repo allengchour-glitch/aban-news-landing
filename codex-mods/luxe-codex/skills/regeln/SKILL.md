@@ -23,14 +23,14 @@ Die Leitplanken sind Projektregeln, die der Hook `leitplanken.mjs` vor jedem Wer
 2. Kein `pkill` und kein `killall`.
 3. Kein `git add -A` und kein `git add .`.
 4. `dropship/_SOCIAL_STOPP` wird nie neu angelegt (Löschen und Lesen bleiben erlaubt).
-5. Kein `LIVE=1` ohne vorherigen Trockenlauf desselben Skripts in dieser Sitzung. Das gilt, wo im Befehl ein Skript erkennbar ist (`node datei.mjs`, `./datei.sh`); bei `npm run …` und Ähnlichem wird nichts geraten, die Ausgabe zeigt diese Grenze als «Grenze, gemessen».
+5. Kein `LIVE=1` ohne vorherigen Trockenlauf desselben Skripts in dieser Sitzung. Das gilt, wo im Befehl ein Skript erkennbar ist (`node datei.mjs`, `./datei.sh`); bei «npm run …» und Ähnlichem wird nichts geraten, die Ausgabe zeigt diese Grenze als «Grenze, gemessen».
 6. Keine Geheimnisse in Dateien.
 
 Weicht die Kurzliste von der Ausgabe ab, gilt die Ausgabe.
 
 ## Auswege
 
-Zu Force-Push, `pkill`, `git add -A` und scharfen Läufen gibt es je eine Ausweg-Variable (`LUXE_FORCE_OK`, `LUXE_KILL_OK`, `LUXE_ADD_OK`, `LUXE_LIVE_OK`, jeweils `=1` vor dem Befehl), zu den Geheimnissen nur den Marker `luxe-geheim-ok` für erfundene Testwerte, zu `dropship/_SOCIAL_STOPP` nichts. Sie gelten nur nach dem ausdrücklichen Ja des Besitzers in DIESEM Chat. Dieser Skill hilft nie dabei, eine Leitplanke zu umgehen, und ein Ausweg wird nie von dir allein gesetzt. Eine Leitplanke ist eine Gedächtnisstütze, keine Sicherheitsgrenze.
+Zu den Regeln für Force-Push, pkill, git add und scharfe Läufe gibt es je eine Ausweg-Variable (`LUXE_FORCE_OK`, `LUXE_KILL_OK`, `LUXE_ADD_OK`, `LUXE_LIVE_OK`, jeweils `=1` vor dem Befehl), zu den Geheimnissen nur den Marker `luxe-geheim-ok` für erfundene Testwerte, zu `dropship/_SOCIAL_STOPP` nichts. Sie gelten nur nach dem ausdrücklichen Ja des Besitzers in DIESEM Chat. Dieser Skill hilft nie dabei, eine Leitplanke zu umgehen, und ein Ausweg wird nie von dir allein gesetzt. Eine Leitplanke ist eine Gedächtnisstütze, keine Sicherheitsgrenze.
 
 ## Ausgang des Skripts
 

@@ -86,11 +86,27 @@ export function liesKonfiguration(env = {}, { auftrag } = {}) {
   };
 }
 
-/** Was für LIVE=1 fehlt: Liste von Gründen (leer = bereit). Prüft Dateisystem, startet nichts. */
-export function pruefeStart({ bin, codexHome }, fsx = fs) {
+/** Der Pfad eines ausführbaren Programms in den (absoluten) Ordnern von `pfad`, sonst `null`. */
+function findeImPfad(name, pfad, fsx) {
+  for (const ordner of bereinigterPfad(pfad).split(':')) {
+    const kandidat = path.join(ordner, name);
+    try {
+      if (fsx.statSync(kandidat).isFile()) { fsx.accessSync(kandidat, fs.constants.X_OK); return kandidat; }
+    } catch { /* nächster Ordner */ }
+  }
+  return null;
+}
+
+/**
+ * Was für LIVE=1 fehlt: Liste von Gründen (leer = bereit). Prüft Dateisystem, startet nichts.
+ * `pfad` (der PATH des Kindes): nur dann wird ein Programmname ohne «/» dort gesucht.
+ */
+export function pruefeStart({ bin, codexHome, pfad }, fsx = fs) {
   const g = [];
   if (!bin) g.push('CODEX_BIN fehlt (Pfad zum codex-Programm, kein Standardwert)');
-  else if (bin.includes('/') || bin.includes('\\')) {
+  else if (!bin.includes('/') && !bin.includes('\\')) {
+    if (pfad !== undefined && !findeImPfad(bin, pfad, fsx)) g.push(`CODEX_BIN «${rein(bin, { einzeilig: true }).slice(0, 40)}» steht in keinem Ordner des PATH (oder ist dort nicht ausführbar)`);
+  } else {
     if (!path.isAbsolute(bin)) g.push('CODEX_BIN muss ein absoluter Pfad sein oder ein Programmname ohne «/»');
     else {
       try {
@@ -113,8 +129,15 @@ export function pruefeStart({ bin, codexHome }, fsx = fs) {
 // Dateien prüfen und lesen
 
 const SEGMENT_TRENNER = /[\\/]+/;
-const ENDUNGEN_SCHLUESSEL = ['.pem', '.key', '.p12', '.pfx'];
-const NAMEN_ZUGANG = ['.npmrc', '.netrc', 'auth.json'];
+const ENDUNGEN_SCHLUESSEL = ['.pem', '.key', '.p12', '.pfx', '.p8', '.jks', '.keystore', '.ppk', '.kdbx', '.tfvars'];
+const NAMEN_ZUGANG = [
+  '.npmrc', '.netrc', '_netrc', 'auth.json', '.pgpass', '.htpasswd', '.pypirc', '.git-credentials', '.dockercfg', '.s3cfg', '.boto', '.my.cnf',
+  '.flaskenv', 'credentials', 'token.json', 'terraform.tfstate', 'terraform.tfstate.backup', 'id_rsa', 'id_dsa', 'id_ecdsa', 'id_ed25519',
+];
+// Ordner, in denen Zugangsdaten liegen (~/.aws/credentials, ~/.ssh/id_*, ~/.kube/config, ~/.docker/config.json)
+const ORDNER_ZUGANG = ['.aws', '.ssh', '.gnupg', '.kube', '.docker'];
+// Datendateien mit sprechendem Namen: credentials.json, secrets.yml, service-account-x.json, client_secret_123.json; Code wie secrets.mjs bleibt erlaubt.
+const MUSTER_ZUGANG_NAME = /^(?:(?:credentials|secrets?)\.(?:json|ya?ml|toml|ini|txt|env|xml|properties)|service[-_]account.*\.json|client_secret.*\.json)$/;
 
 /** Grund, warum ein relativer Pfad nie gesendet wird; `null` = erlaubt. */
 export function verbotenerPfad(rel) {
@@ -123,16 +146,19 @@ export function verbotenerPfad(rel) {
     if (t === '.git') return 'liegt in .git/';
     if (t === 'node_modules') return 'liegt in node_modules/';
     if (t.startsWith('.env')) return 'ist eine .env*-Datei';
+    if (ORDNER_ZUGANG.includes(t)) return `liegt in ${t}/ (Zugangsdaten)`;
   }
   const name = teile[teile.length - 1] ?? '';
-  if (NAMEN_ZUGANG.includes(name)) return `${name} enthält Zugangsdaten`;
+  if (NAMEN_ZUGANG.includes(name) || MUSTER_ZUGANG_NAME.test(name)) return `${name} enthält Zugangsdaten`;
+  if (name.endsWith('.env')) return 'ist eine *.env-Datei';
   if (ENDUNGEN_SCHLUESSEL.some(e => name.endsWith(e))) return 'sieht nach einer Schlüsseldatei aus';
   return null;
 }
 
+// «..» ist nur ein Elternverweis, wenn es ein ganzes Segment ist: «..ausgabe» und «..foo.txt» sind gewöhnliche Namen im Repo.
 const innerhalb = (wurzel, ziel) => {
   const r = path.relative(wurzel, ziel);
-  return r !== '' && !r.startsWith('..') && !path.isAbsolute(r);
+  return r !== '' && r !== '..' && !r.startsWith(`..${path.sep}`) && !path.isAbsolute(r);
 };
 
 /** Liest eine Datei über einen Dateideskriptor ohne Symlinks zu folgen (O_NOFOLLOW) und prüft sie dort. */
@@ -161,19 +187,28 @@ const zeilenZahl = buf => {
  * Erlaubt: reguläre Textdateien innerhalb von `wurzel`, höchstens 40, zusammen höchstens 400 KB.
  * Verboten: «..», Pfade ausserhalb, Symlinks (auch ein Symlink-Ordner, der hinausführt), .git/, .env*,
  * node_modules/, Zugangs- und Schlüsseldateien, Binärdateien, Steuerzeichen im Namen.
+ * Relative Namen gelten ab `cwd` (dem Arbeitsordner), wenn der im Repo liegt, sonst ab der Repo-Wurzel; der Name wird in der
+ * Ausgabe immer als Pfad ab der Wurzel gezeigt. Absolute Pfade und «..» verhalten sich unabhängig davon gleich.
  * Gibt `{ ok, fehler: [...], dateien: [{ rel, bytes, zeilen, inhalt }], gesamt }`; bei `ok:false` nie senden.
  * Über die Spec hinaus (fail-closed): Zugangs- und Schlüsseldateien (.npmrc, .netrc, auth.json, *.pem/*.key/*.p12/*.pfx),
  * Binärdateien, Steuerzeichen im Namen und ein Symlink als Datei selbst (auch einer, der im Repo bleibt).
  * Nicht abgedeckt: ein zweiter Prozess, der während der Prüfung Ordner austauscht (nur die Datei selbst wird ohne
  * Symlink-Folgen geöffnet, O_NOFOLLOW).
  */
-export function pruefeDateien(namen, wurzel, fsx = fs) {
+export function pruefeDateien(namen, wurzel, fsx = fs, cwd = undefined) {
   const fehler = [];
   const dateien = [];
   if (!Array.isArray(namen) || namen.length === 0) return { ok: false, fehler: ['keine Dateien angegeben (Argumente oder DATEIEN=a,b)'], dateien, gesamt: 0 };
   if (namen.length > GRENZEN.dateien) return { ok: false, fehler: [`zu viele Dateien: ${namen.length}, höchstens ${GRENZEN.dateien}`], dateien, gesamt: 0 };
   const wurzelReal = fsx.realpathSync(wurzel);
   const wurzelLex = path.resolve(wurzel);
+  let basis = wurzelReal;
+  if (cwd) {
+    try {
+      const cwdReal = fsx.realpathSync(cwd);
+      if (cwdReal === wurzelReal || innerhalb(wurzelReal, cwdReal)) basis = cwdReal;
+    } catch { /* Arbeitsordner nicht lesbar: die Repo-Wurzel gilt */ }
+  }
   let gesamt = 0;
   let zuGross = false;
   const gesehen = new Set();
@@ -183,7 +218,7 @@ export function pruefeDateien(namen, wurzel, fsx = fs) {
     if (typeof name !== 'string' || name === '') return schlecht('kein Dateiname');
     if (/[\u0000-\u001f\u007f]/.test(name)) return schlecht('Steuerzeichen im Namen');
     if (name.split(SEGMENT_TRENNER).includes('..')) return schlecht('«..» im Pfad ist nicht erlaubt');
-    const lex = path.resolve(wurzelReal, name);
+    const lex = path.resolve(basis, name);
     if (lex === wurzelReal || path.resolve(name) === wurzelLex) return schlecht('ist der Repo-Ordner, keine Datei');
     let relLex;
     if (innerhalb(wurzelReal, lex)) relLex = path.relative(wurzelReal, lex);
@@ -231,49 +266,100 @@ export function pruefeOrdnerAusserhalb(ordner, wurzel, was, fsx = fs) {
   return echt;
 }
 
+/**
+ * Kann man in diesem Ordner eine Datei anlegen? Legt kurz eine Probedatei an und löscht sie wieder.
+ * Gibt `null` (ja) oder den Grund als Text zurück. So scheitert ein nicht beschreibbarer Ausgabe- oder Temp-Ordner VOR dem Start
+ * von Codex und nicht erst, wenn dessen Antwort (und das Kontingent) schon verbraucht ist.
+ */
+export function pruefeSchreibbar(ordner, was, fsx = fs) {
+  const probe = path.join(ordner, `zweitmeinung-probe-${process.pid}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`);
+  let fd;
+  try {
+    fd = fsx.openSync(probe, 'wx', 0o600);
+    fsx.writeSync(fd, 'probe\n');
+    return null;
+  } catch (e) {
+    return `${was} ist nicht beschreibbar (${e.code ?? 'Fehler'})`;
+  } finally {
+    try { if (fd !== undefined) fsx.closeSync(fd); } catch { /* egal */ }
+    try { fsx.unlinkSync(probe); } catch { /* es gab keine */ }
+  }
+}
+
 // ------------------------------------------------------------------------------------------------
 // Vorab-Suche nach Geheimnissen und Personendaten (das Messgerät: Treffer UND Nicht-Treffer sind getestet)
 
-// Schlüsselmuster wie GEHEIMNISSE in luxe-leitplanken/hooks/regeln.ts; Obergrenzen an den Wiederholungen
-// halten die Suche auch bei einer 400-KB-Zeile linear.
+// Schlüsselmuster wie GEHEIMNISSE in luxe-codex/lib/regeln.mjs (dazu Formate, die dieses Projekt selbst nutzt: CJ, Facebook,
+// Google, AWS, Telegram). Das Wortgrenzen-Muster ist «kein Buchstabe oder keine Ziffer davor», damit auch «MY_shpat_…» und
+// «STRIPE_sk_live_…» gefunden werden. Die Wiederholungen sind nach oben offen, damit ein überlanger Schlüssel ganz verdeckt wird;
+// linear bleibt die Suche, weil jedes Muster mit einem festen Anfang beginnt (und beim JWT mit «kein Token-Zeichen davor»),
+// so dass nur Anfänge von Läufen ein Kandidat sind. Ausnahme: das Vorab-Fenster {0,200} beim OpenAI-Schlüssel.
+const KEIN_ZEICHEN = '(?<![A-Za-z0-9])';
+// Werte in Anleitungen: "sk-ant-...", "dein-key-hier", "your_client_secret", "xxxx" sind Platzhalter, keine Passwörter.
+const PLATZHALTER = /\.\.\.|…|dein|your|hier\b|beispiel|example|platzhalter|placeholder|todo|changeme|x{3,}|\*{3}/i;
 const MUSTER = [
-  ['Shopify-Token (shpat_/shpss_)', /\bshp(?:at|ss|ca|pa)_[0-9a-f]{32}\b/i],
-  ['Stripe-Schlüssel (sk_live_/rk_live_)', /\b[rs]k_live_[A-Za-z0-9]{16,200}/],
-  ['Groq-Schlüssel (gsk_)', /\bgsk_[A-Za-z0-9]{30,200}/],
-  ['Google-API-Schlüssel (AIza)', /\bAIza[0-9A-Za-z_-]{35}\b/],
-  ['GitHub-Token (ghp_/gho_/…)', /\bgh[pousr]_[A-Za-z0-9]{36,200}/],
-  ['GitHub-Token (github_pat_)', /\bgithub_pat_[A-Za-z0-9_]{40,300}/],
-  ['Slack-Token (xox…)', /\bxox[abprs]-[A-Za-z0-9-]{10,200}/],
+  ['Shopify-Token (shpat_/shpss_)', new RegExp(`${KEIN_ZEICHEN}shp(?:at|ss|ca|pa)_[0-9a-f]{32}(?![0-9A-Za-z_])`, 'i')],
+  ['Stripe-Schlüssel (sk_live_/rk_live_)', new RegExp(`${KEIN_ZEICHEN}[rs]k_live_[A-Za-z0-9]{16,}`)],
+  ['Groq-Schlüssel (gsk_)', new RegExp(`${KEIN_ZEICHEN}gsk_[A-Za-z0-9]{30,}`)],
+  ['Google-API-Schlüssel (AIza)', new RegExp(`${KEIN_ZEICHEN}AIza[0-9A-Za-z_-]{35}(?![0-9A-Za-z_])`)],
+  ['Google-OAuth-Geheimnis (GOCSPX-)', new RegExp(`${KEIN_ZEICHEN}GOCSPX-[A-Za-z0-9_-]{20,}`)],
+  ['Google-Zugriffstoken (ya29.)', new RegExp(`${KEIN_ZEICHEN}ya29\\.[A-Za-z0-9_-]{20,}`)],
+  ['Google-Refresh-Token (1//0)', /(?<![A-Za-z0-9/:.])1\/\/0[A-Za-z0-9_-]{30,}/],
+  ['Facebook-Token (EAA…)', new RegExp(`${KEIN_ZEICHEN}EAA[A-Za-z0-9]{40,}`)],
+  ['CJ-Schlüssel (CJnnnn@api@…)', new RegExp(`${KEIN_ZEICHEN}CJ\\d{4,12}@api@[0-9a-f]{32}(?![0-9a-f])`, 'i')],
+  ['AWS-Zugangsschlüssel (AKIA/ASIA/…)', new RegExp(`${KEIN_ZEICHEN}(?:AKIA|ASIA|AROA|AIDA|AGPA|ANPA|AIPA)[0-9A-Z]{16}(?![A-Za-z0-9])`)],
+  ['AWS-Geheimschlüssel (aws_secret_access_key=…)', /aws_?secret_?access_?key["']?\s*[=:]\s*["']?[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])/i],
+  ['Telegram-Bot-Token', /(?<![\w:])\d{8,10}:AA[A-Za-z0-9_-]{33}(?![A-Za-z0-9_-])/],
+  ['GitHub-Token (ghp_/gho_/…)', new RegExp(`${KEIN_ZEICHEN}gh[pousr]_[A-Za-z0-9]{36,}`)],
+  ['GitHub-Token (github_pat_)', new RegExp(`${KEIN_ZEICHEN}github_pat_[A-Za-z0-9_]{40,}`)],
+  ['Slack-Token (xox…)', new RegExp(`${KEIN_ZEICHEN}xox[abprs]-[A-Za-z0-9-]{10,}`)],
   ['privater Schlüssel (PEM/PGP)', /-----BEGIN (?:RSA |EC |OPENSSH |DSA |ENCRYPTED |PGP )?PRIVATE KEY(?: BLOCK)?-----/],
   // Echte Schlüssel mischen Ziffern oder Grossbuchstaben ein; ein reiner Kleinbuchstaben-Name wie «sk-circle-fade-animation» nicht.
-  ['OpenAI-Schlüssel (sk-)', /(?<![A-Za-z0-9])sk-(?=[A-Za-z0-9_-]{0,200}[0-9A-Z])[A-Za-z0-9_-]{20,200}/],
-  ['JWT', /\beyJ[A-Za-z0-9_-]{5,2048}\.eyJ[A-Za-z0-9_-]{5,2048}\.[A-Za-z0-9_-]{5,2048}/],
-  ['Zugang in Adresse (Benutzer:Passwort@Host)', /[a-z][a-z0-9+.-]{1,15}:\/\/[^\s/:@]{1,128}:[^\s/@]{1,128}@[^\s/]{1,255}/i],
-  ['IBAN (CH)', /(?<![A-Za-z0-9])CH\d\d(?:\s?\d{4}){4}\s?\d(?!\d)/i],
-  ['Telefonnummer (CH)', /(?<![\w+-])(?:\+41|0041)(?:[\s./-]?\(0\))?(?:[\s./-]?\d){9}(?!\d)/],
-  ['Telefonnummer (CH)', /(?<![\w+-])07\d(?:[\s./-]?\d){7}(?!\d)/],
+  ['OpenAI-Schlüssel (sk-)', new RegExp(`${KEIN_ZEICHEN}sk-(?=[A-Za-z0-9_-]{0,200}[0-9A-Z])[A-Za-z0-9_-]{20,}`)],
+  ['JWT', /(?<![A-Za-z0-9_-])eyJ[A-Za-z0-9_-]{5,}\.eyJ[A-Za-z0-9_-]{5,}\.[A-Za-z0-9_-]{5,}/],
+  // Passwort-Zuweisung im .env-/Shell-Stil, am Zeilenanfang: «DB_PASSWORD=wert», «export API_TOKEN="wert"». Platzhalter ($VAR, ${…}, $(…)),
+  // Verweise auf die Umgebung (process.env…), Adressen und zu kurze Werte sind keine Funde.
+  ['Passwort-Zuweisung (NAME=Wert)', /^\s*(?:(?:export|ENV|ARG|set)\s+)?[A-Z][A-Z0-9_]*(?:PASSWORD|PASSWD|PASSWORT|SECRET|API_?KEY|ACCESS_?KEY|PRIVATE_?KEY|TOKEN|CREDENTIALS?)[A-Z0-9_]*\s*=\s*["']?(?!process\.|import\.|os\.|env\.|ENV\[|getenv|https?:|(?:null|none|undefined|true|false)\b)[^\s"'$<>{}()]{8,}(?![(\[])/, m => PLATZHALTER.test(m.slice(m.indexOf('=') + 1))],
+  // Benutzer und Passwort ohne Anführungszeichen, Klammern und «$»: «${TOKEN}», «$TOKEN», «{{ secrets.X }}» und JSON mit "@type" sind keine Zugangsdaten.
+  ['Zugang in Adresse (Benutzer:Passwort@Host)', /[a-z][a-z0-9+.-]{1,15}:\/\/[^\s/:@"'<>{}]{1,128}:[^\s/@"'<>{}$]{1,128}@[^\s/]{1,255}/i],
+  ['IBAN (CH/LI)', new RegExp(`${KEIN_ZEICHEN}(?:CH|LI)\\d\\d(?:\\s?[0-9A-Z]{4}){4}\\s?[0-9A-Z](?![A-Za-z0-9])`, 'i')],
+  ['IBAN (DE)', new RegExp(`${KEIN_ZEICHEN}DE\\d\\d(?:\\s?\\d{4}){4}\\s?\\d{2}(?![A-Za-z0-9])`, 'i')],
+  ['IBAN (AT)', new RegExp(`${KEIN_ZEICHEN}AT\\d\\d(?:\\s?\\d{4}){4}(?![A-Za-z0-9])`, 'i')],
+  ['IBAN (FR)', new RegExp(`${KEIN_ZEICHEN}FR\\d\\d(?:\\s?[0-9A-Z]{4}){5}\\s?[0-9A-Z]{3}(?![A-Za-z0-9])`, 'i')],
+  // +41/0041 (auch «(+41)») und die nationale Form mit Mobil-Vorwahl 07x oder einer Festnetz-Vorwahl (021, 022, 024, 026, 027, 031-034, 041, 043, 044, 052, 055, 056, 058, 061, 062, 081, 091), auch «(079)».
+  ['Telefonnummer (CH)', /(?<![\w+-])\(?(?:\+41|0041)\)?(?:[\s./-]?\(0\))?(?:[\s./-]?\d){9}(?!\d)/],
+  ['Telefonnummer (CH)', /(?<![\w+-])\(?0(?:7\d|2[12467]|3[1-4]|4[134]|5[2568]|6[12]|81|91)\)?(?:[\s./-]?\d){7}(?!\d)/],
   ['AHV-Nummer', /(?<!\d)756\.\d{4}\.\d{4}\.\d{2}(?!\d)/],
 ];
-const MUSTER_G = MUSTER.map(([art, re]) => [art, new RegExp(re.source, re.flags.includes('g') ? re.flags : `${re.flags}g`)]);
+const MUSTER_G = MUSTER.map(([art, re, ausser]) => [art, new RegExp(re.source, re.flags.includes('g') ? re.flags : `${re.flags}g`), ausser]);
 
 // Endungen von Dateien, die nach «name@2x.png» aussehen, aber keine Adresse sind.
 const DATEIENDUNGEN = new Set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'avif', 'svg', 'ico', 'css', 'js', 'mjs', 'cjs', 'jsx', 'tsx', 'json', 'txt', 'html', 'htm', 'xml', 'woff', 'woff2', 'ttf', 'otf', 'eot', 'map', 'pdf', 'mp4', 'webm', 'wav', 'mp3', 'yml', 'yaml', 'lock']);
 
-/** E-Mail-Adressen, ausser @example.* und noreply@; läuft über die @-Stellen, nicht über einen gierigen Regex. */
+// Keine Personendaten, sondern Absender von Werkzeugen: noreply@, bot@, git@github.com:, actions@, *@users.noreply.github.com;
+// dazu reservierte Endungen (.example, .test, .invalid, .localhost) und @example.*.
+const BOT_LOKAL = new Set(['noreply', 'no-reply', 'bot', 'git', 'actions', 'github-actions']);
+const RESERVIERT = new Set(['example', 'test', 'invalid', 'localhost']);
+
+/** E-Mail-Adressen (auch mit Umlaut-Domain), ausser den Ausnahmen oben; läuft über die @-Stellen, nicht über einen gierigen Regex. */
 function emailTreffer(zeile) {
   const aus = [];
   let von = zeile.indexOf('@');
   while (von !== -1) {
-    const links = /[A-Za-z0-9._%+-]{1,64}$/.exec(zeile.slice(Math.max(0, von - 64), von));
-    const rechts = /^[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*/.exec(zeile.slice(von + 1, von + 256));
+    const links = /[\p{L}\p{N}._%+-]{1,64}$/u.exec(zeile.slice(Math.max(0, von - 64), von));
+    const rechts = /^[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)*/u.exec(zeile.slice(von + 1, von + 256));
     if (links && rechts) {
       const teile = rechts[0].split('.');
       while (teile.length > 1 && DATEIENDUNGEN.has(teile[teile.length - 1].toLowerCase())) teile.pop();
       const tld = teile[teile.length - 1];
-      const echteAdresse = teile.length >= 2 && /^[A-Za-z]{2,24}$/.test(tld);
-      const beispiel = teile.length >= 2 && teile[teile.length - 2].toLowerCase() === 'example';
+      const echteAdresse = teile.length >= 2 && /^\p{L}{2,24}$/u.test(tld);
+      const domain = teile.join('.').toLowerCase();
+      const beispiel = teile.length >= 2 && (teile[teile.length - 2].toLowerCase() === 'example' || RESERVIERT.has(tld.toLowerCase()));
       const lokal = links[0].toLowerCase();
-      if (echteAdresse && !beispiel && lokal !== 'noreply') aus.push({ art: 'E-Mail-Adresse', von: von - links[0].length, bis: von + 1 + teile.join('.').length });
+      const werkzeug = BOT_LOKAL.has(lokal) || domain === 'noreply.github.com' || domain.endsWith('.noreply.github.com');
+      // «https://u:$TOKEN@host/…»: eine Variable, kein Benutzer; «A@B.sum()»: Matrix-Operator, nie eine echte Adresse (Ein-Zeichen-Name und -Domain)
+      const platzhalter = zeile[von - links[0].length - 1] === '$' || (lokal.length === 1 && teile.length >= 2 && teile[teile.length - 2].length === 1);
+      if (echteAdresse && !beispiel && !werkzeug && !platzhalter) aus.push({ art: 'E-Mail-Adresse', von: von - links[0].length, bis: von + 1 + teile.join('.').length });
     }
     von = zeile.indexOf('@', von + 1);
   }
@@ -284,7 +370,7 @@ function emailTreffer(zeile) {
 export function treffer(zeile) {
   const aus = [];
   const z = String(zeile);
-  for (const [art, re] of MUSTER_G) for (const m of z.matchAll(re)) aus.push({ art, von: m.index, bis: m.index + m[0].length });
+  for (const [art, re, ausser] of MUSTER_G) for (const m of z.matchAll(re)) if (!ausser?.(m[0])) aus.push({ art, von: m.index, bis: m.index + m[0].length });
   aus.push(...emailTreffer(z));
   return aus;
 }
@@ -312,6 +398,41 @@ export function verdecke(text) {
     for (const t of zusammen.reverse()) s = `${s.slice(0, t.von)}[verdeckt]${s.slice(t.bis)}`;
     return s;
   }).join('\n');
+}
+
+// C0 (ohne Tab, Zeilenumbruch), DEL, C1 (0x9b wirkt in manchen Terminals wie ESC [), Null-Breite- und Bidi-Steuerzeichen, BOM.
+const STEUERZEICHEN = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f\u200b-\u200f\u202a-\u202e\u2060-\u206f\ufeff]/g;
+
+/**
+ * Macht Text aus der Antwort von Codex ungefährlich für ein Terminal: Steuerzeichen (Escape-Folgen, Glocke, Bidi) werden zu «?».
+ * `einzeilig`: auch Zeilenumbrüche und Tabs werden zu einem Leerzeichen, damit ein Fund keine Zeilen und damit keine Einträge erfinden kann.
+ */
+export function rein(text, { einzeilig = false } = {}) {
+  let s = String(text);
+  s = einzeilig ? s.replace(/[\r\n\t\u2028\u2029]+/g, ' ') : s.replace(/\r\n?/g, '\n').replace(/[\t\u2028\u2029]/g, ' ');
+  return s.replace(STEUERZEICHEN, '?');
+}
+
+/**
+ * Verdeckt Geheimnisse und Personendaten in allen Textfeldern der gelesenen Funde (die Antwort von Codex kann etwas enthalten, das
+ * ausserhalb des Sandkastens gelesen oder erfunden wurde). Gibt `{ funde, anzahl }` zurück; `anzahl` zählt Treffer (Überlappungen können doppelt zählen).
+ */
+export function verdeckeFunde(funde) {
+  let anzahl = 0;
+  const v = s => {
+    const n = treffer(s).length;
+    if (n === 0) return s;
+    anzahl += n;
+    return verdecke(s);
+  };
+  const aus = funde.map(f => {
+    const g = { ...f };
+    for (const k of ['titel', 'datei', 'fehlerfall', 'beleg']) if (typeof g[k] === 'string') g[k] = v(g[k]);
+    if (typeof g.unklar === 'string') g.unklar = v(g.unklar);
+    if (Array.isArray(g.luecken)) g.luecken = g.luecken.map(v);
+    return g;
+  });
+  return { funde: aus, anzahl };
 }
 
 /**
@@ -397,8 +518,9 @@ export function baueAnweisung({ rubrik, auftrag, dateien }) {
 const LIMIT = /You(?:[’‘'`´]ve| have) hit your usage limit/i;
 const WIEDER_UM = /try again at\s+((?:[A-Z][a-z]{2,8}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+(?:\d{4},?\s+)?)?\d{1,2}:\d{2}(?:\s*(?:[AaPp][Mm]|[AaPp]\.[Mm]\.))?)/i;
 const WIEDER_IN = /try again in\s+([^.\n]{2,40})/i;
-const ANMELDUNG = /not logged in|log ?in required|please (?:log ?in|sign in)|codex login|authentication (?:failed|required)|invalid[ _-]?(?:api[ _-]?key|token|credentials)|unauthori[sz]ed|\b401\b|token (?:has )?expired|refresh token|credit_balance_exhausted/i;
-const NETZ = /ENOTFOUND|ECONNREFUSED|ECONNRESET|ETIMEDOUT|EAI_AGAIN|network error|connection (?:refused|reset|timed out)|error sending request|dns error|failed to connect|stream disconnected|timed out/i;
+// «401» zählt nur als Statuscode («status 401», «HTTP 401»), nicht als Zahl in «12,401»; «timed out» nur mit Bezug (request, connection …).
+const ANMELDUNG = /not logged in|log ?in required|please (?:log ?in|sign in)|codex login|authentication (?:failed|required)|invalid[ _-]?(?:api[ _-]?key|token|credentials)|unauthori[sz]ed|(?:status|http|code|error)[^\n\d]{0,12}\b401(?![\d,.])|token (?:has )?expired|refresh token|credit_balance_exhausted/i;
+const NETZ = /ENOTFOUND|ECONNREFUSED|ECONNRESET|ETIMEDOUT|EAI_AGAIN|network error|connection (?:refused|reset|timed out)|error sending request|dns error|failed to connect|stream disconnected|(?:request|operation|read|connect) timed out/i;
 
 /** Letzte nicht leere Zeile ist genau «ENDE». */
 export function endetMitEnde(text) {
@@ -426,7 +548,7 @@ export function findeLimit(text) {
   return { wann: 'unbekannt' };
 }
 
-const letzteZeile = text => verdecke(String(text).trim().split(/\r\n|\r|\n/).filter(Boolean).pop() ?? '').slice(0, 200);
+const letzteZeile = text => rein(verdecke(String(text).trim().split(/\r\n|\r|\n/).filter(Boolean).pop() ?? '').slice(0, 200), { einzeilig: true });
 
 /**
  * Ordnet das Ergebnis des Prozesses ein. Nur `art:'ok'` ist ein Ergebnis; alles andere hat einen Exit-Code
@@ -444,7 +566,8 @@ export function klassifiziere(r) {
   const limit = findeLimit(`${err}\n${aus}`);
   if (limit && !vollstaendig) return { art: 'limit', exit: 4, uhrzeit: limit.wann, grund: `Nutzungslimit von Codex erreicht, neuer Versuch ${limit.wann === 'unbekannt' ? 'zu einer unbekannten Zeit' : limit.wann.startsWith('in ') ? limit.wann : `ab ${limit.wann}`} (Zeitzone der Meldung unbekannt)` };
   if (vollstaendig) return { art: 'ok', exit: 0, antwort: ohneEnde(aus) };
-  const quelle = `${err}\n${aus.slice(0, 2000)}`;
+  // Nur Fehlermeldungen prüfen: stderr, und stdout nur bei einem Fehlercode und kurzem Text. Eine Antwort, die «401» oder «timed out» als Befund nennt, ist keine Anmeldung.
+  const quelle = r.code !== 0 && aus.length <= 500 ? `${err}\n${aus}` : err;
   if (ANMELDUNG.test(quelle)) return { art: 'fehler', exit: 5, grund: `Anmeldefehler bei Codex (${letzteZeile(err || aus)})` };
   if (NETZ.test(quelle)) return { art: 'fehler', exit: 5, grund: `Netzfehler bei Codex (${letzteZeile(err || aus)})` };
   if (r.signal) return { art: 'fehler', exit: 5, grund: `Codex wurde durch das Signal ${r.signal} beendet` };
@@ -494,33 +617,52 @@ function ende(text, von) {
   return -1;
 }
 
+/** Besteht der Text (ohne Codeblock-Zäune) aus nichts als einer leeren Liste? */
+function leereListeAllein(text) {
+  const ohneZaun = String(text).replace(/^[ \t]*```[A-Za-z]*[ \t]*$/gm, '').trim();
+  try { const w = JSON.parse(ohneZaun); return Array.isArray(w) && w.length === 0; } catch { return false; }
+}
+
 /**
- * Zieht die JSON-Liste aus der Antwort (Codeblock oder nackt, Text davor und danach egal). Gilt die LETZTE
- * Liste, die mit `{` oder `]` beginnt: ein Modell nennt gern erst das Schema, dann die Antwort. Misslingt
- * die letzte, ist es ein Fehler und nie «keine Funde».
+ * Zieht die JSON-Liste aus der Antwort (Codeblock oder nackt, Text davor und danach egal). Gilt die LETZTE nicht leere
+ * Liste, die mit `{` oder `]` beginnt: ein Modell nennt gern erst das Schema, dann die Antwort.
+ *
+ * «Keine Funde» gibt es NUR, wenn die Antwort aus nichts als `[]` besteht (Zäune und Leerraum ausgenommen). Ein `[]` oder `[ ]`
+ * mitten im Text (Inline-Code, Checkbox, Hinweis) ist nie «keine Funde». Misslingt die letzte Liste, ist es ein Fehler.
+ * `hinweise`: Gründe, die Antwort von Hand zu prüfen, obwohl sie lesbar war (mehrere nicht leere Listen, eine leere Liste hinter
+ * der gelesenen, eine frühere kaputte Liste). Die Zahl der Listen ist nicht begrenzt; jede wird einmal durchlaufen.
  */
 export function ziehListe(text) {
   const t = String(text);
   const regionen = [];
   const re = /\[\s*(?=[{\]])/g;
   let m = re.exec(t);
-  let versuche = 0;
-  while (m && versuche < 300) {
-    versuche += 1;
+  while (m) {
     const e = ende(t, m.index);
-    if (e === -1) { regionen.push({ ok: false, grund: 'die Liste ist abgeschnitten (Klammer nicht geschlossen)' }); break; }
+    if (e === -1) { regionen.push({ ok: false, von: m.index, bis: t.length, grund: 'die Liste ist abgeschnitten (Klammer nicht geschlossen)' }); break; }
     const stueck = t.slice(m.index, e + 1);
     let wert;
     try { wert = JSON.parse(stueck); } catch {
       try { wert = JSON.parse(entferneKommas(stueck)); } catch { /* bleibt undefined */ }
     }
-    regionen.push(Array.isArray(wert) ? { ok: true, liste: wert } : { ok: false, grund: 'die Liste ist kein gültiges JSON' });
+    regionen.push(Array.isArray(wert) ? { ok: true, von: m.index, bis: e, liste: wert } : { ok: false, von: m.index, bis: e, grund: 'die Liste ist kein gültiges JSON' });
     re.lastIndex = e + 1;
     m = re.exec(t);
   }
   if (regionen.length === 0) return { ok: false, grund: 'keine JSON-Liste in der Antwort gefunden' };
   const letzte = regionen[regionen.length - 1];
-  return letzte.ok ? { ok: true, liste: letzte.liste } : { ok: false, grund: letzte.grund };
+  if (!letzte.ok) return { ok: false, grund: letzte.grund };
+  const gefuellt = regionen.filter(r => r.ok && r.liste.length > 0);
+  if (gefuellt.length === 0) {
+    if (leereListeAllein(t)) return { ok: true, liste: [], hinweise: [] };
+    return { ok: false, grund: 'eine leere Liste «[]» steht zwischen anderem Text: nicht eindeutig «keine Funde» (erwartet wird nur die Liste)' };
+  }
+  const gewaehlt = gefuellt[gefuellt.length - 1];
+  const hinweise = [];
+  if (gefuellt.length > 1) hinweise.push(`die Antwort enthält ${gefuellt.length} nicht leere Listen, gelesen wurde nur die letzte`);
+  if (regionen.some(r => r.ok && r.liste.length === 0 && r.von > gewaehlt.bis)) hinweise.push('hinter der gelesenen Liste steht eine leere Liste «[]» im Text');
+  if (regionen.some(r => !r.ok && r.von < gewaehlt.von)) hinweise.push('vor der gelesenen Liste steht eine Liste, die kein gültiges JSON war');
+  return { ok: true, liste: gewaehlt.liste, hinweise };
 }
 
 const kurz = (w, n = 80) => String(w).replace(/\s+/g, ' ').slice(0, n);
@@ -567,6 +709,11 @@ function pruefeFund(el, dateien, nr) {
  * Liest die Funde aus einer vollständigen Antwort. Zählt gegen: gelesen = ausgewertet + unvollständig, und zählt
  * im Rohtext die «titel»-Felder unabhängig nach (ein Parser, der Funde verliert, fällt so auf).
  * `dateien` (optional): `[{ rel, zeilen }]` der gesendeten Dateien; ein Fund ausserhalb davon ist unvollständig.
+ *
+ * `pruefen` (Liste von Gründen) und `status` («ok» oder «pruefen») sagen, ob die Antwort sicher gelesen wurde. Der Status ist «pruefen»,
+ * wenn die Liste mehrdeutig war (siehe ziehListe) oder im Rohtext MEHR «titel»-Felder stehen als gelesen wurden (Funde können fehlen).
+ * Weniger «titel»-Felder als gelesen (Funde ohne Titel) ist kein Verlust. `zaehlung.stimmt` ist nur die interne Rechnung
+ * gelesen = ausgewertet + unvollständig; ob nichts fehlt, sagt `status`.
  */
 export function leseFunde(antwort, { dateien } = {}) {
   const gezogen = ziehListe(antwort);
@@ -576,16 +723,25 @@ export function leseFunde(antwort, { dateien } = {}) {
   const unvollstaendig = funde.filter(f => f.status === 'unvollstaendig').length;
   const gelesen = gezogen.liste.length;
   const rohtitel = (String(antwort).match(/"titel"\s*:/g) ?? []).length;
+  const pruefen = [...(gezogen.hinweise ?? [])];
+  if (rohtitel > gelesen) pruefen.push(`im Rohtext stehen ${rohtitel} «titel»-Felder, gelesen wurden ${gelesen}: Funde können fehlen`);
   return {
     ok: true,
     funde,
     zaehlung: { gelesen, ausgewertet, unvollstaendig, rohtitel, stimmt: gelesen === ausgewertet + unvollstaendig, abweichung: rohtitel !== gelesen },
+    pruefen,
+    status: pruefen.length ? 'pruefen' : 'ok',
   };
 }
 
-/** Der Bericht für den Menschen. Wichtige zuerst, dann kleine, dann unvollständige. */
-export function baueBericht({ funde, zaehlung, modell, aufwand, dateien, ausgabeDatei, fundeDatei }) {
+/**
+ * Der Bericht für den Menschen. Wichtige zuerst, dann kleine, dann unvollständige.
+ * Alles aus der Antwort von Codex läuft durch rein(): keine Escape-Folgen und keine Zeilenumbrüche, die Einträge erfinden könnten.
+ * `pruefen`: Gründe, die Antwort von Hand zu prüfen; sie stehen oben unter «ACHTUNG».
+ */
+export function baueBericht({ funde, zaehlung, pruefen = [], modell, aufwand, dateien, ausgabeDatei, fundeDatei }) {
   const z = zaehlung;
+  const e = s => rein(s, { einzeilig: true });
   const rang = f => (f.status === 'unvollstaendig' ? 2 : f.schwere === 'wichtig' ? 0 : 1);
   const sortiert = [...funde].sort((a, b) => rang(a) - rang(b) || a.nr - b.nr);
   const aus = [
@@ -594,17 +750,19 @@ export function baueBericht({ funde, zaehlung, modell, aufwand, dateien, ausgabe
     z.abweichung
       ? `Warnung: im Rohtext stehen ${z.rohtitel} «titel»-Felder, gelesen wurden ${z.gelesen}. Antwortdatei von Hand prüfen.`
       : `Gegenzählung im Rohtext: ${z.rohtitel} «titel»-Felder, stimmt.`,
+    ...pruefen.map(g => `ACHTUNG, von Hand prüfen: ${e(g)}`),
+    ...(pruefen.length ? ['Diese Antwort ist nie als «keine Funde» oder als vollständig zu lesen: Funde können fehlen.'] : []),
     `${HINWEIS}.`,
   ];
   if (ausgabeDatei) aus.push(`Antwort: ${ausgabeDatei} (Rechte 0600)`);
   if (fundeDatei) aus.push(`Funde als JSON: ${fundeDatei} (Rechte 0600)`);
   sortiert.forEach((f, i) => {
-    aus.push('', `${i + 1}. [${f.status === 'unvollstaendig' ? 'unvollständig' : f.schwere}] ${f.titel || '(ohne Titel)'}`);
-    aus.push(`   ${f.datei || '(ohne Datei)'}${f.zeile ? `:${f.zeile}` : ''}`);
-    if (f.fehlerfall) aus.push(`   Fehlerfall: ${f.fehlerfall}`);
-    if (f.beleg) aus.push(`   Beleg: ${f.beleg}`);
-    if (f.unklar) aus.push(`   Unklar: ${f.unklar === true ? 'ja (ohne Begründung)' : f.unklar}`);
-    if (f.luecken) aus.push(`   Lücken: ${f.luecken.join('; ')}`);
+    aus.push('', `${i + 1}. [${f.status === 'unvollstaendig' ? 'unvollständig' : e(f.schwere)}] ${e(f.titel) || '(ohne Titel)'}`);
+    aus.push(`   ${e(f.datei) || '(ohne Datei)'}${f.zeile ? `:${f.zeile}` : ''}`);
+    if (f.fehlerfall) aus.push(`   Fehlerfall: ${e(f.fehlerfall)}`);
+    if (f.beleg) aus.push(`   Beleg: ${e(f.beleg)}`);
+    if (f.unklar) aus.push(`   Unklar: ${f.unklar === true ? 'ja (ohne Begründung)' : e(f.unklar)}`);
+    if (f.luecken) aus.push(`   Lücken: ${f.luecken.map(e).join('; ')}`);
     aus.push(`   Hinweis: ${f.hinweis}`);
   });
   return aus.join('\n');
