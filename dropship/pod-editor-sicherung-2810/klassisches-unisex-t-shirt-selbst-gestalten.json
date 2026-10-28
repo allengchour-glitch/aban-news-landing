@@ -1,0 +1,92 @@
+{
+ "gesichertAm": "2026-10-28T07:13:05.886Z",
+ "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+ "id": "gid://shopify/Product/15422857642369",
+ "status": "ACTIVE",
+ "updatedAt": "2026-10-26T05:29:24Z",
+ "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white.png?v=1783114591\" data-img-back=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg\" data-variant=\"55778083996033\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\nDas klassische Unisex-T-Shirt aus 100 % Baumwolle sorgt für eine gerade Linie. Es sitzt schön, behält klare Linien an den Kanten und passt perfekt zu mehrschichtigen Streetwear-Outfits. Ausserdem ist es jetzt besonders im Trend! <br>\n<br>\n• 100 % Baumwolle <br>\n• Sport Grey besteht zu 90 % aus Baumwolle und 10 % aus Polyester<br>\n• Ash Grey besteht zu 99 % aus Baumwolle, 1 % Polyester<br>\n• Heather-Farben bestehen aus 50 % Baumwolle und 50 % Polyester<br>\n• Stoffgewicht: 170-180 g/m² (5,0–5,3 oz/yd²) <br>\n• Offenes Garn<br>\n• Schlauchgewebe<br>\n• Bandagierter Nacken und Schulter <br>\n• Doppelnaht an Ärmeln und unterem Saum <br>\n• Rohprodukt aus Honduras, Nicaragua, Haiti, der Dominikanischen Republik, Bangladesch, Mexiko<br>\n<br>\nDisclaimer:<br>\n• Aufgrund der Stoffeigenschaften kann die Farbe White eher cremeweiss als strahlend weiss erscheinen. <br>\n• Bei der Farbe Natural sind dunkle Farbpigmente im Stoff zu erwarten.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Grösse:</strong> S, M, L, XL, 2XL, 3XL, 4XL, 5XL</li>\n<li>\n<strong>Material:</strong> Baumwolle, Polyester</li>\n<li>\n<strong>Muster:</strong> Unifarben</li>\n</ul>\n</div>\n\n<!--gdetails-->\n\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>\n\n",
+ "media": [
+  {
+   "id": "gid://shopify/MediaImage/69634683011457",
+   "alt": "Product mockup",
+   "mediaContentType": "IMAGE",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "width": 2000,
+    "height": 2000
+   }
+  },
+  {
+   "id": "gid://shopify/MediaImage/69634683044225",
+   "alt": "Product mockup",
+   "mediaContentType": "IMAGE",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-right-6a270582a8b43.jpg?v=1780942223",
+    "width": 2000,
+    "height": 2000
+   }
+  },
+  {
+   "id": "gid://shopify/MediaImage/69634683076993",
+   "alt": "Product mockup",
+   "mediaContentType": "IMAGE",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-left-6a270582a995b.jpg?v=1780942223",
+    "width": 2000,
+    "height": 2000
+   }
+  },
+  {
+   "id": "gid://shopify/MediaImage/69634683109761",
+   "alt": "Product mockup",
+   "mediaContentType": "IMAGE",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-front-6a270582aa8b3.jpg?v=1780942223",
+    "width": 2000,
+    "height": 2000
+   }
+  }
+ ],
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55778083996033",
+   "title": "S",
+   "sku": "8481330_11576"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084028801",
+   "title": "M",
+   "sku": "8481330_11577"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084061569",
+   "title": "L",
+   "sku": "8481330_11578"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084094337",
+   "title": "XL",
+   "sku": "8481330_11579"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084127105",
+   "title": "2XL",
+   "sku": "8481330_11580"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084159873",
+   "title": "3XL",
+   "sku": "8481330_12650"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084192641",
+   "title": "4XL",
+   "sku": "8481330_12651"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778084225409",
+   "title": "5XL",
+   "sku": "8481330_12652"
+  }
+ ]
+}

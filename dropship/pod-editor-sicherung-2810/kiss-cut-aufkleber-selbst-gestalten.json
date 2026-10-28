@@ -1,0 +1,42 @@
+{
+ "gesichertAm": "2026-10-28T07:13:06.158Z",
+ "handle": "kiss-cut-aufkleber-selbst-gestalten",
+ "id": "gid://shopify/Product/15422942609793",
+ "status": "ACTIVE",
+ "updatedAt": "2026-10-27T05:38:31Z",
+ "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/sticker-template.png?v=1781816926\" data-variant=\"55778363376001\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\n<p style=\"background:#f6faf6;border:1px solid #cfe3cf;border-radius:10px;padding:11px 15px;font-size:14px;margin:0 0 14px;\">🎨 <strong>So gestaltest du deinen Aufkleber:</strong> Tippe auf <strong>„+ Text\"</strong> für deinen Spruch oder <strong>„+ Bild\"</strong> für ein eigenes Motiv/Foto · Farbe, Grösse &amp; Position frei wählen · <strong>👁️ Druck-Vorschau</strong> prüfen → 🛒 fertig. Keine Vorkenntnisse nötig!</p>\n<p><strong>Kiss-Cut Aufkleber – Selbst gestalten – wetterfester Vinyl-Sticker von LuxeStyle.</strong> Gestalte deinen eigenen Kiss-Cut-Aufkleber: kratz-, wasser- &amp; UV-beständig, mit sauber konturgeschnittenem Rand. Hält drinnen wie draussen und lässt sich rückstandsarm wieder ablösen.</p><p><strong>✨ Highlights</strong></p><ul>\n<li>🛡️ Wetterfestes Premium-Vinyl – kratz-, UV- &amp; wasserbeständig</li>\n<li>✂️ Kiss-Cut, exakt um dein Motiv geschnitten</li>\n<li>📏 3 Grössen: 7,6 cm · 10 cm · 14 cm</li>\n<li>💻 Perfekt für Laptop, Trinkflasche, Auto, Handy, Notizbuch, Koffer &amp; Helm</li>\n<li>♻️ Rückstandsarm ablösbar, langlebige Farben</li>\n</ul><p><strong>📦 Service:</strong> 🇨🇭 Schweizer Shop · Gratis-Versand in der Schweiz ab CHF 50 · TWINT/Karte/PayPal · Code <strong>WELCOME10</strong> = –10%</p>\n<div class=\"ls-feed-details\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> wetterfestes Vinyl (Kiss-Cut)</li>\n<li>\n<strong>Grössen:</strong> 7,6 cm · 10 cm · 14 cm</li>\n<li>\n<strong>Eigenschaften:</strong> wasser-, UV- &amp; kratzfest, rückstandsarm ablösbar</li>\n<li>\n<strong>Versand:</strong> on-demand in Europa · Lieferung 7–14 Werktage</li>\n</ul>\n</div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div>",
+ "media": [
+  {
+   "id": "gid://shopify/MediaImage/69682088903041",
+   "alt": "Blanko Kiss-Cut Vinyl-Sticker zum Selbstgestalten",
+   "mediaContentType": "IMAGE",
+   "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b1742-88be-4c21-9947-0299de1deea4_result23ca451f10fc6892.jpg?v=1781361016",
+    "width": 1536,
+    "height": 1536
+   }
+  }
+ ],
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55778363376001",
+   "title": "7,6 × 7,6 cm (3″)",
+   "sku": "3424232_10163"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778363408769",
+   "title": "10,2 × 10,2 cm (4″)",
+   "sku": "3424232_10164"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778363441537",
+   "title": "14 × 14 cm (5,5″)",
+   "sku": "3424232_10165"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55778363474305",
+   "title": "38 × 9,5 cm (15″)",
+   "sku": "3424232_16362"
+  }
+ ]
+}
