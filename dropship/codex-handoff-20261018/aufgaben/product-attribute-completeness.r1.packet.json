@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "product-attribute-completeness",
+  "revision": 1,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-28T23:31:29.371Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Produktangaben: Materialschutz, wahrer Fortschritt und konkrete Quellenprüfung",
+  "summary": "Sieben lokale Code-/Testpfade, 218 begrenzte Prüfungen grün; vollständige CI an unshare blockiert. Drei gezielte aktuelle Produkte geprüft, zwei Auswahltext-Diffs und ein Materialkonflikt vorbereitet. Keine Shop-Writes, kein Deployment. Vor Live-Nutzung verbleibende Runner- und Quellenprüfungen erforderlich. Lokale Testnebenwirkung transparent im Bericht. Bestehendes Kooperationspaket R3 bleibt getrennt.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-KORREKTUREN-20261029.patch",
+      "sha256": "2327e4e98f0ca73f180f8a3b11bdd53de6299f8dc93a8d8ae005671431e33a72",
+      "gitBlobSha": "efd93b491df033342f988a6110f7f87620035c23"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-GEGENPROBEN-20261029.json",
+      "sha256": "ab4681494645ca878244465135d070668b716c2561ae2314dda751f40084637b",
+      "gitBlobSha": "eaca782e4f87f898eb560e1fd38c045339e29d2b"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-WEITERARBEIT-20261029.md",
+      "sha256": "01133d1ec210fcdc884024a73e50719661efdac89736900dc081a9a1f45d5f87",
+      "gitBlobSha": "0f7b9f348549dcde6353cd5529e8cab6f5822efc"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-PRODUKTANGABEN-20261029.json",
+      "sha256": "36131c9a495ede873deaacec006d0f4d4ee987e2b635b51660142c2b25e8dee7",
+      "gitBlobSha": "2802db354027126d3618b6865b7d633fe893fc57"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": null
+}
