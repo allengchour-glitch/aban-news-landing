@@ -1,0 +1,229 @@
+/**
+ * Lauf-Test des Google-Schaufensters: startet automation/gmc_schaufenster.mjs als Kindprozess gegen einen FAKE-SHOP (fetch wird ersetzt;
+ * kein Netz, kein Shopify). Geprüft wird, was die reine Auswahl (lib/gmc_schaufenster_test.mjs) nicht sehen kann: Freigabe, Trockenlauf,
+ * Kanal-ID in der Mutation, Manifest vor dem Aufruf, Absturz mitten im Stück, Rücknahme, Fehlerliste, Exit-Codes, Schutzregeln.
+ * Lauf: /opt/node22/bin/node automation/gmc_schaufenster_lauf_test.mjs
+ */
+import { spawnSync } from 'node:child_process';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { parseManifest } from './lib/gmc_schaufenster.mjs';
+
+const CLI = fileURLToPath(new URL('./gmc_schaufenster.mjs', import.meta.url));
+const GOOGLE = 'gid://shopify/Publication/302872297857';   // das Literal, nicht die Konstante der Bibliothek (sonst prüft der Test sich selbst)
+const ONLINESTORE = 'gid://shopify/Publication/301970915713';
+const dir = mkdtempSync(join(tmpdir(), 'gmc-lauf-'));
+let ok = 0, fehler = 0;
+const pruef = (name, ist, soll) => {
+  if (JSON.stringify(ist) === JSON.stringify(soll)) ok++;
+  else { fehler++; console.log(`FAIL ${name}\n     ist  ${JSON.stringify(ist)}\n     soll ${JSON.stringify(soll)}`); }
+};
+
+// --- Der Fake-Shop: eine Vorladedatei, die fetch ersetzt. Zustand liegt in einer JSON-Datei (überlebt einen abgebrochenen Kindprozess).
+const VORLADEN = join(dir, 'fake_shop.mjs');
+writeFileSync(VORLADEN, `
+import { readFileSync, writeFileSync } from 'node:fs';
+const ZUSTAND = process.env.FAKE_STATE, GOOGLE = '${GOOGLE}';
+const echt = globalThis.setTimeout;
+globalThis.setTimeout = (f, ms, ...a) => echt(f, Math.min(ms || 0, 2), ...a);   // keine echten Wartezeiten
+const lies = () => JSON.parse(readFileSync(ZUSTAND, 'utf8'));
+const schreibe = z => writeFileSync(ZUSTAND, JSON.stringify(z));
+const antwort = d => new Response(JSON.stringify({ data: d }), { status: 200, headers: { 'content-type': 'application/json' } });
+globalThis.fetch = async (url, opt = {}) => {
+  const u = String(url);
+  if (u.includes('/admin/oauth/access_token')) return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
+  if (u === 'https://fake.local/bulk.jsonl') {
+    const z = lies();
+    return new Response(z.produkte.map(p => JSON.stringify({ id: p.id, handle: p.handle, tags: p.tags, variantsCount: p.varianten === null ? null : { count: p.varianten },
+      gp: p.gp, ex: p.ex ? { value: p.ex } : null, cat: p.cat ? { value: p.cat } : null })).join('\\n'), { status: 200 });
+  }
+  if (u.includes('/graphql.json')) {
+    const q = JSON.parse(opt.body).query;
+    const z = lies();
+    if (q.includes('currentBulkOperation(type:QUERY){status errorCode objectCount url}')) return antwort({ currentBulkOperation: { status: 'COMPLETED', errorCode: null, objectCount: String(z.produkte.length), url: 'https://fake.local/bulk.jsonl' } });
+    if (q.includes('currentBulkOperation(type:QUERY){status}')) return antwort({ currentBulkOperation: z.bulkBelegt ? { status: 'RUNNING' } : null });
+    if (q.includes('bulkOperationRunQuery')) return antwort({ bulkOperationRunQuery: { bulkOperation: { id: 'gid://shopify/BulkOperation/1' }, userErrors: [] } });
+    if (q.includes('publishableUnpublish') || q.includes('publishablePublish')) {
+      const aus = {};
+      const re = /a(\\d+): (publishableUnpublish|publishablePublish)\\(id:"([^"]+)", input:\\[\\{publicationId:"([^"]+)"\\}\\]\\)/g;
+      let m;
+      while ((m = re.exec(q))) {
+        const [, i, art, id, pub] = m;
+        z.log.push({ art, id, pub });
+        const p = z.produkte.find(x => x.id === id);
+        if ((z.scheitern || []).includes(id)) { aus['a' + i] = { userErrors: [{ field: ['id'], message: 'fake fehler' }] }; continue; }
+        if (p && pub === GOOGLE) p.gp = art === 'publishablePublish';
+        aus['a' + i] = { userErrors: [] };
+      }
+      z.mutationen = (z.mutationen || 0) + 1;
+      schreibe(z);
+      if (z.absturzNach && z.mutationen >= z.absturzNach) process.exit(137);   // wie SIGKILL: Shopify hat gebucht, die Antwort kommt nie an
+      return antwort(aus);
+    }
+    throw new Error('FAKE: unbekannte Abfrage ' + q.slice(0, 80));
+  }
+  throw new Error('FAKE fetch: ' + u);
+};
+`);
+
+let nr = 0;
+const P = (o = {}) => ({ id: `gid://shopify/Product/${100000 + nr++}`, handle: `p-${nr}`, tags: [], varianten: 1, gp: true, ex: null, cat: 'Home & Garden > Decor', ...o });
+const viele = (n, o) => Array.from({ length: n }, () => P(o));
+const AUS = '["Shopping_ads"]';
+
+/** Eine Welt: 1200 normale Produkte, 300 mit Ausschlussfeld (gehen), 20 Fortura. */
+function welt() {
+  return { produkte: [...viele(1200), ...viele(300, { ex: AUS }), ...viele(20, { tags: ['fortura'] })], log: [], mutationen: 0 };
+}
+let lauf = 0;
+function los(zustand, env = {}, mitFreigabe = true) {
+  lauf++;
+  const o = join(dir, `l${lauf}`);
+  const state = env.FAKE_STATE || join(o + '_state.json');
+  if (!env.FAKE_STATE) writeFileSync(state, JSON.stringify(zustand));
+  const frei = join(dir, 'FREI.txt');
+  if (mitFreigabe) writeFileSync(frei, 'ok'); else rmSync(frei, { force: true });
+  const r = spawnSync(process.execPath, ['--import', VORLADEN, CLI], {
+    env: { PATH: process.env.PATH, HOME: dir, SHOPIFY_SHOP: 'fake-shop.myshopify.com', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'geheim',
+      FAKE_STATE: state, MANIFEST: join(dir, 'manifest.jsonl'), FEHLERDATEI: join(dir, 'fehler.txt'), FREIGABE: frei, PLAN_AUS: join(dir, 'plan.json'), ...env },
+    encoding: 'utf8', timeout: 60000,
+  });
+  return { code: r.status, aus: (r.stdout || '') + (r.stderr || ''), state, lies: () => JSON.parse(readFileSync(state, 'utf8')) };
+}
+const neu = () => { for (const f of ['manifest.jsonl', 'fehler.txt']) rmSync(join(dir, f), { force: true }); };
+const manifest = () => parseManifest(existsSync(join(dir, 'manifest.jsonl')) ? readFileSync(join(dir, 'manifest.jsonl'), 'utf8') : '');
+
+// 1) Trockenlauf (Vorgabe) schreibt nichts
+{
+  neu();
+  const r = los(welt(), { PHASE: 'plan' });
+  pruef('Plan: Exit 0, 300 abzuwählen, kein Aufruf an Shopify', [r.code, /ABWÄHLEN 300 /.test(r.aus), r.lies().log.length], [0, true, 0]);
+  const t = los(welt(), { PHASE: 'abwaehlen' });
+  pruef('abwaehlen ohne LIVE=1 ist Trockenlauf: Exit 0, nichts geschrieben', [t.code, t.aus.includes('TROCKENLAUF'), t.lies().log.length, existsSync(join(dir, 'manifest.jsonl'))], [0, true, 0, false]);
+}
+// 2) Freigabe und KATALOG-Sperre
+{
+  neu();
+  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' }, false);
+  pruef('LIVE ohne Freigabedatei: Exit 1, nichts geschrieben', [r.code, r.lies().log.length], [1, 0]);
+  writeFileSync(join(dir, 'katalog.jsonl'), '');
+  const k = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', KATALOG: join(dir, 'katalog.jsonl') });
+  pruef('KATALOG mit LIVE=1: Exit 1', [k.code, k.aus.includes('KATALOG')], [1, true]);
+  const b = los(welt(), { PHASE: 'plan', BUDGET: '9000' });
+  pruef('BUDGET unter dem Mindestbudget: Exit 1', [b.code, b.aus.includes('BUDGET')], [1, true]);
+  const f = los(welt(), { PHASE: 'unsinn' });
+  pruef('unbekannte PHASE: Exit 1', f.code, 1);
+}
+// 3) Abwählen, Kanal-ID, Manifest, Idempotenz, Prüfen
+{
+  neu();
+  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const z = r.lies();
+  const weg = z.produkte.filter(p => p.gp === false), bleibt = z.produkte.filter(p => p.gp === true);
+  pruef('abwaehlen: Exit 0, genau die 300 mit Ausschlussfeld sind weg', [r.code, weg.length, weg.every(p => p.ex === AUS), bleibt.length], [0, 300, true, 1220]);
+  pruef('jede Mutation nennt den Kanal «Google & YouTube», nie den Onlineshop', [z.log.length, z.log.every(l => l.pub === GOOGLE && l.art === 'publishableUnpublish'), z.log.some(l => l.pub === ONLINESTORE)], [300, true, false]);
+  pruef('Manifest: 300 Produkte (Absicht vor dem Aufruf)', [manifest().ids.size, manifest().kaputt], [300, 0]);
+  const wieder = los(z, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle', FAKE_STATE: r.state });
+  pruef('zweiter Lauf: nichts zu tun, kein weiterer Aufruf', [wieder.code, wieder.aus.includes('Nichts zu tun'), wieder.lies().log.length], [0, true, 300]);
+  const pr = los(z, { PHASE: 'pruefen', FAKE_STATE: r.state });
+  pruef('pruefen nach dem Lauf: Exit 0, Varianten auf Google genannt', [pr.code, /Varianten auf Google jetzt 1220 /.test(pr.aus)], [0, true]);
+}
+// 4) MAX begrenzt, der Rest folgt
+{
+  neu();
+  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: '50' });
+  pruef('MAX=50: genau 50 abgewählt', [r.code, r.lies().produkte.filter(p => p.gp === false).length, manifest().ids.size], [0, 50, 50]);
+}
+// 5) Absturz mitten im Lauf: nichts geht verloren, die volle Rücknahme stellt alles zurück
+{
+  neu();
+  const w = welt(); w.absturzNach = 2;
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const z = r.lies();
+  const weg = z.produkte.filter(p => p.gp === false);
+  pruef('Absturz nach der 2. Mutation: Exit 137, 20 abgewählt, alle 20 im Manifest', [r.code, weg.length, weg.every(p => manifest().ids.has(p.id))], [137, 20, true]);
+  z.absturzNach = 0; writeFileSync(r.state, JSON.stringify(z));
+  const ruck = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle', FAKE_STATE: r.state });
+  const nach = ruck.lies();
+  pruef('zuruecksetzen: alle 20 wieder auf Google, Manifest sagt «auf»', [ruck.code, nach.produkte.filter(p => p.gp === false).length, manifest().ids.size], [0, 0, 0]);
+  pruef('Rücknahme veröffentlicht nur auf dem Google-Kanal', nach.log.filter(l => l.art === 'publishablePublish').every(l => l.pub === GOOGLE), true);
+}
+// 6) Rücknahme: aufnehmen nimmt Ausschluss-Produkte NICHT zurück, zuruecksetzen schon
+{
+  neu();
+  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  const a = los(r.lies(), { PHASE: 'aufnehmen', LIVE: '1', MAX: 'alle', FAKE_STATE: r.state });
+  pruef('aufnehmen: Produkte mit Ausschlussfeld bleiben draussen', [a.code, a.lies().produkte.filter(p => p.gp === false).length], [0, 300]);
+  const z = los(a.lies(), { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle', FAKE_STATE: r.state });
+  pruef('zuruecksetzen: alle 300 zurück', [z.code, z.lies().produkte.filter(p => p.gp === false).length], [0, 0]);
+}
+// 7) Fehlschläge: Fehlerliste, dreimal, dann übersprungen
+{
+  neu();
+  const w = welt(); const gift = w.produkte.filter(p => p.ex).slice(0, 3).map(p => p.id); w.scheitern = gift;
+  const SF = join(dir, 'zustand7.json'); writeFileSync(SF, JSON.stringify(w));
+  const codes = [];
+  for (let i = 0; i < 3; i++) codes.push(los(null, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle', FAKE_STATE: SF }).code);
+  pruef('3 dauerhaft fehlschlagende Produkte: dreimal Exit 3', codes, [3, 3, 3]);
+  const lines = readFileSync(join(dir, 'fehler.txt'), 'utf8').trim().split('\n');
+  pruef('Fehlerliste: 9 Zeilen (3 Produkte × 3 Läufe), mit Meldung', [lines.length, lines[0].split('\t')[2]], [9, 'fake fehler']);
+  const vierter = los(null, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle', FAKE_STATE: SF });
+  pruef('vierter Lauf überspringt sie und nennt sie: Exit 0', [vierter.code, vierter.aus.includes('schlugen schon dreimal fehl')], [0, true]);
+}
+// 8) ONLY
+{
+  neu();
+  const w = welt();
+  const ziel = w.produkte.find(p => p.ex);
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle', ONLY: ziel.handle });
+  pruef('ONLY mit bekanntem Handle: genau dieses Produkt', [r.code, r.lies().produkte.filter(p => p.gp === false).map(p => p.handle)], [0, [ziel.handle]]);
+  neu();
+  const u = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', ONLY: 'gibt-es-nicht' });
+  pruef('ONLY ohne Treffer: Exit 1, nichts geschrieben', [u.code, u.lies().log.length], [1, 0]);
+}
+// 9) Manifest: Pfad nicht schreibbar, Datei ohne Zeilenumbruch und mit BOM
+{
+  neu();
+  writeFileSync(join(dir, 'datei.txt'), 'x');   // ein Pfad UNTER einer normalen Datei lässt sich nie anlegen (ENOTDIR)
+  const r = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle', MANIFEST: join(dir, 'datei.txt', 'unter', 'm.jsonl') });
+  pruef('Manifest nicht schreibbar: Exit 1, KEIN Produkt angefasst', [r.code, r.lies().log.length], [1, 0]);
+  neu();
+  writeFileSync(join(dir, 'manifest.jsonl'), '﻿' + JSON.stringify({ id: 'gid://shopify/Product/1', aktion: 'ab-versucht' }));   // BOM, kein Zeilenumbruch am Ende
+  const a = los(welt(), { PHASE: 'abwaehlen', LIVE: '1', MAX: '20' });
+  const m = manifest();
+  pruef('Manifest ohne Umbruch am Ende und mit BOM: alter Eintrag bleibt, 20 neue dazu, keine Verschmelzung', [a.code, m.ids.has('gid://shopify/Product/1'), m.ids.size, m.kaputt], [0, true, 21, 0]);
+}
+// 10) Plan-Wächter: verdächtiger Plan schreibt nichts
+{
+  neu();
+  const w = { produkte: [...viele(600), ...viele(1500, { ex: AUS })], log: [], mutationen: 0 };   // 71 % abzuwählen
+  const r = los(w, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('über 70 % abzuwählen: Exit 2, nichts geschrieben', [r.code, r.aus.includes('zu-viele-abwaehlen'), r.lies().log.length], [2, true, 0]);
+  const ohne = { produkte: viele(1500, { cat: null }), log: [], mutationen: 0 };
+  const k = los(ohne, { PHASE: 'plan' });
+  pruef('fehlende Google-Kategorie bei fast allen Zeilen (Lesefehler): Plan abgelehnt', [k.code, k.aus.includes('zu-viele-ohne-kategorie')], [2, true]);
+  const rueck = los({ produkte: [...viele(600), ...viele(1500, { ex: AUS, gp: false })], log: [], mutationen: 0 }, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('volle Rücknahme ohne Manifest: nichts zu tun, Exit 0 (stellt nur Eigenes zurück)', [rueck.code], [0]);
+}
+// 11) Bulk-Wettlauf und Prüfen mit Defekt
+{
+  neu();
+  const w = welt(); w.bulkBelegt = true;
+  const r = los(w, { PHASE: 'plan' });
+  pruef('läuft schon eine Bulk-Abfrage: Exit 4', [r.code, r.aus.includes('Bulk-Abfrage')], [4, true]);
+  neu();
+  const x = welt();
+  const abgewaehlt = x.produkte.filter(p => p.ex).slice(0, 5);
+  writeFileSync(join(dir, 'manifest.jsonl'), abgewaehlt.map(p => JSON.stringify({ id: p.id, aktion: 'ab-versucht' })).join('\n') + '\n');   // laut Manifest abgewählt, liegt aber noch auf Google
+  const pr = los(x, { PHASE: 'pruefen' });
+  pruef('pruefen: Defekt (abgewählt, aber noch auf Google) = Exit 3', [pr.code, /davon noch auf Google 5 /.test(pr.aus)], [3, true]);
+  neu();
+  const vor = los(welt(), { PHASE: 'pruefen' });
+  pruef('pruefen vor dem Lauf: Google trägt noch Produkte ausserhalb des Schaufensters = Exit 5', vor.code, 5);
+}
+
+rmSync(dir, { recursive: true, force: true });
+console.log(`${ok} ok, ${fehler} Fehler`);
+process.exit(fehler ? 1 : 0);

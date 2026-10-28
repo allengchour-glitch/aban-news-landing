@@ -1,0 +1,3 @@
+Freigabe für automation/gmc_schaufenster.mjs (LIVE=1, PHASE=abwaehlen|aufnehmen|zuruecksetzen).
+Besitzer, Chat 28.10.2026, zum Merchant-Center-Bericht «Shopping ads quota limit reached»: «aber zuerst merchant fix».
+Stopp: diese Datei löschen. Rücknahme: PHASE=aufnehmen (Manifest dropship/gmc_schaufenster_manifest.jsonl).

@@ -163,6 +163,7 @@ jobs:
           node --check automation/lib/sperr_tags.mjs
           node --check automation/kundenstimmen_bauen.mjs
           node --check automation/unterteilung_audit.mjs
+          node --check automation/gmc_schaufenster.mjs
           node --check automation/codex_zweitmeinung.mjs
           node --check codex-mods/luxe-codex/hooks/leitplanken.mjs
           node --check codex-mods/luxe-codex/hooks/schreibzaehler.mjs
@@ -213,6 +214,9 @@ jobs:
           node automation/lib/url_status_test.mjs
           node automation/lib/gmc_ausschluss_test.mjs
           node automation/lib/gmc_feed_item_test.mjs
+          # Google-Schaufenster (Merchant-Center-Quote, 150 000 Artikel je Bereich): Regel und Ablauf mit Attrappen-Shop; ohne Netz
+          node automation/lib/gmc_schaufenster_test.mjs
+          node automation/gmc_schaufenster_lauf_test.mjs
           node automation/lib/sourcing_kandidaten_test.mjs
           node automation/lib/top_kandidaten_test.mjs
           node automation/auswahl_kandidaten_test.mjs
