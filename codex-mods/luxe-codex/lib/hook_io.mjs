@@ -13,7 +13,7 @@
  * Eine Leitplanke ist eine Gedächtnisstütze, keine Sicherheitsgrenze: ein Fehler im Hook darf die Arbeit
  * nie blockieren (Exit 0), aber er darf auch nie stumm bleiben: er erscheint als systemMessage.
  */
-import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { appendFileSync, chmodSync, existsSync, mkdirSync, readFileSync, renameSync, statSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 
@@ -24,8 +24,9 @@ export function zustandsOrdner(env = process.env) {
   return join(env.CODEX_HOME || join(homedir(), '.codex'), 'luxe-codex');
 }
 
+/** Legt den Ordner samt fehlender Elternordner an (nur für den Besitzer zugänglich: 0700) und gibt den Pfad zurück. */
 export function sichereOrdner(ordner) {
-  if (!existsSync(ordner)) mkdirSync(ordner, { recursive: true });
+  if (!existsSync(ordner)) mkdirSync(ordner, { recursive: true, mode: 0o700 });
   return ordner;
 }
 
@@ -71,15 +72,53 @@ export function verbinde(...teile) {
   return aus;
 }
 
-/** Hängt eine Zeile ans Lernprotokoll (nur wenn LUXE_CODEX_LERNEN=1); kürzt lange Texte, damit nichts Grosses oder Geheimes liegt. */
+// --- Lernprotokoll ---------------------------------------------------------------------------------------------
+
+// Erkennbare Zugangsdaten werden geschwärzt, BEVOR gekürzt wird (sonst bliebe der Anfang eines Schlüssels stehen).
+const NAMEN = '(?:secret|token|passw(?:or)?d|passwort|api[_-]?key|access[_-]?key|private[_-]?key|credential|authorization)';
+const GEHEIM_MUSTER = [
+  /-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?(?:-----END [A-Z ]*PRIVATE KEY-----|$)/g,
+  /\b(?:shp(?:at|ss|ca|pa)_[A-Za-z0-9]{8,}|gh[pousr]_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{16,}|xox[abprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{30,})/g,
+  /\bBearer\s+[A-Za-z0-9._~+/=-]{8,}/gi,
+];
+// «NAME=wert», «NAME: wert», «--password=wert»: der Wert hinter einem Namen mit Geheimnis-Stichwort. Die Wiederholungen
+// vor und nach dem Stichwort sind begrenzt, damit die Suche auch bei langen Wortketten schnell bleibt.
+const NAME_WERT = new RegExp(`([A-Za-z0-9_-]{0,40}${NAMEN}[A-Za-z0-9_-]{0,40})(\\s*[=:]\\s*)("[^"]*"|'[^']*'|[^\\s"']+)`, 'gi');
+const GEHEIMER_SCHLUESSEL = new RegExp(NAMEN, 'i');
+const GRENZE_BYTES = 1024 * 1024;
+
+/** Ersetzt erkennbare Zugangsdaten in einem Text durch «[geheim]» (Muster und Namen; kein Beweis, dass nichts übrig bleibt). */
+export function schwaerze(text) {
+  let t = String(text);
+  for (const m of GEHEIM_MUSTER) t = t.replace(m, '[geheim]');
+  return t.replace(NAME_WERT, '$1$2[geheim]');
+}
+
+/**
+ * Hängt eine Zeile ans Lernprotokoll (nur wenn LUXE_CODEX_LERNEN=1): gekürzt (Texte auf 120 Zeichen, Listen auf 8, Objekte auf 12
+ * Einträge), erkennbare Zugangsdaten geschwärzt (Muster wie shpat_/ghp_/sk-, Werte hinter Namen mit secret/token/password …,
+ * Werte unter solchen Schlüsseln). Die Datei ist nur für den Besitzer lesbar (0600) und wird bei 1 MiB zur Seite gelegt
+ * (gesehen.jsonl.alt, höchstens zwei Dateien). Der Schutz arbeitet nach Mustern: ein Geheimnis ohne erkennbares Muster und
+ * ohne verräterischen Namen bleibt stehen, darum das Protokoll nur für den ersten echten Lauf einschalten.
+ */
 export function lerne(hook, eingabe, env = process.env) {
   if (env.LUXE_CODEX_LERNEN !== '1') return;
-  const kurz = (w, n = 0) => (typeof w === 'string' ? (w.length > 120 ? `${w.slice(0, 120)}…[${w.length}]` : w)
-    : Array.isArray(w) ? (n > 3 ? '[…]' : w.slice(0, 8).map(x => kurz(x, n + 1)))
-      : w && typeof w === 'object' ? (n > 3 ? '{…}' : Object.fromEntries(Object.entries(w).slice(0, 12).map(([k, v]) => [k, kurz(v, n + 1)]))) : w);
+  const kurz = (w, n = 0) => {
+    if (typeof w === 'string') {
+      const rein = schwaerze(w.length > 600 ? w.slice(0, 600) : w);
+      return `${rein.length > 120 ? rein.slice(0, 120) : rein}${w.length > 120 ? `…[${w.length}]` : ''}`;
+    }
+    if (Array.isArray(w)) return n > 3 ? '[…]' : w.slice(0, 8).map(x => kurz(x, n + 1));
+    if (w && typeof w === 'object') {
+      return n > 3 ? '{…}' : Object.fromEntries(Object.entries(w).slice(0, 12).map(([k, v]) => [k, GEHEIMER_SCHLUESSEL.test(k) && v !== null && v !== undefined ? '[geheim]' : kurz(v, n + 1)]));
+    }
+    return w;
+  };
   try {
-    const ordner = sichereOrdner(zustandsOrdner(env));
-    appendFileSync(join(ordner, 'gesehen.jsonl'), `${JSON.stringify({ hook, ereignis: eingabe.hook_event_name, werkzeug: eingabe.tool_name, form: kurz(eingabe.tool_input) })}\n`);
+    const datei = join(sichereOrdner(zustandsOrdner(env)), 'gesehen.jsonl');
+    try { if (statSync(datei).size > GRENZE_BYTES) renameSync(datei, `${datei}.alt`); } catch { /* noch keine Datei: nichts zur Seite zu legen */ }
+    appendFileSync(datei, `${JSON.stringify({ hook, ereignis: eingabe.hook_event_name, werkzeug: eingabe.tool_name, form: kurz(eingabe.tool_input) })}\n`, { mode: 0o600 });
+    try { chmodSync(datei, 0o600); } catch { /* unter Windows ohne Wirkung */ }
   } catch { /* das Lernprotokoll darf nie stören */ }
 }
 

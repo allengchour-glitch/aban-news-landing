@@ -4,8 +4,8 @@
  * Welche Namen Codex an Hooks meldet, ist NICHT bestätigt (Kandidaten: exec_command, shell, local_shell,
  * Bash, apply_patch, exec, mcp__<server>__<werkzeug>). Darum entscheidet diese Datei an der FORM:
  *   - Shell-Befehl: Feld command/cmd/script als Zeichenkette ODER Liste von Argumenten (auch verschachtelt,
- *     z. B. action.command); `bash -lc "…"` wird ausgepackt, weil ohneText() den Inhalt der Anführungszeichen
- *     sonst unsichtbar macht.
+ *     z. B. action.command); `bash -lc "…"` wird ausgepackt, weil der Zerleger (regeln.mjs) den Inhalt der
+ *     Anführungszeichen als EIN Wort liest und nicht als Befehl prüft.
  *   - Patch im Codex-Format («*** Begin Patch», «*** Add File: …», «*** Update File: …», «*** Move to: …»):
  *     geprüft werden Zielpfade und nur die HINZUGEFÜGTEN Zeilen («+»); Entferntes («-») und «*** Delete File»
  *     prüft niemand (Löschen ist erlaubt).
@@ -13,14 +13,16 @@
  *     `old_string` wird nie geprüft. Ein Pfad ohne Inhalt ist lesend oder unklar und wird nicht geprüft.
  *   - JavaScript des Code-Modus (Werkzeug «exec»): die Befehle stecken als Zeichenketten-Literale in
  *     `tools.exec_command({cmd: "…"})`; sie werden aus dem Quelltext gelesen (Anführungszeichen, Template,
- *     `+`-Ketten, Listen, einfache Variablen), nicht der Quelltext selbst als Shell-Befehl geprüft.
+ *     `+`-Ketten, Listen, Variablen samt Neuzuweisung, `for…of`-Schleifen und `.map`/`.forEach` über Listen,
+ *     Regex-Literale), nicht der Quelltext selbst als Shell-Befehl geprüft.
+ *   - Skripte, die einer Shell über Heredoc, Here-String oder Pipe (`echo '…' | sh`) zugeführt werden, gelten wie `bash -c`.
  *   - Alles andere ist «unbekannt»: durchlassen, kein Fehlalarm (der Aufrufer schreibt es mit
  *     LUXE_CODEX_LERNEN=1 ins Lernprotokoll).
  * Grenzen: Befehle, die erst zur Laufzeit zusammengesetzt werden (Variablen aus Funktionen, `$(…)` in
  * Anführungszeichen, `echo "…" > datei` mit Geheimnis), sieht eine Zeichenkettenprüfung nicht. Eine Leitplanke
  * ist eine Gedächtnisstütze.
  */
-import { ohneText, umgebungsAnteile } from './regeln.mjs';
+import { analysiere, basis, erbeText, SHELLS } from './regeln.mjs';
 import { liesJson } from './hook_io.mjs';
 
 // ---------------------------------------------------------------- Schlüsselwörter der Formen
@@ -34,9 +36,9 @@ const EINGABE = new Set(['input', 'code', 'source', 'js', 'javascript', 'patch',
 const MARKER_PATCH = /^\*\*\* Begin Patch[ \t]*$/m;
 const hatPatch = s => MARKER_PATCH.test(s);
 const istReinerPatch = s => /^\s*\*\*\* Begin Patch[ \t]*(?:\r?\n|$)/.test(s);
-const JS_FORM = /\b(?:tools|codex)\s*(?:\.\s*[A-Za-z_$][\w$]*\s*\(|\[)|\bexec_command\s*\(|\bapply_patch\s*\(|\bawait\s+[\w$.]+\s*\(|\b(?:spawn|spawnSync|execSync|execFile|execFileSync|writeFileSync|writeFile|appendFile|appendFileSync)\s*\(/;
-// Geprüft wird der Text OHNE Zitate: `grep "await foo(" src` ist ein Shell-Befehl, kein JavaScript.
-const siehtAusWieJs = s => JS_FORM.test(ohneText(s));
+const JS_FORM = /\b(?:tools|codex)\s*(?:\.\s*[A-Za-z_$][\w$]*\s*\(|\[)|\bexec_command\s*\(|\bapply_patch\s*\(|\bawait\s+[\w$.]+\s*\(|\b(?:spawn|spawnSync|execSync|execFile|execFileSync|writeFileSync|writeFile|appendFile|appendFileSync|copyFileSync|copyFile|cpSync|renameSync|symlinkSync|linkSync|openSync|createWriteStream|truncateSync)\s*\(/;
+// Geprüft wird das Gerüst OHNE Zeichenketten, Regex-Literale und Kommentare (siehe jsGeruest): `grep "await foo(" src` ist ein Shell-Befehl, kein JavaScript.
+const siehtAusWieJs = s => JS_FORM.test(jsGeruest(s));
 
 // ---------------------------------------------------------------- Argumentliste → Befehlszeile
 function zitiere(a) {
@@ -52,79 +54,89 @@ export function befehlAusListe(liste) {
   return liste.map(x => zitiere(String(x))).join(' ');
 }
 
-// ---------------------------------------------------------------- bash -lc "…" auspacken
-const HEREDOC = /<<-?\s*(['"]?)(\w+)\1[^\n]*\n[\s\S]*?\n\s*\2(?=\s|$)/g;
-const KOPF = String.raw`(?:^|[\s;&|(])`;
-const WRAPPER = new RegExp([
-  String.raw`${KOPF}(?:\S*\/)?(?:(?:ba|z|da|k|a)?sh|fish)(?:\s+-[-\w]+)*?\s+-[a-z]*c\s+(?=['"])`,
-  String.raw`${KOPF}(?:\S*\/)?(?:powershell|pwsh)(?:\.exe)?(?:\s+-[-\w]+)*?\s+-(?:c|command)\s+(?=['"])`,
-  String.raw`${KOPF}(?:\S*\/)?cmd(?:\.exe)?\s+\/[ck]\s+(?=['"])`,
-  String.raw`${KOPF}eval\s+(?=['"])`,
-].join('|'), 'gi');
+// ---------------------------------------------------------------- bash -lc "…", Heredoc und Pipe an eine Shell auspacken
+const nachEscapes = t => t.replace(/\\([nt\\])/g, (m, c) => (c === 'n' ? '\n' : c === 't' ? '\t' : '\\'));
 
-/** Maske gleicher Länge: Inhalt von Zitaten, Heredoc-Körpern und Kommentaren ist unsichtbar (\u0001),
- *  die Anführungszeichen bleiben; `spannen` merkt zu jedem öffnenden Zeichen das schliessende. */
-function maskiere(s) {
-  const t = s.replace(HEREDOC, m => m.replace(/[^\n]/g, '\u0001'));
-  let maske = '';
-  const spannen = new Map();
-  let i = 0;
-  while (i < t.length) {
-    const c = t[i];
-    if (c === '\\') { maske += t.slice(i, i + 2); i += 2; continue; }
-    if (c === '#' && (i === 0 || /[\s;&|(]/.test(t[i - 1]))) {
-      let j = t.indexOf('\n', i);
-      if (j < 0) j = t.length;
-      maske += '\u0001'.repeat(j - i);
-      i = j;
-      continue;
-    }
-    if (c === "'" || c === '"') {
-      let j = i + 1;
-      while (j < t.length && t[j] !== c) j += (c === '"' && t[j] === '\\') ? 2 : 1;
-      if (j >= t.length) { maske += c + '\u0001'.repeat(t.length - i - 1); break; }
-      spannen.set(i, { ende: j, q: c });
-      maske += c + '\u0001'.repeat(j - i - 1) + c;
-      i = j + 1;
-      continue;
-    }
-    maske += c;
-    i += 1;
+/** Text, den der Vorgänger in der Pipe ausgibt, soweit er im Befehl steht (`echo '…' | sh`, `cat <<EOF | bash`). */
+function pipeText(vor) {
+  if (!vor || vor.k < 0) return undefined;
+  const args = vor.seg.w.slice(vor.k + 1).map(x => x.v);
+  if (vor.name === 'echo') {
+    while (args.length > 0 && /^-[neE]+$/.test(args[0])) args.shift();
+    return nachEscapes(args.join(' '));
   }
-  return { maske, spannen };
+  if (vor.name === 'printf') return nachEscapes(args.filter(a => a !== '--').join('\n'));
+  if ((vor.name === 'cat' || vor.name === 'tee') && vor.seg.heredocs.length > 0) return vor.seg.heredocs[vor.seg.heredocs.length - 1].koerper;
+  return undefined;
+}
+
+/** Skripte, die dieser Teilbefehl an eine Shell gibt: `-c`-Text, `eval`, PowerShell, `cmd /c`, Heredoc, Here-String, Pipe. */
+function huellenSkripte(info) {
+  const aus = [];
+  if (info.k < 0 || info.daten) return aus;
+  const w = info.seg.w;
+  for (let i = 0; i < w.length; i += 1) {
+    if (w[i].offen || w[i].zuw !== undefined) continue;
+    const name = basis(w[i].v);
+    if (SHELLS.has(name)) {
+      let c = -1;
+      let stdin = false;
+      let datei = false;
+      for (let j = i + 1; j < w.length && j < i + 16; j += 1) {
+        const t = w[j].v;
+        if (/^-[A-Za-z]*c[A-Za-z]*$/.test(t)) { c = j; break; }
+        if (t === '-o' || t === '-O' || t === '+O' || t === '--rcfile' || t === '--init-file') { j += 1; continue; }
+        if (t === '-' || t === '-s') { stdin = true; continue; }
+        if (t.startsWith('-') || t.startsWith('+')) continue;
+        datei = !stdin;
+        break;
+      }
+      if (c >= 0) { if (w[c + 1] && !w[c + 1].offen) aus.push(w[c + 1].v); continue; }
+      if (datei) continue;
+      const h = info.seg.heredocs;
+      const text = h.length > 0 ? h[h.length - 1].koerper : info.seg.hier.length > 0 ? info.seg.hier[info.seg.hier.length - 1].v : info.seg.pipeIn ? pipeText(info.vor) : undefined;
+      if (typeof text === 'string' && text.trim() !== '') aus.push(text);
+    } else if (name === 'powershell' || name === 'pwsh') {
+      for (let j = i + 1; j < w.length; j += 1) {
+        if (/^-(?:c|command)$/i.test(w[j].v)) { if (w[j + 1]) aus.push(w.slice(j + 1).map(x => x.v).join(' ')); break; }
+      }
+    } else if (name === 'cmd') {
+      for (let j = i + 1; j < w.length; j += 1) {
+        if (/^\/[ck]$/i.test(w[j].v)) { if (w[j + 1]) aus.push(w.slice(j + 1).map(x => x.v).join(' ')); break; }
+      }
+    } else if (name === 'eval' && w[i + 1]) aus.push(w.slice(i + 1).map(x => x.v).join(' '));
+  }
+  return aus;
 }
 
 /**
- * Der Befehl selbst plus jedes Skript, das eine Shell aus Anführungszeichen ausführt
- * (`bash -lc "…"`, `sh -c '…'`, `eval "…"`, PowerShell, cmd /c), bis zu drei Ebenen.
- * Das umhüllte Skript erbt LIVE=1 und die Auswege des Aussen-Befehls.
+ * Der Befehl selbst plus jedes Skript, das eine Shell ausführt (`bash -lc "…"`, `sh -c '…'`, `eval "…"`, PowerShell,
+ * cmd /c, `bash <<EOF`, `bash <<< '…'`, `echo '…' | sh`), bis zu drei Ebenen.
+ * Das umhüllte Skript erbt LIVE=1 und die Auswege des Teilbefehls, der es aufruft.
  */
 export function entpacke(befehl, tiefe = 0) {
   const roh = String(befehl ?? '');
   const aus = [roh];
   if (tiefe >= 3) return aus;
-  const { maske, spannen } = maskiere(roh);
-  const erbe = umgebungsAnteile(roh).join(' ');
-  for (const m of maske.matchAll(WRAPPER)) {
-    const pos = m.index + m[0].length;
-    const sp = spannen.get(pos);
-    if (!sp) continue;
-    let innen = roh.slice(pos + 1, sp.ende);
-    if (sp.q === '"') innen = innen.replace(/\\(["\\$`\n])/g, '$1');
-    for (const x of entpacke(innen, tiefe + 1)) aus.push(erbe ? `${erbe} ${x}` : x);
+  for (const info of analysiere(roh)) {
+    const skripte = huellenSkripte(info);
+    if (skripte.length === 0) continue;
+    const erbe = erbeText(info);
+    for (const skript of skripte) for (const x of entpacke(skript, tiefe + 1)) aus.push(erbe ? `${erbe} ${x}` : x);
   }
   return aus;
 }
 
 /** Heredoc-Körper, die per `cat`/`tee` in eine Datei geschrieben werden: das ist geschriebener Text. */
 export function heredocTexte(befehl) {
-  const s = String(befehl ?? '');
+  const infos = analysiere(befehl);
   const aus = [];
-  for (const m of s.matchAll(/<<-?\s*(['"]?)(\w+)\1([^\n]*)\n([\s\S]*?)\n\s*\2(?=\s|$)/g)) {
-    const kopf = s.slice(s.lastIndexOf('\n', m.index - 1) + 1, m.index) + m[3];
-    const schreibt = /\btee\b/.test(kopf) || (/\bcat\b/.test(kopf) && /(?:^|[^<>&|\d-])>>?\s*[^\s>&|;]/.test(kopf));
-    if (schreibt) aus.push(m[4]);
-  }
+  infos.forEach((info, idx) => {
+    if (info.seg.heredocs.length === 0) return;
+    const dateiUmleitung = info.seg.umleit.some(u => ['>', '>>', '>|', '&>', '&>>'].includes(u.op) || (u.op === '>&' && !/^(?:\d+|-)$/.test(u.ziel.v)));
+    const schreibt = info.name === 'tee' || (info.name === 'cat' && (dateiUmleitung || (info.seg.pipeOut && infos[idx + 1]?.name === 'tee')));
+    if (schreibt) for (const h of info.seg.heredocs) aus.push(h.koerper);
+  });
   return aus;
 }
 
@@ -191,39 +203,111 @@ function leseLiteral(src, start) {
   return { wert: aus, ende: src.length };
 }
 
-/** Grobe Zerlegung: Zeichenketten (' " `), Namen/Zahlen und einzelne Zeichen; Kommentare fallen weg. Wirft nie. */
+const WORT_VOR_REGEX = new Set(['return', 'typeof', 'case', 'do', 'else', 'in', 'of', 'instanceof', 'new', 'delete', 'void', 'throw', 'yield', 'await']);
+const WORT_VOR_BLOCK = new Set(['if', 'while', 'for', 'with']);
+
+/** Ein Regex-Literal ab `start` (der Schrägstrich): Ende nach den Flags oder -1. Endet nie über die Zeile hinaus; `/` in `[…]` schliesst nicht. */
+function leseRegex(src, start) {
+  let j = start + 1;
+  let klasse = false;
+  const grenze = Math.min(src.length, start + 4000);
+  while (j < grenze) {
+    const c = src[j];
+    if (c === '\n') return -1;
+    if (c === '\\') { j += 2; continue; }
+    if (c === '[') klasse = true;
+    else if (c === ']') klasse = false;
+    else if (c === '/' && !klasse) {
+      j += 1;
+      while (j < src.length && /[a-z]/i.test(src[j])) j += 1;
+      return j;
+    }
+    j += 1;
+  }
+  return -1;
+}
+
+/**
+ * Grobe Zerlegung: Zeichenketten (' " `), Regex-Literale, Namen/Zahlen und einzelne Zeichen; Kommentare fallen weg. Wirft nie.
+ * Ein `/` ist ein Regex-Literal, wo ein Wert beginnen darf (nach `(`, `,`, `=`, `return`, nach `)` eines `if (…)` …), sonst eine Division:
+ * sonst finge das `'` in `/'/g` eine Zeichenkette an, die bis zum Programmende läuft, und `//` in `/\//` einen Kommentar.
+ */
 function lexe(src) {
   const t = [];
+  const klammern = [];
+  let regexOk = true;
   let i = 0;
   while (i < src.length && t.length < 20000) {
     const c = src[i];
     if (/\s/.test(c)) { i += 1; continue; }
     if (c === '/' && src[i + 1] === '/') { while (i < src.length && src[i] !== '\n') i += 1; continue; }
     if (c === '/' && src[i + 1] === '*') { const j = src.indexOf('*/', i + 2); i = j < 0 ? src.length : j + 2; continue; }
-    if (c === '"' || c === "'" || c === '`') { const r = leseLiteral(src, i); t.push({ t: 's', v: r.wert }); i = r.ende; continue; }
-    if (/[\w$]/.test(c)) { let j = i + 1; while (j < src.length && /[\w$]/.test(src[j])) j += 1; t.push({ t: 'i', v: src.slice(i, j) }); i = j; continue; }
+    if (c === '"' || c === "'" || c === '`') { const r = leseLiteral(src, i); t.push({ t: 's', v: r.wert }); i = r.ende; regexOk = false; continue; }
+    if (c === '/' && regexOk) {
+      const e = leseRegex(src, i);
+      if (e >= 0) { t.push({ t: 'r', v: src.slice(i, e) }); i = e; regexOk = false; continue; }
+    }
+    if (/[\w$]/.test(c)) {
+      let j = i + 1;
+      while (j < src.length && /[\w$]/.test(src[j])) j += 1;
+      const v = src.slice(i, j);
+      t.push({ t: 'i', v });
+      regexOk = WORT_VOR_REGEX.has(v);
+      i = j;
+      continue;
+    }
     t.push({ t: 'p', v: c });
+    if (c === '(') { const vor = t[t.length - 2]; klammern.push(Boolean(vor && vor.t === 'i' && WORT_VOR_BLOCK.has(vor.v))); regexOk = true; }
+    else if (c === ')') regexOk = klammern.pop() ?? false;
+    else regexOk = c !== ']';
     i += 1;
   }
   return t;
 }
 
+/** Der Quelltext als Gerüst: Zeichenketten als `""`, Regex-Literale als `/r/`, Kommentare weg. */
+function jsGeruest(src) {
+  let aus = '';
+  let vorWort = false;
+  for (const x of lexe(String(src ?? ''))) {
+    const wort = x.t === 'i';
+    const text = x.t === 's' ? '""' : x.t === 'r' ? '/r/' : x.v;
+    if (wort && vorWort) aus += ' ';
+    aus += text;
+    vorWort = wort;
+  }
+  return aus;
+}
+
 const JS_BEFEHL_AUFRUF = new Set(['exec_command', 'shell', 'shell_command', 'local_shell', 'bash', 'exec', 'execsync', 'run_command', 'system']);
 const JS_SPAWN_AUFRUF = new Set(['spawn', 'spawnsync', 'execfile', 'execfilesync']);
+/** Schreibt an den Pfad im ersten Argument (mit Text im zweiten, wenn es ein Literal ist). */
 const JS_SCHREIB_AUFRUF = new Set(['writefilesync', 'writefile', 'appendfilesync', 'appendfile']);
+const JS_SCHREIB_NUR_PFAD = new Set(['createwritestream', 'truncatesync', 'truncate']);
+/** Legt an der Stelle im ZWEITEN Argument etwas an (Kopie, Umbenennung, Verknüpfung). */
+const JS_ZIEL_ZWEITES = new Set(['copyfilesync', 'copyfile', 'cpsync', 'cp', 'renamesync', 'rename', 'symlinksync', 'symlink', 'linksync', 'link']);
+const JS_OEFFNEN = new Set(['opensync', 'open']);
+const JS_LISTENMETHODEN = new Set(['map', 'foreach', 'flatmap', 'filter', 'some', 'every', 'find', 'findindex', 'reduce']);
+const DEKLARATION = new Set(['const', 'let', 'var']);
 
 /**
  * Liest aus JavaScript die Zeichenketten, die als Befehl, Pfad, Inhalt oder Patch dienen:
  * `cmd: "…"`, `command: ["a","b"]`, `exec_command("…")`, `spawn("git", ["push", "-f"])`, `writeFileSync(pfad, text)`,
- * Zeichenketten mit «*** Begin Patch». Unterstützt `+`-Ketten und `const x = "…"` für einen Namen.
+ * Zeichenketten mit «*** Begin Patch». Unterstützt `+`-Ketten und Variablen (`const x = "…"`, spätere Neuzuweisung: alle
+ * bisherigen Werte gelten), `for (const c of liste)` sowie `liste.map(c => …)`/`forEach` über Listenliterale und -variablen.
  */
 export function liesJs(quelltext) {
   const t = lexe(String(quelltext ?? ''));
   const aus = { befehle: [], pfade: [], texte: [], patches: [] };
+  /** Name → alle bisher zugewiesenen Werte `{ art: 's'|'l'|'i', v }` ('i' = Schleifenelemente: JEDES ist ein eigener Wert). */
   const vars = new Map();
   const istP = (k, v) => t[k]?.t === 'p' && t[k].v === v;
+  let schritte = 0;
+  const elemente = w => (w.art === 'l' || w.art === 'i' ? w.v : w.art === 's' ? [w.v] : []);
 
   function wert(k, tiefe = 0) {
+    schritte += 1;
+    if (schritte > 200000) return undefined;
     const x = t[k];
     if (!x) return undefined;
     if (x.t === 's') {
@@ -232,30 +316,31 @@ export function liesJs(quelltext) {
       while (istP(n, '+') && t[n + 1]?.t === 's') { v += t[n + 1].v; n += 2; }
       return { art: 's', v, von: k, bis: n };
     }
-    if (x.t === 'p' && x.v === '[') {
+    if (x.t === 'p' && x.v === '[' && tiefe <= 40) {
       const items = [];
       let n = k + 1;
-      let schritte = 0;
-      while (n < t.length && !istP(n, ']') && schritte < 300) {
-        schritte += 1;
+      let eigene = 0;
+      while (n < t.length && !istP(n, ']') && eigene < 300) {
+        eigene += 1;
         const w = wert(n, tiefe + 1);
-        if (w && w.art === 's') { items.push(w.v); n = w.bis; } else {
-          if (t[n].t === 'i') items.push('X');
-          n += 1;
-        }
+        if (w && w.art === 's') { items.push(w.v); n = w.bis; }
+        else if (w && (w.art === 'l' || w.art === 'i')) { items.push(...elemente(w)); n = w.bis; } // verschachtelte Liste: einmal gelesen, dann übersprungen
+        else { if (t[n].t === 'i') items.push('X'); n += 1; }
       }
-      return { art: 'l', v: items, von: k, bis: n + 1 };
+      return { art: 'l', v: items.slice(0, 300), von: k, bis: n + 1 };
     }
-    if (x.t === 'i' && tiefe < 3 && vars.has(x.v)) return { ...vars.get(x.v), von: k, bis: k + 1 };
+    if (x.t === 'i' && tiefe < 3 && vars.has(x.v)) {
+      const alle = vars.get(x.v);
+      const letzter = alle[alle.length - 1];
+      return { art: letzter.art, v: letzter.v, alle, von: k, bis: k + 1 };
+    }
     return undefined;
   }
-
-  for (let k = 0; k + 3 < t.length; k += 1) {
-    if (t[k].t === 'i' && ['const', 'let', 'var'].includes(t[k].v) && t[k + 1].t === 'i' && istP(k + 2, '=') && !vars.has(t[k + 1].v)) {
-      const w = wert(k + 3);
-      if (w) vars.set(t[k + 1].v, { art: w.art, v: w.v });
-    }
-  }
+  const merke = (name, w) => {
+    const liste = vars.get(name) ?? [];
+    if (!liste.some(x => x.art === w.art && JSON.stringify(x.v) === JSON.stringify(w.v))) liste.push({ art: w.art, v: w.v });
+    vars.set(name, liste);
+  };
 
   const frames = [{ inhalt: [] }];
   const verbraucht = new Set();
@@ -266,14 +351,55 @@ export function liesJs(quelltext) {
     if (f.pfad) aus.pfade.push(f.pfad);
   };
   const befehlWert = w => {
-    if (w.art === 's') aus.befehle.push(w.v);
-    else if (w.art === 'l' && w.v.length > 0) aus.befehle.push(befehlAusListe(w.v));
+    const schon = new Set();
+    for (const a of w.alle ?? [w]) {
+      const stuecke = a.art === 's' ? [a.v] : a.art === 'l' ? (a.v.length > 0 ? [befehlAusListe(a.v)] : []) : a.art === 'i' ? a.v : [];
+      for (const b of stuecke) if (!schon.has(b)) { schon.add(b); aus.befehle.push(b); }
+    }
   };
 
   for (let k = 0; k < t.length; k += 1) {
     const x = t[k];
     if (x.t === 'p' && x.v === '{') { frames.push({ inhalt: [] }); continue; }
     if (x.t === 'p' && x.v === '}') { if (frames.length > 1) schliesse(frames.pop()); continue; }
+
+    if (x.t === 'i' && !DEKLARATION.has(x.v)) {
+      // NAME = Wert (Deklaration oder spätere Zuweisung; weder ==, =>, noch Eigenschaft `a.b =`)
+      if (istP(k + 1, '=') && !istP(k + 2, '=') && !istP(k + 2, '>') && !istP(k - 1, '.')) {
+        const w = wert(k + 2);
+        if (w) merke(x.v, w);
+      }
+      // for (const NAME of LISTE)
+      if (x.v === 'for' && istP(k + 1, '(')) {
+        let j = k + 2;
+        if (t[j]?.t === 'i' && DEKLARATION.has(t[j].v)) j += 1;
+        if (t[j]?.t === 'i' && t[j + 1]?.t === 'i' && t[j + 1].v === 'of') {
+          const w = wert(j + 2);
+          if (w) vars.set(t[j].v, [{ art: 'i', v: elemente(w) }]);
+        }
+      }
+    }
+    // LISTE.map(NAME => …), .forEach(function (NAME) {…}), .filter((NAME) => …)
+    if (istP(k, '.') && t[k + 1]?.t === 'i' && JS_LISTENMETHODEN.has(t[k + 1].v.toLowerCase()) && istP(k + 2, '(')) {
+      let q = k + 3;
+      if (t[q]?.t === 'i' && t[q].v === 'async') q += 1;
+      let param;
+      if (t[q]?.t === 'i' && t[q].v === 'function') {
+        q += 1;
+        if (t[q]?.t === 'i') q += 1;
+        if (istP(q, '(') && t[q + 1]?.t === 'i') param = t[q + 1].v;
+      } else if (istP(q, '(') && t[q + 1]?.t === 'i' && (istP(q + 2, ')') || istP(q + 2, ','))) param = t[q + 1].v;
+      else if (t[q]?.t === 'i' && istP(q + 1, '=') && istP(q + 2, '>')) param = t[q].v;
+      let liste;
+      if (istP(k - 1, ']')) {
+        let tiefe = 0;
+        for (let b = k - 1; b >= 0 && b > k - 600; b -= 1) {
+          if (istP(b, ']')) tiefe += 1;
+          else if (istP(b, '[')) { tiefe -= 1; if (tiefe === 0) { liste = wert(b); break; } }
+        }
+      } else if (t[k - 1]?.t === 'i') liste = wert(k - 1);
+      if (param && liste) vars.set(param, [{ art: 'i', v: elemente(liste) }]);
+    }
 
     if (x.t === 'i' && istP(k + 1, '(')) {
       const name = x.v.toLowerCase();
@@ -287,15 +413,23 @@ export function liesJs(quelltext) {
           aus.befehle.push(w2 && w2.art === 'l' ? befehlAusListe([w.v, ...w2.v]) : w.v);
           verbrauche(w);
         }
-      } else if (JS_SCHREIB_AUFRUF.has(name)) {
+      } else if (JS_SCHREIB_AUFRUF.has(name) || JS_SCHREIB_NUR_PFAD.has(name)) {
+        // Der Pfad zählt auch, wenn der Inhalt zur Laufzeit entsteht (`new Date().toISOString()`); Text nur als Literal.
+        const w = wert(k + 2);
+        if (w && w.art === 's') {
+          aus.pfade.push(w.v);
+          verbrauche(w);
+          const w2 = JS_SCHREIB_AUFRUF.has(name) && istP(w.bis, ',') ? wert(w.bis + 1) : undefined;
+          if (w2 && w2.art === 's') { aus.texte.push({ text: w2.v, umfeld: '' }); verbrauche(w2); }
+        }
+      } else if (JS_ZIEL_ZWEITES.has(name)) {
         const w = wert(k + 2);
         const w2 = w && w.art === 's' && istP(w.bis, ',') ? wert(w.bis + 1) : undefined;
-        if (w && w2 && w2.art === 's') {
-          aus.pfade.push(w.v);
-          aus.texte.push({ text: w2.v, umfeld: '' });
-          verbrauche(w);
-          verbrauche(w2);
-        }
+        if (w2 && w2.art === 's') aus.pfade.push(w2.v);
+      } else if (JS_OEFFNEN.has(name)) {
+        const w = wert(k + 2);
+        const w2 = w && w.art === 's' && istP(w.bis, ',') ? wert(w.bis + 1) : undefined;
+        if (w && w2 && w2.art === 's' && /^[wax]|\+/.test(w2.v)) aus.pfade.push(w.v);
       } else if (name === 'apply_patch') {
         const w = wert(k + 2);
         if (w && w.art === 's' && hatPatch(w.v)) { aus.patches.push(w.v); verbrauche(w); }
@@ -307,7 +441,7 @@ export function liesJs(quelltext) {
     const kurzform = x.t === 'i' && (istP(k - 1, '{') || istP(k - 1, ',')) && (istP(k + 1, ',') || istP(k + 1, '}'));
     if (!istSchluessel && !kurzform) continue;
     const schluessel = x.v.toLowerCase();
-    const w = istSchluessel ? wert(k + 2) : (vars.has(x.v) ? { ...vars.get(x.v), von: k, bis: k + 1 } : undefined);
+    const w = istSchluessel ? wert(k + 2) : (vars.has(x.v) ? wert(k) : undefined);
     if (!w) continue;
     if (BEFEHL.has(schluessel)) { befehlWert(w); verbrauche(w); }
     else if (PFAD.has(schluessel) && w.art === 's') frames[frames.length - 1].pfad ??= w.v;

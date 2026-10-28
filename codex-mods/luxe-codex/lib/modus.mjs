@@ -66,8 +66,15 @@ export function stelleSchalter(env, an) {
   if (an) {
     mkdirSync(dirname(datei), { recursive: true });
     const vorlaeufig = `${datei}.${process.pid}.tmp`;
-    writeFileSync(vorlaeufig, 'an\n');
-    renameSync(vorlaeufig, datei);
+    try {
+      writeFileSync(vorlaeufig, 'an\n');
+      renameSync(vorlaeufig, datei);
+    } catch (fehler) {
+      // Scheitert das Umbenennen (z. B. ein Ordner an der Stelle des Schalters), darf die Vorlage nicht liegen bleiben:
+      // sonst legt jeder weitere Versuch eine neue an und nichts räumt sie auf.
+      try { rmSync(vorlaeufig, { force: true }); } catch { /* der ursprüngliche Fehler zählt */ }
+      throw fehler;
+    }
   } else {
     rmSync(datei, { force: true });
   }

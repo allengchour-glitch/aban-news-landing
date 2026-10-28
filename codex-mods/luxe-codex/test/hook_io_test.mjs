@@ -1,6 +1,6 @@
 /** Test des Grundgerüsts: Hook-Ein-/Ausgabe, Schema-Prüfer (beide Richtungen), Fehlerverhalten. */
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -129,22 +129,30 @@ const sammle = () => { const s = []; return { s, schreibe: t => s.push(t) }; };
   const protokoll = () => readFileSync(datei, 'utf8');
   const merke = (werkzeugEingabe, name = 'exec_command') => lerne('t', eingabe('PreToolUse', { tool_name: name, tool_input: werkzeugEingabe }), env);
 
+  // Die Fake-Zugangsdaten entstehen erst zur Laufzeit aus Teilen (sonst schlägt die Push-Protection von GitHub an).
+  const shpss = `sh${'pss_'}${'0123456789abcdef'.repeat(2)}`;
+  const shpat = `sh${'pat_'}${'0123456789abcdef'.repeat(2)}`;
+  const ghp = `gh${'p_'}${'abcdefghijklmnopqrstuvwxyz0123456789'}`;
+  const sk = `sk${'-'}${'abcdefghijklmnopqrstuvwxyz0123456789'}`;
+  const xoxb = `xo${'xb-'}123456789012-abcdefghijklmnop`;
+  const akia = `AK${'IA'}ABCDEFGHIJKLMNOP`;
+  const pem = `-----BEGIN ${'PRIVATE'} KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7\n-----END ${'PRIVATE'} KEY-----`;
   const GEHEIM = [
-    ['Shopify-Schlüssel in einer Umgebungsvariablen', { cmd: 'LIVE=1 SHOPIFY_CLIENT_SECRET=shp' + 'ss_0123456789abcdef0123456789abcdef node automation/x.mjs' }, 'shp' + 'ss_0123456789abcdef'],
-    ['Shopify-Zugriffstoken im Kopf eines curl-Aufrufs', { cmd: 'curl -s -H "X-Shopify-Access-Token: shp' + 'at_0123456789abcdef0123456789abcdef" https://au3j0y-hq.myshopify.com/admin/api/2025-01/products.json' }, 'shp' + 'at_0123456789abcdef'],
-    ['GitHub-Token in einer Variablen', { cmd: 'export GITHUB_TOKEN=gh' + 'p_abcdefghijklmnopqrstuvwxyz0123456789 && git push' }, 'gh' + 'p_abcdefghijklmnopqrstuvwxyz'],
-    ['GitHub-Token in der Adresse', { cmd: 'git push https://user:gh' + 'p_abcdefghijklmnopqrstuvwxyz0123456789@github.com/x/y.git' }, 'gh' + 'p_abcdefghijklmnopqrstuvwxyz'],
+    ['Shopify-Schlüssel in einer Umgebungsvariablen', { cmd: `LIVE=1 SHOPIFY_CLIENT_SECRET=${shpss} node automation/x.mjs` }, shpss.slice(0, 22)],
+    ['Shopify-Zugriffstoken im Kopf eines curl-Aufrufs', { cmd: `curl -s -H "X-Shopify-Access-Token: ${shpat}" https://au3j0y-hq.myshopify.com/admin/api/2025-01/products.json` }, shpat.slice(0, 22)],
+    ['GitHub-Token in einer Variablen', { cmd: `export GITHUB_TOKEN=${ghp} && git push` }, ghp.slice(0, 30)],
+    ['GitHub-Token in der Adresse', { cmd: `git push https://user:${ghp}@github.com/x/y.git` }, ghp.slice(0, 30)],
     ['Bearer-Token', { cmd: 'curl -H "Authorization: Bearer abcdefghijklmnopqrstuvwxyz012345" https://api.example.org' }, 'abcdefghijklmnopqrstuvwxyz012345'],
-    ['Schlüssel mit sk' + '-', { cmd: 'OPENAI_API_KEY=sk' + '-abcdefghijklmnopqrstuvwxyz0123456789 codex exec' }, 'sk' + '-abcdefghijklmnopqrstuvwxyz'],
-    ['Slack-Token', { cmd: 'curl -d token=xox' + 'b-123456789012-abcdefghijklmnop https://slack.com/api/x' }, 'xox' + 'b-123456789012'],
-    ['AWS-Schlüssel', { cmd: 'aws configure set aws_access_key_id AKI' + 'AABCDEFGHIJKLMNOP' }, 'AKI' + 'AABCDEFGHIJKLMNOP'],
+    ['Schlüssel mit sk-', { cmd: `OPENAI_API_KEY=${sk} codex exec` }, sk.slice(0, 30)],
+    ['Slack-Token', { cmd: `curl -d token=${xoxb} https://slack.com/api/x` }, xoxb.slice(0, 18)],
+    ['AWS-Schlüssel', { cmd: `aws configure set aws_access_key_id ${akia}` }, akia],
     ['Passwort mit Gleichheitszeichen', { cmd: 'mysql --password=hunter2hunter2 -u root' }, 'hunter2hunter2'],
     ['Passwort in Anführungszeichen', { cmd: 'PASSWORD="mein geheimes wort" ./start.sh' }, 'mein geheimes wort'],
-    ['privater Schlüssel', { content: '-----BEGIN PRI' + 'VATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7\n-----END PRI' + 'VATE KEY-----' }, 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7'],
+    ['privater Schlüssel', { content: pem }, 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7'],
     ['Wert unter einem Schlüssel mit «token» im Namen', { env: { SHOPIFY_TOKEN: 'nur-der-wert-allein-123456' } }, 'nur-der-wert-allein-123456'],
     ['Wert unter dem Schlüssel «password»', { password: 'hunter2hunter2' }, 'hunter2hunter2'],
     ['Wert unter dem Schlüssel «api_key» (Zahl)', { api_key: 987654321012345 }, '987654321012345'],
-    ['Geheimnis, das über die Kürzungsgrenze von 120 Zeichen hinausragt', { cmd: `${'a'.repeat(110)} shp${'at_'}0123456789abcdef0123456789abcdef` }, 'shpat_0123'],
+    ['Geheimnis, das über die Kürzungsgrenze von 120 Zeichen hinausragt', { cmd: `${'a'.repeat(110)} ${shpat}` }, shpat.slice(0, 10)],
   ];
   for (const [titel, form, geheim] of GEHEIM) {
     rmSync(datei, { force: true });
@@ -160,7 +168,10 @@ const sammle = () => { const s = []; return { s, schreibe: t => s.push(t) }; };
 
   if (process.platform !== 'win32') {
     ist('F20 gesehen.jsonl und ihr Ordner sind nur für den Besitzer lesbar (0600 / 0700)', [statSync(datei).mode & 0o777, statSync(ordner).mode & 0o777], [0o600, 0o700]);
-    writeFileSync(datei, '', { mode: 0o644 });
+    rmSync(datei, { force: true });
+    writeFileSync(datei, '');
+    chmodSync(datei, 0o644);
+    ist('F20 (Vorbedingung) die vorbereitete Datei hat tatsächlich Rechte 0644', statSync(datei).mode & 0o777, 0o644);
     merke({ cmd: 'ls' });
     ist('F20 eine schon vorhandene Datei mit Rechten 0644 wird auf 0600 gesetzt', statSync(datei).mode & 0o777, 0o600);
   }

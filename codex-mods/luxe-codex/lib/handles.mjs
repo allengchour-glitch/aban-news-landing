@@ -16,7 +16,7 @@ export const MAX_EINGABE = 5000;
 
 const HANDLE = /^[a-z0-9][a-z0-9-]*$/;
 
-export const AUFRUF = `Aufruf: die Handles über stdin, getrennt durch Komma oder Leerzeichen in EINER Zeile, höchstens ${MAX_HANDLES}, z. B. elektrischer-fleischwolf-5l-kuchenmaschine-656962,anderes-produkt-123456`;
+export const AUFRUF = `Aufruf: die Handles über stdin, getrennt durch Komma, Leerzeichen oder Zeilenumbruch (eine Spalte geht), höchstens ${MAX_HANDLES}, z. B. elektrischer-fleischwolf-5l-kuchenmaschine-656962,anderes-produkt-123456`;
 
 /** Zeigt ein Stück Eingabe harmlos: nur Buchstaben, Ziffern, «.», «_», «-»; alles andere wird «?», lang wird gekürzt. */
 export function sichtbar(text, max = 24) {
@@ -28,17 +28,18 @@ export function sichtbar(text, max = 24) {
 /**
  * Urteil über die Eingabe: `{ handles: [...] }` (geprüft, ohne Doppelte, in der genannten Reihenfolge) oder
  * `{ fehler: 'Text' }`. Erlaubt sind nur a-z, 0-9 und «-» (das erste Zeichen ohne «-»), höchstens 80 Zeichen je
- * Handle; Trenner sind Komma und Leerzeichen. Ein Zeilenumbruch mitten in der Eingabe ist ein Fehler: ein
- * Umbruch am Anfang oder Ende (so endet ein Heredoc) wird abgeschnitten.
+ * Handle; Trenner sind Komma, Leerzeichen und Zeilenumbruch (LF oder CRLF): eine Spalte aus einer Tabelle ist die
+ * natürliche Form einer Liste, und jedes Token wird danach einzeln geprüft, der Umbruch öffnet also nichts. Ein
+ * einzelner Wagenrücklauf ohne Zeilenvorschub ist KEIN Trenner (das Token ist dann ungültig). Umbruch und Leerraum
+ * am Anfang oder Ende (so endet ein Heredoc) werden abgeschnitten.
  */
 export function pruefeHandles(eingabe) {
   if (typeof eingabe !== 'string') return { fehler: `Keine Handles angegeben. ${AUFRUF}` };
   if (eingabe.length > MAX_EINGABE) return { fehler: `Eingabe zu lang (${eingabe.length} Zeichen, erlaubt sind ${MAX_EINGABE}). ${AUFRUF}` };
 
   const roh = eingabe.replace(/^[ \t\r\n]+|[ \t\r\n]+$/g, '');
-  if (/[\r\n]/.test(roh)) return { fehler: `Zeilenumbruch in der Eingabe: die Handles gehören in eine Zeile, getrennt durch Komma oder Leerzeichen. ${AUFRUF}` };
 
-  const teile = roh.split(/[ ,]+/).filter(Boolean);
+  const teile = roh.replace(/\r\n/g, '\n').split(/[ ,\n]+/).filter(Boolean);
   if (teile.length === 0) return { fehler: `Keine Handles angegeben. ${AUFRUF}` };
 
   const falsch = teile.filter(h => !HANDLE.test(h));
@@ -56,4 +57,37 @@ export function pruefeHandles(eingabe) {
     return { fehler: `Zu viele Handles: ${handles.length}, erlaubt sind ${MAX_HANDLES} (jede Prüfung kostet CJ-Tagespunkte). ${AUFRUF}` };
   }
   return { handles };
+}
+
+/**
+ * Liest eine Quelle bis zum Ende (EOF), höchstens `max` Bytes. `lies(puffer, von, laenge)` gibt die Zahl der gelesenen Bytes
+ * zurück (0 = Ende) und darf werfen; `warte(ms)` wartet. Drei Fälle, die ein einzelnes read() falsch behandelt:
+ *  - Die Eingabe kommt in Stücken (langsamer Schreiber, grosser Heredoc): weiterlesen bis 0, nicht beim ersten Stück aufhören.
+ *  - Fehlercode «EOF» (so meldet Windows das Ende): ist das Ende.
+ *  - Fehlercode «EAGAIN» (geerbte nicht blockierende stdin, die Daten kommen erst später): kurz warten und erneut lesen,
+ *    höchstens `maxWartenMs` ohne Fortschritt, dann ein Fehler (nie unbegrenzt warten).
+ * Alles andere wird weitergeworfen. Ergebnis: `{ zuLang, text }`; `zuLang`, wenn der Puffer voll wurde (mehr Eingabe als erlaubt).
+ */
+export function liesBisEnde(lies, warte, { max = MAX_EINGABE * 4 + 1, maxWartenMs = 10000, schrittMs = 20 } = {}) {
+  const puffer = Buffer.alloc(max);
+  let n = 0, gewartet = 0;
+  while (n < puffer.length) {
+    let gelesen;
+    try {
+      gelesen = lies(puffer, n, puffer.length - n);
+    } catch (fehler) {
+      if (fehler?.code === 'EOF') break;
+      if (fehler?.code === 'EAGAIN') {
+        if (gewartet >= maxWartenMs) throw new Error(`keine Daten innerhalb von ${Math.round(maxWartenMs / 1000)} Sekunden (stdin ist nicht blockierend und bleibt leer)`);
+        warte(schrittMs);
+        gewartet += schrittMs;
+        continue;
+      }
+      throw fehler;
+    }
+    if (gelesen === 0) break;
+    n += gelesen;
+    gewartet = 0;
+  }
+  return { zuLang: n >= puffer.length, text: puffer.subarray(0, n).toString('utf8') };
 }

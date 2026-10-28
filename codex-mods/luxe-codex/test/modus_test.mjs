@@ -279,17 +279,21 @@ const VERBOTEN = ['continue', 'decision', 'reason', 'stopReason', 'suppressOutpu
     kontextBefehle('SessionStart').length, kontextBefehle('UserPromptSubmit').length,
     [...kontextBefehle('SessionStart'), ...kontextBefehle('UserPromptSubmit')].every(h => h.type === 'command' && Number.isInteger(h.timeout) && h.timeout >= 1 && h.timeout <= 60 && !('async' in h)),
   ], [1, 1, true]);
-  const z = tmp();
-  const wurzel = join(z, 'a b', 'luxe-codex');
-  mkdirSync(wurzel, { recursive: true });
-  for (const teil of ['lib', 'hooks']) cpSync(join(WURZEL, teil), join(wurzel, teil), { recursive: true });
-  const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], { input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000, env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') } });
-  const a = lauf(kontextBefehle('SessionStart')[0].command, eingabe('SessionStart'));
-  ist('F2 Befehlszeile SessionStart bei Leerzeichen im Plugin-Pfad: Exit 0, keine Fehlermeldung, Projektregeln', [a.status, a.stderr, JSON.parse(a.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', PROJEKTREGELN]);
-  schalten(z, ['an']);
-  const b = lauf(kontextBefehle('UserPromptSubmit')[0].command, eingabe('UserPromptSubmit'));
-  ist('F2 Befehlszeile UserPromptSubmit bei Leerzeichen im Plugin-Pfad (Sparmodus AN): Exit 0, Erinnerung', [b.status, b.stderr, JSON.parse(b.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', ERINNERUNG]);
-  rmSync(z, { recursive: true, force: true });
+  const shDa = spawnSync('sh', ['-c', 'exit 0']);
+  if (shDa.error || shDa.status !== 0) console.log('ÜBERSPRUNGEN: sh fehlt, die Kontext-Befehle aus hooks.json laufen nicht');
+  else {
+    const z = tmp();
+    const wurzel = join(z, 'a b', 'luxe-codex');
+    mkdirSync(wurzel, { recursive: true });
+    for (const teil of ['lib', 'hooks']) cpSync(join(WURZEL, teil), join(wurzel, teil), { recursive: true });
+    const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], { input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000, env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') } });
+    const a = lauf(kontextBefehle('SessionStart')[0].command, eingabe('SessionStart'));
+    ist('F2 Befehlszeile SessionStart bei Leerzeichen im Plugin-Pfad: Exit 0, keine Fehlermeldung, Projektregeln', [a.status, a.stderr, JSON.parse(a.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', PROJEKTREGELN]);
+    schalten(z, ['an']);
+    const b = lauf(kontextBefehle('UserPromptSubmit')[0].command, eingabe('UserPromptSubmit'));
+    ist('F2 Befehlszeile UserPromptSubmit bei Leerzeichen im Plugin-Pfad (Sparmodus AN): Exit 0, Erinnerung', [b.status, b.stderr, JSON.parse(b.stdout || '{}').hookSpecificOutput?.additionalContext], [0, '', ERINNERUNG]);
+    rmSync(z, { recursive: true, force: true });
+  }
 }
 
 // --- F9 / F21: ein gescheitertes Umbenennen lässt keine .tmp-Datei im Zustandsordner liegen -------------------------------

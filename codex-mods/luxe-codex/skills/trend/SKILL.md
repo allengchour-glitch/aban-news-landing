@@ -14,10 +14,10 @@ Misst, welche Produkte das Werkzeug «Neu entdeckt» wählen würde: Shop-Katalo
 1. Im Hauptordner des Repos (dort liegt `automation/`; `git rev-parse --show-toplevel` nennt den Ordner) ausführen:
 
    ```
-   LIVE=0 /opt/node22/bin/node automation/trend_entdecken.mjs
+   LIVE=0 node automation/trend_entdecken.mjs
    ```
 
-   `LIVE=0` ist Absicht und gilt auch dann, wenn die Umgebung selbst scharf gestellt ist. Nie `LIVE=1` setzen: damit würde das Werkzeug Tags und die Kollektion im Shop anlegen. Das entscheidet der Besitzer ausserhalb dieses Skills. Der Lauf dauert bis zu zehn Minuten: dem Befehl genug Zeit geben.
+   `LIVE=0` ist Absicht und gilt auch dann, wenn die Umgebung selbst scharf gestellt ist. Nie `LIVE=1` setzen: damit würde das Werkzeug Tags und die Kollektion im Shop anlegen. Das entscheidet der Besitzer ausserhalb dieses Skills. Fehlt `node` im Pfad, `/opt/node22/bin/node` nehmen. Der Lauf dauert bis zu zehn Minuten: dem Befehl genug Zeit geben.
 2. Den Bericht lesen. Er ist ein JSON-Objekt, danach eine Textzeile. Wiedergeben:
    - `live` muss `false` sein. Steht dort `true`, mit «WARNUNG: der Lauf meldet live=true» beginnen.
    - `gelesen`, `gekaufteProdukte` (ausgeschlossen), `vorauswahl`.

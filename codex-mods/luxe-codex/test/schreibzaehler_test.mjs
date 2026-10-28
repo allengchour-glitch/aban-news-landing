@@ -9,6 +9,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { eingabe, fertig, gueltig, ist } from './kern.mjs';
 import { ausgang, befehleAus, gruppeFuer, GRUPPEN, gruppeVon, istLiveBefehl, leererZaehler, statusText, zaehleHoch } from '../lib/gruppen.mjs';
+import { analysiere } from '../lib/shell_live.mjs';
 import { behandle, haengeAn, leseStand, raeumeAuf, sichererName, zaehlerDatei } from '../lib/zaehler.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
@@ -520,6 +521,18 @@ ist('F19 Heredoc: ein eingerückter Abschluss ohne «-» beendet den Körper nic
   const [r5, ms5] = zeitMs(() => gruppeFuer('exec_command', { cmd: `LIVE=1 node x.mjs\n${'a<<b '.repeat(60000)}` }, ok0));
   ist('F5 gruppeFuer mit dem 292-KB-Befehl: in unter 3 s', ms5 < 3000, true);
   ist('F5 …und das Ergebnis ist bekannt: der erste Befehl ist gefolgt von weiterem Text, also nicht beweisbar', r5, undefined);
+  // Der Leser für JavaScript des Code-Modus bleibt linear, auch bei Text voller «exec_command({» ohne Ende
+  for (const [titel, text] of [
+    ['«tools.exec_command({» 20 000-mal', 'tools.exec_command({'.repeat(20000)],
+    ['«exec_command({ a: (» 20 000-mal (nie geschlossene Klammer)', 'tools.exec_command({ a: ('.repeat(20000)],
+    ['«exec_command({cmd: "» 20 000-mal (nie geschlossenes Literal)', 'exec_command({cmd: "'.repeat(20000)],
+    ['ein 400-KB-Literal ohne Ende', `exec_command({ cmd: "${'x'.repeat(400000)}`],
+  ]) {
+    const [r, ms] = zeitMs(() => befehleAus('exec', text));
+    ist(`F5 befehleAus (Code-Modus) ${titel}: in unter 3 s, nichts erkannt`, [r, ms < 3000], [[], true]);
+  }
+  const [rg, msg] = zeitMs(() => befehleAus('exec', `await tools.exec_command({ cmd: "${'x'.repeat(300000)} LIVE=1 node x.mjs" })`));
+  ist('F5 befehleAus: ein 300-KB-Literal wird gelesen (in unter 3 s)', [rg.length, msg < 3000], [1, true]);
 }
 
 // --- F13: LIVE=1 vor einer Zuweisung mit $(…) oder Backticks ---------------------------------------------------
@@ -613,6 +626,7 @@ alle('F17 export (Gegenprobe): LIVE=1 erreicht keinen Befehl', [
   'LIVE=1 env --unset=LIVE node x.mjs',
   'LIVE=1; node x.mjs',
   'export -n LIVE; LIVE=1; node x.mjs',
+  'export -n LIVE=1; node x.mjs',
   'export LIVE=1\necho gesetzt\n',
   'LIVE=1 echo hallo',
   'LIVE=1 printf "%s" x',
@@ -688,8 +702,13 @@ ist('F18 Fundfall: «| tail -5» mit Fehlertext in der Ausgabe zählt nicht', gr
 
 // --- F10: Testlücken der Befehls-Erkennung ---------------------------------------------------------------------
 alle('F10 maskierte Zeichen ergeben keine Zuweisung (bash führt «\\LIVE=1» als Befehl aus)', ['\\LIVE=1 node x.mjs', 'L\\IVE=1 node x.mjs', 'LIVE\\=1 node x.mjs'], false, istLiveBefehl);
-ist('F10 exec-Eingabe mit mehreren Textfeldern: das Feld ohne exec_command bricht die Suche nicht ab', befehleAus('exec', { description: 'Deploy', code: `await tools.exec_command({ cmd: "${B}" })` }), [B]);
-ist('F10 exec-Eingabe: erst ein Feld mit exec_command, dann ein weiteres', befehleAus('exec', { code: `await tools.exec_command({ cmd: "${B}" })`, hinweis: 'nur Text' }), [B]);
+ist('F10 exec-Eingabe mit mehreren Textfeldern: ein Feld ohne exec_command (davor oder danach) verdeckt das andere nicht', [
+  befehleAus('exec', { description: 'Deploy', code: `await tools.exec_command({ cmd: "${B}" })` }),
+  befehleAus('exec', { code: 'const a = 1;', input: `await tools.exec_command({ cmd: "${B}" })` }),
+  befehleAus('exec', { code: `await tools.exec_command({ cmd: "${B}" })`, input: 'const a = 1;' }),
+  befehleAus('exec', { code: `await tools.exec_command({ cmd: "${B}" })`, hinweis: 'nur Text' }),
+], [[B], [B], [B], [B]]);
+ist('F10 exec-Eingabe: zwei Felder mit je einem Aufruf liefern beide Befehle, in der Reihenfolge der Felder', befehleAus('exec', { code: 'tools.exec_command({ cmd: "echo a" })', input: `tools.exec_command({ cmd: "${B}" })` }), ['echo a', B]);
 ist('F10 \\u0026 im JS-Literal wird zu «&» entschlüsselt, der LIVE-Befehl danach erkannt', [
   befehleAus('exec', 'await tools.exec_command({ cmd: "echo start \\u0026 LIVE=1 node x.mjs" })'),
   istLiveBefehl(befehleAus('exec', 'await tools.exec_command({ cmd: "echo start \\u0026 LIVE=1 node x.mjs" })')[0]),
@@ -854,6 +873,59 @@ ist('F16 Ende zu Ende: report_task_create zählt nicht', gruppeFuer(tt('report_t
   rmSync(z, { recursive: true, force: true });
 }
 
+// --- Gegenprobe gegen echte bash: erreicht LIVE=1 wirklich ein Programm? Beweist Exit 0 wirklich den Erfolg? -----------------------
+// Die Wahrheit wird nicht von Hand beschriftet, sondern GEMESSEN: ein Attrappen-`node` schreibt, was es in $LIVE sieht, und endet mit
+// einem vorgegebenen Exit-Code. Fehlt bash (z. B. unter Windows), wird sichtbar übersprungen.
+{
+  const z = tmp();
+  const bashDa = spawnSync('bash', ['-c', 'exit 0'], { encoding: 'utf8' });
+  if (bashDa.error || bashDa.status !== 0) {
+    console.log('ÜBERSPRUNGEN: bash fehlt, die Gegenprobe der LIVE-Erkennung gegen echte bash läuft nicht');
+  } else {
+    mkdirSync(join(z, 'bin')); mkdirSync(join(z, 'cwd', 'a'), { recursive: true });
+    writeFileSync(join(z, 'bin', 'node'), `#!/bin/sh\necho "LIVE=\${LIVE-unset}" >> "${z}/log"\nexit $(cat "${z}/exitcode")\n`, { mode: 0o755 });
+    const lauf = (befehl, exitcode) => {
+      writeFileSync(join(z, 'exitcode'), String(exitcode)); rmSync(join(z, 'log'), { force: true });
+      const echt = befehl.replace(/\bnode\b/g, join(z, 'bin', 'node'));
+      const r = spawnSync('bash', ['-c', echt], { cwd: join(z, 'cwd'), encoding: 'utf8', timeout: 10_000, env: { PATH: '/usr/bin:/bin', HOME: z } });
+      const hintergrund = /&\s*$/.test(befehl);
+      for (let n = 0; hintergrund && n < 40 && !existsSync(join(z, 'log')); n += 1) spawnSync('sleep', ['0.05']);
+      return { status: r.status, sah: existsSync(join(z, 'log')) ? readFileSync(join(z, 'log'), 'utf8').trim().split('\n') : [] };
+    };
+    const KORPUS = [
+      'LIVE=1 node x', 'node x', 'LIVE=0 node x', 'LIVE=1 LIVE=0 node x', 'LIVE=0 LIVE=1 node x', 'env LIVE=1 node x', 'LIVE=1 env -u LIVE node x', 'env -i LIVE=1 node x',
+      'LIVE=1 env -i node x', 'FOO=bar LIVE=1 node x', 'LIVE=1 HANDLES=$(echo a) node x', 'LIVE=1 H=`echo a` node x', 'echo $(LIVE=1 node x)', 'echo "$(LIVE=1 node x)"', "echo '$(LIVE=1 node x)'",
+      'export LIVE=1; node x', 'export LIVE=1; unset LIVE; node x', 'export LIVE=1; LIVE=0; node x', 'LIVE=1; node x', 'LIVE=1; export LIVE; node x', 'export LIVE=1', 'export LIVE=1; env node x', 'export -n LIVE=1; node x', 'export -n LIVE; LIVE=1; node x',
+      'echo a | export LIVE=1; node x', 'echo a | LIVE=1; export LIVE; node x',
+      'timeout 5 env LIVE=1 node x', 'nice -n 5 env LIVE=1 node x', 'nohup env LIVE=1 node x', 'exec env LIVE=1 node x', 'command env LIVE=1 node x', 'stdbuf -oL env LIVE=1 node x', 'env -C . LIVE=1 node x', 'env "LIVE=1" node x',
+      'bash -c "LIVE=1 node x"', 'bash -c "node x"', 'bash -o pipefail -c "LIVE=1 node x"', 'bash -euo pipefail -c "LIVE=1 node x"', 'sh -c "cd a && LIVE=1 node x"', 'eval "LIVE=1 node x"', 'LIVE=1 bash -c "node x"', "bash -c 'echo LIVE=1 node x'",
+      "cat <<'EOF' | LIVE=1 node x\n{}\nEOF", 'cat > h.txt <<EOF && LIVE=1 node x\na\nEOF', "bash <<'EOF'\nLIVE=1 node x\nEOF", "cat <<'EOF' > n.md\nLIVE=1 node x\nEOF", 'cat <<\\EOF > n.md\nLIVE=1 node x\nEOF',
+      "cat <<'END-DOC' > n.md\nLIVE=1 node x\nEND-DOC", 'cat <<EOF\nLIVE=1 node x', 'cat <<EOF\nt\n  EOF\nLIVE=1 node x', 'cat <<-EOF\n\tLIVE=1 node x\n\tEOF', 'cat <<EOF\nt\nEOF\nLIVE=1 node x', 'LIVE=1 node x <<EOF\nd\nEOF',
+      '\\LIVE=1 node x', 'L\\IVE=1 node x', 'LIVE\\=1 node x', 'LIVE=\\1 node x', '"LIVE=1" node x', 'LIVE="1" node x', "LIVE='1' node x", 'echo LIVE=1 node x', 'node x LIVE=1', 'echo "LIVE=1 node x"',
+      '# LIVE=1 node x', 'echo a # LIVE=1 node x', 'for i in 1; do LIVE=1 node x; done', 'if true; then LIVE=1 node x; fi', '(LIVE=1 node x)', '{ LIVE=1 node x; }', 'cd a && LIVE=1 node x', 'echo a; LIVE=1 node x', 'LIVE=1 \\\n node x',
+    ];
+    const falsch = [];
+    for (const b of KORPUS) {
+      const wahr = lauf(b, 0).sah.includes('LIVE=1');
+      if (istLiveBefehl(b) !== wahr) falsch.push({ befehl: b, analyse: istLiveBefehl(b), bash: wahr });
+    }
+    ist(`Gegenprobe gegen echte bash: ${KORPUS.length} Befehle, die Erkennung stimmt mit dem überein, was ein Programm in $LIVE sieht`, falsch, []);
+    // Beweisbar heisst: scheitert der LIVE-Befehl (Exit 3), endet die ganze Zeile NICHT mit Exit 0 (ausser beim Hintergrundstart)
+    const SUFFIXE = ['', ' | tail -1', ' || true', '; echo a', ' && echo a', ' 2>&1', ' |& cat', '\necho b', ' &'];
+    const PRAEFIXE = ['', 'cd a && ', 'echo a; ', 'set -o pipefail; ', 'echo a | '];
+    let geprueft = 0; const unsicher = [];
+    for (const b of KORPUS) for (const s of SUFFIXE) for (const p of PRAEFIXE) {
+      const c = `${p}${b}${s}`;
+      if (!analysiere(c).beweisbar || /&\s*$/.test(c)) continue;
+      geprueft += 1;
+      const r = lauf(c, 3);
+      if (r.status === 0 && r.sah.includes('LIVE=1')) unsicher.push(c);
+    }
+    ist(`Gegenprobe gegen echte bash: ${geprueft} als beweisbar erkannte Zeilen, bei denen ein scheiternder LIVE-Befehl die Zeile nie mit Exit 0 enden lässt`, [unsicher, geprueft > 400], [[], true]);
+  }
+  rmSync(z, { recursive: true, force: true });
+}
+
 // --- F2: hooks.json: Aufbau und die Befehlszeilen selbst ausführen (auch bei Leerzeichen im Plugin-Pfad) ---------------
 {
   const hooks = JSON.parse(readFileSync(join(HIER, '..', 'hooks', 'hooks.json'), 'utf8')).hooks;
@@ -875,28 +947,32 @@ ist('F16 Ende zu Ende: report_task_create zählt nicht', gruppeFuer(tt('report_t
   ist('F2 hooks.json: PreToolUse ruft leitplanken.mjs', befehleVon('PreToolUse', 'leitplanken.mjs').length, 1);
 
   // Die Befehlszeilen selbst ausführen, mit einem Plugin-Pfad MIT Leerzeichen (so, wie Codex sie über die Shell startet)
-  const z = tmp();
-  const wurzel = join(z, 'a b', 'luxe-codex');
-  mkdirSync(wurzel, { recursive: true });
-  for (const teil of ['lib', 'hooks']) cpSync(join(HIER, '..', teil), join(wurzel, teil), { recursive: true });
-  const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], {
-    input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000,
-    env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') },
-  });
-  const EINGABE_JE = {
-    SessionStart: eingabe('SessionStart'),
-    UserPromptSubmit: eingabe('UserPromptSubmit'),
-    PreToolUse: eingabe('PreToolUse', { tool_name: 'exec_command', tool_input: { cmd: 'ls' } }),
-    PostToolUse: eingabe('PostToolUse', { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }),
-  };
-  const ergebnisse = handler.map(({ ereignis, h }) => ({ ereignis, h, r: lauf(h.command, EINGABE_JE[ereignis]) }));
-  ist('F2 Befehlszeilen mit Leerzeichen im Plugin-Pfad: alle enden mit Exit 0 ohne Fehlermeldung', ergebnisse.map(({ r }) => [r.status, r.stderr]), ergebnisse.map(() => [0, '']));
-  const aus = (ereignis, datei) => ergebnisse.find(x => x.ereignis === ereignis && x.h.command.includes(`/${datei}"`))?.r.stdout;
-  ist('F2 …kontext.mjs liefert beim SessionStart die Projektregeln', JSON.parse(aus('SessionStart', 'kontext.mjs') || '{}').hookSpecificOutput?.additionalContext?.startsWith('LuxeStyle-Projektregeln'), true);
-  ist('F2 …schreibzaehler.mjs «start» zeigt «keine»', JSON.parse(aus('SessionStart', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · keine');
-  ist('F2 …schreibzaehler.mjs zählt die Shopify-Mutation', JSON.parse(aus('PostToolUse', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · Shop 1');
-  ist('F2 …kontext.mjs schweigt beim Prompt (Sparmodus AUS)', aus('UserPromptSubmit', 'kontext.mjs'), '');
-  rmSync(z, { recursive: true, force: true });
+  const shDa = spawnSync('sh', ['-c', 'exit 0']);
+  if (shDa.error || shDa.status !== 0) console.log('ÜBERSPRUNGEN: sh fehlt, die Befehlszeilen aus hooks.json laufen nicht');
+  else {
+    const z = tmp();
+    const wurzel = join(z, 'a b', 'luxe-codex');
+    mkdirSync(wurzel, { recursive: true });
+    for (const teil of ['lib', 'hooks']) cpSync(join(HIER, '..', teil), join(wurzel, teil), { recursive: true });
+    const lauf = (befehl, wert) => spawnSync('sh', ['-c', befehl], {
+      input: JSON.stringify(wert), encoding: 'utf8', timeout: 15_000,
+      env: { PATH: `${dirname(process.execPath)}:${process.env.PATH}`, HOME: z, CLAUDE_PLUGIN_ROOT: wurzel, LUXE_CODEX_ZUSTAND: join(z, 'zustand') },
+    });
+    const EINGABE_JE = {
+      SessionStart: eingabe('SessionStart'),
+      UserPromptSubmit: eingabe('UserPromptSubmit'),
+      PreToolUse: eingabe('PreToolUse', { tool_name: 'exec_command', tool_input: { cmd: 'ls' } }),
+      PostToolUse: eingabe('PostToolUse', { tool_name: 'mcp__Shopify__graphql_mutation', tool_input: {}, tool_response: {} }),
+    };
+    const ergebnisse = handler.map(({ ereignis, h }) => ({ ereignis, h, r: lauf(h.command, EINGABE_JE[ereignis]) }));
+    ist('F2 Befehlszeilen mit Leerzeichen im Plugin-Pfad: alle enden mit Exit 0 ohne Fehlermeldung', ergebnisse.map(({ r }) => [r.status, r.stderr]), ergebnisse.map(() => [0, '']));
+    const aus = (ereignis, datei) => ergebnisse.find(x => x.ereignis === ereignis && x.h.command.includes(`/${datei}"`))?.r.stdout;
+    ist('F2 …kontext.mjs liefert beim SessionStart die Projektregeln', JSON.parse(aus('SessionStart', 'kontext.mjs') || '{}').hookSpecificOutput?.additionalContext?.startsWith('LuxeStyle-Projektregeln'), true);
+    ist('F2 …schreibzaehler.mjs «start» zeigt «keine»', JSON.parse(aus('SessionStart', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · keine');
+    ist('F2 …schreibzaehler.mjs zählt die Shopify-Mutation', JSON.parse(aus('PostToolUse', 'schreibzaehler.mjs') || '{}').systemMessage, 'Schreibzugriffe · Shop 1');
+    ist('F2 …kontext.mjs schweigt beim Prompt (Sparmodus AUS)', aus('UserPromptSubmit', 'kontext.mjs'), '');
+    rmSync(z, { recursive: true, force: true });
+  }
 }
 
 fertig();

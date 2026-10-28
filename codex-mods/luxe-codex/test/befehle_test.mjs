@@ -8,13 +8,14 @@
  * Jede Regel des Prüfens wird in BEIDE Richtungen gemessen (Treffer UND Nicht-Treffer, Gegenprobe zum Messgerät).
  * Kein Netz, kein Modell, kein Shop.
  */
-import { spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { spawn, spawnSync } from 'node:child_process';
+import { closeSync, cpSync, existsSync, mkdirSync, mkdtempSync, openSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { delimiter, dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { randomBytes } from 'node:crypto';
 import { fertig, ist } from './kern.mjs';
-import { AUFRUF, MAX_EINGABE, MAX_HANDLES, MAX_LAENGE, pruefeHandles, sichtbar } from '../lib/handles.mjs';
+import { AUFRUF, liesBisEnde, MAX_EINGABE, MAX_HANDLES, MAX_LAENGE, pruefeHandles, sichtbar } from '../lib/handles.mjs';
 import { bericht, ERWARTET, GEGENPROBEN, geheimnisProbe, REGELN as BERICHT_REGELN, schnittstelleFehlt } from '../lib/regeln_bericht.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
@@ -204,13 +205,15 @@ const beschreibungen = {};
 }
 
 // === 3. Befehle in den Skills: wörtlich, nur lesend, vorhandene Skripte ==========================================
-const GUARD = "HANDLES='<geprüfte Liste>' ERNEUT=1 LIVE=0 /opt/node22/bin/node automation/lieferbarkeit_guard.mjs";
-const HEREDOC_KOPF = `node "<Skill-Ordner>/scripts/handles.mjs" <<'LUXE_ENDE_7K3Q'`;
+// Fund 9: die Befehle sagen `node` (wie die beiden Skills, die es schon taten), nicht /opt/node22/bin/node; der Rückfall steht als Satz im Text.
+const GUARD = "HANDLES='<geprüfte Liste>' ERNEUT=1 LIVE=0 node automation/lieferbarkeit_guard.mjs";
+// Fund 17: das Endwort ist ein Platzhalter, das Modell bildet es für jeden Aufruf neu und zufällig (ein festes Wort kennt jeder Textlieferant).
+const HEREDOC_KOPF = `node "<Skill-Ordner>/scripts/handles.mjs" <<'<Endwort>'`;
 const ERWARTETE_BEFEHLE = {
   stand: [['GIT_OPTIONAL_LOCKS=0 git status -sb', 'git log --oneline -5']],
-  'shop-puls': [['env -u TELEGRAM_BOT_TOKEN -u TELEGRAM_CHAT_ID /opt/node22/bin/node automation/autopilot/shop_pulse.mjs']],
-  lieferbar: [[HEREDOC_KOPF, '<die Handles, wie genannt>', 'LUXE_ENDE_7K3Q'], [GUARD]],
-  trend: [['LIVE=0 /opt/node22/bin/node automation/trend_entdecken.mjs']],
+  'shop-puls': [['env -u TELEGRAM_BOT_TOKEN -u TELEGRAM_CHAT_ID node automation/autopilot/shop_pulse.mjs']],
+  lieferbar: [[HEREDOC_KOPF, '<die Handles, wie genannt>', '<Endwort>'], [GUARD]],
+  trend: [['LIVE=0 node automation/trend_entdecken.mjs']],
   regeln: [['node "<Skill-Ordner>/scripts/regeln.mjs"']],
 };
 const bloecke = Object.fromEntries(MEINE.map(n => [n, codeBloecke(skillText(n))]));
@@ -227,11 +230,11 @@ for (const n of MEINE) {
   const [status, log] = bloecke.stand[0].map(p);
   ist('stand: git status -sb ohne Index-Schreiben, git log --oneline -5', [status.env, status.argv, log.argv], [{ GIT_OPTIONAL_LOCKS: '0' }, ['git', 'status', '-sb'], ['git', 'log', '--oneline', '-5']]);
   const puls = p(bloecke['shop-puls'][0][0]);
-  ist('shop-puls: beide Telegram-Zugänge werden mit env -u ENTFERNT, Programm ist das Skript', [puls.entfernt, puls.env, puls.argv], [['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID'], {}, [NODE_PFAD_IN_SKILLS, 'automation/autopilot/shop_pulse.mjs']]);
+  ist('shop-puls: beide Telegram-Zugänge werden mit env -u ENTFERNT, Programm ist das Skript', [puls.entfernt, puls.env, puls.argv], [['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID'], {}, ['node', 'automation/autopilot/shop_pulse.mjs']]);
   const g = p(bloecke.lieferbar[1][0]);
-  ist('lieferbar: HANDLES, ERNEUT=1 und LIVE=0, das Wächter-Skript', [g.env, g.argv], [{ HANDLES: '<geprüfte Liste>', ERNEUT: '1', LIVE: '0' }, [NODE_PFAD_IN_SKILLS, 'automation/lieferbarkeit_guard.mjs']]);
+  ist('lieferbar: HANDLES, ERNEUT=1 und LIVE=0, das Wächter-Skript', [g.env, g.argv], [{ HANDLES: '<geprüfte Liste>', ERNEUT: '1', LIVE: '0' }, ['node', 'automation/lieferbarkeit_guard.mjs']]);
   const t = p(bloecke.trend[0][0]);
-  ist('trend: LIVE=0 und das Trend-Skript', [t.env, t.argv], [{ LIVE: '0' }, [NODE_PFAD_IN_SKILLS, 'automation/trend_entdecken.mjs']]);
+  ist('trend: LIVE=0 und das Trend-Skript', [t.env, t.argv], [{ LIVE: '0' }, ['node', 'automation/trend_entdecken.mjs']]);
   const r = p(bloecke.regeln[0][0]);
   ist('regeln: das Skript im Skill-Ordner, ohne Argument', r.argv, ['node', '<Skill-Ordner>/scripts/regeln.mjs']);
   // Jedes Skript, das ein Befehl nennt, gibt es wirklich.
@@ -247,8 +250,8 @@ for (const n of MEINE) {
   for (const n of ['lieferbar', 'regeln']) ist(`SKILL.md ${n}: erklärt, was <Skill-Ordner> ist`, /`<Skill-Ordner>` ist der Ordner, aus dem du diese `SKILL\.md` gelesen hast/.test(skillText(n)), true);
   // Sicherheitsregeln stehen im Text (der Test oben weist ihre Wirkung nach, dieser Test, dass das Modell sie liest).
   const l = skillText('lieferbar');
-  ist('lieferbar: verbietet ungeprüfte Eingaben in der Shell und nennt den einzigen Weg', [/NIE ungeprüft/.test(l), l.includes('stdin'), l.includes("<<'LUXE_ENDE_7K3Q'") || l.includes("einfachen Anführungszeichen")], [true, true, true]);
-  ist('lieferbar: verbietet das Endwort in der Eingabe und nennt die Kosten in CJ-Punkten', [/Steht das Endwort `LUXE_ENDE_7K3Q` selbst in der Eingabe, nichts davon ausführen/.test(l), l.includes('Kostet CJ-Tagespunkte'), l.includes('höchstens 25 Handles')], [true, true, true]);
+  ist('lieferbar: verbietet ungeprüfte Eingaben in der Shell und nennt den einzigen Weg', [/NIE ungeprüft/.test(l), l.includes('stdin'), l.includes("<<'<Endwort>'") && l.includes("einfachen Anführungszeichen")], [true, true, true]);
+  ist('lieferbar: verbietet das Endwort in der Eingabe und nennt die Kosten in CJ-Punkten', [/Steht das Endwort selbst als Zeile in der Eingabe, nichts davon ausführen/.test(l), l.includes('Kostet CJ-Tagespunkte'), l.includes('höchstens 25 Handles')], [true, true, true]);
   ist('trend: nennt die Kosten in CJ-Punkten', skillText('trend').includes('Kostet CJ-Tagespunkte'), true);
   ist('shop-puls: nennt die Nebenwirkung auf SHOP-PULSE.md und warnt vor dem Weglassen von env -u', [skillText('shop-puls').includes('automation/autopilot/SHOP-PULSE.md'), /Diesen Teil nie weglassen/.test(skillText('shop-puls'))], [true, true]);
   ist('Alle Skills: ein fehlgeschlagener Lauf wird mit Grund genannt, kein geschöntes «alles gut»', ['shop-puls', 'lieferbar', 'trend'].map(n => /Exit ungleich 0 oder nicht gelaufen/.test(skillText(n)) && /NICHTS gemessen/.test(skillText(n))), [true, true, true]);
@@ -262,8 +265,7 @@ for (const n of MEINE) {
   const zeigeUmgebung = `console.log(JSON.stringify({ tg: process.env.TELEGRAM_BOT_TOKEN ?? null, chat: process.env.TELEGRAM_CHAT_ID ?? null, handles: process.env.HANDLES ?? null, erneut: process.env.ERNEUT ?? null, live: process.env.LIVE ?? null, argv: process.argv.slice(2) }));\n`;
   for (const f of ['autopilot/shop_pulse.mjs', 'lieferbarkeit_guard.mjs', 'trend_entdecken.mjs']) writeFileSync(join(dir, 'automation', f), zeigeUmgebung);
   const elternUmgebung = { TELEGRAM_BOT_TOKEN: 'tg-test-wert', TELEGRAM_CHAT_ID: '4711', LIVE: '1' };
-  const mitNode = zeile => (existsSync(NODE_PFAD_IN_SKILLS) ? zeile : zeile.replace(NODE_PFAD_IN_SKILLS, NODE));
-  const zeigt = zeile => { const r = bash(mitNode(zeile), dir, elternUmgebung); return { code: r.status, aus: r.stdout.trim() ? JSON.parse(r.stdout.trim().split('\n').pop()) : null, err: r.stderr }; };
+  const zeigt = zeile => { const r = bash(zeile, dir, elternUmgebung); return { code: r.status, aus: r.stdout.trim() ? JSON.parse(r.stdout.trim().split('\n').pop()) : null, err: r.stderr }; };
 
   // shop-puls
   const pulsZeile = bloecke['shop-puls'][0][0];
@@ -326,13 +328,18 @@ const hs = n => Array.from({ length: n }, (_, i) => `produkt-${i + 100}`);
   const lang = n => `a${'b'.repeat(n - 1)}`;
   ist('Grenze 80: 80 Zeichen gehen durch, 81 nicht', [pruefeHandles(lang(80)).handles?.[0].length, 'fehler' in pruefeHandles(lang(81)), pruefeHandles(lang(81)).fehler?.includes('81 Zeichen')], [80, true, true]);
   ist('Grenze Eingabe: genau 5000 Zeichen werden gelesen (hier als Handle zu lang), 5001 sind zu lang', [pruefeHandles('a'.repeat(MAX_EINGABE)).fehler?.includes('Handle zu lang'), pruefeHandles('a'.repeat(MAX_EINGABE + 1)).fehler?.includes('Eingabe zu lang')], [true, true]);
-  ist('Zeilenumbruch mitten in der Eingabe hat einen eigenen Fehlertext (nicht den allgemeinen)', ['abc\ndef', 'abc\r\ndef', 'abc,\n\ndef', 'abc\ndef\n'].map(t => pruefeHandles(t).fehler?.startsWith('Zeilenumbruch in der Eingabe')), [true, true, true, true]);
+  // Fund 18: eine Spalte (ein Handle je Zeile) ist die natürliche Form einer Liste aus einer Tabelle; jedes Token wird danach einzeln geprüft.
+  ist('Zeilenumbruch trennt Handles (eine Spalte geht): LF, CRLF, Komma am Zeilenende, Leerzeilen, Rand', ['abc\ndef', 'abc\r\ndef', 'abc,\n\ndef', 'abc\ndef\n', ' abc \n def ', 'abc\n\n\ndef'].map(t => pruefeHandles(t)), Array.from({ length: 6 }, () => ({ handles: ['abc', 'def'] })));
+  ist('Spalte mit 25 Handles geht durch, 26 nicht', [pruefeHandles(hs(25).join('\n')).handles?.length, pruefeHandles(hs(26).join('\n')).fehler?.includes('Zu viele Handles: 26')], [25, true]);
+  ist('Gegenprobe: ein einzelner Wagenrücklauf (ohne Zeilenvorschub) ist KEIN Trenner', [pruefeHandles('abc\rdef').fehler?.startsWith('Kein gültiger Handle: «abc?def»'), pruefeHandles('abc\r').handles, pruefeHandles('abc\r\r\ndef').fehler?.startsWith('Kein gültiger Handle')], [true, ['abc'], true]);
+  ist('Gegenprobe: eine Zeile mit Ungültigem in einer Spalte weist die ganze Eingabe ab', ['abc\ndef\nA-B', 'abc\n$(id)\ndef', 'abc\n;rm\ndef', 'abc\n-rf\ndef', 'abc\ndef\n../x'].map(t => 'fehler' in pruefeHandles(t)), [true, true, true, true, true]);
+  ist('Aufruf-Hilfe nennt den Zeilenumbruch als Trenner', [AUFRUF.includes('Zeilenumbruch'), AUFRUF.includes('EINER Zeile')], [true, false]);
   for (const leer of ['', ' ', '   ', ',', ' , , ', '\n', '\r\n\r\n', '\t']) ist(`leer: ${JSON.stringify(leer)} gibt die Hilfe`, pruefeHandles(leer).fehler?.includes('Keine Handles angegeben') && pruefeHandles(leer).fehler?.includes(AUFRUF), true);
   for (const kein of [undefined, null, 5, {}, ['abc']]) ist(`kein Text: ${JSON.stringify(kein)} ist ein Fehler, keine Ausnahme`, 'fehler' in pruefeHandles(kein), true);
 
   const einschleusen = [
     ['Semikolon', 'abc; rm -rf /'], ['Semikolon ohne Leerzeichen', 'abc;touch PWNED'], ['$(…)', 'abc,$(touch PWNED)'], ['${…}', '${IFS}'], ['$VAR', '$HOME'], ['Backticks', '`touch PWNED`'],
-    ['Zeilenumbruch mit zweiter Zeile', 'abc\ntouch PWNED'], ['Zeilenumbruch gültiger Handles', 'abc\ndef'], ['Wagenrücklauf', 'abc\rdef'], ['doppeltes Minus', '--'], ['führendes Minus', '-rf'],
+    ['Zeilenumbruch mit zweiter Zeile', 'abc\ntouch PWNED'], ['Zeilenumbruch mit Befehl in Kleinbuchstaben und Sonderzeichen', 'abc\n$(touch pwned)'], ['Wagenrücklauf', 'abc\rdef'], ['doppeltes Minus', '--'], ['führendes Minus', '-rf'],
     ['Option wie ein Handle', '--help'], ['Option nach einem Handle', 'abc --version'], ['nur Minus', '-'], ['Unicode-Umlaut', 'äpfel-123'], ['Unicode-Vollbreite', 'ａｂｃ'], ['Emoji', 'abc😀'],
     ['Eszett', 'strasse-ß'], ['Grossbuchstaben', 'ABC-DEF'], ['Unterstrich', 'abc_def'], ['Punkt', 'abc.def'], ['Schrägstrich', 'abc/def'], ['Pfad nach oben', '../../etc/passwd'], ['URL', 'https://luxestyle.ch/products/abc'],
     ['Pipe', 'abc|def'], ['Und-Zeichen', 'abc&&def'], ['Umleitung', 'abc>def'], ['Anführungszeichen', '"abc"'], ['Apostroph', "a'b"], ['Backslash', 'a\\b'], ['Stern', 'abc*'], ['Fragezeichen', 'abc?'], ['Tab im Handle', 'abc\tdef'],
@@ -377,6 +384,39 @@ const hs = n => Array.from({ length: n }, (_, i) => `produkt-${i + 100}`);
   ist('Fuzz: beide Wege wurden wirklich begangen (Gegenprobe zum Messgerät)', [ok > 200, abgewiesen > 200], [true, true]);
 }
 
+// liesBisEnde: die Leseschleife ohne Prozess (die Prozess-Tests unten prüfen dasselbe an der echten stdin).
+{
+  /** Eine Quelle aus einer Liste von Schritten: Buffer (Stück), Zahl 0 (Ende) oder Fehlercode (wird geworfen). */
+  const quelle = schritte => {
+    let i = 0;
+    return (puffer, von, laenge) => {
+      const s = schritte[i < schritte.length ? i++ : schritte.length - 1];
+      if (typeof s === 'string') { const e = new Error(s); e.code = s; throw e; }
+      if (s === 0) return 0;
+      const n = Math.min(s.length, laenge);
+      s.copy(puffer, von, 0, n);
+      return n;
+    };
+  };
+  let gewartet = 0;
+  const warte = ms => { gewartet += ms; };
+  const B = t => Buffer.from(t);
+  const liesAus = (schritte, opt) => { gewartet = 0; return liesBisEnde(quelle(schritte), warte, opt); };
+  ist('liesBisEnde: Stücke werden zusammengesetzt bis zum Ende (0)', liesAus([B('abc-'), B('def,'), B('ghi\n'), 0]), { zuLang: false, text: 'abc-def,ghi\n' });
+  ist('liesBisEnde: leere Quelle → leerer Text', liesAus([0]), { zuLang: false, text: '' });
+  ist('liesBisEnde: ein UTF-8-Zeichen, das auf zwei Stücke verteilt ist, wird erst am Ende dekodiert', liesAus([B([0xc3]), B([0xa4, 0x62]), 0]).text, 'äb');
+  ist('liesBisEnde: Fehlercode EOF (so meldet Windows das Ende) beendet das Lesen, das Gelesene bleibt', liesAus([B('abc'), 'EOF']), { zuLang: false, text: 'abc' });
+  ist('liesBisEnde: EAGAIN wird abgewartet und erneut gelesen', [liesAus(['EAGAIN', 'EAGAIN', 'EAGAIN', B('abc-def\n'), 0]), gewartet], [{ zuLang: false, text: 'abc-def\n' }, 60]);
+  ist('liesBisEnde: EAGAIN zwischen zwei Stücken', liesAus([B('abc-'), 'EAGAIN', B('def\n'), 0]).text, 'abc-def\n');
+  const dauer = (() => { try { liesAus(['EAGAIN'], { maxWartenMs: 100, schrittMs: 20 }); return 'kein Fehler'; } catch (e) { return [e.message.startsWith('keine Daten innerhalb von'), gewartet]; } })();
+  ist('liesBisEnde: Gegenprobe, EAGAIN ohne Ende wartet höchstens maxWartenMs und wirft dann (nie unbegrenzt)', dauer, [true, 100]);
+  ist('liesBisEnde: Fortschritt setzt die Wartezeit zurück (zweimal fast die Grenze, dazwischen Daten)', liesAus(['EAGAIN', 'EAGAIN', 'EAGAIN', 'EAGAIN', B('a'), 'EAGAIN', 'EAGAIN', 'EAGAIN', 'EAGAIN', B('b'), 0], { maxWartenMs: 100, schrittMs: 20 }).text, 'ab');
+  const andere = (() => { try { liesAus(['EISDIR'], {}); return 'kein Fehler'; } catch (e) { return e.code; } })();
+  ist('liesBisEnde: jeder andere Fehler (zum Beispiel EISDIR) wird weitergeworfen, nicht verschluckt', andere, 'EISDIR');
+  ist('liesBisEnde: ein voller Puffer ist «zu lang» (mehr Eingabe als erlaubt), es wird nicht weitergelesen', liesAus([B('aaaaaaaaaa'), B('zzz'), 0], { max: 10 }), { zuLang: true, text: 'aaaaaaaaaa' });
+  ist('liesBisEnde: Gegenprobe, ein Byte weniger als der Puffer fasst ist noch nicht «zu lang»', [liesAus([B('aaaaaaaaa'), 0], { max: 10 }).zuLang, liesAus([B('aaaaaaaaaa'), 0], { max: 11 }).zuLang], [false, false]);
+}
+
 // handles.mjs als Prozess
 const HANDLES_SKRIPT = join(SKILLS, 'lieferbar', 'scripts', 'handles.mjs');
 const handlesLauf = (eingabe, args = []) => lauf(NODE, [HANDLES_SKRIPT, ...args], { input: eingabe });
@@ -398,23 +438,81 @@ const handlesLauf = (eingabe, args = []) => lauf(NODE, [HANDLES_SKRIPT, ...args]
   ist('handles.mjs: 80 Zeichen → Exit 0, 81 → Exit 2', [handlesLauf('a'.repeat(80)).status, handlesLauf('a'.repeat(81)).status], [0, 2]);
   ist('handles.mjs: UTF-8-Mehrbytezeichen werden als Zeichen gezählt und abgewiesen (kein Absturz)', [handlesLauf('äöü😀').status, handlesLauf('😀'.repeat(1500)).status], [2, 2]);
   ist('handles.mjs: Null-Byte und ungültiges UTF-8 → Exit 2, kein Absturz', [lauf(NODE, [HANDLES_SKRIPT], { input: Buffer.from([0x61, 0x00, 0x62]) }).status, lauf(NODE, [HANDLES_SKRIPT], { input: Buffer.from([0xff, 0xfe, 0x61]) }).status], [2, 2]);
-  for (const [name, text] of [['Semikolon', 'abc; rm -rf /'], ['$(…)', '$(touch PWNED)'], ['Backticks', '`id`'], ['Zeilenumbruch', 'abc\ndef'], ['doppeltes Minus', '--'], ['führendes Minus', '-rf'], ['Unicode', 'äpfel'], ['26 Handles', hs(26).join(' ')]]) {
+  const spalte = handlesLauf('eins-111\r\nzwei-222\n\ndrei-333\n');
+  ist('handles.mjs: eine Spalte (ein Handle je Zeile, auch CRLF) → Exit 0, EINE Zeile mit der Liste', [spalte.status, spalte.stdout, spalte.stderr], [0, 'eins-111,zwei-222,drei-333\n', '']);
+  ist('handles.mjs: eine Spalte mit einer ungültigen Zeile → Exit 2, stdout leer', [handlesLauf('eins-111\n$(id)\n').status, handlesLauf('eins-111\n$(id)\n').stdout], [2, '']);
+  for (const [name, text] of [['Semikolon', 'abc; rm -rf /'], ['$(…)', '$(touch PWNED)'], ['Backticks', '`id`'], ['Zeilenumbruch mit Befehl', 'abc\n$(id)'], ['doppeltes Minus', '--'], ['führendes Minus', '-rf'], ['Unicode', 'äpfel'], ['26 Handles', hs(26).join(' ')]]) {
     const r = handlesLauf(text);
     ist(`handles.mjs: Einschleusen «${name}» → Exit 2, stdout leer`, [r.status, r.stdout], [2, '']);
   }
+}
+
+// Fund 3: ein langsamer Schreiber schickt die Eingabe in Stücken; das Skript muss bis zum Ende (EOF) lesen, nicht beim ersten Stück aufhören.
+// Alle Tests oben liefern die Eingabe in EINEM Schreibvorgang (spawnSync `input`): ein einzelnes read() bliebe dort unbemerkt.
+const handlesStueckweise = (stuecke, pauseMs = 150) => new Promise(fertigMit => {
+  const kind = spawn(NODE, [HANDLES_SKRIPT], { stdio: ['pipe', 'pipe', 'pipe'] });
+  let aus = '', err = '';
+  kind.stdout.on('data', d => { aus += d; });
+  kind.stderr.on('data', d => { err += d; });
+  kind.stdin.on('error', () => { /* EPIPE: das Skript endete vor dem letzten Stück, das sieht der Test am Ergebnis */ });
+  const zeitlimit = setTimeout(() => kind.kill('SIGKILL'), 20000);
+  kind.on('close', status => { clearTimeout(zeitlimit); fertigMit({ status, stdout: aus, stderr: err }); });
+  let i = 0;
+  const weiter = () => { if (i < stuecke.length) { kind.stdin.write(stuecke[i]); i += 1; setTimeout(weiter, pauseMs); } else kind.stdin.end(); };
+  weiter();
+});
+{
+  const z1 = await handlesStueckweise(['abc-', 'def,ghi\n']);
+  ist('handles.mjs: Eingabe in zwei Stücken (langsamer Schreiber) wird bis zum Ende gelesen, nicht beim ersten Stück', [z1.status, z1.stdout, z1.stderr], [0, 'abc-def,ghi\n', '']);
+  const z2 = await handlesStueckweise(['erstes-produkt-1,', 'zweites-produkt-2,', 'drittes-produkt-3\n']);
+  ist('handles.mjs: Eingabe in drei Stücken → alle drei Handles', [z2.status, z2.stdout, z2.stderr], [0, 'erstes-produkt-1,zweites-produkt-2,drittes-produkt-3\n', '']);
+  const z3 = await handlesStueckweise(['gut-1,', 'BÖSE; rm -rf /']);
+  ist('handles.mjs: Gegenprobe, das UNGÜLTIGE zweite Stück wird gelesen und abgewiesen (Exit 2, nichts auf stdout)', [z3.status, z3.stdout, z3.stderr.startsWith('Kein gültiger Handle')], [2, '', true]);
+  const z4 = await handlesStueckweise(['abc\n', 'def\n', 'ghi\n']);
+  ist('handles.mjs: eine Spalte in drei Stücken → eine Zeile', [z4.status, z4.stdout], [0, 'abc,def,ghi\n']);
+}
+
+// Fund 4: ist stdin nicht lesbar (hier ein Ordner), endet das Skript mit Exit 1 und LEERER Ausgabe. Als Exit 0 würde Schritt 4 des Skills
+// mit einer leeren «geprüften Liste» laufen, und der Wächter durchsuchte statt der Handles den Katalog (ein leeres HANDLES wird dort ignoriert).
+{
+  const ordner = tmp();
+  const fd = openSync(ordner, 'r');
+  const r = lauf(NODE, [HANDLES_SKRIPT], { stdio: [fd, 'pipe', 'pipe'] });
+  closeSync(fd);
+  rmSync(ordner, { recursive: true, force: true });
+  ist('handles.mjs: stdin nicht lesbar (ein Ordner) → Exit 1, stdout LEER, Grund auf stderr', [r.status, r.stdout, r.stderr.includes('handles.mjs: stdin nicht lesbar')], [1, '', true]);
+  ist('handles.mjs: gelesen wird immer vor dem Urteil: ohne lesbare Eingabe kommt nie eine Liste heraus', r.stdout.trim() === '' && r.status !== 0, true);
+}
+
+// Fund 8: eine geerbte NICHT BLOCKIERENDE stdin (O_NONBLOCK) liefert EAGAIN, solange die Daten fehlen; das Skript wartet, statt mit Exit 1 abzubrechen.
+// Ein Pseudo-Rohr aus Python (Rohr mit gesetztem O_NONBLOCK am Leseende, Daten nach 0,5 s); ohne python3/fcntl wird sichtbar übersprungen.
+{
+  const NB = [
+    'import os, subprocess, sys, time', 'try:', '    import fcntl', 'except ImportError:', "    print('KEIN-FCNTL'); sys.exit(0)",
+    'r, w = os.pipe()', 'fcntl.fcntl(r, fcntl.F_SETFL, fcntl.fcntl(r, fcntl.F_GETFL) | os.O_NONBLOCK)',
+    'p = subprocess.Popen(sys.argv[1:], stdin=r, stdout=subprocess.PIPE, stderr=subprocess.PIPE)', 'os.close(r)',
+    'time.sleep(0.5)', "os.write(w, b'abc-def\\n')", 'os.close(w)',
+    'o, e = p.communicate(timeout=20)', 'print(p.returncode)', 'print(o.decode().strip())', 'print(e.decode().strip())', '',
+  ].join('\n');
+  const nb = lauf('python3', ['-I', '-c', NB, NODE, HANDLES_SKRIPT]);
+  if (nb.error || nb.stdout.startsWith('KEIN-FCNTL')) console.log('ÜBERSPRUNGEN: kein python3 mit fcntl-Modul, der Fall «nicht blockierende stdin» von handles.mjs wurde nicht geprüft');
+  else ist('handles.mjs: nicht blockierende stdin, Daten kommen nach 0,5 s → wartet und liefert Exit 0 mit der Liste (nicht EAGAIN-Abbruch)', nb.stdout.split('\n').slice(0, 3), ['0', 'abc-def', '']);
 }
 
 // === 6. Die Prüfung steht in der Shell-Kette: Heredoc mit Endwort in einfachen Anführungszeichen ==================
 {
   const block = bloecke.lieferbar[0];
   const dir = tmp();
-  const baue = nutzlast => [block[0].replace('<Skill-Ordner>', join(SKILLS, 'lieferbar')), nutzlast, block[2]].join('\n');
+  // Das Endwort bildet der Test wie der Skill es verlangt: für JEDEN Aufruf neu, `LUXE_ENDE_` plus 12 zufällige Zeichen aus A-Z und 0-9.
+  const endwort = () => `LUXE_ENDE_${randomBytes(6).toString('hex').toUpperCase()}`;
+  const baue = (nutzlast, wort = endwort()) => [block[0].replace('<Skill-Ordner>', join(SKILLS, 'lieferbar')).replaceAll('<Endwort>', wort), nutzlast, block[2].replaceAll('<Endwort>', wort)].join('\n');
+  ist('Endwort des Tests: LUXE_ENDE_ plus 12 Zeichen aus A-Z und 0-9, bei jedem Aufruf ein anderes', [/^LUXE_ENDE_[A-Z0-9]{12}$/.test(endwort()), endwort() !== endwort(), new Set(Array.from({ length: 50 }, endwort)).size], [true, true, 50]);
   const marker = join(dir, 'PWNED');
   const lauft = nutzlast => { const r = bash(baue(nutzlast), dir); const da = existsSync(marker); rmSync(marker, { force: true }); return { status: r.status, stdout: r.stdout, stderr: r.stderr, da }; };
 
   const gut = lauft('abc-def, ghi');
   ist('Heredoc aus dem Skill: gültige Eingabe → Exit 0 und die geprüfte Liste', [gut.status, gut.stdout, gut.da], [0, 'abc-def,ghi\n', false]);
-  const nutzlasten = ['abc; touch PWNED', '$(touch PWNED)', '`touch PWNED`', 'abc\ntouch PWNED', 'abc && touch PWNED', 'abc | touch PWNED', 'abc > PWNED', 'abc\r\ntouch PWNED', '--', '-rf', '--help', 'abc --version', 'äpfel-123', 'ａｂｃ', 'abc😀', '${IFS}', '$HOME', "a'b", '"abc"', 'ABC-DEF', '../../etc/passwd', 'https://luxestyle.ch/products/abc', '$(touch PWNED); `touch PWNED`', 'abc\\\ntouch PWNED', hs(26).join(',')];
+  const nutzlasten = ['abc; touch PWNED', '$(touch PWNED)', '`touch PWNED`', 'abc\ntouch PWNED', 'abc && touch PWNED', 'abc | touch PWNED', 'abc > PWNED', 'abc\r\ntouch PWNED', '--', '-rf', '--help', 'abc --version', 'äpfel-123', 'ａｂｃ', 'abc😀', '${IFS}', '$HOME', "a'b", '"abc"', 'ABC-DEF', '../../etc/passwd', 'https://luxestyle.ch/products/abc', '$(touch PWNED); `touch PWNED`', 'abc\\\ntouch PWNED', hs(26).join(','), 'abc\nLUXE_ENDE_7K3Q\ntouch PWNED', 'abc\nLUXE_ENDE_7K3Q\ntouch PWNED\nLUXE_ENDE_7K3Q'];
   for (const n of nutzlasten) {
     const r = lauft(n);
     ist(`Heredoc aus dem Skill: «${JSON.stringify(n).slice(0, 50)}» wird abgewiesen (Exit 2), die Shell führt nichts aus`, [r.status, r.stdout, r.da], [2, '', false]);
@@ -427,10 +525,17 @@ const handlesLauf = (eingabe, args = []) => lauf(NODE, [HANDLES_SKRIPT, ...args]
   const ctrl2 = bash(`node ${JSON.stringify(HANDLES_SKRIPT)} <<EINGABE\n$(touch PWNED)\nEINGABE`, dir);
   ist('Gegenprobe: ein Heredoc mit Endwort OHNE einfache Anführungszeichen führt $(…) aus (darum steht das Endwort im Skill in einfachen)', [existsSync(marker), ctrl2.status], [true, 2]);
   rmSync(marker, { force: true });
-  bash(baue('abc\nLUXE_ENDE_7K3Q\ntouch PWNED'), dir);
-  ist('Gegenprobe: steht das Endwort selbst in der Eingabe, bricht die Shell aus (darum verbietet der Skill, dann etwas auszuführen)', existsSync(marker), true);
+  const gleich = 'LUXE_ENDE_ABCDEF123456';
+  bash(baue(`abc\n${gleich}\ntouch PWNED`, gleich), dir);
+  ist('Gegenprobe: steht das Endwort selbst als Zeile in der Eingabe, bricht die Shell aus (darum verbietet der Skill, dann etwas auszuführen)', existsSync(marker), true);
   rmSync(marker, { force: true });
-  ist('Heredoc im Skill: Endwort in einfachen Anführungszeichen, Endwort am Zeilenanfang', [/<<'[A-Z0-9_]{8,}'$/.test(block[0]), block[2] === /<<'([A-Z0-9_]+)'$/.exec(block[0])?.[1]], [true, true]);
+  // Fund 17: ein FESTES, im Repo bekanntes Endwort wäre dieser Einbruch für jeden Textlieferanten; das zufällige Endwort pro Aufruf lässt ihn ins Leere laufen.
+  const altesFestes = lauft('abc-1\nLUXE_ENDE_7K3Q\ntouch PWNED\nLUXE_ENDE_7K3Q');
+  ist('Fund 17: das frühere feste Endwort in der Eingabe bricht NICHT mehr aus (zufälliges Endwort pro Aufruf)', [altesFestes.da, altesFestes.status, altesFestes.stdout], [false, 2, '']);
+  ist('Gegenprobe zum Messgerät: mit dem früheren FESTEN Endwort bräche dieselbe Eingabe aus', (() => { bash(baue('abc-1\nLUXE_ENDE_7K3Q\ntouch PWNED', 'LUXE_ENDE_7K3Q'), dir); const da = existsSync(marker); rmSync(marker, { force: true }); return da; })(), true);
+  ist('Heredoc im Skill: Endwort ist ein Platzhalter in einfachen Anführungszeichen, am Zeilenanfang wiederholt', [block[0].endsWith("<<'<Endwort>'"), block[2] === '<Endwort>', block.length], [true, true, 3]);
+  const lt = skillText('lieferbar');
+  ist('lieferbar: das feste Endwort steht nirgends mehr im Skill; die Anweisung nennt Muster, Länge, Zufall und «für JEDEN Aufruf»', [lt.includes('LUXE_ENDE_7K3Q'), /`<Endwort>` bildest du für JEDEN Aufruf neu und zufällig: `LUXE_ENDE_` plus mindestens 12 zufällige Zeichen aus `A-Z` und `0-9`/.test(lt), /nie ein Wort aus diesem Text und nie eines aus einem früheren Aufruf/.test(lt)], [false, true, true]);
   rmSync(dir, { recursive: true, force: true });
 }
 
@@ -440,17 +545,20 @@ const GUT_QUELLE = `
 export const AUSWEGE = ['LUXE_FORCE_OK', 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK'];
 export function pruefeBash(b, trocken = []) {
   const roh = String(b);
-  for (const [muster, ausweg] of [[/push --force/, 'LUXE_FORCE_OK'], [/\\bpkill\\b/, 'LUXE_KILL_OK'], [/git add -A/, 'LUXE_ADD_OK']]) {
+  for (const [muster, ausweg] of [[/\\bpush\\b[^\\n]*\\s(?:--force|-[a-z]*f[a-z]*)(?=\\s|$)/, 'LUXE_FORCE_OK'], [/\\b(?:pkill|killall)\\b/, 'LUXE_KILL_OK'], [/git add (?:-\\w*A\\w*|["']?\\.["']?)(?=\\s|$)/, 'LUXE_ADD_OK']]) {
     if (muster.test(roh) && !roh.includes(ausweg + '=1')) return { deny: 'gesperrt, Ausweg ' + ausweg };
   }
-  if (/_SOCIAL_STOPP/.test(roh)) return { deny: 'wird nie neu angelegt' };
-  if (/LIVE=1/.test(roh) && !roh.includes('LUXE_LIVE_OK=1') && !trocken.some(s => roh.includes(s))) return { deny: 'erst Trockenlauf' };
+  if (/\\b(?:touch|tee)\\b[^\\n]*_SOCIAL_STOPP|>\\s*\\S*_SOCIAL_STOPP/.test(roh)) return { deny: 'wird nie neu angelegt' };
+  if (/LIVE=["']?1/.test(roh) && !roh.includes('LUXE_LIVE_OK=1') && !trocken.some(s => roh.includes(s))) return { deny: 'erst Trockenlauf' };
+  const lauf = /^node (\\S*automation\\/\\S+\\.mjs)/.exec(roh);
+  if (lauf) return { merke: lauf[1] };
   return undefined;
 }
 export function pruefeInhalt(text) {
   if (text.includes('luxe-geheim-ok')) return undefined;
   return /shpat_[0-9a-f]{32}/.test(text) ? { deny: 'sieht nach einem Geheimnis aus' } : undefined;
 }
+export function pruefePfad(p) { return /_SOCIAL_STOPP$/.test(p) ? { deny: 'wird nie neu angelegt' } : undefined; }
 `;
 const modulAus = quelle => import(`data:text/javascript;base64,${Buffer.from(quelle).toString('base64')}`);
 const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(`Mutation passt nicht: ${von}`); return GUT_QUELLE.replace(von, nach); };
@@ -458,8 +566,9 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
   ist('Bericht: sechs Regeln mit Namen, Beispiel und genau einer Art von Beispiel', BERICHT_REGELN.map(r => [typeof r.name, Boolean(r.befehl) !== Boolean(r.inhalt)]), BERICHT_REGELN.map(() => ['string', true]));
   ist('Bericht: Auswege der Regeln sind die vier der Leitplanken', BERICHT_REGELN.map(r => r.ausweg).filter(Boolean), ['LUXE_FORCE_OK', 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK']);
   ist('Bericht: das Geheimnis-Beispiel entsteht erst zur Laufzeit (kein Schlüssel in der Quelle)', [geheimnisProbe().startsWith('shpat_'), /shpat_[0-9a-f]{32}/.test(readFileSync(join(WURZEL, 'lib', 'regeln_bericht.mjs'), 'utf8'))], [true, false]);
-  ist('schnittstelleFehlt: vollständiges Modul → nichts', schnittstelleFehlt({ pruefeBash() {}, pruefeInhalt() {}, AUSWEGE: [] }), []);
-  ist('schnittstelleFehlt: leeres Objekt, null, falsche Arten → alles Fehlende', [schnittstelleFehlt({}), schnittstelleFehlt(null), schnittstelleFehlt({ pruefeBash: 1, pruefeInhalt() {}, AUSWEGE: 'x' })], [Object.keys(ERWARTET), Object.keys(ERWARTET), ['pruefeBash', 'AUSWEGE']]);
+  ist('schnittstelleFehlt: vollständiges Modul → nichts', schnittstelleFehlt({ pruefeBash() {}, pruefeInhalt() {}, pruefePfad() {}, AUSWEGE: [] }), []);
+  ist('schnittstelleFehlt: leeres Objekt, null, falsche Arten → alles Fehlende', [schnittstelleFehlt({}), schnittstelleFehlt(null), schnittstelleFehlt({ pruefeBash: 1, pruefeInhalt() {}, pruefePfad: null, AUSWEGE: 'x' })], [Object.keys(ERWARTET), Object.keys(ERWARTET), ['pruefeBash', 'pruefePfad', 'AUSWEGE']]);
+  ist('schnittstelleFehlt: der Pfad-Weg (pruefePfad) gehört zur Schnittstelle, der Hook braucht ihn', Object.keys(ERWARTET), ['pruefeBash', 'pruefeInhalt', 'pruefePfad', 'AUSWEGE']);
 
   const gut = bericht(await modulAus(GUT_QUELLE));
   ist('Bericht gegen ein passendes Modul: keine Abweichung, Schlusszeile', [gut.abweichungen, gut.text.split('\n').at(-1)], [[], 'Messung: alle 6 Regeln wie erwartet.']);
@@ -469,24 +578,59 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
   ist('Bericht: das Geheimnis-Beispiel steht nie im Text', gut.text.includes(geheimnisProbe()), false);
   ist('Bericht: Regel ohne Ausweg sagt «keiner», die anderen nennen ihren Ausweg', [/_SOCIAL_STOPP[\s\S]*?Ausweg: keiner/.test(gut.text), (gut.text.match(/Ausweg: LUXE_[A-Z]+_OK=1 vor den Befehl \(gemessen: dann frei\)/g) ?? []).length], [true, 4]);
 
-  const abw = async (name, quelle, erwartet) => {
+  const abw = async (name, quelle, erwartet, nichtImText = []) => {
     const b = bericht(await modulAus(quelle));
     ist(`Bericht, Gegenprobe «${name}»: Abweichung wird gemeldet`, [b.abweichungen.length > 0, erwartet.every(w => b.abweichungen.join(' | ').includes(w)), b.text.split('\n').at(-1).startsWith('ABWEICHUNG')], [true, true, true]);
+    // Fund 1: eine Messung, die nicht stattfand, darf im Text nie als gemessenes «frei» stehen.
+    for (const w of nichtImText) ist(`Bericht, Gegenprobe «${name}»: der Text behauptet nicht «${w}»`, b.text.includes(w), false);
     return b;
   };
-  const NICHTS_QUELLE = "export const AUSWEGE = ['LUXE_FORCE_OK', 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK']; export const pruefeBash = () => undefined; export const pruefeInhalt = () => undefined;";
+  const NICHTS_QUELLE = "export const AUSWEGE = ['LUXE_FORCE_OK', 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK']; export const pruefeBash = () => undefined; export const pruefeInhalt = () => undefined; export const pruefePfad = () => undefined;";
   const nichtsGesperrt = await abw('nichts wird gesperrt', NICHTS_QUELLE, ['Regel 1', 'Regel 4', 'Regel 5', 'Regel 6', 'NICHT gesperrt']);
   ist('…und es sind alle sechs Regeln', nichtsGesperrt.abweichungen.filter(a => a.includes('NICHT gesperrt')).length, 6);
   await abw('alles wird gesperrt', mutiere('return undefined;\n}\nexport function pruefeInhalt', "return { deny: 'alles' };\n}\nexport function pruefeInhalt"), ['macht das Beispiel NICHT frei', 'Gegenprobe «git status -sb» wird gesperrt']);
   await abw('ein neuer Ausweg ohne Regel', GUT_QUELLE.replace("'LUXE_LIVE_OK']", "'LUXE_LIVE_OK', 'LUXE_NEU_OK']"), ['LUXE_NEU_OK steht in AUSWEGE']);
   await abw('ein Ausweg fehlt in der Liste', GUT_QUELLE.replace(", 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK']", ", 'LUXE_ADD_OK', 'LUXE_LIVE_OK']"), ['LUXE_KILL_OK steht nicht in AUSWEGE']);
-  await abw('_SOCIAL_STOPP bekäme einen Ausweg', mutiere("if (/_SOCIAL_STOPP/.test(roh))", "if (/_SOCIAL_STOPP/.test(roh) && !roh.includes('LUXE_FORCE_OK=1'))"), ['hebt die Sperre auf, obwohl sie keinen Ausweg haben soll']);
+  await abw('_SOCIAL_STOPP bekäme einen Ausweg', mutiere(".test(roh)) return { deny: 'wird nie neu angelegt' };", ".test(roh) && !roh.includes('LUXE_FORCE_OK=1')) return { deny: 'wird nie neu angelegt' };"), ['hebt die Sperre auf, obwohl sie keinen Ausweg haben soll']);
   await abw('LIVE=1 bliebe nach dem Trockenlauf gesperrt', mutiere('!trocken.some(s => roh.includes(s))', 'true'), ['nach einem Trockenlauf']);
   await abw('der Ausweg für LIVE hebt nichts auf', mutiere("!roh.includes('LUXE_LIVE_OK=1') && ", ''), ['LUXE_LIVE_OK=1 macht das Beispiel NICHT frei']);
   await abw('die Geheimnisprüfung wirft', mutiere("if (text.includes('luxe-geheim-ok')) return undefined;", "throw new Error('kaputt');"), ['wirft eine Ausnahme (kaputt)']);
   await abw('der Marker hilft nicht', mutiere("if (text.includes('luxe-geheim-ok')) return undefined;", ''), ['Marker luxe-geheim-ok macht das Beispiel NICHT frei']);
   await abw('eine Sperre ohne Grund zählt als frei', mutiere("{ deny: 'erst Trockenlauf' }", "{ deny: '  ' }"), ['Regel 5']);
   await abw('die Geheimnisprüfung sperrt nichts', mutiere("? { deny: 'sieht nach einem Geheimnis aus' } : undefined", '? undefined : undefined'), ['Regel 6']);
+
+  // Fund 1: eine Ausnahme der Prüfung an JEDER Messstelle ist «nicht messbar», nie «frei». Vier Messstellen lasen früher nur `.deny`.
+  const START = 'const roh = String(b);';
+  const wirft = (zusatz, text) => mutiere(START, `${START}\n  ${zusatz} throw new Error('${text}');`);
+  await abw('Ausnahme beim Ausweg', wirft("if (roh.startsWith('LUXE_FORCE_OK=1 '))", 'kaputt-ausweg'), ['kaputt-ausweg', 'Regel 1'], ['Ausweg: LUXE_FORCE_OK=1 vor den Befehl (gemessen: dann frei)']);
+  await abw('Ausnahme nach einem Trockenlauf', wirft('if (trocken.length > 0)', 'kaputt-trocken'), ['kaputt-trocken', 'Regel 5'], ['nach dem Trockenlauf von automation/beispiel_skript.mjs in dieser Sitzung (gemessen: dann frei)', 'bleibt gesperrt)']);
+  await abw('Ausnahme bei der Regel ohne Ausweg', wirft("if (roh.startsWith('LUXE_') && roh.includes('_SOCIAL_STOPP'))", 'kaputt-keiner'), ['kaputt-keiner', 'Regel 4'], ['keine der Auswege-Variablen macht frei']);
+  await abw('Ausnahme bei einer Gegenprobe', wirft("if (roh === 'git status -sb')", 'kaputt-gegenprobe'), ['kaputt-gegenprobe', 'git status -sb'], ['→ alle frei']);
+  await abw('Ausnahme beim Marker', mutiere("if (text.includes('luxe-geheim-ok')) return undefined;", "if (text.includes('luxe-geheim-ok')) throw new Error('kaputt-marker');"), ['kaputt-marker', 'Regel 6'], ['in einem Kommentar der Datei (gemessen: dann frei)']);
+  await abw('Ausnahme bei einer Variante', wirft("if (roh === 'git add -Av')", 'kaputt-variante'), ['kaputt-variante', 'Regel 3'], ['git add . → 3 von 3 gesperrt']);
+  await abw('Ausnahme beim Trockenlauf-Befehl', wirft("if (roh === 'node automation/beispiel_skript.mjs')", 'kaputt-merken'), ['kaputt-merken', 'Regel 5']);
+  await abw('Ausnahme im Pfad-Weg', mutiere("export function pruefePfad(p) { return /_SOCIAL_STOPP$/.test(p)", "export function pruefePfad(p) { throw new Error('kaputt-pfad'); return /_SOCIAL_STOPP$/.test(p)"), ['kaputt-pfad', 'Regel 4'], ['Patch-Weg: dropship/_SOCIAL_STOPP → gesperrt']);
+
+  // Fund 2: das Merken eines Trockenlaufs und der Pfad-Weg (Patches) gehören zur Messung, sonst bleibt «alle 6 Regeln» grün trotz kaputter Schalter.
+  await abw('ein Lauf ohne LIVE=1 wird nicht als Trockenlauf gemerkt', mutiere('if (lauf) return { merke: lauf[1] };', 'if (lauf) return undefined;'), ['Regel 5', 'nicht als Trockenlauf gemerkt'], ['nach dem Trockenlauf von']);
+  await abw('der Pfad-Weg sperrt nichts', mutiere("export function pruefePfad(p) { return /_SOCIAL_STOPP$/.test(p) ? { deny: 'wird nie neu angelegt' } : undefined; }", 'export function pruefePfad(p) { return undefined; }'), ['Regel 4', 'Patch-Weg'], ['Patch-Weg: dropship/_SOCIAL_STOPP → gesperrt']);
+  await abw('ein ANDERES Skript im Trockenlauf macht LIVE=1 frei', mutiere('!trocken.some(s => roh.includes(s))', '!trocken.length'), ['Regel 5', 'anderes Skript']);
+  await abw('das Merken liefert einen leeren Namen', mutiere('if (lauf) return { merke: lauf[1] };', "if (lauf) return { merke: '' };"), ['Regel 5', 'nicht als Trockenlauf gemerkt']);
+
+  // Fund 7: die Regelnamen versprechen mehr, als ein einziges Beispiel misst: Varianten, Lesen und Löschen werden mitgemessen.
+  await abw('gebündelte Kurzoption beim Force-Push', mutiere('(?:--force|-[a-z]*f[a-z]*)', '--force'), ['Regel 1', 'gebündelte Kurzoption', 'NICHT gesperrt']);
+  await abw('Option hinter dem Ziel beim Force-Push', mutiere('\\bpush\\b[^\\n]*\\s(?:', '\\bpush\\s(?:'), ['Regel 1', 'Option hinter dem Ziel', 'NICHT gesperrt']);
+  await abw('killall fehlt', mutiere('\\b(?:pkill|killall)\\b', '\\bpkill\\b'), ['Regel 2', 'killall', 'NICHT gesperrt']);
+  await abw('git add -Av ist frei', mutiere('-\\w*A\\w*|', '-A|'), ['Regel 3', 'gebündelte Kurzoption', 'NICHT gesperrt']);
+  await abw('git add "." ist frei', mutiere('|["\']?\\.["\']?)', '|\\.)'), ['Regel 3', 'Punkt in Anführungszeichen', 'NICHT gesperrt']);
+  await abw('LIVE in Anführungszeichen ist frei', mutiere('/LIVE=["\']?1/', '/LIVE=1/'), ['Regel 5', 'LIVE in Anführungszeichen', 'NICHT gesperrt']);
+  await abw('die Umleitung auf _SOCIAL_STOPP ist frei', mutiere('|>\\s*\\S*_SOCIAL_STOPP/', '/'), ['Regel 4', 'Umleitung', 'NICHT gesperrt']);
+  await abw('Lesen von _SOCIAL_STOPP wird gesperrt', mutiere('.test(roh)) return { deny: \'wird nie neu angelegt\' };', ".test(roh) || /cat .*_SOCIAL_STOPP/.test(roh)) return { deny: 'wird nie neu angelegt' };"), ['Gegenprobe «cat dropship/_SOCIAL_STOPP» wird gesperrt']);
+  await abw('Kopieren von _SOCIAL_STOPP wird gesperrt', mutiere('.test(roh)) return { deny: \'wird nie neu angelegt\' };', ".test(roh) || /cp .*_SOCIAL_STOPP/.test(roh)) return { deny: 'wird nie neu angelegt' };"), ['Gegenprobe «cp dropship/_SOCIAL_STOPP /tmp/stopp-kopie» wird gesperrt']);
+  await abw('Löschen von _SOCIAL_STOPP wird gesperrt', mutiere('.test(roh)) return { deny: \'wird nie neu angelegt\' };', ".test(roh) || /rm .*_SOCIAL_STOPP/.test(roh)) return { deny: 'wird nie neu angelegt' };"), ['Gegenprobe «rm -f dropship/_SOCIAL_STOPP» wird gesperrt']);
+  ist('Bericht: die Gegenproben nennen Lesen, Kopieren und Löschen von _SOCIAL_STOPP (der Regelname verspricht «Löschen und Lesen sind erlaubt»)', ['cat dropship/_SOCIAL_STOPP', 'rm -f dropship/_SOCIAL_STOPP', 'cp dropship/_SOCIAL_STOPP /tmp/stopp-kopie'].map(b => GEGENPROBEN.includes(b)), [true, true, true]);
+  ist('Bericht: Varianten stehen im Text, mit Ergebnis', [gut.text.includes('Varianten (müssen ebenfalls gesperrt sein): gebündelte Kurzoption'), (gut.text.match(/→ \d von \d gesperrt/g) ?? []).length], [true, 5]);
+  ist('Bericht: Merken und Pfad-Weg stehen im Text, gemessen', [gut.text.includes('Trockenlauf merken: «node automation/beispiel_skript.mjs» → gemerkt als «automation/beispiel_skript.mjs»'), gut.text.includes('Patch-Weg: dropship/_SOCIAL_STOPP → gesperrt'), gut.text.includes('anderes Skript'), gut.text.includes('Grenze, gemessen')], [true, true, true, true]);
 }
 {
   // Der echte Bericht gegen die echte lib/regeln.mjs (von einem anderen Baustein): sichtbar übersprungen, wenn sie fehlt.
@@ -502,7 +646,7 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
       ist(`Leitplanken lassen «${zeile.slice(0, 50)}» durch`, u?.deny, undefined);
       if (gruppen?.istLiveBefehl) ist(`Schreibzähler zählt «${zeile.slice(0, 50)}» nicht als LIVE`, gruppen.istLiveBefehl(zeile.replace('<geprüfte Liste>', 'abc-def')), false);
     }
-    ist('Leitplanken lassen den Heredoc-Befehl des Skills durch', echt.pruefeBash(`${bloecke.lieferbar[0].join('\n').replace('<die Handles, wie genannt>', 'abc-def')}`.replace('<Skill-Ordner>', '/x/skills/lieferbar'), [])?.deny, undefined);
+    ist('Leitplanken lassen den Heredoc-Befehl des Skills durch', echt.pruefeBash(`${bloecke.lieferbar[0].join('\n').replace('<die Handles, wie genannt>', 'abc-def')}`.replace('<Skill-Ordner>', '/x/skills/lieferbar').replaceAll('<Endwort>', 'LUXE_ENDE_ABCDEF123456'), [])?.deny, undefined);
     // Keine Datei dieses Bausteins enthält etwas, das die Geheimnis-Regel sperren würde.
     const eigene = ['lib/handles.mjs', 'lib/regeln_bericht.mjs', 'test/befehle_test.mjs', ...MEINE.map(n => `skills/${n}/SKILL.md`), 'skills/lieferbar/scripts/handles.mjs', 'skills/regeln/scripts/regeln.mjs'];
     ist('Geheimnis-Regel findet in den Dateien dieses Bausteins nichts', eigene.filter(f => echt.pruefeInhalt(readFileSync(join(WURZEL, f), 'utf8'))?.deny), []);
@@ -532,7 +676,7 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
   ist('regeln.mjs mit kaputtem lib/regeln.mjs: Exit 1, «lässt sich nicht laden» mit Grund', [rk.status, rk.stdout, rk.stderr.includes('lässt sich nicht laden'), /SyntaxError|Unexpected token/.test(rk.stderr)], [1, '', true, true]);
   const anders = kopie('export const x = 1;\n');
   const ra = starte(anders);
-  ist('regeln.mjs mit anderer Schnittstelle: Exit 1, nennt das Fehlende', [ra.status, ra.stdout, ra.stderr.includes('pruefeBash, pruefeInhalt, AUSWEGE')], [1, '', true]);
+  ist('regeln.mjs mit anderer Schnittstelle: Exit 1, nennt das Fehlende', [ra.status, ra.stdout, ra.stderr.includes('pruefeBash, pruefeInhalt, pruefePfad, AUSWEGE')], [1, '', true]);
   const gutDir = kopie(GUT_QUELLE);
   const rg = starte(gutDir);
   ist('regeln.mjs mit passendem Modul: Exit 0, Bericht auf stdout, stderr leer', [rg.status, rg.stdout.trimEnd().split('\n').at(-1), rg.stderr], [0, 'Messung: alle 6 Regeln wie erwartet.', '']);
@@ -541,7 +685,7 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
   ist('regeln.mjs mit abweichendem Modul: Exit 3, Bericht UND ABWEICHUNG in der letzten Zeile', [rb.status, rb.stdout.includes('Leitplanken von luxe-codex'), rb.stdout.trimEnd().split('\n').at(-1).startsWith('ABWEICHUNG (')], [3, true, true]);
   const rarg = starte(gutDir, ['x']);
   ist('regeln.mjs mit Argument: Exit 2 und kein Bericht', [rarg.status, rarg.stdout, rarg.stderr.includes('keine Argumente')], [2, '', true]);
-  const werfend = kopie("export const AUSWEGE = []; export const pruefeBash = () => { throw new Error('boom'); }; export const pruefeInhalt = () => { throw new Error('boom'); };\n");
+  const werfend = kopie("export const AUSWEGE = []; export const pruefeBash = () => { throw new Error('boom'); }; export const pruefeInhalt = () => { throw new Error('boom'); }; export const pruefePfad = () => { throw new Error('boom'); };\n");
   const rw = starte(werfend);
   ist('regeln.mjs mit werfendem Modul: kein Absturz, Exit 3 mit Abweichungen', [rw.status, rw.stdout.includes('die Prüfung wirft eine Ausnahme (boom)')], [3, true]);
   for (const d of [fehlt, kaputt, anders, gutDir, abwDir, werfend]) rmSync(d, { recursive: true, force: true });
@@ -556,7 +700,7 @@ const mutiere = (von, nach) => { if (!GUT_QUELLE.includes(von)) throw new Error(
   }
   // Der Befehl aus dem Skill lieferbar, wörtlich, mit dem Heredoc: Liste kommt heraus.
   const dir = tmp();
-  const r = bash([bloecke.lieferbar[0][0].replace('<Skill-Ordner>', join(SKILLS, 'lieferbar')), 'eins-111, zwei-222', 'LUXE_ENDE_7K3Q'].join('\n'), dir);
+  const r = bash([bloecke.lieferbar[0][0].replace('<Skill-Ordner>', join(SKILLS, 'lieferbar')).replaceAll('<Endwort>', 'LUXE_ENDE_ABCDEF123456'), 'eins-111, zwei-222', 'LUXE_ENDE_ABCDEF123456'].join('\n'), dir);
   ist('Befehl aus dem Skill lieferbar, wörtlich ausgeführt: die geprüfte Liste', [r.status, r.stdout], [0, 'eins-111,zwei-222\n']);
   rmSync(dir, { recursive: true, force: true });
 }

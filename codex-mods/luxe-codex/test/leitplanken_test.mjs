@@ -1,7 +1,8 @@
 /**
  * Test der Leitplanken: Regeln (Port des Claude-Mods, jede in BEIDE Richtungen), Formen der Werkzeugeingabe
  * (Shell als Text und als Liste, Patch, Dateischreiben, JavaScript des Code-Modus, mehrere Werkzeugnamen),
- * Zustand der Trockenläufe (kaputt, parallel, sicherer Dateiname) und der Hook als echter Prozess.
+ * Zustand der Trockenläufe (kaputt, parallel, sicherer Dateiname) und der Hook als echter Prozess. Abschnitt 9 hält die 23 Funde
+ * der unabhängigen Prüfung fest (F1 bis F23): jeder zuerst als fehlschlagender Test, dann behoben.
  * Jede Hook-Ausgabe wird gegen das Schema aus der Codex-Binärdatei geprüft (test/schemas), jede nachgespielte
  * Eingabe ebenfalls. Die Zusammenfassung steht am ENDE (fertig()).
  *
@@ -13,7 +14,7 @@ import { tmpdir } from 'node:os';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { eingabe, fertig, gueltig, ist } from './kern.mjs';
-import { AUSWEGE, GEHEIMNISSE, ohneText, ohneTextAusserPfaden, pruefeBash, pruefeInhalt, pruefePfad, umgebungsAnteile } from '../lib/regeln.mjs';
+import { AUSWEGE, GEHEIMNISSE, analysiere, erbeText, pruefeBash, pruefeInhalt, pruefePfad, zerlege } from '../lib/regeln.mjs';
 import { befehlAusListe, entpacke, heredocTexte, liesJs, liesPatch, ziehePruefgut } from '../lib/eingabe_form.mjs';
 import { leseTrocken, merkeTrocken, sitzungsName, trockenDatei } from '../lib/trockenlauf.mjs';
 import { PRAEFIX, leitplanken } from '../hooks/leitplanken.mjs';
@@ -105,13 +106,28 @@ ist('trocken darf auch ein Set sein', urteil(LIVE_SEO, new Set(['automation/seo-
 ist('git -C ohne Wert und git -c mit Wert', [verbietet('git -C push --force'), verbietet('git -c a=b push --force'), verbietet('git -C /r -c a=b push -f')], [false, true, true]);
 ist('Reihenfolge der Regeln: Force-Push vor LIVE', grundZu('git push -f && LIVE=1 node automation/x.mjs').includes('Force-Push'), true);
 
-// ohneText: Zitate und Heredocs unsichtbar
-ist('ohneText blendet Anführungszeichen aus', [ohneText('git commit -m "kein git push --force mehr"'), ohneText("echo 'git add -A'")], ['git commit -m ""', "echo ''"]);
-ist('ohneText blendet Heredoc-Körper aus', ohneText("cat <<'EOF'\nkein git push --force\nEOF\necho fertig").includes('push'), false);
-ist('ohneText: maskiertes Anführungszeichen im Zitat bleibt im Zitat', ohneText('echo "a \\" git push -f" ; ls'), 'echo "" ; ls');
-ist('ohneText verträgt undefined', ohneText(undefined), '');
-ist('ohneTextAusserPfaden: ein Wort bleibt sichtbar, Sätze nicht', [ohneTextAusserPfaden('touch "a/b"'), ohneTextAusserPfaden('git commit -m "a b"')], ['touch  a/b ', 'git commit -m ""']);
-ist('umgebungsAnteile: LIVE nur ausserhalb von Zitaten, Auswege überall', [umgebungsAnteile('LIVE=1 LUXE_FORCE_OK=1 bash -c "x"'), umgebungsAnteile('git commit -m "LIVE=1"'), umgebungsAnteile('ls')], [['LIVE=1', 'LUXE_FORCE_OK=1'], [], []]);
+// zerlege: Wörter ohne Anführungszeichen, Teilbefehle, Umleitungen, Heredocs (der Zerleger ersetzt die alte Textmaske)
+const woerter = b => zerlege(b).filter(e => typeof e !== 'string').map(e => e.w.map(x => x.v));
+const teilbefehle = b => zerlege(b).map(e => (typeof e === 'string' ? e : e.w.map(x => x.v).join(' ')));
+ist('zerlege: Anführungszeichen und Maskierung fallen aus den Wörtern', woerter('git commit -m "kein git push --force mehr" \'a b\' c\\ d "x\\"y" ""'), [['git', 'commit', '-m', 'kein git push --force mehr', 'a b', 'c d', 'x"y', '']]);
+ist('zerlege: Teilbefehle an ; && || | & und Zeilenumbruch', woerter('a;b && c || d | e & f\ng'), [['a'], ['b'], ['c'], ['d'], ['e'], ['f'], ['g']]);
+ist('zerlege: Kommentar bis zum Zeilenende, # mitten im Wort nicht', woerter("echo a#b # nicht\nls 'x'"), [['echo', 'a#b'], ['ls', 'x']]);
+ist('zerlege: Zeilenfortsetzung verbindet, auch mitten im Wort', woerter('git pu\\\nsh \\\n  --force'), [['git', 'push', '--force']]);
+ist('zerlege: Anführungszeichen schützen Trenner und Kommentarzeichen', woerter('echo "a; b | c # d" \'e && f\''), [['echo', 'a; b | c # d', 'e && f']]);
+ist('zerlege: $(…) und Rückticks sind eigene Teilbefehle zwischen Klammermarken', teilbefehle('x=$(pkill y); echo `ls`'), ['(', 'pkill y', ')', 'x=X', '(', 'ls', ')', 'echo X']);
+ist('zerlege: Rückticks in doppelten Anführungszeichen sind Befehle, maskierte nicht', [teilbefehle('echo "a `pkill x` b"'), teilbefehle('echo "a \\`pkill x\\` b"')], [['(', 'pkill x', ')', 'echo a X b'], ['echo a `pkill x` b']]);
+ist('zerlege: $(…) in doppelten Anführungszeichen wird gelesen, in einfachen nicht', [teilbefehle('echo "$(pkill a)"'), teilbefehle("echo '$(pkill a)'")], [['(', 'pkill a', ')', 'echo X'], ["echo $(pkill a)"]]);
+{
+  const e = zerlege("cat > a.txt <<'END-X' 2>&1\nzeile 1\nEND-X\nls")[0];
+  ist('zerlege: Umleitungen und Heredoc-Körper gehören zum Teilbefehl, die Nummer vor > fällt weg', [e.w.map(x => x.v), e.umleit.map(u => [u.op, u.ziel.v]), e.heredocs.map(h => [h.koerper, h.zitiert, h.vollstaendig])], [['cat'], [['>', 'a.txt'], ['>&', '1']], [['zeile 1', true, true]]]);
+  ist('zerlege: der Befehl nach der Endzeile ist wieder ein eigener Teilbefehl', woerter("cat <<EOF\nx\nEOF\nls"), [['cat'], ['ls']]);
+}
+ist('zerlege: Pipe-Marken', zerlege('a | b || c').filter(e => typeof e !== 'string').map(e => [e.pipeIn, e.pipeOut]), [[false, true], [true, false], [false, false]]);
+ist('zerlege: offenes Zitat — der Rest ist Wortinhalt UND wird zusätzlich als Befehl gelesen (nichts bleibt verdeckt)', [teilbefehle('bash -c "git push -f'), teilbefehle("echo 'pkill x")], [['git push -f', 'bash -c git push -f'], ['pkill x', "echo pkill x"]]);
+ist('zerlege: Wörter mit Zuweisung', zerlege('A=1 B="2 3" cmd').filter(e => typeof e !== 'string')[0].w.map(x => [x.v, x.zuw]), [['A=1', 'A'], ['B=2 3', 'B'], ['cmd', undefined]]);
+ist('zerlege verträgt undefined, leer und kaputtes', [zerlege(undefined), zerlege(''), zerlege('((( ))) ``` <<<  \\').length >= 0], [[], [], true]);
+const erbe = b => analysiere(b).map(erbeText);
+ist('erbeText: je Teilbefehl, LIVE=1 zuerst dann die Auswege; Zitate und blosse Wörter zählen nicht', [erbe('LIVE=1 LUXE_FORCE_OK=1 bash -c "x"'), erbe('git commit -m "LIVE=1"'), erbe('ls'), erbe('LIVE=1 ls; ls'), erbe('export LIVE=1; ls'), erbe('echo LIVE=1; ls'), erbe('LUXE_KILL_OK=1 LUXE_ADD_OK=1 LIVE=1 ls')], [['LIVE=1 LUXE_FORCE_OK=1'], [''], [''], ['LIVE=1', ''], ['', 'LIVE=1'], ['', ''], ['LIVE=1 LUXE_KILL_OK=1 LUXE_ADD_OK=1']]);
 ist('Auswege sind genau vier', AUSWEGE, ['LUXE_FORCE_OK', 'LUXE_KILL_OK', 'LUXE_ADD_OK', 'LUXE_LIVE_OK']);
 
 // ================================================================ 2. Geheimnisse
@@ -625,6 +641,7 @@ for (const [name, quelle] of [['Division', 'const q = 10 / 2 / 5; await tools.ex
 mitGrund('F4 LIVE=1 auf dem zweiten Skript, nur das erste gesehen', ['ls automation/seen.mjs && LIVE=1 node automation/b.mjs', 'node automation/seen.mjs; LIVE=1 node automation/b.mjs', 'cd automation && LIVE=1 node b.mjs', 'LIVE=1 node "automation/b.mjs"', "LIVE=1 node 'automation/b.mjs'"], 'automation/b.mjs', ['automation/seen.mjs']);
 ist('F4 cd, cd .., cd dropship: das Skript trägt das Verzeichnis dropship/', grundGanz('cd automation; cd ..; cd dropship && LIVE=1 node b.mjs', []).includes('dropship/b.mjs'), true);
 frei('F4 gleiche Skripte mit Trockenlauf sind frei', ['cd automation && LIVE=1 node b.mjs', 'LIVE=1 node "automation/b.mjs"', "LIVE=1 node 'automation/b.mjs'", '(cd automation && LIVE=1 node b.mjs)'], ['automation/b.mjs']);
+ist('F4 cd über mehrere Ebenen und absolut: das Verzeichnis wird zusammengesetzt', [grundGanz('cd workers && cd shop-brain && LIVE=1 node seed.mjs', []).includes('workers/shop-brain/seed.mjs'), grundGanz('cd /home/u/repo && cd automation && LIVE=1 node b.mjs', []).includes('für automation/b.mjs'), grundGanz('cd workers; cd /abs/andere; LIVE=1 node x.mjs', []).includes('abs/andere/x.mjs')], [true, true, true]);
 ist('F4 cd in Klammern wirkt nicht nach aussen', urteil('(cd automation && node a.mjs); node a.mjs'), { merke: 'automation/a.mjs', weitere: ['a.mjs'] });
 mitGrund('F15 mehrere Skripte in einer Kette: jedes eigene LIVE', ['LIVE=1 node automation/a.mjs && LIVE=1 node automation/b.mjs', 'node automation/a.mjs --prep && LIVE=1 node automation/b.mjs', 'for s in automation/a.mjs automation/b.mjs; do LIVE=1 node $s; done', 's=automation/b.mjs; LIVE=1 node $s'], 'automation/b.mjs', ['automation/a.mjs']);
 ist('F15 nur b gesehen: a läuft nicht scharf, also keine Sperre wegen a (alt: falsche Begründung), a wird gemerkt', urteil('node automation/a.mjs && LIVE=1 node automation/b.mjs', ['automation/b.mjs']), { merke: 'automation/a.mjs' });
@@ -667,7 +684,7 @@ frei('F8 echte Auswege', ['LUXE_FORCE_OK=1 git push --force origin x', 'export L
 
 // ---- F9/F13 gebündelte Kurzoptionen
 mitGrund('F9/F13 Force-Push mit gebündelten Kurzoptionen', ['git push -fu origin x', 'git push -uf origin x', 'git push -vf origin x', 'git push -qf origin x', 'git push -nf origin x', 'git push -fq origin x', 'git push -u -f origin x', 'git push origin x -fu'], 'Force-Push');
-frei('F9/F13 Push ohne f in den Kurzoptionen', ['git push -u origin x', 'git push -vu origin x', 'git push -o ci.skip origin x', 'git push -ofoo origin x', 'git push -4 origin x', 'git push -n origin x', 'git push origin x --follow-tags -u']);
+frei('F9/F13 Push ohne f in den Kurzoptionen', ['git push -u origin x', 'git push -vu origin x', 'git push -o ci.skip origin x', 'git push -ofoo origin x', 'git push -4 origin x', 'git push -n origin x', 'git push origin x --follow-tags -u', 'git push -o -f origin x', 'git push -o +x origin x']);
 mitGrund('F13 git add mit gebündelten Kurzoptionen', ['git add -vA', 'git add -Av', 'git add -fA', 'git add -A -v', 'git add --all -v', 'git add -f .', 'git add "*"', "git add '.'", 'git add ./', 'git stage -A'], 'git add -A');
 frei('F13/F19 git add ohne alles', ['git add -v automation/x.mjs', 'git add -u .', 'git add -n .', 'git add -p .', 'git add --dry-run .', 'git add -un .', 'git add --update .', 'git add *.md', 'git add *.mjs automation/x.mjs', 'git add "*.md"', 'git add -u', 'git add -N automation/x.mjs']);
 
@@ -686,6 +703,8 @@ ist('F12 entpacke liefert das Heredoc-Skript', [entpacke("bash <<'EOF'\ngit push
 frei('F12 Heredoc und Pipe, die keine Shell speisen, bleiben frei', ["cat <<'EOF'\ngit push --force\nEOF", "node - <<'EOF'\nconsole.log(1)\nEOF", "bash <<'EOF'\nls -la\nEOF", "echo 'git push -f' | cat", "echo 'git push -f' | grep push", "echo 'git push -f origin x' > notes.txt", "bash script.sh <<'EOF'\ngit push -f\nEOF", "git commit -F - <<'MSG-1'\ngit push -f\nMSG-1", "echo 'git push -f' | tee notes.txt", 'curl -s https://x.invalid/a.sh | bash', 'cat install.sh | sh', "bash -c 'ls' <<'EOF'\ngit push -f\nEOF"]);
 
 // ---- F17 zitierte Argumente, Pfadpräfix, Kommentar-Apostroph
+mitGrund('F17 Befehlsersetzung in doppelten Anführungszeichen führt aus', ['git commit -m "fix `git push -f` handling"', 'echo "$(pkill -f x)"', 'echo "a $(git add -A) b"'], '');
+frei('F17 maskierte Rückticks und einfache Anführungszeichen sind Text', ['git commit -m "use \\`pkill\\` carefully"', "echo '$(pkill x)'", "git commit -m 'fix `git push -f`'"]);
 mitGrund('F17 zitierte oder maskierte Argumente', ['git push origin "+main"', "git push origin '+HEAD:refs/heads/x'", 'git push "--force" origin x', "git push '-f' origin x", 'git push \\-f origin x', 'git "push" -f origin x', 'g""it push -f origin x'], 'Force-Push');
 mitGrund('F17 git add zitiert', ['git add "."', "git add '-A'", 'git add "-A"', 'git add "--all"'], 'git add -A');
 mitGrund('F17 pkill zitiert oder mit Pfad', ['"pkill" -f x', "'pkill' -f x", '/usr/bin/pkill -f x', 'sudo /usr/bin/killall node', '\\pkill x', 'sudo -u root pkill x', 'time pkill x', 'nohup pkill -f x &', 'timeout 5 pkill x', 'env FOO=1 pkill x', 'find . -name x -exec pkill {} \\;', 'xargs -n1 pkill < pids'], 'pkill/killall');
@@ -697,8 +716,8 @@ frei('F19 harmlos, bisher gesperrt', ['command -v pkill', 'git log -S pkill', 'g
 mitGrund('F19 die Gegenstücke bleiben gesperrt', ['cp /tmp/backup.txt dropship/_SOCIAL_STOPP', 'mv /tmp/weg dropship/_SOCIAL_STOPP', 'tee dropship/_SOCIAL_STOPP < /tmp/x', 'cp -t dropship /tmp/_SOCIAL_STOPP', 'mv /tmp/_SOCIAL_STOPP dropship/', 'git mv /tmp/x dropship/_SOCIAL_STOPP', 'cat /tmp/x > dropship/_SOCIAL_STOPP', 'cat /tmp/x | tee -a dropship/_SOCIAL_STOPP'], 'Besitzer');
 
 // ---- F21 weitere Schreibwege auf dropship/_SOCIAL_STOPP
-mitGrund('F21 weitere Schreibwege (Shell)', ['truncate -s 0 dropship/_SOCIAL_STOPP', 'dd if=/dev/null of=dropship/_SOCIAL_STOPP', 'curl -o dropship/_SOCIAL_STOPP http://x', 'curl --output dropship/_SOCIAL_STOPP http://x', 'curl -sSLo dropship/_SOCIAL_STOPP http://x', 'wget -O dropship/_SOCIAL_STOPP http://x', 'wget --output-document=dropship/_SOCIAL_STOPP http://x', 'rsync -a a dropship/_SOCIAL_STOPP', `python3 -c "open('dropship/_SOCIAL_STOPP','w')"`, `node -e "require('fs').writeFileSync('dropship/_SOCIAL_STOPP','')"`, 'install -m 644 a dropship/_SOCIAL_STOPP', 'ln -s a dropship/_SOCIAL_STOPP', 'sudo tee dropship/_SOCIAL_STOPP', ': > dropship/_SOCIAL_STOPP', 'exec 3> dropship/_SOCIAL_STOPP', 'printf x |tee -a dropship/_SOCIAL_STOPP', `perl -e 'open(F, ">dropship/_SOCIAL_STOPP")'`, 'echo x &> dropship/_SOCIAL_STOPP', 'echo x >| dropship/_SOCIAL_STOPP'], 'Besitzer');
-frei('F21 Lesen und Schreiben anderswo bleibt frei', [`python3 -c "print(open('dropship/_SOCIAL_STOPP').read())"`, 'curl -o /tmp/x http://x', 'dd if=dropship/_SOCIAL_STOPP of=/tmp/x', 'rsync -a dropship/_SOCIAL_STOPP /tmp/', 'truncate -s 0 /tmp/x', 'wget -O /tmp/x http://x', 'ln -s dropship/_SOCIAL_STOPP /tmp/link', 'install -m 644 dropship/_SOCIAL_STOPP /tmp/x', `node -e "console.log(require('fs').readFileSync('dropship/_SOCIAL_STOPP','utf8'))"`, 'echo x 2>&1', 'echo x >&2', 'ls > /tmp/liste']);
+mitGrund('F21 weitere Schreibwege (Shell)', ['truncate -s 0 dropship/_SOCIAL_STOPP', 'dd if=/dev/null of=dropship/_SOCIAL_STOPP', 'curl -o dropship/_SOCIAL_STOPP http://x', 'curl --output dropship/_SOCIAL_STOPP http://x', 'curl -sSLo dropship/_SOCIAL_STOPP http://x', 'wget -O dropship/_SOCIAL_STOPP http://x', 'wget --output-document=dropship/_SOCIAL_STOPP http://x', 'rsync -a a dropship/_SOCIAL_STOPP', `python3 -c "open('dropship/_SOCIAL_STOPP','w')"`, `node -e "require('fs').writeFileSync('dropship/_SOCIAL_STOPP','')"`, 'install -m 644 a dropship/_SOCIAL_STOPP', 'ln -s a dropship/_SOCIAL_STOPP', 'sudo tee dropship/_SOCIAL_STOPP', ': > dropship/_SOCIAL_STOPP', 'exec 3> dropship/_SOCIAL_STOPP', 'printf x |tee -a dropship/_SOCIAL_STOPP', `perl -e 'open(F, ">dropship/_SOCIAL_STOPP")'`, 'echo x &> dropship/_SOCIAL_STOPP', 'echo x >| dropship/_SOCIAL_STOPP', 'New-Item -ItemType File -Path dropship\\_SOCIAL_STOPP', 'Set-Content dropship\\_SOCIAL_STOPP x', 'ni dropship/_SOCIAL_STOPP', 'Copy-Item a.txt dropship\\_SOCIAL_STOPP', "'x' | Out-File dropship\\_SOCIAL_STOPP", 'echo x > dropship\\_SOCIAL_STOPP', 'Add-Content -Path dropship\\_SOCIAL_STOPP -Value x', 'find . -name x -exec touch dropship/_SOCIAL_STOPP \;', 'ssh host touch dropship/_SOCIAL_STOPP', 'docker exec c cp a dropship/_SOCIAL_STOPP', 'watch -n1 touch dropship/_SOCIAL_STOPP', 'xargs -I{} cp {} dropship/_SOCIAL_STOPP < liste'], 'Besitzer');
+frei('F21 Lesen und Schreiben anderswo bleibt frei', [`python3 -c "print(open('dropship/_SOCIAL_STOPP').read())"`, 'curl -o /tmp/x http://x', 'dd if=dropship/_SOCIAL_STOPP of=/tmp/x', 'rsync -a dropship/_SOCIAL_STOPP /tmp/', 'truncate -s 0 /tmp/x', 'wget -O /tmp/x http://x', 'ln -s dropship/_SOCIAL_STOPP /tmp/link', 'install -m 644 dropship/_SOCIAL_STOPP /tmp/x', `node -e "console.log(require('fs').readFileSync('dropship/_SOCIAL_STOPP','utf8'))"`, 'echo x 2>&1', 'echo x >&2', 'ls > /tmp/liste', 'Get-Content dropship\\_SOCIAL_STOPP', 'Remove-Item dropship\\_SOCIAL_STOPP', 'Copy-Item dropship\\_SOCIAL_STOPP C:\\tmp\\x', 'Move-Item dropship\\_SOCIAL_STOPP C:\\tmp\\x', 'git log --grep touch dropship/_SOCIAL_STOPP', 'grep touch dropship/_SOCIAL_STOPP', 'ssh host cat dropship/_SOCIAL_STOPP', 'find . -name _SOCIAL_STOPP -exec rm {} \;', 'find dropship -name _SOCIAL_STOPP', 'docker exec c cp dropship/_SOCIAL_STOPP /tmp/x']);
 {
   const JS_SOCIAL = ['fs.writeFileSync("dropship/_SOCIAL_STOPP", new Date().toISOString())', 'fs.writeFileSync("dropship/_SOCIAL_STOPP", JSON.stringify({a:1}))', 'fs.copyFileSync("a.txt", "dropship/_SOCIAL_STOPP")', 'fs.closeSync(fs.openSync("dropship/_SOCIAL_STOPP","w"))', 'fs.renameSync("a", "dropship/_SOCIAL_STOPP")', 'fs.createWriteStream("dropship/_SOCIAL_STOPP")', 'fs.symlinkSync("a", "dropship/_SOCIAL_STOPP")', 'await fs.promises.writeFile("dropship/_SOCIAL_STOPP", String(Date.now()))', 'fs.appendFileSync("dropship/_SOCIAL_STOPP", x)', 'fs.truncateSync("dropship/_SOCIAL_STOPP")', 'await fs.promises.copyFile("a", "dropship/_SOCIAL_STOPP")', 'fs.linkSync("a", "dropship/_SOCIAL_STOPP")', 'const p = "dropship/_SOCIAL_STOPP"; fs.writeFileSync(p, Date.now().toString())'];
   for (const q of JS_SOCIAL) {
@@ -769,6 +788,10 @@ await erlaubt('F23 Schleife über harmlose Befehle', 'exec', 'for (const c of ["
   await verboten('F5 Patch mit Windows-Zeilenenden im Feld input', 'apply_patch', { input: CRLF }, '_SOCIAL_STOPP');
   await verboten('F5 Geheimnis in Patch mit Windows-Zeilenenden', 'apply_patch', { patch: `*** Begin Patch\r\n*** Add File: a.mjs\r\n+t = "${S.shopify}"\r\n*** End Patch\r\n` }, 'Shopify');
   ist('F5 liesPatch-Pfade: CRLF-Patch über ziehePruefgut', ziehePruefgut(CRLF).pfade, ['dropship/_SOCIAL_STOPP']);
+  await verboten('F5 CRLF-Patch als Argument von apply_patch (Liste)', 'shell', { command: ['apply_patch', CRLF] }, '_SOCIAL_STOPP');
+  await verboten('F5 CRLF-Patch als Literal im JavaScript', 'exec', 'await tools.apply_patch("*** Begin Patch\\r\\n*** Add File: dropship/_SOCIAL_STOPP\\r\\n+x\\r\\n*** End Patch\\r\\n")', '_SOCIAL_STOPP');
+  await verboten('F5 CRLF-Patch in einem fremden Feld', 'mcp__x__patch', { x: { y: CRLF } }, '_SOCIAL_STOPP');
+  await verboten('F5 CRLF-Patch im Heredoc von apply_patch', 'exec_command', { cmd: `apply_patch <<'EOF'\r\n${CRLF}EOF\r\n` }, '_SOCIAL_STOPP');
   await verboten('F5 Zeilenkommentar mit Apostroph vor dem Aufruf', 'exec', "// don't panic\nawait tools.exec_command({ cmd: \"git push --force origin x\" })", 'Force-Push');
   for (const k of ['command', 'cmd', 'script', 'argv', 'command_line', 'commandline', 'shell_command', 'chars']) {
     ist(`F5 Befehlsfeld ${k} (Text und Liste)`, [ziehePruefgut({ [k]: 'git push --force' }).befehle, ziehePruefgut({ [k]: ['git', 'push', '--force'] }).befehle], [['git push --force'], ['git push --force']]);
@@ -781,6 +804,7 @@ await erlaubt('F23 Schleife über harmlose Befehle', 'exec', 'for (const c of ["
   }
   for (const k of ['old_string', 'old_str', 'old_text', 'old_content']) {
     ist(`F5 altes Feld ${k} wird nie geprüft`, [ziehePruefgut({ path: 'a.txt', [k]: `t="${S.shopify}"`, new_string: 'NEU' }).texte.map(t => t.text), (await lauf('Edit', { path: 'a.txt', [k]: `t="${S.shopify}"`, new_string: 'NEU' })).aus], [['NEU'], undefined]);
+    ist(`F5 altes Feld ${k} wird auch als Objekt nie geprüft`, [ziehePruefgut({ path: 'a.txt', [k]: { content: `t="${S.shopify}"` }, new_string: 'NEU' }).texte.map(t => t.text), (await lauf('Edit', { path: 'a.txt', [k]: { content: `t="${S.shopify}"` }, new_string: 'NEU' })).aus], [['NEU'], undefined]);
   }
   for (const k of ['input', 'code', 'source', 'js', 'javascript', 'patch', 'diff', 'program']) {
     ist(`F5 Eingabefeld ${k}: JavaScript und Patch`, [ziehePruefgut({ [k]: 'await tools.exec_command({ cmd: "pkill x" })' }).befehle, ziehePruefgut({ [k]: patch('*** Add File: dropship/_SOCIAL_STOPP', '+x') }).pfade], [['pkill x'], ['dropship/_SOCIAL_STOPP']]);
@@ -806,7 +830,7 @@ await erlaubt('F23 Schleife über harmlose Befehle', 'exec', 'for (const c of ["
 }
 
 // ---- F10 Start des Hooks über einen Symlink (Codex könnte den Hook so aufrufen): realpathSync muss greifen
-{
+if (process.platform !== 'win32') {
   const ordner = neuerOrdner();
   const link = join(ordner, 'hook-link.mjs');
   symlinkSync(HOOK, link);
@@ -847,7 +871,7 @@ for (const d of [30, 60, 400]) {
     '; x40000, dann Force-Push': "'a;'.repeat(40000) + 'git push --force origin main'",
     'Force-Push, dann <<A x40000': "'git push --force origin main\\n' + '<<A\\n'.repeat(40000)",
     'node -e mit 30 KB Zuweisungen': "'node -e ' + 'a=1;b=2;c=3;'.repeat(2500) + '; git push -f'",
-    'Heredoc ohne Ende, 8000 Leerzeilen': "'cat <<EOF\\n' + '\\n'.repeat(8000) + '; git push -f'",
+    'Force-Push, dann Heredoc ohne Ende mit 8000 Leerzeilen': "'git push -f\\ncat <<EOF\\n' + '\\n'.repeat(8000)",
     '$( x20000 ungeschlossen, dann pkill': "'echo $('.repeat(20000) + '; pkill x'",
     '"-Zeichen x20001 (das letzte bleibt offen)': "'echo \"'.repeat(20001) + '; git push -f'",
   };

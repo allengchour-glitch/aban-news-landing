@@ -23,4 +23,6 @@ Der Git-Stand dieses Repos auf einen Blick. Nur lesen: kein `add`, `commit`, `ch
 
 - Meldet ein Befehl einen Fehler (Exit ungleich 0, zum Beispiel «not a git repository»), den Fehler wörtlich nennen und den anderen Befehl trotzdem zeigen. Nie «sauber» sagen, wenn der Status nicht gelesen werden konnte.
 - «Keine offenen Änderungen» nur sagen, wenn `git status -sb` mit Exit 0 endete und nach der Branch-Zeile nichts kam. Ein Fehler und eine leere Antwort sind nicht dasselbe.
+- Der Abstand zu origin gilt nur für den Stand der letzten Abholung. Dieser Skill holt nichts ab (kein `git fetch`, er liest nur): was inzwischen auf origin dazukam, steht nicht darin, und der Hetzner-Agent und parallele Sitzungen pushen laufend. Darum «Abstand zum zuletzt abgeholten origin» sagen, nie «auf Stand» oder «aktuell».
+- Steht in der Branch-Zeile kein `...origin/…` (zum Beispiel «## lokal», ein Branch ohne Upstream), gibt es keinen Abstand zu nennen: genau das sagen, nichts erraten.
 - Der Stand ist eine Momentaufnahme: parallele Sitzungen können ihn inzwischen geändert haben. Das einmal erwähnen, wenn der Besitzer daraus etwas entscheiden will.

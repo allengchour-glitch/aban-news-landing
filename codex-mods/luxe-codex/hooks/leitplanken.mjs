@@ -40,7 +40,7 @@ export async function leitplanken(eingabe, env = process.env) {
     const u = pruefeBash(b, trocken);
     const nein = gesperrt(u);
     if (nein) return nein;
-    if (u && typeof u.merke === 'string') neu.push(u.merke);
+    if (u && typeof u.merke === 'string') neu.push(u.merke, ...(Array.isArray(u.weitere) ? u.weitere.filter(x => typeof x === 'string') : []));
   }
   for (const p of gut.pfade) {
     const nein = gesperrt(pruefePfad(p));
