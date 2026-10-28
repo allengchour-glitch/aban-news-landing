@@ -867,8 +867,8 @@ const loeschAufrufe = (shop) => shop.aufrufe.filter((a) => a.name === 'productOp
 
 
 // ───────────────────────────────────────────────────────── 28. Runde 4 (28.10.2026): Optionen werden über `optionValues { id name hasVariants }` gelesen, NIE über `ProductOption.values`
-// Der unabhängige Prüfer der Runde 3 fand: die Attrappe lieferte Werte OHNE Variante in `values`, Shopify tut das laut Schema nicht («including values not assigned to any variants» steht NUR bei optionValues; nicht live gemessen).
-// Ein liegengebliebener leerer Wert war für die Wiederaufnahme darum unsichtbar (sie legte ihn neu an und endete mit einem userError, Exit 1, statt mit Exit 0/4; der Fehlercode ist nicht gemessen).
+// Der unabhängige Prüfer der Runde 3 fand: die Attrappe lieferte Werte OHNE Variante in `values`, Shopify tut das nicht («including values not assigned to any variants» steht NUR bei optionValues; live gemessen am 28.10.2026, Wegwerf-Probe Schritt B).
+// Ein liegengebliebener leerer Wert war für die Wiederaufnahme darum unsichtbar (sie legte ihn neu an und endete mit einem userError, Exit 1, statt mit Exit 0/4; der Fehlercode ist `OPTION_VALUE_ALREADY_EXISTS`, gemessen am 28.10.2026).
 const VALUES_ABFRAGE = 'query($h:String!){ productByIdentifier(identifier:{handle:$h}){ options{ id name values optionValues{ id name hasVariants } } } }';   // nur für Tests der Attrappe: fragt AUSDRÜCKLICH auch `values`
 { // 28a: die Attrappe verhält sich nach Schema und Doku wie Shopify (Selbsttest)
   const shop = neuerShop(paket.bestand); const p = shop.produkte.get(HANDLES.poster);
@@ -880,12 +880,12 @@ const VALUES_ABFRAGE = 'query($h:String!){ productByIdentifier(identifier:{handl
   ist('Attrappe: die Antwort enthält nur die verlangten Felder (Q_PRODUKT: id, name, position, optionValues – KEIN values)', [Object.keys(shop.lies(HANDLES.poster, Q_PRODUKT).options[0]).sort(), Object.keys(shop.lies(HANDLES.poster, Q_PRODUKT).options[0].optionValues[0]).sort()], [['id', 'name', 'optionValues', 'position'], ['hasVariants', 'id', 'name']]);
   ist('Attrappe: BESTAND_Q liefert dieselben Felder', Object.keys(shop.lies(HANDLES.poster, BESTAND_Q).options[0]).sort(), ['id', 'name', 'optionValues', 'position']);
   const dopp = await shop.gql(M_OPTION_WERTE, { pid: p.id, opt: { id: 'gid://shopify/ProductOption/hand' }, add: [{ name: 'Holz' }] });
-  ist('Attrappe: einen schon vorhandenen Optionswert (auch einen ohne Variante) noch einmal anlegen → userError; die Attrappe nennt OPTION_VALUE_ALREADY_EXISTS (Annahme nach Schema, nicht gemessen)', dopp.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_ALREADY_EXISTS']);
+  ist('Attrappe: einen schon vorhandenen Optionswert (auch einen ohne Variante) noch einmal anlegen → userError; die Attrappe nennt OPTION_VALUE_ALREADY_EXISTS (wie Shopify, gemessen am 28.10.2026)', dopp.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_ALREADY_EXISTS']);
   const holzVar = [{ optionValues: [{ optionName: 'Material', name: 'Holz' }, { optionName: 'Grösse', name: p.options[1].values[0] }], price: '9.90', inventoryPolicy: 'CONTINUE', inventoryItem: { sku: 'T_1', tracked: false, requiresShipping: true } }];
   const nVar = await shop.gql(M_VARIANTEN, { pid: p.id, vs: holzVar });
   ist('Attrappe: productVariantsBulkCreate setzt hasVariants des Werts auf true, und values nennt ihn danach', [nVar.data.productVariantsBulkCreate.userErrors, mat().optionValues.map((v) => [v.name, v.hasVariants]), mat().values], [[], [['Poster matt', true], ['Holz', true]], ['Poster matt', 'Holz']]);
   const loesch = await shop.gql(M_OPTION_WERTE_LOESCHEN, { pid: p.id, opt: { id: 'gid://shopify/ProductOption/hand' }, del: [mat().optionValues[1].id] });
-  ist('Attrappe: einen Wert MIT Variante löschen → die Attrappe lehnt ab und nennt OPTION_VALUE_HAS_VARIANTS (Annahme nach Schema, nicht gemessen; ob Shopify so ablehnt oder Varianten mitlöscht, klärt die Wegwerf-Probe, Schritt F2)', loesch.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_HAS_VARIANTS']);
+  ist('Attrappe: einen Wert MIT Variante löschen → die Attrappe lehnt ab und nennt OPTION_VALUE_HAS_VARIANTS (wie Shopify: gemessen am 28.10.2026, Wegwerf-Probe Schritt F2, es werden keine Varianten mitgelöscht)', loesch.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_HAS_VARIANTS']);
 }
 { // 28b: KEIN Lesepfad (Abfrage und Antworten der Schreibaufrufe) fragt ProductOption.values
   for (const [n, q] of [['Q_PRODUKT', Q_PRODUKT], ['BESTAND_Q', BESTAND_Q], ['M_OPTION', M_OPTION], ['M_OPTION_WERTE', M_OPTION_WERTE], ['M_OPTION_WERTE_LOESCHEN', M_OPTION_WERTE_LOESCHEN], ['M_REORDER', M_REORDER]]) {
@@ -1090,7 +1090,7 @@ wahr('NEUER_PLAN_HINWEIS: «Nichts geschrieben», DATEN=holen (Datenpaket auffri
   ist('fremdeOptionswerte: mit ausser: null wird auch «Material» geprüft', fremdeOptionswerte(pl, shopMit(['Material', ['A', 'Holz']]), { ausser: null }), ['Option «Material» im Shop hat Werte, die der Plan nicht kennt: «Holz» (Plan: A, B)']);
 }
 
-// Befund 3: der Schreibweg verlässt sich auf KEINEN Fehlercode von Shopify (welcher Code bei einem vorhandenen Namen kommt, ist nicht gemessen): jeder userError ist ein Fehler
+// Befund 3: der Schreibweg verlässt sich auf KEINEN Fehlercode von Shopify (bei einem vorhandenen Namen kommt OPTION_VALUE_ALREADY_EXISTS, gemessen am 28.10.2026): jeder userError ist ein Fehler
 for (const code of ['OPTION_VALUE_ALREADY_EXISTS', 'DUPLICATED_OPTION_VALUE', 'OPTION_VALUE_HAS_VARIANTS', 'IRGENDEIN_NEUER_CODE']) {
   let e; try { pruefeAntwort({ data: { productOptionUpdate: { userErrors: [{ code, message: 'm', field: ['option'] }] } } }, 'Optionswert', 'productOptionUpdate'); } catch (x) { e = x; }
   wahr(`pruefeAntwort: ein userError mit dem Code ${code} ist ein Fehler (kein Tageslimit, nicht überhört)`, e instanceof Error && !(e instanceof TageslimitFehler) && e.message.includes(code), String(e?.message));
