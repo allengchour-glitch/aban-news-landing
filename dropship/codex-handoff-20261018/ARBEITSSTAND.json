@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 1,
+  "updatedAt": "2026-10-28T22:52:28.185Z",
+  "timezone": "Europe/Zurich",
+  "purpose": "project_memory_not_execution_authority",
+  "coordinator": "claude",
+  "knowledgeState": "dated_index_requires_current_sources",
+  "repository": "allengchour-glitch/aban-news-landing",
+  "branch": "codex/luxestyle-claude-handoff-20261018",
+  "canonicalGuide": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+  "dailyLog": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+  "dailyReadPolicy": {
+    "timezone": "Europe/Zurich",
+    "checkLogBeforeReading": true,
+    "metricsFlowAndBroadSalesMaxPerDay": 1,
+    "exception": "new_concrete_finding_with_recorded_reason",
+    "currentDayEvidenceDate": "2026-10-28",
+    "currentDayEvidenceKind": "QUELLE",
+    "currentDayEvidence": "Tagesprotokoll belegt bereits erfolgte Kennzahl-/Flowabfragen; in diesem Installationslauf keine neuen solchen Abfragen."
+  },
+  "expectedIdentity": {
+    "shopDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "use": "expected_values_only_verify_fresh_before_action"
+  },
+  "existingAutomation": {
+    "id": "6ad336cc3a388191bc05642ef858af99",
+    "purpose": "existing_trigger_no_new_schedule",
+    "timezone": "Europe/Zurich"
+  },
+  "reviewPacket": {
+    "taskId": "luxe-zusammenarbeit-20261028",
+    "revision": 3,
+    "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r3.packet.json",
+    "sha256": "cc82f538f3340b1eadb9460389d4971eb2eb308e3bd26d17b9dcf2b6072a9402",
+    "gitBlobSha": "752fad93f56b378f353cb003aa1c50cd6c927c53",
+    "claudeReceipt": "unknown_requires_fresh_read"
+  },
+  "tasks": [
+    {
+      "id": "merchant-overlay-gray-15447560978817",
+      "priority": 10,
+      "priorityKind": "SETZUNG",
+      "state": "offen",
+      "title": "Graues Ladestationsbild ohne Zusatztext prüfen",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Graues Variantenbild mit Deep Space Gray; silberne Galerieaufnahme ist keine graue Ausführung. Tag rueckhol-0907 vorhanden.",
+      "nextAllowedStep": "Vorhandenen CJ-/Shopify-Helfer und tatsächliche Feed-Bildroute lesen; eine authentische graue Bildquelle samt Bearbeitungs-/Werberechten gezielt prüfen. Erst danach genau einen Bild-Diff vorbereiten.",
+      "blockers": [
+        "Brauchbare graue Bildquelle und Rechte nicht belegt",
+        "Tatsächliche Feed-Bildroute offen"
+      ],
+      "acceptance": [
+        "Modell, Farbe, Form und Variantenmitgliedschaft nachgewiesen",
+        "Gültige Bildrechte und ohne Zusatztext geeignete Auflösung",
+        "Frischer konkreter Diff und Gegenprobe; keine automatische Feed-/Shopänderung"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
+          "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15447560978817",
+        "variantId": "56063588598145",
+        "sku": "CJ-CJSJ290134301AZ"
+      }
+    },
+    {
+      "id": "merchant-url-15448020582785",
+      "priority": 20,
+      "priorityKind": "SETZUNG",
+      "state": "offen",
+      "title": "Frühere Google-Erreichbarkeitsmeldung abgleichen",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Aktuelle Shopify-URL HTTP 200; eingereichter Google-Link fehlt im Export.",
+      "nextAllowedStep": "Die exakte Merchant-Ziel-URL dieses Items und gegebenenfalls Crawlbeleg gezielt lesen und mit dem heutigen Canonical vergleichen.",
+      "blockers": [
+        "Merchant-Ziel-URL und Googlebot-Nachweis fehlen"
+      ],
+      "acceptance": [
+        "Tatsächlich eingereichte URL nachgewiesen",
+        "Redirect-/Status-/Canonical-Ursache reproduziert oder als nicht reproduziert markiert"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
+          "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15448020582785",
+        "variantId": "55873968701825"
+      }
+    },
+    {
+      "id": "schema-hammock-15450856292737",
+      "priority": 30,
+      "priorityKind": "SETZUNG",
+      "state": "vorbereitet",
+      "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "24 von 33 SKU-Auszeichnungen mit Leerzeichen; alle 33 Offers ohne eigene Rückgabe-Referenz. Datenentwurf vorhanden, kein angewendeter Liquidfix.",
+      "nextAllowedStep": "Aktuelle MAIN-Themequelle und bestehende Rückgabepolicy gegen den vorbereiteten Datenentwurf prüfen; einen engen testbaren Liquid-Diff für genau diese Ausgabe entwickeln.",
+      "blockers": [
+        "Aktuelle Themeversion und Variantenauszeichnung erneut prüfen",
+        "Produktiver Theme-Write ist durch diesen Index nicht freigegeben"
+      ],
+      "acceptance": [
+        "Fulfilment-SKUs unverändert",
+        "Gültige Variantenidentifikation erhalten",
+        "Rückgaberegel sachlich passend und strukturierte Ausgabe validiert"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-UND-VERKAUF-20261028.md",
+          "gitBlobSha": "951afa9cc777be1b3737c0770a41e0030e68dd63",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15450856292737"
+      }
+    },
+    {
+      "id": "copy-iphone-15422939988353",
+      "priority": 40,
+      "priorityKind": "SETZUNG",
+      "state": "vorbereitet",
+      "title": "iPhone-Produkttext und SEO sachlich verbessern",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Beschreibung-/SEO-Diff vorbereitet: pauschale 30-Tage-Rückgabe bei Personalisierung und unbelegte Ladeaussagen eingegrenzt.",
+      "nextAllowedStep": "Frischen Produkttext mit dem bestehenden engen Diff vergleichen; Editor, Variantenvergleich und gültige Retourenausnahmen erhalten. Bereits konkrete erteilte Textfreigaben im aktuellen Chat berücksichtigen.",
+      "blockers": [
+        "Parallele Textänderungen möglich",
+        "Unbelegte Materialien/Funktionen dürfen nicht ergänzt werden"
+      ],
+      "acceptance": [
+        "Wahrheitsgemässer Text für die exakte Ausführung",
+        "Keine falsche Retourenzusage",
+        "Diff und nach einem zulässigen Write frischer Rücklesebeleg"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-UND-VERKAUF-20261028.md",
+          "gitBlobSha": "951afa9cc777be1b3737c0770a41e0030e68dd63",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15422939988353"
+      }
+    },
+    {
+      "id": "merchant-local-15523818045825",
+      "priority": 50,
+      "priorityKind": "SETZUNG",
+      "state": "blockiert",
+      "title": "Genaue lokale Anforderung beim Milchshaker klären",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Generische Klasse Local Requirements belegt keine konkrete Stecker- oder Rechtsursache. Produktbeschreibung ist kein unabhängiger Funktionsnachweis.",
+      "nextAllowedStep": "Konkreten Merchant-Fehlertext und exaktes Liefermodell samt Netzteil-/Funktionsunterlagen lesen; belegte Faktenmatrix vorbereiten.",
+      "blockers": [
+        "Exakter Richtlinienhinweis fehlt",
+        "Modell-, Strom- und Funktionsbelege fehlen"
+      ],
+      "acceptance": [
+        "Ursache anhand tatsächlicher Google-Meldung und Modellbeleg eingegrenzt",
+        "Keine geratene Freischaltung oder unberechtigter Reviewantrag"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
+          "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15523818045825",
+        "variantId": "56215831413121"
+      }
+    },
+    {
+      "id": "luxe-zusammenarbeit-20261028",
+      "priority": 60,
+      "priorityKind": "SETZUNG",
+      "state": "vorbereitet",
+      "title": "Getestete R3-Codekorrekturen zur Integration bereithalten",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "R3 auf main b708c809 geprüft; 1059 lokale Prüfungen grün. Vollständige CI an schreibgeschütztem Home gescheitert. Keine produktive Integration durch Codex bestätigt.",
+      "nextAllowedStep": "Aktuelles main, Zielhashes und echte Claude-Quittung prüfen. Nur bei neuem Code-/Quellenstand gezielt nachführen; vollständige CI in legitimer schreibbarer Umgebung laufen lassen, wenn verfügbar.",
+      "blockers": [
+        "Vollständige CI offen",
+        "Kenntnisnahme und produktive Übernahme durch Claude unbekannt"
+      ],
+      "acceptance": [
+        "Aktuelle Zielhashes und Diff stimmen",
+        "Erforderliche CI auf dem tatsächlichen Kandidaten grün",
+        "Merge und produktive Ausführung separat nachgewiesen"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/INTEGRATIONSSTAND-20261028-R3.md",
+          "gitBlobSha": "daca418ca3425d6a5983759b310c00731b3ba325",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination"
+    },
+    {
+      "id": "master-projector-15521256604033",
+      "priority": 70,
+      "priorityKind": "SETZUNG",
+      "state": "blockiert",
+      "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Schnittplan und Abnahmepunkte vorhanden; keine freigegebene neue Master-MP4. Bestehende masterId erst aus dem vorhandenen Register lesen, keine neue erfinden.",
+      "nextAllowedStep": "Originale und Varianten-/Motivzuordnung prüfen; genaue fehlende Detail-/Handlungsaufnahme und deren Rechte nachweisen. Den vorhandenen einen Masterplan gezielt ergänzen.",
+      "blockers": [
+        "Passendes professionelles Originalmaterial",
+        "Ausführung/Motive und Rechte ungeklärt",
+        "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
+      ],
+      "acceptance": [
+        "Echte produktgetreue Handlung in geprüfter MP4",
+        "Kein Voiceover; vorgeschriebene Musik geprüft",
+        "Bild, Ton, Texte, Ausschnitte und Inhaberabnahme belegt",
+        "Vor Publikation alle Kanal-/Ledger-/Produktgates erfüllt"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-UND-VERKAUF-20261028.md",
+          "gitBlobSha": "951afa9cc777be1b3737c0770a41e0030e68dd63",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "gitBlobSha": "f88b33cbe9a31d8ad4db954273c119067e7ae9aa",
+          "readAt": "2026-10-28T22:52:28.185Z",
+          "section": "28.10.2026, Abend / konkreter Master-Fortschritt"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "product": {
+        "productId": "15521256604033",
+        "variantId": "56197916361089",
+        "sku": "CJ-1477820492730732544"
+      }
+    },
+    {
+      "id": "dns-four-approved-20261018",
+      "priority": 80,
+      "priorityKind": "SETZUNG",
+      "state": "blockiert",
+      "title": "Vier bereits genehmigte Klaviyo-DNS-Ergänzungen",
+      "lastEvidenceDate": "2026-10-28",
+      "belegArt": "QUELLE",
+      "lastEvidence": "Inhaberanweisung 14 und datierte Übergabe: genau vier genehmigte Ergänzungen. DNS-Zugang wurde in diesem Installationslauf nicht neu geprüft; historisch fehlt authentifizierter Schreibzugang.",
+      "nextAllowedStep": "Nur legitimen vorhandenen Zugriff und vollständigen Zonenstand prüfen, wenn verfügbar; Zustimmung zu denselben vier Records nicht erneut verlangen.",
+      "blockers": [
+        "Authentifizierter DNS-Schreibzugang fehlt"
+      ],
+      "acceptance": [
+        "Nur exakt vier genehmigte Ergänzungen, vorhandene Records erhalten",
+        "Frischer Rücklesebeleg je Record; keine Domain-/Flowaktivierung"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "gitBlobSha": "aa59d07034720a6986a7aa01ba4d66cb1be4d26a",
+          "readAt": "2026-10-28T22:52:28.185Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "instructionReference": "Ausdrückliche Inhaberanweisung, Punkt 14: vier DNS-Ergänzungen vom 18.10.2026"
+    }
+  ],
+  "history": [
+    {
+      "revision": 1,
+      "at": "2026-10-28T22:52:28.185Z",
+      "actor": "codex",
+      "action": "Initialer Index auf ausdrücklichen Auftrag eingerichtet; keine Live-Geschäftsänderung oder bestehende Historie ersetzt."
+    }
+  ]
+}
