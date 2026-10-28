@@ -43,16 +43,15 @@ export const kindTagStimmt = (c, tag) => !!c?.ruleSet && !c.ruleSet.appliedDisju
  * `web(handles)` → { handle: {ok, status, n, grund} } ist die HTTP-Prüfung im Onlineshop (Tests spielen eine Attrappe ein).
  * @returns {Promise<{code:number, ergebnis:object[], kinder:object[]}>}  code 0 = in Ordnung, 1 = Aufruffehler, 2 = ein Handle ist mit anderer Regel belegt oder eine Sammlung ist im Onlineshop nicht erreichbar/leer
  */
-export async function gruppenLauf(q, { live = false, katalog = null, web = null, ledger = LEDGER, jetzt = () => new Date(), warte = schlaf, out = console.log, err = console.error } = {}) {
+export async function gruppenLauf(q, { live = false, katalog = null, web = null, ledger = LEDGER, jetzt = () => new Date(), warte = schlaf, out = console.log, err = console.error, plan = gruppenPlan(), kategorieVonHandle = kategorieVon } = {}) {
   if (live && !web) { err('LIVE braucht die HTTP-Prüfung der neuen Sammlungen (Publish-Falle): ohne sie wird nichts angelegt'); return { code: 1, ergebnis: [], kinder: [] }; }
-  const plan = gruppenPlan();
   const produkte = katalog?.produkte || null;
   // ── Kinder: welches Tag tragen die Mitglieder wirklich? ──
   const kinder = [], sehen = new Set();
   for (const g of plan) for (const k of g.kinder) {
     if (sehen.has(k.handle)) continue; sehen.add(k.handle);
     const c = (await q(COLL_Q, { h: k.handle })).collectionByHandle;
-    const kat = kategorieVon(k.handle);
+    const kat = kategorieVonHandle(k.handle);
     const zeile = { handle: k.handle, tag: k.tag, imShop: !!c, regel: regelText(c), shopProdukte: c?.productsCount?.count ?? null };
     zeile.stimmt = !k.tag ? null : !c ? null : kindTagStimmt(c, k.tag);
     if (produkte && kat) { zeile.passen = produkte.filter(p => gehoertIn(kat, p)).length; zeile.tragenTag = produkte.filter(p => (p.tags || []).includes(k.tag)).length; }
@@ -73,7 +72,7 @@ export async function gruppenLauf(q, { live = false, katalog = null, web = null,
     const c = (await q(COLL_Q, { h: g.handle })).collectionByHandle;
     const status = !c ? 'neu' : gleicheRegel(c.ruleSet, g.regel) ? 'vorhanden (gleiche Regel)' : 'BELEGT, andere Regel';
     let erwartet = null;
-    if (produkte) { const ks = g.kinder.map(k => kategorieVon(k.handle)).filter(Boolean); erwartet = produkte.filter(p => ks.some(k => gehoertIn(k, p))).length; }
+    if (produkte) { const ks = g.kinder.map(k => kategorieVonHandle(k.handle)).filter(Boolean); erwartet = produkte.filter(p => ks.some(k => gehoertIn(k, p))).length; }
     ergebnis.push({ handle: g.handle, status, erwartet, id: c?.id ?? null, regelIm: regelText(c) });
     out(g.handle.padEnd(36) + status.padEnd(22) + g.regel.rules.map(r => r.condition).join(', ') + (g.ohneTag.length ? `  [ohne Tag: ${g.ohneTag.join(', ')}]` : '') + (erwartet !== null ? `   ${erwartet}` : ''));
     if (status.startsWith('BELEGT')) err(`  ⚠ ${g.handle}: Handle ist belegt mit anderer Regel (${regelText(c)}) -> wird NICHT überschrieben`);
