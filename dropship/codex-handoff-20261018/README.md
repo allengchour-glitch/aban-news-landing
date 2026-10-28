@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_CLAUDE_ZUARBEIT_20261028
+
+[Zwei konkret reproduzierte Codebefunde für Claude](CLAUDE-ZUARBEIT-20261028.md) und [Quellen, Offline-Reproduktionen und Gegenprüfungen](CLAUDE-ZUARBEIT-BELEGE-20261028.json). Zwei Anlagen bis Commit 0de0716bd944dfb0a3f763b0f271b91aa83af258 gespeichert und bytegenau zurückgelesen. Claude führt; eine automatische Übernahme oder direkte Chat-Verbindung wird nicht behauptet.
+
+GEMESSEN: aktueller Merchant-Schaufenster-CLI f77a7ef680f83c7cc5aeae0e9fa4ec8c2fb000ba und Logik 90cf27308debe167ae9cd20bcfa763efd3e59f30 vor Abschluss frisch unverändert. Erstens fehlt vor holeToken die Hostnormalisierung/exakte LuxeStyle-Bindung: richtige Hostkontrolle und zwei fremde Ziele mit künstlichen Werten/Mockfetch geprüft; beide Fremdziele werden im Original nicht vorher abgewiesen. Vorhandener Hosthelfer plus exakte Shopbindung bestätigt die passende Abhilfe. Keine tatsächliche Fehlkonfiguration oder echter Abfluss nachgewiesen.
+
+Zweitens kann eine verspätete Rücknahme-Antwort bei überlappenden Schreibern ein neueres ab-versucht mit auf überholen. Fake-Shop bleibt abgewählt, aber Manifest-ID und Rücknahmeangebot fehlen. Serielle Kontrolle korrekt, beide Planfixtures p.ok=true mit Budget 40’000 Varianten. Unabhängig reproduziert und von Root nochmals ausgeführt. Tatsächliche Produktionskonkurrenz/Schäden unbekannt. Konkrete Aufgaben: Hostbindung vor Credentialzugriff, gemeinsamer Schreibschutz über alle schreibenden Phasen plus versionierte Operationen/Checkpoints und gezielte Rücklesung.
+
+Nur lokale künstliche Gegenproben unter Node v24.19.0; dokumentierter Node22-Pfad hier nicht verfügbar. Keine echten Zugangsdaten gelesen, keine externen Requests durch die Proben, keine Shop-/Merchant-/Social-/Bestell-/Flow-/DNS-/Budgetaktion, kein LIVE-Lauf oder Workflow. Vorher anderweitig blockierten Massenlauf nicht ausgeführt oder umgangen. Kein Produktionspatch/PR/Deployment und keine zusätzlichen Tageskennzahlen. Bisherige Freigaben, CHF50/45 und Kundendomäne erhalten.
+
 ## LUXESTYLE_ABENDPAKET_20261028
 
 [Abendpaket mit konsolidierter Tagestabelle, Storyboard und sechs Texten/UTMs](ABENDPAKET-20261028.md), [aktuelle Quellen-/Planbelege](ABEND-BELEGE-20261028.json), [gleicher Master mit neuem Kontinuitätsbogen und zwei Captionkorrekturen](MASTER-ABEND-20261028.json). Drei Anlagen bis Commit 805d1fcda3f2bc47490638255b0a7087215db3d5 gespeichert und bytegenau zurückgelesen. Claude führt; keine operative Code-/Shop-/Social-/Flowänderung durch Codex.
