@@ -40,6 +40,12 @@ on:
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
       - 'dropship/pod-auswahl/**'
+      - 'dropship/pod-editor-sicherung-2810/**'
+      - 'pod/editor-hintergruende.json'
+      - 'automation/pod_inject_designer.mjs'
+      - 'automation/pod_editor_hintergruende.mjs'
+      - 'automation/lib/pod_editor_bg.mjs'
+      - 'automation/lib/pod_editor_bg_test.mjs'
       - 'dropship/taxonomie-2610-b/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
@@ -100,6 +106,12 @@ jobs:
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
             dropship/pod-auswahl
+            dropship/pod-editor-sicherung-2810
+            pod/editor-hintergruende.json
+            automation/pod_inject_designer.mjs
+            automation/pod_editor_hintergruende.mjs
+            automation/lib/pod_editor_bg.mjs
+            automation/lib/pod_editor_bg_test.mjs
             dropship/taxonomie-2610-b
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
@@ -132,6 +144,8 @@ jobs:
           node --check automation/lib/cj_video.mjs
           node --check automation/material_nachtragen.mjs
           node --check automation/pod_auswahl.mjs
+          node --check automation/pod_inject_designer.mjs
+          node --check automation/pod_editor_hintergruende.mjs
           node --check automation/printful_sync.mjs
           node --check automation/schmuck_gruppen.mjs
           node --check automation/schmuck_menue.mjs
@@ -226,6 +240,8 @@ jobs:
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
           node automation/printful_sync_test.mjs
+          # Editor-Hintergründe ohne eingebranntes «Dein Design» (28.10.2026): Baustein lesen/umschreiben, Übersteuerungstabelle pod/editor-hintergruende.json, Sicherung dropship/pod-editor-sicherung-2810
+          node automation/lib/pod_editor_bg_test.mjs
       - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
