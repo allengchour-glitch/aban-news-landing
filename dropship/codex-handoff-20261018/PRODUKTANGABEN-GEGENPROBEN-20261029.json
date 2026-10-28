@@ -1,0 +1,1192 @@
+{
+  "LIVE-PRODUKTBELEG.json": {
+    "checkedAt": "2026-10-28T23:23:13.498Z",
+    "scope": "Drei gezielte Produkt-Gegenproben, keine repräsentative Stichprobe",
+    "readOnly": true,
+    "products": [
+      {
+        "id": "gid://shopify/Product/15447560520065",
+        "title": "Ladegerät Typ-C (EU-Standard)",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Elektronik",
+        "descriptionHtml": "<p>Dieses kompakte Ladegerät ist perfekt für den täglichen Gebrauch zu Hause oder unterwegs. Es ist speziell für den europäischen Standard konzipiert und gewährleistet eine zuverlässige Stromversorgung für deine Geräte. Dank des modernen Type-C-Anschlusses ist es mit einer Vielzahl aktueller Smartphones, Tablets und weiterer Elektronik kompatibel. Das schlichte weisse Design aus robustem Kunststoff fügt sich nahtlos in jede Umgebung ein und bietet gleichzeitig Langlebigkeit. Ein unverzichtbares Accessoire für alle, die eine effiziente und sichere Lademöglichkeit suchen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Schnittstellentyp: Type-C</li>\n<li>Farbe: Weiss</li>\n<li>Material: Kunststoff</li>\n<li>Konform mit europäischem Standard</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "kat-handy",
+          "kat-laden",
+          "ladegeraet",
+          "Ladegerät",
+          "rueckhol-0907",
+          "sort-elektronik-kleinteile",
+          "tech"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/78168bbb-3736-455c-a245-9569237c71cc_water.jpg?v=1783103071",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/78168bbb-3736-455c-a245-9569237c71cc_water.jpg?v=1783103071",
+            "altText": "Ladegerät Typ-C (EU-Standard) – Ansicht 2",
+            "mediaId": "gid://shopify/MediaImage/69850935427457"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/321e7a17-c996-4837-ba87-8d5dafbb5a40_water.jpg?v=1783103071",
+            "altText": "Ladegerät Typ-C (EU-Standard)",
+            "mediaId": "gid://shopify/MediaImage/69850935394689"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/98eb06ec-8745-46e8-9b9d-b4c1ba6c6ce7_water.jpg?v=1783103071",
+            "altText": "Ladegerät Typ-C (EU-Standard) – Ansicht 3",
+            "mediaId": "gid://shopify/MediaImage/69850935460225"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1c1d98b9-85a6-4e64-90a5-6f1325cf9985_water.jpg?v=1783103071",
+            "altText": "Ladegerät Typ-C (EU-Standard) – Ansicht 4",
+            "mediaId": "gid://shopify/MediaImage/69850935492993"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50c5f41f-d619-4e0b-955a-7e8c5b037066_water.jpg?v=1783103072",
+            "altText": "Ladegerät Typ-C (EU-Standard) – Ansicht 5",
+            "mediaId": "gid://shopify/MediaImage/69850935525761"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/98eb06ec-8745-46e8-9b9d-b4c1ba6c6ce7_water_7aef7cec-a28d-4e75-9e01-0130e290b536.jpg?v=1786910676",
+            "altText": "LuxeStyle Ladegerät Typ-C (EU-Standard) – Bild 6 – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/70553173131649"
+          }
+        ],
+        "totalVariants": 6,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56063588336001",
+            "title": "EU 45W OP",
+            "sku": "CJ-CJSJ291541001AZ",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588368769",
+            "title": "EU 65W OP",
+            "sku": "CJ-CJSJ291541002BY",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588401537",
+            "title": "EU 67W OP",
+            "sku": "CJ-CJSJ291541003CX",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588434305",
+            "title": "EU 80W OP",
+            "sku": "CJ-CJSJ291541004DW",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588467073",
+            "title": "EU 100W OP",
+            "sku": "CJ-CJSJ291541005EV",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588499841",
+            "title": "EU 120W OP",
+            "sku": "CJ-CJSJ291541006FU",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      {
+        "id": "gid://shopify/Product/15446272016769",
+        "title": "Schnüffel- und Quietsch-Plüschtier für Hunde",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Haustierbedarf",
+        "descriptionHtml": "<p>Dieses 21 cm hohe Plüschtier ist ideal für Hunde und andere Haustiere, die gerne schnüffeln und spielen. Es kombiniert die Freude am Entdecken von verstecktem Futter mit dem Spass eines Quietschspielzeugs. Das weiche Material ist angenehm für das Maul deines Vierbeiners und sorgt für langanhaltende Unterhaltung. Ob zum Verstecken von Leckerlis oder einfach nur zum Spielen, dieses Plüschtier fördert die natürliche Neugier und den Spieltrieb deines Haustieres. Ein vielseitiges Spielzeug, das Bewegung und geistige Anregung bietet.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Höhe: 21 cm</li>\n<li>Material: Plüsch</li>\n<li>Kategorie: Haustierspielzeug</li>\n<li>Versteckmöglichkeiten für Futter</li>\n<li>Integriertes Quietschelement</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 85 g</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haustier",
+          "hund",
+          "kat-haustier",
+          "kat-hunde",
+          "katze",
+          "mengenrabatt-a",
+          "pet",
+          "plueschtier",
+          "rueckhol-0907",
+          "schnueffel",
+          "sort-haustier",
+          "sort-hunde",
+          "sort-tier-spielzeug",
+          "sub-hund"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3ea83e8a-8142-4a7b-923b-532c96382a7c.jpg?v=1783052375",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3ea83e8a-8142-4a7b-923b-532c96382a7c.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 3",
+            "mediaId": "gid://shopify/MediaImage/69843017236865"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/51dc20a4-b6dc-4753-aa6e-31dfda353d88.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde",
+            "mediaId": "gid://shopify/MediaImage/69843017171329"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8596184-3532-4dee-aabc-39f4a9ae0520.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 2",
+            "mediaId": "gid://shopify/MediaImage/69843017204097"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bac83ac5-8a6f-4a7c-ac5e-fbd9002efac5.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 4",
+            "mediaId": "gid://shopify/MediaImage/69843017269633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/694d00db-94cc-4eff-9eb7-64a30dc87963.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 5",
+            "mediaId": "gid://shopify/MediaImage/69843017302401"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44764cd0-4f97-4969-8b6b-62a4b1c1cc3b.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 6",
+            "mediaId": "gid://shopify/MediaImage/69843017335169"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6baf24f9-1a41-4c53-a92d-d6ae0424c8a3.jpg?v=1783052375",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 7",
+            "mediaId": "gid://shopify/MediaImage/69843017367937"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/470935ea-1731-4b24-99c5-24951d394d16.jpg?v=1783052376",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Ansicht 8",
+            "mediaId": "gid://shopify/MediaImage/69843017400705"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/694d00db-94cc-4eff-9eb7-64a30dc87963_25e5009e-a686-4cf1-9ab5-7182d9c4ea3b.jpg?v=1786829676",
+            "altText": "LuxeStyle Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 9 – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/70545758355841"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b658de6f-d0c5-4f1b-aff7-302049dbea54.jpg?v=1786829676",
+            "altText": "LuxeStyle Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 10 – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/70545758388609"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3ea83e8a-8142-4a7b-923b-532c96382a7c_e8ea8047-f28e-4797-8e40-17430f4bf1b3.jpg?v=1786829676",
+            "altText": "LuxeStyle Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 11 – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/70545758421377"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44764cd0-4f97-4969-8b6b-62a4b1c1cc3b_623e8651-fc98-40dc-bdd4-1a531f921607.jpg?v=1786829676",
+            "altText": "LuxeStyle Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 12 – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/70545758454145"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8596184-3532-4dee-aabc-39f4a9ae0520_45e3f8bf-3741-4965-b30d-29da6655371c.jpg?v=1786829676",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545758486913"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6baf24f9-1a41-4c53-a92d-d6ae0424c8a3_a8efaef9-ea44-4818-96ba-9071cbe816c5.jpg?v=1786829676",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545758519681"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/470935ea-1731-4b24-99c5-24951d394d16_32db3780-fc25-43e2-b8fe-900df7cbfcb4.jpg?v=1786829676",
+            "altText": "Schnüffel- und Quietsch-Plüschtier für Hunde – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70545758552449"
+          }
+        ],
+        "totalVariants": 7,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56063526568321",
+            "title": "Grauer Esel, 21 cm Hoch",
+            "sku": "CJ-CJYD290425101AZ",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526601089",
+            "title": "Brauner Elefant, 21 cm Hoch",
+            "sku": "CJ-CJYD290425102BY",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526633857",
+            "title": "Gestreiftes Zebra, 21 cm Hoch",
+            "sku": "CJ-CJYD290425103CX",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526666625",
+            "title": "Blauer Elefant, 21 cm Hoch",
+            "sku": "CJ-CJYD290425104DW",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526699393",
+            "title": "Pink Elephant-21CM High",
+            "sku": "CJ-CJYD290425105EV",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526732161",
+            "title": "Grüner Elefant, 21 cm Hoch",
+            "sku": "CJ-CJYD290425106FU",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526764929",
+            "title": "Orange Elephant-21CM High",
+            "sku": "CJ-CJYD290425107GT",
+            "price": "15.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      {
+        "id": "gid://shopify/Product/15495118520705",
+        "title": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Damenschuhe",
+        "descriptionHtml": "<p>Diese warmen Damen-Schneestiefel sind ideal für kalte Tage und Freizeitaktivitäten. Das wasserdichte Obermaterial und das Baumwollfutter sorgen für angenehme Wärme und trockene Füsse. Der mittelhohe Schaft mit einer Höhe von 23 cm und der Kunstfellkragen verleihen den Stiefeln einen modischen Look. Ein praktischer Klettverschluss ermöglicht einfaches An- und Ausziehen, während die profilierte Polyurethan-Sohle guten Halt bietet. Die klobige Absatzform mit einer Höhe von 3.5 cm sorgt für zusätzlichen Komfort.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Wasserdichtes Obermaterial</li>\n<li>Warmes Baumwollfutter</li>\n<li>Mittelhoher Schaft (23 cm)</li>\n<li>Klobiger Absatz (3.5 cm)</li>\n<li>Runde Zehenform</li>\n<li>Praktischer Klettverschluss</li>\n<li>Rutschfeste Polyurethan-Sohle</li>\n<li>Erhältlich in den Grössen 36-44</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 580 g – 740 g (je nach Variante)</li>\n<li>\n<strong>Zehenform:</strong> rund</li>\n<li>\n<strong>Für:</strong> Damen</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "damenschuhe",
+          "dropship",
+          "gefuetterte",
+          "herbst-2026",
+          "kat-stiefel",
+          "kat-winterschuhe",
+          "mode",
+          "neuheit",
+          "rueckhol-0907",
+          "schuhe",
+          "sort-damen-winterschuhe",
+          "stiefel"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5000255-2612-4e06-ac6d-869b3d1d93b7.jpg?v=1786515618",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5000255-2612-4e06-ac6d-869b3d1d93b7.jpg?v=1786515618",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332667265"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5374dffe-4612-49d5-a8aa-b25ca031acb9.jpg?v=1786515618",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332732801"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a847775-873f-4c33-8a9d-a1c0c033e73d.jpg?v=1786515619",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332765569"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44ad7f8d-f51b-4716-b03b-13bdd0413af2.jpg?v=1786515618",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332798337"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec702468-dfb1-47c3-943c-456de01f6563.jpg?v=1786515618",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332831105"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc134bb2-1646-45d8-bd90-0177a881c1eb.jpg?v=1786515619",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332863873"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b01eb2b-0664-484e-88e9-201972960592.jpg?v=1786515618",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332896641"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/83f6d6fb-dbd2-4807-af1c-d8d9d6e3ce9d.jpg?v=1786515619",
+            "altText": "Gefütterte Damen-Schneestiefel mit Kunstfellkragen – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70500332929409"
+          }
+        ],
+        "totalVariants": 27,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/56086768976257",
+            "title": "Schwarz / 36",
+            "sku": "CJ-CJYD271840501AZ",
+            "price": "24.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769009025",
+            "title": "Schwarz / 37",
+            "sku": "CJ-CJYD271840502BY",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769041793",
+            "title": "Schwarz / 38",
+            "sku": "CJ-CJYD271840503CX",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769074561",
+            "title": "Schwarz / 39",
+            "sku": "CJ-CJYD271840504DW",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769107329",
+            "title": "Schwarz / 40",
+            "sku": "CJ-CJYD271840505EV",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769140097",
+            "title": "Schwarz / 41",
+            "sku": "CJ-CJYD271840506FU",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769172865",
+            "title": "Schwarz / 42",
+            "sku": "CJ-CJYD271840507GT",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769205633",
+            "title": "Schwarz / 43",
+            "sku": "CJ-CJYD271840508HS",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769238401",
+            "title": "Schwarz / 44",
+            "sku": "CJ-CJYD271840509IR",
+            "price": "28.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769271169",
+            "title": "Grau / 36",
+            "sku": "CJ-CJYD271840510JQ",
+            "price": "24.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769303937",
+            "title": "Grau / 37",
+            "sku": "CJ-CJYD271840511KP",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769336705",
+            "title": "Grau / 38",
+            "sku": "CJ-CJYD271840512LO",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769369473",
+            "title": "Grau / 39",
+            "sku": "CJ-CJYD271840513MN",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769402241",
+            "title": "Grau / 40",
+            "sku": "CJ-CJYD271840514NM",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769435009",
+            "title": "Grau / 41",
+            "sku": "CJ-CJYD271840515OL",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769467777",
+            "title": "Grau / 42",
+            "sku": "CJ-CJYD271840516PK",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769500545",
+            "title": "Grau / 43",
+            "sku": "CJ-CJYD271840517QJ",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769533313",
+            "title": "Grau / 44",
+            "sku": "CJ-CJYD271840518RI",
+            "price": "28.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769566081",
+            "title": "Blau / 36",
+            "sku": "CJ-CJYD271840519SH",
+            "price": "24.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769598849",
+            "title": "Blau / 37",
+            "sku": "CJ-CJYD271840520TG",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769631617",
+            "title": "Blau / 38",
+            "sku": "CJ-CJYD271840521UF",
+            "price": "25.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769664385",
+            "title": "Blau / 39",
+            "sku": "CJ-CJYD271840522VE",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769697153",
+            "title": "Blau / 40",
+            "sku": "CJ-CJYD271840523WD",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769729921",
+            "title": "Blau / 41",
+            "sku": "CJ-CJYD271840524XC",
+            "price": "26.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769762689",
+            "title": "Blau / 42",
+            "sku": "CJ-CJYD271840525YB",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769795457",
+            "title": "Blau / 43",
+            "sku": "CJ-CJYD271840526ZA",
+            "price": "27.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56086769828225",
+            "title": "Blau / 44",
+            "sku": "CJ-CJYD271840527AZ",
+            "price": "28.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      }
+    ],
+    "optionRead": {
+      "data": {
+        "charger": {
+          "id": "gid://shopify/Product/15447560520065",
+          "handle": "ladegerat-typ-c-eu-standard-613900",
+          "title": "Ladegerät Typ-C (EU-Standard)",
+          "updatedAt": "2026-10-27T20:55:31Z",
+          "status": "ACTIVE",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17878896509313",
+              "name": "Farbe",
+              "position": 1,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782299009",
+                  "name": "EU 45W OP",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782331777",
+                  "name": "EU 65W OP",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782364545",
+                  "name": "EU 67W OP",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782397313",
+                  "name": "EU 80W OP",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782430081",
+                  "name": "EU 100W OP",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309782462849",
+                  "name": "EU 120W OP",
+                  "hasVariants": true
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063588336001",
+                "title": "EU 45W OP",
+                "sku": "CJ-CJSJ291541001AZ",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 45W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782299009"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588368769",
+                "title": "EU 65W OP",
+                "sku": "CJ-CJSJ291541002BY",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 65W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782331777"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588401537",
+                "title": "EU 67W OP",
+                "sku": "CJ-CJSJ291541003CX",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 67W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782364545"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588434305",
+                "title": "EU 80W OP",
+                "sku": "CJ-CJSJ291541004DW",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 80W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782397313"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588467073",
+                "title": "EU 100W OP",
+                "sku": "CJ-CJSJ291541005EV",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 100W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782430081"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588499841",
+                "title": "EU 120W OP",
+                "sku": "CJ-CJSJ291541006FU",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "EU 120W OP",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309782462849"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2MzU4ODQ5OTg0MSwibGFzdF92YWx1ZSI6Nn0="
+            }
+          }
+        },
+        "toy": {
+          "id": "gid://shopify/Product/15446272016769",
+          "handle": "schnuffel-und-quietsch-pluschtier-fur-hunde-618800",
+          "title": "Schnüffel- und Quietsch-Plüschtier für Hunde",
+          "updatedAt": "2026-10-27T20:55:31Z",
+          "status": "ACTIVE",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17877464056193",
+              "name": "Farbe",
+              "position": 1,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749301633",
+                  "name": "Grauer Esel, 21 cm Hoch",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749334401",
+                  "name": "Brauner Elefant, 21 cm Hoch",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749367169",
+                  "name": "Gestreiftes Zebra, 21 cm Hoch",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749399937",
+                  "name": "Blauer Elefant, 21 cm Hoch",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749432705",
+                  "name": "Pink Elephant-21CM High",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749465473",
+                  "name": "Grüner Elefant, 21 cm Hoch",
+                  "hasVariants": true
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12309749498241",
+                  "name": "Orange Elephant-21CM High",
+                  "hasVariants": true
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063526568321",
+                "title": "Grauer Esel, 21 cm Hoch",
+                "sku": "CJ-CJYD290425101AZ",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Grauer Esel, 21 cm Hoch",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749301633"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526601089",
+                "title": "Brauner Elefant, 21 cm Hoch",
+                "sku": "CJ-CJYD290425102BY",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Brauner Elefant, 21 cm Hoch",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749334401"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526633857",
+                "title": "Gestreiftes Zebra, 21 cm Hoch",
+                "sku": "CJ-CJYD290425103CX",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Gestreiftes Zebra, 21 cm Hoch",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749367169"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526666625",
+                "title": "Blauer Elefant, 21 cm Hoch",
+                "sku": "CJ-CJYD290425104DW",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Blauer Elefant, 21 cm Hoch",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749399937"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526699393",
+                "title": "Pink Elephant-21CM High",
+                "sku": "CJ-CJYD290425105EV",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Pink Elephant-21CM High",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749432705"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526732161",
+                "title": "Grüner Elefant, 21 cm Hoch",
+                "sku": "CJ-CJYD290425106FU",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Grüner Elefant, 21 cm Hoch",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749465473"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063526764929",
+                "title": "Orange Elephant-21CM High",
+                "sku": "CJ-CJYD290425107GT",
+                "price": "15.90",
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "value": "Orange Elephant-21CM High",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12309749498241"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2MzUyNjc2NDkyOSwibGFzdF92YWx1ZSI6N30="
+            }
+          }
+        }
+      }
+    }
+  },
+  "AUSWAHLTEXT-DIFF.json": {
+    "schemaVersion": 1,
+    "taskId": "product-attribute-completeness",
+    "status": "prepared_review_only",
+    "applyEnabled": false,
+    "checkedAt": "2026-10-28T23:24:35.021Z",
+    "shop": "luxestyle.ch",
+    "currency": "CHF",
+    "basis": "Native Shopify get_product und gezielte Admin-GraphQL-Reads; keine physische Material- oder Massprüfung",
+    "scope": {
+      "products": 2,
+      "variantCount": 13,
+      "changes": "Ausschliesslich vorhandene Auswahltexte; keine neuen Merkmale oder Varianten"
+    },
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15447560520065",
+        "handle": "ladegerat-typ-c-eu-standard-613900",
+        "title": "Ladegerät Typ-C (EU-Standard)",
+        "sourceUpdatedAt": "2026-10-27T20:55:31Z",
+        "optionId": "gid://shopify/ProductOption/17878896509313",
+        "optionName": {
+          "before": "Farbe",
+          "after": "Ausführung"
+        },
+        "optionValues": [
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782299009",
+            "before": "EU 45W OP",
+            "after": "EU 45W OP",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782331777",
+            "before": "EU 65W OP",
+            "after": "EU 65W OP",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782364545",
+            "before": "EU 67W OP",
+            "after": "EU 67W OP",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782397313",
+            "before": "EU 80W OP",
+            "after": "EU 80W OP",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782430081",
+            "before": "EU 100W OP",
+            "after": "EU 100W OP",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309782462849",
+            "before": "EU 120W OP",
+            "after": "EU 120W OP",
+            "hasVariants": true
+          }
+        ],
+        "unchangedVariantBindings": [
+          {
+            "id": "gid://shopify/ProductVariant/56063588336001",
+            "sku": "CJ-CJSJ291541001AZ",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782299009"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588368769",
+            "sku": "CJ-CJSJ291541002BY",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782331777"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588401537",
+            "sku": "CJ-CJSJ291541003CX",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782364545"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588434305",
+            "sku": "CJ-CJSJ291541004DW",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782397313"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588467073",
+            "sku": "CJ-CJSJ291541005EV",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782430081"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063588499841",
+            "sku": "CJ-CJSJ291541006FU",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309782462849"
+            ]
+          }
+        ],
+        "notes": [
+          "EU-Watt-Bezeichnungen bleiben unverändert; keine technische Leistungs-/Konformitätsbestätigung.",
+          "Ausführung beschreibt vorhandene Bezeichnungen neutral; kein Ersatz für Farb-Metafelder."
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/15446272016769",
+        "handle": "schnuffel-und-quietsch-pluschtier-fur-hunde-618800",
+        "title": "Schnüffel- und Quietsch-Plüschtier für Hunde",
+        "sourceUpdatedAt": "2026-10-27T20:55:31Z",
+        "optionId": "gid://shopify/ProductOption/17877464056193",
+        "optionName": {
+          "before": "Farbe",
+          "after": "Ausführung"
+        },
+        "optionValues": [
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749301633",
+            "before": "Grauer Esel, 21 cm Hoch",
+            "after": "Grauer Esel, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749334401",
+            "before": "Brauner Elefant, 21 cm Hoch",
+            "after": "Brauner Elefant, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749367169",
+            "before": "Gestreiftes Zebra, 21 cm Hoch",
+            "after": "Gestreiftes Zebra, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749399937",
+            "before": "Blauer Elefant, 21 cm Hoch",
+            "after": "Blauer Elefant, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749432705",
+            "before": "Pink Elephant-21CM High",
+            "after": "Rosa Elefant, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749465473",
+            "before": "Grüner Elefant, 21 cm Hoch",
+            "after": "Grüner Elefant, 21 cm hoch",
+            "hasVariants": true
+          },
+          {
+            "optionValueId": "gid://shopify/ProductOptionValue/12309749498241",
+            "before": "Orange Elephant-21CM High",
+            "after": "Orangefarbener Elefant, 21 cm hoch",
+            "hasVariants": true
+          }
+        ],
+        "unchangedVariantBindings": [
+          {
+            "id": "gid://shopify/ProductVariant/56063526568321",
+            "sku": "CJ-CJYD290425101AZ",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749301633"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526601089",
+            "sku": "CJ-CJYD290425102BY",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749334401"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526633857",
+            "sku": "CJ-CJYD290425103CX",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749367169"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526666625",
+            "sku": "CJ-CJYD290425104DW",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749399937"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526699393",
+            "sku": "CJ-CJYD290425105EV",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749432705"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526732161",
+            "sku": "CJ-CJYD290425106FU",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749465473"
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063526764929",
+            "sku": "CJ-CJYD290425107GT",
+            "price": "15.90",
+            "optionValueIds": [
+              "gid://shopify/ProductOptionValue/12309749498241"
+            ]
+          }
+        ],
+        "notes": [
+          "21 cm wird aus dem vorhandenen Optionswert unverändert übernommen; keine neue Messung.",
+          "Rosa und Orangefarbener sind reine Übersetzungen der vorhandenen englischen Bezeichnungen; keine neue Lieferantenzuordnung."
+        ]
+      }
+    ],
+    "preWriteChecks": [
+      "Aktuelle Shopidentität und CHF bestätigen.",
+      "Alle Optionen einschliesslich nicht verwendeter optionValues frisch lesen; vollständige Variantenbindung und IDs mit diesem Snapshot abgleichen.",
+      "Bei Abweichung abbrechen und neuen Diff erstellen; keine blinde Übernahme.",
+      "Nur benannte Option-/Wertnamen ändern; keine productSet-Ersetzung, keine Varianten-Neuanlage oder Löschung.",
+      "Unmittelbar danach Texte und IDs/SKUs/Preise/Variantenanzahl getrennt zurücklesen; unklaren Write nicht wiederholen."
+    ],
+    "excluded": [
+      "Shopify-Produktwrites in diesem Lauf",
+      "Neue Material-/Mass-/Leistungsbehauptungen",
+      "Farbe/Grösse als pauschal vollständig markieren",
+      "Preis-, Status-, Inventar-, Kanal- oder Tagänderungen",
+      "Social-Publikation: beide Produkte tragen rueckhol-0907"
+    ]
+  },
+  "MATERIAL-KONFLIKT.json": {
+    "taskId": "product-attribute-completeness",
+    "findingId": "boot-material-source-conflict-20261029",
+    "classification": "GEMESSEN",
+    "productId": "gid://shopify/Product/15495118520705",
+    "handle": "gefutterte-damen-schneestiefel-mit-kunstfellkr-601700",
+    "checkedAt": "2026-10-28T23:24:35.021Z",
+    "metafield": {
+      "id": "gid://shopify/Metafield/202088997126529",
+      "namespace": "mm-google-shopping",
+      "key": "material",
+      "type": "single_line_text_field",
+      "value": "Baumwolle",
+      "updatedAt": "2026-10-27T20:55:30Z"
+    },
+    "bodyEvidence": [
+      "Baumwollfutter",
+      "Material: Kunststoff",
+      "Polyurethan-Sohle"
+    ],
+    "optionValues": [
+      {
+        "name": "Farbe",
+        "values": [
+          "Schwarz",
+          "Grau",
+          "Blau"
+        ]
+      },
+      {
+        "name": "Grösse",
+        "values": [
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44"
+        ]
+      }
+    ],
+    "variantCount": 27,
+    "assessment": "Der gespeicherte allgemeine Materialwert ist nicht durch eine eindeutige Hauptmaterialquelle belegt. Baumwolle beschreibt laut Text das Futter; vorhandene Texte sind widersprüchlich. Kunststoff nicht automatisch als Ersatz setzen.",
+    "nextStep": "Aktuelles CJ-Datenblatt für CJYD2718405 oder zugeordnetes Lieferantendokument beschaffen; Obermaterial, Futter und Sohle getrennt bestätigen. Grössentabelle mit Fusslänge je Variante prüfen.",
+    "status": "blocked_source_verification",
+    "runtimeCredentials": "Keine CJ-Laufzeit-Credentials im aktuellen Environment; vorhandene Repo-CJ-Helfer bleiben vorhanden.",
+    "imagesViewed": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a847775-873f-4c33-8a9d-a1c0c033e73d.jpg?v=1786515619",
+        "finding": "Produktfoto, keine Grössentabelle und kein Materialbeleg"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/83f6d6fb-dbd2-4807-af1c-d8d9d6e3ce9d.jpg?v=1786515619",
+        "finding": "Produktfoto, keine Grössentabelle und kein Materialbeleg"
+      }
+    ],
+    "writesPerformed": 0
+  },
+  "DIFF-PRUEFUNG.json": {
+    "status": "verified_draft_only",
+    "productChecks": [
+      {
+        "productId": "gid://shopify/Product/15447560520065",
+        "optionIdMatch": true,
+        "noDuplicateNames": true,
+        "variantBindingsVerified": 6
+      },
+      {
+        "productId": "gid://shopify/Product/15446272016769",
+        "optionIdMatch": true,
+        "noDuplicateNames": true,
+        "variantBindingsVerified": 7
+      }
+    ],
+    "unchangedVariantBindings": 13,
+    "nativeProductCount": 3,
+    "liveWrites": 0,
+    "images": [
+      {
+        "file": "boot-3.jpg",
+        "sha256": "8d23320f24f0fdf7f3e91ba959ffc389cdc75eaafdd5c910ada161d35e3f0eaf",
+        "bytes": 110641
+      },
+      {
+        "file": "boot-8.jpg",
+        "sha256": "19199816d3c5b05ea23cad10ccb7910d87c6632d98f385f4452260e22ce96360",
+        "bytes": 143229
+      }
+    ]
+  },
+  "scope": "Three targeted current Shopify product checks; no representative catalogue scan, no product writes."
+}
