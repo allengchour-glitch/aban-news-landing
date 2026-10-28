@@ -1,5 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 28.10.2026, Projektgedächtnis eingerichtet
+
+[LUXESTYLE_PROJEKTGEDAECHTNIS_20261028]
+
+Arbeitsbeginn: [Projektgedächtnis](PROJEKTGEDAECHTNIS.md), [Arbeitsstand mit acht stabilen Aufgaben](ARBEITSSTAND.json), aktuelles Tagesprotokoll und diese Übergabe frisch lesen. [Start-Skill](PROJEKTGEDAECHTNIS-SKILL.md) und [geprüfter Installationsbeleg](GEHIRN-INSTALLATION-20261028.md) sind dauerhaft abgelegt. Claude koordiniert; bestehende Befugnisse gelten weiter.
+
+Der bereits aktive LuxeStyle-Auftrag wurde ausschliesslich um den Start mit diesem Gedächtnis ergänzt und gezielt zurückgelesen. Der vollständige ursprüngliche Auftrag sowie 08:00/14:00/19:00 Uhr Europe/Zurich sind erhalten. Gespeicherte Konfiguration bestätigt, Ausführung mit dem neuen Gedächtnis noch nicht nachgewiesen. Lokal sind jetzt neun Skilldateien vorhanden; native CLI-Erkennung unbekannt. Der Arbeitsindex ist keine verteilte Sperre und ersetzt kein Masterregister.
+
+
 ## 28.10.2026, abschliessender CSV-Abgleich und Revision 3
 
 [LUXESTYLE_MERCHANT_CSV_R3_20261028]
