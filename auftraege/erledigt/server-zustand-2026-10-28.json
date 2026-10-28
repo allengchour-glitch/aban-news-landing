@@ -3,6 +3,81 @@
   "aktion": "waechter_zustand",
   "id": "server-zustand-2026-10-28",
   "warum": "13.10.2026, Plan «Hetzner auf Maximum» Schritt 1 (rein lesend). Vermutung des Plans: systemd beendet am Ende jedes 10-Minuten-Takts alle Motoren des Wächters (Type=oneshot, kein KillMode) — darum kommt kein langer Lauf (Kundenschutz ~45 min, Google-Feedback 466 s, Reel-Bau) auf dem Server zu Ende. Die einzige Messung vom 06.10. fiel mitten in einen Takt und bewies nichts. Die Aktion waechter_zustand liest deshalb die Takt-Dauer aus dem Journal (systemd «Consumed … wall clock») und die Einheit jedes laufenden Skripts — das gilt unabhängig davon, wann sie läuft. Dazu täglich: scipy/av/ffmpeg (ohne sie baut der Server kein Reel), Stash-Zahl im Wächter-Klon (wächst sie, löst der Rewind-Fehlalarm noch aus), Platte, /tmp, RAM, Swap, Herzschlag, Export-/Zugangsdateien (nur Name, Grösse, Zeit), Abschlusszeilen der zwei langen CJ-Wachen und luxe-m-*-Einheiten. Jeder spätere Plan-Schritt (4 Fehlalarm, 5 Geheimnisse, 6 Platz/Swap, 8 Dauerläufer, 9 Reels) prüft seine Wirkung an dieser Quittung. Rückweg: diese Datei löschen. [wiederkehrend, alle 1 Tag(e)]",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-28T21:00:59.012Z",
+  "dauer_s": 0.3,
+  "ergebnis": {
+    "aktion": "waechter_zustand",
+    "was": "Waechter-Takt messen: systemd-Zustand/KillMode, Takt-Dauer (Journal 3 h), laufende Skripte mit Einheit, scipy/av/ffmpeg, Stash-Zahl, Platte und /tmp, RAM, Swap, /tmp-Dateien, Fehlerzeilen zweier CJ-Wachen, luxe-m-*",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "date +%F %T %Z",
+        "ausgabe": "2026-10-28 21:00:59 UTC\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.service -p Type,KillMode,ExitType,RemainAfterExit,ActiveState,SubState,Result,ExecMainStartTimestamp,ExecMainExitTimestamp,ActiveEnterTimestamp,InactiveEnterTimestamp,TimeoutStartUSec,TasksCurrent,MemoryCurrent,MemoryPeak",
+        "ausgabe": "ActiveState=activating\nSubState=start-pre\nActiveEnterTimestamp=\nInactiveEnterTimestamp=Wed 2026-10-28 20:50:24 UTC\nType=oneshot\nExitType=main\nTimeoutStartUSec=15min\nRemainAfterExit=no\nResult=success\nExecMainStartTimestamp=\nExecMainExitTimestamp=\nMemoryCurrent=8511488\nMemoryPeak=8654848\nTasksCurrent=3\nKillMode=control-group\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.timer -p ActiveState,LastTriggerUSec,NextElapseUSecRealtime",
+        "ausgabe": "ActiveState=active\nNextElapseUSecRealtime=\nLastTriggerUSec=Wed 2026-10-28 21:00:31 UTC\n"
+      },
+      {
+        "befehl": "journalctl -u luxe-waechter.service --since=-3h --no-pager -o short-iso",
+        "ausgabe": "2026-10-28T21:00:31 Starting"
+      },
+      {
+        "befehl": "ps -ww -eo etimes=,unit=,args= --sort=etimes",
+        "ausgabe": "0s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n1s luxe-agent.service (anderes)\n4s luxe-agent.service luxe_auftrag_runner.mjs\n5s luxe-agent.service bash\n27s luxe-waechter.service (anderes)\n27s luxe-waechter.service python3\n27s luxe-waechter.service luxe-secrets-nach-tmp.sh\n10d chrony.service chronyd-starter.sh"
+      },
+      {
+        "befehl": "python3 -I -c import importlib, importlib.util as u\nfor m in (\"scipy\", \"av\", \"numpy\", \"PIL\"):\n    try: v = getattr(importlib.import_module(m), \"__version__\", \"da\") if u.find_spec(m) else \"FEHLT\"\n    except Exception as e: v = \"KAPUTT \" + type(e).__name__\n    print(m, v)",
+        "ausgabe": "scipy FEHLT\nav FEHLT\nnumpy 2.3.5\nPIL 12.1.1\n"
+      },
+      {
+        "befehl": "ffmpeg -hide_banner -version",
+        "fehler": "spawnSync ffmpeg ENOENT",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list",
+        "ausgabe": "102"
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list -1 --format=%ci",
+        "ausgabe": "2026-10-19 03:13:52 +0000\n"
+      },
+      {
+        "befehl": "df -h / /tmp",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   38G     0 100% /\ntmpfs           1.9G  481M  1.4G  26% /tmp\n"
+      },
+      {
+        "befehl": "free -m",
+        "ausgabe": "               total        used        free      shared  buff/cache   available\nMem:            3814        1261         321         541        3063        2552\nSwap:              0           0           0\n"
+      },
+      {
+        "befehl": "swapon --show",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "find /tmp -maxdepth 1 ( -name _fixer_herzschlag -o -name export.jsonl -o -name kost28.jsonl -o -name fortura_env.sh -o -name cj_konten.env -o -name cj_ausgelistet_sichtbar.log -o -name besuchte_seiten_lieferbar.log ) -printf %TF %TH:%TM %TZ %s %p\n",
+        "ausgabe": "2026-10-18 20:54 UTC 19589111 /tmp/export.jsonl\n2026-10-19 12:10 UTC 11 /tmp/_fixer_herzschlag\n"
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log\ntail: cannot open '/tmp/cj_ausgelistet_sichtbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/besuchte_seiten_lieferbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/besuchte_seiten_lieferbar.log\ntail: cannot open '/tmp/besuchte_seiten_lieferbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "systemctl list-units --all --plain --no-pager --no-legend luxe-m-*",
+        "ausgabe": ""
+      }
+    ]
+  }
 }
