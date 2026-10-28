@@ -1,0 +1,331 @@
+{
+ "stand": "Katalog /tmp/katalog_taxo.json, gelesen 26.10.2026 20:14",
+ "katalogProdukte": 56620,
+ "quelle": "Mitgliederlisten und Messausgabe von dropship/taxonomie-2610-b/messen.mjs (bereiche/schmuck-uhren.json), Stand 27.10.2026 05:48",
+ "hinweis": "sha1 = SHA-1 der sortierten Mitglieder-Handles, durch Zeilenumbruch verbunden. Neu bauen: node dropship/taxonomie-2610-b/orakel_bauen.mjs (nach jeder Regeländerung: erst messen.mjs, dann dieses Skript). Das Orakel ist NICHT unabhängig von den Regeln: messen.mjs und der Adapter rufen dieselbe Funktion kern.passt() auf, es fängt Verdrahtungsfehler im Adapter, keine Regelfehler, und es ist ein Schnappschuss des Katalogs: vor jedem LIVE-Lauf den Katalog frisch lesen und die Zahlen von kategorien_anlegen.mjs (SCHMUCK=1) gegen das Orakel halten (Abschnitt «Schmuck gegen das Orakel»).",
+ "kategorien": {
+  "moissanit-ringe": {
+   "n": 56,
+   "sha1": "779af3ecf8a934c5d21a343bede16f76c6a11610"
+  },
+  "edelstein-geburtsstein-ringe": {
+   "n": 91,
+   "sha1": "341a12ce18cccb57eca832d76aaf640a5a07ae02"
+  },
+  "silberringe": {
+   "n": 49,
+   "sha1": "b2bb359ecb2298f0934dbb5595fe862b6d7e9360"
+  },
+  "edelstahl-titanringe": {
+   "n": 67,
+   "sha1": "c10aec75806b8d4e70cc302789ded668c2d705aa"
+  },
+  "zirkonia-strassringe": {
+   "n": 99,
+   "sha1": "58ed43886a985d13397a0b7e69364fe3d6216e29"
+  },
+  "ringsets-stapelringe": {
+   "n": 26,
+   "sha1": "4322ffc4909274aeb1c952bee7c03cbe3c666adf"
+  },
+  "verstellbare-offene-ringe": {
+   "n": 64,
+   "sha1": "e8baedbb3628f020eff98872684155cfc4ad526b"
+  },
+  "creolen-ohrclips": {
+   "n": 23,
+   "sha1": "e90b8d62592d19e49f43368e9f39e3031da78def"
+  },
+  "ohrhaenger-tropfenohrringe": {
+   "n": 37,
+   "sha1": "dde90f7b2d8b2b6b17c3f27064ac948b7656cef4"
+  },
+  "ohrstecker": {
+   "n": 71,
+   "sha1": "398022c8fad6720e28dfeabeb4ce58632d90409d"
+  },
+  "silber-ohrringe": {
+   "n": 46,
+   "sha1": "347b79c4f3f018b1009171f18c79ebe96d3e5b9a"
+  },
+  "perlen-ohrringe": {
+   "n": 26,
+   "sha1": "5319c0d56becd6bdd2da8f68950b3d8ca22a0e87"
+  },
+  "zirkonia-strass-ohrringe": {
+   "n": 40,
+   "sha1": "676d5add0cf85d09455aec57b6bce6fa1d424fd4"
+  },
+  "halsketten-alle": {
+   "n": 450,
+   "sha1": "acaff90c4e2ebeaee493170652ad43b92c063566"
+  },
+  "perlenketten": {
+   "n": 60,
+   "sha1": "b54afc4a9a2ae36a48e6a794db12a0ed9f989726"
+  },
+  "choker-layering-ketten": {
+   "n": 21,
+   "sha1": "73afc2f53adfbba8a4fe201bc2c44a172b54cd62"
+  },
+  "glieder-hiphop-ketten": {
+   "n": 18,
+   "sha1": "9f56a7758907dc8a03a7057a13655501757e5fb3"
+  },
+  "ketten-mit-anhaenger": {
+   "n": 141,
+   "sha1": "cb363ddb55755c2053f4125a0f7efadef12d4705"
+  },
+  "silberketten": {
+   "n": 47,
+   "sha1": "b5fe207610fff311dc79c40e1caf9067721adc54"
+  },
+  "edelstahl-titanketten": {
+   "n": 70,
+   "sha1": "306346b9a4e27c96b6e83308a7917cb8eb450412"
+  },
+  "zirkonia-moissanit-ketten": {
+   "n": 44,
+   "sha1": "65a3bc02c56e7ed4e4f50400335e12d3c9d2c172"
+  },
+  "armreifen-bangles": {
+   "n": 109,
+   "sha1": "e2b4ed88acc3a3756b4dccd2101f7ca82cc2a279"
+  },
+  "lederarmbaender": {
+   "n": 66,
+   "sha1": "4641d2cae1827fc8bcbc37019cbb212af35c1a78"
+  },
+  "perlen-edelsteinarmbaender": {
+   "n": 207,
+   "sha1": "54888af180503c751d0f039e95ac672d6ee3c710"
+  },
+  "gliederarmbaender": {
+   "n": 40,
+   "sha1": "9397379c79c375f5e2d6d8ef513204a8a51e4fd7"
+  },
+  "kupfer-magnetarmbaender": {
+   "n": 82,
+   "sha1": "fa517faed5da40abc4173c6498dfb9ffb79d82dc"
+  },
+  "geflochtene-wickelarmbaender": {
+   "n": 26,
+   "sha1": "7e75d8487b8acacfcf57f9c822382d6bb325411f"
+  },
+  "silberarmbaender": {
+   "n": 89,
+   "sha1": "a6938cd88132bb9462c219105c3be063812f02a2"
+  },
+  "edelstahl-titanarmbaender": {
+   "n": 198,
+   "sha1": "e76c7186b331d6e5bb9b9d88b2fd71f10e8891cb"
+  },
+  "vergoldete-armbaender": {
+   "n": 52,
+   "sha1": "43b9568c335172cf6c77476a8cd602da9cddd920"
+  },
+  "zirkonia-strassarmbaender": {
+   "n": 184,
+   "sha1": "37506edd43b187e5c0249ad300d770da325cb304"
+  },
+  "herrenringe": {
+   "n": 25,
+   "sha1": "20f88ed1737814b3a427f30f6d1a0ebfe131a9bb"
+  },
+  "herrenarmbaender": {
+   "n": 46,
+   "sha1": "c015f61334589a82c00ac8c25cebda2a74890fc0"
+  },
+  "herrenuhren": {
+   "n": 976,
+   "sha1": "4b299a0e8eda116a33e6be27948a87dbf780734a"
+  },
+  "personalisierte-ringe": {
+   "n": 39,
+   "sha1": "d9e78dedfb415ee7b680045bd75a40ab10ba6bfc"
+  },
+  "personalisierte-armbaender": {
+   "n": 66,
+   "sha1": "f38e502572261c86c3ea451746f06ed588074526"
+  },
+  "personalisierte-ketten": {
+   "n": 31,
+   "sha1": "a8a25336522b6c44c68eb345621dd057840cb2af"
+  },
+  "gluecks-schutzschmuck": {
+   "n": 52,
+   "sha1": "e97037654f70baea08d4bc7caff8375c6cfc3e9b"
+  },
+  "kreuz-schmuck": {
+   "n": 40,
+   "sha1": "96c7019ed30e65ef0508614c4330e749ef2c6eab"
+  },
+  "herz-schmuck": {
+   "n": 158,
+   "sha1": "106d612eccd15ae8bfb2890325142a73de52bbec"
+  },
+  "stern-mond-schmuck": {
+   "n": 54,
+   "sha1": "40fdffffd4e64105e8ede1aacd8ab08159a42d78"
+  },
+  "blumen-schmetterlingsschmuck": {
+   "n": 164,
+   "sha1": "5c6b4ec60d78e37f23be2362f630f85dc708b207"
+  },
+  "tier-schmuck": {
+   "n": 86,
+   "sha1": "fc90b90224b1c71d08d67a95224da5069443dfe2"
+  },
+  "punk-gothic-schmuck": {
+   "n": 48,
+   "sha1": "45b8c2626e6d548af55912158c4c83d6f9a7aae4"
+  },
+  "boho-ethno-schmuck": {
+   "n": 41,
+   "sha1": "2b7e8ced6c7faf19e0162904869ccc0135c62a37"
+  },
+  "korea-frankreich-oldmoney-schmuck": {
+   "n": 39,
+   "sha1": "402e242b4e38f842a90870ba9475adfae8c5ea81"
+  },
+  "vintage-retro-schmuck": {
+   "n": 192,
+   "sha1": "10f81bcbcb9c853edc9658841b4b6276a90626b6"
+  },
+  "geometrischer-schmuck": {
+   "n": 67,
+   "sha1": "155c56e1d9c42bc7807395d9ea290867b0b60e60"
+  },
+  "minimalistischer-schmuck": {
+   "n": 73,
+   "sha1": "f8350778a5438b0e39e4a5c644c8a3e6c6a9c238"
+  },
+  "schmuck-selbermachen": {
+   "n": 43,
+   "sha1": "db6c68e40a5a182dd8b731179d991cc087d26196"
+  },
+  "schluessel-taschenanhaenger": {
+   "n": 26,
+   "sha1": "e14bd2601ffe4d78eeeeccf3ab745339265f1db7"
+  },
+  "kombisets-kette-armband-ohrringe": {
+   "n": 29,
+   "sha1": "e8752c95b35d43a116604f87d663494b59542ad9"
+  }
+ },
+ "unterfilter": {
+  "ohrstecker-silber": 22,
+  "ohrstecker-vintage": 20,
+  "ketten-mit-anhaenger-stahl": 27,
+  "ketten-mit-anhaenger-herz": 22,
+  "armreifen-bangles-zirkonia": 48,
+  "lederarmbaender-stahl": 25,
+  "lederarmbaender-herren": 21,
+  "edelstahl-titanarmbaender-zirkonia": 28,
+  "edelstahl-titanarmbaender-leder": 25,
+  "edelstahl-titanarmbaender-vergoldet": 19,
+  "herz-schmuck-armbaender": 56,
+  "herz-schmuck-zirkonia": 40,
+  "herz-schmuck-ketten": 36,
+  "herz-schmuck-ringe": 23,
+  "herz-schmuck-silber": 22,
+  "herz-schmuck-stahl": 22,
+  "blumen-schmetterlingsschmuck-zirkonia": 33,
+  "blumen-schmetterlingsschmuck-ringe": 35,
+  "blumen-schmetterlingsschmuck-ohrringe": 35,
+  "blumen-schmetterlingsschmuck-armbaender": 34,
+  "blumen-schmetterlingsschmuck-perlen": 23,
+  "blumen-schmetterlingsschmuck-silber": 21,
+  "tier-schmuck-armbaender": 29,
+  "punk-gothic-schmuck-armbaender": 20,
+  "vintage-retro-schmuck-armbaender": 66,
+  "vintage-retro-schmuck-ringe": 40,
+  "vintage-retro-schmuck-ohrringe": 34,
+  "vintage-retro-schmuck-zirkonia": 22,
+  "vintage-retro-schmuck-stahl": 24,
+  "minimalistischer-schmuck-armbaender": 32,
+  "minimalistischer-schmuck-ringe": 22,
+  "herrenuhren-quarz": 388,
+  "herrenuhren-automatik": 177,
+  "herrenuhren-multi": 144,
+  "herrenuhren-edelstahl": 130,
+  "herrenuhren-leuchtend": 124,
+  "herrenuhren-sport": 121,
+  "damenuhren-quarz": 59,
+  "damenuhren-edelstahl": 26,
+  "damenuhren-strass": 16,
+  "uhren-sets-geschenksets-quarz": 20,
+  "uhren-sets-geschenksets-herren": 18,
+  "taschenuhren-automatik": 18,
+  "taschenuhren-retro": 15,
+  "holzuhren-bambusuhren-quarz": 42,
+  "holzuhren-bambusuhren-herren": 41,
+  "holzuhren-bambusuhren-sport": 16,
+  "automatik-mechanische-uhren-herren": 177,
+  "automatik-mechanische-uhren-skelett": 46,
+  "automatik-mechanische-uhren-leuchtend": 30,
+  "automatik-mechanische-uhren-edelstahl": 27,
+  "automatik-mechanische-uhren-business": 18,
+  "automatik-mechanische-uhren-leder": 17,
+  "chronographen-herren": 31,
+  "chronographen-quarz": 26,
+  "chronographen-sport": 15,
+  "chronographen-multi": 15,
+  "digitaluhren-led-uhren-multi": 25,
+  "digitaluhren-led-uhren-sport": 22,
+  "digitaluhren-led-uhren-herren": 22,
+  "sportuhren-outdoor-herren": 96,
+  "sportuhren-outdoor-multi": 66,
+  "sportuhren-outdoor-quarz": 53,
+  "sportuhren-outdoor-leuchtend": 26,
+  "sportuhren-outdoor-silikon": 21,
+  "strass-schmuckuhren-quarz": 25,
+  "strass-schmuckuhren-herren": 18,
+  "strass-schmuckuhren-damen": 16,
+  "retro-vintage-uhren-quarz": 21,
+  "retro-vintage-uhren-herren": 17,
+  "business-dress-uhren-herren": 91,
+  "business-dress-uhren-quarz": 86,
+  "business-dress-uhren-edelstahl": 32,
+  "business-dress-uhren-multi": 23,
+  "business-dress-uhren-kalender": 22,
+  "business-dress-uhren-leder": 16,
+  "quarzuhren-herren": 259,
+  "quarzuhren-edelstahl": 102,
+  "quarzuhren-kalender": 79,
+  "quarzuhren-multi": 74,
+  "quarzuhren-leuchtend": 64,
+  "quarzuhren-damen": 46,
+  "uhren-lederarmband-herren": 49,
+  "uhren-lederarmband-quarz": 41,
+  "uhren-lederarmband-automatik": 17,
+  "uhren-lederarmband-business": 16,
+  "edelstahl-metalluhren-herren": 131,
+  "edelstahl-metalluhren-quarz": 130,
+  "edelstahl-metalluhren-business": 37,
+  "edelstahl-metalluhren-automatik": 27,
+  "edelstahl-metalluhren-damen": 26,
+  "edelstahl-metalluhren-kalender": 23,
+  "uhren-silikonarmband-herren": 32,
+  "uhren-silikonarmband-quarz": 30,
+  "uhren-silikonarmband-sport": 24,
+  "uhren-silikonarmband-automatik": 15,
+  "uhren-mit-kalender-herren": 114,
+  "uhren-mit-kalender-quarz": 98,
+  "uhren-mit-kalender-leuchtend": 35,
+  "uhren-mit-kalender-business": 25,
+  "uhren-mit-kalender-edelstahl": 23,
+  "uhren-mit-kalender-multi": 23,
+  "leuchtuhren-herren": 105,
+  "leuchtuhren-quarz": 66,
+  "leuchtuhren-sport": 29,
+  "leuchtuhren-multi": 29,
+  "leuchtuhren-automatik": 28,
+  "multifunktionsuhren-herren": 125,
+  "multifunktionsuhren-quarz": 92,
+  "multifunktionsuhren-sport": 80,
+  "multifunktionsuhren-digital": 25,
+  "multifunktionsuhren-business": 23,
+  "multifunktionsuhren-edelstahl": 16
+ }
+}

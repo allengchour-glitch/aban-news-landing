@@ -61,7 +61,7 @@
     "gesundheitsring|blutsauerstoff|stressüberwachung",
     "(^|[^a-zäöüß])diy(?![a-zäöüß])"
    ],
-   "beschreibung": "Ringe mit Moissanit, als Solitär, mit Halo oder im Set."
+   "beschreibung": "Ringe mit Moissanit, als Solitär oder mit Halo."
   },
   {
    "handle": "edelstein-geburtsstein-ringe",
@@ -80,7 +80,7 @@
     "^(?=.*(?:moissanit))",
     "(türkis|smaragd|rubin|saphir)(en|er|es|e|em)?[- ]?(farb|grün|blau|rot)"
    ],
-   "beschreibung": "Ringe mit Geburtsstein, Naturstein oder farbigem Stein wie Opal, Achat, Amethyst oder Tigerauge."
+   "beschreibung": "Ringe mit Geburtsstein, Naturstein oder farbigem Stein wie Opal, Achat oder Tigerauge."
   },
   {
    "handle": "silberringe",
@@ -110,7 +110,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -120,7 +120,7 @@
     "^(?=.*(?:(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
-   "beschreibung": "Ringe aus Edelstahl, Titanstahl und Wolfram, für jeden Tag und für Herren wie Damen."
+   "beschreibung": "Ringe aus Edelstahl und Titanstahl, für jeden Tag und für Herren wie Damen."
   },
   {
    "handle": "zirkonia-strassringe",
@@ -130,7 +130,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -139,9 +139,9 @@
     "^(?=.*(?:moissanit))",
     "^(?=.*(?:(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
-    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))"
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl))"
    ],
-   "beschreibung": "Funkelnde Ringe mit Zirkonia, Strass oder Kristall. Silber- und Edelstahlringe mit Zirkonia stehen bei den Silber- und Edelstahlringen."
+   "beschreibung": "Funkelnde Ringe mit Zirkonia oder Strass."
   },
   {
    "handle": "ringsets-stapelringe",
@@ -225,7 +225,7 @@
    "titel_nicht": [
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Creolen, Huggies, Ohrclips und Ear Cuffs, auch ohne Ohrloch zu tragen."
+   "beschreibung": "Creolen, Huggies, Ohrclips und Ear Cuffs; Ohrclips brauchen kein Ohrloch."
   },
   {
    "handle": "ohrhaenger-tropfenohrringe",
@@ -262,7 +262,7 @@
    "unterfilter": [
     {
      "handle": "ohrstecker-silber",
-     "titel": "Silber",
+     "titel": "Silber-Ohrstecker",
      "titel_muss": [
       "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
      ],
@@ -275,17 +275,9 @@
     },
     {
      "handle": "ohrstecker-vintage",
-     "titel": "Vintage & Retro",
+     "titel": "Vintage-Ohrstecker",
      "titel_muss": [
       "retro|vintage|antik"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "ohrstecker-zirkonia",
-     "titel": "Mit Zirkonia",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
      ],
      "titel_nicht": []
     }
@@ -315,13 +307,13 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen"
    ],
    "titel_nicht": [
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
-   "beschreibung": "Ohrringe mit Perlen, Süsswasserperlen oder Perlmutt."
+   "beschreibung": "Ohrringe mit Perlen, als Ohrstecker oder Ohrhänger."
   },
   {
    "handle": "zirkonia-strass-ohrringe",
@@ -331,14 +323,14 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
    ],
    "titel_nicht": [
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))"
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen))"
    ],
-   "beschreibung": "Ohrringe mit Zirkonia, Strass oder Kristall für festliche Anlässe und den Alltag."
+   "beschreibung": "Ohrringe mit Zirkonia oder Strass für festliche Anlässe und den Alltag."
   },
   {
    "handle": "halsketten-alle",
@@ -368,7 +360,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
@@ -377,9 +369,10 @@
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
-    "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
+    "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])",
+    "holzperl|glasperl"
    ],
-   "beschreibung": "Halsketten mit Perlen, Süsswasserperlen und Perlmutt."
+   "beschreibung": "Halsketten mit Perlen, darunter Ketten mit Süsswasserperlen."
   },
   {
    "handle": "choker-layering-ketten",
@@ -399,14 +392,14 @@
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen))",
     "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
    ],
    "beschreibung": "Kurze Choker und mehrlagige Ketten zum Kombinieren."
   },
   {
    "handle": "glieder-hiphop-ketten",
-   "titel": "Glieder-, Panzer- & Hip-Hop-Ketten",
+   "titel": "Glieder- & Hip-Hop-Ketten",
    "g_prefix": [
     "Apparel & Accessories > Jewelry > Necklaces",
     "Apparel & Accessories > Jewelry > Charms & Pendants"
@@ -422,11 +415,11 @@
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen))",
     "^(?=.*(?:choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein))",
     "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
    ],
-   "beschreibung": "Kräftige Gliederketten: Cuban- und Panzerketten, Rolo-Ketten und Ketten im Hip-Hop-Stil."
+   "beschreibung": "Kräftige Gliederketten: Cuban-Ketten, Gliederketten und Ketten im Hip-Hop-Stil."
   },
   {
    "handle": "ketten-mit-anhaenger",
@@ -446,7 +439,7 @@
     "(^|[^a-zäöüß])(hunde?|katzen|haustier)-?(halskette|halsband|kette)",
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen))",
     "^(?=.*(?:choker|halsband|layer|mehrreih|mehrlag|doppelreih|schlüsselbein))",
     "^(?=.*(?:cuban|kubanisch|panzer|gliederkette|hip-?hop|o-link|rolo))",
     "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
@@ -455,25 +448,17 @@
    "unterfilter": [
     {
      "handle": "ketten-mit-anhaenger-stahl",
-     "titel": "Edelstahl & Titan",
+     "titel": "Anhänger aus Edelstahl & Titan",
      "titel_muss": [
-      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
      ],
      "titel_nicht": []
     },
     {
      "handle": "ketten-mit-anhaenger-herz",
-     "titel": "Herz",
+     "titel": "Herz-Anhänger",
      "titel_muss": [
       "(^|[^a-zäöüß])(herz|herzen|herzförmig)"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "ketten-mit-anhaenger-zirkonia",
-     "titel": "Mit Zirkonia",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
      ],
      "titel_nicht": []
     }
@@ -512,7 +497,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])diy(?![a-zäöüß])",
@@ -535,7 +520,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)",
+    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)",
     "moissanit"
    ],
    "titel_nicht": [
@@ -546,10 +531,10 @@
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
-    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl))",
     "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
    ],
-   "beschreibung": "Halsketten mit Zirkonia, Strass, Kristall oder Moissanit."
+   "beschreibung": "Halsketten mit Zirkonia, Strass oder Moissanit."
   },
   {
    "handle": "personalisierte-ketten",
@@ -571,7 +556,7 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "lampe|(^|[^a-zäöüß])ohr(hänger|ringe?|stecker)(?![a-zäöüß])|taille(n|-)|bh-?kette|rücken-?(kette|schmuck)|körper-?(schmuck-?)?kette|körperschmuck|körperkette|anhänger-perlen|schmuckmaterial|(^|[^a-zäöüß])uhr(en)?-?,|geschenkset uhr|armband-? ?(&|und) ?halsketten|armketten-set|kette (und|&) armband|anhänger-armband(?![a-zäöüß])"
    ],
-   "beschreibung": "Halsketten mit Gravur, Namen, Buchstaben oder Geburtsstein als persönliches Geschenk."
+   "beschreibung": "Halsketten mit Gravur, Namen oder Buchstaben als persönliches Geschenk."
   },
   {
    "handle": "armreifen-bangles",
@@ -589,21 +574,13 @@
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Feste und offene Armreifen aus Metall, auch mit Zirkonia oder Gravur.",
+   "beschreibung": "Feste und offene Armreifen aus Metall, auch mit Zirkonia.",
    "unterfilter": [
     {
      "handle": "armreifen-bangles-zirkonia",
-     "titel": "Mit Zirkonia",
+     "titel": "Armreifen mit Zirkonia & Strass",
      "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "armreifen-bangles-vintage",
-     "titel": "Vintage & Retro",
-     "titel_muss": [
-      "retro|vintage|antik"
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
      ],
      "titel_nicht": []
     }
@@ -631,15 +608,15 @@
    "unterfilter": [
     {
      "handle": "lederarmbaender-stahl",
-     "titel": "Edelstahl & Titan",
+     "titel": "Leder mit Edelstahl & Titan",
      "titel_muss": [
-      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
      ],
      "titel_nicht": []
     },
     {
      "handle": "lederarmbaender-herren",
-     "titel": "Für Herren",
+     "titel": "Lederarmbänder für Herren",
      "titel_muss": [
       "herren|männer|männlich|unisex"
      ],
@@ -655,7 +632,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen",
+    "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen",
     "(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)",
     "chakra"
    ],
@@ -668,7 +645,7 @@
     "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
     "(synthetisch|künstlich)\\w* opal|(türkis|smaragd|rubin|saphir)(en|er|es|e|em)?[- ]?(farb|grün|blau|rot)"
    ],
-   "beschreibung": "Armbänder aus Perlen, Natursteinen und Edelsteinen, elastisch oder mit Verschluss."
+   "beschreibung": "Armbänder aus Perlen, Natursteinen und Edelsteinen, auch elastisch."
   },
   {
    "handle": "gliederarmbaender",
@@ -688,9 +665,9 @@
     "tennisracket|tennisschläger",
     "^(?=.*(?:armreif|bangle|manschette|cuff))",
     "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))"
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))"
    ],
-   "beschreibung": "Gliederarmbänder, Panzer- und Cuban-Ketten sowie Tennisarmbänder."
+   "beschreibung": "Gliederarmbänder, Cuban-Armbänder sowie Tennisarmbänder."
   },
   {
    "handle": "kupfer-magnetarmbaender",
@@ -700,7 +677,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(kupfer|rotkupfer|messing)",
+    "(^|[^a-zäöüß])(kupfer|rotkupfer)",
     "magnet"
    ],
    "titel_nicht": [
@@ -710,20 +687,20 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:armreif|bangle|manschette|cuff))",
     "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
     "^(?=.*(?:cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband))(?!.*(?:tennisracket|tennisschläger))"
    ],
    "beschreibung": "Armbänder aus Kupfer und Armbänder mit Magnet oder Magnetverschluss."
   },
   {
    "handle": "geflochtene-wickelarmbaender",
-   "titel": "Geflochtene & Wickelarmbänder",
+   "titel": "Geflochtene Armbänder",
    "g_prefix": [
     "Apparel & Accessories > Jewelry > Bracelets"
    ],
    "g_nicht": [],
    "titel_muss": [
-    "geflecht|geflochten|wickel|wachs|seil|kordel|gewebt|knoten"
+    "geflecht|geflochten|wickel|wachs|seil|kordel|gewebt"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -732,11 +709,11 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:armreif|bangle|manschette|cuff))",
     "^(?=.*(?:(^|[^a-zäöüß])(leder|rindleder|kalbsleder|echtleder)|lederarmband))",
-    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
+    "^(?=.*(?:(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen|(^|[^a-zäöüß])(geburtsstein|edelstein|naturstein|opal|achat|agat|jade(?!n)|onyx|amethyst|mondstein|türkis|aquamarin|smaragd|rubin|saphir|tigerauge|tigeraugen|lapis|malachit|topas|granat|bernstein|obsidian|citrin|quarz|labradorit|katzenaugen|karneol|turmalin|peridot|sonnenstein|rosenquarz|kristallperl|tigers? eye|naturkristall|bergkristall|fluorit|jasper|jaspis|moosachat|kyanit|tansanit|chalcedon|padparadscha|(^|[^a-zäöüß])steinring|(^|[^a-zäöüß])steinarmband|natürliche[nr]? stein)|chakra))",
     "^(?=.*(?:cuban|kubanisch|(^|[^a-zäöüß])link|panzer|glieder|tennis|kettenarmband))(?!.*(?:tennisracket|tennisschläger))",
-    "^(?=.*(?:(^|[^a-zäöüß])(kupfer|rotkupfer|messing)|magnet))"
+    "^(?=.*(?:(^|[^a-zäöüß])(kupfer|rotkupfer)|magnet))"
    ],
-   "beschreibung": "Armbänder aus geflochtenen oder gewebten Bändern, Kordeln und Wickelbändern."
+   "beschreibung": "Armbänder aus geflochtenen Bändern und Kordeln."
   },
   {
    "handle": "silberarmbaender",
@@ -768,7 +745,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+    "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -777,19 +754,19 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))"
    ],
-   "beschreibung": "Armbänder aus Edelstahl und Titanstahl, robust für den Alltag.",
+   "beschreibung": "Armbänder aus Edelstahl und Titanstahl für Herren und Damen.",
    "unterfilter": [
     {
      "handle": "edelstahl-titanarmbaender-zirkonia",
-     "titel": "Mit Zirkonia",
+     "titel": "Edelstahl mit Zirkonia & Strass",
      "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
      ],
      "titel_nicht": []
     },
     {
      "handle": "edelstahl-titanarmbaender-leder",
-     "titel": "Aus Leder",
+     "titel": "Edelstahl mit Leder",
      "titel_muss": [
       "(^|[^a-zäöüß])(leder|rindleder|echtleder)"
      ],
@@ -797,17 +774,9 @@
     },
     {
      "handle": "edelstahl-titanarmbaender-vergoldet",
-     "titel": "Vergoldet",
+     "titel": "Vergoldete Edelstahlarmbänder",
      "titel_muss": [
       "(^|[^a-zäöüß])([a-zäöüß]*vergoldet|[a-zäöüß]*vergoldung|goldplattiert|gold-?plattiert|plattiert|goldüberzogen|gold-?überzug|gold-?verplatt|goldgeplätt|goldgefüllt|gold-?füllung|(18|24|14)k[- ]?(gold-?)?(plat|überzog|beschicht|füll|verg))"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "edelstahl-titanarmbaender-herren",
-     "titel": "Für Herren",
-     "titel_muss": [
-      "herren|männer|männlich|unisex"
      ],
      "titel_nicht": []
     }
@@ -829,7 +798,7 @@
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
-    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))"
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl))"
    ],
    "beschreibung": "Armbänder und Armreifen mit Vergoldung, zum Beispiel 18K vergoldet oder goldplattiert."
   },
@@ -841,7 +810,7 @@
    ],
    "g_nicht": [],
    "titel_muss": [
-    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+    "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -849,10 +818,10 @@
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)))(?!(?=.*(?:edelstahl|titan|stahl|kupfer|messing|legierung|bronze|zink))(?!.*(?:925|sterling|999|feinsilber|reinsilber)))(?!.*(?:(gold|schwarz|rosé|roségold|anthrazit)( ?(&|/|,|und) ?)silber(?!-?(ring|ketten?|armband|armreif|schmuck))))(?!.*(?:silber( ?(&|/|,|und) ?)(gold|schwarz|anthrazit)))(?!.*(?:gold, silber))",
-    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl))",
+    "^(?=.*(?:(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl))",
     "^(?=.*(?:(^|[^a-zäöüß])([a-zäöüß]*vergoldet|[a-zäöüß]*vergoldung|goldplattiert|gold-?plattiert|plattiert|goldüberzogen|gold-?überzug|gold-?verplatt|goldgeplätt|goldgefüllt|gold-?füllung|(18|24|14)k[- ]?(gold-?)?(plat|überzog|beschicht|füll|verg))))"
    ],
-   "beschreibung": "Armbänder mit Zirkonia, Strass oder Kristall."
+   "beschreibung": "Armbänder mit Zirkonia oder Strass, darunter Tennisarmbänder."
   },
   {
    "handle": "herrenarmbaender",
@@ -871,7 +840,7 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "(männer|herren) (und|&) (frauen|damen)|(damen|frauen) (und|&) (herren|männer)"
    ],
-   "beschreibung": "Armbänder für Herren aus Leder, Stahl, Kupfer und Naturstein."
+   "beschreibung": "Armbänder für Herren aus Leder, Stahl und Kupfer."
   },
   {
    "handle": "personalisierte-armbaender",
@@ -913,7 +882,7 @@
     "für taschen|anstecker|modellanhänger|kampfjet|antistatik|beret|ornament|spacer|-bead(?![a-zäöüß])|(^|[^a-zäöüß])beads?(?![a-zäöüß])",
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))"
    ],
-   "beschreibung": "Schmuck mit Glückssymbolen und Schutzzeichen: Kleeblatt, Teufelsauge, Hamsa, Amulette und Hufeisen."
+   "beschreibung": "Schmuck mit Glückssymbolen und Schutzzeichen: Kleeblatt, Teufelsauge, Amulette und Hufeisen."
   },
   {
    "handle": "kreuz-schmuck",
@@ -969,7 +938,7 @@
    "unterfilter": [
     {
      "handle": "herz-schmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Herz-Armbänder & -Armreifen",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
      ],
@@ -977,15 +946,15 @@
     },
     {
      "handle": "herz-schmuck-zirkonia",
-     "titel": "Mit Zirkonia",
+     "titel": "Herz mit Zirkonia & Strass",
      "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
      ],
      "titel_nicht": []
     },
     {
      "handle": "herz-schmuck-ketten",
-     "titel": "Ketten & Anhänger",
+     "titel": "Herz-Ketten & Anhänger",
      "titel_muss": [
       "(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|kollier|choker|anhänger|halsband|medaillon)"
      ],
@@ -995,7 +964,7 @@
     },
     {
      "handle": "herz-schmuck-ringe",
-     "titel": "Ringe",
+     "titel": "Herz-Ringe",
      "titel_muss": [
       "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
      ],
@@ -1005,7 +974,7 @@
     },
     {
      "handle": "herz-schmuck-silber",
-     "titel": "Silber",
+     "titel": "Herz-Schmuck aus Silber",
      "titel_muss": [
       "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
      ],
@@ -1018,9 +987,9 @@
     },
     {
      "handle": "herz-schmuck-stahl",
-     "titel": "Edelstahl & Titan",
+     "titel": "Herz aus Edelstahl & Titan",
      "titel_muss": [
-      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
      ],
      "titel_nicht": []
     }
@@ -1085,15 +1054,15 @@
    "unterfilter": [
     {
      "handle": "blumen-schmetterlingsschmuck-zirkonia",
-     "titel": "Mit Zirkonia",
+     "titel": "Zirkonia-Blumen & -Schmetterlinge",
      "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
      ],
      "titel_nicht": []
     },
     {
      "handle": "blumen-schmetterlingsschmuck-ringe",
-     "titel": "Ringe",
+     "titel": "Blumen- & Schmetterlingsringe",
      "titel_muss": [
       "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
      ],
@@ -1103,7 +1072,7 @@
     },
     {
      "handle": "blumen-schmetterlingsschmuck-ohrringe",
-     "titel": "Ohrringe",
+     "titel": "Blumen- & Schmetterlings-Ohrringe",
      "titel_muss": [
       "(^|[^a-zäöüß])(ohrring|ohrringe|ohrstecker|ohrhänger|creole|ohrclips?|huggie)"
      ],
@@ -1111,7 +1080,7 @@
     },
     {
      "handle": "blumen-schmetterlingsschmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Blumen- & Schmetterlings-Armbänder",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
      ],
@@ -1119,15 +1088,15 @@
     },
     {
      "handle": "blumen-schmetterlingsschmuck-perlen",
-     "titel": "Mit Perlen",
+     "titel": "Blumen & Schmetterlinge mit Perlen",
      "titel_muss": [
-      "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette|perlmutt)|perlen"
+      "(^|[^a-zäöüß])(perle|perlen|süsswasserperl|naturperl|barockperl|perlenkette)|perlen"
      ],
      "titel_nicht": []
     },
     {
      "handle": "blumen-schmetterlingsschmuck-silber",
-     "titel": "Silber",
+     "titel": "Silber-Blumen & -Schmetterlinge",
      "titel_muss": [
       "925|sterling|s925|(^|[^a-zäöüß])silber(?!n|farb|-?optik|-?ton|-?plat|-?geplät|geplät|-?überzog|-?überzug|-?beschicht|-?ähnlich|-?look|-?akzent|-?element)|(^|[^a-zäöüß])silber-?(ring|ketten?|armband|armreif|ohr|schmuck|halskette|anhänger)"
      ],
@@ -1173,27 +1142,17 @@
    "unterfilter": [
     {
      "handle": "tier-schmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Tier-Armbänder & -Armreifen",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
      ],
      "titel_nicht": []
-    },
-    {
-     "handle": "tier-schmuck-ringe",
-     "titel": "Ringe",
-     "titel_muss": [
-      "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
-     ],
-     "titel_nicht": [
-      "ohrring|armring"
-     ]
     }
    ]
   },
   {
    "handle": "punk-gothic-schmuck",
-   "titel": "Punk- & Gothic-Schmuck",
+   "titel": "Punk-, Gothic- & Hip-Hop-Schmuck",
    "g_prefix": [
     "Apparel & Accessories > Jewelry"
    ],
@@ -1217,17 +1176,9 @@
    "unterfilter": [
     {
      "handle": "punk-gothic-schmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Punk-Armbänder & -Armreifen",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
-     ],
-     "titel_nicht": []
-    },
-    {
-     "handle": "punk-gothic-schmuck-stahl",
-     "titel": "Edelstahl & Titan",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
      ],
      "titel_nicht": []
     }
@@ -1256,7 +1207,7 @@
     "^(?!.*(^|[^a-zäöüß])oder(?![a-zäöüß]))(?:.*(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette) ?(und|&|\\+|,|·) ?(halskette|halsketten|kette|ketten|armband|armbänder|armreif|ohrringe?|ohrstecker|ring|ringe|fusskette)(?![a-zäöüß])|.*schmuck-?set|.*set aus .*(halskette|armband|ohrring))",
     "^(?=.*(?:punk(?!t)|gothic|totenkopf|schädel|skull|hip-?hop))"
    ],
-   "beschreibung": "Schmuck im Boho- und Ethno-Stil sowie mit nordischen, keltischen, tibetischen oder chinesischen Motiven."
+   "beschreibung": "Schmuck im Boho- und Ethno-Stil sowie mit nordischen, tibetischen oder chinesischen Motiven."
   },
   {
    "handle": "korea-frankreich-oldmoney-schmuck",
@@ -1313,7 +1264,7 @@
    "unterfilter": [
     {
      "handle": "vintage-retro-schmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Vintage-Armbänder & -Armreifen",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
      ],
@@ -1321,7 +1272,7 @@
     },
     {
      "handle": "vintage-retro-schmuck-ringe",
-     "titel": "Ringe",
+     "titel": "Vintage-Ringe",
      "titel_muss": [
       "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
      ],
@@ -1331,7 +1282,7 @@
     },
     {
      "handle": "vintage-retro-schmuck-ohrringe",
-     "titel": "Ohrringe",
+     "titel": "Vintage-Ohrringe",
      "titel_muss": [
       "(^|[^a-zäöüß])(ohrring|ohrringe|ohrstecker|ohrhänger|creole|ohrclips?|huggie)"
      ],
@@ -1339,29 +1290,19 @@
     },
     {
      "handle": "vintage-retro-schmuck-zirkonia",
-     "titel": "Mit Zirkonia",
+     "titel": "Vintage mit Zirkonia & Strass",
      "titel_muss": [
-      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|kristall|rhinestone|crystal)"
+      "(^|[^a-zäöüß])(zirkon|zircon|zirkonia|strass|rhinestone)"
      ],
      "titel_nicht": []
     },
     {
      "handle": "vintage-retro-schmuck-stahl",
-     "titel": "Edelstahl & Titan",
+     "titel": "Vintage aus Edelstahl & Titan",
      "titel_muss": [
-      "(^|[^a-zäöüß])(edelstahl|titan|stahl|wolfram|tungsten|titanium)|titanstahl"
+      "(^|[^a-zäöüß])(edelstahl|titan|stahl|titanium)|titanstahl"
      ],
      "titel_nicht": []
-    },
-    {
-     "handle": "vintage-retro-schmuck-ketten",
-     "titel": "Ketten & Anhänger",
-     "titel_muss": [
-      "(^|[^a-zäöüß])(halskette|halsketten|kette|ketten|kollier|choker|anhänger|halsband|medaillon)"
-     ],
-     "titel_nicht": [
-      "armband|ohrring"
-     ]
     }
    ]
   },
@@ -1391,7 +1332,7 @@
     "^(?=.*(?:koreanisch|korean|französisch|japanisch|old money|pariser))",
     "^(?=.*(?:retro|vintage|antik))"
    ],
-   "beschreibung": "Schmuck mit geometrischen Formen wie Kreis, Dreieck, Quadrat und Rhombus."
+   "beschreibung": "Schmuck mit geometrischen Formen, darunter Ringe, Ketten, Armbänder und Ohrringe."
   },
   {
    "handle": "minimalistischer-schmuck",
@@ -1403,7 +1344,7 @@
     "Apparel & Accessories > Jewelry > Watch"
    ],
    "titel_muss": [
-    "minimalist|schlicht|dezent|zart|filigran|simpel|schmal"
+    "minimalist|schlicht|dezent|zart|simpel|schmal"
    ],
    "titel_nicht": [
     "(^|[^a-zäöüß])(smart|herzfrequenz|bluetooth|fitness|tracker|fernbedienung|nfc|schrittzähl)",
@@ -1418,13 +1359,14 @@
     "^(?=.*(?:boho|ethno|bohemian|böhm|chinesisch|orientalisch|tibetisch|keltisch|wikinger|nordisch))",
     "^(?=.*(?:koreanisch|korean|französisch|japanisch|old money|pariser))",
     "^(?=.*(?:retro|vintage|antik))",
-    "^(?=.*(?:(^|[^a-zäöüß])geometr))"
+    "^(?=.*(?:(^|[^a-zäöüß])geometr))",
+    "brosche|statement"
    ],
    "beschreibung": "Schlichter, zarter Schmuck für den Alltag und zum Kombinieren.",
    "unterfilter": [
     {
      "handle": "minimalistischer-schmuck-armbaender",
-     "titel": "Armbänder & Armreifen",
+     "titel": "Minimalistische Armbänder",
      "titel_muss": [
       "(^|[^a-zäöüß])(armband|armreif|armbänder|bracelet|bangle)"
      ],
@@ -1432,7 +1374,7 @@
     },
     {
      "handle": "minimalistischer-schmuck-ringe",
-     "titel": "Ringe",
+     "titel": "Minimalistische Ringe",
      "titel_muss": [
       "(^|[^a-zäöüß])[a-zäöüß-]*ring(e)?(?![a-zäöüß])"
      ],
@@ -1467,7 +1409,7 @@
     "diamond painting|diamant-?(mosaik|malerei)|schlüsselanh",
     "(^|[^a-zäöüß])(smart|bluetooth)"
    ],
-   "beschreibung": "Perlen, Anhänger, Verschlüsse, Werkzeug und Sets, mit denen sich Armbänder, Ketten und Ohrringe selbst gestalten lassen, dazu DIY-Schmuckstücke zum Zusammenbauen."
+   "beschreibung": "Perlen, Anhänger und Sets zum Selbermachen sowie DIY-Schmuckstücke zum Zusammenbauen."
   },
   {
    "handle": "schluessel-taschenanhaenger",
@@ -3088,6 +3030,7 @@
   "Unterschiede zu anderen Dateien: gemessen 0 gemeinsame Produkte mit auto, beauty, computer, handy, haus-bau, sportschuhe, tiere, unterhaltung und wohnen; 1 Produkt mit spielzeug.json (das «DIY Weihnachtsarmband-Set für Kinder» steht in «kinder-malen-basteln» und in «schmuck-selbermachen»). Der Zuschnitt der Uhren folgt der Aufgabenteilung: Smartwatches, Smartbands und Fitness-Armbänder bleiben in unterhaltung.json, klassische Armbanduhren, Taschenuhren, Uhrenboxen und Uhrenwerkzeug sind hier.",
   "Offen für den Besitzer: (1) «uhrenarmbaender» (vorhanden, 22 Fremdkörper) oder «uhrenarmbaender-smartwatch» (neu in unterhaltung.json) als einziger Band-Menüpunkt. (2) Die zwei Sammelkategorien als Landing-Seiten behalten oder weglassen; ohne sie bleibt die Abdeckung bei 90,8 %. (3) 60 Armband-Titel in der Google-Klasse Watches ohne Uhr-Wort von Hand klären. (4) Gruppen zu Menüpunkten bündeln (siehe oben). (5) Kinderuhren (20) und Paaruhren (33) liegen knapp über der Schwelle von 15 und könnten ebenso als Chips unter «armbanduhren-alle» geführt werden.",
   "Gegenlesen (27.10.2026, unabhängiger zweiter Leser): 3 367 Titel gelesen (58 Kategorien ganz, 17 große Kategorien mit 70 bis 130 verteilten Titeln) plus 13 Regel-Detektoren über alle 9 977 Zugehörigkeiten. Vorher 73 falsch eingeordnete Produkte (1,7 % der 4 393 Produkte in Kategorien), nachher 0 durch dieselben Detektoren. Korrigiert: (1) «Silber» bei Stahl, Kupfer oder Messing ohne 925 war eine Farbe (8 Titel in silberarmbaender, silberketten); (2) Kunstleder, Lederimitat und Mikrofaser standen unter Leder (6); (3) «Skelett» allein und Quarzwerke standen unter Automatik- und Mechanikuhren (7); (4) «europäisch» gehört nicht zum Korea-/Frankreich-/Old-Money-Stil (7); (5) Schlangenknochen- und Schlangenketten sowie der Drachenknoten sind Kettenarten, kein Tiermotiv (6); (6) «lauf» traf Farbverlauf in Sportuhren (3); (7) 18K ohne Vergoldungswort ist kein Beleg für vergoldet (3); (8) Körperketten, Ohrhänger, Armbänder, Sets mit Uhr, Bastelperlen und eine Wachstumslampe in der Google-Klasse Necklaces (18 in halsketten-alle); (9) Uhrwerke, Gadgets und Fitnessbänder in der Klasse Watches (12); (10) Herrenarmbänder enthielten 2 Unisex-Titel, Perlen- und Edelsteinarmbänder 2 synthetische Opale und 2 Farbwörter (Türkisfarben, Smaragdgrün); (11) Ohrhänger: «lange Modelle» hatte keine Regel (Langohrringe, Ohrhanger ergänzt). Umbenannt: «uhren-edelstahlarmband» heißt jetzt «edelstahl-metalluhren» (Edelstahl- & Metalluhren), weil 25 % der 277 Titel nur «aus Edelstahl» sagen und kein Armband nennen; «uhren-silikonarmband» heißt «Uhren mit Silikon-, Kautschuk- & Nylonarmband», weil «Kunststoff» nirgends im Titel steht. «holzuhren-bambusuhren» steht jetzt in der Gruppe «Uhren nach Material» (statt «Stil & Einsatz»), wo Holz vor Leder, Edelstahl und Silikon geht (sonst 8 Doppelzuordnungen).",
-  "Offen nach dem Gegenlesen: (1) «kombisets-kette-armband-ohrringe» (29) und das vorhandene «schmuck-sets» (36) meinen dasselbe, nur liegen die einen in der Google-Klasse Jewelry Sets und die anderen in Ketten, Armbändern oder Ohrringen; beim Live-Gang entweder beide Tags auf «schmuck-sets» legen oder die Seiten zusammenführen. (2) «premium-schmuck» (manuell, 124) ist keine Schmuckart und passt nicht in die Gruppe «Sets, Broschen & Körperschmuck»; ein Titel mit «Premium» sollte es auch nicht werden. (3) Das vorhandene Kind «sub-ringe» (549) enthält 11 Smart Rings und Gesundheitsringe, die zu unterhaltung.json (Collection smart-ring) gehören; «sub-armbaender» hat 1 intelligentes Wecker-Armband. (4) 20 Gruppen statt der vorgegebenen 3 bis 6 je Bereich; die Zahl ist nötig, solange ein Kind höchstens 8 Geschwister haben soll, die Entscheidung über das Zusammenlegen im Menü liegt beim Besitzer. (5) Nicht belegbar und deshalb nicht angefasst: «Donut-Halskette mit Taschenuhr», «Lesehilfe-Halskette mit Holzperlen», «Elegante Kettenuhr», «Minimalistische 3D Instagram-Uhr – Gold/Schwarz», «Rundes Edelstein-Uhr», «Farbwechsler Uhr» und «Leise Luxus-Uhr» (Produkttyp Gadget), «Luxus-Uhr als Manschettenknöpfe», «Fashion Touchscreen-Uhr mit Magnetarmband», «Touchscreen Digitaluhr mit Kalender», «Medizinisches ID-Armband mit Magnetverschluss», «Edelstahl-Floral-LED-Armband» (Bild- oder Datenblatt-Prüfung nötig). (6) «Vergoldete» gibt es nur für Armbänder (52); für Ringe wären es 23 Treffer mit Vergoldungswort (nach Vorrang vor Silber, Stahl, Zirkonia, Stein und Perlen noch 7), für Ohrringe 8 (6) und Ketten 9 (4): je Art zu klein, nur artübergreifend denkbar."
+  "Offen nach dem Gegenlesen: (1) «kombisets-kette-armband-ohrringe» (29) und das vorhandene «schmuck-sets» (36) meinen dasselbe, nur liegen die einen in der Google-Klasse Jewelry Sets und die anderen in Ketten, Armbändern oder Ohrringen; beim Live-Gang entweder beide Tags auf «schmuck-sets» legen oder die Seiten zusammenführen. (2) «premium-schmuck» (manuell, 124) ist keine Schmuckart und passt nicht in die Gruppe «Sets, Broschen & Körperschmuck»; ein Titel mit «Premium» sollte es auch nicht werden. (3) Das vorhandene Kind «sub-ringe» (549) enthält 11 Smart Rings und Gesundheitsringe, die zu unterhaltung.json (Collection smart-ring) gehören; «sub-armbaender» hat 1 intelligentes Wecker-Armband. (4) 20 Gruppen statt der vorgegebenen 3 bis 6 je Bereich; die Zahl ist nötig, solange ein Kind höchstens 8 Geschwister haben soll, die Entscheidung über das Zusammenlegen im Menü liegt beim Besitzer. (5) Nicht belegbar und deshalb nicht angefasst: «Donut-Halskette mit Taschenuhr», «Lesehilfe-Halskette mit Holzperlen», «Elegante Kettenuhr», «Minimalistische 3D Instagram-Uhr – Gold/Schwarz», «Rundes Edelstein-Uhr», «Farbwechsler Uhr» und «Leise Luxus-Uhr» (Produkttyp Gadget), «Luxus-Uhr als Manschettenknöpfe», «Fashion Touchscreen-Uhr mit Magnetarmband», «Touchscreen Digitaluhr mit Kalender», «Medizinisches ID-Armband mit Magnetverschluss», «Edelstahl-Floral-LED-Armband» (Bild- oder Datenblatt-Prüfung nötig). (6) «Vergoldete» gibt es nur für Armbänder (52); für Ringe wären es 23 Treffer mit Vergoldungswort (nach Vorrang vor Silber, Stahl, Zirkonia, Stein und Perlen noch 7), für Ohrringe 8 (6) und Ketten 9 (4): je Art zu klein, nur artübergreifend denkbar.",
+  "13. Korrektur nach der Gegenlesung der Schmuck-Taxonomie (27.10.2026): (1) Beschreibungen nennen nur Stoffe, Steine und Motive, die in mindestens zwei Titeln der Mitglieder stehen (Naturstein, Süsswasserperlen, Panzerketten, Gravur bei Armreifen, Hamsa, Kreis/Dreieck/Rhombus, Geburtsstein bei den Ketten gestrichen; Test in bereich_taxonomie_test.mjs). (2) «Punk-, Gothic- & Hip-Hop-Schmuck» heisst jetzt so, weil 16 von 48 Mitgliedern nur Hip-Hop sagen; «Glieder- & Hip-Hop-Ketten» ohne «Panzer» (0 von 18 Titeln), «Geflochtene Armbänder» ohne «Wickel» (1 von 26). (3) Kristall zählt nicht mehr als Zirkonia oder Strass (Kategorien Zirkonia-/Strass-Ringe, -Ohrringe, -Ketten, -Armbänder und alle Chips «Zirkonia & Strass»): natürliche Kristall- und Edelsteinschmuckstücke standen dort. (4) Randbegriffe gestrichen: Wolfram (Edelstahl- & Titanringe), Perlmutt (Perlen), Messing (Kupfer), Knoten (Geflecht), filigran (Minimalismus); Holz- und Glasperlen sind keine Perlenketten; Broschen und «Statement» nicht minimalistisch. (5) Chips: 7 unter 18 Treffern entfernt (die Engine setzt den Chip nur ab 15 Treffern und räumt bei weniger nichts mehr auf), alle Chip-Titel tragen den Bezug zur Eltern-Kategorie (kein Titel mehr als zweimal). Schmuck: 51 Kategorien, 31 Chips. (6) Bei der Korrektur weitere Beschreibungen ohne Beleg gefunden und gestrichen (Nachmessung am Katalog): «im Set» bei Moissanit-Ringen (1 von 56 Titeln), «mit Verschluss» bei Perlen- und Edelsteinarmbändern (0 von 207), «Verschlüsse, Werkzeug» bei Schmuck selber machen (je 1 von 43), «robust» bei Edelstahl-Armbändern (Eigenschaft ohne Beleg), «ohne Ohrloch» gilt nur für Ohrclips (Satzbau). (7) Die fünf Fortura-Kostümstücke in den vorhandenen Seiten (sub-ohrringe 1, sub-armbaender 3, schmuck-sets 1, Tag kostuem-accessoire) fallen mit SCHMUCK=1 heraus: lib/kategorien.mjs gibt den vorhandenen Schmuck-Collections die Zusatz-Sperr-Tags fortura, lizenz-nicht-bewerben und google-gesperrt-adult (lib/sperr_tags.mjs). (8) Vom Besitzer zu entscheiden, vom Code nicht gelöst: (a) Schmuck-Sets (36) und Kombi-Sets (29) bleiben zwei Seiten mit 0 gemeinsamen Produkten; ein Zusammenlegen schriebe die Regel der vorhandenen Seite um. (b) «premium-schmuck» (manuell, 124) hat kein Tag und fehlt auf der Gruppenseite «Sets, Broschen & Körperschmuck». (c) «sonnenbrillen-alle» (46) hängt im Menü unter «Zubehör», steht aber in keiner Gruppe dieser Datei. (e) «sub-ringe» enthält 11 Smart Rings, die erst mit der Collection smart-ring aus unterhaltung.json eine andere Seite hätten."
  ]
 }

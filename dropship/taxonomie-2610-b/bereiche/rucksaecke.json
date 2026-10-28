@@ -1,0 +1,935 @@
+{
+ "bereich": "rucksaecke",
+ "titel": "Rucksäcke",
+ "menue": {
+  "oben": "Taschen & Rucksäcke"
+ },
+ "universum": {
+  "g_prefix": [
+   "Luggage & Bags > Backpacks"
+  ],
+  "titel_muss": [
+   "rucksack|backpack|ranzen"
+  ],
+  "g_nicht": [
+   "Luggage & Bags > Suitcases",
+   "Luggage & Bags > Diaper Bags",
+   "Luggage & Bags > Luggage Accessories",
+   "Animals & Pet Supplies",
+   "Apparel & Accessories",
+   "Home & Garden",
+   "Furniture",
+   "Office Supplies",
+   "Sporting Goods",
+   "Toys & Games",
+   "Cameras & Optics",
+   "Electronics"
+  ],
+  "titel_nicht": [
+   "haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])",
+   "^(?!.*(kinder|kids?|plüsch|mädchen|jungen|baby|kleinkind)).*(^|[^a-zäöüß])tier-?rucksack",
+   "picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack",
+   "(^|[^a-zäöüß])(angel|angler|fischer)|fishing",
+   "turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche",
+   "tagestasche|rückentasche|berggepäck|campingtasche"
+  ]
+ },
+ "kategorien": [
+  {
+   "handle": "foto-drohnen-rucksaecke",
+   "titel": "Foto- & Drohnenrucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)"
+   ],
+   "titel_nicht": [],
+   "beschreibung": "Rucksäcke für Kamera, Spiegelreflexkamera und Drohne, auch mit Laptopfach oder wasserdicht."
+  },
+  {
+   "handle": "rucksaecke-motorrad",
+   "titel": "Motorrad-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)"
+   ],
+   "titel_nicht": [
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))"
+   ],
+   "beschreibung": "Rucksäcke fürs Motorrad: mit Helmfach, Hartschale oder Befestigung für Tank und Rücksitz."
+  },
+  {
+   "handle": "schul-studentenrucksaecke",
+   "titel": "Schul- & Studentenrucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe",
+    "^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r))))"
+   ],
+   "titel_nicht": [
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))"
+   ],
+   "beschreibung": "Schulrucksäcke, Schulranzen und Sets für Schule, Uni und Studium, auch mit Laptopfach.",
+   "unterfilter": [
+    {
+     "handle": "schul-studenten",
+     "titel": "Studenten & Uni",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(student|studierende|studium|uni(?![a-zäöüß]|[- ]?(farb|colou?r)))"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "kinder-wickelrucksaecke",
+   "titel": "Kinder- & Wickelrucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy)",
+    "dinosaurier.*kinder"
+   ],
+   "titel_nicht": [
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))"
+   ],
+   "beschreibung": "Rucksäcke für Kinder, oft mit Tier-, Plüsch- oder Cartoon-Motiv, dazu Wickelrucksäcke und Rucksäcke für Mütter und Babys unterwegs.",
+   "unterfilter": [
+    {
+     "handle": "kinder-wickel",
+     "titel": "Wickelrucksäcke & Mama-Rucksäcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy|kinderwagen)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "kinder-kinder",
+     "titel": "Kinderrucksäcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kinder|kleinkind|kids?|kita|kindergarten|plüsch|vorschul|krippe|dino|mädchen|jungen)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "velo-lauf-trinkrucksaecke",
+   "titel": "Velo-, Lauf- & Trinkrucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country)",
+    "(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)",
+    "haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])",
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))"
+   ],
+   "beschreibung": "Rucksäcke für Velo, Laufen und Trail: Velorucksäcke, Laufrucksäcke und Trinkrucksäcke mit Trinkblase oder Trinksystem.",
+   "unterfilter": [
+    {
+     "handle": "velo-velo",
+     "titel": "Velo & Fahrrad",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(velo|fahrrad|radsport|radrucksack|radfahr|bike|biking|cycling|rad(?![a-zäöüß]))"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velo-lauf",
+     "titel": "Laufen, Trail & Cross-Country",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trail(?!er)|triathlon|cross-?country)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "velo-trink",
+     "titel": "Mit Trinksystem",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "taktische-tarn-rucksaecke",
+   "titel": "Taktische & Tarn-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(takti|tactic|tactical|militär|military|armee|tarn|camouflage|molle|kampf(?!kunst|sport)|assault|spezialeinheit|survival|feldrucksack)"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(angel|angler|fischer)|fishing",
+    "turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche",
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country))|(?:(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter))))(?!.*(?:(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)))(?!.*(?:haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])))"
+   ],
+   "beschreibung": "Rucksäcke im taktischen oder Militär-Stil und in Tarnmuster, für Outdoor, Camping und Bergtouren.",
+   "unterfilter": [
+    {
+     "handle": "takt-tarn",
+     "titel": "Tarnmuster",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(tarn|camouflage)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "takt-takt",
+     "titel": "Taktische Rucksäcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|militär)(takti|tactic)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "takt-militaer",
+     "titel": "Militär & Kampf",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(militär|military|kampf(?!kunst|sport)|assault|molle|spezialeinheit|armee|feldrucksack)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "laptop-business-rucksaecke",
+   "titel": "Laptop- & Business-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))"
+   ],
+   "titel_nicht": [
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country))|(?:(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter))))(?!.*(?:(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)))(?!.*(?:haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])))",
+    "^(?=.*(?:(^|[^a-zäöüß])(takti|tactic|tactical|militär|military|armee|tarn|camouflage|molle|kampf(?!kunst|sport)|assault|spezialeinheit|survival|feldrucksack)))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))"
+   ],
+   "beschreibung": "Rucksäcke für Laptop, Büro und Geschäftsreise: Business-Rucksäcke, Laptop-Rucksäcke und Computer-Rucksäcke, auch mit USB-Ladeanschluss oder Hartschale.",
+   "unterfilter": [
+    {
+     "handle": "laptop-mit-usb",
+     "titel": "Mit USB-Ladeanschluss",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(usb|ladeanschluss|ladefunktion|lade-?rucksack|lade-?port|aufladbar|wiederaufladbar|ladeschnittstelle)"
+     ],
+     "titel_nicht": [
+      "kopfhörer"
+     ]
+    },
+    {
+     "handle": "laptop-anti-diebstahl",
+     "titel": "Anti-Diebstahl",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|anti)diebstahl|(^|[^a-zäöüß])(anti-?theft|zahlenschloss|passwort|fingerprint)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "laptop-leder",
+     "titel": "Leder & Kunstleder",
+     "titel_muss": [
+      "leder|leather|crazy horse"
+     ],
+     "titel_nicht": [
+      "leder-?(detail|griff|akzent|applik|textur|optik|look|schnalle|riemen|gurt)|mit (echt)?leder(?!rucksack)"
+     ]
+    },
+    {
+     "handle": "laptop-wasserdicht",
+     "titel": "Wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
+     ],
+     "titel_nicht": [
+      "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)"
+     ]
+    },
+    {
+     "handle": "laptop-kompression",
+     "titel": "Erweiterbar & Kompression",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(erweiterbar|kompress|vakuum)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "laptop-reise",
+     "titel": "Für Geschäftsreisen",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])(travel|trolley)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "laptop-gross",
+     "titel": "Ab 36 Liter",
+     "titel_muss": [
+      "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "wander-outdoor-rucksaecke",
+   "titel": "Wander- & Outdoor-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(wander|trekking|bergsteig|bergtour|bergrucksack|berggepäck|bergsport|berg-|kletter|camping|hiking|mountain|expedition|alpin|trail(?!er)|tagestour)",
+    "^(?!.*(?:(?:(^|[^a-zäöüß])(reise|kurzreise|reiserr|reisrucksack|travel|handgepäck|weekender|urlaub|kurztrip|trolley|boarding))|(^|[^a-zäöüß])(badminton|tennis|basketball|fussball|schläger|golf|baseball|pickleball|skateboard|yoga)))(?=.*(?:(^|[^a-zäöüß])(outdoor)))"
+   ],
+   "titel_nicht": [
+    "picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack",
+    "(^|[^a-zäöüß])(angel|angler|fischer)|fishing",
+    "turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche",
+    "tagestasche|rückentasche|berggepäck|campingtasche",
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country))|(?:(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter))))(?!.*(?:(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)))(?!.*(?:haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])))",
+    "^(?=.*(?:(^|[^a-zäöüß])(takti|tactic|tactical|militär|military|armee|tarn|camouflage|molle|kampf(?!kunst|sport)|assault|spezialeinheit|survival|feldrucksack)))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))"
+   ],
+   "beschreibung": "Rucksäcke für Wandern, Trekking, Klettern, Camping und Outdoor, vom kleinen Tagesrucksack bis zum grossen Rucksack mit viel Volumen.",
+   "unterfilter": [
+    {
+     "handle": "wander-klettern",
+     "titel": "Klettern & Bergsteigen",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(kletter|bergsteig|mountaineering|alpin|expedition)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wander-wasserdicht",
+     "titel": "Wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
+     ],
+     "titel_nicht": [
+      "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)"
+     ]
+    },
+    {
+     "handle": "wander-gross",
+     "titel": "Ab 36 Liter",
+     "titel_muss": [
+      "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "reise-rucksaecke",
+   "titel": "Reiserucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(?:(^|[^a-zäöüß])(reise|kurzreise|reiserr|reisrucksack|travel|handgepäck|weekender|urlaub|kurztrip|trolley|boarding))"
+   ],
+   "titel_nicht": [
+    "(^|[^a-zäöüß])(angel|angler|fischer)|fishing",
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country))|(?:(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter))))(?!.*(?:(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)))(?!.*(?:haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])))",
+    "^(?=.*(?:(^|[^a-zäöüß])(takti|tactic|tactical|militär|military|armee|tarn|camouflage|molle|kampf(?!kunst|sport)|assault|spezialeinheit|survival|feldrucksack)))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(wander|trekking|bergsteig|bergtour|bergrucksack|berggepäck|bergsport|berg-|kletter|camping|hiking|mountain|expedition|alpin|trail(?!er)|tagestour))|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(reise|kurzreise|reiserr|reisrucksack|travel|handgepäck|weekender|urlaub|kurztrip|trolley|boarding))|(^|[^a-zäöüß])(badminton|tennis|basketball|fussball|schläger|golf|baseball|pickleball|skateboard|yoga)))(?=.*(?:(^|[^a-zäöüß])(outdoor))))))(?!.*(?:picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))(?!.*(?:tagestasche|rückentasche|berggepäck|campingtasche))"
+   ],
+   "beschreibung": "Rucksäcke für Reisen und Kurzreisen, auch mit Schuhfach oder Nass-/Trockenfach.",
+   "unterfilter": [
+    {
+     "handle": "reise-leder",
+     "titel": "Leder & Kunstleder",
+     "titel_muss": [
+      "leder|leather|crazy horse"
+     ],
+     "titel_nicht": [
+      "leder-?(detail|griff|akzent|applik|textur|optik|look|schnalle|riemen|gurt)|mit (echt)?leder(?!rucksack)"
+     ]
+    },
+    {
+     "handle": "reise-canvas",
+     "titel": "Canvas & Retro",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|baumwoll|militär)canvas|(^|[^a-zäöüß])(leinen|baumwoll|retro|vintage)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "reise-wasserdicht",
+     "titel": "Wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
+     ],
+     "titel_nicht": [
+      "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)"
+     ]
+    },
+    {
+     "handle": "reise-rucksaecke-outdoor",
+     "titel": "Outdoor-Reiserucksäcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])outdoor"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "freizeit-sportrucksaecke",
+   "titel": "Freizeit-, Mode- & Sportrucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(freizeit|alltag|casual|city|stadt|städtisch|strassen|urban|street|tages|daypack|sport|fitness|gym|training|basketball|fussball|tennis|badminton|schläger|skateboard|golf|baseball|pickleball|yoga|fashion|modisch|mode(?![a-zäöüß])|trend|stylisch|elegant|minimalist|lässig|korea|japan|harajuku|mori|preppy|college|campus|jugend|teen|hip-?hop|hipster|punk)"
+   ],
+   "titel_nicht": [
+    "picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack",
+    "turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche",
+    "tagestasche|rückentasche|berggepäck|campingtasche",
+    "^(?=.*(?:(^|[^a-zäöüß])(kamera|foto(?![- ]?(print|druck|motiv|aufdruck|bedruck))|drohne|drohnen|slr|dslr|spiegelreflex|digitalkamera)))",
+    "^(?=.*(?:(^|[^a-zäöüß])(motorr[aä]d|motocross|tankrucksack|helm[ -]?rucksack)))",
+    "^(?=.*(?:(?:schul(?!ter)|ranzen|schüler|[0-9]\\.[–-]?[0-9]?\\.? ?klasse|mittelstufe|grundschul|primarschul|unterstufe|oberstufe)|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))(?=.*(?:student|studierende|studium|(^|[^a-zäöüß])uni(?![a-zäöüß]|[- ]?(farb|colou?r)))))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(kinder|kids?|kita|kindergarten|baby(?![- ]?(blau|blue))|kleinkind|vorschul|krippe|mädchen|jungen|wickel|mommy|mummy|mütter|mutterschaft|babyflaschen|windel|buggy))|(?:dinosaurier.*kinder)))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(velo|fahrrad|rennrad|radsport|radrucksack|radfahr|radtour|rad-?rucksack|bike|biking|cycling|cross-?country))|(?:(^|[^a-zäöüß])(lauf(?!bild)|marathon|running|trailrunning|triathlon|trinkrucksack|trinkblase|trinkbeutel|trinksystem|hydration|wasserbehälter))))(?!.*(?:(^|[^a-zäöüß])(wander|trekking|camping|bergsteig|kletter)))(?!.*(?:haustier|hunde-? ?(und|&) ?katzen|für (hunde|katzen)(?![a-zäöüß])|hunde-?rucksack|hunderucksack|mit (lauf-)?leine(?![a-zäöüß])))",
+    "^(?=.*(?:(^|[^a-zäöüß])(takti|tactic|tactical|militär|military|armee|tarn|camouflage|molle|kampf(?!kunst|sport)|assault|spezialeinheit|survival|feldrucksack)))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(laptop|notebook|computer(?!spiel)|macbook|tablet|business|geschäfts|geschäft|büro|pendler|commut|unternehmens|aktenrucksack|arbeitsrucksack|arbeitsweg)|(^|[^0-9])1[3-7]([.,][0-9])? ?-?(zoll|\"|″|inch))))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(wander|trekking|bergsteig|bergtour|bergrucksack|berggepäck|bergsport|berg-|kletter|camping|hiking|mountain|expedition|alpin|trail(?!er)|tagestour))|(?:^(?!.*(?:(?:(^|[^a-zäöüß])(reise|kurzreise|reiserr|reisrucksack|travel|handgepäck|weekender|urlaub|kurztrip|trolley|boarding))|(^|[^a-zäöüß])(badminton|tennis|basketball|fussball|schläger|golf|baseball|pickleball|skateboard|yoga)))(?=.*(?:(^|[^a-zäöüß])(outdoor))))))(?!.*(?:picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))(?!.*(?:turnbeutel(?!-?rucksack)|handtasche mit|(^|[^a-zäöüß])rucksackweste|funktionsweste|rucksack-?(clip|stuhl|blumentopf|schnalle)|anhänger für|schloss für|zubehörtasche))(?!.*(?:tagestasche|rückentasche|berggepäck|campingtasche))",
+    "^(?=.*(?:(?:(^|[^a-zäöüß])(reise|kurzreise|reiserr|reisrucksack|travel|handgepäck|weekender|urlaub|kurztrip|trolley|boarding))))(?!.*(?:(^|[^a-zäöüß])(angel|angler|fischer)|fishing))",
+    "^(?=.*(?:(^|[^a-zäöüß])vakuum|kompressions-?rucksack))(?!.*(?:(^|[^a-zäöüß])(freizeit|alltag|sport|fitness|gym|training|casual|tages|daypack|city|stadt|urban|street|campus|college)))"
+   ],
+   "beschreibung": "Rucksäcke für Alltag, Freizeit und Sport: Tagesrucksäcke, Stadtrucksäcke, Mode-Rucksäcke und Sportrucksäcke für Training, Ball- und Schlägersport.",
+   "unterfilter": [
+    {
+     "handle": "freizeit-sport",
+     "titel": "Sportrucksäcke",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(sport|fitness|gym|training|basketball|fussball|tennis|badminton|schläger|skateboard|golf|baseball|pickleball|yoga)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "freizeit-mode",
+     "titel": "Mode & Stil",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(fashion|modisch|mode(?![a-zäöüß])|trend|stylisch|elegant|minimalist|korea|japan|harajuku|mori(?![a-zäöüß])|preppy|college|campus|hip-?hop|hipster|lässig)|(^|[^a-zäöüß]|steam)punk"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "freizeit-alltag",
+     "titel": "Alltag & Stadt",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(alltag|city|stadt|städtisch|strassen|urban|street|tages|daypack|casual|freizeit)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "freizeit-leder",
+     "titel": "Leder & Kunstleder",
+     "titel_muss": [
+      "leder|leather|crazy horse"
+     ],
+     "titel_nicht": [
+      "leder-?(detail|griff|akzent|applik|textur|optik|look|schnalle|riemen|gurt)|mit (echt)?leder(?!rucksack)"
+     ]
+    },
+    {
+     "handle": "freizeit-wasserdicht",
+     "titel": "Wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
+     ],
+     "titel_nicht": [
+      "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)"
+     ]
+    },
+    {
+     "handle": "freizeit-herren",
+     "titel": "Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "leder-kunstleder-rucksaecke",
+   "titel": "Leder- & Kunstleder-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "leder|leather|crazy horse"
+   ],
+   "titel_nicht": [
+    "leder-?(detail|griff|akzent|applik|textur|optik|look|schnalle|riemen|gurt)|mit (echt)?leder(?!rucksack)",
+    "(^|[^a-zäöüß])(canvas|oxford|nylon|leinen|baumwoll|stoff|polyester|denim|jeans|wachs)|stoff",
+    "tagestasche|rückentasche|berggepäck|campingtasche"
+   ],
+   "beschreibung": "Rucksäcke aus Leder, Rindsleder, Crazy-Horse-Leder oder Kunstleder, von schlicht bis Vintage, für Alltag, Büro und Reise.",
+   "unterfilter": [
+    {
+     "handle": "leder-echt",
+     "titel": "Echtleder, Rindsleder & Crazy Horse",
+     "titel_muss": [
+      "leder|leather|crazy horse"
+     ],
+     "titel_nicht": [
+      "(^|[^a-zäöüß])(pu|kunst|imitat|vegan|faux)[- ]?(leder|leather)|lederimitat|(^|[^a-zäöüß])pu(?![a-zäöüß])"
+     ]
+    },
+    {
+     "handle": "leder-kunst",
+     "titel": "Kunstleder",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(pu|kunst|imitat|vegan|faux)[- ]?(leder|leather)|lederimitat"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leder-business",
+     "titel": "Business & Laptop",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro|geschäft|unternehmens)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leder-retro",
+     "titel": "Retro & Vintage",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(retro|vintage)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leder-reise",
+     "titel": "Reise",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "leder-herren",
+     "titel": "Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "canvas-vintage-rucksaecke",
+   "titel": "Canvas-, Retro- & Vintage-Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(canvas|leinen|linen|leinwand|baumwoll|segeltuch|wachs|denim|jeans|vintage|retro)"
+   ],
+   "titel_nicht": [
+    "tagestasche|rückentasche|berggepäck|campingtasche"
+   ],
+   "beschreibung": "Rucksäcke aus Canvas, Leinen oder Baumwolle sowie Modelle im Retro- und Vintage-Stil, auch aus Leder.",
+   "unterfilter": [
+    {
+     "handle": "canvas-canvas",
+     "titel": "Canvas",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|baumwoll|militär)canvas|(^|[^a-zäöüß])segeltuch"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "canvas-retro",
+     "titel": "Retro & Vintage",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(retro|vintage)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "canvas-laptop",
+     "titel": "Laptop & Business",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "canvas-reise",
+     "titel": "Reise",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "canvas-herren",
+     "titel": "Herren",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(herren|männer|männlich)"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  },
+  {
+   "handle": "usb-lade-rucksaecke",
+   "titel": "Rucksäcke mit Ladefunktion",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(usb|ladeanschluss|ladefunktion|lade-?rucksack|lade-?port|aufladbar|wiederaufladbar|ladeschnittstelle|solar)"
+   ],
+   "titel_nicht": [
+    "kopfhörer",
+    "usb-?lock"
+   ],
+   "beschreibung": "Rucksäcke mit USB-Anschluss, Ladefunktion oder Solarpanel, vom Business- bis zum Schulrucksack.",
+   "unterfilter": [
+    {
+     "handle": "usb-business",
+     "titel": "Business & Laptop",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "usb-wasserdicht",
+     "titel": "Wasserdicht",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wasserdicht|wasserfest)"
+     ],
+     "titel_nicht": [
+      "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)"
+     ]
+    }
+   ]
+  },
+  {
+   "handle": "wasserdichte-rucksaecke",
+   "titel": "Wasserdichte Rucksäcke",
+   "g_prefix": [
+    "Luggage & Bags > Backpacks"
+   ],
+   "g_nicht": [],
+   "titel_muss": [
+    "(^|[^a-zäöüß])(wasserdicht|wasserfest|wasserundurchlässig|waterproof)"
+   ],
+   "titel_nicht": [
+    "wasser(dicht|fest)(e|em|en|er|es)? (fach|trennfach|innenfutter|brustbeutel|tasche|nassfach|trockenfach|abteil|reissverschluss)",
+    "picknick|kühl-?rucksack|kühltasche|isolier-?rucksack|isolierte[rn]? |thermo-?rucksack|thermischer rucksack",
+    "(^|[^a-zäöüß])(angel|angler|fischer)|fishing"
+   ],
+   "beschreibung": "Rucksäcke, die als wasserdicht oder wasserfest angeboten werden, vom Business- bis zum Outdoor-Rucksack.",
+   "unterfilter": [
+    {
+     "handle": "wd-business",
+     "titel": "Business & Laptop",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(business|laptop|notebook|computer(?!spiel)|büro)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wd-outdoor",
+     "titel": "Outdoor & Wandern",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(outdoor|wander|trekking|berg|kletter|camping)"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wd-reise",
+     "titel": "Reise",
+     "titel_muss": [
+      "(^|[^a-zäöüß]|geschäfts|business|kurz|leder|freizeit)reise|(^|[^a-zäöüß])travel"
+     ],
+     "titel_nicht": []
+    },
+    {
+     "handle": "wd-gross",
+     "titel": "Ab 36 Liter",
+     "titel_muss": [
+      "(^|[^0-9])(3[6-9]|[4-9][0-9]|1[0-9]{2}) ?l(iter)?(?![a-zäöüß])|[0-9]{2}-(55|75) ?l"
+     ],
+     "titel_nicht": []
+    }
+   ]
+  }
+ ],
+ "gruppen": [
+  {
+   "titel": "Nach Einsatz",
+   "handle": "rucksaecke-einsatz-gruppe",
+   "kinder": [
+    "laptop-business-rucksaecke",
+    "schul-studentenrucksaecke",
+    "wander-outdoor-rucksaecke",
+    "reise-rucksaecke",
+    "velo-lauf-trinkrucksaecke",
+    "freizeit-sportrucksaecke",
+    "kinder-wickelrucksaecke"
+   ]
+  },
+  {
+   "titel": "Spezial-Rucksäcke",
+   "handle": "rucksaecke-spezial-gruppe",
+   "kinder": [
+    "taktische-tarn-rucksaecke",
+    "foto-drohnen-rucksaecke",
+    "rucksaecke-motorrad"
+   ]
+  },
+  {
+   "titel": "Material & Ausstattung",
+   "handle": "rucksaecke-material-gruppe",
+   "kinder": [
+    "leder-kunstleder-rucksaecke",
+    "canvas-vintage-rucksaecke",
+    "usb-lade-rucksaecke",
+    "wasserdichte-rucksaecke"
+   ]
+  }
+ ],
+ "ausserhalb": [
+  {
+   "text": "Haustier-Rucksäcke und Tragehilfen für Hunde und Katzen (Bereich Tiere): 7 Titel in der Google-Klasse Backpacks, bewusst nicht im Universum (5 nennen Haustier, Hund oder Katze; 2 heissen «Tierrucksack» bzw. «Tier-Rucksack» mit Netzstoff bzw. PVC-Format 37x25x34 cm, was für Haustier-Träger spricht, der Titel allein belegt es aber nicht, Regel 5: vor dem Live-Gang mit dem CJ-Datenblatt prüfen; Tier-Rucksäcke mit Kinder-, Plüsch-, Baby-, Mädchen- oder Jungen-Wort und «Tierisch stilvoller Rucksack» bleiben im Universum; tiere.json «tier-transport» verlangt die Google-Klasse Animals & Pet Supplies, diese Artikel stehen in Luggage & Bags: 0 von 7 sind dort erfasst; Google-Kategorie in Shopify korrigieren oder die Regel in tiere.json erweitern)",
+   "beispiele": [
+    "Haustier-Rucksack für Ausflüge",
+    "Hunde- und Katzenrucksack für unterwegs",
+    "Nylon-Rucksack für Haustiere",
+    "Taschenrucksack mit Lauf-Leine für Hunde",
+    "Tierrucksack aus Netzstoff für Ausflüge",
+    "Tier-Rucksack aus PVC Oxford 37x25x34 cm"
+   ]
+  },
+  {
+   "text": "Picknick-, Kühl- und Thermorucksäcke (Bereich Sport, Picknick & Kühlrucksäcke): 18 Titel in der Google-Klasse Backpacks, bewusst nicht im Universum (sport.json «picknick-kuehlrucksaecke» erfasst 12 von 18; es fehlen Titel mit Kühlrucksack oder Thermorucksack ohne das Wort Picknick: Regel dort um «kühlrucksack|thermorucksack|thermischer rucksack» erweitern)",
+   "beispiele": [
+    "Thermorucksack mit Isolierung",
+    "Picknick-Rucksack mit Isolierung, 20L",
+    "Kühlrucksack für Wein und Bier, 16L",
+    "Picknick-Kühlrucksack"
+   ]
+  },
+  {
+   "text": "Angelrucksäcke (Bereich Sport, Angeln): 15 Titel in der Google-Klasse Backpacks, bewusst nicht im Universum (sport.json «angeln-angelzubehoer» erfasst 13 von 15; es fehlen «Fischerausrüstung» und «Fischerei»: Regel dort um «fischer» erweitern)",
+   "beispiele": [
+    "Wasserdichter Oxford-Stoff Angelrucksack",
+    "Taktischer Rucksack für Outdoor & Angeln",
+    "Taktischer Angelrucksack, 85 cm",
+    "Outdoor-Rucksack für Reise und Fischerei"
+   ]
+  },
+  {
+   "text": "Westen, Clips, Anhänger, Stühle, Schlösser, Turnbeutel, Handtaschen und Zubehörtaschen (keine Rucksäcke): 8 Titel in der Google-Klasse Backpacks, bewusst nicht im Universum",
+   "beispiele": [
+    "Taktische Funktionsweste Rucksack",
+    "Personalisierbarer Polyester-Turnbeutel",
+    "Rucksack-Clip für Sportkameras",
+    "Handgefertigter Anhänger für Rucksackventilator"
+   ]
+  },
+  {
+   "text": "Titel nennt keinen Rucksack (Tagestasche, Rückentasche, Berggepäck, Campingtasche): 4 Titel in der Google-Klasse Backpacks, bewusst nicht im Universum",
+   "beispiele": [
+    "Tagestasche mit Reissverschluss, wasserabweisend",
+    "Bergsteiger- & Campingtasche (70L)",
+    "Rückentasche aus Vintage-Leder",
+    "Professionelles Berggepäck"
+   ]
+  },
+  {
+   "text": "Titel mit Rucksack, aber Google-Klasse nicht Backpacks (36: Animals & Pet Supplies > Pet Supplies 21, Luggage & Bags > Suitcases 6, Home & Garden > Linens & Bedding 2, Apparel & Accessories > Clothing 1, Luggage & Bags > Diaper Bags 1, Luggage & Bags > Luggage Accessories 1, Sporting Goods > Exercise & Fitness 1, Furniture > Shelving 1, Sporting Goods > Outdoor Recreation 1, Office Supplies > Filing & Organization 1): Rollrucksäcke in der Klasse Suitcases gehören zu Reisegepäck (auch die zwei mit Schulbezug, «Trolley-Schulrucksack mit Rollen» und «Trolley Rucksack für Schüler, gross»; Entscheid beim Besitzer, siehe hinweise), die übrigen sind Hunde- und Katzenträger, Kleidung, Handtücher, Yoga-Matte, Schwimmboje, Regal, Blumentopf und ein Wickel-Rucksack in der Klasse Diaper Bags. Sie stehen nicht im Universum, bleiben aber in der Gesamtübersicht «rucksaecke», soweit sie dort schon getaggt sind.",
+   "beispiele": [
+    "Langarmshirt mit Rucksack-Schnalle",
+    "Trolley-Rucksack für Haustiere mit Sichtfenster",
+    "Hunde- und Katzenrucksack",
+    "Baby-Rucksack mit Isolierfach",
+    "Badetuch mit integriertem Rucksack",
+    "Trolley-Schulrucksack mit Rollen"
+   ]
+  },
+  {
+   "text": "Berufsrucksäcke für Friseure und Make-up-Künstler (Bereich Beauty): 4 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten); zu wenige für eine Kategorie, inhaltlich Haar- und Make-up-Zubehör.",
+   "beispiele": [
+    "Schwarzer Haarwerkzeug-Rucksack",
+    "Nylon-Rucksack für Friseure – Schwarz",
+    "Tragbarer Rucksack für Make-up-Künstler",
+    "Friseur Rucksack für Haarwerkzeuge"
+   ]
+  },
+  {
+   "text": "Geschlechts-Generik (Herren-, Damen-, Unisex-Rucksack ohne Einsatzangabe): 75 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten); 63 davon stehen schon auf den Mode-Seiten «Damen/Herren: Weitere Taschen & Rucksäcke», dort gehört das Geschlecht hin (siehe hinweise).",
+   "beispiele": [
+    "Cyber-Style Mecha Unisex Rucksack",
+    "Einfarbiger Rucksack für Unisex",
+    "Herren-Rucksack Oxford Stoff",
+    "Multifunktionaler Oxford Rucksack für Herren"
+   ]
+  },
+  {
+   "text": "LED, Leucht- und Reflektor-Rucksäcke, Rucksäcke mit Display oder Lautsprecher: 22 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten); nach einer Titelrunde gegebenenfalls als eigene Spezial-Kategorie.",
+   "beispiele": [
+    "Rucksack mit Bluetooth-Lautsprecher",
+    "Laser Punch Dragon Egg Rucksack",
+    "Reflektierender Hard Shell Rucksack",
+    "LED Rucksack 3. Generation"
+   ]
+  },
+  {
+   "text": "Vakuum- und Kompressionsrucksäcke ohne Reiseangabe: 10 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Vakuum-Kompressionsrucksack",
+    "Vakuum-Kompressionsrucksack – multifunktional",
+    "Vakuum-Kompressionsrucksack mit grossem Fassungsvermögen",
+    "Vakuum-Kompressionsrucksack – schlichtes Design"
+   ]
+  },
+  {
+   "text": "Anti-Diebstahl-Rucksäcke ohne Einsatzangabe: 14 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Multifunktionaler Anti-Diebstahl Rucksack",
+    "Grosser Anti-Diebstahl Rucksack",
+    "Diebstahlsichere Rucksack mit Zahlenschloss",
+    "Oxford Stoff Rucksack mit Diebstahlschutz"
+   ]
+  },
+  {
+   "text": "Hartschalen-Rucksäcke ohne Einsatzangabe: 3 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Multifunktionaler Hard Shell Rucksack",
+    "TAJEZZO CUBE Series Hartschalenrucksack",
+    "Erweiterbarer Anti-Spritzschutz Hartschalen-Rucksack"
+   ]
+  },
+  {
+   "text": "Motiv-, Print- und Figuren-Rucksäcke ohne Altersangabe: 37 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Tier-Print Rucksack mit viel Stauraum",
+    "Mini-Rucksack mit Cartoon-Tiermotiv",
+    "Rucksack aus Oxford-Stoff mit 3D-Digitaldruck",
+    "Geometrischer Diamant Rucksack"
+   ]
+  },
+  {
+   "text": "Umhänge-, Einschulter-, Brust- und Taillen-Rucksäcke: 5 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Taille-Rucksack Set",
+    "Hip Hop Crossbody Rucksack",
+    "Schulterrucksack Schwarz Grau",
+    "Tragbarer Crossbody Rucksack"
+   ]
+  },
+  {
+   "text": "Stoff-Rucksäcke (Oxford, Nylon, Polyester, PVC) ohne Einsatzangabe: 36 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Atmungsaktiver Mesh-Rucksack mit Kordelzug",
+    "Grosser Polyester-Rucksack, wasserabweisend",
+    "Grosser Oxford Stoff Rucksack",
+    "Vielseitiger Nylon-Rucksack (56-75L)"
+   ]
+  },
+  {
+   "text": "Wasserabweisend oder mit Nass-/Trockenfach (ohne wasserdicht): 5 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Wasserabweisender Rucksack",
+    "Grosser Rucksack mit Nass-Trocken-Trennung",
+    "Rucksack mit Nass-Trockenscheidung, 20-35 L",
+    "Grosser Rucksack mit wasserdichtem Innenfutter"
+   ]
+  },
+  {
+   "text": "Mini-, Falt- und Schlicht-Rucksäcke: 6 Titel im Universum ohne Kategorie, weil im Titel kein Einsatz, Material oder Ausstattungsmerkmal einer der 14 Kategorien steht (Regel 5: nie raten).",
+   "beispiele": [
+    "Geflochtener Mini-Rucksack «Cute Little House»",
+    "Ultradünner Rucksack",
+    "Faltbarer Rucksack",
+    "Schlichter Rucksack"
+   ]
+  },
+  {
+   "text": "Generische Titel ohne jede Angabe (Multifunktions-, Grossraum-, Grosse-Kapazität-, «Rucksack mit …»-Titel, Farb- und Grössenangaben): 75 Titel im Universum ohne Kategorie, davon 70 auf den Mode-Seiten «Damen/Herren: Weitere Taschen & Rucksäcke».",
+   "beispiele": [
+    "Allover-Rucksack – Selbst gestalten",
+    "Multifunktionaler Rucksack mit doppelten Schultergurten",
+    "Leichter, multifunktionaler Rucksack mit grossem Volumen",
+    "Grosser Rucksack mit viel Stauraum",
+    "Grosskapazitäts-Rucksack",
+    "Leichter Premium-Rucksack"
+   ]
+  }
+ ],
+ "hinweise": [
+  "Aufbau: 14 neue Kategorien in 3 Gruppen, 46 Unterfilter (Chips), alle am Katalog vom 27.10.2026 gemessen (/tmp/katalog_audit.json, 56'618 aktive Produkte; Befehl: node dropship/taxonomie-2610-b/messen.mjs dropship/taxonomie-2610-b/bereiche/rucksaecke.json --katalog /tmp/katalog_audit.json --alle). Universum = Google-Klasse «Luggage & Bags > Backpacks» ODER Titel mit Rucksack, Backpack oder Ranzen, ohne Haustier-, Picknick-, Kühl-, Angel-, Zubehör- und Westenartikel (siehe «ausserhalb»): 2'443 Produkte, davon 2'151 in mindestens einer der 14 Kategorien (88.0 %), 292 in keiner (Gründe in «ausserhalb»). Ehrlicher Blick auf die Abdeckung: nur 1'780 (72.9 %) stehen in einer der zehn Einsatz- und Spezial-Kategorien, weitere 371 (15.2 %) nur auf einer Merkmalsseite (Leder, Canvas, Ladefunktion, wasserdicht), z. B. «Lederrucksack für Herren», «Retro Canvas Rucksack», «Solarrucksack 14W», «Canvas Rucksack»; reine Leder-, Canvas-, USB- und Wasserdicht-Titel ohne Einsatzangabe stehen bewusst nur dort, weil der Titel den Einsatz nicht belegt (Regel 5). Fassung nach der zweiten Korrekturrunde vom 27.10.2026, siehe die letzten beiden Hinweise. Alle Kategorien verlangen die Google-Klasse Backpacks UND ein Titelwort; kein Produkt kommt ohne Titelwort hinein.",
+  "Gruppen und Vorrang: «Nach Einsatz» (7) und «Spezial-Rucksäcke» (3) bilden zusammen EINE Kette mit Vorrang in der Reihenfolge Foto/Drohne, Motorrad, Schule/Studium, Kinder/Wickel, Velo/Lauf/Trinken, Taktisch/Tarn, Laptop/Business, Wander/Outdoor, Reise, Freizeit/Mode/Sport. Jede Kategorie der Kette trägt in titel_nicht die Basisregel JEDER früheren Kategorie als Lookahead (deren titel_muss abzüglich deren eigener Funktions- und Themen-Ausschlüsse; was bei der früheren Kategorie wegen eines solchen Ausschlusses nicht steht, bleibt für die spätere frei, z. B. steht der «Fahrrad-Wanderrucksack» bei Wander, nicht bei Velo). Das sind 45 Vorrang-Ausschlüsse (0 + 1 + 2 + … + 9). Sie sind bewusst vollständig und vorbeugend geführt: im heutigen Katalog stehen 0 Produkte in zwei Kategorien der Kette; 21 der 45 Ausschlüsse ändern heute kein Mitglied, davon treffen 18 keinen einzigen Kandidaten (genau diese 18 meldet pruefen.mjs als «titel_nicht ohne Treffer»: bewusst vorbeugend, kein Mangel), aber jeder Import (Grind 2.0) kann sie auslösen. Belegt mit 12'690 synthetischen Titeln aus je zwei Stichwörtern der zehn Kategorien (z. B. «Kinderrucksack Wanderrucksack», «Kamera Rucksack für Reisen», «Foto Rucksack Kinder», «Kinder Camping Rucksack»): vor der Korrektur standen 3'385 davon in zwei Kategorien (18 Kategorie-Paare), nach der Korrektur 0. Nach der zweiten Korrekturrunde mit neu aufgebauten Titeln wiederholt (23'496 synthetische Titel aus je einem Stichwort zweier verschiedener Kategorien der Kette in vier Satzformen): 0 stehen in zwei Kategorien der Kette; dieselbe Messung ohne die 45 Vorrang-Ausschlüsse ergibt 22'176 Doppelungen, der Test erkennt sie also. Die Vorrang-Ausschlüsse und die gleichlautenden Chip-Ausschlüsse (siehe Grenzen der Titelregeln) sind die einzigen Ausnahmen von Regel 8; alle übrigen Ausschlüsse der 14 Kategorien wurden einzeln entfernt und gemessen: 0 ohne Wirkung (21 Ausschlüsse ausserhalb der Vorrang-Regeln, dazu bei Freizeit der Ausschluss für Vakuum- und Kompressionsrucksäcke ohne Einsatzwort mit 1 Treffer). In Canvas ist die frühere Leder-Regel entfallen (siehe die Gruppe «Material & Ausstattung»); dafür wirkt dort wieder «tagestasche|rückentasche|berggepäck|campingtasche» (1 Treffer, «Rückentasche aus Vintage-Leder»). Folge: «Reise-Rucksack mit Laptopfach» steht bei Laptop & Business (Vorrang), nicht bei Reise; die Chips «Für Geschäftsreisen» (114 / 640) bei Laptop & Business fangen das auf. Nach grossen Importen mit messen.mjs neu messen, ob der Vorrang noch 0 Doppelungen ergibt. Outdoor zählt nur schwach: «Outdoor-Reiserucksack» und «Outdoor-Rucksack für Kurzreisen» stehen bei Reise, «Wanderrucksack», «Trekking», «Klettern», «Camping» und «Bergtouren» bei Wander & Outdoor.",
+  "Gruppe «Material & Ausstattung» (bewusste Querverweise, Überlappung begründet): Leder und Canvas teilen sich nur Retro- und Vintage-Titel. Ein Titel mit Canvas, Oxford, Nylon, Polyester oder Stoff steht nie bei Leder (die Leder-Regel schliesst ihn aus). Ein Titel mit Retro oder Vintage steht bei Canvas auch dann, wenn er Leder nennt, weil die Seite «Canvas, Retro & Vintage» Retro- und Vintage-Rucksäcke verspricht und sonst nur 83 der 156 Titel mit Retro oder Vintage zeigte (Leder × Canvas 73, z. B. «Vintage Leder Rucksack für Herren», «Retro-Lederrucksack für Laptops»; alle 73 nennen Retro oder Vintage, ohne diese beiden Wörter steht kein Titel bei Leder und bei Canvas). Ein Titel mit Canvas und Leder ohne Retro oder Vintage («Rucksack aus Canvas und Leder», «Canvas Rucksack mit Lederdetails»; 7 Titel) steht nur bei Canvas. «Rucksäcke mit Ladefunktion» und «Wasserdichte Rucksäcke» sind Merkmalsseiten und sollen vollständig sein, ein wasserdichter USB-Rucksack gehört auf beide Seiten, so wie bei CJ eine Herrenuhr mit Quarzwerk in «Men's Watches» und in «Quartz» steht. Gemessene Überlappung in dieser Gruppe: Leder × Canvas 73, USB × wasserdicht 16, Leder × USB 4, Leder × wasserdicht 5, Canvas × USB 5, Canvas × wasserdicht 12 (zusammen 115 Produkte, jedes in genau zwei der vier Kategorien). Zwischen den Gruppen gibt es naturgemäss viele Querverweise (Laptop × wasserdicht 67, Laptop × Leder 64, Laptop × USB 59, Wandern × wasserdicht 51); messen.mjs zeigt sie als ÜBERLAPP, das ist Absicht und betrifft nie zwei Kategorien einer Gruppe ausser den genannten.",
+  "Ersetzt (Regel 7, vorhandene Collections sind sauber, aber zu eng): «rucksaecke-laptop» (181 aktive Produkte; die Titelregel trifft nur die Schreibweisen «laptop-rucksack», «laptoprucksack», «business-rucksack», «notebook-rucksack» mit Bindestrich) durch «laptop-business-rucksaecke» (640; 461 Treffer, die die alte Regel verfehlt: «Business Rucksack», «Computer-Rucksack», «Laptopfach», «15.6 Zoll»); 2 der alten Treffer stehen jetzt bei Foto (SLR Kamera- und Laptop-Rucksack) und Schule (Computer & Schule). «rucksaecke-schule» (Tag sort-rucksaecke-schule, 68 Produkte, davon 2 Schultaschen ohne Rucksack im Titel) durch «schul-studentenrucksaecke» (148). «rucksaecke-sport» (190; Titelregel «sportrucksack», «wanderrucksack», «trekkingrucksack», «daypack», «outdoor-rucksack» mischt Sport und Wandern) durch «wander-outdoor-rucksaecke» (276), «velo-lauf-trinkrucksaecke» (64) und «freizeit-sportrucksaecke» (219). Bleiben unverändert: «rucksaecke» (Tag sort-rucksaecke, 2'484 Produkte) als Gesamtübersicht und Elternseite aller drei Gruppen, «reisegepaeck» und «kulturbeutel-organizer» (keine Rucksäcke, bleiben als Nachbarn im Menü «Taschen & Rucksäcke»).",
+  "Menü-Vorschlag unter «Taschen & Rucksäcke» (bestehende Einträge «Rucksäcke» [rucksaecke], «Sport- & Wanderrucksäcke», «Schulrucksäcke», «Reisegepäck» bleiben bis zum Live-Gang): Rucksäcke (Alle) > Nach Einsatz (Laptop & Business | Schule & Studium | Wandern & Outdoor | Reise | Velo, Lauf & Trinken | Freizeit, Mode & Sport | Kinder & Wickel) · Spezial-Rucksäcke (Taktisch & Tarn | Foto & Drohne | Motorrad) · Material & Ausstattung (Leder & Kunstleder | Canvas, Retro & Vintage | Ladefunktion | Wasserdicht). Der heutige Menüplatz von «rucksaecke-laptop» unter «Elektronik > Büro & Home Office» zeigt dann auf «laptop-business-rucksaecke».",
+  "Abgrenzung zu den Mode-Taschen-Seiten «Damen: Weitere Taschen & Rucksäcke» (damen-weitere-taschen, Tag sort-damen-weitere-taschen, 1'841 Produkte) und «Herren: Weitere Taschen & Rucksäcke» (herren-weitere-taschen, Tag sort-herren-weitere-taschen, 2'171): 1'599 (87 %) bzw. 1'989 (92 %) davon sind Rucksäcke dieses Universums. Von den 2'443 Rucksäcken stehen 1'407 auf beiden Seiten (Unisex-Titel), 192 nur bei Damen, 582 nur bei Herren, 262 bei keiner von beiden (davon 226 in «herren-aktentaschen», meist Laptop- und Business-Rucksäcke). Die Reste der beiden Seiten sind keine Rucksäcke dieses Universums (die 21 «Backpacks» darin sind genau die Artikel, die dieses Universum ausschliesst: Kühl- und Thermorucksäcke, Angelrucksäcke, Haustier-Rucksäcke, Stuhl, Anhänger, Zubehörtasche, Tagestasche, Rückentasche, Berggepäck): Damen 242 (Handbags 106, Fanny Packs 86, Briefcases 23, Backpacks 21, Duffel Bags 5, Messenger Bags 1), Herren 182 (Handbags 108, Fanny Packs 35, Backpacks 21, Briefcases 13, Duffel Bags 5). Vorschlag (nichts geändert): (1) Beide Seiten nach dem Live-Gang von rucksaecke.json in «Damen: Rucksäcke» und «Herren: Rucksäcke» umbenennen und per g_prefix «Luggage & Bags > Backpacks» auf Rucksäcke beschränken (Rucksäcke jetzt nach Geschlecht, die Einsatz-Seiten hier nach Verwendung). Die 21 Fremdartikel fallen mit denselben titel_nicht-Regeln wie hier heraus. Die Nicht-Rucksäcke (Handtaschen, Bauchtaschen, Aktentaschen, Seesäcke) laufen dann in die vorhandenen Seiten «Handtaschen», «Bauchtaschen & Gürteltaschen», «Aktentaschen & Laptoptaschen» und «Reise- & Sporttaschen» desselben Geschlechts. (2) Alternativ die Seiten ohne Rucksäcke als «Damen: Weitere Taschen» und «Herren: Weitere Taschen» führen: die Regeln erhalten «Luggage & Bags > Backpacks» in g_nicht, übrig bleiben 221 bzw. 161 Produkte, beide über der Schwelle von 15. Empfehlung: Variante (1), weil Kundinnen und Kunden «Damen Rucksack» und «Herren Rucksack» direkt suchen und weil 266 der 292 Rucksäcke ohne Kategorie in dieser Datei ohnehin schon auf einer der beiden Mode-Seiten stehen: sie bleiben so auffindbar.",
+  "Überschneidung mit anderen Bereichsdateien (gemessen mit passt() aus kern.mjs, nur Kategorien mit Rucksack-Treffern): auto.json:motorrad-taschen-gepaeck (59 Treffer, 27 davon im Rucksack-Universum; gemeinsam mit rucksaecke-motorrad 27, canvas-vintage-rucksaecke 1, wasserdichte-rucksaecke 9); sport.json:velotaschen-rucksaecke (90 Treffer, 33 davon im Rucksack-Universum; gemeinsam mit velo-lauf-trinkrucksaecke 33, wasserdichte-rucksaecke 6); unterhaltung.json:drohnen-zubehoer-fpv (47 Treffer, 3 davon im Rucksack-Universum; gemeinsam mit foto-drohnen-rucksaecke 3, wasserdichte-rucksaecke 2). «motorrad-taschen-gepaeck» (auto.json) enthält 27 der 31 Motorrad-Rucksäcke, «velotaschen-rucksaecke» (sport.json) 33 der 64 Velo-, Lauf- und Trinkrucksäcke. Die Doppelplatzierung ist gewollt (Menü «Taschen & Rucksäcke» und Menü «Auto» bzw. «Sport»); will der Besitzer keine Doppelung, entfällt «rucksaecke-motorrad» zugunsten von «motorrad-taschen-gepaeck» als Kind der Gruppe «Spezial-Rucksäcke». Mit allen übrigen Kategorien der anderen Bereichsdateien (auch computer.json «laptop-taschen-huellen», tiere.json «tier-transport», haus-bau.json «werkzeugtaschen-aufbewahrung», spielzeug.json «baby-kinderwagen-unterwegs»): 0 gemeinsame Produkte im Rucksack-Universum. Handle-Prüfung: 0 Kollisionen mit Shop-Collections, anderen Bereichsdateien (Kategorien, Chips, Gruppen), Mode-Taxonomie und Engine (Skript /tmp/taxo_b/rucksaecke/handles.mjs). «rucksaecke-motorrad» heisst nicht «motorrad-rucksaecke», weil dieser Handle in auto.json schon ein Chip ist.",
+  "Grenzen der Titelregeln: Leder, Kunstleder, wasserdicht, Canvas und Material lesen nur den Titel; die Titel-Runde (Skill titel-wahrheit) soll vor dem Live-Gang laufen, weil ein Titel wie «Leder» oder «wasserdicht», den das CJ-Datenblatt nicht belegt, das Produkt beim nächsten Lauf aus der Kategorie nimmt. «Wasserdichte Rucksäcke» zählt «wasserdicht» und «wasserfest» (dazu «wasserundurchlässig» und «waterproof», die im heutigen Katalog niemanden treffen), nicht «wasserabweisend», nicht «spritzwasserfest» und nicht «wasserdichtes Fach» (5 Titel mit Teil-Wasserschutz bleiben draussen). «Leder- & Kunstleder-Rucksäcke» führt Echtleder und Kunstleder (PU) bewusst zusammen, die Chips «Echtleder, Rindsleder & Crazy Horse» (237 / 291) und «Kunstleder (PU)» (53 / 291) trennen sie; «Ledergriff», «Lederdetails» und «Leder-Textur» zählen nicht als Leder. «PU» allein ist kein Beleg für Kunstleder (es kann auch die Beschichtung eines Gewebes sein, wie bei «1000D/PU»): 14 Titel im Universum nennen PU ohne ein Leder-Wort (einer davon, «Outdoor-Rucksack 1000D/PU», stand nie bei Leder und steht bei Wander & Outdoor), die anderen 13 standen bis zur zweiten Korrekturrunde bei Leder (304 Mitglieder, jetzt 291; z. B. «PU Rucksack Korean Fashion», «Eleganter PU-Rucksack für Damen»); 8 von ihnen stehen jetzt bei Freizeit und/oder Wasserdicht, 5 in der Lücke. «PU-Leder», «PU Leather», «Kunstleder», «Lederimitat», «Faux Leather» und «Vegan-Leder» zählen weiter (an Probetiteln gemessen). Ein Titel mit PU und Leder, die nicht nebeneinander stehen («PU Fashion Leder Rucksack für Freizeit & Laptop»), bleibt bei Leder und steht in keinem der beiden Leder-Chips (Regel 5). Studierende ohne Laptop-Wort stehen bei Schule, mit Laptop-Wort bei Laptop. Die Chips «Leder & Kunstleder» (bei Laptop, Reise, Freizeit) und «Wasserdicht» (bei Laptop, Wander, Reise, Freizeit, Ladefunktion) tragen dieselben Ausschlüsse wie ihre Eltern-Kategorien (Leder-Textur, Ledergriff …; «wasserdichtes Fach», «wasserdichter Reissverschluss» …), damit derselbe Chip auf jeder Seite dasselbe heisst: Laptop-Leder 65 → 64, Laptop-Wasserdicht 68 → 67, Wander-Wasserdicht 52 → 51, Freizeit-Wasserdicht 17 → 16; bei den übrigen vier (Reise-Leder, Freizeit-Leder, Reise-Wasserdicht, Ladefunktion-Wasserdicht) ändert sich heute nichts, sie sind die zweite vorbeugende Ausnahme von Regel 8. Der Chip «Laufen, Trail & Cross-Country» (18) nennt Cross-Country im Namen, weil vier Titel (u. a. «Cross-Country Trinkrucksack 20L») nur dieses Wort als Beleg tragen und es Mountainbike oder Lauf meinen kann; ohne diese vier hätte der Chip 14 Treffer, unter der Schwelle von 15. Westen: Trinkwesten («Superleichte Marathon-Trinkrucksackweste», «Taktische 2L Trinkrucksack-Weste») heissen im Titel Trinkrucksack und stehen bei Velo, Lauf & Trinken; Westen ohne diese Angabe («Taktische Rucksackweste aus Oxford-Stoff», «Taktische Funktionsweste Rucksack») sind keine Rucksäcke und stehen ausserhalb. Teilwort-Fallen (an 40 Erwartungen mit synthetischen Titeln gemessen, vorher 20 Fehlschläge, jetzt 0): «Foto-Print» und «Fotodruck» zählen nicht als Kamera-Foto, «Baby Blue» und «Babyblau» nicht als Baby, «Plüsch» allein nicht als Kinder (kein heutiger Treffer geht verloren), «Uni-Farbe» und «Uni Color» nicht als Uni, «Computerspiel» nicht als Computer, «Kampfkunst» und «Kampfsport» nicht als Kampf; «Kurzreise» zählt als Reise; «Racing», «Rider» und «Biker» zählen allein nicht mehr als Motorrad (alle 30 früheren Treffer trugen ein anderes Motorrad-Wort; «Racing Fahrradrucksack» geht an Velo). «Helm Rucksack» (mit Leerzeichen) zählt wie «Helmrucksack» als Motorrad («Blauer Helm Rucksack»; der Titel nennt kein Motorrad, es gilt dieselbe Regel wie bisher bei «Helmrucksack»); «Helmet Knight Rucksack Nylon Extra Wasserdicht» bleibt draussen und steht nur bei «Wasserdichte Rucksäcke», weil der Titel weder Motorrad noch Helmrucksack nennt. Wortgrenzen der Chips (zweite Korrekturrunde): 42 der 46 Chips tragen eine Linksgrenze (Wortanfang, bei Ziffern «nicht nach einer Ziffer», oder eine ausdrücklich erlaubte Vorsilbe wie «Geschäfts-», «Business-», «Militär-», «Anti-», «Steam-»); die vier Leder-Chips lesen bewusst auch mitten im Wort («Rindsleder», «Echtleder», «Vollnarbenleder», «Kunstleder» sind Belege; 12 verschiedene Zusammensetzungen gelesen, keine fremde). Vorher traf «city» das Wort «Capacity» (Chip «Alltag & Stadt»: «Sports Bag Large Capacity 20 L Rucksack»), «wasserfest» das Wort «Spritzwasserfester» (Chip «Wasserdicht» bei Wander & Outdoor: «Spritzwasserfester Outdoor Sportrucksack»; spritzwasserfest ist nicht wasserdicht) und «ladefunktion» das Wort «Solarladefunktion» (Chip «Mit USB-Ladeanschluss»: «Business-Rucksack mit Solarladefunktion»). Die Linksgrenze nimmt 5 Titel aus 6 Chip-Zugehörigkeiten (je Chip 1: freizeit-alltag 94 → 93, wander-wasserdicht 52 → 51, laptop-mit-usb 59 → 58, laptop-wasserdicht 68 → 67, usb-wasserdicht 17 → 16, usb-business 58 → 57); 3 davon waren fremde Treffer (Capacity, Spritzwasserfester, Solarladefunktion), 2 sind verklebte «Lade…»-Titel, die ihr Merkmal nennen, aber ohne Wortgrenze («USB-Ladewasserdichter Laptop-Rucksack» verliert die Chips «Wasserdicht» bei Laptop & Business und Ladefunktion, «Rucksack Männer USB-Ladecomputer Tasche» den Chip «Business & Laptop» bei Ladefunktion); die Kategorien ändern sich dadurch nicht. Rechte Seite geprüft: alle 314 verschiedenen Treffer-Wörter der 46 Chips (je Chip gezählt, 2'539 Treffer) und die 279 der Kategorie-Pflichtwörter gelesen, keine weitere Teilwort-Falle (Zusammensetzungen wie «Laufrucksack», «Fahrradrucksack», «Studentenrucksack», «Geschäftsreisen» sind gewollt).",
+  "Offene Entscheidungen für den Besitzer (bewusst bei 14 Kategorien geblieben, wie gewünscht): (1) «Anti-Diebstahl-Rucksäcke» wären eine 15. Kategorie (57 Titel, 14 davon ohne Einsatz in der Lücke); sie stehen vorerst als Chip bei Laptop & Business (19 / 640). (2) «LED- und Leuchtrucksäcke» (22 Titel in der Lücke) wären eine weitere Spezial-Kategorie, ebenso «Vakuum- und Kompressionsrucksäcke» (25 Titel, davon 10 in der Lücke; bei Reise nur 3, bei Freizeit keiner mehr: «Minimalistischer Vakuum-Kompressionsrucksack» passte dort nur über das Stilwort «minimalistisch» und steht seit der zweiten Korrekturrunde wie die übrigen Vakuum-Titel in der Lücke; bei Laptop & Business als Chip «Erweiterbar & Kompression» 16 / 640). (3) Wickelrucksäcke (Chip 15 / 40) liegen allein knapp an der Schwelle von 15 und stehen deshalb bei den Kinderrucksäcken. (4) Brust-, Hüft- und Taillen-Rucksäcke (5 in der Lücke, dazu einzelne in Taktisch, Kinder, Freizeit und Leder) tragen die Google-Klasse Backpacks, gehören inhaltlich eher zu «herren-brusttaschen» und «bauchtaschen». In den Kategorien sind es 8 Titel (Wortsuche nach Brust, Hüft, Taille, Bauch, Crossbody, Umhänge und Schulter über alle 14 Listen): «Taktischer Brustrucksack», «Taktischer Hüftrucksack», «Tarnmuster Brustrucksack», «Taktischer Rucksack Schultertasche Camouflage» (alle Taktisch), «Bauchrucksack für Jungen – geometrisches Muster» (Kinder), «Business Crossbody Rucksack» (Laptop) und, erst vom zweiten Gegenleser gefunden, «Sport-Taille-Rucksack» (Freizeit) und «Leder-Taille-Rucksack» (Leder), der erste nur über das Wort «Sport», der zweite nur über das Wort «Leder». Sieben weitere Crossbody-Titel (Leder 4, wasserdicht 2, Canvas 1) bleiben, weil sie Rucksack als Art nennen; unsicher ist «Goodbaby Pocket Buggy Rucksack» (Kinder, nur über «buggy»: Rucksack oder Kinderwagen-Zubehör, belegt der Titel nicht). Wandern diese Formen auf die Taschenseiten, werden diese Titel mitgenommen. (5) «Studenten & Uni» (55 / 148) ist ein Chip bei den Schulrucksäcken, keine eigene Kategorie. (6) Mögliche Lizenz- oder Markenartikel ohne Prüf-Tag, dem Besitzer oder Lizenz-Prüfer vorzulegen (hier nichts geändert, kein Schreibzugriff): «Zelda Legend Print Rucksack» und «Camel Active Dynamic Rucksack» (ohne Kategorie), «Kinderrucksack Sesame Baby – 38 × 27 × 16 cm» (Kinder), «Jedi Survival Chicken Tarn-Bergrucksack» (Taktisch), «Marshmello Computer-Rucksack» (Laptop). Trägt ein Produkt den Tag lizenz-nicht-bewerben, fällt es automatisch aus allen Kategorien (kern.mjs, SPERR_TAGS); der Tag marken-pruefen schliesst nicht aus. (7) Qualitäts-Tag «bild-zu-klein»: 12 Produkte des Universums tragen ihn, 11 davon stehen in Kategorien (u. a. «Wanderrucksack 36–55 L», «Militärrucksack», «Rucksack Outdoor Wasserbehälter»). Er steht bewusst NICHT in tags_nicht: kein anderer Bereich schliesst ihn aus und die Sortier-Engine sperrt ihn nicht (kategorien.mjs, SPERR_TAGS), Messung und Live-Ergebnis liefen sonst auseinander. Empfehlung: die Bildreparatur vor dem Live-Gang laufen lassen. (8) Rollrucksäcke mit Schulbezug («Trolley-Schulrucksack mit Rollen», «Trolley Rucksack für Schüler, gross») tragen die Google-Klasse Suitcases und stehen deshalb nicht bei «Schul- & Studentenrucksäcke»; sollen sie dort stehen, braucht die Schul-Regel zusätzlich g_prefix «Luggage & Bags > Suitcases» mit Rucksack als Pflichtwort. (9) 13 Titel, die als Material nur «PU» nennen, stehen seit der zweiten Korrekturrunde nicht mehr bei Leder & Kunstleder (Regel 5: PU kann eine Gewebebeschichtung sein). Belegt das CJ-Datenblatt PU-Leder, nennt die Titel-Runde (Skill titel-wahrheit) das Material im Titel, und sie kehren ohne Regeländerung zurück. (10) Zwei Haustier-Tragen heissen «Tierrucksack aus Netzstoff für Ausflüge» und «Tier-Rucksack aus PVC Oxford 37x25x34 cm»; Netzstoff und das Format sprechen für Haustier-Träger, der Titel allein belegt es nicht. Sie stehen deshalb ausserhalb des Universums; vor dem Live-Gang mit dem CJ-Datenblatt prüfen, belegt es ein Kinder- oder Plüschtier-Modell, ist die Tier-Rucksack-Regel in universum.titel_nicht zu streichen (Titel mit Kinder-, Plüsch-, Baby-, Mädchen- oder Jungen-Wort bleiben vorbeugend schon jetzt drin). (11) Retro & Vintage: Die Seite «Canvas, Retro & Vintage» führt jetzt alle 156 Retro- und Vintage-Titel, darunter 73 aus Leder, die auch bei Leder stehen. Will der Besitzer Leder und Canvas strikt trennen, ist die Alternative, die Kategorie in «Canvas- & Leinen-Rucksäcke» umzubenennen und «Retro & Vintage» als eigene Kategorie zu führen (156 Titel, weit über der Schwelle); die Gruppe «Material & Ausstattung» hätte dann 5 statt 4 Kategorien.",
+  "Gegenlesen (27.10.2026, Mitgliederlisten /tmp/taxo_b/rucksaecke/<handle>.txt; die Listengrössen in diesem Absatz sind die der Fassung vor den Korrekturrunden, die heutigen Mitgliederzahlen und das zweite Lesen stehen in den letzten beiden Hinweisen): vollständig gelesen wurden Foto/Drohne (33), Motorrad (30), Kinder/Wickel (40), Velo/Lauf/Trinken (64), Schule/Studium (148), Taktisch/Tarn (102) und Ladefunktion (139), zusammen 556 Titel. Mit Stichprobe gelesen wurden in dieser Fassung 128 von 640 (Laptop & Business), 93 von 277 (Wander & Outdoor), 113 von 225 (Reise), 110 von 220 (Freizeit/Mode/Sport), 101 von 304 (Leder), 96 von 192 (Canvas) und 133 von 264 (wasserdicht), zusammen 774 Titel (jeder 2. bis 5. Titel nach Alphabet, in der Vorfassung mit versetzter Auswahl nochmals je 94 bis 160); danach Verdachtswörter über alle Listen gegrept (Haustier, Hund, Katze, Kühl, Picknick, Angel, Fisch, Weste, Handtasche, Schloss, Clip, Stuhl, Puppe, Spielzeug, Turnbeutel, Handtuch, Zubehör, Trolley, Koffer, Gürtel, Titel ohne Rucksack-Wort) und eine Zufallsstichprobe von 220 aus allen 2'678 Zugehörigkeiten gezogen (Startwert 20261027). Erste Fassung: 15 Fremdkörper gefunden und per Regel behoben (Hunde-Rucksack mit Leine, Rucksack-Stuhl, Funktionsweste, Rucksackweste, zwei Angelrucksäcke bei Taktisch, Isolierrucksack, Fischerausrüstung, Zubehörtasche und ein Motorrad-Rucksack bei Wandern, vier Titel mit «wasserdichtem Fach», Brustbeutel oder Innenfutter bei wasserdicht, 1000D/PU-Nylon bei Kunstleder), dazu zwei Titel mit «Laptop-Kühlung» und «Thermo-Isolation», die die erste Ausschlussregel fälschlich entfernte. Endfassung: 2 weitere Funde («Badminton-Rucksack Outdoor» bei Wandern, «wasserdichtem Reissverschluss» bei wasserdicht) behoben; danach 0 Fremdkörper in 1 330 gelesenen Titeln und 0 in der Zufallsstichprobe von 220 (0 %, Grenze 3 %). Zweifelsfälle, die bewusst bleiben: Mischformen wie «Reisetasche mit weitem Rucksack», Brust- und Taillen-Rucksäcke, Sets aus mehreren Rucksäcken. Gegenprobe (nach der zweiten Korrekturrunde neu gemessen): gleiche Messung am älteren Katalog /tmp/katalog_taxo.json (26.10., 56'620 aktive Produkte) liefert dieselben Mitgliederzahlen aller 14 Kategorien und 46 Chips, dasselbe Universum (2'443) und dieselbe Abdeckung von 88.0 %.",
+  "Korrekturrunde (27.10.2026, nach unabhängiger Prüfung der ersten Fassung). Behoben: Vorrang-Kette vollständig (12'690 synthetische Titel: 3'385 → 0 Doppelungen), Abdeckung ehrlich mit beiden Zahlen, Reise um «Kurzreise» ergänzt, Motorrad um «Helm Rucksack» ergänzt und ohne «racing/rider/biker», sieben Teilwort-Fallen, Chips Leder/Wasserdicht/Laufen, eine tote Regel in Canvas; als offene Entscheide dokumentiert: Westen, Brust- und Hüft-Rucksäcke, Lizenzartikel, Tag «bild-zu-klein», Rollrucksäcke. Mitglieder danach: Motorrad 30 → 31 (+ «Blauer Helm Rucksack»), Reise 225 → 227 (+ «Multifunktionaler Kurzreise-Rucksack» und + «Outdoor-Rucksack für Kurzreisen», der vorher bei Wander stand), Wander 277 → 276, alle übrigen Kategorien unverändert (Summe der Zugehörigkeiten 2'678 → 2'680). Neu gelesen: alle 31 Motorrad-Titel, die drei geänderten Titel und alle Chips mit neuer Regel; Verdachtswörter über alle 14 Listen erneut gegrept (Haustier, Hund, Katze, Kühl, Picknick, Angel, Fisch, Weste, Handtasche, Schloss, Clip, Stuhl, Puppe, Spielzeug, Turnbeutel, Handtuch, Zubehör, Koffer, Gürtel, Blumentopf, Ventilator, Anhänger, Hülle, Abdeckung, Überzug): 23 Zeilentreffer (20 verschiedene Titel), alle echte Rucksäcke mit dem Merkmal im Titel (Zahlenschloss, Regenhülle, Hunde- oder Katzenmotiv, Bären-Anhänger, Turnbeutel-Rucksack, Trinkrucksackweste); 0 Titel ohne Rucksack-Wort; 0 Fremdkörper (Grenze 3 %).",
+  "Chips an der Schwelle von 15 (Stand 27.10.2026, Messbefehl wie im ersten Hinweis): Wickelrucksäcke 15 (bei Kinder & Wickel), Militär & Kampf 15 (Taktisch), Wasserdicht 15 (bei Reise), Erweiterbar & Kompression 16 und Ab 36 Liter 16 (beide Laptop & Business), Wasserdicht 16 (bei Freizeit) und 16 (bei Ladefunktion), Leder & Kunstleder 17 (bei Freizeit; mit den 6 PU-Titeln waren es 23), Laufen, Trail & Cross-Country 18 (ohne die vier Titel, die nur «Cross-Country» nennen, 14), Anti-Diebstahl 19. «Laptop & Business» bei Canvas liegt seit den Retro-Leder-Titeln mit 23 nicht mehr an der Schwelle (vorher 17). Die Titel-Runde (Skill titel-wahrheit) ändert Titel nur bei Material- und Eigenschaftswörtern, die das CJ-Datenblatt nicht belegt; sie kann deshalb die drei Wasserdicht-Chips mit 15 bis 16 Treffern (Reise, Freizeit, Ladefunktion) und den Leder-Chip bei Freizeit (17) unter 15 drücken. Die übrigen Chips an der Schwelle (Wickelrucksäcke, Militär & Kampf, Erweiterbar & Kompression, Ab 36 Liter, Laufen, Anti-Diebstahl) hängen an Einsatz-, Ausstattungs- und Grössenwörtern, die die Titel-Runde nicht anfasst. Mit genau 15 Treffern stehen Wickelrucksäcke, Militär & Kampf und Wasserdicht bei Reise: schon ein einziger umformulierter oder entfernter Titel setzt sie unter 15. Was dann gilt (Spezifikation: Unterfilter sind nur mit mindestens 15 Treffern aktiv): ein Chip unter 15 wird beim Live-Gang nicht angelegt und entfällt ohne weitere Entscheidung; seine Produkte bleiben in der Eltern-Kategorie und in den übrigen Chips, in denen sie stehen, und die Kategorie selbst ändert sich nicht (die kleinste hat 31 Mitglieder). Kein Chip wird von Hand gehalten. Vor dem Live-Gang einmal neu messen (messen.mjs markiert Chips unter 15 mit «ZU») und die wegfallenden Chips aus der Datei streichen. Fällt der Chip «Wickelrucksäcke» weg, bleibt der Kategoriename «Kinder- & Wickelrucksäcke» nur belegt, solange mindestens ein Titel mit Wickel, Windel, Mommy oder Mütter in der Kategorie steht; sonst ist er auf «Kinderrucksäcke» zu kürzen.",
+  "Zweite Korrekturrunde (27.10.2026, nach den Befunden des zweiten unabhängigen Gegenlesers; behoben wurden sieben Befunde: das Canvas-Versprechen, Handgepäck im Reise-Namen, «PU» allein bei Kunstleder, zweifelhafte Mitglieder, Chip-Teilwörter, Haustier-Rucksäcke und die Chips an der Schwelle). (1) Canvas, Retro & Vintage: Name und Beschreibung versprachen Retro und Vintage, die Seite zeigte aber nur 83 von 156 Titeln mit Retro oder Vintage, weil die Leder-Regel bei Canvas die 73 Lederrucksäcke «Vintage Leder Rucksack …» ausschloss. Die Leder-Regel bei Canvas entfällt ganz: in der Fassung «nur für Titel ohne Retro und Vintage» träfe sie heute 0 von 266 Kandidaten und wäre nach Regel 8 eine tote Regel: Canvas 192 → 265, Chip «Retro & Vintage» 83 → 156, Leder × Canvas 0 → 73; die andere Möglichkeit, das Versprechen zu streichen, wurde verworfen, weil wer «Vintage Rucksack» sucht, alles finden soll. Die 73 neuen Titel sind alle gelesen: 0 Fremdkörper. (2) Reise: Name und Beschreibung nennen kein Handgepäck mehr («Reiserucksäcke»; nur 1 von 227 Titeln nennt es, im ganzen Universum 2); die Regel erkennt das Wort weiter, Schuhfach (3 Titel) und Nass-/Trockenfach (2 Titel) sind belegt. (3) Leder: «PU» allein belegt kein Kunstleder; die zweite Pflichtregel («PU» allein) ist entfallen: Leder 304 → 291, Chip «Kunstleder (PU)» 67 → 53, Freizeit-Leder 23 → 17, Leder × Wasserdicht 8 → 5; «PU-Leder», «PU Leather» und «Kunstleder» treffen weiter. (4) Zweifelhafte Mitglieder: «Minimalistischer Vakuum-Kompressionsrucksack» (nur Stilwort) steht jetzt in der Lücke (Freizeit 220 → 219, neue Regel: Vakuum und Kompression ohne Einsatzwort fallen bei Freizeit heraus); als Zweifelsfälle bleiben, namentlich: «Grosser wasserdichter Reisereiter-Rucksack» (Reise, über das Wort «Reise» in «Reisereiter»), «Grosse Reisetasche mit weitem Rucksack» (Reise), «Sport-Taille-Rucksack» (Freizeit) und «Leder-Taille-Rucksack» (Leder); eine Regel, die nur diese vier Titel träfe, wäre eine Einzelfall-Regel, die Taillen-Formen sind in den offenen Entscheidungen (4). (5) Chip-Wortgrenzen und Haustier siehe «Grenzen der Titelregeln» und «ausserhalb»: «Tierrucksack aus Netzstoff für Ausflüge» und «Tier-Rucksack aus PVC Oxford 37x25x34 cm» stehen nicht mehr im Universum (2'445 → 2'443, Haustier-Artikel 5 → 7). (6) Chips an der Schwelle: siehe den vorigen Hinweis. Mitglieder danach: Foto 33, Motorrad 31, Schule 148, Kinder 40, Velo 64, Taktisch 102, Laptop 640, Wander 276, Reise 227, Freizeit 219, Leder 291, Canvas 265, Ladefunktion 139, Wasserdicht 264 (Summe der Zugehörigkeiten 2'680 → 2'739); Universum 2'443, davon 2'151 in einer Kategorie (88.0 %), 292 ohne. Neu gelesen: alle 73 neuen Canvas-Titel, 96 der 192 älteren Canvas-Titel (jeder 2. nach Alphabet), 109 der 218 Leder-Titel ohne Retro und Vintage (jeder 2.), 109 von 219 Freizeit-Titeln (jeder 2.), die 6 neuen Lücken-Titel und alle Chip-Wechsel (siehe oben); Verdachtswörter (Haustier, Hund, Katze, Tier-Rucksack, Kühl, Picknick, Angel, Fisch, Weste, Handtasche, Schloss, Clip, Stuhl, Puppe, Spielzeug, Turnbeutel, Handtuch, Zubehör, Trolley, Koffer, Gürtel, Blumentopf, Ventilator, Anhänger, Hülle, Abdeckung, Überzug, Tasche) über alle 14 Listen mit 2'739 Zugehörigkeiten: 43 verschiedene Titel, alle echte Rucksäcke mit dem Merkmal im Titel (Regenhülle, Zahlenschloss, Schulzubehör, Reisetasche-Mischformen, Trinkrucksackweste); 0 Titel ohne Rucksack-Wort; 0 Fremdkörper in den gelesenen Titeln (Grenze 3 %). Die Vorrang-Kette ist unverändert (0 Doppelungen in der Kette, 23'496 synthetische Titel). Abnahme: messen.mjs Exit 0, keine Kategorie und kein Chip unter 15; pruefen.mjs meldet nur noch die 18 vorbeugenden «titel_nicht ohne Treffer» der Vorrang-Kette."
+ ]
+}

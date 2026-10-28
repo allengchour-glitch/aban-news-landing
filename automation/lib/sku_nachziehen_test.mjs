@@ -132,5 +132,49 @@ for (const schlecht of ['CJYD12', 'XCJYD225829901AZ', 'CJ 123', 'CJYD301744802BY
   unklar('Dieselbe CJ-Nummer in anderer Schreibweise bei einer verworfenen Variante → nicht eindeutig', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[0]] }), 'nicht eindeutig');
 }
 
+// ── Zweitmeinung Codex/GPT-6 Astra (27.10.2026): fünf Funde gegen die echte Logik nachgestellt, zwei überlebende Mutanten geschlossen
+// 1. Schlüssel mit Unicode-Buchstaben: «红色-US» (rot) und «蓝色-EU» (blau) hatten dieselbe leere Basis → EU-SKU wäre trotz anderer Farbe geschrieben worden
+{
+  const alle = [farbe(1, '红色-US'), farbe(2, '蓝色-EU')];
+  unklar('Zwei verschiedene chinesische Farben sind nicht «nur Stecker»', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'unterscheidet sich nicht nur im Stecker');
+  const gleich = [farbe(1, '红色-US'), farbe(2, '红色-EU')];
+  ist('Dieselbe chinesische Farbe, nur der Stecker verschieden → schreiben', skuNachziehen({ wege: pid, vsRoh: gleich, vs: [gleich[1]] })?.neueSku, 'CJYD11111112AZ');
+  ist('Basis behält Unicode-Buchstaben (Akzente, CJK), Umlaute wie bisher', [steckerBasis('红色-US'), steckerBasis('Café-EU'), steckerBasis('Grün-EU')], ['红色', 'café', 'grün']);
+  const akz = [farbe(1, 'Café-US'), farbe(2, 'Cafe-EU')];
+  unklar('«Café» und «Cafe» sind verschiedene Schlüssel', skuNachziehen({ wege: pid, vsRoh: akz, vs: [akz[1]] }), 'unterscheidet sich');
+}
+// 2. vs[0] muss zur Rohvariante gleicher vid gehören (SKU einer anderen Variante darf nicht hinübergerettet werden)
+{
+  const alle = [farbe(1, 'Black-US'), farbe(2, 'Black-EU')];
+  unklar('vs[0] trägt die SKU einer anderen Rohvariante', skuNachziehen({ wege: pid, vsRoh: alle, vs: [{ ...alle[1], sku: alle[0].sku }] }), 'Rohdaten');
+  unklar('vs[0] hat eine vid, die es in den Rohdaten nicht gibt', skuNachziehen({ wege: pid, vsRoh: alle, vs: [{ ...alle[1], vid: 'x' }] }), 'Rohdaten');
+}
+// 3. Preisgrenze: Gleitkomma (3.8 × 1.05 = 3.9899999999999998) wies «genau +5 %» ab; die Obergrenze selbst war nicht durch Tests gesichert (Mutant 1.059 blieb grün)
+{
+  const p = (a, b) => { const alle = [farbe(1, 'Black-US', a), farbe(2, 'Black-EU', b)]; return skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }); };
+  ist('3.80 → 3.99 ist genau +5 % und wird akzeptiert', p(3.8, 3.99)?.neueSku, 'CJYD11111112AZ');
+  ist('3.80 → 4.00 (+5.3 %) wird abgewiesen', typeof p(3.8, 4.0)?.unklar, 'string');
+  ist('100 → 105.50 (+5.5 %) wird abgewiesen (Obergrenze 1.05 geschützt)', typeof p(100, 105.5)?.unklar, 'string');
+  ist('100 → 105.01 wird abgewiesen, 105.00 akzeptiert', [typeof p(100, 105.01)?.unklar, p(100, 105)?.neueSku], ['string', 'CJYD11111112AZ']);
+  ist('Preis 54.90 → 57.645 (genau +5 %) wird akzeptiert', p(54.9, 57.645)?.neueSku, 'CJYD11111112AZ');
+}
+// 4. Preis Infinity ist kein Einkaufspreis
+{
+  const alle = [farbe(1, 'Black-US', Infinity), farbe(2, 'Black-EU', Infinity)];
+  unklar('Einkaufspreis Infinity der übrigen Variante', skuNachziehen({ wege: pid, vsRoh: alle, vs: [alle[1]] }), 'Einkaufspreis');
+  const nurRest = [farbe(1, 'Black-US', Infinity), farbe(2, 'Black-EU', 10)];
+  ist('Preis Infinity einer anderen Variante wird ignoriert → schreiben', skuNachziehen({ wege: pid, vsRoh: nurRest, vs: [nurRest[1]] })?.neueSku, 'CJYD11111112AZ');
+}
+// 5. null-Einträge → kontrollierte Rückgabe statt TypeError
+{
+  const alle = [farbe(1, 'Black-US'), farbe(2, 'Black-EU')];
+  ist('wege: [null] → null', skuNachziehen({ wege: [null], vsRoh: alle, vs: [alle[1]] }), null);
+  unklar('null in den CJ-Rohvarianten → unvollständig, kein Absturz', skuNachziehen({ wege: pid, vsRoh: [null, alle[1]], vs: [alle[1]] }), 'unvollständig');
+}
+// 6. Zeichensatz der Engine: ein Schrägstrich in einer sonst gültigen Form-B-Nummer ist nicht erlaubt (der bisherige Slash-Test scheiterte schon an der Form, nicht am Zeichensatz)
+for (const s of ['CJAB12345-a/b', 'CJJJCFCJ02750-Black/EU', 'CJXFLPCD00334-Photo\\Color-EU'])
+  ist('Form B mit unerlaubtem Zeichen ungültig: ' + s, istCjVariantennummer(s), false);
+ist('Form B mit erlaubten Zeichen bleibt gültig', [istCjVariantennummer('CJAB12345-a.b_c 1'), istCjVariantennummer('CJAB12345-a-b')], [true, true]);
+
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);
