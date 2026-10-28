@@ -211,7 +211,7 @@ jobs:
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
           node automation/printful_sync_test.mjs
-      - name: Mutationsprobe «Selbst gestalten» (173 absichtliche Fehler, alle müssen rot werden)
+      - name: Mutationsprobe «Selbst gestalten» (197 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |

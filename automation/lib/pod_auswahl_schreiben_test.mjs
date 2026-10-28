@@ -4,9 +4,9 @@ import { mkdtempSync, readFileSync, writeFileSync, existsSync, readdirSync, rmSy
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { planeAlles, pfIdAusSku, PLATZHALTER_VARIANTE, PLATZHALTER_BILD } from './pod_auswahl_plan.mjs';
-import { ladePaket } from './pod_auswahl_daten.mjs';
+import { ladePaket, ohneKnoten, BESTAND_Q } from './pod_auswahl_daten.mjs';
 import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK, endeCode, EXIT_TEXT, zusammenfassung, bestaetigt,
-  beschreibungSeitPlanVeraendert, pruefeVorhandenesProdukt, Q_PRODUKT, M_REORDER, M_OPTION_WERTE_LOESCHEN,
+  beschreibungSeitPlanVeraendert, pruefeVorhandenesProdukt, Q_PRODUKT, M_REORDER, M_OPTION_WERTE_LOESCHEN, M_OPTION, M_OPTION_WERTE, M_VARIANTEN,
   AbweichungFehler, LESEGRENZE_VARIANTEN, leereWerte as leereWerteLib, leereWerteEntfernen, materialStand, zustandsText, stelleReihenfolgeHer } from './pod_auswahl_schreiben.mjs';
 import { DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
 import { MARKE_AUF } from './pod_auswahl_spec.mjs';
@@ -23,6 +23,12 @@ const alleBestaetigt = (plan) => plan.produkte.flatMap((p) => [...new Set(p.befu
 const HANDLES = { poster: 'poster-zum-selbstgestalten', hoodie: 'unisex-hoodie-selbst-gestalten', shirt: 'unisex-t-shirt-selbst-gestalten', iphone: 'hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten', samsung: 'samsung-huelle-selbst-gestalten' };
 
 // ───────────────────────────────────────────────────────── Shopify-Attrappe (so streng wie nötig: neue Optionswerte müssen vorher angelegt sein)
+// WIRKLICHKEITSNAH (Runde 4, Schema + Doku productOptionUpdate): Der Zustand je Option speichert in `values` ALLE Werte (wie Shopifys optionValues, auch ohne Variante). Die ANTWORT leitet daraus ab:
+//   ProductOption.values       nur Werte mit mindestens EINER Variante (Werte ohne Variante fehlen dort)
+//   ProductOption.optionValues ALLE Werte, jeder mit id und hasVariants (true, sobald eine Variante den Wert trägt, auch durch productVariantsBulkCreate)
+// Es kommen nur die Felder, die die Abfrage verlangt (Auswahl der Abfrage wird ausgewertet): fragt ein Lesepfad nur `values`, fehlen optionValues und der Lauf scheitert laut.
+// productOptionUpdate mit einem schon vorhandenen Namen antwortet wie Shopify mit OPTION_VALUE_ALREADY_EXISTS, das Löschen eines Werts mit Varianten mit OPTION_VALUE_HAS_VARIANTS (Codes aus ProductOptionUpdateUserErrorCode).
+// Strenger als Shopify: productVariantsBulkCreate legt in Wirklichkeit einen fehlenden Optionswert selbst an (Doku); die Attrappe verlangt ihn vorher (so bleibt jeder Pfad sichtbar, auf dem ein Wert ohne Variante entstehen kann).
 // Optionen der Attrappe (alle optional):
 //   alleFehlschlagen, fehlerFuerHandle, tageslimitAb (ganzer Aufruf scheitert, wenn er das Limit überschritte), verschluckeSku, preisAendern, beschreibungVerfaelschen
 //   positionIgnorieren   productOptionsCreate ignoriert `position` und hängt die Option hinten an (die Doku verspricht nur «Position of the option»)
@@ -32,8 +38,19 @@ const HANDLES = { poster: 'poster-zum-selbstgestalten', hoodie: 'unisex-hoodie-s
 //   verliereAntwortNach {name, nr}   die nr-te Mutation `name` wird AUSGEFÜHRT, die Antwort geht aber verloren (Netzfehler: gql wirft)
 //   lesenScheitertNach <name>        nach der ersten Mutation `name` scheitert die NÄCHSTE Abfrage einmal (Zurücklesen)
 //   variantenFehlerBei <k>           der k-te productVariantsBulkCreate-Aufruf (zählt über alle Produkte) scheitert mit einem gewöhnlichen Fehler (kein Tageslimit), nichts wird angelegt
+//   lesenTotNach {name, nr}          nach der nr-ten Mutation `name` scheitert JEDE weitere Abfrage (Netz dauerhaft tot beim Lesen)
+//   shop.lies(handle, query)         die Antwort auf eine Abfrage, wie der Schreibweg sie bekäme (auch BESTAND_Q); shop.antwortVon(handle) für Tests der Attrappe selbst
+/** Auswahl `feld{ … }` einer Abfrage als Baum {name: true | Unterbaum}; null, wenn die Abfrage das Feld nicht verlangt. */
+function auswahlVon(query, feld) {
+  const i = query.indexOf(feld + '{'); if (i < 0) return null;
+  const tok = query.slice(i + feld.length).match(/[A-Za-z_]\w*|[{}]/g); let k = 0;
+  const lies = () => { k++; const t = {}; while (tok[k] !== '}') { const n = tok[k++]; t[n] = tok[k] === '{' ? lies() : true; } k++; return t; };
+  return lies();
+}
+/** Nur die verlangten Felder (Antwort-Projektion wie bei GraphQL). */
+const waehle = (sel, o) => (Array.isArray(o) ? o.map((x) => waehle(sel, x)) : Object.fromEntries(Object.entries(sel).map(([k, t]) => [k, t === true ? o[k] : waehle(t, o[k])])));
 function neuerShop(bestand, o = {}) {
-  const produkte = new Map(); let n = 5000; const aufrufe = []; let hookGelaufen = false; const zaehler = {}; let lesenKaputt = false, lesenGescheitert = false, variantenAufrufe = 0;
+  const produkte = new Map(); let n = 5000; const aufrufe = []; let hookGelaufen = false; const zaehler = {}; let lesenKaputt = false, lesenGescheitert = false, lesenTot = false, variantenAufrufe = 0;
   for (const b of Object.values(bestand)) produkte.set(b.handle, {
     id: b.id, handle: b.handle, title: b.title, status: b.status, productType: b.productType, vendor: b.vendor, tags: [...b.tags], descriptionHtml: b.descriptionHtml, seo: b.seo, category: null,
     options: b.options.map((x, i) => ({ id: `gid://shopify/ProductOption/${b.handle.length}${i}`, name: x.name, position: x.position, values: [...x.values] })),
@@ -41,8 +58,15 @@ function neuerShop(bestand, o = {}) {
     media: [], metafields: [] });
   let angelegteVarianten = 0;
   const wertId = (p, x, v) => `gid://shopify/ProductOptionValue/${p.handle.length}-${x.name}-${v}`;   // eindeutig je Wert (für optionValuesToDelete)
-  const alsAntwort = (p) => ({ id: p.id, handle: p.handle, title: p.title, status: p.status, productType: p.productType, vendor: p.vendor, tags: p.tags, descriptionHtml: p.descriptionHtml, seo: p.seo, category: p.category && { id: p.category },
-    options: p.options.map((x) => ({ ...x, optionValues: x.values.map((v) => ({ id: wertId(p, x, v), name: v })) })),
+  const traegt = (p, x, w) => p.variants.some((va) => va.selectedOptions.some((s) => s.name === x.name && s.value === w));   // hasVariants: trägt irgendeine Variante den Wert?
+  /** Die Optionen so, wie Shopify sie antwortet: `values` nur mit Variante, `optionValues` alle mit hasVariants; nur die verlangten Felder (query), ohne query alle. */
+  const optionenAntwort = (p, query) => {
+    const voll = p.options.map((x) => ({ id: x.id, name: x.name, position: x.position, values: x.values.filter((w) => traegt(p, x, w)), optionValues: x.values.map((w) => ({ id: wertId(p, x, w), name: w, hasVariants: traegt(p, x, w) })) }));
+    const sel = query ? auswahlVon(query, 'options') : null;
+    return sel ? waehle(sel, voll) : voll;
+  };
+  const alsAntwort = (p, query) => ({ id: p.id, handle: p.handle, title: p.title, status: p.status, productType: p.productType, vendor: p.vendor, tags: p.tags, descriptionHtml: p.descriptionHtml, seo: p.seo, category: p.category && { id: p.category },
+    options: optionenAntwort(p, query),
     variants: { edges: p.variants.map((v) => ({ node: v })) }, media: { edges: p.media.map((m) => ({ node: m })) }, metafields: { edges: p.metafields.map((m) => ({ node: m })) } });
   const nachId = (id) => [...produkte.values()].find((p) => p.id === id);
   const sortiere = (p) => { p.options.sort((a, b) => a.position - b.position); p.options.forEach((x, i) => { x.position = i + 1; }); for (const v of p.variants) v.selectedOptions.sort((a, b) => p.options.findIndex((x) => x.name === a.name) - p.options.findIndex((x) => x.name === b.name)); };
@@ -53,15 +77,17 @@ function neuerShop(bestand, o = {}) {
       zaehler[name] = (zaehler[name] || 0) + 1;
       if (o.verliereAntwortNach && o.verliereAntwortNach.name === name && o.verliereAntwortNach.nr === zaehler[name]) throw new Error('fetch failed (Antwort verloren)');
       if (o.lesenScheitertNach === name && !lesenGescheitert) lesenKaputt = true;
+      if (o.lesenTotNach && o.lesenTotNach.name === name && o.lesenTotNach.nr === zaehler[name]) lesenTot = true;
     }
     return antwort;
   }
   async function ausfuehren(query, v, name) {
     aufrufe.push({ name, v });
+    if (name === 'productByIdentifier' && lesenTot) return { errors: [{ message: 'Netz dauerhaft tot beim Lesen' }] };
     if (name === 'productByIdentifier' && lesenKaputt) { lesenKaputt = false; lesenGescheitert = true; return { errors: [{ message: 'Internal error beim Lesen' }] }; }
     if (name !== 'productByIdentifier' && o.alleFehlschlagen) return { errors: [{ message: 'Internal error' }] };
     if (name !== 'productByIdentifier' && o.fehlerFuerHandle && [v.pid, v.p?.id].includes(produkte.get(o.fehlerFuerHandle)?.id)) return { errors: [{ message: 'Internal error' }] };
-    if (name === 'productByIdentifier') { const p = produkte.get(v.h); return { data: { productByIdentifier: p ? alsAntwort(p) : null } }; }
+    if (name === 'productByIdentifier') { const p = produkte.get(v.h); return { data: { productByIdentifier: p ? alsAntwort(p, query) : null } }; }
     if (name === 'productOptionsCreate') {
       const p = nachId(v.pid);
       for (const op of v.opts) {
@@ -93,7 +119,7 @@ function neuerShop(bestand, o = {}) {
         for (const id of v.del) {
           const wert = op.values.find((w) => wertId(p, op, w) === id);
           if (!wert) return { data: { productOptionUpdate: { userErrors: [{ code: 'OPTION_VALUE_DOES_NOT_EXIST', message: id }] } } };
-          if (p.variants.some((va) => va.selectedOptions.some((s) => s.name === op.name && s.value === wert))) return { data: { productOptionUpdate: { userErrors: [{ code: 'VALUE_IN_USE', message: 'Wert trägt Varianten: sie würden mitgelöscht' }] } } };
+          if (traegt(p, op, wert)) return { data: { productOptionUpdate: { userErrors: [{ code: 'OPTION_VALUE_HAS_VARIANTS', message: 'Wert trägt Varianten: sie würden mitgelöscht' }] } } };
           op.values = op.values.filter((w) => w !== wert);
         }
         return { data: { productOptionUpdate: { product: alsAntwort(p), userErrors: [] } } };
@@ -137,8 +163,19 @@ function neuerShop(bestand, o = {}) {
     if (name === 'metafieldsSet') { const p = nachId(v.mf[0].ownerId); for (const m of v.mf) p.metafields.push({ namespace: m.namespace, key: m.key, type: m.type, value: m.value }); return { data: { metafieldsSet: { metafields: v.mf.map((m) => ({ key: m.key })), userErrors: [] } } }; }
     throw new Error('Attrappe kennt die Abfrage nicht: ' + query.slice(0, 60));
   }
-  return { gql, produkte, aufrufe, zaehle: (nm) => aufrufe.filter((a) => a.name === nm).length, reihenfolge: () => aufrufe.map((a) => a.name) };
+  return { gql, produkte, aufrufe, zaehle: (nm) => aufrufe.filter((a) => a.name === nm).length, reihenfolge: () => aufrufe.map((a) => a.name),
+    lies: (handle, query = Q_PRODUKT) => alsAntwort(produkte.get(handle), query), antwortVon: (handle) => alsAntwort(produkte.get(handle)) };
 }
+
+/**
+ * Bestand in der Form von bestand.json aus dem Zustand der Attrappe: so rechnet ein neuer Trockenlauf/LIVE-Lauf den Plan «aus dem Halbzustand» neu.
+ * Läuft über den ECHTEN Lesepfad (BESTAND_Q-Antwort der Attrappe → ohneKnoten), nicht über eine von Hand gebaute Kopie des internen Zustands (Runde 4).
+ */
+const bestandAusShop = (shop, handle) => {
+  const g = ohneKnoten(shop.lies(handle, BESTAND_Q)), b = klon(paket.bestand);
+  b[handle] = { ...b[handle], descriptionHtml: g.descriptionHtml, options: g.options, variants: g.variants };
+  return b;
+};
 
 const angelegt = [];
 const tmp = () => { const d = mkdtempSync(join(tmpdir(), 'pod-auswahl-test-')); angelegt.push(d); return d; };   // alle Ordner werden am Ende entfernt
@@ -196,10 +233,7 @@ ist('CHUNK ist 50', CHUNK, 50);
   ist('Poster: zweiter Lauf überspringt laut Ledger, kein Aufruf', [r2.ergebnisse.map((x) => x.status), shop.aufrufe.length - vor], [['UEBERSPRUNGEN'], 0]);
   // dritter Lauf ohne Ledger gegen den schon geschriebenen Shop: Plan neu berechnen (Bestand = Zustand jetzt) → nichts mehr zu schreiben
   rmSync(join(dir, 'ledger.txt'));
-  const jetztBestand = klon(paket.bestand); const pj = shop.produkte.get(HANDLES.poster);
-  jetztBestand[HANDLES.poster] = { ...jetztBestand[HANDLES.poster], descriptionHtml: pj.descriptionHtml, options: pj.options.map((o) => ({ name: o.name, position: o.position, values: o.values })),
-    variants: pj.variants.map((v) => ({ id: v.id, sku: v.sku, price: v.price, inventoryPolicy: v.inventoryPolicy, selectedOptions: v.selectedOptions })) };
-  const plan3 = planVon([HANDLES.poster], jetztBestand);
+  const plan3 = planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster));
   ist('Poster: neu geplant nach dem Schreiben → 0 neue Varianten, alle 14 «schonDa»', [plan3.produkte[0].neu.length, plan3.produkte[0].schonDa.length, plan3.produkte[0].bestehende.length], [0, 14, 4]);
   const vor3 = shop.zaehle('productVariantsBulkCreate') + shop.zaehle('productOptionsCreate');
   const r3 = await lauf({ plan: plan3, gql: shop.gql, ...cfg(dir) });
@@ -425,13 +459,6 @@ ist('bestaetigt: nur «handle:code» zählt', [bestaetigt(['h:c'], 'h', 'c'), be
 
 
 // ───────────────────────────────────────────────────────── 14. Tageslimit MITTEN im Produkt (Befund 10): kein ausgegrauter Wert bleibt stehen, Wiederaufnahme mit gleichem Hash
-/** Bestand in der Form von bestand.json aus dem Zustand der Attrappe: so rechnet ein neuer Trockenlauf/LIVE-Lauf den Plan «aus dem Halbzustand» neu. */
-const bestandAusShop = (shop, handle) => {
-  const pj = shop.produkte.get(handle), b = klon(paket.bestand);
-  b[handle] = { ...b[handle], descriptionHtml: pj.descriptionHtml, options: pj.options.map((o) => ({ name: o.name, position: o.position, values: [...o.values] })),
-    variants: pj.variants.map((v) => ({ id: v.id, sku: v.sku, price: v.price, inventoryPolicy: v.inventoryPolicy, selectedOptions: v.selectedOptions.map((x) => ({ ...x })) })) };
-  return b;
-};
 /** Optionswerte ohne jede Variante im Shop («Option=Wert»): so sähe ein ausgegrauter Wert aus. */
 const leereWerte = (shop, handle) => { const p = shop.produkte.get(handle); return p.options.flatMap((o) => o.values.filter((w) => !p.variants.some((v) => v.selectedOptions.some((q) => q.name === o.name && q.value === w))).map((w) => `${o.name}=${w}`)); };
 const nurSchreib = (shop) => shop.aufrufe.filter((a) => a.name !== 'productByIdentifier').length;
@@ -657,7 +684,7 @@ const loeschAufrufe = (shop) => shop.aufrufe.filter((a) => a.name === 'productOp
 }
 { // B3: Werte einer Fremdoption (Grösse), die dieser Aufruf NICHT ergänzt hat, bleiben auch dann, wenn sie leer sind; ein ergänzter leerer Wert geht
   const ist1 = { id: 'gid://shopify/Product/1', variants: [{ sku: 'a', optionen: { Material: 'M1', 'Grösse': 'S' } }],
-    options: [{ id: 'o1', name: 'Material', optionValues: [{ id: 'm1', name: 'M1' }, { id: 'm2', name: 'M2' }, { id: 'm3', name: 'Fremd' }] }, { id: 'o2', name: 'Grösse', optionValues: [{ id: 'g1', name: 'S' }, { id: 'g2', name: 'L-neu' }, { id: 'g3', name: 'XL-fremd' }] }] };
+    options: [{ id: 'o1', name: 'Material', optionValues: [{ id: 'm1', name: 'M1', hasVariants: true }, { id: 'm2', name: 'M2', hasVariants: false }, { id: 'm3', name: 'Fremd', hasVariants: false }] }, { id: 'o2', name: 'Grösse', optionValues: [{ id: 'g1', name: 'S', hasVariants: true }, { id: 'g2', name: 'L-neu', hasVariants: false }, { id: 'g3', name: 'XL-fremd', hasVariants: false }] }] };
   const w = leereWerteLib(ist1, { materialOption: 'Material', planWerte: ['M1', 'M2'], hinzu: [{ optionName: 'Grösse', wert: 'L-neu' }] });
   ist('leereWerte: Material-Plan-Werte ohne Variante und ergänzte Grösse-Werte sind eigene; Material-Wert ausserhalb des Plans ist fremd; fremder Grösse-Wert kommt nirgends vor', [w.eigene.map((x) => `${x.optionName}=${x.wert}`), w.fremde.map((x) => `${x.optionName}=${x.wert}`)], [['Material=M2', 'Grösse=L-neu'], ['Material=Fremd']]);
   ist('leereWerte: ein Wert MIT Variante ist nie leer (auch wenn er in der Ergänzungsliste steht)', leereWerteLib(ist1, { materialOption: 'Material', planWerte: ['M1', 'M2'], hinzu: [{ optionName: 'Grösse', wert: 'S' }, { optionName: 'Material', wert: 'M1' }] }).eigene.map((x) => x.wert), ['M2']);
@@ -825,6 +852,126 @@ const loeschAufrufe = (shop) => shop.aufrufe.filter((a) => a.name === 'productOp
   wahr('EXIT_TEXT[4]: «nicht sofort wiederholen, später denselben Befehl», Altersgrenze der Daten und DATEN=holen — nicht mehr «nicht wiederholen» / «morgen neu planen»', /nicht sofort wiederholen, später denselben Befehl/.test(t4) && t4.includes(`${DATEN_MAX_ALTER_H} Stunden`) && /DATEN=holen/.test(t4) && !/nicht wiederholen|morgen neu planen/.test(t4), t4);
   const z = zusammenfassung({ ergebnisse: [{ handle: 'a', status: 'TAGESLIMIT' }], exit: 4 }).split('\n');
   wahr('Die letzte Ausgabezeile bei Exit 4 trägt diesen Wortlaut', z[z.length - 1] === `ENDE: Exit 4 – ${t4}`, z[z.length - 1]);
+}
+
+
+// ───────────────────────────────────────────────────────── 28. Runde 4 (28.10.2026): Optionen werden über `optionValues { id name hasVariants }` gelesen, NIE über `ProductOption.values`
+// Der unabhängige Prüfer der Runde 3 fand: die Attrappe lieferte Werte OHNE Variante in `values`, Shopify tut das nicht (Schema: «including values not assigned to any variants» steht NUR bei optionValues).
+// Ein liegengebliebener leerer Wert war für die Wiederaufnahme darum unsichtbar (Exit 1 mit OPTION_VALUE_ALREADY_EXISTS statt Exit 0/4).
+const VALUES_ABFRAGE = 'query($h:String!){ productByIdentifier(identifier:{handle:$h}){ options{ id name values optionValues{ id name hasVariants } } } }';   // nur für Tests der Attrappe: fragt AUSDRÜCKLICH auch `values`
+{ // 28a: die Attrappe verhält sich wie Shopify (Selbsttest)
+  const shop = neuerShop(paket.bestand); const p = shop.produkte.get(HANDLES.poster);
+  p.options.unshift({ id: 'gid://shopify/ProductOption/hand', name: 'Material', position: 1, values: ['Poster matt', 'Holz'] }); p.options.forEach((o, i) => { o.position = i + 1; });
+  p.variants.forEach((v) => v.selectedOptions.unshift({ name: 'Material', value: 'Poster matt' }));
+  const mat = () => shop.lies(HANDLES.poster, VALUES_ABFRAGE).options.find((o) => o.name === 'Material');
+  ist('Attrappe: ProductOption.values nennt nur Werte MIT Variante («Holz» fehlt), optionValues nennt alle mit hasVariants', [mat().values, mat().optionValues.map((v) => [v.name, v.hasVariants])], [['Poster matt'], [['Poster matt', true], ['Holz', false]]]);
+  ist('Attrappe: jeder optionValues-Eintrag trägt eine eigene id', new Set(mat().optionValues.map((v) => v.id)).size, 2);
+  ist('Attrappe: die Antwort enthält nur die verlangten Felder (Q_PRODUKT: id, name, position, optionValues – KEIN values)', [Object.keys(shop.lies(HANDLES.poster, Q_PRODUKT).options[0]).sort(), Object.keys(shop.lies(HANDLES.poster, Q_PRODUKT).options[0].optionValues[0]).sort()], [['id', 'name', 'optionValues', 'position'], ['hasVariants', 'id', 'name']]);
+  ist('Attrappe: BESTAND_Q liefert dieselben Felder', Object.keys(shop.lies(HANDLES.poster, BESTAND_Q).options[0]).sort(), ['id', 'name', 'optionValues', 'position']);
+  const dopp = await shop.gql(M_OPTION_WERTE, { pid: p.id, opt: { id: 'gid://shopify/ProductOption/hand' }, add: [{ name: 'Holz' }] });
+  ist('Attrappe: einen schon vorhandenen Optionswert (auch einen ohne Variante) noch einmal anlegen → OPTION_VALUE_ALREADY_EXISTS wie bei Shopify', dopp.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_ALREADY_EXISTS']);
+  const holzVar = [{ optionValues: [{ optionName: 'Material', name: 'Holz' }, { optionName: 'Grösse', name: p.options[1].values[0] }], price: '9.90', inventoryPolicy: 'CONTINUE', inventoryItem: { sku: 'T_1', tracked: false, requiresShipping: true } }];
+  const nVar = await shop.gql(M_VARIANTEN, { pid: p.id, vs: holzVar });
+  ist('Attrappe: productVariantsBulkCreate setzt hasVariants des Werts auf true, und values nennt ihn danach', [nVar.data.productVariantsBulkCreate.userErrors, mat().optionValues.map((v) => [v.name, v.hasVariants]), mat().values], [[], [['Poster matt', true], ['Holz', true]], ['Poster matt', 'Holz']]);
+  const loesch = await shop.gql(M_OPTION_WERTE_LOESCHEN, { pid: p.id, opt: { id: 'gid://shopify/ProductOption/hand' }, del: [mat().optionValues[1].id] });
+  ist('Attrappe: einen Wert MIT Variante löschen → OPTION_VALUE_HAS_VARIANTS (Code aus ProductOptionUpdateUserErrorCode)', loesch.data.productOptionUpdate.userErrors.map((e) => e.code), ['OPTION_VALUE_HAS_VARIANTS']);
+}
+{ // 28b: KEIN Lesepfad (Abfrage und Antworten der Schreibaufrufe) fragt ProductOption.values
+  for (const [n, q] of [['Q_PRODUKT', Q_PRODUKT], ['BESTAND_Q', BESTAND_Q], ['M_OPTION', M_OPTION], ['M_OPTION_WERTE', M_OPTION_WERTE], ['M_OPTION_WERTE_LOESCHEN', M_OPTION_WERTE_LOESCHEN], ['M_REORDER', M_REORDER]]) {
+    const sel = auswahlVon(q, 'options');
+    ist(`${n}: liest Optionen über optionValues { id name hasVariants } und nie über ProductOption.values`, [Object.keys(sel).sort(), Object.keys(sel.optionValues).sort()], [['id', 'name', 'optionValues', 'position'], ['hasVariants', 'id', 'name']]);
+  }
+}
+{ // 28c: (a) ein leerer Wert bleibt liegen: die Wiederaufnahme SIEHT ihn und füllt ihn mit Varianten, statt ihn neu anzulegen (vorher: OPTION_VALUE_ALREADY_EXISTS, Exit 1)
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const opt = { verliereAntwortNach: { name: 'productOptionUpdate', nr: 1 }, wertLoeschenFehler: true };
+  const shop = neuerShop(paket.bestand, opt); const p = shop.produkte.get(HANDLES.poster);
+  const r1 = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const a1 = shop.lies(HANDLES.poster, VALUES_ABFRAGE).options.find((o) => o.name === 'Material');
+  ist('(a) Lauf 1 hinterlässt «Foto-Glanzpapier» ohne Variante: in optionValues mit hasVariants false, in Shopifys values fehlt er', [r1.exit, a1.optionValues.filter((v) => !v.hasVariants).map((v) => v.name), a1.values], [1, ['Foto-Glanzpapier'], ['Poster matt']]);
+  const gelesen = await leseFrisch(shop.gql, HANDLES.poster);
+  ist('(a) leseFrisch (Schreibweg) sieht den leeren Wert: Existenz über optionValues, hasVariants false', [gelesen.options[0].values, gelesen.options[0].optionValues.map((v) => [v.name, v.hasVariants])], [['Poster matt', 'Foto-Glanzpapier'], [['Poster matt', true], ['Foto-Glanzpapier', false]]]);
+  delete opt.verliereAntwortNach; delete opt.wertLoeschenFehler;
+  const plan2 = planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster));
+  ist('(a) der Plan aus dem Halbzustand hat DENSELBEN Hash (der leere Wert ändert den geprüften Plan nicht)', plan2.hash, plan.hash);
+  const vor = shop.aufrufe.length;
+  const r2 = await lauf({ plan: plan2, gql: shop.gql, ...cfg(dir) });
+  const neuAdds = shop.aufrufe.slice(vor).filter((a) => a.name === 'productOptionUpdate' && a.v.add).map((a) => a.v.add.map((x) => x.name));
+  ist('(a) Wiederaufnahme: Exit 0, 18 Varianten, kein Wert ohne Variante', [r2.exit, r2.ergebnisse.map((x) => x.status), p.variants.length, leereWerte(shop, HANDLES.poster)], [0, ['OK'], 18, []]);
+  ist('(a) Wiederaufnahme legt den vorhandenen leeren Wert NICHT neu an (nur die vier übrigen Materialien), also kein OPTION_VALUE_ALREADY_EXISTS', neuAdds, [['Leinwand'], ['Gerahmt · Schwarz'], ['Gerahmt · Weiss'], ['Gerahmt · Eiche']]);
+  ist('(a) die Varianten des leeren Werts sind jetzt da (Foto-Glanzpapier trägt Varianten)', p.variants.filter((v) => v.selectedOptions.some((s) => s.name === 'Material' && s.value === 'Foto-Glanzpapier')).length, plan.produkte[0].neu.filter((n) => n.optionen.Material === 'Foto-Glanzpapier').length);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // 28d: (b) die Wiederaufnahme scheitert wieder am Tageslimit: der leere Wert wird entfernt, über die ID aus optionValues
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const opt = { verliereAntwortNach: { name: 'productOptionUpdate', nr: 1 }, wertLoeschenFehler: true };
+  const shop = neuerShop(paket.bestand, opt);
+  await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  const gelesen = await leseFrisch(shop.gql, HANDLES.poster);
+  const optId = gelesen.options[0].id, wertId = gelesen.options[0].optionValues.find((v) => v.name === 'Foto-Glanzpapier').id;
+  delete opt.verliereAntwortNach; delete opt.wertLoeschenFehler; opt.tageslimitAb = 0;
+  const vor = shop.aufrufe.length;
+  const r2 = await lauf({ plan: planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster)), gql: shop.gql, ...cfg(dir) });
+  const sicht = shop.aufrufe.slice(vor).filter((a) => a.name === 'productOptionUpdate');
+  ist('(b) Lauf 2 am Tageslimit: Exit 4 (nicht Exit 1 wegen OPTION_VALUE_ALREADY_EXISTS), der leere Wert ist entfernt, kein Wert ohne Variante', [r2.exit, leereWerte(shop, HANDLES.poster), shop.produkte.get(HANDLES.poster).options[0].values], [4, [], ['Poster matt']]);
+  ist('(b) Lauf 2 legt den vorhandenen Wert nicht noch einmal an (kein add) und löscht genau einmal, mit Option-ID und Wert-ID aus optionValues', [sicht.filter((a) => a.v.add).length, sicht.filter((a) => a.v.del).map((a) => [a.v.opt, a.v.del])], [0, [[{ id: optId }, [wertId]]]]);
+  wahr('(b) der Zustandstext sagt «leerer Wert wieder entfernt (Material=Foto-Glanzpapier)», kein ACHTUNG', /leerer Wert wieder entfernt \(Material=Foto-Glanzpapier\)/.test(r2.ergebnisse[0].zustand) && !/ACHTUNG/.test(r2.ergebnisse[0].zustand), r2.ergebnisse[0].zustand);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // 28e: (c) die vorab angelegte fremde Option «Material» mit LEEREM Fremdwert «Holz» wird im Trockenlauf UND vor dem ersten Schreibaufruf gemeldet (über values blieb sie unsichtbar)
+  const shop = neuerShop(paket.bestand); const p = shop.produkte.get(HANDLES.poster);
+  p.options.unshift({ id: 'gid://shopify/ProductOption/hand', name: 'Material', position: 1, values: ['Poster matt', 'Holz'] }); p.options.forEach((o, i) => { o.position = i + 1; });
+  p.variants.forEach((v) => v.selectedOptions.unshift({ name: 'Material', value: 'Poster matt' }));   // alle Varianten tragen «Poster matt»; «Holz» hat keine
+  ist('(c) Shopify-values nennt «Holz» nicht (Gegenprobe der Voraussetzung)', shop.lies(HANDLES.poster, VALUES_ABFRAGE).options[0].values, ['Poster matt']);
+  const bestandHolz = bestandAusShop(shop, HANDLES.poster);
+  ist('(c) das Datenpaket aus dem Shop (echter Lesepfad) kennt «Holz» als vorhandenen Wert', bestandHolz[HANDLES.poster].options[0].values, ['Poster matt', 'Holz']);
+  const planHolz = planVon([HANDLES.poster], bestandHolz);
+  ist('(c) Trockenlauf: genau ein Verstoss, er nennt den leeren Fremdwert «Holz» (Plan nicht ausführbar)', [planHolz.verstoesse.length, /Option «Material» im Shop hat Werte, die der Plan nicht kennt: «Holz»/.test(planHolz.verstoesse[0] ?? '')], [1, true]);
+  const dir = tmp(); const plan = planVon([HANDLES.poster]);   // der ursprünglich geprüfte Plan kennt die Option nicht
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(dir) });
+  ist('(c) LIVE: Exit 3 VOR dem ersten Schreibaufruf (kein Schreibaufruf, keine Sicherung), die Liste nennt «Holz»', [r.exit, nurSchreib(shop), existsSync(join(dir, 'sicherung')), r.ergebnisse[0].liste.some((x) => /Werte, die der Plan nicht kennt: «Holz»/.test(x))], [3, 0, false, true]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // 28f: leereWerte() – «leer» heisst: Shopify meldet hasVariants false UND keine gelesene Variante trägt den Wert; sonst NIE
+  const mk = (hasVariants, getragen) => ({ id: 'gid://shopify/Product/1', variants: [{ sku: 'a', optionen: { Material: getragen ? 'M2' : 'M1' } }],
+    options: [{ id: 'o1', name: 'Material', optionValues: [{ id: 'm1', name: 'M1', hasVariants: true }, { id: 'm2', name: 'M2', hasVariants }] }] });
+  const eigene = (x) => leereWerteLib(x, { materialOption: 'Material', planWerte: ['M1', 'M2'] }).eigene.map((v) => [v.wert, v.id, v.optionId]);
+  ist('leereWerte: hasVariants false und keine Variante trägt den Wert → leer, mit Wert-ID und Option-ID aus optionValues', eigene(mk(false, false)), [['M2', 'm2', 'o1']]);
+  ist('leereWerte: Shopify meldet hasVariants true (die gelesenen Varianten tragen ihn aber nicht) → NIE leer', eigene(mk(true, false)), []);
+  ist('leereWerte: Shopify meldet hasVariants false, aber eine gelesene Variante trägt ihn → NIE leer', eigene(mk(false, true)), []);
+  ist('leereWerte: hasVariants fehlt (unbekannt) → nichts anfassen', eigene(mk(undefined, false)), []);
+}
+{ // 28g: die Weitergabe von `schonDa` an die Vorab-Prüfung der Option «Material» (Mutant `schonDa: []`): eine schon angelegte Variante mit anderem Material wird VOR dem ersten Schreibaufruf gemeldet
+  const dir = tmp(); const shop = neuerShop(paket.bestand, { variantenFehlerBei: 3 });   // Foto-Glanzpapier und Leinwand sind angelegt, das dritte Material scheitert
+  const r1 = await lauf({ plan: planVon([HANDLES.poster]), gql: shop.gql, ...cfg(dir) });
+  const plan2 = planVon([HANDLES.poster], bestandAusShop(shop, HANDLES.poster)); const pr2 = plan2.produkte[0];
+  const sd = pr2.schonDa.find((x) => x.optionen.Material === 'Foto-Glanzpapier');
+  ist('schonDa: Lauf 1 endet mit FEHLER im dritten Material; die Wiederaufnahme kennt schonDa-Varianten, und Foto-Glanzpapier hat mehr als eine', [r1.exit, pr2.schonDa.length > 0, pr2.schonDa.filter((x) => x.optionen.Material === 'Foto-Glanzpapier').length > 1, pr2.optionPruefung], [1, true, true, []]);
+  shop.produkte.get(HANDLES.poster).variants.find((v) => v.sku === sd.sku).selectedOptions.find((x) => x.name === 'Material').value = 'Leinwand';   // jemand ändert das Material einer schon angelegten Variante
+  const vor = shop.aufrufe.length;
+  const r2 = await lauf({ plan: plan2, gql: shop.gql, ...cfg(dir) });
+  ist('schonDa: Exit 3 VOR dem ersten Schreibaufruf, die Liste nennt genau diese Variante mit Ist- und Plan-Material', [r2.exit, shop.aufrufe.slice(vor).filter((a) => a.name !== 'productByIdentifier').length, r2.ergebnisse[0].liste.filter((x) => x === `Variante ${sd.sku}: Material «Leinwand» ≠ «Foto-Glanzpapier» (Plan)`).length], [3, 0, 1]);
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // 28h: ABWEICHUNG mitten in Schritt 4 (Lesegrenze nach dem Ergänzen eines Optionswerts) trägt den Zustandstext im Ergebnis UND in der Ausgabe
+  const dir = tmp(); const plan = planVon([HANDLES.poster]);
+  const shop = neuerShop(paket.bestand, { beiErsterVariantenanlage: (p) => { for (let i = 0; i < 250; i++) p.variants.push({ id: 'gid://shopify/ProductVariant/g' + i, sku: 'FILL-' + i, price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: p.options.map((o) => ({ name: o.name, value: o.values[0] })), inventoryItem: { tracked: false } }); } });
+  const L = mitLog(); const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { log: L.log }) });
+  const z = r.ergebnisse[0].zustand ?? '';
+  ist('ABWEICHUNG mitten in Schritt 4 (Lesegrenze beim Zurücklesen des zweiten Materials): Exit 3, Status ABWEICHUNG', [r.exit, r.ergebnisse.map((x) => x.status)], [3, ['ABWEICHUNG']]);
+  wahr('ABWEICHUNG: das Ergebnis trägt den Zustandstext (Zustand nicht lesbar, Wiederaufnahme nach Behebung der Ursache)', /^Zustand poster-zum-selbstgestalten: ACHTUNG: der Zustand nach dem Abbruch ist nicht lesbar/.test(z) && /Wiederaufnahme: nach Behebung der Ursache denselben Befehl wiederholen/.test(z), z);
+  wahr('ABWEICHUNG: die Ausgabe (Log) trägt denselben Zustandstext', L.zeilen.some((x) => x.includes(z) && z.length > 0), L.zeilen.join(' | ').slice(0, 300));
+  rmSync(dir, { recursive: true, force: true });
+}
+{ // 28i: Variantenbudget – die Zählung nach JEDEM Stück ist die einzige Quelle, wenn das Lesen nach dem Abbruch scheitert (Netz tot nach Stück 1)
+  const plan = planVon([HANDLES.poster, HANDLES.shirt]); const [po, sh] = plan.produkte;
+  const g0 = po.neu.filter((n) => n.optionen.Material === 'Foto-Glanzpapier').length;
+  const shop = neuerShop(paket.bestand, { lesenTotNach: { name: 'productVariantsBulkCreate', nr: 1 } });
+  const r = await lauf({ plan, gql: shop.gql, ...cfg(tmp(), { befundOk: alleBestaetigt(plan) }), variantenBudget: sh.neu.length + g0 - 1 });
+  ist(`Budget: Lesen scheitert nach Stück 1 (${g0} bestätigte Varianten) → nur die bestätigte Zählung bleibt, sie zieht ab, das T-Shirt (${sh.neu.length}) passt nicht mehr: Exit 4 vorab`, [r.exit, r.ergebnisse.map((x) => x.status + (x.vorab ? '/vorab' : '')), shop.produkte.get(HANDLES.poster).variants.length], [4, ['FEHLER', 'TAGESLIMIT/vorab'], 4 + g0]);
+  // Math.max: bestätigt sind g0, im Shop steht eine weniger (Shopify meldet Erfolg, eine SKU fehlt) → es zählt das Grössere (die Vorsicht beim Tageslimit)
+  const sku = po.neu.find((n) => n.optionen.Material === 'Foto-Glanzpapier').sku;
+  const shop2 = neuerShop(paket.bestand, { verschluckeSku: sku, variantenFehlerBei: 2 });
+  const r2 = await lauf({ plan, gql: shop2.gql, ...cfg(tmp(), { befundOk: alleBestaetigt(plan) }), variantenBudget: sh.neu.length + g0 - 1 });
+  ist(`Budget: bestätigt ${g0}, im Shop ${g0 - 1} (eine SKU verschluckt) → es zählt das Grössere (${g0}), das T-Shirt passt nicht mehr`, [r2.exit, r2.ergebnisse.map((x) => x.status + (x.vorab ? '/vorab' : '')), shop2.produkte.get(HANDLES.poster).variants.length], [4, ['FEHLER', 'TAGESLIMIT/vorab'], 4 + g0 - 1]);
 }
 
 for (const d of angelegt) rmSync(d, { recursive: true, force: true });

@@ -538,6 +538,18 @@ for (const p of plan.produkte.filter((x) => x.art === 'erweitern')) {
     hb.variants = hb.variants.map((v) => ({ ...v, selectedOptions: [{ name: 'Material', value: 'Poster matt' }, ...v.selectedOptions] }));
     const px = planen({ bestand: halb, nur: ['poster-zum-selbstgestalten'] }); return [px.produkte[0].optionen.optionSchonDa, px.produkte[0].optionPruefung, px.verstoesse];
   })(), [true, [], []]);
+  // Runde 4: die schon angelegten Varianten (`schonDa`) werden an die Prüfung der vorhandenen Option «Material» WEITERGEGEBEN (Mutant `schonDa,` → `schonDa: [],` blieb unbemerkt)
+  { const halb = klon(bestand); const hb = halb['poster-zum-selbstgestalten']; const p0 = P('poster-zum-selbstgestalten');
+    hb.options = [{ name: 'Material', position: 1, values: ['Poster matt', 'Foto-Glanzpapier', 'Leinwand'] }, { name: 'Grösse', position: 2, values: [...hb.options[0].values] }];
+    hb.variants = hb.variants.map((v) => ({ ...v, selectedOptions: [{ name: 'Material', value: 'Poster matt' }, ...v.selectedOptions] }));
+    const fg = p0.neu.filter((x) => x.optionen.Material === 'Foto-Glanzpapier');
+    fg.forEach((n, i) => hb.variants.push({ id: 'gid://shopify/ProductVariant/' + n.pf, sku: n.sku, price: n.preisChf.toFixed(2), inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Material', value: i === 0 ? 'Leinwand' : n.optionen.Material }, { name: 'Grösse', value: n.optionen['Grösse'] }] }));
+    const px = planen({ bestand: halb, nur: ['poster-zum-selbstgestalten'] });
+    ist('schonDa wird an die Prüfung der Option «Material» weitergegeben: eine schon angelegte Variante mit anderem Material ist schon im Trockenlauf ein Verstoss', [px.produkte[0].schonDa.length, px.produkte[0].optionPruefung, px.verstoesse], [fg.length, [`Variante ${fg[0].sku}: Material «Leinwand» ≠ «Foto-Glanzpapier» (Plan)`], [`poster-zum-selbstgestalten: Variante ${fg[0].sku}: Material «Leinwand» ≠ «Foto-Glanzpapier» (Plan)`]]); }
+  // Grenze (README «Optionen lesen»): ein leerer Wert einer ANDEREN Option (hier «Grösse»), der im Shop liegen blieb, gehört zu den vorhandenen Werten: der Plan nimmt ihn mit, der Hash ändert sich (neuer Trockenlauf nötig)
+  { const mitRest = klon(bestand); mitRest['poster-zum-selbstgestalten'].options[0].values.push('XXL-Rest');
+    const pr = planen({ bestand: mitRest, nur: ['poster-zum-selbstgestalten'] });
+    ist('leerer Rest-Wert in «Grösse»: im Plan unter den vorhandenen Werten, der Plan-Hash ändert sich, es gibt keine Verstösse', [pr.produkte[0].optionen.nachher[1].werte.includes('XXL-Rest'), pr.hash === planen({ nur: ['poster-zum-selbstgestalten'] }).hash, pr.verstoesse], [true, false, []]); }
   ist('optionPruefung ändert den Plan-Hash nicht (nur die Ausführbarkeit)', hashVon(aktionenFuerHash({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: ['x'] }] })), hashVon(aktionenFuerHash({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: [] }] })));
   ist('pruefePlan meldet jede Abweichung der Option «Material» mit Handle', pruefePlan({ produkte: [{ ...P('poster-zum-selbstgestalten'), optionPruefung: ['a', 'b'] }], regel: plan.regel }, { katalog, skuPruefung }).filter((x) => /^poster-zum-selbstgestalten: [ab]$/.test(x)), ['poster-zum-selbstgestalten: a', 'poster-zum-selbstgestalten: b']);
 }

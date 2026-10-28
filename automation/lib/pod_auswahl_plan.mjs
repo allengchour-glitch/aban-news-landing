@@ -7,6 +7,7 @@
  *   beschreibungen { "<id>": {title,desc} }
  *   versand      { "<printfulVariantenId>": {usd,id,name,tage} | {fehler} }   // Printful-Versand nach CH, je Variante
  *   bestand      { "<handle>": {id,handle,title,status,productType,tags,descriptionHtml,options:[{name,position,values}],variants:[{id,sku,price,inventoryPolicy,selectedOptions}]} }
+ *                (options[].values = Namen ALLER Optionswerte aus Shopifys optionValues, auch derer ohne Variante: Existenz, nicht Shopifys ProductOption.values; siehe pod_auswahl_daten.mjs OPTIONEN_FELDER)
  *   skuPruefung  { "<printfulVariantenId>": {produkt,typ,name,farbe,groesse,preisUsd} }   // was die vorhandenen SKUs bei Printful WIRKLICH sind
  *   skuIndex     { "<printfulVariantenId>": [{handle,titel,status,tags,sku,preis,optionen}] } // wo die NEUEN Varianten im Shop schon als SKU anderer Produkte stehen (null = nicht geprüft)
  *   ohne         [{handle, material}]  // vom Besitzer ausgeschlossene Materialien (OHNE=handle:Material)

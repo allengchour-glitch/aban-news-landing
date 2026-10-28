@@ -127,7 +127,7 @@ globalThis.fetch = async (url, o = {}) => {
     const b = JSON.parse(o.body), q = b.query;
     if (q.includes('shop {')) return j(200, { data: { shop: { name: 'x' } } });
     if (q.includes('productByIdentifier')) return j(200, { data: { productByIdentifier: { id: 'gid://shopify/Product/1', handle: b.variables.h, title: 'T', status: 'ACTIVE', productType: 'x', vendor: 'V', tags: [], descriptionHtml: '', seo: { title: null, description: null }, materialMetafeld: null,
-      options: [{ name: 'Grösse', position: 1, values: ['S'] }], variants: { edges: [{ node: { id: 'v', sku: '1726823_5426', price: '10.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'S' }] } }] } } } });
+      options: [{ id: 'gid://shopify/ProductOption/1', name: 'Grösse', position: 1, optionValues: [{ id: 'gid://shopify/ProductOptionValue/1', name: 'S', hasVariants: true }] }], variants: { edges: [{ node: { id: 'v', sku: '1726823_5426', price: '10.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'S' }] } }] } } } });
     if (q.includes('products(first')) return j(200, { data: { products: { pageInfo: { hasNextPage: false, endCursor: null }, edges: [] } } });
   }
   throw new Error('unerwartete Anfrage: ' + url);
@@ -142,6 +142,7 @@ globalThis.fetch = async (url, o = {}) => {
   ist('DATEN=holen: Stand «heute» in allen Dateien, auch beschreibungen und sku_pruefung', ['katalog.json', 'beschreibungen.json', 'versand.json', 'sku_pruefung.json', 'bestand.json', 'sku_index.json'].map((x) => JSON.parse(readFileSync(join(out, x), 'utf8')).stand), Array(6).fill(heute));
   ist('DATEN=holen: die alte Rate 1.23 für 5426 ist durch die frische 9.99 ersetzt, die nicht mehr gebrauchte Nummer 99999 ist weg, der Zielort bleibt', [v?.raten?.['5426']?.usd, v?.raten?.['99999'], v?.ziel], [9.99, undefined, 'CH 8001 (Test)']);
   ist('DATEN=holen: alle Raten der Datei sind frisch (gemessen heute, kein Rest von 2000)', Object.values(v?.raten || {}).every((x) => x.gemessen === heute) && Object.keys(v?.raten || {}).length >= 5, true);
+  ist('DATEN=holen: bestand.json hält die Optionen als {name, position, values} (Namen aus optionValues, ohne ids)', JSON.parse(readFileSync(join(out, 'bestand.json'), 'utf8')).produkte[Object.keys(JSON.parse(readFileSync(join(out, 'bestand.json'), 'utf8')).produkte)[0]].options, [{ name: 'Grösse', position: 1, values: ['S'] }]);
   ist('DATEN=holen: bestand.json nennt productByIdentifier und trägt das Metafeld', [/productByIdentifier/.test(JSON.parse(readFileSync(join(out, 'bestand.json'), 'utf8')).quelle), 'materialMetafeld' in Object.values(JSON.parse(readFileSync(join(out, 'bestand.json'), 'utf8')).produkte)[0]], [true, true]);
   rmSync(d, { recursive: true, force: true });
 }
@@ -234,6 +235,8 @@ globalThis.fetch = async (url, o = {}) => {
   wahr('README: kein «höchstens EIN Wert ohne Variante»-Versprechen', !/höchstens EIN Wert ohne Variante/.test(readme));
   wahr('README «Offen»: Samsung ohne Wiederaufnahme für fehlende Varianten, productSet-Atomarität nicht belegt, Teilzustand von Hand bereinigen', /\*\*Samsung ohne Wiederaufnahme für fehlende Varianten\.\*\*/.test(readme) && /nicht belegt/.test(readme) && /von Hand zu bereinigen/.test(readme));
   wahr('README Schritt 1: Vorab-Prüfung der vorhandenen Option «Material» (Fremdwerte, «Holz») und Lesegrenze von 250 Varianten', /vorhandene Option «Material» wie im Plan/.test(readme) && /«Holz»/.test(readme) && /250 Varianten/.test(readme));
+  wahr('README «Optionen lesen» (Runde 4): Existenz über optionValues, leer = hasVariants false, Löschen über die Wert-ID, Beleg aus Schema und Doku, die Wiederaufnahme SIEHT den leeren Wert und legt ihn nicht neu an', /### Optionen lesen: `optionValues \{ id name hasVariants \}`, nie `ProductOption\.values`/.test(readme) && /including values not assigned to any variants/.test(readme) && /`values: \["Purple"\]`/.test(readme) && /`optionValuesToDelete`/.test(readme) && /OPTION_VALUE_ALREADY_EXISTS/.test(readme) && /\*\*sieht\*\* ihn \(Existenz über `optionValues`\)/.test(readme));
+  wahr('Kopf von pod_auswahl_schreiben.mjs und Datenmodul: Optionen über optionValues { id name hasVariants }, nie ProductOption.values', /optionValues \{ id name hasVariants \}/.test(readFileSync(fileURLToPath(new URL('./lib/pod_auswahl_daten.mjs', import.meta.url)), 'utf8')) && /NIE über `ProductOption\.values`/.test(readFileSync(fileURLToPath(new URL('./lib/pod_auswahl_daten.mjs', import.meta.url)), 'utf8')));
   const anzahl = (mutation.match(/^  \{ name: /gm) || []).length;
   wahr(`README nennt die Zahl der Mutanten (${anzahl})`, readme.includes(`(${anzahl} absichtliche Fehler)`), String(anzahl));
 }

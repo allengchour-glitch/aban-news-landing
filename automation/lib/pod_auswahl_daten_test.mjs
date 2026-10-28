@@ -2,7 +2,7 @@
 import { mkdtempSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE, BESTAND_Q, standAlterH, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H, ZUKUNFT_TOLERANZ_H } from './pod_auswahl_daten.mjs';
+import { ladePaket, kuerzeProdukt, kuerzeRohKatalog, holeVersandRate, holeFehlendeRaten, pfGet, holeSkuIdentitaet, ohneKnoten, leseBestand, schreibeJson, katalogIdsAusSpec, farbenAusSpec, belegIdsAusSpec, DATEIEN, PAKET_DIR, baueSkuIndex, leseSkuIndex, kandidatenIds, SKU_INDEX_Q, SKU_INDEX_SUCHE, BESTAND_Q, OPTIONEN_FELDER, optionenAusAntwort, standAlterH, pruefeDatenAlter, pruefeNeueVarianten, DATEN_MAX_ALTER_H, ZUKUNFT_TOLERANZ_H } from './pod_auswahl_daten.mjs';
 import { SPEC } from './pod_auswahl_spec.mjs';
 
 let ok = 0, fehl = 0;
@@ -82,9 +82,10 @@ const keinePause = async () => {};
 // ── Shopify lesen (Attrappe)
 {
   const knoten = { id: 'gid://p/1', handle: 'h', title: 'T', status: 'ACTIVE', productType: 'Poster', vendor: 'V', tags: ['a'], descriptionHtml: '<p>x</p>', seo: { title: null, description: 'd' },
-    options: [{ name: 'Grösse', position: 1, values: ['A', 'B'] }], variants: { edges: [{ node: { id: 'v1', sku: 's1', price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'A' }] } }] } };
+    options: [{ id: 'gid://shopify/ProductOption/1', name: 'Grösse', position: 1, optionValues: [{ id: 'gid://shopify/ProductOptionValue/1', name: 'A', hasVariants: true }, { id: 'gid://shopify/ProductOptionValue/2', name: 'B', hasVariants: true }] }], variants: { edges: [{ node: { id: 'v1', sku: 's1', price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'A' }] } }] } };
   const b = await leseBestand(async (q, v) => ({ data: { productByIdentifier: v.h === 'h' ? knoten : null } }), ['h']);
   ist('leseBestand: Form des Datenpakets', b.h, ohneKnoten(knoten));
+  ist('ohneKnoten: Optionen im Datenpaket als {name, position, values} (Namen aller Werte, ohne ids)', b.h.options, [{ name: 'Grösse', position: 1, values: ['A', 'B'] }]);
   ist('ohneKnoten: Varianten ohne Kanten', b.h.variants, [{ id: 'v1', sku: 's1', price: '1.00', inventoryPolicy: 'CONTINUE', selectedOptions: [{ name: 'Grösse', value: 'A' }] }]);
   let m = ''; try { await leseBestand(async () => ({ data: { productByIdentifier: null } }), ['fehlt']); } catch (e) { m = e.message; }
   wahr('leseBestand: unbekanntes Produkt → Fehler mit Handle', /fehlt/.test(m));
@@ -98,6 +99,29 @@ const keinePause = async () => {};
   const knoten = { id: 'p', handle: 'h', title: 'T', status: 'ACTIVE', productType: 'x', vendor: 'V', tags: [], descriptionHtml: '', seo: {}, options: [], variants: { edges: [] } };
   ist('ohneKnoten: Metafeld gesetzt → Text, leer → null, nicht gelesen → Schlüssel fehlt (nicht null!)',
     [ohneKnoten({ ...knoten, materialMetafeld: { value: 'Papier (matt)' } }).materialMetafeld, ohneKnoten({ ...knoten, materialMetafeld: null }).materialMetafeld, 'materialMetafeld' in ohneKnoten(knoten)], ['Papier (matt)', null, false]);
+}
+// ── Optionen werden über optionValues gelesen (Runde 4): ein Wert OHNE Variante fehlt in Shopifys ProductOption.values, steht aber in optionValues
+{
+  const roh = [{ id: 'o1', name: 'Material', position: 1, optionValues: [{ id: 'a', name: 'A', hasVariants: true }, { id: 'b', name: 'B', hasVariants: false }] }];
+  ist('optionenAusAntwort: values = Namen ALLER optionValues (auch B ohne Variante), optionValues behält id und hasVariants', optionenAusAntwort(roh), [{ id: 'o1', name: 'Material', position: 1, values: ['A', 'B'], optionValues: [{ id: 'a', name: 'A', hasVariants: true }, { id: 'b', name: 'B', hasVariants: false }] }]);
+  const knoten = { id: 'p', handle: 'h', title: 'T', status: 'ACTIVE', productType: 'x', vendor: 'V', tags: [], descriptionHtml: '', seo: {}, variants: { edges: [] } };
+  ist('ohneKnoten: Datenpaket-Form {name, position, values} mit allen vorhandenen Werten (auch dem leeren B), ohne ids', ohneKnoten({ ...knoten, options: roh }).options, [{ name: 'Material', position: 1, values: ['A', 'B'] }]);
+  ist('ohneKnoten: ein Shopify-`values` in der Antwort wird nicht benutzt (hier fehlt B darin, er bleibt trotzdem vorhanden)', ohneKnoten({ ...knoten, options: [{ ...roh[0], values: ['A'] }] }).options[0].values, ['A', 'B']);
+  let m = ''; try { optionenAusAntwort([{ name: 'Material', values: ['A'] }], 'Test'); } catch (e) { m = e.message; }
+  wahr('optionenAusAntwort: Antwort ohne optionValues (nur Shopify-values) → Fehler statt stillem Rückgriff', /^Test: Option «Material» ohne optionValues/.test(m), m);
+  m = ''; try { ohneKnoten({ ...knoten, options: [{ name: 'Grösse', position: 1, values: ['S'] }] }); } catch (e) { m = e.message; }
+  wahr('ohneKnoten: Antwort im alten Format (nur values) → Fehler, nennt das Produkt', /^Produkt h: Option «Grösse» ohne optionValues/.test(m), m);
+  ist('optionenAusAntwort: keine Optionen → leer', [optionenAusAntwort([]), optionenAusAntwort(undefined)], [[], []]);
+  const b = await leseBestand(async () => ({ data: { productByIdentifier: { ...knoten, options: roh } } }), ['h']);
+  ist('leseBestand: der leere Wert B steht im Bestand (Existenz), damit ihn der Plan sieht', b.h.options[0].values, ['A', 'B']);
+  ist('OPTIONEN_FELDER: optionValues { id name hasVariants } und KEIN values (Schema: values nennt Werte ohne Variante nicht)', [OPTIONEN_FELDER, BESTAND_Q.includes(OPTIONEN_FELDER), /options\{[^}]*\bvalues\b/.test(BESTAND_Q)], ['options{ id name position optionValues{ id name hasVariants } }', true, false]);
+  // Das Datenpaket (Stand 27.10.2026) bleibt unverändert: in den vier Bestandsprodukten trägt jeder Wert mindestens eine Variante, die Namen aus optionValues sind genau die bisherigen values
+  const paket = ladePaket();
+  for (const [h, p] of Object.entries(paket.bestand)) {
+    const rohP = { ...p, options: p.options.map((o, i) => ({ id: 'o' + i, name: o.name, position: o.position, optionValues: o.values.map((w) => ({ id: 'w' + w, name: w, hasVariants: p.variants.some((v) => v.selectedOptions.some((s) => s.name === o.name && s.value === w)) })) })),
+      variants: { edges: p.variants.map((v) => ({ node: v })) } };
+    ist(`Datenpaket ${h}: jeder Optionswert trägt eine Variante; über optionValues gelesen bleiben Optionen (und damit Plan und Hash) gleich`, [rohP.options.every((o) => o.optionValues.every((w) => w.hasVariants)), ohneKnoten(rohP).options], [true, p.options]);
+  }
 }
 // ── Alter des Datenpakets (LIVE verweigert veraltete Daten)
 {

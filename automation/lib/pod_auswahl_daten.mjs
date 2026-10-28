@@ -170,14 +170,38 @@ export async function holeSkuIdentitaet(vid, opt) {
 }
 
 // ─────────────────────────────────────────────────────────────── Shopify (lesend)
+/**
+ * OPTIONEN LESEN: IMMER über `optionValues { id name hasVariants }`, NIE über `ProductOption.values`. Shopify-Schema: `values` = «The corresponding value to the product option name»
+ * (Werte OHNE jede Variante fehlen dort), `optionValues` = «all the corresponding option value objects to the product option, including values not assigned to any variants».
+ * Beleg: Doku productOptionUpdate, Beispiel «Add and update product option values» (Antwort `values: ["Purple"]`, `optionValues`: Purple hasVariants true, Yellow false, Red false).
+ * Ein liegengebliebener leerer Wert (Abbruch, Aufräumen gescheitert) wäre über `values` für die Wiederaufnahme UNSICHTBAR. Die ID aus optionValues braucht productOptionUpdate/optionValuesToDelete.
+ * Eine Stelle für alle Lesepfade (Bestand, frisches Lesen, Antworten der Schreibaufrufe).
+ */
+export const OPTIONEN_FELDER = 'options{ id name position optionValues{ id name hasVariants } }';
+
+/**
+ * Optionen einer Shopify-Antwort (Auswahl OPTIONEN_FELDER) → Form des Werkzeugs: {id, name, position, values, optionValues}.
+ * `values` = Namen ALLER Optionswerte (aus optionValues), auch derer ohne Variante: das ist die EXISTENZ eines Werts, nicht Shopifys `ProductOption.values`.
+ * `optionValues` = [{id, name, hasVariants}]: die ID für optionValuesToDelete, hasVariants = «leer» (false). Fehlt optionValues in der Antwort, wird geworfen:
+ * ein stiller Rückgriff auf `values` brächte den Fehler (leere Werte unsichtbar) unbemerkt zurück.
+ */
+export function optionenAusAntwort(options, wo = 'Antwort') {
+  return (options || []).map((o) => {
+    if (!Array.isArray(o.optionValues)) throw new Error(`${wo}: Option «${o.name}» ohne optionValues (die Abfrage muss OPTIONEN_FELDER lesen; ProductOption.values nennt Werte ohne Variante nicht)`);
+    const optionValues = o.optionValues.map((v) => ({ id: v.id, name: v.name, hasVariants: v.hasVariants }));
+    return { id: o.id, name: o.name, position: o.position, values: optionValues.map((v) => v.name), optionValues };
+  });
+}
+
 export const BESTAND_Q = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description }
   materialMetafeld: metafield(namespace:"mm-google-shopping", key:"material"){ value }
-  options{ name position values }
+  ${OPTIONEN_FELDER}
   variants(first:250){ edges{ node{ id sku price inventoryPolicy selectedOptions{ name value } } } } } }`;
 
 export const ohneKnoten = (p) => ({
   id: p.id, handle: p.handle, title: p.title, status: p.status, productType: p.productType, vendor: p.vendor, tags: p.tags, descriptionHtml: p.descriptionHtml, seo: p.seo,
-  options: p.options.map((o) => ({ name: o.name, position: o.position, values: o.values })),
+  // Form des Datenpakets bleibt {name, position, values}: der Plan braucht nur die NAMEN aller vorhandenen Werte (inkl. leerer); IDs und hasVariants gehören zum frischen Lesen (Schreibweg), nicht in ein Paket, das veraltet.
+  options: optionenAusAntwort(p.options, `Produkt ${p.handle}`).map((o) => ({ name: o.name, position: o.position, values: o.values })),
   variants: p.variants.edges.map((e) => ({ id: e.node.id, sku: e.node.sku, price: e.node.price, inventoryPolicy: e.node.inventoryPolicy, selectedOptions: e.node.selectedOptions })),
   // Produkt-Metafeld mm-google-shopping.material: EIN Wert je Produkt (speist Merchant-Attribut UND die Zeile «Material» in «Spezifikationen & Details»). Fehlt der Schlüssel, wurde es nicht gelesen.
   ...('materialMetafeld' in p ? { materialMetafeld: p.materialMetafeld?.value ?? null } : {}),

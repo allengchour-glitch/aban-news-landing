@@ -18,6 +18,9 @@
  *      nur ein Prozessabsturz mitten im Aufruf kann einen leeren Wert zurücklassen, den die Wiederaufnahme dann entfernt oder füllt.
  *   5. Beschreibung: nur der Block zwischen den Kommentarmarken; vorher FRISCH gelesen: hat ein anderer Prozess den Text ausserhalb des Blocks geändert → AbweichungFehler, nichts überschrieben
  *   6. FRISCH zurücklesen und mit dem Plan vergleichen → Abweichung = AbweichungFehler (Exit 3)
+ * LESEN (Korrekturrunde 4): Optionen immer über `optionValues { id name hasVariants }` (OPTIONEN_FELDER in pod_auswahl_daten.mjs), NIE über `ProductOption.values`: dort fehlen Werte OHNE Variante
+ * (Schema: «including values not assigned to any variants» steht nur bei optionValues). Existenz eines Werts = in optionValues; «leer» = hasVariants false (und keine gelesene Variante trägt ihn);
+ * Löschen über die Wert-ID aus optionValues. Sonst wäre ein liegengebliebener leerer Wert für die Wiederaufnahme unsichtbar (sie legte ihn neu an: OPTION_VALUE_ALREADY_EXISTS, Exit 1).
  * WIEDERAUFNAHME nach Exit 4 (Tageslimit) oder einem anderen Abbruch: denselben Befehl SPÄTER wiederholen. Jeder Schritt legt nur an, was fehlt; der Plan-Hash bleibt gleich (neu und schon angelegt zählen zusammen),
  * der geprüfte Plan gilt weiter, solange die Daten höchstens DATEN_MAX_ALTER_H Stunden alt sind (sonst verweigert LIVE: zuerst DATEN=holen). Das Produkt bleibt ACTIVE (es wird nie auf DRAFT gesetzt: das nähme ein verkaufendes Produkt aus dem Shop).
  * art «neu» (Samsung-Hülle, DRAFT): productSet (synchron) → Metafelder → Editor-Baustein füllen → zurücklesen und vergleichen. KEINE Wiederaufnahme für fehlende Varianten (siehe README «Offen»).
@@ -36,7 +39,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } fr
 import { dirname } from 'node:path';
 import { hashVon, pfIdAusSku, PLATZHALTER_BILD, PLATZHALTER_VARIANTE, materialOptionAbweichungen } from './pod_auswahl_plan.mjs';
 import { MARKE_AUF, MARKE_ZU } from './pod_auswahl_spec.mjs';
-import { DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
+import { DATEN_MAX_ALTER_H, OPTIONEN_FELDER, optionenAusAntwort } from './pod_auswahl_daten.mjs';
 
 export class AbweichungFehler extends Error { constructor(m, liste = []) { super(m); this.name = 'AbweichungFehler'; this.liste = liste; } }
 export class TageslimitFehler extends Error { constructor(m, zustand = null) { super(m); this.name = 'TageslimitFehler'; this.zustand = zustand; } }
@@ -45,16 +48,16 @@ const DROSSEL = /VARIANT_THROTTLE|Daily variant creation limit/i;
 
 // ───────────────────────────────────────────────────────── GraphQL-Texte
 export const Q_PRODUKT = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status productType vendor tags descriptionHtml seo{ title description } category{ id }
-  options{ id name position values optionValues{ id name } }
+  ${OPTIONEN_FELDER}
   variants(first:250){ edges{ node{ id sku price compareAtPrice inventoryPolicy taxable selectedOptions{ name value } inventoryItem{ tracked requiresShipping } } } pageInfo{ hasNextPage } }
   media(first:50){ edges{ node{ ... on MediaImage{ id alt image{ url } } } } }
   metafields(first:100){ edges{ node{ namespace key type value } } } } }`;
-export const M_OPTION = `mutation($pid:ID!,$opts:[OptionCreateInput!]!){ productOptionsCreate(productId:$pid, options:$opts, variantStrategy:LEAVE_AS_IS){ product{ id options{ name position values } } userErrors{ field message code } } }`;
-export const M_OPTION_WERTE = `mutation($pid:ID!,$opt:OptionUpdateInput!,$add:[OptionValueCreateInput!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToAdd:$add){ product{ id options{ name position values } } userErrors{ field message code } } }`;
+export const M_OPTION = `mutation($pid:ID!,$opts:[OptionCreateInput!]!){ productOptionsCreate(productId:$pid, options:$opts, variantStrategy:LEAVE_AS_IS){ product{ id ${OPTIONEN_FELDER} } userErrors{ field message code } } }`;
+export const M_OPTION_WERTE = `mutation($pid:ID!,$opt:OptionUpdateInput!,$add:[OptionValueCreateInput!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToAdd:$add){ product{ id ${OPTIONEN_FELDER} } userErrors{ field message code } } }`;
 /** Optionswerte ENTFERNEN (nur Werte ohne Variante: Aufräumen nach einem abgebrochenen Aufruf, siehe leereWerteEntfernen). */
-export const M_OPTION_WERTE_LOESCHEN = `mutation($pid:ID!,$opt:OptionUpdateInput!,$del:[ID!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToDelete:$del){ product{ id options{ name position values } } userErrors{ field message code } } }`;
+export const M_OPTION_WERTE_LOESCHEN = `mutation($pid:ID!,$opt:OptionUpdateInput!,$del:[ID!]){ productOptionUpdate(productId:$pid, option:$opt, optionValuesToDelete:$del){ product{ id ${OPTIONEN_FELDER} } userErrors{ field message code } } }`;
 /** Optionsreihenfolge herstellen: alle Optionen in der gewollten Reihenfolge (Namen); die Positionen müssen lückenlos sein. */
-export const M_REORDER = `mutation($pid:ID!,$opts:[OptionReorderInput!]!){ productOptionsReorder(productId:$pid, options:$opts){ product{ id options{ name position values } } userErrors{ field message code } } }`;
+export const M_REORDER = `mutation($pid:ID!,$opts:[OptionReorderInput!]!){ productOptionsReorder(productId:$pid, options:$opts){ product{ id ${OPTIONEN_FELDER} } userErrors{ field message code } } }`;
 export const M_VARIANTEN =`mutation($pid:ID!,$vs:[ProductVariantsBulkInput!]!){ productVariantsBulkCreate(productId:$pid, variants:$vs){ productVariants{ id sku } userErrors{ field message code } } }`;
 export const M_UPDATE = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id } userErrors{ field message } } }`;
 export const M_SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle status } userErrors{ field message code } } }`;
@@ -70,7 +73,7 @@ export function pruefeAntwort(j, was, pfad) {
   return j.data[pfad];
 }
 
-export const knoten = (p) => ({ ...p, options: p.options, variants: p.variants.edges.map((e) => ({ ...e.node, optionen: Object.fromEntries(e.node.selectedOptions.map((o) => [o.name, o.value])) })),
+export const knoten = (p) => ({ ...p, options: optionenAusAntwort(p.options, `Abfrage ${p.handle}`), variants: p.variants.edges.map((e) => ({ ...e.node, optionen: Object.fromEntries(e.node.selectedOptions.map((o) => [o.name, o.value])) })),
   media: (p.media?.edges || []).map((e) => e.node).filter(Boolean), metafields: (p.metafields?.edges || []).map((e) => e.node) });
 
 /** Die Abfrage liest höchstens so viele Varianten, ohne Seitenblätterung (alle Produkte des Plans haben höchstens 100). Bei diesem Wert oder einer weiteren Seite wird NICHT weitergerechnet. */
@@ -199,7 +202,7 @@ export async function stelleReihenfolgeHer({ gql, log, p, ist }) {
 }
 
 /**
- * Optionswerte OHNE jede Variante im frisch gelesenen Zustand `ist`.
+ * Optionswerte OHNE jede Variante im frisch gelesenen Zustand `ist`: Shopify meldet `hasVariants: false` UND keine der frisch gelesenen Varianten trägt den Wert (beides muss stimmen, sonst nie löschen).
  *   eigene: Werte der Option `materialOption`, die im Plan stehen (`planWerte`), plus Werte anderer Optionen, die dieser Aufruf ergänzt hat (`hinzu`: [{optionName, wert}], VOR dem Senden notiert,
  *           damit auch eine verlorene Antwort aufgeräumt wird). Nur diese darf das Werkzeug entfernen.
  *   fremde: Werte der Option `materialOption` ohne Variante, die der Plan nicht kennt: werden nie angefasst, nur genannt.
@@ -209,6 +212,7 @@ export function leereWerte(ist, { materialOption, planWerte = [], hinzu = [] }) 
   const eigene = [], fremde = [];
   for (const o of ist.options) {
     for (const ov of o.optionValues || []) {
+      if (ov.hasVariants !== false) continue;   // «leer» nennt Shopify selbst (optionValues.hasVariants = false); fehlt die Angabe (undefined), wird nichts angefasst
       if (ist.variants.some((v) => v.optionen[o.name] === ov.name)) continue;
       const e = { optionName: o.name, optionId: o.id, wert: ov.name, id: ov.id };
       if (o.name === materialOption) (planWerte.includes(ov.name) ? eigene : fremde).push(e);
@@ -305,6 +309,7 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch = { vari
     if (!v) vorab.push(`vorhandene Variante ${b.sku} fehlt`);
     else if (Math.abs(Number(v.price) - b.preisChf) > 0.001) vorab.push(`Preis ${b.sku}: ${v.price} ≠ Plan ${b.preisChf}`);
   }
+  // optionWerte = Namen ALLER Optionswerte der Option «Material» (optionValues, auch ohne Variante): ein leerer Fremdwert («Holz») wird so vor dem ersten Schreibaufruf gemeldet
   vorab.push(...materialOptionAbweichungen({ matName, bestandsWert: p.optionen.bestandsWert, planWerte: p.optionen.nachher[0].werte, optionWerte: ist.options.find((o) => o.name === matName)?.values ?? null,
     bestehende: p.bestehende, schonDa: p.schonDa, materialVon: (sku) => { const v = ist.variants.find((x) => x.sku === sku); return v ? (v.optionen[matName] ?? null) : undefined; } }));
   if (beschreibungSeitPlanVeraendert(p, ist.descriptionHtml)) vorab.push('Beschreibung ausserhalb des Blocks seit dem Plan verändert (anderer Prozess?)');
@@ -338,7 +343,7 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch = { vari
       let ergaenzt = false;
       for (const o of p.optionen.nachher) {
         const io = ist.options.find((x) => x.name === o.name);
-        const fehlt = [...new Set(g.varianten.map((v) => v.optionen[o.name]))].filter((w) => !io.values.includes(w));
+        const fehlt = [...new Set(g.varianten.map((v) => v.optionen[o.name]))].filter((w) => !io.optionValues.some((x) => x.name === w));   // EXISTENZ = in optionValues (auch ein Wert ohne Variante: er wird gefüllt, nicht neu angelegt)
         if (!fehlt.length) continue;
         for (const w of fehlt) hinzu.push({ optionName: o.name, wert: w });
         ergaenzt = true;
