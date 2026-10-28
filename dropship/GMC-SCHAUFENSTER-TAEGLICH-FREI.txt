@@ -1,0 +1,4 @@
+Dauerfreigabe für den nächtlichen Zeitplan von .github/workflows/gmc-schaufenster.yml (04:41 UTC, schreibt nur mit dieser Datei UND dropship/GMC-SCHAUFENSTER-FREI.txt).
+Besitzer, Chat 28.10.2026, zur Frage nach der Dauerfreigabe des Google-Schaufensters: «dauerfreigabe ja».
+Der Zeitplan wählt nur ab (PHASE=abwaehlen, MAX=alle), er nimmt nie zurück. Voraussetzung war erfüllt: voller Lauf 28.10.2026 mit 17 907 Produkten ohne Fehler, danach zwei Prüfungen mit 0 Abweichungen.
+Stopp: diese Datei löschen (der nächste Zeitplan-Lauf prüft dann nur). Einen laufenden Lauf in Actions zusätzlich abbrechen. Rücknahme der Abwahl: PHASE=aufnehmen oder zuruecksetzen (Manifest dropship/gmc_schaufenster_manifest.jsonl).
