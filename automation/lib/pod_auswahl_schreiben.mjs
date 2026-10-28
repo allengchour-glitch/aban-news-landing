@@ -3,8 +3,9 @@
  * hineingereichte Funktion `gql(query, variables)` → Antwort-JSON; die Tests reichen eine Attrappe hinein (es wird nie ein echter Dienst berührt).
  *
  * Ablauf je Produkt (art «erweitern»):
- *   1. frisch lesen, mit dem Plan vergleichen (vorhandene Varianten, Beschreibung ausserhalb des Blocks UND eine schon vorhandene Option «Material»: Werte, Material der Varianten)
- *      → sonst AbweichungFehler, ohne Schreibzugriff. Liest die Abfrage 250 Varianten oder gibt es eine weitere Seite: kontrollierter Abbruch (Exit 3), nichts wird geraten
+ *   1. frisch lesen, mit dem Plan vergleichen (vorhandene Varianten, Beschreibung ausserhalb des Blocks, eine schon vorhandene Option «Material»: Werte, Material der Varianten, UND die Werte
+ *      ALLER Optionen: ein Wert im Shop, den der Plan für diese Option nicht kennt, wird vor dem ersten Schreibaufruf gemeldet, siehe fremdeOptionswerte)
+ *      → sonst AbweichungFehler (Exit 3, 0 Schreibaufrufe, Hinweis auf DATEN=holen und einen neuen Trockenlauf). Liest die Abfrage 250 Varianten oder gibt es eine weitere Seite: kontrollierter Abbruch (Exit 3), nichts wird geraten
  *   2. Sicherung des Ausgangszustands nach dropship/pod-sicherung/<handle>.json (nie überschreiben)
  *   3. productOptionsCreate: Option «Material» (nur mit dem vorhandenen Wert), variantStrategy LEAVE_AS_IS (vorhandene Varianten bekommen den Wert);
  *      danach Optionsreihenfolge HERSTELLEN (productOptionsReorder, falls «Material» nicht an Position 1 steht; auch bei Wiederaufnahme) und frisch prüfen
@@ -20,7 +21,11 @@
  *   6. FRISCH zurücklesen und mit dem Plan vergleichen → Abweichung = AbweichungFehler (Exit 3)
  * LESEN (Korrekturrunde 4): Optionen immer über `optionValues { id name hasVariants }` (OPTIONEN_FELDER in pod_auswahl_daten.mjs), NIE über `ProductOption.values`: dort fehlen Werte OHNE Variante
  * (Schema: «including values not assigned to any variants» steht nur bei optionValues). Existenz eines Werts = in optionValues; «leer» = hasVariants false (und keine gelesene Variante trägt ihn);
- * Löschen über die Wert-ID aus optionValues. Sonst wäre ein liegengebliebener leerer Wert für die Wiederaufnahme unsichtbar (sie legte ihn neu an: OPTION_VALUE_ALREADY_EXISTS, Exit 1).
+ * Löschen über die Wert-ID aus optionValues. Sonst wäre ein liegengebliebener leerer Wert für die Wiederaufnahme unsichtbar: sie legte ihn neu an und bekäme für den schon vorhandenen Namen einen userError (Exit 1).
+ * NICHT GEMESSEN: welchen Code Shopify dafür nennt, steht im Schema nicht (ProductOptionUpdateUserErrorCode kennt OPTION_VALUE_ALREADY_EXISTS, DUPLICATED_OPTION_VALUE und OPTION_VALUE_HAS_VARIANTS);
+ * OPTION_VALUE_ALREADY_EXISTS ist die Antwort der Test-Attrappe nach Schema, nicht eine Messung. Der Code verlässt sich auf keinen dieser Codes: pruefeAntwort behandelt JEDEN userError als Fehler.
+ * Ob hasVariants false, das Löschen über optionValuesToDelete und das Anlegen fehlender Werte durch productVariantsBulkCreate sich so verhalten, belegen bisher nur Schema und Doku:
+ * die Wegwerf-Probe dafür steht in dropship/pod-auswahl/README.md («Vor dem ersten LIVE-Lauf: Wegwerf-Probe»).
  * WIEDERAUFNAHME nach Exit 4 (Tageslimit) oder einem anderen Abbruch: denselben Befehl SPÄTER wiederholen. Jeder Schritt legt nur an, was fehlt; der Plan-Hash bleibt gleich (neu und schon angelegt zählen zusammen),
  * der geprüfte Plan gilt weiter, solange die Daten höchstens DATEN_MAX_ALTER_H Stunden alt sind (sonst verweigert LIVE: zuerst DATEN=holen). Das Produkt bleibt ACTIVE (es wird nie auf DRAFT gesetzt: das nähme ein verkaufendes Produkt aus dem Shop).
  * art «neu» (Samsung-Hülle, DRAFT): productSet (synchron) → Metafelder → Editor-Baustein füllen → zurücklesen und vergleichen. KEINE Wiederaufnahme für fehlende Varianten (siehe README «Offen»).
@@ -184,6 +189,30 @@ export function beschreibungSeitPlanVeraendert(p, html) {
 /** Namen der Optionen in der Reihenfolge ihrer Position. */
 const optionsReihe = (ist) => [...ist.options].sort((a, b) => a.position - b.position).map((o) => o.name);
 
+/** Hinweis am Ende der Meldung «seit dem Plan verändert»: der Shop ist nicht mehr der Shop des Plans, also Plan neu herstellen (nichts wird geraten oder repariert). */
+export const NEUER_PLAN_HINWEIS = 'Nichts geschrieben. Zuerst DATEN=holen (Datenpaket auffrischen), dann einen neuen Trockenlauf machen und ansehen; LIVE erst mit dem neuen, geprüften Plan wiederholen.';
+
+/**
+ * Vorab-Prüfung der Optionswerte ALLER Optionen des Produkts (nicht nur «Material»): steht im Shop ein Wert, den der Plan für diese Option nicht kennt (leer oder mit Variante; ein Wert, der nach dem
+ * Plan von Hand oder von einem anderen Prozess entstanden ist), wäre der Abschlussvergleich nach dem Schreiben rot («Optionswerte «…»», Exit 3) und das Ledger bekäme kein OK, obwohl schon alle Varianten
+ * stehen. Darum Meldung VOR dem ersten Schreibaufruf. Geprüft wird nur «Shop ⊆ Plan»: Plan-Werte, die dem Shop noch fehlen, legt der Schreibweg selbst an (Schritt 4).
+ *   • Die Option «Material» (`ausser`) prüft materialOptionAbweichungen (dieselbe Regel plus Material der Varianten): hier übersprungen, damit nichts doppelt gemeldet wird.
+ *   • Eine Option, die der Plan nicht kennt, meldet stelleReihenfolgeHer; eine Option des Plans, die der Shop noch nicht hat («Material» vor dem Anlegen), gibt es hier nichts zu prüfen.
+ *   • Das Aufräumen (leereWerte) fasst fremde Werte weiterhin NIE an: diese Prüfung verweigert nur den Start, sie löscht nichts.
+ * REIN: gibt die Meldungen zurück (leer = in Ordnung).
+ */
+export function fremdeOptionswerte(p, ist, { ausser = p.optionen.materialOption } = {}) {
+  const a = [];
+  for (const o of p.optionen.nachher) {
+    if (o.name === ausser) continue;
+    const io = ist.options.find((x) => x.name === o.name);
+    if (!io) continue;
+    const fremd = io.values.filter((w) => !o.werte.includes(w));
+    if (fremd.length) a.push(`Option «${o.name}» im Shop hat Werte, die der Plan nicht kennt: ${fremd.map((w) => `«${w}»`).join(', ')} (Plan: ${o.werte.join(', ')})`);
+  }
+  return a;
+}
+
 /**
  * Optionsreihenfolge HERSTELLEN (nicht nur prüfen): Steht «Material» nach productOptionsCreate nicht an Position 1 (die Doku verspricht für
  * `OptionCreateInput.position` nur «Position of the option»), sortiert productOptionsReorder alle Optionen in Planreihenfolge. Läuft bei jeder Ausführung,
@@ -312,8 +341,10 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch = { vari
   // optionWerte = Namen ALLER Optionswerte der Option «Material» (optionValues, auch ohne Variante): ein leerer Fremdwert («Holz») wird so vor dem ersten Schreibaufruf gemeldet
   vorab.push(...materialOptionAbweichungen({ matName, bestandsWert: p.optionen.bestandsWert, planWerte: p.optionen.nachher[0].werte, optionWerte: ist.options.find((o) => o.name === matName)?.values ?? null,
     bestehende: p.bestehende, schonDa: p.schonDa, materialVon: (sku) => { const v = ist.variants.find((x) => x.sku === sku); return v ? (v.optionen[matName] ?? null) : undefined; } }));
+  // die Werte ALLER übrigen Optionen (Grösse, Handymodell …): ein Wert, den der Plan nicht kennt, würde erst der Abschlussvergleich nach dem Schreiben aller Varianten melden
+  vorab.push(...fremdeOptionswerte(p, ist));
   if (beschreibungSeitPlanVeraendert(p, ist.descriptionHtml)) vorab.push('Beschreibung ausserhalb des Blocks seit dem Plan verändert (anderer Prozess?)');
-  if (vorab.length) throw new AbweichungFehler(`${p.handle}: seit dem Plan verändert`, vorab);
+  if (vorab.length) throw new AbweichungFehler(`${p.handle}: seit dem Plan verändert. ${NEUER_PLAN_HINWEIS}`, vorab);
   // 2. Sicherung
   if (sichere({ dir: sicherungsDir, handle: p.handle, zustand: ist, jetzt })) log(`   Sicherung geschrieben: ${sicherungsDir}/${sicherungsName(p.handle)}`);
   // 3. Option «Material» (nur mit dem vorhandenen Wert; die neuen Werte kommen erst mit ihren Varianten)

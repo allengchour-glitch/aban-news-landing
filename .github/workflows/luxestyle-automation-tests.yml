@@ -54,7 +54,7 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    # 8 statt 5 Minuten (28.10.2026): Nachspielung mit bash automation/ci_simulation.sh = 207 s (vorher 186 s; die Mutationsprobe wuchs von 173 auf 197 Mutanten, die Schreibweg-Tests um 37 Pruefungen).
+    # 8 statt 5 Minuten (28.10.2026): Nachspielung mit bash automation/ci_simulation.sh = 255 s (vorher 207 s, davor 186 s; die Mutationsprobe wuchs von 173 über 197 auf 217 Mutanten, die Schreibweg-Tests um 68 Pruefungen), 53 % der 480 s.
     # Ohne checkout/setup-node/setup-python, die in der Nachspielung fehlen, blieben von 300 s nur 93 s (31 %) Luft. Das Limit schuetzt vor haengenden Laeufen, nicht vor langsamen Tests.
     timeout-minutes: 8
     steps:
@@ -213,7 +213,7 @@ jobs:
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
           node automation/printful_sync_test.mjs
-      - name: Mutationsprobe «Selbst gestalten» (197 absichtliche Fehler, alle müssen rot werden)
+      - name: Mutationsprobe «Selbst gestalten» (217 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
