@@ -197,7 +197,7 @@ export const NEUER_PLAN_HINWEIS = 'Nichts geschrieben. Zuerst DATEN=holen (Daten
  * Plan von Hand oder von einem anderen Prozess entstanden ist), wäre der Abschlussvergleich nach dem Schreiben rot («Optionswerte «…»», Exit 3) und das Ledger bekäme kein OK, obwohl schon alle Varianten
  * stehen. Darum Meldung VOR dem ersten Schreibaufruf. Geprüft wird nur «Shop ⊆ Plan»: Plan-Werte, die dem Shop noch fehlen, legt der Schreibweg selbst an (Schritt 4).
  *   • Die Option «Material» (`ausser`) prüft materialOptionAbweichungen (dieselbe Regel plus Material der Varianten): hier übersprungen, damit nichts doppelt gemeldet wird.
- *   • Eine Option, die der Plan nicht kennt, meldet stelleReihenfolgeHer; eine Option des Plans, die der Shop noch nicht hat («Material» vor dem Anlegen), gibt es hier nichts zu prüfen.
+ *   • Eine Option, die der Plan nicht kennt (oder die dem Shop fehlt), meldet abweichendeOptionen, ebenfalls vor dem ersten Schreibaufruf; eine Option des Plans, die der Shop noch nicht hat, gibt es hier nichts zu prüfen.
  *   • Das Aufräumen (leereWerte) fasst fremde Werte weiterhin NIE an: diese Prüfung verweigert nur den Start, sie löscht nichts.
  * REIN: gibt die Meldungen zurück (leer = in Ordnung).
  */
@@ -211,6 +211,17 @@ export function fremdeOptionswerte(p, ist, { ausser = p.optionen.materialOption 
     if (fremd.length) a.push(`Option «${o.name}» im Shop hat Werte, die der Plan nicht kennt: ${fremd.map((w) => `«${w}»`).join(', ')} (Plan: ${o.werte.join(', ')})`);
   }
   return a;
+}
+
+/**
+ * Vorab-Prüfung der Optionsnamen (Runde 5, Prüfer-Fund Z4): eine Option, die der Plan nicht kennt («Farbe» als dritte Option), oder eine Plan-Option ausser `Material`, die dem Shop fehlt, würde
+ * stelleReihenfolgeHer erst melden, nachdem Sicherung und productOptionsCreate («Material» anlegen) schon gelaufen sind: ein Schreibaufruf auf ein ACTIVE-Produkt, obwohl der Plan nicht mehr zum Shop passt.
+ * `Material` bleibt aussen vor (fehlt es im Shop, legt Schritt 3 es an). Die Position ist Sache von stelleReihenfolgeHer (das stellt sie her). REIN: gibt die Meldungen zurück (leer = in Ordnung).
+ */
+export function abweichendeOptionen(p, ist, { ausser = p.optionen.materialOption } = {}) {
+  const ohne = (namen) => namen.filter((n) => n !== ausser).sort();
+  const plan = ohne(p.optionen.nachher.map((o) => o.name)), shop = ohne(ist.options.map((o) => o.name));
+  return plan.join('|') === shop.join('|') ? [] : [`Optionen im Shop (${shop.join(', ') || 'keine ausser «' + ausser + '»'}) ≠ Plan (${plan.join(', ') || 'keine ausser «' + ausser + '»'})`];
 }
 
 /**
@@ -343,6 +354,8 @@ async function erweitern(p, { gql, log, sicherungsDir, jetzt, verbrauch = { vari
     bestehende: p.bestehende, schonDa: p.schonDa, materialVon: (sku) => { const v = ist.variants.find((x) => x.sku === sku); return v ? (v.optionen[matName] ?? null) : undefined; } }));
   // die Werte ALLER übrigen Optionen (Grösse, Handymodell …): ein Wert, den der Plan nicht kennt, würde erst der Abschlussvergleich nach dem Schreiben aller Varianten melden
   vorab.push(...fremdeOptionswerte(p, ist));
+  // die Optionsnamen selbst: eine dem Plan unbekannte oder dem Shop fehlende Option (ausser «Material») meldet sonst erst stelleReihenfolgeHer, nach Sicherung und productOptionsCreate
+  vorab.push(...abweichendeOptionen(p, ist));
   if (beschreibungSeitPlanVeraendert(p, ist.descriptionHtml)) vorab.push('Beschreibung ausserhalb des Blocks seit dem Plan verändert (anderer Prozess?)');
   if (vorab.length) throw new AbweichungFehler(`${p.handle}: seit dem Plan verändert. ${NEUER_PLAN_HINWEIS}`, vorab);
   // 2. Sicherung

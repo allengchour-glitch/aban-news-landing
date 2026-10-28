@@ -43,7 +43,7 @@ Shopify nennt den Rest des Tageslimits **nicht** (gemessen ca. 9 500 neue Varian
 
 ### Optionen lesen: `optionValues { id name hasVariants }`, nie `ProductOption.values` (Korrekturrunde 4)
 
-Der Prüfer der dritten Runde fand eine falsche Annahme über Shopify: Das Werkzeug las `options { name position values }`, und die Attrappe der Tests lieferte dort auch Werte **ohne** Variante. Shopify tut das nicht.
+Der Prüfer der dritten Runde fand eine falsche Annahme über Shopify: Das Werkzeug las `options { name position values }`, und die Attrappe der Tests lieferte dort auch Werte **ohne** Variante. Laut Schema und Doku tut Shopify das nicht (nicht live gemessen: siehe «Vor dem ersten LIVE-Lauf: Wegwerf-Probe»).
 Beleg (Schema und Doku, am 28.10.2026 abgefragt): `ProductOption.values` = «The corresponding value to the product option name», `ProductOption.optionValues` = «Similar to values, option_values returns all the corresponding option value objects to the product option,
 including values not assigned to any variants». Die Doku von `productOptionUpdate` (Beispiel «Add and update product option values», Version 2026-01) zeigt es: nach dem Anlegen von «Yellow» und «Red» antwortet Shopify
 `values: ["Purple"]`, aber `optionValues`: Purple `hasVariants: true`, Yellow `false`, Red `false`. `optionValuesToDelete` verlangt die ID aus `optionValues` (`ProductOptionValue`), die Option wird über ihre ID genannt.
@@ -77,25 +77,27 @@ Folgen: (a) die Wiederaufnahme füllt einen liegengebliebenen leeren Wert, ohne 
 
 **Tageslimit:** Neue Varianten sind je Tag begrenzt, gemessen ca. 9 500 für den ganzen Shop (siehe «Variantenbudget» und `dropship/STAND-ARCHIV.md`), geteilt mit Nachtlauf, CJ-Import und jeder anderen Sitzung. Die Probe braucht nur wenige Varianten (A, D und E je eine, also rund 3), **scheitert aber bei erreichtem Limit**: schon Schritt A. Dann ist nichts angelegt und nichts aufzuräumen; die Probe wird später wiederholt, nicht gleichzeitig mit dem Nachtlauf.
 
+**Admin-API-Version:** die des Werkzeugs, `2026-01` (`API_VERSION` in `automation/lib/pod_auswahl_gql.mjs`), nicht die eines anderen Zugangs: die hier abgefragten Schema- und Doku-Seiten tragen `2026-10`, eine Probe mit anderer Version belegt das Verhalten der gepinnten Version nicht.
+
 **Ablauf** (alles an EINEM Wegwerf-Produkt, nie an einem der fünf Produkte dieses Werkzeugs; Titel «ZZ Test Optionswerte», Status DRAFT, Tag `zz-test-loeschen`, SKUs `ZZ-TEST-…`; jedes Ergebnis wörtlich festhalten, auch ein unerwartetes; bei einem Abbruch mitten drin zuerst Schritt G):
 - **A** `productCreate(product: { title: "ZZ Test Optionswerte", status: DRAFT, tags: ["zz-test-loeschen"], productOptions: [{ name: "Material", values: [{ name: "A" }] }] })`. Merken: Produkt-ID, Option-ID, Zahl der Varianten (erwartet: 1, Material = A). Scheitert der Schritt am Tageslimit: abbrechen.
 - **B** `productOptionUpdate(productId, option: { id: <Option-ID> }, optionValuesToAdd: [{ name: "B" }])` ohne Variante, danach lesen mit `options { id name values optionValues { id name hasVariants } }`. Zu messen: `values` enthält B **nicht**, `optionValues` enthält B mit `hasVariants: false`.
-- **C** Denselben Aufruf wie B noch einmal. Zu messen: welcher userError (`code`, `message`, `field`) kommt, und ob `product` trotzdem zurückkommt.
+- **C** Denselben Aufruf wie B noch einmal. Zu messen: welcher userError (`code`, `message`, `field`) kommt, und ob `product` trotzdem zurückkommen und die vorhandenen Werte unverändert bleiben. Die Doku führt dafür ein Beispiel («Adding a duplicate name for an option value returns an error»: ein userError, der Wert existiert schon; die vorhandenen Werte bleiben unverändert; `product` kommt mit zurück); den genauen Code-Text lasen wir in den Doku-Auszügen nicht (der Prüfer nennt `OPTION_VALUE_ALREADY_EXISTS`). Dokumentiert, nicht live gemessen.
 - **D** `productVariantsBulkCreate(productId, strategy: PRESERVE_STANDALONE_VARIANT, variants: [{ optionValues: [{ optionName: "Material", name: "C" }], price: "1.00", inventoryItem: { sku: "ZZ-TEST-C", tracked: false } }])` mit dem Wert C, den es noch nicht gibt. Zu messen: legt Shopify C selbst an (`hasVariants: true`), oder kommt ein userError (Code?). Die Variante A muss danach noch da sein.
 - **E** `productVariantsBulkCreate` (gleiche Form, SKU `ZZ-TEST-B`) auf den leeren Wert B. Zu messen: `hasVariants` von B wird `true`, B erscheint danach auch in `values`.
 - **F** Einen weiteren leeren Wert D wie in B anlegen, seine ID aus `optionValues` lesen und löschen: `productOptionUpdate(productId, option: { id: <Option-ID> }, optionValuesToDelete: [<Wert-ID von D>])` (ohne `variantStrategy`, also `LEAVE_AS_IS`; `MANAGE` würde Varianten löschen). Zu messen: D fehlt in `optionValues`, die Zahl der Varianten ist gleich geblieben.
-  **F2** (zusätzlich, nur an diesem Wegwerf-Produkt): dasselbe mit dem Wert B, der jetzt eine Variante trägt. Zu messen: userError (die Attrappe nimmt `OPTION_VALUE_HAS_VARIANTS` an) oder werden Varianten still mitgelöscht? Das Werkzeug löscht nie einen Wert mit Variante; diese Messung zeigt, wie wichtig dieser Schutz ist.
+  **F2** (zusätzlich, nur an diesem Wegwerf-Produkt): dasselbe mit dem Wert B, der jetzt eine Variante trägt. Zu messen: Das Schema sagt für `LEAVE_AS_IS` ausdrücklich: «In cases where deleting a variant would be necessary to complete the operation, an error will be returned.» Offen ist nur, welcher Code kommt (die Attrappe nimmt `OPTION_VALUE_HAS_VARIANTS` an) und dass wirklich nichts still mitgelöscht wird. Das Werkzeug löscht nie einen Wert mit Variante; diese Messung zeigt, wie wichtig dieser Schutz ist.
 - **G** Aufräumen: `productDelete(input: { id: <Produkt-ID> })`. Restprüfung: `products(first: 5, query: "tag:zz-test-loeschen")` und `products(first: 5, query: "sku:ZZ-TEST-*")` liefern 0 Treffer. Bleibt etwas übrig (auch nach einem Abbruch), von Hand löschen: ein Produkt mit dem Tag `zz-test-loeschen` darf nicht im Shop bleiben.
 
 | Schritt | Erwartung nach Schema/Doku (nicht gemessen) | Gemessen |
 |---|---|---|
 | A | Produkt mit Option «Material» = A und einer Variante | offen |
 | B | `values` = [A]; `optionValues` = A (`hasVariants` true), B (`hasVariants` false) | offen |
-| C | userError, Code unbekannt (`OPTION_VALUE_ALREADY_EXISTS` oder `DUPLICATED_OPTION_VALUE`) | offen |
+| C | userError «Wert existiert schon» (Doku-Beispiel; Code vermutlich `OPTION_VALUE_ALREADY_EXISTS`, nicht gesehen), vorhandene Werte unverändert, `product` kommt zurück | offen |
 | D | Shopify legt C selbst an; C hat danach `hasVariants` true | offen |
 | E | B: `hasVariants` true, B steht danach auch in `values` | offen |
 | F | D ist entfernt, keine Variante verloren | offen |
-| F2 | userError (`OPTION_VALUE_HAS_VARIANTS`?) oder Varianten werden mitgelöscht | offen |
+| F2 | userError laut Schema (`LEAVE_AS_IS`); Code unbekannt (`OPTION_VALUE_HAS_VARIANTS`?), Varianten bleiben | offen |
 | G | Produkt gelöscht, Suche nach dem Tag: 0 Treffer | offen |
 
 **Danach (Pflicht):** jedes Ergebnis zurück ins Werkzeug übertragen, mit Datum: (1) in die Spalte «Gemessen» und in «Optionen lesen» dieser README; (2) in die Attrappe `neuerShop` in `automation/lib/pod_auswahl_schreiben_test.mjs` (Code beim doppelten Anlegen, Verhalten von `productVariantsBulkCreate` mit fehlendem Wert, Löschen eines Werts mit Variante) und in den Kopf von `automation/lib/pod_auswahl_schreiben.mjs`; (3) weicht ein Ergebnis von der Erwartung ab (zum Beispiel nennt `values` leere Werte doch, oder das Löschen eines Werts mit Variante löscht Varianten), ist das ein Befund, der **vor** dem ersten LIVE-Lauf zu beheben ist (Lesepfade, Aufräumen, Tests, Mutanten).
@@ -161,7 +163,7 @@ und das Netto sinkt (Beispiel 5599797_11576: Preis 24.90, Erlös 31.90 → Netto
 | `automation/lib/printful_platzierung.mjs` + `automation/printful_sync.mjs` | Fix der Druckplatzierung (siehe unten) |
 | `dropship/pod-auswahl/*.json` | Datenpaket (Katalog, Beschreibungen, Versand, Bestand mit Material-Metafeld, SKU-Prüfung, SKU-Index), gemessen 27.10.2026; `platzierung_mitschnitte.json` = ECHTE Printful-Antworten (GET /products/variant/<id>, gekürzt) als Prüfdaten der Platzierung |
 | `automation/printful_sync_test.mjs` | Verhaltenstest des Bestellwegs: `printful_sync.mjs` läuft in einem Kindprozess gegen gefälschtes `fetch` (Hülle/Tasse/Poster/Shirt, 503/429/404/Netzfehler); geprüft wird, was an Printful geht |
-| `automation/pod_auswahl_mutation.mjs` | Mutationsprobe (217 absichtliche Fehler) |
+| `automation/pod_auswahl_mutation.mjs` | Mutationsprobe (221 absichtliche Fehler) |
 
 `sku_index.json`: welche der neuen Printful-Nummern im Shop schon in **anderen** Produkten als SKU stehen (Abfrage `tag:wunschdesign OR tag:printful_personalized_product OR sku:*_*`, 491 Produkte gelesen).
 Ohne den Index meldet der Plan «nicht geprüft» statt zu raten.

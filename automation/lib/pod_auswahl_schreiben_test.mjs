@@ -7,7 +7,7 @@ import { planeAlles, pfIdAusSku, PLATZHALTER_VARIANTE, PLATZHALTER_BILD } from '
 import { ladePaket, ohneKnoten, BESTAND_Q } from './pod_auswahl_daten.mjs';
 import { lauf, pruefeAntwort, TageslimitFehler, variantenEingabe, vergleiche, leseFrisch, nurText, sicherungsName, produktSetEingabe, ledgerLesen, CHUNK, endeCode, EXIT_TEXT, zusammenfassung, bestaetigt,
   beschreibungSeitPlanVeraendert, pruefeVorhandenesProdukt, Q_PRODUKT, M_REORDER, M_OPTION_WERTE_LOESCHEN, M_OPTION, M_OPTION_WERTE, M_VARIANTEN,
-  AbweichungFehler, LESEGRENZE_VARIANTEN, leereWerte as leereWerteLib, leereWerteEntfernen, materialStand, zustandsText, stelleReihenfolgeHer, fremdeOptionswerte, NEUER_PLAN_HINWEIS } from './pod_auswahl_schreiben.mjs';
+  AbweichungFehler, LESEGRENZE_VARIANTEN, leereWerte as leereWerteLib, leereWerteEntfernen, materialStand, zustandsText, stelleReihenfolgeHer, fremdeOptionswerte, abweichendeOptionen, NEUER_PLAN_HINWEIS } from './pod_auswahl_schreiben.mjs';
 import { DATEN_MAX_ALTER_H } from './pod_auswahl_daten.mjs';
 import { MARKE_AUF } from './pod_auswahl_spec.mjs';
 
@@ -61,7 +61,7 @@ function neuerShop(bestand, o = {}) {
   let angelegteVarianten = 0;
   const wertId = (p, x, v) => `gid://shopify/ProductOptionValue/${p.handle.length}-${x.name}-${v}`;   // eindeutig je Wert (für optionValuesToDelete)
   const traegt = (p, x, w) => p.variants.some((va) => va.selectedOptions.some((s) => s.name === x.name && s.value === w));   // hasVariants: trägt irgendeine Variante den Wert?
-  /** Die Optionen so, wie Shopify sie antwortet: `values` nur mit Variante, `optionValues` alle mit hasVariants; nur die verlangten Felder (query), ohne query alle. */
+  /** Die Optionen so, wie Schema und Doku Shopifys Antwort beschreiben (nicht live gemessen): `values` nur mit Variante, `optionValues` alle mit hasVariants; nur die verlangten Felder (query), ohne query alle. */
   const optionenAntwort = (p, query) => {
     const voll = p.options.map((x) => ({ id: x.id, name: x.name, position: x.position, values: x.values.filter((w) => traegt(p, x, w)), optionValues: x.values.map((w) => ({ id: wertId(p, x, w), name: w, hasVariants: traegt(p, x, w) })) }));
     const sel = query ? auswahlVon(query, 'options') : null;
@@ -840,6 +840,15 @@ const loeschAufrufe = (shop) => shop.aufrufe.filter((a) => a.name === 'productOp
   ist('Optionsreihenfolge: Positionen 1 und 2 → kein Schreibaufruf', await lauf1([1, 2], [1, 2]), 0);
   ist('Optionsreihenfolge: Positionen 2 und 3 (Namen in Ordnung) → ein Reorder', await lauf1([2, 3], [1, 2]), 1);
 }
+{ // zweite Sicherung: stelleReihenfolgeHer prüft die Optionsnamen selbst. Die Vorab-Prüfung abweichendeOptionen fängt eine fremde Option früher ab (Runde 5), aber eine Option kann auch erst zwischen Prüfung und Schreiben entstehen
+  const opt = (id, name, position) => ({ id, name, position, values: [], optionValues: [] });
+  const prod = { id: 'gid://shopify/Product/1', handle: 'h', options: [opt('o1', 'Material', 1), opt('o2', 'Grösse', 2), opt('o3', 'Rahmenfarbe', 3)], variants: { edges: [] }, media: { edges: [] }, metafields: { edges: [] } };
+  const pl = { handle: 'h', optionen: { nachher: [{ name: 'Material' }, { name: 'Grösse' }] } };
+  let reorder = 0, e;
+  const gql = async (q) => { if (/productOptionsReorder/.test(q)) { reorder++; return { data: { productOptionsReorder: { product: { id: 'x' }, userErrors: [] } } }; } return { data: { productByIdentifier: prod } }; };
+  try { await stelleReihenfolgeHer({ gql, log: still, p: pl, ist: await leseFrisch(gql, 'h') }); } catch (x) { e = x; }
+  ist('stelleReihenfolgeHer direkt: eine Option, die der Plan nicht kennt → AbweichungFehler mit Liste, kein productOptionsReorder', [e instanceof AbweichungFehler, reorder, e?.liste], [true, 0, ['Optionen: Material, Grösse, Rahmenfarbe ≠ Material, Grösse']]);
+}
 { // Aufräumen nach einem gewöhnlichen Fehler: schon in A4 getestet; hier zusätzlich die Wiederholung nach genau diesem Fehler (Wiederaufnahme)
   const dir = tmp(); const shop = neuerShop(paket.bestand, { variantenFehlerBei: 1 });
   const r1 = await lauf({ plan: planVon([HANDLES.poster]), gql: shop.gql, ...cfg(dir) });
@@ -858,10 +867,10 @@ const loeschAufrufe = (shop) => shop.aufrufe.filter((a) => a.name === 'productOp
 
 
 // ───────────────────────────────────────────────────────── 28. Runde 4 (28.10.2026): Optionen werden über `optionValues { id name hasVariants }` gelesen, NIE über `ProductOption.values`
-// Der unabhängige Prüfer der Runde 3 fand: die Attrappe lieferte Werte OHNE Variante in `values`, Shopify tut das nicht (Schema: «including values not assigned to any variants» steht NUR bei optionValues).
+// Der unabhängige Prüfer der Runde 3 fand: die Attrappe lieferte Werte OHNE Variante in `values`, Shopify tut das laut Schema nicht («including values not assigned to any variants» steht NUR bei optionValues; nicht live gemessen).
 // Ein liegengebliebener leerer Wert war für die Wiederaufnahme darum unsichtbar (sie legte ihn neu an und endete mit einem userError, Exit 1, statt mit Exit 0/4; der Fehlercode ist nicht gemessen).
 const VALUES_ABFRAGE = 'query($h:String!){ productByIdentifier(identifier:{handle:$h}){ options{ id name values optionValues{ id name hasVariants } } } }';   // nur für Tests der Attrappe: fragt AUSDRÜCKLICH auch `values`
-{ // 28a: die Attrappe verhält sich wie Shopify (Selbsttest)
+{ // 28a: die Attrappe verhält sich nach Schema und Doku wie Shopify (Selbsttest)
   const shop = neuerShop(paket.bestand); const p = shop.produkte.get(HANDLES.poster);
   p.options.unshift({ id: 'gid://shopify/ProductOption/hand', name: 'Material', position: 1, values: ['Poster matt', 'Holz'] }); p.options.forEach((o, i) => { o.position = i + 1; });
   p.variants.forEach((v) => v.selectedOptions.unshift({ name: 'Material', value: 'Poster matt' }));
@@ -1001,6 +1010,11 @@ const VALUES_ABFRAGE = 'query($h:String!){ productByIdentifier(identifier:{handl
   ist('R5 vergleiche, Gegenprobe: die Reihenfolge der Werte spielt keine Rolle', vergleiche(pr, umgekehrt), []);
   const fehlt = klon(gut); { const o = fehlt.options.find((x) => x.name === 'Grösse'); o.values.pop(); o.optionValues.pop(); }
   wahr('R5 vergleiche: ein Wert des Plans fehlt im Shop → Meldung «Optionswerte «Grösse»»', nur(vergleiche(pr, fehlt), 'Optionswerte «Grösse»').length === 1);
+  { // Tausch: ein Planwert fehlt, dafür steht ein Fremdwert da, GLEICHE Anzahl (ein Vergleich nur nach Anzahl sähe nichts)
+    const t = klon(gut); const o = t.options.find((x) => x.name === 'Grösse'); const weg = o.values[o.values.length - 1];
+    o.values[o.values.length - 1] = 'XXL-Rest'; o.optionValues[o.optionValues.length - 1] = { ...o.optionValues[o.optionValues.length - 1], name: 'XXL-Rest' };
+    ist('R5 vergleiche: Tausch (Planwert «' + weg + '» fehlt, Fremdwert «XXL-Rest» da, gleiche Anzahl) → genau eine Meldung «Optionswerte «Grösse»»', [o.values.length === plWerte('Grösse').length, nur(vergleiche(pr, t), 'Optionswerte «Grösse»').length, vergleiche(pr, t).length], [true, 1, 1]);
+  }
   for (const [n, falsch] of [['Grösse', 3], ['Material', 2]]) {
     const f = klon(gut); f.options.find((o) => o.name === n).position = falsch;
     ist(`R5 vergleiche: falsche Position von «${n}» (${falsch} statt ${plPos(n)}) → genau eine Meldung «Position «${n}»: …», sonst nichts`, vergleiche(pr, f), [`Position «${n}»: ${falsch} ≠ ${plPos(n)}`]);
@@ -1080,6 +1094,29 @@ wahr('NEUER_PLAN_HINWEIS: «Nichts geschrieben», DATEN=holen (Datenpaket auffri
 for (const code of ['OPTION_VALUE_ALREADY_EXISTS', 'DUPLICATED_OPTION_VALUE', 'OPTION_VALUE_HAS_VARIANTS', 'IRGENDEIN_NEUER_CODE']) {
   let e; try { pruefeAntwort({ data: { productOptionUpdate: { userErrors: [{ code, message: 'm', field: ['option'] }] } } }, 'Optionswert', 'productOptionUpdate'); } catch (x) { e = x; }
   wahr(`pruefeAntwort: ein userError mit dem Code ${code} ist ein Fehler (kein Tageslimit, nicht überhört)`, e instanceof Error && !(e instanceof TageslimitFehler) && e.message.includes(code), String(e?.message));
+}
+
+// Runde 5, Prüfer-Fund Z4: auch die Optionsnamen werden vor dem ersten Schreibaufruf geprüft. Eine dem Plan unbekannte Option meldete sonst erst stelleReihenfolgeHer, NACH Sicherung und
+// productOptionsCreate («Material» anlegen): ein Schreibaufruf auf ein ACTIVE-Produkt, obwohl der Plan nicht mehr zum Shop passt.
+{ // abweichendeOptionen, rein
+  const pl = { optionen: { materialOption: 'Material', nachher: [{ name: 'Material', werte: ['A'] }, { name: 'Grösse', werte: ['S'] }] } };
+  const shopMit = (...ns) => ({ options: ns.map((name) => ({ name, values: [] })) });
+  ist('abweichendeOptionen: Shop ohne «Material» (erster Lauf), übrige Optionen wie im Plan → keine Meldung', abweichendeOptionen(pl, shopMit('Grösse')), []);
+  ist('abweichendeOptionen: Shop mit «Material» (Wiederaufnahme), Reihenfolge egal → keine Meldung', abweichendeOptionen(pl, shopMit('Grösse', 'Material')), []);
+  ist('abweichendeOptionen: eine dem Plan unbekannte Option → genau eine Meldung mit beiden Listen', abweichendeOptionen(pl, shopMit('Farbe', 'Grösse')), ['Optionen im Shop (Farbe, Grösse) ≠ Plan (Grösse)']);
+  ist('abweichendeOptionen: eine Plan-Option fehlt im Shop (ausser «Material») → Meldung', abweichendeOptionen(pl, shopMit('Material')), ['Optionen im Shop (keine ausser «Material») ≠ Plan (Grösse)']);
+  ist('abweichendeOptionen: mit ausser: null zählt auch «Material» als Option des Plans', abweichendeOptionen(pl, shopMit('Grösse'), { ausser: null }), ['Optionen im Shop (Grösse) ≠ Plan (Grösse, Material)']);
+}
+{ // Z4 (Prüfer): poster-zum-selbstgestalten, im Shop zusätzlich eine ganze dritte Option «Farbe»
+  const dir = tmp(); const plan = planVon([HANDLES.poster]); const shop = neuerShop(paket.bestand, { positionIgnorieren: true });
+  const p = shop.produkte.get(HANDLES.poster); p.options.push({ id: 'gid://shopify/ProductOption/farbe', name: 'Farbe', position: 2, values: ['Rot'] });
+  for (const v of p.variants) v.selectedOptions.push({ name: 'Farbe', value: 'Rot' });
+  const L = mitLog(); const r = await lauf({ plan, gql: shop.gql, ...cfg(dir, { log: L.log }) });
+  ist('Z4 unbekannte Option «Farbe»: Exit 3, 0 Schreibaufrufe, keine Sicherung, kein Ledger-Eintrag', [r.exit, nurSchreib(shop), existsSync(join(dir, 'sicherung')), existsSync(join(dir, 'ledger.txt'))], [3, 0, false, false]);
+  ist('Z4: genau EINE Meldung mit beiden Optionslisten', r.ergebnisse[0].liste, ['Optionen im Shop (Farbe, Grösse) ≠ Plan (Grösse)']);
+  wahr('Z4: die Ausgabe sagt «Nichts geschrieben» und verweist auf DATEN=holen und einen neuen Trockenlauf', L.zeilen.some((z) => z.startsWith('ABWEICHUNG: ') && /Nichts geschrieben/.test(z) && /DATEN=holen/.test(z) && /neuen Trockenlauf/.test(z)), L.zeilen.join(' | '));
+  ist('Z4: der Shop ist unverändert (keine Option «Material», 4 Varianten, 2 Optionen)', [p.options.map((o) => o.name), p.variants.length], [['Grösse', 'Farbe'], 4]);
+  rmSync(dir, { recursive: true, force: true });
 }
 
 for (const d of angelegt) rmSync(d, { recursive: true, force: true });
