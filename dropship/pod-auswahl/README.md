@@ -5,7 +5,7 @@ Hoodie nur «Grösse» (er will **Material mit Preis** und «alle anderen Produk
 
 **Zustand: gebaut, nach zwei unabhängigen Prüfungen korrigiert (Korrekturrunden 1 und 2, 27.10.2026), dazu Korrekturrunde 3 (28.10.2026) nach den Funden eines zweiten Modells (Codex, nur Lesen) und des ersten Prüfers der zweiten Runde (Tageslimit/Halbzustand, Lesegrenze, Vorab-Prüfung, Budget, Mutanten) und Korrekturrunde 4 (28.10.2026) nach dem Fund des Prüfers der dritten Runde (Optionswerte ohne Variante waren über `ProductOption.values` unsichtbar, siehe «Optionen lesen») und Korrekturrunde 5 (28.10.2026) nach den drei Funden des Prüfers der vierten Runde (Abschlussvergleich der Optionswerte mit Test und Mutanten, Vorab-Prüfung der Werte aller Optionen, Fehlercodes nicht mehr als Tatsache, Wegwerf-Probe); im Trockenlauf geprüft. Nichts wurde im Shop, bei Printful oder sonst wo geschrieben.**
 Der Schreibweg (`LIVE=1`) ist als Ganzes nur gegen eine Attrappe getestet, nie gegen den echten Shop. Die **Wegwerf-Probe** an einem einzelnen Wegwerf-Produkt (Abschnitt «Wegwerf-Probe») wurde am **28.10.2026 ausgeführt** und hat die vier Verhaltensannahmen der Einzelaufrufe bestätigt (`optionValues`/`hasVariants`, doppelter Wert, Löschen, `productVariantsBulkCreate` mit neuem Wert); nicht gemessen ist weiter `productSet` (Samsung) und das Verhalten am Tageslimit.
-**LIVE ist für vier der fünf Produkte gesperrt, bis der Besitzer entschieden hat** (Abschnitt «Blocker-Befunde»). Frei ist nur die neue Samsung-Hülle (bleibt auch dann DRAFT, siehe «Freischalten»).
+**Stand 28.10.2026 abends: alle fünf Produkte sind live geschrieben.** Samsung um 20:06 UTC als DRAFT (der Besitzer hat es danach aktiviert); Poster, T-Shirt, Hoodie und iPhone nach den Entscheiden des Besitzers («ja so vorgehen»), siehe Abschnitt «Umsetzung am 28.10.2026». Die Blocker-Befunde weiter unten bleiben als Begründung stehen; ein neuer Lauf auf einem erledigten Produkt wird laut Ledger übersprungen.
 
 ## Was das Werkzeug tut
 
@@ -14,11 +14,11 @@ Vorhandene Varianten bleiben unverändert (ID, SKU, Preis); sie bekommen nur den
 
 | Produkt | Material-Werte | neu | gesamt | LIVE |
 |---|---|---|---|---|
-| `poster-zum-selbstgestalten` | Poster matt (vorhanden) · Foto-Glanzpapier · Leinwand · Gerahmt · Schwarz / Weiss / Eiche | 14 | 18 | **gesperrt (1 Befund)** |
-| `unisex-hoodie-selbst-gestalten` | Baumwoll-Mix (vorhanden) · Premium-Baumwolle · Bio-Baumwolle | 11 | 19 | **gesperrt (3 Befunde)** |
-| `unisex-t-shirt-selbst-gestalten` | Ringgarn-Baumwolle (vorhanden) · Klassische Baumwolle · Bio-Baumwolle · Heavyweight-Baumwolle | 24 | 33 | **gesperrt (1 Befund)** |
-| `hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten` | Hartschale MagSafe (vorhanden) · Hartschale (601 matt) · Klare Hülle (181) | 32 | 48 | **gesperrt (2 Befunde)** |
-| `samsung-huelle-selbst-gestalten` (**neu, DRAFT**) | Hartschale matt · Hartschale glänzend · Klare Hülle · Slim-Hülle × 23 Galaxy-Modelle (3 Bilder, siehe unten) | 84 | 84 | frei |
+| `poster-zum-selbstgestalten` | Poster matt (vorhanden) · Foto-Glanzpapier · Leinwand · Gerahmt · Schwarz / Weiss / Eiche | 14 | 18 | **live 28.10.2026** (18 Varianten) |
+| `unisex-hoodie-selbst-gestalten` | Sweatshirt (Rundhals) (vorhanden; früher «Baumwoll-Mix») · Premium-Baumwolle · Bio-Baumwolle | 5 (ohne Premium-Baumwolle) | 13 | **live 28.10.2026** (13 Varianten) |
+| `unisex-t-shirt-selbst-gestalten` | Ringgarn-Baumwolle (vorhanden) · Klassische Baumwolle · Bio-Baumwolle · Heavyweight-Baumwolle | 16 (ohne Klassische Baumwolle) | 25 | **live 28.10.2026** (25 Varianten) |
+| `hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten` | Hartschale MagSafe (vorhanden) · Hartschale (601 matt) · Klare Hülle (181) | 32 | 48 | **live 28.10.2026** (48 Varianten) |
+| `samsung-huelle-selbst-gestalten` (**neu, DRAFT**) | Hartschale matt · Hartschale glänzend · Klare Hülle · Slim-Hülle × 23 Galaxy-Modelle (3 Bilder, siehe unten) | 84 | 84 | **live 28.10.2026** (als DRAFT angelegt, vom Besitzer aktiviert) |
 
 Dazu je Produkt ein Block **«Materialien im Vergleich»** in der Beschreibung, nur zwischen `<!-- lx-material-v1 -->` und `<!-- /lx-material-v1 -->` (idempotent).
 Jede Angabe trägt einen Beleg (Printful-Produkt + wörtliche Textstelle); der Test prüft, dass die Textstelle in `beschreibungen.json` steht und jede Zahl im Beleg vorkommt.
@@ -126,6 +126,23 @@ Das Werkzeug legt das Produkt als **DRAFT** an; ein DRAFT ist in keinem Verkaufs
 2. In den Verkaufskanälen veröffentlichen (mindestens Online Store und Google & YouTube; Merchant-Center prüft danach das Material-Metafeld).
 3. Sammlungsmitgliedschaft prüfen (handy-huellen, selbst-gestalten, sg-accessoires, sg-alle; `sort-handy-halterungen` fehlt mit Absicht: das ist die MagSafe-Sammlung der iPhone-Hülle).
 4. Das Tag `bild-ok` (Stempel der Bildprüfung) fehlt mit Absicht, bis die Bildprüfung für dieses Produkt gelaufen ist.
+
+## Umsetzung am 28.10.2026 (Besitzer: «ja so vorgehen» zu den fünf Empfehlungen)
+
+Reihenfolge und Beleg (alles GEMESSEN am 28.10.2026, Zeiten UTC laut Ledger `dropship/pod_auswahl_ledger.txt`; jedes Produkt einzeln, danach frisch gelesen und gleich dem Plan, Printful-Gegenprüfung 0 Abweichungen):
+
+| Zeit | Produkt | Schritt | Ergebnis |
+|---|---|---|---|
+| 21:18 | Poster | Material-Metafeld geleert (Sicherung `pod-sicherung/metafeld-material-2810.json`), dann `LIVE=1 ONLY=poster-zum-selbstgestalten`, kein `BEFUND_OK` nötig (der Befund `material-metafeld` verschwand von selbst) | 14 neue, insgesamt 18 Varianten, Hash `e7dc7e0e258178ee` |
+| 21:20 | T-Shirt | `OHNE='unisex-t-shirt-selbst-gestalten:Klassische Baumwolle'` (das Material gibt es schon als eigenes Produkt), Befund `sku-in-anderem-produkt` verschwand | 16 neue, insgesamt 25 Varianten, Hash `4d2da756dbdb80bb` |
+| 21:21 | Hoodie | Material-Feld geleert; vorhandenes Material in «Sweatshirt (Rundhals)» umbenannt (Spezifikation); `OHNE='unisex-hoodie-selbst-gestalten:Premium-Baumwolle'`; `BEFUND_OK='unisex-hoodie-selbst-gestalten:sku-anderes-produkt'` (SKUs bleiben, kein Preissprung) | 5 neue, insgesamt 13 Varianten, Hash `be8a1af83fa2f514` |
+| 21:25 | iPhone | Material-Feld geleert; Titel, SEO-Beschreibung und Text «entmagsafet» (`pod-sicherung/iphone-text-aenderung-2810.md`, alte Werte in `iphone-text-vor-entmagsafen-2810.json`); `BEFUND_OK='hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten:magsafe-irrefuehrend'` (die drei Fundstellen sind die auf «Hartschale MagSafe» begrenzten Sätze) | 32 neue, insgesamt 48 Varianten, Hash `21c47bb69a79c316` |
+
+**Zum Befund `magsafe-irrefuehrend`:** das Werkzeug meldet jedes Vorkommen von «MagSafe» im Titel und Haupttext, auch ein auf «Hartschale MagSafe» begrenztes. Er verschwindet darum **nicht** von selbst (wie weiter oben steht), sondern wird mit `BEFUND_OK` einzeln bestätigt, nachdem die Fundstellen im Plan gelesen sind. Verschwindet von selbst tut nur der Befund `material-metafeld` (Feld leer) und `sku-in-anderem-produkt` (mit `OHNE`).
+
+**Theme geprüft (Entscheid «Variantentitel ändern sich», nur lesen, 251 Dateien des Live-Themes «Horizon · LuxeStyle Premium»):** nur drei Stellen werten den Variantentitel aus, alle rein zur Anzeige (Leiste «In den Warenkorb» mit `current_variant.title`, Schnellbestell-Liste); `option1` wird nirgends gelesen; der Baustein «LUX-BILDWAHL» geht alle Optionen durch und nimmt die erste, bei der jeder Wert ein eigenes Variantenbild hat, er hängt nicht an der Position der Option.
+
+**Bewusst nicht geändert, offen für den Besitzer:** Titel «Unisex Hoodie – Selbst gestalten» (eines der beiden Materialien ist ein Rundhals-Sweatshirt, in der Auswahl ehrlich so benannt); der Punkt «Mattes oder glänzendes Finish» im iPhone-Text (es gibt nur matt und klar); die Nachbestellbarkeit der vorhandenen T-Shirt-Variante 5XL (`DENY`, war schon so). Rücknahme je Produkt: Sicherung in `dropship/pod-sicherung/<handle>.json`.
 
 ## Hinweise (sperren nicht, stehen in `nicht_angelegt.md`)
 

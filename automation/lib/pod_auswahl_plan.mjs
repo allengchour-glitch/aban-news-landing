@@ -155,7 +155,7 @@ export function umstellungsRechnung({ spec, bestandProdukt, ctx }) {
 
 /** Satz mit den drei Wegen des Besitzers für den Befund «sku-anderes-produkt» (Zahlen aus umstellungsRechnung). */
 export function umstellungsText(spec, handle, rechnung) {
-  const wege = [`(1) das vorhandene Material ehrlich benennen (z. B. «Sweatshirt (Rundhals)» statt «Baumwoll-Mix» und im Seitentext; die SKUs bleiben, kein Preissprung; Option und Text von Hand)`];
+  const wege = [`(1) das vorhandene Material ehrlich benennen (so steht es im Plan: «Sweatshirt (Rundhals)», statt des früheren «Baumwoll-Mix»; die SKUs bleiben, kein Preissprung; Seitentext und Titel von Hand)`];
   if (rechnung && rechnung.length) {
     const ek = (k) => { const w = rechnung.map((r) => r[k]).filter((x) => typeof x === 'number'); return w.length ? [Math.min(...w), Math.max(...w)] : null; };
     const r2 = (a) => (a ? (a[0] === a[1] ? a[0].toFixed(2) : `${a[0].toFixed(2)}–${a[1].toFixed(2)}`) : 'unbekannt');

@@ -1,0 +1,234 @@
+{
+ "gesichertAm": "2026-10-28T21:18:34.586Z",
+ "handle": "poster-zum-selbstgestalten",
+ "zustand": {
+  "id": "gid://shopify/Product/15427182330241",
+  "handle": "poster-zum-selbstgestalten",
+  "title": "Poster zum Selbstgestalten",
+  "status": "ACTIVE",
+  "productType": "Poster",
+  "vendor": "LuxeStyle",
+  "tags": [
+   "bild-ok",
+   "pod-poster",
+   "poster",
+   "printful_personalized_product",
+   "selbst-gestalten",
+   "sg-wohnen",
+   "sort-wandbilder",
+   "wunschdesign"
+  ],
+  "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7–14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer\" data-img-front=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster_2654c2bf-07c3-4ba7-b05b-c829eae2ed28.jpg?v=1783363699\" data-variant=\"55791753298305\" data-ratio=\"1.414\" data-ref=\"2400\"></div>\n<script src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541\" defer></script>\n<hr>\n<p>Dein eigenes Foto, Motiv oder Design als <strong>Premium-Kunstdruck</strong> – du gestaltest es direkt hier im Editor (Bild hochladen, Text &amp; Sticker hinzufügen, frei platzieren). Mattes Premium-Papier, satte Farben, on-demand in Europa gedruckt &amp; sorgfältig verpackt.</p><ul>\n<li>Lade dein Bild hoch &amp; gestalte es selbst</li>\n<li>Mehrere Grössen (30×40 bis 70×100 cm)</li>\n<li>Premium-Matt-Papier, randlos bedruckt</li>\n</ul><p>Tipp: für beste Druckqualität ein <strong>möglichst grosses/scharfes Bild</strong> hochladen. 🇨🇭 LuxeStyle</p>\n\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Bedruckt</li>\n<li>\n<strong>Grösse:</strong> 30×40 cm, 50×70 cm, 70×100 cm, A2 (42×59,4 cm)</li>\n</ul>\n</div><!--gdetails-->\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen — eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+  "seo": {
+   "title": "Poster zum Selbstgestalten | LuxeStyle CH",
+   "description": "Poster zum Selbstgestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  },
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/hg"
+  },
+  "options": [
+   {
+    "id": "gid://shopify/ProductOption/17854467768705",
+    "name": "Grösse",
+    "position": 1,
+    "values": [
+     "30×40 cm",
+     "50×70 cm",
+     "70×100 cm",
+     "A2 (42×59,4 cm)"
+    ],
+    "optionValues": [
+     {
+      "id": "gid://shopify/ProductOptionValue/11874558181761",
+      "name": "30×40 cm",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11874558214529",
+      "name": "50×70 cm",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11874558247297",
+      "name": "70×100 cm",
+      "hasVariants": true
+     },
+     {
+      "id": "gid://shopify/ProductOptionValue/11874558280065",
+      "name": "A2 (42×59,4 cm)",
+      "hasVariants": true
+     }
+    ]
+   }
+  ],
+  "variants": [
+   {
+    "id": "gid://shopify/ProductVariant/55791753298305",
+    "sku": "9000001_8948",
+    "price": "25.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "30×40 cm"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "30×40 cm"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753331073",
+    "sku": "9000001_8952",
+    "price": "32.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "50×70 cm"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "50×70 cm"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753363841",
+    "sku": "9000001_8954",
+    "price": "46.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "70×100 cm"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "70×100 cm"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753396609",
+    "sku": "9000001_19516",
+    "price": "28.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "taxable": true,
+    "selectedOptions": [
+     {
+      "name": "Grösse",
+      "value": "A2 (42×59,4 cm)"
+     }
+    ],
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true
+    },
+    "optionen": {
+     "Grösse": "A2 (42×59,4 cm)"
+    }
+   }
+  ],
+  "media": [
+   {
+    "id": "gid://shopify/MediaImage/69681923916161",
+    "alt": "Poster im Rahmen blanko zum Selbstgestalten",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster.jpg?v=1781356275"
+    }
+   }
+  ],
+  "metafields": [
+   {
+    "namespace": "judgeme",
+    "key": "badge",
+    "type": "string",
+    "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> No reviews </span> </div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "widget",
+    "type": "string",
+    "value": "<div></div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "review_widget_data",
+    "type": "json",
+    "value": "{\"number_of_reviews\":0,\"average_rating\":\"0.00\",\"number_of_questions\":0,\"product_name\":\"Poster zum Selbstgestalten\",\"product_external_id\":15427182330241,\"product_coupons_enabled\":true,\"image_url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster-blank.png?v=1781122025\",\"histogram\":[{\"rating\":5,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":4,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":3,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":2,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":1,\"frequency\":0,\"percentage\":0,\"extra_class\":null}],\"review_keywords\":null,\"product_medals\":[],\"custom_form_filters_and_averages\":null,\"photo_gallery\":null,\"review_summary_text\":\"Be the first to write a review\",\"ai_summary_text\":\"\",\"sort_key\":\"created_at\",\"multi_language_sorting_enabled\":false,\"metafield_updated_at\":\"2026-06-10T20:18:04Z\",\"reviews\":[],\"pagination\":{\"total_pages\":0,\"current_page\":1,\"per_page\":5}}"
+   },
+   {
+    "namespace": "custom",
+    "key": "lieferzeit",
+    "type": "json",
+    "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "condition",
+    "type": "single_line_text_field",
+    "value": "new"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "google_product_category",
+    "type": "single_line_text_field",
+    "value": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork"
+   },
+   {
+    "namespace": "mc-facebook",
+    "key": "google_product_category",
+    "type": "string",
+    "value": "536"
+   },
+   {
+    "namespace": "global",
+    "key": "description_tag",
+    "type": "string",
+    "value": "Poster zum Selbstgestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "custom_product",
+    "type": "boolean",
+    "value": "true"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "age_group",
+    "type": "single_line_text_field",
+    "value": "adult"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "gender",
+    "type": "single_line_text_field",
+    "value": "unisex"
+   },
+   {
+    "namespace": "global",
+    "key": "title_tag",
+    "type": "string",
+    "value": "Poster zum Selbstgestalten | LuxeStyle CH"
+   }
+  ]
+ }
+}

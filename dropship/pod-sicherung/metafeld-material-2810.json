@@ -1,0 +1,10 @@
+{
+  "grund": "Entscheid des Besitzers 28.10.2026 («ja so vorgehen», Empfehlung 3): das Produkt-Metafeld mm-google-shopping.material (EIN Wert je Produkt) wird vor der Material-Auswahl geleert, sonst nennen Merchant-Feed und «Spezifikationen» für neue Materialien den alten Wert. Rücknahme: metafieldsSet mit diesen Werten (namespace mm-google-shopping, key material, type single_line_text_field).",
+  "gelesen": "2026-10-28 ca. 21:45 UTC, Admin-API 2026-01/2026-10, frisch",
+  "produkte": [
+    { "handle": "poster-zum-selbstgestalten", "ownerId": "gid://shopify/Product/15427182330241", "metafieldId": "gid://shopify/Metafield/210755842146695", "wert": "Papier (matt)", "geleert": null },
+    { "handle": "unisex-hoodie-selbst-gestalten", "ownerId": "gid://shopify/Product/15422815699329", "metafieldId": "gid://shopify/Metafield/200373161623937", "wert": "Baumwolle, Polyester, Elastan", "geleert": null },
+    { "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten", "ownerId": "gid://shopify/Product/15422939988353", "metafieldId": "gid://shopify/Metafield/210755842113927", "wert": "Polycarbonat, Polyurethan (TPU)", "geleert": null },
+    { "handle": "unisex-t-shirt-selbst-gestalten", "ownerId": "gid://shopify/Product/15422811439489", "metafieldId": null, "wert": null, "geleert": "nicht nötig (leer)" }
+  ]
+}

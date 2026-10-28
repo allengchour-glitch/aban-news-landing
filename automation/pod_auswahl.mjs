@@ -2,7 +2,7 @@
 /* LuxeStyle — pod_auswahl.mjs
  * «Selbst gestalten»: MATERIAL (mit Preis) und HANDYMODELLE zur Auswahl (Besitzer 27.10.2026). Druckpartner PRINTFUL.
  *   • Poster:  Option «Material» (Poster matt · Foto-Glanzpapier · Leinwand · Gerahmt Schwarz/Weiss/Eiche) vor «Grösse»
- *   • Hoodie:  Baumwoll-Mix · Premium-Baumwolle · Bio-Baumwolle        • T-Shirt: Ringgarn · Klassisch · Bio · Heavyweight
+ *   • Hoodie:  Sweatshirt (Rundhals) · Premium-Baumwolle · Bio-Baumwolle        • T-Shirt: Ringgarn · Klassisch · Bio · Heavyweight
  *   • iPhone-Hülle: Hartschale MagSafe · Hartschale · Klare Hülle      • NEU (DRAFT): «Samsung-Hülle selbst gestalten» (Hartschale matt/glänzend · Klar · Slim)
  *   • je Produkt ein Block «Materialien im Vergleich» (nur BELEGTE Printful-Angaben) zwischen <!-- lx-material-v1 --> … <!-- /lx-material-v1 -->
  * Vorhandene Varianten werden NIE geändert (SKU, Preis, ID). Neue Varianten: SKU «<Präfix>_<Printful-Variantennummer>», Preis nach lib/pod_preise.mjs

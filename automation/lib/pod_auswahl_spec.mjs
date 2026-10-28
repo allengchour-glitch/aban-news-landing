@@ -94,25 +94,25 @@ export const SPEC = [
     handle: 'unisex-hoodie-selbst-gestalten', art: 'erweitern', skuPraefix: '1726823', zweiteOption: 'Grösse',
     // Der Besitzer nennt «Gildan 18500» (Hoodie, Printful 146). GEMESSEN am 27.10.2026 (GET /products/variant/5426): die vorhandenen SKUs 5426–5433 sind
     // Printful-Produkt 145 «Unisex Crew Neck Sweatshirt | Gildan 18000» (White), also ein Sweatshirt OHNE Kapuze. Das ist ein Befund (siehe Plan), keine Änderung.
-    bestand: { wert: 'Baumwoll-Mix', printfulProdukt: 146, farbe: 'White', erwartet: 'Hoodie Gildan 18500' },
+    bestand: { wert: 'Sweatshirt (Rundhals)', printfulProdukt: 146, farbe: 'White', erwartet: 'Hoodie Gildan 18500' },
     textKonflikte: [
       { code: 'text-ausserhalb-block', schwere: 'hinweis',
         stellen: [
-          { muster: 'Ein robustes und warmes Sweatshirt', gilt: ['Baumwoll-Mix'] },
-          { muster: '50 % Baumwolle, 50 % Polyester', gilt: ['Baumwoll-Mix'] },
-          { muster: 'Material: Baumwolle, Polyester, Elastan', gilt: ['Baumwoll-Mix'] },
+          { muster: 'Ein robustes und warmes Sweatshirt', gilt: ['Sweatshirt (Rundhals)'] },
+          { muster: '50 % Baumwolle, 50 % Polyester', gilt: ['Sweatshirt (Rundhals)'] },
+          { muster: 'Material: Baumwolle, Polyester, Elastan', gilt: ['Sweatshirt (Rundhals)'] },
         ],
-        problem: 'Der Haupttext beschreibt das Rundhals-Sweatshirt (Material «Baumwoll-Mix», Printful 145). Premium-Baumwolle (100 % Baumwolle aussen) und Bio-Baumwolle (85 % Bio-Baumwolle, 15 % Polyester) sind Kapuzenpullover mit anderer Zusammensetzung.',
+        problem: 'Der Haupttext beschreibt das Rundhals-Sweatshirt (Material «Sweatshirt (Rundhals)», Printful 145). Premium-Baumwolle (100 % Baumwolle aussen) und Bio-Baumwolle (85 % Bio-Baumwolle, 15 % Polyester) sind Kapuzenpullover mit anderer Zusammensetzung.',
         vorschlag: 'Text materialneutral fassen (Zusammensetzung nur im Block «Materialien im Vergleich» nennen), «Material» in den Produktdetails auf «je nach Auswahl» stellen.' },
     ],
     materialien: [
-      { wert: 'Baumwoll-Mix', bestand: true, printfulProdukt: 146 },
+      { wert: 'Sweatshirt (Rundhals)', bestand: true, printfulProdukt: 146 },
       { wert: 'Premium-Baumwolle', printfulProdukt: 380, zuordnung: { art: 'farbeGroesse', farbe: 'White' } },
       { wert: 'Bio-Baumwolle', printfulProdukt: 821, zuordnung: { art: 'farbeGroesse', farbe: 'White' } },
     ],
     vergleich: [
-      // Beleg für «Baumwoll-Mix» ist das Printful-Produkt, auf das die vorhandenen SKUs WIRKLICH zeigen (145), nicht das genannte (146).
-      { werte: ['Baumwoll-Mix'], fakten: [
+      // Beleg für «Sweatshirt (Rundhals)» ist das Printful-Produkt, auf das die vorhandenen SKUs WIRKLICH zeigen (145), nicht das genannte (146).
+      { werte: ['Sweatshirt (Rundhals)'], fakten: [
         F('50 % Baumwolle, 50 % Polyester', Z(145, '50% cotton, 50% polyester')),
         F('Rundhals-Sweatshirt (Crew Neck)', Z(145, 'Crew Neck Sweatshirt', 'title')),
         F('vorgeschrumpft', Z(145, 'Pre-shrunk')),
