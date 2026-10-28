@@ -9,7 +9,7 @@ Dieses Repo enthält mehrere Projekte. Das aktive Arbeitsgebiet ist der Shopify-
 
 ## Harte Regeln
 - **Nie Force-Push**, nie `git add -A` / `git add .` (Dateien einzeln nennen), nie `pkill -f` / `killall`.
-- **Trockenlauf vor `LIVE=1`**: neuere Werkzeuge laufen ohne `LIVE=1` im Trockenlauf; `seo-optimizer.mjs` und `cj_reviews_import.mjs` schreiben ohne `DRY_RUN=1`. Die Liste lesen (beide Seiten), nicht nur die Zahl.
+- **Trockenlauf vor `LIVE=1`**: neuere Werkzeuge laufen ohne `LIVE=1` im Trockenlauf; `seo-optimizer.mjs` schreibt ohne `DRY_RUN=1`; `cj_reviews_import.mjs` ist seit 28.10.2026 Trockenlauf-Vorgabe und schreibt nur mit `DRY_RUN=0` (ohne die Variable endet es mit Exit 0 und «TROCKENLAUF», ohne etwas zu senden). Die Liste lesen (beide Seiten), nicht nur die Zahl.
 - Keine Geheimnisse, keine Kundendaten in Dateien, Logs oder Berichten. Zugänge liegen in der Umgebung.
 - `dropship/_SOCIAL_STOPP` wird nie neu angelegt.
 - Nie Fake-Bewertungen, nie erfundene Zahlen. Jede Zahl trägt GEMESSEN, QUELLE, BEHAUPTUNG oder SETZUNG.
