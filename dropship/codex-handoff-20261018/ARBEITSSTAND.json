@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 2,
-  "updatedAt": "2026-10-28T23:09:29.000Z",
+  "revision": 3,
+  "updatedAt": "2026-10-28T23:34:44.479Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,9 +16,9 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-10-28",
+    "currentDayEvidenceDate": "2026-10-29",
     "currentDayEvidenceKind": "QUELLE",
-    "currentDayEvidence": "Tagesprotokoll belegt bereits erfolgte Kennzahl-/Flowabfragen; in diesem Installationslauf keine neuen solchen Abfragen."
+    "currentDayEvidence": "Heutiger Tagesblock enthält Produktzählung und gezielte Attributgegenproben. Marketing-Kennzahl-/Flow-/Umsatzabfragen für den 29.10. sind dort bislang nicht belegt; in diesem Weiterarbeitslauf keine solchen Abfragen."
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -54,13 +54,15 @@
       "state": "offen",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Historischer Vollabgleich vom 27.10.: 28’170 von 56’618 ohne belegte Materialquelle, 49,8 %. Aktuelle native Gegenprobe: 56’620 ACTIVE und acht von acht gespeicherten Materialwerten vorhanden. Claude: 4’538 Materialwrites = 1’387 neue Angaben + 3’151 Übersetzungen; Auswahlledger mit 4’111 geschriebenen Produkten. Heutiger Auswahl-Gesamtnenner und Massequote unbekannt.",
-      "nextAllowedStep": "Claudes aktuelle Übergabe, Kandidatenliste und Fortschrittsledger gezielt lesen; vorhandenen Prozess anhand stabiler Produkt-/Varianten-IDs abstimmen. Je Merkmal relevanten Nenner, belegte vollständige Angaben, offene Quellen und nicht anwendbare Fälle führen. Vorhandene Varianten und sichtbare Details berücksichtigen; keine identische Anreicherung parallel starten. Engen produktgetreuen Korrekturdiff für einen belegten Fall vorbereiten.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "GEMESSEN: sieben lokale Code-/Testpfade gemeinsam geprüft, 218 Prüfungen grün. Fortschritts-Nenner, Imitat-/Titanstahl-/manuelle Materialpfade und Plansicherung korrigiert. Drei gezielte aktuelle Produkte gelesen: zwei Auswahltext-Diffs mit 13 unveränderten Variantenbindungen; Schneestiefel-Materialfeld Baumwolle bei widersprüchlichen Textangaben. Keine Shopwrites; 49,8 % bleibt historische Restschätzung vom 27.10., keine heutige Vollmessung.",
+      "nextAllowedStep": "Claude kann das neue Reviewpaket gegen den dann aktuellen main prüfen. Vollständige Node22-CI und verbleibende Runner-Voraussetzungen vor Live-Nutzung klären. Unabhängig aktuelle CJ-/Lieferantenquelle für Schneestiefel CJYD2718405 und vollständige aktuelle Auswahlkandidatenliste abgleichen; Obermaterial/Futter/Sohle und Fusslänge je Grösse getrennt belegen. Keine parallele zweite Anreicherung.",
       "blockers": [
-        "Aktuelle vollständige Auswahlkandidatenliste nicht im Repo",
-        "Für viele Materialangaben fehlt verlässlicher Produktnachweis",
-        "Echte Mass-/Grössentabellenquote noch nicht katalogweit gemessen"
+        "Aktuelle vollständige Auswahlkandidatenliste und Anwendbarkeit je Attribut fehlen",
+        "CJ-Laufzeit-Zugänge im aktuellen Environment nicht gebunden; bestehende Repo-Helfer vorhanden",
+        "Schneestiefel: Materialquellen widersprüchlich, exaktes Lieferantendatenblatt und Fusslängentabelle offen",
+        "Voll-CI scheitert an unshare-Berechtigung; Node22 nicht ausgeführt",
+        "Runner: atomare Mutationsfehlerzählung, frischer Werteabgleich/compareDigest, Quellenalter, Einzelrücklesen und tatsächlicher Rücksetzbeleg benötigen weitere Prüfung"
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -73,11 +75,28 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-STAND-20261029.md",
           "gitBlobSha": "8da2dc358f6842b7f22224bd871d4fd2c15ba41d",
           "readAt": "2026-10-28T23:09:29.000Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-WEITERARBEIT-20261029.md",
+          "gitBlobSha": "0f7b9f348549dcde6353cd5529e8cab6f5822efc",
+          "readAt": "2026-10-28T23:34:44.479Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-GEGENPROBEN-20261029.json",
+          "gitBlobSha": "eaca782e4f87f898eb560e1fd38c045339e29d2b",
+          "readAt": "2026-10-28T23:34:44.479Z"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "claude_enrichment_codex_measurement_and_review",
-      "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln."
+      "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln.",
+      "reviewPacket": {
+        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r1.packet.json",
+        "revision": 1,
+        "sha256": "163aa4d0f7c4ca2f0f0625b674c810cd5bc54eb476fa284ef946e6a7065619b3",
+        "gitBlobSha": "d4e8b21e50246b55387cf870bd45a928370b0777",
+        "claudeReceipt": "unknown_requires_fresh_read"
+      }
     },
     {
       "id": "merchant-overlay-gray-15447560978817",
@@ -352,6 +371,12 @@
       "at": "2026-10-28T23:09:29.000Z",
       "actor": "codex",
       "action": "Produktangaben auf aktuellen ausdrücklichen Inhaberwunsch priorisiert; Material-Restschätzung und Grenzen bei Grösse/Farbe/Massen dokumentiert. Bestehende Aufgaben und Claudes laufende Arbeit erhalten."
+    },
+    {
+      "revision": 3,
+      "at": "2026-10-28T23:34:44.479Z",
+      "actor": "codex",
+      "action": "Produktangaben weiterbearbeitet: 218 lokale Prüfungen, zwei konkrete Auswahltext-Diffs und aktueller Materialkonflikt dokumentiert. Reviewpaket gespeichert; keine Produktwrites oder produktive Integration. Lokale Testnebenwirkung offengelegt, verbleibende Live-Voraussetzungen benannt."
     }
   ]
 }
