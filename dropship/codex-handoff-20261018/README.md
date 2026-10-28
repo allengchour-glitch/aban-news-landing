@@ -1,5 +1,17 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_ABENDPAKET_20261028
+
+[Abendpaket mit konsolidierter Tagestabelle, Storyboard und sechs Texten/UTMs](ABENDPAKET-20261028.md), [aktuelle Quellen-/Planbelege](ABEND-BELEGE-20261028.json), [gleicher Master mit neuem Kontinuitätsbogen und zwei Captionkorrekturen](MASTER-ABEND-20261028.json). Drei Anlagen bis Commit 805d1fcda3f2bc47490638255b0a7087215db3d5 gespeichert und bytegenau zurückgelesen. Claude führt; keine operative Code-/Shop-/Social-/Flowänderung durch Codex.
+
+GEMESSEN: Shop/alle sechs Metricool-Identitäten passend; Planung ab19:06:56CET:16 bestehende Posts/28PENDING (FB12/IG12/Pinterest4).15 gemeinsame UUIDs zum Morgen; vier fremde Halloween-Textänderungen mit gewechselten numerischen IDs bei unveränderten UUIDs/Terminen/Medien/Flags. Alte/neue IDs in den Belegen erhalten. Ein zusätzlicher Eintrag liegt erst im erweiterten Abendfenster; ein früherer17:30-Termin davor, Publikation unbekannt. Keine exakten Doppel, keine eigene Publikation.
+
+GEMESSEN: Projektor/Diffuser weiterhin ACTIVE/kaufbar CHF34.90/44.90, tracked=false/CONTINUE; je13 Vergleichsfelder unverändert, Tags frisch geprüft, auswahl-offen bleibt. MAIN212656488839 inzwischen bearbeitet, konkrete Headerbytes aber weiterhin SHA5f3da62675c1b6407c1bfd541cd45cabc021be4282beb89c98fa1c8842c1bcdf. Schema40.49/40.5 widerspricht öffentlich50; bestehender Zwei-Werte-Diff unverändert/nicht angewendet. Klaviyo-Konto/Vorlagenbindung/HTML ebenfalls bytegleich, gleicher einzelner Service-Diff. Morgenkennzahlen und Flowreport einmalig wiederverwendet, keine zusätzlichen Reports oder Umsatz-/Syncbehauptungen; CHF/USD getrennt.
+
+Neuer Entwurfsfortschritt: IG/TikTok nennen neutrale Produktsuche statt unbelegtem Projektor-Biolink. QUELLE aktueller genehmigter Bioauftrag zeigt auf Kostüme, Umsetzung unbekannt. Kostüm-Landeseite HTTP200/Canonical, exakter Projektor in begrenzter Suchvorschau gefunden; kein Indexierungs-/Profilnachweis. Vier Schnitt-Abnahmeanforderungen für Frames60/228/372/420 ergänzen denselben Master, keine Filmabnahme. Sechs UTMs/masterId/vier übrige Captions erhalten. Film-/Original-/Ausführungs-/Motiv-/Strom-/CH-Stecker-/Rechte-/Qualitäts-/Ledger-/Bio-/Boardgates offen; YouTube allgemein bereits geklärt. Keine neue professionelle Master-MP4 oder Renderaktion. CJ-Helfer vorhanden, lokale Credential-Präsenzwerte false; kein Schluss über Claude-/Actions-Zugänge.
+
+Morgen-Merchantpatch bleibt nur Reviewmaterial: beide main-Quell-SHAs frisch unverändert, keine neue Test-/Integration-/Ausführungsbehauptung. Fremde neue Merchant-/Quotabefunde nicht aus grossen neuen Scans bestätigt. Bereits genehmigte DNS-/Footeraufträge nicht erneut genehmigen lassen, hier kein neuer bestätigter Schreibzugang/keine Umsetzung. CHF50/45, Kundendomäne und Zeitplan erhalten.
+
 ## LUXESTYLE_CLAUDE_MASTER_TAGESPAKET_20261028
 
 Der Inhaber hat Claude als federführend bestimmt. Codex liefert geprüfte Zuarbeit über diese Übergabe; keine direkte Verbindung zu einer laufenden Claude-Session behauptet. Aktuelles main-CLAUDE.md/SHARED-MEMORY zuerst gelesen, fremde Shop-/Merchantarbeiten nicht erneut ausgeführt oder als eigene ausgegeben.
