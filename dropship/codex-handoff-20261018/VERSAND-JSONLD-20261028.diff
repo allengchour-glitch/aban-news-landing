@@ -1,0 +1,20 @@
+--- ShippingService/current-212656488839
++++ ShippingService/proposal-CHF50
+@@ -14,7 +14,7 @@
+             "@type": "MonetaryAmount",
+             "currency": "CHF",
+             "minValue": 0,
+-            "maxValue": 40.49
++            "maxValue": 49.99
+           },
+           "shippingRate": {
+             "@type": "MonetaryAmount",
+@@ -31,7 +31,7 @@
+           "orderValue": {
+             "@type": "MonetaryAmount",
+             "currency": "CHF",
+-            "minValue": 40.5
++            "minValue": 50
+           },
+           "shippingRate": {
+             "@type": "MonetaryAmount",
