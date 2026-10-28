@@ -20,11 +20,12 @@
  * Anführungszeichen, `echo "…" > datei` mit Geheimnis), sieht eine Zeichenkettenprüfung nicht. Eine Leitplanke
  * ist eine Gedächtnisstütze.
  */
-import { umgebungsAnteile } from './regeln.mjs';
+import { ohneText, umgebungsAnteile } from './regeln.mjs';
 import { liesJson } from './hook_io.mjs';
 
 // ---------------------------------------------------------------- Schlüsselwörter der Formen
-const BEFEHL = new Set(['command', 'cmd', 'script', 'argv', 'command_line', 'commandline', 'shell_command']);
+// 'chars': Text, den ein Werkzeug in eine laufende Shell tippt (write_stdin); Name aus der Erinnerung an die Codex-Quellen, UNBESTÄTIGT.
+const BEFEHL = new Set(['command', 'cmd', 'script', 'argv', 'command_line', 'commandline', 'shell_command', 'chars']);
 const PFAD = new Set(['file_path', 'filepath', 'path', 'file', 'filename', 'file_name', 'target_file', 'target_path', 'new_path', 'output_path', 'destination', 'dest', 'target']);
 const INHALT = new Set(['content', 'contents', 'file_text', 'file_content', 'new_string', 'new_str', 'new_text', 'new_content', 'text', 'replacement', 'insert_text']);
 const ALT = new Set(['old_string', 'old_str', 'old_text', 'old_content']);
@@ -33,8 +34,9 @@ const EINGABE = new Set(['input', 'code', 'source', 'js', 'javascript', 'patch',
 const MARKER_PATCH = /^\*\*\* Begin Patch[ \t]*$/m;
 const hatPatch = s => MARKER_PATCH.test(s);
 const istReinerPatch = s => /^\s*\*\*\* Begin Patch[ \t]*(?:\r?\n|$)/.test(s);
-const JS_FORM = /\b(?:tools|codex)\s*\.\s*[A-Za-z_$][\w$]*\s*\(|\bexec_command\s*\(|\bapply_patch\s*\(|\bawait\s+[\w$.]+\s*\(|\b(?:spawn|spawnSync|execSync|execFile|execFileSync|writeFileSync|writeFile|appendFile|appendFileSync)\s*\(/;
-const siehtAusWieJs = s => JS_FORM.test(s);
+const JS_FORM = /\b(?:tools|codex)\s*(?:\.\s*[A-Za-z_$][\w$]*\s*\(|\[)|\bexec_command\s*\(|\bapply_patch\s*\(|\bawait\s+[\w$.]+\s*\(|\b(?:spawn|spawnSync|execSync|execFile|execFileSync|writeFileSync|writeFile|appendFile|appendFileSync)\s*\(/;
+// Geprüft wird der Text OHNE Zitate: `grep "await foo(" src` ist ein Shell-Befehl, kein JavaScript.
+const siehtAusWieJs = s => JS_FORM.test(ohneText(s));
 
 // ---------------------------------------------------------------- Argumentliste → Befehlszeile
 function zitiere(a) {
@@ -383,7 +385,7 @@ function zeichenkette(s, art, g, tiefe) {
   if (hatPatch(s) && /\bapply_patch\b/.test(s)) patch(s, g);
 }
 
-function geh(wert, schluessel, tiefe, g) {
+function geh(wert, schluessel, tiefe, g, elternPfad) {
   if (tiefe > 6) return;
   const art = BEFEHL.has(schluessel) ? 'befehl' : EINGABE.has(schluessel) ? 'eingabe' : schluessel === '' ? 'wurzel' : 'sonst';
   if (typeof wert === 'string') { zeichenkette(wert, art, g, tiefe); return; }
@@ -395,7 +397,7 @@ function geh(wert, schluessel, tiefe, g) {
       for (const x of wert) if (typeof x === 'string' && hatPatch(x)) patch(x, g);
       return;
     }
-    for (const x of wert) geh(x, schluessel, tiefe + 1, g);
+    for (const x of wert) geh(x, schluessel, tiefe + 1, g, elternPfad);
     return;
   }
   if (!wert || typeof wert !== 'object') return;
@@ -403,20 +405,22 @@ function geh(wert, schluessel, tiefe, g) {
   // Ein Objekt: Pfad + Inhalt gehören zusammen (eine Datei); `command` + `args` ist ein Befehl mit Argumenten.
   const mitArgs = typeof wert.command === 'string' && Array.isArray(wert.args) && wert.args.length > 0 && wert.args.every(skalar);
   const inhalt = [];
-  let pfad;
+  // Der Pfad kann ausserhalb stehen (`{ file_path, edits: [{ old_string, new_string }] }`): er gilt dann für die inneren Objekte.
+  const eigenerPfad = Object.entries(wert).find(([k, v]) => PFAD.has(k.toLowerCase()) && typeof v === 'string')?.[1];
+  const pfad = eigenerPfad ?? elternPfad;
   for (const [k0, v] of Object.entries(wert)) {
     const k = k0.toLowerCase();
     if (ALT.has(k)) continue;
     if (INHALT.has(k)) {
       if (typeof v === 'string') inhalt.push({ text: v, umfeld: '' });
       else if (Array.isArray(v) && v.length > 0 && v.every(x => typeof x === 'string')) inhalt.push({ text: v.join('\n'), umfeld: '' });
-      else geh(v, k, tiefe + 1, g);
+      else geh(v, k, tiefe + 1, g, pfad);
       continue;
     }
-    if (PFAD.has(k) && typeof v === 'string') { if (pfad === undefined) pfad = v; continue; }
+    if (PFAD.has(k) && typeof v === 'string') continue;
     if (k === 'args' && mitArgs) continue;
     if (k === 'command' && mitArgs) { g.formen.add('befehl-liste'); befehlsText(befehlAusListe([v, ...wert.args]), g); continue; }
-    geh(v, k, tiefe + 1, g);
+    geh(v, k, tiefe + 1, g, pfad);
   }
   if (inhalt.length > 0) {
     g.formen.add(pfad === undefined ? 'text' : 'datei');

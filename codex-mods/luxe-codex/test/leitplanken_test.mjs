@@ -250,9 +250,14 @@ const FORMEN = [
   ['Inhalt ohne Pfad', { text: 'Hallo', channel: 'c' }, { p: [], t: ['Hallo'], bekannt: true }],
   ['MCP create_or_update_file', { path: 'a.mjs', content: 'x', message: 'm', branch: 'b' }, { p: ['a.mjs'], t: ['x'] }],
   ['MCP push_files (Liste von Dateien)', { files: [{ path: 'a.mjs', content: 'x' }, { path: 'b.mjs', content: 'y' }] }, { p: ['a.mjs', 'b.mjs'], t: ['x', 'y'] }],
+  ['Mehrfach-Edit: Pfad aussen, Texte innen', { file_path: '/r/a.txt', edits: [{ old_string: 'A1', new_string: 'N1' }, { old_string: 'A2', new_string: 'N2' }] }, { p: ['/r/a.txt', '/r/a.txt'], t: ['N1', 'N2'] }],
+  ['Shell-Befehl, der »await foo(« nur in Zitaten nennt, ist kein JavaScript', { cmd: 'grep -rn "await foo(" src; git push --force' }, { b: ['grep -rn "await foo(" src; git push --force'], formen: ['befehl'] }],
   ['Inhalt als Zeilenliste', { path: 'a.txt', content: ['eins', 'zwei'] }, { p: ['a.txt'], t: ['eins\nzwei'] }],
   ['leerer Inhalt zählt als Schreiben', { file_path: 'dropship/_SOCIAL_STOPP', content: '' }, { p: ['dropship/_SOCIAL_STOPP'], t: [''] }],
   ['JavaScript als ganze Eingabe (exec)', 'const r = await tools.exec_command({ cmd: "git push --force origin x", workdir: "/r" });\ntext(r.output);', { b: ['git push --force origin x'], bekannt: true, formen: ['js'] }],
+  ['JavaScript mit tools["exec_command"]', 'await tools["exec_command"]({ cmd: "pkill x" })', { b: ['pkill x'], formen: ['js'] }],
+  ['Text, der in eine laufende Shell getippt wird (chars)', { session_id: 12, chars: 'git push --force\n' }, { b: ['git push --force\n'], bekannt: true }],
+  ['PowerShell mit NoProfile als Liste', { command: ['powershell.exe', '-NoProfile', '-Command', 'git push --force'] }, { b: ["powershell.exe -NoProfile -Command 'git push --force'", 'git push --force'] }],
   ['JavaScript im Feld code', { code: 'await tools.exec_command({ cmd: "pkill x" })' }, { b: ['pkill x'] }],
   ['JavaScript im Feld input', { input: 'await tools.exec_command({ cmd: "pkill x" })' }, { b: ['pkill x'] }],
   ['JavaScript: bash -lc im Literal wird ausgepackt', 'await tools.exec_command({ cmd: "bash -lc \'git push -f\'" })', { b: ["bash -lc 'git push -f'", 'git push -f'] }],
@@ -304,6 +309,10 @@ await verboten('Force-Push in JavaScript (Feld code)', 'exec', { code: JS_FORCE 
 await verboten('Force-Push in JavaScript (Feld input)', 'exec', { input: JS_FORCE }, 'Force-Push');
 await verboten('Force-Push unter git -C', 'unbekannter_name', { cmd: 'git -C /r push --force' }, 'Force-Push');
 await verboten('Force-Push in verschachteltem bash -c', 'exec_command', { cmd: 'sudo bash -lc "git push -f"' }, 'Force-Push');
+await verboten('Force-Push in eine laufende Shell getippt (chars)', 'write_stdin', { session_id: 12, chars: 'git push --force\n' }, 'Force-Push');
+await verboten('Force-Push über PowerShell-Liste', 'shell', { command: ['powershell.exe', '-NoProfile', '-Command', 'git push --force'] }, 'Force-Push');
+await verboten('Mehrfach-Edit auf _SOCIAL_STOPP (Pfad aussen)', 'MultiEdit', { file_path: 'dropship/_SOCIAL_STOPP', edits: [{ old_string: 'a', new_string: 'b' }] }, '_SOCIAL_STOPP');
+await verboten('Shell-Befehl mit »await foo(« im Zitat und Force-Push danach', 'exec_command', { cmd: 'grep -rn "await foo(" src; git push --force' }, 'Force-Push');
 await verboten('pkill', 'exec_command', { cmd: 'pkill -f laufen.py' }, 'pkill/killall');
 await verboten('killall als Liste', 'shell', { command: ['killall', 'node'] }, 'pkill/killall');
 await verboten('pkill in JavaScript', 'exec', 'await tools.exec_command({ cmd: `sleep 1; pkill node` });', 'pkill/killall');

@@ -39,7 +39,7 @@ export function ohneTextAusserPfaden(befehl) {
 }
 
 // Die beiden Arten von Optionen schliessen sich aus (`-C`/`-c` MIT Wert, sonst jede Option): sonst wächst die Suche bei `git -C -C -C …` exponentiell.
-const GIT = String.raw`\bgit\s+(?:(?:-[Cc]\s+\S+|-(?![Cc](?:\s|$))\S+)\s+)*`;
+const GIT = String.raw`git\s+(?:(?:-[Cc]\s+\S+|-(?![Cc](?:\s|$))\S+)\s+)*`;
 const FORCE = new RegExp(String.raw`${GIT}push\b[^\n;&|]*?(?:\s--force(?:-with-lease|-if-includes)?\b|\s-f\b|\s\+[^\s:])`);
 const SELBSTMORD = /(?:^|\s)(?:pkill|killall)\b/;
 /** Wer nur liest, sucht oder ausgibt, beendet nichts: `rg pkill`, `ps aux | grep killall`, `echo pkill`. */
