@@ -54,7 +54,9 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # 8 statt 5 Minuten (28.10.2026): Nachspielung mit bash automation/ci_simulation.sh = 207 s (vorher 186 s; die Mutationsprobe wuchs von 173 auf 197 Mutanten, die Schreibweg-Tests um 37 Pruefungen).
+    # Ohne checkout/setup-node/setup-python, die in der Nachspielung fehlen, blieben von 300 s nur 93 s (31 %) Luft. Das Limit schuetzt vor haengenden Laeufen, nicht vor langsamen Tests.
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
