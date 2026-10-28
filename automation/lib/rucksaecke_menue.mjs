@@ -118,11 +118,13 @@ export function rucksackMenue(baum, gids, titel = {}) {
   return { baum: b, log, fehlend: alleHandles().filter(h => !gids[h]) };
 }
 
-/** Hängt Einträge an jeder Stelle des Menüs um (UMHAENGEN): Ziel wird die GID des neuen Handles, die Adresse entfällt, Titel und Platz bleiben. Ändert `b` an Ort und Stelle. */
+/** Hängt Einträge an jeder Stelle des Menüs um (UMHAENGEN): Ziel wird die GID des neuen Handles, die Adresse entfällt, Titel und Platz bleiben. Ändert `b` an Ort und Stelle.
+ *  Nur ein reiner COLLECTION-Eintrag ohne Tags wird umgehängt: ein HTTP-Link oder ein Filter-Link auf dieselbe Sammlung würde sonst ein Ziel ohne Adresse bzw. den alten Filter behalten. */
 export function umhaengenAn(b, gids, log = []) {
   (function lauf(liste, pfad) { for (const i of liste) {
     const h = handleVon(i), neuH = UMHAENGEN[h];
-    if (neuH && gids[neuH]) { i.resourceId = gids[neuH]; delete i.url; log.push(`umgehängt ${[...pfad, i.title].join(' > ')}: ${h} -> ${neuH}`); }
+    if (neuH && (i.type !== 'COLLECTION' || (i.tags || []).length)) log.push(`bleibt    ${[...pfad, i.title].join(' > ')} auf ${h}: Typ ${i.type}${(i.tags || []).length ? ` mit Tags ${i.tags.join(', ')}` : ''} wird nicht umgehängt`);
+    else if (neuH && gids[neuH]) { i.resourceId = gids[neuH]; delete i.url; log.push(`umgehängt ${[...pfad, i.title].join(' > ')}: ${h} -> ${neuH}`); }
     else if (neuH) log.push(`fehlt     ${neuH}: Eintrag ${[...pfad, i.title].join(' > ')} bleibt auf ${h}`);
     lauf(i.items || [], [...pfad, i.title]);
   } })(b, []);
