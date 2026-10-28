@@ -20,7 +20,7 @@ export const MARKER = 'luxe-geheim-ok';
 export const HINWEIS = 'Behauptung der Modellfamilie: erst am echten Code nachstellen';
 export const FELDER = Object.freeze(['titel', 'schwere', 'datei', 'zeile', 'fehlerfall', 'beleg', 'unklar']);
 export const SCHWEREN = Object.freeze(['wichtig', 'klein']);
-export const VORGABE = Object.freeze({ modell: 'gpt-6-astra', aufwand: 'high', zeitlimitMinuten: 20 });
+export const VORGABE = Object.freeze({ modell: 'gpt-6.1-sol', aufwand: 'medium', zeitlimitMinuten: 20 });
 
 /** Abbruch mit Exit-Code und Grund; der Läufer macht daraus eine Meldung. 2 = Eingabe/Einstellung, 3 = Geheimnis. */
 export class Abbruch extends Error {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Zweitmeinung von Codex (GPT-6 Astra über den ChatGPT-Pro-Login) als Gegenleser aus anderer Modellfamilie.
+ * Zweitmeinung von Codex (GPT-6.1 Sol über den ChatGPT-Login des Besitzers; NICHT Astra: Besitzer-Vorgabe 28.10.2026, wegen des Token-Kontingents) als Gegenleser aus anderer Modellfamilie.
  *
  * Trockenlauf ist die Vorgabe: zeigt Dateiliste, Grössen, Suchergebnis, Aufruf und Anweisung, startet Codex nicht.
  * Mit LIVE=1 läuft Codex: in einem NEUEN leeren Ordner (nur die genannten Dateien), mit leerer Umgebung
@@ -19,8 +19,8 @@
  *   LIVE=1                           Codex wirklich starten (alles andere = Trockenlauf)
  *   CODEX_BIN                        Pfad zum codex-Programm (Pflicht bei LIVE, kein Standardwert)
  *   CODEX_HOME_ZWEITMEINUNG          Ordner mit dem Codex-Login (Pflicht bei LIVE, kein Standardwert)
- *   ZWEITMEINUNG_MODELL              Vorgabe gpt-6-astra
- *   ZWEITMEINUNG_AUFWAND             Vorgabe high
+ *   ZWEITMEINUNG_MODELL              Vorgabe gpt-6.1-sol
+ *   ZWEITMEINUNG_AUFWAND             Vorgabe medium
  *   ZWEITMEINUNG_ZEITLIMIT_MINUTEN   Vorgabe 20
  *   ZWEITMEINUNG_AUSGABE_ORDNER      Vorgabe: Temp-Ordner des Systems; nie im Repo
  *   ZWEITMEINUNG_AUFTRAG / --auftrag Text für Codex (Vorgabe: Zweitmeinung, Geldwirkung zuerst)

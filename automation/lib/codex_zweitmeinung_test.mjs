@@ -371,15 +371,15 @@ ist('Argumente: --auftrag=…, unbekannte Option wird gemeldet', [L.liesArgument
 ist('Dateiliste: Argumente gehen vor DATEIEN, Leere und Doppelte fallen weg', [L.leseDateiliste(['a', 'b'], { DATEIEN: 'x' }), L.leseDateiliste([], { DATEIEN: ' a , b,,a ,c' })], [['a', 'b'], ['a', 'b', 'c']]);
 {
   const k = L.liesKonfiguration({});
-  ist('Einstellungen: Vorgaben gpt-6-astra, high, 20 Minuten, kein LIVE, keine Programme', [k.modell, k.aufwand, k.minuten, k.zeitlimitMs, k.live, k.bin, k.codexHome], ['gpt-6-astra', 'high', 20, 1_200_000, false, '', '']);
+  ist('Einstellungen: Vorgaben gpt-6.1-sol, medium, 20 Minuten, kein LIVE, keine Programme', [k.modell, k.aufwand, k.minuten, k.zeitlimitMs, k.live, k.bin, k.codexHome], ['gpt-6.1-sol', 'medium', 20, 1_200_000, false, '', '']);
   ist('LIVE gilt nur bei genau 1', ['1', '0', 'true', 'ja', ''].map(v => L.liesKonfiguration({ LIVE: v }).live), [true, false, false, false, false]);
   const fehl = env => { try { L.liesKonfiguration(env); return 'ok'; } catch (e) { return e.exit; } };
   ist('Einstellungen: ungültiges Modell (führender Strich), Aufwand, Zeitlimit und zu langer Auftrag → Exit 2', [fehl({ ZWEITMEINUNG_MODELL: '--dangerously-bypass' }), fehl({ ZWEITMEINUNG_AUFWAND: 'high -s x' }), fehl({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: '0' }), fehl({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: '181' }), fehl({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: 'abc' }), fehl({ ZWEITMEINUNG_AUFTRAG: 'x'.repeat(4001) })], [2, 2, 2, 2, 2, 2]);
   ist('Einstellungen: Zeitlimit 0.5 Minuten = 30 000 ms', L.liesKonfiguration({ ZWEITMEINUNG_ZEITLIMIT_MINUTEN: '0.5' }).zeitlimitMs, 30_000);
 }
 {
-  const a = L.baueArgv({ modell: 'gpt-6-astra', aufwand: 'high', sandkasten: '/tmp/s' });
-  ist('Aufruf: genau die vorgegebene Argumentliste, Anweisung über stdin («-»)', a, ['exec', '-m', 'gpt-6-astra', '-c', 'model_reasoning_effort=high', '-s', 'read-only', '--skip-git-repo-check', '-C', '/tmp/s', '-']);
+  const a = L.baueArgv({ modell: 'gpt-6.1-sol', aufwand: 'medium', sandkasten: '/tmp/s' });
+  ist('Aufruf: genau die vorgegebene Argumentliste, Anweisung über stdin («-»)', a, ['exec', '-m', 'gpt-6.1-sol', '-c', 'model_reasoning_effort=medium', '-s', 'read-only', '--skip-git-repo-check', '-C', '/tmp/s', '-']);
   ist('Aufruf: schreibgeschützt ist fest, nie danger-full-access oder bypass', [a.includes('read-only'), a.some(x => /danger|bypass|full-auto|workspace-write/.test(x))], [true, false]);
   const wirft = f => { try { f(); return 'ok'; } catch (e) { return e.exit; } };
   ist('Aufruf: Modell mit Strich vorn, Aufwand mit Leerzeichen, relativer Sandkasten werden abgelehnt', [wirft(() => L.baueArgv({ modell: '-x', aufwand: 'high', sandkasten: '/s' })), wirft(() => L.baueArgv({ modell: 'm', aufwand: 'high x', sandkasten: '/s' })), wirft(() => L.baueArgv({ modell: 'm', aufwand: 'high', sandkasten: 'rel' }))], [2, 2, 2]);
@@ -472,7 +472,7 @@ const zahl = r => (r.zaehlung ? [r.zaehlung.gelesen, r.zaehlung.ausgewertet, r.z
   ist('Zählung: stimmt der Rohtext überein, keine Abweichung', lesen(JSON.stringify([FUND(), FUND()])).zaehlung.abweichung, false);
   ist('jeder Fund trägt den Hinweis «Behauptung der Modellfamilie»', lesen(JSON.stringify([FUND(), 'x', FUND({ beleg: '' })])).funde.map(f => f.hinweis === L.HINWEIS), [true, true, true]);
   ist('Hinweis nennt das Nachstellen am echten Code', L.HINWEIS, 'Behauptung der Modellfamilie: erst am echten Code nachstellen');
-  const b = L.baueBericht({ ...lesen(JSON.stringify([FUND({ titel: 'klein1', schwere: 'klein' }), FUND({ titel: 'wichtig1' }), FUND({ titel: 'halbfund', beleg: '' })])), modell: 'gpt-6-astra', aufwand: 'high', dateien: DATEIEN, ausgabeDatei: '/tmp/x.txt' });
+  const b = L.baueBericht({ ...lesen(JSON.stringify([FUND({ titel: 'klein1', schwere: 'klein' }), FUND({ titel: 'wichtig1' }), FUND({ titel: 'halbfund', beleg: '' })])), modell: 'gpt-6.1-sol', aufwand: 'medium', dateien: DATEIEN, ausgabeDatei: '/tmp/x.txt' });
   ist('Bericht: Zahlen im Kopf, Reihenfolge wichtig → klein → unvollständig', [b.includes('3 gelesen = 2 ausgewertet + 1 unvollständig'), b.indexOf('wichtig1') < b.indexOf('klein1'), b.indexOf('klein1') < b.indexOf('halbfund'), b.includes('/tmp/x.txt')], [true, true, true, true]);
   ist('Bericht: jeder Fund hat den Hinweis (3 Funde + Kopf)', b.split(L.HINWEIS).length - 1, 4);
 }
@@ -613,7 +613,7 @@ const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsW
   ist('Lauf ok: Arbeitsverzeichnis ist der Sandkasten, ein neuer Ordner im Temp mit Rechten 0700', [a.cwd.startsWith(join(TEMP, 'zweitmeinung-sandkasten-')), a.cwdMode.toString(8)], [true, '700']);
   ist('Lauf ok: im Sandkasten liegen genau die zwei Dateien (0600), sonst nichts', a.baum, ['a.mjs:600', 'sub/b.mjs:600']);
   ist('Lauf ok: Repo und seine übrigen Dateien sind im Sandkasten nicht zu sehen', a.sichtbar, [true, false, false, false, false, false]);
-  ist('Lauf ok: genau die vorgegebene Argumentliste, -C zeigt auf den Sandkasten', a.argv, ['exec', '-m', 'gpt-6-astra', '-c', 'model_reasoning_effort=high', '-s', 'read-only', '--skip-git-repo-check', '-C', a.cwd, '-']);
+  ist('Lauf ok: genau die vorgegebene Argumentliste, -C zeigt auf den Sandkasten', a.argv, ['exec', '-m', 'gpt-6.1-sol', '-c', 'model_reasoning_effort=medium', '-s', 'read-only', '--skip-git-repo-check', '-C', a.cwd, '-']);
   ist('Lauf ok: kein Schlüssel im Befehl, in der Umgebung oder in der Anweisung', [sicherLeer(a, [HEX32, 'A1b2C3d4E5f6']), a.argv.some(x => x.includes(CODEXHOME))], [true, false]);
   ist('Lauf ok: die Anweisung auf stdin hat Rubrik, Dateiliste mit Grössen, keine Dateiinhalte', [a.stdin.includes('Rubrik: Zweitmeinung als Gegenleser'), a.stdin.includes(`- a.mjs (${A_BYTES} Bytes, 2 Zeilen)`), a.stdin.includes('export const preis'), a.stdin.trimEnd().endsWith('ENDE.')], [true, true, false, true]);
   ist('Lauf ok: nach dem Lauf sind Sandkasten und Hilfs-HOME gelöscht', [existsSync(a.cwd), existsSync(a.home)], [false, false]);
@@ -698,7 +698,7 @@ const lies = (ordner, ende) => { const n = dateienIn(ordner).filter(x => x.endsW
   setzeFall('ok');
   const vorher = dateienIn(AUS);
   const r = await fahre(['a.mjs', 'sub/b.mjs'], UMG({ LIVE: undefined }));
-  ist('Trockenlauf ist die Vorgabe: Exit 0, zeigt Dateien, Grössen, Aufruf, Umgebung', [r.code, r.aus.includes('TROCKENLAUF'), r.aus.includes(`a.mjs  ${A_BYTES} Bytes  2 Zeilen`), r.aus.includes('exec -m gpt-6-astra'), r.aus.includes('genau PATH, HOME')], [0, true, true, true, true]);
+  ist('Trockenlauf ist die Vorgabe: Exit 0, zeigt Dateien, Grössen, Aufruf, Umgebung', [r.code, r.aus.includes('TROCKENLAUF'), r.aus.includes(`a.mjs  ${A_BYTES} Bytes  2 Zeilen`), r.aus.includes('exec -m gpt-6.1-sol'), r.aus.includes('genau PATH, HOME')], [0, true, true, true, true]);
   ist('Trockenlauf: Codex wurde nicht gestartet, nichts geschrieben, kein Sandkasten', [aufruf(), dateienIn(AUS), sandkaesten()], [null, vorher, SK0]);
   ist('Trockenlauf: auch LIVE=0 und LIVE=true bleiben Trockenlauf', [(await fahre(['a.mjs'], UMG({ LIVE: '0' }))).aus.includes('TROCKENLAUF'), (await fahre(['a.mjs'], UMG({ LIVE: 'true' }))).aus.includes('TROCKENLAUF'), aufruf()], [true, true, null]);
   const ohne = await fahre(['a.mjs'], { PATH: process.env.PATH });

@@ -68,7 +68,7 @@ export const gueltig = (wert, name) => gegenSchema(wert, schema(name));
 
 /** Eine Eingabe, wie Codex sie liefert; `rest` überschreibt. */
 export function eingabe(ereignis, rest = {}) {
-  const basis = { cwd: '/tmp/luxe', hook_event_name: ereignis, model: 'gpt-6-astra', permission_mode: 'default', session_id: 's-1', transcript_path: null };
+  const basis = { cwd: '/tmp/luxe', hook_event_name: ereignis, model: 'gpt-6.1-sol', permission_mode: 'default', session_id: 's-1', transcript_path: null };
   const je = {
     PreToolUse: { tool_name: 'exec_command', tool_input: {}, tool_use_id: 't-1', turn_id: 'u-1' },
     PostToolUse: { tool_name: 'exec_command', tool_input: {}, tool_response: {}, tool_use_id: 't-1', turn_id: 'u-1' },
