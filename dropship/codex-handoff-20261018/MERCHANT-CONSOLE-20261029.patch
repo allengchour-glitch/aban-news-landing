@@ -1,0 +1,28 @@
+--- before/sections/product-information.liquid
++++ after/sections/product-information.liquid
+@@ -9,6 +9,14 @@
+   sichtbare Bewertungen auf der Seite: das Judge.me-Widget steht darunter.
+ {%- endcomment -%}
+ {%- capture luxe_sd -%}{{ closest.product | structured_data }}{%- endcapture -%}
++{%- if closest.product.id == 15450856292737 -%}
++  {%- for luxe_schema_variant in closest.product.variants -%}
++    {%- if luxe_schema_variant.sku contains ' ' -%}
++      {%- capture luxe_schema_invalid_sku -%},"sku":{{ luxe_schema_variant.sku | json }}{%- endcapture -%}
++      {%- assign luxe_sd = luxe_sd | remove: luxe_schema_invalid_sku -%}
++    {%- endif -%}
++  {%- endfor -%}
++{%- endif -%}
+ {%- assign luxe_rc = closest.product.metafields.reviews.rating_count.value | plus: 0 -%}
+ {%- assign luxe_r = closest.product.metafields.reviews.rating.value -%}
+ {%- if luxe_rc > 0 and luxe_r.rating -%}
+--- before/sections/header.liquid
++++ after/sections/header.liquid
+@@ -297,7 +297,7 @@
+     {% endif %}
+     "url": {{ request.origin | append: routes.root_url | json }},
+     {%- comment -%} LUX-ORG-RICHTLINIEN (06.10.2026, automation/google_org_richtlinien.py) {%- endcomment -%}
+-    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": ["CH", "LI"], "returnPolicyCountry": "CH", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility", "refundType": "https://schema.org/FullRefund"}, "hasShippingService": [{"@type": "ShippingService", "name": "Versand Schweiz", "shippingConditions": [{"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "CH"}, "orderValue": {"@type": "MonetaryAmount", "currency": "CHF", "minValue": 0, "maxValue": 40.49}, "shippingRate": {"@type": "MonetaryAmount", "value": 7.0, "currency": "CHF"}}, {"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "CH"}, "orderValue": {"@type": "MonetaryAmount", "currency": "CHF", "minValue": 40.5}, "shippingRate": {"@type": "MonetaryAmount", "value": 0, "currency": "CHF"}}]}, {"@type": "ShippingService", "name": "Versand Liechtenstein", "shippingConditions": [{"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "LI"}, "shippingRate": {"@type": "MonetaryAmount", "value": 14.9, "currency": "CHF"}}]}], "sameAs": ["https://www.facebook.com/1049840534888592", "https://www.instagram.com/luxestyle.ch/", "https://www.tiktok.com/@luxestyle.ch", "https://www.pinterest.com/luxestyleCH/", "https://www.youtube.com/@luxestyle_ch"]
++    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": ["CH", "LI"], "returnPolicyCountry": "CH", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility", "refundType": "https://schema.org/FullRefund"}, "hasShippingService": [{"@type": "ShippingService", "name": "Versand Schweiz", "shippingConditions": [{"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "CH"}, "orderValue": {"@type": "MonetaryAmount", "currency": "CHF", "minValue": 0, "maxValue": 49.99}, "shippingRate": {"@type": "MonetaryAmount", "value": 7.0, "currency": "CHF"}}, {"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "CH"}, "orderValue": {"@type": "MonetaryAmount", "currency": "CHF", "minValue": 50}, "shippingRate": {"@type": "MonetaryAmount", "value": 0, "currency": "CHF"}}]}, {"@type": "ShippingService", "name": "Versand Liechtenstein", "shippingConditions": [{"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "LI"}, "shippingRate": {"@type": "MonetaryAmount", "value": 14.9, "currency": "CHF"}}]}], "sameAs": ["https://www.facebook.com/1049840534888592", "https://www.instagram.com/luxestyle.ch/", "https://www.tiktok.com/@luxestyle.ch", "https://www.pinterest.com/luxestyleCH/", "https://www.youtube.com/@luxestyle_ch"]
+   }
+ </script>
+ 
