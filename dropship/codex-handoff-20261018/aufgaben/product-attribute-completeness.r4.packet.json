@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "product-attribute-completeness",
+  "revision": 4,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T06:45:12.143Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Material r4: API, Quellenbindung und dauerhafter Einmal-Schreibschutz integriert",
+  "summary": "Vollständiger Deltaentwurf auf r3, 159 finale gezielte Prüfungen und zehn Patchziele. Kein echter Materiallauf. Gemeinsame dauerhafte Ledgerroute, begrenzte Ausgangshistorie, fachliche Quellen-/Altersregel, Runtimegrant und Voll-CI bleiben Voraussetzungen.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-CODE-1-20261029.json",
+      "sha256": "28a35145eed563c4e2701827f18ef86f604f0d14d1768487bc952c05766ab686",
+      "gitBlobSha": "12c1ada0116864da63e2a0b946e8a924b8c1de80"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-CODE-2-20261029.json",
+      "sha256": "792e507cc2b65c7771e25b31c6f07a40de5a8c2037a70f27f6a5241a11bccbc8",
+      "gitBlobSha": "074f6e8f2f6db5ac08abea1045a6b75b884284d9"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-20261029.patch",
+      "sha256": "e8a688c1c5f7e4bbdb0b9bf6518850ac15dc9cb4933afac1bbcc0725ccae0a82",
+      "gitBlobSha": "67fec9be202a65f03740eba47b4caa7473f9c7ef"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-20261029.md",
+      "sha256": "1b0c353a5eb3476c3eb708418f9bc80a15bc7ff18d252f73f400a64c1d133d4f",
+      "gitBlobSha": "bc075c425fcef18975cffd51a09bfa85d43ba4e4"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-QUELLEN-20261029.md",
+      "sha256": "0fd435d9f14da5c3c67ebeee550baeb8dd6331b5a10b923ec48f4b91cfe2925c",
+      "gitBlobSha": "4fd5eccdb0a10cd8b90405a983bd4fbab3cc0415"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-VALIDIERUNG-20261029.json",
+      "sha256": "3cc49dbf638157b09f365a31d5cb1f54ae2928ebca018acd49f6ef95db3dc68c",
+      "gitBlobSha": "9939af35fc4d038473fa9a3b76f2b94f34603287"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R4-LEDGER-20261029.md",
+      "sha256": "68d3deb333d0663419309e27065126fe0e7d40f79ba3d77327dbd30330ec7713",
+      "gitBlobSha": "b4e549575631ff17400337e8fb061341b4851d69"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": "e1cd04f59339f199255ae5c1ebc5df2ec16ff7a4cf3a988467ef4a722454ee7e"
+}
