@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 14,
-  "updatedAt": "2026-10-29T21:38:14.814026+00:00",
+  "revision": 15,
+  "updatedAt": "2026-10-29T22:27:31.247095+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1043,6 +1043,318 @@
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination"
+    },
+    {
+      "id": "personalizer-fullscreen-20261029",
+      "priority": 2,
+      "priorityKind": "SETZUNG",
+      "state": "entwurf_zur_beurteilung",
+      "title": "Vollbild-Designstudio mit tatsächlicher Produkt- und Variantenauswahl",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN",
+      "lastEvidence": "Auf Screenshotkritik Vollbild-Gestaltungsstudio in drei Schritten gebaut: Produkt/Ausführung, Gestaltung, Prüfung. Aktuelles Bomberjackenprodukt 15422956798337 mit allen sieben Shopify-Varianten XS–3XL geprüft; 3XL CHF 109.90. Eigene Variantenwahl und Preis folgen der tatsächlichen Shopify-ID, nicht einem alten URL-Parameter. Text/Bild, Ebenen, Skalieren/Drehen/Ausrichten sowie Rückgängig/Wiederholen und Entwurferhalt. Produktauswahl aus tatsächlichen öffentlichen POD-Kollektionen mit Kategorien, Suche und manueller Pagination; keine Behauptung eines vollständigen Printful-Katalogs oder 493 öffentlich kaufbarer Produkte. Mangels belegter Printful-Druckmasken neutrale Motivfläche und kein Warenkorb-/Produktionsversand. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. MAIN 212656488839 weiterhin MAIN; Vorschau 212752499079 weiterhin UNPUBLISHED. Bestehendes Layout, Standardproduktvorlage und Designzwang-Snippet im Vorschau-Theme hashgleich erhalten; keine Veröffentlichung. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Neuer ausdrücklicher Produktwunsch: Printful-Gummi-Hülle für AirPods/AirPods Pro. Enge native Suche title:AirPods, first5 auf geprüftem Shop lieferte nodes[]/hasNextPagefalse; unter genau diesem Suchbegriff nichts gefunden, kein Vollkatalogbeweis. Screenshotbetrag CHF 10.50 ist Lieferantenpreis, kein bestätigter Verkaufspreis. Weitere Screenshotwünsche als einzelne pendingProducts aufgenommen, keine Massenerzeugung oder behauptete Shopverfügbarkeit.",
+      "previewUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio",
+      "nextAllowedStep": "Inhaber beurteilt konkrete Vollbildvorschau; für echten produktionsfähigen Printful-Editor je gewählter Variante aktuelle Druckflächen/Templates, Beschnitt und Front-/Back-/Spezialflächen belegen und sichere Dateiexport-/Backendzuordnung prüfen. Neuen konkreten Wunsch Printful-Hülle für AirPods/AirPods Pro anhand echter Katalogvariante, Quellen, CHF-Verkaufspreis und passendem Drucktemplate als Importentwurf vorbereiten; Screenshot-Lieferantenpreis nicht als Shoppreis übernehmen. Bestehende Printful-Idempotenz-/Quittierungsaufgabe fortführen. Keine erfundenen Druckflächen, keine Aktivierung oder Fulfilment aus der Vorschau.",
+      "pendingProducts": [
+        {
+          "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
+          "requestedAt": "2026-10-29",
+          "state": "konkreter_importkandidat_nicht_im_shop_bestaetigt",
+          "shopSearch": {
+            "query": "title:AirPods",
+            "first": 5,
+            "nodesCount": 0,
+            "hasNextPage": false,
+            "scope": "Unter genau diesem Titelbegriff keine Shopify-Produkte gefunden; kein vollständiger Printful-Katalogbefund"
+          },
+          "supplierScreenshotAmount": {
+            "amount": "10.50",
+            "currency": "CHF",
+            "meaning": "Lieferantenpreis laut Nutzerscreenshot, kein bestätigter Retailpreis"
+          },
+          "beforeImport": [
+            "Exakte Printful-Produkt-/Varianten-ID und AirPods-Modellkompatibilität bestätigen",
+            "Aktuelle Farben, Materialangaben, Rechte und Templatebezug aus Quelle lesen",
+            "CHF-Verkaufspreis separat kalkulieren/belegen, keine automatische Übernahme des Supplierpreises",
+            "Shop-Mapping, Kaufbarkeit und Druckflächen vor Aktivierung prüfen"
+          ],
+          "notVerified": [
+            "Shopvariante",
+            "Retailpreis",
+            "Drucktemplate",
+            "verfügbare Farben",
+            "Materialzusammensetzung"
+          ]
+        },
+        {
+          "requestedProduct": "T-Shirt",
+          "requestedCategory": "Bekleidung",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Hoodie",
+          "requestedCategory": "Bekleidung",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Farbige Tasse",
+          "requestedCategory": "Tassen & Flaschen",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Kuscheldecke",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Grusskarten",
+          "requestedCategory": "Papierwaren",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Korkuntersetzer",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Yoga-Leggings",
+          "requestedCategory": "Bekleidung",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Tanktop",
+          "requestedCategory": "Bekleidung",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Leinwand",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Laptoptasche",
+          "requestedCategory": "Taschen",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Wandkalender 2027",
+          "requestedCategory": "Papierwaren",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "MagSafe-iPhone-Hülle",
+          "requestedCategory": "Accessoires",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Duschvorhang",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Stoffservietten, 4er-Set",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Tischset, 4er-Set",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        },
+        {
+          "requestedProduct": "Tischläufer",
+          "requestedCategory": "Wohnen & Deko",
+          "requestedAt": "2026-10-29",
+          "source": "Inhaber-Screenshotwunsch, keine aktuelle Lieferanten- oder Shopverifikation",
+          "state": "wunsch_vor_katalogabgleich",
+          "beforeImport": [
+            "Bestehende Shopify-Zuordnung prüfen, keine Duplikate erzeugen",
+            "Exakte Printful-Katalogvariante und Modell-/Farb-/Material-/Templatebelege prüfen",
+            "CHF-Verkaufspreis separat prüfen; keine Lieferantenpreise, Reviews oder Lieferzusagen aus Screenshots übernehmen",
+            "Import/Aktivierung nur im erlaubten konkreten Umfang nach Diff und Gegenprobe"
+          ],
+          "shopAvailability": "unknown"
+        }
+      ],
+      "blockers": [
+        "Printful-Laufzeitzugang bzw. aktuelle authentifizierte Template-/Flächenbelege nicht verfügbar; kein nativer Printful-Design-Maker angebunden",
+        "Allover-/Ärmel-/Beschnittflächen und physische Druckgeometrie für die reale Bomberjacke nicht verifiziert; neutrale Motivfläche bleibt erforderlich",
+        "Keine Checkout-/Cart-/Produktionsfreigabe; gestalterische Abnahme und finale Themeintegration offen"
+      ],
+      "acceptance": [
+        "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
+        "Vollbild, mobile Bedienung, Varianten-/Preistreue, Fokus/Scroll und Layererhalt begrenzt geprüft",
+        "Zusätzliche Druckflächen ausschliesslich aus nachgewiesenem Lieferantentemplate und passendem Backendvertrag",
+        "Keine erfundenen Katalogzahlen, Farben, Materialien, Verfügbarkeit oder Lieferzeiten"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/DESIGNSTUDIO-BELEGE-20261029.json",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "bfac33099994e74ce066d55e0cc9e989eca58dd5",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/DESIGNSTUDIO-BELEGE-20261029.json"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DESIGNSTUDIO-THEME-20261029.patch",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "45039cbb8b1ab21882f8c11f921a4ee50a1ffe05",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/DESIGNSTUDIO-THEME-20261029.patch"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DESIGNSTUDIO-VORSCHAU-20261029.md",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "40ea2361b0cc151a05bc46dc8d26e8a6291fea8b",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/DESIGNSTUDIO-VORSCHAU-20261029.md"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "requestedCategoryScope": {
+        "categories": [
+          "Bekleidung",
+          "Tassen & Flaschen",
+          "Wohnen & Deko",
+          "Papierwaren",
+          "Taschen",
+          "Accessoires"
+        ],
+        "meaning": "Gruppierung der Nutzerwünsche; keine neue aktive Shopkollektion oder bestätigte Lieferantenklassifikation"
+      }
     }
   ],
   "history": [
@@ -1129,6 +1441,12 @@
       "at": "2026-10-29T21:38:14.814026+00:00",
       "actor": "codex",
       "action": "Auf eingegrenzten Inhaberauftrag Printful-Sync/CJ-Varianten zwei reproduzierte Codeursachen lokal korrigiert, offline und unabhängig geprüft. Review-Patches/Belege nur im LuxeStyle-Dokumentationsordner gesichert und exakt zurückgelesen. Begrenzte Printful-Tag-/CSV-Variantenprobe und Merchant-Zugangsprüfung; kein Geschäftswrite, Sync, Deployment oder bestätigter Merchant-Fix. Separate Idempotenz-/SKU_NACHZIEHEN-Grenzen erhalten. Keine zusätzlichen Kennzahl-/Flow-/Kaufchecks, Kaufbaseline/Automationen unverändert; Claude-Kenntnisnahme unbekannt."
+    },
+    {
+      "revision": 15,
+      "at": "2026-10-29T22:27:31.247095+00:00",
+      "actor": "codex",
+      "action": "Auf Inhaberkritik am kleinen Personalisierungswidget konkretes Vollbildstudio mit echter Variantenwahl und begrenzter POD-Produktauswahl im bestehenden unveröffentlichten Theme gebaut. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Mangels Printful-Templatebelegen neutrale Motivfläche und kein Cart-/Produktionsversand. MAIN, Kaufziel, andere Aufgaben und Zeitplan erhalten; keine Kennzahl-/Flow-/Bestellabfrage und keine Claude-Kenntnisnahme behauptet."
     }
   ],
   "salesGoal": {
