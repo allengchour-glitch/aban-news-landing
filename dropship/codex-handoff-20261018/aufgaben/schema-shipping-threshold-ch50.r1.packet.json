@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "schema-shipping-threshold-ch50",
+  "revision": 1,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T06:35:15.501Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Versand-Schema: bestehenden CHF50-Entwurf quellgenau geprüft",
+  "summary": "Fortsetzung der zwei bereits vorgeschlagenen CH-JSON-LD-Zahlenkorrekturen. Frische MAIN-/öffentliche Gegenprobe, sieben Schema-Grenzfälle. Checkout, interne CHF45 und LI erhalten. Kein Live-Write oder vollständiger Theme-/Google-Abnahmestatus.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/VERSAND-CH50-20261029.md",
+      "sha256": "65d00e35765810a2deb39796808276f72ee677dd0eb26d62a73a365187d14153",
+      "gitBlobSha": "404fb9fdf7206049f2326f8c9ed3ad4aba7da016"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VERSAND-CH50-20261029.patch",
+      "sha256": "14ccc83a532ff0910e4b1cfbb06d1edaf1615cdfdb6c4c21865b115e9947a663",
+      "gitBlobSha": "3ac34b380ee0c6211c3715824592404be1ea2e2e"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VERSAND-CH50-THEME-20261029.json",
+      "sha256": "160a30a31a6156a1c64ef5d6af71311a5ebead610f7ced3d00fa7d79f0a2b83c",
+      "gitBlobSha": "50837fff4bfb70ac8cbe2dc53ab52417573830aa"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VERSAND-CH50-BELEGE-20261029.json",
+      "sha256": "11204f71fd47daed9b12dbf8f2f375572513c0230a21efcd147e391eba6be75c",
+      "gitBlobSha": "0ba063583e2084d7c03d05ea70626f74cb7faabc"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": null
+}
