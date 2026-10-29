@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 10,
-  "updatedAt": "2026-10-29T09:28:50Z",
+  "revision": 11,
+  "updatedAt": "2026-10-29T18:26:19.508486Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-10-29",
     "currentDayEvidenceKind": "GEMESSEN",
-    "currentDayEvidence": "Morgenlauf29.10.: einmalige Metricool-Kennzahlen22.–28.10. und genau ein Klaviyo-Flowreport im gleichen Zürcher Zeitraum vollständig angefragt; lückenhafte Reihen unbekannt. Keine zusätzliche Tagesabfrage nur für Bericht. Enger neuer Bestellbeleg separat gemäss Abschnitt18 bis07:09:37Z vollständig: keine neuen Bestellungen. Ads-Status und gezielte Produkt-/Ledgergegenproben sind getrennte, begrenzte Prüfungen.",
+    "currentDayEvidence": "Morgenlauf29.10.: einmalige Metricool-Kennzahlen22.–28.10. und genau ein Klaviyo-Flowreport im gleichen Zürcher Zeitraum vollständig angefragt; lückenhafte Reihen unbekannt. Keine zusätzliche Tagesabfrage nur für Bericht. Enger neuer Bestellbeleg separat gemäss Abschnitt18 bis07:09:37Z vollständig: keine neuen Bestellungen. Ads-Status und gezielte Produkt-/Ledgergegenproben sind getrennte, begrenzte Prüfungen. Abendlauf: gespeicherte Morgenkennzahlen/Flowdaten ohne neue Reportabfrage wiederverwendet; enges neues Bestellfenster bis 18:07:25Z vollständig ohne neue Bestellungen. Neue Planung/Identität und eine Produktgegenprobe getrennt belegt.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-10-29",
@@ -69,15 +69,16 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten. Neuer enger Inhaberauftrag: zwei bestehende Optionslabels und sieben vorhandene Werttexte am 29.10. live bereinigt; alle 13 Varianten-/SKU-/InventoryItem-Bindungen und Preise nativ/öffentlich erhalten. Kein Materiallauf oder Merchant-Push.",
-      "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen. Für den bereits genehmigten Merchant-Push zuerst genau aktive Source-ID/Art und authentifizierten isolierten Writer belegen; Shopify-App-Quelle auf diese 13 Varianten prüfen, keine Neuanlage/Massenfreischaltung. Diese zwei Textkorrekturen nicht erneut als neue Anreicherung zählen.",
+      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht.",
+      "nextAllowedStep": "Aktuellen vollständigen Attributdatensatz mit stabilen Produkt-/Varianten-IDs und echten modellbezogenen Quellen belegen; vorhandene Helfer/Exporte fortsetzen, keine Massenpagination oder geratenen Attribute. Das dokumentierte Quellen-Delta nur zusammen mit vollständiger vorhandener r1→r4-Kette prüfen, dann Voll-CI/Runtimegrant/Quellenaltersregel/dauerhaften gemeinsamen Ledger und konkreten begrenzten Produktscope nachweisen. Bereits bestätigte Produktwrites nicht wiederholen. Vor isoliertem Merchant-Push aktive Source-ID/Art und authentifizierten Writer belegen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
         "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
         "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
         "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
-        "Aktueller Katalog-Nenner, Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte offen"
+        "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
+        "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis"
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -155,11 +156,26 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-BELEGE-20261029.json",
           "gitBlobSha": "430a63946cebdcd40747f0310874e545f9c73c28",
           "readAt": "2026-10-29T08:10:35Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KATALOGQUALITAET-20261029.md",
+          "gitBlobSha": "7dfdb0ec84ad50b69fc4de3ab817d3bfb2c55230",
+          "readAt": "2026-10-29T18:26:19.508486Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KATALOGQUALITAET-BELEGE-20261029.json",
+          "gitBlobSha": "d04e273434542bdeb5f635222e47e170a325dc51",
+          "readAt": "2026-10-29T18:26:19.508486Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIAL-QUELLENDELTA-PRUEFUNG-20261029.json",
+          "gitBlobSha": "df2bc3ef9cfa75ba09fc68864ccf7603b3d20b3d",
+          "readAt": "2026-10-29T18:26:19.508486Z"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "claude_enrichment_codex_measurement_and_review",
-      "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln.",
+      "instructionReference": "Inhaber 29.10.: «ja mach alle produkten 100 fehlerfrei» als katalogweites Qualitätsziel; echte Quellen, Status/Sperrtags, Geschäftsgrenzen und keine 100-%-Behauptung ohne aktuelle Einzelbelege bleiben verbindlich.",
       "reviewPacket": {
         "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r4.packet.json",
         "revision": 4,
@@ -181,6 +197,61 @@
         "report": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-20261029.md",
         "evidence": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-BELEGE-20261029.json",
         "merchantPush": "blocked_authenticated_datasource_writer_unknown",
+        "claudeReceipt": "unknown"
+      },
+      "evidenceHistory": [
+        {
+          "date": "2026-10-29",
+          "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten. Neuer enger Inhaberauftrag: zwei bestehende Optionslabels und sieben vorhandene Werttexte am 29.10. live bereinigt; alle 13 Varianten-/SKU-/InventoryItem-Bindungen und Preise nativ/öffentlich erhalten. Kein Materiallauf oder Merchant-Push.",
+          "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen. Für den bereits genehmigten Merchant-Push zuerst genau aktive Source-ID/Art und authentifizierten isolierten Writer belegen; Shopify-App-Quelle auf diese 13 Varianten prüfen, keine Neuanlage/Massenfreischaltung. Diese zwei Textkorrekturen nicht erneut als neue Anreicherung zählen."
+        }
+      ],
+      "additionalProductCleanups": [
+        {
+          "atUTC": [
+            "2026-10-29T09:45:23Z",
+            "2026-10-29T09:45:40Z"
+          ],
+          "state": "confirmed_native_and_public",
+          "productIds": [
+            "15448847221121",
+            "15448848400769"
+          ],
+          "existingVariantCount": 4,
+          "changedOptionNames": 1,
+          "changedExistingValueTexts": 2,
+          "newMaterialOrMeasurementEvidence": false,
+          "report": "dropship/codex-handoff-20261018/KATALOGQUALITAET-20261029.md",
+          "evidence": "dropship/codex-handoff-20261018/KATALOGQUALITAET-BELEGE-20261029.json",
+          "evidenceGitBlobSha": "d04e273434542bdeb5f635222e47e170a325dc51",
+          "merchantPush": "not_performed_writer_unknown"
+        }
+      ],
+      "catalogScope": {
+        "date": "2026-10-29",
+        "timeScope": "Vormittag",
+        "allStatuses": 87766,
+        "active": 56620,
+        "precision": "EXACT",
+        "qualityPercent": null,
+        "currentAttributeCoveragePercent": null,
+        "historicalMaterialSourceGap": {
+          "date": "2026-10-27",
+          "numerator": 28170,
+          "denominator": 56618,
+          "percent": 49.8,
+          "notCurrentShopMissingFieldPercent": true
+        }
+      },
+      "sourceConflictDelta": {
+        "path": "dropship/codex-handoff-20261018/MATERIAL-QUELLENDELTA-20261029.patch",
+        "gitBlobSha": "2b467eca8dde34de042f63815dd42bf3c477418b",
+        "sourceSHA256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+        "status": "local_delta_reviewed_not_deployed",
+        "requiresExistingFullR4Chain": true,
+        "reviewPacketUnchanged": true,
+        "mainChecked": "a74459a94a800b24d4b348332154d25f516920b8",
+        "validation": "dropship/codex-handoff-20261018/MATERIAL-QUELLENDELTA-PRUEFUNG-20261029.json",
         "claudeReceipt": "unknown"
       }
     },
@@ -564,7 +635,7 @@
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Frische Produkt-/Tag-/Storefront-Gegenprobe und Musikblob bestätigt. Derselbe18sMaster; ein weiteres echtes Galeriebild liefert keine Eingangs-/Kabel-/Netzteil-/Steckerbelege. Vier genaue fehlende Nachweiszeilen ausserhalb des Films formuliert. Eine neutrale FB-Caption präzisiert, sechs UTMs/masterId erhalten. Kein neuer professioneller Film, keine Abnahme/Publikation; Ledger unbekannt.",
+      "lastEvidence": "GEMESSEN/VORBEREITET im Abendlauf 29.10.: Projektor, Variante und SKU nativ und öffentlich passend; CHF 34.90, ACTIVE, nicht leere Tags, kein Sperrtag, tracked=false/CONTINUE/Menge 0/available. Echtes Referenzbild angesehen und kanonische Musik hashgleich zum frischen Repository. Neuer konkreter Typografieentwurf: drei Einzeiler zu lang, feste Zweizeiler bei gleichen Wörtern; sieben Textblöcke in dokumentierter Fontprobe passend. Gleiche Master-ID, 18 s/540 Frames, Quellzeiten, sechs UTMs und Captions erhalten. Keine MP4, Filmabnahme oder Publikation; Rechte, Ausführungs-/Stromzuordnung, Originaltakes und Ledger weiter offen.",
       "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
       "blockers": [
         "Passendes professionelles Originalmaterial",
@@ -598,6 +669,16 @@
           "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261029.md",
           "gitBlobSha": "ed9d9e2bac6ea226d219a0b60fcdb69299fcc2ed",
           "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ABEND-20261029.md",
+          "gitBlobSha": "829502f4c4eb828a90a7e35f319e36894af123f9",
+          "readAt": "2026-10-29T18:26:19.508486Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ABEND-BELEGE-20261029.json",
+          "gitBlobSha": "afd790d3852f0c9484361964ff0771616b9620ae",
+          "readAt": "2026-10-29T18:26:19.508486Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -606,7 +687,13 @@
         "productId": "15521256604033",
         "variantId": "56197916361089",
         "sku": "CJ-1477820492730732544"
-      }
+      },
+      "evidenceHistory": [
+        {
+          "date": "2026-10-29",
+          "lastEvidence": "Frische Produkt-/Tag-/Storefront-Gegenprobe und Musikblob bestätigt. Derselbe18sMaster; ein weiteres echtes Galeriebild liefert keine Eingangs-/Kabel-/Netzteil-/Steckerbelege. Vier genaue fehlende Nachweiszeilen ausserhalb des Films formuliert. Eine neutrale FB-Caption präzisiert, sechs UTMs/masterId erhalten. Kein neuer professioneller Film, keine Abnahme/Publikation; Ledger unbekannt."
+        }
+      ]
     },
     {
       "id": "dns-four-approved-20261018",
@@ -736,6 +823,12 @@
       "at": "2026-10-29T09:28:50Z",
       "actor": "codex",
       "action": "Ausdrückliche enge Live-Freigabe «jaa mach das» gespeichert. Shop/Metricool und MAIN-/Draft-Hashes frisch gegengeprüft; dokumentierte Connector-Grenze, tatsächliche Shopify-Loginseite und Search-Console-Timeout bestätigt. Kein MAIN-Write, keine zusätzliche Theme-Kopie, kein Merchant-Push oder Google-Validierungsversuch; keine wiederholten Tagesreports."
+    },
+    {
+      "revision": 11,
+      "at": "2026-10-29T18:26:19.508486Z",
+      "actor": "codex",
+      "action": "Bestätigte Vormittagskorrekturen an zwei weiteren Produkten und exakten Katalogumfang nachgeführt; offenen Materialquellenschutz abends lokal abgeschlossen und unabhängig geprüft. Bestehenden Abendlauf mit frischen Identitäten, 12 Planobjekten/21 PENDING sowie engem Kaufzeitfenster bis 18:07:25Z durchgeführt; Kaufziel offen. Heutige Kennzahl-/Flowdaten wiederverwendet, selben Master um konkrete Textumbrüche präzisiert und genau eine bestehende Welcome-Freigabevorlage konsolidiert. Keine erneuten Produktwrites, neuen Posts, Materialläufe, Ads-/Shop-/Flowaktivierung oder Frequenzänderung."
     }
   ],
   "salesGoal": {
@@ -746,10 +839,10 @@
     "criterion": "Neue Bestellung ab Baseline: test=false, cancelledAt=null, positiver aktueller Gesamtbetrag, PAID, nicht vollständig erstattet. Mindestens eine erfolgreiche Nicht-Test-SALE/CAPTURE mit positivem Betrag eines echten, nicht manuellen Zahlungsanbieters. Fehlende Transaktionsbelege bleiben unbekannt.",
     "status": "OFFEN_AB_2026-10-28T23:48:36Z",
     "schedule": "Bestehende Läufe 08:00/14:00/19:00 Europe/Zurich unverändert; keine ununterbrochene Hintergrundarbeit",
-    "lastCheckedAt": "2026-10-29T07:09:37Z",
+    "lastCheckedAt": "2026-10-29T18:07:25Z",
     "checkedWindow": {
       "from": "2026-10-28T23:48:36Z",
-      "to": "2026-10-29T07:09:37Z"
+      "to": "2026-10-29T18:07:25Z"
     },
     "newOrderCount": 0,
     "qualifyingOrderCount": 0,
@@ -777,11 +870,28 @@
       "nextAllowedCheck": "Im nächsten bestehenden Lauf Tagesprotokoll und geprüfte Fenster abgleichen; bisherigen Rhythmus und Kennzahlgrenzen erhalten. Keine automatische Wiederholung oder künstliche Testbestellung."
     },
     "source": {
-      "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
-      "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
-      "readAt": "2026-10-29T07:31:52.854120Z"
+      "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261029.json",
+      "gitBlobSha": "1671b800a82478abbc15f595e224d881c27e6397",
+      "readAt": "2026-10-29T18:26:19.508486Z"
     },
-    "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained"
+    "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained",
+    "checkHistory": [
+      {
+        "lastCheckedAt": "2026-10-29T07:09:37Z",
+        "checkedWindow": {
+          "from": "2026-10-28T23:48:36Z",
+          "to": "2026-10-29T07:09:37Z"
+        },
+        "newOrderCount": 0,
+        "qualifyingOrderCount": 0,
+        "completeWindow": true,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
+          "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
+          "readAt": "2026-10-29T07:31:52.854120Z"
+        }
+      }
+    ]
   }
 }
 
