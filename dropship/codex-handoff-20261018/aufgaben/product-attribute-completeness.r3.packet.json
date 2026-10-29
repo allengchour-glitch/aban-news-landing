@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "product-attribute-completeness",
+  "revision": 3,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T05:59:04.762Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Material r3: parallele Änderungen und Versions-Fallback blockieren",
+  "summary": "Delta auf r2; 27 neue CAS-Fälle, 253 betroffene Offline-Prüfungen grün. Exakte Produktquellen für vier LX-Produkte weiter offen. Keine Anreicherung, keine produktive Nutzung, Quellenalter und dauerhafte Wiederaufnahme weiterhin offen.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R3-CODE-20261029.json",
+      "sha256": "5af5e919207a173bbafa1e261b066715ade089dfcf9eab1398f0df2b58a9427e",
+      "gitBlobSha": "04c4edd08127f216471faa162dc941fe62175bac"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R3-20261029.patch",
+      "sha256": "5c4a8b0d440042fc6d15ff0ec6742864ebd89ba9b4da544d94f415c9df2fa44f",
+      "gitBlobSha": "9f132b1c68cfaa9cc035be077c0e27131ee98967"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R3-20261029.md",
+      "sha256": "81902860d9c073e21f598f58ed52403da7f8e058d9576205045d3227ccfb6d8c",
+      "gitBlobSha": "382dd598941517f06123d8af00a6025ff4fdbd67"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R3-QUELLEN-20261029.md",
+      "sha256": "a3066082e548ca055a10a2760f6e08b3d8172d1115c4fb779c93007ab246802a",
+      "gitBlobSha": "d89b0988a04c49ffaa6947c1c79369836015b9d2"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MATERIAL-R3-VALIDIERUNG-20261029.json",
+      "sha256": "d605bc4cf61028729db0b888116e0662f92bb6c0ae3edec40f374ca743a8a24a",
+      "gitBlobSha": "2dc91e120b3e6820c371e15dd2af349dc4fe990e"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTQUELLEN-URSPRUNG-BELEGE-20261029.json",
+      "sha256": "d4835ee7dc51493132020365d51225a950d0d3a8152449e73aad6e342f1ec15a",
+      "gitBlobSha": "d400597e19ed34157e107940b0d83b5faffdf650"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTQUELLEN-URSPRUNG-20261029.md",
+      "sha256": "ea3dc202540cc9fc74c2f3a9cb9217f9ad5fd172bdef40b151e5fa9d9316a8a8",
+      "gitBlobSha": "0359ea07bfa7dd317e17d9ddd6fc7fa5a4902353"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": "7248da67433bdeebffb4801494075eb39c2103858d5430b714a216c306b842a7"
+}
