@@ -1,0 +1,94 @@
+{
+  "checkedAtUtc": "2026-10-29T07:20:42.693251+00:00",
+  "scope": "Exactly one Shopify product and five native variants, no pagination; product page plus its existing linked collection and robots.txt",
+  "productId": "gid://shopify/Product/15447971430785",
+  "productUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+  "shop": {
+    "url": "https://luxestyle.ch",
+    "currencyCode": "CHF"
+  },
+  "status": "ACTIVE",
+  "wholeProductPriceRange": {
+    "minVariantPrice": {
+      "amount": "14.9",
+      "currencyCode": "CHF"
+    },
+    "maxVariantPrice": {
+      "amount": "17.9",
+      "currencyCode": "CHF"
+    }
+  },
+  "pricePerPersonTextConfirmedNativeAndPublic": true,
+  "variants": [
+    {
+      "variantId": "gid://shopify/ProductVariant/55873727627649",
+      "selection": "Weiss · Papa S",
+      "priceCHF": "16.90",
+      "publicOfferPrice": "16.90",
+      "publicOfferCurrency": "CHF",
+      "publicOfferAvailability": "http://schema.org/InStock",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649",
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "adminPublicPriceMatch": true
+    },
+    {
+      "variantId": "gid://shopify/ProductVariant/55873727660417",
+      "selection": "Weiss · Papa M",
+      "priceCHF": "16.90",
+      "publicOfferPrice": "16.90",
+      "publicOfferCurrency": "CHF",
+      "publicOfferAvailability": "http://schema.org/InStock",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727660417",
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "adminPublicPriceMatch": true
+    },
+    {
+      "variantId": "gid://shopify/ProductVariant/55873727693185",
+      "selection": "Weiss · Papa L",
+      "priceCHF": "17.90",
+      "publicOfferPrice": "17.90",
+      "publicOfferCurrency": "CHF",
+      "publicOfferAvailability": "http://schema.org/InStock",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727693185",
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "adminPublicPriceMatch": true
+    },
+    {
+      "variantId": "gid://shopify/ProductVariant/55873727725953",
+      "selection": "Weiss · Papa XL",
+      "priceCHF": "17.90",
+      "publicOfferPrice": "17.90",
+      "publicOfferCurrency": "CHF",
+      "publicOfferAvailability": "http://schema.org/InStock",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727725953",
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "adminPublicPriceMatch": true
+    },
+    {
+      "variantId": "gid://shopify/ProductVariant/55873727758721",
+      "selection": "Weiss · Papa XXL",
+      "priceCHF": "17.90",
+      "publicOfferPrice": "17.90",
+      "publicOfferCurrency": "CHF",
+      "publicOfferAvailability": "http://schema.org/InStock",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727758721",
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "adminPublicPriceMatch": true
+    }
+  ],
+  "newSocialBlockedByTag": "rueckhol-0907",
+  "writesPerformed": false,
+  "checkoutSubmitted": false,
+  "diffPrepared": false,
+  "reasonNoDiff": "No additional verified price/variant/HTTP/canonical/JSON-LD mismatch in bounded sample; owner-reported price clarification is already present."
+}
