@@ -1,0 +1,336 @@
+diff --git a/automation/material_nachtragen.mjs b/automation/material_nachtragen.mjs
+--- a/automation/material_nachtragen.mjs
++++ b/automation/material_nachtragen.mjs
+@@ -9,6 +9,8 @@
+  *
+  * TROCKENLAUF IST VORGABE. LIVE=1 schreibt (25 Produkte je Aufruf) und liest jeden bestätigten Stapel vor dem nächsten FRISCH zurück.
+  * Abgelehnte oder unklare Schreibvorgänge stoppen den Lauf (Exit 1), abweichende Rücklesungen ebenfalls (Exit 3). Kein automatischer Schreib-Retry.
++ * Vor jedem Stapel: Wert und Typ frisch gegen den Plan prüfen; compareDigest schützt anschliessende parallele Änderungen.
++ * LIVE verlangt den Antwortheader der unveränderten API-Version 2025-01. Ein Versions-Fallback bleibt gesperrt.
+  * Aufruf:  node automation/material_nachtragen.mjs                       (Trockenlauf, eigener Plan je Lauf in /tmp)
+  *          LIVE=1 node automation/material_nachtragen.mjs                (schreiben)
+  * Umgebung: PLAN=pfad · ROH=pfad (vorhandene Bulk-Datei statt neuer Abfrage) · ROH_AUS=pfad (Bulk-Rohdaten speichern) · CJ_FAKTEN_CACHE=ordner (Vorgabe /tmp/cj_fakten_cache)
+@@ -23,6 +25,7 @@
+ import { entscheide, hatMaterial, enZuDe, bereinige, pruefeWert, lederWert } from './lib/material.mjs';
+ 
+ const LIVE = process.env.LIVE === '1';
++const API_VERSION = '2025-01';
+ const PLAN = process.env.PLAN || `/tmp/material_plan_${new Date().toISOString().replace(/[:.]/g, '-')}_${randomUUID()}.jsonl`;
+ const ROH = process.env.ROH || '';
+ const CJ_ORDNER = (process.env.CJ_FAKTEN_CACHE || '/tmp/cj_fakten_cache').replace(/\/?$/, '/');
+@@ -40,19 +43,55 @@
+   }
+ }
+ 
++function sichereVorwerte(stueck, nodes) {
++  const r = { m: [], konflikte: 0, unbekannt: 0 };
++  const ids = new Set(stueck.map(p => p.id));
++  if (ids.size !== stueck.length || !Array.isArray(nodes) || nodes.length !== stueck.length ||
++      nodes.some(n => !n || !ids.has(n.id)) || new Set(nodes.map(n => n.id)).size !== stueck.length) {
++    return { ...r, unbekannt: stueck.length };
++  }
++  const frisch = new Map(nodes.map(n => [n.id, n]));
++  for (const p of stueck) {
++    const n = frisch.get(p.id), alt = p.vorher;
++    if (!Object.hasOwn(n, 'm') || (alt !== null && (!alt || typeof alt.value !== 'string' || typeof alt.type !== 'string'))) { r.unbekannt++; continue; }
++    if (alt !== null && alt.type !== 'single_line_text_field') { r.konflikte++; continue; }
++    let compareDigest;
++    if (n.m === null) {
++      if (alt !== null) { r.konflikte++; continue; }
++      compareDigest = null; // Explizites null bedeutet: nur anlegen, solange das Feld fehlt.
++    } else {
++      if (!n.m || typeof n.m.value !== 'string' || typeof n.m.type !== 'string') { r.unbekannt++; continue; }
++      if (alt === null || n.m.value !== alt.value || n.m.type !== alt.type) { r.konflikte++; continue; }
++      if (typeof n.m.compareDigest !== 'string' || !n.m.compareDigest.trim()) { r.unbekannt++; continue; }
++      compareDigest = n.m.compareDigest;
++    }
++    r.m.push({ ownerId: p.id, namespace: 'mm-google-shopping', key: 'material', type: 'single_line_text_field', value: p.wert, compareDigest });
++  }
++  return r;
++}
++
+ async function main() {
+   const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
+   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
+   const tok = (await r.json()).access_token; if (!tok) throw new Error('Kein Shopify-Token');
+-  const q = (a, b, opt) => shopifyGql(SHOP, '2025-01', tok, a, b, opt);
++  const fetchMitVersion = async (...args) => {
++    const antwort = await fetch(...args);
++    if (antwort.status >= 200 && antwort.status < 300 && antwort.headers?.get?.('X-Shopify-API-Version') !== API_VERSION) {
++      throw new Error('API-Version nicht bestätigt: erwartet ' + API_VERSION + ', erhalten ' + (antwort.headers?.get?.('X-Shopify-API-Version') || 'unbekannt'));
++    }
++    return antwort;
++  };
++  const q = (a, b, opt) => shopifyGql(SHOP, API_VERSION, tok, a, b, { ...opt, ...(LIVE ? { fetch: fetchMitVersion } : {}) });
++  const pruefeVersion = () => q('query MaterialApiVersion { __typename }', undefined, { versuche: 1 });
+ 
+   let text;
+   if (ROH && existsSync(ROH)) text = readFileSync(ROH, 'utf8');
+   else {
++    if (LIVE) await pruefeVersion(); // Vor einem möglichen Bulk-Start, nicht erst nach dessen Antwort.
+     const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
+     if (lauf && ['CREATED', 'RUNNING'].includes(lauf.status)) throw new Error('Es läuft schon eine Bulk-Abfrage — abwarten');
+-    const inner = `{ products(query:"status:active") { edges { node { id handle title descriptionHtml options{ name } m:metafield(namespace:"mm-google-shopping", key:"material"){ value } } } } }`;
++    const inner = `{ products(query:"status:active") { edges { node { id handle title descriptionHtml options{ name } m:metafield(namespace:"mm-google-shopping", key:"material"){ value type } } } } }`;
+     const m = (await q(`mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}`, { q: inner })).bulkOperationRunQuery;
+     if (m.userErrors?.length) throw new Error(JSON.stringify(m.userErrors));
+     for (let i = 0; i < 360; i++) {
+@@ -70,6 +109,8 @@
+     const o = JSON.parse(l); if (!o.handle) continue;
+     if (ONLY.size && !ONLY.has(o.handle)) continue;
+     z.gelesen++;
++    // Fehlende Rohfelder sind unbekannt; nur ein ausdrückliches m:null belegt Abwesenheit.
++    const vorher = o.m === null ? null : { value: o.m?.value ?? null, type: o.m?.type ?? null };
+     const datei = CJ_ORDNER + o.handle + '.json';
+     const cj = existsSync(datei) ? JSON.parse(readFileSync(datei, 'utf8')) : null;
+     // Schon ein Metafeld: nur englische Werte («Silver», «Alloy», «Cotton») ins Deutsche setzen; deutsche bleiben unberührt
+@@ -82,7 +123,7 @@
+       if (de && de.toLowerCase() !== vorhanden.toLowerCase()) {
+         const sperre = pruefeWert(de, { descriptionHtml: o.descriptionHtml, titel: o.title, cj: cjL }, { uebersetzung: true });
+         if (sperre) gruende['sperre-uebersetzung'] = (gruende['sperre-uebersetzung'] || 0) + 1;
+-        else { plan.push({ id: o.id, handle: o.handle, wert: de, alt: vorhanden, quelle: 'uebersetzt' }); werte[de] = (werte[de] || 0) + 1; }
++        else { plan.push({ id: o.id, handle: o.handle, wert: de, alt: vorhanden, quelle: 'uebersetzt', vorher }); werte[de] = (werte[de] || 0) + 1; }
+       } else if (!de && !bereinige(vorhanden)) unbekannt[vorhanden] = (unbekannt[vorhanden] || 0) + 1;
+       if (!(de && de.toLowerCase() !== vorhanden.toLowerCase())) gruende['schon-da:metafeld'] = (gruende['schon-da:metafeld'] || 0) + 1;
+       continue;
+@@ -94,7 +135,7 @@
+       const sperre = wert ? pruefeWert(wert, { descriptionHtml: o.descriptionHtml, titel: o.title, cj }) : 'kein sicherer Stoffname';
+       e = sperre ? { tun: false, grund: 'sperre-beleg:' + sperre } : { tun: true, wert, quelle: 'belegt-von-hand' };
+     }
+-    if (e.tun) { plan.push({ id: o.id, handle: o.handle, wert: e.wert, quelle: e.quelle }); werte[e.wert] = (werte[e.wert] || 0) + 1; }
++    if (e.tun) { plan.push({ id: o.id, handle: o.handle, wert: e.wert, quelle: e.quelle, vorher }); werte[e.wert] = (werte[e.wert] || 0) + 1; }
+     else { const g = e.grund.split(':').slice(0, 2).join(':').slice(0, 40); gruende[g.startsWith('schon') ? g : g.split(':')[0]] = (gruende[g.startsWith('schon') ? g : g.split(':')[0]] || 0) + 1; }
+   }
+   sicherePlan(PLAN, plan.map(p => JSON.stringify(p)).join('\n') + (plan.length ? '\n' : ''));
+@@ -103,17 +144,24 @@
+   console.log('bestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (' + Object.keys(unbekannt).length + '):', Object.entries(unbekannt).sort((x, y) => y[1] - x[1]).slice(0, 40).map(([w, n]) => `${w}×${n}`).join(' | '));
+   console.log('häufigste Werte:', Object.entries(werte).sort((a, b) => b[1] - a[1]).slice(0, 25).map(([w, n]) => `${w}×${n}`).join(' | '));
+   if (!LIVE) { console.log('Trockenlauf — nichts geschrieben. LIVE=1 zum Schreiben.'); return; }
++  await pruefeVersion(); // Reine Abfrage: Fallback oder fehlender Versionsheader sperrt vor Produktmutationen.
+ 
+   const MUT = `mutation($m:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$m){ metafields{ key } userErrors{ field message code } } }`;
++  const VORHER = `query MaterialVorher($ids:[ID!]!){nodes(ids:$ids){... on Product{id m:metafield(namespace:"mm-google-shopping",key:"material"){value type compareDigest}}}}`;
+   const arbeit = plan.slice(0, LIMIT); const geschrieben = [];
+-  let angefragt = 0, apiBestaetigt = 0, fehler = 0, unklar = 0, rueckgelesen = 0, abweichungen = 0;
++  let angefragt = 0, apiBestaetigt = 0, fehler = 0, unklar = 0, rueckgelesen = 0, abweichungen = 0, vorherKonflikte = 0, vorherUnbekannt = 0;
+   for (let i = 0; i < arbeit.length; i += 25) {
+     const stueck = arbeit.slice(i, i + 25);
++    let v;
++    try { v = sichereVorwerte(stueck, (await q(VORHER, { ids: stueck.map(p => p.id) }, { versuche: 1 }))?.nodes); }
++    catch (e) { vorherUnbekannt += stueck.length; console.error('UNBEKANNT: Vorher-Gegenprobe fehlgeschlagen; nichts aus diesem Stapel gesendet.', e.message); break; }
++    vorherKonflikte += v.konflikte; vorherUnbekannt += v.unbekannt;
++    if (v.konflikte || v.unbekannt) { console.error('Vorher-Gegenprobe blockiert den ganzen Stapel:', JSON.stringify({ konflikte: v.konflikte, unbekannt: v.unbekannt })); break; }
+     angefragt += stueck.length;
+     let w;
+     try {
+       // Die Antwort kann nach einer bereits ausgeführten Mutation verloren gehen. Nicht blind erneut senden.
+-      w = (await q(MUT, { m: stueck.map(p => ({ ownerId: p.id, namespace: 'mm-google-shopping', key: 'material', type: 'single_line_text_field', value: p.wert })) }, { versuche: 1 }))?.metafieldsSet;
++      w = (await q(MUT, { m: v.m }, { versuche: 1 }))?.metafieldsSet;
+     } catch (e) { unklar += stueck.length; console.error('UNBEKANNT: Schreibantwort fehlt; keine Wiederholung.', e.message); break; }
+     if (!w || !Array.isArray(w.userErrors)) { unklar += stueck.length; console.error('UNBEKANNT: unvollständige Schreibantwort; Abbruch.'); break; }
+     // metafieldsSet ist atomar: Ein userError verwirft den ganzen Stapel, nicht nur den genannten Index.
+@@ -137,9 +185,9 @@
+     await schlaf(250);
+   }
+   const quellenBestaetigt = geschrieben.reduce((a, p) => (a[p.quelle] = (a[p.quelle] || 0) + 1, a), {});
+-  appendFileSync('dropship/material_ledger.txt', `${new Date().toISOString()} · material nachgetragen · ${geschrieben.length} Produkte (Fehler ${fehler}) · Unbekannt ${unklar} · Abweichungen ${abweichungen} · Quellen ${JSON.stringify(quellenBestaetigt)}\n`);
+-  console.log(JSON.stringify({ geschrieben: geschrieben.length, apiBestaetigt, fehler, unbekannt: unklar, rueckgelesen, abweichungen, nichtBearbeitet: arbeit.length - angefragt }));
++  appendFileSync('dropship/material_ledger.txt', `${new Date().toISOString()} · material nachgetragen · ${geschrieben.length} Produkte (Fehler ${fehler}) · Unbekannt ${unklar} · Abweichungen ${abweichungen} · Vorher-Konflikte ${vorherKonflikte} · Vorher-unbekannt ${vorherUnbekannt} · Quellen ${JSON.stringify(quellenBestaetigt)}\n`);
++  console.log(JSON.stringify({ geschrieben: geschrieben.length, apiBestaetigt, fehler, unbekannt: unklar, rueckgelesen, abweichungen, vorherKonflikte, vorherUnbekannt, nichtBearbeitet: arbeit.length - angefragt }));
+   if (abweichungen) process.exitCode = 3;
+-  else if (fehler || unklar) process.exitCode = 1;
++  else if (fehler || unklar || vorherKonflikte || vorherUnbekannt) process.exitCode = 1;
+ }
+ main().catch(e => { console.error('FEHLER', e.message); process.exit(1); });
+diff --git a/automation/material_plan_lauf_test.mjs b/automation/material_plan_lauf_test.mjs
+--- a/automation/material_plan_lauf_test.mjs
++++ b/automation/material_plan_lauf_test.mjs
+@@ -12,7 +12,7 @@
+ const material = resolve(process.argv[3] || join(dirname(quelle), 'lib/material.mjs'));
+ const testOrdner = process.env.MATERIAL_TEST_TMP || tmpdir();
+ let ok = 0, fehler = 0;
+-const becher = { id: 'gid://shopify/Product/1001', handle: 'becher-fixture', title: 'Becher', descriptionHtml: '', options: [], m: { value: 'Ceramic' } };
++const becher = { id: 'gid://shopify/Product/1001', handle: 'becher-fixture', title: 'Becher', descriptionHtml: '', options: [], m: { value: 'Ceramic', type: 'single_line_text_field' } };
+ const tasse = { ...becher, id: 'gid://shopify/Product/1002', handle: 'tasse-fixture' };
+ const leer = { id: 'gid://shopify/Product/1003', handle: 'leer-fixture', title: 'Muster', descriptionHtml: '', options: [], m: null };
+ 
+@@ -33,6 +33,8 @@
+   if (shop !== 'fixture.myshopify.com' || token !== 'fixture-token') throw new Error('Attrappe: unerwarteter Shop/Token');
+   appendFileSync(process.env.TEST_CALLS, JSON.stringify({query, variables}) + '\\n');
+   const state = JSON.parse(readFileSync(process.env.TEST_STATE, 'utf8'));
++  if (query.includes('MaterialApiVersion')) return {__typename:'QueryRoot'};
++  if (query.includes('MaterialVorher')) return {nodes:variables.ids.map(id=>({id,m:Object.hasOwn(state,id)?{value:state[id],type:'single_line_text_field',compareDigest:'fixture-'+id+'-'+state[id]}:null}))};
+   if (query.includes('metafieldsSet(')) {
+     for (const m of variables.m) state[m.ownerId] = m.value;
+     writeFileSync(process.env.TEST_STATE, JSON.stringify(state));
+@@ -52,7 +54,7 @@
+   const roh = join(dir, 'roh.jsonl'), plan = join(dir, 'plan.jsonl');
+   const setRoh = rows => writeFileSync(roh, rows.map(p => JSON.stringify(p)).join('\n') + '\n');
+   setRoh(produkte);
+-  writeFileSync(join(dir, 'state.json'), '{}');
++  writeFileSync(join(dir, 'state.json'), JSON.stringify(Object.fromEntries(produkte.filter(p=>p.m).map(p=>[p.id,p.m.value]))));
+   const run = (extra = {}) => {
+     // Absichtlich keine reale Umgebung vererben: nur synthetische Zugangswerte.
+     const env = { SHOPIFY_SHOP: 'fixture.myshopify.com', SHOPIFY_CLIENT_ID: 'fixture-client', SHOPIFY_CLIENT_SECRET: 'fixture-secret',
+diff --git a/automation/material_batch_lauf_test.mjs b/automation/material_batch_lauf_test.mjs
+--- a/automation/material_batch_lauf_test.mjs
++++ b/automation/material_batch_lauf_test.mjs
+@@ -20,10 +20,10 @@
+     copyFileSync(runner,join(dir,'automation/material_nachtragen.mjs'));
+     for(const file of ['material.mjs','shopify_gql.mjs','shopify_host.mjs']) copyFileSync(join(basis,'lib',file),join(dir,'automation/lib',file));
+     writeFileSync(join(dir,'automation/lib/shopify_secret.mjs'),'export const shopifyClientSecret=()=>"fixture-secret";\n');
+-    const produkte=Array.from({length:anzahl},(_,i)=>({id:`gid://shopify/Product/${1000+i}`,handle:`fixture-${i}`,title:'Musterbecher',descriptionHtml:'',options:[],m:{value:'Ceramic'}}));
++    const produkte=Array.from({length:anzahl},(_,i)=>({id:`gid://shopify/Product/${1000+i}`,handle:`fixture-${i}`,title:'Musterbecher',descriptionHtml:'',options:[],m:{value:'Ceramic',type:'single_line_text_field'}}));
+     writeFileSync(join(dir,'roh.jsonl'),produkte.map(p=>JSON.stringify(p)).join('\n')+'\n');
+-    writeFileSync(join(dir,'config.json'),JSON.stringify({arten,fehlerFeld,lesenFehlt,lesenFalsch}));
+-    writeFileSync(join(dir,'state.json'),JSON.stringify(vorbelegt?Object.fromEntries(produkte.map(p=>[p.id,'Keramik'])):{}));
++    writeFileSync(join(dir,'config.json'),JSON.stringify({arten,fehlerFeld,lesenFehlt,lesenFalsch,vorbelegt}));
++    writeFileSync(join(dir,'state.json'),JSON.stringify(Object.fromEntries(produkte.map(p=>[p.id,'Ceramic']))));
+     writeFileSync(join(dir,'netz-attrappe.mjs'),`
+ import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
+ const c=JSON.parse(readFileSync(process.env.TEST_CONFIG,'utf8'));
+@@ -36,11 +36,17 @@
+   const {query,variables}=JSON.parse(options.body);
+   appendFileSync(process.env.TEST_CALLS,JSON.stringify({query,variables})+'\\n');
+   const state=JSON.parse(readFileSync(process.env.TEST_STATE,'utf8'));
++  if(query.includes('MaterialApiVersion')) return {status:200,json:async()=>({data:{__typename:'QueryRoot'}})};
++  if(query.includes('MaterialVorher')) return {status:200,json:async()=>({data:{nodes:variables.ids.map(id=>({id,m:{value:state[id],type:'single_line_text_field',compareDigest:'fixture-'+id+'-'+state[id]}}))}})};
+   if(query.includes('metafieldsSet(')) {
+     const art=c.arten[Math.min(mutationen++,c.arten.length-1)];
+     if(art==='netzfehler') throw new Error('synthetische Verbindungsunterbrechung');
+     if(art==='http500') return {status:500,json:async()=>({})};
+-    if(art==='userErrors') return {status:200,json:async()=>({data:{metafieldsSet:{metafields:null,userErrors:[{field:c.fehlerFeld,message:'synthetisch abgelehnt',code:'INVALID_VALUE'}]}}})};
++    if(art==='userErrors') {
++      // Ein anderer Schreiber kann nach der Vorabfrage schon passende Werte gesetzt haben; unsere Mutation bleibt abgelehnt.
++      if(c.vorbelegt) {for(const m of variables.m) state[m.ownerId]=m.value;writeFileSync(process.env.TEST_STATE,JSON.stringify(state));}
++      return {status:200,json:async()=>({data:{metafieldsSet:{metafields:null,userErrors:[{field:c.fehlerFeld,message:'synthetisch abgelehnt',code:'INVALID_VALUE'}]}}})};
++    }
+     if(art==='null') return {status:200,json:async()=>({data:{metafieldsSet:null}})};
+     for(const m of variables.m) state[m.ownerId]=m.value;
+     writeFileSync(process.env.TEST_STATE,JSON.stringify(state));
+@@ -59,6 +65,8 @@
+   }
+   throw new Error('Unerwartete GraphQL-Operation');
+ };
++const fetchAttrappe=globalThis.fetch;
++globalThis.fetch=async(...args)=>{const r=await fetchAttrappe(...args);r.headers={get:n=>n.toLowerCase()==='x-shopify-api-version'?'2025-01':null};return r;};
+ `);
+     const env={SHOPIFY_SHOP:'fixture.myshopify.com',SHOPIFY_CLIENT_ID:'fixture-client',SHOPIFY_CLIENT_SECRET:'fixture-secret',
+       ROH:join(dir,'roh.jsonl'),PLAN:join(dir,'plan.jsonl'),CJ_FAKTEN_CACHE:join(dir,'cache'),TEST_CONFIG:join(dir,'config.json'),TEST_CALLS:join(dir,'calls.jsonl'),TEST_STATE:join(dir,'state.json')};
+@@ -94,7 +102,7 @@
+   const r=lauf({arten:['antwort-verloren']});assert.notEqual(r.status,0);assert.equal(mutationen(r).length,1);assert.equal(Object.keys(r.state).length,2);assert.equal(beleg(r).geschrieben,0);assert.equal(r.result.unbekannt,2);assert.match(r.stderr,/UNBEKANNT/);
+ });
+ test('Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen',()=>{
+-  const r=lauf({anzahl:26});assert.equal(r.status,0,r.stderr);assert.equal(beleg(r).geschrieben,26);assert.equal(lesungen(r).length,26);const zweite=r.calls.findIndex((c,i)=>i>0&&c.query.includes('metafieldsSet('));assert.equal(zweite,26);assert.equal(r.result.rueckgelesen,26);
++  const r=lauf({anzahl:26});assert.equal(r.status,0,r.stderr);assert.equal(beleg(r).geschrieben,26);assert.equal(lesungen(r).length,26);const pos=r.calls.map((c,i)=>c.query.includes('metafieldsSet(')?i:-1).filter(i=>i>=0);assert.equal(pos.length,2);assert.equal(r.calls.slice(pos[0]+1,pos[1]).filter(c=>c.query.startsWith('query($id:ID!)')).length,25);assert.equal(r.result.rueckgelesen,26);
+ });
+ test('Abweichende Rücklesung zählt nicht als bestätigtes Schreiben',()=>{
+   const r=lauf({lesenFalsch:['gid://shopify/Product/1000']});assert.equal(r.status,3);assert.equal(beleg(r).geschrieben,1);assert.equal(r.result.abweichungen,1);assert.equal(lesungen(r).length,2);assert.match(r.ledger,/1 Produkte/);
+diff --git a/automation/material_cas_lauf_test.mjs b/automation/material_cas_lauf_test.mjs
+new file mode 100644
+--- /dev/null
++++ b/automation/material_cas_lauf_test.mjs
+@@ -0,0 +1,91 @@
++#!/usr/bin/env node
++// Isolierter Runner-Test: echter HTTP-Helfer, künstlicher atomarer CAS-Server, kein Netzwerk.
++import assert from 'node:assert/strict';
++import { mkdirSync, mkdtempSync, copyFileSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
++import { dirname, join, resolve } from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { spawnSync } from 'node:child_process';
++const hier=dirname(fileURLToPath(import.meta.url));
++const runner=resolve(process.argv[2]||join(hier,'material_nachtragen.mjs'));
++const scratch=resolve(process.env.MATERIAL_TEST_TMP||join(hier,'.material-cas-fixtures'));
++mkdirSync(scratch,{recursive:true});
++const typ='single_line_text_field';
++const id='gid://shopify/Product/7001';
++const roh={id,handle:'cas-fixture',title:'Muster',descriptionHtml:'',options:[],m:{value:'Ceramic',type:typ}};
++const alt={value:'Ceramic',type:typ,compareDigest:'digest-vorher'};
++const neu={value:'Glass',type:typ,compareDigest:'digest-parallel'};
++let ok=0,fehler=0;
++
++function lauf({produkt=roh,frisch=alt,race,header='2025-01',nodesArt,live=true,zwei=false}={}) {
++  const dir=mkdtempSync(join(scratch,'cas-'));
++  try {
++    mkdirSync(join(dir,'automation/lib'),{recursive:true});mkdirSync(join(dir,'dropship'));mkdirSync(join(dir,'cache'));
++    copyFileSync(runner,join(dir,'automation/material_nachtragen.mjs'));
++    for(const f of ['material.mjs','shopify_gql.mjs','shopify_host.mjs']) copyFileSync(join(dirname(runner),'lib',f),join(dir,'automation/lib',f));
++    writeFileSync(join(dir,'automation/lib/shopify_secret.mjs'),'export const shopifyClientSecret=()=>"fixture-secret";\n');
++    const produkte=[produkt,...(zwei?[{...roh,id:'gid://shopify/Product/7002',handle:'cas-zweite'}]:[])];
++    writeFileSync(join(dir,'roh.jsonl'),produkte.map(p=>JSON.stringify(p)).join('\n')+'\n');
++    const state={[id]:frisch,...(zwei?{'gid://shopify/Product/7002':alt}:{})};
++    writeFileSync(join(dir,'state.json'),JSON.stringify(state));
++    writeFileSync(join(dir,'config.json'),JSON.stringify({race,header,nodesArt}));
++    writeFileSync(join(dir,'attrappe.mjs'),`
++import {readFileSync,writeFileSync,appendFileSync} from 'node:fs';
++const c=JSON.parse(readFileSync(process.env.CAS_CONFIG,'utf8'));const timer=globalThis.setTimeout;
++globalThis.setTimeout=(fn,ms,...args)=>timer(fn,0,...args);
++const reply=data=>({status:200,headers:{get:n=>n.toLowerCase()==='x-shopify-api-version'?c.header:null},json:async()=>({data})});
++globalThis.fetch=async(url,opt)=>{
++  if(String(url)==='https://fixture.myshopify.com/admin/oauth/access_token' && opt?.method==='POST') return {status:200,json:async()=>({access_token:'fixture-token'})};
++  if(String(url)!=='https://fixture.myshopify.com/admin/api/2025-01/graphql.json' || opt?.method!=='POST') throw new Error('Testnetz gesperrt');
++  const {query,variables}=JSON.parse(opt.body);appendFileSync(process.env.CAS_CALLS,JSON.stringify({query,variables})+'\\n');
++  const state=JSON.parse(readFileSync(process.env.CAS_STATE,'utf8'));
++  if(query.includes('MaterialApiVersion')) return reply({__typename:'QueryRoot'});
++  if(query.includes('MaterialVorher')) {
++    if(c.nodesArt==='schemafehler') return {status:200,headers:{get:()=>c.header},json:async()=>({errors:[{message:'Field compareDigest does not exist'}]})};
++    if(c.nodesArt==='fehlend') return reply({});
++    let nodes=variables.ids.map(id=>({id,m:state[id]}));
++    if(c.nodesArt==='null') nodes[0]=null;
++    if(c.nodesArt==='doppelt') nodes[1]=nodes[0];
++    if(c.nodesArt==='fremd') nodes[0].id='gid://shopify/Product/9999';
++    if(c.nodesArt==='ohne-m') delete nodes[0].m;
++    return reply({nodes});
++  }
++  if(query.includes('metafieldsSet(')) {
++    if(Object.hasOwn(c,'race')) state[variables.m[0].ownerId]=c.race;
++    const konflikt=variables.m.some(m=>Object.hasOwn(m,'compareDigest') && (m.compareDigest===null ? state[m.ownerId]!==null : state[m.ownerId]?.compareDigest!==m.compareDigest));
++    if(konflikt) {writeFileSync(process.env.CAS_STATE,JSON.stringify(state));return reply({metafieldsSet:{metafields:null,userErrors:[{field:['metafields','0','compareDigest'],message:'synthetischer paralleler Schreibvorgang',code:'STALE_OBJECT'}]}});}
++    for(const m of variables.m) state[m.ownerId]={value:m.value,type:m.type,compareDigest:'digest-danach'};
++    writeFileSync(process.env.CAS_STATE,JSON.stringify(state));
++    return reply({metafieldsSet:{metafields:variables.m.map(()=>({key:'material'})),userErrors:[]}});
++  }
++  if(query.startsWith('query($id:ID!)')) return reply({product:{m:state[variables.id]}});
++  throw new Error('Unerwartete Operation');
++};
++`);
++    const env={SHOPIFY_SHOP:'fixture.myshopify.com',SHOPIFY_CLIENT_ID:'fixture-client',SHOPIFY_CLIENT_SECRET:'fixture-secret',ROH:join(dir,'roh.jsonl'),PLAN:join(dir,'plan.jsonl'),CJ_FAKTEN_CACHE:join(dir,'cache'),CAS_CONFIG:join(dir,'config.json'),CAS_STATE:join(dir,'state.json'),CAS_CALLS:join(dir,'calls.jsonl')};
++    if(live) env.LIVE='1';
++    const r=spawnSync(process.execPath,['--import',join(dir,'attrappe.mjs'),join(dir,'automation/material_nachtragen.mjs')],{cwd:dir,env,encoding:'utf8',timeout:10000});
++    assert.equal(r.error,undefined,r.error?.message);
++    const calls=existsSync(env.CAS_CALLS)?readFileSync(env.CAS_CALLS,'utf8').trim().split('\n').filter(Boolean).map(JSON.parse):[];
++    return {status:r.status,stdout:r.stdout,stderr:r.stderr,calls,state:JSON.parse(readFileSync(env.CAS_STATE,'utf8')),result:r.stdout.split('\n').filter(l=>l.startsWith('{')).map(JSON.parse).find(o=>Object.hasOwn(o,'geschrieben'))};
++  } finally {rmSync(dir,{recursive:true,force:true});}
++}
++const mut=r=>r.calls.filter(c=>c.query.includes('metafieldsSet('));
++function test(name,fn){try{fn();ok++;console.log('OK '+name);}catch(e){fehler++;console.error('FEHLER '+name+': '+e.message);}}
++function block(r){assert.notEqual(r.status,0,r.stdout);assert.equal(mut(r).length,0);}
++const ohne={...roh,descriptionHtml:'<p>Material: Keramik</p>',m:null};
++
++test('Trockenlauf benötigt keinen Versions- oder Produktzugriff',()=>{const r=lauf({live:false});assert.equal(r.status,0);assert.equal(r.calls.length,0);});
++test('Unveränderter Wert sendet den frisch gelesenen Digest',()=>{const r=lauf();assert.equal(r.status,0,r.stderr);assert.equal(mut(r)[0].variables.m[0].compareDigest,alt.compareDigest);assert.equal(r.result.geschrieben,1);assert.ok(r.calls.findIndex(c=>c.query.includes('MaterialVorher'))<r.calls.findIndex(c=>c.query.includes('metafieldsSet(')));});
++test('Sicher fehlendes Feld benutzt explizites null',()=>{const r=lauf({produkt:ohne,frisch:null});assert.equal(r.status,0,r.stderr);const m=mut(r)[0].variables.m[0];assert.ok(Object.hasOwn(m,'compareDigest'));assert.equal(m.compareDigest,null);});
++test('Bestehendes leeres Feld benutzt Digest statt null',()=>{const p={...ohne,m:{value:'',type:typ}};const r=lauf({produkt:p,frisch:{value:'',type:typ,compareDigest:'leer-existiert'}});assert.equal(r.status,0,r.stderr);assert.equal(mut(r)[0].variables.m[0].compareDigest,'leer-existiert');});
++for(const [name,frisch] of [['geänderter Wert',neu],['gelöschtes Feld',null],['geänderter Typ',{...alt,type:'multi_line_text_field'}],['Leerzeichen im Vorwert',{...alt,value:' Ceramic '}]]) test('Frische Gegenprobe blockiert '+name,()=>{const r=lauf({frisch});block(r);assert.deepEqual(r.state[id],frisch);});
++test('Geplante Neuanlage überschreibt keinen inzwischen vorhandenen Wert',()=>{const r=lauf({produkt:ohne,frisch:neu});block(r);assert.deepEqual(r.state[id],neu);});
++for(const [name,frisch] of [['fehlender Digest',{value:'Ceramic',type:typ}],['leerer Digest',{...alt,compareDigest:''}],['fehlender Typ',{value:'Ceramic',compareDigest:'a'}],['fehlender Wert',{type:typ,compareDigest:'a'}]]) test('Unbekannte Vorherdaten sperren: '+name,()=>{block(lauf({frisch}));});
++test('Alter Rohstand ohne Typ ist keine Schreibfreigabe',()=>{block(lauf({produkt:{...roh,m:{value:'Ceramic'}}}));});
++test('Fehlender Roh-Metafeldschlüssel ist nicht sicher abwesend',()=>{const p={...ohne};delete p.m;block(lauf({produkt:p,frisch:null}));});
++for(const nodesArt of ['fehlend','null','doppelt','fremd','ohne-m','schemafehler']) test('Unvollständige Vorabantwort sperrt: '+nodesArt,()=>{block(lauf({nodesArt,zwei:nodesArt==='doppelt'}));});
++for(const [name,produkt,frisch,race] of [['Update-Race',roh,alt,neu],['Create-Race',ohne,null,neu],['Delete-Race',roh,alt,null],['Typ-Race',roh,alt,{...neu,type:'multi_line_text_field'}]]) test(name+' bleibt atomar abgelehnt',()=>{
++  const r=lauf({produkt,frisch,race,zwei:true});assert.notEqual(r.status,0);assert.equal(mut(r).length,1);assert.equal(r.result.geschrieben,0);assert.equal(r.result.fehler,2);assert.deepEqual(r.state[id],race);assert.deepEqual(r.state['gid://shopify/Product/7002'],alt);
++});
++for(const header of [null,'2026-01']) test('Ungeklärte oder ersetzte API-Version sperrt: '+header,()=>{const r=lauf({header});block(r);assert.match(r.stderr,/API-Version/);});
++console.log(`${ok} ok, ${fehler} Fehler`);process.exitCode=fehler?1:0;
+diff --git a/.github/workflows/luxestyle-automation-tests.yml b/.github/workflows/luxestyle-automation-tests.yml
+--- a/.github/workflows/luxestyle-automation-tests.yml
++++ b/.github/workflows/luxestyle-automation-tests.yml
+@@ -229,6 +229,7 @@
+           node automation/fortschritt_daten_test.mjs
+           node automation/material_plan_lauf_test.mjs
+           node automation/material_batch_lauf_test.mjs
++          node automation/material_cas_lauf_test.mjs
+           node automation/optionen_reparieren_test.mjs
+           node automation/lieferzeit_fortura_test.mjs
+           node automation/optionen_uebersetzen_test.mjs
