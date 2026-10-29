@@ -655,3 +655,11 @@ Root-`CLAUDE.md` und `SHARED-MEMORY.md` verlinken diese Übergabe auf demselben 
 
 
 
+
+
+
+## 29.10.2026 – separate Startseitenvorschau und zweiter CSV-Export
+
+[Native Vorschau](https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit) im bestehenden UNPUBLISHED-Theme gespeichert und exakt zurückgelesen. Neue Gestaltung, mobile Suche/Navigation, echte Produktbilder; native Prüfung bei 1440/390/360 px erfolgreich. Öffentliche Startseite und ursprüngliche Templates erhalten. [Bericht](STARTSEITEN-VORSCHAU-20261029.md), [Belege](STARTSEITEN-BELEGE-20261029.json), [Theme-Diff](STARTSEITEN-THEME-20261029.patch), [gleicher Master/Web-Vorgabe](STARTSEITEN-VIDEO-20261029.md). Kein fertiger neuer Film; Originaltakes/Rechte fehlen weiter. Abnahme und finale Live-Integration offen; Claude-Kenntnisnahme unbekannt.
+
+[Zweiter Merchant-Export](MERCHANT-ZWEITER-EXPORT-20261029.md) jetzt vollständig über Drive gelesen: 96’530 Zeilen / 31’083 IDs, anderer Scope; keine Preisfehlertitel oder exakte ID-Schnittmenge. Datenquellen-/URL-Felder fehlen weiter; kein Merchant-Fix behauptet. Frühere 32-MiB-Inhaltsblockade gelöst. [Belege](MERCHANT-ZWEITER-EXPORT-BELEGE-20261029.json). Arbeitsstand-Revision 13; kein zusätzlicher Tagesreport/Kaufcheck.
