@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "copy-iphone-15422939988353",
+  "revision": 1,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T06:35:15.338Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "iPhone-Hülle: zwei Textfelder korrigiert und frisch zurückgelesen",
+  "summary": "Umsetzungsbeleg für descriptionHtml und seo.description, aktualisiert 29.10.2026 06:24:04Z. Editor, Ausführungszuordnung, bestehende Materialliste und Retourenblock erhalten. Keine neue Produktfunktion oder Rabattänderung.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/IPHONE-TEXT-UMSETZUNG-20261029.md",
+      "sha256": "4bc660e793a409e32018bb95ba1e2313477ac3c69f2a659697d76bc9493317fd",
+      "gitBlobSha": "30310fea718159155f1180bdefb4f981a8c9f2a4"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/IPHONE-TEXT-UMSETZUNG-20261029.json",
+      "sha256": "568a40fa3478edf50b747a77f457b38e30a396342cc863154aed74bf9a826956",
+      "gitBlobSha": "28e63b68b7beccbc0b2ab036fbfb7f5332c6c734"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/IPHONE-TEXT-20261029.diff",
+      "sha256": "9a2e8f9c0f8adf2a1baefb86d53a887c3c17365fab9a8a799c45279cb1633b47",
+      "gitBlobSha": "d4e052e49ad15af24aa5250eb5608933b6155038"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": null
+}
