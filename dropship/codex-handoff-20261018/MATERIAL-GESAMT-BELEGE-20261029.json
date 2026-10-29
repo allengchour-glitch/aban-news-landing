@@ -1,0 +1,677 @@
+{
+  "schemaVersion": 1,
+  "taskId": "product-attribute-completeness",
+  "purpose": "review_only_complete_integration_not_deployment",
+  "at": "2026-10-29T20:22:29.975072+00:00",
+  "manifest": {
+    "taskId": "product-attribute-completeness",
+    "kind": "local_integration_candidate",
+    "main": "a74459a94a800b24d4b348332154d25f516920b8",
+    "sourceReadAt": "2026-10-29T20:17:03.399Z",
+    "files": [
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "beforeExists": true,
+        "beforeSha256": "c230d87af87ff7a5ade737607d80860983f550b276b21310af03f9e529feb676",
+        "beforeGitBlobSha": "979c484b6e144c4f428f343a964cf664d4573a86",
+        "afterSha256": "55657f4ad231fbffcd67e4bce176c2439a5f893482ce1dec58635cbcbadd81ae",
+        "afterGitBlobSha": "26fe2571fe3d5067ec047e8dd7bfb0b94f8a09d2",
+        "bytes": 16282
+      },
+      {
+        "path": "automation/fortschritt_daten.mjs",
+        "beforeExists": true,
+        "beforeSha256": "ac2b47c92a0d6ff760cfad67f86edc20acbbbfa4123660e240ff7c798894f588",
+        "beforeGitBlobSha": "1b38af146f5a91496749339f57adc7567b150b9d",
+        "afterSha256": "0f6df84c1cafd112ad98752c9dd93cfc6c581fda3642a7cda42b58d6ef01ef72",
+        "afterGitBlobSha": "9a1069393ecd1ff91f6503c18d8e59e0781fc443",
+        "bytes": 5269
+      },
+      {
+        "path": "automation/fortschritt_daten_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "b112655749da58f7b123d277d46b89d1246b0970d4124a16bac0f8e30b8c39cc",
+        "afterGitBlobSha": "1bfd13cb00aa88ac5d05281c52090c8781c77be7",
+        "bytes": 6961
+      },
+      {
+        "path": "automation/lib/material.mjs",
+        "beforeExists": true,
+        "beforeSha256": "e5065eb1f2f9b2ffb4b2c03d9ef158859c80902904937323328473bdfaaf6b29",
+        "beforeGitBlobSha": "cf6a6b663000c0c108b064afcdf4ccd6ed543a8a",
+        "afterSha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+        "afterGitBlobSha": "f3e6b44c870ca1e71b262676fc98d7507b399128",
+        "bytes": 24173
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "beforeExists": true,
+        "beforeSha256": "9670987286d11dac0dc5075313feb87e0ea4bf3642c292f9b29c8838b2aebf3e",
+        "beforeGitBlobSha": "b5e1c1fb2c0991b85771890fe1cfc3a6389512c2",
+        "afterSha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+        "afterGitBlobSha": "97d1e57b9b1889f9ca63a3e250f4f1ca7d50be38",
+        "bytes": 28599
+      },
+      {
+        "path": "automation/lib/material_test_fixture.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "b0e237e2f14bbdb3703d938f344c1e5afd6027c5e8a8b4e867fe4338a5639e92",
+        "afterGitBlobSha": "4f87e4588b0b2a3e7ce7d7abc2310d85e0f10aa0",
+        "bytes": 2060
+      },
+      {
+        "path": "automation/lib/material_write_ledger.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "bb5e1ee3066e48cf7de5a9e6864a00c88c051827deebdf0c7c5de4e70d5d46f4",
+        "afterGitBlobSha": "a7f180085d2940c8019784f34b0674205d2a4b73",
+        "bytes": 18738
+      },
+      {
+        "path": "automation/lib/material_write_ledger_binding_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "e387723b16ac210d18083fea7b116fd6e34e160e0b2da3449a4c24b5e03e5e25",
+        "afterGitBlobSha": "d713aa38935e05c13022b12314a50a55ddc85419",
+        "bytes": 5286
+      },
+      {
+        "path": "automation/lib/material_write_ledger_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "a3570555de463de0a61c7e50453fc98694204321409c40a7a47a3ddf40854808",
+        "afterGitBlobSha": "6d8ad00bdc223823cea847a0582a37d552e5692d",
+        "bytes": 14015
+      },
+      {
+        "path": "automation/material_abschluss_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "78c5bc22c0c9875372c36a7c11d008ba95bc8de33d8f7b16a202a4231b285e27",
+        "afterGitBlobSha": "f0ccb596136265042a9db86a8922b86b27612de2",
+        "bytes": 14997
+      },
+      {
+        "path": "automation/material_batch_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "2da51d8f963955ccbcea46ed82811fb2ecaa1544c6f6e8a0966d7ebd87d05259",
+        "afterGitBlobSha": "ac23efbc28995a9846734e74f2beb96ba652cbf8",
+        "bytes": 11485
+      },
+      {
+        "path": "automation/material_cas_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "afd10932ef1171dbf63e4561665dbca24940c87c696c2a0e940ef5e0ddc8728e",
+        "afterGitBlobSha": "40cf96b8bb661fca70caa4e62e81710da56ab32f",
+        "bytes": 9189
+      },
+      {
+        "path": "automation/material_nachtragen.mjs",
+        "beforeExists": true,
+        "beforeSha256": "c3fd4c5362811ae34c1b42cefc753943c0f760b5135ba6f59ff8a7f61df73a9e",
+        "beforeGitBlobSha": "fbdbc9d1e0dd96e402602454828d7b69ab169576",
+        "afterSha256": "af06b45507039d253f197878423bc20a6a06921447affcb90e2013e0f0fcec12",
+        "afterGitBlobSha": "85ff0f33d9ada9b9742474ad085fa6a373b766e5",
+        "bytes": 20404
+      },
+      {
+        "path": "automation/material_plan_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeSha256": null,
+        "beforeGitBlobSha": null,
+        "afterSha256": "ae34bb1aeefb2abc811fd1fb4b62e7b698c5ea5bbdcd875791e977d875d16c1e",
+        "afterGitBlobSha": "f736cd5a658453a1c3315c8e3a5c3dbc282ee5d1",
+        "bytes": 11486
+      }
+    ],
+    "chain": [
+      {
+        "stage": "r1",
+        "dryRun": true,
+        "exitCode": 0,
+        "output": "checking file automation/lib/material.mjs\nchecking file automation/lib/material_test.mjs\nchecking file automation/material_nachtragen.mjs\nchecking file automation/material_plan_lauf_test.mjs\nchecking file automation/fortschritt_daten.mjs\nchecking file automation/fortschritt_daten_test.mjs\nchecking file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/attribute-work-20261029/integration/PRODUKTANGABEN-KORREKTUREN.patch",
+        "sha256": "2327e4e98f0ca73f180f8a3b11bdd53de6299f8dc93a8d8ae005671431e33a72"
+      },
+      {
+        "stage": "r1",
+        "dryRun": false,
+        "exitCode": 0,
+        "output": "patching file automation/lib/material.mjs\npatching file automation/lib/material_test.mjs\npatching file automation/material_nachtragen.mjs\npatching file automation/material_plan_lauf_test.mjs\npatching file automation/fortschritt_daten.mjs\npatching file automation/fortschritt_daten_test.mjs\npatching file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/attribute-work-20261029/integration/PRODUKTANGABEN-KORREKTUREN.patch",
+        "sha256": "2327e4e98f0ca73f180f8a3b11bdd53de6299f8dc93a8d8ae005671431e33a72"
+      },
+      {
+        "stage": "r2",
+        "dryRun": true,
+        "exitCode": 0,
+        "output": "checking file automation/material_nachtragen.mjs\nchecking file automation/material_batch_lauf_test.mjs\nchecking file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/selected-four-20261029/integration/R1-ZU-R2.patch",
+        "sha256": "bab517e0811079616bfccc3ede9cff688dc3b3f25b2326fc88fe4b5086be6b36"
+      },
+      {
+        "stage": "r2",
+        "dryRun": false,
+        "exitCode": 0,
+        "output": "patching file automation/material_nachtragen.mjs\npatching file automation/material_batch_lauf_test.mjs\npatching file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/selected-four-20261029/integration/R1-ZU-R2.patch",
+        "sha256": "bab517e0811079616bfccc3ede9cff688dc3b3f25b2326fc88fe4b5086be6b36"
+      },
+      {
+        "stage": "r3",
+        "dryRun": true,
+        "exitCode": 0,
+        "output": "checking file automation/material_nachtragen.mjs\nchecking file automation/material_plan_lauf_test.mjs\nchecking file automation/material_batch_lauf_test.mjs\nchecking file automation/material_cas_lauf_test.mjs\nchecking file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/material-r3-20261029/R2-ZU-R3.patch",
+        "sha256": "5c4a8b0d440042fc6d15ff0ec6742864ebd89ba9b4da544d94f415c9df2fa44f"
+      },
+      {
+        "stage": "r3",
+        "dryRun": false,
+        "exitCode": 0,
+        "output": "patching file automation/material_nachtragen.mjs\npatching file automation/material_plan_lauf_test.mjs\npatching file automation/material_batch_lauf_test.mjs\npatching file automation/material_cas_lauf_test.mjs\npatching file .github/workflows/luxestyle-automation-tests.yml\n",
+        "source": "/workspace/luxestyle-review/material-r3-20261029/R2-ZU-R3.patch",
+        "sha256": "5c4a8b0d440042fc6d15ff0ec6742864ebd89ba9b4da544d94f415c9df2fa44f"
+      },
+      {
+        "stage": "r4",
+        "dryRun": true,
+        "exitCode": 0,
+        "output": "checking file automation/material_nachtragen.mjs\nchecking file automation/material_plan_lauf_test.mjs\nchecking file automation/material_batch_lauf_test.mjs\nchecking file automation/material_cas_lauf_test.mjs\nchecking file automation/material_abschluss_lauf_test.mjs\nchecking file .github/workflows/luxestyle-automation-tests.yml\nchecking file automation/lib/material_write_ledger.mjs\nchecking file automation/lib/material_write_ledger_test.mjs\nchecking file automation/lib/material_write_ledger_binding_test.mjs\nchecking file automation/lib/material_test_fixture.mjs\n",
+        "source": "/workspace/luxestyle-review/fix-all-20261029/material/integration/R3-ZU-R4-INTEGRIERT.patch",
+        "sha256": "e8a688c1c5f7e4bbdb0b9bf6518850ac15dc9cb4933afac1bbcc0725ccae0a82"
+      },
+      {
+        "stage": "r4",
+        "dryRun": false,
+        "exitCode": 0,
+        "output": "patching file automation/material_nachtragen.mjs\npatching file automation/material_plan_lauf_test.mjs\npatching file automation/material_batch_lauf_test.mjs\npatching file automation/material_cas_lauf_test.mjs\npatching file automation/material_abschluss_lauf_test.mjs\npatching file .github/workflows/luxestyle-automation-tests.yml\npatching file automation/lib/material_write_ledger.mjs\npatching file automation/lib/material_write_ledger_test.mjs\npatching file automation/lib/material_write_ledger_binding_test.mjs\npatching file automation/lib/material_test_fixture.mjs\n",
+        "source": "/workspace/luxestyle-review/fix-all-20261029/material/integration/R3-ZU-R4-INTEGRIERT.patch",
+        "sha256": "e8a688c1c5f7e4bbdb0b9bf6518850ac15dc9cb4933afac1bbcc0725ccae0a82"
+      },
+      {
+        "stage": "quellen",
+        "dryRun": true,
+        "exitCode": 0,
+        "output": "checking file automation/lib/material.mjs\nchecking file automation/lib/material_test.mjs\n",
+        "source": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/material-source-conflicts.patch",
+        "sha256": "4990b58feae335539e60f7335e2ee1ce0c7c95edf900f9fe7297165dba4fa809"
+      },
+      {
+        "stage": "quellen",
+        "dryRun": false,
+        "exitCode": 0,
+        "output": "patching file automation/lib/material.mjs\npatching file automation/lib/material_test.mjs\n",
+        "source": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/material-source-conflicts.patch",
+        "sha256": "4990b58feae335539e60f7335e2ee1ce0c7c95edf900f9fe7297165dba4fa809"
+      }
+    ],
+    "exactExpectedFiles": [
+      {
+        "path": "automation/lib/material.mjs",
+        "expectedSource": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/after/automation/lib/material.mjs",
+        "actualSha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+        "expectedSha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+        "equal": true
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/after/automation/lib/material_test.mjs",
+        "actualSha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+        "expectedSha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+        "equal": true
+      },
+      {
+        "path": "automation/material_nachtragen.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-1.json",
+        "actualSha256": "af06b45507039d253f197878423bc20a6a06921447affcb90e2013e0f0fcec12",
+        "expectedSha256": "af06b45507039d253f197878423bc20a6a06921447affcb90e2013e0f0fcec12",
+        "equal": true
+      },
+      {
+        "path": "automation/material_plan_lauf_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-1.json",
+        "actualSha256": "ae34bb1aeefb2abc811fd1fb4b62e7b698c5ea5bbdcd875791e977d875d16c1e",
+        "expectedSha256": "ae34bb1aeefb2abc811fd1fb4b62e7b698c5ea5bbdcd875791e977d875d16c1e",
+        "equal": true
+      },
+      {
+        "path": "automation/fortschritt_daten.mjs",
+        "expectedSource": "/workspace/luxestyle-review/selected-four-20261029/integration/CODEPAKET-R2-TEIL-1.json",
+        "actualSha256": "0f6df84c1cafd112ad98752c9dd93cfc6c581fda3642a7cda42b58d6ef01ef72",
+        "expectedSha256": "0f6df84c1cafd112ad98752c9dd93cfc6c581fda3642a7cda42b58d6ef01ef72",
+        "equal": true
+      },
+      {
+        "path": "automation/fortschritt_daten_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/selected-four-20261029/integration/CODEPAKET-R2-TEIL-1.json",
+        "actualSha256": "b112655749da58f7b123d277d46b89d1246b0970d4124a16bac0f8e30b8c39cc",
+        "expectedSha256": "b112655749da58f7b123d277d46b89d1246b0970d4124a16bac0f8e30b8c39cc",
+        "equal": true
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-2.json",
+        "actualSha256": "55657f4ad231fbffcd67e4bce176c2439a5f893482ce1dec58635cbcbadd81ae",
+        "expectedSha256": "55657f4ad231fbffcd67e4bce176c2439a5f893482ce1dec58635cbcbadd81ae",
+        "equal": true
+      },
+      {
+        "path": "automation/material_batch_lauf_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-1.json",
+        "actualSha256": "2da51d8f963955ccbcea46ed82811fb2ecaa1544c6f6e8a0966d7ebd87d05259",
+        "expectedSha256": "2da51d8f963955ccbcea46ed82811fb2ecaa1544c6f6e8a0966d7ebd87d05259",
+        "equal": true
+      },
+      {
+        "path": "automation/material_cas_lauf_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-1.json",
+        "actualSha256": "afd10932ef1171dbf63e4561665dbca24940c87c696c2a0e940ef5e0ddc8728e",
+        "expectedSha256": "afd10932ef1171dbf63e4561665dbca24940c87c696c2a0e940ef5e0ddc8728e",
+        "equal": true
+      },
+      {
+        "path": "automation/material_abschluss_lauf_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-1.json",
+        "actualSha256": "78c5bc22c0c9875372c36a7c11d008ba95bc8de33d8f7b16a202a4231b285e27",
+        "expectedSha256": "78c5bc22c0c9875372c36a7c11d008ba95bc8de33d8f7b16a202a4231b285e27",
+        "equal": true
+      },
+      {
+        "path": "automation/lib/material_write_ledger.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-2.json",
+        "actualSha256": "bb5e1ee3066e48cf7de5a9e6864a00c88c051827deebdf0c7c5de4e70d5d46f4",
+        "expectedSha256": "bb5e1ee3066e48cf7de5a9e6864a00c88c051827deebdf0c7c5de4e70d5d46f4",
+        "equal": true
+      },
+      {
+        "path": "automation/lib/material_write_ledger_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-2.json",
+        "actualSha256": "a3570555de463de0a61c7e50453fc98694204321409c40a7a47a3ddf40854808",
+        "expectedSha256": "a3570555de463de0a61c7e50453fc98694204321409c40a7a47a3ddf40854808",
+        "equal": true
+      },
+      {
+        "path": "automation/lib/material_write_ledger_binding_test.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-2.json",
+        "actualSha256": "e387723b16ac210d18083fea7b116fd6e34e160e0b2da3449a4c24b5e03e5e25",
+        "expectedSha256": "e387723b16ac210d18083fea7b116fd6e34e160e0b2da3449a4c24b5e03e5e25",
+        "equal": true
+      },
+      {
+        "path": "automation/lib/material_test_fixture.mjs",
+        "expectedSource": "/workspace/luxestyle-review/fix-all-20261029/material/integration/CODEPAKET-R4-TEIL-2.json",
+        "actualSha256": "b0e237e2f14bbdb3703d938f344c1e5afd6027c5e8a8b4e867fe4338a5639e92",
+        "expectedSha256": "b0e237e2f14bbdb3703d938f344c1e5afd6027c5e8a8b4e867fe4338a5639e92",
+        "equal": true
+      }
+    ],
+    "patchSha256": "7129dc2f23b5d6191257c4fa6dff4f3064f2abee60fbfc610764743c6c55b606",
+    "reversePatchSha256": "3e6cef40d1afd5d3e097c9c4c2dcbf6ef89276452841d7e46bdb863046decff4",
+    "deployment": false,
+    "shopWrites": false,
+    "workflowStarts": false
+  },
+  "validation": {
+    "at": "2026-10-29T20:19:46.102957+00:00",
+    "reason": "Erstmaliger Gesamtpatch aus fünf Stufen auf frisch gelesener main-Basis, unveränderte aktuelle Hilfsmodule eingeschlossen",
+    "main": "a74459a94a800b24d4b348332154d25f516920b8",
+    "remoteOperations": false,
+    "checks": [
+      {
+        "direction": "forward",
+        "exactFiles": 14,
+        "commands": [
+          {
+            "dryRun": true,
+            "exitCode": 0,
+            "output": "checking file .github/workflows/luxestyle-automation-tests.yml\nchecking file automation/fortschritt_daten.mjs\nchecking file automation/fortschritt_daten_test.mjs\nchecking file automation/lib/material.mjs\nchecking file automation/lib/material_test.mjs\nchecking file automation/lib/material_test_fixture.mjs\nchecking file automation/lib/material_write_ledger.mjs\nchecking file automation/lib/material_write_ledger_binding_test.mjs\nchecking file automation/lib/material_write_ledger_test.mjs\nchecking file automation/material_abschluss_lauf_test.mjs\nchecking file automation/material_batch_lauf_test.mjs\nchecking file automation/material_cas_lauf_test.mjs\nchecking file automation/material_nachtragen.mjs\nchecking file automation/material_plan_lauf_test.mjs\n"
+          },
+          {
+            "dryRun": false,
+            "exitCode": 0,
+            "output": "patching file .github/workflows/luxestyle-automation-tests.yml\npatching file automation/fortschritt_daten.mjs\npatching file automation/fortschritt_daten_test.mjs\npatching file automation/lib/material.mjs\npatching file automation/lib/material_test.mjs\npatching file automation/lib/material_test_fixture.mjs\npatching file automation/lib/material_write_ledger.mjs\npatching file automation/lib/material_write_ledger_binding_test.mjs\npatching file automation/lib/material_write_ledger_test.mjs\npatching file automation/material_abschluss_lauf_test.mjs\npatching file automation/material_batch_lauf_test.mjs\npatching file automation/material_cas_lauf_test.mjs\npatching file automation/material_nachtragen.mjs\npatching file automation/material_plan_lauf_test.mjs\n"
+          }
+        ]
+      },
+      {
+        "direction": "reverse",
+        "exactFiles": 14,
+        "commands": [
+          {
+            "dryRun": true,
+            "exitCode": 0,
+            "output": "checking file .github/workflows/luxestyle-automation-tests.yml\nchecking file automation/fortschritt_daten.mjs\nchecking file automation/fortschritt_daten_test.mjs\nchecking file automation/lib/material.mjs\nchecking file automation/lib/material_test.mjs\nchecking file automation/lib/material_test_fixture.mjs\nchecking file automation/lib/material_write_ledger.mjs\nchecking file automation/lib/material_write_ledger_binding_test.mjs\nchecking file automation/lib/material_write_ledger_test.mjs\nchecking file automation/material_abschluss_lauf_test.mjs\nchecking file automation/material_batch_lauf_test.mjs\nchecking file automation/material_cas_lauf_test.mjs\nchecking file automation/material_nachtragen.mjs\nchecking file automation/material_plan_lauf_test.mjs\n"
+          },
+          {
+            "dryRun": false,
+            "exitCode": 0,
+            "output": "patching file .github/workflows/luxestyle-automation-tests.yml\npatching file automation/fortschritt_daten.mjs\npatching file automation/fortschritt_daten_test.mjs\npatching file automation/lib/material.mjs\npatching file automation/lib/material_test.mjs\npatching file automation/lib/material_test_fixture.mjs\npatching file automation/lib/material_write_ledger.mjs\npatching file automation/lib/material_write_ledger_binding_test.mjs\npatching file automation/lib/material_write_ledger_test.mjs\npatching file automation/material_abschluss_lauf_test.mjs\npatching file automation/material_batch_lauf_test.mjs\npatching file automation/material_cas_lauf_test.mjs\npatching file automation/material_nachtragen.mjs\npatching file automation/material_plan_lauf_test.mjs\n"
+          }
+        ]
+      }
+    ],
+    "node": "v24.19.0",
+    "node22Available": false,
+    "syntax": [
+      {
+        "file": "automation/fortschritt_daten.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/fortschritt_daten_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material_test_fixture.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material_write_ledger.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material_write_ledger_binding_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/lib/material_write_ledger_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/material_abschluss_lauf_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/material_batch_lauf_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/material_cas_lauf_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/material_nachtragen.mjs",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "file": "automation/material_plan_lauf_test.mjs",
+        "exitCode": 0,
+        "output": ""
+      }
+    ],
+    "suites": [
+      {
+        "name": "library",
+        "path": "automation/lib/material_test.mjs",
+        "exitCode": 0,
+        "passed": 269,
+        "failed": 0,
+        "log": "logs/library.log",
+        "logSha256": "248f62c1773d5d69b01c1f04a08b0b499a111022338f412d8ef77e713c858572"
+      },
+      {
+        "name": "progress",
+        "path": "automation/fortschritt_daten_test.mjs",
+        "exitCode": 0,
+        "passed": 12,
+        "failed": 0,
+        "log": "logs/progress.log",
+        "logSha256": "0a1198bdd5791c6758c539f4b46d14012cb04d008559eeeaad50da864205552b"
+      },
+      {
+        "name": "plan",
+        "path": "automation/material_plan_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 16,
+        "failed": 0,
+        "log": "logs/plan.log",
+        "logSha256": "ebedfaa4e77130f32fe08b13784c6f5b6c603225e4d14f326412a5917498e838"
+      },
+      {
+        "name": "batch",
+        "path": "automation/material_batch_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 20,
+        "failed": 0,
+        "log": "logs/batch.log",
+        "logSha256": "c979e8c9960dbce4f6be372f45ab71230d9fd976e63fcc07f358ad8d541ffb86"
+      },
+      {
+        "name": "cas",
+        "path": "automation/material_cas_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 27,
+        "failed": 0,
+        "log": "logs/cas.log",
+        "logSha256": "efbdf3b3c345404f95c1765e4813e8cbb768143dbf3e2e44365a21cdb34ca06b"
+      },
+      {
+        "name": "abschluss",
+        "path": "automation/material_abschluss_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 41,
+        "failed": 0,
+        "log": "logs/abschluss.log",
+        "logSha256": "75c9db84992e9070c6623b7c7f50fbbe95c1f4fff79590696b2585bf4c4af400"
+      },
+      {
+        "name": "ledger",
+        "path": "automation/lib/material_write_ledger_test.mjs",
+        "exitCode": 0,
+        "passed": 44,
+        "failed": 0,
+        "log": "logs/ledger.log",
+        "logSha256": "1eabc46065b37faa308b73c855d2095c9afcf8a16784af5aa1424aa086677366"
+      },
+      {
+        "name": "ledger-binding",
+        "path": "automation/lib/material_write_ledger_binding_test.mjs",
+        "exitCode": 0,
+        "passed": 11,
+        "failed": 0,
+        "log": "logs/ledger-binding.log",
+        "logSha256": "7f270a5562786fc1f08dc1c9b7bc2e60bcc7d99618226ccf1f40c85721627a22"
+      }
+    ],
+    "allSuitesPassed": true,
+    "counting": "Erneute Integrationsprüfung vorhandener Tests, nicht als neu entwickelte Tests zählen.",
+    "fullCI": {
+      "status": "unknown_not_executed",
+      "reason": "Vollständiger committeter Archivstand und Node22 fehlen lokal; vorhandener Helfer benötigt zudem unshare-Mount und schreibt seinen Plan ausserhalb des erlaubten isolierten Verzeichnisses. Keine Umgehung, kein Workflowstart."
+    },
+    "measurementCorrection": "Erster Zusammenfassungsparser erkannte material_test: 269 Prüfungen ok nicht. Originaler Exitcode war 0; vorhandenes hashgeprüftes Log und letzte Testzeile gegengeprüft, Parser ergänzt. Kein Test erneut ausgeführt."
+  },
+  "countercheck": {
+    "postTestCandidateHashesUnchanged": true,
+    "yamlValid": true,
+    "workflowAddedLines": [
+      "          node automation/fortschritt_daten_test.mjs",
+      "          node automation/material_plan_lauf_test.mjs",
+      "          node automation/material_batch_lauf_test.mjs",
+      "          node automation/material_cas_lauf_test.mjs",
+      "          node automation/material_abschluss_lauf_test.mjs",
+      "          node automation/lib/material_write_ledger_test.mjs",
+      "          node automation/lib/material_write_ledger_binding_test.mjs"
+    ],
+    "workflowRemovedLines": [],
+    "triggersPermissionsTimeoutUnchanged": true,
+    "gitApplyChecks": [
+      {
+        "tree": "main",
+        "exitCode": 0,
+        "output": ""
+      },
+      {
+        "tree": "candidate",
+        "exitCode": 0,
+        "output": ""
+      }
+    ],
+    "independentWorkflowReview": "Separater lesender Agent bestätigt sieben zusätzliche Testbefehle, alle 14 Ziele durch vorhandene paths/sparse-checkout erfasst; keine Installation/Trigger/Permissions nötig."
+  },
+  "sourceReads": [
+    {
+      "path": "automation/lib/material.mjs",
+      "sha": "cf6a6b663000c0c108b064afcdf4ccd6ed543a8a",
+      "error": null
+    },
+    {
+      "path": "automation/lib/material_test.mjs",
+      "sha": "b5e1c1fb2c0991b85771890fe1cfc3a6389512c2",
+      "error": null
+    },
+    {
+      "path": "automation/material_nachtragen.mjs",
+      "sha": "fbdbc9d1e0dd96e402602454828d7b69ab169576",
+      "error": null
+    },
+    {
+      "path": "automation/material_plan_lauf_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/fortschritt_daten.mjs",
+      "sha": "1b38af146f5a91496749339f57adc7567b150b9d",
+      "error": null
+    },
+    {
+      "path": "automation/fortschritt_daten_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": ".github/workflows/luxestyle-automation-tests.yml",
+      "sha": "979c484b6e144c4f428f343a964cf664d4573a86",
+      "error": null
+    },
+    {
+      "path": "automation/material_batch_lauf_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/material_cas_lauf_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/material_abschluss_lauf_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/lib/material_write_ledger.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/lib/material_write_ledger_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/lib/material_write_ledger_binding_test.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/lib/material_test_fixture.mjs",
+      "sha": null,
+      "error": "NOT_FOUND"
+    },
+    {
+      "path": "automation/lib/shopify_gql.mjs",
+      "sha": "186a451acb1db8221fbc95d633e5a62e28b13c77",
+      "error": null
+    },
+    {
+      "path": "automation/lib/shopify_host.mjs",
+      "sha": "3b59fa475cceed8d29efaa797854236c166df4cb",
+      "error": null
+    },
+    {
+      "path": "automation/lib/shopify_secret.mjs",
+      "sha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+      "error": null
+    },
+    {
+      "path": "automation/ci_simulation.sh",
+      "sha": "974ba3f9b25348bcb00d254effc4fe4124ab7f66",
+      "error": null
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha": "b2131291921e4f0968de8ba56eef6eaf76332bff",
+      "error": null
+    }
+  ],
+  "mainFreshAtEnd": "a74459a94a800b24d4b348332154d25f516920b8",
+  "writes": {
+    "repository": false,
+    "shop": false,
+    "flow": false,
+    "feed": false,
+    "workflow": false
+  },
+  "files": [
+    {
+      "path": "MATERIAL-GESAMT-20261029.patch",
+      "bytes": 158922,
+      "sha256": "7129dc2f23b5d6191257c4fa6dff4f3064f2abee60fbfc610764743c6c55b606"
+    },
+    {
+      "path": "MATERIAL-RUECKSETZ-20261029.patch",
+      "bytes": 158922,
+      "sha256": "3e6cef40d1afd5d3e097c9c4c2dcbf6ef89276452841d7e46bdb863046decff4"
+    },
+    {
+      "path": "MATERIAL-GESAMT-20261029.md",
+      "bytes": 4533,
+      "sha256": "6f2d029c5b19be83ca2563a34a95fbeca6e2f0c44350600fa5b56f2f6b0c373d"
+    }
+  ],
+  "logs": {
+    "ledger-binding.log": "ok - Frische andere Quelle erfüllt den alten Materialplan nicht\nok - Fehlender Planbeleg blockiert\nok - Andere Referenz trotz gleichem Hash blockiert\nok - Andere Quellzeit trotz gleichem Inhalt blockiert\nok - Zusatzfeld im Vorwert blockiert vor Speicherung\nok - Neu gehashter falscher Endzustand ohne Historie blockiert\nok - Neu gehashte falsche Revisionszahl blockiert\nok - Neu gehashter falscher Quellenowner blockiert\nok - Neu gehashte bestätigte Ausgabe mit falschem Typ blockiert\nok - Neu gehashte unzulässige Historienfolge blockiert\nok - Ursprünglicher Unknown-Grund bleibt nach Bestätigung erhalten\n11 ok, 0 Fehler\n",
+    "ledger.log": "ok 1 - Fehlendes Ledger bleibt fehlend statt leerer Historie\nok 2 - Initialisierung verlangt ausdrücklichen Scope und Belege\nok 3 - Vorhandenes Ledger wird nicht neu initialisiert\nok 4 - Beschädigtes JSON wird nicht zurückgesetzt\nok 5 - Geänderte Nutzdaten mit alter Prüfsumme sperren\nok 6 - Relativer Ledger-Pfad sperrt\nok 7 - Symlink als Ledger sperrt\nok 8 - Defekter Symlink wird bei Initialisierung nicht ersetzt\nok 9 - Alte Sperrdatei bleibt erhalten und sperrt\nok 10 - Andere Shop-Identität sperrt\nok 11 - Produkt ausserhalb des initialisierten Scopes sperrt\nok 12 - Doppelte Produkt-ID im Stapel sperrt\nok 13 - Geändertes Stapelziel passt nicht zu alten Planbytes\nok 14 - Unbekannter Vorwert sperrt\nok 15 - Vorhandener typisierter Vorwert bleibt erhalten\nok 16 - Unpassender Vorwerttyp sperrt\nok 17 - Fehlende Quellenalter-Regel sperrt ohne Standardfrist\nok 18 - Abweichender Quellbytes-Hash sperrt\nok 19 - Fehlender Quellzeitpunkt bleibt unbekannt\nok 20 - Zukünftiger Quellzeitpunkt sperrt\nok 21 - Veraltete Quelle sperrt\nok 22 - Ausdrückliche Quellenalter-Grenze gilt einschliesslich\nok 23 - Falsche Quellen-Produkt-ID erfüllt den Stapel nicht\nok 24 - Erster Anspruch ist vor claimed_once gespeichert\nok 25 - Gleicher Plan beansprucht nicht erneut\nok 26 - Neue Planbytes verdecken offenen Produktanspruch nicht\nok 27 - Anderer Lauf beansprucht offenes Produkt nicht erneut\nok 28 - Ein überlappendes Produkt sperrt den ganzen Stapel\nok 29 - Getrennter Stapel innerhalb des Scopes kann beanspruchen\nok 30 - Fehlende typisierte Rücklesung sperrt Bestätigung\nok 31 - Gleicher Wert mit falschem Typ wird nicht bestätigt\nok 32 - Falsches Produkt wird nicht bestätigt\nok 33 - Doppelte Rücklese-IDs erfüllen den Stapel nicht\nok 34 - Wert und Typ aller Stapeleinträge bestätigt\nok 35 - Bestätigtes Produkt wird mit geändertem Plan nicht neu gesendet\nok 36 - Unbekannt nach Antwortverlust bleibt erhalten und sperrt neuen Send\nok 37 - Unbekannt wird nicht wieder inflight\nok 38 - Unbekannt nur durch neue typisierte Rücklesung abgleichen\nok 39 - Definitive atomare Ablehnung verlangt userErrors\nok 40 - Veraltete Kontrollpunktrevision sperrt\nok 41 - Falsches Anspruchstoken sperrt\nok 42 - Änderung am Rückgabeobjekt verändert Datenträger nicht\nok 43 - Neuer echter Prozess sieht bestehenden inflight-Anspruch\nok 44 - Zwei echte parallele Prozesse erzeugen höchstens einen neuen Anspruch\n44 ok, 0 Fehler\n",
+    "cas.log": "OK Trockenlauf benötigt keinen Versions- oder Produktzugriff\nOK Unveränderter Wert sendet den frisch gelesenen Digest\nOK Sicher fehlendes Feld benutzt explizites null\nOK Bestehendes leeres Feld benutzt Digest statt null\nOK Frische Gegenprobe blockiert geänderter Wert\nOK Frische Gegenprobe blockiert gelöschtes Feld\nOK Frische Gegenprobe blockiert geänderter Typ\nOK Frische Gegenprobe blockiert Leerzeichen im Vorwert\nOK Geplante Neuanlage überschreibt keinen inzwischen vorhandenen Wert\nOK Unbekannte Vorherdaten sperren: fehlender Digest\nOK Unbekannte Vorherdaten sperren: leerer Digest\nOK Unbekannte Vorherdaten sperren: fehlender Typ\nOK Unbekannte Vorherdaten sperren: fehlender Wert\nOK Alter Rohstand ohne Typ ist keine Schreibfreigabe\nOK Fehlender Roh-Metafeldschlüssel ist nicht sicher abwesend\nOK Unvollständige Vorabantwort sperrt: fehlend\nOK Unvollständige Vorabantwort sperrt: null\nOK Unvollständige Vorabantwort sperrt: doppelt\nOK Unvollständige Vorabantwort sperrt: fremd\nOK Unvollständige Vorabantwort sperrt: ohne-m\nOK Unvollständige Vorabantwort sperrt: schemafehler\nOK Update-Race bleibt atomar abgelehnt\nOK Create-Race bleibt atomar abgelehnt\nOK Delete-Race bleibt atomar abgelehnt\nOK Typ-Race bleibt atomar abgelehnt\nOK Ungeklärte oder ersetzte API-Version sperrt: null\nOK Ungeklärte oder ersetzte API-Version sperrt: 2026-01\n27 ok, 0 Fehler\n",
+    "abschluss.log": "OK Unterstützte API 2026-10 wird explizit angefordert\nOK Rücklesung fordert Wert und Typ an und bestätigt beide\nOK Passender Wert mit falschem Typ ist eine Abweichung\nOK Fehlender oder ungültiger Nachher-Typ bleibt unbekannt: fehlend\nOK Fehlender oder ungültiger Nachher-Typ bleibt unbekannt: null\nOK Typabweichung stoppt vor dem nächsten Stapel\nOK Unklarer Bulk-Start wird nicht wiederholt: netz\nOK Unklarer Bulk-Start wird nicht wiederholt: antwort-verloren\nOK Unklarer Bulk-Start wird nicht wiederholt: 429\nOK Unklarer Bulk-Start wird nicht wiederholt: 503\nOK Unklarer Bulk-Start wird nicht wiederholt: throttled\nOK Auch der Trockenlauf wiederholt einen unklaren Bulk-Start nicht\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: keine-fehlerliste\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: keine-id\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: fehler\nOK Paralleler jüngerer Job ersetzt nicht die eigene gestartete Bulk-ID\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: fehlend\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: fremde-id\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: ohne-status\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: ohne-url\nOK Inflight liegt vor dem Senden vor; bestätigte Werte und Typen stehen danach im Ledger\nOK Frische Marken-/Statusabweichung sperrt {\"shop\":\"https://andere-marke.ch\"}\nOK Frische Marken-/Statusabweichung sperrt {\"currency\":\"USD\"}\nOK Frische Marken-/Statusabweichung sperrt {\"shop\":\"https://luxestyle.ch/anderer-pfad\"}\nOK Frische Marken-/Statusabweichung sperrt {\"productStatus\":\"DRAFT\"}\nOK Frische Marken-/Statusabweichung sperrt {\"productStatus\":null}\nOK Unbestätigte echte Eingabebelege sperren: ohne-manifest\nOK Unbestätigte echte Eingabebelege sperren: keine-policy\nOK Unbestätigte echte Eingabebelege sperren: alt\nOK Unbestätigte echte Eingabebelege sperren: zukunft\nOK Unbestätigte echte Eingabebelege sperren: falscher-hash\nOK Unbestätigte echte Eingabebelege sperren: produkt-fehlt\nOK Unbestätigte echte Eingabebelege sperren: cj-geaendert\nOK Ungeklärtes Ledger bleibt gesperrt: fehlend\nOK Ungeklärtes Ledger bleibt gesperrt: kaputt\nOK Ungeklärtes Ledger bleibt gesperrt: gesperrt\nOK Unknown bleibt auch im zweiten Prozess ohne erneuten Send\nOK Trockenlauf ohne Quellenpolicy bleibt möglich und erfindet keine Prüfzeit\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"shop\":\"https://andere-marke.ch\"}\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"shop\":\"https://andere-marke.ch\",\"live\":false}\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"currency\":\"USD\"}\n41 ok, 0 Fehler\n",
+    "plan.log": "OK Neuer Trockenlauf sichert den Originalwert und sendet keine Mutation\nOK Abweichender Folge-Trockenlauf erhaelt bestehenden Plan bytegleich\nOK Leerer Folge-Trockenlauf kann den alten Rueckgaengig-Beleg nicht loeschen\nOK Identischer Trockenlauf bleibt wiederholbar ohne Planverlust\nOK LIVE-Attrappe nach identischem Trockenlauf respektiert LIMIT und alten Plan\nOK Abweichender LIVE-Plan blockiert vor der ersten Produktmutation\nOK Fortsetzung mit frischem Rest und neuem Pfad erhaelt beide Originalplaene\nOK Verschiedene Standardlaeufe benutzen eindeutige Pfade statt Ueberschreiben\nOK Nicht beschreibbarer Planpfad blockiert vor Produktmutation\nOK Manueller sauberer Materialwert bleibt erlaubt\nOK Manueller Override verwirft Seide (Imitat)\nOK Manueller Override verwirft Titanstahl\nOK Manueller Wert wird kanonisch statt ungeprueft uebernommen\nOK Manueller Wert darf einen bekannten Titelkonflikt nicht umgehen\nOK Manuelle Seide darf den belegten Imitat-Hinweis nicht umgehen\nOK Uebersetzung beachtet Imitat-Hinweis aus dem vorhandenen CJ-Cache\n16 ok, 0 Fehler\n",
+    "batch.log": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":1,\"ergebnis\":{\"geschrieben\":0,\"apiBestaetigt\":0,\"fehler\":2,\"unbekannt\":0,\"rueckgelesen\":0,\"abweichungen\":0,\"vorherKonflikte\":0,\"vorherUnbekannt\":0,\"ledgerBlockiert\":0,\"ledgerFehler\":0,\"nichtBearbeitet\":0},\"ledger\":\"2026-10-29T20:19:47.892Z · material nachgetragen · 0 Produkte (Fehler 2) · Unbekannt 0 · Abweichungen 0 · Vorher-Konflikte 0 · Vorher-unbekannt 0 · Quellen {}\"}\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: null\nOK Definitiver Fehler beendet den Lauf vor späteren Stapeln\nOK Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt\nOK Unklare Antwort zählt keinen Erfolg: null\nOK Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste\nOK Unklare Antwort zählt keinen Erfolg: ohne-metafields\nOK Unklare Antwort zählt keinen Erfolg: zu-kurz\nOK Unklare Antwort zählt keinen Erfolg: falscher-key\nOK Unklarer Transport wird nicht wiederholt: netzfehler\nOK Unklarer Transport wird nicht wiederholt: http500\nOK Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung\nOK Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen\nOK Abweichende Rücklesung zählt nicht als bestätigtes Schreiben\nOK Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft\nOK Fehlgeschlagene Gegenprobe verhindert weitere Mutationen\nOK LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg\n20 ok, 0 Fehler\n",
+    "library.log": "material_test: 269 Prüfungen ok\n",
+    "progress.log": "ok Vereinigung zählt frühere Erfolge und aktuelle Kandidaten genau einmal\nok Fehlende Kandidatenliste ergibt unbekannten Nenner statt falscher 100 %\nok Unlesbare Kandidaten sind unbekannt; übrige Bereiche bleiben messbar\nok Fehlendes Ledger ist kein Null-Erfolg und liefert keinen vollständigen Pool\nok Leere vorhandene Quellen ergeben belegte Nullen\nok Leerer neuer Scan erhält schon nachgezogene Produkte im Pool\nok SKU-Geändert, Einvarianten-Skip und Fehler sind kein Auswahl-Erfolg\nok Beschädigtes Ledger ergibt unbekannt statt Teilzählung\nok Kandidat ohne Handle ergibt unbekannt statt Phantomprodukt\nok Fehlende weitere Ledger bleiben unbekannt, Auswahl unverändert\nok Fehlende oder beschädigte JSON-Daten blockieren keine unabhängigen Zahlen\nok Anmerkung bezeichnet Arbeitsvorrat und keine Katalog-Vollständigkeit\n12 ok, 0 Fehler\n"
+  }
+}
