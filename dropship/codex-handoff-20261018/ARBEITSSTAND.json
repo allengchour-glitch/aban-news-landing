@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 9,
-  "updatedAt": "2026-10-29T08:30:18Z",
+  "revision": 10,
+  "updatedAt": "2026-10-29T09:28:50Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -273,8 +273,8 @@
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung. Neuer Stand 09:20 Zürich: im unveröffentlichten frischen MAIN-Duplikat 212752499079 den unveränderten Achtzeilenpatch nativ umgesetzt. Echte HTTP-Ausgabe und unabhängiger Tiefenvergleich bestätigen genau 24 entfernte ungültige SKU-Eigenschaften bei vollständig erhaltenen 33 Varianten/Offers und neun gültigen SKUs. Google-Abnahme und Live-Übernahme bleiben offen.",
-      "nextAllowedStep": "Aktuelles MAIN-Dateihash vor legitimer Übernahme der zwei eng geprüften Diffs vergleichen. Danach öffentliche native Ausgabe und die verbleibenden Variantenkennungen in einer angemeldeten Google-Prüfsitzung prüfen; erst dann Console-Validierung auslösen. Vorhandenes Prüftheme 212752499079 wiederverwenden, keine neue Kopie erzeugen.",
+      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung. Neuer Stand 09:20 Zürich: im unveröffentlichten frischen MAIN-Duplikat 212752499079 den unveränderten Achtzeilenpatch nativ umgesetzt. Echte HTTP-Ausgabe und unabhängiger Tiefenvergleich bestätigen genau 24 entfernte ungültige SKU-Eigenschaften bei vollständig erhaltenen 33 Varianten/Offers und neun gültigen SKUs. Google-Abnahme und Live-Übernahme bleiben offen. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
+      "nextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
       "blockers": [
         "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
         "MAIN-Dateiwrites und themePublish sind vom vorhandenen Shopify-Connector blockiert; legitime Übernahme im Admin erforderlich",
@@ -325,6 +325,16 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.patch",
           "gitBlobSha": "7a5206dc740fc44c3cc913ae7d3a046c8dcac036",
           "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md",
+          "gitBlobSha": "946603d6263da913b55963c9bb7c16f8b390ef61",
+          "readAt": "2026-10-29T09:28:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json",
+          "gitBlobSha": "9e4c9df20a268c9bfc5fe8c17dba2453c68b5989",
+          "readAt": "2026-10-29T09:28:50Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -346,6 +356,14 @@
         "actualRenderVerified": true,
         "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md",
         "claudeReceipt": "unknown"
+      },
+      "liveTakeoverApproval": {
+        "ownerMessage": "jaa mach das",
+        "recordedAt": "2026-10-29T09:28:50Z",
+        "status": "approved_not_executed_access_blocked",
+        "scope": "Only the two reviewed schema changes; fresh MAIN hashes must match; public countercheck then actual Google validation",
+        "requiresRepeatedApproval": false,
+        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md"
       }
     },
     {
@@ -356,8 +374,8 @@
       "title": "Öffentliche CHF50-Versandschwelle im vorhandenen Google-Schema abbilden",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write. Neuer Fortschritt: dieselben beiden Zahlen nun in Prüftheme 212752499079 gespeichert und nativ gerendert. Tiefer JSON-LD-Vergleich und unabhängige Gegenlese bestätigen nur 40.49→49.99 und 40.5→50, Rückgabe/LI-Porto und übrige Daten unverändert. Zusätzlich ein anderes Produkt als Kontrolle geprüft. Keine Checkout- oder Live-Themeänderung.",
-      "nextAllowedStep": "Aktuellen MAIN-Headerhash mit beigefügtem Zweizahlendiff vergleichen und über legitimen Adminzugang eng übernehmen; danach öffentliche Ausgabe prüfen. Prüftheme 212752499079 enthält nativ bestätigte Fassung. Keine Versandprofile oder interne CHF 45-Regel ändern und kein veraltetes Volltheme pauschal publizieren.",
+      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write. Neuer Fortschritt: dieselben beiden Zahlen nun in Prüftheme 212752499079 gespeichert und nativ gerendert. Tiefer JSON-LD-Vergleich und unabhängige Gegenlese bestätigen nur 40.49→49.99 und 40.5→50, Rückgabe/LI-Porto und übrige Daten unverändert. Zusätzlich ein anderes Produkt als Kontrolle geprüft. Keine Checkout- oder Live-Themeänderung. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
+      "nextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
       "blockers": [
         "Live-Übernahme durch vorhandenen Connector blockiert; Google-Abnahme weiter offen",
         "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
@@ -393,6 +411,16 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.patch",
           "gitBlobSha": "7a5206dc740fc44c3cc913ae7d3a046c8dcac036",
           "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md",
+          "gitBlobSha": "946603d6263da913b55963c9bb7c16f8b390ef61",
+          "readAt": "2026-10-29T09:28:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json",
+          "gitBlobSha": "9e4c9df20a268c9bfc5fe8c17dba2453c68b5989",
+          "readAt": "2026-10-29T09:28:50Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -410,6 +438,14 @@
         "actualRenderVerified": true,
         "changedNumbers": 2,
         "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md"
+      },
+      "liveTakeoverApproval": {
+        "ownerMessage": "jaa mach das",
+        "recordedAt": "2026-10-29T09:28:50Z",
+        "status": "approved_not_executed_access_blocked",
+        "scope": "Only the two reviewed schema changes; fresh MAIN hashes must match; public countercheck then actual Google validation",
+        "requiresRepeatedApproval": false,
+        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md"
       }
     },
     {
@@ -694,6 +730,12 @@
       "at": "2026-10-29T08:30:18Z",
       "actor": "codex",
       "action": "Ein unveröffentlichtes MAIN-Duplikat 212752499079 erstellt, zwei bekannte enge Schema-Diffs gespeichert und nativ/öffentlich sowie unabhängig geprüft: 24 ungültige SKU-Eigenschaften entfernt plus zwei Versandzahlen; 33 Varianten/Offers und neun gültige SKUs erhalten. Ein Kontrollprodukt bestätigt den begrenzten Scope. Keine MAIN-Publikation; Merchant-Einzelitemread mit Timeout, kein Retry oder Feedwrite. Tagesreports unverändert."
+    },
+    {
+      "revision": 10,
+      "at": "2026-10-29T09:28:50Z",
+      "actor": "codex",
+      "action": "Ausdrückliche enge Live-Freigabe «jaa mach das» gespeichert. Shop/Metricool und MAIN-/Draft-Hashes frisch gegengeprüft; dokumentierte Connector-Grenze, tatsächliche Shopify-Loginseite und Search-Console-Timeout bestätigt. Kein MAIN-Write, keine zusätzliche Theme-Kopie, kein Merchant-Push oder Google-Validierungsversuch; keine wiederholten Tagesreports."
     }
   ],
   "salesGoal": {
