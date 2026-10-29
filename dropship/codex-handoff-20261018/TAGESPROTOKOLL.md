@@ -480,6 +480,9 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Master / konkrete Fortsetzung | Zwei Produkte mit Tags/Bildern/Kaufbarkeit und kanonischer Musik gegengeprüft; Strombelegbedarf präzisiert; genau eine Facebook-Caption verfeinert | VORBEREITET: gleicher 18-Sekunden-Master, gleiche ID und sechs UTMs; vier genaue Stromnachweise fehlen. Keine fertige MP4 oder Film-/Ton-/Rechteabnahme; alle sechs neuen Master-Publikationen blockiert |
 | Klaviyo / einmaliger Report und Service | Placed-Order-Metrik entdeckt, einen Flowreport für 22.–28.10. sowie Capturequelle und Policyziele geprüft; bestehenden Zweizeilen-Diff verfeinert | GEMESSEN/VORBEREITET: Welcome vier/Post-Purchase eine Zustellung; Recovery live/alter Flow draft, fehlende Reportzeilen unbekannt. Capturecode passend, reale Anmeldung ungetestet. Genau ein Serviceentwurf mit Schweiz-Einschränkung, keine Flow-/Mailaktion; USD/CHF getrennt |
 | Ablage / nächster Schritt | Acht neue kuratierte Anlagen gespeichert und vollständig mit Git-SHAs zurückgelesen; unabhängige Reviewpunkte korrigiert | UMGESETZT: Dokumentationsablage bestätigt, keine operative Ausspielung. Revision 7 führt Kaufbaseline, heutige Abfragegrenze und Quellen fort. Nächster Schritt: Original-/Stromzuordnung, Ads-Kaufziel-/Auto-Tagging-Beleg und inhaltliche Freigabe des engen Welcome-Diffs; Claude-Kenntnisnahme unbekannt |
+| Produktpflege / enger Inhaberauftrag | Zwei bestehende Optionen und alle 13 Varianten frisch samt Linked-Metafields/InventoryMap geprüft; expliziten Diff und 36 lokale Vergleiche bewertet; zwei gezielte Mutationen ausgeführt | UMGESETZT: Ladegerät 15447560520065 und Plüschtier 15446272016769 jetzt «Ausführung» statt «Farbe», sieben bestehende Spielzeugwerte sprachlich bereinigt. Native und öffentliche HTTP 200-Rücklesung bestätigt; IDs/SKUs/Preise/Inventorybindungen/Tags unverändert. Keine neue Material-/Massprüfung |
+| Merchant / bereits genehmigter Push | Account 5797470070 und vorhandene Repo-Route geprüft; neun exakte der 13 Varianten in historischen Nutzer-CSVs gegengeprüft | BLOCKIERT: keine Push-Aktion verfügbar, Datenquellen-Browser verlangt Anmeldung; aktive Source-ID/Art und legitimer Writer unbekannt. Kein Push/Feed-/Kanalwrite. 24 historische Problemzeilen nur Shopping-Ads-Quota/Kapazität, vier nicht gefundene Varianten unbekannt |
+| Produktpflege / nächster Schritt | Begrenzten Umsetzungsbericht und 13er Vorher-/Nachher-Beleg zur gemeinsamen Übergabe vorbereitet | DOKUMENTIERT: Materialquellen fehlen weiterhin; vor isoliertem Merchant-Abruf aktive Quelle/Authentifizierung belegen. Keine erneuten Kennzahl-/Flow-/Bestellreports und keine parallele breite Anreicherung; Claude-Kenntnisnahme unbekannt |
 
 
 [LUXESTYLE_FIX_FORTSETZUNG_20261029] [Textumsetzung](IPHONE-TEXT-UMSETZUNG-20261029.md), [Material r4](MATERIAL-R4-20261029.md), [Hängematte](HAENGEMATTE-VALIDIERUNG-20261029.md), [Versand](VERSAND-CH50-20261029.md).
@@ -497,7 +500,11 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 
 [LUXESTYLE_MORGENLAUF_20261029] [Paket](MORGENPAKET-20261029.md), [Belege](MORGENBELEGE-20261029.json), [Master](MASTER-STORYBOARD-20261029.md), [Review](MORGEN-REVIEW-20261029.md). Keine zweite Tageskennzahlenlesung für diesen Nachtrag.
 
+
+[LUXESTYLE_PRODUKTPFLEGE_PUSH_20261029] [Umsetzung](PRODUKTPFLEGE-PUSH-20261029.md), [Belege](PRODUKTPFLEGE-PUSH-BELEGE-20261029.json). Der vorhandene Datumsblock und historische Nachweise bleiben erhalten.
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
+
 
