@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "schema-hammock-15450856292737",
+  "revision": 1,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T05:51:01.566Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Hängematte: enger Liquid-Entwurf für 24 ungültige SKU-Auszeichnungen",
+  "summary": "Acht Zeilen nur für ein Produkt. Shopify-/CJ-SKUs und 33 Variantenbindungen bleiben erhalten. Referenztransformation und begrenzte statische Validierung geprüft; native Ausgabe und Google-Akzeptanz offen. Globale Rückgaberichtlinie bleibt erhalten. Keine Themeänderung.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-SKU-THEME-20261029.json",
+      "sha256": "85bc17cbfee2c00110239292675dbf87499ef19f5a845f083598c6a6ed2de72b",
+      "gitBlobSha": "4117e356012d84b8f0f989df56411f6708264c33"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-SKU-20261029.patch",
+      "sha256": "d524812d04e567c77f36d21ba2154f8d5a40e2d12bbaada077b3dd61c0a317c1",
+      "gitBlobSha": "ebd8ccbf708eef724289afc7bbf32adaee1bd9da"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-SKU-BELEGE-20261029.json",
+      "sha256": "fc56d3c6a4dbc3654023f6e4351ee9938e9c48963521bf487f030db53f3e1d97",
+      "gitBlobSha": "9c499b182a50679497580f1b10d831e5bbf9f604"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-SKU-ENTWURF-20261029.md",
+      "sha256": "88abef01f317bb00dd166b65de2c0c99db28c164add8885dd08e5958e31ffac5",
+      "gitBlobSha": "e45894c9de907b2478ed850a61587e8a68aed8d7"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": null
+}
