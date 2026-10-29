@@ -1,0 +1,937 @@
+--- /dev/null
++++ b/assets/luxe-studio-catalog.css
+@@ -0,0 +1,34 @@
++.lsc-dialog { box-sizing: border-box; position: fixed; inset: 0; width: min(1120px,calc(100vw - 48px)); max-width: none; height: min(850px,calc(100dvh - 48px)); max-height: none; margin: auto; padding: 0; border: 1px solid #ded9d1; border-radius: 22px; color: #282520; background: #fbfaf7; font-family: Arial,Helvetica,sans-serif; box-shadow: 0 28px 120px #17130e36; }
++.lsc-dialog::backdrop { background: #19161380; }
++.lsc-dialog[open] { display: grid; grid-template-rows: auto auto minmax(0,1fr) auto; }
++.lsc-dialog * { box-sizing: border-box; }
++.lsc-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px 16px; }
++.lsc-eyebrow { margin: 0 0 7px; color: #827463; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
++.lsc-title { margin: 0; color: #282520; font-size: 26px; font-weight: 600; letter-spacing: -.035em; }
++.lsc-close { display: grid; place-items: center; min-width: 44px; height: 44px; border: 1px solid #ddd6cd; border-radius: 50%; background: transparent; color: #413b34; cursor: pointer; }
++.lsc-close svg { width: 18px; height: 18px; }
++.lsc-search { display: flex; gap: 8px; padding: 0 26px 16px; }
++.lsc-search input { min-width: 0; flex: 1; height: 48px; padding: 0 15px; border: 1px solid #d6cec3; border-radius: 10px; background: #fff; color: #282520; font: 400 15px/1.4 Arial,Helvetica,sans-serif; }
++.lsc-button { min-height: 44px; padding: 10px 16px; border: 1px solid #d8d0c5; border-radius: 10px; background: #fff; color: #282520; font: 600 13px/1.4 Arial,Helvetica,sans-serif; cursor: pointer; }
++.lsc-button--primary { background: #292621; border-color: #292621; color: #fff; }
++.lsc-button:disabled { opacity: .4; cursor: default; }
++.lsc-dialog button:focus-visible,.lsc-dialog a:focus-visible,.lsc-dialog input:focus-visible,.lsc-dialog select:focus-visible { outline: 3px solid #8c7256; outline-offset: 3px; }
++.lsc-content { overflow-y: auto; overscroll-behavior: contain; padding: 4px 26px 24px; }
++.lsc-scope { margin: 0 0 16px; color: #777066; font-size: 12px; line-height: 1.55; max-width: 760px; }
++.lsc-status { color: #777066; font-size: 14px; line-height: 1.6; }
++.lsc-category { display: flex; align-items: center; gap: 12px; margin: 0 0 18px; color: #777066; font-size: 12px; }
++.lsc-category select { min-width: 0; max-width: 260px; min-height: 44px; border: 1px solid #d6cec3; border-radius: 9px; padding: 8px 30px 8px 12px; background: #fff; color: #282520; font-size: 14px; }
++.lsc-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
++.lsc-card { display: flex; flex-direction: column; min-width: 0; padding: 0 0 16px; border: 1px solid #e5dfd6; border-radius: 15px; overflow: hidden; background: #fff; }
++.lsc-card-photo { display: grid; place-items: center; aspect-ratio: 1.1; background: #f3f0eb; overflow: hidden; }
++.lsc-card-photo img { display: block; width: 100%; height: 100%; object-fit: contain; }
++.lsc-card-body { padding: 15px 15px 0; display: flex; flex-direction: column; flex: 1; gap: 8px; }
++.lsc-card h3 { margin: 0; color: #282520; font: 600 15px/1.4 Arial,Helvetica,sans-serif; overflow-wrap: anywhere; }
++.lsc-card-options { margin: 0; color: #777066; font-size: 12px; line-height: 1.5; }
++.lsc-card-price { margin: auto 0 0; padding-top: 6px; font-weight: 700; font-size: 14px; }
++.lsc-card .lsc-button { margin-top: 4px; width: 100%; }
++.lsc-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 26px; border-top: 1px solid #e2ddd5; background: #fbfaf7; }
++.lsc-page { font-size: 12px; color: #777066; text-align: center; }
++.lsc-empty { min-height: 180px; display: grid; place-content: center; text-align: center; }
++@media(max-width:760px) { .lsc-dialog { width: 100vw; height: 100dvh; margin: 0; border: 0; border-radius: 0; } .lsc-header { padding: 18px 16px 14px; } .lsc-title { font-size: 23px; } .lsc-search { padding: 0 16px 14px; } .lsc-search input { font-size: 16px; } .lsc-content { padding: 0 16px 20px; } .lsc-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; } .lsc-card-body { padding: 12px 10px 0; } .lsc-card h3 { font-size: 13px; } .lsc-card-options { font-size: 11px; } .lsc-footer { padding: 12px 16px max(12px,env(safe-area-inset-bottom)); } .lsc-footer .lsc-button { padding: 10px 12px; } }
++@media(prefers-reduced-motion:reduce) { .lsc-dialog * { scroll-behavior: auto; } }
+--- /dev/null
++++ b/assets/luxe-studio-catalog.js
+@@ -0,0 +1,85 @@
++(() => {
++  'use strict';
++  const DE = {title:'Produkt wechseln',eyebrow:'LuxeStyle Designstudio',close:'Produktauswahl schliessen',search:'Produkte suchen',searchPlaceholder:'T-Shirt, Tasche, Tasse …',searchButton:'Suchen',category:'Kategorie',all:'Alle Produkte',scope:'Personalisierbare Produkte aus dem LuxeStyle-Shop. Grösse und Ausführung wählst du nach der Produktauswahl. Die Suche sucht im gesamten Shop nach passenden Produkttiteln; weitere Treffer sind über «Weiter» erreichbar.',loading:'Produkte werden geladen …',error:'Die Produkte konnten nicht geladen werden. Bitte versuche es erneut.',retry:'Erneut laden',empty:'Auf dieser Seite sind keine passenden Produkte zu sehen.',previous:'Zurück',next:'Weiter',page:'Seite',choose:'Auswählen',unavailable:'Zurzeit nicht auswählbar',from:'Ab',variants:'Varianten',imageMissing:'Produktbild fehlt',navigationMissing:'Der Produktwechsel ist in dieser Vorschau noch nicht verbunden.'};
++  const EN = {title:'Change product',eyebrow:'LuxeStyle Design studio',close:'Close product picker',search:'Search products',searchPlaceholder:'T-shirt, bag, mug …',searchButton:'Search',category:'Category',all:'All products',scope:'Personalizable products from the LuxeStyle shop. Choose size and options after selecting a product. Search finds matching product titles across the shop; use Next for further results.',loading:'Loading products …',error:'Products could not be loaded. Please try again.',retry:'Try again',empty:'No matching products are shown on this page.',previous:'Previous',next:'Next',page:'Page',choose:'Select',unavailable:'Currently unavailable',from:'From',variants:'variants',imageMissing:'Product image missing',navigationMissing:'Product switching is not connected in this preview yet.'};
++  const create = (tag, cls, text) => { const e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=String(text); return e; };
++  function catalogPrice(value,currency,locale){
++    const formatLocale=currency==='CHF'&&/^de(?:[-_]|$)/i.test(locale)?'de-CH':locale;
++    try{return new Intl.NumberFormat(formatLocale,{style:'currency',currency}).format(value/100);}catch{return (Number(value)/100).toFixed(2);}
++  }
++  function catalogOptions(options){
++    return (Array.isArray(options)?options:[])
++      .filter(o=>o&&typeof o.name==='string'&&Array.isArray(o.values)&&!(o.name==='Title'&&o.values.length===1&&o.values[0]==='Default Title'))
++      .map(o=>o.name+': '+o.values.slice(0,3).map(String).join(', ')+(o.values.length>3?' …':''))
++      .join(' · ');
++  }
++  function pathAllowed(path,type){
++    if(type==='search')return /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?search\/?$/i.test(path);
++    const match=/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?(products|collections)\/([^/]+)\/?$/i.exec(path);
++    if(!match||match[1]!== (type==='product'?'products':'collections'))return false;
++    const handle=decodeURIComponent(match[2]);
++    return Boolean(handle)&&handle!=='.'&&handle!=='..'&&!/[\/\\%?#\s\u0000-\u001f\u007f-\u009f]/u.test(handle);
++  }
++  function urlFor(raw,type){
++    if(typeof raw!=='string'||/[\\\u0000-\u001f\u007f-\u009f]/u.test(raw)||raw!==raw.trim())return null;
++    try{
++      const decodedPath=decodeURIComponent(raw.split(/[?#]/)[0]);
++      if(/(?:^|[\/\\])\.{1,2}(?:[\/\\]|$)/.test(decodedPath))return null;
++      const u=new URL(raw,location.href);
++      if(u.origin!==location.origin||u.username||u.password||!pathAllowed(u.pathname,type))return null;
++      u.search='';u.hash='';return u;
++    }catch{return null;}
++  }
++  function previewParams(u,view){u.searchParams.set('view',view);const id=new URL(location.href).searchParams.get('preview_theme_id');if(id&&/^\d+$/.test(id))u.searchParams.set('preview_theme_id',id);return u;}
++  function mount(root){
++    if(root.dataset.luxeCatalogReady)return;
++    const dataNode=root.querySelector('[data-luxe-studio-data]');let data;try{data=JSON.parse(dataNode?.textContent||'null');}catch{return;}if(!data)return;
++    const firstUrl=urlFor(data.catalogUrl,'collection');if(!firstUrl)return;
++    root.dataset.luxeCatalogReady='true';
++    const locale=String(data.locale||document.documentElement.lang||'de');const labels=Object.assign({},locale.toLowerCase().startsWith('en')?EN:DE,data.catalogLabels||{});
++    const collectionChoices=(Array.isArray(data.catalogCollections)?data.catalogCollections:[]).map(c=>({title:String(c.title||''),url:urlFor(c.url,'collection')})).filter(c=>c.title&&c.url);
++    if(!collectionChoices.some(c=>c.url.pathname===firstUrl.pathname))collectionChoices.unshift({title:labels.all,url:firstUrl});
++    const searchUrl=urlFor(data.catalogSearchUrl||'/search','search');
++    let selectedCollection=firstUrl,activeTerm='',pageNumber=1,responseData=null,opener=null,controller=null,sequence=0;
++    const cache=new Map();
++    const dialog=create('dialog','lsc-dialog');const header=create('header','lsc-header');const headingWrap=create('div');headingWrap.append(create('p','lsc-eyebrow',labels.eyebrow));const heading=create('h2','lsc-title',labels.title);heading.id='lsc-title-'+Math.random().toString(36).slice(2);headingWrap.append(heading);dialog.setAttribute('aria-labelledby',heading.id);header.append(headingWrap);
++    const close=create('button','lsc-close');close.type='button';close.setAttribute('aria-label',labels.close);close.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';header.append(close);dialog.append(header);
++    const form=create('form','lsc-search');const search=create('input');search.type='search';search.maxLength=100;search.placeholder=labels.searchPlaceholder;search.setAttribute('aria-label',labels.search);const submit=create('button','lsc-button',labels.searchButton);submit.type='submit';form.append(search,submit);dialog.append(form);
++    const content=create('div','lsc-content');content.append(create('p','lsc-scope',labels.scope));let category;
++    if(collectionChoices.length>1){const row=create('label','lsc-category');row.append(create('span','',labels.category));category=create('select');category.setAttribute('aria-label',labels.category);collectionChoices.forEach(c=>{const option=create('option','',c.title);option.value=c.url.pathname;option.selected=c.url.pathname===firstUrl.pathname;category.append(option);});row.append(category);content.append(row);}
++    const status=create('p','lsc-status');status.setAttribute('role','status');status.setAttribute('aria-live','polite');const grid=create('div','lsc-grid');grid.setAttribute('aria-label',labels.title);const retry=create('button','lsc-button',labels.retry);retry.type='button';retry.hidden=true;content.append(status,retry,grid);dialog.append(content);
++    const footer=create('footer','lsc-footer');const prev=create('button','lsc-button',labels.previous),next=create('button','lsc-button',labels.next),pageLabel=create('span','lsc-page');prev.type=next.type='button';footer.append(prev,pageLabel,next);dialog.append(footer);root.append(dialog);
++    const setBusy=busy=>{grid.setAttribute('aria-busy',String(busy));prev.disabled=busy||!responseData?.hasPrevious;next.disabled=busy||!responseData?.hasNext;retry.hidden=true;};
++    const price=value=>catalogPrice(value,responseData?.currency||data.currency||'CHF',locale);
++    function imageUrl(image){try{const u=new URL(image?.src||'',location.href);return u.protocol==='https:'&&(u.hostname==='cdn.shopify.com'||u.origin===location.origin&&u.pathname.startsWith('/cdn/shop/'))?u.href:'';}catch{return '';}}
++    function render(){
++      grid.replaceChildren();const shown=responseData?.products||[];
++      status.textContent=shown.length?'':labels.empty;status.className='lsc-status'+(shown.length?'':' lsc-empty');pageLabel.textContent=labels.page+' '+pageNumber;
++      shown.forEach(product=>{
++        const card=create('article','lsc-card');const photo=create('div','lsc-card-photo');const source=imageUrl(product.image);
++        if(source){const img=create('img');img.src=source;img.alt=String(product.image.alt||product.title);img.loading='lazy';img.width=480;img.height=480;img.addEventListener('error',()=>{photo.replaceChildren(create('span','lsc-card-options',labels.imageMissing));},{once:true});photo.append(img);}else photo.append(create('span','lsc-card-options',labels.imageMissing));card.append(photo);
++        const body=create('div','lsc-card-body');body.append(create('h3','',product.title));
++        const summary=catalogOptions(product.options);if(summary)body.append(create('p','lsc-card-options',summary));
++        if(Number.isInteger(product.variantCount)&&product.variantCount>1)body.append(create('p','lsc-card-options',product.variantCount+' '+labels.variants));
++        body.append(create('p','lsc-card-price',(product.priceVaries?labels.from+' ':'')+price(product.price)));
++        const button=create('button','lsc-button lsc-button--primary',product.available?labels.choose:labels.unavailable);button.type='button';button.disabled=!product.available;button.setAttribute('aria-label',(product.available?labels.choose:labels.unavailable)+' · '+product.title);
++        button.addEventListener('click',()=>{const target=urlFor(product.url,'product');if(!target)return;previewParams(target,'luxe-studio');const event=new CustomEvent('luxe:product-navigation',{detail:{url:target.href},bubbles:true,cancelable:true});root.dispatchEvent(event);if(!event.defaultPrevented)status.textContent=labels.navigationMissing;});body.append(button);card.append(body);grid.append(card);
++      });setBusy(false);
++    }
++    function validResponse(r){return r&&r.schemaVersion===1&&r.scope===(activeTerm?'luxestyle_public_personalizable_search_results':'luxestyle_public_personalizable_collection')&&(!activeTerm||r.matchMode==='all_terms_in_product_title')&&Array.isArray(r.products)&&r.products.length<=12&&Number.isInteger(r.page)&&r.page===pageNumber&&typeof r.hasNext==='boolean'&&typeof r.hasPrevious==='boolean'&&r.products.every(p=>p&&typeof p.title==='string'&&(!activeTerm||activeTerm.toLowerCase().split(' ').every(term=>p.title.toLowerCase().includes(term)))&&Number.isFinite(p.price)&&p.price>=0&&typeof p.available==='boolean'&&urlFor(p.url,'product'));}
++    async function load(force=false){
++      controller?.abort();controller=new AbortController();const run=++sequence;const key=(activeTerm?'search:'+activeTerm:selectedCollection.pathname)+'#'+pageNumber;
++      if(!force&&cache.has(key)){responseData=cache.get(key);render();return;}
++      responseData=null;grid.replaceChildren();status.className='lsc-status';status.textContent=labels.loading;pageLabel.textContent=labels.page+' '+pageNumber;setBusy(true);
++      try{const url=previewParams(new URL(activeTerm?searchUrl.href:selectedCollection.href),'luxe-studio-catalog');url.searchParams.set('page',String(pageNumber));if(activeTerm){url.searchParams.set('type','product');url.searchParams.set('options[prefix]','last');url.searchParams.set('q',activeTerm);}const result=await fetch(url.href,{method:'GET',credentials:'same-origin',headers:{Accept:'text/html'},signal:controller.signal});if(!result.ok)throw new Error('http');const parsed=await result.json();if(run!==sequence)return;if(!validResponse(parsed))throw new Error('shape');responseData=parsed;cache.set(key,parsed);render();}
++      catch(error){if(error.name==='AbortError'||run!==sequence)return;status.textContent=labels.error;grid.replaceChildren();setBusy(false);retry.hidden=false;}
++    }
++    root.addEventListener('luxe:choose-product',()=>{if(dialog.open)return;opener=document.activeElement;dialog.showModal();search.focus();load();});
++    close.addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>{controller?.abort();sequence++;if(opener?.isConnected)opener.focus();});
++    form.addEventListener('submit',event=>{event.preventDefault();if(!searchUrl)return;activeTerm=search.value.replace(/[()[\]{}:+\\"*]/g,' ').replace(/\s+/g,' ').trim().slice(0,100);pageNumber=1;load();content.scrollTop=0;});
++    if(category)category.addEventListener('change',()=>{const c=collectionChoices.find(c=>c.url.pathname===category.value);if(!c)return;selectedCollection=c.url;activeTerm='';pageNumber=1;search.value='';load();});
++    prev.addEventListener('click',()=>{if(responseData?.hasPrevious&&pageNumber>1){pageNumber--;load();content.scrollTop=0;}});next.addEventListener('click',()=>{if(responseData?.hasNext){pageNumber++;load();content.scrollTop=0;}});retry.addEventListener('click',()=>load(true));
++  }
++  const start=()=>document.querySelectorAll('[data-luxe-studio]').forEach(mount);
++  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();document.addEventListener('shopify:section:load',start);
++})();
+--- /dev/null
++++ b/assets/luxe-studio.css
+@@ -0,0 +1,65 @@
++[data-luxe-studio],.ls-studio{--ls-ink:#282520;--ls-muted:#736d64;--ls-paper:#fff;--ls-cream:#f7f5f0;--ls-line:#e4dfd6;--ls-accent:#7b6c55;--ls-soft:#eee9df;font-family:Arial,Helvetica,sans-serif;color:var(--ls-ink);font-size:15px;line-height:1.45;box-sizing:border-box}
++[data-luxe-studio] *,.ls-studio *{box-sizing:border-box}
++:where([data-luxe-studio],.ls-studio) :is(button,input,select,textarea){font:inherit;letter-spacing:normal;text-transform:none}
++:where([data-luxe-studio],.ls-studio) [hidden]{display:none!important}
++[data-luxe-studio] button,.ls-studio button{cursor:pointer;touch-action:manipulation}
++.ls-studio button:disabled{cursor:not-allowed;opacity:.4}
++[data-luxe-studio] button:focus-visible,.ls-studio :focus-visible{outline:3px solid #8e7857;outline-offset:3px}
++.ls-entry{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);max-width:1160px;margin:48px auto;background:var(--ls-cream);border:1px solid var(--ls-line);border-radius:20px;overflow:hidden}
++.ls-entry-photo{width:100%;height:100%;min-height:360px;max-height:660px;object-fit:contain;background:#f1f0ec}
++.ls-entry-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(24px,5vw,64px);gap:18px}
++.ls-eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--ls-muted);font-weight:700;margin:0}
++.ls-entry h2{font-family:Georgia,serif;font-size:clamp(32px,4vw,50px);line-height:1.08;letter-spacing:-.035em;font-weight:400;margin:0}
++.ls-entry-product{font-size:15px;color:var(--ls-muted);margin:0}
++.ls-entry-lead{margin:0;font-size:16px;max-width:31em;line-height:1.6}
++.ls-entry-note{font-size:12px;line-height:1.55;color:var(--ls-muted);margin:0;max-width:38em}
++.ls-primary,.ls-secondary,.ls-tool,.ls-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;border-radius:9px;padding:11px 17px;border:1px solid var(--ls-line);font-weight:600;background:var(--ls-paper);color:var(--ls-ink)}
++.ls-primary{background:var(--ls-ink);color:#fff;border-color:var(--ls-ink)}
++.ls-primary:hover{background:#443c31}.ls-secondary:hover,.ls-tool:hover,.ls-icon-btn:hover{background:var(--ls-cream)}
++.ls-icon-btn{width:44px;padding:10px;flex-shrink:0}.ls-icon-btn svg,.ls-tool svg,.ls-primary svg,.ls-secondary svg{width:19px;height:19px;flex-shrink:0}
++.ls-studio{position:fixed;inset:0;margin:0;padding:0;width:100vw;max-width:none;height:100vh;height:100dvh;max-height:none;border:0;background:var(--ls-cream);overflow:hidden;z-index:2147483000}
++.ls-studio::backdrop{background:rgba(20,18,15,.6)}
++.ls-studio[open]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:70px 67px minmax(0,1fr) auto}
++.ls-studio-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 28px;border-bottom:1px solid var(--ls-line);background:#fff;min-width:0}
++.ls-brand{font-family:Georgia,serif;font-size:25px;letter-spacing:-.06em;white-space:nowrap}.ls-brand small{font-family:Arial,sans-serif;letter-spacing:.1em;font-size:10px;text-transform:uppercase;margin-left:13px;color:var(--ls-muted)}
++.ls-header-actions{display:flex;gap:7px;align-items:center}.ls-preview-badge{font-size:11px;color:var(--ls-muted);background:var(--ls-cream);padding:6px 10px;border:1px solid var(--ls-line);border-radius:999px;margin-right:8px}
++.ls-steps{display:flex;justify-content:center;align-items:center;gap:18px;background:#fff;border-bottom:1px solid var(--ls-line);padding:10px 22px}
++.ls-step{display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;border:0;padding:8px 11px;min-height:42px;color:var(--ls-muted);font-size:14px;white-space:nowrap}
++.ls-step-number{display:grid;place-items:center;border:1px solid var(--ls-line);border-radius:50%;width:25px;height:25px;font-size:12px;background:#fff}
++.ls-step[aria-current=step]{color:var(--ls-ink);font-weight:700}.ls-step[aria-current=step] .ls-step-number{background:var(--ls-ink);color:#fff;border-color:var(--ls-ink)}
++.ls-step-separator{height:1px;width:48px;background:var(--ls-line)}
++.ls-workspace{display:grid;grid-template-columns:330px minmax(0,1fr);min-height:0;min-width:0;width:100%;overflow:hidden}
++.ls-panel{background:#fff;border-right:1px solid var(--ls-line);padding:25px 24px;overflow-y:auto;overscroll-behavior:contain;min-width:0}
++.ls-panel-title{font-size:22px;font-weight:600;line-height:1.25;margin:0 0 8px;letter-spacing:-.03em}
++.ls-panel-intro{font-size:13px;color:var(--ls-muted);margin:0 0 24px;line-height:1.55}
++.ls-product-name{font-size:16px;line-height:1.45;margin:0 0 15px;font-weight:600}
++.ls-price{font-size:22px;font-weight:600;margin:0 0 24px;letter-spacing:-.02em}
++.ls-fieldset{border:0;padding:0;margin:0 0 23px;min-width:0}.ls-fieldset legend{font-size:12px;font-weight:700;margin-bottom:10px;letter-spacing:.025em}
++.ls-option-row{display:flex;flex-wrap:wrap;gap:7px}.ls-option{background:#fff;border:1px solid var(--ls-line);border-radius:7px;min-width:44px;min-height:44px;padding:9px 12px;color:var(--ls-ink);font-size:13px}
++.ls-option[aria-pressed=true]{border-color:var(--ls-ink);background:var(--ls-ink);color:white;box-shadow:0 0 0 1px var(--ls-ink)}
++.ls-subtle{color:var(--ls-muted);font-size:12px;line-height:1.5}.ls-separator{border:0;border-top:1px solid var(--ls-line);margin:22px 0}
++.ls-empty-hint{border:1px dashed #cbc2b3;border-radius:10px;background:var(--ls-cream);padding:18px;font-size:13px;color:var(--ls-muted);line-height:1.6;margin-top:18px}
++.ls-tools{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:20px 0}.ls-tool{padding:12px 8px;font-size:13px}
++.ls-label{display:block;font-size:12px;font-weight:700;margin:18px 0 7px}.ls-studio input[type=text],.ls-studio select,.ls-studio textarea{width:100%;padding:10px 11px;border:1px solid var(--ls-line);border-radius:7px;color:var(--ls-ink);background:#fff;min-height:44px;font-size:14px}
++.ls-studio textarea{resize:vertical;min-height:78px;max-height:145px;line-height:1.5}.ls-studio input[type=range]{width:100%;accent-color:var(--ls-accent);min-height:32px;margin:0}
++.ls-studio input[type=color]{width:44px;height:44px;cursor:pointer;padding:4px;border:1px solid var(--ls-line);border-radius:8px;background:#fff}
++.ls-color-row{display:flex;align-items:center;gap:8px}.ls-swatch{height:30px;width:30px;min-width:30px;border:1px solid #cfc8bd;border-radius:50%;background:var(--color);padding:0}.ls-swatch[aria-pressed=true]{outline:2px solid var(--ls-ink);outline-offset:3px}
++.ls-range-label{display:flex;justify-content:space-between;align-items:center}.ls-range-label output{font-weight:400;font-variant-numeric:tabular-nums;color:var(--ls-muted)}
++.ls-object-actions{display:flex;gap:7px;margin-top:18px;flex-wrap:wrap}.ls-object-actions button{flex:1;padding:9px 8px;font-size:12px}.ls-object-actions .ls-danger{color:#8a3333}
++.ls-layers{margin-top:24px;border-top:1px solid var(--ls-line);padding-top:16px}.ls-layers summary{cursor:pointer;font-weight:600;font-size:13px;padding:7px 0;min-height:35px}.ls-layer-list{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}.ls-layer-item{display:flex;align-items:center;gap:6px}.ls-layer-pick{min-width:0;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;text-align:left;flex:1;padding:10px;border:1px solid var(--ls-line);background:#fff;border-radius:7px;font-size:12px}.ls-layer-pick[aria-pressed=true]{background:var(--ls-soft);border-color:var(--ls-accent)}.ls-layer-move{width:35px;min-height:38px;border:1px solid var(--ls-line);border-radius:7px;background:#fff;display:grid;place-items:center}.ls-layer-move svg{width:15px;height:15px}
++.ls-canvas-area{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 38px 27px;min-width:0;min-height:0;background:radial-gradient(ellipse at center,#faf9f6 0,#f2efe8 100%)}
++.ls-view-top{position:absolute;top:17px;left:28px;right:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--ls-muted);font-size:11px;z-index:2}.ls-view-top span:last-child{font-size:10px;text-transform:uppercase;letter-spacing:.1em}
++.ls-stage{position:relative;aspect-ratio:1;width:min(100%,var(--stage-limit,650px));flex-shrink:0;overflow:hidden;background:#f6f6f4;border:1px solid rgba(87,77,60,.08);border-radius:12px;box-shadow:0 15px 42px rgba(44,36,24,.04);container-type:inline-size;touch-action:pan-y}
++.ls-base-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}.ls-layer-plane{position:absolute;inset:0;overflow:hidden}
++.ls-stage.is-neutral{background:#fff}.ls-print-area{position:absolute;border:1.5px dashed #8c7656;pointer-events:none;z-index:100;box-shadow:0 0 0 999px rgba(45,35,20,.07)}
++.ls-template-note{padding:10px 12px;border-radius:7px;background:#f4f0e6;border:1px solid #e3dac7;color:#67583f;font-size:12px;line-height:1.5;margin:12px 0}
++.ls-product-reference{display:flex;gap:12px;align-items:center;margin:20px 0;padding:12px 0;border-top:1px solid var(--ls-line);border-bottom:1px solid var(--ls-line);min-width:0}.ls-product-reference img{width:56px;height:68px;object-fit:contain;background:var(--ls-cream);border-radius:6px;flex-shrink:0}.ls-product-reference div{min-width:0}.ls-product-reference strong{display:block;font-size:12px;line-height:1.45;font-weight:600}.ls-product-reference span{display:block;font-size:10px;color:var(--ls-muted);margin:2px 0}.ls-change-product{width:100%;font-size:12px;margin:0 0 16px}
++.ls-design-object{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:center;cursor:move;touch-action:none;user-select:none;min-width:10px;min-height:10px;line-height:1.15;text-align:center;outline:0;overflow-wrap:anywhere}
++.ls-design-object[data-type=text]{white-space:pre-wrap;max-width:90%;width:max-content;font-weight:600}.ls-design-object img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}.ls-design-object.is-selected{outline:1.5px solid #847457;outline-offset:7px}.ls-design-object.is-selected:after{content:"";position:absolute;bottom:-10px;right:-10px;width:7px;height:7px;border:1px solid #847457;background:#fff}
++.ls-design-object:focus-visible{outline:2px solid #847457;outline-offset:7px}.ls-stage.is-preview .ls-design-object{cursor:default}.ls-stage.is-preview .ls-design-object.is-selected{outline:0}.ls-stage.is-preview .ls-design-object:after{display:none}
++.ls-canvas-hint{font-size:12px;color:var(--ls-muted);text-align:center;margin:17px 0 0;min-height:18px}.ls-review-summary{display:grid;grid-template-columns:1fr auto;gap:12px;border-bottom:1px solid var(--ls-line);padding:14px 0;font-size:13px}.ls-review-summary strong{text-align:right}.ls-review-note{font-size:12px;line-height:1.6;border:1px solid #d8cfbe;background:#f8f5ec;border-radius:8px;padding:14px;color:#63543f;margin-top:22px}
++.ls-footer{background:#fff;border-top:1px solid var(--ls-line);padding:14px 28px calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}.ls-footer-info{min-width:0;font-size:12px;color:var(--ls-muted)}.ls-footer-info strong{display:block;font-size:15px;color:var(--ls-ink);margin-top:2px}.ls-footer-actions{display:flex;gap:9px;flex-shrink:0}.ls-footer .ls-primary{min-width:168px}.ls-live-status{font-size:12px;line-height:1.4;color:#6d493d;margin:10px 0;min-height:1em}.ls-file-input{display:none}.ls-hidden{display:none!important}.ls-visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
++@media(min-width:1100px){.ls-workspace{grid-template-columns:360px minmax(0,1fr)}.ls-panel{padding:30px}.ls-canvas-area{padding:40px 60px 30px}}
++@media(max-width:760px){.ls-entry{grid-template-columns:1fr;margin:22px auto;border-radius:14px}.ls-entry-photo{min-height:0;height:330px}.ls-entry-copy{padding:25px;gap:16px}.ls-entry h2{font-size:36px}.ls-entry .ls-primary{width:100%}.ls-studio[open]{grid-template-rows:58px 55px minmax(0,1fr) auto}.ls-studio-header{padding:7px 14px;gap:8px}.ls-brand{font-size:23px}.ls-brand small{display:none}.ls-preview-badge{font-size:10px;padding:5px 8px;margin-right:0}.ls-header-actions{gap:2px}.ls-header-actions .ls-icon-btn{width:38px;min-height:40px;padding:9px}.ls-steps{gap:0;padding:6px 8px;justify-content:space-between}.ls-step{gap:6px;min-height:40px;padding:5px;font-size:11px}.ls-step-number{width:22px;height:22px;font-size:10px}.ls-step-separator{width:14px;flex-shrink:1}.ls-workspace{display:flex;flex-direction:column}.ls-canvas-area{order:0;flex:1 1 auto;min-height:230px;padding:25px 20px 6px}.ls-panel{order:1;flex:0 1 auto;max-height:40%;border-right:0;border-top:1px solid var(--ls-line);padding:16px 18px;background:#fff}.ls-panel-title{font-size:18px;margin-bottom:5px}.ls-panel-intro{font-size:12px;margin-bottom:14px}.ls-product-name{font-size:13px;margin-bottom:8px}.ls-price{font-size:18px;margin-bottom:13px}.ls-fieldset{margin-bottom:13px}.ls-fieldset legend{margin-bottom:7px}.ls-option-row{gap:6px}.ls-option{padding:7px 10px;min-height:39px;min-width:39px}.ls-view-top{top:8px;left:17px;right:17px;font-size:10px}.ls-view-top span:last-child{font-size:9px}.ls-stage{border-radius:8px}.ls-canvas-hint{margin:7px 0 0;font-size:10px;min-height:14px}.ls-tools{margin:12px 0;gap:8px}.ls-tool{min-height:42px;padding:8px}.ls-empty-hint{padding:11px;margin-top:10px;font-size:12px}.ls-label{margin-top:12px}.ls-object-actions{margin-top:12px}.ls-layers{margin-top:15px;padding-top:9px}.ls-footer{padding:10px 13px calc(10px + env(safe-area-inset-bottom));gap:8px;min-height:70px}.ls-footer-info{font-size:10px;max-width:34%}.ls-footer-info strong{font-size:13px}.ls-footer-actions{gap:6px}.ls-footer .ls-primary{min-width:0;font-size:12px;padding:10px 13px}.ls-footer .ls-secondary{font-size:12px;padding:10px 11px}.ls-review-note{font-size:11px;padding:10px;margin-top:12px}.ls-review-summary{padding:9px 0;font-size:12px}.ls-studio textarea{min-height:65px}.ls-studio input[type=text],.ls-studio select,.ls-studio textarea{font-size:16px}.ls-live-status{font-size:11px;margin:7px 0}}
++@media(max-width:390px){.ls-step{font-size:10px;gap:5px}.ls-step-separator{width:8px}.ls-studio-header{padding-inline:10px}.ls-brand{font-size:21px}.ls-preview-badge{font-size:9px}.ls-footer-info{max-width:29%}.ls-footer-actions{gap:5px}.ls-footer .ls-primary,.ls-footer .ls-secondary{padding-inline:9px;font-size:11px}}
++@media(prefers-reduced-motion:no-preference){.ls-primary,.ls-secondary,.ls-option,.ls-tool{transition:background .15s ease,color .15s ease}.ls-studio[open]{animation:ls-studio-in .18s ease-out}@keyframes ls-studio-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}
+--- /dev/null
++++ b/assets/luxe-studio.js
+@@ -0,0 +1,160 @@
++(() => {
++  'use strict';
++  const DE = {
++    eyebrow:'DEIN PRODUKT. DEIN DESIGN.',entryTitle:'Mach es zu deinem.',entryLead:'Grösse auswählen, Text oder Bild hinzufügen und deinen Entwurf in Ruhe ansehen.',entryButton:'Jetzt gestalten',entryNote:'Gestaltungsvorschau: Dein Entwurf bleibt in diesem Browserfenster. Es wird noch nichts bestellt.',studio:'Designstudio',previewBadge:'Gestaltungsvorschau',close:'Editor schliessen',undo:'Rückgängig',redo:'Wiederholen',stepProduct:'Produkt wählen',stepDesign:'Motiv gestalten',stepReview:'Vorschau prüfen',productHeading:'Deine Auswahl',productIntro:'Wähle die passende Ausführung. Angezeigt werden die Varianten dieses Produkts.',designHeading:'Deine Idee',designIntro:'Füge Text oder ein eigenes Bild hinzu. Tippe dein Motiv an, um es zu bearbeiten.',reviewHeading:'Dein Entwurf',reviewIntro:'Sieh dir deine Gestaltung noch einmal in Ruhe an.',addText:'Text hinzufügen',addImage:'Bild hinzufügen',emptyHint:'Ein Name, ein kurzer Satz oder dein eigenes Bild – womit möchtest du beginnen?',newText:'Dein Text',text:'Dein Text',font:'Schrift',color:'Textfarbe',size:'Grösse des Motivs',rotation:'Drehen',duplicate:'Duplizieren',center:'Zentrieren',remove:'Löschen',layers:'Elemente',layerUp:'Nach vorne',layerDown:'Nach hinten',imageLayer:'Eigenes Bild',dragHint:'Motiv antippen und verschieben',previewHint:'Vorschau deiner Gestaltung',photoLabel:'Produktfoto',viewLabel:'Gestaltung',nextDesign:'Weiter: gestalten',nextReview:'Vorschau ansehen',back:'Zurück',editAgain:'Weiter gestalten',done:'Entwurf behalten',selected:'Ausgewählte Variante',designCount:'Elemente im Entwurf',localOnly:'Dein Entwurf bleibt nur in diesem Browserfenster.',reviewNote:'Diese Ansicht zeigt die Gestaltung auf dem Produktfoto. Druckflächen, Schnittteile und Stickerei sind hier noch nicht bestätigt. Es wird nichts bestellt.',imageHelp:'PNG, JPG oder WebP · bis 10 MB. Dein Bild bleibt lokal.',fileInvalid:'Bitte wähle eine PNG-, JPG- oder WebP-Datei bis 10 MB.',imageInvalid:'Dieses Bild konnte nicht geladen werden. Bitte wähle eine andere Datei.',imageTooLarge:'Dieses Bild ist zu gross. Bitte verwende ein Bild mit höchstens 40 Millionen Pixeln.',imageAdded:'Bild hinzugefügt.',noVariants:'Für dieses Produkt sind keine bestätigten Varianten verfügbar.',unavailable:'Nicht verfügbar',selectionChanged:'Auswahl geändert:',emptyReview:'Noch kein Motiv hinzugefügt.',kept:'Dein Entwurf bleibt erhalten, solange dieses Browserfenster geöffnet ist.',imageLoading:'Bild wird geöffnet …',imageMissing:'Produktbild nicht verfügbar',serif:'Klassisch',sans:'Klar',mono:'Schreibmaschine',savedTitle:'Dein Entwurf bleibt hier.',priceLabel:'Produktpreis',deleteNotice:'Element gelöscht.',moveNotice:'Element verschoben.',changeProduct:'Anderes Produkt wählen',changeConfirm:'Beim Produktwechsel wird dein aktueller Motiventwurf zurückgesetzt. Möchtest du das Produkt wechseln?',neutralTitle:'Motiv entwerfen',neutralHint:'Position am Produkt erst nach bestätigter Druckvorlage.',areaPending:'Druckvorlage noch offen',areaVerified:'Bestätigter Druckbereich',printAreaLabel:'Druckbereich',productReference:'Dein Produkt als Referenz',availabilityUnknown:'Verfügbarkeit nicht bestätigt',neutralReviewNote:'Motiv und Produkt werden hier getrennt gezeigt. Die Position am Produkt ist erst mit einer bestätigten Druckvorlage möglich. Es wird nichts bestellt.'
++  };
++  const EN = {
++    eyebrow:'YOUR PRODUCT. YOUR DESIGN.',entryTitle:'Make it yours.',entryLead:'Choose your size, add text or an image, then take a look at your design.',entryButton:'Start designing',entryNote:'Design preview: your draft stays in this browser window. No order is placed.',studio:'Design studio',previewBadge:'Design preview',close:'Close editor',undo:'Undo',redo:'Redo',stepProduct:'Choose product',stepDesign:'Create design',stepReview:'Check preview',productHeading:'Your selection',productIntro:'Choose your preferred option. These are the variants of this product.',designHeading:'Your idea',designIntro:'Add text or an image of your own. Select an element to edit it.',reviewHeading:'Your draft',reviewIntro:'Take another look at your design before you finish.',addText:'Add text',addImage:'Add image',emptyHint:'A name, a few words or your own image — where would you like to start?',newText:'Your text',text:'Your text',font:'Font',color:'Text colour',size:'Design size',rotation:'Rotate',duplicate:'Duplicate',center:'Centre',remove:'Delete',layers:'Elements',layerUp:'Move forward',layerDown:'Move backward',imageLayer:'Your image',dragHint:'Select and drag your design',previewHint:'Preview of your design',photoLabel:'Product photo',viewLabel:'Design',nextDesign:'Next: design',nextReview:'See preview',back:'Back',editAgain:'Keep designing',done:'Keep draft',selected:'Selected variant',designCount:'Elements in draft',localOnly:'Your draft stays in this browser window only.',reviewNote:'This view shows your design on the product photo. Print areas, cut panels and embroidery are not yet verified here. No order is placed.',imageHelp:'PNG, JPG or WebP · up to 10 MB. Your image stays local.',fileInvalid:'Choose a PNG, JPG or WebP file up to 10 MB.',imageInvalid:'This image could not be opened. Please choose another file.',imageTooLarge:'This image is too large. Please use an image with no more than 40 million pixels.',imageAdded:'Image added.',noVariants:'No verified variants are available for this product.',unavailable:'Unavailable',selectionChanged:'Selection changed:',emptyReview:'No design added yet.',kept:'Your draft stays here while this browser window remains open.',imageLoading:'Opening image …',imageMissing:'Product image unavailable',serif:'Classic',sans:'Clean',mono:'Typewriter',savedTitle:'Your draft stays here.',priceLabel:'Product price',deleteNotice:'Element deleted.',moveNotice:'Element moved.',changeProduct:'Choose another product',changeConfirm:'Changing products will reset your current design draft. Do you want to change products?',neutralTitle:'Create your design',neutralHint:'Position on the product requires a verified print template.',areaPending:'Print template not yet verified',areaVerified:'Verified print area',printAreaLabel:'Print area',productReference:'Your product for reference',availabilityUnknown:'Availability not verified',neutralReviewNote:'Your design and product are shown separately here. Positioning on the product requires a verified print template. No order is placed.'
++  };
++  const SVG = {
++    close:'<path d="m6 6 12 12M18 6 6 18"/>',undo:'<path d="M8 5 3 10l5 5M3 10h11a6 6 0 0 1 0 12" transform="translate(0 -3)"/>',redo:'<path d="m16 5 5 5-5 5m5-5H10a6 6 0 0 0 0 12" transform="translate(0 -3)"/>',text:'<path d="M4 5V3h16v2M12 3v18M8 21h8"/>',image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/>',arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',up:'<path d="m6 14 6-6 6 6"/>',down:'<path d="m6 10 6 6 6-6"/>'
++  };
++  const icon = name => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (SVG[name] || '') + '</svg>';
++  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
++  const clamp = (n,min,max) => Math.max(min,Math.min(max,n));
++  const safeImage = value => {
++    try { const raw=typeof value === 'string' ? value : value?.src || value?.url || ''; if(!raw.trim())return ''; const u=new URL(raw,location.href); return /^https?:$/.test(u.protocol) ? u.href : ''; } catch { return ''; }
++  };
++  const idString = id => String(id ?? '').split('/').pop();
++  const fonts = {sans:'Arial, Helvetica, sans-serif',serif:'Georgia, Times New Roman, serif',mono:'Courier New, monospace'};
++  let counter = 0;
++
++  function productNavigationTarget(raw) {
++    if(typeof raw!=='string' || /[\\\u0000-\u0020\u007f-\u009f]/.test(raw))return null;
++    try {
++      const decodedPath=decodeURIComponent(raw.split(/[?#]/)[0]);
++      if(/(?:^|[\/\\])\.{1,2}(?:[\/\\]|$)/.test(decodedPath))return null;
++      const target=new URL(raw,location.href);
++      if(target.origin!==location.origin || target.username || target.password)return null;
++      const match=/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?products\/([^/]+)\/?$/i.exec(target.pathname);
++      if(!match)return null;
++      const handle=decodeURIComponent(match[1]);
++      if(!handle || handle==='.' || handle==='..' || /[\/\\%?#\s\u0000-\u001f\u007f-\u009f]/.test(handle))return null;
++      return target;
++    } catch { return null; }
++  }
++
++  function isDefaultOption(option){return option?.name==='Title' && Array.isArray(option.values) && option.values.length===1 && option.values[0]==='Default Title';}
++
++  function mount(root) {
++    if(root.dataset.luxeStudioReady) return;
++    const input = root.querySelector('[data-luxe-studio-data]');
++    if(!input) return;
++    let data; try { data = JSON.parse(input.textContent); } catch { return; }
++    const product = data.product;
++    if(!product || !Array.isArray(product.variants)) return;
++    root.dataset.luxeStudioReady = 'true';
++    const locale = String(data.locale || document.documentElement.lang || 'de-CH');
++    const english = locale.toLowerCase().startsWith('en');
++    const labels = Object.assign({},english ? EN : DE,data.labels || {});
++    const existingLaunch = root.querySelector('[data-luxe-studio-launch]');
++    if(data.complete === false){if(existingLaunch){existingLaunch.disabled=true;existingLaunch.title=labels.noVariants;}return;}
++    const uid = 'luxe-studio-' + (++counter);
++    const variants = product.variants.filter(v=>v && idString(v.id) && Number.isFinite(Number(v.price))).map(v=>({...v,id:idString(v.id),price:Number(v.price),options:Array.isArray(v.options)?v.options.map(String):[]}));
++    const options = Array.isArray(product.options) ? product.options.map((o,i)=>typeof o === 'string' ? {name:o,values:[...new Set(variants.map(v=>v.options[i]).filter(Boolean))]} : {name:o.name,values:Array.isArray(o.values)?o.values.map(String):[]}) : [];
++    const visibleVariantTitle = v => options.length===1 && isDefaultOption(options[0]) && v?.title==='Default Title' ? '' : v?.title || '';
++    const photos = Array.isArray(product.images) ? product.images.filter(i=>safeImage(i.src)) : [];
++    let requested = idString(product.selectedVariantId);
++    try { requested = new URL(location.href).searchParams.get('variant') || requested; } catch {}
++    const initial = variants.find(v=>v.id===requested&&v.available===true) || variants.find(v=>v.available===true) || variants[0];
++    const state = {variantId:initial?.id || '',step:1,layers:[],selected:null};
++    let serial=0,history=[],future=[],opener=null,previousOverflow='',resizeObserver=null;
++    const objectUrls = new Set();
++    const variant = () => variants.find(v=>v.id===state.variantId);
++    function printArea(){
++      const area=variant()?.printArea || data.printArea;
++      if(!area || area.verified!==true || typeof area.source!=='string' || !area.source.trim() || typeof area.placement!=='string' || !area.placement.trim() || typeof area.technique!=='string' || !area.technique.trim() || !Array.isArray(area.variantIds) || !area.variantIds.map(idString).includes(state.variantId))return null;
++      if(!['x','y','width','height'].every(key=>typeof area[key]==='number'&&Number.isFinite(area[key])))return null;
++      if(area.x<0 || area.y<0 || area.width<=0 || area.height<=0 || area.x+area.width>1 || area.y+area.height>1)return null;
++      return area;
++    }
++    const currency = /^[A-Z]{3}$/.test(data.currency || '') ? data.currency : 'CHF';
++    const money = price => new Intl.NumberFormat(english?'en-CH':'de-CH',{style:'currency',currency}).format(Number(price || 0)/100);
++    const imageFor = () => safeImage(variant()?.image) || safeImage(photos[0]?.src);
++    const button = (label,action,cls='ls-secondary',ico='') => '<button type="button" class="'+cls+'" data-action="'+action+'">'+(ico?icon(ico):'')+esc(label)+'</button>';
++    const entry = existingLaunch ? (existingLaunch.closest('.ls-entry,.lx-studio-entry') || existingLaunch.parentElement) : document.createElement('div');
++    if(!existingLaunch){ entry.className='ls-entry';
++    entry.innerHTML='<img class="ls-entry-photo" alt="'+esc(photos[0]?.alt || product.title)+'" loading="lazy" decoding="async"><div class="ls-entry-copy"><p class="ls-eyebrow">'+esc(labels.eyebrow)+'</p><h2>'+esc(labels.entryTitle)+'</h2><p class="ls-entry-product"></p><p class="ls-entry-lead">'+esc(labels.entryLead)+'</p>'+button(labels.entryButton,'open','ls-primary','arrow')+'<p class="ls-entry-note">'+esc(labels.entryNote)+'</p></div>';
++    entry.querySelector('.ls-entry-product').textContent=product.title;
++    const entryImg=entry.querySelector('img');if(imageFor())entryImg.src=imageFor();else entryImg.hidden=true;
++    root.append(entry);
++    } else existingLaunch.dataset.action='open';
++    const dialog=document.createElement('dialog');dialog.className='ls-studio';dialog.setAttribute('aria-labelledby',uid+'-title');
++    dialog.innerHTML='<header class="ls-studio-header"><div class="ls-brand" id="'+uid+'-title">LuxeStyle<small>'+esc(labels.studio)+'</small></div><div class="ls-header-actions"><span class="ls-preview-badge">'+esc(labels.previewBadge)+'</span><button type="button" class="ls-icon-btn" data-action="undo" aria-label="'+esc(labels.undo)+'" title="'+esc(labels.undo)+'">'+icon('undo')+'</button><button type="button" class="ls-icon-btn" data-action="redo" aria-label="'+esc(labels.redo)+'" title="'+esc(labels.redo)+'">'+icon('redo')+'</button><button type="button" class="ls-icon-btn" data-action="close" aria-label="'+esc(labels.close)+'" title="'+esc(labels.close)+'">'+icon('close')+'</button></div></header><nav class="ls-steps" aria-label="'+esc(labels.studio)+'">'+[labels.stepProduct,labels.stepDesign,labels.stepReview].map((text,i)=>(i?'<span class="ls-step-separator" aria-hidden="true"></span>':'')+'<button type="button" class="ls-step" data-step="'+(i+1)+'"><span class="ls-step-number">'+(i+1)+'</span><span>'+esc(text)+'</span></button>').join('')+'</nav><div class="ls-workspace"><aside class="ls-panel" aria-label="'+esc(labels.studio)+'"><div class="ls-panel-content"></div><p class="ls-live-status" role="status" aria-live="polite"></p></aside><div class="ls-canvas-area"><div class="ls-view-top"><span>'+esc(labels.photoLabel)+'</span><span>'+esc(labels.viewLabel)+'</span></div><div class="ls-stage"><img class="ls-base-image" alt="'+esc(photos[0]?.alt || product.title)+'" decoding="async"><div class="ls-layer-plane"></div><div class="ls-print-area" hidden></div></div><p class="ls-canvas-hint"></p></div></div><footer class="ls-footer"><div class="ls-footer-info"><span>'+esc(labels.priceLabel)+'</span><strong data-price></strong></div><div class="ls-footer-actions"></div></footer><input class="ls-file-input" type="file" accept="image/png,image/jpeg,image/webp"><span class="ls-visually-hidden" data-selection-announcement role="status" aria-live="polite"></span>';
++    root.append(dialog);
++    const panel=dialog.querySelector('.ls-panel-content'),stage=dialog.querySelector('.ls-stage'),plane=dialog.querySelector('.ls-layer-plane'),baseImage=dialog.querySelector('.ls-base-image'),area=dialog.querySelector('.ls-canvas-area'),status=dialog.querySelector('.ls-live-status'),fileInput=dialog.querySelector('input[type=file]');
++    const snapshot=()=>JSON.stringify({variantId:state.variantId,layers:state.layers,selected:state.selected});
++    let last=snapshot();
++    const record=()=>{const now=snapshot();if(now!==last){history.push(last);if(history.length>50)history.shift();future=[];last=now;}updateHistory();};
++    const updateHistory=()=>{dialog.querySelector('[data-action=undo]').disabled=!history.length;dialog.querySelector('[data-action=redo]').disabled=!future.length;};
++    function restore(str){const s=JSON.parse(str);state.variantId=s.variantId;state.layers=s.layers;state.selected=s.selected;render();last=snapshot();}
++    const notify=text=>{status.textContent=text;};
++    const chosen=()=>state.layers.find(l=>l.id===state.selected);
++    function updateStageSize(){if(!dialog.open)return;const width=Math.max(160,area.clientWidth-(innerWidth<=760?40:90));const height=Math.max(160,area.clientHeight-(innerWidth<=760?52:84));stage.style.setProperty('--stage-limit',Math.min(width,height)+'px');layoutLayers();}
++    function layoutOne(node,l){node.setAttribute('aria-label',l.type==='text'?l.text:labels.imageLayer);node.style.left=l.x+'%';node.style.top=l.y+'%';node.style.transform='translate(-50%,-50%) rotate('+l.rotation+'deg)';node.style.zIndex=String(state.layers.indexOf(l));node.classList.toggle('is-selected',l.id===state.selected && state.step===2);node.setAttribute('aria-pressed',String(l.id===state.selected));if(l.type==='text'){node.textContent=l.text;node.style.fontFamily=fonts[l.font]||fonts.sans;node.style.fontSize=(stage.clientWidth*l.size/100)+'px';node.style.color=/^#[0-9a-f]{6}$/i.test(l.color)?l.color:'#282520';}else node.style.width=l.size+'%';
++      const area=printArea(),r=plane.getBoundingClientRect();
++      if(area && r.width>0 && r.height>0){
++        for(let pass=0;pass<4;pass++){
++          const box=node.getBoundingClientRect();
++          const fit=Math.min(1,area.width*r.width/Math.max(box.width,1),area.height*r.height/Math.max(box.height,1));
++          if(fit>=1)break;
++          l.size=Math.max(.01,l.size*fit*.995);
++          if(l.type==='text')node.style.fontSize=(stage.clientWidth*l.size/100)+'px';else node.style.width=l.size+'%';
++        }
++        const box=node.getBoundingClientRect(),halfW=box.width/r.width*50,halfH=box.height/r.height*50;
++        l.x=clamp(l.x,area.x*100+halfW,(area.x+area.width)*100-halfW);
++        l.y=clamp(l.y,area.y*100+halfH,(area.y+area.height)*100-halfH);
++        node.style.left=l.x+'%';node.style.top=l.y+'%';
++      }
++    }
++    function layoutLayers(){state.layers.forEach(l=>{const node=plane.querySelector('[data-layer="'+l.id+'"]');if(node)layoutOne(node,l);});}
++    function renderLayers(){plane.replaceChildren();for(const layer of state.layers){const node=document.createElement('div');node.className='ls-design-object';node.dataset.layer=layer.id;node.dataset.type=layer.type;node.setAttribute('role','button');node.tabIndex=state.step===2?0:-1;node.setAttribute('aria-label',layer.type==='text'?layer.text:labels.imageLayer);if(layer.type==='image'){const img=document.createElement('img');img.src=layer.src;img.alt=labels.imageLayer;img.draggable=false;img.addEventListener('load',()=>layoutOne(node,layer));node.append(img);}plane.append(node);layoutOne(node,layer);attachDrag(node,layer);}stage.classList.toggle('is-preview',state.step!==2);}
++    function select(id,focusField=false){state.selected=id;renderPanel();layoutLayers();if(focusField)requestAnimationFrame(()=>{const f=panel.querySelector('[data-prop=text]');if(f){f.focus();f.select();}});}
++    function attachDrag(node,layer){let start=null,moved=false;node.addEventListener('pointerdown',event=>{if(state.step!==2 || event.button>0)return;event.preventDefault();select(layer.id);start={x:event.clientX,y:event.clientY,lx:layer.x,ly:layer.y,w:stage.clientWidth,h:stage.clientHeight};moved=false;node.setPointerCapture(event.pointerId);});node.addEventListener('pointermove',event=>{if(!start)return;const dx=event.clientX-start.x,dy=event.clientY-start.y;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;layer.x=clamp(start.lx+dx/start.w*100,2,98);layer.y=clamp(start.ly+dy/start.h*100,2,98);layoutOne(node,layer);});const end=()=>{if(!start)return;start=null;if(moved){record();dialog.querySelector('[data-selection-announcement]').textContent=labels.moveNotice;}};node.addEventListener('pointerup',end);node.addEventListener('pointercancel',end);node.addEventListener('lostpointercapture',end);node.addEventListener('keydown',event=>{if(state.step!==2)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();select(layer.id);return;}if(event.key==='Delete'||event.key==='Backspace'){event.preventDefault();state.selected=layer.id;remove();return;}const delta=event.shiftKey?5:1;const directions={ArrowLeft:[-delta,0],ArrowRight:[delta,0],ArrowUp:[0,-delta],ArrowDown:[0,delta]};if(directions[event.key]){event.preventDefault();state.selected=layer.id;layer.x=clamp(layer.x+directions[event.key][0],2,98);layer.y=clamp(layer.y+directions[event.key][1],2,98);layoutOne(node,layer);record();}});}
++    function optionMarkup(){const v=variant();return options.map((o,i)=>isDefaultOption(o)?'':'<fieldset class="ls-fieldset"><legend>'+esc(o.name)+'</legend><div class="ls-option-row">'+o.values.map(value=>{const matches=variants.filter(x=>x.options[i]===value),available=matches.some(x=>x.available===true),pressed=v?.options[i]===value;return '<button type="button" class="ls-option" data-option="'+i+'" data-value="'+esc(value)+'" aria-pressed="'+pressed+'"'+(!matches.length||!available?' disabled':'')+'>'+esc(value)+'</button>';}).join('')+'</div></fieldset>').join('');}
++    function layersMarkup(){return '<details class="ls-layers"><summary>'+esc(labels.layers)+' ('+state.layers.length+')</summary><ol class="ls-layer-list">'+[...state.layers].reverse().map(l=>'<li class="ls-layer-item"><button type="button" class="ls-layer-pick" data-pick="'+l.id+'" aria-pressed="'+(l.id===state.selected)+'">'+esc(l.type==='text'?l.text:labels.imageLayer)+'</button><button type="button" class="ls-layer-move" data-move="'+l.id+'" data-direction="1" aria-label="'+esc(labels.layerUp)+'"'+(state.layers.indexOf(l)===state.layers.length-1?' disabled':'')+'>'+icon('up')+'</button><button type="button" class="ls-layer-move" data-move="'+l.id+'" data-direction="-1" aria-label="'+esc(labels.layerDown)+'"'+(state.layers.indexOf(l)===0?' disabled':'')+'>'+icon('down')+'</button></li>').join('')+'</ol></details>';}
++    function propertiesMarkup(){const l=chosen();if(!l)return state.layers.length?'':'<p class="ls-empty-hint">'+esc(labels.emptyHint)+'</p>';let html='';if(l.type==='text')html+='<label class="ls-label" for="'+uid+'-text">'+esc(labels.text)+'</label><textarea id="'+uid+'-text" maxlength="160" data-prop="text">'+esc(l.text)+'</textarea><label class="ls-label" for="'+uid+'-font">'+esc(labels.font)+'</label><select id="'+uid+'-font" data-prop="font">'+['sans','serif','mono'].map(f=>'<option value="'+f+'"'+(l.font===f?' selected':'')+'>'+esc(labels[f])+'</option>').join('')+'</select><label class="ls-label" for="'+uid+'-color">'+esc(labels.color)+'</label><div class="ls-color-row"><input id="'+uid+'-color" type="color" data-prop="color" value="'+esc(l.color)+'">'+['#282520','#ffffff','#8c7656','#a94b3d','#355b52'].map(c=>'<button type="button" class="ls-swatch" style="--color:'+c+'" data-color="'+c+'" aria-label="'+esc(labels.color)+' '+c+'" aria-pressed="'+(l.color===c)+'"></button>').join('')+'</div>';
++      html+='<label class="ls-label ls-range-label" for="'+uid+'-size"><span>'+esc(labels.size)+'</span><output data-size-output>'+l.size+'%</output></label><input id="'+uid+'-size" type="range" min="'+(l.type==='text'?2:8)+'" max="'+(l.type==='text'?20:90)+'" value="'+l.size+'" data-prop="size"><label class="ls-label ls-range-label" for="'+uid+'-rotation"><span>'+esc(labels.rotation)+'</span><output data-rotation-output>'+l.rotation+'°</output></label><input id="'+uid+'-rotation" type="range" min="-180" max="180" value="'+l.rotation+'" data-prop="rotation"><div class="ls-object-actions">'+button(labels.center,'center')+button(labels.duplicate,'duplicate')+button(labels.remove,'remove','ls-secondary ls-danger')+'</div>';return html;}
++    function productReference(){const src=imageFor();return '<div class="ls-product-reference">'+(src?'<img src="'+esc(src)+'" alt="'+esc(product.title)+'">':'')+'<div><span>'+esc(labels.productReference)+'</span><strong>'+esc(product.title)+'</strong><span>'+esc(visibleVariantTitle(variant()))+'</span></div></div>';}
++    function renderPanel(){const layersWereOpen=panel.querySelector('.ls-layers')?.open;const v=variant();if(state.step===1){panel.innerHTML='<h2 class="ls-panel-title">'+esc(labels.productHeading)+'</h2><p class="ls-panel-intro">'+esc(labels.productIntro)+'</p><p class="ls-product-name">'+esc(product.title)+'</p><p class="ls-price">'+(v?esc(money(v.price)):'')+'</p>'+optionMarkup()+button(labels.changeProduct,'choose-product','ls-secondary ls-change-product')+(!v?'<p class="ls-subtle">'+esc(labels.noVariants)+'</p>':'')+(v&&v.available!==true?'<p class="ls-live-status">'+esc(v.available===false?labels.unavailable:labels.availabilityUnknown)+'</p>':'')+'<p class="ls-subtle">'+esc(labels.localOnly)+'</p>';}else if(state.step===2){panel.innerHTML='<h2 class="ls-panel-title">'+esc(labels.designHeading)+'</h2><p class="ls-panel-intro">'+esc(labels.designIntro)+'</p>'+(!printArea()?'<p class="ls-template-note">'+esc(labels.neutralHint)+'</p>':'')+'<div class="ls-tools">'+button(labels.addText,'add-text','ls-tool','text')+button(labels.addImage,'add-image','ls-tool','image')+'</div><p class="ls-subtle">'+esc(labels.imageHelp)+'</p><div class="ls-properties">'+propertiesMarkup()+'</div>'+layersMarkup()+(!printArea()?productReference():'');}else{panel.innerHTML='<h2 class="ls-panel-title">'+esc(labels.reviewHeading)+'</h2><p class="ls-panel-intro">'+esc(labels.reviewIntro)+'</p>'+(!printArea()?productReference():'')+'<p class="ls-product-name">'+esc(product.title)+'</p>'+(visibleVariantTitle(v)?'<div class="ls-review-summary"><span>'+esc(labels.selected)+'</span><strong>'+esc(visibleVariantTitle(v))+'</strong></div>':'')+'<div class="ls-review-summary"><span>'+esc(labels.priceLabel)+'</span><strong>'+esc(v?money(v.price):'')+'</strong></div><div class="ls-review-summary"><span>'+esc(labels.designCount)+'</span><strong>'+state.layers.length+'</strong></div>'+(!state.layers.length?'<p class="ls-subtle">'+esc(labels.emptyReview)+'</p>':'')+'<p class="ls-review-note">'+esc(printArea()?labels.reviewNote:labels.neutralReviewNote)+'</p>';}
++      if(layersWereOpen && panel.querySelector('.ls-layers'))panel.querySelector('.ls-layers').open=true;
++      requestAnimationFrame(updateStageSize);
++    }
++    function render(){const oldFocus=document.activeElement,focusAction=dialog.contains(oldFocus)?oldFocus?.dataset?.action:null;dialog.dataset.step=String(state.step);dialog.dataset.variantId=state.variantId;dialog.querySelectorAll('[data-step]').forEach(b=>{const active=Number(b.dataset.step)===state.step;if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});const src=imageFor(),areaConfig=printArea(),neutral=!areaConfig&&state.step>1;
++      if(src&&!neutral){baseImage.src=src;baseImage.hidden=false;}else baseImage.hidden=true;
++      plane.hidden=state.step===1&&!areaConfig;stage.classList.toggle('is-neutral',neutral);
++      stage.dataset.surface=neutral?'neutral-design':areaConfig?'verified-print-area':'product-reference';
++      const boundary=stage.querySelector('.ls-print-area');boundary.hidden=!areaConfig;
++      if(areaConfig){boundary.style.left=areaConfig.x*100+'%';boundary.style.top=areaConfig.y*100+'%';boundary.style.width=areaConfig.width*100+'%';boundary.style.height=areaConfig.height*100+'%';boundary.setAttribute('aria-label',labels.printAreaLabel);}
++      dialog.querySelector('.ls-view-top span:first-child').textContent=neutral?labels.neutralTitle:labels.photoLabel;
++      dialog.querySelector('.ls-view-top span:last-child').textContent=areaConfig?labels.areaVerified:labels.areaPending;dialog.querySelector('[data-price]').textContent=variant()?money(variant().price):'';dialog.querySelector('.ls-canvas-hint').textContent=neutral?labels.neutralHint:state.step===2?labels.dragHint:labels.previewHint;const footer=dialog.querySelector('.ls-footer-actions');footer.innerHTML=(state.step>1?button(state.step===3?labels.editAgain:labels.back,'back'):'')+button(state.step===1?labels.nextDesign:state.step===2?labels.nextReview:labels.done,'next','ls-primary',state.step<3?'arrow':'');renderPanel();renderLayers();updateHistory();if(focusAction&&!oldFocus.isConnected){const replacement=[...dialog.querySelectorAll('[data-action]')].find(b=>b.dataset.action===focusAction);(replacement||dialog.querySelector('[data-step="'+state.step+'"]'))?.focus();}}
++    function setStep(step){state.step=clamp(step,1,3);notify('');render();dialog.querySelector('.ls-panel').scrollTop=0;dialog.querySelector('[data-step="'+state.step+'"]').focus();}
++    function open(){opener=document.activeElement;previousOverflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';dialog.showModal();render();requestAnimationFrame(()=>{dialog.querySelector('[data-step="'+state.step+'"]').focus();updateStageSize();});}
++    function close(){dialog.close();}
++    dialog.addEventListener('close',()=>{document.documentElement.style.overflow=previousOverflow;if(opener?.isConnected)opener.focus();});
++    function remove(){const id=state.selected;if(!id)return;state.layers=state.layers.filter(l=>l.id!==id);state.selected=null;render();record();notify(labels.deleteNotice);}
++    function addText(){state.step=2;const l={id:'layer-'+(++serial),type:'text',text:labels.newText,font:'sans',color:'#282520',x:50,y:43,size:8,rotation:0};state.layers.push(l);state.selected=l.id;render();record();select(l.id,true);}
++    function chooseOption(index,value){const current=variant(),exact=variants.find(v=>v.available===true&&v.options.every((x,i)=>x===(i===index?value:current?.options[i])));const matches=variants.filter(v=>v.available===true&&v.options[index]===value).sort((a,b)=>b.options.filter((x,i)=>x===current?.options[i]).length-a.options.filter((x,i)=>x===current?.options[i]).length);const next=exact||matches[0];if(!next)return;state.variantId=next.id;render();record();const optionButton=[...panel.querySelectorAll('[data-option]')].find(b=>Number(b.dataset.option)===index&&b.dataset.value===value);optionButton?.focus();dialog.querySelector('[data-selection-announcement]').textContent=labels.selectionChanged+' '+next.title;root.dispatchEvent(new CustomEvent('luxe:studio-variant',{detail:{productId:product.id,variantId:next.id,price:next.price},bubbles:true}));}
++    function action(name){if(name==='open')return open();if(name==='choose-product'){root.dispatchEvent(new CustomEvent('luxe:choose-product',{bubbles:true,detail:{productId:product.id}}));return;}if(name==='close')return close();if(name==='next'){if(state.step===3){close();const note=entry.querySelector('.ls-entry-note');if(note)note.textContent=labels.kept;return;}return setStep(state.step+1);}if(name==='back')return setStep(state.step-1);if(name==='add-text')return addText();if(name==='add-image')return fileInput.click();if(name==='undo'&&history.length){future.push(last);return restore(history.pop());}if(name==='redo'&&future.length){history.push(last);return restore(future.pop());}if(name==='remove')return remove();const l=chosen();if(!l)return;if(name==='center'){l.x=50;l.y=50;render();record();}if(name==='duplicate'){const copy={...l,id:'layer-'+(++serial),x:clamp(l.x+5,2,98),y:clamp(l.y+5,2,98)};state.layers.push(copy);state.selected=copy.id;render();record();}}
++    root.addEventListener('click',event=>{const target=event.target.closest('[data-action],[data-step],[data-option],[data-pick],[data-color],[data-move]');if(!target || !root.contains(target))return;if(target.dataset.action)return action(target.dataset.action);if(target.dataset.step)return setStep(Number(target.dataset.step));if(target.dataset.option!=null)return chooseOption(Number(target.dataset.option),target.dataset.value);if(target.dataset.pick)return select(target.dataset.pick);if(target.dataset.color){const l=chosen();if(l?.type==='text'){l.color=target.dataset.color;render();record();}}if(target.dataset.move){const i=state.layers.findIndex(l=>l.id===target.dataset.move),j=i+Number(target.dataset.direction);if(i>=0&&j>=0&&j<state.layers.length){[state.layers[i],state.layers[j]]=[state.layers[j],state.layers[i]];render();record();}}});
++    panel.addEventListener('input',event=>{const prop=event.target.dataset.prop,l=chosen();if(!prop||!l)return;if(prop==='text'&&l.type==='text')l.text=event.target.value.slice(0,160);if(prop==='font'&&fonts[event.target.value])l.font=event.target.value;if(prop==='color'&&/^#[0-9a-f]{6}$/i.test(event.target.value))l.color=event.target.value;if(prop==='size')l.size=clamp(Number(event.target.value),l.type==='text'?2:8,l.type==='text'?20:90);if(prop==='rotation')l.rotation=clamp(Number(event.target.value),-180,180);layoutLayers();if(prop==='size')panel.querySelector('[data-size-output]').textContent=Math.round(l.size*10)/10+'%';if(prop==='rotation')panel.querySelector('[data-rotation-output]').textContent=l.rotation+'°';});
++    panel.addEventListener('change',event=>{if(!event.target.dataset.prop)return;record();if(event.target.dataset.prop==='color')panel.querySelectorAll('[data-color]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===chosen()?.color)));const pick=panel.querySelector('[data-pick="'+state.selected+'"]');if(pick&&chosen()?.type==='text')pick.textContent=chosen().text;});
++    fileInput.addEventListener('change',async()=>{const file=fileInput.files?.[0];fileInput.value='';if(!file)return;let createdUrl='';if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>10*1024*1024||file.size<12){notify(labels.fileInvalid);return;}try{const bytes=new Uint8Array(await file.slice(0,12).arrayBuffer());const png=bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71;const jpg=bytes[0]===255&&bytes[1]===216&&bytes[2]===255;const webp=String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP';if(!(png||jpg||webp)){notify(labels.fileInvalid);return;}notify(labels.imageLoading);const src=URL.createObjectURL(file);createdUrl=src;objectUrls.add(src);const img=new Image();img.src=src;await img.decode();if(img.naturalWidth*img.naturalHeight>40000000){URL.revokeObjectURL(src);objectUrls.delete(src);notify(labels.imageTooLarge);return;}const l={id:'layer-'+(++serial),type:'image',src,x:50,y:43,size:30,rotation:0};state.layers.push(l);state.selected=l.id;state.step=2;render();record();notify(labels.imageAdded);}catch{if(createdUrl){URL.revokeObjectURL(createdUrl);objectUrls.delete(createdUrl);}notify(labels.imageInvalid);}});
++    root.addEventListener('luxe:product-navigation',event=>{
++      event.preventDefault();
++      const target=productNavigationTarget(event.detail?.url);
++      if(!target)return;
++      if(state.layers.length && !window.confirm(labels.changeConfirm))return;
++      const current=new URL(location.href);
++      ['preview_theme_id','view'].forEach(key=>{if(current.searchParams.has(key))target.searchParams.set(key,current.searchParams.get(key));});
++      location.assign(target.href);
++    });
++    baseImage.addEventListener('error',()=>{baseImage.hidden=true;notify(labels.imageMissing);});
++    resizeObserver=new ResizeObserver(()=>updateStageSize());resizeObserver.observe(area);
++    window.addEventListener('pagehide',event=>{if(!event.persisted){objectUrls.forEach(url=>URL.revokeObjectURL(url));objectUrls.clear();resizeObserver?.disconnect();}});
++    render();
++  }
++  const start=()=>document.querySelectorAll('[data-luxe-studio]').forEach(mount);
++  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
++  document.addEventListener('shopify:section:load',start);
++})();
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -454,4 +454,119 @@
+   "label_cdb4e": ".",
+   "luxestyle_startseitenvorschau_b76dd": "LuxeStyle – Startseitenvorschau"
++},
++  "luxe_studio": {
++    "eyebrow": "DEIN PRODUKT. DEIN DESIGN.",
++    "entry_title": "Mach es zu deinem.",
++    "entry_lead": "Grösse auswählen, Text oder Bild hinzufügen und deinen Entwurf in Ruhe ansehen.",
++    "entry_button": "Jetzt gestalten",
++    "entry_note": "Gestaltungsvorschau: Dein Entwurf bleibt in diesem Browserfenster. Es wird noch nichts bestellt.",
++    "studio": "Designstudio",
++    "preview_badge": "Gestaltungsvorschau",
++    "close": "Editor schliessen",
++    "undo": "Rückgängig",
++    "redo": "Wiederholen",
++    "step_product": "Produkt wählen",
++    "step_design": "Motiv gestalten",
++    "step_review": "Vorschau prüfen",
++    "product_heading": "Deine Auswahl",
++    "product_intro": "Wähle die passende Ausführung. Angezeigt werden die Varianten dieses Produkts.",
++    "design_heading": "Deine Idee",
++    "design_intro": "Füge Text oder ein eigenes Bild hinzu. Tippe dein Motiv an, um es zu bearbeiten.",
++    "review_heading": "Dein Entwurf",
++    "review_intro": "Sieh dir deine Gestaltung noch einmal in Ruhe an.",
++    "add_text": "Text hinzufügen",
++    "add_image": "Bild hinzufügen",
++    "empty_hint": "Ein Name, ein kurzer Satz oder dein eigenes Bild – womit möchtest du beginnen?",
++    "new_text": "Dein Text",
++    "text": "Dein Text",
++    "font": "Schrift",
++    "color": "Textfarbe",
++    "size": "Grösse des Motivs",
++    "rotation": "Drehen",
++    "duplicate": "Duplizieren",
++    "center": "Zentrieren",
++    "remove": "Löschen",
++    "layers": "Elemente",
++    "layer_up": "Nach vorne",
++    "layer_down": "Nach hinten",
++    "image_layer": "Eigenes Bild",
++    "drag_hint": "Motiv antippen und verschieben",
++    "preview_hint": "Vorschau deiner Gestaltung",
++    "photo_label": "Produktfoto",
++    "view_label": "Gestaltung",
++    "next_design": "Weiter: gestalten",
++    "next_review": "Vorschau ansehen",
++    "back": "Zurück",
++    "edit_again": "Weiter gestalten",
++    "done": "Entwurf behalten",
++    "selected": "Ausgewählte Variante",
++    "design_count": "Elemente im Entwurf",
++    "local_only": "Dein Entwurf bleibt nur in diesem Browserfenster.",
++    "review_note": "Diese Ansicht zeigt die Gestaltung auf dem Produktfoto. Druckflächen, Schnittteile und Stickerei sind hier noch nicht bestätigt. Es wird nichts bestellt.",
++    "image_help": "PNG, JPG oder WebP · bis 10 MB. Dein Bild bleibt lokal.",
++    "file_invalid": "Bitte wähle eine PNG-, JPG- oder WebP-Datei bis 10 MB.",
++    "image_invalid": "Dieses Bild konnte nicht geladen werden. Bitte wähle eine andere Datei.",
++    "image_too_large": "Dieses Bild ist zu gross. Bitte verwende ein Bild mit höchstens 40 Millionen Pixeln.",
++    "image_added": "Bild hinzugefügt.",
++    "no_variants": "Für dieses Produkt sind keine bestätigten Varianten verfügbar.",
++    "unavailable": "Nicht verfügbar",
++    "selection_changed": "Auswahl geändert:",
++    "empty_review": "Noch kein Motiv hinzugefügt.",
++    "kept": "Dein Entwurf bleibt erhalten, solange dieses Browserfenster geöffnet ist.",
++    "image_loading": "Bild wird geöffnet …",
++    "image_missing": "Produktbild nicht verfügbar",
++    "serif": "Klassisch",
++    "sans": "Klar",
++    "mono": "Schreibmaschine",
++    "saved_title": "Dein Entwurf bleibt hier.",
++    "price_label": "Produktpreis",
++    "delete_notice": "Element gelöscht.",
++    "move_notice": "Element verschoben.",
++    "change_product": "Anderes Produkt wählen",
++    "change_confirm": "Beim Produktwechsel wird dein aktueller Motiventwurf zurückgesetzt. Möchtest du das Produkt wechseln?",
++    "neutral_title": "Motiv entwerfen",
++    "neutral_hint": "Position am Produkt erst nach bestätigter Druckvorlage.",
++    "area_pending": "Druckvorlage noch offen",
++    "area_verified": "Bestätigter Druckbereich",
++    "print_area_label": "Druckbereich",
++    "product_reference": "Dein Produkt als Referenz",
++    "availability_unknown": "Verfügbarkeit nicht bestätigt",
++    "neutral_review_note": "Motiv und Produkt werden hier getrennt gezeigt. Die Position am Produkt ist erst mit einer bestätigten Druckvorlage möglich. Es wird nichts bestellt.",
++    "catalog_title": "Produkt wechseln",
++    "catalog_eyebrow": "LuxeStyle Designstudio",
++    "catalog_close": "Produktauswahl schliessen",
++    "catalog_search": "Produkte suchen",
++    "catalog_search_placeholder": "T-Shirt, Tasche, Tasse …",
++    "catalog_search_button": "Suchen",
++    "catalog_category": "Kategorie",
++    "catalog_all": "Alle Produkte",
++    "catalog_scope": "Personalisierbare Produkte aus dem LuxeStyle-Shop. Grösse und Ausführung wählst du nach der Produktauswahl. Die Suche sucht im gesamten Shop nach passenden Produkttiteln; weitere Treffer sind über «Weiter» erreichbar.",
++    "catalog_loading": "Produkte werden geladen …",
++    "catalog_error": "Die Produkte konnten nicht geladen werden. Bitte versuche es erneut.",
++    "catalog_retry": "Erneut laden",
++    "catalog_empty": "Auf dieser Seite sind keine passenden Produkte zu sehen.",
++    "catalog_previous": "Zurück",
++    "catalog_next": "Weiter",
++    "catalog_page": "Seite",
++    "catalog_choose": "Auswählen",
++    "catalog_unavailable": "Zurzeit nicht auswählbar",
++    "catalog_from": "Ab",
++    "catalog_variants": "Varianten",
++    "catalog_image_missing": "Produktbild fehlt",
++    "catalog_navigation_missing": "Der Produktwechsel ist in dieser Vorschau noch nicht verbunden.",
++    "intro_kicker": "LuxeStyle Designstudio",
++    "intro_copy": "Wähle dein Produkt und gestalte dein eigenes Motiv. Einfach, übersichtlich und mit Platz für deine Idee.",
++    "intro_step_product": "Produkt und Ausführung wählen",
++    "intro_step_design": "Text oder Bild gestalten",
++    "intro_step_review": "Entwurf in Ruhe prüfen",
++    "intro_launch": "Im Vollbild gestalten",
++    "intro_preview": "Neue Gestaltungsvorschau. Motive bleiben lokal; es wird nichts bestellt. Die Position auf dem Produkt wird erst mit bestätigter Druckvorlage möglich.",
++    "intro_back": "Zur Produktseite",
++    "intro_unavailable": "Für dieses Produkt ist die vollständige Auswahl im Studio noch nicht verfügbar.",
++    "catalog_clothing": "Bekleidung",
++    "catalog_bags": "Taschen",
++    "catalog_home": "Wohnen & Deko",
++    "catalog_drinkware": "Tassen & Flaschen",
++    "catalog_accessories": "Accessoires"
++  }
+ }
+-}
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -473,5 +473,119 @@
+   "label_cdb4e": ".",
+   "luxestyle_startseitenvorschau_b76dd": "LuxeStyle – Startseitenvorschau"
++},
++  "luxe_studio": {
++    "eyebrow": "YOUR PRODUCT. YOUR DESIGN.",
++    "entry_title": "Make it yours.",
++    "entry_lead": "Choose your size, add text or an image, then take a look at your design.",
++    "entry_button": "Start designing",
++    "entry_note": "Design preview: your draft stays in this browser window. No order is placed.",
++    "studio": "Design studio",
++    "preview_badge": "Design preview",
++    "close": "Close editor",
++    "undo": "Undo",
++    "redo": "Redo",
++    "step_product": "Choose product",
++    "step_design": "Create design",
++    "step_review": "Check preview",
++    "product_heading": "Your selection",
++    "product_intro": "Choose your preferred option. These are the variants of this product.",
++    "design_heading": "Your idea",
++    "design_intro": "Add text or an image of your own. Select an element to edit it.",
++    "review_heading": "Your draft",
++    "review_intro": "Take another look at your design before you finish.",
++    "add_text": "Add text",
++    "add_image": "Add image",
++    "empty_hint": "A name, a few words or your own image — where would you like to start?",
++    "new_text": "Your text",
++    "text": "Your text",
++    "font": "Font",
++    "color": "Text colour",
++    "size": "Design size",
++    "rotation": "Rotate",
++    "duplicate": "Duplicate",
++    "center": "Centre",
++    "remove": "Delete",
++    "layers": "Elements",
++    "layer_up": "Move forward",
++    "layer_down": "Move backward",
++    "image_layer": "Your image",
++    "drag_hint": "Select and drag your design",
++    "preview_hint": "Preview of your design",
++    "photo_label": "Product photo",
++    "view_label": "Design",
++    "next_design": "Next: design",
++    "next_review": "See preview",
++    "back": "Back",
++    "edit_again": "Keep designing",
++    "done": "Keep draft",
++    "selected": "Selected variant",
++    "design_count": "Elements in draft",
++    "local_only": "Your draft stays in this browser window only.",
++    "review_note": "This view shows your design on the product photo. Print areas, cut panels and embroidery are not yet verified here. No order is placed.",
++    "image_help": "PNG, JPG or WebP · up to 10 MB. Your image stays local.",
++    "file_invalid": "Choose a PNG, JPG or WebP file up to 10 MB.",
++    "image_invalid": "This image could not be opened. Please choose another file.",
++    "image_too_large": "This image is too large. Please use an image with no more than 40 million pixels.",
++    "image_added": "Image added.",
++    "no_variants": "No verified variants are available for this product.",
++    "unavailable": "Unavailable",
++    "selection_changed": "Selection changed:",
++    "empty_review": "No design added yet.",
++    "kept": "Your draft stays here while this browser window remains open.",
++    "image_loading": "Opening image …",
++    "image_missing": "Product image unavailable",
++    "serif": "Classic",
++    "sans": "Clean",
++    "mono": "Typewriter",
++    "saved_title": "Your draft stays here.",
++    "price_label": "Product price",
++    "delete_notice": "Element deleted.",
++    "move_notice": "Element moved.",
++    "change_product": "Choose another product",
++    "change_confirm": "Changing products will reset your current design draft. Do you want to change products?",
++    "neutral_title": "Create your design",
++    "neutral_hint": "Position on the product requires a verified print template.",
++    "area_pending": "Print template not yet verified",
++    "area_verified": "Verified print area",
++    "print_area_label": "Print area",
++    "product_reference": "Your product for reference",
++    "availability_unknown": "Availability not verified",
++    "neutral_review_note": "Your design and product are shown separately here. Positioning on the product requires a verified print template. No order is placed.",
++    "catalog_title": "Change product",
++    "catalog_eyebrow": "LuxeStyle Design studio",
++    "catalog_close": "Close product picker",
++    "catalog_search": "Search products",
++    "catalog_search_placeholder": "T-shirt, bag, mug …",
++    "catalog_search_button": "Search",
++    "catalog_category": "Category",
++    "catalog_all": "All products",
++    "catalog_scope": "Personalizable products from the LuxeStyle shop. Choose size and options after selecting a product. Search finds matching product titles across the shop; use Next for further results.",
++    "catalog_loading": "Loading products …",
++    "catalog_error": "Products could not be loaded. Please try again.",
++    "catalog_retry": "Try again",
++    "catalog_empty": "No matching products are shown on this page.",
++    "catalog_previous": "Previous",
++    "catalog_next": "Next",
++    "catalog_page": "Page",
++    "catalog_choose": "Select",
++    "catalog_unavailable": "Currently unavailable",
++    "catalog_from": "From",
++    "catalog_variants": "variants",
++    "catalog_image_missing": "Product image missing",
++    "catalog_navigation_missing": "Product switching is not connected in this preview yet.",
++    "intro_kicker": "LuxeStyle Design Studio",
++    "intro_copy": "Choose your product and create your own design. Clear, simple and with room for your ideas.",
++    "intro_step_product": "Choose product and options",
++    "intro_step_design": "Create with text or an image",
++    "intro_step_review": "Review your draft",
++    "intro_launch": "Design in full screen",
++    "intro_preview": "New design preview. Your artwork stays local; no order is placed. Positioning on the product requires a verified print template.",
++    "intro_back": "Back to product",
++    "intro_unavailable": "The complete selection for this product is not available in the studio yet.",
++    "catalog_clothing": "Clothing",
++    "catalog_bags": "Bags",
++    "catalog_home": "Home & living",
++    "catalog_drinkware": "Mugs & bottles",
++    "catalog_accessories": "Accessories"
++  }
+ }
+-}
+-
+--- /dev/null
++++ b/sections/luxe-studio.liquid
+@@ -0,0 +1,213 @@
++{{ 'luxe-studio.css' | asset_url | stylesheet_tag }}
++{{ 'luxe-studio-catalog.css' | asset_url | stylesheet_tag }}
++<script src="{{ 'luxe-studio.js' | asset_url }}" defer></script>
++<script src="{{ 'luxe-studio-catalog.js' | asset_url }}" defer></script>
++{% liquid
++  assign studio_allowed = false
++  if product.tags contains 'wunschdesign' or product.tags contains 'printful_personalized_product'
++    assign studio_allowed = true
++  endif
++  assign studio_variant = product.selected_or_first_available_variant
++  assign studio_image = studio_variant.featured_image | default: product.featured_image
++  assign studio_count = 0
++%}
++{% capture studio_variants %}
++[
++  {% for variant in product.variants %}
++    {% assign studio_count = studio_count | plus: 1 %}
++    {
++      "id": {{ variant.id | append: '' | json }},
++      "title": {{ variant.title | json }},
++      "price": {{ variant.price | json }},
++      "available": {{ variant.available | json }},
++      "options": {{ variant.options | json }}
++      {% if variant.featured_image %},
++        "image": {"src": {{ variant.featured_image | image_url: width: 1200 | json }}, "alt": {{ variant.featured_image.alt | default: product.title | json }}, "width": {{ variant.featured_image.width | json }}, "height": {{ variant.featured_image.height | json }}}
++      {% endif %}
++    }{% unless forloop.last %},{% endunless %}
++  {% endfor %}
++]
++{% endcapture %}
++{% liquid
++  assign studio_complete = false
++  if studio_count == product.variants_count and studio_allowed
++    assign studio_complete = true
++  endif
++%}
++{% capture studio_data %}
++{
++  "previewOnly": true,
++  "complete": {{ studio_complete | json }},
++  "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
++  "locale": {{ request.locale.iso_code | json }},
++  "catalogUrl": "/collections/sg-alle",
++  "catalogSearchUrl": "/search",
++  "catalogCollections": [
++    {"url":"/collections/sg-alle", "title": {{ 'luxe_studio.catalog_all' | t | json }}},
++    {"url":"/collections/sg-bekleidung", "title": {{ 'luxe_studio.catalog_clothing' | t | json }}},
++    {"url":"/collections/sg-taschen", "title": {{ 'luxe_studio.catalog_bags' | t | json }}},
++    {"url":"/collections/sg-wohnen", "title": {{ 'luxe_studio.catalog_home' | t | json }}},
++    {"url":"/collections/sg-trinken", "title": {{ 'luxe_studio.catalog_drinkware' | t | json }}},
++    {"url":"/collections/sg-accessoires", "title": {{ 'luxe_studio.catalog_accessories' | t | json }}}
++  ],
++  "product": {
++    "id": {{ product.id | append: '' | json }},
++    "title": {{ product.title | json }},
++    "url": {{ product.url | json }},
++    "selectedVariantId": {{ studio_variant.id | append: '' | json }},
++    "variantCount": {{ product.variants_count | json }},
++    "options": [
++      {% for option in product.options_with_values %}
++        {"name": {{ option.name | json }}, "values": [{% for value in option.values %}{{ value.name | default: value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}
++      {% endfor %}
++    ],
++    "variants": {{ studio_variants }},
++    "images": [{% if studio_image %}{"src": {{ studio_image | image_url: width: 1200 | json }}, "alt": {{ studio_image.alt | default: product.title | json }}, "width": {{ studio_image.width | json }}, "height": {{ studio_image.height | json }}}{% endif %}]
++  },
++  "labels": {"eyebrow": {{ 'luxe_studio.eyebrow' | t | json }},
++"entryTitle": {{ 'luxe_studio.entry_title' | t | json }},
++"entryLead": {{ 'luxe_studio.entry_lead' | t | json }},
++"entryButton": {{ 'luxe_studio.entry_button' | t | json }},
++"entryNote": {{ 'luxe_studio.entry_note' | t | json }},
++"studio": {{ 'luxe_studio.studio' | t | json }},
++"previewBadge": {{ 'luxe_studio.preview_badge' | t | json }},
++"close": {{ 'luxe_studio.close' | t | json }},
++"undo": {{ 'luxe_studio.undo' | t | json }},
++"redo": {{ 'luxe_studio.redo' | t | json }},
++"stepProduct": {{ 'luxe_studio.step_product' | t | json }},
++"stepDesign": {{ 'luxe_studio.step_design' | t | json }},
++"stepReview": {{ 'luxe_studio.step_review' | t | json }},
++"productHeading": {{ 'luxe_studio.product_heading' | t | json }},
++"productIntro": {{ 'luxe_studio.product_intro' | t | json }},
++"designHeading": {{ 'luxe_studio.design_heading' | t | json }},
++"designIntro": {{ 'luxe_studio.design_intro' | t | json }},
++"reviewHeading": {{ 'luxe_studio.review_heading' | t | json }},
++"reviewIntro": {{ 'luxe_studio.review_intro' | t | json }},
++"addText": {{ 'luxe_studio.add_text' | t | json }},
++"addImage": {{ 'luxe_studio.add_image' | t | json }},
++"emptyHint": {{ 'luxe_studio.empty_hint' | t | json }},
++"newText": {{ 'luxe_studio.new_text' | t | json }},
++"text": {{ 'luxe_studio.text' | t | json }},
++"font": {{ 'luxe_studio.font' | t | json }},
++"color": {{ 'luxe_studio.color' | t | json }},
++"size": {{ 'luxe_studio.size' | t | json }},
++"rotation": {{ 'luxe_studio.rotation' | t | json }},
++"duplicate": {{ 'luxe_studio.duplicate' | t | json }},
++"center": {{ 'luxe_studio.center' | t | json }},
++"remove": {{ 'luxe_studio.remove' | t | json }},
++"layers": {{ 'luxe_studio.layers' | t | json }},
++"layerUp": {{ 'luxe_studio.layer_up' | t | json }},
++"layerDown": {{ 'luxe_studio.layer_down' | t | json }},
++"imageLayer": {{ 'luxe_studio.image_layer' | t | json }},
++"dragHint": {{ 'luxe_studio.drag_hint' | t | json }},
++"previewHint": {{ 'luxe_studio.preview_hint' | t | json }},
++"photoLabel": {{ 'luxe_studio.photo_label' | t | json }},
++"viewLabel": {{ 'luxe_studio.view_label' | t | json }},
++"nextDesign": {{ 'luxe_studio.next_design' | t | json }},
++"nextReview": {{ 'luxe_studio.next_review' | t | json }},
++"back": {{ 'luxe_studio.back' | t | json }},
++"editAgain": {{ 'luxe_studio.edit_again' | t | json }},
++"done": {{ 'luxe_studio.done' | t | json }},
++"selected": {{ 'luxe_studio.selected' | t | json }},
++"designCount": {{ 'luxe_studio.design_count' | t | json }},
++"localOnly": {{ 'luxe_studio.local_only' | t | json }},
++"reviewNote": {{ 'luxe_studio.review_note' | t | json }},
++"imageHelp": {{ 'luxe_studio.image_help' | t | json }},
++"fileInvalid": {{ 'luxe_studio.file_invalid' | t | json }},
++"imageInvalid": {{ 'luxe_studio.image_invalid' | t | json }},
++"imageTooLarge": {{ 'luxe_studio.image_too_large' | t | json }},
++"imageAdded": {{ 'luxe_studio.image_added' | t | json }},
++"noVariants": {{ 'luxe_studio.no_variants' | t | json }},
++"unavailable": {{ 'luxe_studio.unavailable' | t | json }},
++"selectionChanged": {{ 'luxe_studio.selection_changed' | t | json }},
++"emptyReview": {{ 'luxe_studio.empty_review' | t | json }},
++"kept": {{ 'luxe_studio.kept' | t | json }},
++"imageLoading": {{ 'luxe_studio.image_loading' | t | json }},
++"imageMissing": {{ 'luxe_studio.image_missing' | t | json }},
++"serif": {{ 'luxe_studio.serif' | t | json }},
++"sans": {{ 'luxe_studio.sans' | t | json }},
++"mono": {{ 'luxe_studio.mono' | t | json }},
++"savedTitle": {{ 'luxe_studio.saved_title' | t | json }},
++"priceLabel": {{ 'luxe_studio.price_label' | t | json }},
++"deleteNotice": {{ 'luxe_studio.delete_notice' | t | json }},
++"moveNotice": {{ 'luxe_studio.move_notice' | t | json }},
++"changeProduct": {{ 'luxe_studio.change_product' | t | json }},
++"changeConfirm": {{ 'luxe_studio.change_confirm' | t | json }},
++"neutralTitle": {{ 'luxe_studio.neutral_title' | t | json }},
++"neutralHint": {{ 'luxe_studio.neutral_hint' | t | json }},
++"areaPending": {{ 'luxe_studio.area_pending' | t | json }},
++"areaVerified": {{ 'luxe_studio.area_verified' | t | json }},
++"printAreaLabel": {{ 'luxe_studio.print_area_label' | t | json }},
++"productReference": {{ 'luxe_studio.product_reference' | t | json }},
++"availabilityUnknown": {{ 'luxe_studio.availability_unknown' | t | json }},
++"neutralReviewNote": {{ 'luxe_studio.neutral_review_note' | t | json }}},
++  "catalogLabels": {"title": {{ 'luxe_studio.catalog_title' | t | json }},
++"eyebrow": {{ 'luxe_studio.catalog_eyebrow' | t | json }},
++"close": {{ 'luxe_studio.catalog_close' | t | json }},
++"search": {{ 'luxe_studio.catalog_search' | t | json }},
++"searchPlaceholder": {{ 'luxe_studio.catalog_search_placeholder' | t | json }},
++"searchButton": {{ 'luxe_studio.catalog_search_button' | t | json }},
++"category": {{ 'luxe_studio.catalog_category' | t | json }},
++"all": {{ 'luxe_studio.catalog_all' | t | json }},
++"scope": {{ 'luxe_studio.catalog_scope' | t | json }},
++"loading": {{ 'luxe_studio.catalog_loading' | t | json }},
++"error": {{ 'luxe_studio.catalog_error' | t | json }},
++"retry": {{ 'luxe_studio.catalog_retry' | t | json }},
++"empty": {{ 'luxe_studio.catalog_empty' | t | json }},
++"previous": {{ 'luxe_studio.catalog_previous' | t | json }},
++"next": {{ 'luxe_studio.catalog_next' | t | json }},
++"page": {{ 'luxe_studio.catalog_page' | t | json }},
++"choose": {{ 'luxe_studio.catalog_choose' | t | json }},
++"unavailable": {{ 'luxe_studio.catalog_unavailable' | t | json }},
++"from": {{ 'luxe_studio.catalog_from' | t | json }},
++"variants": {{ 'luxe_studio.catalog_variants' | t | json }},
++"imageMissing": {{ 'luxe_studio.catalog_image_missing' | t | json }},
++"navigationMissing": {{ 'luxe_studio.catalog_navigation_missing' | t | json }}}
++}
++{% endcapture %}
++<div class="lx-studio-entry" data-luxe-studio>
++  <script type="application/json" data-luxe-studio-data>{{ studio_data | replace: '</', '<\/' }}</script>
++  <div class="lx-studio-entry__visual">
++    {% if studio_image %}
++      {{ studio_image | image_url: width: 1200 | image_tag: widths: '360, 540, 720, 900, 1200', sizes: '(max-width: 760px) 100vw, 50vw', loading: 'eager', fetchpriority: 'high', alt: product.title }}
++    {% endif %}
++  </div>
++  <div class="lx-studio-entry__copy">
++    <p class="lx-studio-entry__kicker">{{ 'luxe_studio.intro_kicker' | t }}</p>
++    <h1>{{ product.title | escape }}</h1>
++    <p class="lx-studio-entry__lead">{{ 'luxe_studio.intro_copy' | t }}</p>
++    <ol class="lx-studio-entry__steps">
++      <li>{{ 'luxe_studio.intro_step_product' | t }}</li>
++      <li>{{ 'luxe_studio.intro_step_design' | t }}</li>
++      <li>{{ 'luxe_studio.intro_step_review' | t }}</li>
++    </ol>
++    {% if studio_complete %}
++      <button type="button" class="lx-studio-entry__launch" data-luxe-studio-launch>{{ 'luxe_studio.intro_launch' | t }}</button>
++    {% else %}
++      <p>{{ 'luxe_studio.intro_unavailable' | t }}</p>
++    {% endif %}
++    <p class="lx-studio-entry__note">{{ 'luxe_studio.intro_preview' | t }}</p>
++    <a class="lx-studio-entry__back" href="{{ product.url }}">{{ 'luxe_studio.intro_back' | t }}</a>
++  </div>
++</div>
++
++{% stylesheet %}
++.lx-studio-entry { max-width: 1240px; margin: 32px auto 72px; padding: 0 28px; display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 6vw, 80px); align-items: center; color: #242321; }
++.lx-studio-entry__visual { background: #f5f3ee; border-radius: 24px; overflow: hidden; }
++.lx-studio-entry__visual img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
++.lx-studio-entry__kicker { font: 600 12px/1.4 sans-serif; text-transform: uppercase; letter-spacing: .16em; color: #736659; }
++.lx-studio-entry h1 { margin: 16px 0; font-size: clamp(28px, 3.2vw, 46px); line-height: 1.12; letter-spacing: -.035em; }
++.lx-studio-entry__lead { max-width: 420px; line-height: 1.65; color: #605b56; }
++.lx-studio-entry__steps { list-style: none; padding: 0; margin: 26px 0; counter-reset: studio-step; }
++.lx-studio-entry__steps li { display: flex; align-items: center; gap: 12px; margin: 12px 0; font-size: 14px; }
++.lx-studio-entry__steps li::before { counter-increment: studio-step; content: counter(studio-step); display: grid; place-items: center; border: 1px solid #d3ccc3; width: 28px; height: 28px; border-radius: 50%; font-size: 12px; }
++.lx-studio-entry__launch { border: 0; border-radius: 12px; padding: 17px 28px; background: #252420; color: #fff; font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1.2; cursor: pointer; min-height: 52px; }
++.lx-studio-entry__launch:focus-visible, .lx-studio-entry__back:focus-visible { outline: 3px solid #776452; outline-offset: 4px; }
++.lx-studio-entry__note { max-width: 440px; font-size: 12px; line-height: 1.6; color: #746e67; }
++.lx-studio-entry__back { display: inline-block; padding: 8px 0; font-size: 13px; text-decoration: underline; color: #514b45; }
++@media (max-width: 760px) { .lx-studio-entry { grid-template-columns: 1fr; gap: 22px; padding: 0 20px; margin: 16px auto 40px; } .lx-studio-entry__visual { max-height: 34vh; } .lx-studio-entry__visual img { height: 34vh; } .lx-studio-entry h1 { font-size: 28px; } .lx-studio-entry__launch { width: 100%; } }
++{% endstylesheet %}
++
++{% schema %}
++{"name":"LuxeStyle Studio","settings":[],"presets":[{"name":"LuxeStyle Studio"}]}
++{% endschema %}
+--- /dev/null
++++ b/templates/collection.luxe-studio-catalog.liquid
+@@ -0,0 +1,44 @@
++{% layout none %}
++{% paginate collection.products by 12 %}
++  {% assign studio_count = 0 %}
++  {% capture studio_products %}
++  [
++    {% for item in collection.products %}
++      {% assign studio_allowed = false %}
++      {% if item.tags contains 'wunschdesign' or item.tags contains 'printful_personalized_product' %}
++          {% assign studio_allowed = true %}
++        {% endif %}
++      {% if studio_allowed %}
++        {% if studio_count > 0 %},{% endif %}
++        {
++          "id": {{ item.id | append: '' | json }},
++          "title": {{ item.title | json }},
++          "url": {{ item.url | json }},
++          "price": {{ item.price_min | json }},
++          "priceVaries": {{ item.price_varies | json }},
++          "available": {{ item.available | json }},
++          "variantCount": {{ item.variants_count | json }},
++          "image": {% if item.featured_image %}{"src": {{ item.featured_image | image_url: width: 480 | json }}, "alt": {{ item.featured_image.alt | default: item.title | json }}, "width": {{ item.featured_image.width | json }}, "height": {{ item.featured_image.height | json }}}{% else %}null{% endif %},
++          "options": [{% for option in item.options_with_values %}{"name": {{ option.name | json }}, "values": [{% for value in option.values %}{{ value.name | default: value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]
++        }
++        {% assign studio_count = studio_count | plus: 1 %}
++      {% endif %}
++    {% endfor %}
++  ]
++  {% endcapture %}
++  {% capture studio_response %}
++  {
++    "schemaVersion": 1,
++    "scope": "luxestyle_public_personalizable_collection",
++    "catalogComplete": false,
++    "collection": {"handle": {{ collection.handle | json }}, "title": {{ collection.title | json }}},
++    "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
++    "page": {{ paginate.current_page | json }},
++    "hasPrevious": {% if paginate.previous %}true{% else %}false{% endif %},
++    "hasNext": {% if paginate.next %}true{% else %}false{% endif %},
++    "eligibleOnPage": {{ studio_count | json }},
++    "products": {{ studio_products }}
++  }
++  {% endcapture %}
++  {{ studio_response | replace: '</', '<\/' }}
++{% endpaginate %}
+--- /dev/null
++++ b/templates/product.luxe-studio.json
+@@ -0,0 +1,9 @@
++{
++  "sections": {
++    "studio": {
++      "type": "luxe-studio",
++      "settings": {}
++    }
++  },
++  "order": ["studio"]
++}
+--- /dev/null
++++ b/templates/search.luxe-studio-catalog.liquid
+@@ -0,0 +1,56 @@
++{% layout none %}
++{% paginate search.results by 12 %}
++  {% assign studio_count = 0 %}
++  {% assign studio_terms = search.terms | downcase | split: ' ' %}
++  {% capture studio_products %}
++  [
++    {% for item in search.results %}
++      {% assign studio_allowed = false %}
++      {% if item.object_type == 'product' %}
++        {% if item.tags contains 'wunschdesign' or item.tags contains 'printful_personalized_product' %}
++          {% assign studio_allowed = true %}
++        {% endif %}
++      {% endif %}
++      {% if studio_allowed %}
++        {% assign studio_title = item.title | downcase %}
++        {% for studio_term in studio_terms %}
++          {% unless studio_term == blank or studio_title contains studio_term %}
++            {% assign studio_allowed = false %}
++          {% endunless %}
++        {% endfor %}
++      {% endif %}
++      {% if studio_allowed %}
++        {% if studio_count > 0 %},{% endif %}
++        {
++          "id": {{ item.id | append: '' | json }},
++          "title": {{ item.title | json }},
++          "url": {{ item.url | json }},
++          "price": {{ item.price_min | json }},
++          "priceVaries": {{ item.price_varies | json }},
++          "available": {{ item.available | json }},
++          "variantCount": {{ item.variants_count | json }},
++          "image": {% if item.featured_image %}{"src": {{ item.featured_image | image_url: width: 480 | json }}, "alt": {{ item.featured_image.alt | default: item.title | json }}, "width": {{ item.featured_image.width | json }}, "height": {{ item.featured_image.height | json }}}{% else %}null{% endif %},
++          "options": [{% for option in item.options_with_values %}{"name": {{ option.name | json }}, "values": [{% for value in option.values %}{{ value.name | default: value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]
++        }
++        {% assign studio_count = studio_count | plus: 1 %}
++      {% endif %}
++    {% endfor %}
++  ]
++  {% endcapture %}
++  {% capture studio_response %}
++  {
++    "schemaVersion": 1,
++    "scope": "luxestyle_public_personalizable_search_results",
++    "catalogComplete": false,
++    "query": {{ search.terms | json }},
++    "matchMode": "all_terms_in_product_title",
++    "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
++    "page": {{ paginate.current_page | json }},
++    "hasPrevious": {% if paginate.previous %}true{% else %}false{% endif %},
++    "hasNext": {% if paginate.next %}true{% else %}false{% endif %},
++    "eligibleOnPage": {{ studio_count | json }},
++    "products": {{ studio_products }}
++  }
++  {% endcapture %}
++  {{ studio_response | replace: '</', '<\/' }}
++{% endpaginate %}
