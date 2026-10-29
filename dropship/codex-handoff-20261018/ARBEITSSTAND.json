@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 15,
-  "updatedAt": "2026-10-29T22:27:31.247095+00:00",
+  "revision": 16,
+  "updatedAt": "2026-10-29T23:21:01.532838+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1050,11 +1050,11 @@
       "priorityKind": "SETZUNG",
       "state": "entwurf_zur_beurteilung",
       "title": "Vollbild-Designstudio mit tatsächlicher Produkt- und Variantenauswahl",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN",
-      "lastEvidence": "Auf Screenshotkritik Vollbild-Gestaltungsstudio in drei Schritten gebaut: Produkt/Ausführung, Gestaltung, Prüfung. Aktuelles Bomberjackenprodukt 15422956798337 mit allen sieben Shopify-Varianten XS–3XL geprüft; 3XL CHF 109.90. Eigene Variantenwahl und Preis folgen der tatsächlichen Shopify-ID, nicht einem alten URL-Parameter. Text/Bild, Ebenen, Skalieren/Drehen/Ausrichten sowie Rückgängig/Wiederholen und Entwurferhalt. Produktauswahl aus tatsächlichen öffentlichen POD-Kollektionen mit Kategorien, Suche und manueller Pagination; keine Behauptung eines vollständigen Printful-Katalogs oder 493 öffentlich kaufbarer Produkte. Mangels belegter Printful-Druckmasken neutrale Motivfläche und kein Warenkorb-/Produktionsversand. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. MAIN 212656488839 weiterhin MAIN; Vorschau 212752499079 weiterhin UNPUBLISHED. Bestehendes Layout, Standardproduktvorlage und Designzwang-Snippet im Vorschau-Theme hashgleich erhalten; keine Veröffentlichung. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Neuer ausdrücklicher Produktwunsch: Printful-Gummi-Hülle für AirPods/AirPods Pro. Enge native Suche title:AirPods, first5 auf geprüftem Shop lieferte nodes[]/hasNextPagefalse; unter genau diesem Suchbegriff nichts gefunden, kein Vollkatalogbeweis. Screenshotbetrag CHF 10.50 ist Lieferantenpreis, kein bestätigter Verkaufspreis. Weitere Screenshotwünsche als einzelne pendingProducts aufgenommen, keine Massenerzeugung oder behauptete Shopverfügbarkeit.",
-      "previewUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio",
-      "nextAllowedStep": "Inhaber beurteilt konkrete Vollbildvorschau; für echten produktionsfähigen Printful-Editor je gewählter Variante aktuelle Druckflächen/Templates, Beschnitt und Front-/Back-/Spezialflächen belegen und sichere Dateiexport-/Backendzuordnung prüfen. Neuen konkreten Wunsch Printful-Hülle für AirPods/AirPods Pro anhand echter Katalogvariante, Quellen, CHF-Verkaufspreis und passendem Drucktemplate als Importentwurf vorbereiten; Screenshot-Lieferantenpreis nicht als Shoppreis übernehmen. Bestehende Printful-Idempotenz-/Quittierungsaufgabe fortführen. Keine erfundenen Druckflächen, keine Aktivierung oder Fulfilment aus der Vorschau.",
+      "lastEvidenceDate": "2026-10-30",
+      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN/INHABERANGABE",
+      "lastEvidence": "Auf Screenshotkritik Vollbild-Gestaltungsstudio in drei Schritten gebaut: Produkt/Ausführung, Gestaltung, Prüfung. Aktuelles Bomberjackenprodukt 15422956798337 mit allen sieben Shopify-Varianten XS–3XL geprüft; 3XL CHF 109.90. Eigene Variantenwahl und Preis folgen der tatsächlichen Shopify-ID, nicht einem alten URL-Parameter. Text/Bild, Ebenen, Skalieren/Drehen/Ausrichten sowie Rückgängig/Wiederholen und Entwurferhalt. Produktauswahl aus tatsächlichen öffentlichen POD-Kollektionen mit Kategorien, Suche und manueller Pagination; keine Behauptung eines vollständigen Printful-Katalogs oder 493 öffentlich kaufbarer Produkte. Mangels belegter Printful-Druckmasken neutrale Motivfläche und kein Warenkorb-/Produktionsversand. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. MAIN 212656488839 weiterhin MAIN; Vorschau 212752499079 weiterhin UNPUBLISHED. Bestehendes Layout, Standardproduktvorlage und Designzwang-Snippet im Vorschau-Theme hashgleich erhalten; keine Veröffentlichung. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Neuer ausdrücklicher Produktwunsch: Printful-Gummi-Hülle für AirPods/AirPods Pro. Enge native Suche title:AirPods, first5 auf geprüftem Shop lieferte nodes[]/hasNextPagefalse; unter genau diesem Suchbegriff nichts gefunden, kein Vollkatalogbeweis. Screenshotbetrag CHF 10.50 ist Lieferantenpreis, kein bestätigter Verkaufspreis. Weitere Screenshotwünsche als einzelne pendingProducts aufgenommen, keine Massenerzeugung oder behauptete Shopverfügbarkeit.\n\nFortsetzung 30.10.2026 Europe/Zurich: Auf präzisierte Inhabervorgabe nur unbedruckte Basisprodukte statt gemischter Motivprodukte vorbereitet. Die begrenzt geprüfte Ausgangskollektion enthält 32 Produkte; 31 erfüllen den positiven Blanko-/POD-Vertrag, ein Bügeltransfer ohne POD-Zuordnung ist ausgeschlossen. Fünf bestehende Unterkategorien gegen die belegte Produktauswahl geprüft; echte Farb-/Grössennamen und drei quellenbelegte Farbwerte für 15 tatsächlich gemappte T-Shirt-Varianten verwendet. Im bestehenden UNPUBLISHED-Theme 212752499079 sind 15 Dateien nativ gespeichert, 14 textuell exakt und eine JSON-Vorlage semantisch identisch zurückgelesen. Drei geschützte Dateien sind hashgleich erhalten; 18 Rückleseprüfungen bestanden. MAIN 212656488839 bleibt MAIN, 212752499079 bleibt UNPUBLISHED; keine Veröffentlichung. 37 neue funktionale native Prüfungen bestanden: 19 Katalog und 18 Kategorie, ohne historische r15-Tests mitzuzählen. Pickerseiten 11/12/8 ergeben 31 eindeutige Produkte, Kategorieseiten 12/12/7. Drei echte Hero-Bilder geladen, 31 Karten, zunächst 12 sichtbar; 1440px und 390px ohne horizontalen Überlauf geprüft. Desktop- und geöffnetes Mobilmenü führen zur eigenen Kategorie; 23 Samsung-Modelle sind ausklappbar. Read-only-Browsertests blockierten Nicht-GET-Analyseaufrufe und protokollierten dabei Failed-to-fetch-Meldungen; keine globale Fehlerfreiheits- oder Produktionsabnahmebehauptung. Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau. Elf isolierte Offlineprüfungen der lokalen EDM-Integrationsvorbereitung bestanden; sie beweisen keine produktive Anbindung. EDM ist vom Inhaber fürluxestyle.ch als freigeschaltet bestätigt, technische Token-/Serverbindung und echte Templategeometrie bleiben offen; Template-/Printfile-GET390 HTTP401. Kein Originaleditor oder Bestellfluss live. Die am 29.10. frisch gelesene öffentliche Printful-Stammliste umfasst 571 Lieferantenprodukte, Detailantwort 71 enthält 628 tatsächliche Varianten/84 Farben, Detailantwort 390 sieben Varianten. Das sind keine 571 Shopify-Angebote und keine vollständige Shop-/CHF-/Versandfreigabe. CORS fehlt an den geprüften öffentlichen API-Antworten; Template-/Printfile-Abfragen für 390 liefern 401. Der Inhaber bestätigt Printful-EDM-Freischaltung für luxestyle.ch; technische Tokenbindung und Serveranbindung sind noch nicht verifiziert. Ein lokaler Integrationsentwurf wird getrennt geführt; kein Originaleditor oder Bestellfluss ist dadurch live. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Zeitplanänderung und keine Claude-Kenntnisnahme behauptet.",
+      "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
+      "nextAllowedStep": "Inhaber beurteilt die geprüfte Kategorievorschau. Passende echte Variantenbilder für Navy und weitere Varianten belegen; danach die bereits vom Inhaber bestätigte EDM-Freischaltung über legitime serverseitige Token-/Noncebindung und variantengenaue Templates technisch verifizieren. Keine erneute Freischaltungsfrage, keine automatische Live-Publikation, Cart-/Produktionsanbindung oder Übernahme von Supplierpreisen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -1312,9 +1312,12 @@
         }
       ],
       "blockers": [
-        "Printful-Laufzeitzugang bzw. aktuelle authentifizierte Template-/Flächenbelege nicht verfügbar; kein nativer Printful-Design-Maker angebunden",
-        "Allover-/Ärmel-/Beschnittflächen und physische Druckgeometrie für die reale Bomberjacke nicht verifiziert; neutrale Motivfläche bleibt erforderlich",
-        "Keine Checkout-/Cart-/Produktionsfreigabe; gestalterische Abnahme und finale Themeintegration offen"
+        "Gestalterische Inhaberabnahme und Live-Übernahme offen;37 neue native Funktionsprüfungen sind keine vollständige Produktionsabnahme",
+        "Kein passendes aktuelles Navy-Variantenfoto; weisses allgemeines Referenzfoto darf keine farbgetreue Vorschau vortäuschen",
+        "EDM-Freischaltung vom Inhaber bestätigt; technische Berechtigung/Tokenbindung und produktive Serveranbindung noch nicht nachgewiesen",
+        "Öffentliche Katalog-GETs ohne Access-Control-Allow-Origin; kein bestätigter bestehender Katalog-Readproxy",
+        "Offizielle Template-/Printfile-Abfragen für Modell390 ohne API-Key HTTP401; druckfähige Flächengeometrie weiterhin unbekannt",
+        "Kein produktiver Originaleditor, sicherer Bestellfluss oder Freigabenachweis für neue Supplier-only-Varianten"
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -1340,6 +1343,34 @@
           "branch": "codex/luxestyle-claude-handoff-20261018",
           "sha": "40ea2361b0cc151a05bc46dc8d26e8a6291fea8b",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/DESIGNSTUDIO-VORSCHAU-20261029.md"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BLANK-KATALOG-20261030.md",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "f76a839c8fbacce18841eb8aabfd61a8f9741503",
+          "status": "erstellt_und_exakt_zurueckgelesen",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/BLANK-KATALOG-20261030.md"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BLANK-KATALOG-BELEGE-20261030.json",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "f3e359a4ebaadfccf1be1b80bf310a06bac88e0f",
+          "status": "erstellt_und_exakt_zurueckgelesen",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/BLANK-KATALOG-BELEGE-20261030.json"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BLANK-KATALOG-THEME-20261030.patch",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "6b395668f64c1a4acf3e9baa2193172935ef405e",
+          "status": "erstellt_und_exakt_zurueckgelesen",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/BLANK-KATALOG-THEME-20261030.patch"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-EDM-VORBEREITUNG-20261030.patch",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "sha": "106be4b5e81abb2b90ef94f405ace3aedb84e30f",
+          "status": "erstellt_und_exakt_zurueckgelesen",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/PRINTFUL-EDM-VORBEREITUNG-20261030.patch"
         }
       ],
       "requiresFreshVerification": true,
@@ -1354,6 +1385,98 @@
           "Accessoires"
         ],
         "meaning": "Gruppierung der Nutzerwünsche; keine neue aktive Shopkollektion oder bestätigte Lieferantenklassifikation"
+      },
+      "previousPreviewUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio",
+      "previousNextAllowedStepRevision15": "Inhaber beurteilt konkrete Vollbildvorschau; für echten produktionsfähigen Printful-Editor je gewählter Variante aktuelle Druckflächen/Templates, Beschnitt und Front-/Back-/Spezialflächen belegen und sichere Dateiexport-/Backendzuordnung prüfen. Neuen konkreten Wunsch Printful-Hülle für AirPods/AirPods Pro anhand echter Katalogvariante, Quellen, CHF-Verkaufspreis und passendem Drucktemplate als Importentwurf vorbereiten; Screenshot-Lieferantenpreis nicht als Shoppreis übernehmen. Bestehende Printful-Idempotenz-/Quittierungsaufgabe fortführen. Keine erfundenen Druckflächen, keine Aktivierung oder Fulfilment aus der Vorschau.",
+      "previousBlockersRevision15": [
+        "Printful-Laufzeitzugang bzw. aktuelle authentifizierte Template-/Flächenbelege nicht verfügbar; kein nativer Printful-Design-Maker angebunden",
+        "Allover-/Ärmel-/Beschnittflächen und physische Druckgeometrie für die reale Bomberjacke nicht verifiziert; neutrale Motivfläche bleibt erforderlich",
+        "Keine Checkout-/Cart-/Produktionsfreigabe; gestalterische Abnahme und finale Themeintegration offen"
+      ],
+      "blankCatalogRevision16": {
+        "dateEuropeZurich": "2026-10-30",
+        "state": "implemented_and_checked_in_unpublished_theme_owner_review_pending",
+        "sourceCollectionHandle": "selbst-gestalten-1",
+        "sourceCollectionProducts": 32,
+        "eligibleProducts": 31,
+        "excluded": [
+          {
+            "reason": "Bügeltransfer ohne positive POD-Zuordnung",
+            "count": 1
+          }
+        ],
+        "subcategories": [
+          "sg-bekleidung",
+          "sg-taschen",
+          "sg-wohnen",
+          "sg-trinken",
+          "sg-accessoires"
+        ],
+        "mappedShirtVariants": 15,
+        "verifiedSourceColorHexValues": 3,
+        "variantRule": "Nur tatsächliche Variantenkombinationen; Farben/Grössen/Materialmodelle nicht frei erfinden",
+        "navigation": "Desktop sichtbar und geöffnetes Mobilmenü nativ geprüft; eigene Kategorie view=luxe-gestalten",
+        "categoryPreviewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
+        "publicPrintfulSourceDate": "2026-10-29",
+        "publicSupplierCatalogProducts": 571,
+        "detailedModels": [
+          {
+            "productId": 71,
+            "variants": 628,
+            "colors": 84
+          },
+          {
+            "productId": 390,
+            "variants": 7,
+            "colors": 1
+          }
+        ],
+        "scope": "Originale Lieferantenstammliste und zwei Detailmodelle; keine Behauptung aller571 oder493 öffentlich kaufbarer Shopify-Produkte",
+        "edmActivation": "owner_confirmed_for_luxestyle.ch; technical_token_and_server_binding_unverified",
+        "templates390": "HTTP401_without_credentials",
+        "printFiles390": "HTTP401_without_credentials",
+        "mainThemeId": "212656488839",
+        "previewThemeId": "212752499079",
+        "livePublication": false,
+        "orderFlowActivated": false,
+        "newShopProductsCreated": false,
+        "newShopVariantsCreated": false,
+        "artifactPublication": "four_review_artifacts_created_and_exactly_read_back",
+        "themeWriteEvidence": {
+          "files": 15,
+          "exactReadbacks": 14,
+          "semanticJsonReadbacks": 1,
+          "protectedFilesHashEqual": 3,
+          "readbackChecksPassed": 18,
+          "themeIdentitiesPreserved": true
+        },
+        "nativeFunctionalChecks": {
+          "catalogPassed": 19,
+          "categoryPassed": 18,
+          "newTotalPassed": 37,
+          "historicalRevision15TestsIncluded": false,
+          "pickerPages": [
+            11,
+            12,
+            8
+          ],
+          "categoryPages": [
+            12,
+            12,
+            7
+          ],
+          "visualViewportWidths": [
+            1440,
+            390
+          ],
+          "heroImagesLoaded": 3,
+          "cards": 31,
+          "initialVisibleCards": 12,
+          "horizontalOverflow": false,
+          "scope": "Read-only native functional checks; blocked non-read analytics requests logged fetch errors; no global zero-error claim"
+        },
+        "variantPhotoCaveat": "Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau.",
+        "edmOfflineChecksPassed": 11
       }
     }
   ],
@@ -1447,6 +1570,12 @@
       "at": "2026-10-29T22:27:31.247095+00:00",
       "actor": "codex",
       "action": "Auf Inhaberkritik am kleinen Personalisierungswidget konkretes Vollbildstudio mit echter Variantenwahl und begrenzter POD-Produktauswahl im bestehenden unveröffentlichten Theme gebaut. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Mangels Printful-Templatebelegen neutrale Motivfläche und kein Cart-/Produktionsversand. MAIN, Kaufziel, andere Aufgaben und Zeitplan erhalten; keine Kennzahl-/Flow-/Bestellabfrage und keine Claude-Kenntnisnahme behauptet."
+    },
+    {
+      "revision": 16,
+      "at": "2026-10-29T23:21:01.532838+00:00",
+      "actor": "codex",
+      "action": "Fortsetzung 30.10.2026 Europe/Zurich: Auf präzisierte Inhabervorgabe nur unbedruckte Basisprodukte statt gemischter Motivprodukte vorbereitet. Die begrenzt geprüfte Ausgangskollektion enthält 32 Produkte; 31 erfüllen den positiven Blanko-/POD-Vertrag, ein Bügeltransfer ohne POD-Zuordnung ist ausgeschlossen. Fünf bestehende Unterkategorien gegen die belegte Produktauswahl geprüft; echte Farb-/Grössennamen und drei quellenbelegte Farbwerte für 15 tatsächlich gemappte T-Shirt-Varianten verwendet. Im bestehenden UNPUBLISHED-Theme212752499079 sind15 Dateien nativ gespeichert,14 textuell exakt und eine JSON-Vorlage semantisch identisch zurückgelesen. Drei geschützte Dateien sind hashgleich erhalten;18 Rückleseprüfungen bestanden. MAIN212656488839 bleibt MAIN,212752499079 bleibt UNPUBLISHED; keine Veröffentlichung. 37 neue funktionale native Prüfungen bestanden:19 Katalog und18 Kategorie, ohne historische r15-Tests mitzuzählen. Pickerseiten11/12/8 ergeben31 eindeutige Produkte, Kategorieseiten12/12/7. Drei echte Hero-Bilder geladen,31 Karten, zunächst12 sichtbar;1440px und390px ohne horizontalen Überlauf geprüft. Desktop- und geöffnetes Mobilmenü führen zur eigenen Kategorie;23 Samsung-Modelle sind ausklappbar. Read-only-Browsertests blockierten Nicht-GET-Analyseaufrufe und protokollierten dabei Failed-to-fetch-Meldungen; keine globale Fehlerfreiheits- oder Produktionsabnahmebehauptung. Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau. Elf isolierte Offlineprüfungen der lokalen EDM-Integrationsvorbereitung bestanden; sie beweisen keine produktive Anbindung. EDM ist vom Inhaber fürluxestyle.ch als freigeschaltet bestätigt, technische Token-/Serverbindung und echte Templategeometrie bleiben offen; Template-/Printfile-GET390 HTTP401. Kein Originaleditor oder Bestellfluss live. Die am 29.10. frisch gelesene öffentliche Printful-Stammliste umfasst 571 Lieferantenprodukte, Detailantwort 71 enthält 628 tatsächliche Varianten/84 Farben, Detailantwort 390 sieben Varianten. Das sind keine 571 Shopify-Angebote und keine vollständige Shop-/CHF-/Versandfreigabe. CORS fehlt an den geprüften öffentlichen API-Antworten; Template-/Printfile-Abfragen für 390 liefern 401. Der Inhaber bestätigt Printful-EDM-Freischaltung für luxestyle.ch; technische Tokenbindung und Serveranbindung sind noch nicht verifiziert. Ein lokaler Integrationsentwurf wird getrennt geführt; kein Originaleditor oder Bestellfluss ist dadurch live. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Zeitplanänderung und keine Claude-Kenntnisnahme behauptet."
     }
   ],
   "salesGoal": {
