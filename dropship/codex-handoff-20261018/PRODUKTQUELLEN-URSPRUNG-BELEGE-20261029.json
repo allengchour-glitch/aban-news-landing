@@ -1,0 +1,264 @@
+{
+  "repository": {
+    "readDayZurich": "2026-10-29",
+    "scope": "Gezielte Quellen-/Ursprungsrecherche zu vier vorhandenen LX/LXSCH-Produkten; keine Shopabfrage, keine Ausführung des Repo-Codes",
+    "repository": "allengchour-glitch/aban-news-landing",
+    "mainBasis": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+    "mainVerification": "Parent bestätigte diesen frischen main-Stand; alle Dateien dieses Laufs explizit auf diesen Commit gepinnt.",
+    "findings": [
+      {
+        "kind": "historischer Fremdprodukt-ID-Beleg",
+        "path": "dropship/CJ-IMPORT-LOG.md",
+        "gitBlobSha": "9af36c0e9ad735eec8133660a52fcc19f746f8e5",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe/dropship/CJ-IMPORT-LOG.md",
+        "selectedProductId": "15408457974145",
+        "otherProductId": "15397247385985",
+        "lines": [
+          {
+            "line": 31,
+            "excerpt": "- **🏆 Hero-Favoriten-Collection gestärkt (live):** „🔥 Hero-Favoriten\" (`bestseller`, manuell) hatte 6 meist\n  **un**bewertete Produkte. Die 3 echten 5,0★-Gewinner (Slim Wallet `15396249502081`, Herrenuhr\n  `15396249960833`, Jade Roller Premium `15397247385985`) fehlten → **hinzugefügt** (jetzt 9 Produkte,\n  4 davon mit sichtbarem 4,8–5,0★-Rating statt vorher 1). Social Proof in der Featured-Collection. Reversibel.\n- **✅ CJ-Live-Import durchgeführt (Key erhalten, Mode-Charge):** Über CJ-API (`cj_enrich.mjs`) 7 Mode-Kandidaten"
+          }
+        ],
+        "interpretation": "Die ähnlich benannte alte Jade-Roller-Referenz betrifft eine andere Shopify-Produkt-ID. Kein Material-/Farb-/Review-/Lieferantennachweis für das ausgewählte Produkt."
+      },
+      {
+        "kind": "Code-/Matching-Regel, kein Lieferantennachweis",
+        "path": "automation/lib/grind_dubletten_test.mjs",
+        "gitBlobSha": "672c30b38a0c09bdf038520c2625d295ffd7d3c8",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe/automation/lib/grind_dubletten_test.mjs",
+        "lines": [
+          {
+            "line": 73,
+            "excerpt": "ist('pidAusSku: blanke UUID klein geschrieben (10 Shop-Varianten)', pidAusSku('aee8d787-63c4-41a9-a942-622ef948bd44'), 'AEE8D787-63C4-41A9-A942-622EF948BD44');\nist('pidAusSku: variantSku ist keine pid', pidAusSku('CJYD292633701AZ'), null);\nist('pidAusSku: eigene SKU', pidAusSku('LX-11-PREMIUM-BAMBUS-AROMA-DIF'), null);\nist('pidAusSku: eingebettete Ziffernfolge zählt nicht', pidAusSku('ABC-2605050908281601400-X'), null);\nist('pidAusSku: Dropship-Vorlage 9000001_10163', pidAusSku('9000001_10163'), null);"
+          }
+        ],
+        "interpretation": "Die exakte Diffuser-SKU ist als eigene SKU klassifiziert; daraus wird keine CJ-pid abgeleitet. Keine Aussage, dass kein anderer Lieferant existiert."
+      },
+      {
+        "kind": "Implementierung der SKU-pid-Erkennung",
+        "path": "automation/lib/grind_dubletten.mjs",
+        "gitBlobSha": "99313c041310d0d707a2c68b1830dcfd6641346d",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe/automation/lib/grind_dubletten.mjs",
+        "lines": [
+          {
+            "line": 60,
+            "excerpt": "export function skuNorm(x) {\n  if (x === null || x === undefined) return '';\n  let s = String(x).normalize('NFKC').replace(/[\\u200B-\\u200D\\uFEFF]/g, '').replace(/\\s+/g, ' ').trim().toUpperCase();\n  return s.replace(/^CJ-(?=CJ)/, '');\n}\n\n/** pid aus einer Shop-SKU: genau `CJ-<19 Ziffern>`, `<19 Ziffern>`, `CJ-<UUID>` oder `<UUID>`. Eingebettete Ziffernfolgen zählen NICHT (im Shop 0 solche). */\nexport function pidAusSku(sku) {\n  const s = skuNorm(sku);\n  const m = s.match(/^(?:CJ-)?(\\d{15,20})$/);\n  if (m) return pidNorm(m[1]);\n  const u = s.match(/^(?:CJ-)?([0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})$/);\n  return u ? u[1] : null;\n}\n"
+          }
+        ],
+        "interpretation": "Erkennt numerische oder UUID-pids mit optionalem CJ-Präfix; kein LX-/LXSCH-Mapping."
+      },
+      {
+        "kind": "Historische Textänderung nach Produktname",
+        "commit": "d37cf0379fbed2e9aeb5adc54523b49de08e4a6a",
+        "date": "2026-05-30T17:45:17Z",
+        "path": "dropship/WEBSITE-KRITIK.md",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/commit/d37cf0379fbed2e9aeb5adc54523b49de08e4a6a",
+        "excerpt": "+**43 aktive Produkttitel bereinigt** — KI-Artefakt-Suffixe + Saison-Reste entfernt:\n+- 39× `- Premium … | LuxeStyle CH` / `| Premium … | LuxeStyle CH` aus Titeln gestrippt\n+  (z.B. „Rosenquarz Gua Sha Set - Premium Beauty Tools | LuxeStyle CH\" → „Rosenquarz Gua Sha Set\")",
+        "interpretation": "Gua-Sha-Titel war laut historischem Protokoll am 30.05. bereits vorhanden und wurde um einen Marketing-Suffix bereinigt. Keine exakte Produkt-ID im Beleg; deshalb keine harte Ursprungs-/Lieferantenzuordnung."
+      },
+      {
+        "kind": "Früher Pipeline-Kontext, keine ausgewählte Produktzuordnung",
+        "commit": "ee7034a4a4a2771141ab9d1dc003f532b39d3e54",
+        "date": "2026-05-30T16:47:04Z",
+        "path": "dropship/PRODUKT-PIPELINE.md",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/commit/ee7034a4a4a2771141ab9d1dc003f532b39d3e54",
+        "excerpt": "+### Die 8 live CJ-Produkte (heute aktiviert)\n+| Smartwatch Pro 1.78″ AMOLED | 69.90 | CJ-CJZN169265501AZ |\n+| Aroma Diffuser Hohl-Design | 44.90 | CJ-CJJJJTJT35117 |\n+| Aroma Diffuser 400ml 7 LED | 44.90 | CJ-CJJJTJT22925 |",
+        "interpretation": "Historische CJ-Produkte tragen andere konkrete SKU-/Modellnamen. Aus ähnlichen Kategorien darf weder die Tech-Hero-Geschenkbox zusammengesetzt noch der 300-ml-Diffuser zugeordnet werden."
+      }
+    ],
+    "excludedSources": [
+      {
+        "path": "dropship/galleries-retrofit-2026-05-31.json",
+        "gitBlobSha": "e56b53cf0a3173a6babdbf0266a319e0c9f6f275",
+        "exactProductMatches": 0,
+        "scope": "vier IDs und Namen"
+      },
+      {
+        "path": "dropship/galleries-retrofit-alt-2026-05-31.json",
+        "gitBlobSha": "78dd54f8c9c9656ddca7c1fb9c8031cef549f528",
+        "exactProductMatches": 0,
+        "scope": "vier IDs und Namen"
+      },
+      {
+        "path": "dropship/PRODUKT-DEEPDIVE-REPORT.md",
+        "gitBlobSha": "975c48c1da0b7c12e92f22aa13d69e4c5610fb5e",
+        "exactProductMatches": 0,
+        "scope": "vier IDs und Namen"
+      }
+    ],
+    "searchCoverage": {
+      "codeQueries": [
+        "\"LX-22-JADE-ROLLER\"",
+        "\"TECH-HERO\"",
+        "\"LX-11-PREMIUM\"",
+        "\"LXSCH\"",
+        "\"LXSCH-GIFT-TECH-HERO\"",
+        "\"tech-hero-gift-box-smartwatch-pro-anc.jpg\"",
+        "\"jade-roller-premium-doppelseitig.jpg\"",
+        "\"LX-21-ROSENQUARZ-GUA-SHA-SET\""
+      ],
+      "commitQueries": [
+        "\"Tech Hero\"",
+        "\"Jade\"",
+        "premium (author-date asc, top8)",
+        "\"Rosenquarz\"",
+        "\"Geschenkbox\"",
+        "\"Bambus\"",
+        "dropship committer-date:<2026-05-31 (author-date asc, top10)"
+      ],
+      "directoryReads": [
+        "dropship (eine Ebene)",
+        "automation (eine Ebene)",
+        "Repository-Wurzel (eine Ebene; übrige Markeninhalte nicht geöffnet)"
+      ],
+      "limits": "Begrenzte Suchergebnisse; keine vollständige Commit-Historie, kein Clone, keine Massenpagination. Treffer und Nichttreffer belegen nur diese Suchabdeckung."
+    },
+    "outcome": {
+      "exactSupplierMappingFound": false,
+      "confirmedNoSupplier": false,
+      "techHeroSetContents": "unknown",
+      "jadeRollerDeliverableColour": "unknown",
+      "newIndependentMaterialFacts": 0,
+      "remoteWrites": 0,
+      "shopReads": 0
+    }
+  },
+  "boundedLocalSearch": {
+    "scope": "Lokale, gezielte Suche nach Ursprung/Seed/Mapping der vier ausgewählten Produkte. Keine Shop-, GitHub- oder Lieferantenaufrufe. Keine Credentials gelesen.",
+    "source": {
+      "path": "/workspace/luxestyle-review/selected-four-20261029/products/LIVE-PRODUCTS.json",
+      "sha256": "d81f882018caeab12964233555d9523536d6329814e6bf2f89a09a1755c532e3"
+    },
+    "anchors": [
+      {
+        "id": "gid://shopify/Product/15406765801857",
+        "title": "Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger",
+        "sku": "LXSCH-GIFT-TECH-HERO",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tech-hero-gift-box-smartwatch-pro-anc.jpg?v=1781959251",
+            "mediaId": "gid://shopify/MediaImage/69731158950273"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Product/15408457744769",
+        "title": "Premium Bambus Aroma Diffuser 300ml",
+        "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+            "mediaId": "gid://shopify/MediaImage/69731158983041"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Product/15408457941377",
+        "title": "Rosenquarz Gua Sha Set",
+        "sku": "LX-21-ROSENQUARZ-GUA-SHA-SET",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-02.jpg?v=1779958408",
+            "mediaId": "gid://shopify/MediaImage/69528090280321"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-04.jpg?v=1779958409",
+            "mediaId": "gid://shopify/MediaImage/69528090345857"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Product/15408457974145",
+        "title": "Jade Roller Premium Doppelseitig",
+        "sku": "LX-22-JADE-ROLLER-PREMIUM-DOPP",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/jade-roller-premium-doppelseitig.jpg?v=1781959257",
+            "mediaId": "gid://shopify/MediaImage/69731159376257"
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "roots": [
+          "/workspace/luxestyle-review",
+          "/workspace/luxestyle-codex"
+        ],
+        "types": [
+          "mjs",
+          "js",
+          "py",
+          "sh"
+        ],
+        "terms": "Vier Produkt-IDs; LX-11/LX-21/LX-22-SKUs; Tech Hero, Jade Roller Premium, Rosenquarz Gua Sha, Bambus Aroma",
+        "result": "Nur selected-four-20261029/products/build_copy_drafts.py; eigener aktueller Entwurf, kein Ursprungsbeleg."
+      },
+      {
+        "roots": [
+          "/workspace/luxestyle-review",
+          "/workspace/luxestyle-codex"
+        ],
+        "types": [
+          "json",
+          "jsonl",
+          "csv",
+          "md"
+        ],
+        "terms": "Vier Produkt-IDs, LXSCH und LX-SKUs; bekannte grosse Produkt-/Queue-Exportdateien und eigene selected-four/source-provenance-Dateien ausgeschlossen",
+        "result": "Nur bereits bekannte Fixture-, Export-, Triage-, Abend- und Merchant-Teilbelege. Keine neue eindeutige Lieferanten-/Modellquelle."
+      },
+      {
+        "roots": [
+          "/workspace/luxestyle-review",
+          "/workspace/luxestyle-codex"
+        ],
+        "types": [
+          "json",
+          "jsonl",
+          "md",
+          "mjs",
+          "js",
+          "py",
+          "csv",
+          "txt"
+        ],
+        "terms": [
+          "LXSCH-GIFT-TECH-HERO",
+          "tech-hero-gift-box-smartwatch-pro-anc",
+          "jade-roller-premium-doppelseitig.jpg",
+          "rosenquarz-gua-sha-set-02.jpg"
+        ],
+        "result": "Kein Treffer ausserhalb der ausdrücklich ausgeschlossenen aktuellen selected-four-Belege."
+      }
+    ],
+    "conclusion": "Kein lokal vorhandener Seed-/Erstellungs-/Mappingbeleg in der begrenzten Abdeckung gefunden. Das beweist nicht, dass diese Quelle im Repository oder bei Lieferanten fehlt. Bildnamen und MediaImage-IDs sind Suchanker für die separate Repo-Historie, keine Material-/Farb-/Setnachweise."
+  },
+  "identityAndRuntime": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "runtime": {
+      "observations_current": true,
+      "secrets": 0,
+      "runtime_variables": 0,
+      "outbound_identities": 0,
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      }
+    }
+  }
+}
