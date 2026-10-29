@@ -63,3 +63,11 @@ Der abgeschlossene lokale Materialquellen-Diff benötigt die vollständige beste
 Die neue Aufgabe `merchant-missing-price-20261029` priorisiert den konkret gelieferten CSV-Befund. 8’327 eindeutige exportierte IDs sind kein Gesamtkatalog-Nenner; unterschiedliche Länder-/Fehlerzeilen keine doppelten Produkte. Zwei DRAFT-/Preis-/Weiterleitungsstichproben belegen keine Ursache für sämtliche IDs. Aktive Quelle und eingereichte URL vor Eingriff nachweisen; keine Preise erfinden, DRAFT aktivieren oder Quelle löschen. Zweiter Upload über32MiB bleibt ungelesen.
 
 Der vollständige Material-Gesamtpatch ersetzt für die technische Review das manuelle Zusammensetzen der fünf belegten Stufen; alte Pakete/Historie bleiben erhalten. Kein Deployment und keine Claude-Quittung. Kauf-Watch, Kennzahlgrenze und Zeitplan unverändert. [Fortsetzungsbelege](MERCHANT-PREISDIAGNOSE-20261029.md).
+
+
+
+## Ergänzung 29.10.2026 – Revision 13
+
+Die neue Aufgabe `homepage-redesign-20261029` enthält eine tatsächlich gespeicherte, separat aufrufbare [Shopify-Startseitenvorschau](https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit) im bestehenden UNPUBLISHED-Theme 212752499079. Keine MAIN-Veröffentlichung; bestehende Standardvorlagen und frühere Schema-/Versandkorrekturen erhalten. Native Prüfung bei 1440/390/360 px und exakte Dateirücklesungen im [Bericht](STARTSEITEN-VORSCHAU-20261029.md) und [Beleg](STARTSEITEN-BELEGE-20261029.json). Designergebnis ist zur Beurteilung; bestehende Theme-/App-/Cookieintegration vor Live-Übernahme weiterprüfen. Der gleiche offene 18-Sekunden-Master hat eine [Web-Vorgabe](STARTSEITEN-VIDEO-20261029.md), keine neue MP4 oder Rechtefreigabe.
+
+`merchant-missing-price-20261029` bleibt blockiert an der konkreten Datenquelle/eingereichten URL. Die zweite CSV ist nun vollständig gelesen; frühere 32-MiB-Transfergrenze ist historisch, kein aktueller Inhaltsblocker. Beide CSV-Auswahlen sind keine Katalogvollmessung. [Zweiter Export](MERCHANT-ZWEITER-EXPORT-20261029.md) und [Belege](MERCHANT-ZWEITER-EXPORT-BELEGE-20261029.json). Keine operative Merchantänderung, keine zusätzlichen Kennzahl-/Flow-/Bestellabfragen. Alle vorherigen Aufgaben-IDs, Kaufbaseline, Freigaben, Zeitpläne und Historie erhalten. Claude-Kenntnisnahme nur mit Quittung; weiter unbekannt.
