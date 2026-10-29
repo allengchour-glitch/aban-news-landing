@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Fortsetzung – neue Merchant-Preisfehler eingegrenzt
+
+[Neue CSV-/Preisdiagnose](MERCHANT-PREISDIAGNOSE-20261029.md): 8’327 eindeutige IDs mit Preisfehlern, davon 1’353 auch availability; Free listings in CH/LI, kleiner DE-Teil. Zwei Stichprobenprodukte sind DRAFT mit Preisen und Kollektionsweiterleitungen; konkrete Google-Datenquelle/URL fehlen. Keine pauschale Preisänderung, Quellenlöschung oder Aktivierung. Zweiter Upload über32MiB nicht lesbar.
+
+[Material-Gesamtpatch](MATERIAL-GESAMT-20261029.md) vereinigt bestehende fünf Stufen gegen main a74459a9; 440 vorhandene Prüfbedingungen bestanden, kein Deployment. [Schneestiefel-Quellenindex](SCHNEESTIEFEL-QUELLENABGLEICH-20261029.md) enthält 27 historische Varianten, keine neue Material-/Massquelle. Arbeitsstand Revision12; bisherige Aufgaben/Belege/Verkaufsbaseline erhalten, Claude-Kenntnisnahme unbekannt.
+
 ## 29.10.2026, Abend – Kaufziel offen, Produktbelege nachgeführt
 
 Frische Identitäten passen. Enges Bestellfenster seit Baseline bis 19:07:25 Zürich ohne neue Bestellungen; keine Kaufursache behauptet. 12 bestehende Planobjekte/21 PENDING-Kanalzustände, keine exakten Doppel oder Slots. Einmalige Morgenkennzahlen/Flowdaten wiederverwendet, keine zweite Tagesabfrage. [Abendpaket und konsolidierte Tagestabelle](ABENDPAKET-20261029.md), [Belege](ABENDBELEGE-20261029.json).
