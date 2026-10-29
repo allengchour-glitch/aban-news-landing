@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "product-attribute-completeness",
+  "revision": 2,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T00:03:37.936Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Produktangaben r2: atomare Stapel, Rücklesebelege und vier gezielte Produkt-Diffs",
+  "summary": "238 begrenzte Offline-Prüfungen grün, darunter 20 neue Batchprüfungen. Drei Produkttext-/SEO-Diffs vorbereitet; exakte Lieferanten-/Modellzuordnung offen. Keine produktive Integration oder Shopänderung. Voll-CI und weitere Runner-Voraussetzungen offen. Neues Verkaufsziel in engem Fenster einmalig geprüft; kein passender bezahlter Kauf bestätigt.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-PRODUKTANGABEN-R2-20261029-1.json",
+      "sha256": "fabb115f6e1eb0c56ef4721573be1ce883d028aac4098d90338b689e7ebdb1fe",
+      "gitBlobSha": "e065e16a5a805b688c7c9e7d72bb2d59d2bf6c52"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CODEPAKET-PRODUKTANGABEN-R2-20261029-2.json",
+      "sha256": "ee35af9be5147bdadbb6817e661db90647cd29cb7a0013b020985a09edbbbd62",
+      "gitBlobSha": "574b442ad2aa3c628c9a616ff735effec7ae50ef"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-KORREKTUREN-R2-20261029.patch",
+      "sha256": "7a9af010db219414ab2e2e813ae64122e3a3fdff6fb4aa2f3c9434128c29d91a",
+      "gitBlobSha": "ebb288dc45f429542f0fdc31391e1f04abe640b4"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-R1-ZU-R2-20261029.patch",
+      "sha256": "bab517e0811079616bfccc3ede9cff688dc3b3f25b2326fc88fe4b5086be6b36",
+      "gitBlobSha": "d5f09e393235077cd36a8e5b5d1b0f6e3aa6ce5a"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-R2-20261029.md",
+      "sha256": "288acbdb22eea7cb0f8a4f334821a7c41bc7eba1ca4d44651290048f4e325a77",
+      "gitBlobSha": "3303288733b1ad3bf9cd1bca947e2802a65df107"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-R2-VALIDIERUNG-20261029.json",
+      "sha256": "82daac151768bf0f4c3445c11c179ff1090d505fb6f66e35c5f80f8873f201b9",
+      "gitBlobSha": "bc181e63e1c24cf8602586666cf0de69affe0228"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VIER-PRODUKTE-BELEGE-20261029.json",
+      "sha256": "e0602ef0fcc02615fdf48bcb2a464c6dae5e396a3e775977cab5e769f2fadf2a",
+      "gitBlobSha": "137d737f01b23ad3f0ad70888e9389b32e07eedf"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VIER-PRODUKTE-TEXTDIFFS-20261029.json",
+      "sha256": "a793d722beffc65d1a478b0e4b71d7ff7184095b13d6a5fd4526fda9d4f70598",
+      "gitBlobSha": "776d63675831f27cffe1e2a93cc3a1c89fb1a7a3"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/VIER-PRODUKTE-VERKAUFSGRUNDLAGEN-20261029.md",
+      "sha256": "b2a9c0992d74bca927276310e660f44b8d79d10c6bceb51c6b99fd3683d54fdc",
+      "gitBlobSha": "90c7bcb6344ed2f90646e0f0faac17143091aa26"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": "163aa4d0f7c4ca2f0f0625b674c810cd5bc54eb476fa284ef946e6a7065619b3"
+}
