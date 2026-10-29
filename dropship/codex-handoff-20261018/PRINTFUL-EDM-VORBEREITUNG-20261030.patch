@@ -1,0 +1,579 @@
+--- /dev/null
++++ prepared/printful-edm/LOCAL-BACKEND-REVIEW.md
+@@ -0,0 +1,17 @@
++# Eng begrenzte lokale Backend-Prüfung
++
++Stand: 29.10.2026, nur Dateien gelesen; keine Programme ausgeführt, keine Secrets abgefragt oder ausgegeben, keine echten API-Aufrufe, kein Deployment.
++
++Die EDM-Freischaltung für `luxestyle.ch` ist vom Inhaber ausdrücklich bestätigt. **Technische Berechtigung/Tokenbindung noch nicht verifiziert.** Diese Prüfung ersetzt keine frische Prüfung eines tatsächlich laufenden Backends.
++
++| Lokaler Pfad / Bereich | Belegter Befund |
++| --- | --- |
++| `/workspace/aban-news-landing/server/` | Enthält in dieser lokalen Teilkopie nur `auto-deploy.sh`; kein EDM-HTTP-Server in diesem Verzeichnis gefunden. Das Deployment-Skript wurde nicht ausgeführt. |
++| `/workspace/aban-news-landing/automation/` | Gezielte Textsuche nach `embedded-designer/nonces`, `PFDesignMaker`, `embedded_designer` ohne Treffer. Kein Beweis über Dateien ausserhalb dieser Teilkopie. |
++| `/workspace/luxestyle-review/editor-fullscreen-20261029/variants/source/automation/printful_sync.mjs` | Bestehender Printful-Connector vorhanden: verwendet serverseitige Umgebungsreferenzen `PRINTFUL_API_KEY` und optional `PRINTFUL_STORE_ID`, liest Katalogvarianten und kann Druckbestellungen übertragen. Das ist ein Fulfilment-Skript, kein nachgewiesener EDM-Nonce-Endpunkt. Es wurde ausschliesslich gelesen und nicht ausgeführt. Kein Credential-Wert gelesen. |
++| `/workspace/luxestyle-review/editor-blank-20261029/variants/source/automation/lib/pod_auswahl_daten.mjs` | Bestehender Datenhelfer mit injizierbarem `fetchFn`, Printful-GET-Abfragen sowie Katalog-/SKU-/Variantenprüfung. Kein Sitzungs-/CSRF-geschützter EDM-HTTP-Adapter in diesem Helfer. Nicht importiert oder ausgeführt. |
++| `/workspace/luxestyle-review/editor-fullscreen-20261029/` und `/workspace/luxestyle-review/editor-blank-20261029/` | Gezielte Textsuche nach den drei EDM-Bezeichnern ohne Treffer in diesen zuvor vorhandenen Arbeitskopien. Das separat neu erstellte lokale EDM-Paket ist ausgenommen. |
++
++Ergebnis: Vorhandene legitime Printful-Helfer und ein Fulfilment-Connector sind belegt. Eine bereits bestehende sichere EDM-Anbindung wurde in den genannten lokalen Quellen nicht nachgewiesen. Diese begrenzte Teilprüfung behauptet weder fehlenden Printful-Zugang noch das Fehlen eines externen/produktiven Backends. Ein lokaler Zugangsmangel wird nicht als fehlender Connector ausgegeben.
++
++Nächster technischer Nachweis: vorhandenen authentifizierten Laufzeitdienst beziehungsweise dessen zugängliche Serverkonfiguration eindeutig zu LuxeStyle zuordnen; EDM-Token-Extension, Domainbindung und geschützten Nonce-Adapter prüfen. Keine erneute Freischaltung erfragen, keine Schlüssel im Chat anfordern und keinen Fulfilment-Runner als Ersatz für diese Prüfung starten.
+--- /dev/null
++++ prepared/printful-edm/README.md
+@@ -0,0 +1,108 @@
++# LuxeStyle: offizieller Printful-Editor – Integrationsentwurf
++
++Stand: 29.10.2026. Lokal implementiert und offline getestet. **Nicht deployt, kein echter Nonce-Aufruf, kein bestellbarer Produktimport.** Der Inhaber hat ausdrücklich bestätigt, dass Printful EDM für `luxestyle.ch` bereits freigeschaltet ist. Status: **vom Inhaber bestätigt, technische Berechtigung/Tokenbindung noch nicht verifiziert**. Die produktive Server-Anbindung ist ebenfalls noch nicht technisch nachgewiesen. Eine erneute Freischaltungsanfrage ist nicht erforderlich.
++
++Das Paket verwendet den offiziellen `PFDesignMaker` als eingebetteten Editor. Es kopiert weder Printfuls Dashboard noch dessen Vorlagengrafiken. Die eigene Hülle öffnet den Editor im Vollbild; die eigentliche Gestaltung übernimmt Printful mit den unterstützten Optionen des ausgewählten Produkts.
++
++## Inhalt und Prüfung
++
++- `server/nonce-service.mjs`: serverseitiger Nonce-Dienst und reiner Request-Builder; kein automatischer Netzwerkzugriff.
++- `client/edm.mjs`: Initialisierung mit dokumentierten SDK-Feldern, leerem Produkt, deutscher Oberfläche, Varianten- und Verfügbarkeitsanzeige; geprüfter Speichern-Auslöser.
++- `client/fullscreen.css`: Vollbildhülle für Desktop und Mobil.
++- `test/edm.test.mjs`: isolierte Tests mit künstlichen Antworten und SDK-Ersatz; keine Printful-Aufrufe.
++- `SECURITY-CONTRACT.md`: Anforderungen vor Einbindung in den Shop.
++
++Testaufruf aus diesem Ordner:
++
++```sh
++node --test test/edm.test.mjs
++```
++
++Ergebnis: 11 Tests bestanden. Geprüft sind ungültige Produkt-IDs, Herkunft, fremde Sitzung, eindeutige parallele Entwürfe, atomarer Nonce-Start, unklarer API-Ausgang ohne Retry, Geheimnistrennung, Blankstart und einmaliges Speichern nach Validierung. Das ist kein Live-/Druckqualitätsnachweis.
++
++## Vorgesehener Ablauf
++
++1. Der bestehende LuxeStyle-Katalog zeigt echte Blankprodukte aus verifizierten Printful-Katalogdaten. Das Vorhandensein im Printful-Katalog allein macht kein Produkt im Shopify-Shop bestellbar.
++2. Die Auswahl übergibt die echte `productId` und eine für genau dieses Produkt bestätigte Technik an einen authentifizierten eigenen Server-Endpunkt. Die Server-Allowlist muss aktuelle verifizierte IDs/Techniken enthalten. Die Testdaten sind keine Produktionsfreigabe.
++3. `createDraft()` erstellt pro Gestaltung eine zufällige `externalProductId`. Der private Token wird dabei nicht benötigt.
++4. `openDraft()` prüft Sitzung, Domain, Produkt, Technik und atomaren Zustand. Erst danach führt der ausdrücklich eingebundene Server-Transport genau einen Nonce-POST durch. Der Browser erhält ausschliesslich Nonce, Ablaufzeit, Entwurfs-ID und Produktinitialisierung.
++5. Der Host lädt die offizielle Bibliothek und übergibt die öffentliche Sitzung an `initialiseDesigner()`:
++
++```html
++<script src="https://files.cdn.printful.com/embed/embed.js"></script>
++<section class="luxe-edm-shell" aria-label="Produkt selbst gestalten">
++  <header class="luxe-edm-heading">
++    <strong>Dein Produkt gestalten</strong>
++    <button type="button">Schliessen</button>
++  </header>
++  <div id="luxe-edm" class="luxe-edm-container"></div>
++</section>
++```
++
++```js
++import { initialiseDesigner } from './client/edm.mjs';
++
++// session stammt ausschliesslich vom authentifizierten eigenen Server.
++const editor = initialiseDesigner({
++  PFDesignMaker: window.PFDesignMaker,
++  elemId: 'luxe-edm',
++  session,
++  onStatus(status) {
++    // Zugängliche UI aktualisieren; Texte mit textContent ausgeben.
++    saveButton.disabled = !status.designValid;
++  },
++  onSaved(report) {
++    saveButton.disabled = true;
++    // Authentifiziert an Server melden; dort Printful-Vorlage frisch prüfen.
++    // report.checkoutReady bleibt false. Kein Bestell- oder Warenkorb-Aufruf.
++  },
++  onError(code) {
++    saveButton.disabled = true;
++    // Nur diese begrenzten Fehlercodes anzeigen; keine Rohantworten protokollieren.
++  },
++});
++saveButton.addEventListener('click', () => {
++  if (!editor.canSave) return;
++  saveButton.disabled = true;
++  editor.save();
++});
++```
++
++Das HTML und Beispiel sind Einbindungshinweise, keine deployte Seite. Der Host muss die Schliessen-Funktion, Fokus-Rückgabe, Warnung bei ungespeicherten Änderungen und Sitzungsabbruch implementieren. Keine funktionierenden Steuerelemente vortäuschen.
++
++6. Erst nach serverseitiger Rückleseprüfung der gespeicherten Vorlage, Varianten, Druckdaten und legitimen CHF-Shoppreise darf eine gesondert geprüfte Warenkorb-/Fulfilment-Anbindung folgen. Dieses Paket enthält keine Bestellfunktion.
++
++## Blankprodukte und Originaloptionen
++
++`initProduct` enthält ausschliesslich `productId` und die serverseitig bestätigte `technique`. Es gibt kein voreingestelltes Motiv und kein `applyImageFromUrl`. Farben, Grössen und Placements werden nicht künstlich ausgeblendet. Die vom Produkt unterstützten Optionen kommen aus dem echten EDM.
++
++Die offiziellen Felder `preselectedProductOptions.stitchColor`, `insidePocket` und `customBorderColor` sind produktabhängig. Sie werden hier bewusst nicht pauschal vorbelegt. Nahtfarbe ist keine frei erfundene Stoffvariante. Für reale Materialangaben bleibt die jeweilige Produktquelle massgebend. Für die Endkundenauswahl kann später gezielt eine einzelne Farb-/Grössenkombination erzwungen werden; dieser Entwurf lässt die Originalauswahl offen.
++
++## Offizielle Voraussetzungen und Grenzen
++
++- Printful verlangt einen freigeschalteten EDM-Zugang. Der Inhaber bestätigt diese Freischaltung für `luxestyle.ch` bereits ausdrücklich. Normale API-/Shop-Verbindung allein beweist die technische EDM-Berechtigung nicht; Token-Extension und Domainbindung bleiben separat zu prüfen. Kein Formular wurde versendet, keine erneute Freischaltung angefragt.
++- Token benötigt die Extension `embedded_designer`; erlaubte Domains werden bei Printful konfiguriert. Eigene Server-Allowlist allein ersetzt diese Konfiguration nicht.
++- Printful verlangt die Nonce-Erstellung im Backend, damit der private Token nicht im Browser erscheint.
++- Eine neue Nonce für dieselbe `external_product_id` entwertet vorherige Nonces. Speichern entwertet die aktive Nonce ebenfalls. Der Entwurf verhindert deshalb weitere Nonce-Versuche desselben Entwurfs nach dem ersten Start. Ein späterer Bearbeitungs-/Erneuerungsablauf muss explizit implementiert werden: gleiche Entwurfs-ID, neue Nonce, bestehende Vorlage, **ohne** `initProduct`. Unklare Vorgänge dürfen nicht automatisch wiederholt werden.
++- Der Original-Technikpicker ist im EDM laut Dokumentation nicht gleich verfügbar; die Technik wird vor dem Öffnen gewählt.
++- `embroidery_large_center` ist laut aktueller Dokumentation aus technischen Gründen ausgeblendet.
++- Designübertragung auf andere Produkte ist im offiziellen `swap-product`-Ablauf nur für DTG und kompatible Placements beschrieben.
++- `de_DE` ist dokumentiert, `de_CH` nicht. Die eigene Hülle bleibt Deutsch (Schweiz).
++- Die Freischaltung ist vom Inhaber bestätigt. Technischer Zugriff, geltende Preise/Konditionen und Funktionsumfang müssen vor produktiver Einbindung geprüft sein. Es gibt keine Zusage vollständiger 1:1-Parität mit jedem Dashboard-Produkt.
++
++## Aktuell offen
++
++Technischer Nachweis der bereits vom Inhaber bestätigten EDM-Freischaltung: gültiger serverseitiger Token mit EDM-Extension und passender Domainbindung; gültige Serverkonfiguration; echte aktuelle Technik-Allowlist; dauerhaftes atomisches Entwurfsregister; authentifizierter HTTP-Adapter mit CSRF-/Rate-Limit-Schutz; echte SDK-Browserprüfung; Printful-Vorlagen-Rückleseprüfung; getrennte geprüfte Shopify-Varianten-/Preis-/Fulfilment-Zuordnung. Der mitgelieferte Memory-Store ist ausschliesslich für lokale Prüfung. Die eng begrenzte lokale Prüfung bestehender Anbindungen ist in `LOCAL-BACKEND-REVIEW.md` dokumentiert.
++
++## Offizielle Quellen
++
++Am 29.10.2026 erfolgreich gelesen:
++
++- https://developers.printful.com/docs/edm/#section/Printful-Embedded-Design-Maker
++- https://developers.printful.com/docs/edm/#tag/Authentication/How-to-get-Nonce-token-for-Embedded-Designer
++- https://developers.printful.com/docs/edm/#tag/Embed-design-maker/Data-structures/initProduct-data-structure
++- https://developers.printful.com/docs/edm/#tag/Embed-design-maker/Data-structures/disabledPlacements-array
++- https://developers.printful.com/docs/edm/#tag/Embed-design-maker/Features/Setting-a-locale
++- https://developers.printful.com/docs/edm/#tag/Embed-design-maker/Public-methods-of-PFDesignMaker-class-instance-object/Send-message-Save-design-trigger
++- https://developers.printful.com/docs/edm/#tag/API-related-to-Embeded-design-maker/Swap-product-used-in-product-template
++- https://www.printful.com/enterprise/embedded-design-maker
+--- /dev/null
++++ prepared/printful-edm/SECURITY-CONTRACT.md
+@@ -0,0 +1,29 @@
++# Sicherheits- und Integrationsvertrag
++
++Dieses lokale Paket führt selbst keinen Netzwerkaufruf durch. `transport` und `tokenProvider` müssen serverseitig bewusst eingebunden werden; ohne bestätigten EDM-Zugang scheitert die Factory geschlossen.
++
++Der Inhaber hat inzwischen ausdrücklich bestätigt, dass EDM für `luxestyle.ch` bereits freigeschaltet ist. Status: **vom Inhaber bestätigt, technische Berechtigung/Tokenbindung noch nicht verifiziert**. Die Bestätigung wird übernommen; eine erneute Freischaltung wird nicht angefragt. Sie ersetzt nicht die technische Prüfung des verwendeten Tokens, der Domainbindung und der sicheren Serveranbindung.
++
++## Verbindliche Host-Anforderungen
++
++1. **Servergrenze:** `server/` nie in Theme-Assets, Browser-Bundles, Liquid, öffentliche JSON-Dateien oder Source Maps aufnehmen. Den privaten Printful-Token nur aus bestehendem legitimen Server-Secret-Store lesen. Keine Zugangsdaten im Chat, in URLs oder Protokollen.
++2. **Sitzung und CSRF:** Session vor jedem Aufruf authentifizieren. `subjectId` muss aus der serverseitig verifizierten Sitzung kommen. Der API-Client darf sie nicht frei wählen. Exakte Origin-Prüfung und CSRF-Prüfung kombinieren; Origin allein beweist keine Autorisierung. Rate-Limit pro Sitzung und Quelle vor `createDraft` und `openDraft` setzen. Keine öffentliche Nonce-Factory.
++3. **Eigene Herkunft:** Explizit `https://luxestyle.ch` freischalten; `https://www.luxestyle.ch` nur bei tatsächlich genutzter/verifizierter Herkunft. Keine Wildcards oder beliebigen URLs. Zulassung zusätzlich bei Printful prüfen. Weitere Vorschauherkünfte erfordern eine eigene Prüfung und explizite Code-/Konfigurationsänderung.
++4. **Katalog:** Sichere positive Integer-IDs und produktbezogene Technik-Allowlist aus verifizierten Originaldaten. Keine aus Screenshots abgeleiteten Techniken, Druckmasken, Stoffe oder Auswahlkombinationen. Keine fremden Printful-/Shopify-IDs vermischen.
++5. **Geheimnisse:** Token nur am festen `https://api.printful.com/embedded-designer/nonces`-Aufruf einsetzen. Transport darf Header, Request-/Response-Inhalt und rohe Exceptions nicht loggen. Der Dienst protokolliert nichts und verwirft rohe Transportfehler. Betriebstelemetrie darf nur eigene redigierte Fehlercodes und notwendige Zustandsbelege erfassen. Auch Nonces sind kurzlebige Zugangsdaten: kein Analytics, Cache, Local Storage oder URL-Parameter.
++6. **HTTP-Antwort:** Nur den expliziten Client-Payload zurückgeben, `Cache-Control: no-store` setzen; keine private-token-/upstream-Felder ergänzen. JSON- und API-Grenzen im Host begrenzen. Keine Browseraufrufe direkt an das Printful-API einbauen.
++7. **Atomar und dauerhaft:** Produktionsspeicher muss `create` eindeutig sowie `transition` atomar ausführen und den Checkpoint vor dem Request dauerhaft schreiben. Zustand `inflight` nach Prozessabbruch ist unbekannt, nicht wieder versendbar. Der Memory-Store genügt nicht bei Neustarts, mehreren Prozessen oder mehreren Servern.
++8. **Kein automatischer Retry:** Netzwerkfehler, ungültige/unerwartete Nonce-Antwort oder HTTP-Fehler bleiben `unknown`. Fehler wegen 401/429/5xx bedeuten nicht «leere Daten». Bei unklarem Ausgang gezielt prüfen, keinen Ersatzentwurf als automatischen Retry anlegen.
++9. **Designbesitz:** Entwurfs-ID ist serverseitig zufällig, pro Gestaltung eindeutig, an Sitzung und Herkunft gebunden. Sie darf nicht nur die Shopify-Produkt-ID sein. Fremde Session hat keinen Zugriff. Für erneutes Bearbeiten muss Besitz erhalten und die Vorlagenidentität überprüft werden.
++10. **Speichern ist kein Kaufbeleg:** Client-Callback meldet nur eine beanspruchte `templateId`. Server muss diese bei Printful gegenprüfen und Produkt, Varianten, gültige Gestaltung sowie Bestellfähigkeit separat prüfen. `checkoutReady` bleibt hier ausdrücklich false. Kein Bestell-/Zahlungs-/Fulfilment-Endpoint gehört zu diesem Paket.
++11. **Sicherer UI-Host:** SDK nur vom dokumentierten offiziellen CDN laden. CSP für tatsächlich benötigte offizielle Frames/Assets anhand der realen Integration prüfen, keine pauschalen Wildcards. Texte/Fehler nie als HTML injizieren. Fokus, Tastaturbedienung, Mobilansicht und Schliessen mit Entwurfswarnung prüfen. Keine iframe-internen Sicherheitsschranken umgehen.
++
++## Zustände
++
++`reserved` → `inflight` → `open` → `save-reported`
++
++Nach dem Request ist ein unbestätigter Ausgang `unknown`. Kein Zustand ausser `reserved` löst nochmals einen Nonce-POST aus. `save-reported` bezeichnet weder eine serverseitig verifizierte Vorlage noch Kaufbarkeit. Das Paket stellt bewusst keine Löschung, keinen Reset und keinen automatischen Wiederanlauf bereit.
++
++## Freigabestatus
++
++Die lokale Entwicklung ist ausgeführt; die EDM-Freischaltung für `luxestyle.ch` ist vom Inhaber ausdrücklich bestätigt. Die technische Berechtigung/Tokenbindung und produktive Serveranbindung sind noch nicht verifiziert. Produktionsbetrieb, Preise, Sortimentserweiterung, Fulfilment und Veröffentlichung sind durch diese lokale Entwicklung nicht nachgewiesen. Vor Produktivbetrieb muss der Host alle obigen Anforderungen erfüllen und die tatsächlich angebotenen Printful-Optionen je Produkt prüfen. Keine erneute Freischaltungsanfrage erforderlich.
+--- /dev/null
++++ prepared/printful-edm/client/edm.mjs
+@@ -0,0 +1,68 @@
++// Public module: no private token, API authentication or direct Printful fetch.
++const DRAFT_ID = /^luxe-edm-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
++const validId = value => Number.isSafeInteger(value) && value > 0;
++
++/** SDK injection makes this testable offline; use official embed.js in the host. */
++export function initialiseDesigner({
++  PFDesignMaker, elemId, session, onSaved, onStatus = () => {}, onError = () => {},
++  now = () => Date.now(),
++}) {
++  if (typeof PFDesignMaker !== 'function') throw new Error('EDM_SDK_NOT_LOADED');
++  if (typeof elemId !== 'string' || !/^[A-Za-z][\w-]*$/.test(elemId)) throw new Error('INVALID_CONTAINER');
++  if (!session || typeof session.externalProductId !== 'string' || !DRAFT_ID.test(session.externalProductId) ||
++      typeof session.nonce !== 'string' || !session.nonce ||
++      !Number.isSafeInteger(session.expiresAt) || session.expiresAt * 1000 <= now() ||
++      !validId(session.initProduct?.productId) ||
++      typeof session.initProduct?.technique !== 'string' || !/^[A-Z][A-Z0-9_-]{0,60}$/.test(session.initProduct.technique)) {
++    throw new Error('INVALID_EDM_SESSION');
++  }
++  if ([onSaved, onStatus, onError].some(fn => typeof fn !== 'function')) throw new Error('CALLBACK_REQUIRED');
++  let saved = false;
++  let saving = false;
++  let valid = false;
++  const designer = new PFDesignMaker({
++    elemId,
++    nonce: session.nonce,
++    externalProductId: session.externalProductId,
++    initProduct: { productId: session.initProduct.productId, technique: session.initProduct.technique },
++    locale: 'de_DE',
++    iframeClassName: 'luxe-edm-frame',
++    featureConfig: {
++      initial_open_view: 'product_view',
++      show_unavailability_info: true,
++      clipart_layers: true,
++      file_layers: true,
++      text_layers: true,
++    },
++    useUserConfirmationErrors: true,
++    style: { variables: { '--pf-sys-background': '#fcfaf7' } },
++    // No image/design prefill; all supported colours/sizes/placements remain selectable.
++    onTemplateSaved(templateId) {
++      if (!validId(templateId)) { onError('INVALID_TEMPLATE_ID'); return; }
++      saved = true; valid = false;
++      onSaved({ externalProductId: session.externalProductId, templateId, checkoutReady: false });
++    },
++    onDesignStatusUpdate(status) {
++      valid = !saved && !saving && status?.designValid === true;
++      onStatus({
++        designValid: valid,
++        selectedVariantIds: Array.isArray(status?.selectedVariantIds)
++          ? status.selectedVariantIds.filter(validId) : [],
++        usedPlacements: Array.isArray(status?.usedPlacements)
++          ? status.usedPlacements.filter(value => typeof value === 'string') : [],
++        errors: Array.isArray(status?.errors) ? status.errors : [],
++      });
++    },
++    // Do not forward arbitrary SDK objects to logs/telemetry.
++    onError() { valid = false; onError('EDM_ERROR'); },
++  });
++  return Object.freeze({
++    designer,
++    get canSave() { return valid && !saved && !saving; },
++    save() {
++      if (!valid || saved || saving) throw new Error('DESIGN_NOT_READY_TO_SAVE');
++      saving = true;
++      designer.sendMessage({ event: 'saveDesign' });
++    },
++  });
++}
+--- /dev/null
++++ prepared/printful-edm/client/fullscreen.css
+@@ -0,0 +1,24 @@
++/* Apply only while the dedicated editor route/dialog is open. */
++.luxe-edm-shell {
++  position: fixed;
++  inset: 0;
++  z-index: 1000;
++  display: grid;
++  grid-template-rows: auto minmax(0, 1fr);
++  width: 100%;
++  height: 100dvh;
++  background: #fcfaf7;
++  color: #25221f;
++}
++.luxe-edm-heading {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 1rem;
++  padding: max(.75rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) .75rem max(1rem, env(safe-area-inset-left));
++  border-bottom: 1px solid #dfd8cf;
++}
++.luxe-edm-heading button { min-width: 44px; min-height: 44px; }
++.luxe-edm-heading button:focus-visible { outline: 3px solid #315b80; outline-offset: 3px; }
++.luxe-edm-container { min-width: 0; min-height: 0; overflow: hidden; }
++.luxe-edm-frame { display: block; width: 100%; height: 100%; border: 0; }
+--- /dev/null
++++ prepared/printful-edm/server/nonce-service.mjs
+@@ -0,0 +1,161 @@
++// SERVER ONLY. Never bundle this module or token providers into a Shopify asset.
++import { randomUUID } from 'node:crypto';
++
++const NONCE_URL = 'https://api.printful.com/embedded-designer/nonces';
++const OWN_ORIGINS = new Set(['https://luxestyle.ch', 'https://www.luxestyle.ch']);
++const DRAFT_ID = /^luxe-edm-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
++
++export class EdmError extends Error {
++  constructor(code) { super(code); this.name = 'EdmError'; this.code = code; }
++}
++const fail = code => { throw new EdmError(code); };
++const validId = value => Number.isSafeInteger(value) && value > 0;
++const copy = value => structuredClone(value);
++
++/** Pure unsigned request builder. It cannot contain credentials or arbitrary URLs. */
++export function buildNonceRequest(externalProductId) {
++  if (typeof externalProductId !== 'string' || !DRAFT_ID.test(externalProductId)) fail('INVALID_DRAFT_ID');
++  return Object.freeze({
++    url: NONCE_URL,
++    method: 'POST',
++    body: JSON.stringify({ external_product_id: externalProductId }),
++  });
++}
++
++/** Offline/single-process review adapter only. Production needs durable atomic storage. */
++export function createMemoryDraftStore() {
++  const records = new Map();
++  return Object.freeze({
++    async create(record) {
++      if (records.has(record.id)) return false;
++      records.set(record.id, copy(record)); return true;
++    },
++    async get(id) { return records.has(id) ? copy(records.get(id)) : null; },
++    async transition(id, expected, patch) {
++      const previous = records.get(id);
++      if (!previous || previous.state !== expected) return false;
++      records.set(id, { ...previous, ...copy(patch) }); return true;
++    },
++  });
++}
++
++/**
++ * No default fetch/transport: nothing sends without explicit server-side wiring.
++ * The caller must first authenticate the session and enforce CSRF protection.
++ * subjectId must come from that trusted server session, never request JSON.
++ */
++export function createNonceService({
++  edmAccessConfirmed = false, allowedOrigins, productRules,
++  tokenProvider, transport, draftStore, now = () => Date.now(), newId = randomUUID,
++} = {}) {
++  if (edmAccessConfirmed !== true) fail('EDM_ACCESS_NOT_CONFIRMED');
++  if (!Array.isArray(allowedOrigins) || !allowedOrigins.length ||
++      allowedOrigins.some(origin => !OWN_ORIGINS.has(origin))) fail('INVALID_ALLOWED_ORIGINS');
++  const origins = new Set(allowedOrigins);
++  if (!Array.isArray(productRules) || !productRules.length) fail('PRODUCT_RULES_REQUIRED');
++  const rules = new Map();
++  for (const entry of productRules) {
++    if (!validId(entry?.productId) || rules.has(entry.productId) ||
++        !Array.isArray(entry.techniques) || !entry.techniques.length ||
++        entry.techniques.some(value => typeof value !== 'string' || !/^[A-Z][A-Z0-9_-]{0,60}$/.test(value))) {
++      fail('INVALID_PRODUCT_RULES');
++    }
++    rules.set(entry.productId, new Set(entry.techniques));
++  }
++  if (typeof tokenProvider !== 'function' || typeof transport !== 'function' ||
++      !draftStore || ['create', 'get', 'transition'].some(key => typeof draftStore[key] !== 'function')) {
++    fail('SERVER_DEPENDENCIES_REQUIRED');
++  }
++
++  function validateContext({ origin, subjectId } = {}) {
++    if (!origins.has(origin)) fail('ORIGIN_NOT_ALLOWED');
++    if (typeof subjectId !== 'string' || subjectId.length < 16 || subjectId.length > 256) fail('SESSION_REQUIRED');
++  }
++  function validateProduct(productId, technique) {
++    if (!validId(productId)) fail('INVALID_PRODUCT_ID');
++    if (!rules.has(productId) || !rules.get(productId).has(technique)) fail('PRODUCT_TECHNIQUE_NOT_ALLOWED');
++  }
++  async function ownedDraft(context) {
++    validateContext(context);
++    if (!DRAFT_ID.test(context.draftId || '')) fail('INVALID_DRAFT_ID');
++    const record = await draftStore.get(context.draftId);
++    if (!record || record.subjectId !== context.subjectId || record.origin !== context.origin) fail('DRAFT_NOT_FOUND');
++    validateProduct(record.productId, record.technique);
++    return record;
++  }
++
++  return Object.freeze({
++    async createDraft(context) {
++      validateContext(context);
++      validateProduct(context.productId, context.technique);
++      const id = `luxe-edm-${newId()}`;
++      buildNonceRequest(id); // Reject an invalid injected ID generator before persistence.
++      const record = {
++        id, subjectId: context.subjectId, origin: context.origin,
++        productId: context.productId, technique: context.technique,
++        state: 'reserved', createdAt: now(),
++      };
++      if (!await draftStore.create(record)) fail('DRAFT_ID_COLLISION');
++      return Object.freeze({ draftId: id, productId: record.productId, state: 'reserved' });
++    },
++
++    async openDraft(context) {
++      const record = await ownedDraft(context);
++      if (record.state !== 'reserved') fail('NONCE_ALREADY_ATTEMPTED');
++      // Validate secret access before claiming an outbound operation.
++      let token;
++      try { token = await tokenProvider(); } catch { fail('TOKEN_UNAVAILABLE'); }
++      if (typeof token !== 'string' || token.length < 8 || /[\r\n]/.test(token)) fail('TOKEN_UNAVAILABLE');
++      if (!await draftStore.transition(record.id, 'reserved', { state: 'inflight', attemptedAt: now() })) {
++        fail('NONCE_ALREADY_ATTEMPTED');
++      }
++      const request = buildNonceRequest(record.id);
++      let response;
++      try {
++        response = await transport(request.url, {
++          method: request.method,
++          redirect: 'error',
++          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
++          body: request.body,
++          signal: AbortSignal.timeout(15000),
++        });
++      } catch {
++        await draftStore.transition(record.id, 'inflight', { state: 'unknown' });
++        // Never forward an upstream exception: it could contain headers or tokens.
++        fail('NONCE_RESULT_UNKNOWN');
++      } finally { token = undefined; }
++      if (!response?.ok) {
++        await draftStore.transition(record.id, 'inflight', { state: 'unknown' });
++        fail('NONCE_RESULT_UNKNOWN');
++      }
++      let body;
++      try { body = await response.json(); } catch { /* Kept unknown below. */ }
++      const nonce = body?.result?.nonce;
++      if (body?.code !== 200 || !nonce || typeof nonce.nonce !== 'string' || !nonce.nonce.length ||
++          nonce.nonce.length > 4096 || !Number.isSafeInteger(nonce.expires_at) ||
++          nonce.expires_at * 1000 <= now() || nonce.template_id !== null) {
++        await draftStore.transition(record.id, 'inflight', { state: 'unknown' });
++        fail('NONCE_RESULT_UNKNOWN');
++      }
++      if (!await draftStore.transition(record.id, 'inflight', {
++        state: 'open', nonceExpiresAt: nonce.expires_at,
++      })) fail('NONCE_RESULT_UNKNOWN');
++      // This is the ONLY client payload. Nonce is ephemeral; private token is absent.
++      // Route adapter must send Cache-Control: no-store and redact response logging.
++      return Object.freeze({
++        externalProductId: record.id, nonce: nonce.nonce, expiresAt: nonce.expires_at,
++        initProduct: Object.freeze({ productId: record.productId, technique: record.technique }),
++      });
++    },
++
++    async markSaveReported(context) {
++      const record = await ownedDraft(context);
++      if (!validId(context.templateId)) fail('INVALID_TEMPLATE_ID');
++      if (!await draftStore.transition(record.id, 'open', {
++        state: 'save-reported', reportedTemplateId: context.templateId,
++      })) fail('INVALID_DRAFT_STATE');
++      // Client callbacks are not trusted production/order verification.
++      return { state: 'save-reported', checkoutReady: false };
++    },
++  });
++}
+--- /dev/null
++++ prepared/printful-edm/test/edm.test.mjs
+@@ -0,0 +1,151 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { readFile } from 'node:fs/promises';
++import { buildNonceRequest, createMemoryDraftStore, createNonceService } from '../server/nonce-service.mjs';
++import { initialiseDesigner } from '../client/edm.mjs';
++
++const TIME = Date.parse('2026-10-29T14:00:00Z');
++const SECRET = 'offline-private-test-token';
++const CONTEXT = Object.freeze({ origin: 'https://luxestyle.ch', subjectId: 'server-signed-session-a', productId: 390, technique: 'SUBLIMATION' });
++function setup(extra = {}) {
++  const requests = [];
++  const draftStore = createMemoryDraftStore();
++  const service = createNonceService({
++    edmAccessConfirmed: true, allowedOrigins: ['https://luxestyle.ch'],
++    // Synthetic test fixture, not a claim about product 390 technique support.
++    productRules: [{ productId: 390, techniques: ['SUBLIMATION'] }],
++    tokenProvider: async () => SECRET, now: () => TIME, draftStore,
++    transport: async (url, options) => {
++      requests.push({ url, options });
++      return { ok: true, json: async () => ({ code: 200, result: { nonce: {
++        nonce: 'offline-nonce', template_id: null, expires_at: TIME / 1000 + 300,
++      } } }) };
++    }, ...extra,
++  });
++  return { service, requests, draftStore };
++}
++async function open(setupResult) {
++  const draft = await setupResult.service.createDraft(CONTEXT);
++  const session = await setupResult.service.openDraft({ ...CONTEXT, draftId: draft.draftId });
++  return { draft, session };
++}
++
++test('access confirmation is mandatory; no wildcard or foreign origins', () => {
++  assert.throws(() => createNonceService(), /EDM_ACCESS_NOT_CONFIRMED/);
++  for (const origin of ['*', 'https://evil.test', 'https://luxestyle.ch.evil.test', 'http://luxestyle.ch', 'https://luxestyle.ch/']) {
++    assert.throws(() => setup({ allowedOrigins: [origin] }), /INVALID_ALLOWED_ORIGINS/);
++  }
++});
++
++test('invalid product, technique, session and origin fail before transport', async () => {
++  const ctx = setup();
++  for (const patch of [{ productId: '390' }, { productId: 0 }, { productId: 390.5 }, { productId: 999 },
++    { technique: 'MADE_UP' }, { origin: 'https://evil.test' }, { subjectId: '' }]) {
++    await assert.rejects(ctx.service.createDraft({ ...CONTEXT, ...patch }));
++  }
++  assert.equal(ctx.requests.length, 0);
++});
++
++test('parallel drafts have unique external IDs even for same session/product', async () => {
++  const ctx = setup();
++  const drafts = await Promise.all(Array.from({ length: 100 }, () => ctx.service.createDraft(CONTEXT)));
++  assert.equal(new Set(drafts.map(d => d.draftId)).size, 100);
++  assert.equal(ctx.requests.length, 0);
++});
++
++test('request builder is fixed-target, unsigned and contains only draft ID', () => {
++  const req = buildNonceRequest('luxe-edm-00000000-0000-4000-8000-000000000000');
++  assert.equal(req.url, 'https://api.printful.com/embedded-designer/nonces');
++  assert.deepEqual(Object.keys(JSON.parse(req.body)), ['external_product_id']);
++  assert.equal('headers' in req, false);
++  assert.throws(() => buildNonceRequest('https://evil.test'), /INVALID_DRAFT_ID/);
++});
++
++test('one nonce POST for concurrent opens, correct auth only at server transport', async () => {
++  const ctx = setup();
++  const draft = await ctx.service.createDraft(CONTEXT);
++  const results = await Promise.allSettled([
++    ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }),
++    ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }),
++  ]);
++  assert.equal(results.filter(r => r.status === 'fulfilled').length, 1);
++  assert.equal(ctx.requests.length, 1);
++  assert.equal(ctx.requests[0].options.headers.Authorization, `Bearer ${SECRET}`);
++  assert.equal(ctx.requests[0].options.redirect, 'error');
++  const session = results.find(r => r.status === 'fulfilled').value;
++  assert.equal(JSON.stringify(session).includes(SECRET), false);
++  assert.deepEqual(Object.keys(session).sort(), ['expiresAt', 'externalProductId', 'initProduct', 'nonce']);
++  assert.equal(JSON.stringify(await ctx.draftStore.get(draft.draftId)).includes(SECRET), false);
++});
++
++test('another session cannot open draft and does not consume it', async () => {
++  const ctx = setup();
++  const draft = await ctx.service.createDraft(CONTEXT);
++  await assert.rejects(ctx.service.openDraft({ ...CONTEXT, subjectId: 'server-signed-session-b', draftId: draft.draftId }), /DRAFT_NOT_FOUND/);
++  assert.equal(ctx.requests.length, 0);
++  assert.equal((await ctx.draftStore.get(draft.draftId)).state, 'reserved');
++});
++
++test('uncertain upstream response is sanitised and cannot trigger another POST', async () => {
++  let calls = 0;
++  const ctx = setup({ transport: async () => { calls += 1; throw new Error(`headers: Bearer ${SECRET}`); } });
++  const draft = await ctx.service.createDraft(CONTEXT);
++  await assert.rejects(ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }), error => {
++    assert.equal(error.message, 'NONCE_RESULT_UNKNOWN');
++    assert.equal(String(error.stack).includes(SECRET), false); return true;
++  });
++  await assert.rejects(ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }), /NONCE_ALREADY_ATTEMPTED/);
++  assert.equal(calls, 1);
++  assert.equal((await ctx.draftStore.get(draft.draftId)).state, 'unknown');
++});
++
++test('expired nonce or existing template response cannot start a blank session', async () => {
++  for (const patch of [{ expires_at: TIME / 1000 }, { template_id: 123 }]) {
++    const ctx = setup({ transport: async () => ({ ok: true, json: async () => ({ code: 200, result: { nonce: {
++      nonce: 'offline-nonce', template_id: null, expires_at: TIME / 1000 + 300, ...patch,
++    } } }) }) });
++    const draft = await ctx.service.createDraft(CONTEXT);
++    await assert.rejects(ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }), /NONCE_RESULT_UNKNOWN/);
++  }
++});
++
++test('blank SDK initialisation uses documented fields and saves once after validation', async () => {
++  const ctx = setup();
++  const { session } = await open(ctx);
++  let config; const messages = []; const saved = [];
++  class SDK { constructor(value) { config = value; } sendMessage(message) { messages.push(message); } }
++  const editor = initialiseDesigner({ PFDesignMaker: SDK, elemId: 'luxe-edm', session,
++    now: () => TIME, onSaved: value => saved.push(value) });
++  assert.equal(config.locale, 'de_DE');
++  assert.equal(config.featureConfig.show_unavailability_info, true);
++  for (const absent of ['applyImageFromUrl', 'disabledPlacements', 'disabledColors', 'disabledSizes', 'isVariantSelectionDisabled']) {
++    assert.equal(absent in config, false);
++  }
++  assert.equal(JSON.stringify(config).includes(SECRET), false);
++  assert.throws(() => editor.save(), /DESIGN_NOT_READY_TO_SAVE/);
++  config.onDesignStatusUpdate({ designValid: true, selectedVariantIds: [10877], usedPlacements: ['front'] });
++  assert.equal(editor.canSave, true);
++  editor.save();
++  assert.deepEqual(messages, [{ event: 'saveDesign' }]);
++  assert.throws(() => editor.save(), /DESIGN_NOT_READY_TO_SAVE/);
++  config.onTemplateSaved(555);
++  assert.equal(editor.canSave, false);
++  assert.equal(saved[0].checkoutReady, false);
++  assert.equal(saved[0].templateId, 555);
++});
++
++test('client save report is not a verified order/checkout state', async () => {
++  const ctx = setup();
++  const { draft } = await open(ctx);
++  assert.deepEqual(await ctx.service.markSaveReported({ ...CONTEXT, draftId: draft.draftId, templateId: 555 }),
++    { state: 'save-reported', checkoutReady: false });
++  assert.equal((await ctx.draftStore.get(draft.draftId)).state, 'save-reported');
++  await assert.rejects(ctx.service.openDraft({ ...CONTEXT, draftId: draft.draftId }), /NONCE_ALREADY_ATTEMPTED/);
++});
++
++test('client module has no server import, secret dependency, fetch or logging', async () => {
++  const source = await readFile(new URL('../client/edm.mjs', import.meta.url), 'utf8');
++  assert.equal(/\bimport\b|\bfetch\s*\(|\bprocess\.env\b|\bAuthorization\b|\bconsole\./.test(source), false);
++  const server = await readFile(new URL('../server/nonce-service.mjs', import.meta.url), 'utf8');
++  assert.equal(/\bconsole\./.test(server), false);
++});
