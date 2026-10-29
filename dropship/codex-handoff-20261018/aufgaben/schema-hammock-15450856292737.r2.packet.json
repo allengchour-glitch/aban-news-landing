@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "schema-hammock-15450856292737",
+  "revision": 2,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-10-29T06:35:15.429Z",
+  "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "title": "Hängematte: echten statischen Prüfkontext ergänzt",
+  "summary": "SKU-Patch aus r1 unverändert. Statische Vorher/Nachher-Prüfung mit neun echten Dateien erfolgreich. Google-Code-Test exakt einmal an Anmeldung blockiert; native Ausgabe und Google-Akzeptanz offen. Keine Live-Änderung.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-VALIDIERUNG-20261029.md",
+      "sha256": "e78d6e5f45e7eab4e5d82057ded83b9c1af663cf8a670e8b1bd70b3493b032a8",
+      "gitBlobSha": "cc57d5d3c22f2f90cba045b9ff8cafa9315204c7"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-VALIDIERUNG-BELEGE-20261029.json",
+      "sha256": "70365ad7ee5aa3037d26a2186b563eebda1cc5074970b6d691e4a38b3c39d918",
+      "gitBlobSha": "e9d3317ac528469edf3fb3ae8fbe3264d8de8712"
+    }
+  ],
+  "evidence": [],
+  "previousPacketSha256": "1fbf40e4a70b4ba00c56467abe2eb3167d97cfeba89d1dd082f5fdac267ce166"
+}
