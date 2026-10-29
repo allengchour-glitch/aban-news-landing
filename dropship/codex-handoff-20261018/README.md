@@ -1,5 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026 – vier Produktangaben, Material-Runner r2 und Verkaufsziel
+
+Neue gezielte Arbeit, keine Shop-/Feedänderung: vier ausgewählte Produkte mit Varianten, Bildern, CHF-Preisen und technischer Storefront-Kaufbarkeit geprüft; drei Beschreibung-/SEO-Diffs vorbereitet. Tech-Hero-Lieferumfang sowie Stein-/Material- und Bildzuordnung bleiben offen. [Konkrete Befunde und nächste Quellen](VIER-PRODUKTE-VERKAUFSGRUNDLAGEN-20261029.md) · [Vorher-/Nachher-Texte](VIER-PRODUKTE-TEXTDIFFS-20261029.json) · [begrenzte Belege](VIER-PRODUKTE-BELEGE-20261029.json).
+
+Der Material-Runner wurde lokal weiter korrigiert: atomare Ablehnung, unknown ohne Schreib-Retry und vollständiges Rücklesen vor weiteren Stapeln. 238 Prüfungen auf dem integrierten Kandidaten grün, davon 20 neue; die bisherigen 218 sind keine zusätzlichen neuen Prüfungen. Voll-CI bleibt vor Skripteintritt an unshare blockiert, Node22 ungeprüft. [r2-Integrationsbericht](PRODUKTANGABEN-R2-20261029.md) · [Reviewpaket r2](aufgaben/product-attribute-completeness.r2.packet.json). r1 bleibt erhalten. Keine produktive Übernahme und keine Claude-Quittung bestätigt.
+
+Inhaberziel «bis 1 Kauf»: Beginn 29.10.2026 00:46:11 Europe/Zurich. Einmalige begrenzte Shopify-Prüfung bis 00:52:05: kein neuer qualifizierender bezahlter Kauf im vollständigen Fenster. Ziel offen, keine Aussage über spätere Käufe. Keine Kundendaten im Paket, kein künstlicher Testkauf, bestehender Rhythmus unverändert. Arbeitsstand Revision 4 führt dieses Ziel und die nächste erlaubte Quellenarbeit fort.
+
+
 ## 29.10.2026, Produktangaben: geprüfte Korrekturen und Quellenkonflikt
 
 [LUXESTYLE_ATTRIBUTE_WORK_20261029]
