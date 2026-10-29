@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 3,
-  "updatedAt": "2026-10-28T23:34:44.479Z",
+  "revision": 4,
+  "updatedAt": "2026-10-29T00:03:47.271Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-10-29",
     "currentDayEvidenceKind": "QUELLE",
-    "currentDayEvidence": "Heutiger Tagesblock enthält Produktzählung und gezielte Attributgegenproben. Marketing-Kennzahl-/Flow-/Umsatzabfragen für den 29.10. sind dort bislang nicht belegt; in diesem Weiterarbeitslauf keine solchen Abfragen."
+    "currentDayEvidence": "Gezielte Produktzählung und Attributgegenproben im Tagesblock belegt. Zusätzlich auf neuen Inhaberwunsch einmalige begrenzte Prüfung neuer bezahlter Bestellungen vom 28.10.2026 23:46:11Z bis 23:52:05Z; Ziel in diesem vollständigen Fenster nicht erreicht. Keine zusätzlichen Marketing-Kennzahlen-/Flow-/Gesamtumsatzreports. Weitere Abfragen nicht allein für die Tabelle auslösen."
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -55,14 +55,15 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: sieben lokale Code-/Testpfade gemeinsam geprüft, 218 Prüfungen grün. Fortschritts-Nenner, Imitat-/Titanstahl-/manuelle Materialpfade und Plansicherung korrigiert. Drei gezielte aktuelle Produkte gelesen: zwei Auswahltext-Diffs mit 13 unveränderten Variantenbindungen; Schneestiefel-Materialfeld Baumwolle bei widersprüchlichen Textangaben. Keine Shopwrites; 49,8 % bleibt historische Restschätzung vom 27.10., keine heutige Vollmessung.",
-      "nextAllowedStep": "Claude kann das neue Reviewpaket gegen den dann aktuellen main prüfen. Vollständige Node22-CI und verbleibende Runner-Voraussetzungen vor Live-Nutzung klären. Unabhängig aktuelle CJ-/Lieferantenquelle für Schneestiefel CJYD2718405 und vollständige aktuelle Auswahlkandidatenliste abgleichen; Obermaterial/Futter/Sohle und Fusslänge je Grösse getrennt belegen. Keine parallele zweite Anreicherung.",
+      "lastEvidence": "GEMESSEN: r2 korrigiert atomare Stapelablehnung, unklare Schreibantworten ohne Retry und vollständiges Rücklesen je Stapel. 238 lokale Prüfungen im integrierten Kandidaten grün, darunter 20 neue Batchprüfungen; vorherige 218 kein neuer Testumfang. Vier ausgewählte Produkte aktuell mit Bildern, IDs, Preisen und technischer Kaufbarkeit geprüft. Drei Beschreibung-/SEO-Diffs vorbereitet, Tech-Hero-Setinhalt blockiert. Keine Shop-/Feedwrites oder bestätigte Verkaufswirkung.",
+      "nextAllowedStep": "Claude prüft r2 gegen aktuellen main und ergänzt in der bestehenden Anreicherung exakte Lieferanten-/Modellbelege: zuerst Tech-Hero-Stückliste und rosa/grüner Roller-Konflikt, danach Diffuser-Material/Kapazität und Gua-Sha-Setinhalt. Produktnamen, Bilder und Beschreibungen gemeinsam abgleichen. Vollständige CI und verbleibende Runner-Voraussetzungen vor Live-Nutzung erfüllen; keine parallele Massenanreicherung.",
       "blockers": [
         "Aktuelle vollständige Auswahlkandidatenliste und Anwendbarkeit je Attribut fehlen",
-        "CJ-Laufzeit-Zugänge im aktuellen Environment nicht gebunden; bestehende Repo-Helfer vorhanden",
-        "Schneestiefel: Materialquellen widersprüchlich, exaktes Lieferantendatenblatt und Fusslängentabelle offen",
-        "Voll-CI scheitert an unshare-Berechtigung; Node22 nicht ausgeführt",
-        "Runner: atomare Mutationsfehlerzählung, frischer Werteabgleich/compareDigest, Quellenalter, Einzelrücklesen und tatsächlicher Rücksetzbeleg benötigen weitere Prüfung"
+        "CJ-Laufzeit-Zugang zuletzt nicht gebunden; bestehende Repo-Helfer vorhanden, in diesem Nachtrag nicht neu authentifiziert",
+        "Schneestiefel-Material und Fusslängentabelle weiter offen; vier ausgewählte LX-SKUs ohne exakt zugeordnete Lieferanten-/Modellquelle",
+        "Drei Text-/SEO-Diffs publishable=false: tatsächlicher Lieferumfang, Bilder und materialbezogene Produktnamen vor Freigabe klären",
+        "Voll-CI-Versuch vor Skripteintritt durch fehlende unshare-Berechtigung blockiert; Node22 nicht ausgeführt",
+        "Runner: compareDigest/frische Vorher-Gegenprobe, Quellenalter, historische API-Version und dauerhaftes Inflight-/Wiederaufnahme-/Rücksetzregister offen"
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -85,16 +86,31 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-GEGENPROBEN-20261029.json",
           "gitBlobSha": "eaca782e4f87f898eb560e1fd38c045339e29d2b",
           "readAt": "2026-10-28T23:34:44.479Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIER-PRODUKTE-VERKAUFSGRUNDLAGEN-20261029.md",
+          "gitBlobSha": "90c7bcb6344ed2f90646e0f0faac17143091aa26",
+          "readAt": "2026-10-29T00:03:47.271Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIER-PRODUKTE-BELEGE-20261029.json",
+          "gitBlobSha": "137d737f01b23ad3f0ad70888e9389b32e07eedf",
+          "readAt": "2026-10-29T00:03:47.271Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-R2-20261029.md",
+          "gitBlobSha": "3303288733b1ad3bf9cd1bca947e2802a65df107",
+          "readAt": "2026-10-29T00:03:47.271Z"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "claude_enrichment_codex_measurement_and_review",
       "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln.",
       "reviewPacket": {
-        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r1.packet.json",
-        "revision": 1,
-        "sha256": "163aa4d0f7c4ca2f0f0625b674c810cd5bc54eb476fa284ef946e6a7065619b3",
-        "gitBlobSha": "d4e8b21e50246b55387cf870bd45a928370b0777",
+        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r2.packet.json",
+        "revision": 2,
+        "sha256": "7248da67433bdeebffb4801494075eb39c2103858d5430b714a216c306b842a7",
+        "gitBlobSha": "84057719818a123f2cec82f20f8e1f0331f375b9",
         "claudeReceipt": "unknown_requires_fresh_read"
       }
     },
@@ -377,6 +393,31 @@
       "at": "2026-10-28T23:34:44.479Z",
       "actor": "codex",
       "action": "Produktangaben weiterbearbeitet: 218 lokale Prüfungen, zwei konkrete Auswahltext-Diffs und aktueller Materialkonflikt dokumentiert. Reviewpaket gespeichert; keine Produktwrites oder produktive Integration. Lokale Testnebenwirkung offengelegt, verbleibende Live-Voraussetzungen benannt."
+    },
+    {
+      "revision": 4,
+      "at": "2026-10-29T00:03:47.271Z",
+      "actor": "codex",
+      "action": "Vier ausgewählte Produkte und echte Bilder gezielt geprüft; drei Text-/SEO-Diffs und r2-Codekorrektur vorbereitet. Verkaufsziel mit engem, einmalig geprüftem Zeitfenster dokumentiert. Keine operative Shop-/Feedänderung oder neue Terminierung."
     }
-  ]
+  ],
+  "salesGoal": {
+    "startAt": "2026-10-28T23:46:11Z",
+    "timezone": "Europe/Zurich",
+    "localStartAt": "2026-10-29T00:46:11+01:00",
+    "targetCount": 1,
+    "criterion": "Neue nicht stornierte, nicht als Test markierte Shopify-Bestellung mit financial status PAID und positivem Zahlungseingang; erstellt ab Startzeitpunkt",
+    "status": "not_reached_in_checked_window",
+    "schedule": "unchanged",
+    "lastCheckedAt": "2026-10-28T23:52:05Z",
+    "checkedWindow": {
+      "from": "2026-10-28T23:46:11Z",
+      "to": "2026-10-28T23:52:05Z"
+    },
+    "qualifyingOrderCount": 0,
+    "completeWindow": true,
+    "customerDataInPublicDocs": false,
+    "attribution": "Keine kausale Zuordnung zu Codex-Arbeit aus diesem Bestellstatus",
+    "nextAllowedCheck": "Im nächsten bestehenden Lauf Tagesprotokoll und geprüfte Fenster abgleichen; bisherigen Rhythmus und Kennzahlgrenzen erhalten. Keine automatische Wiederholung oder künstliche Testbestellung."
+  }
 }
