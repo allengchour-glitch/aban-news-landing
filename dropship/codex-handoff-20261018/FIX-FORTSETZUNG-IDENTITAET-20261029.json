@@ -1,0 +1,32 @@
+{
+  "shop": {
+    "name": "LuxeStyle",
+    "url": "https://luxestyle.ch",
+    "currencyCode": "CHF"
+  },
+  "metricool": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "mainSha": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+  "runtime": {
+    "observationsCurrent": true,
+    "networkPolicy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "secretBindings": 0,
+    "runtimeVariables": 0,
+    "outboundIdentities": 0
+  },
+  "scope": "Identity/environment reads during the run starting at this time; no metrics",
+  "runStartedAt": "2026-10-29T06:17:00Z"
+}
