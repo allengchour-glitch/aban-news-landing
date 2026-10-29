@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, 09:25 Zürich – Schema erstmals nativ in Shopify-Vorschau geprüft
+
+Aktueller Auftrag «merchant fix und console»: genau ein unveröffentlichtes Prüftheme 212752499079 aus MAIN 212656488839 erstellt und die zwei bestehenden engen Korrekturen integriert. Echter Render bestätigt 24 entfernte ungültige SKU-Eigenschaften bei 33 erhaltenen Varianten/Offers sowie die öffentliche CHF 50-Versandgrenze. Neun gültige SKUs, Preise/Bilder/Verfügbarkeit und Rückgaberegel unverändert; unabhängige Gegenlese und ein Kontrollprodukt bestanden. Keine MAIN-Publikation; vorhandener Connector blockiert Live-Dateiwrites/Publikation. Google-Akzeptanz bleibt unbekannt.
+
+Ein exakter Merchant-Itemabruf zu 15448020582785 lieferte Timeout −32603; eingereichte URL/Source-ID unbekannt, kein Retry/Feedwrite. [Bericht und native Vorschau](MERCHANT-CONSOLE-20261029.md), [Belege](MERCHANT-CONSOLE-BELEGE-20261029.json), [enger Übernahmediff](MERCHANT-CONSOLE-20261029.patch). Arbeitsstand Revision 9; vorhandenes Prüftheme weiterverwenden. Keine erneuten Tagesreports und keine belegte Claude-Kenntnisnahme.
+
 ## 29.10.2026, 09:06 Zürich – zwei Produktangaben live bereinigt
 
 Aktueller Auftrag «pushe produkten saber mit nachtragen»: bei Ladegerät 15447560520065 und Plüschtier 15446272016769 «Farbe» → «Ausführung» umgesetzt; sieben vorhandene Spielzeugwerttexte sprachlich vereinheitlicht. Alle 13 Varianten-/SKU-/InventoryItem-Bindungen und CHF 15.90-Preise unverändert; nativ und öffentlich HTTP 200 bestätigt. Keine neue Material-/Massprüfung. Merchant 5797470070 frisch erkannt, aber isolierter Push ohne authentifizierten aktiven Datenquellenzugang technisch blockiert; Genehmigung besteht bereits. Kein gemischter Workflow gestartet.
@@ -628,5 +634,6 @@ Weitere lokale Nachweise: `evening-check-20261018/ABENDPRUEFUNG.md` und `content
 ## Dokumentationsablage
 
 Root-`CLAUDE.md` und `SHARED-MEMORY.md` verlinken diese Übergabe auf demselben Dokumentationsbranch. Der alte feste Branch `claude/luxestyle-product-CizQ6` wurde nur lesend verglichen: 3271 Commits voraus und 2477 hinter dem geprüften main, mit zahlreichen anderen Änderungen. Er wird für diese Wissensübergabe weder zurückgesetzt noch pauschal gemergt. Die getrennte Ablage verhindert die Vermischung mit Runtime-/Queue-Änderungen. Ein Branch/PR ist nicht automatisch main oder ein Deployment.
+
 
 
