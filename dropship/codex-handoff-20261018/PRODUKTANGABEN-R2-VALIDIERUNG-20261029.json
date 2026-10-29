@@ -1,0 +1,213 @@
+{
+  "results": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-10-29T00:01:36.905616+00:00",
+    "runtime": "Node v24.19.0; Node22 unavailable",
+    "scope": "Four focused offline suites; no Shop writes",
+    "suites": [
+      {
+        "name": "material",
+        "command": "node automation/lib/material_test.mjs",
+        "exitCode": 0,
+        "passed": 190,
+        "summary": "material_test: 190 Prüfungen ok",
+        "log": "validation/material.log"
+      },
+      {
+        "name": "fortschritt",
+        "command": "node automation/fortschritt_daten_test.mjs",
+        "exitCode": 0,
+        "passed": 12,
+        "summary": "12 ok, 0 Fehler",
+        "log": "validation/fortschritt.log"
+      },
+      {
+        "name": "plan",
+        "command": "MATERIAL_TEST_TMP=<integration>/fixtures/plan node automation/material_plan_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 16,
+        "summary": "16 ok, 0 Fehler",
+        "log": "validation/plan.log"
+      },
+      {
+        "name": "batch",
+        "command": "MATERIAL_TEST_TMP=<integration>/fixtures/batch node automation/material_batch_lauf_test.mjs",
+        "exitCode": 0,
+        "passed": 20,
+        "summary": "20 ok, 0 Fehler",
+        "log": "validation/batch.log"
+      }
+    ],
+    "testsPassed": 238,
+    "syntaxAndWorkflow": {
+      "exitCode": 0,
+      "yamlParsed": true,
+      "r2WorkflowAddedCommands": [
+        "node automation/material_batch_lauf_test.mjs"
+      ],
+      "existingCommandsPreserved": true
+    },
+    "patch": {
+      "checks": [
+        {
+          "command": "git apply --check /workspace/luxestyle-review/selected-four-20261029/integration/PRODUKTANGABEN-KORREKTUREN-R2.patch",
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": "git apply /workspace/luxestyle-review/selected-four-20261029/integration/PRODUKTANGABEN-KORREKTUREN-R2.patch",
+          "exitCode": 0,
+          "output": ""
+        }
+      ],
+      "allEightTargetsByteEqual": true,
+      "changedFiles": [
+        "automation/lib/material.mjs",
+        "automation/lib/material_test.mjs",
+        "automation/material_nachtragen.mjs",
+        "automation/material_plan_lauf_test.mjs",
+        "automation/fortschritt_daten.mjs",
+        "automation/fortschritt_daten_test.mjs",
+        "automation/material_batch_lauf_test.mjs",
+        ".github/workflows/luxestyle-automation-tests.yml"
+      ]
+    },
+    "cooperationWorkflow": {
+      "source": "/workspace/luxestyle-review/cooperation-mod-20261028/root/ci-current/after/.github/workflows/luxestyle-automation-tests.yml",
+      "sourceSha256": "623c0b76cc9cf779682f468734007d05a73ee678016ca02449cf993c1ba813eb",
+      "originalUnchanged": true,
+      "checks": [
+        {
+          "command": "git apply --check /workspace/luxestyle-review/selected-four-20261029/integration/WORKFLOW-HUNKS.patch",
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": "git apply /workspace/luxestyle-review/selected-four-20261029/integration/WORKFLOW-HUNKS.patch",
+          "exitCode": 0,
+          "output": ""
+        }
+      ],
+      "scope": "Nur drei Testzeilen als Hunk in eigener Kopie; vorhandene Kooperationsaenderungen erhalten."
+    },
+    "fullCi": {
+      "name": "full-ci-attempt",
+      "originalCommand": "bash automation/ci_simulation.sh",
+      "attemptedCommand": "unshare -n -- bash automation/ci_simulation.sh",
+      "exitCode": 1,
+      "scriptSha256": "d39a631c909295075d782a083e7dc2927094108cd3d21afaee55c70c2254ce74",
+      "homeUnchanged": true,
+      "credentialEnvironment": "not inherited",
+      "lastLines": [
+        "unshare: unshare failed: Operation not permitted"
+      ],
+      "scope": "Original simulation unchanged; isolated network namespace requested before entry; environment denial is not a CI pass."
+    },
+    "deployment": "not_merged_not_deployed_not_executed_in_shop",
+    "r1Delta": {
+      "checks": [
+        {
+          "command": "git apply --check /workspace/luxestyle-review/selected-four-20261029/integration/R1-ZU-R2.patch",
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": "git apply /workspace/luxestyle-review/selected-four-20261029/integration/R1-ZU-R2.patch",
+          "exitCode": 0,
+          "output": ""
+        }
+      ],
+      "allEightTargetsByteEqual": true
+    },
+    "codePackages": {
+      "roundTripByteEqual": true,
+      "fileCount": 8,
+      "parts": 2
+    }
+  },
+  "sourceManifest": {
+    "baseCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+    "files": [
+      {
+        "path": "automation/lib/material.mjs",
+        "beforeExists": true,
+        "beforeGitBlobSha": "cf6a6b663000c0c108b064afcdf4ccd6ed543a8a",
+        "beforeSha256": "e5065eb1f2f9b2ffb4b2c03d9ef158859c80902904937323328473bdfaaf6b29",
+        "afterGitBlobSha": "c16f273de7fd7fb6524d59dd950f4792f47e9f10",
+        "afterSha256": "26dd7121c0f2421cad8e38dd9f56b4739bed29f88f631264d6e3b88fad828cca"
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "beforeExists": true,
+        "beforeGitBlobSha": "b5e1c1fb2c0991b85771890fe1cfc3a6389512c2",
+        "beforeSha256": "9670987286d11dac0dc5075313feb87e0ea4bf3642c292f9b29c8838b2aebf3e",
+        "afterGitBlobSha": "c00ccfb1ff0fc0b40e202b80ec05fa4ac4115176",
+        "afterSha256": "dee599553db277d2cb16b5fe0db0305dc1bc53ae8896402d35e47f14b9385053"
+      },
+      {
+        "path": "automation/material_nachtragen.mjs",
+        "beforeExists": true,
+        "beforeGitBlobSha": "fbdbc9d1e0dd96e402602454828d7b69ab169576",
+        "beforeSha256": "c3fd4c5362811ae34c1b42cefc753943c0f760b5135ba6f59ff8a7f61df73a9e",
+        "afterGitBlobSha": "bf27441b39369c00efc8f07433bd3355392357e6",
+        "afterSha256": "2ce2b25815c5c5bdb3549b56445fb35e101704f7c467aa84f6bc049a85c82c2a"
+      },
+      {
+        "path": "automation/material_plan_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeGitBlobSha": null,
+        "beforeSha256": null,
+        "afterGitBlobSha": "0807a2615e8061039567f1f1c8522dd6879b3b5e",
+        "afterSha256": "cda1cee682d17203c0394f21f6e8af9c50be73d2800b6e32f7cd8ef301fc5a3e"
+      },
+      {
+        "path": "automation/fortschritt_daten.mjs",
+        "beforeExists": true,
+        "beforeGitBlobSha": "1b38af146f5a91496749339f57adc7567b150b9d",
+        "beforeSha256": "ac2b47c92a0d6ff760cfad67f86edc20acbbbfa4123660e240ff7c798894f588",
+        "afterGitBlobSha": "9a1069393ecd1ff91f6503c18d8e59e0781fc443",
+        "afterSha256": "0f6df84c1cafd112ad98752c9dd93cfc6c581fda3642a7cda42b58d6ef01ef72"
+      },
+      {
+        "path": "automation/fortschritt_daten_test.mjs",
+        "beforeExists": false,
+        "beforeGitBlobSha": null,
+        "beforeSha256": null,
+        "afterGitBlobSha": "1bfd13cb00aa88ac5d05281c52090c8781c77be7",
+        "afterSha256": "b112655749da58f7b123d277d46b89d1246b0970d4124a16bac0f8e30b8c39cc"
+      },
+      {
+        "path": "automation/material_batch_lauf_test.mjs",
+        "beforeExists": false,
+        "beforeGitBlobSha": null,
+        "beforeSha256": null,
+        "afterGitBlobSha": "e3db3ad5010edeb72d6e59998186d662c2ac4867",
+        "afterSha256": "f1af9d4ff7f468523eecb810480aa88be8649c2341fc31a082f97df6a082907b"
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "beforeExists": true,
+        "beforeGitBlobSha": "979c484b6e144c4f428f343a964cf664d4573a86",
+        "beforeSha256": "c230d87af87ff7a5ade737607d80860983f550b276b21310af03f9e529feb676",
+        "afterGitBlobSha": "cab0a7749b489ea8b195704983da34c7efc7a775",
+        "afterSha256": "03b2435a97a7064611abcccb65b6ba22a2aa7be2f504b2d477b06a15d0c6872b"
+      }
+    ]
+  },
+  "batchRegression": {
+    "before": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":0,\"ergebnis\":{\"geschrieben\":1,\"fehler\":1,\"stichprobe\":1,\"abweichungen\":0},\"ledger\":\"2026-10-28T23:51:05.903Z · material nachgetragen · 1 Produkte (Fehler 1) · Quellen {\\\"uebersetzt\\\":2}\"}\nFEHLER Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Atomarer Fehler verwirft den ganzen Stapel: null: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Definitiver Fehler beendet den Lauf vor späteren Stapeln: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Unklare Antwort zählt keinen Erfolg: null: {\"gelesen\":2,\"zuSchreiben\":2,\"quellen\":{\"uebersetzt\":2},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/selected-four-20261029/runner/fixtures/fall-wbYhth/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×2\n\nFEHLER Cannot read properties of null (reading 'userErrors')\n\nFEHLER Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Unklare Antwort zählt keinen Erfolg: ohne-metafields: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Unklare Antwort zählt keinen Erfolg: zu-kurz: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Unklare Antwort zählt keinen Erfolg: falscher-key: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Unklarer Transport wird nicht wiederholt: netzfehler: Expected values to be strictly equal:\n\n6 !== 1\n\nFEHLER Unklarer Transport wird nicht wiederholt: http500: Expected values to be strictly equal:\n\n6 !== 1\n\nFEHLER Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung: Expected values to be strictly equal:\n\n6 !== 1\n\nFEHLER Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen: Expected values to be strictly equal:\n\n25 !== 26\n\nFEHLER Abweichende Rücklesung zählt nicht als bestätigtes Schreiben: Expected values to be strictly equal:\n\n2 !== 1\n\nFEHLER Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft: {\"gelesen\":2,\"zuSchreiben\":2,\"quellen\":{\"uebersetzt\":2},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/selected-four-20261029/runner/fixtures/fall-IDoCgF/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×2\n\nFEHLER GraphQL: fetch: synthetischer Lesefehler\n\nFEHLER Fehlgeschlagene Gegenprobe verhindert weitere Mutationen: Expected values to be strictly equal:\n\n2 !== 1\n\nFEHLER LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg: The input did not match the regular expression /\"uebersetzt\":1/. Input:\n\n'2026-10-28T23:51:07.526Z · material nachgetragen · 1 Produkte (Fehler 0) · Quellen {\"uebersetzt\":2}\\n'\n\n2 ok, 18 Fehler\n",
+    "after": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":1,\"ergebnis\":{\"geschrieben\":0,\"apiBestaetigt\":0,\"fehler\":2,\"unbekannt\":0,\"rueckgelesen\":0,\"abweichungen\":0,\"nichtBearbeitet\":0},\"ledger\":\"2026-10-28T23:51:05.925Z · material nachgetragen · 0 Produkte (Fehler 2) · Unbekannt 0 · Abweichungen 0 · Quellen {}\"}\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: null\nOK Definitiver Fehler beendet den Lauf vor späteren Stapeln\nOK Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt\nOK Unklare Antwort zählt keinen Erfolg: null\nOK Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste\nOK Unklare Antwort zählt keinen Erfolg: ohne-metafields\nOK Unklare Antwort zählt keinen Erfolg: zu-kurz\nOK Unklare Antwort zählt keinen Erfolg: falscher-key\nOK Unklarer Transport wird nicht wiederholt: netzfehler\nOK Unklarer Transport wird nicht wiederholt: http500\nOK Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung\nOK Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen\nOK Abweichende Rücklesung zählt nicht als bestätigtes Schreiben\nOK Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft\nOK Fehlgeschlagene Gegenprobe verhindert weitere Mutationen\nOK LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg\n20 ok, 0 Fehler\n"
+  },
+  "suiteLogs": {
+    "fortschritt": "ok Vereinigung zählt frühere Erfolge und aktuelle Kandidaten genau einmal\nok Fehlende Kandidatenliste ergibt unbekannten Nenner statt falscher 100 %\nok Unlesbare Kandidaten sind unbekannt; übrige Bereiche bleiben messbar\nok Fehlendes Ledger ist kein Null-Erfolg und liefert keinen vollständigen Pool\nok Leere vorhandene Quellen ergeben belegte Nullen\nok Leerer neuer Scan erhält schon nachgezogene Produkte im Pool\nok SKU-Geändert, Einvarianten-Skip und Fehler sind kein Auswahl-Erfolg\nok Beschädigtes Ledger ergibt unbekannt statt Teilzählung\nok Kandidat ohne Handle ergibt unbekannt statt Phantomprodukt\nok Fehlende weitere Ledger bleiben unbekannt, Auswahl unverändert\nok Fehlende oder beschädigte JSON-Daten blockieren keine unabhängigen Zahlen\nok Anmerkung bezeichnet Arbeitsvorrat und keine Katalog-Vollständigkeit\n12 ok, 0 Fehler\n",
+    "ci-simulation": "unshare: unshare failed: Operation not permitted\n",
+    "plan": "OK Neuer Trockenlauf sichert den Originalwert und sendet keine Mutation\nOK Abweichender Folge-Trockenlauf erhaelt bestehenden Plan bytegleich\nOK Leerer Folge-Trockenlauf kann den alten Rueckgaengig-Beleg nicht loeschen\nOK Identischer Trockenlauf bleibt wiederholbar ohne Planverlust\nOK LIVE-Attrappe nach identischem Trockenlauf respektiert LIMIT und alten Plan\nOK Abweichender LIVE-Plan blockiert vor der ersten Produktmutation\nOK Fortsetzung mit frischem Rest und neuem Pfad erhaelt beide Originalplaene\nOK Verschiedene Standardlaeufe benutzen eindeutige Pfade statt Ueberschreiben\nOK Nicht beschreibbarer Planpfad blockiert vor Produktmutation\nOK Manueller sauberer Materialwert bleibt erlaubt\nOK Manueller Override verwirft Seide (Imitat)\nOK Manueller Override verwirft Titanstahl\nOK Manueller Wert wird kanonisch statt ungeprueft uebernommen\nOK Manueller Wert darf einen bekannten Titelkonflikt nicht umgehen\nOK Manuelle Seide darf den belegten Imitat-Hinweis nicht umgehen\nOK Uebersetzung beachtet Imitat-Hinweis aus dem vorhandenen CJ-Cache\n16 ok, 0 Fehler\n",
+    "material": "material_test: 190 Prüfungen ok\n",
+    "batch": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":1,\"ergebnis\":{\"geschrieben\":0,\"apiBestaetigt\":0,\"fehler\":2,\"unbekannt\":0,\"rueckgelesen\":0,\"abweichungen\":0,\"nichtBearbeitet\":0},\"ledger\":\"2026-10-28T23:58:32.666Z · material nachgetragen · 0 Produkte (Fehler 2) · Unbekannt 0 · Abweichungen 0 · Quellen {}\"}\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: null\nOK Definitiver Fehler beendet den Lauf vor späteren Stapeln\nOK Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt\nOK Unklare Antwort zählt keinen Erfolg: null\nOK Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste\nOK Unklare Antwort zählt keinen Erfolg: ohne-metafields\nOK Unklare Antwort zählt keinen Erfolg: zu-kurz\nOK Unklare Antwort zählt keinen Erfolg: falscher-key\nOK Unklarer Transport wird nicht wiederholt: netzfehler\nOK Unklarer Transport wird nicht wiederholt: http500\nOK Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung\nOK Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen\nOK Abweichende Rücklesung zählt nicht als bestätigtes Schreiben\nOK Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft\nOK Fehlgeschlagene Gegenprobe verhindert weitere Mutationen\nOK LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg\n20 ok, 0 Fehler\n"
+  },
+  "workflowHunks": "--- a/.github/workflows/luxestyle-automation-tests.yml\n+++ b/.github/workflows/luxestyle-automation-tests.yml\n@@ -226,6 +226,9 @@\n           node automation/lib/sourcing_kandidaten_test.mjs\n           node automation/lib/top_kandidaten_test.mjs\n           node automation/auswahl_kandidaten_test.mjs\n+          node automation/fortschritt_daten_test.mjs\n+          node automation/material_plan_lauf_test.mjs\n+          node automation/material_batch_lauf_test.mjs\n           node automation/optionen_reparieren_test.mjs\n           node automation/lieferzeit_fortura_test.mjs\n           node automation/optionen_uebersetzen_test.mjs\n",
+  "independentReview": {
+    "runner": "Keine zusätzliche materielle Regression bei statischer Gegenlese des engen r1→r2-Patches gefunden. Keine weiteren Tests/Remote-/Shopcalls durch die Gegenlese. Offene Live-Voraussetzungen bleiben bestehen.",
+    "copy": "Drei Kerne und SEO ohne neue unbelegte Aussagen; Varianten/Preise und erhaltene Versand-/Rechtsblöcke gegengeprüft. Jade-Scope-Dokumentation korrigiert. Produktnamen und tatsächliche Lieferzuordnung bleiben vor Veröffentlichung zu prüfen."
+  }
+}
