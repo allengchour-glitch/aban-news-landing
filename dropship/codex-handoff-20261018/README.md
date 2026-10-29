@@ -1,5 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Morgen – Materialschutz r3 und Hängematten-SKU-Diff
+
+Neue Fortsetzung: [Materialschutz r3](MATERIAL-R3-20261029.md) prüft Vorwert/Typ und compareDigest gegen parallele Änderungen. 27 neue Fälle, insgesamt 253 tatsächlich geprüfte Offline-Fälle grün. Die unveränderten zwölf Fortschrittsfälle wurden nicht erneut gezählt. Alte API-Version unverändert, Versions-Fallback gesperrt; keine Live-Nutzung oder vollständige CI. [Reviewpaket r3](aufgaben/product-attribute-completeness.r3.packet.json) ist ein Delta auf r2 und erhält dessen Vorgängerhash.
+
+Für die [Hängematte liegt jetzt ein konkreter achtzeiliger Liquid-Diff vor](HAENGEMATTE-SKU-ENTWURF-20261029.md): nur 24 ungültige SKU-Auszeichnungen entfernen, alle Shopify-/CJ-SKUs und 33 Varianten erhalten. Referenztransformation/statische Prüfung belegt; nativer Render und Google-Prüfung offen. [Eigenes Prüfpaket](aufgaben/schema-hammock-15450856292737.r1.packet.json). Globale Rückgaberichtlinie beibehalten; aktuelle Google-Doku empfiehlt diese. Separater vorhandener Versand-Markupwert CHF40.50 bleibt ausserhalb des SKU-Diffs und ist gegen CHF50 abzugleichen.
+
+[Neue Ursprungsprüfung](PRODUKTQUELLEN-URSPRUNG-20261029.md): alte Jade-Roller-Referenz ist eine andere Produkt-ID, die eigene Diffuser-LX-SKU liefert keine CJ-pid. Echte Modell-/Lieferantenbelege fehlen weiterhin. Keine neue Katalogquote, Bestell-/Kennzahlabfrage oder zweite Anreicherung. Arbeitsstand Revision 5 erhält neun Aufgaben, Verkaufsziel und bestehenden Zeitplan. Claude-Kenntnisnahme/Übernahme unbestätigt.
+
+
 ## 29.10.2026 – vier Produktangaben, Material-Runner r2 und Verkaufsziel
 
 Neue gezielte Arbeit, keine Shop-/Feedänderung: vier ausgewählte Produkte mit Varianten, Bildern, CHF-Preisen und technischer Storefront-Kaufbarkeit geprüft; drei Beschreibung-/SEO-Diffs vorbereitet. Tech-Hero-Lieferumfang sowie Stein-/Material- und Bildzuordnung bleiben offen. [Konkrete Befunde und nächste Quellen](VIER-PRODUKTE-VERKAUFSGRUNDLAGEN-20261029.md) · [Vorher-/Nachher-Texte](VIER-PRODUKTE-TEXTDIFFS-20261029.json) · [begrenzte Belege](VIER-PRODUKTE-BELEGE-20261029.json).
