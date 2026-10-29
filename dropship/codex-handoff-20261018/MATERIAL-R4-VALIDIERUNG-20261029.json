@@ -1,0 +1,256 @@
+{
+  "results": {
+    "schemaVersion": 1,
+    "scope": "Final integrated r4 candidate, six affected suites; previous partial test counts are not added",
+    "passed": 159,
+    "failed": 0,
+    "runtime": "v24.19.0",
+    "runs": [
+      {
+        "name": "abschluss",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/material_abschluss_lauf_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/abschluss.log",
+        "summary": "41 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/abschluss",
+        "logSha256": "75c9db84992e9070c6623b7c7f50fbbe95c1f4fff79590696b2585bf4c4af400"
+      },
+      {
+        "name": "plan",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/material_plan_lauf_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/plan.log",
+        "summary": "16 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/plan",
+        "logSha256": "ebedfaa4e77130f32fe08b13784c6f5b6c603225e4d14f326412a5917498e838"
+      },
+      {
+        "name": "batch",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/material_batch_lauf_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/batch.log",
+        "summary": "20 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/batch",
+        "logSha256": "3f1aa3ae9109e11891fee799bab2b23a885e653156ec9f4fb38960da5dcc945c"
+      },
+      {
+        "name": "cas",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/material_cas_lauf_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/cas.log",
+        "summary": "27 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/cas",
+        "logSha256": "efbdf3b3c345404f95c1765e4813e8cbb768143dbf3e2e44365a21cdb34ca06b"
+      },
+      {
+        "name": "ledger",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/lib/material_write_ledger_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/ledger.log",
+        "summary": "44 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/ledger",
+        "logSha256": "1eabc46065b37faa308b73c855d2095c9afcf8a16784af5aa1424aa086677366"
+      },
+      {
+        "name": "ledger-binding",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "automation/lib/material_write_ledger_binding_test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "validation/ledger-binding.log",
+        "summary": "11 ok, 0 Fehler",
+        "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/integration/fixtures/ledger-binding",
+        "logSha256": "7f270a5562786fc1f08dc1c9b7bc2e60bcc7d99618226ccf1f40c85721627a22"
+      }
+    ],
+    "syntaxPatchChecks": [
+      {
+        "command": "node --check automation/material_nachtragen.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_plan_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_batch_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_cas_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_abschluss_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/lib/material_write_ledger.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/lib/material_write_ledger_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/lib/material_write_ledger_binding_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/lib/material_test_fixture.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": [
+          "git",
+          "apply",
+          "--check",
+          "/workspace/luxestyle-review/fix-all-20261029/material/integration/R3-ZU-R4-INTEGRIERT.patch"
+        ],
+        "exitCode": 0
+      },
+      {
+        "command": [
+          "git",
+          "apply",
+          "/workspace/luxestyle-review/fix-all-20261029/material/integration/R3-ZU-R4-INTEGRIERT.patch"
+        ],
+        "exitCode": 0
+      }
+    ],
+    "yamlParsed": true,
+    "allTenTargetsByteEqual": true,
+    "base": "material-r3-20261029/after unchanged",
+    "unchangedDependencies": [
+      "automation/lib/material.mjs",
+      "automation/lib/material_test.mjs",
+      "automation/lib/shopify_gql.mjs",
+      "automation/lib/shopify_host.mjs",
+      "automation/ci_simulation.sh"
+    ],
+    "apiVersion": "2026-10",
+    "schemaValidation": "Official documentation and current schema checked; connector skipped codeblock validation; no live operation",
+    "fullCi": "not repeated: unchanged environment blocker already evidenced today",
+    "independentReview": "Three ledger review findings corrected; review agent verified rejection before invalid claim and unchanged ledger; no production approval",
+    "deployment": "local_review_only_not_merged_not_deployed_not_executed_in_shop"
+  },
+  "manifest": {
+    "files": [
+      {
+        "path": "automation/material_nachtragen.mjs",
+        "beforeSha256": "cc6cca4f61a0ea1d9fe9cf2822b753943d599d4d8d4da68d1f2afef1f774c905",
+        "afterSha256": "af06b45507039d253f197878423bc20a6a06921447affcb90e2013e0f0fcec12",
+        "afterGitBlobSha": "85ff0f33d9ada9b9742474ad085fa6a373b766e5"
+      },
+      {
+        "path": "automation/material_plan_lauf_test.mjs",
+        "beforeSha256": "0fd0e23f6110c49478bcbe031d96bb820d34dbd85b4a6754b41dd65a4a0afe3e",
+        "afterSha256": "ae34bb1aeefb2abc811fd1fb4b62e7b698c5ea5bbdcd875791e977d875d16c1e",
+        "afterGitBlobSha": "f736cd5a658453a1c3315c8e3a5c3dbc282ee5d1"
+      },
+      {
+        "path": "automation/material_batch_lauf_test.mjs",
+        "beforeSha256": "80d4171f378169b4953e1d0d0284685a87c90bdde5f36920294cad2b2bc4c3c9",
+        "afterSha256": "2da51d8f963955ccbcea46ed82811fb2ecaa1544c6f6e8a0966d7ebd87d05259",
+        "afterGitBlobSha": "ac23efbc28995a9846734e74f2beb96ba652cbf8"
+      },
+      {
+        "path": "automation/material_cas_lauf_test.mjs",
+        "beforeSha256": "6180500ecff5c4a9827ac8208c7436e572a214c8e283ac83783b4023ab682167",
+        "afterSha256": "afd10932ef1171dbf63e4561665dbca24940c87c696c2a0e940ef5e0ddc8728e",
+        "afterGitBlobSha": "40cf96b8bb661fca70caa4e62e81710da56ab32f"
+      },
+      {
+        "path": "automation/material_abschluss_lauf_test.mjs",
+        "beforeSha256": null,
+        "afterSha256": "78c5bc22c0c9875372c36a7c11d008ba95bc8de33d8f7b16a202a4231b285e27",
+        "afterGitBlobSha": "f0ccb596136265042a9db86a8922b86b27612de2"
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "beforeSha256": "14590c99a75a59e7ee964dbb6db897442eeae6a40cb4f2a2ca1b504726c2fa01",
+        "afterSha256": "55657f4ad231fbffcd67e4bce176c2439a5f893482ce1dec58635cbcbadd81ae",
+        "afterGitBlobSha": "26fe2571fe3d5067ec047e8dd7bfb0b94f8a09d2"
+      },
+      {
+        "path": "automation/lib/material_write_ledger.mjs",
+        "beforeSha256": null,
+        "afterSha256": "bb5e1ee3066e48cf7de5a9e6864a00c88c051827deebdf0c7c5de4e70d5d46f4",
+        "afterGitBlobSha": "a7f180085d2940c8019784f34b0674205d2a4b73"
+      },
+      {
+        "path": "automation/lib/material_write_ledger_test.mjs",
+        "beforeSha256": null,
+        "afterSha256": "a3570555de463de0a61c7e50453fc98694204321409c40a7a47a3ddf40854808",
+        "afterGitBlobSha": "6d8ad00bdc223823cea847a0582a37d552e5692d"
+      },
+      {
+        "path": "automation/lib/material_write_ledger_binding_test.mjs",
+        "beforeSha256": null,
+        "afterSha256": "e387723b16ac210d18083fea7b116fd6e34e160e0b2da3449a4c24b5e03e5e25",
+        "afterGitBlobSha": "d713aa38935e05c13022b12314a50a55ddc85419"
+      },
+      {
+        "path": "automation/lib/material_test_fixture.mjs",
+        "beforeSha256": null,
+        "afterSha256": "b0e237e2f14bbdb3703d938f344c1e5afd6027c5e8a8b4e867fe4338a5639e92",
+        "afterGitBlobSha": "4f87e4588b0b2a3e7ce7d7abc2310d85e0f10aa0"
+      }
+    ],
+    "parts": [
+      {
+        "path": "CODEPAKET-R4-TEIL-1.json",
+        "bytes": 71383,
+        "sha256": "28a35145eed563c4e2701827f18ef86f604f0d14d1768487bc952c05766ab686"
+      },
+      {
+        "path": "CODEPAKET-R4-TEIL-2.json",
+        "bytes": 59863,
+        "sha256": "792e507cc2b65c7771e25b31c6f07a40de5a8c2037a70f27f6a5241a11bccbc8"
+      }
+    ],
+    "testsPassed": 159,
+    "sourceScope": "final integrated r4 from confirmed r3"
+  },
+  "logs": {
+    "validation/abschluss.log": "OK Unterstützte API 2026-10 wird explizit angefordert\nOK Rücklesung fordert Wert und Typ an und bestätigt beide\nOK Passender Wert mit falschem Typ ist eine Abweichung\nOK Fehlender oder ungültiger Nachher-Typ bleibt unbekannt: fehlend\nOK Fehlender oder ungültiger Nachher-Typ bleibt unbekannt: null\nOK Typabweichung stoppt vor dem nächsten Stapel\nOK Unklarer Bulk-Start wird nicht wiederholt: netz\nOK Unklarer Bulk-Start wird nicht wiederholt: antwort-verloren\nOK Unklarer Bulk-Start wird nicht wiederholt: 429\nOK Unklarer Bulk-Start wird nicht wiederholt: 503\nOK Unklarer Bulk-Start wird nicht wiederholt: throttled\nOK Auch der Trockenlauf wiederholt einen unklaren Bulk-Start nicht\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: keine-fehlerliste\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: keine-id\nOK Unvollständiger oder abgelehnter Bulk-Start sperrt: fehler\nOK Paralleler jüngerer Job ersetzt nicht die eigene gestartete Bulk-ID\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: fehlend\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: fremde-id\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: ohne-status\nOK Unbekanntes oder fremdes Bulk-Ergebnis sperrt: ohne-url\nOK Inflight liegt vor dem Senden vor; bestätigte Werte und Typen stehen danach im Ledger\nOK Frische Marken-/Statusabweichung sperrt {\"shop\":\"https://andere-marke.ch\"}\nOK Frische Marken-/Statusabweichung sperrt {\"currency\":\"USD\"}\nOK Frische Marken-/Statusabweichung sperrt {\"shop\":\"https://luxestyle.ch/anderer-pfad\"}\nOK Frische Marken-/Statusabweichung sperrt {\"productStatus\":\"DRAFT\"}\nOK Frische Marken-/Statusabweichung sperrt {\"productStatus\":null}\nOK Unbestätigte echte Eingabebelege sperren: ohne-manifest\nOK Unbestätigte echte Eingabebelege sperren: keine-policy\nOK Unbestätigte echte Eingabebelege sperren: alt\nOK Unbestätigte echte Eingabebelege sperren: zukunft\nOK Unbestätigte echte Eingabebelege sperren: falscher-hash\nOK Unbestätigte echte Eingabebelege sperren: produkt-fehlt\nOK Unbestätigte echte Eingabebelege sperren: cj-geaendert\nOK Ungeklärtes Ledger bleibt gesperrt: fehlend\nOK Ungeklärtes Ledger bleibt gesperrt: kaputt\nOK Ungeklärtes Ledger bleibt gesperrt: gesperrt\nOK Unknown bleibt auch im zweiten Prozess ohne erneuten Send\nOK Trockenlauf ohne Quellenpolicy bleibt möglich und erfindet keine Prüfzeit\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"shop\":\"https://andere-marke.ch\"}\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"shop\":\"https://andere-marke.ch\",\"live\":false}\nOK Shop-/CHF-Gegenprobe sperrt bereits vor neuem Bulk-Start {\"currency\":\"USD\"}\n41 ok, 0 Fehler\n",
+    "validation/plan.log": "OK Neuer Trockenlauf sichert den Originalwert und sendet keine Mutation\nOK Abweichender Folge-Trockenlauf erhaelt bestehenden Plan bytegleich\nOK Leerer Folge-Trockenlauf kann den alten Rueckgaengig-Beleg nicht loeschen\nOK Identischer Trockenlauf bleibt wiederholbar ohne Planverlust\nOK LIVE-Attrappe nach identischem Trockenlauf respektiert LIMIT und alten Plan\nOK Abweichender LIVE-Plan blockiert vor der ersten Produktmutation\nOK Fortsetzung mit frischem Rest und neuem Pfad erhaelt beide Originalplaene\nOK Verschiedene Standardlaeufe benutzen eindeutige Pfade statt Ueberschreiben\nOK Nicht beschreibbarer Planpfad blockiert vor Produktmutation\nOK Manueller sauberer Materialwert bleibt erlaubt\nOK Manueller Override verwirft Seide (Imitat)\nOK Manueller Override verwirft Titanstahl\nOK Manueller Wert wird kanonisch statt ungeprueft uebernommen\nOK Manueller Wert darf einen bekannten Titelkonflikt nicht umgehen\nOK Manuelle Seide darf den belegten Imitat-Hinweis nicht umgehen\nOK Uebersetzung beachtet Imitat-Hinweis aus dem vorhandenen CJ-Cache\n16 ok, 0 Fehler\n",
+    "validation/batch.log": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":1,\"ergebnis\":{\"geschrieben\":0,\"apiBestaetigt\":0,\"fehler\":2,\"unbekannt\":0,\"rueckgelesen\":0,\"abweichungen\":0,\"vorherKonflikte\":0,\"vorherUnbekannt\":0,\"ledgerBlockiert\":0,\"ledgerFehler\":0,\"nichtBearbeitet\":0},\"ledger\":\"2026-10-29T06:40:23.572Z · material nachgetragen · 0 Produkte (Fehler 2) · Unbekannt 0 · Abweichungen 0 · Vorher-Konflikte 0 · Vorher-unbekannt 0 · Quellen {}\"}\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: null\nOK Definitiver Fehler beendet den Lauf vor späteren Stapeln\nOK Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt\nOK Unklare Antwort zählt keinen Erfolg: null\nOK Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste\nOK Unklare Antwort zählt keinen Erfolg: ohne-metafields\nOK Unklare Antwort zählt keinen Erfolg: zu-kurz\nOK Unklare Antwort zählt keinen Erfolg: falscher-key\nOK Unklarer Transport wird nicht wiederholt: netzfehler\nOK Unklarer Transport wird nicht wiederholt: http500\nOK Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung\nOK Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen\nOK Abweichende Rücklesung zählt nicht als bestätigtes Schreiben\nOK Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft\nOK Fehlgeschlagene Gegenprobe verhindert weitere Mutationen\nOK LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg\n20 ok, 0 Fehler\n",
+    "validation/cas.log": "OK Trockenlauf benötigt keinen Versions- oder Produktzugriff\nOK Unveränderter Wert sendet den frisch gelesenen Digest\nOK Sicher fehlendes Feld benutzt explizites null\nOK Bestehendes leeres Feld benutzt Digest statt null\nOK Frische Gegenprobe blockiert geänderter Wert\nOK Frische Gegenprobe blockiert gelöschtes Feld\nOK Frische Gegenprobe blockiert geänderter Typ\nOK Frische Gegenprobe blockiert Leerzeichen im Vorwert\nOK Geplante Neuanlage überschreibt keinen inzwischen vorhandenen Wert\nOK Unbekannte Vorherdaten sperren: fehlender Digest\nOK Unbekannte Vorherdaten sperren: leerer Digest\nOK Unbekannte Vorherdaten sperren: fehlender Typ\nOK Unbekannte Vorherdaten sperren: fehlender Wert\nOK Alter Rohstand ohne Typ ist keine Schreibfreigabe\nOK Fehlender Roh-Metafeldschlüssel ist nicht sicher abwesend\nOK Unvollständige Vorabantwort sperrt: fehlend\nOK Unvollständige Vorabantwort sperrt: null\nOK Unvollständige Vorabantwort sperrt: doppelt\nOK Unvollständige Vorabantwort sperrt: fremd\nOK Unvollständige Vorabantwort sperrt: ohne-m\nOK Unvollständige Vorabantwort sperrt: schemafehler\nOK Update-Race bleibt atomar abgelehnt\nOK Create-Race bleibt atomar abgelehnt\nOK Delete-Race bleibt atomar abgelehnt\nOK Typ-Race bleibt atomar abgelehnt\nOK Ungeklärte oder ersetzte API-Version sperrt: null\nOK Ungeklärte oder ersetzte API-Version sperrt: 2026-01\n27 ok, 0 Fehler\n",
+    "validation/ledger.log": "ok 1 - Fehlendes Ledger bleibt fehlend statt leerer Historie\nok 2 - Initialisierung verlangt ausdrücklichen Scope und Belege\nok 3 - Vorhandenes Ledger wird nicht neu initialisiert\nok 4 - Beschädigtes JSON wird nicht zurückgesetzt\nok 5 - Geänderte Nutzdaten mit alter Prüfsumme sperren\nok 6 - Relativer Ledger-Pfad sperrt\nok 7 - Symlink als Ledger sperrt\nok 8 - Defekter Symlink wird bei Initialisierung nicht ersetzt\nok 9 - Alte Sperrdatei bleibt erhalten und sperrt\nok 10 - Andere Shop-Identität sperrt\nok 11 - Produkt ausserhalb des initialisierten Scopes sperrt\nok 12 - Doppelte Produkt-ID im Stapel sperrt\nok 13 - Geändertes Stapelziel passt nicht zu alten Planbytes\nok 14 - Unbekannter Vorwert sperrt\nok 15 - Vorhandener typisierter Vorwert bleibt erhalten\nok 16 - Unpassender Vorwerttyp sperrt\nok 17 - Fehlende Quellenalter-Regel sperrt ohne Standardfrist\nok 18 - Abweichender Quellbytes-Hash sperrt\nok 19 - Fehlender Quellzeitpunkt bleibt unbekannt\nok 20 - Zukünftiger Quellzeitpunkt sperrt\nok 21 - Veraltete Quelle sperrt\nok 22 - Ausdrückliche Quellenalter-Grenze gilt einschliesslich\nok 23 - Falsche Quellen-Produkt-ID erfüllt den Stapel nicht\nok 24 - Erster Anspruch ist vor claimed_once gespeichert\nok 25 - Gleicher Plan beansprucht nicht erneut\nok 26 - Neue Planbytes verdecken offenen Produktanspruch nicht\nok 27 - Anderer Lauf beansprucht offenes Produkt nicht erneut\nok 28 - Ein überlappendes Produkt sperrt den ganzen Stapel\nok 29 - Getrennter Stapel innerhalb des Scopes kann beanspruchen\nok 30 - Fehlende typisierte Rücklesung sperrt Bestätigung\nok 31 - Gleicher Wert mit falschem Typ wird nicht bestätigt\nok 32 - Falsches Produkt wird nicht bestätigt\nok 33 - Doppelte Rücklese-IDs erfüllen den Stapel nicht\nok 34 - Wert und Typ aller Stapeleinträge bestätigt\nok 35 - Bestätigtes Produkt wird mit geändertem Plan nicht neu gesendet\nok 36 - Unbekannt nach Antwortverlust bleibt erhalten und sperrt neuen Send\nok 37 - Unbekannt wird nicht wieder inflight\nok 38 - Unbekannt nur durch neue typisierte Rücklesung abgleichen\nok 39 - Definitive atomare Ablehnung verlangt userErrors\nok 40 - Veraltete Kontrollpunktrevision sperrt\nok 41 - Falsches Anspruchstoken sperrt\nok 42 - Änderung am Rückgabeobjekt verändert Datenträger nicht\nok 43 - Neuer echter Prozess sieht bestehenden inflight-Anspruch\nok 44 - Zwei echte parallele Prozesse erzeugen höchstens einen neuen Anspruch\n44 ok, 0 Fehler\n",
+    "validation/ledger-binding.log": "ok - Frische andere Quelle erfüllt den alten Materialplan nicht\nok - Fehlender Planbeleg blockiert\nok - Andere Referenz trotz gleichem Hash blockiert\nok - Andere Quellzeit trotz gleichem Inhalt blockiert\nok - Zusatzfeld im Vorwert blockiert vor Speicherung\nok - Neu gehashter falscher Endzustand ohne Historie blockiert\nok - Neu gehashte falsche Revisionszahl blockiert\nok - Neu gehashter falscher Quellenowner blockiert\nok - Neu gehashte bestätigte Ausgabe mit falschem Typ blockiert\nok - Neu gehashte unzulässige Historienfolge blockiert\nok - Ursprünglicher Unknown-Grund bleibt nach Bestätigung erhalten\n11 ok, 0 Fehler\n"
+  },
+  "workflowHunk": "diff --git a/.github/workflows/luxestyle-automation-tests.yml b/.github/workflows/luxestyle-automation-tests.yml\n--- a/.github/workflows/luxestyle-automation-tests.yml\n+++ b/.github/workflows/luxestyle-automation-tests.yml\n@@ -230,6 +230,9 @@\n           node automation/material_plan_lauf_test.mjs\n           node automation/material_batch_lauf_test.mjs\n           node automation/material_cas_lauf_test.mjs\n+          node automation/material_abschluss_lauf_test.mjs\n+          node automation/lib/material_write_ledger_test.mjs\n+          node automation/lib/material_write_ledger_binding_test.mjs\n           node automation/optionen_reparieren_test.mjs\n           node automation/lieferzeit_fortura_test.mjs\n           node automation/optionen_uebersetzen_test.mjs\n",
+  "review": {
+    "root": "final runner diff and workflow hunk inspected; no further material defect found",
+    "independent": "Three independently reproduced ledger defects corrected and rechecked; no production approval",
+    "beforeRegression": {
+      "name": "abschluss-before",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "automation/material_abschluss_lauf_test.mjs",
+        "/workspace/luxestyle-review/fix-all-20261029/material/before/automation/material_nachtragen.mjs"
+      ],
+      "exitCode": 1,
+      "log": "validation/abschluss-before.log",
+      "summary": "1 ok, 19 Fehler",
+      "fixturePath": "/workspace/luxestyle-review/fix-all-20261029/material/fixtures/abschluss-before"
+    }
+  }
+}
