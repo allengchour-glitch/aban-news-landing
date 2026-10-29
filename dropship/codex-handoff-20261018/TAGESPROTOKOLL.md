@@ -560,3 +560,21 @@ Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten T�
 [LUXESTYLE_SYNC_VARIANTEN_20261029] [Prüfbericht](SYNC-VARIANTEN-PRUEFUNG-20261029.md), [Review](SYNC-VARIANTEN-REVIEW-20261029.md), [Belege](SYNC-VARIANTEN-BELEGE-20261029.json). Heutige Tabelle ergänzt, Historie und Kaufziel erhalten.
 
 [LUXESTYLE_VOLLBILD_EDITOR_20261029] [Vorschau](https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio). Neue Aufgabe `personalizer-fullscreen-20261029`, Revision15; bestehende Tagestabelle und Historie erhalten. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage.
+
+
+## 30.10.2026
+
+Fortsetzung nach Mitternacht in Europe/Zurich, Arbeitsstand-Revision16. Die am29.10. gelesenen Produkt-/Printful-Belege werden datiert weiterverwendet; keine erneute Katalogvollmessung oder Tagesreportabfrage.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Blanko-Auswahl | Auf die Inhaberkorrektur positive Produktauswahl und Kategorien für den lokalen Vorschauentwurf ausgearbeitet; belegte Quellen ausgewertet | VORBEREITET/GEMESSEN: 31 geeignete Produkte aus32; Bügeltransfer ohne POD-Zuordnung ausgeschlossen. Fünf vorhandene Unterkategorien geprüft; keine gemischten King-/Queen-/Standardmotivprodukte als leere Vorlagen freigegeben |
+| Varianten / Farben | Tatsächliche Farb-/Grössennamen und drei Quellenfarbwerte für15 gemappte T-Shirt-Varianten in die Vorbereitung übernommen | QUELLENGEBUNDENER ENTWURF: keine neuen Shopvarianten, Preise oder Materialoptionen erzeugt; nur tatsächlich vorhandene Kombinationen |
+| Selbstgestalten-Kategorie / Theme | Eigene gestaltete Kategorie und Desktop-/Mobilnavigation im bestehenden Vorschau-Theme umgesetzt;15 Dateien gespeichert und zurückgelesen | UMGESETZT IM UNVERÖFFENTLICHTEN THEME:14 exakt+1JSON semantisch,3 geschützte Dateien hashgleich,18 Rückleseprüfungen bestanden. MAIN 212656488839/UNPUBLISHED212752499079 erhalten; keine Veröffentlichung |
+| Native Funktionsprüfung | Katalog, Kategorie, Navigation und Variantenwechsel nativ geprüft | GEMESSEN:37 neue Prüfungen bestanden,19 Katalog+18 Kategorie; historische r15-Tests getrennt. Picker11/12/8=31IDs, Kategorie12/12/7;3 echte Hero-Bilder, 31Karten/12initial sichtbar, 1440/390px ohne Überlauf. Read-only-Test blockierte Nicht-GET-Analyseaufrufe; keine globale Fehlerfreiheitsbehauptung |
+| Variantenfoto / Einschränkung | Echte Navy/2XL-Auswahl und Erhalt über Editor-Schritte geprüft; allgemeines Referenzfoto abgegrenzt | GEMESSEN/BLOCKER: kein passendes aktuelles Navy-Foto. Weisses allgemeines Referenzfoto ist keine farbgetreue Vorschau; nächster Quellenschritt: passendes echtes Blankfoto |
+| Printful-Katalog / Flächen | Quellenstand29.10. mit571 Stammsätzen sowie Details71 und 390 für die weitere Auswahl dokumentiert | GEMESSENE QUELLEN:71=628Varianten/84Farben,390=7Varianten. Kein vollständiges Shopangebot behauptet. CORS fehlt; Template-/Printfile-GET390 HTTP401, Druckgeometrie unbekannt |
+| Originaleditor / EDM | Inhaberbestätigung der Freischaltung aufgenommen; lokale Integrationsvorbereitung mit 11 isolierten Offlineprüfungen geprüft | INHABERANGABE/GEPRÜFTER ENTWURF: technische Token-/Serverbindung und Templates bleiben offen; kein Originaleditor oder Bestellfluss live. Nächster Schritt: Inhaberbeurteilung und legitime serverseitige EDM-Gegenprobe |
+| Projektgedächtnis / Reviewartefakte | Vier Reviewartefakte erstellt und exakt zurückgelesen; vier kanonische r16-Dokumentationsentwürfe lokal finalisiert | ARTEFAKTE GESICHERT; kanonische Dokumentation weiterhin zur SHA-gebundenen Fortschreibung. Alle16Tasks, Historie, Kaufziel und Zeitplan erhalten; keine Claude-Kenntnisnahme behauptet |
+
+[LUXESTYLE_BLANK_KATALOG_20261030] [BLANK-KATALOG-20261030.md](BLANK-KATALOG-20261030.md) · [BLANK-KATALOG-BELEGE-20261030.json](BLANK-KATALOG-BELEGE-20261030.json) · [BLANK-KATALOG-THEME-20261030.patch](BLANK-KATALOG-THEME-20261030.patch) · [PRINTFUL-EDM-VORBEREITUNG-20261030.patch](PRINTFUL-EDM-VORBEREITUNG-20261030.patch). Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Claude-Kenntnisnahme behauptet.
