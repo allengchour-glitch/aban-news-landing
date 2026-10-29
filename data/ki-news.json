@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-28T10:32:41Z",
+ "stand": "2026-10-29T10:52:13Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Reicht schon ein Macbook mit M1? Diese Hardware brauchst du für lokale KI",
-   "u": "https://t3n.de/news/lokale-ki-modelle-mac-pc-grafikkarte-hardware-voraussetzungen-1760193/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Teure „Power einer neuen Ära“: Apples 33.329-Euro-Mac-Studio ist da",
+   "u": "https://www.heise.de/news/Teure-Power-einer-neuen-Aera-Apples-33-329-Euro-Mac-Studio-ist-da-11504379.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-29T10:32:00Z",
+   "s": "Wie von Apple angekündigt kann man nun den wohl teuersten Mac aller Zeiten erwerben. Hauptzielgruppe: Anwender lokaler KI.",
+   "sprache": "de"
+  },
+  {
+   "t": "Milliarden für KI, enttäuschende Umsätze: Alphabet gerät unter Druck",
+   "u": "https://t3n.de/news/milliarden-fuer-ki-enttaeuschende-umsaetze-alphabet-geraet-unter-druck-1770561/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-28T10:00:00Z",
-   "s": "KI-Modelle lokal auf dem Computer zu betreiben, bringt einen entscheidenden Vorteil: Eure Daten bleiben bei euch. Doch nicht jedes Modell läuft auf jedem Endgerweiterlesen auf t3n.de",
+   "d": "2026-10-29T10:30:06Z",
+   "s": "Während Milliarden in den Ausbau künstlicher Intelligenz fließen, bleiben die erhofften Erträge bislang aus. Unter Anlegern wachsen die Zweifel, ob sich diese hohen KI-Investitionen wirklich auszahlen…",
    "sprache": "de"
   },
   {
-   "t": "Legora is building the agentic operating system for legal work",
-   "u": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
-   "q": "OpenAI",
-   "d": "2026-10-28T09:30:00Z",
-   "s": "See how Legora uses OpenAI models, ChatGPT, and Codex to accelerate legal workflows, expand contract analysis, and free lawyers to focus on higher-value work.",
+   "t": "We urgently need to monitor AI agents’ actions in real time",
+   "u": "https://www.technologyreview.com/2026/10/29/1147824/monitor-ai-agents-actions-real-time/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-29T10:11:12Z",
+   "s": "This summer, hundreds of OpenAI agents tried to cheat on a cybersecurity test. They broke out of their test environment and successfully hacked Hugging Face, a site that they believed held clues about…",
    "sprache": "en"
   },
   {
-   "t": "heise+ | Vibe-Coding statt Abo-Falle: Wie KI Adobe & Microsoft Konkurrenz macht",
-   "u": "https://www.heise.de/hintergrund/Vibe-Coding-statt-Abo-Falle-Wie-KI-Adobe-Microsoft-Konkurrenz-macht-11497499.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "Wenn Werbung schützt: So nutzen Non-Profits KI als ethisches Werkzeug",
+   "u": "https://t3n.de/news/werbung-non-profit-ki-ethik-1770529/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-29T10:00:50Z",
+   "s": "Künstliche Intelligenz soll Marketing vor allem schneller, günstiger und effizienter machen. Doch vor allem für Non-Profit-Organisationen eröffnet KI eine weiteweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: iX-Workshop: Mehr Tempo beim Coding – mit KI-Assistenten effizient programmieren",
+   "u": "https://www.heise.de/news/iX-Workshop-Mehr-Tempo-beim-Coding-mit-KI-Assistenten-effizient-programmieren-11480226.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-28T09:30:00Z",
-   "s": "Mithilfe von KI schießen Klone großer Software aus dem Boden, Chatbots übernehmen deren Aufgaben direkt selbst. Doch ist das überhaupt sinnvoll? Eine Analyse.",
+   "d": "2026-10-29T09:00:00Z",
+   "s": "Erfahren Sie, wie Sie produktiv mit KI-Assistenten programmieren und lernen Sie die Stärken und Schwächen der Tools für den Einsatz in eigenen Projekten kennen.",
    "sprache": "de"
   },
   {
-   "t": "Google Genie 4: KI-Simulator für interaktive 3D-Umgebungen wird realistischer",
-   "u": "https://www.heise.de/news/Google-Genie-4-KI-Simulator-fuer-interaktive-3D-Umgebungen-wird-realistischer-11502733.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-28T09:03:00Z",
-   "s": "Googles Genie 4 erzeugt interaktive KI-Welten mit Ton und Sprache. Gemini verbessert die Simulation, doch die Technologie bleibt experimentell.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Boom: Fujifilm investiert massiv in Magnetbandproduktion",
-   "u": "https://www.golem.de/news/ki-boom-fujifilm-investiert-massiv-in-magnetbandproduktion-2610-214580.html",
+   "t": "Justiz: Englands oberster Zivilrichter wirbt für KI-Urteile",
+   "u": "https://www.golem.de/news/justiz-englands-oberster-zivilrichter-plaediert-fuer-mehr-ki-vor-gericht-2610-214622.html",
    "q": "Golem",
-   "d": "2026-10-28T08:50:02Z",
-   "s": "Fujifilm will seine Produktionskapazitäten von Magnetspeicher stark ausbauen - Grund ist eine KI-getriebene hohe Nachfrage. (Fujifilm, KI)",
+   "d": "2026-10-29T08:23:01Z",
+   "s": "Geoffrey Vos, Englands ranghöchster Zivilrichter, entfacht eine Debatte über KI-Urteile bei einfachen Fällen. Er hat bereits Erfahrung gesammelt. (KI, Politik)",
    "sprache": "de"
   },
   {
-   "t": "Google Deepmind: Genie 4 baut Welten mit Ton und lässt sich live umbauen",
-   "u": "https://www.golem.de/news/google-deepmind-genie-4-baut-welten-mit-ton-und-laesst-sich-live-umbauen-2610-214579.html",
+   "t": "Kurswechsel: Millionenschweres KI-Projekt für geschlossenes Playmobil-Werk",
+   "u": "https://www.golem.de/news/kurswechsel-millionenschweres-ki-projekt-fuer-geschlossenes-playmobil-werk-2610-214619.html",
    "q": "Golem",
-   "d": "2026-10-28T08:17:02Z",
-   "s": "Google Deepmind startet Genie 4 als Research-Preview. Das Weltmodell erzeugt Ton und folgt Textbefehlen live. (Deepmind, KI)",
+   "d": "2026-10-29T07:21:02Z",
+   "s": "Auf dem früheren Playmobil-Gelände in Dietenhofen sollen Rechenzentren entstehen. Sie sind vor allem für KI-Anwendungen vorgesehen. (Rechenzentrum, KI)",
    "sprache": "de"
   },
   {
-   "t": "VCs will make billions on Anthropic’s IPO, but Amazon is set to make much (much) more",
-   "u": "https://techcrunch.com/2026/10/27/vcs-will-make-billions-on-anthropics-ipo-but-amazon-is-set-to-make-much-much-more/",
+   "t": "Microsoft just shared Azure’s actual revenue in dollars: $33.2 billion",
+   "u": "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/",
    "q": "TechCrunch AI",
-   "d": "2026-10-28T01:15:28Z",
-   "s": "Massive note conversions reveal the true extent of Amazon's ownership in Anthropic.",
+   "d": "2026-10-28T21:58:32Z",
+   "s": "Microsoft has never disclosed Azure's quarterly revenue in dollars. But for the first time, we can see just how close it is getting to besting the biggest competitor in the market, AWS.",
    "sprache": "en"
   },
   {
-   "t": "Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication",
-   "u": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+   "t": "Google expands AI Search ads globally as core ad growth slows",
+   "u": "https://techcrunch.com/2026/10/28/google-expands-ai-search-ads-globally-as-core-ad-growth-slows/",
    "q": "TechCrunch AI",
-   "d": "2026-10-27T23:34:27Z",
-   "s": "A family is suing OpenAI, saying ChatGPT coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in February.",
+   "d": "2026-10-28T21:48:37Z",
+   "s": "The announcement came alongside parent company Alphabet's third-quarter earnings report, which saw revenue grow 25% year over year to $127.6 billion.",
    "sprache": "en"
   },
   {
-   "t": "Build specialized multimodal models with LFM3",
-   "u": "https://huggingface.co/blog/LiquidAI/lfm3",
-   "q": "Hugging Face",
-   "d": "2026-10-27T17:16:52Z",
-   "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "Can we trust LLMs to judge whether a research idea is novel?",
-   "u": "https://huggingface.co/blog/allenai/novelty-bench",
-   "q": "Hugging Face",
-   "d": "2026-10-27T16:12:42Z",
-   "s": "",
+   "t": "Creating AI value with enterprise context",
+   "u": "https://www.technologyreview.com/2026/10/28/1147709/creating-ai-value-with-enterprise-context/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-28T20:32:02Z",
+   "s": "Across a business, any number of AI platforms, systems, and tools may be at work simultaneously—for example, AI-powered customer platforms, conversational assistants, and workflow and process automati…",
    "sprache": "en"
   }
  ]
