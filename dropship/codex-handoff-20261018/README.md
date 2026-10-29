@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Morgenlauf – Kaufziel offen, Quellen und Startvoraussetzungen geprüft
+
+[Morgenpaket](MORGENPAKET-20261029.md) · [kuratiertes Belegpaket](MORGENBELEGE-20261029.json) · [gleicher Master mit sechs Texten/UTMs](MASTER-STORYBOARD-20261029.md) · [Review](MORGEN-REVIEW-20261029.md).
+
+Shop und Metricool passen. Die aktuelle Kaufbaseline ist 23:48:36Z; bis 07:09:37Z wurden im vollständigen Fenster keine neuen Bestellungen gefunden. Frühere Definition und Prüfung bleiben historisch erhalten. Kampagne 24403263741 bleibt PAUSED; Gruppe, Anzeige und alle acht Keywordkriterien sind als ENABLED zurückgelesen. Kaufziele und Auto-Tagging bleiben ohne Zusatzbeleg offen. Keine Aktivierung oder Budgetänderung.
+
+16 bestehende Planobjekte mit 28 PENDING-Kanalzuständen sind unverändert, ohne exakte Doppelungen. Kennzahlen und Flowreport für 22.–28.10. wurden heute einmal gelesen; Teilreihen bleiben unbekannt. Die Preis-pro-Person-Klarstellung beim Pyjama ist öffentlich vorhanden, fünf Preise stimmen. Der [neue fremde Auswahl-Ledger](AUSWAHL-LEDGER-20261029.md) protokolliert 1’910 zusätzliche Erfolge, kumuliert 6’021. Daraus entsteht keine Material- oder Gesamtkatalogquote.
+
+Derselbe Master: fehlende Geräte-, Strom-, Kabel- und Netzteilbelege konkretisiert, eine Facebook-Caption neutral präzisiert; weiterhin keine freigegebene MP4. [Genau ein Welcome-Service-Diff](WELCOME-SERVICE-ENTWURF-20261029.diff) wurde auf Schweizer Standardversand präzisiert und bleibt Entwurf. Arbeitsstand Revision 7 erhält die bisherigen zehn Aufgaben samt Historie und ergänzt den bestehenden Ads-Startauftrag. Claude-Kenntnisnahme ist unbestätigt; der Zeitplan bleibt unverändert.
+
+
 ## 29.10.2026 – Textkorrektur umgesetzt, Materialschutz integriert
 
 [iPhone-Hülle: zwei Textfelder live korrigiert und frisch zurückgelesen](IPHONE-TEXT-UMSETZUNG-20261029.md). Pauschale SEO-Rückgabe-/Rabattaussagen und unpassende gemeinsame Einleitung entfernt; Editor, Ausführungszuordnung, Materialvergleich, Lieferung und Retourenblock bleiben erhalten. Keine neue Produktfunktion oder Preis-/Rabattänderung.
@@ -611,3 +622,4 @@ Weitere lokale Nachweise: `evening-check-20261018/ABENDPRUEFUNG.md` und `content
 ## Dokumentationsablage
 
 Root-`CLAUDE.md` und `SHARED-MEMORY.md` verlinken diese Übergabe auf demselben Dokumentationsbranch. Der alte feste Branch `claude/luxestyle-product-CizQ6` wurde nur lesend verglichen: 3271 Commits voraus und 2477 hinter dem geprüften main, mit zahlreichen anderen Änderungen. Er wird für diese Wissensübergabe weder zurückgesetzt noch pauschal gemergt. Die getrennte Ablage verhindert die Vermischung mit Runtime-/Queue-Änderungen. Ein Branch/PR ist nicht automatisch main oder ein Deployment.
+
