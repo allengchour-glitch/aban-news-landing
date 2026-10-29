@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 11,
-  "updatedAt": "2026-10-29T18:26:19.508486Z",
+  "revision": 12,
+  "updatedAt": "2026-10-29T20:27:19.652102+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -69,8 +69,8 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht.",
-      "nextAllowedStep": "Aktuellen vollständigen Attributdatensatz mit stabilen Produkt-/Varianten-IDs und echten modellbezogenen Quellen belegen; vorhandene Helfer/Exporte fortsetzen, keine Massenpagination oder geratenen Attribute. Das dokumentierte Quellen-Delta nur zusammen mit vollständiger vorhandener r1→r4-Kette prüfen, dann Voll-CI/Runtimegrant/Quellenaltersregel/dauerhaften gemeinsamen Ledger und konkreten begrenzten Produktscope nachweisen. Bereits bestätigte Produktwrites nicht wiederholen. Vor isoliertem Merchant-Push aktive Source-ID/Art und authentifizierten Writer belegen.",
+      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle.",
+      "nextAllowedStep": "Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -171,6 +171,21 @@
           "path": "dropship/codex-handoff-20261018/MATERIAL-QUELLENDELTA-PRUEFUNG-20261029.json",
           "gitBlobSha": "df2bc3ef9cfa75ba09fc68864ccf7603b3d20b3d",
           "readAt": "2026-10-29T18:26:19.508486Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIAL-GESAMT-20261029.md",
+          "gitBlobSha": "54aef1e20f51c8e727d48a9815aac75bd953977d",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIAL-GESAMT-BELEGE-20261029.json",
+          "gitBlobSha": "0a560ce7b91d801125bc128fb3478ff695368850",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHNEESTIEFEL-QUELLENABGLEICH-20261029.md",
+          "gitBlobSha": "e32d0c7ad63a0fca7efe69888f1649bd4c73ffb2",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -204,6 +219,11 @@
           "date": "2026-10-29",
           "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten. Neuer enger Inhaberauftrag: zwei bestehende Optionslabels und sieben vorhandene Werttexte am 29.10. live bereinigt; alle 13 Varianten-/SKU-/InventoryItem-Bindungen und Preise nativ/öffentlich erhalten. Kein Materiallauf oder Merchant-Push.",
           "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen. Für den bereits genehmigten Merchant-Push zuerst genau aktive Source-ID/Art und authentifizierten isolierten Writer belegen; Shopify-App-Quelle auf diese 13 Varianten prüfen, keine Neuanlage/Massenfreischaltung. Diese zwei Textkorrekturen nicht erneut als neue Anreicherung zählen."
+        },
+        {
+          "date": "2026-10-29",
+          "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht.",
+          "nextAllowedStep": "Aktuellen vollständigen Attributdatensatz mit stabilen Produkt-/Varianten-IDs und echten modellbezogenen Quellen belegen; vorhandene Helfer/Exporte fortsetzen, keine Massenpagination oder geratenen Attribute. Das dokumentierte Quellen-Delta nur zusammen mit vollständiger vorhandener r1→r4-Kette prüfen, dann Voll-CI/Runtimegrant/Quellenaltersregel/dauerhaften gemeinsamen Ledger und konkreten begrenzten Produktscope nachweisen. Bereits bestätigte Produktwrites nicht wiederholen. Vor isoliertem Merchant-Push aktive Source-ID/Art und authentifizierten Writer belegen."
         }
       ],
       "additionalProductCleanups": [
@@ -252,6 +272,20 @@
         "reviewPacketUnchanged": true,
         "mainChecked": "a74459a94a800b24d4b348332154d25f516920b8",
         "validation": "dropship/codex-handoff-20261018/MATERIAL-QUELLENDELTA-PRUEFUNG-20261029.json",
+        "claudeReceipt": "unknown"
+      },
+      "completeIntegration": {
+        "path": "dropship/codex-handoff-20261018/MATERIAL-GESAMT-20261029.patch",
+        "gitBlobSha": "3b253c57247f8f931f7b763c36f11d58f66462cd",
+        "baseMain": "a74459a94a800b24d4b348332154d25f516920b8",
+        "targetPaths": 14,
+        "existingChecksPassed": 440,
+        "syntaxChecksPassed": 13,
+        "state": "local_review_only_not_deployed",
+        "fullCI": "unknown",
+        "node22": "unknown",
+        "reviewPacketUnchanged": true,
+        "helperSizeLimitUnchanged": true,
         "claudeReceipt": "unknown"
       }
     },
@@ -761,6 +795,46 @@
         "period": "2026-10-30/2026-11-05",
         "source": "current owner instruction; no reactivation authorised by this memory"
       }
+    },
+    {
+      "id": "merchant-missing-price-20261029",
+      "priority": 1,
+      "priorityKind": "SETZUNG",
+      "state": "blockiert",
+      "title": "8’327 exportierte Merchant-Preisfehler an der tatsächlichen Quelle eingrenzen",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN/QUELLE",
+      "lastEvidence": "Neue CSV vollständig lokal geprüft: 20’343 Zeilen/8’327 IDs; alle Preisfehler, 1’353 auch availability; ausschliesslich Free listings. CH 8’287 IDs, DE 40. Zwei native Produkte DRAFT mit positiven CHF-Preisen; öffentliche Handle-URLs leiten auf Kollektionen. Kein Nachweis der eingereichten Google-URL/Quelle oder einer Katalogquote. Exakter Merchant-Abruf ohne Antwort binnen45s, zweiter Upload über32MiB ungelesen.",
+      "nextAllowedStep": "Aktive Datenquelle/Art und eingereichte URL samt Rohpreis/Währung/availability/Verarbeitung für eine CH- und eine DE-Original-ID lesen; dann engen verantwortlichen Quelldiff prüfen. DRAFT/Sperren/Preise erhalten; keine Quellenlöschung oder Aktivierung auf Verdacht.",
+      "blockers": [
+        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen im CSV und im unbeantworteten Einzelabruf",
+        "Authentifizierter isolierter Merchant-Writer weiter unbekannt",
+        "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt"
+      ],
+      "acceptance": [
+        "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
+        "Korrektur behebt echte Rohfeld-/URL-/Zuordnungsursache ohne erfundene Preise/Verfügbarkeit",
+        "Frischer Diff, erlaubter enger Write und Artikelrücklesung; Google-Neuverarbeitung getrennt belegen"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREISDIAGNOSE-20261029.md",
+          "gitBlobSha": "886224622c5adf0c9318189443b1b32e7f95414d",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREISDIAGNOSE-BELEGE-20261029.json",
+          "gitBlobSha": "b181ef40d75f66a182140e5ee81ae870d5d7f679",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-PRUEFUNG-20261029.md",
+          "gitBlobSha": "9ca0929f45c1a537701732f1a5693d6f1b768f09",
+          "readAt": "2026-10-29T20:27:19.652102+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination"
     }
   ],
   "history": [
@@ -829,6 +903,12 @@
       "at": "2026-10-29T18:26:19.508486Z",
       "actor": "codex",
       "action": "Bestätigte Vormittagskorrekturen an zwei weiteren Produkten und exakten Katalogumfang nachgeführt; offenen Materialquellenschutz abends lokal abgeschlossen und unabhängig geprüft. Bestehenden Abendlauf mit frischen Identitäten, 12 Planobjekten/21 PENDING sowie engem Kaufzeitfenster bis 18:07:25Z durchgeführt; Kaufziel offen. Heutige Kennzahl-/Flowdaten wiederverwendet, selben Master um konkrete Textumbrüche präzisiert und genau eine bestehende Welcome-Freigabevorlage konsolidiert. Keine erneuten Produktwrites, neuen Posts, Materialläufe, Ads-/Shop-/Flowaktivierung oder Frequenzänderung."
+    },
+    {
+      "revision": 12,
+      "at": "2026-10-29T20:27:19.652102+00:00",
+      "actor": "codex",
+      "action": "Nach ausdrücklichem weiter Gesamtmaterialpatch lokal integriert und begrenzt geprüft; neuen Merchant-Screenshot/CSV als konkreten Anlass separat untersucht. Zwei DRAFT-Produkte mit Preisen und Kollektionsweiterleitung belegt; verantwortliche Google-Quelle noch unbekannt. Neue priorisierte Aufgabe mit Original-IDs/Quellen angelegt. Keine Geschäfts-Writes oder zusätzlichen Kennzahl-/Flow-/Bestellreports, alte Historie/Baseline und Reviewpakete erhalten."
     }
   ],
   "salesGoal": {
@@ -894,5 +974,4 @@
     ]
   }
 }
-
 
