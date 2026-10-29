@@ -1,0 +1,702 @@
+--- before/assets/luxe-category.css
++++ after/assets/luxe-category.css
+@@ -0,0 +1,6 @@
++.lx-category{--lxc-ink:#292725;--lxc-muted:#706c65;--lxc-line:#ded8cf;--lxc-taupe:#e9e2d7;color:var(--lxc-ink);background:#faf8f4;font-family:var(--font-body--family,Arial,sans-serif);padding:clamp(24px,4vw,64px) clamp(16px,5vw,80px) 48px;max-width:1800px;margin:auto;box-sizing:border-box}
++.lx-category *{box-sizing:border-box}.lx-category [hidden]{display:none!important}.lx-category a{color:inherit;text-decoration:none}.lx-category a:focus-visible,.lx-category button:focus-visible{outline:2px solid #63584a;outline-offset:5px}.lx-category button{font:inherit}.lxc-hero{display:grid;grid-template-columns:1fr 1.12fr;gap:clamp(28px,6vw,96px);align-items:center}.lxc-eyebrow{font-size:11px;line-height:1.4;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin:0 0 20px;color:var(--lxc-muted)}.lxc-hero h1{font-size:clamp(42px,5.4vw,84px);font-weight:400;letter-spacing:-.055em;line-height:1.02;margin:0;max-width:600px;text-wrap:balance}.lxc-intro{font-size:clamp(16px,1.35vw,20px);line-height:1.65;max-width:430px;margin:26px 0 28px;color:var(--lxc-muted)}.lxc-button{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;background:var(--lxc-ink);color:#fff!important;padding:17px 23px;border-radius:3px;font-size:14px;font-weight:600}.lxc-button span{font-size:20px}.lxc-preview-note{font-size:12px;color:var(--lxc-muted);line-height:1.6;margin:18px 0 0;max-width:380px}.lxc-hero-images{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:1fr 1fr;gap:14px;aspect-ratio:1.1}.lxc-hero-image{background:#eeeae3;position:relative;display:flex;overflow:hidden;align-items:center;justify-content:center;min-width:0;border-radius:4px}.lxc-hero-image--1{grid-row:span 2}.lxc-hero-image img{width:100%;height:100%;object-fit:contain;display:block;padding:14px;transition:transform .35s ease}.lxc-hero-image:hover img{transform:scale(1.025)}.lxc-hero-image span{position:absolute;left:16px;right:16px;bottom:12px;font-size:11px;line-height:1.4;color:#49453f;background:rgba(250,248,244,.9);padding:5px 7px;border-radius:2px}.lxc-process{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:29px 0;border-block:1px solid var(--lxc-line);margin:48px 0 68px}.lxc-process p{display:flex;align-items:center;gap:15px;margin:0;font-size:14px}.lxc-process span{font-size:11px;color:var(--lxc-muted);border:1px solid var(--lxc-line);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;flex-shrink:0}.lxc-products{scroll-margin-top:160px;outline:none}.lxc-collection-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:26px}.lxc-collection-heading .lxc-eyebrow{margin-bottom:12px}.lxc-collection-heading h2{font-size:clamp(29px,3.2vw,46px);font-weight:400;letter-spacing:-.035em;line-height:1.12;margin:0}.lxc-collection-heading>p{color:var(--lxc-muted);font-size:14px;line-height:1.6;max-width:310px;margin:0}.lxc-categories{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}.lxc-categories a{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--lxc-line);border-radius:30px;padding:11px 17px;font-size:13px;background:transparent;min-height:44px}.lxc-categories a[aria-current]{background:var(--lxc-ink);border-color:var(--lxc-ink);color:#fff}.lxc-categories a:hover{border-color:var(--lxc-ink)}.lxc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 22px}.lxc-card{display:flex;flex-direction:column;min-width:0}.lxc-card-image{display:flex;aspect-ratio:1;background:#eeebe5;overflow:hidden;border-radius:3px}.lxc-card-image img{width:100%;height:100%;object-fit:contain;padding:15px;transition:transform .25s ease}.lxc-card:hover .lxc-card-image img{transform:scale(1.025)}.lxc-card-info{display:flex;flex-direction:column;flex:1;padding-top:15px}.lxc-card h3{font-weight:500;font-size:16px;line-height:1.4;margin:0 0 8px;overflow-wrap:anywhere}.lxc-price{font-size:14px;margin:0 0 14px;letter-spacing:.01em}.lxc-price>span{font-size:12px;color:var(--lxc-muted)}.lxc-options{font-size:11px;line-height:1.6;color:var(--lxc-muted);display:grid;gap:3px}.lxc-option-name{display:block;color:#49453f;font-weight:500}.lxc-option-values{display:block;overflow-wrap:anywhere}.lxc-option-more{white-space:nowrap}.lxc-colors{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.lxc-colors:empty{display:none}.lxc-color{height:15px;width:15px;border-radius:50%;border:1px solid #bbb4aa;display:block}.lxc-card-cta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:600;margin-top:auto;padding-top:16px;min-height:46px}.lxc-card-cta span{font-size:18px}.lxc-unavailable{font-size:11px;color:var(--lxc-muted);line-height:1.5}.lxc-pagination{display:flex;justify-content:center;gap:22px;align-items:center;margin:42px 0 0;font-size:13px}.lxc-pagination button{border:1px solid var(--lxc-line);border-radius:3px;padding:12px 18px;background:transparent;color:var(--lxc-ink);cursor:pointer;min-height:44px}.lxc-pagination button:disabled{opacity:.35;cursor:default}.lxc-end-note{text-align:center;font-size:12px;line-height:1.6;color:var(--lxc-muted);margin:32px auto 0;max-width:580px}.lxc-empty{padding:30px 0;color:var(--lxc-muted)}
++@media(max-width:1099px){.lxc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.lxc-hero{gap:28px}.lxc-hero h1{font-size:clamp(42px,5.7vw,65px)}}
++@media(max-width:749px){.lx-category{padding:27px 16px 36px}.lxc-hero{grid-template-columns:minmax(0,1fr);gap:26px}.lxc-hero h1{font-size:clamp(42px,10vw,66px);max-width:550px}.lxc-eyebrow{margin-bottom:15px}.lxc-intro{margin:18px 0 20px;font-size:16px;max-width:480px}.lxc-preview-note{font-size:11px;max-width:360px;margin-top:12px}.lxc-hero-images{aspect-ratio:1.45;gap:10px}.lxc-hero-image img{padding:9px}.lxc-hero-image span{font-size:9px;left:8px;right:8px;bottom:8px;padding:3px 5px}.lxc-process{gap:12px;padding:20px 0;margin:28px 0 38px}.lxc-process p{font-size:11px;gap:7px;line-height:1.5;align-items:flex-start}.lxc-process span{height:23px;width:23px;font-size:9px}.lxc-collection-heading{display:block;margin-bottom:20px}.lxc-collection-heading h2{font-size:32px}.lxc-collection-heading>p{margin-top:12px;font-size:13px}.lxc-categories{gap:7px;margin-bottom:23px}.lxc-categories a{font-size:12px;padding:9px 13px}.lxc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 12px}.lxc-card-image img{padding:10px}.lxc-card h3{font-size:13px}.lxc-price{font-size:13px;margin-bottom:10px}.lxc-card-info{padding-top:12px}.lxc-options{font-size:10px}.lxc-card-cta{font-size:11px;padding-top:11px}.lxc-pagination{gap:12px;font-size:12px;margin-top:28px}.lxc-pagination button{padding:11px 13px}.lxc-products{scroll-margin-top:135px}}
++.lxc-hero--text-only{grid-template-columns:minmax(0,1fr)}.lxc-option-more summary{cursor:pointer;display:list-item;padding:5px 0;white-space:normal;min-height:28px}.lxc-option-more[open] .lxc-option-values{margin:3px 0 6px}
++@media(prefers-reduced-motion:reduce){.lxc-hero-image img,.lxc-card-image img{transition:none}}
+--- before/assets/luxe-studio-catalog.css
++++ after/assets/luxe-studio-catalog.css
+@@ -25,6 +25,15 @@
+ .lsc-card-body { padding: 15px 15px 0; display: flex; flex-direction: column; flex: 1; gap: 8px; }
+ .lsc-card h3 { margin: 0; color: #282520; font: 600 15px/1.4 Arial,Helvetica,sans-serif; overflow-wrap: anywhere; }
+ .lsc-card-options { margin: 0; color: #777066; font-size: 12px; line-height: 1.5; }
++.lsc-card-facts { min-width: 0; margin: 2px 0; }
++.lsc-fact-label { margin: 0 0 6px; color: #5d564d; font: 600 11px/1.4 Arial,Helvetica,sans-serif; }
++.lsc-color-list,.lsc-size-list { display: flex; flex-wrap: wrap; gap: 5px 7px; margin: 0; padding: 0; list-style: none; }
++.lsc-color-chip { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; color: #625b52; font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
++.lsc-color-swatch { display: inline-block; flex: 0 0 15px; width: 15px; height: 15px; border: 1px solid #0003; border-radius: 4px; }
++.lsc-size-list li { min-width: 25px; padding: 3px 5px; border: 1px solid #e1dbd1; border-radius: 5px; color: #625b52; font-size: 11px; line-height: 1.3; text-align: center; overflow-wrap: anywhere; }
++.lsc-more-colors { margin-top: 6px; }
++.lsc-more-colors summary { min-height: 30px; display: list-item; width: fit-content; max-width: 100%; padding: 6px 0; color: #5d564d; font-size: 11px; cursor: pointer; }
++.lsc-more-colors summary:focus-visible { outline: 3px solid #8c7256; outline-offset: 3px; }
+ .lsc-card-price { margin: auto 0 0; padding-top: 6px; font-weight: 700; font-size: 14px; }
+ .lsc-card .lsc-button { margin-top: 4px; width: 100%; }
+ .lsc-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 26px; border-top: 1px solid #e2ddd5; background: #fbfaf7; }
+--- before/assets/luxe-studio-catalog.js
++++ after/assets/luxe-studio-catalog.js
+@@ -12,6 +12,16 @@
+       .filter(o=>o&&typeof o.name==='string'&&Array.isArray(o.values)&&!(o.name==='Title'&&o.values.length===1&&o.values[0]==='Default Title'))
+       .map(o=>o.name+': '+o.values.slice(0,3).map(String).join(', ')+(o.values.length>3?' …':''))
+       .join(' · ');
++  }
++  function catalogProductFacts(product){
++    const options=(Array.isArray(product.options)?product.options:[]).filter(o=>o&&typeof o.name==='string'&&Array.isArray(o.values));
++    const isColor=o=>/^(farbe|farben|color|colors|colour|colours)$/i.test(o.name);
++    const isSize=o=>/^(grösse|grössen|größe|größen|size|sizes)$/i.test(o.name);
++    const texts=values=>[...new Set(values.filter(v=>typeof v==='string'&&v.trim()).map(v=>v.trim()))];
++    const sizes=texts(Array.isArray(product.sizes)&&product.sizes.length?product.sizes:options.filter(isSize).flatMap(o=>o.values));
++    const colorSource=Array.isArray(product.colors)&&product.colors.length?product.colors:options.filter(isColor).flatMap(o=>o.values.map(name=>({name})));
++    const colors=colorSource.filter(c=>c&&typeof c.name==='string'&&c.name.trim()).map(c=>({name:c.name.trim(),hex:typeof c.hex==='string'&&/^#[a-f\d]{6}$/i.test(c.hex)?c.hex:null}));
++    return {sizes,colors,material:typeof product.material==='string'?product.material.trim():'',otherOptions:options.filter(o=>!isColor(o)&&!isSize(o))};
+   }
+   function pathAllowed(path,type){
+     if(type==='search')return /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?search\/?$/i.test(path);
+@@ -34,10 +44,10 @@
+   function mount(root){
+     if(root.dataset.luxeCatalogReady)return;
+     const dataNode=root.querySelector('[data-luxe-studio-data]');let data;try{data=JSON.parse(dataNode?.textContent||'null');}catch{return;}if(!data)return;
+-    const firstUrl=urlFor(data.catalogUrl,'collection');if(!firstUrl)return;
++    const firstUrl=urlFor(data.catalogUrl,'collection');if(!firstUrl||!/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?collections\/selbst-gestalten-1\/?$/i.test(firstUrl.pathname))return;
+     root.dataset.luxeCatalogReady='true';
+-    const locale=String(data.locale||document.documentElement.lang||'de');const labels=Object.assign({},locale.toLowerCase().startsWith('en')?EN:DE,data.catalogLabels||{});
+-    const collectionChoices=(Array.isArray(data.catalogCollections)?data.catalogCollections:[]).map(c=>({title:String(c.title||''),url:urlFor(c.url,'collection')})).filter(c=>c.title&&c.url);
++    const locale=String(data.locale||document.documentElement.lang||'de');const english=locale.toLowerCase().startsWith('en');const labels=Object.assign({},english?EN:DE,english?{colors:'Colours',moreColors:'More colours',sizes:'Sizes',material:'Material'}:{colors:'Farben',moreColors:'Weitere Farben',sizes:'Grössen',material:'Material'},data.catalogLabels||{});
++    const collectionChoices=(Array.isArray(data.catalogCollections)?data.catalogCollections:[]).map(c=>({title:String(c.title||''),url:urlFor(c.url,'collection')})).filter(c=>c.title&&c.url&&/\/(?:selbst-gestalten-1|sg-bekleidung|sg-taschen|sg-wohnen|sg-trinken|sg-accessoires)\/?$/.test(c.url.pathname));
+     if(!collectionChoices.some(c=>c.url.pathname===firstUrl.pathname))collectionChoices.unshift({title:labels.all,url:firstUrl});
+     const searchUrl=urlFor(data.catalogSearchUrl||'/search','search');
+     let selectedCollection=firstUrl,activeTerm='',pageNumber=1,responseData=null,opener=null,controller=null,sequence=0;
+@@ -59,14 +69,23 @@
+         const card=create('article','lsc-card');const photo=create('div','lsc-card-photo');const source=imageUrl(product.image);
+         if(source){const img=create('img');img.src=source;img.alt=String(product.image.alt||product.title);img.loading='lazy';img.width=480;img.height=480;img.addEventListener('error',()=>{photo.replaceChildren(create('span','lsc-card-options',labels.imageMissing));},{once:true});photo.append(img);}else photo.append(create('span','lsc-card-options',labels.imageMissing));card.append(photo);
+         const body=create('div','lsc-card-body');body.append(create('h3','',product.title));
+-        const summary=catalogOptions(product.options);if(summary)body.append(create('p','lsc-card-options',summary));
++        const facts=catalogProductFacts(product);
++        if(facts.colors.length){
++          const group=create('section','lsc-card-facts');group.setAttribute('aria-label',labels.colors);group.append(create('h4','lsc-fact-label',labels.colors));
++          const renderColors=colors=>{const list=create('ul','lsc-color-list');colors.forEach(color=>{const chip=create('li','lsc-color-chip');if(color.hex){const swatch=create('span','lsc-color-swatch');swatch.setAttribute('aria-hidden','true');swatch.style.backgroundColor=color.hex;chip.append(swatch);}chip.append(create('span','',color.name));list.append(chip);});return list;};
++          group.append(renderColors(facts.colors.slice(0,6)));
++          if(facts.colors.length>6){const more=create('details','lsc-more-colors');more.append(create('summary','',labels.moreColors+' ('+(facts.colors.length-6)+')'),renderColors(facts.colors.slice(6)));group.append(more);}body.append(group);
++        }
++        if(facts.sizes.length){const group=create('section','lsc-card-facts');group.setAttribute('aria-label',labels.sizes);group.append(create('h4','lsc-fact-label',labels.sizes));const list=create('ul','lsc-size-list');facts.sizes.forEach(size=>list.append(create('li','',size)));group.append(list);body.append(group);}
++        const summary=catalogOptions(facts.otherOptions);if(summary)body.append(create('p','lsc-card-options',summary));
++        if(facts.material)body.append(create('p','lsc-card-options',labels.material+': '+facts.material));
+         if(Number.isInteger(product.variantCount)&&product.variantCount>1)body.append(create('p','lsc-card-options',product.variantCount+' '+labels.variants));
+         body.append(create('p','lsc-card-price',(product.priceVaries?labels.from+' ':'')+price(product.price)));
+         const button=create('button','lsc-button lsc-button--primary',product.available?labels.choose:labels.unavailable);button.type='button';button.disabled=!product.available;button.setAttribute('aria-label',(product.available?labels.choose:labels.unavailable)+' · '+product.title);
+         button.addEventListener('click',()=>{const target=urlFor(product.url,'product');if(!target)return;previewParams(target,'luxe-studio');const event=new CustomEvent('luxe:product-navigation',{detail:{url:target.href},bubbles:true,cancelable:true});root.dispatchEvent(event);if(!event.defaultPrevented)status.textContent=labels.navigationMissing;});body.append(button);card.append(body);grid.append(card);
+       });setBusy(false);
+     }
+-    function validResponse(r){return r&&r.schemaVersion===1&&r.scope===(activeTerm?'luxestyle_public_personalizable_search_results':'luxestyle_public_personalizable_collection')&&(!activeTerm||r.matchMode==='all_terms_in_product_title')&&Array.isArray(r.products)&&r.products.length<=12&&Number.isInteger(r.page)&&r.page===pageNumber&&typeof r.hasNext==='boolean'&&typeof r.hasPrevious==='boolean'&&r.products.every(p=>p&&typeof p.title==='string'&&(!activeTerm||activeTerm.toLowerCase().split(' ').every(term=>p.title.toLowerCase().includes(term)))&&Number.isFinite(p.price)&&p.price>=0&&typeof p.available==='boolean'&&urlFor(p.url,'product'));}
++    function validResponse(r){return r&&r.schemaVersion===2&&r.scope===(activeTerm?'luxestyle_verified_blank_search_results':'luxestyle_verified_blank_collection')&&(!activeTerm||r.matchMode==='all_terms_in_product_title')&&Array.isArray(r.products)&&r.products.length<=12&&Number.isInteger(r.page)&&r.page===pageNumber&&typeof r.hasNext==='boolean'&&typeof r.hasPrevious==='boolean'&&r.products.every(p=>p&&p.blankEligible===true&&p.blankContract==='blank-collection-20261029-v1'&&typeof p.title==='string'&&(!activeTerm||activeTerm.toLowerCase().split(' ').every(term=>p.title.toLowerCase().includes(term)))&&Number.isFinite(p.price)&&p.price>=0&&typeof p.available==='boolean'&&urlFor(p.url,'product'));}
+     async function load(force=false){
+       controller?.abort();controller=new AbortController();const run=++sequence;const key=(activeTerm?'search:'+activeTerm:selectedCollection.pathname)+'#'+pageNumber;
+       if(!force&&cache.has(key)){responseData=cache.get(key);render();return;}
+--- before/blocks/_header-menu.liquid
++++ after/blocks/_header-menu.liquid
+@@ -38,6 +38,7 @@
+             class="menu-list__list list-unstyled"
+             role="list"
+           >
++            {% render 'luxe-studio-navigation-link', menu: block_settings.menu, variant: 'navigation_bar' %}
+             {% for link in block_settings.menu.links %}
+               <li>
+                 <a
+@@ -83,6 +84,7 @@
+     %}
+ 
+     {% capture children %}
++      {% render 'luxe-studio-navigation-link', menu: block_settings.menu, variant: 'desktop' %}
+       {% for link in block_settings.menu.links %}
+         <li
+           role="presentation"
+@@ -916,3 +918,4 @@
+   ]
+ }
+ {% endschema %}
++
+--- before/locales/de.json
++++ after/locales/de.json
+@@ -455,6 +455,7 @@
+   "luxestyle_startseitenvorschau_b76dd": "LuxeStyle – Startseitenvorschau"
+ },
+   "luxe_studio": {
++    "navigation_title": "Selbst gestalten",
+     "eyebrow": "DEIN PRODUKT. DEIN DESIGN.",
+     "entry_title": "Mach es zu deinem.",
+     "entry_lead": "Grösse auswählen, Text oder Bild hinzufügen und deinen Entwurf in Ruhe ansehen.",
+@@ -540,7 +541,7 @@
+     "catalog_search_button": "Suchen",
+     "catalog_category": "Kategorie",
+     "catalog_all": "Alle Produkte",
+-    "catalog_scope": "Personalisierbare Produkte aus dem LuxeStyle-Shop. Grösse und Ausführung wählst du nach der Produktauswahl. Die Suche sucht im gesamten Shop nach passenden Produkttiteln; weitere Treffer sind über «Weiter» erreichbar.",
++    "catalog_scope": "Unbedruckte Basisprodukte aus dem LuxeStyle-Shop. Wähle dein Produkt, danach die tatsächlich angebotene Grösse und Ausführung. Weitere Produkte über «Weiter».",
+     "catalog_loading": "Produkte werden geladen …",
+     "catalog_error": "Die Produkte konnten nicht geladen werden. Bitte versuche es erneut.",
+     "catalog_retry": "Erneut laden",
+@@ -568,5 +569,36 @@
+     "catalog_home": "Wohnen & Deko",
+     "catalog_drinkware": "Tassen & Flaschen",
+     "catalog_accessories": "Accessoires"
+-  }
++  },
++  "luxe_category": {
++    "eyebrow": "LUXESTYLE · DEINE IDEE",
++    "title": "Einfach du.\nSelbst gestaltet.",
++    "intro": "Ein Lieblingsstück beginnt mit deiner Idee. Entdecke die Produkte und gestalte deinen ersten Entwurf mit Text oder Bild.",
++    "browse": "Produkte entdecken",
++    "preview_note": "Gestaltungsvorschau: Entwurf ausprobieren. Eine Bestellung mit eigenem Design ist hier noch nicht möglich.",
++    "image_label": "Produkte zum Selbstgestalten",
++    "steps_label": "In drei Schritten zum Entwurf",
++    "step_product": "Produkt auswählen",
++    "step_design": "Motiv entwerfen",
++    "step_preview": "Vorschau ansehen",
++    "collection_eyebrow": "RAUM FÜR DEINE IDEE",
++    "collection_title": "Was möchtest du gestalten?",
++    "collection_intro": "Von deinem T-Shirt bis zu kleinen Dingen für jeden Tag. Wähle dein Produkt.",
++    "categories_label": "Produktkategorien",
++    "all": "Alle Produkte",
++    "clothing": "Bekleidung",
++    "bags": "Taschen",
++    "home": "Wohnen",
++    "drinkware": "Tassen & Flaschen",
++    "accessories": "Accessoires",
++    "from": "Ab",
++    "more_values": "+ {{ count }} weitere",
++    "unavailable": "Aktuell nicht verfügbar",
++    "design": "Selbst gestalten",
++    "empty": "In dieser Auswahl sind aktuell keine passenden Produkte verfügbar.",
++    "previous": "Zurück",
++    "next": "Weiter",
++    "page_label": "Seite [page] von [pages]",
++    "end_note": "Grössen, Farben und Ausführungen hängen vom gewählten Produkt ab. Dein Entwurf bleibt eine Vorschau."
+ }
++}
+--- before/locales/en.default.json
++++ after/locales/en.default.json
+@@ -474,6 +474,7 @@
+   "luxestyle_startseitenvorschau_b76dd": "LuxeStyle – Startseitenvorschau"
+ },
+   "luxe_studio": {
++    "navigation_title": "Create your own",
+     "eyebrow": "YOUR PRODUCT. YOUR DESIGN.",
+     "entry_title": "Make it yours.",
+     "entry_lead": "Choose your size, add text or an image, then take a look at your design.",
+@@ -559,7 +560,7 @@
+     "catalog_search_button": "Search",
+     "catalog_category": "Category",
+     "catalog_all": "All products",
+-    "catalog_scope": "Personalizable products from the LuxeStyle shop. Choose size and options after selecting a product. Search finds matching product titles across the shop; use Next for further results.",
++    "catalog_scope": "Blank base products from the LuxeStyle shop. Choose a product, then select its available size and options. Use Next for more products.",
+     "catalog_loading": "Loading products …",
+     "catalog_error": "Products could not be loaded. Please try again.",
+     "catalog_retry": "Try again",
+@@ -587,5 +588,36 @@
+     "catalog_home": "Home & living",
+     "catalog_drinkware": "Mugs & bottles",
+     "catalog_accessories": "Accessories"
+-  }
++  },
++  "luxe_category": {
++    "eyebrow": "LUXESTYLE · YOUR IDEA",
++    "title": "Simply you.\nMade your way.",
++    "intro": "A favourite piece starts with your idea. Explore the products and try your first design with text or an image.",
++    "browse": "Explore products",
++    "preview_note": "Design preview: try your idea. Ordering with your own design is not available here yet.",
++    "image_label": "Products to personalise",
++    "steps_label": "Three steps to your design",
++    "step_product": "Choose a product",
++    "step_design": "Create your design",
++    "step_preview": "See your preview",
++    "collection_eyebrow": "ROOM FOR YOUR IDEA",
++    "collection_title": "What will you create?",
++    "collection_intro": "From your T-shirt to the little things in your day. Choose your product.",
++    "categories_label": "Product categories",
++    "all": "All products",
++    "clothing": "Clothing",
++    "bags": "Bags",
++    "home": "Home",
++    "drinkware": "Mugs & bottles",
++    "accessories": "Accessories",
++    "from": "From",
++    "more_values": "+ {{ count }} more",
++    "unavailable": "Currently unavailable",
++    "design": "Create your own",
++    "empty": "No suitable products are currently available in this selection.",
++    "previous": "Previous",
++    "next": "Next",
++    "page_label": "Page [page] of [pages]",
++    "end_note": "Sizes, colours and options depend on the product you choose. Your design remains a preview."
+ }
++}
+--- before/sections/luxe-category.liquid
++++ after/sections/luxe-category.liquid
+@@ -0,0 +1,163 @@
++{{ 'luxe-category.css' | asset_url | stylesheet_tag }}
++{%- liquid
++  assign category_handles = 'selbst-gestalten-1,sg-bekleidung,sg-taschen,sg-wohnen,sg-trinken,sg-accessoires' | split: ','
++  assign category_labels = 'all,clothing,bags,home,drinkware,accessories' | split: ','
++  assign category_source = collections['selbst-gestalten-1']
++  if category_handles contains collection.handle
++    assign category_source = collection
++  endif
++  assign eligible_count = 0
++-%}
++{% capture hero_images %}
++    {% assign hero_count = 0 %}{% capture hero_tiles %}
++    <div class="lxc-hero-images" aria-label="{{ 'luxe_category.image_label' | t }}">
++      {%- assign hero_handles = 'unisex-t-shirt-selbst-gestalten,bio-jutebeutel-selbst-gestalten,keramik-tasse-selbst-gestalten' | split: ',' -%}
++      {%- for hero_handle in hero_handles -%}
++        {%- assign hero_product = all_products[hero_handle] -%}
++        {%- capture hero_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: hero_product -%}{%- endcapture -%}
++        {%- assign hero_allowed = hero_allowed | strip -%}
++        {%- if hero_allowed == 'true' and hero_product.featured_image -%}
++          {% assign hero_count = hero_count | plus: 1 %}
++          <a class="lxc-hero-image lxc-hero-image--{{ hero_count }}" href="{{ hero_product.url }}?view=luxe-studio">
++            {%- assign hero_alt = hero_product.featured_image.alt | default: hero_product.title -%}
++            {{ hero_product.featured_image | image_url: width: 900 | image_tag: widths: '240, 360, 540, 720, 900', sizes: '(min-width: 900px) 36vw, 65vw', loading: 'eager', fetchpriority: 'high', alt: hero_alt }}
++            <span>{{ hero_product.title | remove: ' – Selbst gestalten' | escape }}</span>
++          </a>
++        {%- endif -%}
++      {%- endfor -%}
++    </div>
++{% endcapture %}{% if hero_count > 0 %}{{ hero_tiles }}{% endif %}
++{% endcapture %}
++<section class="lx-category" data-luxe-category aria-labelledby="LuxeCategoryTitle-{{ section.id }}">
++  <div class="lxc-hero{% if hero_count == 0 %} lxc-hero--text-only{% endif %}">
++    <div class="lxc-hero-copy">
++      <p class="lxc-eyebrow">{{ 'luxe_category.eyebrow' | t }}</p>
++      <h1 id="LuxeCategoryTitle-{{ section.id }}">{{ 'luxe_category.title' | t }}</h1>
++      <p class="lxc-intro">{{ 'luxe_category.intro' | t }}</p>
++      <a class="lxc-button" href="#LuxeCategoryProducts-{{ section.id }}">{{ 'luxe_category.browse' | t }} <span aria-hidden="true">↗</span></a>
++      <p class="lxc-preview-note">{{ 'luxe_category.preview_note' | t }}</p>
++    </div>
++    {{ hero_images }}
++  </div>
++  <div class="lxc-process" aria-label="{{ 'luxe_category.steps_label' | t }}">
++    <p><span>01</span>{{ 'luxe_category.step_product' | t }}</p>
++    <p><span>02</span>{{ 'luxe_category.step_design' | t }}</p>
++    <p><span>03</span>{{ 'luxe_category.step_preview' | t }}</p>
++  </div>
++  <div class="lxc-products" id="LuxeCategoryProducts-{{ section.id }}" tabindex="-1">
++    <div class="lxc-collection-heading"><div><p class="lxc-eyebrow">{{ 'luxe_category.collection_eyebrow' | t }}</p><h2>{{ 'luxe_category.collection_title' | t }}</h2></div><p>{{ 'luxe_category.collection_intro' | t }}</p></div>
++    <nav class="lxc-categories" aria-label="{{ 'luxe_category.categories_label' | t }}">
++      {%- for category_handle in category_handles -%}
++        {%- assign category_item = collections[category_handle] -%}
++        {%- if category_item != blank -%}
++          {%- assign category_key = 'luxe_category.' | append: category_labels[forloop.index0] -%}
++          <a href="{{ category_item.url }}?view=luxe-gestalten#LuxeCategoryProducts-{{ section.id }}" {% if category_source.handle == category_handle %}aria-current="page"{% endif %}>{{ category_key | t }}</a>
++        {%- endif -%}
++      {%- endfor -%}
++    </nav>
++    <div class="lxc-grid">
++      {%- for item in category_source.products limit: 50 -%}
++        {%- capture item_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: item -%}{%- endcapture -%}
++        {%- assign item_allowed = item_allowed | strip -%}
++        {%- if item_allowed == 'true' -%}
++          {%- assign eligible_count = eligible_count | plus: 1 -%}
++          <article class="lxc-card" data-lxc-card data-product-id="{{ item.id }}" {% if eligible_count > 12 %}hidden{% endif %}>
++            <a class="lxc-card-image" href="{{ item.url }}?view=luxe-studio" tabindex="-1" aria-hidden="true">
++              {%- if item.featured_image -%}
++                {%- assign item_alt = item.featured_image.alt | default: item.title -%}
++                {{ item.featured_image | image_url: width: 720 | image_tag: widths: '240, 360, 480, 720', sizes: '(min-width: 1100px) 23vw, (min-width: 750px) 31vw, 46vw', loading: 'lazy', alt: item_alt }}
++              {%- endif -%}
++            </a>
++            <div class="lxc-card-info">
++              <h3><a href="{{ item.url }}?view=luxe-studio">{{ item.title | remove: ' – Selbst gestalten' | escape }}</a></h3>
++              <p class="lxc-price">{% if item.price_varies %}<span>{{ 'luxe_category.from' | t }}</span> {% endif %}{{ item.price_min | money_with_currency }}</p>
++              <div class="lxc-options">
++                {%- for option in item.options_with_values -%}
++                  {%- assign first_option_value = option.values.first.name | default: option.values.first -%}
++                  {%- assign remaining_values = option.values.size | minus: 7 -%}
++                  {%- unless option.name == 'Title' and option.values.size == 1 and first_option_value == 'Default Title' -%}
++                    <div class="lxc-option"><span class="lxc-option-name">{{ option.name | escape }}</span><span class="lxc-option-values">{%- for value in option.values limit: 7 -%}{{ value.name | default: value | escape }}{%- unless forloop.last -%}<span aria-hidden="true"> · </span>{%- endunless -%}{%- endfor -%}</span>{% if option.values.size > 7 %}<details class="lxc-option-more"><summary>{{ 'luxe_category.more_values' | t: count: remaining_values }}</summary><span class="lxc-option-values">{% for value in option.values offset: 7 %}{{ value.name | default: value | escape }}{% unless forloop.last %}<span aria-hidden="true"> · </span>{% endunless %}{% endfor %}</span></details>{% endif %}</div>
++                  {%- endunless -%}
++                {%- endfor -%}
++              </div>
++              <div class="lxc-colors" data-lxc-colors></div>
++              <script type="application/json" data-lxc-color-data>{% render 'luxe-studio-catalog-colors', candidate: item %}</script>
++              {%- unless item.available -%}<p class="lxc-unavailable">{{ 'luxe_category.unavailable' | t }}</p>{%- endunless -%}
++              <a class="lxc-card-cta" href="{{ item.url }}?view=luxe-studio">{{ 'luxe_category.design' | t }}<span aria-hidden="true">↗</span></a>
++            </div>
++          </article>
++        {%- endif -%}
++      {%- endfor -%}
++    </div>
++    {%- if eligible_count == 0 -%}<p class="lxc-empty">{{ 'luxe_category.empty' | t }}</p>{%- endif -%}
++    <div class="lxc-pagination" data-lxc-pagination hidden>
++      <button type="button" data-lxc-prev>{{ 'luxe_category.previous' | t }}</button>
++      <span data-lxc-page aria-live="polite"></span>
++      <button type="button" data-lxc-next>{{ 'luxe_category.next' | t }}</button>
++    </div>
++    <script type="application/json" data-lxc-labels>{"page": {{ 'luxe_category.page_label' | t | json }}}</script>
++    <p class="lxc-end-note">{{ 'luxe_category.end_note' | t }}</p>
++    <noscript><style>.lx-category [data-lxc-card][hidden]{display:flex!important}</style></noscript>
++  </div>
++</section>
++{% javascript %}
++  function initializeLuxeCategory(root) {
++    if (root.dataset.ready) return;
++    root.dataset.ready = 'true';
++    const previewTheme = new URL(location.href).searchParams.get('preview_theme_id');
++    if (previewTheme && /^\d+$/.test(previewTheme)) root.querySelectorAll('a[href]').forEach(link => {
++      const target = new URL(link.href, location.href);
++      if (target.origin === location.origin && target.searchParams.has('view')) {
++        target.searchParams.set('preview_theme_id', previewTheme);
++        link.href = target.href;
++      }
++    });
++    const cards = Array.from(root.querySelectorAll('[data-lxc-card]'));
++    const pagination = root.querySelector('[data-lxc-pagination]');
++    const previous = root.querySelector('[data-lxc-prev]');
++    const next = root.querySelector('[data-lxc-next]');
++    const status = root.querySelector('[data-lxc-page]');
++    const labels = JSON.parse(root.querySelector('[data-lxc-labels]').textContent);
++    const pages = Math.ceil(cards.length / 12);
++    let page = 1;
++    const update = (moveFocus) => {
++      cards.forEach((card, index) => { card.hidden = index < (page - 1) * 12 || index >= page * 12; });
++      previous.disabled = page <= 1;
++      next.disabled = page >= pages;
++      status.textContent = labels.page.replace('[page]', String(page)).replace('[pages]', String(pages));
++      if (moveFocus) {
++        const heading = root.querySelector('.lxc-products');
++        heading.focus({preventScroll:true});
++        heading.scrollIntoView({block:'start', behavior:'auto'});
++      }
++    };
++    previous.addEventListener('click', () => { if (page > 1) { page--; update(true); } });
++    next.addEventListener('click', () => { if (page < pages) { page++; update(true); } });
++    pagination.hidden = pages <= 1;
++    update(false);
++    cards.forEach(card => {
++      const data = card.querySelector('[data-lxc-color-data]');
++      let colors = [];
++      try { colors = JSON.parse(data.textContent); } catch { return; }
++      const row = card.querySelector('[data-lxc-colors]');
++      colors.forEach(color => {
++        if (typeof color.name !== 'string' || !/^#[\da-f]{6}$/i.test(color.hex || '')) return;
++        const chip = document.createElement('span');
++        chip.className = 'lxc-color';
++        chip.title = color.name;
++        chip.setAttribute('aria-label', color.name);
++        chip.style.backgroundColor = color.hex;
++        row.append(chip);
++      });
++    });
++  }
++  document.querySelectorAll('[data-luxe-category]').forEach(initializeLuxeCategory);
++  document.addEventListener('shopify:section:load', event => event.target.querySelectorAll('[data-luxe-category]').forEach(initializeLuxeCategory));
++{% endjavascript %}
++{% schema %}
++{
++  "name": "LuxeStyle Gestaltung",
++  "settings": [],
++  "enabled_on": {"templates": ["collection"]}
++}
++{% endschema %}
+--- before/sections/luxe-studio.liquid
++++ after/sections/luxe-studio.liquid
+@@ -2,9 +2,11 @@
+ {{ 'luxe-studio-catalog.css' | asset_url | stylesheet_tag }}
+ <script src="{{ 'luxe-studio.js' | asset_url }}" defer></script>
+ <script src="{{ 'luxe-studio-catalog.js' | asset_url }}" defer></script>
++{% capture studio_blank_result %}{% render 'luxe-studio-blank-eligible', candidate: product %}{% endcapture %}
+ {% liquid
++  assign studio_blank_result = studio_blank_result | strip
+   assign studio_allowed = false
+-  if product.tags contains 'wunschdesign' or product.tags contains 'printful_personalized_product'
++  if studio_blank_result == 'true'
+     assign studio_allowed = true
+   endif
+   assign studio_variant = product.selected_or_first_available_variant
+@@ -37,13 +39,15 @@
+ {% capture studio_data %}
+ {
+   "previewOnly": true,
++  "blankEligible": {{ studio_allowed | json }},
++  "blankContract": "blank-collection-20261029-v1",
+   "complete": {{ studio_complete | json }},
+   "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
+   "locale": {{ request.locale.iso_code | json }},
+-  "catalogUrl": "/collections/sg-alle",
++  "catalogUrl": "/collections/selbst-gestalten-1",
+   "catalogSearchUrl": "/search",
+   "catalogCollections": [
+-    {"url":"/collections/sg-alle", "title": {{ 'luxe_studio.catalog_all' | t | json }}},
++    {"url":"/collections/selbst-gestalten-1", "title": {{ 'luxe_studio.catalog_all' | t | json }}},
+     {"url":"/collections/sg-bekleidung", "title": {{ 'luxe_studio.catalog_clothing' | t | json }}},
+     {"url":"/collections/sg-taschen", "title": {{ 'luxe_studio.catalog_bags' | t | json }}},
+     {"url":"/collections/sg-wohnen", "title": {{ 'luxe_studio.catalog_home' | t | json }}},
+--- before/snippets/header-drawer.liquid
++++ after/snippets/header-drawer.liquid
+@@ -95,6 +95,7 @@
+           class="menu-drawer__menu has-submenu"
+           role="list"
+         >
++          {% render 'luxe-studio-navigation-link', menu: linklist, variant: 'drawer', block_settings: block_settings %}
+           {%- comment -%}
+             Handle menus with fewer than 3 levels of links
+           {%- endcomment -%}
+@@ -1411,3 +1412,4 @@
+     transform: none;
+   }
+ {% endstylesheet %}
++
+--- before/snippets/luxe-studio-blank-eligible.liquid
++++ after/snippets/luxe-studio-blank-eligible.liquid
+@@ -0,0 +1,18 @@
++{%- comment -%}Blanko scope: public snapshot 2026-10-29, collection 688427434369. No supplier-catalog completeness claim.{%- endcomment -%}
++{%- liquid
++  assign studio_blank_allowed = false
++  assign studio_blank_ids = '16672778289543,15451569389953,15451569324417,15451569226113,15451569160577,15427285123457,15427283157377,15427282633089,15427217195393,15427182330241,15423895830913,15422960501121,15422959518081,15422958338433,15422956798337,15422953062785,15422950474113,15422949130625,15422946083201,15422945034625,15422943822209,15422942609793,15422940447105,15422939988353,15422939267457,15422857642369,15422854463873,15422849188225,15422823465345,15422819991937,15422815699329,15422811439489' | split: ','
++  assign studio_candidate_id = candidate.id | append: ''
++  assign studio_blank_member = false
++  for studio_candidate_collection in candidate.collections
++    if studio_candidate_collection.id == 688427434369 and studio_candidate_collection.handle == 'selbst-gestalten-1'
++      assign studio_blank_member = true
++    endif
++  endfor
++  if studio_blank_ids contains studio_candidate_id and studio_blank_member and candidate.metafields.custom.print_file == blank
++    if candidate.tags contains 'wunschdesign' or candidate.tags contains 'printful_personalized_product'
++      assign studio_blank_allowed = true
++    endif
++  endif
++-%}
++{{- studio_blank_allowed -}}
+--- before/snippets/luxe-studio-catalog-colors.liquid
++++ after/snippets/luxe-studio-catalog-colors.liquid
+@@ -0,0 +1,48 @@
++{%- comment -%}Only the 15 verified shop variants mapped to public Printful product 71; no supplier-only colours are added.{%- endcomment -%}
++{%- assign studio_color_count = 0 -%}
++[
++{%- if candidate.id == 15427283157377 -%}
++{%- assign studio_color_ids = '55792263954817,55792263987585,55792264020353,55792264053121,55792264085889' | split: ',' -%}
++{%- assign studio_color_skus = '9000001_4011,9000001_4012,9000001_4013,9000001_4014,9000001_4015' | split: ',' -%}
++{%- assign studio_color_present = false -%}
++{%- for studio_color_variant in candidate.variants -%}
++{%- assign studio_color_variant_id = studio_color_variant.id | append: '' -%}
++{%- if studio_color_ids contains studio_color_variant_id and studio_color_skus contains studio_color_variant.sku and studio_color_variant.option1 == 'Weiss' -%}
++{%- assign studio_color_present = true -%}
++{%- endif -%}
++{%- endfor -%}
++{%- if studio_color_present -%}
++{%- if studio_color_count > 0 -%},{%- endif -%}
++{"name": "Weiss", "hex": "#ffffff"}
++{%- assign studio_color_count = studio_color_count | plus: 1 -%}
++{%- endif -%}
++{%- assign studio_color_ids = '55794951258497,55794951291265,55794951324033,55794951356801,55794951389569' | split: ',' -%}
++{%- assign studio_color_skus = '9000001_4016,9000001_4017,9000001_4018,9000001_4019,9000001_4020' | split: ',' -%}
++{%- assign studio_color_present = false -%}
++{%- for studio_color_variant in candidate.variants -%}
++{%- assign studio_color_variant_id = studio_color_variant.id | append: '' -%}
++{%- if studio_color_ids contains studio_color_variant_id and studio_color_skus contains studio_color_variant.sku and studio_color_variant.option1 == 'Schwarz' -%}
++{%- assign studio_color_present = true -%}
++{%- endif -%}
++{%- endfor -%}
++{%- if studio_color_present -%}
++{%- if studio_color_count > 0 -%},{%- endif -%}
++{"name": "Schwarz", "hex": "#0c0c0c"}
++{%- assign studio_color_count = studio_color_count | plus: 1 -%}
++{%- endif -%}
++{%- assign studio_color_ids = '55794951422337,55794951455105,55794951487873,55794951520641,55794951553409' | split: ',' -%}
++{%- assign studio_color_skus = '9000001_4111,9000001_4112,9000001_4113,9000001_4114,9000001_4115' | split: ',' -%}
++{%- assign studio_color_present = false -%}
++{%- for studio_color_variant in candidate.variants -%}
++{%- assign studio_color_variant_id = studio_color_variant.id | append: '' -%}
++{%- if studio_color_ids contains studio_color_variant_id and studio_color_skus contains studio_color_variant.sku and studio_color_variant.option1 == 'Marineblau' -%}
++{%- assign studio_color_present = true -%}
++{%- endif -%}
++{%- endfor -%}
++{%- if studio_color_present -%}
++{%- if studio_color_count > 0 -%},{%- endif -%}
++{"name": "Marineblau", "hex": "#212642"}
++{%- assign studio_color_count = studio_color_count | plus: 1 -%}
++{%- endif -%}
++{%- endif -%}
++]
+--- before/snippets/luxe-studio-navigation-link.liquid
++++ after/snippets/luxe-studio-navigation-link.liquid
+@@ -0,0 +1,84 @@
++{%- doc -%}
++  Renders the LuxeStyle design collection once when the current menu omits it.
++  @param {linklist} menu - The existing header menu.
++  @param {string} variant - desktop, drawer or navigation_bar.
++  @param {object} [block_settings] - Existing drawer appearance settings.
++{%- enddoc -%}
++
++{%- liquid
++  assign design_collection = collections['selbst-gestalten-1']
++  assign has_design_link = false
++  assign design_path = '/collections/selbst-gestalten-1'
++  for menu_link in menu.links
++    assign link_path = menu_link.url | split: '?' | first | split: '#' | first | remove_first: request.origin
++    if menu_link.object.id == design_collection.id or link_path == design_path or link_path == design_collection.url
++      assign has_design_link = true
++      break
++    endif
++    for child_link in menu_link.links
++      assign link_path = child_link.url | split: '?' | first | split: '#' | first | remove_first: request.origin
++      if child_link.object.id == design_collection.id or link_path == design_path or link_path == design_collection.url
++        assign has_design_link = true
++        break
++      endif
++      for grandchild_link in child_link.links
++        assign link_path = grandchild_link.url | split: '?' | first | split: '#' | first | remove_first: request.origin
++        if grandchild_link.object.id == design_collection.id or link_path == design_path or link_path == design_collection.url
++          assign has_design_link = true
++          break
++        endif
++      endfor
++      if has_design_link
++        break
++      endif
++    endfor
++    if has_design_link
++      break
++    endif
++  endfor
++-%}
++
++{%- if design_collection.id == 688427434369 and has_design_link == false -%}
++  {%- case variant -%}
++    {%- when 'drawer' -%}
++      <li class="menu-drawer__list-item{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}" style="--menu-drawer-animation-index: 0;">
++        <a
++          href="{{ design_collection.url }}?view=luxe-gestalten"
++          class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
++          data-luxe-studio-navigation="drawer"
++          {% if request.path == design_collection.url %}aria-current="page"{% endif %}
++        >
++          <span class="menu-drawer__menu-item-text wrap-text">{{ 'luxe_studio.navigation_title' | t }}</span>
++        </a>
++      </li>
++    {%- when 'navigation_bar' -%}
++      <li>
++        <a
++          href="{{ design_collection.url }}?view=luxe-gestalten"
++          class="menu-list__item"
++          data-luxe-studio-navigation="navigation_bar"
++          {% if request.path == design_collection.url %}aria-current="page"{% endif %}
++        >{{ 'luxe_studio.navigation_title' | t }}</a>
++      </li>
++    {%- when 'desktop' -%}
++      <li
++        role="presentation"
++        class="menu-list__list-item"
++        on:focus="/activate"
++        on:blur="/deactivate"
++        on:pointerenter="/activate"
++        on:pointerleave="/deactivate"
++      >
++        <a
++          href="{{ design_collection.url }}?view=luxe-gestalten"
++          data-skip-node-update="true"
++          class="menu-list__link{% if request.path == design_collection.url %} menu-list__link--active{% endif %}"
++          data-luxe-studio-navigation="desktop"
++          ref="menuitem"
++          {% if request.path == design_collection.url %}aria-current="page"{% endif %}
++        >
++          <span class="menu-list__link-title">{{ 'luxe_studio.navigation_title' | t }}</span>
++        </a>
++      </li>
++  {%- endcase -%}
++{%- endif -%}
+--- before/templates/collection.luxe-gestalten.json
++++ after/templates/collection.luxe-gestalten.json
+@@ -0,0 +1,6 @@
++{
++  "sections": {
++    "main": {"type": "luxe-category", "settings": {}}
++  },
++  "order": ["main"]
++}
+--- before/templates/collection.luxe-studio-catalog.liquid
++++ after/templates/collection.luxe-studio-catalog.liquid
+@@ -1,16 +1,21 @@
+ {% layout none %}
+-{% paginate collection.products by 12 %}
++{% assign studio_source = collections['selbst-gestalten-1'] %}
++{% assign studio_sources = 'selbst-gestalten-1,sg-bekleidung,sg-taschen,sg-wohnen,sg-trinken,sg-accessoires' | split: ',' %}
++{% if studio_sources contains collection.handle %}{% assign studio_source = collection %}{% endif %}
++{% paginate studio_source.products by 12 %}
+   {% assign studio_count = 0 %}
+   {% capture studio_products %}
+   [
+-    {% for item in collection.products %}
++    {% for item in studio_source.products %}
++      {% capture studio_blank_result %}{% render 'luxe-studio-blank-eligible', candidate: item %}{% endcapture %}
++      {% assign studio_blank_result = studio_blank_result | strip %}
+       {% assign studio_allowed = false %}
+-      {% if item.tags contains 'wunschdesign' or item.tags contains 'printful_personalized_product' %}
+-          {% assign studio_allowed = true %}
+-        {% endif %}
++      {% if studio_blank_result == 'true' %}{% assign studio_allowed = true %}{% endif %}
+       {% if studio_allowed %}
+         {% if studio_count > 0 %},{% endif %}
+         {
++          "blankEligible": true,
++          "blankContract": "blank-collection-20261029-v1",
+           "id": {{ item.id | append: '' | json }},
+           "title": {{ item.title | json }},
+           "url": {{ item.url | json }},
+@@ -19,6 +24,7 @@
+           "available": {{ item.available | json }},
+           "variantCount": {{ item.variants_count | json }},
+           "image": {% if item.featured_image %}{"src": {{ item.featured_image | image_url: width: 480 | json }}, "alt": {{ item.featured_image.alt | default: item.title | json }}, "width": {{ item.featured_image.width | json }}, "height": {{ item.featured_image.height | json }}}{% else %}null{% endif %},
++          "colors": {% render 'luxe-studio-catalog-colors', candidate: item %},
+           "options": [{% for option in item.options_with_values %}{"name": {{ option.name | json }}, "values": [{% for value in option.values %}{{ value.name | default: value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]
+         }
+         {% assign studio_count = studio_count | plus: 1 %}
+@@ -28,10 +34,10 @@
+   {% endcapture %}
+   {% capture studio_response %}
+   {
+-    "schemaVersion": 1,
+-    "scope": "luxestyle_public_personalizable_collection",
++    "schemaVersion": 2,
++    "scope": "luxestyle_verified_blank_collection",
+     "catalogComplete": false,
+-    "collection": {"handle": {{ collection.handle | json }}, "title": {{ collection.title | json }}},
++    "collection": {"handle": {{ studio_source.handle | json }}, "title": {{ studio_source.title | json }}},
+     "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
+     "page": {{ paginate.current_page | json }},
+     "hasPrevious": {% if paginate.previous %}true{% else %}false{% endif %},
+--- before/templates/search.luxe-studio-catalog.liquid
++++ after/templates/search.luxe-studio-catalog.liquid
+@@ -5,12 +5,10 @@
+   {% capture studio_products %}
+   [
+     {% for item in search.results %}
++      {% capture studio_blank_result %}{% render 'luxe-studio-blank-eligible', candidate: item %}{% endcapture %}
++      {% assign studio_blank_result = studio_blank_result | strip %}
+       {% assign studio_allowed = false %}
+-      {% if item.object_type == 'product' %}
+-        {% if item.tags contains 'wunschdesign' or item.tags contains 'printful_personalized_product' %}
+-          {% assign studio_allowed = true %}
+-        {% endif %}
+-      {% endif %}
++      {% if studio_blank_result == 'true' %}{% assign studio_allowed = true %}{% endif %}
+       {% if studio_allowed %}
+         {% assign studio_title = item.title | downcase %}
+         {% for studio_term in studio_terms %}
+@@ -22,6 +20,8 @@
+       {% if studio_allowed %}
+         {% if studio_count > 0 %},{% endif %}
+         {
++          "blankEligible": true,
++          "blankContract": "blank-collection-20261029-v1",
+           "id": {{ item.id | append: '' | json }},
+           "title": {{ item.title | json }},
+           "url": {{ item.url | json }},
+@@ -30,6 +30,7 @@
+           "available": {{ item.available | json }},
+           "variantCount": {{ item.variants_count | json }},
+           "image": {% if item.featured_image %}{"src": {{ item.featured_image | image_url: width: 480 | json }}, "alt": {{ item.featured_image.alt | default: item.title | json }}, "width": {{ item.featured_image.width | json }}, "height": {{ item.featured_image.height | json }}}{% else %}null{% endif %},
++          "colors": {% render 'luxe-studio-catalog-colors', candidate: item %},
+           "options": [{% for option in item.options_with_values %}{"name": {{ option.name | json }}, "values": [{% for value in option.values %}{{ value.name | default: value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]
+         }
+         {% assign studio_count = studio_count | plus: 1 %}
+@@ -39,8 +40,8 @@
+   {% endcapture %}
+   {% capture studio_response %}
+   {
+-    "schemaVersion": 1,
+-    "scope": "luxestyle_public_personalizable_search_results",
++    "schemaVersion": 2,
++    "scope": "luxestyle_verified_blank_search_results",
+     "catalogComplete": false,
+     "query": {{ search.terms | json }},
+     "matchMode": "all_terms_in_product_title",
