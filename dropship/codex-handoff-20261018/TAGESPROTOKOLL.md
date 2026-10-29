@@ -504,6 +504,10 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Zugriffsgrenzen | Engen Merchant-Einzelabruf versucht und zweiten Nutzerexport herunterzuladen versucht | BLOCKIERT/UNBEKANNT: Merchant keine Antwort binnen45s, kein Retry; zweiter Upload über32MiB nicht eingelesen. Keine Fehler als Null/leer ausgegeben |
 | Schneestiefel / Quellenindex | Vorhandene lokale Belege und Suchschlüssel für 27 Varianten geordnet | QUELLE: alter nativer Beleg vom29.10.00:23 Zürich, kein neuer Produktabruf oder Lieferanten-/Fusslängenbeleg; keine geratenen Nachträge |
 | Gedächtnis / nächster Schritt | Neue Preisfehler-Aufgabe priorisiert und vollständigen Integrationskandidaten mit Revision12 dokumentiert | FORTGEFÜHRT: Historie und Kaufbaseline erhalten; Datenquelle/URL klären, dann engen Quelldiff prüfen. Keine zusätzliche Automation oder Tagesreport-/Kaufabfrage; Claude-Kenntnisnahme unbekannt |
+| Zweiter Merchant-Export / Drive | Zuvor zu grossen zweiten Export über den bereitgestellten Drive-Zugang vollständig gelesen und mit Datei 1 abgeglichen | GEMESSEN: 96’530 Zeilen / 31’083 IDs; keine exakte ID-Schnittmenge. 52 separate Free-listings-Zeilen / 28 IDs. Quelle und Google-URL weiter offen; kein Merchant-Fix. Inhaltsblocker gelöst |
+| Startseite / konkrete Vorschau | Editoriallayout mit vier Einkaufswegen, echten Produktbildern, mobiler Suche und Navigation gebaut; im bestehenden unveröffentlichten Theme als alternative Startseite gespeichert | UMGESETZT IM ENTWURF: fünf neue Dateien, zwei Sprachdateien nur ergänzt; exakte Rücklesung. MAIN und ursprüngliche Vorlagen erhalten |
+| Vorschau / begrenzte Prüfung | Drei Produkte nativ und im Storefront, 13 Linkziele, sieben Liquiddateien und native Darstellung bei 1440/390/360 px geprüft; SVG-Konvertierung gezielt korrigiert | GEMESSEN: HTTP 200, vier Bilder geladen, eine H1, kein Überlauf; Menü, Suche, Escape und Fokus funktionieren. Keine erfassten Liquid-/Übersetzungs-/Seitenfehler. Kein Checkout- oder Gesamtshopaudit |
+| Gleicher Film / nächste Arbeit | Web-Einsatz desselben 18-Sekunden-Masters konkretisiert und Produktfoto als Zwischenstand dokumentiert | ENTWURF/BLOCKER: keine neue MP4; hochwertige Originaltakes, Ausführungs-/Rechtebeleg und Abnahme offen. Nächster Schritt: Gestaltung beurteilen, Originaltakes zuordnen und finale Themeintegration prüfen |
 
 
 [LUXESTYLE_FIX_FORTSETZUNG_20261029] [Textumsetzung](IPHONE-TEXT-UMSETZUNG-20261029.md), [Material r4](MATERIAL-R4-20261029.md), [Hängematte](HAENGEMATTE-VALIDIERUNG-20261029.md), [Versand](VERSAND-CH50-20261029.md).
@@ -537,3 +541,7 @@ Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten T�
 
 
 
+
+
+
+[LUXESTYLE_STARTSEITE_CSV2_20261029] [Startseitenbericht](STARTSEITEN-VORSCHAU-20261029.md), [Belege](STARTSEITEN-BELEGE-20261029.json), [zweiter Export](MERCHANT-ZWEITER-EXPORT-20261029.md). Arbeitsstand-Revision 13; heutigen Datumsblock fortgeführt. Keine zusätzlichen Reports/Kaufchecks und keine Claude-Kenntnisnahme behauptet.
