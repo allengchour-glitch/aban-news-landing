@@ -1,0 +1,1607 @@
+{
+  "schemaVersion": 1,
+  "taskId": "product-attribute-completeness",
+  "scope": "LuxeStyle: zwei aktuelle Optionskorrekturen und Katalogmessung; kein Vollständigkeitszertifikat",
+  "catalogueCounts": {
+    "query": "query LuxeStyleCatalogDenominator {\n shop { id url currencyCode }\n active:productsCount(query:\"status:active\",limit:null){count precision}\n allStatuses:productsCount(query:\"status:active OR status:draft OR status:archived OR status:unlisted\",limit:null){count precision}\n}",
+    "result": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF"
+        },
+        "active": {
+          "count": 56620,
+          "precision": "EXACT"
+        },
+        "allStatuses": {
+          "count": 87766,
+          "precision": "EXACT"
+        }
+      }
+    },
+    "scope": "one small server-side count response; no product pagination and no sales/metrics report; exactness only when response precision=EXACT",
+    "purpose": "Current catalogue scope for new all-products request; does not certify attribute quality or match historical IDs"
+  },
+  "coverage": {
+    "schemaVersion": 1,
+    "createdAtUTC": "2026-10-29T09:43:36.733990+00:00",
+    "scope": "LuxeStyle, lokale Lesekopien und vom Elternagenten geliefertes aktuelles Count-Ergebnis; keine eigenen Remote-Abfragen oder Produktwrites",
+    "currentCatalogCounts": {
+      "source": "/workspace/luxestyle-review/catalog-quality-20261029/CURRENT-DENOMINATORS.json",
+      "observedDate": "2026-10-29",
+      "shopId": "gid://shopify/Shop/94368563585",
+      "shopURL": "https://luxestyle.ch",
+      "currency": "CHF",
+      "active": {
+        "count": 56620,
+        "precision": "EXACT"
+      },
+      "allFourStatuses": {
+        "count": 87766,
+        "precision": "EXACT"
+      },
+      "attributeValuesIncluded": false,
+      "currentProductIdsIncluded": false,
+      "currentCatalogQualityPercent": null
+    },
+    "reusableHistoricalSnapshot": {
+      "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+      "scope": "Alle im damaligen Export enthaltenen ACTIVE-Produkte; nur zehn Text-/Options-Stammfelder",
+      "completedAtUTC": "2026-10-26T04:47:43Z",
+      "rows": 56630,
+      "uniqueProductIds": 56630,
+      "sha256": "481c98a41cd614a50b0bd7b5ff4a52e5845f10b10a8310bc0710ac42f271c994",
+      "currentCatalogIdentityJoin": null,
+      "doesNotCoverCurrentAllStatuses": true
+    },
+    "attributeCoverage": [
+      {
+        "attribute": "Beschreibung und Optionen",
+        "historicalDenominator": 56630,
+        "observedExportFieldCoverage": 56630,
+        "scope": "ACTIVE-Export vom 26.10.; Struktur vorhanden, Wahrheit/Qualität nicht vollständig geprüft",
+        "currentCompletenessPercent": null
+      },
+      {
+        "attribute": "Material",
+        "historicalDenominator": 56618,
+        "historicalDate": "2026-10-27",
+        "withoutVerifiedSource": 28170,
+        "historicalPercentWithoutVerifiedSource": 49.75449503691405,
+        "currentCompletenessPercent": null,
+        "limitation": "Nur datierter Quellenstand; keine aktuelle Feldlücke. Materialoption, Metafeld und sichtbarer Text überlappen."
+      },
+      {
+        "attribute": "Grösse",
+        "historicalDenominator": null,
+        "exactOptionNameOccurrencesInSnapshot": 19658,
+        "currentCompletenessPercent": null,
+        "limitation": "Optionname Grösse ist kein fachlicher Anwendbarkeitsnenner; S/M/L sind keine echten cm-Masse. Varianten nicht exportiert."
+      },
+      {
+        "attribute": "Farbe",
+        "historicalDenominator": null,
+        "exactOptionNameOccurrencesInSnapshot": 19859,
+        "currentCompletenessPercent": null,
+        "limitation": "Optionname Farbe erfasst nicht alle Mischlabels und beweist weder Variantenzuordnung noch sachliche Richtigkeit."
+      },
+      {
+        "attribute": "Echte Masse",
+        "historicalDenominator": null,
+        "currentCompletenessPercent": null,
+        "limitation": "Fachliche Anforderungen und modellbezogene Quellen fehlen; Längen-/Abmessungs-Optionsnamen sind keine Vollständigkeitsmessung."
+      },
+      {
+        "attribute": "SKU",
+        "historicalDenominator": null,
+        "currentCompletenessPercent": null,
+        "limitation": "Im vollständigen historischen Text-/Optionsexport nicht enthalten; vier SKU_GESETZT-Ledgereinträge sind keine Vollkatalogmessung."
+      },
+      {
+        "attribute": "Bild",
+        "historicalDenominator": null,
+        "currentCompletenessPercent": null,
+        "limitation": "Bilder, Abmessungen und Rechte im vollständigen historischen Export nicht enthalten."
+      },
+      {
+        "attribute": "Preis",
+        "historicalDenominator": null,
+        "currentCompletenessPercent": null,
+        "limitation": "Variantenpreise/Währung/Kaufbarkeit im vollständigen historischen Export nicht enthalten; Shopwährung CHF bestätigt keine Einzelpreise."
+      }
+    ],
+    "existingAudits": [
+      {
+        "name": "Textaudit",
+        "path": "/workspace/luxestyle-review/produkttexte-20261026/katalog/audit-v1/summary.json",
+        "version": "1.0.0",
+        "rows": 56630,
+        "shortUnder120Words": 51082,
+        "veryShortUnder60Words": 10843,
+        "interpretation": "Heuristische Textlängen-Signale, keine Fehlerquote und keine Aufforderung alle Texte zu verlängern."
+      },
+      {
+        "name": "Optionsaudit",
+        "path": "/workspace/luxestyle-review/katalogpflege-20261026/options/snapshot-v2/coverage.json",
+        "version": "options-triage-1.0.1",
+        "optionCoverageCompleteValid": 56630,
+        "variantCoverage": "NOT_EXPORTED",
+        "confirmedVariantMismatches": null,
+        "interpretation": "Alle historischen Optionsfelder vorhanden; keine vollständige Varianten-, Verfügbarkeits- oder Storefrontprüfung."
+      },
+      {
+        "name": "Auswahl-Ledger",
+        "path": "/workspace/luxestyle-review/catalog-quality-20261029/coverage/LEDGER-DENOMINATORS.json",
+        "lastEventUTC": "2026-10-29T03:06:12.068Z",
+        "latestStates": {
+          "GESCHRIEBEN": 6021,
+          "UEBERSPRUNGEN": 2720,
+          "SKU_GESETZT": 4
+        },
+        "everSkipped": 3000,
+        "everSkippedNowSuccessful": 280,
+        "singleVariantLatestSkips": 2198,
+        "currentCandidateDenominator": null,
+        "completionPercent": null,
+        "interpretation": "Fremdablaufprotokoll; keine eigene aktuelle Vollgegenprobe."
+      }
+    ],
+    "reusableHelpers": [
+      {
+        "path": "/workspace/luxestyle-review/produkttexte-20261026/katalog/classify_product_texts.py",
+        "purpose": "Bestehendes Textaudit und SQLite/CSV wiederverwenden"
+      },
+      {
+        "path": "/workspace/luxestyle-review/katalogpflege-20261026/options/triage_options.py",
+        "purpose": "Options-Triage 1.0.1 mit existierender snapshot-v2-Abdeckung; keine Variantenwahrheit daraus ableiten"
+      },
+      {
+        "path": "automation/fortschritt_daten.mjs",
+        "purpose": "Aktuellen Kandidatenexport und eindeutige geschriebene Handles zusammenführen",
+        "warning": "Historischer Fallback ohne Kandidatenliste kann irreführend 100 % melden; nicht ausführen oder als aktuell produktiv korrigiert behaupten."
+      },
+      {
+        "path": "automation/auswahl_kandidaten.mjs",
+        "purpose": "Vorhandene Kandidatenlogik für tatsächlichen Auswahl-Nenner; frischer Export und Identitätsabgleich fehlen"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r4.packet.json",
+        "purpose": "Vorhandenen Materialschutz r4 prüfen und fortsetzen; 159 dokumentierte gezielte Prüfungen",
+        "warning": "Kein belegter echter Materiallauf, Merge oder Deployment. Runner-Zugriff, gemeinsame dauerhafte Ledgerroute und echte aktuelle Quellen sind Voraussetzungen."
+      }
+    ],
+    "neededForCurrentWholeCatalogMeasurement": [
+      "Aktueller eigener, abgeschlossen bestätigter Read-only-Snapshot mit stabilen Produkt-/Varianten-IDs, Status, Typ/Kategorie, Variantenoptionen, SKU, Bildern, CHF-Preisen, Material-/Massfeldern und Quellenstatus.",
+      "Je fachlich anwendbarem Attribut vier Zustände: vorhanden und geprüft, fehlt, unbekannt, nicht anwendbar. Exportfeld fehlt bedeutet unbekannt.",
+      "Historische und aktuelle IDs sauber verbinden; nie 26./27.10.-Zähler durch den 29.10.-Nenner teilen.",
+      "Bestehende Auswahl-/Materialarbeit über Ledger und IDs abgleichen; keine Doppelbearbeitung mit Claude.",
+      "DRAFT, ARCHIVED und UNLISTED dürfen Teil der Messung sein, werden dadurch aber nicht aktiviert."
+    ],
+    "actions": {
+      "ownRemoteReads": 0,
+      "ownRemoteWrites": 0,
+      "ownProductChanges": 0,
+      "newAutomations": 0,
+      "newFullCatalogQuery": false,
+      "localHistoricalSourceIntegrityChecked": true,
+      "ledgerHashesCheckedByChildAgent": true
+    }
+  },
+  "historicalLedger": {
+    "schemaVersion": 1,
+    "scope": "LuxeStyle; lokale Lesekopie, keine Remote-Abfragen oder Produktänderungen",
+    "analysedAtUTC": "2026-10-29T09:40:29.122454+00:00",
+    "sources": [
+      {
+        "path": "/workspace/luxestyle-review/product-attributes-20261029/PRODUKTANGABEN-STAND-20261029.md",
+        "bytes": 6067,
+        "sha256": "64670b2162ab29e7cffea0fd2772dfff7c13ccc318b35ad0ad9558fa47a2cd73"
+      },
+      {
+        "path": "/workspace/luxestyle-review/product-attributes-20261029/GEGENPROBE.json",
+        "bytes": 6131,
+        "sha256": "d3fc87a2f12114e93ba86d78601125aff15322df69c0fc8987ac038b97918fbd"
+      },
+      {
+        "path": "/workspace/luxestyle-review/morgenlauf-20261029/attribute-ledger/COUNTS.json",
+        "bytes": 2121,
+        "sha256": "10e89ce9f577b530b443fca0e97e85196d67e866236a4454b8d14b24a793a27f"
+      },
+      {
+        "path": "/workspace/luxestyle-review/morgenlauf-20261029/attribute-ledger/SOURCE-LEDGERS.json",
+        "bytes": 1837911,
+        "sha256": "4a6ded4bda9c077410fa7d45175dd2df2540200ac9877a1e62661ce4a487d519"
+      },
+      {
+        "path": "/workspace/luxestyle-review/morgenlauf-20261029/attribute-ledger/MANIFEST.json",
+        "bytes": 1591,
+        "sha256": "8bdb513b91f070e051c5826d4b511562c89579fad833df85c56aafed4f51c4c8"
+      },
+      {
+        "path": "/workspace/luxestyle-review/morgenlauf-20261029/attribute-ledger/BERICHT.md",
+        "bytes": 5601,
+        "sha256": "0fec21e1799ffe9a45f4ed978e559c72d87fb68c9309f269569ddb34ea19b86e"
+      },
+      {
+        "path": "/workspace/luxestyle-review/morgenlauf-20261029/attribute-ledger/SOURCE-CODE.json",
+        "bytes": 25562,
+        "sha256": "abd9548f01a5ca2d5b70423f86faf361f5d24a14f4a9f2c31bc67b024da793a6"
+      }
+    ],
+    "material": {
+      "historicalSnapshotDate": "2026-10-27",
+      "historicalActiveProducts": 56618,
+      "withoutVerifiedMaterialSource": 28170,
+      "historicalPercentWithoutVerifiedSource": 49.75449503691405,
+      "historicalWrites": 4538,
+      "newMaterialEntries": 1387,
+      "translatedExistingValues": 3151,
+      "interpretation": "49,8 % ist nur die datierte Planungszahl vom 27.10., kein aktueller katalogweiter Fehlanteil. Übersetzungen sind keine neu vervollständigten Produkte. Material-Metafeld, Materialoption und sichtbare Details können überlappen.",
+      "laterActiveCount": {
+        "value": 56620,
+        "precision": "EXACT",
+        "readWindowUTC": "2026-10-28T23:01:00Z/2026-10-28T23:06:00Z",
+        "attributesMeasured": false
+      },
+      "persistedSample": {
+        "count": 8,
+        "representative": false,
+        "independentMaterialTruthVerified": false
+      },
+      "currentCatalogMissingMaterialPercent": null
+    },
+    "optionsLedger": {
+      "repository": "allengchour-glitch/aban-news-landing",
+      "path": "dropship/cj_varianten_ledger.txt",
+      "hashVerification": {
+        "before": {
+          "commit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+          "gitBlobSha": "d0e5805608f3a063229167f8af03cff3ab1345b0",
+          "recomputedGitBlobSha": "d0e5805608f3a063229167f8af03cff3ab1345b0",
+          "hashMatches": true,
+          "contentSha256": "20e45f6048fd5638d034e487d7751f3d9f50a2f3b0547cc7f739e63c7a882588"
+        },
+        "after": {
+          "commit": "82b5b748d27eb78467434e282a6f5f79efe84cad",
+          "gitBlobSha": "928275d0e6d9d00c47ec93659eb0c04a269dcd73",
+          "recomputedGitBlobSha": "928275d0e6d9d00c47ec93659eb0c04a269dcd73",
+          "hashMatches": true,
+          "contentSha256": "75af3f51c2bd6c47a72d80a6596f38905569a9028fceae69a865939145b7c659"
+        }
+      },
+      "afterCommitTimeUTC": "2026-10-29T06:29:57Z",
+      "lastEventUTC": "2026-10-29T03:06:12.068Z",
+      "uniqueHandles": 8745,
+      "finalStatesByHandle": {
+        "GESCHRIEBEN": 6021,
+        "UEBERSPRUNGEN": 2720,
+        "SKU_GESETZT": 4
+      },
+      "latestSkipReasons": {
+        "single_cj_variant": 2198,
+        "availability_unverified": 84,
+        "cj_no_data": 22,
+        "deferred": 403,
+        "provisional": 5,
+        "foreign_plug": 8
+      },
+      "everSkippedUniqueHandles": 3000,
+      "everSkippedNowSuccessful": 280,
+      "addedSuccessHandles": 1910,
+      "addedLedgerRows": 2600,
+      "historicalCandidateCount": 29534,
+      "currentCandidateCount": null,
+      "currentOptionsCompletionPercent": null,
+      "interpretation": "GESCHRIEBEN belegt im Fremdablauf protokollierte productSet-Antworten, keine unabhängige aktuelle Storefront-/Attributprüfung. 3’000 jemals übersprungene Handles sind keine aktuelle offene Menge; letzter gespeicherter Zustand ergibt 2’720. Die 2’198 Einzelvarianten sind gemäss Ledger kein Auswahlproblem. Handles sind keine unveränderlichen Produkt-IDs."
+    },
+    "helpers": [
+      {
+        "path": "automation/fortschritt_daten.mjs",
+        "gitBlobSha": "1b38af146f5a91496749339f57adc7567b150b9d",
+        "use": "Aktuelle Kandidaten mit eindeutig geschriebenen Handles vereinen; SKU_GESETZT und übersprungen nicht als abgeschlossen zählen.",
+        "limitation": "Ohne aktuelle Kandidatenliste kann der vorhandene Fallback nur Erfolge als Nenner nehmen und fälschlich 100 % melden. Lokaler korrigierter Entwurf ist damit nicht als main/deployt nachgewiesen."
+      },
+      {
+        "path": "automation/auswahl_kandidaten.mjs",
+        "gitBlobSha": "bf3fd6e9ad2d69ee54fdb3d6985dbcb1312a7023",
+        "use": "Vorhandener Kandidatenhelfer; aktueller Kandidatenexport für belastbaren Auswahl-Nenner fehlt in diesem Beleg."
+      },
+      {
+        "path": "automation/cj_varianten_nachziehen.mjs",
+        "gitBlobSha": "2cff67e454bd8ddc4d0da2d3ae287894cf18eaba",
+        "use": "Quellpfad des Auswahl-Ledgers.",
+        "limitation": "GESCHRIEBEN nach productSet ohne userErrors und mit Variantenanzahl; keine separate Produkt-/Storefront-Gegenprobe in diesem Pfad."
+      }
+    ],
+    "attributeDenominators": {
+      "size": null,
+      "actualDimensions": null,
+      "colour": null,
+      "sku": null,
+      "image": null,
+      "price": null,
+      "note": "Kein aktueller vollständiger Attribut-Nenner aus diesen Dateien. 4 SKU_GESETZT sind protokollierte Aktionen, kein SKU-Vollständigkeitsbericht. Grössenoptionen wie S/M/L beweisen keine Masse in cm."
+    },
+    "nextStep": "Vorhandenen aktuellen Kandidatenexport und einen datierten, identitätsgeprüften Katalog-Snapshot über stabile Produkt-/Varianten-IDs zusammenführen. Pro anwendbarem Attribut vorhanden, fehlend, unbekannt und nicht anwendbar trennen. Keine neue Massenpagination für diese lokale Analyse.",
+    "actions": {
+      "remoteReads": 0,
+      "remoteWrites": 0,
+      "ownProductChanges": 0,
+      "catalogCompletionPercentage": null
+    }
+  },
+  "products": [
+    {
+      "kind": "controller",
+      "checkpoint": {
+        "state": "confirmed_native_and_public",
+        "productId": "gid://shopify/Product/15448847221121",
+        "request": {
+          "kind": "controller",
+          "productId": "gid://shopify/Product/15448847221121",
+          "option": {
+            "id": "gid://shopify/ProductOption/17880365564289",
+            "name": "Ausführung"
+          },
+          "values": null
+        },
+        "scope": "existing option label only; leave variants as is",
+        "confirmedAt": "2026-10-29T09:46:05.840986+00:00",
+        "variantCount": 2
+      },
+      "before": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448847221121",
+          "title": "Smartphone Game Controller Black Warrior",
+          "handle": "smartphone-game-controller-black-warrior-630600",
+          "updatedAt": "2026-10-27T20:58:02Z",
+          "status": "ACTIVE",
+          "onlineStoreUrl": "https://luxestyle.ch/products/smartphone-game-controller-black-warrior-630600",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "konsole",
+            "natel",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "sort-pc-komponenten",
+            "xbox"
+          ],
+          "descriptionHtml": "<p>Der Mobile Phone Clip-on Game Controller Black Warrior verwandelt dein Smartphone in eine portable Gaming-Konsole. Dieser Controller wurde speziell für mobile Gamer entwickelt und bietet präzise Steuerung und Komfort für lange Spielsessions. Dank des verstellbaren Clips ist er mit einer Vielzahl von Smartphones kompatibel und hält dein Gerät sicher in Position. Das ergonomische Design sorgt für einen angenehmen Griff, während die intuitive Tastenanordnung ein nahtloses Spielerlebnis ermöglicht. Einfach via USB verbinden und loslegen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Material: ABS</li>\n<li>Zusätzliche Funktionen: Unterstützt eine Telefonhalterung</li>\n<li>Anwendbare Produkte: Octopus</li>\n<li>Schnittstellentyp: USB</li>\n<li>Lieferumfang: Gamepad + Empfänger + Datenkabel * 1</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17880365564289",
+              "name": "Farbe",
+              "position": 1,
+              "linkedMetafield": null,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310045852033",
+                  "name": "Black Warrior 5pro",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310045884801",
+                  "name": "Octopus 5",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063873057153",
+                "title": "Black Warrior 5pro",
+                "position": 1,
+                "sku": "CJ-CJYX276901901AZ",
+                "price": "119.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419800355201",
+                  "tracked": false,
+                  "sku": "CJ-CJYX276901901AZ"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310045852033",
+                      "name": "Black Warrior 5pro"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063873089921",
+                "title": "Octopus 5",
+                "position": 2,
+                "sku": "CJ-CJYX276901902BY",
+                "price": "113.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419800387969",
+                  "tracked": false,
+                  "sku": "CJ-CJYX276901902BY"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310045884801",
+                      "name": "Octopus 5"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2Mzg3MzA4OTkyMSwibGFzdF92YWx1ZSI6Mn0="
+            }
+          }
+        }
+      },
+      "after": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448847221121",
+          "title": "Smartphone Game Controller Black Warrior",
+          "handle": "smartphone-game-controller-black-warrior-630600",
+          "updatedAt": "2026-10-29T09:45:23Z",
+          "status": "ACTIVE",
+          "onlineStoreUrl": "https://luxestyle.ch/products/smartphone-game-controller-black-warrior-630600",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "konsole",
+            "natel",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "sort-pc-komponenten",
+            "xbox"
+          ],
+          "descriptionHtml": "<p>Der Mobile Phone Clip-on Game Controller Black Warrior verwandelt dein Smartphone in eine portable Gaming-Konsole. Dieser Controller wurde speziell für mobile Gamer entwickelt und bietet präzise Steuerung und Komfort für lange Spielsessions. Dank des verstellbaren Clips ist er mit einer Vielzahl von Smartphones kompatibel und hält dein Gerät sicher in Position. Das ergonomische Design sorgt für einen angenehmen Griff, während die intuitive Tastenanordnung ein nahtloses Spielerlebnis ermöglicht. Einfach via USB verbinden und loslegen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Material: ABS</li>\n<li>Zusätzliche Funktionen: Unterstützt eine Telefonhalterung</li>\n<li>Anwendbare Produkte: Octopus</li>\n<li>Schnittstellentyp: USB</li>\n<li>Lieferumfang: Gamepad + Empfänger + Datenkabel * 1</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17880365564289",
+              "name": "Ausführung",
+              "position": 1,
+              "linkedMetafield": null,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310045852033",
+                  "name": "Black Warrior 5pro",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310045884801",
+                  "name": "Octopus 5",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063873057153",
+                "title": "Black Warrior 5pro",
+                "position": 1,
+                "sku": "CJ-CJYX276901901AZ",
+                "price": "119.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419800355201",
+                  "tracked": false,
+                  "sku": "CJ-CJYX276901901AZ"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Ausführung",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310045852033",
+                      "name": "Black Warrior 5pro"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063873089921",
+                "title": "Octopus 5",
+                "position": 2,
+                "sku": "CJ-CJYX276901902BY",
+                "price": "113.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419800387969",
+                  "tracked": false,
+                  "sku": "CJ-CJYX276901902BY"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Ausführung",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310045884801",
+                      "name": "Octopus 5"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2Mzg3MzA4OTkyMSwibGFzdF92YWx1ZSI6Mn0="
+            }
+          }
+        }
+      },
+      "write": {
+        "data": {
+          "productOptionUpdate": {
+            "userErrors": [],
+            "product": {
+              "id": "gid://shopify/Product/15448847221121",
+              "updatedAt": "2026-10-29T09:45:23Z",
+              "options": [
+                {
+                  "id": "gid://shopify/ProductOption/17880365564289",
+                  "name": "Ausführung",
+                  "position": 1,
+                  "optionValues": [
+                    {
+                      "id": "gid://shopify/ProductOptionValue/12310045852033",
+                      "name": "Black Warrior 5pro",
+                      "hasVariants": true
+                    },
+                    {
+                      "id": "gid://shopify/ProductOptionValue/12310045884801",
+                      "name": "Octopus 5",
+                      "hasVariants": true
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "portal",
+      "checkpoint": {
+        "state": "confirmed_native_and_public",
+        "productId": "gid://shopify/Product/15448848400769",
+        "request": {
+          "kind": "portal",
+          "productId": "gid://shopify/Product/15448848400769",
+          "option": {
+            "id": "gid://shopify/ProductOption/17880366809473"
+          },
+          "values": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12310047850881",
+              "name": "Schwarz-PlayStation Portal"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12310047883649",
+              "name": "Weiss-PlayStation Portal"
+            }
+          ]
+        },
+        "scope": "two existing option value names only; leave variants as is",
+        "confirmedAt": "2026-10-29T09:46:06.176405+00:00",
+        "variantCount": 2
+      },
+      "before": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448848400769",
+          "title": "Schutzhülle für Game Handheld",
+          "handle": "schutzhulle-fur-game-handheld-612500",
+          "updatedAt": "2026-10-26T00:43:55Z",
+          "status": "ACTIVE",
+          "onlineStoreUrl": "https://luxestyle.ch/products/schutzhulle-fur-game-handheld-612500",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "huelle",
+            "konsole",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "schutzhuelle",
+            "sort-konsolen",
+            "xbox"
+          ],
+          "descriptionHtml": "<p>Diese Schutzhülle aus TPU ist speziell für Game Handhelds entwickelt worden, um optimalen Schutz im Alltag zu bieten. Das robuste Material schützt dein Gerät zuverlässig vor Kratzern, Stössen und Abnutzung. Die Hülle wird im Spritzgussverfahren hergestellt, was eine präzise Passform und hohe Langlebigkeit gewährleistet. Sie ist einfach anzubringen und zu entfernen und bietet weiterhin vollen Zugriff auf alle Tasten und Anschlüsse deines Game Handhelds. Ideal für Gamer, die ihr Gerät sicher transportieren und aufbewahren möchten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Gefertigt aus strapazierfähigem TPU-Material</li>\n<li>Schützt effektiv vor Kratzern und Stössen</li>\n<li>Präzise Passform durch Spritzgussverfahren</li>\n<li>Einfache Montage und Demontage</li>\n<li>Lieferung in einer praktischen Farbverpackung</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17880366809473",
+              "name": "Farbe",
+              "position": 1,
+              "linkedMetafield": null,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310047850881",
+                  "name": "Black-PlayStation Portal",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310047883649",
+                  "name": "White-PlayStation Portal",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063874892161",
+                "title": "Black-PlayStation Portal",
+                "position": 1,
+                "sku": "CJ-CJYD225518201AZ",
+                "price": "23.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419802190209",
+                  "tracked": false,
+                  "sku": "CJ-CJYD225518201AZ"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310047850881",
+                      "name": "Black-PlayStation Portal"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063874924929",
+                "title": "White-PlayStation Portal",
+                "position": 2,
+                "sku": "CJ-CJYD225518202BY",
+                "price": "23.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419802222977",
+                  "tracked": false,
+                  "sku": "CJ-CJYD225518202BY"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310047883649",
+                      "name": "White-PlayStation Portal"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2Mzg3NDkyNDkyOSwibGFzdF92YWx1ZSI6Mn0="
+            }
+          }
+        }
+      },
+      "after": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448848400769",
+          "title": "Schutzhülle für Game Handheld",
+          "handle": "schutzhulle-fur-game-handheld-612500",
+          "updatedAt": "2026-10-29T09:45:40Z",
+          "status": "ACTIVE",
+          "onlineStoreUrl": "https://luxestyle.ch/products/schutzhulle-fur-game-handheld-612500",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "huelle",
+            "konsole",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "schutzhuelle",
+            "sort-konsolen",
+            "xbox"
+          ],
+          "descriptionHtml": "<p>Diese Schutzhülle aus TPU ist speziell für Game Handhelds entwickelt worden, um optimalen Schutz im Alltag zu bieten. Das robuste Material schützt dein Gerät zuverlässig vor Kratzern, Stössen und Abnutzung. Die Hülle wird im Spritzgussverfahren hergestellt, was eine präzise Passform und hohe Langlebigkeit gewährleistet. Sie ist einfach anzubringen und zu entfernen und bietet weiterhin vollen Zugriff auf alle Tasten und Anschlüsse deines Game Handhelds. Ideal für Gamer, die ihr Gerät sicher transportieren und aufbewahren möchten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Gefertigt aus strapazierfähigem TPU-Material</li>\n<li>Schützt effektiv vor Kratzern und Stössen</li>\n<li>Präzise Passform durch Spritzgussverfahren</li>\n<li>Einfache Montage und Demontage</li>\n<li>Lieferung in einer praktischen Farbverpackung</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/17880366809473",
+              "name": "Farbe",
+              "position": 1,
+              "linkedMetafield": null,
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310047850881",
+                  "name": "Schwarz-PlayStation Portal",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/12310047883649",
+                  "name": "Weiss-PlayStation Portal",
+                  "hasVariants": true,
+                  "linkedMetafieldValue": null
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063874892161",
+                "title": "Schwarz-PlayStation Portal",
+                "position": 1,
+                "sku": "CJ-CJYD225518201AZ",
+                "price": "23.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419802190209",
+                  "tracked": false,
+                  "sku": "CJ-CJYD225518201AZ"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310047850881",
+                      "name": "Schwarz-PlayStation Portal"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063874924929",
+                "title": "Weiss-PlayStation Portal",
+                "position": 2,
+                "sku": "CJ-CJYD225518202BY",
+                "price": "23.90",
+                "compareAtPrice": null,
+                "availableForSale": true,
+                "inventoryQuantity": 0,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55419802222977",
+                  "tracked": false,
+                  "sku": "CJ-CJYD225518202BY"
+                },
+                "selectedOptions": [
+                  {
+                    "name": "Farbe",
+                    "optionValue": {
+                      "id": "gid://shopify/ProductOptionValue/12310047883649",
+                      "name": "Weiss-PlayStation Portal"
+                    }
+                  }
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NjA2Mzg3NDkyNDkyOSwibGFzdF92YWx1ZSI6Mn0="
+            }
+          }
+        }
+      },
+      "write": {
+        "data": {
+          "productOptionUpdate": {
+            "userErrors": [],
+            "product": {
+              "id": "gid://shopify/Product/15448848400769",
+              "updatedAt": "2026-10-29T09:45:40Z",
+              "options": [
+                {
+                  "id": "gid://shopify/ProductOption/17880366809473",
+                  "name": "Farbe",
+                  "position": 1,
+                  "optionValues": [
+                    {
+                      "id": "gid://shopify/ProductOptionValue/12310047850881",
+                      "name": "Schwarz-PlayStation Portal",
+                      "hasVariants": true
+                    },
+                    {
+                      "id": "gid://shopify/ProductOptionValue/12310047883649",
+                      "name": "Weiss-PlayStation Portal",
+                      "hasVariants": true
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "independentProductReview": {
+    "reviewedAtUTC": "2026-10-29T09:52:56.359109+00:00",
+    "reviewer": "catalog_candidates29; separate offline review after root mutations",
+    "mode": "OFFLINE_ONLY_NO_API_NO_MUTATION",
+    "scope": "All saved keys, list membership/order and scalar fields in both native and public before/after objects; request/write/checkpoint consistency. Exactly two products/four variants.",
+    "result": "PASS_WITH_SCOPE_LIMITS",
+    "products": [
+      {
+        "kind": "controller",
+        "productId": "gid://shopify/Product/15448847221121",
+        "result": "PASS",
+        "checks": {
+          "expectedShopIdentity": true,
+          "expectedProductOptionIDs": true,
+          "completeTwoVariantLists": true,
+          "newerUpdatedAt": true,
+          "expectedOldLabel": true,
+          "allSavedNativeFieldsMatchExactAllowedTransform": true,
+          "allSavedPublicFieldsMatchExactAllowedTransform": true,
+          "publicHttp200": true,
+          "publicChronology": true,
+          "activeNonEmptyTagsAndRueckholPreserved": true,
+          "nullLinkedMetafieldsPreserved": true,
+          "publicAndNativeProductIdentityAndDescriptionAgree": true,
+          "publicAndNativeVariantMappingsAgree": true,
+          "publicImageReferencesAndMetadataUnchanged": true,
+          "mutationNoUserErrorsAndConsistentResult": true,
+          "checkpointConsistent": true
+        },
+        "nativeComparedScalarLeaves": 68,
+        "publicComparedScalarLeaves": 150,
+        "nativeActualChanges": [
+          {
+            "path": "/product/options/0/name",
+            "before": "Farbe",
+            "after": "Ausführung"
+          },
+          {
+            "path": "/product/updatedAt",
+            "before": "2026-10-27T20:58:02Z",
+            "after": "2026-10-29T09:45:23Z"
+          },
+          {
+            "path": "/product/variants/nodes/0/selectedOptions/0/name",
+            "before": "Farbe",
+            "after": "Ausführung"
+          },
+          {
+            "path": "/product/variants/nodes/1/selectedOptions/0/name",
+            "before": "Farbe",
+            "after": "Ausführung"
+          }
+        ],
+        "publicActualChanges": [
+          {
+            "path": "/product/options/0/name",
+            "before": "Farbe",
+            "after": "Ausführung"
+          },
+          {
+            "path": "/readAt",
+            "before": "2026-10-29T09:44:41.633671+00:00",
+            "after": "2026-10-29T09:46:05.840986+00:00"
+          }
+        ],
+        "unexpectedNativeChanges": [],
+        "unexpectedPublicChanges": []
+      },
+      {
+        "kind": "portal",
+        "productId": "gid://shopify/Product/15448848400769",
+        "result": "PASS",
+        "checks": {
+          "expectedShopIdentity": true,
+          "expectedProductOptionIDs": true,
+          "completeTwoVariantLists": true,
+          "newerUpdatedAt": true,
+          "expectedOldValues": true,
+          "allSavedNativeFieldsMatchExactAllowedTransform": true,
+          "allSavedPublicFieldsMatchExactAllowedTransform": true,
+          "publicHttp200": true,
+          "publicChronology": true,
+          "activeNonEmptyTagsAndRueckholPreserved": true,
+          "nullLinkedMetafieldsPreserved": true,
+          "publicAndNativeProductIdentityAndDescriptionAgree": true,
+          "publicAndNativeVariantMappingsAgree": true,
+          "publicImageReferencesAndMetadataUnchanged": true,
+          "mutationNoUserErrorsAndConsistentResult": true,
+          "checkpointConsistent": true
+        },
+        "nativeComparedScalarLeaves": 69,
+        "publicComparedScalarLeaves": 183,
+        "nativeActualChanges": [
+          {
+            "path": "/product/options/0/optionValues/0/name",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/options/0/optionValues/1/name",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/updatedAt",
+            "before": "2026-10-26T00:43:55Z",
+            "after": "2026-10-29T09:45:40Z"
+          },
+          {
+            "path": "/product/variants/nodes/0/selectedOptions/0/optionValue/name",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/nodes/0/title",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/nodes/1/selectedOptions/0/optionValue/name",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/nodes/1/title",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          }
+        ],
+        "publicActualChanges": [
+          {
+            "path": "/product/options/0/values/0",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/options/0/values/1",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/0/name",
+            "before": "Schutzhülle für Game Handheld - Black-PlayStation Portal",
+            "after": "Schutzhülle für Game Handheld - Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/0/option1",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/0/options/0",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/0/public_title",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/0/title",
+            "before": "Black-PlayStation Portal",
+            "after": "Schwarz-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/1/name",
+            "before": "Schutzhülle für Game Handheld - White-PlayStation Portal",
+            "after": "Schutzhülle für Game Handheld - Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/1/option1",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/1/options/0",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/1/public_title",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/product/variants/1/title",
+            "before": "White-PlayStation Portal",
+            "after": "Weiss-PlayStation Portal"
+          },
+          {
+            "path": "/readAt",
+            "before": "2026-10-29T09:44:41.984532+00:00",
+            "after": "2026-10-29T09:46:06.176405+00:00"
+          }
+        ],
+        "unexpectedNativeChanges": [],
+        "unexpectedPublicChanges": []
+      }
+    ],
+    "evidenceFiles": {
+      "PUBLIC-AFTER.json": {
+        "sha256": "d936ff64c266efcb59b1813daa5fd4acc6ed9afabb6e01de0ea6ed4f0154c1c5",
+        "bytes": 19510
+      },
+      "PUBLIC-BEFORE.json": {
+        "sha256": "0ec35d29ef9e9df1b30aef967ece739824f8e66b156a039aa77ded145a1ea425",
+        "bytes": 19492
+      },
+      "REQUESTS.json": {
+        "sha256": "218cf1e74ea35c8ab0745979b3e457dc630ce6b40313b4eb03e5afd50f26dbf7",
+        "bytes": 664
+      },
+      "controller-after.json": {
+        "sha256": "b7ad14168dacf023b30bf601cee1fd38dfe612742a27586ee4e1e65e3676c6d3",
+        "bytes": 4572
+      },
+      "controller-before.json": {
+        "sha256": "21714d0790f65d49107f25c737ae5425f94e4605d7659b0048deb827f6bb1d15",
+        "bytes": 4554
+      },
+      "controller-checkpoint.json": {
+        "sha256": "9b0ac560c6d3ff92abe12e6beb4f5db6550670b96d0d7ec1ae80b7e28f01fa5a",
+        "bytes": 468
+      },
+      "controller-write.json": {
+        "sha256": "53bd3f5c7458c28280539423fa1af433643d6dd4188a4a4a53a0339ac6a76878",
+        "bytes": 796
+      },
+      "portal-after.json": {
+        "sha256": "a3d7c11487574e8a8855f0abd8dea060de53106876293fb2439328e9a41ab077",
+        "bytes": 4640
+      },
+      "portal-before.json": {
+        "sha256": "ccff0d344957bf4d22e1f2266686ad89cb90e3a7edbcc9886ebf12da3dd64367",
+        "bytes": 4634
+      },
+      "portal-checkpoint.json": {
+        "sha256": "5fa1ad93f281f14b750277d94fa61b803b909eb49901538e1c2bdb0a83866205",
+        "bytes": 699
+      },
+      "portal-write.json": {
+        "sha256": "f22d832cc309812da224773fd74f6bd37ef1d3f4997cb311665e5f99254f5c29",
+        "bytes": 813
+      }
+    },
+    "limits": [
+      "Product image URL references and saved media metadata are unchanged; image bytes were not downloaded or compared by this review.",
+      "Native read does not include every Shopify field; preservation applies to captured fields only.",
+      "No independent supplier/material/dimensions/compatibility/claim validation; unchanged descriptions are not quality-approved.",
+      "No checkout, order, fulfillment or CJ sync execution was tested.",
+      "No Merchant/Search Console recrawl or Google acceptance result follows from these option-label changes.",
+      "Rueckhol tags preserved; no Social clearance."
+    ]
+  },
+  "sourceHashes": {
+    "products/PUBLIC-AFTER.json": "d936ff64c266efcb59b1813daa5fd4acc6ed9afabb6e01de0ea6ed4f0154c1c5",
+    "products/PUBLIC-BEFORE.json": "0ec35d29ef9e9df1b30aef967ece739824f8e66b156a039aa77ded145a1ea425",
+    "products/REQUESTS.json": "218cf1e74ea35c8ab0745979b3e457dc630ce6b40313b4eb03e5afd50f26dbf7",
+    "products/controller-after.json": "b7ad14168dacf023b30bf601cee1fd38dfe612742a27586ee4e1e65e3676c6d3",
+    "products/controller-before.json": "21714d0790f65d49107f25c737ae5425f94e4605d7659b0048deb827f6bb1d15",
+    "products/controller-checkpoint.json": "9b0ac560c6d3ff92abe12e6beb4f5db6550670b96d0d7ec1ae80b7e28f01fa5a",
+    "products/controller-write.json": "53bd3f5c7458c28280539423fa1af433643d6dd4188a4a4a53a0339ac6a76878",
+    "products/portal-after.json": "a3d7c11487574e8a8855f0abd8dea060de53106876293fb2439328e9a41ab077",
+    "products/portal-before.json": "ccff0d344957bf4d22e1f2266686ad89cb90e3a7edbcc9886ebf12da3dd64367",
+    "products/portal-checkpoint.json": "5fa1ad93f281f14b750277d94fa61b803b909eb49901538e1c2bdb0a83866205",
+    "products/portal-write.json": "f22d832cc309812da224773fd74f6bd37ef1d3f4997cb311665e5f99254f5c29",
+    "coverage/COVERAGE.json": "a87be553052e283e8fb03f3539519a172617afe94fdbf978f9e2913bd3263813",
+    "coverage/LEDGER-DENOMINATORS.json": "039344e754457bb593a5b01b88485da682fbeb0710d740220db08f3c4128f4ed",
+    "coverage/MANIFEST.json": "da90bde2e6cdc10127ed44684f83a0ebe9b7269cd7442553b51ab04bde3cdbd8",
+    "coverage/SNAPSHOT-INTEGRITY.json": "607c6e9500b6e1a22a7d44b44b07032bd7a702eb2d4afde2513c0eb99b049f54",
+    "candidates/BELEGPRUEFUNG.json": "c216af3feb10766cf81dd1d73a83949b397ef8f210aa70e96e1b1f88cf6235aa",
+    "candidates/MANIFEST.json": "5a359564af47803e3fca440c644f4e1716ceb3dd634f11c64c72a8313ffa35a2",
+    "candidates/NATIVE-PRODUCTS.json": "a8394e0ace65f1a7b2635f9c5629e6facd9fb5a5ed1f714cd3ff61d518550102",
+    "candidates/NATIVE-VARIABLES.json": "1f61956df26c088741bddadbca78d8058a6ded8a9530129b303ae4e64113b597",
+    "candidates/SNAPSHOT-TWO-PRODUCTS.json": "5facbdede8304cfeac9de70a617e33f72377554ca31370a6be04a60240a739ad",
+    "candidates/VALIDATION.json": "a3f53175d34ed63b865f323249fa7955f35315cfb38202330724404362be2a2d",
+    "candidates/VORSCHLAG.json": "690c2df35c582d8e4ac642a69a0d9950893bbe45e2ba3aae44e85749f5b98b16"
+  },
+  "merchantPush": "not_performed_authenticated_datasource_writer_unknown",
+  "liveSchema": "not_applied_MAIN_writer_blocked",
+  "claudeReceipt": "unknown",
+  "PUBLIC-BEFORE.json": [
+    {
+      "kind": "controller",
+      "url": "https://luxestyle.ch/products/smartphone-game-controller-black-warrior-630600.js",
+      "status": 200,
+      "readAt": "2026-10-29T09:44:41.633671+00:00",
+      "id": 15448847221121,
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Black Warrior 5pro",
+            "Octopus 5"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "id": 56063873057153,
+          "title": "Black Warrior 5pro",
+          "option1": "Black Warrior 5pro",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYX276901901AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Smartphone Game Controller Black Warrior - Black Warrior 5pro",
+          "public_title": "Black Warrior 5pro",
+          "options": [
+            "Black Warrior 5pro"
+          ],
+          "price": 11990,
+          "weight": 420,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        {
+          "id": 56063873089921,
+          "title": "Octopus 5",
+          "option1": "Octopus 5",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYX276901902BY",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Smartphone Game Controller Black Warrior - Octopus 5",
+          "public_title": "Octopus 5",
+          "options": [
+            "Octopus 5"
+          ],
+          "price": 11390,
+          "weight": 870,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        }
+      ],
+      "descriptionSHA256": "d3d001c85f79d0dc626f191701391f4f0bf498e51b7c4450206fa337bac656c3",
+      "imagesSHA256": "6897dc1c1149d792c9b58ae77c096adcb50de149dc4340130edf7e33b6ff8b28"
+    },
+    {
+      "kind": "portal",
+      "url": "https://luxestyle.ch/products/schutzhulle-fur-game-handheld-612500.js",
+      "status": 200,
+      "readAt": "2026-10-29T09:44:41.984532+00:00",
+      "id": 15448848400769,
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Black-PlayStation Portal",
+            "White-PlayStation Portal"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "id": 56063874892161,
+          "title": "Black-PlayStation Portal",
+          "option1": "Black-PlayStation Portal",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYD225518201AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 82635961958785,
+            "product_id": 15448848400769,
+            "position": 4,
+            "created_at": "2026-07-04T20:25:34+02:00",
+            "updated_at": "2026-07-04T20:25:37+02:00",
+            "alt": "Schutzhülle für Game Handheld – Ansicht 4",
+            "width": 1500,
+            "height": 1500,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e010211e-765f-4ea5-8b38-bd66f8f21768_trans.jpg?v=1783189537",
+            "variant_ids": [
+              56063874892161
+            ]
+          },
+          "available": true,
+          "name": "Schutzhülle für Game Handheld - Black-PlayStation Portal",
+          "public_title": "Black-PlayStation Portal",
+          "options": [
+            "Black-PlayStation Portal"
+          ],
+          "price": 2390,
+          "weight": 160,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Schutzhülle für Game Handheld – Ansicht 4",
+            "id": 69861499109761,
+            "position": 4,
+            "preview_image": {
+              "aspect_ratio": 1.0,
+              "height": 1500,
+              "width": 1500,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e010211e-765f-4ea5-8b38-bd66f8f21768_trans.jpg?v=1783189537"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        {
+          "id": 56063874924929,
+          "title": "White-PlayStation Portal",
+          "option1": "White-PlayStation Portal",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYD225518202BY",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 82635961762177,
+            "product_id": 15448848400769,
+            "position": 1,
+            "created_at": "2026-07-04T20:25:33+02:00",
+            "updated_at": "2026-07-04T20:25:37+02:00",
+            "alt": "Schutzhülle für Game Handheld",
+            "width": 1500,
+            "height": 1500,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/360ec1bc-c0c4-4f10-a4e5-bae037011a36_trans.jpg?v=1783189537",
+            "variant_ids": [
+              56063874924929
+            ]
+          },
+          "available": true,
+          "name": "Schutzhülle für Game Handheld - White-PlayStation Portal",
+          "public_title": "White-PlayStation Portal",
+          "options": [
+            "White-PlayStation Portal"
+          ],
+          "price": 2390,
+          "weight": 160,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Schutzhülle für Game Handheld",
+            "id": 69861498913153,
+            "position": 1,
+            "preview_image": {
+              "aspect_ratio": 1.0,
+              "height": 1500,
+              "width": 1500,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/360ec1bc-c0c4-4f10-a4e5-bae037011a36_trans.jpg?v=1783189537"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        }
+      ],
+      "descriptionSHA256": "79b58458f2fbbd3949cb48dc2bf6e8e7309ce053af4cf6cbabbdaa22ddf6d014",
+      "imagesSHA256": "04c73e9ac171859b60612d98cd2379eb0ac677c8466520fae4258d938d56b968"
+    }
+  ],
+  "PUBLIC-AFTER.json": [
+    {
+      "kind": "controller",
+      "url": "https://luxestyle.ch/products/smartphone-game-controller-black-warrior-630600.js",
+      "status": 200,
+      "readAt": "2026-10-29T09:46:05.840986+00:00",
+      "id": 15448847221121,
+      "options": [
+        {
+          "name": "Ausführung",
+          "position": 1,
+          "values": [
+            "Black Warrior 5pro",
+            "Octopus 5"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "id": 56063873057153,
+          "title": "Black Warrior 5pro",
+          "option1": "Black Warrior 5pro",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYX276901901AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Smartphone Game Controller Black Warrior - Black Warrior 5pro",
+          "public_title": "Black Warrior 5pro",
+          "options": [
+            "Black Warrior 5pro"
+          ],
+          "price": 11990,
+          "weight": 420,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        {
+          "id": 56063873089921,
+          "title": "Octopus 5",
+          "option1": "Octopus 5",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYX276901902BY",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Smartphone Game Controller Black Warrior - Octopus 5",
+          "public_title": "Octopus 5",
+          "options": [
+            "Octopus 5"
+          ],
+          "price": 11390,
+          "weight": 870,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        }
+      ],
+      "descriptionSHA256": "d3d001c85f79d0dc626f191701391f4f0bf498e51b7c4450206fa337bac656c3",
+      "imagesSHA256": "6897dc1c1149d792c9b58ae77c096adcb50de149dc4340130edf7e33b6ff8b28"
+    },
+    {
+      "kind": "portal",
+      "url": "https://luxestyle.ch/products/schutzhulle-fur-game-handheld-612500.js",
+      "status": 200,
+      "readAt": "2026-10-29T09:46:06.176405+00:00",
+      "id": 15448848400769,
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Schwarz-PlayStation Portal",
+            "Weiss-PlayStation Portal"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "id": 56063874892161,
+          "title": "Schwarz-PlayStation Portal",
+          "option1": "Schwarz-PlayStation Portal",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYD225518201AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 82635961958785,
+            "product_id": 15448848400769,
+            "position": 4,
+            "created_at": "2026-07-04T20:25:34+02:00",
+            "updated_at": "2026-07-04T20:25:37+02:00",
+            "alt": "Schutzhülle für Game Handheld – Ansicht 4",
+            "width": 1500,
+            "height": 1500,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e010211e-765f-4ea5-8b38-bd66f8f21768_trans.jpg?v=1783189537",
+            "variant_ids": [
+              56063874892161
+            ]
+          },
+          "available": true,
+          "name": "Schutzhülle für Game Handheld - Schwarz-PlayStation Portal",
+          "public_title": "Schwarz-PlayStation Portal",
+          "options": [
+            "Schwarz-PlayStation Portal"
+          ],
+          "price": 2390,
+          "weight": 160,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Schutzhülle für Game Handheld – Ansicht 4",
+            "id": 69861499109761,
+            "position": 4,
+            "preview_image": {
+              "aspect_ratio": 1.0,
+              "height": 1500,
+              "width": 1500,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e010211e-765f-4ea5-8b38-bd66f8f21768_trans.jpg?v=1783189537"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        {
+          "id": 56063874924929,
+          "title": "Weiss-PlayStation Portal",
+          "option1": "Weiss-PlayStation Portal",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-CJYD225518202BY",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 82635961762177,
+            "product_id": 15448848400769,
+            "position": 1,
+            "created_at": "2026-07-04T20:25:33+02:00",
+            "updated_at": "2026-07-04T20:25:37+02:00",
+            "alt": "Schutzhülle für Game Handheld",
+            "width": 1500,
+            "height": 1500,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/360ec1bc-c0c4-4f10-a4e5-bae037011a36_trans.jpg?v=1783189537",
+            "variant_ids": [
+              56063874924929
+            ]
+          },
+          "available": true,
+          "name": "Schutzhülle für Game Handheld - Weiss-PlayStation Portal",
+          "public_title": "Weiss-PlayStation Portal",
+          "options": [
+            "Weiss-PlayStation Portal"
+          ],
+          "price": 2390,
+          "weight": 160,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Schutzhülle für Game Handheld",
+            "id": 69861498913153,
+            "position": 1,
+            "preview_image": {
+              "aspect_ratio": 1.0,
+              "height": 1500,
+              "width": 1500,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/360ec1bc-c0c4-4f10-a4e5-bae037011a36_trans.jpg?v=1783189537"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        }
+      ],
+      "descriptionSHA256": "79b58458f2fbbd3949cb48dc2bf6e8e7309ce053af4cf6cbabbdaa22ddf6d014",
+      "imagesSHA256": "04c73e9ac171859b60612d98cd2379eb0ac677c8466520fae4258d938d56b968"
+    }
+  ]
+}
