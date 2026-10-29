@@ -42,3 +42,12 @@ Vor jeder Dokumentationsänderung die konkrete Zieldatei frisch lesen. Einen beg
 Tatsächliche Prüfung, Vorbereitung, Umsetzung und Blocker im bestehenden Datumsblock des Tagesprotokolls ergänzen. Keine Kundeninformationen, Zugangsdaten oder Zahlungszertifikate im Gedächtnis speichern. Zur Freigabe ausschliesslich einen konkreten prüfbaren Diff oder fertigen Film vorlegen, wenn eine bisher nicht erteilte Freigabe tatsächlich erforderlich ist.
 
 Der vorhandene LuxeStyle-Auftrag bleibt der Auslöser der Arbeit. Sein Zeitplan und Berichtsrhythmus werden durch dieses Gedächtnis nicht geändert. Eine gespeicherte Aufgabenergänzung belegt ihre Konfiguration; erst ein nachfolgender Lauf kann die tatsächliche Verwendung bestätigen. Lokale Skilldateien und Hookquellen sind kein Nachweis geladener Skills oder durchgesetzter Hooks.
+
+
+## Kaufziel: aktuelle Präzisierung vom 29.10.2026
+
+[LUXESTYLE_ERSTER_NEUER_KAUF_20261029] Massgebend ist jetzt die ausdrückliche Baseline `2026-10-28T23:48:36Z`. Die frühere Baseline und Prüfung bleiben als historische Quelle im Arbeitsstand erhalten. Je bestehendem Lauf 08:00/14:00/19:00 Europe/Zurich ist ein enger neuer Bestellbeleg-Check nach Schema-/Queryprüfung erlaubt; dies ist kein zusätzlicher Vollreport und ändert die Frequenz nicht. Keine Kundenprofile, Kontakt-, Adress- oder Zahlungsdetails abfragen.
+
+Es zählt ausschliesslich eine neue nicht stornierte Nicht-Testbestellung mit positivem aktuellem Gesamtbetrag, PAID und mindestens einer erfolgreichen positiven Nicht-Test-SALE/CAPTURE eines echten nicht manuellen Zahlungsanbieters; Gratis-/Test-/vollständig erstattete Bestellungen und manuelles Als-bezahlt-Markieren zählen nicht. Fehlende Transaktionsdaten bleiben unbekannt. Ersten belegten Treffer mit Bestellnummer, Zürcher Zeit, Betrag/Währung und Zahlungsstatus melden, den bestehenden Kauf-Watch mit Beleg als ERREICHT markieren und nur diesen Watchteil beenden. Keine Kaufursache behaupten; alle anderen bestehenden Aufgaben/Läufe bleiben erhalten.
+
+Ads-Konfiguration und vorbereitete Inhalte sind keine Kaufbelege. Bestehender pausierter Entwurf 24403263741 und CHF 58-Gesamtkostenlimit bleiben gebunden; kein automatischer Start, keine Verlängerung/Budgeterhöhung oder Änderung an Kontozielen durch das Gedächtnis. Aktuelle Einzelnachweise stehen im Arbeitsstand und im Morgenpaket vom 29.10.
