@@ -1,0 +1,1018 @@
+{
+  "scope": "One unchanged masterId; original filename keys resolve enclosed source references; not a publication ledger",
+  "files": {
+    "MASTER-CURRENT-20261029.json": {
+      "schemaVersion": 1,
+      "recordedAtUtc": "2026-10-29T07:20:41.510990+00:00",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "masterCount": 1,
+      "role": "review_only",
+      "professionalMasterMp4": null,
+      "professionalMasterSha256": null,
+      "newRenderedMaster": false,
+      "publicationReady": false,
+      "target": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 18,
+        "frames": 540
+      },
+      "previous28OctFrameplanUnchanged": true,
+      "sourceFrameplanFile": "MASTER-PLAN-ABEND.json",
+      "sourceFrameplanSha256": "198d1eda84a7770e3e6fd2e9f8fa211d2671b1ce77948e2c01315e39117695d5",
+      "hooks": [
+        {
+          "key": "A",
+          "text": "Dein Raum. Neues Licht.",
+          "visual": "actual matching room projection"
+        },
+        {
+          "key": "B",
+          "text": "Licht im Detail.",
+          "visual": "actual native device close-up; no invented source timecode"
+        }
+      ],
+      "sourceCountOrHookDoesNotCreateNewMaster": true,
+      "newOpenProductionStep": {
+        "type": "targeted_power_reference_review_and_exact_off_film_evidence_request",
+        "proofFile": "STROM-ZUORDNUNG-20261029.json",
+        "newGalleryImageReviewed": "gid://shopify/MediaImage/70733173752193",
+        "result": "both viewed device references do not supply readable input/adapter/plug evidence; collage is not motif/music/native-film proof",
+        "allActualElectricalFacts": {
+          "connectorType": null,
+          "deviceModelMarking": null,
+          "inputVoltage": null,
+          "inputCurrent": null,
+          "powerConsumption": null,
+          "suppliedCable": null,
+          "adapterIncluded": null,
+          "adapterModel": null,
+          "adapterOutput": null,
+          "mainsPlugType": null,
+          "swissSupplyBinding": "unknown"
+        },
+        "newProofRows": [
+          {
+            "id": "PWR-01",
+            "required": "Real exact device photographed with front and rear/underside model/input marking plus supplier/default-variant binding; identity must match15521256604033/56197916361089.",
+            "evidenceRef": null,
+            "state": "unknown"
+          },
+          {
+            "id": "PWR-02",
+            "required": "Readable original input label, without invented units, inferred voltage or connector name. Bind photo hash to same physical device.",
+            "evidenceRef": null,
+            "state": "unknown"
+          },
+          {
+            "id": "PWR-03",
+            "required": "Actually supplied cable and both physical ends, with source/delivery document identifying what is included. A generic supplier marketing collage does not settle inclusion.",
+            "evidenceRef": null,
+            "state": "unknown"
+          },
+          {
+            "id": "PWR-04",
+            "required": "Document whether a mains adapter is supplied. If supplied or shown in the film, capture its real model/output label and actual plug with corresponding source evidence. If not supplied, record that source explicitly; do not imply a Swiss adapter in copy or film.",
+            "evidenceRef": null,
+            "state": "unknown"
+          }
+        ]
+      },
+      "captionChanges": [
+        {
+          "channel": "facebook",
+          "before": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle und sieh dir die aktuelle Ausführung und die Produktangaben an.",
+          "after": "Ein Blick aufs Detail: Entdecke den Sternenlicht-Projektor bei LuxeStyle. Aktuelle Produktansichten und Angaben zur Ausführung findest du hier.",
+          "scope": "one neutral copy refinement; title/master/product/UTM unchanged"
+        }
+      ],
+      "captions": [
+        {
+          "channel": "instagram",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail",
+          "caption": "Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+          "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+          "bioProductTargetVerified": false,
+          "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+          "ownerBioChangeImplemented": "unknown"
+        },
+        {
+          "channel": "tiktok",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Dein Raum. Neues Licht.",
+          "caption": "Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+          "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+          "bioProductTargetVerified": false,
+          "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+          "ownerBioChangeImplemented": "unknown"
+        },
+        {
+          "channel": "youtube",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+          "caption": "Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben findest du unter der folgenden Adresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; die Adresse im Browser öffnen.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+          "captionUrlPlacement": "address not clickable in Shorts",
+          "channelGate": "Audience already owner-confirmed: general audience, not specifically made for kids. No verified profile product link.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "facebook",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Licht im Detail.",
+          "caption": "Ein Blick aufs Detail: Entdecke den Sternenlicht-Projektor bei LuxeStyle. Aktuelle Produktansichten und Angaben zur Ausführung findest du hier.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "threads",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Ein Detail für deinen Raum",
+          "caption": "Ein Detail für deinen Raum: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten und Angaben zur aktuellen Ausführung:",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        },
+        {
+          "channel": "pinterest",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+          "caption": "Eine Produktidee für deinen Nachttisch. Entdecke den Sternenlicht-Projektor und die aktuellen Produktangaben bei LuxeStyle.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+          "captionUrlPlacement": "product link",
+          "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+          "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+          "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+        }
+      ],
+      "youtubeAudience": {
+        "ownerDecision": "general audience, not specifically made for kids",
+        "belegArt": "QUELLE existing owner-confirmation record, not new platform read",
+        "sourceFile": "CAPTIONS-UTM-ABEND.json",
+        "sourceRecordChannel": "youtube",
+        "sourceText": "Audience already owner-confirmed: general audience, not specifically made for kids. No verified profile product link.",
+        "freshSourceBundleGitBlob": "fe427c113d7a56cd0e330a01e36ea5741f2b5241",
+        "actualPlatformSetting": "unknown_not_read",
+        "requestOwnerDecisionAgain": false
+      },
+      "pinterestBoard": "unknown",
+      "instagramTikTokProductBioTarget": "unknown; separate documented costume-collection destination retained",
+      "voiceover": false,
+      "musicEvidenceFile": "MUSIC-AND-PREVIOUS-MASTER.json",
+      "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "finalAudioHearing": "unknown_not_performed",
+      "productEvidenceFile": "PRODUCTS-CURRENT.json",
+      "realImageReferencesFile": "IMAGE-REFERENCES.json",
+      "durablePublicationLedger": "unknown_no_initialisation_or_reset",
+      "allChannelsState": "blocked_no_approved_professional_master",
+      "newAudioFiles": 0,
+      "renders": 0,
+      "shopifyWrites": 0,
+      "socialWrites": 0,
+      "metricsFlowOrderQueries": 0
+    },
+    "PRODUCTS-CURRENT.json": {
+      "checkedAtUtc": "2026-10-29T07:17:44.942175+00:00",
+      "scope": "exactly two selected Shopify products, one tracking/policy GraphQL query, two Ajax GETs, two image GETs; no pagination, checkout, catalog scan or sales reports",
+      "shop": {
+        "name": "LuxeStyle",
+        "domain": "luxestyle.ch",
+        "planName": "Shopify",
+        "currencyCode": "CHF",
+        "timezone": "CET",
+        "country": "Switzerland",
+        "criticalUserMessage": ""
+      },
+      "products": [
+        {
+          "key": "projector",
+          "id": "gid://shopify/Product/15521256604033",
+          "title": "Sternenlicht-Projektor für Schlafzimmer",
+          "status": "ACTIVE",
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "sort-nachtlichter",
+            "sort-nachttischlampen",
+            "tech"
+          ],
+          "currency": "CHF",
+          "variant": {
+            "id": "gid://shopify/ProductVariant/56197916361089",
+            "title": "Default Title",
+            "sku": "CJ-1477820492730732544",
+            "price": "34.90",
+            "inventoryQuantity": 0,
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "mainImage": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70733173424513"
+          },
+          "publicVerification": {
+            "key": "projector",
+            "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+            "checkedAtUtc": "2026-10-29T07:12:07.286889+00:00",
+            "requests": 1,
+            "redirectsFollowed": false,
+            "retries": 0,
+            "indexing": "unknown_not_queried",
+            "httpStatus": 200,
+            "truncated": false,
+            "sha256": "e8c24630c226812e5b674f6473e40de81951a05553840ae2b7e798682a0cf815",
+            "productId": "15521256604033",
+            "available": true,
+            "exactVariantMatches": 1,
+            "variant": {
+              "id": 56197916361089,
+              "title": "Default Title",
+              "sku": "CJ-1477820492730732544",
+              "price": 3490,
+              "available": true
+            },
+            "state": "verified_public_variant",
+            "currencyContext": "CHF from freshly connected shop; Ajax omits explicit currency"
+          },
+          "tagGate": {
+            "key": "projector",
+            "id": "gid://shopify/Product/15521256604033",
+            "nonEmptyTags": true,
+            "guardMatches": [],
+            "ownerRueckholMatches": [],
+            "tagGatePassed": true,
+            "publicationReady": false,
+            "reason": "Tag gate alone is not film/rights/variant/power/channel/history approval"
+          },
+          "variantsHasNextPage": false,
+          "deliveryOrStockPromise": false
+        },
+        {
+          "key": "diffuser",
+          "id": "gid://shopify/Product/15408457744769",
+          "title": "Premium Bambus Aroma Diffuser 300ml",
+          "status": "ACTIVE",
+          "tags": [
+            "aroma diffuser schweiz",
+            "aroma-wellness",
+            "aromatherapie",
+            "aromatherapie diffuser",
+            "bambus",
+            "bambus aroma diffuser",
+            "bambus design",
+            "bild-ok",
+            "diffuser",
+            "kat-aroma",
+            "kuratiert",
+            "luxestyle-ch",
+            "nachhaltig",
+            "premium",
+            "premium lifestyle",
+            "schlafzimmer",
+            "schweizer interieur",
+            "swiss-brand",
+            "ultraschall",
+            "ultraschall diffuser",
+            "vegan",
+            "wellness",
+            "wellness zuhause"
+          ],
+          "currency": "CHF",
+          "variant": {
+            "id": "gid://shopify/ProductVariant/55732479099265",
+            "title": "Default Title",
+            "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF",
+            "price": "39.90",
+            "inventoryQuantity": 0,
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          "url": "https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml",
+          "mainImage": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+            "altText": "Premium Bambus Aroma Diffuser 300ml – LuxeStyle Schweiz",
+            "mediaId": "gid://shopify/MediaImage/69731158983041"
+          },
+          "publicVerification": {
+            "key": "diffuser",
+            "url": "https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml.js",
+            "checkedAtUtc": "2026-10-29T07:12:07.660838+00:00",
+            "requests": 1,
+            "redirectsFollowed": false,
+            "retries": 0,
+            "indexing": "unknown_not_queried",
+            "httpStatus": 200,
+            "truncated": false,
+            "sha256": "f4576063a3097b53d0ac4daaf876cc0fcc36b4a4231321bee8f30fc07ee203fa",
+            "productId": "15408457744769",
+            "available": true,
+            "exactVariantMatches": 1,
+            "variant": {
+              "id": 55732479099265,
+              "title": "Default Title",
+              "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF",
+              "price": 3990,
+              "available": true
+            },
+            "state": "verified_public_variant",
+            "currencyContext": "CHF from freshly connected shop; Ajax omits explicit currency"
+          },
+          "tagGate": {
+            "key": "diffuser",
+            "id": "gid://shopify/Product/15408457744769",
+            "nonEmptyTags": true,
+            "guardMatches": [],
+            "ownerRueckholMatches": [],
+            "tagGatePassed": true,
+            "publicationReady": false,
+            "reason": "Tag gate alone is not film/rights/variant/power/channel/history approval"
+          },
+          "variantsHasNextPage": false,
+          "deliveryOrStockPromise": false
+        }
+      ],
+      "selectionCaution": "Diffuser15408457744769/CHF39.90 is a different product from28Oct master second product15411554320769/CHF44.90; no price cut inferred",
+      "imageVisualReview": "projector cached main and one new gallery collage; new selected diffuser main actually viewed; supplied equipment/materials not inferred",
+      "schemaValidation": "MCP validator skipped; query executed successfully with server validation",
+      "shopifyWrites": 0,
+      "socialWrites": 0,
+      "renders": 0,
+      "metricsFlowOrderQueries": 0,
+      "publicationReady": false
+    },
+    "STROM-ZUORDNUNG-20261029.json": {
+      "recordedAtUtc": "2026-10-29T07:17:44.942645+00:00",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "taskId": "master-projector-15521256604033",
+      "classification": "GEMESSEN two viewed real gallery references; SETZUNG new off-film evidence intake, not an existing video or technical approval",
+      "scope": "main reference plus gallery image12 only; not all gallery images or hidden sides of device",
+      "observedImages": [
+        {
+          "mediaId": "gid://shopify/MediaImage/70733173424513",
+          "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+          "observed": "Light housing, bracket, dark star cover and four front buttons; front connection opening visible. Separate cover beside device. No readable electrical input label, supplied cable, power adapter or mains plug shown in this image.",
+          "limits": "No connector type, supplied accessory or electrical rating inferred."
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70733173752193",
+          "sha256": "45f529bd522a8bb17d793cfa591e2d0626b52fd5ccc16348093af486caef263e",
+          "observed": "Illustrated collage with device, blue/purple star background, yellow dome, music symbols and scene labels; no readable technical input label, actual supplied cable, adapter or mains plug.",
+          "limits": "Not a native video frame or default motif/music/function/people-rights proof; no collage reuse in master."
+        }
+      ],
+      "actualElectricalFacts": {
+        "connectorType": null,
+        "deviceModelMarking": null,
+        "inputVoltage": null,
+        "inputCurrent": null,
+        "powerConsumption": null,
+        "suppliedCable": null,
+        "adapterIncluded": null,
+        "adapterModel": null,
+        "adapterOutput": null,
+        "mainsPlugType": null,
+        "swissSupplyBinding": "unknown"
+      },
+      "newOffFilmEvidenceRequest": [
+        {
+          "id": "PWR-01",
+          "required": "Real exact device photographed with front and rear/underside model/input marking plus supplier/default-variant binding; identity must match15521256604033/56197916361089.",
+          "evidenceRef": null,
+          "state": "unknown"
+        },
+        {
+          "id": "PWR-02",
+          "required": "Readable original input label, without invented units, inferred voltage or connector name. Bind photo hash to same physical device.",
+          "evidenceRef": null,
+          "state": "unknown"
+        },
+        {
+          "id": "PWR-03",
+          "required": "Actually supplied cable and both physical ends, with source/delivery document identifying what is included. A generic supplier marketing collage does not settle inclusion.",
+          "evidenceRef": null,
+          "state": "unknown"
+        },
+        {
+          "id": "PWR-04",
+          "required": "Document whether a mains adapter is supplied. If supplied or shown in the film, capture its real model/output label and actual plug with corresponding source evidence. If not supplied, record that source explicitly; do not imply a Swiss adapter in copy or film.",
+          "evidenceRef": null,
+          "state": "unknown"
+        }
+      ],
+      "bindingBeforeCut": {
+        "sameDeviceAndSupplierVariant": "unknown",
+        "actualPowerChainMatchesFilm": "unknown",
+        "commercialImageFilmRights": "unknown",
+        "technicalApproval": "not_established_from_photos",
+        "sourceSha256": null,
+        "reviewedBy": null,
+        "reviewedAt": null
+      },
+      "timelineChanged": false,
+      "extraSceneAdded": false,
+      "original18SecondsAnd540FramesRetained": true,
+      "sourceAcquisitionOrSupplierMessagePerformed": false,
+      "generatedOrEditedImage": false,
+      "publicationReady": false
+    },
+    "CAPTIONS-UTM-20261029.json": [
+      {
+        "channel": "instagram",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail",
+        "caption": "Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown"
+      },
+      {
+        "channel": "tiktok",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Dein Raum. Neues Licht.",
+        "caption": "Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown"
+      },
+      {
+        "channel": "youtube",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+        "caption": "Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben findest du unter der folgenden Adresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; die Adresse im Browser öffnen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+        "captionUrlPlacement": "address not clickable in Shorts",
+        "channelGate": "Audience already owner-confirmed: general audience, not specifically made for kids. No verified profile product link.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "facebook",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Licht im Detail.",
+        "caption": "Ein Blick aufs Detail: Entdecke den Sternenlicht-Projektor bei LuxeStyle. Aktuelle Produktansichten und Angaben zur Ausführung findest du hier.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "threads",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Ein Detail für deinen Raum",
+        "caption": "Ein Detail für deinen Raum: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten und Angaben zur aktuellen Ausführung:",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "pinterest",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "caption": "Eine Produktidee für deinen Nachttisch. Entdecke den Sternenlicht-Projektor und die aktuellen Produktangaben bei LuxeStyle.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      }
+    ],
+    "MASTER-PLAN-ABEND.json": {
+      "status": "same_open_master_plan_not_rendered_not_publishable",
+      "master_count": 1,
+      "source": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+      "source_sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "source_fps": 25,
+      "target_fps": 30,
+      "duration_seconds": 18,
+      "speed": 1,
+      "optical_flow": false,
+      "audio": {
+        "only_permitted_music": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+        "voiceover": false,
+        "source_audio": false,
+        "listening_approval": false,
+        "rawMusicFirst18TechnicalMeasurement": "HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+        "musicGainDbPlanned": 0,
+        "additionalSoundEffects": false,
+        "finalMixAndListeningApproved": false
+      },
+      "segments": [
+        {
+          "name": "hook_a",
+          "master_in": "0.00",
+          "master_out": "2.00",
+          "source_in": "20.52",
+          "source_out": "22.52",
+          "crop": {
+            "w": 540,
+            "h": 540,
+            "x": 210,
+            "y": 0
+          },
+          "text": [
+            "Dein Raum. Neues Licht."
+          ],
+          "source_first_frame": 513,
+          "source_out_exclusive_frame": 563,
+          "source_frame_count": 50,
+          "target_first_frame": 0,
+          "target_out_exclusive_frame": 60,
+          "target_frame_count": 60
+        },
+        {
+          "name": "bedienung",
+          "master_in": "2.00",
+          "master_out": "7.60",
+          "source_in": "3.00",
+          "source_out": "8.60",
+          "crop": {
+            "w": 540,
+            "h": 540,
+            "x": 300,
+            "y": 0
+          },
+          "text": [
+            "Sternenlicht-Projektor",
+            "Aus der Nähe entdecken."
+          ],
+          "text_change_master": "4.60",
+          "source_first_frame": 75,
+          "source_out_exclusive_frame": 215,
+          "source_frame_count": 140,
+          "target_first_frame": 60,
+          "target_out_exclusive_frame": 228,
+          "target_frame_count": 168
+        },
+        {
+          "name": "projektion",
+          "master_in": "7.60",
+          "master_out": "12.40",
+          "source_in": "12.36",
+          "source_out": "17.16",
+          "crop": {
+            "w": 540,
+            "h": 540,
+            "x": 210,
+            "y": 0
+          },
+          "text": [
+            "Für besondere Lichtmomente."
+          ],
+          "source_first_frame": 309,
+          "source_out_exclusive_frame": 429,
+          "source_frame_count": 120,
+          "target_first_frame": 228,
+          "target_out_exclusive_frame": 372,
+          "target_frame_count": 144
+        },
+        {
+          "name": "detail",
+          "master_in": "12.40",
+          "master_out": "14.00",
+          "source_in": "17.20",
+          "source_out": "18.80",
+          "crop": {
+            "w": 540,
+            "h": 540,
+            "x": 210,
+            "y": 0
+          },
+          "text": [],
+          "source_first_frame": 430,
+          "source_out_exclusive_frame": 470,
+          "source_frame_count": 40,
+          "target_first_frame": 372,
+          "target_out_exclusive_frame": 420,
+          "target_frame_count": 48
+        },
+        {
+          "name": "cta",
+          "master_in": "14.00",
+          "master_out": "18.00",
+          "source_in": "23.52",
+          "source_out": "27.52",
+          "crop": {
+            "w": 540,
+            "h": 540,
+            "x": 210,
+            "y": 0
+          },
+          "text": [
+            "Produkt ansehen",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "price_recheck_before_publication": true,
+          "source_first_frame": 588,
+          "source_out_exclusive_frame": 688,
+          "source_frame_count": 100,
+          "target_first_frame": 420,
+          "target_out_exclusive_frame": 540,
+          "target_frame_count": 120
+        }
+      ],
+      "open_gates": [
+        "native_premium_source_quality",
+        "commercial_video_editing_rights",
+        "default_sku_motif_assignment",
+        "final_motion_platform_crop_and_audio_review",
+        "fresh_identity_tags_availability_price_link_preflight",
+        "all_required_shots_native_quality_not_only_two_new_takes",
+        "exact_device_power_adapter_swiss_plug_binding",
+        "durable_publication_history_and_channel_prerequisites"
+      ],
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "reviewDate": "2026-10-28-abend",
+      "width": 1080,
+      "height": 1920,
+      "stableMasterIdAfterEncodingOrHookChanges": true,
+      "technicalReview": {
+        "sourceMotionCadence": 25,
+        "targetContainerCadence": 30,
+        "sourceUniqueFramesUsed": 450,
+        "repeatedTargetFrames": 90,
+        "method": "Segment-local floor(targetFrame*25/30), actual captured frames only; no optical flow or fabricated action",
+        "nativeSmooth30fpsProven": false,
+        "premiumSourceReplacementStillRequired": true,
+        "hookB": "Alternative production take: product-detail reveal with Licht im Detail.; no invented source timecode or additional export before first master approval.",
+        "inheritedMorningProgress": "Explicit 540-frame mapping for inherited 25fps reference; final CTA avoids volatile price in locked master overlay. Neither creates new content nor passes quality gates."
+      },
+      "overlayDesign": {
+        "backgroundPalette": [
+          "taupe",
+          "cream"
+        ],
+        "actualProductColoursPreserved": true,
+        "workingSafeBox": {
+          "x": 90,
+          "y": 250,
+          "width": 810,
+          "height": 1250
+        },
+        "titleFontSizePx": 64,
+        "ctaFontSizePx": 72,
+        "brandFontSizePx": 42,
+        "maxTwoLines": true,
+        "contrastPlate": "Solid cream or dark taupe behind overlay; contrast and exact platform UI/crop still tested on actual final MP4.",
+        "platformCropQA": "No platform excerpt approved before final file review.",
+        "criticalTextRectangles": {
+          "hook_and_product_title": {
+            "x": 108,
+            "y": 470,
+            "width": 780,
+            "height": 190
+          },
+          "cta_and_brand": {
+            "x": 108,
+            "y": 1180,
+            "width": 780,
+            "height": 180
+          }
+        },
+        "cropValidationReference": "HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json"
+      },
+      "eveningReviewDate": "2026-10-27",
+      "eveningPreparation": {
+        "newCreativeOrExport": false,
+        "originalSourceAndCurrentMusicRechecked": true,
+        "specificNewPreparation": "Two explicit text rectangles validated mathematically inside centred9:16/4:5/1:1 crops; missing-native-original acceptance manifest; first18s raw music measured without media export",
+        "morningStoryboardAndSourceTimecodesRetainedAsReferenceOnly": true,
+        "currentNativeQualityOfAllNeededShotsStillRequired": true
+      },
+      "reviewStatus": "same_open_master_plan_not_rendered_not_approved",
+      "freshProductReview": "../products/AVAILABILITY-NATIVE.json",
+      "newProgress": "Vier konkrete Schnitt-Kontinuitätsprüfungen und Bio-Zielkonflikt als Voraussetzungen; kein neuer Export.",
+      "historicalEvidenceMapping": [
+        {
+          "role": "rawMusicFirst18TechnicalMeasurement",
+          "bundlePath": "HISTORISCH-20261027-MUSIC-TECHNICAL-REVIEW.json",
+          "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/MUSIC-TECHNICAL-REVIEW.json",
+          "originalEvidenceDate": "2026-10-27",
+          "sha256": "90fbaac6164b633895e9a1fe719dacbc3925d3525ccf9814a417a97fc29a8566",
+          "copiedByteIdentical": true,
+          "repeatedMeasurementOn28Oct": false,
+          "scope": "Historischer roher Musikabschnitt ohne finale Mix-/Hörabnahme"
+        },
+        {
+          "role": "cropValidationReference",
+          "bundlePath": "HISTORISCH-20261027-OVERLAY-CROP-PRUEFUNG.json",
+          "originalLocalPath": "/workspace/luxestyle-review/abend-20261027/master/OVERLAY-CROP-PRUEFUNG.json",
+          "originalEvidenceDate": "2026-10-27",
+          "sha256": "def94a989e34f2cae5656207a839e678c1f6eb365fa68bc3c6a9215228bb546f",
+          "copiedByteIdentical": true,
+          "repeatedMeasurementOn28Oct": false,
+          "scope": "Historische rechnerische Geometrie; keine tatsächliche Film-/UI-/Lesbarkeitsabnahme"
+        }
+      ],
+      "historicalMeasurementsReusedNotRepeatedOn28Oct": true,
+      "continuityAcceptanceReference": "MASTER-KONTINUITAET-20261028.json",
+      "currentCaptionReference": "CAPTIONS-UTM-ABEND.json"
+    },
+    "MASTER-KONTINUITAET-20261028.json": {
+      "version": 1,
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "createdAtUTC": "2026-10-28T18:09:42.326959+00:00",
+      "classification": "SETZUNG: konkrete Produktions-/Abnahmeanforderungen, keine gemessene Filmfreigabe",
+      "masterCount": 1,
+      "target": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 18,
+        "frames": 540
+      },
+      "sameMasterAfterReencodingOrCaptionChange": true,
+      "cuts": [
+        {
+          "cutId": "HOOK_ZU_BEDIENUNG",
+          "targetFrameAt30": 60,
+          "targetSeconds": 2.0,
+          "takeBinding": "P_PROJECTION oder P_DETAIL → P_OPERATION",
+          "identityRequirement": "Gleiches Gehäuse, Halterung, Farbe und Tastenlage",
+          "actionRequirement": "Keine Schnittillusion, die sofortige Auslösung oder eine unbekannte Funktion behauptet",
+          "comparisonWindowBeforeFrames": 6,
+          "comparisonWindowAfterFrames": 6,
+          "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+          "evidenceBeforeSha256": null,
+          "evidenceAfterSha256": null,
+          "actualMasterSha256": null,
+          "reviewState": "unknown_no_final_master"
+        },
+        {
+          "cutId": "BEDIENUNG_ZU_PROJEKTION",
+          "targetFrameAt30": 228,
+          "targetSeconds": 7.6,
+          "takeBinding": "P_OPERATION → P_PROJECTION",
+          "identityRequirement": "Nachweislich dasselbe Gerät und enthaltene Motivscheibe",
+          "actionRequirement": "Tatsächliche Bedienhandlung und Projektion nachvollziehbar verbinden; kein anderes Motiv einmontieren",
+          "comparisonWindowBeforeFrames": 6,
+          "comparisonWindowAfterFrames": 6,
+          "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+          "evidenceBeforeSha256": null,
+          "evidenceAfterSha256": null,
+          "actualMasterSha256": null,
+          "reviewState": "unknown_no_final_master"
+        },
+        {
+          "cutId": "PROJEKTION_ZU_DETAIL",
+          "targetFrameAt30": 372,
+          "targetSeconds": 12.4,
+          "takeBinding": "P_PROJECTION → P_DETAIL",
+          "identityRequirement": "Gleiche Gerätestellung/Abdeckung und tatsächliche Farbwirkung",
+          "actionRequirement": "Keine Hauben-Abhebung oder unpassender versteckter Zwischenschnitt",
+          "comparisonWindowBeforeFrames": 6,
+          "comparisonWindowAfterFrames": 6,
+          "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+          "evidenceBeforeSha256": null,
+          "evidenceAfterSha256": null,
+          "actualMasterSha256": null,
+          "reviewState": "unknown_no_final_master"
+        },
+        {
+          "cutId": "DETAIL_ZU_SCHLUSS",
+          "targetFrameAt30": 420,
+          "targetSeconds": 14.0,
+          "takeBinding": "P_DETAIL → P_HERO",
+          "identityRequirement": "Gleiche Einheit, Farbe und physisch passende Projektion",
+          "actionRequirement": "Schluss mindestens vier echte kontinuierliche Sekunden; kein Standbild/Zoomersatz",
+          "comparisonWindowBeforeFrames": 6,
+          "comparisonWindowAfterFrames": 6,
+          "colourRequirement": "Belichtung und Weissabgleich im realen Set konsistent halten; Produkt-/Projektionsfarben nicht in Taupe umfärben",
+          "evidenceBeforeSha256": null,
+          "evidenceAfterSha256": null,
+          "actualMasterSha256": null,
+          "reviewState": "unknown_no_final_master"
+        }
+      ],
+      "sourceQualityState": "GEMESSEN: vorhandene Planungsquelle 960x540/25fps; keine native Premium-30fps-Quelle",
+      "allNativeOriginalsRequired": true,
+      "approvedCommercialRightsReference": null,
+      "powerCHPlugReference": null,
+      "musicalRule": "Kein Voiceover. Nur kanonisches luxe-premium.wav nach Endmix-/Hör-/Rechteprüfung. Keine neuen Effekte.",
+      "ownerApprovalBeforeVariants": true,
+      "publishable": false,
+      "newRenderedMaster": null
+    },
+    "MUSIC-AND-PREVIOUS-MASTER.json": {
+      "checkedAtUtc": "2026-10-29T07:16:41.269569+00:00",
+      "musicPath": "automation/music/luxe-premium.wav",
+      "localBytes": 11343950,
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "gitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "freshGitHubMetadataBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "localAndCurrentRepositoryMatch": true,
+      "freshCreditsRead": {
+        "path": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/CREDITS.txt",
+        "gitBlob": "159e308cf68e88841b810a88882856101fdefb42",
+        "sourceContentSha256": "7be1bcca83ae7f9154d1f827a3c6399ea02b790508e704f97d9966922fb7676a",
+        "sourceBodyReusedWhenFreshBlobMatches": true
+      },
+      "freshProducerRead": {
+        "path": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/produce/make_premium.sh",
+        "gitBlob": "c4f66163742cbfc7e4fc93c1f1834b96df559186",
+        "sourceContentSha256": "f5b9d913e1d125be6777f895d0ea990caad3db4fd7a68cc6c1dbd2a461fe5c3a",
+        "sourceBodyReusedWhenFreshBlobMatches": true
+      },
+      "creditsClaim": "ORIGINALPRO / Eigenproduktion / 100% royalty-free; reproducible make_premium.sh",
+      "rightsScope": "Repository source/provenance claim; no new independent commercial/legal or final hearing approval",
+      "sourceSoundfont": "FluidR3_GM.sf2 in producer; no Soundfont inspection/install or music generation performed",
+      "voiceover": false,
+      "newMixOrAudioGenerated": false,
+      "finalHearingApproval": "unknown_not_performed",
+      "previousMasterBundle": {
+        "path": "/workspace/luxestyle-review/abendpruefung-20261028/MASTER-ABEND-20261028.json",
+        "sha256": "c0e78bc1d07e856fd93f212ffae7010c1533cdadb826d4591ab2a166713515be",
+        "freshGitBlob": "fe427c113d7a56cd0e330a01e36ea5741f2b5241",
+        "localMatchesFreshRemote": true
+      }
+    },
+    "IMAGE-REFERENCES.json": {
+      "projector": {
+        "source": "existing real image bytes; fresh Shopify image ID and URL same as28Oct",
+        "path": "/workspace/luxestyle-review/abendpruefung-20261028/products/projector-image.jpg",
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "newImageDownload": false
+      },
+      "diffuser": {
+        "source": "fresh exact Shopify product image URL",
+        "productId": "gid://shopify/Product/15408457744769",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+        "checkedAtUtc": "2026-10-29T07:12:52.439731+00:00",
+        "requests": 1,
+        "redirectsFollowed": false,
+        "httpStatus": 200,
+        "bytes": 80178,
+        "contentType": "image/jpeg",
+        "sha256": "dad8a9b0de8ebfd2086e28d490f175e8cec348986bee68b16aa1b55995c47b48"
+      }
+    },
+    "TAG-GATE.json": [
+      {
+        "key": "projector",
+        "id": "gid://shopify/Product/15521256604033",
+        "nonEmptyTags": true,
+        "guardMatches": [],
+        "ownerRueckholMatches": [],
+        "tagGatePassed": true,
+        "publicationReady": false,
+        "reason": "Tag gate alone is not film/rights/variant/power/channel/history approval"
+      },
+      {
+        "key": "diffuser",
+        "id": "gid://shopify/Product/15408457744769",
+        "nonEmptyTags": true,
+        "guardMatches": [],
+        "ownerRueckholMatches": [],
+        "tagGatePassed": true,
+        "publicationReady": false,
+        "reason": "Tag gate alone is not film/rights/variant/power/channel/history approval"
+      }
+    ],
+    "REVIEW.json": {
+      "reviewedAtUtc": "2026-10-29T07:23:37.648439+00:00",
+      "decision": "passed_limited_local_review_not_publication_approval",
+      "criticalFindings": [],
+      "checks": {
+        "projector15521256604033Variant56197916361089CHF34_90MatchesStoredNativeAndAjaxEvidence": true,
+        "differentDiffuser15408457744769Variant55732479099265CHF39_90NotPriceCutOrCJMapping": true,
+        "nonEmptyTagsAndInventory0UntrackedContinueNotStockPromise": true,
+        "sameMaster18Seconds540FramesAnd28OctHooksRetained": true,
+        "fiveCaptionsAndAllSixUtmsUnchangedOnlyFacebookCaptionRefined": true,
+        "threeLocalImageHashesAndVisualStatementsMatch": true,
+        "illustratedGallery12NotElectricalOrMotifOrFilmProof": true,
+        "fourOffFilmPowerEvidenceRowsRemainUnknownNoNewShot": true,
+        "youtubeOwnerDecisionSourceSeparatedFromUnreadPlatformSetting": true,
+        "costumeBioDestinationPreservedNoProductBioClaim": true,
+        "pinterestBoardUnknownAndMusicProvenanceQualified": true,
+        "sevenValidationManifestFileHashesMatch": true,
+        "noMp4AudioRenderOrPublicationApprovalClaimed": true
+      },
+      "limits": [
+        "Local saved evidence and three local images reviewed; no fresh Shopify, Metricool, CJ, Google, Klaviyo or other external read performed by reviewer.",
+        "Native API authenticity, live tag-guard execution and original owner-channel decision independently not repeated; current stored records checked for consistency.",
+        "No technical electrical approval, model/motif inclusion, commercial film rights, final audio hearing or finished-film quality approval follows from review."
+      ],
+      "externalCalls": 0,
+      "renders": 0,
+      "downloads": 0,
+      "remoteWrites": 0
+    },
+    "CAPTIONS-UTM-ABEND.json": [
+      {
+        "channel": "instagram",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail",
+        "caption": "Ein Detail für deinen Nachttisch: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown"
+      },
+      {
+        "channel": "tiktok",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Dein Raum. Neues Licht.",
+        "caption": "Dein Raum. Neues Licht. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown"
+      },
+      {
+        "channel": "youtube",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+        "caption": "Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben findest du unter der folgenden Adresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; die Adresse im Browser öffnen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+        "captionUrlPlacement": "address not clickable in Shorts",
+        "channelGate": "Audience already owner-confirmed: general audience, not specifically made for kids. No verified profile product link.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "facebook",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Licht im Detail.",
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle und sieh dir die aktuelle Ausführung und die Produktangaben an.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "threads",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Ein Detail für deinen Raum",
+        "caption": "Ein Detail für deinen Raum: der Sternenlicht-Projektor bei LuxeStyle. Produktansichten und Angaben zur aktuellen Ausführung:",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      },
+      {
+        "channel": "pinterest",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "caption": "Eine Produktidee für deinen Nachttisch. Entdecke den Sternenlicht-Projektor und die aktuellen Produktangaben bei LuxeStyle.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim."
+      }
+    ]
+  },
+  "captionDiff": "--- same-master/28Oct-evening-captions\n+++ same-master/29Oct-one-caption-refinement\n@@ -42,7 +42,7 @@\n     \"channel\": \"facebook\",\n     \"masterId\": \"luxe_sternenprojektor_master_20261018\",\n     \"title\": \"Licht im Detail.\",\n-    \"caption\": \"Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle und sieh dir die aktuelle Ausführung und die Produktangaben an.\",\n+    \"caption\": \"Ein Blick aufs Detail: Entdecke den Sternenlicht-Projektor bei LuxeStyle. Aktuelle Produktansichten und Angaben zur Ausführung findest du hier.\",\n     \"utmProductUrl\": \"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb\",\n     \"captionUrlPlacement\": \"product link\",\n     \"channelGate\": \"Clickable product URL may be used in Facebook text after final master approval.\",\n"
+}
