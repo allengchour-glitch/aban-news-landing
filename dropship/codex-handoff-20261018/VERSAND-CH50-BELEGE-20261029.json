@@ -1,0 +1,306 @@
+{
+  "DATA-VALIDATION.json": {
+    "scope": "local draft only; continuation of 2026-10-28 numeric JSON-LD proposal",
+    "liveApplied": false,
+    "themeId": "gid://shopify/OnlineStoreTheme/212656488839",
+    "filename": "sections/header.liquid",
+    "beforeSha256": "5f3da62675c1b6407c1bfd541cd45cabc021be4282beb89c98fa1c8842c1bcdf",
+    "afterSha256": "f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4",
+    "beforeMd5": "1fda77909b8d96d7b3d0f3bc65f8ed65",
+    "afterMd5": "003541d986ce79b0876755c8c3df7a3d",
+    "changes": [
+      {
+        "pointer": "/hasShippingService/0/shippingConditions/0/orderValue/maxValue",
+        "before": 40.49,
+        "after": 49.99
+      },
+      {
+        "pointer": "/hasShippingService/0/shippingConditions/1/orderValue/minValue",
+        "before": 40.5,
+        "after": 50
+      }
+    ],
+    "sourceLine": 300,
+    "checks": {
+      "exactlyTwoNumbersChanged": true,
+      "currentPublicShippingMatchesNative": true,
+      "matchesPriorOct28Draft": true,
+      "otherReturnShippingSocialFieldsUnchanged": true,
+      "otherThreeThemeFilesUnchanged": true,
+      "headerOutsideMatchedNumbersUnchanged": true
+    },
+    "boundaries": [
+      {
+        "cartValueCHF": 0,
+        "schemaRatesCHF": [
+          7.0
+        ]
+      },
+      {
+        "cartValueCHF": 40.49,
+        "schemaRatesCHF": [
+          7.0
+        ]
+      },
+      {
+        "cartValueCHF": 40.5,
+        "schemaRatesCHF": [
+          7.0
+        ]
+      },
+      {
+        "cartValueCHF": 45,
+        "schemaRatesCHF": [
+          7.0
+        ]
+      },
+      {
+        "cartValueCHF": 49.99,
+        "schemaRatesCHF": [
+          7.0
+        ]
+      },
+      {
+        "cartValueCHF": 50,
+        "schemaRatesCHF": [
+          0
+        ]
+      },
+      {
+        "cartValueCHF": 50.01,
+        "schemaRatesCHF": [
+          0
+        ]
+      }
+    ],
+    "limits": [
+      "No checkout tariff validation or change. Owner-required internal threshold45 kept outside scope.",
+      "No native Liquid render or Google acceptance test.",
+      "Only numeric literal patch; schema vocabulary and merchant policy objects preserved."
+    ]
+  },
+  "PUBLIC-SHIPPING-OBSERVATION.json": {
+    "sourceURL": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+    "statusCode": 200,
+    "scrapeId": "01a18654-ca14-746b-a3e6-1eb395355327",
+    "maxAge": 0,
+    "sourceType": "fresh public rawHtml; only the matching Organization JSON-LD and main-document head description retained; embedded widget metadata excluded",
+    "organizations": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://luxestyle.ch/#org",
+        "name": "LuxeStyle",
+        "email": "info@luxestyle.ch",
+        "areaServed": [
+          "CH",
+          "LI"
+        ],
+        "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+        "url": "https://luxestyle.ch/",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": [
+            "CH",
+            "LI"
+          ],
+          "returnPolicyCountry": "CH",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+          "refundType": "https://schema.org/FullRefund"
+        },
+        "hasShippingService": [
+          {
+            "@type": "ShippingService",
+            "name": "Versand Schweiz",
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CH"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "currency": "CHF",
+                  "minValue": 0,
+                  "maxValue": 40.49
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 7,
+                  "currency": "CHF"
+                }
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CH"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "currency": "CHF",
+                  "minValue": 40.5
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 0,
+                  "currency": "CHF"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "ShippingService",
+            "name": "Versand Liechtenstein",
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "LI"
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 14.9,
+                  "currency": "CHF"
+                }
+              }
+            ]
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/1049840534888592",
+          "https://www.instagram.com/luxestyle.ch/",
+          "https://www.tiktok.com/@luxestyle.ch",
+          "https://www.pinterest.com/luxestyleCH/",
+          "https://www.youtube.com/@luxestyle_ch"
+        ]
+      }
+    ],
+    "mainHeadDescriptions": [
+      "Reise-Hängematte aus Fallschirm-Nylon bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+    ],
+    "captureCompletedBy": "2026-10-29 06:25:44 UTC",
+    "captureTimestampNote": "Exact transport completion timestamp was not recorded; this is the observed upper-bound timestamp after parsing the fresh maxAge=0 response."
+  },
+  "VALIDATION-SUMMARY.json": {
+    "stateless": {
+      "exitCode": 0,
+      "success": true,
+      "artifactId": "luxestyle-shipping-header-stateless-20261029",
+      "artifactRevision": 1,
+      "resultDetail": "header.liquid passed all checks.",
+      "warning": "Error fetching global settings: File not found: file:///config/settings_schema.json",
+      "scope": "stateless header validation; not complete-theme validation or native render"
+    },
+    "boundedThemeContext": {
+      "beforeErrorCount": 106,
+      "afterErrorCount": 106,
+      "identicalSortedErrors": true,
+      "missingContext": "Direct Header files/locales are absent from the bounded four-file copy; no full-theme pass claimed.",
+      "docCache": "Live theme-liquid-docs refresh failed; existing installed docs cache loaded."
+    },
+    "independentReview": {
+      "agent": "/root/selected_source_audit/local_seed_origin",
+      "result": "No material regression. Actual source diff exactly two CH JSON-LD numeric values only. HTML, checkout, return policy, LI and account unchanged. No tests/network repeated."
+    },
+    "nativeGraphqlValidation": {
+      "result": "Connector returned validation skipped; execution performed source read successfully. No mutation used."
+    },
+    "sourceOrigin": {
+      "comment": "LUX-ORG-RICHTLINIEN (06.10.2026, automation/google_org_richtlinien.py)",
+      "mainFileLookup": "404 NOT_FOUND",
+      "codeSearchResults": [],
+      "commitSearchResults": [],
+      "conclusion": "Comment is attribution only; generator code and historical arithmetic not proven by this bounded lookup."
+    }
+  },
+  "GENERATOR-LOOKUP.json": {
+    "fileRead": {
+      "path": "automation/google_org_richtlinien.py",
+      "ref": "main",
+      "result": {
+        "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}",
+        "error_code": "NOT_FOUND",
+        "error_data": {
+          "message": "Not Found",
+          "documentation_url": "https://docs.github.com/rest/repos/contents#get-repository-content",
+          "status": "404"
+        }
+      }
+    },
+    "codeSearch": {
+      "results": []
+    },
+    "commitSearch": {
+      "commits": []
+    }
+  },
+  "MANIFEST.json": {
+    "status": "local_review_draft",
+    "liveApplied": false,
+    "remoteWrites": 0,
+    "continuationOf": "/workspace/luxestyle-review/tagespruefung-20261028/handoff/VERSAND-JSONLD-MANIFEST.json",
+    "files": [
+      {
+        "path": "BERICHT.md",
+        "sha256": "489be244d15af5891bfb04bfd7137026b1944290b2dcfc19858fb240596973a6",
+        "bytes": 4901
+      },
+      {
+        "path": "SHIPPING-LIQUID.patch",
+        "sha256": "14ccc83a532ff0910e4b1cfbb06d1edaf1615cdfdb6c4c21865b115e9947a663",
+        "bytes": 3389
+      },
+      {
+        "path": "DATA-VALIDATION.json",
+        "sha256": "3c8e18d15b116390a1fd2741407fd58363643eb1627d202189a6236f4cb23a1b",
+        "bytes": 1980
+      },
+      {
+        "path": "VALIDATION-SUMMARY.json",
+        "sha256": "f1e8211ad72ca45ef59d7e06dbe78bc3d57b8e61c7b18738586041dab18cab17",
+        "bytes": 1523
+      },
+      {
+        "path": "PUBLIC-SHIPPING-OBSERVATION.json",
+        "sha256": "6ad38aa66eef849dfa26b2095d9054d920f83f4363c45eb1846f105bf66892bd",
+        "bytes": 3722
+      },
+      {
+        "path": "GENERATOR-LOOKUP.json",
+        "sha256": "51899221ad8f884e8159bdcc4b5da0128fad52065cf6f37644380fa1f1e07d2b",
+        "bytes": 599
+      },
+      {
+        "path": "NATIVE-SOURCE.json",
+        "sha256": "ca8cae263aa3180c85a40eb6d54e987dfc4cbec0c6efa21cb0123ad6b0ab1d31",
+        "bytes": 191081
+      },
+      {
+        "path": "native-exact/sections/header.liquid",
+        "sha256": "5f3da62675c1b6407c1bfd541cd45cabc021be4282beb89c98fa1c8842c1bcdf",
+        "bytes": 50468
+      },
+      {
+        "path": "after/sections/header.liquid",
+        "sha256": "f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4",
+        "bytes": 50466
+      },
+      {
+        "path": "VALIDATOR-CONTEXT-BEFORE.json",
+        "sha256": "c511afaf54263b3cd1a88cd56980138856af69e932d518da24e994c204d4fe21",
+        "bytes": 12047
+      },
+      {
+        "path": "VALIDATOR-CONTEXT-AFTER.json",
+        "sha256": "18b064bf3c1398c7cde8bce5203d2773803937e44b4613ffb280255fe044588d",
+        "bytes": 12047
+      }
+    ]
+  }
+}
