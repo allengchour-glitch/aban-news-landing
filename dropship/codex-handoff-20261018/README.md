@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, 09:06 Zürich – zwei Produktangaben live bereinigt
+
+Aktueller Auftrag «pushe produkten saber mit nachtragen»: bei Ladegerät 15447560520065 und Plüschtier 15446272016769 «Farbe» → «Ausführung» umgesetzt; sieben vorhandene Spielzeugwerttexte sprachlich vereinheitlicht. Alle 13 Varianten-/SKU-/InventoryItem-Bindungen und CHF 15.90-Preise unverändert; nativ und öffentlich HTTP 200 bestätigt. Keine neue Material-/Massprüfung. Merchant 5797470070 frisch erkannt, aber isolierter Push ohne authentifizierten aktiven Datenquellenzugang technisch blockiert; Genehmigung besteht bereits. Kein gemischter Workflow gestartet.
+
+[Umsetzung und nächster Schritt](PRODUKTPFLEGE-PUSH-20261029.md) · [Vorher-/Nachher-Belege](PRODUKTPFLEGE-PUSH-BELEGE-20261029.json). Arbeitsstand Revision 8, Tagesblock ergänzt; keine erneuten Tagesreports. Claude-Kenntnisnahme unbekannt.
+
 ## 29.10.2026, Morgenlauf – Kaufziel offen, Quellen und Startvoraussetzungen geprüft
 
 [Morgenpaket](MORGENPAKET-20261029.md) · [kuratiertes Belegpaket](MORGENBELEGE-20261029.json) · [gleicher Master mit sechs Texten/UTMs](MASTER-STORYBOARD-20261029.md) · [Review](MORGEN-REVIEW-20261029.md).
@@ -622,4 +628,5 @@ Weitere lokale Nachweise: `evening-check-20261018/ABENDPRUEFUNG.md` und `content
 ## Dokumentationsablage
 
 Root-`CLAUDE.md` und `SHARED-MEMORY.md` verlinken diese Übergabe auf demselben Dokumentationsbranch. Der alte feste Branch `claude/luxestyle-product-CizQ6` wurde nur lesend verglichen: 3271 Commits voraus und 2477 hinter dem geprüften main, mit zahlreichen anderen Änderungen. Er wird für diese Wissensübergabe weder zurückgesetzt noch pauschal gemergt. Die getrennte Ablage verhindert die Vermischung mit Runtime-/Queue-Änderungen. Ein Branch/PR ist nicht automatisch main oder ein Deployment.
+
 
