@@ -1,0 +1,436 @@
+diff --git a/automation/cj_varianten_nachziehen.mjs b/automation/cj_varianten_nachziehen.mjs
+--- a/automation/cj_varianten_nachziehen.mjs
++++ b/automation/cj_varianten_nachziehen.mjs
+@@ -12,7 +12,7 @@
+  *   LIVE=1            schreibt (productSet), sonst nur Plan
+  *   LIMIT=n           höchstens n Produkte je Lauf (Vorgabe 10)
+  *   PLAN_DIR=pfad     Plan je Produkt als JSON (Vorgabe /tmp/cj_varianten_plan)
+- *   USD_CHF=0.82435   Kurs
++ *   USD_CHF=...       geprüfter Kurs (Pflicht für Variantenpreise)
+  *
+  * Ergebnisse je Produkt: PLAN | GESCHRIEBEN | UEBERSPRUNGEN(grund) | FEHLER. Ein Überspringen ist KEIN Fehler:
+  * CJ führt nur eine Variante, der Schlüssel ist nicht eindeutig zerlegbar, Fracht unbekannt …
+@@ -37,6 +37,7 @@
+ import { nachDeutsch, gleicheGrossschreibung } from './lib/uebersetzen.mjs';
+ import { ENGLISCH_RE } from './farbwahl_scan.mjs';
+ import { ledgerGedaechtnis, veraendertSeitPlan, bilderUnbrauchbar, FRISCH, VORLAEUFIG, ZURUECKGESTELLT } from './lib/varianten_sicherheit.mjs';
++import { PREISPLAN_VERSION, preisBasis, preisplanProblem, PREIS_BASIS_LESEN, preisBasisVeraendert, pruefeVariantenSkus } from './lib/cj_varianten_schutz.mjs';
+ const KI_AUS = 'KI-Dienst aus';
+ 
+ const LABEL_AUFTRAG = 'Übersetze diese Variantenbezeichnungen eines Online-Shops (Farben, Muster, Modelle) ins Deutsche. Kurz, wie auf einem Etikett, Substantive gross, '
+@@ -45,7 +46,7 @@
+ const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
+ const LIVE = process.env.LIVE === '1';
+ const LIMIT = Number(process.env.LIMIT || 10);
+-const USD_CHF = Number(process.env.USD_CHF || 0.82435);
++const USD_CHF = Number(process.env.USD_CHF); // Keine historische Kursvorgabe für neue Variantenpläne.
+ const PLAN_DIR = process.env.PLAN_DIR || '/tmp/cj_varianten_plan';
+ const LEDGER = process.env.LEDGER || 'dropship/cj_varianten_ledger.txt';
+ const MARKER = '<!-- ls-var-v1 -->';
+@@ -102,7 +103,7 @@
+   id title status handle tags descriptionHtml updatedAt
+   options{id name values}
+   variantsCount{count} mediaCount{count}
+-  variants(first:5){nodes{id sku price inventoryItem{id unitCost{amount}}}}
++  variants(first:5){nodes{id sku price inventoryItem{id unitCost{amount currencyCode}}}}
+   media(first:60){nodes{id status alt ... on MediaImage{image{url width height}}}}}}`;
+ 
+ // ---------------------------------------------------------------- CJ
+@@ -149,7 +150,7 @@
+   // Dieselbe CJ-Antwort braucht später der Fakten-Block und der Textauftrag: einmal zahlen, zweimal nutzen (gleicher Pfad wie cj_fakten_block.mjs).
+   if (c?.pid) { try { const cdir = process.env.CJ_FAKTEN_CACHE || '/tmp/cj_fakten_cache'; mkdirSync(cdir, { recursive: true }); const f = `${cdir}/${handle}.json`; if (!existsSync(f)) writeFileSync(f, JSON.stringify(c)); } catch { /* Zwischenspeicher ist nur eine Hilfe */ } }
+   if (!c) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `CJ ohne Daten (code ${res.code})` };
+-  const vsRoh = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: Number(v.variantSellPrice), gewicht: Number(v.variantWeight) || 0,
++  const vsRoh = (c.variants || []).map(v => ({ vid: v.vid, sku: v.variantSku, key: v.variantKey || '', ek: v.variantSellPrice, gewicht: Number(v.variantWeight) || 0,
+     bild: v.variantImage || '', laenge: v.variantLength, breite: v.variantWidth, hoehe: v.variantHeight }));
+   // Fremdstecker (US/UK/AU/JP) nie anlegen: die Schweizer Steckdose nimmt nur den Euro-Stecker. Der CJ-Schlüssel «White-US» wurde sonst zur Farbe «Weiss» (26.10.: 34 Produkte, 85 Varianten live).
+   const stecker = steckerUrteil(vsRoh.map(v => ({ id: v.vid, sku: v.sku })), Object.fromEntries(vsRoh.map(v => [v.sku, v.key])));
+@@ -175,6 +176,15 @@
+   const MAXV = Number(process.env.MAX_VARIANTEN || 40);
+   if (vs.length > MAXV) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `viele CJ-Varianten (${vs.length} > ${MAXV}) — später, wenn das Tageskontingent reicht` };
+ 
++  // Die alte Shop-SKU muss EINE CJ-Variante belegen. Eine Produkt-pid oder die Reihenfolge der CJ-Antwort reicht nicht.
++  // Vor Stecker-/Frachtfilter zuordnen: auch eine später ausgeschlossene Basis darf nicht durch vs[0] ersetzt werden.
++  const quelle = preisBasis(v0.sku, vsRoh);
++  if (!quelle.ok) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: quelle.grund };
++  if (v0.inventoryItem?.unitCost?.currencyCode !== 'CHF') return { handle, ergebnis: 'UEBERSPRUNGEN', grund: 'Preisbasis unbekannt: unitCost nicht als CHF belegt' };
++  const basisProbe = preisFuer({ basisPreis: v0.price, basisKostenChf: v0.inventoryItem?.unitCost?.amount, ekBasisUsd: quelle.ek, ekUsd: quelle.ek, usdChf: USD_CHF });
++  if (!basisProbe.ok) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: basisProbe.grund };
++  const basisPreis = Number(v0.price), basisKosten = Number(v0.inventoryItem.unitCost.amount), ekBasis = Number(quelle.ek);
++
+   const zer = zerlegeOptionen(c.productKeyEn, vs.map(v => ({ vid: v.vid, key: v.key })));
+   let aw = baueAuswahl(zer);
+   let uebersetzung = null, kiAusfall = false;
+@@ -215,9 +225,7 @@
+   const zulaessig = behalten.filter(v => fr[String(v.gewicht)]?.urteil === 'lieferbar');
+   if (zulaessig.length < 2) return { handle, ergebnis: 'UEBERSPRUNGEN', grund: `nur ${zulaessig.length} lieferbare Variante(n) nach Fracht-Prüfung` };
+ 
+-  // Preise: Basis = erste CJ-Variante (so wurde importiert), Untergrenze = bisheriger Preis
+-  const basisPreis = Number(v0.price), basisKosten = Number(v0.inventoryItem?.unitCost?.amount);
+-  const ekBasis = vs[0].ek;
++  // Preise relativ zur belegten bisherigen Variante; Untergrenze bleibt der bisherige Preis.
+   const zeilen = [];
+   for (const v of zulaessig) {
+     const w = aw.varianten.find(x => x.vid === v.vid);
+@@ -248,10 +256,11 @@
+   const plan = {
+     handle, ergebnis: 'PLAN', produktId: p.id, titel: p.title, pid,
+     cj: { name: c.productNameEn, varianten: vs.length, optionen: c.productKeyEn },
+-    basis: { preis: basisPreis, kosten: basisKosten, ekUsd: ekBasis, sku: v0.sku },
++    preisplanVersion: PREISPLAN_VERSION,
++    basis: { preis: basisPreis, kosten: basisKosten, kostenWaehrung: 'CHF', ekUsd: ekBasis, sku: v0.sku, varianteId: v0.id, cjVid: quelle.vid, cjSku: quelle.sku, usdChf: USD_CHF },
+     optionen: aw.optionen, hinweise, unsicherUebersetzt: aw.unsicher, kiUebersetzt: uebersetzung,
+     fracht: fr, ausgeschlossen: [...ausgeschlossen], unbekanntOhneBeweis: unbekannt.map(v => v.sku),
+-    varianten: zeilen.map(z => ({ vid: z.vid, sku: z.sku, werte: z.werte, preis: z.preis, kosten: z.kosten, einheitspreis: z.einheitspreis, gewicht: z.gewicht, bild: z.bild ? bildPlan[z.bild] : { art: 'ohne' }, bildUrl: z.bild })),
++    varianten: zeilen.map(z => ({ vid: z.vid, sku: z.sku, ekUsd: Number(z.ek), werte: z.werte, preis: z.preis, kosten: z.kosten, einheitspreis: z.einheitspreis, gewicht: z.gewicht, bild: z.bild ? bildPlan[z.bild] : { art: 'ohne' }, bildUrl: z.bild })),
+     bilder: { shopMedien: shopMedien.length, zugeordnet: gleicheBilder.size, neuHochzuladen: Object.values(bildPlan).filter(b => b.art === 'neu').length, unlesbar: Object.values(bildPlan).filter(b => b.art === 'unlesbar').length },
+     medienIds: p.media.nodes.filter(m => m.status === 'READY').map(m => m.id),
+     medienVerworfen: p.media.nodes.filter(m => m.status !== 'READY').length,
+@@ -283,12 +292,24 @@
+   return { id: plan.produktId, files, productOptions: optionen, variants: vars, descriptionHtml: MARKER + hinweisHtml + plan.beschreibungHtml, tags };
+ }
+ 
+-async function aufschreiben(q, plan) {
++export async function aufschreiben(q, plan, gesetzt = IM_LAUF_GESETZT) {
++  const problem = preisplanProblem(plan);
++  if (problem) return { ok: false, zurueckgestellt: true, uebersprungen: problem };
++  const sku = await pruefeVariantenSkus(q, plan, gesetzt);
++  if (!sku.ok) return { ok: false, zurueckgestellt: true, uebersprungen: sku.grund };
++  const basisAntwort = await q(PREIS_BASIS_LESEN, { id: plan.produktId });
++  const anders = preisBasisVeraendert(plan, basisAntwort?.errors?.length ? null : basisAntwort?.product);
++  if (anders) return { ok: false, uebersprungen: anders };
+   const eingabe = setInput(plan);
++  // VOR dem Versand reservieren: ein Timeout beweist nicht, dass productSet nichts geschrieben hat.
++  // Die Reservierung gilt für diesen Prozess, nicht als dauerhafter oder rechnerübergreifender Lock.
++  for (const ziel of sku.ziele) gesetzt.add(ziel);
+   const r = await q(SET, { i: eingabe });
+-  const e = r.productSet?.userErrors || [];
++  const m = r?.productSet, e = m?.userErrors;
++  if (r?.errors?.length || !Array.isArray(e)) return { ok: false, fehler: 'Schreibstatus unbekannt: productSet-Antwort unvollständig' };
+   if (e.length) return { ok: false, fehler: JSON.stringify(e).slice(0, 600) };
+-  return { ok: true, varianten: r.productSet.product.variantsCount.count, optionen: r.productSet.product.options };
++  if (m.product?.id !== plan.produktId || m.product.variantsCount?.count !== plan.varianten.length || !Array.isArray(m.product.options)) return { ok: false, fehler: 'Schreibstatus unbekannt: Produkt/Varianten nicht bestätigt' };
++  return { ok: true, varianten: m.product.variantsCount.count, optionen: m.product.options };
+ }
+ 
+ // ---------------------------------------------------------------- Lauf
+@@ -372,7 +393,7 @@
+       const merke = (ergebnis, grund, max = 100) => { if (LIVE) appendFileSync(LEDGER, `${h} · ${new Date().toISOString()} · ${ergebnis} · ${String(grund).slice(0, max)}\n`); };
+       // Livelauf: einen frischen Plan aus dem Trockenlauf weiterverwenden (spart CJ-Abfragen und Bild-Downloads)
+       if (LIVE && existsSync(planPfad) && Date.now() - statSync(planPfad).mtimeMs < 3 * 3600 * 1000) {
+-        try { const alt = JSON.parse(readFileSync(planPfad, 'utf8')); if (alt.ergebnis === 'PLAN') plan = alt; } catch { /* neu planen */ }
++        try { const alt = JSON.parse(readFileSync(planPfad, 'utf8')); if (alt.ergebnis === 'PLAN' && !preisplanProblem(alt)) plan = alt; } catch { /* neu planen */ }
+       }
+       if (!plan) {
+         try { plan = await plane({ q, cj, handle: h, tmp }); drosselFolge = 0; }
+@@ -476,6 +497,11 @@
+       }
+       // Käme das Tageslimit als userError statt als GraphQL-Fehler, wäre es KEIN Fehler des Produkts: weiterreichen (Exitcode 4), nicht als FEHLER merken.
+       if (!w.ok && /VARIANT_THROTTLE|Daily variant creation limit/i.test(w.fehler)) throw new Error(w.fehler);
++      if (w.uebersprungen) {
++        zaehl.UEBERSPRUNGEN = (zaehl.UEBERSPRUNGEN || 0) + 1; console.log('   UEBERSPRUNGEN |', w.uebersprungen);
++        merke('UEBERSPRUNGEN', `${w.zurueckgestellt ? ZURUECKGESTELLT : VORLAEUFIG}: ${w.uebersprungen}`); fehlerFolge = 0;
++        continue;
++      }
+       if (!w.ok) {
+         zaehl.FEHLER = (zaehl.FEHLER || 0) + 1; console.log('   FEHLER beim Schreiben:', w.fehler); merke('FEHLER', w.fehler);
+         if (++schreibFolge >= MAX_FEHLER) { abbruch(1, `${schreibFolge} Schreibfehler in Folge — ein Dienst scheint auszufallen`); break; }
+diff --git a/automation/cj_varianten_preis_sku_test.mjs b/automation/cj_varianten_preis_sku_test.mjs
+new file mode 100644
+--- /dev/null
++++ b/automation/cj_varianten_preis_sku_test.mjs
+@@ -0,0 +1,175 @@
++// Regressionen mit erfundenen Produktdaten; alle HTTP-/Shop-Antworten sind Attrappen, keine Live-Jobs.
++import assert from 'node:assert/strict';
++import { mkdtempSync, rmSync } from 'node:fs';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { preisFuer } from './lib/cj_varianten.mjs';
++import { preisBasis, preisplanProblem, preisBasisVeraendert, pruefeVariantenSkus, PREIS_BASIS_LESEN, VARIANTEN_SKU_DOPPELT } from './lib/cj_varianten_schutz.mjs';
++
++let ok = 0;
++const ist = (name, istwert, soll) => { assert.deepEqual(istwert, soll, name); ok++; };
++const ordner = mkdtempSync(join(tmpdir(), 'cj-varianten-schutz-test-'));
++const vorEnv = { pause: process.env.CJ_PAUSE_MS, cache: process.env.CJ_FAKTEN_CACHE, ki: process.env.KEIN_KI_UEBERSETZEN, max: process.env.MAX_VARIANTEN, fx: process.env.USD_CHF };
++process.env.CJ_PAUSE_MS = '0'; process.env.CJ_FAKTEN_CACHE = ordner; process.env.KEIN_KI_UEBERSETZEN = '1'; process.env.MAX_VARIANTEN = '40'; process.env.USD_CHF = '0.82435';
++const echtFetch = globalThis.fetch;
++globalThis.fetch = async () => { throw new Error('Netz in Regression gesperrt'); };
++const { plane, aufschreiben, schreibeSku, SKU_LESEN, SKU_DOPPELT, SKU_SCHREIBEN } = await import('./cj_varianten_nachziehen.mjs');
++const clone = x => structuredClone(x);
++const shop = sku => ({ id: 'gid://shopify/Product/1', title: 'Prüfprodukt', status: 'ACTIVE', handle: 'zz-cj-schutz', tags: ['cj-real'], descriptionHtml: '', updatedAt: '2026-10-29T10:00:00Z',
++  options: [{ name: 'Title', values: ['Default Title'] }], variantsCount: { count: 1 }, mediaCount: { count: 0 }, media: { nodes: [] },
++  variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', sku, price: '19.90', inventoryItem: { id: 'gid://shopify/InventoryItem/1', unitCost: { amount: '10.00', currencyCode: 'CHF' } } }] } });
++const cjVar = (i, ek, key) => ({ vid: 'vid' + i, variantSku: 'CJTEST1000' + i, variantKey: key, variantSellPrice: ek, variantWeight: 200, variantImage: '' });
++let nr = 0;
++async function planen(varianten, sku = 'CJ-CJTEST10000', aendern = () => {}, optionen = 'Color', planer = plane) {
++  const p = shop(sku); aendern(p); let frachten = 0;
++  const handle = 'zz-cj-schutz-' + (++nr);
++  globalThis.fetch = async (url, init) => {
++    let data;
++    if (String(url).includes('/product/query?')) data = { pid: '260505090828160', productNameEn: 'Test product', productKeyEn: optionen, variants: clone(varianten) };
++    else if (String(url).endsWith('/logistic/freightCalculate')) { assert.ok(init.body); frachten++; data = [{ logisticName: 'Test' }]; }
++    else throw new Error('Unerwartete URL');
++    return { status: 200, json: async () => ({ code: 200, result: true, data }) };
++  };
++  try {
++    const plan = await planer({ q: async query => {
++      assert.match(query, /unitCost\{amount currencyCode\}/); // Die Attrappe darf fehlende Query-Felder nicht verdecken.
++      return { productByHandle: p };
++    }, cj: 'test-token', handle, tmp: ordner });
++    return { plan, frachten, p };
++  } finally { globalThis.fetch = async () => { throw new Error('Netz in Regression gesperrt'); }; }
++}
++
++try {
++  const basis = { basisPreis: 19.9, basisKostenChf: 10, ekBasisUsd: 2, ekUsd: 10, usdChf: 0.82435 };
++  for (const feld of ['basisPreis', 'basisKostenChf', 'ekBasisUsd', 'ekUsd', 'usdChf']) {
++    for (const wert of [null, '', ' ', false, true, 0, -1, NaN, Infinity, 'fehlt']) {
++      ist(`${feld}=${String(wert)} sperrt`, preisFuer({ ...basis, [feld]: wert }).ok, false);
++    }
++  }
++  const sicher = preisFuer(basis);
++  ist('teure Variante bekommt einen belegten Aufpreis', sicher.preis, 33.9);
++  ist('unbekannter Preis enthält keinen Null-/Einheitspreis', Object.hasOwn(preisFuer({ ...basis, basisKostenChf: null }), 'preis'), false);
++  ist('negative abgeleitete Kosten gesperrt', preisFuer({ ...basis, basisKostenChf: 1, ekBasisUsd: 10, ekUsd: 2 }).ok, false);
++  ist('Überlauf gesperrt', preisFuer({ ...basis, ekUsd: Number.MAX_VALUE, usdChf: 10 }).ok, false);
++
++  const a = cjVar(0, 2, 'Red'), b = cjVar(1, 10, 'Blue');
++  const normal = await planen([a, b]);
++  const gedreht = await planen([b, a]);
++  ist('echter Plan gebaut', normal.plan.ergebnis, 'PLAN');
++  ist('sortierte CJ-Liste ändert die Basis nicht', [normal.plan.basis.cjVid, gedreht.plan.basis.cjVid, gedreht.plan.basis.ekUsd], ['vid0', 'vid0', 2]);
++  const preise = p => Object.fromEntries(p.varianten.map(v => [v.sku, v.preis]).sort());
++  ist('Reihenfolge ändert keine Variantenpreise', preise(normal.plan), preise(gedreht.plan));
++  ist('bestehender Preis bleibt Untergrenze', preise(normal.plan), { CJTEST10000: 19.9, CJTEST10001: 33.9 });
++  const gefiltert = await planen([cjVar(0, 2, 'White-US'), cjVar(1, 10, 'Blue-EU'), cjVar(2, 6, 'Black-EU')], 'CJ-CJTEST10000', () => {}, 'Color-Electrical outlet');
++  ist('verworfene US-Basis bleibt an der alten SKU gebunden', [gefiltert.plan.ergebnis, gefiltert.plan.basis?.cjVid, gefiltert.plan.basis?.ekUsd], ['PLAN', 'vid0', 2]);
++  ist('US-Variante kommt nicht in Auswahl', gefiltert.plan.varianten.map(v => v.vid), ['vid1', 'vid2']);
++  ist('EU-Preis verwendet Kosten der echten alten SKU', gefiltert.plan.varianten[0].preis, 33.9);
++  const pid = await planen([a, b], 'CJ-260505090828160');
++  ist('Produkt-pid beweist keine Variante', [pid.plan.ergebnis, /^Preisbasis unbekannt/.test(pid.plan.grund), pid.frachten], ['UEBERSPRUNGEN', true, 0]);
++  const ohneKosten = await planen([a, b], undefined, p => { p.variants.nodes[0].inventoryItem.unitCost = null; });
++  ist('fehlende Kosten sperren vor Fracht und ohne Preisersatz', [ohneKosten.plan.ergebnis, ohneKosten.frachten, ohneKosten.plan.varianten], ['UEBERSPRUNGEN', 0, undefined]);
++  const usd = await planen([a, b], undefined, p => { p.variants.nodes[0].inventoryItem.unitCost.currencyCode = 'USD'; });
++  ist('USD-unitCost nicht als CHF verwenden', [usd.plan.ergebnis, usd.frachten], ['UEBERSPRUNGEN', 0]);
++  const mehrdeutig = await planen([a, { ...b, variantSku: a.variantSku }]);
++  ist('doppelte CJ-SKU ist keine Preisbasis', [mehrdeutig.plan.ergebnis, mehrdeutig.frachten], ['UEBERSPRUNGEN', 0]);
++  delete process.env.USD_CHF;
++  const ohneFx = await import('./cj_varianten_nachziehen.mjs?test-ohne-kurs');
++  const ohneFxPlan = await planen([a, b], undefined, undefined, undefined, ohneFx.plane);
++  ist('Runner ohne konfigurierten Kurs sperrt vor Fracht', [ohneFxPlan.plan.ergebnis, ohneFxPlan.frachten], ['UEBERSPRUNGEN', 0]);
++  process.env.USD_CHF = '';
++  const leerFx = await import('./cj_varianten_nachziehen.mjs?test-leerer-kurs');
++  const leerFxPlan = await planen([a, b], undefined, undefined, undefined, leerFx.plane);
++  ist('Runner mit leerem Kurs sperrt vor Fracht', [leerFxPlan.plan.ergebnis, leerFxPlan.frachten], ['UEBERSPRUNGEN', 0]);
++  process.env.USD_CHF = '0.82435';
++  ist('SKU-Grossschreibung und optionales CJ-Präfix unverändert unterstützt', preisBasis(' cj-cjtest10000 ', [{ vid: 'a', sku: 'CJTEST10000', ek: 2 }]).ok, true);
++  ist('kein willkürliches Entfernen von CJ im Lieferantenkürzel', preisBasis('TEST10000', [{ vid: 'a', sku: 'CJTEST10000', ek: 2 }]).ok, false);
++
++  const plan = normal.plan;
++  ist('gebundener Plan gültig', preisplanProblem(plan), '');
++  for (const feld of ['preisplanVersion', 'basis', 'updatedAt']) {
++    const alt = clone(plan); delete alt[feld];
++    ist(`Altplan ohne ${feld} gesperrt`, Boolean(preisplanProblem(alt)), true);
++  }
++  const ohneKurs = clone(plan); delete ohneKurs.basis.usdChf;
++  ist('fehlender gespeicherter Kurs bekommt keine implizite Vorgabe', Boolean(preisplanProblem(ohneKurs)), true);
++  const manipuliert = clone(plan); manipuliert.varianten[1].preis = 19.9;
++  ist('alter geratener Einheitspreis passt nicht zur Basis', Boolean(preisplanProblem(manipuliert)), true);
++
++  const frei = () => ({ productVariants: { nodes: [], pageInfo: { hasNextPage: false } } });
++  const treff = (sku, id = 'gid://shopify/Product/2') => ({ id: 'gid://shopify/ProductVariant/2', sku, product: { id, handle: 'anderes-produkt' } });
++  let gelesen = 0;
++  const doppel = clone(plan); doppel.varianten[1].sku = 'cj-' + plan.varianten[0].sku.toLowerCase();
++  ist('Doppel-SKU innerhalb desselben Plans blockiert', (await pruefeVariantenSkus(async () => { gelesen++; return frei(); }, doppel)).ok, false);
++  ist('Planinterne Kollision benötigt keine Shop-Abfrage', gelesen, 0);
++  for (const fremd of ['CJTEST10000', 'cj-CJTEST10000']) {
++    ist(`SKU ${fremd} beim anderen Produkt blockiert`, (await pruefeVariantenSkus(async () => ({ productVariants: { nodes: [treff(fremd)], pageInfo: { hasNextPage: false } } }), plan)).ok, false);
++  }
++  ist('eigene bisherige SKU ist keine Fremdkollision', (await pruefeVariantenSkus(async () => ({ productVariants: { nodes: [treff('CJTEST10000', plan.produktId)], pageInfo: { hasNextPage: false } } }), plan)).ok, true);
++  ist('ähnliche Suchtreffer werden nicht als exakte Kollision gezählt', (await pruefeVariantenSkus(async () => ({ productVariants: { nodes: [treff('CJTEST10000-EXTRA')], pageInfo: { hasNextPage: false } } }), plan)).ok, true);
++  for (const antwort of [{}, { productVariants: null }, { productVariants: { nodes: [] } }, { productVariants: { nodes: [], pageInfo: { hasNextPage: true } } }, { errors: [{ message: 'Drosselung' }], ...frei() }, { productVariants: { nodes: [{ id: 'x', sku: 'CJTEST10000' }], pageInfo: { hasNextPage: false } } }]) {
++    ist('unvollständige/fehlerhafte SKU-Antwort blockiert', (await pruefeVariantenSkus(async () => antwort, plan)).ok, false);
++  }
++
++  // Writer gegen die tatsächlichen Abfragetexte prüfen; keine Mutation darf ohne die Gegenproben durchgehen.
++  function writer({ suche = frei, frisch = normal.p, mutation } = {}) {
++    const calls = [], writes = [];
++    const q = async (query, variablen) => {
++      calls.push(query);
++      if (query === VARIANTEN_SKU_DOPPELT) return suche(variablen);
++      if (query === PREIS_BASIS_LESEN) return { product: clone(frisch) };
++      assert.match(query, /^mutation.*productSet/s);
++      writes.push(variablen.i);
++      return mutation ? mutation() : { productSet: { userErrors: [], product: { id: plan.produktId, variantsCount: { count: 2 }, options: [] } } };
++    };
++    return { q, calls, writes };
++  }
++  let w = writer(); const reserviert = new Set();
++  ist('gültiger Plan kann mit vollständigen Gegenproben schreiben', (await aufschreiben(w.q, plan, reserviert)).ok, true);
++  ist('eine Mutation nach zwei SKU-Reads und frischer Preisbasis', [w.calls.length, w.writes.length, w.calls.at(-2)], [4, 1, PREIS_BASIS_LESEN]);
++  ist('konkrete Preise in Mutation', w.writes[0].variants.map(v => v.price), ['19.90', '33.90']);
++  const zweiter = writer();
++  ist('gleiche SKU in weiterem Produkt desselben Prozesses gesperrt', (await aufschreiben(zweiter.q, { ...plan, produktId: 'gid://shopify/Product/2' }, reserviert)).ok, false);
++  ist('keine weitere Mutation für belegte Prozess-SKUs', zweiter.writes.length, 0);
++  for (const anpassen of [p => { p.updatedAt = '2026-10-29T10:01:00Z'; }, p => { p.variants.nodes[0].sku = 'ANDERS'; }, p => { p.variants.nodes[0].price = '29.90'; }, p => { p.variants.nodes[0].inventoryItem.unitCost.amount = '20'; }, p => { p.variants.nodes[0].inventoryItem.unitCost.currencyCode = 'USD'; }, p => { p.variants.nodes[0].id = 'gid://shopify/ProductVariant/9'; }, p => { delete p.updatedAt; }]) {
++    const frisch = clone(normal.p); anpassen(frisch); w = writer({ frisch });
++    ist('veränderte oder unbekannte Preisbasis blockiert den Writer', (await aufschreiben(w.q, plan, new Set())).ok, false);
++    ist('keine Mutation nach veränderter Preisbasis', w.writes.length, 0);
++  }
++  w = writer(); const alt = clone(plan); delete alt.preisplanVersion;
++  ist('direkter Writer-Aufruf mit Altplan blockiert', (await aufschreiben(w.q, alt, new Set())).ok, false);
++  ist('Altplan sendet gar keine API-Abfrage', w.calls.length, 0);
++  w = writer({ suche: () => ({ productVariants: { nodes: [treff('CJTEST10000')], pageInfo: { hasNextPage: false } } }) });
++  ist('Writer blockiert Fremd-SKU', (await aufschreiben(w.q, plan, new Set())).ok, false);
++  ist('Fremdkollision erreicht keine Mutation', w.writes.length, 0);
++  const unklar = new Set(); w = writer({ mutation: () => ({}) });
++  ist('unvollständige Mutation ist unbekannt, nie Erfolg', (await aufschreiben(w.q, plan, unklar)).ok, false);
++  const folge = writer();
++  ist('unbekannter Versand bleibt im Prozess reserviert', (await aufschreiben(folge.q, plan, unklar)).ok, false);
++  ist('unbekannter Versand wird nicht blind wiederholt', folge.writes.length, 0);
++  const timeout = new Set(); w = writer({ mutation: () => { throw new Error('Zeitüberschreitung'); } });
++  await assert.rejects(aufschreiben(w.q, plan, timeout), /Zeitüberschreitung/); ok++;
++  ist('Timeout hält beide SKU-Reservierungen', timeout.size, 2);
++
++  // Der vorhandene SKU-only-Pfad und productSet teilen sich dieselbe im Test übergebene Reservierung.
++  const skuPlan = { produktId: 'gid://shopify/Product/7', varianteId: 'gid://shopify/ProductVariant/7', alteSku: 'CJ-260505090828160', neueSku: 'CJTEST10000' };
++  const gemeinsam = new Set();
++  const skuQ = async query => {
++    if (query === SKU_LESEN) return { product: { id: skuPlan.produktId, variantsCount: { count: 1 }, variants: { nodes: [{ id: skuPlan.varianteId, sku: skuPlan.alteSku }] } } };
++    if (query === SKU_DOPPELT) return { productVariants: { nodes: [] } };
++    assert.equal(query, SKU_SCHREIBEN);
++    return { productVariantsBulkUpdate: { userErrors: [], productVariants: [{ id: skuPlan.varianteId, sku: skuPlan.neueSku }] } };
++  };
++  ist('vorhandene SKU-only-Gegenprobe funktioniert unverändert', (await schreibeSku(skuQ, skuPlan, gemeinsam)).ok, true);
++  w = writer();
++  ist('anschliessendes productSet sieht SKU-only-Reservierung', (await aufschreiben(w.q, plan, gemeinsam)).ok, false);
++  ist('keine Mutation bei pfadübergreifender Kollision', w.writes.length, 0);
++  ist('Preisbasis-Gegenprobe erlaubt unveränderte Daten', preisBasisVeraendert(plan, normal.p), '');
++
++  console.log(`${ok} ok, 0 Fehler`);
++} finally {
++  globalThis.fetch = echtFetch;
++  for (const [name, wert] of Object.entries({ CJ_PAUSE_MS: vorEnv.pause, CJ_FAKTEN_CACHE: vorEnv.cache, KEIN_KI_UEBERSETZEN: vorEnv.ki, MAX_VARIANTEN: vorEnv.max, USD_CHF: vorEnv.fx })) {
++    if (wert === undefined) delete process.env[name]; else process.env[name] = wert;
++  }
++  rmSync(ordner, { recursive: true, force: true });
++}
+diff --git a/automation/lib/cj_varianten.mjs b/automation/lib/cj_varianten.mjs
+--- a/automation/lib/cj_varianten.mjs
++++ b/automation/lib/cj_varianten.mjs
+@@ -266,18 +266,20 @@
+  * Preis je Variante. Der bisherige Preis ist die Untergrenze: eine Variante wird nie billiger als das,
+  * was der Shop heute verlangt. Teurere CJ-Varianten bekommen den Aufschlag mit demselben Verhältnis
+  * Preis/Kosten wie die heutige Variante.
+- * Unbekannte Basiskosten → Einheitspreis (nie raten).
++ * Fehlende/ungültige Kosten oder Kurs → gesperrt; kein geratener Einheitspreis.
+  */
+ export function preisFuer({ basisPreis, basisKostenChf, ekBasisUsd, ekUsd, usdChf = 0.82435 }) {
+-  const preis = Number(basisPreis);
+-  if (!Number.isFinite(preis) || preis <= 0) return { ok: false, grund: 'kein Basispreis' };
+-  const kosten0 = Number(basisKostenChf), ek0 = Number(ekBasisUsd), ek = Number(ekUsd);
+-  if (![kosten0, ek0, ek].every(Number.isFinite) || kosten0 <= 0) {
+-    return { ok: true, preis, kostenChf: Number.isFinite(kosten0) && kosten0 > 0 ? kosten0 : null, einheitspreis: true };
+-  }
+-  const aufschlagKosten = (ek - ek0) * usdChf;
++  const positiv = x => (typeof x === 'number' || (typeof x === 'string' && x.trim() !== '')) && Number.isFinite(Number(x)) && Number(x) > 0;
++  if (!positiv(basisPreis)) return { ok: false, grund: 'kein gültiger Basispreis' };
++  if (![basisKostenChf, ekBasisUsd, ekUsd].every(positiv)) return { ok: false, grund: 'Preisbasis unbekannt: Kosten oder CJ-Einkaufspreis fehlen/ungültig' };
++  if (!positiv(usdChf)) return { ok: false, grund: 'Preisbasis unbekannt: Kurs fehlt/ungültig' };
++  const preis = Number(basisPreis), kosten0 = Number(basisKostenChf), ek0 = Number(ekBasisUsd), ek = Number(ekUsd);
++  const aufschlagKosten = (ek - ek0) * Number(usdChf);
+   const kosten = Math.round((kosten0 + aufschlagKosten) * 100) / 100;
+-  if (aufschlagKosten <= 0.05) return { ok: true, preis, kostenChf: Math.max(kosten, 0), einheitspreis: false };
++  if (!Number.isFinite(kosten) || kosten <= 0) return { ok: false, grund: 'Preisbasis unbekannt: errechnete Kosten ungültig' };
++  if (aufschlagKosten <= 0.05) return { ok: true, preis, kostenChf: kosten, einheitspreis: false };
+   const faktor = preis / kosten0;
+-  return { ok: true, preis: aufrunden90(preis + aufschlagKosten * faktor), kostenChf: kosten, einheitspreis: false };
+-}
++  const neu = aufrunden90(preis + aufschlagKosten * faktor);
++  if (!Number.isFinite(neu) || neu <= 0) return { ok: false, grund: 'Preisbasis unbekannt: errechneter Preis ungültig' };
++  return { ok: true, preis: neu, kostenChf: kosten, einheitspreis: false };
++}
+diff --git a/automation/lib/cj_varianten_schutz.mjs b/automation/lib/cj_varianten_schutz.mjs
+new file mode 100644
+--- /dev/null
++++ b/automation/lib/cj_varianten_schutz.mjs
+@@ -0,0 +1,67 @@
++// Schutz für den Auswahl-Lauf. Keine API-Aufrufe beim Import und keine Schreiboperation.
++import { preisFuer } from './cj_varianten.mjs';
++
++export const PREISPLAN_VERSION = 2;
++// Bestehende Bestell-Zuordnung: Grossschreibung und genau ein optionales «CJ-» vor der Lieferanten-SKU.
++export const skuSchluessel = sku => typeof sku === 'string' ? sku.trim().toUpperCase().replace(/^CJ-/, '') : '';
++const text = x => typeof x === 'string' && x.trim() !== '';
++const zu = grund => ({ ok: false, grund });
++
++/** Shop-Preis und unitCost gehören zur bisherigen SKU, nie zur ersten gefilterten CJ-Zeile. */
++export function preisBasis(shopSku, roh) {
++  const ziel = skuSchluessel(shopSku);
++  if (!ziel || !Array.isArray(roh)) return zu('Preisbasis unbekannt: Shop-SKU oder CJ-Varianten fehlen');
++  const treffer = roh.filter(v => skuSchluessel(v.sku) === ziel);
++  if (treffer.length !== 1 || !text(treffer[0]?.vid)) return zu('Preisbasis unbekannt: bisherige Shop-SKU nicht eindeutig einer CJ-Variante zugeordnet');
++  const v = treffer[0];
++  if (roh.filter(x => x.vid === v.vid).length !== 1) return zu('Preisbasis unbekannt: CJ-Variantennummer mehrfach vorhanden');
++  return { ok: true, vid: v.vid, sku: v.sku, ek: v.ek };
++}
++
++/** Alte/unvollständige Pläne dürfen die neue Quellbindung und Preisprüfung nicht umgehen. */
++export function preisplanProblem(plan) {
++  const b = plan?.basis;
++  if (plan?.preisplanVersion !== PREISPLAN_VERSION || !b || !text(b.varianteId) || !text(b.cjVid) || !text(b.cjSku)
++    || !skuSchluessel(b.sku) || skuSchluessel(b.sku) !== skuSchluessel(b.cjSku)) return 'Preisbasis unbekannt: alter oder ungebundener Plan';
++  if (b.kostenWaehrung !== 'CHF' || typeof b.usdChf !== 'number' || !Number.isFinite(b.usdChf) || b.usdChf <= 0) return 'Preisbasis unbekannt: CHF-Kosten oder Kurs nicht belegt';
++  if (!text(plan.updatedAt) || !text(plan.produktId) || !Array.isArray(plan.varianten) || plan.varianten.length < 2) return 'Preisbasis unbekannt: Plan unvollständig';
++  for (const v of plan.varianten) {
++    const p = preisFuer({ basisPreis: b.preis, basisKostenChf: b.kosten, ekBasisUsd: b.ekUsd, ekUsd: v.ekUsd, usdChf: b.usdChf });
++    if (!p.ok) return p.grund;
++    if (!text(v.vid) || !text(v.sku) || v.preis !== p.preis || v.kosten !== p.kostenChf || v.einheitspreis !== false) return 'Preisbasis unbekannt: Variantenpreis passt nicht zur belegten Basis';
++  }
++  return '';
++}
++
++export const PREIS_BASIS_LESEN = `query($id:ID!){product(id:$id){id updatedAt variantsCount{count} variants(first:2){nodes{id sku price inventoryItem{unitCost{amount currencyCode}}}}}}`;
++
++export function preisBasisVeraendert(plan, frisch) {
++  const b = plan.basis, vs = frisch?.variants?.nodes;
++  if (!frisch || frisch.id !== plan.produktId || frisch.variantsCount?.count !== 1 || !Array.isArray(vs) || vs.length !== 1) return 'Preisbasis nicht mehr eindeutig oder Gegenprobe unbekannt';
++  const v = vs[0], kosten = v.inventoryItem?.unitCost?.amount;
++  if (!text(frisch.updatedAt) || frisch.updatedAt !== plan.updatedAt || v.id !== b.varianteId || v.sku !== b.sku
++    || v.inventoryItem?.unitCost?.currencyCode !== 'CHF' || v.price == null || kosten == null || Number(v.price) !== b.preis || Number(kosten) !== b.kosten) return 'Preisbasis seit dem Plan verändert oder Gegenprobe unbekannt';
++  return '';
++}
++
++export const VARIANTEN_SKU_DOPPELT = `query($q:String!){productVariants(first:5,query:$q){nodes{id sku product{id handle}} pageInfo{hasNextPage}}}`;
++
++/** Begrenzte SKU-Gegenprobe: abgeschnittene/fehlende Suchantwort ist unbekannt, nie «frei». */
++export async function pruefeVariantenSkus(q, plan, gesetzt = new Set()) {
++  const ziele = plan.varianten.map(v => skuSchluessel(v.sku));
++  if (ziele.some(s => !s) || new Set(ziele).size !== ziele.length) return zu('SKU mehrdeutig: leere oder doppelte Ziel-SKU im Plan');
++  if (ziele.some(s => gesetzt.has(s))) return zu('SKU schon vergeben oder Schreibstatus unbekannt (in diesem Lauf)');
++  for (const ziel of ziele) {
++    const suche = `sku:${JSON.stringify(ziel)} OR sku:${JSON.stringify('CJ-' + ziel)}`;
++    const antwort = await q(VARIANTEN_SKU_DOPPELT, { q: suche });
++    const c = antwort?.productVariants;
++    if (antwort?.errors?.length || !Array.isArray(c?.nodes) || c.pageInfo?.hasNextPage !== false) return zu('SKU-Gegenprobe unbekannt oder unvollständig');
++    for (const v of c.nodes) {
++      if (!text(v?.id) || typeof v.sku !== 'string') return zu('SKU-Gegenprobe unbekannt: unvollständiger Treffer');
++      if (skuSchluessel(v.sku) !== ziel) continue; // Shopify-Suche kann weitere, ähnliche SKUs liefern.
++      if (!text(v.product?.id)) return zu('SKU-Gegenprobe unbekannt: Produktzuordnung fehlt');
++      if (v.product.id !== plan.produktId) return zu(`SKU schon vergeben (${v.product.handle || v.product.id})`);
++    }
++  }
++  return { ok: true, ziele };
++}
+diff --git a/automation/lib/cj_varianten_test.mjs b/automation/lib/cj_varianten_test.mjs
+--- a/automation/lib/cj_varianten_test.mjs
++++ b/automation/lib/cj_varianten_test.mjs
+@@ -81,7 +81,7 @@
+ ist('Preis: billigere Variante nie billiger', preisFuer({ basisPreis: 14.9, basisKostenChf: 10.82, ekBasisUsd: 2.94, ekUsd: 2.27 }).preis, 14.9);
+ ist('Preis: viel teurere Variante teurer', preisFuer({ basisPreis: 14.9, basisKostenChf: 10.82, ekBasisUsd: 2.94, ekUsd: 9.0 }).preis > 14.9, true);
+ ist('Preis: kleiner Aufschlag unter 5 Rappen bleibt gleich', preisFuer({ basisPreis: 14.9, basisKostenChf: 10.82, ekBasisUsd: 2.94, ekUsd: 2.99 }).preis, 14.9);
+-ist('Gegenprobe: unbekannte Kosten → Einheitspreis', preisFuer({ basisPreis: 14.9, basisKostenChf: null, ekBasisUsd: 2.94, ekUsd: 9 }).einheitspreis, true);
++ist('Gegenprobe: unbekannte Kosten sperren den Variantenpreis', preisFuer({ basisPreis: 14.9, basisKostenChf: null, ekBasisUsd: 2.94, ekUsd: 9 }).ok, false);
+ ist('Gegenprobe: kein Preis', preisFuer({ basisPreis: 0, basisKostenChf: 5, ekBasisUsd: 1, ekUsd: 1 }).ok, false);
+ ist('Marge der teureren Variante bleibt', (() => { const p = preisFuer({ basisPreis: 14.9, basisKostenChf: 10.82, ekBasisUsd: 2.94, ekUsd: 9.0 }); return p.preis - p.kostenChf >= 14.9 - 10.82 - 0.01; })(), true);
+ 
