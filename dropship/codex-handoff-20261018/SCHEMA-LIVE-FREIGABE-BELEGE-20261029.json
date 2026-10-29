@@ -1,0 +1,84 @@
+{
+  "authorization": {
+    "ownerMessage": "jaa mach das",
+    "date": "2026-10-29",
+    "scope": "Live takeover of the two reviewed schema changes followed by public countercheck and Google validation; existing Merchant push authorization remains narrow",
+    "newApprovalNeeded": false,
+    "recordedAt": "2026-10-29T09:28:50Z"
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "url": "https://luxestyle.ch",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "themeCountercheck": {
+    "mainId": "gid://shopify/OnlineStoreTheme/212656488839",
+    "previewId": "gid://shopify/OnlineStoreTheme/212752499079",
+    "mainRole": "MAIN",
+    "previewRole": "UNPUBLISHED",
+    "mainFiles": [
+      {
+        "filename": "sections/header.liquid",
+        "md5": "1fda77909b8d96d7b3d0f3bc65f8ed65",
+        "updatedAt": "2026-10-27T21:38:01Z"
+      },
+      {
+        "filename": "sections/product-information.liquid",
+        "md5": "e4ba950be4a05c5d6dd6f6ebf5d8a0a9",
+        "updatedAt": "2026-10-27T21:38:01Z"
+      }
+    ],
+    "previewFiles": [
+      {
+        "filename": "sections/header.liquid",
+        "md5": "003541d986ce79b0876755c8c3df7a3d",
+        "updatedAt": "2026-10-29T08:20:15Z"
+      },
+      {
+        "filename": "sections/product-information.liquid",
+        "md5": "9d9646c79c920779614ad848847d1e0d",
+        "updatedAt": "2026-10-29T08:20:15Z"
+      }
+    ],
+    "expectedHashesMatch": true
+  },
+  "access": {
+    "nativeConnector": "Theme file writes allowed only on unpublished themes; MAIN writes and publishing explicitly blocked by tool",
+    "shopifyBrowser": {
+      "authenticated": false,
+      "observedHost": "accounts.shopify.com",
+      "path": "/lookup",
+      "pageTitle": "Log in — Shopify",
+      "sessionClosed": true
+    },
+    "searchConsoleBrowser": {
+      "status": "unknown",
+      "error": "firecrawl_interact timeout of 35000ms exceeded",
+      "loggedInState": "unknown",
+      "retry": false
+    },
+    "runtime": {
+      "observationsCurrent": true,
+      "secretsConfigured": 0,
+      "runtimeVariablesConfigured": 0,
+      "outboundIdentitiesConfigured": 0
+    }
+  },
+  "writes": {
+    "mainTheme": 0,
+    "themePublish": 0,
+    "merchant": 0,
+    "googleValidation": 0
+  },
+  "limitations": [
+    "No blocked mutation attempted; no automatic approval rejection",
+    "No alternative credentials searched or access controls bypassed",
+    "No new theme copy or repeated metrics/flow/order queries"
+  ],
+  "next": "Use authenticated Shopify Admin for exactly2 reviewed file changes after fresh hash check; validate public render, then actual Google test/Console validation. Do not request same authorization again.",
+  "checkedBy": "2026-10-29T09:28:50Z"
+}
