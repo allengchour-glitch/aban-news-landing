@@ -1,0 +1,809 @@
+{
+  "checkedAt": "2026-10-29T22:24:56.635574+00:00",
+  "shop": "luxestyle.ch",
+  "shopId": "94368563585",
+  "previewThemeId": "212752499079",
+  "mainThemeId": "212656488839",
+  "previewUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio",
+  "taskId": "personalizer-fullscreen-20261029",
+  "sourceFiles": [
+    {
+      "filename": "assets/luxe-studio-catalog.css",
+      "sha256": "73cfc5862d6bb2844fe769bd8f9de85c41a11c35ab0f16e8767d8029e7299db8",
+      "bytes": 4424
+    },
+    {
+      "filename": "assets/luxe-studio-catalog.js",
+      "sha256": "027a120e945f3f32786f2706a1b6734eddfe0ad084f57f92732b0250771c5e6b",
+      "bytes": 12775
+    },
+    {
+      "filename": "assets/luxe-studio.css",
+      "sha256": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172",
+      "bytes": 14806
+    },
+    {
+      "filename": "assets/luxe-studio.js",
+      "sha256": "997acd0163994e695987b8d0aa0117e29b985edf8be95e422d501584ac15bcd4",
+      "bytes": 35593
+    },
+    {
+      "filename": "locales/de.json",
+      "sha256": "b425522094642ddfcbf54312b1804474dc50d241822f6cb6aeee5cf4e91b1b34",
+      "bytes": 28513
+    },
+    {
+      "filename": "locales/en.default.json",
+      "sha256": "d58bccd28c334e0f5a871d6b7d952236a66d02f7c3e13e57a1237e641d3e92c5",
+      "bytes": 28143
+    },
+    {
+      "filename": "sections/luxe-studio.liquid",
+      "sha256": "a6f123da7b8fefa36d4cb4f834bb3e2ee9e1ee35da68ba833446624ac59d30bb",
+      "bytes": 12617
+    },
+    {
+      "filename": "templates/collection.luxe-studio-catalog.liquid",
+      "sha256": "dd14395b190d43f0eee03a55d24782c9fd29f61dafa0fe1d2d29781b0a787581",
+      "bytes": 2242
+    },
+    {
+      "filename": "templates/product.luxe-studio.json",
+      "sha256": "b71496eb779df3e2064f9d22524e1e6c1cb9d418ebda55727fd0cc47297388bc",
+      "bytes": 119
+    },
+    {
+      "filename": "templates/search.luxe-studio-catalog.liquid",
+      "sha256": "3462b9242b870e815cb1743bdabc91219ef7328371df5c14c042f696396b5a6f",
+      "bytes": 2681
+    }
+  ],
+  "initialWrite": {
+    "checkedAt": "2026-10-29 22:09:15 UTC",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "host": "luxestyle.ch",
+      "currency": "CHF"
+    },
+    "previewThemeId": "212752499079",
+    "mainThemeId": "212656488839",
+    "write": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "assets/luxe-studio-catalog.css",
+              "checksumMd5": "337b8ee0f7934f3df7524fbd39fbf9f7"
+            },
+            {
+              "filename": "assets/luxe-studio-catalog.js",
+              "checksumMd5": "e5ce71348fa59277deeb62968b219824"
+            },
+            {
+              "filename": "assets/luxe-studio.css",
+              "checksumMd5": "a8d670161b0ae9e75a4699b283f5edd9"
+            },
+            {
+              "filename": "assets/luxe-studio.js",
+              "checksumMd5": "17ffcc5c3cd394aca454da1f88f249bb"
+            },
+            {
+              "filename": "locales/de.json",
+              "checksumMd5": "0fcccab697dc5854e89a6c3399b1020d"
+            },
+            {
+              "filename": "locales/en.default.json",
+              "checksumMd5": "d64a161a487cb7aa274f7ff3c638896d"
+            },
+            {
+              "filename": "sections/luxe-studio.liquid",
+              "checksumMd5": "6366688001befd3f3d6b026c0c630606"
+            },
+            {
+              "filename": "templates/collection.luxe-studio-catalog.liquid",
+              "checksumMd5": "e13358796c81a531ace3628546ebbd8d"
+            },
+            {
+              "filename": "templates/product.luxe-studio.json",
+              "checksumMd5": "f02ee73c03c04216c857c3092d22ac12"
+            },
+            {
+              "filename": "templates/search.luxe-studio-catalog.liquid",
+              "checksumMd5": "fafad4a2a748f033adc6606fae53cee0"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "readback": {
+      "theme": "gid://shopify/OnlineStoreTheme/212752499079",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "assets/luxe-studio-catalog.css",
+          "checksumMd5": "337b8ee0f7934f3df7524fbd39fbf9f7",
+          "exact": true
+        },
+        {
+          "filename": "assets/luxe-studio-catalog.js",
+          "checksumMd5": "e5ce71348fa59277deeb62968b219824",
+          "exact": true
+        },
+        {
+          "filename": "assets/luxe-studio.css",
+          "checksumMd5": "a8d670161b0ae9e75a4699b283f5edd9",
+          "exact": true
+        },
+        {
+          "filename": "assets/luxe-studio.js",
+          "checksumMd5": "17ffcc5c3cd394aca454da1f88f249bb",
+          "exact": true
+        },
+        {
+          "filename": "locales/de.json",
+          "checksumMd5": "0fcccab697dc5854e89a6c3399b1020d",
+          "exact": true
+        },
+        {
+          "filename": "locales/en.default.json",
+          "checksumMd5": "d64a161a487cb7aa274f7ff3c638896d",
+          "exact": true
+        },
+        {
+          "filename": "sections/luxe-studio.liquid",
+          "checksumMd5": "6366688001befd3f3d6b026c0c630606",
+          "exact": true
+        },
+        {
+          "filename": "templates/collection.luxe-studio-catalog.liquid",
+          "checksumMd5": "e13358796c81a531ace3628546ebbd8d",
+          "exact": true
+        },
+        {
+          "filename": "templates/product.luxe-studio.json",
+          "checksumMd5": "f02ee73c03c04216c857c3092d22ac12",
+          "exact": false
+        },
+        {
+          "filename": "templates/search.luxe-studio-catalog.liquid",
+          "checksumMd5": "fafad4a2a748f033adc6606fae53cee0",
+          "exact": true
+        }
+      ],
+      "productTemplateSemanticMatch": true
+    },
+    "protected": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "themes": {
+          "nodes": [
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212656488839",
+              "role": "MAIN"
+            }
+          ]
+        },
+        "theme": {
+          "id": "gid://shopify/OnlineStoreTheme/212752499079",
+          "role": "UNPUBLISHED",
+          "files": {
+            "nodes": [
+              {
+                "filename": "layout/theme.liquid",
+                "checksumMd5": "48cae3589cb6f051998a5f0509918740"
+              },
+              {
+                "filename": "snippets/lspod-designzwang.liquid",
+                "checksumMd5": "abe88497cd15c783573f4e3e945b6ea5"
+              },
+              {
+                "filename": "templates/product.json",
+                "checksumMd5": "a3ef31be44c876ccf27248c80383ef5e"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "airpods": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          },
+          "currencyCode": "CHF"
+        },
+        "products": {
+          "nodes": [],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    },
+    "collection": {
+      "data": {
+        "collection": {
+          "id": "gid://shopify/Collection/688590160257",
+          "title": "Selbst gestalten – alle Produkte",
+          "handle": "sg-alle",
+          "sources": [
+            {
+              "__typename": "CollectionConditionsSource",
+              "id": "gid://shopify/CollectionConditionsSource/25112347009",
+              "title": "Untitled Source"
+            }
+          ],
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/16672778289543",
+                "title": "Samsung-Hülle selbst gestalten",
+                "handle": "samsung-huelle-selbst-gestalten",
+                "status": "ACTIVE",
+                "tags": [
+                  "huelle",
+                  "natel",
+                  "printful_personalized_product",
+                  "samsung",
+                  "sg-accessoires",
+                  "sort-handy-huellen",
+                  "wunschdesign"
+                ]
+              },
+              {
+                "id": "gid://shopify/Product/15451569389953",
+                "title": "Kuscheldecke – Selbst gestalten",
+                "handle": "kuscheldecke-selbst-gestalten",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "decke",
+                  "geschenk",
+                  "printful_personalized_product",
+                  "sg-wohnen",
+                  "wunschdesign"
+                ]
+              },
+              {
+                "id": "gid://shopify/Product/15451569357185",
+                "title": "Laptop-Sleeve – Selbst gestalten",
+                "handle": "laptop-sleeve-selbst-gestalten",
+                "status": "DRAFT",
+                "tags": [
+                  "bild-ok",
+                  "handy-technik",
+                  "nicht-fit-elektronik-draft",
+                  "printful_personalized_product",
+                  "sg-technik",
+                  "wunschdesign"
+                ]
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Initial write; catalog fixes pending.",
+      "No production theme write.",
+      "No real print areas confirmed.",
+      "No cart/order/Printful writes."
+    ]
+  },
+  "correctionReadback": {
+    "checkedAt": "2026-10-29 22:15:32 UTC",
+    "themeId": "212752499079",
+    "role": "UNPUBLISHED",
+    "mutatedFiles": [
+      "assets/luxe-studio-catalog.css",
+      "assets/luxe-studio-catalog.js",
+      "assets/luxe-studio.js",
+      "locales/de.json",
+      "locales/en.default.json",
+      "templates/search.luxe-studio-catalog.liquid"
+    ],
+    "write": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "assets/luxe-studio-catalog.css",
+              "checksumMd5": "cb3655cbeb38b39266c6c96bc378bef6"
+            },
+            {
+              "filename": "assets/luxe-studio-catalog.js",
+              "checksumMd5": "03666ae218e4039ec098e06e5c75c9e9"
+            },
+            {
+              "filename": "assets/luxe-studio.js",
+              "checksumMd5": "11c6d37102406e4e876f1474dfbb1828"
+            },
+            {
+              "filename": "locales/de.json",
+              "checksumMd5": "8bd9efc17e0fee11c1d356d3a9905ee9"
+            },
+            {
+              "filename": "locales/en.default.json",
+              "checksumMd5": "a923fd9c45a728e82804bb5e03d76685"
+            },
+            {
+              "filename": "templates/search.luxe-studio-catalog.liquid",
+              "checksumMd5": "596cb1e1d30123fd8cc66787a3861b29"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "readback": [
+      {
+        "filename": "assets/luxe-studio-catalog.css",
+        "checksumMd5": "cb3655cbeb38b39266c6c96bc378bef6",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-studio-catalog.js",
+        "checksumMd5": "03666ae218e4039ec098e06e5c75c9e9",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-studio.js",
+        "checksumMd5": "11c6d37102406e4e876f1474dfbb1828",
+        "exact": true
+      },
+      {
+        "filename": "locales/de.json",
+        "checksumMd5": "8bd9efc17e0fee11c1d356d3a9905ee9",
+        "exact": true
+      },
+      {
+        "filename": "locales/en.default.json",
+        "checksumMd5": "a923fd9c45a728e82804bb5e03d76685",
+        "exact": true
+      },
+      {
+        "filename": "templates/search.luxe-studio-catalog.liquid",
+        "checksumMd5": "596cb1e1d30123fd8cc66787a3861b29",
+        "exact": true
+      }
+    ],
+    "immediateReadback": "Transient old body content; later targeted read returned exact current content for all six. No blind retry of writes."
+  },
+  "finalReadback": {
+    "checkedAt": "2026-10-29 22:24:55 UTC",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/212656488839",
+        "role": "MAIN"
+      }
+    ],
+    "preview": {
+      "id": "gid://shopify/OnlineStoreTheme/212752499079",
+      "role": "UNPUBLISHED"
+    },
+    "finalWrite": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "assets/luxe-studio.js",
+              "checksumMd5": "d56768a3caf4495a0c34bd9b6a89a05f"
+            },
+            {
+              "filename": "assets/luxe-studio-catalog.js",
+              "checksumMd5": "5d45a47d8a4ff6250378200019b7ef27"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "headerWrite": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "assets/luxe-studio-catalog.js",
+              "checksumMd5": "bd4fe3ebd727783c12334c97a8cca4c0"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "headerReadbackExact": true,
+    "readback": [
+      {
+        "filename": "assets/luxe-studio-catalog.js",
+        "checksumMd5": "5d45a47d8a4ff6250378200019b7ef27",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-studio.js",
+        "checksumMd5": "d56768a3caf4495a0c34bd9b6a89a05f",
+        "exact": true
+      }
+    ],
+    "protectedFiles": [
+      {
+        "filename": "layout/theme.liquid",
+        "checksumMd5": "48cae3589cb6f051998a5f0509918740",
+        "unchanged": true
+      },
+      {
+        "filename": "snippets/lspod-designzwang.liquid",
+        "checksumMd5": "abe88497cd15c783573f4e3e945b6ea5",
+        "unchanged": true
+      },
+      {
+        "filename": "templates/product.json",
+        "checksumMd5": "a3ef31be44c876ccf27248c80383ef5e",
+        "unchanged": true
+      }
+    ]
+  },
+  "nativeCatalogChecks": [
+    {
+      "name": "JSON endpoint all",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "keys": [
+          "schemaVersion",
+          "scope",
+          "catalogComplete",
+          "collection",
+          "currency",
+          "page",
+          "hasPrevious",
+          "hasNext",
+          "eligibleOnPage",
+          "products"
+        ],
+        "count": 12,
+        "titles": [
+          "Samsung-Hülle selbst gestalten",
+          "Kuscheldecke – Selbst gestalten",
+          "Spiral-Notizbuch – Selbst gestalten",
+          "Strandtuch & Badetuch bedrucken · selbst gestalten",
+          "Mauspad – Selbst gestalten",
+          "Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️",
+          "Her King & His Queen Partner-Shirts · Couple T-Shirts 👑",
+          "Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍",
+          "King & Queen Partner-Shirts · Couple T-Shirts 👑",
+          "Hubby & Wifey Tassen-Set · 2 Tassen mit Herz ❤️",
+          "Her King & His Queen Tassen-Set · 2 Tassen für Verliebte 👑",
+          "Mr & Mrs Tassen-Set · 2 Tassen zur Hochzeit 💍"
+        ]
+      }
+    },
+    {
+      "name": "JSON endpoint Tasse",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "keys": [
+          "schemaVersion",
+          "scope",
+          "catalogComplete",
+          "query",
+          "matchMode",
+          "currency",
+          "page",
+          "hasPrevious",
+          "hasNext",
+          "eligibleOnPage",
+          "products"
+        ],
+        "count": 12,
+        "titles": [
+          "Tasse «Hoi»",
+          "Tasse «Chalet»",
+          "Tasse «Znueni»",
+          "Tasse «Steinbock»",
+          "Tasse «Grüezi»",
+          "Tasse «Sali»",
+          "Tasse «Matterhorn»",
+          "Tasse «Edelweiss»",
+          "Tasse «Murmeli»",
+          "Tasse «Baehnli»",
+          "Tasse «Raclette»",
+          "Tasse «Alphorn»"
+        ]
+      }
+    },
+    {
+      "name": "Search has matching results Tasse",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "JSON endpoint Bomber",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "keys": [
+          "schemaVersion",
+          "scope",
+          "catalogComplete",
+          "query",
+          "matchMode",
+          "currency",
+          "page",
+          "hasPrevious",
+          "hasNext",
+          "eligibleOnPage",
+          "products"
+        ],
+        "count": 1,
+        "titles": [
+          "Unisex Allover-Bomberjacke – Selbst gestalten"
+        ]
+      }
+    },
+    {
+      "name": "Search has matching results Bomber",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Native picker contains products",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Product changed to selected real item",
+      "ok": true,
+      "detail": {
+        "url": "https://luxestyle.ch/products/tasse-hoi-zaeme?view=luxe-studio",
+        "id": "15427280896385",
+        "title": "Tasse «Hoi»",
+        "variants": [
+          {
+            "id": "55792257728897",
+            "title": "11 oz (Standard)",
+            "price": 1690,
+            "available": true,
+            "options": [
+              "11 oz (Standard)"
+            ]
+          },
+          {
+            "id": "55792257761665",
+            "title": "15 oz (Gross)",
+            "price": 1990,
+            "available": true,
+            "options": [
+              "15 oz (Gross)"
+            ]
+          }
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "Alternate editor retained",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "independentReview": {
+    "generatedAt": "2026-10-29T22:20:47.096386+00:00",
+    "scope": "Unabhängige UI-Prüfung; unveröffentlichtes Shopify-Theme 212752499079 und vollständig abgefangene lokale Fixtures.",
+    "nativeUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?preview_theme_id=212752499079&view=luxe-studio",
+    "suites": [
+      {
+        "source": "functional-results.json",
+        "checkedAt": "2026-10-29T22:12:59.660284+00:00",
+        "passed": 88,
+        "failed": 0,
+        "fatal": null,
+        "fileHashes": {
+          "luxe-studio-catalog.js": "fe49461fc37a331f948e9506a845342515bbd775263756c9255d9da0056b159a",
+          "luxe-studio-catalog.css": "73cfc5862d6bb2844fe769bd8f9de85c41a11c35ab0f16e8767d8029e7299db8",
+          "luxe-studio.css": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172",
+          "luxe-studio.js": "54301f0676bd2138670f1004726e5ee8d7047690d8f536e86531448b62176127"
+        },
+        "assets": null,
+        "sourceSha256": "a7fe936bb6b2c90a78541c42254362a4d3f7d44e6b6b5632e66f92a2fd311cbf"
+      },
+      {
+        "source": "area-results.json",
+        "checkedAt": "2026-10-29T22:12:59.670366+00:00",
+        "passed": 18,
+        "failed": 0,
+        "fatal": null,
+        "fileHashes": {
+          "luxe-studio-catalog.js": "fe49461fc37a331f948e9506a845342515bbd775263756c9255d9da0056b159a",
+          "luxe-studio-catalog.css": "73cfc5862d6bb2844fe769bd8f9de85c41a11c35ab0f16e8767d8029e7299db8",
+          "luxe-studio.css": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172",
+          "luxe-studio.js": "54301f0676bd2138670f1004726e5ee8d7047690d8f536e86531448b62176127"
+        },
+        "assets": null,
+        "sourceSha256": "c9744d2612801b2c65a44d261e0d3a3e5f7f843259df6adc8f60f9049e1d0ac6"
+      },
+      {
+        "source": "native/RESULTS-before-catalog-fix.json",
+        "checkedAt": "2026-10-29T22:06:02.635542+00:00",
+        "passed": 32,
+        "failed": 0,
+        "fatal": "TimeoutError('Locator.wait_for: Timeout 20000ms exceeded.\\nCall log:\\n  - waiting for locator(\".lsc-grid[aria-busy=false]\") to be visible\\n    40 × locator resolved to hidden <div class=\"lsc-grid\" aria-busy=\"false\" aria-label=\"Produkt wechseln\"></div>\\n')",
+        "fileHashes": null,
+        "assets": [
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio.css",
+            "status": 200,
+            "sha256": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio-catalog.css",
+            "status": 200,
+            "sha256": "8b56a16f14fb15d703f6dc565bf44e39a7568f202d9cdb7f51d2b86dcafc63f3"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio.js",
+            "status": 200,
+            "sha256": "13a3ead92f4a7ae8f5ac0380cf358f62e2e2d23054fce40e6fe4e1ee5eb04a1c"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio-catalog.js",
+            "status": 200,
+            "sha256": "ebf976be3212d266d74c9641cca5814fa8606891632f3ea2b0ab8122b2bf5bb6"
+          }
+        ],
+        "sourceSha256": "30f02e772cccf8cc3bf561e3b5c142c05f5b9873f5c790de69289c03f8e778f3"
+      },
+      {
+        "source": "native/PICKER-RESULTS.json",
+        "checkedAt": "2026-10-29T22:19:17.954195+00:00",
+        "passed": 19,
+        "failed": 0,
+        "fatal": null,
+        "fileHashes": null,
+        "assets": [
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio.css",
+            "status": 200,
+            "sha256": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio-catalog.css",
+            "status": 200,
+            "sha256": "84818f55ecfa00c0b62de762c2f34dc0c879d61c8948d69eeef020fd79981ad7"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio.js",
+            "status": 200,
+            "sha256": "183c5ab5ccb703abd20986ed45dc61904234fc8c15007e055a22bf994b299ad6"
+          },
+          {
+            "path": "/cdn/shop/t/19/assets/luxe-studio-catalog.js",
+            "status": 200,
+            "sha256": "ae99613847da97cd11446d78bcdf531de3fda5e3d486fbe9acfc3e270d1513b1"
+          }
+        ],
+        "sourceSha256": "fe5875698738c93640986e4049c5a0ed9bc1846c0298cf68a2125d3d14917cfd"
+      }
+    ],
+    "finalLocalAssets": {
+      "luxe-studio-catalog.css": "73cfc5862d6bb2844fe769bd8f9de85c41a11c35ab0f16e8767d8029e7299db8",
+      "luxe-studio-catalog.js": "302b63638c573856c6a030078598c2b06f1149c5c58c0c05a2be005336e7a0bf",
+      "luxe-studio.css": "dffa0fa5086b59cf9483e78f7045ad0740407cfd1dc26ca90f91004b18029172",
+      "luxe-studio.js": "54301f0676bd2138670f1004726e5ee8d7047690d8f536e86531448b62176127"
+    },
+    "nativeData": {
+      "complete": true,
+      "previewOnly": true,
+      "productId": "15422956798337",
+      "variantCount": 7,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "currency": "CHF",
+      "hasPrintArea": false
+    },
+    "nativeBackgroundErrors": {
+      "initialCount": 6,
+      "pickerCount": 6,
+      "classification": "Shopify-Hintergrundfehler werden nicht pauschal dem Editor zugeordnet; Nicht-GET/HEAD und Cart-/Checkout-Pfade im Test blockiert."
+    },
+    "writes": {
+      "businessApiWrites": false,
+      "cartWrites": false,
+      "orders": false,
+      "uploads": false,
+      "nativeThemeWritesByReviewer": false
+    },
+    "limitations": [
+      "Keine produktive Printful-Druckvorlage belegt.",
+      "Druckflächen-Tests verwenden ausschliesslich synthetische Fixtures.",
+      "Kein produktiver Upload-/Bestellpfad geprüft.",
+      "Desktop-Chromium mit kleinen Viewports; keine physische iOS-/Android-Prüfung.",
+      "Native Resultate gelten nur für das unveröffentlichte Preview-Theme und die dokumentierten Dateihashes."
+    ],
+    "screenshots": [
+      "native/product-1440.png",
+      "native/design-360.png",
+      "native/review-390.png",
+      "native/catalog-1440.png",
+      "native/catalog-390.png",
+      "native/catalog-360.png"
+    ]
+  },
+  "finalPolish": {
+    "checkedAt": "2026-10-29T22:24:12.374704+00:00",
+    "checks": [
+      {
+        "name": "Swiss CHF formatting",
+        "ok": true,
+        "detail": "Ab CHF 21.90"
+      },
+      {
+        "name": "No technical default option on cards",
+        "ok": true,
+        "detail": null
+      },
+      {
+        "name": "Long option summary compact",
+        "ok": true,
+        "detail": "Samsung-Hülle selbst gestalten\n\nMaterial: Hartschale matt, Hartschale glänzend, Klare Hülle … · Handymodell: Samsung Galaxy S20, Samsung Galaxy S20 Plus, Samsung Galaxy S20 Ultra …\n\n84 Varianten\n\nAb CHF 21.90\n\nAuswählen"
+      },
+      {
+        "name": "No technical default option in editor",
+        "ok": true,
+        "detail": null
+      },
+      {
+        "name": "Actual single variant retained",
+        "ok": true,
+        "detail": {
+          "product": "15451569324417",
+          "variants": [
+            {
+              "id": "55893188411777",
+              "title": "Default Title",
+              "price": 2690,
+              "available": true,
+              "options": [
+                "Default Title"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "passed": 5,
+    "failed": 0
+  },
+  "bounds": [
+    "Not a deployed/main theme",
+    "No product creation, price edits, cart, checkout, order or Printful fulfilment",
+    "No real supplier print template confirmed",
+    "No catalogue-wide count or completeness claim",
+    "No analytics, flow or order report added",
+    "User screenshots are product requests, not proof of availability, supplier rights or retail prices"
+  ]
+}
