@@ -1,0 +1,2214 @@
+{
+  "atUtc": "2026-10-29T23:18:47.337008+00:00",
+  "dateEuropeZurich": "2026-10-30",
+  "taskId": "personalizer-fullscreen-20261029",
+  "revision": 16,
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "main": [
+    {
+      "id": "gid://shopify/OnlineStoreTheme/212656488839",
+      "role": "MAIN"
+    }
+  ],
+  "preview": {
+    "id": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED"
+  },
+  "metricoolIdentity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "verifiedEarlierThisRun": true,
+    "analyticsReadThisEditingTurn": false
+  },
+  "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
+  "scope": {
+    "sourceCollectionId": "688427434369",
+    "sourceCollectionProducts": 32,
+    "eligibleProducts": 31,
+    "excludedProductId": "15423895830913",
+    "excludedReason": "No positive POD tag",
+    "subcategories": [
+      "sg-bekleidung",
+      "sg-taschen",
+      "sg-wohnen",
+      "sg-trinken",
+      "sg-accessoires"
+    ]
+  },
+  "files": [
+    {
+      "file": "assets/luxe-category.css",
+      "sha256": "40f854086dbc5fcdbb55e68f7942ab36271730aa43deb7517d04d4518a0daa38",
+      "nativeChecksumMd5": "c23e7c296735f98ee7e60f4bacc50c0c"
+    },
+    {
+      "file": "assets/luxe-studio-catalog.css",
+      "sha256": "305e129eda24245718b2ed26a06acfe44a831a022a8e4da57aedfcaacaf5ac98",
+      "nativeChecksumMd5": "c0efff59a912e4c9762a0c936109ff76"
+    },
+    {
+      "file": "assets/luxe-studio-catalog.js",
+      "sha256": "858af39d878290342dabc73713488d2e24107f0dbcf5afb042041d9cb36030c6",
+      "nativeChecksumMd5": "8057fa11a00f082732fc0f7d8b0ea3b4"
+    },
+    {
+      "file": "blocks/_header-menu.liquid",
+      "sha256": "352278688b1c4f9fe520946e0ff1c7fbeeb8b7b2e525679c805ed8236cf81346",
+      "nativeChecksumMd5": "bb6ca9439c2a18c9299c4d2dd17ce002"
+    },
+    {
+      "file": "locales/de.json",
+      "sha256": "c7b5dcee7c841bd52f06eb95cce7d945aaf38bd16b28675d46ee6ef7634db15d",
+      "nativeChecksumMd5": "f6368c23ac557d311ca1834570313b36"
+    },
+    {
+      "file": "locales/en.default.json",
+      "sha256": "d3aca1708223abb1f4ed3ed298a942e67ae67b8f0411bf1fd9dd4d7aa2902add",
+      "nativeChecksumMd5": "09353aad87a49e8cb4376307039b9577"
+    },
+    {
+      "file": "sections/luxe-category.liquid",
+      "sha256": "9ea41cd1ed98c1d4632c42b386178d0d1cd93b5b0640fc71f2f24df47506179a",
+      "nativeChecksumMd5": "b0db2eb2edb52f238d8ec6405244bc1c"
+    },
+    {
+      "file": "sections/luxe-studio.liquid",
+      "sha256": "3576786b92963f1674c4965c9b9a16f412f6eae2d640af012ec14094bdd6e943",
+      "nativeChecksumMd5": "ad88f54a389a3b5060978e5397115701"
+    },
+    {
+      "file": "snippets/header-drawer.liquid",
+      "sha256": "f2d0c8f5c4f2bc75875efcf08c7b1691b68087f9023842a761b2c3b921b1d656",
+      "nativeChecksumMd5": "8e1f8fc1406bde7635e2a3cccf62feff"
+    },
+    {
+      "file": "snippets/luxe-studio-blank-eligible.liquid",
+      "sha256": "98d579ee79fd320fcfcf62ea615d83274e392355a29100c1e3fe2ea481755ab7",
+      "nativeChecksumMd5": "89eea97931f469cb8882584140e7f41d"
+    },
+    {
+      "file": "snippets/luxe-studio-catalog-colors.liquid",
+      "sha256": "f2eb5c8988c36fbcad16ce1d0b4635318dc63b0b684667f8187e2482027aeb11",
+      "nativeChecksumMd5": "f2baf4acc244ff56fb1902a3d5c44d26"
+    },
+    {
+      "file": "snippets/luxe-studio-navigation-link.liquid",
+      "sha256": "afce2d5957b7d6931ed500918720e255cf6424cbbe66fd8213690f30b913dbc8",
+      "nativeChecksumMd5": "d72b2a927f66a5a56da7c66c5a3e484e"
+    },
+    {
+      "file": "templates/collection.luxe-gestalten.json",
+      "sha256": "c93b795eb505c65ef97b68f619b8c0f89c3d4d35438d50a8ec0dc16f7294b42e",
+      "nativeChecksumMd5": "5b2807371239d77bba1e4e03c9caf166"
+    },
+    {
+      "file": "templates/collection.luxe-studio-catalog.liquid",
+      "sha256": "c547ceae092d8af09dfa6707c914de68014a77747ca63f9da3a866ae1a0878bd",
+      "nativeChecksumMd5": "bf2e6264373b6a9218f3075d20d4e1cd"
+    },
+    {
+      "file": "templates/search.luxe-studio-catalog.liquid",
+      "sha256": "5c6ee6ae37a93828bff74db1d9a3651b119067c0db82d7978d96c69c617275c2",
+      "nativeChecksumMd5": "4fa857200b53b5c8ddad23b0cb2fbc87"
+    }
+  ],
+  "readback": {
+    "passed": 18,
+    "failed": [],
+    "reports": [
+      {
+        "file": "assets/luxe-category.css",
+        "type": "exact",
+        "passed": true,
+        "md5": "c23e7c296735f98ee7e60f4bacc50c0c"
+      },
+      {
+        "file": "assets/luxe-studio-catalog.css",
+        "type": "exact",
+        "passed": true,
+        "md5": "c0efff59a912e4c9762a0c936109ff76"
+      },
+      {
+        "file": "assets/luxe-studio-catalog.js",
+        "type": "exact",
+        "passed": true,
+        "md5": "8057fa11a00f082732fc0f7d8b0ea3b4"
+      },
+      {
+        "file": "blocks/_header-menu.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "bb6ca9439c2a18c9299c4d2dd17ce002"
+      },
+      {
+        "file": "layout/theme.liquid",
+        "type": "protected",
+        "passed": true,
+        "md5": "48cae3589cb6f051998a5f0509918740"
+      },
+      {
+        "file": "locales/de.json",
+        "type": "exact",
+        "passed": true,
+        "md5": "f6368c23ac557d311ca1834570313b36"
+      },
+      {
+        "file": "locales/en.default.json",
+        "type": "exact",
+        "passed": true,
+        "md5": "09353aad87a49e8cb4376307039b9577"
+      },
+      {
+        "file": "sections/luxe-category.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "b0db2eb2edb52f238d8ec6405244bc1c"
+      },
+      {
+        "file": "sections/luxe-studio.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "ad88f54a389a3b5060978e5397115701"
+      },
+      {
+        "file": "snippets/header-drawer.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "8e1f8fc1406bde7635e2a3cccf62feff"
+      },
+      {
+        "file": "snippets/lspod-designzwang.liquid",
+        "type": "protected",
+        "passed": true,
+        "md5": "abe88497cd15c783573f4e3e945b6ea5"
+      },
+      {
+        "file": "snippets/luxe-studio-blank-eligible.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "89eea97931f469cb8882584140e7f41d"
+      },
+      {
+        "file": "snippets/luxe-studio-catalog-colors.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "f2baf4acc244ff56fb1902a3d5c44d26"
+      },
+      {
+        "file": "snippets/luxe-studio-navigation-link.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "d72b2a927f66a5a56da7c66c5a3e484e"
+      },
+      {
+        "file": "templates/collection.luxe-gestalten.json",
+        "type": "semantic",
+        "passed": true,
+        "md5": "5b2807371239d77bba1e4e03c9caf166"
+      },
+      {
+        "file": "templates/collection.luxe-studio-catalog.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "bf2e6264373b6a9218f3075d20d4e1cd"
+      },
+      {
+        "file": "templates/product.json",
+        "type": "protected",
+        "passed": true,
+        "md5": "a3ef31be44c876ccf27248c80383ef5e"
+      },
+      {
+        "file": "templates/search.luxe-studio-catalog.liquid",
+        "type": "exact",
+        "passed": true,
+        "md5": "4fa857200b53b5c8ddad23b0cb2fbc87"
+      }
+    ]
+  },
+  "catalogQA": {
+    "passed": 19,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "bomber actual 3XL selected",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "blank schema2 source",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "six verified category choices",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "31 unique eligible main products in at most three pages",
+        "passed": true,
+        "detail": {
+          "counts": [
+            11,
+            12,
+            8
+          ],
+          "unique": 31
+        }
+      },
+      {
+        "name": "no King or Queen cards",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all product contracts positive",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "category stays blank: sg-bekleidung",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "shirt exact source colours",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "shirt exact five shop sizes",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "category stays blank: sg-taschen",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "category stays blank: sg-wohnen",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "category stays blank: sg-trinken",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "category stays blank: sg-accessoires",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "mobile dialog full viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "bomber variant retained after catalog browsing",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "shirt actual navy 2XL variant selected",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "shirt variant retained between editor steps",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "preprinted direct editor denied",
+        "passed": true,
+        "detail": {
+          "status": 200
+        }
+      },
+      {
+        "name": "catalog fetches request Liquid HTML routing",
+        "passed": true,
+        "detail": null
+      }
+    ],
+    "mainIds": [
+      "16672778289543",
+      "15451569389953",
+      "15451569324417",
+      "15451569226113",
+      "15451569160577",
+      "15427285123457",
+      "15427283157377",
+      "15427282633089",
+      "15427217195393",
+      "15427182330241",
+      "15422960501121",
+      "15422959518081",
+      "15422958338433",
+      "15422956798337",
+      "15422953062785",
+      "15422950474113",
+      "15422949130625",
+      "15422946083201",
+      "15422945034625",
+      "15422943822209",
+      "15422942609793",
+      "15422940447105",
+      "15422939988353",
+      "15422939267457",
+      "15422857642369",
+      "15422854463873",
+      "15422849188225",
+      "15422823465345",
+      "15422819991937",
+      "15422815699329",
+      "15422811439489"
+    ],
+    "screenshots": [
+      "desktop-catalog.png",
+      "mobile-catalog.png",
+      "mobile-shirt.png"
+    ]
+  },
+  "categoryQA": {
+    "at": "2026-10-29T23:17:46.291210+00:00",
+    "checks": [
+      {
+        "name": "category HTTP200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "31 guarded cards",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "desktop navigation visible",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "desktop navigation targets new view",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "three hero images loaded",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "desktop no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "manual category pages 12/12/7",
+        "passed": true,
+        "detail": [
+          12,
+          12,
+          7
+        ]
+      },
+      {
+        "name": "last next disabled",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Samsung additional options expand by keyboard",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all Samsung models visible after expand",
+        "passed": true,
+        "detail": {
+          "modelCount": 23
+        }
+      },
+      {
+        "name": "six category links keep dedicated view",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all card links target editor view",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "subcategory click opens eligible drinkware",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "card click opens actual editor entry",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "mobile no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "mobile drawer link visible after opening",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "mobile drawer targets dedicated category",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "mobile drawer navigation opens guarded category",
+        "passed": true,
+        "detail": null
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonReads": [
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "error-analytics-sessions-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "o.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "o.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.merchant-center-analytics.goog"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "www.googleadservices.com"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "ad.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "o.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "o.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "googleads.g.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics-ipv6.tiktokw.us"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.google-analytics.com"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "monorail-edge.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "error-analytics-sessions-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "monorail-edge.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "monorail-edge.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "error-analytics-sessions-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "googleads.g.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "e.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "e.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "e.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "e.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "error-analytics-sessions-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "api.printful.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "googleads.g.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "googleads.g.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "monorail-edge.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "o.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "error-analytics-sessions-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "s.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "googleads.g.doubleclick.net"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "www.google.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "analytics.tiktok.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "ct.pinterest.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "monorail-edge.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "k.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "otlp-http-production.shopifysvc.com"
+      },
+      {
+        "method": "POST",
+        "host": "k.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "k.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "k.clarity.ms"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      },
+      {
+        "method": "POST",
+        "host": "luxestyle.ch"
+      }
+    ],
+    "passed": 18,
+    "failed": 0
+  },
+  "rootVisual": {
+    "title": "Einfach du.\nSelbst gestaltet.",
+    "heroImages": [
+      {
+        "width": 518,
+        "alt": "Unisex T-Shirt – selbst gestalten (blanko)"
+      },
+      {
+        "width": 518,
+        "alt": "Bio-Jutebeutel blanko zum Selbstgestalten"
+      },
+      {
+        "width": 518,
+        "alt": "Keramik-Tasse – blanko, selbst gestalten – LuxeStyle"
+      }
+    ],
+    "totalCards": 31,
+    "visibleCards": 12,
+    "nav": [
+      {
+        "type": "drawer",
+        "text": "Selbst gestalten",
+        "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+      },
+      {
+        "type": "desktop",
+        "text": "Selbst gestalten",
+        "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+      }
+    ],
+    "documentWidth": 1440,
+    "viewport": 1440,
+    "mobileOverflow": false
+  },
+  "printful": {
+    "publicProductMasters": 571,
+    "model71": {
+      "variants": 628,
+      "colors": 84
+    },
+    "model390": {
+      "variants": 7
+    },
+    "shopMappedShirtVariants": 15,
+    "shopMappedColors": [
+      "Weiss #ffffff",
+      "Schwarz #0c0c0c",
+      "Marineblau #212642"
+    ],
+    "templateAndPrintfile390Status": 401,
+    "EDMApproval": "owner_confirmed_luxestyle.ch",
+    "EDMTechnicalAccess": "not_verified",
+    "EDMDeployment": false,
+    "EDMOfflineTests": 11
+  },
+  "limits": [
+    "No live theme change or theme publication",
+    "No checkout, cart, order or Printful nonce POST",
+    "No complete Printful catalogue imported to Shopify",
+    "Product photos are references; Navy shirt has no current matching variant photo",
+    "Print geometry not verified; native studio uses separate neutral design canvas",
+    "No video rendered or purchased",
+    "Blocked tracking requests during read-only browser QA can create generic Failed-to-fetch errors"
+  ],
+  "screenshots": [
+    "category/native-qa/desktop-category.png",
+    "category/native-qa/mobile-category.png",
+    "category/native-qa/mobile-menu.png",
+    "category/root-qa/category-desktop.png",
+    "category/root-qa/category-grid-desktop.png",
+    "category/root-qa/category-mobile.png"
+  ],
+  "sourceHashes": {
+    "sources/blank-collection-public.json": "5767cf242b0ae879525b8334376702f56879a3b23f35b5a2f3a1a4ac2ae08286",
+    "sources/admin-eligibility.json": "bf85b9520fda4c8dcbb93f5f3da210d851d02945b8a9bb57d30e6ec6700564a5",
+    "sources/category-verification.json": "eb3f6720d024eef9956857f926bd5270a60d841d81cbd7cde757b93bd040cf79",
+    "sources/verified-shop-colors-71.json": "ea81484aee07b8f41c2d0cedc07f6a6353ec15d72a1bfc27aa6695997f96c9bb",
+    "category/HERO-SOURCE-RECEIPT.json": "81ed67993b73522cc14359c472d947dce16143e2a8f527d71400ff4eb16e0cc8"
+  }
+}
