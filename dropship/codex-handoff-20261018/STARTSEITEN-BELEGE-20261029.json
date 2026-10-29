@@ -1,0 +1,709 @@
+{
+  "recordedAt": "2026-10-29T21:04:17.731836+00:00",
+  "taskId": "homepage-redesign-20261029",
+  "brand": "luxestyle.ch",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
+  "mainUnchanged": "212656488839",
+  "unpublishedThemeId": "212752499079",
+  "products": [
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "featuredMedia": {
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+          "width": 1920,
+          "height": 1919
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56197916361089",
+            "title": "Default Title",
+            "price": "34.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15447971430785",
+      "title": "Weihnachts-Pyjama im Partnerlook",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "kat-nachtwaesche",
+        "mode",
+        "rueckhol-0907",
+        "sort-partnerlook-paare",
+        "such-weihnachtspyjama",
+        "weihnachten"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+      "featuredMedia": {
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707",
+          "altText": "Weihnachts-Pyjama im Partnerlook",
+          "width": 1200,
+          "height": 1200
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55873727627649",
+            "title": "Weiss · Papa S",
+            "price": "16.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15460760191361",
+      "title": "Blumenkleid mit Schnürung",
+      "handle": "blumenkleid-mit-schnurung-613000",
+      "status": "ACTIVE",
+      "tags": [
+        "auto-entwurf-0926",
+        "bild-ok",
+        "cj-real",
+        "damen",
+        "dropship",
+        "gfeed-anstupsen-260929",
+        "hype-jetzt",
+        "kategorie-kleid",
+        "kleid",
+        "kleider",
+        "kunden-liebling",
+        "mode",
+        "schnuerung",
+        "sort-damen-kleider",
+        "sort-damen-kleider-blumen"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000",
+      "featuredMedia": {
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798",
+          "altText": "Tati trägt das Blumenkleid mit Schnürung",
+          "width": 1600,
+          "height": 2133
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55930607042945",
+            "title": "XS",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "storefront": [
+    {
+      "id": 15521256604033,
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "status": 200,
+      "available": true,
+      "price_min_chf": 34.9,
+      "price_max_chf": 34.9,
+      "matched_variant": {
+        "id": 56197916361089,
+        "title": "Default Title",
+        "available": true,
+        "price": 3490,
+        "inventory_management": null
+      }
+    },
+    {
+      "id": 15447971430785,
+      "handle": "weihnachts-pyjama-im-partnerlook-764352",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352.js",
+      "status": 200,
+      "available": true,
+      "price_min_chf": 14.9,
+      "price_max_chf": 17.9,
+      "matched_variant": {
+        "id": 55873727627649,
+        "title": "Weiss · Papa S",
+        "available": true,
+        "price": 1690,
+        "inventory_management": null
+      }
+    },
+    {
+      "id": 15460760191361,
+      "handle": "blumenkleid-mit-schnurung-613000",
+      "url": "https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000.js",
+      "status": 200,
+      "available": true,
+      "price_min_chf": 24.9,
+      "price_max_chf": 24.9,
+      "matched_variant": {
+        "id": 55930607042945,
+        "title": "XS",
+        "available": true,
+        "price": 2490,
+        "inventory_management": null
+      }
+    }
+  ],
+  "links": [
+    {
+      "url": "https://luxestyle.ch/",
+      "status": 200,
+      "final": "https://luxestyle.ch/"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/damen-mode",
+      "status": 200,
+      "final": "https://luxestyle.ch/collections/damen-mode"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+      "status": 200,
+      "final": "https://luxestyle.ch/collections/geschenke-unter-50-franken"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/unter-chf-25",
+      "status": 200,
+      "final": "https://luxestyle.ch/collections/unter-chf-25"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/weihnachten-2026",
+      "status": 200,
+      "final": "https://luxestyle.ch/collections/weihnachten-2026"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "status": 200,
+      "final": "https://luxestyle.ch/collections/wohnen-dekoration"
+    },
+    {
+      "url": "https://luxestyle.ch/pages/alle-kategorien",
+      "status": 200,
+      "final": "https://luxestyle.ch/pages/alle-kategorien"
+    },
+    {
+      "url": "https://luxestyle.ch/pages/kontakt-support",
+      "status": 200,
+      "final": "https://luxestyle.ch/pages/kontakt-support"
+    },
+    {
+      "url": "https://luxestyle.ch/pages/rueckgabe",
+      "status": 200,
+      "final": "https://luxestyle.ch/pages/rueckgabe"
+    },
+    {
+      "url": "https://luxestyle.ch/pages/versand-lieferung",
+      "status": 200,
+      "final": "https://luxestyle.ch/pages/versand-lieferung"
+    },
+    {
+      "url": "https://luxestyle.ch/policies/legal-notice",
+      "status": 200,
+      "final": "https://luxestyle.ch/policies/legal-notice"
+    },
+    {
+      "url": "https://luxestyle.ch/policies/privacy-policy",
+      "status": 200,
+      "final": "https://luxestyle.ch/policies/privacy-policy"
+    },
+    {
+      "url": "https://luxestyle.ch/policies/terms-of-service",
+      "status": 200,
+      "final": "https://luxestyle.ch/policies/terms-of-service"
+    }
+  ],
+  "manifest": [
+    {
+      "filename": "layout/luxe-edit-preview.liquid",
+      "kind": "new_alternate_preview_file",
+      "beforeSha256": null,
+      "sha256": "35d5753c65363e2605b68e5d60d19d99c81b9dd8116f88aff1bec04c5846dca1",
+      "bytes": 492
+    },
+    {
+      "filename": "templates/index.luxe-edit.liquid",
+      "kind": "new_alternate_preview_file",
+      "beforeSha256": null,
+      "sha256": "19e9dc5623f462590d6949d4469c7e0cdc1669d261aa2f2417aeaf6da39ab273",
+      "bytes": 64
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "kind": "new_alternate_preview_file",
+      "beforeSha256": null,
+      "sha256": "baa65a8d272c3ce898b6fa8a1e48b254e7b952821f6ab370b9f0162a93fff548",
+      "bytes": 18001
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "kind": "new_alternate_preview_file",
+      "beforeSha256": null,
+      "sha256": "cc3e9b5c0d431c981428ab47883194e043eee1f9430453ffec5b47f4b4b7dc00",
+      "bytes": 15946
+    },
+    {
+      "filename": "assets/luxe-edit.js",
+      "kind": "new_alternate_preview_file",
+      "beforeSha256": null,
+      "sha256": "43e1c1e71fd4ad422c0442eb1368e81d547fe5bb34dd3388ee7cbb691c72a407",
+      "bytes": 1110
+    },
+    {
+      "filename": "locales/de.json",
+      "kind": "append_translation_namespace",
+      "beforeSha256": "3132420406a5395a0c206af1ab965a20740b50b58ead37538ec884dcca360d95",
+      "sha256": "2b5437bb6335829d5f84945a5a5cdc179a9f6969a02026a9b6e35f77f49f4fa8",
+      "bytes": 22266
+    },
+    {
+      "filename": "locales/en.default.json",
+      "kind": "append_translation_namespace",
+      "beforeSha256": "c74cad8fb326ecd6ae9cdfcb15a9c43a312064e7c96b52159d80129998d43fb0",
+      "sha256": "e0dc677739a3ff2777c985fc9b5ea9de85ac792e24c681456353f8fbf47edfb0",
+      "bytes": 22392
+    }
+  ],
+  "firstWriteReadback": {
+    "at": "2026-10-29T20:58:50.065Z",
+    "themeId": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED",
+    "checks": [
+      {
+        "filename": "layout/luxe-edit-preview.liquid",
+        "exact": true
+      },
+      {
+        "filename": "templates/index.luxe-edit.liquid",
+        "exact": true
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-edit.js",
+        "exact": true
+      },
+      {
+        "filename": "locales/de.json",
+        "exact": true
+      },
+      {
+        "filename": "locales/en.default.json",
+        "exact": true
+      }
+    ],
+    "result": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "assets/luxe-edit.css",
+              "checksumMd5": "f328dd7e54bd75560961a8d471072149"
+            },
+            {
+              "filename": "assets/luxe-edit.js",
+              "checksumMd5": "917fba607d1d2a92e36b0821e06cd512"
+            },
+            {
+              "filename": "layout/luxe-edit-preview.liquid",
+              "checksumMd5": "a2f141a720bf82f851c22e67c423f2bc"
+            },
+            {
+              "filename": "templates/index.luxe-edit.liquid",
+              "checksumMd5": "88ab376b41d3c96769f70d6ea44b8337"
+            },
+            {
+              "filename": "sections/luxe-edit-home.liquid",
+              "checksumMd5": "b3c810557408c05b5949354deae45a58"
+            },
+            {
+              "filename": "locales/de.json",
+              "checksumMd5": "7a058b2315ffb3a6d0afeb65211f8bf8"
+            },
+            {
+              "filename": "locales/en.default.json",
+              "checksumMd5": "a88492c7295157112462ad687bcdb0d6"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    }
+  },
+  "sectionFixReadback": {
+    "at": "2026-10-29T21:01:23.167Z",
+    "themeId": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED",
+    "file": "sections/luxe-edit-home.liquid",
+    "checksumMd5": "e7047646c13e58e6d645d14a9d53f3a1",
+    "exactReadback": true,
+    "mutation": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "sections/luxe-edit-home.liquid",
+              "checksumMd5": "e7047646c13e58e6d645d14a9d53f3a1"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "preservedOriginalFiles": {
+      "data": {
+        "themes": {
+          "nodes": [
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212656488839",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Kun...",
+              "role": "MAIN"
+            }
+          ]
+        },
+        "theme": {
+          "id": "gid://shopify/OnlineStoreTheme/212752499079",
+          "role": "UNPUBLISHED",
+          "files": {
+            "nodes": [
+              {
+                "filename": "layout/theme.liquid",
+                "checksumMd5": "48cae3589cb6f051998a5f0509918740"
+              },
+              {
+                "filename": "sections/footer-group.json",
+                "checksumMd5": "368187170859033dc70fce5fa332ce27"
+              },
+              {
+                "filename": "sections/header-group.json",
+                "checksumMd5": "3c89401fc24ef0d331d4d0f4eb0adf1c"
+              },
+              {
+                "filename": "templates/index.json",
+                "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "validation": {
+    "success": true,
+    "responses": [
+      {
+        "result": "success",
+        "resultDetail": "layout/luxe-edit-preview.liquid passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "templates/index.luxe-edit.liquid passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "sections/luxe-edit-home.liquid passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-edit.css passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-edit.js passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/de.json passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/en.default.json passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 1
+      }
+    ]
+  },
+  "validationR2": {
+    "success": true,
+    "responses": [
+      {
+        "result": "success",
+        "resultDetail": "sections/luxe-edit-home.liquid passed all checks.",
+        "artifactId": "luxe-home-preview-20261029",
+        "artifactRevision": 2
+      }
+    ]
+  },
+  "schemaSource": "cached_after_remote_manifest_refresh_failure",
+  "videoState": "no_new_rendered_master_originals_and_rights_unconfirmed",
+  "socialWrites": false,
+  "liveThemePublished": false,
+  "checkoutOrOrderCreated": false,
+  "nativeBrowserQA": {
+    "checked_at_utc": "2026-10-29T21:04:07.182800+00:00",
+    "url": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
+    "status": 200,
+    "consent_action": "not_shown",
+    "preview_bar_action": "Hide bar UI",
+    "views": [
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rootWidth": 1440,
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Weisser Sternenlicht-Projektor mit abgenommener Haube, Produktfoto von LuxeStyle",
+            "complete": true,
+            "naturalWidth": 806,
+            "naturalHeight": 805,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=1200"
+          },
+          {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=800"
+          },
+          {
+            "alt": "Weihnachts-Pyjamas in mehreren Ausführungen, einzeln auswählbar",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707&width=800"
+          },
+          {
+            "alt": "Model trägt das Blumenkleid mit Schnürung",
+            "complete": true,
+            "naturalWidth": 900,
+            "naturalHeight": 1200,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&width=900"
+          }
+        ],
+        "textErrors": [],
+        "searches": [
+          {
+            "action": "https://luxestyle.ch/search",
+            "method": "get",
+            "fields": [
+              {
+                "name": "q",
+                "type": "search",
+                "value": null
+              },
+              {
+                "name": "type",
+                "type": "hidden",
+                "value": "product"
+              }
+            ]
+          }
+        ],
+        "searchFocus": true,
+        "searchEscapeClosed": true,
+        "searchFocusRestored": true
+      },
+      {
+        "width": 390,
+        "scrollWidth": 390,
+        "rootWidth": 390,
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Weisser Sternenlicht-Projektor mit abgenommener Haube, Produktfoto von LuxeStyle",
+            "complete": true,
+            "naturalWidth": 390,
+            "naturalHeight": 389,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=1200"
+          },
+          {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=800"
+          },
+          {
+            "alt": "Weihnachts-Pyjamas in mehreren Ausführungen, einzeln auswählbar",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707&width=800"
+          },
+          {
+            "alt": "Model trägt das Blumenkleid mit Schnürung",
+            "complete": true,
+            "naturalWidth": 900,
+            "naturalHeight": 1200,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&width=900"
+          }
+        ],
+        "textErrors": [],
+        "searches": [
+          {
+            "action": "https://luxestyle.ch/search",
+            "method": "get",
+            "fields": [
+              {
+                "name": "q",
+                "type": "search",
+                "value": null
+              },
+              {
+                "name": "type",
+                "type": "hidden",
+                "value": "product"
+              }
+            ]
+          }
+        ],
+        "searchFocus": true,
+        "searchEscapeClosed": true,
+        "searchFocusRestored": true,
+        "menuOpen": true,
+        "menuFocusRestored": true
+      },
+      {
+        "width": 360,
+        "scrollWidth": 360,
+        "rootWidth": 360,
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Weisser Sternenlicht-Projektor mit abgenommener Haube, Produktfoto von LuxeStyle",
+            "complete": true,
+            "naturalWidth": 360,
+            "naturalHeight": 359,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=1200"
+          },
+          {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=800"
+          },
+          {
+            "alt": "Weihnachts-Pyjamas in mehreren Ausführungen, einzeln auswählbar",
+            "complete": true,
+            "naturalWidth": 800,
+            "naturalHeight": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707&width=800"
+          },
+          {
+            "alt": "Model trägt das Blumenkleid mit Schnürung",
+            "complete": true,
+            "naturalWidth": 900,
+            "naturalHeight": 1200,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&width=900"
+          }
+        ],
+        "textErrors": [],
+        "searches": [
+          {
+            "action": "https://luxestyle.ch/search",
+            "method": "get",
+            "fields": [
+              {
+                "name": "q",
+                "type": "search",
+                "value": null
+              },
+              {
+                "name": "type",
+                "type": "hidden",
+                "value": "product"
+              }
+            ]
+          }
+        ],
+        "searchFocus": true,
+        "searchEscapeClosed": true,
+        "searchFocusRestored": true,
+        "menuOpen": true,
+        "menuFocusRestored": true
+      }
+    ],
+    "frames": [
+      {
+        "name": "",
+        "url": "https://luxestyle.ch/"
+      },
+      {
+        "name": "web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX-56a6403cw68eaaf33p29d38119m7a4be5ca",
+        "url": "https://luxestyle.ch/web-pixels@56a6403cw68eaaf33p29d38119m7a4be5ca/custom/web-pixel-shopify-custom-pixel@0530/sandbox/modern/"
+      },
+      {
+        "name": "",
+        "url": "about:blank"
+      }
+    ],
+    "page_errors": [],
+    "shop_error_responses": []
+  }
+}
