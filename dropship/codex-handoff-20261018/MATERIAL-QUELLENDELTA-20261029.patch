@@ -1,0 +1,213 @@
+--- a/automation/lib/material.mjs
++++ b/automation/lib/material.mjs
+@@ -72,9 +72,39 @@
+   return t.charAt(0).toUpperCase() + t.slice(1);
+ }
+ 
++const PROZENT_HINWEIS = /[%％‰‱]|\b(?:prozent|percent|per\s+cent|pct)\b|&#(?:0*37|x0*25);|&percnt;/i;
++const STOFF_ALTERNATIVE = /\b(?:oder|or)\b/i;
++// Nur vollständige, eindeutig getrennte bekannte Anteile. Eine verworfene
++// Prozentzeile darf nicht verschwinden, wenn eine andere Quelle einen Wert hat.
++function prozentAnteile(roh, parser) {
++  const s = norm(roh);
++  if (!PROZENT_HINWEIS.test(s) || STOFF_ALTERNATIVE.test(s)) return null;
++  if (/\d,\d/.test(s)) return null; // Dezimalkomma und Listentrenner sind hier nicht eindeutig.
++  const teile = s.split(/\s*(?:[,;/&+]|\bund\b|\bsowie\b|\band\b)\s*/i);
++  if (!teile.length || teile.length > 4) return null;
++  let summe = 0;
++  const stoffe = new Map();
++  for (const t of teile) {
++    const m = /^(\d{1,3})(?:\.(\d{1,3}))?\s*%\s*(.+)$/.exec(t);
++    if (!m || PROZENT_HINWEIS.test(m[3])) return null;
++    const anteil = Number(m[1]) * 1000 + Number((m[2] || '').padEnd(3, '0'));
++    if (anteil <= 0 || anteil > 100000) return null;
++    const stoff = parser(m[3]);
++    if (!stoff || stoff.includes(',') || stoffe.has(stoff.toLowerCase())) return null;
++    stoffe.set(stoff.normalize('NFC').toLowerCase(), anteil);
++    summe += anteil;
++  }
++  return summe === 100000 ? JSON.stringify([...stoffe].sort(([a], [b]) => a.localeCompare(b))) : null;
++}
++function vollstaendigeProzentZeile(roh, parser) {
++  return !PROZENT_HINWEIS.test(norm(roh)) || prozentAnteile(roh, parser) !== null;
++}
++
+ /** «Polyester, Strick» / «Edelstahl und Silikon» / «Metall/Glas» → «Polyester, Strick» (höchstens 4 Teile) oder null, wenn auch nur ein Teil kein Stoff ist. */
+ export function bereinige(roh) {
+   let s = norm(roh);
++  if (STOFF_ALTERNATIVE.test(s)) return null;
++  if (!vollstaendigeProzentZeile(s, bereinige)) return null;
+   // Nur den bekannten Polyester-Alias entfernen. Unbekannte Zusätze können einschränken
+   // («Seide (Imitat)») und dürfen nie zu einer stärkeren Materialbehauptung werden.
+   s = s.replace(/\b(polyester)\s*\(\s*dacron\s*\)/gi, '$1');
+@@ -93,6 +123,10 @@
+ 
+ const ZEILE = /(?:^|\n)\s*(?:[•·\-–*]\s*)?(?:\p{Extended_Pictographic}\s*)?(?:Material(?:ien)?|Material\s*\(?Hersteller\)?)\s*[:：]\s*([^\n]{2,120})/giu;
+ const CJ_ZEILE = /(?:^|\n)\s*(?:[•·\-–*]\s*)?(?:Materials?|Material\s*\(?supplier\)?|Main material|Fabric|Composition)\s*[:：|]\s*([^\n]{2,100})/gi;
++// Ungekürzte Rohwerte prüfen: ein gültiger Präfix darf einen späteren Fehler
++// oder einen zweiten Prozentanteil hinter der bisherigen Längengrenze nicht verdecken.
++const ROH_ZEILE = /(?:^|\n)\s*(?:[•·\-–*]\s*)?(?:\p{Extended_Pictographic}\s*)?(?:Material(?:ien)?|Material\s*\(?Hersteller\)?)\s*[:：]\s*([^\n]*)/giu;
++const CJ_ROH_ZEILE = /(?:^|\n)\s*(?:[•·\-–*]\s*)?(?:Materials?|Material\s*\(?supplier\)?|Main material|Fabric|Composition)\s*[:：|]\s*([^\n]*)/gi;
+ 
+ // Eine zweite Zeile oder Quelle darf einen eingeschränkten Stoff («Seide (Imitat)»)
+ // nicht wieder als uneingeschränkten Wert einsetzen. Andere belegte Stoffe bleiben möglich.
+@@ -141,6 +175,8 @@
+   carbon: 'Carbon', 'carbon fiber': 'Carbon', 'carbon fibre': 'Carbon', kraft: 'Kraftpapier', 'kraft paper': 'Kraftpapier', polycarbonate: 'Polycarbonat', vinyl: 'Vinyl', stainless: 'Edelstahl', 'stainless steel': 'Edelstahl', 'cloth': null, others: null, other: null };
+ 
+ export function enZuDe(roh) {
++  if (STOFF_ALTERNATIVE.test(norm(roh))) return null;
++  if (!vollstaendigeProzentZeile(roh, enZuDe)) return null;
+   const s = norm(roh).toLowerCase().replace(/[.;]+$/, '').replace(/\b(high[- ]quality|premium|quality|soft|durable|environmentally friendly|eco[- ]friendly)\b/g, '').replace(/\s+/g, ' ').trim();
+   if (!s || s.length > 80) return null;
+   const teile = s.split(/\s*(?:[,;/&+]|\band\b|\bor\b)\s*/).map(x => x.trim()).filter(Boolean);
+@@ -212,12 +248,53 @@
+   if (MISCH.test(t) && imTitel.length > 1) return !imTitel.every(r => r.test(w));   // Mischung im Titel: der Wert muss alle genannten Stoffe nennen
+   return !imTitel.some(r => r.test(w));
+ }
++
++// Die Quellenpriorität darf einen Widerspruch nicht zur Freigabe machen.
++// Verglichen werden nur bereits erkannte Stoffe, keine neuen Synonyme oder Anteile.
++// Die Reihenfolge einer vollständigen Stoffmenge ist für das Metafeld unerheblich.
++function stoffmenge(wert) {
++  return [...new Set(String(wert || '').normalize('NFC').toLowerCase().split(',').map(t => t.trim()).filter(Boolean))].sort().join(', ');
++}
++function quellenSperre(wert, descriptionHtml, cj) {
++  const cjText = [cj?.description, cj?.productProEn, cj?.productPro].filter(Boolean).join('\n');
++  let belegteAnteile = null;
++  for (const [name, text, zeile, parser] of [['Beschreibung', descriptionHtml, ROH_ZEILE, bereinige], ['CJ', cjText, CJ_ROH_ZEILE, enZuDe]]) {
++    const quelltext = htmlZuText(text);
++    // Tabellenzellen oder ein abgetrenntes Label sind nicht «keine Quelle».
++    // Solange die Zuordnung nicht eindeutig gelesen wird, kein Quellenfallback.
++    if (quelltext.split('\n').some(z => /^(?:Material(?:ien|s)?|Material\s*\(?Hersteller\)?|Material\s*\(?supplier\)?|Main material|Fabric|Composition)\s*[:：|]?$/i.test(z)))
++      return name + ' enthält eine nicht eindeutig zugeordnete Materialzeile';
++    for (const m of quelltext.matchAll(zeile)) {
++      if (STOFF_ALTERNATIVE.test(m[1])) return name + ' nennt alternative Materialien statt einer belegten Mischung';
++      if (!vollstaendigeProzentZeile(m[1], parser))
++        return name + ' enthält unvollständige oder mehrdeutige Prozentangaben';
++      if (PROZENT_HINWEIS.test(m[1])) {
++        const anteile = prozentAnteile(m[1], parser);
++        if (belegteAnteile && belegteAnteile !== anteile) return 'Quellen nennen widersprechende vollständige Materialanteile';
++        belegteAnteile = anteile;
++      }
++    }
++  }
++  if (/(?:^|\n)\s*(?:[•·\-–*]\s*)?Main material\s*[:：|]/i.test(htmlZuText(cjText)))
++    return 'CJ nennt nur das Hauptmaterial; Gesamtmaterial bleibt ungeklärt';
++  const quellen = [['Beschreibung', materialAusText(descriptionHtml)], ['CJ', materialAusCj(cj)]];
++  for (const [name, quelle] of quellen) {
++    if (quelle?.ungeklaert?.startsWith('mehrdeutig:')) return name + ' enthält mehrdeutige Materialangaben';
++    if (quelle?.wert && stoffmenge(quelle.wert) !== stoffmenge(wert))
++      return name + ' nennt eine andere Stoffmenge als der vorgeschlagene Wert';
++  }
++  return null;
++}
+ /** Letzte Sperre vor dem Schreiben: Wert, der mehr verspricht, als die übrigen Quellen hergeben, bleibt weg. `uebersetzung`: nur die Sprache ändert sich, der Wert stand schon da. */
+ export function pruefeWert(wert, { descriptionHtml, titel, cj }, { uebersetzung = false } = {}) {
++  if (STOFF_ALTERNATIVE.test(norm(wert))) return 'vorgeschlagener Wert nennt alternative Materialien statt einer belegten Mischung';
++  if (!vollstaendigeProzentZeile(wert, bereinige)) return 'vorgeschlagener Wert enthält unvollständige oder mehrdeutige Prozentangaben';
+   if (TITANSTAHL.test(wert)) return '«Titanstahl» ist ein mehrdeutiger Handelsname, kein belegter Stoff';
+   const cjText = [cj?.description, cj?.productProEn, cj?.productPro].filter(Boolean).join('\n');
+   if (klammerKonflikt(descriptionHtml, wert) || klammerKonflikt(cjText, wert, CJ_ZEILE, enZuDe))
+     return 'einschränkender Klammerzusatz widerspricht dem Stoffwert';
++  const quelleSperre = quellenSperre(wert, descriptionHtml, cj);
++  if (quelleSperre) return quelleSperre;
+   if (/^pu$/i.test(wert) || /^pu,|, ?pu$/i.test(wert)) return 'alleinstehendes «PU» ist mehrdeutig (Polyurethan oder PU-Leder)';
+   if (/(^|, )(echtleder|rindsleder|leder|wildleder)(,|$)/i.test(wert)) {
+     const alles = [titel, htmlZuText(descriptionHtml), cj?.description, cj?.productNameEn].filter(Boolean).join(' ');
+--- a/automation/lib/material_test.mjs
++++ b/automation/lib/material_test.mjs
+@@ -73,7 +73,7 @@
+ 
+ // ── entscheide: Reihenfolge
+ const roh = { descriptionHtml: li('Nylon'), optionen: [{ name: 'Farbe' }], metafeld: '', titel: 'Rucksack' };
+-ist('Text vor CJ', entscheide({ ...roh, cj: { description: 'Material: Polyester' } }), { tun: true, wert: 'Nylon', quelle: 'beschreibung' });
++ist('Widersprechende CJ-Quelle verhindert Textvorrang', entscheide({ ...roh, cj: { description: 'Material: Polyester' } }), { tun: false, grund: 'sperre:CJ nennt eine andere Stoffmenge als der vorgeschlagene Wert' });
+ ist('CJ, wenn der Text nichts hergibt', entscheide({ ...roh, descriptionHtml: '<p>x</p>', cj: { description: 'Material: Polyester' } }), { tun: true, wert: 'Polyester', quelle: 'cj-datenblatt' });
+ ist('schon da → nichts tun', entscheide({ ...roh, metafeld: 'Holz' }), { tun: false, grund: 'schon-da:metafeld' });
+ ist('keine Quelle', entscheide({ descriptionHtml: '<p>x</p>', optionen: [], titel: 'x' }), { tun: false, grund: 'keine-quelle' });
+@@ -189,4 +189,85 @@
+   ist('letzte Sperre lässt eindeutigen Stoff zu: ' + angabe, pruefeWert(angabe, {}, { uebersetzung: true }), null);
+ ist('CJ-Edelstahl ergibt weiterhin Nachtragsplan', entscheide({ cj: { description: 'Material: stainless steel' }, titel: 'Ring' }), { tun: true, wert: 'Edelstahl', quelle: 'cj-datenblatt' });
+ 
++// Quellenkonflikte: lokaler Nachtrag vom 29.10.2026.
++const p = (de, en, extra = {}) => ({ titel: 'Artikel', descriptionHtml: de ? `<p>Material: ${de}</p>` : '<p>Artikel</p>', cj: en ? { description: `Material: ${en}` } : null, ...extra });
++function check(name, fn) { n++; try { fn(); } catch (error) { console.error(name, error.message); process.exitCode = 1; } }
++check('Baumwolle versus Polyester blockiert', () => assert.equal(entscheide(p('Baumwolle', 'Polyester')).tun, false));
++check('Polyester versus Baumwolle blockiert', () => assert.equal(entscheide(p('Polyester', 'Cotton')).tun, false));
++check('Ein Stoff versus belegte Mischung blockiert', () => assert.equal(entscheide(p('Baumwolle', 'Cotton, Polyester')).tun, false));
++check('Mischung in umgekehrter Reihenfolge bleibt möglich', () => assert.equal(entscheide(p('Baumwolle, Polyester', 'polyester, cotton')).tun, true));
++check('Bekannte englische Übersetzung bleibt möglich', () => assert.equal(entscheide(p('Baumwolle', 'Cotton')).tun, true));
++check('Bekannter Elastan-Alias bleibt möglich', () => assert.equal(entscheide(p('Polyester, Elastan', 'lycra, polyester')).tun, true));
++check('Mehrdeutige Beschreibung wird durch CJ nicht aufgelöst', () => assert.equal(entscheide(p('Baumwolle', 'Cotton', {descriptionHtml: '<p>Material: Baumwolle</p><p>Material: Polyester</p>'})).tun, false));
++check('Mehrdeutige CJ-Quelle wird durch Beschreibung nicht aufgelöst', () => assert.equal(entscheide(p('Baumwolle', 'Cotton', {cj: {description: 'Material: Cotton', productProEn: 'Material: Polyester'}})).tun, false));
++check('Gemeinsame Sperre gilt bei Übersetzung', () => assert.notEqual(pruefeWert('Baumwolle', p('Baumwolle', 'Polyester'), {uebersetzung: true}), null));
++check('Gemeinsame Sperre gilt beim manuellen Vorschlag', () => assert.notEqual(pruefeWert('Baumwolle', p('Baumwolle', 'Polyester')), null));
++check('Manueller Wert darf belegter Einzelquelle nicht widersprechen', () => assert.notEqual(pruefeWert('Polyester', p('Baumwolle', null)), null));
++check('Unbekannter deutscher Alias wird nicht gleichgesetzt', () => assert.equal(entscheide(p('Polyesterfaser', 'Polyester')).tun, false));
++check('Hauptmaterial allein ist kein Ganzproduktbeleg', () => assert.equal(entscheide(p(null, null, {cj:{description:'Main material: Cotton'}})).tun, false));
++check('Hauptmaterial wird auch bei gleicher Beschreibung nicht zum Ganzproduktbeleg', () => assert.equal(entscheide(p('Baumwolle', null, {cj:{description:'Main material: Cotton'}})).tun, false));
++check('Futterzeile erzeugt keinen erfundenen Gesamtstoffkonflikt', () => assert.equal(entscheide(p('Baumwolle', null, {cj:{description:'Lining: Polyester'}})).tun, true));
++check('Alleinige Futterzeile erzeugt keinen Vorschlag', () => assert.equal(entscheide(p(null, null, {cj:{description:'Lining: Polyester'}})).tun, false));
++check('Keine CJ-Materialquelle bleibt unbekannt und verhindert belegten Text nicht', () => assert.equal(entscheide(p('Baumwolle', null, {cj:{description:'Size: 5 cm'}})).tun, true));
++check('Ungültige Marketingzeile bleibt ungeklärt und wird kein Materialbeleg', () => assert.equal(entscheide(p(null, 'COMMON')).tun, false));
++check('Kein Material bleibt ohne Vorschlag', () => assert.equal(entscheide(p(null, null)).tun, false));
++check('Vorhandenes Feld wird weiterhin nicht überschrieben', () => assert.deepEqual(entscheide(p('Baumwolle','Polyester',{metafeld:'Holz'})), {tun:false,grund:'schon-da:metafeld'}));
++check('Klammerregel bleibt bei separatem anderen Stoff erhalten', () => assert.equal(entscheide(p('Seide (Imitat)','polyester')).tun, true));
++check('Gleiche vollständige Mischung mit Prozenten bleibt möglich', () => assert.equal(entscheide(p('95% Baumwolle, 5% Elastan','95% cotton, 5% spandex')).tun, true));
++check('Grobe Teilmenge ist keine Gleichheit', () => assert.equal(entscheide(p('Baumwolle, Elastan','Cotton')).tun, false));
++
++// Rohprozente müssen vor Quellenfallback, manueller Auswahl und Übersetzung geprüft werden.
++for (const [parser, eingabe, erwartet] of [
++  [enZuDe, '95% cotton', null], [bereinige, '95% Baumwolle', null],
++  [enZuDe, '95% cotton, spandex', null], [bereinige, '95% Baumwolle, Elastan', null],
++  [enZuDe, '100.5% cotton', null], [bereinige, '100.5% Baumwolle', null],
++  [enZuDe, '80% cotton, 30% polyester', null], [bereinige, '80% Baumwolle, 30% Polyester', null],
++  [enZuDe, '0% cotton, 100% polyester', null], [bereinige, '0% Baumwolle, 100% Polyester', null],
++  [enZuDe, '50% cotton, 50% cotton', null],
++  [enZuDe, '95,5% cotton, 4,5% spandex', null],
++  [enZuDe, '95% cotton 5% spandex', null],
++  [enZuDe, '100 percent cotton', null], [bereinige, '100 Prozent Baumwolle', null],
++  [enZuDe, '100％ cotton', null], [enZuDe, '100&#37; cotton', null],
++  [enZuDe, '100% cotton or 100% polyester', null],
++  [enZuDe, '95% cotton, 5% unknown', null],
++  [enZuDe, '95.5000% cotton, 4.5000% spandex', null],
++  [enZuDe, '95.5% cotton, 4.5% spandex', 'Baumwolle, Elastan'],
++  [bereinige, '95.5% Baumwolle, 4.5% Elastan', 'Baumwolle, Elastan'],
++  [enZuDe, '33.333% cotton, 33.333% polyester, 33.334% spandex', 'Baumwolle, Polyester, Elastan'],
++  [enZuDe, '100% cotton', 'Baumwolle'], [enZuDe, '925 silver', '925er Silber']
++]) ist('Prozentparser ' + parser.name + ': ' + eingabe, parser(eingabe), erwartet);
++const teilprozent = {titel:'Artikel', descriptionHtml:'<p>Material: 95% Baumwolle</p>', cj:{description:'Material: Polyester'}};
++ist('Verworfene Teilprozentzeile blockiert anderen CJ-Stoff', entscheide(teilprozent).tun, false);
++ist('Verworfene zweite Prozentzeile blockiert erste gültige Zeile', entscheide({titel:'Artikel',descriptionHtml:'<p>Material: Baumwolle</p><p>Material: 95% Polyester</p>'}).tun, false);
++for (const uebersetzung of [false, true]) {
++  ist('Prozent-Rohquelle sperrt letzte Prüfung, Übersetzung=' + uebersetzung, pruefeWert('Polyester', teilprozent, {uebersetzung}) !== null, true);
++  ist('Unvollständiger Rohwert sperrt letzte Prüfung, Übersetzung=' + uebersetzung, pruefeWert('95% Baumwolle', {}, {uebersetzung}) !== null, true);
++}
++for (const feld of ['description', 'productPro', 'productProEn']) {
++  ist('Teilprozent in CJ-' + feld + ' blockiert gleichen Seitentext', entscheide(p('Baumwolle', null, {cj:{[feld]:'Material: 95% cotton'}})).tun, false);
++  ist('Ungekürzte CJ-Rohzeile wird geprüft: ' + feld, entscheide(p('Baumwolle', null, {cj:{[feld]:'Material: 100% Cotton' + ' and cotton'.repeat(20)}})).tun, false);
++}
++ist('Ungekürzte deutsche Rohzeile wird geprüft', entscheide(p(null, 'Cotton', {descriptionHtml:'<p>Material: 100% Baumwolle' + ' und Baumwolle'.repeat(20) + '</p>'})).tun, false);
++
++// Unabhängige Abend-Gegenproben: Alternativen sind keine Mischung, Tabellen keine leere Quelle.
++ist('Deutsche Alternative erzeugt keinen Mischwert', bereinige('Baumwolle oder Polyester'), null);
++ist('Englische Alternative erzeugt keinen Mischwert', enZuDe('cotton or polyester'), null);
++ist('Alternative in deutscher Quelle blockiert Nachtrag', entscheide(p('Baumwolle oder Polyester', 'Cotton')).tun, false);
++ist('Alternative in CJ-Quelle blockiert Nachtrag', entscheide(p('Baumwolle', 'cotton or polyester')).tun, false);
++for (const uebersetzung of [false, true]) {
++  ist('Alternative Quelle sperrt letzten Schritt, Übersetzung=' + uebersetzung, pruefeWert('Baumwolle', p('Baumwolle oder Polyester', 'Cotton'), {uebersetzung}) !== null, true);
++  ist('Alternativer Zielwert sperrt letzten Schritt, Übersetzung=' + uebersetzung, pruefeWert('Baumwolle oder Polyester', {}, {uebersetzung}) !== null, true);
++}
++const tabelle = '<table><tr><th>Material</th><td>95% Baumwolle</td></tr></table>';
++ist('Materialtabelle wird nicht durch CJ-Fallback übergangen', entscheide(p(null, 'Polyester', {descriptionHtml:tabelle})).tun, false);
++ist('CJ-Materialtabelle wird nicht durch Beschreibung übergangen', entscheide(p('Polyester', null, {cj:{description:'<table><tr><th>Material</th><td>95% cotton</td></tr></table>'}})).tun, false);
++for (const uebersetzung of [false, true])
++  ist('Materialtabelle sperrt letzten Schritt, Übersetzung=' + uebersetzung, pruefeWert('Polyester', p(null, 'Polyester', {descriptionHtml:tabelle}), {uebersetzung}) !== null, true);
++ist('Widersprechende vollständige Anteile blockieren', entscheide(p('95% Baumwolle, 5% Polyester', '5% cotton, 95% polyester')).tun, false);
++ist('Widersprechende vollständige Anteile in derselben Quelle blockieren', entscheide(p(null, null, {descriptionHtml:'<p>Material: 95% Baumwolle, 5% Polyester</p><p>Material: 5% Baumwolle, 95% Polyester</p>'})).tun, false);
++for (const uebersetzung of [false, true])
++  ist('Widersprechende Anteile sperren letzten Schritt, Übersetzung=' + uebersetzung, pruefeWert('Baumwolle, Polyester', p('95% Baumwolle, 5% Polyester', '5% cotton, 95% polyester'), {uebersetzung}) !== null, true);
++ist('Dezimal gleichwertige vollständige Anteile bleiben möglich', entscheide(p('95.5% Baumwolle, 4.5% Polyester', '4.500% polyester, 95.500% cotton')).tun, true);
++ist('Mengenlose belegte Stoffliste widerspricht vollständiger Mischung nicht', entscheide(p('Baumwolle, Polyester', '95% cotton, 5% polyester')).tun, true);
++
+ console.log(`material_test: ${n} Prüfungen${process.exitCode ? ' — FEHLER' : ' ok'}`);
