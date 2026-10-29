@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 5,
-  "updatedAt": "2026-10-29T05:59:05.447Z",
+  "revision": 6,
+  "updatedAt": "2026-10-29T06:45:53.668Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -55,15 +55,15 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: r3 ergänzt frischen Vorwert-/Typvergleich und compareDigest gegen parallele Materialänderungen. 27 neue Fälle grün, 26 davon auf r2 rot; 253 betroffene Offline-Prüfungen grün. Alte API-Version 2025-01 unverändert, Versions-Fallback vor Schreibvorgängen gesperrt. Neue Ursprungsprüfung verhindert falsche Zuordnung des alten Jade-Rollers und Ableitung einer CJ-pid aus der LX-Diffuser-SKU. Keine Produktwrites oder vollständige CI.",
-      "nextAllowedStep": "Claude kann r3 als Delta auf r2 gegen aktuellen main prüfen. Vor Live-Nutzung separat unterstützte API-Version und echte Laufumgebung validieren, Quellenalter und dauerhaftes Inflight-Register klären. Für die vier LX-Produkte weiterhin echten Originalimport-/Lieferantenschlüssel beschaffen, zuerst Tech-Hero-Set und rosa/grüner Roller. Alte gleichnamige Produkte nicht zuordnen; keine parallele Anreicherung.",
+      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment.",
+      "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen.",
       "blockers": [
-        "Keine ursprüngliche Lieferanten-/Modellzuordnung für die vier ausgewählten LX-SKUs; alte Roller-ID gehört anderem Produkt",
-        "Cloud-Umgebung meldet aktuell keine gebundenen Secrets/Runtime-Variablen/Outbound-Identitäten; native Shopify-/GitHub-Connectoren funktionieren. Kein Beweis eines fehlenden CJ-Connectors",
-        "Aktuelle Auswahlkandidaten-Nenner, Schneestiefel-Material und Fusslängentabelle weiterhin offen",
-        "r3 ist lokaler Reviewentwurf; API 2025-01 bleibt unverändert und Versions-Fallback ist gesperrt. Separat geprüfte Versionsmigration nötig",
-        "Quellenalter, dauerhaftes Inflight-/Wiederaufnahme-/Rücksetzregister und Typprüfung beim Nachher-Rücklesen offen",
-        "Voll-CI unverändert an bekannter Umweltgrenze offen; Node22 nicht ausgeführt; keine produktive Integration bestätigt"
+        "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
+        "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
+        "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
+        "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
+        "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
+        "Aktueller Katalog-Nenner, Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte offen"
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -111,16 +111,26 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTQUELLEN-URSPRUNG-20261029.md",
           "gitBlobSha": "0359ea07bfa7dd317e17d9ddd6fc7fa5a4902353",
           "readAt": "2026-10-29T05:59:05.447Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIAL-R4-20261029.md",
+          "gitBlobSha": "bc075c425fcef18975cffd51a09bfa85d43ba4e4",
+          "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIAL-R4-VALIDIERUNG-20261029.json",
+          "gitBlobSha": "9939af35fc4d038473fa9a3b76f2b94f34603287",
+          "readAt": "2026-10-29T06:45:53.668Z"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "claude_enrichment_codex_measurement_and_review",
       "instructionReference": "Aktueller Inhaberwunsch: Grösse, Farbe und Material sind sehr wichtig; ungefähre Restquote ermitteln.",
       "reviewPacket": {
-        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r3.packet.json",
-        "revision": 3,
-        "sha256": "e1cd04f59339f199255ae5c1ebc5df2ec16ff7a4cf3a988467ef4a722454ee7e",
-        "gitBlobSha": "3179fbfc7380aa7b2caf53c735fb02f12e1cfbb6",
+        "path": "dropship/codex-handoff-20261018/aufgaben/product-attribute-completeness.r4.packet.json",
+        "revision": 4,
+        "sha256": "02426a2b6c630f90529eee7e126163080fb1f65ae739c3f9de68f2a68aa7367c",
+        "gitBlobSha": "7e3d730a66b5dfdfdbe656e395d01c75ce8bff26",
         "claudeReceipt": "unknown_requires_fresh_read"
       }
     },
@@ -197,13 +207,13 @@
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: MAIN-Theme 212656488839 und Hängematte nativ/frisch öffentlich geprüft; 24/33 sku weiter mit ASCII-Leerzeichen. Achtzeiliger Liquid-Diff vorbereitet, 33 Varianten/Offers und neun gültige SKUs in Referenztransformation erhalten. Statischer Validator success mit fehlendem globalem settings_schema-Kontext; kein nativer Render oder Google-Test. Globale ReturnPolicy vorhanden und laut aktueller Google-Doku empfohlen, kein zusätzlicher Offer-Policy-Patch.",
-      "nextAllowedStep": "Aktuellen MAIN-Hash gegen den engen achtzeiligen Patch prüfen, im passenden Theme-Kontext nativ rendern und Google-Markup für alle 33 Varianten testen. Erst bei zulässiger Übernahme produktiven Write und Rücklesen belegen. Separate ShippingService-Schwelle 40.50 gegen öffentliche Vorgabe CHF50 und bestehende Versandquelle abgleichen, nicht im SKU-Patch ändern.",
+      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung.",
+      "nextAllowedStep": "Unveränderten SKU-Diff anhand frischer MAIN-Quelle im zulässigen Theme-Draft nativ rendern; tatsächliche Ausgabe in legitim angemeldeter Google-Prüfsitzung testen. Separate Versandkorrektur ist unter schema-shipping-threshold-ch50 geführt.",
       "blockers": [
-        "Native Shopify-Liquid-Ausführung und Google-Variantenvalidierung fehlen",
-        "Statische Prüfung hat keinen vollständigen globalen Theme-Kontext",
-        "Produktiver Theme-Write bleibt Freigabeentwurf; keine Fulfilment-SKU-Änderung",
-        "Separater vorhandener ShippingService-Grenzwert CHF40.50 braucht eigenen Quellen-/Diff-Abgleich"
+        "Native Shopify-Liquid-Ausführung fehlt",
+        "Google-Test verlangt Anmeldung; Ergebnisse und Akzeptanz verbleibender Variantenkennungen unbekannt",
+        "Statische Prüfung verwendete vorhandenen Lintercache, dessen Live-Aktualisierung scheiterte",
+        "Kein produktiver Theme-Write; Connector erlaubt Theme-Dateiwrites nur für unveröffentlichte Themes"
       ],
       "acceptance": [
         "Fulfilment-SKUs unverändert",
@@ -225,6 +235,16 @@
           "path": "dropship/codex-handoff-20261018/HAENGEMATTE-SKU-BELEGE-20261029.json",
           "gitBlobSha": "9c499b182a50679497580f1b10d831e5bbf9f604",
           "readAt": "2026-10-29T05:59:05.447Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-VALIDIERUNG-20261029.md",
+          "gitBlobSha": "cc57d5d3c22f2f90cba045b9ff8cafa9315204c7",
+          "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-VALIDIERUNG-BELEGE-20261029.json",
+          "gitBlobSha": "e9d3317ac528469edf3fb3ae8fbe3264d8de8712",
+          "readAt": "2026-10-29T06:45:53.668Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -233,10 +253,53 @@
         "productId": "15450856292737"
       },
       "reviewPacket": {
-        "path": "dropship/codex-handoff-20261018/aufgaben/schema-hammock-15450856292737.r1.packet.json",
+        "path": "dropship/codex-handoff-20261018/aufgaben/schema-hammock-15450856292737.r2.packet.json",
+        "revision": 2,
+        "sha256": "ab53a2076227e70b776aa681e5c78d89975cf05d571595c630172673211ebbeb",
+        "gitBlobSha": "2a5538e686c93256ddcee3dd736ceca1edda4904",
+        "claudeReceipt": "unknown_requires_fresh_read"
+      }
+    },
+    {
+      "id": "schema-shipping-threshold-ch50",
+      "priority": 35,
+      "priorityKind": "SETZUNG",
+      "state": "vorbereitet",
+      "title": "Öffentliche CHF50-Versandschwelle im vorhandenen Google-Schema abbilden",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write.",
+      "nextAllowedStep": "Frischen Headerhash mit dem engen Diff vergleichen; in zulässiger Theme-Vorschau nativ rendern und die Ausgabe prüfen. Nur diese zwei Schemawerte übernehmen, keine Versandprofile/Preise oder interne CHF45-Regel ändern.",
+      "blockers": [
+        "Native Theme-/Google-Abnahme offen",
+        "Begrenzter Headerkontext zeigt vor/nach identische106fehlende Abhängigkeiten; kein Voll-Theme-Erfolg",
+        "Im Kommentar genannter Generator nicht im gezielt geprüften main auffindbar; Wiedererzeugungsweg unbekannt",
+        "Kein produktiver MAIN-Write über aktuellen Connector"
+      ],
+      "acceptance": [
+        "Genau zwei JSON-LD-Werte korrigiert",
+        "ÖffentlicheCHF50/interneCHF45,LI,Checkout und Kundenkonto erhalten",
+        "Native Vorschau und nach zulässiger Übernahme frisches Rücklesen belegt"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/VERSAND-CH50-20261029.md",
+          "gitBlobSha": "404fb9fdf7206049f2326f8c9ed3ad4aba7da016",
+          "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERSAND-CH50-BELEGE-20261029.json",
+          "gitBlobSha": "0ba063583e2084d7c03d05ea70626f74cb7faabc",
+          "readAt": "2026-10-29T06:45:53.668Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "reviewPacket": {
+        "path": "dropship/codex-handoff-20261018/aufgaben/schema-shipping-threshold-ch50.r1.packet.json",
         "revision": 1,
-        "sha256": "1fbf40e4a70b4ba00c56467abe2eb3167d97cfeba89d1dd082f5fdac267ce166",
-        "gitBlobSha": "1b0cdd52fb1c5266b164c8d2667cb0d6f099611f",
+        "sha256": "2cb70356d21029844196b235c98c36eabc5c46ffcd2745cfd84b928e525747fa",
+        "gitBlobSha": "40eb978520f8ec3ff81988735b7b3abaea28e2fd",
         "claudeReceipt": "unknown_requires_fresh_read"
       }
     },
@@ -244,16 +307,13 @@
       "id": "copy-iphone-15422939988353",
       "priority": 40,
       "priorityKind": "SETZUNG",
-      "state": "vorbereitet",
+      "state": "bestaetigt_erledigt",
       "title": "iPhone-Produkttext und SEO sachlich verbessern",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Beschreibung-/SEO-Diff vorbereitet: pauschale 30-Tage-Rückgabe bei Personalisierung und unbelegte Ladeaussagen eingegrenzt.",
-      "nextAllowedStep": "Frischen Produkttext mit dem bestehenden engen Diff vergleichen; Editor, Variantenvergleich und gültige Retourenausnahmen erhalten. Bereits konkrete erteilte Textfreigaben im aktuellen Chat berücksichtigen.",
-      "blockers": [
-        "Parallele Textänderungen möglich",
-        "Unbelegte Materialien/Funktionen dürfen nicht ergänzt werden"
-      ],
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "GEMESSEN/UMGESETZT: descriptionHtml und seo.description am 29.10.2026 06:24:04Z nativ aktualisiert, userErrors leer, danach beide Felder exakt frisch zurückgelesen. Pauschale Einleitungs-/Ladeaussagen, pauschale Rückgabezusage und Rabattfragment im SEO entfernt. Editor, Variantenmap, Script, Lieferblock, Materialliste und Retourenblock bytegleich erhalten.",
+      "nextAllowedStep": "Keine erneute Textänderung ohne neuen konkreten Befund. Spätere Indexierung oder Produktquellenprüfung separat belegen.",
+      "blockers": [],
       "acceptance": [
         "Wahrheitsgemässer Text für die exakte Ausführung",
         "Keine falsche Retourenzusage",
@@ -264,12 +324,30 @@
           "path": "dropship/codex-handoff-20261018/ZUSAMMENARBEIT-UND-VERKAUF-20261028.md",
           "gitBlobSha": "951afa9cc777be1b3737c0770a41e0030e68dd63",
           "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/IPHONE-TEXT-UMSETZUNG-20261029.md",
+          "gitBlobSha": "30310fea718159155f1180bdefb4f981a8c9f2a4",
+          "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/IPHONE-TEXT-UMSETZUNG-20261029.json",
+          "gitBlobSha": "28e63b68b7beccbc0b2ab036fbfb7f5332c6c734",
+          "readAt": "2026-10-29T06:45:53.668Z"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
       "product": {
         "productId": "15422939988353"
+      },
+      "completedScope": "Nur die zwei geprüften Textfelder dieses Produkts. Keine unabhängige neue Freigabe der unveränderten technischen Materialliste, keine Google-Indexierungs- oder Verkaufsbestätigung.",
+      "reviewPacket": {
+        "path": "dropship/codex-handoff-20261018/aufgaben/copy-iphone-15422939988353.r1.packet.json",
+        "revision": 1,
+        "sha256": "feaecc6519441f3454f60398ac986c40cd120d00ae81288aad067b76ebcf84fc",
+        "gitBlobSha": "ea7a7a2d1be6379d87c89c4867ffcb0d2c03295c",
+        "claudeReceipt": "unknown_requires_fresh_read"
       }
     },
     {
@@ -434,6 +512,12 @@
       "at": "2026-10-29T05:59:05.447Z",
       "actor": "codex",
       "action": "Materialschutz r3 lokal erweitert, ursprüngliche Produktzuordnung weiter abgegrenzt und Hängematten-SKU-Liquid-Diff vorbereitet. Keine neue Bestell-/Kennzahlabfrage, keine Shop-/Feed-/Themeänderung; bisherige Aufgaben und Verkaufsziel erhalten."
+    },
+    {
+      "revision": 6,
+      "at": "2026-10-29T06:45:53.668Z",
+      "actor": "codex",
+      "action": "iPhone-Produkttext in zwei Feldern korrigiert und nativ zurückgelesen; integrierten Materialschutz r4 sowie ergänzte Theme-Prüfbelege zur Review gesichert. Versand-Schema als eigene Fortsetzung eingeordnet. Keine Material-/Theme-/Feed-/Flowänderung oder neue Kennzahl-/Bestellabfrage."
     }
   ],
   "salesGoal": {
