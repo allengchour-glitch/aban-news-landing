@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29T21:35:21.708905+00:00",
+  "status": "OFFLINE_REVIEW_PATCHES_NOT_DEPLOYED_NO_BUSINESS_WRITES",
+  "scope": "LuxeStyle Printful order SKU identity and CJ multi-variant price/SKU identity",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "metricoolIdentity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "facebook": "1049840534888592",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "state": "read and matched in this continuation; no social write"
+  },
+  "printfulBaseline": {
+    "repository": "allengchour-glitch/aban-news-landing",
+    "baseline_commit": "a74459a94a800b24d4b348332154d25f516920b8",
+    "status": "LOCAL_REVIEW_DRAFT_NOT_DEPLOYED",
+    "patch_sha256": "e6a31e505d14c104d171f6c7111f0cad4cc5f13e3b1b12c9d38b74baaf25379f",
+    "changed_files": [
+      {
+        "path": "automation/printful_sync.mjs",
+        "baseline_github_blob_sha": "7b254998cf1e4828eb70d77ced831b427e3a2e04",
+        "baseline_sha256": "345e493a59d713c0304465772ee7afeb020af65b4d1c3a5e4c0c4354631fdd5d",
+        "candidate_sha256": "0d8a0ac80cd241bbed4289413e246ba4365e4f5a0c8d34c1605dc0b65886e5a9"
+      },
+      {
+        "path": "automation/printful_sync_test.mjs",
+        "baseline_github_blob_sha": "05e8f7dead5e5c24150d65c0313e53423fdc6857",
+        "baseline_sha256": "280586e679d77b15e351fe5f348022675d31b08108a698d016fd51901d65bfa7",
+        "candidate_sha256": "1f2dbd0a49266a70fd795752f1d51e34a21585e5e53cb454e0b5bc1605457ad6"
+      }
+    ]
+  },
+  "cjBaseline": {
+    "commit": "a74459a94a800b24d4b348332154d25f516920b8",
+    "files": {
+      "automation/cj_varianten_nachziehen.mjs": {
+        "sha": "2cff67e454bd8ddc4d0da2d3ae287894cf18eaba",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/grind_preis_test.mjs": {
+        "sha": "66d1672289d956ca18792fd48a41adaf8676a91c",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/cj_varianten_nachziehen_stecker_test.mjs": {
+        "sha": "b7b5a17c060418c6a5947e91fafb1a376b5e6876",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/cj_varianten.mjs": {
+        "sha": "59f0c8af2ff224f50758c800391e4ade76662dca",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/grind_preis.mjs": {
+        "sha": "87fd72c38bbcfed40b122ce93617fd1625a8c1fa",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/shopify_gql.mjs": {
+        "sha": "186a451acb1db8221fbc95d633e5a62e28b13c77",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/varianten_sicherheit.mjs": {
+        "sha": "a6b246f600cf563833e8567b9376d0dacab0bef9",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/fakten_block.mjs": {
+        "sha": "67715d3414b3d664b6f6bea215386e2356e65d08",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/uebersetzen.mjs": {
+        "sha": "057e277e7684559302805c022fbefa5411e95802",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/lieferbarkeit.mjs": {
+        "sha": "218506dfd2d6c1991a65c4d3d865db9106e25a34",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/stecker_cj.mjs": {
+        "sha": "86b2101fff807b0486dea1b06d55dfbe69acd3d4",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/farbwahl_scan.mjs": {
+        "sha": "c35b5c68cb9fd607c66e4af4176777f607414ed2",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/shopify_secret.mjs": {
+        "sha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/cj_fetch.mjs": {
+        "sha": "50a16c3a3444f5c5ac1902464522f95d7ce1330f",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/sku_nachziehen.mjs": {
+        "sha": "7ef80a7968e8e4f3d7ca3457e6c6b342bfc7b808",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/cj_token.mjs": {
+        "sha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/cj_response.mjs": {
+        "sha": "5d7f3db180b1b5ac48e81c0fa225f5092b008bd9",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      },
+      "automation/lib/shopify_host.mjs": {
+        "sha": "3b59fa475cceed8d29efaa797854236c166df4cb",
+        "ref": "a74459a94a800b24d4b348332154d25f516920b8"
+      }
+    }
+  },
+  "cjPatchManifest": {
+    "baseline_commit": "a74459a94a800b24d4b348332154d25f516920b8",
+    "patch_sha256": "ad84af1a6e66a3b8ec203dcc20e7d1d5532ec51e1421c631dc533023757e2743",
+    "files": [
+      {
+        "path": "automation/cj_varianten_nachziehen.mjs",
+        "before_git_blob_sha": "2cff67e454bd8ddc4d0da2d3ae287894cf18eaba",
+        "after_sha256": "a05f4b0774bffe238028750bb0448dd41468eb93c7bc4ab9be3277cc827de6b9"
+      },
+      {
+        "path": "automation/cj_varianten_preis_sku_test.mjs",
+        "before_git_blob_sha": null,
+        "after_sha256": "ab82194d8fc604f8abc9bcae688d1888f72b48d51b66a1d97490102ec726f0ef"
+      },
+      {
+        "path": "automation/lib/cj_varianten.mjs",
+        "before_git_blob_sha": "59f0c8af2ff224f50758c800391e4ade76662dca",
+        "after_sha256": "d62d757c641c0fc95b3b5e60d9ef61b7f728bad474609d22b93f0e2718e7c338"
+      },
+      {
+        "path": "automation/lib/cj_varianten_schutz.mjs",
+        "before_git_blob_sha": null,
+        "after_sha256": "13f04739dba22b38730c7055343d11d2cb42ef31243d15987ea4e2af5eb52eef"
+      },
+      {
+        "path": "automation/lib/cj_varianten_test.mjs",
+        "before_git_blob_sha": "8e76c768a884fce04fa2554f4d0ed97d1e360e97",
+        "after_sha256": "ce4f92d4729ad370dab01aa2029bf5920f3ed53a45f1950b6005e1ebfdd5db55"
+      }
+    ]
+  },
+  "cjBeforeReproductions": {
+    "quelle": "GEMESSEN: Offline-Attrappen am main-Commit a74459a94a800b24d4b348332154d25f516920b8",
+    "instrumentierung": "Nur in der isolierten Testkopie wurde aufschreiben exportiert; Funktionskoerper unveraendert.",
+    "reihenfolge": {
+      "falscheBasisEkUsd": 10,
+      "zeileEk10Preis": 19.9,
+      "quellgebundenerVergleichspreis": 33.9
+    },
+    "steckerfilter": {
+      "falscheBasisEkUsd": 10,
+      "zeileEk10Preis": 19.9,
+      "quellgebundenerVergleichspreis": 33.9
+    },
+    "fehlendeKosten": {
+      "ok": true,
+      "preis": 19.9,
+      "kostenChf": null,
+      "einheitspreis": true
+    },
+    "fehlendeSkuGegenprobe": {
+      "skuReads": 0,
+      "mutationen": 1,
+      "meldungOk": true
+    },
+    "liveAufrufe": false
+  },
+  "independentReview": {
+    "at_utc": "2026-10-29T21:34:21.998177+00:00",
+    "scope": "local independent review only; no business API calls or live jobs",
+    "runtime": "Node v24.19.0",
+    "baseline_commit": "a74459a94a800b24d4b348332154d25f516920b8",
+    "hashes": {
+      "sources/printful-sku-identity-review.patch": "e6a31e505d14c104d171f6c7111f0cad4cc5f13e3b1b12c9d38b74baaf25379f",
+      "sources/work/automation/printful_sync.mjs": "0d8a0ac80cd241bbed4289413e246ba4365e4f5a0c8d34c1605dc0b65886e5a9",
+      "sources/work/automation/printful_sync_test.mjs": "1f2dbd0a49266a70fd795752f1d51e34a21585e5e53cb454e0b5bc1605457ad6",
+      "cj/CJ-VARIANTEN-REVIEW.patch": "ad84af1a6e66a3b8ec203dcc20e7d1d5532ec51e1421c631dc533023757e2743",
+      "cj/after/automation/cj_varianten_nachziehen.mjs": "a05f4b0774bffe238028750bb0448dd41468eb93c7bc4ab9be3277cc827de6b9",
+      "cj/after/automation/cj_varianten_preis_sku_test.mjs": "ab82194d8fc604f8abc9bcae688d1888f72b48d51b66a1d97490102ec726f0ef",
+      "cj/after/automation/lib/cj_varianten.mjs": "d62d757c641c0fc95b3b5e60d9ef61b7f728bad474609d22b93f0e2718e7c338",
+      "cj/after/automation/lib/cj_varianten_schutz.mjs": "13f04739dba22b38730c7055343d11d2cb42ef31243d15987ea4e2af5eb52eef",
+      "cj/after/automation/lib/cj_varianten_test.mjs": "ce4f92d4729ad370dab01aa2029bf5920f3ed53a45f1950b6005e1ebfdd5db55"
+    },
+    "test_snapshot_comparison": [
+      {
+        "after": "cj/after/automation/cj_varianten_nachziehen.mjs",
+        "test_snapshot": "cj/validation/runner-snapshot/automation/cj_varianten_nachziehen.mjs",
+        "snapshot_sha256": "3debe5546b3a4c15f1d15ad9ebb0fdee3f0d8b629f762bfda316c84c794d1f09",
+        "byte_identical": false,
+        "only_trailing_newline_difference": true
+      },
+      {
+        "after": "cj/after/automation/cj_varianten_preis_sku_test.mjs",
+        "test_snapshot": "cj/validation/runner-snapshot/automation/cj_varianten_preis_sku_test.mjs",
+        "snapshot_sha256": "ab82194d8fc604f8abc9bcae688d1888f72b48d51b66a1d97490102ec726f0ef",
+        "byte_identical": true,
+        "only_trailing_newline_difference": false
+      },
+      {
+        "after": "cj/after/automation/lib/cj_varianten.mjs",
+        "test_snapshot": "cj/validation/runner-snapshot/automation/lib/cj_varianten.mjs",
+        "snapshot_sha256": "97b8624c0adc6d0b452b33e2bfe1023132fac060ea9fd6e9ad7c5a557256bd6a",
+        "byte_identical": false,
+        "only_trailing_newline_difference": true
+      },
+      {
+        "after": "cj/after/automation/lib/cj_varianten_schutz.mjs",
+        "test_snapshot": "cj/validation/runner-snapshot/automation/lib/cj_varianten_schutz.mjs",
+        "snapshot_sha256": "13f04739dba22b38730c7055343d11d2cb42ef31243d15987ea4e2af5eb52eef",
+        "byte_identical": true,
+        "only_trailing_newline_difference": false
+      },
+      {
+        "after": "cj/after/automation/lib/cj_varianten_test.mjs",
+        "test_snapshot": "cj/validation/runner-snapshot/automation/lib/cj_varianten_test.mjs",
+        "snapshot_sha256": "ce4f92d4729ad370dab01aa2029bf5920f3ed53a45f1950b6005e1ebfdd5db55",
+        "byte_identical": true,
+        "only_trailing_newline_difference": false
+      }
+    ],
+    "executed_results": {
+      "printful_before": {
+        "pass": 24,
+        "fail": 8
+      },
+      "printful_after": {
+        "pass": 32,
+        "fail": 0
+      },
+      "cj_new_suite": {
+        "pass": 119,
+        "fail": 0
+      },
+      "printful_conflict_last": {
+        "before_post_count": 1,
+        "before_variant_ids": [
+          4025,
+          4026
+        ],
+        "after_post_count": 0,
+        "after_review_tag_requested": true,
+        "after_tag_saved_unknown": true
+      },
+      "printful_deleted_variant_object": {
+        "after_variant_ids": [
+          4025
+        ]
+      },
+      "cj_missing_cost": {
+        "before_ok": true,
+        "after_ok": false
+      },
+      "cj_partial_ack": {
+        "unknown": true,
+        "second_mutation_blocked": true,
+        "sku_reserved_count": 2
+      }
+    },
+    "schema_validation": "No full schema validation claimed. Root reports validator skipped; not a production API execution."
+  },
+  "schemaGate": {
+    "api": "Admin 2026-10",
+    "queries": [
+      {
+        "query": "query($q:String!){productVariants(first:5,query:$q){nodes{id sku product{id handle}} pageInfo{hasNextPage}}}",
+        "state": "Fields, arguments and connection shapes read from current introspection; native codeblock preflight explicitly skipped; no execution"
+      },
+      {
+        "query": "query($id:ID!){product(id:$id){id updatedAt variantsCount{count} variants(first:2){nodes{id sku price inventoryItem{unitCost{amount currencyCode}}}}}}",
+        "state": "Fields and argument shapes including MoneyV2.currencyCode read from current introspection; native codeblock preflight explicitly skipped; no execution"
+      }
+    ]
+  },
+  "supplierAccess": {
+    "printfulRuntime": {
+      "PRINTFUL_API_KEY_present": false,
+      "PRINTFUL_STORE_ID_present": false
+    },
+    "cj": "Connector listed, no connected account in Windsor; repository helpers present. No authenticated supplier catalogue read performed."
+  },
+  "printfulSample": {
+    "selector": "tag:wunschdesign OR tag:printful_personalized_product",
+    "limitProducts": 2,
+    "limitVariantsPerProduct": 4,
+    "data": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/15422811439489",
+          "title": "Unisex T-Shirt – Selbst gestalten",
+          "vendor": "LuxeStyle",
+          "handle": "unisex-t-shirt-selbst-gestalten",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "printful_personalized_product",
+            "sg-bekleidung",
+            "sort-damen-t-shirts",
+            "sort-damen-t-shirts-tshirt",
+            "sort-herren-t-shirts",
+            "wunschdesign"
+          ],
+          "metafields": {
+            "nodes": [
+              {
+                "namespace": "judgeme",
+                "key": "badge",
+                "type": "string"
+              },
+              {
+                "namespace": "judgeme",
+                "key": "widget",
+                "type": "string"
+              },
+              {
+                "namespace": "judgeme",
+                "key": "review_widget_data",
+                "type": "json"
+              },
+              {
+                "namespace": "custom",
+                "key": "lieferzeit",
+                "type": "json"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "condition",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "age_group",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "google_product_category",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mc-facebook",
+                "key": "google_product_category",
+                "type": "string"
+              },
+              {
+                "namespace": "global",
+                "key": "description_tag",
+                "type": "string"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "custom_product",
+                "type": "boolean"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "gender",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "global",
+                "key": "title_tag",
+                "type": "string"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55777948008833",
+                "title": "Ringgarn-Baumwolle / XS",
+                "sku": "5599797_9526",
+                "price": "24.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Ringgarn-Baumwolle"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "XS"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777948041601",
+                "title": "Ringgarn-Baumwolle / S",
+                "sku": "5599797_4011",
+                "price": "24.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Ringgarn-Baumwolle"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "S"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777948074369",
+                "title": "Ringgarn-Baumwolle / M",
+                "sku": "5599797_4012",
+                "price": "24.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Ringgarn-Baumwolle"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "M"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777948107137",
+                "title": "Ringgarn-Baumwolle / L",
+                "sku": "5599797_4013",
+                "price": "24.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Ringgarn-Baumwolle"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "L"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15422815699329",
+          "title": "Unisex Hoodie – Selbst gestalten",
+          "vendor": "LuxeStyle",
+          "handle": "unisex-hoodie-selbst-gestalten",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "kat-damen-pullover",
+            "printful_personalized_product",
+            "sg-bekleidung",
+            "sort-damen-hoodies-hoodie",
+            "sort-damen-hoodies-sweatshirts",
+            "sort-herren-hoodies",
+            "sort-herren-hoodies-sweatshirts",
+            "wunschdesign"
+          ],
+          "metafields": {
+            "nodes": [
+              {
+                "namespace": "judgeme",
+                "key": "badge",
+                "type": "string"
+              },
+              {
+                "namespace": "judgeme",
+                "key": "widget",
+                "type": "string"
+              },
+              {
+                "namespace": "judgeme",
+                "key": "review_widget_data",
+                "type": "json"
+              },
+              {
+                "namespace": "custom",
+                "key": "lieferzeit",
+                "type": "json"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "condition",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "age_group",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "google_product_category",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "mc-facebook",
+                "key": "google_product_category",
+                "type": "string"
+              },
+              {
+                "namespace": "global",
+                "key": "description_tag",
+                "type": "string"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "custom_product",
+                "type": "boolean"
+              },
+              {
+                "namespace": "mm-google-shopping",
+                "key": "gender",
+                "type": "single_line_text_field"
+              },
+              {
+                "namespace": "global",
+                "key": "title_tag",
+                "type": "string"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55777955643777",
+                "title": "Sweatshirt (Rundhals) / S",
+                "sku": "1726823_5426",
+                "price": "38.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Sweatshirt (Rundhals)"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "S"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777955676545",
+                "title": "Sweatshirt (Rundhals) / M",
+                "sku": "1726823_5427",
+                "price": "38.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Sweatshirt (Rundhals)"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "M"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777955709313",
+                "title": "Sweatshirt (Rundhals) / L",
+                "sku": "1726823_5428",
+                "price": "38.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Sweatshirt (Rundhals)"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "L"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55777955742081",
+                "title": "Sweatshirt (Rundhals) / XL",
+                "sku": "1726823_5429",
+                "price": "38.90",
+                "selectedOptions": [
+                  {
+                    "name": "Material",
+                    "value": "Sweatshirt (Rundhals)"
+                  },
+                  {
+                    "name": "Grösse",
+                    "value": "XL"
+                  }
+                ],
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": true
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": true
+      }
+    },
+    "scopeLimit": "hasNextPage true; no catalogue completeness percentage inferred"
+  },
+  "merchantCrossCheck": {
+    "firstCsvOpaqueItemId": "15413245510017_16361786756345133009",
+    "secondCsvExactItemId": "shopify_ZZ_15413245510017_55749268537729",
+    "nativeProduct": {
+      "id": "gid://shopify/Product/15413245510017",
+      "title": "Smart Auto-Lufterfrischer · nachfüllbar, Aromatherapie-Diffuser fürs Auto",
+      "vendor": "LuxeStyle",
+      "handle": "smart-auto-lufterfrischer-nachfuellbar-aromatherapie",
+      "status": "ACTIVE",
+      "tags": [
+        "ae-import",
+        "auto",
+        "bild-ok",
+        "dropship",
+        "gadget",
+        "kat-aroma",
+        "nachfuellbar",
+        "neu"
+      ],
+      "metafields": {
+        "nodes": [
+          {
+            "namespace": "judgeme",
+            "key": "badge",
+            "type": "string"
+          },
+          {
+            "namespace": "judgeme",
+            "key": "widget",
+            "type": "string"
+          },
+          {
+            "namespace": "judgeme",
+            "key": "review_widget_data",
+            "type": "json"
+          },
+          {
+            "namespace": "custom",
+            "key": "lieferzeit",
+            "type": "json"
+          },
+          {
+            "namespace": "mm-google-shopping",
+            "key": "condition",
+            "type": "single_line_text_field"
+          },
+          {
+            "namespace": "mm-google-shopping",
+            "key": "google_product_category",
+            "type": "single_line_text_field"
+          },
+          {
+            "namespace": "mc-facebook",
+            "key": "google_product_category",
+            "type": "string"
+          },
+          {
+            "namespace": "mm-google-shopping",
+            "key": "custom_product",
+            "type": "boolean"
+          },
+          {
+            "namespace": "mm-google-shopping",
+            "key": "age_group",
+            "type": "single_line_text_field"
+          },
+          {
+            "namespace": "mm-google-shopping",
+            "key": "gender",
+            "type": "single_line_text_field"
+          },
+          {
+            "namespace": "global",
+            "key": "title_tag",
+            "type": "string"
+          },
+          {
+            "namespace": "global",
+            "key": "description_tag",
+            "type": "string"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55749268504961",
+            "title": "Schwarz, Kölnisch Wasser",
+            "sku": "200000182:193#black cologne",
+            "price": "29.90",
+            "selectedOptions": [
+              {
+                "name": "Farbnamen",
+                "value": "Schwarz, Kölnisch Wasser"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": true
+            },
+            "metafields": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55749268537729",
+            "title": "Schwarz, Nachfüllung",
+            "sku": "200000182:350852#black replenishment",
+            "price": "12.90",
+            "selectedOptions": [
+              {
+                "name": "Farbnamen",
+                "value": "Schwarz, Nachfüllung"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": true
+            },
+            "metafields": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55749268570497",
+            "title": "Grün, Gardenie",
+            "sku": "200000182:175#green gardenia",
+            "price": "29.90",
+            "selectedOptions": [
+              {
+                "name": "Farbnamen",
+                "value": "Grün, Gardenie"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": true
+            },
+            "metafields": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55749268603265",
+            "title": "Grün, Nachfüllung",
+            "sku": "200000182:1052#green replenishment",
+            "price": "12.90",
+            "selectedOptions": [
+              {
+                "name": "Farbnamen",
+                "value": "Grün, Nachfüllung"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": true
+            },
+            "metafields": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "sameVariantAcrossCsv": "unknown; prefix/title candidate only",
+    "supplierClassification": "ae-import tag; not assigned to CJ or Printful by this read"
+  },
+  "merchantAccess": {
+    "account": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH"
+    },
+    "writeActions": [],
+    "reason": "New exact Shopify variant identity for second-CSV item; relationship to first-CSV opaque legacy ID remains unconfirmed. Different known item from previous attempts.",
+    "result": "No completed reply before read cell was stopped; data/source/link unknown. No retry or write."
+  },
+  "noCustomerOrOrderDataRead": true,
+  "noWorkflowStartDeploymentOrBusinessWrite": true,
+  "claudeAcknowledgement": "unknown",
+  "unchanged": [
+    "salesGoal baseline/status",
+    "08:00/14:00/19:00 Europe/Zurich schedule",
+    "public CHF50/internal CHF45 shipping thresholds",
+    "account.luxestyle.com.co"
+  ],
+  "files": [
+    {
+      "name": "CJ-VARIANTEN-SCHUTZ-20261029.patch",
+      "sha256": "ad84af1a6e66a3b8ec203dcc20e7d1d5532ec51e1421c631dc533023757e2743",
+      "bytes": 34834
+    },
+    {
+      "name": "PRINTFUL-SYNC-SCHUTZ-20261029.patch",
+      "sha256": "e6a31e505d14c104d171f6c7111f0cad4cc5f13e3b1b12c9d38b74baaf25379f",
+      "bytes": 8726
+    },
+    {
+      "name": "SYNC-VARIANTEN-REVIEW-20261029.md",
+      "sha256": "eb2f5cce0c3ca7dab0d0c65780866f26223d85b8f47625ee24b94e7aa2bf5d4e",
+      "bytes": 5711
+    }
+  ]
+}
