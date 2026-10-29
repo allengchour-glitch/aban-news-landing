@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026 – Textkorrektur umgesetzt, Materialschutz integriert
+
+[iPhone-Hülle: zwei Textfelder live korrigiert und frisch zurückgelesen](IPHONE-TEXT-UMSETZUNG-20261029.md). Pauschale SEO-Rückgabe-/Rabattaussagen und unpassende gemeinsame Einleitung entfernt; Editor, Ausführungszuordnung, Materialvergleich, Lieferung und Retourenblock bleiben erhalten. Keine neue Produktfunktion oder Preis-/Rabattänderung.
+
+[Materialschutz r4](MATERIAL-R4-20261029.md) ist ein vollständiger lokaler Folgeentwurf auf r3: API2026-10, eigener Bulkjob, frische Shop-/Produktidentität, genaue Quellenbindung/Altersregel und dauerhaftes Schreibregister vor Mutation. 159 tatsächlich auf dem finalen Kandidaten geprüfte Fälle grün. Kein produktiver Materiallauf, kein Deployment, Voll-CI und fachliche Laufvoraussetzungen offen. [Reviewpaket](aufgaben/product-attribute-completeness.r4.packet.json).
+
+[Hängematten-Validierung](HAENGEMATTE-VALIDIERUNG-20261029.md): echter statischer Prüfkontext ergänzt; Google-Code-Test einmal an Loginanforderung blockiert, kein Ergebnis. [Versand-Schema](VERSAND-CH50-20261029.md): bestehenden Zweizahlenentwurf erneut an aktueller Quelle geprüft; CHF50 öffentlich, CHF45 intern und Checkout erhalten. Beide Themeänderungen bleiben Entwürfe.
+
+Arbeitsstand Revision6 erhält die neun bisherigen Aufgaben und ergänzt die getrennte Versand-Schema-Aufgabe. Tageshistorie, Verkaufsziel und bestehender Rhythmus bleiben erhalten. Keine neue Kennzahl-/Bestellabfrage. Claude-Kenntnisnahme weiterhin unbestätigt.
+
+
 ## 29.10.2026, Morgen – Materialschutz r3 und Hängematten-SKU-Diff
 
 Neue Fortsetzung: [Materialschutz r3](MATERIAL-R3-20261029.md) prüft Vorwert/Typ und compareDigest gegen parallele Änderungen. 27 neue Fälle, insgesamt 253 tatsächlich geprüfte Offline-Fälle grün. Die unveränderten zwölf Fortschrittsfälle wurden nicht erneut gezählt. Alte API-Version unverändert, Versions-Fallback gesperrt; keine Live-Nutzung oder vollständige CI. [Reviewpaket r3](aufgaben/product-attribute-completeness.r3.packet.json) ist ein Delta auf r2 und erhält dessen Vorgängerhash.
