@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Abend – Kaufziel offen, Produktbelege nachgeführt
+
+Frische Identitäten passen. Enges Bestellfenster seit Baseline bis 19:07:25 Zürich ohne neue Bestellungen; keine Kaufursache behauptet. 12 bestehende Planobjekte/21 PENDING-Kanalzustände, keine exakten Doppel oder Slots. Einmalige Morgenkennzahlen/Flowdaten wiederverwendet, keine zweite Tagesabfrage. [Abendpaket und konsolidierte Tagestabelle](ABENDPAKET-20261029.md), [Belege](ABENDBELEGE-20261029.json).
+
+Zwei weitere, bereits um 10:45 Zürich bestätigte Produktkorrekturen jetzt zentral nachgeführt: Controller-Option und zwei Hüllenfarben; alle vier Varianten/Preise/SKUs/Inventorybindungen erhalten. Keine Wiederholung. Katalogumfang vormittags 87’766 gesamt/56’620 aktiv; aktuelle Qualitätsquote unbekannt. [Bericht](KATALOGQUALITAET-20261029.md), [Produktbelege](KATALOGQUALITAET-BELEGE-20261029.json).
+
+Material-Quellen-/Prozentdelta abschliessend lokal geprüft: 269 Bibliotheks- und 159 r4-Integrationsprüfungen grün, kein Deployment. Die vollständige r4-Kette ist weiterhin Voraussetzung und nicht auf main enthalten. [Diff](MATERIAL-QUELLENDELTA-20261029.patch), [Validierung](MATERIAL-QUELLENDELTA-PRUEFUNG-20261029.json). Derselbe 18-Sekunden-Master erhält überprüfte Textumbrüche; keine MP4 oder Rechte-/Filmabnahme. [Master mit sechs Caption-/UTM-Entwürfen](MASTER-ABEND-20261029.md). Genau ein bestehender Welcome-Service-Diff bleibt zur Freigabe offen. Claude-Kenntnisnahme unbekannt; alle übrigen Befugnisse und Zeitpläne erhalten.
+
 ## 29.10.2026, Live-Übernahme jetzt ausdrücklich freigegeben
 
 Inhaber: «jaa mach das». Die beiden geprüften Schema-Korrekturen sind zur engen Live-Übernahme und anschliessenden öffentlichen/Google-Prüfung freigegeben. Keine weitere Zustimmung anfordern. Frische MAIN-/Prüftheme-Dateihashes stimmen; Live-Umsetzung bleibt technisch blockiert: Shopify-App erlaubt nur unveröffentlichte Theme-Dateiwrites, Admin-Browser zeigt Login; Search-Console-Browser mit Timeout, Anmeldestatus unbekannt. Keine neue Kopie und kein Write. [Freigabe, genauer Umfang und Admin-Übergabe](SCHEMA-LIVE-FREIGABE-20261029.md) · [Belege](SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json). Arbeitsstand Revision 10; Claude-Kenntnisnahme unbekannt.
