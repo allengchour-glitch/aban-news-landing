@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 7,
-  "updatedAt": "2026-10-29T07:31:52.854120Z",
+  "revision": 8,
+  "updatedAt": "2026-10-29T08:10:35Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -69,8 +69,8 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten.",
-      "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen.",
+      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten. Neuer enger Inhaberauftrag: zwei bestehende Optionslabels und sieben vorhandene Werttexte am 29.10. live bereinigt; alle 13 Varianten-/SKU-/InventoryItem-Bindungen und Preise nativ/öffentlich erhalten. Kein Materiallauf oder Merchant-Push.",
+      "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen. Für den bereits genehmigten Merchant-Push zuerst genau aktive Source-ID/Art und authentifizierten isolierten Writer belegen; Shopify-App-Quelle auf diese 13 Varianten prüfen, keine Neuanlage/Massenfreischaltung. Diese zwei Textkorrekturen nicht erneut als neue Anreicherung zählen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -145,6 +145,16 @@
           "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
           "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
           "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-20261029.md",
+          "gitBlobSha": "687421d9a7f835ae37c918363f81f77f82bcc9ee",
+          "readAt": "2026-10-29T08:10:35Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-BELEGE-20261029.json",
+          "gitBlobSha": "430a63946cebdcd40747f0310874e545f9c73c28",
+          "readAt": "2026-10-29T08:10:35Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -156,6 +166,22 @@
         "sha256": "02426a2b6c630f90529eee7e126163080fb1f65ae739c3f9de68f2a68aa7367c",
         "gitBlobSha": "7e3d730a66b5dfdfdbe656e395d01c75ce8bff26",
         "claudeReceipt": "unknown_requires_fresh_read"
+      },
+      "targetedProductCleanup": {
+        "at": "2026-10-29T08:10:35Z",
+        "state": "confirmed_native_and_public",
+        "productIds": [
+          "15447560520065",
+          "15446272016769"
+        ],
+        "existingVariantCount": 13,
+        "changedOptionNames": 2,
+        "changedExistingValueTexts": 7,
+        "newMaterialOrMeasurementEvidence": false,
+        "report": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-20261029.md",
+        "evidence": "dropship/codex-handoff-20261018/PRODUKTPFLEGE-PUSH-BELEGE-20261029.json",
+        "merchantPush": "blocked_authenticated_datasource_writer_unknown",
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -597,6 +623,12 @@
       "at": "2026-10-29T07:31:52.854120Z",
       "actor": "codex",
       "action": "Bestehenden Morgenlauf durchgeführt: Identitäten, enges Kaufzeitfenster, unveränderteQueue, einmaligeKanal-/Flowdaten, Adsstatus/8Keywords sowiePyjama-Preismatrix geprüft. FremdenAuswahl-Ledgerabgleich undgleichenMaster fortgeführt; genau1WelcomeServiceDiff präzisiert. AktuelleKaufbaseline/-kriterien übernommen, frühereDefinition/Historie erhalten. KeineoperativenShop-/Ads-/Social-/Flowwrites."
+    },
+    {
+      "revision": 8,
+      "at": "2026-10-29T08:10:35Z",
+      "actor": "codex",
+      "action": "Auf engen aktuellen Produktpflege-/Pushauftrag zwei Optionslabels und sieben vorhandene Werttexte korrigiert; native und öffentliche Rücklesung sowie 13 IDs/SKUs/Preise/Inventorybindungen bestätigt. Merchantkonto/-route gezielt geprüft, isolierter Push bleibt technisch blockiert. Keine Material-, Quota-, Feed- oder Umsatzverbesserung behauptet; keine erneuten Tagesreports."
     }
   ],
   "salesGoal": {
@@ -645,3 +677,4 @@
     "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained"
   }
 }
+
