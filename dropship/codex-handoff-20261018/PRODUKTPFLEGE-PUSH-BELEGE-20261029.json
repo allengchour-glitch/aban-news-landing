@@ -1,0 +1,906 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-29T08:06:51.452202+00:00",
+  "brand": "luxestyle.ch",
+  "authorization": "Aktueller Inhaberauftrag: pushe produkten saber mit nachtragen. Eng ausgelegt: belegte bestehende Angaben bereinigen und bestehende geprüfte Merchant-Quelle pushen. Keine pauschale Freischaltung.",
+  "shopIdentity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "url": "https://luxestyle.ch",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "taskId": "product-attribute-completeness",
+  "products": [
+    {
+      "productId": "gid://shopify/Product/15447560520065",
+      "title": "Ladegerät Typ-C (EU-Standard)",
+      "url": "https://luxestyle.ch/products/ladegerat-typ-c-eu-standard-613900",
+      "beforeUpdatedAt": "2026-10-27T20:55:31Z",
+      "confirmedUpdatedAt": "2026-10-29T08:03:13Z",
+      "optionDiff": {
+        "id": "gid://shopify/ProductOption/17878896509313",
+        "position": 1,
+        "before": "Farbe",
+        "after": "Ausführung",
+        "linkedMetafield": null
+      },
+      "valueDiff": [],
+      "variantsBefore": [
+        {
+          "id": "gid://shopify/ProductVariant/56063588336001",
+          "title": "EU 45W OP",
+          "position": 1,
+          "sku": "CJ-CJSJ291541001AZ",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504886145",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541001AZ"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782299009",
+                "name": "EU 45W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588368769",
+          "title": "EU 65W OP",
+          "position": 2,
+          "sku": "CJ-CJSJ291541002BY",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504918913",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541002BY"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782331777",
+                "name": "EU 65W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588401537",
+          "title": "EU 67W OP",
+          "position": 3,
+          "sku": "CJ-CJSJ291541003CX",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504951681",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541003CX"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782364545",
+                "name": "EU 67W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588434305",
+          "title": "EU 80W OP",
+          "position": 4,
+          "sku": "CJ-CJSJ291541004DW",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504984449",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541004DW"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782397313",
+                "name": "EU 80W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588467073",
+          "title": "EU 100W OP",
+          "position": 5,
+          "sku": "CJ-CJSJ291541005EV",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419505017217",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541005EV"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782430081",
+                "name": "EU 100W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588499841",
+          "title": "EU 120W OP",
+          "position": 6,
+          "sku": "CJ-CJSJ291541006FU",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419505049985",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541006FU"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782462849",
+                "name": "EU 120W OP"
+              }
+            }
+          ]
+        }
+      ],
+      "variantsAfter": [
+        {
+          "id": "gid://shopify/ProductVariant/56063588336001",
+          "title": "EU 45W OP",
+          "position": 1,
+          "sku": "CJ-CJSJ291541001AZ",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504886145",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541001AZ"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782299009",
+                "name": "EU 45W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588368769",
+          "title": "EU 65W OP",
+          "position": 2,
+          "sku": "CJ-CJSJ291541002BY",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504918913",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541002BY"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782331777",
+                "name": "EU 65W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588401537",
+          "title": "EU 67W OP",
+          "position": 3,
+          "sku": "CJ-CJSJ291541003CX",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504951681",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541003CX"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782364545",
+                "name": "EU 67W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588434305",
+          "title": "EU 80W OP",
+          "position": 4,
+          "sku": "CJ-CJSJ291541004DW",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419504984449",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541004DW"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782397313",
+                "name": "EU 80W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588467073",
+          "title": "EU 100W OP",
+          "position": 5,
+          "sku": "CJ-CJSJ291541005EV",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419505017217",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541005EV"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782430081",
+                "name": "EU 100W OP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063588499841",
+          "title": "EU 120W OP",
+          "position": 6,
+          "sku": "CJ-CJSJ291541006FU",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419505049985",
+            "tracked": false,
+            "sku": "CJ-CJSJ291541006FU"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309782462849",
+                "name": "EU 120W OP"
+              }
+            }
+          ]
+        }
+      ],
+      "sameTags": true,
+      "sameDescription": true,
+      "status": "ACTIVE",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15447560520065",
+        "status": "native_and_public_readback_confirmed",
+        "httpStatus": 200,
+        "variantCount": 6,
+        "preserved": [
+          "variantIDs",
+          "optionValueIDs_native",
+          "SKU",
+          "CHF_prices",
+          "inventoryItemIDs_native",
+          "tracked_native",
+          "inventoryPolicy_native",
+          "inventoryQuantity_native",
+          "tags",
+          "status_native",
+          "description",
+          "publicImages"
+        ],
+        "changed": [
+          "optionName"
+        ],
+        "sourceLimitation": "Only wording; no new material/measurement/technical verification."
+      },
+      "userErrors": []
+    },
+    {
+      "productId": "gid://shopify/Product/15446272016769",
+      "title": "Schnüffel- und Quietsch-Plüschtier für Hunde",
+      "url": "https://luxestyle.ch/products/schnuffel-und-quietsch-pluschtier-fur-hunde-618800",
+      "beforeUpdatedAt": "2026-10-27T20:55:31Z",
+      "confirmedUpdatedAt": "2026-10-29T08:03:59Z",
+      "optionDiff": {
+        "id": "gid://shopify/ProductOption/17877464056193",
+        "position": 1,
+        "before": "Farbe",
+        "after": "Ausführung",
+        "linkedMetafield": null
+      },
+      "valueDiff": [
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749301633",
+          "before": "Grauer Esel, 21 cm Hoch",
+          "after": "Grauer Esel, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749334401",
+          "before": "Brauner Elefant, 21 cm Hoch",
+          "after": "Brauner Elefant, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749367169",
+          "before": "Gestreiftes Zebra, 21 cm Hoch",
+          "after": "Gestreiftes Zebra, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749399937",
+          "before": "Blauer Elefant, 21 cm Hoch",
+          "after": "Blauer Elefant, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749432705",
+          "before": "Pink Elephant-21CM High",
+          "after": "Rosa Elefant, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749465473",
+          "before": "Grüner Elefant, 21 cm Hoch",
+          "after": "Grüner Elefant, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12309749498241",
+          "before": "Orange Elephant-21CM High",
+          "after": "Orangefarbener Elefant, 21 cm hoch",
+          "hasVariants": true,
+          "linkedMetafieldValue": null
+        }
+      ],
+      "variantsBefore": [
+        {
+          "id": "gid://shopify/ProductVariant/56063526568321",
+          "title": "Grauer Esel, 21 cm Hoch",
+          "position": 1,
+          "sku": "CJ-CJYD290425101AZ",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443118465",
+            "tracked": false,
+            "sku": "CJ-CJYD290425101AZ"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749301633",
+                "name": "Grauer Esel, 21 cm Hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526601089",
+          "title": "Brauner Elefant, 21 cm Hoch",
+          "position": 2,
+          "sku": "CJ-CJYD290425102BY",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443151233",
+            "tracked": false,
+            "sku": "CJ-CJYD290425102BY"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749334401",
+                "name": "Brauner Elefant, 21 cm Hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526633857",
+          "title": "Gestreiftes Zebra, 21 cm Hoch",
+          "position": 3,
+          "sku": "CJ-CJYD290425103CX",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443184001",
+            "tracked": false,
+            "sku": "CJ-CJYD290425103CX"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749367169",
+                "name": "Gestreiftes Zebra, 21 cm Hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526666625",
+          "title": "Blauer Elefant, 21 cm Hoch",
+          "position": 4,
+          "sku": "CJ-CJYD290425104DW",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443216769",
+            "tracked": false,
+            "sku": "CJ-CJYD290425104DW"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749399937",
+                "name": "Blauer Elefant, 21 cm Hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526699393",
+          "title": "Pink Elephant-21CM High",
+          "position": 5,
+          "sku": "CJ-CJYD290425105EV",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443249537",
+            "tracked": false,
+            "sku": "CJ-CJYD290425105EV"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749432705",
+                "name": "Pink Elephant-21CM High"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526732161",
+          "title": "Grüner Elefant, 21 cm Hoch",
+          "position": 6,
+          "sku": "CJ-CJYD290425106FU",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443282305",
+            "tracked": false,
+            "sku": "CJ-CJYD290425106FU"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749465473",
+                "name": "Grüner Elefant, 21 cm Hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526764929",
+          "title": "Orange Elephant-21CM High",
+          "position": 7,
+          "sku": "CJ-CJYD290425107GT",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443315073",
+            "tracked": false,
+            "sku": "CJ-CJYD290425107GT"
+          },
+          "selectedOptions": [
+            {
+              "name": "Farbe",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749498241",
+                "name": "Orange Elephant-21CM High"
+              }
+            }
+          ]
+        }
+      ],
+      "variantsAfter": [
+        {
+          "id": "gid://shopify/ProductVariant/56063526568321",
+          "title": "Grauer Esel, 21 cm hoch",
+          "position": 1,
+          "sku": "CJ-CJYD290425101AZ",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443118465",
+            "tracked": false,
+            "sku": "CJ-CJYD290425101AZ"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749301633",
+                "name": "Grauer Esel, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526601089",
+          "title": "Brauner Elefant, 21 cm hoch",
+          "position": 2,
+          "sku": "CJ-CJYD290425102BY",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443151233",
+            "tracked": false,
+            "sku": "CJ-CJYD290425102BY"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749334401",
+                "name": "Brauner Elefant, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526633857",
+          "title": "Gestreiftes Zebra, 21 cm hoch",
+          "position": 3,
+          "sku": "CJ-CJYD290425103CX",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443184001",
+            "tracked": false,
+            "sku": "CJ-CJYD290425103CX"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749367169",
+                "name": "Gestreiftes Zebra, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526666625",
+          "title": "Blauer Elefant, 21 cm hoch",
+          "position": 4,
+          "sku": "CJ-CJYD290425104DW",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443216769",
+            "tracked": false,
+            "sku": "CJ-CJYD290425104DW"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749399937",
+                "name": "Blauer Elefant, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526699393",
+          "title": "Rosa Elefant, 21 cm hoch",
+          "position": 5,
+          "sku": "CJ-CJYD290425105EV",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443249537",
+            "tracked": false,
+            "sku": "CJ-CJYD290425105EV"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749432705",
+                "name": "Rosa Elefant, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526732161",
+          "title": "Grüner Elefant, 21 cm hoch",
+          "position": 6,
+          "sku": "CJ-CJYD290425106FU",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443282305",
+            "tracked": false,
+            "sku": "CJ-CJYD290425106FU"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749465473",
+                "name": "Grüner Elefant, 21 cm hoch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063526764929",
+          "title": "Orangefarbener Elefant, 21 cm hoch",
+          "position": 7,
+          "sku": "CJ-CJYD290425107GT",
+          "price": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55419443315073",
+            "tracked": false,
+            "sku": "CJ-CJYD290425107GT"
+          },
+          "selectedOptions": [
+            {
+              "name": "Ausführung",
+              "optionValue": {
+                "id": "gid://shopify/ProductOptionValue/12309749498241",
+                "name": "Orangefarbener Elefant, 21 cm hoch"
+              }
+            }
+          ]
+        }
+      ],
+      "sameTags": true,
+      "sameDescription": true,
+      "status": "ACTIVE",
+      "publicReadback": {
+        "productId": "gid://shopify/Product/15446272016769",
+        "status": "native_and_public_readback_confirmed",
+        "httpStatus": 200,
+        "variantCount": 7,
+        "preserved": [
+          "variantIDs",
+          "optionValueIDs_native",
+          "SKU",
+          "CHF_prices",
+          "inventoryItemIDs_native",
+          "tracked_native",
+          "inventoryPolicy_native",
+          "inventoryQuantity_native",
+          "tags",
+          "status_native",
+          "description",
+          "publicImages"
+        ],
+        "changed": [
+          "optionName",
+          "seven_existing_option_value_names"
+        ],
+        "sourceLimitation": "Only wording; no new material/measurement/technical verification."
+      },
+      "userErrors": []
+    }
+  ],
+  "validation": {
+    "localProposalComparisons": 36,
+    "nativeExecution": "both mutations returned no userErrors; exact expected before/after product comparison passed",
+    "publicExecution": "both exact product .js URLs HTTP200; option texts and all13 IDs/SKUs/prices/availability/images compared",
+    "standaloneGraphQLValidator": "skipped by connector; native operations validated on execution",
+    "inventoryMap": "13 inventoryItem IDs, tracked=false, inventoryPolicy=CONTINUE, inventoryQuantity=0 and SKU bindings preserved",
+    "actualOrderSync": "not exercised; no guarantee from ID preservation alone",
+    "distributedLock": "not established; scoped before/after evidence only"
+  },
+  "merchant": {
+    "accountId": "5797470070",
+    "accountName": "LuxeStyle CH",
+    "push": "not_executed",
+    "authorizationAlreadyGiven": true,
+    "blockers": [
+      "Windsor returned no push/fetch action",
+      "Google datasource browser required login",
+      "active source ID/type/URL and legitimate writer unknown"
+    ],
+    "historicalExactVariantMatches": 9,
+    "targetVariantCount": 13,
+    "historicalMissingVariants": "4 unknown; not assumed absent from Merchant",
+    "historicalProblemRows": 24,
+    "historicalIssues": "Shopping ads quota/capacity only in matched user28OctCSV; not attribute errors",
+    "feedLabel": "CHF_99383214465; not datasourceID",
+    "mixedWorkflows": "not started",
+    "newSourcesCreated": 0
+  },
+  "sourceLimitations": [
+    "No new verified material, measurement or watt specification",
+    "Existing21cm wording retained/translated, no independent measurement confirmation",
+    "No Merchant approval or sales effect established",
+    "No new Social posts; rueckhol tags retained",
+    "No additional daily metrics/flow/order report"
+  ],
+  "sourceManifest": [
+    {
+      "path": "attribute/VORSCHLAG.json",
+      "sha256": "5b363ea876871d15e19a0eed6ff065b70517b2574a15ea447fce5beca1febcc9"
+    },
+    {
+      "path": "attribute/Review.json",
+      "sha256": "52d9e9dae871593dbbc5ece4ac00891434179c27237d872779a6b0bc37dec0aa"
+    },
+    {
+      "path": "attribute/DEPENDENCIES.md",
+      "sha256": "41300a17115d415973835d19a5d151097d9bd962679672e948d80d1d437d9dd1"
+    },
+    {
+      "path": "attribute/ROOT-CHARGER-BEFORE.json",
+      "sha256": "d8001476af1c20506be9732a400f45ca4306148b98cc72258f589568355ce993"
+    },
+    {
+      "path": "attribute/ROOT-CHARGER-WRITE.json",
+      "sha256": "c648e1806c4005e1c1e7254349e7b16d8475c05d70e78d2d92836505e6277f52"
+    },
+    {
+      "path": "attribute/ROOT-CHARGER-AFTER.json",
+      "sha256": "c0e64b0a8cf6f861031caae77a89d1c7bf4f0ea77048eb3c44202878ec38257b"
+    },
+    {
+      "path": "attribute/ROOT-TOY-BEFORE.json",
+      "sha256": "e0947999d4e1c340c54301d2304f198d7d0d55058a2eadc5fa57321b91251c96"
+    },
+    {
+      "path": "attribute/ROOT-TOY-WRITE.json",
+      "sha256": "100f8cd378440ef59ff5324503308da4118e6de64b2dc21e5940971d18a54caf"
+    },
+    {
+      "path": "attribute/ROOT-TOY-AFTER.json",
+      "sha256": "a6d4bf8a97a18a095bec003e160b5bd23060ac23f746ce64e551668b7289fcf3"
+    },
+    {
+      "path": "attribute/PUBLIC-BEFORE.json",
+      "sha256": "ba50569013ab98324f9907f2db7b68495dceb92f6289ab8b8bdee5c618604cb1"
+    },
+    {
+      "path": "attribute/PUBLIC-AFTER.json",
+      "sha256": "0dcd088ecba2fb77da87279e4fb2d0c30059307ed25ddba29b9bbab265f68fdd"
+    },
+    {
+      "path": "attribute/READBACK-CHECKS.json",
+      "sha256": "7c34552c4da901a609115f24f6ab488e0d009822ffd31440ba1aeeb501ea4c8c"
+    },
+    {
+      "path": "merchant/BERICHT.md",
+      "sha256": "1a3d1b132794e0005639671db721c8a78aec72d7739fdfa8ec93aa1c5ff16729"
+    },
+    {
+      "path": "merchant/HISTORICAL-13-VARIANT-ITEM-MATCH.json",
+      "sha256": "16f83f2d7fba92bd45b913b14824b30ff3e14264122656394e9b3304439b8600"
+    }
+  ],
+  "claudeReceipt": "unknown"
+}
