@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 6,
-  "updatedAt": "2026-10-29T06:45:53.668Z",
+  "revision": 7,
+  "updatedAt": "2026-10-29T07:31:52.854120Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17,8 +17,22 @@
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-10-29",
-    "currentDayEvidenceKind": "QUELLE",
-    "currentDayEvidence": "Gezielte Produktzählung und Attributgegenproben im Tagesblock belegt. Zusätzlich auf neuen Inhaberwunsch einmalige begrenzte Prüfung neuer bezahlter Bestellungen vom 28.10.2026 23:46:11Z bis 23:52:05Z; Ziel in diesem vollständigen Fenster nicht erreicht. Keine zusätzlichen Marketing-Kennzahlen-/Flow-/Gesamtumsatzreports. Weitere Abfragen nicht allein für die Tabelle auslösen."
+    "currentDayEvidenceKind": "GEMESSEN",
+    "currentDayEvidence": "Morgenlauf29.10.: einmalige Metricool-Kennzahlen22.–28.10. und genau ein Klaviyo-Flowreport im gleichen Zürcher Zeitraum vollständig angefragt; lückenhafte Reihen unbekannt. Keine zusätzliche Tagesabfrage nur für Bericht. Enger neuer Bestellbeleg separat gemäss Abschnitt18 bis07:09:37Z vollständig: keine neuen Bestellungen. Ads-Status und gezielte Produkt-/Ledgergegenproben sind getrennte, begrenzte Prüfungen.",
+    "completedReports": {
+      "metricool": {
+        "localDate": "2026-10-29",
+        "range": "2026-10-22/2026-10-28",
+        "dataCalls": 6,
+        "definitionCalls": 6
+      },
+      "klaviyo": {
+        "localDate": "2026-10-29",
+        "range": "2026-10-22/2026-10-28",
+        "flowReportCalls": 1
+      },
+      "proof": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json"
+    }
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -55,7 +69,7 @@
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment.",
+      "lastEvidence": "GEMESSEN: r4 integriert dokumentierte API2026-10, genau eigenen Bulkjob, frische LuxeStyle/CHF/ACTIVE-Gegenprobe, Quellenhash und explizite Altersregel sowie dauerhaftes Einmal-Schreibregister vor der Mutation. Wert und Typ danach geprüft. 159 gezielte Prüfungen auf endgültigem Kandidaten grün; keine Summierung vorheriger Läufe. Drei unabhängig reproduzierte Ledgerfehler korrigiert. Kein echter Materiallauf, Merge oder Deployment. Neuer unabhängiger Quellenabgleich: fremder main-Ledgercommit82b5b748 protokolliert1’910 zusätzliche eindeutige GESCHRIEBEN-Handles, kumuliert6’021. Keine aktuelle Shopify-Vollgegenprobe und keine Katalog-/Materialquote; aktuelle main-Zählerkorrektur noch nicht enthalten.",
       "nextAllowedStep": "Claude prüft den vollständigen r3→r4-Diff gegen aktuellen main und vorhandene r1/r2/r3-Kette. Voll-CI in legitimer geeigneter Umgebung, feste gemeinsame Ledgerroute und begrenzte Ausgangshistorie belegen. Danach ausschliesslich konkret freigegebenen Produktscope mit echten zeitlich geprüften Quellen testen; keine parallele Anreicherung oder unklare Writes wiederholen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
@@ -121,6 +135,16 @@
           "path": "dropship/codex-handoff-20261018/MATERIAL-R4-VALIDIERUNG-20261029.json",
           "gitBlobSha": "9939af35fc4d038473fa9a3b76f2b94f34603287",
           "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/AUSWAHL-LEDGER-20261029.md",
+          "gitBlobSha": "dd371f385cb8adcc4c6803d018ae597865ad810e",
+          "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
+          "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
+          "readAt": "2026-10-29T07:31:52.854120Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -417,10 +441,10 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Schnittplan und Abnahmepunkte vorhanden; keine freigegebene neue Master-MP4. Bestehende masterId erst aus dem vorhandenen Register lesen, keine neue erfinden.",
-      "nextAllowedStep": "Originale und Varianten-/Motivzuordnung prüfen; genaue fehlende Detail-/Handlungsaufnahme und deren Rechte nachweisen. Den vorhandenen einen Masterplan gezielt ergänzen.",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Frische Produkt-/Tag-/Storefront-Gegenprobe und Musikblob bestätigt. Derselbe18sMaster; ein weiteres echtes Galeriebild liefert keine Eingangs-/Kabel-/Netzteil-/Steckerbelege. Vier genaue fehlende Nachweiszeilen ausserhalb des Films formuliert. Eine neutrale FB-Caption präzisiert, sechs UTMs/masterId erhalten. Kein neuer professioneller Film, keine Abnahme/Publikation; Ledger unbekannt.",
+      "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
       "blockers": [
         "Passendes professionelles Originalmaterial",
         "Ausführung/Motive und Rechte ungeklärt",
@@ -443,6 +467,16 @@
           "gitBlobSha": "f88b33cbe9a31d8ad4db954273c119067e7ae9aa",
           "readAt": "2026-10-28T22:52:28.185Z",
           "section": "28.10.2026, Abend / konkreter Master-Fortschritt"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-MORGEN-20261029.json",
+          "gitBlobSha": "9b8fc47fa833db4e0e04a93b3f6c60cb29373d9b",
+          "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261029.md",
+          "gitBlobSha": "ed9d9e2bac6ea226d219a0b60fcdb69299fcc2ed",
+          "readAt": "2026-10-29T07:31:52.854120Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -480,6 +514,45 @@
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
       "instructionReference": "Ausdrückliche Inhaberanweisung, Punkt 14: vier DNS-Ergänzungen vom 18.10.2026"
+    },
+    {
+      "id": "ads-pyjama-start-24403263741",
+      "priority": 8,
+      "priorityKind": "SETZUNG",
+      "state": "blockiert",
+      "title": "Bestehenden Pyjama-Ads-Entwurf eng auf Startvoraussetzungen prüfen",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Konto719-826-3241: Kampagne24403263741 PAUSED; Gruppe199943553005, Anzeige829846730083 und8Keywordkriterien ENABLED zurückgeliefert. Kein Write. Auto-Tagging-Abfrage ohneZeile unbekannt, GOAL_SETUP_READY24403263741 nicht belegt. Produkt15447971430785 Preis-pro-Person-Klarstellung nativ/öffentlich vorhanden;5Variantenpreise undProdukt-/Collection-HTTP/Canonical/H1 gezielt bestätigt.",
+      "nextAllowedStep": "Kampagnenspezifischen Kaufziel- und Auto-Tagging-Nachweis GOAL_SETUP_READY24403263741 prüfen und vereinbarte finale Startprüfung am vorhandenen Entwurf abschliessen. Keine automatische Aktivierung oder Budgetänderung; bestehendes GesamtlimitCHF58 und Zeitraum30.10.–05.11. erhalten.",
+      "blockers": [
+        "Kein bestätigter kampagnenspezifischer Kaufziel-/Auto-Tagging-Beleg",
+        "Keine echte Kaufereignis-Auslösung aus aktivem Conversionstatus ableitbar"
+      ],
+      "acceptance": [
+        "BestehendeEntitäten behalten, keineDuplikate",
+        "EndgültigeStartprüfung mitbestehenderInhaberfreigabe undunverändertemGesamtkostenlimit",
+        "Kaufereignis undZiele nichtausViewsoderKonfiguration behaupten"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
+          "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
+          "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PYJAMA-PREISMATRIX-20261029.json",
+          "gitBlobSha": "e21e44c316c9e1a80794a3872a327683ba26061c",
+          "readAt": "2026-10-29T07:31:52.854120Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "claude_coordinates_codex_readonly_preflight",
+      "userReportedFixedScope": {
+        "budgetTotalCHF": 58,
+        "period": "2026-10-30/2026-11-05",
+        "source": "current owner instruction; no reactivation authorised by this memory"
+      }
     }
   ],
   "history": [
@@ -518,25 +591,57 @@
       "at": "2026-10-29T06:45:53.668Z",
       "actor": "codex",
       "action": "iPhone-Produkttext in zwei Feldern korrigiert und nativ zurückgelesen; integrierten Materialschutz r4 sowie ergänzte Theme-Prüfbelege zur Review gesichert. Versand-Schema als eigene Fortsetzung eingeordnet. Keine Material-/Theme-/Feed-/Flowänderung oder neue Kennzahl-/Bestellabfrage."
+    },
+    {
+      "revision": 7,
+      "at": "2026-10-29T07:31:52.854120Z",
+      "actor": "codex",
+      "action": "Bestehenden Morgenlauf durchgeführt: Identitäten, enges Kaufzeitfenster, unveränderteQueue, einmaligeKanal-/Flowdaten, Adsstatus/8Keywords sowiePyjama-Preismatrix geprüft. FremdenAuswahl-Ledgerabgleich undgleichenMaster fortgeführt; genau1WelcomeServiceDiff präzisiert. AktuelleKaufbaseline/-kriterien übernommen, frühereDefinition/Historie erhalten. KeineoperativenShop-/Ads-/Social-/Flowwrites."
     }
   ],
   "salesGoal": {
-    "startAt": "2026-10-28T23:46:11Z",
+    "startAt": "2026-10-28T23:48:36Z",
     "timezone": "Europe/Zurich",
-    "localStartAt": "2026-10-29T00:46:11+01:00",
+    "localStartAt": "2026-10-29T00:48:36+01:00",
     "targetCount": 1,
-    "criterion": "Neue nicht stornierte, nicht als Test markierte Shopify-Bestellung mit financial status PAID und positivem Zahlungseingang; erstellt ab Startzeitpunkt",
-    "status": "not_reached_in_checked_window",
-    "schedule": "unchanged",
-    "lastCheckedAt": "2026-10-28T23:52:05Z",
+    "criterion": "Neue Bestellung ab Baseline: test=false, cancelledAt=null, positiver aktueller Gesamtbetrag, PAID, nicht vollständig erstattet. Mindestens eine erfolgreiche Nicht-Test-SALE/CAPTURE mit positivem Betrag eines echten, nicht manuellen Zahlungsanbieters. Fehlende Transaktionsbelege bleiben unbekannt.",
+    "status": "OFFEN_AB_2026-10-28T23:48:36Z",
+    "schedule": "Bestehende Läufe 08:00/14:00/19:00 Europe/Zurich unverändert; keine ununterbrochene Hintergrundarbeit",
+    "lastCheckedAt": "2026-10-29T07:09:37Z",
     "checkedWindow": {
-      "from": "2026-10-28T23:46:11Z",
-      "to": "2026-10-28T23:52:05Z"
+      "from": "2026-10-28T23:48:36Z",
+      "to": "2026-10-29T07:09:37Z"
     },
+    "newOrderCount": 0,
     "qualifyingOrderCount": 0,
     "completeWindow": true,
     "customerDataInPublicDocs": false,
-    "attribution": "Keine kausale Zuordnung zu Codex-Arbeit aus diesem Bestellstatus",
-    "nextAllowedCheck": "Im nächsten bestehenden Lauf Tagesprotokoll und geprüfte Fenster abgleichen; bisherigen Rhythmus und Kennzahlgrenzen erhalten. Keine automatische Wiederholung oder künstliche Testbestellung."
+    "attribution": "Keine kausale Ads-/Codex-Zuordnung aus dem Bestellstatus",
+    "nextAllowedCheck": "Im nächsten bestehenden Lauf Shopidentität, Schema/Query und eng begrenzte neue Bestellungen ab aktueller Baseline prüfen. Erfolgreiche echte Transaktion erforderlich. Nach erstem belegten Treffer nur den Kauf-Watch beenden und in der bestehenden Aufgabe mit Beleg als ERREICHT markieren.",
+    "previousDefinitionAndCheck": {
+      "startAt": "2026-10-28T23:46:11Z",
+      "timezone": "Europe/Zurich",
+      "localStartAt": "2026-10-29T00:46:11+01:00",
+      "targetCount": 1,
+      "criterion": "Neue nicht stornierte, nicht als Test markierte Shopify-Bestellung mit financial status PAID und positivem Zahlungseingang; erstellt ab Startzeitpunkt",
+      "status": "not_reached_in_checked_window",
+      "schedule": "unchanged",
+      "lastCheckedAt": "2026-10-28T23:52:05Z",
+      "checkedWindow": {
+        "from": "2026-10-28T23:46:11Z",
+        "to": "2026-10-28T23:52:05Z"
+      },
+      "qualifyingOrderCount": 0,
+      "completeWindow": true,
+      "customerDataInPublicDocs": false,
+      "attribution": "Keine kausale Zuordnung zu Codex-Arbeit aus diesem Bestellstatus",
+      "nextAllowedCheck": "Im nächsten bestehenden Lauf Tagesprotokoll und geprüfte Fenster abgleichen; bisherigen Rhythmus und Kennzahlgrenzen erhalten. Keine automatische Wiederholung oder künstliche Testbestellung."
+    },
+    "source": {
+      "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json",
+      "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
+      "readAt": "2026-10-29T07:31:52.854120Z"
+    },
+    "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained"
   }
 }
