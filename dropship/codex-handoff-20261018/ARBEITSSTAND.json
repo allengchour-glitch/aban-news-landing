@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 12,
-  "updatedAt": "2026-10-29T20:27:19.652102+00:00",
+  "revision": 13,
+  "updatedAt": "2026-10-29T21:07:25.635334+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -669,7 +669,7 @@
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN/VORBEREITET im Abendlauf 29.10.: Projektor, Variante und SKU nativ und öffentlich passend; CHF 34.90, ACTIVE, nicht leere Tags, kein Sperrtag, tracked=false/CONTINUE/Menge 0/available. Echtes Referenzbild angesehen und kanonische Musik hashgleich zum frischen Repository. Neuer konkreter Typografieentwurf: drei Einzeiler zu lang, feste Zweizeiler bei gleichen Wörtern; sieben Textblöcke in dokumentierter Fontprobe passend. Gleiche Master-ID, 18 s/540 Frames, Quellzeiten, sechs UTMs und Captions erhalten. Keine MP4, Filmabnahme oder Publikation; Rechte, Ausführungs-/Stromzuordnung, Originaltakes und Ledger weiter offen.",
+      "lastEvidence": "GEMESSEN/VORBEREITET im Abendlauf 29.10.: Projektor, Variante und SKU nativ und öffentlich passend; CHF 34.90, ACTIVE, nicht leere Tags, kein Sperrtag, tracked=false/CONTINUE/Menge 0/available. Echtes Referenzbild angesehen und kanonische Musik hashgleich zum frischen Repository. Neuer konkreter Typografieentwurf: drei Einzeiler zu lang, feste Zweizeiler bei gleichen Wörtern; sieben Textblöcke in dokumentierter Fontprobe passend. Gleiche Master-ID, 18 s/540 Frames, Quellzeiten, sechs UTMs und Captions erhalten. Keine MP4, Filmabnahme oder Publikation; Rechte, Ausführungs-/Stromzuordnung, Originaltakes und Ledger weiter offen. Zusatz 29.10. Webdesign: derselbe Master als vollständiger 9:16-Player statt ungeprüftem Breitbildzuschnitt spezifiziert; vorhandenes Produktfoto in Vorschau, kein Play-Symbol/Film. Keine neue MP4 oder Rechteabnahme.",
       "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
       "blockers": [
         "Passendes professionelles Originalmaterial",
@@ -713,6 +713,11 @@
           "path": "dropship/codex-handoff-20261018/MASTER-ABEND-BELEGE-20261029.json",
           "gitBlobSha": "afd790d3852f0c9484361964ff0771616b9620ae",
           "readAt": "2026-10-29T18:26:19.508486Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-VIDEO-20261029.md",
+          "gitBlobSha": "ca7a099338ca0dc009dcc105544cfd5de754c9a2",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -804,12 +809,11 @@
       "title": "8’327 exportierte Merchant-Preisfehler an der tatsächlichen Quelle eingrenzen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN/QUELLE",
-      "lastEvidence": "Neue CSV vollständig lokal geprüft: 20’343 Zeilen/8’327 IDs; alle Preisfehler, 1’353 auch availability; ausschliesslich Free listings. CH 8’287 IDs, DE 40. Zwei native Produkte DRAFT mit positiven CHF-Preisen; öffentliche Handle-URLs leiten auf Kollektionen. Kein Nachweis der eingereichten Google-URL/Quelle oder einer Katalogquote. Exakter Merchant-Abruf ohne Antwort binnen45s, zweiter Upload über32MiB ungelesen.",
-      "nextAllowedStep": "Aktive Datenquelle/Art und eingereichte URL samt Rohpreis/Währung/availability/Verarbeitung für eine CH- und eine DE-Original-ID lesen; dann engen verantwortlichen Quelldiff prüfen. DRAFT/Sperren/Preise erhalten; keine Quellenlöschung oder Aktivierung auf Verdacht.",
+      "lastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung.",
+      "nextAllowedStep": "Aktive Datenquelle/Art, exakt eingereichte URL und Rohpreis/Währung/availability/Verarbeitung einer betroffenen CH- und DE-Original-ID authentifiziert eng lesen. Datei 2 ersetzt diese Artikel-/Quellendaten nicht. Bei Bedarf nur gemeinsamen Produktpräfix 15413245510017 anhand der dokumentierten Original-IDs abgleichen; gleiche Variante/Quelle nicht voraussetzen. Anschliessend engen Quelldiff prüfen; DRAFT, Sperren und Preise erhalten.",
       "blockers": [
-        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen im CSV und im unbeantworteten Einzelabruf",
-        "Authentifizierter isolierter Merchant-Writer weiter unbekannt",
-        "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt"
+        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen in beiden CSVs und im früher unbeantworteten Einzelabruf",
+        "Authentifizierter isolierter Merchant-Writer weiter unbekannt"
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -831,6 +835,85 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-PRUEFUNG-20261029.md",
           "gitBlobSha": "9ca0929f45c1a537701732f1a5693d6f1b768f09",
           "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEITER-EXPORT-20261029.md",
+          "gitBlobSha": "112ea3ba87a145d6f3b3f33c8590016700f80e34",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEITER-EXPORT-BELEGE-20261029.json",
+          "gitBlobSha": "369958c4c487f21ad28a21c95fe07871129f605b",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination",
+      "evidenceHistory": [
+        {
+          "at": "2026-10-29T21:07:25.635334+00:00",
+          "previousLastEvidence": "Neue CSV vollständig lokal geprüft: 20’343 Zeilen/8’327 IDs; alle Preisfehler, 1’353 auch availability; ausschliesslich Free listings. CH 8’287 IDs, DE 40. Zwei native Produkte DRAFT mit positiven CHF-Preisen; öffentliche Handle-URLs leiten auf Kollektionen. Kein Nachweis der eingereichten Google-URL/Quelle oder einer Katalogquote. Exakter Merchant-Abruf ohne Antwort binnen45s, zweiter Upload über32MiB ungelesen.",
+          "previousBlockers": [
+            "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen im CSV und im unbeantworteten Einzelabruf",
+            "Authentifizierter isolierter Merchant-Writer weiter unbekannt",
+            "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt"
+          ],
+          "sourceRevision": 12
+        }
+      ],
+      "resolvedBlockers": [
+        {
+          "at": "2026-10-29T21:07:25.635334+00:00",
+          "blocker": "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt",
+          "resolution": "Drive-Datei vollständig: 37’867’685Bytes; SHA256 a69f34f30548c7aacc8775825bcefdf791a76b9df1d2d5d1601580f03d5bf9cf. Historische Sedimentgrenze bleibt erhalten."
+        }
+      ]
+    },
+    {
+      "id": "homepage-redesign-20261029",
+      "priority": 2,
+      "priorityKind": "SETZUNG",
+      "state": "entwurf_zur_beurteilung",
+      "title": "LuxeStyle-Startseite mit klarerem Layout und vorbereitetem Produkteinstieg prüfen",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN",
+      "lastEvidence": "Auf neuen Inhaberauftrag Referenz und LuxeStyle visuell geprüft, responsive Startseitenvorschau gebaut und im bestehenden UNPUBLISHED 212752499079 als alternative index.luxe-edit abgelegt. Fünf neue Dateien, zwei Sprachdateien nur um luxe_home ergänzt; alle Writes exakt zurückgelesen. Ursprüngliches index/layout/header/footer unverändert und MAIN 212656488839 erhalten. Native Browserprüfung bei 1440/390/360 px: HTTP 200, alle 4 CDN-Bilder, 1 H1, kein Überlauf, Suche/Menü/Escape/Fokusrückgabe geprüft, keine erfassten Liquid-/Übersetzungs-/Seitenfehler. Drei gezielte native Produkt- und Storefront-Gegenproben; keine Warenkorb-/Checkout-/Kontakt-/Orderaktion. Kein neues Video, keine MAIN-Veröffentlichung.",
+      "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
+      "nextAllowedStep": "Inhaber beurteilt konkrete Vorschau; endgültige Einbindung in vorhandene Theme-/App-/Cookie-/Sprachfunktionen vor MAIN-Übernahme prüfen. Denselben professionellen Master erst mit zugeordneten Originaltakes, Rechten und Qualitätsabnahme einfügen. Keine automatische Veröffentlichung des Themes.",
+      "blockers": [
+        "Inhaltliche/gestalterische Abnahme und finale Live-Integration noch offen",
+        "Kein freigegebener neuer professioneller Master; hochwertige zugeordnete Originaltakes und Bearbeitungsrechte weiter unbekannt"
+      ],
+      "acceptance": [
+        "Review anhand konkreter nativer Vorschau und Belege",
+        "Alle vorhandenen Produkt-/Schema-/Versand-/Konto-/App-Funktionen bei finaler Integration erhalten und prüfen",
+        "Nur ausdrücklich freigegebenes Live-Publish nach aktueller Identität und engem Diff"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-VORSCHAU-20261029.md",
+          "gitBlobSha": "81d0fc35c548fad34e0f0ec3c7d8c89fbd3d9358",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-BELEGE-20261029.json",
+          "gitBlobSha": "d2fbe2f46e51f5436d112f8ddff0c912b5a0b6ab",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-DESIGN-20261029.md",
+          "gitBlobSha": "8ea6ab4ae9aaa9b3efb0ae57a0c8b14e25d409ae",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-THEME-20261029.patch",
+          "gitBlobSha": "6f7e953d091c82241518a12890ab277864572ea4",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-VIDEO-20261029.md",
+          "gitBlobSha": "ca7a099338ca0dc009dcc105544cfd5de754c9a2",
+          "readAt": "2026-10-29T21:07:25.635334+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -909,6 +992,12 @@
       "at": "2026-10-29T20:27:19.652102+00:00",
       "actor": "codex",
       "action": "Nach ausdrücklichem weiter Gesamtmaterialpatch lokal integriert und begrenzt geprüft; neuen Merchant-Screenshot/CSV als konkreten Anlass separat untersucht. Zwei DRAFT-Produkte mit Preisen und Kollektionsweiterleitung belegt; verantwortliche Google-Quelle noch unbekannt. Neue priorisierte Aufgabe mit Original-IDs/Quellen angelegt. Keine Geschäfts-Writes oder zusätzlichen Kennzahl-/Flow-/Bestellreports, alte Historie/Baseline und Reviewpakete erhalten."
+    },
+    {
+      "revision": 13,
+      "at": "2026-10-29T21:07:25.635334+00:00",
+      "actor": "codex",
+      "action": "Zweiten Merchant-Nutzerexport über Drive vollständig geprüft;32MiB-Inhaltsblocker gelöst, Datenquellen-/URL-Zuordnung bleibt offen. Auf neuen Websiteauftrag konkrete separate LuxeStyle-Startseitenvorschau im bestehenden UNPUBLISHED-Theme gebaut, validiert, exakt zurückgelesen und nativDesktop/Mobil geprüft. MAIN und ursprüngliche Templates erhalten. Gleiches Master-Briefing für Webeinsatz präzisiert; keine MP4, Social-, Merchant-, Produkt-, Flow-, Budget- oder Live-Veröffentlichung. Keine zusätzlichen Kennzahl-/Flow-/Kaufchecks oderFrequenzänderung;Claude-Kenntnisnahme unbekannt."
     }
   ],
   "salesGoal": {
@@ -974,4 +1063,3 @@
     ]
   }
 }
-
