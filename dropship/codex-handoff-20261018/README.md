@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 29.10.2026, Live-Übernahme jetzt ausdrücklich freigegeben
+
+Inhaber: «jaa mach das». Die beiden geprüften Schema-Korrekturen sind zur engen Live-Übernahme und anschliessenden öffentlichen/Google-Prüfung freigegeben. Keine weitere Zustimmung anfordern. Frische MAIN-/Prüftheme-Dateihashes stimmen; Live-Umsetzung bleibt technisch blockiert: Shopify-App erlaubt nur unveröffentlichte Theme-Dateiwrites, Admin-Browser zeigt Login; Search-Console-Browser mit Timeout, Anmeldestatus unbekannt. Keine neue Kopie und kein Write. [Freigabe, genauer Umfang und Admin-Übergabe](SCHEMA-LIVE-FREIGABE-20261029.md) · [Belege](SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json). Arbeitsstand Revision 10; Claude-Kenntnisnahme unbekannt.
+
 ## 29.10.2026, 09:25 Zürich – Schema erstmals nativ in Shopify-Vorschau geprüft
 
 Aktueller Auftrag «merchant fix und console»: genau ein unveröffentlichtes Prüftheme 212752499079 aus MAIN 212656488839 erstellt und die zwei bestehenden engen Korrekturen integriert. Echter Render bestätigt 24 entfernte ungültige SKU-Eigenschaften bei 33 erhaltenen Varianten/Offers sowie die öffentliche CHF 50-Versandgrenze. Neun gültige SKUs, Preise/Bilder/Verfügbarkeit und Rückgaberegel unverändert; unabhängige Gegenlese und ein Kontrollprodukt bestanden. Keine MAIN-Publikation; vorhandener Connector blockiert Live-Dateiwrites/Publikation. Google-Akzeptanz bleibt unbekannt.
