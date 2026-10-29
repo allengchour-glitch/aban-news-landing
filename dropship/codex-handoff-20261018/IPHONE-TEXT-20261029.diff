@@ -1,0 +1,35 @@
+--- descriptionHtml.before
++++ descriptionHtml.after
+@@ -2,24 +2,15 @@
+ <div class="lspod-designer" data-img-front="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-14.jpg?v=1793171784" data-variant="55778337358209" data-img-map='{"55778337358209":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-14.jpg?v=1793171784","55778337390977":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-14-plus.jpg?v=1793171784","55778337423745":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-14-pro.jpg?v=1793171784","55778337456513":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-14-pro-max.jpg?v=1793171785","55778337489281":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-15.jpg?v=1793171784","55778337522049":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-15-plus.jpg?v=1793171785","55778337554817":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-15-pro.jpg?v=1793171784","55778337587585":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-15-pro-max.jpg?v=1793171784","55778337620353":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-16.jpg?v=1793171784","55778337653121":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-editor-iphone-16-plus.jpg?v=1793171784","55778337685889":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-16-pro.jpg?v=1793171947","55778337718657":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-16-pro-max.jpg?v=1793171947","55778337751425":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-17.jpg?v=1793171947","55778337784193":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-17-air.jpg?v=1793171947","55778337816961":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-17-pro.jpg?v=1793171947","55778337849729":"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/iphone-17-pro-max.jpg?v=1793171947"}'></div>
+ <script src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541" defer></script>
+ <hr>
+-Schütze dein Handy mit dieser robusten, zweischichtigen Hülle. Die stossfeste Aussenschale und das stossdämpfende Innenfutter schützen dein Gerät, während bei der Ausführung «Hartschale MagSafe» eingebaute MagSafe®-Magnete für sicheren Halt und schnelleres kabelloses Laden sorgen. Die Ausführungen «Hartschale» und «Klare Hülle» haben keine Magnete.<br>
+-<br>
+-• Aussenschale aus Polycarbonat<br>
+-• Innenfutter aus thermoplastischem Polyurethan<br>
+-• Zweischichtiger Schutz<br>
+-• Präzise ausgerichtete Anschlüsse<br>
+-• MagSafe®-Magnete nur bei der Ausführung «Hartschale MagSafe»<br>
+-• Kompatibel mit Induktionsladen<br>
+-• Mattes oder glänzendes Finish<br>
+-• Rohprodukt bezogen aus Korea<br>
+-<br>
++<p>Gestalte deine iPhone-Hülle mit deinem eigenen Motiv. Wähle dein iPhone-Modell und die gewünschte Ausführung in der Produktauswahl.</p>
++<p>Die Angaben zu den verschiedenen Ausführungen findest du im Materialvergleich weiter unten. Beachte auch die Hinweise zu personalisierter Ware.</p>
+ Hinweis: Von Flüssigkeiten mit hohem Alkoholgehalt fernhalten, da die Designs auf der Hülle sich abreiben könnten. Direkte Sonneneinstrahlung vermeiden, um eine Vergilbung zu verhindern.<br>
+ <br>
+ Wichtig: Dieses Produkt kann nicht nach Südkorea, Hongkong, Taiwan, Japan oder Singapur versendet werden. Wenn sich deine Lieferadresse in einer dieser Regionen befindet, wähle bitte ein anderes Produkt aus.<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/premium-geschenke">Geschenkideen</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+ <!-- lx-material-v1 -->
+ <div class="lx-material">
+ <h4>Materialien im Vergleich</h4>
+-<p>Angaben laut Hersteller des Rohlings (Printful). Den Preis je Material siehst du oben bei der Auswahl. Die Beschreibung weiter oben bezieht sich auf «Hartschale MagSafe»; für die übrigen Materialien gelten die Angaben in dieser Liste.</p>
++<p>Angaben laut Hersteller des Rohlings (Printful). Den Preis je Material siehst du oben bei der Auswahl. Vergleiche die Angaben zu deiner gewählten Ausführung in der folgenden Liste.</p>
+ <ul>
+ <li>
+ <strong>Hartschale MagSafe:</strong> eingebaute MagSafe®-Magnete; Aussenschale aus Polycarbonat; Innenfutter aus thermoplastischem Polyurethan (TPU); zweischichtiger Schutz; MagSafe®-kompatibel; Induktionsladen möglich.</li>
+
+--- seo.description.before
++++ seo.description.after
+-Hardcase iPhone®-Hülle – Selbst gestalten bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit…
++Gestalte deine iPhone-Hülle mit deinem Motiv. Wähle Modell und Ausführung. Materialangaben und Hinweise zu personalisierter Ware auf der Produktseite ansehen.
