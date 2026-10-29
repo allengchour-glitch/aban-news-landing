@@ -1,0 +1,3106 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "timezone": "Europe/Zurich",
+  "reviewDate": "2026-10-29",
+  "scope": "morgenlauf_read_only_operational_platforms; documentation updates separately verified",
+  "identities": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "url": "https://luxestyle.ch",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "runtime": {
+      "connectivity": "connected",
+      "observations_current": true,
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "capabilities": [],
+      "secrets": [],
+      "runtime_variables": [],
+      "outbound_identities": []
+    }
+  },
+  "orderWatch": {
+    "checkedAt": "2026-10-29T07:09:37Z",
+    "baseline": "2026-10-28T23:48:36Z",
+    "query": "query LuxeStyleNewPaidOrderEvidence {\n shop { id name url currencyCode primaryDomain { host url } }\n orders(first: 5, sortKey: CREATED_AT, reverse: false, query: \"created_at:>='2026-10-28T23:48:36Z' created_at:<='2026-10-29T07:09:37Z'\") {\n  nodes { id name createdAt test cancelledAt displayFinancialStatus\n   currentTotalPriceSet { shopMoney { amount currencyCode } }\n   totalRefundedSet { shopMoney { amount currencyCode } }\n   transactions { id kind status test manualPaymentGateway gateway processedAt amountSet { shopMoney { amount currencyCode } } }\n  }\n  pageInfo { hasNextPage endCursor }\n }\n}",
+    "schemaFieldsVerified": true,
+    "standaloneValidator": "skipped; executor validates",
+    "result": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "name": "LuxeStyle",
+          "url": "https://luxestyle.ch",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch",
+            "url": "https://luxestyle.ch"
+          }
+        },
+        "orders": {
+          "nodes": [],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          }
+        }
+      }
+    },
+    "qualification": "PAID, test=false, cancelledAt=null, current total>0, not fully refunded; successful non-test SALE/CAPTURE positive from real gateway manualPaymentGateway=false; missing data unknown",
+    "watchStatus": "OFFEN_AB_2026-10-28T23:48:36Z"
+  },
+  "ads": {
+    "readAt": "2026-10-29T07:12:23Z",
+    "account": "719-826-3241",
+    "dateRange": "2026-10-29",
+    "metricRead": false,
+    "forceRefreshUsed": false,
+    "actionsTaken": [],
+    "campaignAdStatus": {
+      "status": "done",
+      "data": [
+        {
+          "account_id": "719-826-3241",
+          "account_currency_code": "CHF",
+          "campaign_id": "24403263741",
+          "campaign": "LuxeStyle | Weihnachtspyjamas | CH | 58 CHF",
+          "campaign_status": "PAUSED",
+          "ad_group_id": "199943553005",
+          "ad_group_status": "ENABLED",
+          "ad_id": "829846730083",
+          "ad_group_ad_status": "ENABLED"
+        }
+      ],
+      "total_rows": 1
+    },
+    "failedKeywordFieldCombination": {
+      "error": "Error calling tool 'get_data': Google Ads cannot return these fields in one request: campaign_id,ad_group_id,keyword_criterion_id,keyword_info_text,keyword_status. Fix: remove one of them, or request them in separate calls. Guide: https://windsor.ai/documentation/google-ads-fields-cannot-be-queried-together-error/"
+    },
+    "correctedKeywordRead": {
+      "status": "done",
+      "data": [
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "299086045176",
+          "keyword_text": "weihnachtspyjama familie",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "390236045744",
+          "keyword_text": "weihnachtspyjama familie",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "739806705312",
+          "keyword_text": "familien weihnachtspyjama",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "830647220296",
+          "keyword_text": "weihnachtspyjama partnerlook",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "896662364367",
+          "keyword_text": "familien weihnachtspyjama",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "1078731903249",
+          "keyword_text": "weihnachtspyjama pärchen",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "1183845915072",
+          "keyword_text": "weihnachtspyjama pärchen",
+          "keyword_status": "ENABLED"
+        },
+        {
+          "campaign_id": "24403263741",
+          "keyword_criterion_id": "1431388878850",
+          "keyword_text": "weihnachtspyjama partnerlook",
+          "keyword_status": "ENABLED"
+        }
+      ],
+      "total_rows": 8
+    },
+    "autoTagging": {
+      "status": "done",
+      "data": [],
+      "total_rows": 0
+    },
+    "autoTaggingConclusion": "unknown_no_rows",
+    "campaignPurchaseGoalConclusion": "unknown_no_GOAL_SETUP_READY24403263741_evidence",
+    "userReportedBudget": {
+      "totalCHF": 58,
+      "campaignPeriod": "2026-10-30/2026-11-05",
+      "source": "current_owner_instruction_not_reverified_here"
+    }
+  },
+  "metricool": {
+    "SELECTED-METRICS.json": {
+      "instagram": [
+        {
+          "fieldId": "IGEV05",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "views",
+          "metricLabel": "Instagram Evolution > Views",
+          "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV38",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 38,
+          "metricName": "postsInteractions",
+          "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "facebook": [
+        {
+          "fieldId": "FBEV49",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 49,
+          "metricName": "pageMediaView",
+          "metricLabel": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "FBEV34",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 34,
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "tiktok": [
+        {
+          "fieldId": "TKEV02",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "views",
+          "metricLabel": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV06",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "youtube": [
+        {
+          "fieldId": "YTEV13",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 13,
+          "metricName": "publishedVideoVideoViews",
+          "metricLabel": "Youtube Evolution > Published Videos  Views",
+          "description": "Number of views received by video published in range",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV10",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 10,
+          "metricName": "publishedVideoLikes",
+          "metricLabel": "Youtube Evolution > Published Videos Likes",
+          "description": "Number of likes of the videos Published in Range",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV12",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 12,
+          "metricName": "publishedVideoComments",
+          "metricLabel": "Youtube Evolution > Published Videos  Comments",
+          "description": "Number of comments received by video published in range",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV19",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 19,
+          "metricName": "publishedVideoVideoShares",
+          "metricLabel": "Youtube Evolution > Published Videos Shares",
+          "description": "Number of shares received by video published in range",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "threads": [
+        {
+          "fieldId": "THEV06",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "THEV05",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "pinterest": [
+        {
+          "fieldId": "PIEV01",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 1,
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV04",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 4,
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        }
+      ]
+    },
+    "KENNZAHLEN-AUSWERTUNG.json": {
+      "checkedAtUtc": "2026-10-29T07:13:31.373422+00:00",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "period": {
+        "from": "2026-10-22T00:00:00+02:00",
+        "to": "2026-10-28T23:59:59+01:00",
+        "days": [
+          "20261022",
+          "20261023",
+          "20261024",
+          "20261025",
+          "20261026",
+          "20261027",
+          "20261028"
+        ],
+        "interpretation": "seven completed Zurich days, DST included"
+      },
+      "definitionCalls": 6,
+      "dataCalls": 6,
+      "retries": 0,
+      "fields": {
+        "instagram": {
+          "status": "response_observed",
+          "fields": {
+            "IGEV05": {
+              "label": "Instagram Evolution > Views",
+              "definition": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 292.0,
+                "20261023": 282.0,
+                "20261024": 193.0,
+                "20261025": 443.0,
+                "20261026": 87.0,
+                "20261027": 56.0,
+                "20261028": 128.0
+              },
+              "coverageDays": 7,
+              "missingDays": [],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 1481.0,
+              "fullWeekSum": 1481.0,
+              "status": "complete"
+            },
+            "IGEV38": {
+              "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+              "definition": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 2.0,
+                "20261023": 1.0,
+                "20261025": 1.0
+              },
+              "coverageDays": 3,
+              "missingDays": [
+                "20261024",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 4.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        },
+        "facebook": {
+          "status": "response_observed",
+          "fields": {
+            "FBEV49": {
+              "label": "Facebook Evolution > Page Media View",
+              "definition": "Page content views.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 183.0,
+                "20261023": 431.0,
+                "20261024": 187.0,
+                "20261025": 351.0,
+                "20261026": 15.0,
+                "20261027": 14.0,
+                "20261028": 10.0
+              },
+              "coverageDays": 7,
+              "missingDays": [],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 1191.0,
+              "fullWeekSum": 1191.0,
+              "status": "complete"
+            },
+            "FBEV34": {
+              "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+              "definition": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261023": 1.0,
+                "20261025": 1.0
+              },
+              "coverageDays": 2,
+              "missingDays": [
+                "20261022",
+                "20261024",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 2.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        },
+        "tiktok": {
+          "status": "response_observed",
+          "fields": {
+            "TKEV02": {
+              "label": "TikTok Evolution > Views",
+              "definition": "Number of views reached by the videos published in the period",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 1039.0,
+                "20261023": 815.0,
+                "20261024": 810.0,
+                "20261025": 818.0
+              },
+              "coverageDays": 4,
+              "missingDays": [
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 3482.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "TKEV06": {
+              "label": "TikTok Evolution > Interactions",
+              "definition": "Number of interactions on videos: Likes, Comments and Shares.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 7.0,
+                "20261023": 5.0,
+                "20261024": 10.0,
+                "20261025": 6.0
+              },
+              "coverageDays": 4,
+              "missingDays": [
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 28.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        },
+        "youtube": {
+          "status": "response_observed",
+          "fields": {
+            "YTEV13": {
+              "label": "Youtube Evolution > Published Videos  Views",
+              "definition": "Number of views received by video published in range",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 222.0,
+                "20261023": 1076.0,
+                "20261024": 1310.0,
+                "20261025": 184.0,
+                "20261026": 20.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 2812.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "YTEV10": {
+              "label": "Youtube Evolution > Published Videos Likes",
+              "definition": "Number of likes of the videos Published in Range",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 3.0,
+                "20261023": 9.0,
+                "20261024": 16.0,
+                "20261025": 0.0,
+                "20261026": 0.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [
+                "20261025",
+                "20261026"
+              ],
+              "observedSum": 28.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "YTEV12": {
+              "label": "Youtube Evolution > Published Videos  Comments",
+              "definition": "Number of comments received by video published in range",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 0.0,
+                "20261023": 0.0,
+                "20261024": 0.0,
+                "20261025": 0.0,
+                "20261026": 0.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [
+                "20261022",
+                "20261023",
+                "20261024",
+                "20261025",
+                "20261026"
+              ],
+              "observedSum": 0.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "YTEV19": {
+              "label": "Youtube Evolution > Published Videos Shares",
+              "definition": "Number of shares received by video published in range",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 0.0,
+                "20261023": 0.0,
+                "20261024": 0.0,
+                "20261025": 0.0,
+                "20261026": 0.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [
+                "20261022",
+                "20261023",
+                "20261024",
+                "20261025",
+                "20261026"
+              ],
+              "observedSum": 0.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        },
+        "threads": {
+          "status": "response_observed",
+          "fields": {
+            "THEV06": {
+              "label": "Threads Evolution > Post Views",
+              "definition": "Total number of times that the post is displayed.",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261023": 3.0,
+                "20261025": 7.0
+              },
+              "coverageDays": 2,
+              "missingDays": [
+                "20261022",
+                "20261024",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 10.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "THEV05": {
+              "label": "Threads Evolution > Interactions",
+              "definition": "Number of interactions: Likes, Replies, Reposts and Quotes",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261028": 0.0
+              },
+              "coverageDays": 1,
+              "missingDays": [
+                "20261022",
+                "20261023",
+                "20261024",
+                "20261025",
+                "20261026",
+                "20261027"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [
+                "20261028"
+              ],
+              "observedSum": 0.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        },
+        "pinterest": {
+          "status": "response_observed",
+          "fields": {
+            "PIEV01": {
+              "label": "Pinterest Evolution > Impressions in period",
+              "definition": "",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 1718.0,
+                "20261023": 3207.0,
+                "20261024": 1435.0,
+                "20261025": 777.0,
+                "20261026": 1090.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 8227.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            },
+            "PIEV04": {
+              "label": "Pinterest Evolution > Interactions in period",
+              "definition": "",
+              "aggregation": "SUM",
+              "valuesByDay": {
+                "20261022": 23.0,
+                "20261023": 50.0,
+                "20261024": 23.0,
+                "20261025": 15.0,
+                "20261026": 26.0
+              },
+              "coverageDays": 5,
+              "missingDays": [
+                "20261027",
+                "20261028"
+              ],
+              "invalidValueDays": [],
+              "explicitZeroDays": [],
+              "observedSum": 137.0,
+              "fullWeekSum": null,
+              "status": "unknown_full_week_partial_observation"
+            }
+          }
+        }
+      },
+      "followersQueried": false,
+      "salesInference": false,
+      "limits": [
+        "Missing rows and null/invalid cells are unknown, not zero",
+        "Observed sums with incomplete coverage are not whole-week totals",
+        "Views and interaction formats/cohorts differ; no pooled rate or channel sales ranking",
+        "YouTube published-video metrics do not isolate Shorts"
+      ]
+    },
+    "PLANUNG-AUSWERTUNG.json": {
+      "checkedAtUtc": "2026-10-29T07:13:31.378993+00:00",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "window": {
+        "from": "2026-10-29T08:10:00+01:00",
+        "to": "2026-11-05T08:10:00+01:00",
+        "elapsedHours": 168.0,
+        "context": "whole29Oct additional status context;5Nov only through08:10"
+      },
+      "requestCount": 8,
+      "days": [
+        {
+          "date": "2026-10-29",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-10-29",
+            "fromDate": "2026-10-29T00:00:00+01:00",
+            "toDate": "2026-10-29T23:59:59+01:00"
+          },
+          "objects": 5,
+          "futureObjects": 5,
+          "futureChannelStates": {
+            "facebook": 4,
+            "instagram": 4,
+            "pinterest": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads"
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-10-30",
+            "fromDate": "2026-10-30T00:00:00+01:00",
+            "toDate": "2026-10-30T23:59:59+01:00"
+          },
+          "objects": 3,
+          "futureObjects": 3,
+          "futureChannelStates": {
+            "facebook": 2,
+            "instagram": 2,
+            "pinterest": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads"
+          ]
+        },
+        {
+          "date": "2026-10-31",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-10-31",
+            "fromDate": "2026-10-31T00:00:00+01:00",
+            "toDate": "2026-10-31T23:59:59+01:00"
+          },
+          "objects": 3,
+          "futureObjects": 3,
+          "futureChannelStates": {
+            "facebook": 2,
+            "instagram": 2,
+            "pinterest": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads"
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-11-01",
+            "fromDate": "2026-11-01T00:00:00+01:00",
+            "toDate": "2026-11-01T23:59:59+01:00"
+          },
+          "objects": 2,
+          "futureObjects": 2,
+          "futureChannelStates": {
+            "facebook": 1,
+            "instagram": 1,
+            "pinterest": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads"
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-11-02",
+            "fromDate": "2026-11-02T00:00:00+01:00",
+            "toDate": "2026-11-02T23:59:59+01:00"
+          },
+          "objects": 1,
+          "futureObjects": 1,
+          "futureChannelStates": {
+            "facebook": 1,
+            "instagram": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads",
+            "pinterest"
+          ]
+        },
+        {
+          "date": "2026-11-03",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-11-03",
+            "fromDate": "2026-11-03T00:00:00+01:00",
+            "toDate": "2026-11-03T23:59:59+01:00"
+          },
+          "objects": 1,
+          "futureObjects": 1,
+          "futureChannelStates": {
+            "facebook": 1,
+            "instagram": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads",
+            "pinterest"
+          ]
+        },
+        {
+          "date": "2026-11-04",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-11-04",
+            "fromDate": "2026-11-04T00:00:00+01:00",
+            "toDate": "2026-11-04T23:59:59+01:00"
+          },
+          "objects": 1,
+          "futureObjects": 1,
+          "futureChannelStates": {
+            "facebook": 1,
+            "instagram": 1
+          },
+          "channelsWithoutDeliveredFuturePost": [
+            "tiktok",
+            "youtube",
+            "threads",
+            "pinterest"
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "state": "response_observed",
+          "scope": {
+            "day": "2026-11-05",
+            "fromDate": "2026-11-05T00:00:00+01:00",
+            "toDate": "2026-11-05T08:10:00+01:00"
+          },
+          "objects": 0,
+          "futureObjects": 0,
+          "futureChannelStates": {},
+          "channelsWithoutDeliveredFuturePost": [
+            "instagram",
+            "facebook",
+            "tiktok",
+            "youtube",
+            "threads",
+            "pinterest"
+          ]
+        }
+      ],
+      "objectsWithTodayContext": 16,
+      "uniqueUUIDsWithTodayContext": 16,
+      "futureObjects": 16,
+      "futureProviderStates": {
+        "PENDING": 28
+      },
+      "allProviderStatesWithTodayContext": {
+        "PENDING": 28
+      },
+      "perChannelFutureStates": {
+        "facebook": 12,
+        "instagram": 12,
+        "pinterest": 4
+      },
+      "duplicateUUIDs": [],
+      "collisionsInFutureWindow": {
+        "exactMediaChannel": [],
+        "queryStrippedMediaChannel": [],
+        "exactTextChannel": [],
+        "sameSlotChannel": []
+      },
+      "publicationTimesUnknown": [],
+      "previousComparison": {
+        "source": "28Oct evening PLAN-RAW.json",
+        "sourceWindow": {
+          "brandId": "6227837",
+          "fromDate": "2026-10-28T19:06:56+01:00",
+          "toDate": "2026-11-04T19:06:56+01:00",
+          "timezone": "Europe/Zurich",
+          "extendedRange": false
+        },
+        "scope": "matching UUIDs only; different rolling windows",
+        "commonUUIDs": 16,
+        "newUUIDs": [],
+        "absent": [],
+        "deltas": []
+      },
+      "perPost": [
+        {
+          "id": 404927236,
+          "uuid": "-884200541558521239",
+          "publicationDate": {
+            "dateTime": "2026-10-29T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "7a85919ed86b4701af6f7d30ef72d444b14af84117f1cde5493676a32d71999e",
+          "media": [
+            {
+              "urlNoQuery": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg",
+              "originalUrlSha256": "f8588e1b1f77db632501e1dde72d0870d3820438d8e06f961fbaa0107ec4e005"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941138,
+          "uuid": "3832103242401204926",
+          "publicationDate": {
+            "dateTime": "2026-10-29T18:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "88e99010dba34c32ab5a6de492e0b52ddc688ebc0d4dfa2631c1de7b4f0fb510",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-5264607261495550408.jpeg",
+              "originalUrlSha256": "e5785ff218c1862400ba3ca2938277ae3816ac57342061ba5373601c4b8a2dea"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941267,
+          "uuid": "-7289213762748006017",
+          "publicationDate": {
+            "dateTime": "2026-10-29T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "75ee4419cd9b1d6bc0c188003a411f612cb0bacd2c28a1abc91f901c01c25f8f",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-11336918479186155735.jpeg",
+              "originalUrlSha256": "07e6502892f1a14b2a3e583761aac79824fb9f01778d1faceb8dba4274bc7000"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "pinterestData": {
+            "boardId": "1111333714239531718",
+            "isAiGenerated": false
+          }
+        },
+        {
+          "id": 408964282,
+          "uuid": "7686029963411803895",
+          "publicationDate": {
+            "dateTime": "2026-10-29T08:40:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "0671a53624b12409f1a2a3f798d688e9d259a770f64d0abd328e8c6da741341e",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-17382016742390885373.jpeg",
+              "originalUrlSha256": "14f49b8a3f2bbfdbe163e299c17bd4e82fb8d1991d8ef7c24df98ed98ce6febf"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 409007617,
+          "uuid": "-1907404935308818459",
+          "publicationDate": {
+            "dateTime": "2026-10-29T17:20:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "dc0b9f69dcb2be2263ecaf3dec277d6ba803851546129bf4c7a4d2a8b31476ef",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-3980894827781219500.jpeg",
+              "originalUrlSha256": "5d9f73bc02203c7ad1e0a47eb8a0fb7c624de88617f2df60146f31dbaeb75d0f"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941288,
+          "uuid": "5422556514800451906",
+          "publicationDate": {
+            "dateTime": "2026-10-30T12:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "f1a4d5840a7380d933a113bff2a4a2d97ba04c4cc3930d9ed7f7953398d5c792",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-15480236855238901677.jpeg",
+              "originalUrlSha256": "5fbf4b7dbda76a21725f09162cda893730efaf68b41c2debdffdf978425b4b85"
+            },
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-9200127248536401560.jpeg",
+              "originalUrlSha256": "f92d7b55b1526265ece1a76eebc6863f89c345a5fd8b79f6ab77970f816df704"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941311,
+          "uuid": "-4313698764087147701",
+          "publicationDate": {
+            "dateTime": "2026-10-30T13:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "7e5ec37c260ecb9a734418760a3f7ff08ec307b3f9d957db5f7ba366b3889b3a",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-16008650721639421477.jpeg",
+              "originalUrlSha256": "1f85b475f9e71ebd38caeb11a89658552a928b86b3e30ba548ad5e37c0729c12"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "pinterestData": {
+            "boardId": "1111333714239531706",
+            "isAiGenerated": false
+          }
+        },
+        {
+          "id": 409007661,
+          "uuid": "8599624041512978720",
+          "publicationDate": {
+            "dateTime": "2026-10-30T08:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "1809bb5e70abd79f0dcd8faa0a4841874617830ca2f1c9b2f7a414fced49e933",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-17005348926549372341.jpeg",
+              "originalUrlSha256": "973b5f71e4d7cf6e5ad6c91a77e9258778378e95c9691e4677c33314380ac524"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941344,
+          "uuid": "-4161958612308901750",
+          "publicationDate": {
+            "dateTime": "2026-10-31T17:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "801503ddbd8dc28d8aa23d61b305b3a14878f3d8efd08d6144f6f02f2de2ad5e",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-13769764836650894203.jpeg",
+              "originalUrlSha256": "69b562ebe68b19c5b2425e8f1570ee2899d4cd828d29c6e77845de1c9fdcd7ce"
+            },
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-12648395147022624622.jpeg",
+              "originalUrlSha256": "85fc48f1a11495fa53e4479e5ae75cd753543d64bb3fb8e5b0279e1541ac7704"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941368,
+          "uuid": "6949901535401824082",
+          "publicationDate": {
+            "dateTime": "2026-10-31T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "dc0a753dae347abeeda9a322dcdc60347677b78b091bc3f09dc9bdc55d71e215",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-5114647947605543485.jpeg",
+              "originalUrlSha256": "9af0462d55940c32d87522eb5527f54de610d10ae690918ef7fffcdc72a5aac3"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "pinterestData": {
+            "boardId": "1111333714239531706",
+            "isAiGenerated": false
+          }
+        },
+        {
+          "id": 409007703,
+          "uuid": "-1970243383549213009",
+          "publicationDate": {
+            "dateTime": "2026-10-31T10:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "ec560541f9f023b9a7785d104d6dbf0c0fb05ec4cd1b7e5ad964f3fe72cc16d1",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-331970871294002016.jpeg",
+              "originalUrlSha256": "2bf7e23389dc54299a169d441b46ccc5e580e7a22045562bfefde7b8aa3069e4"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941388,
+          "uuid": "7159397983996628078",
+          "publicationDate": {
+            "dateTime": "2026-11-01T11:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "c3535704872de3bb06bf3de4f63212f0354ea96b2df5cc51e20e6c0858c3bf0e",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-13772458834798770438.jpeg",
+              "originalUrlSha256": "0b4a82725766b3ccffe311362f914b771b5c652b7e87bd85e4f4da84f30b7b38"
+            },
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-16086701481287477631.jpeg",
+              "originalUrlSha256": "a994b2c874ed9858a261cc33aa39e942afd30c1c2278570c4b9b8c2f4d6f55d2"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 405941434,
+          "uuid": "4429839409975411400",
+          "publicationDate": {
+            "dateTime": "2026-11-01T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "fe9910d3d96bf8f65c95edbc50b639ba3cb500197515ee1b0116df9f7d98fed1",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-4399823561216210061.jpeg",
+              "originalUrlSha256": "7c986eeb4cb7bf43f403a803b8e12caa2dc1122d07bfb7ce1f0e8e10c57fe120"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "pinterestData": {
+            "boardId": "1111333714239531706",
+            "isAiGenerated": false
+          }
+        },
+        {
+          "id": 407830728,
+          "uuid": "7282371443509710052",
+          "publicationDate": {
+            "dateTime": "2026-11-02T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "fd19531d24ec311c5e71059896b01b451eb890337c582cbdc08475abf8fc6ee2",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+              "originalUrlSha256": "8acbe9ae5ec123be80041eed999bd4a5f3d00e8f169672e78ee95cec0d067198"
+            },
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg",
+              "originalUrlSha256": "cc461c7a6a56553cf099db95524bd37b1367a3524b5f000450eaaa86968618f6"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 407838073,
+          "uuid": "-3660854990879961370",
+          "publicationDate": {
+            "dateTime": "2026-11-03T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "ad77a5b3e527daf4650987cd5fca29607eb8442eb79eeb13f1eeca7ed08d596f",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+              "originalUrlSha256": "415669ed70490689a45aa4d5abaa6a575171fccfe51fc6a6ac12fa4140ff363f"
+            },
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg",
+              "originalUrlSha256": "ccce0901c1ba67e02d26ecc6968c646710ce929ac9b687a3d69211fc54be60bc"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        },
+        {
+          "id": 407849114,
+          "uuid": "-6402384969971711358",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "autoPublish": true,
+          "draft": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "4b81f50c1349ab649fb449c2bdd8399cd509cea442b4cd8aab22acc3955964c2",
+          "media": [
+            {
+              "urlNoQuery": "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg",
+              "originalUrlSha256": "f94326bfe32ee8ec8121729912988bfb8f195c1e41ea4ea259c963ed05c6b8bf"
+            }
+          ],
+          "inFutureWindow": true,
+          "instagramData": {
+            "type": "POST",
+            "autoPublish": true,
+            "isAiGenerated": false
+          },
+          "facebookData": {
+            "type": "POST"
+          }
+        }
+      ],
+      "futureMusicFields": [],
+      "ownPublications": 0,
+      "writes": 0,
+      "masterHistory": "unknown; no master ledger initialised/reset/read in this no-push check",
+      "actualFilmHashes": "unknown; URL identity comparisons only",
+      "channelPrerequisites": {
+        "instagramBioTarget": "unknown",
+        "tiktokBioTarget": "unknown",
+        "pinterestAccountBoard": "unknown; scheduled board fields do not verify account boards",
+        "youtubeAudienceForNewMaster": "not additionally checked in this Metricool read; existing general-audience/not-made-for-kids clearance is preserved in the separate 28Oct master evidence; no renewed owner question"
+      },
+      "privacy": "This summary excludes creator email/userID, raw caption text, original URL queries and signed media tokens. Raw responses remain local only.",
+      "contentReviewFlags": [
+        {
+          "id": 404927236,
+          "uuid": "-884200541558521239",
+          "publicationDate": {
+            "dateTime": "2026-10-29T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "textSha256": "7a85919ed86b4701af6f7d30ef72d444b14af84117f1cde5493676a32d71999e",
+          "state": "unreviewed_existing_caption_not_approved",
+          "claimTypes": [
+            "processing/performance time claims",
+            "container/power/function claims",
+            "delivery time claim"
+          ],
+          "reason": "Existing caption performance and delivery assertions were not verified against the exact product/supplier in this Metricool read. PENDING is scheduling state only, not creative/product/rights approval.",
+          "actionTaken": "none; original post retained"
+        }
+      ]
+    },
+    "DAILY-DATA-CHECKPOINT.json": {
+      "dayEuropeZurich": "2026-10-29",
+      "readCompleteAtUtc": "2026-10-29T07:14:51.101614+00:00",
+      "metricoolMetricsReadToday": true,
+      "period": "22.–28.10.2026 complete Europe/Zurich days",
+      "availableDefinitionCalls": 6,
+      "analyticsCalls": 6,
+      "furtherReadsOnlyForNewConcreteFinding": true,
+      "sanitizedSummary": "KENNZAHLEN-AUSWERTUNG.json",
+      "sha256": "4801cf73bd61ca593f4f5ad07753778839bad27e0a78c93adf535e037eee0baf",
+      "klaviyoReadByThisAgent": false
+    },
+    "INDEPENDENT-REVIEW.json": {
+      "reviewedAtUtc": "2026-10-29T07:12:56.573159+00:00",
+      "reviewer": "independent offline verifier",
+      "scope": "saved responses only; no API/network/account calls",
+      "metricsPeriod": "2026-10-22 through 2026-10-28 Europe/Zurich completed days",
+      "metricFieldIssues": [],
+      "metricReviews": {
+        "instagram": [
+          {
+            "fieldId": "IGEV05",
+            "metricName": "views",
+            "definition": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 1481,
+            "coverageDays": 7,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "missingOrNullDates": [],
+            "explicitZeroDates": [],
+            "fullPeriodSum": 1481,
+            "fullPeriodState": "complete",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "IGEV38",
+            "metricName": "postsInteractions",
+            "definition": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 4,
+            "coverageDays": 3,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261025"
+            ],
+            "missingOrNullDates": [
+              "20261024",
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ],
+        "facebook": [
+          {
+            "fieldId": "FBEV49",
+            "metricName": "pageMediaView",
+            "definition": "Page content views.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 1191,
+            "coverageDays": 7,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "missingOrNullDates": [],
+            "explicitZeroDates": [],
+            "fullPeriodSum": 1191,
+            "fullPeriodState": "complete",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "FBEV34",
+            "metricName": "postsInteractions",
+            "definition": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 2,
+            "coverageDays": 2,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261023",
+              "20261025"
+            ],
+            "missingOrNullDates": [
+              "20261022",
+              "20261024",
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ],
+        "tiktok": [
+          {
+            "fieldId": "TKEV02",
+            "metricName": "views",
+            "definition": "Number of views reached by the videos published in the period",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 3482,
+            "coverageDays": 4,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025"
+            ],
+            "missingOrNullDates": [
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "TKEV06",
+            "metricName": "interactions",
+            "definition": "Number of interactions on videos: Likes, Comments and Shares.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 28,
+            "coverageDays": 4,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025"
+            ],
+            "missingOrNullDates": [
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ],
+        "youtube": [
+          {
+            "fieldId": "YTEV13",
+            "metricName": "publishedVideoVideoViews",
+            "definition": "Number of views received by video published in range",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 2812,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "YTEV10",
+            "metricName": "publishedVideoLikes",
+            "definition": "Number of likes of the videos Published in Range",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 28,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [
+              "20261025",
+              "20261026"
+            ],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "YTEV12",
+            "metricName": "publishedVideoComments",
+            "definition": "Number of comments received by video published in range",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 0,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "YTEV19",
+            "metricName": "publishedVideoVideoShares",
+            "definition": "Number of shares received by video published in range",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 0,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ],
+        "threads": [
+          {
+            "fieldId": "THEV06",
+            "metricName": "views",
+            "definition": "Total number of times that the post is displayed.",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 10,
+            "coverageDays": 2,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261023",
+              "20261025"
+            ],
+            "missingOrNullDates": [
+              "20261022",
+              "20261024",
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "THEV05",
+            "metricName": "interactions",
+            "definition": "Number of interactions: Likes, Replies, Reposts and Quotes",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 0,
+            "coverageDays": 1,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261028"
+            ],
+            "missingOrNullDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026",
+              "20261027"
+            ],
+            "explicitZeroDates": [
+              "20261028"
+            ],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ],
+        "pinterest": [
+          {
+            "fieldId": "PIEV01",
+            "metricName": "pinterestImpressions",
+            "definition": "",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 8227,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          },
+          {
+            "fieldId": "PIEV04",
+            "metricName": "pinterestInteractions",
+            "definition": "",
+            "availableAndNonDeprecatedSUM": true,
+            "observedSum": 137,
+            "coverageDays": 5,
+            "expectedDays": 7,
+            "observedDates": [
+              "20261022",
+              "20261023",
+              "20261024",
+              "20261025",
+              "20261026"
+            ],
+            "missingOrNullDates": [
+              "20261027",
+              "20261028"
+            ],
+            "explicitZeroDates": [],
+            "fullPeriodSum": null,
+            "fullPeriodState": "unknown",
+            "protocolIssues": []
+          }
+        ]
+      },
+      "queueWindow": {
+        "from": "2026-10-29T08:10:00+01:00",
+        "to": "2026-11-05T08:10:00+01:00",
+        "hours": 168,
+        "whole29OctContextAlsoDelivered": true
+      },
+      "queueDays": [
+        {
+          "day": "2026-10-29",
+          "objectsDelivered": 5,
+          "providerStatesDelivered": {
+            "PENDING": 9
+          }
+        },
+        {
+          "day": "2026-10-30",
+          "objectsDelivered": 3,
+          "providerStatesDelivered": {
+            "PENDING": 5
+          }
+        },
+        {
+          "day": "2026-10-31",
+          "objectsDelivered": 3,
+          "providerStatesDelivered": {
+            "PENDING": 5
+          }
+        },
+        {
+          "day": "2026-11-01",
+          "objectsDelivered": 2,
+          "providerStatesDelivered": {
+            "PENDING": 3
+          }
+        },
+        {
+          "day": "2026-11-02",
+          "objectsDelivered": 1,
+          "providerStatesDelivered": {
+            "PENDING": 2
+          }
+        },
+        {
+          "day": "2026-11-03",
+          "objectsDelivered": 1,
+          "providerStatesDelivered": {
+            "PENDING": 2
+          }
+        },
+        {
+          "day": "2026-11-04",
+          "objectsDelivered": 1,
+          "providerStatesDelivered": {
+            "PENDING": 2
+          }
+        },
+        {
+          "day": "2026-11-05",
+          "objectsDelivered": 0,
+          "providerStatesDelivered": {}
+        }
+      ],
+      "queueErrorDays": [],
+      "objectsWithTodayContext": 16,
+      "uniquePostIds": 16,
+      "uniqueUUIDs": 16,
+      "missingIDs": 0,
+      "missingUUIDs": 0,
+      "sourcePostIdTypes": {
+        "int": 16
+      },
+      "sourceUUIDTypes": {
+        "str": 16
+      },
+      "reviewIdRepresentation": "all IDs and UUIDs in this artifact use exact strings; numeric post IDs parsed by Python integers",
+      "futureObjects": 16,
+      "futureProviderStates": {
+        "PENDING": 28
+      },
+      "allDeliveredProviderStates": {
+        "PENDING": 28
+      },
+      "publicationTimesUnknown": [],
+      "duplicateUUIDs": [],
+      "futureDuplicateGroups": {
+        "exactMediaNetwork": [],
+        "querylessMediaNetwork": [],
+        "normalisedExactTextNetwork": [],
+        "sameSlotNetwork": []
+      },
+      "futurePlatformMusic": [],
+      "comparison28Oct": {
+        "baselineFileSha256": "69b51702c2e5ade4838e5723211d6034cf62d70e011ff833f4d2aaf4b8674b42",
+        "commonUUIDs": 16,
+        "newUUIDsInSharedEndRange": [],
+        "newUUIDsOutsidePreviousEndRange": [],
+        "notDeliveredNowUUIDs": [],
+        "changes": [],
+        "scopeWarning": "later current start and later final end; absence outside overlap is not deletion and earlier unobserved final dates are unknown"
+      },
+      "fullMasterHistoryAndActualMediaHashes": "unknown",
+      "ownPublications": 0,
+      "analyticsReadsByReviewer": 0,
+      "accountWritesByReviewer": 0,
+      "sourcePlanHashes": {
+        "plan-2026-10-29.json": "9c16ecec604dffe8105a2b253a4cbbbbfe14ba7e6e52f9eac0fffbcdd6ffeaef",
+        "plan-2026-10-30.json": "16f41014c75d4081c7da4528af3c0306d8baeb0f114b10e9385fb3595794260c",
+        "plan-2026-10-31.json": "6b3f70c26d6a21e799ff0445f597233f9652eb7c5e550fa23e3391b74e0fc750",
+        "plan-2026-11-01.json": "2e368c2525ee62a6f2535a69682e0b6559aa4dfce3afa4464378fd11e9e65a5c",
+        "plan-2026-11-02.json": "cc678caa6c41defbd9eb30ba9b521eef9abf99eb321ee168e80bef10ce2fb741",
+        "plan-2026-11-03.json": "3eda51459746252dcd46b8280fff0df172ccc497721fe0e7f2cbc03711bbaf80",
+        "plan-2026-11-04.json": "7098ced14a866b879dbcef3410e43143849fcc2d479c207fafd69d60b1e708df",
+        "plan-2026-11-05.json": "48f25eca041139be51c2ffc328e66cd2454b1d84548da33c63d836e3aec1427c"
+      },
+      "deliveredChannelCoverage": {
+        "facebook": 12,
+        "instagram": 12,
+        "pinterest": 4
+      },
+      "dayChannelCoverage": {
+        "2026-10-29": {
+          "facebook": 4,
+          "instagram": 4,
+          "pinterest": 1
+        },
+        "2026-10-30": {
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1
+        },
+        "2026-10-31": {
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1
+        },
+        "2026-11-01": {
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1
+        },
+        "2026-11-02": {
+          "facebook": 1,
+          "instagram": 1
+        },
+        "2026-11-03": {
+          "facebook": 1,
+          "instagram": 1
+        },
+        "2026-11-04": {
+          "facebook": 1,
+          "instagram": 1
+        },
+        "2026-11-05": {}
+      },
+      "postsWithMp4Url": [],
+      "absenceScope": "No delivered planning objects on5Nov before08:10; no delivered TikTok/Threads/YouTube providers in these responses. This is not a claim of disconnection or all-time absence."
+    }
+  },
+  "klaviyo": {
+    "scope": "LuxeStyle only; read-only; no customer profile or event reads",
+    "account": {
+      "id": "XWqMAD",
+      "contact_information": {
+        "organization_name": "LuxeStyle CH",
+        "website_url": "https://luxestyle.ch"
+      },
+      "preferred_currency": "USD",
+      "timezone": "Europe/Zurich",
+      "test_account": false
+    },
+    "metricsDiscovered": [
+      {
+        "id": "TFy7Yn",
+        "name": "Added to Cart"
+      },
+      {
+        "id": "W7XTVD",
+        "name": "Placed Order"
+      },
+      {
+        "id": "XhnJPv",
+        "name": "Checkout Started"
+      }
+    ],
+    "reportRequest": {
+      "conversionMetricId": "W7XTVD",
+      "flowIds": [
+        "Vse76a",
+        "XEGbTB",
+        "VbLQj6",
+        "RnTvsY"
+      ],
+      "start": "2026-10-22T00:00:00+02:00",
+      "endExclusive": "2026-10-29T00:00:00+01:00",
+      "utcStart": "2026-10-21T22:00:00Z",
+      "utcEndExclusive": "2026-10-28T23:00:00Z",
+      "timezone": "Europe/Zurich",
+      "durationHours": 169,
+      "reportCallsToday": 1
+    },
+    "reportRows": [
+      {
+        "groupings": {
+          "flow_id": "VbLQj6",
+          "flow_name": "Welcome Series",
+          "flow_message_id": "TTuuTS"
+        },
+        "statistics": {
+          "delivered": 4,
+          "opens_unique": 2,
+          "clicks_unique": 0,
+          "conversions": 0,
+          "bounced": 0
+        }
+      },
+      {
+        "groupings": {
+          "flow_id": "RnTvsY",
+          "flow_name": "Post-Purchase · Order + Review",
+          "flow_message_id": "Tr6DXE"
+        },
+        "statistics": {
+          "delivered": 1,
+          "opens_unique": 0,
+          "clicks_unique": 0,
+          "conversions": 0,
+          "bounced": 0
+        }
+      }
+    ],
+    "missingRows": {
+      "Vse76a": "unknown",
+      "XEGbTB": "unknown"
+    },
+    "unexpectedMonetaryFieldsDiscarded": true,
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "updated": "2026-10-10T08:13:07+00:00",
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": {
+          "condition_groups": [
+            {
+              "conditions": [
+                {
+                  "type": "profile-metric",
+                  "metric_id": "W7XTVD",
+                  "measurement": "count",
+                  "measurement_filter": {
+                    "type": "numeric",
+                    "operator": "equals",
+                    "value": 0
+                  },
+                  "timeframe_filter": {
+                    "type": "date",
+                    "operator": "flow-start"
+                  },
+                  "metric_filters": null
+                }
+              ]
+            }
+          ]
+        },
+        "entryActionId": "106812819",
+        "actions": [
+          {
+            "id": "106812819",
+            "type": "send-email",
+            "next": "106812817",
+            "status": "draft",
+            "messageId": "Yq4Puv",
+            "templateId": "TTQSWH",
+            "smartSendingEnabled": true,
+            "transactional": false
+          },
+          {
+            "id": "106812817",
+            "type": "time-delay",
+            "next": "106812826",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812826",
+            "type": "time-delay",
+            "next": "106812827",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812827",
+            "type": "send-email",
+            "next": "108024959",
+            "status": "draft",
+            "messageId": "VPmnEB",
+            "templateId": "TDX7Ux",
+            "smartSendingEnabled": true,
+            "transactional": false
+          },
+          {
+            "id": "108024959",
+            "type": "send-email",
+            "next": "108024886",
+            "status": "draft",
+            "messageId": "WNFHjV",
+            "templateId": "WaQaDv",
+            "smartSendingEnabled": true,
+            "transactional": false
+          },
+          {
+            "id": "108024886",
+            "type": "time-delay",
+            "next": null,
+            "delay": {
+              "unit": "days",
+              "value": 1,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          }
+        ]
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live",
+        "updated": "2026-10-10T08:11:25+00:00",
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": {
+          "condition_groups": [
+            {
+              "conditions": [
+                {
+                  "type": "profile-metric",
+                  "metric_id": "W7XTVD",
+                  "measurement": "count",
+                  "measurement_filter": {
+                    "type": "numeric",
+                    "operator": "equals",
+                    "value": 0
+                  },
+                  "timeframe_filter": {
+                    "type": "date",
+                    "operator": "flow-start"
+                  },
+                  "metric_filters": null
+                }
+              ]
+            }
+          ]
+        },
+        "entryActionId": "120053544",
+        "actions": [
+          {
+            "id": "120053544",
+            "type": "time-delay",
+            "next": "120053545",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053545",
+            "type": "send-email",
+            "next": "120053546",
+            "status": "live",
+            "messageId": "VfffLv",
+            "templateId": "RfQt4V",
+            "smartSendingEnabled": true,
+            "transactional": false
+          },
+          {
+            "id": "120053546",
+            "type": "time-delay",
+            "next": "120053547",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053547",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "SPNjDp",
+            "templateId": "RNefka",
+            "smartSendingEnabled": true,
+            "transactional": false
+          }
+        ]
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "live",
+        "updated": "2026-06-01T19:16:30+00:00",
+        "triggerType": "Added to List",
+        "triggers": [
+          {
+            "type": "list",
+            "id": "T2VHfu"
+          }
+        ],
+        "profileFilter": null,
+        "entryActionId": "108029461",
+        "actions": [
+          {
+            "id": "108029461",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "TTuuTS",
+            "templateId": "VZnxDz",
+            "smartSendingEnabled": true,
+            "transactional": false
+          }
+        ]
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "live",
+        "updated": "2026-05-26T09:58:55+00:00",
+        "triggerType": "Metric",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "W7XTVD",
+            "trigger_filter": null
+          }
+        ],
+        "profileFilter": null,
+        "entryActionId": "107500622",
+        "actions": [
+          {
+            "id": "107500622",
+            "type": "send-email",
+            "next": "107500775",
+            "status": "draft",
+            "messageId": "Y3pKip",
+            "templateId": "TXYDrh",
+            "smartSendingEnabled": true,
+            "transactional": false
+          },
+          {
+            "id": "107500775",
+            "type": "time-delay",
+            "next": "107500830",
+            "delay": {
+              "unit": "days",
+              "value": 21,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "107500830",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "Tr6DXE",
+            "templateId": "V4KY2g",
+            "smartSendingEnabled": true,
+            "transactional": false
+          }
+        ]
+      }
+    ],
+    "captureList": {
+      "id": "T2VHfu",
+      "name": "Newsletter Subscribers",
+      "opt_in_process": "single_opt_in",
+      "updated": "2026-05-22T02:26:23+00:00",
+      "boundFlows": [
+        {
+          "id": "UKjAsV",
+          "name": "E-Mail Welcome-Serie",
+          "status": "draft",
+          "trigger_type": "Added to List"
+        },
+        {
+          "id": "VbLQj6",
+          "name": "Welcome Series",
+          "status": "live",
+          "trigger_type": "Added to List"
+        },
+        {
+          "id": "X4kYd7",
+          "name": "Welcome Series · EN/US",
+          "status": "draft",
+          "trigger_type": "Added to List"
+        }
+      ]
+    },
+    "formsApi": {
+      "returnedData": [],
+      "next": null,
+      "externalOrShopifyCaptureCoverage": "unknown"
+    },
+    "welcomeProposal": {
+      "state": "proposal-not-applied",
+      "flowId": "VbLQj6",
+      "messageId": "TTuuTS",
+      "templateId": "VZnxDz",
+      "sourceSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+      "targetSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+      "sourceMatches20261028": true,
+      "targetMatchesExistingProposal": false,
+      "changedLineGroups": [
+        {
+          "op": "replace",
+          "beforeLines": [
+            47,
+            47
+          ],
+          "afterLines": [
+            47,
+            47
+          ]
+        },
+        {
+          "op": "replace",
+          "beforeLines": [
+            53,
+            53
+          ],
+          "afterLines": [
+            53,
+            53
+          ]
+        }
+      ],
+      "changedSourceLines": 2,
+      "flowStatusChanged": false,
+      "emailSent": false,
+      "discountChanged": false,
+      "shippingPublicThresholdCHF": 50,
+      "shippingInternalThresholdCHF": 45,
+      "refinesPriorProposal": true,
+      "priorProposalSha256": "44a2ce8b9d45411a6fd5c08f3d14f3d41152d44084497ce35db18757bfec4899",
+      "roundTripExact": true,
+      "policyTargetsFreshHTTPVerified": true,
+      "newDraftChange": "Gratis-Standardversand ausdrücklich nur innerhalb der Schweiz; CHF50 nach Rabatt entsprechend frischer öffentlicher Versandpolicy. InterneCHF45 nicht geändert."
+    },
+    "writes": [],
+    "orderSync": "No individual order/event comparison in this subtask; no absence of sync inferred",
+    "readsCompletedBy": "2026-10-29T07:10:30Z",
+    "policyTargets": [
+      {
+        "url": "https://luxestyle.ch/policies/shipping-policy",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/policies/shipping-policy",
+        "fetchedAt": "2026-10-29T07:11:17.764666+00:00",
+        "sha256": "b99818535986e3337c2ed0b2bf932cba955111be9f612d03246ddd3164dc241c",
+        "title": [
+          "\n  Versand\n &ndash; LuxeStyle"
+        ]
+      },
+      {
+        "url": "https://luxestyle.ch/policies/refund-policy",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/policies/refund-policy",
+        "fetchedAt": "2026-10-29T07:11:18.411441+00:00",
+        "sha256": "5c711c07ff14e3674fdde601432d05a5034dfa24a385df8ed43e6fdbb71275f8",
+        "title": [
+          "\n  Widerrufsrecht\n &ndash; LuxeStyle"
+        ]
+      }
+    ],
+    "capturePublicSource": {
+      "url": "https://luxestyle.ch/policies/shipping-policy",
+      "httpStatus": 200,
+      "sourceHtmlSha256": "b99818535986e3337c2ed0b2bf932cba955111be9f612d03246ddd3164dc241c",
+      "sourceScope": "sitewide popup JavaScript embedded in this page; static inspection only",
+      "observedCompanyId": "XWqMAD",
+      "observedListId": "T2VHfu",
+      "endpoint": "https://a.klaviyo.com/client/subscriptions/",
+      "method": "POST",
+      "formSubmitted": false,
+      "realSubscriptionOrEmailDelivery": "unknown",
+      "interpretation": "Forms API empty does not mean no form; actual Shopify/sitewide capture source exists and matches Welcome list. No customer data submitted.",
+      "sourceHtmlNormalizedTextSha256": "f7b106769a87df8c677a69196e87fb911e055371d5e34c41e72af273eeb68eed",
+      "sourceHtmlHashEncoding": "SHA-256 of exact HTTP response bytes saved as shipping-policy.html",
+      "normalizedTextRule": "Python universal newlines converts one CRLF to LF; exact HTTP bytes and normalised text hashes independently reproduced; the original selected-script hash was not reproduced and is retained as unverified history only.",
+      "unreproducedSelectedScriptSha256": "7bb6f71f932b7dba94791c679b392b599a6016ad547ec716c265b33c1475f054",
+      "selectedScriptHashState": "original hash could not be reproduced; do not use as verified proof",
+      "verifiedScriptBodies": [
+        {
+          "role": "popup_lx_popup_v1",
+          "characters": 4098,
+          "sha256": "38a0828e787fc168414065f555df1d0711e12c707fe26b70a40065e85d6e4707"
+        },
+        {
+          "role": "footer_subscription",
+          "characters": 1287,
+          "sha256": "eaf906628dd1fabcd8e12127f1c856a9d523476d2cc8af0e77a9847cae5ef7d2"
+        }
+      ],
+      "scriptExtractionRule": "UTF-8 decode; CRLF to LF; re.finditer(<script\\b[^>]*>([\\s\\S]*?)</script>, re.I); SHA-256 of group(1) UTF-8 bytes without trim; select popup lx_popup_v1 and footer subscription bodies.",
+      "rootReviewCorrection": "Independent offline review; no new network call; source meaning and confirmed identifiers unchanged."
+    },
+    "policyExtract": {
+      "shipping": "Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten (innerhalb der Schweiz). Liechtenstein: CHF 14.90 pro Bestellung, ohne Gratisversand.",
+      "delivery": "Ab Schweizer Lager laut aktueller Policy meist 2–3 Werktage; artikelbezogene Angabe massgeblich. Keine Lieferzusage im vorgeschlagenen Serviceabschnitt.",
+      "returns": "30 Tage freiwillige Rückgabe mit Bedingungen/Ausnahmen; personalisierte Artikel ausgeschlossen, Mängelrechte erhalten. Im Entwurf nur Link statt pauschalem Leistungsversprechen."
+    }
+  },
+  "welcomeDiffValidation": {
+    "state": "proposal-not-applied",
+    "flowId": "VbLQj6",
+    "messageId": "TTuuTS",
+    "templateId": "VZnxDz",
+    "sourceSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+    "targetSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+    "sourceMatches20261028": true,
+    "targetMatchesExistingProposal": false,
+    "changedLineGroups": [
+      {
+        "op": "replace",
+        "beforeLines": [
+          47,
+          47
+        ],
+        "afterLines": [
+          47,
+          47
+        ]
+      },
+      {
+        "op": "replace",
+        "beforeLines": [
+          53,
+          53
+        ],
+        "afterLines": [
+          53,
+          53
+        ]
+      }
+    ],
+    "changedSourceLines": 2,
+    "flowStatusChanged": false,
+    "emailSent": false,
+    "discountChanged": false,
+    "shippingPublicThresholdCHF": 50,
+    "shippingInternalThresholdCHF": 45,
+    "refinesPriorProposal": true,
+    "priorProposalSha256": "44a2ce8b9d45411a6fd5c08f3d14f3d41152d44084497ce35db18757bfec4899",
+    "roundTripExact": true,
+    "policyTargetsFreshHTTPVerified": true,
+    "newDraftChange": "Gratis-Standardversand ausdrücklich nur innerhalb der Schweiz; CHF50 nach Rabatt entsprechend frischer öffentlicher Versandpolicy. InterneCHF45 nicht geändert."
+  },
+  "attributeLedger": {
+    "COUNTS.json": {
+      "beforeSha": "d0e5805608f3a063229167f8af03cff3ab1345b0",
+      "afterSha": "928275d0e6d9d00c47ec93659eb0c04a269dcd73",
+      "prefixPreserved": true,
+      "before": {
+        "lineCount": 6454,
+        "uniqueHandles": 6451,
+        "exactDuplicateLines": 0,
+        "duplicateHandleRows": 3,
+        "marks": {
+          "GESCHRIEBEN": 4111,
+          "UEBERSPRUNGEN": 2341,
+          "SKU_GESETZT": 2
+        },
+        "uniqueHandlesByMark": {
+          "GESCHRIEBEN": 4111,
+          "UEBERSPRUNGEN": 2338,
+          "SKU_GESETZT": 2
+        },
+        "invalidRows": 0,
+        "earliest": "2026-10-25T21:43:52.189Z",
+        "latest": "2026-10-28T00:48:23.061Z"
+      },
+      "after": {
+        "lineCount": 9054,
+        "uniqueHandles": 8745,
+        "exactDuplicateLines": 0,
+        "duplicateHandleRows": 309,
+        "marks": {
+          "GESCHRIEBEN": 6021,
+          "UEBERSPRUNGEN": 3029,
+          "SKU_GESETZT": 4
+        },
+        "uniqueHandlesByMark": {
+          "GESCHRIEBEN": 6021,
+          "UEBERSPRUNGEN": 3000,
+          "SKU_GESETZT": 4
+        },
+        "invalidRows": 0,
+        "earliest": "2026-10-25T21:43:52.189Z",
+        "latest": "2026-10-29T03:06:12.068Z"
+      },
+      "added": {
+        "lineCount": 2600,
+        "uniqueHandles": 2600,
+        "exactDuplicateLines": 0,
+        "duplicateHandleRows": 0,
+        "marks": {
+          "UEBERSPRUNGEN": 688,
+          "GESCHRIEBEN": 1910,
+          "SKU_GESETZT": 2
+        },
+        "uniqueHandlesByMark": {
+          "UEBERSPRUNGEN": 688,
+          "GESCHRIEBEN": 1910,
+          "SKU_GESETZT": 2
+        },
+        "invalidRows": 0,
+        "earliest": "2026-10-29T01:19:55.429Z",
+        "latest": "2026-10-29T03:06:12.068Z"
+      },
+      "newSuccessfulHandles": 1910,
+      "previouslySuccessfulHandlesInAddedRows": 0,
+      "newSuccessHandlesInAddedRows": 1910,
+      "transitions": {
+        "NEUER_HANDLE → UEBERSPRUNGEN": 662,
+        "NEUER_HANDLE → GESCHRIEBEN": 1630,
+        "UEBERSPRUNGEN → GESCHRIEBEN": 280,
+        "UEBERSPRUNGEN → UEBERSPRUNGEN": 26,
+        "NEUER_HANDLE → SKU_GESETZT": 2
+      },
+      "addedSkipReasonGroups": {
+        "zurückgestellt:": 127,
+        "CJ führt nur 1 Variante": 503,
+        "nur Fremdstecker": 5,
+        "Lieferbarkeit nicht bewiesen": 40,
+        "vorläufig:": 5,
+        "CJ ohne Daten": 8
+      },
+      "strictlyNewHandles": 2294,
+      "revisitedHandles": 306
+    },
+    "MANIFEST.json": {
+      "scope": "read_only_ledger_countercheck",
+      "repository": "allengchour-glitch/aban-news-landing",
+      "beforeCommit": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe",
+      "afterCommit": "82b5b748d27eb78467434e282a6f5f79efe84cad",
+      "remoteWrites": 0,
+      "productQueries": 0,
+      "salesOrMetricsQueries": 0,
+      "ownProductChanges": 0,
+      "catalogCompletionPercentage": null,
+      "files": [
+        {
+          "path": "BERICHT.md",
+          "sha256": "0fec21e1799ffe9a45f4ed978e559c72d87fb68c9309f269569ddb34ea19b86e",
+          "bytes": 5601
+        },
+        {
+          "path": "COUNTS.json",
+          "sha256": "10e89ce9f577b530b443fca0e97e85196d67e866236a4454b8d14b24a793a27f",
+          "bytes": 2121
+        },
+        {
+          "path": "VALIDATION.json",
+          "sha256": "aa5a2d15ea1c8034dc32d460dd0111f32f671483f3026e5268fd1c65849dabad",
+          "bytes": 937
+        },
+        {
+          "path": "SOURCE-CODE.json",
+          "sha256": "abd9548f01a5ca2d5b70423f86faf361f5d24a14f4a9f2c31bc67b024da793a6",
+          "bytes": 25562
+        },
+        {
+          "path": "SOURCE-LEDGERS.json",
+          "sha256": "4a6ded4bda9c077410fa7d45175dd2df2540200ac9877a1e62661ce4a487d519",
+          "bytes": 1837911
+        },
+        {
+          "path": "before.ledger.txt",
+          "sha256": "20e45f6048fd5638d034e487d7751f3d9f50a2f3b0547cc7f739e63c7a882588",
+          "bytes": 759470
+        },
+        {
+          "path": "after.ledger.txt",
+          "sha256": "75af3f51c2bd6c47a72d80a6596f38905569a9028fceae69a865939145b7c659",
+          "bytes": 1055497
+        },
+        {
+          "path": "added.ledger.txt",
+          "sha256": "4736c957cde283c8afd624cd9f9ca367e5b1128560c4b3be4e93e5abe369cb79",
+          "bytes": 296027
+        }
+      ]
+    },
+    "VALIDATION.json": {
+      "before": {
+        "gitBlobSha": "d0e5805608f3a063229167f8af03cff3ab1345b0",
+        "sha256": "20e45f6048fd5638d034e487d7751f3d9f50a2f3b0547cc7f739e63c7a882588",
+        "bytes": 759470,
+        "nonEmptyRows": 6454
+      },
+      "after": {
+        "gitBlobSha": "928275d0e6d9d00c47ec93659eb0c04a269dcd73",
+        "sha256": "75af3f51c2bd6c47a72d80a6596f38905569a9028fceae69a865939145b7c659",
+        "bytes": 1055497,
+        "nonEmptyRows": 9054
+      },
+      "added": {
+        "rows": 2600,
+        "uniqueHandles": 2600,
+        "marks": {
+          "UEBERSPRUNGEN": 688,
+          "GESCHRIEBEN": 1910,
+          "SKU_GESETZT": 2
+        },
+        "uniqueHandlesByMark": {
+          "UEBERSPRUNGEN": 688,
+          "GESCHRIEBEN": 1910,
+          "SKU_GESETZT": 2
+        },
+        "oldPrefixPreservedByteForByte": true,
+        "timeEuropeZurich": [
+          "2026-10-29T02:19:55.429000+01:00",
+          "2026-10-29T04:06:12.068000+01:00"
+        ],
+        "sha256": "4736c957cde283c8afd624cd9f9ca367e5b1128560c4b3be4e93e5abe369cb79"
+      }
+    }
+  },
+  "pyjama": {
+    "PREISMATRIX.json": {
+      "checkedAtUtc": "2026-10-29T07:20:42.693251+00:00",
+      "scope": "Exactly one Shopify product and five native variants, no pagination; product page plus its existing linked collection and robots.txt",
+      "productId": "gid://shopify/Product/15447971430785",
+      "productUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+      "shop": {
+        "url": "https://luxestyle.ch",
+        "currencyCode": "CHF"
+      },
+      "status": "ACTIVE",
+      "wholeProductPriceRange": {
+        "minVariantPrice": {
+          "amount": "14.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "17.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "pricePerPersonTextConfirmedNativeAndPublic": true,
+      "variants": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55873727627649",
+          "selection": "Weiss · Papa S",
+          "priceCHF": "16.90",
+          "publicOfferPrice": "16.90",
+          "publicOfferCurrency": "CHF",
+          "publicOfferAvailability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "adminPublicPriceMatch": true
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/55873727660417",
+          "selection": "Weiss · Papa M",
+          "priceCHF": "16.90",
+          "publicOfferPrice": "16.90",
+          "publicOfferCurrency": "CHF",
+          "publicOfferAvailability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727660417",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "adminPublicPriceMatch": true
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/55873727693185",
+          "selection": "Weiss · Papa L",
+          "priceCHF": "17.90",
+          "publicOfferPrice": "17.90",
+          "publicOfferCurrency": "CHF",
+          "publicOfferAvailability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727693185",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "adminPublicPriceMatch": true
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/55873727725953",
+          "selection": "Weiss · Papa XL",
+          "priceCHF": "17.90",
+          "publicOfferPrice": "17.90",
+          "publicOfferCurrency": "CHF",
+          "publicOfferAvailability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727725953",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "adminPublicPriceMatch": true
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/55873727758721",
+          "selection": "Weiss · Papa XXL",
+          "priceCHF": "17.90",
+          "publicOfferPrice": "17.90",
+          "publicOfferCurrency": "CHF",
+          "publicOfferAvailability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727758721",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "adminPublicPriceMatch": true
+        }
+      ],
+      "newSocialBlockedByTag": "rueckhol-0907",
+      "writesPerformed": false,
+      "checkoutSubmitted": false,
+      "diffPrepared": false,
+      "reasonNoDiff": "No additional verified price/variant/HTTP/canonical/JSON-LD mismatch in bounded sample; owner-reported price clarification is already present."
+    },
+    "PUBLIC-HTTP.json": [
+      {
+        "requestedUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+        "checkedAtUtc": "2026-10-29T07:15:18.830579+00:00",
+        "method": "direct HTTPS GET; inherited proxy/TLS retained; one request per URL",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+        "xRobotsTag": null,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1137845,
+        "truncated": false,
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352\"\n>"
+        ],
+        "robotsTags": [],
+        "h1": [
+          "Weihnachts-Pyjama im Partnerlook"
+        ],
+        "descriptionTag": [
+          "<meta\n    name=\"description\"\n    content=\"Weihnachts-Pyjama im Partnerlook bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\"\n  >"
+        ],
+        "pricePerSelectionPresent": true,
+        "sourceSha256": "137e4c45b061b030e4a9680c08e0bdb91b10f97a27d62556687297968222abbb",
+        "jsonLd": [
+          {
+            "type": "Organization"
+          },
+          {
+            "type": "ProductGroup",
+            "name": "Weihnachts-Pyjama im Partnerlook",
+            "productGroupID": "15447971430785",
+            "variantCountInDocument": 25,
+            "selectedFive": [
+              {
+                "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649#variant",
+                "@type": "Product",
+                "image": "https://luxestyle.ch/cdn/shop/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072&width=1920",
+                "name": "Weihnachts-Pyjama im Partnerlook - Weiss · Papa S",
+                "offers": {
+                  "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649#offer",
+                  "@type": "Offer",
+                  "availability": "http://schema.org/InStock",
+                  "price": "16.90",
+                  "priceCurrency": "CHF",
+                  "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649"
+                },
+                "sku": "CJ-CJYD193098501AZ"
+              },
+              {
+                "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727660417#variant",
+                "@type": "Product",
+                "image": "https://luxestyle.ch/cdn/shop/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072&width=1920",
+                "name": "Weihnachts-Pyjama im Partnerlook - Weiss · Papa M",
+                "offers": {
+                  "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727660417#offer",
+                  "@type": "Offer",
+                  "availability": "http://schema.org/InStock",
+                  "price": "16.90",
+                  "priceCurrency": "CHF",
+                  "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727660417"
+                },
+                "sku": "CJ-CJYD193098502BY"
+              },
+              {
+                "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727693185#variant",
+                "@type": "Product",
+                "image": "https://luxestyle.ch/cdn/shop/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072&width=1920",
+                "name": "Weihnachts-Pyjama im Partnerlook - Weiss · Papa L",
+                "offers": {
+                  "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727693185#offer",
+                  "@type": "Offer",
+                  "availability": "http://schema.org/InStock",
+                  "price": "17.90",
+                  "priceCurrency": "CHF",
+                  "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727693185"
+                },
+                "sku": "CJ-CJYD193098503CX"
+              },
+              {
+                "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727725953#variant",
+                "@type": "Product",
+                "image": "https://luxestyle.ch/cdn/shop/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072&width=1920",
+                "name": "Weihnachts-Pyjama im Partnerlook - Weiss · Papa XL",
+                "offers": {
+                  "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727725953#offer",
+                  "@type": "Offer",
+                  "availability": "http://schema.org/InStock",
+                  "price": "17.90",
+                  "priceCurrency": "CHF",
+                  "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727725953"
+                },
+                "sku": "CJ-CJYD193098504DW"
+              },
+              {
+                "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727758721#variant",
+                "@type": "Product",
+                "image": "https://luxestyle.ch/cdn/shop/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072&width=1920",
+                "name": "Weihnachts-Pyjama im Partnerlook - Weiss · Papa XXL",
+                "offers": {
+                  "@id": "/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727758721#offer",
+                  "@type": "Offer",
+                  "availability": "http://schema.org/InStock",
+                  "price": "17.90",
+                  "priceCurrency": "CHF",
+                  "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727758721"
+                },
+                "sku": "CJ-CJYD193098505EV"
+              }
+            ]
+          },
+          {
+            "type": "BreadcrumbList"
+          }
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/weihnachtspyjama-familie",
+        "checkedAtUtc": "2026-10-29T07:15:19.637210+00:00",
+        "method": "direct HTTPS GET; inherited proxy/TLS retained; one request per URL",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/weihnachtspyjama-familie",
+        "xRobotsTag": null,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1683208,
+        "truncated": false,
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/weihnachtspyjama-familie\"\n>"
+        ],
+        "robotsTags": [],
+        "h1": [
+          "Weihnachtspyjamas für die ganze Familie"
+        ],
+        "descriptionTag": [
+          "<meta\n    name=\"description\"\n    content=\"Familien-Weihnachtspyjama und Partner-Weihnachtspyjama für Papa, Mama, Kinder und Baby: Elch, Karo, Streifen. Versand in die Schweiz und nach Liechtenstein.\"\n  >"
+        ],
+        "pricePerSelectionPresent": false,
+        "sourceSha256": "0d7bbf109f63faab4982d3c50f286e1b57be07efef48a917bedec41e65a569c9",
+        "jsonLd": [
+          {
+            "type": "Organization"
+          },
+          {
+            "type": "BreadcrumbList"
+          }
+        ]
+      }
+    ],
+    "MANIFEST.json": {
+      "scope": "targeted read-only product/price verification; no changes",
+      "files": [
+        {
+          "path": "BERICHT.md",
+          "bytes": 3451,
+          "sha256": "d37ad185ed99a532a561be14e87afecba690a197ae0bf9ae2aa08274da050886"
+        },
+        {
+          "path": "FIRECRAWL-TEILBELEG.json",
+          "bytes": 2493,
+          "sha256": "b65d646d5b059ed739ad99116bcd71119210507a70d87b86e597dbac5e54a00a"
+        },
+        {
+          "path": "PREISMATRIX.json",
+          "bytes": 3583,
+          "sha256": "c97eae7352486bf8dc55b953b5a87b8f5bdcb133b799648ea198a467aa8ca8ea"
+        },
+        {
+          "path": "PUBLIC-HTTP.json",
+          "bytes": 6673,
+          "sha256": "860b20bc73aadeaaf9ffac648a0d7ac60b72e43e61b6673d94c55899a44baa73"
+        },
+        {
+          "path": "ROBOTS.json",
+          "bytes": 4120,
+          "sha256": "abca7f4e5a52aebc245893ec80027b01b361f1c4df526e40c1eaba7610704d4e"
+        },
+        {
+          "path": "SHOPIFY-PYJAMA.json",
+          "bytes": 8257,
+          "sha256": "e803b4132196271aadd6b56bb8a57ee19ba2d8d0847718740d8af85d8cb3cd69"
+        }
+      ],
+      "totalBytes": 28577
+    }
+  },
+  "existingDrafts": "iPhone implementation, material r4 and theme preparation remain recorded in revision6; not repeated as implementation",
+  "claudeReceipt": "unknown",
+  "dns": "four changes already approved; no authenticated DNS writer available in discovered tools or current runtime bindings",
+  "sourceHashes": {
+    "IDENTITAET.json": "22efd5d33c22a9cd2be8d0adba3e0d52387bd8e92fd1e3208e9307e81084af3a",
+    "KAUFBELEG.json": "63ad91bbf1734d97a8856a1234142e41f5741bfb38ca517d023f4ad1c8525820",
+    "ADS-STATUS.json": "1d3907d64b40d65d95b608ecf206e12d3dedfbf057d58ecff75bfb41cf3ff42b",
+    "klaviyo/KLAVIYO-BELEGE-20261029.json": "ffe2f89e6f2920e9793da4c3e0aef2c9ede0d1955f9133ccdea192c1abd84cba",
+    "attribute-ledger/COUNTS.json": "10e89ce9f577b530b443fca0e97e85196d67e866236a4454b8d14b24a793a27f",
+    "master/MASTER-CURRENT-20261029.json": "e981b4d9d1df1966f06728ea05daf33f003b862cc54e998ba44d479cfd750600",
+    "verkauf/PREISMATRIX.json": "c97eae7352486bf8dc55b953b5a87b8f5bdcb133b799648ea198a467aa8ca8ea"
+  }
+}
