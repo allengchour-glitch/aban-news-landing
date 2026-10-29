@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 1,
+  "taskId": "merchant-missing-price-20261029",
+  "at": "2026-10-29T20:27:19.652102+00:00",
+  "reason": "Neue vom Inhaber gelieferte Fehleransicht und CSV; gezielte Gegenprobe, kein zweiter Tagesreport",
+  "csv": {
+    "source": "product_issues_2026-10-29_13-18-02.csv",
+    "sha256": "391c0a1d37291f2d02a5afeab262c706039ef2916726f2c3c6bbd73d82536f05",
+    "columns": [
+      "Item ID",
+      "Title",
+      "Click potential",
+      "Feed label",
+      "Language",
+      "Item status",
+      "Channels",
+      "Issue title",
+      "Issue additional information",
+      "Traffic type",
+      "Country",
+      "Issue severity"
+    ],
+    "rows": 20343,
+    "uniqueItems": 8327,
+    "issueRows": {
+      "Missing product price": 16694,
+      "Item pending processing": 771,
+      "Image too small": 152,
+      "Missing attribute: [availability]": 2711,
+      "Promotional overlay on image": 6,
+      "Illegal drugs": 2,
+      "Vehicles": 2,
+      "Alcoholic beverages": 1,
+      "Explosives": 2,
+      "Tobacco products & related equipment": 2
+    },
+    "priceRows": 16694,
+    "priceUniqueItems": 8327,
+    "sample": [
+      {
+        "Item ID": "15413245706625_14:691;5:4183#3xl",
+        "Title": "Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit) - 3XL / Grau",
+        "Click potential": "Low",
+        "Feed label": "CH",
+        "Language": "de",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "Channels": "ONLINE",
+        "Issue title": "Missing product price",
+        "Issue additional information": "Add a price to the [price] attribute in your product data source",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland",
+        "Issue severity": "SEVERITY_DISAPPROVED"
+      },
+      {
+        "Item ID": "15413245706625_14:691;5:4183#3xl",
+        "Title": "Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit) - 3XL / Grau",
+        "Click potential": "Low",
+        "Feed label": "CH",
+        "Language": "de",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "Channels": "ONLINE",
+        "Issue title": "Missing product price",
+        "Issue additional information": "Add a price to the [price] attribute in your product data source",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Issue severity": "SEVERITY_DISAPPROVED"
+      },
+      {
+        "Item ID": "1352107938370216203",
+        "Title": "Halloween-Kostüm für Hunde",
+        "Click potential": "Low",
+        "Feed label": "CH",
+        "Language": "de",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "Channels": "ONLINE",
+        "Issue title": "Missing product price",
+        "Issue additional information": "Add a price to the [price] attribute in your product data source",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Issue severity": "SEVERITY_DISAPPROVED"
+      },
+      {
+        "Item ID": "1352107938370216203",
+        "Title": "Halloween-Kostüm für Hunde",
+        "Click potential": "Low",
+        "Feed label": "CH",
+        "Language": "de",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "Channels": "ONLINE",
+        "Issue title": "Missing product price",
+        "Issue additional information": "Add a price to the [price] attribute in your product data source",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland",
+        "Issue severity": "SEVERITY_DISAPPROVED"
+      }
+    ]
+  },
+  "nativeSample": {
+    "shop": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "name": "LuxeStyle",
+          "myshopifyDomain": "au3j0y-hq.myshopify.com",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch",
+            "url": "https://luxestyle.ch"
+          }
+        }
+      }
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "query": "query PriceIssueSample($a: ID!, $b: ID!) { a: product(id: $a) { id title status handle onlineStoreUrl tags variants(first:50) { nodes { id title sku price } pageInfo { hasNextPage endCursor } } } b: product(id:$b) { id title status handle onlineStoreUrl tags variants(first:50) { nodes { id title sku price } pageInfo { hasNextPage endCursor } } } }",
+    "variables": {
+      "a": "gid://shopify/Product/15413245706625",
+      "b": "gid://shopify/Product/15450835222913"
+    },
+    "result": {
+      "data": {
+        "a": {
+          "id": "gid://shopify/Product/15413245706625",
+          "title": "Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit)",
+          "status": "DRAFT",
+          "handle": "herren-cordhose-retro-weites-bein-japanischer-stil-freizeit",
+          "onlineStoreUrl": null,
+          "tags": [
+            "ae-import",
+            "bild-ok",
+            "dropship",
+            "herren",
+            "herren-mode",
+            "hose",
+            "hosen",
+            "keine-lieferanten-ref",
+            "neu"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55749270471041",
+                "title": "2XL / schwarz",
+                "sku": "14:193;5:4182#2XL",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270503809",
+                "title": "2XL / Grau",
+                "sku": "14:691;5:4182#2XL",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270536577",
+                "title": "3XL / schwarz",
+                "sku": "14:193;5:4183#3XL",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270569345",
+                "title": "3XL / Grau",
+                "sku": "14:691;5:4183#3XL",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270602113",
+                "title": "S / schwarz",
+                "sku": "14:193;5:100014064#S",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270634881",
+                "title": "S / Grau",
+                "sku": "14:691;5:100014064#S",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270667649",
+                "title": "M / schwarz",
+                "sku": "14:193;5:361386#M",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270700417",
+                "title": "M / Grau",
+                "sku": "14:691;5:361386#M",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270733185",
+                "title": "L / schwarz",
+                "sku": "14:193;5:361385#L",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270765953",
+                "title": "L / Grau",
+                "sku": "14:691;5:361385#L",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270798721",
+                "title": "XL / schwarz",
+                "sku": "14:193;5:100014065#XL",
+                "price": "44.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270831489",
+                "title": "XL / Grau",
+                "sku": "14:691;5:100014065#XL",
+                "price": "44.90"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NTc0OTI3MDgzMTQ4OSwibGFzdF92YWx1ZSI6MTJ9"
+            }
+          }
+        },
+        "b": {
+          "id": "gid://shopify/Product/15450835222913",
+          "title": "Elefanten-Kuschelkissen mit Decke",
+          "status": "DRAFT",
+          "handle": "elefanten-kuschelkissen-mit-decke-4a0775",
+          "onlineStoreUrl": null,
+          "tags": [
+            "auto-entwurf-0926",
+            "cj-real",
+            "dropship",
+            "kissen",
+            "neu",
+            "trend",
+            "video-hit",
+            "viral"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55889760321921",
+                "title": "Yellow1 S Dual use",
+                "sku": "CJ-CJWJWJMR00065-Yellow1 S Dual use",
+                "price": "17.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760354689",
+                "title": "Blue 80cm",
+                "sku": "CJ-CJWJWJMR00065-Blue 80cm",
+                "price": "23.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760387457",
+                "title": "Purple2",
+                "sku": "CJ-CJWJWJMR00065-Purple2",
+                "price": "14.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760420225",
+                "title": "Gray 80cm",
+                "sku": "CJ-CJWJWJMR00065-Gray 80cm",
+                "price": "22.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760452993",
+                "title": "Yellow1",
+                "sku": "CJ-CJWJWJMR00065-Yellow1",
+                "price": "15.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760485761",
+                "title": "Mix color1 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color1 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760518529",
+                "title": "Mix color2 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color2 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760551297",
+                "title": "Mix color3 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color3 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760584065",
+                "title": "Mix color4 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color4 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760616833",
+                "title": "Mix color5 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color5 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760649601",
+                "title": "Mix color6 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color6 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760682369",
+                "title": "Mix color7 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color7 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760715137",
+                "title": "Mix color8 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color8 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760747905",
+                "title": "Mix color9 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color9 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760780673",
+                "title": "Mix color10 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color10 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760813441",
+                "title": "Mix color11 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color11 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760846209",
+                "title": "Mix color12 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color12 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760878977",
+                "title": "Mix color13 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color13 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760911745",
+                "title": "Mix color14 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color14 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760944513",
+                "title": "Mix color15 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color15 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889760977281",
+                "title": "Mix color16 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color16 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761010049",
+                "title": "Mix color17 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color17 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761042817",
+                "title": "Mix color18 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color18 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761075585",
+                "title": "Mix color19 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color19 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761108353",
+                "title": "Mix color20 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color20 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761141121",
+                "title": "Mix color21 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color21 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761173889",
+                "title": "Mix color22 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color22 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761206657",
+                "title": "Mix color23 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color23 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761239425",
+                "title": "Mix color24 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color24 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761272193",
+                "title": "Mix color25 Set",
+                "sku": "CJ-CJWJWJMR00065-Mix color25 Set",
+                "price": "36.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761304961",
+                "title": "Purple1 with logo",
+                "sku": "CJ-CJWJWJMR00065-Purple1 with logo",
+                "price": "28.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761337729",
+                "title": "Gray1 with logo",
+                "sku": "CJ-CJWJWJMR00065-Gray1 with logo",
+                "price": "28.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761370497",
+                "title": "Gray1 2pcs",
+                "sku": "CJ-CJWJWJMR00065-Gray1 2pcs",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761403265",
+                "title": "Pink1 2pcs",
+                "sku": "CJ-CJWJWJMR00065-Pink1 2pcs",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761436033",
+                "title": "Blue1 2pcs",
+                "sku": "CJ-CJWJWJMR00065-Blue1 2pcs",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761468801",
+                "title": "Gray1 and Pink1",
+                "sku": "CJ-CJWJWJMR00065-Gray1 and Pink1",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761501569",
+                "title": "Gray1 and Blue1",
+                "sku": "CJ-CJWJWJMR00065-Gray1 and Blue1",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761534337",
+                "title": "Pink1 and Blue1",
+                "sku": "CJ-CJWJWJMR00065-Pink1 and Blue1",
+                "price": "29.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761567105",
+                "title": "Pink 80cm",
+                "sku": "CJ-CJWJWJMR00065-Pink 80cm",
+                "price": "23.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761599873",
+                "title": "Blue2 L blanket",
+                "sku": "CJ-CJWJWJMR00065-Blue2 L blanket",
+                "price": "14.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761632641",
+                "title": "Gray 1 L Dual use",
+                "sku": "CJ-CJWJWJMR00065-Gray 1 L Dual use",
+                "price": "18.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761665409",
+                "title": "Yellow 80cm",
+                "sku": "CJ-CJWJWJMR00065-Yellow 80cm",
+                "price": "22.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761698177",
+                "title": "Gray1 S Dual use",
+                "sku": "CJ-CJWJWJMR00065-Gray1 S Dual use",
+                "price": "17.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761730945",
+                "title": "Gray2 L blanket",
+                "sku": "CJ-CJWJWJMR00065-Gray2 L blanket",
+                "price": "14.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761763713",
+                "title": "Purple1 S blanket",
+                "sku": "CJ-CJWJWJMR00065-Purple1 S blanket",
+                "price": "14.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761796481",
+                "title": "Purple1 S Dual use",
+                "sku": "CJ-CJWJWJMR00065-Purple1 S Dual use",
+                "price": "17.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761829249",
+                "title": "Purple1",
+                "sku": "CJ-CJWJWJMR00065-Purple1",
+                "price": "15.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761862017",
+                "title": "Yellow1 S blanket",
+                "sku": "CJ-CJWJWJMR00065-Yellow1 S blanket",
+                "price": "14.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761894785",
+                "title": "Purple 80cm",
+                "sku": "CJ-CJWJWJMR00065-Purple 80cm",
+                "price": "22.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55889761927553",
+                "title": "Pink1 S blanket",
+                "sku": "CJ-CJWJWJMR00065-Pink1 S blanket",
+                "price": "14.90"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true,
+              "endCursor": "eyJsYXN0X2lkIjo1NTg4OTc2MTkyNzU1MywibGFzdF92YWx1ZSI6NTB9"
+            }
+          }
+        }
+      }
+    }
+  },
+  "publicSample": [
+    {
+      "url": "https://luxestyle.ch/products/herren-cordhose-retro-weites-bein-japanischer-stil-freizeit",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/fur-ihn",
+      "bytesRead": 1500000,
+      "sha256": "595acf2f9204943025d036a91d461005dcddca6bb1e858f1a927a38882ac2588",
+      "title": [
+        "\n  Herrenmode: Shirts, Hemden, Pullover &amp; Schuhe | LuxeStyle\n"
+      ]
+    },
+    {
+      "url": "https://luxestyle.ch/products/elefanten-kuschelkissen-mit-decke-4a0775",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/kissen-wohntextilien",
+      "bytesRead": 1500000,
+      "sha256": "68d3abca0bd05b7d7d10d0bb0dc7f8d494f3685a9f49bef5c7ab110f1e4ccb6c",
+      "title": [
+        "\n  Kissen, Kissenbezüge &amp; Vorhänge | LuxeStyle\n"
+      ]
+    }
+  ],
+  "access": {
+    "merchantControl": {
+      "scope": "Earlier exact known control item from 28 October export, not selected as price-affected",
+      "result": "No completed response before local read task was cancelled after new affected CSV became available; data unknown, no retry."
+    },
+    "affectedMerchant": {
+      "request": {
+        "connector": "google_merchant",
+        "accounts": [
+          "5797470070"
+        ],
+        "date_from": "2024-01-01",
+        "date_to": "2026-10-29",
+        "fields": [
+          "account_id",
+          "product_id",
+          "product_price",
+          "product_price_currency_code",
+          "product_link",
+          "product_data_source",
+          "data_fetched_at"
+        ],
+        "filters": [
+          [
+            "product_id",
+            "in",
+            "[\"15413245706625_14:691;5:4183#3xl\",\"15450835222913_1750786040342345726\"]"
+          ]
+        ]
+      },
+      "result": {
+        "kind": "no_response_in_45_seconds",
+        "rows": "unknown",
+        "retry": false
+      }
+    },
+    "secondUpload": {
+      "fileName": "product_issues_2026-10-29_13-19-04.csv",
+      "fileId": "file_00000000454c82469bb25a39ce8646fc",
+      "status": "not_downloaded",
+      "error": "file exceeds the executor transfer limit of 32 MiB",
+      "contents": "unknown"
+    },
+    "time": "2026-10-29 20:24:51 UTC"
+  },
+  "independentReview": {
+    "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-PRUEFUNG-20261029.md",
+    "gitBlobSha": "9ca0929f45c1a537701732f1a5693d6f1b768f09"
+  },
+  "limits": [
+    "Kein Vollkatalog-Nenner oder aktueller Merchant-Gesamtstatus",
+    "Google-Quellen-ID und tatsächlich eingereichte URL unbekannt",
+    "Zwei Produktpräfixe passen nativ zu den CSV-Titeln; Merchant-Variantenzuordnung bleibt ohne Quelldaten offen",
+    "Cordhosen-SKU unterscheidet Gross-/Kleinschreibung vom Item-Suffix; Original-ID erhalten",
+    "Elefantenabfrage enthält erste 50 Varianten, hasNextPage=true; passende Pink1 S blanket enthalten, keine weitere Pagination",
+    "Öffentliche Abrufe lesen je höchstens 1500000 Bytes; Hash bezieht sich auf diesen Präfix, kein vollständiger Seitenhash",
+    "Weiterleitung auf Kollektionen ist belegt; Ursache der Merchant-Fehler nicht abschliessend bewiesen"
+  ],
+  "writes": {
+    "shopify": false,
+    "merchant": false,
+    "ads": false,
+    "flows": false,
+    "social": false,
+    "automation": false
+  }
+}
