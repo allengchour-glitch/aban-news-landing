@@ -483,6 +483,10 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Produktpflege / enger Inhaberauftrag | Zwei bestehende Optionen und alle 13 Varianten frisch samt Linked-Metafields/InventoryMap geprüft; expliziten Diff und 36 lokale Vergleiche bewertet; zwei gezielte Mutationen ausgeführt | UMGESETZT: Ladegerät 15447560520065 und Plüschtier 15446272016769 jetzt «Ausführung» statt «Farbe», sieben bestehende Spielzeugwerte sprachlich bereinigt. Native und öffentliche HTTP 200-Rücklesung bestätigt; IDs/SKUs/Preise/Inventorybindungen/Tags unverändert. Keine neue Material-/Massprüfung |
 | Merchant / bereits genehmigter Push | Account 5797470070 und vorhandene Repo-Route geprüft; neun exakte der 13 Varianten in historischen Nutzer-CSVs gegengeprüft | BLOCKIERT: keine Push-Aktion verfügbar, Datenquellen-Browser verlangt Anmeldung; aktive Source-ID/Art und legitimer Writer unbekannt. Kein Push/Feed-/Kanalwrite. 24 historische Problemzeilen nur Shopping-Ads-Quota/Kapazität, vier nicht gefundene Varianten unbekannt |
 | Produktpflege / nächster Schritt | Begrenzten Umsetzungsbericht und 13er Vorher-/Nachher-Beleg zur gemeinsamen Übergabe vorbereitet | DOKUMENTIERT: Materialquellen fehlen weiterhin; vor isoliertem Merchant-Abruf aktive Quelle/Authentifizierung belegen. Keine erneuten Kennzahl-/Flow-/Bestellreports und keine parallele breite Anreicherung; Claude-Kenntnisnahme unbekannt |
+| Merchant / Console – native Vorbereitung | Frischen MAIN und zwei Quellenhashes bestätigt, genau ein unveröffentlichtes Prüftheme 212752499079 angelegt und zwei bekannte enge Dateidiffs gespeichert | UMGESETZT IM ENTWURF: Dateien bytegleich zum Ziel zurückgelesen; keine MAIN-Dateiänderung oder Theme-Publikation. Connector blockiert Live-Writes/Publikation |
+| Console – echte Ausgabeprüfung | Hängematten-Vorschau mit tatsächlicher Theme-ID gerendert, sämtliche JSON-LD-Daten tief verglichen und unabhängig gegengelesen; ein Kontrollprodukt ergänzt | GEMESSEN: genau 24 ungültige SKU-Auszeichnungen entfernt, 33 Varianten/Offers und 9 gültige SKUs erhalten; genau zwei CH-Versandwerte auf 49.99/50 geändert. Rückgabe/LI-Porto und sonstige Produktdaten unverändert; Google-Akzeptanz offen |
+| Merchant – genauer Seitenfehler | Einen exakten Item-Metadatenabruf für 15448020582785/55873968701825 mit gültigen URL-/Canonical-/Source-Feldern ausgeführt; CSV-/main-Quellen eingegrenzt | BLOCKIERT: MCP −32603 Timeout, URL/Source/Crawlstatus unbekannt, kein Retry oder Write. Zwei bestehende Feedschutzquellen unverändert; alten Entwurf nicht als neue Korrektur ausgegeben |
+| Console / nächster Schritt | Native Vorschau, Quellenhashes und engen Zweidateidiff für Übernahme dokumentiert | OFFEN: legitime MAIN-Übernahme nach frischem Hashvergleich, tatsächliche Google-Prüfung und erst danach Console-Validierung. Vorhandenes Prüftheme verwenden; Tageskennzahlgrenze und Frequenz erhalten |
 
 
 [LUXESTYLE_FIX_FORTSETZUNG_20261029] [Textumsetzung](IPHONE-TEXT-UMSETZUNG-20261029.md), [Material r4](MATERIAL-R4-20261029.md), [Hängematte](HAENGEMATTE-VALIDIERUNG-20261029.md), [Versand](VERSAND-CH50-20261029.md).
@@ -503,8 +507,11 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 
 [LUXESTYLE_PRODUKTPFLEGE_PUSH_20261029] [Umsetzung](PRODUKTPFLEGE-PUSH-20261029.md), [Belege](PRODUKTPFLEGE-PUSH-BELEGE-20261029.json). Der vorhandene Datumsblock und historische Nachweise bleiben erhalten.
 
+[LUXESTYLE_MERCHANT_CONSOLE_20261029] [Native Vorschau und Bericht](MERCHANT-CONSOLE-20261029.md), [Belege](MERCHANT-CONSOLE-BELEGE-20261029.json), [enger Diff](MERCHANT-CONSOLE-20261029.patch).
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
+
 
 
