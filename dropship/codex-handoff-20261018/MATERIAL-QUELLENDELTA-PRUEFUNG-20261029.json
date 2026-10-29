@@ -1,0 +1,845 @@
+{
+  "manifest": {
+    "taskId": "product-attribute-completeness",
+    "status": "LOCAL_DELTA_REVIEWED_NOT_DEPLOYED",
+    "checkedAt": "2026-10-29T18:14:23.521854+00:00",
+    "basis": "finaler lokaler Material-r4-Entwurf; vollständige r1→r4-Kette erforderlich; keine produktive Integration",
+    "currentMain": "a74459a94a800b24d4b348332154d25f516920b8",
+    "currentMainFiles": [
+      {
+        "path": "automation/lib/material.mjs",
+        "gitBlobSha": "cf6a6b663000c0c108b064afcdf4ccd6ed543a8a",
+        "sha256": "e5065eb1f2f9b2ffb4b2c03d9ef158859c80902904937323328473bdfaaf6b29",
+        "sameAsOriginalUnmergedR1MainBase": true,
+        "sameAsLocalR4": false
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "gitBlobSha": "b5e1c1fb2c0991b85771890fe1cfc3a6389512c2",
+        "sha256": "9670987286d11dac0dc5075313feb87e0ea4bf3642c292f9b29c8838b2aebf3e",
+        "sameAsOriginalUnmergedR1MainBase": true,
+        "sameAsLocalR4": false
+      }
+    ],
+    "changes": [
+      {
+        "path": "automation/lib/material.mjs",
+        "before_sha256": "26dd7121c0f2421cad8e38dd9f56b4739bed29f88f631264d6e3b88fad828cca",
+        "after_sha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+        "after_git_blob_sha": "f3e6b44c870ca1e71b262676fc98d7507b399128"
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "before_sha256": "dee599553db277d2cb16b5fe0db0305dc1bc53ae8896402d35e47f14b9385053",
+        "after_sha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+        "after_git_blob_sha": "97d1e57b9b1889f9ca63a3e250f4f1ca7d50be38"
+      }
+    ],
+    "tests": {
+      "libraryFinal": {
+        "passed": 269,
+        "failed": 0,
+        "existingR4": 190,
+        "added": 79
+      },
+      "sourceRegressionFinal": {
+        "passed": 21,
+        "total": 21
+      },
+      "parserRegressionFinal": {
+        "passed": 12,
+        "total": 12
+      },
+      "independentFinalReview": {
+        "passed": 10,
+        "total": 10
+      },
+      "r4IntegrationFinal": {
+        "passed": 159,
+        "failed": 0,
+        "suites": 6
+      },
+      "counting": "Die externen Quellen-/Parser-/Reviewfälle überlappen Bibliotheksfälle; nicht zu einem einzigartigen Gesamttestzähler addieren. Alte213/159-Läufe nicht als finale Belege übernommen."
+    },
+    "node": "v24.19.0",
+    "node22Available": false,
+    "fullCI": "not_run_for_this_uncommitted_delta; existing helper requires a git archive of exact reviewed commit, unavailable here",
+    "patchRoundtrip": "exact_after_bytes",
+    "remoteReads": [
+      "automation/lib/material.mjs",
+      "automation/lib/material_test.mjs"
+    ],
+    "remoteWrites": false,
+    "shopWrites": false,
+    "workflowStarts": false,
+    "catalogReads": false,
+    "limitations": [
+      "Keine vollständige Parserabdeckung aller HTML-/Lieferantenformate.",
+      "Abgetrennte Materialtabellen werden vorsorglich blockiert; keine automatische Tabellenextraktion.",
+      "Gleiche Mischung in anderer Reihenfolge innerhalb derselben Quelle kann weiter konservativ als mehrdeutig blockieren.",
+      "Dezimalkomma, Prozentwörter/-Entitäten und mehr als drei Nachkommastellen bleiben ungeklärt.",
+      "Unbekannte Synonyme oder Teilangaben bleiben unbewiesen; es werden keine Quellen ergänzt.",
+      "Aktuelle Modellzuordnung, Rechte, Quellenalterregel, Runtime/App-Grant und gemeinsamer dauerhafter Ledger sind weiterhin Voraussetzungen für echten Nachtrag.",
+      "Kein Merge, Deployment oder Materialnachtrag und keine Katalogvollständigkeitsquote."
+    ]
+  },
+  "validation": {
+    "manifest": {
+      "taskId": "product-attribute-completeness",
+      "status": "LOCAL_DELTA_REVIEWED_NOT_DEPLOYED",
+      "checkedAt": "2026-10-29T18:14:23.521854+00:00",
+      "basis": "finaler lokaler Material-r4-Entwurf; vollständige r1→r4-Kette erforderlich; keine produktive Integration",
+      "currentMain": "a74459a94a800b24d4b348332154d25f516920b8",
+      "currentMainFiles": [
+        {
+          "path": "automation/lib/material.mjs",
+          "gitBlobSha": "cf6a6b663000c0c108b064afcdf4ccd6ed543a8a",
+          "sha256": "e5065eb1f2f9b2ffb4b2c03d9ef158859c80902904937323328473bdfaaf6b29",
+          "sameAsOriginalUnmergedR1MainBase": true,
+          "sameAsLocalR4": false
+        },
+        {
+          "path": "automation/lib/material_test.mjs",
+          "gitBlobSha": "b5e1c1fb2c0991b85771890fe1cfc3a6389512c2",
+          "sha256": "9670987286d11dac0dc5075313feb87e0ea4bf3642c292f9b29c8838b2aebf3e",
+          "sameAsOriginalUnmergedR1MainBase": true,
+          "sameAsLocalR4": false
+        }
+      ],
+      "changes": [
+        {
+          "path": "automation/lib/material.mjs",
+          "before_sha256": "26dd7121c0f2421cad8e38dd9f56b4739bed29f88f631264d6e3b88fad828cca",
+          "after_sha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+          "after_git_blob_sha": "f3e6b44c870ca1e71b262676fc98d7507b399128"
+        },
+        {
+          "path": "automation/lib/material_test.mjs",
+          "before_sha256": "dee599553db277d2cb16b5fe0db0305dc1bc53ae8896402d35e47f14b9385053",
+          "after_sha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+          "after_git_blob_sha": "97d1e57b9b1889f9ca63a3e250f4f1ca7d50be38"
+        }
+      ],
+      "tests": {
+        "libraryFinal": {
+          "passed": 269,
+          "failed": 0,
+          "existingR4": 190,
+          "added": 79
+        },
+        "sourceRegressionFinal": {
+          "passed": 21,
+          "total": 21
+        },
+        "parserRegressionFinal": {
+          "passed": 12,
+          "total": 12
+        },
+        "independentFinalReview": {
+          "passed": 10,
+          "total": 10
+        },
+        "r4IntegrationFinal": {
+          "passed": 159,
+          "failed": 0,
+          "suites": 6
+        },
+        "counting": "Die externen Quellen-/Parser-/Reviewfälle überlappen Bibliotheksfälle; nicht zu einem einzigartigen Gesamttestzähler addieren. Alte213/159-Läufe nicht als finale Belege übernommen."
+      },
+      "node": "v24.19.0",
+      "node22Available": false,
+      "fullCI": "not_run_for_this_uncommitted_delta; existing helper requires a git archive of exact reviewed commit, unavailable here",
+      "patchRoundtrip": "exact_after_bytes",
+      "remoteReads": [
+        "automation/lib/material.mjs",
+        "automation/lib/material_test.mjs"
+      ],
+      "remoteWrites": false,
+      "shopWrites": false,
+      "workflowStarts": false,
+      "catalogReads": false,
+      "limitations": [
+        "Keine vollständige Parserabdeckung aller HTML-/Lieferantenformate.",
+        "Abgetrennte Materialtabellen werden vorsorglich blockiert; keine automatische Tabellenextraktion.",
+        "Gleiche Mischung in anderer Reihenfolge innerhalb derselben Quelle kann weiter konservativ als mehrdeutig blockieren.",
+        "Dezimalkomma, Prozentwörter/-Entitäten und mehr als drei Nachkommastellen bleiben ungeklärt.",
+        "Unbekannte Synonyme oder Teilangaben bleiben unbewiesen; es werden keine Quellen ergänzt.",
+        "Aktuelle Modellzuordnung, Rechte, Quellenalterregel, Runtime/App-Grant und gemeinsamer dauerhafter Ledger sind weiterhin Voraussetzungen für echten Nachtrag.",
+        "Kein Merge, Deployment oder Materialnachtrag und keine Katalogvollständigkeitsquote."
+      ]
+    },
+    "integration": {
+      "at": "2026-10-29T18:12:16.132168+00:00",
+      "node": "v24.19.0",
+      "sourceSHA256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+      "runs": [
+        {
+          "name": "abschluss",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/material_abschluss_lauf_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "41 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/abschluss"
+        },
+        {
+          "name": "plan",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/material_plan_lauf_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "16 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/plan"
+        },
+        {
+          "name": "batch",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/material_batch_lauf_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "20 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/batch"
+        },
+        {
+          "name": "cas",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/material_cas_lauf_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "27 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/cas"
+        },
+        {
+          "name": "ledger",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/lib/material_write_ledger_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "44 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/ledger"
+        },
+        {
+          "name": "ledger-binding",
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "automation/lib/material_write_ledger_binding_test.mjs"
+          ],
+          "exitCode": 0,
+          "summary": "11 ok, 0 Fehler",
+          "fixturePath": "/workspace/luxestyle-review/catalog-quality-20261029/final-review/fixtures/ledger-binding"
+        }
+      ]
+    },
+    "roundtrip": {
+      "dryRunExitCode": 0,
+      "applyExitCode": 0,
+      "exactAfterBytes": true,
+      "files": [
+        {
+          "path": "automation/lib/material.mjs",
+          "before_sha256": "26dd7121c0f2421cad8e38dd9f56b4739bed29f88f631264d6e3b88fad828cca",
+          "after_sha256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+          "after_git_blob_sha": "f3e6b44c870ca1e71b262676fc98d7507b399128"
+        },
+        {
+          "path": "automation/lib/material_test.mjs",
+          "before_sha256": "dee599553db277d2cb16b5fe0db0305dc1bc53ae8896402d35e47f14b9385053",
+          "after_sha256": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e",
+          "after_git_blob_sha": "97d1e57b9b1889f9ca63a3e250f4f1ca7d50be38"
+        }
+      ]
+    },
+    "independentReview": {
+      "source": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/after/automation/lib/material.mjs",
+      "beforeSHA256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+      "afterSHA256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+      "sourceStable": true,
+      "node": "v24.19.0",
+      "passed": 10,
+      "total": 10,
+      "tests": [
+        {
+          "name": "DE Alternative ist keine Mischung",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle oder Polyester</p>"
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "text:kein Stoffname: Baumwolle oder Polyester"
+          }
+        },
+        {
+          "name": "EN Alternative ist keine Mischung",
+          "input": {
+            "titel": "Artikel",
+            "cj": {
+              "description": "Material: cotton or polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: cotton or polyester"
+          }
+        },
+        {
+          "name": "Doppelter Stoffanteil blockiert",
+          "input": {
+            "titel": "Artikel",
+            "cj": {
+              "description": "Material: 50% cotton, 50% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 50% cotton, 50% cotton"
+          }
+        },
+        {
+          "name": "Vollständige bekannte 95/5-Mischung bleibt möglich",
+          "input": {
+            "titel": "Artikel",
+            "cj": {
+              "description": "Material: 95% cotton, 5% spandex"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Elastan",
+            "quelle": "cj-datenblatt"
+          }
+        },
+        {
+          "name": "Teilangabe plus widersprechende Quelle blockiert",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle</p>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "Abgetrennte Tabellenmaterialquelle blockiert",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<table><tr><th>Material</th><td>95% Baumwolle</td></tr></table>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält eine nicht eindeutig zugeordnete Materialzeile"
+          }
+        },
+        {
+          "name": "Gleiche vollständige Dezimalanteile in anderer Reihenfolge bleiben möglich",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95.5% Baumwolle, 4.5% Elastan</p>",
+            "cj": {
+              "description": "Material: 4.5% spandex, 95.5% cotton"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Elastan",
+            "quelle": "beschreibung"
+          }
+        },
+        {
+          "name": "Widersprechende vollständige Anteile blockieren",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95.5% Baumwolle, 4.5% Elastan</p>",
+            "cj": {
+              "description": "Material: 5% spandex, 95% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Quellen nennen widersprechende vollständige Materialanteile"
+          }
+        },
+        {
+          "name": "Manueller Vorschlag erhält Tabellensperre",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<table><tr><th>Material</th><td>95% Baumwolle</td></tr></table>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "Beschreibung enthält eine nicht eindeutig zugeordnete Materialzeile"
+          }
+        },
+        {
+          "name": "Übersetzung erhält Tabellensperre",
+          "input": {
+            "titel": "Artikel",
+            "descriptionHtml": "<table><tr><th>Material</th><td>95% Baumwolle</td></tr></table>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "Beschreibung enthält eine nicht eindeutig zugeordnete Materialzeile"
+          }
+        }
+      ]
+    },
+    "sourceRegression": {
+      "module": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/after/automation/lib/material.mjs",
+      "passed": 21,
+      "total": 21,
+      "cases": [
+        {
+          "name": "DE partial versus different CJ",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle</p>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "DE valid plus partial conflict",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle</p><p>Material: 95% Polyester</p>"
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "EN partial alone",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 95% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 95% cotton"
+          }
+        },
+        {
+          "name": "EN partial despite equal DE",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle</p>",
+            "cj": {
+              "description": "Material: 95% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:CJ enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "DE partial despite equal CJ",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle</p>",
+            "cj": {
+              "description": "Material: Cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "EN incomplete mixture",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 95% cotton, spandex"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 95% cotton, spandex"
+          }
+        },
+        {
+          "name": "EN overfull single",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 101% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 101% cotton"
+          }
+        },
+        {
+          "name": "EN overfull blend",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 80% cotton, 30% polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 80% cotton, 30% polyester"
+          }
+        },
+        {
+          "name": "EN zero proportion",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 0% cotton, 100% polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "cj:kein Stoffname: 0% cotton, 100% polyester"
+          }
+        },
+        {
+          "name": "EN partial in productPro",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle</p>",
+            "cj": {
+              "productPro": "Material: 95% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:CJ enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "EN partial in productProEn",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle</p>",
+            "cj": {
+              "productProEn": "Material: 95% cotton"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:CJ enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "DE incomplete mix with complete different CJ",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle, Elastan</p>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "EN 100 percent single",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 100% cotton"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle",
+            "quelle": "cj-datenblatt"
+          }
+        },
+        {
+          "name": "DE 100 percent single",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 100% Baumwolle</p>"
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle",
+            "quelle": "beschreibung"
+          }
+        },
+        {
+          "name": "EN full mixture",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "",
+            "cj": {
+              "description": "Material: 95% cotton, 5% spandex"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Elastan",
+            "quelle": "cj-datenblatt"
+          }
+        },
+        {
+          "name": "DE full mixture",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle, 5% Elastan</p>"
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Elastan",
+            "quelle": "beschreibung"
+          }
+        },
+        {
+          "name": "Cross source full equal mix",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle, 5% Elastan</p>",
+            "cj": {
+              "description": "Material: 5% lycra, 95% cotton"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Elastan",
+            "quelle": "beschreibung"
+          }
+        },
+        {
+          "name": "Cross source plain equal mix",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: Baumwolle, Polyester</p>",
+            "cj": {
+              "description": "Material: polyester, cotton"
+            }
+          },
+          "expected": true,
+          "actual": {
+            "tun": true,
+            "wert": "Baumwolle, Polyester",
+            "quelle": "beschreibung"
+          }
+        },
+        {
+          "name": "Cross source different full mix",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle, 5% Elastan</p>",
+            "cj": {
+              "description": "Material: 95% polyester, 5% spandex"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "sperre:Quellen nennen widersprechende vollständige Materialanteile"
+          }
+        },
+        {
+          "name": "manual partial conflicting source",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle</p>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        },
+        {
+          "name": "translation partial conflicting source",
+          "input": {
+            "title": "Artikel",
+            "titel": "Artikel",
+            "descriptionHtml": "<p>Material: 95% Baumwolle</p>",
+            "cj": {
+              "description": "Material: Polyester"
+            }
+          },
+          "expected": false,
+          "actual": {
+            "tun": false,
+            "grund": "Beschreibung enthält unvollständige oder mehrdeutige Prozentangaben"
+          }
+        }
+      ]
+    },
+    "parserRegression": {
+      "module": "/workspace/luxestyle-review/catalog-quality-20261029/pipeline/after/automation/lib/material.mjs",
+      "passed": 12,
+      "total": 12,
+      "cases": [
+        {
+          "parser": "enZuDe",
+          "input": "95% cotton",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "enZuDe",
+          "input": "95% cotton, spandex",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "enZuDe",
+          "input": "100.5% cotton",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "enZuDe",
+          "input": "0% cotton, 100% polyester",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "enZuDe",
+          "input": "95% cotton, 5% spandex",
+          "expected": "Baumwolle, Elastan",
+          "actual": "Baumwolle, Elastan"
+        },
+        {
+          "parser": "enZuDe",
+          "input": "95.5% cotton, 4.5% spandex",
+          "expected": "Baumwolle, Elastan",
+          "actual": "Baumwolle, Elastan"
+        },
+        {
+          "parser": "bereinige",
+          "input": "95% Baumwolle",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "bereinige",
+          "input": "95% Baumwolle, Elastan",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "bereinige",
+          "input": "100.5% Baumwolle",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "bereinige",
+          "input": "0% Baumwolle, 100% Polyester",
+          "expected": null,
+          "actual": null
+        },
+        {
+          "parser": "bereinige",
+          "input": "95% Baumwolle, 5% Elastan",
+          "expected": "Baumwolle, Elastan",
+          "actual": "Baumwolle, Elastan"
+        },
+        {
+          "parser": "enZuDe",
+          "input": "925 silver",
+          "expected": "925er Silber",
+          "actual": "925er Silber"
+        }
+      ]
+    },
+    "currentCodeHashes": {
+      "material.mjs": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+      "material_test.mjs": "daf4cb6bee65022522440e6c8935f20d8bd60102e7665d5679bfd73881969c5e"
+    },
+    "patchSHA256": "4990b58feae335539e60f7335e2ee1ce0c7c95edf900f9fe7297165dba4fa809",
+    "reportSHA256": "fe0557aa29e4d9aab46963c494aff297efa20958fdbda49ed37b76bb675362e0",
+    "previousEvidencePreserved": true
+  },
+  "reviewReport": "# Materialquellen – abgeschlossener lokaler Prüfstand vom 29.10.2026\n\nGEMESSEN: Der unterbrochene Entwurf wurde am Abend kontrolliert abgeschlossen. Der endgültige Modulhash ist `2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980`. Er ist ein geprüfter lokaler Zusatz zur bestehenden finalen r4-Grundlage, kein produktiver Materialnachtrag.\n\n## Konkrete Korrekturen\n\nEine klare Shopify-Materialzeile darf einen widersprechenden CJ-Beleg nicht mehr überstimmen. Die gemeinsame letzte Sperre greift im automatischen, manuellen und Übersetzungspfad. Mehrdeutige Quellen und der alleinige CJ-Beleg «Main material» bleiben gesperrt.\n\nDie unabhängige Gegenprobe fand danach einen echten Restfehler: Eine verworfene Zeile «Material: 95% Baumwolle» konnte bei einem CJ-Beleg «Polyester» verschwinden und einen Polyester-Nachtrag erlauben. Jetzt werden die vollständigen Rohzeilen vor dem Quellenfallback geprüft. Prozentangaben müssen positive, bekannte, vollständig benannte Anteile ergeben, deren Summe genau 100 ist. Fehlende Anteile, Null-/Über100-Werte, doppelte Stoffanteile, mehrdeutige Prozentdarstellung und zu lange angehängte Werte blockieren. Dieselbe Prüfung schützt direkte Übersetzungen bestehender englischer Metafelder. Bekannte vollständige 95/5- und 95.5/4.5-Mischungen bleiben möglich.\n\nBei der anschliessenden unabhängigen Review wurden zwei weitere Freigabefehler reproduziert und geschlossen: «Baumwolle oder Polyester» / «cotton or polyester» werden nicht mehr als Mischung ausgegeben; abgetrennte Materiallabels in HTML-Tabellen werden nicht als fehlende Quelle übergangen. Tabellen bleiben vorsorglich zur manuellen Quellenzuordnung gesperrt. Vollständig genannte, widersprechende Prozentverteilungen sperren ebenfalls. Gleiche Anteile mit anderer Reihenfolge oder gleichwertiger Dezimalschreibweise bleiben zulässig.\n\nVorhandene Metafelder werden weiterhin nicht pauschal überschrieben. Kein neuer Stoffname, Preis, Mass, Varianteneintrag oder Produktwert wurde erzeugt.\n\n## Finale begrenzte Validierung\n\n| Prüfung am endgültigen Kandidaten | Ergebnis |\n|---|---|\n| Materialbibliothek | 269/269 grün: 190 vorhandene r4-Fälle und 79 ergänzte Fälle |\n| Unabhängig vorbereitete Quellenregressionen | 21/21 grün |\n| Direkte Parsergegenproben | 12/12 grün |\n| Unabhängige Endreview | 10/10 grün, identischer Modulhash vor/nach der Review |\n| Sechs r4-Suiten in eigener Kopie mit synthetischen HTTP-Attrappen | 159/159 grün: Abschluss41, Plan16, Batch20, CAS27, Ledger44, Ledgerbindung11 |\n| Syntax beider geänderter Dateien | Erfolgreich |\n| Patch zuerst trocken, dann auf exakte r4-Dateikopie angewandt | Beide Enddateien bytegleich zum geprüften Kandidaten |\n| Runtime | Node v24.19.0; Node22 nicht vorhanden |\n| Vollständige archivbasierte CI | Für dieses ungemergte Delta nicht bestätigt; vorhandener Helfer benötigt einen exakten eingecheckten Git-Stand |\n\nDie externen Quellen-/Parser-/Reviewfälle überschneiden sich mit Bibliotheksfällen und werden nicht zu einer angeblich einzigartigen Gesamttestzahl addiert. Frühere 213-/159-Läufe gehören zu überholten Kandidaten und dienen nicht als endgültiger Prüfbeleg. Der unterbrochene 09:57-Stand ist unter `unfinished-0957/` gesichert. Früherer Bericht, Manifest und Patch bleiben als `previous-*` erhalten.\n\n## Frische main-Gegenprobe und Integrationsgrenze\n\nGEMESSEN: Genau die beiden betroffenen main-Dateien wurden am Commit `a74459a94a800b24d4b348332154d25f516920b8` frisch gelesen. Aktuelle Git-Blobs: Bibliothek `cf6a6b663000c0c108b064afcdf4ccd6ed543a8a`, Test `b5e1c1fb2c0991b85771890fe1cfc3a6389512c2`.\n\nBeide stimmen bytegenau mit der ursprünglichen main-Basis des lokalen r1-Pakets überein. Sie entsprechen ausdrücklich nicht der lokalen r4-Grundlage: Die früheren Klammer-/Titanstahl-Sperren und ihre Tests sind weiterhin nicht in diesen main-Dateien enthalten. Daher darf dieser Zusatz nicht als direkt auf main integrierter oder deployter Schutz bezeichnet werden. Die vollständige vorhandene r1→r4-Kette bleibt eine Abhängigkeit.\n\n## Grenzen und nächster Schritt\n\nDie Prüfung deckt die dokumentierten synthetischen Fehlerfälle ab, nicht sämtliche HTML-/Lieferantenformate oder den realen Produktkatalog. Abgetrennte Tabellen, Dezimalkomma, Prozentwörter/-Entitäten und mehr als drei Nachkommastellen bleiben konservativ ungeklärt. Gleiche Mischungen in anderer Reihenfolge innerhalb derselben Quelle können weiterhin unnötig als mehrdeutig blockieren; daraus wird keine falsche Materialfreigabe.\n\nNächster Schritt ist die Review dieses Deltas zusammen mit der vollständigen bestehenden r4-Kette. Vor einem echten, eng begrenzten Materiallauf bleiben aktuelle Modell-/Lieferantenbelege, fachliche Quellenaltersregel, legitimer Runtime-/App-Zugriff, dauerhafter gemeinsamer Ledger mit belegter Ausgangshistorie und passende Befugnisse erforderlich. Kein Materiallauf, Merge, Deployment, Workflowstart, Katalogscan oder Remote-Write wurde durch diesen Teilauftrag ausgeführt.\n\nBelege: `../pipeline/material-source-conflicts.patch`, `../pipeline/MANIFEST.json`, `VALIDIERUNG.json`, `FINAL-INTEGRATION-RUNS.json`, `PATCH-ROUNDTRIP.json` und `independent/REVIEW.md`.\n",
+  "sourceSHA256": "2dcb5f59f093078d7077d7e42e6a3dae31615d560a1c7a7bab16e3e4968a2980",
+  "notDeployed": true,
+  "requiresFullExistingR4Chain": true
+}
