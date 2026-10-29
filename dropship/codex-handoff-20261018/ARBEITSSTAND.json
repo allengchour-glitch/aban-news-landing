@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 8,
-  "updatedAt": "2026-10-29T08:10:35Z",
+  "revision": 9,
+  "updatedAt": "2026-10-29T08:30:18Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -224,10 +224,10 @@
       "priorityKind": "SETZUNG",
       "state": "offen",
       "title": "Frühere Google-Erreichbarkeitsmeldung abgleichen",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Aktuelle Shopify-URL HTTP 200; eingereichter Google-Link fehlt im Export.",
-      "nextAllowedStep": "Die exakte Merchant-Ziel-URL dieses Items und gegebenenfalls Crawlbeleg gezielt lesen und mit dem heutigen Canonical vergleichen.",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Historischer Vorbefund: Aktuelle Shopify-URL HTTP 200; eingereichter Google-Link fehlt im Export. Neuer enger API-Read auf Item shopify_ZZ_15448020582785_55873968701825 mit entdeckten Link-/Canonical-/Quellenfeldern endete mit MCP -32603 request timed out. Kein URL-/Quellenbeleg, kein Retry. Zwanzig historische CSV-Zeilen in zehn Kontexten enthalten keinen Crawl-HTTP-Code; der Timeout ist keine leere Datenmenge oder 404.",
+      "nextAllowedStep": "In authentifiziertem Merchant-Einzelartikel genau eingereichten Link, aktive Datenquelle und Crawlfehler lesen; aktuelle Zielseite/Canonical dagegen prüfen. Kein geratener URL-Write und keine blinde Wiederholung des Timeout-Requests.",
       "blockers": [
         "Merchant-Ziel-URL und Googlebot-Nachweis fehlen"
       ],
@@ -240,6 +240,16 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
           "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8",
           "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md",
+          "gitBlobSha": "3f0580252d734ad5c34bd8df7a01dbb708f69647",
+          "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-BELEGE-20261029.json",
+          "gitBlobSha": "62963fb29c7fbdb8c6afcf233851df93fec0aeaa",
+          "readAt": "2026-10-29T08:30:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -247,6 +257,12 @@
       "product": {
         "productId": "15448020582785",
         "variantId": "55873968701825"
+      },
+      "lastExactItemRead": {
+        "itemId": "shopify_ZZ_15448020582785_55873968701825",
+        "result": "unknown_timeout_-32603",
+        "retries": 0,
+        "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md"
       }
     },
     {
@@ -257,13 +273,12 @@
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung.",
-      "nextAllowedStep": "Unveränderten SKU-Diff anhand frischer MAIN-Quelle im zulässigen Theme-Draft nativ rendern; tatsächliche Ausgabe in legitim angemeldeter Google-Prüfsitzung testen. Separate Versandkorrektur ist unter schema-shipping-threshold-ch50 geführt.",
+      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung. Neuer Stand 09:20 Zürich: im unveröffentlichten frischen MAIN-Duplikat 212752499079 den unveränderten Achtzeilenpatch nativ umgesetzt. Echte HTTP-Ausgabe und unabhängiger Tiefenvergleich bestätigen genau 24 entfernte ungültige SKU-Eigenschaften bei vollständig erhaltenen 33 Varianten/Offers und neun gültigen SKUs. Google-Abnahme und Live-Übernahme bleiben offen.",
+      "nextAllowedStep": "Aktuelles MAIN-Dateihash vor legitimer Übernahme der zwei eng geprüften Diffs vergleichen. Danach öffentliche native Ausgabe und die verbleibenden Variantenkennungen in einer angemeldeten Google-Prüfsitzung prüfen; erst dann Console-Validierung auslösen. Vorhandenes Prüftheme 212752499079 wiederverwenden, keine neue Kopie erzeugen.",
       "blockers": [
-        "Native Shopify-Liquid-Ausführung fehlt",
-        "Google-Test verlangt Anmeldung; Ergebnisse und Akzeptanz verbleibender Variantenkennungen unbekannt",
-        "Statische Prüfung verwendete vorhandenen Lintercache, dessen Live-Aktualisierung scheiterte",
-        "Kein produktiver Theme-Write; Connector erlaubt Theme-Dateiwrites nur für unveröffentlichte Themes"
+        "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
+        "MAIN-Dateiwrites und themePublish sind vom vorhandenen Shopify-Connector blockiert; legitime Übernahme im Admin erforderlich",
+        "Keine vollständige visuelle Theme-Abnahme; belegter Scope ist Hängematte plus ein Kontrollprodukt"
       ],
       "acceptance": [
         "Fulfilment-SKUs unverändert",
@@ -295,6 +310,21 @@
           "path": "dropship/codex-handoff-20261018/HAENGEMATTE-VALIDIERUNG-BELEGE-20261029.json",
           "gitBlobSha": "e9d3317ac528469edf3fb3ae8fbe3264d8de8712",
           "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md",
+          "gitBlobSha": "3f0580252d734ad5c34bd8df7a01dbb708f69647",
+          "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-BELEGE-20261029.json",
+          "gitBlobSha": "62963fb29c7fbdb8c6afcf233851df93fec0aeaa",
+          "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.patch",
+          "gitBlobSha": "7a5206dc740fc44c3cc913ae7d3a046c8dcac036",
+          "readAt": "2026-10-29T08:30:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -308,6 +338,14 @@
         "sha256": "ab53a2076227e70b776aa681e5c78d89975cf05d571595c630172673211ebbeb",
         "gitBlobSha": "2a5538e686c93256ddcee3dd736ceca1edda4904",
         "claudeReceipt": "unknown_requires_fresh_read"
+      },
+      "nativePreview": {
+        "themeId": "212752499079",
+        "role": "UNPUBLISHED",
+        "sourceMainThemeId": "212656488839",
+        "actualRenderVerified": true,
+        "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md",
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -318,13 +356,12 @@
       "title": "Öffentliche CHF50-Versandschwelle im vorhandenen Google-Schema abbilden",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write.",
-      "nextAllowedStep": "Frischen Headerhash mit dem engen Diff vergleichen; in zulässiger Theme-Vorschau nativ rendern und die Ausgabe prüfen. Nur diese zwei Schemawerte übernehmen, keine Versandprofile/Preise oder interne CHF45-Regel ändern.",
+      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write. Neuer Fortschritt: dieselben beiden Zahlen nun in Prüftheme 212752499079 gespeichert und nativ gerendert. Tiefer JSON-LD-Vergleich und unabhängige Gegenlese bestätigen nur 40.49→49.99 und 40.5→50, Rückgabe/LI-Porto und übrige Daten unverändert. Zusätzlich ein anderes Produkt als Kontrolle geprüft. Keine Checkout- oder Live-Themeänderung.",
+      "nextAllowedStep": "Aktuellen MAIN-Headerhash mit beigefügtem Zweizahlendiff vergleichen und über legitimen Adminzugang eng übernehmen; danach öffentliche Ausgabe prüfen. Prüftheme 212752499079 enthält nativ bestätigte Fassung. Keine Versandprofile oder interne CHF 45-Regel ändern und kein veraltetes Volltheme pauschal publizieren.",
       "blockers": [
-        "Native Theme-/Google-Abnahme offen",
-        "Begrenzter Headerkontext zeigt vor/nach identische106fehlende Abhängigkeiten; kein Voll-Theme-Erfolg",
-        "Im Kommentar genannter Generator nicht im gezielt geprüften main auffindbar; Wiedererzeugungsweg unbekannt",
-        "Kein produktiver MAIN-Write über aktuellen Connector"
+        "Live-Übernahme durch vorhandenen Connector blockiert; Google-Abnahme weiter offen",
+        "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
+        "Keine vollständige visuelle Theme-Abnahme, nur native JSON-LD-Vorschau und Kontrollprodukt"
       ],
       "acceptance": [
         "Genau zwei JSON-LD-Werte korrigiert",
@@ -341,6 +378,21 @@
           "path": "dropship/codex-handoff-20261018/VERSAND-CH50-BELEGE-20261029.json",
           "gitBlobSha": "0ba063583e2084d7c03d05ea70626f74cb7faabc",
           "readAt": "2026-10-29T06:45:53.668Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md",
+          "gitBlobSha": "3f0580252d734ad5c34bd8df7a01dbb708f69647",
+          "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-BELEGE-20261029.json",
+          "gitBlobSha": "62963fb29c7fbdb8c6afcf233851df93fec0aeaa",
+          "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.patch",
+          "gitBlobSha": "7a5206dc740fc44c3cc913ae7d3a046c8dcac036",
+          "readAt": "2026-10-29T08:30:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -351,6 +403,13 @@
         "sha256": "2cb70356d21029844196b235c98c36eabc5c46ffcd2745cfd84b928e525747fa",
         "gitBlobSha": "40eb978520f8ec3ff81988735b7b3abaea28e2fd",
         "claudeReceipt": "unknown_requires_fresh_read"
+      },
+      "nativePreview": {
+        "themeId": "212752499079",
+        "role": "UNPUBLISHED",
+        "actualRenderVerified": true,
+        "changedNumbers": 2,
+        "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md"
       }
     },
     {
@@ -629,6 +688,12 @@
       "at": "2026-10-29T08:10:35Z",
       "actor": "codex",
       "action": "Auf engen aktuellen Produktpflege-/Pushauftrag zwei Optionslabels und sieben vorhandene Werttexte korrigiert; native und öffentliche Rücklesung sowie 13 IDs/SKUs/Preise/Inventorybindungen bestätigt. Merchantkonto/-route gezielt geprüft, isolierter Push bleibt technisch blockiert. Keine Material-, Quota-, Feed- oder Umsatzverbesserung behauptet; keine erneuten Tagesreports."
+    },
+    {
+      "revision": 9,
+      "at": "2026-10-29T08:30:18Z",
+      "actor": "codex",
+      "action": "Ein unveröffentlichtes MAIN-Duplikat 212752499079 erstellt, zwei bekannte enge Schema-Diffs gespeichert und nativ/öffentlich sowie unabhängig geprüft: 24 ungültige SKU-Eigenschaften entfernt plus zwei Versandzahlen; 33 Varianten/Offers und neun gültige SKUs erhalten. Ein Kontrollprodukt bestätigt den begrenzten Scope. Keine MAIN-Publikation; Merchant-Einzelitemread mit Timeout, kein Retry oder Feedwrite. Tagesreports unverändert."
     }
   ],
   "salesGoal": {
@@ -677,4 +742,5 @@
     "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained"
   }
 }
+
 
