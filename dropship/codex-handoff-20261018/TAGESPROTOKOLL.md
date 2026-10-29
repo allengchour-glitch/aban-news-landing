@@ -498,6 +498,12 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 | Master / Lesbarkeit | Projektor, Variante, Preis, Tags, Storefront und echtes Bild/Pflichtmusik frisch gegengeprüft; drei zu lange Einzeiler mit festen Umbrüchen konkretisiert | VORBEREITET: sieben Fontmessungen passen, gleicher 18-Sekunden-Master/540 Frames/sechs UTMs. Keine MP4 oder Film-/Rechteabnahme; Produktions-/Ledgerblocker bleiben |
 | Welcome / einzige Freigabevorlage | Vorhandenen Zweizeilen-Service-Diff vom Morgen im Abendpaket mit unverändertem Umfang konsolidiert | ENTWURF: keine pauschalen Liefer-/Rückgabeversprechen; keine Mail-/Flow-/Rabatt-/Versandregeländerung. Kein neuer Report, USD/CHF getrennt |
 | Abschluss / nächster Schritt | Tatsächliche Vormittags- und Abendbelege samt geprüftem Materialdelta in derselben Übergabe und Arbeitsstandrevision 11 zusammengeführt | DOKUMENTIERT: historische Quellen, Aufgaben und Verkaufsbaseline erhalten. Nächstes: vollständige Attributquellen, r4-Integration und Originaltakes prüfen; Zugriffsblocker für MAIN/Merchant konkret beibehalten. Claude-Kenntnisnahme unbekannt |
+| Fortsetzung / Materialintegration | Fünf vorhandene Korrekturstufen auf frischem main zu einem 14-Pfade-Gesamtpatch samt geprüftem Rückweg zusammengebaut | VORBEREITET: 440 vorhandene Prüfbedingungen/13 Syntaxprüfungen grün; keine neuen 440 Tests, kein Merge/Deployment. Node22/Voll-CI offen |
+| Neue Merchant-CSV | 20’343 Fehlerzeilen unabhängig gezählt, IDs/Länder/Fehler-Schnittmengen geprüft | GEMESSEN/QUELLE: 8’327 eindeutige Preisfehler-IDs, 1’353 auch availability; Free listings, CH/LI und kleiner DE-Teil. Keine Katalogquote oder doppelten Produkte aus Mehrfachzeilen abgeleitet |
+| Preis-/URL-Stichprobe | Identitäten frisch geprüft; zwei konkrete Produktpräfixe nativ und öffentliche Handle-URLs gelesen | GEMESSEN: beide DRAFT mit positiven Preisen; HTTP200 nur nach Weiterleitung auf Kollektionen. Google-Quelle/eingereichte URL und genaue Variantenroute unbekannt, kein Write |
+| Zugriffsgrenzen | Engen Merchant-Einzelabruf versucht und zweiten Nutzerexport herunterzuladen versucht | BLOCKIERT/UNBEKANNT: Merchant keine Antwort binnen45s, kein Retry; zweiter Upload über32MiB nicht eingelesen. Keine Fehler als Null/leer ausgegeben |
+| Schneestiefel / Quellenindex | Vorhandene lokale Belege und Suchschlüssel für 27 Varianten geordnet | QUELLE: alter nativer Beleg vom29.10.00:23 Zürich, kein neuer Produktabruf oder Lieferanten-/Fusslängenbeleg; keine geratenen Nachträge |
+| Gedächtnis / nächster Schritt | Neue Preisfehler-Aufgabe priorisiert und vollständigen Integrationskandidaten mit Revision12 dokumentiert | FORTGEFÜHRT: Historie und Kaufbaseline erhalten; Datenquelle/URL klären, dann engen Quelldiff prüfen. Keine zusätzliche Automation oder Tagesreport-/Kaufabfrage; Claude-Kenntnisnahme unbekannt |
 
 
 [LUXESTYLE_FIX_FORTSETZUNG_20261029] [Textumsetzung](IPHONE-TEXT-UMSETZUNG-20261029.md), [Material r4](MATERIAL-R4-20261029.md), [Hängematte](HAENGEMATTE-VALIDIERUNG-20261029.md), [Versand](VERSAND-CH50-20261029.md).
@@ -522,6 +528,8 @@ Tageszwischenstand am Vormittag, Europe/Zurich. [LUXESTYLE_CLAUDE_MASTER_TAGESPA
 
 
 [LUXESTYLE_ABENDLAUF_20261029] [Abendpaket](ABENDPAKET-20261029.md), [Belege](ABENDBELEGE-20261029.json), [Katalogkorrekturen](KATALOGQUALITAET-20261029.md), [gleicher Master](MASTER-ABEND-20261029.md). Bestehenden Tagesblock fortgeführt, keine zusätzlichen Kennzahl-/Flowreports.
+
+[LUXESTYLE_FORTSETZUNG_PREIS_20261029] [Preisdiagnose](MERCHANT-PREISDIAGNOSE-20261029.md), [CSV-Prüfung](MERCHANT-CSV-PRUEFUNG-20261029.md), [Material-Gesamtpatch](MATERIAL-GESAMT-20261029.md).
 
 ## Fortführung
 
