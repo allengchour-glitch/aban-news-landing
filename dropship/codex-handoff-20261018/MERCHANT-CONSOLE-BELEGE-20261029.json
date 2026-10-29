@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-29T08:26:03.156231+00:00",
+  "brand": "luxestyle.ch",
+  "taskIds": [
+    "schema-hammock-15450856292737",
+    "schema-shipping-threshold-ch50",
+    "merchant-url-15448020582785"
+  ],
+  "ownerRequest": "merchant fix und console",
+  "scope": "one new unpublished native preview; two existing narrowly scoped patches; one exact Merchant item metadata read",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "url": "https://luxestyle.ch",
+    "currency": "CHF"
+  },
+  "previewTheme": {
+    "id": "gid://shopify/OnlineStoreTheme/212752499079",
+    "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+    "role": "UNPUBLISHED",
+    "sourceMainThemeId": "gid://shopify/OnlineStoreTheme/212656488839",
+    "sourceMainStillPublished": true,
+    "previewUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?preview_theme_id=212752499079"
+  },
+  "operations": {
+    "themeDuplicate": {
+      "userErrors": []
+    },
+    "themeFilesUpsert": {
+      "userErrors": [],
+      "files": [
+        "sections/header.liquid",
+        "sections/product-information.liquid"
+      ]
+    },
+    "themePublish": "not_attempted_connector_blocks",
+    "mainFileWrite": "not_attempted_connector_blocks",
+    "nativeReadback": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "url": "https://luxestyle.ch",
+        "currencyCode": "CHF"
+      },
+      "theme": {
+        "id": "gid://shopify/OnlineStoreTheme/212752499079",
+        "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+        "role": "UNPUBLISHED",
+        "processing": false,
+        "processingFailed": false,
+        "files": {
+          "nodes": [
+            {
+              "filename": "sections/header.liquid",
+              "checksumMd5": "003541d986ce79b0876755c8c3df7a3d",
+              "updatedAt": "2026-10-29T08:20:15Z",
+              "exactExpectedBytes": true
+            },
+            {
+              "filename": "sections/product-information.liquid",
+              "checksumMd5": "9d9646c79c920779614ad848847d1e0d",
+              "updatedAt": "2026-10-29T08:20:15Z",
+              "exactExpectedBytes": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "sourcePatchManifest": [
+    {
+      "filename": "sections/product-information.liquid",
+      "beforeSha256": "11c7600f9688b817d349bb04e5b4e0327284f224b8a8a56a6b1c101dbb3e9012",
+      "afterSha256": "73156ccfa4b099818b6beb1357ff24286ebf778c6394fd9df65d80c8931d6917",
+      "beforeMd5": "e4ba950be4a05c5d6dd6f6ebf5d8a0a9",
+      "afterMd5": "9d9646c79c920779614ad848847d1e0d"
+    },
+    {
+      "filename": "sections/header.liquid",
+      "beforeSha256": "5f3da62675c1b6407c1bfd541cd45cabc021be4282beb89c98fa1c8842c1bcdf",
+      "afterSha256": "f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4",
+      "beforeMd5": "1fda77909b8d96d7b3d0f3bc65f8ed65",
+      "afterMd5": "003541d986ce79b0876755c8c3df7a3d"
+    }
+  ],
+  "nativePreviewHttp": {
+    "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?preview_theme_id=212752499079",
+    "finalUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+    "httpStatus": 200,
+    "readAt": "2026-10-29T08:20:41.330738+00:00",
+    "sha256": "73bf5d6a5818a2b68a91537b2ab090b7b2a68f301235bd5ef3d21d188daf8169",
+    "themeEvidence": [
+      "Shopify.theme = {\"name\":\"LuxeStyle – Schema-Prüfung 29.10.2026\",\"id\":212752499079,\"schema_name\":\"Horizon\",\"schema_version\":\"3.5.1\",\"theme_store_id\":2481,\"role\":\"unpublished\"}",
+      "Shopify.theme.handle = \"null\""
+    ],
+    "htmlBytes": 1223422
+  },
+  "nativePreviewComparison": {
+    "status": "expected_schema_diff_confirmed",
+    "scope": "combined",
+    "inputProvenanceDeclaredByCaller": "native_preview",
+    "baselineSha256": "9474f2e2c0ae2ddea2bbdd25a632a0ef2286e8dc567c4b2944b91d5a9095afa8",
+    "candidateSha256": "73bf5d6a5818a2b68a91537b2ab090b7b2a68f301235bd5ef3d21d188daf8169",
+    "exactStructuredDataMatch": true,
+    "googleAcceptance": "unknown_not_tested",
+    "themePublication": "not_verified_by_this_comparator",
+    "expectedVariantCount": 33,
+    "expectedSkuPropertyCount": 9,
+    "expectedRetainedValidSkus": 9,
+    "returnPolicyMustBeUnchanged": true,
+    "comparisonIncludes": "All JSON-LD blocks deeply, preserving IDs, offer URLs, names, prices, currencies, availability, images, return policy, and all non-approved fields"
+  },
+  "independentReview": {
+    "reviewAt": "2026-10-29T08:22:41.442017+00:00",
+    "reviewer": "console_schema29",
+    "scope": "local independent native-preview evidence review; no additional API reads/writes",
+    "result": "passed",
+    "nativePreviewTheme": {
+      "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+      "id": 212752499079,
+      "schema_name": "Horizon",
+      "schema_version": "3.5.1",
+      "theme_store_id": 2481,
+      "role": "unpublished"
+    },
+    "previewHttpStatus": 200,
+    "baselineSha256": "9474f2e2c0ae2ddea2bbdd25a632a0ef2286e8dc567c4b2944b91d5a9095afa8",
+    "previewSha256": "73bf5d6a5818a2b68a91537b2ab090b7b2a68f301235bd5ef3d21d188daf8169",
+    "exactJsonLdDeltaCount": 26,
+    "removedInvalidSkuProperties": 24,
+    "retainedUnchangedValidSkus": 9,
+    "unchangedVariantCount": 33,
+    "unchangedOfferCount": 33,
+    "shippingChanges": [
+      {
+        "path": [
+          0,
+          "hasShippingService",
+          0,
+          "shippingConditions",
+          0,
+          "orderValue",
+          "maxValue"
+        ],
+        "kind": "changed",
+        "before": 40.49,
+        "after": 49.99
+      },
+      {
+        "path": [
+          0,
+          "hasShippingService",
+          0,
+          "shippingConditions",
+          1,
+          "orderValue",
+          "minValue"
+        ],
+        "kind": "changed",
+        "before": 40.5,
+        "after": 50
+      }
+    ],
+    "returnPolicyUnchanged": true,
+    "liechtensteinShippingUnchanged": true,
+    "sourceDiff": "exactly8insertedSKUlinesand2shippingnumbers",
+    "sourceAndNativeReadbackMd5Match": true,
+    "googleAcceptance": "unknown; not tested by this review",
+    "publicMainPublication": "not performed by this reviewer; preview is unpublished",
+    "additionalApiReads": 0,
+    "remoteWrites": 0,
+    "limits": [
+      "One product native preview; no complete-theme visual or cross-product regression suite",
+      "Invalid SKU fields omitted only from structured_data, no fulfillment-SKU write",
+      "Google recognition of remaining unique @id / nine SKU still requires separate actual test"
+    ]
+  },
+  "nonTargetProductControl": {
+    "status": "passed",
+    "productId": "15447560520065",
+    "onlyTwoOrganizationShippingNumbersChanged": true,
+    "nonTargetProductStructuredDataUnchanged": true,
+    "observations": [
+      {
+        "mode": "live",
+        "httpStatus": 200,
+        "requestedUrl": "https://luxestyle.ch/products/ladegerat-typ-c-eu-standard-613900",
+        "finalUrl": "https://luxestyle.ch/products/ladegerat-typ-c-eu-standard-613900",
+        "readAt": "2026-10-29T08:22:41.277080+00:00",
+        "sha256": "f2163bc16d4036ed11ffd51bd03acc907e32727b2aa65730d0d2e0476105e62f",
+        "themeEvidence": [
+          "{\"name\":\"Horizon · LuxeStyle Premium (Entwurf 27.10. Kun...\",\"id\":212656488839,\"schema_name\":\"Horizon\",\"schema_version\":\"3.5.1\",\"theme_store_id\":2481,\"role\":\"main\"}"
+        ]
+      },
+      {
+        "mode": "preview",
+        "httpStatus": 200,
+        "requestedUrl": "https://luxestyle.ch/products/ladegerat-typ-c-eu-standard-613900?preview_theme_id=212752499079",
+        "finalUrl": "https://luxestyle.ch/products/ladegerat-typ-c-eu-standard-613900",
+        "readAt": "2026-10-29T08:22:41.971001+00:00",
+        "sha256": "6d7251d17ccc7e3e230ca6f42de120c5cba9d3ee8f8d3aa7da020f06b5a35a5a",
+        "themeEvidence": [
+          "{\"name\":\"LuxeStyle – Schema-Prüfung 29.10.2026\",\"id\":212752499079,\"schema_name\":\"Horizon\",\"schema_version\":\"3.5.1\",\"theme_store_id\":2481,\"role\":\"unpublished\"}"
+        ]
+      }
+    ]
+  },
+  "merchantExactRead": {
+    "accountId": "5797470070",
+    "itemId": "shopify_ZZ_15448020582785_55873968701825",
+    "request": {
+      "connector": "google_merchant",
+      "accounts": [
+        "5797470070"
+      ],
+      "fields": [
+        "account_id",
+        "product_id",
+        "product_name",
+        "product_link",
+        "product_canonical_link",
+        "product_data_source",
+        "product_feed_label",
+        "product_content_language",
+        "product_last_update_date"
+      ],
+      "filters": [
+        [
+          "product_id",
+          "eq",
+          "shopify_ZZ_15448020582785_55873968701825"
+        ]
+      ],
+      "date_from": "2020-01-01",
+      "date_to": "2026-10-29"
+    },
+    "dateScopeReason": "Product metadata dates refer to creation, not a sales/performance report; exact existing Item-ID filter required. No status counters requested.",
+    "state": "unknown_timeout",
+    "completedBy": "2026-10-29T08:19:04.466066+00:00",
+    "result": {
+      "isError": true,
+      "error": "MCP request timed out",
+      "mcpCode": -32603
+    },
+    "retries": 0,
+    "rows": "unknown",
+    "submittedProductURL": "unknown",
+    "activeSourceID": "unknown"
+  },
+  "googleAcceptance": "unknown_not_tested_after_native_render",
+  "searchConsoleValidation": "not_started_authenticated_access_unavailable",
+  "returnPolicy": "existing global Organization policy retained; current Google documentation supports global policy; no current Console acceptance proof",
+  "limits": [
+    "No full-theme visual acceptance",
+    "Only optional JSON-LD sku omission on exact selected product; no operational SKU changes",
+    "No checkout/shipping setting/rate changes; internal CHF45 untouched",
+    "No new Merchant feed or exclusion changes",
+    "No broad daily metrics/flow/order reports",
+    "No claim of purchases or ranking gain"
+  ],
+  "manifest": [
+    {
+      "path": "theme/PATCH-MANIFEST.json",
+      "sha256": "7bfee28fc94d4b553229f79a8f52ba1f0cc4812aa24cd68fdd6a9d7c4c307578"
+    },
+    {
+      "path": "theme/DUPLICATE-RESULT.json",
+      "sha256": "dc1cb67487a219f188c8afeb6429354bc929bc1e21697ae3708ef99b76f9992c"
+    },
+    {
+      "path": "theme/UPSERT-RESULT.json",
+      "sha256": "5089aa3dcc3a863ccb8beedec6da9593e04217377bd88386c3cc5eb07a4cbc35"
+    },
+    {
+      "path": "theme/NATIVE-READBACK.json",
+      "sha256": "2f3461fab29090661a17de29a2fe944590a3972459daa686475ab1c8383e5224"
+    },
+    {
+      "path": "theme/PREVIEW-HTTP.json",
+      "sha256": "2871baeca792dffe41e111dd11c5ea37b3a470e00190fe2e406d67192043af1b"
+    },
+    {
+      "path": "theme/PREVIEW-COMPARISON.json",
+      "sha256": "2359617ead4340038f0d90e3fa80a72338468658b096c06c556477b65673e123"
+    },
+    {
+      "path": "theme/CONTROL-COMPARISON.json",
+      "sha256": "4963932c8b74e0c8f8001de6c99350634eaf2b7a6ed10f39805b31012f0d1221"
+    },
+    {
+      "path": "schema/FINAL-PREVIEW-REVIEW.json",
+      "sha256": "c671bc2d75e98e7da9d84cece363b5726f5bab8db626f707930784df6b3687fd"
+    },
+    {
+      "path": "schema/compare_rendered_schema.py",
+      "sha256": "181006265c55dcb8aeace6fd3f21a233f23e7e17aec2c51e4b4e70ec344b02df"
+    },
+    {
+      "path": "schema/GOOGLE-RETURN-POLICY.md",
+      "sha256": "5a087310c2c08c43f55b91e85a3ffe6cf92face5d91d824ddcf77a615a548eea"
+    },
+    {
+      "path": "merchant/URL-READ-CHECKPOINT.json",
+      "sha256": "54127a8461837476219a38eb5a8e5b6a5a53cfdb4a1ab4fb263470bdf223e3c5"
+    },
+    {
+      "path": "merchant/BERICHT.md",
+      "sha256": "d0250c0dd5057efa45c0aa7f424044ed4902a83464eb90ecd8edec8907a22a42"
+    }
+  ],
+  "claudeReceipt": "unknown"
+}
