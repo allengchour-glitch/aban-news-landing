@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "taskId": "schema-hammock-15450856292737",
+  "checkedAtUtc": "2026-10-29T06:29:06.042266+00:00",
+  "purpose": "review_only",
+  "nativeThemeId": "gid://shopify/OnlineStoreTheme/212656488839",
+  "nativeThemeRole": "MAIN",
+  "liveThemeWrites": 0,
+  "freshMainSectionByteEqualToPriorBefore": true,
+  "sourceFiles": [
+    {
+      "path": "blocks/_product-details.liquid",
+      "md5": "4504e6d0159f41982797fc022aff00b9",
+      "sha256": "8608ede11efaad3311350cc167cb03cf9cb50fece4b88df5674eec1f2a6863d9",
+      "bytes": 18025,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "blocks/_product-media-gallery.liquid",
+      "md5": "9be3a3f355f1bcc385d41590a7ed22bf",
+      "sha256": "9de81b6a42e797eb765aa78dc5f3e208a0ffbc53cc33e7c4f266b6ab46b46fdb",
+      "bytes": 7859,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "locales/en.default.json",
+      "md5": "6878bfd7754d7cc215028b39cc104f2b",
+      "sha256": "c74cad8fb326ecd6ae9cdfcb15a9c43a312064e7c96b52159d80129998d43fb0",
+      "bytes": 16756,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "locales/en.default.schema.json",
+      "md5": "e5c1f37542900e3efdeed6b9dcd995dd",
+      "sha256": "81ad06d0cfd7411e5a6f62b53bbda1f158a9aa81dda4580940d3323d6869b4d8",
+      "bytes": 50680,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "snippets/lspod-designzwang.liquid",
+      "md5": "abe88497cd15c783573f4e3e945b6ea5",
+      "sha256": "af3d4b57686d0bc4cbdca8a49d01990429e4b002f40d77dd62414259cf342328",
+      "bytes": 823,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "snippets/price.liquid",
+      "md5": "498290dec5b08e6b5d1a32f41b3e6f9d",
+      "sha256": "e59b68098faf0093ca22fdbc47f81e251473a58df3454e724693d8c85de8d849",
+      "bytes": 5156,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "snippets/product-information-content.liquid",
+      "md5": "ea408c1bef388c93356582ae68748f4b",
+      "sha256": "30ecfbcd43509c5c7b00125934959536d0a43da293b8840c4f7ab009cd8989a7",
+      "bytes": 9095,
+      "updatedAt": "2026-10-27T21:38:01Z"
+    },
+    {
+      "path": "sections/product-information.liquid",
+      "md5": "e4ba950be4a05c5d6dd6f6ebf5d8a0a9",
+      "sha256": "11c7600f9688b817d349bb04e5b4e0327284f224b8a8a56a6b1c101dbb3e9012",
+      "bytes": 17137
+    },
+    {
+      "path": "config/settings_schema.json",
+      "md5": "2aec04932013b3c77e17f0ca475e4abb",
+      "sha256": "7119f583569aa0c524ae0c94e3370bb98893088f89f91244fb79929299479a9e",
+      "bytes": 54251
+    }
+  ],
+  "changedSectionAfterSha256": "73156ccfa4b099818b6beb1357ff24286ebf778c6394fd9df65d80c8931d6917",
+  "unchangedPatchSha256": "d524812d04e567c77f36d21ba2154f8d5a40e2d12bbaada077b3dd61c0a317c1",
+  "staticValidation": {
+    "before": {
+      "exitCode": 0,
+      "result": {
+        "success": true,
+        "responses": [
+          {
+            "result": "success",
+            "resultDetail": "sections/product-information.liquid passed all checks.",
+            "artifactId": "luxestyle-hammock-sku-20261029-before",
+            "artifactRevision": 3
+          }
+        ]
+      },
+      "stderr": "Failed to setup with the following error: request to https://raw.githubusercontent.com/Shopify/theme-liquid-docs/main/data/latest.json failed, reason: \nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/manifest_theme.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/translations.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/section.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/setting.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/default_setting_values.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/app_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/targetted_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset_blocks.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/local_block_entry.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/filters.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/tags.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/shopify_system_translations.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/objects.json\n",
+      "noMissingGlobalSettingsError": true,
+      "noMissingFilesError": true
+    },
+    "after": {
+      "exitCode": 0,
+      "result": {
+        "success": true,
+        "responses": [
+          {
+            "result": "success",
+            "resultDetail": "sections/product-information.liquid passed all checks.",
+            "artifactId": "luxestyle-hammock-sku-20261029-after",
+            "artifactRevision": 3
+          }
+        ]
+      },
+      "stderr": "Failed to setup with the following error: request to https://raw.githubusercontent.com/Shopify/theme-liquid-docs/main/data/latest.json failed, reason: \nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/manifest_theme.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/translations.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/app_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/section.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/default_setting_values.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/targetted_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/setting.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset_blocks.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/local_block_entry.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/tags.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/filters.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/shopify_system_translations.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/objects.json\n",
+      "noMissingGlobalSettingsError": true,
+      "noMissingFilesError": true
+    }
+  },
+  "coverage": "Only sections/product-information.liquid selected for checks; nine actual theme files provide a limited authentic context, not the complete theme. No native Liquid render.",
+  "validatorRuleSource": {
+    "networkRefresh": "failed; used existing local cache",
+    "cache": [
+      {
+        "file": "manifest_theme.json",
+        "sha256": "2d00f4aeae62878f431c7954176f60830f3de8cc180baf27316259c221f02645",
+        "mtimeUtc": "2026-10-18T10:32:01.912260+00:00"
+      },
+      {
+        "file": "theme_settings.json",
+        "sha256": "ba0789f50be233b5fbe6953cc2bb6ab4fce864aaea7db921981630b70d126d7a",
+        "mtimeUtc": "2026-10-18T10:32:03.036248+00:00"
+      },
+      {
+        "file": "section.json",
+        "sha256": "de15cc452f3ebe02215c0e3f33296d2a58802163243d9f30c00a099507510f75",
+        "mtimeUtc": "2026-10-18T10:32:03.240246+00:00"
+      },
+      {
+        "file": "filters.json",
+        "sha256": "2bdd44cbd5805560ed7cc1da5f096e65a0f36792046714ad728e8cd43dab1559",
+        "mtimeUtc": "2026-10-18T10:32:01.956260+00:00"
+      },
+      {
+        "file": "tags.json",
+        "sha256": "2d9baeb7d5038719950bc47fe0c943f5f66067e38278fc5e49c1d1deeba27136",
+        "mtimeUtc": "2026-10-18T10:32:02.012259+00:00"
+      },
+      {
+        "file": "objects.json",
+        "sha256": "c92813ebddde1bebfe33f5d349597d8be57fdc3a107fe6dea6f64f13f799c11a",
+        "mtimeUtc": "2026-10-18T10:32:02.108258+00:00"
+      }
+    ]
+  },
+  "richResultsTest": {
+    "kind": "google-rich-results-code-test-attempt",
+    "testedDraft": "rrt-after.html",
+    "sha256": "a423f393f80f0386a9b36784bd8bb7ab124e9f216db3eade94863d94fbb72294",
+    "utf8Bytes": 23630,
+    "editorInputHashVerified": true,
+    "submittedOnce": true,
+    "state": "blocked_auth_challenge",
+    "observedMessage": "Something went wrong / Log in and try again",
+    "results": null,
+    "liveShopifyRender": false,
+    "liveShopWrites": 0,
+    "googleIndexingRequest": false,
+    "note": "Browser showed a reCAPTCHA frame, but the exact message was login-required. No bypass, no second submit, no sign-in. Browser session closed."
+  },
+  "googleGuidance": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+      "sourceSnapshot": "2026-10-29 earlier run; reused not re-fetched",
+      "excerpt": "lue. sku Text The merchant-specific identifier for the product. Specify at most one value. The sku value must use unicode characters that are valid for interchange. The sku value must not contain any whitespace characters (as defined by the Unicode whitespace property ). We recommend that the sku value only contain ASCII characters. subjectOf 3DModel A 3D model for the product, if applicable. See the list of 3DModel properties properties supported by Google. Specify at most one 3DModel value. 3DModel The full definition of 3DModel is available at schema.org/3DModel . Use the following properties to link to a 3D model. Currently only models in glTF format are supported. Required properties encoding MediaObject The media f"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+      "sourceSnapshot": "2026-10-29 earlier run; reused not re-fetched",
+      "excerpt": "r the product. Specify at most one value. The sku value must use unicode characters that are valid for interchange. The sku value must not contain any whitespace characters (as defined by the Unicode whitespace property ). We recommend that the sku value only contain ASCII characters. subjectOf 3DModel A 3D model for the product, if applicable. See the list of 3DModel properties properties supported by Google. Specify at most one 3DModel value. 3DModel The full definition of 3DModel is available at schema.org/3DModel . Use the following properties to link to a 3D model. Currently only models in glTF format are supported. Required properties encoding MediaObject The media for the 3D model. encoding.contentUrl URL The link"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+      "sourceSnapshot": "2026-10-29 earlier run; reused not re-fetched",
+      "excerpt": "le Search, you must follow these guidelines: General structured data guidelines Search Essentials Technical guidelines Free listings guidelines (for merchant listing experiences) Technical guidelines Each variant must have a unique ID in its corresponding structured data markup (for example, using the sku or gtin properties). Each product group must have a unique ID in its corresponding structured data markup, specified with the inProductGroupWithID property in variant Product properties or the productGroupID property in the ProductGroup property. Be sure to add Product structured data in addition to the product variant properties, following the list of required properties for merchant listings (or product snippets ). For single-page sites , th"
+    }
+  ],
+  "remainingBlockers": [
+    "Google Rich Results test requires login; no test result or acceptance obtained",
+    "Native Shopify rendering of patched theme not performed",
+    "Google acceptance of remaining @id identifiers after omission of invalid optional sku values remains unconfirmed",
+    "Cached linter rules were used because current rule refresh failed"
+  ],
+  "receipt": "No Claude acknowledgement, merge, deployment or shop fix claimed"
+}
