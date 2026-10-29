@@ -1,0 +1,1058 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "purpose": "targeted_review_only",
+  "liveProductWrites": 0,
+  "sourceFiles": [
+    {
+      "localSource": "products/LIVE-PRODUCTS.json",
+      "sha256": "d81f882018caeab12964233555d9523536d6329814e6bf2f89a09a1755c532e3",
+      "data": {
+        "readAt": "2026-10-28T23:44:50.954Z",
+        "timezone": "Europe/Zurich",
+        "shop": "luxestyle.ch",
+        "currency": "CHF",
+        "scope": "four_user_selected_products",
+        "products": [
+          {
+            "id": "gid://shopify/Product/15406765801857",
+            "title": "Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger",
+            "vendor": "LuxeStyle",
+            "status": "ACTIVE",
+            "productType": "Geschenkset",
+            "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p>Drei Premium-Geräte, eine fertig verpackte Box: Diese Geschenkbox vereint eine AMOLED-Smartwatch, ANC-Kopfhörer und einen 3-in-1-Wireless-Charger zu einem stimmigen Set für alle, die Technik lieben. Versandfertig verpackt – einfach verschenken, ohne selbst noch verpacken zu müssen.</p> <h3>Deine Vorteile auf einen Blick</h3>\n<ul>\n<li>\n<strong>Drei Geschenke in einem</strong> – Smartwatch, Kopfhörer und Ladestation in einer kuratierten Box statt drei einzelner Käufe.</li>\n<li>\n<strong>Fitness immer im Blick</strong> – die AMOLED-Smartwatch bietet über 100 Sportmodi und begleitet Training wie Alltag.</li>\n<li>\n<strong>Ruhe auf Knopfdruck</strong> – die ANC-Kopfhörer blenden Umgebungslärm aktiv aus, ideal für Pendeln, Büro und Homeoffice.</li>\n<li>\n<strong>Schluss mit Kabelsalat</strong> – der 3-in-1-Charger lädt Smartphone, Ohrhörer und Smartwatch von einer einzigen Ablage.</li>\n<li>\n<strong>Geschenkfertig verpackt</strong> – kommt in einer Premium-Geschenkbox, bereit zum Verschenken.</li>\n</ul> <h3>Was in der Box steckt</h3>\n<ul>\n<li>\n<strong>Smartwatch Pro AMOLED</strong> – über 100 Sportmodi, bis zu 7 Tage Akkulaufzeit, IP68 wasser- und staubgeschützt.</li>\n<li>\n<strong>Bluetooth-ANC-Kopfhörer</strong> – aktive Geräuschunterdrückung (Active Noise Cancellation), bis zu 40 Stunden Akkulaufzeit.</li>\n<li>\n<strong>3-in-1-Wireless-Charger</strong> – kompatibel mit iPhone, AirPods und Apple Watch, 15W Ladeleistung.</li>\n</ul> <h3>Für wen sich die Box eignet</h3>\n<ul>\n<li>Als Geschenk zu Geburtstag, Weihnachten, Vatertag oder zur Beförderung.</li>\n<li>Für Berufstätige, Sportbegeisterte und alle im Homeoffice.</li>\n<li>Für jeden, der von günstigen Kabeln und kabelgebundenen Ohrhörern auf ein stimmiges Set umsteigen will.</li>\n</ul> <h3>Warum bei LuxeStyle CH kaufen?</h3>\n<ul>\n<li>Schweizer Brand – kuratiert in Belp, mit persönlichem DE/EN-Support.</li>\n<li>Faire Preise für ein durchdachtes Geschenk-Set statt drei einzelner Bestellungen.</li>\n<li>Versand mit Tracking und 30 Tage Rückgaberecht.</li>\n</ul> <p>Leg die Tech Hero Gift Box jetzt in den Warenkorb und verschenke drei Premium-Geräte in einer fertig verpackten Box.</p> <div style=\"margin-top:32px;padding:24px;background:#faf7f2;border:1px solid #e8dcc4;border-radius:8px;\">\n<h3 style=\"margin-top:0;color:#2c2c2c;font-size:18px;\">Schweizer Versprechen · LuxeStyle CH</h3>\n<table style=\"width:100%;border-collapse:collapse;margin-top:12px;\">\n<tr>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>Versand &amp; Lieferung</strong><br><small>Versand ab Werk · 10–20 Werktage · Tracking inklusive</small>\n</td>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen nach Eingang · Rücksendung zahlst du, bei Mangel wir</small>\n</td>\n</tr>\n<tr>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Sicheres Bezahlen</strong><br><small>TWINT · Visa · Mastercard · PayPal · SSL-verschlüsselt</small>\n</td>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Persönlicher Service</strong><br><small>Schweizer Shop · Support auf Deutsch &amp; Englisch · Antwort innert 24 h an Werktagen</small>\n</td>\n</tr>\n</table>\n</div>\n\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/geschenkboxen-sets-verschenken-ideen\">Geschenkboxen verschenken: Warum kuratierte Sets das schönste Geschenk sind</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz\">Geschenke für Männer 2026: Ideen mit Stil aus der Schweiz</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber\">Bluetooth Kopfhörer mit ANC: Der ehrliche Kaufratgeber</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/herrenuhr-kaufen-ratgeber-schweiz\">Herrenuhr kaufen – worauf achten? Der ehrliche Ratgeber</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/magazin/geschenk-guide-2026-fuer-jeden-typ\">🎁 Geschenk-Guide 2026: Für jeden Typ das perfekte Präsent</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/smartwatch-einsteiger-ratgeber-2026\">Smartwatch für Einsteiger: Der ehrliche Ratgeber 2026</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+            "tags": [
+              "bild-ok",
+              "kopfhoerer",
+              "tech",
+              "vr-ai-neu"
+            ],
+            "totalInventory": 0,
+            "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tech-hero-gift-box-smartwatch-pro-anc.jpg?v=1781959251",
+            "images": [
+              {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tech-hero-gift-box-smartwatch-pro-anc.jpg?v=1781959251",
+                "altText": "Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger – LuxeStyle Schweiz",
+                "mediaId": "gid://shopify/MediaImage/69731158950273"
+              }
+            ],
+            "totalVariants": 1,
+            "variants": [
+              {
+                "id": "gid://shopify/ProductVariant/55728148054401",
+                "title": "Default Title",
+                "sku": "LXSCH-GIFT-TECH-HERO",
+                "price": "199.90",
+                "inventoryQuantity": 0
+              }
+            ],
+            "currencyCode": "CHF"
+          },
+          {
+            "id": "gid://shopify/Product/15408457744769",
+            "title": "Premium Bambus Aroma Diffuser 300ml",
+            "vendor": "LuxeStyle",
+            "status": "ACTIVE",
+            "productType": "Wellness & Aromatherapie",
+            "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"luxe-product\">\n<p><strong>Natürliche Ruhe für dein Zuhause.</strong> Der Premium Bambus Aroma Diffuser verbindet warmes Bambus-Design mit moderner Ultraschall-Technologie und verwandelt jeden Raum in eine Wohlfühl-Oase – sanfter Duft, leiser Nebel, stimmungsvolles Licht.</p> <h3>Deine Vorteile auf einen Blick</h3>\n<ul>\n<li>\n<strong>Bis zu 10 Stunden Dauerbetrieb</strong> – der 300-ml-Tank vernebelt eine ganze Nacht oder einen langen Arbeitstag, ohne dass du nachfüllen musst.</li>\n<li>\n<strong>Stimmungsvolles Licht nach deinem Geschmack</strong> – 7 LED-Farben, sanft wechselnd oder auf deiner Lieblingsfarbe fixiert.</li>\n<li>\n<strong>Passt in jedes Interieur</strong> – die warme Bambus-Optik fügt sich harmonisch in skandinavische wie moderne Schweizer Wohnräume ein.</li>\n<li>\n<strong>Ungestörte Ruhe</strong> – die Ultraschall-Vernebelung arbeitet flüsterleise mit unter 25 dB, ganz ohne Brummen oder Klicken.</li>\n<li>\n<strong>Sicher über Nacht</strong> – die automatische Abschaltung bei leerem Tank schützt das Gerät, auch wenn du längst schläfst.</li>\n</ul> <h3>Material &amp; Ausführung</h3>\n<ul>\n<li>Tankvolumen: 300 ml</li>\n<li>Laufzeit: bis zu 10 Stunden pro Füllung</li>\n<li>Beleuchtung: 7-Farben-LED-Ambientelicht (wechselnd oder fixiert)</li>\n<li>Geräuschpegel: unter 25 dB</li>\n<li>Technologie: Ultraschall-Vernebelung mit Auto-Abschaltung bei leerem Tank</li>\n<li>Design: Bambus-Optik in Premium-Qualität</li>\n</ul> <h3>Für jeden Raum gemacht</h3>\n<p>Ideal für Schlafzimmer, Wohnzimmer, Yoga-Ecke oder Home Office. Kombiniert mit ätherischen Ölen lässt sich gezielt eine Atmosphäre schaffen: Lavendel zum Einschlafen, Eukalyptus für freies Durchatmen, Orange für einen frischen Start in den Morgen.</p> <h3>Inklusive – alles für den sofortigen Start</h3>\n<ul>\n<li>1× Bambus Aroma Diffuser (300 ml)</li>\n<li>1× USB-Netzteil mit CH-Adapter</li>\n<li>1× Messbecher für die präzise Dosierung</li>\n<li>1× deutsche Anleitung</li>\n</ul> <h3>Warum bei LuxeStyle CH kaufen?</h3>\n<ul>\n<li>Schweizer Brand – sorgfältig kuratiert in Belp.</li>\n<li>Faire Preise und ein persönlicher DE/EN-Support, der dir wirklich antwortet.</li>\n<li>Versand mit Tracking und unkompliziertem 30-Tage-Rückgaberecht.</li>\n</ul> <p>Hol dir deine tägliche Wohlfühl-Oase nach Hause – jetzt bestellen und entspannter durchatmen.</p> <p><em>Tipp: Stell den Diffuser auf eine leicht erhöhte Fläche, damit sich der Nebel optimal im Raum verteilt.</em></p>\n</div><div style=\"margin-top:32px;padding:24px;background:#faf7f2;border:1px solid #e8dcc4;border-radius:8px;\">\n<h3 style=\"margin-top:0;color:#2c2c2c;font-size:18px;\">Schweizer Versprechen · LuxeStyle CH</h3>\n<table style=\"width:100%;border-collapse:collapse;margin-top:12px;\">\n<tr>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>Versand &amp; Lieferung</strong><br><small>Versand ab Werk · 10–20 Werktage · Tracking inklusive</small>\n</td>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen nach Eingang · Rücksendung zahlst du, bei Mangel wir</small>\n</td>\n</tr>\n<tr>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Sicheres Bezahlen</strong><br><small>TWINT · Visa · Mastercard · PayPal · SSL-verschlüsselt</small>\n</td>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Persönlicher Service</strong><br><small>Schweizer Shop · Support auf Deutsch &amp; Englisch · Antwort innert 24 h an Werktagen</small>\n</td>\n</tr>\n</table>\n</div>\n\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Material:</strong> Bambus</li></ul>\n</div><!--gdetails-->\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/wellness-selfcare\">🧘 Wellness &amp; Selfcare</a> · <a href=\"/collections/beauty-geraete\">💆 Beauty-Geräte &amp; Haarentfernung</a></p>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/magazin/silk-pillowcase-bringt-sie-wirklich-was-dermatologen-test-2026\">Silk Pillowcase: Bringt sie wirklich was? Seide vs. Baumwolle 2026</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/magazin/home-office-5-lifehacks-gegen-augenschmerzen-amp-kopfweh\">Home Office: 5 Lifehacks gegen Augenschmerzen &amp; Kopfweh</a>\n</div>",
+            "tags": [
+              "aroma diffuser schweiz",
+              "aroma-wellness",
+              "aromatherapie",
+              "aromatherapie diffuser",
+              "bambus",
+              "bambus aroma diffuser",
+              "bambus design",
+              "bild-ok",
+              "diffuser",
+              "kat-aroma",
+              "kuratiert",
+              "luxestyle-ch",
+              "nachhaltig",
+              "premium",
+              "premium lifestyle",
+              "schlafzimmer",
+              "schweizer interieur",
+              "swiss-brand",
+              "ultraschall",
+              "ultraschall diffuser",
+              "vegan",
+              "wellness",
+              "wellness zuhause"
+            ],
+            "totalInventory": 0,
+            "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+            "images": [
+              {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+                "altText": "Premium Bambus Aroma Diffuser 300ml – LuxeStyle Schweiz",
+                "mediaId": "gid://shopify/MediaImage/69731158983041"
+              }
+            ],
+            "totalVariants": 1,
+            "variants": [
+              {
+                "id": "gid://shopify/ProductVariant/55732479099265",
+                "title": "Default Title",
+                "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF",
+                "price": "39.90",
+                "inventoryQuantity": 0
+              }
+            ],
+            "currencyCode": "CHF"
+          },
+          {
+            "id": "gid://shopify/Product/15408457941377",
+            "title": "Rosenquarz Gua Sha Set",
+            "vendor": "LuxeStyle",
+            "status": "ACTIVE",
+            "productType": "Beauty-Tools",
+            "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"product-description\">\n<p>Ein uraltes Beauty-Ritual aus der traditionellen chinesischen Medizin, gemacht für deinen modernen Alltag. Unser <strong>Rosenquarz Gua Sha</strong> wird aus echtem AAA-Rosenquarz handgeschliffen und auf einen seidigen Glanz poliert. Angenehm kühl, spürbar schwer in der Hand und in klassischer Herzform – das Werkzeug für deine tägliche Gesichtsmassage und ein paar Minuten bewusste Selbstfürsorge.</p> <h3>Deine Vorteile auf einen Blick</h3>\n<ul>\n<li>\n<strong>Sanfte Gesichtsmassage:</strong> Die geschwungene Herzform schmiegt sich an Wangen, Kiefer und Hals und macht das tägliche Ausstreichen leicht.</li>\n<li>\n<strong>Angenehm kühlend:</strong> Rosenquarz bleibt von Natur aus kühl und fühlt sich am Morgen erfrischend auf der Haut an – ideal als kleiner Wach-Moment.</li>\n<li>\n<strong>Bewusstes Ritual:</strong> Schon ein paar Minuten täglich werden zu deiner kleinen Auszeit für entspannte Gesichtszüge.</li>\n<li>\n<strong>Wertige Haptik:</strong> Echter Naturstein liegt spürbar schwer und glatt in der Hand – kein Kunststoff-Imitat.</li>\n<li>\n<strong>Geschenkfertig:</strong> In edler Samt-Tasche mit Echtheitszertifikat – eine schöne Aufmerksamkeit für eine Freundin, die Schwester oder dich selbst.</li>\n</ul> <h3>Material &amp; Ausführung</h3>\n<ul>\n<li>Echter AAA-Rosenquarz, handgeschliffen und spiegelnd poliert</li>\n<li>Klassische Herzform, ca. 80 g</li>\n<li>Naturstein – jedes Stück ist in Maserung und Farbton ein Unikat</li>\n</ul> <h3>Inklusive</h3>\n<ul>\n<li>1× Rosenquarz Gua Sha Stein (Herzform, ca. 80 g)</li>\n<li>Anwendungs-Guide mit 6 Schritt-für-Schritt-Routinen (auf Deutsch)</li>\n<li>Premium Samt-Tasche zur sicheren Aufbewahrung</li>\n<li>Echtheitszertifikat AAA-Rosenquarz</li>\n</ul> <h3>So einfach geht's</h3>\n<p>Trage zuerst dein Lieblings-Gesichtsöl auf. Halte den Gua Sha flach im 30°-Winkel zur Haut und ziehe in langsamen, ausstreichenden Bewegungen von der Mitte nach aussen. Schon wenige Minuten am Morgen werden zu deinem festen Pflege-Moment.</p> <h3>Warum bei LuxeStyle CH kaufen?</h3>\n<ul>\n<li>Schweizer Brand – sorgfältig kuratiert in Belp.</li>\n<li>Faire Preise für ehrliche Premium-Qualität, ohne Aufpreis-Spielchen.</li>\n<li>Persönlicher DE/EN-Support, der dir bei Fragen wirklich antwortet.</li>\n</ul> <p>Gönn dir dein tägliches Gua-Sha-Ritual – jetzt bestellen und in wenigen Tagen zu Hause geniessen.</p>\n</div>\n<div style=\"margin-top:32px;padding:24px;background:#faf7f2;border:1px solid #e8dcc4;border-radius:8px;\">\n<h3 style=\"margin-top:0;color:#2c2c2c;font-size:18px;\">Schweizer Versprechen · LuxeStyle CH</h3>\n<table style=\"width:100%;border-collapse:collapse;margin-top:12px;\">\n<tr>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>Versand &amp; Lieferung</strong><br><small>Versand ab Werk · 10–20 Werktage · Tracking inklusive</small>\n</td>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen nach Eingang · Rücksendung zahlst du, bei Mangel wir</small>\n</td>\n</tr>\n<tr>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Sicheres Bezahlen</strong><br><small>TWINT · Visa · Mastercard · PayPal · SSL-verschlüsselt</small>\n</td>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Persönlicher Service</strong><br><small>Schweizer Shop · Support auf Deutsch &amp; Englisch · Antwort innert 24 h an Werktagen</small>\n</td>\n</tr>\n</table>\n</div>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Material:</strong> Samt</li></ul>\n</div><!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/gua-sha-richtig-anwenden-anleitung\">Gua Sha richtig anwenden: Schritt-für-Schritt Anleitung</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/self-care-routine-aufbauen-guide-anfaenger\">Die perfekte Self-Care-Routine aufbauen – dein vollständiger Guide</a>\n</div>",
+            "tags": [
+              "beauty",
+              "bild-ok"
+            ],
+            "totalInventory": 0,
+            "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-02.jpg?v=1779958408",
+            "images": [
+              {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-02.jpg?v=1779958408",
+                "altText": "Rosenquarz Gua Sha Set - 3 Schaber fuer Gesichtsmassage",
+                "mediaId": "gid://shopify/MediaImage/69528090280321"
+              },
+              {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-04.jpg?v=1779958409",
+                "altText": "Rosenquarz Gua Sha Geschenkset mit Roller",
+                "mediaId": "gid://shopify/MediaImage/69528090345857"
+              }
+            ],
+            "totalVariants": 1,
+            "variants": [
+              {
+                "id": "gid://shopify/ProductVariant/55732479295873",
+                "title": "Default Title",
+                "sku": "LX-21-ROSENQUARZ-GUA-SHA-SET",
+                "price": "24.90",
+                "inventoryQuantity": 0
+              }
+            ],
+            "currencyCode": "CHF"
+          },
+          {
+            "id": "gid://shopify/Product/15408457974145",
+            "title": "Jade Roller Premium Doppelseitig",
+            "vendor": "LuxeStyle",
+            "status": "ACTIVE",
+            "productType": "Beauty-Tools",
+            "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p>Zwei legendäre Beauty-Tools aus dem alten China, perfekt aufeinander abgestimmt zu einem täglichen Ritual. Der Jade Roller rollt morgendliche Schwellungen weg und massiert dein Serum tiefer ein; der Gua Sha Stein definiert in wenigen Minuten deine Gesichtskonturen und löst Verspannungen im Kiefer. Echter Jade in tiefem Grün – natürlich kühl, glatt poliert, langlebig. Dein natürliches Facelift, ganz ohne Nadel.</p> <h3>Deine Vorteile auf einen Blick</h3>\n<ul>\n<li>\n<strong>Sichtbar frischere Haut am Morgen</strong> – der Doppelkopf-Roller reduziert Schwellungen und belebt müde Gesichtszüge.</li>\n<li>\n<strong>Definierte Konturen</strong> – der Gua Sha Stein modelliert Wangenknochen und Kieferlinie in einer kurzen Abendroutine.</li>\n<li>\n<strong>Mehr Wirkung aus deinem Serum</strong> – die Tools massieren Pflegeprodukte tiefer in die Haut ein.</li>\n<li>\n<strong>Entspannung statt Verspannung</strong> – löst Spannungen im Kiefer- und Stirnbereich und baut Tagesstress ab.</li>\n<li>\n<strong>Angenehm kühlend</strong> – echter Jade bleibt von Natur aus kühl und wirkt beruhigend auf die Haut.</li>\n</ul> <h3>Material &amp; Ausführung</h3>\n<ul>\n<li>Echter Jade-Stein, glatt poliert und langlebig.</li>\n<li>Jade Roller mit grossem &amp; kleinem Doppelkopf – grosser Kopf fürs Gesicht, kleiner Kopf für die feine Augenpartie.</li>\n<li>Gua Sha Stein in klassischer Herzform.</li>\n<li>Jeder Stein ist ein natürliches Unikat – leichte Farb- und Maserungsunterschiede sind ein Echtheitsmerkmal, kein Mangel.</li>\n</ul> <h3>Inklusive im Set</h3>\n<ul>\n<li>1× Jade Roller mit grossem &amp; kleinem Doppelkopf</li>\n<li>1× Jade Gua Sha Stein (Herzform)</li>\n<li>Premium-Geschenkbox mit Magnetverschluss</li>\n<li>Schweizer Anleitung (DE) mit 7-Tage-Routine</li>\n<li>Reinigungstuch aus Mikrofaser</li>\n</ul> <h3>So wendest du es an</h3>\n<p><strong>Morgens:</strong> Jade Roller für rund 3 Minuten zum Abschwellen und Beleben – ideal nach kurzen Nächten.<br><strong>Abends:</strong> Gua Sha für rund 5 Minuten nach dem Serum, um Tagesstress abzubauen und die nächtliche Regeneration zu unterstützen.</p> <h3>Warum bei LuxeStyle CH kaufen?</h3>\n<ul>\n<li>Schweizer Brand – kuratiert in Belp, mit Sorgfalt ausgewählt.</li>\n<li>Faire Preise für Premium-Qualität, ohne Boutique-Aufschlag.</li>\n<li>Persönlicher Schweizer Kundenservice auf Deutsch und Englisch.</li>\n</ul> <p>Gönn dir dein tägliches Beauty-Ritual – oder verschenke es in der edlen Geschenkbox. Lege das Set jetzt in den Warenkorb.</p> <div style=\"margin-top:32px;padding:24px;background:#faf7f2;border:1px solid #e8dcc4;border-radius:8px;\">\n<h3 style=\"margin-top:0;color:#2c2c2c;font-size:18px;\">Schweizer Versprechen · LuxeStyle CH</h3>\n<table style=\"width:100%;border-collapse:collapse;margin-top:12px;\">\n<tr>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>Versand &amp; Lieferung</strong><br><small>Versand ab Werk · 10–20 Werktage · Tracking inklusive</small>\n</td>\n<td style=\"width:50%;padding:8px;vertical-align:top;\">\n<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen nach Eingang · Rücksendung zahlst du, bei Mangel wir</small>\n</td>\n</tr>\n<tr>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Sicheres Bezahlen</strong><br><small>TWINT · Visa · Mastercard · PayPal · SSL-verschlüsselt</small>\n</td>\n<td style=\"padding:8px;vertical-align:top;\">\n<strong>Persönlicher Service</strong><br><small>Schweizer Shop · Support auf Deutsch &amp; Englisch · Antwort innert 24 h an Werktagen</small>\n</td>\n</tr>\n</table>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/wellness-geschenke-selfcare-ideen\">Wellness Geschenke &amp; Self-Care: Ideen, die wirklich entspannen</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/gesichts-massage-tools-im-vergleich-jade-roller-gua-sha-ice-roller-mikrostrom\">Gesichts-Massage-Tools im Vergleich: Jade-Roller, Gua Sha, Ice Roller &amp; Mikrostrom</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/magazin/silk-pillowcase-bringt-sie-wirklich-was-dermatologen-test-2026\">Silk Pillowcase: Bringt sie wirklich was? Seide vs. Baumwolle 2026</a>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/magazin/9-geschenkideen-fur-frauen-unter-chf-60-muttertag-geburtstag-amp-mehr\">9 Geschenkideen für Frauen unter CHF 60 (Muttertag, Geburtstag &amp; mehr)</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+            "tags": [
+              "anti-aging",
+              "beauty tool",
+              "beauty-tools",
+              "bild-ok",
+              "bild-zu-klein",
+              "gesichtsmassage",
+              "Hautpflege",
+              "jade roller",
+              "kuratiert",
+              "luxestyle-ch",
+              "premium",
+              "swiss-brand",
+              "vegan"
+            ],
+            "totalInventory": 0,
+            "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/jade-roller-premium-doppelseitig.jpg?v=1781959257",
+            "images": [
+              {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/jade-roller-premium-doppelseitig.jpg?v=1781959257",
+                "altText": "Jade Roller Premium Doppelseitig – LuxeStyle Schweiz",
+                "mediaId": "gid://shopify/MediaImage/69731159376257"
+              }
+            ],
+            "totalVariants": 1,
+            "variants": [
+              {
+                "id": "gid://shopify/ProductVariant/55732479328641",
+                "title": "Default Title",
+                "sku": "LX-22-JADE-ROLLER-PREMIUM-DOPP",
+                "price": "22.90",
+                "inventoryQuantity": 0
+              }
+            ],
+            "currencyCode": "CHF"
+          }
+        ]
+      }
+    },
+    {
+      "localSource": "products/ATTRIBUTE-READS.json",
+      "sha256": "73454f50996fee1644fe8b14014e57a0e966597f7e7251efdeaeb0a03e2964ec",
+      "data": {
+        "readAt": "2026-10-28T23:48:51.685Z",
+        "data": {
+          "p0": {
+            "id": "gid://shopify/Product/15406765801857",
+            "handle": "tech-hero-geschenkbox-smartwatch-anc-ladestation",
+            "updatedAt": "2026-10-24T06:23:10Z",
+            "onlineStoreUrl": "https://luxestyle.ch/products/tech-hero-geschenkbox-smartwatch-anc-ladestation",
+            "metafields": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Metafield/198084817387905",
+                  "namespace": "mm-google-shopping",
+                  "key": "age_group",
+                  "type": "single_line_text_field",
+                  "value": "adult"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198094707622273",
+                  "namespace": "global",
+                  "key": "title_tag",
+                  "type": "string",
+                  "value": "Tech-Geschenkbox mit Smartwatch und ANC-Kopfhörern | LuxeStyle"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198742123282817",
+                  "namespace": "custom",
+                  "key": "lieferzeit",
+                  "type": "json",
+                  "value": "{\"ch\":\"10–20\",\"tier\":\"direkt\",\"weg\":\"Direktversand ab Lieferantenlager\"}"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198994978636161",
+                  "namespace": "mm-google-shopping",
+                  "key": "condition",
+                  "type": "single_line_text_field",
+                  "value": "new"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198995430539649",
+                  "namespace": "mm-google-shopping",
+                  "key": "google_product_category",
+                  "type": "single_line_text_field",
+                  "value": "Apparel & Accessories > Jewelry > Watches"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199000866423169",
+                  "namespace": "mm-google-shopping",
+                  "key": "custom_product",
+                  "type": "boolean",
+                  "value": "true"
+                },
+                {
+                  "id": "gid://shopify/Metafield/200471106584961",
+                  "namespace": "mm-google-shopping",
+                  "key": "gender",
+                  "type": "single_line_text_field",
+                  "value": "unisex"
+                },
+                {
+                  "id": "gid://shopify/Metafield/210058606838151",
+                  "namespace": "global",
+                  "key": "description_tag",
+                  "type": "string",
+                  "value": "Tech-Geschenkbox mit Smartwatch Pro, ANC-Kopfhörern und 3-in-1-Ladegerät. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjoyMTAwNTg2MDY4MzgxNTEsImxhc3RfdmFsdWUiOiIyMTAwNTg2MDY4MzgxNTEifQ=="
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/55728148054401",
+                  "sku": "LXSCH-GIFT-TECH-HERO",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "availableForSale": true,
+                  "inventoryItem": {
+                    "id": "gid://shopify/InventoryItem/55076172300673",
+                    "tracked": false
+                  },
+                  "selectedOptions": [
+                    {
+                      "name": "Title",
+                      "value": "Default Title"
+                    }
+                  ]
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo1NTcyODE0ODA1NDQwMSwibGFzdF92YWx1ZSI6MX0="
+              }
+            }
+          },
+          "p1": {
+            "id": "gid://shopify/Product/15408457744769",
+            "handle": "premium-bambus-aroma-diffuser-300ml",
+            "updatedAt": "2026-10-24T06:23:10Z",
+            "onlineStoreUrl": "https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml",
+            "metafields": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Metafield/198093350896001",
+                  "namespace": "global",
+                  "key": "description_tag",
+                  "type": "string",
+                  "value": "Bambus Aroma-Diffuser mit 300 ml Fassungsvermögen für Wohn- und Schlafräume. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+                },
+                {
+                  "id": "gid://shopify/Metafield/198094870315393",
+                  "namespace": "global",
+                  "key": "title_tag",
+                  "type": "string",
+                  "value": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198742123381121",
+                  "namespace": "custom",
+                  "key": "lieferzeit",
+                  "type": "json",
+                  "value": "{\"ch\":\"10–20\",\"tier\":\"direkt\",\"weg\":\"Direktversand ab Lieferantenlager\"}"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198994979520897",
+                  "namespace": "mm-google-shopping",
+                  "key": "condition",
+                  "type": "single_line_text_field",
+                  "value": "new"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198995984318849",
+                  "namespace": "mm-google-shopping",
+                  "key": "google_product_category",
+                  "type": "single_line_text_field",
+                  "value": "Home & Garden > Decor > Home Fragrance Accessories"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199000866455937",
+                  "namespace": "mm-google-shopping",
+                  "key": "custom_product",
+                  "type": "boolean",
+                  "value": "true"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199129647808897",
+                  "namespace": "mm-google-shopping",
+                  "key": "age_group",
+                  "type": "single_line_text_field",
+                  "value": "adult"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199129647841665",
+                  "namespace": "mm-google-shopping",
+                  "key": "gender",
+                  "type": "single_line_text_field",
+                  "value": "unisex"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjoxOTkxMjk2NDc4NDE2NjUsImxhc3RfdmFsdWUiOiIxOTkxMjk2NDc4NDE2NjUifQ=="
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/55732479099265",
+                  "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "availableForSale": true,
+                  "inventoryItem": {
+                    "id": "gid://shopify/InventoryItem/55080536703361",
+                    "tracked": false
+                  },
+                  "selectedOptions": [
+                    {
+                      "name": "Title",
+                      "value": "Default Title"
+                    }
+                  ]
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTA5OTI2NSwibGFzdF92YWx1ZSI6MX0="
+              }
+            }
+          },
+          "p2": {
+            "id": "gid://shopify/Product/15408457941377",
+            "handle": "rosenquarz-gua-sha-set",
+            "updatedAt": "2026-10-24T13:18:52Z",
+            "onlineStoreUrl": "https://luxestyle.ch/products/rosenquarz-gua-sha-set",
+            "metafields": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Metafield/198093352370561",
+                  "namespace": "global",
+                  "key": "description_tag",
+                  "type": "string",
+                  "value": "Rosenquarz Gua Sha Set für die Gesichtsmassage. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+                },
+                {
+                  "id": "gid://shopify/Metafield/198181538365825",
+                  "namespace": "global",
+                  "key": "title_tag",
+                  "type": "string",
+                  "value": "Rosenquarz Gua Sha Set | LuxeStyle Schweiz"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198742123577729",
+                  "namespace": "custom",
+                  "key": "lieferzeit",
+                  "type": "json",
+                  "value": "{\"ch\":\"10–20\",\"tier\":\"direkt\",\"weg\":\"Direktversand ab Lieferantenlager\"}"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198994980405633",
+                  "namespace": "mm-google-shopping",
+                  "key": "condition",
+                  "type": "single_line_text_field",
+                  "value": "new"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198995433914753",
+                  "namespace": "mm-google-shopping",
+                  "key": "google_product_category",
+                  "type": "single_line_text_field",
+                  "value": "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199000866521473",
+                  "namespace": "mm-google-shopping",
+                  "key": "custom_product",
+                  "type": "boolean",
+                  "value": "true"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199129647939969",
+                  "namespace": "mm-google-shopping",
+                  "key": "age_group",
+                  "type": "single_line_text_field",
+                  "value": "adult"
+                },
+                {
+                  "id": "gid://shopify/Metafield/200471849009537",
+                  "namespace": "mm-google-shopping",
+                  "key": "gender",
+                  "type": "single_line_text_field",
+                  "value": "unisex"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjoyMDA0NzE4NDkwMDk1MzcsImxhc3RfdmFsdWUiOiIyMDA0NzE4NDkwMDk1MzcifQ=="
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/55732479295873",
+                  "sku": "LX-21-ROSENQUARZ-GUA-SHA-SET",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "availableForSale": true,
+                  "inventoryItem": {
+                    "id": "gid://shopify/InventoryItem/55080536899969",
+                    "tracked": false
+                  },
+                  "selectedOptions": [
+                    {
+                      "name": "Title",
+                      "value": "Default Title"
+                    }
+                  ]
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTI5NTg3MywibGFzdF92YWx1ZSI6MX0="
+              }
+            }
+          },
+          "p3": {
+            "id": "gid://shopify/Product/15408457974145",
+            "handle": "jade-roller-premium-doppelseitig",
+            "updatedAt": "2026-10-28T19:38:44Z",
+            "onlineStoreUrl": "https://luxestyle.ch/products/jade-roller-premium-doppelseitig",
+            "metafields": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Metafield/198093352599937",
+                  "namespace": "global",
+                  "key": "description_tag",
+                  "type": "string",
+                  "value": "Doppelseitiger Jade Roller für die tägliche Gesichtspflege. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+                },
+                {
+                  "id": "gid://shopify/Metafield/198181536203137",
+                  "namespace": "global",
+                  "key": "title_tag",
+                  "type": "string",
+                  "value": "Jade Roller Premium doppelseitig | LuxeStyle"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198742123741569",
+                  "namespace": "custom",
+                  "key": "lieferzeit",
+                  "type": "json",
+                  "value": "{\"ch\":\"10–20\",\"tier\":\"direkt\",\"weg\":\"Direktversand ab Lieferantenlager\"}"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198994980536705",
+                  "namespace": "mm-google-shopping",
+                  "key": "condition",
+                  "type": "single_line_text_field",
+                  "value": "new"
+                },
+                {
+                  "id": "gid://shopify/Metafield/198995435028865",
+                  "namespace": "mm-google-shopping",
+                  "key": "google_product_category",
+                  "type": "single_line_text_field",
+                  "value": "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199000866554241",
+                  "namespace": "mm-google-shopping",
+                  "key": "custom_product",
+                  "type": "boolean",
+                  "value": "true"
+                },
+                {
+                  "id": "gid://shopify/Metafield/199129647972737",
+                  "namespace": "mm-google-shopping",
+                  "key": "age_group",
+                  "type": "single_line_text_field",
+                  "value": "adult"
+                },
+                {
+                  "id": "gid://shopify/Metafield/200453685838209",
+                  "namespace": "mm-google-shopping",
+                  "key": "gender",
+                  "type": "single_line_text_field",
+                  "value": "unisex"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjoyMDA0NTM2ODU4MzgyMDksImxhc3RfdmFsdWUiOiIyMDA0NTM2ODU4MzgyMDkifQ=="
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/55732479328641",
+                  "sku": "LX-22-JADE-ROLLER-PREMIUM-DOPP",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "availableForSale": true,
+                  "inventoryItem": {
+                    "id": "gid://shopify/InventoryItem/55080536932737",
+                    "tracked": false
+                  },
+                  "selectedOptions": [
+                    {
+                      "name": "Title",
+                      "value": "Default Title"
+                    }
+                  ]
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTMyODY0MSwibGFzdF92YWx1ZSI6MX0="
+              }
+            }
+          }
+        },
+        "omitted": "Bewertungs-Widgets nicht in dieses Attributpaket übernommen"
+      }
+    },
+    {
+      "localSource": "products/IMAGE-READS.json",
+      "sha256": "a597523403a21f5cb4b030417d9010700ffc4af94ea054bc6de5ec26eec5102a",
+      "data": [
+        {
+          "productId": "gid://shopify/Product/15406765801857",
+          "file": "15406765801857-1.jpg",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tech-hero-gift-box-smartwatch-pro-anc.jpg?v=1781959251",
+          "status": 200,
+          "bytes": 122259,
+          "sha256": "63f0adac7f7134fcb89ccdf1850c10ee4be5c4402e5298abade4851490eea9cb"
+        },
+        {
+          "productId": "gid://shopify/Product/15408457744769",
+          "file": "15408457744769-1.jpg",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-bambus-aroma-diffuser-300ml.jpg?v=1781959253",
+          "status": 200,
+          "bytes": 80178,
+          "sha256": "dad8a9b0de8ebfd2086e28d490f175e8cec348986bee68b16aa1b55995c47b48"
+        },
+        {
+          "productId": "gid://shopify/Product/15408457941377",
+          "file": "15408457941377-1.jpg",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-02.jpg?v=1779958408",
+          "status": 200,
+          "bytes": 68404,
+          "sha256": "c594b7e776c2471dc615bef0d072ac79c84737ccdabc9fcc171d388ab6561a7b"
+        },
+        {
+          "productId": "gid://shopify/Product/15408457941377",
+          "file": "15408457941377-2.jpg",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rosenquarz-gua-sha-set-04.jpg?v=1779958409",
+          "status": 200,
+          "bytes": 74078,
+          "sha256": "5a76d77fbaa636b90ebe58e3a0524ffd8cb2ab1eae8c49f5bb42f65a297f0ef2"
+        },
+        {
+          "productId": "gid://shopify/Product/15408457974145",
+          "file": "15408457974145-1.jpg",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/jade-roller-premium-doppelseitig.jpg?v=1781959257",
+          "status": 200,
+          "bytes": 51557,
+          "sha256": "a16ae95d8f2880a7627da5a107cfc5323e6400f0928e0d71ff4fcfa7e5cbdd67"
+        }
+      ]
+    },
+    {
+      "localSource": "products/STOREFRONT-CHECK.json",
+      "sha256": "d8e6b92ba37ebcd0dc3cf4dc557f5b10f817d0aa9fc846e5637bda856249a24b",
+      "data": {
+        "storefront": [
+          {
+            "productId": "gid://shopify/Product/15406765801857",
+            "url": "https://luxestyle.ch/products/tech-hero-geschenkbox-smartwatch-anc-ladestation.js",
+            "httpStatus": 200,
+            "publicProductId": 15406765801857,
+            "available": true,
+            "variants": [
+              {
+                "id": 55728148054401,
+                "available": true,
+                "price": 19990,
+                "sku": "LXSCH-GIFT-TECH-HERO"
+              }
+            ],
+            "currencyBasis": "Native Shop CHF; public JS prices in minor units",
+            "responseSha256": "19d5eeedce25f5608c0824c372fb78aa7d812d95a9f9ae4591f6974807078b4f"
+          },
+          {
+            "productId": "gid://shopify/Product/15408457744769",
+            "url": "https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml.js",
+            "httpStatus": 200,
+            "publicProductId": 15408457744769,
+            "available": true,
+            "variants": [
+              {
+                "id": 55732479099265,
+                "available": true,
+                "price": 3990,
+                "sku": "LX-11-PREMIUM-BAMBUS-AROMA-DIF"
+              }
+            ],
+            "currencyBasis": "Native Shop CHF; public JS prices in minor units",
+            "responseSha256": "f4576063a3097b53d0ac4daaf876cc0fcc36b4a4231321bee8f30fc07ee203fa"
+          },
+          {
+            "productId": "gid://shopify/Product/15408457941377",
+            "url": "https://luxestyle.ch/products/rosenquarz-gua-sha-set.js",
+            "httpStatus": 200,
+            "publicProductId": 15408457941377,
+            "available": true,
+            "variants": [
+              {
+                "id": 55732479295873,
+                "available": true,
+                "price": 2490,
+                "sku": "LX-21-ROSENQUARZ-GUA-SHA-SET"
+              }
+            ],
+            "currencyBasis": "Native Shop CHF; public JS prices in minor units",
+            "responseSha256": "e3a7d32f836258dcacf0916a23a62dca70a66482b27e687fc8b9312d30cf1de8"
+          },
+          {
+            "productId": "gid://shopify/Product/15408457974145",
+            "url": "https://luxestyle.ch/products/jade-roller-premium-doppelseitig.js",
+            "httpStatus": 200,
+            "publicProductId": 15408457974145,
+            "available": true,
+            "variants": [
+              {
+                "id": 55732479328641,
+                "available": true,
+                "price": 2290,
+                "sku": "LX-22-JADE-ROLLER-PREMIUM-DOPP"
+              }
+            ],
+            "currencyBasis": "Native Shop CHF; public JS prices in minor units",
+            "responseSha256": "b0870629377af1cf2828ad6afb7126d6109f49cd49cc12cec1accbbbe1208a26"
+          }
+        ],
+        "images": [
+          {
+            "file": "15408457974145-1.jpg",
+            "width": 480,
+            "height": 480
+          },
+          {
+            "file": "15408457941377-2.jpg",
+            "width": 800,
+            "height": 800
+          },
+          {
+            "file": "15406765801857-1.jpg",
+            "width": 1000,
+            "height": 1000
+          },
+          {
+            "file": "15408457744769-1.jpg",
+            "width": 800,
+            "height": 800
+          },
+          {
+            "file": "15408457941377-1.jpg",
+            "width": 800,
+            "height": 800
+          }
+        ],
+        "scope": "Vier exakte Produkt-JSON-GETs; kein Checkout, Warenkorb oder Kauf."
+      }
+    },
+    {
+      "localSource": "source-audit/LOCAL-SOURCE-MANIFEST.json",
+      "sha256": "7c90a151ee92738914a6d12d44f13fa8b8debed62a13a92baa0e3773bfe17996",
+      "data": [
+        {
+          "path": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sha256": "481c98a41cd614a50b0bd7b5ff4a52e5845f10b10a8310bc0710ac42f271c994",
+          "bytes": 127880954
+        },
+        {
+          "path": "/workspace/luxestyle-review/tagespruefung-20261027/text-queue/WORKLIST-FINAL.csv",
+          "sha256": "bc5878db971b2c1d46679a9382a6cdee7b593d2b5192997185b2eba252a5b15d",
+          "bytes": 16644350
+        },
+        {
+          "path": "/workspace/luxestyle-review/produkttexte-20261026/generator/fixtures/MANIFEST.json",
+          "sha256": "795149f8ad0d45166e4d18aed79040b619dfe884d76e447998888b829889fe0b",
+          "bytes": 15825
+        },
+        {
+          "path": "/workspace/luxestyle-review/produkttexte-20261026/generator/fixtures/05-sensibler-alttext-manuelle-pruefung-15408457941377.source.json",
+          "sha256": "6ad32a5c6a26886c86e90db845931900676a0080ad209bbaf5c19a207d5a2c5b",
+          "bytes": 6545
+        }
+      ]
+    },
+    {
+      "localSource": "source-audit/REPO-QUELLEN.json",
+      "sha256": "ea6fb81fa30e366117cd428bcea5a724eefc5e3d17b1fe989651a5e0e680106c",
+      "data": {
+        "main": {
+          "sha": "b708c809c2b9ef074bf48999fdfe5b28d0ee3bbe"
+        },
+        "pinterest": {
+          "path": "dropship/pinterest_pins.csv",
+          "gitBlobSha": "808a4a33b3fd96a6510965ac18978ebdd5c8da67",
+          "matchedLines": [
+            {
+              "line": 130,
+              "text": "\"Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger | LuxeStyle CH\",\"https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/dropship/pins/py2-054-tech-hero-geschenkbox-smartwatch-pro-anc-kopfh-rer-3-in.jpg\",\"Herrenmode Schweiz\",\"\",\"Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger 👔 Schweizer Online-Shop, weltweiter Versand. CHF 199.90 — −10% mit Code WELCOME10. #herrenmode #menstyle #schweiz #menswear\",\"https://luxestyle.ch/products/🎁-tech-hero-gift-box-smartwatch-pro-anc-headphones-3-in-1-wireless-charger\",\"\",\"herrenmode, menstyle, herren\"\r"
+            },
+            {
+              "line": 134,
+              "text": "\"Rosenquarz Gua Sha Set | LuxeStyle CH\",\"https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/dropship/pins/py2-058-rosenquarz-gua-sha-set.jpg\",\"Home & Geschenkideen\",\"\",\"Rosenquarz Gua Sha Set 🎁 Schweizer Online-Shop, weltweiter Versand. CHF 24.90 — −10% mit Code WELCOME10. #geschenkidee #gadget #schweiz #geschenk #homedecor\",\"https://luxestyle.ch/products/rosenquarz-gua-sha-set\",\"\",\"geschenkidee, gadget, geschenke schweiz\"\r"
+            },
+            {
+              "line": 135,
+              "text": "\"Jade Roller Premium Doppelseitig | LuxeStyle CH\",\"https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/dropship/pins/py2-059-jade-roller-premium-doppelseitig.jpg\",\"Home & Geschenkideen\",\"\",\"Jade Roller Premium Doppelseitig 🎁 Schweizer Online-Shop, weltweiter Versand. CHF 22.90 — −10% mit Code WELCOME10. #geschenkidee #gadget #schweiz #geschenk #homedecor\",\"https://luxestyle.ch/products/jade-roller-premium-doppelseitig\",\"\",\"geschenkidee, gadget, geschenke schweiz\"\r"
+            }
+          ],
+          "classification": "historische Werbetexte; keine Lieferanten- oder Rechtequelle"
+        },
+        "imageAudit": {
+          "path": "dropship/image-audit-report.csv",
+          "gitBlobSha": "4ed34afa468d6667d078a1e5cacd6f5c186c5ab3",
+          "lines": [
+            1,
+            2
+          ],
+          "excerpt": "handle,issue,action,width,height,featured_url\njade-roller-premium-doppelseitig,zu-kleine-aufloesung,NIEDRIGE-AUFLOESUNG,480,480,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/jade-roller-premium-doppelseitig.jpg?v=1781959257",
+          "classification": "historischer Bildaudit; aktuelles Bild von Root frisch zu prüfen"
+        },
+        "handoff": {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "branch": "codex/luxestyle-claude-handoff-20261018",
+          "gitBlobSha": "063796988dd8eb9e8c06b10ed52f99b0616723e6",
+          "exactProductMatches": 0,
+          "classification": "kein Treffer für vier IDs bzw genaue Namen; keine vollständige Abwesenheitsgarantie"
+        }
+      }
+    },
+    {
+      "localSource": "source-audit/VORHANDENE-REVIEWQUEUE.json",
+      "sha256": "837bed7a961ca7fe7800423050dd5e99acc36265bba8afb5fd9fb50da4ab0b26",
+      "data": [
+        {
+          "product_id": "gid://shopify/Product/15406765801857",
+          "title": "Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger",
+          "handle": "tech-hero-geschenkbox-smartwatch-anc-ladestation",
+          "product_type": "Geschenkset",
+          "state": "NEEDS_QUALITY_REVIEW",
+          "priority": "30",
+          "snapshot_description_sha256": "f05519a8148a7693535a868f8149925a80939af5c120798d71d5ace9daf2710f",
+          "review_basis_sha256": "f05519a8148a7693535a868f8149925a80939af5c120798d71d5ace9daf2710f",
+          "known_after_sha256": ""
+        },
+        {
+          "product_id": "gid://shopify/Product/15408457744769",
+          "title": "Premium Bambus Aroma Diffuser 300ml",
+          "handle": "premium-bambus-aroma-diffuser-300ml",
+          "product_type": "Wellness & Aromatherapie",
+          "state": "NEEDS_QUALITY_REVIEW",
+          "priority": "30",
+          "snapshot_description_sha256": "09cab3e355a82da774156affdc6dbc1690031939a8513fe25441217a053a9c6a",
+          "review_basis_sha256": "09cab3e355a82da774156affdc6dbc1690031939a8513fe25441217a053a9c6a",
+          "known_after_sha256": ""
+        },
+        {
+          "product_id": "gid://shopify/Product/15408457941377",
+          "title": "Rosenquarz Gua Sha Set",
+          "handle": "rosenquarz-gua-sha-set",
+          "product_type": "Beauty-Tools",
+          "state": "NEEDS_QUALITY_REVIEW",
+          "priority": "30",
+          "snapshot_description_sha256": "758120f19e8b72d48ba08c7b93d16422fab08bcba6f7ca8d33da83a39d7957c1",
+          "review_basis_sha256": "758120f19e8b72d48ba08c7b93d16422fab08bcba6f7ca8d33da83a39d7957c1",
+          "known_after_sha256": ""
+        },
+        {
+          "product_id": "gid://shopify/Product/15408457974145",
+          "title": "Jade Roller Premium Doppelseitig",
+          "handle": "jade-roller-premium-doppelseitig",
+          "product_type": "Beauty-Tools",
+          "state": "NEEDS_QUALITY_REVIEW",
+          "priority": "30",
+          "snapshot_description_sha256": "7bf5ea05c248baed5939e3cb95e99b2150cd7572d8830392544e81a5b70afd28",
+          "review_basis_sha256": "7bf5ea05c248baed5939e3cb95e99b2150cd7572d8830392544e81a5b70afd28",
+          "known_after_sha256": ""
+        }
+      ]
+    },
+    {
+      "localSource": "source-audit/MERCHANT-TEILBELEGE.json",
+      "sha256": "35b3df120647bd418a231513bfbe317f58df90ff3ff9ab8b7dbfa873721de3a5",
+      "data": [
+        {
+          "file": "/workspace/luxestyle-review/cooperation-mod-20261028/drive/source/product_issues_2026-10-28_15-11-55.csv",
+          "sha256": "cfd75e028db223b4643d53912229e366068a43ca8a56b80c2aaab129da38a9dd",
+          "selectedRows": [
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Liechtenstein",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Liechtenstein",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            }
+          ]
+        },
+        {
+          "file": "/workspace/luxestyle-review/cooperation-mod-20261028/drive/source/product_issues_2026-10-28_15-12-13.csv",
+          "sha256": "4c82f3992a6751e7cc301cf8229bf7bbb2b69652e0ac37dc3a2c4fdc5a4a7699",
+          "selectedRows": [
+            {
+              "Item ID": "shopify_ZZ_15408457941377_55732479295873",
+              "Title": "Rosenquarz Gua Sha Set | LuxeStyle Schweiz",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457941377_55732479295873",
+              "Title": "Rosenquarz Gua Sha Set | LuxeStyle Schweiz",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Liechtenstein",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Low",
+              "Feed label": "CHF_99383214465",
+              "Language": "de",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Shopping ads quota limit reached (outside of CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum quota for advertising products on Google outside of the CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Liechtenstein",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Available soon",
+              "Feed label": "CHF_99383214465",
+              "Language": "fr",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Dynamic remarketing",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            },
+            {
+              "Item ID": "shopify_ZZ_15408457744769_55732479099265",
+              "Title": "Premium Bambus Aroma-Diffuser 300 ml | LuxeStyle",
+              "Click potential": "Available soon",
+              "Feed label": "CHF_99383214465",
+              "Language": "fr",
+              "Item status": "ELIGIBLE_LIMITED",
+              "Channels": "ONLINE",
+              "Issue title": "Over capacity for Shopping ads (in CSS program)",
+              "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+              "Traffic type": "Shopping ads",
+              "Country": "Switzerland",
+              "Issue severity": "SEVERITY_DISAPPROVED"
+            }
+          ]
+        },
+        {
+          "file": "/workspace/luxestyle-review/cooperation-mod-20261028/drive/source/product_issues_2026-10-28_15-12-40.csv",
+          "sha256": "0cb767fa38e964723bd4d4f44a2ce8495a2917e5964602600317867cbf458da0",
+          "selectedRows": []
+        }
+      ]
+    }
+  ],
+  "salesGoal": {
+    "startAt": "2026-10-28T23:46:11Z",
+    "timezone": "Europe/Zurich",
+    "localStartAt": "2026-10-29T00:46:11+01:00",
+    "targetCount": 1,
+    "criterion": "Neue nicht stornierte, nicht als Test markierte Shopify-Bestellung mit financial status PAID und positivem Zahlungseingang; erstellt ab Startzeitpunkt",
+    "status": "not_reached_in_checked_window",
+    "schedule": "unchanged",
+    "lastCheckedAt": "2026-10-28T23:52:05Z",
+    "checkedWindow": {
+      "from": "2026-10-28T23:46:11Z",
+      "to": "2026-10-28T23:52:05Z"
+    },
+    "qualifyingOrderCount": 0,
+    "completeWindow": true,
+    "customerDataInPublicDocs": false,
+    "attribution": "Keine kausale Zuordnung zu Codex-Arbeit aus diesem Bestellstatus"
+  }
+}
