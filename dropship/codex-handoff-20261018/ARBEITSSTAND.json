@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 13,
-  "updatedAt": "2026-10-29T21:07:25.635334+00:00",
+  "revision": 14,
+  "updatedAt": "2026-10-29T21:38:14.814026+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -809,11 +809,12 @@
       "title": "8’327 exportierte Merchant-Preisfehler an der tatsächlichen Quelle eingrenzen",
       "lastEvidenceDate": "2026-10-29",
       "belegArt": "GEMESSEN/QUELLE",
-      "lastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung.",
+      "lastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung. Neue enge Quellen-Gegenprobe: zweite CSV-ID shopify_ZZ_15413245510017_55749268537729 entspricht aktiver nativer Variante CHF12.90; Produkt trägt ae-import, nicht CJ/Printful zugeordnet. Erste CSV-ID15413245510017_16361786756345133009 hat undurchsichtigen Variantenanteil: gleiche Variante/Quelle unbekannt. Konto5797470070 bestätigt, Connector-Schreibaktionen leer. Gezielter neuer Read ohne abgeschlossene Antwort bis Beenden der wartenden Lesezelle; keine leeren Daten/404 behauptet. Zwei Printful/CJ-Codepatches beheben keine nachgewiesene Merchant-Ursache.",
       "nextAllowedStep": "Aktive Datenquelle/Art, exakt eingereichte URL und Rohpreis/Währung/availability/Verarbeitung einer betroffenen CH- und DE-Original-ID authentifiziert eng lesen. Datei 2 ersetzt diese Artikel-/Quellendaten nicht. Bei Bedarf nur gemeinsamen Produktpräfix 15413245510017 anhand der dokumentierten Original-IDs abgleichen; gleiche Variante/Quelle nicht voraussetzen. Anschliessend engen Quelldiff prüfen; DRAFT, Sperren und Preise erhalten.",
       "blockers": [
-        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen in beiden CSVs und im früher unbeantworteten Einzelabruf",
-        "Authentifizierter isolierter Merchant-Writer weiter unbekannt"
+        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen weiter; gezielter neuer Artikelread ohne abgeschlossene Antwort",
+        "Windsor-Merchant-Connector bietet aktuell keine Schreibaktionen; anderer authentifizierter isolierter Writer nicht bestätigt",
+        "Gleicher Produktpräfix/Titel zwischen CSVs beweist keine gleiche Variante oder doppelte aktive Quelle"
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -845,6 +846,21 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEITER-EXPORT-BELEGE-20261029.json",
           "gitBlobSha": "369958c4c487f21ad28a21c95fe07871129f605b",
           "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-PRUEFUNG-20261029.md",
+          "gitBlobSha": "235c8d4ad9d053f40aa138c53e3bb84f4a78d539",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-REVIEW-20261029.md",
+          "gitBlobSha": "8785b359c6f063d799384ee9c46a59ec9698f465",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-BELEGE-20261029.json",
+          "gitBlobSha": "13d09c41af5302a216b65911a3f9e74e348b22c4",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -859,6 +875,15 @@
             "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt"
           ],
           "sourceRevision": 12
+        },
+        {
+          "at": "2026-10-29T21:38:14.814026+00:00",
+          "previousLastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung.",
+          "previousBlockers": [
+            "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen in beiden CSVs und im früher unbeantworteten Einzelabruf",
+            "Authentifizierter isolierter Merchant-Writer weiter unbekannt"
+          ],
+          "sourceRevision": 13
         }
       ],
       "resolvedBlockers": [
@@ -914,6 +939,106 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITEN-VIDEO-20261029.md",
           "gitBlobSha": "ca7a099338ca0dc009dcc105544cfd5de754c9a2",
           "readAt": "2026-10-29T21:07:25.635334+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination"
+    },
+    {
+      "id": "printful-sync-variant-identity",
+      "priority": 2,
+      "priorityKind": "SETZUNG",
+      "state": "lokal_gepruefter_entwurf",
+      "title": "Printful-Auftragsvariante an historischer Bestell-SKU sichern",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
+      "lastEvidence": "Patch gegen main a74459a94a800b24d4b348332154d25f516920b8: alte Katalog-SKU-Priorität konnte synthetisch falsche Variante bestellen. Historische Bestell-SKU massgebend, Konflikt/fehlende/ungültige SKU sperrt ganzen Auftrag vor POST. Vorher24/8, nachher32/0 unabhängig bestätigt; Platzierung140/0, optionaler Katalogteil ausgelassen. Keine echten Bestell-/Kundendaten gelesen, kein Sync. Zwei native Printful-Tag-Produkte je4 Varianten gelesen; Hoodie15422815699329 hat unter Material den prüfpflichtigen Wert Sweatshirt(Rundhals), keine Attributänderung.",
+      "nextAllowedStep": "Separaten Entwurf für Idempotenz und geprüfte Shopify-Quittierung mit simuliertem Anbietererfolg/Markerfehler sowie unbekanntem POST entwickeln; vorhandene Zuordnungen vor Migration klären. Native Printful-Katalogvariante vor Attributnachträgen lesen.",
+      "blockers": [
+        "Kein produktiver Merge/Deployment/Sync; Claude-Quittung unbekannt",
+        "external_id/Idempotenz und Shopify-userErrors-Quittierung bleiben offen; fehlende Designprüfung kann PASS ergeben; maximal50 Positionen",
+        "Printful-Laufzeit-Key und Store-ID hier nicht konfiguriert; kein authentifizierter Lieferantenkatalogbeleg für Material/Modell"
+      ],
+      "acceptance": [
+        "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
+        "Nicht mit produktivem Fix oder Merchant-Freigabe gleichsetzen",
+        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen und Rücklesung"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-PRUEFUNG-20261029.md",
+          "gitBlobSha": "235c8d4ad9d053f40aa138c53e3bb84f4a78d539",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-REVIEW-20261029.md",
+          "gitBlobSha": "8785b359c6f063d799384ee9c46a59ec9698f465",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-BELEGE-20261029.json",
+          "gitBlobSha": "13d09c41af5302a216b65911a3f9e74e348b22c4",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-VARIANTEN-SCHUTZ-20261029.patch",
+          "gitBlobSha": "e0c5ac0edcae63bdf8453c2d24ed9fca65000260",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-SYNC-SCHUTZ-20261029.patch",
+          "gitBlobSha": "f95fdf3bf0fcdfe6ea9dae4eed125c2e0ee44caa",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_coordination"
+    },
+    {
+      "id": "cj-variant-price-identity",
+      "priority": 2,
+      "priorityKind": "SETZUNG",
+      "state": "lokal_gepruefter_entwurf",
+      "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
+      "lastEvidenceDate": "2026-10-29",
+      "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
+      "lastEvidence": "Lokal gegen aktuellen main korrigiert: eindeutige Quell-SKU statt erster gefilterter CJ-Zeile; unbekannte Kosten, fehlender CHF-Nachweis oder fehlender expliziter Kurs blockieren. Alte/geänderte Pläne und fremde/doppelte/unlesbare SKU-Treffer sperren productSet. Reservierung vor Send nur im Prozess; partielle ACK unbekannt.119 neue Prüfungen unabhängig bestätigt;89 reine/20 Stecker/288 Grind zusätzlich grün, Mengenrabattvergleich ausgelassen. Syntax/Patch-Roundtrip grün; CI-Simulation vor Start wegen fehlender YAML abgebrochen; native GraphQL-Vorprüfung skipped. Keine API-Schreibausführung.",
+      "nextAllowedStep": "Separaten SKU_NACHZIEHEN-Pfad gezielt gegen unbekannte/paginierte Suchantworten und unklare Writes härten. Für produktiven Mehrvariantenlauf genaue CJ-Zuordnung, aktuelle Kosten/Kurs und bestehende Schutzregeln erneut belegen; kein pauschaler Reimport.",
+      "blockers": [
+        "Separater SKU_NACHZIEHEN-Writer unverändert: nodes||[], keine pageInfo, Reservierung erst nach ACK",
+        "Kein dauerhafter/prozessübergreifender Lock oder vollständiger produktiver Integrationsnachweis",
+        "CJ-Helfer/Connector vorhanden, aber im geprüften Windsor-Zugang kein CJ-Konto verbunden; keine Lieferanten-Kataloglesung"
+      ],
+      "acceptance": [
+        "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
+        "Nicht mit produktivem Fix oder Merchant-Freigabe gleichsetzen",
+        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen und Rücklesung"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-PRUEFUNG-20261029.md",
+          "gitBlobSha": "235c8d4ad9d053f40aa138c53e3bb84f4a78d539",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-REVIEW-20261029.md",
+          "gitBlobSha": "8785b359c6f063d799384ee9c46a59ec9698f465",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-BELEGE-20261029.json",
+          "gitBlobSha": "13d09c41af5302a216b65911a3f9e74e348b22c4",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-VARIANTEN-SCHUTZ-20261029.patch",
+          "gitBlobSha": "e0c5ac0edcae63bdf8453c2d24ed9fca65000260",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-SYNC-SCHUTZ-20261029.patch",
+          "gitBlobSha": "f95fdf3bf0fcdfe6ea9dae4eed125c2e0ee44caa",
+          "readAt": "2026-10-29T21:38:14.814026+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -998,6 +1123,12 @@
       "at": "2026-10-29T21:07:25.635334+00:00",
       "actor": "codex",
       "action": "Zweiten Merchant-Nutzerexport über Drive vollständig geprüft;32MiB-Inhaltsblocker gelöst, Datenquellen-/URL-Zuordnung bleibt offen. Auf neuen Websiteauftrag konkrete separate LuxeStyle-Startseitenvorschau im bestehenden UNPUBLISHED-Theme gebaut, validiert, exakt zurückgelesen und nativDesktop/Mobil geprüft. MAIN und ursprüngliche Templates erhalten. Gleiches Master-Briefing für Webeinsatz präzisiert; keine MP4, Social-, Merchant-, Produkt-, Flow-, Budget- oder Live-Veröffentlichung. Keine zusätzlichen Kennzahl-/Flow-/Kaufchecks oderFrequenzänderung;Claude-Kenntnisnahme unbekannt."
+    },
+    {
+      "revision": 14,
+      "at": "2026-10-29T21:38:14.814026+00:00",
+      "actor": "codex",
+      "action": "Auf eingegrenzten Inhaberauftrag Printful-Sync/CJ-Varianten zwei reproduzierte Codeursachen lokal korrigiert, offline und unabhängig geprüft. Review-Patches/Belege nur im LuxeStyle-Dokumentationsordner gesichert und exakt zurückgelesen. Begrenzte Printful-Tag-/CSV-Variantenprobe und Merchant-Zugangsprüfung; kein Geschäftswrite, Sync, Deployment oder bestätigter Merchant-Fix. Separate Idempotenz-/SKU_NACHZIEHEN-Grenzen erhalten. Keine zusätzlichen Kennzahl-/Flow-/Kaufchecks, Kaufbaseline/Automationen unverändert; Claude-Kenntnisnahme unbekannt."
     }
   ],
   "salesGoal": {
