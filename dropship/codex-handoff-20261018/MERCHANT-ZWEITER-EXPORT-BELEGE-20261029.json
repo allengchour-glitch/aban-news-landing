@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-29T20:44:20.547892+00:00",
+  "method": "Local complete CSV parsing; no business/API requests, no writes to business systems",
+  "inputs": [
+    {
+      "path": "/workspace/attachments/1e11d409-3b13-4c86-b988-37d66d24c1ad/product_issues_2026-10-29_13-18-02.csv",
+      "bytes": 6156338,
+      "sha256": "391c0a1d37291f2d02a5afeab262c706039ef2916726f2c3c6bbd73d82536f05"
+    },
+    {
+      "path": "/workspace/luxestyle-review/drive-price-20261029/product_issues_2026-10-29_13-19-04.csv",
+      "bytes": 37867685,
+      "sha256": "a69f34f30548c7aacc8775825bcefdf791a76b9df1d2d5d1601580f03d5bf9cf"
+    }
+  ],
+  "secondFile": {
+    "readStatus": "fully_read_after_drive_access",
+    "previousSedimentBlock": "historical 32 MiB download limit; resolved for analysis by provided Drive route",
+    "columns": [
+      "Item ID",
+      "Title",
+      "Click potential",
+      "Feed label",
+      "Language",
+      "Item status",
+      "Channels",
+      "Issue title",
+      "Issue additional information",
+      "Traffic type",
+      "Country",
+      "Issue severity"
+    ],
+    "rows": 96530,
+    "uniqueItemIDs": 31083,
+    "issues": [
+      {
+        "issue": "Over capacity for Shopping ads (in CSS program)",
+        "rows": 34052,
+        "uniqueItemIDs": 17026
+      },
+      {
+        "issue": "Shopping ads quota limit reached (outside of CSS program)",
+        "rows": 62166,
+        "uniqueItemIDs": 31083
+      },
+      {
+        "issue": "Personalized advertising: personal hardships",
+        "rows": 140,
+        "uniqueItemIDs": 70
+      },
+      {
+        "issue": "Personalized advertising: Sexual interests",
+        "rows": 4,
+        "uniqueItemIDs": 2
+      },
+      {
+        "issue": "Restricted adult content",
+        "rows": 4,
+        "uniqueItemIDs": 2
+      },
+      {
+        "issue": "Promotional overlay on image",
+        "rows": 132,
+        "uniqueItemIDs": 22
+      },
+      {
+        "issue": "Alcoholic beverages",
+        "rows": 8,
+        "uniqueItemIDs": 4
+      },
+      {
+        "issue": "Personalized advertising: legal restrictions",
+        "rows": 8,
+        "uniqueItemIDs": 4
+      },
+      {
+        "issue": "Adult-oriented content",
+        "rows": 2,
+        "uniqueItemIDs": 1
+      },
+      {
+        "issue": "Local Requirements",
+        "rows": 6,
+        "uniqueItemIDs": 1
+      },
+      {
+        "issue": "Tobacco products & related equipment",
+        "rows": 6,
+        "uniqueItemIDs": 1
+      },
+      {
+        "issue": "Personalized advertising: Identity and belief",
+        "rows": 2,
+        "uniqueItemIDs": 1
+      }
+    ],
+    "scope": [
+      {
+        "traffic": "Shopping ads",
+        "country": "Switzerland",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 17050,
+        "uniqueItemIDs": 17040
+      },
+      {
+        "traffic": "Dynamic remarketing",
+        "country": "Switzerland",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 17130,
+        "uniqueItemIDs": 17077
+      },
+      {
+        "traffic": "Dynamic remarketing",
+        "country": "Liechtenstein",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 31187,
+        "uniqueItemIDs": 31083
+      },
+      {
+        "traffic": "Shopping ads",
+        "country": "Liechtenstein",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 31111,
+        "uniqueItemIDs": 31083
+      },
+      {
+        "traffic": "Free listings",
+        "country": "Liechtenstein",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 28,
+        "uniqueItemIDs": 28
+      },
+      {
+        "traffic": "Free listings",
+        "country": "Switzerland",
+        "feedLabel": "CHF_99383214465",
+        "language": "de",
+        "rows": 24,
+        "uniqueItemIDs": 24
+      }
+    ],
+    "statusCounts": {
+      "ELIGIBLE_LIMITED": 96318,
+      "NOT_ELIGIBLE_OR_DISAPPROVED": 212
+    },
+    "allChannels": [
+      "ONLINE"
+    ],
+    "allSeverity": [
+      "SEVERITY_DISAPPROVED"
+    ],
+    "exactDuplicateRows": 0,
+    "duplicateItemIssueScopeKeys": 0,
+    "allIdsMatchShopifyPattern": true,
+    "missingPriceIssueIDs": 0,
+    "missingAvailabilityIssueIDs": 0,
+    "freeListings": {
+      "rows": 52,
+      "uniqueItemIDs": 28,
+      "issues": [
+        {
+          "issue": "Promotional overlay on image",
+          "rows": 44,
+          "uniqueItemIDs": 22
+        },
+        {
+          "issue": "Alcoholic beverages",
+          "rows": 4,
+          "uniqueItemIDs": 4
+        },
+        {
+          "issue": "Local Requirements",
+          "rows": 2,
+          "uniqueItemIDs": 1
+        },
+        {
+          "issue": "Tobacco products & related equipment",
+          "rows": 2,
+          "uniqueItemIDs": 1
+        }
+      ]
+    },
+    "capacityIntersection": {
+      "outsideCSSIDs": 31083,
+      "insideCSSIDs": 17026,
+      "both": 17026,
+      "outsideOnly": 14057,
+      "meaning": "Capacity issue classes overlap; do not sum as unique items or imply a Free-listings exclusion."
+    }
+  },
+  "comparison": {
+    "firstRows": 20343,
+    "firstUniqueIDs": 8327,
+    "sameColumns": true,
+    "exactItemIDIntersection": 0,
+    "unionItemIDStrings": 39410,
+    "unionMeaning": "Distinct Merchant ID strings only; not unique underlying products or complete catalog",
+    "sharedNumericProductPrefixes": [
+      "15413245510017"
+    ],
+    "firstNumericProductPrefixes": 386,
+    "secondProductSegments": 16325,
+    "sharedPrefixSamples": [
+      {
+        "source": "first",
+        "itemId": "15413245510017_16361786756345133009",
+        "title": "Smart Auto-Lufterfrischer · nachfüllbar, Aromatherapie-Diffuser fürs Auto - black replenishment",
+        "feedLabel": "CH",
+        "issues": [
+          "Missing product price"
+        ],
+        "traffic": [
+          "Free listings"
+        ],
+        "countries": [
+          "Liechtenstein",
+          "Switzerland"
+        ]
+      },
+      {
+        "source": "second",
+        "itemId": "shopify_ZZ_15413245510017_55749268603265",
+        "title": "Smart Auto-Lufterfrischer – nachfüllbar... green replenishment",
+        "feedLabel": "CHF_99383214465",
+        "issues": [
+          "Over capacity for Shopping ads (in CSS program)",
+          "Shopping ads quota limit reached (outside of CSS program)"
+        ],
+        "traffic": [
+          "Dynamic remarketing",
+          "Shopping ads"
+        ],
+        "countries": [
+          "Liechtenstein",
+          "Switzerland"
+        ]
+      },
+      {
+        "source": "second",
+        "itemId": "shopify_ZZ_15413245510017_55749268570497",
+        "title": "Smart Auto-Lufterfrischer – nachfüllbar... green gardenia",
+        "feedLabel": "CHF_99383214465",
+        "issues": [
+          "Over capacity for Shopping ads (in CSS program)",
+          "Shopping ads quota limit reached (outside of CSS program)"
+        ],
+        "traffic": [
+          "Dynamic remarketing",
+          "Shopping ads"
+        ],
+        "countries": [
+          "Liechtenstein",
+          "Switzerland"
+        ]
+      },
+      {
+        "source": "second",
+        "itemId": "shopify_ZZ_15413245510017_55749268537729",
+        "title": "Smart Auto-Lufterfrischer – nachfüllbar... black replenishment",
+        "feedLabel": "CHF_99383214465",
+        "issues": [
+          "Over capacity for Shopping ads (in CSS program)",
+          "Shopping ads quota limit reached (outside of CSS program)"
+        ],
+        "traffic": [
+          "Dynamic remarketing",
+          "Shopping ads"
+        ],
+        "countries": [
+          "Liechtenstein",
+          "Switzerland"
+        ]
+      }
+    ],
+    "cordhoseExactID": "15413245706625_14:691;5:4183#3xl",
+    "cordhoseExactRowsInSecond": 0,
+    "cordhoseProductPrefixRowsInSecond": 0,
+    "elephantExactID": "15450835222913_1750786040342345726",
+    "elephantExactRowsInSecond": 0,
+    "elephantProductPrefixRowsInSecond": 0
+  },
+  "missingSourceFields": [
+    "account_id",
+    "data_source_id",
+    "data_source_name",
+    "data_source_type",
+    "submitted_product_url",
+    "raw_price",
+    "currency",
+    "raw_availability",
+    "item_processed_at"
+  ],
+  "limits": [
+    "No claim of current full Merchant state or whole-catalog quality",
+    "Filename time zone unknown",
+    "Absent ID or missing issue row does not establish approval, deletion or resolution",
+    "Feed label is not a data source ID or confirmed currency",
+    "Shared product prefix and similar title are lookup candidates, not confirmed duplicate variant/source identities"
+  ],
+  "businessWrites": false
+}
