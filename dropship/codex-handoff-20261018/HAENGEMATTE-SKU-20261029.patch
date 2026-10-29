@@ -1,0 +1,17 @@
+--- a/sections/product-information.liquid
++++ b/sections/product-information.liquid
+@@ -9,6 +9,14 @@
+   sichtbare Bewertungen auf der Seite: das Judge.me-Widget steht darunter.
+ {%- endcomment -%}
+ {%- capture luxe_sd -%}{{ closest.product | structured_data }}{%- endcapture -%}
++{%- if closest.product.id == 15450856292737 -%}
++  {%- for luxe_schema_variant in closest.product.variants -%}
++    {%- if luxe_schema_variant.sku contains ' ' -%}
++      {%- capture luxe_schema_invalid_sku -%},"sku":{{ luxe_schema_variant.sku | json }}{%- endcapture -%}
++      {%- assign luxe_sd = luxe_sd | remove: luxe_schema_invalid_sku -%}
++    {%- endif -%}
++  {%- endfor -%}
++{%- endif -%}
+ {%- assign luxe_rc = closest.product.metafields.reviews.rating_count.value | plus: 0 -%}
+ {%- assign luxe_r = closest.product.metafields.reviews.rating.value -%}
+ {%- if luxe_rc > 0 and luxe_r.rating -%}
