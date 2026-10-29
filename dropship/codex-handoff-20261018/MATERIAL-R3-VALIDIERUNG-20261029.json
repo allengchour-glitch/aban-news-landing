@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.material.review.evidence",
+  "scope": "local_review_only",
+  "results": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-10-29T05:50:28.822192+00:00",
+    "runtime": "v24.19.0",
+    "scope": "Four affected offline suites, 253 checks. The unchanged progress suite was not repeated or counted. No live Shop calls or writes.",
+    "testsPassed": 253,
+    "testsFailed": 0,
+    "suites": [
+      {
+        "name": "material",
+        "command": "node automation/lib/material_test.mjs",
+        "passed": 190,
+        "failed": 0,
+        "exitCode": 0,
+        "summary": "material_test: 190 Prüfungen ok",
+        "log": "validation/MATERIAL.log",
+        "logSha256": "41d0c7fe198df4ab2fc3b70337c1c53ba48fd4fe3978a2be52a2de5c8af0e2f1"
+      },
+      {
+        "name": "plan",
+        "command": "MATERIAL_TEST_TMP=<r3>/fixtures/plan node automation/material_plan_lauf_test.mjs",
+        "passed": 16,
+        "failed": 0,
+        "exitCode": 0,
+        "summary": "16 ok, 0 Fehler",
+        "log": "validation/PLAN.log",
+        "logSha256": "ebedfaa4e77130f32fe08b13784c6f5b6c603225e4d14f326412a5917498e838"
+      },
+      {
+        "name": "batch",
+        "command": "MATERIAL_TEST_TMP=<r3>/fixtures/batch node automation/material_batch_lauf_test.mjs",
+        "passed": 20,
+        "failed": 0,
+        "exitCode": 0,
+        "summary": "20 ok, 0 Fehler",
+        "log": "validation/BATCH.log",
+        "logSha256": "be5f84638ddb4298797f27ea3b33cb58c9d33b705d7a28d46d717c4004d28251"
+      },
+      {
+        "name": "cas",
+        "command": "MATERIAL_TEST_TMP=<r3>/fixtures/cas node automation/material_cas_lauf_test.mjs",
+        "passed": 27,
+        "failed": 0,
+        "exitCode": 0,
+        "summary": "27 ok, 0 Fehler",
+        "log": "validation/CAS-AFTER.log",
+        "logSha256": "efbdf3b3c345404f95c1765e4813e8cbb768143dbf3e2e44365a21cdb34ca06b"
+      }
+    ],
+    "beforeRegression": {
+      "base": "r2",
+      "passed": 1,
+      "failed": 26,
+      "exitCode": 1,
+      "log": "validation/CAS-BEFORE.log",
+      "logSha256": "e824df80168919b39849eadc4aeccaff666850defce40c832c7b17ff52277eea"
+    },
+    "syntaxChecks": [
+      {
+        "command": "node --check automation/material_nachtragen.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_plan_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_batch_lauf_test.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node --check automation/material_cas_lauf_test.mjs",
+        "exitCode": 0
+      }
+    ],
+    "workflow": {
+      "yamlParsed": true,
+      "onlyAddedCommand": "node automation/material_cas_lauf_test.mjs",
+      "allExistingTestCommandsPreserved": true,
+      "mergeRule": "Apply WORKFLOW-HUNK.patch over r2 integration; preserve unrelated cooperative workflow changes."
+    },
+    "patch": {
+      "checks": [
+        {
+          "command": "git apply --check R2-ZU-R3.patch",
+          "exitCode": 0
+        },
+        {
+          "command": "git apply R2-ZU-R3.patch",
+          "exitCode": 0
+        }
+      ],
+      "allFiveTargetsByteEqual": true,
+      "base": "local r2 after, original r2 unchanged",
+      "changedFiles": [
+        "automation/material_nachtragen.mjs",
+        "automation/material_plan_lauf_test.mjs",
+        "automation/material_batch_lauf_test.mjs",
+        "automation/material_cas_lauf_test.mjs",
+        ".github/workflows/luxestyle-automation-tests.yml"
+      ],
+      "packagingNote": "Initial generated new-file diff lacked its new-file mode header and failed apply-check; header corrected before final successful check and byte-exact roundtrip."
+    },
+    "unchangedDependencies": [
+      {
+        "path": "automation/lib/shopify_gql.mjs",
+        "sha256": "89273375da65bf2bcd2a8b3c4e12e96bad42be2f8626795edf3d457687b8a02a"
+      },
+      {
+        "path": "automation/lib/shopify_host.mjs",
+        "sha256": "71d0d862dd4e85f17416f634c06a7812588a92dc40dca5b1f3d61bf00cd78f19"
+      },
+      {
+        "path": "automation/lib/material.mjs",
+        "sha256": "26dd7121c0f2421cad8e38dd9f56b4739bed29f88f631264d6e3b88fad828cca"
+      },
+      {
+        "path": "automation/lib/material_test.mjs",
+        "sha256": "dee599553db277d2cb16b5fe0db0305dc1bc53ae8896402d35e47f14b9385053"
+      },
+      {
+        "path": "automation/ci_simulation.sh",
+        "sha256": "d39a631c909295075d782a083e7dc2927094108cd3d21afaee55c70c2254ce74"
+      }
+    ],
+    "fullCi": {
+      "status": "not_repeated",
+      "reason": "Same environment restriction measured earlier today: unshare network namespace Operation not permitted; no environment change. No complete CI success claimed.",
+      "priorEvidence": "/workspace/luxestyle-review/selected-four-20261029/integration/RESULTS.json"
+    },
+    "schemaValidation": {
+      "currentSchemaFieldsRead": true,
+      "exactConfigured2025_01Verified": false,
+      "codeblockValidator": "skipped by connector; no real operation used as fallback"
+    },
+    "deployment": "local_review_only_not_merged_not_deployed_not_executed_in_shop",
+    "cooperationWorkflow": {
+      "source": "/workspace/luxestyle-review/cooperation-mod-20261028/root/ci-current/after/.github/workflows/luxestyle-automation-tests.yml",
+      "sourceSha256": "623c0b76cc9cf779682f468734007d05a73ee678016ca02449cf993c1ba813eb",
+      "originalUnchanged": true,
+      "checks": [
+        {
+          "command": [
+            "git",
+            "apply",
+            "--check",
+            "/workspace/luxestyle-review/selected-four-20261029/integration/WORKFLOW-HUNKS.patch"
+          ],
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": [
+            "git",
+            "apply",
+            "/workspace/luxestyle-review/selected-four-20261029/integration/WORKFLOW-HUNKS.patch"
+          ],
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": [
+            "git",
+            "apply",
+            "--check",
+            "/workspace/luxestyle-review/material-r3-20261029/WORKFLOW-HUNK.patch"
+          ],
+          "exitCode": 0,
+          "output": ""
+        },
+        {
+          "command": [
+            "git",
+            "apply",
+            "/workspace/luxestyle-review/material-r3-20261029/WORKFLOW-HUNK.patch"
+          ],
+          "exitCode": 0,
+          "output": ""
+        }
+      ],
+      "scope": "r2 three test commands then r3 one test command in own copy; all original cooperative lines preserved."
+    }
+  },
+  "logs": {
+    "validation/MATERIAL.log": "material_test: 190 Prüfungen ok\n",
+    "validation/PLAN.log": "OK Neuer Trockenlauf sichert den Originalwert und sendet keine Mutation\nOK Abweichender Folge-Trockenlauf erhaelt bestehenden Plan bytegleich\nOK Leerer Folge-Trockenlauf kann den alten Rueckgaengig-Beleg nicht loeschen\nOK Identischer Trockenlauf bleibt wiederholbar ohne Planverlust\nOK LIVE-Attrappe nach identischem Trockenlauf respektiert LIMIT und alten Plan\nOK Abweichender LIVE-Plan blockiert vor der ersten Produktmutation\nOK Fortsetzung mit frischem Rest und neuem Pfad erhaelt beide Originalplaene\nOK Verschiedene Standardlaeufe benutzen eindeutige Pfade statt Ueberschreiben\nOK Nicht beschreibbarer Planpfad blockiert vor Produktmutation\nOK Manueller sauberer Materialwert bleibt erlaubt\nOK Manueller Override verwirft Seide (Imitat)\nOK Manueller Override verwirft Titanstahl\nOK Manueller Wert wird kanonisch statt ungeprueft uebernommen\nOK Manueller Wert darf einen bekannten Titelkonflikt nicht umgehen\nOK Manuelle Seide darf den belegten Imitat-Hinweis nicht umgehen\nOK Uebersetzung beachtet Imitat-Hinweis aus dem vorhandenen CJ-Cache\n16 ok, 0 Fehler\n",
+    "validation/BATCH.log": "OK Trockenlauf sendet keine Produktoperation und keinen Erfolgsbeleg\nOK Erfolgreicher Stapel wird vollständig zurückgelesen und bestätigt\nBELEG atomarer Zweier-Stapel: {\"exit\":1,\"ergebnis\":{\"geschrieben\":0,\"apiBestaetigt\":0,\"fehler\":2,\"unbekannt\":0,\"rueckgelesen\":0,\"abweichungen\":0,\"vorherKonflikte\":0,\"vorherUnbekannt\":0,\"nichtBearbeitet\":0},\"ledger\":\"2026-10-29T05:43:31.165Z · material nachgetragen · 0 Produkte (Fehler 2) · Unbekannt 0 · Abweichungen 0 · Vorher-Konflikte 0 · Vorher-unbekannt 0 · Quellen {}\"}\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"0\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: [\"metafields\",\"1\",\"value\"]\nOK Atomarer Fehler verwirft den ganzen Stapel: null\nOK Definitiver Fehler beendet den Lauf vor späteren Stapeln\nOK Vorher bestätigter Stapel bleibt bei späterem Fehler korrekt gezählt\nOK Unklare Antwort zählt keinen Erfolg: null\nOK Unklare Antwort zählt keinen Erfolg: ohne-fehlerliste\nOK Unklare Antwort zählt keinen Erfolg: ohne-metafields\nOK Unklare Antwort zählt keinen Erfolg: zu-kurz\nOK Unklare Antwort zählt keinen Erfolg: falscher-key\nOK Unklarer Transport wird nicht wiederholt: netzfehler\nOK Unklarer Transport wird nicht wiederholt: http500\nOK Verlorene Antwort nach ausgeführtem Schreiben bleibt unbekannt ohne Wiederholung\nOK Alle erfolgreichen IDs werden vor dem nächsten Stapel gelesen\nOK Abweichende Rücklesung zählt nicht als bestätigtes Schreiben\nOK Lesefehler bleibt unbekannt; übrige IDs des Stapels werden dennoch geprüft\nOK Fehlgeschlagene Gegenprobe verhindert weitere Mutationen\nOK LIMIT begrenzt Mutationen und Quellen im Erfolgsbeleg\n20 ok, 0 Fehler\n",
+    "validation/CAS-AFTER.log": "OK Trockenlauf benötigt keinen Versions- oder Produktzugriff\nOK Unveränderter Wert sendet den frisch gelesenen Digest\nOK Sicher fehlendes Feld benutzt explizites null\nOK Bestehendes leeres Feld benutzt Digest statt null\nOK Frische Gegenprobe blockiert geänderter Wert\nOK Frische Gegenprobe blockiert gelöschtes Feld\nOK Frische Gegenprobe blockiert geänderter Typ\nOK Frische Gegenprobe blockiert Leerzeichen im Vorwert\nOK Geplante Neuanlage überschreibt keinen inzwischen vorhandenen Wert\nOK Unbekannte Vorherdaten sperren: fehlender Digest\nOK Unbekannte Vorherdaten sperren: leerer Digest\nOK Unbekannte Vorherdaten sperren: fehlender Typ\nOK Unbekannte Vorherdaten sperren: fehlender Wert\nOK Alter Rohstand ohne Typ ist keine Schreibfreigabe\nOK Fehlender Roh-Metafeldschlüssel ist nicht sicher abwesend\nOK Unvollständige Vorabantwort sperrt: fehlend\nOK Unvollständige Vorabantwort sperrt: null\nOK Unvollständige Vorabantwort sperrt: doppelt\nOK Unvollständige Vorabantwort sperrt: fremd\nOK Unvollständige Vorabantwort sperrt: ohne-m\nOK Unvollständige Vorabantwort sperrt: schemafehler\nOK Update-Race bleibt atomar abgelehnt\nOK Create-Race bleibt atomar abgelehnt\nOK Delete-Race bleibt atomar abgelehnt\nOK Typ-Race bleibt atomar abgelehnt\nOK Ungeklärte oder ersetzte API-Version sperrt: null\nOK Ungeklärte oder ersetzte API-Version sperrt: 2026-01\n27 ok, 0 Fehler\n",
+    "validation/CAS-BEFORE.log": "OK Trockenlauf benötigt keinen Versions- oder Produktzugriff\nFEHLER Unveränderter Wert sendet den frisch gelesenen Digest: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'digest-vorher'\n\nFEHLER Sicher fehlendes Feld benutzt explizites null: The expression evaluated to a falsy value:\n\n  assert.ok(Object.hasOwn(m,'compareDigest'))\n\nFEHLER Bestehendes leeres Feld benutzt Digest statt null: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'leer-existiert'\n\nFEHLER Frische Gegenprobe blockiert geänderter Wert: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-Wj6uzD/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Frische Gegenprobe blockiert gelöschtes Feld: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-kSizzi/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Frische Gegenprobe blockiert geänderter Typ: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-Hbrddm/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Frische Gegenprobe blockiert Leerzeichen im Vorwert: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-WlVB14/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Geplante Neuanlage überschreibt keinen inzwischen vorhandenen Wert: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"beschreibung\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-WlA8JM/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unbekannte Vorherdaten sperren: fehlender Digest: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-kiMP4P/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unbekannte Vorherdaten sperren: leerer Digest: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-EzZ5Au/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unbekannte Vorherdaten sperren: fehlender Typ: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-35KvuH/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unbekannte Vorherdaten sperren: fehlender Wert: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-KV0WAG/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Alter Rohstand ohne Typ ist keine Schreibfreigabe: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-2fdPWP/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Fehlender Roh-Metafeldschlüssel ist nicht sicher abwesend: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"beschreibung\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-dRGVs9/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: fehlend: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-TkAMYb/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: null: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-A4ZdqW/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: doppelt: {\"gelesen\":2,\"zuSchreiben\":2,\"quellen\":{\"uebersetzt\":2},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-LHwJbT/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×2\n{\"geschrieben\":2,\"apiBestaetigt\":2,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":2,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: fremd: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-fZUGB1/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: ohne-m: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-oF6rts/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Unvollständige Vorabantwort sperrt: schemafehler: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-8VU3kT/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Update-Race bleibt atomar abgelehnt: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Create-Race bleibt atomar abgelehnt: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Delete-Race bleibt atomar abgelehnt: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Typ-Race bleibt atomar abgelehnt: Expected \"actual\" to be strictly unequal to: 0\nFEHLER Ungeklärte oder ersetzte API-Version sperrt: null: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-Cp79oT/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\nFEHLER Ungeklärte oder ersetzte API-Version sperrt: 2026-01: {\"gelesen\":1,\"zuSchreiben\":1,\"quellen\":{\"uebersetzt\":1},\"ohneEintrag\":{},\"verschiedeneWerte\":1,\"plan\":\"/workspace/luxestyle-review/material-r3-20261029/fixtures/cas/cas-JKue3l/plan.jsonl\"}\nbestehende Metafeld-Werte, die weder deutsch noch übersetzbar sind (0): \nhäufigste Werte: Keramik×1\n{\"geschrieben\":1,\"apiBestaetigt\":1,\"fehler\":0,\"unbekannt\":0,\"rueckgelesen\":1,\"abweichungen\":0,\"nichtBearbeitet\":0}\n\n1 ok, 26 Fehler\n"
+  },
+  "workflowHunk": "diff --git a/.github/workflows/luxestyle-automation-tests.yml b/.github/workflows/luxestyle-automation-tests.yml\n--- a/.github/workflows/luxestyle-automation-tests.yml\n+++ b/.github/workflows/luxestyle-automation-tests.yml\n@@ -229,6 +229,7 @@\n           node automation/fortschritt_daten_test.mjs\n           node automation/material_plan_lauf_test.mjs\n           node automation/material_batch_lauf_test.mjs\n+          node automation/material_cas_lauf_test.mjs\n           node automation/optionen_reparieren_test.mjs\n           node automation/lieferzeit_fortura_test.mjs\n           node automation/optionen_uebersetzen_test.mjs\n",
+  "independentReview": {
+    "scope": "static review of r2-to-r3 diff, no duplicate execution",
+    "result": "No material regression identified; after-read type verification, source age, durable inflight ledger and full CI remain open."
+  }
+}
