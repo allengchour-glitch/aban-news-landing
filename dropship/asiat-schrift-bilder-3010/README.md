@@ -33,3 +33,14 @@ Ein gelöschtes Bild lässt sich in Shopify nicht zurückholen; die Originale ko
 - `plan-mit-bild-ids.json` Plan und Sicherung, `einstufung.jsonl` Einstufung je Bild, `treffer-liste.csv` erste Fassung (alle Treffer, vor der Einstufung)
 - `gem.mjs`, `stufe.mjs`, `phaseA.mjs` Messläufe, `apply.mjs` Anwenden (`LIVE=1`, `ONLY=handle,…`, `MAX=n`; Vorgabe Trockenlauf)
 - Die Skripte lesen `/tmp/advbau-claude/sh.mjs` (Token-Helfer) und Pfade unter `/tmp/cm/cjk/`; ohne diese Umgebung nicht lauffähig.
+
+## Ergebnis (LIVE 30.10.2026, Lauf nach Probe an 3 Produkten)
+
+- 237 Produkte mit mindestens einem deutlichen Treffer, alle bearbeitet (`lauf-protokoll.txt`).
+- **93 Produkte auf Entwurf** (weniger als 3 saubere Bilder), davon 3 beim Probelauf; Bilder unberührt.
+- **144 Produkte bereinigt**: 255 Bilder mit deutlicher Schrift gelöscht (251 im Hauptlauf, 4 im Nachzug, 3 in der Probe), saubere Bilder nach vorn
+  (56 Produkte umgeordnet). Bei 194 Variantenbildern bleibt die Schrift stehen, damit die Variante ihr Bild behält.
+- Nachzug (`nachzug.mjs`): 3 Produkte, deren Bilder beim ersten Lauf einen Abruffehler (HTTP 502) hatten, nachgelesen; eines davon bereinigt.
+- **Nachprüfung** (`nachpruefung.mjs`, frisch aus Shopify gelesen): 237 von 237 wie geplant, 0 Abweichungen, 0 Fehlermeldungen.
+  Stichprobe Shop-Seite: bereinigte Produkte 200, Entwürfe 404.
+- **Unbekannt:** Wirkung auf Verkäufe und Google (Bilder-Index); weitere Bilder der übrigen ~52 000 Produkte nicht untersucht (Messung deckt 3 820 Produkte ab).
