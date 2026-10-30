@@ -37,9 +37,9 @@ Ein gelöschtes Bild lässt sich in Shopify nicht zurückholen; die Originale ko
 ## Ergebnis (LIVE 30.10.2026, Lauf nach Probe an 3 Produkten)
 
 - 237 Produkte mit mindestens einem deutlichen Treffer, alle bearbeitet (`lauf-protokoll.txt`).
-- **93 Produkte auf Entwurf** (weniger als 3 saubere Bilder), davon 3 beim Probelauf; Bilder unberührt.
-- **144 Produkte bereinigt**: 255 Bilder mit deutlicher Schrift gelöscht (251 im Hauptlauf, 4 im Nachzug, 3 in der Probe), saubere Bilder nach vorn
-  (56 Produkte umgeordnet). Bei 194 Variantenbildern bleibt die Schrift stehen, damit die Variante ihr Bild behält.
+- **93 Produkte auf Entwurf** (weniger als 3 saubere Bilder), davon 1 beim Probelauf; Bilder unberührt.
+- **144 Produkte bereinigt**: 258 Bilder mit deutlicher Schrift gelöscht (251 im Hauptlauf, 4 im Nachzug, 3 in der Probe), saubere Bilder nach vorn
+  (56 Produkte umgeordnet). Bei 195 Variantenbildern bleibt die Schrift stehen, damit die Variante ihr Bild behält.
 - Nachzug (`nachzug.mjs`): 3 Produkte, deren Bilder beim ersten Lauf einen Abruffehler (HTTP 502) hatten, nachgelesen; eines davon bereinigt.
 - **Nachprüfung** (`nachpruefung.mjs`, frisch aus Shopify gelesen): 237 von 237 wie geplant, 0 Abweichungen, 0 Fehlermeldungen.
   Stichprobe Shop-Seite: bereinigte Produkte 200, Entwürfe 404.
