@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-29T10:52:13Z",
+ "stand": "2026-10-30T10:51:09Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Teure „Power einer neuen Ära“: Apples 33.329-Euro-Mac-Studio ist da",
-   "u": "https://www.heise.de/news/Teure-Power-einer-neuen-Aera-Apples-33-329-Euro-Mac-Studio-ist-da-11504379.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-29T10:32:00Z",
-   "s": "Wie von Apple angekündigt kann man nun den wohl teuersten Mac aller Zeiten erwerben. Hauptzielgruppe: Anwender lokaler KI.",
-   "sprache": "de"
-  },
-  {
-   "t": "Milliarden für KI, enttäuschende Umsätze: Alphabet gerät unter Druck",
-   "u": "https://t3n.de/news/milliarden-fuer-ki-enttaeuschende-umsaetze-alphabet-geraet-unter-druck-1770561/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Größter Kunde von SpaceX ist nicht mehr die US-Regierung, sondern eine KI-Firma",
+   "u": "https://t3n.de/news/groesster-kunde-von-spacex-ist-nicht-mehr-die-us-regierung-sondern-eine-ki-firma-1770765/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-29T10:30:06Z",
-   "s": "Während Milliarden in den Ausbau künstlicher Intelligenz fließen, bleiben die erhofften Erträge bislang aus. Unter Anlegern wachsen die Zweifel, ob sich diese hohen KI-Investitionen wirklich auszahlen…",
+   "d": "2026-10-30T10:20:12Z",
+   "s": "Ein Drittel des SpaceX-Umsatzes stammt inzwischen von der KI-Firma Anthropic. Damit ist die US-Regierung nicht mehr der größte Kunde des Unternehmens.weiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "We urgently need to monitor AI agents’ actions in real time",
-   "u": "https://www.technologyreview.com/2026/10/29/1147824/monitor-ai-agents-actions-real-time/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-29T10:11:12Z",
-   "s": "This summer, hundreds of OpenAI agents tried to cheat on a cybersecurity test. They broke out of their test environment and successfully hacked Hugging Face, a site that they believed held clues about…",
-   "sprache": "en"
-  },
-  {
-   "t": "Wenn Werbung schützt: So nutzen Non-Profits KI als ethisches Werkzeug",
-   "u": "https://t3n.de/news/werbung-non-profit-ki-ethik-1770529/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-29T10:00:50Z",
-   "s": "Künstliche Intelligenz soll Marketing vor allem schneller, günstiger und effizienter machen. Doch vor allem für Non-Profit-Organisationen eröffnet KI eine weiteweiterlesen auf t3n.de",
+   "t": "Mistral Large 4: Mistral macht 1-Billion-Parameter-Modell frei zugänglich",
+   "u": "https://www.golem.de/news/mistral-large-4-mistral-macht-1-billion-parameter-modell-frei-zugaenglich-2610-214675.html",
+   "q": "Golem",
+   "d": "2026-10-30T10:16:01Z",
+   "s": "Mistrals aktuelles großes Modell soll die Grundlage souveräner KI bilden. Es soll eines der besten offenen Modelle sein und bei Coding herausstechen. (KI, API)",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: iX-Workshop: Mehr Tempo beim Coding – mit KI-Assistenten effizient programmieren",
-   "u": "https://www.heise.de/news/iX-Workshop-Mehr-Tempo-beim-Coding-mit-KI-Assistenten-effizient-programmieren-11480226.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Survival LLM: Ein KI-Chatbot für den Weltuntergang",
+   "u": "https://www.golem.de/news/survival-llm-ein-ki-chatbot-fuer-den-weltuntergang-2610-214672.html",
+   "q": "Golem",
+   "d": "2026-10-30T09:51:01Z",
+   "s": "Was tun in der Apokalypse, wenn Fragen zum Überleben auftauchen? Survival LLM ist eine lokale KI, die offline funktioniert und auf Notfallunterlagen zugreift. (KI, iFixit)",
+   "sprache": "de"
+  },
+  {
+   "t": "Oracle will Geschäftsregeln vor eigenmächtigen KI-Agenten schützen",
+   "u": "https://www.heise.de/news/Oracle-will-Geschaeftsregeln-vor-eigenmaechtigen-KI-Agenten-schuetzen-11505277.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-29T09:00:00Z",
-   "s": "Erfahren Sie, wie Sie produktiv mit KI-Assistenten programmieren und lernen Sie die Stärken und Schwächen der Tools für den Einsatz in eigenen Projekten kennen.",
+   "d": "2026-10-30T08:07:00Z",
+   "s": "Oracle stellt die Deep Trust AI Architecture vor. Sie soll Sicherheits- und Geschäftsregeln bei KI-Zugriffen auf Unternehmensdaten durchsetzen.",
    "sprache": "de"
   },
   {
-   "t": "Justiz: Englands oberster Zivilrichter wirbt für KI-Urteile",
-   "u": "https://www.golem.de/news/justiz-englands-oberster-zivilrichter-plaediert-fuer-mehr-ki-vor-gericht-2610-214622.html",
-   "q": "Golem",
-   "d": "2026-10-29T08:23:01Z",
-   "s": "Geoffrey Vos, Englands ranghöchster Zivilrichter, entfacht eine Debatte über KI-Urteile bei einfachen Fällen. Er hat bereits Erfahrung gesammelt. (KI, Politik)",
+   "t": "Nicht mehr die US-Regierung: Anthropic jetzt größter Kunde von SpaceX",
+   "u": "https://www.heise.de/news/Nicht-mehr-die-US-Regierung-Anthropic-jetzt-groesster-Kunde-von-SpaceX-11505625.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-30T07:41:00Z",
+   "s": "Lange war die US-Regierung der größte Einzelkunde von SpaceX. Das ändert sich jetzt, wie die aktuellen Geschäftszahlen untermauern.",
    "sprache": "de"
   },
   {
-   "t": "Kurswechsel: Millionenschweres KI-Projekt für geschlossenes Playmobil-Werk",
-   "u": "https://www.golem.de/news/kurswechsel-millionenschweres-ki-projekt-fuer-geschlossenes-playmobil-werk-2610-214619.html",
-   "q": "Golem",
-   "d": "2026-10-29T07:21:02Z",
-   "s": "Auf dem früheren Playmobil-Gelände in Dietenhofen sollen Rechenzentren entstehen. Sie sind vor allem für KI-Anwendungen vorgesehen. (Rechenzentrum, KI)",
+   "t": "Aktie stürzt ab: Warum Intel unter dem KI-Boom leidet, von dem es eigentlich profitieren wollte",
+   "u": "https://t3n.de/news/intel-aktie-ki-boom-1770736/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-30T07:30:11Z",
+   "s": "Der Chipriese Intel schien nach langer Durststrecke auf dem Weg der Besserung. Doch jetzt sorgen hohe Speicherpreise dafür, dass weniger Computer gekauft werden – und Intel leidet darunter.weiterlesen…",
    "sprache": "de"
   },
   {
-   "t": "Microsoft just shared Azure’s actual revenue in dollars: $33.2 billion",
-   "u": "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/",
+   "t": "You don’t need to believe in a god to get a religious exemption from using AI at work",
+   "u": "https://techcrunch.com/2026/10/29/you-dont-need-to-believe-in-a-god-to-get-a-religious-exemption-from-using-ai-at-work/",
    "q": "TechCrunch AI",
-   "d": "2026-10-28T21:58:32Z",
-   "s": "Microsoft has never disclosed Azure's quarterly revenue in dollars. But for the first time, we can see just how close it is getting to besting the biggest competitor in the market, AWS.",
+   "d": "2026-10-30T01:20:48Z",
+   "s": "David Durman, a University of Kentucky administrator, recently earned a religious exemption from using AI in the workplace.",
    "sprache": "en"
   },
   {
-   "t": "Google expands AI Search ads globally as core ad growth slows",
-   "u": "https://techcrunch.com/2026/10/28/google-expands-ai-search-ads-globally-as-core-ad-growth-slows/",
+   "t": "AWS will be a $1T business, Jassy says — but first, it will spend big",
+   "u": "https://techcrunch.com/2026/10/29/aws-will-be-a-1t-business-jassy-says-but-first-it-will-spend-big/",
    "q": "TechCrunch AI",
-   "d": "2026-10-28T21:48:37Z",
-   "s": "The announcement came alongside parent company Alphabet's third-quarter earnings report, which saw revenue grow 25% year over year to $127.6 billion.",
+   "d": "2026-10-29T23:42:22Z",
+   "s": "Amazon wants to be the king of AI cloud computing and become the first $1 trillion revenue business. But to do that it will have to continue on its capex spending spree, its CEO said Thursday.",
    "sprache": "en"
   },
   {
-   "t": "Creating AI value with enterprise context",
-   "u": "https://www.technologyreview.com/2026/10/28/1147709/creating-ai-value-with-enterprise-context/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-28T20:32:02Z",
-   "s": "Across a business, any number of AI platforms, systems, and tools may be at work simultaneously—for example, AI-powered customer platforms, conversational assistants, and workflow and process automati…",
+   "t": "An updated Model Spec for more capable and beneficial AI",
+   "u": "https://openai.com/index/updated-model-spec",
+   "q": "OpenAI",
+   "d": "2026-10-29T17:00:00Z",
+   "s": "OpenAI’s updated Model Spec outlines five core values to guide more capable AI toward sound judgment, human agency, and faithfulness to human intent.",
+   "sprache": "en"
+  },
+  {
+   "t": "Granite Switch 4.1.1 — Update models like you update software",
+   "u": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1",
+   "q": "Hugging Face",
+   "d": "2026-10-29T13:37:07Z",
+   "s": "",
    "sprache": "en"
   }
  ]
