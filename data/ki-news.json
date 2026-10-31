@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-30T10:51:09Z",
+ "stand": "2026-10-31T10:21:30Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,82 +18,82 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Größter Kunde von SpaceX ist nicht mehr die US-Regierung, sondern eine KI-Firma",
-   "u": "https://t3n.de/news/groesster-kunde-von-spacex-ist-nicht-mehr-die-us-regierung-sondern-eine-ki-firma-1770765/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-30T10:20:12Z",
-   "s": "Ein Drittel des SpaceX-Umsatzes stammt inzwischen von der KI-Firma Anthropic. Damit ist die US-Regierung nicht mehr der größte Kunde des Unternehmens.weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Mistral Large 4: Mistral macht 1-Billion-Parameter-Modell frei zugänglich",
-   "u": "https://www.golem.de/news/mistral-large-4-mistral-macht-1-billion-parameter-modell-frei-zugaenglich-2610-214675.html",
+   "t": "KI an Hochschulen: Berkeley-Professor benotet wegen KI keine Hausaufgaben mehr",
+   "u": "https://www.golem.de/news/ki-an-hochschulen-berkeley-professor-benotet-wegen-ki-keine-hausaufgaben-mehr-2610-214710.html",
    "q": "Golem",
-   "d": "2026-10-30T10:16:01Z",
-   "s": "Mistrals aktuelles großes Modell soll die Grundlage souveräner KI bilden. Es soll eines der besten offenen Modelle sein und bei Coding herausstechen. (KI, API)",
+   "d": "2026-10-31T10:15:02Z",
+   "s": "Richard Borcherds vergibt nur noch Punkte fürs Abgeben von Hausaufgaben. Und Onlineprüfungen hält der Professor wegen KI für Zeitverschwendung. (KI, Wissenschaft)",
    "sprache": "de"
   },
   {
-   "t": "Survival LLM: Ein KI-Chatbot für den Weltuntergang",
-   "u": "https://www.golem.de/news/survival-llm-ein-ki-chatbot-fuer-den-weltuntergang-2610-214672.html",
-   "q": "Golem",
-   "d": "2026-10-30T09:51:01Z",
-   "s": "Was tun in der Apokalypse, wenn Fragen zum Überleben auftauchen? Survival LLM ist eine lokale KI, die offline funktioniert und auf Notfallunterlagen zugreift. (KI, iFixit)",
-   "sprache": "de"
-  },
-  {
-   "t": "Oracle will Geschäftsregeln vor eigenmächtigen KI-Agenten schützen",
-   "u": "https://www.heise.de/news/Oracle-will-Geschaeftsregeln-vor-eigenmaechtigen-KI-Agenten-schuetzen-11505277.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-30T08:07:00Z",
-   "s": "Oracle stellt die Deep Trust AI Architecture vor. Sie soll Sicherheits- und Geschäftsregeln bei KI-Zugriffen auf Unternehmensdaten durchsetzen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Nicht mehr die US-Regierung: Anthropic jetzt größter Kunde von SpaceX",
-   "u": "https://www.heise.de/news/Nicht-mehr-die-US-Regierung-Anthropic-jetzt-groesster-Kunde-von-SpaceX-11505625.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-30T07:41:00Z",
-   "s": "Lange war die US-Regierung der größte Einzelkunde von SpaceX. Das ändert sich jetzt, wie die aktuellen Geschäftszahlen untermauern.",
-   "sprache": "de"
-  },
-  {
-   "t": "Aktie stürzt ab: Warum Intel unter dem KI-Boom leidet, von dem es eigentlich profitieren wollte",
-   "u": "https://t3n.de/news/intel-aktie-ki-boom-1770736/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Paranormal Activity: Geisterjäger wollen mit KI das Übernatürliche sichtbar machen",
+   "u": "https://t3n.de/news/paranormal-activity-geisterjaeger-wollen-mit-ki-das-uebernatuerliche-sichtbar-machen-1770933/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-30T07:30:11Z",
-   "s": "Der Chipriese Intel schien nach langer Durststrecke auf dem Weg der Besserung. Doch jetzt sorgen hohe Speicherpreise dafür, dass weniger Computer gekauft werden – und Intel leidet darunter.weiterlesen…",
+   "d": "2026-10-31T09:24:48Z",
+   "s": "Schon Thomas Edison hat versucht, mithilfe neuer Technologien Kontakt zu Verstorbenen aufzunehmen. KI erweitert diese Praxis um eine neue Dimension. Es gibt aber auch Grund zur Kritik – und die ist ni…",
    "sprache": "de"
   },
   {
-   "t": "You don’t need to believe in a god to get a religious exemption from using AI at work",
-   "u": "https://techcrunch.com/2026/10/29/you-dont-need-to-believe-in-a-god-to-get-a-religious-exemption-from-using-ai-at-work/",
+   "t": "KI verdrängt Fotostudios, Canon warnt vor Preisanstieg – News der Woche 44/2026",
+   "u": "https://www.heise.de/news/KI-verdraengt-Fotostudios-Canon-warnt-vor-Preisanstieg-News-der-Woche-44-2026-11506308.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-31T09:00:00Z",
+   "s": "Mode setzt auf KI-Fotografie, Studios schließen. Canon kündigt teurere Kameras an. LIFE kehrt zurück.",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: iX-Workshop: Multiagentensysteme entwickeln und in eigene Software integrieren",
+   "u": "https://www.heise.de/news/iX-Workshop-Multiagentensysteme-entwickeln-und-in-eigene-Software-integrieren-11480248.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-31T09:00:00Z",
+   "s": "Üben Sie direkt am Code, wie Sie aus spezialisierten KI-Agenten ein eigenes Multiagentensystem aufbauen, das komplexe Aufgaben automatisiert erledigen kann.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI im Recruiting: So findest du heraus, ob deine Bewerbung zuerst von einem Bot aussortiert wird",
+   "u": "https://t3n.de/news/ki-im-recruiting-1769489/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-31T08:45:00Z",
+   "s": "Immer mehr deutsche Unternehmen greifen auf KI zurück, um Bewerbungen schneller zu bearbeiten. Leider gehen dabei nicht alle transparent gegenüber den Jobsuchenden damit um. Wo es noch Nachholbedarf g…",
+   "sprache": "de"
+  },
+  {
+   "t": "Transparenzbericht 3. Quartal 2026: Unsere Einnahmen und Ausgaben und Druck im Kessel",
+   "u": "https://netzpolitik.org/2026/transparenzbericht-3-quartal-2026-unsere-einnahmen-und-ausgaben-und-steigender-druck-im-kessel/",
+   "q": "netzpolitik.org",
+   "d": "2026-10-31T07:34:23Z",
+   "s": "La Gare Saint-Lazare, le train de Normandie (1877) – Gemeinfrei: Claude MonetAuf dem politischen Druckanzeiger klettert der Zeiger stetig nach oben. Druck erzeugt bekanntlich Gegendruck. Vor allem jun…",
+   "sprache": "de"
+  },
+  {
+   "t": "Stromnetzschwankung: Periodische Leistungsspitze im Netz hat dezentrale Ursache",
+   "u": "https://www.golem.de/news/stromnetzschwankung-periodische-leistungsspitze-im-netz-hat-dezentrale-ursache-2610-214694.html",
+   "q": "Golem",
+   "d": "2026-10-31T06:45:01Z",
+   "s": "Seit Jahren gibt es alle 60 Sekunden eine Spitze im europäischen Strombedarf. Im Reallabor in Jülich ist die Ursache gefunden worden. (Strom, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Nvidia weighs playing the cosigner for Nscale’s AI data center in West Virginia",
+   "u": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
    "q": "TechCrunch AI",
-   "d": "2026-10-30T01:20:48Z",
-   "s": "David Durman, a University of Kentucky administrator, recently earned a religious exemption from using AI in the workplace.",
+   "d": "2026-10-31T01:20:05Z",
+   "s": "When investors get nervous about AI spending, it helps to have the chipmaker that sells the chips offer to cosign the loan.",
    "sprache": "en"
   },
   {
-   "t": "AWS will be a $1T business, Jassy says — but first, it will spend big",
-   "u": "https://techcrunch.com/2026/10/29/aws-will-be-a-1t-business-jassy-says-but-first-it-will-spend-big/",
+   "t": "Ollie, a privacy-focused AI assistant, is shutting down",
+   "u": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/",
    "q": "TechCrunch AI",
-   "d": "2026-10-29T23:42:22Z",
-   "s": "Amazon wants to be the king of AI cloud computing and become the first $1 trillion revenue business. But to do that it will have to continue on its capex spending spree, its CEO said Thursday.",
+   "d": "2026-10-30T22:56:13Z",
+   "s": "As an increasing number of AI assistants flood the market, the founder of Ollie, an assistant that respected its users' privacy, says it will be shutting down in a week.",
    "sprache": "en"
   },
   {
-   "t": "An updated Model Spec for more capable and beneficial AI",
-   "u": "https://openai.com/index/updated-model-spec",
-   "q": "OpenAI",
-   "d": "2026-10-29T17:00:00Z",
-   "s": "OpenAI’s updated Model Spec outlines five core values to guide more capable AI toward sound judgment, human agency, and faithfulness to human intent.",
-   "sprache": "en"
-  },
-  {
-   "t": "Granite Switch 4.1.1 — Update models like you update software",
-   "u": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1",
+   "t": "nemotron-halloween",
+   "u": "https://huggingface.co/blog/nvidia/nemotron-halloween",
    "q": "Hugging Face",
-   "d": "2026-10-29T13:37:07Z",
+   "d": "2026-10-30T17:57:24Z",
    "s": "",
    "sprache": "en"
   }
