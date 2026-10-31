@@ -1,0 +1,178 @@
+--- /dev/null
++++ master/check_originals.py
+@@ -0,0 +1,112 @@
++"""Offline evidence-consistency check only; never approves rendering or publication.
++
++No HTTP, credential access, file discovery, media generation or registry writes.
++The caller supplies one explicit manifest and explicitly located original files.
++Metadata/rights/visual-review attestations remain claims requiring human review.
++"""
++import hashlib
++import json
++import re
++from pathlib import Path
++
++MASTER = 'luxe_sternenprojektor_master_20261018'
++PRODUCT = 'gid://shopify/Product/15521256604033'
++VARIANT = 'gid://shopify/ProductVariant/56197916361089'
++REQUIRED = {'P_OPERATION': 5.6, 'P_PROJECTION': 6.8, 'P_DETAIL': 3.6, 'P_HERO': 4.0}
++CHANNELS = {'instagram', 'tiktok', 'youtube', 'facebook', 'threads', 'pinterest'}
++LEGACY_HASH = '2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57'
++
++
++def nonempty(value):
++    return isinstance(value, str) and bool(value.strip())
++
++
++def finite_number(value):
++    return type(value) in (int, float) and value == value and abs(value) != float('inf')
++
++
++def audit(manifest):
++    issues = []
++    if not isinstance(manifest, dict):
++        return {'documentationConsistent': False, 'publicationReady': False,
++                'renderApproved': False, 'issues': ['manifest_not_object']}
++    for key, expected in [('masterId', MASTER), ('productId', PRODUCT), ('variantId', VARIANT)]:
++        if manifest.get(key) != expected:
++            issues.append(key + '_mismatch')
++    rows = manifest.get('originals')
++    if not isinstance(rows, list):
++        rows = []
++        issues.append('originals_not_list')
++    seen = set()
++    for row in rows:
++        if not isinstance(row, dict):
++            issues.append('original_not_object')
++            continue
++        take = row.get('takeId')
++        if not isinstance(take, str) or take not in REQUIRED or take in seen:
++            issues.append('unexpected_or_duplicate_take')
++            continue
++        seen.add(take)
++        def fail(reason):
++            issues.append(take + ':' + reason)
++        sha = row.get('sha256')
++        if not isinstance(sha, str) or not re.fullmatch('[a-f0-9]{64}', sha):
++            fail('sha256_unknown')
++        if sha == LEGACY_HASH:
++            fail('legacy_reference_not_native_original')
++        location = row.get('localFile')
++        if not nonempty(location) or not Path(location).is_absolute():
++            fail('explicit_original_path_unknown')
++        else:
++            try:
++                actual_sha = hashlib.sha256(Path(location).read_bytes()).hexdigest()
++                if actual_sha != sha:
++                    fail('original_bytes_hash_mismatch')
++            except (OSError, ValueError):
++                fail('original_bytes_unreadable')
++        if row.get('productId') != PRODUCT or row.get('variantId') != VARIANT:
++            fail('product_or_variant_mismatch')
++        probe = row.get('probe') or {}
++        if not isinstance(probe, dict):
++            probe = {}
++        if not (finite_number(probe.get('width')) and probe['width'] >= 1080 and
++                finite_number(probe.get('height')) and probe['height'] >= 1920 and
++                probe.get('fps') == 30 and probe.get('constantFrameRate') is True):
++            fail('native_portrait_30fps_not_documented')
++        if row.get('nativeMotionReviewed') is not True or not nonempty(row.get('nativeMotionReviewRef')):
++            fail('native_motion_review_unknown')
++        if not (finite_number(probe.get('durationSeconds')) and
++                probe['durationSeconds'] >= REQUIRED[take] + 2):
++            fail('usable_duration_and_handles_not_documented')
++        for field in ['unitMotifProofRef', 'powerSupplyProofRef', 'visualReviewRef']:
++            if not nonempty(row.get(field)):
++                fail(field + '_unknown')
++        rights = row.get('rights') or {}
++        if not isinstance(rights, dict):
++            rights = {}
++        if (rights.get('assetSha256') != sha or not nonempty(rights.get('evidenceRef')) or
++                rights.get('commercialAdvertising') is not True or
++                rights.get('editing') is not True):
++            fail('commercial_editing_rights_unbound')
++        channels = rights.get('channels')
++        if not isinstance(channels, list) or not all(isinstance(x, str) for x in channels) or not CHANNELS.issubset(set(channels)):
++            fail('rights_missing_for_requested_channels')
++    for take in sorted(REQUIRED.keys() - seen):
++        issues.append(take + ':original_missing')
++    return {'documentationConsistent': not issues, 'publicationReady': False,
++            'renderApproved': False, 'issues': issues,
++            'scope': 'Offline consistency only; referenced rights and subjective approvals are not authenticated by this script.'}
++
++
++if __name__ == '__main__':
++    import sys
++    if len(sys.argv) != 2:
++        raise SystemExit('Usage: python check_originals.py /absolute/path/manifest.json')
++    try:
++        manifest = json.loads(Path(sys.argv[1]).read_text())
++        result = audit(manifest)
++    except (OSError, ValueError) as error:
++        result = {'documentationConsistent': False, 'publicationReady': False,
++                  'renderApproved': False, 'issues': ['manifest_unreadable_or_invalid:' + type(error).__name__]}
++    print(json.dumps(result, ensure_ascii=False, indent=2))
++    raise SystemExit(0 if result['documentationConsistent'] else 2)
+--- /dev/null
++++ master/test_originals.py
+@@ -0,0 +1,45 @@
++"""Synthetic offline tests; fixtures are not videos, rights or approval evidence."""
++import copy
++import hashlib
++import json
++import tempfile
++from pathlib import Path
++from check_originals import audit, MASTER, PRODUCT, VARIANT, REQUIRED, CHANNELS, LEGACY_HASH
++
++results = []
++with tempfile.TemporaryDirectory() as tmp:
++    original = Path(tmp) / 'synthetic-not-video.bin'
++    original.write_bytes(b'SYNTHETIC TEST DATA - NOT AN APPROVED ORIGINAL')
++    sha = hashlib.sha256(original.read_bytes()).hexdigest()
++    valid = {'masterId': MASTER, 'productId': PRODUCT, 'variantId': VARIANT, 'originals': []}
++    for take in REQUIRED:
++        valid['originals'].append({
++            'takeId': take, 'localFile': str(original), 'sha256': sha,
++            'productId': PRODUCT, 'variantId': VARIANT,
++            'probe': {'width': 1080, 'height': 1920, 'fps': 30, 'constantFrameRate': True, 'durationSeconds': 10},
++            'nativeMotionReviewed': True, 'nativeMotionReviewRef': 'SYNTHETIC-motion',
++            'unitMotifProofRef': 'SYNTHETIC-unit', 'powerSupplyProofRef': 'SYNTHETIC-power',
++            'visualReviewRef': 'SYNTHETIC-review',
++            'rights': {'assetSha256': sha, 'evidenceRef': 'SYNTHETIC-not-a-licence',
++                       'commercialAdvertising': True, 'editing': True, 'channels': sorted(CHANNELS)}})
++    cases = []
++    cases.append(('complete_synthetic_documentation_never_approves_publication', valid, True))
++    bad = copy.deepcopy(valid); bad['originals'] = []; cases.append(('missing_originals', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['variantId'] = 'other'; cases.append(('wrong_variant', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['sha256'] = 'a'*64; cases.append(('changed_file_hash', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['rights'] = {}; cases.append(('missing_rights', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['rights']['channels'] = ['instagram']; cases.append(('partial_channel_rights', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['probe']['width'] = 960; cases.append(('low_resolution', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['probe']['fps'] = 25; cases.append(('historical_cadence', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['sha256'] = LEGACY_HASH; cases.append(('legacy_hash', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['nativeMotionReviewRef'] = ''; cases.append(('metadata_not_motion_approval', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'].append(copy.deepcopy(bad['originals'][0])); cases.append(('duplicate_take', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['probe']['durationSeconds'] = 5.6; cases.append(('handles_missing', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['takeId'] = {}; cases.append(('object_take_id', bad, False))
++    bad = copy.deepcopy(valid); bad['originals'][0]['takeId'] = []; cases.append(('list_take_id', bad, False))
++    for name, data, expected in cases:
++        out = audit(data)
++        assert out['documentationConsistent'] is expected, (name, out)
++        assert out['publicationReady'] is False and out['renderApproved'] is False
++        results.append({'name': name, 'passed': True, 'issueCount': len(out['issues'])})
++print(json.dumps({'classification': 'SYNTHETIC OFFLINE ONLY', 'passed': len(results), 'cases': results}, indent=2))
+--- /dev/null
++++ master/ORIGINALS-MANIFEST.json
+@@ -0,0 +1,12 @@
++{
++  "masterId": "luxe_sternenprojektor_master_20261018",
++  "productId": "gid://shopify/Product/15521256604033",
++  "variantId": "gid://shopify/ProductVariant/56197916361089",
++  "classification": "Current inspected evidence is incomplete; not an empty publication history",
++  "originals": [],
++  "nativeOriginalsEvidence": "No accepted native replacement originals are documented in the freshly read canonical r16 handoff or the bounded supplied master workspace.",
++  "existingPlanningReference": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
++  "existingPlanningReferenceSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
++  "publicationHistoryState": "unknown_no_verified_durable_register",
++  "notARegistry": true
++}
