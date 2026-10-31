@@ -1,5 +1,20 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## 01.11.2026 – Kaufziel erreicht, bestehender Master weitergeführt
+
+[Content- und Verkaufs-Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [unabhängige Prüfung](LAUFREVIEW-20261101.md).
+
+Frisch passender Shop und Metricool-Marke. Erster qualifizierender neuer Kauf **#1032**, 30.10.2026 **22:00:11 Europe/Zurich**, **CHF 31.80**, **PAID** und erfolgreiche positive Nicht-Test-SALE über Shopify Payments; nicht storniert oder erstattet. Baselinefenster bis 31.10.23:46:17Z vollständig gelesen, zwei neue qualifizierende Bestellungen. Keine Ads-/Codex-Verursachung. Der Kauf-Watch in der bestehenden Aufgabe ist mit #1032 als **ERREICHT** gespeichert und exakt zurückgelesen. Nur diesen Watchteil beendet: keine weiteren Watchabfragen und keine Wiederholungsmeldung desselben Treffers. Alle übrigen Aufgaben, 08:00/14:00/19:00 Europe/Zurich und Aktivierung erhalten. Frühere OFFEN-Angaben und Prüfregeln sind historisch, die frühere Aufforderung zu einem Kaufcheck je Lauf gilt nicht mehr.
+
+Einmalige Metricool-/Klaviyo-Reports für 25.–31.10. am Zürcher 01.11. gelesen. Social-Wochenwerte bleiben wegen fehlender Tage unbekannt; Welcome liefert 3 Zustellungen und 1 eindeutigen Klick, explizit 0 dieser Nachricht zugeschriebene Conversions. Das widerlegt keine Shopkäufe; Einzelauftrags-Sync mangels datensparsamer Order-ID-Auswahl unbekannt. Recovery ist live, alter Abbruchflow bleibt draft. Acht bestehende Metricool-Planobjekte mit 15 PENDING-Kanalzuständen gelesen; keine exakten Doppel im begrenzten Fenster, keine eigene Publikation oder Terminierung.
+
+Derselbe Master `luxe_sternenprojektor_master_20261018` hat einen lokalen Originaltake-/Varianten-/Hash-/Rechtenachweisprüfer, 14 synthetische Prüfungen bestanden. [Reviewpatch](MASTER-ORIGINALTAKE-PRUEFUNG-20261101.patch). Kein fertiger Film, keine Rechte-/Qualitätsfreigabe, keine operative Integration. Projektor CHF 34.90 kaufbar, Pyjama mit rueckhol-Socialsperre. Auto-Tagging neu True; Kampagne 24403263741 weiterhin PAUSED, CHF 58 Gesamtlaufzeitbudget und Enddatum 05.11. erhalten; kampagnenspezifische Kaufziele offen.
+
+Genau ein [Welcome-Service-Diff](WELCOME-SERVICE-20261101.diff) bleibt zur Freigabe: zwei Zeilen, Policyverweise statt pauschaler Zusagen, keine Flowaktivierung oder Nachricht. Derselbe Entwurf vom 29.10. wurde an aktueller Vorlage und erreichbaren Policies gegengeprüft. Die vier DNS-Ergänzungen sind bereits genehmigt; öffentliche Recordstichprobe weiterhin ohne erwartete Einträge, Sending-Domain pending, kein authentifizierter Schreibzugang. Keine erneute Genehmigungsfrage.
+
+Arbeitsstand Revision 17 erhält alle 16 Aufgaben-IDs und die vollständige Historie. Andere Shop-/Designstudio-/Merchant-/Codeaufgaben bleiben unverändert offen; dieser Lauf veröffentlicht kein Theme. Claude-Kenntnisnahme bleibt unbekannt. Nächste Arbeit: passende native Originaltakes und Rechte prüfen, konkreten Welcome-Diff beurteilen und den nativen Ads-Kaufzielbeleg beschaffen; keine Wiederholung des erfüllten Kauf-Watchs.
+
+
 ## 29.10.2026, Fortsetzung – neue Merchant-Preisfehler eingegrenzt
 
 [Neue CSV-/Preisdiagnose](MERCHANT-PREISDIAGNOSE-20261029.md): 8’327 eindeutige IDs mit Preisfehlern, davon 1’353 auch availability; Free listings in CH/LI, kleiner DE-Teil. Zwei Stichprobenprodukte sind DRAFT mit Preisen und Kollektionsweiterleitungen; konkrete Google-Datenquelle/URL fehlen. Keine pauschale Preisänderung, Quellenlöschung oder Aktivierung. Zweiter Upload über32MiB nicht lesbar.
