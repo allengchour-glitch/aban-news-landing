@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 16,
-  "updatedAt": "2026-10-29T23:21:01.532838+00:00",
+  "revision": 17,
+  "updatedAt": "2026-10-31T23:53:21.344768+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,22 +16,22 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-10-29",
+    "currentDayEvidenceDate": "2026-11-01",
     "currentDayEvidenceKind": "GEMESSEN",
-    "currentDayEvidence": "Morgenlauf29.10.: einmalige Metricool-Kennzahlen22.–28.10. und genau ein Klaviyo-Flowreport im gleichen Zürcher Zeitraum vollständig angefragt; lückenhafte Reihen unbekannt. Keine zusätzliche Tagesabfrage nur für Bericht. Enger neuer Bestellbeleg separat gemäss Abschnitt18 bis07:09:37Z vollständig: keine neuen Bestellungen. Ads-Status und gezielte Produkt-/Ledgergegenproben sind getrennte, begrenzte Prüfungen. Abendlauf: gespeicherte Morgenkennzahlen/Flowdaten ohne neue Reportabfrage wiederverwendet; enges neues Bestellfenster bis 18:07:25Z vollständig ohne neue Bestellungen. Neue Planung/Identität und eine Produktgegenprobe getrennt belegt.",
+    "currentDayEvidence": "Einmalige Reports 25.–31.10. (Zürcher Tage mit Zeitumstellung) am 01.11. gelesen. Social-Teilreihen bleiben unbekannt statt Null. Klaviyo ein Flowreport; enger neuer Kaufbeleg separat vollständig bis 31.10.23:46:17Z und erfüllt. Kauf-Watch danach in bestehender Aufgabe beendet. Keine weiteren Watchabfragen, keine Frequenzänderung.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-10-29",
-        "range": "2026-10-22/2026-10-28",
+        "localDate": "2026-11-01",
+        "range": "2026-10-25/2026-10-31",
         "dataCalls": 6,
         "definitionCalls": 6
       },
       "klaviyo": {
-        "localDate": "2026-10-29",
-        "range": "2026-10-22/2026-10-28",
+        "localDate": "2026-11-01",
+        "range": "2026-10-25/2026-10-31",
         "flowReportCalls": 1
       },
-      "proof": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json"
+      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json"
     }
   },
   "expectedIdentity": {
@@ -667,10 +667,10 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN/VORBEREITET im Abendlauf 29.10.: Projektor, Variante und SKU nativ und öffentlich passend; CHF 34.90, ACTIVE, nicht leere Tags, kein Sperrtag, tracked=false/CONTINUE/Menge 0/available. Echtes Referenzbild angesehen und kanonische Musik hashgleich zum frischen Repository. Neuer konkreter Typografieentwurf: drei Einzeiler zu lang, feste Zweizeiler bei gleichen Wörtern; sieben Textblöcke in dokumentierter Fontprobe passend. Gleiche Master-ID, 18 s/540 Frames, Quellzeiten, sechs UTMs und Captions erhalten. Keine MP4, Filmabnahme oder Publikation; Rechte, Ausführungs-/Stromzuordnung, Originaltakes und Ledger weiter offen. Zusatz 29.10. Webdesign: derselbe Master als vollständiger 9:16-Player statt ungeprüftem Breitbildzuschnitt spezifiziert; vorhandenes Produktfoto in Vorschau, kein Play-Symbol/Film. Keine neue MP4 oder Rechteabnahme.",
-      "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/VORBEREITET",
+      "lastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.",
+      "nextAllowedStep": "Vier echte native Originaltakes mit eindeutiger Geräte-/Default-/Motiv-/Stromzuordnung und kommerziellen Filmrechten prüfen; danach denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation alle Produkt-/Kanal-/Ledgerregeln frisch prüfen.",
       "blockers": [
         "Passendes professionelles Originalmaterial",
         "Ausführung/Motive und Rechte ungeklärt",
@@ -718,6 +718,11 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITEN-VIDEO-20261029.md",
           "gitBlobSha": "ca7a099338ca0dc009dcc105544cfd5de754c9a2",
           "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+          "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+          "readAt": "2026-10-31T23:53:21.344768+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -731,6 +736,18 @@
         {
           "date": "2026-10-29",
           "lastEvidence": "Frische Produkt-/Tag-/Storefront-Gegenprobe und Musikblob bestätigt. Derselbe18sMaster; ein weiteres echtes Galeriebild liefert keine Eingangs-/Kabel-/Netzteil-/Steckerbelege. Vier genaue fehlende Nachweiszeilen ausserhalb des Films formuliert. Eine neutrale FB-Caption präzisiert, sechs UTMs/masterId erhalten. Kein neuer professioneller Film, keine Abnahme/Publikation; Ledger unbekannt."
+        },
+        {
+          "lastEvidenceDate": "2026-10-29",
+          "belegArt": "GEMESSEN",
+          "lastEvidence": "GEMESSEN/VORBEREITET im Abendlauf 29.10.: Projektor, Variante und SKU nativ und öffentlich passend; CHF 34.90, ACTIVE, nicht leere Tags, kein Sperrtag, tracked=false/CONTINUE/Menge 0/available. Echtes Referenzbild angesehen und kanonische Musik hashgleich zum frischen Repository. Neuer konkreter Typografieentwurf: drei Einzeiler zu lang, feste Zweizeiler bei gleichen Wörtern; sieben Textblöcke in dokumentierter Fontprobe passend. Gleiche Master-ID, 18 s/540 Frames, Quellzeiten, sechs UTMs und Captions erhalten. Keine MP4, Filmabnahme oder Publikation; Rechte, Ausführungs-/Stromzuordnung, Originaltakes und Ledger weiter offen. Zusatz 29.10. Webdesign: derselbe Master als vollständiger 9:16-Player statt ungeprüftem Breitbildzuschnitt spezifiziert; vorhandenes Produktfoto in Vorschau, kein Play-Symbol/Film. Keine neue MP4 oder Rechteabnahme.",
+          "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
+          "state": "blockiert",
+          "blockers": [
+            "Passendes professionelles Originalmaterial",
+            "Ausführung/Motive und Rechte ungeklärt",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
+          ]
         }
       ]
     },
@@ -740,10 +757,10 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Vier bereits genehmigte Klaviyo-DNS-Ergänzungen",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Inhaberanweisung 14 und datierte Übergabe: genau vier genehmigte Ergänzungen. DNS-Zugang wurde in diesem Installationslauf nicht neu geprüft; historisch fehlt authentifizierter Schreibzugang.",
-      "nextAllowedStep": "Nur legitimen vorhandenen Zugriff und vollständigen Zonenstand prüfen, wenn verfügbar; Zustimmung zu denselben vier Records nicht erneut verlangen.",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/VORBEREITET",
+      "lastEvidence": "Genau vier bereits genehmigte DNS-Ergänzungen öffentlich gegengeprüft: drei CNAME-Namen NXDOMAIN, erwarteter Klaviyo-TXT nicht in Antwort. Klaviyo sendingDomain pending. Nur öffentliche Stichprobe, kein vollständiger Zonenstand. Aktuelles Environment ohne Credentialbindungen; kein authentifizierter DNS-Writer verfügbar. Kein Write und keine erneute Genehmigungsfrage.",
+      "nextAllowedStep": "Legitimen authentifizierten DNS-Schreibzugang und vollständigen Zonenstand prüfen, sobald verfügbar. Ausschliesslich vier bereits genehmigte Records ergänzen und einzeln zurücklesen; übrige Zone erhalten.",
       "blockers": [
         "Authentifizierter DNS-Schreibzugang fehlt"
       ],
@@ -756,11 +773,28 @@
           "path": "dropship/codex-handoff-20261018/README.md",
           "gitBlobSha": "aa59d07034720a6986a7aa01ba4d66cb1be4d26a",
           "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+          "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+          "readAt": "2026-10-31T23:53:21.344768+00:00"
         }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
-      "instructionReference": "Ausdrückliche Inhaberanweisung, Punkt 14: vier DNS-Ergänzungen vom 18.10.2026"
+      "instructionReference": "Ausdrückliche Inhaberanweisung, Punkt 14: vier DNS-Ergänzungen vom 18.10.2026",
+      "evidenceHistory": [
+        {
+          "lastEvidenceDate": "2026-10-28",
+          "belegArt": "QUELLE",
+          "lastEvidence": "Inhaberanweisung 14 und datierte Übergabe: genau vier genehmigte Ergänzungen. DNS-Zugang wurde in diesem Installationslauf nicht neu geprüft; historisch fehlt authentifizierter Schreibzugang.",
+          "nextAllowedStep": "Nur legitimen vorhandenen Zugriff und vollständigen Zonenstand prüfen, wenn verfügbar; Zustimmung zu denselben vier Records nicht erneut verlangen.",
+          "state": "blockiert",
+          "blockers": [
+            "Authentifizierter DNS-Schreibzugang fehlt"
+          ]
+        }
+      ]
     },
     {
       "id": "ads-pyjama-start-24403263741",
@@ -768,13 +802,13 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Bestehenden Pyjama-Ads-Entwurf eng auf Startvoraussetzungen prüfen",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Konto719-826-3241: Kampagne24403263741 PAUSED; Gruppe199943553005, Anzeige829846730083 und8Keywordkriterien ENABLED zurückgeliefert. Kein Write. Auto-Tagging-Abfrage ohneZeile unbekannt, GOAL_SETUP_READY24403263741 nicht belegt. Produkt15447971430785 Preis-pro-Person-Klarstellung nativ/öffentlich vorhanden;5Variantenpreise undProdukt-/Collection-HTTP/Canonical/H1 gezielt bestätigt.",
-      "nextAllowedStep": "Kampagnenspezifischen Kaufziel- und Auto-Tagging-Nachweis GOAL_SETUP_READY24403263741 prüfen und vereinbarte finale Startprüfung am vorhandenen Entwurf abschliessen. Keine automatische Aktivierung oder Budgetänderung; bestehendes GesamtlimitCHF58 und Zeitraum30.10.–05.11. erhalten.",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/VORBEREITET",
+      "lastEvidence": "Konto 719-826-3241 CHF: Kampagne 24403263741 PAUSED, Gruppe/Anzeige/acht Keywords ENABLED. CUSTOM_PERIOD 58 Mio. Micros CHF und 30.10.–05.11. direkt gelesen. Auto-Tagging neu True; kampagnenspezifische Kaufzielbindung und vollständige finale Startprüfung weiter offen. Kein Write, Force-Refresh oder Upgrade. Pyjama-Einstieg HTTP200 und Preis-pro-Person-Klarstellung vorhanden. Neue echte Shopify-Käufe sind kein Ads-Zuordnungs- oder Conversion-Tracking-Beleg.",
+      "nextAllowedStep": "Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
       "blockers": [
-        "Kein bestätigter kampagnenspezifischer Kaufziel-/Auto-Tagging-Beleg",
-        "Keine echte Kaufereignis-Auslösung aus aktivem Conversionstatus ableitbar"
+        "Kampagnenspezifische Kaufzielbindung und übrige finale Startparameter nicht vollständig aktuell belegt; Auto-Tagging jetzt True",
+        "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration"
       ],
       "acceptance": [
         "BestehendeEntitäten behalten, keineDuplikate",
@@ -791,6 +825,11 @@
           "path": "dropship/codex-handoff-20261018/PYJAMA-PREISMATRIX-20261029.json",
           "gitBlobSha": "e21e44c316c9e1a80794a3872a327683ba26061c",
           "readAt": "2026-10-29T07:31:52.854120Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+          "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+          "readAt": "2026-10-31T23:53:21.344768+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -799,7 +838,20 @@
         "budgetTotalCHF": 58,
         "period": "2026-10-30/2026-11-05",
         "source": "current owner instruction; no reactivation authorised by this memory"
-      }
+      },
+      "evidenceHistory": [
+        {
+          "lastEvidenceDate": "2026-10-29",
+          "belegArt": "GEMESSEN",
+          "lastEvidence": "Konto719-826-3241: Kampagne24403263741 PAUSED; Gruppe199943553005, Anzeige829846730083 und8Keywordkriterien ENABLED zurückgeliefert. Kein Write. Auto-Tagging-Abfrage ohneZeile unbekannt, GOAL_SETUP_READY24403263741 nicht belegt. Produkt15447971430785 Preis-pro-Person-Klarstellung nativ/öffentlich vorhanden;5Variantenpreise undProdukt-/Collection-HTTP/Canonical/H1 gezielt bestätigt.",
+          "nextAllowedStep": "Kampagnenspezifischen Kaufziel- und Auto-Tagging-Nachweis GOAL_SETUP_READY24403263741 prüfen und vereinbarte finale Startprüfung am vorhandenen Entwurf abschliessen. Keine automatische Aktivierung oder Budgetänderung; bestehendes GesamtlimitCHF58 und Zeitraum30.10.–05.11. erhalten.",
+          "state": "blockiert",
+          "blockers": [
+            "Kein bestätigter kampagnenspezifischer Kaufziel-/Auto-Tagging-Beleg",
+            "Keine echte Kaufereignis-Auslösung aus aktivem Conversionstatus ableitbar"
+          ]
+        }
+      ]
     },
     {
       "id": "merchant-missing-price-20261029",
@@ -1576,6 +1628,17 @@
       "at": "2026-10-29T23:21:01.532838+00:00",
       "actor": "codex",
       "action": "Fortsetzung 30.10.2026 Europe/Zurich: Auf präzisierte Inhabervorgabe nur unbedruckte Basisprodukte statt gemischter Motivprodukte vorbereitet. Die begrenzt geprüfte Ausgangskollektion enthält 32 Produkte; 31 erfüllen den positiven Blanko-/POD-Vertrag, ein Bügeltransfer ohne POD-Zuordnung ist ausgeschlossen. Fünf bestehende Unterkategorien gegen die belegte Produktauswahl geprüft; echte Farb-/Grössennamen und drei quellenbelegte Farbwerte für 15 tatsächlich gemappte T-Shirt-Varianten verwendet. Im bestehenden UNPUBLISHED-Theme212752499079 sind15 Dateien nativ gespeichert,14 textuell exakt und eine JSON-Vorlage semantisch identisch zurückgelesen. Drei geschützte Dateien sind hashgleich erhalten;18 Rückleseprüfungen bestanden. MAIN212656488839 bleibt MAIN,212752499079 bleibt UNPUBLISHED; keine Veröffentlichung. 37 neue funktionale native Prüfungen bestanden:19 Katalog und18 Kategorie, ohne historische r15-Tests mitzuzählen. Pickerseiten11/12/8 ergeben31 eindeutige Produkte, Kategorieseiten12/12/7. Drei echte Hero-Bilder geladen,31 Karten, zunächst12 sichtbar;1440px und390px ohne horizontalen Überlauf geprüft. Desktop- und geöffnetes Mobilmenü führen zur eigenen Kategorie;23 Samsung-Modelle sind ausklappbar. Read-only-Browsertests blockierten Nicht-GET-Analyseaufrufe und protokollierten dabei Failed-to-fetch-Meldungen; keine globale Fehlerfreiheits- oder Produktionsabnahmebehauptung. Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau. Elf isolierte Offlineprüfungen der lokalen EDM-Integrationsvorbereitung bestanden; sie beweisen keine produktive Anbindung. EDM ist vom Inhaber fürluxestyle.ch als freigeschaltet bestätigt, technische Token-/Serverbindung und echte Templategeometrie bleiben offen; Template-/Printfile-GET390 HTTP401. Kein Originaleditor oder Bestellfluss live. Die am 29.10. frisch gelesene öffentliche Printful-Stammliste umfasst 571 Lieferantenprodukte, Detailantwort 71 enthält 628 tatsächliche Varianten/84 Farben, Detailantwort 390 sieben Varianten. Das sind keine 571 Shopify-Angebote und keine vollständige Shop-/CHF-/Versandfreigabe. CORS fehlt an den geprüften öffentlichen API-Antworten; Template-/Printfile-Abfragen für 390 liefern 401. Der Inhaber bestätigt Printful-EDM-Freischaltung für luxestyle.ch; technische Tokenbindung und Serveranbindung sind noch nicht verifiziert. Ein lokaler Integrationsentwurf wird getrennt geführt; kein Originaleditor oder Bestellfluss ist dadurch live. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Zeitplanänderung und keine Claude-Kenntnisnahme behauptet."
+    },
+    {
+      "revision": 17,
+      "at": "2026-10-31T23:53:21.344768+00:00",
+      "actor": "codex",
+      "action": "Bestehender Lauf mit frischen Identitäten und einmaligen Tagesreports fortgeführt. Erster neuer echter Kauf #1032 bestätigt; nur Kauf-Watch der bestehenden Aufgabe auf ERREICHT gesetzt und exakt zurückgelesen, übriger Prompt und Zeitplan erhalten. Master-Originaltakeprüfer lokal fertig und 14 synthetische Fälle bestanden, keine MP4/Publikation. Auto-Tagging True; Ads-Kaufzielbindung offen. Genau ein bestehender Welcome-Service-Diff frisch gegengeprüft. Vier genehmigte DNS-Records öffentlich geprüft, Schreibzugang fehlt. Fünf Reviewartefakte und vier kanonische Dokumentationsdateien SHA-gebunden fortgeschrieben; alle 16 Tasks/Historien erhalten, keine Claude-Kenntnisnahme behauptet.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+        "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+        "readAt": "2026-10-31T23:53:21.344768+00:00"
+      }
     }
   ],
   "salesGoal": {
@@ -1584,19 +1647,19 @@
     "localStartAt": "2026-10-29T00:48:36+01:00",
     "targetCount": 1,
     "criterion": "Neue Bestellung ab Baseline: test=false, cancelledAt=null, positiver aktueller Gesamtbetrag, PAID, nicht vollständig erstattet. Mindestens eine erfolgreiche Nicht-Test-SALE/CAPTURE mit positivem Betrag eines echten, nicht manuellen Zahlungsanbieters. Fehlende Transaktionsbelege bleiben unbekannt.",
-    "status": "OFFEN_AB_2026-10-28T23:48:36Z",
+    "status": "ERREICHT",
     "schedule": "Bestehende Läufe 08:00/14:00/19:00 Europe/Zurich unverändert; keine ununterbrochene Hintergrundarbeit",
-    "lastCheckedAt": "2026-10-29T18:07:25Z",
+    "lastCheckedAt": "2026-10-31T23:46:17Z",
     "checkedWindow": {
       "from": "2026-10-28T23:48:36Z",
-      "to": "2026-10-29T18:07:25Z"
+      "to": "2026-10-31T23:46:17Z"
     },
-    "newOrderCount": 0,
-    "qualifyingOrderCount": 0,
+    "newOrderCount": 2,
+    "qualifyingOrderCount": 2,
     "completeWindow": true,
     "customerDataInPublicDocs": false,
     "attribution": "Keine kausale Ads-/Codex-Zuordnung aus dem Bestellstatus",
-    "nextAllowedCheck": "Im nächsten bestehenden Lauf Shopidentität, Schema/Query und eng begrenzte neue Bestellungen ab aktueller Baseline prüfen. Erfolgreiche echte Transaktion erforderlich. Nach erstem belegten Treffer nur den Kauf-Watch beenden und in der bestehenden Aufgabe mit Beleg als ERREICHT markieren.",
+    "nextAllowedCheck": "Keine weiteren Kauf-Watch-Abfragen: erstes Ziel erfüllt und bestehender Aufgabenprompt eng aktualisiert; #1032 nicht erneut als neu melden. Übrige Prüfaufgaben und Zeitplan bleiben unverändert.",
     "previousDefinitionAndCheck": {
       "startAt": "2026-10-28T23:46:11Z",
       "timezone": "Europe/Zurich",
@@ -1617,9 +1680,9 @@
       "nextAllowedCheck": "Im nächsten bestehenden Lauf Tagesprotokoll und geprüfte Fenster abgleichen; bisherigen Rhythmus und Kennzahlgrenzen erhalten. Keine automatische Wiederholung oder künstliche Testbestellung."
     },
     "source": {
-      "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261029.json",
-      "gitBlobSha": "1671b800a82478abbc15f595e224d881c27e6397",
-      "readAt": "2026-10-29T18:26:19.508486Z"
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+      "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+      "readAt": "2026-10-31T23:53:21.344768+00:00"
     },
     "instruction": "LUXESTYLE_ERSTER_NEUER_KAUF_20261029; current owner instruction supersedes earlier baseline/criterion; earlier evidence retained",
     "checkHistory": [
@@ -1637,7 +1700,79 @@
           "gitBlobSha": "0ab5c94aceb84d44bfe8215fdc0229fb96d54da4",
           "readAt": "2026-10-29T07:31:52.854120Z"
         }
+      },
+      {
+        "lastCheckedAt": "2026-10-29T18:07:25Z",
+        "checkedWindow": {
+          "from": "2026-10-28T23:48:36Z",
+          "to": "2026-10-29T18:07:25Z"
+        },
+        "newOrderCount": 0,
+        "qualifyingOrderCount": 0,
+        "completeWindow": true,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261029.json",
+          "gitBlobSha": "1671b800a82478abbc15f595e224d881c27e6397",
+          "readAt": "2026-10-29T18:26:19.508486Z"
+        }
       }
-    ]
-  }
+    ],
+    "watchEnded": true,
+    "firstQualifyingPurchase": {
+      "orderId": "gid://shopify/Order/19117990510983",
+      "orderName": "#1032",
+      "createdAt": "2026-10-30T21:00:11Z",
+      "createdAtEuropeZurich": "2026-10-30T22:00:11+01:00",
+      "amount": "31.80",
+      "currency": "CHF",
+      "financialStatus": "PAID",
+      "test": false,
+      "cancelledAt": null,
+      "refunded": "0.00",
+      "transaction": {
+        "kind": "SALE",
+        "status": "SUCCESS",
+        "test": false,
+        "amount": "31.80",
+        "currency": "CHF",
+        "gateway": "shopify_payments"
+      }
+    },
+    "automationReadback": {
+      "id": "6ad336cc3a388191bc05642ef858af99",
+      "promptMatches": true,
+      "scheduleUnchanged": true,
+      "timezoneUnchanged": true,
+      "enabledUnchanged": true,
+      "titleUnchanged": true,
+      "status": "ERREICHT",
+      "order": "#1032",
+      "readAt": "2026-10-31T23:47:21.011Z"
+    }
+  },
+  "dailyReadPolicyHistory": [
+    {
+      "timezone": "Europe/Zurich",
+      "checkLogBeforeReading": true,
+      "metricsFlowAndBroadSalesMaxPerDay": 1,
+      "exception": "new_concrete_finding_with_recorded_reason",
+      "currentDayEvidenceDate": "2026-10-29",
+      "currentDayEvidenceKind": "GEMESSEN",
+      "currentDayEvidence": "Morgenlauf29.10.: einmalige Metricool-Kennzahlen22.–28.10. und genau ein Klaviyo-Flowreport im gleichen Zürcher Zeitraum vollständig angefragt; lückenhafte Reihen unbekannt. Keine zusätzliche Tagesabfrage nur für Bericht. Enger neuer Bestellbeleg separat gemäss Abschnitt18 bis07:09:37Z vollständig: keine neuen Bestellungen. Ads-Status und gezielte Produkt-/Ledgergegenproben sind getrennte, begrenzte Prüfungen. Abendlauf: gespeicherte Morgenkennzahlen/Flowdaten ohne neue Reportabfrage wiederverwendet; enges neues Bestellfenster bis 18:07:25Z vollständig ohne neue Bestellungen. Neue Planung/Identität und eine Produktgegenprobe getrennt belegt.",
+      "completedReports": {
+        "metricool": {
+          "localDate": "2026-10-29",
+          "range": "2026-10-22/2026-10-28",
+          "dataCalls": 6,
+          "definitionCalls": 6
+        },
+        "klaviyo": {
+          "localDate": "2026-10-29",
+          "range": "2026-10-22/2026-10-28",
+          "flowReportCalls": 1
+        },
+        "proof": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json"
+      }
+    }
+  ]
 }
