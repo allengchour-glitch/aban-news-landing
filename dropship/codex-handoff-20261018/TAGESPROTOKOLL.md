@@ -578,3 +578,22 @@ Fortsetzung nach Mitternacht in Europe/Zurich, Arbeitsstand-Revision16. Die am29
 | Projektgedächtnis / Reviewartefakte | Vier Reviewartefakte erstellt und exakt zurückgelesen; vier kanonische r16-Dokumentationsentwürfe lokal finalisiert | ARTEFAKTE GESICHERT; kanonische Dokumentation weiterhin zur SHA-gebundenen Fortschreibung. Alle16Tasks, Historie, Kaufziel und Zeitplan erhalten; keine Claude-Kenntnisnahme behauptet |
 
 [LUXESTYLE_BLANK_KATALOG_20261030] [BLANK-KATALOG-20261030.md](BLANK-KATALOG-20261030.md) · [BLANK-KATALOG-BELEGE-20261030.json](BLANK-KATALOG-BELEGE-20261030.json) · [BLANK-KATALOG-THEME-20261030.patch](BLANK-KATALOG-THEME-20261030.patch) · [PRINTFUL-EDM-VORBEREITUNG-20261030.patch](PRINTFUL-EDM-VORBEREITUNG-20261030.patch). Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Claude-Kenntnisnahme behauptet.
+
+## 01.11.2026
+
+Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben erhalten. Keine zusätzlichen Automationen oder Zeitänderungen.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Identitäten | Shopify und Metricool samt sechs Kanälen frisch geprüft | LuxeStyle / luxestyle.ch / CHF sowie Marke 6227837 / Europe/Zurich passend |
+| Kaufziel | Enges Bestellfenster seit Baseline mit echten Zahlungsbelegen geprüft | ERREICHT: #1032, 30.10.2026 22:00:11 Zürich, CHF 31.80, PAID, erfolgreiche Nicht-Test-SALE über Shopify Payments; keine Ursachenzuordnung |
+| Bestehende Aufgabe | Nur Kaufstatus und Ende des Kauf-Watchs gespeichert und frisch zurückgelesen | ERREICHT bestätigt; übriger Prompt, 08:00/14:00/19:00, Zeitzone und Aktivierung erhalten |
+| Social-Planung | Nächste sieben Tage, UUIDs, Medien-URLs und Kanalzustände gelesen | Acht bestehende Posts / 15 PENDING-Kanalzustände; keine exakten Doppel im geprüften Fenster, kein eigener Social-Write |
+| Tageskennzahlen / Klaviyo | Einmalige Reports 25.–31.10. gelesen, aktuelle Flow-/Capturebindung geprüft | Social-Wochenwerte unvollständig; Welcome 3 Zustellungen / 1 eindeutiger Klick / 0 zugerechnete Conversions. Übrige fehlende Flowzeilen unbekannt; Einzelauftrags-Sync ungeklärt |
+| Produktfilm | Denselben 18-Sekunden-Master mit sechs Text-/UTM-Entwürfen fortgeführt; Originaltake-Prüfer lokal ergänzt | 14 synthetische Prüfungen bestanden; echte Originaltakes, Varianten-/Motiv-/Rechtebelege fehlen. Keine Master-MP4, kein Render oder Publish |
+| Verkaufsgrundlage / Ads | Zwei Produkte und Pyjama-Einstieg geprüft; Startmatrix nachgeführt | Projektor CHF 34.90 kaufbar; Pyjama rueckhol-Socialsperre. Auto-Tagging jetzt True, Kampagne PAUSED, Gesamtlimit CHF 58 unverändert; Kaufzielbindung offen |
+| Welcome-Entwurf | Bestehenden Zweizeilen-Service-Diff an frischer Vorlage und erreichbaren Policies gegengeprüft | Entwurf zur Freigabe, keine Mail-/Flowänderung. Unbelegte 1–2-Tage-Zusage durch Policyverweise ersetzen |
+| Genehmigte DNS-Ergänzungen | Genau vier erwartete Records öffentlich gegengeprüft | Drei CNAME-Namen NXDOMAIN; erwarteter TXT nicht in Resolverantwort. Sending-Domain pending, kein authentifizierter Schreibzugang, nichts geändert |
+| Projektgedächtnis | Aktuelle r16 gelesen; fünf Reviewartefakte gesichert und r17 nach begrenztem Ergänzungsdiff fortgeschrieben | 16 Aufgaben und Historie erhalten; SHA-gebundene Writes und gezielte Rücklesung separat belegt; Claude-Kenntnisnahme unbekannt |
+
+[LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
