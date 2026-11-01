@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 21,
-  "updatedAt": "2026-11-01T08:48:31Z",
+  "revision": 22,
+  "updatedAt": "2026-11-01T08:57:36Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1015,13 +1015,14 @@
       "state": "umgesetzt_vorschau_technisch_blockiert",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
-      "lastEvidence": "Auf ausdrücklichen Inhaberauftrag zur autonomen Weiterarbeit die vorhandene Startseitenvorschau verbessert: sichtbarer Einstieg zu «Selbst gestalten», cremefarbene Gestaltung, grosse abgerundete Produktbilder, dynamische CHF-Preise, kompakte Einstiege nach Kategorie und Budget sowie mobile Navigation mit echten Zielen und Suche. Änderungen im UNPUBLISHED-Theme gespeichert und zurückgelesen; responsive Prüfungen separat belegt. MAIN nicht geändert; keine neue Freigabe offen, technischer Connectorblocker. Kein neuer Produktfilm.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Auf ausdrücklichen Inhaberauftrag zur autonomen Weiterarbeit die vorhandene Startseitenvorschau verbessert: sichtbarer Einstieg zu «Selbst gestalten», cremefarbene Gestaltung, grosse abgerundete Produktbilder, dynamische CHF-Preise, kompakte Einstiege nach Kategorie und Budget sowie mobile Navigation mit echten Zielen und Suche. Änderungen im UNPUBLISHED-Theme gespeichert und zurückgelesen; responsive Prüfungen separat belegt. MAIN nicht geändert; keine neue Freigabe offen, technischer Connectorblocker. Kein neuer Produktfilm. Neue gezielte Gegenprobe zur Inhaberfrage «mobile site fehlt titelbild mit video?»: Öffentliche Startseite bei390×844 mit sichtbarem Hochformatvideo und Poster; frisch nach mobiler Navigation paused=false, readyState4 und currentTime1,731545s. Neue view=luxe-edit-Vorschau hat0 Videoelemente; Sternenprojektor-Bild geladen, Bildoberkante544,25px unter Text. MAIN212656488839/UNPUBLISHED212752499079 nativ bestätigt. Keine Themeänderung.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
-      "nextAllowedStep": "Geprüften engen Diff mit legitimem MAIN-Publikationszugang übertragen und öffentlich gegenprüfen; aktuelle Inhaberfreigabe erhalten, keine erneute Freigabeanforderung.",
+      "nextAllowedStep": "Vor Live-Übernahme der neuen App-ähnlichen Startseite den bisherigen mobilen Titelbereich samt bestehendem Hochformatvideo und Poster gezielt erhalten/integrationsfähig machen und mobil sichtbar gegentesten. Das öffentliche Video ist vorhanden; die neue Vorschau lässt es aus. Kein neuer Produktmaster dadurch freigegeben. Für MAIN-Übernahme weiterhin legitimen Publikationszugang nachweisen; bereits bestehende Inhaberfreigabe erhalten.",
       "blockers": [
         "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; Vorschau ist nicht live",
-        "Professioneller Film weiterhin ohne Freigabe der Originaltakes und Rechte; nicht durch ein Hero-Video ersetzt"
+        "Professioneller Film weiterhin ohne Freigabe der Originaltakes und Rechte; nicht durch ein Hero-Video ersetzt",
+        "Neu belegt: App-ähnliche Startseitenvorschau enthält bisher kein Video; Titelbild steht unter langem Text. Bestehenden öffentlichen Titelbereich vor Live-Übernahme erhalten und neu mobil prüfen."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -1068,6 +1069,11 @@
           "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-THEME-20261101.patch",
           "gitBlobSha": "ac43b2b9c00f73fc27cd0ae66d4c2b20e9a60bcc",
           "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MOBIL-HERO-BELEGE-20261101.json",
+          "gitBlobSha": "374ae10698d8d0d7ed0523d91afcd4e1b6e73240",
+          "readAt": "2026-11-01 08:57:36 UTC"
         }
       ],
       "requiresFreshVerification": true,
@@ -1082,6 +1088,16 @@
           "previousBlockers": [
             "Inhaltliche/gestalterische Abnahme und finale Live-Integration noch offen",
             "Kein freigegebener neuer professioneller Master; hochwertige zugeordnete Originaltakes und Bearbeitungsrechte weiter unbekannt"
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "lastEvidence": "Auf ausdrücklichen Inhaberauftrag zur autonomen Weiterarbeit die vorhandene Startseitenvorschau verbessert: sichtbarer Einstieg zu «Selbst gestalten», cremefarbene Gestaltung, grosse abgerundete Produktbilder, dynamische CHF-Preise, kompakte Einstiege nach Kategorie und Budget sowie mobile Navigation mit echten Zielen und Suche. Änderungen im UNPUBLISHED-Theme gespeichert und zurückgelesen; responsive Prüfungen separat belegt. MAIN nicht geändert; keine neue Freigabe offen, technischer Connectorblocker. Kein neuer Produktfilm.",
+          "nextAllowedStep": "Geprüften engen Diff mit legitimem MAIN-Publikationszugang übertragen und öffentlich gegenprüfen; aktuelle Inhaberfreigabe erhalten, keine erneute Freigabeanforderung.",
+          "blockers": [
+            "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; Vorschau ist nicht live",
+            "Professioneller Film weiterhin ohne Freigabe der Originaltakes und Rechte; nicht durch ein Hero-Video ersetzt",
+            "Neu belegt: App-ähnliche Startseitenvorschau enthält bisher kein Video; Titelbild steht unter langem Text. Bestehenden öffentlichen Titelbereich vor Live-Übernahme erhalten und neu mobil prüfen."
           ]
         }
       ]
@@ -1905,6 +1921,17 @@
         "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-BELEGE-20261101.json",
         "gitBlobSha": "576e3ad750e1c782d954251b71a30b0ae8ad344e",
         "readAt": "2026-11-01T08:48:31Z"
+      }
+    },
+    {
+      "revision": 22,
+      "at": "2026-11-01T08:57:36Z",
+      "actor": "codex",
+      "action": "Enge lesende mobile Hero-Gegenprobe auf Inhaberfrage: bestehendes öffentliches Hochformatvideo bei390px sichtbar/spielend bestätigt; neue App-ähnliche Vorschau ohne Video und Titelbild unter Text. Befund für bestehende Homepage-Aufgabe als Voraussetzung vor Live-Übernahme ergänzt. Kein Theme-/Produkt-/Socialwrite, keine neuen Tagesreports oder Kauf-Watch-Abfrage.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/MOBIL-HERO-BELEGE-20261101.json",
+        "gitBlobSha": "374ae10698d8d0d7ed0523d91afcd4e1b6e73240",
+        "readAt": "2026-11-01 08:57:36 UTC"
       }
     }
   ],
