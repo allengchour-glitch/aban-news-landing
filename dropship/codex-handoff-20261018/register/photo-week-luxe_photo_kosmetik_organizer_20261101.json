@@ -48,12 +48,13 @@
     ]
   },
   "checkpoint": {
-    "state": "INFLIGHT",
+    "state": "NOT_SENT_UPLOAD_INPUT_ERROR",
     "attempts": 1,
     "claimOwner": "codex-current-task-20261101-photo",
     "preparedAt": "2026-11-01T19:17:59Z",
     "rule": "Only SHA-CAS state transition can claim; INFLIGHT/UNKNOWN/UNCERTAIN block resend; no replacement post on missing status",
-    "requestStartedAt": "2026-11-01T19:18:22Z"
+    "requestStartedAt": "2026-11-01T19:18:22Z",
+    "lastError": "Preprocessing mediaFiles[0] treated HTTPS URL as local path: No such file or directory (os error2). No scheduledpost object returned."
   },
   "request": {
     "args": {
@@ -84,6 +85,32 @@
     {
       "at": "2026-11-01T19:18:22Z",
       "event": "SHA-CAS single-send claim; corrected alt-text field to observed array-of-strings schema before first send; caption/media/slot/scope unchanged"
+    },
+    {
+      "at": "2026-11-01T19:18:57Z",
+      "event": "Local media upload input error before scheduler response. Fresh exact target-day read returned only pre-existing FB/IG object, no target Threads caption or slot. Correct local path will be a single guarded correction, not blind retry or replacement post.",
+      "countercheck": {
+        "targetDay": "2026-11-04",
+        "objects": [
+          {
+            "id": 407849114,
+            "uuid": "-6402384969971711358",
+            "providers": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              },
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ],
+        "exactMatches": 0
+      }
     }
   ]
 }
