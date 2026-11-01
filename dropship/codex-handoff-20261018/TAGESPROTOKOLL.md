@@ -604,6 +604,11 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | Projektgedächtnis / Fortsetzung | Bestehende Aufgaben mit neuen Belegen fortgeschrieben und konkreten Diff gesichert | Revision fortgeführt, 16 Aufgaben und Historie erhalten; kein weiterer Kauf-Watch, Report oder Claude-Beleg behauptet |
 | Zentimeteranzeige | Explizite Zollmasse und Bereiche mit Faktor 2,54 für die Anzeige umgerechnet; vorhandene cm/mm bevorzugt | UMGESETZT IM VORSCHAU-THEME: Originalwerte/IDs, Preise, oz und Konfektionsgrössen erhalten;8″×10″→20,32×25,4cm,22–23″→55,88–58,42cm |
 | Titelbilder / gezielte Prüfung | Frühere Collage T-Shirt/Jutebeutel/Tasse wiederhergestellt; vier Dateien exakt zurückgelesen | 27 native Prüfungen bestanden,390/1440px ohne Überlauf; MAIN unverändert, keine Veröffentlichung, Produkt- oder Bestellaktion |
+| 08:00 Identitäten / Planung | Shop und sechs Metricool-Kanäle frisch geprüft, rollende sieben Planungstage mit früherem heutigen Beleg verglichen | GEMESSEN: passende Identität, dieselben acht Planobjekte/15 PENDING-Kanalzustände; keine eigene Publikation oder Terminierung |
+| 08:00 Tagesgrenzen | Bereits heute gelesene Kanal-/Klaviyo-Reports weiterverwendet, beendeten Kauf-Watch erhalten | Keine erneute Kennzahl-, Flow- oder Bestellabfrage; vollständige Kanalwochen unbekannt, keine Verkäufe aus Views abgeleitet |
+| 08:00 Produktfilm | Originaltake-Prüfer lokal um echte Medienbytes/ffprobe/Rotation/Cadence ergänzt; aktuelle öffentliche Videoquelle geprüft | 28 synthetische Fälle bestanden;852×480/25fps-Referenz ungeeignet, vier Originaltakes/Rechte/Ausführung offen; keine MP4, Integration oder Veröffentlichung |
+| 08:00 Verkaufsgrundlagen | Zwei ACTIVE-Produkte/vier native Varianten, Storefront/Bilder und drei öffentliche Verkaufsseiten geprüft; lokaler Root-HTML-Auswerter ergänzt | Projektor CHF34.90, Pyjama CHF14.90–17.90 mit rueckhol-Sperre; keine neue SEO-Störung belegt. Drei Quellenfälle mit je sieben Assertions bestanden; Default-Matrix konkretisiert unbekannte Ausführung |
+| 08:00 Verkaufsentwurf / Dokumentation | Bestehenden einen Welcome-Service-Diff als unverändert offen geführt und fünf neue bereinigte Reviewartefakte gesichert | Keine Mail-/Flow-/Shop-/DNS-/Adsänderung; Dokumentation auf Revision20 fortgeführt, alle16 Aufgaben und Historien erhalten |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
 
@@ -611,3 +616,5 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 [LUXESTYLE_SELBSTGESTALTEN_20261101] [Bericht](SELBSTGESTALTEN-WEBSITE-20261101.md) · [Belege](SELBSTGESTALTEN-BELEGE-20261101.json) · [Merchant](MERCHANT-PREISPRUEFUNG-20261101.md). Aktuelle Inhaberfreigabe vorhanden; technische Blocker transparent.
 
 [LUXESTYLE_CM_TITELBILDER_20261101] [Bericht](SELBSTGESTALTEN-CM-TITELBILDER-20261101.md) · [Belege](SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json). Revision 19; übrige Aufgaben und Historie erhalten.
+
+[LUXESTYLE_MORGEN_20261101] [Paket](MORGENPAKET-20261101.md) · [Belege](MORGENBELEGE-20261101.json) · [Master-Diff](MASTER-FFPROBE-20261101.patch). Kennzahlen/Flows nicht wiederholt; Kauf-Watch bleibt beendet.
