@@ -1,0 +1,703 @@
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -1,3 +1,4 @@
++<script src="{{ 'luxe-product-reviews.js' | asset_url }}" defer></script>
+ {% assign lx_design_url = '/collections/selbst-gestalten-1?view=luxe-gestalten' %}
+ 
+ <div class="lx-home" id="lx-top">
+@@ -17,28 +18,20 @@
+     </div>
+   </header>
+   <main id="lx-content">
+-    <section class="lx-hero" aria-labelledby="lx-hero-title">
+-      <div class="lx-mobile-hero-media lx-mobile-only" data-hero-media>
+-        <img src="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" width="720" height="1280" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
++    <section class="lx-hero lx-background-hero" aria-labelledby="lx-hero-title">
++      <div class="lx-background-hero-media" data-hero-media>
++        <img src="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" width="720" height="1000" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
+         <video muted playsinline loop preload="none" data-hero-video data-src="https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0" poster="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" aria-hidden="true" tabindex="-1"></video>
+         <button type="button" class="lx-hero-video-control" data-hero-toggle data-play-label="{{ 'luxe_home.hero.play' | t | escape }}" data-pause-label="{{ 'luxe_home.hero.pause' | t | escape }}" hidden>{{ 'luxe_home.hero.play' | t }}</button>
+       </div>
+       <div class="lx-hero-copy">
+-        <p class="lx-eyebrow"><span class="lx-dot"></span> {{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
+-        <h1 id="lx-hero-title"><span class="lx-desktop-only">{{ 'luxe_home.dein_raum_4d8b3' | t }}<br>{{ 'luxe_home.dein_84624' | t }} <em>{{ 'luxe_home.moment_afc9e' | t }}</em></span><span class="lx-mobile-only">{{ 'luxe_home.hero.heading_first' | t }}<br>{{ 'luxe_home.hero.heading_second' | t }}</span></h1>
+-        <p class="lx-hero-description lx-desktop-only">{{ 'luxe_home.manchmal_beginnt_etwas_besondere_c2d36' | t }}</p>
+-        <a class="lx-button lx-desktop-only" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544">{{ 'luxe_home.projektor_entdecken_6c4fb' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+-        <a class="lx-text-link lx-desktop-only" href="#lx-worlds">{{ 'luxe_home.oder_finde_deine_einkaufswelt_e4733' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-7-7 7 7 7-7"/></svg></span></a>
+-        <div class="lx-mobile-hero-actions lx-mobile-only">
+-          <a class="lx-button" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.hero.categories' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+-          <a class="lx-text-link" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }}</a>
++        <p class="lx-eyebrow">{{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
++        <h1 id="lx-hero-title">{{ 'luxe_home.hero.heading_first' | t }}<br><em>{{ 'luxe_home.hero.heading_second' | t }}</em></h1>
++        <p class="lx-hero-description">{{ 'luxe_home.hero.description' | t }}</p>
++        <div class="lx-hero-actions">
++          <a class="lx-button" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.hero.categories' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
++          <a class="lx-text-link" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+         </div>
+-        <div class="lx-hero-note lx-desktop-only"><span class="lx-line"></span><span>{{ 'luxe_home.mode_wohnen_geschenkideen_6068a' | t }}</span></div>
+-      </div>
+-      <div class="lx-hero-visual lx-desktop-only">
+-        <div class="lx-visual-label"><span>{{ 'luxe_home.im_fokus_e795b' | t }}</span><span>{{ 'luxe_home.01_wohnen_c1c73' | t }}</span></div>
+-        <img class="lx-hero-image" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=1200" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=1200 1200w" sizes="(max-width: 760px) 100vw, 56vw" width="1920" height="1919" alt="{{ 'luxe_home.weisser_sternenlicht_projektor_m_eefeb' | t | escape }}" fetchpriority="high">
+-        <a class="lx-product-caption" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"><span><small>{{ 'luxe_home.das_detail_f_r_dein_zuhause_8ab47' | t }}</small>{{ 'luxe_home.sternenlicht_projektor_e7543' | t }}</span><span class="lx-caption-arrow" aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+       </div>
+     </section>
+     <section class="lx-worlds lx-section" id="lx-worlds" aria-labelledby="lx-worlds-title">
+@@ -105,6 +98,7 @@
+               <div class="lx-trend-image">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: '' }}</div>
+               <div class="lx-trend-info">
+                 <h3 id="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">{{ lx_trend.title | escape }}</h3>
++                <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_trend.id }}" hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_trend %},"locale":{{ request.locale.iso_code | json }},"labels":{"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+                 <p class="lx-trend-price">{% if lx_trend.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_trend.price_min | money_with_currency }}</p>
+                 <span class="lx-trend-open">{{ 'luxe_home.trends.open' | t }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+               </div>
+@@ -120,15 +114,62 @@
+         <div class="lx-trends-grid" tabindex="0" role="region" aria-label="{{ 'luxe_home.trends.products' | t }}">{{ lx_trend_cards }}</div>
+       </section>
+     {% endif %}
++    {% assign lx_discover_entries = 'schmuck|jewellery,wohnen-dekoration|home,beauty-pflege|beauty,sport-outdoor|sport' | split: ',' %}
++    {% capture lx_discover_cards %}
++      {% for lx_discover_entry in lx_discover_entries %}
++        {% assign lx_discover_parts = lx_discover_entry | split: '|' %}
++        {% assign lx_discover_collection = collections[lx_discover_parts[0]] %}
++        {% if lx_discover_collection != blank and lx_discover_collection.image != blank and lx_discover_collection.products_count > 0 %}
++          {% assign lx_discover_name = 'luxe_home.categories.' | append: lx_discover_parts[1] %}
++          {% assign lx_discover_note = 'luxe_home.discovery.' | append: lx_discover_parts[1] %}
++          <a class="lx-discover-card" href="{{ lx_discover_collection.url }}" data-discover-collection="{{ lx_discover_collection.handle | escape }}">
++            <div class="lx-discover-photo">{{ lx_discover_collection.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 360, 480, 640, 800', sizes: '(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw', alt: '' }}</div>
++            <div class="lx-discover-info"><h3>{{ lx_discover_name | t }}</h3><p>{{ lx_discover_note | t }}</p><span>{{ 'luxe_home.discovery.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></div>
++          </a>
++        {% endif %}
++      {% endfor %}
++    {% endcapture %}
++    {% assign lx_discover_present = lx_discover_cards | strip %}
++    {% if lx_discover_present != blank %}
++      <section class="lx-discover lx-section" id="lx-discover" aria-labelledby="lx-discover-title">
++        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.discovery.eyebrow' | t }}</p><h2 id="lx-discover-title">{{ 'luxe_home.discovery.heading' | t }}</h2></div><a class="lx-text-link" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.categories.all' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
++        <div class="lx-discover-grid">{{ lx_discover_cards }}</div>
++      </section>
++    {% endif %}
+     <section class="lx-fashion-edit lx-section" aria-labelledby="lx-fashion-title">
+       <a class="lx-fashion-image" href="https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000" aria-label="{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900" width="1600" height="2133" loading="lazy" alt="{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}"></a>
+       <div class="lx-fashion-copy"><p class="lx-eyebrow">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id="lx-fashion-title">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class="lx-button" href="https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><span class="lx-fashion-footnote">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>
+     </section>
+-    <section class="lx-gift-edit lx-section" aria-labelledby="lx-gift-title">
+-      <div class="lx-gift-copy"><p class="lx-eyebrow">{{ 'luxe_home.die_kleine_aufmerksamkeit_d722d' | t }}</p><h2 id="lx-gift-title">{{ 'luxe_home.f_r_jemanden_7e7d5' | t }}<br>{{ 'luxe_home.oder_einfach_251ba' | t }} <em>{{ 'luxe_home.f_r_dich_9f11f' | t }}</em></h2><p>{{ 'luxe_home.eine_idee_f_r_einen_lieben_mensc_976d1' | t }}</p><a class="lx-button lx-button-light" href="https://luxestyle.ch/collections/geschenke-unter-50-franken">{{ 'luxe_home.geschenkideen_entdecken_96583' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+-      <div class="lx-gift-links"><a href="https://luxestyle.ch/collections/unter-chf-25"><small>{{ 'luxe_home.eine_kleine_geste_892e0' | t }}</small><span>{{ 'luxe_home.unter_chf_25_09961' | t }}</span><i aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></i></a><a href="https://luxestyle.ch/collections/geschenke-unter-50-franken"><small>{{ 'luxe_home.etwas_besonderes_finden_8d4ff' | t }}</small><span>{{ 'luxe_home.unter_chf_50_47bfe' | t }}</span><i aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></i></a><a href="https://luxestyle.ch/collections/weihnachten-2026"><small>{{ 'luxe_home.zeit_zum_st_bern_ffb10' | t }}</small><span>{{ 'luxe_home.weihnachtsideen_3e991' | t }}</span><i aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></i></a></div>
+-    </section>
+-    <section class="lx-service lx-section" aria-label="{{ 'luxe_home.service_und_informationen_fc55a' | t | escape }}"><div><p class="lx-eyebrow">{{ 'luxe_home.gut_zu_wissen_bf808' | t }}</p><h2>{{ 'luxe_home.fragen_hier_geht_s_weiter_7b8ef' | t }}</h2></div><div class="lx-service-links"><a href="https://luxestyle.ch/pages/versand-lieferung">{{ 'luxe_home.versand_lieferung_25e74' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/pages/rueckgabe">{{ 'luxe_home.r_ckgabe_62237' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/pages/kontakt-support">{{ 'luxe_home.kontakt_unterst_tzung_8c752' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div></section>
++    {% assign lx_budget_entries = 'unter-chf-25|small,geschenke-unter-50-franken|medium,premium-geschenke|gifts' | split: ',' %}
++    {% capture lx_budget_cards %}
++      {% for lx_budget_entry in lx_budget_entries %}
++        {% assign lx_budget_parts = lx_budget_entry | split: '|' %}
++        {% assign lx_budget_collection = collections[lx_budget_parts[0]] %}
++        {% if lx_budget_collection != blank and lx_budget_collection.products_count > 0 %}
++          {% assign lx_budget_label = 'luxe_home.budget.' | append: lx_budget_parts[1] %}
++          {% assign lx_budget_note = lx_budget_label | append: '_note' %}
++          {% assign lx_budget_url = lx_budget_collection.url %}
++          {% if lx_budget_parts[1] == 'small' %}{% assign lx_budget_url = lx_budget_url | append: '?filter.v.price.lte=24.99' %}{% endif %}
++          {% if lx_budget_parts[1] == 'medium' %}{% assign lx_budget_url = lx_budget_url | append: '?filter.v.price.lte=49.99' %}{% endif %}
++          <a class="lx-budget-card" href="{{ lx_budget_url }}" data-budget-collection="{{ lx_budget_collection.handle | escape }}"><span>{{ lx_budget_note | t }}</span><strong>{{ lx_budget_label | t }}</strong><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
++        {% endif %}
++      {% endfor %}
++    {% endcapture %}
++    {% assign lx_budget_present = lx_budget_cards | strip %}
++    {% if lx_budget_present != blank %}
++      <section class="lx-budget lx-section" id="lx-budget" aria-labelledby="lx-budget-title">
++        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.budget.eyebrow' | t }}</p><h2 id="lx-budget-title">{{ 'luxe_home.budget.heading' | t }}</h2></div></div>
++        <div class="lx-budget-grid">{{ lx_budget_cards }}</div>
++      </section>
++    {% endif %}
++    <section class="lx-home-help lx-section" id="lx-home-help" aria-labelledby="lx-help-title">
++      <div class="lx-home-help-copy"><p class="lx-eyebrow">{{ 'luxe_home.help.eyebrow' | t }}</p><h2 id="lx-help-title">{{ 'luxe_home.help.heading' | t }}</h2><p>{{ 'luxe_home.help.intro' | t }}</p><a class="lx-text-link" href="{{ pages['kontakt-support'].url }}">{{ 'luxe_home.help.contact' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></div>
++      <div class="lx-home-help-questions">
++        <details><summary>{{ 'luxe_home.help.question_options' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_options' | t }}</p><a href="{{ pages['kontakt-support'].url }}">{{ 'luxe_home.help.contact' | t }}</a></div></details>
++        <details><summary>{{ 'luxe_home.help.question_design' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_design' | t }}</p><a href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }}</a></div></details>
++        <details><summary>{{ 'luxe_home.help.question_delivery' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_delivery' | t }}</p><nav aria-label="{{ 'luxe_home.help.policies' | t | escape }}"><a href="{{ pages['versand-lieferung'].url }}">{{ 'luxe_home.versand_lieferung_25e74' | t }}</a><a href="{{ pages['rueckgabe'].url }}">{{ 'luxe_home.r_ckgabe_62237' | t }}</a></nav></div></details>
++      </div>
++    </section>
+   </main>
+   <footer class="lx-footer"><a class="lx-wordmark" href="https://luxestyle.ch/">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a><p>{{ 'luxe_home.sch_nes_f_r_deinen_alltag_ecdb9' | t }}</p><nav aria-label="{{ 'luxe_home.rechtliche_informationen_346ba' | t | escape }}"><a href="https://luxestyle.ch/policies/legal-notice">{{ 'luxe_home.impressum_b8a60' | t }}</a><a href="https://luxestyle.ch/policies/privacy-policy">{{ 'luxe_home.datenschutz_f624f' | t }}</a><a href="https://luxestyle.ch/policies/terms-of-service">{{ 'luxe_home.agb_ef0fe' | t }}</a></nav><span class="lx-footer-currency">{{ 'luxe_home.schweiz_chf_deutsch_e630d' | t }}</span></footer>
+   <dialog class="lx-dialog lx-menu-dialog" id="lx-menu" aria-labelledby="lx-menu-title"><div class="lx-dialog-top"><span class="lx-wordmark" id="lx-menu-title">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></span><button class="lx-icon-button" type="button" data-close aria-label="{{ 'luxe_home.men_schliessen_55d49' | t | escape }}"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav aria-label="{{ 'luxe_home.mobile_navigation_ccea1' | t | escape }}"><a class="lx-design-nav" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/collections/damen-mode">{{ 'luxe_home.mode_5e23e' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/collections/wohnen-dekoration">{{ 'luxe_home.wohnen_49bf1' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/collections/geschenke-unter-50-franken">{{ 'luxe_home.geschenkideen_6ad8d' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="https://luxestyle.ch/pages/alle-kategorien">{{ 'luxe_home.alle_kategorien_5ed9a' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></nav><a class="lx-text-link" href="https://account.luxestyle.com.co">{{ 'luxe_home.zum_kundenkonto_9a2d2' | t }} <svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></dialog>
+--- a/assets/luxe-edit.css
++++ b/assets/luxe-edit.css
+@@ -100,3 +100,64 @@
+  .lx-home .lx-trends-hint{display:flex;align-items:center;gap:10px;margin:-6px 0 16px;color:#665f56;font-size:12px;line-height:1.5}
+  .lx-trends-hint svg{flex:0 0 18px;width:18px;height:18px}
+ }
++.lx-home .lx-discover-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
++.lx-home .lx-discover-card{display:flex;flex-direction:column;min-width:0;background:#fffdf9;border:1px solid #ded5c9;border-radius:18px;overflow:hidden}
++.lx-discover-photo{aspect-ratio:1.12;background:#eee7dc;overflow:hidden}
++.lx-discover-photo img{width:100%;height:100%;object-fit:contain}
++.lx-discover-info{padding:20px;display:flex;flex-direction:column;flex:1}
++.lx-home .lx-discover-info h3{font:400 25px/1.15 var(--lx-serif);letter-spacing:-.4px;margin:0 0 10px}
++.lx-home .lx-discover-info p{font-size:12px;line-height:1.6;color:var(--lx-muted);margin:0 0 16px}
++.lx-discover-info>span{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;margin-top:auto;font-size:12px;text-decoration:underline;text-underline-offset:4px}
++.lx-discover-card:hover{border-color:#8b7355}
++.lx-home .lx-budget{background:#eee7dc;padding-top:46px;padding-bottom:46px}
++.lx-home .lx-budget-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
++.lx-home .lx-budget-card{position:relative;min-width:0;min-height:144px;border:1px solid #d4c7b6;border-radius:18px;padding:24px 48px 24px 24px;background:#faf7f2;display:flex;flex-direction:column;justify-content:center;gap:6px}
++.lx-budget-card>span{font-size:12px;color:#665f56}
++.lx-budget-card>strong{font:400 clamp(25px,2.8vw,40px)/1.1 var(--lx-serif);letter-spacing:-.6px;overflow-wrap:anywhere}
++.lx-budget-card>.lx-arrow{position:absolute;right:20px;top:calc(50% - 10px)}
++.lx-budget-card:hover{background:#fffdf9}
++.lx-home .lx-home-help{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px)}
++.lx-home-help-copy h2{font:400 clamp(32px,3vw,46px)/1.1 var(--lx-serif);letter-spacing:-.7px;margin:14px 0 16px}
++.lx-home .lx-home-help-copy>p:not(.lx-eyebrow){max-width:420px;color:var(--lx-muted);font-size:13px;line-height:1.7;margin:0 0 22px}
++.lx-home-help-questions{min-width:0;border-top:1px solid var(--lx-line)}
++.lx-home-help-questions details{border-bottom:1px solid var(--lx-line)}
++.lx-home-help-questions summary{min-height:66px;list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;font-size:14px;font-weight:500}
++.lx-home-help-questions summary::-webkit-details-marker{display:none}
++.lx-home-help-questions summary>span{font-size:24px;line-height:1;flex:0 0 20px;font-weight:400}
++.lx-home-help-questions details[open] summary>span{transform:rotate(45deg)}
++.lx-home-help-questions details>div{padding:0 30px 22px 0;color:var(--lx-muted);font-size:13px;line-height:1.7}
++.lx-home-help-questions details>div a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
++.lx-home-help-questions details nav{display:flex;flex-wrap:wrap;gap:8px 24px}
++@media(min-width:761px) and (max-width:1100px){.lx-home .lx-discover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
++@media(max-width:760px){.lx-discover .lx-section-heading{align-items:flex-start;flex-direction:column;gap:16px}.lx-home .lx-discover-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lx-discover-info{padding:14px}.lx-home .lx-discover-info h3{font-size:23px}.lx-home .lx-discover-info p{font-size:11px}.lx-discover-info>span{font-size:11px;gap:8px}.lx-home .lx-budget{padding-top:34px;padding-bottom:34px}.lx-home .lx-budget-grid{grid-template-columns:minmax(0,1fr);gap:10px}.lx-home .lx-budget-card{min-height:105px;padding:18px 50px 18px 22px}.lx-budget-card>strong{font-size:32px}.lx-home .lx-home-help{grid-template-columns:minmax(0,1fr);gap:28px}.lx-home-help-copy h2{font-size:34px}.lx-home-help-questions summary{font-size:13px;gap:16px}.lx-home-help-questions details>div{padding-right:0}}
++.lx-home .lx-background-hero{position:relative;isolation:isolate;display:flex;align-items:stretch;min-height:640px;margin:20px clamp(16px,3vw,48px) 0;border-radius:22px;overflow:hidden;background:#eee7dc}
++.lx-home .lx-background-hero-media{position:absolute;inset:0 0 0 auto;width:54%;overflow:hidden;background:#232323}
++.lx-background-hero-media>img,.lx-background-hero-media>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
++.lx-background-hero-media>video{opacity:0}
++.lx-background-hero-media.has-frame>video{opacity:1}
++.lx-background-hero-media [hidden]{display:none!important}
++.lx-home .lx-background-hero .lx-hero-copy{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:57%;padding:clamp(34px,5vw,76px);border-radius:0;background:linear-gradient(90deg,#eee7dc 88%,#eee7dce8 96%,#eee7dc00)}
++.lx-home .lx-background-hero .lx-hero-copy>.lx-eyebrow{display:block}
++.lx-home .lx-background-hero h1{font-size:clamp(46px,5.2vw,76px);line-height:1.04;letter-spacing:-2.1px;margin:22px 0}
++.lx-home .lx-background-hero h1 em{color:#6a5841}
++.lx-home .lx-background-hero .lx-hero-description{max-width:360px;color:#514a40;font-size:15px;line-height:1.7;margin:0!important}
++.lx-home .lx-hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
++.lx-home .lx-hero-actions .lx-text-link{min-height:48px;margin:0;display:inline-flex;align-items:center;gap:10px}
++.lx-home .lx-background-hero .lx-hero-video-control{position:absolute;top:16px;right:16px;z-index:3;min-height:48px;min-width:48px;border:1px solid #d9d1c6;border-radius:999px;background:#faf7f2f5;color:#292722;padding:12px 16px;font:500 11px/1.25 var(--lx-sans);box-shadow:0 2px 12px #29272212}
++@media(min-width:761px) and (max-width:1050px){.lx-home .lx-background-hero{min-height:580px}.lx-home .lx-background-hero .lx-hero-copy{padding:40px 30px;width:59%}.lx-home .lx-background-hero-media{width:51%}.lx-home .lx-background-hero h1{font-size:48px}.lx-home .lx-hero-actions{gap:8px}}
++@media(max-width:760px){
++ .lx-home .lx-background-hero{display:flex;justify-content:flex-end;min-height:500px;min-height:clamp(480px,calc(100svh - 280px),640px);margin:16px 16px 0;border-radius:18px}
++ .lx-home .lx-background-hero-media{inset:0;width:100%;height:100%}
++ .lx-home .lx-background-hero .lx-hero-copy{width:100%;min-height:inherit;justify-content:flex-end;padding:140px 20px 24px;background:linear-gradient(180deg,#17151100 24%,#1715115c 43%,#171511e8 68%,#171511f5 100%);color:#faf7f2}
++ .lx-home .lx-background-hero .lx-hero-copy>.lx-eyebrow{color:#eee7dc;font-size:9px;letter-spacing:.13em}
++ .lx-home .lx-background-hero h1{font-size:clamp(38px,10.3vw,58px);line-height:1.04;letter-spacing:-1.6px;margin:14px 0 18px}
++ .lx-home .lx-background-hero h1 em{color:#e9d7ba}
++ .lx-home .lx-background-hero .lx-hero-description{color:#f1e9de;font-size:13px;line-height:1.6;max-width:380px}
++ .lx-home .lx-hero-actions{margin-top:20px;gap:10px;align-items:center;flex-direction:row}
++ .lx-home .lx-hero-actions .lx-button{background:#faf7f2;border-color:#faf7f2;color:#292722!important;min-height:48px;padding:13px 18px;gap:18px}
++ .lx-home .lx-hero-actions .lx-text-link{color:#faf7f2;min-height:48px;font-size:12px}
++ .lx-home .lx-background-hero .lx-hero-video-control{top:12px;right:12px}
++}
++.lx-home .lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:#665f56;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
++.lx-home .lx-review-badge[hidden]{display:none!important}
++.lx-home .lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}
+--- a/assets/luxe-edit.js
++++ b/assets/luxe-edit.js
+@@ -7,13 +7,12 @@
+   if (heroMedia) {
+     const video = heroMedia.querySelector('[data-hero-video]');
+     const toggle = heroMedia.querySelector('[data-hero-toggle]');
+-    const mobile = matchMedia('(max-width:760px)');
+     const motion = matchMedia('(prefers-reduced-motion:reduce)');
+     let inView = false;
+     let choice = null;
+     let failed = false;
+     let pending = false;
+-    const allowed = () => mobile.matches && inView && !document.hidden && !failed &&
++    const allowed = () => inView && !document.hidden && !failed &&
+       (choice === 'play' || (choice !== 'pause' && !motion.matches && !navigator.connection?.saveData));
+     const label = () => { toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel; };
+     const sync = () => {
+@@ -34,7 +33,6 @@
+     video.addEventListener('error', () => {
+       failed = true; video.pause(); heroMedia.classList.remove('has-frame'); toggle.hidden = true;
+     });
+-    mobile.addEventListener('change', sync);
+     motion.addEventListener('change', () => { if (motion.matches && choice === 'play') choice = null; sync(); });
+     document.addEventListener('visibilitychange', sync);
+     if ('IntersectionObserver' in window) {
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -8,6 +8,38 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "luxe_categories": {
++    "eyebrow": "Deine Einkaufswelten",
++    "heading": "Alle Kategorien",
++    "intro": "Entdecke unsere Themenwelten und öffne die passende Auswahl.",
++    "search_label": "Welche Kategorie suchst du?",
++    "search_placeholder": "Zum Beispiel Schuhe, Schmuck oder Gaming",
++    "clear": "Löschen",
++    "group_label": "Bereiche",
++    "link_label": "Unterkategorien",
++    "empty": "Keine passende Kategorie gefunden. Probiere einen anderen Suchbegriff.",
++    "costumes": "Kostüme und Fasnacht",
++    "gifts": "Geschenke und Anlässe",
++    "pets": "Haustiere",
++    "sport": "Sport und Fitness",
++    "outdoor": "Garten und Outdoor",
++    "auto": "Auto und Werkzeug",
++    "men": "Herrenmode",
++    "women": "Damenmode",
++    "fashion": "Mode und Bekleidung",
++    "season": "Saison",
++    "shoes": "Schuhe",
++    "bags": "Taschen und Accessoires",
++    "jewellery": "Schmuck und Uhren",
++    "beauty": "Beauty und Pflege",
++    "gaming": "Gaming",
++    "electronics": "Technik und Elektronik",
++    "home": "Wohnen und Küche",
++    "kids": "Kinder und Baby",
++    "office": "Büro und Schreibwaren",
++    "new": "Neuheiten und Inspiration",
++    "more": "Weitere Kategorien"
++  },
+   "blocks": {
+     "load_video": "Video laden: {{ description }}",
+     "sold_out": "Ausverkauft",
+@@ -350,6 +382,39 @@
+     }
+   },
+   "luxe_home": {
++    "discovery": {
++      "eyebrow": "Neue Ideen für deinen Alltag",
++      "heading": "Mehr von LuxeStyle entdecken",
++      "open": "Auswahl ansehen",
++      "jewellery": "Schmuckstücke für deinen persönlichen Stil.",
++      "home": "Neue Akzente für deinen Lieblingsort.",
++      "beauty": "Entdecke deine Auswahl für Beauty und Pflege.",
++      "sport": "Für Bewegung, Freizeit und draussen."
++    },
++    "budget": {
++      "eyebrow": "Kleine Freude oder besondere Idee",
++      "heading": "Finde deine nächste Entdeckung",
++      "small": "Unter CHF 25",
++      "small_note": "Kleine Aufmerksamkeiten",
++      "medium": "Unter CHF 50",
++      "medium_note": "Ideen für dich und andere",
++      "gifts": "Geschenkideen",
++      "gifts_note": "Noch mehr Inspiration"
++    },
++    "help": {
++      "eyebrow": "Gut zu wissen",
++      "heading": "Vor dem Bestellen",
++      "intro": "Finde die passende Auswahl und die Informationen zu deiner Bestellung.",
++      "contact": "Kontakt und Unterstützung",
++      "question_options": "Wo finde ich Farben, Grössen und Produktdetails?",
++      "answer_options": "Die verfügbaren Ausführungen und Angaben findest du auf der jeweiligen Produktseite. Fehlt eine Information, kontaktiere uns vor deiner Bestellung.",
++      "question_design": "Wie finde ich ein Produkt zum Selbstgestalten?",
++      "answer_design": "Öffne die Produktauswahl zum Selbstgestalten. Dort kannst du die Modelle sowie ihre verfügbaren Farben, Grössen und Ausführungen entdecken.",
++      "question_delivery": "Wo finde ich Versand- und Rückgabeinformationen?",
++      "answer_delivery": "Lies die aktuellen Informationen auf den folgenden Seiten, bevor du bestellst.",
++      "policies": "Versand und Rückgabe"
++    },
++
+     "trends": {
+       "eyebrow": "Neue Lieblingsstücke entdecken",
+       "heading": "Trends entdecken",
+@@ -387,6 +452,7 @@
+     },
+ 
+     "hero": {
++      "description": "Mode, Wohnen, Geschenke und mehr. Entdecke deine nächste Lieblingsidee.",
+       "heading_first": "Schön leben.",
+       "heading_second": "Schlau shoppen.",
+       "categories": "Alle Kategorien",
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -8,6 +8,38 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "luxe_categories": {
++    "eyebrow": "Your shopping worlds",
++    "heading": "All categories",
++    "intro": "Explore our themes and open the selection that suits you.",
++    "search_label": "Which category are you looking for?",
++    "search_placeholder": "For example shoes, jewellery or gaming",
++    "clear": "Clear",
++    "group_label": "themes",
++    "link_label": "subcategories",
++    "empty": "No matching category found. Try another search term.",
++    "costumes": "Costumes and carnival",
++    "gifts": "Gifts and occasions",
++    "pets": "Pets",
++    "sport": "Sport and fitness",
++    "outdoor": "Garden and outdoors",
++    "auto": "Car and tools",
++    "men": "Menswear",
++    "women": "Womenswear",
++    "fashion": "Fashion and clothing",
++    "season": "Seasonal",
++    "shoes": "Shoes",
++    "bags": "Bags and accessories",
++    "jewellery": "Jewellery and watches",
++    "beauty": "Beauty and care",
++    "gaming": "Gaming",
++    "electronics": "Technology and electronics",
++    "home": "Home and kitchen",
++    "kids": "Children and baby",
++    "office": "Office and stationery",
++    "new": "New arrivals and inspiration",
++    "more": "More categories"
++  },
+   "accessibility": {
+     "account": "Account",
+     "active_filters": "Active filters:",
+@@ -350,6 +382,39 @@
+     }
+   },
+   "luxe_home": {
++    "discovery": {
++      "eyebrow": "Fresh ideas for your everyday",
++      "heading": "Discover more from LuxeStyle",
++      "open": "Explore the collection",
++      "jewellery": "Jewellery for your personal style.",
++      "home": "New details for your favourite place.",
++      "beauty": "Explore beauty and personal care.",
++      "sport": "For movement, leisure and the outdoors."
++    },
++    "budget": {
++      "eyebrow": "A little treat or a special idea",
++      "heading": "Find your next discovery",
++      "small": "Under CHF 25",
++      "small_note": "Little gestures",
++      "medium": "Under CHF 50",
++      "medium_note": "Ideas for you and others",
++      "gifts": "Gift ideas",
++      "gifts_note": "More inspiration"
++    },
++    "help": {
++      "eyebrow": "Good to know",
++      "heading": "Before you order",
++      "intro": "Find your preferred option and information about your order.",
++      "contact": "Contact and support",
++      "question_options": "Where can I find colours, sizes and product details?",
++      "answer_options": "Available options and details are shown on each product page. If information is missing, please contact us before ordering.",
++      "question_design": "How do I find a product to customise?",
++      "answer_design": "Open the customisable product selection to explore models and their available colours, sizes and options.",
++      "question_delivery": "Where can I find shipping and returns information?",
++      "answer_delivery": "Read the current information on the following pages before ordering.",
++      "policies": "Shipping and returns"
++    },
++
+     "trends": {
+       "eyebrow": "Discover new favourites",
+       "heading": "Explore trends",
+@@ -387,6 +452,7 @@
+     },
+ 
+     "hero": {
++      "description": "Fashion, home, gifts and more. Discover your next favourite find.",
+       "heading_first": "Live beautifully.",
+       "heading_second": "Shop smart.",
+       "categories": "All categories",
+--- a/sections/luxe-studio.liquid
++++ b/sections/luxe-studio.liquid
+@@ -1,3 +1,4 @@
++<script src="{{ 'luxe-product-reviews.js' | asset_url }}" defer></script>
+ {{ 'luxe-studio.css' | asset_url | stylesheet_tag }}
+ {{ 'luxe-studio-catalog.css' | asset_url | stylesheet_tag }}
+ <script src="{{ 'luxe-studio.js' | asset_url }}" defer></script>
+@@ -180,6 +181,7 @@
+   <div class="lx-studio-entry__copy">
+     <p class="lx-studio-entry__kicker">{{ 'luxe_studio.intro_kicker' | t }}</p>
+     <h1>{{ product.title | escape }}</h1>
++    <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ product.id }}" hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: product %},"locale":{{ request.locale.iso_code | json }},"labels":{"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+     <p class="lx-studio-entry__lead">{{ 'luxe_studio.intro_copy' | t }}</p>
+     <ol class="lx-studio-entry__steps">
+       <li>{{ 'luxe_studio.intro_step_product' | t }}</li>
+@@ -211,6 +213,9 @@
+ .lx-studio-entry__note { max-width: 440px; font-size: 12px; line-height: 1.6; color: #746e67; }
+ .lx-studio-entry__back { display: inline-block; padding: 8px 0; font-size: 13px; text-decoration: underline; color: #514b45; }
+ @media (max-width: 760px) { .lx-studio-entry { grid-template-columns: 1fr; gap: 22px; padding: 0 20px; margin: 16px auto 40px; } .lx-studio-entry__visual { max-height: 34vh; } .lx-studio-entry__visual img { height: 34vh; } .lx-studio-entry h1 { font-size: 28px; } .lx-studio-entry__launch { width: 100%; } }
++.lx-studio-entry .lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:12px 0;color:#605b56;font-size:13px;line-height:1.5}
++.lx-studio-entry .lx-review-badge[hidden]{display:none!important}
++.lx-studio-entry .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}
+ {% endstylesheet %}
+ 
+ {% schema %}
+--- a/assets/luxe-product-reviews.js
++++ b/assets/luxe-product-reviews.js
+@@ -25,7 +25,7 @@
+     svg.append(fill);return svg;
+   };
+   const render = (container,data,labels,productId,locale='de-CH') => {
+-    const review=normalize(data,productId);container.replaceChildren();container.dataset.reviewState=review.state;container.dataset.reviewProductId=String(productId||'');container.hidden=review.state==='unknown';if(container.hidden)return review;
++    const review=normalize(data,productId);container.replaceChildren();container.dataset.reviewState=review.state;container.dataset.reviewProductId=String(productId||'');container.hidden=review.state==='unknown'||(container.hasAttribute('data-review-zero-only')&&review.state!=='confirmedZero');if(container.hidden)return review;
+     container.classList.add('lx-review-badge');
+     const text=document.createElement('span');
+     if(review.state==='confirmedZero') text.textContent=labels.zero || '';
+@@ -33,10 +33,11 @@
+     container.append(text);return review;
+   };
+   const decode = text => new DOMParser().parseFromString(String(text||'').replace(/&(?!(?:#\d+|#x[\da-f]+|[a-z][a-z\d]+);)/gi,'&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'),'text/html').body.textContent || '';
+-  const scan = target => target.querySelectorAll('[data-luxe-review-card]').forEach(container=>{
++  const scan = target => [...(target.matches?.('[data-luxe-review-card]')?[target]:[]),...target.querySelectorAll('[data-luxe-review-card]')].forEach(container=>{
+     if(container.dataset.reviewReady)return;container.dataset.reviewReady='true';let config;
+     try {config=JSON.parse(container.querySelector('script[type="application/json"]').textContent);}catch{container.hidden=true;return;}
+     render(container,config.data,{zero:decode(config.labels?.zero),summary:decode(config.labels?.summary)},container.dataset.productId,config.locale||'de-CH');
+   });
+   window.LuxeStyleProductReviews={normalize,render,scan};scan(document);document.addEventListener('shopify:section:load',event=>scan(event.target));
++  if('MutationObserver' in window)new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)scan(node);}))).observe(document.body||document.documentElement,{childList:true,subtree:true});
+ })();
+--- a/blocks/product-title.liquid
++++ b/blocks/product-title.liquid
+@@ -14,6 +14,7 @@
+   >
+     {% render 'text', fallback_text: product_title, block: block %}
+   </a>
++  <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ closest.product.id }}" hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: closest.product %},"locale":{{ request.locale.iso_code | json }},"labels":{"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+ {% endif %}
+ 
+ {% schema %}
+--- a/templates/product.json
++++ b/templates/product.json
+@@ -384,12 +384,20 @@
+               "settings": {
+                 "custom_liquid": "{%- comment -%} LUX-MENGENRABATT (27.10.2026, Besitzerfreigabe): Hinweis nur bei Produkten mit Tag mengenrabatt-a / mengenrabatt-b. Die Stufen müssen mit automation/lib/mengenrabatt.mjs (STUFEN) und den automatischen Rabatten «Mengenrabatt: …» übereinstimmen: A = ab 2 Stück 5 %, ab 3 Stück 10 %; B = ab 3 Stück 5 %. Der Rabatt zählt je Auswahl (Sammlung mengenrabatt-ab-2-stueck / -3-stueck, auch gemischt) und wird im Warenkorb automatisch abgezogen. Texte nur zusammen mit den Rabatten ändern. {%- endcomment -%}\n{%- assign lx_mr_t = closest.product.tags -%}\n{%- if lx_mr_t contains 'mengenrabatt-a' or lx_mr_t contains 'mengenrabatt-b' -%}\n<div class=\"lux-mengenrabatt\" style=\"display:flex;align-items:flex-start;gap:.5rem;margin:.2rem 0 .6rem;padding:.6rem .8rem;background:#f3f7f2;border:1px solid #cfe0cc;border-radius:8px;font-size:.9rem;line-height:1.4;color:#2c4a2a;\">\n<span style=\"font-size:1.1rem;\" aria-hidden=\"true\">🏷️</span>\n<span>{%- if lx_mr_t contains 'mengenrabatt-a' -%}<strong>Mengenvorteil:</strong> ab 2 Stück 5&nbsp;% günstiger, ab 3 Stück 10&nbsp;%{%- else -%}<strong>Mengenvorteil:</strong> ab 3 Stück 5&nbsp;% günstiger{%- endif -%} &ndash; auch gemischt aus dieser Auswahl, im Warenkorb automatisch abgezogen.<br><a href=\"{%- if lx_mr_t contains 'mengenrabatt-a' -%}/collections/mengenrabatt-ab-2-stueck{%- else -%}/collections/mengenrabatt-ab-3-stueck{%- endif -%}\" style=\"color:#2c4a2a;font-weight:600;text-decoration:underline;\">Alle Artikel mit Mengenvorteil &rarr;</a></span>\n</div>\n{%- endif -%}"
+               }
++            },
++            "luxe_review_empty": {
++              "type": "custom-liquid",
++              "name": "Product review empty state",
++              "settings": {
++                "custom_liquid": "<script src=\"{{ 'luxe-product-reviews.js' | asset_url }}\" defer></script>\n<style>.lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:inherit;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.lx-review-badge[hidden]{display:none!important}.lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}</style>\n<div class=\"lx-review-badge\" data-luxe-review-card data-product-id=\"{{ closest.product.id }}\" data-review-zero-only hidden><script type=\"application/json\">{\"data\":{% render 'luxe-product-review-data', product: closest.product %},\"locale\":{{ request.locale.iso_code | json }},\"labels\":{\"zero\":{{ 'luxe_clothing.reviews_zero' | t | json }},\"summary\":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>"
++              }
+             }
+           },
+           "block_order": [
+             "lux_breadcrumb",
+             "group_icgrde",
+             "judge_me_reviews_preview_badge_TThg47",
++            "luxe_review_empty",
+             "divider_VJhene",
+             "lux_bildwahl",
+             "variant_picker_R3rGDr",
+--- a/templates/collection.json
++++ b/templates/collection.json
+@@ -249,7 +249,7 @@
+     "lux_subchips": {
+       "type": "custom-liquid",
+       "settings": {
+-        "custom_liquid": "{%- liquid\n  assign chips = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url and link.links.size > 1\n      assign chips = link.links\n    endif\n    for sub in link.links\n      if sub.url == collection.url and link.links.size > 1\n        assign chips = link.links\n      endif\n    endfor\n  endfor\n-%}\n{%- if chips != '' and chips.size > 1 -%}\n{%- assign lx_max = 7 -%}\n{%- assign lx_n = chips.size -%}\n<nav class=\"lx-tabs\" aria-label=\"Unterkategorien\">\n<style>\n.lx-tabs{max-width:min(var(--page-width,1200px),100vw);margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #e8e1d4;padding:0 0 .1rem;margin:0;list-style:none}\n.lx-tabs a,.lx-tabs summary{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#5c4a2f;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\n.lx-tabs a[aria-current=\"page\"]{color:#1f1a12;font-weight:600;border-bottom-color:#8b7355}\n.lx-tabs summary{list-style:none;cursor:pointer;color:#8b7355;font-weight:600}\n.lx-tabs summary::-webkit-details-marker{display:none}\n.lx-tabs summary::after{content:' ▾'}\n.lx-tabs details[open] summary::after{content:' ▴'}\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\n.lx-tabs__alle li{break-inside:avoid}\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\n</style>\n<ul class=\"lx-tabs__zeile\">\n  {%- for ch in chips -%}\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\n      <li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>\n    {%- endif -%}\n  {%- endfor -%}\n</ul>\n{%- if lx_n > lx_max -%}\n<details class=\"lx-tabs__details\" style=\"margin:0\"><summary style=\"margin:.2rem 0 0;display:inline-block\">Alle {{ lx_n }} Kategorien</summary>\n<ul class=\"lx-tabs__alle\">\n  {%- for ch in chips -%}<li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\n</ul></details>\n{%- endif -%}\n</nav>\n{%- endif -%}\n{%- liquid\n  assign lx_uf = collection.metafields.lux.unterfilter.value\n  assign lx_kopf = collection\n  if lx_uf == blank\n    assign lx_el = collection.metafields.lux.eltern.value\n    if lx_el != blank\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\n      assign lx_kopf = lx_el\n    endif\n  endif\n-%}\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\n<nav class=\"lx-uf\" aria-label=\"Unterfilter {{ lx_kopf.title | escape }}\">\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100vw);margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.78rem;color:#7a7a72;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.82rem;padding:.38rem .85rem;border-radius:999px;text-decoration:none;border:1px solid #e0d8c8;background:#fff;color:#5a4a2f;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\"page\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\n  <div class=\"lx-uf__zeile\">\n    <span class=\"lx-uf__label\">{{ lx_kopf.title | escape }}:</span>\n    <a href=\"{{ lx_kopf.url }}\"{% if lx_kopf.id == collection.id %} aria-current=\"page\"{% endif %}>Alle</a>\n    {%- for f in lx_uf -%}<a href=\"{{ f.url }}\"{% if f.id == collection.id %} aria-current=\"page\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\n  </div>\n</nav>\n{%- endif -%}\n{%- comment -%}\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\n{%- endcomment -%}\n{%- liquid\n  assign welt = ''\n  assign menuetitel = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url\n      assign welt = link.title\n    endif\n    for sub in link.links\n      if sub.url == collection.url and welt == ''\n        assign welt = link.title\n      endif\n      for sub2 in sub.links\n        if sub2.url == collection.url and welt == ''\n          assign welt = link.title\n        endif\n      endfor\n    endfor\n  endfor\n  for ch in chips\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\n  endfor\n  comment\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\n  endcomment\n  case welt\n    when 'Damen'\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\n    when 'Herren'\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\n    when 'Schuhe'\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\n    when 'Schmuck & Uhren'\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\n    when 'Beauty & Parfüm'\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\n    when 'Wohnen & Garten'\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\n    when 'Technik & Gaming'\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\n    when 'Kinder & Haustier'\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\n    when 'Sport & Party'\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\n    when 'Herbst & Übergang'\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\n    else\n      assign erlaubt = ''\n  endcase\n-%}\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\n{%- capture fchips -%}\n  {%- for paar in filterpaare -%}\n    {%- assign teile = paar | split: '|' -%}\n    {%- assign t = teile[0] -%}\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\n    {%- assign tl_pipe = '|' | append: tl -%}\n    {%- assign ok = true -%}\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\n    {%- if ok and collection.all_tags contains t -%}\n      {%- assign akt = false -%}\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\n      {%- if akt -%}\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\n        {%- assign rest = rest | remove_first: '+' -%}\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\n      {%- else -%}\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\n      {%- endif -%}\n      <a href=\"{{ ziel }}\" rel=\"nofollow\" style=\"white-space:nowrap;font-size:.82rem;padding:.35rem .8rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#d8e0d8{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:600;{% else %}background:#f7faf7;color:#2f4a35;{% endif %}\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\n    {%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if fchips contains '<a' -%}\n<div class=\"lx-chiprow\" style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div class=\"lx-chipflex\" style=\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\">\n    <span style=\"font-size:.78rem;color:#7a7a72;white-space:nowrap;\">Filtern:</span>\n    {{ fchips }}\n  </div>\n</div>\n{%- endif -%}\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\n",
++        "custom_liquid": "{%- liquid\n  assign chips = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url and link.links.size > 1\n      assign chips = link.links\n    endif\n    for sub in link.links\n      if sub.url == collection.url and link.links.size > 1\n        assign chips = link.links\n      endif\n    endfor\n  endfor\n-%}\n{%- if chips != '' and chips.size > 1 -%}\n{%- assign lx_max = 7 -%}\n{%- assign lx_n = chips.size -%}\n<nav class=\"lx-tabs\" aria-label=\"Unterkategorien\">\n<style>\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #e8e1d4;padding:0 0 .1rem;margin:0;list-style:none}\n.lx-tabs a,.lx-tabs summary{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#5c4a2f;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\n.lx-tabs a[aria-current=\"page\"]{color:#1f1a12;font-weight:600;border-bottom-color:#8b7355}\n.lx-tabs summary{list-style:none;cursor:pointer;color:#8b7355;font-weight:600}\n.lx-tabs summary::-webkit-details-marker{display:none}\n.lx-tabs summary::after{content:' ▾'}\n.lx-tabs details[open] summary::after{content:' ▴'}\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\n.lx-tabs__alle li{break-inside:avoid}\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\n</style>\n<ul class=\"lx-tabs__zeile\">\n  {%- for ch in chips -%}\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\n      <li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>\n    {%- endif -%}\n  {%- endfor -%}\n</ul>\n{%- if lx_n > lx_max -%}\n<details class=\"lx-tabs__details\" style=\"margin:0\"><summary style=\"margin:.2rem 0 0;display:inline-block\">Alle {{ lx_n }} Kategorien</summary>\n<ul class=\"lx-tabs__alle\">\n  {%- for ch in chips -%}<li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\n</ul></details>\n{%- endif -%}\n</nav>\n{%- endif -%}\n{%- liquid\n  assign lx_uf = collection.metafields.lux.unterfilter.value\n  assign lx_kopf = collection\n  if lx_uf == blank\n    assign lx_el = collection.metafields.lux.eltern.value\n    if lx_el != blank\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\n      assign lx_kopf = lx_el\n    endif\n  endif\n-%}\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\n<nav class=\"lx-uf\" aria-label=\"Unterfilter {{ lx_kopf.title | escape }}\">\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100vw);margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.78rem;color:#7a7a72;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.82rem;padding:.38rem .85rem;border-radius:999px;text-decoration:none;border:1px solid #e0d8c8;background:#fff;color:#5a4a2f;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\"page\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\n  <div class=\"lx-uf__zeile\">\n    <span class=\"lx-uf__label\">{{ lx_kopf.title | escape }}:</span>\n    <a href=\"{{ lx_kopf.url }}\"{% if lx_kopf.id == collection.id %} aria-current=\"page\"{% endif %}>Alle</a>\n    {%- for f in lx_uf -%}<a href=\"{{ f.url }}\"{% if f.id == collection.id %} aria-current=\"page\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\n  </div>\n</nav>\n{%- endif -%}\n{%- comment -%}\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\n{%- endcomment -%}\n{%- liquid\n  assign welt = ''\n  assign menuetitel = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url\n      assign welt = link.title\n    endif\n    for sub in link.links\n      if sub.url == collection.url and welt == ''\n        assign welt = link.title\n      endif\n      for sub2 in sub.links\n        if sub2.url == collection.url and welt == ''\n          assign welt = link.title\n        endif\n      endfor\n    endfor\n  endfor\n  for ch in chips\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\n  endfor\n  comment\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\n  endcomment\n  case welt\n    when 'Damen'\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\n    when 'Herren'\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\n    when 'Schuhe'\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\n    when 'Schmuck & Uhren'\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\n    when 'Beauty & Parfüm'\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\n    when 'Wohnen & Garten'\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\n    when 'Technik & Gaming'\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\n    when 'Kinder & Haustier'\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\n    when 'Sport & Party'\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\n    when 'Herbst & Übergang'\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\n    else\n      assign erlaubt = ''\n  endcase\n-%}\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\n{%- capture fchips -%}\n  {%- for paar in filterpaare -%}\n    {%- assign teile = paar | split: '|' -%}\n    {%- assign t = teile[0] -%}\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\n    {%- assign tl_pipe = '|' | append: tl -%}\n    {%- assign ok = true -%}\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\n    {%- if ok and collection.all_tags contains t -%}\n      {%- assign akt = false -%}\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\n      {%- if akt -%}\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\n        {%- assign rest = rest | remove_first: '+' -%}\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\n      {%- else -%}\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\n      {%- endif -%}\n      <a href=\"{{ ziel }}\" rel=\"nofollow\" style=\"white-space:nowrap;font-size:.82rem;padding:.35rem .8rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#d8e0d8{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:600;{% else %}background:#f7faf7;color:#2f4a35;{% endif %}\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\n    {%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if fchips contains '<a' -%}\n<div class=\"lx-chiprow\" style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div class=\"lx-chipflex\" style=\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\">\n    <span style=\"font-size:.78rem;color:#7a7a72;white-space:nowrap;\">Filtern:</span>\n    {{ fchips }}\n  </div>\n</div>\n{%- endif -%}\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\n",
+         "padding-block-start": 0,
+         "padding-block-end": 0
+       }
+@@ -258,6 +258,14 @@
+       "type": "custom-liquid",
+       "settings": {
+         "custom_liquid": "<style>.lx-usp{width:100%;box-sizing:border-box;max-width:var(--page-width,1200px);margin:0 auto;padding:.5rem 1.5rem}.lx-usp__reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.7rem 1.2rem;padding:.8rem 0;border-top:1px solid #ece4d6;border-bottom:1px solid #ece4d6;font-size:12px;letter-spacing:.04em;color:#4a4a4a;line-height:1.4}.lx-usp__eintrag{display:flex;align-items:center;gap:.6rem}.lx-usp__eintrag svg{flex:0 0 auto;color:#8b7355}.lx-usp__eintrag strong{font-weight:600;color:#2c2c2c}</style><div class=\"lx-usp\"><div class=\"lx-usp__reihe\"><span class=\"lx-usp__eintrag\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"/><path d=\"M15 18H9\"/><path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"/><circle cx=\"17\" cy=\"18\" r=\"2\"/><circle cx=\"7\" cy=\"18\" r=\"2\"/></svg><span><strong>Gratis-Versand</strong> in der Schweiz ab CHF 50 nach Rabatt</span></span><span class=\"lx-usp__eintrag\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/></svg><span><strong>30 Tage</strong> Rückgabe</span></span><span class=\"lx-usp__eintrag\"><svg viewBox=\"0 0 32 32\" width=\"20\" height=\"20\" aria-hidden=\"true\"><rect width=\"32\" height=\"32\" rx=\"4\" fill=\"#d52b1e\"/><path fill=\"#fff\" d=\"M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z\"/></svg><span><strong>Schweizer Shop</strong></span></span><span class=\"lx-usp__eintrag\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/><path d=\"m9 12 2 2 4-4\"/></svg><span><strong>Sichere Zahlung</strong> · TWINT</span></span><span class=\"lx-usp__eintrag\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"8\" width=\"18\" height=\"4\" rx=\"1\"/><path d=\"M12 8v13\"/><path d=\"M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7\"/><path d=\"M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5\"/></svg><span><strong>–10 %</strong> mit WELCOME10</span></span></div></div>",
++        "padding-block-start": 0,
++        "padding-block-end": 0
++      }
++    },
++    "luxe_review_assets": {
++      "type": "custom-liquid",
++      "settings": {
++        "custom_liquid": "<script src=\"{{ 'luxe-product-reviews.js' | asset_url }}\" defer></script>\n<style>.lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:inherit;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.lx-review-badge[hidden]{display:none!important}.lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}</style>",
+         "padding-block-start": 0,
+         "padding-block-end": 0
+       }
+@@ -268,6 +276,7 @@
+     "lux_subchips",
+     "lux_usp_coll",
+     "section",
++    "luxe_review_assets",
+     "main",
+     "lux_faq"
+   ]
+--- a/sections/main-page.liquid
++++ b/sections/main-page.liquid
+@@ -1,3 +1,6 @@
++{% if page.handle == 'alle-kategorien' %}
++{% render 'luxe-category-directory', page: page, section: section %}
++{% else %}
+ 
+ 
+ <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+@@ -19,6 +22,7 @@
+   </div>
+ </div>
+ 
++{% endif %}
+ {% schema %}
+ {
+   "name": "t:names.page",
+--- /dev/null
++++ b/snippets/luxe-category-directory.liquid
+@@ -0,0 +1,24 @@
++{% doc %}
++Renders the existing category directory with verified collection banner references.
++@param {page} page - The existing category directory page.
++@param {section} section - The containing page section.
++{% enddoc %}
++{{ 'luxe-category-directory.css' | asset_url | stylesheet_tag }}
++<section class="lx-directory" data-category-directory data-section-id="{{ section.id }}" data-group-label="{{ 'luxe_categories.group_label' | t | escape }}" data-link-label="{{ 'luxe_categories.link_label' | t | escape }}" data-no-results="{{ 'luxe_categories.empty' | t | escape }}">
++  <div class="lx-directory-header"><p class="lx-directory-eyebrow">{{ 'luxe_categories.eyebrow' | t }}</p><h1>{{ 'luxe_categories.heading' | t }}</h1><p>{{ 'luxe_categories.intro' | t }}</p></div>
++  <div class="lx-directory-search" data-directory-search hidden><label for="lx-category-search-{{ section.id }}">{{ 'luxe_categories.search_label' | t }}</label><div class="lx-directory-search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="lx-category-search-{{ section.id }}" type="search" placeholder="{{ 'luxe_categories.search_placeholder' | t | escape }}" autocomplete="off" data-directory-query><button type="button" data-directory-clear hidden>{{ 'luxe_categories.clear' | t }}</button></div><p role="status" aria-live="polite" data-directory-status></p></div>
++  <div class="lx-directory-source" data-directory-source>{{ page.content }}</div>
++  <div hidden data-directory-templates>
++    {% assign lx_directory_handles = 'kostueme-fasnacht,premium-geschenke,sub-haustier,sport-outdoor,outdoor-garten,werkzeug-maschinen,fur-ihn,damen-mode,t-shirts-tops,winter-kaelte,schuhe,sub-taschen,schmuck-uhren,beauty-pflege,gaming-zubehor,elektronik-technik,wohnen-dekoration,sub-baby-kids,buro-home-office,neu-eingetroffen,klemmbausteine-bausaetze' | split: ',' %}
++    {% assign lx_directory_label_keys = 'costumes,gifts,pets,sport,outdoor,auto,men,women,fashion,season,shoes,bags,jewellery,beauty,gaming,electronics,home,kids,office,new,more' | split: ',' %}
++    {% assign lx_directory_expected_headings = '🎭 Kostüme & Fasnacht|🎁 Geschenke & Anlässe|🐾 Haustiere|🏋️ Sport & Fitness|🌿 Garten & Outdoor|🚗 Auto & Werkzeug|👔 Herrenmode|👗 Damenmode|👕 Mode & Bekleidung|☀️ Saison|👟 Schuhe|👜 Taschen & Accessoires|💎 Schmuck & Uhren|💄 Beauty & Pflege|🎮 Gaming|📱 Technik & Elektronik|🏠 Wohnen & Küche|🧸 Kinder & Baby|💼 Büro & Schreibwaren|⚡ Neu, Trends & Angebote|🔎 Weitere Kategorien' | split: '|' %}
++    {% for lx_directory_handle in lx_directory_handles %}
++      {% assign lx_directory_collection = collections[lx_directory_handle] %}
++      {% assign lx_directory_label_key = 'luxe_categories.' | append: lx_directory_label_keys[forloop.index0] %}
++      <template data-directory-banner="{{ forloop.index0 }}" data-directory-title="{{ lx_directory_label_key | t | escape }}" data-directory-expected="{{ lx_directory_expected_headings[forloop.index0] | escape }}" data-directory-handle="{{ lx_directory_handle | escape }}">
++        <span class="lx-directory-image">{% if lx_directory_collection != blank and lx_directory_collection.image != blank %}{{ lx_directory_collection.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '240, 360, 480, 640, 800, 1000', sizes: '(max-width: 600px) 43vw, (max-width: 1100px) 44vw, 28vw', alt: '' }}{% endif %}</span>
++      </template>
++    {% endfor %}
++  </div>
++</section>
++<script src="{{ 'luxe-category-directory.js' | asset_url }}" defer></script>
+--- /dev/null
++++ b/assets/luxe-category-directory.css
+@@ -0,0 +1,37 @@
++.lx-directory{--lxd-cream:#faf7f2;--lxd-taupe:#8b7355;--lxd-ink:#292722;--lxd-muted:#665f56;--lxd-line:#ded5c9;--lxd-serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;max-width:1400px;margin:0 auto;padding:54px clamp(16px,4vw,60px) 72px;background:var(--lxd-cream);color:var(--lxd-ink)}
++.lx-directory *{box-sizing:border-box}
++.lx-directory [hidden]{display:none!important}
++.lx-directory :focus-visible{outline:3px solid #845a34;outline-offset:5px}
++.lx-directory-header{max-width:700px;margin:0 0 30px}
++.lx-directory-eyebrow{font-size:10px;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px;color:var(--lxd-muted)}
++.lx-directory-header h1{font:400 clamp(38px,4.5vw,64px)/1.05 var(--lxd-serif);letter-spacing:-1.5px;margin:0 0 18px}
++.lx-directory-header>p:last-child{font-size:14px;line-height:1.7;color:var(--lxd-muted);margin:0}
++.lx-directory-search{max-width:620px;margin:0 0 36px}
++.lx-directory-search label{display:block;margin:0 0 9px;font-size:12px;font-weight:600}
++.lx-directory-search-field{display:flex;align-items:center;gap:12px;min-height:54px;padding:0 14px;background:#fff;border:1px solid #cfc3b2;border-radius:14px}
++.lx-directory-search-field>svg{width:21px;height:21px;flex:0 0 21px;fill:none;stroke:currentColor;stroke-width:1.5}
++.lx-directory-search-field>input{min-width:0;flex:1;width:100%;min-height:52px;border:0;background:transparent;font:inherit;color:inherit;outline-offset:0}
++.lx-directory-search-field>button{flex:0 0 auto;min-height:44px;padding:8px;border:0;background:transparent;color:#665f56;font:inherit;font-size:11px;text-decoration:underline;cursor:pointer}
++.lx-directory-search [role=status]{font-size:11px;line-height:1.5;color:var(--lxd-muted);margin:10px 0 0;min-height:17px}
++.lx-directory .lux-kat-lead{display:none}
++.lx-directory.is-enhanced .lux-kat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
++.lx-directory .lx-directory-group{min-width:0;border:1px solid var(--lxd-line);border-radius:20px;overflow:hidden;background:#fffdf9;scroll-margin-top:20px}
++.lx-directory .lx-directory-group>summary{list-style:none;cursor:pointer}
++.lx-directory .lx-directory-group>summary::-webkit-details-marker{display:none}
++.lx-directory .lx-directory-group .lux-kat-h{margin:0;padding:0;border:0;position:relative;font:inherit}
++.lx-directory-image{display:flex;align-items:center;justify-content:center;aspect-ratio:1.5;overflow:hidden;background:#eae2d6}
++.lx-directory-image img{display:block;width:100%;height:100%;object-fit:contain}
++.lx-directory-card-copy{position:relative;display:flex;flex-direction:column;gap:9px;padding:22px 56px 22px 22px;min-height:116px}
++.lx-directory-card-title{display:block;font:400 clamp(24px,2.4vw,32px)/1.1 var(--lxd-serif);letter-spacing:-.5px;overflow-wrap:anywhere}
++.lx-directory-card-count{font-size:11px;line-height:1.4;color:var(--lxd-muted);font-weight:400}
++.lx-directory-card-plus{position:absolute;right:20px;top:calc(50% - 12px);font:400 24px/1 sans-serif;transition:transform .15s}
++.lx-directory-group[open] .lx-directory-card-plus{transform:rotate(45deg)}
++.lx-directory .lx-directory-group:hover{border-color:#9e8a70}
++.lx-directory .lx-directory-group>.lux-kat-l{display:grid;grid-template-columns:minmax(0,1fr);gap:0;list-style:none;padding:0 22px 16px;margin:0}
++.lx-directory .lx-directory-group>.lux-kat-l li{margin:0;min-width:0;border-top:1px solid #eee7dc}
++.lx-directory .lx-directory-group>.lux-kat-l a{display:flex;align-items:center;min-height:44px;padding:10px 0;text-decoration:none;color:var(--lxd-muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere}
++.lx-directory .lx-directory-group>.lux-kat-l a:hover{text-decoration:underline;text-underline-offset:4px;color:var(--lxd-ink)}
++.lx-directory.is-filtering .lx-directory-group>.lux-kat-l a{color:var(--lxd-ink)}
++@media(max-width:1100px){.lx-directory.is-enhanced .lux-kat{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
++@media(max-width:600px){.lx-directory{padding-top:34px;padding-bottom:48px}.lx-directory-header h1{font-size:42px}.lx-directory-header>p:last-child{font-size:13px}.lx-directory-search{margin-bottom:26px}.lx-directory.is-enhanced .lux-kat{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lx-directory .lx-directory-group{border-radius:16px}.lx-directory-image{aspect-ratio:1.08}.lx-directory-card-copy{padding:16px 32px 16px 14px;gap:8px;min-height:110px}.lx-directory-card-title{font-size:23px}.lx-directory-card-count{font-size:10px}.lx-directory-card-plus{right:12px;font-size:20px;top:calc(50% - 10px)}.lx-directory .lx-directory-group>.lux-kat-l{padding:0 14px 12px}.lx-directory .lx-directory-group>.lux-kat-l a{font-size:11px}.lx-directory-search-field{padding-left:12px;gap:8px}.lx-directory-search-field>input{font-size:14px}}
++@media(prefers-reduced-motion:reduce){.lx-directory-card-plus{transition:none}}
+--- /dev/null
++++ b/assets/luxe-category-directory.js
+@@ -0,0 +1,84 @@
++(() => {
++  document.querySelectorAll('[data-category-directory]').forEach(root => {
++    if (root.classList.contains('is-enhanced')) return;
++    const source = root.querySelector('[data-directory-source] .lux-kat');
++    if (!source) return;
++    const headings = [...source.children].filter(el => el.matches('h2.lux-kat-h'));
++    const templates = [...root.querySelectorAll('template[data-directory-banner]')];
++    const pairs = headings.map(heading => ({heading, list: heading.nextElementSibling}));
++    if (!pairs.length || pairs.length !== templates.length || pairs.some(({list}) => !list?.matches('ul.lux-kat-l'))) return;
++    if (pairs.some(({heading}, index) => {
++      const template = templates.find(el => Number(el.dataset.directoryBanner) === index);
++      return !template?.dataset.directoryExpected || heading.textContent.trim() !== template.dataset.directoryExpected;
++    })) return;
++    const originalLinks = [...source.querySelectorAll('a')];
++    if (pairs.reduce((n, {list}) => n + list.querySelectorAll('a').length, 0) !== originalLinks.length) return;
++    const clean = value => value.normalize('NFKD').replace(/\p{Diacritic}/gu, '').toLocaleLowerCase().replace(/\s+/g, ' ').trim();
++    const groups = pairs.map(({heading, list}, index) => {
++      const template = templates.find(el => Number(el.dataset.directoryBanner) === index);
++      const title = template?.dataset.directoryTitle || heading.textContent.trim();
++      const details = document.createElement('details');
++      details.className = 'lx-directory-group';
++      details.id = `lx-directory-${root.dataset.sectionId}-${index}`;
++      details.dataset.directoryGroup = String(index);
++      const summary = document.createElement('summary');
++      const copy = document.createElement('span');
++      copy.className = 'lx-directory-card-copy';
++      const label = document.createElement('span');
++      label.className = 'lx-directory-card-title';
++      label.textContent = title;
++      const count = document.createElement('span');
++      count.className = 'lx-directory-card-count';
++      const items = [...list.children].filter(el => el.matches('li'));
++      const links = items.map(item => ({item, text: clean(item.textContent)}));
++      count.textContent = `${links.length} ${root.dataset.linkLabel}`;
++      const plus = document.createElement('span');
++      plus.className = 'lx-directory-card-plus';
++      plus.setAttribute('aria-hidden', 'true');
++      plus.textContent = '+';
++      copy.append(label, count, plus);
++      heading.replaceChildren();
++      if (template) heading.append(template.content.cloneNode(true));
++      heading.append(copy);
++      heading.before(details);
++      summary.append(heading);
++      details.append(summary, list);
++      return {details, title: clean(title), links, count, openBeforeSearch: false};
++    });
++    root.classList.add('is-enhanced');
++    const search = root.querySelector('[data-directory-search]');
++    const input = root.querySelector('[data-directory-query]');
++    const clear = root.querySelector('[data-directory-clear]');
++    const status = root.querySelector('[data-directory-status]');
++    if (!search || !input || !clear || !status) return;
++    search.hidden = false;
++    let filtering = false;
++    const update = () => {
++      const term = clean(input.value);
++      if (term && !filtering) groups.forEach(group => { group.openBeforeSearch = group.details.open; });
++      let visibleGroups = 0;
++      let visibleLinks = 0;
++      groups.forEach(group => {
++        const titleMatches = group.title.includes(term);
++        let matches = 0;
++        group.links.forEach(link => {
++          link.item.hidden = Boolean(term && !titleMatches && !link.text.includes(term));
++          if (!link.item.hidden) matches += 1;
++        });
++        group.details.hidden = matches === 0;
++        if (term) group.details.open = matches > 0;
++        else if (filtering) group.details.open = group.openBeforeSearch;
++        group.count.textContent = `${matches} ${root.dataset.linkLabel}`;
++        if (matches) visibleGroups += 1;
++        visibleLinks += matches;
++      });
++      root.classList.toggle('is-filtering', Boolean(term));
++      status.textContent = visibleGroups ? `${visibleGroups} ${root.dataset.groupLabel} · ${visibleLinks} ${root.dataset.linkLabel}` : root.dataset.noResults;
++      clear.hidden = !input.value;
++      filtering = Boolean(term);
++    };
++    input.addEventListener('input', update);
++    clear.addEventListener('click', () => { input.value = ''; update(); input.focus(); });
++    update();
++  });
++})();
+--- a/snippets/product-card.liquid
++++ b/snippets/product-card.liquid
+@@ -109,22 +109,6 @@
+   >
+     {{ children }}
+     {%- comment -%}
+-      LuxeStyle 01.09.: Sterne aus ECHTEN Judge.me-Bewertungen (Metafelder reviews.rating /
+-      reviews.rating_count, von der App synchron gehalten). Erst ab 3 Stimmen — eine
+-      Einzelstimme ist kein Sozialbeweis. Rein Liquid, altert nicht (kein fest getippter Wert).
+-    {%- endcomment -%}
+-    {%- assign lx_rc = product.metafields.reviews.rating_count.value | default: 0 -%}
+-    {%- assign lx_r = product.metafields.reviews.rating.value.rating | times: 1.0 -%}
+-    {%- comment -%} Ab 4.0: ein 3.3-Badge auf der Karte wirbt GEGEN das Produkt; die
+-      Produktseite zeigt weiterhin die volle Wahrheit im Judge.me-Widget. {%- endcomment -%}
+-    {%- if lx_rc >= 3 and lx_r >= 4.0 -%}
+-      <div class="lx-card-sterne" aria-label="Bewertung {{ product.metafields.reviews.rating.value.rating }} von 5">
+-        <span class="lx-card-sterne__stern">★</span>
+-        {{- product.metafields.reviews.rating.value.rating | times: 1.0 | round: 1 -}}
+-        <span class="lx-card-sterne__anzahl">({{ lx_rc }})</span>
+-      </div>
+-    {%- endif -%}
+-    {%- comment -%}
+       LuxeStyle 05.09.: Lieferweg auf der Karte, damit die Kundin die 1–2-Tage-Ware im Katalog SIEHT
+       (Betreiber: «Katalog, dass man alles sieht»). Nur der Tag ch-lager (Fortura, gemessen 2'409 Artikel)
+       darf das behaupten — CJ-Ware bekommt bewusst KEINE Zeile (10–20 Werktage stehen auf der Produktseite).
