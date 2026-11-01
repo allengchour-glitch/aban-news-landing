@@ -1,0 +1,3920 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 34,
+  "at": "2026-11-01T17:09:02.149418+00:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Continuation: French homepage UI in existing unpublished review theme, public verification of two prior approved schema diffs, one exact Merchant source query. No daily metrics/flows/purchase-watch repeated.",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "domain": "luxestyle.ch",
+    "currency": "CHF"
+  },
+  "themes": {
+    "live": {
+      "id": "212967981447",
+      "role": "MAIN",
+      "ownPublication": false
+    },
+    "edited": {
+      "id": "212971061639",
+      "role": "UNPUBLISHED",
+      "changedFiles": [
+        "locales/fr.json",
+        "sections/luxe-edit-home.liquid"
+      ],
+      "publishedByCodex": false
+    }
+  },
+  "locales": {
+    "published": [
+      "de",
+      "fr"
+    ],
+    "unpublished": [
+      "en",
+      "it"
+    ],
+    "settingsChanged": false
+  },
+  "french": {
+    "preChange": {
+      "url": "https://luxestyle.ch/fr",
+      "lang": "fr",
+      "heading": "Schön leben.\nSchlau shoppen.",
+      "categoryHeading": "Was passt zu dir?",
+      "reviewHeading": "Bewertungen zu unseren Produkten",
+      "help": "GUT ZU WISSEN\n\nVor dem Bestellen\n\nFinde die passende Auswahl und die Informationen zu deiner Bestellung.\n\nKontakt und Unterstützung\nWo finde ich Farben, Grössen und Produktdetails?\n+\nWie finde ich ein Produkt zum Selbstgestalten?\n+\nWo finde ich Versand- und Rückgabeinformationen?\n+",
+      "links": [
+        {
+          "text": "Alle Kategorien",
+          "href": "/fr/pages/alle-kategorien",
+          "action": null
+        },
+        {
+          "text": "Selbst gestalten",
+          "href": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "action": null
+        },
+        {
+          "text": "Produkte durchsuchenSuchen ",
+          "href": null,
+          "action": "https://luxestyle.ch/search"
+        },
+        {
+          "text": "Selbst gestalten",
+          "href": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "action": null
+        },
+        {
+          "text": "Mode",
+          "href": "/fr/collections/damen-mode",
+          "action": null
+        },
+        {
+          "text": "Wohnen",
+          "href": "/fr/collections/wohnen-dekoration",
+          "action": null
+        },
+        {
+          "text": "Notizbuch für Gewichtsverfolgung\nZum Produkt",
+          "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+          "action": null
+        },
+        {
+          "text": "Drehwinkelmesser für Fahrzeuge – 360° Messung\nZum Produkt",
+          "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+          "action": null
+        },
+        {
+          "text": "2-in-1 10W kabelloses Ladegerät\nZum Produkt",
+          "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+          "action": null
+        }
+      ],
+      "httpStatus": 200
+    },
+    "copyChecks": {
+      "scope": "Local French UI draft only, no Shopify or repository write",
+      "sourceFile": "BEFORE.json",
+      "sourceFrChecksumMd5": "6597fdbed8cf2da13568f23f8be9ad7c",
+      "outputFile": "after/locales/fr.json",
+      "existingTopLevelNamespacesPreserved": [
+        "blocks",
+        "accessibility",
+        "actions",
+        "content",
+        "gift_cards",
+        "placeholders",
+        "products",
+        "fields",
+        "blogs"
+      ],
+      "existingLeafValuesPreserved": 300,
+      "addedNamespaces": [
+        "luxe_home",
+        "luxe_clothing"
+      ],
+      "addedLuxeHomeLeafKeys": 205,
+      "addedReviewLabels": [
+        "reviews_unavailable",
+        "reviews_zero",
+        "reviews_summary"
+      ],
+      "totalAddedLeafKeys": 208,
+      "structureMatchesEnglishLuxeHome": true,
+      "allNumericTokensPreserved": true,
+      "allPlaceholderTokensPreserved": true,
+      "publishedLocaleSettingsChanged": false,
+      "productCatalogOrReviewQuotesChanged": false,
+      "disclosureStatesReviewTextsTranslatedIntoGerman": true,
+      "brandTokensPreserved": [
+        "LuxeStyle",
+        "Éclat",
+        "Lumière",
+        "Gaming",
+        ".ch"
+      ],
+      "tone": "French Switzerland, informal/neutral shopping UI consistent with existing German du",
+      "outputSha256": "fa146497351c0870cb7c0011ee2e4d45ad8878f2742d76a34b678f38db3b9e35"
+    },
+    "validationAndReadback": {
+      "baselineErrors": 673,
+      "afterErrors": 466,
+      "resolvedMissingTranslationDiagnostics": 207,
+      "newErrors": [],
+      "remainingScope": "Pre-existing missing translations outside new homepage namespaces",
+      "sectionPassed": true,
+      "sectionWarning": "Existing non-CDN asset warning",
+      "officialSchemaDownload": "failed; existing official cache loaded",
+      "addedLocaleLeafValues": 208,
+      "originalLocaleLeafValuesPreserved": 300,
+      "nativeSectionExactAndLocaleJsonEqual": true,
+      "sameUnpublishedTheme": true,
+      "twoUnchangedSourceFiles": true,
+      "validationCountNote": "208 locale values added; validator reports 207 fewer missing-translation diagnostics; no complete fr.json coverage claimed",
+      "localeReadbackNote": "Native locale body includes Shopify generated comment; payload MD5 and response checksum match; parsed native JSON equals payload",
+      "files": [
+        {
+          "filename": "locales/fr.json",
+          "reportedChecksumMd5": "c4a55c033cc0ee558051589dbe5abf27",
+          "nativeBodySha256": "9b20a55fed8f19d2429f676859c694acdd2c2ecb175a244725c90fa62735f33b",
+          "payloadSha256": "fa146497351c0870cb7c0011ee2e4d45ad8878f2742d76a34b678f38db3b9e35"
+        },
+        {
+          "filename": "sections/luxe-edit-home.liquid",
+          "reportedChecksumMd5": "5d6882312343da4433274eda6ff29424",
+          "nativeBodySha256": "8b1fb93074eaa97d8f7b128588d7722454a590f8c74b6c97abed066303f3a400",
+          "payloadSha256": "8b1fb93074eaa97d8f7b128588d7722454a590f8c74b6c97abed066303f3a400"
+        }
+      ]
+    },
+    "sectionDiff": "--- before/sections/luxe-edit-home.liquid\n+++ after/sections/luxe-edit-home.liquid\n@@ -5,23 +5,24 @@\n   endif\n %}\n <script src=\"{{ 'luxe-product-reviews.js' | asset_url }}\" defer></script>\n-{% assign lx_design_url = '/collections/selbst-gestalten-1?view=luxe-gestalten' %}\n+{% assign lx_locale_root = routes.root_url | append: '/' | replace: '//', '/' %}\n+{% assign lx_design_url = lx_locale_root | append: 'collections/selbst-gestalten-1?view=luxe-gestalten' %}\n \n <div class=\"lx-home\" id=\"lx-top\">\n   {% unless lx_standard_home %}\n   <a class=\"lx-skip\" href=\"#lx-content\">{{ 'luxe_home.zum_inhalt_f0521' | t }}</a>\n-  <div class=\"lx-announcement\">{{ 'luxe_home.gratisversand_in_der_schweiz_ab__9a8a6' | t }} <a href=\"https://luxestyle.ch/pages/versand-lieferung\">{{ 'luxe_home.versandinfos_87cfe' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></div>\n+  <div class=\"lx-announcement\">{{ 'luxe_home.gratisversand_in_der_schweiz_ab__9a8a6' | t }} <a href=\"{{ lx_locale_root }}pages/versand-lieferung\">{{ 'luxe_home.versandinfos_87cfe' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></div>\n   <header class=\"lx-header\">\n     <button class=\"lx-icon-button lx-mobile-menu\" type=\"button\" data-open=\"lx-menu\" aria-label=\"{{ 'luxe_home.men_ffnen_ac3b2' | t | escape }}\" aria-haspopup=\"dialog\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 7h18M3 12h18M3 17h18\"/></svg></button>\n-    <a href=\"https://luxestyle.ch/\" class=\"lx-wordmark\" aria-label=\"{{ 'luxe_home.luxestyle_startseite_184ed' | t | escape }}\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a>\n+    <a href=\"{{ lx_locale_root }}\" class=\"lx-wordmark\" aria-label=\"{{ 'luxe_home.luxestyle_startseite_184ed' | t | escape }}\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a>\n     <nav class=\"lx-nav\" aria-label=\"{{ 'luxe_home.hauptnavigation_e8fc6' | t | escape }}\">\n       <a class=\"lx-design-nav\" href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }}</a>\n-      <a href=\"https://luxestyle.ch/collections/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }}</a><a href=\"https://luxestyle.ch/collections/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }}</a><a href=\"https://luxestyle.ch/collections/geschenke-unter-50-franken\">{{ 'luxe_home.geschenkideen_6ad8d' | t }}</a><a href=\"https://luxestyle.ch/pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5ed9a' | t }}</a>\n+      <a href=\"{{ lx_locale_root }}collections/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }}</a><a href=\"{{ lx_locale_root }}collections/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }}</a><a href=\"{{ lx_locale_root }}collections/geschenke-unter-50-franken\">{{ 'luxe_home.geschenkideen_6ad8d' | t }}</a><a href=\"{{ lx_locale_root }}pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5ed9a' | t }}</a>\n     </nav>\n     <div class=\"lx-tools\">\n       <button class=\"lx-icon-button\" type=\"button\" data-open=\"lx-search\" aria-label=\"{{ 'luxe_home.suche_ffnen_28121' | t | escape }}\" aria-haspopup=\"dialog\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/></svg></button>\n       <a class=\"lx-icon-button lx-account\" href=\"https://account.luxestyle.com.co\" aria-label=\"{{ 'luxe_home.kundenkonto_15592' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"7.5\" r=\"3.5\"/><path d=\"M5 21v-2a7 7 0 0 1 14 0v2\"/></svg></a>\n-      <a class=\"lx-icon-button\" href=\"https://luxestyle.ch/cart\" aria-label=\"{{ 'luxe_home.warenkorb_d6de3' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 7h14l1 14H4L5 7Z\"/><path d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg></a>\n+      <a class=\"lx-icon-button\" href=\"{{ routes.cart_url }}\" aria-label=\"{{ 'luxe_home.warenkorb_d6de3' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 7h14l1 14H4L5 7Z\"/><path d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg></a>\n     </div>\n   </header>\n   {% endunless %}\n@@ -191,8 +192,8 @@\n       </section>\n     {% endif %}\n     <section class=\"lx-fashion-edit lx-section\" aria-labelledby=\"lx-fashion-title\">\n-      <a class=\"lx-fashion-image\" href=\"https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000\" aria-label=\"{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}\"><img src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900\" width=\"1600\" height=\"2133\" loading=\"lazy\" alt=\"{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}\"></a>\n-      <div class=\"lx-fashion-copy\"><p class=\"lx-eyebrow\">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id=\"lx-fashion-title\">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class=\"lx-button\" href=\"https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000\">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><span class=\"lx-fashion-footnote\">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>\n+      <a class=\"lx-fashion-image\" href=\"{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000\" aria-label=\"{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}\"><img src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900\" width=\"1600\" height=\"2133\" loading=\"lazy\" alt=\"{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}\"></a>\n+      <div class=\"lx-fashion-copy\"><p class=\"lx-eyebrow\">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id=\"lx-fashion-title\">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class=\"lx-button\" href=\"{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000\">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><span class=\"lx-fashion-footnote\">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>\n     </section>\n     {% assign lx_winter_collection = collections['winter-kaelte'] %}\n     {% assign lx_christmas_collection = collections['weihnachten-2026'] %}\n@@ -234,10 +235,10 @@\n     </section>\n   {% if lx_standard_home %}</div>{% else %}</main>{% endif %}\n   {% unless lx_standard_home %}\n-  <footer class=\"lx-footer\"><a class=\"lx-wordmark\" href=\"https://luxestyle.ch/\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a><p>{{ 'luxe_home.sch_nes_f_r_deinen_alltag_ecdb9' | t }}</p><nav aria-label=\"{{ 'luxe_home.rechtliche_informationen_346ba' | t | escape }}\"><a href=\"https://luxestyle.ch/policies/legal-notice\">{{ 'luxe_home.impressum_b8a60' | t }}</a><a href=\"https://luxestyle.ch/policies/privacy-policy\">{{ 'luxe_home.datenschutz_f624f' | t }}</a><a href=\"https://luxestyle.ch/policies/terms-of-service\">{{ 'luxe_home.agb_ef0fe' | t }}</a></nav><span class=\"lx-footer-currency\">{{ 'luxe_home.schweiz_chf_deutsch_e630d' | t }}</span></footer>\n+  <footer class=\"lx-footer\"><a class=\"lx-wordmark\" href=\"{{ lx_locale_root }}\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a><p>{{ 'luxe_home.sch_nes_f_r_deinen_alltag_ecdb9' | t }}</p><nav aria-label=\"{{ 'luxe_home.rechtliche_informationen_346ba' | t | escape }}\"><a href=\"{{ lx_locale_root }}policies/legal-notice\">{{ 'luxe_home.impressum_b8a60' | t }}</a><a href=\"{{ lx_locale_root }}policies/privacy-policy\">{{ 'luxe_home.datenschutz_f624f' | t }}</a><a href=\"{{ lx_locale_root }}policies/terms-of-service\">{{ 'luxe_home.agb_ef0fe' | t }}</a></nav><span class=\"lx-footer-currency\">{{ 'luxe_home.schweiz_chf_deutsch_e630d' | t }}</span></footer>\n   {% endunless %}\n-  <dialog class=\"lx-dialog lx-menu-dialog\" id=\"lx-menu\" aria-labelledby=\"lx-menu-title\"><div class=\"lx-dialog-top\"><span class=\"lx-wordmark\" id=\"lx-menu-title\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></span><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.men_schliessen_55d49' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><nav aria-label=\"{{ 'luxe_home.mobile_navigation_ccea1' | t | escape }}\"><a class=\"lx-design-nav\" href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/geschenke-unter-50-franken\">{{ 'luxe_home.geschenkideen_6ad8d' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5ed9a' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></nav><a class=\"lx-text-link\" href=\"https://account.luxestyle.com.co\">{{ 'luxe_home.zum_kundenkonto_9a2d2' | t }} <svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></dialog>\n-  <dialog class=\"lx-dialog lx-search-dialog\" id=\"lx-search\" aria-labelledby=\"lx-search-title\"><div class=\"lx-dialog-top\"><h2 id=\"lx-search-title\">{{ 'luxe_home.was_suchst_du_672c5' | t }}</h2><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.suche_schliessen_0ef8b' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><form action=\"https://luxestyle.ch/search\" method=\"get\" role=\"search\"><label for=\"lx-search-input\">{{ 'luxe_home.produkte_durchsuchen_7ab3d' | t }}</label><div class=\"lx-search-field\"><input id=\"lx-search-input\" name=\"q\" type=\"search\" placeholder=\"{{ 'luxe_home.zum_beispiel_sternenlicht_cc2ca' | t | escape }}\" required autocomplete=\"off\"><input type=\"hidden\" name=\"type\" value=\"product\"><button type=\"submit\" class=\"lx-button\">{{ 'luxe_home.suchen_dd097' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></button></div></form><nav class=\"lx-search-shortcuts\" aria-label=\"{{ 'luxe_home.design.quicklinks' | t | escape }}\"><a href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }}</a><a href=\"{{ routes.collections_url }}/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }}</a><a href=\"{{ routes.collections_url }}/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }}</a></nav><p>{{ 'luxe_home.oder_entdecke_cff96' | t }} <a href=\"https://luxestyle.ch/pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5f5e9' | t }}</a>{{ 'luxe_home.label_cdb4e' | t }}</p></dialog>\n+  <dialog class=\"lx-dialog lx-menu-dialog\" id=\"lx-menu\" aria-labelledby=\"lx-menu-title\"><div class=\"lx-dialog-top\"><span class=\"lx-wordmark\" id=\"lx-menu-title\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></span><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.men_schliessen_55d49' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><nav aria-label=\"{{ 'luxe_home.mobile_navigation_ccea1' | t | escape }}\"><a class=\"lx-design-nav\" href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"{{ lx_locale_root }}collections/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"{{ lx_locale_root }}collections/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"{{ lx_locale_root }}collections/geschenke-unter-50-franken\">{{ 'luxe_home.geschenkideen_6ad8d' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"{{ lx_locale_root }}pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5ed9a' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></nav><a class=\"lx-text-link\" href=\"https://account.luxestyle.com.co\">{{ 'luxe_home.zum_kundenkonto_9a2d2' | t }} <svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></dialog>\n+  <dialog class=\"lx-dialog lx-search-dialog\" id=\"lx-search\" aria-labelledby=\"lx-search-title\"><div class=\"lx-dialog-top\"><h2 id=\"lx-search-title\">{{ 'luxe_home.was_suchst_du_672c5' | t }}</h2><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.suche_schliessen_0ef8b' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\"><label for=\"lx-search-input\">{{ 'luxe_home.produkte_durchsuchen_7ab3d' | t }}</label><div class=\"lx-search-field\"><input id=\"lx-search-input\" name=\"q\" type=\"search\" placeholder=\"{{ 'luxe_home.zum_beispiel_sternenlicht_cc2ca' | t | escape }}\" required autocomplete=\"off\"><input type=\"hidden\" name=\"type\" value=\"product\"><button type=\"submit\" class=\"lx-button\">{{ 'luxe_home.suchen_dd097' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></button></div></form><nav class=\"lx-search-shortcuts\" aria-label=\"{{ 'luxe_home.design.quicklinks' | t | escape }}\"><a href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }}</a><a href=\"{{ routes.collections_url }}/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }}</a><a href=\"{{ routes.collections_url }}/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }}</a></nav><p>{{ 'luxe_home.oder_entdecke_cff96' | t }} <a href=\"{{ lx_locale_root }}pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5f5e9' | t }}</a>{{ 'luxe_home.label_cdb4e' | t }}</p></dialog>\n   <nav class=\"lx-bottom-nav\" aria-label=\"{{ 'luxe_home.mobile.navigation' | t | escape }}\">\n     <a href=\"#lx-top\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m3 10 9-7 9 7v11h-6v-7H9v7H3Z\"/></svg><span>{{ 'luxe_home.mobile.start' | t }}</span></a>\n     <a href=\"{{ pages['alle-kategorien'].url }}\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/></svg><span>{{ 'luxe_home.mobile.categories' | t }}</span></a>\n",
+    "nativeQa": {
+      "scope": "Actual Shopify UNPUBLISHED theme preview 212971061639; Chromium GET/HEAD only; non-read requests aborted; no content/header/URL overrides, no shop writes",
+      "at": "2026-11-01T17:07:08.467204+00:00",
+      "views": [
+        {
+          "width": 360,
+          "htmlLang": "fr",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 360,
+          "main": 1,
+          "h1s": [
+            "Bien vivre.\nAcheter malin."
+          ],
+          "worldsHeading": "Qu’est-ce qui te correspond ?",
+          "categoryNames": [
+            "Personnaliser",
+            "Femmes",
+            "Hommes",
+            "Enfants et bébé",
+            "Chaussures",
+            "Sacs et sacs à dos",
+            "Bijoux",
+            "Montres",
+            "Beauté et soins",
+            "Maison et déco",
+            "Cuisine et préparation",
+            "Électronique",
+            "Gaming",
+            "Chiens",
+            "Sport et plein air",
+            "Idées cadeaux"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Avant de commander",
+            "summary": [
+              "Où trouver les couleurs, les tailles et les détails du produit ?\n+",
+              "Comment trouver un produit à personnaliser ?\n+",
+              "Où trouver les informations sur la livraison et les retours ?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Avis sur nos produits",
+            "disclosure": "Sélection d’avis sur les produits concernés, en partie repris du fabricant et traduits en allemand.",
+            "summary": "★★★★★\n4.83 sur 5 · 12’459 avis",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Choisir des produits",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser ",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/fr/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Panier",
+              "href": "/fr/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "Accueil\nCatégories\nRecherche\nFavoris\nPanier",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/fr/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/fr/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/fr/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/fr/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/fr/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Avis indisponibles",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/fr/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/fr/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/fr/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/fr/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/fr/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/fr/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/fr/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/fr/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/fr/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/fr/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 sur 5 · 8 avis",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/fr/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/fr/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          },
+          "locale": "fr"
+        },
+        {
+          "width": 390,
+          "htmlLang": "fr",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 390,
+          "main": 1,
+          "h1s": [
+            "Bien vivre.\nAcheter malin."
+          ],
+          "worldsHeading": "Qu’est-ce qui te correspond ?",
+          "categoryNames": [
+            "Personnaliser",
+            "Femmes",
+            "Hommes",
+            "Enfants et bébé",
+            "Chaussures",
+            "Sacs et sacs à dos",
+            "Bijoux",
+            "Montres",
+            "Beauté et soins",
+            "Maison et déco",
+            "Cuisine et préparation",
+            "Électronique",
+            "Gaming",
+            "Chiens",
+            "Sport et plein air",
+            "Idées cadeaux"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Avant de commander",
+            "summary": [
+              "Où trouver les couleurs, les tailles et les détails du produit ?\n+",
+              "Comment trouver un produit à personnaliser ?\n+",
+              "Où trouver les informations sur la livraison et les retours ?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Avis sur nos produits",
+            "disclosure": "Sélection d’avis sur les produits concernés, en partie repris du fabricant et traduits en allemand.",
+            "summary": "★★★★★\n4.83 sur 5 · 12’459 avis",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Choisir des produits",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser ",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/fr/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Panier",
+              "href": "/fr/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "Accueil\nCatégories\nRecherche\nFavoris\nPanier",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/fr/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/fr/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/fr/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/fr/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/fr/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Avis indisponibles",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/fr/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/fr/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/fr/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/fr/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/fr/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/fr/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/fr/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/fr/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/fr/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/fr/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 sur 5 · 8 avis",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/fr/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/fr/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          },
+          "locale": "fr"
+        },
+        {
+          "width": 1440,
+          "htmlLang": "fr",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 1440,
+          "main": 1,
+          "h1s": [
+            "Bien vivre.\nAcheter malin."
+          ],
+          "worldsHeading": "Qu’est-ce qui te correspond ?",
+          "categoryNames": [
+            "Personnaliser",
+            "Femmes",
+            "Hommes",
+            "Enfants et bébé",
+            "Chaussures",
+            "Sacs et sacs à dos",
+            "Bijoux",
+            "Montres",
+            "Beauté et soins",
+            "Maison et déco",
+            "Cuisine et préparation",
+            "Électronique",
+            "Gaming",
+            "Chiens",
+            "Sport et plein air",
+            "Idées cadeaux"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Avant de commander",
+            "summary": [
+              "Où trouver les couleurs, les tailles et les détails du produit ?\n+",
+              "Comment trouver un produit à personnaliser ?\n+",
+              "Où trouver les informations sur la livraison et les retours ?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Avis sur nos produits",
+            "disclosure": "Sélection d’avis sur les produits concernés, en partie repris du fabricant et traduits en allemand.",
+            "summary": "★★★★★\n4.83 sur 5 · 12’459 avis",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Choisir des produits",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser ",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Personnaliser",
+              "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/fr/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Panier",
+              "href": "/fr/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "\n    Accueil\n    Catégories\n    Recherche\n    Favoris\n    Panier\n  ",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/fr/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/fr/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/fr/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/fr/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/fr/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Avis indisponibles",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/fr/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/fr/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Dès CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/fr/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/fr/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/fr/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/fr/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/fr/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/fr/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/fr/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/fr/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 sur 5 · 8 avis",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/fr/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/fr/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Aucun avis pour le moment",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "46px",
+            "quote": "17px"
+          },
+          "locale": "fr"
+        },
+        {
+          "width": 360,
+          "htmlLang": "de",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 360,
+          "main": 1,
+          "h1s": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "worldsHeading": "Was passt zu dir?",
+          "categoryNames": [
+            "Selbst gestalten",
+            "Damenmode",
+            "Herrenmode",
+            "Kinder und Baby",
+            "Schuhe",
+            "Taschen und Rucksäcke",
+            "Schmuck",
+            "Uhren",
+            "Beauty und Pflege",
+            "Wohnen und Deko",
+            "Küche und Kochen",
+            "Elektronik",
+            "Gaming",
+            "Hundewelt",
+            "Sport und Outdoor",
+            "Geschenkideen"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Vor dem Bestellen",
+            "summary": [
+              "Wo finde ich Farben, Grössen und Produktdetails?\n+",
+              "Wie finde ich ein Produkt zum Selbstgestalten?\n+",
+              "Wo finde ich Versand- und Rückgabeinformationen?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Bewertungen zu unseren Produkten",
+            "disclosure": "Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt.",
+            "summary": "★★★★★\n4.83 von 5 · 12’459 Bewertungen",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Produkte auswählen",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten ",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Warenkorb",
+              "href": "/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "Start\nKategorien\nSuche\nMerkliste\nWarenkorb",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Bewertungen nicht verfügbar",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 von 5 · 8 Bewertungen",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          },
+          "locale": "de"
+        },
+        {
+          "width": 390,
+          "htmlLang": "de",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 390,
+          "main": 1,
+          "h1s": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "worldsHeading": "Was passt zu dir?",
+          "categoryNames": [
+            "Selbst gestalten",
+            "Damenmode",
+            "Herrenmode",
+            "Kinder und Baby",
+            "Schuhe",
+            "Taschen und Rucksäcke",
+            "Schmuck",
+            "Uhren",
+            "Beauty und Pflege",
+            "Wohnen und Deko",
+            "Küche und Kochen",
+            "Elektronik",
+            "Gaming",
+            "Hundewelt",
+            "Sport und Outdoor",
+            "Geschenkideen"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Vor dem Bestellen",
+            "summary": [
+              "Wo finde ich Farben, Grössen und Produktdetails?\n+",
+              "Wie finde ich ein Produkt zum Selbstgestalten?\n+",
+              "Wo finde ich Versand- und Rückgabeinformationen?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Bewertungen zu unseren Produkten",
+            "disclosure": "Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt.",
+            "summary": "★★★★★\n4.83 von 5 · 12’459 Bewertungen",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Produkte auswählen",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten ",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Warenkorb",
+              "href": "/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "Start\nKategorien\nSuche\nMerkliste\nWarenkorb",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Bewertungen nicht verfügbar",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 von 5 · 8 Bewertungen",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          },
+          "locale": "de"
+        },
+        {
+          "width": 1440,
+          "htmlLang": "de",
+          "themeId": 212971061639,
+          "overflow": false,
+          "scrollWidth": 1440,
+          "main": 1,
+          "h1s": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "worldsHeading": "Was passt zu dir?",
+          "categoryNames": [
+            "Selbst gestalten",
+            "Damenmode",
+            "Herrenmode",
+            "Kinder und Baby",
+            "Schuhe",
+            "Taschen und Rucksäcke",
+            "Schmuck",
+            "Uhren",
+            "Beauty und Pflege",
+            "Wohnen und Deko",
+            "Küche und Kochen",
+            "Elektronik",
+            "Gaming",
+            "Hundewelt",
+            "Sport und Outdoor",
+            "Geschenkideen"
+          ],
+          "categoryCount": 16,
+          "trendsCount": 12,
+          "extrasCount": 5,
+          "quotesCount": 3,
+          "help": {
+            "heading": "Vor dem Bestellen",
+            "summary": [
+              "Wo finde ich Farben, Grössen und Produktdetails?\n+",
+              "Wie finde ich ein Produkt zum Selbstgestalten?\n+",
+              "Wo finde ich Versand- und Rückgabeinformationen?\n+"
+            ]
+          },
+          "reviews": {
+            "heading": "Bewertungen zu unseren Produkten",
+            "disclosure": "Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt.",
+            "summary": "★★★★★\n4.83 von 5 · 12’459 Bewertungen",
+            "rating": "4.83",
+            "count": "12459"
+          },
+          "designLinks": [
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Produkte auswählen",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten ",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            },
+            {
+              "text": "Selbst gestalten",
+              "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+            }
+          ],
+          "searchForms": [
+            {
+              "action": "/search",
+              "method": "get"
+            }
+          ],
+          "cartLinks": [
+            {
+              "text": "Warenkorb",
+              "href": "/cart"
+            }
+          ],
+          "accountLinks": [
+            "https://account.luxestyle.com.co"
+          ],
+          "bottomNavigation": "\n    Start\n    Kategorien\n    Suche\n    Merkliste\n    Warenkorb\n  ",
+          "products": [
+            {
+              "id": "15499700142465",
+              "href": "/products/magnetische-3-in-1-ladestation-613200",
+              "reviewId": "15499700142465",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "reviewId": "15450856292737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "reviewId": "15448587075969",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "reviewId": "15430462669185",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+              "reviewId": "15408458006913",
+              "reviewState": "unknown",
+              "reviewHidden": false,
+              "reviewText": "Bewertungen nicht verfügbar",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "href": "/products/yoga-massagerolle-390720",
+              "reviewId": "16617685877127",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "reviewId": "16613782323591",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "reviewId": "16610088518023",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "reviewId": "16604940730759",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "reviewId": "16604922937735",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "href": "/products/reise-organizer-set-mit-netz-617800",
+              "reviewId": "15523992797569",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "href": "/products/futterball-fur-haustiere-498560",
+              "reviewId": "15523992174977",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 21.90"
+            },
+            {
+              "id": "15412902756737",
+              "href": "/products/s925-silber-halskette-eclat-1-karat-moissanite",
+              "reviewId": "15412902756737",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15412902789505",
+              "href": "/products/ohrstecker-lumiere-elegante-high-end-studs",
+              "reviewId": "15412902789505",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 14.90"
+            },
+            {
+              "id": "15501005226369",
+              "href": "/products/geflochtenes-lederarmband-mit-verschluss-625800",
+              "reviewId": "15501005226369",
+              "reviewState": "rated",
+              "reviewHidden": false,
+              "reviewText": "5 von 5 · 8 Bewertungen",
+              "svg": "svg",
+              "stars": 10,
+              "price": "CHF 15.90"
+            },
+            {
+              "id": "15412960592257",
+              "href": "/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+              "reviewId": "15412960592257",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 24.90"
+            },
+            {
+              "id": "16654281408903",
+              "href": "/products/zepterformige-vase-aus-yixing-ton-626100",
+              "reviewId": "16654281408903",
+              "reviewState": "confirmedZero",
+              "reviewHidden": false,
+              "reviewText": "Noch keine Bewertungen",
+              "svg": "svg",
+              "stars": 5,
+              "price": "CHF 104.90"
+            }
+          ],
+          "quotes": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ],
+          "lookupErrors": [],
+          "hero": {
+            "poster": 720,
+            "video": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0"
+          },
+          "fonts": {
+            "reviewHeading": "46px",
+            "quote": "17px"
+          },
+          "locale": "de"
+        }
+      ],
+      "checks": [
+        {
+          "name": "fr HTTP 200 and exact actual draft theme",
+          "pass": true,
+          "data": {
+            "status": 200,
+            "url": "https://luxestyle.ch/fr",
+            "theme": {
+              "name": "LuxeStyle – Bewertungen 01.11.2026",
+              "id": 212971061639,
+              "schema_name": "Horizon",
+              "schema_version": "3.5.1",
+              "theme_store_id": 2481,
+              "role": "unpublished",
+              "handle": "null",
+              "style": {
+                "id": null,
+                "handle": null
+              }
+            }
+          }
+        },
+        {
+          "name": "fr 360px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "fr",
+            "h1": [
+              "Bien vivre.\nAcheter malin."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "fr 360px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 360px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 360,
+            "errors": []
+          }
+        },
+        {
+          "name": "fr 360px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ]
+        },
+        {
+          "name": "fr 360px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 360px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "fr 360px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Choisir des produits",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser ",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/fr/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Panier",
+                "href": "/fr/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "fr 360px H1/categories/help/review UI translated",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 360px disclosure honestly names German quote translations",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 390px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "fr",
+            "h1": [
+              "Bien vivre.\nAcheter malin."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "fr 390px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 390px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 390,
+            "errors": []
+          }
+        },
+        {
+          "name": "fr 390px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ]
+        },
+        {
+          "name": "fr 390px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 390px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "fr 390px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Choisir des produits",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser ",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/fr/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Panier",
+                "href": "/fr/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "fr 390px H1/categories/help/review UI translated",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 390px disclosure honestly names German quote translations",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 1440px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "fr",
+            "h1": [
+              "Bien vivre.\nAcheter malin."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "fr 1440px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 1440px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 1440,
+            "errors": []
+          }
+        },
+        {
+          "name": "fr 1440px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/fr/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/fr/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/fr/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 sur 5"
+            }
+          ]
+        },
+        {
+          "name": "fr 1440px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 1440px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "46px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "fr 1440px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Choisir des produits",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser ",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Personnaliser",
+                "href": "/fr/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/fr/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Panier",
+                "href": "/fr/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "fr 1440px H1/categories/help/review UI translated",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "fr 1440px disclosure honestly names German quote translations",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de HTTP 200 and exact actual draft theme",
+          "pass": true,
+          "data": {
+            "status": 200,
+            "url": "https://luxestyle.ch/",
+            "theme": {
+              "name": "LuxeStyle – Bewertungen 01.11.2026",
+              "id": 212971061639,
+              "schema_name": "Horizon",
+              "schema_version": "3.5.1",
+              "theme_store_id": 2481,
+              "role": "unpublished",
+              "handle": "null",
+              "style": {
+                "id": null,
+                "handle": null
+              }
+            }
+          }
+        },
+        {
+          "name": "de 360px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "de",
+            "h1": [
+              "Schön leben.\nSchlau shoppen."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "de 360px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 360px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 360,
+            "errors": []
+          }
+        },
+        {
+          "name": "de 360px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ]
+        },
+        {
+          "name": "de 360px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 360px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "de 360px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Produkte auswählen",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten ",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Warenkorb",
+                "href": "/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "de 390px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "de",
+            "h1": [
+              "Schön leben.\nSchlau shoppen."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "de 390px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 390px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 390,
+            "errors": []
+          }
+        },
+        {
+          "name": "de 390px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ]
+        },
+        {
+          "name": "de 390px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 390px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "32px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "de 390px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Produkte auswählen",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten ",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Warenkorb",
+                "href": "/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "de 1440px language and preserved page structure",
+          "pass": true,
+          "data": {
+            "lang": "de",
+            "h1": [
+              "Schön leben.\nSchlau shoppen."
+            ],
+            "main": 1
+          }
+        },
+        {
+          "name": "de 1440px 16 categories / 12 trends / 5 extras / 3 quotes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 1440px no horizontal document overflow / missing translations / Liquid errors",
+          "pass": true,
+          "data": {
+            "scrollWidth": 1440,
+            "errors": []
+          }
+        },
+        {
+          "name": "de 1440px pinned quote identity, rating and star fill",
+          "pass": true,
+          "data": [
+            {
+              "id": "16603787985287",
+              "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+              "rating": "5",
+              "quote": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+              "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16606125097351",
+              "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+              "rating": "5",
+              "quote": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+              "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            },
+            {
+              "id": "16613767381383",
+              "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+              "rating": "5",
+              "quote": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+              "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+              "starFill": "100%",
+              "starLabel": "5 von 5"
+            }
+          ]
+        },
+        {
+          "name": "de 1440px product review identity and stars retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "de 1440px readable review heading and quotes",
+          "pass": true,
+          "data": {
+            "reviewHeading": "46px",
+            "quote": "17px"
+          }
+        },
+        {
+          "name": "de 1440px localised design/search/cart, fixed account domain",
+          "pass": true,
+          "data": {
+            "design": [
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Produkte auswählen",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten ",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              },
+              {
+                "text": "Selbst gestalten",
+                "href": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+              }
+            ],
+            "forms": [
+              {
+                "action": "/search",
+                "method": "get"
+              }
+            ],
+            "cart": [
+              {
+                "text": "Warenkorb",
+                "href": "/cart"
+              }
+            ],
+            "account": [
+              "https://account.luxestyle.com.co"
+            ]
+          }
+        },
+        {
+          "name": "FR / DE actual IDs, prices, review data and source quotes match",
+          "pass": true,
+          "data": {
+            "productsWithSameIdsChfAmountsReviewStates": true,
+            "quotesWithSameIdsUuidsBodyRatingsFill": true,
+            "sameAggregateRatingAndCount": true,
+            "pricePrefixesCorrectlyTranslated": [
+              [
+                "Dès CHF 34.90",
+                "Ab CHF 34.90"
+              ],
+              [
+                "Dès CHF 44.90",
+                "Ab CHF 44.90"
+              ],
+              [
+                "Dès CHF 34.90",
+                "Ab CHF 34.90"
+              ]
+            ]
+          }
+        }
+      ],
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "nonReadBlocked": [
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/unstable/graphql.json"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://error-analytics-sessions-production.shopifysvc.com/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/2026-01/graphql.json"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/shopify_pay/accelerated_checkout"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/ccm/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://ad.doubleclick.net/ccm/s/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.merchant-center-analytics.goog/mc/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/18174567886/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/pagead/1p-conversion/18174567886/"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://n.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://n.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/shopify_pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/shopify_pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics-ipv6.tiktokw.us/ipv6/enrich_ipv6"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://n.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://n.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google-analytics.com/g/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/g/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://error-analytics-sessions-production.shopifysvc.com/"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/unstable/graphql.json"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/2026-01/graphql.json"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/shopify_pay/accelerated_checkout"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://error-analytics-sessions-production.shopifysvc.com/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/ccm/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://ad.doubleclick.net/ccm/s/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.merchant-center-analytics.goog/mc/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/18174567886/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://l.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/pagead/1p-conversion/18174567886/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://l.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://l.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://l.clarity.ms/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/shopify_pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/shopify_pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics-ipv6.tiktokw.us/ipv6/enrich_ipv6"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://analytics.tiktok.com/api/v2/pixel"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google-analytics.com/g/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://www.google.com/g/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/.well-known/shopify/monorail/unstable/produce_batch"
+        },
+        {
+          "method": "POST",
+          "url": "https://error-analytics-sessions-production.shopifysvc.com/"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/logs"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics"
+        },
+        {
+          "method": "POST",
+          "url": "https://luxestyle.ch/api/collect"
+        }
+      ],
+      "responseFailures": [],
+      "limitations": [
+        "Homepage UI validation only; product catalogue titles and source review quotes intentionally remain German. No claim that the full French storefront is translated. No public theme publication or new metrics/products/sales queries.",
+        "16 Failed to fetch page errors occurred under strict read-only request guard; 144 POST requests were blocked, including analytics, Storefront GraphQL and accelerated checkout. Their normal unblocked behaviour is not validated. No GET/HEAD response status >=400 observed."
+      ],
+      "cookieButtons": {
+        "fr": [
+          "Nur notwendige",
+          "Alle akzeptieren"
+        ],
+        "de": [
+          "Nur notwendige",
+          "Alle akzeptieren"
+        ]
+      },
+      "passed": true,
+      "finishedAt": "2026-11-01T17:07:37.615337+00:00",
+      "qaHarnessCorrection": {
+        "initialCheck": {
+          "name": "FR / DE actual IDs, prices, review data and source quotes match",
+          "pass": false,
+          "data": null
+        },
+        "reason": "Initial literal price-string comparison incorrectly compared translated Dès with German Ab. Currency and amount tokens, IDs, review states, quote bodies/ratings and aggregate values compared using recorded DOM; no further browser request needed."
+      },
+      "visualReview": {
+        "inspected": [
+          "FR-TOP-390.png",
+          "FR-REVIEWS-390.png",
+          "FR-CATEGORIES-390.png",
+          "FR-HELP-390.png"
+        ],
+        "findings": [
+          "French homepage H1, category labels, help, bottom nav and review UI visible, stars visible.",
+          "Native header search remains German (outside the two changed files). Existing video poster and collection thumbnail labels contain German words. Product titles and source review quotes intentionally remain German.",
+          "Personnaliser wraps after Personnalise at 390px category tile; no document overflow. Future visual polish optional."
+        ],
+        "screenshots": [
+          "DE-REVIEWS-1440.png",
+          "DE-REVIEWS-360.png",
+          "DE-REVIEWS-390.png",
+          "DE-TOP-1440.png",
+          "DE-TOP-360.png",
+          "DE-TOP-390.png",
+          "FR-CATEGORIES-390.png",
+          "FR-HELP-390.png",
+          "FR-REVIEWS-1440.png",
+          "FR-REVIEWS-360.png",
+          "FR-REVIEWS-390.png",
+          "FR-TOP-1440.png",
+          "FR-TOP-360.png",
+          "FR-TOP-390.png"
+        ]
+      }
+    }
+  },
+  "schema": {
+    "nativeFileComparison": [
+      {
+        "filename": "sections/header.liquid",
+        "apiMd5": "003541d986ce79b0876755c8c3df7a3d",
+        "computedMd5": "003541d986ce79b0876755c8c3df7a3d",
+        "sha256": "f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4",
+        "expectedAfterMd5": "003541d986ce79b0876755c8c3df7a3d",
+        "expectedAfterSha256": "f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4",
+        "exactAfterBytes": true
+      },
+      {
+        "filename": "sections/product-information.liquid",
+        "apiMd5": "9d9646c79c920779614ad848847d1e0d",
+        "computedMd5": "9d9646c79c920779614ad848847d1e0d",
+        "sha256": "73156ccfa4b099818b6beb1357ff24286ebf778c6394fd9df65d80c8931d6917",
+        "expectedAfterMd5": "9d9646c79c920779614ad848847d1e0d",
+        "expectedAfterSha256": "73156ccfa4b099818b6beb1357ff24286ebf778c6394fd9df65d80c8931d6917",
+        "exactAfterBytes": true
+      }
+    ],
+    "publicHttp": {
+      "at": "2026-11-01T16:54:53.418801+00:00",
+      "requestedUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "bytes": 1221327,
+      "sha256": "001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729"
+    },
+    "deepComparison": {
+      "status": "expected_schema_diff_confirmed",
+      "scope": "combined",
+      "inputProvenanceDeclaredByCaller": "unverified",
+      "baselineSha256": "9474f2e2c0ae2ddea2bbdd25a632a0ef2286e8dc567c4b2944b91d5a9095afa8",
+      "candidateSha256": "001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729",
+      "exactStructuredDataMatch": true,
+      "googleAcceptance": "unknown_not_tested",
+      "themePublication": "not_verified_by_this_comparator",
+      "expectedVariantCount": 33,
+      "expectedSkuPropertyCount": 9,
+      "expectedRetainedValidSkus": 9,
+      "returnPolicyMustBeUnchanged": true,
+      "comparisonIncludes": "All JSON-LD blocks deeply, preserving IDs, offer URLs, names, prices, currencies, availability, images, return policy, and all non-approved fields"
+    },
+    "report": "# Öffentlicher Schema-Gegencheck, 01.11.2026\n\nBeide am 29.10.2026 genehmigten Schema-Korrekturen sind im aktuellen öffentlichen Theme nachgewiesen. In diesem Lauf wurden sie nur gelesen und geprüft; es wurde nichts erneut angewendet oder veröffentlicht.\n\n- Shopify-Shop: `gid://shopify/Shop/94368563585`, `luxestyle.ch`, CHF.\n- Aktuelles MAIN-Theme: `212967981447` («LuxeStyle – Neue Startseite 01.11.2026»). Das Bewertungs-Theme `212971061639` ist weiterhin UNPUBLISHED.\n- Öffentliche Gegenprobe: <https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20>, HTTP 200, abgerufen 01.11.2026 17:54:53 Europe/Zurich (`2026-11-01T16:54:53.418801Z`). Im öffentlichen HTML bestätigt `Shopify.theme` das MAIN-Theme `212967981447`.\n- HTML SHA-256: `001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729`.\n\n## Native Dateien\n\nDie jeweils aktuelle native MAIN-Datei stimmt bytegenau mit der genehmigten Nachher-Datei vom 29.10. überein. API-MD5 und unabhängig berechneter MD5 stimmen ebenfalls überein.\n\n| Datei | Aktueller und erwarteter MD5 | Aktueller und erwarteter SHA-256 |\n| --- | --- | --- |\n| `sections/header.liquid` | `003541d986ce79b0876755c8c3df7a3d` | `f438d7a9ad98e6ed5ea2dd19af8dddbd934bdeca0587872cb52fd6064f0c6fd4` |\n| `sections/product-information.liquid` | `9d9646c79c920779614ad848847d1e0d` | `73156ccfa4b099818b6beb1357ff24286ebf778c6394fd9df65d80c8931d6917` |\n\n## Gerendertes JSON-LD\n\nAlle drei JSON-LD-Blöcke der aktuellen öffentlichen Hängematten-Seite wurden erfolgreich geparst. Der vorhandene begrenzte Comparator verglich sie vollständig mit dem alten öffentlichen Ausgangsbeleg plus genau dem genehmigten Zweidateidiff: `expected_schema_diff_confirmed`, `exactStructuredDataMatch=true`.\n\n- JSON-LD-Block 1, `ProductGroup.productGroupID=15450856292737`: 33 Varianten, 33 Offers, 33 eindeutige Varianten-IDs und 33 eindeutige Offer-URLs; alle Offer-Währungen CHF.\n- `ProductGroup.hasVariant[*].sku`: genau neun gültige verbleibende Angaben, keine SKU mit Leerraum. Die 24 zuvor problematischen optionalen Schema-SKU-Angaben sind entfernt. Dies ist keine neue Änderung der operativen Shopify-/CJ-SKUs.\n- JSON-LD-Block 0, Organization `@id=https://luxestyle.ch/#org`, `hasShippingService[0].shippingConditions[0].orderValue.maxValue=49.99`; zugehörige Versandgebühr CHF 7.00.\n- `hasShippingService[0].shippingConditions[1].orderValue.minValue=50`; zugehörige Versandgebühr CHF 0.00.\n- Liechtenstein CHF 14.90 und die vorhandene Rückgaberichtlinie für CH/LI mit 30 Tagen sind im vollständigen Vergleich unverändert; ebenso alle nicht genehmigten Schema-Felder, darunter Namen, Preise, Verfügbarkeit, Bilder, IDs und URLs.\n\n## Aufgabenstatus und Grenzen\n\nFür `schema-hammock-15450856292737` und `schema-shipping-threshold-ch50` ist «nur vorbereitet / Live-Übernahme zugriffsblockiert» durch diesen frischen Befund überholt. Vorschlag: **live verifiziert; Google-Prüfung offen**. Den historischen Freigabe- und Vorbereitungseintrag erhalten und mit dem heutigen Gegencheck ergänzen. Kein erneutes Anwenden des alten Patches.\n\nDieser Lauf belegt die öffentliche Ausgabe und den aktuellen nativen Theme-Inhalt, nicht den Ausführenden oder den genauen Zeitpunkt der vorherigen Veröffentlichung. Keine eigene Veröffentlichung behaupten. Google-/Merchant-Akzeptanz, erneutes Crawling und eventuell noch bestehende Google-Meldungen bleiben unbekannt; es wurde kein Indexierungs- oder Validierungsrequest ausgelöst. Kein aktueller Vollabgleich operativer Shopify-SKUs, Checkout-Einstellungen oder Generatoren. Die öffentliche CHF-50-Schema-Korrektur ist kein Anlass, die interne CHF-45-Grenze oder Checkout-Einstellungen zu ändern.\n\n## Belege\n\n- `NATIVE-READBACK.json`: aktuelle native Identität und zwei Theme-Dateien.\n- `HTTP.json`, `PUBLIC-HAMMOCK.html`, `PUBLIC-JSONLD.json`: aktuelle öffentliche Gegenprobe.\n- `FILE-COMPARISON.json`: erwartete und aktuelle Datei-Hashes und bytegenauer Vergleich.\n- `DEEP-COMPARISON.json`: vollständiger gerenderter Schema-Vergleich.\n- `STRUCTURED-SUMMARY.json`: gezielte Produkt-/Versandschema-Zusammenfassung.\n\nDer Comparator kennt nur `native_preview`, `local_fixture` und `unverified` als Provenienzparameter. Deshalb steht dort `inputProvenanceDeclaredByCaller=unverified`; die tatsächliche öffentliche Herkunft wird unabhängig durch `HTTP.json` und den zugehörigen HTML-Hash belegt. Der Comparator selbst bestätigt keine Theme-Publikation; diese ist hier separat durch die nativen MAIN-Daten und `Shopify.theme` belegt.\n\nEs erfolgten ausschliesslich gezielte Lesezugriffe sowie lokale Belegdateien. Keine Shop-, Repo-, Feed-, DNS-, Ads- oder Flow-Änderung, keine Kunden-/Bestellabfrage und kein Indexierungsrequest.\n",
+    "comparatorProvenanceNote": "Comparator enum unverified does not verify theme publication. Independent native MAIN role/file hashes plus captured HTTP200 HTML/Shopify.theme prove actual public output. Google acceptance still unknown.",
+    "ownWriteOrPublish": false
+  },
+  "merchant": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "taskId": "merchant-missing-price-20261029",
+    "at": "2026-11-01T16:58:52Z",
+    "timezone": "Europe/Zurich",
+    "scope": "One exact original Merchant offer and source capability recheck; no sales/performance report",
+    "identity": {
+      "connector": "google_merchant",
+      "account": {
+        "id": "5797470070",
+        "name": "LuxeStyle CH"
+      }
+    },
+    "discovery": {
+      "selectedFields": [
+        {
+          "id": "account_id",
+          "name": "Account ID",
+          "description": "The Google Merchant account ID.",
+          "type": "TEXT"
+        },
+        {
+          "id": "data_fetched_at",
+          "name": "Data fetched at",
+          "description": "UTC timestamp (second precision) of when the connector request that pulled the row started. Freshly pulled rows show this request's start time; cache hits keep the start time of the request that filled the cache. Selecting this field disables aggregation, so rows are returned individually (each keeping its own fetch time) instead of being summed.",
+          "type": "TIMESTAMP"
+        },
+        {
+          "id": "product_availability",
+          "name": "Product Availability",
+          "description": "Availability status of the item. For example, \"inStock\" or \"out_of_stock\".",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_channel",
+          "name": "Product Channel",
+          "description": "Channel of the product. Can be ONLINE or LOCAL.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_content_language",
+          "name": "Product Content Language",
+          "description": "The two-letter ISO 639-1 language code for the product.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_data_source",
+          "name": "Product Data Source",
+          "description": "The primary data source of the product.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_feed_label",
+          "name": "Product Feed Label",
+          "description": "Feed label of the product.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_id",
+          "name": "Product ID",
+          "description": "Your unique identifier for the product.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_link",
+          "name": "Product Link",
+          "description": "URL directly linking to your item's page on your online store.",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_name",
+          "name": "Product Name",
+          "description": "The name of the product. Format: accounts/{account}/products/{product}where the last section product consists of 4 parts:channel~contentLanguage~feedLabel~offerId example for product name isaccounts/123/products/online~en~US~sku123",
+          "type": "TEXT"
+        },
+        {
+          "id": "product_price",
+          "name": "Product Price",
+          "description": "Product price.",
+          "type": "NUMERIC"
+        },
+        {
+          "id": "product_price_currency_code",
+          "name": "Product Price Currency Code",
+          "description": "Product price currency code. Product Price should be requested for the field to be available.",
+          "type": "TEXT"
+        }
+      ],
+      "options": [
+        {
+          "id": "competitive_visibility_country",
+          "name": "Competitive Visibility Country",
+          "description": "CLDR country code (for example US or DE) for Competitive Visibility reports. Required when a Competitive Visibility field is queried.",
+          "type": "TEXTINPUT",
+          "default": null,
+          "options": null
+        },
+        {
+          "id": "competitive_visibility_category_id",
+          "name": "Competitive Visibility Category ID",
+          "description": "Google product taxonomy category ID (for example 222 for Electronics) for Competitive Visibility reports. Required when a Competitive Visibility field is queried.",
+          "type": "TEXTINPUT",
+          "default": null,
+          "options": null
+        }
+      ],
+      "date_filters": {},
+      "writeActions": [],
+      "dateFieldMeaning": "Universal date field, for product performance contains value of product_performance_date field, for other product related queries contains date part of product_creation_time field, and if only account data (like account_name) queried, contains date when the quiery is being made."
+    },
+    "query": {
+      "connector": "google_merchant",
+      "accounts": [
+        "5797470070"
+      ],
+      "fields": [
+        "account_id",
+        "product_id",
+        "product_name",
+        "product_data_source",
+        "product_channel",
+        "product_feed_label",
+        "product_content_language",
+        "product_link",
+        "product_price",
+        "product_price_currency_code",
+        "product_availability",
+        "data_fetched_at"
+      ],
+      "filters": [
+        [
+          "product_id",
+          "eq",
+          "15427283157377_9000001_4016"
+        ],
+        "and",
+        [
+          "product_feed_label",
+          "eq",
+          "CH"
+        ],
+        "and",
+        [
+          "product_content_language",
+          "eq",
+          "de"
+        ],
+        "and",
+        [
+          "product_channel",
+          "eq",
+          "ONLINE"
+        ]
+      ],
+      "date_from": "2026-01-01",
+      "date_to": "2026-11-01"
+    },
+    "dataQueryCount": 1,
+    "continuationCalls": 0,
+    "retries": 0,
+    "forceRefresh": false,
+    "result": {
+      "status": "UNKNOWN_MCP_TIMEOUT",
+      "errorCode": -32603,
+      "raw": {
+        "content": [
+          {
+            "type": "text",
+            "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+          }
+        ],
+        "isError": true
+      }
+    },
+    "repoSources": [
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "gitBlobSha": "765c75c8121d5697a25c8200e7366f900718769b"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/gmc_feed_item.mjs",
+        "gitBlobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/gmc_schaufenster.mjs",
+        "gitBlobSha": "90cf27308debe167ae9cd20bcfa763efd3e59f30"
+      }
+    ],
+    "sourceFacts": [
+      "Fresh main merchant_feed.mjs still uses id=x.handle, variants(first:1), first-variant price and handle-level link",
+      "Fresh generator blobs are unchanged from prior 01.11. evidence",
+      "This code does not establish that the same generator feeds ProductID_SKU offers in the CSV or that it caused missing prices"
+    ],
+    "unknown": [
+      "Existing primary Merchant data source",
+      "Exact submitted variant URL",
+      "Raw price and currency",
+      "Raw availability",
+      "Current item processing/error state",
+      "Whether the source supports one-row server-side extraction"
+    ],
+    "unchanged": [
+      "Merchant products/data sources",
+      "Shopify products/variants/prices",
+      "Destination exclusions/GTIN",
+      "Source configuration and channels",
+      "Ads/flows/budgets",
+      "Existing schedules"
+    ],
+    "limits": [
+      "Metadata confirms valid field/filter IDs but result cardinality could not be checked after timeout",
+      "January-to-November date range was bounded to one exact ID/de/CH/ONLINE and chosen because date may mean product_creation_time; no performance metric requested",
+      "No zero/empty/404 or repair conclusion from timeout",
+      "18 earlier candidate rows remain dated Shopify evidence, not an uploadable new source or proof current Merchant prices were corrected"
+    ],
+    "nextStep": "Read this exact existing offer and primary data-source diagnostics through a legitimate authenticated Merchant surface that exposes raw submitted values. Use the existing account and source; no blind connector retry, no new source or candidate upload. Technical source/write access remains the blocker, not renewed owner approval."
+  },
+  "limits": [
+    "Not a complete French shop/catalogue translation: native hardcoded header search, catalogue/review quote text and embedded poster German labels remain outside this two-file scope",
+    "No whole-theme/checkout/EN acceptance; original raw-node parser finding and existing missing non-home locale keys retained",
+    "Draft publication requires legitimate Shopify Admin; native connector blocks MAIN writes/publish",
+    "Professional projector master remains separate: no new MP4 or rights/quality approval",
+    "Claude Code R33 handoff/R4 kept immutable; no actual receipt claimed"
+  ],
+  "unchanged": [
+    "Public MAIN theme",
+    "Product/variant data, prices, tags, media and review source data",
+    "Shop settings/language activation, account domain, shipping thresholds CHF50 public/CHF45 internal",
+    "Merchant/feed exclusions/GTIN/source configuration",
+    "Ads/flows/DNS/customers/budgets",
+    "Existing automation schedule, completed daily reports, ended purchase watch"
+  ],
+  "localEvidenceFiles": [
+    {
+      "relativePath": "fr/BEFORE.json",
+      "bytes": 114073,
+      "sha256": "7e344e7b244de50289e75dfd83d15f4ab21aa336a15428ab064b75037b77be61"
+    },
+    {
+      "relativePath": "fr/NATIVE-AFTER.json",
+      "bytes": 127216,
+      "sha256": "15bbb6c9de5f30879967072a3503a8d585a8bebc35f8d4cad38d1d2d0e273e17"
+    },
+    {
+      "relativePath": "fr/VALIDATION.log",
+      "bytes": 43155,
+      "sha256": "92a1a41f42f9651cbe10d2ecf01c4c95fb42362b810a1a4cc14e9d619a1df3c9"
+    },
+    {
+      "relativePath": "fr/VALIDATION-BEFORE.log",
+      "bytes": 61093,
+      "sha256": "75ecf363dcb679ef7da802b1929d44697991b1d234c61e5422b7dec606266663"
+    },
+    {
+      "relativePath": "fr/qa/NATIVE-QA.json",
+      "bytes": 105446,
+      "sha256": "1bbf873c0772169ca15c6b8af568acac291a43f49301e402706c2cac12a2cda4"
+    },
+    {
+      "relativePath": "schema/PUBLIC-HAMMOCK.html",
+      "bytes": 1221327,
+      "sha256": "001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729"
+    },
+    {
+      "relativePath": "schema/PUBLIC-JSONLD.json",
+      "bytes": 29455,
+      "sha256": "8b561dcba6eede637c4bc1a5bb04f12a5862bf68d17d704b3f0d9193e8b94742"
+    },
+    {
+      "relativePath": "schema/NATIVE-READBACK.json",
+      "bytes": 73077,
+      "sha256": "2dae09e7f7a3c5cc7588f4ea7bc7b31f35cc5e70ebfe16ea651f3fa18560dac0"
+    }
+  ]
+}
