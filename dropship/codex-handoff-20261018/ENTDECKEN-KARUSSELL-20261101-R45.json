@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "revision": 45,
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-01T21:33:18.664233+00:00",
+  "ownerRequest": "mach da noch hintergründe bilder rein in karusell oder so; screenshot#lx-budget",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "themeId": "212978598279",
+  "themeRole": "UNPUBLISHED",
+  "mainThemeId": "212971061639",
+  "newThemeFileVersions": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeMd5": "d5c9b5a5a389a862ad3e92615eb1dbd8",
+      "afterMd5": "46a62071f70893c1de18dae65140c322",
+      "afterSha256": "5c5009f2730ca50e6b5f08a2051abd748336b105cb6bce7d7da334cca1d5dc9e",
+      "bytes": 39572,
+      "operations": 2
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "beforeMd5": "8db9dbc9c181f6d0f54b055bf33836cf",
+      "afterMd5": "2264b929cd48993c1161f8abc4bce8bf",
+      "afterSha256": "e484f6b9f8c4043fe2911bf6fbf215b4e1495254e2f4b2ba6c1903f3cbba4431",
+      "bytes": 44000,
+      "operations": 1
+    }
+  ],
+  "nativeExactReadback": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "md5": "46a62071f70893c1de18dae65140c322",
+      "expectedMd5": "46a62071f70893c1de18dae65140c322",
+      "exact": true
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "md5": "2264b929cd48993c1161f8abc4bce8bf",
+      "expectedMd5": "2264b929cd48993c1161f8abc4bce8bf",
+      "exact": true
+    }
+  ],
+  "images": [
+    {
+      "key": "small",
+      "fileId": "gid://shopify/MediaImage/77915934654855",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "68733b2db6fbb22ff436f5487e6feda07f5d68b1cee4fbb8b16c1ba1c42f64e4",
+      "cdnSha256": "567ff3407ba65024b9d1d4d699f9d8796ab2590c4a8495ce0881185921e88f83",
+      "pixelIdentical": true
+    },
+    {
+      "key": "medium",
+      "fileId": "gid://shopify/MediaImage/77915934687623",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "0117403afa862eeca52abe8e2ba841083cec2e96a1da036676e200c7f688b0cc",
+      "cdnSha256": "20d963c6547f57c6367000a89192bfc12619abe5ea6bfe2392656954a871afb4",
+      "pixelIdentical": true
+    },
+    {
+      "key": "gifts",
+      "fileId": "gid://shopify/MediaImage/77915934720391",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "6552132a2b49af2ea48044ec01cb8c8d07cf41f69bbbebefd8bc6f152a9cf0b2",
+      "cdnSha256": "bb6ffa8a2ed7d5e2accaacf84f2aee44126528d3340c8e80d63ce41e3dec02b4",
+      "pixelIdentical": true
+    }
+  ],
+  "imagePurpose": "Original AI-generated decorative giftwrapping scenes; no exactSKU, product/material, price, delivery or set-contents promises",
+  "actualChanges": [
+    "Threeexistingbudgetcards gain distinctdecorativeHTMLimgbackgrounds withresponsivewidthsanddimensions,lazy loading andemptyalt",
+    "Whiteexistinglabels above darkgradient, nativeexistingdestinationlinks andpricefiltersretained",
+    "Mobile86percent horizontalCSSscrollsnap withnextcardedge; desktop3columns",
+    "Noautoplay,newJavaScriptorlocalechanges"
+  ],
+  "exactDiff": {
+    "sections/luxe-edit-home.liquid": [
+      {
+        "startLine": 263,
+        "endLine": 264,
+        "replacement": [
+          "          {% assign lx_budget_background = '' %}\n",
+          "          {% case lx_budget_parts[1] %}\n",
+          "            {% when 'small' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262' %}\n",
+          "            {% when 'medium' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263' %}\n",
+          "            {% when 'gifts' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263' %}\n",
+          "          {% endcase %}\n",
+          "          <a class=\"lx-budget-card\" href=\"{{ lx_budget_url }}\" data-budget-collection=\"{{ lx_budget_collection.handle | escape }}\">\n",
+          "            {% if lx_budget_background != blank %}<span class=\"lx-budget-media\" aria-hidden=\"true\"><img src=\"{{ lx_budget_background | escape }}&amp;width=750\" srcset=\"{{ lx_budget_background | escape }}&amp;width=360 360w, {{ lx_budget_background | escape }}&amp;width=540 540w, {{ lx_budget_background | escape }}&amp;width=750 750w, {{ lx_budget_background | escape }}&amp;width=1000 1000w\" sizes=\"(max-width: 760px) 82vw, 30vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\"></span>{% endif %}\n",
+          "            <span class=\"lx-budget-note\">{{ lx_budget_note | t }}</span><strong>{{ lx_budget_label | t }}</strong><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg>\n",
+          "          </a>\n"
+        ]
+      },
+      {
+        "startLine": 271,
+        "endLine": 272,
+        "replacement": [
+          "        <div class=\"lx-budget-grid\" tabindex=\"0\" role=\"region\" aria-labelledby=\"lx-budget-title\">{{ lx_budget_cards }}</div>\n"
+        ]
+      }
+    ],
+    "assets/luxe-edit.css": [
+      {
+        "startLine": 225,
+        "endLine": 225,
+        "replacement": [
+          "\n",
+          ".lx-home .lx-budget-grid{align-items:stretch}\n",
+          ".lx-home .lx-budget-grid:focus-visible{outline:2px solid #4f6657;outline-offset:6px;border-radius:20px}\n",
+          ".lx-home .lx-budget-card{isolation:isolate;overflow:hidden;min-height:252px;padding:28px 54px 28px 26px;justify-content:flex-end;gap:9px;background:#283c32;color:#fff;border-color:#b9c3b4;scroll-snap-align:start;scroll-margin-inline:2px;text-decoration:none}\n",
+          ".lx-home .lx-budget-card::before{content:\"\";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(12,23,18,.08) 0%,rgba(12,23,18,.26) 25%,rgba(12,23,18,.78) 55%,rgba(12,23,18,.94) 100%)}\n",
+          ".lx-home .lx-budget-card .lx-budget-media{position:absolute;inset:0;z-index:0;display:block;overflow:hidden}\n",
+          ".lx-home .lx-budget-card .lx-budget-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .3s ease}\n",
+          ".lx-home .lx-budget-card .lx-budget-note,.lx-home .lx-budget-card>strong,.lx-home .lx-budget-card>.lx-arrow{position:relative;z-index:2;color:#fff}\n",
+          ".lx-home .lx-budget-card .lx-budget-note{font-size:12px;line-height:1.5;letter-spacing:.015em;color:#f5f4eb}\n",
+          ".lx-home .lx-budget-card>strong{font-size:clamp(29px,2.8vw,40px);line-height:1.12;letter-spacing:-.6px}\n",
+          ".lx-home .lx-budget-card>.lx-arrow{position:absolute;right:22px;top:auto;bottom:31px;width:22px;height:22px}\n",
+          ".lx-home .lx-budget-card:hover{background:#283c32}\n",
+          ".lx-home .lx-budget-card:focus-visible{outline:3px solid #4f6657;outline-offset:4px}\n",
+          "@media(hover:hover){.lx-home .lx-budget-card:hover .lx-budget-media img{transform:scale(1.025)}}\n",
+          "@media(max-width:760px){.lx-home .lx-budget-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:2px 2px 14px;scrollbar-width:thin;scrollbar-color:#667b69 #dcded2}.lx-home .lx-budget-card{min-height:246px;padding:26px 50px 26px 22px;border-radius:20px}.lx-home .lx-budget-card>strong{font-size:32px}.lx-home .lx-budget-card>.lx-arrow{right:20px;bottom:29px}}\n",
+          "@media(prefers-reduced-motion:reduce){.lx-home .lx-budget-card .lx-budget-media img{transition:none}.lx-home .lx-budget-card:hover .lx-budget-media img{transform:none}.lx-home .lx-budget-grid{scroll-behavior:auto}}\n"
+        ]
+      }
+    ]
+  },
+  "sourceReview": {
+    "threeCollections": "freshlyread;tagrules not guaranteedpriceceilings",
+    "under25UnfilteredSample": "onecurrentpriceexampleCHF32.90 in20sampledproducts; notcompletevariantcheck",
+    "requiredUnchangedLinks": [
+      "/collections/unter-chf-25?filter.v.price.lte=24.99",
+      "/collections/geschenke-unter-50-franken?filter.v.price.lte=49.99",
+      "/collections/premium-geschenke"
+    ],
+    "collectionOrProductChanges": 0
+  },
+  "validation": {
+    "liquidCss": "VALIDwithonepreexistingCDNwarning line32, CSSpassed",
+    "schemaRefresh": "networkrefreshfailed,cachedschemasused",
+    "nativeUi": {
+      "scope": "Native UNPUBLISHED preview; GET/HEAD only; no HTML overrides",
+      "themeId": "212978598279",
+      "checks": [
+        {
+          "name": "Exact native theme andHTTP200",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Three budget destinations",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Exact price filters and destinations retained",
+          "pass": true,
+          "data": [
+            "/collections/unter-chf-25?filter.v.price.lte=24.99",
+            "/collections/geschenke-unter-50-franken?filter.v.price.lte=49.99",
+            "/collections/premium-geschenke"
+          ]
+        },
+        {
+          "name": "360 no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 three loadeddecorative backgrounds",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 white readable text andminimumheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 swipe row with next-card hint",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 three loadeddecorative backgrounds",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 white readable text andminimumheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 swipe row with next-card hint",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Keyboard arrow scroll works",
+          "pass": true,
+          "data": {
+            "scrollLeft": 301
+          }
+        },
+        {
+          "name": "Last card reachable by keyboardfocus",
+          "pass": true,
+          "data": {
+            "active": true,
+            "activeClass": "lx-budget-card",
+            "rect": {
+              "x": 73.34375,
+              "y": 499.96875,
+              "width": 290.671875,
+              "height": 246,
+              "top": 499.96875,
+              "right": 364.015625,
+              "bottom": 745.96875,
+              "left": 73.34375
+            },
+            "parent": {
+              "x": 24,
+              "y": 497.96875,
+              "width": 342,
+              "height": 262,
+              "top": 497.96875,
+              "right": 366,
+              "bottom": 759.96875,
+              "left": 24
+            },
+            "scrollLeft": 558,
+            "clientWidth": 342
+          }
+        },
+        {
+          "name": "Native horizontaltouch swipe works",
+          "pass": true,
+          "data": {
+            "scrollLeft": 301
+          }
+        },
+        {
+          "name": "1440 no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 three loadeddecorative backgrounds",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 white readable text andminimumheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 three desktop columns",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "R44 colouredcollage retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "No newlocaletext errors",
+          "pass": true,
+          "data": null
+        }
+      ],
+      "views": [
+        {
+          "width": 360,
+          "overflow": false,
+          "gridWidth": 312,
+          "scrollWidth": 823,
+          "snap": "x mandatory",
+          "columns": 3,
+          "cards": [
+            {
+              "width": 264.875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 25",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262&width=360"
+            },
+            {
+              "width": 264.875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 50",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263&width=360"
+            },
+            {
+              "width": 264.875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Geschenkideen",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263&width=360"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "gridWidth": 342,
+          "scrollWidth": 900,
+          "snap": "x mandatory",
+          "columns": 3,
+          "cards": [
+            {
+              "width": 290.671875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 25",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262&width=360"
+            },
+            {
+              "width": 290.671875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 50",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263&width=360"
+            },
+            {
+              "width": 290.671875,
+              "height": 246,
+              "color": "rgb(255, 255, 255)",
+              "title": "Geschenkideen",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263&width=360"
+            }
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "gridWidth": 1310,
+          "scrollWidth": 1310,
+          "snap": "none",
+          "columns": 3,
+          "cards": [
+            {
+              "width": 426.125,
+              "height": 252,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 25",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262&width=540"
+            },
+            {
+              "width": 426.140625,
+              "height": 252,
+              "color": "rgb(255, 255, 255)",
+              "title": "Unter CHF 50",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263&width=540"
+            },
+            {
+              "width": 426.125,
+              "height": 252,
+              "color": "rgb(255, 255, 255)",
+              "title": "Geschenkideen",
+              "loaded": true,
+              "alt": "",
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263&width=540"
+            }
+          ]
+        }
+      ],
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "blockedNonRead": 83,
+      "allChecksPassed": true,
+      "failed": []
+    },
+    "checks": 20,
+    "viewports": [
+      360,
+      390,
+      1440
+    ],
+    "actualKeyboardTabArrowTouchPassed": true,
+    "programmaticFocusCounterprobe": "Apreliminarylocator.focus()probeleftextremeendcardpartlyoutside;actual3Tabkeystraversalbringslastcardfullyonscreenat558px. NoJSchangeorclaimthatallprogrammaticfocusscenarioswerefixed.",
+    "fullCheckoutTrackingOrWholeThemeAcceptance": false
+  },
+  "preserved": [
+    "R44colourcollage,bannersand52referenceimages",
+    "Current8extra homepageproductcards/stickers/reviews/FR",
+    "All3budgettextkeys/destinations and24.99/49.99pricefilters",
+    "PublicCHF50/internalCHF45shipping andaccount.luxestyle.com.co",
+    "17taskIDs,existinghistory,endedpurchasewatch anddailyreportlimit",
+    "PriorMetricoolscopedregisterandappointments"
+  ],
+  "notPerformed": [
+    "NoMAINwriteorpublish",
+    "Noproduct/price/variant/inventory/tag/review/collectionrulechanges",
+    "NoSocialwrites,metric/flow/orderreports",
+    "NoAds/budget/discount/flow/DNS/settingsactivation",
+    "Noinstallation,workflow,newautomationorfrequencychange"
+  ],
+  "nextClaudeStep": "UseR45section+CSSversions overoldersameR44paths;preserveotherR44files. Existingwebsiteapprovalapplies. FreshauthenticatedShop/roles/fullthemeDiffbeforepublishingexisting212978598279vialegitimatecapableShopifyaccess,thenactualMAIN/publicDEFRmobileDesktopchecks. ConnectorblocksMAINwrites/themepublishing; nobypass/newcopy/repeatedsameapproval.",
+  "claudeReceipt": "unknown_missing_receipt",
+  "bestsellerTwoTextsApproval": "R43questionstillpending; unrelatedimagecarouselrequestdoesnotresolveit"
+}
