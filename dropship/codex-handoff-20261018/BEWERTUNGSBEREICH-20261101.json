@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "taskId": "homepage-redesign-20261029",
+  "revision": 32,
+  "at": "2026-11-01T16:10:08Z",
+  "timezone": "Europe/Zurich",
+  "ownerRequest": "Bewertungsbereich wie im früheren Screenshot; vom Inhaber ausdrücklich klargestellt, kein Screenshotbild verlangt.",
+  "summary": "Bewertungsbereich aus bestehenden aktuellen Appdaten im separaten UNPUBLISHED-Theme212971061639 ergänzt. Bestehende öffentliche Startseite212967981447 bleibt MAIN und unverändert.",
+  "previewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews",
+  "editorUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212971061639/editor",
+  "currentLiveThemeId": "212967981447",
+  "reviewDraftThemeId": "212971061639",
+  "draftName": "LuxeStyle – Bewertungen 01.11.2026",
+  "sources": {
+    "rating": {
+      "id": "gid://shopify/Metafield/197768250786177",
+      "type": "string",
+      "value": "4.83",
+      "updatedAt": "2026-10-20T08:06:30Z"
+    },
+    "count": {
+      "id": "gid://shopify/Metafield/197768250753409",
+      "type": "string",
+      "value": "12459",
+      "updatedAt": "2026-10-31T16:08:37Z"
+    },
+    "pool": {
+      "id": "gid://shopify/Metafield/210756542759303",
+      "type": "json",
+      "updatedAt": "2026-10-27T21:35:26Z",
+      "records": 24
+    },
+    "poolBuilder": {
+      "path": "automation/kundenstimmen_bauen.mjs",
+      "gitBlobSha": "f1afef70655675d5b4296b540024e56ee4bb5245",
+      "executed": false
+    },
+    "channelGuard": {
+      "path": "automation/lib/kanal_sperren.mjs",
+      "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371",
+      "selectedProductsBlocked": []
+    },
+    "selectedReviews": [
+      {
+        "id": "gid://shopify/Product/16603787985287",
+        "handle": "notizbuch-fur-gewichtsverfolgung-639400",
+        "title": "Notizbuch für Gewichtsverfolgung",
+        "status": "ACTIVE",
+        "tags": [
+          "buero",
+          "cj-real",
+          "dropship",
+          "homeoffice",
+          "kat-buero",
+          "neuheit",
+          "schreibwaren",
+          "schule",
+          "sort-buero",
+          "sort-kalender",
+          "sort-notizbuecher"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/notizbuch-fur-gewichtsverfolgung-639400",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72c4c39d-3463-427b-8254-d777da8106c6.jpg?v=1790917954",
+          "width": 800,
+          "height": 800
+        },
+        "widgetProductId": 16603787985287,
+        "review": {
+          "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+          "rating": 5,
+          "body": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+          "source": null
+        },
+        "poolMatch": true,
+        "widgetDataUpdatedAt": "2026-10-19T17:55:03Z",
+        "sourceUuid": "032a010b-65cd-4ee5-b0db-16099aba202a"
+      },
+      {
+        "id": "gid://shopify/Product/16606125097351",
+        "handle": "drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+        "title": "Drehwinkelmesser für Fahrzeuge – 360° Messung",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "neu",
+          "neuheit"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617442604930.jpg?v=1791076361",
+          "width": 750,
+          "height": 750
+        },
+        "widgetProductId": 16606125097351,
+        "review": {
+          "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+          "title": "",
+          "rating": 5,
+          "body": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+          "source": null
+        },
+        "poolMatch": true,
+        "widgetDataUpdatedAt": "2026-10-19T18:02:36Z",
+        "sourceUuid": "c546cc49-4cce-43f5-a315-80e873cf8857"
+      },
+      {
+        "id": "gid://shopify/Product/16613767381383",
+        "handle": "2-in-1-10w-kabelloses-ladegerat-6db4cc",
+        "title": "2-in-1 10W kabelloses Ladegerät",
+        "status": "ACTIVE",
+        "tags": [
+          "auswahl-nachgeruestet",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "kat-handy",
+          "kat-laden",
+          "neuheit",
+          "querbeet",
+          "querbeet-seit-2026-10-18",
+          "sort-elektronik-kleinteile",
+          "tech",
+          "trend"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10561717215550.jpg?v=1791595047",
+          "width": 800,
+          "height": 800
+        },
+        "widgetProductId": 16613767381383,
+        "review": {
+          "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+          "title": "",
+          "rating": 5,
+          "body": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+          "source": null
+        },
+        "poolMatch": true,
+        "widgetDataUpdatedAt": "2026-10-20T08:29:56Z",
+        "sourceUuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e"
+      }
+    ],
+    "excludedCandidate": {
+      "productId": "16612764352903",
+      "reason": "waffe-pruefen; omitted from new review placement without changing product or tag"
+    }
+  },
+  "implementation": {
+    "uniqueFilesWritten": 5,
+    "extraWrite": "Nur neue Section/CSS nach konkretem Pfeilbefund korrigiert",
+    "content": "Neutrale Überschrift; Aggregate aus Judge.me-Quellen, ausgewählte Originalzitate exakt aus produktgebundenem json-Widget, reale aktuelle Produktbilder/URLs; drei Karten, mobile Wischansicht.",
+    "guards": [
+      "Exakte Shopify-ID gleich product_external_id und fester Review-UUID; Originaltext aus aktuellem Produktwidget, escaped",
+      "Nicht leere Tags, aktuelles veröffentlichtes/kaufbares Produkt und echtes Bild; vorhandene Sperrmuster plus konservatives waffe-pruefen",
+      "Sterne nach tatsächlichem Rating; Gesamtanzahl ganzzahlig und positiv, Rating>0 bis5, kanonische numerische Rohwerte; fehlend/fehlerhaft wird nicht als0 gezeigt",
+      "Nach gültigem UUID-Treffer break; verhindert zusätzliche Karten bei doppelter UUID",
+      "Neue Stern-CSS ausschliesslich im neuen Bereich, vorhandene SVG-Produktsterne unverändert",
+      "17 vorhandene plus3neue eindeutige all_products-Handles=20; keine weitere neue Lookup-Reserve"
+    ],
+    "disclosure": "Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt.",
+    "noShopPurchaseClaim": true,
+    "noReviewOrMetafieldWrites": true
+  },
+  "nativeReadback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "live": {
+      "id": "gid://shopify/OnlineStoreTheme/212967981447",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "6927c86886a14d418e4ab5ff7b45b9e4"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "draft": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "name": "LuxeStyle – Bewertungen 01.11.2026",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "assets/luxe-home-reviews.css",
+          "checksumMd5": "314291bc7c01789dd02d4062721c3903",
+          "confirmed": true,
+          "comparison": "full exact"
+        },
+        {
+          "filename": "locales/de.json",
+          "checksumMd5": "52bd1ea05c622f3923936dc03bfdd3cf",
+          "confirmed": true,
+          "comparison": "semantic after Shopify generated-file comment"
+        },
+        {
+          "filename": "locales/en.default.json",
+          "checksumMd5": "b99ff074b8e40114f7e41198f81c3532",
+          "confirmed": true,
+          "comparison": "semantic after Shopify generated-file comment"
+        },
+        {
+          "filename": "sections/luxe-home-reviews.liquid",
+          "checksumMd5": "9c60b30e691191ee363c7c61f69cfad3",
+          "confirmed": true,
+          "comparison": "full exact"
+        },
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "efd2d36eae56a7057ccaf6e2de028f42",
+          "confirmed": true,
+          "comparison": "semantic after Shopify generated-file comment"
+        }
+      ],
+      "watched": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "f1c54db12521b00961267d6b5220817b"
+          },
+          {
+            "filename": "assets/luxe-edit.js",
+            "checksumMd5": "4aa19e8ff7993e0e8badad2f02cade4b"
+          },
+          {
+            "filename": "layout/theme.liquid",
+            "checksumMd5": "f5da6f2a959ffe1b8e472548070cd6b1"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "01c5e9899d1d6e720564ef2d7b4ee9ed"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InNlY3Rpb25zXC9sdXhlLWVkaXQtaG9tZS5saXF1aWQi"
+        }
+      }
+    }
+  },
+  "fileManifest": [
+    {
+      "filename": "sections/luxe-home-reviews.liquid",
+      "beforeSha256": null,
+      "afterSha256": "d9f9a54fde93921f812c160e6dddd0a2514d787e1678a78190e1a9f108a9c5e3"
+    },
+    {
+      "filename": "assets/luxe-home-reviews.css",
+      "beforeSha256": null,
+      "afterSha256": "c426c3a861cca8c0ed540eb9e460d24157902fc08d1491d01096d09ff7122c23"
+    },
+    {
+      "filename": "templates/index.json",
+      "beforeSha256": "30cfe36101001db746f14ae47666b42f6c67e15a3da12b064393e3b1b97be1f7",
+      "afterSha256": "2f7e19bcf59217da755f9a44503d7be7e17ac17f396d982b76e8ffa9f0d94ae2"
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeSha256": "a437be416f204c8467b9b7c9fe6d10be54f4967b8cfd07b2388772617673e7ae",
+      "afterSha256": "210a01f8cb66fb5f9dc802f4fe994301715ef2c47f4cbfcc4ecea80dbca748f7"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeSha256": "40f9b9bfb3115bc0b887d32e278ec0a5f3ce06a43bdb1649edb59aabfba3dab9",
+      "afterSha256": "df0b3ef6d3d54ab2299d6e02a96c6c57c9ff77bf262a6b3484b9296de1e77f40"
+    }
+  ],
+  "patch": "--- before/sections/luxe-home-reviews.liquid\n+++ after/sections/luxe-home-reviews.liquid\n@@ -0,0 +1,84 @@\n+{{ 'luxe-home-reviews.css' | asset_url | stylesheet_tag }}\n+{% liquid\n+  assign review_entries = 'notizbuch-fur-gewichtsverfolgung-639400|16603787985287|032a010b-65cd-4ee5-b0db-16099aba202a,drehwinkelmesser-fur-fahrzeuge-360-messung-846016|16606125097351|c546cc49-4cce-43f5-a315-80e873cf8857,2-in-1-10w-kabelloses-ladegerat-6db4cc|16613767381383|2a31f8b7-1969-4d20-aecb-5ff64126a44e' | split: ','\n+  assign shown_reviews = 0\n+%}\n+{% capture review_cards %}\n+  {% for entry in review_entries %}\n+    {% liquid\n+      assign fields = entry | split: '|'\n+      assign review_product = all_products[fields[0]]\n+      assign review_product_id = review_product.id | append: ''\n+      assign review_data = review_product.metafields.judgeme.review_widget_data.value\n+      assign review_data_id = review_data.product_external_id | append: ''\n+      assign review_blocked = false\n+      assign review_tags = review_product.tags | join: '|' | downcase\n+      assign review_stops = 'nicht-bewerben,18plus,adult,compliance-pruefen,social-pause,rueckhol,-raus-,marge-verlust,medizinprodukt,nicht-versendbar,nicht-live,geprueft-gesperrt,verlust-auto,verdeckte-ueberwachung,waffe-pruefen' | split: ','\n+      for stop in review_stops\n+        if review_tags contains stop\n+          assign review_blocked = true\n+        endif\n+      endfor\n+      for tag in review_product.tags\n+        assign lower_tag = tag | downcase\n+        if lower_tag contains 'nicht-' and lower_tag contains 'bewerben'\n+          assign review_blocked = true\n+        endif\n+      endfor\n+    %}\n+    {% if review_product_id == fields[1] and review_data_id == review_product_id and review_product.featured_image and review_product.available and review_product.tags.size > 0 and review_blocked == false %}\n+      {% for review in review_data.reviews %}\n+        {% if review.uuid == fields[2] and review.body != blank %}\n+          {% liquid\n+            assign rating_raw = review.rating | append: ''\n+            assign rating_number = review.rating | plus: 0\n+            assign rating_back = rating_number | append: ''\n+          %}\n+          {% if rating_raw == rating_back and rating_number >= 1 and rating_number <= 5 %}\n+            {% assign shown_reviews = shown_reviews | plus: 1 %}\n+            <article class=\"lx-testimonial\" role=\"listitem\" data-review-product-id=\"{{ review_product.id }}\" data-review-uuid=\"{{ review.uuid | escape }}\" data-review-rating=\"{{ rating_number }}\">\n+              <div class=\"lx-testimonial-rating\"><span class=\"lx-review-stars\" style=\"--lx-score:{{ rating_number | times: 20 }}%\" role=\"img\" aria-label=\"{{ rating_number }} {{ 'luxe_home.customer_reviews.out_of' | t }}\">★★★★★</span><span>{{ rating_number }} {{ 'luxe_home.customer_reviews.out_of' | t }}</span></div>\n+              <blockquote><p>{{ review.body | escape }}</p></blockquote>\n+              <a class=\"lx-testimonial-product\" href=\"{{ review_product.url }}\">\n+                {{ review_product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '120, 180, 240, 400', sizes: '120px', alt: '' }}\n+                <span>{{ review_product.title | escape }}</span>\n+                <span class=\"lx-testimonial-link\">{{ 'luxe_home.customer_reviews.product_link' | t }}<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span>\n+              </a>\n+            </article>\n+            {% break %}\n+          {% endif %}\n+        {% endif %}\n+      {% endfor %}\n+    {% endif %}\n+  {% endfor %}\n+{% endcapture %}\n+{% if shown_reviews > 0 %}\n+  {% liquid\n+    assign aggregate_rating_raw = shop.metafields.judgeme.all_reviews_rating | append: '' | strip\n+    assign aggregate_count_raw = shop.metafields.judgeme.all_reviews_count | append: '' | strip\n+    assign aggregate_rating = aggregate_rating_raw | plus: 0\n+    assign aggregate_count = aggregate_count_raw | plus: 0\n+    assign aggregate_count_integer = aggregate_count | floor\n+    assign aggregate_rating_back = aggregate_rating | append: ''\n+    assign aggregate_count_back = aggregate_count | append: ''\n+  %}\n+  <section class=\"lx-reviews-showcase\" id=\"lx-customer-reviews\" aria-labelledby=\"lx-review-title-{{ section.id }}\">\n+    <header class=\"lx-reviews-heading\">\n+      <p class=\"lx-reviews-eyebrow\">{{ 'luxe_home.customer_reviews.eyebrow' | t }}</p>\n+      <h2 id=\"lx-review-title-{{ section.id }}\">{{ 'luxe_home.customer_reviews.heading' | t }}</h2>\n+      {% if aggregate_rating_raw != blank and aggregate_count_raw != blank and aggregate_rating_raw == aggregate_rating_back and aggregate_count_raw == aggregate_count_back and aggregate_rating > 0 and aggregate_rating <= 5 and aggregate_count > 0 and aggregate_count == aggregate_count_integer %}\n+        {% liquid\n+          assign count_thousands = aggregate_count | divided_by: 1000\n+          assign count_rest = aggregate_count | modulo: 1000 | prepend: '00' | slice: -3, 3\n+        %}\n+        <p class=\"lx-reviews-summary\" data-review-summary data-rating=\"{{ aggregate_rating }}\" data-count=\"{{ aggregate_count }}\"><span class=\"lx-review-stars\" style=\"--lx-score:{{ aggregate_rating | times: 20 }}%\" role=\"img\" aria-label=\"{{ aggregate_rating }} {{ 'luxe_home.customer_reviews.out_of' | t }}\">★★★★★</span><span>{{ aggregate_rating }} {{ 'luxe_home.customer_reviews.out_of' | t }} · {% if aggregate_count >= 1000 and aggregate_count < 1000000 %}{{ count_thousands }}’{{ count_rest }}{% else %}{{ aggregate_count }}{% endif %} {{ 'luxe_home.customer_reviews.reviews' | t }}</span></p>\n+      {% endif %}\n+      <p class=\"lx-reviews-disclosure\">{{ 'luxe_home.customer_reviews.disclosure' | t }}</p>\n+      <p class=\"lx-reviews-hint\">{{ 'luxe_home.customer_reviews.swipe' | t }}</p>\n+    </header>\n+    <div class=\"lx-testimonial-grid\" role=\"list\" tabindex=\"0\" aria-label=\"{{ 'luxe_home.customer_reviews.list_label' | t | escape }}\">{{ review_cards }}</div>\n+  </section>\n+{% endif %}\n+{% schema %}\n+{\"name\":\"LuxeStyle Bewertungen\",\"settings\":[],\"presets\":[{\"name\":\"LuxeStyle Bewertungen\"}]}\n+{% endschema %}\n--- before/assets/luxe-home-reviews.css\n+++ after/assets/luxe-home-reviews.css\n@@ -0,0 +1,6 @@\n+.lx-reviews-showcase{--lx-review-ink:#292722;--lx-review-muted:#665f56;--lx-review-gold:#9a7a44;--lx-review-line:#ded5c9;box-sizing:border-box;background:#faf7f2;color:var(--lx-review-ink);padding:64px clamp(24px,4.5vw,72px);font:16px/1.6 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}\n+.lx-reviews-showcase *{box-sizing:border-box}.lx-reviews-heading{max-width:850px;margin:0 auto 34px;text-align:center}.lx-reviews-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px;color:var(--lx-review-muted)}.lx-reviews-heading h2{font:600 clamp(32px,3.5vw,46px)/1.15 'Iowan Old Style','Palatino Linotype',Georgia,serif;margin:0 auto 20px;max-width:780px;text-wrap:balance}\n+.lx-reviews-summary{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;margin:0 0 12px;font-size:18px}.lx-reviews-showcase .lx-review-stars{display:inline-block;white-space:nowrap;font:24px/1 Georgia,serif;letter-spacing:.07em;background:linear-gradient(to right,var(--lx-review-gold) var(--lx-score),#d7d0c5 var(--lx-score));background-clip:text;-webkit-background-clip:text;color:transparent}.lx-reviews-disclosure{max-width:740px;margin:0 auto;color:var(--lx-review-muted);font-size:14px;line-height:1.6}.lx-reviews-hint{display:none}\n+.lx-testimonial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1320px;margin:0 auto;outline-offset:5px}.lx-testimonial{min-width:0;background:#fffdf9;border:1px solid var(--lx-review-line);border-radius:20px;padding:28px;display:flex;flex-direction:column;align-items:center;text-align:center;scroll-snap-align:start}.lx-testimonial-rating{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--lx-review-muted)}.lx-testimonial blockquote{margin:20px 0 28px;width:100%;font-size:17px;line-height:1.6}.lx-testimonial blockquote p{margin:0;overflow-wrap:anywhere}.lx-testimonial-product{margin-top:auto;display:flex;align-items:center;flex-direction:column;gap:14px;color:var(--lx-review-ink);font-size:15px;text-decoration:none;max-width:100%}.lx-testimonial-product img{display:block;width:120px;height:120px;object-fit:contain;background:#fff;border-radius:14px}.lx-testimonial-product>span{overflow-wrap:anywhere}.lx-testimonial-link{display:flex;align-items:center;justify-content:center;gap:16px;min-height:44px;font-size:14px;text-decoration:underline;text-underline-offset:5px}.lx-reviews-showcase .lx-testimonial-link svg{display:block;width:20px;height:20px;flex:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;fill:none}.lx-testimonial-product:focus-visible,.lx-testimonial-grid:focus-visible{outline:3px solid #845a34;outline-offset:4px}\n+@media(max-width:760px){.lx-reviews-showcase{padding:40px 16px}.lx-reviews-heading{margin-bottom:24px}.lx-reviews-heading h2{font-size:32px}.lx-reviews-summary{font-size:16px}.lx-reviews-disclosure{font-size:14px}.lx-reviews-hint{display:block;font-size:13px;color:var(--lx-review-muted);margin:14px 0 0}.lx-testimonial-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:3px 3px 14px;scrollbar-width:thin;scrollbar-color:#9a7a44 #e8dfd3}.lx-testimonial{padding:24px}.lx-testimonial blockquote{font-size:17px}.lx-testimonial-product{font-size:15px}}\n+@media(forced-colors:active){.lx-reviews-showcase .lx-review-stars{background:none;color:CanvasText}}\n--- before/templates/index.json\n+++ after/templates/index.json\n@@ -1,20 +1,16 @@\n-/*\n- * ------------------------------------------------------------\n- * IMPORTANT: The contents of this file are auto-generated.\n- *\n- * This file may be updated by the Shopify admin theme editor\n- * or related systems. Please exercise caution as any changes\n- * made to this file may be overwritten.\n- * ------------------------------------------------------------\n- */\n {\n   \"sections\": {\n     \"luxe_home\": {\n       \"type\": \"luxe-edit-home\",\n       \"settings\": {}\n+    },\n+    \"luxe_reviews\": {\n+      \"type\": \"luxe-home-reviews\",\n+      \"settings\": {}\n     }\n   },\n   \"order\": [\n-    \"luxe_home\"\n+    \"luxe_home\",\n+    \"luxe_reviews\"\n   ]\n }\n--- before/locales/de.json\n+++ after/locales/de.json\n@@ -1,12 +1,3 @@\n-/*\n- * ------------------------------------------------------------\n- * IMPORTANT: The contents of this file are auto-generated.\n- *\n- * This file may be updated by the Shopify admin language editor\n- * or related systems. Please exercise caution as any changes\n- * made to this file may be overwritten.\n- * ------------------------------------------------------------\n- */\n {\n   \"luxe_categories\": {\n     \"eyebrow\": \"Deine Einkaufswelten\",\n@@ -432,7 +423,6 @@\n       \"answer_delivery\": \"Lies die aktuellen Informationen auf den folgenden Seiten, bevor du bestellst.\",\n       \"policies\": \"Versand und Rückgabe\"\n     },\n-\n     \"trends\": {\n       \"eyebrow\": \"Neue Lieblingsstücke entdecken\",\n       \"heading\": \"Trends entdecken\",\n@@ -441,13 +431,11 @@\n       \"swipe\": \"Seitlich wischen und mehr entdecken.\",\n       \"products\": \"Produktauswahl Trends\"\n     },\n-\n     \"choices\": {\n       \"intro\": \"Deine Gestaltung beginnt mit dem passenden Produkt. Entdecke T-Shirts, Hoodies, Tassen und mehr.\",\n       \"browse\": \"Produkte auswählen\",\n       \"collage_alt\": \"Collage mit T-Shirt, Allover-Hoodie, Tasse, Stoffbeutel, Cap, Rucksack, Kuscheldecke, Notizbuch, Fotokissen, Poster, Trinkflasche und Samsung-Hülle.\"\n     },\n-\n     \"categories\": {\n       \"navigation\": \"Einkaufswelten auf der Startseite\",\n       \"design\": \"Selbst gestalten\",\n@@ -468,7 +456,6 @@\n       \"gifts\": \"Geschenkideen\",\n       \"all\": \"Alle Kategorien entdecken\"\n     },\n-\n     \"hero\": {\n       \"description\": \"Mode, Wohnen, Geschenke und mehr. Entdecke deine nächste Lieblingsidee.\",\n       \"heading_first\": \"Schön leben.\",\n@@ -478,7 +465,6 @@\n       \"play\": \"Video abspielen\",\n       \"pause\": \"Video pausieren\"\n     },\n-\n     \"zum_inhalt_f0521\": \"Zum Inhalt\",\n     \"gratisversand_in_der_schweiz_ab__9a8a6\": \"Gratisversand in der Schweiz ab CHF 50 nach Rabatt\",\n     \"versandinfos_87cfe\": \"Versandinfos\",\n@@ -603,6 +589,16 @@\n       \"wishlist\": \"Merkliste\",\n       \"cart\": \"Warenkorb\",\n       \"from\": \"Ab\"\n+    },\n+    \"customer_reviews\": {\n+      \"eyebrow\": \"Ausgewählte Produktbewertungen\",\n+      \"heading\": \"Bewertungen zu unseren Produkten\",\n+      \"out_of\": \"von 5\",\n+      \"reviews\": \"Bewertungen\",\n+      \"disclosure\": \"Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt.\",\n+      \"swipe\": \"Wische, um weitere Bewertungen zu sehen.\",\n+      \"list_label\": \"Ausgewählte Produktbewertungen\",\n+      \"product_link\": \"Zum Produkt\"\n     }\n   },\n   \"luxe_studio\": {\n--- before/locales/en.default.json\n+++ after/locales/en.default.json\n@@ -1,12 +1,3 @@\n-/*\n- * ------------------------------------------------------------\n- * IMPORTANT: The contents of this file are auto-generated.\n- *\n- * This file may be updated by the Shopify admin language editor\n- * or related systems. Please exercise caution as any changes\n- * made to this file may be overwritten.\n- * ------------------------------------------------------------\n- */\n {\n   \"luxe_categories\": {\n     \"eyebrow\": \"Your shopping worlds\",\n@@ -432,7 +423,6 @@\n       \"answer_delivery\": \"Read the current information on the following pages before ordering.\",\n       \"policies\": \"Shipping and returns\"\n     },\n-\n     \"trends\": {\n       \"eyebrow\": \"Discover new favourites\",\n       \"heading\": \"Explore trends\",\n@@ -441,13 +431,11 @@\n       \"swipe\": \"Swipe sideways to discover more.\",\n       \"products\": \"Trending product selection\"\n     },\n-\n     \"choices\": {\n       \"intro\": \"Your design starts with the right product. Explore T-shirts, hoodies, mugs and more.\",\n       \"browse\": \"Choose products\",\n       \"collage_alt\": \"Collage with a T-shirt, all-over hoodie, mug, tote bag, cap, backpack, blanket, notebook, photo cushion, poster, water bottle and Samsung case.\"\n     },\n-\n     \"categories\": {\n       \"navigation\": \"Homepage shopping categories\",\n       \"design\": \"Create your own\",\n@@ -468,7 +456,6 @@\n       \"gifts\": \"Gift ideas\",\n       \"all\": \"Explore all categories\"\n     },\n-\n     \"hero\": {\n       \"description\": \"Fashion, home, gifts and more. Discover your next favourite find.\",\n       \"heading_first\": \"Live beautifully.\",\n@@ -478,7 +465,6 @@\n       \"play\": \"Play video\",\n       \"pause\": \"Pause video\"\n     },\n-\n     \"zum_inhalt_f0521\": \"Zum Inhalt\",\n     \"gratisversand_in_der_schweiz_ab__9a8a6\": \"Gratisversand in der Schweiz ab CHF 50 nach Rabatt\",\n     \"versandinfos_87cfe\": \"Versandinfos\",\n@@ -603,6 +589,16 @@\n       \"wishlist\": \"Wishlist\",\n       \"cart\": \"Cart\",\n       \"from\": \"From\"\n+    },\n+    \"customer_reviews\": {\n+      \"eyebrow\": \"Selected product reviews\",\n+      \"heading\": \"Reviews of our products\",\n+      \"out_of\": \"out of 5\",\n+      \"reviews\": \"reviews\",\n+      \"disclosure\": \"Selected reviews for the respective products, partly imported from the manufacturer and translated into German.\",\n+      \"swipe\": \"Swipe to see more reviews.\",\n+      \"list_label\": \"Selected product reviews\",\n+      \"product_link\": \"View product\"\n     }\n   },\n   \"luxe_studio\": {\n",
+  "validation": {
+    "revision2": {
+      "files": 5,
+      "passed": true
+    },
+    "revision3": {
+      "files": 2,
+      "passed": true,
+      "reason": "SVG-Pfeil nach visuellem Befund"
+    },
+    "schema": "Offizieller lokaler Cache nach gescheitertem frischem CLI-Download; native offizielle Dokumentensuche erfolgreich"
+  },
+  "nativeQA": {
+    "scope": "Native new UNPUBLISHED reviews draft; no content overrides; only GET/HEAD",
+    "checks": [
+      {
+        "name": "HTTP200 intended review draft",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Aggregate matches currently read native app data",
+        "pass": true,
+        "data": {
+          "rating": "4.83",
+          "count": "12459",
+          "text": "★★★★★\n4.83 von 5 · 12’459 Bewertungen",
+          "fill": "96.6%"
+        }
+      },
+      {
+        "name": "Three unique quotes exactly bound to product and pinned UUID",
+        "pass": true,
+        "data": [
+          {
+            "id": "16603787985287",
+            "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+            "rating": "5",
+            "text": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+            "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+            "fill": "100%"
+          },
+          {
+            "id": "16606125097351",
+            "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+            "rating": "5",
+            "text": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+            "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+            "fill": "100%"
+          },
+          {
+            "id": "16613767381383",
+            "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+            "rating": "5",
+            "text": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+            "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+            "fill": "100%"
+          }
+        ]
+      },
+      {
+        "name": "Selected/imported/translated source disclosure visible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Flagged bag omitted from placement",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px no overflow and all actual photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px mobile rail/desktop columns and readable type",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px original homepage retained, no lookup/translation error",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px no overflow and all actual photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px mobile rail/desktop columns and readable type",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px original homepage retained, no lookup/translation error",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px no overflow and all actual photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px mobile rail/desktop columns and readable type",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px original homepage retained, no lookup/translation error",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no overflow and all actual photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px mobile rail/desktop columns and readable type",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px original homepage retained, no lookup/translation error",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Last quote product reachable via keyboard",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing positive product star SVG unaffected",
+        "pass": true,
+        "data": {
+          "tag": "svg",
+          "bg": "none",
+          "width": 90
+        }
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "scroll": true,
+        "snap": "x mandatory",
+        "columns": 3,
+        "quoteSize": "17px",
+        "headingSize": "32px",
+        "photos": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "main": 1,
+        "h1": 1,
+        "trends": 12,
+        "extra": 5,
+        "categories": 16,
+        "collage": 1,
+        "video": 1,
+        "lookupError": false
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "scroll": true,
+        "snap": "x mandatory",
+        "columns": 3,
+        "quoteSize": "17px",
+        "headingSize": "32px",
+        "photos": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "main": 1,
+        "h1": 1,
+        "trends": 12,
+        "extra": 5,
+        "categories": 16,
+        "collage": 1,
+        "video": 1,
+        "lookupError": false
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "scroll": true,
+        "snap": "x mandatory",
+        "columns": 3,
+        "quoteSize": "17px",
+        "headingSize": "32px",
+        "photos": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "main": 1,
+        "h1": 1,
+        "trends": 12,
+        "extra": 5,
+        "categories": 16,
+        "collage": 1,
+        "video": 1,
+        "lookupError": false
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "scroll": false,
+        "snap": "none",
+        "columns": 3,
+        "quoteSize": "17px",
+        "headingSize": "46px",
+        "photos": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "main": 1,
+        "h1": 1,
+        "trends": 12,
+        "extra": 5,
+        "categories": 16,
+        "collage": 1,
+        "video": 1,
+        "lookupError": false
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 69,
+    "cards": [
+      {
+        "id": "16603787985287",
+        "uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+        "rating": "5",
+        "text": "Früher geliefert, sehr funktional und nützlich. Empfehlenswert!",
+        "href": "/products/notizbuch-fur-gewichtsverfolgung-639400",
+        "fill": "100%"
+      },
+      {
+        "id": "16606125097351",
+        "uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+        "rating": "5",
+        "text": "Sehr schnelle Lieferung, super Produkt, gute Qualität.",
+        "href": "/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+        "fill": "100%"
+      },
+      {
+        "id": "16613767381383",
+        "uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+        "rating": "5",
+        "text": "Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert!",
+        "href": "/products/2-in-1-10w-kabelloses-ladegerat-6db4cc",
+        "fill": "100%"
+      }
+    ],
+    "passed": true
+  },
+  "arrowQA": {
+    "scope": "Native new draft after SVG arrow correction",
+    "checks": [
+      {
+        "width": 390,
+        "arrows": [
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          },
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          },
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          }
+        ],
+        "pass": true
+      },
+      {
+        "width": 1440,
+        "arrows": [
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          },
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          },
+          {
+            "width": 20,
+            "height": 20,
+            "stroke": "rgb(41, 39, 34)",
+            "path": "M6 18 18 6M6 6h12v12"
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "passed": true
+  },
+  "visualReview": "Unabhängige Stichprobe mobil/Desktop stimmig; Desktop alle3 SVG-Pfeile klar sichtbar nach Korrektur.",
+  "limits": [
+    "Nur im separaten UNPUBLISHED gespeichert; kein eigener MAIN-Write/Theme-Publish",
+    "Aggregate sind aktuell gelesene App-Metafeldwerte mit getrennt erhaltenem updatedAt; keine neue vollständige Judge.me-Synchronisation oder repräsentative Kaufstatistik behauptet",
+    "Erste Tasche mit waﬀe-pruefen aus neuer Platzierung ausgeschlossen, Produkt/Tags unangetastet",
+    "19 native Checks plus2 gezielte Pfeil-Gegenproben; externe Failed-to-fetch-Meldungen unter Nicht-GET/HEAD-Sperre bleiben separat begrenzt",
+    "DE geprüft, EN-Schlüssel validiert; keine vollständige EN-/Checkout-/App-Abnahme",
+    "Keine Kundenansprache, Produkt-/Preis-/Rabatt-/Flow-/Feed-/DNS-/Ads-/Social-/Automationsänderung, kein Tagesreport oder Kauf-Watch",
+    "Kein neuer Film oder Render; bestehender professioneller Master unverändert offen"
+  ],
+  "nextStep": "Kopie212971061639 «LuxeStyle – Bewertungen 01.11.2026» im Shopify-Admin veröffentlichen und danach öffentlichen Root samt Bewertungsbereich frisch prüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung erforderlich."
+}
