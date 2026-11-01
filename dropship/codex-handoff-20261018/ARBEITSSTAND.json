@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 41,
-  "updatedAt": "2026-11-01T20:21:03.842254Z",
+  "revision": 42,
+  "updatedAt": "2026-11-01T20:32:24.782248Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -67,10 +67,10 @@
       "priorityKind": "SETZUNG",
       "state": "offen",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle.",
-      "nextAllowedStep": "Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "BILDLICH_BELEGTE_MOTIVE_ZWEI_BODY_ERGAENZUNGEN_NATIV_OEFFENTLICH_BESTAETIGT_VORHERIGE_CODEBELEGE_ERHALTEN",
+      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt.",
+      "nextAllowedStep": "Neue, eng begrenzte Quellenfortsetzung R42: Zwei bestätigte Motivabsätze erhalten und13 vorhandeneSEO-Motive nicht wiederholen. Für CJ-2511220828321604600 und CJ-2504250729121615200 konkrete Originalmodell-/Variantenquelle zu Material, Massen und Rahmenumfang belegen; aktuelle Merchant-Quellbeschreibung erst mit legitimem Zugang prüfen. Die frühere umfangreiche Code-/Materialarbeit bleibt separat offen: Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -78,7 +78,8 @@
         "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
         "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
         "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
-        "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis"
+        "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis",
+        "R42 Leinwandset: PS/Kunststoff versus Holz und30×40 versus40×60 widersprüchlich; genaue CJ-SKU-Spezifikation fehlt. Einzelbild:80×160, Druckverfahren/Gewicht und tatsächlicher Rahmenumfang nicht unabhängig belegt. Motivfoto ersetzt keine Material-/Massquelle."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -186,6 +187,11 @@
           "path": "dropship/codex-handoff-20261018/SCHNEESTIEFEL-QUELLENABGLEICH-20261029.md",
           "gitBlobSha": "e32d0c7ad63a0fca7efe69888f1649bd4c73ffb2",
           "readAt": "2026-10-29T20:27:19.652102+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -224,6 +230,24 @@
           "date": "2026-10-29",
           "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht.",
           "nextAllowedStep": "Aktuellen vollständigen Attributdatensatz mit stabilen Produkt-/Varianten-IDs und echten modellbezogenen Quellen belegen; vorhandene Helfer/Exporte fortsetzen, keine Massenpagination oder geratenen Attribute. Das dokumentierte Quellen-Delta nur zusammen mit vollständiger vorhandener r1→r4-Kette prüfen, dann Voll-CI/Runtimegrant/Quellenaltersregel/dauerhaften gemeinsamen Ledger und konkreten begrenzten Produktscope nachweisen. Bereits bestätigte Produktwrites nicht wiederholen. Vor isoliertem Merchant-Push aktive Source-ID/Art und authentifizierten Writer belegen."
+        },
+        {
+          "at": "2026-11-01T20:32:24.782248Z",
+          "sourceRevision": 41,
+          "previousState": "offen",
+          "previousLastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle.",
+          "previousNextAllowedStep": "Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
+          "previousLastEvidenceDate": "2026-10-29",
+          "previousBelegArt": "GEMESSEN",
+          "previousBlockers": [
+            "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
+            "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
+            "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
+            "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
+            "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
+            "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
+            "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis"
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -287,6 +311,27 @@
         "reviewPacketUnchanged": true,
         "helperSizeLimitUnchanged": true,
         "claudeReceipt": "unknown"
+      },
+      "descriptionSupplementR42": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
+        },
+        "exportRows": 29,
+        "products": 13,
+        "variantMappings": 29,
+        "existingSeoMotifs": 13,
+        "ownSeoWrites": 0,
+        "ownBodyChanges": 2,
+        "productIds": [
+          "15525460672897",
+          "16615662354823"
+        ],
+        "nativeAndPublicExact": true,
+        "merchantRecommendationCleared": "unknown",
+        "creativeRightsOrFilmApprovalGranted": false,
+        "globalQualityComplete": false
       }
     },
     {
@@ -3148,6 +3193,17 @@
         "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
         "readAt": "2026-11-01T20:21:03.842254Z"
       }
+    },
+    {
+      "revision": 42,
+      "at": "2026-11-01T20:32:24.782248Z",
+      "actor": "codex",
+      "action": "Neuen Motiv-Empfehlungsexport29/13 aktuell geprüft; vorhandene13SEO-Motive nicht erneut geschrieben oder als eigene Änderungen gezählt. Zwei bildlich belegte Motivabsätze nach frischer Gegenprobe/Diff ergänzt und nativ/öffentlich exakt bestätigt. Konkrete übrige Quellenwidersprüche für Claude dokumentiert. Ein vorhandener Attributtask fortgeführt,15 andere Tasks/16IDs samt R41-Bildfix,R40-Entwurf,R39-Threads/Register und Historien erhalten; keine Reports/Watch-/Frequenz-/Feedänderung.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+        "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+        "readAt": "2026-11-01T20:32:24.782248Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3317,16 +3373,21 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r41",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r42",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 41,
-    "snapshotNote": "R41 ergänzt konkrete Merchant-CSV-Nacharbeit mit einem bestätigten Shopbildfix und technischen Quellenblockern; R40 bleibt aktuelle Websiteübergabe, Empfang unbekannt.",
+    "latestCanonicalRevision": 42,
+    "snapshotNote": "R42 ergänzt den neuen Beschreibungsexport und zwei bestätigte Motivabsätze; vorhandene13SEO-Motive nicht als eigene Writes gezählt. R40 bleibt Websiteübergabe, R41-Merchantquelle weiter technisch blockiert, Claude-Empfang unbekannt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
       "readAt": "2026-11-01T20:21:03.842254Z"
+    },
+    "descriptionCsvSupplement": {
+      "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+      "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+      "readAt": "2026-11-01T20:32:24.782248Z"
     }
   },
   "claudeCodeHandoffHistory": [
