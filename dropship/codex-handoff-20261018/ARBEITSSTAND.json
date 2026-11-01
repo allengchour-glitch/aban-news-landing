@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 32,
-  "updatedAt": "2026-11-01T16:10:08Z",
+  "revision": 33,
+  "updatedAt": "2026-11-01T16:21:00Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -54,11 +54,11 @@
   },
   "reviewPacket": {
     "taskId": "luxe-zusammenarbeit-20261028",
-    "revision": 3,
-    "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r3.packet.json",
-    "sha256": "cc82f538f3340b1eadb9460389d4971eb2eb308e3bd26d17b9dcf2b6072a9402",
-    "gitBlobSha": "752fad93f56b378f353cb003aa1c50cd6c927c53",
-    "claudeReceipt": "unknown_requires_fresh_read"
+    "revision": 4,
+    "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+    "sha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+    "gitBlobSha": "2f7ee6226963a79561b2d79280241fba0df0a401",
+    "claudeReceipt": "unknown_missing_receipt"
   },
   "tasks": [
     {
@@ -636,15 +636,15 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "vorbereitet",
-      "title": "Getestete R3-Codekorrekturen zur Integration bereithalten",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "R3 auf main b708c809 geprüft; 1059 lokale Prüfungen grün. Vollständige CI an schreibgeschütztem Home gescheitert. Keine produktive Integration durch Codex bestätigt.",
-      "nextAllowedStep": "Aktuelles main, Zielhashes und echte Claude-Quittung prüfen. Nur bei neuem Code-/Quellenstand gezielt nachführen; vollständige CI in legitimer schreibbarer Umgebung laufen lassen, wenn verfügbar.",
+      "state": "uebergabe_bereit_empfang_unbekannt",
+      "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "DOKUMENTATION_UND_PACKETQUELLEN_GEPRUEFT",
+      "lastEvidence": "Aktuelle Claude-Code-Übergabe mit stabilem Aufgabenstand und frischer Shopify-/öffentlicher Gegenprobe bereinigt: MAIN212967981447 ist öffentlich, Bewertungs-Theme212971061639 bleibt UNPUBLISHED. Kompakte unveränderliche R33-Übergabe und scoped CLAUDE.md im LuxeStyle-Ordner gespeichert/exakt rückgelesen; gemeinsames Root-CLAUDE.md unangetastet. Vorhandenen lokalen Übergabehelfer versionsgeprüft und R4 mit derselben Aufgaben-ID sowie bestätigter R3-Hashkette erzeugt. Quellen lokal und nach Remoteablage verified; receiptState unknown_missing_receipt. R3-Codeabnahme/Voll-CI nicht wiederholt oder als neu grün behauptet. Veralteten lokalen R10-Spiegel erkannt, historische Dateien/Helfer unverändert erhalten; neuer datierter R33-Quellenspiegel mit Herkunftsmanifest vorbereitet. Keine Shop-/Workflow-/Installations-/Automationsänderung.",
+      "nextAllowedStep": "Claude Code liest die vier kanonischen Dateien frisch und prüft das R4-Paket mit vorhandenen Helfern. Tatsächliche Kenntnisnahme bleibt bis zu einem echten Beleg unbekannt. R3-Codeintegration nur gegen aktuellen main/Dateihashes und passende vollständige CI weiterbearbeiten; keine neue Freigabe oder Workflowausführung aus R4 ableiten.",
       "blockers": [
-        "Vollständige CI offen",
-        "Kenntnisnahme und produktive Übernahme durch Claude unbekannt"
+        "Tatsächliche Claude-Code-Kenntnisnahme/Übernahme unbestätigt; R4 hat keine Quittung.",
+        "Ältere R3-Codeintegration und vollständige CI weiterhin separat offen; heutige Packetprüfung ersetzt sie nicht."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -656,10 +656,40 @@
           "path": "dropship/codex-handoff-20261018/INTEGRATIONSSTAND-20261028-R3.md",
           "gitBlobSha": "daca418ca3425d6a5983759b310c00731b3ba325",
           "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+          "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9",
+          "readAt": "2026-11-01T16:21:00Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+          "gitBlobSha": "2f7ee6226963a79561b2d79280241fba0df0a401",
+          "readAt": "2026-11-01T16:21:00Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-BEREINIGUNG-20261101.json",
+          "gitBlobSha": "5f5992112a6aa582561d0bd7ec1f889d7acb5a4f",
+          "readAt": "2026-11-01T16:21:00Z"
         }
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "codex_preparation_claude_coordination"
+      "assignedRole": "codex_preparation_claude_coordination",
+      "evidenceHistory": [
+        {
+          "at": "2026-11-01T16:21:00Z",
+          "sourceRevision": 32,
+          "previousLastEvidence": "R3 auf main b708c809 geprüft; 1059 lokale Prüfungen grün. Vollständige CI an schreibgeschütztem Home gescheitert. Keine produktive Integration durch Codex bestätigt.",
+          "previousState": "vorbereitet",
+          "previousNextAllowedStep": "Aktuelles main, Zielhashes und echte Claude-Quittung prüfen. Nur bei neuem Code-/Quellenstand gezielt nachführen; vollständige CI in legitimer schreibbarer Umgebung laufen lassen, wenn verfügbar.",
+          "previousBlockers": [
+            "Vollständige CI offen",
+            "Kenntnisnahme und produktive Übernahme durch Claude unbekannt"
+          ],
+          "previousTitle": "Getestete R3-Codekorrekturen zur Integration bereithalten",
+          "previousBelegArt": "QUELLE"
+        }
+      ]
     },
     {
       "id": "master-projector-15521256604033",
@@ -2324,6 +2354,17 @@
         "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
         "readAt": "2026-11-01T16:10:08Z"
       }
+    },
+    {
+      "revision": 33,
+      "at": "2026-11-01T16:21:00Z",
+      "actor": "codex",
+      "action": "Aktuelle Claude-Code-Übergabe mit stabilem Aufgabenstand und frischer Shopify-/öffentlicher Gegenprobe bereinigt: MAIN212967981447 ist öffentlich, Bewertungs-Theme212971061639 bleibt UNPUBLISHED. Kompakte unveränderliche R33-Übergabe und scoped CLAUDE.md im LuxeStyle-Ordner gespeichert/exakt rückgelesen; gemeinsames Root-CLAUDE.md unangetastet. Vorhandenen lokalen Übergabehelfer versionsgeprüft und R4 mit derselben Aufgaben-ID sowie bestätigter R3-Hashkette erzeugt. Quellen lokal und nach Remoteablage verified; receiptState unknown_missing_receipt. R3-Codeabnahme/Voll-CI nicht wiederholt oder als neu grün behauptet. Veralteten lokalen R10-Spiegel erkannt, historische Dateien/Helfer unverändert erhalten; neuer datierter R33-Quellenspiegel mit Herkunftsmanifest vorbereitet. Keine Shop-/Workflow-/Installations-/Automationsänderung. Alle 16 Aufgaben/Historien, erfülltes Kaufziel und bestehender Zeitplan erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-BEREINIGUNG-20261101.json",
+        "gitBlobSha": "5f5992112a6aa582561d0bd7ec1f889d7acb5a4f",
+        "readAt": "2026-11-01T16:21:00Z"
+      }
     }
   ],
   "salesGoal": {
@@ -2459,5 +2500,31 @@
         "proof": "dropship/codex-handoff-20261018/MORGENBELEGE-20261029.json"
       }
     }
-  ]
+  ],
+  "reviewPacketHistory": [
+    {
+      "at": "2026-11-01T16:21:00Z",
+      "previousPacket": {
+        "taskId": "luxe-zusammenarbeit-20261028",
+        "revision": 3,
+        "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r3.packet.json",
+        "sha256": "cc82f538f3340b1eadb9460389d4971eb2eb308e3bd26d17b9dcf2b6072a9402",
+        "gitBlobSha": "752fad93f56b378f353cb003aa1c50cd6c927c53",
+        "claudeReceipt": "unknown_requires_fresh_read"
+      },
+      "reason": "R4 aktualisiert die Koordinationsübergabe; R3-Code-/Quellenhistorie bleibt separat erhalten."
+    }
+  ],
+  "claudeCodeHandoff": {
+    "documentationRevision": 33,
+    "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+    "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9",
+    "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+    "entryGitBlobSha": "096ff043c571839ca595abdd4b7d267273942645",
+    "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r33",
+    "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+    "receiptState": "unknown_missing_receipt",
+    "scope": "documentation_and_review_only_no_installation_or_execution"
+  }
 }
