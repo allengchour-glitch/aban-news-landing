@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "luxe-asset-rights-receipt-draft-1",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "status": "UNFILLED_DRAFT_NOT_A_LICENSE_OR_APPROVAL",
+  "createdAt": "2026-11-01T12:59:18.725123+00:00",
+  "scope": "Only this one LuxeStyle projector master and four explicitly identified native takes; no customer or supplier communication sent",
+  "product": {
+    "shop": "luxestyle.ch",
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "shopSku": "CJ-1477820492730732544",
+    "exactSupplierVariantId": null,
+    "currentNativeProof": "PRODUCT-BINDING.json"
+  },
+  "licensor": {
+    "legalEntity": null,
+    "signedStatementReference": null,
+    "authorityToGrant": null,
+    "creatorOrAgencyProofReference": null,
+    "signedAt": null,
+    "verifiedBy": null
+  },
+  "grant": {
+    "commercialAdvertising": null,
+    "organicCommercialSocial": null,
+    "editingAndColourCorrection": null,
+    "croppingAndReencoding": null,
+    "overlayAndBranding": null,
+    "uploadToMetricoolAndPlatforms": null,
+    "territories": null,
+    "termStart": null,
+    "termEnd": null,
+    "attributionRequirements": null,
+    "restrictions": null
+  },
+  "channels": {
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null,
+    "facebook": null,
+    "threads": null,
+    "pinterest": null
+  },
+  "assets": [
+    {
+      "takeId": "P_OPERATION",
+      "originalFilename": null,
+      "sha256": null,
+      "originalSourceReference": null,
+      "grantAssetScheduleReference": null,
+      "sameUnitProofReference": null,
+      "sameVariantAndMotifProofReference": null,
+      "creatorOrTalentReleaseReference": null,
+      "recognisablePropertyOrArtworkPermissionReference": null,
+      "commercialGrantVerified": false
+    },
+    {
+      "takeId": "P_PROJECTION",
+      "originalFilename": null,
+      "sha256": null,
+      "originalSourceReference": null,
+      "grantAssetScheduleReference": null,
+      "sameUnitProofReference": null,
+      "sameVariantAndMotifProofReference": null,
+      "creatorOrTalentReleaseReference": null,
+      "recognisablePropertyOrArtworkPermissionReference": null,
+      "commercialGrantVerified": false
+    },
+    {
+      "takeId": "P_DETAIL",
+      "originalFilename": null,
+      "sha256": null,
+      "originalSourceReference": null,
+      "grantAssetScheduleReference": null,
+      "sameUnitProofReference": null,
+      "sameVariantAndMotifProofReference": null,
+      "creatorOrTalentReleaseReference": null,
+      "recognisablePropertyOrArtworkPermissionReference": null,
+      "commercialGrantVerified": false
+    },
+    {
+      "takeId": "P_HERO",
+      "originalFilename": null,
+      "sha256": null,
+      "originalSourceReference": null,
+      "grantAssetScheduleReference": null,
+      "sameUnitProofReference": null,
+      "sameVariantAndMotifProofReference": null,
+      "creatorOrTalentReleaseReference": null,
+      "recognisablePropertyOrArtworkPermissionReference": null,
+      "commercialGrantVerified": false
+    }
+  ],
+  "separateEvidence": {
+    "identityProofTakeOrPhotos": null,
+    "productAndPatternIdentification": null,
+    "includedCableAdapterCHPlugProof": null,
+    "canonicalMusicPath": "automation/music/luxe-premium.wav",
+    "musicCurrentFileProof": null,
+    "musicCommercialRightsReference": null,
+    "finalMixListeningApproval": null,
+    "musicOriginProofIsNotFinalRightsClearance": true
+  },
+  "review": {
+    "allAssetsCovered": false,
+    "licensorAuthorityVerified": false,
+    "restrictionsCompatible": false,
+    "expiryCompatibleWithScheduling": false,
+    "productIdentityAndClaimsVerified": false,
+    "commercialRightsApproved": false,
+    "renderApproved": false,
+    "publicationApproved": false,
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "notSufficient": [
+    "free/purchased/downloadable flags",
+    "a public video URL",
+    "product image permission without film/edit/advertising scope",
+    "a supplier PID without exact variant/unit mapping",
+    "metadata alone as native capture provenance",
+    "an existing website video or generated collage"
+  ]
+}
