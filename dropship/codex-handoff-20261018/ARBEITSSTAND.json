@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 43,
-  "updatedAt": "2026-11-01T20:50:50.314044Z",
+  "revision": 44,
+  "updatedAt": "2026-11-01T21:14:05.412770Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1472,13 +1472,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert_achtprodukte_entwurf_bereit",
+      "state": "entwurf_r44_bilder_52_referenzen_nativ_vorschau_bestaetigt",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite.",
+      "belegArt": "DREI_NEUE_BILDER_SIEBEN_DATEIEN_NATIV_EXAKT_19_BEGRENZTE_VORSCHAU_CHECKS",
+      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "Geprüften kombinierten Entwurf 212978598279 mit Sticker-Einstieg und acht zusätzlichen Startseitenkarten über legitimen Shopify-Admin veröffentlichen und öffentlich frisch mobil/Desktop prüfen. Bestehende Websitefreigabe nicht erneut verlangen. Keine ältere Kopie publizieren; Produkt-/Versand-/Konto-/App-/Cookiequellen erhalten.",
+      "nextAllowedStep": "R44 samt sieben finalen Dateihashes/Deltas frisch lesen; neue gleiche Pfade haben Vorrang vor R40/R37, alle übrigen bisherigen Änderungen erhalten. Bestehende Websitefreigabe gilt: frischen Shop-/Rollen-/vollständigen Theme-Diff prüfen, denselben Entwurf212978598279 über legitimen fähigen Shopify-Zugang veröffentlichen und tatsächlichen MAIN sowie öffentliche DE/FR-Mobil-/Desktopbilder bestätigen. AktuellerConnector sperrtPublish/MAINWrites, keineUmgehung/neueKopie/erneute gleicheFreigabefrage. Weitere Hersteller-/Lifestylebilder nur in begrenztem belegtem Scope; drei generischeStickerbeispiele separat lassen. Keine neuen Preise/Reviews/Shopangebote/EDM-/Druck-/Bestellbindungen aus Referenzbildern ableiten.",
       "blockers": [
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
@@ -1640,6 +1640,11 @@
           "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
           "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
           "readAt": "2026-11-01T18:14:26Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1828,6 +1833,21 @@
           "previousBelegArt": "LIVE_OEFFENTLICH_GEPRUEFT_KEIN_EIGENER_PUBLISH",
           "previousLastEvidenceDate": "2026-11-01",
           "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews"
+        },
+        {
+          "at": "2026-11-01T21:14:05.412770Z",
+          "sourceRevision": 43,
+          "previousState": "live_verifiziert_achtprodukte_entwurf_bereit",
+          "previousLastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite.",
+          "previousNextAllowedStep": "Geprüften kombinierten Entwurf 212978598279 mit Sticker-Einstieg und acht zusätzlichen Startseitenkarten über legitimen Shopify-Admin veröffentlichen und öffentlich frisch mobil/Desktop prüfen. Bestehende Websitefreigabe nicht erneut verlangen. Keine ältere Kopie publizieren; Produkt-/Versand-/Konto-/App-/Cookiequellen erhalten.",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+          "previousBlockers": [
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
+            "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert.",
+            "Neue acht Produktkarten liegen nur im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Writes und Veröffentlichung; vorhandener öffentlicher Bewertungs-/FR-Stand bleibt erhalten."
+          ]
         }
       ],
       "followUpFindings": [
@@ -1924,6 +1944,27 @@
           "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
           "readAt": "2026-11-01T18:14:26Z"
         }
+      },
+      "imageSupplementR44": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
+        },
+        "newSceneFiles": 3,
+        "finalThemeFiles": 7,
+        "additionalReferencePhotos": 21,
+        "referencePhotoTotal": 52,
+        "original31And397VariantsExact": true,
+        "nativePreviewChecks": 19,
+        "viewports": [
+          390,
+          1440
+        ],
+        "role": "UNPUBLISHED",
+        "publishedByCodex": false,
+        "sceneIsProductSpecification": false,
+        "completeLifestyleGallery": false
       }
     },
     {
@@ -2107,13 +2148,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "entwurf_erweitert_fotos_masse_kategorien_nativ_bestaetigt",
+      "state": "entwurf_r44_bilder_52_referenzen_nativ_vorschau_bestaetigt",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "UMGESETZT_UNPUBLISHED_SIEBEN_FINALE_DATEIEN_EXAKT_NATIV_BESTAETIGT",
-      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt.",
+      "belegArt": "DREI_NEUE_BILDER_SIEBEN_DATEIEN_NATIV_EXAKT_19_BEGRENZTE_VORSCHAU_CHECKS",
+      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt.",
       "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
-      "nextAllowedStep": "Denselben bestehenden Entwurf nach frischem Shop-/Rollen-/vollständigem Theme-Diff über legitimen Shopify-Zugang veröffentlichen und öffentlich DE/FR auf Mobil/Desktop prüfen; bestehende Websitefreigabe nicht erneut verlangen. Aktuelle sieben R40-Dateiversionen vor älteren gleichen Pfaden verwenden, übrige Startseiten-/Sticker-/Review-/FR-Änderungen erhalten. Fehlende bedruckte Lifestylegalerien und weitere Hauptbilder nur in begrenzten belegten Schritten ergänzen, keine pauschale Aktivierung der 541 Cache-Referenzen. Für echte weitere Shopangebote CHF-Preise, CH-Kosten, exakte Varianten-/SKU-Zuordnung und Druck-/EDM-/Bestellbindung separat belegen; keine Supplierkosten oder Fremdreviews übernehmen.",
+      "nextAllowedStep": "R44 samt sieben finalen Dateihashes/Deltas frisch lesen; neue gleiche Pfade haben Vorrang vor R40/R37, alle übrigen bisherigen Änderungen erhalten. Bestehende Websitefreigabe gilt: frischen Shop-/Rollen-/vollständigen Theme-Diff prüfen, denselben Entwurf212978598279 über legitimen fähigen Shopify-Zugang veröffentlichen und tatsächlichen MAIN sowie öffentliche DE/FR-Mobil-/Desktopbilder bestätigen. AktuellerConnector sperrtPublish/MAINWrites, keineUmgehung/neueKopie/erneute gleicheFreigabefrage. Weitere Hersteller-/Lifestylebilder nur in begrenztem belegtem Scope; drei generischeStickerbeispiele separat lassen. Keine neuen Preise/Reviews/Shopangebote/EDM-/Druck-/Bestellbindungen aus Referenzbildern ableiten.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -2484,6 +2525,11 @@
           "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json",
           "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
           "readAt": "2026-11-01T19:53:23.827114Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2657,6 +2703,22 @@
           ],
           "previousBelegArt": "GEMESSEN_UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
           "previousPreviewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212978598279&view=luxe-gestalten&catalog_category=202"
+        },
+        {
+          "at": "2026-11-01T21:14:05.412770Z",
+          "sourceRevision": 43,
+          "previousState": "entwurf_erweitert_fotos_masse_kategorien_nativ_bestaetigt",
+          "previousLastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt.",
+          "previousNextAllowedStep": "Denselben bestehenden Entwurf nach frischem Shop-/Rollen-/vollständigem Theme-Diff über legitimen Shopify-Zugang veröffentlichen und öffentlich DE/FR auf Mobil/Desktop prüfen; bestehende Websitefreigabe nicht erneut verlangen. Aktuelle sieben R40-Dateiversionen vor älteren gleichen Pfaden verwenden, übrige Startseiten-/Sticker-/Review-/FR-Änderungen erhalten. Fehlende bedruckte Lifestylegalerien und weitere Hauptbilder nur in begrenzten belegten Schritten ergänzen, keine pauschale Aktivierung der 541 Cache-Referenzen. Für echte weitere Shopangebote CHF-Preise, CH-Kosten, exakte Varianten-/SKU-Zuordnung und Druck-/EDM-/Bestellbindung separat belegen; keine Supplierkosten oder Fremdreviews übernehmen.",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "UMGESETZT_UNPUBLISHED_SIEBEN_FINALE_DATEIEN_EXAKT_NATIV_BESTAETIGT",
+          "previousBlockers": [
+            "Erweiterte UI mit 31 Herstelleransichten liegt im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Dateiwrites/Publikation; noch keine öffentliche Abnahme dieses Stands.",
+            "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
+            "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
+          ]
         }
       ],
       "liveThemeId": "212971061639",
@@ -2819,6 +2881,27 @@
           "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
           "readAt": "2026-11-01T19:53:23.827114Z"
         }
+      },
+      "imageSupplementR44": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
+        },
+        "newSceneFiles": 3,
+        "finalThemeFiles": 7,
+        "additionalReferencePhotos": 21,
+        "referencePhotoTotal": 52,
+        "original31And397VariantsExact": true,
+        "nativePreviewChecks": 19,
+        "viewports": [
+          390,
+          1440
+        ],
+        "role": "UNPUBLISHED",
+        "publishedByCodex": false,
+        "sceneIsProductSpecification": false,
+        "completeLifestyleGallery": false
       }
     },
     {
@@ -3249,6 +3332,17 @@
         "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
         "readAt": "2026-11-01T20:50:50.314044Z"
       }
+    },
+    {
+      "revision": 44,
+      "at": "2026-11-01T21:14:05.412770Z",
+      "actor": "codex",
+      "action": "Drei aktuelle Bildwünsche konkret umgesetzt: farbige Collage korrigiert, zwei Kategorie-Banner neu gestaltet und21weitere Printful-Hauptansichten gebunden. Drei neueShopifyDateien und siebenEntwurfsdateien exakt bestätigt,19nativeBild-/Layoutchecks. Zwei bestehendeWebsiteTasks fortgeschrieben,15andereTasks/17IDs undHistorien,R43Freigabeoffen,R42/R41/R39 sowie Tagesgrenzen/Kauf-Watch-Ende erhalten. KeinPublish, Social-/Produkt-/Feed-/Konfigurationswrite oder neueReports/Frequenz.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+        "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+        "readAt": "2026-11-01T21:14:05.412770Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3412,18 +3506,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 40,
-    "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R40.md",
-    "gitBlobSha": "bfc70afc6e7ab49cc31df20dc6c0dba6b4c44aba",
+    "documentationRevision": 44,
+    "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.md",
+    "gitBlobSha": "3f20bf6a93f72589ab6e6844e7963ae5e09cd60c",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
+    "entryGitBlobSha": "06f7062d3d149093df4f75426101f3d122f71f70",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r43",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r44",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 43,
-    "snapshotNote": "R43 ergänzt neuenSichtbarkeitsauftrag mit konkretem2TextFreigabediff; keinShopwrite. Alle16bisherigenTasks erhalten, neueSEO-Aufgabe ergibt17IDs. R40Websitefreigabe/Connector-Publishgrenze erhalten; tatsächlicherClaudeEmpfangunbekannt.",
+    "latestCanonicalRevision": 44,
+    "snapshotNote": "R44: drei neueSzenen,21zusätzlicheReferenzen/52gesamt,7exakteEntwurfsdateien und19begrenzteVorschauchecks. BestehendeWebsitefreigabe,Publishsperre und alleanderenGrenzen erhalten; Claude-Empfang unbekannt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -3438,6 +3532,11 @@
       "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
       "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
       "readAt": "2026-11-01T20:50:50.314044Z"
+    },
+    "imageSupplement": {
+      "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+      "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+      "readAt": "2026-11-01T21:14:05.412770Z"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -3474,6 +3573,39 @@
         "latestCanonicalRevision": 39,
         "snapshotNote": "R39 enthält tatsächlich bestätigten einen Threads-Fototermin und enges Register; R37/R5-Websiteübergabe bleibt separat, Empfangunbekannt."
       }
+    },
+    {
+      "at": "2026-11-01T21:14:05.412770Z",
+      "previousHandoff": {
+        "documentationRevision": 40,
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R40.md",
+        "gitBlobSha": "bfc70afc6e7ab49cc31df20dc6c0dba6b4c44aba",
+        "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+        "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
+        "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+        "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r43",
+        "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+        "receiptState": "unknown_missing_receipt",
+        "scope": "documentation_and_review_only_no_installation_or_execution",
+        "latestCanonicalRevision": 43,
+        "snapshotNote": "R43 ergänzt neuenSichtbarkeitsauftrag mit konkretem2TextFreigabediff; keinShopwrite. Alle16bisherigenTasks erhalten, neueSEO-Aufgabe ergibt17IDs. R40Websitefreigabe/Connector-Publishgrenze erhalten; tatsächlicherClaudeEmpfangunbekannt.",
+        "merchantCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
+        },
+        "descriptionCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
+        },
+        "visibilitySupplement": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+          "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+          "readAt": "2026-11-01T20:50:50.314044Z"
+        }
+      },
+      "reason": "R44 neueBildversionen ersetzen nur dieselben sieben Theme-Dateipfade; ältere Übergaben/Historien bleiben datiert erhalten."
     }
   ]
 }
