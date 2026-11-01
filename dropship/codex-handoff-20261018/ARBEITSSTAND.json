@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 35,
-  "updatedAt": "2026-11-01T17:51:14Z",
+  "revision": 36,
+  "updatedAt": "2026-11-01T18:14:26Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -786,9 +786,9 @@
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "LOKAL_GEPRUEFTER_ENTWURF/GEMESSENE_QUELLEN/KEINE_PRODUKTIVE_INTEGRATION",
-      "lastEvidence": "Denselben Master luxe_sternenprojektor_master_20261018 fortgeführt; keine MP4 und keine neue kreative/rechtliche Freigabe. Projektor nativ/Storefront aktuell ACTIVE CHF 34.90, konkrete Variante 56197916361089/SKU CJ-1477820492730732544 verfügbar, untracked/CONTINUE/0 korrekt eingeordnet; aktuelles echtes Produktbild erneut gelesen und gesehen. Genaue Ausführung/Motive durch auswahl-offen weiter offen. Neuer konkreter Vorbereitungsschritt: bestehende freie Rechtereferenzfelder an tatsächlichen Lizenzgeber, Nutzungsumfang/Gebiet/Laufzeit/Kanäle und Hash jedes Originaltakes gebunden; unbefüllte Vorlage, kein Lizenzbeleg. Bestehender 18sPlan mit zwei Hooks/sechs stabilen UTMs erhalten, statt tägliche neue Clips zu erzeugen. Vier Originaltakes, Zuordnung und Rechte sowie dauerhaftes Register weiter unbestätigt. Aktuelle Metricool-Identität/Planung geprüft; keine neuen Socialwrites oder Registerinitialisierung. YouTube-Inhaberzielgruppe bereits geklärt, nur konkretes Postflag offen.",
-      "nextAllowedStep": "Tatsächliche vier Originaldateien und ausführungsspezifische Motiv-/Strombelege anhand des bestehenden Originaltake-Prüfers und der neuen datei-/lizenzgebergebundenen Rechtebelegvorlage prüfen. Erst mit belegten kommerziellen Film-/Bearbeitungs-/Werberechten denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation Produkt-/Bio-/Board-/Postflag-/Ledger-/Kanalchecks frisch durchführen; keine Altclip- oder Websitevideo-Ersatzfreigabe.",
+      "belegArt": "GEMESSENE_QUELLEN_KONKRETER_PRODUKTIONSENTWURF_KEINE_MP4",
+      "lastEvidence": "Abendfortsetzung desselben Masters luxe_sternenprojektor_master_20261018: Projektor ACTIVE / CHF 34.90, exakte Variante/SKU, echte Bildreferenz und Storefront verfügbar frisch bestätigt; tracked=false / CONTINUE / Menge 0 ohne Liefer-/Bestandsversprechen. Repo-Sperrwächter, jedes rueckhol und leere Tags geprüft, kein Treffer; auswahl-offen bleibt Ausführungsblocker. Pflichtmusik lokal hashgleich zum aktuellen main, Herkunftserklärung ORIGINAL PRO gelesen, finale Rechte-/Hörabnahme offen. Neu konkreter Sicht-/Kontinuitätsbogen mit Vorher-/Nachherbildern, identischer Geräteeinheit, tatsächlicher Bedienhandlung, Motivzuordnung und freiem CTA-Raum für vier Originaltakes vorbereitet; Felder unbefüllt, keine Abnahme. Bestehender 18-Sekunden-Plan mit 1080×1920, 30 fps und 540 Frames und sechs stabile Caption-UTMs fortgeführt. Explizites Originalmanifest weiter ohne vier passende Takes, kein Render oder Socialwrite. Frische Metricool-Identität/Planung passend: sieben bestehende Objekte / 14 PENDING, keine exakten Doppel im Fenster. Heutige Kennzahl-/Flowreports datiert wiederverwendet, keine zweite Tagesabfrage. Inhaber-YT-Zielgruppe allgemein/nicht speziell für Kinder erhalten; konkretes Postflag offen.",
+      "nextAllowedStep": "Vier tatsächliche native Originaltakes samt exakter Ausführung/Motiven/Strom- und kommerziellen Film-/Bearbeitungsrechten in vorhandene Annahmekette eintragen. Neuen Sicht-/Kontinuitätsbogen mit echten Framebelegen und Prüfer ausfüllen; erst danach denselben Master schneiden und fertige MP4 auf Bild/Ton/Text/Crops abnehmen. Vor späterem Metricool-Push Produkt-/Bio-/Board-/Postflag-/Ledgerchecks frisch durchführen. Keine Altclip-/Websitevideo-Ersatzfreigabe oder erneute gleiche YT-Zielgruppenfrage.",
       "blockers": [
         "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
         "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
@@ -881,6 +881,11 @@
           "path": "dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
           "gitBlobSha": "9ad007a1648607313b84962fd8484164eb926d38",
           "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "readAt": "2026-11-01T18:14:26Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -929,8 +934,49 @@
             "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
             "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
           ]
+        },
+        {
+          "at": "2026-11-01T18:14:26Z",
+          "sourceRevision": 35,
+          "previousState": "blockiert",
+          "previousLastEvidence": "Denselben Master luxe_sternenprojektor_master_20261018 fortgeführt; keine MP4 und keine neue kreative/rechtliche Freigabe. Projektor nativ/Storefront aktuell ACTIVE CHF 34.90, konkrete Variante 56197916361089/SKU CJ-1477820492730732544 verfügbar, untracked/CONTINUE/0 korrekt eingeordnet; aktuelles echtes Produktbild erneut gelesen und gesehen. Genaue Ausführung/Motive durch auswahl-offen weiter offen. Neuer konkreter Vorbereitungsschritt: bestehende freie Rechtereferenzfelder an tatsächlichen Lizenzgeber, Nutzungsumfang/Gebiet/Laufzeit/Kanäle und Hash jedes Originaltakes gebunden; unbefüllte Vorlage, kein Lizenzbeleg. Bestehender 18sPlan mit zwei Hooks/sechs stabilen UTMs erhalten, statt tägliche neue Clips zu erzeugen. Vier Originaltakes, Zuordnung und Rechte sowie dauerhaftes Register weiter unbestätigt. Aktuelle Metricool-Identität/Planung geprüft; keine neuen Socialwrites oder Registerinitialisierung. YouTube-Inhaberzielgruppe bereits geklärt, nur konkretes Postflag offen.",
+          "previousNextAllowedStep": "Tatsächliche vier Originaldateien und ausführungsspezifische Motiv-/Strombelege anhand des bestehenden Originaltake-Prüfers und der neuen datei-/lizenzgebergebundenen Rechtebelegvorlage prüfen. Erst mit belegten kommerziellen Film-/Bearbeitungs-/Werberechten denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation Produkt-/Bio-/Board-/Postflag-/Ledger-/Kanalchecks frisch durchführen; keine Altclip- oder Websitevideo-Ersatzfreigabe.",
+          "previousBlockers": [
+            "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+            "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
+          ],
+          "previousBelegArt": "LOKAL_GEPRUEFTER_ENTWURF/GEMESSENE_QUELLEN/KEINE_PRODUKTIVE_INTEGRATION",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousPreviewUrl": null
         }
-      ]
+      ],
+      "visualAcceptanceDraft": {
+        "path": "dropship/codex-handoff-20261018/TAKE-SICHTABNAHME-20261101-R36.json",
+        "state": "DRAFT_UNFILLED_NOT_APPROVAL",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "readAt": "2026-11-01T18:14:26Z"
+        }
+      },
+      "lastPlanningCheck": {
+        "brandId": 6227837,
+        "timezone": "Europe/Zurich",
+        "from": "2026-11-01T18:58:02",
+        "to": "2026-11-08T18:58:02",
+        "existingPosts": 7,
+        "providerPendingStates": 14,
+        "ownWrites": 0,
+        "exactDuplicatesInWindow": false,
+        "historicalMasterLedger": "unknown_not_initialised",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "readAt": "2026-11-01T18:14:26Z"
+        }
+      }
     },
     {
       "id": "dns-four-approved-20261018",
@@ -1192,17 +1238,18 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "bewertungen_und_fr_live_verifiziert",
+      "state": "live_verifiziert_achtprodukte_entwurf_bereit",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "LIVE_OEFFENTLICH_GEPRUEFT_KEIN_EIGENER_PUBLISH",
-      "lastEvidence": "01.11.2026: Frische native Rollen und separate öffentliche Browserkontexte bestätigen, dass der frühere Bewertungs-/FR-Entwurf 212971061639 inzwischen MAIN ist. Öffentliche DE- und FR-Rootseite liefern HTTP200 mit drei Originalzitaten und passenden Bewertungs-/Startseitenüberschriften. Eigene Tätigkeit ist Gegenprüfung; Ausführender/Publikationszeitpunkt unbekannt, kein eigener Publish. Neue Sticker-UI liegt separat in der aus diesem aktuellen MAIN erstellten Kopie 212978598279. Bisherige Produkt-/Zitat-/Preis-/Medienquellen und übrige R34-Grenzen erhalten.",
-      "previewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews",
-      "nextAllowedStep": "Bestätigte öffentliche Bewertungs-/FR-Startseite erhalten. Neue Sticker-UI separat im Entwurf 212978598279 prüfen/veröffentlichen, keine ältere Kopie mit Rückschritten publizieren. Weitere FR-Katalog-/Themeübersetzung belegbezogen; keine EN-/IT-Aktivierung.",
+      "belegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite.",
+      "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
+      "nextAllowedStep": "Geprüften kombinierten Entwurf 212978598279 mit Sticker-Einstieg und acht zusätzlichen Startseitenkarten über legitimen Shopify-Admin veröffentlichen und öffentlich frisch mobil/Desktop prüfen. Bestehende Websitefreigabe nicht erneut verlangen. Keine ältere Kopie publizieren; Produkt-/Versand-/Konto-/App-/Cookiequellen erhalten.",
       "blockers": [
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
-        "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert."
+        "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert.",
+        "Neue acht Produktkarten liegen nur im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Writes und Veröffentlichung; vorhandener öffentlicher Bewertungs-/FR-Stand bleibt erhalten."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -1354,6 +1401,11 @@
           "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
           "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
           "readAt": "2026-11-01T17:51:14Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "readAt": "2026-11-01T18:14:26Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1527,6 +1579,21 @@
           "previousBelegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
           "previousLastEvidenceDate": "2026-11-01",
           "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews"
+        },
+        {
+          "at": "2026-11-01T18:14:26Z",
+          "sourceRevision": 35,
+          "previousState": "bewertungen_und_fr_live_verifiziert",
+          "previousLastEvidence": "01.11.2026: Frische native Rollen und separate öffentliche Browserkontexte bestätigen, dass der frühere Bewertungs-/FR-Entwurf 212971061639 inzwischen MAIN ist. Öffentliche DE- und FR-Rootseite liefern HTTP200 mit drei Originalzitaten und passenden Bewertungs-/Startseitenüberschriften. Eigene Tätigkeit ist Gegenprüfung; Ausführender/Publikationszeitpunkt unbekannt, kein eigener Publish. Neue Sticker-UI liegt separat in der aus diesem aktuellen MAIN erstellten Kopie 212978598279. Bisherige Produkt-/Zitat-/Preis-/Medienquellen und übrige R34-Grenzen erhalten.",
+          "previousNextAllowedStep": "Bestätigte öffentliche Bewertungs-/FR-Startseite erhalten. Neue Sticker-UI separat im Entwurf 212978598279 prüfen/veröffentlichen, keine ältere Kopie mit Rückschritten publizieren. Weitere FR-Katalog-/Themeübersetzung belegbezogen; keine EN-/IT-Aktivierung.",
+          "previousBlockers": [
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
+            "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert."
+          ],
+          "previousBelegArt": "LIVE_OEFFENTLICH_GEPRUEFT_KEIN_EIGENER_PUBLISH",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews"
         }
       ],
       "followUpFindings": [
@@ -1602,6 +1669,27 @@
           "it"
         ],
         "ownPublication": false
+      },
+      "pendingHomepageUpdate": {
+        "themeId": "212978598279",
+        "state": "UNPUBLISHED_NATIVE_VERIFIED",
+        "verifiedAt": "2026-11-01T18:14:26Z",
+        "newProductCards": 8,
+        "sourceMainThemeId": "212971061639",
+        "changedFiles": [
+          "sections/luxe-edit-home.liquid",
+          "assets/luxe-edit.css",
+          "templates/index.json",
+          "locales/de.json",
+          "locales/en.default.json",
+          "locales/fr.json"
+        ],
+        "nativeCoverage": "26 basis +9 targeted followups +2CTA; original main26/35 retained",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "readAt": "2026-11-01T18:14:26Z"
+        }
       }
     },
     {
@@ -2692,6 +2780,17 @@
         "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
         "readAt": "2026-11-01T17:51:14Z"
       }
+    },
+    {
+      "revision": 36,
+      "at": "2026-11-01T18:14:26Z",
+      "actor": "codex",
+      "action": "Aktuellen Startseitenauftrag und bestehenden Abendcheck zusammen fortgeführt. Acht echte product_list-Karten im vorhandenen UNPUBLISHED-Entwurf gespeichert und begrenzt nativ geprüft; kein all_products-Limitrisiko oder Publish. Shopify/Metricool-Identität und Siebentageplanung frisch, heutige Kennzahl-/Flowreports wiederverwendet. Denselben Projektor-Master mit konkretem Sicht-/Kontinuitätsbogen fortgeführt, kein Film/Render/Socialwrite. Genau ein bestehender Welcome-Service-Diff bleibt Freigabeentwurf. Konsolidierte Tagestabelle und Abendpaket gespeichert. Zwei Tasks fortgeschrieben, vierzehn unverändert; 16 IDs/Historien, erfüllter Kauf-Watch, Versand/Konto und bestehende Tages-/Automationsgrenzen erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+        "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+        "readAt": "2026-11-01T18:14:26Z"
+      }
     }
   ],
   "salesGoal": {
@@ -2849,11 +2948,11 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "096ff043c571839ca595abdd4b7d267273942645",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r35",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r36",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 35,
-    "snapshotNote": "R35 enthält Sticker-Fortschritt und aktuelle MAIN-Gegenprobe; R33-Übergabe und R4 bleiben datierte Originale, keine Claude-Quittung."
+    "latestCanonicalRevision": 36,
+    "snapshotNote": "R36 enthält zusätzliche Startseitenkarten und Abendpaket; R33/R4 bleiben datierte Originale, tatsächlicher Claude-Empfang unbekannt."
   }
 }
