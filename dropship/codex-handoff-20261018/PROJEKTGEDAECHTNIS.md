@@ -113,3 +113,19 @@ Genau ein [Welcome-Service-Diff](WELCOME-SERVICE-20261101.diff) bleibt zur Freig
 
 Arbeitsstand Revision 17 erhält alle 16 Aufgaben-IDs und die vollständige Historie. Andere Shop-/Designstudio-/Merchant-/Codeaufgaben bleiben unverändert offen; dieser Lauf veröffentlicht kein Theme. Claude-Kenntnisnahme bleibt unbekannt. Nächste Arbeit: passende native Originaltakes und Rechte prüfen, konkreten Welcome-Diff beurteilen und den nativen Ads-Kaufzielbeleg beschaffen; keine Wiederholung des erfüllten Kauf-Watchs.
 
+
+
+
+## 01.11.2026 – Selbst gestalten, Bewertungen und mobile Website fortgeführt
+
+Die ausdrücklichen Inhaberaufträge «online stellen», «mache autonom weiter», vollständige Printful-Produkte und Varianten, Merchant-Fix und mobile Gestaltung sind massgebend. Ältere Hinweise, erst erneut eine Veröffentlichungsgenehmigung einzuholen, sind für diesen konkreten Umfang überholt. Die technische Grenze bleibt: Der verbundene Shopify-Zugang blockiert MAIN-Dateiwrites und Theme-Publikation; Vorschau 212752499079 ist weiterhin UNPUBLISHED, MAIN 212656488839 unverändert.
+
+572 Lieferantenmodelle / 13’160 Originalvarianten / 177 Kategorien als vollständige Quellenreferenz in der Vorschau; 52 Datenassets nativ bestätigt. Echte Farb-, Grössen- und Materialwahl sowie Bilder; aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten, 7 mehrfach belegte IDs mit expliziter Angebotswahl. Alle 31 haben bestätigt 0 Bewertungen: «Noch keine Bewertungen»; spätere echte Sterne und Anzahl dynamisch, unbekannte Werte verborgen. Suchkonflikt «tasse» unter T-Shirts mit bewusst wählbarer globaler Suche lösbar, &amp;-Anzeige korrigiert. Quellenwiderspruch beim Material mit 102% kenntlich gemacht; keine erfundene Korrektur. Mobile Startseite im Stil der App mit echten Preisen und Zielen weiterentwickelt. Inline-Editor in der Vorschau gegen fehlerhafte Uploads und Variantenwahl abgesichert; 6 native Fälle mit simulierten POSTs, keine echte Bestellung.
+
+Kein vollständig kaufbarer Shop mit 572 Produkten behauptet: kontrollierter POD-Bulk-Read mit 492 Rootprodukten / 2146 Objekten COMPLETED (Job 12890114032007), aber Exportlinks vom Connector blockiert; ganze SKU-Matrix unbekannt. CH-Versand- und Technikkosten, Original-EDM-Laufzeit und alle Druckstellenübergaben fehlen; 57 Varianten über dem bisherigen Preisdeckel erhalten. Keine neuen Produkte oder Varianten und keine Shoppreisänderungen.
+
+Neuere Merchant-CSV mit 53’333 IDs mit fehlendem Preis; beide Dateien vollständig geprüft. 18 exakte positive CHF-Kandidaten vorbereitet, kein Feedwrite. Quelle nach MCP-Timeout unbekannt, Connector ohne Schreibaktion. Das ist ein technischer Blocker, keine fehlende erneute Freigabe.
+
+[Arbeitsbericht](SELBSTGESTALTEN-WEBSITE-20261101.md) · [Belege](SELBSTGESTALTEN-BELEGE-20261101.json) · [Theme-Diff](SELBSTGESTALTEN-THEME-20261101.patch) · [Importabgleich](SELBSTGESTALTEN-IMPORT-20261101.md) · [Merchant](MERCHANT-PREISPRUEFUNG-20261101.md).
+
+Alle 16 Aufgaben-IDs und Historien erhalten. Kaufziel weiterhin ERREICHT, kein weiterer Watch-Check; Tageskennzahlen und Flows nicht wiederholt. Keine weitere Automation, Zeitplan-, Budget-, DNS- oder Flowänderung, Kundenansprache oder Social-Publikation. Versandgrenzen CHF 50 / CHF 45 und Kundendomäne erhalten. Claude-Kenntnisnahme unbekannt.
