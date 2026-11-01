@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 46
+
+[Beauty-/Sportbilder und Claude R46](BEAUTY-SPORT-BILDER-20261101-R46.md) · [Finale Hashes, Deltas und Nachweise](BEAUTY-SPORT-BILDER-20261101-R46.json).
+
+Beauty & Pflege und Sport haben zwei neue illustrative Bilder: ruhige Pflegeszene und Trainingsmotiv ohne Werbeschrift/Logos. Beide Motive konsistent in Entdecken-Karten, denselben zwei Mini-Kacheln und Kategorieübersicht. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich, Section und Directory-Snippet im bestehenden UNPUBLISHED-Entwurf212978598279 nativ exakt bestätigt. Keine globalen Collection-Bilder oder Produktdaten verändert, kein CSS/JS/Locale-Write.
+
+41 begrenzte Bedingungen in echter Vorschau auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Schutz blockierte110andereRequests,13Fetchfehler protokolliert; keineCheckout-/Tracking-/Vollthemeabnahme. Liquid-Validator VALID mit bestehenden CDN-/Resolverhinweisen, SchemaCache verwendet. Bilder belegen keine konkreten SKUs, Materialien, Gesundheitswirkung, Preise oder Lieferumfänge.
+
+R46 hat für sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid Vorrang; R45-CSS und alle übrigen R45/R44-Änderungen erhalten, insbesondere Geschenk-Karussell/Preisfilter24.99/49.99 sowie Collage/Banner/52Referenzen. Bestehende Websitefreigabe gilt. Vor Publish vollständigen frischen Theme-Diff/Identität prüfen und denselben Entwurf über legitimen fähigen Zugriff veröffentlichen, danach tatsächlichen MAIN und öffentlicheDE/FR-Mobil-/Desktopbilder bestätigen. Connector sperrt Theme-Publish/MAIN-Writes; keineUmgehung/neueKopie/erneute gleicheFreigabefrage. MAINunverändert, keinPublish. Claude-Einstieg aufR46; tatsächlicherEmpfang unbekannt.
+
+EinHomepageTask fortgeführt,16andereTasks undalle17IDs/Historien erhalten. R43-Zwei-Text-Freigabe bleibt separat offen. Versand/Konto, Tagesgrenzen und Kauf-Watch-Ende erhalten; keineReports/Social-/Produkt-/Collectionregel-/Shopkonfigurations-/Frequenzänderungen. Lokaler Spiegel memory/snapshots/2026-11-01-r46.
+
 ## Aktueller Stand – 01.11.2026, Revision 45
 
 [Entdecken-Karussell / Claude R45](ENTDECKEN-KARUSSELL-20261101-R45.md) · [Finale Hashes, Deltas und Belege](ENTDECKEN-KARUSSELL-20261101-R45.json).
