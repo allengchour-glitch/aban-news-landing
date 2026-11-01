@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 43
+
+[Sichtbarkeit / konkreter Freigabeentwurf](SICHTBARKEIT-20261101-R43.md) · [Aktuelle Prüf-/Diffbelege](SICHTBARKEIT-20261101-R43.json) · [Bestehende Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
+
+Neuer Auftrag «sichtbarkeit maximieren»: Vier öffentliche HTML-Seiten, robots.txt/Sitemap und drei native Kategorien eng geprüft. Shop/Metricool samt sechs Kanälen frisch bestätigt. Seiten erreichbar, Canonicals/H1 vorhanden, kein noindex im Haupt-Head; Google-Indexierung, Rankings und Wirkung unbekannt. Kein Vollkatalogscan oder neuer Tagesreport.
+
+Neuer konkreter Entwurf: Genau zwei Bestseller-Texte (erster Bodyabsatz und seo.description) ersetzen unpassende Schmuck-/Material-/Beliebtheitsbeispiele durch eine sachliche Auswahlbeschreibung. Alle zehn nativen Produkt-Handles stimmen mit den öffentlichen Hauptlinks überein. Spezifische Freigabe angefragt, Antwort offen; kein Shopwrite. Vier alte Technik-/Wohnen-Fragmente frisch auf aktuelle native Originalfelder gebunden, weiterhin separat unfreigegebene Entwürfe; nicht als neue Umsetzung zählen.
+
+R40-Entwurf212978598279 weiterhin UNPUBLISHED; sieben R40-Dateien metadatahashgleich, sechs gelieferte MAIN-Dateien unterscheiden sich. Echte Selbstgestalten-Angebote sind bereits serverseitig verlinkt, keine doppelte Liste ergänzen. Bestehende Websitefreigabe gilt; aktueller Connector sperrt Theme-Publikation/MAIN-Writes. Claude soll mit legitimem fähigem Zugang vollständigen aktuellen Diff prüfen, denselben Entwurf veröffentlichen und DE/FR mobil/Desktop abnehmen. Kein neues Approval-Reject oder App-Grant-Fehler behauptet. R41-Merchantquelle/Writer bleiben technisch offen, frühere Timeoutprobe nicht wiederholt.
+
+Neue stabile Aufgabe seo-landing-visibility-20261101 angelegt, alle 16 bisherigen Tasks exakt unverändert: jetzt 17 IDs, Historien erhalten. R42-Motivtexte, R41-Bildfix, R40-Websiteentwurf und R39-Threads/Register erhalten. Keine operative Geschäfts-/Social-/Feed-/Einstellungsänderung, Kauf-Watch-/Kennzahl-/Flow-Abfrage oder neue Automation/Frequenz. Lokaler Spiegel memory/snapshots/2026-11-01-r43; tatsächlicher Claude-Empfang unbekannt.
+
 ## Aktueller Stand – 01.11.2026, Revision 42
 
 [Beschreibungsexport / zwei bestätigte Ergänzungen](BESCHREIBUNGEN-CSV-20261101-R42.md) · [Vorher-/Nachher-/Bildbelege](BESCHREIBUNGEN-CSV-20261101-R42.json) · [Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
