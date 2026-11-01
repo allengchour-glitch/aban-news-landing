@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 01.11.2026, Revision 41
+
+[CSV-Reparaturbericht](MERCHANT-CSV-REPARATUR-20261101-R41.md) · [Prüf-/Änderungsbelege](MERCHANT-CSV-REPARATUR-20261101-R41.json) · [Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
+
+Drei neue CSV-Exporte vollständig geprüft. Eine echte Shopify-Korrektur ist nativ und öffentlich bestätigt: weisse Uhr, Variante 67814685475207, passendes Originalfoto 655×655 statt 214×349; Preis, Status, Tags und Inventar unverändert. Google-Neubewertung bleibt unbekannt. Preis-/Verfügbarkeitsquelle und Merchant-Writer sind technisch blockiert: neue Einzelabfrage mit MCP-Timeout, keine Schreibaktion verfügbar. Kein leerer/Null-/404-Befund daraus.
+
+2’004 Preis-Offer-IDs, 1’510 DE-Versand-Listings und 25’541 CSS-Kapazitäts-Listings im Export getrennt; Zeilen sind keine Produktzählung oder aktuelle globale Ablehnung. Geprüfte Preis-Hose ist DRAFT und bereits bepreist; nicht aktivieren. Versandpolicy aktuell CH/LI: nur unerwünschtes ZiellandDE nach Quellenprüfung bereinigen, keine DE-Tarife erfinden und keine deutsche Sprache oder ganzeQuelle löschen. CSS betrifft in diesem Block nur Anzeigen/Remarketing. Andere Bilder, genaueGoogle-URL/Crawl und Richtlinienhinweise bleiben einzeln zu prüfen. Lokale Prüf-CSV ist kein Feedupload.
+
+Ein vorhandener Merchanttask fortgeführt, 15 andere Tasks und dieselben 16 IDs/Historien erhalten. R40-Entwurf und R39-Threads-Termin/Register bleiben unverändert; keine neuen Kennzahl-/Flow-/Kauf-Watch-Abfragen oder Automationen. Lokaler Spiegel memory/snapshots/2026-11-01-r41. Claude muss aktuelle vier Quellen frisch lesen; tatsächlicher Empfang unbekannt.
+
 ## Aktueller Stand – 01.11.2026, Revision 40
 
 [Claude-Übergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md) · [Selbstgestalten-Bericht](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.md) · [finale Nachweise](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json).
