@@ -1,0 +1,283 @@
+--- a/assets/luxe-clothing.js
++++ b/assets/luxe-clothing.js
+@@ -60,6 +60,57 @@
+     'back print':'position_back', 'left sleeve':'position_left_sleeve', 'right sleeve':'position_right_sleeve',
+     'left chest':'position_left_chest', 'center chest':'position_center_chest'};
+ 
++
++  // Convert explicit inch measurements for display. Raw option values and IDs remain unchanged.
++  const createMetricFormatter = locale => {
++    const formatter = new Intl.NumberFormat(/^de(?:-|$)/i.test(locale || '') ? 'de-DE' : (locale || 'en'), {maximumFractionDigits:2,useGrouping:false});
++    const number = String.raw`(?:\d+\s+\d+\/\d+|\d+\/\d+|(?:\d+(?:[.,]\d+)?|[.,]\d+)[½¼¾⅛⅜⅝⅞]?|[½¼¾⅛⅜⅝⅞])`;
++    const unit = String.raw`(?:["″”]|(?:inches|inch|Zoll|in)(?![\p{L}\p{N}_]))`;
++    const measurement = new RegExp(String.raw`(?<![\p{L}\p{N}_/.,+–−—-])(?:${number}\s*(?:${unit})?\s*[x×✕]\s*){0,2}${number}\s*${unit}(?:\s*\(([^()]*\b(?:cm|mm)\b[^()]*)\))?`, 'giu');
++    const removeUnit = new RegExp(unit, 'giu');
++    const redundantImperial = new RegExp(String.raw`((?:${number}\s*(?:cm|mm)?\s*[x×✕]\s*){0,2}${number}\s*(?:cm|mm))\s*\((?:${number}\s*(?:${unit})?\s*[x×✕]\s*){0,2}${number}\s*${unit}\)`, 'giu');
++    const metricMeasurement = new RegExp(String.raw`^\s*(?:${number}\s*(?:cm|mm)?\s*[x×✕]\s*){0,2}${number}\s*(?:cm|mm)\s*$`, 'iu');
++    const rangeMeasurement = new RegExp(String.raw`(?<![\p{L}\p{N}_/.,+–−—-])(${number})\s*(?:${unit})?\s*[-–—]\s*(${number})\s*${unit}(?:\s*\(([^()]*\b(?:cm|mm)\b[^()]*)\))?`, 'giu');
++    const metricRangeMeasurement = new RegExp(String.raw`^\s*${number}\s*(?:cm|mm)?\s*[-–—]\s*${number}\s*(?:cm|mm)\s*$`, 'iu');
++    const fractions = {'½':.5,'¼':.25,'¾':.75,'⅛':.125,'⅜':.375,'⅝':.625,'⅞':.875};
++    const numeric = value => {
++      const text=value.trim().replace(',','.');
++      const vulgar=text.match(/^(\d*(?:\.\d+)?)([½¼¾⅛⅜⅝⅞])$/);
++      if(vulgar) return Number(vulgar[1] || 0)+fractions[vulgar[2]];
++      const fraction=text.match(/^(?:(\d+)\s+)?(\d+)\/(\d+)$/);
++      if(fraction) return Number(fraction[3])>0 ? Number(fraction[1] || 0)+Number(fraction[2])/Number(fraction[3]) : NaN;
++      return Number(text);
++    };
++    const cache=new Map();
++    return value => {
++      const source=string(value);if(!source)return source;if(cache.has(source))return cache.get(source);
++      const result=source.replace(redundantImperial,'$1').replace(rangeMeasurement,(whole,first,last,metric,offset,input)=>{
++        if(/(?:^|[(:=•])\s*[-−]\s*$/.test(input.slice(0,offset)))return whole;
++        if(metric!==undefined && (metricMeasurement.test(metric) || metricRangeMeasurement.test(metric)))return metric.trim();
++        const values=[numeric(first),numeric(last)];
++        if(values.some(value=>!Number.isFinite(value) || value<=0) || values[0]>values[1])return whole;
++        return values.map(value=>formatter.format(value*2.54)).join('–')+' cm';
++      }).replace(measurement,(whole,metric,offset,input)=>{
++        if(/(?:^|[(:=•])\s*[-−]\s*$/.test(input.slice(0,offset)) || /[\d\"″”]\s*[-–—]\s*$/.test(input.slice(0,offset)) || new RegExp(String.raw`^\s*[-–—]\s*${number}`,'u').test(input.slice(offset+whole.length)))return whole;
++        if(metric!==undefined && metricMeasurement.test(metric))return metric.trim();
++        const imperial=metric===undefined?whole:whole.slice(0,whole.lastIndexOf('('));
++        const values=imperial.replace(removeUnit,'').split(/[x×✕]/).map(numeric);
++        if(values.some(value=>!Number.isFinite(value) || value<=0)) return whole;
++        return values.map(value=>formatter.format(value*2.54)).join(' × ')+' cm';
++      });
++      cache.set(source,result);return result;
++    };
++  };
++  const formatShopOptionValues = target => {
++    const locale=target.documentElement?.lang || target.ownerDocument?.documentElement.lang || 'de';
++    const metric=createMetricFormatter(locale);
++    const values=[...(target.matches?.('.lxc-option-values')?[target]:[]),...target.querySelectorAll('.lxc-option-values')];
++    values.forEach(container=>{
++      const walker=document.createTreeWalker(container,NodeFilter.SHOW_TEXT);let node;
++      while((node=walker.nextNode()))node.nodeValue=metric(node.nodeValue);
++    });
++  };
++
+   function initialize(root) {
+     if (root.dataset.initialized) return;
+     root.dataset.initialized = 'true';
+@@ -68,13 +119,15 @@
+     const labels = decodeLabels(config.labels || {});
+     const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replaceAll(`[${name}]`, String(value)), string(labels[key]) || key);
+     const german = /^de(?:-|$)/i.test(config.locale || '');
++    const metricText = createMetricFormatter(config.locale || 'de');
++    const metricTitle = value => metricText(value).replace(/\(\s*in\s*\)(?=\s*(?:$|\|))/gi,'(cm)');
+     const lookupKey = value => normal(value).replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+     const normalizeNames = names => Object.fromEntries(Object.entries(names || {}).map(([key,value])=>[lookupKey(key),value]));
+     const categoryTranslations = normalizeNames(labels.category_names);
+     const colorTranslations = normalizeNames(labels.color_names);
+     const titleFor = category => german && categoryTranslations[lookupKey(category.title)] || string(category.title);
+     const colorName = value => german && colorTranslations[lookupKey(value)] || string(value);
+-    const titleForProduct = product => german && string(product.titleDe) || product.title;
++    const titleForProduct = product => metricTitle(german && string(product.titleDe) || product.title);
+     const grid = root.querySelector('[data-lcl-grid]');
+     const message = root.querySelector('[data-lcl-message]');
+     const result = root.querySelector('[data-lcl-results]');
+@@ -134,7 +187,7 @@
+     list(config.shopVariantOffers).forEach(offer=>{if(!offer || !id(offer.printfulVariantId))return;const key=id(offer.printfulVariantId);if(!shopOffersByPrintful.has(key))shopOffersByPrintful.set(key,[]);shopOffersByPrintful.get(key).push(offer);});
+     const validatedOffer = offer => {
+       if(!offer || offer.currency!=='CHF' || !string(offer.priceFormatted).trim() || !id(offer.variantId) || Number(offer.variantId)<=0 || !id(offer.shopifyProductId) || Number(offer.shopifyProductId)<=0) return null;
+-      try {const url=new URL(string(offer.url),location.href);if(url.origin!==location.origin || url.username || url.password || !/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?products\/[^/]+\/?$/i.test(url.pathname) || url.searchParams.get('variant')!==id(offer.variantId)) return null;return {...offer,title:decodeEntities(offer.title),priceFormatted:decodeEntities(offer.priceFormatted),url:url.href};} catch{return null;}
++      try {const url=new URL(string(offer.url),location.href);if(url.origin!==location.origin || url.username || url.password || !/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?products\/[^/]+\/?$/i.test(url.pathname) || url.searchParams.get('variant')!==id(offer.variantId)) return null;return {...offer,title:metricText(decodeEntities(offer.title)),priceFormatted:decodeEntities(offer.priceFormatted),url:url.href};} catch{return null;}
+     };
+     const offersFor = variant => {
+       const rows=shopOffersByPrintful.get(id(variant?.id)) || [], grouped=new Map();let invalid=false;
+@@ -199,7 +252,7 @@
+       const colors=unique([color,...base.filter(p=>matchesColorSize(p,'',size)).flatMap(p=>colorsFor(p).map(c=>colorValue(c)))]).sort((a,b)=>colorName(a).localeCompare(colorName(b),config.locale||'de'));
+       colorFilter.replaceChildren(new Option(t('all_colors'),''),...colors.map(value=>new Option(colorName(value),value))); colorFilter.value=colors.includes(color)?color:'';
+       const sizes=unique([size,...base.flatMap(p=>colorFilter.value ? list(p.colorSizes?.[colorFilter.value]) : sizesFor(p))]).sort(sortSizes);
+-      sizeFilter.replaceChildren(new Option(t('all_sizes'),''),...sizes.map(value=>new Option(value,value))); sizeFilter.value=sizes.includes(size)?size:'';
++      sizeFilter.replaceChildren(new Option(t('all_sizes'),''),...sizes.map(value=>new Option(metricText(value),value))); sizeFilter.value=sizes.includes(size)?size:'';
+     };
+     const renderGroups = () => {
+       groupNav.replaceChildren(); groupSelect.replaceChildren();
+@@ -216,7 +269,7 @@
+     const renderCard = product => {
+       const card = el('article', 'lcl-card'); card.dataset.productId = id(product.id);
+       const image = button('', () => openDetails(product, card.querySelector('.lcl-card-cta')), 'lcl-card-image'); image.tabIndex = -1; image.setAttribute('aria-hidden','true');
+-      appendImage(image, string(product.image?.url || product.image), product.title);
++      appendImage(image, string(product.image?.url || product.image), titleForProduct(product));
+       const copy = el('div','lcl-card-copy');
+       if (product.brand) copy.append(el('p','lcl-brand', product.brand));
+       const category=categoryIds(product).includes(id(product.main_category_id)) ? categories.get(id(product.main_category_id)) : null;
+@@ -228,7 +281,7 @@
+         colors.slice(0,8).forEach(color => { const chip = el('span','lcl-card-color'); chip.title = colorName(colorValue(color)); chip.setAttribute('aria-label',chip.title); chip.append(swatch(color)); row.append(chip); });
+         if (colors.length > 8) row.append(el('span','lcl-more',t('more_colors',{count:colors.length-8}))); copy.append(row);
+       }
+-      if (sizes.length) copy.append(el('p','lcl-card-sizes',sizes.slice(0,9).join(' · ') + (sizes.length > 9 ? ' · ' + t('more_sizes',{count:sizes.length-9}) : '')));
++      if (sizes.length) copy.append(el('p','lcl-card-sizes',sizes.slice(0,9).map(metricText).join(' · ') + (sizes.length > 9 ? ' · ' + t('more_sizes',{count:sizes.length-9}) : '')));
+       if (!isDetailsKnown(product)) copy.append(el('p','lcl-small',t(product.detailStatus === 'error' ? 'details_error' : 'details_pending')));
+       if (product.is_discontinued === true) copy.append(el('p','lcl-small',t('discontinued')));
+       const cta = button(t('details'), () => openDetails(product, cta),'lcl-card-cta'); copy.append(cta); card.append(image,copy); return card;
+@@ -239,7 +292,7 @@
+       page = Math.max(1, Math.min(page, pages || 1));
+       grid.replaceChildren(...filtered.slice((page-1)*12,page*12).map(renderCard));
+       result.textContent = t('results',{count:filtered.length});
+-      const chosenFilters=[audience!=='all'?t(audience):'',group!=='all'&&categories.has(group)?titleFor(categories.get(group)):'',types.value&&categories.has(types.value)?titleFor(categories.get(types.value)):'',colorFilter.value?colorName(colorFilter.value):'',sizeFilter.value];
++      const chosenFilters=[audience!=='all'?t(audience):'',group!=='all'&&categories.has(group)?titleFor(categories.get(group)):'',types.value&&categories.has(types.value)?titleFor(categories.get(types.value)):'',colorFilter.value?colorName(colorFilter.value):'',metricText(sizeFilter.value)];
+       const active=unique(chosenFilters);activeFilters.replaceChildren();activeFilters.hidden=!active.length;
+       if(active.length){activeFilters.append(el('span','lcl-active-label',t('active_filters')));active.forEach(value=>activeFilters.append(el('span','lcl-filter-chip',value)));}
+       const conflict=!filtered.length && search.value.trim() && active.length;
+@@ -310,7 +363,7 @@
+       let selectedColor = selected ? colorKey(selected) : colors[0] ? colorKey(colors[0]) : '';
+       const visual = el('div','lcl-detail-visual'), photo = el('div','lcl-detail-image'), photoLabel = el('p','lcl-photo-label'); visual.append(photo,photoLabel);
+       const panel = el('div','lcl-detail-panel');
+-      const meta = el('p','lcl-detail-meta',[product.brand,product.model].filter(Boolean).join(' · ')); panel.append(meta);
++      const meta = el('p','lcl-detail-meta',[product.brand,metricTitle(product.model)].filter(Boolean).join(' · ')); panel.append(meta);
+       const priceBox=el('div','lcl-shop-price');priceBox.dataset.lclShopPrice='';panel.append(priceBox);
+       let priceChoiceVariant='',priceChoiceId='';
+       const renderPrice = () => {
+@@ -328,7 +381,7 @@
+       const materialGroup=el('fieldset','lcl-choices lcl-material-choices'),materialSelect=el('select','lcl-material-select');materialSelect.setAttribute('aria-label',t('material_select'));materialSelect.dataset.lclMaterialSelect='';materialGroup.append(el('legend','',t('material_select')),materialSelect,el('p','lcl-small',t('material_choice_hint')));
+       const unknownMaterial=new Option(t('material_unverified'),'');unknownMaterial.disabled=true;materialSelect.add(unknownMaterial);materialGroups.forEach((group,key)=>materialSelect.add(new Option(group.label,key)));
+       const materialLive=el('p','lcl-material-live');materialLive.setAttribute('aria-live','polite');materialLive.setAttribute('role','status');materialGroup.append(materialLive);
+-      if (titleForProduct(product)!==product.title) panel.append(el('p','lcl-small',t('original_name')+': '+product.title));
++      if (titleForProduct(product)!==product.title) panel.append(el('p','lcl-small',t('original_name')+': '+metricTitle(product.title)));
+       if (!known || !variants.length) panel.append(el('p','lcl-source-warning',t(product.detailStatus === 'error' ? 'details_error' : known ? 'no_variants' : 'details_pending')));
+       const colorGroup = el('fieldset','lcl-choices'); colorGroup.append(el('legend','',t('color'))); const colorButtons = el('div','lcl-color-buttons'); colorGroup.append(colorButtons);
+       const sizeGroup = el('fieldset','lcl-choices'); sizeGroup.append(el('legend','',t('size'))); const sizeButtons = el('div','lcl-size-buttons'); sizeGroup.append(sizeButtons);
+@@ -340,19 +393,25 @@
+       infoRow(t('techniques'),unique(list(product.techniques).map(tech=>techniqueNames[string(tech.key)] ? t(techniqueNames[tech.key]) : string(tech.display_name || tech.displayName || tech.key))));
+       infoRow(t('placements'),unique(list(product.files).filter(file=>!['preview','mockup'].includes(string(file.type)) && string(file.id)!=='preview').map(file=>positionNames[normal(file.title)] ? t(positionNames[normal(file.title)]) : string(file.title || file.type))));
+       modelInfo.append(el('p','lcl-small',t('geometry_note')));
+-      const description=plainText(product.description);
++      const description=metricText(plainText(product.description));
+       if(description){const info=el('details','lcl-description');info.append(el('summary','',t('model_description')),el('p','lcl-small',t('original_note')),el('div','lcl-description-text',description));modelInfo.append(info);}
+       const options=list(product.options).filter(option=>typeof option.title==='string' && option.values && typeof option.values==='object');
+       if(options.length){const info=el('details','lcl-description');info.append(el('summary','',t('catalogue_options')),el('p','lcl-small',t('options_note')));
+-        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:Object.values(option.values);const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);if(!texts.length)return;const row=el('div','lcl-option-reference');row.append(el('h4','',plainText(option.title)),el('p','',texts.map(plainText).join(' · ')));info.append(row);});modelInfo.append(info);}
++        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:Object.values(option.values);const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);if(!texts.length)return;const row=el('div','lcl-option-reference');row.append(el('h4','',metricText(plainText(option.title))),el('p','',texts.map(plainText).map(metricText).join(' · ')));info.append(row);});modelInfo.append(info);}
+       const dimensions=product.dimensions;
+-      if(dimensions && typeof dimensions==='object' && Object.keys(dimensions).length){const info=el('details','lcl-description');info.append(el('summary','',t('dimensions')));const rows=Object.entries(dimensions).filter(([,value])=>['number','string'].includes(typeof value));rows.forEach(([key,value])=>info.append(el('p','',key+': '+String(value))));if(rows.length)modelInfo.append(info);}
++      if(dimensions && typeof dimensions==='object' && Object.keys(dimensions).length){
++        const info=el('details','lcl-description');info.append(el('summary','',t('dimensions')));
++        const measurementKey=value=>string(value).toLocaleLowerCase().replace(/[\s\"″”]/g,'').replace(/[x✕]/g,'×');
++        const dimensionLabel=value=>{const raw=String(value),converted=metricText(raw);if(converted!==raw || /\b(?:cm|mm)\b/i.test(raw))return converted;const variant=variants.find(variant=>metricText(variant.size)!==variant.size && measurementKey(variant.size)===measurementKey(raw));return variant?metricText(variant.size):null;};
++        const rows=Object.entries(dimensions).filter(([,value])=>['number','string'].includes(typeof value)).map(([key,value])=>[dimensionLabel(key)||key,dimensionLabel(value)]).filter(([,value])=>value!==null);
++        rows.forEach(([key,value])=>info.append(el('p','',key===value?value:key+': '+value)));if(rows.length)modelInfo.append(info);
++      }
+       panel.append(modelInfo);
+       detailBody.append(visual,panel);
+       const update = () => {
+         const focusedSizeId = sizeButtons.contains(document.activeElement) ? document.activeElement.dataset.variantId : null;
+         const source = selected && imageUrl(selected.image) ? selected.image : string(product.image?.url || product.image);
+-        appendImage(photo,source,product.title + (selected?.color ? ' – '+selected.color : ''));
++        appendImage(photo,source,titleForProduct(product) + (selected?.color ? ' – '+selected.color : ''));
+         photoLabel.textContent = selected && imageUrl(selected.image) ? t('variant_image') : t('reference_image');
+         dialog.dataset.materialKey=materialKey(selected);materialSelect.value=materialGroups.has(materialKey(selected))?materialKey(selected):'';
+         renderPrice();
+@@ -361,8 +420,8 @@
+         sizeButtons.replaceChildren();
+         variants.filter(v=>colorKey(v)===selectedColor).sort((a,b)=>sortSizes(string(a.size),string(b.size))).forEach(variant=> {
+           if (!variant.size) return;
+-          const size = button(variant.size,()=>{selected=variant;update();},'lcl-size'); size.dataset.variantId=id(variant.id);size.setAttribute('aria-pressed',String(selected?.id===variant.id));
+-          if(variant.in_stock===false){size.classList.add('lcl-size--unavailable');size.setAttribute('aria-label',`${variant.size} · ${t('supplier_unavailable')}`);} sizeButtons.append(size);
++          const size = button(metricText(variant.size),()=>{selected=variant;update();},'lcl-size'); size.dataset.variantId=id(variant.id);size.setAttribute('aria-pressed',String(selected?.id===variant.id));
++          if(variant.in_stock===false){size.classList.add('lcl-size--unavailable');size.setAttribute('aria-label',`${metricText(variant.size)} · ${t('supplier_unavailable')}`);} sizeButtons.append(size);
+         });
+         if(focusedSizeId) Array.from(sizeButtons.children).find(node=>node.dataset.variantId===focusedSizeId)?.focus({preventScroll:true});
+         variantContent.replaceChildren();
+@@ -384,7 +443,7 @@
+         const group=materialGroups.get(materialSelect.value);if(!group)return;
+         const currentColor=colorValue(selected||{}),currentSize=string(selected?.size);
+         selected=group.variants.find(v=>colorValue(v)===currentColor && string(v.size)===currentSize) || group.variants.find(v=>string(v.size)===currentSize) || group.variants.find(v=>colorValue(v)===currentColor) || group.variants[0];
+-        selectedColor=colorKey(selected);update();materialLive.textContent=t('material_selection_changed',{material:materialLabel(selected),color:colorName(colorValue(selected))||t('no_color'),size:string(selected?.size)||t('no_size')});
++        selectedColor=colorKey(selected);update();materialLive.textContent=t('material_selection_changed',{material:materialLabel(selected),color:colorName(colorValue(selected))||t('no_color'),size:metricText(string(selected?.size))||t('no_size')});
+       });
+       colors.forEach(color=>{const name=colorValue(color), choice=button('',()=>{
+         const currentSize=string(selected?.size);selectedColor=colorKey(color);const matching=variants.filter(v=>colorKey(v)===selectedColor);
+@@ -404,6 +463,7 @@
+     next.addEventListener('click',()=>{page++;render(true);});retry.addEventListener('click',load);
+     if ('IntersectionObserver' in window) {const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();load();}},{rootMargin:'250px'});observer.observe(root);}else load();
+   }
++  formatShopOptionValues(document);
+   document.querySelectorAll('[data-luxe-clothing]').forEach(initialize);
+-  document.addEventListener('shopify:section:load',event=>event.target.querySelectorAll('[data-luxe-clothing]').forEach(initialize));
++  document.addEventListener('shopify:section:load',event=>{formatShopOptionValues(event.target);event.target.querySelectorAll('[data-luxe-clothing]').forEach(initialize);});
+ })();
+--- a/assets/luxe-clothing.css
++++ b/assets/luxe-clothing.css
+@@ -20,3 +20,14 @@
+ 
+ .lcl-active-filters{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 0;font-size:12px}.lcl-active-filters[hidden]{display:none}.lcl-active-label{color:#625a50}.lcl-filter-chip{padding:5px 9px;background:#e9e3d9;border-radius:999px;color:#38332d;overflow-wrap:anywhere}.lcl-global-search{margin:0 0 20px}.lcl-global-search[hidden]{display:none}
+ 
++
++/* Original self-design cover images, kept separate from catalogue variants. */
++.lcl-header--with-cover{max-width:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,56px)}
++.lcl-header-copy{min-width:0}
++.lcl-cover-images{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:1fr 1fr;gap:14px;aspect-ratio:1.1;min-width:0}
++.lcl-cover-image{background:#eeeae3;position:relative;display:flex;overflow:hidden;align-items:center;justify-content:center;min-width:0;min-height:0;border-radius:4px;color:inherit;text-decoration:none}
++.lcl-cover-image--1{grid-row:span 2}
++.lcl-cover-image img{width:100%;height:100%;object-fit:contain;display:block;padding:14px}
++.lcl-cover-image span{position:absolute;left:16px;right:16px;bottom:12px;font-size:11px;line-height:1.4;color:#49453f;background:rgba(250,248,244,.94);padding:5px 7px;border-radius:2px;overflow-wrap:anywhere}
++.lcl-cover-image:focus-visible{outline:2px solid #63584a;outline-offset:4px}
++@media(max-width:900px){.lcl-header--with-cover{grid-template-columns:minmax(0,1fr);gap:24px}.lcl-cover-images{aspect-ratio:1.45;gap:10px;max-width:640px;width:100%}.lcl-cover-image img{padding:9px}.lcl-cover-image span{font-size:9px;left:8px;right:8px;bottom:8px;padding:3px 5px}}
+--- a/sections/luxe-clothing.liquid
++++ b/sections/luxe-clothing.liquid
+@@ -2,10 +2,15 @@
+ <script src="{{ 'luxe-product-reviews.js' | asset_url }}" defer></script>
+ <script src="{{ 'luxe-clothing.js' | asset_url }}" defer></script>
+ <section class="lcl-catalog" data-luxe-clothing aria-labelledby="LuxeClothingTitle-{{ section.id }}">
+-  <header class="lcl-header">
+-    <p class="lcl-eyebrow">{{ 'luxe_clothing.eyebrow' | t }}</p>
+-    <h1 id="LuxeClothingTitle-{{ section.id }}">{{ 'luxe_clothing.heading' | t }}</h1>
+-    <p class="lcl-intro">{{ 'luxe_clothing.intro' | t }}</p>
++  {%- capture cover_images -%}{%- render 'luxe-selfdesign-cover' -%}{%- endcapture -%}
++  {%- assign cover_images = cover_images | strip -%}
++  <header class="lcl-header{% if cover_images != blank %} lcl-header--with-cover{% endif %}">
++    <div class="lcl-header-copy">
++      <p class="lcl-eyebrow">{{ 'luxe_clothing.eyebrow' | t }}</p>
++      <h1 id="LuxeClothingTitle-{{ section.id }}">{{ 'luxe_clothing.heading' | t }}</h1>
++      <p class="lcl-intro">{{ 'luxe_clothing.intro' | t }}</p>
++    </div>
++    {{ cover_images }}
+   </header>
+   <p class="lcl-notice">{{ 'luxe_clothing.notice' | t }}</p>
+   <div class="lcl-discovery">
+--- a/snippets/luxe-selfdesign-cover.liquid
++++ b/snippets/luxe-selfdesign-cover.liquid
+@@ -0,0 +1,42 @@
++{% doc %}
++  Restores the original self-design cover collage using current eligible Shopify products.
++  The collage is separate from catalogue variant images and does not change a selection.
++  @example
++  {% render 'luxe-selfdesign-cover' %}
++{% enddoc %}
++{%- assign cover_count = 0 -%}
++{%- capture cover_tiles -%}
++  {%- assign cover_handles = 'unisex-t-shirt-selbst-gestalten,bio-jutebeutel-selbst-gestalten,keramik-tasse-selbst-gestalten' | split: ',' -%}
++  {%- for cover_handle in cover_handles -%}
++    {%- assign cover_product = all_products[cover_handle] -%}
++    {%- capture cover_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: cover_product -%}{%- endcapture -%}
++    {%- assign cover_allowed = cover_allowed | strip -%}
++    {%- if cover_allowed == 'true' and cover_product.featured_image -%}
++      {%- assign cover_count = cover_count | plus: 1 -%}
++      <a class="lcl-cover-image lcl-cover-image--{{ cover_count }}" href="{{ cover_product.url }}?view=luxe-studio">
++        {%- assign cover_alt = cover_product.featured_image.alt | default: cover_product.title -%}
++        {{ cover_product.featured_image | image_url: width: 900 | image_tag: widths: '240, 360, 540, 720, 900', sizes: '(min-width: 900px) 36vw, 65vw', loading: 'eager', alt: cover_alt }}
++        <span>{{ cover_product.title | remove: ' – Selbst gestalten' | escape }}</span>
++      </a>
++    {%- endif -%}
++  {%- endfor -%}
++{%- endcapture -%}
++{%- if cover_count > 0 -%}
++  <div class="lcl-cover-images" data-luxe-selfdesign-cover aria-label="{{ 'luxe_category.image_label' | t | escape }}">
++    {{ cover_tiles }}
++    <script>
++      (() => {
++        const root = document.currentScript.closest('[data-luxe-selfdesign-cover]');
++        const theme = new URLSearchParams(location.search).get('preview_theme_id');
++        if (!root || !/^\d+$/.test(theme || '')) return;
++        root.querySelectorAll('a[href]').forEach(link => {
++          const target = new URL(link.href, location.href);
++          if (target.origin === location.origin && target.searchParams.get('view') === 'luxe-studio') {
++            target.searchParams.set('preview_theme_id', theme);
++            link.href = target.href;
++          }
++        });
++      })();
++    </script>
++  </div>
++{%- endif -%}
