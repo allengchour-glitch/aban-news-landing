@@ -1,0 +1,146 @@
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -21,15 +21,24 @@
+   </header>
+   <main id="lx-content">
+     <section class="lx-hero" aria-labelledby="lx-hero-title">
++      <div class="lx-mobile-hero-media lx-mobile-only" data-hero-media>
++        <img src="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" width="720" height="1280" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
++        <video muted playsinline loop preload="none" data-hero-video data-src="https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0" poster="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" aria-hidden="true" tabindex="-1"></video>
++        <button type="button" class="lx-hero-video-control" data-hero-toggle data-play-label="{{ 'luxe_home.hero.play' | t | escape }}" data-pause-label="{{ 'luxe_home.hero.pause' | t | escape }}" hidden>{{ 'luxe_home.hero.play' | t }}</button>
++      </div>
+       <div class="lx-hero-copy">
+         <p class="lx-eyebrow"><span class="lx-dot"></span> {{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
+-        <h1 id="lx-hero-title">{{ 'luxe_home.dein_raum_4d8b3' | t }}<br>{{ 'luxe_home.dein_84624' | t }} <em>{{ 'luxe_home.moment_afc9e' | t }}</em></h1>
+-        <p class="lx-hero-description">{{ 'luxe_home.manchmal_beginnt_etwas_besondere_c2d36' | t }}</p>
+-        <a class="lx-button" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544">{{ 'luxe_home.projektor_entdecken_6c4fb' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+-        <a class="lx-text-link" href="#lx-worlds">{{ 'luxe_home.oder_finde_deine_einkaufswelt_e4733' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-7-7 7 7 7-7"/></svg></span></a>
+-        <div class="lx-hero-note"><span class="lx-line"></span><span>{{ 'luxe_home.mode_wohnen_geschenkideen_6068a' | t }}</span></div>
++        <h1 id="lx-hero-title"><span class="lx-desktop-only">{{ 'luxe_home.dein_raum_4d8b3' | t }}<br>{{ 'luxe_home.dein_84624' | t }} <em>{{ 'luxe_home.moment_afc9e' | t }}</em></span><span class="lx-mobile-only">{{ 'luxe_home.hero.heading_first' | t }}<br>{{ 'luxe_home.hero.heading_second' | t }}</span></h1>
++        <p class="lx-hero-description lx-desktop-only">{{ 'luxe_home.manchmal_beginnt_etwas_besondere_c2d36' | t }}</p>
++        <a class="lx-button lx-desktop-only" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544">{{ 'luxe_home.projektor_entdecken_6c4fb' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
++        <a class="lx-text-link lx-desktop-only" href="#lx-worlds">{{ 'luxe_home.oder_finde_deine_einkaufswelt_e4733' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-7-7 7 7 7-7"/></svg></span></a>
++        <div class="lx-mobile-hero-actions lx-mobile-only">
++          <a class="lx-button" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.hero.categories' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
++          <a class="lx-text-link" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }}</a>
++        </div>
++        <div class="lx-hero-note lx-desktop-only"><span class="lx-line"></span><span>{{ 'luxe_home.mode_wohnen_geschenkideen_6068a' | t }}</span></div>
+       </div>
+-      <div class="lx-hero-visual">
++      <div class="lx-hero-visual lx-desktop-only">
+         <div class="lx-visual-label"><span>{{ 'luxe_home.im_fokus_e795b' | t }}</span><span>{{ 'luxe_home.01_wohnen_c1c73' | t }}</span></div>
+         <img class="lx-hero-image" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=1200" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=1200 1200w" sizes="(max-width: 760px) 100vw, 56vw" width="1920" height="1919" alt="{{ 'luxe_home.weisser_sternenlicht_projektor_m_eefeb' | t | escape }}" fetchpriority="high">
+         <a class="lx-product-caption" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"><span><small>{{ 'luxe_home.das_detail_f_r_dein_zuhause_8ab47' | t }}</small>{{ 'luxe_home.sternenlicht_projektor_e7543' | t }}</span><span class="lx-caption-arrow" aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+--- a/assets/luxe-edit.css
++++ b/assets/luxe-edit.css
+@@ -25,3 +25,22 @@
+ @media(max-width:370px){.lx-product-info{padding-left:10px;padding-right:10px}.lx-product-note{padding-left:10px;padding-right:10px}.lx-product-info h3{font-size:14px}.lx-price{font-size:17px}.lx-products{gap:10px}.lx-world-title{font-size:23px}.lx-bottom-nav span{font-size:9px}}
+ 
+ @media(max-width:760px){.lx-gift-links a:not(:last-child) span{font-size:clamp(18px,4.7vw,21px);white-space:nowrap}}
++
++.lx-home .lx-mobile-only{display:none}
++@media(max-width:760px){
++  .lx-home .lx-desktop-only{display:none!important}
++  .lx-home .lx-mobile-only{display:block}
++  .lx-home .lx-hero{margin:16px 16px 0;min-height:0;display:flex;flex-direction:column;gap:0}
++  .lx-home .lx-mobile-hero-media{position:relative;width:100%;height:clamp(280px,44svh,380px);overflow:hidden;background:#e8dfd3;border-radius:18px 18px 0 0}
++  .lx-mobile-hero-media>img,.lx-mobile-hero-media>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
++  .lx-mobile-hero-media>video{opacity:0}
++  .lx-mobile-hero-media.has-frame>video{opacity:1}
++  .lx-mobile-hero-media [hidden]{display:none!important}
++  .lx-home .lx-hero-video-control{position:absolute;top:12px;right:12px;z-index:2;min-height:44px;min-width:44px;border:1px solid #d9d1c6;border-radius:999px;background:#faf7f2f5;color:#292722;padding:10px 15px;font:500 11px/1.25 var(--lx-sans);box-shadow:0 2px 12px #29272212}
++  .lx-home .lx-hero-copy{padding:22px 22px 20px;border-radius:0 0 18px 18px;background:#eee7dc}
++  .lx-home .lx-hero-copy>.lx-eyebrow{display:none}
++  .lx-home .lx-hero h1{font-size:clamp(32px,8.5vw,42px);line-height:1.05;letter-spacing:-1.3px;margin:0 0 18px}
++  .lx-home .lx-mobile-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
++  .lx-home .lx-mobile-hero-actions .lx-button{min-height:46px;padding:12px 16px;gap:14px;border-radius:11px;font-size:12px}
++  .lx-home .lx-mobile-hero-actions .lx-text-link{margin:0;min-height:44px;font-size:12px}
++}
+--- a/assets/luxe-edit.js
++++ b/assets/luxe-edit.js
+@@ -2,6 +2,49 @@
+   const root = document.querySelector('.lx-home');
+   if (!root || root.dataset.enhanced) return;
+   root.dataset.enhanced = 'true';
++
++  const heroMedia = root.querySelector('[data-hero-media]');
++  if (heroMedia) {
++    const video = heroMedia.querySelector('[data-hero-video]');
++    const toggle = heroMedia.querySelector('[data-hero-toggle]');
++    const mobile = matchMedia('(max-width:760px)');
++    const motion = matchMedia('(prefers-reduced-motion:reduce)');
++    let inView = false;
++    let choice = null;
++    let failed = false;
++    let pending = false;
++    const allowed = () => mobile.matches && inView && !document.hidden && !failed &&
++      (choice === 'play' || (choice !== 'pause' && !motion.matches && !navigator.connection?.saveData));
++    const label = () => { toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel; };
++    const sync = () => {
++      if (!allowed()) { video.pause(); label(); return; }
++      if (pending || !video.paused) return;
++      if (!video.hasAttribute('src')) { video.src = video.dataset.src; video.load(); }
++      video.muted = true;
++      pending = true;
++      video.play().catch(() => { label(); }).finally(() => { pending = false; });
++    };
++    toggle.hidden = false;
++    toggle.addEventListener('click', () => { choice = video.paused ? 'play' : 'pause'; sync(); });
++    video.addEventListener('playing', () => {
++      if (!allowed()) { video.pause(); return; }
++      heroMedia.classList.add('has-frame'); label();
++    });
++    video.addEventListener('pause', label);
++    video.addEventListener('error', () => {
++      failed = true; video.pause(); heroMedia.classList.remove('has-frame'); toggle.hidden = true;
++    });
++    mobile.addEventListener('change', sync);
++    motion.addEventListener('change', () => { if (motion.matches && choice === 'play') choice = null; sync(); });
++    document.addEventListener('visibilitychange', sync);
++    if ('IntersectionObserver' in window) {
++      new IntersectionObserver(([entry]) => { inView = entry.isIntersecting && entry.intersectionRatio >= 0.2; sync(); }, {threshold:0.2}).observe(heroMedia);
++    } else {
++      const box = heroMedia.getBoundingClientRect();
++      inView = box.bottom > 0 && box.top < innerHeight;
++    }
++    sync();
++  }
+   const triggers = new Map();
+   root.querySelectorAll('[data-open]').forEach(button => {
+     button.addEventListener('click', () => {
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -350,6 +350,15 @@
+     }
+   },
+   "luxe_home": {
++    "hero": {
++      "heading_first": "Schön leben.",
++      "heading_second": "Schlau shoppen.",
++      "categories": "Alle Kategorien",
++      "video_description": "LuxeStyle-Produktwand mit Mode, Schmuck, Wohnen, Küche, Haustieren und Elektronik",
++      "play": "Video abspielen",
++      "pause": "Video pausieren"
++    },
++
+     "zum_inhalt_f0521": "Zum Inhalt",
+     "gratisversand_in_der_schweiz_ab__9a8a6": "Gratisversand in der Schweiz ab CHF 50 nach Rabatt",
+     "versandinfos_87cfe": "Versandinfos",
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -350,6 +350,15 @@
+     }
+   },
+   "luxe_home": {
++    "hero": {
++      "heading_first": "Live beautifully.",
++      "heading_second": "Shop smart.",
++      "categories": "All categories",
++      "video_description": "LuxeStyle product wall with fashion, jewellery, home, kitchen, pets and electronics",
++      "play": "Play video",
++      "pause": "Pause video"
++    },
++
+     "zum_inhalt_f0521": "Zum Inhalt",
+     "gratisversand_in_der_schweiz_ab__9a8a6": "Gratisversand in der Schweiz ab CHF 50 nach Rabatt",
+     "versandinfos_87cfe": "Versandinfos",
