@@ -1,5 +1,19 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 01.11.2026, Revision 45
+
+[Entdecken-Karussell / Claude R45](ENTDECKEN-KARUSSELL-20261101-R45.md) · [Finale Hashes, Deltas und Belege](ENTDECKEN-KARUSSELL-20261101-R45.json).
+
+Die drei bestehenden Karten UnterCHF25/UnterCHF50/Geschenkideen haben drei eigene dekorative Hintergrundbilder, weisse HTML-Texte über dunklem Verlauf und eine mobile86%-Wischreihe mit sichtbarem nächsten Rand; Desktop drei Spalten. Drei neue Shopify-Dateien READY/CDN200/pixelgleich, zwei Dateien im bestehenden UNPUBLISHED-Entwurf212978598279 nativ exakt bestätigt: sections/luxe-edit-home.liquid und assets/luxe-edit.css. Kein neues JavaScript oder Locale-Schlüssel, kein Autoplay.
+
+20begrenzte Bedingungen in echter Vorschau360/390/1440px einschliesslich Touch, Tab und Pfeilen bestanden; Bilder mobil/Desktop angesehen. Vorläufige programmgesteuerte Fokusprobe verhielt sich anders, tatsächliche Tabfolge bringt die letzte Karte vollständig ins Bild; keine weitere Skriptänderung oder behobenerProduktfehler behauptet. GET/HEAD-Schutz blockierte83andereRequests,8Fetchfehler protokolliert; keineCheckout-/Tracking-/Vollthemeabnahme. ValidatorVALIDmit einem bestehendenCDN-Hinweis, SchemaCache verwendet.
+
+Links und Preisfilter24.99/49.99 exakt erhalten. Drei Collections sind TAG-basiert; eine unfiltrierte20erProbe der25erCollection enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung. Dekorative Bilder versprechen keine konkretenSKUs zumKartenpreis; keineProduktpreise oderCollection-Regeln ändern.
+
+R45-Section/CSS haben Vorrang vor älteren gleichen Pfaden; übrigeR44Collage/Banner/52Referenzen undbisherigeWebsiteänderungen erhalten. Bestehende Websitefreigabe gilt. VorPublish vollständigen frischen Theme-Diff/Identität prüfen und denselben Entwurf über legitimen fähigen Zugang veröffentlichen, danach öffentlicheDE/FR-Mobil-/Desktopprüfung. ConnectorThemePublish/MAINWrites gesperrt, MAINnichtverändert; keineUmgehung/neueKopie/erneute gleicheFreigabefrage. ScopedClaude-Einstieg aufR45; tatsächlicherEmpfang unbekannt.
+
+EinHomepageTask fortgeführt,16andereTasks undalle17IDs/Historien erhalten. R43-Zwei-Text-Freigabe weiterhin offen. Versand/Konto, Tagesgrenzen und Kauf-Watch-Ende erhalten; keineReports/Social-/Produkt-/Collectionregel-/Shopkonfigurations-/Frequenzänderungen. Lokaler Spiegel memory/snapshots/2026-11-01-r45.
+
 ## Aktueller Stand – 01.11.2026, Revision 44
 
 [Bild-/Claude-Update R44](BILDER-UPDATE-20261101-R44.md) · [Finale Hashes, genaue Deltas und Nachweise](BILDER-UPDATE-20261101-R44.json).
