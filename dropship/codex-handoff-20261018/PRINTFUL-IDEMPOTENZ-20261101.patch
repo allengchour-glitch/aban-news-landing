@@ -1,0 +1,599 @@
+diff --git a/automation/printful_sync.mjs b/automation/printful_sync.mjs
+--- a/automation/printful_sync.mjs
++++ b/automation/printful_sync.mjs
+@@ -7,13 +7,17 @@
+  *   • Druckdatei(en) = aus den Bestell-Eigenschaften "🖼️ Druckdatei (Vorne/Hinten)" (Cloudinary-URL)
+  *   • Empfänger = Shopify-Lieferadresse
+  * KONTROLL-GATE (User-Wunsch): Gemini prüft jede Druckdatei (leer? unscharf? unzulässig?) → PASS/FAIL.
+- *   PASS  → Auftrag wird VERBINDLICH bestätigt (confirm) und produziert.
+- *   FAIL  → Auftrag bleibt ENTWURF (draft) + Shopify-Tag `printful-review` + Telegram-Hinweis.
+- * Idempotent: erledigte Bestellungen bekommen Tag `printful-synced` + Metafeld printful.order_id.
++ *   Nur explizites einzeiliges PASS + vollständige Identitäts-/Checkpointprüfungen können Create erlauben.
++ *   Fehlende, unlesbare oder unbekannte Designprüfung sperrt vor POST.
++ *   Unvollständige LineItem-Seiten sperren den ganzen Auftrag. Kein Ready-Beleg wird hier initialisiert.
++ * Wiederanlauf: externe ID + exakter Anbieterabgleich; kein Create ohne expliziten, bereits bestehenden Ready-Checkpoint.
++ * Vor POST: Shopify compareDigest/CAS, Quell-/Claim-Rücklesen; der Intent bindet auch confirm. Unklarer POST bleibt inflight; kein blinder Retry.
++ * printful-synced bedeutet nur geprüfte Zuordnung; Anbieterstatus ist weder Zahlungs- noch Auslieferungsbeleg.
+  * No-op ohne PRINTFUL_API_KEY oder ohne Shopify-Creds. ENV:
+- *   PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=1|0 (Default 1 = AI-gated)],
++ *   PRINTFUL_API_KEY + PRINTFUL_STORE_ID (zwingend), [PRINTFUL_AUTO_CONFIRM=1|0 (Default 1 = AI-gated)],
+  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]
+  */
++import { synchronisiereEinmal, bestellBelegHash } from './lib/printful_idempotenz.mjs';
+ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+ import { platzierungenFuerDateien, neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
+ const SHOPraw=process.env.SHOPIFY_SHOP||'';
+@@ -37,13 +41,13 @@
+ if(!ADMIN_TOKEN && !(CID&&CSEC)){ console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
+ 
+ // ---------- Shopify-Auth (wie desc_block.mjs) ----------
+-async function gql(tok,query,variables){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query,variables})}); return r.json(); }
+-async function works(tok){ try{ const r=await gql(tok,'{ shop { name } }'); return r?.data?.shop?.name?r.data.shop:null; }catch{ return null; } }
++async function gql(tok,query,variables){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query,variables})}); const j=await r.json(); if(!r.ok || !j || (j.errors!==undefined && (!Array.isArray(j.errors)||j.errors.length)) || !j.data) throw new Error('shopify_response_unknown'); return j; }
++async function works(tok){ try{ const r=await gql(tok,'{ shop { id name myshopifyDomain currencyCode primaryDomain { host } } }'); const s=r?.data?.shop; return s?.id==='gid://shopify/Shop/94368563585' && s.myshopifyDomain===SHOP && s.primaryDomain?.host==='luxestyle.ch' && s.currencyCode==='CHF'?s:null; }catch{ return null; } }
+ async function clientCredentials(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); return j.access_token||null; }
+-async function resolveToken(){ if(ADMIN_TOKEN){ const s=await works(ADMIN_TOKEN); if(s) return ADMIN_TOKEN; } if(CID&&CSEC){ const t=await clientCredentials(); if(t&&await works(t)) return t; } console.error('❌ Keine funktionierende Shopify-Auth.'); process.exit(0); }
++async function resolveToken(){ if(ADMIN_TOKEN){ const s=await works(ADMIN_TOKEN); if(s) return ADMIN_TOKEN; } if(CID&&CSEC){ const t=await clientCredentials(); if(t&&await works(t)) return t; } console.error('❌ Keine funktionierende Shopify-Auth.'); throw new Error('shopify_identity_or_auth_unknown'); }
+ 
+ // ---------- Printful ----------
+-// timeoutMs: nur für Abfragen (GET) gesetzt; ohne Zeitlimit hinge ein Lauf an einer nicht antwortenden Printful-API. retryAfter: Sekunden aus dem Kopf «Retry-After» (bei 429).
++// GET und Create haben ein Zeitlimit; ein unklarer Create wird nur nachgelesen. retryAfter: Sekunden aus «Retry-After» (429).
+ async function pf(path,method,body,timeoutMs){ const headers={'Authorization':'Bearer '+PF_KEY,'Content-Type':'application/json'}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;
+   const r=await fetch('https://api.printful.com'+path,{method:method||'GET',headers,body:body?JSON.stringify(body):undefined,signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined});
+   const j=await r.json().catch(()=>({})); return {ok:r.ok,status:r.status,j,retryAfter:parseInt((r.headers&&r.headers.get&&r.headers.get('retry-after'))||'0',10)||0}; }
+@@ -53,16 +57,15 @@
+ 
+ // ---------- Gemini-Kontrolle der Druckdatei ----------
+ async function fetchB64(url){ const r=await fetch(url); if(!r.ok) throw new Error('img '+r.status); const ab=await r.arrayBuffer(); const ct=r.headers.get('content-type')||'image/png'; return {b64:Buffer.from(ab).toString('base64'),mime:ct.split(';')[0]}; }
+-async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine Gemini-Prüfung konfiguriert)'};
++async function controlDesign(url){ if(!GEMINI) return {pass:false,reason:'Designprüfung nicht konfiguriert'};
+   try{ const {b64,mime}=await fetchB64(url);
+     const prompt='You are a print-shop QA checker. Look at this customer print file (design to be printed on a product). Answer with a single word PASS or FAIL, then a short reason. FAIL only if: the image is essentially empty/blank, extremely low quality/blurry, or contains hateful/illegal/explicit content. Otherwise PASS. Format exactly: PASS - reason  OR  FAIL - reason';
+     const body={contents:[{parts:[{text:prompt},{inline_data:{mime_type:mime,data:b64}}]}]};
+     const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GEMINI)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+     const j=await r.json().catch(()=>({}));
+     const t=((j.candidates&&j.candidates[0]&&j.candidates[0].content&&j.candidates[0].content.parts||[]).map(p=>p.text||'').join(' ')).trim();
+-    const pass=/^\s*pass/i.test(t)|| (!/^\s*fail/i.test(t) && /pass/i.test(t));
+-    return {pass:!/^\s*fail/i.test(t), reason:t.slice(0,180)||'(leere Antwort)'};
+-  }catch(e){ return {pass:true,reason:'Prüfung übersprungen ('+e.message+')'}; } }
++    return {pass:r.ok && /^PASS[ \t]*-[ \t]*[^\r\n]+$/i.test(t) && !/\bFAIL\b/i.test(t), reason:t.slice(0,180)||'Prüfantwort unbekannt'};
++  }catch(e){ return {pass:false,reason:'Designprüfung nicht lesbar'}; } }
+ 
+ // ---------- SKU → Printful-Variante ----------
+ function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
+@@ -73,65 +76,113 @@
+ const PLATZ_PAUSE_MS=Math.max(0,parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS||'2000',10)||0);
+ const variantProdukt=neuerPlatzierungsCache(async vid=>{ const r=await pf('/products/variant/'+vid,'GET',null,20000); return {status:r.status,result:r.ok?(r.j&&r.j.result):null,retryAfter:r.retryAfter}; },{pauseMs:PLATZ_PAUSE_MS});
+ 
+-const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
+-  id name email tags
++const ORDER_FIELDS=`id name email tags
++  pfOrderId:metafield(namespace:"printful",key:"order_id"){ value compareDigest }
++  pfCheckpoint:metafield(namespace:"printful",key:"sync_checkpoint"){ value compareDigest }
+   shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }
+   lineItems(first:50){ edges{ node{ quantity sku title
+     product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
+     variant{ sku }
+-    customAttributes{ key value } } } }
+-}}}}`;
++    customAttributes{ key value } } } pageInfo{hasNextPage endCursor} }`;
++const ORDERS_Q=`query($q:String!,$n:Int!){orders(first:$n,query:$q,sortKey:CREATED_AT){edges{node{${ORDER_FIELDS}}}pageInfo{hasNextPage endCursor}}}`;
++const ORDER_STATE_Q=`query PrintfulOrderState($id:ID!){order(id:$id){${ORDER_FIELDS}}}`;
++const METAFIELD_MUTATION=`mutation PrintfulMarker($mf:[MetafieldsSetInput!]!){metafieldsSet(metafields:$mf){metafields{id namespace key value compareDigest}userErrors{field message}}}`;
++const TAG_MUTATION=`mutation PrintfulTags($id:ID!,$tags:[String!]!){tagsAdd(id:$id,tags:$tags){node{id}userErrors{field message}}}`;
++async function readOrderState(tok,id){const j=await gql(tok,ORDER_STATE_Q,{id});return j.data.order;}
++async function setMetaChecked(tok,id,key,type,value,compareDigest){
++  const j=await gql(tok,METAFIELD_MUTATION,{mf:[{ownerId:id,namespace:'printful',key,type,value,compareDigest}]});
++  const a=j.data.metafieldsSet;
++  return !!a && Array.isArray(a.userErrors) && !a.userErrors.length && Array.isArray(a.metafields) && a.metafields.length===1 &&
++    a.metafields[0].namespace==='printful' && a.metafields[0].key===key && a.metafields[0].value===value && /^[a-f0-9]{64}$/.test(a.metafields[0].compareDigest||'');
++}
+ 
+ function pickFiles(attrs){ // → [{side,url}] aus Properties "🖼️ Druckdatei (Vorne/Hinten)"
+   const out=[]; for(const a of attrs||[]){ const k=a.key||''; if(/Druckdatei|Print file/i.test(k) && /^https?:\/\//.test(a.value||'')){ const side=/Hinten|Back/i.test(k)?'back':'front'; out.push({side,url:a.value}); } } return out; }
+ function isPod(li){ const tags=(li.product&&li.product.tags||[]).map(x=>x.toLowerCase()); return tags.includes('wunschdesign')||tags.includes('printful_personalized_product'); }
+ 
+-async function tagOrder(tok,id,tags,pfId){ if(DRY) return;
+-  await gql(tok,`mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`,{id,tags});
+-  if(pfId) await gql(tok,`mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{ message } } }`,{mf:[{ownerId:id,namespace:'printful',key:'order_id',type:'single_line_text_field',value:String(pfId)}]});
++async function tagOrder(tok,id,tags,expectedHash){
++  if(DRY) return true;
++  try {
++    const j=await gql(tok,TAG_MUTATION,{id,tags});const ack=j.data.tagsAdd;
++    if(!ack || !Array.isArray(ack.userErrors) || ack.userErrors.length || ack.node?.id!==id) return false;
++    const back=await readOrderState(tok,id);
++    return back?.id===id && (!expectedHash || bestellBelegHash(back)===expectedHash) && Array.isArray(back.tags) && tags.every(tag=>back.tags.includes(tag));
++  }catch{return false;}
++}
++async function linkOrder(tok,id,remote,expectedHash){
++  const state=await readOrderState(tok,id);if(state?.id!==id || bestellBelegHash(state)!==expectedHash)return false;
++  if(state.pfOrderId && state.pfOrderId.value!==remote.id)return false;
++  if(!await setMetaChecked(tok,id,'order_id','single_line_text_field',remote.id,state.pfOrderId?.compareDigest??null))return false;
++  const back=await readOrderState(tok,id);if(back?.pfOrderId?.value!==remote.id || bestellBelegHash(back)!==expectedHash)return false;
++  return tagOrder(tok,id,['printful-synced',`printful-${remote.status}`,...(remote.review?['printful-review']:[])],expectedHash);
+ }
+ 
+ (async function main(){
+   const tok=await resolveToken();
++  if(!/^[1-9]\d*$/.test(PF_STORE)) throw new Error('printful_store_binding_missing');
++  const store=await pf('/stores/'+PF_STORE,'GET',null,20000);
++  if(!store.ok || store.status!==200 || store.j?.code!==200 || String(store.j?.result?.id)!==PF_STORE) throw new Error('printful_store_binding_unknown');
+   // Bezahlt, unfulfilled, noch nicht synchronisiert
+   const q='financial_status:paid fulfillment_status:unfulfilled -tag:printful-synced';
+   const data=await gql(tok,ORDERS_Q,{q,n:MAX});
+-  const edges=(data?.data?.orders?.edges)||[];
++  const edges=data?.data?.orders?.edges;
++  if(!Array.isArray(edges) || typeof data.data.orders.pageInfo?.hasNextPage!=='boolean') throw new Error('shopify_order_list_unknown');
+   if(!edges.length){ console.log('Keine offenen POD-Bestellungen zum Synchronisieren.'); process.exit(0); }
+-  let created=0, drafts=0, skipped=0, fails=[];
++  let created=0, reconciled=0, blocked=0, uncertain=0, skipped=0, fails=[];
+   for(const {node:o} of edges){
+-    const items=[]; let needReview=false, reviewMsg=[];
++    const items=[]; let needReview=false, skuBlocked=false, designBlocked=false, reviewMsg=[];
++    if(!Array.isArray(o.lineItems?.edges) || o.lineItems.pageInfo?.hasNextPage!==false){blocked++;console.warn('Order '+o.id+': line_items_unknown_or_partial');continue;}
+     for(const {node:li} of (o.lineItems.edges||[])){
+       if(!isPod(li)) continue;
+-      const sku=(li.variant&&li.variant.sku)||li.sku;
++      // Die SKU der bezahlten Position ist historisch; variant.sku kann seit dem Kauf
++      // geändert worden sein. Fehlender Beleg oder Widerspruch sperrt den ganzen Auftrag.
++      const sku=String(li.sku||'').trim();
++      const katalogSku=String(li.variant?.sku||'').trim();
++      if(!sku || (katalogSku && katalogSku!==sku)){
++        skipped++; skuBlocked=true; needReview=true;
++        reviewMsg.push(`${li.title}: ${!sku?'Bestell-SKU fehlt':'Bestell-SKU und aktuelle Katalog-SKU widersprechen sich'}`);
++        continue;
++      }
+       const vid=variantFromSku(sku);
+       let files=pickFiles(li.customAttributes);
+       // Fertig-Produkte (ohne Editor-Upload): festes Motiv aus Produkt-Metafeld custom.print_file
+       if(!files.length){ const mf=li.product&&li.product.metafield&&li.product.metafield.value; if(mf && /^https?:\/\//.test(mf)) files=[{side:'front',url:mf}]; }
+-      if(!vid){ skipped++; reviewMsg.push(`${li.title}: SKU ohne Printful-Variante`); needReview=true; continue; }
+-      if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
++      if(!vid){ skipped++; reviewMsg.push(`${li.title}: Bestell-SKU ohne Printful-Variante`); skuBlocked=true; needReview=true; continue; }
++      if(!files.length){ skipped++; designBlocked=true; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
+       const plz=await platzierungenFuerDateien({vid,dateien:files,shopTyp:li.product&&li.product.productType,holeProdukt:variantProdukt});
+       if(plz.needReview){ needReview=true; for(const h of plz.hinweise){ reviewMsg.push(`${li.title}: ${h}`); console.warn(`⚠️ ${o.name}: ${h} → Auftrag bleibt Entwurf`); } }
+       const pfFiles=[];
+-      for(const [i,f] of files.entries()){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
++      for(const [i,f] of files.entries()){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; designBlocked=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
+         pfFiles.push(plz.files[i]); }
+-      items.push({variant_id:vid,quantity:li.quantity||1,files:pfFiles});
++      items.push({variant_id:vid,quantity:li.quantity,files:pfFiles});
++    }
++    if(skuBlocked || designBlocked){
++      // Auch keine Teilbestellung: weitere gültige Positionen heben die Identitätssperre nicht auf.
++      blocked++;
++      console.warn(`${DRY?'[DRY] ':''}${o.name}: SKU-Prüfung nötig; kein Printful-Auftrag angelegt. ${reviewMsg.join('; ')}`);
++      if(!DRY && !await tagOrder(tok,o.id,['printful-review'])) uncertain++;
++      continue;
+     }
+     if(!items.length){ continue; }
+     const a=o.shippingAddress||{};
+-    const recipient={ name:a.name||[a.firstName,a.lastName].filter(Boolean).join(' ')||'Kunde', address1:a.address1||'', address2:a.address2||'', city:a.city||'', state_code:a.provinceCode||'', country_code:a.countryCodeV2||'CH', zip:a.zip||'', email:o.email||'', phone:a.phone||'' };
++    const recipient={ name:a.name||[a.firstName,a.lastName].filter(Boolean).join(' ')||'', address1:a.address1||'', address2:a.address2||'', city:a.city||'', state_code:a.provinceCode||'', country_code:a.countryCodeV2||'', zip:a.zip||'', email:o.email||'', phone:a.phone||'' };
+     const confirm = AUTO_CONFIRM && !needReview;
+     if(DRY){ console.log(`[DRY] ${o.name}: ${items.length} Item(s), confirm=${confirm}${needReview?' (REVIEW: '+reviewMsg.join('; ')+')':''}`); continue; }
+-    const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items});
+-    if(!res.ok){ fails.push(`${o.name}: Printful ${res.status} ${JSON.stringify(res.j).slice(0,160)}`); await tagOrder(tok,o.id,['printful-review']); drafts++; continue; }
+-    const pfId=res.j&&res.j.result&&res.j.result.id;
+-    await tagOrder(tok,o.id,['printful-synced',confirm?'printful-confirmed':'printful-review'],pfId);
+-    if(confirm){ created++; } else { drafts++; }
+-    if(needReview){ await tg(`🟡 LuxeStyle POD: Bestellung <b>${o.name}</b> → Printful-Entwurf #${pfId||'?'} (Kontrolle prüfen):\n${reviewMsg.join('\n')}`); }
+-    console.log(`${o.name} → Printful #${pfId||'?'} ${confirm?'BESTÄTIGT':'ENTWURF (Review)'}`);
++    const outcome=await synchronisiereEinmal({shop:SHOP,storeId:PF_STORE,order:o,payload:{recipient,items,confirm},pf,
++      loadState:()=>readOrderState(tok,o.id),
++      claim:(record,compareDigest)=>setMetaChecked(tok,o.id,'sync_checkpoint','json',JSON.stringify(record),compareDigest),
++      link:(remote,expectedHash)=>linkOrder(tok,o.id,remote,expectedHash)});
++    if(outcome.state==='created_linked')created++;
++    else if(outcome.state==='reconciled')reconciled++;
++    else if(outcome.state==='blocked')blocked++;
++    else uncertain++;
++    console.log(`${o.name}: ${outcome.state}; Anbieterstatus=${outcome.providerStatus||'unknown'}; keine Zahlungs- oder Auslieferungsbestätigung.`);
++    if(outcome.state==='blocked' || /unknown/.test(outcome.state))fails.push(`${o.name}: ${outcome.reason||outcome.state}`);
++
+   }
+   if(fails.length){ await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fails.join('\n')}`); fails.forEach(f=>console.error('✗',f)); }
+-  const summary=`Printful-Sync fertig: ${created} bestätigt, ${drafts} Entwurf/Review, ${skipped} Item übersprungen.`;
++  const summary=`Printful-Sync fertig: ${created} neu verknüpft, ${reconciled} abgeglichen, ${blocked} blockiert, ${uncertain} unbekannt, ${skipped} Item übersprungen.`;
+   console.log(summary);
+-  if((created||drafts) && !DRY) await tg(`✅ LuxeStyle POD: ${summary}`);
+-})().catch(e=>{ console.error('Fataler Fehler:',e); process.exit(0); });
++  if(uncertain)process.exitCode=1;
++  if((created||reconciled) && !DRY) await tg(`✅ LuxeStyle POD: ${summary}`);
++})().catch(e=>{ console.error('Fataler Fehler:',e); process.exitCode=1; });
+diff --git a/automation/printful_sync_test.mjs b/automation/printful_sync_test.mjs
+--- a/automation/printful_sync_test.mjs
++++ b/automation/printful_sync_test.mjs
+@@ -6,6 +6,9 @@
+ // auf «/products/variant/» traf sogar den Kommentar. Lauf: /opt/node22/bin/node automation/printful_sync_test.mjs
+ import { spawnSync } from 'node:child_process';
+ import { readFileSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++import { externeBestellId, bestellBelegHash, createAbsicht } from './lib/printful_idempotenz.mjs';
++import { entscheide, produktInfoAusAntwort } from './lib/printful_platzierung.mjs';
+ import { fileURLToPath } from 'node:url';
+ 
+ const SELF = fileURLToPath(import.meta.url);
+@@ -15,22 +18,59 @@
+ if (process.argv[2] === '--szenario') {
+   const sz = JSON.parse(process.env.PS_SZENARIO);
+   Object.assign(process.env, { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0' });
+-  for (const k of ['GEMINI_API_KEY', 'PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DRY_RUN', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET']) delete process.env[k];
+-  const prot = { posts: [], tags: [], variantGets: [], variantSignale: [], postSignale: [], warn: [], log: [] };
++  for (const k of [ 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DRY_RUN', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET']) delete process.env[k];
++  if (sz.dry) process.env.DRY_RUN = '1';
++  process.env.PRINTFUL_STORE_ID='123';
++  if(sz.noDesign) delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY='synthetic';
++  const prot = { posts: [], tags: [], variantGets: [], variantSignale: [], postSignale: [], lookupCalls: [], markerWrites: [], warn: [], log: [] };
+   let fertig; const ende = new Promise((r) => { fertig = r; });
+-  const order = { id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' },
+-    lineItems: { edges: [{ node: { quantity: 1, sku: sz.sku, title: 'T', product: { productType: sz.pt, tags: ['wunschdesign'], metafield: null }, variant: { sku: sz.sku },
+-      customAttributes: sz.seiten.map((x) => ({ key: '🖼️ Druckdatei (' + x + ')', value: 'https://res.cloudinary.com/x/' + x + '.png' })) } }] } };
+-  const mk = (status, body, roh) => ({ ok: status >= 200 && status < 300, status, headers: { get: (k) => (sz.retryAfter && String(k).toLowerCase() === 'retry-after' ? String(sz.retryAfter) : null) }, json: async () => { if (roh !== undefined) throw new Error('kein JSON'); return body; } });
++  const order = { id: 'gid://shopify/Order/1', name: '#T1', tags: [], pfOrderId:null, pfCheckpoint:null, email: 'a@b.ch', shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' },
++    lineItems: { edges: [{ node: { quantity: 1, sku: sz.sku, title: 'T', product: { productType: sz.pt, tags: ['wunschdesign'], metafield: null }, variant: { sku: Object.hasOwn(sz, 'variantSku') ? sz.variantSku : sz.sku },
++      customAttributes: sz.seiten.map((x) => ({ key: '🖼️ Druckdatei (' + x + ')', value: 'https://res.cloudinary.com/x/' + x + '.png' })) } }],pageInfo:{hasNextPage:sz.partialLines===true,endCursor:null} } };
++  if (sz.extraSku) {
++    const node = structuredClone(order.lineItems.edges[0].node);
++    node.sku = sz.extraSku; node.variant.sku = sz.extraSku;
++    order.lineItems.edges.push({ node });
++  }
++  const hash=value=>createHash('sha256').update(value).digest('hex');
++  if(sz.missingCountry)delete order.shippingAddress.countryCodeV2;
++  const vid=Number(String(sz.sku).split('_').pop())||1;
++  const sourceVariantKnown=sz.variant.some(value=>value.body?.result?.product);
++  const useDefault=([20688,1320,8948,16366,14943,4533].includes(vid)&&sourceVariantKnown)||['Poster','Magnet'].includes(sz.pt);
++  const recipient={name:order.shippingAddress.name,address1:order.shippingAddress.address1,city:order.shippingAddress.city,country_code:order.shippingAddress.countryCodeV2,zip:order.shippingAddress.zip,email:order.email};
++  const intentItems=[{variant_id:vid,quantity:1,files:sz.seiten.map(side=>({type:useDefault?'default':/Hinten|Back/i.test(side)?'back':'front',url:'https://res.cloudinary.com/x/'+side+'.png'}))}];
++  if(sz.extraSku)intentItems.push({...structuredClone(intentItems[0]),variant_id:Number(sz.extraSku.split('_').pop())});
++  const fixtureProduct=produktInfoAusAntwort(sz.variant.find(value=>value.body?.result?.product)?.body.result);
++  const confirm=sz.seiten.every(side=>entscheide({produkt:fixtureProduct,seite:/Hinten|Back/i.test(side)?'back':'front',shopTyp:sz.pt}).gesichert);
++  let intentSha256='0'.repeat(64);try{intentSha256=hash(JSON.stringify(createAbsicht({recipient,items:intentItems,confirm})));}catch{}
++  const initial={schemaVersion:1,state:'ready',shop:'au3j0y-hq.myshopify.com',storeId:'123',orderId:order.id,
++    externalId:externeBestellId('au3j0y-hq.myshopify.com',order.id),orderSha256:sz.partialLines?'unknown':bestellBelegHash(order),intentSha256,reconciliationRef:'synthetic-fixture://reviewed-order-scope'};
++  order.pfCheckpoint=sz.noReady?null:{value:JSON.stringify(initial),compareDigest:hash(JSON.stringify(initial))};
++  let providerOrder=null;
++  const mk = (status, body, roh) => ({ ok: status >= 200 && status < 300, status, headers: { get: (k) => (sz.retryAfter && String(k).toLowerCase() === 'retry-after' ? String(sz.retryAfter) : null) }, arrayBuffer:async()=>new Uint8Array([1]).buffer, json: async () => { if (roh !== undefined) throw new Error('kein JSON'); return body; } });
+   globalThis.fetch = async (url, o = {}) => {
+     url = String(url);
+     if (url.includes('myshopify.com') && url.includes('graphql')) {
+       const b = JSON.parse(o.body), q = b.query;
+-      if (q.includes('orders(first')) return mk(200, { data: { orders: { edges: [{ node: order }] } } });
+-      if (q.includes('shop {')) return mk(200, { data: { shop: { name: 'x' } } });
+-      if (q.includes('tagsAdd')) { prot.tags.push(...b.variables.tags); return mk(200, { data: {} }); }
++      if(sz.ordersMalformed && q.includes('orders(first'))return mk(200,{data:{orders:{}}});
++      if (q.includes('orders(first')) return mk(200, { data: { orders: { edges: [{ node: order }],pageInfo:{hasNextPage:false,endCursor:null} } } });
++      if(q.includes('PrintfulOrderState'))return mk(200,{data:{order:structuredClone(order)}});
++      if (q.includes('shop {')) return mk(200,{data:{shop:{id:'gid://shopify/Shop/94368563585',name:'Synthetic LuxeStyle',myshopifyDomain:'au3j0y-hq.myshopify.com',primaryDomain:{host:'luxestyle.ch'},currencyCode:'CHF'}}});
++      if (q.includes('tagsAdd')) {
++        if(sz.markerError==='tags')return mk(200,{data:{tagsAdd:{node:null,userErrors:[{message:'synthetic rejected'}]}}});
++        prot.tags.push(...b.variables.tags);order.tags=[...new Set([...order.tags,...b.variables.tags])];return mk(200,{data:{tagsAdd:{node:{id:order.id},userErrors:[]}}});
++      }
++      if(q.includes('metafieldsSet')){
++        const mf=b.variables.mf[0],key=mf.key==='sync_checkpoint'?'pfCheckpoint':'pfOrderId';prot.markerWrites.push(mf.key);
++        if(sz.markerError===mf.key || mf.compareDigest!==(order[key]?.compareDigest??null))return mk(200,{data:{metafieldsSet:{metafields:[],userErrors:[{message:'synthetic CAS/marker rejected'}]}}});
++        order[key]={value:mf.value,compareDigest:hash(mf.value)};
++        return mk(200,{data:{metafieldsSet:{metafields:[{id:'gid://shopify/Metafield/1',namespace:'printful',key:mf.key,...order[key]}],userErrors:[]}}});
++      }
+       return mk(200, { data: {} });
+     }
++    if(url.includes('api.printful.com/stores/123'))return mk(200,{code:200,result:{id:123,type:'native',name:'Synthetic store'}});
++    if(url.includes('generativelanguage.googleapis.com')){if(sz.designThrow)throw new Error('synthetic unavailable');return mk(sz.designHttp||200,{candidates:[{content:{parts:[{text:sz.designText??'PASS - synthetic accepted fixture'}]}}]});}
++    if(url.startsWith('https://res.cloudinary.com/'))return mk(200,{});
+     if (url.includes('/products/variant/')) {
+       prot.variantGets.push(url.split('/products/variant/')[1]); prot.variantSignale.push(!!o.signal);
+       const r = sz.variant[Math.min(prot.variantGets.length - 1, sz.variant.length - 1)];
+@@ -38,12 +78,17 @@
+       if (r.roh !== undefined) return mk(r.status, null, r.roh);
+       return mk(r.status, r.body);
+     }
+-    if (url.includes('api.printful.com/orders')) { prot.postSignale.push(!!o.signal); prot.posts.push({ url, items: JSON.parse(o.body).items }); return mk(200, { result: { id: 42 } }); }
+-    return mk(200, {});
++    if(url.includes('api.printful.com/orders')){
++      if(o.method==='GET'){prot.lookupCalls.push(url);return providerOrder?mk(200,{code:200,result:providerOrder}):mk(404,{code:404,result:'Order not found',error:{reason:'NotFound'}});}
++      const body=JSON.parse(o.body);prot.postSignale.push(!!o.signal);prot.posts.push({url,items:body.items,externalId:body.external_id});
++      providerOrder={id:42,external_id:body.external_id,status:/confirm=1$/.test(url)?'pending':'draft',recipient:body.recipient,items:body.items};
++      return mk(200,{code:200,result:providerOrder});
++    }
++    throw new Error('unhandled synthetic network request');
+   };
+   console.log = (...a) => { const t = a.join(' '); prot.log.push(t); if (/^Printful-Sync fertig:/.test(t)) fertig(); };
+   console.warn = (...a) => { prot.warn.push(a.join(' ')); };
+-  console.error = (...a) => { prot.warn.push('ERR ' + a.join(' ')); };
++  console.error = (...a) => { prot.warn.push('ERR ' + a.join(' ')); if(/^Fataler Fehler:/.test(a.join(' ')))fertig(); };
+   await import('./printful_sync.mjs');
+   await Promise.race([ende, new Promise((r) => setTimeout(r, 20000))]);
+   process.stdout.write('\nPS_ERGEBNIS ' + JSON.stringify(prot) + '\n');
+@@ -63,6 +108,35 @@
+ const V = (s) => 'https://res.cloudinary.com/x/' + s + '.png';
+ /** Was an Printful ging: [bestätigt?, files[].type je Datei, Variantennummer] */
+ const gesendet = (e) => e.prot.posts.map((p) => [/\?confirm=1$/.test(p.url), p.items.map((i) => i.files.map((f) => f.type)), p.items.map((i) => i.variant_id)]);
++
++// Bestellte SKU ist der historische Beleg. Ein geänderter Katalog darf den bezahlten Artikel
++// weder ersetzen noch zusammen mit anderen POD-Zeilen zu einem Teilauftrag führen.
++for (const [name, sku, variantSku] of [
++  ['Katalog-Variante nach Kauf geändert', '5599797_4025', '5599797_4026'],
++  ['Sync-Identität bei gleicher Printful-Variante geändert', '5599797_4025', '9999999_4025'],
++  ['Bestell-SKU fehlt', '', '5599797_4025'],
++  ['Bestell-SKU unbrauchbar', 'unbekannt', '5599797_4025'],
++  ['Beide SKUs unbrauchbar', 'unbekannt', 'unbekannt'],
++]) {
++  const e = lauf({ pt: 'T-Shirts', sku, variantSku, seiten: ['Vorne'], variant: [antwort(71)] });
++  ist(`${name}: KEIN Printful-GET/POST, Review angefordert, kein Synced/Confirmed-Tag`,
++    [e.prot.posts, e.prot.variantGets, e.prot.tags.includes('printful-review'), e.prot.tags.includes('printful-synced'), e.prot.tags.includes('printful-pending')],
++    [[], [], true, false, false]);
++}
++{
++  const e = lauf({ pt: 'T-Shirts', sku: '5599797_4025', variantSku: '5599797_4026', extraSku: '5599797_4025', seiten: ['Vorne'], variant: [antwort(71)] });
++  ist('SKU-Konflikt sperrt auch einen Teilauftrag aus weiteren gültigen POD-Zeilen',
++    [e.prot.posts, e.prot.tags.includes('printful-review'), e.prot.tags.includes('printful-synced')], [[], true, false]);
++  ist('SKU-Sperre steht als separater Blocker in der Zusammenfassung und behauptet keinen Printful-Entwurf',
++    e.prot.log.some((x) => /0 neu verknüpft, 0 abgeglichen, 1 blockiert/.test(x)), true);
++  const dry = lauf({ pt: 'T-Shirts', sku: '5599797_4025', variantSku: '5599797_4026', dry: true, seiten: ['Vorne'], variant: [antwort(71)] });
++  ist('DRY_RUN bei SKU-Konflikt erzeugt weder Printful-Auftrag noch Shopify-Tagmutation',
++    [dry.prot.posts, dry.prot.tags, dry.prot.warn.some((x) => x.startsWith('[DRY]'))], [[], [], true]);
++}
++for (const [name, variantSku] of [['Katalog-SKU gelöscht', null], ['Nur Rand-Leerzeichen', ' 5599797_4025 ']]) {
++  const e = lauf({ pt: 'T-Shirts', sku: '5599797_4025', variantSku, seiten: ['Vorne'], variant: [antwort(71)] });
++  ist(`${name}: historische Bestell-SKU bleibt massgebend`, [gesendet(e), e.prot.variantGets], [[[true, [['front']], [4025]]], ['4025']]);
++}
+ 
+ // ── Gesicherte Fälle: der Printful-Typ der Variante entscheidet, die Bestellung wird bestätigt
+ for (const [name, sz, soll] of [
+@@ -76,12 +150,12 @@
+ ]) {
+   const e = lauf(sz);
+   ist(`${name}: genau ein Auftrag, bestätigt, Platzierung ${soll.join('/')}, eine Variantenabfrage mit Zeitlimit, Tag printful-confirmed`,
+-    [gesendet(e), e.prot.variantGets.length, e.prot.variantSignale, e.prot.tags.includes('printful-confirmed'), e.prot.tags.includes('printful-review')],
++    [gesendet(e), e.prot.variantGets.length, e.prot.variantSignale, e.prot.tags.includes('printful-pending'), e.prot.tags.includes('printful-review')],
+     [[[true, [soll], [Number(sz.sku.split('_').pop())]]], 1, [true], true, false]);
+ }
+ { // Variantennummer und Pfad: GET /products/variant/<Nummer aus der SKU>
+   const e = lauf({ pt: 'Handy-Zubehör', sku: '3615382_20688', seiten: ['Vorne'], variant: [antwort(798)] });
+-  ist('Abfrage geht an /products/variant/20688 (die Nummer aus der SKU), die Bestellung an variant_id 20688, die Bestellung selbst OHNE Zeitlimit-Signal', [e.prot.variantGets, e.prot.posts[0].items[0].variant_id, e.prot.postSignale], [['20688'], 20688, [false]]);
++  ist('Abfrage geht an /products/variant/20688 (die Nummer aus der SKU), die Bestellung an variant_id 20688, die Bestellung selbst mit Zeitlimit und vorher dauerhaft beanspruchtem Checkpoint', [e.prot.variantGets, e.prot.posts[0].items[0].variant_id, e.prot.postSignale], [['20688'], 20688, [true]]);
+ }
+ { // T-Shirt vorne + hinten: beide Seiten, URLs bleiben ihrer Seite zugeordnet, nur EINE Abfrage (Cache)
+   const e = lauf({ pt: 'T-Shirts', sku: '5599797_4025', seiten: ['Vorne', 'Hinten'], variant: [antwort(71)] });
+@@ -97,12 +171,12 @@
+ {
+   const netz = lauf({ pt: 'Handy-Zubehör', sku: '3615382_20688', seiten: ['Vorne'], variant: [{ wirft: 'ECONNRESET' }] });
+   ist('Netzfehler, Shop-Art «Handy-Zubehör»: dreimal versucht, Rückfall front, Auftrag als ENTWURF (kein confirm), Tag printful-review, KEIN printful-confirmed',
+-    [netz.prot.variantGets.length, gesendet(netz), netz.prot.tags.includes('printful-review'), netz.prot.tags.includes('printful-confirmed'), netz.prot.log.some((l) => /ENTWURF \(Review\)/.test(l))], [3, [[false, [['front']], [20688]]], true, false, true]);
++    [netz.prot.variantGets.length, gesendet(netz), netz.prot.tags.includes('printful-review'), netz.prot.tags.includes('printful-pending'), netz.prot.log.some((l) => /Anbieterstatus=draft/.test(l))], [3, [[false, [['front']], [20688]]], true, false, true]);
+   ist('…die Warnung nennt Auftrag, Rückseite/Vorderseite und den Grund', netz.prot.warn.some((w) => /#T1/.test(w) && /Vorderseite nicht gesichert/.test(w) && /derzeit nicht lesbar \(Netzfehler\)/.test(w) && /Auftrag bleibt Entwurf/.test(w)), true);
+   const h404 = lauf({ pt: 'Handy-Zubehör', sku: '3615382_20688', seiten: ['Vorne'], variant: [{ status: 404, body: { error: { message: 'nicht da' } } }] });
+   ist('HTTP 404: endgültig, KEINE Wiederholung (eine Abfrage), Rückfall front, Entwurf', [h404.prot.variantGets.length, gesendet(h404), h404.prot.tags.includes('printful-review')], [1, [[false, [['front']], [20688]]], true]);
+   const h502 = lauf({ pt: 'Handy-Zubehör', sku: '3615382_20688', seiten: ['Vorne'], variant: [{ status: 502, roh: '<html>Bad gateway</html>' }, antwort(798)] });
+-  ist('HTTP 502 (HTML), dann Erfolg: wiederholt, danach default und BESTÄTIGT', [h502.prot.variantGets.length, gesendet(h502), h502.prot.tags.includes('printful-confirmed')], [2, [[true, [['default']], [20688]]], true]);
++  ist('HTTP 502 (HTML), dann Erfolg: wiederholt, danach default und BESTÄTIGT', [h502.prot.variantGets.length, gesendet(h502), h502.prot.tags.includes('printful-pending')], [2, [[true, [['default']], [20688]]], true]);
+   const h429 = lauf({ pt: 'Handy-Zubehör', sku: '3615382_20688', seiten: ['Vorne'], variant: [{ status: 429, body: { error: { message: 'Too many requests' } } }, antwort(798)], retryAfter: 0 });
+   ist('HTTP 429, dann Erfolg: wiederholt, default, bestätigt', [h429.prot.variantGets.length, gesendet(h429)], [2, [[true, [['default']], [20688]]]]);
+   const pn = lauf({ pt: 'Poster', sku: '9000001_8948', seiten: ['Vorne'], variant: [{ wirft: 'ETIMEDOUT' }] });
+@@ -123,5 +197,14 @@
+   ist('Rucksack (kein «back»): Vorderseite gesichert, Rückseite nicht → Entwurf', [gesendet(ruck), ruck.prot.warn.filter((w) => /nicht gesichert/.test(w)).length], [[[false, [['front', 'back']], [9063]]], 1]);
+ }
+ 
+-console.log(`${ok} ok, ${fehl} Fehler`);
++for(const [name,settings]of [['fehlender Designchecker',{noDesign:true}],['leere Prüfantwort',{designText:''}],['mehrdeutige Prüfantwort',{designText:'not sure PASS'}],['Prüffehler',{designThrow:true}],['HTTP-Fehler mit PASS-Text',{designHttp:500}],['unvollständige LineItems',{partialLines:true}],['unlesbare Orderliste',{ordersMalformed:true}],['mehrzeilige Prüfantwort',{designText:'PASS - synthetic\nother result'}],['Shopify Checkpoint-userErrors',{markerError:'sync_checkpoint'}],['fehlender Ready-Beleg',{noReady:true}],['fehlendes Lieferland',{missingCountry:true}]]){
++  const e=lauf({pt:'T-Shirts',sku:'5599797_4025',seiten:['Vorne'],variant:[antwort(71)],...settings});
++  ist(name+': kein Lieferanten-POST',e.prot.posts,[]);
++}
++for(const markerError of ['order_id','tags']){
++  const e=lauf({pt:'T-Shirts',sku:'5599797_4025',seiten:['Vorne'],variant:[antwort(71)],markerError});
++  ist('Supplierauftrag bei Shopify-'+markerError+'-Fehler nicht als synced/pending quittiert', [e.prot.posts.length,e.prot.tags.includes('printful-synced'),e.prot.tags.includes('printful-pending'),e.prot.log.some(x=>x.includes('marker_unknown'))],[1,false,false,true]);
++}
++const { passed: onceCases } = await import('./printful_idempotenz_test.mjs');
++console.log(`${ok+onceCases} ok, ${fehl} Fehler (${ok} Adapterprüfungen + ${onceCases} Idempotenzfälle)`);
+ process.exit(fehl ? 1 : 0);
+diff --git a/automation/lib/printful_idempotenz.mjs b/automation/lib/printful_idempotenz.mjs
+new file mode 100644
+--- /dev/null
++++ b/automation/lib/printful_idempotenz.mjs
+@@ -0,0 +1,133 @@
++import { createHash, randomUUID } from 'node:crypto';
++
++const object = value => value && typeof value === 'object' && !Array.isArray(value);
++const positiveId = value => (typeof value === 'number' && Number.isSafeInteger(value) && value > 0) || (typeof value === 'string' && /^[1-9]\d*$/.test(value));
++const digest = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
++const scalar = value => value == null ? '' : String(value).normalize('NFC').trim().replace(/\s+/g, ' ');
++const compareText = value => scalar(value).toLowerCase();
++const addressKeys = ['name','address1','address2','city','state_code','country_code','zip','email','phone'];
++const statuses = new Set(['draft','inreview','pending','failed','canceled','inprocess','onhold','partial','fulfilled','archived']);
++const reviewStatuses = new Set(['draft','inreview','failed','canceled','onhold','archived']);
++
++export function externeBestellId(shop, orderId) {
++  const match = /^gid:\/\/shopify\/Order\/([1-9]\d{0,19})$/.exec(String(orderId));
++  if (!/^[a-z0-9][a-z0-9-]*\.myshopify\.com$/.test(String(shop)) || !match) throw new Error('order_identity_unknown');
++  return `ls-${createHash('sha256').update(shop).digest('hex').slice(0,8)}-${match[1]}`;
++}
++
++export function bestellBelegHash(order) {
++  if (!object(order) || !Array.isArray(order.lineItems?.edges) || order.lineItems.pageInfo?.hasNextPage !== false) throw new Error('order_lines_unknown_or_partial');
++  return digest({id:order.id,email:order.email,shippingAddress:order.shippingAddress,
++    lines:order.lineItems.edges.map(({node}) => ({quantity:node?.quantity,sku:node?.sku,variantSku:node?.variant?.sku,
++      attributes:node?.customAttributes,productType:node?.product?.productType,tags:node?.product?.tags,printFile:node?.product?.metafield?.value}))});
++}
++
++function canonicalItems(items) {
++  if (!Array.isArray(items) || !items.length) throw new Error('items_unknown');
++  return items.map(item => {
++    if (!positiveId(item.variant_id) || !Number.isSafeInteger(item.quantity) || item.quantity < 1 || !Array.isArray(item.files)) throw new Error('item_identity_unknown');
++    const files = item.files.filter(file => file?.type !== 'preview').map(file => {
++      if (!object(file) || typeof file.type !== 'string' || !file.type || typeof file.url !== 'string' || !/^https:\/\//.test(file.url)) throw new Error('file_identity_unknown');
++      return {type:file.type,url:file.url};
++    }).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
++    if (!files.length) throw new Error('files_unknown');
++    return {variant_id:String(item.variant_id),quantity:item.quantity,files};
++  }).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
++}
++
++export function auftragsAbsicht(payload) {
++  if (!object(payload.recipient)) throw new Error('recipient_unknown');
++  const recipient=Object.fromEntries(addressKeys.map(key=>[key,compareText(payload.recipient[key])]));
++  if (!recipient.name || !recipient.address1 || !recipient.city || !recipient.country_code || !recipient.zip) throw new Error('recipient_incomplete');
++  return {recipient,items:canonicalItems(payload.items)};
++}
++
++export function createAbsicht(payload) {
++  if (typeof payload.confirm !== 'boolean') throw new Error('confirmation_intent_unknown');
++  return {...auftragsAbsicht(payload),confirm:payload.confirm};
++}
++
++function checkpointValue(marker) {
++  if (marker == null) return null;
++  if (!object(marker) || typeof marker.value !== 'string' || !/^[a-f0-9]{64}$/.test(marker.compareDigest || '')) throw new Error('checkpoint_unreadable');
++  const value=JSON.parse(marker.value);
++  if (!object(value)) throw new Error('checkpoint_unreadable');
++  return value;
++}
++
++function exactProviderOrder(response, externalId, payload, allowedLegacyId) {
++  if (!object(response) || response.ok !== true || response.status !== 200 || response.j?.code !== 200 || !object(response.j.result)) return null;
++  const order=response.j.result;
++  if (!positiveId(order.id) || !statuses.has(order.status)) return null;
++  if (allowedLegacyId ? String(order.id)!==String(allowedLegacyId) || (order.external_id!=null && order.external_id!==externalId) : order.external_id!==externalId) return null;
++  try { if (JSON.stringify(auftragsAbsicht(order))!==JSON.stringify(auftragsAbsicht(payload))) return null; } catch { return null; }
++  return {id:String(order.id),status:order.status,review:reviewStatuses.has(order.status)};
++}
++
++function genuineNotFound(response) {
++  return response?.ok === false && response.status === 404 && response.j?.code === 404 &&
++    response.j?.error?.reason === 'NotFound' && typeof response.j?.result === 'string' && response.j.result.trim().length>0;
++}
++
++export async function synchronisiereEinmal({shop,storeId,order,payload,pf,loadState,claim,link,dry=false}) {
++  const blocked=reason=>({state:'blocked',reason,created:false});
++  let externalId,orderHash,intentHash,state,record;
++  try {
++    externalId=externeBestellId(shop,order.id);
++    if (!positiveId(storeId)) return blocked('printful_store_binding_missing');
++    orderHash=bestellBelegHash(order);intentHash=digest(createAbsicht(payload));
++    state=await loadState();
++    if (!object(state) || state.id!==order.id || bestellBelegHash(state)!==orderHash) return blocked('shopify_order_changed_or_unknown');
++    record=checkpointValue(state.pfCheckpoint);
++    if (record && (record.schemaVersion!==1 || record.shop!==shop || record.storeId!==String(storeId) || record.orderId!==order.id ||
++      record.externalId!==externalId || record.orderSha256!==orderHash || record.intentSha256!==intentHash || !['ready','inflight','linked','uncertain'].includes(record.state))) return blocked('checkpoint_identity_conflict');
++  } catch { return blocked('shopify_state_unknown'); }
++
++  const lookup=async path=>{try{return await pf(path,'GET',null,20000);}catch{return null;}};
++  const externalPath='/orders/@'+encodeURIComponent(externalId);
++  let found=await lookup(externalPath);
++  let existing=exactProviderOrder(found,externalId,payload);
++  const linkedId=state.pfOrderId?.value;
++  if (linkedId!=null && !positiveId(linkedId)) return blocked('shopify_provider_id_invalid');
++  if (existing && linkedId!=null && existing.id!==String(linkedId)) return blocked('shopify_provider_id_conflict');
++  if (!existing && genuineNotFound(found) && linkedId!=null) {
++    found=await lookup('/orders/'+encodeURIComponent(linkedId));
++    existing=exactProviderOrder(found,externalId,payload,linkedId);
++    if (!existing) return blocked('legacy_provider_order_unknown_or_mismatch');
++  }
++  const acknowledge=async (remote,created)=>{
++    if (dry) return {state:'dry_existing',providerId:remote.id,providerStatus:remote.status,created:false};
++    try {
++      const fresh=await loadState();
++      if (fresh?.id!==order.id || bestellBelegHash(fresh)!==orderHash) return {state:'marker_unknown',reason:'source_changed_before_link',providerId:remote.id,providerStatus:remote.status,created};
++      const ack=await link(remote,orderHash);
++      if (ack!==true) return {state:'marker_unknown',providerId:remote.id,providerStatus:remote.status,created};
++      return {state:created?'created_linked':'reconciled',providerId:remote.id,providerStatus:remote.status,review:remote.review,created};
++    } catch {return {state:'marker_unknown',providerId:remote.id,providerStatus:remote.status,created};}
++  };
++  if (existing) return acknowledge(existing,false);
++  if (!genuineNotFound(found)) return blocked('provider_lookup_unknown_or_mismatch');
++  if (!record) return blocked('legacy_reconciliation_evidence_missing');
++  if (record.state!=='ready') return blocked('previous_attempt_requires_reconciliation');
++  if (typeof record.reconciliationRef!=='string' || !record.reconciliationRef.trim()) return blocked('reconciliation_evidence_missing');
++  if (dry) return {state:'dry_ready',created:false};
++  const inflight={...record,state:'inflight',intentSha256:intentHash,attemptId:randomUUID()};
++  try {
++    if (await claim(inflight,state.pfCheckpoint.compareDigest)!==true) return blocked('checkpoint_claim_unconfirmed');
++    const fresh=await loadState();
++    const readback=checkpointValue(fresh?.pfCheckpoint);
++    if (JSON.stringify(readback)!==JSON.stringify(inflight) || bestellBelegHash(fresh)!==orderHash) return blocked('checkpoint_readback_unconfirmed');
++  } catch {return blocked('checkpoint_claim_unknown');}
++  found=await lookup(externalPath);existing=exactProviderOrder(found,externalId,payload);
++  if (existing) return acknowledge(existing,false);
++  if (!genuineNotFound(found)) return blocked('provider_recheck_unknown_or_mismatch');
++  try {
++    const fresh=await loadState();
++    if (fresh?.id!==order.id || bestellBelegHash(fresh)!==orderHash || JSON.stringify(checkpointValue(fresh.pfCheckpoint))!==JSON.stringify(inflight)) return blocked('source_or_claim_changed_before_post');
++  } catch {return blocked('source_or_claim_unknown_before_post');}
++  let post;
++  try {post=await pf('/orders'+(payload.confirm?'?confirm=1':''),'POST',{external_id:externalId,recipient:payload.recipient,items:payload.items},20000);} catch {post=null;}
++  const read=await lookup(externalPath);const remote=exactProviderOrder(read,externalId,payload);
++  if (!remote || (positiveId(post?.j?.result?.id) && String(post.j.result.id)!==remote.id)) return {state:'post_unknown',reason:'provider_readback_unconfirmed',created:false};
++  return acknowledge(remote,post?.ok===true && post.status===200 && post.j?.code===200 && String(post.j?.result?.id)===remote.id);
++}
+diff --git a/automation/printful_idempotenz_test.mjs b/automation/printful_idempotenz_test.mjs
+new file mode 100644
+--- /dev/null
++++ b/automation/printful_idempotenz_test.mjs
+@@ -0,0 +1,68 @@
++import assert from 'node:assert/strict';
++import { createHash } from 'node:crypto';
++import { synchronisiereEinmal, externeBestellId, bestellBelegHash, createAbsicht } from './lib/printful_idempotenz.mjs';
++
++const shop='au3j0y-hq.myshopify.com',storeId='123';
++const order={id:'gid://shopify/Order/1',email:'synthetic@example.invalid',shippingAddress:{name:'Synthetic',address1:'Test 1',city:'Basel',countryCodeV2:'CH',zip:'4000'},
++  lineItems:{edges:[{node:{quantity:1,sku:'111_4025',variant:{sku:'111_4025'},customAttributes:[{key:'Print file',value:'https://example.invalid/front.png'}],product:{productType:'T-Shirts',tags:['wunschdesign'],metafield:null}}}],pageInfo:{hasNextPage:false,endCursor:null}}};
++const payload={recipient:{name:'Synthetic',address1:'Test 1',city:'Basel',country_code:'CH',zip:'4000',email:'synthetic@example.invalid'},items:[{variant_id:4025,quantity:1,files:[{type:'front',url:'https://example.invalid/front.png'}]}],confirm:true};
++const sha=value=>createHash('sha256').update(value).digest('hex');
++const marker=value=>({value:JSON.stringify(value),compareDigest:sha(JSON.stringify(value))});
++const ready=()=>({schemaVersion:1,state:'ready',shop,storeId,orderId:order.id,externalId:externeBestellId(shop,order.id),orderSha256:bestellBelegHash(order),intentSha256:sha(JSON.stringify(createAbsicht(payload))),reconciliationRef:'synthetic-fixture://explicit-reviewed-scope'});
++const response=(status,result)=>({ok:status>=200&&status<300,status,j:{code:status,result,...(status===404?{error:{reason:'NotFound'}}:{})}});
++function harness(options={}){
++  const state=structuredClone(order);state.pfCheckpoint=options.legacy?null:marker(ready());state.pfOrderId=null;
++  let remote=options.remote?structuredClone(options.remote):null,posts=0,claims=0,links=0,lookups=0;
++  const events=[];
++  const args={shop,storeId,order:structuredClone(order),payload:structuredClone(payload),
++    loadState:async()=>{events.push('read-state');return structuredClone(state);},
++    claim:async(record,digest)=>{claims++;events.push('claim');if(options.claimThrows)throw Error('unknown');if(options.claimFalse || state.pfCheckpoint?.compareDigest!==digest)return false;if(!options.omitClaimReadback)state.pfCheckpoint=marker(record);if(options.changeOrder)state.email='changed@example.invalid';return true;},
++    link:async known=>{links++;events.push('link');if(options.markerFailsOnce&&links===1)return false;state.pfOrderId={value:known.id,compareDigest:sha(known.id)};return true;},
++    pf:async(path,method,body)=>{
++      if(method==='GET'){
++        events.push('lookup');lookups++;
++        if(options.changeAtLookup===lookups)state.email='changed-during-lookup@example.invalid';
++        if(options.replaceClaimAtLookup===lookups){const record=JSON.parse(state.pfCheckpoint.value);record.attemptId='other-worker';state.pfCheckpoint=marker(record);}
++        if(options.lookupThrows)throw Error('read failed');if(options.lookupResponse)return options.lookupResponse;
++        if(remote)return response(200,remote);return response(404,'Order not found');
++      }
++      assert.equal(method,'POST');posts++;events.push('post');
++      if(options.postFailsBeforeAccept)throw Error('timeout');
++      remote={id:42,external_id:body.external_id,status:options.postStatus||'pending',recipient:body.recipient,items:body.items};
++      if(options.postThrowsAfterAccept)throw Error('lost response');
++      if(options.postIdMismatch)return response(200,{...remote,id:43});
++      return response(200,remote);
++    }};
++  return {args,state,events,run:()=>synchronisiereEinmal(args),counts:()=>({posts,claims,links}),getRemote:()=>remote};
++}
++const remote=(overrides={})=>({id:42,external_id:externeBestellId(shop,order.id),status:'pending',recipient:structuredClone(payload.recipient),items:structuredClone(payload.items),...overrides});
++let count=0;const test=async(name,fn)=>{await fn();count++;console.log('ok '+name);};
++await test('Legacy order without source-backed ready checkpoint never creates',async()=>{const h=harness({legacy:true});assert.equal((await h.run()).reason,'legacy_reconciliation_evidence_missing');assert.equal(h.counts().posts,0);assert.equal(h.counts().claims,0);});
++await test('Ready order claims durable checkpoint before exactly one POST and verified lookup',async()=>{const h=harness();const r=await h.run();assert.equal(r.state,'created_linked');assert.equal(r.providerStatus,'pending');assert.equal(h.counts().posts,1);assert(h.events.indexOf('claim')<h.events.indexOf('post'));assert.equal(h.state.pfCheckpoint&&JSON.parse(h.state.pfCheckpoint.value).state,'inflight');assert.equal(h.getRemote().external_id,externeBestellId(shop,order.id));});
++await test('Provider success and failed Shopify marker reconciles next run without another POST',async()=>{const h=harness({markerFailsOnce:true});assert.equal((await h.run()).state,'marker_unknown');assert.equal((await h.run()).state,'reconciled');assert.equal(h.counts().posts,1);});
++await test('Unknown POST after acceptance is only reconciled, not claimed as own creation',async()=>{const h=harness({postThrowsAfterAccept:true});assert.equal((await h.run()).state,'reconciled');assert.equal((await h.run()).state,'reconciled');assert.equal(h.counts().posts,1);});
++await test('Unknown POST before acceptance remains inflight; even future 404 does not retry',async()=>{const h=harness({postFailsBeforeAccept:true});assert.equal((await h.run()).state,'post_unknown');assert.equal((await h.run()).reason,'previous_attempt_requires_reconciliation');assert.equal(h.counts().posts,1);});
++for(const [name,value]of [['auth',response(401,'Unauthorized')],['HTML 404',{ok:false,status:404,j:{}}],['empty 200',response(200,{})]])await test(name+' lookup is unknown, never absence',async()=>{const h=harness({lookupResponse:value});assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);});
++await test('Network lookup cannot proceed to claim or create',async()=>{const h=harness({lookupThrows:true});assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().claims,0);});
++await test('Existing external ID with wrong variant blocks, never heals with a new order',async()=>{const h=harness({remote:remote({items:[{...payload.items[0],variant_id:4026}]})});assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);});
++await test('Existing external ID with wrong recipient blocks',async()=>{const h=harness({remote:remote({recipient:{...payload.recipient,zip:'9999'}})});assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);});
++await test('Provider ID conflicts with stored Shopify identity blocks',async()=>{const h=harness({remote:remote()});h.state.pfOrderId={value:'43',compareDigest:sha('43')};assert.equal((await h.run()).reason,'shopify_provider_id_conflict');});
++for(const [name,opts]of [['CAS rejection',{claimFalse:true}],['uncertain CAS',{claimThrows:true}],['missing readback',{omitClaimReadback:true}],['changed order',{changeOrder:true}]])await test(name+' cannot create',async()=>{const h=harness(opts);assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);});
++await test('Unreadable checkpoint is not reset',async()=>{const h=harness();h.state.pfCheckpoint={value:'bad JSON',compareDigest:sha('x')};assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().claims,0);});
++await test('Missing explicit reconciliation reference blocks create',async()=>{const h=harness();const r=ready();delete r.reconciliationRef;h.state.pfCheckpoint=marker(r);assert.equal((await h.run()).reason,'reconciliation_evidence_missing');assert.equal(h.counts().posts,0);});
++await test('Partial source line-item page blocks before provider calls',async()=>{const h=harness();h.args.order.lineItems.pageInfo.hasNextPage=true;assert.equal((await h.run()).state,'blocked');assert.equal(h.events.length,0);});
++for(const status of ['failed','canceled','pending','draft'])await test('Existing '+status+' is only mapped with actual status, not recreated/paid',async()=>{const h=harness({remote:remote({status})});const r=await h.run();assert.equal(r.state,'reconciled');assert.equal(r.providerStatus,status);assert.equal(r.created,false);assert.equal(h.counts().posts,0);assert(!Object.hasOwn(r,'paid'));});
++await test('Concurrent workers sharing CAS can issue at most one POST',async()=>{const h=harness();const results=await Promise.all([h.run(),h.run()]);assert.equal(h.counts().posts,1);assert(results.some(r=>r.state==='blocked'));});
++await test('Absent store binding cannot read or create supplier orders',async()=>{const h=harness();h.args.storeId='';assert.equal((await h.run()).reason,'printful_store_binding_missing');assert.equal(h.events.length,0);});
++await test('Conflicting create acknowledgement never overwrites known identity',async()=>{const h=harness({postIdMismatch:true});assert.equal((await h.run()).state,'post_unknown');assert.equal(h.state.pfOrderId,null);assert.equal((await h.run()).state,'reconciled');assert.equal(h.counts().posts,1);});
++await test('Stable external IDs respect documented alphabet/32-character bound and shop scope',async()=>{const a=externeBestellId(shop,'gid://shopify/Order/12345678901234567890');assert(a.length<=32);assert(/^[A-Za-z0-9_-]+$/.test(a));assert.notEqual(a,externeBestellId('different.myshopify.com','gid://shopify/Order/12345678901234567890'));});
++await test('Ready checkpoint with wrong supplier intent cannot POST',async()=>{const h=harness();const r=ready();r.intentSha256='0'.repeat(64);h.state.pfCheckpoint=marker(r);assert.equal((await h.run()).reason,'checkpoint_identity_conflict');assert.equal(h.counts().posts,0);});
++await test('Missing country cannot be invented by supplier plan',async()=>{const h=harness();delete h.args.payload.recipient.country_code;assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);});
++await test('Unknown 404 reason is not supplier absence',async()=>{const h=harness({lookupResponse:{ok:false,status:404,j:{code:404,result:'Unknown store scope',error:{reason:'WrongStore'}}}});assert.equal((await h.run()).state,'blocked');assert.equal(h.counts().posts,0);assert.equal(h.counts().claims,0);});
++await test('Ready draft intent cannot authorize confirmed create',async()=>{const h=harness();const r=ready();r.intentSha256=sha(JSON.stringify(createAbsicht({...payload,confirm:false})));h.state.pfCheckpoint=marker(r);assert.equal((await h.run()).reason,'checkpoint_identity_conflict');assert.equal(h.counts().posts,0);});
++await test('Source changed during final supplier lookup blocks POST',async()=>{const h=harness({changeAtLookup:2});assert.equal((await h.run()).reason,'source_or_claim_changed_before_post');assert.equal(h.counts().posts,0);});
++await test('Own claim replaced during supplier lookup blocks POST',async()=>{const h=harness({replaceClaimAtLookup:2});assert.equal((await h.run()).reason,'source_or_claim_changed_before_post');assert.equal(h.counts().posts,0);});
++await test('Existing supplier order is not linked after source changed during lookup',async()=>{const h=harness({remote:remote(),changeAtLookup:1});const r=await h.run();assert.equal(r.state,'marker_unknown');assert.equal(r.reason,'source_changed_before_link');assert.equal(r.providerId,'42');assert.equal(h.counts().links,0);assert.equal(h.counts().posts,0);});
++console.log(JSON.stringify({passed:count,scope:'Synthetic supplier/Shopify responses only; no live API calls or production approval'}));
++
++export const passed=count;
