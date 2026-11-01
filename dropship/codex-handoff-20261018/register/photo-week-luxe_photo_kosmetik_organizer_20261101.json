@@ -16,7 +16,9 @@
     "mp4Sha256": null,
     "metricoolMediaUrls": [
       "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
-    ]
+    ],
+    "exportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "exportHashEqualsOriginal": true
   },
   "approval": {
     "formatAnswer": "Foto-/Karussellposts zusätzlich erlauben",
@@ -51,7 +53,7 @@
     ]
   },
   "checkpoint": {
-    "state": "ACKNOWLEDGED_PENDING_FRESH_READBACK",
+    "state": "SCHEDULED_CONFIRMED",
     "attempts": 3,
     "claimOwner": "codex-current-task-20261101-photo",
     "preparedAt": "2026-11-01T19:17:59Z",
@@ -59,7 +61,8 @@
     "requestStartedAt": "2026-11-01T19:19:51Z",
     "lastError": "Metricool400 validation: mediaAltText array size must equal media array size. No new ID/UUID returned; exact target-day no-match confirmed.",
     "correctionReason": "Explicit local URL-as-path failure and fresh target-day no-match countercheck; actual existing JPEG local file supplied instead. Caption/media identity/slot unchanged.",
-    "acknowledgedAt": "2026-11-01T19:20:24Z"
+    "acknowledgedAt": "2026-11-01T19:20:24Z",
+    "confirmedAt": "2026-11-01T19:20:53Z"
   },
   "request": {
     "args": {
@@ -80,6 +83,15 @@
   "channelState": {
     "network": "threads",
     "status": "PENDING",
+    "plannedAt": "2026-11-04T18:30:00+01:00",
+    "timezone": "Europe/Zurich",
+    "draft": false,
+    "autoPublish": true,
+    "threadsData": {
+      "replyControl": "EVERYONE",
+      "type": "POST",
+      "shareAsInstagramStory": false
+    },
     "platformId": null,
     "publicationUrl": null
   },
@@ -159,6 +171,13 @@
         "platformId": null,
         "publicationUrl": null
       }
+    },
+    {
+      "at": "2026-11-01T19:20:53Z",
+      "event": "Fresh UUID-targeted readback confirmed exact caption, single correct original image/hash, future slot, draftfalse, globalautoPublishtrue and only Threads PENDING. Scheduled; no published/platform-url claim.",
+      "id": 413194611,
+      "uuid": "-1937081137064819378",
+      "exportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e"
     }
   ]
 }
