@@ -602,8 +602,12 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | Vollimport / Bestandsabgleich | Geprüften isolierten POD-Bulk-Lesejob erstellt und Status zurückgelesen | COMPLETED, 492 Rootprodukte / 2146 Objekte; signierter Exportlink vom Connector blockiert, SKU-Matrix weiterhin unbekannt; keine Produktwrites |
 | Merchant / neue Exporte | Beide CSV-Dateien vom 31.10. vollständig geprüft, 18 Original-IDs aktuellen positiven CHF-Varianten zugeordnet | Korrekturdatei vorbereitet und gesichert; 53’333 Preisfehler-IDs im neueren Export, Timeout der Quellenabfrage, Connector ohne Schreibzugang; kein Feedfix ausgeführt |
 | Projektgedächtnis / Fortsetzung | Bestehende Aufgaben mit neuen Belegen fortgeschrieben und konkreten Diff gesichert | Revision fortgeführt, 16 Aufgaben und Historie erhalten; kein weiterer Kauf-Watch, Report oder Claude-Beleg behauptet |
+| Zentimeteranzeige | Explizite Zollmasse und Bereiche mit Faktor 2,54 für die Anzeige umgerechnet; vorhandene cm/mm bevorzugt | UMGESETZT IM VORSCHAU-THEME: Originalwerte/IDs, Preise, oz und Konfektionsgrössen erhalten;8″×10″→20,32×25,4cm,22–23″→55,88–58,42cm |
+| Titelbilder / gezielte Prüfung | Frühere Collage T-Shirt/Jutebeutel/Tasse wiederhergestellt; vier Dateien exakt zurückgelesen | 27 native Prüfungen bestanden,390/1440px ohne Überlauf; MAIN unverändert, keine Veröffentlichung, Produkt- oder Bestellaktion |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
 
 
 [LUXESTYLE_SELBSTGESTALTEN_20261101] [Bericht](SELBSTGESTALTEN-WEBSITE-20261101.md) · [Belege](SELBSTGESTALTEN-BELEGE-20261101.json) · [Merchant](MERCHANT-PREISPRUEFUNG-20261101.md). Aktuelle Inhaberfreigabe vorhanden; technische Blocker transparent.
+
+[LUXESTYLE_CM_TITELBILDER_20261101] [Bericht](SELBSTGESTALTEN-CM-TITELBILDER-20261101.md) · [Belege](SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json). Revision 19; übrige Aufgaben und Historie erhalten.
