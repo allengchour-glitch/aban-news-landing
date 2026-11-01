@@ -19,3 +19,12 @@ Stichproben der Listen (Plüsch, RC-Autos, Babyphones, 3D-Puzzles, Dashcams, Sit
 
 ## Rücknahme
 Sammlungen `s-…` der drei Bereichsdateien löschen, Tags `sort-<handle>` entfernen (`kategorien_anlegen.mjs`, Ledger).
+
+## Menü-Umbau (LIVE 01.11.2026, nach den Sammlungen)
+Skript `dropship/taxonomie-2610-b/menue_bereiche_0111.mjs` (liest `/tmp/advbau-claude/sh.mjs`), Sicherung `dropship/menu-sicherung/main-menu-vor-bereiche-0111.json`.
+- **Kinder & Baby:** Köpfe «Bausteine & Bausätze» (9), «Plüsch, Puppen & Spielwelten» (4), «Fahrzeuge & Ferngesteuertes» (5), «Lernen, Puzzles & Spiele» (4), «Baby & Kleinkind» (8), «Schule, Kinderzimmer & Draussen» (2); Babykleidung, Kinderschuhe, Kinder-Accessoires, CH-Lager und Geschenke unverändert.
+- **Wohnen & Garten:** «Werkzeug & Maschinen» (7), «Garten & Outdoor» (9), neu «Sanitär & Wasser» (4) und «Bau, Türen & Befestigung» (4); alle anderen Köpfe unverändert. Die Gruppe «Schutz & Sicherheit» steht schon unter Elektronik.
+- **Neu oberste Ebene «Auto & Motorrad»** (nach «Elektronik», 25 Links): Innenraum & Komfort, Aussen/Schlüssel/Sicherheit, Auto-Elektronik & Laden, Pflege & Werkzeug, Motorrad/E-Scooter/Velo. «Auto & KFZ-Zubehör» ist aus Elektronik dorthin verschoben.
+- Plan-Handle ohne Sammlung im Shop (übersprungen): `velo-werkzeug-reparatur`.
+- Vorher/nachher gelesen: ausserhalb der vier Äste 0 fehlend, 0 neu. Links: Auto & Motorrad 25 von 25 HTTP 200; Kinder & Baby und Wohnen & Garten siehe Prüfprotokoll unten.
+- **Entscheid des Besitzers möglich:** «Auto & Motorrad» als eigener Menüpunkt oben (statt unter Elektronik); Rücknahme = Sicherungsdatei per `menuUpdate`.
