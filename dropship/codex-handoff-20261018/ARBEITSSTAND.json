@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 40,
-  "updatedAt": "2026-11-01T19:53:23.827114Z",
+  "revision": 41,
+  "updatedAt": "2026-11-01T20:21:03.842254Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1225,15 +1225,16 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "reparaturpaket_vorbereitet_technisch_blockiert",
-      "title": "Merchant-Preisfehler aus beiden Exporten vom 31.10. exakt eingrenzen",
+      "state": "teilweise_shopbild_behoben_merchant_quelle_und_writer_blockiert",
+      "title": "Merchant: Preisquellen und konkrete CSV-Korrekturen",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN_TECHNISCHER_ZUGRIFFSBLOCKER",
-      "lastEvidence": "01.11.2026, eng begrenzte Fortsetzung: LuxeStyle-CH-Konto 5797470070 und gültige Quellen-/Preisfelder frisch entdeckt. Genau eine Rohquellenabfrage für 15427283157377_9000001_4016/de/CH/ONLINE mit MCP-Timeout -32603. Ergebnis UNKNOWN, keine Leer-/Null-/404-Interpretation, kein Retry/force_refresh. Drei vorhandene main-Feedhelfer frisch hashgeprüft und unverändert; id=handle erklärt weiterhin keine ProductID_SKU-Quelle. Keine Merchant-/Feed-/Preisänderung. Frühere18 Kandidaten und CSV-Zählungen bleiben datierte Belege, keine aktuelle Live-Zählung oder blind uploadbare Quelle.",
-      "nextAllowedStep": "Bestehende primäre Quelle, exakte ID, Sprache, Feedlabel, Varianten-Ziel-URL und Preispriorität authentifiziert lesen. Danach nur belegten Quelldiff anwenden und zurücklesen; die 18 Kandidaten sind keine ungeprüft anzulegende neue Quelle. Technischen Schreibzugang herstellen, keine erneute Inhaberfreigabe für denselben Fix verlangen.",
+      "belegArt": "EXPORT_VOLLSTAENDIG_AUSGEWERTET_EIN_VARIANTENBILD_NATIV_OEFFENTLICH_BEHOBEN",
+      "lastEvidence": "Drei neue Inhaber-CSV-Exporte vollständig geprüft:57’223 Zeilen,27’269 Offer-IDs,29’055 kanal-/sprach-/feedgebundene Listings, keine identischen Zeilendubletten.2’004 Offer-IDs mit Preisfehler,20 davon auch availability;1’510 weitere DE-Versandmeldungen. CSS-Block51’082 Zeilen entspricht25’541 Listings nur Shoppingads/Remarketing, nicht Free Listings; kein aktuelles Kontolimit daraus abgeleitet. Aktueller Shop luxestyle.ch/CHF und Merchant5797470070 LuxeStyleCH bestätigt. Eine neue exakte Preis-/Quellenprobe für15413245706625_14:691;5:4183#3xl/de/CH/ONLINE endete mit MCP-32603Timeout, kein Retry/force_refresh, Ergebnisunknown. Keine Merchant-Schreibaktion verfügbar; sechs bestehende Repoquellen erklären die aktiven CSV-IDs nicht. Geprüfte Hose15413245706625 ist DRAFT mit12VariantenCHF44.90/nullStorefront; kein Aktivieren oder Preisfüllen. Aktuelle Versandpolicy nurCH/LI, keine DE-Tarife erfinden; spätere Bereinigung nur ZiellandDE, nicht Sprache/ganzeQuelle. Konkrete eigene Shopify-Korrektur: weisse Uhr15491403940225/Variante67814685475207 von214×349 auf bestehendes passendes655×655 OriginalfotoMedia70451373080961 umgestellt; nativ und öffentlich bestätigt, PreisCHF51.90/SKU/Inventar/Status/alleTags inkl.rueckhol unverändert. Google-Neubewertung unbekannt. Silbergalerie ohne passenden grossen Ersatz, DRAFT-Hemd nicht aktiviert; gemeldeteFR-Uhrenseite aktuellHTTP200/exakteVariante kaufbar, eingereichteGoogleURL/Crawl unbekannt. Prüfmanifest3676Nicht-Kapazitäts-Issue-Listing-Keys aus6141Zeilen, keinFeedupload. Unabhängige Vollzählung/18gezielte Bildnachweise bestätigt, keine weiteren Konto-/Kanal-/Feed-/Preisänderungen, Bestell-/Kennzahl-/Flowreports oder Automationsänderungen.",
+      "nextAllowedStep": "Mit legitimem Merchant-Quellen-/Schreibzugang zuerst tatsächliche primäreQuelle, FetchURL, Originalfelder und vollständigen Listing-Schlüssel authentifiziert lesen. Danach nur belegte veraltete DRAFT-Einträge und unerwünschtes ZiellandDeutschland gezielt bereinigen, deutscheSprache/CH/LI erhalten; gemappteaktive Preise/Verfügbarkeit erst nach genauerVarianten-/Kaufbarkeitsbindung korrigieren. Keine erneute Freigabe für denselben beauftragten Fix; technischer Zugriff bleibt Blocker. WeissenUhr-Bildfix erhalten und tatsächlicheMerchant-Neubewertung gezielt lesen, keinen weiterenBlindupload. Silberbild erst bei sauberem grossenOriginal derselbenAusführung ersetzen. CSS-Limit undWerbeumfang belegen, keine pauschalenGoogle-Abwahlen; tatsächlicheCrawl-URL statt geratenerRedirects prüfen.",
       "blockers": [
-        "Tatsächliche Merchant-Quelle, Original-URL und Rohfelder nach MCP-Timeout weiterhin unbekannt",
-        "Aktueller Merchant-Connector hat keine Schreibaktion; anderer legitimer Schreibzugang unbestätigt"
+        "Tatsächliche primäre Merchant-Quelle, FetchURL und aktuelle Rohfelder nach neuer MCP-Timeoutprobe weiterhin unbekannt; alte identische Abfrage nicht wiederholt",
+        "Verfügbare Merchant-Verbindung bietet keine Schreibaktion; anderer legitimer Quelleneditor unbestätigt",
+        "Kein sauberes grosses Originalbild der Silber-Ausführung belegt; DRAFT-Hemd und nicht exakt gebundene Export-SKU bleiben unverändert"
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -1300,6 +1301,11 @@
           "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1348,6 +1354,19 @@
           ],
           "previousBelegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
           "previousLastEvidenceDate": "2026-11-01"
+        },
+        {
+          "at": "2026-11-01T20:21:03.842254Z",
+          "sourceRevision": 40,
+          "previousState": "reparaturpaket_vorbereitet_technisch_blockiert",
+          "previousTitle": "Merchant-Preisfehler aus beiden Exporten vom 31.10. exakt eingrenzen",
+          "previousLastEvidence": "01.11.2026, eng begrenzte Fortsetzung: LuxeStyle-CH-Konto 5797470070 und gültige Quellen-/Preisfelder frisch entdeckt. Genau eine Rohquellenabfrage für 15427283157377_9000001_4016/de/CH/ONLINE mit MCP-Timeout -32603. Ergebnis UNKNOWN, keine Leer-/Null-/404-Interpretation, kein Retry/force_refresh. Drei vorhandene main-Feedhelfer frisch hashgeprüft und unverändert; id=handle erklärt weiterhin keine ProductID_SKU-Quelle. Keine Merchant-/Feed-/Preisänderung. Frühere18 Kandidaten und CSV-Zählungen bleiben datierte Belege, keine aktuelle Live-Zählung oder blind uploadbare Quelle.",
+          "previousNextAllowedStep": "Bestehende primäre Quelle, exakte ID, Sprache, Feedlabel, Varianten-Ziel-URL und Preispriorität authentifiziert lesen. Danach nur belegten Quelldiff anwenden und zurücklesen; die 18 Kandidaten sind keine ungeprüft anzulegende neue Quelle. Technischen Schreibzugang herstellen, keine erneute Inhaberfreigabe für denselben Fix verlangen.",
+          "previousBlockers": [
+            "Tatsächliche Merchant-Quelle, Original-URL und Rohfelder nach MCP-Timeout weiterhin unbekannt",
+            "Aktueller Merchant-Connector hat keine Schreibaktion; anderer legitimer Schreibzugang unbestätigt"
+          ],
+          "previousBelegArt": "GEMESSEN_TECHNISCHER_ZUGRIFFSBLOCKER"
         }
       ],
       "resolvedBlockers": [
@@ -1373,6 +1392,35 @@
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
         }
+      },
+      "csvReviewR41": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
+        },
+        "rows": 57223,
+        "offerIds": 27269,
+        "listingKeys": 29055,
+        "missingPriceOfferIds": 2004,
+        "missingAvailabilityOfferIds": 20,
+        "germanyShippingListings": 1510,
+        "capacityListingKeys": 25541,
+        "capacityTrafficOnly": [
+          "Shopping ads",
+          "Dynamic remarketing"
+        ],
+        "reviewManifestKeys": 3676,
+        "reviewManifestIsFeed": false,
+        "ownShopifyImageFixes": 1,
+        "googleReapproval": "unknown",
+        "whiteVariantId": "67814685475207",
+        "newMediaId": "70451373080961",
+        "pixelSize": [
+          655,
+          655
+        ],
+        "sourceClarificationState": "Asked owner for data-source name or public token-free feed URL; no answer yet"
       }
     },
     {
@@ -3089,6 +3137,17 @@
         "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
         "readAt": "2026-11-01T19:53:23.827114Z"
       }
+    },
+    {
+      "revision": 41,
+      "at": "2026-11-01T20:21:03.842254Z",
+      "actor": "codex",
+      "action": "Neue drei CSV-Exporte nach vollständiger Listing-Identität geprüft und genau ein vorhandenes Variantenbild nativ/öffentlich verbessert. Merchant-Quelle/Writer blockiert, Preis-DRAFT/DE-Zielland/CSS-Abgrenzung konkret dokumentiert. Ein vorhandener Merchanttask fortgeschrieben,15 andere Tasks/16IDs samtR40-Theme undR39-Threads/Register erhalten; keine neuen Reports/Watchabfragen oder Geschäfts-/Frequenzänderungen.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+        "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+        "readAt": "2026-11-01T20:21:03.842254Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3258,12 +3317,17 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r40",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r41",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 40,
-    "snapshotNote": "R40 ergänzt tatsächlich nativ bestätigten Selbstgestalten-Entwurf; R39-Fototermin und enges Register erhalten. R37/R5 bleiben datierte Originale, Claude-Empfang unbekannt."
+    "latestCanonicalRevision": 41,
+    "snapshotNote": "R41 ergänzt konkrete Merchant-CSV-Nacharbeit mit einem bestätigten Shopbildfix und technischen Quellenblockern; R40 bleibt aktuelle Websiteübergabe, Empfang unbekannt.",
+    "merchantCsvSupplement": {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+      "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+      "readAt": "2026-11-01T20:21:03.842254Z"
+    }
   },
   "claudeCodeHandoffHistory": [
     {
