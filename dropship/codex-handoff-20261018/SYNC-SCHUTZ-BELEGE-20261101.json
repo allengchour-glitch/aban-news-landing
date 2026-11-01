@@ -143,7 +143,237 @@
       "TagsAddPayload"
     ],
     "migrationOrReadyCheckpointInitialized": false,
-    "crossSystemAtomicLock": false
+    "crossSystemAtomicLock": false,
+    "finalTestSummary": {
+      "at": "2026-11-01T08:45:21.061376+00:00",
+      "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "draftOnly": true,
+      "liveSupplierWrites": 0,
+      "liveShopifyWrites": 0,
+      "realOrdersRead": 0,
+      "runtime": "Node v24.19.0",
+      "entrypoint": "node automation/printful_sync_test.mjs",
+      "suite": {
+        "passed": 79,
+        "failed": 0,
+        "adapter": 45,
+        "module": 34,
+        "exit": 0,
+        "network": "Fully mocked; unhandled request throws"
+      },
+      "independentReview": {
+        "passed": 79,
+        "failed": 0,
+        "report": "review/FINAL-REVIEW.md",
+        "extraCases": "WrongStore 404 and confirm escalation both blocked, 0 POST"
+      },
+      "beforeReproduction": {
+        "scope": "Synthetic before-source reproduction; no network or real orders",
+        "runs": 2,
+        "providerCreates": 2,
+        "markerFailures": 4,
+        "summaryClaims": [
+          "Printful-Sync fertig: 1 bestätigt, 0 Entwurf/Review, 0 Item übersprungen.",
+          "Printful-Sync fertig: 1 bestätigt, 0 Entwurf/Review, 0 Item übersprungen."
+        ]
+      },
+      "mutation": {
+        "scope": "Isolated two-file synthetic copy only; candidate sources unchanged",
+        "mutation": "Remove own inflight-claim equality check immediately before POST",
+        "exit": 1,
+        "killed": true,
+        "failureExpected": "Own claim replaced during supplier lookup blocks POST",
+        "failureObserved": true,
+        "candidateModified": false
+      },
+      "roundtrip": {
+        "scope": "Four local review files only; no checkout/clone/deploy",
+        "gitApplyExit": 0,
+        "stderr": "",
+        "checks": [
+          {
+            "path": "automation/printful_sync.mjs",
+            "sha256": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+            "expected": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+            "equal": true
+          },
+          {
+            "path": "automation/printful_sync_test.mjs",
+            "sha256": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+            "expected": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+            "equal": true
+          },
+          {
+            "path": "automation/lib/printful_idempotenz.mjs",
+            "sha256": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+            "expected": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+            "equal": true
+          },
+          {
+            "path": "automation/printful_idempotenz_test.mjs",
+            "sha256": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+            "expected": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+            "equal": true
+          }
+        ],
+        "allByteIdentical": true
+      },
+      "graphql": {
+        "schemaDiscovery": true,
+        "validator": "skipped",
+        "runtimeExecution": false,
+        "operations": "GRAPHQL-OPERATIONS.json"
+      },
+      "node22": "unavailable",
+      "fullCI": "not_run; narrower CLAUDE.md no CI-simulation/cloning for review agents",
+      "patch": {
+        "path": "PRINTFUL-IDEMPOTENZ-20261101.patch",
+        "bytes": 59201,
+        "sha256": "3d0a3473f61c32856d7c6083edacc821ed80f10f1a87206317c6a9060b750571"
+      },
+      "files": [
+        {
+          "path": "automation/printful_sync.mjs",
+          "bytes": 16979,
+          "sha256": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+          "beforeSha256": "16dfccfe69f5ac59f1d14c3b48049c20e77680fdd51094b203998d9c008cafd4"
+        },
+        {
+          "path": "automation/printful_sync_test.mjs",
+          "bytes": 21221,
+          "sha256": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+          "beforeSha256": "9822f0adedf51861d979fbbcf02bf33a01ba25211fd66f0bf536a8014f7cfcf7"
+        },
+        {
+          "path": "automation/lib/printful_idempotenz.mjs",
+          "bytes": 9491,
+          "sha256": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+          "beforeSha256": null
+        },
+        {
+          "path": "automation/printful_idempotenz_test.mjs",
+          "bytes": 11487,
+          "sha256": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+          "beforeSha256": null
+        }
+      ],
+      "limitations": [
+        "Local prototype; no production approval",
+        "No source-backed ready scope or legacy migration initialized",
+        "No atomic supplier/Shopify lock; old writers require cutover review",
+        "No real supplier authentication or runtime scope/API-version proof",
+        "No positive legacy-ID fallback module case",
+        "No complete geometry/rights certification"
+      ]
+    },
+    "sourceManifest": {
+      "readDate": "2026-11-01",
+      "repository": "allengchour-glitch/aban-news-landing",
+      "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "source": "Fresh GitHub reads pinned to base commit; bounded files only",
+      "files": [
+        {
+          "path": "automation/printful_sync.mjs",
+          "githubBlobSha": "7b254998cf1e4828eb70d77ced831b427e3a2e04",
+          "localGitBlobSha": "7b254998cf1e4828eb70d77ced831b427e3a2e04",
+          "byteExactBlobMatch": true,
+          "sha256": "16dfccfe69f5ac59f1d14c3b48049c20e77680fdd51094b203998d9c008cafd4",
+          "local": "before/automation/printful_sync.mjs"
+        },
+        {
+          "path": "automation/printful_sync_test.mjs",
+          "githubBlobSha": "05e8f7dead5e5c24150d65c0313e53423fdc6857",
+          "localGitBlobSha": "05e8f7dead5e5c24150d65c0313e53423fdc6857",
+          "byteExactBlobMatch": true,
+          "sha256": "9822f0adedf51861d979fbbcf02bf33a01ba25211fd66f0bf536a8014f7cfcf7",
+          "local": "before/automation/printful_sync_test.mjs"
+        },
+        {
+          "path": "automation/lib/shopify_secret.mjs",
+          "githubBlobSha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+          "localGitBlobSha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+          "byteExactBlobMatch": true,
+          "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c",
+          "local": "before/automation/lib/shopify_secret.mjs"
+        },
+        {
+          "path": "automation/lib/printful_platzierung.mjs",
+          "githubBlobSha": "dbf216cae81ef2b317370b9de664db91584a48be",
+          "localGitBlobSha": "dbf216cae81ef2b317370b9de664db91584a48be",
+          "byteExactBlobMatch": true,
+          "sha256": "d33fef1ab1d4065d6c2a48a0a2febfbaeecb2e621dbddddfd78e1864b2f91089",
+          "local": "before/automation/lib/printful_platzierung.mjs"
+        },
+        {
+          "path": "automation/lib/printful_platzierung_test.mjs",
+          "githubBlobSha": "19610e167a56c43a8e1da1e54bf0579acfa711f7",
+          "localGitBlobSha": "19610e167a56c43a8e1da1e54bf0579acfa711f7",
+          "byteExactBlobMatch": true,
+          "sha256": "30ee3216052157546ae046733a025d1a5aae7130bb129c1425c545a0b2cf1cdf",
+          "local": "before/automation/lib/printful_platzierung_test.mjs"
+        },
+        {
+          "path": "dropship/pod-auswahl/platzierung_mitschnitte.json",
+          "githubBlobSha": "e2c1301c47ad3f78da19b048122bfb7ca09af846",
+          "localGitBlobSha": "060d3d7499a44fd429a87adb691f6e04c526a1b4",
+          "byteExactBlobMatch": false,
+          "sha256": "01379694d96c7efcb63326d178e3fe6030d90738b40cf0cacc106db9cabb8e6b",
+          "local": "after/dropship/pod-auswahl/platzierung_mitschnitte.json",
+          "transportTrailingNewlineOnly": true,
+          "normalizedGitBlobSha": "e2c1301c47ad3f78da19b048122bfb7ca09af846",
+          "normalizedSha256": "e73510b5755daedd52792857bd1d34d01c6d1df63dcda8fd2fabbf1e629d6f81",
+          "note": "Local tool snapshot has one added final newline; removing exactly one newline reproduces original GitHub blob. No semantic JSON change."
+        },
+        {
+          "path": "package.json",
+          "githubBlobSha": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+          "localGitBlobSha": "6a56e0b0c10db027cf28c9ba0af404111f85c05c",
+          "byteExactBlobMatch": false,
+          "sha256": "72026170dc0324e7432d31f374bf44c9bd9e3a9df36474bd77373da90d264ed0",
+          "local": "before/package.json",
+          "transportTrailingNewlineOnly": true,
+          "normalizedGitBlobSha": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+          "normalizedSha256": "c64f6be0856d2fc22afa328a0930119613d1672c76a7868a033c330758b696dd",
+          "note": "Local tool snapshot has one added final newline; removing exactly one newline reproduces original GitHub blob. No semantic JSON change."
+        }
+      ],
+      "historicalPatch": {
+        "path": "../input/PRINTFUL-SYNC-SCHUTZ-20261029.patch",
+        "sha256": "38f30bc3c66834facbd4779e0698cb9b4c346ccaf69ee85171d330f9a1616acb",
+        "incorporatedIntoCombinedPatch": true
+      },
+      "printfulOfficialDocs": {
+        "url": "https://developers.printful.com/docs/",
+        "local": "PRINTFUL-DOCS.txt",
+        "sha256": "b9c5eca947e4c238ae3c88b79a15c8e7c7f368ab9698c5f40795caed0ab99dee",
+        "sections": [
+          "Error response: structured NotFound",
+          "Orders API: external_id uniqueness and maximum32 characters",
+          "Orders API: GET by @external_id",
+          "Orders API: confirm costs/status semantics",
+          "Store Information API: GET /stores/{id}",
+          "X-PF-Store-Id header"
+        ]
+      },
+      "shopify": {
+        "schema": "SCHEMA-NOTES.json",
+        "operations": "GRAPHQL-OPERATIONS.json",
+        "validation": "GRAPHQL-VALIDATION.json",
+        "validatorState": "skipped",
+        "noOrderQueryOrMutationExecution": true
+      },
+      "boundedMissingSource": {
+        "path": "automation/lib/material_write_ledger.mjs",
+        "atCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+        "result": "NOT_FOUND",
+        "doesNotImplyNoOtherLedgerOrConnector": true
+      },
+      "instructions": {
+        "AGENTS": "../repo-context/AGENTS.md",
+        "CLAUDE": "../repo-context/CLAUDE.md",
+        "noCloneOrCiSimulationForReviewAgents": true
+      }
+    }
   },
   "cj": {
     "beforeAfter": {
@@ -741,5 +971,12 @@
     "schedule": "08:00/14:00/19:00 Europe/Zurich unchanged"
   },
   "claudeReceipt": "unknown",
-  "nextStep": "Recheck exact diffs and runtime grants; Node22 full CI; explicit bounded Printful migration/Ready proof and durable CJ reservation/reconciliation before live use."
+  "nextStep": "Recheck exact diffs and runtime grants; Node22 full CI; explicit bounded Printful migration/Ready proof and durable CJ reservation/reconciliation before live use.",
+  "mainRecheckedBeforeSave": {
+    "at": "2026-11-01T08:46:00Z",
+    "source": "fresh GitHub main/main comparison",
+    "sha": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+    "atPrecision": "minute"
+  }
 }
+
