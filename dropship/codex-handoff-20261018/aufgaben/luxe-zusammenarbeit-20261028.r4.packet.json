@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 4,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-11-01T16:22:09.950Z",
+  "baseCommit": "421f64305a4e568cb7e704dee1b2f4ac4cbab1ca",
+  "title": "Aktueller LuxeStyle-Stand fuer Claude Code R33",
+  "summary": "Koordinationsuebergabe zu oeffentlicher Website und geprueftem Bewertungsentwurf R31/R32; 16 stabile Aufgaben und Schutzgrenzen erhalten. baseCommit ist der Dokumentationsbranch-Commit der kompakten Uebergabe, keine neu gepruefte main-Codebasis. Keine erneute R3-Codeabnahme, keine produktive Integration, keine Freigabenerweiterung und keine Claude-Quittung. Aktuelle kanonische Dateien vor weiterer Arbeit frisch lesen.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+      "sha256": "08b29f29e73cd2da9bfe1e689af3dfdd24679774634a3269c14044c2bc8ce09b",
+      "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
+      "sha256": "793a1ddc6051eab827ff6884a3967039d56518d2ba158fa8218b68549247e617",
+      "gitBlobSha": "9af12d3dfec4916d2429884c8ccc71939d93576d"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+      "sha256": "8072af94d9fde736a7afc08c4e428c023ef9343bba6992e2dbc8a2c648059288",
+      "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c"
+    }
+  ],
+  "previousPacketSha256": "cc82f538f3340b1eadb9460389d4971eb2eb308e3bd26d17b9dcf2b6072a9402"
+}
