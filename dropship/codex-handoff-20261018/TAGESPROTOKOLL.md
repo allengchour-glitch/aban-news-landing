@@ -698,6 +698,9 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | Beauty & Pflege / Sport | Zwei neue illustrative Motive ohne Werbeschrift/Logos erstellt und in Shopify geladen | Zwei Bilddateien READY/CDN200/pixelgleich |
 | Bild-Einbindung | Section und Directory-Snippet im bestehenden Entwurf für Entdecken-Karten, dieselben zwei Mini-Kacheln und Kategorieübersicht angepasst | Zwei Dateien nativ exakt bestätigt; andereLinks/Bilder, R45Karussell und R44Änderungen erhalten. Keine globalen Collection-/Produkt-/CSS-/JS-/Locale-Writes |
 | Vorschau / Claude R46 |41begrenzte390/1440px-Bedingungen und visuelle Bildkontrolle abgeschlossen, aktuellenEinstieg gespeichert | Bestanden;110blockierteNicht-GET-/HEAD-Requests und13Fetchfehler separatdokumentiert. EntwurfUNPUBLISHED, keinPublish.17IDs/16andereTasks und Geschäfts-/Tagesgrenzen erhalten |
+| Winter- / Weihnachtskarten | Zwei bisherige Saisonlinks mit eigenen illustrativen Winterszenen/festlichen Geschenken bebildert | Zwei Shopify-Dateien READY/CDN200/pixelgleich; bisherige Labels/Links erhalten |
+| Einbindung / Vorschau R47 | Nur Section/CSS im bestehenden Entwurf geändert;26begrenzte Bedingungen auf360/390/1024/1440px und visuellerReview | BeideDateien nativexakt; mobiluntereinander/Desktopnebeneinander, keinSeitenüberlauf.70blockierteNicht-GET-/HEAD-Requests/8Fetchfehler dokumentiert; keineCheckout-/Tracking-/Vollthemeabnahme |
+| Claude / Gedächtnis R47 | AktuellenEinstieg und Belege gespeichert, einHomepageTask fortgeführt | R47Section/CSS vorälterenVersionen; R46Directory undübrigeBilder/Karussell/Preisfilter erhalten.17IDs/Historien/16andereTasks/Tagesgrenzen erhalten. UNPUBLISHED/keinPublish; ClaudeEmpfang unbekannt |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
 
