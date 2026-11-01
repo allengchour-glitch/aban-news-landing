@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "luxe-take-visual-acceptance-draft-1",
+  "createdAt": "2026-11-01T18:01:44.438341+00:00",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "status": "UNFILLED_PRODUCTION_DRAFT_NOT_APPROVAL",
+  "newWork": "Per-take visible evidence and before/after continuity controls; supplements existing hash/licensor rights receipt without replacing it.",
+  "product": {
+    "shop": "luxestyle.ch",
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "sku": "CJ-1477820492730732544",
+    "defaultExecutionConfirmed": false
+  },
+  "reference": {
+    "source": "PRODUCT-NATIVE.json",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "visualInspected": true,
+    "observedOnly": [
+      "Light housing and supporting frame",
+      "Dark dome with visible star/circle pattern",
+      "Four front buttons and a separate front opening",
+      "Separate light cover beside the unit"
+    ],
+    "doesNotProve": [
+      "Current default variant/motif set",
+      "Button functions or connector standard",
+      "Dimensions/material/power contents",
+      "Commercial film/image editing rights"
+    ]
+  },
+  "commonEvidenceRequired": [
+    "Exact original file path, SHA-256 and creator reference",
+    "Independent same-unit/variant identification photo or take, tied to current shop SKU and actual supplier variant",
+    "Licensor authority, dated commercial editing/advertising/organic grant for all six channels tied to this file hash",
+    "Actual ffprobe native motion/rotation/resolution/duration evidence plus human visual review",
+    "Subjective before/after frame references and reviewer/date, no filled acceptance from metadata alone"
+  ],
+  "takes": [
+    {
+      "takeId": "P_OPERATION",
+      "usedSecondsInMasterMaxAcrossHookChoices": 5.6,
+      "requiredNativeOriginalSecondsAtLeast": 7.6,
+      "requiredFormat": "portrait >=1080x1920, native constant30fps; legitimate larger capture allowed with controlled crop",
+      "originalFilename": null,
+      "sha256": null,
+      "sameUnitProofReference": null,
+      "variantAndMotifProofReference": null,
+      "licenceReceiptReference": null,
+      "criteria": [
+        "Full operating hand and device remain within frame for a continuous action",
+        "A visible pre-action and post-action state belong to this same unit; no hidden exchange/cut",
+        "No specific button effect described until demonstrated by verified manual/source"
+      ],
+      "actualFrameReferences": {
+        "inFrameStart": null,
+        "preActionState": null,
+        "fingerContact": null,
+        "postActionState": null,
+        "inFrameEnd": null
+      },
+      "reviewer": null,
+      "reviewedAt": null,
+      "accepted": false
+    },
+    {
+      "takeId": "P_PROJECTION",
+      "usedSecondsInMasterMaxAcrossHookChoices": 6.8,
+      "requiredNativeOriginalSecondsAtLeast": 8.8,
+      "requiredFormat": "portrait >=1080x1920, native constant30fps; legitimate larger capture allowed with controlled crop",
+      "originalFilename": null,
+      "sha256": null,
+      "sameUnitProofReference": null,
+      "variantAndMotifProofReference": null,
+      "licenceReceiptReference": null,
+      "criteria": [
+        "Same physically identified unit produces this recorded projection",
+        "Motif belongs to selected default execution and is supported by source evidence",
+        "Exposure stable enough to preserve actual colour/pattern; no inserted/composited stars"
+      ],
+      "actualFrameReferences": {
+        "unitAndSurfaceBinding": null,
+        "projectionStart": null,
+        "projectionEnd": null
+      },
+      "reviewer": null,
+      "reviewedAt": null,
+      "accepted": false
+    },
+    {
+      "takeId": "P_DETAIL",
+      "usedSecondsInMasterMaxAcrossHookChoices": 3.6,
+      "requiredNativeOriginalSecondsAtLeast": 5.6,
+      "requiredFormat": "portrait >=1080x1920, native constant30fps; legitimate larger capture allowed with controlled crop",
+      "originalFilename": null,
+      "sha256": null,
+      "sameUnitProofReference": null,
+      "variantAndMotifProofReference": null,
+      "licenceReceiptReference": null,
+      "criteria": [
+        "Housing shape, dome, support and front controls match current verified reference",
+        "No cover-lifting action or supplier montage cut replaces a genuine detail shot",
+        "Lighting/white balance preserve real housing and projection colours; no invented logo"
+      ],
+      "actualFrameReferences": {
+        "identityFront": null,
+        "detailStart": null,
+        "detailEnd": null
+      },
+      "reviewer": null,
+      "reviewedAt": null,
+      "accepted": false
+    },
+    {
+      "takeId": "P_HERO",
+      "usedSecondsInMasterMaxAcrossHookChoices": 4.0,
+      "requiredNativeOriginalSecondsAtLeast": 6.0,
+      "requiredFormat": "portrait >=1080x1920, native constant30fps; legitimate larger capture allowed with controlled crop",
+      "originalFilename": null,
+      "sha256": null,
+      "sameUnitProofReference": null,
+      "variantAndMotifProofReference": null,
+      "licenceReceiptReference": null,
+      "criteria": [
+        "Continuous closing shot, no recycled loop from same export",
+        "Device/projected pattern and background stay consistent with accepted preceding takes",
+        "Dedicated negative space for readable CTA without hiding product controls"
+      ],
+      "actualFrameReferences": {
+        "heroStart": null,
+        "ctaSpace": null,
+        "heroEnd": null
+      },
+      "reviewer": null,
+      "reviewedAt": null,
+      "accepted": false
+    }
+  ],
+  "globalBlockers": [
+    "Four native originals absent from explicit current manifest",
+    "auswahl-offen and Default Title do not identify the filmed execution or included motifs",
+    "Commercial take rights and final music listening/mix acceptance unconfirmed",
+    "No final MP4 or owner creative approval, durable publication register unknown"
+  ],
+  "publishable": false
+}
