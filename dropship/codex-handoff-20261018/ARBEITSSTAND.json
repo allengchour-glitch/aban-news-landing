@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 39,
-  "updatedAt": "2026-11-01T19:26:54.216763Z",
+  "revision": 40,
+  "updatedAt": "2026-11-01T19:53:23.827114Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2014,13 +2014,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "live_katalog_verifiziert_sticker_entwurf_bereit",
+      "state": "entwurf_erweitert_fotos_masse_kategorien_nativ_bestaetigt",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN_UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf aktuellen Sticker-/Originalvariantenwunsch die öffentliche Katalogursache belegt: Sticker unter Wohnen und Leben / Schreibwaren / Kategorie 202; Suchwort sticker findet sechs Modelle, Aufkleber bisher keines. Lokaler Abgleich aller 572 Modelle / 13’160 Varianten mit hashgeprüften Printful-Rohquellen ohne Abweichung; 253 Quellen vom 01.11., 319 vom 29.10., keine aktuelle globale API-Vollständigkeit behauptet. Öffentlicher CDN-Index und sechs gezielte Detailshards bytegleich, fünf Stickerarten mit 17 Originalvarianten plus drei Car-Magnet-Varianten in originaler Kategorie. Kiss-Cut 358 hat vier echte verfügbare CHF-Shopangebote, aktuelles ACTIVE-Produkt 15422942609793 und Varianten nativ geprüft; andere fünf Kategorieprodukte ohne Shopzuordnung. Aus aktuellem MAIN 212971061639 genau eine neue UNPUBLISHED-Kopie 212978598279 erstellt. Dort sichtbaren Sticker-Einstieg, Aufkleber-Suchalias, validierten Kategorien-Direktlink, vollständigen Alle-Produkte-Reset, genaue Variantenanzahl und ehrliche Hersteller-Freitextreferenz ergänzt. Fünf Dateien gespeichert und nativ bestätigt, Originaldaten/Preise/IDs/Bilder unverändert. Begrenzte native UI-/Variantenprüfung separat belegt; kein MAIN-Publish, Import, Warenkorb-/Bestellwrite oder neue Fulfilmentfreigabe.",
-      "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212978598279&view=luxe-gestalten&catalog_category=202",
-      "nextAllowedStep": "Geprüften Sticker-Entwurf 212978598279 über legitimen Shopify-Admin veröffentlichen und öffentlich gegenprüfen; bestehende Websitefreigabe erhalten. Für weitere Originalvarianten vor kaufbaren Shopangeboten exakte Zuordnung, CHF-Verkaufspreise, aktuelle CH-/Technikkosten und vollständige Druck-/Fulfilmentbindung belegen. Bestehendes Kiss-Cut-Produkt nicht duplizieren. Vorhandenen Bulk-Export nur über erlaubten Zugang lesen, keine signierten Zugriffsgrenzen umgehen.",
+      "belegArt": "UMGESETZT_UNPUBLISHED_SIEBEN_FINALE_DATEIEN_EXAKT_NATIV_BESTAETIGT",
+      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt.",
+      "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
+      "nextAllowedStep": "Denselben bestehenden Entwurf nach frischem Shop-/Rollen-/vollständigem Theme-Diff über legitimen Shopify-Zugang veröffentlichen und öffentlich DE/FR auf Mobil/Desktop prüfen; bestehende Websitefreigabe nicht erneut verlangen. Aktuelle sieben R40-Dateiversionen vor älteren gleichen Pfaden verwenden, übrige Startseiten-/Sticker-/Review-/FR-Änderungen erhalten. Fehlende bedruckte Lifestylegalerien und weitere Hauptbilder nur in begrenzten belegten Schritten ergänzen, keine pauschale Aktivierung der 541 Cache-Referenzen. Für echte weitere Shopangebote CHF-Preise, CH-Kosten, exakte Varianten-/SKU-Zuordnung und Druck-/EDM-/Bestellbindung separat belegen; keine Supplierkosten oder Fremdreviews übernehmen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -2278,7 +2278,7 @@
         }
       ],
       "blockers": [
-        "Neue Sticker-UI nur im UNPUBLISHED-Entwurf 212978598279; Connector blockiert MAIN-Dateiwrites und Veröffentlichung. Bisheriger Katalog ist öffentlich vorhanden.",
+        "Erweiterte UI mit 31 Herstelleransichten liegt im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Dateiwrites/Publikation; noch keine öffentliche Abnahme dieses Stands.",
         "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
         "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
         "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
@@ -2386,6 +2386,11 @@
           "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
           "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
           "readAt": "2026-11-01T17:51:14Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json",
+          "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
+          "readAt": "2026-11-01T19:53:23.827114Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2543,6 +2548,22 @@
           "previousBelegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
           "previousLastEvidenceDate": "2026-11-01",
           "previousPreviewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten"
+        },
+        {
+          "at": "2026-11-01T19:53:23.827114Z",
+          "sourceRevision": 39,
+          "previousState": "live_katalog_verifiziert_sticker_entwurf_bereit",
+          "previousLastEvidence": "Auf aktuellen Sticker-/Originalvariantenwunsch die öffentliche Katalogursache belegt: Sticker unter Wohnen und Leben / Schreibwaren / Kategorie 202; Suchwort sticker findet sechs Modelle, Aufkleber bisher keines. Lokaler Abgleich aller 572 Modelle / 13’160 Varianten mit hashgeprüften Printful-Rohquellen ohne Abweichung; 253 Quellen vom 01.11., 319 vom 29.10., keine aktuelle globale API-Vollständigkeit behauptet. Öffentlicher CDN-Index und sechs gezielte Detailshards bytegleich, fünf Stickerarten mit 17 Originalvarianten plus drei Car-Magnet-Varianten in originaler Kategorie. Kiss-Cut 358 hat vier echte verfügbare CHF-Shopangebote, aktuelles ACTIVE-Produkt 15422942609793 und Varianten nativ geprüft; andere fünf Kategorieprodukte ohne Shopzuordnung. Aus aktuellem MAIN 212971061639 genau eine neue UNPUBLISHED-Kopie 212978598279 erstellt. Dort sichtbaren Sticker-Einstieg, Aufkleber-Suchalias, validierten Kategorien-Direktlink, vollständigen Alle-Produkte-Reset, genaue Variantenanzahl und ehrliche Hersteller-Freitextreferenz ergänzt. Fünf Dateien gespeichert und nativ bestätigt, Originaldaten/Preise/IDs/Bilder unverändert. Begrenzte native UI-/Variantenprüfung separat belegt; kein MAIN-Publish, Import, Warenkorb-/Bestellwrite oder neue Fulfilmentfreigabe.",
+          "previousNextAllowedStep": "Geprüften Sticker-Entwurf 212978598279 über legitimen Shopify-Admin veröffentlichen und öffentlich gegenprüfen; bestehende Websitefreigabe erhalten. Für weitere Originalvarianten vor kaufbaren Shopangeboten exakte Zuordnung, CHF-Verkaufspreise, aktuelle CH-/Technikkosten und vollständige Druck-/Fulfilmentbindung belegen. Bestehendes Kiss-Cut-Produkt nicht duplizieren. Vorhandenen Bulk-Export nur über erlaubten Zugang lesen, keine signierten Zugriffsgrenzen umgehen.",
+          "previousBlockers": [
+            "Neue Sticker-UI nur im UNPUBLISHED-Entwurf 212978598279; Connector blockiert MAIN-Dateiwrites und Veröffentlichung. Bisheriger Katalog ist öffentlich vorhanden.",
+            "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
+            "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
+          ],
+          "previousBelegArt": "GEMESSEN_UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+          "previousPreviewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212978598279&view=luxe-gestalten&catalog_category=202"
         }
       ],
       "liveThemeId": "212971061639",
@@ -2612,6 +2633,98 @@
           "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
           "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
           "readAt": "2026-11-01T17:51:14Z"
+        }
+      },
+      "pendingCatalogUpdate": {
+        "themeId": "212978598279",
+        "sourceMainThemeId": "212971061639",
+        "state": "UNPUBLISHED_FINAL_TEXT_NATIVE_VERIFIED",
+        "files": [
+          {
+            "filename": "assets/luxe-clothing-reference-gallery.json",
+            "nativeMd5": "2b44047dffeb78f2bda93021b16bdc3b",
+            "sha256": "a807108239adcd43802e1380e52c0af216d50ab5b145d1a3287dd91453f45e37",
+            "bytes": 157419,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "assets/luxe-clothing.css",
+            "nativeMd5": "ce07203b9525d83d8d7366b51799ad88",
+            "sha256": "ef2408fd80afc3faffc2d4117bf5b3106eac3dbabdabd7b1e122f44e490dd54a",
+            "bytes": 21385,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "assets/luxe-clothing.js",
+            "nativeMd5": "66998e1ab2df428bec60ed0bc7e0cf78",
+            "sha256": "da824a6802f61e399c9ecdf7261e20dca16d6ba8a4173020a6fb213d30bb5b79",
+            "bytes": 53029,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "locales/de.json",
+            "nativeMd5": "d3307d138014e4348e175b3bf0e64794",
+            "sha256": "68e068d23a78e43033ac4f8683e66c035ba3548d5a880ae127b08ff85dc0fcc3",
+            "bytes": 52024,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "locales/en.default.json",
+            "nativeMd5": "ab6b1e3b8dcbfeaa52ae16565dc97592",
+            "sha256": "74aa6def3bca0814b5160e6fe7d6a3a2dd7ceab40c2d71851934f573ee9f447c",
+            "bytes": 49346,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "locales/fr.json",
+            "nativeMd5": "b1ccf85b632eee8445d3369a2b3519e3",
+            "sha256": "e6331b6cd8b4ec468cb93aeb02adbd0522336fbcd86357b509c30c8d93084d9e",
+            "bytes": 31494,
+            "exactNativeReadback": true
+          },
+          {
+            "filename": "sections/luxe-clothing.liquid",
+            "nativeMd5": "88cfc0a382c60e792ca61f8d430d9525",
+            "sha256": "856e7673daf75683ee03acb054f655db8c7c6fa76bd4249cf717fe52385b81c9",
+            "bytes": 28766,
+            "exactNativeReadback": true
+          }
+        ],
+        "nativeMutationBatches": 2,
+        "functionalTests": {
+          "isolatedDom": 30,
+          "separateImageBounds": 9,
+          "scope": "No native premium/EDM/checkout acceptance"
+        },
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json",
+          "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
+          "readAt": "2026-11-01T19:53:23.827114Z"
+        }
+      },
+      "productReferenceGallery": {
+        "currentMainReferences": 31,
+        "initialModels": [
+          12,
+          356,
+          582,
+          568,
+          634,
+          653,
+          259
+        ],
+        "originalVariantUnitShapeBindings": 397,
+        "additionalCurrentModels": 24,
+        "additionalOriginalVariantIdentityComparisons": 789,
+        "onlyCachedAdditionalReferences": 541,
+        "fullCatalogueModelsRetained": 572,
+        "fullCatalogueVariantsRetained": 13160,
+        "printedLifestyleGalleryVerified": false,
+        "remainingState": "source-dated main-image inventory only, not wholesale activation; existing variant pictures preserved",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json",
+          "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
+          "readAt": "2026-11-01T19:53:23.827114Z"
         }
       }
     }
@@ -2965,6 +3078,17 @@
         "gitBlobSha": "dc616ccd78b9cfa4d069ce4363c03d5e1c6c15d7",
         "readAt": "2026-11-01T19:26:54.216763Z"
       }
+    },
+    {
+      "revision": 40,
+      "at": "2026-11-01T19:53:23.827114Z",
+      "actor": "codex",
+      "action": "Erweiterten Selbstgestalten-Entwurf mit 31 echten Printful-Ansichten, Originalvariantengalerie, CH-Einheiten, Kategorien und Sortierung gespeichert und sieben finale Dateien exakt nativ bestätigt. 30 DOM- und neun zusätzliche Bildbreitenprüfungen getrennt. Nur Personalizer-Task geändert, 15 andere Tasks samt R39-Threads-Termin/Fotofreigabe und alle 16 IDs/Historien erhalten. Kein MAIN-Publish, Produktimport, Preis-/Review-/Bestellwrite, neuer Report/Kauf-Watch oder Zeitplan.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json",
+        "gitBlobSha": "c6d34881e29998de24f6c14addf211b60f2fb5f6",
+        "readAt": "2026-11-01T19:53:23.827114Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3128,18 +3252,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 37,
-    "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
-    "gitBlobSha": "14bdf7db431fa7976e404452fd5555389e8762b7",
+    "documentationRevision": 40,
+    "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R40.md",
+    "gitBlobSha": "bfc70afc6e7ab49cc31df20dc6c0dba6b4c44aba",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "39a7d28615b54421144b5db94f8efe77d6278c68",
+    "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r39",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r40",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 39,
-    "snapshotNote": "R39 enthält tatsächlich bestätigten einen Threads-Fototermin und enges Register; R37/R5-Websiteübergabe bleibt separat, Empfangunbekannt."
+    "latestCanonicalRevision": 40,
+    "snapshotNote": "R40 ergänzt tatsächlich nativ bestätigten Selbstgestalten-Entwurf; R39-Fototermin und enges Register erhalten. R37/R5 bleiben datierte Originale, Claude-Empfang unbekannt."
   },
   "claudeCodeHandoffHistory": [
     {
@@ -3157,6 +3281,23 @@
         "scope": "documentation_and_review_only_no_installation_or_execution",
         "latestCanonicalRevision": 36,
         "snapshotNote": "R36 enthält zusätzliche Startseitenkarten und Abendpaket; R33/R4 bleiben datierte Originale, tatsächlicher Claude-Empfang unbekannt."
+      }
+    },
+    {
+      "at": "2026-11-01T19:53:23.827114Z",
+      "previousHandoff": {
+        "documentationRevision": 37,
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+        "gitBlobSha": "14bdf7db431fa7976e404452fd5555389e8762b7",
+        "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+        "entryGitBlobSha": "39a7d28615b54421144b5db94f8efe77d6278c68",
+        "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+        "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r39",
+        "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+        "receiptState": "unknown_missing_receipt",
+        "scope": "documentation_and_review_only_no_installation_or_execution",
+        "latestCanonicalRevision": 39,
+        "snapshotNote": "R39 enthält tatsächlich bestätigten einen Threads-Fototermin und enges Register; R37/R5-Websiteübergabe bleibt separat, Empfangunbekannt."
       }
     }
   ]
