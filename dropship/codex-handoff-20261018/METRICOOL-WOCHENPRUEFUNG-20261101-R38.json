@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 38,
+  "at": "2026-11-01T19:02:53.985599+00:00",
+  "ownerRequest": "pushe metricool 1 woche lang voraus, mit tollste produkten",
+  "scope": "Fresh matching Shopify/Metricool identity, rolling-seven-day queue and bounded master/source/reconciliation checks; no writes without material/format prerequisites",
+  "weekPlan": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAtUTC": "2026-11-01 18:58:47 UTC",
+    "identity": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "match": true
+    },
+    "request": {
+      "brandId": "6227837",
+      "fromDate": "2026-11-01T18:58:47+00:00",
+      "toDate": "2026-11-08T18:58:47+00:00",
+      "timezone": "Europe/Zurich",
+      "extendedRange": false
+    },
+    "existingPosts": 7,
+    "providerPendingStates": 14,
+    "rows": [
+      {
+        "id": 407830728,
+        "uuid": "7282371443509710052",
+        "publicationDate": {
+          "dateTime": "2026-11-02T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "Plüsch Panda 15 cm",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407838073,
+        "uuid": "-3660854990879961370",
+        "publicationDate": {
+          "dateTime": "2026-11-03T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "Elegante Damenuhr in Roségold",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407849114,
+        "uuid": "-6402384969971711358",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "Leichter Laptop-Rucksack für Pendler",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 1,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407849577,
+        "uuid": "5982651913735720132",
+        "publicationDate": {
+          "dateTime": "2026-11-05T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "Plüsch Waschbär",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407854817,
+        "uuid": "5940175700385481481",
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "JCB Mikrobagger 8010 CTS",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407876249,
+        "uuid": "-2612931623723381280",
+        "publicationDate": {
+          "dateTime": "2026-11-07T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "XXL Hoodie-Decke mit Taschen für Sie & Ihn",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      },
+      {
+        "id": 407889412,
+        "uuid": "-6564064169639197228",
+        "publicationDate": {
+          "dateTime": "2026-11-08T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "productLabelFromPost": "Plüsch Hochlandrind",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "mediaCount": 2,
+        "typeByProvider": {
+          "facebook": "POST",
+          "instagram": "POST"
+        },
+        "createdByThisRun": false
+      }
+    ],
+    "exactDuplicates": [],
+    "changesAgainstR36SelectedFields": [],
+    "existingOldPostClaims": "Product names/prices/materials/delivery/bio/rights not freshly approved by planner read",
+    "ownWrites": 0,
+    "publishedByThisRun": 0,
+    "newScheduledByThisRun": 0,
+    "metricsReads": 0,
+    "unknowns": [
+      "New approved master MP4/rights",
+      "Durable per-master/channel publication ledger",
+      "Current original existing product/claim and image rights verification",
+      "Current channel bio/board/post flags for new pushes"
+    ],
+    "currentFormatQuestion": "Owner asked whether high-quality photo/carousel posts may additionally be allowed; awaiting explicit answer, no dependent write"
+  },
+  "materialCheck": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-01T19:00:31.699954+00:00",
+    "scope": "Bounded explicit original manifest, named master workspaces, current R37 canonical/task/handoff, three publisher/helper sources, one source queue and two targeted default-branch searches. No global media/credentials scan, render, publication, ledger reset or workflow execution.",
+    "canonical": {
+      "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+      "sha": "d78e5922ba42f47efe05bf6534fba395e001879d",
+      "revision": 37,
+      "masterTask": [
+        {
+          "id": "master-projector-15521256604033",
+          "state": "blockiert",
+          "lastEvidenceDate": "2026-11-01",
+          "lastEvidence": "Abendfortsetzung desselben Masters luxe_sternenprojektor_master_20261018: Projektor ACTIVE / CHF 34.90, exakte Variante/SKU, echte Bildreferenz und Storefront verfügbar frisch bestätigt; tracked=false / CONTINUE / Menge 0 ohne Liefer-/Bestandsversprechen. Repo-Sperrwächter, jedes rueckhol und leere Tags geprüft, kein Treffer; auswahl-offen bleibt Ausführungsblocker. Pflichtmusik lokal hashgleich zum aktuellen main, Herkunftserklärung ORIGINAL PRO gelesen, finale Rechte-/Hörabnahme offen. Neu konkreter Sicht-/Kontinuitätsbogen mit Vorher-/Nachherbildern, identischer Geräteeinheit, tatsächlicher Bedienhandlung, Motivzuordnung und freiem CTA-Raum für vier Originaltakes vorbereitet; Felder unbefüllt, keine Abnahme. Bestehender 18-Sekunden-Plan mit 1080×1920, 30 fps und 540 Frames und sechs stabile Caption-UTMs fortgeführt. Explizites Originalmanifest weiter ohne vier passende Takes, kein Render oder Socialwrite. Frische Metricool-Identität/Planung passend: sieben bestehende Objekte / 14 PENDING, keine exakten Doppel im Fenster. Heutige Kennzahl-/Flowreports datiert wiederverwendet, keine zweite Tagesabfrage. Inhaber-YT-Zielgruppe allgemein/nicht speziell für Kinder erhalten; konkretes Postflag offen.",
+          "blockers": [
+            "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+            "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
+          ],
+          "nextAllowedStep": "Vier tatsächliche native Originaltakes samt exakter Ausführung/Motiven/Strom- und kommerziellen Film-/Bearbeitungsrechten in vorhandene Annahmekette eintragen. Neuen Sicht-/Kontinuitätsbogen mit echten Framebelegen und Prüfer ausfüllen; erst danach denselben Master schneiden und fertige MP4 auf Bild/Ton/Text/Crops abnehmen. Vor späterem Metricool-Push Produkt-/Bio-/Board-/Postflag-/Ledgerchecks frisch durchführen. Keine Altclip-/Websitevideo-Ersatzfreigabe oder erneute gleiche YT-Zielgruppenfrage.",
+          "visualAcceptanceDraft": {
+            "path": "dropship/codex-handoff-20261018/TAKE-SICHTABNAHME-20261101-R36.json",
+            "state": "DRAFT_UNFILLED_NOT_APPROVAL",
+            "masterId": "luxe_sternenprojektor_master_20261018",
+            "source": {
+              "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+              "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+              "readAt": "2026-11-01T18:14:26Z"
+            }
+          }
+        }
+      ]
+    },
+    "handoff": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+      "sha": "14bdf7db431fa7976e404452fd5555389e8762b7"
+    },
+    "originals": {
+      "at": "2026-11-01T18:58:22.802206+00:00",
+      "checker": {
+        "path": "/workspace/luxestyle-review/lauf-20261101/master/check_originals.py",
+        "sha256": "06a5d6a8dbaca37e61fbbd73cbcdb7bdbfd9ddc65d168e5d48b48f0cfac87b6c"
+      },
+      "manifest": {
+        "path": "/workspace/luxestyle-review/lauf-20261101/master/ORIGINALS-MANIFEST.json",
+        "sha256": "44967b715a3baa8eb6768fc6ce3da67249b397451d30ab8da7f9ac12bf635de1",
+        "unchangedFromEarlierAcceptedSource": true
+      },
+      "exitCode": 2,
+      "result": {
+        "documentationConsistent": false,
+        "publicationReady": false,
+        "renderApproved": false,
+        "issues": [
+          "P_DETAIL:original_missing",
+          "P_HERO:original_missing",
+          "P_OPERATION:original_missing",
+          "P_PROJECTION:original_missing"
+        ],
+        "scope": "Offline consistency only; referenced rights and subjective approvals are not authenticated by this script."
+      },
+      "scope": "Only explicit original manifest; no global file/media/credential scan and no render/publication"
+    },
+    "legacyReference": {
+      "path": "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4",
+      "bytes": 3679836,
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "ffprobeExitCode": 0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 960,
+            "height": 540,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "27.960000"
+        }
+      },
+      "classification": "Legacy planning reference only; not approved professional master or native original replacement"
+    },
+    "ledgerAndRights": {
+      "localLedgerHelper": {
+        "path": "/workspace/luxestyle-review/next-improvements-20261018/automation/master_publication_ledger.mjs",
+        "sha256": "d593a1e25dc978f085240d480d36c2ee7fad7c4a5e1bcb4e040f4e1cf8cfdc2a",
+        "header": [
+          "// LOCAL DRAFT. No HTTP, publishing, credential access, or background jobs.",
+          "// The file must live on a verified persistent store before cross-run use.",
+          "// Mirrors the repo publisher's exclusive lock + fsync + same-dir atomic rename.",
+          "import fs from 'node:fs';"
+        ],
+        "isDraft": true,
+        "persistentRegisterState": "unknown_no_verified_runtime_path_or_data",
+        "executed": false
+      },
+      "music": {
+        "path": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+        "bytes": 11343950,
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "matchesDatedR36Sha256": true,
+        "freshRemoteBinaryHashRead": false,
+        "finalCommercialRightsAndListeningAcceptance": "unknown"
+      },
+      "visualAcceptance": {
+        "path": "/workspace/luxestyle-review/discover-more-20261101/evening/master/TAKE-VISUAL-ACCEPTANCE.json",
+        "sha256": "a6f794a83ad111104ef05acd53536022cc81e9d450646f613c857bf2c3e6d90b",
+        "status": "UNFILLED_PRODUCTION_DRAFT_NOT_APPROVAL",
+        "publishable": false,
+        "scope": "Unfilled draft, no actual human acceptance or licensed original supplied"
+      }
+    },
+    "repoSources": [
+      {
+        "path": "automation/metricool-schedule.mjs",
+        "ref": "main",
+        "sha": "c8814e25d09d2df3c47f204911f4a0f09a98f3b4"
+      },
+      {
+        "path": "automation/publish_guard.mjs",
+        "ref": "main",
+        "sha": "67440a7dde6935bd3af15334ceb1fefccbb2cc65"
+      },
+      {
+        "path": "automation/lib/social_queue.mjs",
+        "ref": "main",
+        "sha": "93d564a73e6c22e7f9135c9848523af2fdce6ed9"
+      },
+      {
+        "path": "social/metricool_queue.csv",
+        "ref": "main",
+        "sha": "7debc256dc48050b3e45440b3e1da1d33cd75b29"
+      }
+    ],
+    "ledgerRootLookup": {
+      "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}",
+      "error_code": "NOT_FOUND",
+      "error_data": {
+        "message": "Not Found",
+        "documentation_url": "https://docs.github.com/rest/repos/contents#get-repository-content",
+        "status": "404"
+      }
+    },
+    "searches": [
+      {
+        "query": "luxe_sternenprojektor_master_20261018",
+        "scope": "default branch only, topn6",
+        "result": {
+          "results": []
+        }
+      },
+      {
+        "query": "master_publication_ledger",
+        "scope": "default branch only, topn6",
+        "result": {
+          "results": []
+        }
+      }
+    ],
+    "publisherAudit": {
+      "currentMetricoolPublisherSha": "c8814e25d09d2df3c47f204911f4a0f09a98f3b4",
+      "currentQueueSha": "7debc256dc48050b3e45440b3e1da1d33cd75b29",
+      "queueRows": 26,
+      "sourceStatusCounts": {
+        "hold": 20,
+        "scheduled": 6
+      },
+      "notMasterPublicationRegister": true,
+      "reason": "CSV uses id/publish_date/media_url/text/networks/status/scheduled_at/note. URL/row/status/checkpoint is not stable masterId + rendered-MP4 SHA + approval/rights/channel-history evidence. Current publisher has no master ledger import or binding. Existing rows are foreign workflow records, not new Codex publications.",
+      "queueContainsHistoricalJuneMp4": true,
+      "executed": false
+    },
+    "musicCredits": {
+      "freshMainGitBlob": "159e308cf68e88841b810a88882856101fdefb42",
+      "declaresLuxePremiumOriginalPro": true,
+      "currentBinaryHashRemoteReread": false,
+      "musicIsNotFilmRightsOrFinalListeningProof": true
+    },
+    "decision": {
+      "newApprovedProfessionalMasterProven": false,
+      "newMasterMp4SHA256": null,
+      "approvedMasterProductAssociation": "unknown_not_verified_by_new_material",
+      "commercialFilmEditingAdvertisingRights": "unknown_not_verified",
+      "finalMasterQA": "unknown_not_completed",
+      "durableMasterChannelHistory": "unknown_no_verified_register_path_or_data",
+      "canCreateOrActivateAdditionalPostsUnderExistingMasterRules": false
+    },
+    "concreteBlockers": [
+      "Four required native originaltakes absent from the unchanged explicit manifest",
+      "Exact default execution/motifs/power and commercial film/editing/advertising license not authenticated",
+      "Final rendered MP4 with product/quality/audio/text/platform-crop acceptance not supplied in checked sources",
+      "Durable master/channel publication register remains unknown; CSV checkpoint and local draft helper are not it"
+    ],
+    "limits": [
+      "No proven new approved master in the bounded checked sources, not a claim that no files exist in any other machine/branch/account",
+      "GitHub code search is default branch only; no hits do not establish empty publication history",
+      "Specific main ledger root-path lookup returned API404; no broad connector absence conclusion",
+      "Current credits declaration is source documentation; film rights and final listening/quality acceptance remain separate",
+      "Existing scheduled posts or historical queue status cannot stand in for fresh creative/legal approval or own publication"
+    ],
+    "writes": {
+      "publications": 0,
+      "scheduling": 0,
+      "render": 0,
+      "ledgerInitialization": 0,
+      "repoChanges": 0,
+      "localEvidenceOnly": true
+    },
+    "nextStep": "Do not dispatch the unchecked publisher or activate historical clips. Obtain exact native originaltakes/variant/film-rights evidence, complete the same master MP4 and human acceptance, reconcile actual historical master/channel ledger, then allow fresh per-post/channel scheduling checks. Existing owner-approved quality constraints remain controlling.",
+    "evidenceFiles": [
+      {
+        "path": "LEGACY-REFERENCE-CHECK.json",
+        "bytes": 762,
+        "sha256": "78e951330ebbf15f7c86d9f503a9659f6080953d894118545b32903fdb69bdbb"
+      },
+      {
+        "path": "CURRENT-ORIGINALS-CHECK.json",
+        "bytes": 1002,
+        "sha256": "77e735699083f1cb34f6b95bf4a12f364f912abad6da5cc000aa19776fa4191d"
+      },
+      {
+        "path": "LOCAL-LEDGER-AND-RIGHTS-CHECK.json",
+        "bytes": 1387,
+        "sha256": "502cbf2b6aac6ef0fb618cb861ea3e4c10fe2ea3489ce655fa7a2a1ad4bbd43c"
+      },
+      {
+        "path": "SOURCE-LOOKUPS.json",
+        "bytes": 5768,
+        "sha256": "8740d388f30510274569229236aa0a6ba6888bf44c5fb9cd7ac726f826429447"
+      },
+      {
+        "path": "sources/social__metricool_queue.csv.json",
+        "bytes": 11594,
+        "sha256": "5330924b85c0685f59f8e26909f3783d880a2ea327602ab18cc1dd9b359dc747"
+      },
+      {
+        "path": "sources/automation__publish_guard.mjs.json",
+        "bytes": 9305,
+        "sha256": "fec1c8a4fad851f5d9299860eeab92ba4513fd2bcaa08c3e65cbe6e39ea6ea38"
+      },
+      {
+        "path": "sources/automation__lib__social_queue.mjs.json",
+        "bytes": 10086,
+        "sha256": "bcc53606f47121e4a7212dbc9b5eac457631b310a0018d3609b133c8cd0f5764"
+      },
+      {
+        "path": "sources/automation__metricool-schedule.mjs.json",
+        "bytes": 12694,
+        "sha256": "d32df2a9ebaaca021071a6e3f285cf3aa267996274a42f2da674f4ae1a7ce9f7"
+      }
+    ]
+  },
+  "decision": {
+    "existingWeekCoveredFacebookInstagram": true,
+    "existingPostsCount": 7,
+    "existingPendingProviderStates": 14,
+    "newPostsScheduled": 0,
+    "published": 0,
+    "postUpdates": 0,
+    "reason": "Existing owner policy only permits new actually rendered approved professional master MP4s. None verified; original takes/rights/variant/QA and master ledger remain incomplete. Existing imageposts not silently re-approved or activated.",
+    "formatClarification": "Async question sent: may high-quality photo/carousel posts additionally be allowed while preserving product/rights/channel/duplicate rules. Awaiting explicit user answer; preselected UI choice is not approval.",
+    "newQualityOrRightsApproval": false,
+    "existingPostsEdited": false
+  },
+  "unchanged": [
+    "Existing seven post IDs/UUIDs/media/text/flags/provider states",
+    "Metrics/flow/sales report frequency",
+    "Ended purchase watch",
+    "Shop/products/prices/tags/flows/DNS/budgets/ads",
+    "Publication register not initialised/reset",
+    "Other brands"
+  ],
+  "sourcePrivacy": "Saved public proof contains only matching brand/channel identity and post metadata needed for planning; creator emails/account image signatures omitted",
+  "localEvidence": [
+    {
+      "path": "SCHEDULE-FRESH.json",
+      "sha256": "3a5bbc4c9659e0a71e1d9d16d0ef0e821cb2c92eb5a8e27ea6211d42b127b18e",
+      "scope": "Local raw tool response; unnecessary creator fields omitted from public proof"
+    }
+  ]
+}
