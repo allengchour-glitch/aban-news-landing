@@ -1,0 +1,1176 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-01T01:13:45.021108+00:00",
+  "timezone": "Europe/Zurich",
+  "brand": "LuxeStyle",
+  "shop": "luxestyle.ch",
+  "ownerAuthorization": "Latest chat authorises Selbstgestalten online, full source catalogue/variants, website improvements and Merchant repair. Current blocker is technical, not missing repeated approval.",
+  "native": {
+    "at": "2026-11-01T01:13:28.482Z",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "previewRole": "UNPUBLISHED",
+    "previewThemeId": "212752499079",
+    "mainThemeId": "212656488839",
+    "mainRole": "MAIN",
+    "mainUpdatedAt": "2026-10-28T13:07:42Z",
+    "mainUpdatedAtUnchanged": true,
+    "finalUiReadbackPassed": true,
+    "ui": [
+      {
+        "file": "assets/luxe-clothing.css",
+        "md5": "e1d0a26f432067f97cc0af1ada86a85e",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "assets/luxe-clothing.js",
+        "md5": "1084f56df90de1b1de59133452afd445",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "sections/luxe-clothing.liquid",
+        "md5": "6a69fdbe2ddf0e16c6322f72559af98c",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "sections/luxe-category.liquid",
+        "md5": "10674566df5ca93ea7e71caf31d921dd",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "locales/de.json",
+        "md5": "0345fa49bc9feeed10f71a8941b696a9",
+        "mode": "semantic",
+        "equal": true
+      },
+      {
+        "file": "locales/en.default.json",
+        "md5": "99b0943a0d811719da482a7be3cd3ed2",
+        "mode": "semantic",
+        "equal": true
+      },
+      {
+        "file": "snippets/luxe-clothing-shop-offers.liquid",
+        "md5": "26042af512c4dcfa2b3197dc085773d5",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "assets/luxe-product-reviews.js",
+        "md5": "c9be57d78e9ac517f6a63271e4039d96",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "snippets/luxe-product-review-data.liquid",
+        "md5": "0aff73416bf88b8f3bbbe3f4fc20acbe",
+        "mode": "exact",
+        "equal": true
+      }
+    ],
+    "mobile": [
+      {
+        "file": "sections/luxe-edit-home.liquid",
+        "md5": "300642e2ddaf1e33296876d9fd1602b2",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "assets/luxe-edit.css",
+        "md5": "0efe391c46bc10c5f09b724d275e7f55",
+        "mode": "exact",
+        "equal": true
+      },
+      {
+        "file": "locales/de.json",
+        "md5": "ed79a1320cb6c3f2dcbfe1866831ec72",
+        "mode": "semantic",
+        "equal": true
+      },
+      {
+        "file": "locales/en.default.json",
+        "md5": "16783ce902e4ab4a02fe9f74ce155aa5",
+        "mode": "semantic",
+        "equal": true
+      }
+    ],
+    "catalogueAssets": [
+      {
+        "filename": "assets/luxe-clothing-details-s001.json",
+        "md5": "dd1771c9843d28231e20c62c59d94be3",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s002.json",
+        "md5": "e17a1adb6e0368d3355d46a6ff2ddc1d",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s003.json",
+        "md5": "83b589d74988e47010fbf55c9752bf87",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s004.json",
+        "md5": "c9d9650d067f01fe4d5945081ca582c6",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s005.json",
+        "md5": "a163950a6b87c9372d45e99c986ce866",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s006.json",
+        "md5": "77e129c24b832b55a6185e1a58ce59ed",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s007.json",
+        "md5": "0e1a66278548c65ebc64d8ed65502db7",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s008.json",
+        "md5": "4c60f2a037c105e17f60293ff33c6292",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s009.json",
+        "md5": "d65e9287c83db3dfcc6fa6d2ab18ae7c",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s010.json",
+        "md5": "9ad9bcae45ab6bd9a0f09addb6a73886",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s011.json",
+        "md5": "7a10e8b89702d958f5c5769bc1441b38",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s012.json",
+        "md5": "0fd7e4c61453f8026845610de938d763",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s013.json",
+        "md5": "3facf9d4a4f8a97bf93daaa317d4ae66",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s014.json",
+        "md5": "0a546a3804100eabe4eb080f1cb921a1",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s015.json",
+        "md5": "9464ffeef4f4bd9ee3ca3bb90a06c2d5",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s016.json",
+        "md5": "0e2a3d48b3ccfc1595d790a05b55dbc9",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s017.json",
+        "md5": "3735f27a78fb13b5726b8fa531f9affb",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s018.json",
+        "md5": "b3d6287b976c250abdf6ef90a055b7c3",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s019.json",
+        "md5": "1d5ecb7bcda201c682c93ac1ce5363be",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s020.json",
+        "md5": "2c21241bae2c487f84df8105973aa76b",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s021.json",
+        "md5": "db1f277ca389a20e0d11066612628652",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s022.json",
+        "md5": "35b2a2d54cb7b9b5cb387bc5f7945267",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s023.json",
+        "md5": "07f149d58c9881b27ecbd5fe8f6e5749",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s024.json",
+        "md5": "0d94005afdf9eccdddc96afa52b6bd34",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s025.json",
+        "md5": "d83136f351831a2bc039d8f3b0fd59ea",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s026.json",
+        "md5": "28769028d94d282f68d76b2b9f4cab25",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s027.json",
+        "md5": "83d4dd9383b7a4350709e9433bdfd364",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s028.json",
+        "md5": "45d664bed2e7b14115b3a5a2a15456f6",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s029.json",
+        "md5": "82ad5dcdd0bcfb027046afcb7cdb1de7",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s030.json",
+        "md5": "409cd932e3d6d20d232bc97beb1f9a0a",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s031.json",
+        "md5": "2a297c3017dffc4963bb4de9d11994c8",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s032.json",
+        "md5": "27e5c5240ae592e0998596edd14c28eb",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s033.json",
+        "md5": "76bdd9900693b34a5c3fc5a6da7138cd",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s034.json",
+        "md5": "3eded7a40b97f931af3dac327be792e3",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s035.json",
+        "md5": "5d07d39f7774235806cac5a9acac0d1b",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s036.json",
+        "md5": "5d0285b5bd6d52a744ae4e003e270ce8",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s037.json",
+        "md5": "6e04f6640d7e69ccc9902eededf7a765",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s038.json",
+        "md5": "3daaf2dfcbc245b3c2b8f2901edba295",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s039.json",
+        "md5": "90639032652323d8c390464a413a2d4f",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s040.json",
+        "md5": "d358c32ab578259bc5bfc2f19676a130",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s041.json",
+        "md5": "e9938868e941f266f696f8f14ca3c35d",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s042.json",
+        "md5": "184f77b09716887e453d2ed737aab186",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s043.json",
+        "md5": "57f9187ec4752d743b1306dbb18c07ce",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s044.json",
+        "md5": "f8967ef90874fe7cf177622e798c352a",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s045.json",
+        "md5": "0e6a7d9ae614de23dcc16e12192b0d1e",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s046.json",
+        "md5": "5ec7cf8809ea73466ba9d7c8a290826d",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s047.json",
+        "md5": "0af690e49d5c1120b2d9237179d66f57",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s048.json",
+        "md5": "551f3a695fda94f5f03eadfe2f73929a",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s049.json",
+        "md5": "65207857bb98bb00b62c52c62ac0a471",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-index.json",
+        "md5": "79d4f3f40f3e843177c001c39b922b7a",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s050.json",
+        "md5": "7f325ec17d4080436de0127bc28ec0f4",
+        "match": true
+      },
+      {
+        "filename": "assets/luxe-clothing-details-s051.json",
+        "md5": "698a2c24ed5ce71a8ad1b87b4bc6cab9",
+        "match": true
+      }
+    ],
+    "changedUniqueFilesThisTask": 67,
+    "existingDependenciesPackaged": 3,
+    "mainPublished": false
+  },
+  "release": {
+    "schemaVersion": 1,
+    "themeId": "212752499079",
+    "targetRole": "UNPUBLISHED",
+    "livePublished": false,
+    "catalogueProducts": 572,
+    "catalogueVariants": 13160,
+    "catalogueCategories": 177,
+    "files": [
+      {
+        "path": "assets/lspod-designer-v5-safe.js",
+        "bytes": 51378,
+        "sha256": "70140421381326aff999bd84094b9997eda3e9432037def69185d65ff003e808",
+        "md5": "be85494be069a484807b65ee32261a8a",
+        "kind": "theme_code"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s001.json",
+        "bytes": 80028,
+        "sha256": "24ba1849ff00603f215fed6b6021f41daa11ca0a65d93bfdff7f22a4c8abd1a5",
+        "md5": "dd1771c9843d28231e20c62c59d94be3",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s002.json",
+        "bytes": 179143,
+        "sha256": "0ea6ff278312166d2b6de7f32545c2558bc563b5b5906489eb0a85c212d78706",
+        "md5": "e17a1adb6e0368d3355d46a6ff2ddc1d",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s003.json",
+        "bytes": 62390,
+        "sha256": "1aeb4e56b81bee9a4053500d47d33dfb29255dd79f8b01c0b001afa01af6c674",
+        "md5": "83b589d74988e47010fbf55c9752bf87",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s004.json",
+        "bytes": 404989,
+        "sha256": "a5dacf83188c08787abef3747fe5997ce9680cd947e171e1d3bc41126ece35fb",
+        "md5": "c9d9650d067f01fe4d5945081ca582c6",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s005.json",
+        "bytes": 199221,
+        "sha256": "ad51a714a1ef4039dc4719a703184b0ac4c28860fd6a50ff39a4f61fb931b80a",
+        "md5": "a163950a6b87c9372d45e99c986ce866",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s006.json",
+        "bytes": 148619,
+        "sha256": "add8a8d867e3278cecbd3d907fc5a84966e0f420738446b92869b2eef7ab6578",
+        "md5": "77e129c24b832b55a6185e1a58ce59ed",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s007.json",
+        "bytes": 134752,
+        "sha256": "00b6f627bb523ad1ec56549939c5f80f2046b4eceac2f641ae12ac10d33d4c31",
+        "md5": "0e1a66278548c65ebc64d8ed65502db7",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s008.json",
+        "bytes": 188570,
+        "sha256": "95eccea167da6429d8bdac92d828a6973683ecc5ec40ef702ada5198032edf9b",
+        "md5": "4c60f2a037c105e17f60293ff33c6292",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s009.json",
+        "bytes": 182434,
+        "sha256": "cd781bb8a82f28196d1f2ebb7f19eae8933f78524eae61f56c2be9ee813cd7e3",
+        "md5": "d65e9287c83db3dfcc6fa6d2ab18ae7c",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s010.json",
+        "bytes": 199058,
+        "sha256": "69800f392d5ac4b248bd5e7b695f2ff2212f2e9c97b596601e6b1cee7044371f",
+        "md5": "9ad9bcae45ab6bd9a0f09addb6a73886",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s011.json",
+        "bytes": 200666,
+        "sha256": "36f00320bd9f21f0e7e2b9b45d541b3836be2e1a94c59827f9698457f5c96ddf",
+        "md5": "7a10e8b89702d958f5c5769bc1441b38",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s012.json",
+        "bytes": 149808,
+        "sha256": "fca5270e867666bfd008b2d2d79c1020836295b73136425c4fea6f45ac676920",
+        "md5": "0fd7e4c61453f8026845610de938d763",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s013.json",
+        "bytes": 150775,
+        "sha256": "ae46df91a78687687d634670f48b852ee967c5ffd17022eff387ae7d39f39d09",
+        "md5": "3facf9d4a4f8a97bf93daaa317d4ae66",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s014.json",
+        "bytes": 194171,
+        "sha256": "25ce40020b9373894e6ab4438763f71a12aa8ae34f87ec5cd71aa15438fbbb3b",
+        "md5": "0a546a3804100eabe4eb080f1cb921a1",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s015.json",
+        "bytes": 153318,
+        "sha256": "7b71e929f5a382938e74f5114ffa2b8c9c44d2eed34a2ef65789f821ec14adfa",
+        "md5": "9464ffeef4f4bd9ee3ca3bb90a06c2d5",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s016.json",
+        "bytes": 166804,
+        "sha256": "e25671444c136aed8f0eaf8a887ec1403b4d444e711ec29836b68cd595bad9f6",
+        "md5": "0e2a3d48b3ccfc1595d790a05b55dbc9",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s017.json",
+        "bytes": 200153,
+        "sha256": "c4c80caf8147521e9956b0ef081fad414dd22ae5683c0498cc50ebcedc6a0a7c",
+        "md5": "3735f27a78fb13b5726b8fa531f9affb",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s018.json",
+        "bytes": 191987,
+        "sha256": "acdac3d12dc67b5af09bb57879157e5bc7928d3fc2296cf3e86fb3b5f8155497",
+        "md5": "b3d6287b976c250abdf6ef90a055b7c3",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s019.json",
+        "bytes": 182355,
+        "sha256": "7464172c9052a14b35c75c5b88b185a1886ac392cfc92fa912ef3668a652eeb0",
+        "md5": "1d5ecb7bcda201c682c93ac1ce5363be",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s020.json",
+        "bytes": 199390,
+        "sha256": "dc6a7b5e506660651fb204593f95cd42ac8c8b10ce969c92dedfe3175bff7844",
+        "md5": "2c21241bae2c487f84df8105973aa76b",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s021.json",
+        "bytes": 194360,
+        "sha256": "f00550da1897f3b657354c4c6ba9c9a7042ddc20011a627c8c2ce764421141ff",
+        "md5": "db1f277ca389a20e0d11066612628652",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s022.json",
+        "bytes": 125117,
+        "sha256": "18229e1ff042845b6dd5afe1d9f6c4b0f66bf602a6722c0451de77df5e9b2060",
+        "md5": "35b2a2d54cb7b9b5cb387bc5f7945267",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s023.json",
+        "bytes": 210406,
+        "sha256": "a78bc5a6f9f26580d5637a4e3310f8b8d5dea857b7228dc54b5732ea019e30cd",
+        "md5": "07f149d58c9881b27ecbd5fe8f6e5749",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s024.json",
+        "bytes": 197714,
+        "sha256": "a9e6d45a0da1676e4e04c6f6443c25ebea8a8e6c4e0b02a99605edcbe7080414",
+        "md5": "0d94005afdf9eccdddc96afa52b6bd34",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s025.json",
+        "bytes": 197929,
+        "sha256": "1503afefa2871e5bc2b4a81cc281f28cd5557db8262eaf59d63ca87ba7b62a9d",
+        "md5": "d83136f351831a2bc039d8f3b0fd59ea",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s026.json",
+        "bytes": 194478,
+        "sha256": "3d2d5899ce20c9c7a8708064d335b0cb8acb2a85eda59a04c6a79b87bb0b0ab4",
+        "md5": "28769028d94d282f68d76b2b9f4cab25",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s027.json",
+        "bytes": 188529,
+        "sha256": "251e0d86815cae2c1937ca36f2e3dcda3f8746a70108bb26c9221120264c3efb",
+        "md5": "83d4dd9383b7a4350709e9433bdfd364",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s028.json",
+        "bytes": 180113,
+        "sha256": "aa05d1e85b6418032d89c258dfd2880cdded8929e5e8de5a1e48386d4724741e",
+        "md5": "45d664bed2e7b14115b3a5a2a15456f6",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s029.json",
+        "bytes": 180863,
+        "sha256": "66ddbdd6b0de54de0e6bfcc355d557c1bd5267489116fd4a2272e35cbc9467b6",
+        "md5": "82ad5dcdd0bcfb027046afcb7cdb1de7",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s030.json",
+        "bytes": 196814,
+        "sha256": "8583be94ec41f391435b37b86115cc181333749356b388bbf1c7d5e0f62def15",
+        "md5": "409cd932e3d6d20d232bc97beb1f9a0a",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s031.json",
+        "bytes": 193352,
+        "sha256": "8ddf74bea7cb382a64c4991a7ff51460ce9ac026cf9576279da39ea15f38eac3",
+        "md5": "2a297c3017dffc4963bb4de9d11994c8",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s032.json",
+        "bytes": 198066,
+        "sha256": "642285b7e20175620ccf896e843b43f65f7c98789c8be3961a2dc99d5a246b0e",
+        "md5": "27e5c5240ae592e0998596edd14c28eb",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s033.json",
+        "bytes": 156586,
+        "sha256": "5f39ecd5da4e49b64af7737578ed4e4a8b36516f4411239b16e594ae96a73325",
+        "md5": "76bdd9900693b34a5c3fc5a6da7138cd",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s034.json",
+        "bytes": 181347,
+        "sha256": "956c1500226f2788f58deb0499f2df8e39a5f05dad82d6fdb5b208c304cb7459",
+        "md5": "3eded7a40b97f931af3dac327be792e3",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s035.json",
+        "bytes": 191347,
+        "sha256": "e1b3eb535e92a3cfda860bcf1077e8241177726e39d8df4f620e9cf34bbc4f28",
+        "md5": "5d07d39f7774235806cac5a9acac0d1b",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s036.json",
+        "bytes": 194896,
+        "sha256": "afb8db6d1f97aab114d72f5c6a6aa1d124d34db41edfa2fa85c678f840f3510b",
+        "md5": "5d0285b5bd6d52a744ae4e003e270ce8",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s037.json",
+        "bytes": 185353,
+        "sha256": "6af59d6cb9d60944826d589395b5209180eb055736a4baa466157567fa77c4fa",
+        "md5": "6e04f6640d7e69ccc9902eededf7a765",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s038.json",
+        "bytes": 137542,
+        "sha256": "f5ef59161badf6e70eda4c754518ae950e45ea5d112be5070ed04811975f1157",
+        "md5": "3daaf2dfcbc245b3c2b8f2901edba295",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s039.json",
+        "bytes": 190532,
+        "sha256": "37716ddfae13285f277d6d48dd2fa56b8c0ac0b79b1113d561c5c58135edd158",
+        "md5": "90639032652323d8c390464a413a2d4f",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s040.json",
+        "bytes": 199942,
+        "sha256": "901014992edef9aa39edf12b8e935c7c94e5dd99463a3898cea945f58cd7d10b",
+        "md5": "d358c32ab578259bc5bfc2f19676a130",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s041.json",
+        "bytes": 179409,
+        "sha256": "532559dd9611eff24fcfd0d67fac4302cf5510442ec89e809b987b3cdc95221a",
+        "md5": "e9938868e941f266f696f8f14ca3c35d",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s042.json",
+        "bytes": 170314,
+        "sha256": "63ec117e36c6f204f57d01f4ee9d7f74fda73270eb18790a2a1ba9e2f4b9352a",
+        "md5": "184f77b09716887e453d2ed737aab186",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s043.json",
+        "bytes": 197216,
+        "sha256": "4973ca79679bbf55f8758f659edaf2f0e708b38978fb1a02a6ceaa6c6003a604",
+        "md5": "57f9187ec4752d743b1306dbb18c07ce",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s044.json",
+        "bytes": 181422,
+        "sha256": "028d87a747e4ef68813687b14f627f953effe0cf59a1613dd2a45119903fbbcc",
+        "md5": "f8967ef90874fe7cf177622e798c352a",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s045.json",
+        "bytes": 197115,
+        "sha256": "cfbba1fa84f920eb662d1e0ab761e9ffaf05dc622628af07b956114d1f162826",
+        "md5": "0e6a7d9ae614de23dcc16e12192b0d1e",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s046.json",
+        "bytes": 200587,
+        "sha256": "70424f6271df3f654a76efef01760accc20bda1a84cc3a224f0546bad321012b",
+        "md5": "5ec7cf8809ea73466ba9d7c8a290826d",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s047.json",
+        "bytes": 198701,
+        "sha256": "9106bb42b58a3357c694d2be960dd7dd01b150000138fb83f38f31848fb76d1a",
+        "md5": "0af690e49d5c1120b2d9237179d66f57",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s048.json",
+        "bytes": 197431,
+        "sha256": "f7f4ba0c27c199e6bf21749b7091c4c481eee7818d003562201fe6430943d1f8",
+        "md5": "551f3a695fda94f5f03eadfe2f73929a",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s049.json",
+        "bytes": 187846,
+        "sha256": "c246530678a9d691bbf79b4b8240804f2027b81bf0c8b9cf632dea5d04977c11",
+        "md5": "65207857bb98bb00b62c52c62ac0a471",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s050.json",
+        "bytes": 200331,
+        "sha256": "c89075f184a65649b95cbe29c025b3d4253841426900e6aa7ad541cd591413ed",
+        "md5": "7f325ec17d4080436de0127bc28ec0f4",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-details-s051.json",
+        "bytes": 156679,
+        "sha256": "e663a39a3037751091e8832f01f84a54faf1d55fc065b155d830e2ba1d1cd5ec",
+        "md5": "698a2c24ed5ce71a8ad1b87b4bc6cab9",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing-index.json",
+        "bytes": 547969,
+        "sha256": "bd13886a44f69bf67d1a75f5ad09d9e35321188eee03d9f6735614bcbeeaa737",
+        "md5": "79d4f3f40f3e843177c001c39b922b7a",
+        "kind": "catalogue_data"
+      },
+      {
+        "path": "assets/luxe-clothing.css",
+        "bytes": 18796,
+        "sha256": "00632325f5a11df14f38d3fbffb091b156489be96e0944146f45038c4616b05b",
+        "md5": "e1d0a26f432067f97cc0af1ada86a85e",
+        "kind": "theme_code"
+      },
+      {
+        "path": "assets/luxe-clothing.js",
+        "bytes": 39978,
+        "sha256": "f2ed19c8574833dd9676bd0fd9b41a7362249040a5c1faa2dfc739af63a0dc30",
+        "md5": "1084f56df90de1b1de59133452afd445",
+        "kind": "theme_code"
+      },
+      {
+        "path": "assets/luxe-edit.css",
+        "bytes": 22430,
+        "sha256": "a480199265810127daee50755a4a4dfa4d272d0dc3e7e1e1e089437ce3ad29de",
+        "md5": "0efe391c46bc10c5f09b724d275e7f55",
+        "kind": "theme_code"
+      },
+      {
+        "path": "assets/luxe-edit.js",
+        "bytes": 1110,
+        "sha256": "43e1c1e71fd4ad422c0442eb1368e81d547fe5bb34dd3388ee7cbb691c72a407",
+        "md5": "917fba607d1d2a92e36b0821e06cd512",
+        "kind": "existing_dependency"
+      },
+      {
+        "path": "assets/luxe-product-reviews.js",
+        "bytes": 4343,
+        "sha256": "a5c0a24a09a08fd8f4391a05d04fda91844ce508a061533c84c7f3a250d4a5e0",
+        "md5": "c9be57d78e9ac517f6a63271e4039d96",
+        "kind": "theme_code"
+      },
+      {
+        "path": "layout/luxe-edit-preview.liquid",
+        "bytes": 492,
+        "sha256": "35d5753c65363e2605b68e5d60d19d99c81b9dd8116f88aff1bec04c5846dca1",
+        "md5": "a2f141a720bf82f851c22e67c423f2bc",
+        "kind": "existing_dependency"
+      },
+      {
+        "path": "layout/theme.liquid",
+        "bytes": 53765,
+        "sha256": "3b4e96952b6376cee750980aa6094f94c040ddc66f38b3dc1a4f4063f3949bdd",
+        "md5": "ce1c7332d05cfa74c8c656aad9b06713",
+        "kind": "theme_code"
+      },
+      {
+        "path": "locales/de.json",
+        "bytes": 44596,
+        "sha256": "eafee05959150164d15d2d948eaa513c4bfb65c18e175a07c290fb6c37e76e03",
+        "md5": "53a138ed511ff6634b1c8768f142081d",
+        "kind": "theme_code"
+      },
+      {
+        "path": "locales/en.default.json",
+        "bytes": 42310,
+        "sha256": "3848bf4d2de1c5db39b9757ce8229de9a1e1c7ac6c9d95e05ae3fb850ca17377",
+        "md5": "b655876dfad4099d1a6b8b3095d95272",
+        "kind": "theme_code"
+      },
+      {
+        "path": "sections/luxe-category.liquid",
+        "bytes": 11581,
+        "sha256": "b058c81c254128c37bc4eb2bafbd8ef6893f164667f76a2d1440abc608e6d560",
+        "md5": "10674566df5ca93ea7e71caf31d921dd",
+        "kind": "theme_code"
+      },
+      {
+        "path": "sections/luxe-clothing.liquid",
+        "bytes": 26512,
+        "sha256": "da22988b28c5d4ad143d5da8d1b9da7b78cc1561ebb509a655205d0de4148273",
+        "md5": "6a69fdbe2ddf0e16c6322f72559af98c",
+        "kind": "theme_code"
+      },
+      {
+        "path": "sections/luxe-edit-home.liquid",
+        "bytes": 22595,
+        "sha256": "53ab6fb36e88c17850db086fbf8542caec80a173183154763ab03a3a03e1cdde",
+        "md5": "300642e2ddaf1e33296876d9fd1602b2",
+        "kind": "theme_code"
+      },
+      {
+        "path": "snippets/luxe-clothing-asset-manifest.liquid",
+        "bytes": 3765,
+        "sha256": "2d3be702843a5e400a422d310e1e3f928a6088f72bee527444646b2ba1cbf712",
+        "md5": "0539431c5b7f9b15886885d4006d2fd1",
+        "kind": "theme_code"
+      },
+      {
+        "path": "snippets/luxe-clothing-shop-offers.liquid",
+        "bytes": 11927,
+        "sha256": "3e1f2816ab70d4d1a990db50778e684eba6a12afaa3f0133fee5bb9d21ed4677",
+        "md5": "26042af512c4dcfa2b3197dc085773d5",
+        "kind": "theme_code"
+      },
+      {
+        "path": "snippets/luxe-product-review-data.liquid",
+        "bytes": 3393,
+        "sha256": "4b32bda62d10dc5733525c424eb3ae8ec0ab3f80e2fdf31f2fec1e2b8684ce27",
+        "md5": "0aff73416bf88b8f3bbbe3f4fc20acbe",
+        "kind": "theme_code"
+      },
+      {
+        "path": "templates/collection.luxe-gestalten.json",
+        "bytes": 624,
+        "sha256": "278a51ffdc1b859b398c750260c750aa34e130e35f1ddc8059c5eb36e35aff9b",
+        "md5": "7cfbb0c9eecc141846b0bc95bcf76b8d",
+        "kind": "theme_code"
+      },
+      {
+        "path": "templates/index.luxe-edit.liquid",
+        "bytes": 64,
+        "sha256": "19e9dc5623f462590d6949d4469c7e0cdc1669d261aa2f2417aeaf6da39ab273",
+        "md5": "88ab376b41d3c96769f70d6ea44b8337",
+        "kind": "existing_dependency"
+      }
+    ],
+    "scope": "Exact prepared files only; catalogue records are supplier reference and do not create Shopify offers. Native write evidence is separate."
+  },
+  "catalogue": {
+    "checkedAt": "2026-11-01T00:44:38.427237+00:00",
+    "pass": true,
+    "productCount": 572,
+    "variantCount": 13160,
+    "categoryMetadataCount": 177,
+    "verifiedRootCounts": {
+      "1": 204,
+      "2": 247,
+      "3": 38,
+      "4": 73,
+      "5": 128,
+      "93": 62,
+      "116": 516,
+      "159": 229,
+      "277": 572
+    },
+    "detailShardCount": 51,
+    "indexBytes": 547969,
+    "assetBytes": 9878937,
+    "imagesFromOriginalVariantSource": 13160,
+    "missingVariantImageIds": [],
+    "variantImageHosts": {
+      "files.cdn.printful.com": 13156,
+      "static.cdn.printful.com": 4
+    },
+    "variantsWithDirectMaterialData": 6924,
+    "checks": {
+      "all_current_master_products_have_exactly_one_detail_shard": true,
+      "all_manifest_byte_counts_and_sha256_match": true,
+      "all_color_size_pairs_exist_in_source_variants": true,
+      "all_variant_ids_unique_and_attached_to_correct_product": true,
+      "all_177_category_memberships_match_current_public_source": true,
+      "no_supplier_price_or_currency_fields_in_UI_payload": true,
+      "no_invented_ratings_or_print_geometry_or_CH_delivery": true,
+      "old_source_hashes_preserved": true,
+      "hoodie_388_only_real_white_base_color": true,
+      "adult_baby_tee_967_not_baby_category": true,
+      "tshirt_71_exact_variant_count": true
+    },
+    "sourceDiscrepancies": {
+      "mainCategoryMetadataNotReturnedByCategoryEndpoint": [
+        {
+          "productId": 382,
+          "mainCategoryId": 195,
+          "actualCategoryIds": [
+            4,
+            5,
+            112,
+            116,
+            120,
+            191,
+            209,
+            230,
+            271,
+            277
+          ]
+        },
+        {
+          "productId": 465,
+          "mainCategoryId": 81,
+          "actualCategoryIds": [
+            4,
+            16,
+            116,
+            117,
+            129,
+            213,
+            229,
+            271,
+            277,
+            305
+          ]
+        },
+        {
+          "productId": 534,
+          "mainCategoryId": 123,
+          "actualCategoryIds": [
+            5,
+            116,
+            122,
+            230,
+            277,
+            292
+          ]
+        },
+        {
+          "productId": 900,
+          "mainCategoryId": 254,
+          "actualCategoryIds": [
+            116,
+            122,
+            277
+          ]
+        },
+        {
+          "productId": 967,
+          "mainCategoryId": 32,
+          "actualCategoryIds": [
+            2,
+            8,
+            31,
+            116,
+            159,
+            164,
+            227,
+            277
+          ]
+        },
+        {
+          "productId": 1556,
+          "mainCategoryId": 198,
+          "actualCategoryIds": [
+            5,
+            116,
+            122,
+            190,
+            209,
+            230,
+            277,
+            315
+          ]
+        },
+        {
+          "productId": 1558,
+          "mainCategoryId": 198,
+          "actualCategoryIds": [
+            5,
+            116,
+            190,
+            209,
+            230,
+            260,
+            277,
+            304,
+            315
+          ]
+        },
+        {
+          "productId": 1563,
+          "mainCategoryId": 198,
+          "actualCategoryIds": [
+            5,
+            116,
+            190,
+            209,
+            230,
+            277,
+            315
+          ]
+        },
+        {
+          "productId": 1564,
+          "mainCategoryId": 198,
+          "actualCategoryIds": [
+            5,
+            116,
+            190,
+            209,
+            230,
+            277,
+            315
+          ]
+        },
+        {
+          "productId": 1574,
+          "mainCategoryId": 303,
+          "actualCategoryIds": [
+            15,
+            42,
+            93,
+            116,
+            117,
+            119,
+            159,
+            273,
+            277,
+            304
+          ]
+        },
+        {
+          "productId": 1594,
+          "mainCategoryId": 42,
+          "actualCategoryIds": [
+            15,
+            41,
+            93,
+            116,
+            117,
+            119,
+            277
+          ]
+        }
+      ],
+      "handling": "Preserve original main_category_id as metadata; filters use only exact category endpoint memberships; do not invent missing links"
+    },
+    "limits": [
+      "319 existing verified product-detail sources retain their original read date; this is not a fully new 572-detail availability check.",
+      "Images retain original source URLs; unreviewed images are not asserted to be blank or visually approved.",
+      "CH delivery, retail prices, Shopify cart mapping and authenticated print geometry remain unknown or disabled."
+    ]
+  },
+  "pricing": {
+    "checkedAt": "2026-11-01T00:57:20.376458+00:00",
+    "pass": true,
+    "sourceProducts": 31,
+    "sourceVariants": 309,
+    "offerEntries": 309,
+    "uniquePfIds": 302,
+    "unambiguousPfIds": 295,
+    "ambiguousPfIds": 7,
+    "collectionCountCurrent": 39,
+    "maximumProductVariantCount": 84,
+    "five50ItemChunksCoverAll309ExactlyOnce": true,
+    "nativePaginationCompleteForAll31": true,
+    "currencyCHFVerified": true,
+    "exactSkuPairsOnly": true,
+    "noRetailPriceWriteOrEstimate": true,
+    "unpricedFullCatalogVariantsRemainUnknown": true,
+    "snapshotSha256": "d05982bf6bb374385ba7911016ebc9d131d36d5269f5db138ae831f382d6d8e2",
+    "snippetSha256": "fcc0829051dc6dada2e11d79c59bf537008fd8c7a7aa921e2a9edb35d4626110"
+  },
+  "limitations": [
+    "Supplier reference catalogue is not 572 Shopify offers or a full production checkout.",
+    "Printful EDM activation is owner-confirmed; runtime binding, variant print geometry and full placement fulfilment remain unverified.",
+    "No new Shopify products/variants, no price changes, no real upload/cart/order, no MAIN write or theme publish.",
+    "Merchant price candidates were not applied; exact source query timed out and current connector exposes no write action.",
+    "Read-only browser QA blocks non-GET analytics; not a claim of zero third-party network errors."
+  ],
+  "evidenceFiles": [
+    {
+      "path": "catalog/assets/ASSET-MANIFEST.json",
+      "sha256": "c0b641d4de9e7b64d2f21d5ffea0239b668d48ad3b124ca9049b4ba92df893a1",
+      "bytes": 13247
+    },
+    {
+      "path": "catalog/SOURCE-PROVENANCE.json",
+      "sha256": "6e03582357855d92c2e091fd15a1b2844104eb818fe2a04c965cd29726ee83db",
+      "bytes": 191818
+    },
+    {
+      "path": "pricing/PRICE-MAPPING-REPORT.json",
+      "sha256": "ae2367e51e12ea859b848f89e9f21cc630876455fb45f2d16b8023aa2e7a49d7",
+      "bytes": 9208
+    },
+    {
+      "path": "reviews/REVIEWS-MAP.json",
+      "sha256": "b83adde862c992f08356965afabe69228d1eada4a6e05ce4abf84459df95bc26",
+      "bytes": 11395
+    },
+    {
+      "path": "ui/FILES.json",
+      "sha256": "6e3ed0539c231da14ce54842410fec4092d30f35a6e1ad81f1a899ccef80e86f",
+      "bytes": 5282
+    },
+    {
+      "path": "ui/MATERIAL-COST-QA.json",
+      "sha256": "d3ba6f6b79ca14f1771d78352f9aa3a0e337f1e4fb71f1989b53eefbb4538739",
+      "bytes": 39015
+    },
+    {
+      "path": "ui/FINAL-FEATURES-QA.json",
+      "sha256": "c63b5b8412d35375bdaf3b91958156e07a1a5eafdba909b1537aadb5da19f0af",
+      "bytes": 26461
+    },
+    {
+      "path": "cart-fix/DEPLOYED-PREVIEW-RESULTS.json",
+      "sha256": "4d281c95fd06a41d62c954a7a53c89aa6a2df75936282d637461a1572bd30a5c",
+      "bytes": 78408
+    },
+    {
+      "path": "catalog-native-qa/RESULTS.json",
+      "sha256": "14a776c29a334fc9145deef0eaf879ac963a7c8e1ba9ba7fb0c2783104ffd543",
+      "bytes": 21568
+    },
+    {
+      "path": "final-native-qa/RESULTS.json",
+      "sha256": "025cacd10dbd70bf4404c386cd56220ac29e19c983b328b0cf8e2c0f24e7b35a",
+      "bytes": 23777
+    },
+    {
+      "path": "final-native-qa/HOME-RESULTS.json",
+      "sha256": "d37f08be86542f745ed997c003911daf5ca7c6c3b9647e8ac8cc5a1d443f7400",
+      "bytes": 13184
+    },
+    {
+      "path": "website/qa/native-after-results.json",
+      "sha256": "72ad8084282f83974befcfe4744fcfcdf06d9975e5f39d2fa815f7e368c7dadd",
+      "bytes": 14951
+    },
+    {
+      "path": "import/MANIFEST-VALIDATION.json",
+      "sha256": "d8e67afd73e09d937e7de9422cf4446debded92ba7abcc5d14a753838889eea8",
+      "bytes": 1546
+    },
+    {
+      "path": "import/IMPORT-MANIFEST.json",
+      "sha256": "0e2c0895d85884725fdb565c1c6acd51afae767dad9dbc809028c0f593942e36",
+      "bytes": 46405025
+    }
+  ]
+}
