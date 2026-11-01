@@ -13,7 +13,10 @@
     "type": "IMAGE",
     "originalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
     "assetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
-    "mp4Sha256": null
+    "mp4Sha256": null,
+    "metricoolMediaUrls": [
+      "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+    ]
   },
   "approval": {
     "formatAnswer": "Foto-/Karussellposts zusätzlich erlauben",
@@ -48,14 +51,15 @@
     ]
   },
   "checkpoint": {
-    "state": "INFLIGHT",
+    "state": "ACKNOWLEDGED_PENDING_FRESH_READBACK",
     "attempts": 3,
     "claimOwner": "codex-current-task-20261101-photo",
     "preparedAt": "2026-11-01T19:17:59Z",
     "rule": "Only SHA-CAS state transition can claim; INFLIGHT/UNKNOWN/UNCERTAIN block resend; no replacement post on missing status",
     "requestStartedAt": "2026-11-01T19:19:51Z",
     "lastError": "Metricool400 validation: mediaAltText array size must equal media array size. No new ID/UUID returned; exact target-day no-match confirmed.",
-    "correctionReason": "Explicit local URL-as-path failure and fresh target-day no-match countercheck; actual existing JPEG local file supplied instead. Caption/media identity/slot unchanged."
+    "correctionReason": "Explicit local URL-as-path failure and fresh target-day no-match countercheck; actual existing JPEG local file supplied instead. Caption/media identity/slot unchanged.",
+    "acknowledgedAt": "2026-11-01T19:20:24Z"
   },
   "request": {
     "args": {
@@ -69,12 +73,13 @@
     "providerSpecificAutoPublish": "No Threads-specific autoPublish field supplied by exposed tool/schema; global true, draftfalse, per-network actual status must be read back"
   },
   "metricoolIdentity": {
-    "id": null,
-    "uuid": null
+    "id": 413194611,
+    "uuid": "-1937081137064819378",
+    "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-1937081137064819378"
   },
   "channelState": {
     "network": "threads",
-    "status": "not_sent",
+    "status": "PENDING",
     "platformId": null,
     "publicationUrl": null
   },
@@ -141,6 +146,18 @@
           }
         ],
         "matches": 0
+      }
+    },
+    {
+      "at": "2026-11-01T19:20:24Z",
+      "event": "Scheduler acknowledged one new Threads post; identity preserved before fresh readback. Pending is not published.",
+      "id": 413194611,
+      "uuid": "-1937081137064819378",
+      "channelState": {
+        "network": "threads",
+        "status": "PENDING",
+        "platformId": null,
+        "publicationUrl": null
       }
     }
   ]
