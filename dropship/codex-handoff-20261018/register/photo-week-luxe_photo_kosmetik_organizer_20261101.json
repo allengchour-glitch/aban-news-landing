@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "scope": {
+    "brandId": 6227837,
+    "brand": "luxestyle.ch",
+    "network": "threads",
+    "masterId": "luxe_photo_kosmetik_organizer_20261101",
+    "creativeId": "luxe_photo_kosmetik_organizer_20261101",
+    "productId": "gid://shopify/Product/15408458236289",
+    "variantId": "gid://shopify/ProductVariant/55732479590785"
+  },
+  "media": {
+    "type": "IMAGE",
+    "originalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+    "assetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "mp4Sha256": null
+  },
+  "approval": {
+    "formatAnswer": "Foto-/Karussellposts zusätzlich erlauben",
+    "exactContentAndRegisterAnswer": "Diesen Beitrag und den engen Publikationsbeleg freigeben",
+    "source": "Explicit owner async answers in current task 01.11.2026 Europe/Zurich",
+    "approvedCaption": "Mehr Überblick auf deinem Schminktisch.\n\nKosmetik-Organizer · CHF 29.90\n\nProdukt und Angaben ansehen:\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+    "proposedSlot": {
+      "dateTime": "2026-11-04T18:30:00+01:00",
+      "timezone": "Europe/Zurich",
+      "basis": "Editorial future slot; Threads unsupported by exposed best-time tool, no measured-besttime claim"
+    },
+    "imageRights": "Documented owner assurance23.10.2026 for this exact product, no separate films/music",
+    "qa": "Actual original image inspected; source/product/variant identity, no fabricated materials/features/reviews/Swiss-made/stock/delivery claim"
+  },
+  "baseline": {
+    "historyState": "unknown",
+    "initialisation": "Explicitly owner-authorized only this creative/brand/Threads; no existing registry reset",
+    "counterchecks": [
+      {
+        "source": "social/metricool_queue.csv",
+        "gitBlobSha": "7debc256dc48050b3e45440b3e1da1d33cd75b29",
+        "result": "No exact product/handle/filename match; bounded source, not proof of empty past"
+      },
+      {
+        "source": "Metricool scheduledposts rolling seven days",
+        "result": "Seven existing FB/IG posts, no Threads collision; unpublished queue only, not past history"
+      },
+      {
+        "source": "Existing named automation/master_publication_ledger.mjs path and targeted repo search",
+        "result": "404/no targeted hits; not proof no other register exists"
+      }
+    ]
+  },
+  "checkpoint": {
+    "state": "PREPARED",
+    "attempts": 0,
+    "claimOwner": "codex-current-task-20261101-photo",
+    "preparedAt": "2026-11-01T19:17:59Z",
+    "rule": "Only SHA-CAS state transition can claim; INFLIGHT/UNKNOWN/UNCERTAIN block resend; no replacement post on missing status"
+  },
+  "request": {
+    "args": {
+      "blogId": "6227837",
+      "date": "2026-11-04T18:30:00+01:00",
+      "info": "{\"text\":\"Mehr Überblick auf deinem Schminktisch.\\n\\nKosmetik-Organizer · CHF 29.90\\n\\nProdukt und Angaben ansehen:\\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101\",\"publicationDate\":{\"dateTime\":\"2026-11-04T18:30:00\",\"timezone\":\"Europe/Zurich\"},\"providers\":[{\"network\":\"threads\"}],\"media\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266\"],\"mediaAltText\":[{\"mediaUrl\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266\",\"altText\":\"Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen\"}],\"autoPublish\":true,\"draft\":false,\"saveExternalMediaFiles\":true,\"shortener\":false}",
+      "mediaFiles": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266"
+      ]
+    },
+    "providerSpecificAutoPublish": "No Threads-specific autoPublish field supplied by exposed tool/schema; global true, draftfalse, per-network actual status must be read back"
+  },
+  "metricoolIdentity": {
+    "id": null,
+    "uuid": null
+  },
+  "channelState": {
+    "network": "threads",
+    "status": "not_sent",
+    "platformId": null,
+    "publicationUrl": null
+  },
+  "history": [
+    {
+      "at": "2026-11-01T19:17:59Z",
+      "event": "Explicitly scoped register initialisation prepared with unknown historical baseline, before first send"
+    }
+  ]
+}
