@@ -725,3 +725,12 @@ Neuere Merchant-CSV mit 53’333 IDs mit fehlendem Preis; beide Dateien vollstä
 [Arbeitsbericht](SELBSTGESTALTEN-WEBSITE-20261101.md) · [Belege](SELBSTGESTALTEN-BELEGE-20261101.json) · [Theme-Diff](SELBSTGESTALTEN-THEME-20261101.patch) · [Importabgleich](SELBSTGESTALTEN-IMPORT-20261101.md) · [Merchant](MERCHANT-PREISPRUEFUNG-20261101.md).
 
 Alle 16 Aufgaben-IDs und Historien erhalten. Kaufziel weiterhin ERREICHT, kein weiterer Watch-Check; Tageskennzahlen und Flows nicht wiederholt. Keine weitere Automation, Zeitplan-, Budget-, DNS- oder Flowänderung, Kundenansprache oder Social-Publikation. Versandgrenzen CHF 50 / CHF 45 und Kundendomäne erhalten. Claude-Kenntnisnahme unbekannt.
+
+
+## 01.11.2026 – Zentimeter und bisherige Titelbilder
+
+Auf «zoll in cm und die titelbiöd wie vorher» die expliziten Zollmasse für die Anzeige in cm umgerechnet (1 Zoll = 2,54 cm). Bestehende cm-/mm-Angaben haben Vorrang; Varianten-IDs, rohe Filterwerte, Zuordnungen und Preise bleiben erhalten. Beispiel: 8″ × 10″ → 20,32 × 25,4 cm; 22–23″ → 55,88–58,42 cm. Volumenangaben und Konfektionsgrössen nicht als Zoll behandelt.
+
+Die belegte frühere Titelbild-Collage aus T-Shirt, Jutebeutel und Tasse ist wieder im Selbstgestalten-Kopf. Vier Dateien im UNPUBLISHED-Theme 212752499079 gespeichert und abschliessend exakt zurückgelesen. 27 gezielte native Browserprüfungen bestanden; Mobil/Desktop, Originalvariante, drei Bilder, Bewertungen und Vorschau-Navigation geprüft. Shopify-Validierung mit bestehenden offiziellen Schemas aus dem Cache grün. CDN-Minifizierung und Admin-Quelltext haben getrennte Hashbelege. Ein anfänglich veralteter API-Body wurde durch frische Lesegegenprobe geklärt, ohne blinden erneuten Write.
+
+MAIN 212656488839 unverändert und weiterhin technisch nicht über diesen Connector veröffentlichbar. Keine neue Produkt-, Preis-, Feed- oder Bestelländerung; keine weitere Tageskennzahl-/Flow-/Kauf-Watch-Abfrage. Der vollständige Bestell-/EDM-Status wird dadurch nicht als fertig bezeichnet. [Bericht](SELBSTGESTALTEN-CM-TITELBILDER-20261101.md) · [Belege](SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json) · [Diff](SELBSTGESTALTEN-CM-TITELBILDER-20261101.patch).
