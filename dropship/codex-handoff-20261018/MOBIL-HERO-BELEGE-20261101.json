@@ -1,0 +1,73 @@
+{
+  "at": "2026-11-01 08:56:39 UTC",
+  "scope": "mobile homepage read-only comparison",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "mainTheme": "212656488839 MAIN",
+  "previewTheme": "212752499079 UNPUBLISHED",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "observations": [
+    {
+      "phase": "live",
+      "data": {
+        "url": "https://luxestyle.ch/",
+        "reduced": false,
+        "visibility": "visible",
+        "viewport": 390,
+        "videos": [
+          {
+            "id": "hero-desktop-video-1",
+            "paused": true,
+            "time": 0,
+            "autoplay": true,
+            "muted": true,
+            "ready": 4,
+            "visible": false,
+            "poster": "https://luxestyle.ch/cdn/shop/files/preview_images/b9fbb7432fce46d9a4dc29242e539a88.thumbnail.0000000000_1600x.jpg?v=1793134831",
+            "rect": "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+          },
+          {
+            "id": "hero-mobile-video-1",
+            "paused": false,
+            "time": 1.731545,
+            "autoplay": true,
+            "muted": true,
+            "ready": 4,
+            "visible": true,
+            "poster": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+            "rect": "{\"x\":-0.25592041015625,\"y\":192.07102966308594,\"width\":380.3818664550781,\"height\":517.47265625,\"top\":192.07102966308594,\"right\":380.1259460449219,\"bottom\":709.5436859130859,\"left\":-0.25592041015625}"
+          }
+        ]
+      }
+    },
+    {
+      "phase": "preview",
+      "data": {
+        "url": "https://luxestyle.ch/?view=luxe-edit",
+        "h1": "Dein Raum.\nDein Moment.",
+        "videoCount": 0,
+        "heroImage": [
+          {
+            "loaded": true,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=600",
+            "rect": "{\"x\":15,\"y\":544.25,\"width\":345,\"height\":251,\"top\":544.25,\"right\":360,\"bottom\":795.25,\"left\":15}"
+          }
+        ]
+      }
+    }
+  ],
+  "firstBrowserAttempt": "timeout_55000ms_not_empty_data",
+  "browserSessionStopped": true,
+  "mutations": [],
+  "dailyMetricsAndFlowsRead": false,
+  "purchaseWatchRead": false
+}
