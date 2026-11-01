@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 33,
+  "at": "2026-11-01T16:21:00Z",
+  "scope": "Dokumentation, überprüfbare Koordinationsübergabe und lokale Quellenspiegel; keine Softwareinstallation/Modelländerung oder Shop-/Workflowaktion.",
+  "nativeShopify": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "start": {
+      "id": "gid://shopify/OnlineStoreTheme/212967981447",
+      "name": "LuxeStyle – Neue Startseite 01.11.2026",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "f1c54db12521b00961267d6b5220817b"
+          },
+          {
+            "filename": "layout/theme.liquid",
+            "checksumMd5": "f5da6f2a959ffe1b8e472548070cd6b1"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "01c5e9899d1d6e720564ef2d7b4ee9ed"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "6927c86886a14d418e4ab5ff7b45b9e4"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "reviews": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "name": "LuxeStyle – Bewertungen 01.11.2026",
+      "role": "UNPUBLISHED",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-home-reviews.css",
+            "checksumMd5": "314291bc7c01789dd02d4062721c3903"
+          },
+          {
+            "filename": "locales/de.json",
+            "checksumMd5": "52bd1ea05c622f3923936dc03bfdd3cf"
+          },
+          {
+            "filename": "locales/en.default.json",
+            "checksumMd5": "b99ff074b8e40114f7e41198f81c3532"
+          },
+          {
+            "filename": "sections/luxe-home-reviews.liquid",
+            "checksumMd5": "9c60b30e691191ee363c7c61f69cfad3"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "efd2d36eae56a7057ccaf6e2de028f42"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    }
+  },
+  "localBefore": {
+    "localGitRepos": {
+      "/workspace/aban-news-landing": false,
+      "/workspace/luxestyle-codex": false
+    },
+    "memory": [
+      {
+        "path": "memory/ARBEITSSTAND.json",
+        "bytes": 43418,
+        "sha256": "c17e7f425f4678083f2a805bbfeb39dbf9ca743f08b01f9f46d2ef7eb3039e9b",
+        "revision": 10,
+        "taskCount": 11,
+        "updatedAt": "2026-10-29T09:28:50Z"
+      },
+      {
+        "path": "memory/PROJEKTGEDAECHTNIS.md",
+        "bytes": 8420,
+        "sha256": "cc6717f8e23efb9b62d11831692304acf657c8d9c8f1cb92c89ce10dfae5033d"
+      },
+      {
+        "path": "AGENTS.md",
+        "bytes": 2098,
+        "sha256": "5f466961539c090f1e99cb6f68b3c242f8785bd0b2b200141860d2807214aedd"
+      },
+      {
+        "path": "automation/codex_uebergabe.mjs",
+        "bytes": 2934,
+        "sha256": "8d1ca56a7ffdbfcf8451e12f7a1a2682b1db57d719697cb482960bfe22f06570"
+      },
+      {
+        "path": "codex-mods/luxe-codex/lib/uebergabe.mjs",
+        "bytes": 14804,
+        "sha256": "54547f449be8f8b633c434a7854bde0870ebad6f60e5fdb9bee96f443740c316"
+      }
+    ]
+  },
+  "publicCheck": {
+    "url": "https://luxestyle.ch/",
+    "themeId": "212967981447",
+    "role": "main",
+    "hasReviews": false,
+    "categories": 16,
+    "trends": 12,
+    "extra": 5,
+    "overflow": false,
+    "main": 1,
+    "previewBar": false,
+    "httpStatus": 200,
+    "passed": true
+  },
+  "localCheck": {
+    "allHistoricalSourcesAndHelpersUnchanged": true,
+    "sourceState": "verified",
+    "receiptState": "unknown_missing_receipt",
+    "packetSHA256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+    "claudeEntrySHA256": "eccf847c8c56fe91aa19418017825083c7d7a77cdcc4408b271e539e75dd04aa"
+  },
+  "localStand": {
+    "taskId": "luxe-zusammenarbeit-20261028",
+    "revision": 4,
+    "packet": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+    "packetSha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+    "producer": "codex",
+    "coordinator": "claude",
+    "sourceState": "verified",
+    "sourceChecks": [
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+        "expectedSha256": "08b29f29e73cd2da9bfe1e689af3dfdd24679774634a3269c14044c2bc8ce09b",
+        "actualSha256": "08b29f29e73cd2da9bfe1e689af3dfdd24679774634a3269c14044c2bc8ce09b",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
+        "expectedSha256": "793a1ddc6051eab827ff6884a3967039d56518d2ba158fa8218b68549247e617",
+        "actualSha256": "793a1ddc6051eab827ff6884a3967039d56518d2ba158fa8218b68549247e617",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+        "expectedSha256": "8072af94d9fde736a7afc08c4e428c023ef9343bba6992e2dbc8a2c648059288",
+        "actualSha256": "8072af94d9fde736a7afc08c4e428c023ef9343bba6992e2dbc8a2c648059288",
+        "state": "verified",
+        "gitBlobMatches": true
+      }
+    ],
+    "receiptState": "unknown_missing_receipt",
+    "receipt": null,
+    "notice": "Rollenwert ist Selbstauskunft. Keine Live-Sitzungsverbindung, keine Umsetzung oder Veröffentlichung bestätigt."
+  },
+  "handoff": {
+    "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+    "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9"
+  },
+  "scopedClaude": {
+    "path": "dropship/codex-handoff-20261018/CLAUDE.md",
+    "gitBlobSha": "096ff043c571839ca595abdd4b7d267273942645"
+  },
+  "packet": {
+    "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+    "sha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+    "gitBlobSha": "2f7ee6226963a79561b2d79280241fba0df0a401",
+    "sourceState": "verified",
+    "receiptState": "unknown_missing_receipt",
+    "r3ChainSHA256": "cc82f538f3340b1eadb9460389d4971eb2eb308e3bd26d17b9dcf2b6072a9402",
+    "newR3CodeOrCITests": false
+  },
+  "localSnapshot": {
+    "path": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r33",
+    "stateAtThisEvidence": "canonical_r33_candidate_and_source_manifest_to_be_confirmed_after_final_remote_readback",
+    "historicalR10Preserved": true
+  },
+  "limits": [
+    "Keine bestätigte Claude-Code-Sitzung, Installation, Quittung oder tatsächliche Kenntnisnahme",
+    "Keine Git-Checkouts an beiden geprüften lokalen Ablagen; kein Git-clean-Zustand behauptet",
+    "R3-Codeintegration und Voll-CI bleiben datierte offene Arbeit; R4 ist nur Koordination/review_only",
+    "Keine heutigen Kennzahlen-/Flowreports/Kauf-Watch-Abfragen wiederholt",
+    "Keine Kunden-/Shop-/Ads-/Social-/DNS-/Workflow-/Automationsänderungen und keine gemeinsame Root-CLAUDE.md bearbeitet"
+  ]
+}
