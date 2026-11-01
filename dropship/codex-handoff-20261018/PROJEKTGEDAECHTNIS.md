@@ -1,12 +1,12 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
-## Aktueller Stand – 01.11.2026, Revision 38
+## Aktueller Stand – 01.11.2026, Revision 39
 
-[Metricool-Wochenprüfung](METRICOOL-WOCHE-20261101-R38.md) · [Belege](METRICOOL-WOCHENPRUEFUNG-20261101-R38.json) · [Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json).
+[Bestätigter Threads-Fototermin](FOTO-WOCHENENTWURF-20261101-R39.md) · [Belege](FOTO-WOCHENBELEGE-20261101-R39.json) · [Enges Publikationsregister](register/photo-week-luxe_photo_kosmetik_organizer_20261101.json) · [Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json).
 
-Aktueller Wochenauftrag: luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanälen frisch passend. Sieben bereits bestehende Planobjekte/14 PENDING auf Facebook/Instagram decken 02.–08.11. ab, keine exakten Doppel oder Änderungen in geprüften Feldern. Keine eigenen zusätzlichen Termine oder Freigabe der alten Bildpost-Inhalte. Neue Ausspielung unter geltender Master-Regel blockiert: passende Originaltakes, Ausführung/Filmrechte, fertige MP4-Abnahme und dauerhaftes Register fehlen/unbestätigt. Die Frage nach zusätzlicher Foto-/Karussellform ist beim Inhaber offen; keine Zustimmung aus Ablaufzeit oder UI-Vorauswahl.
+Neue ausdrückliche Inhaberantworten erlauben hochwertige Foto-/Karussellposts zusätzlich für diese Wochenplanung und genau den Kosmetik-Organizer-Text samt engem Erstregister für Threads. Ein eigener Termin ist bestätigt: 04.11.2026, 18:30 Europe/Zurich, ID 413194611 / UUID -1937081137064819378, draft=false, autoPublish=true, Threads PENDING. Produkt, Variante, CHF 29.90, Kaufbarkeit, Tags und Bildrechte geprüft; Metricool-JPEG bytegleich zum Original. Dauerhafter SHA-CAS-Beleg frisch bestätigt, ältere Vergangenheit bleibt unbekannt; nichts zurückgesetzt. Diese konkrete Format-, Inhalts- und Registerfreigabe nicht erneut verlangen. Sieben bestehende FB-/IG-Termine vom 02.–08.11. erhalten. Keine neuen Kopien oder veröffentlichten Status behauptet.
 
-Claude-Übergabe bleibt R37/R5 mit acht geprüften Website-Dateizuordnungen und bestehendem Entwurf 212978598279. Dieser Lauf hat keine Website-/Social-/Geschäftsänderung ausgeführt und keinen Report/Kauf-Watch wiederholt. Vor jedem Lauf vier kanonische Dateien frisch lesen. Lokaler Quellenspiegel `memory/snapshots/2026-11-01-r38/` erhält 16 Aufgaben/Historien; ein Task aktualisiert, 15 unverändert. Alle bisherigen Freigaben, Qualitäts-/Rechtegates und Automationsgrenzen bleiben erhalten.
+Instagram-/TikTok-Bio und Pinterest-Kontoboard nach 403/unsupported weiter unbekannt. Der eine professionelle Projektorfilm bleibt ein eigener Auftrag mit offenen Material-, Rechte-, Varianten- und Abnahmefragen. Keine neuen Tagesreports, Kauf-Watch-Abfragen, Geschäfts- oder Frequenzänderungen. Lokaler Quellenspiegel memory/snapshots/2026-11-01-r39 erhält 16 IDs und Historien; ein Task aktualisiert, 15 unverändert. R37/R5 bleibt die datierte Websiteübergabe für Claude. Neue Selbstgestalten-Wünsche werden separat weiterbearbeitet; kein Claude-Empfang oder Website-Publish behauptet.
 
 Eingerichtet auf den ausdrücklichen Inhaberauftrag vom 28.10.2026: «installiere ein gehirn … selbstständig … für dieses projekt». Zweck: in bestehenden Läufen belegten Fortschritt fortsetzen, Entscheidungen wiederfinden und Doppelarbeit vermeiden. Claude koordiniert; Codex bearbeitet selbstständig die bereits erlaubten Schritte. Dieses Dokument ist ein Arbeitsindex, keine zusätzliche Geschäftsfreigabe und kein laufender Agentendienst.
 
@@ -32,6 +32,8 @@ Eingerichtet auf den ausdrücklichen Inhaberauftrag vom 28.10.2026: «installier
 Nur LuxeStyle. Keine Kundenansprache, Rabatte, Budgets, Shop-Einstellungen, Flow-Aktivierung oder kostenpflichtigen Video-Renders. Kein ungeprüfter Workflowstart, Merge oder Deployment. Keine Massenpagination und keine fremden Marken. CHF 50 öffentlich / CHF 45 nach Rabatt intern sowie `account.luxestyle.com.co` erhalten.
 
 Die vorhandene Social-Erlaubnis gilt ausschliesslich für Metricool und vollständig geprüfte, inhaltlich freigegebene professionelle Master-MP4s. Frisch Shopify luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt allen sechs Kanalidentitäten prüfen. Produktstatus, nicht leere Tags, Tracking, inventoryPolicy, Storefront, Sperrtags einschliesslich jedes rueckhol, Rechte, Bio-Ziele, Pinterest-Board, YouTube-Zielgruppe, Doppelposts und dauerhaftes Masterregister prüfen. Fehlende Voraussetzungen blockieren den betreffenden Push. Der genaue Ablauf im bestehenden Aufgabenauftrag bleibt verbindlich.
+
+**Datierter Zusatz vom 01.11.2026:** Für diese Wochenplanung hat der Inhaber hochwertige Produktfoto-/Karussellposts zusätzlich ausdrücklich erlaubt. Produkt-, Rechte-, Qualitäts-, Kanal-, Doppelpost- und Kontinuitätsregeln bleiben verbindlich. Genau der Kosmetik-Organizer-Threads-Text und sein enger Erstregisterumfang sind separat genehmigt und terminiert; keine erneute gleiche Freigabefrage. Film-Master-Anforderungen bleiben für Videos erhalten. Siehe [R39-Belege](FOTO-WOCHENBELEGE-20261101-R39.json).
 
 Den einen 18-Sekunden-Projektor-Master weiterentwickeln. Kein Voiceover, nur `automation/music/luxe-premium.wav` nach Datei-/Rechteprüfung; keine ungeprüften Altclips oder Foto-Zoom-Ersatzserie. Ein Schnittplan ist kein fertiger Film.
 
@@ -289,3 +291,7 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Metricool eine Woche voraus, Revision 38
 
 [Frische Wochenprüfung](METRICOOL-WOCHE-20261101-R38.md): sieben vorhandene Termine auf FB/IG 02.–08.11., passende Identitäten und keine exakten Doppel. Keine eigene neue Terminierung/Publikation. Material-/Rechte-/Registerblocker fortbestehend; explizite Formatfrage zu Produktfotos/Karussells ohne belegte Antwort. Ein Mastertask und heutiger Tagesblock ergänzt; R37/R5, 16 IDs/Historien, Tagesgrenzen und Kauf-Watch-Ende erhalten.
+
+## 01.11.2026 – Fotoformat freigegeben und ein Threads-Termin bestätigt, Revision 39
+
+[R39-Fototermin](FOTO-WOCHENENTWURF-20261101-R39.md): ein eigener neuer Threads-Post für 04.11., 18:30 Zürich nach zwei ausdrücklichen Inhaberantworten, genauer Produkt-, Bild- und Kanalprüfung und dauerhafter enger Register-Initialisierung. ID 413194611 / UUID -1937081137064819378, nur Threads PENDING, Original-JPEG-SHA identisch. Sieben bestehende FB-/IG-Termine erhalten; Film und übrige Kanalblocker separat. 16 IDs, Historien, Tagesgrenzen und R37/R5 erhalten.
