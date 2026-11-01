@@ -609,6 +609,11 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | 08:00 Produktfilm | Originaltake-Prüfer lokal um echte Medienbytes/ffprobe/Rotation/Cadence ergänzt; aktuelle öffentliche Videoquelle geprüft | 28 synthetische Fälle bestanden;852×480/25fps-Referenz ungeeignet, vier Originaltakes/Rechte/Ausführung offen; keine MP4, Integration oder Veröffentlichung |
 | 08:00 Verkaufsgrundlagen | Zwei ACTIVE-Produkte/vier native Varianten, Storefront/Bilder und drei öffentliche Verkaufsseiten geprüft; lokaler Root-HTML-Auswerter ergänzt | Projektor CHF34.90, Pyjama CHF14.90–17.90 mit rueckhol-Sperre; keine neue SEO-Störung belegt. Drei Quellenfälle mit je sieben Assertions bestanden; Default-Matrix konkretisiert unbekannte Ausführung |
 | 08:00 Verkaufsentwurf / Dokumentation | Bestehenden einen Welcome-Service-Diff als unverändert offen geführt und fünf neue bereinigte Reviewartefakte gesichert | Keine Mail-/Flow-/Shop-/DNS-/Adsänderung; Dokumentation auf Revision20 fortgeführt, alle16 Aufgaben und Historien erhalten |
+| Interaktive Fortsetzung / Identitäten | Nach «weiter» aktuelle Übergabe und Revision20 gelesen; Shop und alle sechs Metricool-Kanäle frisch abgeglichen | Passend; keine zusätzlichen Tageskennzahl-/Flowreports und kein beendeter Kauf-Watch wiederholt |
+| Printful / Auftragsidentität | Doppelanlage trotz Markerfehler synthetisch nachgestellt; lokalen Checkpoint-/Quellen-/Intent-/CAS- und Quittierungsentwurf fortgeführt | LOKAL GEPRÜFT: 79/79 Mockfälle unabhängig grün, Mutation erkannt, vier Dateien bytegleich. Kein echter Auftrag, Register, Sync oder Deployment |
+| CJ / SKU-Nachziehen | Fehlende/paginierte Suchantwort und Timeout-Wiederholung nachgestellt; separaten Writer mit Vorabreservation/Parallel-Recheck und Rücklesen gehärtet | LOKAL GEPRÜFT: 39 neue Szenarien, 121 Preis-/SKU- und 89 bestehende Varianten-Assertions grün; Mutation erkannt. Prozesslokal, kein Produkt-/SKU-/Preiswrite |
+| CI / verbleibende Grenze | Genau zwei Testaufrufe als Workflow-Reviewdiff vorgeschlagen, YAML/Trigger-/Sparseabdeckung geprüft | ENTWURF: Node24 lokal; Node22/Voll-CI unbestätigt. Keine CI-Simulation, Installation, Workflow- oder Deploymentaktion; GraphQL-Vorprüfung skipped |
+| Fortsetzung / nächster Schritt | Fünf Reviewartefakte im Handoff gespeichert und exakt gelesen; nur betroffene Aufgaben in Revision21 fortgeschrieben | DOKUMENTIERT:16 IDs/Historien erhalten. Nächster Schritt: Node22/Voll-CI, Runtime-Grants, belegte Printful-Ready-Migration und dauerhafte CJ-Reservation vor jedem echten Lauf; Claude-Kenntnisnahme unbekannt |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
 
@@ -618,3 +623,5 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 [LUXESTYLE_CM_TITELBILDER_20261101] [Bericht](SELBSTGESTALTEN-CM-TITELBILDER-20261101.md) · [Belege](SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json). Revision 19; übrige Aufgaben und Historie erhalten.
 
 [LUXESTYLE_MORGEN_20261101] [Paket](MORGENPAKET-20261101.md) · [Belege](MORGENBELEGE-20261101.json) · [Master-Diff](MASTER-FFPROBE-20261101.patch). Kennzahlen/Flows nicht wiederholt; Kauf-Watch bleibt beendet.
+
+[LUXESTYLE_SYNC_SCHUTZ_20261101] [Bericht](SYNC-SCHUTZ-20261101.md) · [Belege](SYNC-SCHUTZ-BELEGE-20261101.json). Interaktive Fortsetzung, kein neuer geplanter Lauf; operative Nutzung unbestätigt.
