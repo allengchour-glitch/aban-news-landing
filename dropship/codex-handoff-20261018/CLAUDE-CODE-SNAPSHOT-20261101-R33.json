@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "state": "verified_remote_snapshot",
+  "verifiedAt": "2026-11-01T16:29:45.848977+00:00",
+  "repository": "allengchour-glitch/aban-news-landing",
+  "branch": "codex/luxestyle-claude-handoff-20261018",
+  "revision": 33,
+  "taskCount": 16,
+  "authority": "Dated local snapshot only; read current canonical remote sources before every run",
+  "files": [
+    {
+      "filename": "README.md",
+      "sourcePath": "dropship/codex-handoff-20261018/README.md",
+      "gitBlobSha": "53ff5a86d5f018eecd7962de581d4975682bebe6",
+      "sha256": "32095c188e75c069011ae7d1abd2b9ac7c54770f3edf9d447dfcdc84fa484110",
+      "bytes": 176445,
+      "exactRemoteReadback": true
+    },
+    {
+      "filename": "PROJEKTGEDAECHTNIS.md",
+      "sourcePath": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+      "gitBlobSha": "169d67f47187e28b997af18d29f02dfe933f1ebe",
+      "sha256": "4819f305385540d63d925c1659ea57411ddecbda2a2b3144c84d4f8a1c84038d",
+      "bytes": 58102,
+      "exactRemoteReadback": true
+    },
+    {
+      "filename": "ARBEITSSTAND.json",
+      "sourcePath": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+      "gitBlobSha": "8f8386437571a0d382e05b6a68559a26e43703d0",
+      "sha256": "98eab7f940f90c02a22cdb0c21b671c17a4871855f3ce996c317f0fc41cb079a",
+      "bytes": 185884,
+      "exactRemoteReadback": true
+    },
+    {
+      "filename": "TAGESPROTOKOLL.md",
+      "sourcePath": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+      "gitBlobSha": "0b9ae5d48945f17243897a70d0574083ef1d1313",
+      "sha256": "1ec83b7aa3444fdb5a9b4e7b9f13c7882cf734ab802cd0ce29fc0dc090e5b6b3",
+      "bytes": 210775,
+      "exactRemoteReadback": true
+    }
+  ],
+  "historicalFilesAndHelpers": [
+    {
+      "path": "memory/ARBEITSSTAND.json",
+      "sha256": "c17e7f425f4678083f2a805bbfeb39dbf9ca743f08b01f9f46d2ef7eb3039e9b",
+      "unchanged": true
+    },
+    {
+      "path": "memory/PROJEKTGEDAECHTNIS.md",
+      "sha256": "cc6717f8e23efb9b62d11831692304acf657c8d9c8f1cb92c89ce10dfae5033d",
+      "unchanged": true
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "5f466961539c090f1e99cb6f68b3c242f8785bd0b2b200141860d2807214aedd",
+      "unchanged": true
+    },
+    {
+      "path": "automation/codex_uebergabe.mjs",
+      "sha256": "8d1ca56a7ffdbfcf8451e12f7a1a2682b1db57d719697cb482960bfe22f06570",
+      "unchanged": true
+    },
+    {
+      "path": "codex-mods/luxe-codex/lib/uebergabe.mjs",
+      "sha256": "54547f449be8f8b633c434a7854bde0870ebad6f60e5fdb9bee96f443740c316",
+      "unchanged": true
+    }
+  ],
+  "packetSHA256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+  "receiptState": "unknown_missing_receipt",
+  "gitWorkingTreeClean": "not_applicable_no_git_checkout",
+  "snapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r33",
+  "finalPacketState": {
+    "taskId": "luxe-zusammenarbeit-20261028",
+    "revision": 4,
+    "packet": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+    "packetSha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+    "producer": "codex",
+    "coordinator": "claude",
+    "sourceState": "verified",
+    "sourceChecks": [
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+        "expectedSha256": "08b29f29e73cd2da9bfe1e689af3dfdd24679774634a3269c14044c2bc8ce09b",
+        "actualSha256": "08b29f29e73cd2da9bfe1e689af3dfdd24679774634a3269c14044c2bc8ce09b",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
+        "expectedSha256": "793a1ddc6051eab827ff6884a3967039d56518d2ba158fa8218b68549247e617",
+        "actualSha256": "793a1ddc6051eab827ff6884a3967039d56518d2ba158fa8218b68549247e617",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+        "expectedSha256": "8072af94d9fde736a7afc08c4e428c023ef9343bba6992e2dbc8a2c648059288",
+        "actualSha256": "8072af94d9fde736a7afc08c4e428c023ef9343bba6992e2dbc8a2c648059288",
+        "state": "verified",
+        "gitBlobMatches": true
+      }
+    ],
+    "receiptState": "unknown_missing_receipt",
+    "receipt": null,
+    "notice": "Rollenwert ist Selbstauskunft. Keine Live-Sitzungsverbindung, keine Umsetzung oder Veröffentlichung bestätigt."
+  }
+}
