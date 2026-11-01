@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-01T01:47:38.701393+00:00",
+  "scope": "LuxeStyle Selbstgestalten, cm display and restoration of original three cover images; unpublished theme only",
+  "native": {
+    "at": "2026-11-01T01:46:05.160Z",
+    "checks": [
+      {
+        "file": "assets/luxe-clothing.js",
+        "md5": "c0d93097153eab8c5dbdcc63eaa711ea",
+        "exact": true
+      },
+      {
+        "file": "assets/luxe-clothing.css",
+        "md5": "48a9dd765a4fe66bc883ae43a0d5a68c",
+        "exact": true
+      },
+      {
+        "file": "sections/luxe-clothing.liquid",
+        "md5": "20380099b7faefb82f6d62be30145032",
+        "exact": true
+      },
+      {
+        "file": "snippets/luxe-selfdesign-cover.liquid",
+        "md5": "8006e5ededfe5c22a4dc44fda82ded49",
+        "exact": true
+      }
+    ],
+    "identity": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "name": "LuxeStyle",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        },
+        "main": {
+          "id": "gid://shopify/OnlineStoreTheme/212656488839",
+          "role": "MAIN",
+          "updatedAt": "2026-10-28T13:07:42Z"
+        },
+        "preview": {
+          "id": "gid://shopify/OnlineStoreTheme/212752499079",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T01:45:42Z"
+        }
+      }
+    },
+    "mainChanged": false,
+    "previewPublished": false
+  },
+  "files": [
+    {
+      "path": "assets/luxe-clothing.js",
+      "bytes": 45019,
+      "source": "/workspace/luxestyle-review/units-images-20261101/units/after/assets/luxe-clothing.js",
+      "sha256": "192b7dca9fba6186269efb9574670ae259f2b20bc2b5777318f74e7c3b2908b4",
+      "md5": "c0d93097153eab8c5dbdcc63eaa711ea",
+      "beforeMd5": "524a94181ae126b2db0ef90ca73e467e",
+      "originalBaseMd5": "1084f56df90de1b1de59133452afd445"
+    },
+    {
+      "path": "assets/luxe-clothing.css",
+      "source": "/workspace/luxestyle-review/units-images-20261101/images/after/assets/luxe-clothing.css",
+      "bytes": 20088,
+      "sha256": "5496af06c9b99a1d1a020adc18ab85784f999c6871f61fa5628918fd9cae03f3",
+      "md5": "48a9dd765a4fe66bc883ae43a0d5a68c"
+    },
+    {
+      "path": "sections/luxe-clothing.liquid",
+      "source": "/workspace/luxestyle-review/units-images-20261101/images/after/sections/luxe-clothing.liquid",
+      "bytes": 26791,
+      "sha256": "37cb8a3daf9d601b91a3ffc6895b7816c6b5264ef5994730c79ec3e4ba6b3a38",
+      "md5": "20380099b7faefb82f6d62be30145032"
+    },
+    {
+      "path": "snippets/luxe-selfdesign-cover.liquid",
+      "source": "/workspace/luxestyle-review/units-images-20261101/images/after/snippets/luxe-selfdesign-cover.liquid",
+      "bytes": 2247,
+      "sha256": "12f43b09a190a5256a96485a29a09649941619264fbaf96c5250c637624b78ce",
+      "md5": "8006e5ededfe5c22a4dc44fda82ded49"
+    }
+  ],
+  "nativeQA": {
+    "at": "2026-11-01T01:46:37.393132+00:00",
+    "scope": "Consolidated bounded native checks. Initial hero/cm tests plus explicitly justified narrow follow-ups; previous51checks not repeated.",
+    "passed": true,
+    "checks": [
+      {
+        "name": "572 catalogue entries preserved",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "One H1 preserved",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Exactly3 previous cover images restored",
+        "pass": true,
+        "evidence": [
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/blank-tee-white.png?v=1781027029&width=540",
+            "complete": true,
+            "width": 518,
+            "alt": "Unisex T-Shirt – selbst gestalten (blanko)",
+            "href": "https://luxestyle.ch/products/unisex-t-shirt-selbst-gestalten?view=luxe-studio"
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/bio-jutebeutel-selbst-gestalten_9064663a-39f9-4a39-b81b-8ac733b49c18.jpg?v=1781356270&width=540",
+            "complete": true,
+            "width": 518,
+            "alt": "Bio-Jutebeutel blanko zum Selbstgestalten",
+            "href": "https://luxestyle.ch/products/bio-jutebeutel-selbst-gestalten?view=luxe-studio"
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/1320_1663762583.jpg?v=1781046472&width=540",
+            "complete": true,
+            "width": 518,
+            "alt": "Keramik-Tasse – blanko, selbst gestalten – LuxeStyle",
+            "href": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?view=luxe-studio"
+          }
+        ]
+      },
+      {
+        "name": "Cover images loaded from actual Shopify200responses",
+        "pass": true,
+        "evidence": [
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/blank-tee-white.png?v=1781027029&width=540",
+            "status": 200
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/bio-jutebeutel-selbst-gestalten_9064663a-39f9-4a39-b81b-8ac733b49c18.jpg?v=1781356270&width=540",
+            "status": 200
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/1320_1663762583.jpg?v=1781046472&width=540",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "name": "Three correct cover destinations retain actual preview theme",
+        "pass": true,
+        "evidence": {
+          "resolution": "Shopify strips preview_theme_id from URL; same-context actual GET retained UNPUBLISHED theme",
+          "navigation": {
+            "target": "https://luxestyle.ch/products/unisex-t-shirt-selbst-gestalten?view=luxe-studio",
+            "status": 200,
+            "url": "https://luxestyle.ch/products/unisex-t-shirt-selbst-gestalten?view=luxe-studio",
+            "themeBefore": {
+              "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+              "id": 212752499079,
+              "schema_name": "Horizon",
+              "schema_version": "3.5.1",
+              "theme_store_id": 2481,
+              "role": "unpublished",
+              "handle": "null",
+              "style": {
+                "id": null,
+                "handle": null
+              }
+            },
+            "themeAfter": {
+              "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+              "id": 212752499079,
+              "schema_name": "Horizon",
+              "schema_version": "3.5.1",
+              "theme_store_id": 2481,
+              "role": "unpublished",
+              "handle": "null",
+              "style": {
+                "id": null,
+                "handle": null
+              }
+            },
+            "title": "Unisex T-Shirt – Selbst gestalten | LuxeStyle CH",
+            "previewToolbar": 1
+          }
+        },
+        "originalExpectationPassed": false
+      },
+      {
+        "name": "Cover comes before filters",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Hero page no overflow 1440",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Hero page no overflow 390",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Size filter label converts while original value remains",
+        "pass": true,
+        "evidence": {
+          "value": "8″×10″",
+          "text": "20,32 × 25,4 cm"
+        }
+      },
+      {
+        "name": "Active size filter chip also shows centimetres",
+        "pass": true,
+        "evidence": "Aktive Filter:\n20,32 × 25,4 cm"
+      },
+      {
+        "name": "Poster card displays converted centimetres",
+        "pass": true,
+        "evidence": "Posters\n\nEnhanced Matte Paper Poster (cm)\n\n12,7 × 17,78 cm · 15,24 × 20,32 cm · 21,01 × 29,69 cm · 20,32 × 25,4 cm · 20,32 × 30,48 cm · 20,32 × 50,8 cm · 22,86 × 27,94 cm · 25,4 × 25,4 cm · 25,4 × 60,96 cm · + 24 Grössen\n\nAuswahl & Details"
+      },
+      {
+        "name": "Poster title unit shown as cm",
+        "pass": true,
+        "evidence": "Enhanced Matte Paper Poster (cm)"
+      },
+      {
+        "name": "Poster8x10button has exact cm conversion",
+        "pass": true,
+        "evidence": "20,32 × 25,4 cm"
+      },
+      {
+        "name": "Centimetre click retains original source variant and rawsize",
+        "pass": true,
+        "evidence": {
+          "variantId": "4463",
+          "size": "8″×10″"
+        }
+      },
+      {
+        "name": "Poster selected variant image remains exact",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Converted detail no overflow 1440",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Converted detail no overflow 390",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Fluid ounces not converted into centimetres",
+        "pass": true,
+        "evidence": [
+          "11 oz",
+          "15 oz",
+          "20 oz"
+        ]
+      },
+      {
+        "name": "31Shopcards and confirmedzero reviews preserved",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Existing Shop centimetres preserved without double conversion",
+        "pass": true,
+        "evidence": "Grösse7,6 × 7,6 cm · 10,2 × 10,2 cm · 14 × 14 cm · 38 × 9,5 cm"
+      },
+      {
+        "name": "Initial detail reads limited to exactly2shards",
+        "pass": true,
+        "evidence": [
+          {
+            "file": "luxe-clothing-index.json",
+            "status": 200
+          },
+          {
+            "file": "luxe-clothing-details-s001.json",
+            "status": 200
+          },
+          {
+            "file": "luxe-clothing-details-s002.json",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "name": "22–23inch range converts both endpoints",
+        "pass": true,
+        "evidence": "Material & Produktbeschreibung\n\nOriginalangaben des Herstellers. Unterschiede nach Farbe, Ausführung oder Produktionsregion beachten.\n\nA cozy corded sweatshirt with a relaxed fit and a soft textured finish you'll reach for again and again. Perfect for layering on chilly mornings or winding down after a long day.\n\n• 100% cotton\n• Textured cord fabric\n• Stone washed finish\n• Oversized fit (55,88–58,42 cm chest radius in size S)\n• Thumbholes in sleeves\n• Relaxed drape for layering"
+      },
+      {
+        "name": "No mixed22inch/58.42cm range remains",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "R2 range description no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "R2 preserves exact8x10 conversion and original variant",
+        "pass": true,
+        "evidence": {
+          "label": "20,32 × 25,4 cm",
+          "selection": {
+            "id": "4463",
+            "size": "8″×10″"
+          }
+        }
+      },
+      {
+        "name": "Model metadata now uses cm",
+        "pass": true,
+        "evidence": "Paper Poster (cm) | Matte"
+      },
+      {
+        "name": "Final metadata change preserves original variant and cm label",
+        "pass": true,
+        "evidence": {
+          "label": "20,32 × 25,4 cm",
+          "selection": {
+            "id": "4463",
+            "size": "8″×10″"
+          }
+        }
+      }
+    ],
+    "revisionEvidence": {
+      "initial": "PARTIAL.json",
+      "previewCookieAndSticker": "FOLLOWUP.json",
+      "rangeFixR2": "R2-RESULTS.json",
+      "metadataFinalR3": "R3-RESULTS.json"
+    },
+    "finalCDN": {
+      "url": "https://luxestyle.ch/cdn/shop/t/19/assets/luxe-clothing.js?v=133126263059332495251793497541",
+      "status": 200,
+      "bytes": 39070,
+      "sha256": "257a2714c96211b937403a757fb73b439c60626e7672e45cabf207ebddcf2c39"
+    },
+    "limitations": [
+      "Only UNPUBLISHED theme212752499079, noMAINpublication",
+      "AllnonGETHEADblocked; recordedFailedtofetchnotglobalabsenceoferrors",
+      "Initialstickerharnessselectorhitreviewbadge; correctedexactarticlequery",
+      "Onefollowupbrowserwaittimedout; not404andresolvedbynarrowread",
+      "CDNJavaScriptminifiedandhasitsownhash; notbyteidenticaltoAdminAPIsource"
+    ],
+    "noRealCartUploadOrder": true
+  },
+  "sourceHashNotes": "Admin source MD5/SHA256 are distinct from the minified CDN response hashes. Initial stale API body clarified by fresh read without repeating a write.",
+  "references": [
+    {
+      "file": "units/HELPER-CHECKS.json",
+      "sha256": "9834b410ad94c165df7d5182c18e5a81c6e2f7161e9560902a7a506e0666ee45",
+      "bytes": 4436
+    },
+    {
+      "file": "units/RANGE-CHECKS.json",
+      "sha256": "1ea13ca7aa96d129831a0995080a37bb493b817bfce385fe83c6ff803db16af5",
+      "bytes": 3007
+    },
+    {
+      "file": "units/UNITS.diff",
+      "sha256": "4531abdc43aaccbf6c8a42d9afe6c9ea797069a1684ceb7a42ca55ef9b7a6f77",
+      "bytes": 20691
+    },
+    {
+      "file": "images/FILES.json",
+      "sha256": "7fbbb08335e1c14d772ab74b95e801cf71efa78a629ba89014f5b0bd61558d0c",
+      "bytes": 1297
+    },
+    {
+      "file": "images/VALIDATION-r2.json",
+      "sha256": "64aae6bba20f1f29d9b35b06dd8888b129b215a189fc0b02c5a5b98661194768",
+      "bytes": 487
+    },
+    {
+      "file": "native-qa/R2-RESULTS.json",
+      "sha256": "7d61604db493bafabd550dbec9f03faf3ae2e5a7332abae9265da1d70893de18",
+      "bytes": 8218
+    },
+    {
+      "file": "native-qa/R3-RESULTS.json",
+      "sha256": "c45585893b4d933ccfa8835eee548b9932898ace591d601f1a2e3ae6b5c4f03c",
+      "bytes": 5524
+    },
+    {
+      "file": "native-qa/FOLLOWUP.json",
+      "sha256": "bd23d0465abbe68824c6b75e0edb8fc540afe97ae5fcd997f4864dd2a0100ff5",
+      "bytes": 9044
+    },
+    {
+      "file": "VALIDATION-r2.txt",
+      "sha256": "6e54b86fd2254b23b2a83933010f4ec1f11239bcac3ad87546b454ef32c37f16",
+      "bytes": 1048
+    },
+    {
+      "file": "VALIDATION-r4.txt",
+      "sha256": "b9c4f7cdf45fb2802099645f894676a8bd343e19ca2255d600b65219c5dcc87c",
+      "bytes": 328
+    }
+  ],
+  "mainPublished": false,
+  "shopProductsOrPricesChanged": false
+}
