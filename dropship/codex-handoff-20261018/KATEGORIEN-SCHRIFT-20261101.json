@@ -1,0 +1,275 @@
+{
+  "at": "2026-11-01T14:20:55Z",
+  "timezone": "Europe/Zurich",
+  "scope": "One CSS file in UNPUBLISHED theme; category typography only",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/212656488839",
+    "role": "MAIN",
+    "files": {
+      "nodes": [
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+      }
+    }
+  },
+  "preview": {
+    "id": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED"
+  },
+  "file": {
+    "filename": "assets/luxe-category-directory.css",
+    "beforeMd5": "1076829457046e1573f48fbcdc375b1e",
+    "afterMd5": "261abb906a9062d76d9da6b44dfb006f",
+    "afterSha256": "8f5aa28a420f00f53ff0cdcc7cdf096aeb893145b48d6f0642c1caf1d638fce6",
+    "exactReadback": true
+  },
+  "sizes": {
+    "subcategoryLinks": {
+      "beforeMobile": 11,
+      "beforeDesktop": 12,
+      "after": 16
+    },
+    "categoryTitle": {
+      "beforeMobile": 23,
+      "afterMobile": 26,
+      "afterDesktop": 36
+    },
+    "count": {
+      "beforeMobile": 10,
+      "afterMobile": 13
+    },
+    "searchInput": 16
+  },
+  "nativeQA": [
+    {
+      "width": 360,
+      "overflow": false,
+      "title": "26px",
+      "count": "13px",
+      "links": [
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        }
+      ],
+      "allLinks": 412,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "title": "26px",
+      "count": "13px",
+      "links": [
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        }
+      ],
+      "allLinks": 412,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "title": "36px",
+      "count": "14px",
+      "links": [
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        },
+        {
+          "font": "16px",
+          "lineHeight": "24.8px",
+          "overflow": false
+        }
+      ],
+      "allLinks": 412,
+      "pass": true
+    }
+  ],
+  "patch": "--- a/assets/luxe-category-directory.css\n+++ b/assets/luxe-category-directory.css\n@@ -3,16 +3,16 @@\n .lx-directory [hidden]{display:none!important}\n .lx-directory :focus-visible{outline:3px solid #845a34;outline-offset:5px}\n .lx-directory-header{max-width:700px;margin:0 0 30px}\n-.lx-directory-eyebrow{font-size:10px;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px;color:var(--lxd-muted)}\n+.lx-directory-eyebrow{font-size:12px;line-height:1.5;letter-spacing:.13em;text-transform:uppercase;margin:0 0 14px;color:var(--lxd-muted)}\n .lx-directory-header h1{font:400 clamp(38px,4.5vw,64px)/1.05 var(--lxd-serif);letter-spacing:-1.5px;margin:0 0 18px}\n-.lx-directory-header>p:last-child{font-size:14px;line-height:1.7;color:var(--lxd-muted);margin:0}\n+.lx-directory-header>p:last-child{font-size:16px;line-height:1.7;color:var(--lxd-muted);margin:0}\n .lx-directory-search{max-width:620px;margin:0 0 36px}\n-.lx-directory-search label{display:block;margin:0 0 9px;font-size:12px;font-weight:600}\n+.lx-directory-search label{display:block;margin:0 0 9px;font-size:15px;font-weight:600}\n .lx-directory-search-field{display:flex;align-items:center;gap:12px;min-height:54px;padding:0 14px;background:#fff;border:1px solid #cfc3b2;border-radius:14px}\n .lx-directory-search-field>svg{width:21px;height:21px;flex:0 0 21px;fill:none;stroke:currentColor;stroke-width:1.5}\n .lx-directory-search-field>input{min-width:0;flex:1;width:100%;min-height:52px;border:0;background:transparent;font:inherit;color:inherit;outline-offset:0}\n-.lx-directory-search-field>button{flex:0 0 auto;min-height:44px;padding:8px;border:0;background:transparent;color:#665f56;font:inherit;font-size:11px;text-decoration:underline;cursor:pointer}\n-.lx-directory-search [role=status]{font-size:11px;line-height:1.5;color:var(--lxd-muted);margin:10px 0 0;min-height:17px}\n+.lx-directory-search-field>button{flex:0 0 auto;min-height:44px;padding:8px;border:0;background:transparent;color:#665f56;font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}\n+.lx-directory-search [role=status]{font-size:14px;line-height:1.5;color:var(--lxd-muted);margin:10px 0 0;min-height:17px}\n .lx-directory .lux-kat-lead{display:none}\n .lx-directory.is-enhanced .lux-kat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}\n .lx-directory .lx-directory-group{min-width:0;border:1px solid var(--lxd-line);border-radius:20px;overflow:hidden;background:#fffdf9;scroll-margin-top:20px}\n@@ -22,16 +22,16 @@\n .lx-directory-image{display:flex;align-items:center;justify-content:center;aspect-ratio:1.5;overflow:hidden;background:#eae2d6}\n .lx-directory-image img{display:block;width:100%;height:100%;object-fit:contain}\n .lx-directory-card-copy{position:relative;display:flex;flex-direction:column;gap:9px;padding:22px 56px 22px 22px;min-height:116px}\n-.lx-directory-card-title{display:block;font:400 clamp(24px,2.4vw,32px)/1.1 var(--lxd-serif);letter-spacing:-.5px;overflow-wrap:anywhere}\n-.lx-directory-card-count{font-size:11px;line-height:1.4;color:var(--lxd-muted);font-weight:400}\n+.lx-directory-card-title{display:block;font:400 clamp(28px,2.6vw,36px)/1.15 var(--lxd-serif);letter-spacing:-.5px;overflow-wrap:anywhere}\n+.lx-directory-card-count{font-size:14px;line-height:1.5;color:var(--lxd-muted);font-weight:400}\n .lx-directory-card-plus{position:absolute;right:20px;top:calc(50% - 12px);font:400 24px/1 sans-serif;transition:transform .15s}\n .lx-directory-group[open] .lx-directory-card-plus{transform:rotate(45deg)}\n .lx-directory .lx-directory-group:hover{border-color:#9e8a70}\n .lx-directory .lx-directory-group>.lux-kat-l{display:grid;grid-template-columns:minmax(0,1fr);gap:0;list-style:none;padding:0 22px 16px;margin:0}\n .lx-directory .lx-directory-group>.lux-kat-l li{margin:0;min-width:0;border-top:1px solid #eee7dc}\n-.lx-directory .lx-directory-group>.lux-kat-l a{display:flex;align-items:center;min-height:44px;padding:10px 0;text-decoration:none;color:var(--lxd-muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere}\n+.lx-directory .lx-directory-group>.lux-kat-l a{display:flex;align-items:center;min-height:44px;padding:10px 0;text-decoration:none;color:var(--lxd-muted);font-size:16px;line-height:1.55;overflow-wrap:anywhere}\n .lx-directory .lx-directory-group>.lux-kat-l a:hover{text-decoration:underline;text-underline-offset:4px;color:var(--lxd-ink)}\n .lx-directory.is-filtering .lx-directory-group>.lux-kat-l a{color:var(--lxd-ink)}\n @media(max-width:1100px){.lx-directory.is-enhanced .lux-kat{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}\n-@media(max-width:600px){.lx-directory{padding-top:34px;padding-bottom:48px}.lx-directory-header h1{font-size:42px}.lx-directory-header>p:last-child{font-size:13px}.lx-directory-search{margin-bottom:26px}.lx-directory.is-enhanced .lux-kat{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lx-directory .lx-directory-group{border-radius:16px}.lx-directory-image{aspect-ratio:1.08}.lx-directory-card-copy{padding:16px 32px 16px 14px;gap:8px;min-height:110px}.lx-directory-card-title{font-size:23px}.lx-directory-card-count{font-size:10px}.lx-directory-card-plus{right:12px;font-size:20px;top:calc(50% - 10px)}.lx-directory .lx-directory-group>.lux-kat-l{padding:0 14px 12px}.lx-directory .lx-directory-group>.lux-kat-l a{font-size:11px}.lx-directory-search-field{padding-left:12px;gap:8px}.lx-directory-search-field>input{font-size:14px}}\n+@media(max-width:600px){.lx-directory{padding-top:34px;padding-bottom:48px}.lx-directory-header h1{font-size:44px}.lx-directory-header>p:last-child{font-size:16px}.lx-directory-search{margin-bottom:26px}.lx-directory.is-enhanced .lux-kat{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lx-directory .lx-directory-group{border-radius:16px}.lx-directory-image{aspect-ratio:1.08}.lx-directory-card-copy{padding:16px 32px 16px 14px;gap:8px;min-height:110px}.lx-directory-card-title{font-size:26px}.lx-directory-card-count{font-size:13px}.lx-directory-card-plus{right:12px;font-size:20px;top:calc(50% - 10px)}.lx-directory .lx-directory-group>.lux-kat-l{padding:0 14px 12px}.lx-directory .lx-directory-group>.lux-kat-l a{font-size:16px}.lx-directory-search-field{padding-left:12px;gap:8px}.lx-directory-search-field>input{font-size:16px}}\n @media(prefers-reduced-motion:reduce){.lx-directory-card-plus{transition:none}}\n",
+  "limits": [
+    "360/390/1440 focused native typography check; no content/CSS/JS overrides",
+    "One premature QA read old source after invalid-parameter request was rejected before API execution; corrected valid operation saved once and final native QA passed",
+    "Only CSS written; no Page/JS/product/review/price/flow/metrics/order change",
+    "MAIN publication remains unavailable through connector"
+  ]
+}
