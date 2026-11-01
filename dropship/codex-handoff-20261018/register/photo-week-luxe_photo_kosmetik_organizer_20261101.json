@@ -48,17 +48,18 @@
     ]
   },
   "checkpoint": {
-    "state": "PREPARED",
-    "attempts": 0,
+    "state": "INFLIGHT",
+    "attempts": 1,
     "claimOwner": "codex-current-task-20261101-photo",
     "preparedAt": "2026-11-01T19:17:59Z",
-    "rule": "Only SHA-CAS state transition can claim; INFLIGHT/UNKNOWN/UNCERTAIN block resend; no replacement post on missing status"
+    "rule": "Only SHA-CAS state transition can claim; INFLIGHT/UNKNOWN/UNCERTAIN block resend; no replacement post on missing status",
+    "requestStartedAt": "2026-11-01T19:18:22Z"
   },
   "request": {
     "args": {
       "blogId": "6227837",
       "date": "2026-11-04T18:30:00+01:00",
-      "info": "{\"text\":\"Mehr Überblick auf deinem Schminktisch.\\n\\nKosmetik-Organizer · CHF 29.90\\n\\nProdukt und Angaben ansehen:\\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101\",\"publicationDate\":{\"dateTime\":\"2026-11-04T18:30:00\",\"timezone\":\"Europe/Zurich\"},\"providers\":[{\"network\":\"threads\"}],\"media\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266\"],\"mediaAltText\":[{\"mediaUrl\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266\",\"altText\":\"Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen\"}],\"autoPublish\":true,\"draft\":false,\"saveExternalMediaFiles\":true,\"shortener\":false}",
+      "info": "{\"text\":\"Mehr Überblick auf deinem Schminktisch.\\n\\nKosmetik-Organizer · CHF 29.90\\n\\nProdukt und Angaben ansehen:\\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101\",\"publicationDate\":{\"dateTime\":\"2026-11-04T18:30:00\",\"timezone\":\"Europe/Zurich\"},\"providers\":[{\"network\":\"threads\"}],\"media\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266\"],\"mediaAltText\":[\"Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen\"],\"autoPublish\":true,\"draft\":false,\"saveExternalMediaFiles\":true,\"shortener\":false}",
       "mediaFiles": [
         "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266"
       ]
@@ -79,6 +80,10 @@
     {
       "at": "2026-11-01T19:17:59Z",
       "event": "Explicitly scoped register initialisation prepared with unknown historical baseline, before first send"
+    },
+    {
+      "at": "2026-11-01T19:18:22Z",
+      "event": "SHA-CAS single-send claim; corrected alt-text field to observed array-of-strings schema before first send; caption/media/slot/scope unchanged"
     }
   ]
 }
