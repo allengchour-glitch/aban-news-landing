@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 26,
-  "updatedAt": "2026-11-01T13:33:38Z",
+  "revision": 27,
+  "updatedAt": "2026-11-01T14:20:55Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1043,9 +1043,9 @@
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf neue Inhaberwünsche Startseite im UNPUBLISHED um vier bebilderte Einkaufsbereiche, wirksame Budget-Preisfilter und drei Hilfe-Accordions erweitert. Vorhandenes Websitevideo als markenneutralen Hintergrund im Titelbereich auf Mobil/Desktop integriert, Pause/Motion/SaveData/Offscreen/Bildfallback erhalten. Zwei mobile CTA oberhalb Navigation nachgeprüft. Normale Kategorienroute mit 21 echten Kollektionsbild-Bannern und Suche; alle 412 bestehenden Ziele unverändert erhalten, Überschriftenwächter und OhneJS-Fallback. Produktbewertungen aus exakten Produktdaten ergänzt; selektive alte Kartensternanzeige/Doppelung entfernt und vorher auf MAIN vorhandenen mobilen Navüberlauf eng korrigiert. Final 15 einzigartige Theme-Dateien exakt rückgelesen, Blankwächter und MAIN unverändert. 60 Startseitenchecks, 30 Kategorienchecks und 23 bestätigte Reviewteilprüfungen; ursprüngliche Fehler/Gegenproben erhalten. Kein MAIN-Publish, neuer Film, Produkt-/Preis-/Reviewdatenwrite oder Flow-/Feed-/Socialwrite.",
+      "lastEvidence": "Auf «grössere schrift» ausschliesslich die Kategorien-Typografie im UNPUBLISHED-Theme angepasst: Unterkategorielinks mobil 11/Desktop 12 auf 16 px, mobile Titel 23 auf 26 px, Zähler 10 auf 13 px sowie grössere Such-/Hilfstexte. Zeilenhöhe 1.55 für Links, mehrzeilige Texte ohne feste Höhe; Bilder, zwei mobile Spalten, JS und sämtliche 412 Ziele erhalten. Ein CSS-Asset final exakt rückgelesen, Validator bestanden und native Gegenprobe bei 360/390/1440px ohne Seiten-/Linküberlauf. MAIN-Index unverändert; kein Publish. R26-Gesamtstand bleibt belegt und wird durch diesen engen Schrift-Diff ergänzt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
-      "nextAllowedStep": "Diesen geprüften Vorschau-Stand mit 15-Dateien-Diff über legitimen MAIN-Zugang in die öffentliche Gestaltung integrieren und öffentlich mobil/Desktop gegenprüfen; keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Bestehende Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme separat im Browser prüfen.",
+      "nextAllowedStep": "Geprüften R26-Gesamtstand und den ergänzenden R27-Schrift-Diff mit legitimem MAIN-Zugang öffentlich integrieren und anschliessend mobil/Desktop gegenprüfen. Bereits erteilte Websitefreigabe erhalten, keine erneute Zustimmung anfordern. Englische Texte vor vollständiger EN-Abnahme separat prüfen.",
       "blockers": [
         "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
         "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
@@ -1161,6 +1161,11 @@
           "path": "dropship/codex-handoff-20261018/WEBSITE-R26-20261101.patch",
           "gitBlobSha": "4f3f972a1355cdc076dbd2fb471126120c375456",
           "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEN-SCHRIFT-20261101.json",
+          "gitBlobSha": "d3f5994d67f1ea83979ea704c7bcbe66548e2aae",
+          "readAt": "2026-11-01T14:20:55Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1225,6 +1230,18 @@
           "previousLastEvidence": "Auf aktuelle Inhaberpräzisierung den Selbstgestalten-Bereich in der Vorschau durch EIN grosses Gesamtbild mit zwölf unterschiedlichen Produkttypen ersetzt; Bild und Knopf öffnen die volle Auswahl. Zwei statische KI-Fassungen mit echten Produktreferenzen, erste nach Materialprüfung verworfen; korrigierte Fassung in Shopify hochgeladen und CDN-RGB-Pixel identisch bestätigt. Zuvor tatsächlich gebaute zwölf Einzelkarten durch diese neuere Vorgabe ersetzt. Zusätzlich zwölf aktuelle Trends mit dynamischen CHF-Mindestpreisen, eigenen Bildern/Zielen und konservativem Tagfilter umgesetzt. Erster nativer Review fand 11/12 und mobile Spaltenschrumpfung; danach zwölf exakte Handles und feste mobile Spalten korrigiert. Final 36 native Checks grün, zwölf Ziele HTTP200. Vier finale Theme-Dateien exakt zurückgelesen, Video-JS/Blankwächter und MAIN-Index unverändert. Kein Publish, neuer Film oder Produkt-/Preis-/Flow-/Feed-/Socialwrite.",
           "previousState": "umgesetzt_vorschau_technisch_blockiert",
           "previousNextAllowedStep": "Geprüfte Vorschau mit einem Selbstgestalten-Gesamtbild, zwölf Trends, 16 Kategorien und bestehendem mobilen Videokopf mit legitimem MAIN-Zugang öffentlich integrieren und danach mobil/Desktop gegenprüfen. Bestehende Inhaberfreigabe erhalten; kein erneutes Einholen derselben Website-Freigabe. Vorhandene Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme eigens im Browser prüfen.",
+          "previousBlockers": [
+            "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
+            "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
+            "Begrenzte native Startseiten-/Wiedergabeprüfung, kein vollständiger Checkout-/EDM-Test. Externe Skriptfehler unter Nicht-GET-Prüfblockade separat dokumentiert."
+          ]
+        },
+        {
+          "at": "2026-11-01T14:20:55Z",
+          "sourceRevision": 26,
+          "previousLastEvidence": "Auf neue Inhaberwünsche Startseite im UNPUBLISHED um vier bebilderte Einkaufsbereiche, wirksame Budget-Preisfilter und drei Hilfe-Accordions erweitert. Vorhandenes Websitevideo als markenneutralen Hintergrund im Titelbereich auf Mobil/Desktop integriert, Pause/Motion/SaveData/Offscreen/Bildfallback erhalten. Zwei mobile CTA oberhalb Navigation nachgeprüft. Normale Kategorienroute mit 21 echten Kollektionsbild-Bannern und Suche; alle 412 bestehenden Ziele unverändert erhalten, Überschriftenwächter und OhneJS-Fallback. Produktbewertungen aus exakten Produktdaten ergänzt; selektive alte Kartensternanzeige/Doppelung entfernt und vorher auf MAIN vorhandenen mobilen Navüberlauf eng korrigiert. Final 15 einzigartige Theme-Dateien exakt rückgelesen, Blankwächter und MAIN unverändert. 60 Startseitenchecks, 30 Kategorienchecks und 23 bestätigte Reviewteilprüfungen; ursprüngliche Fehler/Gegenproben erhalten. Kein MAIN-Publish, neuer Film, Produkt-/Preis-/Reviewdatenwrite oder Flow-/Feed-/Socialwrite.",
+          "previousState": "umgesetzt_vorschau_technisch_blockiert",
+          "previousNextAllowedStep": "Diesen geprüften Vorschau-Stand mit 15-Dateien-Diff über legitimen MAIN-Zugang in die öffentliche Gestaltung integrieren und öffentlich mobil/Desktop gegenprüfen; keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Bestehende Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme separat im Browser prüfen.",
           "previousBlockers": [
             "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
             "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
@@ -2130,6 +2147,17 @@
         "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
         "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
         "readAt": "2026-11-01T13:33:38Z"
+      }
+    },
+    {
+      "revision": 27,
+      "at": "2026-11-01T14:20:55Z",
+      "actor": "codex",
+      "action": "Nur Kategorien-CSS auf grössere Schrift angepasst und nativ bei drei Breiten geprüft; ein Asset exakt,412 Ziele erhalten, kein MAIN-Publish. Alle16Aufgaben/Historien/Kaufziel/Zeitplan und Tagesreportgrenzen erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/KATEGORIEN-SCHRIFT-20261101.json",
+        "gitBlobSha": "d3f5994d67f1ea83979ea704c7bcbe66548e2aae",
+        "readAt": "2026-11-01T14:20:55Z"
       }
     }
   ],
