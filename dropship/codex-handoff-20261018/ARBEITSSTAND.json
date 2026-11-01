@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 17,
-  "updatedAt": "2026-10-31T23:53:21.344768+00:00",
+  "revision": 18,
+  "updatedAt": "2026-11-01T01:14:44.155072+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -857,16 +857,15 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "blockiert",
-      "title": "8’327 exportierte Merchant-Preisfehler an der tatsächlichen Quelle eingrenzen",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "GEMESSEN/QUELLE",
-      "lastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung. Neue enge Quellen-Gegenprobe: zweite CSV-ID shopify_ZZ_15413245510017_55749268537729 entspricht aktiver nativer Variante CHF12.90; Produkt trägt ae-import, nicht CJ/Printful zugeordnet. Erste CSV-ID15413245510017_16361786756345133009 hat undurchsichtigen Variantenanteil: gleiche Variante/Quelle unbekannt. Konto5797470070 bestätigt, Connector-Schreibaktionen leer. Gezielter neuer Read ohne abgeschlossene Antwort bis Beenden der wartenden Lesezelle; keine leeren Daten/404 behauptet. Zwei Printful/CJ-Codepatches beheben keine nachgewiesene Merchant-Ursache.",
-      "nextAllowedStep": "Aktive Datenquelle/Art, exakt eingereichte URL und Rohpreis/Währung/availability/Verarbeitung einer betroffenen CH- und DE-Original-ID authentifiziert eng lesen. Datei 2 ersetzt diese Artikel-/Quellendaten nicht. Bei Bedarf nur gemeinsamen Produktpräfix 15413245510017 anhand der dokumentierten Original-IDs abgleichen; gleiche Variante/Quelle nicht voraussetzen. Anschliessend engen Quelldiff prüfen; DRAFT, Sperren und Preise erhalten.",
+      "state": "reparaturpaket_vorbereitet_technisch_blockiert",
+      "title": "Merchant-Preisfehler aus beiden Exporten vom 31.10. exakt eingrenzen",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
+      "lastEvidence": "Beide CSV-Dateien vom 31.10. vollständig gelesen: neuerer Export mit 109’769 Fehlerzeilen / 53’333 IDs mit fehlendem Preis; älterer Export mit 111’476 Zeilen / 54’167 IDs; Vereinigung mit 54’171 IDs, alle Free Listings. Keine aktuelle Live-Zählung. 18 betroffene IDs aus 6 ACTIVE-Blankprodukten anhand ProductID + vollständiger SKU exakt positiven CHF-Preisen zugeordnet; 705 Byte grosse Kandidatendatei mit id,price sowie Quellbelege gesichert. Beispiel Black/S, Variante 55794951258497, CHF 24.90 auch öffentlich bestätigt. Merchant-Konto 5797470070 frisch als passend bestätigt. Exakte Rohquellenabfrage mit MCP-Timeout -32603; keine Schreibaktionen im Connector. Repo-Generator mit id=handle beweist keine Ursache der ProductID_SKU-Einträge. Keine Merchant-, Feed- oder Shoppreisänderung, kein blinder Upload.",
+      "nextAllowedStep": "Bestehende primäre Quelle, exakte ID, Sprache, Feedlabel, Varianten-Ziel-URL und Preispriorität authentifiziert lesen. Danach nur belegten Quelldiff anwenden und zurücklesen; die 18 Kandidaten sind keine ungeprüft anzulegende neue Quelle. Technischen Schreibzugang herstellen, keine erneute Inhaberfreigabe für denselben Fix verlangen.",
       "blockers": [
-        "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen weiter; gezielter neuer Artikelread ohne abgeschlossene Antwort",
-        "Windsor-Merchant-Connector bietet aktuell keine Schreibaktionen; anderer authentifizierter isolierter Writer nicht bestätigt",
-        "Gleicher Produktpräfix/Titel zwischen CSVs beweist keine gleiche Variante oder doppelte aktive Quelle"
+        "Tatsächliche Merchant-Quelle, Original-URL und Rohfelder nach MCP-Timeout weiterhin unbekannt",
+        "Aktueller Merchant-Connector hat keine Schreibaktion; anderer legitimer Schreibzugang unbestätigt"
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -913,6 +912,21 @@
           "path": "dropship/codex-handoff-20261018/SYNC-VARIANTEN-BELEGE-20261029.json",
           "gitBlobSha": "13d09c41af5302a216b65911a3f9e74e348b22c4",
           "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREISPRUEFUNG-20261101.md",
+          "gitBlobSha": "a0a9bcb11edbd066a2562c9a1023182533181823",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREISKANDIDATEN-20261101.csv",
+          "gitBlobSha": "cab8608c01c4a76f39f90c51290d4362805dc4e9",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BELEGE-20261101.json",
+          "gitBlobSha": "0e63ded1bcdb4487247332ae98097dedfd883f12",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -936,6 +950,18 @@
             "Authentifizierter isolierter Merchant-Writer weiter unbekannt"
           ],
           "sourceRevision": 13
+        },
+        {
+          "at": "2026-11-01T01:14:44.155072+00:00",
+          "sourceRevision": 17,
+          "previousLastEvidence": "Erster Export: 20’343 Fehlerzeilen/8’327 IDs, alle Preisfehler, 1’353 zusätzlich availability. Frühere enge native Probe zweier DRAFT-Produkte mit positiven Preisen und Kollektionsweiterleitung bleibt belegt. Zweiter Export jetzt über bereitgestellten Drive-Zugang vollständig gelesen: 96’530 Zeilen/31’083 shopify_ZZ-IDs, Feedlabel CHF_99383214465; keine Preis-/availability-Titel, keine exakte ID-Schnittmenge mit Datei 1. 31’083 IDs ausser-CSS, darin 17’026 auch in-CSS; separat 52 Free-listings-Zeilen/28 IDs mit Bild-/Richtlinienfehlern. Beide CSVs ohne Datenquellen-/URL-/Rohpreisfelder. Keine Behebung oder Katalogquote daraus ableitbar. Früherer 32-MiB-Inhaltsblocker über Drive gelöst, keine erneute Geschäftsquery oder Merchant-Änderung. Neue enge Quellen-Gegenprobe: zweite CSV-ID shopify_ZZ_15413245510017_55749268537729 entspricht aktiver nativer Variante CHF12.90; Produkt trägt ae-import, nicht CJ/Printful zugeordnet. Erste CSV-ID15413245510017_16361786756345133009 hat undurchsichtigen Variantenanteil: gleiche Variante/Quelle unbekannt. Konto5797470070 bestätigt, Connector-Schreibaktionen leer. Gezielter neuer Read ohne abgeschlossene Antwort bis Beenden der wartenden Lesezelle; keine leeren Daten/404 behauptet. Zwei Printful/CJ-Codepatches beheben keine nachgewiesene Merchant-Ursache.",
+          "previousState": "blockiert",
+          "previousNextAllowedStep": "Aktive Datenquelle/Art, exakt eingereichte URL und Rohpreis/Währung/availability/Verarbeitung einer betroffenen CH- und DE-Original-ID authentifiziert eng lesen. Datei 2 ersetzt diese Artikel-/Quellendaten nicht. Bei Bedarf nur gemeinsamen Produktpräfix 15413245510017 anhand der dokumentierten Original-IDs abgleichen; gleiche Variante/Quelle nicht voraussetzen. Anschliessend engen Quelldiff prüfen; DRAFT, Sperren und Preise erhalten.",
+          "previousBlockers": [
+            "Quellen-ID/-Art, eingereichte URL und Rohfelder fehlen weiter; gezielter neuer Artikelread ohne abgeschlossene Antwort",
+            "Windsor-Merchant-Connector bietet aktuell keine Schreibaktionen; anderer authentifizierter isolierter Writer nicht bestätigt",
+            "Gleicher Produktpräfix/Titel zwischen CSVs beweist keine gleiche Variante oder doppelte aktive Quelle"
+          ]
         }
       ],
       "resolvedBlockers": [
@@ -950,16 +976,16 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "entwurf_zur_beurteilung",
-      "title": "LuxeStyle-Startseite mit klarerem Layout und vorbereitetem Produkteinstieg prüfen",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN",
-      "lastEvidence": "Auf neuen Inhaberauftrag Referenz und LuxeStyle visuell geprüft, responsive Startseitenvorschau gebaut und im bestehenden UNPUBLISHED 212752499079 als alternative index.luxe-edit abgelegt. Fünf neue Dateien, zwei Sprachdateien nur um luxe_home ergänzt; alle Writes exakt zurückgelesen. Ursprüngliches index/layout/header/footer unverändert und MAIN 212656488839 erhalten. Native Browserprüfung bei 1440/390/360 px: HTTP 200, alle 4 CDN-Bilder, 1 H1, kein Überlauf, Suche/Menü/Escape/Fokusrückgabe geprüft, keine erfassten Liquid-/Übersetzungs-/Seitenfehler. Drei gezielte native Produkt- und Storefront-Gegenproben; keine Warenkorb-/Checkout-/Kontakt-/Orderaktion. Kein neues Video, keine MAIN-Veröffentlichung.",
+      "state": "umgesetzt_vorschau_technisch_blockiert",
+      "title": "Mobile Website im Stil der App weiterentwickelt",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
+      "lastEvidence": "Auf ausdrücklichen Inhaberauftrag zur autonomen Weiterarbeit die vorhandene Startseitenvorschau verbessert: sichtbarer Einstieg zu «Selbst gestalten», cremefarbene Gestaltung, grosse abgerundete Produktbilder, dynamische CHF-Preise, kompakte Einstiege nach Kategorie und Budget sowie mobile Navigation mit echten Zielen und Suche. Änderungen im UNPUBLISHED-Theme gespeichert und zurückgelesen; responsive Prüfungen separat belegt. MAIN nicht geändert; keine neue Freigabe offen, technischer Connectorblocker. Kein neuer Produktfilm.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
-      "nextAllowedStep": "Inhaber beurteilt konkrete Vorschau; endgültige Einbindung in vorhandene Theme-/App-/Cookie-/Sprachfunktionen vor MAIN-Übernahme prüfen. Denselben professionellen Master erst mit zugeordneten Originaltakes, Rechten und Qualitätsabnahme einfügen. Keine automatische Veröffentlichung des Themes.",
+      "nextAllowedStep": "Geprüften engen Diff mit legitimem MAIN-Publikationszugang übertragen und öffentlich gegenprüfen; aktuelle Inhaberfreigabe erhalten, keine erneute Freigabeanforderung.",
       "blockers": [
-        "Inhaltliche/gestalterische Abnahme und finale Live-Integration noch offen",
-        "Kein freigegebener neuer professioneller Master; hochwertige zugeordnete Originaltakes und Bearbeitungsrechte weiter unbekannt"
+        "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; Vorschau ist nicht live",
+        "Professioneller Film weiterhin ohne Freigabe der Originaltakes und Rechte; nicht durch ein Hero-Video ersetzt"
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -991,10 +1017,38 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITEN-VIDEO-20261029.md",
           "gitBlobSha": "ca7a099338ca0dc009dcc105544cfd5de754c9a2",
           "readAt": "2026-10-29T21:07:25.635334+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-WEBSITE-20261101.md",
+          "gitBlobSha": "5edcbfeb2dc3b85f0aba670d2318dfbbfb07e03f",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-BELEGE-20261101.json",
+          "gitBlobSha": "fb2db44976cd134adb43ae5d3cf3bb58dbe902c5",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-THEME-20261101.patch",
+          "gitBlobSha": "ac43b2b9c00f73fc27cd0ae66d4c2b20e9a60bcc",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
         }
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "codex_preparation_claude_coordination"
+      "assignedRole": "codex_preparation_claude_coordination",
+      "evidenceHistory": [
+        {
+          "at": "2026-11-01T01:14:44.155072+00:00",
+          "sourceRevision": 17,
+          "previousLastEvidence": "Auf neuen Inhaberauftrag Referenz und LuxeStyle visuell geprüft, responsive Startseitenvorschau gebaut und im bestehenden UNPUBLISHED 212752499079 als alternative index.luxe-edit abgelegt. Fünf neue Dateien, zwei Sprachdateien nur um luxe_home ergänzt; alle Writes exakt zurückgelesen. Ursprüngliches index/layout/header/footer unverändert und MAIN 212656488839 erhalten. Native Browserprüfung bei 1440/390/360 px: HTTP 200, alle 4 CDN-Bilder, 1 H1, kein Überlauf, Suche/Menü/Escape/Fokusrückgabe geprüft, keine erfassten Liquid-/Übersetzungs-/Seitenfehler. Drei gezielte native Produkt- und Storefront-Gegenproben; keine Warenkorb-/Checkout-/Kontakt-/Orderaktion. Kein neues Video, keine MAIN-Veröffentlichung.",
+          "previousState": "entwurf_zur_beurteilung",
+          "previousNextAllowedStep": "Inhaber beurteilt konkrete Vorschau; endgültige Einbindung in vorhandene Theme-/App-/Cookie-/Sprachfunktionen vor MAIN-Übernahme prüfen. Denselben professionellen Master erst mit zugeordneten Originaltakes, Rechten und Qualitätsabnahme einfügen. Keine automatische Veröffentlichung des Themes.",
+          "previousBlockers": [
+            "Inhaltliche/gestalterische Abnahme und finale Live-Integration noch offen",
+            "Kein freigegebener neuer professioneller Master; hochwertige zugeordnete Originaltakes und Bearbeitungsrechte weiter unbekannt"
+          ]
+        }
+      ]
     },
     {
       "id": "printful-sync-variant-identity",
@@ -1100,13 +1154,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "entwurf_zur_beurteilung",
-      "title": "Vollbild-Designstudio mit tatsächlicher Produkt- und Variantenauswahl",
-      "lastEvidenceDate": "2026-10-30",
-      "belegArt": "UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/GEMESSEN/INHABERANGABE",
-      "lastEvidence": "Auf Screenshotkritik Vollbild-Gestaltungsstudio in drei Schritten gebaut: Produkt/Ausführung, Gestaltung, Prüfung. Aktuelles Bomberjackenprodukt 15422956798337 mit allen sieben Shopify-Varianten XS–3XL geprüft; 3XL CHF 109.90. Eigene Variantenwahl und Preis folgen der tatsächlichen Shopify-ID, nicht einem alten URL-Parameter. Text/Bild, Ebenen, Skalieren/Drehen/Ausrichten sowie Rückgängig/Wiederholen und Entwurferhalt. Produktauswahl aus tatsächlichen öffentlichen POD-Kollektionen mit Kategorien, Suche und manueller Pagination; keine Behauptung eines vollständigen Printful-Katalogs oder 493 öffentlich kaufbarer Produkte. Mangels belegter Printful-Druckmasken neutrale Motivfläche und kein Warenkorb-/Produktionsversand. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. MAIN 212656488839 weiterhin MAIN; Vorschau 212752499079 weiterhin UNPUBLISHED. Bestehendes Layout, Standardproduktvorlage und Designzwang-Snippet im Vorschau-Theme hashgleich erhalten; keine Veröffentlichung. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Neuer ausdrücklicher Produktwunsch: Printful-Gummi-Hülle für AirPods/AirPods Pro. Enge native Suche title:AirPods, first5 auf geprüftem Shop lieferte nodes[]/hasNextPagefalse; unter genau diesem Suchbegriff nichts gefunden, kein Vollkatalogbeweis. Screenshotbetrag CHF 10.50 ist Lieferantenpreis, kein bestätigter Verkaufspreis. Weitere Screenshotwünsche als einzelne pendingProducts aufgenommen, keine Massenerzeugung oder behauptete Shopverfügbarkeit.\n\nFortsetzung 30.10.2026 Europe/Zurich: Auf präzisierte Inhabervorgabe nur unbedruckte Basisprodukte statt gemischter Motivprodukte vorbereitet. Die begrenzt geprüfte Ausgangskollektion enthält 32 Produkte; 31 erfüllen den positiven Blanko-/POD-Vertrag, ein Bügeltransfer ohne POD-Zuordnung ist ausgeschlossen. Fünf bestehende Unterkategorien gegen die belegte Produktauswahl geprüft; echte Farb-/Grössennamen und drei quellenbelegte Farbwerte für 15 tatsächlich gemappte T-Shirt-Varianten verwendet. Im bestehenden UNPUBLISHED-Theme 212752499079 sind 15 Dateien nativ gespeichert, 14 textuell exakt und eine JSON-Vorlage semantisch identisch zurückgelesen. Drei geschützte Dateien sind hashgleich erhalten; 18 Rückleseprüfungen bestanden. MAIN 212656488839 bleibt MAIN, 212752499079 bleibt UNPUBLISHED; keine Veröffentlichung. 37 neue funktionale native Prüfungen bestanden: 19 Katalog und 18 Kategorie, ohne historische r15-Tests mitzuzählen. Pickerseiten 11/12/8 ergeben 31 eindeutige Produkte, Kategorieseiten 12/12/7. Drei echte Hero-Bilder geladen, 31 Karten, zunächst 12 sichtbar; 1440px und 390px ohne horizontalen Überlauf geprüft. Desktop- und geöffnetes Mobilmenü führen zur eigenen Kategorie; 23 Samsung-Modelle sind ausklappbar. Read-only-Browsertests blockierten Nicht-GET-Analyseaufrufe und protokollierten dabei Failed-to-fetch-Meldungen; keine globale Fehlerfreiheits- oder Produktionsabnahmebehauptung. Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau. Elf isolierte Offlineprüfungen der lokalen EDM-Integrationsvorbereitung bestanden; sie beweisen keine produktive Anbindung. EDM ist vom Inhaber fürluxestyle.ch als freigeschaltet bestätigt, technische Token-/Serverbindung und echte Templategeometrie bleiben offen; Template-/Printfile-GET390 HTTP401. Kein Originaleditor oder Bestellfluss live. Die am 29.10. frisch gelesene öffentliche Printful-Stammliste umfasst 571 Lieferantenprodukte, Detailantwort 71 enthält 628 tatsächliche Varianten/84 Farben, Detailantwort 390 sieben Varianten. Das sind keine 571 Shopify-Angebote und keine vollständige Shop-/CHF-/Versandfreigabe. CORS fehlt an den geprüften öffentlichen API-Antworten; Template-/Printfile-Abfragen für 390 liefern 401. Der Inhaber bestätigt Printful-EDM-Freischaltung für luxestyle.ch; technische Tokenbindung und Serveranbindung sind noch nicht verifiziert. Ein lokaler Integrationsentwurf wird getrennt geführt; kein Originaleditor oder Bestellfluss ist dadurch live. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Zeitplanänderung und keine Claude-Kenntnisnahme behauptet.",
+      "state": "umgesetzt_vorschau_technisch_blockiert",
+      "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
+      "lastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.",
       "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
-      "nextAllowedStep": "Inhaber beurteilt die geprüfte Kategorievorschau. Passende echte Variantenbilder für Navy und weitere Varianten belegen; danach die bereits vom Inhaber bestätigte EDM-Freischaltung über legitime serverseitige Token-/Noncebindung und variantengenaue Templates technisch verifizieren. Keine erneute Freischaltungsfrage, keine automatische Live-Publikation, Cart-/Produktionsanbindung oder Übernahme von Supplierpreisen.",
+      "nextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -1364,12 +1418,10 @@
         }
       ],
       "blockers": [
-        "Gestalterische Inhaberabnahme und Live-Übernahme offen;37 neue native Funktionsprüfungen sind keine vollständige Produktionsabnahme",
-        "Kein passendes aktuelles Navy-Variantenfoto; weisses allgemeines Referenzfoto darf keine farbgetreue Vorschau vortäuschen",
-        "EDM-Freischaltung vom Inhaber bestätigt; technische Berechtigung/Tokenbindung und produktive Serveranbindung noch nicht nachgewiesen",
-        "Öffentliche Katalog-GETs ohne Access-Control-Allow-Origin; kein bestätigter bestehender Katalog-Readproxy",
-        "Offizielle Template-/Printfile-Abfragen für Modell390 ohne API-Key HTTP401; druckfähige Flächengeometrie weiterhin unbekannt",
-        "Kein produktiver Originaleditor, sicherer Bestellfluss oder Freigabenachweis für neue Supplier-only-Varianten"
+        "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; kein authentifizierter Admin-Browser",
+        "Bulk-Lesejob COMPLETED, aber Connector blockiert signierte Exportlinks; vollständige Produkt-, SKU- und Variantendaten ungeprüft",
+        "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+        "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten"
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -1423,6 +1475,26 @@
           "sha": "106be4b5e81abb2b90ef94f405ace3aedb84e30f",
           "status": "erstellt_und_exakt_zurueckgelesen",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/PRINTFUL-EDM-VORBEREITUNG-20261030.patch"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-WEBSITE-20261101.md",
+          "gitBlobSha": "5edcbfeb2dc3b85f0aba670d2318dfbbfb07e03f",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-BELEGE-20261101.json",
+          "gitBlobSha": "fb2db44976cd134adb43ae5d3cf3bb58dbe902c5",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-THEME-20261101.patch",
+          "gitBlobSha": "ac43b2b9c00f73fc27cd0ae66d4c2b20e9a60bcc",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-IMPORT-20261101.md",
+          "gitBlobSha": "f2c8253f9060134e776dc5351975d1ecc80dba15",
+          "readAt": "2026-11-01T01:14:44.155072+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1529,7 +1601,24 @@
         },
         "variantPhotoCaveat": "Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau.",
         "edmOfflineChecksPassed": 11
-      }
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-01T01:14:44.155072+00:00",
+          "sourceRevision": 17,
+          "previousLastEvidence": "Auf Screenshotkritik Vollbild-Gestaltungsstudio in drei Schritten gebaut: Produkt/Ausführung, Gestaltung, Prüfung. Aktuelles Bomberjackenprodukt 15422956798337 mit allen sieben Shopify-Varianten XS–3XL geprüft; 3XL CHF 109.90. Eigene Variantenwahl und Preis folgen der tatsächlichen Shopify-ID, nicht einem alten URL-Parameter. Text/Bild, Ebenen, Skalieren/Drehen/Ausrichten sowie Rückgängig/Wiederholen und Entwurferhalt. Produktauswahl aus tatsächlichen öffentlichen POD-Kollektionen mit Kategorien, Suche und manueller Pagination; keine Behauptung eines vollständigen Printful-Katalogs oder 493 öffentlich kaufbarer Produkte. Mangels belegter Printful-Druckmasken neutrale Motivfläche und kein Warenkorb-/Produktionsversand. Im bestehenden UNPUBLISHED-Theme 212752499079 zehn Dateien gespeichert; zunächst neun textuell exakt und JSON-Produktvorlage semantisch identisch zurückgelesen. Gezielt korrigierte Dateien anschliessend jeweils exakt bestätigt; kurzzeitig alte Body-Inhalte durch spätere Lesegegenprobe geklärt, keine doppelten Writes. MAIN 212656488839 weiterhin MAIN; Vorschau 212752499079 weiterhin UNPUBLISHED. Bestehendes Layout, Standardproduktvorlage und Designzwang-Snippet im Vorschau-Theme hashgleich erhalten; keine Veröffentlichung. 106 unabhängige Offline-UI-Prüfungen, 32 native Editorprüfungen und 19 native Katalogprüfungen bestanden; danach acht Root-Gegenproben zu echten Suchdaten/Produktwechsel und fünf gezielte finale Darstellungsprüfungen bestanden. Abschliessende Politur zusätzlich mit drei Standardoptionsfällen, 38 Navigations- und elf Formatierungsprüfungen geprüft; Hashes/Versionen im Beleg getrennt. Keine Produktionsabnahme behauptet. Neuer ausdrücklicher Produktwunsch: Printful-Gummi-Hülle für AirPods/AirPods Pro. Enge native Suche title:AirPods, first5 auf geprüftem Shop lieferte nodes[]/hasNextPagefalse; unter genau diesem Suchbegriff nichts gefunden, kein Vollkatalogbeweis. Screenshotbetrag CHF 10.50 ist Lieferantenpreis, kein bestätigter Verkaufspreis. Weitere Screenshotwünsche als einzelne pendingProducts aufgenommen, keine Massenerzeugung oder behauptete Shopverfügbarkeit.\n\nFortsetzung 30.10.2026 Europe/Zurich: Auf präzisierte Inhabervorgabe nur unbedruckte Basisprodukte statt gemischter Motivprodukte vorbereitet. Die begrenzt geprüfte Ausgangskollektion enthält 32 Produkte; 31 erfüllen den positiven Blanko-/POD-Vertrag, ein Bügeltransfer ohne POD-Zuordnung ist ausgeschlossen. Fünf bestehende Unterkategorien gegen die belegte Produktauswahl geprüft; echte Farb-/Grössennamen und drei quellenbelegte Farbwerte für 15 tatsächlich gemappte T-Shirt-Varianten verwendet. Im bestehenden UNPUBLISHED-Theme 212752499079 sind 15 Dateien nativ gespeichert, 14 textuell exakt und eine JSON-Vorlage semantisch identisch zurückgelesen. Drei geschützte Dateien sind hashgleich erhalten; 18 Rückleseprüfungen bestanden. MAIN 212656488839 bleibt MAIN, 212752499079 bleibt UNPUBLISHED; keine Veröffentlichung. 37 neue funktionale native Prüfungen bestanden: 19 Katalog und 18 Kategorie, ohne historische r15-Tests mitzuzählen. Pickerseiten 11/12/8 ergeben 31 eindeutige Produkte, Kategorieseiten 12/12/7. Drei echte Hero-Bilder geladen, 31 Karten, zunächst 12 sichtbar; 1440px und 390px ohne horizontalen Überlauf geprüft. Desktop- und geöffnetes Mobilmenü führen zur eigenen Kategorie; 23 Samsung-Modelle sind ausklappbar. Read-only-Browsertests blockierten Nicht-GET-Analyseaufrufe und protokollierten dabei Failed-to-fetch-Meldungen; keine globale Fehlerfreiheits- oder Produktionsabnahmebehauptung. Die tatsächliche Navy/2XL-Variante wird gewählt und beim Schrittwechsel erhalten. Ein passendes aktuelles Navy-Variantenfoto ist nicht belegt; das weisse allgemeine Referenzfoto ist keine farbgetreue Navy-Vorschau. Elf isolierte Offlineprüfungen der lokalen EDM-Integrationsvorbereitung bestanden; sie beweisen keine produktive Anbindung. EDM ist vom Inhaber fürluxestyle.ch als freigeschaltet bestätigt, technische Token-/Serverbindung und echte Templategeometrie bleiben offen; Template-/Printfile-GET390 HTTP401. Kein Originaleditor oder Bestellfluss live. Die am 29.10. frisch gelesene öffentliche Printful-Stammliste umfasst 571 Lieferantenprodukte, Detailantwort 71 enthält 628 tatsächliche Varianten/84 Farben, Detailantwort 390 sieben Varianten. Das sind keine 571 Shopify-Angebote und keine vollständige Shop-/CHF-/Versandfreigabe. CORS fehlt an den geprüften öffentlichen API-Antworten; Template-/Printfile-Abfragen für 390 liefern 401. Der Inhaber bestätigt Printful-EDM-Freischaltung für luxestyle.ch; technische Tokenbindung und Serveranbindung sind noch nicht verifiziert. Ein lokaler Integrationsentwurf wird getrennt geführt; kein Originaleditor oder Bestellfluss ist dadurch live. Keine zusätzliche Kennzahl-/Flow-/Bestellabfrage, keine Zeitplanänderung und keine Claude-Kenntnisnahme behauptet.",
+          "previousState": "entwurf_zur_beurteilung",
+          "previousNextAllowedStep": "Inhaber beurteilt die geprüfte Kategorievorschau. Passende echte Variantenbilder für Navy und weitere Varianten belegen; danach die bereits vom Inhaber bestätigte EDM-Freischaltung über legitime serverseitige Token-/Noncebindung und variantengenaue Templates technisch verifizieren. Keine erneute Freischaltungsfrage, keine automatische Live-Publikation, Cart-/Produktionsanbindung oder Übernahme von Supplierpreisen.",
+          "previousBlockers": [
+            "Gestalterische Inhaberabnahme und Live-Übernahme offen;37 neue native Funktionsprüfungen sind keine vollständige Produktionsabnahme",
+            "Kein passendes aktuelles Navy-Variantenfoto; weisses allgemeines Referenzfoto darf keine farbgetreue Vorschau vortäuschen",
+            "EDM-Freischaltung vom Inhaber bestätigt; technische Berechtigung/Tokenbindung und produktive Serveranbindung noch nicht nachgewiesen",
+            "Öffentliche Katalog-GETs ohne Access-Control-Allow-Origin; kein bestätigter bestehender Katalog-Readproxy",
+            "Offizielle Template-/Printfile-Abfragen für Modell390 ohne API-Key HTTP401; druckfähige Flächengeometrie weiterhin unbekannt",
+            "Kein produktiver Originaleditor, sicherer Bestellfluss oder Freigabenachweis für neue Supplier-only-Varianten"
+          ]
+        }
+      ]
     }
   ],
   "history": [
@@ -1638,6 +1727,17 @@
         "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
         "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
         "readAt": "2026-10-31T23:53:21.344768+00:00"
+      }
+    },
+    {
+      "revision": 18,
+      "at": "2026-11-01T01:14:44.155072+00:00",
+      "actor": "codex",
+      "action": "Auf ausdrückliche neue Inhaberaufträge die Arbeiten an «Selbst gestalten», Varianten, Materialien/CHF, Bewertungen, Suchkonflikten und mobiler Gestaltung im App-Stil fortgeführt. Vollständige Katalogreferenz in der Vorschau umgesetzt und 18 Merchant-Preisbelege vorbereitet. Keine MAIN-Publikation, kein Produktimport und kein Feedwrite. Kontrollierter Bulk-Read COMPLETED, Exportzugang blockiert. Tagesdaten und Kauf-Watch nicht wiederholt; alle Aufgaben, Historien und Zeitplan erhalten. Aktuelle Freigabe ersetzt die ältere Nur-Review-Grenze in diesem Umfang; verbleibende Blocker sind technischer Art.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-BELEGE-20261101.json",
+        "gitBlobSha": "fb2db44976cd134adb43ae5d3cf3bb58dbe902c5",
+        "readAt": "2026-11-01T01:14:44.155072+00:00"
       }
     }
   ],
