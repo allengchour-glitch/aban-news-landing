@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 1,
+  "documentationRevision": 42,
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-01T20:31:17.187428Z",
+  "scope": "One owner-uploaded content recommendation; no new account-wide scan",
+  "source": {
+    "fileName": "Update product descriptions to include details customers are looking for_2026-11-01_11-19-33.csv",
+    "sha256": "628c0543a9975e82b5b330729de028043946676bf9571c7870c81fe802722cd9",
+    "bytes": 7743,
+    "preambleLines": 2,
+    "headerRow": 3,
+    "rows": 29,
+    "products": 13,
+    "language": "de",
+    "feedLabel": "CHF_99383214465",
+    "recommendation": "Motiv",
+    "keyDetails": "empty",
+    "isDisapprovalEvidence": false,
+    "instructionsInDocumentExecuted": false
+  },
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "existingState": {
+    "seoMotifDescriptions": 13,
+    "ownSeoWrites": 0,
+    "csvExactlyMatchesCurrentBodyOrSeo": false,
+    "originalSeoChangeActorAndTime": "unknown",
+    "notClaimedAsOwnFix": true
+  },
+  "currentProducts": [
+    {
+      "productId": "gid://shopify/Product/15427230433665",
+      "title": "Schweiz-Poster «Chalet»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-chalet",
+      "seo": {
+        "title": "Schweiz-Poster «Chalet» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 CH-Versand, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "eb90b02b19447006815119113af0082433c2c2593239b4e4b885d867df0a13a4",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427230564737",
+      "title": "Schweiz-Poster «Fondue»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-fondue",
+      "seo": {
+        "title": "Schweiz-Poster «Fondue» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 Schweizer Shop, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "35a486f9208787cdb6321f87262469b7a3aa4aad26a051c1a1df27cbe011a5fc",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427230499201",
+      "title": "Schweiz-Poster «Edelweiss»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-edelweiss",
+      "seo": {
+        "title": "Schweiz-Poster «Edelweiss» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "00e03101182cb8c57f157b1cb9507ff5f65a21f9d5033ee0458f8eeefec0ee46",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15504098197889",
+      "title": "Familienstammbaum Leinwandbild mit Wunschnamen",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/familienstammbaum-leinwandbild-mit-wunschnamen-639744",
+      "seo": {
+        "title": "Familienstammbaum Leinwandbild mit Wunschnamen | LuxeStyle CH",
+        "description": "Motiv: Familienstammbaum. Leinwandbild mit Wunschnamen – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50."
+      },
+      "bodySha256Before": "92ac548582cc999bb0014ae10e0444c22a275325ed821c6e570b1e2aaac41000",
+      "mediaSelectionPartial": true
+    },
+    {
+      "productId": "gid://shopify/Product/15427230368129",
+      "title": "Schweiz-Poster «Matterhorn»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-matterhorn",
+      "seo": {
+        "title": "Schweiz-Poster «Matterhorn» · Berg-Kunstdruck | LuxeStyle",
+        "description": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "6416e3edbd54e0fca1b2e49e9f9283be8c5b97d0adf7fbef9c1a73a12f1217ef",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427230400897",
+      "title": "Schweiz-Poster «Alpen-Panorama»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-alps-panorama",
+      "seo": {
+        "title": "Schweiz-Poster «Alpen-Panorama» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. 🇨🇭 CH-Shop, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "b35a47bb4ea10041d80dc0d261fadf45716035b5e3e52dfa045501e0ec5ea91f",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15525460672897",
+      "title": "Dekorative Leinwandbilder Set – 3-teilige Wandkunst",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/dekorative-leinwandbilder-set-3-teilige-wandku-604600",
+      "seo": {
+        "title": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst | LuxeStyle CH",
+        "description": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set."
+      },
+      "bodySha256Before": "d7bf39feb158f4bebe71d1618499f6ea67b8eb0ea3576ae7fe080d3972fb4d37",
+      "mediaSelectionPartial": true
+    },
+    {
+      "productId": "gid://shopify/Product/15427230531969",
+      "title": "Schweiz-Poster «Edelweiss-Muster»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-edelweiss-pattern",
+      "seo": {
+        "title": "Schweiz-Poster «Edelweiss-Muster» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 –10% mit WELCOME10."
+      },
+      "bodySha256Before": "7ec176ef7edef79888de61382aecdacc0e6b65b19972028b9dd227719034534c",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427230597505",
+      "title": "Schweiz-Poster «Gondelbahn»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-gondola",
+      "seo": {
+        "title": "Schweiz-Poster «Gondelbahn» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 CH-Versand, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "dfafb7371f49c24f9d2ea88e883c44bba498b0ddbcce8912f9313f1d83234391",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427230663041",
+      "title": "Schweiz-Poster «Bergsee»",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/prodigi-poster-lake",
+      "seo": {
+        "title": "Schweiz-Poster «Bergsee» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 Schweizer Shop, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "dca12e21665ae928a8dd9fc8cd4a0b4fce3de8f769ede9862924717b7f6de87d",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/15427167355265",
+      "title": "Schweiz-Poster «Alpenkuh» · Kunstdruck mit Blumenkranz",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/swiss-alpine-cow-with-floral-crown-premium-semi-glossy-paper-poster",
+      "seo": {
+        "title": "Schweiz-Poster «Alpenkuh» · Kunstdruck | LuxeStyle",
+        "description": "Motiv: Alpenkuh. Charmante Schweizer Alpenkuh mit Blumenkranz als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 Schweizer Shop, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "5ed353d0fd3adc24553c737682fecbee61186ba52390bfb6fa8326c3ee87a988",
+      "mediaSelectionPartial": false
+    },
+    {
+      "productId": "gid://shopify/Product/16615662354823",
+      "title": "Dekoratives Leinwandbild ohne Rahmen",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/dekoratives-leinwandbild-ohne-rahmen-615200",
+      "seo": {
+        "title": "Dekoratives Leinwandbild ohne Rahmen | LuxeStyle CH",
+        "description": "Motiv: Blühender Baum mit gelb-weissen Blüten. Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl."
+      },
+      "bodySha256Before": "05fd071da9c072e8179ac9beed82228fdb4c6cb66e8f2058fcad30fd77acabbe",
+      "mediaSelectionPartial": true
+    },
+    {
+      "productId": "gid://shopify/Product/15427142812033",
+      "title": "Schweiz-Poster «Grüezi» – Mundart-Kunstdruck",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/schweiz-poster-gruezi",
+      "seo": {
+        "title": "Schweiz-Poster «Grüezi» · Mundart-Kunstdruck | LuxeStyle",
+        "description": "Motiv: Grüezi. Schweizer Mundart-Poster «Grüezi» als Premium-Kunstdruck, mattes Papier, mehrere Grössen. 🇨🇭 Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10."
+      },
+      "bodySha256Before": "7605d819912f269fd2048865724affb3ff1076fff9718edab1e17bc3805ba772",
+      "mediaSelectionPartial": false
+    }
+  ],
+  "offerVariantMapping": [
+    {
+      "offerId": "shopify_ZZ_15427230433665_55792020128129",
+      "productId": "gid://shopify/Product/15427230433665",
+      "variantId": "gid://shopify/ProductVariant/55792020128129",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230564737_55792020521345",
+      "productId": "gid://shopify/Product/15427230564737",
+      "variantId": "gid://shopify/ProductVariant/55792020521345",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230499201_55792020291969",
+      "productId": "gid://shopify/Product/15427230499201",
+      "variantId": "gid://shopify/ProductVariant/55792020291969",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15504098197889_56130730688897",
+      "productId": "gid://shopify/Product/15504098197889",
+      "variantId": "gid://shopify/ProductVariant/56130730688897",
+      "sku": "CJ-1524238044436639744",
+      "priceCHF": "22.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230368129_55792019898753",
+      "productId": "gid://shopify/Product/15427230368129",
+      "variantId": "gid://shopify/ProductVariant/55792019898753",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230368129_55792019865985",
+      "productId": "gid://shopify/Product/15427230368129",
+      "variantId": "gid://shopify/ProductVariant/55792019865985",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230400897_55792019997057",
+      "productId": "gid://shopify/Product/15427230400897",
+      "variantId": "gid://shopify/ProductVariant/55792019997057",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230433665_55792020062593",
+      "productId": "gid://shopify/Product/15427230433665",
+      "variantId": "gid://shopify/ProductVariant/55792020062593",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230433665_55792020095361",
+      "productId": "gid://shopify/Product/15427230433665",
+      "variantId": "gid://shopify/ProductVariant/55792020095361",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230400897_55792019964289",
+      "productId": "gid://shopify/Product/15427230400897",
+      "variantId": "gid://shopify/ProductVariant/55792019964289",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230368129_55792019931521",
+      "productId": "gid://shopify/Product/15427230368129",
+      "variantId": "gid://shopify/ProductVariant/55792019931521",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230400897_55792020029825",
+      "productId": "gid://shopify/Product/15427230400897",
+      "variantId": "gid://shopify/ProductVariant/55792020029825",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15525460672897_56225328824705",
+      "productId": "gid://shopify/Product/15525460672897",
+      "variantId": "gid://shopify/ProductVariant/56225328824705",
+      "sku": "CJ-2511220828321604600",
+      "priceCHF": "33.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230531969_55792020390273",
+      "productId": "gid://shopify/Product/15427230531969",
+      "variantId": "gid://shopify/ProductVariant/55792020390273",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230597505_55792020619649",
+      "productId": "gid://shopify/Product/15427230597505",
+      "variantId": "gid://shopify/ProductVariant/55792020619649",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230499201_55792020259201",
+      "productId": "gid://shopify/Product/15427230499201",
+      "variantId": "gid://shopify/ProductVariant/55792020259201",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230663041_55792020783489",
+      "productId": "gid://shopify/Product/15427230663041",
+      "variantId": "gid://shopify/ProductVariant/55792020783489",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230531969_55792020357505",
+      "productId": "gid://shopify/Product/15427230531969",
+      "variantId": "gid://shopify/ProductVariant/55792020357505",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230499201_55792020324737",
+      "productId": "gid://shopify/Product/15427230499201",
+      "variantId": "gid://shopify/ProductVariant/55792020324737",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230531969_55792020423041",
+      "productId": "gid://shopify/Product/15427230531969",
+      "variantId": "gid://shopify/ProductVariant/55792020423041",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230597505_55792020586881",
+      "productId": "gid://shopify/Product/15427230597505",
+      "variantId": "gid://shopify/ProductVariant/55792020586881",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230564737_55792020455809",
+      "productId": "gid://shopify/Product/15427230564737",
+      "variantId": "gid://shopify/ProductVariant/55792020455809",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230663041_55792020750721",
+      "productId": "gid://shopify/Product/15427230663041",
+      "variantId": "gid://shopify/ProductVariant/55792020750721",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427167355265_55791625503105",
+      "productId": "gid://shopify/Product/15427167355265",
+      "variantId": "gid://shopify/ProductVariant/55791625503105",
+      "sku": "b2fe420d-41ce-43dd-a0e3-234b9fca1ea3",
+      "priceCHF": "14.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_16615662354823_67667365200263",
+      "productId": "gid://shopify/Product/16615662354823",
+      "variantId": "gid://shopify/ProductVariant/67667365200263",
+      "sku": "CJ-2504250729121615200",
+      "priceCHF": "92.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427142812033_55791483322753",
+      "productId": "gid://shopify/Product/15427142812033",
+      "variantId": "gid://shopify/ProductVariant/55791483322753",
+      "sku": "aee8d787-63c4-41a9-a942-622ef948bd44",
+      "priceCHF": "14.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230564737_55792020488577",
+      "productId": "gid://shopify/Product/15427230564737",
+      "variantId": "gid://shopify/ProductVariant/55792020488577",
+      "sku": "GLOBAL-FAP-A3",
+      "priceCHF": "34.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230597505_55792020554113",
+      "productId": "gid://shopify/Product/15427230597505",
+      "variantId": "gid://shopify/ProductVariant/55792020554113",
+      "sku": "GLOBAL-FAP-A4",
+      "priceCHF": "24.90",
+      "availableForSale": true
+    },
+    {
+      "offerId": "shopify_ZZ_15427230663041_55792020816257",
+      "productId": "gid://shopify/Product/15427230663041",
+      "variantId": "gid://shopify/ProductVariant/55792020816257",
+      "sku": "GLOBAL-FAP-A2",
+      "priceCHF": "44.90",
+      "availableForSale": true
+    }
+  ],
+  "ownConfirmedChanges": [
+    {
+      "id": "gid://shopify/Product/15525460672897",
+      "title": "Dekorative Leinwandbilder Set – 3-teilige Wandkunst",
+      "before": "<p>Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt.</p><p>Das Set enthält drei einzelne Bilder.</p><p>Jedes Bild ist auf einer 30 × 40 cm grossen Leinwand aufgespannt und in einem stabilen PS‑Rahmen eingefasst.</p><p>Der Rahmen besteht aus Kunststoff (PS).</p><p>Im Lieferumfang sind drei fertig gerahmte Bilder.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3 Stück pro Set</li>\n<li>30 × 40 cm Grösse</li>\n<li>PS‑Rahmen aus Kunststoff</li>\n<li>Leinwanddruck mit floralem Muster</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Holz</li>\n<li>\n<strong>Gewicht:</strong> ca. 300 g – 520 g (je nach Variante)</li>\n<li>\n<strong>Masse:</strong> 30 × 40cm PS frame + canvas, 40 × 60cm PS frame + canvas</li>\n<li>\n<strong>Muster:</strong> Blumen</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "after": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p><p>Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt.</p><p>Das Set enthält drei einzelne Bilder.</p><p>Jedes Bild ist auf einer 30 × 40 cm grossen Leinwand aufgespannt und in einem stabilen PS‑Rahmen eingefasst.</p><p>Der Rahmen besteht aus Kunststoff (PS).</p><p>Im Lieferumfang sind drei fertig gerahmte Bilder.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3 Stück pro Set</li>\n<li>30 × 40 cm Grösse</li>\n<li>PS‑Rahmen aus Kunststoff</li>\n<li>Leinwanddruck mit floralem Muster</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Holz</li>\n<li>\n<strong>Gewicht:</strong> ca. 300 g – 520 g (je nach Variante)</li>\n<li>\n<strong>Masse:</strong> 30 × 40cm PS frame + canvas, 40 × 60cm PS frame + canvas</li>\n<li>\n<strong>Muster:</strong> Blumen</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "addedHtml": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>",
+      "imageProof": "SELECTED-IMAGE-SOURCES.json",
+      "beforeSha256": "d7bf39feb158f4bebe71d1618499f6ea67b8eb0ea3576ae7fe080d3972fb4d37",
+      "afterSha256": "d7548047603df25f98533c0c58d70f4cd652ddaf1d261de4ef89208693e5f0b6",
+      "publicReadback": {
+        "id": "gid://shopify/Product/15525460672897",
+        "url": "https://luxestyle.ch/products/dekorative-leinwandbilder-set-3-teilige-wandku-604600",
+        "http": 200,
+        "publicId": 15525460672897,
+        "exactBody": true,
+        "firstParagraph": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>"
+      },
+      "imageSource": {
+        "productId": "gid://shopify/Product/15525460672897",
+        "mediaId": "gid://shopify/MediaImage/70813726900609",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+        "path": "/workspace/luxestyle-review/description-csv-20261101/15525460672897-original.jpg",
+        "sha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16615662354823",
+      "title": "Dekoratives Leinwandbild ohne Rahmen",
+      "before": "<p>Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl. Es ist eine Leinwandzeichnung mit HD-Mikrostrahl-Ölfarben von Epson in 10 Farben. Das Bild hat die Masse 80 × 160 cm und wird ohne Rahmen geliefert. Es ist aus HD-Leinwand gefertigt.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Modernes, schlichtes Design</li>\n<li>Rechteckige Form</li>\n<li>Für eine zeitgemässe Einrichtung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 220 g – 3 kg (je nach Variante)</li>\n<li>\n<strong>Form:</strong> rechteckig</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "after": "<p><strong>Motiv:</strong> Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.</p><p>Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl. Es ist eine Leinwandzeichnung mit HD-Mikrostrahl-Ölfarben von Epson in 10 Farben. Das Bild hat die Masse 80 × 160 cm und wird ohne Rahmen geliefert. Es ist aus HD-Leinwand gefertigt.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Modernes, schlichtes Design</li>\n<li>Rechteckige Form</li>\n<li>Für eine zeitgemässe Einrichtung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 220 g – 3 kg (je nach Variante)</li>\n<li>\n<strong>Form:</strong> rechteckig</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "addedHtml": "<p><strong>Motiv:</strong> Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.</p>",
+      "imageProof": "SELECTED-IMAGE-SOURCES.json",
+      "beforeSha256": "05fd071da9c072e8179ac9beed82228fdb4c6cb66e8f2058fcad30fd77acabbe",
+      "afterSha256": "1613a008d3f7615eac2fd39fc3a1a3af433e1ab425ced26e945d5ccd6e1deab7",
+      "publicReadback": {
+        "id": "gid://shopify/Product/16615662354823",
+        "url": "https://luxestyle.ch/products/dekoratives-leinwandbild-ohne-rahmen-615200",
+        "http": 200,
+        "publicId": 16615662354823,
+        "exactBody": true,
+        "firstParagraph": "<p><strong>Motiv:</strong> Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.</p>"
+      },
+      "imageSource": {
+        "productId": "gid://shopify/Product/16615662354823",
+        "mediaId": "gid://shopify/MediaImage/77495686529415",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b889c32e-3dfd-4a10-b0d9-3b512d1f626a.png?v=1791751214",
+        "path": "/workspace/luxestyle-review/description-csv-20261101/16615662354823-original.png",
+        "sha256": "3e39164a2b8d4d63701bb40a2601550d921930b3f3b61bbc31979c85feafbe40"
+      }
+    }
+  ],
+  "validation": {
+    "schemaExplored": [
+      "QueryRoot",
+      "Product",
+      "SEO",
+      "Mutation",
+      "ProductUpdateInput",
+      "ProductUpdatePayload",
+      "UserError"
+    ],
+    "prevalidation": "skipped by tool; native execution returned no GraphQL/userErrors",
+    "freshShopAndBeforeRead": true,
+    "explicitDiffOnly": "prepend one visually verified motif paragraph to each of two existing descriptions",
+    "nativeExactAfterChecks": [
+      {
+        "id": "gid://shopify/Product/15525460672897",
+        "descriptionExact": true,
+        "allOtherReadFieldsUnchanged": true
+      },
+      {
+        "id": "gid://shopify/Product/16615662354823",
+        "descriptionExact": true,
+        "allOtherReadFieldsUnchanged": true
+      }
+    ],
+    "publicProductJsonChecks": [
+      {
+        "id": "gid://shopify/Product/15525460672897",
+        "url": "https://luxestyle.ch/products/dekorative-leinwandbilder-set-3-teilige-wandku-604600",
+        "http": 200,
+        "publicId": 15525460672897,
+        "exactBody": true,
+        "firstParagraph": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>"
+      },
+      {
+        "id": "gid://shopify/Product/16615662354823",
+        "url": "https://luxestyle.ch/products/dekoratives-leinwandbild-ohne-rahmen-615200",
+        "http": 200,
+        "publicId": 16615662354823,
+        "exactBody": true,
+        "firstParagraph": "<p><strong>Motiv:</strong> Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.</p>"
+      }
+    ],
+    "unchangedReadFields": [
+      "id",
+      "title",
+      "handle",
+      "status",
+      "tags",
+      "onlineStoreUrl",
+      "seo",
+      "media first2",
+      "all variants id/title/sku/price/availableForSale"
+    ],
+    "inventoryWasNotReadInThisScope": true,
+    "writeInputFieldsOnly": [
+      "id",
+      "descriptionHtml"
+    ]
+  },
+  "openIssues": [
+    {
+      "productId": "gid://shopify/Product/15525460672897",
+      "issue": "Existing body says PS frame while details say Holz; dimensions list30x40 and40x60 although current default SKU is not independently bound to supplier specifications. Do not decide material or size from photo.",
+      "state": "BLOCKED_NEEDS_EXACT_SUPPLIER_MODEL_VARIANT_SOURCE"
+    },
+    {
+      "productId": "gid://shopify/Product/16615662354823",
+      "issue": "Existing80x160cm, Epson/10-colour process, weight range and no-frame specification are not independently verified by this motif review. Marketing image depicts a frame; do not infer actual inclusion.",
+      "state": "BLOCKED_NEEDS_EXACT_SUPPLIER_MODEL_VARIANT_SOURCE"
+    },
+    {
+      "scope": "Google Merchant",
+      "issue": "Current submitted description/data source and processing status not verified; old CSV recommendation cannot be called cleared. Earlier exact source lookup timed out; no retry/no Merchant write.",
+      "state": "unknown"
+    }
+  ],
+  "notPerformed": [
+    "No new SEO writes",
+    "No Merchant write or feed upload",
+    "No price/variant/tag/status/inventory/channel/settings change inputs",
+    "No metrics/flow/order report",
+    "No new Social write, theme publish, automation or workflow dispatch"
+  ],
+  "nextStepForClaude": "Preserve the two confirmed body additions and existing13SEO motifs. Using legitimate source access, bind the two exact CJ SKUs CJ-2511220828321604600 and CJ-2504250729121615200 to current original specifications, resolve contradictory dimensions/material/frame statements only with proof; then check actual submitted Merchant descriptions and processing without assuming feed mapping. Do not repeat existing writes.",
+  "claudeReceipt": "unknown_missing_receipt"
+}
