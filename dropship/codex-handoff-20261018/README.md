@@ -1,14 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
-## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 36
+## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 37
 
-[Abendpaket](ABENDPAKET-20261101-R36.md) · [Belege](ABENDBELEGE-20261101-R36.json) · [Masterentwurf](MASTER-ABEND-20261101-R36.md) · [konsolidierte Tagestabelle](TAGESTABELLE-20261101-R36.md).
+[Aktuelle Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json) · [Acht-Dateien-Transfermanifest](CLAUDE-THEME-TRANSFER-20261101-R37.json) · [Belege](CLAUDE-CODE-UPDATE-20261101-R37.json).
 
-Öffentliches MAIN 212971061639 mit Bewertungen/FR bleibt erhalten. Im vorhandenen UNPUBLISHED-Entwurf 212978598279 liegen neben den Stickern neu acht Produktkarten «Noch mehr entdecken» mit echten Fotos, CHF-Preisen und Reviewbindung. Sechs Dateien bestätigt, Mobil/Desktop und acht Produktseiten geprüft; neue Ressourcen umgehen weitere all_products-Zugriffe, ursprüngliche 20 Handles erhalten. Kein Publish oder Produktdatenwrite.
+Inhaberauftrag «ja weiter für claude update er macht»: Claude übernimmt die nächsten belegten Schritte innerhalb der bestehenden Freigaben. Frisch geprüft: MAIN 212971061639, kombinierter Entwurf 212978598279 weiterhin UNPUBLISHED, acht eigene Dateiprüfsummen und zwei Reviewkontrollen passend. Erster Auftrag ist Veröffentlichung dieses vorhandenen Entwurfs nach frischem vollständigem Theme-Diff über legitimen Zugang und anschliessende öffentliche DE-/FR-Gegenprobe. Keine neue Kopie oder gleiche Freigabefrage; Connector-Zugriffsgrenze bleibt erhalten.
 
-Abendcheck: Shopify und Metricool 6227837/Europe/Zurich samt sechs Kanälen passend. Sieben bestehende Planobjekte/14 PENDING, keine exakten Doppel im begrenzten Fenster, keine eigene Terminierung. Tageskennzahlen/Flowreport nur datiert wiederverwendet; vollständige Wochen/Einzelauftrags-Sync unbekannt. Derselbe Master hat neu einen konkreten Sicht-/Kontinuitätsbogen für vier Takes, weiterhin keine MP4/Originaltakes-/Rechte-/Filmabnahme. Genau ein bestehender Welcome-Service-Diff bleibt zur Freigabe. Kauf-Watch bleibt beendet.
+R5 behält taskId und exakte R4-Vorgängerhashkette, fünf Quellen verified, purpose=review_only. Scoped CLAUDE.md und lokaler Projekteinstieg zeigen auf R37. Helfer lokal versionsgeprüft; geprüfte Remote-Rootpfade 404, keine Installation/Codeintegration behauptet. Claude-Empfang und tatsächliche Ausführung bleiben bis zu echten Belegen unbekannt. R3-Codeabnahme/Voll-CI, Master-/Rechteblocker und Welcome-Service-Freigabe bleiben separat.
 
-Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r36/` führen 16 stabile Aufgaben fort; zwei aktualisiert, 14 unverändert. Vor jedem Lauf vier kanonische Dateien frisch lesen. R33/R4 und Historie bleiben datierte Originale; tatsächlicher Claude-Empfang unbekannt. Keine zusätzliche Automation/Frequenzänderung oder neue Geschäftsfreigabe.
+Vor jedem Lauf vier kanonische Dateien frisch lesen. Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r37/` führen 16 stabile Aufgaben fort; eine aktualisiert, 15 unverändert. Historische R33–R36-Übergaben/Pakete erhalten. Tagesreports am 01.11. bereits gelesen, Kauf-Watch beendet; keine neuen Reports/Automationen/Frequenz oder pauschalen Geschäftsfreigaben aus dieser Übergabe.
 
 ## 01.11.2026 – Kaufziel erreicht, bestehender Master weitergeführt
 
@@ -879,3 +879,7 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – zusätzliche Produktkarten und Abendcheck, Revision 36
 
 [Abendpaket](ABENDPAKET-20261101-R36.md) und [Belege](ABENDBELEGE-20261101-R36.json): acht neue Startseitenkarten im vorhandenen Sticker-Entwurf geprüft; keine Live-Publikation oder Produktdatenänderung. Frische Marken-/Queuegegenprobe, datierte Reportwiederverwendung und neuer Sichtabnahmebogen für denselben Master. Genau eine Welcome-Service-Massnahme bleibt Freigabeentwurf. Konsolidierte Tagestabelle und R36-Quellenspiegel erhalten 16 Aufgaben/Historien und den beendeten Kauf-Watch; keine zusätzliche Automation oder Geschäftsfreigabe.
+
+## 01.11.2026 – Übergabe zur Übernahme durch Claude Code, Revision 37
+
+[Konkreter R37-Auftrag](CLAUDE-CODE-UEBERGABE-20261101-R37.md), [R5](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json) und [Belege](CLAUDE-CODE-UPDATE-20261101-R37.json) gespeichert. Kombinierter Acht-Dateien-Diff und Transfermanifest nach frischem Rollen-/Prüfsummenabgleich bereit; scoped und lokaler Claude-Einstieg aktualisiert. Fünf Paketquellen hashgeprüft, R4-Kette und Historie erhalten. Kenntnisnahme/Veröffentlichung nicht behauptet, kein neuer Geschäfts-/Flow-/Budgetauftrag. Ein Task fortgeschrieben, 15 unverändert; R37-Snapshot erhält 16 IDs, Tagesgrenzen und den beendeten Kauf-Watch.
