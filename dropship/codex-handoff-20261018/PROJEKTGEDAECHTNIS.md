@@ -1,5 +1,15 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 42
+
+[Beschreibungsexport / zwei bestätigte Ergänzungen](BESCHREIBUNGEN-CSV-20261101-R42.md) · [Vorher-/Nachher-/Bildbelege](BESCHREIBUNGEN-CSV-20261101-R42.json) · [Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
+
+Neues Inhaber-CSV mit29 Angeboten/13 Produkten aktuell geprüft und exakt an alle Varianten gebunden. Es ist eine Motiv-Empfehlung ohne Ablehnungsstatus. Alle13 aktuellen SEO-Texte enthielten bereits «Motiv:»; diese vorhandenen Änderungen nicht Codex zurechnen oder wiederholen. Zwei eigene Body-Ergänzungen nach Öffnen echter Shopbilder sind nativ und öffentlich exakt bestätigt: stilisierte Blumen beim Set15525460672897 und blühender Baum beim Einzelbild16615662354823. NurID/descriptionHtml geschrieben, alle übrigen gelesenen Felder unverändert. Keine neue komplette Produkt-/Inventar-/Lieferantenprüfung behauptet.
+
+Claude: Bestätigte Texte erhalten. Genaue Quellen für CJ-2511220828321604600 und CJ-2504250729121615200 prüfen: bestehende Material-/Mass-/Rahmen-/Druckverfahren-Angaben sind teilweise widersprüchlich oder unbelegt. Bilder belegen das Motiv, keine realen Masse oder Materialien. Tatsächlich eingereichten Merchant-Text und Neubewertung mit legitimem Zugriff lesen; kein Feedwrite, kein Google-erledigt behauptet. R41-Quellenfrage bleibt offen, Timeout nicht blind wiederholen.
+
+Ein bestehender Attributtask ergänzt,15 andere Tasks und dieselben16IDs/Historien erhalten. R41-Bildfix, R40-Websiteentwurf und R39-Threads-Termin/Register unverändert. Keine neuen Tagesreports, Kauf-Watch-Abfragen, Socialwrites, Automationen oder Frequenzänderungen. Lokaler Spiegel memory/snapshots/2026-11-01-r42; tatsächlicher Claude-Empfang unbekannt.
+
 ## Aktueller Stand – 01.11.2026, Revision 41
 
 [CSV-Reparaturbericht](MERCHANT-CSV-REPARATUR-20261101-R41.md) · [Prüf-/Änderungsbelege](MERCHANT-CSV-REPARATUR-20261101-R41.json) · [Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
