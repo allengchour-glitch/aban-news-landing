@@ -973,10 +973,8 @@
   "claudeReceipt": "unknown",
   "nextStep": "Recheck exact diffs and runtime grants; Node22 full CI; explicit bounded Printful migration/Ready proof and durable CJ reservation/reconciliation before live use.",
   "mainRecheckedBeforeSave": {
-    "at": "2026-11-01T08:46:00Z",
+    "observedAt": "2026-11-01 08:47:24 UTC",
     "source": "fresh GitHub main/main comparison",
-    "sha": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
-    "atPrecision": "minute"
+    "sha": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8"
   }
 }
-
