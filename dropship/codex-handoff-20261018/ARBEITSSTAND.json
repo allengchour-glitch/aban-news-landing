@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 18,
-  "updatedAt": "2026-11-01T01:14:44.155072+00:00",
+  "revision": 19,
+  "updatedAt": "2026-11-01T01:48:39.956Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1158,7 +1158,7 @@
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
-      "lastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.",
+      "lastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.\n\nFortsetzung 01.11.2026: Explizite Zollmasse als cm-Anzeige, vorhandene cm/mm vorrangig, raw Variantengrössen/IDs unverändert. 8″×10″ zeigt 20,32 × 25,4 cm; der echte Bereich 22–23″ zeigt 55,88–58,42 cm. Ursprüngliche drei Titelbilder mit aktuellen Shopify-Bildern wiederhergestellt. Vier endgültige Theme-Dateien exakt zurückgelesen, 27 gezielte native Prüfungen bestanden, finale JS-Metazeile ebenfalls (cm). 572 Modelle, 31 Shopkarten und echte Reviewzustände erhalten. MAIN unverändert, nur UNPUBLISHED aktualisiert; bestehende Publikations-/EDM-/Bestellblocker gelten weiter. CDN wird minifiziert; Hash separat. Keine Geschäfts-/Kennzahl-/Kauf-Watch-Abfrage.",
       "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
       "nextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
       "pendingProducts": [
@@ -1495,6 +1495,21 @@
           "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-IMPORT-20261101.md",
           "gitBlobSha": "f2c8253f9060134e776dc5351975d1ecc80dba15",
           "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-20261101.md",
+          "gitBlobSha": "13df99f280eeff2ca315683b76d4bd423579a1ff",
+          "readAt": "2026-11-01T01:48:39.956Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json",
+          "gitBlobSha": "dd01571d2583f20065461e498454df7aea92c37f",
+          "readAt": "2026-11-01T01:48:39.956Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-20261101.patch",
+          "gitBlobSha": "0fd977dbca1e21c9a835cbafbc5a548012151386",
+          "readAt": "2026-11-01T01:48:39.956Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1617,6 +1632,12 @@
             "Offizielle Template-/Printfile-Abfragen für Modell390 ohne API-Key HTTP401; druckfähige Flächengeometrie weiterhin unbekannt",
             "Kein produktiver Originaleditor, sicherer Bestellfluss oder Freigabenachweis für neue Supplier-only-Varianten"
           ]
+        },
+        {
+          "at": "2026-11-01T01:48:39.956Z",
+          "sourceRevision": 18,
+          "previousLastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.",
+          "previousState": "umgesetzt_vorschau_technisch_blockiert"
         }
       ]
     }
@@ -1738,6 +1759,17 @@
         "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-BELEGE-20261101.json",
         "gitBlobSha": "fb2db44976cd134adb43ae5d3cf3bb58dbe902c5",
         "readAt": "2026-11-01T01:14:44.155072+00:00"
+      }
+    },
+    {
+      "revision": 19,
+      "at": "2026-11-01T01:48:39.956Z",
+      "actor": "codex",
+      "action": "Zollmasse quellengebunden als cm dargestellt und frühere drei Selbstgestalten-Titelbilder wiederhergestellt. Vier Dateien im unveröffentlichten Theme gespeichert und exakt zurückgelesen; 27 native Prüfungen bestanden. Nach Quellen-Gegenprobe echten Zollbereich und Metazeile eng korrigiert. MAIN, Produkte, Preise, Feeds, Bestell-/EDM-Status und erfüllter Kauf-Watch erhalten. Nur betroffene LuxeStyle-Dokumentation fortgeschrieben.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json",
+        "gitBlobSha": "dd01571d2583f20065461e498454df7aea92c37f",
+        "readAt": "2026-11-01T01:48:39.956Z"
       }
     }
   ],
