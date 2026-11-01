@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 37,
-  "updatedAt": "2026-11-01T18:46:27Z",
+  "revision": 38,
+  "updatedAt": "2026-11-01T19:05:01Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -831,9 +831,9 @@
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSENE_QUELLEN_KONKRETER_PRODUKTIONSENTWURF_KEINE_MP4",
-      "lastEvidence": "Abendfortsetzung desselben Masters luxe_sternenprojektor_master_20261018: Projektor ACTIVE / CHF 34.90, exakte Variante/SKU, echte Bildreferenz und Storefront verfügbar frisch bestätigt; tracked=false / CONTINUE / Menge 0 ohne Liefer-/Bestandsversprechen. Repo-Sperrwächter, jedes rueckhol und leere Tags geprüft, kein Treffer; auswahl-offen bleibt Ausführungsblocker. Pflichtmusik lokal hashgleich zum aktuellen main, Herkunftserklärung ORIGINAL PRO gelesen, finale Rechte-/Hörabnahme offen. Neu konkreter Sicht-/Kontinuitätsbogen mit Vorher-/Nachherbildern, identischer Geräteeinheit, tatsächlicher Bedienhandlung, Motivzuordnung und freiem CTA-Raum für vier Originaltakes vorbereitet; Felder unbefüllt, keine Abnahme. Bestehender 18-Sekunden-Plan mit 1080×1920, 30 fps und 540 Frames und sechs stabile Caption-UTMs fortgeführt. Explizites Originalmanifest weiter ohne vier passende Takes, kein Render oder Socialwrite. Frische Metricool-Identität/Planung passend: sieben bestehende Objekte / 14 PENDING, keine exakten Doppel im Fenster. Heutige Kennzahl-/Flowreports datiert wiederverwendet, keine zweite Tagesabfrage. Inhaber-YT-Zielgruppe allgemein/nicht speziell für Kinder erhalten; konkretes Postflag offen.",
-      "nextAllowedStep": "Vier tatsächliche native Originaltakes samt exakter Ausführung/Motiven/Strom- und kommerziellen Film-/Bearbeitungsrechten in vorhandene Annahmekette eintragen. Neuen Sicht-/Kontinuitätsbogen mit echten Framebelegen und Prüfer ausfüllen; erst danach denselben Master schneiden und fertige MP4 auf Bild/Ton/Text/Crops abnehmen. Vor späterem Metricool-Push Produkt-/Bio-/Board-/Postflag-/Ledgerchecks frisch durchführen. Keine Altclip-/Websitevideo-Ersatzfreigabe oder erneute gleiche YT-Zielgruppenfrage.",
+      "belegArt": "GEMESSENE_PLANUNG_UND_MATERIALBLOCKER_KEIN_WRITE",
+      "lastEvidence": "Auf Inhaberwunsch eine Woche mit passenden Produkten vorauszuplanen Shop luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanalidentitäten frisch bestätigt. Rollendes Siebentagefenster ab 01.11.19:58:47 Zürich enthält dieselben sieben Planobjekte wie R36, je Facebook/Instagram PENDING, insgesamt 14 Kanalzustände. Keine exakten Medien-/Text-/Slotdoppel oder Änderungen in geprüften Feldern. Bereits ein bestehender Termin pro Datum 02.–08.11.; keine eigenen neuen Termine, Updates oder Publikationen. Vorhandene Bildposts durch diesen Abruf nicht als qualitäts-/rechtegeprüfte Master freigegeben. Begrenzte Materialprüfung: vier Originaltakes fehlen weiterhin im bekannten unveränderten Manifest, nur alte 960x540/25fps-Referenz nachgewiesen; Ausführung/Filmrechte/fertige Abnahme und dauerhaftes Masterregister unbestätigt. Zusätzliche Foto-/Karussell-Ausnahme ausdrücklich per Frage angefragt, keine Antwort belegt; bisherige Mastervorgabe unverändert. Kein Render/Altclip/Publisher/Registrywrite und keine neue Kennzahl-/Flow-/Bestellabfrage.",
+      "nextAllowedStep": "Bestehende sieben Termine erhalten und keine Doppelposts erzeugen. Ausstehende Inhaberantwort zur zusätzlichen Foto-/Karussellform beachten; Schweigen/vorausgewählte UI-Option ist keine Formatfreigabe. Ohne explizite Änderung gelten weiterhin professionelle freigegebene Master-MP4s und fehlende Originaltakes/Rechte/Register als Blocker. Bei erlaubtem anderem Format vor jedem konkreten Push Produkt/Tags/Bilder/kommerzielle Rechte/Kanaldaten/Diff/Queue frisch belegen; keine ungeprüften bestehenden Bildposts pauschal aktivieren oder ersetzen.",
       "blockers": [
         "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
         "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
@@ -931,6 +931,11 @@
           "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
           "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
           "readAt": "2026-11-01T18:14:26Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
+          "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
+          "readAt": "2026-11-01T19:05:01Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -994,6 +999,36 @@
           "previousBelegArt": "LOKAL_GEPRUEFTER_ENTWURF/GEMESSENE_QUELLEN/KEINE_PRODUKTIVE_INTEGRATION",
           "previousLastEvidenceDate": "2026-11-01",
           "previousPreviewUrl": null
+        },
+        {
+          "at": "2026-11-01T19:05:01Z",
+          "sourceRevision": 37,
+          "previousState": "blockiert",
+          "previousLastEvidence": "Abendfortsetzung desselben Masters luxe_sternenprojektor_master_20261018: Projektor ACTIVE / CHF 34.90, exakte Variante/SKU, echte Bildreferenz und Storefront verfügbar frisch bestätigt; tracked=false / CONTINUE / Menge 0 ohne Liefer-/Bestandsversprechen. Repo-Sperrwächter, jedes rueckhol und leere Tags geprüft, kein Treffer; auswahl-offen bleibt Ausführungsblocker. Pflichtmusik lokal hashgleich zum aktuellen main, Herkunftserklärung ORIGINAL PRO gelesen, finale Rechte-/Hörabnahme offen. Neu konkreter Sicht-/Kontinuitätsbogen mit Vorher-/Nachherbildern, identischer Geräteeinheit, tatsächlicher Bedienhandlung, Motivzuordnung und freiem CTA-Raum für vier Originaltakes vorbereitet; Felder unbefüllt, keine Abnahme. Bestehender 18-Sekunden-Plan mit 1080×1920, 30 fps und 540 Frames und sechs stabile Caption-UTMs fortgeführt. Explizites Originalmanifest weiter ohne vier passende Takes, kein Render oder Socialwrite. Frische Metricool-Identität/Planung passend: sieben bestehende Objekte / 14 PENDING, keine exakten Doppel im Fenster. Heutige Kennzahl-/Flowreports datiert wiederverwendet, keine zweite Tagesabfrage. Inhaber-YT-Zielgruppe allgemein/nicht speziell für Kinder erhalten; konkretes Postflag offen.",
+          "previousNextAllowedStep": "Vier tatsächliche native Originaltakes samt exakter Ausführung/Motiven/Strom- und kommerziellen Film-/Bearbeitungsrechten in vorhandene Annahmekette eintragen. Neuen Sicht-/Kontinuitätsbogen mit echten Framebelegen und Prüfer ausfüllen; erst danach denselben Master schneiden und fertige MP4 auf Bild/Ton/Text/Crops abnehmen. Vor späterem Metricool-Push Produkt-/Bio-/Board-/Postflag-/Ledgerchecks frisch durchführen. Keine Altclip-/Websitevideo-Ersatzfreigabe oder erneute gleiche YT-Zielgruppenfrage.",
+          "previousBlockers": [
+            "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+            "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
+          ],
+          "previousBelegArt": "GEMESSENE_QUELLEN_KONKRETER_PRODUKTIONSENTWURF_KEINE_MP4",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousLastPlanningCheck": {
+            "brandId": 6227837,
+            "timezone": "Europe/Zurich",
+            "from": "2026-11-01T18:58:02",
+            "to": "2026-11-08T18:58:02",
+            "existingPosts": 7,
+            "providerPendingStates": 14,
+            "ownWrites": 0,
+            "exactDuplicatesInWindow": false,
+            "historicalMasterLedger": "unknown_not_initialised",
+            "source": {
+              "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+              "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+              "readAt": "2026-11-01T18:14:26Z"
+            }
+          }
         }
       ],
       "visualAcceptanceDraft": {
@@ -1009,17 +1044,29 @@
       "lastPlanningCheck": {
         "brandId": 6227837,
         "timezone": "Europe/Zurich",
-        "from": "2026-11-01T18:58:02",
-        "to": "2026-11-08T18:58:02",
+        "from": "2026-11-01T18:58:47+00:00",
+        "to": "2026-11-08T18:58:47+00:00",
         "existingPosts": 7,
         "providerPendingStates": 14,
         "ownWrites": 0,
         "exactDuplicatesInWindow": false,
         "historicalMasterLedger": "unknown_not_initialised",
         "source": {
-          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
-          "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
-          "readAt": "2026-11-01T18:14:26Z"
+          "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
+          "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
+          "readAt": "2026-11-01T19:05:01Z"
+        }
+      },
+      "weeklyPushRequest": {
+        "ownerMessage": "pushe metricool 1 woche lang voraus, mit tollste produkten",
+        "existingCoverage": "Facebook/Instagram 02.–08.11. one existing pending post per day",
+        "newScheduledByCodex": 0,
+        "formatExceptionState": "PENDING_NO_OWNER_ANSWER",
+        "masterOnlyPolicyStillApplies": true,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
+          "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
+          "readAt": "2026-11-01T19:05:01Z"
         }
       }
     },
@@ -2847,6 +2894,17 @@
         "gitBlobSha": "66819d71f6a95b0911bc00f8fe9a274f6cfd5c96",
         "readAt": "2026-11-01T18:46:27Z"
       }
+    },
+    {
+      "revision": 38,
+      "at": "2026-11-01T19:05:01Z",
+      "actor": "codex",
+      "action": "Auf konkreten Metricool-Wochenauftrag passende Identitäten und sieben bestehende Posts/14PENDING erneut begrenzt geprüft; keine Doppel/ausgewählten Änderungen. Material-/Rechte-/Registerblocker frisch belegt und Formatpräzisierung zu Fotos/Karussells angefragt, keine Antwort als Freigabe unterstellt. Keine neuen Posts/Updates/Publikationen oder anderen Geschäftsänderungen. Ein Task fortgeschrieben, 15 unverändert; 16 IDs/Historien, R37/R5-Übergabe, Tagesreportgrenzen und beendeter Kauf-Watch erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
+        "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
+        "readAt": "2026-11-01T19:05:01Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3016,12 +3074,12 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "39a7d28615b54421144b5db94f8efe77d6278c68",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r37",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r38",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 37,
-    "snapshotNote": "R37 bündelt aktuelle Claude-Übernahme mit R5 und Acht-Dateien-Transfer; alte R33–R36-Quellen/R4 erhalten, tatsächlicher Empfang unbestätigt."
+    "latestCanonicalRevision": 38,
+    "snapshotNote": "R38 ergänzt Wochenplanprüfung und ausstehende Formatpräzisierung; R37/R5 bleiben aktuelle datierte Claude-Übergabe, kein neuer Empfangsbeleg."
   },
   "claudeCodeHandoffHistory": [
     {
