@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 33
+
+[Kompakte aktuelle Übergabe](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json) · [Bereinigungsbelege](CLAUDE-CODE-BEREINIGUNG-20261101.json).
+
+Frisch bestätigt: Startseite212967981447 ist MAIN/öffentlich; Bewertungs-Theme212971061639 ist weiterhin UNPUBLISHED. 16 Aufgaben/Historien erhalten. R4-Quellen geprüft, tatsächlicher Claude-Empfang unbekannt. R3-Codeintegration/Voll-CI bleiben separat offen. Lokaler neuer Quellenspiegel: `memory/snapshots/2026-11-01-r33/` samt Herkunftsmanifest und `memory/AKTUELL.md` im LuxeStyle-Projekt; direkte R10-Altkopien bleiben historische Belege.
+
+Vor jedem Lauf die vier kanonischen Dateien frisch lesen. Die folgenden datierten Abschnitte bleiben als Historie erhalten; ein damaliger Entwurf oder offener Publish ist keine heutige Statusaussage. Keine zusätzlichen Tagesreports/Kauf-Watch-Abfragen oder neue Automationsfrequenz durch diese Übergabe.
+
 ## 01.11.2026 – Kaufziel erreicht, bestehender Master weitergeführt
 
 [Content- und Verkaufs-Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [unabhängige Prüfung](LAUFREVIEW-20261101.md).
@@ -849,3 +857,11 @@ Auf geklärten Inhaberwunsch den Bewertungsbereich wie im früheren Screenshot i
 Neue Stern-CSS ist auf den Bewertungsbereich beschränkt; bestehende Produktsterne, zwölf Trends, 16 Kategorien, fünf Einkaufsartikel, Collage und Websitevideo nativ erhalten. Nach visuellem Pfeilbefund echtes SVG eingesetzt, final mobil/Desktop geprüft. Fünf Dateien validiert und zwei nach dieser Korrektur erneut validiert; JSON-Normalisierung durch Shopify getrennt dokumentiert. Externe Failed-to-fetch-Meldungen unter Nicht-GET/HEAD-Sperre und begrenzte EN-/Checkout-Abnahme bleiben offen benannt.
 
 Nächster Schritt: Im Shopify-Admin die Kopie 212971061639 «LuxeStyle – Bewertungen 01.11.2026» veröffentlichen; danach öffentlichen Root und Bewertungsbereich frisch prüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung erforderlich. EN vor vollständiger EN-Abnahme separat prüfen. Keine Kundenansprache, Shop-/Produkt-/Preis-/Rabatt-/Flow-/Feed-/DNS-/Ads-/Social-/Automationsänderung. Tagesreports/Klaviyo und beendeter Kauf-Watch nicht wiederholt; alle 16 Aufgaben/Historien, erfülltes Kaufziel, Versandgrenzen, Kundendomäne und bestehende Läufe erhalten. Professioneller Produktfilm-Master unverändert separat blockiert; Claude-Kenntnisnahme unbekannt.
+
+## 01.11.2026 – Bereinigung und Claude-Code-Übergabe, Revision 33
+
+Aktuelle Claude-Code-Übergabe mit stabilem Aufgabenstand und frischer Shopify-/öffentlicher Gegenprobe bereinigt: MAIN212967981447 ist öffentlich, Bewertungs-Theme212971061639 bleibt UNPUBLISHED. Kompakte unveränderliche R33-Übergabe und scoped CLAUDE.md im LuxeStyle-Ordner gespeichert/exakt rückgelesen; gemeinsames Root-CLAUDE.md unangetastet. Vorhandenen lokalen Übergabehelfer versionsgeprüft und R4 mit derselben Aufgaben-ID sowie bestätigter R3-Hashkette erzeugt. Quellen lokal und nach Remoteablage verified; receiptState unknown_missing_receipt. R3-Codeabnahme/Voll-CI nicht wiederholt oder als neu grün behauptet. Veralteten lokalen R10-Spiegel erkannt, historische Dateien/Helfer unverändert erhalten; neuer datierter R33-Quellenspiegel mit Herkunftsmanifest vorbereitet. Keine Shop-/Workflow-/Installations-/Automationsänderung.
+
+[Kompakte Übergabe](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [Prüfpaket R4](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json) · [Versionen, Hashes und aktuelle Belege](CLAUDE-CODE-BEREINIGUNG-20261101.json). Snapshot ist Dokumentationspflege, keine Installation/Modelländerung, kein Merge/Deploy und keine fingierte Claude-Quittung. Lokale Ablagen sind keine Git-Checkouts; kein pauschaler sauberer Git-Status oder Voll-CI behauptet. Nur LuxeStyle-Dateien ergänzt, nichts gelöscht.
+
+Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Code-Arbeitskontext lesen; Empfang nur mit echtem Beleg bestätigen. Website-Bewertungsergänzung bleibt veröffentlichungsbereiter Entwurf, kein weiterer eigener Theme-Push. Alle 16 Aufgaben, Belege, erfülltes Kaufziel, Versand-/Kundendomäne und bestehende Läufe erhalten; übrige Tasks wurden hier nicht erneut operativ geprüft.
