@@ -695,6 +695,9 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | Entdecken / drei Hintergrundbilder | Drei dekorative Geschenkverpackungs-Motive erstellt, inShopify geladen und an bestehende Budgetkarten gebunden | DreiDateien READY/CDN200/pixelgleich; keine konkretenSKU-/Preisversprechen |
 | Mobiles Bildkarussell | NurSection/CSS im bestehendenEntwurf ergänzt:86%-Wischkarten, nächsterRand, lesbareHTMLTexte und Desktop3Spalten | ZweiDateien nativexakt bestätigt; keinAutoplay/JS-/LocaleWrite. Ziele/Preisfilter24.99/49.99 erhalten; keineCollectionregel-/Produktänderung |
 | Native Vorschau / Claude R45 |20begrenzte360/390/1440px-Bedingungen mit echtemTouch/Tab/Pfeilen und visuellemReview abgeschlossen, aktuellenEinstieg gespeichert | Bestanden;83geblockteNicht-GET-/HEAD-Requests/8Fetchfehler separatdokumentiert, keinCheckout-/Trackingabschluss. EntwurfUNPUBLISHED, keinPublish.17IDs/16andereTasks undGeschäfts-/Tagesgrenzen erhalten |
+| Beauty & Pflege / Sport | Zwei neue illustrative Motive ohne Werbeschrift/Logos erstellt und in Shopify geladen | Zwei Bilddateien READY/CDN200/pixelgleich |
+| Bild-Einbindung | Section und Directory-Snippet im bestehenden Entwurf für Entdecken-Karten, dieselben zwei Mini-Kacheln und Kategorieübersicht angepasst | Zwei Dateien nativ exakt bestätigt; andereLinks/Bilder, R45Karussell und R44Änderungen erhalten. Keine globalen Collection-/Produkt-/CSS-/JS-/Locale-Writes |
+| Vorschau / Claude R46 |41begrenzte390/1440px-Bedingungen und visuelle Bildkontrolle abgeschlossen, aktuellenEinstieg gespeichert | Bestanden;110blockierteNicht-GET-/HEAD-Requests und13Fetchfehler separatdokumentiert. EntwurfUNPUBLISHED, keinPublish.17IDs/16andereTasks und Geschäfts-/Tagesgrenzen erhalten |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
 
