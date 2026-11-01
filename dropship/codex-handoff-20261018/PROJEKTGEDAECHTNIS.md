@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 44
+
+[Bild-/Claude-Update R44](BILDER-UPDATE-20261101-R44.md) · [Finale Hashes, genaue Deltas und Nachweise](BILDER-UPDATE-20261101-R44.json).
+
+Neue Inhaber-Bildwünsche im bestehenden UNPUBLISHED-Entwurf212978598279 umgesetzt: Collage ohne Pullover und T-Shirt-Modell links, mehr Salbei/Terrakotta/Ocker; zwei textfreie Kategorie-Banner für Wohnen und Schmuck; 21 weitere geprüfte blanke Printful-Hauptansichten, jetzt52. Drei neue Shopify-Bilder READY/CDN200/pixelgleich, sieben Theme-Dateien nativ exakt bestätigt. Bildbeschreibung DE/EN/FR angepasst. Alte31Objekte/397Variantenanzeigen und572/13’160-Referenz unverändert. Drei generische Sticker-Schriftbeispiele separat, nicht aktiviert. Originalvariantenbilder sind bereits Fallback; keine541bilderlosen Karten behaupten.
+
+Echte Entwurfsvorschau auf390/1440px: 19 begrenzte Bild-/Layoutbedingungen bestanden und Screenshots angesehen, einschliesslich Tasse403 mit17Vorschaubuttons und21Kategoriegruppen. Kein vollständiger Checkout-/Tracking-/Theme-Abschluss: GET/HEAD-Schutz blockierte190andereRequests,16Fetchfehler protokolliert. Vier-Dateien-Vergleich behält466bekannteFRDiagnosen unverändert; zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler, Resolverhinweis bleibt. Keine neue breite Testsuite oder neueProdukte behauptet.
+
+Claude-Einstieg aufR44 aktualisiert. Diese sieben neuen gleichen Dateipfade haben Vorrang vor R40/R37, übrige Änderungen erhalten. Bestehende Websitefreigabe gilt: vor Publish vollständigen frischen Theme-Diff/Identität prüfen und denselben Entwurf über legitimen fähigen Zugang veröffentlichen, dann öffentliche DE/FR-Mobil-/Desktopgegenprobe. Aktueller Connector sperrt Publish/MAIN-Writes; keine Umgehung, neueKopie oder erneute gleicheFreigabefrage. MAIN212971061639 nicht verändert/veröffentlicht. Tatsächlicher Claude-Empfang unbekannt.
+
+Zwei bestehende Website-/Personalizer-Tasks fortgeführt,15andereTasks und alle17IDs/Historien erhalten. R43-Bestseller-Zwei-Text-Freigabe weiterhin offen, dieser Bildauftrag ersetzt sie nicht. R42-Motivtexte,R41-Bildfix,R39-Threads/Register, Versand/Konto, Tagesgrenzen und Kauf-Watch-Ende erhalten. Keine Kennzahl-/Flow-/Bestellabfrage, Social-/Produkt-/Feed-/Einstellungs- oder Frequenzänderung. Lokaler Spiegel memory/snapshots/2026-11-01-r44.
+
 ## Aktueller Stand – 01.11.2026, Revision 43
 
 [Sichtbarkeit / konkreter Freigabeentwurf](SICHTBARKEIT-20261101-R43.md) · [Aktuelle Prüf-/Diffbelege](SICHTBARKEIT-20261101-R43.json) · [Bestehende Websiteübergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md).
