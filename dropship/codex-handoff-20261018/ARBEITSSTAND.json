@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 28,
-  "updatedAt": "2026-11-01T14:29:53Z",
+  "revision": 29,
+  "updatedAt": "2026-11-01T15:01:42Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1043,9 +1043,9 @@
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf «bewertung fehlen sterne bei prpdukt» fünf neutrale leere SVG-Sterne für bestätigten Nullstand ergänzt; Text Noch keine Bewertungen bleibt. Kristallset 15408458006913 gezielt nativ geprüft: Rating/Count/Judge-Badge alle null, deshalb ausdrücklich unbekannt und nur im Homepage-Opt-in leere dekorative Sterne mit Bewertungen nicht verfügbar. Keine Nullbewertung, Stimme oder Durchschnitt erfunden. Placeholder nur bei exakter gültiger Produkt-ID und vier expliziten null-Rohfeldern; fehlerhafte Daten/ID weiter verborgen, PDP-Zero-only weiter strikt. Echte gefüllte Bewertungen/Anzahl unverändert, Legacy-Doppelung weiter entfernt. Vier UI-Dateien im UNPUBLISHED exakt zurückgelesen; 17 isolierte und 15 native Prüfungen grün, zwölf Trendkarten auf 360/390/1440 ohne Überlauf sowie PDP/echt bewertetes Produkt geprüft. MAIN unverändert; kein Publish oder Reviewdatenwrite. R26/R27-Stände erhalten.",
+      "lastEvidence": "Startseite auf bestätigten Inhaberwunsch um zwei Produktbereiche mit drei Schmuckartikeln und zwei Wohnartikeln sowie Winter-/Weihnachts-Einstieg erweitert. Echte Fotos, dynamische CHF-Preise, exakte Produkt-/Reviewbindung und mobile einreihige Wischansicht. Vier einzigartige UNPUBLISHED-Dateien final exakt zurückgelesen; nach 29 Basischecks einen im visuellen Review gefundenen Desktop-Bildcrop eng korrigiert und 17 native Geometrie-/Regressionstests bestanden. Anhänger vollständig sichtbar bestätigt. Bestehende zwölf Trends, 16 Kategorien, eine Selbstgestalten-Collage und Websitevideo erhalten; MAIN unverändert, kein Publish.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
-      "nextAllowedStep": "Geprüften R26-Gesamtstand und ergänzende R27-Schrift-/R28-Stern-Diffs mit legitimem MAIN-Zugang öffentlich integrieren und mobil/Desktop gegenprüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung für dieselbe Arbeit anfordern. EN vor vollständiger EN-Abnahme separat prüfen.",
+      "nextAllowedStep": "Geprüfte R26/R27/R28/R29-Vorschau mit legitimem MAIN-Zugang integrieren; Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten und öffentlich mobil/Desktop gegenprüfen. Bestehende Websitefreigabe erhalten; EN vor vollständiger EN-Abnahme separat prüfen.",
       "blockers": [
         "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
         "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
@@ -1171,6 +1171,11 @@
           "path": "dropship/codex-handoff-20261018/BEWERTUNGSSTERNE-20261101.json",
           "gitBlobSha": "7013b04c6b96a9fc67556f009e65cf9add17b71e",
           "readAt": "2026-11-01T14:29:53Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITE-MEHR-AUSWAHL-20261101.json",
+          "gitBlobSha": "8443e6790b0cc0cb4d7be0d5e20133ca053aeac4",
+          "readAt": "2026-11-01T15:01:42Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1264,6 +1269,27 @@
             "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
             "Begrenzte native Startseiten-/Wiedergabeprüfung, kein vollständiger Checkout-/EDM-Test. Externe Skriptfehler unter Nicht-GET-Prüfblockade separat dokumentiert."
           ]
+        },
+        {
+          "at": "2026-11-01T15:01:42Z",
+          "sourceRevision": 28,
+          "previousLastEvidence": "Auf «bewertung fehlen sterne bei prpdukt» fünf neutrale leere SVG-Sterne für bestätigten Nullstand ergänzt; Text Noch keine Bewertungen bleibt. Kristallset 15408458006913 gezielt nativ geprüft: Rating/Count/Judge-Badge alle null, deshalb ausdrücklich unbekannt und nur im Homepage-Opt-in leere dekorative Sterne mit Bewertungen nicht verfügbar. Keine Nullbewertung, Stimme oder Durchschnitt erfunden. Placeholder nur bei exakter gültiger Produkt-ID und vier expliziten null-Rohfeldern; fehlerhafte Daten/ID weiter verborgen, PDP-Zero-only weiter strikt. Echte gefüllte Bewertungen/Anzahl unverändert, Legacy-Doppelung weiter entfernt. Vier UI-Dateien im UNPUBLISHED exakt zurückgelesen; 17 isolierte und 15 native Prüfungen grün, zwölf Trendkarten auf 360/390/1440 ohne Überlauf sowie PDP/echt bewertetes Produkt geprüft. MAIN unverändert; kein Publish oder Reviewdatenwrite. R26/R27-Stände erhalten.",
+          "previousState": "umgesetzt_vorschau_technisch_blockiert",
+          "previousNextAllowedStep": "Geprüften R26-Gesamtstand und ergänzende R27-Schrift-/R28-Stern-Diffs mit legitimem MAIN-Zugang öffentlich integrieren und mobil/Desktop gegenprüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung für dieselbe Arbeit anfordern. EN vor vollständiger EN-Abnahme separat prüfen.",
+          "previousBlockers": [
+            "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
+            "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
+            "Begrenzte native Startseiten-/Wiedergabeprüfung, kein vollständiger Checkout-/EDM-Test. Externe Skriptfehler unter Nicht-GET-Prüfblockade separat dokumentiert."
+          ]
+        }
+      ],
+      "followUpFindings": [
+        {
+          "at": "2026-11-01T15:01:42Z",
+          "productId": "gid://shopify/Product/15412959773057",
+          "finding": "Diffuser title versus 30ml essential-oil bottle in featured image; exact variant/image assignment unresolved",
+          "state": "excluded_from_new_placement_not_fixed",
+          "sourcePath": "dropship/codex-handoff-20261018/STARTSEITE-MEHR-AUSWAHL-20261101.json"
         }
       ]
     },
@@ -2186,6 +2212,17 @@
         "path": "dropship/codex-handoff-20261018/BEWERTUNGSSTERNE-20261101.json",
         "gitBlobSha": "7013b04c6b96a9fc67556f009e65cf9add17b71e",
         "readAt": "2026-11-01T14:29:53Z"
+      }
+    },
+    {
+      "revision": 29,
+      "at": "2026-11-01T15:01:42Z",
+      "actor": "codex",
+      "action": "Startseite auf bestätigten Inhaberwunsch um zwei Produktbereiche mit drei Schmuckartikeln und zwei Wohnartikeln sowie Winter-/Weihnachts-Einstieg erweitert. Echte Fotos, dynamische CHF-Preise, exakte Produkt-/Reviewbindung und mobile einreihige Wischansicht. Vier einzigartige UNPUBLISHED-Dateien final exakt zurückgelesen; nach 29 Basischecks einen im visuellen Review gefundenen Desktop-Bildcrop eng korrigiert und 17 native Geometrie-/Regressionstests bestanden. Anhänger vollständig sichtbar bestätigt. Bestehende zwölf Trends, 16 Kategorien, eine Selbstgestalten-Collage und Websitevideo erhalten; MAIN unverändert, kein Publish. Alle 16 Aufgaben/Historien, Kaufziel ERREICHT und bestehender Zeitplan erhalten; keine neuen Tagesreports oder Kauf-Watch-Abfragen.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/STARTSEITE-MEHR-AUSWAHL-20261101.json",
+        "gitBlobSha": "8443e6790b0cc0cb4d7be0d5e20133ca053aeac4",
+        "readAt": "2026-11-01T15:01:42Z"
       }
     }
   ],
