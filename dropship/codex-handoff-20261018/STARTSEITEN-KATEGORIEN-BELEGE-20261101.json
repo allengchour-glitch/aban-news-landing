@@ -1,0 +1,1517 @@
+{
+  "at": "2026-11-01 11:56:47 UTC",
+  "brand": "luxestyle.ch",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "preview": {
+    "id": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED",
+    "url": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit#lx-worlds"
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/212656488839",
+    "role": "MAIN",
+    "indexChecksum": "a9d04458df414293c4aed775fe98d063",
+    "indexChecksumUnchanged": true
+  },
+  "categories": [
+    {
+      "id": "gid://shopify/Collection/688427434369",
+      "handle": "selbst-gestalten-1",
+      "title": "Selbst gestalten",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/ex-tshirt-paint.png?v=1781011979",
+      "adminProductsCount": 39,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/687524381057",
+      "handle": "damen-mode",
+      "title": "Damen-Mode",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377",
+      "adminProductsCount": 12881,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/687522283905",
+      "handle": "fur-ihn",
+      "title": "Herren-Mode",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pexels-photo-1407846.jpg?v=1788591376",
+      "adminProductsCount": 4106,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688564437377",
+      "handle": "sub-baby-kids",
+      "title": "Kinder & Baby",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-sub-baby-kids.jpg?v=1792998390",
+      "adminProductsCount": 4520,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688018162049",
+      "handle": "schuhe",
+      "title": "Schuhe",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831",
+      "adminProductsCount": 5230,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688563880321",
+      "handle": "sub-taschen",
+      "title": "Taschen & Rucksäcke",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169",
+      "adminProductsCount": 3883,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/755392840071",
+      "handle": "schmuck",
+      "title": "Schmuck",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-schmuck.jpg?v=1792997986",
+      "adminProductsCount": 2653,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688930062721",
+      "handle": "uhren",
+      "title": "Uhren",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8431777726558_0_P02.jpg?v=1781880273",
+      "adminProductsCount": 4226,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/689027416449",
+      "handle": "beauty-pflege",
+      "title": "Beauty & Pflege",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554",
+      "adminProductsCount": 7048,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/687522775425",
+      "handle": "wohnen-dekoration",
+      "title": "Wohnen & Dekoration",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+      "adminProductsCount": 4469,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688564535681",
+      "handle": "sub-kueche",
+      "title": "Küche & Kochen",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258",
+      "adminProductsCount": 3966,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/689681006977",
+      "handle": "elektronik-technik",
+      "title": "Elektronik & Technik",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387",
+      "adminProductsCount": 6018,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/687966814593",
+      "handle": "gaming",
+      "title": "Gaming",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4719512132081_M0311582_P00.jpg?v=1781640717",
+      "adminProductsCount": 731,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/689884037505",
+      "handle": "hundewelt",
+      "title": "Hundewelt",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642",
+      "adminProductsCount": 2681,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/688725197185",
+      "handle": "sport-outdoor",
+      "title": "Sport & Outdoor",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3660576051812_R00.jpg?v=1781640722",
+      "adminProductsCount": 2831,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    },
+    {
+      "id": "gid://shopify/Collection/687793897857",
+      "handle": "premium-geschenke",
+      "title": "Geschenkideen & Weihnachtsgeschenke",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+      "adminProductsCount": 389,
+      "adminProductsCountMeaning": "not storefront offer or stock count; not displayed"
+    }
+  ],
+  "files": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeSourceSha256": "062c8ce1d0a5c2345dbc511c70ce103905c4801f944e23f503b0347800d1d34c",
+      "afterSourceSha256": "4f7ba927c67f506b2906c1a44ddeae6e46d505205674c7f25a55214b0704698a",
+      "nativeMd5": "0936ef640a00e734ed6c68ce195df0fa",
+      "exactReadback": true
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "beforeSourceSha256": "5863c55d0dc06be5e61e9f926c28a1bd0b79235be87327aacd4a166513c12e43",
+      "afterSourceSha256": "68b7558438751bb0ff12ea7593b4facb6250f0a95451af413a4fd898c4583d4d",
+      "nativeMd5": "4dbb84e9bf42fd7e3249c1a2f4e0ca08",
+      "exactReadback": true
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeSourceSha256": "022d20a125acad6557f70df65c9879e5015955a888ef18c6cbf62f426502ea10",
+      "afterSourceSha256": "d00058fecef0c02dab0c631cf70a879e5c8c34039afd4ed20b9071e3aabf0a65",
+      "nativeMd5": "e613ab3b80e8d835186db9da48dd5d8a",
+      "exactReadback": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeSourceSha256": "cbd93e6055f480746b2b973f671e0a8f3f10ac9d99b03f7ae33618402ed17e68",
+      "afterSourceSha256": "6c3699c6d9d176ae00f62fbbd6a535a3b217332ccb26929c7d6cbd1e0b27a476",
+      "nativeMd5": "9c1c4025919920792bd01729c9980b14",
+      "exactReadback": true
+    }
+  ],
+  "videoJsUnchanged": true,
+  "review": "Independent read-only review found no blocking source issue. Native test caught literal &amp; from redundant escaping; translation rendering corrected. Owner then asked for written word, six DE labels now und, EN and.",
+  "validation": {
+    "chunk_id": "89deb0",
+    "wall_time_seconds": 2.3556e-05,
+    "exit_code": 0,
+    "original_token_count": 597,
+    "output": "Failed to setup with the following error: request to https://raw.githubusercontent.com/Shopify/theme-liquid-docs/main/data/latest.json failed, reason: \nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/manifest_theme.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/translations.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/section.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/setting.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/default_setting_values.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/app_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/targetted_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset_blocks.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/local_block_entry.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/tags.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/filters.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/objects.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/shopify_system_translations.json\n{\"success\":true,\"responses\":[{\"result\":\"inform\",\"resultDetail\":\"sections/luxe-edit-home.liquid passed all checks (with non-error findings):\\nWARNING [line 25, col 14]: Asset should be served by the Shopify CDN for better performance.\",\"artifactId\":\"luxestyle-home-categories-20261101\",\"artifactRevision\":2},{\"result\":\"success\",\"resultDetail\":\"assets/luxe-edit.css passed all checks.\",\"artifactId\":\"luxestyle-home-categories-20261101\",\"artifactRevision\":2},{\"result\":\"success\",\"resultDetail\":\"locales/de.json passed all checks.\",\"artifactId\":\"luxestyle-home-categories-20261101\",\"artifactRevision\":2},{\"result\":\"success\",\"resultDetail\":\"locales/en.default.json passed all checks.\",\"artifactId\":\"luxestyle-home-categories-20261101\",\"artifactRevision\":2}]}\n"
+  },
+  "readbackIncident": "Some first CSS/locale bodies were stale while checksums already current. Fresh re-read confirmed all four exact; no blind retry write.",
+  "scope": "Four UNPUBLISHED theme files only. No new collections or products, prices, feeds, flow, DNS, ads, social, master renders or production deployment. Daily reports and ended purchase watch not repeated.",
+  "qa": {
+    "at": "2026-11-01T11:55:35.947665+00:00",
+    "scope": "Actual native preview; no document/CSS/JS replacements. Non-GET/HEAD blocked.16 exact category destinations only.",
+    "checks": [
+      {
+        "name": "Native HTTP200",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Correct preview theme",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Exactly16 selected categories",
+        "pass": true,
+        "evidence": [
+          {
+            "handle": "selbst-gestalten-1",
+            "href": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "label": "Selbst gestalten"
+          },
+          {
+            "handle": "damen-mode",
+            "href": "/collections/damen-mode",
+            "label": "Damenmode"
+          },
+          {
+            "handle": "fur-ihn",
+            "href": "/collections/fur-ihn",
+            "label": "Herrenmode"
+          },
+          {
+            "handle": "sub-baby-kids",
+            "href": "/collections/sub-baby-kids",
+            "label": "Kinder und Baby"
+          },
+          {
+            "handle": "schuhe",
+            "href": "/collections/schuhe",
+            "label": "Schuhe"
+          },
+          {
+            "handle": "sub-taschen",
+            "href": "/collections/sub-taschen",
+            "label": "Taschen und Rucksäcke"
+          },
+          {
+            "handle": "schmuck",
+            "href": "/collections/schmuck",
+            "label": "Schmuck"
+          },
+          {
+            "handle": "uhren",
+            "href": "/collections/uhren",
+            "label": "Uhren"
+          },
+          {
+            "handle": "beauty-pflege",
+            "href": "/collections/beauty-pflege",
+            "label": "Beauty und Pflege"
+          },
+          {
+            "handle": "wohnen-dekoration",
+            "href": "/collections/wohnen-dekoration",
+            "label": "Wohnen und Deko"
+          },
+          {
+            "handle": "sub-kueche",
+            "href": "/collections/sub-kueche",
+            "label": "Küche und Kochen"
+          },
+          {
+            "handle": "elektronik-technik",
+            "href": "/collections/elektronik-technik",
+            "label": "Elektronik"
+          },
+          {
+            "handle": "gaming",
+            "href": "/collections/gaming",
+            "label": "Gaming"
+          },
+          {
+            "handle": "hundewelt",
+            "href": "/collections/hundewelt",
+            "label": "Hundewelt"
+          },
+          {
+            "handle": "sport-outdoor",
+            "href": "/collections/sport-outdoor",
+            "label": "Sport und Outdoor"
+          },
+          {
+            "handle": "premium-geschenke",
+            "href": "/collections/premium-geschenke",
+            "label": "Geschenkideen"
+          }
+        ]
+      },
+      {
+        "name": "No duplicate category targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Kids, men, gaming and dogs visible in category choices",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Selfdesign custom view retained",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Written und instead of entity literals",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "360px no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "360px expected category columns",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "360px labels fit",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "360px large touch targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "360px16 real category images loaded",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "390px no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "390px expected category columns",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "390px labels fit",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "390px large touch targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "390px16 real category images loaded",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "760px no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "760px expected category columns",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "760px labels fit",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "760px large touch targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "760px16 real category images loaded",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1024px no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1024px expected category columns",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1024px labels fit",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1024px large touch targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1024px16 real category images loaded",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1440px no horizontal overflow",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1440px expected category columns",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1440px labels fit",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1440px large touch targets",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "1440px16 real category images loaded",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Category card keyboard focus",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Existing title video and poster still present",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Existing reduced-motion pause retained",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Existing bottom search opens",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "Existing search focus restored",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "No Liquid or translation-missing errors",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "16 exact collection targets return200",
+        "pass": true,
+        "evidence": [
+          {
+            "link": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten"
+          },
+          {
+            "link": "/collections/damen-mode",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/damen-mode"
+          },
+          {
+            "link": "/collections/fur-ihn",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/fur-ihn"
+          },
+          {
+            "link": "/collections/sub-baby-kids",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/sub-baby-kids"
+          },
+          {
+            "link": "/collections/schuhe",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/schuhe"
+          },
+          {
+            "link": "/collections/sub-taschen",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/sub-taschen"
+          },
+          {
+            "link": "/collections/schmuck",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/schmuck"
+          },
+          {
+            "link": "/collections/uhren",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/uhren"
+          },
+          {
+            "link": "/collections/beauty-pflege",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/beauty-pflege"
+          },
+          {
+            "link": "/collections/wohnen-dekoration",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration"
+          },
+          {
+            "link": "/collections/sub-kueche",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/sub-kueche"
+          },
+          {
+            "link": "/collections/elektronik-technik",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/elektronik-technik"
+          },
+          {
+            "link": "/collections/gaming",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/gaming"
+          },
+          {
+            "link": "/collections/hundewelt",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/hundewelt"
+          },
+          {
+            "link": "/collections/sport-outdoor",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/sport-outdoor"
+          },
+          {
+            "link": "/collections/premium-geschenke",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/premium-geschenke"
+          }
+        ]
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "columns": 2,
+        "cards": [
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 151,
+            "h": 86,
+            "textOverflow": false
+          }
+        ],
+        "images": [
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120"
+          }
+        ],
+        "heading": "Schön leben.\nSchlau shoppen."
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "columns": 2,
+        "cards": [
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 166,
+            "h": 86,
+            "textOverflow": false
+          }
+        ],
+        "images": [
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120"
+          }
+        ],
+        "heading": "Schön leben.\nSchlau shoppen."
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "columns": 2,
+        "cards": [
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          },
+          {
+            "w": 351,
+            "h": 86,
+            "textOverflow": false
+          }
+        ],
+        "images": [
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120"
+          }
+        ],
+        "heading": "Schön leben.\nSchlau shoppen."
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "columns": 3,
+        "cards": [
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 301.28125,
+            "h": 112,
+            "textOverflow": false
+          }
+        ],
+        "images": [
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120"
+          }
+        ],
+        "heading": "Dein Raum.\nDein Moment."
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "columns": 4,
+        "cards": [
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.09375,
+            "h": 112,
+            "textOverflow": false
+          },
+          {
+            "w": 317.109375,
+            "h": 112,
+            "textOverflow": false
+          }
+        ],
+        "images": [
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=120"
+          },
+          {
+            "loaded": true,
+            "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120"
+          }
+        ],
+        "heading": "Dein Raum.\nDein Moment."
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 66,
+    "links": [
+      {
+        "handle": "selbst-gestalten-1",
+        "href": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "label": "Selbst gestalten"
+      },
+      {
+        "handle": "damen-mode",
+        "href": "/collections/damen-mode",
+        "label": "Damenmode"
+      },
+      {
+        "handle": "fur-ihn",
+        "href": "/collections/fur-ihn",
+        "label": "Herrenmode"
+      },
+      {
+        "handle": "sub-baby-kids",
+        "href": "/collections/sub-baby-kids",
+        "label": "Kinder und Baby"
+      },
+      {
+        "handle": "schuhe",
+        "href": "/collections/schuhe",
+        "label": "Schuhe"
+      },
+      {
+        "handle": "sub-taschen",
+        "href": "/collections/sub-taschen",
+        "label": "Taschen und Rucksäcke"
+      },
+      {
+        "handle": "schmuck",
+        "href": "/collections/schmuck",
+        "label": "Schmuck"
+      },
+      {
+        "handle": "uhren",
+        "href": "/collections/uhren",
+        "label": "Uhren"
+      },
+      {
+        "handle": "beauty-pflege",
+        "href": "/collections/beauty-pflege",
+        "label": "Beauty und Pflege"
+      },
+      {
+        "handle": "wohnen-dekoration",
+        "href": "/collections/wohnen-dekoration",
+        "label": "Wohnen und Deko"
+      },
+      {
+        "handle": "sub-kueche",
+        "href": "/collections/sub-kueche",
+        "label": "Küche und Kochen"
+      },
+      {
+        "handle": "elektronik-technik",
+        "href": "/collections/elektronik-technik",
+        "label": "Elektronik"
+      },
+      {
+        "handle": "gaming",
+        "href": "/collections/gaming",
+        "label": "Gaming"
+      },
+      {
+        "handle": "hundewelt",
+        "href": "/collections/hundewelt",
+        "label": "Hundewelt"
+      },
+      {
+        "handle": "sport-outdoor",
+        "href": "/collections/sport-outdoor",
+        "label": "Sport und Outdoor"
+      },
+      {
+        "handle": "premium-geschenke",
+        "href": "/collections/premium-geschenke",
+        "label": "Geschenkideen"
+      }
+    ],
+    "targetHeads": [
+      {
+        "link": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten"
+      },
+      {
+        "link": "/collections/damen-mode",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/damen-mode"
+      },
+      {
+        "link": "/collections/fur-ihn",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/fur-ihn"
+      },
+      {
+        "link": "/collections/sub-baby-kids",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/sub-baby-kids"
+      },
+      {
+        "link": "/collections/schuhe",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/schuhe"
+      },
+      {
+        "link": "/collections/sub-taschen",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/sub-taschen"
+      },
+      {
+        "link": "/collections/schmuck",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/schmuck"
+      },
+      {
+        "link": "/collections/uhren",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/uhren"
+      },
+      {
+        "link": "/collections/beauty-pflege",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/beauty-pflege"
+      },
+      {
+        "link": "/collections/wohnen-dekoration",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration"
+      },
+      {
+        "link": "/collections/sub-kueche",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/sub-kueche"
+      },
+      {
+        "link": "/collections/elektronik-technik",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/elektronik-technik"
+      },
+      {
+        "link": "/collections/gaming",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/gaming"
+      },
+      {
+        "link": "/collections/hundewelt",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hundewelt"
+      },
+      {
+        "link": "/collections/sport-outdoor",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/sport-outdoor"
+      },
+      {
+        "link": "/collections/premium-geschenke",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/premium-geschenke"
+      }
+    ],
+    "unchangedTargetHeadsReusedFrom": "2026-11-01T11:54:22.757373+00:00",
+    "passed": true,
+    "failed": []
+  },
+  "heroSourcePrefixUnchanged": true,
+  "screenshots": [
+    {
+      "file": "categories-1440.png",
+      "sha256": "7801f385a3493fe5f3058a82a88da1d0898f02c051d8799407ea558f953d463c",
+      "localOnly": true
+    },
+    {
+      "file": "categories-390.png",
+      "sha256": "516ba3968dc6509f00e024120db20ac3bfa8eee9bab784f769b880d3d3ee4f8e",
+      "localOnly": true
+    }
+  ]
+}
