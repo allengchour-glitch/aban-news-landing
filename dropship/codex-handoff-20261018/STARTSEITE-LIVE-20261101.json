@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "taskId": "homepage-redesign-20261029",
+  "revision": 31,
+  "at": "2026-11-01T15:49:32Z",
+  "timezone": "Europe/Zurich",
+  "publicationActor": "Inhaber meldete Veröffentlichung; Codex führte ausschliesslich die nachträgliche Prüfung aus.",
+  "url": "https://luxestyle.ch/",
+  "themeId": "212967981447",
+  "name": "LuxeStyle – Neue Startseite 01.11.2026",
+  "state": "MAIN_PUBLIC_VERIFIED",
+  "admin": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "live": {
+      "id": "gid://shopify/OnlineStoreTheme/212967981447",
+      "name": "LuxeStyle – Neue Startseite 01.11.2026",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "f1c54db12521b00961267d6b5220817b"
+          },
+          {
+            "filename": "config/settings_data.json",
+            "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+          },
+          {
+            "filename": "layout/theme.liquid",
+            "checksumMd5": "f5da6f2a959ffe1b8e472548070cd6b1"
+          },
+          {
+            "filename": "sections/footer-group.json",
+            "checksumMd5": "368187170859033dc70fce5fa332ce27"
+          },
+          {
+            "filename": "sections/header-group.json",
+            "checksumMd5": "3c89401fc24ef0d331d4d0f4eb0adf1c"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "01c5e9899d1d6e720564ef2d7b4ee9ed"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "6927c86886a14d418e4ab5ff7b45b9e4"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      },
+      "index": {
+        "nodes": [
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "6927c86886a14d418e4ab5ff7b45b9e4",
+            "body": {
+              "content": "/*\n * ------------------------------------------------------------\n * IMPORTANT: The contents of this file are auto-generated.\n *\n * This file may be updated by the Shopify admin theme editor\n * or related systems. Please exercise caution as any changes\n * made to this file may be overwritten.\n * ------------------------------------------------------------\n */\n{\n  \"sections\": {\n    \"luxe_home\": {\n      \"type\": \"luxe-edit-home\",\n      \"settings\": {}\n    }\n  },\n  \"order\": [\n    \"luxe_home\"\n  ]\n}\n"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "previous": {
+      "id": "gid://shopify/OnlineStoreTheme/212752499079",
+      "role": "UNPUBLISHED"
+    }
+  },
+  "publicQA": {
+    "at": "2026-11-01T15:48:11.138154+00:00",
+    "url": "https://luxestyle.ch/",
+    "scope": "Public anonymous root, no preview/view, no overrides; non-GET/HEAD blocked",
+    "checks": [
+      {
+        "name": "Public root HTTP200 and intended live theme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px public page without preview bar",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px one heading and native page structure",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px new homepage content visible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no overflow/account destination retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px cookie buttons accessible on public page",
+        "pass": true,
+        "data": {
+          "top": 891.5,
+          "bottom": 984,
+          "limit": 1000,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "360px public page without preview bar",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px one heading and native page structure",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px new homepage content visible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px no overflow/account destination retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px cookie buttons accessible on public page",
+        "pass": true,
+        "data": {
+          "top": 653,
+          "bottom": 698,
+          "limit": 710,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "Five product photos and review IDs intact on public homepage",
+        "pass": true,
+        "data": [
+          {
+            "id": "15412902756737",
+            "reviewId": "15412902756737",
+            "price": "CHF 44.90",
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "id": "15412902789505",
+            "reviewId": "15412902789505",
+            "price": "CHF 14.90",
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "id": "15501005226369",
+            "reviewId": "15501005226369",
+            "price": "CHF 15.90",
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "id": "15412960592257",
+            "reviewId": "15412960592257",
+            "price": "CHF 24.90",
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "id": "16654281408903",
+            "reviewId": "16654281408903",
+            "price": "CHF 104.90",
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          }
+        ]
+      },
+      {
+        "name": "Native search opens and Escape closes publicly",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Public existing video plays muted inline",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Public video pauses on request",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "width": 1440,
+        "theme": {
+          "name": "LuxeStyle – Neue Startseite 01.11.2026",
+          "id": 212967981447,
+          "schema_name": "Horizon",
+          "schema_version": "3.5.1",
+          "theme_store_id": 2481,
+          "role": "main",
+          "handle": "null",
+          "style": {
+            "id": null,
+            "handle": null
+          }
+        },
+        "overflow": false,
+        "main": 1,
+        "heading": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "nativeHeader": 1,
+        "nativeFooter": 1,
+        "extraHeader": 0,
+        "extraFooter": 0,
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "previewBar": false,
+        "previewInset": "",
+        "canonical": "https://luxestyle.ch/",
+        "robots": [],
+        "poster": 720,
+        "account": true,
+        "cookie": {
+          "top": 891.5,
+          "bottom": 984,
+          "limit": 1000,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "width": 360,
+        "theme": {
+          "name": "LuxeStyle – Neue Startseite 01.11.2026",
+          "id": 212967981447,
+          "schema_name": "Horizon",
+          "schema_version": "3.5.1",
+          "theme_store_id": 2481,
+          "role": "main",
+          "handle": "null",
+          "style": {
+            "id": null,
+            "handle": null
+          }
+        },
+        "overflow": false,
+        "main": 1,
+        "heading": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "nativeHeader": 1,
+        "nativeFooter": 1,
+        "extraHeader": 0,
+        "extraFooter": 0,
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "previewBar": false,
+        "previewInset": "0px",
+        "canonical": "https://luxestyle.ch/",
+        "robots": [],
+        "poster": 720,
+        "account": true,
+        "cookie": {
+          "top": 653,
+          "bottom": 698,
+          "limit": 710,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 68,
+    "passed": true
+  },
+  "independentMobile": {
+    "checkedAtUTC": "2026-11-01T15:47:57.647372+00:00",
+    "requestedUrl": "https://luxestyle.ch/",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "blockedNonRead": 56,
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "httpStatus": 200,
+    "observation": {
+      "url": "https://luxestyle.ch/",
+      "theme": {
+        "name": "LuxeStyle – Neue Startseite 01.11.2026",
+        "id": 212967981447,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main",
+        "handle": "null",
+        "style": {
+          "id": null,
+          "handle": null
+        }
+      },
+      "homeCount": 1,
+      "categoryCount": 16,
+      "trendsCount": 12,
+      "extraProductCount": 5,
+      "mainCount": 1,
+      "nativeHeaderCount": 1,
+      "customHeaderCount": 0,
+      "previewBarPresent": false,
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "h1": [
+        "Schön leben.\nSchlau shoppen."
+      ],
+      "visibleErrors": [],
+      "hero": {
+        "top": 208,
+        "bottom": 772,
+        "width": 358,
+        "height": 564
+      },
+      "video": {
+        "exists": true,
+        "paused": true,
+        "readyState": 0,
+        "hasSource": false
+      },
+      "playButtonText": "Video abspielen",
+      "cookie": {
+        "top": 717,
+        "bottom": 762,
+        "width": 390,
+        "height": 45
+      },
+      "bottomNav": {
+        "top": 774,
+        "bottom": 844,
+        "width": 390,
+        "height": 70
+      },
+      "cookieButtons": [
+        {
+          "label": "Nur notwendige",
+          "hit": true
+        },
+        {
+          "label": "Alle akzeptieren",
+          "hit": true
+        }
+      ],
+      "visibleBrokenImages": []
+    }
+  },
+  "scope": "Native Admingegenprobe und öffentliche anonyme Browserprüfung ohne preview_theme_id/view; keine Theme-Writes oder Publish-Mutation.",
+  "limits": [
+    "Keine vollständige EN-, Checkout-, Zahlungs- oder App-Abnahme",
+    "Externe Failed-to-fetch-Meldungen unter blockierten Nicht-GET/HEAD-Anfragen; keine globale Fehlerfreiheit behauptet",
+    "Bekannter identischer Parserbefund des vollständigen alten Layoutvalidators bleibt separat dokumentiert; geprüfte Änderungen und Live-Laufzeit belegt",
+    "Keine erneuten Tageskennzahlen/Flows/Kauf-Watch-Abfragen; keine Ableitung von Käufen aus dieser Veröffentlichung",
+    "Professioneller Produktfilm-Master bleibt separat blockiert; bestehendes Websitevideo kein neuer Produktmaster"
+  ],
+  "screenshots": [
+    "PUBLIC-1440.png",
+    "PUBLIC-360.png",
+    "agent-mobile.png"
+  ],
+  "nextStep": "Öffentlichen Stand als bestätigte Grundlage erhalten. Weitere Theme-Anpassungen in separatem UNPUBLISHED-Entwurf prüfen; EN vor vollständiger EN-Abnahme separat kontrollieren. Bestehende Aufgaben und Prüfzeiten unverändert."
+}
