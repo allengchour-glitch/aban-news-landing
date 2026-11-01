@@ -1,12 +1,12 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
-## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 34
+## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 35
 
-[Aktuelle Fortsetzungsbelege](FORTSETZUNG-20261101-R34.json) · [Datierte Übergabe R33](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json).
+[Sticker-/Originalvarianten-Belege](STICKER-ORIGINALVARIANTEN-20261101.json) · [Datierte Übergabe R33](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json).
 
-Aktueller Stand: Startseite 212967981447 ist MAIN/öffentlich; im bestehenden UNPUBLISHED 212971061639 sind Bewertungen und jetzt französische Startseiten-UI samt sprachbewussten Links geprüft. 208 FR-Werte ergänzt, 300 bestehende erhalten; genau zwei neue Dateiwrites, kein Publish. Beide früheren Schema-Korrekturen inzwischen öffentlich verifiziert, Google-Akzeptanz unbekannt. Ein konkreter Merchant-Quellencheck scheiterte mit Timeout, kein Retry/Feedwrite. [Arbeitsstand](ARBEITSSTAND.json) führt 16 stabile Aufgaben fort; übrige 12 Aufgaben/Historien und erfüllter Kauf-Watch unverändert.
+Bewertungs-/FR-Theme 212971061639 ist inzwischen MAIN und öffentlich DE/FR gegengeprüft, kein eigener Publish. Neue Sticker-UI liegt in der davon abgeleiteten UNPUBLISHED-Kopie 212978598279: direkter Einstieg, Aufkleber-Suche, vollständiger Reset, Originalvariantenanzahl und ehrliche Herstelleroptionsreferenz. Fünf Dateien nativ bestätigt. Fünf Stickerarten mit 17 Originalvarianten; die Herstellerkategorie enthält zusätzlich drei Magnetvarianten. Bestehendes Kiss-Cut-Shopprodukt hat vier belegte CHF-Angebote, die übrigen fünf Kategorieprodukte keine Shopzuordnung. 572 Modelle / 13’160 Varianten stimmen mit datierten Rohquellen überein (253 Quellen 01.11., 319 vom 29.10.); kein vollständig kaufbarer Shop oder aktueller globaler API-Scan behauptet.
 
-Lokaler Quellenstand: `memory/snapshots/2026-11-01-r34/` mit `memory/AKTUELL.md`. R33-Übergabe, R4 und ältere Snapshots bleiben datierte Originale; echte Claude-Kenntnisnahme unbekannt. Vor jedem Lauf vier kanonische Dateien frisch lesen. Keine zusätzlichen Tagesreports/Kauf-Watch-Abfragen oder Änderung der bestehenden Automationsfrequenz. Die folgenden datierten Abschnitte bleiben Historie und sind keine heutigen Statusbehauptungen.
+Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r35/` führen 16 Aufgaben fort, davon zwei aktualisiert. Vierzehn Tasks, Historien, Kauf-Watch-Ende und bestehende Tagesgrenzen bleiben erhalten. Vor jedem Lauf vier kanonische Dateien frisch lesen; R33/R4 bleiben datierte Originale, tatsächlicher Claude-Empfang unbekannt. Keine neue Automation oder Frequenzänderung. Nachfolgende ältere Abschnitte sind historische Belege.
 
 Eingerichtet auf den ausdrücklichen Inhaberauftrag vom 28.10.2026: «installiere ein gehirn … selbstständig … für dieses projekt». Zweck: in bestehenden Läufen belegten Fortschritt fortsetzen, Entscheidungen wiederfinden und Doppelarbeit vermeiden. Claude koordiniert; Codex bearbeitet selbstständig die bereits erlaubten Schritte. Dieses Dokument ist ein Arbeitsindex, keine zusätzliche Geschäftsfreigabe und kein laufender Agentendienst.
 
@@ -273,3 +273,7 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Fortsetzung, Revision 34
 
 [Beleg](FORTSETZUNG-20261101-R34.json): Französische Startseiten-UI und sprachbewusste Links im vorhandenen Bewertungsentwurf ergänzt und FR/DE nativ geprüft; Veröffentlichung bleibt im Shopify-Admin. Zwei ältere Schema-Diffs jetzt als bereits öffentlich verifiziert nachgeführt, ohne eigene Publikationsbehauptung. Exakter Merchant-Quellencheck mit Timeout unbekannt; keine Wiederholung oder Feedänderung. Vier Aufgaben fortgeschrieben, 12 unverändert. R33/R4 und Historie erhalten; R34-Quellenspiegel ist Dokumentationspflege und kein Claude-Empfangsbeleg.
+
+## 01.11.2026 – Sticker und Originalvarianten, Revision 35
+
+[Beleg](STICKER-ORIGINALVARIANTEN-20261101.json): vorhandene Sticker waren verschachtelt, deutsches Suchwort Aufkleber traf bisher nichts. Im neuen aktuellen MAIN-Duplikat den Einstieg und die Originalvariantenanzeige verbessert; Rohdaten/Preise/Zuordnungen nicht geändert. Bewertungs-/FR-Startseite inzwischen öffentlich bestätigt. Neue Sticker-UI bleibt Entwurf, keine eigene Veröffentlichung oder vollständige kaufbare Printful-Übernahme. Zwei Aufgaben und heutigen Tagesblock fortgeschrieben; alle übrigen Aufgaben, Grenzen und Quellen erhalten.
