@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 38,
-  "updatedAt": "2026-11-01T19:05:01Z",
+  "revision": 39,
+  "updatedAt": "2026-11-01T19:26:54.216763Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -831,9 +831,9 @@
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSENE_PLANUNG_UND_MATERIALBLOCKER_KEIN_WRITE",
-      "lastEvidence": "Auf Inhaberwunsch eine Woche mit passenden Produkten vorauszuplanen Shop luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanalidentitäten frisch bestätigt. Rollendes Siebentagefenster ab 01.11.19:58:47 Zürich enthält dieselben sieben Planobjekte wie R36, je Facebook/Instagram PENDING, insgesamt 14 Kanalzustände. Keine exakten Medien-/Text-/Slotdoppel oder Änderungen in geprüften Feldern. Bereits ein bestehender Termin pro Datum 02.–08.11.; keine eigenen neuen Termine, Updates oder Publikationen. Vorhandene Bildposts durch diesen Abruf nicht als qualitäts-/rechtegeprüfte Master freigegeben. Begrenzte Materialprüfung: vier Originaltakes fehlen weiterhin im bekannten unveränderten Manifest, nur alte 960x540/25fps-Referenz nachgewiesen; Ausführung/Filmrechte/fertige Abnahme und dauerhaftes Masterregister unbestätigt. Zusätzliche Foto-/Karussell-Ausnahme ausdrücklich per Frage angefragt, keine Antwort belegt; bisherige Mastervorgabe unverändert. Kein Render/Altclip/Publisher/Registrywrite und keine neue Kennzahl-/Flow-/Bestellabfrage.",
-      "nextAllowedStep": "Bestehende sieben Termine erhalten und keine Doppelposts erzeugen. Ausstehende Inhaberantwort zur zusätzlichen Foto-/Karussellform beachten; Schweigen/vorausgewählte UI-Option ist keine Formatfreigabe. Ohne explizite Änderung gelten weiterhin professionelle freigegebene Master-MP4s und fehlende Originaltakes/Rechte/Register als Blocker. Bei erlaubtem anderem Format vor jedem konkreten Push Produkt/Tags/Bilder/kommerzielle Rechte/Kanaldaten/Diff/Queue frisch belegen; keine ungeprüften bestehenden Bildposts pauschal aktivieren oder ersetzen.",
+      "belegArt": "EIGENER_FOTOTERMIN_KANALBEZOGEN_BESTAETIGT_FILM_BLOCKIERT",
+      "lastEvidence": "Inhaber hat Foto-/Karussellposts zusätzlich für diese Wochenplanung erlaubt und danach genau Kosmetik-Organizer/Threads samt engem Erstregister ausdrücklich freigegeben. Shop luxestyle.ch/CHF, Metricool6227837/EuropeZurich und sechs Kanalidentitäten sowie zwei genaue Produkte/Bilder/Tags/Storefront frisch geprüft. Kosmetik-Organizer15408458236289/Variante55732479590785 ACTIVE/CHF29.90, verfügbare Variante, trackedfalse/CONTINUE/Menge0 ohne Lieferzusage. Bildrechtebestätigung23.10. für genau dieses Produkt akzeptiert; JPEG1601x1601 visuell geprüft. Ein eigener neuer Threads-Post413194611/UUID-1937081137064819378 für04.11.18:30Zürich terminiert, exakt frisch zurückgelesen: draftfalse, autoPublishtrue, nurThreadsPENDING. Metricool-JPEG bytegleich zu OriginalSHA73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e. Enger dauerhafter SHA-CAS/Checkpoint-Beleg vorSend und nachAntwort/Rücklesung bestätigt, alteHistorie bleibtunknown. Zwei explizite Eingabe-/400-Zurückweisungen vor einzig erfolgreichem Planobjekt mit Gegenprobe dokumentiert, kein blindes Unknown-Resend. Sieben bestehendeFB/IG-Termine02.–08.11.erhalten. Schubladenfoto wegen ungeprüfter LinerOptions/fremdemBranding ausgeschlossen. IG/TikTokBio und PinterestBoard durch403/unsupported nicht verifizierbar; keine neuenPosts dort. Film-Material-/Ausführungs-/Rechte-/Abnahmeblocker bleiben separat; keine Tagesreports/Kauf-Watch wiederholt.",
+      "nextAllowedStep": "Bestätigten Threads-Termin und bestehendeFB/IG-Posts erhalten. Vor weiterer Aktion dieses Motivs zuerst dauerhaften scoped Registerbeleg anhandUUID lesen; kein neuer Post wegen neuer URL/ID/Prüfung. Fotoformat für dieseWoche sowie konkreterText/engerErstregisterscope sind bereits ausdrücklich genehmigt, nicht erneut fragen. Weitere Fotos brauchen eigene Produkt-/Rechte-/Historien-/Kanalprüfung; IG/TikTokBio und PinterestBoard gezielt belegen. Den einen professionellen Projektorfilm weiter mit echtenOriginaltakes/Ausführung/Filmrechten/Abnahme entwickeln; Fotoausnahme ist keineFilmfreigabe.",
       "blockers": [
         "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
         "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
@@ -936,6 +936,11 @@
           "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
           "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
           "readAt": "2026-11-01T19:05:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FOTO-WOCHENBELEGE-20261101-R39.json",
+          "gitBlobSha": "dc616ccd78b9cfa4d069ce4363c03d5e1c6c15d7",
+          "readAt": "2026-11-01T19:26:54.216763Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1029,6 +1034,26 @@
               "readAt": "2026-11-01T18:14:26Z"
             }
           }
+        },
+        {
+          "at": "2026-11-01T19:26:54.216763Z",
+          "sourceRevision": 38,
+          "previousState": "blockiert",
+          "previousLastEvidence": "Auf Inhaberwunsch eine Woche mit passenden Produkten vorauszuplanen Shop luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanalidentitäten frisch bestätigt. Rollendes Siebentagefenster ab 01.11.19:58:47 Zürich enthält dieselben sieben Planobjekte wie R36, je Facebook/Instagram PENDING, insgesamt 14 Kanalzustände. Keine exakten Medien-/Text-/Slotdoppel oder Änderungen in geprüften Feldern. Bereits ein bestehender Termin pro Datum 02.–08.11.; keine eigenen neuen Termine, Updates oder Publikationen. Vorhandene Bildposts durch diesen Abruf nicht als qualitäts-/rechtegeprüfte Master freigegeben. Begrenzte Materialprüfung: vier Originaltakes fehlen weiterhin im bekannten unveränderten Manifest, nur alte 960x540/25fps-Referenz nachgewiesen; Ausführung/Filmrechte/fertige Abnahme und dauerhaftes Masterregister unbestätigt. Zusätzliche Foto-/Karussell-Ausnahme ausdrücklich per Frage angefragt, keine Antwort belegt; bisherige Mastervorgabe unverändert. Kein Render/Altclip/Publisher/Registrywrite und keine neue Kennzahl-/Flow-/Bestellabfrage.",
+          "previousNextAllowedStep": "Bestehende sieben Termine erhalten und keine Doppelposts erzeugen. Ausstehende Inhaberantwort zur zusätzlichen Foto-/Karussellform beachten; Schweigen/vorausgewählte UI-Option ist keine Formatfreigabe. Ohne explizite Änderung gelten weiterhin professionelle freigegebene Master-MP4s und fehlende Originaltakes/Rechte/Register als Blocker. Bei erlaubtem anderem Format vor jedem konkreten Push Produkt/Tags/Bilder/kommerzielle Rechte/Kanaldaten/Diff/Queue frisch belegen; keine ungeprüften bestehenden Bildposts pauschal aktivieren oder ersetzen.",
+          "previousBelegArt": "GEMESSENE_PLANUNG_UND_MATERIALBLOCKER_KEIN_WRITE",
+          "previousWeeklyPushRequest": {
+            "ownerMessage": "pushe metricool 1 woche lang voraus, mit tollste produkten",
+            "existingCoverage": "Facebook/Instagram 02.–08.11. one existing pending post per day",
+            "newScheduledByCodex": 0,
+            "formatExceptionState": "PENDING_NO_OWNER_ANSWER",
+            "masterOnlyPolicyStillApplies": true,
+            "source": {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
+              "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
+              "readAt": "2026-11-01T19:05:01Z"
+            }
+          }
         }
       ],
       "visualAcceptanceDraft": {
@@ -1060,13 +1085,37 @@
       "weeklyPushRequest": {
         "ownerMessage": "pushe metricool 1 woche lang voraus, mit tollste produkten",
         "existingCoverage": "Facebook/Instagram 02.–08.11. one existing pending post per day",
-        "newScheduledByCodex": 0,
-        "formatExceptionState": "PENDING_NO_OWNER_ANSWER",
-        "masterOnlyPolicyStillApplies": true,
+        "newScheduledByCodex": 1,
+        "formatExceptionState": "OWNER_GRANTED_THIS_WEEK_ONLY",
+        "masterOnlyPolicyStillApplies": false,
         "source": {
-          "path": "dropship/codex-handoff-20261018/METRICOOL-WOCHENPRUEFUNG-20261101-R38.json",
-          "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
-          "readAt": "2026-11-01T19:05:01Z"
+          "path": "dropship/codex-handoff-20261018/FOTO-WOCHENBELEGE-20261101-R39.json",
+          "gitBlobSha": "dc616ccd78b9cfa4d069ce4363c03d5e1c6c15d7",
+          "readAt": "2026-11-01T19:26:54.216763Z"
+        },
+        "filmMasterQualityRulesStillApply": true,
+        "explicitPhotoReply": "Foto-/Karussellposts zusätzlich erlauben"
+      },
+      "photoWeeklySchedule": {
+        "masterId": "luxe_photo_kosmetik_organizer_20261101",
+        "productId": "gid://shopify/Product/15408458236289",
+        "variantId": "gid://shopify/ProductVariant/55732479590785",
+        "network": "threads",
+        "postId": 413194611,
+        "uuid": "-1937081137064819378",
+        "scheduledAt": "2026-11-04T18:30:00+01:00",
+        "timezone": "Europe/Zurich",
+        "confirmedChannelState": "PENDING",
+        "draft": false,
+        "autoPublish": true,
+        "originalAndExportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "registryPath": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+        "registryGitBlobSha": "11c34a27d663a57a8cd6155d6089e034a0e858c2",
+        "registryScope": "Explicit one-creative/brand/Threads firstinitialisation; old history unknown, no reset",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/FOTO-WOCHENBELEGE-20261101-R39.json",
+          "gitBlobSha": "dc616ccd78b9cfa4d069ce4363c03d5e1c6c15d7",
+          "readAt": "2026-11-01T19:26:54.216763Z"
         }
       }
     },
@@ -2905,6 +2954,17 @@
         "gitBlobSha": "20ccee4a4ae0ce89e2f3094b79c4e016d2f9b41c",
         "readAt": "2026-11-01T19:05:01Z"
       }
+    },
+    {
+      "revision": 39,
+      "at": "2026-11-01T19:26:54.216763Z",
+      "actor": "codex",
+      "action": "Fotoformat und konkretenThreads-Inhalt/engenPublikationsbeleg nach ausdrücklichenInhaberantworten umgesetzt. Ein eigener neuer Termin mit UUID/Kanalstatus und tatsächlichemJPEG-SHA frisch bestätigt; siebenFB/IG-Posts erhalten. AndereKanäle anBio/Board/Video gebunden. NurMastertask fortgeschrieben,15andereTasks und16IDs/Historien, Tagesgrenzen, Kauf-Watch-Ende undR37/R5 erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/FOTO-WOCHENBELEGE-20261101-R39.json",
+        "gitBlobSha": "dc616ccd78b9cfa4d069ce4363c03d5e1c6c15d7",
+        "readAt": "2026-11-01T19:26:54.216763Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3074,12 +3134,12 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "39a7d28615b54421144b5db94f8efe77d6278c68",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r38",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r39",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 38,
-    "snapshotNote": "R38 ergänzt Wochenplanprüfung und ausstehende Formatpräzisierung; R37/R5 bleiben aktuelle datierte Claude-Übergabe, kein neuer Empfangsbeleg."
+    "latestCanonicalRevision": 39,
+    "snapshotNote": "R39 enthält tatsächlich bestätigten einen Threads-Fototermin und enges Register; R37/R5-Websiteübergabe bleibt separat, Empfangunbekannt."
   },
   "claudeCodeHandoffHistory": [
     {
