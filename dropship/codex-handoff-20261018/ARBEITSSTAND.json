@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 19,
-  "updatedAt": "2026-11-01T01:48:39.956Z",
+  "revision": 20,
+  "updatedAt": "2026-11-01T07:20:31.831Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -668,13 +668,13 @@
       "state": "blockiert",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/VORBEREITET",
-      "lastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.",
-      "nextAllowedStep": "Vier echte native Originaltakes mit eindeutiger Geräte-/Default-/Motiv-/Stromzuordnung und kommerziellen Filmrechten prüfen; danach denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation alle Produkt-/Kanal-/Ledgerregeln frisch prüfen.",
+      "belegArt": "LOKAL_GEPRUEFTER_ENTWURF/GEMESSENE_QUELLEN/KEINE_PRODUKTIVE_INTEGRATION",
+      "lastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.\n\nMorgenlauf 01.11.2026,08:00 Europe/Zurich: lokale tatsächliche ffprobe-Gegenprobe statt bloss behaupteter Metadaten ergänzt. Hash, Rotation, Auflösung,30fps, Dauer/Schnittzugaben und begrenzte Framezeitstempel an expliziten Originaldateien geprüft.28 synthetische Fälle(20+8) grün, kein Film oder operative Integration. Reale aktuelle öffentliche Shopreferenz852×480/25fps/27,959961s gelesen; frühere960×540/25fps ebenfalls ungeeignet. Pflichtmusik hashgleich zu main; kommerzielle Herkunfts-/Rechte- und finale Hörabnahme weiter offen. Projektor ACTIVE CHF34.90/Variante56197916361089/storefrontavailabletrue mit echtem Bild, Tags aktuell ohne Sperrtreffer; auswahl-offen und sieben nicht zugeordnete beschriebene Versionen klären keine Default-Identität. Pyjama bleibt rueckhol-gesperrt. Keine MP4, keine Socialwrites, keine Registryinitialisierung. Alle bisherigen Quellenhistorien erhalten.",
+      "nextAllowedStep": "Vier passende native Originaltakes derselben SKU/Ausführung samt Geräte-, Motiv-, Strom- und kommerziellen Film-/Bearbeitungsrechten beschaffen und mit tatsächlicher Medienprobe sowie menschlicher Qualitätsprüfung beurteilen. Dann denselben einen Master schneiden und am fertigen Film abnehmen. Spätere Publikation nur nach frischen Produkt-/Kanal-/Ledgerprüfungen; kein Altvideo-Ersatz.",
       "blockers": [
-        "Passendes professionelles Originalmaterial",
-        "Ausführung/Motive und Rechte ungeklärt",
-        "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
+        "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+        "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+        "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -723,6 +723,31 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
           "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
           "readAt": "2026-10-31T23:53:21.344768+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261101.json",
+          "gitBlobSha": "123bc7472d5e42c670d4dfb5f4322a5df0d5306d",
+          "readAt": "2026-11-01T07:20:31.831Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-ROOTDOKUMENT-20261101.patch",
+          "gitBlobSha": "c35453b49d8965293b3f98597433d18e7652d000",
+          "readAt": "2026-11-01T07:20:31.831Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MORGENPAKET-20261101.md",
+          "gitBlobSha": "9fa10d1fcd4c4aa644d66d5e158f87d7653c8942",
+          "readAt": "2026-11-01T07:20:31.831Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-FFPROBE-20261101.patch",
+          "gitBlobSha": "4ca630b3fdee065bee28d0d1136ca12e92835a09",
+          "readAt": "2026-11-01T07:20:31.831Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MORGEN-VERKAUFSPRUEFUNG-20261101.md",
+          "gitBlobSha": "bb191115eeb09d7321352b83edc8ccb8a19dc7ab",
+          "readAt": "2026-11-01T07:20:31.831Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -744,6 +769,17 @@
           "nextAllowedStep": "Exakte Geräte-/Default-Ausführungs-/Motivzuordnung und vier Strom-/Kabel-/Netzteilbelege an hochwertigen Originaltakes prüfen; kommerzielle Filmrechte dokumentieren. Denselben Master fertigstellen, bevor Varianten oder Publikation möglich sind. Keine Altclips als Ersatz.",
           "state": "blockiert",
           "blockers": [
+            "Passendes professionelles Originalmaterial",
+            "Ausführung/Motive und Rechte ungeklärt",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
+          ]
+        },
+        {
+          "at": "2026-11-01T07:20:31.831Z",
+          "sourceRevision": 19,
+          "previousLastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.",
+          "previousNextAllowedStep": "Vier echte native Originaltakes mit eindeutiger Geräte-/Default-/Motiv-/Stromzuordnung und kommerziellen Filmrechten prüfen; danach denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation alle Produkt-/Kanal-/Ledgerregeln frisch prüfen.",
+          "previousBlockers": [
             "Passendes professionelles Originalmaterial",
             "Ausführung/Motive und Rechte ungeklärt",
             "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
@@ -1770,6 +1806,17 @@
         "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-BELEGE-20261101.json",
         "gitBlobSha": "dd01571d2583f20065461e498454df7aea92c37f",
         "readAt": "2026-11-01T01:48:39.956Z"
+      }
+    },
+    {
+      "revision": 20,
+      "at": "2026-11-01T07:20:31.831Z",
+      "actor": "codex",
+      "action": "Bestehenden 08:00-Lauf fortgeführt: Identitäten, sieben Planungstage, zwei Produkte und drei Verkaufsseiten aktuell geprüft. Tagesreports und Klaviyo nicht wiederholt, Kauf-Watch beendet gelassen. Master-Originaltakeprüfung um tatsächliche ffprobe/Bytes/Cadence ergänzt,28 synthetische Fälle grün; reale aktuelle480p/25fps-Quelle ungeeignet. Lokaler Hauptdokument-Auswerter und Default-Faktenmatrix ergänzt, keine Website-/Produkt-/Flow-/Socialänderung. Ein bestehender Welcome-Serviceentwurf erhalten. Fünf bereinigte Artefakte gesichert; alle16 Aufgaben/Historien/Zeitpläne erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261101.json",
+        "gitBlobSha": "123bc7472d5e42c670d4dfb5f4322a5df0d5306d",
+        "readAt": "2026-11-01T07:20:31.831Z"
       }
     }
   ],
