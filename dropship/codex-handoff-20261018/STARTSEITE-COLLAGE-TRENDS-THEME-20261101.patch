@@ -1,0 +1,184 @@
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -1,7 +1,4 @@
+-{% assign lx_design_product = all_products['shirt-zum-selbstgestalten'] %}
+ {% assign lx_design_url = '/collections/selbst-gestalten-1?view=luxe-gestalten' %}
+-{% assign lx_pyjamas = all_products['weihnachts-pyjama-im-partnerlook-764352'] %}
+-{% assign lx_projector = all_products['sternenlicht-projektor-fur-schlafzimmer-732544'] %}
+ 
+ <div class="lx-home" id="lx-top">
+   <a class="lx-skip" href="#lx-content">{{ 'luxe_home.zum_inhalt_f0521' | t }}</a>
+@@ -71,36 +68,58 @@
+       </nav>
+       <a class="lx-text-link lx-all-categories" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.categories.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+     </section>
+-    <section class="lx-design-edit lx-section" aria-labelledby="lx-design-title">
++    <section class="lx-design-edit lx-design-collage-section lx-section" id="lx-selfdesign" aria-labelledby="lx-design-title">
+       <div class="lx-design-copy">
+         <p class="lx-eyebrow">{{ 'luxe_home.design.eyebrow' | t }}</p>
+         <h2 id="lx-design-title">{{ 'luxe_home.design.heading' | t }}</h2>
+-        <p class="lx-design-description">{{ 'luxe_home.design.description' | t }}</p>
+-        <a class="lx-button" href="{{ lx_design_url }}">{{ 'luxe_home.design.cta' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
++        <p class="lx-design-description">{{ 'luxe_home.choices.intro' | t }}</p>
++        <a class="lx-button" href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+         <ul class="lx-design-options" aria-label="{{ 'luxe_home.design.options' | t | escape }}"><li>{{ 'luxe_home.design.category' | t }}</li><li>{{ 'luxe_home.design.colour' | t }}</li><li>{{ 'luxe_home.design.size' | t }}</li></ul>
+       </div>
+-      {% if lx_design_product.featured_image != blank %}
+-        <a class="lx-design-image" href="{{ lx_design_url }}" aria-label="{{ 'luxe_home.design.cta' | t | escape }}">
+-          {{ lx_design_product.featured_image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(max-width: 760px) calc(100vw - 48px), 43vw', alt: lx_design_product.title }}
+-          <span>{{ 'luxe_home.design.image_note' | t }}</span>
+-        </a>
+-      {% endif %}
++      <a class="lx-design-collage" href="{{ lx_design_url }}">
++        <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601&amp;width=750 750w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601&amp;width=1000 1000w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601&amp;width=1122 1122w" sizes="(max-width: 760px) calc(100vw - 32px), 46vw" width="1122" height="1402" loading="lazy" alt="{{ 'luxe_home.choices.collage_alt' | t | escape }}">
++      </a>
+     </section>
+-    <section class="lx-selection lx-section" aria-labelledby="lx-selection-title">
+-      <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.ein_n_herer_blick_5535a' | t }}</p><h2 id="lx-selection-title">{{ 'luxe_home.kleine_entdeckungen_b8cb2' | t }}<br><em>{{ 'luxe_home.ganz_dein_stil_dc520' | t }}</em></h2></div><a class="lx-text-link" href="https://luxestyle.ch/pages/alle-kategorien">{{ 'luxe_home.zum_gesamten_sortiment_2e4b4' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+-      <div class="lx-products">
+-        <article class="lx-product-card">
+-          <a class="lx-product-image" href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544" aria-label="{{ 'luxe_home.sternenlicht_projektor_f_r_schla_5908e' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&amp;width=800" width="1920" height="1919" loading="lazy" alt="{{ 'luxe_home.sternenlicht_projektor_f_r_schla_37753' | t | escape }}"><span class="lx-image-arrow" aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+-          <div class="lx-product-info"><div><p class="lx-eyebrow">{{ 'luxe_home.f_r_dein_zuhause_3aea6' | t }}</p><h3><a href="https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544">{{ 'luxe_home.sternenlicht_projektor_e7543' | t }}<br>{{ 'luxe_home.f_r_schlafzimmer_548ff' | t }}</a></h3></div><p class="lx-price">{% if lx_projector != blank %}{{ lx_projector.price | money_with_currency }}{% endif %}</p></div>
+-          <p class="lx-product-note">{{ 'luxe_home.ausf_hrung_und_produktdetails_au_203f7' | t }}</p>
+-        </article>
+-        <article class="lx-product-card">
+-          <a class="lx-product-image" href="https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352" aria-label="{{ 'luxe_home.weihnachts_pyjama_im_partnerlook_51006' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707&amp;width=800" width="1200" height="1200" loading="lazy" alt="{{ 'luxe_home.weihnachts_pyjamas_in_mehreren_a_466bc' | t | escape }}"><span class="lx-image-arrow" aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+-          <div class="lx-product-info"><div><p class="lx-eyebrow">{{ 'luxe_home.zusammen_passen_e55e0' | t }}</p><h3><a href="https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352">{{ 'luxe_home.weihnachts_pyjama_3a8e2' | t }}<br>{{ 'luxe_home.im_partnerlook_1e7fb' | t }}</a></h3></div>{% if lx_pyjamas != blank %}<p class="lx-price">{% if lx_pyjamas.price_varies %}<span class="lx-price-from">{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_pyjamas.price | money_with_currency }}</p>{% else %}<a class="lx-price lx-price-link" href="https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352">{{ 'luxe_home.auswahl_ansehen_99503' | t }}</a>{% endif %}</div>
+-          <p class="lx-product-note">{{ 'luxe_home.preis_pro_gew_hlter_ausf_hrung_u_1375a' | t }}</p>
+-        </article>
+-      </div>
+-    </section>
++    {% assign lx_trends_source = collections['hype-jetzt'] %}
++    {% assign lx_trend_ids = '15499700142465,15450856292737,15448587075969,15430462669185,15408458006913,16617685877127,16613782323591,16610088518023,16604940730759,16604922937735,15523992797569,15523992174977' | split: ',' %}
++    {% assign lx_trend_handles = 'magnetische-3-in-1-ladestation-613200,reise-hangematte-aus-fallschirm-nylon-86eb20,midikleid-mit-zopfmuster-und-blumenprint-600200,herren-cargo-hose-trail-multi-pocket-outdoor,kristallspitzen-set-8-teilig-holzbox,yoga-massagerolle-390720,kabelloser-mini-staubsauger-furs-auto-f2796b,tragbarer-mixer-mit-usb-c-ladefunktion-794304,outdoor-bluetooth-karaoke-lautsprecher-600000,magnetischer-kartenhalter-mit-magsafe-632200,reise-organizer-set-mit-netz-617800,futterball-fur-haustiere-498560' | split: ',' %}
++    {% assign lx_trend_stops = 'google-policy-flag,nicht-live,18plus,adult,gmc-adult,compliance-pruefen,verdeckte-ueberwachung,medizinprodukt,social-pause,rueckhol,-raus-,geprueft-gesperrt,marge-verlust,verlust-auto,us-netzteil,nicht-versendbar' | split: ',' %}
++    {% assign lx_trend_count = 0 %}
++    {% capture lx_trend_cards %}
++      {% for lx_trend_handle in lx_trend_handles %}
++        {% assign lx_trend = all_products[lx_trend_handle] %}
++        {% assign lx_trend_id = lx_trend.id | append: '' %}
++        {% if lx_trend_ids contains lx_trend_id and lx_trend.available and lx_trend.featured_image and lx_trend.price_min > 0 and lx_trend.tags.size > 0 %}
++          {% assign lx_trend_blocked = false %}
++          {% assign lx_trend_tag_text = lx_trend.tags | join: '|' | downcase %}
++          {% for lx_stop in lx_trend_stops %}
++            {% if lx_trend_tag_text contains lx_stop %}{% assign lx_trend_blocked = true %}{% endif %}
++          {% endfor %}
++          {% for lx_tag in lx_trend.tags %}
++            {% assign lx_tag_lower = lx_tag | downcase %}
++            {% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_trend_blocked = true %}{% endif %}
++          {% endfor %}
++          {% unless lx_trend_blocked %}
++            {% assign lx_trend_count = lx_trend_count | plus: 1 %}
++            <a class="lx-trend-card" href="{{ lx_trend.url }}" data-trend-product-id="{{ lx_trend.id }}" data-trend-handle="{{ lx_trend.handle | escape }}" aria-labelledby="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">
++              <div class="lx-trend-image">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: '' }}</div>
++              <div class="lx-trend-info">
++                <h3 id="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">{{ lx_trend.title | escape }}</h3>
++                <p class="lx-trend-price">{% if lx_trend.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_trend.price_min | money_with_currency }}</p>
++                <span class="lx-trend-open">{{ 'luxe_home.trends.open' | t }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
++              </div>
++            </a>
++          {% endunless %}
++        {% endif %}
++      {% endfor %}
++    {% endcapture %}
++    {% if lx_trend_count > 0 %}
++      <section class="lx-trends lx-section" id="lx-trends" aria-labelledby="lx-trends-title">
++        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.trends.eyebrow' | t }}</p><h2 id="lx-trends-title">{{ 'luxe_home.trends.heading' | t }}</h2></div><a class="lx-text-link" href="{{ lx_trends_source.url }}">{{ 'luxe_home.trends.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
++        <p class="lx-trends-hint" id="lx-trends-hint">{{ 'luxe_home.trends.swipe' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></p>
++        <div class="lx-trends-grid" tabindex="0" role="region" aria-label="{{ 'luxe_home.trends.products' | t }}">{{ lx_trend_cards }}</div>
++      </section>
++    {% endif %}
+     <section class="lx-fashion-edit lx-section" aria-labelledby="lx-fashion-title">
+       <a class="lx-fashion-image" href="https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000" aria-label="{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900" width="1600" height="2133" loading="lazy" alt="{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}"></a>
+       <div class="lx-fashion-copy"><p class="lx-eyebrow">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id="lx-fashion-title">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class="lx-button" href="https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><span class="lx-fashion-footnote">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>
+--- a/assets/luxe-edit.css
++++ b/assets/luxe-edit.css
+@@ -63,3 +63,40 @@
+  .lx-home .lx-category-arrow{display:none}
+  .lx-home .lx-all-categories{margin-top:14px}
+ }
++
++.lx-home .lx-design-collage-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;align-items:stretch;scroll-margin-top:20px}
++.lx-home .lx-design-collage-section .lx-design-copy{padding:clamp(28px,4vw,54px);border-radius:18px 0 0 18px;min-width:0}
++.lx-home .lx-design-collage-section .lx-design-copy h2{font-size:clamp(34px,4vw,54px);line-height:1.05;margin:12px 0 18px}
++.lx-home .lx-design-collage-section .lx-design-description{max-width:38rem;font-size:14px;line-height:1.65;margin:0 0 18px}
++.lx-home .lx-design-collage-section .lx-button{margin-top:12px;max-width:100%}
++.lx-home .lx-design-collage{display:block;min-width:0;align-self:stretch;overflow:hidden;border-radius:0 18px 18px 0;background:#f0ede7}
++.lx-home .lx-design-collage img{display:block;width:100%;height:auto;object-fit:contain}
++@media(max-width:760px){
++ .lx-home .lx-design-collage-section{grid-template-columns:minmax(0,1fr);gap:0}
++ .lx-home .lx-design-collage-section .lx-design-copy{padding:28px 22px;border-radius:18px 18px 0 0}
++ .lx-home .lx-design-collage-section .lx-design-copy h2{font-size:34px}
++ .lx-home .lx-design-collage-section .lx-design-description{font-size:13px}
++ .lx-home .lx-design-collage{border-radius:0 0 18px 18px}
++}
++.lx-home .lx-trends-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;min-width:0}
++.lx-home .lx-trend-card{min-width:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #ded5c9;border-radius:16px;scroll-snap-align:start}
++.lx-home .lx-trend-card:hover{border-color:#8b7355}
++.lx-trend-image{aspect-ratio:1;background:#f5f3ef;overflow:hidden}
++.lx-trend-image img{width:100%;height:100%;object-fit:contain}
++.lx-trend-info{flex:1;display:flex;flex-direction:column;min-width:0;padding:16px}
++.lx-home .lx-trend-info h3{font:500 16px/1.4 var(--lx-sans);margin:0;min-height:66px;overflow-wrap:anywhere}
++.lx-home .lx-trend-price{font:600 18px/1.3 var(--lx-sans);margin:10px 0 8px;overflow-wrap:anywhere}
++.lx-trend-price>span{font-size:12px;font-weight:400;color:#665f56}
++.lx-home .lx-trend-open{margin-top:auto;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
++.lx-trend-open svg{flex:0 0 18px;width:18px;height:18px}
++.lx-home .lx-trends-hint{display:none}
++@media(min-width:761px) and (max-width:1100px){.lx-home .lx-trends-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
++@media(max-width:760px){
++ .lx-home .lx-trends-grid{grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:44%;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:2px 2px 12px;scrollbar-width:thin;scrollbar-color:#8b7355 #eee7dc}
++ .lx-trend-info{padding:12px}
++ .lx-home .lx-trend-info h3{font-size:14px;min-height:78px;line-height:1.4}
++ .lx-home .lx-trend-price{font-size:16px;margin:8px 0}
++ .lx-home .lx-trend-open{font-size:11px}
++ .lx-home .lx-trends-hint{display:flex;align-items:center;gap:10px;margin:-6px 0 16px;color:#665f56;font-size:12px;line-height:1.5}
++ .lx-trends-hint svg{flex:0 0 18px;width:18px;height:18px}
++}
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -350,6 +350,21 @@
+     }
+   },
+   "luxe_home": {
++    "trends": {
++      "eyebrow": "Neue Lieblingsstücke entdecken",
++      "heading": "Trends entdecken",
++      "all": "Alle Trends ansehen",
++      "open": "Produkt ansehen",
++      "swipe": "Seitlich wischen und mehr entdecken.",
++      "products": "Produktauswahl Trends"
++    },
++
++    "choices": {
++      "intro": "Deine Gestaltung beginnt mit dem passenden Produkt. Entdecke T-Shirts, Hoodies, Tassen und mehr.",
++      "browse": "Produkte auswählen",
++      "collage_alt": "Collage mit T-Shirt, Allover-Hoodie, Tasse, Stoffbeutel, Cap, Rucksack, Kuscheldecke, Notizbuch, Fotokissen, Poster, Trinkflasche und Samsung-Hülle."
++    },
++
+     "categories": {
+       "navigation": "Einkaufswelten auf der Startseite",
+       "design": "Selbst gestalten",
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -350,6 +350,21 @@
+     }
+   },
+   "luxe_home": {
++    "trends": {
++      "eyebrow": "Discover new favourites",
++      "heading": "Explore trends",
++      "all": "View all trends",
++      "open": "View product",
++      "swipe": "Swipe sideways to discover more.",
++      "products": "Trending product selection"
++    },
++
++    "choices": {
++      "intro": "Your design starts with the right product. Explore T-shirts, hoodies, mugs and more.",
++      "browse": "Choose products",
++      "collage_alt": "Collage with a T-shirt, all-over hoodie, mug, tote bag, cap, backpack, blanket, notebook, photo cushion, poster, water bottle and Samsung case."
++    },
++
+     "categories": {
+       "navigation": "Homepage shopping categories",
+       "design": "Create your own",
