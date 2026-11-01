@@ -595,5 +595,15 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 | Welcome-Entwurf | Bestehenden Zweizeilen-Service-Diff an frischer Vorlage und erreichbaren Policies gegengeprüft | Entwurf zur Freigabe, keine Mail-/Flowänderung. Unbelegte 1–2-Tage-Zusage durch Policyverweise ersetzen |
 | Genehmigte DNS-Ergänzungen | Genau vier erwartete Records öffentlich gegengeprüft | Drei CNAME-Namen NXDOMAIN; erwarteter TXT nicht in Resolverantwort. Sending-Domain pending, kein authentifizierter Schreibzugang, nichts geändert |
 | Projektgedächtnis | Aktuelle r16 gelesen; fünf Reviewartefakte gesichert und r17 nach begrenztem Ergänzungsdiff fortgeschrieben | 16 Aufgaben und Historie erhalten; SHA-gebundene Writes und gezielte Rücklesung separat belegt; Claude-Kenntnisnahme unbekannt |
+| Selbst gestalten / Lieferantenkatalog | Alle 572 Modelle / 13’160 Varianten und 177 Kategorien quellengebunden in die Vorschau integriert; 52 Datenassets nativ geprüft | UMGESETZT IM UNVERÖFFENTLICHTEN THEME; kein vollständig kaufbarer Shopimport |
+| Auswahl / Preise / Bewertungen | Echte Farben, Grössen, Materialwechsel, Originalbilder, 309 Shopvariantenpreise und produktbezogene Bewertungen eingebunden | 31 Produkte mit bestätigt 0 Bewertungen; 7 Fälle mit mehreren Angeboten explizit auswählbar, fehlende Preise unbekannt; 102%-Materialkonflikt gekennzeichnet |
+| Suche / Mobilgestaltung | Screenshotfehler «&amp;» und Suche mit unpassender Kategorie behoben; mobile Website im App-Stil weiterentwickelt | Vorschau gespeichert und gezielt zurückgelesen; native Browserprüfungen belegt; MAIN-Publikation technisch vom Connector blockiert |
+| Bestellübergabe | Inline-Editor gegen Upload- und Bildfehler sowie veraltete Variantenauswahl abgesichert | Sechs native Vorschaufälle bestehen mit simulierten POSTs; keine echte Upload-, Cart- oder Orderaktion und keine Produktionsabnahme |
+| Vollimport / Bestandsabgleich | Geprüften isolierten POD-Bulk-Lesejob erstellt und Status zurückgelesen | COMPLETED, 492 Rootprodukte / 2146 Objekte; signierter Exportlink vom Connector blockiert, SKU-Matrix weiterhin unbekannt; keine Produktwrites |
+| Merchant / neue Exporte | Beide CSV-Dateien vom 31.10. vollständig geprüft, 18 Original-IDs aktuellen positiven CHF-Varianten zugeordnet | Korrekturdatei vorbereitet und gesichert; 53’333 Preisfehler-IDs im neueren Export, Timeout der Quellenabfrage, Connector ohne Schreibzugang; kein Feedfix ausgeführt |
+| Projektgedächtnis / Fortsetzung | Bestehende Aufgaben mit neuen Belegen fortgeschrieben und konkreten Diff gesichert | Revision fortgeführt, 16 Aufgaben und Historie erhalten; kein weiterer Kauf-Watch, Report oder Claude-Beleg behauptet |
 
 [LUXESTYLE_LAUF_20261101] [Paket](LAUFPAKET-20261101.md) · [Belege](LAUFBELEGE-20261101.json) · [Review](LAUFREVIEW-20261101.md). Kauf-Watch beendet; alle übrigen Aufgaben fortgeführt.
+
+
+[LUXESTYLE_SELBSTGESTALTEN_20261101] [Bericht](SELBSTGESTALTEN-WEBSITE-20261101.md) · [Belege](SELBSTGESTALTEN-BELEGE-20261101.json) · [Merchant](MERCHANT-PREISPRUEFUNG-20261101.md). Aktuelle Inhaberfreigabe vorhanden; technische Blocker transparent.
