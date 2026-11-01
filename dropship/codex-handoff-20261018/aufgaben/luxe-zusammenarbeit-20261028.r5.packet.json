@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "luxestyle.review.packet",
+  "brand": "luxestyle.ch",
+  "taskId": "luxe-zusammenarbeit-20261028",
+  "revision": 5,
+  "producer": "codex",
+  "coordinator": "claude",
+  "purpose": "review_only",
+  "createdAt": "2026-11-01T18:41:57.283Z",
+  "baseCommit": "837c9a642ccc169e6e5923da760d074662e15ab7",
+  "title": "LuxeStyle R37: kombinierter Website-Entwurf und naechste Ausfuehrung fuer Claude Code",
+  "summary": "Aktuelle R37-Koordinationsuebergabe aus R36: frische Shopify-Rollen und acht Dateiidentitaeten, kombinierter Sticker-/Achtprodukte-Entwurf, alle16 Aufgaben und bestehende Grenzen. Claude uebernimmt die belegten naechsten Schritte mit legitimen Zugaengen und geltenden Freigaben. baseCommit ist der Dokumentationsbranch-Commit dieser Uebergabe, keine neu gepruefte main-Codebasis. Kein R3-Codeabnahme-/Voll-CI-/Produktionsnachweis, keine pauschale Geschaeftsfreigabe und keine Claude-Quittung. Quellen und Live-Stand vor Ausfuehrung frisch lesen.",
+  "sources": [
+    {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+      "sha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+      "gitBlobSha": "14bdf7db431fa7976e404452fd5555389e8762b7"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-TRANSFER-20261101-R37.json",
+      "sha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+      "gitBlobSha": "6ba0d1ead01797dea0a91c1e091582cbd01338be"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-DIFF-20261101-R37.patch",
+      "sha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+      "gitBlobSha": "b0a3b846c88928ba451821ce82649b512cc226bf"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+      "sha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+      "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+      "sha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+      "gitBlobSha": "1f1cf0f217809060958fab93c856def6f6d8ee82"
+    }
+  ],
+  "previousPacketSha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f"
+}
