@@ -1,0 +1,1636 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-01T07:17:50.543049+00:00",
+  "timezone": "Europe/Zurich",
+  "run": "Existing 08:00 run",
+  "scope": "LuxeStyle only; fresh identity/queue/two products/source review; daily metrics and Klaviyo reused; completed purchase watch not queried",
+  "nativeShopProducts": {
+    "at": "2026-11-01T07:06:25.534Z",
+    "data": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "name": "LuxeStyle",
+        "currencyCode": "CHF",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        }
+      },
+      "projector": {
+        "id": "gid://shopify/ProductVariant/56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "price": "34.90",
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "id": "gid://shopify/InventoryItem/55556790026625",
+          "tracked": false
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ],
+        "product": {
+          "id": "gid://shopify/Product/15521256604033",
+          "title": "Sternenlicht-Projektor für Schlafzimmer",
+          "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+          "status": "ACTIVE",
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "sort-nachtlichter",
+            "sort-nachttischlampen",
+            "tech"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "priceRangeV2": {
+            "minVariantPrice": {
+              "amount": "34.9",
+              "currencyCode": "CHF"
+            },
+            "maxVariantPrice": {
+              "amount": "34.9",
+              "currencyCode": "CHF"
+            }
+          }
+        }
+      },
+      "pyjama": {
+        "id": "gid://shopify/Product/15447971430785",
+        "title": "Weihnachts-Pyjama im Partnerlook",
+        "handle": "weihnachts-pyjama-im-partnerlook-764352",
+        "status": "ACTIVE",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kat-nachtwaesche",
+          "mode",
+          "rueckhol-0907",
+          "sort-partnerlook-paare",
+          "such-weihnachtspyjama",
+          "weihnachten"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+        "priceRangeV2": {
+          "minVariantPrice": {
+            "amount": "14.9",
+            "currencyCode": "CHF"
+          },
+          "maxVariantPrice": {
+            "amount": "17.9",
+            "currencyCode": "CHF"
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/55873727627649",
+              "sku": "CJ-CJYD193098501AZ",
+              "price": "16.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55225949421953",
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung & Grösse",
+                  "value": "Weiss · Papa S"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/55873727660417",
+              "sku": "CJ-CJYD193098502BY",
+              "price": "16.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55225949454721",
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung & Grösse",
+                  "value": "Weiss · Papa M"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/55873727693185",
+              "sku": "CJ-CJYD193098503CX",
+              "price": "17.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55225949487489",
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung & Grösse",
+                  "value": "Weiss · Papa L"
+                }
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true,
+            "endCursor": "eyJsYXN0X2lkIjo1NTg3MzcyNzY5MzE4NSwibGFzdF92YWx1ZSI6M30="
+          }
+        }
+      }
+    }
+  },
+  "publicStorefront": {
+    "projector": {
+      "at": "2026-11-01T07:07:16.789064+00:00",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "productId": 15521256604033,
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "available": true,
+      "priceMinRappen": 3490,
+      "priceMaxRappen": 3490,
+      "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "variantCount": 1,
+      "sha256": "e8c24630c226812e5b674f6473e40de81951a05553840ae2b7e798682a0cf815",
+      "targetVariants": [
+        {
+          "id": 56197916361089,
+          "sku": "CJ-1477820492730732544",
+          "title": "Default Title",
+          "price": 3490,
+          "available": true
+        }
+      ],
+      "imageStatus": 200,
+      "imageSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "imageBytes": 118008
+    },
+    "pyjama": {
+      "at": "2026-11-01T07:07:16.669464+00:00",
+      "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352.js",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352.js",
+      "productId": 15447971430785,
+      "title": "Weihnachts-Pyjama im Partnerlook",
+      "available": true,
+      "priceMinRappen": 1490,
+      "priceMaxRappen": 1790,
+      "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707",
+      "variantCount": 25,
+      "sha256": "11b6c7fdf2a4d6c5cb70a4b9294f9b9491901ec444521f885b334d37cc7163d2",
+      "targetVariants": [
+        {
+          "id": 55873727627649,
+          "sku": "CJ-CJYD193098501AZ",
+          "title": "Weiss · Papa S",
+          "price": 1690,
+          "available": true
+        },
+        {
+          "id": 55873727660417,
+          "sku": "CJ-CJYD193098502BY",
+          "title": "Weiss · Papa M",
+          "price": 1690,
+          "available": true
+        },
+        {
+          "id": 55873727693185,
+          "sku": "CJ-CJYD193098503CX",
+          "title": "Weiss · Papa L",
+          "price": 1790,
+          "available": true
+        }
+      ],
+      "imageStatus": 200,
+      "imageSha256": "9046ea77c07a5192f784d71c52cda8bc1904ec448bb1701772ca0563f83cd7a6",
+      "imageBytes": 252716
+    }
+  },
+  "tagGates": {
+    "at": "2026-11-01T07:07:36.121Z",
+    "sourceRepoBlob": "3adab7369f90945769331910525c08b3778b4371",
+    "ownerAdditionalRule": "Every rueckhol and missing/empty tags block new social publishing",
+    "products": {
+      "projector": {
+        "id": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "tagsPresent": true,
+        "codeMatches": [],
+        "ownerMatches": [],
+        "newSocialTagGate": "PASS_TAG_GATE_ONLY",
+        "notPublishApproval": true
+      },
+      "pyjama": {
+        "id": "gid://shopify/Product/15447971430785",
+        "status": "ACTIVE",
+        "tagsPresent": true,
+        "codeMatches": [],
+        "ownerMatches": [
+          "rueckhol-0907"
+        ],
+        "newSocialTagGate": "BLOCKED",
+        "notPublishApproval": true
+      }
+    }
+  },
+  "metricool": {
+    "checkedAtUTC": "2026-11-01T07:07:09.922204+00:00",
+    "dateEuropeZurich": "2026-11-01",
+    "brand": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "tiktokAdsData": "7691398659300179974"
+      },
+      "expectedIdentityMatches": true
+    },
+    "planningWindow": {
+      "from": "2026-11-01T08:03:00+01:00",
+      "to": "2026-11-08T08:03:00+01:00",
+      "timezone": "Europe/Zurich",
+      "extendedRange": false
+    },
+    "queue": [
+      {
+        "id": 405941388,
+        "uuid": "7159397983996628078",
+        "publicationDate": {
+          "dateTime": "2026-11-01T11:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-25T21:09:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend.\nGesehen werden auch im Dunkeln: Blinker per Fernbedienung am Velo.\n\nab CHF 44.90 · Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna 🇨🇭\n🔗 Link in Bio: luxestyle.ch\n\n#fahrrad #velo #luxestyle #schweiz #sicherheit",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13772458834798770438.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-16086701481287477631.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 405941434,
+        "uuid": "4429839409975411400",
+        "publicationDate": {
+          "dateTime": "2026-11-01T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-25T21:09:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung und wasserabweisend. Gratis Versand ab CHF 50 nach Rabatt.",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4399823561216210061.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "LED-Fahrradrucksack mit Blinker",
+          "pinLink": "https://luxestyle.ch/products/led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 407830728,
+        "uuid": "7282371443509710052",
+        "publicationDate": {
+          "dateTime": "2026-11-02T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:32:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln mit Kindern ab 3 Jahren und Budget unter CHF 20? 🐼\nDer Plüsch Panda ist 15 cm gross und für Kinder ab 3 Jahren empfohlen, ein Wichtelgeschenk für unter CHF 20.\n\nPlüsch Panda 15 cm · CHF 19.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#pluschpanda #kuscheltier #wichteln #geschenkidee #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407838073,
+        "uuid": "-3660854990879961370",
+        "publicationDate": {
+          "dateTime": "2026-11-03T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:39:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fürs Wichteln noch ein Geschenk für Sie gesucht? 🎁\nEdelstahlgehäuse mit Quarzuhrwerk und Stahlband in vier Farbkombinationen, dazu eine Box, in der man die Uhr aufbewahren oder verschenken kann.\n\nElegante Damenuhr in Roségold · CHF 40.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#damenuhr #rosegold #wichteln #weihnachtsgeschenk #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407849114,
+        "uuid": "-6402384969971711358",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:49:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln im Büro und noch eine Idee für ihn, der pendelt? 🎒\nSchlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel) und in 14 oder 17 Zoll, jeweils in mehreren Farben.\n\nLeichter Laptop-Rucksack für Pendler · ab CHF 44.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#laptoprucksack #pendlerrucksack #wichtelgeschenk #geschenkidee #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407849577,
+        "uuid": "5982651913735720132",
+        "publicationDate": {
+          "dateTime": "2026-11-05T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fürs Wichteln oder als kleines Mitbringsel noch etwas Weiches gesucht? 🧸\nDer graue Plüsch Waschbär (14 cm) wird zu einem speziellen Freund für dein Kind, empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet.\n\nPlüsch Waschbär · CHF 20.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#plüschtier #waschbär #wichteln #geschenkidee #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407854817,
+        "uuid": "5940175700385481481",
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:55:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Noch ein Wichtelgeschenk für ein Kind ab 3 gesucht? 🏗️\nDer Baggerarm ist voll funktionsfähig, der Aufsatz schwenkt um 360° und das Räumschild ist beweglich, im Massstab 1:16 und für drinnen wie draussen.\n\nJCB Mikrobagger 8010 CTS · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#mikrobagger #spielzeugbagger #kinderspielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407876249,
+        "uuid": "-2612931623723381280",
+        "publicationDate": {
+          "dateTime": "2026-11-07T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln steht an und du suchst etwas für einen gemütlichen Sofaabend? 🛋️\nÜbergrosser Kapuzenpullover mit Taschen, der dich warm einpackt wie eine Decke – für Frauen und Männer, in mehreren Längen und Farben.\n\nXXL Hoodie-Decke mit Taschen für Sie & Ihn · CHF 37.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#hoodiedecke #tvdecke #sofaabend #geschenkidee #schweiz #luxestyle",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      }
+    ],
+    "queueAnalysis": {
+      "posts": 8,
+      "uniqueUUIDs": 8,
+      "providerStates": {
+        "PENDING": 15
+      },
+      "networkCounts": {
+        "facebook": 7,
+        "instagram": 7,
+        "pinterest": 1
+      },
+      "mediaURLDuplicatesSameChannel": [],
+      "sameCaptionSameChannel": [],
+      "sameSlotSameChannel": [],
+      "completeLocalDaysInRollingWindow": [
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "missingOnCompleteLocalDays": {
+        "facebook": [],
+        "instagram": [],
+        "pinterest": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07"
+        ],
+        "tiktok": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07"
+        ],
+        "youtube": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07"
+        ],
+        "threads": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07"
+        ]
+      },
+      "comparison": {
+        "source": "/workspace/luxestyle-review/lauf-20261101/metricool/EVIDENCE.json",
+        "sha256": "d1a98a2aaf4455df5486cfbeb89a51836a64a8ca530f00cb71270254b85be4f5",
+        "commonUUIDs": 8,
+        "changedFields": [],
+        "newUUIDsInCurrentResult": [],
+        "previousUUIDsNotInCurrentResult": [],
+        "scope": "Selected planning fields only; no inference that scheduling-window absence means deletion or publication."
+      }
+    },
+    "dailyAnalytics": {
+      "queriedThisRun": false,
+      "reason": "Already read once on this Europe/Zurich calendar date. Reuse day evidence per owner limit.",
+      "source": "/workspace/luxestyle-review/lauf-20261101/metricool/EVIDENCE.json",
+      "sourceCheckedAtUTC": "2026-10-31T23:46:41.404Z",
+      "window": {
+        "from": "2026-10-25T00:00:00+02:00",
+        "to": "2026-10-31T23:59:59+01:00",
+        "completedLocalDays": 7,
+        "dstTransitionIncluded": true,
+        "calls": 6
+      },
+      "metrics": {
+        "instagram": {
+          "fields": [
+            {
+              "fieldId": "IGEV05",
+              "network": "instagram",
+              "connector": "evolution",
+              "index": 5,
+              "metricName": "views",
+              "metricLabel": "Instagram Evolution > Views",
+              "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "IGEV38",
+              "network": "instagram",
+              "connector": "evolution",
+              "index": 38,
+              "metricName": "postsInteractions",
+              "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+              "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "IGEV05",
+              "knownPartialTotal": 856,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029",
+                "20261030"
+              ],
+              "unknownDates": [
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "IGEV38",
+              "knownPartialTotal": 4,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027"
+              ],
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        },
+        "facebook": {
+          "fields": [
+            {
+              "fieldId": "FBEV49",
+              "network": "facebook",
+              "connector": "evolution",
+              "index": 49,
+              "metricName": "pageMediaView",
+              "metricLabel": "Facebook Evolution > Page Media View",
+              "description": "Page content views.",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "FBEV34",
+              "network": "facebook",
+              "connector": "evolution",
+              "index": 34,
+              "metricName": "postsInteractions",
+              "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+              "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "FBEV49",
+              "knownPartialTotal": 401,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029",
+                "20261030"
+              ],
+              "unknownDates": [
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "FBEV34",
+              "knownPartialTotal": 1,
+              "knownDates": [
+                "20261025"
+              ],
+              "unknownDates": [
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        },
+        "tiktok": {
+          "fields": [
+            {
+              "fieldId": "TKEV12",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 12,
+              "metricName": "accountViews",
+              "metricLabel": "TikTok Evolution > Video views in period",
+              "description": "Number of video views in the period",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "TKEV13",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 13,
+              "metricName": "accountLikes",
+              "metricLabel": "TikTok Evolution > Account Likes",
+              "description": "Number of likes of your videos",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "TKEV14",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 14,
+              "metricName": "accountComments",
+              "metricLabel": "TikTok Evolution > Account Comments",
+              "description": "Number of comments of your videos",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "TKEV15",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 15,
+              "metricName": "accountShares",
+              "metricLabel": "TikTok Evolution > Account Shares",
+              "description": "Number of times your videos have been shared",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "TKEV12",
+              "knownPartialTotal": 972,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029"
+              ],
+              "unknownDates": [
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "TKEV13",
+              "knownPartialTotal": 5,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029"
+              ],
+              "unknownDates": [
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "TKEV14",
+              "knownPartialTotal": 2,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029"
+              ],
+              "unknownDates": [
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "TKEV15",
+              "knownPartialTotal": 0,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029"
+              ],
+              "unknownDates": [
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        },
+        "youtube": {
+          "fields": [
+            {
+              "fieldId": "YTEV02",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 2,
+              "metricName": "videoViews",
+              "metricLabel": "Youtube Evolution > Video Views",
+              "description": "Number of times the videos were watched",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "YTEV14",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 14,
+              "metricName": "visitedVideoLikes",
+              "metricLabel": "Youtube Evolution > Visited Videos Likes",
+              "description": "Number of likes of the visited videos",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "YTEV16",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 16,
+              "metricName": "visitedVideoComments",
+              "metricLabel": "Youtube Evolution > Visited Videos Comments",
+              "description": "Number of comments received by visited video",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "YTEV18",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 18,
+              "metricName": "visitedVideoVideoShares",
+              "metricLabel": "Youtube Evolution > Visited Videos Shares",
+              "description": "Number of shares of the visited videos",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "YTEV02",
+              "knownPartialTotal": 251,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "unknownDates": [
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "YTEV14",
+              "knownPartialTotal": 0,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027"
+              ],
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "YTEV16",
+              "knownPartialTotal": 0,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027"
+              ],
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "YTEV18",
+              "knownPartialTotal": 0,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027"
+              ],
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        },
+        "threads": {
+          "fields": [
+            {
+              "fieldId": "THEV06",
+              "network": "threads",
+              "connector": "evolution",
+              "index": 6,
+              "metricName": "views",
+              "metricLabel": "Threads Evolution > Post Views",
+              "description": "Total number of times that the post is displayed.",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "THEV05",
+              "network": "threads",
+              "connector": "evolution",
+              "index": 5,
+              "metricName": "interactions",
+              "metricLabel": "Threads Evolution > Interactions",
+              "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "THEV06",
+              "knownPartialTotal": 7,
+              "knownDates": [
+                "20261025"
+              ],
+              "unknownDates": [
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "THEV05",
+              "knownPartialTotal": 0,
+              "knownDates": [
+                "20261031"
+              ],
+              "unknownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028",
+                "20261029",
+                "20261030"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        },
+        "pinterest": {
+          "fields": [
+            {
+              "fieldId": "PIEV01",
+              "network": "pinterest",
+              "connector": "evolution",
+              "index": 1,
+              "metricName": "pinterestImpressions",
+              "metricLabel": "Pinterest Evolution > Impressions in period",
+              "description": "",
+              "dataAggregation": "SUM"
+            },
+            {
+              "fieldId": "PIEV04",
+              "network": "pinterest",
+              "connector": "evolution",
+              "index": 4,
+              "metricName": "pinterestInteractions",
+              "metricLabel": "Pinterest Evolution > Interactions in period",
+              "description": "",
+              "dataAggregation": "SUM"
+            }
+          ],
+          "summary": [
+            {
+              "id": "PIEV01",
+              "knownPartialTotal": 3138,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "unknownDates": [
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            },
+            {
+              "id": "PIEV04",
+              "knownPartialTotal": 66,
+              "knownDates": [
+                "20261025",
+                "20261026",
+                "20261027",
+                "20261028"
+              ],
+              "unknownDates": [
+                "20261029",
+                "20261030",
+                "20261031"
+              ],
+              "fullPeriodTotal": null
+            }
+          ]
+        }
+      }
+    },
+    "channelReadiness": {
+      "instagram": {
+        "bioTarget": "unknown",
+        "infoRead": "INVALID_ARGUMENT"
+      },
+      "tiktok": {
+        "bioTarget": "unknown",
+        "infoRead": "INVALID_ARGUMENT"
+      },
+      "pinterest": {
+        "boardIdSeenInExistingPost": "1111333714239531706",
+        "existingPost": 405941434,
+        "boardNameAndCurrentOwnership": "unknown",
+        "projectorSuitability": "unknown",
+        "infoRead": "INVALID_ARGUMENT"
+      },
+      "youtube": {
+        "audience": "general audience, not made for kids",
+        "scope": "same Sternenlicht master only",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SOCIAL-AUSSPIELPLAN-20261026.json",
+          "gitBlobSha": "c46613828078c080472ecd2a29f51b7ab9f2dbb5"
+        },
+        "profileTarget": "unknown",
+        "infoRead": "INVALID_ARGUMENT"
+      }
+    },
+    "channelReadinessScope": "Brand identities freshly verified; brand settings do not supply current bio target, board name/ownership or master publication ledger. Earlier same-day scoped audience decision preserved.",
+    "history": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "durablePublicationLedger": "unknown; no verified operational register",
+      "defaultBranchSearch": {
+        "query": "luxe_sternenprojektor_master_20261018",
+        "repository": "allengchour-glitch/aban-news-landing",
+        "results": [],
+        "limitation": "A code-index search with no results is not proof of an empty publication history."
+      },
+      "scheduledToolLimitation": "Scheduled posts only, no complete published history. No actual approved MP4 identity/hash available for exact film match."
+    },
+    "historyFreshness": "No new history or ledger query; no approved new MP4/hash exists, no publication is attempted. History remains unknown rather than empty.",
+    "writes": {
+      "social": 0,
+      "postEdits": 0,
+      "ledger": 0
+    },
+    "limits": [
+      "Planning tool returns only scheduled, not yet published objects.",
+      "PENDING is source state, not a confirmed publication.",
+      "Different media URLs cannot prove different creative content; returned media are JPEGs, not approved master MP4s.",
+      "No attribution of sales from views or interactions.",
+      "No analytics or metric discovery repeated this run."
+    ]
+  },
+  "dailyKlaviyoReused": {
+    "classification": "Earlier completed daily read reused, not fetched again in this morning run",
+    "recordedAt": "2026-10-31T23:48:56.792712+00:00",
+    "account": {
+      "id": "XWqMAD",
+      "organizationName": "LuxeStyle CH",
+      "website": "https://luxestyle.ch",
+      "timezone": "Europe/Zurich",
+      "preferredCurrency": "USD",
+      "testAccount": false
+    },
+    "metricDiscovery": {
+      "placedOrder": {
+        "id": "W7XTVD",
+        "name": "Placed Order"
+      },
+      "checkoutStarted": {
+        "id": "XhnJPv",
+        "name": "Checkout Started"
+      },
+      "complete": true,
+      "next": null
+    },
+    "flowReport": {
+      "request": {
+        "model": "gpt-6",
+        "conversion_metric_id": "W7XTVD",
+        "filters": "contains-any(flow_id,[\"Vse76a\",\"VbLQj6\",\"RnTvsY\",\"XEGbTB\"])",
+        "group_by": [
+          "flow_id",
+          "flow_name",
+          "flow_message_id",
+          "flow_message_name",
+          "send_channel"
+        ],
+        "statistics": [
+          "recipients",
+          "delivered",
+          "clicks_unique",
+          "conversions"
+        ],
+        "timeframe": {
+          "start": "2026-10-24T22:00:00Z",
+          "end": "2026-10-31T23:00:00Z"
+        },
+        "value_statistics": [],
+        "prompt_intent": "Audit the four existing flows across seven completed local days without mixing currencies."
+      },
+      "reportId": "59d7bbd4-ce94-4372-a642-71c575408cc8",
+      "results": [
+        {
+          "groupings": {
+            "flow_id": "VbLQj6",
+            "flow_name": "Welcome Series",
+            "flow_message_id": "TTuuTS",
+            "flow_message_name": "Email #1",
+            "send_channel": "email"
+          },
+          "statistics": {
+            "recipients": 3,
+            "delivered": 3,
+            "clicks_unique": 1,
+            "conversions": 0
+          }
+        }
+      ],
+      "missingFlowIds": [
+        "Vse76a",
+        "XEGbTB",
+        "RnTvsY"
+      ],
+      "missingPerformance": "unknown",
+      "windowLocal": "2026-10-25T00:00:00+02:00/2026-11-01T00:00:00+01:00",
+      "durationHours": 169,
+      "calls": 1,
+      "revenueReported": false,
+      "interpretation": "Explizite Null-Conversions gelten nur für die gelieferte Welcome-Nachricht im Report; keine Aussage über gesamte Shopkäufe oder Bestellsync."
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "live"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "live"
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live"
+      }
+    ],
+    "revenueMixing": false,
+    "customerProfilesReadThisRun": false
+  },
+  "master": {
+    "at": "2026-11-01T07:15:04.421645+00:00",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "tests": {
+      "originalsConsistencyCases": 20,
+      "probeCases": 8,
+      "totalSyntheticCases": 28,
+      "positiveFixturesAreNotVideosOrRights": true
+    },
+    "nativeMasterCreated": false,
+    "renderApproved": false,
+    "publicationReady": false,
+    "operationalIntegration": false,
+    "publicVideo": {
+      "url": "https://luxestyle.ch/cdn/shop/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4?v=0",
+      "scope": "One existing public Shopify product-page video; not original, licensed or master evidence",
+      "maxBytes": 33554432,
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/cdn/shop/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4?v=0",
+      "bytes": 4433891,
+      "sha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+      "probe": {
+        "readable": true,
+        "fileSha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+        "codedWidth": 852,
+        "codedHeight": 480,
+        "rotation": 0,
+        "width": 852,
+        "height": 480,
+        "durationSeconds": 27.959961,
+        "fps": 25.000034927176838,
+        "nominalFps": 25.0,
+        "constantFrameRate": false,
+        "cadenceState": "not_30fps"
+      }
+    },
+    "actualPublicVideoProbeFinal": {
+      "readable": true,
+      "fileSha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+      "codedWidth": 852,
+      "codedHeight": 480,
+      "rotation": 0,
+      "width": 852,
+      "height": 480,
+      "durationSeconds": 27.959961,
+      "fps": 25.0,
+      "averageFps": 25.000034927176838,
+      "nominalFps": 25.0,
+      "constantFrameRate": false,
+      "cadenceState": "not_30fps"
+    },
+    "actualLegacyProbeFinal": {
+      "readable": true,
+      "fileSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "codedWidth": 960,
+      "codedHeight": 540,
+      "rotation": 0,
+      "width": 960,
+      "height": 540,
+      "durationSeconds": 27.96,
+      "fps": 25.0,
+      "averageFps": 25.0,
+      "nominalFps": 25.0,
+      "constantFrameRate": false,
+      "cadenceState": "not_30fps"
+    },
+    "originalsCheck": {
+      "documentationConsistent": false,
+      "publicationReady": false,
+      "renderApproved": false,
+      "issues": [
+        "P_DETAIL:original_missing",
+        "P_HERO:original_missing",
+        "P_OPERATION:original_missing",
+        "P_PROJECTION:original_missing"
+      ],
+      "actualMedia": [],
+      "scope": "Actual bounded local ffprobe checks plus documentation consistency; native capture provenance, rights and subjective approvals are not authenticated by this script."
+    },
+    "music": {
+      "path": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+      "bytes": 11343950,
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "localGitBlobSha1": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "currentRepositoryBlobMatches": true,
+      "rightsEvidence": "Current CREDITS provenance statement only; no independent final rights/listening approval"
+    },
+    "review": {
+      "independentAgent": "probe_review",
+      "testsRerun": "20+8 passed",
+      "finding": "No serious new logic defect found; actual capture origin, motion, prior upscaling and rights remain independent requirements"
+    },
+    "productEvidence": "../products/NATIVE.json",
+    "referenceImage": "../products/projector-reference.jpg",
+    "sourceScope": "Two explicit local references and one exact public product-video URL; no broad discovery or credentials access",
+    "repositorySources": {
+      "at": "2026-11-01T07:15:04.541Z",
+      "sources": [
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/music/luxe-premium.wav",
+          "sha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c"
+        },
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/music/CREDITS.txt",
+          "sha": "159e308cf68e88841b810a88882856101fdefb42"
+        },
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/music/produce/make_premium.sh",
+          "sha": "c4f66163742cbfc7e4fc93c1f1834b96df559186"
+        },
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/lib/cj_token.mjs",
+          "sha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf"
+        },
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/master_publication_ledger.mjs",
+          "errorCode": "NOT_FOUND"
+        },
+        {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "main",
+          "path": "automation/lib/kanal_sperren.mjs",
+          "sha": "3adab7369f90945769331910525c08b3778b4371"
+        }
+      ]
+    },
+    "youtubeAudienceDecision": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "ownerDecisionAlreadyDocumented": "general_audience_not_specifically_made_for_kids",
+      "confirmedBy": "Root/Metricool-agent continuity check during current run",
+      "newOwnerQuestionRequired": false,
+      "currentConcretePostMadeForKidsFlagVerified": false
+    }
+  },
+  "masterTestCounts": {
+    "test_originals.py": 20,
+    "test_probe.py": 8
+  },
+  "sales": {
+    "checkedAtUTC": "2026-11-01T07:09:44.223518+00:00",
+    "scope": "Exactly three unique public page URLs via Firecrawl, maxAge0. No extra metrics/flows/orders, no Shopify writes. Root document separated from embedded iframe/browser documents.",
+    "pages": [
+      {
+        "key": "pyjama-landing",
+        "url": "https://luxestyle.ch/collections/weihnachtspyjama-familie",
+        "status": 200,
+        "titles": [
+          "Weihnachtspyjama für die Familie & Partnerlook | LuxeStyle"
+        ],
+        "h1": [
+          "Weihnachtspyjamas für die ganze Familie"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/weihnachtspyjama-familie"
+        ],
+        "descriptions": [
+          "Familien-Weihnachtspyjama und Partner-Weihnachtspyjama für Papa, Mama, Kinder und Baby: Elch, Karo, Streifen. Versand in die Schweiz und nach Liechtenstein."
+        ],
+        "robots": [],
+        "viewports": [
+          "width=device-width,initial-scale=1"
+        ],
+        "excludedEmbeddedDocuments": 3
+      },
+      {
+        "key": "pyjama-product",
+        "url": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+        "status": 200,
+        "titles": [
+          "Weihnachts-Pyjama im Partnerlook | LuxeStyle CH"
+        ],
+        "h1": [
+          "Weihnachts-Pyjama im Partnerlook"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352"
+        ],
+        "descriptions": [
+          "Weihnachts-Pyjama im Partnerlook bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+        ],
+        "robots": [],
+        "viewports": [
+          "width=device-width,initial-scale=1"
+        ],
+        "excludedEmbeddedDocuments": 4,
+        "publicStructuredPriceCurrencies": [
+          "CHF"
+        ],
+        "publicStructuredPriceRange": [
+          14.9,
+          17.9
+        ],
+        "publicStructuredOfferCount": 25,
+        "pricePerSelectionDisclosurePresent": true
+      },
+      {
+        "key": "projector-product",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "status": 200,
+        "titles": [
+          "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle"
+        ],
+        "h1": [
+          "Sternenlicht-Projektor für Schlafzimmer"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "descriptions": [
+          "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+        ],
+        "robots": [],
+        "viewports": [
+          "width=device-width,initial-scale=1"
+        ],
+        "excludedEmbeddedDocuments": 4,
+        "publicStructuredPriceCurrencies": [
+          "CHF"
+        ],
+        "publicStructuredPriceRange": [
+          34.9,
+          34.9
+        ],
+        "publicStructuredOfferCount": 1,
+        "existingVideo": {
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          "name": "Produktvideo: Sternenlicht-Projektor für Schlafzimmer",
+          "description": "Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung li...",
+          "thumbnailUrl": [
+            "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=1200"
+          ],
+          "uploadDate": "2026-08-31",
+          "contentUrl": "https://luxestyle.ch/cdn/shop/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4?v=0"
+        },
+        "unassignedVersionClaimsInDescription": true
+      }
+    ],
+    "knownLimitations": [
+      "HTTP200 and declared canonical do not prove Google-selected canonical, indexing, ranking or Googlebot access.",
+      "Existing public projector video is not the approved professional master and supplies no commercial-rights/default-variant proof.",
+      "Root native product evidence is collected separately by parent; this packet does not claim its own Admin query."
+    ],
+    "newLocalWork": {
+      "file": "root_document_audit.py",
+      "purpose": "Prevent embedded browser error documents and SVG titles being misreported as primary-page SEO faults",
+      "realSourceCases": 3,
+      "assertionsPerCase": 7,
+      "passed": true
+    },
+    "sourceHashes": [
+      {
+        "file": "root_document_audit.py",
+        "sha256": "b5ac007a5ebde6de240dd595a3f9896edbb62d0c48b030615fae1d6d5e2ee2b8",
+        "bytes": 4499
+      },
+      {
+        "file": "test_root_document_audit.py",
+        "sha256": "6a4d4726bb023c93b623de339796390197a9edde1c9ab21fbb98e477043f85ec",
+        "bytes": 1273
+      },
+      {
+        "file": "ROOT-DOCUMENT-RESULTS.json",
+        "sha256": "7d22580910f1d7ed2c79c1c28da37dd99a7db9cac37c6a730e71ea37aead10f8",
+        "bytes": 42092
+      }
+    ]
+  },
+  "environment": {
+    "at": "2026-11-01T07:17:49.746Z",
+    "observationsCurrent": true,
+    "networkPolicy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "configuredSecretBindings": 0,
+    "configuredRuntimeVariables": 0,
+    "configuredOutboundIdentities": 0,
+    "dnsWriterToolConfirmed": false,
+    "notEvidenceOfMissingCJConnector": true
+  },
+  "writes": {
+    "socialPosts": [],
+    "shop": [],
+    "flows": [],
+    "dns": [],
+    "ads": [],
+    "renders": [],
+    "repositoryDocumentation": "Prepared separately; confirmed receipts are retained locally after write"
+  },
+  "independentRootReview": [
+    "Actual fresh product photos viewed and IDs/prices matched to native variants",
+    "Exact main tag helper executed with additional owner rueckhol and nonempty-tag rules",
+    "New probe code reviewed: actual explicit files, file/pipe protocol limit, timeout and frame bounds; no quality/rights/publication approval",
+    "No complete week totals or sales attribution inferred from incomplete channel data"
+  ],
+  "localEvidenceFiles": [
+    {
+      "path": "master/STORYBOARD.md",
+      "sha256": "8f069e6b121377007f4680bf3157283ebc71cfd9ff643e6279037a56df64fa99",
+      "bytes": 5750
+    },
+    {
+      "path": "master/CAPTIONS-UTM.json",
+      "sha256": "78aa007d087ac8318889f22b6fd62167f523657323eb5406748a71f705c9e3a1",
+      "bytes": 8763
+    },
+    {
+      "path": "master/TEST-RESULTS.json",
+      "sha256": "ddd51b3fda7f9081a5a792e04ba7565b6b6c8160ff5972022fc4fe993098b1d1",
+      "bytes": 3159
+    },
+    {
+      "path": "master/ORIGINALS-CHECK.json",
+      "sha256": "b92f58249edf141b1f50efb12966e122590d19b1c7f919953a274f85c9a58f0c",
+      "bytes": 450
+    },
+    {
+      "path": "master/PUBLIC-VIDEO-REFERENCE.json",
+      "sha256": "a5654669bb5873f5475e095b3a64a326a90d70c9d2b93b92afeb78a216179e6f",
+      "bytes": 941
+    },
+    {
+      "path": "sales/ROOT-DOCUMENT-RESULTS.json",
+      "sha256": "7d22580910f1d7ed2c79c1c28da37dd99a7db9cac37c6a730e71ea37aead10f8",
+      "bytes": 42092
+    },
+    {
+      "path": "sales/DEFAULT-AUSFUEHRUNG-MATRIX.md",
+      "sha256": "ee24f314ad75e0030c7db3ee86df5bbbabda40a39c275dfcf7bedab645d90430",
+      "bytes": 2162
+    },
+    {
+      "path": "sales/welcome-review/REVIEW.json",
+      "sha256": "a99e473876783015a9756bbdda658cbaf19dd129a0bb2c09e2f0831e4c287a26",
+      "bytes": 947
+    },
+    {
+      "path": "metricool/REPORT.md",
+      "sha256": "6cfd4689e1a0f407b0c4d0f4436a12d53cdab6f6c9313cbd18fcbd6259acfb21",
+      "bytes": 5056
+    }
+  ]
+}
