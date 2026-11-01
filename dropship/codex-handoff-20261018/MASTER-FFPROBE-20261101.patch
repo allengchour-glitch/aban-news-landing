@@ -1,0 +1,246 @@
+--- a/master/check_originals.py
++++ b/master/check_originals.py
+@@ -8,6 +8,7 @@
+ import json
+ import re
+ from pathlib import Path
++from probe_originals import probe_media, hash_file
+ 
+ MASTER = 'luxe_sternenprojektor_master_20261018'
+ PRODUCT = 'gid://shopify/Product/15521256604033'
+@@ -38,6 +39,7 @@
+         rows = []
+         issues.append('originals_not_list')
+     seen = set()
++    media_cache = {}
+     for row in rows:
+         if not isinstance(row, dict):
+             issues.append('original_not_object')
+@@ -59,11 +61,33 @@
+             fail('explicit_original_path_unknown')
+         else:
+             try:
+-                actual_sha = hashlib.sha256(Path(location).read_bytes()).hexdigest()
++                actual_sha = hash_file(location)
+                 if actual_sha != sha:
+                     fail('original_bytes_hash_mismatch')
+             except (OSError, ValueError):
+                 fail('original_bytes_unreadable')
++        if nonempty(location) and Path(location).is_absolute():
++            cache_key = (location, sha) if isinstance(sha, str) else (location, '')
++            if cache_key not in media_cache:
++                media_cache[cache_key] = probe_media(location)
++            measured = media_cache[cache_key]
++            if measured.get('readable') is not True:
++                fail('actual_media_probe_unknown')
++            else:
++                if measured.get('fileSha256') != sha:
++                    fail('actual_probe_bytes_hash_mismatch')
++                if not (measured.get('width', 0) >= 1080 and measured.get('height', 0) >= 1920
++                        and measured.get('fps') == 30 and measured.get('nominalFps') == 30
++                        and measured.get('constantFrameRate') is True):
++                    fail('actual_native_portrait_30fps_not_measured')
++                if measured.get('durationSeconds', 0) < REQUIRED[take] + 2:
++                    fail('actual_original_handles_too_short')
++                claimed = row.get('probe') if isinstance(row.get('probe'), dict) else {}
++                if (claimed.get('width') != measured.get('width') or claimed.get('height') != measured.get('height')
++                        or claimed.get('fps') != measured.get('fps')
++                        or not finite_number(claimed.get('durationSeconds'))
++                        or abs(claimed['durationSeconds'] - measured.get('durationSeconds', 0)) > 2 / 30):
++                    fail('declared_probe_differs_from_actual_bytes')
+         if row.get('productId') != PRODUCT or row.get('variantId') != VARIANT:
+             fail('product_or_variant_mismatch')
+         probe = row.get('probe') or {}
+@@ -95,7 +119,8 @@
+         issues.append(take + ':original_missing')
+     return {'documentationConsistent': not issues, 'publicationReady': False,
+             'renderApproved': False, 'issues': issues,
+-            'scope': 'Offline consistency only; referenced rights and subjective approvals are not authenticated by this script.'}
++            'actualMedia': [dict(localFile=key[0], **value) for key, value in media_cache.items()],
++            'scope': 'Actual bounded local ffprobe checks plus documentation consistency; native capture provenance, rights and subjective approvals are not authenticated by this script.'}
+ 
+ 
+ if __name__ == '__main__':
+--- a/master/probe_originals.py
++++ b/master/probe_originals.py
+@@ -0,0 +1,88 @@
++"""Read only explicitly supplied local originals; no render or publication approval."""
++import hashlib
++import json
++import subprocess
++from fractions import Fraction
++from pathlib import Path
++
++MAX_SECONDS = 120
++MAX_PACKETS = 3601
++
++
++def hash_file(path):
++    digest = hashlib.sha256()
++    with Path(path).open('rb') as source:
++        for chunk in iter(lambda: source.read(1024 * 1024), b''):
++            digest.update(chunk)
++    return digest.hexdigest()
++
++
++def _run(location, entries, frames=False):
++    args = ['ffprobe', '-v', 'error', '-protocol_whitelist', 'file,pipe',
++            '-select_streams', 'v:0']
++    if frames:
++        args += ['-read_intervals', '%+#' + str(MAX_PACKETS), '-show_frames']
++    args += ['-show_entries', entries, '-of', 'json', str(location)]
++    out = subprocess.run(args, capture_output=True, timeout=20, check=False)
++    if out.returncode or len(out.stdout) > 1_500_000:
++        raise ValueError('media_probe_failed_or_exceeded_output_bound')
++    return json.loads(out.stdout)
++
++
++def probe_media(location):
++    """Inspect actual file bytes and timestamps. Attestations remain unverified."""
++    if not isinstance(location, (str, Path)):
++        return {'readable': False, 'reason': 'explicit_local_original_unreadable'}
++    path = Path(location)
++    if not path.is_absolute() or not path.is_file():
++        return {'readable': False, 'reason': 'explicit_local_original_unreadable'}
++    try:
++        sha_before = hash_file(path)
++        raw = _run(path, 'stream=width,height,avg_frame_rate,r_frame_rate,duration,time_base:stream_side_data=rotation:stream_disposition=attached_pic:format=duration,format_name')
++        streams = raw.get('streams', [])
++        if len(streams) != 1 or streams[0].get('disposition', {}).get('attached_pic'):
++            raise ValueError('single_video_stream_not_documented')
++        stream = streams[0]
++        duration = Fraction(str(stream.get('duration') or raw.get('format', {}).get('duration')))
++        width, height = int(stream['width']), int(stream['height'])
++        rotations = [int(v['rotation']) % 360 for v in stream.get('side_data_list', []) if 'rotation' in v]
++        rotation = rotations[0] if rotations else 0
++        if rotation not in (0, 90, 180, 270) or len(set(rotations)) > 1:
++            raise ValueError('unsupported_or_conflicting_rotation')
++        display_width, display_height = (height, width) if rotation in (90, 270) else (width, height)
++        observed = {'readable': True, 'fileSha256': sha_before,
++                    'codedWidth': width, 'codedHeight': height, 'rotation': rotation,
++                    'width': display_width, 'height': display_height,
++                    'durationSeconds': float(duration),
++                    'fps': float(Fraction(stream['r_frame_rate'])),
++                    'averageFps': float(Fraction(stream['avg_frame_rate'])),
++                    'nominalFps': float(Fraction(stream['r_frame_rate'])),
++                    'constantFrameRate': False, 'cadenceState': 'not_checked'}
++        if not 0 < duration <= MAX_SECONDS:
++            observed['cadenceState'] = 'outside_bounded_take_duration'
++            return observed
++        if observed['fps'] != 30 or abs(observed['averageFps'] - 30) > .01:
++            observed['cadenceState'] = 'not_30fps'
++            return observed
++        tick = Fraction(stream['time_base'])
++        frames = _run(path, 'frame=best_effort_timestamp', frames=True).get('frames', [])
++        if not 2 <= len(frames) < MAX_PACKETS:
++            observed['cadenceState'] = 'incomplete_or_exceeded_frame_bound'
++            return observed
++        stamps = [int(frame['best_effort_timestamp']) * tick for frame in frames]
++        step = Fraction(1, 30)
++        gaps = [b - a for a, b in zip(stamps, stamps[1:])]
++        complete = (len(frames) == round(duration * 30) and
++                    abs(stamps[-1] - stamps[0] + step - duration) <= tick + Fraction(1, 1_000_000))
++        constant = (all(gap > 0 and abs(gap - step) <= tick + Fraction(1, 1_000_000) for gap in gaps) and
++                    all(abs(stamp - stamps[0] - index * step) <= tick + Fraction(1, 1_000_000)
++                        for index, stamp in enumerate(stamps)))
++        observed.update(frameCountInspected=len(frames),
++                        constantFrameRate=complete and constant,
++                        cadenceState='measured_full_take' if complete else 'incomplete_timing_coverage')
++        sha_after = hash_file(path)
++        if sha_before != sha_after:
++            raise ValueError('original_changed_during_probe')
++        return observed
++    except (OSError, ValueError, KeyError, TypeError, ZeroDivisionError, subprocess.TimeoutExpired) as error:
++        return {'readable': False, 'reason': 'probe_unavailable_or_invalid:' + type(error).__name__}
+--- a/master/test_originals.py
++++ b/master/test_originals.py
+@@ -3,6 +3,7 @@
+ import hashlib
+ import json
+ import tempfile
++from unittest.mock import patch
+ from pathlib import Path
+ from check_originals import audit, MASTER, PRODUCT, VARIANT, REQUIRED, CHANNELS, LEGACY_HASH
+ 
+@@ -37,9 +38,20 @@
+     bad = copy.deepcopy(valid); bad['originals'][0]['probe']['durationSeconds'] = 5.6; cases.append(('handles_missing', bad, False))
+     bad = copy.deepcopy(valid); bad['originals'][0]['takeId'] = {}; cases.append(('object_take_id', bad, False))
+     bad = copy.deepcopy(valid); bad['originals'][0]['takeId'] = []; cases.append(('list_take_id', bad, False))
++    measured = {'readable': True, 'fileSha256': sha, 'width': 1080, 'height': 1920, 'fps': 30, 'nominalFps': 30, 'constantFrameRate': True, 'durationSeconds': 10}
+     for name, data, expected in cases:
+-        out = audit(data)
++        with patch('check_originals.probe_media', return_value=measured):
++            out = audit(data)
+         assert out['documentationConsistent'] is expected, (name, out)
+         assert out['publicationReady'] is False and out['renderApproved'] is False
+         results.append({'name': name, 'passed': True, 'issueCount': len(out['issues'])})
+-print(json.dumps({'classification': 'SYNTHETIC OFFLINE ONLY', 'passed': len(results), 'cases': results}, indent=2))
++    actual = audit(valid)
++    assert not actual['documentationConsistent'] and any('actual_media_probe_unknown' in issue for issue in actual['issues'])
++    results.append({'name': 'real_probe_rejects_claimed_video_metadata_on_non_video_bytes', 'passed': True})
++    for name, overrides, expected_issue in [('actual_resolution_conflict', {'width': 960, 'height': 540}, 'actual_native_portrait_30fps_not_measured'), ('actual_cadence_conflict', {'constantFrameRate': False}, 'actual_native_portrait_30fps_not_measured'), ('actual_probe_wrong_bytes', {'fileSha256': 'b'*64}, 'actual_probe_bytes_hash_mismatch'), ('declared_duration_conflict', {'durationSeconds': 12}, 'declared_probe_differs_from_actual_bytes'), ('actual_original_too_short', {'durationSeconds': 7.59}, 'actual_original_handles_too_short')]:
++        with patch('check_originals.probe_media', return_value={**measured, **overrides}):
++            actual = audit(valid)
++        assert not actual['documentationConsistent'] and any(expected_issue in issue for issue in actual['issues']), (name, actual)
++        assert not actual['publicationReady'] and not actual['renderApproved']
++        results.append({'name': name, 'passed': True})
++print(json.dumps({'classification': 'SYNTHETIC OFFLINE ONLY; mocked media metadata is not original-video evidence' , 'passed': len(results), 'cases': results}, indent=2))
+--- a/master/test_probe.py
++++ b/master/test_probe.py
+@@ -0,0 +1,56 @@
++"""Synthetic ffprobe-response fixtures; no generated video, rights or approval."""
++import copy
++import hashlib
++import json
++import subprocess
++import tempfile
++from pathlib import Path
++from unittest.mock import patch
++from probe_originals import probe_media
++
++results = []
++with tempfile.TemporaryDirectory() as tmp:
++    p = Path(tmp) / 'explicit-synthetic-probe-fixture.bin'
++    p.write_bytes(b'SYNTHETIC PROBE RESPONSE TEST; NOT VIDEO')
++    meta = {'streams': [{'width': 1080, 'height': 1920, 'avg_frame_rate': '30/1',
++                        'r_frame_rate': '30/1', 'time_base': '1/30000', 'duration': '.1'}]}
++    frames = {'frames': [{'best_effort_timestamp': n} for n in [0, 1000, 2000]]}
++    with patch('probe_originals._run', side_effect=[meta, frames]):
++        observed = probe_media(p)
++    assert observed['constantFrameRate'] is True and observed['frameCountInspected'] == 3
++    assert observed['fileSha256'] == hashlib.sha256(p.read_bytes()).hexdigest()
++    results.append({'case': 'complete_30fps_timestamps_and_actual_file_hash', 'passed': True})
++    with patch('probe_originals._run', side_effect=[meta, {'frames': frames['frames'][:2]}]):
++        observed = probe_media(p)
++    assert observed['constantFrameRate'] is False and observed['cadenceState'] == 'incomplete_timing_coverage'
++    results.append({'case': 'partial_timing_coverage_does_not_prove_cfr', 'passed': True})
++    with patch('probe_originals._run', side_effect=[meta, {'frames': [{'best_effort_timestamp': n} for n in [0, 500, 2000]]}]):
++        observed = probe_media(p)
++    assert observed['constantFrameRate'] is False
++    results.append({'case': 'average_30fps_does_not_hide_variable_timestamps', 'passed': True})
++    rounded = copy.deepcopy(meta)
++    rounded['streams'][0]['avg_frame_rate'] = '29999999/1000000'
++    with patch('probe_originals._run', side_effect=[rounded, frames]):
++        observed = probe_media(p)
++    assert observed['fps'] == 30 and observed['constantFrameRate'] is True
++    results.append({'case': 'container_duration_rounding_does_not_reject_real_30fps_timestamps', 'passed': True})
++    rotation = copy.deepcopy(meta)
++    rotation['streams'][0].update(width=1920, height=1080, side_data_list=[{'rotation': 90}])
++    with patch('probe_originals._run', side_effect=[rotation, frames]):
++        observed = probe_media(p)
++    assert observed['width'] == 1080 and observed['height'] == 1920 and observed['rotation'] == 90
++    results.append({'case': 'camera_rotation_retains_actual_portrait_dimensions', 'passed': True})
++    large = copy.deepcopy(meta)
++    large['streams'][0]['duration'] = '121'
++    with patch('probe_originals._run', return_value=large) as reader:
++        observed = probe_media(p)
++    assert not observed['constantFrameRate'] and reader.call_count == 1
++    results.append({'case': 'oversized_take_blocks_without_unbounded_frame_scan', 'passed': True})
++    with patch('probe_originals._run', side_effect=subprocess.TimeoutExpired('ffprobe', 20)):
++        observed = probe_media(p)
++    assert observed['readable'] is False
++    results.append({'case': 'probe_timeout_is_unknown_not_empty_video', 'passed': True})
++    invalid = probe_media(None)
++    assert invalid['readable'] is False
++    results.append({'case': 'invalid_explicit_path_has_no_file_discovery', 'passed': True})
++print(json.dumps({'classification': 'SYNTHETIC ffprobe responses only', 'passed': len(results), 'cases': results}, indent=2))
