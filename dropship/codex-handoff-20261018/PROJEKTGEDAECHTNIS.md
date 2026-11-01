@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 47
+
+[Winter-/Weihnachtsbilder und Claude R47](WINTER-WEIHNACHTSBILDER-20261101-R47.md) · [Finale Hashes, Deltas und Belege](WINTER-WEIHNACHTSBILDER-20261101-R47.json).
+
+Die bisherigen Links Winterideen ansehen und Weihnachtsideen entdecken haben zwei eigene illustrative Bilder: gemütliche Winterszene und festliche Geschenke. Mobil untereinander, Desktop neben dem Titel. Bisherige Beschriftungen/Locale-Schlüssel und Collection-Links erhalten. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich, nur Section und CSS im bestehenden UNPUBLISHED-Entwurf212978598279 geändert und nativ vollständig exakt bestätigt. Kein JS-/Locale-/globalerCollection-/Produktwrite.
+
+26begrenzte native Bild-/Link-/Layout-/Tastaturbedingungen auf360/390/1024/1440px bestanden und Mobil-/Desktopbilder visuell geprüft. GET/HEAD-Schutz:70andereRequests blockiert,8Fetchfehler separat dokumentiert; keineCheckout-/Tracking-/Vollthemeabnahme. Liquid-Validator VALID mit bestehendemCDN-Hinweis/CSS SUCCESS; SchemaCache und fehlendeFixture-settings_schema.json dokumentiert. Illustrative Szenen, keine neuen konkretenProdukt-/Material-/Preis-/Lieferumfangsversprechen.
+
+R47 hat für sections/luxe-edit-home.liquid und assets/luxe-edit.css Vorrang. R46-Directory-Snippet undübrigeR46/R45/R44-Änderungen erhalten: Beauty/Sport, Budgetkarussell/Bilder/Preisfilter24.99/49.99, Collage/Banner/52Referenzen. BestehendeWebsitefreigabe gilt; vorPublish vollständigen frischenTheme-Diff/Identität lesen, denselben Entwurf überlegitimen fähigenZugriff veröffentlichen und tatsächlichenMAIN/öffentlicheDE/FR-Mobil-/Desktopbilder bestätigen. Connector sperrtPublish/MAIN-Writes, keineUmgehung/neueKopie/erneute gleicheFreigabefrage. MAINunverändert, keinPublish, Claude-EinstiegR47/Empfang unbekannt.
+
+EinHomepageTask fortgeführt,16andereTasks undalle17IDs/Historien erhalten. R43-Zwei-Text-Freigabe bleibt separat offen. Versand/Konto, Tagesgrenzen und Kauf-Watch-Ende erhalten; keinezusätzlichenReports, Social-/Shopkonfigurations-/Frequenzänderungen. LokalerSpiegel memory/snapshots/2026-11-01-r47.
+
 ## Aktueller Stand – 01.11.2026, Revision 46
 
 [Beauty-/Sportbilder und Claude R46](BEAUTY-SPORT-BILDER-20261101-R46.md) · [Finale Hashes, Deltas und Nachweise](BEAUTY-SPORT-BILDER-20261101-R46.json).
