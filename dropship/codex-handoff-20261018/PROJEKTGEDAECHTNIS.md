@@ -1,5 +1,15 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 01.11.2026, Revision 40
+
+[Claude-Übergabe R40](CLAUDE-CODE-UEBERGABE-20261101-R40.md) · [Selbstgestalten-Bericht](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.md) · [finale Nachweise](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json).
+
+Im bestehenden UNPUBLISHED-Entwurf 212978598279 sind 31 aktuell geprüfte Printful-Hauptansichten, Originalvariantengalerie, native cm/ml, deutsche Ornamentformen, Suche, Kategorien und Sortierung gespeichert. Sieben finale Theme-Dateien exakt nativ bestätigt; 30 isolierte Funktionstests und neun zusätzliche Bildbreitentests bestanden. 572 datierte Katalogmodelle und 13’160 Originalvarianten erhalten; dies ist kein kaufbarer Gesamtkatalog. Weitere 541 zusätzliche Hauptbildquellen nur inventarisiert. Keine kopierten Supplierpreise, fremden Reviews oder erfundenen Lieferumfänge. Bedruckte Lifestyle-Beispiele und vollständige EDM-/Druck-/Bestellbindung bleiben offen.
+
+MAIN 212971061639 nicht durch Codex verändert oder veröffentlicht. Claude soll denselben Entwurf über legitimen Zugang nach frischem vollständigem Diff übernehmen und öffentlich prüfen; bestehende Websitefreigabe nicht erneut verlangen, keine neue Kopie. Connector-Grenzen erhalten. R40-Versionen gleicher sieben Dateipfade haben Vorrang vor dem datierten R37-Transfer, R37/R5 und alle Historien bleiben erhalten. Kenntnisnahme unbekannt.
+
+R39-Fotoausnahme und genau genehmigter Threads-Termin 04.11., 18:30 Zürich mit dauerhaftem engem Publikationsbeleg bleiben unverändert. Keine neuen Tagesreports, Kauf-Watch-Abfragen oder Automationen. Ein Personalizer-Task fortgeschrieben, 15 andere Tasks und 16 IDs erhalten. Lokaler Spiegel: memory/snapshots/2026-11-01-r40. Vor jedem Lauf vier Quellen frisch remote lesen.
+
 ## Aktueller Stand – 01.11.2026, Revision 39
 
 [Bestätigter Threads-Fototermin](FOTO-WOCHENENTWURF-20261101-R39.md) · [Belege](FOTO-WOCHENBELEGE-20261101-R39.json) · [Enges Publikationsregister](register/photo-week-luxe_photo_kosmetik_organizer_20261101.json) · [Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json).
