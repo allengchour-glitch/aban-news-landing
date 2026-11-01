@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-01T08:46:04.143184+00:00",
+  "brand": "luxestyle.ch",
+  "trigger": "interactive_owner_weiter_after_existing_morning_run",
+  "status": "local_review_drafts_no_runtime_change",
+  "repository": "allengchour-glitch/aban-news-landing",
+  "documentationBranch": "codex/luxestyle-claude-handoff-20261018",
+  "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+  "identity": {
+    "shop": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "name": "LuxeStyle",
+          "currencyCode": "CHF",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          }
+        }
+      }
+    },
+    "metricool": {
+      "at": "2026-11-01T08:16:29.208Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "match": true
+    }
+  },
+  "tasks": [
+    "printful-sync-variant-identity",
+    "cj-variant-price-identity"
+  ],
+  "printful": {
+    "beforeReproduction": {
+      "scope": "Synthetic before-source reproduction; no network or real orders",
+      "runs": 2,
+      "providerCreates": 2,
+      "markerFailures": 4,
+      "summaryClaims": [
+        "Printful-Sync fertig: 1 bestätigt, 0 Entwurf/Review, 0 Item übersprungen.",
+        "Printful-Sync fertig: 1 bestätigt, 0 Entwurf/Review, 0 Item übersprungen."
+      ]
+    },
+    "tests": {
+      "adapterPassed": 45,
+      "moduleCasesPassed": 34,
+      "totalPassed": 79,
+      "failed": 0,
+      "network": "strict_synthetic_fetch_only"
+    },
+    "candidateFiles": {
+      "at": "2026-11-01T08:42:38.976279+00:00",
+      "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "scope": "Local review draft; no live order/store writes; prepared scope/checkpoint is not initialized",
+      "files": [
+        {
+          "path": "automation/printful_sync.mjs",
+          "bytes": 16979,
+          "sha256": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+          "beforeSha256": "16dfccfe69f5ac59f1d14c3b48049c20e77680fdd51094b203998d9c008cafd4"
+        },
+        {
+          "path": "automation/printful_sync_test.mjs",
+          "bytes": 21221,
+          "sha256": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+          "beforeSha256": "9822f0adedf51861d979fbbcf02bf33a01ba25211fd66f0bf536a8014f7cfcf7"
+        },
+        {
+          "path": "automation/lib/printful_idempotenz.mjs",
+          "bytes": 9491,
+          "sha256": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+          "beforeSha256": null
+        },
+        {
+          "path": "automation/printful_idempotenz_test.mjs",
+          "bytes": 11487,
+          "sha256": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+          "beforeSha256": null
+        }
+      ]
+    },
+    "roundtrip": {
+      "scope": "Four local review files only; no checkout/clone/deploy",
+      "gitApplyExit": 0,
+      "stderr": "",
+      "checks": [
+        {
+          "path": "automation/printful_sync.mjs",
+          "sha256": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+          "expected": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+          "equal": true
+        },
+        {
+          "path": "automation/printful_sync_test.mjs",
+          "sha256": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+          "expected": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+          "equal": true
+        },
+        {
+          "path": "automation/lib/printful_idempotenz.mjs",
+          "sha256": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+          "expected": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+          "equal": true
+        },
+        {
+          "path": "automation/printful_idempotenz_test.mjs",
+          "sha256": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+          "expected": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+          "equal": true
+        }
+      ],
+      "allByteIdentical": true
+    },
+    "mutation": {
+      "scope": "Isolated two-file synthetic copy only; candidate sources unchanged",
+      "mutation": "Remove own inflight-claim equality check immediately before POST",
+      "exit": 1,
+      "killed": true,
+      "failureExpected": "Own claim replaced during supplier lookup blocks POST",
+      "failureObserved": true,
+      "candidateModified": false
+    },
+    "independentFinalReview": "# Gezielte Abschlussprüfung, 01.11.2026\n\nGeprüft wurde ausschliesslich der lokale finale Printful-Entwurf gegen Main `a431bf27d5e7af6b7f35ff9506380fee3f1c27a8`. Keine Erweiterung des Prüfumfangs, keine Änderungen an den Entwicklungsquellen, keine echten Kontozugriffe oder Schreibaufrufe.\n\nFinal geprüfte SHA-256:\n\n- `automation/lib/printful_idempotenz.mjs`: `06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369`\n- `automation/printful_sync.mjs`: `910a66a66b8a856023c9fb7dbfd48607bed45f104e95cb93ca17f9fd814aef32`\n\nDie drei im ersten Bericht benannten Lücken sind im geprüften Entwurf korrigiert:\n\n1. Eine 404 gilt nur noch mit strukturiertem `error.reason=NotFound`, HTTP/code404 und nichtleerem Fehlertext als belegte Abwesenheit. Der eigene Zusatzfall `WrongStore` bleibt jetzt vor Claim/Create blockiert; **0 POST**.\n2. Der Ready-Checkpoint bindet über `createAbsicht` einen strikt booleschen `confirm`-Wert. Die eigene Fixture wurde auf diesen Hash aktualisiert. Ihr Wechsel von `confirm=false` auf `true` scheitert jetzt an `checkpoint_identity_conflict`; **0 POST**. Der separate Remotevergleich prüft weiterhin die belegte Empfänger-/Positionsidentität.\n3. Vor POST prüft eine zusätzliche frische Quellenabfrage Quellhash und vollständigen eigenen Inflight-Claim. Vor der Zuordnungsquittierung wird die Quelle erneut geprüft; der Adapter erhält den erwarteten Hash und prüft ihn vor Marker sowie nach Marker-/Tag-Rücklesen. Die neuen Fälle «Quelle während Lookup geändert», «Claim ersetzt» und «bestehender Anbieterauftrag mit geänderter Quelle» laufen grün.\n\nUnabhängiger erneuter Lauf des bestehenden gemockten Testeinstiegs unter Node **24.19.0**: **79 bestanden, 0 Fehler** (45 Adapterprüfungen + 34 Modul-Fälle), Exit 0. Der vorher gelesene Fake-Fetch-Pfad ersetzt Netzwerk vollständig und wirft bei nicht abgedeckten Requests; die beiden separaten Reviewfälle verwenden ausschliesslich synthetische Funktionsargumente ohne `fetch`.\n\nIm gezielten Abschlussumfang kein weiterer konkreter Befund. Dies ist eine lokale Entwurfsprüfung, keine Produktionsfreigabe. Node22/Voll-CI, produktive Ausführung, Lieferanten-/Shopberechtigungen und der bewusst fehlende belegte Ready-/Migrations-Cutover bleiben ausserhalb dieses Nachweises. Kein Ready-Beleg wurde angelegt und kein Betriebsregister initialisiert. `REVIEW.md` erhält den Vor-Nachbesserungsbefund unverändert als Historie.\n\n## Nachtrag zum abschliessenden Kommentar-Diff\n\nDer finale Sync-Hash lautet jetzt `73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5`. Der Modulhash bleibt unverändert `06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369`; beide stimmen frisch mit `FILES.json` überein.\n\nDer genaue Unterschied zum oben geprüften Sync-Snapshot `910a66…` umfasst ausschliesslich drei Kommentarzeilen: Header zur Quell-/Claimprüfung mit `confirm`, Pflichtangabe `PRINTFUL_STORE_ID` und Beschreibung des GET-/Create-Zeitlimits. Durch ausschliessliches Rückgängigmachen dieser drei Kommentarersetzungen im Arbeitsspeicher wurde der vollständige frühere SHA-256 `910a66a66b8a856023c9fb7dbfd48607bed45f104e95cb93ca17f9fd814aef32` exakt wiederhergestellt. Damit ist die unveränderte funktionale Quelle belegt; keine weitere Testsuite ausgeführt. Der nachvollziehbare Diff liegt in `COMMENT-ONLY-FINAL.diff`. Entwicklungsquellen blieben unverändert.\n",
+    "commentOnlyFinalDelta": "--- reviewed-910a66/automation/printful_sync.mjs\n+++ final-73bc9a/automation/printful_sync.mjs\n@@ -11,10 +11,10 @@\n  *   Fehlende, unlesbare oder unbekannte Designprüfung sperrt vor POST.\n  *   Unvollständige LineItem-Seiten sperren den ganzen Auftrag. Kein Ready-Beleg wird hier initialisiert.\n  * Wiederanlauf: externe ID + exakter Anbieterabgleich; kein Create ohne expliziten, bereits bestehenden Ready-Checkpoint.\n- * Vor POST: Shopify compareDigest/CAS, ACK und Rücklesen. Unklarer POST bleibt inflight; kein blinder Retry.\n+ * Vor POST: Shopify compareDigest/CAS, Quell-/Claim-Rücklesen; der Intent bindet auch confirm. Unklarer POST bleibt inflight; kein blinder Retry.\n  * printful-synced bedeutet nur geprüfte Zuordnung; Anbieterstatus ist weder Zahlungs- noch Auslieferungsbeleg.\n  * No-op ohne PRINTFUL_API_KEY oder ohne Shopify-Creds. ENV:\n- *   PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=1|0 (Default 1 = AI-gated)],\n+ *   PRINTFUL_API_KEY + PRINTFUL_STORE_ID (zwingend), [PRINTFUL_AUTO_CONFIRM=1|0 (Default 1 = AI-gated)],\n  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]\n  */\n import { synchronisiereEinmal, bestellBelegHash } from './lib/printful_idempotenz.mjs';\n@@ -47,7 +47,7 @@\n async function resolveToken(){ if(ADMIN_TOKEN){ const s=await works(ADMIN_TOKEN); if(s) return ADMIN_TOKEN; } if(CID&&CSEC){ const t=await clientCredentials(); if(t&&await works(t)) return t; } console.error('❌ Keine funktionierende Shopify-Auth.'); throw new Error('shopify_identity_or_auth_unknown'); }\n \n // ---------- Printful ----------\n-// timeoutMs: nur für Abfragen (GET) gesetzt; ohne Zeitlimit hinge ein Lauf an einer nicht antwortenden Printful-API. retryAfter: Sekunden aus dem Kopf «Retry-After» (bei 429).\n+// GET und Create haben ein Zeitlimit; ein unklarer Create wird nur nachgelesen. retryAfter: Sekunden aus «Retry-After» (429).\n async function pf(path,method,body,timeoutMs){ const headers={'Authorization':'Bearer '+PF_KEY,'Content-Type':'application/json'}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;\n   const r=await fetch('https://api.printful.com'+path,{method:method||'GET',headers,body:body?JSON.stringify(body):undefined,signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined});\n   const j=await r.json().catch(()=>({})); return {ok:r.ok,status:r.status,j,retryAfter:parseInt((r.headers&&r.headers.get&&r.headers.get('retry-after'))||'0',10)||0}; }\n",
+    "schemaReadTypes": [
+      "QueryRoot",
+      "Shop",
+      "Order",
+      "LineItemConnection",
+      "Metafield",
+      "MetafieldsSetInput",
+      "Mutation",
+      "MetafieldsSetPayload",
+      "TagsAddPayload"
+    ],
+    "migrationOrReadyCheckpointInitialized": false,
+    "crossSystemAtomicLock": false
+  },
+  "cj": {
+    "beforeAfter": {
+      "scope": "Exakte extrahierte Funktionen, gleiche fiktive Eingaben; keine API-Aufrufe",
+      "results": [
+        {
+          "name": "vollstaendige_positive_kontrolle",
+          "vorher": {
+            "first": {
+              "ok": true
+            },
+            "writes": 1,
+            "reserved": true
+          },
+          "nachher": {
+            "first": {
+              "ok": true
+            },
+            "writes": 1,
+            "reserved": true
+          }
+        },
+        {
+          "name": "missing_search",
+          "vorher": {
+            "first": {
+              "ok": true
+            },
+            "writes": 1,
+            "reserved": true
+          },
+          "nachher": {
+            "first": {
+              "ok": false,
+              "unbekannt": true,
+              "fehler": "SKU-Gegenprobe unbekannt oder unvollständig"
+            },
+            "writes": 0,
+            "reserved": false
+          }
+        },
+        {
+          "name": "truncated_search",
+          "vorher": {
+            "first": {
+              "ok": true
+            },
+            "writes": 1,
+            "reserved": true
+          },
+          "nachher": {
+            "first": {
+              "ok": false,
+              "unbekannt": true,
+              "fehler": "SKU-Gegenprobe unbekannt oder unvollständig"
+            },
+            "writes": 0,
+            "reserved": false
+          }
+        },
+        {
+          "name": "missing_userErrors",
+          "vorher": {
+            "first": {
+              "ok": true
+            },
+            "writes": 1,
+            "reserved": true
+          },
+          "nachher": {
+            "first": {
+              "ok": false,
+              "unbekannt": true,
+              "fehler": "SKU-Schreibstatus unbekannt: Quittierung fehlt, enthält Fehler oder passt nicht"
+            },
+            "writes": 1,
+            "reserved": true
+          }
+        },
+        {
+          "name": "unknown_write_retried_in_same_process",
+          "vorher": {
+            "first": {
+              "threw": true
+            },
+            "second": {
+              "ok": true
+            },
+            "writes": 2,
+            "reserved": true
+          },
+          "nachher": {
+            "first": {
+              "ok": false,
+              "unbekannt": true,
+              "fehler": "SKU-Schreibstatus unbekannt: Antwort ausgeblieben"
+            },
+            "second": {
+              "ok": false,
+              "zurueckgestellt": true,
+              "uebersprungen": "SKU schon reserviert oder Schreibstatus unbekannt (in diesem Lauf)"
+            },
+            "writes": 1,
+            "reserved": true
+          }
+        }
+      ]
+    },
+    "tests": {
+      "at": "2026-11-01T08:31:12.073466+00:00",
+      "scope": "Fictional fixtures, no live API or customer data",
+      "ownFinal": [
+        {
+          "command": "node automation/cj_sku_nachziehen_schutz_test.mjs",
+          "passedScenarios": 39,
+          "failed": 0,
+          "stdout": "39 ok, 0 Fehler"
+        },
+        {
+          "command": "node automation/cj_varianten_preis_sku_test.mjs",
+          "passedAssertions": 121,
+          "retainedPriorAssertions": 119,
+          "newAssertions": 2,
+          "failed": 0,
+          "stdout": "121 ok, 0 Fehler"
+        },
+        {
+          "command": "node automation/lib/cj_varianten_test.mjs",
+          "passedAssertions": 89,
+          "failed": 0,
+          "stdout": "89 ok, 0 Fehler"
+        }
+      ],
+      "independentReview": {
+        "finalNewScenariosPassed": 39,
+        "separateClassificationCounterexamplesPassed": 2,
+        "priorPreparedRegressionAssertionsPassedBeforeLastTwoClassificationGuards": [
+          121,
+          89
+        ],
+        "noBlockingFindingInNarrowPath": true,
+        "runtimeSha256": "192fdec8e996b23bf976496873a7ffa4b9c114df1d5e94bdf7ed6e9568ea57d7"
+      },
+      "nodeSyntax": "passed",
+      "patchRoundtrip": [
+        {
+          "kind": "INCREMENTAL",
+          "base": "prepared-before",
+          "patch": "CJ-SKU-GUARD-INCREMENTAL.patch",
+          "sha256": "8d2b4fb2e6c8295745a5628389a0166d658bb681c27eb670c15c45f8ffeca37f",
+          "bytes": 22756,
+          "checks": [
+            {
+              "command": [
+                "git",
+                "apply",
+                "--check"
+              ],
+              "exit": 0
+            },
+            {
+              "command": [
+                "git",
+                "apply",
+                "/workspace/luxestyle-review/weiter-20261101/cj/CJ-SKU-GUARD-INCREMENTAL.patch"
+              ],
+              "exit": 0
+            }
+          ],
+          "exactFiles": [
+            "automation/cj_varianten_nachziehen.mjs",
+            "automation/cj_varianten_preis_sku_test.mjs",
+            "automation/cj_sku_nachziehen_schutz_test.mjs"
+          ]
+        },
+        {
+          "kind": "COMBINED",
+          "base": "before",
+          "patch": "CJ-SKU-GUARD-COMBINED.patch",
+          "sha256": "a087203f27fccc64a6c19719583bea9f58722f1ad7ec2733c468c19128572d48",
+          "bytes": 54383,
+          "checks": [
+            {
+              "command": [
+                "git",
+                "apply",
+                "--check"
+              ],
+              "exit": 0
+            },
+            {
+              "command": [
+                "git",
+                "apply",
+                "/workspace/luxestyle-review/weiter-20261101/cj/CJ-SKU-GUARD-COMBINED.patch"
+              ],
+              "exit": 0
+            }
+          ],
+          "exactFiles": [
+            "automation/cj_varianten_nachziehen.mjs",
+            "automation/cj_varianten_preis_sku_test.mjs",
+            "automation/cj_sku_nachziehen_schutz_test.mjs",
+            "automation/lib/cj_varianten.mjs",
+            "automation/lib/cj_varianten_schutz.mjs",
+            "automation/lib/cj_varianten_test.mjs"
+          ]
+        }
+      ],
+      "noFullCIClaim": true
+    },
+    "provenance": {
+      "repository": "allengchour-glitch/aban-news-landing",
+      "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "readClassification": "GitHub source reads only; no merchant/product/order mutation",
+      "sourceFiles": [
+        {
+          "path": "automation/cj_varianten_nachziehen.mjs",
+          "gitBlobSha": "2cff67e454bd8ddc4d0da2d3ae287894cf18eaba",
+          "sha256": "1f99c8de8128703517419c874fe955f6e5dcb39f8a4f3540b5fe73f2397697eb"
+        },
+        {
+          "path": "automation/lib/cj_varianten.mjs",
+          "gitBlobSha": "59f0c8af2ff224f50758c800391e4ade76662dca",
+          "sha256": "f119c7e23bf244ebb01cf5fb2ea8635d1a3d3910fb3c1de59a78097be111c042"
+        },
+        {
+          "path": "automation/lib/cj_varianten_test.mjs",
+          "gitBlobSha": "1eb4cc3df211ade1b1cd8d1db7a8f11b3a6da7a9",
+          "sha256": "03f8cd487b0bde905dd96530476a57ff2701365fa4545e0e9ca03e87d1c730e0"
+        },
+        {
+          "path": "automation/lib/varianten_sicherheit.mjs",
+          "gitBlobSha": "a6b246f600cf563833e8567b9376d0dacab0bef9",
+          "sha256": "0f32ad20a83f3dc31cab2d631eb670e936c580a8c4d7d45eedd38f8dfeeaafd8"
+        },
+        {
+          "path": "automation/lib/sku_nachziehen.mjs",
+          "gitBlobSha": "7ef80a7968e8e4f3d7ca3457e6c6b342bfc7b808",
+          "sha256": "7c6c06a25f05208e75726985915b7d14481a18bbe4fee685323ee27d6b7eddfc"
+        },
+        {
+          "path": "automation/lib/shopify_gql.mjs",
+          "gitBlobSha": "186a451acb1db8221fbc95d633e5a62e28b13c77",
+          "sha256": "89273375da65bf2bcd2a8b3c4e12e96bad42be2f8626795edf3d457687b8a02a"
+        },
+        {
+          "path": "automation/lib/shopify_secret.mjs",
+          "gitBlobSha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+          "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c"
+        },
+        {
+          "path": "automation/lib/shopify_host.mjs",
+          "gitBlobSha": "3b59fa475cceed8d29efaa797854236c166df4cb",
+          "sha256": "71d0d862dd4e85f17416f634c06a7812588a92dc40dca5b1f3d61bf00cd78f19"
+        },
+        {
+          "path": "automation/lib/cj_token.mjs",
+          "gitBlobSha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf",
+          "sha256": "4ca7e37feb36853b9a754231705af5b2686627fbf9b66e17d6af1caac40f9beb"
+        },
+        {
+          "path": "automation/lib/cj_fetch.mjs",
+          "gitBlobSha": "50a16c3a3444f5c5ac1902464522f95d7ce1330f",
+          "sha256": "ee44b42f6bce348a68b8d9d89199578ed2708736a3182f2691443fcc68ef60ba"
+        },
+        {
+          "path": "automation/lib/cj_response.mjs",
+          "gitBlobSha": "5d7f3db180b1b5ac48e81c0fa225f5092b008bd9",
+          "sha256": "6afa9a989b41bc2aa60ff87d87504c826302b8c588935b97b687e9a6ac8ab8e0"
+        },
+        {
+          "path": "automation/lib/lieferbarkeit.mjs",
+          "gitBlobSha": "218506dfd2d6c1991a65c4d3d865db9106e25a34",
+          "sha256": "f0b158765bb691c806c9df493c184dad47626e23b70e209b11e659e7dfda92aa"
+        },
+        {
+          "path": "automation/lib/fakten_block.mjs",
+          "gitBlobSha": "67715d3414b3d664b6f6bea215386e2356e65d08",
+          "sha256": "2397beafc9b47ae627594bdb70f87b92d19248a0d910c6c92d5a9bcc45cc0b7b"
+        },
+        {
+          "path": "automation/lib/stecker_cj.mjs",
+          "gitBlobSha": "86b2101fff807b0486dea1b06d55dfbe69acd3d4",
+          "sha256": "6dfd63a929105d60185799b5b5920a7aa8fd7de670284ee1d2400e3cf5e889d1"
+        },
+        {
+          "path": "automation/lib/uebersetzen.mjs",
+          "gitBlobSha": "057e277e7684559302805c022fbefa5411e95802",
+          "sha256": "00b3476f2e03e14ee1da752142ce37fef827912505d8b26e580e459d733db5a5"
+        },
+        {
+          "path": "automation/farbwahl_scan.mjs",
+          "gitBlobSha": "c35b5c68cb9fd607c66e4af4176777f607414ed2",
+          "sha256": "9804f4ccf492e8415536d0388061c583709e3de8df9ed519c5431c95ce63684c"
+        }
+      ],
+      "priorPreparedPatch": {
+        "path": "dropship/codex-handoff-20261018/CJ-VARIANTEN-SCHUTZ-20261029.patch",
+        "gitBlobSha": "e0c5ac0edcae63bdf8453c2d24ed9fca65000260",
+        "applyCheckAgainstPinnedMain": true,
+        "mergedOrDeployed": false
+      },
+      "currentNewFiles": [
+        "automation/cj_varianten_nachziehen.mjs",
+        "automation/cj_varianten_preis_sku_test.mjs",
+        "automation/cj_sku_nachziehen_schutz_test.mjs"
+      ],
+      "combinedFilesIncludingPreviousPreparation": [
+        "automation/cj_varianten_nachziehen.mjs",
+        "automation/cj_varianten_preis_sku_test.mjs",
+        "automation/cj_sku_nachziehen_schutz_test.mjs",
+        "automation/lib/cj_varianten.mjs",
+        "automation/lib/cj_varianten_schutz.mjs",
+        "automation/lib/cj_varianten_test.mjs"
+      ],
+      "schemaExecution": "schema read, validate tool skipped; operations not executed",
+      "runtime": "Node v24.19.0; required /opt/node22/bin/node absent per parent fresh check",
+      "ci": "Not started: narrower current CLAUDE review-agent rule; no git checkout, no installation, no workflow dispatch",
+      "durableLock": "unknown/unconfirmed; process-local Set is not persistent or cross-process protection",
+      "writes": {
+        "externalAPI": false,
+        "shopProducts": false,
+        "supplier": false,
+        "workflow": false,
+        "deployment": false
+      }
+    },
+    "manifest": {
+      "at": "2026-11-01T08:31:12.074489+00:00",
+      "taskId": "cj-variant-price-identity",
+      "state": "LOCAL_REVIEW_DRAFT_NOT_DEPLOYED",
+      "pinnedMain": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "newChangedFiles": [
+        "automation/cj_varianten_nachziehen.mjs",
+        "automation/cj_varianten_preis_sku_test.mjs",
+        "automation/cj_sku_nachziehen_schutz_test.mjs"
+      ],
+      "combinedMainFiles": [
+        "automation/cj_varianten_nachziehen.mjs",
+        "automation/cj_varianten_preis_sku_test.mjs",
+        "automation/cj_sku_nachziehen_schutz_test.mjs",
+        "automation/lib/cj_varianten.mjs",
+        "automation/lib/cj_varianten_schutz.mjs",
+        "automation/lib/cj_varianten_test.mjs"
+      ],
+      "code": [
+        {
+          "path": "automation/cj_varianten_nachziehen.mjs",
+          "bytes": 44815,
+          "sha256": "192fdec8e996b23bf976496873a7ffa4b9c114df1d5e94bdf7ed6e9568ea57d7",
+          "base": "previous prepared patch"
+        },
+        {
+          "path": "automation/cj_varianten_preis_sku_test.mjs",
+          "bytes": 15186,
+          "sha256": "ad162891540fd810c0eab5c20e6489586fcfe40471f140fdafc86d433a3cb201",
+          "base": "previous prepared patch"
+        },
+        {
+          "path": "automation/cj_sku_nachziehen_schutz_test.mjs",
+          "bytes": 10100,
+          "sha256": "5823a6a095042d83b1dedb2d01bbe3f26a9926b43b84ea0cc20e7761dac9f1f5",
+          "base": "new file; /dev/null"
+        },
+        {
+          "path": "automation/lib/cj_varianten.mjs",
+          "bytes": 18620,
+          "sha256": "d62d757c641c0fc95b3b5e60d9ef61b7f728bad474609d22b93f0e2718e7c338",
+          "base": "previous preparation retained"
+        },
+        {
+          "path": "automation/lib/cj_varianten_schutz.mjs",
+          "bytes": 4834,
+          "sha256": "13f04739dba22b38730c7055343d11d2cb42ef31243d15987ea4e2af5eb52eef",
+          "base": "previous preparation retained"
+        },
+        {
+          "path": "automation/lib/cj_varianten_test.mjs",
+          "bytes": 12678,
+          "sha256": "d1c9b6f2550375e8dc6f4731d8c6cacd8bdd600c1a049f8b09f357f39efee42f",
+          "base": "previous preparation retained"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "CJ-SKU-GUARD-INCREMENTAL.patch",
+          "bytes": 22756,
+          "sha256": "8d2b4fb2e6c8295745a5628389a0166d658bb681c27eb670c15c45f8ffeca37f"
+        },
+        {
+          "path": "CJ-SKU-GUARD-COMBINED.patch",
+          "bytes": 54383,
+          "sha256": "a087203f27fccc64a6c19719583bea9f58722f1ad7ec2733c468c19128572d48"
+        },
+        {
+          "path": "REPORT.md",
+          "bytes": 5325,
+          "sha256": "639216c7bb3323d2a55a76f6e71a17e7a0b615a4c0852c082e3d9ff788900409"
+        },
+        {
+          "path": "PROVENANCE.json",
+          "bytes": 4878,
+          "sha256": "858d8425335814fb047d28c72d8e948baa47b3895aa4c990421b8c97f5465b36"
+        },
+        {
+          "path": "TEST-SUMMARY.json",
+          "bytes": 2828,
+          "sha256": "06af229e9a8d611b7442f847490f2077b532d2663d33f3716be98f8b97a090fc"
+        },
+        {
+          "path": "BEFORE-AFTER.json",
+          "bytes": 2298,
+          "sha256": "47370267134b69bf0d1f489a5921ccae8908026d06f614bf3d3a178ed82d3e13"
+        },
+        {
+          "path": "BEFORE-REPRO.json",
+          "bytes": 586,
+          "sha256": "f7086f4813d0a5a9d03d4d7e7d450a213606c08edce3c93b132e17d906f46733"
+        },
+        {
+          "path": "REVIEW.md",
+          "bytes": 3761,
+          "sha256": "e44c1fb90a3e835ef595663ba786773f18748c1953231f041e79ad6e1d649849"
+        },
+        {
+          "path": "REVIEW-CLASSIFICATION.json",
+          "bytes": 1092,
+          "sha256": "2273081d608e5699ab8e947a5336130d047c4bf2b70712227f12fc4c0522362f"
+        },
+        {
+          "path": "PATCH-ROUNDTRIP.json",
+          "bytes": 1586,
+          "sha256": "3965bbde8a9db4759efda9f574a3b87ccb16588875a50d2d00e93dffdd6d55f9"
+        },
+        {
+          "path": "SCHEMA-VALIDATION.json",
+          "bytes": 840,
+          "sha256": "11fbc4fa03f71fe42b03fddb7ddfdfb343eec73c97f041955bb031df7e9f4f5c"
+        }
+      ],
+      "tests": {
+        "newScenarios": 39,
+        "priceSkuAssertions": 121,
+        "pureVariantAssertions": 89
+      },
+      "noExternalWrites": true
+    },
+    "independentReview": "# Unabhängige Gegenprüfung des CJ-SKU-Entwurfs\n\nGeprüfter Ausgangspunkt: `main`-Commit `a431bf27d5e7af6b7f35ff9506380fee3f1c27a8`. `before` ist der gepinnte Stand; `prepared-before` erhält den bereits vorbereiteten Preis-/SKU-Schutz vom 29.10. Der neue SKU-Schritt liegt unter `after`. Keine Codeänderung durch diesen Review, keine externen API-, Shop- oder Lieferantenaktionen.\n\n## Ergebnis\n\nIm endgültig geprüften engen SKU-Pfad keine offene blockierende Beanstandung gefunden. Zwei zusätzlich nachgestellte Klassifikationsfehler (negative Variantenzahl und ungültige Varianten-ID) wurden vor Abschluss eng korrigiert: Beide werden jetzt als unbekannt zurückgegeben, jeweils ohne weitere Anfrage oder Mutation. Die Schutzbedingungen sind im tatsächlichen Writer vorhanden: vollständige Produkt- und Suchantworten mit `pageInfo.hasNextPage=false`, genaue Produkt-/Variantenbindung, Prüfung aller gelieferten Suchtreffer, Reservierung vor der Mutation, erneute atomare Reservierungsprüfung nach den Reads, explizites leeres `userErrors`-Array, genau eine passende Mutationsquittung und anschliessendes frisches Rücklesen. Fehlende, abgeschnittene oder widersprüchliche Antworten werden nicht als freie SKU oder bestätigter Schreibvorgang behandelt.\n\nEine bereits gesetzte SKU umgeht die Kollisionssuche nicht mehr. Ein Timeout nach möglichem Versand behält die Reservierung im Prozess. Zwei parallele Aufrufe mit demselben Set führen im gezielten Test zu genau einer simulierten Mutation. Der gemeinsame `productSet`-Pfad prüft seine Reservierung ebenfalls unmittelbar nach dem letzten Read, bevor er sendet; die Preisberechnung wurde dadurch nicht verändert.\n\n## Nachweise\n\n- Vorher-Fragment bytegleich aus `before/automation/cj_varianten_nachziehen.mjs` bestätigt. `BEFORE-REPRO.json` dokumentiert vier reproduzierte Fehlerfälle des ursprünglichen Codes: fehlende Suche, abgeschnittene Suche, fehlende `userErrors` sowie zweiter Versand nach unklarem ersten Write.\n- Unabhängig erneut ausgeführt: `cj_sku_nachziehen_schutz_test.mjs` nach der Klassifikationskorrektur mit **39 ok, 0 Fehler**; zuvor37 Fälle unabhängig bestätigt.\n- Bestehende Preis-/SKU-Regressionsprüfung im ersten unabhängigen Review: **121 ok, 0 Fehler**; davon die vorhandenen119 Assertions plus zwei gezielte Prüfungen der späten gemeinsamen Reservierung.\n- Reine Varianten-/Preisprüfung im ersten unabhängigen Review: **89 ok, 0 Fehler**.\n- Geprüfte Runtime-Datei SHA-256: `192fdec8e996b23bf976496873a7ffa4b9c114df1d5e94bdf7ed6e9568ea57d7` (endgültige Fassung). Der ursprüngliche Reviewstand hatte SHA-256 `d9bbc1d130d43f158027181644f03830056b0a789eeffe7a01a4b3dcca18b151`.\n\nDie zwei Klassifikationsfälle wurden nach der Korrektur zusätzlich separat am endgültigen Writer nachgestellt und liefern `unbekannt=true` bei jeweils null Folgeanfragen. Die Fälle39 enthalten diese beiden Gegenproben. Die anschliessenden121/89 Regressionen auf der endgültigen Fassung hat der Implementierer erneut gemessen; im Review wurden sie zuvor bereits unabhängig grün bestätigt.\n\n## Grenzen\n\nDas Set ist nur pro Prozess wirksam. Eine dauerhafte Reservierung oder ein rechnerübergreifender Lock wurde weder eingerichtet noch bestätigt. Parallel laufende Prozesse und die vorhandene Ausgangshistorie müssen vor einer produktiven Übernahme gesondert geklärt werden. Reale Shopify-Laufzeitantworten, App-Grant und Shop-/CJ-Ausführung sind nicht geprüft. Node24.19.0 wurde verwendet; Node22, vollständige CI, Merge, Deployment und produktiver Erfolg sind nicht belegt. `ci_simulation.sh` wurde im spezifisch eingeschränkten Prüfagenten-Kontext nicht gestartet.\n\nEine erfolgreiche lokale Prüfung ist keine Freigabe zum Live-Lauf und kein Merchant-Fix.\n",
+    "classificationCounterexamples": {
+      "scope": "Nur simulierte Produktantworten; kein API-Aufruf",
+      "sourceSha256": "d9bbc1d130d43f158027181644f03830056b0a789eeffe7a01a4b3dcca18b151",
+      "findings": [
+        {
+          "input": {
+            "variantsCount": -1,
+            "variantId": "gid://shopify/ProductVariant/7"
+          },
+          "actual": {
+            "ok": false,
+            "uebersprungen": "Varianten seit dem Plan verändert"
+          },
+          "expectedClassification": "unbekannt",
+          "furtherQueries": 0,
+          "writeBypass": false
+        },
+        {
+          "input": {
+            "variantsCount": 1,
+            "variantId": "unlesbar"
+          },
+          "actual": {
+            "ok": false,
+            "uebersprungen": "Varianten seit dem Plan verändert"
+          },
+          "expectedClassification": "unbekannt",
+          "furtherQueries": 0,
+          "writeBypass": false
+        }
+      ],
+      "status": "Eng korrigiert und unabhängig am endgültigen Writer bestätigt",
+      "resolvedSourceSha256": "192fdec8e996b23bf976496873a7ffa4b9c114df1d5e94bdf7ed6e9568ea57d7",
+      "finalGuardCases": 39,
+      "after": {
+        "ok": false,
+        "unbekannt": true,
+        "furtherQueries": 0
+      }
+    },
+    "mutation": {
+      "scope": "Offline mutation probe; frozen candidate unchanged; all test fetches blocked",
+      "mutation": "Removed requirement for complete SKU search pagination",
+      "candidateRuntimeSha256": "192fdec8e996b23bf976496873a7ffa4b9c114df1d5e94bdf7ed6e9568ea57d7",
+      "mutatedRuntimeSha256": "7d245f28bf411f117009ae9777bb1535257cad408cca060ab97adc3b924ab9d7",
+      "node": "24.19.0",
+      "testExit": 1,
+      "expectedFail": true,
+      "stdoutTail": "",
+      "stderrTail": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///workspace/luxestyle-review/weiter-20261101/integration/cj-mutation/after/automation/cj_sku_nachziehen_schutz_test.mjs:53:104\n    at async pruefe (file:///workspace/luxestyle-review/weiter-20261101/integration/cj-mutation/after/automation/cj_sku_nachziehen_schutz_test.mjs:14:37)\n    at async file:///workspace/luxestyle-review/weiter-20261101/integration/cj-mutation/after/automation/cj_sku_nachziehen_schutz_test.mjs:52:6 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+    },
+    "durableOrCrossProcessReservation": false
+  },
+  "ciReviewOnly": {
+    "sourceBlob": "979c484b6e144c4f428f343a964cf664d4573a86",
+    "sourceCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+    "addedCommands": [
+      "node automation/cj_sku_nachziehen_schutz_test.mjs",
+      "node automation/cj_varianten_preis_sku_test.mjs"
+    ],
+    "onlyTwoTestLinesAdded": true,
+    "existingPrintfulTestWired": true,
+    "pathsCoverSourceAndTests": true,
+    "sparseCheckoutCoversSourceAndTests": true,
+    "nodeInWorkflow": "22",
+    "availableNode": "24.19.0",
+    "node22CanonicalPathPresent": false,
+    "gitCheckoutAvailable": false,
+    "fullCiRun": false,
+    "reason": "Kein Git-Checkout und kein Node22; CLAUDE.md Zeile120 verbietet Prüfagenten ausdrücklich CI-Simulation/Klonen wegen Plattenrisiko. Keine Auswegvariable, kein Workflowstart.",
+    "yamlParsed": true
+  },
+  "addedLineScan": [
+    {
+      "path": "printful/PRINTFUL-IDEMPOTENZ-20261101.patch",
+      "addedLines": 390,
+      "forbiddenPatternHits": []
+    },
+    {
+      "path": "cj/CJ-SKU-GUARD-COMBINED.patch",
+      "addedLines": 481,
+      "forbiddenPatternHits": []
+    },
+    {
+      "path": "integration/CI-VERDRAHTUNG.patch",
+      "addedLines": 2,
+      "forbiddenPatternHits": []
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-20261101.md",
+      "bytes": 4869,
+      "sha256": "061baac788aba517a1375bc2afc875a8414d95e23d070615f3d0b98e6eef4379"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRINTFUL-IDEMPOTENZ-20261101.patch",
+      "bytes": 59201,
+      "sha256": "3d0a3473f61c32856d7c6083edacc821ed80f10f1a87206317c6a9060b750571"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CJ-SKU-SCHUTZ-20261101.patch",
+      "bytes": 54383,
+      "sha256": "a087203f27fccc64a6c19719583bea9f58722f1ad7ec2733c468c19128572d48"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/SYNC-CI-TESTS-20261101.patch",
+      "bytes": 597,
+      "sha256": "86ebb9b407e23e70c9de16e6c18b5e2b362c4872191ad8a4ad11982f9e551d99"
+    }
+  ],
+  "limits": {
+    "node": "24.19.0",
+    "node22CanonicalPathAvailable": false,
+    "fullCiRun": false,
+    "reason": "CLAUDE.md specific review-agent prohibition on clone/ci_simulation; no checkout and no Node22. No install, dispatch or workaround.",
+    "graphqlValidation": "skipped_not_server_operation_validation",
+    "runtimeCredentialsAndAppGrants": "not_confirmed",
+    "existingRegisters": "not_initialized_not_reset",
+    "paidRenders": false
+  },
+  "writes": {
+    "shop": false,
+    "products": false,
+    "supplierOrders": false,
+    "feeds": false,
+    "flows": false,
+    "dns": false,
+    "ads": false,
+    "social": false,
+    "workflows": false,
+    "deployment": false,
+    "documentationOnly": true
+  },
+  "repeatedQueries": {
+    "dailyMetrics": false,
+    "klaviyo": false,
+    "purchaseWatch": false
+  },
+  "preserved": {
+    "salesGoal": "ERREICHT_watch_ended",
+    "taskIds": 16,
+    "publicShippingCHF": 50,
+    "internalShippingCHF": 45,
+    "accountDomain": "account.luxestyle.com.co",
+    "schedule": "08:00/14:00/19:00 Europe/Zurich unchanged"
+  },
+  "claudeReceipt": "unknown",
+  "nextStep": "Recheck exact diffs and runtime grants; Node22 full CI; explicit bounded Printful migration/Ready proof and durable CJ reservation/reconciliation before live use."
+}
