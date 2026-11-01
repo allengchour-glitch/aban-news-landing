@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "revision": 46,
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-01T21:48:07.282744+00:00",
+  "ownerRequest": "beauty und pflege, sport bild ändern",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "themeId": "212978598279",
+  "themeRole": "UNPUBLISHED",
+  "mainThemeId": "212971061639",
+  "publishedByCodex": false,
+  "targetHandles": [
+    "beauty-pflege",
+    "sport-outdoor"
+  ],
+  "surfaces": [
+    "home discovery cards",
+    "same2home mini category tiles",
+    "category directory"
+  ],
+  "beforeImageSources": [
+    {
+      "key": "beauty",
+      "collectionId": "gid://shopify/Collection/689027416449",
+      "handle": "beauty-pflege",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554",
+      "path": "/workspace/luxestyle-review/beauty-sport-20261101/route/beauty-before.jpg",
+      "sha256": "181012921aaeb625047d288c07a13f732ce77c2f1a85d396de33f34b3ab748c1",
+      "http": 200,
+      "width": 800,
+      "height": 800
+    },
+    {
+      "key": "sport",
+      "collectionId": "gid://shopify/Collection/688725197185",
+      "handle": "sport-outdoor",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3660576051812_R00.jpg?v=1781640722",
+      "path": "/workspace/luxestyle-review/beauty-sport-20261101/route/sport-before.jpg",
+      "sha256": "56b99a3f2eb4ea808e2618de8f8ab162e0c6bbdd33af9093bfd93ace2c679be8",
+      "http": 200,
+      "width": 1200,
+      "height": 1200
+    }
+  ],
+  "newImages": [
+    {
+      "key": "beauty",
+      "fileId": "gid://shopify/MediaImage/77916084011399",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "f7c9d32db7969ad8ef2d498848af6bc702c200e0051b51125b43136083b66ac8",
+      "cdnSha256": "3d71544e7891671a7fa27d035de980344e259e48551f9ad55155eda1846f2783",
+      "pixelIdentical": true
+    },
+    {
+      "key": "sport",
+      "fileId": "gid://shopify/MediaImage/77916084044167",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "7fe1761f704f44d691b9db97f61983ff838ad483c82da606c1c94e93639602ca",
+      "cdnSha256": "c6f634e04267cffb62bffe87f8644e234c24c20706d69323e19e83969b7e890b",
+      "pixelIdentical": true
+    }
+  ],
+  "imageMeaning": "Illustrative category scenes; no exactSKU, includedset/material/health/performance/price orSocialapproval promises",
+  "beautyScene": "Original brand/model face/arrows/ad typography removed; pinktool motifs in warm care stilllife",
+  "sportScene": "New original unbranded training stilllife; mat,two dumbbells,towel; no health/weight claims",
+  "themeFiles": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeMd5": "46a62071f70893c1de18dae65140c322",
+      "afterMd5": "bd292f3e7caf0b2eb71e06045686e486",
+      "afterSha256": "9d9afec5a001b1a408563ccee26b8e09f37edf747d11549081be981b14bfbf63",
+      "bytes": 41770,
+      "operations": 3
+    },
+    {
+      "filename": "snippets/luxe-category-directory.liquid",
+      "beforeMd5": "084c3b6a90d72fd245dd0f19d17540d5",
+      "afterMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+      "afterSha256": "5ffb9f1805e8bc8370def984c53329bdc278a8f2708e7dfe8e648d1dd416c7c2",
+      "bytes": 7755,
+      "operations": 2
+    }
+  ],
+  "exactDiff": {
+    "sections/luxe-edit-home.liquid": [
+      {
+        "startLine": 9,
+        "endLine": 9,
+        "replacement": [
+          "{% assign lx_beauty_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453' %}\n",
+          "{% assign lx_sport_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453' %}\n"
+        ]
+      },
+      {
+        "startLine": 58,
+        "endLine": 59,
+        "replacement": [
+          "                {% if lx_collection.handle == 'beauty-pflege' %}\n",
+          "                  <img src=\"{{ lx_beauty_scene | escape }}&amp;width=240\" srcset=\"{{ lx_beauty_scene | escape }}&amp;width=120 120w, {{ lx_beauty_scene | escape }}&amp;width=180 180w, {{ lx_beauty_scene | escape }}&amp;width=240 240w\" sizes=\"(max-width: 760px) 56px, 80px\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\">\n",
+          "                {% elsif lx_collection.handle == 'sport-outdoor' %}\n",
+          "                  <img src=\"{{ lx_sport_scene | escape }}&amp;width=240\" srcset=\"{{ lx_sport_scene | escape }}&amp;width=120 120w, {{ lx_sport_scene | escape }}&amp;width=180 180w, {{ lx_sport_scene | escape }}&amp;width=240 240w\" sizes=\"(max-width: 760px) 56px, 80px\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\">\n",
+          "                {% elsif lx_collection.image != blank %}\n"
+        ]
+      },
+      {
+        "startLine": 180,
+        "endLine": 181,
+        "replacement": [
+          "            <div class=\"lx-discover-photo\">{% if lx_discover_collection.handle == 'beauty-pflege' %}<img src=\"{{ lx_beauty_scene | escape }}&amp;width=800\" srcset=\"{{ lx_beauty_scene | escape }}&amp;width=240 240w, {{ lx_beauty_scene | escape }}&amp;width=360 360w, {{ lx_beauty_scene | escape }}&amp;width=480 480w, {{ lx_beauty_scene | escape }}&amp;width=640 640w, {{ lx_beauty_scene | escape }}&amp;width=800 800w\" sizes=\"(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\" style=\"object-fit:cover\">{% elsif lx_discover_collection.handle == 'sport-outdoor' %}<img src=\"{{ lx_sport_scene | escape }}&amp;width=800\" srcset=\"{{ lx_sport_scene | escape }}&amp;width=240 240w, {{ lx_sport_scene | escape }}&amp;width=360 360w, {{ lx_sport_scene | escape }}&amp;width=480 480w, {{ lx_sport_scene | escape }}&amp;width=640 640w, {{ lx_sport_scene | escape }}&amp;width=800 800w\" sizes=\"(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\" style=\"object-fit:cover\">{% else %}{{ lx_discover_collection.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 360, 480, 640, 800', sizes: '(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw', alt: '' }}{% endif %}</div>\n"
+        ]
+      }
+    ],
+    "snippets/luxe-category-directory.liquid": [
+      {
+        "startLine": 5,
+        "endLine": 5,
+        "replacement": [
+          "{% assign lx_beauty_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453' %}\n",
+          "{% assign lx_sport_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453' %}\n"
+        ]
+      },
+      {
+        "startLine": 22,
+        "endLine": 22,
+        "replacement": [
+          "        {% elsif lx_directory_handle == 'beauty-pflege' %}\n",
+          "          <span class=\"lx-directory-image lx-directory-image--editorial\"><img src=\"{{ lx_beauty_scene | escape }}&amp;width=1000\" srcset=\"{{ lx_beauty_scene | escape }}&amp;width=240 240w, {{ lx_beauty_scene | escape }}&amp;width=360 360w, {{ lx_beauty_scene | escape }}&amp;width=480 480w, {{ lx_beauty_scene | escape }}&amp;width=640 640w, {{ lx_beauty_scene | escape }}&amp;width=800 800w, {{ lx_beauty_scene | escape }}&amp;width=1000 1000w\" sizes=\"(max-width: 600px) 43vw, (max-width: 1100px) 44vw, 28vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\"></span>\n",
+          "        {% elsif lx_directory_handle == 'sport-outdoor' %}\n",
+          "          <span class=\"lx-directory-image lx-directory-image--editorial\"><img src=\"{{ lx_sport_scene | escape }}&amp;width=1000\" srcset=\"{{ lx_sport_scene | escape }}&amp;width=240 240w, {{ lx_sport_scene | escape }}&amp;width=360 360w, {{ lx_sport_scene | escape }}&amp;width=480 480w, {{ lx_sport_scene | escape }}&amp;width=640 640w, {{ lx_sport_scene | escape }}&amp;width=800 800w, {{ lx_sport_scene | escape }}&amp;width=1000 1000w\" sizes=\"(max-width: 600px) 43vw, (max-width: 1100px) 44vw, 28vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\"></span>\n"
+        ]
+      }
+    ]
+  },
+  "nativeReadback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "role": "MAIN"
+    },
+    "themeId": "gid://shopify/OnlineStoreTheme/212978598279",
+    "role": "UNPUBLISHED",
+    "checks": [
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "md5": "bd292f3e7caf0b2eb71e06045686e486",
+        "expectedMd5": "bd292f3e7caf0b2eb71e06045686e486",
+        "exact": true
+      },
+      {
+        "filename": "snippets/luxe-category-directory.liquid",
+        "md5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "expectedMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "exact": true
+      }
+    ]
+  },
+  "validation": {
+    "result": "VALIDwith existingCDNandresolverwarnings;no blockingerrors",
+    "schemaRefresh": "failed; existingcachedschemasused",
+    "nativeUi": {
+      "scope": "Native UNPUBLISHED preview, GET/HEAD only, no HTML/CSS overrides",
+      "themeId": "212978598279",
+      "checks": [
+        {
+          "name": "home exactpreview",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390beautydiscovery unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390beautydiscovery correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+            "loaded": true,
+            "alt": "",
+            "width": 163,
+            "height": 145.53125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home390beauty targetretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390beautytile unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390beautytile correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=120",
+            "loaded": true,
+            "alt": "",
+            "width": 52,
+            "height": 58,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home390sportdiscovery unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390sportdiscovery correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=240",
+            "loaded": true,
+            "alt": "",
+            "width": 163,
+            "height": 145.53125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home390sport targetretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390sporttile unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home390sporttile correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=120",
+            "loaded": true,
+            "alt": "",
+            "width": 52,
+            "height": 58,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home390 nohorizontaloverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440beautydiscovery unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440beautydiscovery correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=360",
+            "loaded": true,
+            "alt": "",
+            "width": 312.09375,
+            "height": 278.640625,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home1440beauty targetretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440beautytile unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440beautytile correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+            "loaded": true,
+            "alt": "",
+            "width": 80,
+            "height": 80,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home1440sportdiscovery unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440sportdiscovery correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=360",
+            "loaded": true,
+            "alt": "",
+            "width": 312.109375,
+            "height": 278.65625,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home1440sport targetretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440sporttile unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "home1440sporttile correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=240",
+            "loaded": true,
+            "alt": "",
+            "width": 80,
+            "height": 80,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "home1440 nohorizontaloverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Sixteen mini tiles retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Four discoverycards retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Budget three existinglinks/pricefilters retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Budget3backgrounds retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "R44colourcollage retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory exactpreview",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory390beautydirectory unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory390beautydirectory correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+            "loaded": true,
+            "alt": "",
+            "width": 171,
+            "height": 158.328125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "directory390sportdirectory unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory390sportdirectory correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+            "loaded": true,
+            "alt": "",
+            "width": 171,
+            "height": 158.328125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "directory390 nohorizontaloverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory1440beautydirectory unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory1440beautydirectory correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=480",
+            "loaded": true,
+            "alt": "",
+            "width": 403.1875,
+            "height": 268.78125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "directory1440sportdirectory unique",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "directory1440sportdirectory correctloadedimage",
+          "pass": true,
+          "data": {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+            "loaded": true,
+            "alt": "",
+            "width": 403.1875,
+            "height": 268.78125,
+            "fit": "cover"
+          }
+        },
+        {
+          "name": "directory1440 nohorizontaloverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Twentyone directorygroups retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Earlierhome/jewelleryeditorialimages retained",
+          "pass": true,
+          "data": null
+        }
+      ],
+      "views": [
+        {
+          "page": "home",
+          "width": 163,
+          "key": "beauty",
+          "surface": "discovery",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+          "loaded": true,
+          "alt": "",
+          "height": 145.53125,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 52,
+          "key": "beauty",
+          "surface": "tile",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=120",
+          "loaded": true,
+          "alt": "",
+          "height": 58,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 163,
+          "key": "sport",
+          "surface": "discovery",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=240",
+          "loaded": true,
+          "alt": "",
+          "height": 145.53125,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 52,
+          "key": "sport",
+          "surface": "tile",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=120",
+          "loaded": true,
+          "alt": "",
+          "height": 58,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 312.09375,
+          "key": "beauty",
+          "surface": "discovery",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=360",
+          "loaded": true,
+          "alt": "",
+          "height": 278.640625,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 80,
+          "key": "beauty",
+          "surface": "tile",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+          "loaded": true,
+          "alt": "",
+          "height": 80,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 312.109375,
+          "key": "sport",
+          "surface": "discovery",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=360",
+          "loaded": true,
+          "alt": "",
+          "height": 278.65625,
+          "fit": "cover"
+        },
+        {
+          "page": "home",
+          "width": 80,
+          "key": "sport",
+          "surface": "tile",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=240",
+          "loaded": true,
+          "alt": "",
+          "height": 80,
+          "fit": "cover"
+        },
+        {
+          "page": "directory",
+          "width": 171,
+          "key": "beauty",
+          "surface": "directory",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=240",
+          "loaded": true,
+          "alt": "",
+          "height": 158.328125,
+          "fit": "cover"
+        },
+        {
+          "page": "directory",
+          "width": 171,
+          "key": "sport",
+          "surface": "directory",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+          "loaded": true,
+          "alt": "",
+          "height": 158.328125,
+          "fit": "cover"
+        },
+        {
+          "page": "directory",
+          "width": 403.1875,
+          "key": "beauty",
+          "surface": "directory",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=480",
+          "loaded": true,
+          "alt": "",
+          "height": 268.78125,
+          "fit": "cover"
+        },
+        {
+          "page": "directory",
+          "width": 403.1875,
+          "key": "sport",
+          "surface": "directory",
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+          "loaded": true,
+          "alt": "",
+          "height": 268.78125,
+          "fit": "cover"
+        }
+      ],
+      "blockedNonRead": 110,
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "allChecksPassed": true,
+      "failed": []
+    },
+    "conditions": 41,
+    "viewports": [
+      390,
+      1440
+    ],
+    "screenshotsVisuallyReviewed": true,
+    "limit": "Images/routes/layoutpreservation only; GET/HEADguardblocked110requests and13fetcherrors recorded; notcheckout/tracking/whole-themeacceptance"
+  },
+  "preserve": [
+    "Other14minitiles and otherimagefallbacks",
+    "Fourdiscoverycards,21directorygroups andexistingtitles/links",
+    "R44colourcollage/home-jewellerybanners/52manufacturerreferences",
+    "R45budgetcarousel,threebackgroundimages andpricefilters24.99/49.99",
+    "ExistingShop/Mainroles,shippingCHF50/internalCHF45,account.luxestyle.com.co",
+    "17taskIDs/histories,dailyreportlimit,endedpurchasewatch",
+    "R43Bestsellertextapprovalstillpending"
+  ],
+  "globalCollectionImageWrites": 0,
+  "cssJsLocaleWrites": 0,
+  "notPerformed": [
+    "NoMAINwriteorpublish",
+    "Noproduct/price/variant/inventory/tag/review/collectionrulewrite",
+    "NoSocialwriteornewmetrics/flow/orderreport",
+    "NoAds/budget/discount/flow/DNS/settingsactivation",
+    "Noinstallation,workflow,newautomation/frequency"
+  ],
+  "nextClaudeStep": "R46section+directorysnippet overrideoldersamepaths; preserveallotherR45/R44versions. Existingwebsiteapprovalapplies. FreshShop/role/fullthemeDiffthenpublishexisting212978598279vialegitimatecapableaccess,verifyactualMAIN/publicDEFRmobileDesktop. ConnectorblocksPublish/MAINwrites; nobypass,newcopyorrepeatedsameapproval.",
+  "claudeReceipt": "unknown_missing_receipt"
+}
