@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "revision": 47,
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-01T22:02:01.540495+00:00",
+  "ownerRequest": "winterideen und das unterdran auch ein bild rein",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "themeId": "212978598279",
+  "themeRole": "UNPUBLISHED",
+  "mainThemeId": "212971061639",
+  "publishedByCodex": false,
+  "scope": "Two existing seasonal links inside #lx-season: Winterideen ansehen and Weihnachtsideen entdecken; next section already has the R45 illustrated budget carousel.",
+  "imageMeaning": "Original illustrative winter and Christmas scenes; no guaranteed SKU, included set, material, origin, price, stock or delivery promise. No Social action approval inferred.",
+  "imageReceipts": [
+    {
+      "key": "winter",
+      "fileId": "gid://shopify/MediaImage/77916222718343",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "850e6c888ff9494234ed1af172428aeac5e07ca50901ef863356413d7f667eb1",
+      "cdnSha256": "3a8eea479629287219dc217504fe3faa68e2e89ac8d42d67aa2e0e803ebf4275",
+      "pixelIdentical": true
+    },
+    {
+      "key": "christmas",
+      "fileId": "gid://shopify/MediaImage/77916222751111",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088",
+      "fileStatus": "READY",
+      "http": 200,
+      "width": 1536,
+      "height": 1024,
+      "originalSha256": "19d8eeaa192bc032230a84342feee9b8aa566c8ac691e3166b6eadafb8807754",
+      "cdnSha256": "9c42130313a118bebc103653c957230e5032837fd871fd88c7632e98c658f354",
+      "pixelIdentical": true
+    }
+  ],
+  "themeFiles": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeMd5": "bd292f3e7caf0b2eb71e06045686e486",
+      "afterMd5": "e6a35f08ddafcc80e38a0f469212549c",
+      "afterSha256": "d309235479350bb031cf795eda5c38de13bc69316e0dabef717305fbfe3fb1ad",
+      "bytes": 43301,
+      "operations": 1
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "beforeMd5": "2264b929cd48993c1161f8abc4bce8bf",
+      "afterMd5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+      "afterSha256": "0abe1f3a1a98a1fab1f1b0ccdae7cc0ba498da5d60c4cf9b6a300af75da6e43e",
+      "bytes": 45971,
+      "operations": 1
+    }
+  ],
+  "exactDiff": {
+    "sections/luxe-edit-home.liquid": [
+      {
+        "startLine": 255,
+        "endLine": 256,
+        "replacement": [
+          "        {% assign lx_winter_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088' %}\n",
+          "        {% assign lx_christmas_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088' %}\n",
+          "        <div class=\"lx-season-actions\">\n",
+          "          <a class=\"lx-season-card\" href=\"{{ lx_winter_collection.url }}\" data-season-card=\"winter\">\n",
+          "            <span class=\"lx-season-media\" aria-hidden=\"true\"><img src=\"{{ lx_winter_scene | escape }}&amp;width=800\" srcset=\"{{ lx_winter_scene | escape }}&amp;width=360 360w, {{ lx_winter_scene | escape }}&amp;width=540 540w, {{ lx_winter_scene | escape }}&amp;width=800 800w, {{ lx_winter_scene | escape }}&amp;width=1000 1000w\" sizes=\"(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\"></span>\n",
+          "            <span class=\"lx-season-label\">{{ 'luxe_home.extra.winter' | t }}</span><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg>\n",
+          "          </a>\n",
+          "          <a class=\"lx-season-card\" href=\"{{ lx_christmas_collection.url }}\" data-season-card=\"christmas\">\n",
+          "            <span class=\"lx-season-media\" aria-hidden=\"true\"><img src=\"{{ lx_christmas_scene | escape }}&amp;width=800\" srcset=\"{{ lx_christmas_scene | escape }}&amp;width=360 360w, {{ lx_christmas_scene | escape }}&amp;width=540 540w, {{ lx_christmas_scene | escape }}&amp;width=800 800w, {{ lx_christmas_scene | escape }}&amp;width=1000 1000w\" sizes=\"(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw\" width=\"1536\" height=\"1024\" loading=\"lazy\" decoding=\"async\" alt=\"\"></span>\n",
+          "            <span class=\"lx-season-label\">{{ 'luxe_home.extra.christmas' | t }}</span><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg>\n",
+          "          </a>\n",
+          "        </div>\n"
+        ]
+      }
+    ],
+    "assets/luxe-edit.css": [
+      {
+        "startLine": 241,
+        "endLine": 241,
+        "replacement": [
+          "\n",
+          ".lx-home .lx-season-edit{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}\n",
+          ".lx-home .lx-season-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}\n",
+          ".lx-home .lx-season-actions>.lx-season-card{position:relative;isolation:isolate;overflow:hidden;min-width:0;min-height:220px;align-items:flex-end;justify-content:space-between;padding:24px 48px 24px 22px;border:1px solid #c5c9bc;border-radius:18px;background:#314238;color:#fff;text-decoration:none}\n",
+          ".lx-home .lx-season-card::before{content:\"\";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(16,28,22,.06) 0%,rgba(16,28,22,.18) 30%,rgba(16,28,22,.78) 72%,rgba(16,28,22,.93) 100%)}\n",
+          ".lx-home .lx-season-media{position:absolute;inset:0;z-index:0;display:block;overflow:hidden}\n",
+          ".lx-home .lx-season-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .25s ease}\n",
+          ".lx-home .lx-season-label{position:relative;z-index:2;color:#fff;font:400 clamp(20px,1.65vw,24px)/1.2 var(--lx-serif);letter-spacing:-.3px;overflow-wrap:normal}\n",
+          ".lx-home .lx-season-card>.lx-arrow{position:absolute;right:20px;bottom:27px;z-index:2;width:21px;height:21px;color:#fff;flex:none}\n",
+          ".lx-home .lx-season-actions>.lx-season-card:hover{background:#314238}\n",
+          ".lx-home .lx-season-card:focus-visible{outline:3px solid #4f6657;outline-offset:4px}\n",
+          "@media(hover:hover){.lx-home .lx-season-card:hover .lx-season-media img{transform:scale(1.025)}}\n",
+          "@media(max-width:1100px){.lx-home .lx-season-edit{grid-template-columns:minmax(0,1fr)}}\n",
+          "@media(max-width:760px){.lx-home .lx-season-actions{grid-template-columns:minmax(0,1fr);gap:12px}.lx-home .lx-season-actions>.lx-season-card{min-height:190px;padding:24px 48px 24px 22px}.lx-home .lx-season-label{font-size:23px}}\n",
+          "@media(prefers-reduced-motion:reduce){.lx-home .lx-season-media img{transition:none}.lx-home .lx-season-card:hover .lx-season-media img{transform:none}}\n"
+        ]
+      }
+    ]
+  },
+  "nativeReadback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "role": "MAIN"
+    },
+    "themeId": "gid://shopify/OnlineStoreTheme/212978598279",
+    "role": "UNPUBLISHED",
+    "checks": [
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "md5": "e6a35f08ddafcc80e38a0f469212549c",
+        "expectedMd5": "e6a35f08ddafcc80e38a0f469212549c",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "md5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+        "expectedMd5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+        "exact": true
+      }
+    ]
+  },
+  "validation": {
+    "result": "VALID with existing CDN warning; CSS SUCCESS",
+    "schemaRefresh": "Refresh failed; existing cached schemas used. Fixture lacks config/settings_schema.json, visible-if global-settings check logged ENOENT.",
+    "nativeUi": {
+      "scope": "Native UNPUBLISHED preview, GET/HEAD only, no HTML/CSS overrides",
+      "themeId": "212978598279",
+      "checks": [
+        {
+          "name": "ExactnativeThemeHTTP200",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Two season imagecards",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Existingseasonlabelsretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Existingseasondestinationsretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 loadeddecorativewinterChristmasimages",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 whitelegiblelabels/minheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 nohorizontalpageoverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 expectedstack/grid",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 loadeddecorativewinterChristmasimages",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 whitelegiblelabels/minheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 nohorizontalpageoverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390 expectedstack/grid",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024 loadeddecorativewinterChristmasimages",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024 whitelegiblelabels/minheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024 nohorizontalpageoverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024 expectedstack/grid",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 loadeddecorativewinterChristmasimages",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 whitelegiblelabels/minheight",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 nohorizontalpageoverflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440 expectedstack/grid",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Secondseasoncardkeyboardreachable",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Existingbudgetlinks/pricefiltersretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Existingbudgetbackgroundsretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "NewBeautySportdiscoveryimagesretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "R44colourcollageretained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "NoSeasontranslationerror",
+          "pass": true,
+          "data": null
+        }
+      ],
+      "views": [
+        {
+          "viewport": 360,
+          "cards": [
+            {
+              "rect": {
+                "x": 39,
+                "y": 304.828125,
+                "width": 282,
+                "height": 190,
+                "top": 304.828125,
+                "right": 321,
+                "bottom": 494.828125,
+                "left": 39
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088&width=360",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Winterideen ansehen"
+            },
+            {
+              "rect": {
+                "x": 39,
+                "y": 506.828125,
+                "width": 282,
+                "height": 190,
+                "top": 506.828125,
+                "right": 321,
+                "bottom": 696.828125,
+                "left": 39
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088&width=360",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Weihnachtsideen entdecken"
+            }
+          ]
+        },
+        {
+          "viewport": 390,
+          "cards": [
+            {
+              "rect": {
+                "x": 39,
+                "y": 452.59375,
+                "width": 312,
+                "height": 190,
+                "top": 452.59375,
+                "right": 351,
+                "bottom": 642.59375,
+                "left": 39
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088&width=360",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Winterideen ansehen"
+            },
+            {
+              "rect": {
+                "x": 39,
+                "y": 654.59375,
+                "width": 312,
+                "height": 190,
+                "top": 654.59375,
+                "right": 351,
+                "bottom": 844.59375,
+                "left": 39
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088&width=360",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Weihnachtsideen entdecken"
+            }
+          ]
+        },
+        {
+          "viewport": 1024,
+          "cards": [
+            {
+              "rect": {
+                "x": 88.03125,
+                "y": 693.859375,
+                "width": 416.96875,
+                "height": 220,
+                "top": 693.859375,
+                "right": 505,
+                "bottom": 913.859375,
+                "left": 88.03125
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088&width=540",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Winterideen ansehen"
+            },
+            {
+              "rect": {
+                "x": 519,
+                "y": 693.859375,
+                "width": 416.96875,
+                "height": 220,
+                "top": 693.859375,
+                "right": 935.96875,
+                "bottom": 913.859375,
+                "left": 519
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088&width=540",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Weihnachtsideen entdecken"
+            }
+          ]
+        },
+        {
+          "viewport": 1440,
+          "cards": [
+            {
+              "rect": {
+                "x": 576.671875,
+                "y": 399.796875,
+                "width": 364.765625,
+                "height": 220,
+                "top": 399.796875,
+                "right": 941.4375,
+                "bottom": 619.796875,
+                "left": 576.671875
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088&width=540",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Winterideen ansehen"
+            },
+            {
+              "rect": {
+                "x": 955.4375,
+                "y": 399.796875,
+                "width": 364.765625,
+                "height": 220,
+                "top": 399.796875,
+                "right": 1320.203125,
+                "bottom": 619.796875,
+                "left": 955.4375
+              },
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088&width=540",
+              "loaded": true,
+              "alt": "",
+              "color": "rgb(255, 255, 255)",
+              "label": "Weihnachtsideen entdecken"
+            }
+          ]
+        }
+      ],
+      "blockedNonRead": 70,
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "allChecksPassed": true,
+      "failed": []
+    },
+    "screenshotsVisuallyReviewed": [
+      "qa/season-390.png",
+      "qa/season-1440.png"
+    ],
+    "limit": "26 bounded native image/link/layout/keyboard conditions, GET/HEAD only, 70 blocked non-read requests and eight fetch errors; no full-theme, checkout, tracking or print production approval."
+  },
+  "layout": {
+    "mobile": "Two image cards stacked, minheight190px",
+    "tablet": "Heading above two image cards",
+    "desktop": "Heading left, two cards to the right, minheight220px",
+    "images": "Lazy/async decorative responsive images with alt empty and intrinsic1536x1024; white existing HTML labels on dark gradient; reduced-motion honoured"
+  },
+  "links": [
+    "/collections/winter-kaelte",
+    "/collections/weihnachten-2026"
+  ],
+  "preserve": [
+    "Existing text keys, labels, links and complete following section",
+    "R46Beauty/Sport images and directory-snippet",
+    "R45budgetcarousel, threebackgroundimages and exact pricefilters24.99/49.99",
+    "R44colourcollage, home/jewellery banners and52manufacturerreferences",
+    "17taskIDs andhistory,16other tasks,shippingCHF50/internalCHF45,account.luxestyle.com.co,dailyreportlimits andendedpurchasewatch",
+    "R43Bestsellertextapproval still pending"
+  ],
+  "notPerformed": [
+    "No MAIN write or publishing",
+    "No JS/locales/globalCollectionImage/product/price/variant/inventory/tag/review/collectionrule/settings write",
+    "No new Social/metrics/flow/order report or watch",
+    "No ads/budget/discount/flow/DNS/automation/frequency change or installation"
+  ],
+  "nextClaudeStep": "R47 section and CSS override older same paths; retain R46 directory-snippet and all other R46/R45/R44 changes. Existing website authorization applies. Read fresh shop, roles and full current theme diff, publish the same212978598279 via legitimate capable access and verify actual MAIN/public DE/FR mobile and desktop. Connector blocks publishing/MAIN writes; no bypass, new copy or repeat of the same permission question.",
+  "claudeReceipt": "unknown_missing_receipt"
+}
