@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 45,
-  "updatedAt": "2026-11-01T21:34:54.648570Z",
+  "revision": 46,
+  "updatedAt": "2026-11-01T21:49:46.970046Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1472,13 +1472,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "entwurf_r45_budget_bildkarussell_nativ_geprueft",
+      "state": "entwurf_r46_beauty_sport_bilder_nativ_geprueft",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "DREI_DEKORATIVE_BILDER_ZWEI_ENTWURFSDATEIEN_EXAKT_20_NATIVE_BEDINGUNGEN",
-      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten.",
+      "belegArt": "ZWEI_ILLUSTRATIVE_BILDER_ZWEI_LIQUIDDATEIEN_EXAKT_41_NATIVE_BEDINGUNGEN",
+      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten. R46: Auf Wunsch Beauty/Pflege und Sport durch zwei neue illustrative Motive ersetzt: ruhige Pflegeszene und Trainingsmotiv, ohne Werbeschrift oder Logos. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich. Nur Section und Directory-Snippet im bestehenden Entwurf212978598279 geändert und exakt nativ bestätigt. Dieselben zwei Bilder erscheinen in Entdecken-Karten, Mini-Kacheln und Kategorieübersicht. 41 begrenzte native Bild-/Link-/Layoutbedingungen auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Guard110 blockierteRequests/13Fetchfehler; keineCheckout-/Trackingabnahme. Kein globalerCollection-Bild-/Produkt-/CSS-/JS-/Locale-Write. R45Budgetkarussell/Preisfilter, R44Collage/Banner/52Referenzen undandereLinks erhalten. EntwurfUNPUBLISHED, MAINunverändert, keinPublish. Claude-Einstieg aufR46 aktualisiert, tatsächlicherEmpfang unbekannt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "R45-Hashes/Deltas für die zwei aktuellen Pfade vor älteren gleichen Versionen verwenden; alle übrigen R44/R40-Änderungen erhalten. Bestehende Websitefreigabe gilt: frische Shop-/Rollenprüfung und vollständigen aktuellen Theme-Diff lesen, denselben Entwurf212978598279 über legitimen fähigen Zugang veröffentlichen, dann tatsächlichen MAIN und öffentlicheDE/FR-Mobil-/Desktopbilder bestätigen. ConnectorThemePublish/MAINWrites sindgesperrt; keineUmgehung/neueKopie/erneute gleicheFreigabefrage. Preisfilter24.99/49.99 unverändert erhalten; TAG-Regeln nicht alsPreisgrenzen ausgeben. NeueBestsellertextfreigabe separat weiteroffen.",
+      "nextAllowedStep": "R46-Section und Directory-Snippet vor älteren gleichen Dateipfaden verwenden; R45-CSS und alle übrigen R45/R44-Änderungen erhalten. Bestehende Websitefreigabe gilt: frische Identität/Rollen und vollständigen aktuellen Theme-Diff lesen, denselben Entwurf212978598279 über legitimen fähigen Zugriff veröffentlichen, dann tatsächlichen MAIN und öffentliche DE/FR-Mobil-/Desktopbilder bestätigen. Connector sperrt Publish/MAIN-Writes; keine Umgehung, neue Kopie oder erneute gleiche Freigabefrage. Bilder sind illustrative Kategorien, keine neuen konkreten Produktangebote oder Material-/Gesundheits-/Preis-/Lieferumfangsversprechen. R43-Zwei-Text-Freigabe separat offen lassen.",
       "blockers": [
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
@@ -1650,6 +1650,11 @@
           "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
           "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
           "readAt": "2026-11-01T21:34:54.648570Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+          "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+          "readAt": "2026-11-01T21:49:46.970046Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1862,6 +1867,15 @@
           "previousNextAllowedStep": "R44 samt sieben finalen Dateihashes/Deltas frisch lesen; neue gleiche Pfade haben Vorrang vor R40/R37, alle übrigen bisherigen Änderungen erhalten. Bestehende Websitefreigabe gilt: frischen Shop-/Rollen-/vollständigen Theme-Diff prüfen, denselben Entwurf212978598279 über legitimen fähigen Shopify-Zugang veröffentlichen und tatsächlichen MAIN sowie öffentliche DE/FR-Mobil-/Desktopbilder bestätigen. AktuellerConnector sperrtPublish/MAINWrites, keineUmgehung/neueKopie/erneute gleicheFreigabefrage. Weitere Hersteller-/Lifestylebilder nur in begrenztem belegtem Scope; drei generischeStickerbeispiele separat lassen. Keine neuen Preise/Reviews/Shopangebote/EDM-/Druck-/Bestellbindungen aus Referenzbildern ableiten.",
           "previousLastEvidenceDate": "2026-11-01",
           "previousBelegArt": "DREI_NEUE_BILDER_SIEBEN_DATEIEN_NATIV_EXAKT_19_BEGRENZTE_VORSCHAU_CHECKS"
+        },
+        {
+          "at": "2026-11-01T21:49:46.970046Z",
+          "sourceRevision": 45,
+          "previousState": "entwurf_r45_budget_bildkarussell_nativ_geprueft",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "DREI_DEKORATIVE_BILDER_ZWEI_ENTWURFSDATEIEN_EXAKT_20_NATIVE_BEDINGUNGEN",
+          "previousNextAllowedStep": "R45-Hashes/Deltas für die zwei aktuellen Pfade vor älteren gleichen Versionen verwenden; alle übrigen R44/R40-Änderungen erhalten. Bestehende Websitefreigabe gilt: frische Shop-/Rollenprüfung und vollständigen aktuellen Theme-Diff lesen, denselben Entwurf212978598279 über legitimen fähigen Zugang veröffentlichen, dann tatsächlichen MAIN und öffentlicheDE/FR-Mobil-/Desktopbilder bestätigen. ConnectorThemePublish/MAINWrites sindgesperrt; keineUmgehung/neueKopie/erneute gleicheFreigabefrage. Preisfilter24.99/49.99 unverändert erhalten; TAG-Regeln nicht alsPreisgrenzen ausgeben. NeueBestsellertextfreigabe separat weiteroffen.",
+          "previousLastEvidencePreserved": "Existing text remains unchanged as prefix of current lastEvidence; earlier histories and sources retained."
         }
       ],
       "followUpFindings": [
@@ -2000,6 +2014,29 @@
           "49.99"
         ],
         "newJavaScript": false,
+        "role": "UNPUBLISHED",
+        "publishedByCodex": false
+      },
+      "beautySportSupplementR46": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+          "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+          "readAt": "2026-11-01T21:49:46.970046Z"
+        },
+        "newImages": 2,
+        "themeFiles": 2,
+        "nativeUiConditions": 41,
+        "viewports": [
+          390,
+          1440
+        ],
+        "surfaces": [
+          "discovery",
+          "same2minitiles",
+          "directory"
+        ],
+        "globalCollectionImageWrites": 0,
+        "cssJsLocaleWrites": 0,
         "role": "UNPUBLISHED",
         "publishedByCodex": false
       }
@@ -3391,6 +3428,17 @@
         "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
         "readAt": "2026-11-01T21:34:54.648570Z"
       }
+    },
+    {
+      "revision": 46,
+      "at": "2026-11-01T21:49:46.970046Z",
+      "actor": "codex",
+      "action": "Beauty-/Sportbilder auf ausdrücklichen Wunsch in drei zusammenhängenden Oberflächen erneuert. Zwei Bilddateien und zwei Liquid-Dateien exakt nativ bestätigt,41 begrenzte Vorschaubedingungen. EinHomepageTask fortgeführt,16andere/17IDs und Historien samtR45/R44, Geschäfts-/Tagesgrenzen und Kauf-Watch-Ende erhalten. KeinPublish, globaleCollection-/Produkt-/Social-/Report- oderFrequenzänderung.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+        "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+        "readAt": "2026-11-01T21:49:46.970046Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3554,18 +3602,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 45,
-    "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.md",
-    "gitBlobSha": "f922f8e9fb62a192f3152687e414bdfda66c3a11",
+    "documentationRevision": 46,
+    "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.md",
+    "gitBlobSha": "f6ba63d707d6e2d45183ae940693071be8a767a4",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "1dbb31c07c6698ac29c623fcdfd9e3a63bfb4af7",
+    "entryGitBlobSha": "a2f8557ea5dc6f874b2aa37c9e7b74b575438c85",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r45",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r46",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 45,
-    "snapshotNote": "R45Budget-Bildkarussell:2aktuellePfade,3neueBilder,20NativeChecks. ÜbrigeR44Quellen undGeschäftsgrenzen erhalten; keinPublish/ClaudeEmpfang unbekannt.",
+    "latestCanonicalRevision": 46,
+    "snapshotNote": "R46 Beauty-/Sportbilder:2aktuelleLiquidpfade,2neueBilder,41NativeBedingungen. ÜbrigeR45/R44-Quellen/Geschäftsgrenzen erhalten; keinPublish/ClaudeEmpfang unbekannt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -3590,6 +3638,11 @@
       "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
       "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
       "readAt": "2026-11-01T21:34:54.648570Z"
+    },
+    "beautySportSupplement": {
+      "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+      "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+      "readAt": "2026-11-01T21:49:46.970046Z"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -3697,6 +3750,49 @@
         }
       },
       "reason": "R45 ersetzt nur Section/CSS, übrigeR44Bildversionen undHistorien erhalten."
+    },
+    {
+      "at": "2026-11-01T21:49:46.970046Z",
+      "previousHandoff": {
+        "documentationRevision": 45,
+        "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.md",
+        "gitBlobSha": "f922f8e9fb62a192f3152687e414bdfda66c3a11",
+        "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+        "entryGitBlobSha": "1dbb31c07c6698ac29c623fcdfd9e3a63bfb4af7",
+        "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+        "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r45",
+        "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+        "receiptState": "unknown_missing_receipt",
+        "scope": "documentation_and_review_only_no_installation_or_execution",
+        "latestCanonicalRevision": 45,
+        "snapshotNote": "R45Budget-Bildkarussell:2aktuellePfade,3neueBilder,20NativeChecks. ÜbrigeR44Quellen undGeschäftsgrenzen erhalten; keinPublish/ClaudeEmpfang unbekannt.",
+        "merchantCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
+        },
+        "descriptionCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
+        },
+        "visibilitySupplement": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+          "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+          "readAt": "2026-11-01T20:50:50.314044Z"
+        },
+        "imageSupplement": {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
+        },
+        "budgetCarouselSupplement": {
+          "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
+          "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
+          "readAt": "2026-11-01T21:34:54.648570Z"
+        }
+      },
+      "reason": "R46 ersetzt nur Section/Directory-Snippet; R45-CSS und übrige Quellen bleiben erhalten."
     }
   ]
 }
