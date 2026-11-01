@@ -1,0 +1,372 @@
+--- before/assets/luxe-clothing.js
++++ after/assets/luxe-clothing.js
+@@ -145,6 +145,8 @@
+     const next = root.querySelector('[data-lcl-next]');
+     const retry = root.querySelector('[data-lcl-retry]');
+     const buttons = Array.from(root.querySelectorAll('[data-lcl-audience]'));
++    const categoryShortcuts = Array.from(root.querySelectorAll('[data-lcl-category-shortcut]'));
++    const initialCategory = id(new URL(location.href).searchParams.get('catalog_category'));
+     const dialog = root.querySelector('[data-lcl-dialog]');
+     const detailBody = root.querySelector('[data-lcl-detail]');
+     const detailTitle = root.querySelector('[data-lcl-detail-title]');
+@@ -218,7 +220,7 @@
+       if (color) return colorsFor(product).some(item => colorValue(item) === color);
+       return sizesFor(product).includes(size);
+     };
+-    const searchAliases={tasse:['mug'],tassen:['mug'],becher:['mug','tumbler'],kapuzenpullover:['hoodie'],rucksack:['backpack'],rucksacke:['backpack'],kissen:['pillow'],decke:['blanket'],decken:['blanket'],handtuch:['towel'],handtucher:['towel']};
++    const searchAliases={tasse:['mug'],tassen:['mug'],becher:['mug','tumbler'],kapuzenpullover:['hoodie'],rucksack:['backpack'],rucksacke:['backpack'],kissen:['pillow'],decke:['blanket'],decken:['blanket'],handtuch:['towel'],handtucher:['towel'],aufkleber:['sticker','decal'],stickers:['sticker'],decal:['sticker','decal'],decals:['sticker','decal']};
+     const matchesSearch = product => {
+       const query=normal(search.value).trim();if(!query)return true;
+       const haystack=normal([product.title,product.titleDe,product.brand,product.model,...categoryIds(product).map(key=>categories.has(key)?titleFor(categories.get(key)):'')].filter(value=>typeof value==='string').join(' '));
+@@ -303,7 +305,8 @@
+       root.dataset.audience = audience; root.dataset.group = group; groupSelect.value=group;
+       groupNav.querySelectorAll('[data-group]').forEach(node=>node.setAttribute('aria-pressed',String(node.dataset.group===group))); root.dataset.filteredCount = String(filtered.length); root.dataset.currentPage = String(page);
+       root.querySelector('[data-lcl-unisex-hint]').hidden = audience !== 'unisex';
+-      buttons.forEach(node => { const selected = node.dataset.lclAudience === audience; node.setAttribute('aria-pressed',String(selected)); const count = node.querySelector('[data-lcl-audience-count]'); if(count) count.textContent = String(products.filter(p => matchesAudience(p,node.dataset.lclAudience)).length); });
++      categoryShortcuts.forEach(node=>{const key=id(node.dataset.lclCategoryShortcut);node.hidden=!categories.has(key);node.disabled=false;node.setAttribute('aria-pressed',String(group==='all' && audience==='all' && types.value===key && !search.value.trim() && !colorFilter.value && !sizeFilter.value));});
++      buttons.forEach(node => { const selected = node.dataset.lclAudience === audience && !(node.dataset.lclAudience==='all' && categoryShortcuts.some(shortcut=>shortcut.getAttribute('aria-pressed')==='true')); node.setAttribute('aria-pressed',String(selected)); const count = node.querySelector('[data-lcl-audience-count]'); if(count) count.textContent = String(products.filter(p => matchesAudience(p,node.dataset.lclAudience)).length); });
+       if (moveFocus) { result.focus({preventScroll:true}); result.scrollIntoView({block:'start',behavior:'auto'}); }
+     };
+     const readAsset = async url => {
+@@ -321,7 +324,9 @@
+         products = raw.products.filter(p => p && id(p.id) && typeof p.title === 'string');
+         if (products.length !== raw.products.length || !products.length) throw new Error('Unverified catalogue rows');
+         categories = new Map(list(raw.categories).filter(c => id(c.id) && typeof c.title === 'string').map(c => [id(c.id),c]));
+-        loaded = true; root.dataset.sourceCount = String(products.length); renderGroups(); refreshTypes(); refreshFacets(); render();
++        loaded = true; root.dataset.sourceCount = String(products.length); renderGroups(); refreshTypes();
++        if(initialCategory && categories.has(initialCategory) && Array.from(types.options).some(option=>option.value===initialCategory)) types.value=initialCategory;
++        refreshFacets(); render();
+         root.querySelector('[data-lcl-partial]').hidden = raw.sourceStatus?.state === 'verified' || raw.sourceStatus?.complete === true;
+       } catch { showMessage(t('load_error'),true); retry.hidden = false; root.dataset.loadState = 'error'; }
+       finally { loading = false; grid.setAttribute('aria-busy','false'); if(loaded) root.dataset.loadState = 'ready'; }
+@@ -364,6 +369,7 @@
+       const visual = el('div','lcl-detail-visual'), photo = el('div','lcl-detail-image'), photoLabel = el('p','lcl-photo-label'); visual.append(photo,photoLabel);
+       const panel = el('div','lcl-detail-panel');
+       const meta = el('p','lcl-detail-meta',[product.brand,metricTitle(product.model)].filter(Boolean).join(' · ')); panel.append(meta);
++      if(known && variants.length) {const count=el('p','lcl-small',t('original_variants',{count:variants.length}));count.dataset.lclOriginalVariants=String(variants.length);panel.append(count);}
+       const priceBox=el('div','lcl-shop-price');priceBox.dataset.lclShopPrice='';panel.append(priceBox);
+       let priceChoiceVariant='',priceChoiceId='';
+       const renderPrice = () => {
+@@ -395,9 +401,9 @@
+       modelInfo.append(el('p','lcl-small',t('geometry_note')));
+       const description=metricText(plainText(product.description));
+       if(description){const info=el('details','lcl-description');info.append(el('summary','',t('model_description')),el('p','lcl-small',t('original_note')),el('div','lcl-description-text',description));modelInfo.append(info);}
+-      const options=list(product.options).filter(option=>typeof option.title==='string' && option.values && typeof option.values==='object');
++      const options=list(product.options).filter(option=>typeof option.title==='string' && (option.values && typeof option.values==='object' || option.type==='single_line_text'));
+       if(options.length){const info=el('details','lcl-description');info.append(el('summary','',t('catalogue_options')),el('p','lcl-small',t('options_note')));
+-        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:Object.values(option.values);const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);if(!texts.length)return;const row=el('div','lcl-option-reference');row.append(el('h4','',metricText(plainText(option.title))),el('p','',texts.map(plainText).map(metricText).join(' · ')));info.append(row);});modelInfo.append(info);}
++        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:option.values && typeof option.values==='object'?Object.values(option.values):[];const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);const freeText=option.type==='single_line_text' && !texts.length;if(!texts.length && !freeText)return;const row=el('div','lcl-option-reference');row.append(el('h4','',metricText(plainText(option.title))),el('p','',freeText?t('manufacturer_text_option'):texts.map(plainText).map(metricText).join(' · ')));info.append(row);});modelInfo.append(info);}
+       const dimensions=product.dimensions;
+       if(dimensions && typeof dimensions==='object' && Object.keys(dimensions).length){
+         const info=el('details','lcl-description');info.append(el('summary','',t('dimensions')));
+@@ -451,7 +457,13 @@
+       },'lcl-color-choice');choice.dataset.colorKey=colorKey(color);choice.append(swatch(color),el('span','',colorName(name)));colorButtons.append(choice);});
+       update();
+     }
+-    buttons.forEach(node=>node.addEventListener('click',()=>{audience=node.dataset.lclAudience;page=1;refreshTypes();refreshFacets();render();if(!loaded)load();}));
++    categoryShortcuts.forEach(node=>node.addEventListener('click',()=>{
++      const key=id(node.dataset.lclCategoryShortcut);if(!loaded || !categories.has(key))return;
++      audience='all';group='all';search.value='';colorFilter.value='';sizeFilter.value='';page=1;refreshTypes();
++      if(!Array.from(types.options).some(option=>option.value===key))return;
++      types.value=key;refreshFacets();render(true);
++    }));
++    buttons.forEach(node=>node.addEventListener('click',()=>{audience=node.dataset.lclAudience;if(audience==='all'){group='all';search.value='';types.value='';colorFilter.value='';sizeFilter.value='';}page=1;refreshTypes();refreshFacets();render();if(!loaded)load();}));
+     groupSelect.addEventListener('change',()=>{group=groupSelect.value;audience='all';types.value='';page=1;refreshTypes();refreshFacets();render();});
+     types.addEventListener('change',()=>{page=1;refreshFacets();render();});
+     colorFilter.addEventListener('change',()=>{page=1;refreshFacets();render();});
+--- before/sections/luxe-clothing.liquid
++++ after/sections/luxe-clothing.liquid
+@@ -19,6 +19,7 @@
+     <nav class="lcl-groups" data-lcl-groups aria-labelledby="LuxeClothingGroups-{{ section.id }}"></nav>
+     <div class="lcl-audiences" role="group" aria-label="{{ 'luxe_clothing.special_selection' | t }}">
+       <button type="button" class="lcl-audience" data-lcl-audience="all" aria-pressed="true"><span>{{ 'luxe_clothing.all' | t }}</span></button>
++      <button type="button" class="lcl-audience" data-lcl-category-shortcut="202" aria-pressed="false" disabled><span>{{ 'luxe_clothing.sticker_shortcut' | t }}</span></button>
+       <button type="button" class="lcl-audience" data-lcl-audience="baby" aria-pressed="false"><span>{{ 'luxe_clothing.baby' | t }}</span></button>
+       <button type="button" class="lcl-audience" data-lcl-audience="unisex" aria-pressed="false"><span>{{ 'luxe_clothing.unisex' | t }}</span></button>
+     </div>
+@@ -55,6 +56,8 @@
+     "assets": {% render 'luxe-clothing-asset-manifest' %},
+     "shopVariantOffers": {% render 'luxe-clothing-shop-offers' %},
+     "labels": {
++      "original_variants": {{ 'luxe_clothing.original_variants' | t | json }},
++      "manufacturer_text_option": {{ 'luxe_clothing.manufacturer_text_option' | t | json }},
+       "material_source_issue": {{ 'luxe_clothing.material_source_issue' | t | json }},
+       "material_source_issue_short": {{ 'luxe_clothing.material_source_issue_short' | t | json }},
+       "single_color": {{ 'luxe_clothing.single_color' | t | json }},
+--- before/assets/luxe-edit.css
++++ after/assets/luxe-edit.css
+@@ -198,3 +198,28 @@
+  .lx-home .lx-season-edit{margin:16px 16px 32px;padding:28px 22px;grid-template-columns:minmax(0,1fr);gap:22px;border-radius:18px}
+  .lx-home .lx-season-edit h2{font-size:34px}
+ }
++
++.lx-home .lx-more-intro{font-size:16px;line-height:1.6;color:var(--lx-muted);max-width:720px;margin:0 0 24px}
++.lx-home .lx-more-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;min-width:0}
++.lx-home .lx-more-card{display:flex;flex-direction:column;min-width:0;border:1px solid #ded5c9;border-radius:18px;overflow:hidden;background:#fffdf9}
++.lx-home .lx-more-card:hover{border-color:#8b7355}
++.lx-home .lx-more-photo{position:relative;aspect-ratio:1;background:#f2eee7;overflow:hidden}
++.lx-home .lx-more-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
++.lx-home .lx-more-info{display:flex;flex-direction:column;flex:1;min-width:0;padding:20px}
++.lx-home .lx-more-info h3{font:500 18px/1.45 var(--lx-sans);min-height:3em;margin:0 0 12px;overflow-wrap:anywhere}
++.lx-home .lx-more-info .lx-review-badge{font-size:13px;line-height:1.55;margin:0 0 16px}
++.lx-home .lx-more-price{font:600 22px/1.3 var(--lx-sans);margin:auto 0 14px;overflow-wrap:anywhere}
++.lx-home .lx-more-price>span{font-size:14px;font-weight:400}
++.lx-home .lx-more-open{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;font-size:15px;text-decoration:underline;text-underline-offset:4px}
++@media(max-width:760px){
++ .lx-home .lx-more-products .lx-section-heading{align-items:flex-start;flex-direction:column;gap:14px}
++ .lx-home .lx-more-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}
++ .lx-home .lx-more-intro{font-size:16px;margin-bottom:18px}
++ .lx-home .lx-more-info{padding:14px 12px}
++ .lx-home .lx-more-info h3{font-size:16px;min-height:3em}
++ .lx-home .lx-more-info .lx-review-badge{font-size:12px;margin-bottom:14px}
++ .lx-home .lx-more-price{font-size:20px}
++ .lx-home .lx-more-price>span{font-size:13px}
++ .lx-home .lx-more-open{font-size:13px;gap:8px}
++ .lx-home .lx-more-open .lx-arrow{width:19px;height:19px;flex:none}
++}
+--- before/sections/luxe-edit-home.liquid
++++ after/sections/luxe-edit-home.liquid
+@@ -191,6 +191,53 @@
+         <div class="lx-discover-grid">{{ lx_discover_cards }}</div>
+       </section>
+     {% endif %}
++    {% assign lx_more_entries = '15516233957761|led-leucht-brustgeschirr-reissfest-933632|harness,15518558847361|handgemachte-3d-liebesnagel-blue-ice-652096|nails,15523137225089|elektrischer-nagelpolierer-mit-licht-545984|polisher,15520373932417|outdoor-schultertasche-fur-freizeit-kessel-329792|shoulderbag,15408457941377|rosenquarz-gua-sha-set|gua_sha,15501005324673|lederarmband-mit-verschluss-unisex-604800|bracelet,16656662266247|hufttasche-fur-hundetraining-625200|trainingbag,16654280753543|hundennasenmatte-aus-fleece-energie-intelligen-622000|snufflemat' | split: ',' %}
++    {% assign lx_more_extra_stops = 'waffe-pruefen' | split: ',' %}
++    {% assign lx_more_stops = lx_trend_stops | concat: lx_more_extra_stops %}
++    {% assign lx_more_count = 0 %}
++    {% assign lx_more_seen = '|' %}
++    {% capture lx_more_cards %}
++      {% for lx_more_product in section.settings.more_products limit: 8 %}
++        {% assign lx_more_product_id = lx_more_product.id | append: '' %}
++        {% assign lx_more_match = false %}
++        {% for lx_more_entry in lx_more_entries %}
++          {% assign lx_more_fields = lx_more_entry | split: '|' %}
++          {% if lx_more_product_id == lx_more_fields[0] and lx_more_product.handle == lx_more_fields[1] %}
++            {% assign lx_more_match = true %}
++            {% assign lx_more_name_key = 'luxe_home.more.' | append: lx_more_fields[2] %}
++            {% break %}
++          {% endif %}
++        {% endfor %}
++        {% assign lx_more_seen_key = lx_more_product_id | prepend: '|' | append: '|' %}
++        {% unless lx_more_seen contains lx_more_seen_key %}
++          {% if lx_more_match and lx_more_product.available and lx_more_product.featured_image and lx_more_product.price_min > 0 and lx_more_product.tags.size > 0 %}
++            {% assign lx_more_blocked = false %}
++            {% assign lx_more_tags = lx_more_product.tags | join: '|' | downcase %}
++            {% for lx_stop in lx_more_stops %}{% if lx_more_tags contains lx_stop %}{% assign lx_more_blocked = true %}{% endif %}{% endfor %}
++            {% for lx_tag in lx_more_product.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_more_blocked = true %}{% endif %}{% endfor %}
++            {% unless lx_more_blocked %}
++              {% assign lx_more_count = lx_more_count | plus: 1 %}
++              {% assign lx_more_seen = lx_more_seen | append: lx_more_product_id | append: '|' %}
++              <a class="lx-more-card" href="{{ lx_more_product.url }}" data-more-product-id="{{ lx_more_product.id }}" data-more-handle="{{ lx_more_product.handle | escape }}" aria-labelledby="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">
++                <div class="lx-more-photo">{{ lx_more_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '240, 360, 480, 560, 700', sizes: '(max-width: 760px) 44vw, 22vw', alt: '' }}</div>
++                <div class="lx-more-info"><h3 id="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">{{ lx_more_name_key | t }}</h3>
++                  <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_more_product.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_more_product %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
++                  <p class="lx-more-price">{% if lx_more_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_more_product.price_min | money_with_currency }}</p>
++                  <span class="lx-more-open">{{ 'luxe_home.trends.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
++                </div>
++              </a>
++            {% endunless %}
++          {% endif %}
++        {% endunless %}
++      {% endfor %}
++    {% endcapture %}
++    {% if lx_more_count > 0 %}
++      <section class="lx-more-products lx-section" id="lx-more-products" aria-labelledby="lx-more-title-{{ section.id }}">
++        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.more.eyebrow' | t }}</p><h2 id="lx-more-title-{{ section.id }}">{{ 'luxe_home.more.heading' | t }}</h2></div><a class="lx-text-link" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.more.all' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
++        <p class="lx-more-intro">{{ 'luxe_home.more.intro' | t }}</p>
++        <div class="lx-more-grid">{{ lx_more_cards }}</div>
++      </section>
++    {% endif %}
+     <section class="lx-fashion-edit lx-section" aria-labelledby="lx-fashion-title">
+       <a class="lx-fashion-image" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000" aria-label="{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900" width="1600" height="2133" loading="lazy" alt="{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}"></a>
+       <div class="lx-fashion-copy"><p class="lx-eyebrow">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id="lx-fashion-title">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class="lx-button" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><span class="lx-fashion-footnote">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>
+@@ -276,7 +323,14 @@
+ {% schema %}
+ {
+   "name": "LuxeStyle – Editorial",
+-  "settings": [],
++  "settings": [
++    {
++      "type": "product_list",
++      "id": "more_products",
++      "label": "Weitere Produkte",
++      "limit": 8
++    }
++  ],
+   "presets": [
+     {
+       "name": "LuxeStyle – Editorial"
+--- before/templates/index.json
++++ after/templates/index.json
+@@ -1,17 +1,19 @@
+-/*
+- * ------------------------------------------------------------
+- * IMPORTANT: The contents of this file are auto-generated.
+- *
+- * This file may be updated by the Shopify admin theme editor
+- * or related systems. Please exercise caution as any changes
+- * made to this file may be overwritten.
+- * ------------------------------------------------------------
+- */
+ {
+   "sections": {
+     "luxe_home": {
+       "type": "luxe-edit-home",
+-      "settings": {}
++      "settings": {
++        "more_products": [
++          "led-leucht-brustgeschirr-reissfest-933632",
++          "handgemachte-3d-liebesnagel-blue-ice-652096",
++          "elektrischer-nagelpolierer-mit-licht-545984",
++          "outdoor-schultertasche-fur-freizeit-kessel-329792",
++          "rosenquarz-gua-sha-set",
++          "lederarmband-mit-verschluss-unisex-604800",
++          "hufttasche-fur-hundetraining-625200",
++          "hundennasenmatte-aus-fleece-energie-intelligen-622000"
++        ]
++      }
+     },
+     "luxe_reviews": {
+       "type": "luxe-home-reviews",
+--- before/locales/de.json
++++ after/locales/de.json
+@@ -1,12 +1,3 @@
+-/*
+- * ------------------------------------------------------------
+- * IMPORTANT: The contents of this file are auto-generated.
+- *
+- * This file may be updated by the Shopify admin language editor
+- * or related systems. Please exercise caution as any changes
+- * made to this file may be overwritten.
+- * ------------------------------------------------------------
+- */
+ {
+   "luxe_categories": {
+     "eyebrow": "Deine Einkaufswelten",
+@@ -608,6 +599,21 @@
+       "swipe": "Wische, um weitere Bewertungen zu sehen.",
+       "list_label": "Ausgewählte Produktbewertungen",
+       "product_link": "Zum Produkt"
++    },
++    "more": {
++      "eyebrow": "Neue Ideen für deinen Alltag",
++      "heading": "Noch mehr entdecken",
++      "intro": "Für unterwegs, für deine Routine oder für deinen Hund. Entdecke weitere Produkte und ihre Auswahl.",
++      "all": "Alle Kategorien ansehen",
++      "products": "Weitere Produkte entdecken",
++      "harness": "Leuchtgeschirr für Hunde",
++      "nails": "Kunstnägel «Blue Ice»",
++      "polisher": "Nagelpolierer",
++      "shoulderbag": "Schultertasche für unterwegs",
++      "gua_sha": "Gua-Sha-Set",
++      "bracelet": "Armband mit Verschluss",
++      "trainingbag": "Tasche fürs Hundetraining",
++      "snufflemat": "Suchmatte für Hunde"
+     }
+   },
+   "luxe_studio": {
+@@ -1058,6 +1064,9 @@
+     "empty_filtered": "Für «[query]» gibt es mit diesen Filtern keine Treffer: [filters]. Suche im ganzen Katalog oder passe die Filter an.",
+     "single_color": "Dieses Modell ist in der Basisfarbe [color] erfasst.",
+     "material_source_issue_short": "Quellenangabe unklar",
+-    "material_source_issue": "Die Materialprozente der Quelle sind widersprüchlich. Diese Zusammensetzung ist noch nicht bestätigt; die angezeigte Variante bleibt die Originalauswahl."
++    "material_source_issue": "Die Materialprozente der Quelle sind widersprüchlich. Diese Zusammensetzung ist noch nicht bestätigt; die angezeigte Variante bleibt die Originalauswahl.",
++    "sticker_shortcut": "Sticker und Aufkleber",
++    "original_variants": "[count] Originalvarianten aus dem Herstellerkatalog",
++    "manufacturer_text_option": "Hersteller-Freitextoption; im Shop noch nicht auswählbar."
+   }
+ }
+--- before/locales/en.default.json
++++ after/locales/en.default.json
+@@ -1,12 +1,3 @@
+-/*
+- * ------------------------------------------------------------
+- * IMPORTANT: The contents of this file are auto-generated.
+- *
+- * This file may be updated by the Shopify admin language editor
+- * or related systems. Please exercise caution as any changes
+- * made to this file may be overwritten.
+- * ------------------------------------------------------------
+- */
+ {
+   "luxe_categories": {
+     "eyebrow": "Your shopping worlds",
+@@ -608,6 +599,21 @@
+       "swipe": "Swipe to see more reviews.",
+       "list_label": "Selected product reviews",
+       "product_link": "View product"
++    },
++    "more": {
++      "eyebrow": "New ideas for your everyday life",
++      "heading": "More to discover",
++      "intro": "For days out, your routine or your dog. Discover more products and their options.",
++      "all": "Explore all categories",
++      "products": "Discover more products",
++      "harness": "Light-up dog harness",
++      "nails": "Blue Ice false nails",
++      "polisher": "Nail polisher",
++      "shoulderbag": "Shoulder bag for days out",
++      "gua_sha": "Gua sha set",
++      "bracelet": "Bracelet with clasp",
++      "trainingbag": "Dog training bag",
++      "snufflemat": "Dog snuffle mat"
+     }
+   },
+   "luxe_studio": {
+@@ -1058,6 +1064,9 @@
+     "empty_filtered": "No results for “[query]” with these filters: [filters]. Search the whole catalogue or adjust your filters.",
+     "single_color": "This model has the recorded base colour [color].",
+     "material_source_issue_short": "Source data unclear",
+-    "material_source_issue": "The source material percentages are inconsistent. This composition is not yet confirmed; the displayed variant remains the original selection."
++    "material_source_issue": "The source material percentages are inconsistent. This composition is not yet confirmed; the displayed variant remains the original selection.",
++    "sticker_shortcut": "Stickers and decals",
++    "original_variants": "[count] original variants from the manufacturer’s catalogue",
++    "manufacturer_text_option": "Manufacturer free-text option; not yet selectable in this shop."
+   }
+ }
+--- before/locales/fr.json
++++ after/locales/fr.json
+@@ -1,12 +1,3 @@
+-/*
+- * ------------------------------------------------------------
+- * IMPORTANT: The contents of this file are auto-generated.
+- *
+- * This file may be updated by the Shopify admin language editor
+- * or related systems. Please exercise caution as any changes
+- * made to this file may be overwritten.
+- * ------------------------------------------------------------
+- */
+ {
+   "blocks": {
+     "load_video": "Charger la vidéo : {{ description }}",
+@@ -583,11 +574,29 @@
+       "swipe": "Faire défiler pour voir d’autres avis.",
+       "list_label": "Sélection d’avis sur les produits",
+       "product_link": "Voir le produit"
++    },
++    "more": {
++      "eyebrow": "De nouvelles idées pour ton quotidien",
++      "heading": "Encore plus à découvrir",
++      "intro": "Pour tes sorties, ta routine ou ton chien. Découvre d’autres produits et leurs options.",
++      "all": "Découvrir toutes les catégories",
++      "products": "Découvrir d’autres produits",
++      "harness": "Harnais lumineux pour chien",
++      "nails": "Faux ongles Blue Ice",
++      "polisher": "Polisseur à ongles",
++      "shoulderbag": "Sac à bandoulière pour les sorties",
++      "gua_sha": "Set de gua sha",
++      "bracelet": "Bracelet avec fermoir",
++      "trainingbag": "Sac pour le dressage canin",
++      "snufflemat": "Tapis de fouille pour chien"
+     }
+   },
+   "luxe_clothing": {
+     "reviews_unavailable": "Avis indisponibles",
+     "reviews_zero": "Aucun avis pour le moment",
+-    "reviews_summary": "[rating] sur [scale] · [count] avis"
++    "reviews_summary": "[rating] sur [scale] · [count] avis",
++    "sticker_shortcut": "Autocollants et stickers",
++    "original_variants": "[count] variantes d’origine du catalogue du fabricant",
++    "manufacturer_text_option": "Option de texte libre du fabricant ; pas encore sélectionnable dans cette boutique."
+   }
+ }
