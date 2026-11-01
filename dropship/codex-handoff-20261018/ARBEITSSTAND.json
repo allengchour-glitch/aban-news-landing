@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 20,
-  "updatedAt": "2026-11-01T07:20:31.831Z",
+  "revision": 21,
+  "updatedAt": "2026-11-01T08:48:31Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1092,14 +1092,16 @@
       "priorityKind": "SETZUNG",
       "state": "lokal_gepruefter_entwurf",
       "title": "Printful-Auftragsvariante an historischer Bestell-SKU sichern",
-      "lastEvidenceDate": "2026-10-29",
+      "lastEvidenceDate": "2026-11-01",
       "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
-      "lastEvidence": "Patch gegen main a74459a94a800b24d4b348332154d25f516920b8: alte Katalog-SKU-Priorität konnte synthetisch falsche Variante bestellen. Historische Bestell-SKU massgebend, Konflikt/fehlende/ungültige SKU sperrt ganzen Auftrag vor POST. Vorher24/8, nachher32/0 unabhängig bestätigt; Platzierung140/0, optionaler Katalogteil ausgelassen. Keine echten Bestell-/Kundendaten gelesen, kein Sync. Zwei native Printful-Tag-Produkte je4 Varianten gelesen; Hoodie15422815699329 hat unter Material den prüfpflichtigen Wert Sweatshirt(Rundhals), keine Attributänderung.",
-      "nextAllowedStep": "Separaten Entwurf für Idempotenz und geprüfte Shopify-Quittierung mit simuliertem Anbietererfolg/Markerfehler sowie unbekanntem POST entwickeln; vorhandene Zuordnungen vor Migration klären. Native Printful-Katalogvariante vor Attributnachträgen lesen.",
+      "lastEvidence": "01.11. interaktiv nach «weiter» lokal fortgeführt, gegen frisch gepinnten main a431bf27. Synthetischer Vorherfehler: zwei Läufe erzeugten zwei Anbieteraufträge trotz vier abgewiesener Shopify-Marker. Neuer kombinierter Reviewpatch bindet externe ID, Shop/Store/Order, Quellen-/Intenthash einschliesslich confirm und vorhandenen Ready-Beleg; CAS-Claim und frische Quelle/Claim vor POST. Unklarer POST bleibt für erneutes Senden gesperrt; genauer Anbieterabgleich und kontrollierte Markerquittierung. Unbekannte Designprüfung, unvollständige Positionen und fehlende Lieferdaten blockieren. 79/79 Mocktests unabhängig bestätigt, Mutation erkannt, vier Dateien bytegenau zurückgespielt. Keine echten Bestellabfragen/Writes, Migration, Merge, Deployment oder Sync.",
+      "nextAllowedStep": "Kombinierten Vier-Dateien-Diff und CI-Anbindung erneut gegen aktuellen main prüfen; Node22/Voll-CI in legitimer geeigneter Umgebung abschliessen. Vor produktivem Einsatz eigenen Printful-/Shop-Grant, API-Version und begrenzten belegten Altauftragsabgleich/Ready-Migrationsscope nachweisen; kein automatisches Initialisieren oder erneutes Senden bei unknown. Vollständige Druckgeometrie und EDM-/Bestellfreigabe separat belegen.",
       "blockers": [
-        "Kein produktiver Merge/Deployment/Sync; Claude-Quittung unbekannt",
-        "external_id/Idempotenz und Shopify-userErrors-Quittierung bleiben offen; fehlende Designprüfung kann PASS ergeben; maximal50 Positionen",
-        "Printful-Laufzeit-Key und Store-ID hier nicht konfiguriert; kein authentifizierter Lieferantenkatalogbeleg für Material/Modell"
+        "Nur lokaler Reviewentwurf, keine produktive Integration; Node22/Voll-CI unbestätigt, GraphQL-Validator skipped",
+        "Kein belegter begrenzter Ready-/Migrations-Cutover; kein Checkpoint oder Register initialisiert",
+        "CAS/frische Gegenproben sind kein atomarer Lock zwischen Printful und Shopify; alte Writer vor Cutover gesondert prüfen",
+        "Runtime-Credentials/App-Grants/API-Version und echte Lieferanten-/Druckflächen-/Rechtebelege offen; positiver Legacy-ID-Fallback-Modulfall nicht gesondert getestet",
+        "Claude-Kenntnisnahme unbekannt"
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
@@ -1131,10 +1133,47 @@
           "path": "dropship/codex-handoff-20261018/PRINTFUL-SYNC-SCHUTZ-20261029.patch",
           "gitBlobSha": "f95fdf3bf0fcdfe6ea9dae4eed125c2e0ee44caa",
           "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-20261101.md",
+          "gitBlobSha": "5d526467a6e78db9677c4b3f30cb0e0bdc93f967",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-BELEGE-20261101.json",
+          "gitBlobSha": "576e3ad750e1c782d954251b71a30b0ae8ad344e",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-IDEMPOTENZ-20261101.patch",
+          "gitBlobSha": "d55f39efe30434efb78ffc75e405ef2dc6cac233",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-SKU-SCHUTZ-20261101.patch",
+          "gitBlobSha": "0e4d5ce87482b72b79e0ca9d5635b5958af807ff",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-CI-TESTS-20261101.patch",
+          "gitBlobSha": "a8b55dd9052e363dcc87c26029102004c6406811",
+          "readAt": "2026-11-01T08:48:31Z"
         }
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "codex_preparation_claude_coordination"
+      "assignedRole": "codex_preparation_claude_coordination",
+      "evidenceHistory": [
+        {
+          "date": "2026-10-29",
+          "lastEvidence": "Patch gegen main a74459a94a800b24d4b348332154d25f516920b8: alte Katalog-SKU-Priorität konnte synthetisch falsche Variante bestellen. Historische Bestell-SKU massgebend, Konflikt/fehlende/ungültige SKU sperrt ganzen Auftrag vor POST. Vorher24/8, nachher32/0 unabhängig bestätigt; Platzierung140/0, optionaler Katalogteil ausgelassen. Keine echten Bestell-/Kundendaten gelesen, kein Sync. Zwei native Printful-Tag-Produkte je4 Varianten gelesen; Hoodie15422815699329 hat unter Material den prüfpflichtigen Wert Sweatshirt(Rundhals), keine Attributänderung.",
+          "nextAllowedStep": "Separaten Entwurf für Idempotenz und geprüfte Shopify-Quittierung mit simuliertem Anbietererfolg/Markerfehler sowie unbekanntem POST entwickeln; vorhandene Zuordnungen vor Migration klären. Native Printful-Katalogvariante vor Attributnachträgen lesen.",
+          "blockers": [
+            "Kein produktiver Merge/Deployment/Sync; Claude-Quittung unbekannt",
+            "external_id/Idempotenz und Shopify-userErrors-Quittierung bleiben offen; fehlende Designprüfung kann PASS ergeben; maximal50 Positionen",
+            "Printful-Laufzeit-Key und Store-ID hier nicht konfiguriert; kein authentifizierter Lieferantenkatalogbeleg für Material/Modell"
+          ]
+        }
+      ]
     },
     {
       "id": "cj-variant-price-identity",
@@ -1142,14 +1181,15 @@
       "priorityKind": "SETZUNG",
       "state": "lokal_gepruefter_entwurf",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
-      "lastEvidenceDate": "2026-10-29",
+      "lastEvidenceDate": "2026-11-01",
       "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
-      "lastEvidence": "Lokal gegen aktuellen main korrigiert: eindeutige Quell-SKU statt erster gefilterter CJ-Zeile; unbekannte Kosten, fehlender CHF-Nachweis oder fehlender expliziter Kurs blockieren. Alte/geänderte Pläne und fremde/doppelte/unlesbare SKU-Treffer sperren productSet. Reservierung vor Send nur im Prozess; partielle ACK unbekannt.119 neue Prüfungen unabhängig bestätigt;89 reine/20 Stecker/288 Grind zusätzlich grün, Mengenrabattvergleich ausgelassen. Syntax/Patch-Roundtrip grün; CI-Simulation vor Start wegen fehlender YAML abgebrochen; native GraphQL-Vorprüfung skipped. Keine API-Schreibausführung.",
-      "nextAllowedStep": "Separaten SKU_NACHZIEHEN-Pfad gezielt gegen unbekannte/paginierte Suchantworten und unklare Writes härten. Für produktiven Mehrvariantenlauf genaue CJ-Zuordnung, aktuelle Kosten/Kurs und bestehende Schutzregeln erneut belegen; kein pauschaler Reimport.",
+      "lastEvidence": "01.11. interaktiv nach «weiter» separaten SKU_NACHZIEHEN-Pfad lokal gehärtet. Vorher fehlende/paginierte Antworten als frei sowie Timeout-Wiederholung im selben Prozess nachgestellt. Vollständige Produkt-/Varianten-/SKU-Suche, genaue Identität, Reservierung vor Send mit spätem Parallel-Recheck und exakt bestätigtes frisches Rücklesen erforderlich. Unklarer Write hält Prozessreservation.39 neue Szenarien, 121 Preis-/SKU-Assertions (119 erhalten+2 neue) und 89 bestehende Varianten-Assertions grün; unabhängiger enger Review und fehlschlagende Schutzmutation belegt. Inkremental-/Gesamtpatch bytegleich; Gesamtpatch enthält ältere Vorbereitung. Keine API-Writes/Imports/Preisänderung oder produktive Integration.",
+      "nextAllowedStep": "Gesamtpatch mit älterer Preis-/SKU-Vorbereitung und separat vorgeschlagenen zwei CI-Testzeilen erneut gegen aktuellen main prüfen. Node22/Voll-CI sowie dauerhafte prozessübergreifende Reservation/Reconciliation und legitime Runtime-Grants belegen. Vor echtem Lauf aktuelle CJ-Zuordnung/Kosten/Kurs und konkreten begrenzten Produktscope prüfen; kein pauschaler Reimport.",
       "blockers": [
-        "Separater SKU_NACHZIEHEN-Writer unverändert: nodes||[], keine pageInfo, Reservierung erst nach ACK",
-        "Kein dauerhafter/prozessübergreifender Lock oder vollständiger produktiver Integrationsnachweis",
-        "CJ-Helfer/Connector vorhanden, aber im geprüften Windsor-Zugang kein CJ-Konto verbunden; keine Lieferanten-Kataloglesung"
+        "Reservierung bleibt prozesslokal; dauerhafte/prozessübergreifende Reservation und Reconciliation vor echtem Lauf offen",
+        "Node22/Voll-CI und produktive Integration unbestätigt; GraphQL-Validator skipped",
+        "CJ-Helfer vorhanden, aber legitime Runtime-Zugänge/App-Grants und aktuelle Lieferanten-Katalogbelege hier nicht bestätigt",
+        "Keine produktiven Produkt-/SKU-/Preiswrites oder Merchant-Freigabe; Claude-Kenntnisnahme unbekannt"
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
@@ -1181,10 +1221,47 @@
           "path": "dropship/codex-handoff-20261018/PRINTFUL-SYNC-SCHUTZ-20261029.patch",
           "gitBlobSha": "f95fdf3bf0fcdfe6ea9dae4eed125c2e0ee44caa",
           "readAt": "2026-10-29T21:38:14.814026+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-20261101.md",
+          "gitBlobSha": "5d526467a6e78db9677c4b3f30cb0e0bdc93f967",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-BELEGE-20261101.json",
+          "gitBlobSha": "576e3ad750e1c782d954251b71a30b0ae8ad344e",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-IDEMPOTENZ-20261101.patch",
+          "gitBlobSha": "d55f39efe30434efb78ffc75e405ef2dc6cac233",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-SKU-SCHUTZ-20261101.patch",
+          "gitBlobSha": "0e4d5ce87482b72b79e0ca9d5635b5958af807ff",
+          "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SYNC-CI-TESTS-20261101.patch",
+          "gitBlobSha": "a8b55dd9052e363dcc87c26029102004c6406811",
+          "readAt": "2026-11-01T08:48:31Z"
         }
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "codex_preparation_claude_coordination"
+      "assignedRole": "codex_preparation_claude_coordination",
+      "evidenceHistory": [
+        {
+          "date": "2026-10-29",
+          "lastEvidence": "Lokal gegen aktuellen main korrigiert: eindeutige Quell-SKU statt erster gefilterter CJ-Zeile; unbekannte Kosten, fehlender CHF-Nachweis oder fehlender expliziter Kurs blockieren. Alte/geänderte Pläne und fremde/doppelte/unlesbare SKU-Treffer sperren productSet. Reservierung vor Send nur im Prozess; partielle ACK unbekannt.119 neue Prüfungen unabhängig bestätigt;89 reine/20 Stecker/288 Grind zusätzlich grün, Mengenrabattvergleich ausgelassen. Syntax/Patch-Roundtrip grün; CI-Simulation vor Start wegen fehlender YAML abgebrochen; native GraphQL-Vorprüfung skipped. Keine API-Schreibausführung.",
+          "nextAllowedStep": "Separaten SKU_NACHZIEHEN-Pfad gezielt gegen unbekannte/paginierte Suchantworten und unklare Writes härten. Für produktiven Mehrvariantenlauf genaue CJ-Zuordnung, aktuelle Kosten/Kurs und bestehende Schutzregeln erneut belegen; kein pauschaler Reimport.",
+          "blockers": [
+            "Separater SKU_NACHZIEHEN-Writer unverändert: nodes||[], keine pageInfo, Reservierung erst nach ACK",
+            "Kein dauerhafter/prozessübergreifender Lock oder vollständiger produktiver Integrationsnachweis",
+            "CJ-Helfer/Connector vorhanden, aber im geprüften Windsor-Zugang kein CJ-Konto verbunden; keine Lieferanten-Kataloglesung"
+          ]
+        }
+      ]
     },
     {
       "id": "personalizer-fullscreen-20261029",
@@ -1817,6 +1894,17 @@
         "path": "dropship/codex-handoff-20261018/MORGENBELEGE-20261101.json",
         "gitBlobSha": "123bc7472d5e42c670d4dfb5f4322a5df0d5306d",
         "readAt": "2026-11-01T07:20:31.831Z"
+      }
+    },
+    {
+      "revision": 21,
+      "at": "2026-11-01T08:48:31Z",
+      "actor": "codex",
+      "action": "Interaktive Fortsetzung nach «weiter»: Printful-Idempotenz/Shopify-Quittierung und separaten CJ-SKU-Writer lokal mit synthetischen Gegenproben gehärtet.79 Printful-Fälle unabhängig grün;39 neue CJ-Szenarien sowie121/89 Regressionassertions grün. Schutzmutationen erkannt, Patches bytegenau. Fünf Reviewartefakte nur im Handoff gesichert und exakt gelesen, kein Runtimecode/Workflow/Sync/Deployment. Identitäten frisch passend; Tagesreports/Klaviyo und beendeten Kauf-Watch nicht wiederholt. Alle 16 Aufgaben/Historien und Zeitplan erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SYNC-SCHUTZ-BELEGE-20261101.json",
+        "gitBlobSha": "576e3ad750e1c782d954251b71a30b0ae8ad344e",
+        "readAt": "2026-11-01T08:48:31Z"
       }
     }
   ],
