@@ -1,0 +1,1381 @@
+{
+  "at": "2026-11-01T12:42:00Z",
+  "scope": "LuxeStyle homepage UNPUBLISHED only",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "themes": {
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/212656488839",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "previewId": "gid://shopify/OnlineStoreTheme/212752499079",
+    "previewRole": "UNPUBLISHED"
+  },
+  "image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-collage-9beefd83-20261101.png?v=1793536601",
+    "fileId": "gid://shopify/MediaImage/77911057072519",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "originalSha256": "9beefd83dd6d88242add9997a784f5308f1c71f186a75aad9a619243c57839fa",
+    "cdnSha256": "2e62cd9a6f2a930442a8e2d63b83c2047a00ea15c050653f286b8cda1afedc9f",
+    "pixelIdentical": true,
+    "pixelSha256": "e6950e366905046956754fbe075b6a81735c89aa6953528c5f4de6f9bfd14ff4",
+    "status": 200
+  },
+  "sourceManifest": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "r24Sha256": "4f7ba927c67f506b2906c1a44ddeae6e46d505205674c7f25a55214b0704698a",
+      "finalSha256": "b33c5981f87ac5f4605fc5f595002e39c8bd0a99b5c4a251a0551b1f7d40a65a"
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "r24Sha256": "68b7558438751bb0ff12ea7593b4facb6250f0a95451af413a4fd898c4583d4d",
+      "finalSha256": "8dfcda0067162d342d4b44cdd5b746aedec80583c7448cb63eb1ba823376038c"
+    },
+    {
+      "filename": "locales/de.json",
+      "r24Sha256": "d00058fecef0c02dab0c631cf70a879e5c8c34039afd4ed20b9071e3aabf0a65",
+      "finalSha256": "392c03511af26053dbe2299f121aa1a222261add5f33514b670384f1c944af0f"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "r24Sha256": "6c3699c6d9d176ae00f62fbbd6a535a3b217332ccb26929c7d6cbd1e0b27a476",
+      "finalSha256": "592f72b1f1efe03460b93465781dacbb3e6d8bbb80944b20d6b77c4c4057f251"
+    }
+  ],
+  "nativeReadback": [
+    {
+      "filename": "assets/luxe-edit.css",
+      "checksumMd5": "a1de229c506794b5bc80769de1bcec6d",
+      "changed": true,
+      "exact": true
+    },
+    {
+      "filename": "assets/luxe-edit.js",
+      "checksumMd5": "c7ac0b30dc20f38d17a009f1f5a339be",
+      "changed": false,
+      "exact": true
+    },
+    {
+      "filename": "locales/de.json",
+      "checksumMd5": "9b85b5819baa7e7bf628eaaf2c91ea22",
+      "changed": true,
+      "exact": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "checksumMd5": "be4afbaeae0ece46edac41c45310ffb3",
+      "changed": true,
+      "exact": true
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "checksumMd5": "bbefea7c5c9207234375ef2cb8335a2b",
+      "changed": true,
+      "exact": true
+    },
+    {
+      "filename": "snippets/luxe-studio-blank-eligible.liquid",
+      "checksumMd5": "89eea97931f469cb8882584140e7f41d",
+      "changed": false,
+      "exact": true
+    }
+  ],
+  "qa": {
+    "at": "2026-11-01T12:40:59.392972+00:00",
+    "scope": "Native UNPUBLISHED preview, no content overrides; non-GET/HEAD blocked",
+    "checks": [
+      {
+        "name": "Native preview HTTP200 and exact theme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "One collage and no individual product cards/prices",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Image and button open full design selection",
+        "pass": true,
+        "data": [
+          "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "/collections/selbst-gestalten-1?view=luxe-gestalten"
+        ]
+      },
+      {
+        "name": "Descriptive image alternative",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Twelve distinct selected trend products",
+        "pass": true,
+        "data": [
+          {
+            "id": "15499700142465",
+            "handle": "magnetische-3-in-1-ladestation-613200",
+            "href": "/products/magnetische-3-in-1-ladestation-613200",
+            "price": "CHF 75.90"
+          },
+          {
+            "id": "15450856292737",
+            "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+            "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+            "price": "Ab CHF 34.90"
+          },
+          {
+            "id": "15448587075969",
+            "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+            "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+            "price": "CHF 39.90"
+          },
+          {
+            "id": "15430462669185",
+            "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+            "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+            "price": "CHF 44.90"
+          },
+          {
+            "id": "15408458006913",
+            "handle": "kristallspitzen-set-8-teilig-holzbox",
+            "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+            "price": "CHF 29.90"
+          },
+          {
+            "id": "16617685877127",
+            "handle": "yoga-massagerolle-390720",
+            "href": "/products/yoga-massagerolle-390720",
+            "price": "Ab CHF 44.90"
+          },
+          {
+            "id": "16613782323591",
+            "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+            "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+            "price": "Ab CHF 34.90"
+          },
+          {
+            "id": "16610088518023",
+            "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+            "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+            "price": "CHF 27.90"
+          },
+          {
+            "id": "16604940730759",
+            "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+            "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+            "price": "CHF 26.90"
+          },
+          {
+            "id": "16604922937735",
+            "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+            "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+            "price": "CHF 22.90"
+          },
+          {
+            "id": "15523992797569",
+            "handle": "reise-organizer-set-mit-netz-617800",
+            "href": "/products/reise-organizer-set-mit-netz-617800",
+            "price": "CHF 28.90"
+          },
+          {
+            "id": "15523992174977",
+            "handle": "futterball-fur-haustiere-498560",
+            "href": "/products/futterball-fur-haustiere-498560",
+            "price": "CHF 21.90"
+          }
+        ]
+      },
+      {
+        "name": "All trend prices and exact destinations match current native facts",
+        "pass": true,
+        "data": [
+          {
+            "handle": "magnetische-3-in-1-ladestation-613200",
+            "price": "CHF 75.90",
+            "correct": true
+          },
+          {
+            "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+            "price": "Ab CHF 34.90",
+            "correct": true
+          },
+          {
+            "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+            "price": "CHF 39.90",
+            "correct": true
+          },
+          {
+            "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+            "price": "CHF 44.90",
+            "correct": true
+          },
+          {
+            "handle": "kristallspitzen-set-8-teilig-holzbox",
+            "price": "CHF 29.90",
+            "correct": true
+          },
+          {
+            "handle": "yoga-massagerolle-390720",
+            "price": "Ab CHF 44.90",
+            "correct": true
+          },
+          {
+            "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+            "price": "Ab CHF 34.90",
+            "correct": true
+          },
+          {
+            "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+            "price": "CHF 27.90",
+            "correct": true
+          },
+          {
+            "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+            "price": "CHF 26.90",
+            "correct": true
+          },
+          {
+            "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+            "price": "CHF 22.90",
+            "correct": true
+          },
+          {
+            "handle": "reise-organizer-set-mit-netz-617800",
+            "price": "CHF 28.90",
+            "correct": true
+          },
+          {
+            "handle": "futterball-fur-haustiere-498560",
+            "price": "CHF 21.90",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "name": "360px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px full uncropped loaded collage",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px expected collage and trend layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px12 trend photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px categories and singleH1 retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px full uncropped loaded collage",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px expected collage and trend layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px12 trend photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px categories and singleH1 retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px full uncropped loaded collage",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px expected collage and trend layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px12 trend photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px categories and singleH1 retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1024px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1024px full uncropped loaded collage",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1024px expected collage and trend layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1024px12 trend photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1024px categories and singleH1 retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px full uncropped loaded collage",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px expected collage and trend layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px12 trend photos loaded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px categories and singleH1 retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Last mobile trend reachable by keyboard",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Search opens",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Search returns focus",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing mobile video fallback and reduced motion retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "No Liquid or translation error",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "collage": {
+          "width": 328,
+          "height": 410,
+          "naturalWidth": 328,
+          "naturalHeight": 410,
+          "fit": "contain"
+        },
+        "designColumns": 1,
+        "trendColumns": 6,
+        "rows": 2,
+        "scroll": true,
+        "snap": "x mandatory",
+        "images": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "categoryCount": 16,
+        "h1": 1,
+        "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "collage": {
+          "width": 358,
+          "height": 447.5,
+          "naturalWidth": 358,
+          "naturalHeight": 447,
+          "fit": "contain"
+        },
+        "designColumns": 1,
+        "trendColumns": 6,
+        "rows": 2,
+        "scroll": true,
+        "snap": "x mandatory",
+        "images": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "categoryCount": 16,
+        "h1": 1,
+        "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "collage": {
+          "width": 728,
+          "height": 909.5,
+          "naturalWidth": 728,
+          "naturalHeight": 909,
+          "fit": "contain"
+        },
+        "designColumns": 1,
+        "trendColumns": 6,
+        "rows": 2,
+        "scroll": true,
+        "snap": "x mandatory",
+        "images": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "categoryCount": 16,
+        "h1": 1,
+        "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "collage": {
+          "width": 465.921875,
+          "height": 582.078125,
+          "naturalWidth": 471,
+          "naturalHeight": 588,
+          "fit": "contain"
+        },
+        "designColumns": 2,
+        "trendColumns": 3,
+        "rows": 4,
+        "scroll": false,
+        "snap": "none",
+        "images": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "categoryCount": 16,
+        "h1": 1,
+        "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "collage": {
+          "width": 655.203125,
+          "height": 818.5625,
+          "naturalWidth": 662,
+          "naturalHeight": 827,
+          "fit": "contain"
+        },
+        "designColumns": 2,
+        "trendColumns": 4,
+        "rows": 3,
+        "scroll": false,
+        "snap": "none",
+        "images": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "categoryCount": 16,
+        "h1": 1,
+        "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 79,
+    "cards": [
+      {
+        "id": "15499700142465",
+        "handle": "magnetische-3-in-1-ladestation-613200",
+        "href": "/products/magnetische-3-in-1-ladestation-613200",
+        "price": "CHF 75.90"
+      },
+      {
+        "id": "15450856292737",
+        "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "price": "Ab CHF 34.90"
+      },
+      {
+        "id": "15448587075969",
+        "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+        "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+        "price": "CHF 39.90"
+      },
+      {
+        "id": "15430462669185",
+        "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+        "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+        "price": "CHF 44.90"
+      },
+      {
+        "id": "15408458006913",
+        "handle": "kristallspitzen-set-8-teilig-holzbox",
+        "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+        "price": "CHF 29.90"
+      },
+      {
+        "id": "16617685877127",
+        "handle": "yoga-massagerolle-390720",
+        "href": "/products/yoga-massagerolle-390720",
+        "price": "Ab CHF 44.90"
+      },
+      {
+        "id": "16613782323591",
+        "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+        "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+        "price": "Ab CHF 34.90"
+      },
+      {
+        "id": "16610088518023",
+        "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+        "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+        "price": "CHF 27.90"
+      },
+      {
+        "id": "16604940730759",
+        "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+        "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+        "price": "CHF 26.90"
+      },
+      {
+        "id": "16604922937735",
+        "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+        "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+        "price": "CHF 22.90"
+      },
+      {
+        "id": "15523992797569",
+        "handle": "reise-organizer-set-mit-netz-617800",
+        "href": "/products/reise-organizer-set-mit-netz-617800",
+        "price": "CHF 28.90"
+      },
+      {
+        "id": "15523992174977",
+        "handle": "futterball-fur-haustiere-498560",
+        "href": "/products/futterball-fur-haustiere-498560",
+        "price": "CHF 21.90"
+      }
+    ],
+    "passed": true,
+    "failed": []
+  },
+  "links": [
+    {
+      "id": "gid://shopify/Product/15499700142465",
+      "url": "https://luxestyle.ch/products/magnetische-3-in-1-ladestation-613200",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/magnetische-3-in-1-ladestation-613200"
+    },
+    {
+      "id": "gid://shopify/Product/15450856292737",
+      "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20"
+    },
+    {
+      "id": "gid://shopify/Product/15448587075969",
+      "url": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200"
+    },
+    {
+      "id": "gid://shopify/Product/15430462669185",
+      "url": "https://luxestyle.ch/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/herren-cargo-hose-trail-multi-pocket-outdoor"
+    },
+    {
+      "id": "gid://shopify/Product/15408458006913",
+      "url": "https://luxestyle.ch/products/kristallspitzen-set-8-teilig-holzbox",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/kristallspitzen-set-8-teilig-holzbox"
+    },
+    {
+      "id": "gid://shopify/Product/16617685877127",
+      "url": "https://luxestyle.ch/products/yoga-massagerolle-390720",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/yoga-massagerolle-390720"
+    },
+    {
+      "id": "gid://shopify/Product/16613782323591",
+      "url": "https://luxestyle.ch/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/kabelloser-mini-staubsauger-furs-auto-f2796b"
+    },
+    {
+      "id": "gid://shopify/Product/16610088518023",
+      "url": "https://luxestyle.ch/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304"
+    },
+    {
+      "id": "gid://shopify/Product/16604940730759",
+      "url": "https://luxestyle.ch/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/outdoor-bluetooth-karaoke-lautsprecher-600000"
+    },
+    {
+      "id": "gid://shopify/Product/16604922937735",
+      "url": "https://luxestyle.ch/products/magnetischer-kartenhalter-mit-magsafe-632200",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/magnetischer-kartenhalter-mit-magsafe-632200"
+    },
+    {
+      "id": "gid://shopify/Product/15523992797569",
+      "url": "https://luxestyle.ch/products/reise-organizer-set-mit-netz-617800",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/reise-organizer-set-mit-netz-617800"
+    },
+    {
+      "id": "gid://shopify/Product/15523992174977",
+      "url": "https://luxestyle.ch/products/futterball-fur-haustiere-498560",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/futterball-fur-haustiere-498560"
+    }
+  ],
+  "trends": [
+    {
+      "id": "gid://shopify/Product/15499700142465",
+      "handle": "magnetische-3-in-1-ladestation-613200",
+      "title": "Magnetische 3-in-1-Ladestation",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "hype-jetzt",
+        "kat-laden",
+        "neuheit",
+        "sort-elektronik-kleinteile",
+        "tech"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/magnetische-3-in-1-ladestation-613200",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7f27aec6-cca7-4edf-9fc1-5c0bbd8eedc1.jpg?v=1786749525"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "75.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "75.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56105579643265",
+            "price": "75.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjEwNTU3OTY0MzI2NSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15450856292737",
+      "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "title": "Reise-Hängematte aus Fallschirm-Nylon",
+      "status": "ACTIVE",
+      "tags": [
+        "auto-entwurf-0926",
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "gfeed-anstupsen-260929",
+        "haengematte",
+        "hype-jetzt",
+        "kunden-liebling",
+        "nachfrage-liebling",
+        "neu",
+        "sort-sub-reise",
+        "trend",
+        "video-hit",
+        "viral"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "34.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "51.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55889985634689",
+            "price": "34.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg4OTk4NTYzNDY4OSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15448587075969",
+      "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+      "title": "Midikleid mit Zopfmuster und Blumenprint",
+      "status": "ACTIVE",
+      "tags": [
+        "auto-entwurf-0926",
+        "bild-ok",
+        "cj-real",
+        "damen",
+        "dropship",
+        "fokus-damenmode",
+        "gfeed-anstupsen-260929",
+        "hype-jetzt",
+        "kategorie-kleid",
+        "kleid",
+        "kleider",
+        "kunden-liebling",
+        "mode",
+        "sort-damen-kleider",
+        "sort-damen-kleider-blumen",
+        "sort-damen-kleider-midi"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-midikleid-06.jpg?v=1790879810"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "39.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "39.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55876172906881",
+            "price": "39.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3NjE3MjkwNjg4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15430462669185",
+      "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+      "title": "Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "herren",
+        "herren-mode",
+        "hype-jetzt",
+        "neu",
+        "sommer-2026",
+        "sort-herren-hosen",
+        "sort-herren-hosen-cargo",
+        "sort-herren-hosen-outdoor"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c9bdb4c-ea0e-4d3b-a793-d4560a10a3c2.jpg?v=1781424604"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55802471154049",
+            "price": "44.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTgwMjQ3MTE1NDA0OSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15408458006913",
+      "handle": "kristallspitzen-set-8-teilig-holzbox",
+      "title": "Kristallspitzen-Set 8-teilig in Holzbox",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "dekoration",
+        "geschenkbox",
+        "hype-jetzt",
+        "kristalle",
+        "kuratiert",
+        "luxestyle-ch",
+        "mengenrabatt-a",
+        "premium",
+        "swiss-brand"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/kristallspitzen-set-8-teilig-holzbox",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-A_haupt.jpg?v=1791145638"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "29.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "29.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479361409",
+            "price": "29.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTM2MTQwOSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16617685877127",
+      "handle": "yoga-massagerolle-390720",
+      "title": "Yoga-Massagerolle",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "cj-real",
+        "dropship",
+        "fitness",
+        "hype-jetzt",
+        "hype-seit-2026-10-19",
+        "neuheit",
+        "outdoor",
+        "sort-sub-yoga-fitness",
+        "sport"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/yoga-massagerolle-390720",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1612588955478.jpg?v=1791947649"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "82.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67675895169415",
+            "price": "44.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY3NTg5NTE2OTQxNSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16613782323591",
+      "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+      "title": "Kabelloser Mini-Staubsauger fürs Auto",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "hype-jetzt",
+        "hype-seit-2026-10-19",
+        "neuheit",
+        "sort-haushaltsgeraete",
+        "such-boost",
+        "such-handstaubsauger",
+        "tech",
+        "trend"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/13137774007416.jpg?v=1791598473"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "34.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "35.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67660245827975",
+            "price": "34.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY2MDI0NTgyNzk3NSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16610088518023",
+      "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+      "title": "Tragbarer Mixer mit USB-C-Ladefunktion",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "hype-jetzt",
+        "hype-seit-2026-10-10",
+        "neuheit",
+        "sort-haushaltsgeraete",
+        "sort-kuechengeraete",
+        "tech",
+        "trend"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/95d2fc9e-0899-4466-b8ba-43d746fa6226.jpg?v=1791347995"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "27.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "27.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67642455064967",
+            "price": "27.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY0MjQ1NTA2NDk2NywibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16604940730759",
+      "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+      "title": "Outdoor Bluetooth Karaoke Lautsprecher",
+      "status": "ACTIVE",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "hype-jetzt",
+        "hype-seit-2026-10-07",
+        "neuheit",
+        "sort-kopfhoerer-audio",
+        "sort-lautsprecher",
+        "sort-mikrofone",
+        "tech"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fabc5b96-1348-466d-9bff-fbf228b0a2ee_trans.jpg?v=1790992291"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "26.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "26.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67617555382663",
+            "price": "26.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzYxNzU1NTM4MjY2MywibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16604922937735",
+      "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+      "title": "Magnetischer Kartenhalter mit MagSafe",
+      "status": "ACTIVE",
+      "tags": [
+        "accessoire",
+        "cj-real",
+        "damen-taschen",
+        "dropship",
+        "hype-jetzt",
+        "hype-seit-2026-10-07",
+        "neuheit",
+        "sort-damen-kartenetuis",
+        "sort-handy-halterungen",
+        "sort-herren-kartenetuis",
+        "sort-kartenhalter",
+        "tasche",
+        "varianten-nachgezogen-1025"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/magnetischer-kartenhalter-mit-magsafe-632200",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c20d69bb-113a-467d-bbcc-ce1eed9787c5.jpg?v=1790990676"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "22.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "22.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67797526610311",
+            "price": "22.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzc5NzUyNjYxMDMxMSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15523992797569",
+      "handle": "reise-organizer-set-mit-netz-617800",
+      "title": "Reise-Organizer-Set mit Netz",
+      "status": "ACTIVE",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "hype-jetzt",
+        "hype-seit-2026-10-13",
+        "ig-gepostet",
+        "ig-seit-2026-10-18",
+        "organizer",
+        "sort-kulturbeutel",
+        "sort-sub-reise",
+        "wohnen"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/reise-organizer-set-mit-netz-617800",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/458daed6-8104-4042-b733-4c7325b827fc_trans.jpg?v=1788417161"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "28.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "28.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56217605144961",
+            "price": "28.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjIxNzYwNTE0NDk2MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15523992174977",
+      "handle": "futterball-fur-haustiere-498560",
+      "title": "Futterball für Haustiere",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haustier",
+        "hund",
+        "hype-jetzt",
+        "hype-seit-2026-10-07",
+        "kat-haustier",
+        "katze",
+        "pet",
+        "sort-haustier",
+        "sort-tier-naepfe"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/futterball-fur-haustiere-498560",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1622969630065.jpg?v=1788417138"
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "21.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "21.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56217590399361",
+            "price": "21.90",
+            "availableForSale": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjIxNzU5MDM5OTM2MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    }
+  ],
+  "limits": {
+    "nativeWrites": "4 files plus narrow2file correction",
+    "mainPublished": false,
+    "allProductsDistinctLookups": 12,
+    "initialReview": "11 trends and mobile shrink corrected; final36checks green",
+    "catalogSample": "20 products; hasNextPage true; not full catalog",
+    "sourceGuardBlob": "3adab7369f90945769331910525c08b3778b4371",
+    "noNewFilm": true,
+    "noWatch": true,
+    "noDailyReports": true
+  }
+}
