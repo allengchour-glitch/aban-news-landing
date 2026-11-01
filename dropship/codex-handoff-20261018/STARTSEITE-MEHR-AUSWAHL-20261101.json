@@ -1,0 +1,1497 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "taskId": "homepage-redesign-20261029",
+  "revision": 29,
+  "at": "2026-11-01T15:01:42Z",
+  "timezone": "Europe/Zurich",
+  "request": "ergänze mehrsachen für meisterwerk seite; vom Inhaber ausdrücklich als Startseite bestätigt",
+  "summary": "Startseite auf bestätigten Inhaberwunsch um zwei Produktbereiche mit drei Schmuckartikeln und zwei Wohnartikeln sowie Winter-/Weihnachts-Einstieg erweitert. Echte Fotos, dynamische CHF-Preise, exakte Produkt-/Reviewbindung und mobile einreihige Wischansicht. Vier einzigartige UNPUBLISHED-Dateien final exakt zurückgelesen; nach 29 Basischecks einen im visuellen Review gefundenen Desktop-Bildcrop eng korrigiert und 17 native Geometrie-/Regressionstests bestanden. Anhänger vollständig sichtbar bestätigt. Bestehende zwölf Trends, 16 Kategorien, eine Selbstgestalten-Collage und Websitevideo erhalten; MAIN unverändert, kein Publish.",
+  "publication": "UNPUBLISHED preview only; MAIN writes/publish blocked by current connector",
+  "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit#lx-edit-jewellery",
+  "nativeReadback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/212656488839",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "preview": {
+      "id": "gid://shopify/OnlineStoreTheme/212752499079",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "assets/luxe-edit.css",
+          "checksumMd5": "f1c54db12521b00961267d6b5220817b",
+          "exactIntended": true
+        },
+        {
+          "filename": "assets/luxe-edit.js",
+          "checksumMd5": "4aa19e8ff7993e0e8badad2f02cade4b",
+          "exactIntended": "unchanged and not written"
+        },
+        {
+          "filename": "locales/de.json",
+          "checksumMd5": "67b36e7134f7aecf359f3924e81dce6d",
+          "exactIntended": true
+        },
+        {
+          "filename": "locales/en.default.json",
+          "checksumMd5": "06fd2c2054db974889c895b756d4896b",
+          "exactIntended": true
+        },
+        {
+          "filename": "sections/luxe-edit-home.liquid",
+          "checksumMd5": "3e2713727787b37ed5a22ac6f6d241a1",
+          "exactIntended": true
+        }
+      ]
+    }
+  },
+  "fileManifest": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeSha256": "be21bb087baf3a4007ab82f79830e0233c6fd5c94c585b54ae062e0f09541f3a",
+      "afterSha256": "5e81db2b11615b5376cdb3b0b08082d2b2c34731d92f2b91b6416e1af4abb4f0"
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "beforeSha256": "3ce97c91bfe2708d9509fcaf8d2e2c38698b7daddf106a678f89849d8aab81f9",
+      "afterSha256": "c7aeb35cf2a217a9a628d958d14bafd6400b6eb4677cd99ce99d61f0c7a9643e"
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeSha256": "abd81517e52640fec22c93dc9a726521736ab5c155f82e00c85e7a7f23bbda12",
+      "afterSha256": "a437be416f204c8467b9b7c9fe6d10be54f4967b8cfd07b2388772617673e7ae"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeSha256": "31110367e597a2fada129e30071e6623df2e615932f5799eeeb28cfece6b134f",
+      "afterSha256": "40f9b9bfb3115bc0b887d32e278ec0a5f3ce06a43bdb1649edb59aabfba3dab9"
+    }
+  ],
+  "patchFromR28": "--- a/sections/luxe-edit-home.liquid\n+++ b/sections/luxe-edit-home.liquid\n@@ -114,6 +114,52 @@\n         <div class=\"lx-trends-grid\" tabindex=\"0\" role=\"region\" aria-label=\"{{ 'luxe_home.trends.products' | t }}\">{{ lx_trend_cards }}</div>\n       </section>\n     {% endif %}\n+    {% assign lx_edit_groups = 'jewellery|schmuck,home|wohnen-dekoration' | split: ',' %}\n+    {% for lx_edit_group in lx_edit_groups %}\n+      {% assign lx_edit_parts = lx_edit_group | split: '|' %}\n+      {% assign lx_edit_key = lx_edit_parts[0] %}\n+      {% assign lx_edit_collection = collections[lx_edit_parts[1]] %}\n+      {% if lx_edit_key == 'jewellery' %}\n+        {% assign lx_edit_entries = 's925-silber-halskette-eclat-1-karat-moissanite|15412902756737|necklace,ohrstecker-lumiere-elegante-high-end-studs|15412902789505|earrings,geflochtenes-lederarmband-mit-verschluss-625800|15501005226369|bracelet' | split: ',' %}\n+      {% else %}\n+        {% assign lx_edit_entries = 'satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar|15412960592257|pillowcase,zepterformige-vase-aus-yixing-ton-626100|16654281408903|vase' | split: ',' %}\n+      {% endif %}\n+      {% assign lx_edit_count = 0 %}\n+      {% capture lx_edit_cards %}\n+        {% for lx_edit_entry in lx_edit_entries %}\n+          {% assign lx_edit_fields = lx_edit_entry | split: '|' %}\n+          {% assign lx_edit_product = all_products[lx_edit_fields[0]] %}\n+          {% assign lx_edit_product_id = lx_edit_product.id | append: '' %}\n+          {% if lx_edit_product_id == lx_edit_fields[1] and lx_edit_product.available and lx_edit_product.featured_image and lx_edit_product.price_min > 0 and lx_edit_product.tags.size > 0 %}\n+            {% assign lx_edit_blocked = false %}\n+            {% assign lx_edit_tags = lx_edit_product.tags | join: '|' | downcase %}\n+            {% for lx_stop in lx_trend_stops %}{% if lx_edit_tags contains lx_stop %}{% assign lx_edit_blocked = true %}{% endif %}{% endfor %}\n+            {% for lx_tag in lx_edit_product.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_edit_blocked = true %}{% endif %}{% endfor %}\n+            {% unless lx_edit_blocked %}\n+              {% assign lx_edit_count = lx_edit_count | plus: 1 %}\n+              {% assign lx_edit_name_key = 'luxe_home.extra.' | append: lx_edit_fields[2] %}\n+              <a class=\"lx-edit-product-card\" href=\"{{ lx_edit_product.url }}\" data-edit-product-id=\"{{ lx_edit_product.id }}\" data-edit-handle=\"{{ lx_edit_product.handle | escape }}\" aria-labelledby=\"lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}\">\n+                <div class=\"lx-edit-product-image\">{{ lx_edit_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '280, 420, 560, 700', sizes: '(max-width: 760px) 68vw, 31vw', alt: '' }}</div>\n+                <div class=\"lx-edit-product-info\"><h3 id=\"lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}\">{{ lx_edit_name_key | t }}</h3>\n+                  <div class=\"lx-review-badge\" data-luxe-review-card data-product-id=\"{{ lx_edit_product.id }}\" data-review-placeholder hidden><script type=\"application/json\">{\"data\":{% render 'luxe-product-review-data', product: lx_edit_product %},\"locale\":{{ request.locale.iso_code | json }},\"labels\":{\"unavailable\":{{ 'luxe_clothing.reviews_unavailable' | t | json }},\"zero\":{{ 'luxe_clothing.reviews_zero' | t | json }},\"summary\":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>\n+                  <p class=\"lx-edit-product-price\">{% if lx_edit_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_edit_product.price_min | money_with_currency }}</p>\n+                  <span class=\"lx-edit-product-open\">{{ 'luxe_home.trends.open' | t }}<svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span>\n+                </div>\n+              </a>\n+            {% endunless %}\n+          {% endif %}\n+        {% endfor %}\n+      {% endcapture %}\n+      {% if lx_edit_count > 0 and lx_edit_collection != blank %}\n+        {% assign lx_edit_heading = 'luxe_home.extra.' | append: lx_edit_key | append: '_heading' %}\n+        {% assign lx_edit_intro = 'luxe_home.extra.' | append: lx_edit_key | append: '_intro' %}\n+        <section class=\"lx-product-edit lx-section\" id=\"lx-edit-{{ lx_edit_key }}\" aria-labelledby=\"lx-edit-title-{{ lx_edit_key }}-{{ section.id }}\">\n+          <div class=\"lx-section-heading\"><div><p class=\"lx-eyebrow\">{{ 'luxe_home.extra.eyebrow' | t }}</p><h2 id=\"lx-edit-title-{{ lx_edit_key }}-{{ section.id }}\">{{ lx_edit_heading | t }}</h2></div><a class=\"lx-text-link\" href=\"{{ lx_edit_collection.url }}\">{{ 'luxe_home.extra.all' | t }}<svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></div>\n+          <p class=\"lx-edit-product-intro\">{{ lx_edit_intro | t }}</p><p class=\"lx-edit-product-hint\">{{ 'luxe_home.trends.swipe' | t }}</p>\n+          <div class=\"lx-edit-product-grid\" style=\"--lx-edit-columns:{{ lx_edit_count }}\" tabindex=\"0\" role=\"region\" aria-label=\"{{ lx_edit_heading | t | escape }}\">{{ lx_edit_cards }}</div>\n+        </section>\n+      {% endif %}\n+    {% endfor %}\n     {% assign lx_discover_entries = 'schmuck|jewellery,wohnen-dekoration|home,beauty-pflege|beauty,sport-outdoor|sport' | split: ',' %}\n     {% capture lx_discover_cards %}\n       {% for lx_discover_entry in lx_discover_entries %}\n@@ -140,6 +186,14 @@\n       <a class=\"lx-fashion-image\" href=\"https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000\" aria-label=\"{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}\"><img src=\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900\" width=\"1600\" height=\"2133\" loading=\"lazy\" alt=\"{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}\"></a>\n       <div class=\"lx-fashion-copy\"><p class=\"lx-eyebrow\">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id=\"lx-fashion-title\">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class=\"lx-button\" href=\"https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000\">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><span class=\"lx-fashion-footnote\">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>\n     </section>\n+    {% assign lx_winter_collection = collections['winter-kaelte'] %}\n+    {% assign lx_christmas_collection = collections['weihnachten-2026'] %}\n+    {% if lx_winter_collection != blank and lx_christmas_collection != blank %}\n+      <section class=\"lx-season-edit lx-section\" id=\"lx-season\" aria-labelledby=\"lx-season-title\">\n+        <div><p class=\"lx-eyebrow\">{{ 'luxe_home.extra.season_eyebrow' | t }}</p><h2 id=\"lx-season-title\">{{ 'luxe_home.extra.season_heading' | t }}</h2><p>{{ 'luxe_home.extra.season_intro' | t }}</p></div>\n+        <div class=\"lx-season-actions\"><a href=\"{{ lx_winter_collection.url }}\">{{ 'luxe_home.extra.winter' | t }}<svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a><a href=\"{{ lx_christmas_collection.url }}\">{{ 'luxe_home.extra.christmas' | t }}<svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></div>\n+      </section>\n+    {% endif %}\n     {% assign lx_budget_entries = 'unter-chf-25|small,geschenke-unter-50-franken|medium,premium-geschenke|gifts' | split: ',' %}\n     {% capture lx_budget_cards %}\n       {% for lx_budget_entry in lx_budget_entries %}\n--- a/assets/luxe-edit.css\n+++ b/assets/luxe-edit.css\n@@ -161,3 +161,40 @@\n .lx-home .lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:#665f56;font-size:11px;line-height:1.5;overflow-wrap:anywhere}\n .lx-home .lx-review-badge[hidden]{display:none!important}\n .lx-home .lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}\n+\n+.lx-home .lx-product-edit{padding-top:42px;padding-bottom:42px}\n+.lx-home .lx-product-edit .lx-section-heading{margin-bottom:14px}\n+.lx-home .lx-product-edit .lx-text-link{display:inline-flex;align-items:center;gap:14px;min-height:48px;font-size:15px}\n+.lx-home .lx-edit-product-intro{font-size:16px;line-height:1.6;color:var(--lx-muted);margin:0 0 24px}\n+.lx-home .lx-edit-product-grid{display:grid;grid-template-columns:repeat(var(--lx-edit-columns),minmax(0,1fr));gap:20px;min-width:0}\n+.lx-home .lx-edit-product-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid #ded5c9;border-radius:18px;background:#fffdf9;scroll-snap-align:start}\n+.lx-edit-product-card:hover{border-color:#8b7355}\n+.lx-edit-product-image{position:relative;height:clamp(220px,25vw,320px);background:#f2eee7;overflow:hidden}\n+.lx-edit-product-image img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}\n+.lx-edit-product-info{display:flex;flex-direction:column;flex:1;min-width:0;padding:20px}\n+.lx-home .lx-edit-product-info h3{font:500 18px/1.45 var(--lx-sans);min-height:52px;margin:0 0 8px;overflow-wrap:anywhere}\n+.lx-home .lx-edit-product-info .lx-review-badge{font-size:13px;line-height:1.55;margin:0 0 16px}\n+.lx-home .lx-edit-product-price{font:600 22px/1.3 var(--lx-sans);margin:auto 0 14px;overflow-wrap:anywhere}\n+.lx-edit-product-price>span{font-size:14px;font-weight:400}\n+.lx-edit-product-open{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;font-size:15px;text-decoration:underline;text-underline-offset:4px}\n+.lx-home .lx-edit-product-hint{display:none}\n+.lx-home .lx-season-edit{margin:18px clamp(16px,4.5vw,72px) 46px;padding:36px clamp(22px,4vw,54px);border:1px solid #d7c7b2;border-radius:22px;background:linear-gradient(120deg,#eee3d3,#f6f0e8);display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.7fr);gap:32px;align-items:center}\n+.lx-home .lx-season-edit h2{font:400 clamp(32px,3.6vw,48px)/1.08 var(--lx-serif);letter-spacing:-1px;margin:14px 0}\n+.lx-home .lx-season-edit p:not(.lx-eyebrow){font-size:16px;line-height:1.6;color:#665b4c;max-width:480px}\n+.lx-season-actions{display:flex;flex-direction:column;gap:12px;min-width:0}\n+.lx-season-actions>a{min-height:58px;padding:14px 18px;border:1px solid #cdbca5;border-radius:12px;background:#fffdf9;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:16px;line-height:1.4}\n+.lx-season-actions>a:hover{background:#eee3d3}\n+@media(max-width:760px){\n+ .lx-home .lx-product-edit{padding:28px 16px}\n+ .lx-home .lx-product-edit .lx-section-heading{align-items:flex-start;flex-wrap:wrap;gap:10px}\n+ .lx-home .lx-product-edit .lx-section-heading h2{font-size:32px}\n+ .lx-home .lx-edit-product-intro{font-size:16px;margin-bottom:14px}\n+ .lx-home .lx-edit-product-hint{display:block;margin:0 0 14px;color:var(--lx-muted);font-size:14px}\n+ .lx-home .lx-edit-product-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:2px;padding:2px 2px 12px;scrollbar-width:thin;scrollbar-color:#8b7355 #eee7dc}\n+ .lx-edit-product-image{height:auto;aspect-ratio:1}\n+ .lx-edit-product-info{padding:16px}\n+ .lx-home .lx-edit-product-info h3{font-size:16px;min-height:48px}\n+ .lx-home .lx-edit-product-price{font-size:20px}\n+ .lx-home .lx-season-edit{margin:16px 16px 32px;padding:28px 22px;grid-template-columns:minmax(0,1fr);gap:22px;border-radius:18px}\n+ .lx-home .lx-season-edit h2{font-size:34px}\n+}\n--- a/locales/de.json\n+++ b/locales/de.json\n@@ -382,6 +382,24 @@\n     }\n   },\n   \"luxe_home\": {\n+    \"extra\": {\n+      \"eyebrow\": \"Auswahl für deinen Alltag\",\n+      \"jewellery_heading\": \"Schmuck entdecken\",\n+      \"jewellery_intro\": \"Neue Akzente für deinen persönlichen Stil.\",\n+      \"home_heading\": \"Für dein Zuhause\",\n+      \"home_intro\": \"Entdecke besondere Details für deine Räume.\",\n+      \"all\": \"Ganze Auswahl ansehen\",\n+      \"necklace\": \"Halskette «Éclat»\",\n+      \"earrings\": \"Ohrstecker «Lumière»\",\n+      \"bracelet\": \"Flechtarmband mit Verschluss\",\n+      \"pillowcase\": \"Kissenbezüge · 2er-Set\",\n+      \"vase\": \"Vase in Zepterform\",\n+      \"season_eyebrow\": \"Neue Saison, neue Ideen\",\n+      \"season_heading\": \"Winterzeit. Geschenkzeit.\",\n+      \"season_intro\": \"Entdecke unsere Winterauswahl und sammle Ideen für Weihnachten.\",\n+      \"winter\": \"Winterideen ansehen\",\n+      \"christmas\": \"Weihnachtsideen entdecken\"\n+    },\n     \"discovery\": {\n       \"eyebrow\": \"Neue Ideen für deinen Alltag\",\n       \"heading\": \"Mehr von LuxeStyle entdecken\",\n--- a/locales/en.default.json\n+++ b/locales/en.default.json\n@@ -382,6 +382,24 @@\n     }\n   },\n   \"luxe_home\": {\n+    \"extra\": {\n+      \"eyebrow\": \"A selection for your everyday\",\n+      \"jewellery_heading\": \"Discover jewellery\",\n+      \"jewellery_intro\": \"New details for your personal style.\",\n+      \"home_heading\": \"For your home\",\n+      \"home_intro\": \"Explore distinctive details for your rooms.\",\n+      \"all\": \"Explore the full selection\",\n+      \"necklace\": \"Éclat necklace\",\n+      \"earrings\": \"Lumière stud earrings\",\n+      \"bracelet\": \"Braided bracelet with clasp\",\n+      \"pillowcase\": \"Pillowcases · set of 2\",\n+      \"vase\": \"Sceptre-shaped vase\",\n+      \"season_eyebrow\": \"New season, fresh ideas\",\n+      \"season_heading\": \"Winter days. Gift ideas.\",\n+      \"season_intro\": \"Explore our winter selection and find inspiration for Christmas.\",\n+      \"winter\": \"Explore winter ideas\",\n+      \"christmas\": \"Discover Christmas ideas\"\n+    },\n     \"discovery\": {\n       \"eyebrow\": \"Fresh ideas for your everyday\",\n       \"heading\": \"Discover more from LuxeStyle\",\n",
+  "selectedProducts": [
+    {
+      "id": "gid://shopify/Product/15412902756737",
+      "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
+      "title": "S925 Silber-Halskette «Éclat» – 1 Karat Moissanite",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "damen",
+        "damen-schmuck",
+        "dropship",
+        "geschenkwelt-unter100",
+        "geschenkwelt-unter50",
+        "kat-halsketten",
+        "kategorie-halskette",
+        "kette",
+        "ketten",
+        "mengenrabatt-a",
+        "neu",
+        "schmuck",
+        "sort-halsketten",
+        "sort-halsketten-alle",
+        "sort-schmuck",
+        "sort-silberketten"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/s925-silber-halskette-eclat-1-karat-moissanite",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85b473ea-45d7-4fe0-919e-8245c9724608.jpg?v=1780240875",
+            "width": 800,
+            "height": 800
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55747847356801",
+            "sku": "CJST291552901AZ",
+            "price": "44.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55095993532801",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc0Nzg0NzM1NjgwMSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "group": "jewellery",
+      "labelKey": "necklace"
+    },
+    {
+      "id": "gid://shopify/Product/15412902789505",
+      "handle": "ohrstecker-lumiere-elegante-high-end-studs",
+      "title": "Ohrstecker «Lumière» – elegante High-End Studs",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "damen",
+        "damen-schmuck",
+        "dropship",
+        "kat-ohrringe",
+        "mengenrabatt-a",
+        "neu",
+        "ohrringe",
+        "schmuck",
+        "sort-ohrringe",
+        "sort-ohrstecker",
+        "sort-schmuck"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e5c02e93-4af2-4585-9f4f-e0bc28e290f2_trans.jpg?v=1780240883",
+            "width": 800,
+            "height": 800
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "14.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "14.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55747847389569",
+            "sku": "CJST291633101AZ",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55095993565569",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc0Nzg0NzM4OTU2OSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "group": "jewellery",
+      "labelKey": "earrings"
+    },
+    {
+      "id": "gid://shopify/Product/15501005226369",
+      "handle": "geflochtenes-lederarmband-mit-verschluss-625800",
+      "title": "Geflochtenes Lederarmband mit Verschluss",
+      "status": "ACTIVE",
+      "tags": [
+        "armband",
+        "auswahl-nachgeruestet",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "geschenk",
+        "kat-armbaender",
+        "kategorie-armband",
+        "mengenrabatt-a",
+        "schmuck",
+        "sort-armbaender",
+        "sort-lederarmbaender",
+        "sort-schmuck"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-verschluss-625800",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d89bb761-cb89-4787-82ee-a8f8ffca0baf.jpg?v=1786876378",
+            "width": 1500,
+            "height": 1500
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "15.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "15.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56111171633537",
+            "sku": "CJYD280998301AZ",
+            "price": "15.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55467484512641",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NjExMTE3MTYzMzUzNywibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "standardRating": {
+        "type": "rating",
+        "value": "{\"scale_min\":\"1.0\",\"scale_max\":\"5.0\",\"value\":\"5.0\"}"
+      },
+      "standardCount": {
+        "type": "number_integer",
+        "value": "8"
+      },
+      "judgeBadge": {
+        "type": "string",
+        "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='5.00' data-number-of-reviews='8' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='5.00' tabindex='0' aria-label='5.00 stars' role='button'> <span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span> </span> <span class='jdgm-prev-badge__text'> 8 Bewertungen </span> </div>"
+      },
+      "group": "jewellery",
+      "labelKey": "bracelet"
+    },
+    {
+      "id": "gid://shopify/Product/15412960592257",
+      "handle": "satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+      "title": "Satin-Seidenkissenbezug 2er-Set – sanft zu Haut & Haar",
+      "status": "ACTIVE",
+      "tags": [
+        "beauty",
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "ig-gepostet",
+        "ig-seit-2026-10-18",
+        "kat-kissen",
+        "mengenrabatt-a",
+        "neu",
+        "wohnen"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/290e091e-7e92-429b-9502-72e246acbef3.jpg?v=1780246607",
+            "width": 1200,
+            "height": 1200
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "24.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "24.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55748113924481",
+            "sku": "CJYD289277101AZ",
+            "price": "24.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55096260100481",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc0ODExMzkyNDQ4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "group": "home",
+      "labelKey": "pillowcase"
+    },
+    {
+      "id": "gid://shopify/Product/16654281408903",
+      "handle": "zepterformige-vase-aus-yixing-ton-626100",
+      "title": "Zepterförmige Vase aus Yixing-Ton",
+      "status": "ACTIVE",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "geschenkwelt-hochzeit",
+        "haushalt",
+        "kueche",
+        "neuheit",
+        "sort-vasen",
+        "wohnen"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/zepterformige-vase-aus-yixing-ton-626100",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92011171-2010-4213-8a8d-fd484bbe599d.png?v=1792469740",
+            "width": 1001,
+            "height": 1001
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "104.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "104.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67747898524039",
+            "sku": "CJ-2607230702081626100",
+            "price": "104.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69732792304007",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzc0Nzg5ODUyNDAzOSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "group": "home",
+      "labelKey": "vase"
+    }
+  ],
+  "storefrontFacts": [
+    {
+      "id": "15412902756737",
+      "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
+      "url": "https://luxestyle.ch/products/s925-silber-halskette-eclat-1-karat-moissanite.js",
+      "status": 200,
+      "available": true,
+      "minPrice": 4490,
+      "maxPrice": 4490,
+      "variant": {
+        "id": 55747847356801,
+        "price": 4490,
+        "available": true
+      }
+    },
+    {
+      "id": "15412902789505",
+      "handle": "ohrstecker-lumiere-elegante-high-end-studs",
+      "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs.js",
+      "status": 200,
+      "available": true,
+      "minPrice": 1490,
+      "maxPrice": 1490,
+      "variant": {
+        "id": 55747847389569,
+        "price": 1490,
+        "available": true
+      }
+    },
+    {
+      "id": "15501005226369",
+      "handle": "geflochtenes-lederarmband-mit-verschluss-625800",
+      "url": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-verschluss-625800.js",
+      "status": 200,
+      "available": true,
+      "minPrice": 1590,
+      "maxPrice": 1590,
+      "variant": {
+        "id": 56111171633537,
+        "price": 1590,
+        "available": true
+      }
+    },
+    {
+      "id": "15412960592257",
+      "handle": "satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+      "url": "https://luxestyle.ch/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar.js",
+      "status": 200,
+      "available": true,
+      "minPrice": 2490,
+      "maxPrice": 2490,
+      "variant": {
+        "id": 55748113924481,
+        "price": 2490,
+        "available": true
+      }
+    },
+    {
+      "id": "16654281408903",
+      "handle": "zepterformige-vase-aus-yixing-ton-626100",
+      "url": "https://luxestyle.ch/products/zepterformige-vase-aus-yixing-ton-626100.js",
+      "status": 200,
+      "available": true,
+      "minPrice": 10490,
+      "maxPrice": 10490,
+      "variant": {
+        "id": 67747898524039,
+        "price": 10490,
+        "available": true
+      }
+    }
+  ],
+  "linkChecks": [
+    {
+      "url": "https://luxestyle.ch/products/s925-silber-halskette-eclat-1-karat-moissanite",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/s925-silber-halskette-eclat-1-karat-moissanite"
+    },
+    {
+      "url": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs"
+    },
+    {
+      "url": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-verschluss-625800",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-verschluss-625800"
+    },
+    {
+      "url": "https://luxestyle.ch/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar"
+    },
+    {
+      "url": "https://luxestyle.ch/products/zepterformige-vase-aus-yixing-ton-626100",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/zepterformige-vase-aus-yixing-ton-626100"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/schmuck",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/schmuck"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/winter-kaelte",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/winter-kaelte"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/weihnachten-2026",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/weihnachten-2026"
+    }
+  ],
+  "tagGuard": {
+    "sourceGitBlob": "3adab7369f90945769331910525c08b3778b4371",
+    "scope": "Additional homepage selection only; no tag/channel changes; not a statement that rueckhol-0907 blocks the Online Store",
+    "results": [
+      {
+        "id": "gid://shopify/Product/15412902756737",
+        "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
+        "tagCount": 18,
+        "guardMatches": [],
+        "additionalPlacementRueckhol": []
+      },
+      {
+        "id": "gid://shopify/Product/15412902789505",
+        "handle": "ohrstecker-lumiere-elegante-high-end-studs",
+        "tagCount": 13,
+        "guardMatches": [],
+        "additionalPlacementRueckhol": []
+      },
+      {
+        "id": "gid://shopify/Product/15501005226369",
+        "handle": "geflochtenes-lederarmband-mit-verschluss-625800",
+        "tagCount": 15,
+        "guardMatches": [],
+        "additionalPlacementRueckhol": []
+      },
+      {
+        "id": "gid://shopify/Product/15412960592257",
+        "handle": "satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+        "tagCount": 10,
+        "guardMatches": [],
+        "additionalPlacementRueckhol": []
+      },
+      {
+        "id": "gid://shopify/Product/16654281408903",
+        "handle": "zepterformige-vase-aus-yixing-ton-626100",
+        "tagCount": 8,
+        "guardMatches": [],
+        "additionalPlacementRueckhol": []
+      }
+    ]
+  },
+  "selectionScope": {
+    "recordsRead": 24,
+    "boundedReads": [
+      "schmuck first6",
+      "wohnen-dekoration first6",
+      "targeted jewellery first4/home first6 excluding exact rueckhol-0907",
+      "targeted home title:Vase first2"
+    ],
+    "hasNextPage": true,
+    "massPagination": false,
+    "catalogWideConclusion": false,
+    "extraRueckholExclusion": "Conservative new homepage placement selection only; does not change Online Store exception in existing guard"
+  },
+  "photoInspection": {
+    "selectedPhotos": "Five actual Shopify product references inspected; no image generation/edit/upload this turn",
+    "excludedCandidate": {
+      "productId": "gid://shopify/Product/15412959773057",
+      "handle": "aroma-diffuser-mist-ultraschall-mit-led",
+      "title": "Aroma-Diffuser «Mist» – Ultraschall mit LED",
+      "observedPhoto": "30ml essential-oil bottle",
+      "state": "title/photo/variant assignment unclear; excluded from this placement, no product change",
+      "nextStep": "Before new placement, verify exact variant/photo/supplier assignment; no blanket product fix"
+    },
+    "finalVisualSample": "Independent agent inspected JEWELLERY-1440-R2 and HOME-390-R2; necklace pendant fully visible, no further concrete visual issues"
+  },
+  "qaBeforeCropFix": {
+    "checks": [
+      {
+        "name": "Five distinct exact bound product identities",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Five current CHF prices exact URLs and review binding",
+        "pass": true,
+        "data": [
+          {
+            "id": "15412902756737",
+            "correct": true,
+            "price": "CHF 44.90"
+          },
+          {
+            "id": "15412902789505",
+            "correct": true,
+            "price": "CHF 14.90"
+          },
+          {
+            "id": "15501005226369",
+            "correct": true,
+            "price": "CHF 15.90"
+          },
+          {
+            "id": "15412960592257",
+            "correct": true,
+            "price": "CHF 24.90"
+          },
+          {
+            "id": "16654281408903",
+            "correct": true,
+            "price": "CHF 104.90"
+          }
+        ]
+      },
+      {
+        "name": "Source image mismatch candidate excluded",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Neutral labels omit unverified material/benefit claims",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Seasonal links exact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px five real photos loaded uncropped",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px mobile rail or desktop group columns",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px readable titles",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px original content retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px five real photos loaded uncropped",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px mobile rail or desktop group columns",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px readable titles",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px original content retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px five real photos loaded uncropped",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px mobile rail or desktop group columns",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px readable titles",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px original content retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px five real photos loaded uncropped",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px mobile rail or desktop group columns",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px readable titles",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px original content retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Last rail item reachable by keyboard",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing search still opens",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing search focus restored",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "No Liquid lookup/translation errors",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "images": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "groups": [
+          {
+            "cards": 3,
+            "columns": 3,
+            "scroll": true,
+            "snap": "x mandatory"
+          },
+          {
+            "cards": 2,
+            "columns": 2,
+            "scroll": true,
+            "snap": "x mandatory"
+          }
+        ],
+        "text": [
+          "16px",
+          "16px",
+          "16px",
+          "16px",
+          "16px"
+        ],
+        "trendCount": 12,
+        "categories": 16,
+        "collage": 1,
+        "h1": 1,
+        "video": 1
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "images": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "groups": [
+          {
+            "cards": 3,
+            "columns": 3,
+            "scroll": true,
+            "snap": "x mandatory"
+          },
+          {
+            "cards": 2,
+            "columns": 2,
+            "scroll": true,
+            "snap": "x mandatory"
+          }
+        ],
+        "text": [
+          "16px",
+          "16px",
+          "16px",
+          "16px",
+          "16px"
+        ],
+        "trendCount": 12,
+        "categories": 16,
+        "collage": 1,
+        "h1": 1,
+        "video": 1
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "images": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "groups": [
+          {
+            "cards": 3,
+            "columns": 3,
+            "scroll": true,
+            "snap": "x mandatory"
+          },
+          {
+            "cards": 2,
+            "columns": 2,
+            "scroll": true,
+            "snap": "x mandatory"
+          }
+        ],
+        "text": [
+          "16px",
+          "16px",
+          "16px",
+          "16px",
+          "16px"
+        ],
+        "trendCount": 12,
+        "categories": 16,
+        "collage": 1,
+        "h1": 1,
+        "video": 1
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "images": [
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "fit": "contain"
+          }
+        ],
+        "groups": [
+          {
+            "cards": 3,
+            "columns": 3,
+            "scroll": false,
+            "snap": "none"
+          },
+          {
+            "cards": 2,
+            "columns": 2,
+            "scroll": false,
+            "snap": "none"
+          }
+        ],
+        "text": [
+          "18px",
+          "18px",
+          "18px",
+          "18px",
+          "18px"
+        ],
+        "trendCount": 12,
+        "categories": 16,
+        "collage": 1,
+        "h1": 1,
+        "video": 1
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 71,
+    "cards": [
+      {
+        "id": "15412902756737",
+        "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
+        "href": "/products/s925-silber-halskette-eclat-1-karat-moissanite",
+        "title": "Halskette «Éclat»",
+        "price": "CHF 44.90",
+        "reviewId": "15412902756737",
+        "reviewState": "confirmedZero"
+      },
+      {
+        "id": "15412902789505",
+        "handle": "ohrstecker-lumiere-elegante-high-end-studs",
+        "href": "/products/ohrstecker-lumiere-elegante-high-end-studs",
+        "title": "Ohrstecker «Lumière»",
+        "price": "CHF 14.90",
+        "reviewId": "15412902789505",
+        "reviewState": "confirmedZero"
+      },
+      {
+        "id": "15501005226369",
+        "handle": "geflochtenes-lederarmband-mit-verschluss-625800",
+        "href": "/products/geflochtenes-lederarmband-mit-verschluss-625800",
+        "title": "Flechtarmband mit Verschluss",
+        "price": "CHF 15.90",
+        "reviewId": "15501005226369",
+        "reviewState": "rated"
+      },
+      {
+        "id": "15412960592257",
+        "handle": "satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+        "href": "/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+        "title": "Kissenbezüge · 2er-Set",
+        "price": "CHF 24.90",
+        "reviewId": "15412960592257",
+        "reviewState": "confirmedZero"
+      },
+      {
+        "id": "16654281408903",
+        "handle": "zepterformige-vase-aus-yixing-ton-626100",
+        "href": "/products/zepterformige-vase-aus-yixing-ton-626100",
+        "title": "Vase in Zepterform",
+        "price": "CHF 104.90",
+        "reviewId": "16654281408903",
+        "reviewState": "confirmedZero"
+      }
+    ],
+    "passed": true
+  },
+  "cropCorrection": {
+    "finding": "Desktop necklace central pendant clipped despite object-fit contain; implicit grid image box exceeded wrapper",
+    "fix": "Only new image wrapper relative and image absolute inset0 with contain; no product/photo edits",
+    "validationRevision4": {
+      "files": [
+        "assets/luxe-edit.css"
+      ],
+      "success": true,
+      "schema": "Existing official cache; fresh manifest download failed"
+    },
+    "nativeQA": {
+      "scope": "Native UNPUBLISHED; no overrides, only GET/HEAD",
+      "checks": [
+        {
+          "name": "HTTP200 exact preview",
+          "pass": true
+        },
+        {
+          "name": "360px actual image boxes contained, no cropped central detail",
+          "pass": true
+        },
+        {
+          "name": "360px no page overflow",
+          "pass": true
+        },
+        {
+          "name": "360px five exact review bindings",
+          "pass": true
+        },
+        {
+          "name": "360px prior content retained",
+          "pass": true
+        },
+        {
+          "name": "390px actual image boxes contained, no cropped central detail",
+          "pass": true
+        },
+        {
+          "name": "390px no page overflow",
+          "pass": true
+        },
+        {
+          "name": "390px five exact review bindings",
+          "pass": true
+        },
+        {
+          "name": "390px prior content retained",
+          "pass": true
+        },
+        {
+          "name": "760px actual image boxes contained, no cropped central detail",
+          "pass": true
+        },
+        {
+          "name": "760px no page overflow",
+          "pass": true
+        },
+        {
+          "name": "760px five exact review bindings",
+          "pass": true
+        },
+        {
+          "name": "760px prior content retained",
+          "pass": true
+        },
+        {
+          "name": "1440px actual image boxes contained, no cropped central detail",
+          "pass": true
+        },
+        {
+          "name": "1440px no page overflow",
+          "pass": true
+        },
+        {
+          "name": "1440px five exact review bindings",
+          "pass": true
+        },
+        {
+          "name": "1440px prior content retained",
+          "pass": true
+        }
+      ],
+      "views": [
+        {
+          "width": 360,
+          "overflow": false,
+          "images": [
+            {
+              "id": "15412902756737",
+              "w": 231.265625,
+              "h": 231.265625,
+              "pw": 231.265625,
+              "ph": 231.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412902789505",
+              "w": 231.265625,
+              "h": 231.265625,
+              "pw": 231.265625,
+              "ph": 231.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15501005226369",
+              "w": 231.265625,
+              "h": 231.265625,
+              "pw": 231.265625,
+              "ph": 231.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412960592257",
+              "w": 231.265625,
+              "h": 231.265625,
+              "pw": 231.265625,
+              "ph": 231.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "16654281408903",
+              "w": 231.265625,
+              "h": 231.265625,
+              "pw": 231.265625,
+              "ph": 231.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            }
+          ],
+          "cards": 5,
+          "review": [
+            {
+              "id": "15412902756737",
+              "reviewId": "15412902756737"
+            },
+            {
+              "id": "15412902789505",
+              "reviewId": "15412902789505"
+            },
+            {
+              "id": "15501005226369",
+              "reviewId": "15501005226369"
+            },
+            {
+              "id": "15412960592257",
+              "reviewId": "15412960592257"
+            },
+            {
+              "id": "16654281408903",
+              "reviewId": "16654281408903"
+            }
+          ],
+          "retained": {
+            "trends": 12,
+            "categories": 16,
+            "collage": 1,
+            "video": 1
+          }
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "images": [
+            {
+              "id": "15412902756737",
+              "w": 252.875,
+              "h": 252.875,
+              "pw": 252.875,
+              "ph": 252.875,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412902789505",
+              "w": 252.875,
+              "h": 252.875,
+              "pw": 252.875,
+              "ph": 252.875,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15501005226369",
+              "w": 252.875,
+              "h": 252.875,
+              "pw": 252.875,
+              "ph": 252.875,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412960592257",
+              "w": 252.875,
+              "h": 252.875,
+              "pw": 252.875,
+              "ph": 252.875,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "16654281408903",
+              "w": 252.875,
+              "h": 252.875,
+              "pw": 252.875,
+              "ph": 252.875,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            }
+          ],
+          "cards": 5,
+          "review": [
+            {
+              "id": "15412902756737",
+              "reviewId": "15412902756737"
+            },
+            {
+              "id": "15412902789505",
+              "reviewId": "15412902789505"
+            },
+            {
+              "id": "15501005226369",
+              "reviewId": "15501005226369"
+            },
+            {
+              "id": "15412960592257",
+              "reviewId": "15412960592257"
+            },
+            {
+              "id": "16654281408903",
+              "reviewId": "16654281408903"
+            }
+          ],
+          "retained": {
+            "trends": 12,
+            "categories": 16,
+            "collage": 1,
+            "video": 1
+          }
+        },
+        {
+          "width": 760,
+          "overflow": false,
+          "images": [
+            {
+              "id": "15412902756737",
+              "w": 519.265625,
+              "h": 519.265625,
+              "pw": 519.265625,
+              "ph": 519.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412902789505",
+              "w": 519.265625,
+              "h": 519.265625,
+              "pw": 519.265625,
+              "ph": 519.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15501005226369",
+              "w": 519.265625,
+              "h": 519.265625,
+              "pw": 519.265625,
+              "ph": 519.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412960592257",
+              "w": 519.265625,
+              "h": 519.265625,
+              "pw": 519.265625,
+              "ph": 519.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "16654281408903",
+              "w": 519.265625,
+              "h": 519.265625,
+              "pw": 519.265625,
+              "ph": 519.265625,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            }
+          ],
+          "cards": 5,
+          "review": [
+            {
+              "id": "15412902756737",
+              "reviewId": "15412902756737"
+            },
+            {
+              "id": "15412902789505",
+              "reviewId": "15412902789505"
+            },
+            {
+              "id": "15501005226369",
+              "reviewId": "15501005226369"
+            },
+            {
+              "id": "15412960592257",
+              "reviewId": "15412960592257"
+            },
+            {
+              "id": "16654281408903",
+              "reviewId": "16654281408903"
+            }
+          ],
+          "retained": {
+            "trends": 12,
+            "categories": 16,
+            "collage": 1,
+            "video": 1
+          }
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "images": [
+            {
+              "id": "15412902756737",
+              "w": 421.46875,
+              "h": 320,
+              "pw": 421.46875,
+              "ph": 320,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412902789505",
+              "w": 421.46875,
+              "h": 320,
+              "pw": 421.46875,
+              "ph": 320,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15501005226369",
+              "w": 421.46875,
+              "h": 320,
+              "pw": 421.46875,
+              "ph": 320,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "15412960592257",
+              "w": 643.203125,
+              "h": 320,
+              "pw": 643.203125,
+              "ph": 320,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            },
+            {
+              "id": "16654281408903",
+              "w": 643.203125,
+              "h": 320,
+              "pw": 643.203125,
+              "ph": 320,
+              "inside": true,
+              "fit": "contain",
+              "loaded": true
+            }
+          ],
+          "cards": 5,
+          "review": [
+            {
+              "id": "15412902756737",
+              "reviewId": "15412902756737"
+            },
+            {
+              "id": "15412902789505",
+              "reviewId": "15412902789505"
+            },
+            {
+              "id": "15501005226369",
+              "reviewId": "15501005226369"
+            },
+            {
+              "id": "15412960592257",
+              "reviewId": "15412960592257"
+            },
+            {
+              "id": "16654281408903",
+              "reviewId": "16654281408903"
+            }
+          ],
+          "retained": {
+            "trends": 12,
+            "categories": 16,
+            "collage": 1,
+            "video": 1
+          }
+        }
+      ],
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "blockedNonRead": 75,
+      "passed": true
+    }
+  },
+  "validationRevision3": {
+    "files": 4,
+    "success": true,
+    "source": "VALIDATION-R3.log",
+    "limits": "Fresh schema fetch failed, official local schema cache used; pre-existing external poster warning nonblocking"
+  },
+  "limits": [
+    "Partial product/first-variant checks; no full catalog/variant/checkout or delivery guarantee",
+    "29 initial checks retained with false visual assurance corrected: object-fit alone was insufficient; final17 checks inspect real image rectangles",
+    "Five external Failed-to-fetch errors under blocked non-GET/HEAD browser requests; no global script-error-free claim",
+    "EN keys statically validated; no complete EN browser acceptance",
+    "No fresh daily Metricool/Klaviyo reports or purchase-watch queries; fulfilled purchase goal unchanged",
+    "No products, prices, review records, flows, feeds, ads, DNS, budgets, automation or schedule changes",
+    "Website background video unchanged and distinct from blocked professional product-film master"
+  ],
+  "nextStep": "Geprüfte R26/R27/R28/R29-Vorschau mit legitimem MAIN-Zugang integrieren; Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten und öffentlich mobil/Desktop gegenprüfen. Bestehende Websitefreigabe erhalten; EN vor vollständiger EN-Abnahme separat prüfen.",
+  "localEvidenceDirectory": "/workspace/luxestyle-review/masterpiece-home-20261101"
+}
