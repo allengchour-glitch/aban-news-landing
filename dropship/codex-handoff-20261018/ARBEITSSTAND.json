@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 25,
-  "updatedAt": "2026-11-01T12:44:00Z",
+  "revision": 26,
+  "updatedAt": "2026-11-01T13:33:38Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -669,8 +669,8 @@
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "LOKAL_GEPRUEFTER_ENTWURF/GEMESSENE_QUELLEN/KEINE_PRODUKTIVE_INTEGRATION",
-      "lastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.\n\nMorgenlauf 01.11.2026,08:00 Europe/Zurich: lokale tatsächliche ffprobe-Gegenprobe statt bloss behaupteter Metadaten ergänzt. Hash, Rotation, Auflösung,30fps, Dauer/Schnittzugaben und begrenzte Framezeitstempel an expliziten Originaldateien geprüft.28 synthetische Fälle(20+8) grün, kein Film oder operative Integration. Reale aktuelle öffentliche Shopreferenz852×480/25fps/27,959961s gelesen; frühere960×540/25fps ebenfalls ungeeignet. Pflichtmusik hashgleich zu main; kommerzielle Herkunfts-/Rechte- und finale Hörabnahme weiter offen. Projektor ACTIVE CHF34.90/Variante56197916361089/storefrontavailabletrue mit echtem Bild, Tags aktuell ohne Sperrtreffer; auswahl-offen und sieben nicht zugeordnete beschriebene Versionen klären keine Default-Identität. Pyjama bleibt rueckhol-gesperrt. Keine MP4, keine Socialwrites, keine Registryinitialisierung. Alle bisherigen Quellenhistorien erhalten.",
-      "nextAllowedStep": "Vier passende native Originaltakes derselben SKU/Ausführung samt Geräte-, Motiv-, Strom- und kommerziellen Film-/Bearbeitungsrechten beschaffen und mit tatsächlicher Medienprobe sowie menschlicher Qualitätsprüfung beurteilen. Dann denselben einen Master schneiden und am fertigen Film abnehmen. Spätere Publikation nur nach frischen Produkt-/Kanal-/Ledgerprüfungen; kein Altvideo-Ersatz.",
+      "lastEvidence": "Denselben Master luxe_sternenprojektor_master_20261018 fortgeführt; keine MP4 und keine neue kreative/rechtliche Freigabe. Projektor nativ/Storefront aktuell ACTIVE CHF 34.90, konkrete Variante 56197916361089/SKU CJ-1477820492730732544 verfügbar, untracked/CONTINUE/0 korrekt eingeordnet; aktuelles echtes Produktbild erneut gelesen und gesehen. Genaue Ausführung/Motive durch auswahl-offen weiter offen. Neuer konkreter Vorbereitungsschritt: bestehende freie Rechtereferenzfelder an tatsächlichen Lizenzgeber, Nutzungsumfang/Gebiet/Laufzeit/Kanäle und Hash jedes Originaltakes gebunden; unbefüllte Vorlage, kein Lizenzbeleg. Bestehender 18sPlan mit zwei Hooks/sechs stabilen UTMs erhalten, statt tägliche neue Clips zu erzeugen. Vier Originaltakes, Zuordnung und Rechte sowie dauerhaftes Register weiter unbestätigt. Aktuelle Metricool-Identität/Planung geprüft; keine neuen Socialwrites oder Registerinitialisierung. YouTube-Inhaberzielgruppe bereits geklärt, nur konkretes Postflag offen.",
+      "nextAllowedStep": "Tatsächliche vier Originaldateien und ausführungsspezifische Motiv-/Strombelege anhand des bestehenden Originaltake-Prüfers und der neuen datei-/lizenzgebergebundenen Rechtebelegvorlage prüfen. Erst mit belegten kommerziellen Film-/Bearbeitungs-/Werberechten denselben einen Master schneiden und am fertigen Film abnehmen. Vor Publikation Produkt-/Bio-/Board-/Postflag-/Ledger-/Kanalchecks frisch durchführen; keine Altclip- oder Websitevideo-Ersatzfreigabe.",
       "blockers": [
         "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
         "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
@@ -748,6 +748,21 @@
           "path": "dropship/codex-handoff-20261018/MORGEN-VERKAUFSPRUEFUNG-20261101.md",
           "gitBlobSha": "bb191115eeb09d7321352b83edc8ccb8a19dc7ab",
           "readAt": "2026-11-01T07:20:31.831Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSPAKET-R26-20261101.md",
+          "gitBlobSha": "eeabfaaafe843f9ce2888199d59e3f8bd6f9fca8",
+          "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
+          "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
+          "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
+          "gitBlobSha": "9ad007a1648607313b84962fd8484164eb926d38",
+          "readAt": "2026-11-01T13:33:38Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -783,6 +798,18 @@
             "Passendes professionelles Originalmaterial",
             "Ausführung/Motive und Rechte ungeklärt",
             "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt"
+          ]
+        },
+        {
+          "at": "2026-11-01T13:33:38Z",
+          "sourceRevision": 25,
+          "previousLastEvidence": "Projektor aktuell CHF 34.90 ACTIVE und öffentlich kaufbar, echte Referenz erneut gesehen; Musik hashgleich frischem main. Derselbe 18-Sekunden-Master mit sechs Caption-/UTM-Entwürfen fortgeführt. Lokaler Originaltake-/Varianten-/Hash-/Rechteprüfer: 14 synthetische Fälle bestanden; reale Matrix sperrt vier fehlende native Takes. Keine MP4, kein Render/Publish/operatives Register. Vorhandene historische Quelle bleibt 960×540/25fps.\n\nMorgenlauf 01.11.2026,08:00 Europe/Zurich: lokale tatsächliche ffprobe-Gegenprobe statt bloss behaupteter Metadaten ergänzt. Hash, Rotation, Auflösung,30fps, Dauer/Schnittzugaben und begrenzte Framezeitstempel an expliziten Originaldateien geprüft.28 synthetische Fälle(20+8) grün, kein Film oder operative Integration. Reale aktuelle öffentliche Shopreferenz852×480/25fps/27,959961s gelesen; frühere960×540/25fps ebenfalls ungeeignet. Pflichtmusik hashgleich zu main; kommerzielle Herkunfts-/Rechte- und finale Hörabnahme weiter offen. Projektor ACTIVE CHF34.90/Variante56197916361089/storefrontavailabletrue mit echtem Bild, Tags aktuell ohne Sperrtreffer; auswahl-offen und sieben nicht zugeordnete beschriebene Versionen klären keine Default-Identität. Pyjama bleibt rueckhol-gesperrt. Keine MP4, keine Socialwrites, keine Registryinitialisierung. Alle bisherigen Quellenhistorien erhalten.",
+          "previousState": "blockiert",
+          "previousNextAllowedStep": "Vier passende native Originaltakes derselben SKU/Ausführung samt Geräte-, Motiv-, Strom- und kommerziellen Film-/Bearbeitungsrechten beschaffen und mit tatsächlicher Medienprobe sowie menschlicher Qualitätsprüfung beurteilen. Dann denselben einen Master schneiden und am fertigen Film abnehmen. Spätere Publikation nur nach frischen Produkt-/Kanal-/Ledgerprüfungen; kein Altvideo-Ersatz.",
+          "previousBlockers": [
+            "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+            "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt"
           ]
         }
       ]
@@ -1016,9 +1043,9 @@
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf aktuelle Inhaberpräzisierung den Selbstgestalten-Bereich in der Vorschau durch EIN grosses Gesamtbild mit zwölf unterschiedlichen Produkttypen ersetzt; Bild und Knopf öffnen die volle Auswahl. Zwei statische KI-Fassungen mit echten Produktreferenzen, erste nach Materialprüfung verworfen; korrigierte Fassung in Shopify hochgeladen und CDN-RGB-Pixel identisch bestätigt. Zuvor tatsächlich gebaute zwölf Einzelkarten durch diese neuere Vorgabe ersetzt. Zusätzlich zwölf aktuelle Trends mit dynamischen CHF-Mindestpreisen, eigenen Bildern/Zielen und konservativem Tagfilter umgesetzt. Erster nativer Review fand 11/12 und mobile Spaltenschrumpfung; danach zwölf exakte Handles und feste mobile Spalten korrigiert. Final 36 native Checks grün, zwölf Ziele HTTP200. Vier finale Theme-Dateien exakt zurückgelesen, Video-JS/Blankwächter und MAIN-Index unverändert. Kein Publish, neuer Film oder Produkt-/Preis-/Flow-/Feed-/Socialwrite.",
+      "lastEvidence": "Auf neue Inhaberwünsche Startseite im UNPUBLISHED um vier bebilderte Einkaufsbereiche, wirksame Budget-Preisfilter und drei Hilfe-Accordions erweitert. Vorhandenes Websitevideo als markenneutralen Hintergrund im Titelbereich auf Mobil/Desktop integriert, Pause/Motion/SaveData/Offscreen/Bildfallback erhalten. Zwei mobile CTA oberhalb Navigation nachgeprüft. Normale Kategorienroute mit 21 echten Kollektionsbild-Bannern und Suche; alle 412 bestehenden Ziele unverändert erhalten, Überschriftenwächter und OhneJS-Fallback. Produktbewertungen aus exakten Produktdaten ergänzt; selektive alte Kartensternanzeige/Doppelung entfernt und vorher auf MAIN vorhandenen mobilen Navüberlauf eng korrigiert. Final 15 einzigartige Theme-Dateien exakt rückgelesen, Blankwächter und MAIN unverändert. 60 Startseitenchecks, 30 Kategorienchecks und 23 bestätigte Reviewteilprüfungen; ursprüngliche Fehler/Gegenproben erhalten. Kein MAIN-Publish, neuer Film, Produkt-/Preis-/Reviewdatenwrite oder Flow-/Feed-/Socialwrite.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212752499079&view=luxe-edit",
-      "nextAllowedStep": "Geprüfte Vorschau mit einem Selbstgestalten-Gesamtbild, zwölf Trends, 16 Kategorien und bestehendem mobilen Videokopf mit legitimem MAIN-Zugang öffentlich integrieren und danach mobil/Desktop gegenprüfen. Bestehende Inhaberfreigabe erhalten; kein erneutes Einholen derselben Website-Freigabe. Vorhandene Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme eigens im Browser prüfen.",
+      "nextAllowedStep": "Diesen geprüften Vorschau-Stand mit 15-Dateien-Diff über legitimen MAIN-Zugang in die öffentliche Gestaltung integrieren und öffentlich mobil/Desktop gegenprüfen; keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Bestehende Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme separat im Browser prüfen.",
       "blockers": [
         "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
         "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
@@ -1119,6 +1146,21 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITE-COLLAGE-TRENDS-THEME-20261101.patch",
           "gitBlobSha": "3269735d71d081bddfa9256e9dce835dd8d9cd51",
           "readAt": "2026-11-01T12:44:00Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSPAKET-R26-20261101.md",
+          "gitBlobSha": "eeabfaaafe843f9ce2888199d59e3f8bd6f9fca8",
+          "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
+          "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
+          "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEBSITE-R26-20261101.patch",
+          "gitBlobSha": "4f3f972a1355cdc076dbd2fb471126120c375456",
+          "readAt": "2026-11-01T13:33:38Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1171,6 +1213,18 @@
           "previousLastEvidence": "Auf «mehr Kategorien auf Startseiten» die bisherigen vier Einstiege zu 16 bebilderten, aktuell nativ gefundenen Kategorien erweitert. Mobil 2/Tablet 3/Desktop 4 Spalten, 16 eindeutige echte Bilder/Ziele; Kinder/Baby, Herren, Gaming und weitere direkt verfügbar. Selfdesign-Sonderview, Hero-Quellpräfix und Video-JS erhalten. Inhaberkorrektur «&amp; wort ändern»: sechs Namen DE mit ausgeschriebenem und, EN and; doppelte Kodierung entfernt. Vier UNPUBLISHED-Dateien final exakt rückgelesen. 39 finale native Checks grün; 16 Ziele HTTP200, unveränderte Zielbelege für letzte reine Wortänderung datiert wiederverwendet. MAIN-Rolle/Indexchecksum erhalten; kein Publish, Produkt-/Preis-/Kollektionswrite.",
           "previousState": "umgesetzt_vorschau_technisch_blockiert",
           "previousNextAllowedStep": "Aktuellen geprüften Vorschau-Stand mit 16 Kategorien und ausgeschriebenen Namen zusammen mit dem mobilen Videokopf mit legitimem MAIN-Zugang öffentlich integrieren und mobil/Desktop gegenprüfen. Vorhandene Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten; bereits vorliegende Inhaberfreigabe nicht erneut verlangen. Englischer Sprachdatensatz validiert, vor vollständiger englischer Abnahme eigenen Browserlauf durchführen.",
+          "previousBlockers": [
+            "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
+            "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
+            "Begrenzte native Startseiten-/Wiedergabeprüfung, kein vollständiger Checkout-/EDM-Test. Externe Skriptfehler unter Nicht-GET-Prüfblockade separat dokumentiert."
+          ]
+        },
+        {
+          "at": "2026-11-01T13:33:38Z",
+          "sourceRevision": 25,
+          "previousLastEvidence": "Auf aktuelle Inhaberpräzisierung den Selbstgestalten-Bereich in der Vorschau durch EIN grosses Gesamtbild mit zwölf unterschiedlichen Produkttypen ersetzt; Bild und Knopf öffnen die volle Auswahl. Zwei statische KI-Fassungen mit echten Produktreferenzen, erste nach Materialprüfung verworfen; korrigierte Fassung in Shopify hochgeladen und CDN-RGB-Pixel identisch bestätigt. Zuvor tatsächlich gebaute zwölf Einzelkarten durch diese neuere Vorgabe ersetzt. Zusätzlich zwölf aktuelle Trends mit dynamischen CHF-Mindestpreisen, eigenen Bildern/Zielen und konservativem Tagfilter umgesetzt. Erster nativer Review fand 11/12 und mobile Spaltenschrumpfung; danach zwölf exakte Handles und feste mobile Spalten korrigiert. Final 36 native Checks grün, zwölf Ziele HTTP200. Vier finale Theme-Dateien exakt zurückgelesen, Video-JS/Blankwächter und MAIN-Index unverändert. Kein Publish, neuer Film oder Produkt-/Preis-/Flow-/Feed-/Socialwrite.",
+          "previousState": "umgesetzt_vorschau_technisch_blockiert",
+          "previousNextAllowedStep": "Geprüfte Vorschau mit einem Selbstgestalten-Gesamtbild, zwölf Trends, 16 Kategorien und bestehendem mobilen Videokopf mit legitimem MAIN-Zugang öffentlich integrieren und danach mobil/Desktop gegenprüfen. Bestehende Inhaberfreigabe erhalten; kein erneutes Einholen derselben Website-Freigabe. Vorhandene Shop-/App-/Cookie-/Konto-/Versandfunktionen erhalten. EN vor vollständiger EN-Abnahme eigens im Browser prüfen.",
           "previousBlockers": [
             "Shopify-Connector erlaubt weiterhin nur Dateiänderungen auf UNPUBLISHED; MAIN-Dateiwrites und Theme-Publikation blockiert. Die verbesserte Vorschau ist nicht live.",
             "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
@@ -1364,7 +1418,7 @@
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-01",
       "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
-      "lastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.\n\nFortsetzung 01.11.2026: Explizite Zollmasse als cm-Anzeige, vorhandene cm/mm vorrangig, raw Variantengrössen/IDs unverändert. 8″×10″ zeigt 20,32 × 25,4 cm; der echte Bereich 22–23″ zeigt 55,88–58,42 cm. Ursprüngliche drei Titelbilder mit aktuellen Shopify-Bildern wiederhergestellt. Vier endgültige Theme-Dateien exakt zurückgelesen, 27 gezielte native Prüfungen bestanden, finale JS-Metazeile ebenfalls (cm). 572 Modelle, 31 Shopkarten und echte Reviewzustände erhalten. MAIN unverändert, nur UNPUBLISHED aktualisiert; bestehende Publikations-/EDM-/Bestellblocker gelten weiter. CDN wird minifiziert; Hash separat. Keine Geschäfts-/Kennzahl-/Kauf-Watch-Abfrage.",
+      "lastEvidence": "Bestehenden Stand fortgeführt: zusätzliche echte, exakt produktgebundene Bewertung am Studio-Einstieg umgesetzt und nativ für das T-Shirt geprüft. Shared Review-Helfer weiterhin auf tatsächliche Shopify-ID/Count/Skala gebunden; Unbekanntes verborgen, bestätigter Count 0 als Noch keine Bewertungen. Bestehender Selfdesign-Katalog und Blankproduktwächter erhalten, Standardkarten und Startseiten-Trends ergänzt; echte Schmuckbewertungen 5/5 bei 8 Stimmen genau einmal geprüft. Keine Reviewdaten erfunden/geschrieben, keine Variant-/Kosten-/EDM-/Bestellfreigabe daraus abgeleitet. UNPUBLISHED bestätigt, kein MAIN-Publish.",
       "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
       "nextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
       "pendingProducts": [
@@ -1716,6 +1770,16 @@
           "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-CM-TITELBILDER-20261101.patch",
           "gitBlobSha": "0fd977dbca1e21c9a835cbafbc5a548012151386",
           "readAt": "2026-11-01T01:48:39.956Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSPAKET-R26-20261101.md",
+          "gitBlobSha": "eeabfaaafe843f9ce2888199d59e3f8bd6f9fca8",
+          "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
+          "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
+          "readAt": "2026-11-01T13:33:38Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1844,6 +1908,19 @@
           "sourceRevision": 18,
           "previousLastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.",
           "previousState": "umgesetzt_vorschau_technisch_blockiert"
+        },
+        {
+          "at": "2026-11-01T13:33:38Z",
+          "sourceRevision": 25,
+          "previousLastEvidence": "572 Printful-Modelle, 13’160 echte Originalvarianten und 177 Kategoriezuordnungen vollständig als Lieferantenreferenz im UNPUBLISHED-Theme umgesetzt; 52 Datenassets über native MD5 bestätigt. Echte Farb-, Grössen- und Materialwechsel sowie Originalvariantenbilder; deutsche Suche mit sichtbarem Filterkonflikt und bewusst wählbarer globaler Suche. HTML-Entities korrigiert. Dynamische aktuelle CHF-Preise aus 31 Blankprodukten / 309 Shopvarianten; 295 eindeutige und 7 mehrfach belegte Printful-IDs, letztere mit expliziter Angebotswahl. Alle 31 Produkte haben bestätigt 0 Bewertungen: «Noch keine Bewertungen». Positive Sterne und Anzahl nur nach validen echten Produktwerten; unknown bleibt unbekannt. PF71-Material mit 54% + 48% als widersprüchliche Quelle markiert, nicht auswählbar. Inline-Editor-Schutz in der Vorschau: nur aktive Variante; Upload-, Bild- und Canvasfehler blockieren in 6 nativen Fällen mit simulierten POSTs die weitere Verarbeitung. Kein Produktionsnachweis. Lokale Tests bestanden: 121 Katalog + 68 Material/Preis + 57 Suche/Review; native Endprüfung separat belegt. Keine neuen Shopangebote oder Preisänderungen. Kontrollierter POD-Bulk-Read: 492 Rootprodukte, Job 12890114032007 COMPLETED, 2146 Objekte; Exportlink vom Connector blockiert, vollständige SKU- und Variantenzuordnung deshalb unbekannt. Gesamtimport, Original-EDM und alle Druckstellen weiterhin nicht produktiv verifiziert.\n\nFortsetzung 01.11.2026: Explizite Zollmasse als cm-Anzeige, vorhandene cm/mm vorrangig, raw Variantengrössen/IDs unverändert. 8″×10″ zeigt 20,32 × 25,4 cm; der echte Bereich 22–23″ zeigt 55,88–58,42 cm. Ursprüngliche drei Titelbilder mit aktuellen Shopify-Bildern wiederhergestellt. Vier endgültige Theme-Dateien exakt zurückgelesen, 27 gezielte native Prüfungen bestanden, finale JS-Metazeile ebenfalls (cm). 572 Modelle, 31 Shopkarten und echte Reviewzustände erhalten. MAIN unverändert, nur UNPUBLISHED aktualisiert; bestehende Publikations-/EDM-/Bestellblocker gelten weiter. CDN wird minifiziert; Hash separat. Keine Geschäfts-/Kennzahl-/Kauf-Watch-Abfrage.",
+          "previousState": "umgesetzt_vorschau_technisch_blockiert",
+          "previousNextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
+          "previousBlockers": [
+            "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; kein authentifizierter Admin-Browser",
+            "Bulk-Lesejob COMPLETED, aber Connector blockiert signierte Exportlinks; vollständige Produkt-, SKU- und Variantendaten ungeprüft",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten"
+          ]
         }
       ]
     }
@@ -2042,6 +2119,17 @@
         "path": "dropship/codex-handoff-20261018/STARTSEITE-COLLAGE-TRENDS-BELEGE-20261101.json",
         "gitBlobSha": "d004010c770aabb401093deddf4a691760fd25b4",
         "readAt": "2026-11-01T12:44:00Z"
+      }
+    },
+    {
+      "revision": 26,
+      "at": "2026-11-01T13:33:38Z",
+      "actor": "codex",
+      "action": "Autorisierte Startseite/Hintergrundvideo/Kategorienbanner/Bewertungsdarstellung im UNPUBLISHED konkret umgesetzt und geprüft;15 finale Theme-Dateien exakt. AktuelleShop-/Metricool-/2Produkt-/4Reviewdatenproben, nur vorhandene Tagesreports weiterverwendet. Vier Artefakte gesichert; derselbe Master um konkrete Rechtebelegvorlage ergänzt, keine MP4/Publikation. Alle16 Aufgaben, Historien, erfülltes Kaufziel und bestehenden Zeitplan erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
+        "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
+        "readAt": "2026-11-01T13:33:38Z"
       }
     }
   ],
