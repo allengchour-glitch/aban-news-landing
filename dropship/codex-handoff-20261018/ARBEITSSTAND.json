@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 42,
-  "updatedAt": "2026-11-01T20:32:24.782248Z",
+  "revision": 43,
+  "updatedAt": "2026-11-01T20:50:50.314044Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2820,6 +2820,40 @@
           "readAt": "2026-11-01T19:53:23.827114Z"
         }
       }
+    },
+    {
+      "id": "seo-landing-visibility-20261101",
+      "priority": 3,
+      "priorityKind": "SETZUNG",
+      "state": "geprueft_bestseller_zwei_texte_freigabe_offen",
+      "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
+      "lastEvidenceDate": "2026-11-01",
+      "belegArt": "AKTUELLE_BEGRNENZTE_SEO_NATIVE_GEGENPROBE_NEUER_ZWEI_FELDER_ENTWURF_KEIN_SHOPWRITE",
+      "lastEvidence": "R43 auf ausdrücklichen Auftrag sichtbarkeit maximieren: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit allen6Kanalidentitäten frisch bestätigt. Vier öffentliche HTML-Seiten (Startseite,Wohnen,Technik,Bestseller) sowie robots.txt/Sitemap eng geprüft; HTTP200, passendeCanonicals und Haupt-H1, kein noindex im Root-Head. Keine Google-Indexierung oder Rankingwirkung daraus abgeleitet. Drei nativeCollections gelesen. Bestseller: alle10nativenProdukt-Handles stimmen mit öffentlicherHauptliste überein; aktuelle Moissanite-/Echtleder-/wasserfest-/Beliebtheitsaussagen passen nicht zur gebundenenAuswahl beziehungsweise ohne aktuellenNachweis. Genau2neueErsatztexte für erstenBodyabsatz/seo.description als konkreterFreigabeentwurf vorbereitet; Antwort ausstehend, keineMutation. Vier bestehendeTechnik/Wohnen-Fragmente vom27.10. exakt gegen aktuelle nativeOriginalfelder neu gebunden, keine neueUmsetzung. Entwurf212978598279 bleibtUNPUBLISHED,7R40-Dateien metadatahashgleich,6gelieferteMAIN-Dateienanders; kein vollständigerDiff oder neueSichtabnahme. EchteSelbstgestalten-Shopangebote haben bereits serverseitigeHTMLLinks, keineDuplikatliste. ThemePublish/MAINWrites peraktuellemWerkzeugvertraggesperrt, keinAppGrantFehler/neuerApprovalReject. KeineKennzahl-/Flow-/Bestellabfragen, Socialwrites, Ads-/Feed-/Einstellungs- oderFrequenzänderungen.",
+      "nextAllowedStep": "Die aktuelle ausdrückliche Antwort zu genau2Bestsellertexten prüfen. Bei Freigabe Shop/CollectionOriginalwerte frisch lesen, nur erstenAbsatz und seo.description nach explizitemDiff schreiben, danach beideFelder nativ/öffentlich zurücklesen und alleanderenFelder/Mitgliedschaft erhalten; keine erneute gleicheFreigabe fragen. OhneAntwort bleiben diese2TexteEntwurf. Die4altenTechnik/Wohnen-Felder sind nicht von dieserFrage umfasst. BestehendeWebsitefreigabe gilt bereits: Claude liest vollständigenaktuellenThemeDiff und7R40Hashes, veröffentlicht denselbenEntwurf mit legitimemfähigemZugang und prüft DE/FR mobil/Desktop. Kein Connectorbypass/neueKopie. MerchantQuelle/Writer weitergemässR41 klären, keinenTimeoutblindwiederholen. KeinezusätzlichenTagesreports oder Kauf-Watch.",
+      "blockers": [
+        "Konkrete Freigabe zu2neuenBestsellertexten angefragt und bisher offen; breiteSichtbarkeitsanweisung ist keine pauschaleAktivierungserlaubnis",
+        "AktuellerConnector sperrtTheme-Publikation und MAIN-Dateiwrites; heutigerBrowserAdminLogin nichtgeprüft, bestehendeWebsitefreigabe gilt",
+        "SearchConsoleIndexierung/GoogleCanonical/Rankings unbekannt; Tagesreports nicht erneutlesen",
+        "Merchant-Datenquelle/Writer nachR41 technisch unbekannt/fehlend; frühereEinzelquellenprobeTimeout nicht wiederholt"
+      ],
+      "acceptance": [
+        "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
+        "Jede spätere Textmutation mit frischemVorherDiff sowie nativer/öffentlicherRücklesung",
+        "BestehendeWebsite-/Review-/FR-/Printful-/Versand-/Kontoquellen und16andereTasks erhalten",
+        "Teilprüfung deutlich von vollständigerKatalog-/Indexierungsabdeckung trennen"
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+          "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+          "readAt": "2026-11-01T20:50:50.314044Z"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "claude",
+      "ownerApprovalState": "specific_two_field_question_pending_no_response",
+      "evidenceHistory": []
     }
   ],
   "history": [
@@ -3204,6 +3238,17 @@
         "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
         "readAt": "2026-11-01T20:32:24.782248Z"
       }
+    },
+    {
+      "revision": 43,
+      "at": "2026-11-01T20:50:50.314044Z",
+      "actor": "codex",
+      "action": "Neuen ausdrücklichen Sichtbarkeitsauftrag als eigene stabileSEO-Aufgabe ergänzt. Aktuelle4Seiten/robots/Sitemap und3nativeKategorien geprüft, konkretenneuen2FelderBestsellerdiff zurFreigabe sowie4alteTexte neuquellengebunden vorbereitet. Rollen/7R40Hashes und vorhandeneHTMLProduktlinks bestätigt; keine operativeÄnderung. Alle16bisherigenTasks exakt unverändert, jetzt17IDs; Historien,R42/R41,R40Entwurf,R39Termin/Register,Tagesgrenzen undKauf-Watch-Ende erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+        "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+        "readAt": "2026-11-01T20:50:50.314044Z"
+      }
     }
   ],
   "salesGoal": {
@@ -3373,12 +3418,12 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "7dbadde2ffcc3cdb592b416299d4f62a4b090863",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r42",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r43",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 42,
-    "snapshotNote": "R42 ergänzt den neuen Beschreibungsexport und zwei bestätigte Motivabsätze; vorhandene13SEO-Motive nicht als eigene Writes gezählt. R40 bleibt Websiteübergabe, R41-Merchantquelle weiter technisch blockiert, Claude-Empfang unbekannt.",
+    "latestCanonicalRevision": 43,
+    "snapshotNote": "R43 ergänzt neuenSichtbarkeitsauftrag mit konkretem2TextFreigabediff; keinShopwrite. Alle16bisherigenTasks erhalten, neueSEO-Aufgabe ergibt17IDs. R40Websitefreigabe/Connector-Publishgrenze erhalten; tatsächlicherClaudeEmpfangunbekannt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -3388,6 +3433,11 @@
       "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
       "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
       "readAt": "2026-11-01T20:32:24.782248Z"
+    },
+    "visibilitySupplement": {
+      "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+      "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+      "readAt": "2026-11-01T20:50:50.314044Z"
     }
   },
   "claudeCodeHandoffHistory": [
