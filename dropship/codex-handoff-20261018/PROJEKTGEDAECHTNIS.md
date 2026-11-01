@@ -1,12 +1,14 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
-## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 35
+## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 36
 
-[Sticker-/Originalvarianten-Belege](STICKER-ORIGINALVARIANTEN-20261101.json) · [Datierte Übergabe R33](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json).
+[Abendpaket](ABENDPAKET-20261101-R36.md) · [Belege](ABENDBELEGE-20261101-R36.json) · [Masterentwurf](MASTER-ABEND-20261101-R36.md) · [konsolidierte Tagestabelle](TAGESTABELLE-20261101-R36.md).
 
-Bewertungs-/FR-Theme 212971061639 ist inzwischen MAIN und öffentlich DE/FR gegengeprüft, kein eigener Publish. Neue Sticker-UI liegt in der davon abgeleiteten UNPUBLISHED-Kopie 212978598279: direkter Einstieg, Aufkleber-Suche, vollständiger Reset, Originalvariantenanzahl und ehrliche Herstelleroptionsreferenz. Fünf Dateien nativ bestätigt. Fünf Stickerarten mit 17 Originalvarianten; die Herstellerkategorie enthält zusätzlich drei Magnetvarianten. Bestehendes Kiss-Cut-Shopprodukt hat vier belegte CHF-Angebote, die übrigen fünf Kategorieprodukte keine Shopzuordnung. 572 Modelle / 13’160 Varianten stimmen mit datierten Rohquellen überein (253 Quellen 01.11., 319 vom 29.10.); kein vollständig kaufbarer Shop oder aktueller globaler API-Scan behauptet.
+Öffentliches MAIN 212971061639 mit Bewertungen/FR bleibt erhalten. Im vorhandenen UNPUBLISHED-Entwurf 212978598279 liegen neben den Stickern neu acht Produktkarten «Noch mehr entdecken» mit echten Fotos, CHF-Preisen und Reviewbindung. Sechs Dateien bestätigt, Mobil/Desktop und acht Produktseiten geprüft; neue Ressourcen umgehen weitere all_products-Zugriffe, ursprüngliche 20 Handles erhalten. Kein Publish oder Produktdatenwrite.
 
-Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r35/` führen 16 Aufgaben fort, davon zwei aktualisiert. Vierzehn Tasks, Historien, Kauf-Watch-Ende und bestehende Tagesgrenzen bleiben erhalten. Vor jedem Lauf vier kanonische Dateien frisch lesen; R33/R4 bleiben datierte Originale, tatsächlicher Claude-Empfang unbekannt. Keine neue Automation oder Frequenzänderung. Nachfolgende ältere Abschnitte sind historische Belege.
+Abendcheck: Shopify und Metricool 6227837/Europe/Zurich samt sechs Kanälen passend. Sieben bestehende Planobjekte/14 PENDING, keine exakten Doppel im begrenzten Fenster, keine eigene Terminierung. Tageskennzahlen/Flowreport nur datiert wiederverwendet; vollständige Wochen/Einzelauftrags-Sync unbekannt. Derselbe Master hat neu einen konkreten Sicht-/Kontinuitätsbogen für vier Takes, weiterhin keine MP4/Originaltakes-/Rechte-/Filmabnahme. Genau ein bestehender Welcome-Service-Diff bleibt zur Freigabe. Kauf-Watch bleibt beendet.
+
+Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r36/` führen 16 stabile Aufgaben fort; zwei aktualisiert, 14 unverändert. Vor jedem Lauf vier kanonische Dateien frisch lesen. R33/R4 und Historie bleiben datierte Originale; tatsächlicher Claude-Empfang unbekannt. Keine zusätzliche Automation/Frequenzänderung oder neue Geschäftsfreigabe.
 
 Eingerichtet auf den ausdrücklichen Inhaberauftrag vom 28.10.2026: «installiere ein gehirn … selbstständig … für dieses projekt». Zweck: in bestehenden Läufen belegten Fortschritt fortsetzen, Entscheidungen wiederfinden und Doppelarbeit vermeiden. Claude koordiniert; Codex bearbeitet selbstständig die bereits erlaubten Schritte. Dieses Dokument ist ein Arbeitsindex, keine zusätzliche Geschäftsfreigabe und kein laufender Agentendienst.
 
@@ -277,3 +279,7 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Sticker und Originalvarianten, Revision 35
 
 [Beleg](STICKER-ORIGINALVARIANTEN-20261101.json): vorhandene Sticker waren verschachtelt, deutsches Suchwort Aufkleber traf bisher nichts. Im neuen aktuellen MAIN-Duplikat den Einstieg und die Originalvariantenanzeige verbessert; Rohdaten/Preise/Zuordnungen nicht geändert. Bewertungs-/FR-Startseite inzwischen öffentlich bestätigt. Neue Sticker-UI bleibt Entwurf, keine eigene Veröffentlichung oder vollständige kaufbare Printful-Übernahme. Zwei Aufgaben und heutigen Tagesblock fortgeschrieben; alle übrigen Aufgaben, Grenzen und Quellen erhalten.
+
+## 01.11.2026 – zusätzliche Produktkarten und Abendcheck, Revision 36
+
+[Abendpaket](ABENDPAKET-20261101-R36.md) und [Belege](ABENDBELEGE-20261101-R36.json): acht neue Startseitenkarten im vorhandenen Sticker-Entwurf geprüft; keine Live-Publikation oder Produktdatenänderung. Frische Marken-/Queuegegenprobe, datierte Reportwiederverwendung und neuer Sichtabnahmebogen für denselben Master. Genau eine Welcome-Service-Massnahme bleibt Freigabeentwurf. Konsolidierte Tagestabelle und R36-Quellenspiegel erhalten 16 Aufgaben/Historien und den beendeten Kauf-Watch; keine zusätzliche Automation oder Geschäftsfreigabe.
