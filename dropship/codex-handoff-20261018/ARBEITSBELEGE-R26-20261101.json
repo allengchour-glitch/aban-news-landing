@@ -1,0 +1,3868 @@
+{
+  "completedAt": "2026-11-01 13:33:38 UTC",
+  "timezone": "Europe/Zurich",
+  "revision": 26,
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "metricool": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networksData": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "planning": {
+    "window": {
+      "from": "2026-11-01T13:50:00+01:00",
+      "to": "2026-11-08T13:50:00+01:00",
+      "timezone": "Europe/Zurich"
+    },
+    "posts": [
+      {
+        "id": 407830728,
+        "uuid": "7282371443509710052",
+        "publicationDate": {
+          "dateTime": "2026-11-02T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407838073,
+        "uuid": "-3660854990879961370",
+        "publicationDate": {
+          "dateTime": "2026-11-03T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407849114,
+        "uuid": "-6402384969971711358",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407849577,
+        "uuid": "5982651913735720132",
+        "publicationDate": {
+          "dateTime": "2026-11-05T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407854817,
+        "uuid": "5940175700385481481",
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407876249,
+        "uuid": "-2612931623723381280",
+        "publicationDate": {
+          "dateTime": "2026-11-07T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 407889412,
+        "uuid": "-6564064169639197228",
+        "publicationDate": {
+          "dateTime": "2026-11-08T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      }
+    ],
+    "duplicateUUIDs": [],
+    "exactSameChannelMediaDuplicates": [],
+    "limits": "Only scheduledposts endpoint; missing channel/posts not published-history evidence. No post changed."
+  },
+  "website": {
+    "previewId": "gid://shopify/OnlineStoreTheme/212752499079",
+    "role": "UNPUBLISHED",
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/212656488839",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "allFileReadback": [
+      {
+        "filename": "assets/luxe-category-directory.css",
+        "md5": "1076829457046e1573f48fbcdc375b1e",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-category-directory.js",
+        "md5": "8f1d9bc69545d3cb52c893d740a7e1c6",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "md5": "65027b64d6207261fe5dd91f22868387",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-edit.js",
+        "md5": "4aa19e8ff7993e0e8badad2f02cade4b",
+        "exact": true
+      },
+      {
+        "filename": "assets/luxe-product-reviews.js",
+        "md5": "e65cdc58ea7b1bb66732fe944677fa3a",
+        "exact": true
+      },
+      {
+        "filename": "blocks/product-title.liquid",
+        "md5": "ae5d3f22b0e5093260f8b44c17da7c44",
+        "exact": true
+      },
+      {
+        "filename": "locales/de.json",
+        "md5": "217ce44cee463b92c87f75ad0e3bb00c",
+        "exact": true
+      },
+      {
+        "filename": "locales/en.default.json",
+        "md5": "d7db34106bac94f0d6d2613d4e8f418e",
+        "exact": true
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "md5": "d2fef8447847d737d4e92dd194a4c4e5",
+        "exact": true
+      },
+      {
+        "filename": "sections/luxe-studio.liquid",
+        "md5": "17178c2e707343dbc19f38951f4ec69e",
+        "exact": true
+      },
+      {
+        "filename": "sections/main-page.liquid",
+        "md5": "76f7ff5c434b142d345c0453b6ccab40",
+        "exact": true
+      },
+      {
+        "filename": "snippets/luxe-category-directory.liquid",
+        "md5": "0b84d29bc5321105c279951f847687da",
+        "exact": true
+      },
+      {
+        "filename": "snippets/luxe-studio-blank-eligible.liquid",
+        "md5": "89eea97931f469cb8882584140e7f41d",
+        "exact": true
+      },
+      {
+        "filename": "snippets/product-card.liquid",
+        "md5": "4310aa79bc04bb8f8080c0c85317fe94",
+        "exact": true
+      },
+      {
+        "filename": "templates/collection.json",
+        "md5": "f7f61b522473dc280e7424cd300af19f",
+        "exact": true
+      },
+      {
+        "filename": "templates/product.json",
+        "md5": "3f4eeb5f2cfc8811ba356169cd5f23c2",
+        "exact": true
+      }
+    ],
+    "sourceManifest": [
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "beforeSha256": "b33c5981f87ac5f4605fc5f595002e39c8bd0a99b5c4a251a0551b1f7d40a65a",
+        "afterSha256": "360f1f840c66391c223ad27134f946d3b8482f42032eec1c39df6744ea09d7a2",
+        "newFile": false
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "beforeSha256": "8dfcda0067162d342d4b44cdd5b746aedec80583c7448cb63eb1ba823376038c",
+        "afterSha256": "3ce97c91bfe2708d9509fcaf8d2e2c38698b7daddf106a678f89849d8aab81f9",
+        "newFile": false
+      },
+      {
+        "filename": "assets/luxe-edit.js",
+        "beforeSha256": "a1c2d2bbace1897ae4f95c4a6a781cdbdbd93ebdbb2a6beec0a41ab4a6173334",
+        "afterSha256": "02c8b94fa3a11907a6568017afd69d318033e3e602b8bef190744bc214aae809",
+        "newFile": false
+      },
+      {
+        "filename": "locales/de.json",
+        "beforeSha256": "392c03511af26053dbe2299f121aa1a222261add5f33514b670384f1c944af0f",
+        "afterSha256": "02cc777fceec0d47e1acdfd2b89ba8128bcad74b35f6cb68e5f126398e1236c0",
+        "newFile": false
+      },
+      {
+        "filename": "locales/en.default.json",
+        "beforeSha256": "592f72b1f1efe03460b93465781dacbb3e6d8bbb80944b20d6b77c4c4057f251",
+        "afterSha256": "c76fd54ed86047de292d94444ef1e658e1c257ccf8ade8b61ddb57fac11ad627",
+        "newFile": false
+      },
+      {
+        "filename": "sections/luxe-studio.liquid",
+        "beforeSha256": "b1ac519fcef2ff14d6fd200ec154f1e539d2d5a4b6b2ff13a1b3078a7190d82f",
+        "afterSha256": "5309c0b2445e94b0b6281cc9792af48f4c31018c514be4a1c2ff88d4e0926843",
+        "newFile": false
+      },
+      {
+        "filename": "assets/luxe-product-reviews.js",
+        "beforeSha256": "a5c0a24a09a08fd8f4391a05d04fda91844ce508a061533c84c7f3a250d4a5e0",
+        "afterSha256": "e0eddb60bdde9a791eb53ebb31d4d088a5cba7dddcedacb69127ec7e1cf0ab10",
+        "newFile": false
+      },
+      {
+        "filename": "blocks/product-title.liquid",
+        "beforeSha256": "737c798eed9dcdc9f7ef464080f1c08b67a32cc1b079d248dad0dacde1f87080",
+        "afterSha256": "dcf55c70ff60f657588e63ba2dd23c648aa98883c94aeb14298042231438f234",
+        "newFile": false
+      },
+      {
+        "filename": "templates/product.json",
+        "beforeSha256": "74c9faff12256069391af9d5514515c0d054e942905b8502450a5f2e3b099e38",
+        "afterSha256": "6608a54bd7b356ab3a8edd04b0867d3f28129c768bcf5842071aa9312b7f1436",
+        "newFile": false
+      },
+      {
+        "filename": "templates/collection.json",
+        "beforeSha256": "7449223007ef6c95ea52a381bab9e35c5337ca916800c74a5518199c89c29383",
+        "afterSha256": "6753d513281095401fd8ad28b07b1be7dab3f460d7865b4090e327112d3bbf30",
+        "newFile": false
+      },
+      {
+        "filename": "sections/main-page.liquid",
+        "beforeSha256": "b64905f7086afe8e9232e06ae127de54e64620b4a476e2162805a0dad7bd81a0",
+        "afterSha256": "829e867d406d5956eb116d54685a132a6fe4e0ec65e831b891361a596eb3f1cf",
+        "newFile": false
+      },
+      {
+        "filename": "snippets/luxe-category-directory.liquid",
+        "beforeSha256": null,
+        "afterSha256": "0ac7ce1ab3c2469a4e521db6c5dc03bd1c28601921f73567df15d146df8dc577",
+        "newFile": true
+      },
+      {
+        "filename": "assets/luxe-category-directory.css",
+        "beforeSha256": null,
+        "afterSha256": "0a98d840e88974b6f90d8700750622b5af0fed7d113110f283d4e45c42490aa5",
+        "newFile": true
+      },
+      {
+        "filename": "assets/luxe-category-directory.js",
+        "beforeSha256": null,
+        "afterSha256": "2f5592b88fa4cf126c1b63d249e034b6222e792f12e2654366c0ea844848b969",
+        "newFile": true
+      },
+      {
+        "filename": "snippets/product-card.liquid",
+        "beforeSha256": "55e2735a251a2094399aed221fb5841037e38055477a45cdc4d80b6a9163799d",
+        "afterSha256": "72069c00c89aa14c6cd62b72589cef85c9585197588f9bb39dc78c2d48be6fa3",
+        "newFile": false
+      }
+    ],
+    "homeQA": {
+      "at": "2026-11-01T13:03:34.397086+00:00",
+      "scope": "Native UNPUBLISHED preview, no content overrides; non-GET/HEAD blocked",
+      "checks": [
+        {
+          "name": "Native preview HTTP200 and exact theme",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "One collage and no individual product cards/prices",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Image and button open full design selection",
+          "pass": true,
+          "data": [
+            "/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "/collections/selbst-gestalten-1?view=luxe-gestalten"
+          ]
+        },
+        {
+          "name": "Descriptive image alternative",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Twelve distinct selected trend products",
+          "pass": true,
+          "data": [
+            {
+              "id": "15499700142465",
+              "handle": "magnetische-3-in-1-ladestation-613200",
+              "href": "/products/magnetische-3-in-1-ladestation-613200",
+              "price": "CHF 75.90"
+            },
+            {
+              "id": "15450856292737",
+              "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "15448587075969",
+              "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "price": "CHF 39.90"
+            },
+            {
+              "id": "15430462669185",
+              "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+              "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+              "price": "CHF 44.90"
+            },
+            {
+              "id": "15408458006913",
+              "handle": "kristallspitzen-set-8-teilig-holzbox",
+              "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+              "price": "CHF 29.90"
+            },
+            {
+              "id": "16617685877127",
+              "handle": "yoga-massagerolle-390720",
+              "href": "/products/yoga-massagerolle-390720",
+              "price": "Ab CHF 44.90"
+            },
+            {
+              "id": "16613782323591",
+              "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "price": "Ab CHF 34.90"
+            },
+            {
+              "id": "16610088518023",
+              "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "price": "CHF 27.90"
+            },
+            {
+              "id": "16604940730759",
+              "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "price": "CHF 26.90"
+            },
+            {
+              "id": "16604922937735",
+              "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+              "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+              "price": "CHF 22.90"
+            },
+            {
+              "id": "15523992797569",
+              "handle": "reise-organizer-set-mit-netz-617800",
+              "href": "/products/reise-organizer-set-mit-netz-617800",
+              "price": "CHF 28.90"
+            },
+            {
+              "id": "15523992174977",
+              "handle": "futterball-fur-haustiere-498560",
+              "href": "/products/futterball-fur-haustiere-498560",
+              "price": "CHF 21.90"
+            }
+          ]
+        },
+        {
+          "name": "All trend prices and exact destinations match current native facts",
+          "pass": true,
+          "data": [
+            {
+              "handle": "magnetische-3-in-1-ladestation-613200",
+              "price": "CHF 75.90",
+              "correct": true
+            },
+            {
+              "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "price": "Ab CHF 34.90",
+              "correct": true
+            },
+            {
+              "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+              "price": "CHF 39.90",
+              "correct": true
+            },
+            {
+              "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+              "price": "CHF 44.90",
+              "correct": true
+            },
+            {
+              "handle": "kristallspitzen-set-8-teilig-holzbox",
+              "price": "CHF 29.90",
+              "correct": true
+            },
+            {
+              "handle": "yoga-massagerolle-390720",
+              "price": "Ab CHF 44.90",
+              "correct": true
+            },
+            {
+              "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+              "price": "Ab CHF 34.90",
+              "correct": true
+            },
+            {
+              "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+              "price": "CHF 27.90",
+              "correct": true
+            },
+            {
+              "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+              "price": "CHF 26.90",
+              "correct": true
+            },
+            {
+              "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+              "price": "CHF 22.90",
+              "correct": true
+            },
+            {
+              "handle": "reise-organizer-set-mit-netz-617800",
+              "price": "CHF 28.90",
+              "correct": true
+            },
+            {
+              "handle": "futterball-fur-haustiere-498560",
+              "price": "CHF 21.90",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "name": "360px no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px full uncropped loaded collage",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px expected collage and trend layout",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px12 trend photos loaded",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px categories and singleH1 retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px full uncropped loaded collage",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px expected collage and trend layout",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px12 trend photos loaded",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px categories and singleH1 retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px full uncropped loaded collage",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px expected collage and trend layout",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px12 trend photos loaded",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px categories and singleH1 retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px full uncropped loaded collage",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px expected collage and trend layout",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px12 trend photos loaded",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px categories and singleH1 retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px no page overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px full uncropped loaded collage",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px expected collage and trend layout",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px12 trend photos loaded",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px categories and singleH1 retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Last mobile trend reachable by keyboard",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Search opens",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Search returns focus",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Existing mobile video fallback and reduced motion retained",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "No Liquid or translation error",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Four editorial collections present",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Three budget destinations with explicit price filters",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Old budget/service replaced once",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px editorial layout/images and no overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px video hero brand message",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px editorial layout/images and no overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px video hero brand message",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px editorial layout/images and no overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px video hero brand message",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px editorial layout/images and no overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1024px video hero brand message",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px editorial layout/images and no overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px video hero brand message",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Help accordion opens natively",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Help accordion keyboard closes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Desktop actual video plays muted inline",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "User pause persists on viewport change",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Mobile actual video plays on request",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Offscreen video pauses",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Visible requested video resumes",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Enabling reduced motion stops requested video",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "No-JS hero poster and CTA remain",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "No-JS help functional",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "MP4 failure retains visible poster",
+          "pass": true,
+          "data": null
+        }
+      ],
+      "views": [
+        {
+          "width": 360,
+          "overflow": false,
+          "collage": {
+            "width": 328,
+            "height": 410,
+            "naturalWidth": 328,
+            "naturalHeight": 410,
+            "fit": "contain"
+          },
+          "designColumns": 1,
+          "trendColumns": 6,
+          "rows": 2,
+          "scroll": true,
+          "snap": "x mandatory",
+          "images": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "categoryCount": 16,
+          "h1": 1,
+          "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "collage": {
+            "width": 358,
+            "height": 447.5,
+            "naturalWidth": 358,
+            "naturalHeight": 447,
+            "fit": "contain"
+          },
+          "designColumns": 1,
+          "trendColumns": 6,
+          "rows": 2,
+          "scroll": true,
+          "snap": "x mandatory",
+          "images": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "categoryCount": 16,
+          "h1": 1,
+          "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+        },
+        {
+          "width": 760,
+          "overflow": false,
+          "collage": {
+            "width": 728,
+            "height": 909.5,
+            "naturalWidth": 728,
+            "naturalHeight": 909,
+            "fit": "contain"
+          },
+          "designColumns": 1,
+          "trendColumns": 6,
+          "rows": 2,
+          "scroll": true,
+          "snap": "x mandatory",
+          "images": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "categoryCount": 16,
+          "h1": 1,
+          "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+        },
+        {
+          "width": 1024,
+          "overflow": false,
+          "collage": {
+            "width": 465.921875,
+            "height": 582.078125,
+            "naturalWidth": 471,
+            "naturalHeight": 588,
+            "fit": "contain"
+          },
+          "designColumns": 2,
+          "trendColumns": 3,
+          "rows": 4,
+          "scroll": false,
+          "snap": "none",
+          "images": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "categoryCount": 16,
+          "h1": 1,
+          "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "collage": {
+            "width": 655.203125,
+            "height": 818.5625,
+            "naturalWidth": 662,
+            "naturalHeight": 827,
+            "fit": "contain"
+          },
+          "designColumns": 2,
+          "trendColumns": 4,
+          "rows": 3,
+          "scroll": false,
+          "snap": "none",
+          "images": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "categoryCount": 16,
+          "h1": 1,
+          "categoryText": "Selbst gestalten|Damenmode|Herrenmode|Kinder und Baby|Schuhe|Taschen und Rucksäcke|Schmuck|Uhren|Beauty und Pflege|Wohnen und Deko|Küche und Kochen|Elektronik|Gaming|Hundewelt|Sport und Outdoor|Geschenkideen"
+        }
+      ],
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "blockedNonRead": 156,
+      "cards": [
+        {
+          "id": "15499700142465",
+          "handle": "magnetische-3-in-1-ladestation-613200",
+          "href": "/products/magnetische-3-in-1-ladestation-613200",
+          "price": "CHF 75.90"
+        },
+        {
+          "id": "15450856292737",
+          "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+          "href": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+          "price": "Ab CHF 34.90"
+        },
+        {
+          "id": "15448587075969",
+          "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+          "href": "/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+          "price": "CHF 39.90"
+        },
+        {
+          "id": "15430462669185",
+          "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+          "href": "/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+          "price": "CHF 44.90"
+        },
+        {
+          "id": "15408458006913",
+          "handle": "kristallspitzen-set-8-teilig-holzbox",
+          "href": "/products/kristallspitzen-set-8-teilig-holzbox",
+          "price": "CHF 29.90"
+        },
+        {
+          "id": "16617685877127",
+          "handle": "yoga-massagerolle-390720",
+          "href": "/products/yoga-massagerolle-390720",
+          "price": "Ab CHF 44.90"
+        },
+        {
+          "id": "16613782323591",
+          "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+          "href": "/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+          "price": "Ab CHF 34.90"
+        },
+        {
+          "id": "16610088518023",
+          "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+          "href": "/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+          "price": "CHF 27.90"
+        },
+        {
+          "id": "16604940730759",
+          "handle": "outdoor-bluetooth-karaoke-lautsprecher-600000",
+          "href": "/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+          "price": "CHF 26.90"
+        },
+        {
+          "id": "16604922937735",
+          "handle": "magnetischer-kartenhalter-mit-magsafe-632200",
+          "href": "/products/magnetischer-kartenhalter-mit-magsafe-632200",
+          "price": "CHF 22.90"
+        },
+        {
+          "id": "15523992797569",
+          "handle": "reise-organizer-set-mit-netz-617800",
+          "href": "/products/reise-organizer-set-mit-netz-617800",
+          "price": "CHF 28.90"
+        },
+        {
+          "id": "15523992174977",
+          "handle": "futterball-fur-haustiere-498560",
+          "href": "/products/futterball-fur-haustiere-498560",
+          "price": "CHF 21.90"
+        }
+      ],
+      "videoActual": {
+        "src": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+        "width": 518,
+        "height": 720,
+        "currentTime": 1.268838,
+        "muted": true
+      },
+      "passed": true,
+      "failed": []
+    },
+    "finalMobileCTA": [
+      {
+        "width": 360,
+        "overflow": false,
+        "navTop": 642,
+        "heroBottom": 618,
+        "buttons": [
+          {
+            "text": "Alle Kategorien",
+            "bottom": 594,
+            "top": 543.546875
+          },
+          {
+            "text": "Selbst gestalten",
+            "bottom": 592.765625,
+            "top": 544.765625
+          }
+        ],
+        "pass": true
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "navTop": 706,
+        "heroBottom": 682,
+        "buttons": [
+          {
+            "text": "Alle Kategorien",
+            "bottom": 658,
+            "top": 607.546875
+          },
+          {
+            "text": "Selbst gestalten",
+            "bottom": 656.765625,
+            "top": 608.765625
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "categoryQA": {
+      "at": "2026-11-01T13:22:09.450363+00:00",
+      "scope": "Native UNPUBLISHED default category-page path, no content/script/CSS overrides, onlyGET/HEAD; no mass target scan",
+      "checks": [
+        {
+          "name": "Default category route HTTP200 and exact preview theme",
+          "pass": true,
+          "data": {
+            "url": "https://luxestyle.ch/pages/alle-kategorien",
+            "theme": 212752499079
+          }
+        },
+        {
+          "name": "Exactly21 native banner groups",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "All412 exact original collection URL nodes/order preserved",
+          "pass": true,
+          "data": {
+            "expected": 412,
+            "observed": 412,
+            "distinct": 412,
+            "exactOrder": true
+          }
+        },
+        {
+          "name": "Single H1 and21 semantic group headings",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Exactly21 banner images",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Keyboard opens first group",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Keyboard closes first group",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Sneaker query exposes matching original links",
+          "pass": true,
+          "data": [
+            {
+              "title": "Sport und Fitness",
+              "open": true,
+              "links": [
+                {
+                  "href": "/collections/sneaker-sportschuhe",
+                  "text": "Sneaker & Sportschuhe"
+                }
+              ]
+            },
+            {
+              "title": "Schuhe",
+              "open": true,
+              "links": [
+                {
+                  "href": "/collections/schuhe-sneaker",
+                  "text": "Sneaker"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Clear restores21 groups and412 links",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Clear returns focus to query",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px no document overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px expected banner columns",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px all21 native source images loaded without covercrop",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360px readable touch targets",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px no document overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px expected banner columns",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px all21 native source images loaded without covercrop",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "390px readable touch targets",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px no document overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px expected banner columns",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px all21 native source images loaded without covercrop",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "760px readable touch targets",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px no document overflow",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px expected banner columns",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px all21 native source images loaded without covercrop",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "1440px readable touch targets",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "No Liquid or translation errors",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Unrelated standard page retains original content and no directory",
+          "pass": true,
+          "data": {
+            "url": "https://luxestyle.ch/pages/versand-lieferung",
+            "h1": [
+              "Versand & Lieferung · Schweiz"
+            ]
+          }
+        },
+        {
+          "name": "NoJS original412 link fallback and exact URLs",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "NoJS no inactive search or empty details",
+          "pass": true,
+          "data": null
+        }
+      ],
+      "views": [
+        {
+          "width": 360,
+          "overflow": false,
+          "columns": 2,
+          "images": [
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e42b30a8-2aa2-429c-b9f6-b018eb204ab8_452e0362-9fc7-48a5-b50d-b053f22899e5.jpg?v=1790072121&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-haustier.jpg?v=1792998439&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/efbc16a8-e216-478b-9077-6b5491c83cb5_trans_12044339-6966-4a27-a616-4ee7e6b3fd8d.jpg?v=1781880156&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/1985245137757.jpg?v=1792197333&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/74fb764d-883a-472c-aebc-f3058f4a5246.jpg?v=1783612999&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/64b1e64a-5b8c-443a-8095-30dc4c57676e.jpg?v=1783202911&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bbf0e9b7-6b9f-4999-b018-553135b12ef4_f63408e5-1087-4612-88b2-50396ca94a77.jpg?v=1788615581&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/538894682.jpg?v=1783094104&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-buro-home-office.jpg?v=1792999056&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cdc36e22-6569-4083-ae07-bf99b36b1eaf_result82e6e2ddc6dff43d.jpg?v=1781370610&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/21070_1_94455f59-376c-46fe-8759-8eab62f8cc5a.jpg?v=1792999932&width=240",
+              "loaded": true,
+              "fit": "contain"
+            }
+          ],
+          "bannerWidths": [
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158
+          ]
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "columns": 2,
+          "images": [
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e42b30a8-2aa2-429c-b9f6-b018eb204ab8_452e0362-9fc7-48a5-b50d-b053f22899e5.jpg?v=1790072121&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-haustier.jpg?v=1792998439&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/efbc16a8-e216-478b-9077-6b5491c83cb5_trans_12044339-6966-4a27-a616-4ee7e6b3fd8d.jpg?v=1781880156&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/1985245137757.jpg?v=1792197333&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/74fb764d-883a-472c-aebc-f3058f4a5246.jpg?v=1783612999&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/64b1e64a-5b8c-443a-8095-30dc4c57676e.jpg?v=1783202911&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bbf0e9b7-6b9f-4999-b018-553135b12ef4_f63408e5-1087-4612-88b2-50396ca94a77.jpg?v=1788615581&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/538894682.jpg?v=1783094104&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-buro-home-office.jpg?v=1792999056&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cdc36e22-6569-4083-ae07-bf99b36b1eaf_result82e6e2ddc6dff43d.jpg?v=1781370610&width=240",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/21070_1_94455f59-376c-46fe-8759-8eab62f8cc5a.jpg?v=1792999932&width=240",
+              "loaded": true,
+              "fit": "contain"
+            }
+          ],
+          "bannerWidths": [
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173,
+            173
+          ]
+        },
+        {
+          "width": 760,
+          "overflow": false,
+          "columns": 2,
+          "images": [
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e42b30a8-2aa2-429c-b9f6-b018eb204ab8_452e0362-9fc7-48a5-b50d-b053f22899e5.jpg?v=1790072121&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-haustier.jpg?v=1792998439&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/efbc16a8-e216-478b-9077-6b5491c83cb5_trans_12044339-6966-4a27-a616-4ee7e6b3fd8d.jpg?v=1781880156&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/1985245137757.jpg?v=1792197333&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/74fb764d-883a-472c-aebc-f3058f4a5246.jpg?v=1783612999&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/64b1e64a-5b8c-443a-8095-30dc4c57676e.jpg?v=1783202911&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bbf0e9b7-6b9f-4999-b018-553135b12ef4_f63408e5-1087-4612-88b2-50396ca94a77.jpg?v=1788615581&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/538894682.jpg?v=1783094104&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-buro-home-office.jpg?v=1792999056&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cdc36e22-6569-4083-ae07-bf99b36b1eaf_result82e6e2ddc6dff43d.jpg?v=1781370610&width=360",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/21070_1_94455f59-376c-46fe-8759-8eab62f8cc5a.jpg?v=1792999932&width=360",
+              "loaded": true,
+              "fit": "contain"
+            }
+          ],
+          "bannerWidths": [
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375,
+            340.609375
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "columns": 3,
+          "images": [
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e42b30a8-2aa2-429c-b9f6-b018eb204ab8_452e0362-9fc7-48a5-b50d-b053f22899e5.jpg?v=1790072121&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-haustier.jpg?v=1792998439&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3660576051812_R00.jpg?v=1781640722&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/efbc16a8-e216-478b-9077-6b5491c83cb5_trans_12044339-6966-4a27-a616-4ee7e6b3fd8d.jpg?v=1781880156&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/1985245137757.jpg?v=1792197333&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/74fb764d-883a-472c-aebc-f3058f4a5246.jpg?v=1783612999&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/64b1e64a-5b8c-443a-8095-30dc4c57676e.jpg?v=1783202911&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/bbf0e9b7-6b9f-4999-b018-553135b12ef4_f63408e5-1087-4612-88b2-50396ca94a77.jpg?v=1788615581&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/538894682.jpg?v=1783094104&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/pinnwand-buro-home-office.jpg?v=1792999056&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/cdc36e22-6569-4083-ae07-bf99b36b1eaf_result82e6e2ddc6dff43d.jpg?v=1781370610&width=480",
+              "loaded": true,
+              "fit": "contain"
+            },
+            {
+              "url": "https://luxestyle.ch/cdn/shop/collections/21070_1_94455f59-376c-46fe-8759-8eab62f8cc5a.jpg?v=1792999932&width=480",
+              "loaded": true,
+              "fit": "contain"
+            }
+          ],
+          "bannerWidths": [
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375,
+            413.59375,
+            413.609375,
+            413.59375
+          ]
+        }
+      ],
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "blockedNonRead": 113,
+      "originalNavigation": {
+        "expected": 412,
+        "observed": 412,
+        "distinct": 412,
+        "exactOrder": true
+      },
+      "sneakerSearch": [
+        {
+          "title": "Sport und Fitness",
+          "open": true,
+          "links": [
+            {
+              "href": "/collections/sneaker-sportschuhe",
+              "text": "Sneaker & Sportschuhe"
+            }
+          ]
+        },
+        {
+          "title": "Schuhe",
+          "open": true,
+          "links": [
+            {
+              "href": "/collections/schuhe-sneaker",
+              "text": "Sneaker"
+            }
+          ]
+        }
+      ],
+      "passed": true,
+      "failed": []
+    },
+    "reviewQA": {
+      "at": "2026-11-01T13:32:00.838730+00:00",
+      "scope": "Final bounded native review QA:17 unchanged checks from original5route run plus6 focused post-correction checks; original failed observation preserved",
+      "passed": true,
+      "confirmedChecks": 23,
+      "reusedUnchangedChecks": {
+        "path": "RESULTS.json",
+        "passed": 17,
+        "routes": [
+          "Homepage",
+          "StandardPDP",
+          "ShirtStudio",
+          "StandardCollection",
+          "SelfdesignCollection"
+        ]
+      },
+      "freshPostCorrection": {
+        "path": "FINAL-COLLECTION-QA.json",
+        "passed": 6
+      },
+      "originalFailureResolved": {
+        "check": "Standard collection no page overflow",
+        "before": "390 viewport/document406; same in fresh MAIN counterprobe",
+        "after": "360/360 and390/390 after targeted nav correction"
+      },
+      "duplicateRatingResolved": {
+        "before": "new full badge plus preexisting lx-card-sterne; legacy source only showedcount>=3/rating>=4",
+        "after": "one current complete identity-bound review badge per card; old legacy render removed by Root; no review data altered"
+      },
+      "limits": [
+        "No whole initial5route rerun after final product-card/nav correction; their unchanged positive results retained explicitly",
+        "All non-GET/HEAD blocked; external Failed-to-fetch page errors recorded in each test",
+        "No native HTML/JS/CSS overrides and no review fixtures on real pages",
+        "No cart/upload/checkout/review-write operation"
+      ]
+    },
+    "reviewFollowup": {
+      "at": "2026-11-01T13:30:35.924168+00:00",
+      "scope": "Focused native post-correction review/legacy/Nav test; actual data only, no HTML or JS overrides",
+      "checks": [
+        {
+          "name": "Focused native exact preview/HTTP200",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "Every card has one own identity-bound review container",
+          "pass": true,
+          "data": {
+            "cards": 24
+          }
+        },
+        {
+          "name": "Two genuine5/8 products appear exactly once",
+          "pass": true,
+          "data": [
+            {
+              "id": "15452919366017",
+              "pass": true,
+              "source": {
+                "productId": "15452919366017",
+                "status": "known",
+                "countRaw": "8",
+                "ratingRaw": "5.0",
+                "scaleMinRaw": "1.0",
+                "scaleMaxRaw": "5.0",
+                "source": "reviews"
+              },
+              "dom": {
+                "id": "15452919366017",
+                "renderedId": "15452919366017",
+                "state": "rated",
+                "hidden": false,
+                "text": "5 von 5 · 8 Bewertungen",
+                "starSvg": 1,
+                "legacy": 0,
+                "cardId": "15452919366017",
+                "badgesInCard": 1
+              }
+            },
+            {
+              "id": "15458843951489",
+              "pass": true,
+              "source": {
+                "productId": "15458843951489",
+                "status": "known",
+                "countRaw": "8",
+                "ratingRaw": "5.0",
+                "scaleMinRaw": "1.0",
+                "scaleMaxRaw": "5.0",
+                "source": "reviews"
+              },
+              "dom": {
+                "id": "15458843951489",
+                "renderedId": "15458843951489",
+                "state": "rated",
+                "hidden": false,
+                "text": "5 von 5 · 8 Bewertungen",
+                "starSvg": 1,
+                "legacy": 0,
+                "cardId": "15458843951489",
+                "badgesInCard": 1
+              }
+            }
+          ]
+        },
+        {
+          "name": "Legacy badges removed from native HTML and DOM",
+          "pass": true,
+          "data": null
+        },
+        {
+          "name": "360 corrected native nav and no page overflow",
+          "pass": true,
+          "data": {
+            "viewport": 360,
+            "doc": 360,
+            "nav": {
+              "left": 16,
+              "right": 344,
+              "width": 328,
+              "maxWidth": "min(1472px, 100%)"
+            }
+          }
+        },
+        {
+          "name": "390 corrected native nav and no page overflow",
+          "pass": true,
+          "data": {
+            "viewport": 390,
+            "doc": 390,
+            "nav": {
+              "left": 16,
+              "right": 374,
+              "width": 358,
+              "maxWidth": "min(1472px, 100%)"
+            }
+          }
+        }
+      ],
+      "blockedNonRead": 73,
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "cards": [
+        {
+          "id": "15452919366017",
+          "renderedId": "15452919366017",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15452919366017",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15458843951489",
+          "renderedId": "15458843951489",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15458843951489",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15483936276865",
+          "renderedId": "15483936276865",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15483936276865",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15493827920257",
+          "renderedId": "15493827920257",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15493827920257",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15501005226369",
+          "renderedId": "15501005226369",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15501005226369",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15501005324673",
+          "renderedId": "15501005324673",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15501005324673",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15504189849985",
+          "renderedId": "15504189849985",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15504189849985",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15507829162369",
+          "renderedId": "15507829162369",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15507829162369",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15508424130945",
+          "renderedId": "15508424130945",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15508424130945",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15509385904513",
+          "renderedId": "15509385904513",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15509385904513",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15521533919617",
+          "renderedId": "15521533919617",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15521533919617",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15450856391041",
+          "renderedId": "15450856391041",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15450856391041",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15452296610177",
+          "renderedId": "15452296610177",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15452296610177",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15452599943553",
+          "renderedId": "15452599943553",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15452599943553",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15452605546881",
+          "renderedId": "15452605546881",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15452605546881",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15453724803457",
+          "renderedId": "15453724803457",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15453724803457",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15484390048129",
+          "renderedId": "15484390048129",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15484390048129",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15493862850945",
+          "renderedId": "15493862850945",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15493862850945",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15523906814337",
+          "renderedId": "15523906814337",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15523906814337",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15524883825025",
+          "renderedId": "15524883825025",
+          "state": "rated",
+          "hidden": false,
+          "text": "5 von 5 · 6 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15524883825025",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15453727916417",
+          "renderedId": "15453727916417",
+          "state": "rated",
+          "hidden": false,
+          "text": "4,88 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15453727916417",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15478652305793",
+          "renderedId": "15478652305793",
+          "state": "rated",
+          "hidden": false,
+          "text": "4,88 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15478652305793",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15483936342401",
+          "renderedId": "15483936342401",
+          "state": "rated",
+          "hidden": false,
+          "text": "4,88 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15483936342401",
+          "badgesInCard": 1
+        },
+        {
+          "id": "15493444174209",
+          "renderedId": "15493444174209",
+          "state": "rated",
+          "hidden": false,
+          "text": "4,88 von 5 · 8 Bewertungen",
+          "starSvg": 1,
+          "legacy": 0,
+          "cardId": "15493444174209",
+          "badgesInCard": 1
+        }
+      ],
+      "sources": [
+        {
+          "id": "15452919366017",
+          "data": {
+            "productId": "15452919366017",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15458843951489",
+          "data": {
+            "productId": "15458843951489",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15483936276865",
+          "data": {
+            "productId": "15483936276865",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15493827920257",
+          "data": {
+            "productId": "15493827920257",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15501005226369",
+          "data": {
+            "productId": "15501005226369",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15501005324673",
+          "data": {
+            "productId": "15501005324673",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15504189849985",
+          "data": {
+            "productId": "15504189849985",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15507829162369",
+          "data": {
+            "productId": "15507829162369",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15508424130945",
+          "data": {
+            "productId": "15508424130945",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15509385904513",
+          "data": {
+            "productId": "15509385904513",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15521533919617",
+          "data": {
+            "productId": "15521533919617",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15450856391041",
+          "data": {
+            "productId": "15450856391041",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15452296610177",
+          "data": {
+            "productId": "15452296610177",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15452599943553",
+          "data": {
+            "productId": "15452599943553",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15452605546881",
+          "data": {
+            "productId": "15452605546881",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15453724803457",
+          "data": {
+            "productId": "15453724803457",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15484390048129",
+          "data": {
+            "productId": "15484390048129",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15493862850945",
+          "data": {
+            "productId": "15493862850945",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15523906814337",
+          "data": {
+            "productId": "15523906814337",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15524883825025",
+          "data": {
+            "productId": "15524883825025",
+            "status": "known",
+            "countRaw": "6",
+            "ratingRaw": "5.0",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15453727916417",
+          "data": {
+            "productId": "15453727916417",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "4.88",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15478652305793",
+          "data": {
+            "productId": "15478652305793",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "4.88",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15483936342401",
+          "data": {
+            "productId": "15483936342401",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "4.88",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        },
+        {
+          "id": "15493444174209",
+          "data": {
+            "productId": "15493444174209",
+            "status": "known",
+            "countRaw": "8",
+            "ratingRaw": "4.88",
+            "scaleMinRaw": "1.0",
+            "scaleMaxRaw": "5.0",
+            "source": "reviews"
+          }
+        }
+      ],
+      "passed": true
+    },
+    "links": [
+      {
+        "path": "/collections/schmuck",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/schmuck"
+      },
+      {
+        "path": "/collections/wohnen-dekoration",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/wohnen-dekoration"
+      },
+      {
+        "path": "/collections/beauty-pflege",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/beauty-pflege"
+      },
+      {
+        "path": "/collections/sport-outdoor",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/sport-outdoor"
+      },
+      {
+        "path": "/collections/unter-chf-25",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/unter-chf-25"
+      },
+      {
+        "path": "/collections/geschenke-unter-50-franken",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/geschenke-unter-50-franken"
+      },
+      {
+        "path": "/collections/premium-geschenke",
+        "status": 200,
+        "final": "https://luxestyle.ch/collections/premium-geschenke"
+      },
+      {
+        "path": "/pages/alle-kategorien",
+        "status": 200,
+        "final": "https://luxestyle.ch/pages/alle-kategorien"
+      },
+      {
+        "path": "/pages/versand-lieferung",
+        "status": 200,
+        "final": "https://luxestyle.ch/pages/versand-lieferung"
+      },
+      {
+        "path": "/pages/rueckgabe",
+        "status": 200,
+        "final": "https://luxestyle.ch/pages/rueckgabe"
+      },
+      {
+        "path": "/pages/kontakt-support",
+        "status": 200,
+        "final": "https://luxestyle.ch/pages/kontakt-support"
+      }
+    ],
+    "scopeLimits": "Native no content overrides; non-GET/HEAD blocked. No412destination scan; existing native deps +local release validation context. MAIN and Page body/template suffix not written."
+  },
+  "products": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "projector": {
+      "id": "gid://shopify/Product/15521256604033",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+            "width": 1920,
+            "height": 1919
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "34.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "34.9",
+          "currencyCode": "CHF"
+        }
+      }
+    },
+    "variant": {
+      "id": "gid://shopify/ProductVariant/56197916361089",
+      "sku": "CJ-1477820492730732544",
+      "price": "34.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "id": "gid://shopify/InventoryItem/55556790026625",
+        "tracked": false
+      }
+    },
+    "pyjamas": {
+      "id": "gid://shopify/Product/15447971430785",
+      "handle": "weihnachts-pyjama-im-partnerlook-764352",
+      "title": "Weihnachts-Pyjama im Partnerlook",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "kat-nachtwaesche",
+        "mode",
+        "rueckhol-0907",
+        "sort-partnerlook-paare",
+        "such-weihnachtspyjama",
+        "weihnachten"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352",
+      "featuredMedia": {
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1739613044893421568.jpg?v=1783117707",
+            "width": 1200,
+            "height": 1200
+          }
+        }
+      },
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "14.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "17.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55873727627649",
+            "sku": "CJ-CJYD193098501AZ",
+            "price": "16.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55225949421953",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3MzcyNzYyNzY0OSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    }
+  },
+  "variantParent": {
+    "variant": {
+      "id": "gid://shopify/ProductVariant/56197916361089",
+      "product": {
+        "id": "gid://shopify/Product/15521256604033"
+      }
+    }
+  },
+  "productReviewFacts": {
+    "p0": {
+      "id": "gid://shopify/Product/15521256604033",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "standardRating": null,
+      "standardCount": null,
+      "judgeBadge": {
+        "type": "string",
+        "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> Keine Bewertungen </span> </div>"
+      }
+    },
+    "p1": {
+      "id": "gid://shopify/Product/15427283157377",
+      "handle": "shirt-zum-selbstgestalten",
+      "title": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv",
+      "standardRating": null,
+      "standardCount": null,
+      "judgeBadge": {
+        "type": "string",
+        "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> No reviews </span> </div>"
+      }
+    },
+    "p2": {
+      "id": "gid://shopify/Product/15499700142465",
+      "handle": "magnetische-3-in-1-ladestation-613200",
+      "title": "Magnetische 3-in-1-Ladestation",
+      "standardRating": null,
+      "standardCount": null,
+      "judgeBadge": {
+        "type": "string",
+        "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> Keine Bewertungen </span> </div>"
+      }
+    },
+    "p3": {
+      "id": "gid://shopify/Product/15447971430785",
+      "handle": "weihnachts-pyjama-im-partnerlook-764352",
+      "title": "Weihnachts-Pyjama im Partnerlook",
+      "standardRating": null,
+      "standardCount": null,
+      "judgeBadge": {
+        "type": "string",
+        "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> No reviews </span> </div>"
+      }
+    }
+  },
+  "budgetConditions": {
+    "small": {
+      "id": "gid://shopify/Collection/687691170177",
+      "handle": "unter-chf-25",
+      "sources": [
+        {
+          "__typename": "CollectionConditionsSource",
+          "title": "Untitled Source",
+          "targetType": "PRODUCTS",
+          "inclusion": {
+            "matchType": "ALL",
+            "conditions": [
+              {
+                "__typename": "CollectionSourceInclusionConditionProductTag",
+                "tagRelation": "TAGGED_WITH",
+                "values": [
+                  "geschenkwelt-preishits"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "medium": {
+      "id": "gid://shopify/Collection/687937323393",
+      "handle": "geschenke-unter-50-franken",
+      "sources": [
+        {
+          "__typename": "CollectionConditionsSource",
+          "title": "Untitled Source",
+          "targetType": "PRODUCTS",
+          "inclusion": {
+            "matchType": "ALL",
+            "conditions": [
+              {
+                "__typename": "CollectionSourceInclusionConditionProductTag",
+                "tagRelation": "TAGGED_WITH",
+                "values": [
+                  "geschenkwelt-unter50"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "collectionBannerMetadata": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "collections": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Collection/687522283905",
+          "handle": "fur-ihn",
+          "title": "Herren-Mode",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pexels-photo-1407846.jpg?v=1788591376",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 4106
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687522775425",
+          "handle": "wohnen-dekoration",
+          "title": "Wohnen & Dekoration",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 4469
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687523299713",
+          "handle": "buro-home-office",
+          "title": "Büro & Home Office",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-buro-home-office.jpg?v=1792999056",
+            "width": 2000,
+            "height": 1000
+          },
+          "productsCount": {
+            "count": 205
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687524381057",
+          "handle": "damen-mode",
+          "title": "Damen-Mode",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 12881
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687542698369",
+          "handle": "outdoor-garten",
+          "title": "Outdoor & Garten",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/efbc16a8-e216-478b-9077-6b5491c83cb5_trans_12044339-6966-4a27-a616-4ee7e6b3fd8d.jpg?v=1781880156",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 2507
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687793897857",
+          "handle": "premium-geschenke",
+          "title": "Geschenkideen & Weihnachtsgeschenke",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 389
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/687980052865",
+          "handle": "neu-eingetroffen",
+          "title": "Neuheiten 2026",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cdc36e22-6569-4083-ae07-bf99b36b1eaf_result82e6e2ddc6dff43d.jpg?v=1781370610",
+            "width": 2048,
+            "height": 1152
+          },
+          "productsCount": {
+            "count": 23141
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/688018162049",
+          "handle": "schuhe",
+          "title": "Schuhe",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 5230
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/688563880321",
+          "handle": "sub-taschen",
+          "title": "Taschen & Rucksäcke",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 3883
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/688564437377",
+          "handle": "sub-baby-kids",
+          "title": "Kinder & Baby",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-sub-baby-kids.jpg?v=1792998390",
+            "width": 2000,
+            "height": 1000
+          },
+          "productsCount": {
+            "count": 4520
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/688564470145",
+          "handle": "sub-haustier",
+          "title": "Haustierwelt",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-sub-haustier.jpg?v=1792998439",
+            "width": 2000,
+            "height": 1000
+          },
+          "productsCount": {
+            "count": 3723
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/688725197185",
+          "handle": "sport-outdoor",
+          "title": "Sport & Outdoor",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3660576051812_R00.jpg?v=1781640722",
+            "width": 1200,
+            "height": 1200
+          },
+          "productsCount": {
+            "count": 2831
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689027416449",
+          "handle": "beauty-pflege",
+          "title": "Beauty & Pflege",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1781979554",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 7048
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689637720449",
+          "handle": "gaming-zubehor",
+          "title": "Gaming-Zubehör",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/538894682.jpg?v=1783094104",
+            "width": 1200,
+            "height": 1200
+          },
+          "productsCount": {
+            "count": 731
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689681006977",
+          "handle": "elektronik-technik",
+          "title": "Elektronik & Technik",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 6018
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689721999745",
+          "handle": "winter-kaelte",
+          "title": "Winter & Kälte",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/64b1e64a-5b8c-443a-8095-30dc4c57676e.jpg?v=1783202911",
+            "width": 1920,
+            "height": 1920
+          },
+          "productsCount": {
+            "count": 533
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689775182209",
+          "handle": "t-shirts-tops",
+          "title": "T-Shirts & Tops",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/74fb764d-883a-472c-aebc-f3058f4a5246.jpg?v=1783612999",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 1449
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/690562924929",
+          "handle": "kostueme-fasnacht",
+          "title": "Kostüme & Fasnacht",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/e42b30a8-2aa2-429c-b9f6-b018eb204ab8_452e0362-9fc7-48a5-b50d-b053f22899e5.jpg?v=1790072121",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 1807
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/691391136129",
+          "handle": "werkzeug-maschinen",
+          "title": "🔧 Werkzeug & Maschinen",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1985245137757.jpg?v=1792197333",
+            "width": 800,
+            "height": 800
+          },
+          "productsCount": {
+            "count": 2123
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/692722303361",
+          "handle": "klemmbausteine-bausaetze",
+          "title": "Klemmbausteine & Bausätze",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/21070_1_94455f59-376c-46fe-8759-8eab62f8cc5a.jpg?v=1792999932",
+            "width": 2000,
+            "height": 1000
+          },
+          "productsCount": {
+            "count": 503
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/692904526209",
+          "handle": "schmuck-uhren",
+          "title": "Schmuck & Uhren",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bbf0e9b7-6b9f-4999-b018-553135b12ef4_f63408e5-1087-4612-88b2-50396ca94a77.jpg?v=1788615581",
+            "width": 1600,
+            "height": 620
+          },
+          "productsCount": {
+            "count": 3647
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo2OTI5MDQ1MjYyMDksImxhc3RfdmFsdWUiOiI2OTI5MDQ1MjYyMDkifQ=="
+      }
+    }
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "storyboard": "# Derselbe professionelle Master – kompakte Fortsetzung\n\nMaster-ID: `luxe_sternenprojektor_master_20261018`. Produktionsbriefing, keine MP4. 18 Sekunden / 540 Bilder, 1080×1920, echte native 30 fps, clean/premium, Taupe/Cream im Set; tatsächliche Produkt-/Projektionsfarben erhalten. Kein Voiceover, keine Foto-Zoom-Slideshow, kein generischer Stock, keine erfundene Produkthandlung. Eine Hookoption für den ersten Master auswählen; daraus keine zwei neuen Exporte ableiten.\n\n| Zeit / Zielbilder | Handlung und Schnitt | Overlay |\n| --- | --- | --- |\n| 0,0–2,0 s / 0–59 | Hook A: echte Projektion derselben belegten Ausführung. Alternative Hook B: ruhiger seitlicher Detailblick auf das reale Gerät. | A «Dein Raum.» / «Neues Licht.»; B «Licht im Detail.» |\n| 2,0–4,6 s / 60–137 | Klare Einstellung einer tatsächlich belegten Bedienhandlung, ganzes Gerät und Hand sichtbar. | «Sternenlicht-Projektor» |\n| 4,6–7,6 s / 138–227 | Dieselbe kontinuierliche Handlung; präziser Overlaywechsel. | «Aus der Nähe» / «entdecken.» |\n| 7,6–12,4 s / 228–371 | Reale zugeordnete Projektion; keine Verstärkung von Farben/Helligkeit oder fremden Mustern. | «Für besondere» / «Lichtmomente.» |\n| 12,4–14,0 s / 372–419 | Echter Detailblick, keine Haube abheben; ruhige Bewegung. | Kein Text |\n| 14,0–18,0 s / 420–539 | Ununterbrochener Hero-Take mit realem Gerät und passender Projektion, freie Textfläche. | «Produkt ansehen» / «LuxeStyle · luxestyle.ch» |\n\nSchnittzugaben und Originalqualität gelten für alle vier Takes: P_OPERATION mindestens 8 s, P_PROJECTION 9 s, P_DETAIL 6 s, P_HERO 6 s, jeweils native Hochformataufnahme. Hook- und Hauptteilintervalle aus demselben Take dürfen nicht überlappen. Exakte Original-In-/Outpunkte bleiben bis zur tatsächlichen Sichtung offen. Alte 25-fps-Quellzeiten bleiben nur historische Referenz; sie werden nicht als 30-fps-Nachweis übernommen.\n\nTypografie: Hook/Titel 64 px, CTA 72 px, Marke 42 px, höchstens zwei Zeilen. Kritische Inhalte als Arbeitsbereich x 108–888/y 470–1360; Lesbarkeit und UI-Ausschnitte müssen am fertigen Film auf den tatsächlichen Plattformen geprüft werden. Keine wechselnden Preise in den Master einbrennen.\n\nEchte Referenz: aktuell erneut HTTP200 gelesen und visuell geprüft, Datei `projector-reference-current.jpg`, SHA-256 `bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d`. Nur eine Produktansicht; kein Beleg für Motivset, Bedienung oder Filmrechte. Aktuelle von Root gelesene Admin-/Storefrontbelege sind in `PRODUCT-BINDING.json` mit ihren Quell-Dateihashes gebunden: ACTIVE, CHF 34.90, Variante 56197916361089, nicht leere Tags, tracked=false/CONTINUE und öffentlich available=true. Menge 0 ist kein Ausverkaufsbeweis. auswahl-offen löst keine genaue Film-/Motivzuordnung; keine Bestands-/Lieferzeit-Zusage.\n\nTon: ausschliesslich automation/music/luxe-premium.wav nach frischer Datei-/Rechtegegenprobe, kein Sprach- oder Originalton, keine zusätzlichen Effekte. Kein fertiger Mix und keine Hörabnahme behauptet.\n\nKonkreter Produktionsblocker bleibt: vier passende native Originaltakes, genaue Default-/Motiv-/Stromzuordnung und kommerzielle Film-/Bearbeitungs-/Werberechte fehlen. Die tatsächlich früher gemessenen Referenzen 852×480/25fps beziehungsweise 960×540/25fps erfüllen die Premiumvorgabe nicht. Keine neue MP4, kein Rendererstart und kein Media-/Exporthash für einen Master vorhanden. Das neue konkrete Arbeitsergebnis ist die datei- und lizenzgebergebundene Rechtebelegvorlage, nicht ein weiterer wiederholter Materialwunsch.\n\nDie sechs Texte und stabilen Produkt-UTMs stehen in `CAPTIONS-UTM.json`; sie sind fortgeführte Entwürfe. Instagram/TikTok verwenden den Website-Suchhinweis, solange kein zum Projektor führendes tatsächliches Bioziel bestätigt ist. Pinterest-Board unbekannt. Der dokumentierte Inhaberentscheid für diesen Master lautet bereits «Allgemeines Publikum, nicht speziell für Kinder»; nicht erneut fragen. Das konkrete künftige YouTube-Postflag muss noch dazu passend geprüft werden. Alle Kanäle bleiben wegen fehlender MP4-/Rechte-/Qualitätsabnahme und ungeprüftem dauerhaftem Register blockiert.\n",
+    "captions": [
+      {
+        "channel": "instagram",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail",
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "bioCTAGatedVersion": "Produkt ansehen – über den Link in unserer Bio.",
+        "bioCTAGatedVersionCondition": "Nur nach frischer Bestätigung, dass das tatsächliche Bioziel zum beworbenen Produkt führt; derzeit nicht als aktive Caption freigegeben.",
+        "newCaptionForDailyVolume": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      },
+      {
+        "channel": "tiktok",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Dein Raum. Neues Licht.",
+        "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Auf luxestyle.ch nach «Sternenlicht-Projektor» suchen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+        "captionUrlPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+        "channelGate": "Aktueller separater Inhaber-Bioauftrag zeigt auf Kostüm-Sammlung; Umsetzung unbekannt. Kein bestätigter Bio-Produktpfad für diesen Projektor. Produkt-UTM nur künftige Zielvorbereitung, kein Profilwrite. Kanal bleibt blockiert.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "bioProductTargetVerified": false,
+        "ownerApprovedBioDestination": "https://luxestyle.ch/collections/kostueme-ch-lager",
+        "ownerBioChangeImplemented": "unknown",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "bioCTAGatedVersion": "Produkt ansehen – über den Link in unserer Bio.",
+        "bioCTAGatedVersionCondition": "Nur nach frischer Bestätigung, dass das tatsächliche Bioziel zum beworbenen Produkt führt; derzeit nicht als aktive Caption freigegeben.",
+        "newCaptionForDailyVolume": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      },
+      {
+        "channel": "youtube",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+        "caption": "Ein Blick auf den Sternenlicht-Projektor bei LuxeStyle. Produktansichten und aktuelle Angaben: siehe Produktadresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; Adresse im Browser öffnen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+        "captionUrlPlacement": "address not clickable in Shorts",
+        "channelGate": "Inhaberentscheid für denselben Master liegt bereits vor: allgemeines Publikum, nicht speziell für Kinder. Keine erneute Zielgruppenfrage. Vor späterer Veröffentlichung konkretes Post-Made-for-kids-Flag daran prüfen; derzeit kein Publish.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "newCaptionForDailyVolume": false,
+        "ownerAudienceDecision": "general_audience_not_specifically_made_for_kids",
+        "currentConcretePostMadeForKidsFlagVerified": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      },
+      {
+        "channel": "facebook",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Licht im Detail.",
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle und prüfe die aktuelle Ausführung auf der Produktseite.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "newCaptionForDailyVolume": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      },
+      {
+        "channel": "threads",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Ein Detail für deinen Raum",
+        "caption": "Welches Detail fällt dir zuerst auf? Hier findest du die Produktansichten und aktuellen Angaben zum Sternenlicht-Projektor bei LuxeStyle.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "newCaptionForDailyVolume": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      },
+      {
+        "channel": "pinterest",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "caption": "Sternenlicht-Projektor fürs Schlafzimmer: Produktansichten und aktuelle Angaben zur Ausführung bei LuxeStyle ansehen.",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+        "captionUrlPlacement": "product link",
+        "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+        "state": "DRAFT_BLOCKED_NO_APPROVED_MASTER",
+        "commercialClaimsVerified": "Uses product identity and neutral design/use context only; no execution, material, review, Swiss-made or delivery claim.",
+        "classification": "Fortgeführter Textentwurf desselben offenen Masters; keine neue kreative Freigabe oder Publikation",
+        "productPriceReferenceCHF": "34.90",
+        "priceIncludedInCaption": false,
+        "boardId": null,
+        "newCaptionForDailyVolume": false,
+        "continuationAt": "2026-11-01T12:59:18.725123+00:00",
+        "freshProductBinding": "PRODUCT-BINDING.json"
+      }
+    ],
+    "productBinding": {
+      "boundAt": "2026-11-01T13:02:11.959264+00:00",
+      "parentObservedAdminAt": "2026-11-01 12:58 UTC (minute precision, reported by Root)",
+      "parentObservedStorefrontAt": "2026-11-01 13:00 UTC (minute precision, reported by Root)",
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "currencyCode": "CHF",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        }
+      },
+      "product": {
+        "id": "gid://shopify/Product/15521256604033",
+        "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "status": "ACTIVE",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "featuredMedia": {
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+              "width": 1920,
+              "height": 1919
+            }
+          }
+        },
+        "priceRangeV2": {
+          "minVariantPrice": {
+            "amount": "34.9",
+            "currencyCode": "CHF"
+          },
+          "maxVariantPrice": {
+            "amount": "34.9",
+            "currencyCode": "CHF"
+          }
+        }
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "price": "34.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "inventoryItem": {
+          "id": "gid://shopify/InventoryItem/55556790026625",
+          "tracked": false
+        }
+      },
+      "storefront": {
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "status": 200,
+        "id": 15521256604033,
+        "available": true,
+        "price": 3490,
+        "variantFacts": [
+          {
+            "id": 56197916361089,
+            "available": true,
+            "price": 3490
+          }
+        ]
+      },
+      "sourceFiles": [
+        {
+          "path": "../PRODUCT-ADMIN.json",
+          "sha256": "998b1c687579f766eeb1139e719a002be4035570727f03c414549fc2f56a757b"
+        },
+        {
+          "path": "../PRODUCT-STOREFRONT.json",
+          "sha256": "5a3403f1f0b41baeb8b7b81a195bbd2c4fe24c3b12149f6100d8c91eb7d1435d"
+        }
+      ],
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "httpStatus": 200,
+        "path": "projector-reference-current.jpg",
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "visuallyInspected": true,
+        "scope": "Product front/housing photo only; no motif/function/inclusion or film-rights proof"
+      },
+      "tagRuleBlobReadByRoot": "3adab7369f90945769331910525c08b3778b4371",
+      "variantIdentityGate": "auswahl-offen does not resolve the actual filmed default execution or included motif set",
+      "publishable": false,
+      "noStockOrDeliveryPromise": true
+    },
+    "manifest": {
+      "at": "2026-11-01T13:02:11.959264+00:00",
+      "scope": "local drafting only; no film render or communications",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "memoryRevision": 25,
+      "newWork": "File- and licensor-bound rights receipt that concretises formerly unspecified rights reference fields",
+      "historicalStoryboardAndCaptionsPreserved": true,
+      "freshProductBinding": "PRODUCT-BINDING.json",
+      "sourceReferenceImageAt": "2026-11-01T07:07:00Z",
+      "notAPublicationLedger": true,
+      "noNewMP4": true,
+      "noMetricsFlowOrOrdersRequested": true,
+      "audience": "Documented prior owner decision general audience/not specifically for children; concrete future post flag unverified",
+      "files": [
+        {
+          "filename": "CONTENT-PAKET.md",
+          "bytes": 6031,
+          "sha256": "eb6215224f5652a786143d35bce607ad56411cef5875912e0b99a678b310a00d"
+        },
+        {
+          "filename": "PRODUCT-BINDING.json",
+          "bytes": 3056,
+          "sha256": "536322852832eec954b6531cc57dd9e7344dd5fbcd30e7fca1d55b5e6865b802"
+        },
+        {
+          "filename": "CAPTIONS-UTM.json",
+          "bytes": 9081,
+          "sha256": "dcc86ecfbcb22ad6ec8e2316707c9472338106bafdecb144244c3a43ecc7aaca"
+        },
+        {
+          "filename": "STORYBOARD.md",
+          "bytes": 4205,
+          "sha256": "c8d54f6a2ea1de7564659db96dca0cd3b141d57e7dcc4fd4ce36d949ddfc7dab"
+        },
+        {
+          "filename": "ASSET-RECHTEBELEG-VORLAGE.json",
+          "bytes": 4142,
+          "sha256": "ee6966049b17d6d6913091fdaf56e78948ecff94e13787b5d83a327192460c72"
+        },
+        {
+          "filename": "RECHTEBELEG-ARBEITSSCHRITT.md",
+          "bytes": 2936,
+          "sha256": "9cb27b103b5ffe47c1095f2b24e319994a7d883141f60a7192c1aae57af53e3b"
+        },
+        {
+          "filename": "projector-reference-current.jpg",
+          "bytes": 118008,
+          "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+        },
+        {
+          "filename": "CAPTIONS-CONTINUITY.diff",
+          "bytes": 6310,
+          "sha256": "9c395c7cd0840b20fbd5b32e82f595aefdd1b77c0db09ff96998c41692044458"
+        },
+        {
+          "filename": "KLAVIYO-TAGESBELEG.json",
+          "bytes": 10252,
+          "sha256": "226ec68fdf7ca72fd2a94258eba4690fd68e8d309e24f7f02decbe6c38b6583e"
+        },
+        {
+          "filename": "KLAVIYO-ZUSAMMENFASSUNG.md",
+          "bytes": 2834,
+          "sha256": "66a6e5209e19df4a6869295931b8a219e4e5512eae743049b97ad01df6e000ca"
+        },
+        {
+          "filename": "SOURCE-PROVENANCE.json",
+          "bytes": 585,
+          "sha256": "b10e5f8175b1f3ac119e5883a38c11b6941a38153053f2d55b3e0548221fc965"
+        }
+      ],
+      "noKlaviyoApiRepeat": true,
+      "klaviyoEvidenceRecordedAt": "2026-10-31T23:48:56.792712+00:00"
+    },
+    "renderedMP4": false,
+    "newRightsVerified": false,
+    "newPublication": false,
+    "ledger": "not confirmed persistent; not initialised/reset"
+  },
+  "klaviyoExistingDayEvidence": {
+    "source": {
+      "repository": "allengchour-glitch/aban-news-landing",
+      "branch": "codex/luxestyle-claude-handoff-20261018",
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
+      "sha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
+      "recordedAt": "2026-10-31T23:48:56.792712+00:00",
+      "dateEuropeZurich": "2026-11-01",
+      "readKind": "Existing daily evidence reread; no Klaviyo API call"
+    },
+    "account": {
+      "id": "XWqMAD",
+      "organizationName": "LuxeStyle CH",
+      "website": "https://luxestyle.ch",
+      "timezone": "Europe/Zurich",
+      "preferredCurrency": "USD",
+      "testAccount": false
+    },
+    "metricDiscovery": {
+      "placedOrder": {
+        "id": "W7XTVD",
+        "name": "Placed Order"
+      },
+      "checkoutStarted": {
+        "id": "XhnJPv",
+        "name": "Checkout Started"
+      },
+      "complete": true,
+      "next": null
+    },
+    "flowReport": {
+      "request": {
+        "model": "gpt-6",
+        "conversion_metric_id": "W7XTVD",
+        "filters": "contains-any(flow_id,[\"Vse76a\",\"VbLQj6\",\"RnTvsY\",\"XEGbTB\"])",
+        "group_by": [
+          "flow_id",
+          "flow_name",
+          "flow_message_id",
+          "flow_message_name",
+          "send_channel"
+        ],
+        "statistics": [
+          "recipients",
+          "delivered",
+          "clicks_unique",
+          "conversions"
+        ],
+        "timeframe": {
+          "start": "2026-10-24T22:00:00Z",
+          "end": "2026-10-31T23:00:00Z"
+        },
+        "value_statistics": [],
+        "prompt_intent": "Audit the four existing flows across seven completed local days without mixing currencies."
+      },
+      "reportId": "59d7bbd4-ce94-4372-a642-71c575408cc8",
+      "results": [
+        {
+          "groupings": {
+            "flow_id": "VbLQj6",
+            "flow_name": "Welcome Series",
+            "flow_message_id": "TTuuTS",
+            "flow_message_name": "Email #1",
+            "send_channel": "email"
+          },
+          "statistics": {
+            "recipients": 3,
+            "delivered": 3,
+            "clicks_unique": 1,
+            "conversions": 0
+          }
+        }
+      ],
+      "missingFlowIds": [
+        "Vse76a",
+        "XEGbTB",
+        "RnTvsY"
+      ],
+      "missingPerformance": "unknown",
+      "windowLocal": "2026-10-25T00:00:00+02:00/2026-11-01T00:00:00+01:00",
+      "durationHours": 169,
+      "calls": 1,
+      "revenueReported": false,
+      "interpretation": "Explizite Null-Conversions gelten nur für die gelieferte Welcome-Nachricht im Report; keine Aussage über gesamte Shopkäufe oder Bestellsync."
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "actions": [
+          {
+            "id": "106812819",
+            "type": "send-email",
+            "next": "106812817",
+            "status": "draft",
+            "messageId": "Yq4Puv",
+            "templateId": "TTQSWH",
+            "smartSendingEnabled": true,
+            "addTrackingParams": true
+          },
+          {
+            "id": "106812817",
+            "type": "time-delay",
+            "next": "106812826",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812826",
+            "type": "time-delay",
+            "next": "106812827",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "106812827",
+            "type": "send-email",
+            "next": "108024959",
+            "status": "draft",
+            "messageId": "VPmnEB",
+            "templateId": "TDX7Ux",
+            "smartSendingEnabled": true,
+            "addTrackingParams": true
+          },
+          {
+            "id": "108024959",
+            "type": "send-email",
+            "next": "108024886",
+            "status": "draft",
+            "messageId": "WNFHjV",
+            "templateId": "WaQaDv",
+            "smartSendingEnabled": true,
+            "addTrackingParams": false
+          },
+          {
+            "id": "108024886",
+            "type": "time-delay",
+            "next": null,
+            "delay": {
+              "unit": "days",
+              "value": 1,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          }
+        ]
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "live",
+        "triggers": [
+          {
+            "type": "list",
+            "id": "T2VHfu"
+          }
+        ],
+        "actions": [
+          {
+            "id": "108029461",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "TTuuTS",
+            "templateId": "VZnxDz",
+            "smartSendingEnabled": true,
+            "addTrackingParams": false
+          }
+        ]
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "live",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "W7XTVD",
+            "trigger_filter": null
+          }
+        ],
+        "actions": [
+          {
+            "id": "107500622",
+            "type": "send-email",
+            "next": "107500775",
+            "status": "draft",
+            "messageId": "Y3pKip",
+            "templateId": "TXYDrh",
+            "smartSendingEnabled": true,
+            "addTrackingParams": false
+          },
+          {
+            "id": "107500775",
+            "type": "time-delay",
+            "next": "107500830",
+            "delay": {
+              "unit": "days",
+              "value": 21,
+              "secondary_value": null,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "107500830",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "Tr6DXE",
+            "templateId": "V4KY2g",
+            "smartSendingEnabled": true,
+            "addTrackingParams": false
+          }
+        ]
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live",
+        "triggers": [
+          {
+            "type": "metric",
+            "id": "XhnJPv",
+            "trigger_filter": null
+          }
+        ],
+        "actions": [
+          {
+            "id": "120053544",
+            "type": "time-delay",
+            "next": "120053545",
+            "delay": {
+              "unit": "hours",
+              "value": 1,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053545",
+            "type": "send-email",
+            "next": "120053546",
+            "status": "live",
+            "messageId": "VfffLv",
+            "templateId": "RfQt4V",
+            "smartSendingEnabled": true,
+            "addTrackingParams": true
+          },
+          {
+            "id": "120053546",
+            "type": "time-delay",
+            "next": "120053547",
+            "delay": {
+              "unit": "hours",
+              "value": 23,
+              "secondary_value": 0,
+              "timezone": "profile"
+            }
+          },
+          {
+            "id": "120053547",
+            "type": "send-email",
+            "next": null,
+            "status": "live",
+            "messageId": "SPNjDp",
+            "templateId": "RNefka",
+            "smartSendingEnabled": true,
+            "addTrackingParams": true
+          }
+        ]
+      }
+    ],
+    "capture": {
+      "apiFormsCount": 0,
+      "apiFormsHasNext": false,
+      "listId": "T2VHfu",
+      "listName": "Newsletter Subscribers",
+      "optInProcess": "single_opt_in",
+      "flowId": "VbLQj6",
+      "publicCaptureScriptPresent": true,
+      "publicCapturePage": "https://luxestyle.ch/policies/shipping-policy",
+      "publicCaptureSourceProof": "PUBLIC-READS.json",
+      "subscriptionSubmitted": false,
+      "endToEndCaptureVerified": false,
+      "homepageReadTruncated": true,
+      "interpretation": "Leere Forms-API ist kein Beleg für fehlenden Capture. Vorhandener Shop-Code verweist auf dasselbe Konto und dieselbe Welcome-Liste; tatsächliche Anmeldung ungetestet."
+    },
+    "proposal": {
+      "id": "welcome-service-copy-VZnxDz",
+      "priorDraftDate": "2026-10-29",
+      "state": "unchanged_existing_proposal_reverified",
+      "flowId": "VbLQj6",
+      "messageId": "TTuuTS",
+      "templateId": "VZnxDz",
+      "diffFile": "WELCOME-SERVICE.diff",
+      "validation": {
+        "checkedAt": "2026-10-31T23:48:02.725023+00:00",
+        "beforeSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+        "proposalSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+        "sameProposalAs20261029": true,
+        "sourceUnchangedFrom20261029": true,
+        "lineChanges": [
+          {
+            "type": "replace",
+            "oldStart": 47,
+            "oldCount": 1,
+            "newCount": 1
+          },
+          {
+            "type": "replace",
+            "oldStart": 53,
+            "oldCount": 1,
+            "newCount": 1
+          }
+        ],
+        "onlyTwoSingleLineReplacements": true,
+        "unsubscribeTokenPreserved": true,
+        "primaryCtaPreserved": true,
+        "discountMarkupPreserved": true,
+        "appliedToKlaviyo": false
+      },
+      "publicPolicyChecks": [
+        {
+          "url": "https://luxestyle.ch/policies/shipping-policy",
+          "status": 200,
+          "sha256": "1566beaf82747ce11ec2cd8c2b7187fc6264f18b20875b071b4a2653440f4fba",
+          "at": "2026-10-31T23:47:26.196788+00:00"
+        },
+        {
+          "url": "https://luxestyle.ch/policies/refund-policy",
+          "status": 200,
+          "sha256": "b5d0d97bc383f420aa2f18dea4d1b059b5329e9e8c85a7777327a9ea512989d4",
+          "at": "2026-10-31T23:47:26.581211+00:00"
+        }
+      ],
+      "implementationScope": "Nur zwei Inhaltszeilen der vorhandenen Vorlage; sämtliche weiteren HTML-Bytes, Haupt-CTA, Gutschein, Tokens, Flowstatus und Versandregeln erhalten. Keine Mail senden."
+    },
+    "syncCountercheck": {
+      "trigger": "Neue von anderem Agenten verifizierte Shopify-Käufe #1032 und #1033",
+      "result": "unknown",
+      "eventsQueried": false,
+      "reason": "Connector kann event_properties nur als Ganzes liefern, nicht beschränkt auf OrderID/Bestellnummer. Potenzieller Personen-/Adressdatenabruf deshalb unterlassen. Datensparsame Feature-Lücke protokolliert; keine Flowreport-Wiederholung."
+    }
+  },
+  "guards": {
+    "currentKanalSperrenBlob": "3adab7369f90945769331910525c08b3778b4371",
+    "metricsFlowReadsRepeated": false,
+    "purchaseWatchQueried": false,
+    "noFlowOrShopSettingsChanges": true,
+    "noSocialWrites": true,
+    "noCustomerMessages": true,
+    "noPaidVideoRender": true,
+    "noAutomationOrScheduleChanges": true
+  }
+}
