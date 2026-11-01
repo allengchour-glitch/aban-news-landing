@@ -1,0 +1,1049 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 39,
+  "checkedAt": "2026-11-01T19:22:14.814947Z",
+  "evidenceKind": "OWNER_APPROVED_SINGLE_THREADS_PHOTO_SCHEDULED_FRESH_CHANNEL_READBACK",
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networks": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "tiktokAdsData": "7691398659300179974"
+    },
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "match": true
+  },
+  "queueWindow": {
+    "brandId": "6227837",
+    "fromDate": "2026-11-01T20:10:00+01:00",
+    "toDate": "2026-11-08T20:10:00+01:00",
+    "timezone": "Europe/Zurich",
+    "extendedRange": false
+  },
+  "existingPosts": [
+    {
+      "id": 407830728,
+      "uuid": "7282371443509710052",
+      "publicationDate": {
+        "dateTime": "2026-11-02T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+      ]
+    },
+    {
+      "id": 407838073,
+      "uuid": "-3660854990879961370",
+      "publicationDate": {
+        "dateTime": "2026-11-03T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+      ]
+    },
+    {
+      "id": 407849114,
+      "uuid": "-6402384969971711358",
+      "publicationDate": {
+        "dateTime": "2026-11-04T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+      ]
+    },
+    {
+      "id": 407849577,
+      "uuid": "5982651913735720132",
+      "publicationDate": {
+        "dateTime": "2026-11-05T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+      ]
+    },
+    {
+      "id": 407854817,
+      "uuid": "5940175700385481481",
+      "publicationDate": {
+        "dateTime": "2026-11-06T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+      ]
+    },
+    {
+      "id": 407876249,
+      "uuid": "-2612931623723381280",
+      "publicationDate": {
+        "dateTime": "2026-11-07T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+      ]
+    },
+    {
+      "id": 407889412,
+      "uuid": "-6564064169639197228",
+      "publicationDate": {
+        "dateTime": "2026-11-08T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+      ]
+    }
+  ],
+  "proposal": {
+    "masterId": "luxe_photo_kosmetik_organizer_20261101",
+    "creativeId": "luxe_photo_kosmetik_organizer_20261101",
+    "brandId": 6227837,
+    "channel": "threads",
+    "productId": "gid://shopify/Product/15408458236289",
+    "variantId": "gid://shopify/ProductVariant/55732479590785",
+    "mediaType": "IMAGE",
+    "mp4Sha256": null,
+    "assetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+    "caption": "Mehr Überblick auf deinem Schminktisch.\n\nKosmetik-Organizer · CHF 29.90\n\nProdukt und Angaben ansehen:\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+    "utmProductUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+    "proposedSlot": {
+      "dateTime": "2026-11-04T18:30:00+01:00",
+      "timezone": "Europe/Zurich",
+      "basis": "Editorial future slot; Threads unsupported by exposed best-time tool, no measured-besttime claim"
+    },
+    "status": "SCHEDULED_CONFIRMED_THREADS_PENDING",
+    "contentApproval": "OWNER_APPROVED_CURRENT_EXACT_CAPTION",
+    "registerInitialization": "OWNER_APPROVED_EXACT_ONE_CREATIVE_BRAND_THREADS_SCOPE",
+    "historyState": "unknown_bounded_countercheck_not_empty",
+    "requiredPriorToWrite": [
+      "explicit exact content acceptance and bounded one-creative/brand/Threads register initialization under owner rule12",
+      "fresh full shop/Metricool identities, product/tags/price/storefront/asset hash and queue collision check",
+      "durable CAS lock/checkpoint before any Metricool send; unclear write stays unknown, no blind retry",
+      "per-channel exact readback of new Metricool id/uuid/slot/media/flags/status, preserve identity on missing data"
+    ]
+  },
+  "ownerFormatApproval": {
+    "source": "Explicit async reply in current task 01.11.2026 Europe/Zurich",
+    "question": "Deine bisherige Vorgabe erlaubt neue Social-Posts ausschliesslich mit fertig geprüften professionellen Master-MP4s. Möchtest du für diese Wochenplanung zusätzlich hochwertige Produktfoto-/Karussellposts ausdrücklich erlauben? Produkt-, Rechte-, Kanal- und Doppelpostprüfungen bleiben verbindlich.",
+    "answer": "Foto-/Karussellposts zusätzlich erlauben",
+    "scope": "this_weekly_plan_only_all_other_owner_gates_preserved"
+  },
+  "ownSocialWrites": 1,
+  "dailyReportsRepeated": false,
+  "purchaseWatchReopened": false,
+  "productsCurrent": [
+    {
+      "id": "gid://shopify/Product/15408458170753",
+      "title": "Aufbewahrungssystem für Schubladen",
+      "handle": "bambus-aufbewahrungssystem-modular",
+      "status": "ACTIVE",
+      "tags": [
+        "aufbewahrung",
+        "bambus",
+        "bambus-badezimmer",
+        "bild-ok",
+        "kuratiert",
+        "luxestyle-ch",
+        "modular",
+        "nachhaltig",
+        "organizer",
+        "premium",
+        "schubladen",
+        "swiss-brand",
+        "vegan"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69528088150401",
+            "image": {
+              "id": "gid://shopify/ImageSource/69528088150401",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+              "altText": "Aufbewahrungseinsätze mit Küchenutensilien – Produktansicht",
+              "width": 1600,
+              "height": 1600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69528088805761",
+            "image": {
+              "id": "gid://shopify/ImageSource/69528088805761",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02-HeroLifestyleImage_6f257efe-626a-4068-8a15-15eda51fd2d9.jpg?v=1779958398",
+              "altText": "Aufbewahrungseinsätze in einer Küchenschublade",
+              "width": 1600,
+              "height": 1600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69528089362817",
+            "image": {
+              "id": "gid://shopify/ImageSource/69528089362817",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03-FeaturesImage_0cf29a42-7548-43e4-959f-7a427f511905.jpg?v=1779958401",
+              "altText": "Detail- und Anwendungsansichten der Aufbewahrungseinsätze",
+              "width": 1600,
+              "height": 1600
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTUyODA4OTM2MjgxNywibGFzdF92YWx1ZSI6IjMifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479525249",
+            "title": "Default Title",
+            "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST",
+            "price": "34.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55080537129345",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTUyNTI0OSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15408458236289",
+      "title": "Kosmetik-Organizer für den Schminktisch",
+      "handle": "bambus-kosmetik-organizer-premium",
+      "status": "ACTIVE",
+      "tags": [
+        "Aufbewahrung",
+        "bambus",
+        "bambus-badezimmer",
+        "beauty aufbewahrung",
+        "bild-ok",
+        "kosmetik organizer",
+        "kuratiert",
+        "luxestyle-ch",
+        "nachhaltig",
+        "premium",
+        "schminktisch",
+        "swiss-brand",
+        "vegan"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69731159474561",
+            "image": {
+              "id": "gid://shopify/ImageSource/69731159474561",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+              "altText": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+              "width": 1601,
+              "height": 1601
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTczMTE1OTQ3NDU2MSwibGFzdF92YWx1ZSI6IjEifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55732479590785",
+            "title": "Default Title",
+            "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+            "price": "29.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55080537194881",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTU5MDc4NSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    }
+  ],
+  "publicStorefrontAndImageChecks": [
+    {
+      "id": "gid://shopify/Product/15408458170753",
+      "url": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular",
+      "responses": [
+        {
+          "kind": "page",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular",
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 995322,
+          "sha256": "917320581aa30a3967509331285cfabb192229e4e29de9b49b97a885f0b3c9b4",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-aufbewahrungssystem-modular.html"
+        },
+        {
+          "kind": "json",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular.js",
+          "contentType": "text/javascript; charset=utf-8",
+          "bytes": 6120,
+          "sha256": "7d1f471666bcc6583a9906262efbb1f04c3787b1c8029b2952e30a468c51db47",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-aufbewahrungssystem-modular.json",
+          "productId": 15408458170753,
+          "available": true,
+          "variants": [
+            {
+              "id": 55732479525249,
+              "title": "Default Title",
+              "price": 3490,
+              "available": true,
+              "sku": "LX-33-BAMBUS-AUFBEWAHRUNGSSYST"
+            }
+          ]
+        },
+        {
+          "kind": "image",
+          "status": 200,
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01-MainListingImage-B.jpg?v=1779958394",
+          "contentType": "image/jpeg",
+          "bytes": 252974,
+          "sha256": "182f2793c27f2adf85060c2fc7311e3185b1a67b9afc325a3359de998798f734",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-aufbewahrungssystem-modular.jpg"
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15408458236289",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "responses": [
+        {
+          "kind": "page",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 973727,
+          "sha256": "4f56cc8a3cc357982dbf4204c1b72a5e0c301d770824d0dcc5d48f60edeb30d2",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-kosmetik-organizer-premium.html"
+        },
+        {
+          "kind": "json",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium.js",
+          "contentType": "text/javascript; charset=utf-8",
+          "bytes": 4273,
+          "sha256": "f004170b33058ec2772202b76006c1b160572ea397e15aa2964543d56c042e22",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-kosmetik-organizer-premium.json",
+          "productId": 15408458236289,
+          "available": true,
+          "variants": [
+            {
+              "id": 55732479590785,
+              "title": "Default Title",
+              "price": 2990,
+              "available": true,
+              "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE"
+            }
+          ]
+        },
+        {
+          "kind": "image",
+          "status": 200,
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+          "contentType": "image/jpeg",
+          "bytes": 167314,
+          "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+          "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/bambus-kosmetik-organizer-premium.jpg"
+        }
+      ]
+    }
+  ],
+  "socialGuard": {
+    "repoPath": "automation/lib/kanal_sperren.mjs",
+    "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371",
+    "extraOwnerRule": "Every rueckhol and empty tags block",
+    "results": [
+      {
+        "id": "gid://shopify/Product/15408458170753",
+        "status": "ACTIVE",
+        "tagsNonempty": true,
+        "guardHits": [],
+        "ownerRueckholHits": [],
+        "blocked": false
+      },
+      {
+        "id": "gid://shopify/Product/15408458236289",
+        "status": "ACTIVE",
+        "tagsNonempty": true,
+        "guardHits": [],
+        "ownerRueckholHits": [],
+        "blocked": false
+      }
+    ]
+  },
+  "rightsEvidence": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-01T19:12:04.998584+00:00",
+    "scope": "Read-only bounded owner-rights evidence and targeted two-product historic source binding; current Shopify product/image checks performed separately by root. No social/repo write, no download, render or registry initialisation.",
+    "newOwnerInstruction": {
+      "source": "Current explicit async owner answer 01.11.2026 Europe/Zurich",
+      "answer": "Foto-/Karussellposts zusätzlich erlauben",
+      "effect": "Additional high-quality product photo/carousel format for this weekly plan; all other rights/product/channel/dedup gates remain."
+    },
+    "imageRights": {
+      "state": "OWNER_ASSURANCE_ACCEPTED_FOR_DOCUMENTED_SHOP_PRODUCT_IMAGES",
+      "ownerStatement": "bildrecht ist ok weiter",
+      "ownerSource": "explicit user message in this task, received 23.10.2026",
+      "recordedScope": "Current LuxeStyle Shopify product images discussed/used in this content-cleanup work",
+      "scopeInterpretation": "Exact prior cleaned-product IDs below are covered by the documented owner assurance. This is owner assurance, not independent copyright-chain verification. Do not require the same image-rights permission again. Do not infer permission for separate film/music or third-party stock.",
+      "originalRecordLocalPath": "/workspace/luxestyle-review/seo-cleanup-next-20261023/BILDRECHTE-INHABER.json",
+      "originalRecordSha256": "3c9c7a5be7258d68a791ff349add5909e64b060fd42cc8b24051100f81221759",
+      "knownCleanedProducts": [
+        "gid://shopify/Product/15408458170753",
+        "gid://shopify/Product/15408458236289",
+        "gid://shopify/Product/15408458563969"
+      ],
+      "currentTargets": [
+        {
+          "id": "gid://shopify/Product/15408458170753",
+          "title": "Aufbewahrungssystem für Schubladen",
+          "handle": "bambus-aufbewahrungssystem-modular",
+          "tags": [
+            "aufbewahrung",
+            "bambus",
+            "bambus-badezimmer",
+            "bild-ok",
+            "ig-gepostet",
+            "ig-seit-2026-09-23",
+            "kuratiert",
+            "luxestyle-ch",
+            "modular",
+            "nachhaltig",
+            "organizer",
+            "premium",
+            "schubladen",
+            "swiss-brand",
+            "vegan"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/bambus-aufbewahrungssystem-modular"
+        },
+        {
+          "id": "gid://shopify/Product/15408458236289",
+          "title": "Kosmetik-Organizer für den Schminktisch",
+          "handle": "bambus-kosmetik-organizer-premium",
+          "tags": [
+            "Aufbewahrung",
+            "bambus",
+            "bambus-badezimmer",
+            "beauty aufbewahrung",
+            "bild-ok",
+            "kosmetik organizer",
+            "kuratiert",
+            "luxestyle-ch",
+            "nachhaltig",
+            "premium",
+            "schminktisch",
+            "swiss-brand",
+            "vegan"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium"
+        }
+      ],
+      "targetDataAsOf": "2026-10-23 only; prices, tags, image identity, availability and product claims must be freshly checked before scheduling."
+    },
+    "canonicalReferences": [
+      {
+        "filename": "README.md",
+        "gitBlobSha": "390f29d4081138a9c5ff1cea9d5c9fa45986d18a",
+        "lines": "370",
+        "quote": "Vorhandene Inhaberbestätigung der Shopproduktbildrechte akzeptieren; sie gilt nicht automatisch für fremde Filme/Musik."
+      },
+      {
+        "filename": "TAGESPROTOKOLL.md",
+        "gitBlobSha": "a8f49c15e0137c5fd397bf5c86dd953e5a0914ff",
+        "lines": "176,190,250",
+        "scope": "23.10 owner assurance for shop images used in cleanup; separate film/music/master approvals not granted."
+      }
+    ],
+    "historicalCaution": {
+      "firstProduct": "15408458170753 has historical tags ig-gepostet and ig-seit-2026-09-23; this is a publication-history warning, not a formal social ban tag. Requires targeted historical content/image comparison before fresh scheduling.",
+      "claims": "No historic FSC, Swiss-made, vegan, material, dimensions, stacking, drawer, delivery or set-contents claims can be inferred from old tags/text. Bundle15408458563969 not preferred because physical contents remain unproven."
+    },
+    "publicationRegister": {
+      "state": "UNKNOWN_NOT_INITIALISED",
+      "freshMainNamedPath": "automation/master_publication_ledger.mjs",
+      "freshMainNamedPathResult": "actual GitHub404, not auth/quota/empty data",
+      "targetedDefaultBranchSearches": {
+        "master_publication": "no search hits",
+        "creativeId": "no search hits"
+      },
+      "existingQueue": {
+        "path": "social/metricool_queue.csv",
+        "gitBlobSha": "7debc256dc48050b3e45440b3e1da1d33cd75b29",
+        "header": "id,publish_date,media_url,text,networks,status,scheduled_at,note,metricool_post_id,metricool_post_uuid,request_started_at,pin_board_id,pin_title,pin_link",
+        "targetProductHandleFilenameMatches": false,
+        "limitations": "This queue carries row/URL/status/Metricool IDs, not stable creative/master identity with exact asset hash and persistent channel-history binding. No target match is not proof of never-published history. A missing named path or empty targeted search is not proof that no other register exists."
+      },
+      "firstInitialisation": "No register reset/initialisation; explicit bounded master/brand/channel scope and historical countercheck required per owner rule12."
+    },
+    "conclusion": "Image rights are not the blanket blocker for these exact documented products. Current product/image/visual checks and historical creative/channel register remain separate prerequisites. This read-only check does not approve or schedule any post."
+  },
+  "channelGates": {
+    "schemaVersion": 1,
+    "brandId": 6227837,
+    "brand": "luxestyle.ch",
+    "checkedAtUtc": "2026-11-01 19:10:57 UTC",
+    "scope": "Read-only current public profile/bio/board probes and bounded existing R38 gate sources. No new Metricool analytics/definitions/flows/orders, Social writes or ledger initialisation.",
+    "availableMetricoolToolBoundary": {
+      "names": [
+        "mcp__codex_apps__metricool_createscheduledpost",
+        "mcp__codex_apps__metricool_createscheduledpostforreview",
+        "mcp__codex_apps__metricool_getanalyticsavailablemetrics",
+        "mcp__codex_apps__metricool_getanalyticsdatabymetrics",
+        "mcp__codex_apps__metricool_getbesttimetopostbynetwork",
+        "mcp__codex_apps__metricool_getbrandsettings",
+        "mcp__codex_apps__metricool_getscheduledposts",
+        "mcp__codex_apps__metricool_sendscheduledpostforreview",
+        "mcp__codex_apps__metricool_updatescheduledpost"
+      ],
+      "dedicatedProfileBioBoardHistoryTools": false,
+      "scheduledPostsOnlyUnpublished": true
+    },
+    "probes": [
+      {
+        "url": "https://www.instagram.com/luxestyle.ch/",
+        "success": false,
+        "isError": true,
+        "error": {
+          "code": "forbidden",
+          "status": 403,
+          "message": "We apologize for the inconvenience but we do not support this site. If you are part of an enterprise and want to have a further conversation about this, please contact our sales team here: https://www.firecrawl.dev/contact-sales"
+        },
+        "error_code": "INVALID_ARGUMENT",
+        "interpretation": "Unsupported access; current profile fields remain unknown, not empty. No retries or fallback bypass."
+      },
+      {
+        "url": "https://www.tiktok.com/@luxestyle.ch",
+        "success": false,
+        "isError": true,
+        "error": {
+          "code": "forbidden",
+          "status": 403,
+          "message": "We apologize for the inconvenience but we do not support this site. If you are part of an enterprise and want to have a further conversation about this, please contact our sales team here: https://www.firecrawl.dev/contact-sales"
+        },
+        "error_code": "INVALID_ARGUMENT",
+        "interpretation": "Unsupported access; current profile fields remain unknown, not empty. No retries or fallback bypass."
+      },
+      {
+        "url": "https://www.pinterest.com/luxestyleCH/",
+        "success": false,
+        "isError": true,
+        "error": {
+          "code": "forbidden",
+          "status": 403,
+          "message": "We apologize for the inconvenience but we do not support this site. If you are part of an enterprise and want to have a further conversation about this, please contact our sales team here: https://www.firecrawl.dev/contact-sales"
+        },
+        "error_code": "INVALID_ARGUMENT",
+        "interpretation": "Unsupported access; current profile fields remain unknown, not empty. No retries or fallback bypass."
+      }
+    ],
+    "gates": {
+      "instagram": {
+        "bioTarget": "unknown",
+        "newPhotoPosts": "blocked_until_verified_product_bio_destination_and_other_gates"
+      },
+      "tiktok": {
+        "bioTarget": "unknown",
+        "newPhotoPosts": "blocked_until_verified_product_bio_destination_and_other_gates"
+      },
+      "pinterest": {
+        "account": "luxestyleCH_expected_root_verifying",
+        "board": "unknown",
+        "historicalBoardId": "1111333714239531706",
+        "historicalBoardSource": "discover-more-20261101/evening/sales/LAUFBELEGE-20261101.json:channelReadiness",
+        "historicalBoardCaveat": "Seen in one pre-existing scheduled post, not proof of current board name/ownership/suitability"
+      },
+      "threads": {
+        "bioDestinationRequiredForDirectLink": false,
+        "newPhotoPosts": "possible_only_after_product_image_rights_creative_history_and_per_post_checks"
+      },
+      "facebook": {
+        "bioDestinationRequiredForDirectLink": false,
+        "existingDailyCoverage": "Root freshly verifying 02.–08.11.; do not duplicate",
+        "newPhotoPosts": "possible_only_after_product_image_rights_creative_history_and_per_post_checks"
+      },
+      "youtube": {
+        "photoExceptionDoesNotCreateVideo": true,
+        "newShorts": "still requires actual eligible video and current audience/title flags"
+      }
+    },
+    "history": {
+      "existingR38Source": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r38/ARBEITSSTAND.json",
+      "masterTaskId": "master-projector-15521256604033",
+      "durablePublicationLedger": "unknown_not_initialised",
+      "localHelper": "/workspace/luxestyle-review/next-improvements-20261018/automation/master_publication_ledger.mjs",
+      "localHelperMeaning": "source/helper only, no historical registry proof",
+      "photoScope": "Owner's additional photo/carousel format approval does not certify missing earlier creative/channel history or authorise a blind ledger reset"
+    },
+    "writes": {
+      "social": 0,
+      "repository": 0,
+      "ledger": 0,
+      "publisher": 0
+    },
+    "recommendation": "For an eligible commercially cleared new photo creative, prefer Threads direct product URL if root can reconcile its narrowly scoped history; preserve existing seven FB/IG posts. Keep IG/TikTok/Pinterest blocked on unknown bio/board data. Do not force weekly volume."
+  },
+  "visualQA": {
+    "performedBy": "Codex visual inspection of three actual original image files",
+    "selectedImage": "cosmetics organizer original1601x1601 JPEG",
+    "selectedAssetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "selectedImageNote": "Organizer visible; decorative perfume bottles are not a verified sellable set. Caption makes no contents/material/dimension/perfume-brand claim. No altered shape, color or logo, no new image render.",
+    "excludedProduct": "15408458170753",
+    "excludedImageReasons": [
+      "Main image includes + Liner Options unsupported as a promised feature",
+      "Lifestyle image displays KITCHEN EDGE branding; exact product/brand match not established for new LuxeStyle advertising"
+    ],
+    "filmMaster": "Still separate unresolved originaltake/variant/filmrights/final-QA requirements. Photo exception does not approve a film."
+  },
+  "pendingDecision": {
+    "state": "APPROVED",
+    "answer": "Diesen Beitrag und den engen Publikationsbeleg freigeben",
+    "source": "Current explicit owner async reply01.11.2026 Europe/Zurich",
+    "scope": {
+      "masterId": "luxe_photo_kosmetik_organizer_20261101",
+      "brandId": 6227837,
+      "channel": "threads",
+      "productId": "gid://shopify/Product/15408458236289",
+      "variantId": "gid://shopify/ProductVariant/55732479590785",
+      "assetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e"
+    },
+    "historicalBaseline": "unknown_preserved_not_reset"
+  },
+  "writes": {
+    "metricool": 1,
+    "publicationRegister": "Scoped file created and SHA-CAS checkpoints/readbacks confirmed; no other registry reset",
+    "shopify": 0,
+    "flows": 0,
+    "ads": 0,
+    "dns": 0
+  },
+  "scopeLimit": "No new analytics/flow/order reads, no customer outreach/renderer/publisher/workflow/installation/frequency change; known FB/IG pending coverage preserved. Only one new actual scheduled Threads object; two explicitly rejected preflight/payload attempts documented with collision counterchecks, no unknown-state resend. Existing FB/IG coverage unchanged.",
+  "finalSchedule": {
+    "approval": {
+      "answer": "Diesen Beitrag und den engen Publikationsbeleg freigeben",
+      "source": "Current explicit owner async reply01.11.2026 Europe/Zurich",
+      "scope": "luxe_photo_kosmetik_organizer_20261101"
+    },
+    "presend": {
+      "at": "2026-11-01 19:17:36 UTC",
+      "identity": true,
+      "product": {
+        "id": "gid://shopify/Product/15408458236289",
+        "title": "Kosmetik-Organizer für den Schminktisch",
+        "handle": "bambus-kosmetik-organizer-premium",
+        "status": "ACTIVE",
+        "tags": [
+          "Aufbewahrung",
+          "bambus",
+          "bambus-badezimmer",
+          "beauty aufbewahrung",
+          "bild-ok",
+          "kosmetik organizer",
+          "kuratiert",
+          "luxestyle-ch",
+          "nachhaltig",
+          "premium",
+          "schminktisch",
+          "swiss-brand",
+          "vegan"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/69731159474561",
+              "image": {
+                "id": "gid://shopify/ImageSource/69731159474561",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+                "altText": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+                "width": 1601,
+                "height": 1601
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjo2OTczMTE1OTQ3NDU2MSwibGFzdF92YWx1ZSI6IjEifQ=="
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/55732479590785",
+              "title": "Default Title",
+              "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+              "price": "29.90",
+              "availableForSale": true,
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55080537194881",
+                "tracked": false
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjo1NTczMjQ3OTU5MDc4NSwibGFzdF92YWx1ZSI6MX0="
+          }
+        }
+      },
+      "existing": [
+        {
+          "id": 407830728,
+          "uuid": "7282371443509710052",
+          "publicationDate": {
+            "dateTime": "2026-11-02T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407838073,
+          "uuid": "-3660854990879961370",
+          "publicationDate": {
+            "dateTime": "2026-11-03T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407849114,
+          "uuid": "-6402384969971711358",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407849577,
+          "uuid": "5982651913735720132",
+          "publicationDate": {
+            "dateTime": "2026-11-05T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407854817,
+          "uuid": "5940175700385481481",
+          "publicationDate": {
+            "dateTime": "2026-11-06T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407876249,
+          "uuid": "-2612931623723381280",
+          "publicationDate": {
+            "dateTime": "2026-11-07T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 407889412,
+          "uuid": "-6564064169639197228",
+          "publicationDate": {
+            "dateTime": "2026-11-08T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        }
+      ],
+      "collision": false
+    },
+    "post": {
+      "id": 413194611,
+      "publicationDate": {
+        "dateTime": "2026-11-04T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-01T20:19:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Mehr Überblick auf deinem Schminktisch.\n\nKosmetik-Organizer · CHF 29.90\n\nProdukt und Angaben ansehen:\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-1937081137064819378",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": []
+    },
+    "exportCheck": {
+      "url": "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg",
+      "path": "/workspace/luxestyle-review/metricool-photo-week-20261101/metricool-export.jpeg",
+      "status": 200,
+      "bytes": 167314,
+      "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+      "sameAsOriginal": true
+    },
+    "ledger": {
+      "path": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+      "sha": "11c34a27d663a57a8cd6155d6089e034a0e858c2",
+      "state": "SCHEDULED_CONFIRMED"
+    },
+    "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-1937081137064819378",
+    "actualSocialChanges": {
+      "newScheduledPosts": 1,
+      "targetChannels": [
+        "threads"
+      ],
+      "publishedPosts": 0,
+      "existingFbIgPostsPreserved": 7
+    },
+    "inputErrors": {
+      "localMediaUrlAsPath": "explicit pre-upload failure; exact target-day countercheck",
+      "altSize": "explicit scheduler400 rejection; exact target-day countercheck",
+      "correction": "single actual successful scheduler creation after different validated one-image payload; no unknown-state or same-input resend"
+    }
+  }
+}
