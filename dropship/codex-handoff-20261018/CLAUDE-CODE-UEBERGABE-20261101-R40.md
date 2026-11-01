@@ -1,0 +1,21 @@
+# LuxeStyle: aktueller Auftrag für Claude Code – R40
+
+Lies vor Arbeit frisch ARBEITSSTAND.json, PROJEKTGEDAECHTNIS.md, README.md und heutigen Zürcher Tagesblock. Diese Übergabe erweitert keine Geschäftsfreigaben. Empfang/Ausführung durch Claude bleiben bis zum echten Beleg unbekannt.
+
+## Vorhandenen Entwurf übernehmen
+
+[Änderungsbericht](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.md) und [exakte Nachweise/Dateihashes](SELBSTGESTALTEN-ERWEITERUNG-20261101-R40.json). [Vorhandenen Shopify-Entwurf öffnen](https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259). Frisch geprüfter MAIN212971061639, derselbe bestehende Entwurf212978598279 UNPUBLISHED. Keine neue Theme-Kopie erstellen. Die bisherigen Sticker, acht Startseitenkarten, Bewertungen und FR-UI sind zu erhalten. Diese Aktualisierung überschreibt sieben gezielte Katalogdateien und erhält alle anderen Theme-Dateien.
+
+31 aktuelle, produktgebundene Printful-Blank-Hauptansichten und Originalvariantengalerie, sieben Screenshotmodelle mit397 Originalvarianten, CH-cm/ml, deutsche Formen, bessere Suche/Kategorien/Sortierung und Bildbreitenbegrenzung sind nativ gespeichert und final exakt rückgelesen. Aktuelle Versionen der imR40JSONgenannten sieben Dateipfade haben Vorrang vor denselben Pfaden des datierten R37-Transfermanifests. R37/R5 und frühere Originale erhalten; R5 bleibt ein historisches review_only-Paket und ist keine neue R3-Codeabnahme oder Freigabe aller neueren Codes.
+
+Vor Veröffentlichung frisch Shop/Theme-Rollen, vollständigen aktuellen Theme-Diff und hier referenzierte Hashes gegenprüfen. Bestehende Websitefreigabe gilt, nicht erneut fragen. Nur legitimen Shopify-Zugang verwenden; dieser Connector blockiert MAIN-Dateiwrites/Theme-Publikation und wird nicht umgangen. Danach öffentlich DE/FR Mobil/Desktop Produktlinks, Fotos/Varianten, native Masse, Kategorien, Suche, Fokus/Scroll und vorherige Startseiten-/Bewertungsstände prüfen. Ein veröffentlichterCode ist keine bestätigte Ausführung; tatsächlichen Status belegen.
+
+## Offene Produktionsgrenzen
+
+572/13’160 bleibt eine datierte Herstellerreferenz, kein kaufbarer Gesamtkatalog. DynamicShopoffers/Preise/Reviews bleiben exakt vorhandenen Shopify-IDs zugeordnet. Keine Screenshotpreise, fremdenReviews oder Lieferzusagen importieren. Eigentliche Printful-EDM-Freischaltung ist vom Inhaber bereits bestätigt; technischeToken-/Server-/Template-/Bestellbindung und aktuelle CH-Kosten fehlen weiterhin. Keine Produktions- oder Vollimportfreigabe daraus ableiten. Vollständige bedruckte Strand-/Lifestyle-Beispielgalerien nicht durch generischenStock oder ungeprüfte fremdeDruckgrafiken ersetzen.541 übrigeHauptbild-Referenzen bleiben als datiertes lokales Inventar ausserhalb dieser begrenzten Aktivierung.
+
+## Social und Kontinuität erhalten
+
+Für diese Wochenplanung sind hochwertige Foto-/Karussellposts zusätzlich ausdrücklich erlaubt. Genau der Kosmetik-Organizer-Threads-Text und sein enger Erstregisterumfang sind separat genehmigt und umgesetzt:04.11.18:30Europe/Zurich,413194611/UUID-1937081137064819378,ThreadsPENDING,draftfalse/autopublishtrue. [Dauerhafter enger Beleg](register/photo-week-luxe_photo_kosmetik_organizer_20261101.json) vor jeder Aktion diesesMotivs lesen; keine Ersatzkopie, keine erneute gleiche Freigabefrage. AlteHistorie bleibtunknown, kein Registerreset. Sieben vorher bestehendeFB-/IG-Termine02.–08.11.erhalten. AndereKanäle/weitereMotive nur mit allen eigenenProdukt-/Rechte-/Kanal-/Doppelpost-/Registergates. Professioneller Projektorfilm bleibt ohne Originaltakes/Ausführung/Filmrechte/fertigeMP4-Abnahme blockiert, keinVoiceover/PaidRender.
+
+Kauf-Watch beendet, keine weiterenWatchabfragen. HeutigeKennzahl-/Flowreports bereits gelesen. Keine Kundenansprache, Rabatte/Budgets/Flows/Shop-/Feed-/DNS-Aktivierung, neueAutomation/Frequenz, Installation, Hooks, ungeprüfteWorkflows/Merges/Deployments. Die vier genau genehmigtenDNS-Ergänzungen behalten ihren engen Zugriffsvorbehalt. VersandgrenzenCHF50/CHF45 und account.luxestyle.com.co erhalten. NurLuxeStyle; fremdeMarken unberührt. Fortschritt mit aktuellemSHA/Diff/Rücklesen in bestehender Dokumentation fortführen;16IDs/Historien erhalten.
