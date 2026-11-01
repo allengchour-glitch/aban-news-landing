@@ -1,0 +1,747 @@
+{
+  "at": "2026-11-01T14:29:53Z",
+  "timezone": "Europe/Zurich",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/212656488839",
+    "role": "MAIN",
+    "files": {
+      "nodes": [
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+      }
+    }
+  },
+  "themeId": "gid://shopify/OnlineStoreTheme/212752499079",
+  "role": "UNPUBLISHED",
+  "readback": [
+    {
+      "filename": "assets/luxe-product-reviews.js",
+      "md5": "02bd9bc13d038efdcefe0666a573b1bd",
+      "exact": true
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "md5": "c1079ee7c38adbf44a356f4a9a2ad185",
+      "exact": true
+    },
+    {
+      "filename": "locales/de.json",
+      "md5": "308aba87a40389ec9f8ba131d1f696aa",
+      "exact": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "md5": "72bae932df0d735ac4c2f583863121f0",
+      "exact": true
+    }
+  ],
+  "crystalActualNativeData": {
+    "id": "gid://shopify/Product/15408458006913",
+    "handle": "kristallspitzen-set-8-teilig-holzbox",
+    "standardRating": null,
+    "standardCount": null,
+    "judgeBadge": null
+  },
+  "change": "Confirmed-zero decorative empty stars globally; explicit Homepage all-null unavailable placeholder with strict identity checks. Real ratings unchanged. No review/metafield/price writes.",
+  "native": {
+    "checks": [
+      {
+        "name": "360 all12 identity-bound empty star rows",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360 crystal remains unknown",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360 zero remains confirmed",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360 no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390 all12 identity-bound empty star rows",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390 crystal remains unknown",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390 zero remains confirmed",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390 no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440 all12 identity-bound empty star rows",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440 crystal remains unknown",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440 zero remains confirmed",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440 no page overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "PDP confirmed zero gets five empty outlines",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Real positive rating remains filled once",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Legacy duplicate still absent",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "cards": [
+          {
+            "id": "15499700142465",
+            "state": "confirmedZero",
+            "reviewId": "15499700142465",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15450856292737",
+            "state": "confirmedZero",
+            "reviewId": "15450856292737",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15448587075969",
+            "state": "confirmedZero",
+            "reviewId": "15448587075969",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15430462669185",
+            "state": "confirmedZero",
+            "reviewId": "15430462669185",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15408458006913",
+            "state": "unknown",
+            "reviewId": "15408458006913",
+            "hidden": false,
+            "text": "Bewertungen nicht verfügbar",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16617685877127",
+            "state": "confirmedZero",
+            "reviewId": "16617685877127",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16613782323591",
+            "state": "confirmedZero",
+            "reviewId": "16613782323591",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16610088518023",
+            "state": "confirmedZero",
+            "reviewId": "16610088518023",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604940730759",
+            "state": "confirmedZero",
+            "reviewId": "16604940730759",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604922937735",
+            "state": "confirmedZero",
+            "reviewId": "16604922937735",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992797569",
+            "state": "confirmedZero",
+            "reviewId": "15523992797569",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992174977",
+            "state": "confirmedZero",
+            "reviewId": "15523992174977",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          }
+        ]
+      },
+      {
+        "width": 390,
+        "cards": [
+          {
+            "id": "15499700142465",
+            "state": "confirmedZero",
+            "reviewId": "15499700142465",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15450856292737",
+            "state": "confirmedZero",
+            "reviewId": "15450856292737",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15448587075969",
+            "state": "confirmedZero",
+            "reviewId": "15448587075969",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15430462669185",
+            "state": "confirmedZero",
+            "reviewId": "15430462669185",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15408458006913",
+            "state": "unknown",
+            "reviewId": "15408458006913",
+            "hidden": false,
+            "text": "Bewertungen nicht verfügbar",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16617685877127",
+            "state": "confirmedZero",
+            "reviewId": "16617685877127",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16613782323591",
+            "state": "confirmedZero",
+            "reviewId": "16613782323591",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16610088518023",
+            "state": "confirmedZero",
+            "reviewId": "16610088518023",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604940730759",
+            "state": "confirmedZero",
+            "reviewId": "16604940730759",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604922937735",
+            "state": "confirmedZero",
+            "reviewId": "16604922937735",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992797569",
+            "state": "confirmedZero",
+            "reviewId": "15523992797569",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992174977",
+            "state": "confirmedZero",
+            "reviewId": "15523992174977",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "cards": [
+          {
+            "id": "15499700142465",
+            "state": "confirmedZero",
+            "reviewId": "15499700142465",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15450856292737",
+            "state": "confirmedZero",
+            "reviewId": "15450856292737",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15448587075969",
+            "state": "confirmedZero",
+            "reviewId": "15448587075969",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15430462669185",
+            "state": "confirmedZero",
+            "reviewId": "15430462669185",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15408458006913",
+            "state": "unknown",
+            "reviewId": "15408458006913",
+            "hidden": false,
+            "text": "Bewertungen nicht verfügbar",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16617685877127",
+            "state": "confirmedZero",
+            "reviewId": "16617685877127",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16613782323591",
+            "state": "confirmedZero",
+            "reviewId": "16613782323591",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16610088518023",
+            "state": "confirmedZero",
+            "reviewId": "16610088518023",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604940730759",
+            "state": "confirmedZero",
+            "reviewId": "16604940730759",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "16604922937735",
+            "state": "confirmedZero",
+            "reviewId": "16604922937735",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992797569",
+            "state": "confirmedZero",
+            "reviewId": "15523992797569",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          },
+          {
+            "id": "15523992174977",
+            "state": "confirmedZero",
+            "reviewId": "15523992174977",
+            "hidden": false,
+            "text": "Noch keine Bewertungen",
+            "empty": 1,
+            "polygons": 5,
+            "filled": 0,
+            "neutral": true
+          }
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "isolated": {
+    "scope": "Isolated blank local DOM; synthetic fixtures only, never Shopify reviews or overrides in native storefront",
+    "source": "/workspace/luxestyle-review/review-stars-20261101/after/assets/luxe-product-reviews.js",
+    "sourceSha256": "0b53d8dc9bf6d72ce0f79baabbe8c6332cec7166e374b4faab9e6ee8ad884f53",
+    "checks": [
+      {
+        "name": "Confirmed zero shows five neutral outlines plus no-review label",
+        "pass": true,
+        "hidden": false,
+        "text": "Noch keine Bewertungen",
+        "state": "confirmedZero",
+        "count": 0,
+        "rating": null,
+        "svgCount": 1
+      },
+      {
+        "name": "PDP zero-only fallback shows same true zero presentation",
+        "pass": true,
+        "hidden": false,
+        "text": "Noch keine Bewertungen",
+        "state": "confirmedZero",
+        "count": 0,
+        "rating": null,
+        "svgCount": 1
+      },
+      {
+        "name": "Missing rating on known zero does not invent 0-of-5",
+        "pass": true,
+        "hidden": false,
+        "text": "Noch keine Bewertungen",
+        "state": "confirmedZero",
+        "count": 0,
+        "rating": null,
+        "svgCount": 1
+      },
+      {
+        "name": "Unknown has no presentation without explicit opt-in",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Homepage opted-in all-null data retains unknown with unavailable label",
+        "pass": true,
+        "hidden": false,
+        "text": "Bewertungen nicht verfügbar",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 1
+      },
+      {
+        "name": "Unknown placeholder cannot activate PDP zero-only",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Unknown placeholder still refuses a different product",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Unknown placeholder refuses malformed non-null count",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Unknown placeholder refuses undefined raw fields",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Unknown placeholder refuses invalid product identifier",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Contradictory known zero with positive rating stays hidden",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Malformed known count stays hidden",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Positive rating retains original filled scale/count presentation",
+        "pass": true,
+        "hidden": false,
+        "text": "4.5 von 5 · 2 Bewertungen",
+        "state": "rated",
+        "count": 2,
+        "rating": 4.5,
+        "svgCount": 1
+      },
+      {
+        "name": "Positive rating remains hidden in PDP zero-only fallback",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "rated",
+        "count": 2,
+        "rating": 4.5,
+        "svgCount": 0
+      },
+      {
+        "name": "Wrong-product positive rating is never attached",
+        "pass": true,
+        "hidden": true,
+        "text": "",
+        "state": "unknown",
+        "count": null,
+        "rating": null,
+        "svgCount": 0
+      },
+      {
+        "name": "Dynamically added explicit unknown placeholder is scanned with unavailable label",
+        "pass": true
+      },
+      {
+        "name": "Repeated scan preserves five empty outlines and product identity",
+        "pass": true
+      }
+    ],
+    "passed": true
+  },
+  "manifest": [
+    {
+      "filename": "assets/luxe-product-reviews.js",
+      "beforeSha256": "e0eddb60bdde9a791eb53ebb31d4d088a5cba7dddcedacb69127ec7e1cf0ab10",
+      "afterSha256": "0b53d8dc9bf6d72ce0f79baabbe8c6332cec7166e374b4faab9e6ee8ad884f53"
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeSha256": "360f1f840c66391c223ad27134f946d3b8482f42032eec1c39df6744ea09d7a2",
+      "afterSha256": "be21bb087baf3a4007ab82f79830e0233c6fd5c94c585b54ae062e0f09541f3a"
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeSha256": "02cc777fceec0d47e1acdfd2b89ba8128bcad74b35f6cb68e5f126398e1236c0",
+      "afterSha256": "abd81517e52640fec22c93dc9a726521736ab5c155f82e00c85e7a7f23bbda12"
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeSha256": "c76fd54ed86047de292d94444ef1e658e1c257ccf8ade8b61ddb57fac11ad627",
+      "afterSha256": "31110367e597a2fada129e30071e6623df2e615932f5799eeeb28cfece6b134f"
+    }
+  ],
+  "patch": "--- a/assets/luxe-product-reviews.js\n+++ b/assets/luxe-product-reviews.js\n@@ -25,10 +25,13 @@\n     svg.append(fill);return svg;\n   };\n   const render = (container,data,labels,productId,locale='de-CH') => {\n-    const review=normalize(data,productId);container.replaceChildren();container.dataset.reviewState=review.state;container.dataset.reviewProductId=String(productId||'');container.hidden=review.state==='unknown'||(container.hasAttribute('data-review-zero-only')&&review.state!=='confirmedZero');if(container.hidden)return review;\n+    const review=normalize(data,productId);container.replaceChildren();container.dataset.reviewState=review.state;container.dataset.reviewProductId=String(productId||'');const placeholder=review.state==='unknown'&&container.hasAttribute('data-review-placeholder')&&data?.status==='unknown'&&data?.source===null&&/^\\d+$/.test(String(productId))&&String(data?.productId)===String(productId)&&['countRaw','ratingRaw','scaleMinRaw','scaleMaxRaw'].every(key=>data[key]===null);container.hidden=(review.state==='unknown'&&!placeholder)||(container.hasAttribute('data-review-zero-only')&&review.state!=='confirmedZero');if(container.hidden)return review;\n     container.classList.add('lx-review-badge');\n     const text=document.createElement('span');\n-    if(review.state==='confirmedZero') text.textContent=labels.zero || '';\n+    if(review.state==='confirmedZero'||placeholder) {\n+      const empty=stars(0);empty.classList.add('lx-review-stars-empty');empty.querySelector('g[clip-path]')?.remove();empty.querySelectorAll('polygon').forEach(p=>p.setAttribute('stroke','#9c978f'));container.append(empty);\n+      text.textContent=placeholder?(labels.unavailable||''):(labels.zero||'');\n+    }\n     else {const formatter=new Intl.NumberFormat(locale,{maximumFractionDigits:2});const rating=formatter.format(review.rating),scale=formatter.format(review.max),count=formatter.format(review.count);text.textContent=String(labels.summary||'').replaceAll('[rating]',rating).replaceAll('[scale]',scale).replaceAll('[count]',count);if(review.min===0||review.min===1)container.append(stars(review.rating/review.max));}\n     container.append(text);return review;\n   };\n@@ -36,7 +39,7 @@\n   const scan = target => [...(target.matches?.('[data-luxe-review-card]')?[target]:[]),...target.querySelectorAll('[data-luxe-review-card]')].forEach(container=>{\n     if(container.dataset.reviewReady)return;container.dataset.reviewReady='true';let config;\n     try {config=JSON.parse(container.querySelector('script[type=\"application/json\"]').textContent);}catch{container.hidden=true;return;}\n-    render(container,config.data,{zero:decode(config.labels?.zero),summary:decode(config.labels?.summary)},container.dataset.productId,config.locale||'de-CH');\n+    render(container,config.data,{zero:decode(config.labels?.zero),summary:decode(config.labels?.summary),unavailable:decode(config.labels?.unavailable)},container.dataset.productId,config.locale||'de-CH');\n   });\n   window.LuxeStyleProductReviews={normalize,render,scan};scan(document);document.addEventListener('shopify:section:load',event=>scan(event.target));\n   if('MutationObserver' in window)new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)scan(node);}))).observe(document.body||document.documentElement,{childList:true,subtree:true});\n--- a/sections/luxe-edit-home.liquid\n+++ b/sections/luxe-edit-home.liquid\n@@ -98,7 +98,7 @@\n               <div class=\"lx-trend-image\">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: '' }}</div>\n               <div class=\"lx-trend-info\">\n                 <h3 id=\"lx-trend-name-{{ section.id }}-{{ lx_trend.id }}\">{{ lx_trend.title | escape }}</h3>\n-                <div class=\"lx-review-badge\" data-luxe-review-card data-product-id=\"{{ lx_trend.id }}\" hidden><script type=\"application/json\">{\"data\":{% render 'luxe-product-review-data', product: lx_trend %},\"locale\":{{ request.locale.iso_code | json }},\"labels\":{\"zero\":{{ 'luxe_clothing.reviews_zero' | t | json }},\"summary\":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>\n+                <div class=\"lx-review-badge\" data-luxe-review-card data-product-id=\"{{ lx_trend.id }}\" data-review-placeholder hidden><script type=\"application/json\">{\"data\":{% render 'luxe-product-review-data', product: lx_trend %},\"locale\":{{ request.locale.iso_code | json }},\"labels\":{\"unavailable\":{{ 'luxe_clothing.reviews_unavailable' | t | json }},\"zero\":{{ 'luxe_clothing.reviews_zero' | t | json }},\"summary\":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>\n                 <p class=\"lx-trend-price\">{% if lx_trend.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_trend.price_min | money_with_currency }}</p>\n                 <span class=\"lx-trend-open\">{{ 'luxe_home.trends.open' | t }}<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span>\n               </div>\n--- a/locales/de.json\n+++ b/locales/de.json\n@@ -744,6 +744,7 @@\n     \"draft_cta\": \"Entwurf öffnen\"\n   },\n   \"luxe_clothing\": {\n+    \"reviews_unavailable\": \"Bewertungen nicht verfügbar\",\n     \"eyebrow\": \"SELBST GESTALTEN\",\n     \"heading\": \"Deine Idee. Dein Produkt.\",\n     \"intro\": \"Von T-Shirts und Kinderkleidung bis zu Tassen, Taschen und Wohnaccessoires. Entdecke die Produktwelt und vergleiche die passenden Farben, Grössen und Ausführungen.\",\n--- a/locales/en.default.json\n+++ b/locales/en.default.json\n@@ -744,6 +744,7 @@\n     \"draft_cta\": \"Open design draft\"\n   },\n   \"luxe_clothing\": {\n+    \"reviews_unavailable\": \"Reviews unavailable\",\n     \"eyebrow\": \"CREATE YOUR OWN\",\n     \"heading\": \"Your idea. Your product.\",\n     \"intro\": \"From T-shirts and kidswear to mugs, bags and home accessories. Explore the catalogue and compare colours, sizes and product options.\",\n",
+  "limits": [
+    "Isolated synthetic fixtures never inserted in native storefront",
+    "15 focused native checks at360/390/1440 and PDP/real-rated product; not full shop/checkout test",
+    "Existing official schema cache; fresh download failed; existing non-blocking hero CDN recommendation",
+    "MAIN publication unavailable; no social/metrics/flow/order/customer action"
+  ]
+}
