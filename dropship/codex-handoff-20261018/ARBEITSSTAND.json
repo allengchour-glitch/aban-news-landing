@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 31,
-  "updatedAt": "2026-11-01T15:49:32Z",
+  "revision": 32,
+  "updatedAt": "2026-11-01T16:10:08Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1039,14 +1039,15 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert",
+      "state": "live_verifiziert_bewertungsentwurf_bereit",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "LIVE_NATIV_UND_OEFFENTLICH_GEPRUEFT",
-      "lastEvidence": "Vom Inhaber gemeldete Veröffentlichung frisch bestätigt: Theme 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» ist MAIN; vorheriges Theme 212752499079 UNPUBLISHED. Öffentliche Rootadresse https://luxestyle.ch/ ohne Vorschaulink liefert HTTP200 und genau das neue Theme. 15 öffentliche Checks bei 360/1440px bestanden; unabhängige 390px-Stichprobe bestätigt. Ein H1/Hauptbereich, native Kopf-/Fusszeile, 16 Kategorien, zwölf Trends, fünf zusätzliche Produkte, Collage und bestehendes Video vorhanden; keine Vorschauleiste/Überläufe. Cookiebuttons, echte Produkt-/Reviewbindung, Originalsuche/Escape und Video/Pause öffentlich geprüft. Codex hat nachgeprüft und keinen eigenen Publish oder Theme-Write ausgeführt.",
-      "previewUrl": "https://luxestyle.ch/?preview_theme_id=212967981447",
-      "nextAllowedStep": "Öffentlichen Stand als bestätigte Grundlage erhalten. Weitere Theme-Anpassungen in separatem UNPUBLISHED-Entwurf prüfen; EN vor vollständiger EN-Abnahme separat kontrollieren. Bestehende Aufgaben und Prüfzeiten unverändert.",
+      "belegArt": "LIVE_BESTAND_ERHALTEN_BEWERTUNGSENTWURF_NATIV_GEPRUEFT",
+      "lastEvidence": "Auf geklärten Inhaberwunsch den Bewertungsbereich wie im früheren Screenshot im separaten UNPUBLISHED-Theme 212971061639 «LuxeStyle – Bewertungen 01.11.2026» ergänzt. Aktuell gelesene Appquellen: 4.83 von 5 und 12’459 Bewertungen, Quelldatenzeitstempel erhalten. Drei Originalzitate über aktuelle Shopify-ID, product_external_id und feste Review-UUID exakt zugeordnet; reale aktuelle Produktbilder/URLs. Neutrale Überschrift und Herkunftshinweis, tatsächliche Sternfüllung, Ganzzahl-/Positiv-/Unbekannt-Guards, mobile Wischansicht. Tasche mit waffe-pruefen aus neuer Platzierung ausgeschlossen und durch verifiziertes Notizbuch ersetzt; keine Produkt-/Tagänderung. Fünf einzigartige Dateien bestätigt, zwei textuell exakt und drei JSON semantisch; 19 native Checks plus zwei SVG-Gegenproben bestanden. Öffentliches MAIN 212967981447 bleibt unverändert; kein eigener Publish.",
+      "previewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews",
+      "nextAllowedStep": "Im Shopify-Admin die Kopie 212971061639 «LuxeStyle – Bewertungen 01.11.2026» veröffentlichen; danach öffentlichen Root und Bewertungsbereich frisch prüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung erforderlich. EN vor vollständiger EN-Abnahme separat prüfen.",
       "blockers": [
+        "Neue Bewertungsergänzung ist nur im UNPUBLISHED 212971061639 gespeichert. Native MAIN-Writes/Theme-Publikation bleiben technisch blockiert; im Shopify-Admin veröffentlichen und öffentlich gegenprüfen. Der bisherige öffentliche Stand bleibt bestätigt.",
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
       ],
@@ -1185,6 +1186,11 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
           "gitBlobSha": "9af12d3dfec4916d2429884c8ccc71939d93576d",
           "readAt": "2026-11-01T15:49:32Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+          "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
+          "readAt": "2026-11-01T16:10:08Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1315,6 +1321,19 @@
             "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
           ],
           "previousBelegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT"
+        },
+        {
+          "at": "2026-11-01T16:10:08Z",
+          "sourceRevision": 31,
+          "previousLastEvidence": "Vom Inhaber gemeldete Veröffentlichung frisch bestätigt: Theme 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» ist MAIN; vorheriges Theme 212752499079 UNPUBLISHED. Öffentliche Rootadresse https://luxestyle.ch/ ohne Vorschaulink liefert HTTP200 und genau das neue Theme. 15 öffentliche Checks bei 360/1440px bestanden; unabhängige 390px-Stichprobe bestätigt. Ein H1/Hauptbereich, native Kopf-/Fusszeile, 16 Kategorien, zwölf Trends, fünf zusätzliche Produkte, Collage und bestehendes Video vorhanden; keine Vorschauleiste/Überläufe. Cookiebuttons, echte Produkt-/Reviewbindung, Originalsuche/Escape und Video/Pause öffentlich geprüft. Codex hat nachgeprüft und keinen eigenen Publish oder Theme-Write ausgeführt.",
+          "previousState": "live_verifiziert",
+          "previousNextAllowedStep": "Öffentlichen Stand als bestätigte Grundlage erhalten. Weitere Theme-Anpassungen in separatem UNPUBLISHED-Entwurf prüfen; EN vor vollständiger EN-Abnahme separat kontrollieren. Bestehende Aufgaben und Prüfzeiten unverändert.",
+          "previousBlockers": [
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
+          ],
+          "previousBelegArt": "LIVE_NATIV_UND_OEFFENTLICH_GEPRUEFT",
+          "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212967981447"
         }
       ],
       "followUpFindings": [
@@ -1328,7 +1347,18 @@
       ],
       "liveUrl": "https://luxestyle.ch/",
       "liveThemeId": "212967981447",
-      "liveVerifiedAt": "2026-11-01T15:49:32Z"
+      "liveVerifiedAt": "2026-11-01T15:49:32Z",
+      "pendingReviewUpdate": {
+        "themeId": "212971061639",
+        "name": "LuxeStyle – Bewertungen 01.11.2026",
+        "state": "UNPUBLISHED_NATIVE_VERIFIED",
+        "verifiedAt": "2026-11-01T16:10:08Z",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+          "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
+          "readAt": "2026-11-01T16:10:08Z"
+        }
+      }
     },
     {
       "id": "printful-sync-variant-identity",
@@ -2282,6 +2312,17 @@
         "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
         "gitBlobSha": "9af12d3dfec4916d2429884c8ccc71939d93576d",
         "readAt": "2026-11-01T15:49:32Z"
+      }
+    },
+    {
+      "revision": 32,
+      "at": "2026-11-01T16:10:08Z",
+      "actor": "codex",
+      "action": "Auf geklärten Inhaberwunsch den Bewertungsbereich wie im früheren Screenshot im separaten UNPUBLISHED-Theme 212971061639 «LuxeStyle – Bewertungen 01.11.2026» ergänzt. Aktuell gelesene Appquellen: 4.83 von 5 und 12’459 Bewertungen, Quelldatenzeitstempel erhalten. Drei Originalzitate über aktuelle Shopify-ID, product_external_id und feste Review-UUID exakt zugeordnet; reale aktuelle Produktbilder/URLs. Neutrale Überschrift und Herkunftshinweis, tatsächliche Sternfüllung, Ganzzahl-/Positiv-/Unbekannt-Guards, mobile Wischansicht. Tasche mit waffe-pruefen aus neuer Platzierung ausgeschlossen und durch verifiziertes Notizbuch ersetzt; keine Produkt-/Tagänderung. Fünf einzigartige Dateien bestätigt, zwei textuell exakt und drei JSON semantisch; 19 native Checks plus zwei SVG-Gegenproben bestanden. Öffentliches MAIN 212967981447 bleibt unverändert; kein eigener Publish. Alle 16 Aufgaben/Historien, erfülltes Kaufziel und bestehender Zeitplan erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+        "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
+        "readAt": "2026-11-01T16:10:08Z"
       }
     }
   ],
