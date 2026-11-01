@@ -1,14 +1,12 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
-## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 37
+## Aktueller Stand – 01.11.2026, Revision 38
 
-[Aktuelle Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json) · [Acht-Dateien-Transfermanifest](CLAUDE-THEME-TRANSFER-20261101-R37.json) · [Belege](CLAUDE-CODE-UPDATE-20261101-R37.json).
+[Metricool-Wochenprüfung](METRICOOL-WOCHE-20261101-R38.md) · [Belege](METRICOOL-WOCHENPRUEFUNG-20261101-R38.json) · [Claude-Übergabe R37](CLAUDE-CODE-UEBERGABE-20261101-R37.md) · [R5-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json).
 
-Inhaberauftrag «ja weiter für claude update er macht»: Claude übernimmt die nächsten belegten Schritte innerhalb der bestehenden Freigaben. Frisch geprüft: MAIN 212971061639, kombinierter Entwurf 212978598279 weiterhin UNPUBLISHED, acht eigene Dateiprüfsummen und zwei Reviewkontrollen passend. Erster Auftrag ist Veröffentlichung dieses vorhandenen Entwurfs nach frischem vollständigem Theme-Diff über legitimen Zugang und anschliessende öffentliche DE-/FR-Gegenprobe. Keine neue Kopie oder gleiche Freigabefrage; Connector-Zugriffsgrenze bleibt erhalten.
+Aktueller Wochenauftrag: luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanälen frisch passend. Sieben bereits bestehende Planobjekte/14 PENDING auf Facebook/Instagram decken 02.–08.11. ab, keine exakten Doppel oder Änderungen in geprüften Feldern. Keine eigenen zusätzlichen Termine oder Freigabe der alten Bildpost-Inhalte. Neue Ausspielung unter geltender Master-Regel blockiert: passende Originaltakes, Ausführung/Filmrechte, fertige MP4-Abnahme und dauerhaftes Register fehlen/unbestätigt. Die Frage nach zusätzlicher Foto-/Karussellform ist beim Inhaber offen; keine Zustimmung aus Ablaufzeit oder UI-Vorauswahl.
 
-R5 behält taskId und exakte R4-Vorgängerhashkette, fünf Quellen verified, purpose=review_only. Scoped CLAUDE.md und lokaler Projekteinstieg zeigen auf R37. Helfer lokal versionsgeprüft; geprüfte Remote-Rootpfade 404, keine Installation/Codeintegration behauptet. Claude-Empfang und tatsächliche Ausführung bleiben bis zu echten Belegen unbekannt. R3-Codeabnahme/Voll-CI, Master-/Rechteblocker und Welcome-Service-Freigabe bleiben separat.
-
-Vor jedem Lauf vier kanonische Dateien frisch lesen. Arbeitsstand und lokaler Quellenspiegel `memory/snapshots/2026-11-01-r37/` führen 16 stabile Aufgaben fort; eine aktualisiert, 15 unverändert. Historische R33–R36-Übergaben/Pakete erhalten. Tagesreports am 01.11. bereits gelesen, Kauf-Watch beendet; keine neuen Reports/Automationen/Frequenz oder pauschalen Geschäftsfreigaben aus dieser Übergabe.
+Claude-Übergabe bleibt R37/R5 mit acht geprüften Website-Dateizuordnungen und bestehendem Entwurf 212978598279. Dieser Lauf hat keine Website-/Social-/Geschäftsänderung ausgeführt und keinen Report/Kauf-Watch wiederholt. Vor jedem Lauf vier kanonische Dateien frisch lesen. Lokaler Quellenspiegel `memory/snapshots/2026-11-01-r38/` erhält 16 Aufgaben/Historien; ein Task aktualisiert, 15 unverändert. Alle bisherigen Freigaben, Qualitäts-/Rechtegates und Automationsgrenzen bleiben erhalten.
 
 ## 01.11.2026 – Kaufziel erreicht, bestehender Master weitergeführt
 
@@ -883,3 +881,7 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Übergabe zur Übernahme durch Claude Code, Revision 37
 
 [Konkreter R37-Auftrag](CLAUDE-CODE-UEBERGABE-20261101-R37.md), [R5](aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json) und [Belege](CLAUDE-CODE-UPDATE-20261101-R37.json) gespeichert. Kombinierter Acht-Dateien-Diff und Transfermanifest nach frischem Rollen-/Prüfsummenabgleich bereit; scoped und lokaler Claude-Einstieg aktualisiert. Fünf Paketquellen hashgeprüft, R4-Kette und Historie erhalten. Kenntnisnahme/Veröffentlichung nicht behauptet, kein neuer Geschäfts-/Flow-/Budgetauftrag. Ein Task fortgeschrieben, 15 unverändert; R37-Snapshot erhält 16 IDs, Tagesgrenzen und den beendeten Kauf-Watch.
+
+## 01.11.2026 – Metricool eine Woche voraus, Revision 38
+
+[Frische Wochenprüfung](METRICOOL-WOCHE-20261101-R38.md): sieben vorhandene Termine auf FB/IG 02.–08.11., passende Identitäten und keine exakten Doppel. Keine eigene neue Terminierung/Publikation. Material-/Rechte-/Registerblocker fortbestehend; explizite Formatfrage zu Produktfotos/Karussells ohne belegte Antwort. Ein Mastertask und heutiger Tagesblock ergänzt; R37/R5, 16 IDs/Historien, Tagesgrenzen und Kauf-Watch-Ende erhalten.
