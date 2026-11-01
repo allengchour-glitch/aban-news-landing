@@ -1,0 +1,11 @@
+--- a/.github/workflows/luxestyle-automation-tests.yml
++++ b/.github/workflows/luxestyle-automation-tests.yml
+@@ -254,6 +254,8 @@
+           node automation/lib/unterfilter_plan_test.mjs
+           node automation/cj_varianten_nachziehen_stecker_test.mjs
+           node automation/cj_varianten_nachziehen_sku_test.mjs
++          node automation/cj_sku_nachziehen_schutz_test.mjs
++          node automation/cj_varianten_preis_sku_test.mjs
+           node automation/lib/sku_nachziehen_test.mjs
+           node automation/lib/material_test.mjs
+           node automation/lib/kundenstimmen_test.mjs
