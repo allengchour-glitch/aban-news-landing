@@ -1,12 +1,12 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
-## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 33
+## Aktueller Einstieg für Claude Code – 01.11.2026, Revision 34
 
-[Kompakte aktuelle Übergabe](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json) · [Bereinigungsbelege](CLAUDE-CODE-BEREINIGUNG-20261101.json).
+[Aktuelle Fortsetzungsbelege](FORTSETZUNG-20261101-R34.json) · [Datierte Übergabe R33](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [R4-Prüfpaket](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json).
 
-Frisch bestätigt: Startseite212967981447 ist MAIN/öffentlich; Bewertungs-Theme212971061639 ist weiterhin UNPUBLISHED. 16 Aufgaben/Historien erhalten. R4-Quellen geprüft, tatsächlicher Claude-Empfang unbekannt. R3-Codeintegration/Voll-CI bleiben separat offen. Lokaler neuer Quellenspiegel: `memory/snapshots/2026-11-01-r33/` samt Herkunftsmanifest und `memory/AKTUELL.md` im LuxeStyle-Projekt; direkte R10-Altkopien bleiben historische Belege.
+Aktueller Stand: Startseite 212967981447 ist MAIN/öffentlich; im bestehenden UNPUBLISHED 212971061639 sind Bewertungen und jetzt französische Startseiten-UI samt sprachbewussten Links geprüft. 208 FR-Werte ergänzt, 300 bestehende erhalten; genau zwei neue Dateiwrites, kein Publish. Beide früheren Schema-Korrekturen inzwischen öffentlich verifiziert, Google-Akzeptanz unbekannt. Ein konkreter Merchant-Quellencheck scheiterte mit Timeout, kein Retry/Feedwrite. [Arbeitsstand](ARBEITSSTAND.json) führt 16 stabile Aufgaben fort; übrige 12 Aufgaben/Historien und erfüllter Kauf-Watch unverändert.
 
-Vor jedem Lauf die vier kanonischen Dateien frisch lesen. Die folgenden datierten Abschnitte bleiben als Historie erhalten; ein damaliger Entwurf oder offener Publish ist keine heutige Statusaussage. Keine zusätzlichen Tagesreports/Kauf-Watch-Abfragen oder neue Automationsfrequenz durch diese Übergabe.
+Lokaler Quellenstand: `memory/snapshots/2026-11-01-r34/` mit `memory/AKTUELL.md`. R33-Übergabe, R4 und ältere Snapshots bleiben datierte Originale; echte Claude-Kenntnisnahme unbekannt. Vor jedem Lauf vier kanonische Dateien frisch lesen. Keine zusätzlichen Tagesreports/Kauf-Watch-Abfragen oder Änderung der bestehenden Automationsfrequenz. Die folgenden datierten Abschnitte bleiben Historie und sind keine heutigen Statusbehauptungen.
 
 ## 01.11.2026 – Kaufziel erreicht, bestehender Master weitergeführt
 
@@ -865,3 +865,7 @@ Aktuelle Claude-Code-Übergabe mit stabilem Aufgabenstand und frischer Shopify-/
 [Kompakte Übergabe](CLAUDE-CODE-UEBERGABE-20261101-R33.md) · [Prüfpaket R4](aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json) · [Versionen, Hashes und aktuelle Belege](CLAUDE-CODE-BEREINIGUNG-20261101.json). Snapshot ist Dokumentationspflege, keine Installation/Modelländerung, kein Merge/Deploy und keine fingierte Claude-Quittung. Lokale Ablagen sind keine Git-Checkouts; kein pauschaler sauberer Git-Status oder Voll-CI behauptet. Nur LuxeStyle-Dateien ergänzt, nichts gelöscht.
 
 Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Code-Arbeitskontext lesen; Empfang nur mit echtem Beleg bestätigen. Website-Bewertungsergänzung bleibt veröffentlichungsbereiter Entwurf, kein weiterer eigener Theme-Push. Alle 16 Aufgaben, Belege, erfülltes Kaufziel, Versand-/Kundendomäne und bestehende Läufe erhalten; übrige Tasks wurden hier nicht erneut operativ geprüft.
+
+## 01.11.2026 – Fortsetzung, Revision 34
+
+[Beleg](FORTSETZUNG-20261101-R34.json): Französische Startseiten-UI und sprachbewusste Links im vorhandenen Bewertungsentwurf ergänzt und FR/DE nativ geprüft; Veröffentlichung bleibt im Shopify-Admin. Zwei ältere Schema-Diffs jetzt als bereits öffentlich verifiziert nachgeführt, ohne eigene Publikationsbehauptung. Exakter Merchant-Quellencheck mit Timeout unbekannt; keine Wiederholung oder Feedänderung. Vier Aufgaben fortgeschrieben, 12 unverändert. R33/R4 und Historie erhalten; R34-Quellenspiegel ist Dokumentationspflege und kein Claude-Empfangsbeleg.
