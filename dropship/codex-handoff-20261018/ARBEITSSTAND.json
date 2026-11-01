@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 30,
-  "updatedAt": "2026-11-01T15:29:42Z",
+  "revision": 31,
+  "updatedAt": "2026-11-01T15:49:32Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1039,15 +1039,14 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "standard_startseite_im_entwurf_bereit",
+      "state": "live_verifiziert",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT",
-      "lastEvidence": "Aktuell verifiziert: Bisherige Vorschau 212752499079 wurde inzwischen ausserhalb dieses Codex-Laufs MAIN, verwendet aber weiterhin den alten Standardindex. Mit nativer themeDuplicate-Mutation die separate UNPUBLISHED-Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» erstellt und dort die R29-Gestaltung als normalen Standardindex ohne view-Parameter eingebunden. Alten Index exakt als index.luxe-legacy.json erhalten. Native Header-/Footergruppen, content_for_header, Apps, Cookie-/Konto-/Warenkorblogik und Konfiguration erhalten; eigene Section-Kopf-/Fusszeile nur im Standardindex unterdrückt und inneres main zu div gemacht. Cookiebox/Footernavigation um tatsächliche Vorschauleistenhöhe freigehalten. Drei Dateien exakt zurückgelesen, index.json nach Shopify-Kommentar semantisch identisch. Kein eigener MAIN-Write oder Publish.",
+      "belegArt": "LIVE_NATIV_UND_OEFFENTLICH_GEPRUEFT",
+      "lastEvidence": "Vom Inhaber gemeldete Veröffentlichung frisch bestätigt: Theme 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» ist MAIN; vorheriges Theme 212752499079 UNPUBLISHED. Öffentliche Rootadresse https://luxestyle.ch/ ohne Vorschaulink liefert HTTP200 und genau das neue Theme. 15 öffentliche Checks bei 360/1440px bestanden; unabhängige 390px-Stichprobe bestätigt. Ein H1/Hauptbereich, native Kopf-/Fusszeile, 16 Kategorien, zwölf Trends, fünf zusätzliche Produkte, Collage und bestehendes Video vorhanden; keine Vorschauleiste/Überläufe. Cookiebuttons, echte Produkt-/Reviewbindung, Originalsuche/Escape und Video/Pause öffentlich geprüft. Codex hat nachgeprüft und keinen eigenen Publish oder Theme-Write ausgeführt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212967981447",
-      "nextAllowedStep": "In Shopify die geprüfte Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» veröffentlichen; Standardindex ist bereits eingebunden. Danach öffentlichen Root ohne preview_theme_id/view frisch auf Theme-ID und Mobil/Desktop prüfen. Connector-Publish bleibt technisch blockiert; bestehende Websitefreigabe nicht erneut verlangen. EN vor vollständiger EN-Abnahme separat prüfen.",
+      "nextAllowedStep": "Öffentlichen Stand als bestätigte Grundlage erhalten. Weitere Theme-Anpassungen in separatem UNPUBLISHED-Entwurf prüfen; EN vor vollständiger EN-Abnahme separat kontrollieren. Bestehende Aufgaben und Prüfzeiten unverändert.",
       "blockers": [
-        "Geprüfte separate Kopie212967981447 ist UNPUBLISHED. Connector blockiert Theme-Publikation/MAIN-Writes; Veröffentlichung im Shopify-Admin und danach öffentliche Gegenprobe erforderlich. Standardindex ist in der Kopie bereits eingebunden.",
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
       ],
@@ -1181,6 +1180,11 @@
           "path": "dropship/codex-handoff-20261018/STANDARD-STARTSEITE-20261101.json",
           "gitBlobSha": "440fc2a5b703672973e07998b9390c28e871aa70",
           "readAt": "2026-11-01T15:29:42Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
+          "gitBlobSha": "9af12d3dfec4916d2429884c8ccc71939d93576d",
+          "readAt": "2026-11-01T15:49:32Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1298,6 +1302,19 @@
             "Neuer professioneller Produktfilm-Master bleibt separat an Originaltakes, Produktzuordnung und Rechte-/Qualitätsfreigabe gebunden; bestehendes Websitevideo ersetzt diesen Nachweis nicht.",
             "Begrenzte native Startseiten-/Wiedergabeprüfung, kein vollständiger Checkout-/EDM-Test. Externe Skriptfehler unter Nicht-GET-Prüfblockade separat dokumentiert."
           ]
+        },
+        {
+          "at": "2026-11-01T15:49:32Z",
+          "sourceRevision": 30,
+          "previousLastEvidence": "Aktuell verifiziert: Bisherige Vorschau 212752499079 wurde inzwischen ausserhalb dieses Codex-Laufs MAIN, verwendet aber weiterhin den alten Standardindex. Mit nativer themeDuplicate-Mutation die separate UNPUBLISHED-Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» erstellt und dort die R29-Gestaltung als normalen Standardindex ohne view-Parameter eingebunden. Alten Index exakt als index.luxe-legacy.json erhalten. Native Header-/Footergruppen, content_for_header, Apps, Cookie-/Konto-/Warenkorblogik und Konfiguration erhalten; eigene Section-Kopf-/Fusszeile nur im Standardindex unterdrückt und inneres main zu div gemacht. Cookiebox/Footernavigation um tatsächliche Vorschauleistenhöhe freigehalten. Drei Dateien exakt zurückgelesen, index.json nach Shopify-Kommentar semantisch identisch. Kein eigener MAIN-Write oder Publish.",
+          "previousState": "standard_startseite_im_entwurf_bereit",
+          "previousNextAllowedStep": "In Shopify die geprüfte Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» veröffentlichen; Standardindex ist bereits eingebunden. Danach öffentlichen Root ohne preview_theme_id/view frisch auf Theme-ID und Mobil/Desktop prüfen. Connector-Publish bleibt technisch blockiert; bestehende Websitefreigabe nicht erneut verlangen. EN vor vollständiger EN-Abnahme separat prüfen.",
+          "previousBlockers": [
+            "Geprüfte separate Kopie212967981447 ist UNPUBLISHED. Connector blockiert Theme-Publikation/MAIN-Writes; Veröffentlichung im Shopify-Admin und danach öffentliche Gegenprobe erforderlich. Standardindex ist in der Kopie bereits eingebunden.",
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
+          ],
+          "previousBelegArt": "UMGESETZT_IN_VORSCHAU_UND_NATIV_GEPRUEFT"
         }
       ],
       "followUpFindings": [
@@ -1308,7 +1325,10 @@
           "state": "excluded_from_new_placement_not_fixed",
           "sourcePath": "dropship/codex-handoff-20261018/STARTSEITE-MEHR-AUSWAHL-20261101.json"
         }
-      ]
+      ],
+      "liveUrl": "https://luxestyle.ch/",
+      "liveThemeId": "212967981447",
+      "liveVerifiedAt": "2026-11-01T15:49:32Z"
     },
     {
       "id": "printful-sync-variant-identity",
@@ -2251,6 +2271,17 @@
         "path": "dropship/codex-handoff-20261018/STANDARD-STARTSEITE-20261101.json",
         "gitBlobSha": "440fc2a5b703672973e07998b9390c28e871aa70",
         "readAt": "2026-11-01T15:29:42Z"
+      }
+    },
+    {
+      "revision": 31,
+      "at": "2026-11-01T15:49:32Z",
+      "actor": "codex",
+      "action": "Vom Inhaber gemeldete Veröffentlichung frisch bestätigt: Theme 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» ist MAIN; vorheriges Theme 212752499079 UNPUBLISHED. Öffentliche Rootadresse https://luxestyle.ch/ ohne Vorschaulink liefert HTTP200 und genau das neue Theme. 15 öffentliche Checks bei 360/1440px bestanden; unabhängige 390px-Stichprobe bestätigt. Ein H1/Hauptbereich, native Kopf-/Fusszeile, 16 Kategorien, zwölf Trends, fünf zusätzliche Produkte, Collage und bestehendes Video vorhanden; keine Vorschauleiste/Überläufe. Cookiebuttons, echte Produkt-/Reviewbindung, Originalsuche/Escape und Video/Pause öffentlich geprüft. Codex hat nachgeprüft und keinen eigenen Publish oder Theme-Write ausgeführt. Alle 16 Aufgaben/Historien, erfülltes Kaufziel und bestehender Zeitplan erhalten.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/STARTSEITE-LIVE-20261101.json",
+        "gitBlobSha": "9af12d3dfec4916d2429884c8ccc71939d93576d",
+        "readAt": "2026-11-01T15:49:32Z"
       }
     }
   ],
