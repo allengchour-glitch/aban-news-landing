@@ -1,0 +1,684 @@
+{
+  "at": "2026-11-01 11:27:48 UTC",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "roles": {
+    "main": "MAIN",
+    "preview": "UNPUBLISHED"
+  },
+  "previewThemeId": "gid://shopify/OnlineStoreTheme/212752499079",
+  "changedFiles": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeNativeMd5": "300642e2ddaf1e33296876d9fd1602b2",
+      "afterNativeMd5": "bcc536fc3b56f9d8aedf76ca77ed7c4c",
+      "expectedSourceSha256": "062c8ce1d0a5c2345dbc511c70ce103905c4801f944e23f503b0347800d1d34c",
+      "exactReadback": true
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "beforeNativeMd5": "0efe391c46bc10c5f09b724d275e7f55",
+      "afterNativeMd5": "c55f54ffbfff6d10a1fcd65b7c587ae2",
+      "expectedSourceSha256": "5863c55d0dc06be5e61e9f926c28a1bd0b79235be87327aacd4a166513c12e43",
+      "exactReadback": true
+    },
+    {
+      "filename": "assets/luxe-edit.js",
+      "beforeNativeMd5": "917fba607d1d2a92e36b0821e06cd512",
+      "afterNativeMd5": "c7ac0b30dc20f38d17a009f1f5a339be",
+      "expectedSourceSha256": "a1c2d2bbace1897ae4f95c4a6a781cdbdbd93ebdbb2a6beec0a41ab4a6173334",
+      "exactReadback": true
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeNativeMd5": "ed79a1320cb6c3f2dcbfe1866831ec72",
+      "afterNativeMd5": "ff51fd175c1a5958296bd6c9e2f0c14c",
+      "expectedSourceSha256": "022d20a125acad6557f70df65c9879e5015955a888ef18c6cbf62f426502ea10",
+      "exactReadback": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeNativeMd5": "16783ce902e4ab4a02fe9f74ce155aa5",
+      "afterNativeMd5": "505b520ff5ef8da3446a83f1d1302f05",
+      "expectedSourceSha256": "cbd93e6055f480746b2b973f671e0a8f3f10ac9d99b03f7ae33618402ed17e68",
+      "exactReadback": true
+    }
+  ],
+  "protectedFilesUnchanged": true,
+  "mainFilesUnchanged": true,
+  "sourceMedia": {
+    "id": "hero-mobile-video-1",
+    "src": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+    "poster": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+    "muted": true,
+    "loop": true,
+    "visible": true
+  },
+  "schemaValidation": "prevalidator_skipped_native_mutation_accepted",
+  "themeValidation": "Failed to setup with the following error: request to https://raw.githubusercontent.com/Shopify/theme-liquid-docs/main/data/latest.json failed, reason: \nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/manifest_theme.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/translations.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_settings.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/section.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/default_setting_values.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/theme_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/targetted_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset_blocks.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/local_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/preset.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/app_block_entry.json\nLoaded schema from /home/agent/.cache/theme-liquid-docs-nodejs/setting.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/filters.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/tags.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/objects.json\nLoaded resource from /home/agent/.cache/theme-liquid-docs-nodejs/shopify_system_translations.json\n{\"success\":true,\"responses\":[{\"result\":\"inform\",\"resultDetail\":\"sections/luxe-edit-home.liquid passed all checks (with non-error findings):\\nWARNING [line 25, col 14]: Asset should be served by the Shopify CDN for better performance.\",\"artifactId\":\"luxestyle-mobile-hero-20261101\",\"artifactRevision\":4},{\"result\":\"success\",\"resultDetail\":\"assets/luxe-edit.css passed all checks.\",\"artifactId\":\"luxestyle-mobile-hero-20261101\",\"artifactRevision\":4},{\"result\":\"success\",\"resultDetail\":\"assets/luxe-edit.js passed all checks.\",\"artifactId\":\"luxestyle-mobile-hero-20261101\",\"artifactRevision\":4},{\"result\":\"success\",\"resultDetail\":\"locales/de.json passed all checks.\",\"artifactId\":\"luxestyle-mobile-hero-20261101\",\"artifactRevision\":4},{\"result\":\"success\",\"resultDetail\":\"locales/en.default.json passed all checks.\",\"artifactId\":\"luxestyle-mobile-hero-20261101\",\"artifactRevision\":4}]}\n",
+  "review": {
+    "finalJsSha256": "a1c2d2bbace1897ae4f95c4a6a781cdbdbd93ebdbb2a6beec0a41ab4a6173334",
+    "manualPauseAndVisibilityCounterexamplesReproducedThenCorrected": true,
+    "finalVMChecksPassed": true
+  },
+  "readbackCacheIncident": "First CSS body after polish was stale while checksum was current. Fresh read confirmed exact candidate; no repeat write.",
+  "noMainWrite": true,
+  "noThemePublish": true,
+  "noProductPriceFlowDnsSocialChange": true,
+  "metricsFlowsPurchaseWatchNotRepeated": true,
+  "master": "existing website video preserved; no new professional product-film master or rights approval claimed",
+  "browser": {
+    "at": "2026-11-01T11:25:51.467317+00:00",
+    "scope": "Actual native UNPUBLISHED preview. No HTML/CSS/script/GET replacement except explicitly marked failure simulation. Non-GET/HEAD blocked.",
+    "checks": [
+      {
+        "name": "Native preview HTTP200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview theme ID",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px no horizontal overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px one H1",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px correct responsive media",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px media begins near top",
+        "pass": true,
+        "data": {
+          "width": 360,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 343.1875,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": null,
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      },
+      {
+        "name": "360px poster loaded and reduced-motion paused",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px general heading and correct category target",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px video control minimum44px",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px no horizontal overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px one H1",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px correct responsive media",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px media begins near top",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": null,
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      },
+      {
+        "name": "390px poster loaded and reduced-motion paused",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px general heading and correct category target",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px video control minimum44px",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px no horizontal overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px one H1",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px correct responsive media",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px media begins near top",
+        "pass": true,
+        "data": {
+          "width": 760,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 380,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": null,
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      },
+      {
+        "name": "760px poster loaded and reduced-motion paused",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px general heading and correct category target",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px video control minimum44px",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "761px no horizontal overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "761px one H1",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "761px correct responsive media",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "761px existing desktop projector heading",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no horizontal overflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px one H1",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px correct responsive media",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px existing desktop projector heading",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Keyboard play works with reduced-motion by explicit action",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": false,
+          "currentTime": 0.116786,
+          "videoSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video pausieren",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "1"
+        }
+      },
+      {
+        "name": "Explicit pause survives preference switches",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Explicit pause survives scroll out/back",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing bottom search opens",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Search focus restored",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview HTTP200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview theme ID",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native muted autoplay progresses",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": false,
+          "currentTime": 0.233137,
+          "videoSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video pausieren",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "1"
+        }
+      },
+      {
+        "name": "Offscreen video pauses",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": -3525,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 1.073798,
+          "videoSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "1"
+        }
+      },
+      {
+        "name": "Visible video resumes automatic playback",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview HTTP200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview theme ID",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Simulated autoplay rejection keeps loaded poster and honest play action",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+          "muted": true,
+          "inline": true,
+          "buttonHidden": false,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 44,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      },
+      {
+        "name": "Native preview HTTP200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native preview theme ID",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Simulated MP4 failure keeps loaded poster",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+          "muted": true,
+          "inline": true,
+          "buttonHidden": true,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 0,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      },
+      {
+        "name": "Native preview HTTP200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "No-JS native preview marker present",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Without JS image and links remain, dead video button hidden",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "mediaVisible": true,
+          "mediaY": 118,
+          "mediaH": 371.359375,
+          "posterLoaded": true,
+          "paused": true,
+          "currentTime": 0,
+          "videoSrc": null,
+          "muted": true,
+          "inline": true,
+          "buttonHidden": true,
+          "buttonLabel": "Video abspielen",
+          "buttonH": 0,
+          "heading": "Schön leben.\nSchlau shoppen.",
+          "h1Count": 1,
+          "desktopVisible": false,
+          "categoryHref": "/pages/alle-kategorien",
+          "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+          "posterOpacity": "1",
+          "videoOpacity": "0"
+        }
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "mediaVisible": true,
+        "mediaY": 118,
+        "mediaH": 343.1875,
+        "posterLoaded": true,
+        "paused": true,
+        "currentTime": 0,
+        "videoSrc": null,
+        "muted": true,
+        "inline": true,
+        "buttonHidden": false,
+        "buttonLabel": "Video abspielen",
+        "buttonH": 44,
+        "heading": "Schön leben.\nSchlau shoppen.",
+        "h1Count": 1,
+        "desktopVisible": false,
+        "categoryHref": "/pages/alle-kategorien",
+        "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "posterOpacity": "1",
+        "videoOpacity": "0"
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "mediaVisible": true,
+        "mediaY": 118,
+        "mediaH": 371.359375,
+        "posterLoaded": true,
+        "paused": true,
+        "currentTime": 0,
+        "videoSrc": null,
+        "muted": true,
+        "inline": true,
+        "buttonHidden": false,
+        "buttonLabel": "Video abspielen",
+        "buttonH": 44,
+        "heading": "Schön leben.\nSchlau shoppen.",
+        "h1Count": 1,
+        "desktopVisible": false,
+        "categoryHref": "/pages/alle-kategorien",
+        "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "posterOpacity": "1",
+        "videoOpacity": "0"
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "mediaVisible": true,
+        "mediaY": 118,
+        "mediaH": 380,
+        "posterLoaded": true,
+        "paused": true,
+        "currentTime": 0,
+        "videoSrc": null,
+        "muted": true,
+        "inline": true,
+        "buttonHidden": false,
+        "buttonLabel": "Video abspielen",
+        "buttonH": 44,
+        "heading": "Schön leben.\nSchlau shoppen.",
+        "h1Count": 1,
+        "desktopVisible": false,
+        "categoryHref": "/pages/alle-kategorien",
+        "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "posterOpacity": "1",
+        "videoOpacity": "0"
+      },
+      {
+        "width": 761,
+        "overflow": false,
+        "mediaVisible": false,
+        "mediaY": 0,
+        "mediaH": 0,
+        "posterLoaded": true,
+        "paused": true,
+        "currentTime": 0,
+        "videoSrc": null,
+        "muted": true,
+        "inline": true,
+        "buttonHidden": false,
+        "buttonLabel": "Video abspielen",
+        "buttonH": 0,
+        "heading": "Dein Raum.\nDein Moment.",
+        "h1Count": 1,
+        "desktopVisible": true,
+        "categoryHref": "/pages/alle-kategorien",
+        "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "posterOpacity": "1",
+        "videoOpacity": "1"
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "mediaVisible": false,
+        "mediaY": 0,
+        "mediaH": 0,
+        "posterLoaded": true,
+        "paused": true,
+        "currentTime": 0,
+        "videoSrc": null,
+        "muted": true,
+        "inline": true,
+        "buttonHidden": false,
+        "buttonLabel": "Video abspielen",
+        "buttonH": 0,
+        "heading": "Dein Raum.\nDein Moment.",
+        "h1Count": 1,
+        "desktopVisible": true,
+        "categoryHref": "/pages/alle-kategorien",
+        "designHref": "/collections/selbst-gestalten-1?view=luxe-gestalten",
+        "posterOpacity": "1",
+        "videoOpacity": "1"
+      }
+    ],
+    "blockedNonRead": 163,
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Cannot read properties of null (reading 'sequence')",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "passed": true,
+    "failed": []
+  },
+  "screenshots": [
+    {
+      "file": "preview-1440.png",
+      "sha256": "c8b6f30b4c87bc321072c87a734584aa482e497cd188edeec3683f24534a7668",
+      "localOnly": true
+    },
+    {
+      "file": "preview-playing-390.png",
+      "sha256": "32c0acaaabd514f519876c968452817b3523540ee7b09df3f105390271f0511f",
+      "localOnly": true
+    },
+    {
+      "file": "preview-390.png",
+      "sha256": "abd8c83caa10ecad81e7f1d426e51beb42716de475f83a1beaa8613371aae24b",
+      "localOnly": true
+    }
+  ]
+}
