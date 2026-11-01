@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 33,
-  "updatedAt": "2026-11-01T16:21:00Z",
+  "revision": 34,
+  "updatedAt": "2026-11-01T17:09:53Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -374,16 +374,16 @@
       "id": "schema-hammock-15450856292737",
       "priority": 30,
       "priorityKind": "SETZUNG",
-      "state": "vorbereitet",
+      "state": "live_verifiziert_google_pruefung_offen",
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
-      "lastEvidenceDate": "2026-10-29",
+      "lastEvidenceDate": "2026-11-01",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung. Neuer Stand 09:20 Zürich: im unveröffentlichten frischen MAIN-Duplikat 212752499079 den unveränderten Achtzeilenpatch nativ umgesetzt. Echte HTTP-Ausgabe und unabhängiger Tiefenvergleich bestätigen genau 24 entfernte ungültige SKU-Eigenschaften bei vollständig erhaltenen 33 Varianten/Offers und neun gültigen SKUs. Google-Abnahme und Live-Übernahme bleiben offen. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
-      "nextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
+      "lastEvidence": "01.11.2026: Native MAIN-Datei sections/product-information.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Produktseite HTTP200 im richtigen MAIN-Theme. Vollständiger JSON-LD-Tiefenvergleich bestätigt genau 24 entfernte problematische optionale Schema-SKUs, alle 33 Varianten/Offers und neun gültigen Schema-SKUs erhalten. Operative Shopify-/CJ-SKUs nicht geändert. Eigene Tätigkeit war Gegenprüfung, kein eigener Schemawrite oder Publish. Google-Akzeptanz unbekannt.",
+      "nextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
       "blockers": [
         "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
-        "MAIN-Dateiwrites und themePublish sind vom vorhandenen Shopify-Connector blockiert; legitime Übernahme im Admin erforderlich",
-        "Keine vollständige visuelle Theme-Abnahme; belegter Scope ist Hängematte plus ein Kontrollprodukt"
+        "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
+        "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
       ],
       "acceptance": [
         "Fulfilment-SKUs unverändert",
@@ -440,6 +440,11 @@
           "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json",
           "gitBlobSha": "9e4c9df20a268c9bfc5fe8c17dba2453c68b5989",
           "readAt": "2026-10-29T09:28:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -465,26 +470,65 @@
       "liveTakeoverApproval": {
         "ownerMessage": "jaa mach das",
         "recordedAt": "2026-10-29T09:28:50Z",
-        "status": "approved_not_executed_access_blocked",
+        "status": "approved_change_live_verified_google_acceptance_unknown",
         "scope": "Only the two reviewed schema changes; fresh MAIN hashes must match; public countercheck then actual Google validation",
         "requiresRepeatedApproval": false,
-        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md"
+        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md",
+        "statusHistory": [
+          {
+            "at": "2026-11-01T17:09:53Z",
+            "previousStatus": "approved_not_executed_access_blocked",
+            "note": "Frühere Zugriffsblockade historisch erhalten; heutige öffentliche Ausgabe belegt bereits erfolgte Übernahme, Ausführender/Zeitpunkt unbekannt"
+          }
+        ],
+        "liveVerifiedAt": "2026-11-01T17:09:53Z"
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-01T17:09:53Z",
+          "sourceRevision": 33,
+          "previousState": "vorbereitet",
+          "previousLastEvidence": "GEMESSEN: SKU-Diff unverändert. Frische MAIN-Section und neun echte Dateien im begrenzten Prüfkontext; statische Vorher/Nachher-Prüfung erfolgreich. Google-Code-Test mit exaktem Eingabehash einmal an Loginanforderung blockiert, kein Testergebnis. Keine native Ausgabe, Google-Abnahme oder Themeänderung. Neuer Stand 09:20 Zürich: im unveröffentlichten frischen MAIN-Duplikat 212752499079 den unveränderten Achtzeilenpatch nativ umgesetzt. Echte HTTP-Ausgabe und unabhängiger Tiefenvergleich bestätigen genau 24 entfernte ungültige SKU-Eigenschaften bei vollständig erhaltenen 33 Varianten/Offers und neun gültigen SKUs. Google-Abnahme und Live-Übernahme bleiben offen. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
+          "previousNextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
+          "previousBlockers": [
+            "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
+            "MAIN-Dateiwrites und themePublish sind vom vorhandenen Shopify-Connector blockiert; legitime Übernahme im Admin erforderlich",
+            "Keine vollständige visuelle Theme-Abnahme; belegter Scope ist Hängematte plus ein Kontrollprodukt"
+          ],
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidenceDate": "2026-10-29"
+        }
+      ],
+      "liveSchemaVerification": {
+        "themeId": "212967981447",
+        "role": "MAIN",
+        "publicUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "publicHttpAt": "2026-11-01T16:54:53.418801Z",
+        "publicHtmlSha256": "001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729",
+        "exactStructuredDataMatch": true,
+        "ownPublication": false,
+        "googleAcceptance": "unknown_not_tested",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
+        }
       }
     },
     {
       "id": "schema-shipping-threshold-ch50",
       "priority": 35,
       "priorityKind": "SETZUNG",
-      "state": "vorbereitet",
+      "state": "live_verifiziert_google_pruefung_offen",
       "title": "Öffentliche CHF50-Versandschwelle im vorhandenen Google-Schema abbilden",
-      "lastEvidenceDate": "2026-10-29",
+      "lastEvidenceDate": "2026-11-01",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write. Neuer Fortschritt: dieselben beiden Zahlen nun in Prüftheme 212752499079 gespeichert und nativ gerendert. Tiefer JSON-LD-Vergleich und unabhängige Gegenlese bestätigen nur 40.49→49.99 und 40.5→50, Rückgabe/LI-Porto und übrige Daten unverändert. Zusätzlich ein anderes Produkt als Kontrolle geprüft. Keine Checkout- oder Live-Themeänderung. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
-      "nextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
+      "lastEvidence": "01.11.2026: Native MAIN-Datei sections/header.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Organization-Ausgabe bestätigt CH-Versand CHF 7 bis CHF 49.99 und gratis ab CHF 50. Vollständiger JSON-LD-Tiefenvergleich erhält LI-Porto, Rückgabedaten und alle übrigen Felder. Eigene Tätigkeit war Gegenprüfung, keine eigene Übernahme/Veröffentlichung oder Checkoutänderung. Google-Akzeptanz und Generator weiterhin unbekannt.",
+      "nextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
       "blockers": [
-        "Live-Übernahme durch vorhandenen Connector blockiert; Google-Abnahme weiter offen",
         "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
-        "Keine vollständige visuelle Theme-Abnahme, nur native JSON-LD-Vorschau und Kontrollprodukt"
+        "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
+        "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
       ],
       "acceptance": [
         "Genau zwei JSON-LD-Werte korrigiert",
@@ -526,6 +570,11 @@
           "path": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-BELEGE-20261029.json",
           "gitBlobSha": "9e4c9df20a268c9bfc5fe8c17dba2453c68b5989",
           "readAt": "2026-10-29T09:28:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -547,10 +596,49 @@
       "liveTakeoverApproval": {
         "ownerMessage": "jaa mach das",
         "recordedAt": "2026-10-29T09:28:50Z",
-        "status": "approved_not_executed_access_blocked",
+        "status": "approved_change_live_verified_google_acceptance_unknown",
         "scope": "Only the two reviewed schema changes; fresh MAIN hashes must match; public countercheck then actual Google validation",
         "requiresRepeatedApproval": false,
-        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md"
+        "report": "dropship/codex-handoff-20261018/SCHEMA-LIVE-FREIGABE-20261029.md",
+        "statusHistory": [
+          {
+            "at": "2026-11-01T17:09:53Z",
+            "previousStatus": "approved_not_executed_access_blocked",
+            "note": "Frühere Zugriffsblockade historisch erhalten; heutige öffentliche Ausgabe belegt bereits erfolgte Übernahme, Ausführender/Zeitpunkt unbekannt"
+          }
+        ],
+        "liveVerifiedAt": "2026-11-01T17:09:53Z"
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-01T17:09:53Z",
+          "sourceRevision": 33,
+          "previousState": "vorbereitet",
+          "previousLastEvidence": "Frische MAIN-/HTTP-Gegenprobe bestätigt Header-Schema CHF40.50 bei sichtbarer CHF50-Angabe. Bereits vorhandenen Zweizahlenentwurf quellgenau fortgesetzt:40.49→49.99 und40.5→50. Sieben Schema-Grenzfälle und unabhängige Gegenlese bestanden. Kein Checkout-/Theme-Write. Neuer Fortschritt: dieselben beiden Zahlen nun in Prüftheme 212752499079 gespeichert und nativ gerendert. Tiefer JSON-LD-Vergleich und unabhängige Gegenlese bestätigen nur 40.49→49.99 und 40.5→50, Rückgabe/LI-Porto und übrige Daten unverändert. Zusätzlich ein anderes Produkt als Kontrolle geprüft. Keine Checkout- oder Live-Themeänderung. Neuer Freigabestand: Inhaber «jaa mach das» genehmigt die enge Live-Übernahme. Frische MAIN-/Prüftheme-Hashes weiterhin passend; Shopify-Admin-Browser fordert Login, API blockiert MAIN/Publish. Kein Write; Search-Console-Zugriffscheck mit Timeout, Status unbekannt.",
+          "previousNextAllowedStep": "Bereits freigegebenen Zweidateidiff nach erneutem aktuellem MAIN-Hashvergleich über legitimen angemeldeten Shopify-Adminzugang übernehmen, öffentlich gegenprüfen und erst danach Google-/Console-Prüfung auslösen. Dieselbe Freigabe nicht nochmals anfordern; keine ganze ältere Theme-Kopie pauschal veröffentlichen.",
+          "previousBlockers": [
+            "Live-Übernahme durch vorhandenen Connector blockiert; Google-Abnahme weiter offen",
+            "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
+            "Keine vollständige visuelle Theme-Abnahme, nur native JSON-LD-Vorschau und Kontrollprodukt"
+          ],
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidenceDate": "2026-10-29"
+        }
+      ],
+      "liveSchemaVerification": {
+        "themeId": "212967981447",
+        "role": "MAIN",
+        "publicUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "publicHttpAt": "2026-11-01T16:54:53.418801Z",
+        "publicHtmlSha256": "001d6e7912f99dbf364fca24aba6a782a31c6af4c37403a36c48dabed8edf729",
+        "exactStructuredDataMatch": true,
+        "ownPublication": false,
+        "googleAcceptance": "unknown_not_tested",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
+        }
       }
     },
     {
@@ -953,8 +1041,8 @@
       "state": "reparaturpaket_vorbereitet_technisch_blockiert",
       "title": "Merchant-Preisfehler aus beiden Exporten vom 31.10. exakt eingrenzen",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
-      "lastEvidence": "Beide CSV-Dateien vom 31.10. vollständig gelesen: neuerer Export mit 109’769 Fehlerzeilen / 53’333 IDs mit fehlendem Preis; älterer Export mit 111’476 Zeilen / 54’167 IDs; Vereinigung mit 54’171 IDs, alle Free Listings. Keine aktuelle Live-Zählung. 18 betroffene IDs aus 6 ACTIVE-Blankprodukten anhand ProductID + vollständiger SKU exakt positiven CHF-Preisen zugeordnet; 705 Byte grosse Kandidatendatei mit id,price sowie Quellbelege gesichert. Beispiel Black/S, Variante 55794951258497, CHF 24.90 auch öffentlich bestätigt. Merchant-Konto 5797470070 frisch als passend bestätigt. Exakte Rohquellenabfrage mit MCP-Timeout -32603; keine Schreibaktionen im Connector. Repo-Generator mit id=handle beweist keine Ursache der ProductID_SKU-Einträge. Keine Merchant-, Feed- oder Shoppreisänderung, kein blinder Upload.",
+      "belegArt": "GEMESSEN_TECHNISCHER_ZUGRIFFSBLOCKER",
+      "lastEvidence": "01.11.2026, eng begrenzte Fortsetzung: LuxeStyle-CH-Konto 5797470070 und gültige Quellen-/Preisfelder frisch entdeckt. Genau eine Rohquellenabfrage für 15427283157377_9000001_4016/de/CH/ONLINE mit MCP-Timeout -32603. Ergebnis UNKNOWN, keine Leer-/Null-/404-Interpretation, kein Retry/force_refresh. Drei vorhandene main-Feedhelfer frisch hashgeprüft und unverändert; id=handle erklärt weiterhin keine ProductID_SKU-Quelle. Keine Merchant-/Feed-/Preisänderung. Frühere18 Kandidaten und CSV-Zählungen bleiben datierte Belege, keine aktuelle Live-Zählung oder blind uploadbare Quelle.",
       "nextAllowedStep": "Bestehende primäre Quelle, exakte ID, Sprache, Feedlabel, Varianten-Ziel-URL und Preispriorität authentifiziert lesen. Danach nur belegten Quelldiff anwenden und zurücklesen; die 18 Kandidaten sind keine ungeprüft anzulegende neue Quelle. Technischen Schreibzugang herstellen, keine erneute Inhaberfreigabe für denselben Fix verlangen.",
       "blockers": [
         "Tatsächliche Merchant-Quelle, Original-URL und Rohfelder nach MCP-Timeout weiterhin unbekannt",
@@ -1020,6 +1108,11 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-BELEGE-20261101.json",
           "gitBlobSha": "0e63ded1bcdb4487247332ae98097dedfd883f12",
           "readAt": "2026-11-01T01:14:44.155072+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1055,6 +1148,19 @@
             "Windsor-Merchant-Connector bietet aktuell keine Schreibaktionen; anderer authentifizierter isolierter Writer nicht bestätigt",
             "Gleicher Produktpräfix/Titel zwischen CSVs beweist keine gleiche Variante oder doppelte aktive Quelle"
           ]
+        },
+        {
+          "at": "2026-11-01T17:09:53Z",
+          "sourceRevision": 33,
+          "previousState": "reparaturpaket_vorbereitet_technisch_blockiert",
+          "previousLastEvidence": "Beide CSV-Dateien vom 31.10. vollständig gelesen: neuerer Export mit 109’769 Fehlerzeilen / 53’333 IDs mit fehlendem Preis; älterer Export mit 111’476 Zeilen / 54’167 IDs; Vereinigung mit 54’171 IDs, alle Free Listings. Keine aktuelle Live-Zählung. 18 betroffene IDs aus 6 ACTIVE-Blankprodukten anhand ProductID + vollständiger SKU exakt positiven CHF-Preisen zugeordnet; 705 Byte grosse Kandidatendatei mit id,price sowie Quellbelege gesichert. Beispiel Black/S, Variante 55794951258497, CHF 24.90 auch öffentlich bestätigt. Merchant-Konto 5797470070 frisch als passend bestätigt. Exakte Rohquellenabfrage mit MCP-Timeout -32603; keine Schreibaktionen im Connector. Repo-Generator mit id=handle beweist keine Ursache der ProductID_SKU-Einträge. Keine Merchant-, Feed- oder Shoppreisänderung, kein blinder Upload.",
+          "previousNextAllowedStep": "Bestehende primäre Quelle, exakte ID, Sprache, Feedlabel, Varianten-Ziel-URL und Preispriorität authentifiziert lesen. Danach nur belegten Quelldiff anwenden und zurücklesen; die 18 Kandidaten sind keine ungeprüft anzulegende neue Quelle. Technischen Schreibzugang herstellen, keine erneute Inhaberfreigabe für denselben Fix verlangen.",
+          "previousBlockers": [
+            "Tatsächliche Merchant-Quelle, Original-URL und Rohfelder nach MCP-Timeout weiterhin unbekannt",
+            "Aktueller Merchant-Connector hat keine Schreibaktion; anderer legitimer Schreibzugang unbestätigt"
+          ],
+          "previousBelegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
+          "previousLastEvidenceDate": "2026-11-01"
         }
       ],
       "resolvedBlockers": [
@@ -1063,23 +1169,41 @@
           "blocker": "Zweiter Upload über Downloadgrenze32MiB, Inhalt unbekannt",
           "resolution": "Drive-Datei vollständig: 37’867’685Bytes; SHA256 a69f34f30548c7aacc8775825bcefdf791a76b9df1d2d5d1601580f03d5bf9cf. Historische Sedimentgrenze bleibt erhalten."
         }
-      ]
+      ],
+      "lastSourceCheck": {
+        "at": "2026-11-01T16:58:52Z",
+        "offerId": "15427283157377_9000001_4016",
+        "accountId": "5797470070",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "channel": "ONLINE",
+        "dataQueryCount": 1,
+        "result": "UNKNOWN_MCP_TIMEOUT",
+        "retries": 0,
+        "writerActions": [],
+        "source": {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
+        }
+      }
     },
     {
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert_bewertungsentwurf_bereit",
+      "state": "live_verifiziert_bewertungs_und_fr_entwurf_bereit",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "LIVE_BESTAND_ERHALTEN_BEWERTUNGSENTWURF_NATIV_GEPRUEFT",
-      "lastEvidence": "Auf geklärten Inhaberwunsch den Bewertungsbereich wie im früheren Screenshot im separaten UNPUBLISHED-Theme 212971061639 «LuxeStyle – Bewertungen 01.11.2026» ergänzt. Aktuell gelesene Appquellen: 4.83 von 5 und 12’459 Bewertungen, Quelldatenzeitstempel erhalten. Drei Originalzitate über aktuelle Shopify-ID, product_external_id und feste Review-UUID exakt zugeordnet; reale aktuelle Produktbilder/URLs. Neutrale Überschrift und Herkunftshinweis, tatsächliche Sternfüllung, Ganzzahl-/Positiv-/Unbekannt-Guards, mobile Wischansicht. Tasche mit waffe-pruefen aus neuer Platzierung ausgeschlossen und durch verifiziertes Notizbuch ersetzt; keine Produkt-/Tagänderung. Fünf einzigartige Dateien bestätigt, zwei textuell exakt und drei JSON semantisch; 19 native Checks plus zwei SVG-Gegenproben bestanden. Öffentliches MAIN 212967981447 bleibt unverändert; kein eigener Publish.",
+      "belegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+      "lastEvidence": "Bestehendes UNPUBLISHED-Theme 212971061639 um französische Startseiten-UI und sprachbewusste Links ergänzt:208 Textwerte hinzugefügt, alle300 vorherigen FR-Werte erhalten. Selbstgestalten/Suche/Warenkorb und interne feste Ziele bleiben in der ausgewählten Sprache; Konto-/Medien-/Produktdaten unverändert. Genau zwei Dateien gespeichert; Sectiontext exakt und FR-JSON semantisch exakt nativ zurückgelesen. Originalzitate weiterhin deutsch mit französischem Herkunftshinweis. 51 begrenzte native Browserprüfungen FR/DE bei 360/390/1440 px bestanden; normaler Checkout/Analytics/Videoplayback nicht abgenommen. Vorhandene Bewertungen/16 Kategorien / 12 Trends / 5 Zusatzprodukte erhalten. Öffentlicher Stand212967981447 unangetastet, kein eigener Publish. Vollständige französische Katalog-/Themeübersetzung und Englischabnahme nicht behauptet.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews",
-      "nextAllowedStep": "Im Shopify-Admin die Kopie 212971061639 «LuxeStyle – Bewertungen 01.11.2026» veröffentlichen; danach öffentlichen Root und Bewertungsbereich frisch prüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung erforderlich. EN vor vollständiger EN-Abnahme separat prüfen.",
+      "nextAllowedStep": "Geprüften bestehenden Entwurf 212971061639 mit Bewertungen und französischer Startseiten-UI im Shopify-Admin veröffentlichen und danach Root/fr öffentlich frisch prüfen. Keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Weitere FR-Katalog-/Themeübersetzung nur belegbezogen; EN ist aktuell unveröffentlicht, keine Aktivierung.",
       "blockers": [
         "Neue Bewertungsergänzung ist nur im UNPUBLISHED 212971061639 gespeichert. Native MAIN-Writes/Theme-Publikation bleiben technisch blockiert; im Shopify-Admin veröffentlichen und öffentlich gegenprüfen. Der bisherige öffentliche Stand bleibt bestätigt.",
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
-        "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
+        "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
+        "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -1221,6 +1345,11 @@
           "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
           "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
           "readAt": "2026-11-01T16:10:08Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1364,6 +1493,20 @@
           ],
           "previousBelegArt": "LIVE_NATIV_UND_OEFFENTLICH_GEPRUEFT",
           "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212967981447"
+        },
+        {
+          "at": "2026-11-01T17:09:53Z",
+          "sourceRevision": 33,
+          "previousState": "live_verifiziert_bewertungsentwurf_bereit",
+          "previousLastEvidence": "Auf geklärten Inhaberwunsch den Bewertungsbereich wie im früheren Screenshot im separaten UNPUBLISHED-Theme 212971061639 «LuxeStyle – Bewertungen 01.11.2026» ergänzt. Aktuell gelesene Appquellen: 4.83 von 5 und 12’459 Bewertungen, Quelldatenzeitstempel erhalten. Drei Originalzitate über aktuelle Shopify-ID, product_external_id und feste Review-UUID exakt zugeordnet; reale aktuelle Produktbilder/URLs. Neutrale Überschrift und Herkunftshinweis, tatsächliche Sternfüllung, Ganzzahl-/Positiv-/Unbekannt-Guards, mobile Wischansicht. Tasche mit waffe-pruefen aus neuer Platzierung ausgeschlossen und durch verifiziertes Notizbuch ersetzt; keine Produkt-/Tagänderung. Fünf einzigartige Dateien bestätigt, zwei textuell exakt und drei JSON semantisch; 19 native Checks plus zwei SVG-Gegenproben bestanden. Öffentliches MAIN 212967981447 bleibt unverändert; kein eigener Publish.",
+          "previousNextAllowedStep": "Im Shopify-Admin die Kopie 212971061639 «LuxeStyle – Bewertungen 01.11.2026» veröffentlichen; danach öffentlichen Root und Bewertungsbereich frisch prüfen. Bestehende Websitefreigabe erhalten; keine erneute Zustimmung erforderlich. EN vor vollständiger EN-Abnahme separat prüfen.",
+          "previousBlockers": [
+            "Neue Bewertungsergänzung ist nur im UNPUBLISHED 212971061639 gespeichert. Native MAIN-Writes/Theme-Publikation bleiben technisch blockiert; im Shopify-Admin veröffentlichen und öffentlich gegenprüfen. Der bisherige öffentliche Stand bleibt bestätigt.",
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master."
+          ],
+          "previousBelegArt": "LIVE_BESTAND_ERHALTEN_BEWERTUNGSENTWURF_NATIV_GEPRUEFT",
+          "previousLastEvidenceDate": "2026-11-01"
         }
       ],
       "followUpFindings": [
@@ -1381,13 +1524,39 @@
       "pendingReviewUpdate": {
         "themeId": "212971061639",
         "name": "LuxeStyle – Bewertungen 01.11.2026",
-        "state": "UNPUBLISHED_NATIVE_VERIFIED",
-        "verifiedAt": "2026-11-01T16:10:08Z",
+        "state": "UNPUBLISHED_NATIVE_VERIFIED_WITH_FRENCH_HOME",
+        "verifiedAt": "2026-11-01T17:09:53Z",
         "source": {
-          "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
-          "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
-          "readAt": "2026-11-01T16:10:08Z"
-        }
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+          "readAt": "2026-11-01T17:09:53Z"
+        },
+        "history": [
+          {
+            "themeId": "212971061639",
+            "name": "LuxeStyle – Bewertungen 01.11.2026",
+            "state": "UNPUBLISHED_NATIVE_VERIFIED",
+            "verifiedAt": "2026-11-01T16:10:08Z",
+            "source": {
+              "path": "dropship/codex-handoff-20261018/BEWERTUNGSBEREICH-20261101.json",
+              "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
+              "readAt": "2026-11-01T16:10:08Z"
+            }
+          }
+        ],
+        "frenchPreviewUrl": "https://luxestyle.ch/fr?preview_theme_id=212971061639",
+        "changedFiles": [
+          "locales/fr.json",
+          "sections/luxe-edit-home.liquid"
+        ],
+        "languagesPublished": [
+          "de",
+          "fr"
+        ],
+        "languagesUnpublished": [
+          "en",
+          "it"
+        ]
       }
     },
     {
@@ -2365,6 +2534,17 @@
         "gitBlobSha": "5f5992112a6aa582561d0bd7ec1f889d7acb5a4f",
         "readAt": "2026-11-01T16:21:00Z"
       }
+    },
+    {
+      "revision": 34,
+      "at": "2026-11-01T17:09:53Z",
+      "actor": "codex",
+      "action": "Bestehenden Bewertungsentwurf um FR-Startseiten-UI und sprachbewusste Links in genau zwei Dateien ergänzt und nativ zurückgelesen/geprüft. Beide alten genehmigten Schema-Diffs frisch bereits öffentlich verifiziert; kein eigener Schema-Push. Eine eng begrenzte Merchant-Rohquellenabfrage mit Timeout unbekannt, kein Retry oder Write. Keine neuen Tagesreports/Kauf-Watch-Abfragen. Vier betroffene Aufgaben fortgeschrieben; alle16 IDs/Historien, übrige 12 Aufgaben, Geschäftsgrenzen und bestehender Zeitplan erhalten. R33-Übergabe/R4 bleiben datiert unverändert; R34-Quellenspiegel ergänzt, Claude-Empfang weiterhin unbekannt.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+        "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+        "readAt": "2026-11-01T17:09:53Z"
+      }
     }
   ],
   "salesGoal": {
@@ -2522,9 +2702,11 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "096ff043c571839ca595abdd4b7d267273942645",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r33",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r34",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
-    "scope": "documentation_and_review_only_no_installation_or_execution"
+    "scope": "documentation_and_review_only_no_installation_or_execution",
+    "latestCanonicalRevision": 34,
+    "snapshotNote": "R34-Quellenspiegel; unveränderliche R33-Übergabe und R4 behalten ihren datierten Umfang, keine neue Claude-Quittung."
   }
 }
