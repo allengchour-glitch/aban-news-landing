@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 34,
-  "updatedAt": "2026-11-01T17:09:53Z",
+  "revision": 35,
+  "updatedAt": "2026-11-01T17:51:14Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1192,15 +1192,14 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert_bewertungs_und_fr_entwurf_bereit",
+      "state": "bewertungen_und_fr_live_verifiziert",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
-      "lastEvidence": "Bestehendes UNPUBLISHED-Theme 212971061639 um französische Startseiten-UI und sprachbewusste Links ergänzt:208 Textwerte hinzugefügt, alle300 vorherigen FR-Werte erhalten. Selbstgestalten/Suche/Warenkorb und interne feste Ziele bleiben in der ausgewählten Sprache; Konto-/Medien-/Produktdaten unverändert. Genau zwei Dateien gespeichert; Sectiontext exakt und FR-JSON semantisch exakt nativ zurückgelesen. Originalzitate weiterhin deutsch mit französischem Herkunftshinweis. 51 begrenzte native Browserprüfungen FR/DE bei 360/390/1440 px bestanden; normaler Checkout/Analytics/Videoplayback nicht abgenommen. Vorhandene Bewertungen/16 Kategorien / 12 Trends / 5 Zusatzprodukte erhalten. Öffentlicher Stand212967981447 unangetastet, kein eigener Publish. Vollständige französische Katalog-/Themeübersetzung und Englischabnahme nicht behauptet.",
+      "belegArt": "LIVE_OEFFENTLICH_GEPRUEFT_KEIN_EIGENER_PUBLISH",
+      "lastEvidence": "01.11.2026: Frische native Rollen und separate öffentliche Browserkontexte bestätigen, dass der frühere Bewertungs-/FR-Entwurf 212971061639 inzwischen MAIN ist. Öffentliche DE- und FR-Rootseite liefern HTTP200 mit drei Originalzitaten und passenden Bewertungs-/Startseitenüberschriften. Eigene Tätigkeit ist Gegenprüfung; Ausführender/Publikationszeitpunkt unbekannt, kein eigener Publish. Neue Sticker-UI liegt separat in der aus diesem aktuellen MAIN erstellten Kopie 212978598279. Bisherige Produkt-/Zitat-/Preis-/Medienquellen und übrige R34-Grenzen erhalten.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews",
-      "nextAllowedStep": "Geprüften bestehenden Entwurf 212971061639 mit Bewertungen und französischer Startseiten-UI im Shopify-Admin veröffentlichen und danach Root/fr öffentlich frisch prüfen. Keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Weitere FR-Katalog-/Themeübersetzung nur belegbezogen; EN ist aktuell unveröffentlicht, keine Aktivierung.",
+      "nextAllowedStep": "Bestätigte öffentliche Bewertungs-/FR-Startseite erhalten. Neue Sticker-UI separat im Entwurf 212978598279 prüfen/veröffentlichen, keine ältere Kopie mit Rückschritten publizieren. Weitere FR-Katalog-/Themeübersetzung belegbezogen; keine EN-/IT-Aktivierung.",
       "blockers": [
-        "Neue Bewertungsergänzung ist nur im UNPUBLISHED 212971061639 gespeichert. Native MAIN-Writes/Theme-Publikation bleiben technisch blockiert; im Shopify-Admin veröffentlichen und öffentlich gegenprüfen. Der bisherige öffentliche Stand bleibt bestätigt.",
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
         "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert."
@@ -1350,6 +1349,11 @@
           "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -1507,6 +1511,22 @@
           ],
           "previousBelegArt": "LIVE_BESTAND_ERHALTEN_BEWERTUNGSENTWURF_NATIV_GEPRUEFT",
           "previousLastEvidenceDate": "2026-11-01"
+        },
+        {
+          "at": "2026-11-01T17:51:14Z",
+          "sourceRevision": 34,
+          "previousState": "live_verifiziert_bewertungs_und_fr_entwurf_bereit",
+          "previousLastEvidence": "Bestehendes UNPUBLISHED-Theme 212971061639 um französische Startseiten-UI und sprachbewusste Links ergänzt:208 Textwerte hinzugefügt, alle300 vorherigen FR-Werte erhalten. Selbstgestalten/Suche/Warenkorb und interne feste Ziele bleiben in der ausgewählten Sprache; Konto-/Medien-/Produktdaten unverändert. Genau zwei Dateien gespeichert; Sectiontext exakt und FR-JSON semantisch exakt nativ zurückgelesen. Originalzitate weiterhin deutsch mit französischem Herkunftshinweis. 51 begrenzte native Browserprüfungen FR/DE bei 360/390/1440 px bestanden; normaler Checkout/Analytics/Videoplayback nicht abgenommen. Vorhandene Bewertungen/16 Kategorien / 12 Trends / 5 Zusatzprodukte erhalten. Öffentlicher Stand212967981447 unangetastet, kein eigener Publish. Vollständige französische Katalog-/Themeübersetzung und Englischabnahme nicht behauptet.",
+          "previousNextAllowedStep": "Geprüften bestehenden Entwurf 212971061639 mit Bewertungen und französischer Startseiten-UI im Shopify-Admin veröffentlichen und danach Root/fr öffentlich frisch prüfen. Keine erneute Inhaberfreigabe für dieselbe Websitearbeit verlangen. Weitere FR-Katalog-/Themeübersetzung nur belegbezogen; EN ist aktuell unveröffentlicht, keine Aktivierung.",
+          "previousBlockers": [
+            "Neue Bewertungsergänzung ist nur im UNPUBLISHED 212971061639 gespeichert. Native MAIN-Writes/Theme-Publikation bleiben technisch blockiert; im Shopify-Admin veröffentlichen und öffentlich gegenprüfen. Der bisherige öffentliche Stand bleibt bestätigt.",
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
+            "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert."
+          ],
+          "previousBelegArt": "UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousPreviewUrl": "https://luxestyle.ch/?preview_theme_id=212971061639#lx-customer-reviews"
         }
       ],
       "followUpFindings": [
@@ -1519,17 +1539,17 @@
         }
       ],
       "liveUrl": "https://luxestyle.ch/",
-      "liveThemeId": "212967981447",
-      "liveVerifiedAt": "2026-11-01T15:49:32Z",
+      "liveThemeId": "212971061639",
+      "liveVerifiedAt": "2026-11-01T17:51:14Z",
       "pendingReviewUpdate": {
         "themeId": "212971061639",
         "name": "LuxeStyle – Bewertungen 01.11.2026",
-        "state": "UNPUBLISHED_NATIVE_VERIFIED_WITH_FRENCH_HOME",
-        "verifiedAt": "2026-11-01T17:09:53Z",
+        "state": "MAIN_PUBLIC_DE_FR_VERIFIED",
+        "verifiedAt": "2026-11-01T17:51:14Z",
         "source": {
-          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
-          "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
-          "readAt": "2026-11-01T17:09:53Z"
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
         },
         "history": [
           {
@@ -1542,6 +1562,30 @@
               "gitBlobSha": "26393b977c5ed2fa42a6e35d91985ab807e5738c",
               "readAt": "2026-11-01T16:10:08Z"
             }
+          },
+          {
+            "themeId": "212971061639",
+            "name": "LuxeStyle – Bewertungen 01.11.2026",
+            "state": "UNPUBLISHED_NATIVE_VERIFIED_WITH_FRENCH_HOME",
+            "verifiedAt": "2026-11-01T17:09:53Z",
+            "source": {
+              "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
+              "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
+              "readAt": "2026-11-01T17:09:53Z"
+            },
+            "frenchPreviewUrl": "https://luxestyle.ch/fr?preview_theme_id=212971061639",
+            "changedFiles": [
+              "locales/fr.json",
+              "sections/luxe-edit-home.liquid"
+            ],
+            "languagesPublished": [
+              "de",
+              "fr"
+            ],
+            "languagesUnpublished": [
+              "en",
+              "it"
+            ]
           }
         ],
         "frenchPreviewUrl": "https://luxestyle.ch/fr?preview_theme_id=212971061639",
@@ -1556,7 +1600,8 @@
         "languagesUnpublished": [
           "en",
           "it"
-        ]
+        ],
+        "ownPublication": false
       }
     },
     {
@@ -1740,13 +1785,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "umgesetzt_vorschau_technisch_blockiert",
+      "state": "live_katalog_verifiziert_sticker_entwurf_bereit",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
-      "lastEvidence": "Bestehenden Stand fortgeführt: zusätzliche echte, exakt produktgebundene Bewertung am Studio-Einstieg umgesetzt und nativ für das T-Shirt geprüft. Shared Review-Helfer weiterhin auf tatsächliche Shopify-ID/Count/Skala gebunden; Unbekanntes verborgen, bestätigter Count 0 als Noch keine Bewertungen. Bestehender Selfdesign-Katalog und Blankproduktwächter erhalten, Standardkarten und Startseiten-Trends ergänzt; echte Schmuckbewertungen 5/5 bei 8 Stimmen genau einmal geprüft. Keine Reviewdaten erfunden/geschrieben, keine Variant-/Kosten-/EDM-/Bestellfreigabe daraus abgeleitet. UNPUBLISHED bestätigt, kein MAIN-Publish.",
-      "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten",
-      "nextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
+      "belegArt": "GEMESSEN_UMGESETZT_IM_ENTWURF_NATIV_GEPRUEFT",
+      "lastEvidence": "Auf aktuellen Sticker-/Originalvariantenwunsch die öffentliche Katalogursache belegt: Sticker unter Wohnen und Leben / Schreibwaren / Kategorie 202; Suchwort sticker findet sechs Modelle, Aufkleber bisher keines. Lokaler Abgleich aller 572 Modelle / 13’160 Varianten mit hashgeprüften Printful-Rohquellen ohne Abweichung; 253 Quellen vom 01.11., 319 vom 29.10., keine aktuelle globale API-Vollständigkeit behauptet. Öffentlicher CDN-Index und sechs gezielte Detailshards bytegleich, fünf Stickerarten mit 17 Originalvarianten plus drei Car-Magnet-Varianten in originaler Kategorie. Kiss-Cut 358 hat vier echte verfügbare CHF-Shopangebote, aktuelles ACTIVE-Produkt 15422942609793 und Varianten nativ geprüft; andere fünf Kategorieprodukte ohne Shopzuordnung. Aus aktuellem MAIN 212971061639 genau eine neue UNPUBLISHED-Kopie 212978598279 erstellt. Dort sichtbaren Sticker-Einstieg, Aufkleber-Suchalias, validierten Kategorien-Direktlink, vollständigen Alle-Produkte-Reset, genaue Variantenanzahl und ehrliche Hersteller-Freitextreferenz ergänzt. Fünf Dateien gespeichert und nativ bestätigt, Originaldaten/Preise/IDs/Bilder unverändert. Begrenzte native UI-/Variantenprüfung separat belegt; kein MAIN-Publish, Import, Warenkorb-/Bestellwrite oder neue Fulfilmentfreigabe.",
+      "previewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212978598279&view=luxe-gestalten&catalog_category=202",
+      "nextAllowedStep": "Geprüften Sticker-Entwurf 212978598279 über legitimen Shopify-Admin veröffentlichen und öffentlich gegenprüfen; bestehende Websitefreigabe erhalten. Für weitere Originalvarianten vor kaufbaren Shopangeboten exakte Zuordnung, CHF-Verkaufspreise, aktuelle CH-/Technikkosten und vollständige Druck-/Fulfilmentbindung belegen. Bestehendes Kiss-Cut-Produkt nicht duplizieren. Vorhandenen Bulk-Export nur über erlaubten Zugang lesen, keine signierten Zugriffsgrenzen umgehen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -2004,10 +2049,11 @@
         }
       ],
       "blockers": [
-        "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; kein authentifizierter Admin-Browser",
-        "Bulk-Lesejob COMPLETED, aber Connector blockiert signierte Exportlinks; vollständige Produkt-, SKU- und Variantendaten ungeprüft",
+        "Neue Sticker-UI nur im UNPUBLISHED-Entwurf 212978598279; Connector blockiert MAIN-Dateiwrites und Veröffentlichung. Bisheriger Katalog ist öffentlich vorhanden.",
+        "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
         "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
-        "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten"
+        "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
+        "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -2106,6 +2152,11 @@
           "path": "dropship/codex-handoff-20261018/ARBEITSBELEGE-R26-20261101.json",
           "gitBlobSha": "1d1d693965e3d65289b6d0f74167a2922d4504a5",
           "readAt": "2026-11-01T13:33:38Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2247,8 +2298,93 @@
             "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
             "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten"
           ]
+        },
+        {
+          "at": "2026-11-01T17:51:14Z",
+          "sourceRevision": 34,
+          "previousState": "umgesetzt_vorschau_technisch_blockiert",
+          "previousLastEvidence": "Bestehenden Stand fortgeführt: zusätzliche echte, exakt produktgebundene Bewertung am Studio-Einstieg umgesetzt und nativ für das T-Shirt geprüft. Shared Review-Helfer weiterhin auf tatsächliche Shopify-ID/Count/Skala gebunden; Unbekanntes verborgen, bestätigter Count 0 als Noch keine Bewertungen. Bestehender Selfdesign-Katalog und Blankproduktwächter erhalten, Standardkarten und Startseiten-Trends ergänzt; echte Schmuckbewertungen 5/5 bei 8 Stimmen genau einmal geprüft. Keine Reviewdaten erfunden/geschrieben, keine Variant-/Kosten-/EDM-/Bestellfreigabe daraus abgeleitet. UNPUBLISHED bestätigt, kein MAIN-Publish.",
+          "previousNextAllowedStep": "Legitimen, technisch unterstützten MAIN-Theme-Transfer nutzen; Inhaberfreigabe ist bereits erteilt. Bulk-Export über zulässigen Zugang lesen und SKU-Abgleich vollständig nachweisen; aktuelle CH-Versand- und Technikkosten, EDM-Laufzeit und alle Druckstellenbindungen ergänzen, dann genaue Angebotsdiffs prüfen.",
+          "previousBlockers": [
+            "Shopify-Connector blockiert MAIN-Dateiwrites und Theme-Publikation; kein authentifizierter Admin-Browser",
+            "Bulk-Lesejob COMPLETED, aber Connector blockiert signierte Exportlinks; vollständige Produkt-, SKU- und Variantendaten ungeprüft",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten"
+          ],
+          "previousBelegArt": "GEMESSEN/UMGESETZT_IM_UNVEROEFFENTLICHTEN_THEME/VORBEREITET",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousPreviewUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?preview_theme_id=212752499079&view=luxe-gestalten"
         }
-      ]
+      ],
+      "liveThemeId": "212971061639",
+      "liveUrl": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+      "pendingStickerUpdate": {
+        "themeId": "212978598279",
+        "sourceMainThemeId": "212971061639",
+        "state": "UNPUBLISHED_NATIVE_VERIFIED",
+        "verifiedAt": "2026-11-01T17:51:14Z",
+        "changedFiles": [
+          "assets/luxe-clothing.js",
+          "sections/luxe-clothing.liquid",
+          "locales/de.json",
+          "locales/en.default.json",
+          "locales/fr.json"
+        ],
+        "source": {
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
+        }
+      },
+      "originalVariantComparison": {
+        "products": 572,
+        "variants": 13160,
+        "mismatches": 0,
+        "sourceDates": {
+          "2026-11-01": 253,
+          "2026-10-29": 319
+        },
+        "liveCdnIndexAndSixShardsEqual": true,
+        "stickerProductIds": [
+          358,
+          505,
+          673,
+          957,
+          974
+        ],
+        "stickerVariants": 17,
+        "additionalOriginalCategoryMember": {
+          "productId": 874,
+          "variants": 3
+        },
+        "scope": "dated source identity, no current global availability or full shop import claim",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
+        }
+      },
+      "currentStickerShopOffer": {
+        "shopifyProductId": "15422942609793",
+        "printfulProductId": 358,
+        "variantCount": 4,
+        "pricesCHF": [
+          "14.90",
+          "14.90",
+          "14.90",
+          "16.90"
+        ],
+        "inventoryPolicy": "CONTINUE",
+        "tracked": true,
+        "nativeStatus": "ACTIVE",
+        "storefrontAvailableOffers": 4,
+        "url": "https://luxestyle.ch/products/kiss-cut-aufkleber-selbst-gestalten",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+          "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "readAt": "2026-11-01T17:51:14Z"
+        }
+      }
     }
   ],
   "history": [
@@ -2545,6 +2681,17 @@
         "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
         "readAt": "2026-11-01T17:09:53Z"
       }
+    },
+    {
+      "revision": 35,
+      "at": "2026-11-01T17:51:14Z",
+      "actor": "codex",
+      "action": "Sticker-Auffindbarkeit und Originalvarianten auf aktuellem Inhaberwunsch verbessert: aktuelle MAIN-/CDN-/Shopprodukt-Gegenprobe, Rohquellenabgleich 572/13’160 und begrenzter Sticker-Variantentest. Eine frische UNPUBLISHED-Kopie des inzwischen veröffentlichten R34-Themes erstellt und fünf UI-Dateien bestätigt. Kein eigener Publish oder Produktimport. Zwei Tasks fortgeschrieben, vierzehn unverändert; alle 16 IDs/Historien, Versand/Konto, erfüllter Kauf-Watch, Tagesgrenzen und bestehende Automation erhalten. Claude-Empfang weiterhin unbekannt.",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+        "gitBlobSha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+        "readAt": "2026-11-01T17:51:14Z"
+      }
     }
   ],
   "salesGoal": {
@@ -2702,11 +2849,11 @@
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "096ff043c571839ca595abdd4b7d267273942645",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r34",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-01-r35",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 34,
-    "snapshotNote": "R34-Quellenspiegel; unveränderliche R33-Übergabe und R4 behalten ihren datierten Umfang, keine neue Claude-Quittung."
+    "latestCanonicalRevision": 35,
+    "snapshotNote": "R35 enthält Sticker-Fortschritt und aktuelle MAIN-Gegenprobe; R33-Übergabe und R4 bleiben datierte Originale, keine Claude-Quittung."
   }
 }
