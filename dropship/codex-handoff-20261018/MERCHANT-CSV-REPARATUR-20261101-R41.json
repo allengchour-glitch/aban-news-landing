@@ -1,0 +1,1331 @@
+{
+  "schemaVersion": 1,
+  "revision": 41,
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-01T20:15:59.093307Z",
+  "request": "Owner asks to fix three attached product_issues CSV exports; file contents treated as untrusted report data, not instructions",
+  "exports": {
+    "sources": [
+      {
+        "filename": "product_issues_2026-11-01_11-16-26.csv",
+        "bytes": 1213579,
+        "sha256": "9b483a0ba1f7957eb6de17e8c22a53f4a95d9227af7458711ff90679f22d3617"
+      },
+      {
+        "filename": "product_issues_2026-11-01_11-16-47.csv",
+        "bytes": 444532,
+        "sha256": "52abf0f399b6c5efd41c2480bbeafee02631ba73b158fc5dc0f472db61b4a2b2"
+      },
+      {
+        "filename": "product_issues_2026-11-01_11-09-34.csv",
+        "bytes": 19910229,
+        "sha256": "d5f23c7ff4dca9f9706106c78e8d2074fcb65286bd38902832b64c53bfbc310c"
+      }
+    ],
+    "rows": 57223,
+    "uniqueOfferIds": 27269,
+    "uniqueListingKeys": 29055,
+    "exactDuplicateRowsBeyondFirst": 0,
+    "offerOverlapPriceShipping": 0,
+    "listingOverlapPriceShipping": 0,
+    "issues": {
+      "Image processing or experiencing delays": {
+        "rows": 24,
+        "uniqueOfferIds": 4,
+        "uniqueListingKeys": 4,
+        "trafficTypes": {
+          "Free listings": 8,
+          "Shopping ads": 8,
+          "Dynamic remarketing": 8
+        },
+        "countries": {
+          "Liechtenstein": 12,
+          "Switzerland": 12
+        }
+      },
+      "Image too small": {
+        "rows": 17,
+        "uniqueOfferIds": 3,
+        "uniqueListingKeys": 4,
+        "trafficTypes": {
+          "Free listings": 7,
+          "Shopping ads": 5,
+          "Dynamic remarketing": 5
+        },
+        "countries": {
+          "Liechtenstein": 7,
+          "Switzerland": 10
+        }
+      },
+      "Missing attribute: [availability]": {
+        "rows": 40,
+        "uniqueOfferIds": 20,
+        "uniqueListingKeys": 20,
+        "trafficTypes": {
+          "Free listings": 40
+        },
+        "countries": {
+          "Liechtenstein": 20,
+          "Switzerland": 20
+        }
+      },
+      "Missing product price": {
+        "rows": 4269,
+        "uniqueOfferIds": 2004,
+        "uniqueListingKeys": 2004,
+        "trafficTypes": {
+          "Free listings": 4269
+        },
+        "countries": {
+          "Switzerland": 2004,
+          "Liechtenstein": 2004,
+          "Germany": 261
+        }
+      },
+      "Missing shipping info in some countries": {
+        "rows": 1510,
+        "uniqueOfferIds": 1510,
+        "uniqueListingKeys": 1510,
+        "trafficTypes": {
+          "Free listings": 1510
+        },
+        "countries": {
+          "Germany": 1510
+        }
+      },
+      "Over capacity for Shopping ads (in CSS program)": {
+        "rows": 51082,
+        "uniqueOfferIds": 23755,
+        "uniqueListingKeys": 25541,
+        "trafficTypes": {
+          "Shopping ads": 25541,
+          "Dynamic remarketing": 25541
+        },
+        "countries": {
+          "Switzerland": 51082
+        }
+      },
+      "Personalized advertising: Identity and belief": {
+        "rows": 3,
+        "uniqueOfferIds": 2,
+        "uniqueListingKeys": 2,
+        "trafficTypes": {
+          "Dynamic remarketing": 3
+        },
+        "countries": {
+          "Switzerland": 2,
+          "Liechtenstein": 1
+        }
+      },
+      "Personalized advertising: Sexual interests": {
+        "rows": 11,
+        "uniqueOfferIds": 8,
+        "uniqueListingKeys": 8,
+        "trafficTypes": {
+          "Dynamic remarketing": 11
+        },
+        "countries": {
+          "Switzerland": 8,
+          "Liechtenstein": 3
+        }
+      },
+      "Personalized advertising: legal restrictions": {
+        "rows": 2,
+        "uniqueOfferIds": 2,
+        "uniqueListingKeys": 2,
+        "trafficTypes": {
+          "Dynamic remarketing": 2
+        },
+        "countries": {
+          "Switzerland": 2
+        }
+      },
+      "Personalized advertising: personal hardships": {
+        "rows": 123,
+        "uniqueOfferIds": 77,
+        "uniqueListingKeys": 85,
+        "trafficTypes": {
+          "Dynamic remarketing": 123
+        },
+        "countries": {
+          "Liechtenstein": 38,
+          "Switzerland": 85
+        }
+      },
+      "Product page unavailable": {
+        "rows": 3,
+        "uniqueOfferIds": 1,
+        "uniqueListingKeys": 1,
+        "trafficTypes": {
+          "Free listings": 1,
+          "Shopping ads": 1,
+          "Dynamic remarketing": 1
+        },
+        "countries": {
+          "Switzerland": 3
+        }
+      },
+      "Promotional overlay on image": {
+        "rows": 113,
+        "uniqueOfferIds": 22,
+        "uniqueListingKeys": 23,
+        "trafficTypes": {
+          "Free listings": 39,
+          "Shopping ads": 37,
+          "Dynamic remarketing": 37
+        },
+        "countries": {
+          "Switzerland": 67,
+          "Liechtenstein": 46
+        }
+      },
+      "Restricted adult content": {
+        "rows": 11,
+        "uniqueOfferIds": 8,
+        "uniqueListingKeys": 8,
+        "trafficTypes": {
+          "Dynamic remarketing": 11
+        },
+        "countries": {
+          "Switzerland": 8,
+          "Liechtenstein": 3
+        }
+      },
+      "Sale of live animals": {
+        "rows": 6,
+        "uniqueOfferIds": 2,
+        "uniqueListingKeys": 2,
+        "trafficTypes": {
+          "Dynamic remarketing": 2,
+          "Shopping ads": 2,
+          "Free listings": 2
+        },
+        "countries": {
+          "Switzerland": 6
+        }
+      },
+      "Tobacco products & related equipment": {
+        "rows": 6,
+        "uniqueOfferIds": 2,
+        "uniqueListingKeys": 2,
+        "trafficTypes": {
+          "Free listings": 2,
+          "Dynamic remarketing": 2,
+          "Shopping ads": 2
+        },
+        "countries": {
+          "Switzerland": 6
+        }
+      },
+      "Weapons": {
+        "rows": 3,
+        "uniqueOfferIds": 1,
+        "uniqueListingKeys": 1,
+        "trafficTypes": {
+          "Free listings": 1,
+          "Shopping ads": 1,
+          "Dynamic remarketing": 1
+        },
+        "countries": {
+          "Switzerland": 3
+        }
+      }
+    },
+    "identityKey": [
+      "Channels",
+      "Language",
+      "Feed label",
+      "Item ID"
+    ],
+    "accountIdInExports": "not_present",
+    "statusScope": "Rows and country/traffic-specific findings, not current catalogue products or blanket disapproval",
+    "exportTimeZone": "not_stated"
+  },
+  "liveChecksAndOneShopifyWrite": {
+    "currentMerchantAccount": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH",
+      "source": "fresh get_connectors",
+      "supportedWriteActions": [],
+      "readProbeState": "MCP -32603 timeout, exact new-price-item query, no retry; data unknown"
+    },
+    "shopIdentity": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "whiteImageFix": {
+      "diff": {
+        "scope": "one existing variant media association only",
+        "productId": "gid://shopify/Product/15491403940225",
+        "variantId": "gid://shopify/ProductVariant/67814685475207",
+        "oldMedia": {
+          "id": "gid://shopify/MediaImage/70451372786049",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac777573-2a5e-48d5-bc18-786264da2ed0.jpg?v=1786150033",
+            "width": 214,
+            "height": 349
+          }
+        },
+        "newMedia": {
+          "id": "gid://shopify/MediaImage/70451373080961",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg?v=1786150034",
+            "width": 655,
+            "height": 655,
+            "altText": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 4 | LuxeStyle"
+          }
+        },
+        "keep": {
+          "status": "ACTIVE",
+          "tags": [
+            "accessoire",
+            "armband",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "geschenk",
+            "kategorie-uhr",
+            "neuheit",
+            "rueckhol-0907",
+            "uhr",
+            "uhren",
+            "varianten-nachgezogen-1025"
+          ],
+          "price": "51.90",
+          "sku": "CJNS304217801AZ",
+          "inventoryPolicy": "CONTINUE",
+          "tracked": false,
+          "inventoryQuantity": 0
+        },
+        "permission": "Owner current explicit request to fix uploaded specific product issue reports; no channel/status/tag activation",
+        "merchantState": "unconfirmed_no_merchant_writer"
+      },
+      "mutation": {
+        "data": {
+          "productVariantsBulkUpdate": {
+            "product": {
+              "id": "gid://shopify/Product/15491403940225",
+              "status": "ACTIVE",
+              "tags": [
+                "accessoire",
+                "armband",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "geschenk",
+                "kategorie-uhr",
+                "neuheit",
+                "rueckhol-0907",
+                "uhr",
+                "uhren",
+                "varianten-nachgezogen-1025"
+              ]
+            },
+            "productVariants": [
+              {
+                "id": "gid://shopify/ProductVariant/67814685475207",
+                "title": "Weiss",
+                "sku": "CJNS304217801AZ",
+                "price": "51.90",
+                "inventoryPolicy": "CONTINUE",
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/70451373080961",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg?v=1786150034",
+                        "width": 655,
+                        "height": 655
+                      }
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo3MDQ1MTM3MzA4MDk2MSwibGFzdF92YWx1ZSI6NzA0NTEzNzMwODA5NjF9"
+                  }
+                }
+              }
+            ],
+            "userErrors": []
+          }
+        }
+      },
+      "verified": {
+        "nativeImageChanged": true,
+        "otherFieldsUnchanged": true,
+        "variant": {
+          "id": "gid://shopify/ProductVariant/67814685475207",
+          "title": "Weiss",
+          "sku": "CJNS304217801AZ",
+          "price": "51.90",
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/69803717656967",
+            "tracked": false
+          },
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/70451373080961",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg?v=1786150034",
+                  "width": 655,
+                  "height": 655
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo3MDQ1MTM3MzA4MDk2MSwibGFzdF92YWx1ZSI6NzA0NTEzNzMwODA5NjF9"
+            }
+          }
+        },
+        "productId": "gid://shopify/Product/15491403940225",
+        "status": "ACTIVE",
+        "tags": [
+          "accessoire",
+          "armband",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "geschenk",
+          "kategorie-uhr",
+          "neuheit",
+          "rueckhol-0907",
+          "uhr",
+          "uhren",
+          "varianten-nachgezogen-1025"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/quarzuhr-mit-silikonarmband-im-comic-stil-624300"
+      }
+    },
+    "merchantSourceProbe": {
+      "args": {
+        "connector": "google_merchant",
+        "accounts": [
+          "5797470070"
+        ],
+        "date_from": "2026-11-01",
+        "date_to": "2026-11-01",
+        "fields": [
+          "account_id",
+          "account_name",
+          "product_id",
+          "product_channel",
+          "product_content_language",
+          "product_feed_label",
+          "product_data_source",
+          "product_price",
+          "product_price_currency_code",
+          "product_availability",
+          "product_link",
+          "product_canonical_link",
+          "product_image_link"
+        ],
+        "filters": [
+          [
+            "product_id",
+            "eq",
+            "15413245706625_14:691;5:4183#3xl"
+          ],
+          "and",
+          [
+            "product_content_language",
+            "eq",
+            "de"
+          ],
+          "and",
+          [
+            "product_feed_label",
+            "eq",
+            "CH"
+          ],
+          "and",
+          [
+            "product_channel",
+            "eq",
+            "ONLINE"
+          ]
+        ]
+      },
+      "reason": "New user CSV 01.11 missing-price offer differs from earlier timed-out ID. One exact source/price/link query; no general metrics or old-query retry.",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+          }
+        ],
+        "isError": true
+      },
+      "status": "UNKNOWN_TIMEOUT"
+    },
+    "shopifyPriceAndUrlTargets": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/15413245706625",
+          "title": "Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit)",
+          "handle": "herren-cordhose-retro-weites-bein-japanischer-stil-freizeit",
+          "status": "DRAFT",
+          "tags": [
+            "ae-import",
+            "bild-ok",
+            "dropship",
+            "herren",
+            "herren-mode",
+            "hose",
+            "hosen",
+            "keine-lieferanten-ref",
+            "neu"
+          ],
+          "onlineStoreUrl": null,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69731178578305",
+                "image": {
+                  "id": "gid://shopify/ImageSource/69731178578305",
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/herrenbekleidung-japanische-retro-overal.jpg?v=1781959892",
+                  "altText": "Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit) – LuxeStyle Schweiz",
+                  "width": 800,
+                  "height": 800
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2OTczMTE3ODU3ODMwNSwibGFzdF92YWx1ZSI6IjEifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55749270471041",
+                "title": "2XL / schwarz",
+                "sku": "14:193;5:4182#2XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451544961",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270503809",
+                "title": "2XL / Grau",
+                "sku": "14:691;5:4182#2XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 199,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451577729",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270536577",
+                "title": "3XL / schwarz",
+                "sku": "14:193;5:4183#3XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451610497",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270569345",
+                "title": "3XL / Grau",
+                "sku": "14:691;5:4183#3XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451643265",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270602113",
+                "title": "S / schwarz",
+                "sku": "14:193;5:100014064#S",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451676033",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270634881",
+                "title": "S / Grau",
+                "sku": "14:691;5:100014064#S",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451708801",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270667649",
+                "title": "M / schwarz",
+                "sku": "14:193;5:361386#M",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451741569",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270700417",
+                "title": "M / Grau",
+                "sku": "14:691;5:361386#M",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451774337",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270733185",
+                "title": "L / schwarz",
+                "sku": "14:193;5:361385#L",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451807105",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270765953",
+                "title": "L / Grau",
+                "sku": "14:691;5:361385#L",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451839873",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270798721",
+                "title": "XL / schwarz",
+                "sku": "14:193;5:100014065#XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451872641",
+                  "tracked": true
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55749270831489",
+                "title": "XL / Grau",
+                "sku": "14:691;5:100014065#XL",
+                "price": "44.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 200,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/55097451905409",
+                  "tracked": true
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo1NTc0OTI3MDgzMTQ4OSwibGFzdF92YWx1ZSI6MTJ9"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15508423934337",
+          "title": "Wasserdichte Quarzuhr mit Nubuklederarmband",
+          "handle": "wasserdichte-quarzuhr-mit-nubuklederarmband-979328",
+          "status": "ACTIVE",
+          "tags": [
+            "armband",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "kategorie-uhr",
+            "tech",
+            "uhr",
+            "varianten-nachgezogen-1025"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/70614961226113",
+                "image": {
+                  "id": "gid://shopify/ImageSource/70614961226113",
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f4924ad4-95b0-4298-b577-36ef79ea0543.jpg?v=1787288228",
+                  "altText": "Wasserdichte Quarzuhr mit Nubuklederarmband | LuxeStyle",
+                  "width": 790,
+                  "height": 750
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/70614961521025",
+                "image": {
+                  "id": "gid://shopify/ImageSource/70614961521025",
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac353577-6f13-4805-85c0-f030cb1f7aea.jpg?v=1787288229",
+                  "altText": "Wasserdichte Quarzuhr mit Nubuklederarmband – Bild 2 | LuxeStyle",
+                  "width": 790,
+                  "height": 750
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/70614961553793",
+                "image": {
+                  "id": "gid://shopify/ImageSource/70614961553793",
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31199d9d-62c6-4db7-9fdf-42130e603ffc.jpg?v=1787288229",
+                  "altText": "Wasserdichte Quarzuhr mit Nubuklederarmband – Bild 3 | LuxeStyle",
+                  "width": 790,
+                  "height": 750
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true,
+              "endCursor": "eyJsYXN0X2lkIjo3MDYxNDk2MTU1Mzc5MywibGFzdF92YWx1ZSI6IjMifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67802092077447",
+                "title": "Hellbraun Leder Schwarz Schale",
+                "sku": "CJZN147450201AZ",
+                "price": "23.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/69790171267463",
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67802092110215",
+                "title": "Dunkelbraun Haut Schwarz",
+                "sku": "CJZN147450202BY",
+                "price": "23.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/69790171300231",
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67802092142983",
+                "title": "Schwarz Haut Schwarz Schale",
+                "sku": "CJZN147450203CX",
+                "price": "23.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "id": "gid://shopify/InventoryItem/69790171332999",
+                  "tracked": false
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzgwMjA5MjE0Mjk4MywibGFzdF92YWx1ZSI6M30="
+            }
+          }
+        }
+      ]
+    },
+    "scope": "No Merchant, price, shipping, status, tag, exclusion, campaign, flow, order or workflow write; one exact existing Shopify variant image reassociation",
+    "dailyReportsRepeated": false,
+    "purchaseWatchReopened": false
+  },
+  "publicWhiteImageAfter": {
+    "url": "https://luxestyle.ch/products/quarzuhr-mit-silikonarmband-im-comic-stil-624300.js",
+    "status": 200,
+    "productId": 15491403940225,
+    "variantId": 67814685475207,
+    "title": "Weiss",
+    "price": 5190,
+    "available": true,
+    "featuredImage": {
+      "id": 83228918382977,
+      "product_id": 15491403940225,
+      "position": 4,
+      "created_at": "2026-08-08T02:47:11+02:00",
+      "updated_at": "2026-08-08T02:47:14+02:00",
+      "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 4 | LuxeStyle",
+      "width": 655,
+      "height": 655,
+      "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg?v=1786150034",
+      "variant_ids": [
+        67814685475207
+      ]
+    },
+    "sourceJsonSha256": "16efb4e15a81f17e92cc2692f1975ff8b14bc92087609b0be9294656037e7e94",
+    "expectedImageUrlFragment": "38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg",
+    "publicImageConfirmed": true,
+    "merchantApprovalStillUnknown": true
+  },
+  "threeImageReview": {
+    "schemaVersion": 1,
+    "scope": "Read-only countercheck for three exact supplied product/variant/SKU targets; existing Shopify gallery reference only, no image edits/upscale/generation or remote writes",
+    "checkedAt": "2026-11-01T20:05:52.208425+00:00",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "whiteWatch": {
+      "productId": "gid://shopify/Product/15491403940225",
+      "variantId": "gid://shopify/ProductVariant/67814685475207",
+      "status": "ACTIVE",
+      "title": "Weiss",
+      "priceCHF": "51.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "tracked": false,
+      "inventoryQuantity": 0,
+      "tags": [
+        "accessoire",
+        "armband",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenk",
+        "kategorie-uhr",
+        "neuheit",
+        "rueckhol-0907",
+        "uhr",
+        "uhren",
+        "varianten-nachgezogen-1025"
+      ],
+      "socialBlock": "rueckhol-0907 present; preserve tag and do not infer social/ads reactivation approval from image correction",
+      "existingImage": {
+        "target": "white",
+        "productId": "gid://shopify/Product/15491403940225",
+        "variantId": "gid://shopify/ProductVariant/67814685475207",
+        "mediaId": "gid://shopify/MediaImage/70451372786049",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac777573-2a5e-48d5-bc18-786264da2ed0.jpg?v=1786150033",
+        "nativeDimensions": [
+          214,
+          349
+        ],
+        "currentlyAssigned": true,
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "actualDimensions": [
+          214,
+          349
+        ],
+        "format": "JPEG",
+        "bytes": 17174,
+        "sha256": "dfe0765b262e301493b5591d8480ad4b29e56ab156edf969a342dc6458acd5bd",
+        "path": "/workspace/luxestyle-review/merchant-csv-20261101/images/white-70451372786049.jpeg"
+      },
+      "candidateImage": {
+        "target": "white",
+        "productId": "gid://shopify/Product/15491403940225",
+        "variantId": "gid://shopify/ProductVariant/67814685475207",
+        "mediaId": "gid://shopify/MediaImage/70451373080961",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38fdf9b7-233d-4dc2-a964-7fad1b516b91_fine.jpg?v=1786150034",
+        "nativeDimensions": [
+          655,
+          655
+        ],
+        "currentlyAssigned": false,
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "actualDimensions": [
+          655,
+          655
+        ],
+        "format": "JPEG",
+        "bytes": 71789,
+        "sha256": "d43b8146288de20b71110a3d952616ec01bd17784bde438036755865de9e82ea",
+        "path": "/workspace/luxestyle-review/merchant-csv-20261101/images/white-70451373080961.jpeg"
+      },
+      "visualDecision": "Candidate is an actual wrist photograph of the same white OLEVS comic-style watch: matching shape, white strap and outlined case/dial, no promotional overlay in candidate. Existing primary214x349 is too small relative to report threshold; candidate655x655 is a genuine source image, not upscaled.",
+      "proposedDiff": {
+        "target": "Only exact white variant primary media assignment",
+        "beforeMediaId": "gid://shopify/MediaImage/70451372786049",
+        "afterMediaId": "gid://shopify/MediaImage/70451373080961",
+        "preserve": [
+          "Product gallery and every other variant",
+          "Tags/status/prices/inventory settings",
+          "Channel and Google exclusions"
+        ],
+        "implementationRequirement": "Discover supported native assignment replacement mutation; appending while leaving the small primary selected may not repair feed image route. Verify exact current Merchant image-link source before claiming feed repair; fresh reread afterwards."
+      },
+      "rejectedGalleryImages": [
+        {
+          "mediaId": "gid://shopify/MediaImage/70451373048193",
+          "reason": "800x800 feature collage with unverified text overlays/waterproof/luminous claims, not an approved plain variant image"
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70451373015425",
+          "reason": "650x468 three-colour comparison with Choose your favorite color text; height below500 and wrong single-variant representation"
+        }
+      ],
+      "galleryScope": "First six product media only; hasNextPage true. Suitable candidate found within scope, no mass pagination."
+    },
+    "silverSmartwatch": {
+      "productId": "gid://shopify/Product/15524360028545",
+      "variantId": "gid://shopify/ProductVariant/67801774522759",
+      "title": "Silber",
+      "status": "ACTIVE",
+      "priceCHF": "33.90",
+      "availableForSale": true,
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "kategorie-uhr",
+        "such-smartband",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "inventoryPolicy": "CONTINUE",
+      "tracked": false,
+      "inventoryQuantity": 0,
+      "existingImage": {
+        "target": "silver",
+        "productId": "gid://shopify/Product/15524360028545",
+        "variantId": "gid://shopify/ProductVariant/67801774522759",
+        "mediaId": "gid://shopify/MediaImage/70776223039873",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/119546ca-8f57-4b7e-8c93-57b763621014.jpg?v=1788448804",
+        "nativeDimensions": [
+          208,
+          246
+        ],
+        "currentlyAssigned": true,
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "actualDimensions": [
+          208,
+          246
+        ],
+        "format": "JPEG",
+        "bytes": 12574,
+        "sha256": "402f5b229173b179d6c360f47e1b692a9396b4699da6500c812d3989a69afb31",
+        "path": "/workspace/luxestyle-review/merchant-csv-20261101/images/silver-70776223039873.jpeg"
+      },
+      "visualDecision": "No safe high-resolution single silver-variant image found in complete six-image native gallery.1920 image shows retail packaging/gold-and-pink examples and text;1276x1702 paired watches/gold hand-held model and1702x1276 box/multiple colours are not an exact clean silver variant replacement.",
+      "candidateState": "BLOCKED_SAME_SILVER_HIGH_RES_SOURCE_NOT_PROVEN",
+      "galleryScope": "Native product media six nodes, hasNextPage false; exact variant one assigned small image, hasNextPage false.",
+      "lastGallerySource": {
+        "productId": "gid://shopify/Product/15524360028545",
+        "variantId": "gid://shopify/ProductVariant/67801774522759",
+        "mediaId": "gid://shopify/MediaImage/70776223105409",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/844b18c1-1a54-454a-bc65-56475b09d397.jpg?v=1788448805",
+        "httpStatus": 200,
+        "actualDimensions": [
+          1276,
+          1702
+        ],
+        "path": "/workspace/luxestyle-review/merchant-csv-20261101/images/silver-70776223105409.jpeg",
+        "sha256": "a933ccff9c227a2d88b2500e62988c0ac099972ad64b07acd8d3fec02b234b9b"
+      },
+      "nextAllowedStep": "Use existing legitimate supplier connector for exact SKU CJJX192283801AZ source image if available; no invented model/colour, automatic recolour or arbitrary upscale."
+    },
+    "draftHawaiiShirt": {
+      "productId": "gid://shopify/Product/15485321478529",
+      "title": "Hawaii-Hemd Kurzarm für Herren",
+      "status": "DRAFT",
+      "onlineStoreUrl": null,
+      "tags": [
+        "auto-entwurf-0926",
+        "bild-zu-klein",
+        "cj-real",
+        "dropship",
+        "farbcode-optionswert-pruefen",
+        "herren",
+        "mode",
+        "neuheit"
+      ],
+      "exactExportSku": "cj-cjds298610850xcYN6369XL",
+      "skuQuery": {
+        "nodes": [],
+        "hasNextPage": false,
+        "scope": "Exact supplied SKU plus product_id search only; no global absence claim"
+      },
+      "firstVariant": {
+        "id": "gid://shopify/ProductVariant/56031636226433",
+        "title": "XXS / XS",
+        "sku": "CJ-CJDS298610801AZ"
+      },
+      "firstSixImagesDimensions": [
+        [
+          244,
+          219
+        ],
+        [
+          243,
+          243
+        ],
+        [
+          243,
+          212
+        ],
+        [
+          244,
+          326
+        ],
+        [
+          240,
+          216
+        ],
+        [
+          245,
+          222
+        ]
+      ],
+      "mediaScope": "first6 only, hasNextPage true; no high-resolution source elsewhere ruled out",
+      "visualDecision": "Downloaded primary244x219 shows a two-view dark floral shirt montage. Existing image-zu-klein and option-code review flags remain unresolved; exact requested SKU not bound.",
+      "candidateState": "HOLD_DRAFT_NO_ACTIVATION_OR_BLIND_IMAGE_SWAP",
+      "nextAllowedStep": "Resolve exact SKU/options and genuine original image provenance under existing draft status; do not activate or remove review tags."
+    },
+    "writes": {
+      "shopify": 0,
+      "merchantFeed": 0,
+      "tags": 0,
+      "imageEditsOrGeneration": 0,
+      "orders": 0,
+      "analytics": 0
+    },
+    "limits": [
+      "CSV report snapshot is not current Merchant status",
+      "Shopify ACTIVE/availableForSale and inventory0 do not establish delivery, stock promise or Merchant approval",
+      "No global gallery completeness claim for white watch or draft shirt; native silver gallery complete within query",
+      "No old policy exclusions removed and no channel activated"
+    ]
+  },
+  "publicUrlAndShippingPolicy": [
+    {
+      "route": "default",
+      "requestedUrl": "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328?variant=67802092110215",
+      "finalUrl": "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328?variant=67802092110215",
+      "status": 200,
+      "sha256": "054a1523efaa3b0aa9b4fadb112800bc8812ddcc1c3c319231907ac835245a14",
+      "bytes": 1022524,
+      "path": "/workspace/luxestyle-review/merchant-csv-20261101/PUBLIC-default.html",
+      "canonical": [
+        "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328"
+      ],
+      "title": [
+        "\n  Wasserdichte Quarzuhr mit Nubuklederarmband | LuxeStyle CH\n"
+      ],
+      "notGoogleCrawlEvidence": true
+    },
+    {
+      "route": "fr",
+      "requestedUrl": "https://luxestyle.ch/fr/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328?variant=67802092110215",
+      "finalUrl": "https://luxestyle.ch/fr/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328?variant=67802092110215",
+      "status": 200,
+      "sha256": "545b059de6c8d72f247ac3d0405b9336cd30071d2e5fb223fadaab7149ae8985",
+      "bytes": 976336,
+      "path": "/workspace/luxestyle-review/merchant-csv-20261101/PUBLIC-fr.html",
+      "canonical": [
+        "https://luxestyle.ch/fr/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328"
+      ],
+      "title": [
+        "\n  Wasserdichte Quarzuhr mit Nubuklederarmband | LuxeStyle CH\n"
+      ],
+      "notGoogleCrawlEvidence": true
+    },
+    {
+      "route": "product-json",
+      "requestedUrl": "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328.js",
+      "finalUrl": "https://luxestyle.ch/products/wasserdichte-quarzuhr-mit-nubuklederarmband-979328.js",
+      "status": 200,
+      "sha256": "d5d20e050f79036f7373214f25031b45de7b308475f6f37e9103394121f1b5a2",
+      "bytes": 11089,
+      "path": "/workspace/luxestyle-review/merchant-csv-20261101/PUBLIC-product-json.json",
+      "productId": 15508423934337,
+      "variantMatch": [
+        {
+          "id": 67802092110215,
+          "available": true,
+          "price": 2390,
+          "sku": "CJZN147450202BY",
+          "title": "Dunkelbraun Haut Schwarz"
+        }
+      ]
+    },
+    {
+      "route": "shipping-policy",
+      "requestedUrl": "https://luxestyle.ch/policies/shipping-policy",
+      "finalUrl": "https://luxestyle.ch/policies/shipping-policy",
+      "status": 200,
+      "sha256": "8a80c4b42db3690112377ab85db83dbbb40c66d41ec1d1a1a45ab50eadd39042",
+      "bytes": 906921,
+      "path": "/workspace/luxestyle-review/merchant-csv-20261101/PUBLIC-shipping-policy.html",
+      "canonical": [
+        "https://luxestyle.ch/policies/shipping-policy"
+      ],
+      "title": [
+        "\n  Versand\n &ndash; LuxeStyle"
+      ],
+      "notGoogleCrawlEvidence": true,
+      "policyText": "Versandbedingungen Hier erfährst du alles über den Versand deiner Bestellung bei LuxeStyle – Liefergebiet, Kosten, Lieferzeiten und was passiert, wenn einmal etwas nicht wie geplant läuft. Wir machen bewusst realistische Angaben, damit du weisst, woran du bist. Liefergebiet Wir liefern in die Schweiz und nach Liechtenstein . Ein Versand in andere Länder (z. B. in die EU oder in die USA) ist derzeit nicht möglich. Bitte gib bei der Bestellung eine gültige Lieferadresse in der Schweiz oder in Liechtenstein an. Versandkosten Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten (innerhalb der Schweiz). Liechtenstein: CHF 14.90 pro Bestellung, ohne Gratisversand. Bei einem Bestellwert (nach Abzug von Rabatten) unter CHF 50.– werden die Versandkosten transparent im Warenkorb und im Checkout angezeigt, bevor du die Bestellung verbindlich abschliesst. Lieferzeiten Wir liefern aus verschiedenen Lagern, und die Lieferzeit hängt davon ab, woher dein Artikel kommt. Auf jeder Produktseite steht die Angabe, die für genau diesen Artikel gilt: Ab Schweizer Lager (Blitzversand): meist 2–3 Werktage ; das genaue Datum steht beim Artikel und in der Kasse. Druck auf Bestellung (personalisierte Artikel, Poster, Textilien): 7–14 Werktage , inklusive Produktion. Direktversand ab Lieferantenlager (der grösste Teil des Sortiments): 10–20 Werktage . Nach Liechtenstein: in der Regel 15–45 Tage (eigene Versandlinie, länger als innerhalb der Schweiz). Werktage sind Montag bis Freitag, ausgenommen gesetzliche Feiertage. Die genannten Zeiten sind Richtwerte und keine garantierten Zustelltermine. Die Angabe auf der Produktseite ist die massgebliche. Direktversand ab Lieferantenlager Ehrlicher Hinweis: Ein grosser Teil unseres Sortiments wird im Direktversand direkt ab dem Lager unseres Lieferanten an dich versendet – je nach Artikel aus der EU oder aus Übersee. Das hält unsere Preise fair, bedeutet aber die oben genannten 10–20 Werktage und kann im Einzelfall noch länger dauern – zum Beispiel bei hoher Nachfrage, Lieferengpässen oder während Aktions- und Feiertagszeiten. Sollte sich deine Lieferung spürbar verzögern, informieren wir dich proaktiv per E-Mail . Du musst also nicht nachfragen – wir melden uns, sobald wir wissen, dass es länger dauert. Versanddienstleister Für die Zustellung arbeiten wir mit etablierten Versanddienstleistern zusammen, in der Regel der Schweizerischen Post , DHL sowie deren Partnerunternehmen. Welcher Dienstleister deine Sendung transportiert, kann je nach Produkt und Lager variieren. Sendungsverfolgung Sobald deine Bestellung versandt wurde, erhältst du eine Versandbestätigung per E-Mail . Sofern für die jeweilige Sendung verfügbar, enthält diese einen Link zur Sendungsverfolgung (Tracking) , mit dem du den Status deiner Lieferung jederzeit einsehen kannst. Nicht zustellbare Sendungen Bitte achte darauf, dass deine Lieferadresse vollständig und korrekt ist. Kann eine Sendung nicht zugestellt werden – etwa wegen einer unvollständigen oder falschen Adresse, weil sie am Abholpunkt nicht innerhalb der Frist abgeholt wird oder die Annahme verweigert wurde – geht das Paket an uns bzw. an den Versender zurück. In einem solchen Fall kontaktieren wir dich, um das weitere Vorgehen zu klären (erneuter Versand oder Rückerstattung). Für einen erneuten Versand aufgrund einer von dir zu vertretenden fehlerhaften oder unvollständigen Adresse können erneut Versandkosten anfallen. Kontakt Hast du Fragen zu deiner Lieferung oder zum Versandstatus? Schreib uns jederzeit – wir helfen dir gerne weiter: LuxeStyle Hühnerhubelstrasse 37, 3123 Belp, Schweiz E-Mail: info@luxestyle.ch Telefon: +41 79 538 28 14"
+    }
+  ],
+  "existingSourceRoute": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-01 20:04:39 UTC",
+    "scope": "Read-only bounded repository-source audit after current owner CSV fix request; no scripts, API data reports, workflows, uploads, source refreshes or account writes executed",
+    "canonicalMemory": [
+      {
+        "file": "README.md",
+        "gitBlobSha": "2d7b22bc075bc43860ca408b3c54002686ade828"
+      },
+      {
+        "file": "PROJEKTGEDAECHTNIS.md",
+        "gitBlobSha": "b3a46fd147a394aefe5d68184c417dfa7e7cc6c3"
+      },
+      {
+        "file": "ARBEITSSTAND.json",
+        "gitBlobSha": "c83d9c39de2bb63f44bfb30ee170f95c92dc10db"
+      },
+      {
+        "file": "TAGESPROTOKOLL.md",
+        "gitBlobSha": "fc47845291625c631493b66cb6114f1a8d7b616b"
+      }
+    ],
+    "sources": [
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "gitBlobSha": "765c75c8121d5697a25c8200e7366f900718769b"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/gmc_feed_item.mjs",
+        "gitBlobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/kanal_sperren.mjs",
+        "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": ".github/workflows/shop-autopilot.yml",
+        "gitBlobSha": "d7762d3ee7f808e5774fa9e6a762bf3c0b14fe0c"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/gmc_schaufenster.mjs",
+        "gitBlobSha": "0bed98557a3fcdf14c2992b386f6ba2e9df2a18e"
+      },
+      {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "path": "automation/lib/gmc_schaufenster.mjs",
+        "gitBlobSha": "90cf27308debe167ae9cd20bcfa763efd3e59f30"
+      }
+    ],
+    "unchangedKnownSources": true,
+    "findings": [
+      {
+        "kind": "MEASURED_SOURCE",
+        "source": "automation/autopilot/merchant_feed.mjs",
+        "facts": [
+          "id=x.handle, not ProductID_SKU or shopify_ZZ IDs",
+          "variants(first:1) only; first-variant price and handle-level product link",
+          "Produces local automation/autopilot/google-merchant-feed.xml; no Merchant upload/data-source fetch action",
+          "CH shipping default7 is configuration of this generator, not proof of current Merchant DE shipping configuration"
+        ],
+        "implication": "No authenticated binding of this generator/XML to current CSV primary source. Regenerating/replacing could change IDs, variant coverage, exclusions and shipping; not a source-specific repair."
+      },
+      {
+        "kind": "MEASURED_SOURCE",
+        "source": "automation/lib/gmc_feed_item.mjs",
+        "facts": [
+          "pruefeProdukt rejects nonpositive/missing prices",
+          "Every accepted feedItem writes g:price and g:availability",
+          "Unknown availability defaults to in stock because only strict false maps to out of stock",
+          "GTIN/SKU fallback and channel-rule limits remain reasons against unchecked replacement feed"
+        ],
+        "implication": "Current code does not establish an omission of price/availability as the cause of the uploaded CSVs. Do not auto-fill inventory/availability or identifiers from missing evidence."
+      },
+      {
+        "kind": "MEASURED_SOURCE",
+        "source": "automation/gmc_schaufenster.mjs and lib/gmc_schaufenster.mjs",
+        "facts": [
+          "Operates on Shopify Google publication using publishableUnpublish/Publish; no Merchant source/attribute updater",
+          "Even plan/pruefen executes active-product Bulk and order reads; no command was run",
+          "150000/90000 limits are current source constants/historical comments, not freshly verified Merchant account/CSS quotas"
+        ],
+        "implication": "Not a safe isolated repair for ads-only capacity errors. Removing the product from the Google publication may affect Free Listings; do not infer required removal amount or run it from CSV counts."
+      },
+      {
+        "kind": "MEASURED_SOURCE",
+        "source": ".github/workflows/shop-autopilot.yml",
+        "facts": [
+          "Scheduled/manual maintenance with LIVE default1 and SEO/images/health task",
+          "Not an isolated Merchant source refresh action"
+        ],
+        "implication": "Do not dispatch as a substitute for a verified targeted source refresh."
+      },
+      {
+        "kind": "BOUNDED_SEARCH",
+        "source": "GitHub default branch search, topn3 each",
+        "facts": [
+          "ProductID_SKU: no hits",
+          "merchantapi.googleapis.com: no hits",
+          "shopify_ZZ: no hits"
+        ],
+        "implication": "No source registry/writer route found in these bounded searches. No proof that no other private/external route exists."
+      }
+    ],
+    "sourceBinding": {
+      "state": "unknown",
+      "activeMerchantSourceId": "unknown",
+      "sourceType": "unknown",
+      "fetchUrl": "unknown",
+      "submittedPriceAndAvailabilityFields": "unknown",
+      "safeIsolatedWriterOrRefresh": "not_identified_in_this_bounded_repo_audit"
+    },
+    "limits": [
+      "This agent did not call Windsor product data or reattempt previous timeouts",
+      "Connector/account identity and action discovery belong to root fresh evidence; current root reports Merchant5797470070 LuxeStyleCH and no write actions",
+      "No credentials, runtime secret values, customer/order data or other-brand content read",
+      "No workflow, generator, gmc_schaufenster phase, deployment, install, API mutation or source replacement run"
+    ],
+    "nextStep": "Read exact current primary-source binding and raw fields for a narrowly selected CSV listing via legitimate Merchant access. Preserve exact offer ID, language, feedlabel and channel; Shopify price/image correction alone is not a confirmed Merchant push."
+  },
+  "repairReviewManifest": {
+    "reviewRows": 3676,
+    "deduplicatedIssueListingKeys": 3676,
+    "capacityListingKeysNotIncludedInRepairCsv": 25541,
+    "reviewCsvSha256": "d5b062e0c6b2768c3a259ddbdd17c2f93497609c3ad64ac775ff50ee00a01cb9",
+    "role": "Review manifest only, never upload to Merchant as product data",
+    "sourceRowsCovered": 6141,
+    "shopifyImageFixRows": 2,
+    "draftPriceReviewRows": 12,
+    "exactCasePreserved": true
+  },
+  "actualChanges": {
+    "shopifyVariantImageAssociationsChanged": 1,
+    "productId": "15491403940225",
+    "variantId": "67814685475207",
+    "oldMediaId": "70451372786049",
+    "newMediaId": "70451373080961",
+    "oldDimensions": [
+      214,
+      349
+    ],
+    "newDimensions": [
+      655,
+      655
+    ],
+    "nativeAndPublicReadback": true,
+    "otherPriceSkuInventoryStatusTagsUnchanged": true,
+    "merchantErrorResolved": "unknown_no_merchant_status_readback"
+  },
+  "conclusions": [
+    {
+      "area": "price",
+      "state": "blocked_source_read_and_writer",
+      "snapshot": "2004 distinct offer IDs in missing-price rows,1915 product-prefix+SKU and89 opaque IDs;20 also missingavailability",
+      "currentCounterprobe": "Product15413245706625 is DRAFT/nullStorefront with12variants eachCHF44.90. Do not activate or fill advertising prices for an unpublished product. Actual original source and IDcase must be read before stale-entry removal; not a broad price rewrite."
+    },
+    {
+      "area": "shipping",
+      "state": "prepared_country_scope_cleanup_only",
+      "snapshot": "1510 distinct listings with shipping issue in Germany; additional261 missing-price entries have Germany country rows",
+      "currentCounterprobe": "Current public shipping policy explicitly CH/LI only. Do not invent Germany rates or enable Germany shipping. Only Germany destination scoped cleanup after actual source/target-country read; preserve German language and CH/LI entries, do not delete whole DE feedlabel."
+    },
+    {
+      "area": "CSS_capacity",
+      "state": "verified_snapshot_not_fixed",
+      "snapshot": "51082 rows,25541 multilingual listingkeys,23755offerIDs, only Shoppingads/Dynamicremarketing",
+      "limits": "No Free Listings rows for this issue, no current numeric account quota, no blind catalogue/unpublish/exclusion sweep or budget/plan upgrade."
+    },
+    {
+      "area": "images",
+      "state": "one_real_shopify_fix_other_model_blockers",
+      "counterprobe": "White exact same model photo now655; silver has no verified large same-colour solo photo; DRAFT Hawaii item and unbound exportSKU preserved. No upscaling or wrong gold/box image."
+    },
+    {
+      "area": "page",
+      "state": "current_public_site_ok_merchant_crawl_unknown",
+      "counterprobe": "Exact FR/default target for15508423934337/67802092110215 HTTP200 and publicJSON variantavailableCHF23.90. CSV does not contain submitted URL, no real Googlebot crawl/review proof; no guessed redirect."
+    },
+    {
+      "area": "policy",
+      "state": "preserved",
+      "counterprobe": "Export policy rows are not independent proof of physical product category or mistaken classification. No compliance/sperrtag removals, Google activation or bulk appeals."
+    }
+  ],
+  "accessBoundary": "Current connected Merchant account verified, exposed actions empty; one exact new item source read timed out. Existing repo helpers do not identify these source ID schemas and cannot be executed as substitute price repair. Other legitimate external access remains unconfirmed, not universally absent.",
+  "preserved": [
+    "PublicCHF50/internalCHF45shippingthreshold and customeraccountdomain",
+    "DRAFT status and all social/Google policy blocks",
+    "R40unpublishedtheme and R39Threads schedule/register",
+    "Daily once-only analytics/flows, endedpurchasewatch, no newautomation/frequency",
+    "No customercontact, adbudget, feedactivation, DNS, paidrender or unreviewedworkflow"
+  ],
+  "nextConcreteStep": "With legitimate Merchant source-edit access, inspect exact original source/fetchURL and listing tuple first; remove only evidenced stale DRAFT entries and unsupported Germany targeting, then fix mapped active prices/availability and verify each result. No repeat approval for already authorised same fix; technical source/writer blocker remains."
+}
