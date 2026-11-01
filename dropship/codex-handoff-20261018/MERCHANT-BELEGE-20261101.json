@@ -1,0 +1,256 @@
+{
+  "preparedAtUTC": "2026-11-01T01:05:41.681368+00:00",
+  "status": "LOCAL_CANDIDATES_NOT_UPLOADED",
+  "externalWrites": false,
+  "uploadAllowed": false,
+  "authorisation": "User authorised merchant fix; open blocker is technical source/write access, not a new approval request.",
+  "merchant": {
+    "accountId": "5797470070",
+    "name": "LuxeStyle CH",
+    "availableWriteActions": []
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "exports": [
+    {
+      "file": "product_issues_2026-10-31_17-42-14.csv",
+      "bytes": 31072449,
+      "sha256": "a3ed6b629ec165a499abd8c3e85e1cec09bd8dea602ff93de72319609e669ddb",
+      "rows": 109769,
+      "uniqueItemIds": 53333,
+      "missingPriceRows": 107209
+    },
+    {
+      "file": "product_issues_2026-10-31_17-26-35.csv",
+      "bytes": 31554123,
+      "sha256": "2d622fdc4596f532b74175fcbb3529cee133b4fb93cd093e675086cb72d99af9",
+      "rows": 111476,
+      "uniqueItemIds": 54167,
+      "missingPriceRows": 108880
+    }
+  ],
+  "exportUnionIds": 54171,
+  "candidateCount": 18,
+  "productCount": 6,
+  "join": "exact Shopify numeric product ID + underscore + entire unchanged native SKU",
+  "nativeSourceDate": "2026-11-01",
+  "nativeEvidenceSavedAtUTC": "2026-11-01T00:47:16.617994+00:00",
+  "candidates": [
+    {
+      "id": "15422811439489_5599797_4011",
+      "variantId": "55777948041601",
+      "price": "24.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/unisex-t-shirt-selbst-gestalten?variant=55777948041601"
+    },
+    {
+      "id": "15422811439489_5599797_5309",
+      "variantId": "55777948238209",
+      "price": "37.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/unisex-t-shirt-selbst-gestalten?variant=55777948238209"
+    },
+    {
+      "id": "15422857642369_8481330_11576",
+      "variantId": "55778083996033",
+      "price": "23.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/klassisches-unisex-t-shirt-selbst-gestalten?variant=55778083996033"
+    },
+    {
+      "id": "15422857642369_8481330_11578",
+      "variantId": "55778084061569",
+      "price": "23.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/klassisches-unisex-t-shirt-selbst-gestalten?variant=55778084061569"
+    },
+    {
+      "id": "15422857642369_8481330_12651",
+      "variantId": "55778084192641",
+      "price": "34.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/klassisches-unisex-t-shirt-selbst-gestalten?variant=55778084192641"
+    },
+    {
+      "id": "15422943822209_2298810_9015",
+      "variantId": "55778372878721",
+      "price": "52.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/einteiliger-allover-badeanzug-selbst-gestalten?variant=55778372878721"
+    },
+    {
+      "id": "15422943822209_2298810_9017",
+      "variantId": "55778372944257",
+      "price": "52.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/einteiliger-allover-badeanzug-selbst-gestalten?variant=55778372944257"
+    },
+    {
+      "id": "15422943822209_2298810_9020",
+      "variantId": "55778373042561",
+      "price": "60.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/einteiliger-allover-badeanzug-selbst-gestalten?variant=55778373042561"
+    },
+    {
+      "id": "15422956798337_9844202_10879",
+      "variantId": "55778488484225",
+      "price": "101.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?variant=55778488484225"
+    },
+    {
+      "id": "15422956798337_9844202_10881",
+      "variantId": "55778488549761",
+      "price": "101.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?variant=55778488549761"
+    },
+    {
+      "id": "15422956798337_9844202_10883",
+      "variantId": "55778488615297",
+      "price": "109.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten?variant=55778488615297"
+    },
+    {
+      "id": "15422959518081_4944509_11037",
+      "variantId": "55778508571009",
+      "price": "80.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten?variant=55778508571009"
+    },
+    {
+      "id": "15422959518081_4944509_11038",
+      "variantId": "55778508603777",
+      "price": "84.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten?variant=55778508603777"
+    },
+    {
+      "id": "15422959518081_4944509_11039",
+      "variantId": "55778508636545",
+      "price": "88.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten?variant=55778508636545"
+    },
+    {
+      "id": "15427283157377_9000001_4015",
+      "variantId": "55792264085889",
+      "price": "28.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/shirt-zum-selbstgestalten?variant=55792264085889"
+    },
+    {
+      "id": "15427283157377_9000001_4016",
+      "variantId": "55794951258497",
+      "price": "24.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/shirt-zum-selbstgestalten?variant=55794951258497"
+    },
+    {
+      "id": "15427283157377_9000001_4020",
+      "variantId": "55794951389569",
+      "price": "28.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/shirt-zum-selbstgestalten?variant=55794951389569"
+    },
+    {
+      "id": "15427283157377_9000001_4113",
+      "variantId": "55794951487873",
+      "price": "24.90 CHF",
+      "candidateVariantUrl": "https://luxestyle.ch/products/shirt-zum-selbstgestalten?variant=55794951487873"
+    }
+  ],
+  "candidateFile": {
+    "file": "MERCHANT-PREISKANDIDATEN-20261101.csv",
+    "sha256": "7bb61b1e96db27fdf4b6fb9bbcd6188f5eaa993b475c757750e5388fafcb1099"
+  },
+  "sourceFiles": [
+    {
+      "file": "/workspace/luxestyle-review/merchant-fix-20261101/EXPORT-ANALYSIS.json",
+      "sha256": "1281f9e98fa4d919a2ffd4cbfefe1d0e465f2840633b8af3853859defdd7c6c5"
+    },
+    {
+      "file": "/workspace/luxestyle-review/merchant-fix-20261101/BLANK-PREFIX-CROSSCHECK.json",
+      "sha256": "67650e799abe4523d45c092ec7e2eaeadabfad203f2fc064d69b98392d5fff4d"
+    },
+    {
+      "file": "/workspace/luxestyle-review/merchant-fix-20261101/source/PRICE-CANDIDATES-EVIDENCE.json",
+      "sha256": "c2949217143b7301b54422114122d53d7588a247fe6d0d20c9aadc0f3da79d69"
+    },
+    {
+      "file": "/workspace/luxestyle-review/publish-selfdesign-20261101/pricing/SHOPIFY-NORMALIZED.json",
+      "sha256": "f309a0a451ec32f4d20f6d30d068c55b97537401aba6efe79916e3eac08cb8ce"
+    },
+    {
+      "file": "/workspace/luxestyle-review/merchant-fix-20261101/source/PUBLIC-4016-CROSSCHECK.json",
+      "sha256": "925d8d5bfe14356ab554a225f82b4dfed9a517a2ba2d0558713ee1696492d029"
+    },
+    {
+      "file": "/workspace/luxestyle-review/merchant-fix-20261101/source/MERCHANT-RAW-RESULT.json",
+      "sha256": "222a86a913e74c6cd41f739674c619c0a2286ff0674578d6defd62ca9ff719fc"
+    }
+  ],
+  "repoSources": [
+    {
+      "path": "gmc_feed_item.mjs",
+      "sha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/gmc_feed_item.mjs",
+      "readAtUTC": "2026-11-01T00:56:00.175Z"
+    },
+    {
+      "path": "merchant_feed.mjs",
+      "sha": "765c75c8121d5697a25c8200e7366f900718769b",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/autopilot/merchant_feed.mjs",
+      "readAtUTC": "2026-11-01T00:56:00.175Z"
+    },
+    {
+      "path": "gmc_schaufenster.mjs",
+      "sha": "90cf27308debe167ae9cd20bcfa763efd3e59f30",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/gmc_schaufenster.mjs",
+      "readAtUTC": "2026-11-01T00:56:00.175Z"
+    }
+  ],
+  "merchantRead": {
+    "status": "UNKNOWN_MCP_TIMEOUT",
+    "errorCode": -32603,
+    "retries": 0,
+    "forceRefresh": false,
+    "query": {
+      "connector": "google_merchant",
+      "accounts": [
+        "5797470070"
+      ],
+      "fields": [
+        "account_id",
+        "product_id",
+        "product_name",
+        "product_data_source",
+        "product_feed_label",
+        "product_content_language",
+        "product_link",
+        "product_price",
+        "product_price_currency_code",
+        "product_availability",
+        "data_fetched_at"
+      ],
+      "filters": [
+        [
+          "product_id",
+          "in",
+          "[\"15413245706625_14:691;5:4183#3xl\",\"15427283157377_9000001_4016\"]"
+        ]
+      ],
+      "date_from": "2026-11-01",
+      "date_to": "2026-11-01"
+    }
+  },
+  "beforeUploadRequired": [
+    "authenticated existing primary Merchant data source",
+    "exact offer/language/feed-label join",
+    "submitted variant URL and selected-variant price",
+    "price/sale_price precedence",
+    "scoped diff and post-write verification"
+  ],
+  "unchanged": [
+    "Shopify prices",
+    "DRAFT statuses",
+    "tags",
+    "availability",
+    "destinations/exclusions",
+    "GTIN/identifier_exists",
+    "source configuration",
+    "channels"
+  ]
+}
