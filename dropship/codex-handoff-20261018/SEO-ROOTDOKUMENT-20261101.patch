@@ -1,0 +1,151 @@
+--- /dev/null
++++ b/dropship/review-tools/root_document_audit.py
+@@ -0,0 +1,116 @@
++import json
++import re
++from html.parser import HTMLParser
++from pathlib import Path
++
++
++class RootDocumentAudit(HTMLParser):
++    def __init__(self):
++        super().__init__(convert_charrefs=True)
++        self.html_depth = 0
++        self.iframe_depth = 0
++        self.svg_depth = 0
++        self.head_depth = 0
++        self.in_title = False
++        self.in_h1 = False
++        self.ld_buffer = None
++        self.title = []
++        self.h1 = []
++        self.meta = []
++        self.canonical = []
++        self.json_ld = []
++        self.json_ld_errors = []
++        self.excluded_embedded_documents = 0
++
++    def is_root(self):
++        return self.html_depth == 1 and self.iframe_depth == 0
++
++    def handle_starttag(self, tag, attrs):
++        attrs = dict(attrs)
++        if tag == 'html':
++            self.html_depth += 1
++            if self.html_depth > 1:
++                self.excluded_embedded_documents += 1
++        if tag == 'iframe':
++            self.iframe_depth += 1
++        if tag == 'svg':
++            self.svg_depth += 1
++        if not self.is_root():
++            return
++        if tag == 'head':
++            self.head_depth += 1
++        if tag == 'title' and self.head_depth and not self.svg_depth:
++            self.in_title = True
++            self.title.append('')
++        if tag == 'h1' and not self.svg_depth:
++            self.in_h1 = True
++            self.h1.append('')
++        if tag == 'meta' and self.head_depth:
++            self.meta.append(attrs)
++        if tag == 'link' and self.head_depth and attrs.get('rel') == 'canonical':
++            self.canonical.append(attrs.get('href'))
++        if tag == 'script' and attrs.get('type') == 'application/ld+json':
++            self.ld_buffer = ''
++
++    def handle_endtag(self, tag):
++        if self.is_root():
++            if tag == 'title':
++                self.in_title = False
++            if tag == 'h1':
++                self.in_h1 = False
++            if tag == 'head':
++                self.head_depth = max(0, self.head_depth - 1)
++            if tag == 'script' and self.ld_buffer is not None:
++                try:
++                    self.json_ld.append(json.loads(self.ld_buffer))
++                except (ValueError, TypeError) as error:
++                    self.json_ld_errors.append(str(error))
++                self.ld_buffer = None
++        if tag == 'svg':
++            self.svg_depth = max(0, self.svg_depth - 1)
++        if tag == 'iframe':
++            self.iframe_depth = max(0, self.iframe_depth - 1)
++        if tag == 'html':
++            self.html_depth = max(0, self.html_depth - 1)
++
++    def handle_data(self, value):
++        if not self.is_root():
++            return
++        if self.in_title:
++            self.title[-1] += value
++        if self.in_h1:
++            self.h1[-1] += value
++        if self.ld_buffer is not None:
++            self.ld_buffer += value
++
++    def result(self):
++        clean = lambda value: re.sub(r'\s+', ' ', value).strip()
++        return {
++            'titles': [clean(value) for value in self.title],
++            'h1': [clean(value) for value in self.h1],
++            'canonical': self.canonical,
++            'descriptions': [meta.get('content') for meta in self.meta if meta.get('name', '').lower() == 'description'],
++            'robots': [meta.get('content') for meta in self.meta if meta.get('name', '').lower() == 'robots'],
++            'viewports': [meta.get('content') for meta in self.meta if meta.get('name', '').lower() == 'viewport'],
++            'jsonLd': self.json_ld,
++            'jsonLdErrors': self.json_ld_errors,
++            'excludedEmbeddedDocuments': self.excluded_embedded_documents,
++        }
++
++
++def audit(raw_html):
++    parser = RootDocumentAudit()
++    parser.feed(raw_html)
++    return parser.result()
++
++
++if __name__ == '__main__':
++    folder = Path(__file__).parent
++    results = []
++    for key in ['pyjama-landing', 'pyjama-product', 'projector-product']:
++        source = json.loads((folder / f'firecrawl-{key}.json').read_text())['structuredContent']
++        result = audit(source['rawHtml'])
++        result.update(key=key, url=source['metadata']['url'], status=source['metadata']['statusCode'])
++        results.append(result)
++    (folder / 'ROOT-DOCUMENT-RESULTS.json').write_text(json.dumps(results, ensure_ascii=False, indent=2) + '\n')
++    print(json.dumps([{'key': row['key'], 'titles': row['titles'], 'h1': row['h1'], 'canonical': row['canonical'], 'viewportCount': len(row['viewports']), 'excluded': row['excludedEmbeddedDocuments']} for row in results], ensure_ascii=False))
+--- /dev/null
++++ b/dropship/review-tools/test_root_document_audit.py
+@@ -0,0 +1,29 @@
++import json
++import unittest
++from pathlib import Path
++
++from root_document_audit import audit
++
++
++class RootDocumentSourceTests(unittest.TestCase):
++    def test_actual_page_roots_exclude_embedded_error_documents(self):
++        folder = Path(__file__).parent
++        for key, expected_h1 in [
++            ('pyjama-landing', 'Weihnachtspyjamas für die ganze Familie'),
++            ('pyjama-product', 'Weihnachts-Pyjama im Partnerlook'),
++            ('projector-product', 'Sternenlicht-Projektor für Schlafzimmer'),
++        ]:
++            with self.subTest(page=key):
++                source = json.loads((folder / f'firecrawl-{key}.json').read_text())['structuredContent']
++                result = audit(source['rawHtml'])
++                self.assertEqual(source['metadata']['statusCode'], 200)
++                self.assertEqual(result['h1'], [expected_h1])
++                self.assertEqual(len(result['titles']), 1)
++                self.assertEqual(result['canonical'], [source['metadata']['url']])
++                self.assertEqual(result['viewports'], ['width=device-width,initial-scale=1'])
++                self.assertGreater(result['excludedEmbeddedDocuments'], 0)
++                self.assertEqual(result['jsonLdErrors'], [])
++
++
++if __name__ == '__main__':
++    unittest.main()
