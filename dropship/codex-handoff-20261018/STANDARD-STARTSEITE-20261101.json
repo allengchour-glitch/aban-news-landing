@@ -1,0 +1,1159 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "taskId": "homepage-redesign-20261029",
+  "revision": 30,
+  "at": "2026-11-01T15:29:42Z",
+  "timezone": "Europe/Zurich",
+  "summary": "Aktuell verifiziert: Bisherige Vorschau 212752499079 wurde inzwischen ausserhalb dieses Codex-Laufs MAIN, verwendet aber weiterhin den alten Standardindex. Mit nativer themeDuplicate-Mutation die separate UNPUBLISHED-Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» erstellt und dort die R29-Gestaltung als normalen Standardindex ohne view-Parameter eingebunden. Alten Index exakt als index.luxe-legacy.json erhalten. Native Header-/Footergruppen, content_for_header, Apps, Cookie-/Konto-/Warenkorblogik und Konfiguration erhalten; eigene Section-Kopf-/Fusszeile nur im Standardindex unterdrückt und inneres main zu div gemacht. Cookiebox/Footernavigation um tatsächliche Vorschauleistenhöhe freigehalten. Drei Dateien exakt zurückgelesen, index.json nach Shopify-Kommentar semantisch identisch. Kein eigener MAIN-Write oder Publish.",
+  "nextStep": "In Shopify die geprüfte Kopie 212967981447 «LuxeStyle – Neue Startseite 01.11.2026» veröffentlichen; Standardindex ist bereits eingebunden. Danach öffentlichen Root ohne preview_theme_id/view frisch auf Theme-ID und Mobil/Desktop prüfen. Connector-Publish bleibt technisch blockiert; bestehende Websitefreigabe nicht erneut verlangen. EN vor vollständiger EN-Abnahme separat prüfen.",
+  "previewUrl": "https://luxestyle.ch/?preview_theme_id=212967981447",
+  "editorUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212967981447/editor",
+  "themesUrl": "https://admin.shopify.com/store/au3j0y-hq/themes",
+  "nativeReadback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "source": {
+      "id": "gid://shopify/OnlineStoreTheme/212752499079",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "config/settings_data.json",
+            "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+          },
+          {
+            "filename": "layout/theme.liquid",
+            "checksumMd5": "ce1c7332d05cfa74c8c656aad9b06713"
+          },
+          {
+            "filename": "sections/footer-group.json",
+            "checksumMd5": "368187170859033dc70fce5fa332ce27"
+          },
+          {
+            "filename": "sections/header-group.json",
+            "checksumMd5": "3c89401fc24ef0d331d4d0f4eb0adf1c"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "3e2713727787b37ed5a22ac6f6d241a1"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "a9d04458df414293c4aed775fe98d063"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "draft": {
+      "id": "gid://shopify/OnlineStoreTheme/212967981447",
+      "name": "LuxeStyle – Neue Startseite 01.11.2026",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "layout/theme.liquid",
+          "checksumMd5": "f5da6f2a959ffe1b8e472548070cd6b1",
+          "exact": true,
+          "comparison": "full exact content"
+        },
+        {
+          "filename": "sections/luxe-edit-home.liquid",
+          "checksumMd5": "01c5e9899d1d6e720564ef2d7b4ee9ed",
+          "exact": true,
+          "comparison": "full exact content"
+        },
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "6927c86886a14d418e4ab5ff7b45b9e4",
+          "exact": true,
+          "comparison": "semantic after Shopify generated-file comment"
+        },
+        {
+          "filename": "templates/index.luxe-legacy.json",
+          "checksumMd5": "a9d04458df414293c4aed775fe98d063",
+          "exact": true,
+          "comparison": "full exact content"
+        }
+      ],
+      "watched": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "f1c54db12521b00961267d6b5220817b"
+          },
+          {
+            "filename": "assets/luxe-edit.js",
+            "checksumMd5": "4aa19e8ff7993e0e8badad2f02cade4b"
+          },
+          {
+            "filename": "assets/luxe-product-reviews.js",
+            "checksumMd5": "02bd9bc13d038efdcefe0666a573b1bd"
+          },
+          {
+            "filename": "config/settings_data.json",
+            "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+          },
+          {
+            "filename": "layout/luxe-edit-preview.liquid",
+            "checksumMd5": "a2f141a720bf82f851c22e67c423f2bc"
+          },
+          {
+            "filename": "sections/footer-group.json",
+            "checksumMd5": "368187170859033dc70fce5fa332ce27"
+          },
+          {
+            "filename": "sections/header-group.json",
+            "checksumMd5": "3c89401fc24ef0d331d4d0f4eb0adf1c"
+          },
+          {
+            "filename": "snippets/luxe-product-review-data.liquid",
+            "checksumMd5": "0aff73416bf88b8f3bbbe3f4fc20acbe"
+          },
+          {
+            "filename": "templates/index.luxe-edit.liquid",
+            "checksumMd5": "88ab376b41d3c96769f70d6ea44b8337"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXgubHV4ZS1lZGl0LmxpcXVpZCI="
+        }
+      }
+    }
+  },
+  "fileManifest": [
+    {
+      "filename": "templates/index.json",
+      "beforeSha256": "3c930c603c51d210a61a051bde419826220a452705e14d65d1a38cb7494b2557",
+      "afterSha256": "2cb6def201eb5b0e07476500f6f7cb6918a9eeb944e60adaa92ee6040b687acc"
+    },
+    {
+      "filename": "templates/index.luxe-legacy.json",
+      "beforeSha256": null,
+      "afterSha256": "3c930c603c51d210a61a051bde419826220a452705e14d65d1a38cb7494b2557"
+    },
+    {
+      "filename": "layout/theme.liquid",
+      "beforeSha256": "3b4e96952b6376cee750980aa6094f94c040ddc66f38b3dc1a4f4063f3949bdd",
+      "afterSha256": "8b47f37e3022994571d8685f81e5821dcfa7e950feff0695bf9bdea916c036e7"
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "beforeSha256": "5e81db2b11615b5376cdb3b0b08082d2b2c34731d92f2b91b6416e1af4abb4f0",
+      "afterSha256": "03b8562f61ffa1a0d2906c36f0fcc1e3bd44fd4330f7e6c1c09f534cc8db8142"
+    }
+  ],
+  "integrationPatch": "--- before/layout/theme.liquid\n+++ after/layout/theme.liquid\n@@ -223,6 +223,17 @@\n {%- if template.name == 'index' -%}\n <script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://luxestyle.ch/#website\",\"url\":\"https://luxestyle.ch\",\"name\":\"LuxeStyle CH\",\"inLanguage\":\"de-CH\",\"publisher\":{\"@id\":\"https://luxestyle.ch/#org\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://luxestyle.ch/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}}]}</script>\n {%- endif -%}\n+    {% if template.name == 'index' and template.suffix == blank %}\n+      {{ 'luxe-edit.css' | asset_url | stylesheet_tag }}\n+      <script src=\"{{ 'luxe-edit.js' | asset_url }}\" defer></script>\n+      <style>\n+        body.lx-editorial-home #lx-cookie-banner { bottom:calc(16px + var(--lx-standard-preview-inset,0px))!important; }\n+        @media (max-width:760px) {\n+          body.lx-editorial-home #lx-cookie-banner { bottom:calc(82px + env(safe-area-inset-bottom,0px) + var(--lx-standard-preview-inset,0px))!important; }\n+          body.lx-editorial-home > footer { padding-bottom:calc(82px + env(safe-area-inset-bottom,0px) + var(--lx-standard-preview-inset,0px)); }\n+        }\n+      </style>\n+    {% endif %}\n </head>\n \n   {%- comment -%}\n@@ -239,7 +250,7 @@\n     Vorher geprüft: weder assets/base.css noch irgendeine eingebundene App-Datei benutzt einen\n     Selektor «.template-…» — die neue Klasse kann also nichts Bestehendes umschalten.\n   {%- endcomment -%}\n-  <body class=\"page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }} template-{{ template.name }}\">\n+  <body class=\"page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }} template-{{ template.name }}{% if template.name == 'index' and template.suffix == blank %} lx-editorial-home{% endif %}\">\n {%- comment -%} LuxeStyle 14.09.2026: Warenkorb-Icon EINMAL als Symbol statt ~750x inline (309 KB auf der Startseite, gemessen) {%- endcomment -%}\n <svg xmlns=\"http://www.w3.org/2000/svg\" style=\"display:none\" aria-hidden=\"true\"><symbol id=\"lx-icon-atc\" viewBox=\"0 0 20 20\" fill=\"none\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"var(--icon-stroke-width)\" d=\"M16.608 9.421V6.906H3.392v8.016c0 .567.224 1.112.624 1.513.4.402.941.627 1.506.627H8.63M8.818 3h2.333c.618 0 1.212.247 1.649.686a2.35 2.35 0 0 1 .683 1.658v1.562H6.486V5.344c0-.622.246-1.218.683-1.658A2.33 2.33 0 0 1 8.82 3\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"var(--icon-stroke-width)\" d=\"M14.608 12.563v5m2.5-2.5h-5\"/></symbol></svg>\n \n--- before/sections/luxe-edit-home.liquid\n+++ after/sections/luxe-edit-home.liquid\n@@ -1,7 +1,14 @@\n+{% liquid\n+  assign lx_standard_home = false\n+  if template.name == 'index' and template.suffix == blank\n+    assign lx_standard_home = true\n+  endif\n+%}\n <script src=\"{{ 'luxe-product-reviews.js' | asset_url }}\" defer></script>\n {% assign lx_design_url = '/collections/selbst-gestalten-1?view=luxe-gestalten' %}\n \n <div class=\"lx-home\" id=\"lx-top\">\n+  {% unless lx_standard_home %}\n   <a class=\"lx-skip\" href=\"#lx-content\">{{ 'luxe_home.zum_inhalt_f0521' | t }}</a>\n   <div class=\"lx-announcement\">{{ 'luxe_home.gratisversand_in_der_schweiz_ab__9a8a6' | t }} <a href=\"https://luxestyle.ch/pages/versand-lieferung\">{{ 'luxe_home.versandinfos_87cfe' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></div>\n   <header class=\"lx-header\">\n@@ -17,7 +24,8 @@\n       <a class=\"lx-icon-button\" href=\"https://luxestyle.ch/cart\" aria-label=\"{{ 'luxe_home.warenkorb_d6de3' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 7h14l1 14H4L5 7Z\"/><path d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg></a>\n     </div>\n   </header>\n-  <main id=\"lx-content\">\n+  {% endunless %}\n+  {% if lx_standard_home %}<div id=\"lx-content\">{% else %}<main id=\"lx-content\">{% endif %}\n     <section class=\"lx-hero lx-background-hero\" aria-labelledby=\"lx-hero-title\">\n       <div class=\"lx-background-hero-media\" data-hero-media>\n         <img src=\"https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853\" width=\"720\" height=\"1000\" loading=\"eager\" fetchpriority=\"high\" alt=\"{{ 'luxe_home.hero.video_description' | t | escape }}\">\n@@ -224,8 +232,10 @@\n         <details><summary>{{ 'luxe_home.help.question_delivery' | t }}<span aria-hidden=\"true\">+</span></summary><div><p>{{ 'luxe_home.help.answer_delivery' | t }}</p><nav aria-label=\"{{ 'luxe_home.help.policies' | t | escape }}\"><a href=\"{{ pages['versand-lieferung'].url }}\">{{ 'luxe_home.versand_lieferung_25e74' | t }}</a><a href=\"{{ pages['rueckgabe'].url }}\">{{ 'luxe_home.r_ckgabe_62237' | t }}</a></nav></div></details>\n       </div>\n     </section>\n-  </main>\n+  {% if lx_standard_home %}</div>{% else %}</main>{% endif %}\n+  {% unless lx_standard_home %}\n   <footer class=\"lx-footer\"><a class=\"lx-wordmark\" href=\"https://luxestyle.ch/\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a><p>{{ 'luxe_home.sch_nes_f_r_deinen_alltag_ecdb9' | t }}</p><nav aria-label=\"{{ 'luxe_home.rechtliche_informationen_346ba' | t | escape }}\"><a href=\"https://luxestyle.ch/policies/legal-notice\">{{ 'luxe_home.impressum_b8a60' | t }}</a><a href=\"https://luxestyle.ch/policies/privacy-policy\">{{ 'luxe_home.datenschutz_f624f' | t }}</a><a href=\"https://luxestyle.ch/policies/terms-of-service\">{{ 'luxe_home.agb_ef0fe' | t }}</a></nav><span class=\"lx-footer-currency\">{{ 'luxe_home.schweiz_chf_deutsch_e630d' | t }}</span></footer>\n+  {% endunless %}\n   <dialog class=\"lx-dialog lx-menu-dialog\" id=\"lx-menu\" aria-labelledby=\"lx-menu-title\"><div class=\"lx-dialog-top\"><span class=\"lx-wordmark\" id=\"lx-menu-title\">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></span><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.men_schliessen_55d49' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><nav aria-label=\"{{ 'luxe_home.mobile_navigation_ccea1' | t | escape }}\"><a class=\"lx-design-nav\" href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/collections/geschenke-unter-50-franken\">{{ 'luxe_home.geschenkideen_6ad8d' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a><a href=\"https://luxestyle.ch/pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5ed9a' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></a></nav><a class=\"lx-text-link\" href=\"https://account.luxestyle.com.co\">{{ 'luxe_home.zum_kundenkonto_9a2d2' | t }} <svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></dialog>\n   <dialog class=\"lx-dialog lx-search-dialog\" id=\"lx-search\" aria-labelledby=\"lx-search-title\"><div class=\"lx-dialog-top\"><h2 id=\"lx-search-title\">{{ 'luxe_home.was_suchst_du_672c5' | t }}</h2><button class=\"lx-icon-button\" type=\"button\" data-close aria-label=\"{{ 'luxe_home.suche_schliessen_0ef8b' | t | escape }}\"><svg viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M6 18 18 6\"/></svg></button></div><form action=\"https://luxestyle.ch/search\" method=\"get\" role=\"search\"><label for=\"lx-search-input\">{{ 'luxe_home.produkte_durchsuchen_7ab3d' | t }}</label><div class=\"lx-search-field\"><input id=\"lx-search-input\" name=\"q\" type=\"search\" placeholder=\"{{ 'luxe_home.zum_beispiel_sternenlicht_cc2ca' | t | escape }}\" required autocomplete=\"off\"><input type=\"hidden\" name=\"type\" value=\"product\"><button type=\"submit\" class=\"lx-button\">{{ 'luxe_home.suchen_dd097' | t }} <span aria-hidden=\"true\"><svg class=\"lx-arrow\" viewbox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></span></button></div></form><nav class=\"lx-search-shortcuts\" aria-label=\"{{ 'luxe_home.design.quicklinks' | t | escape }}\"><a href=\"{{ lx_design_url }}\">{{ 'luxe_home.design.title' | t }}</a><a href=\"{{ routes.collections_url }}/damen-mode\">{{ 'luxe_home.mode_5e23e' | t }}</a><a href=\"{{ routes.collections_url }}/wohnen-dekoration\">{{ 'luxe_home.wohnen_49bf1' | t }}</a></nav><p>{{ 'luxe_home.oder_entdecke_cff96' | t }} <a href=\"https://luxestyle.ch/pages/alle-kategorien\">{{ 'luxe_home.alle_kategorien_5f5e9' | t }}</a>{{ 'luxe_home.label_cdb4e' | t }}</p></dialog>\n   <nav class=\"lx-bottom-nav\" aria-label=\"{{ 'luxe_home.mobile.navigation' | t | escape }}\">\n@@ -244,6 +254,7 @@\n       const update = () => {\n         const height = frame && getComputedStyle(frame).display !== 'none' ? frame.getBoundingClientRect().height : 0;\n         root.style.setProperty('--lx-preview-inset', `${Math.max(0, Math.ceil(height))}px`);\n+        {% if lx_standard_home %}document.body.style.setProperty('--lx-standard-preview-inset', `${Math.max(0, Math.ceil(height))}px`);{% endif %}\n       };\n       const connect = () => {\n         const found = document.getElementById('PBarNextFrameWrapper');\n",
+  "newIndex": {
+    "sections": {
+      "luxe_home": {
+        "type": "luxe-edit-home",
+        "settings": {}
+      }
+    },
+    "order": [
+      "luxe_home"
+    ]
+  },
+  "legacyBackup": {
+    "filename": "templates/index.luxe-legacy.json",
+    "source": "MAIN212752499079 templates/index.json",
+    "sourceChecksumMd5": "a9d04458df414293c4aed775fe98d063",
+    "exactReadback": true,
+    "priorSectionCount": 25,
+    "note": "Alter Bewertungsbereich nicht parallel in neue Startseite eingefügt; keine Reviewdaten verändert."
+  },
+  "sourcePublication": "MAIN-Rollenwechsel bereits bei erster frischer Abfrage vor eigenem Write vorgefunden; kein eigener Publish behauptet",
+  "mutationScope": {
+    "themeDuplicate": {
+      "sourceThemeId": "212752499079",
+      "newThemeId": "212967981447",
+      "newRole": "UNPUBLISHED"
+    },
+    "uniqueFilesWritten": 4,
+    "additionalWrite": "Nur layout/theme.liquid nach konkretem Desktop-Cookie-Vorschaubefund korrigiert",
+    "sourceMainWrites": 0,
+    "themePublishCalls": 0
+  },
+  "validation": {
+    "sectionAndIndex": {
+      "success": true,
+      "source": "VALIDATION-R2.log",
+      "nonblocking": "Vorhandener extern verlinkter Hero-Posterhinweis"
+    },
+    "changedLayoutFragments": {
+      "success": true,
+      "source": "HEAD-VALIDATION-R3.log",
+      "note": "Exakter neuer Headblock und Body-Klassenzeile im Syntaxharness; Harness-Datei nicht deployed"
+    },
+    "fullLayout": {
+      "success": false,
+      "baselineSameError": true,
+      "baselineLine": 411,
+      "changedLayoutLine": 422,
+      "error": "Attempting to end parsing before HtmlRawNode script was closed",
+      "note": "Unveränderten nativen Layoutrest nicht verändert, identischer Fehler an ursprünglicher Datei reproduziert. Keine globale Validatorfreigabe behauptet."
+    },
+    "schemaSource": "Offizieller lokaler Cache; frischer Manifestdownload und CLI-Dokusuche scheiterten, native offizielle Dokumentensuche lieferte JSON-/Index-Schema"
+  },
+  "initialNativeQA": {
+    "scope": "Native standard homepage without view parameter; no content overrides; non-GET/HEAD blocked",
+    "checks": [
+      {
+        "name": "Default route HTTP200 exact new draft",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px one main/heading and native chrome",
+        "pass": true,
+        "data": {
+          "width": 360,
+          "overflow": false,
+          "main": 1,
+          "header": 1,
+          "ownHeader": 0,
+          "ownFooter": 0,
+          "nativeFooter": 1,
+          "h1": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "trends": 12,
+          "categories": 16,
+          "extra": 5,
+          "collage": 1,
+          "video": 1,
+          "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+          "images": [
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            }
+          ],
+          "account": true,
+          "canonical": "https://luxestyle.ch/",
+          "robots": []
+        }
+      },
+      {
+        "name": "360px new content exact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px no page overflow and full photos",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "360px account domain retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px one main/heading and native chrome",
+        "pass": true,
+        "data": {
+          "width": 390,
+          "overflow": false,
+          "main": 1,
+          "header": 1,
+          "ownHeader": 0,
+          "ownFooter": 0,
+          "nativeFooter": 1,
+          "h1": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "trends": 12,
+          "categories": 16,
+          "extra": 5,
+          "collage": 1,
+          "video": 1,
+          "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+          "images": [
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            }
+          ],
+          "account": true,
+          "canonical": "https://luxestyle.ch/",
+          "robots": []
+        }
+      },
+      {
+        "name": "390px new content exact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px no page overflow and full photos",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "390px account domain retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px one main/heading and native chrome",
+        "pass": true,
+        "data": {
+          "width": 760,
+          "overflow": false,
+          "main": 1,
+          "header": 1,
+          "ownHeader": 0,
+          "ownFooter": 0,
+          "nativeFooter": 1,
+          "h1": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "trends": 12,
+          "categories": 16,
+          "extra": 5,
+          "collage": 1,
+          "video": 1,
+          "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+          "images": [
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            }
+          ],
+          "account": true,
+          "canonical": "https://luxestyle.ch/",
+          "robots": []
+        }
+      },
+      {
+        "name": "760px new content exact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px no page overflow and full photos",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "760px account domain retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px one main/heading and native chrome",
+        "pass": true,
+        "data": {
+          "width": 1440,
+          "overflow": false,
+          "main": 1,
+          "header": 1,
+          "ownHeader": 0,
+          "ownFooter": 0,
+          "nativeFooter": 1,
+          "h1": [
+            "Schön leben.\nSchlau shoppen."
+          ],
+          "trends": 12,
+          "categories": 16,
+          "extra": 5,
+          "collage": 1,
+          "video": 1,
+          "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+          "images": [
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            },
+            {
+              "loaded": true,
+              "inside": true,
+              "fit": "contain"
+            }
+          ],
+          "account": true,
+          "canonical": "https://luxestyle.ch/",
+          "robots": []
+        }
+      },
+      {
+        "name": "1440px new content exact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px no page overflow and full photos",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "1440px account domain retained",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Original cookie banner present",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Cookie buttons reachable above mobile navigation",
+        "pass": true,
+        "data": {
+          "cookieBottom": 694,
+          "navTop": 706,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "Existing necessary-only choice hides cookie banner",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "New bottom search opens dialog",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Search Escape returns focus",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native footer bottom clear of fixed navigation",
+        "pass": false,
+        "data": {
+          "padding": 150,
+          "navHeight": 70,
+          "lastLinkBottom": 1221.546875,
+          "navTop": 706
+        }
+      },
+      {
+        "name": "Alternative preview keeps standalone chrome",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Product route keeps native layout without home CSS/section",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "width": 360,
+        "overflow": false,
+        "main": 1,
+        "header": 1,
+        "ownHeader": 0,
+        "ownFooter": 0,
+        "nativeFooter": 1,
+        "h1": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+        "images": [
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          }
+        ],
+        "account": true,
+        "canonical": "https://luxestyle.ch/",
+        "robots": []
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "main": 1,
+        "header": 1,
+        "ownHeader": 0,
+        "ownFooter": 0,
+        "nativeFooter": 1,
+        "h1": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+        "images": [
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          }
+        ],
+        "account": true,
+        "canonical": "https://luxestyle.ch/",
+        "robots": []
+      },
+      {
+        "width": 760,
+        "overflow": false,
+        "main": 1,
+        "header": 1,
+        "ownHeader": 0,
+        "ownFooter": 0,
+        "nativeFooter": 1,
+        "h1": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+        "images": [
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          }
+        ],
+        "account": true,
+        "canonical": "https://luxestyle.ch/",
+        "robots": []
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "main": 1,
+        "header": 1,
+        "ownHeader": 0,
+        "ownFooter": 0,
+        "nativeFooter": 1,
+        "h1": [
+          "Schön leben.\nSchlau shoppen."
+        ],
+        "trends": 12,
+        "categories": 16,
+        "extra": 5,
+        "collage": 1,
+        "video": 1,
+        "bodyClass": "page-width-narrow card-hover-effect-lift template-index lx-editorial-home",
+        "images": [
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          },
+          {
+            "loaded": true,
+            "inside": true,
+            "fit": "contain"
+          }
+        ],
+        "account": true,
+        "canonical": "https://luxestyle.ch/",
+        "robots": []
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 185,
+    "headerControls": [
+      {
+        "label": "Vorherige Folie",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Nächste Folie",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu 🎁 Geschenke & Weihnachten",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Damen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Herren",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Schuhe",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Taschen & Rucksäcke",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Schmuck",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Uhren",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Beauty & Pflege",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Wohnen & Garten",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Elektronik",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Gaming & Gadgets",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Kinder & Baby",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Haustiere",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Highlights",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Herbst & Übergang",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Zurück zu Sport & Party",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": null,
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Schliessen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Suchen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": null,
+        "text": "\n        \n          \n          CHF\n        \n        Region- und Sprachwahl/\n            DE\n          \n  \n\n\n      ",
+        "visible": false
+      },
+      {
+        "label": "Suchen",
+        "text": "\n      \n        Suche\n      \n\n      \n        \n\n      \n    ",
+        "visible": false
+      },
+      {
+        "label": "Warenkorb",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Dialogfeld schliessen",
+        "text": "\n          \n  \n  \n\n\n        ",
+        "visible": false
+      },
+      {
+        "label": null,
+        "text": "\n          Mehr\n        ",
+        "visible": false
+      },
+      {
+        "label": "Suchen",
+        "text": "Suchen",
+        "visible": true
+      },
+      {
+        "label": "Konto",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Menü schließen",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Anmelden",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Mit Shop anmelden",
+        "text": "",
+        "visible": true
+      },
+      {
+        "label": "Mit Shop anmelden",
+        "text": "",
+        "visible": false
+      },
+      {
+        "label": null,
+        "text": "\n            Mehr\n          ",
+        "visible": false
+      }
+    ],
+    "passed": false
+  },
+  "finalNativeQA": {
+    "checks": [
+      {
+        "name": "1440px cookie controls above preview/nav",
+        "pass": true,
+        "data": {
+          "bottom": 916,
+          "top": 823.5,
+          "barTop": 932,
+          "navTop": 1000,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "390px cookie controls above preview/nav",
+        "pass": true,
+        "data": {
+          "bottom": 694,
+          "top": 649,
+          "barTop": 776,
+          "navTop": 706,
+          "buttons": [
+            true,
+            true
+          ]
+        }
+      },
+      {
+        "name": "Original header search opens",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Original header search closes",
+        "pass": false,
+        "data": null
+      },
+      {
+        "name": "Original cart opens without adding items",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Existing website video plays on request in standard layout",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Video pause remains available",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "Native visible footer links accessible above navigation",
+        "pass": true,
+        "data": {
+          "padding": 150,
+          "navTop": 706,
+          "links": [
+            {
+              "href": "mailto:info@luxestyle.ch",
+              "text": "info@luxestyle.ch",
+              "bottom": 464.78125,
+              "hit": true
+            },
+            {
+              "href": "/policies/legal-notice",
+              "text": "Impressum",
+              "bottom": 464.78125,
+              "hit": true
+            },
+            {
+              "href": "/policies/shipping-policy",
+              "text": "Versand",
+              "bottom": 509.5625,
+              "hit": true
+            },
+            {
+              "href": "/policies/refund-policy",
+              "text": "30 Tage Rückgabe",
+              "bottom": 509.5625,
+              "hit": true
+            },
+            {
+              "href": "/",
+              "text": "LuxeStyle",
+              "bottom": 570.953125,
+              "hit": true
+            },
+            {
+              "href": "https://www.facebook.com/1049840534888592",
+              "text": "",
+              "bottom": 660.140625,
+              "hit": true
+            },
+            {
+              "href": "https://www.instagram.com/luxestyle.ch",
+              "text": "",
+              "bottom": 660.140625,
+              "hit": true
+            },
+            {
+              "href": "https://www.tiktok.com/@luxestyle.ch",
+              "text": "",
+              "bottom": 660.140625,
+              "hit": true
+            },
+            {
+              "href": "https://www.threads.net/@luxestyle.ch",
+              "text": "",
+              "bottom": 660.140625,
+              "hit": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "Original footer accordion exposes reachable privacy link",
+        "pass": true,
+        "data": {
+          "text": "Datenschutz",
+          "top": 631.6875,
+          "bottom": 648.6875,
+          "navTop": 706,
+          "hit": true
+        }
+      }
+    ],
+    "pageErrors": [
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "blockedNonRead": 71,
+    "passed": false
+  },
+  "searchTimingCountercheck": {
+    "scope": "Native search close after asynchronous animation completes",
+    "opened": true,
+    "closedAfterEscape": true,
+    "passed": true
+  },
+  "interpretation": {
+    "initialFooterFailure": "Erster Messwert schloss noch verborgene Accordionlinks ein und erfasste spätes Footerlayout; durch tatsächliche Hit-/Sichtbarkeitsprüfung, geöffneten Datenschutzlink und unabhängige visuelle Stichprobe ersetzt",
+    "instantSearchCloseFailure": "Unmittelbare open-Abfrage vor Ende asynchroner nativer Animation; gezieltes Warten auf geschlossenen Dialog bestätigt Escape",
+    "acceptedChecks": "24 unverändert gültige Erstprüfungen, acht finale bestätigte Funktionsprüfungen und gezielte Such-Gegenprobe; frühere Fehlbefunde erhalten"
+  },
+  "visualReview": "Unabhängige Stichprobe STANDARD-1440-R2 und FOOTER-390-R3: Desktop-Cookiebuttons über Vorschauleiste, mobile Rechtslinks erreichbar; kein weiterer konkreter visueller Fehler",
+  "limits": [
+    "Nur UNPUBLISHED-Kopie bereit; kein eigener öffentlicher Standardindex-Publish",
+    "Keine vollständige EN-, Checkout-, Zahlungs- oder App-Funktionsabnahme; vorhandene App-Konfiguration und Layoutrest erhalten",
+    "Externe Failed-to-fetch-Meldungen bei geblockten Nicht-GET/HEAD-Browseranfragen bleiben getrennt dokumentiert",
+    "Keine Produkt-, Preis-, Bewertungsdaten-, Rabatt-, Versand-, Konto-, Flow-, Feed-, DNS-, Ads-, Social-, Automations- oder Frequenzänderung",
+    "Tageskennzahlen/Flowreports und beendeter Kauf-Watch nicht erneut gelesen; professioneller Film-Master unverändert blockiert"
+  ],
+  "localEvidenceDirectory": "/workspace/luxestyle-review/standard-home-20261101"
+}
