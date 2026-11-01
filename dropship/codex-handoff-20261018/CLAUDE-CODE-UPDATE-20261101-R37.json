@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 37,
+  "createdAt": "2026-11-01T18:45:11.742875+00:00",
+  "ownerRequest": "ja weiter für claude update er macht",
+  "scope": "Claude coordination handoff, scoped/local entry refresh and hash-bound review packet; no website execution/publication or new business permissions",
+  "sourceStateRevision": 36,
+  "sourceCanonicalShas": {
+    "README.md": "9c0a7619bbb0f7a642024d51d166e7954f406295",
+    "PROJEKTGEDAECHTNIS.md": "e430672c2e7fc3b5f9e65339de87eeafd105d6cf",
+    "ARBEITSSTAND.json": "e049f4e07450b28ee373c84f7b1591df927b15fc",
+    "TAGESPROTOKOLL.md": "b0af075dd60b70e75e5d453bee2ecfd18c233ccb"
+  },
+  "freshShopify": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "prior": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "name": "LuxeStyle – Bewertungen 01.11.2026",
+      "role": "MAIN",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-clothing.js",
+            "checksumMd5": "c0d93097153eab8c5dbdcc63eaa711ea"
+          },
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "f1c54db12521b00961267d6b5220817b"
+          },
+          {
+            "filename": "assets/luxe-product-reviews.js",
+            "checksumMd5": "02bd9bc13d038efdcefe0666a573b1bd"
+          },
+          {
+            "filename": "locales/de.json",
+            "checksumMd5": "52bd1ea05c622f3923936dc03bfdd3cf"
+          },
+          {
+            "filename": "locales/en.default.json",
+            "checksumMd5": "b99ff074b8e40114f7e41198f81c3532"
+          },
+          {
+            "filename": "locales/fr.json",
+            "checksumMd5": "c4a55c033cc0ee558051589dbe5abf27"
+          },
+          {
+            "filename": "sections/luxe-clothing.liquid",
+            "checksumMd5": "20380099b7faefb82f6d62be30145032"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "5d6882312343da4433274eda6ff29424"
+          },
+          {
+            "filename": "sections/luxe-home-reviews.liquid",
+            "checksumMd5": "9c60b30e691191ee363c7c61f69cfad3"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "efd2d36eae56a7057ccaf6e2de028f42"
+          }
+        ]
+      }
+    },
+    "candidate": {
+      "id": "gid://shopify/OnlineStoreTheme/212978598279",
+      "name": "LuxeStyle – Sticker und Varianten 01.11.2026",
+      "role": "UNPUBLISHED",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-clothing.js",
+            "checksumMd5": "1eedb10689f18cff8c2b0632457065ac"
+          },
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "8db9dbc9c181f6d0f54b055bf33836cf"
+          },
+          {
+            "filename": "assets/luxe-product-reviews.js",
+            "checksumMd5": "02bd9bc13d038efdcefe0666a573b1bd"
+          },
+          {
+            "filename": "locales/de.json",
+            "checksumMd5": "13cb859ef9eb7aadf9daebff6f9e27ab"
+          },
+          {
+            "filename": "locales/en.default.json",
+            "checksumMd5": "f269b29aa3a94c7a8fb281efde63bd9f"
+          },
+          {
+            "filename": "locales/fr.json",
+            "checksumMd5": "01c0fb57d5db081782acf0d7cf903d58"
+          },
+          {
+            "filename": "sections/luxe-clothing.liquid",
+            "checksumMd5": "6d05ce1a149a663dee53bd65c9e85175"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "9953d14f338667d5edbcb4b4a561c590"
+          },
+          {
+            "filename": "sections/luxe-home-reviews.liquid",
+            "checksumMd5": "9c60b30e691191ee363c7c61f69cfad3"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "17b76982b0cd942cf91a002e60f0dc8e"
+          }
+        ]
+      }
+    }
+  },
+  "themeTransfer": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "createdAt": "2026-11-01T18:39:03.628159+00:00",
+    "scope": "Eight documented theme files only; not a full-theme export or deployment approval",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "live": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "role": "MAIN"
+    },
+    "draft": {
+      "id": "gid://shopify/OnlineStoreTheme/212978598279",
+      "role": "UNPUBLISHED",
+      "name": "LuxeStyle – Sticker und Varianten 01.11.2026"
+    },
+    "files": [
+      {
+        "filename": "assets/luxe-clothing.js",
+        "freshMainReportedMd5": "c0d93097153eab8c5dbdcc63eaa711ea",
+        "freshDraftReportedMd5": "1eedb10689f18cff8c2b0632457065ac",
+        "expectedPayloadSha256": "07d0f93e820f2f014c619d8b398a9a5f0f0e6d8b0642f1a66d2802411fd3be26",
+        "expectedPayloadBytes": 46844,
+        "nativeJsonBodyNote": null,
+        "origin": "R35 sticker"
+      },
+      {
+        "filename": "sections/luxe-clothing.liquid",
+        "freshMainReportedMd5": "20380099b7faefb82f6d62be30145032",
+        "freshDraftReportedMd5": "6d05ce1a149a663dee53bd65c9e85175",
+        "expectedPayloadSha256": "73dfc1370623567fc0fd1edc873326f8640c3659795d72856e614861d42a218f",
+        "expectedPayloadBytes": 27140,
+        "nativeJsonBodyNote": null,
+        "origin": "R35 sticker"
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "freshMainReportedMd5": "f1c54db12521b00961267d6b5220817b",
+        "freshDraftReportedMd5": "8db9dbc9c181f6d0f54b055bf33836cf",
+        "expectedPayloadSha256": "fd6faefba9b7aa70d1848b27fee479536798d9e4787498e49e37dafc09905772",
+        "expectedPayloadBytes": 41681,
+        "nativeJsonBodyNote": null,
+        "origin": "R36 extra homepage products"
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "freshMainReportedMd5": "5d6882312343da4433274eda6ff29424",
+        "freshDraftReportedMd5": "9953d14f338667d5edbcb4b4a561c590",
+        "expectedPayloadSha256": "c218c26af360eddc23cd82eab221de0f959df6a464074aa5d2b8c60d95c77c94",
+        "expectedPayloadBytes": 38258,
+        "nativeJsonBodyNote": null,
+        "origin": "R36 extra homepage products"
+      },
+      {
+        "filename": "templates/index.json",
+        "freshMainReportedMd5": "efd2d36eae56a7057ccaf6e2de028f42",
+        "freshDraftReportedMd5": "17b76982b0cd942cf91a002e60f0dc8e",
+        "expectedPayloadSha256": "a33463a1a1d940f4958a45c1c35d2fd77dc589c73ae822e9ae4f38a5abca7c97",
+        "expectedPayloadBytes": 723,
+        "nativeJsonBodyNote": "Shopify generated comment may differ; preserve semantic content and distinguish APIchecksum from body SHA",
+        "origin": "R36 extra homepage products"
+      },
+      {
+        "filename": "locales/de.json",
+        "freshMainReportedMd5": "52bd1ea05c622f3923936dc03bfdd3cf",
+        "freshDraftReportedMd5": "13cb859ef9eb7aadf9daebff6f9e27ab",
+        "expectedPayloadSha256": "a9026ceb507781f50f09e97ecd87c1ab3c3f0b530188de4ce18a7af7515f405d",
+        "expectedPayloadBytes": 51102,
+        "nativeJsonBodyNote": "Shopify generated comment may differ; preserve semantic content and distinguish APIchecksum from body SHA",
+        "origin": "R35+R36 combined locales"
+      },
+      {
+        "filename": "locales/en.default.json",
+        "freshMainReportedMd5": "b99ff074b8e40114f7e41198f81c3532",
+        "freshDraftReportedMd5": "f269b29aa3a94c7a8fb281efde63bd9f",
+        "expectedPayloadSha256": "ac942f68778a883444b3bb557d4bccd0544552c057d7a923c1df4a306e7cc2f1",
+        "expectedPayloadBytes": 48449,
+        "nativeJsonBodyNote": "Shopify generated comment may differ; preserve semantic content and distinguish APIchecksum from body SHA",
+        "origin": "R35+R36 combined locales"
+      },
+      {
+        "filename": "locales/fr.json",
+        "freshMainReportedMd5": "c4a55c033cc0ee558051589dbe5abf27",
+        "freshDraftReportedMd5": "01c0fb57d5db081782acf0d7cf903d58",
+        "expectedPayloadSha256": "8cf08a5c18e75279a09fe7a2105b5a8732cfc8673a4b11ffb8053ff8147c4520",
+        "expectedPayloadBytes": 30558,
+        "nativeJsonBodyNote": "Shopify generated comment may differ; preserve semantic content and distinguish APIchecksum from body SHA",
+        "origin": "R35+R36 combined locales"
+      }
+    ],
+    "unchangedControls": [
+      {
+        "filename": "sections/luxe-home-reviews.liquid",
+        "mainMd5": "9c60b30e691191ee363c7c61f69cfad3",
+        "draftMd5": "9c60b30e691191ee363c7c61f69cfad3",
+        "equal": true
+      },
+      {
+        "filename": "assets/luxe-product-reviews.js",
+        "mainMd5": "02bd9bc13d038efdcefe0666a573b1bd",
+        "draftMd5": "02bd9bc13d038efdcefe0666a573b1bd",
+        "equal": true
+      }
+    ],
+    "diff": {
+      "filename": "CLAUDE-THEME-DIFF-20261101-R37.patch",
+      "sha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+      "bytes": 26997
+    },
+    "verifiedSourceSnapshots": [
+      "STICKER-ORIGINALVARIANTEN-20261101.json",
+      "ABENDBELEGE-20261101-R36.json"
+    ],
+    "nextAction": "Freshly compare current full MAIN/draft diff before legitimate Admin publication; expected own scope eight files. Do not overwrite unknown concurrent changes or reapply if already live. Website permission exists; connector publication limit remains. After publication read public theme ID, eight new cards, sticker path, reviews and DE/FR on mobile/desktop.",
+    "limits": [
+      "No full-theme difference claim; only ten named checksums read",
+      "R35+R36 native QA dated, not rerun here",
+      "No current product/bio/board/metrics/order/flow reads from this handoff",
+      "These hashes are transfer identity, not MP4/rights/business approval",
+      "No root/shared-brand file or operative code changed"
+    ],
+    "ownWrites": "Documentation/local handoff only"
+  },
+  "artifacts": {
+    "handoff": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+      "gitBlobSha": "14bdf7db431fa7976e404452fd5555389e8762b7"
+    },
+    "transfer": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-TRANSFER-20261101-R37.json",
+      "gitBlobSha": "6ba0d1ead01797dea0a91c1e091582cbd01338be"
+    },
+    "patch": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-DIFF-20261101-R37.patch",
+      "gitBlobSha": "b0a3b846c88928ba451821ce82649b512cc226bf"
+    },
+    "packet": {
+      "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+      "gitBlobSha": "698bf2b59aa5aaf4453fe965bd983bbae14a9cf0",
+      "sha256": "4de9db8295fcecf356caab6445db25996ebf4f24fa780095d4c1baeb4f5a574c",
+      "previousPacketSha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f"
+    },
+    "entry": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE.md",
+      "gitBlobSha": "39a7d28615b54421144b5db94f8efe77d6278c68"
+    },
+    "sourceStateRevision": 36,
+    "sourceCanonicalShas": {
+      "README.md": "9c0a7619bbb0f7a642024d51d166e7954f406295",
+      "PROJEKTGEDAECHTNIS.md": "e430672c2e7fc3b5f9e65339de87eeafd105d6cf",
+      "ARBEITSSTAND.json": "e049f4e07450b28ee373c84f7b1591df927b15fc",
+      "TAGESPROTOKOLL.md": "b0af075dd60b70e75e5d453bee2ecfd18c233ccb"
+    }
+  },
+  "packetLocalCreate": {
+    "packet": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+    "packetSha256": "4de9db8295fcecf356caab6445db25996ebf4f24fa780095d4c1baeb4f5a574c",
+    "taskId": "luxe-zusammenarbeit-20261028",
+    "revision": 5,
+    "sourceState": "verified",
+    "created": true,
+    "receiptState": "unknown_missing_receipt",
+    "sourceChecks": [
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+        "expectedSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+        "actualSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-TRANSFER-20261101-R37.json",
+        "expectedSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+        "actualSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-DIFF-20261101-R37.patch",
+        "expectedSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+        "actualSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+        "expectedSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+        "actualSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+        "expectedSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+        "actualSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+        "state": "verified",
+        "gitBlobMatches": true
+      }
+    ]
+  },
+  "packetLocalStand": {
+    "taskId": "luxe-zusammenarbeit-20261028",
+    "revision": 5,
+    "packet": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+    "packetSha256": "4de9db8295fcecf356caab6445db25996ebf4f24fa780095d4c1baeb4f5a574c",
+    "producer": "codex",
+    "coordinator": "claude",
+    "sourceState": "verified",
+    "sourceChecks": [
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+        "expectedSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+        "actualSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-TRANSFER-20261101-R37.json",
+        "expectedSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+        "actualSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-DIFF-20261101-R37.patch",
+        "expectedSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+        "actualSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+        "expectedSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+        "actualSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+        "state": "verified",
+        "gitBlobMatches": true
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+        "expectedSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+        "actualSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+        "state": "verified",
+        "gitBlobMatches": true
+      }
+    ],
+    "receiptState": "unknown_missing_receipt",
+    "receipt": null,
+    "notice": "Rollenwert ist Selbstauskunft. Keine Live-Sitzungsverbindung, keine Umsetzung oder Veröffentlichung bestätigt."
+  },
+  "localHelperVersionCheck": {
+    "helpers": [
+      {
+        "path": "automation/codex_uebergabe.mjs",
+        "sha256": "8d1ca56a7ffdbfcf8451e12f7a1a2682b1db57d719697cb482960bfe22f06570",
+        "gitBlobSha": "6a82454f6598c90d7baa2d5f7b7c4679a98b8a28",
+        "localManifestMatch": true
+      },
+      {
+        "path": "codex-mods/luxe-codex/lib/uebergabe.mjs",
+        "sha256": "54547f449be8f8b633c434a7854bde0870ebad6f60e5fdb9bee96f443740c316",
+        "gitBlobSha": "7ef8a22351c140fdd59e77e276be81e6cd159313",
+        "localManifestMatch": true
+      }
+    ],
+    "localSourceOnly": true,
+    "remotePathChecks": {
+      "main": "NOT_FOUND at root paths",
+      "handoffBranch": "NOT_FOUND at root paths"
+    },
+    "noInstallOrHelperMutation": true
+  },
+  "localEntrypoint": {
+    "path": "/workspace/luxestyle-codex/CLAUDE.md",
+    "beforeSha256": "eccf847c8c56fe91aa19418017825083c7d7a77cdcc4408b271e539e75dd04aa",
+    "afterSha256": "d1f3298a1df8ab828d15aa346a63695e0e621b1dfd9df55b182ab7dafe3e2917",
+    "readbackEqual": true,
+    "scopedMirrorReadbackEqual": true
+  },
+  "localGitCheckout": false,
+  "claudeReceipt": "unknown_missing_receipt",
+  "writes": {
+    "themeFiles": 0,
+    "themePublication": 0,
+    "social": 0,
+    "metricFlowSalesReports": 0,
+    "ordersCustomers": 0,
+    "installDeployWorkflow": 0,
+    "documentation": "new R37 handoff/transfer/diff/R5; scoped CLAUDE.md updated; canonical memory next"
+  },
+  "limits": [
+    "Only ten Shopify file checksums read; full-theme diff must be done before publication",
+    "R35/R36 QA reused as dated evidence, no new full UI test or main-code CI",
+    "R4 preserved and exact previousPacketSha256 used; R3 code/CI remain separate",
+    "Fresh root helper-path checks returned GitHub404; existing local helpers version-pinned, no remote installation claim",
+    "No accepted receipt or actual Claude session/read/execution asserted",
+    "R37 local full snapshot is written only after canonical remote readback; historical sources retained"
+  ],
+  "localFiles": [
+    {
+      "filename": "SHOPIFY-CURRENT.json",
+      "bytes": 2198,
+      "sha256": "fc84b4db884a78605efba0850b8e1ca9b22cfda8f49f8bb8e87d4a957fa02de2"
+    },
+    {
+      "filename": "CLAUDE-THEME-DIFF-20261101-R37.patch",
+      "bytes": 26997,
+      "sha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f"
+    },
+    {
+      "filename": "CLAUDE-THEME-TRANSFER-20261101-R37.json",
+      "bytes": 5719,
+      "sha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6"
+    },
+    {
+      "filename": "CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+      "bytes": 11634,
+      "sha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261"
+    },
+    {
+      "filename": "CLAUDE.patch",
+      "bytes": 4684,
+      "sha256": "aab410c8804aad8d401eaf18d0db8257437a6c0130c540162bcec65325c36587"
+    },
+    {
+      "filename": "LOCAL-CLAUDE.patch",
+      "bytes": 3254,
+      "sha256": "5c720be027fa517073275e7201cc8e19b5e1e7bb4500a227ff938d155d051af6"
+    },
+    {
+      "filename": "HELPER-CHECK.json",
+      "bytes": 694,
+      "sha256": "c7f1ce6da43747fcee9f69c823ec08e768d534862114c1be4c32ed095ba8b0c7"
+    },
+    {
+      "filename": "PACKET-CREATE.json",
+      "bytes": 2052,
+      "sha256": "ab960ce95a17bc1a72e6d675d0b75ba56d96922f877c60adfaeecb4ca7b2fab9"
+    },
+    {
+      "filename": "PACKET-STAND.json",
+      "bytes": 2230,
+      "sha256": "1ae51201c87829236170458c63e066bbb4139fc538be64d973dfcf9344a8433b"
+    }
+  ]
+}
