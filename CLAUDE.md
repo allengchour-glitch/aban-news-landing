@@ -80,8 +80,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   jederzeit an PC-Claude delegierbar; Skripte: `automation/local/profil-politur-browser.mjs` (Playwright, lädt
   Profilbild automatisch) + `automation/social-profile-polish.mjs` (puppeteer).
 - **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** ALLE Marketing-
-  Videos **OHNE Voiceover** (on-screen Text statt Stimme) + Musik = **`automation/music/luxe-premium.wav`**
-  (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
+  Videos **OHNE Voiceover** (on-screen Text statt Stimme) + Musik **rotierend aus fünf Mixkit-Stücken**
+  (`dropship/reel-vorlage/musik_waehlen.sh`, User 2.11.: keine Eigenproduktion mehr, nie zweimal dasselbe). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 - **🤖 Modellwahl (FEST, User 2026-10-25: „ändere model haiku selber für einfache aufgaben, automatisch"):** Das
   Hauptmodell einer Sitzung stellt nur der User per `/model` um. Dafür **einfache, mechanische Teilaufgaben
   automatisch an Subagenten mit `model: "haiku"` geben** (Agent-Tool; in `Workflow` per `agent(..., {model:'haiku'})`):
@@ -91,6 +91,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Entscheidung gehen, am Rohergebnis stichprobenartig gegenprüfen (Messgerät zuerst prüfen).
 
 ## Stand
+**📌 2026-11-02 abends (🎬 Reel-Vorlage nach Codex · 🎵 Musik rotiert · 🛠️ Breitenfix · 🤖 MiniMax-Weg · 🧪 Menü-Adressen):**
+- **🎬 Reel-Vorlage (`dropship/reel-vorlage/`, `README.md`):** Codex' Foto-Reel (PR #2829, Wasserwellen-Lampe) verallgemeinert und verbessert (sanfter Zoom, Fenster mit unscharfem Hintergrund, helle/dunkle Variante). Drei Muster gerendert (Lampe, Tennisarmband, Kristall-Set), **nichts veröffentlicht, nichts in der Queue**. **Claudes erstes Muster ist nicht verwendbar** (Polaroids mit Personen, Markentasche im Bild): Fotos IMMER von Hand sichten. Tests `reel_karte_test.sh` und `musik_waehlen_test.sh`, Mutationsprobe 8 von 8. Hörabnahme der Mixkit-Stücke steht aus (kein Gehör hier).
+- **🎵 Musikregel geändert (Besitzer 2.11.): rotieren, nie zweimal hintereinander dasselbe Stück** (fünf fremde Mixkit-Stücke, Lizenz ohne Namensnennung; die Eigenproduktionen `luxe-*` sind abgelöst, Besitzer: «das Schrecklichste, was ich gehört habe»; `musik_waehlen.sh`, Log `musik-log.txt`); `VIDEO-PRAEFERENZEN.md` Regel 2 angepasst. Grenze: bei fünf Stücken heisst «nie das gleiche» «nie zweimal hintereinander».
+- **🛠️ Breitenfix (Codex R53) live:** eine CSS-Regel in `templates/collection.json` des MAIN-Themes (`dropship/BREITENFIX-R53-0211.md`); Codex-Aufträge laufen über Dateien in `dropship/CODEX-*.md` (Codex ist nicht aus dieser Sitzung aufrufbar).
+- **🤖 MiniMax H3:** nur über die API nutzbar (offene Gewichte: 4 GPUs und Gebietsklausel V.4, Reels wären in EU/USA sichtbar). Workflow `minimax-h3-clip.yml` (Vorgabe Trockenlauf) gemergt; erster echter Lauf scheiterte an leerem Konto (HTTP 402), nichts bezahlt. Preise (Dritte): H3 768P 0,08 USD/s, 2K 0,13; Veo 3.1 in der Gemini-API seit 22.10. abgeschaltet (Ersatz Omni Flash ~0,10 USD/s).
+- **🧪 Menü-Adressen 2.11. (sequentiell, mit Pausen):** 334 Menü-Seiten, alle HTTP 200.
+- **🧪 Lehre Messgerät:** Die Admin-API liefert Menü-Adressen mit `/en/`-Präfix (auf dem Shop 404, im echten Quelltext gibt es 0 solche Links): vor dem Prüfen entfernen. 6 parallele Abfragen gegen luxestyle.ch ergaben 347× 429 und 44× 503 (Drosselung ≠ Fehler): Menü-Adressen nur sequentiell mit Pausen prüfen.
+- **CJ-Groq-Nachlauf 2.11.:** 1 499 Produkte bearbeitet (1 123 geschrieben, 376 vorläufig übersprungen), Rückstand 1 100 von 2 599; um 18:18 UTC alle vier Teilläufe `rc=3` (CJ-Drosselung) dreimal in Folge, Lauf gestoppt. **Hintergrundläufe der Sitzung per `run_in_background` starten**: mit `setsid nohup` aus einer Bash-Zeile verschwanden sie nach rund 12 Minuten.
+
 **📌 2026-11-02 (🖼️ Selbst gestalten: Printful-Fotos · 🧥 Jacken/Kleider · 🏷️ alte Tags · ⭐ Sortierung):**
 - **🖼️ POD-Bilder (PR #2815–#2817, `dropship/POD-BILDER-0211.md`):** 158 Original-Galeriefotos von den Printful-Produktseiten auf 31 «Selbst gestalten»-Produkten (Sichtprüfung, Infografiken/Fremdlogos raus, frisch gelesen 0 nicht READY). Eigene Mockups mit Farbkreis-Design sahen schlecht aus (Besitzer) und wurden entfernt. Printful-Nutzungsbedingungen der Galeriebilder ungeprüft; ohne Bilder: Strandtuch, Bügeltransfer. Sterne: Judge.me blendet ohne echte Bewertung aus, keine erfundenen.
 - **🏷️ Alte Tag-Sammlungen (PR #2818, `dropship/LEGACY-TAGS-0211.md`):** 101 Menü-Sammlungen hängen an alten Tags/Titelregeln, meist bewusst breite Eltern-/Marketing-Listen → NICHT pauschal auf `sort-` umstellen; gezielt 104 Fremdprodukte aus 6 Tags genommen (Skript `dropship/legacy-tags-0211/fix_legacy.mjs`, bei Wiederkehr wiederholen).
