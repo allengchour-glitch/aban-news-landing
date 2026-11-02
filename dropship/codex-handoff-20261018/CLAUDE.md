@@ -2,7 +2,19 @@
 
 Nur LuxeStyle (luxestyle.ch) bearbeiten. Aktuelle ausdrückliche Inhabervorgaben haben Vorrang; diese Übergabe erweitert keine Geschäftsfreigaben.
 
-## Aktueller Befund 02.11.2026, R51
+## Aktueller Befund 02.11.2026, R52
+
+[Nachmittags-/Freigabepaket R52](LAUFPAKET-20261102-R52.md), [Ausführungsbelege](LAUFBELEGE-20261102-R52.json) und [einziger Master-Aufnahmebogen](MASTER-AUFNAHMEBOGEN-20261102-R52.md) zuerst lesen. Frische Shop-/Metricool-Identitäten passen. Planung 02.11.14:08:07–09.11.14:08:07 Europe/Zurich: 23 bestehende Objekte / 31 PENDING, keine kanalgleichen Text-/Medien-Doppel oder Kollisionen. Alle 22 Morgenobjekte unverändert; ein alter FB-/IG-Termin nur durch verschobenes Fenster zusätzlich sichtbar. Bestätigten Threads-Termin 04.11.18:30 / ID413194611 / UUID-1937081137064819378 und bestehendes Register erhalten; kein eigener neuer Post oder Publish.
+
+Die heutigen R48-Kennzahl-/Klaviyo- und R49-GA4-/GSC-Reports nicht erneut abrufen. R49/R50-Livetexte sind erledigt, keine gleiche SEO-Freigabe nochmals verlangen. R51-Datenarbeit und der minimale mobile CSS-Transferblocker darunter bleiben datierte Quellen; keine neue MAIN-Reparatur oder Themeübernahme in R52 behaupten. Nicht die alte Gesamtkopie veröffentlichen.
+
+Denselben 18-Sekunden-Master um einen einzigen ausfüllbaren Vier-Take-Abnahmebogen mit tatsächlichen Datei-/Hash-/Kontrollframe-/Rechtefeldern und acht Stopkriterien weiterentwickelt. 23 Dokumentbedingungen sind keine Filmabnahme. Vier passende Originaltakes, genaue Default-Ausführung/Motive, kommerzielle Film-/Bearbeitungsrechte und finale MP4-Abnahme fehlen. Keine MP4 und kein Render/Push. Pflichtmusik frisch hashgleich vorhanden, finale Rechte-/Hör-/Mixabnahme offen. Bio-Produktziele und Pinterest-Kontoboard unbestätigt. YouTube-Inhaberzielgruppe bereits geklärt; späteres Postflag muss passen. Filmregisterhistorie unbekannt, nicht initialisieren.
+
+Genau eine Verkaufsaktion zur ausdrücklichen Freigabe: bestehende Welcome-Vorlage VZnxDz, nur HTML-Zeilen 47/53 für Serviceabsatz und Versandlink. Vorher SHA256 1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b, nachher 16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a. Original und beide Policytexte frisch bestätigt; Haupt-CTA/Coupon/Abmeldung/übrige Bytes erhalten. Derselbe R48-Befund, keine neue Entdeckung oder Umsetzung. Keine Nachricht senden, keine Vorlage oder Flows ohne konkrete Freigabe ändern. Keine zusätzliche Verbesserungsaktion beantragt.
+
+19 stabile Aufgaben: alle 18 bisherigen IDs/Reihenfolge/Historien erhalten, nur Mastertask fortgeführt und welcome-service-trust-20261102 ergänzt; 17 andere bestehende Tasks sowie dailyReadPolicy exakt erhalten. Keine Social-/Shop-/Klaviyo-Writes, Kundenkontakte, Bestell-Watchs oder Frequenzänderung. Tatsächlicher Claude-Empfang bleibt unbekannt.
+
+## Vorheriger Befund 02.11.2026, R51
 
 [Technikstruktur R51](TECHNIK-UNTERKATEGORIEN-20261102-R51.md) und [Ausführungsbelege](TECHNIK-UNTERKATEGORIEN-20261102-R51.json) zuerst lesen. Live bestätigt: sechs abwechslungsreiche Einstiegsprodukte in Elektronik & Technik, zehn vorhandene Gruppen mit 60 vorhandenen feinen Kategorien verbunden (69 neue typisierte Referenzfelder), bestehende positive Mutterregel um zwölf belegte Sortiertags erweitert. Keine doppelten Kategorien, neuen Produkttags, Preis-/Status-/Publikationsänderungen. Native Produktzahl 6018→6223 ist keine öffentlich kaufbare Gesamtzahl. Hauptmenü/15 Hauptgruppen und eigene Rucksack-Unterfilter erhalten.
 
@@ -30,7 +42,7 @@ Vorhandene Helfer nur nach Versionsprüfung nutzen. Lokale Helfer sind kein Nach
 
 Keine Kunden-/Bestell-/Rabatt-/Budget-/Flow-/Shop-/Feed-Aktivierung, zusätzlichen DNS-Aktionen oder neue Automationen/Frequenzen, Installationen, Hooks, ungeprüfte Workflows/Merges/Deployments. Vier genau genehmigte DNS-Ergänzungen behalten ihren engen Umfang und benötigen legitimen Zugriff. Welcome-Service-Diff bleibt Freigabeentwurf, keine Nachricht senden. Versandgrenzen CHF 50/CHF 45 nach Rabatt und account.luxestyle.com.co erhalten. Kauf-Watch beendet; keine neuen Watchabfragen. Tageskennzahlen/Flowreports am 01.11. bereits gelesen. Gemeinsames Root-CLAUDE.md und andere Marken unangetastet lassen.
 
-Fortschritt nur in betroffener LuxeStyle-Dokumentation mit frischem SHA, konkretem Diff und exakter Rücklesung fortschreiben; 18 stabile Aufgaben-IDs und Historien erhalten. Unklarer Write bleibt unbekannt; kein blindes Wiederholen.
+Fortschritt nur in betroffener LuxeStyle-Dokumentation mit frischem SHA, konkretem Diff und exakter Rücklesung fortschreiben; 19 stabile Aufgaben-IDs und Historien erhalten. Unklarer Write bleibt unbekannt; kein blindes Wiederholen.
 
 R45: Die drei bestehenden Budgetkarten haben drei dekorative Geschenk-Hintergründe, weisse HTML-Texte über dunklem Verlauf und eine mobile Wischreihe; Desktop drei Spalten. Zwei Dateien exakt nativ, 20 begrenzte Vorschauchecks auf360/390/1440px inklusive echtem Touch/Tab/Pfeilen bestanden. Kein neues JavaScript oder Locale-Schlüssel. Preisfilter24.99/49.99 exakt erhalten; TAG-basierte Collections nicht als feste Preisregeln ausgeben. Bestehender Entwurf UNPUBLISHED, keine Veröffentlichung. Dieselbe Websitefreigabe und Connector-Publishgrenze erhalten; kein Ersatzentwurf oder erneute gleiche Freigabefrage. Historische Freigabelage; R49 hat genau diese zwei Bestsellerfelder umgesetzt.
 
