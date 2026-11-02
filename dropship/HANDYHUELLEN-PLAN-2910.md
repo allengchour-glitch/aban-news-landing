@@ -75,3 +75,8 @@ Aufbau auf `handy.json` (`handyhuellen-displayschutz` als Kopf) mit neuer Bereic
 
 ## 8. Reihenfolge, wenn der Besitzer «ja» sagt
 A. Garantie-Meta und Vertrauensleiste korrigieren (klein, nur Wahrheit). B. Lederhüllen als DRAFT anlegen (Optionen Handymodell × Farbe, Titel nur mit belegtem Material, Lieferantenwörter raus, Bilder je Farbe HTTP-200-geprüft). C. Neuen Theme-Entwurf aus MAIN mit Ankündigung, Video-Streifen und Handy-Block. D. Bereichsdatei `handyhuellen.json` und `modell_tags.mjs` (Codex kann Skript und Tests bauen, Shop-Schreiben bleibt bei Claude). E. Kategorien, Gruppen, Menü nach dem Rucksack-Muster (Trockenlauf, Sicherung, Rücklesen, HTTP-Prüfung). Veröffentlichen (Theme, Produkte ACTIVE) ist ein Klick des Besitzers.
+
+## 9. Entscheide des Besitzers vom 2.11.2026 (Chat)
+- **Kein Echtleder, kein Muster.** Die zehn Hüllen mit Echtleder-Beleg im Datenblatt werden NICHT als Leder verkauft. Der Titel nennt höchstens die Optik («Krokoprägung», «Straussenprägung») oder gar kein Material; «Leder», «Echtleder», «Kunstleder» werden nicht behauptet, solange kein Muster geprüft ist. Entscheid 1 in §7 ist damit beantwortet (nein).
+- **Magnet-Sonderlinie** nicht freigegeben (keine Antwort): Hüllen mit Magnet-Flag (2512220337381618500, 2510240609421642700) bleiben draussen. Übrig sind sechs Kandidaten aus §3.
+- **Technischer Weg:** Grind 2.0 ist weiter inert (`dropship/GRIND2-FREI.txt` fehlt, Freigabe ist Sache des Besitzers). Ein Anlegen der Hüllen als DRAFT braucht entweder diese Freigabe oder ein eigenes kleines Einzel-Anlegen mit denselben Toren (Titel-Wahrheit, Bilder HTTP 200, Fracht, Marge). Noch nichts angelegt.
