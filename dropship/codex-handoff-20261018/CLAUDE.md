@@ -2,7 +2,17 @@
 
 Nur LuxeStyle (luxestyle.ch) bearbeiten. Aktuelle ausdrückliche Inhabervorgaben haben Vorrang; diese Übergabe erweitert keine Geschäftsfreigaben.
 
-## Aktueller Befund 02.11.2026, R50
+## Aktueller Befund 02.11.2026, R51
+
+[Technikstruktur R51](TECHNIK-UNTERKATEGORIEN-20261102-R51.md) und [Ausführungsbelege](TECHNIK-UNTERKATEGORIEN-20261102-R51.json) zuerst lesen. Live bestätigt: sechs abwechslungsreiche Einstiegsprodukte in Elektronik & Technik, zehn vorhandene Gruppen mit 60 vorhandenen feinen Kategorien verbunden (69 neue typisierte Referenzfelder), bestehende positive Mutterregel um zwölf belegte Sortiertags erweitert. Keine doppelten Kategorien, neuen Produkttags, Preis-/Status-/Publikationsänderungen. Native Produktzahl 6018→6223 ist keine öffentlich kaufbare Gesamtzahl. Hauptmenü/15 Hauptgruppen und eigene Rucksack-Unterfilter erhalten.
+
+**Konkreter nächster Schritt:** Der aktuelle MAIN 213013037447 hat auf den zwei geprüften mobilen Unterseiten noch einen echten 16-px-Seitenüberlauf; ursprüngliche Unterseitenprüfung 28/30 bleibt fehlgeschlagen. Nur die kleine lx-uf-Breitenregel in templates/collection.json ist im bestehenden UNPUBLISHED-Entwurf 212978598279 korrigiert (MD5 c7020b391b776427a1346a91540c646f), nativ exakt und in drei echten Vorschauansichten mit 36/36 begrenzten Bedingungen bestätigt. Diese Dateiversion hat für den R51-Breitenfix Vorrang vor älteren gleichen Entwurfsdateien. Andere R47/R46/R45/R44-Dateiversionen erhalten.
+
+Ein legitimer Writer mit MAIN-Dateizugriff muss **nur die eine CSS-Regel** auf Basis des frisch gelesenen aktuellen MAIN übertragen: lx-uf max-width relativ 100% des Elternbereichs, width:100%, min-width:0. Aktueller MAIN-Datei-MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84 ist eine datierte Gegenprobe; Main-Kandidat und exakter Diff stehen im R51-JSON. Neue Schrift-/Banneränderungen und sämtliche übrigen Main-Inhalte erhalten. Anschliessend beide mobilen MAIN-Ansichten frisch prüfen. **Nicht den ganzen alten Entwurf über MAIN veröffentlichen.** Bestehende Websitefreigabe gilt; keine erneute gleiche Freigabefrage. Verfügbarer Shopify-Toolvertrag erlaubt Datei-Writes nur UNPUBLISHED, MAIN-Writes/Publikation sind technisch gesperrt; kein MAIN-Write versucht oder Umweg eingerichtet.
+
+18 stabile Aufgaben-IDs: die bisherigen 17 samt Historie erhalten, neue Strukturaufgabe tech-category-structure-20261102 ergänzt; nur Homepageaufgabe wegen dieses konkreten Entwurfsfixes zusätzlich aktualisiert, 16 andere bestehende Tasks exakt erhalten. R48/R49-Tagesreports vom 02.11. wiederverwenden, keine zusätzlichen Kennzahl-/Flow-/Kauf-Watchabfragen. Kauf-Watch beendet. Kein neuer Socialpost oder Theme-Publish. Claude-Empfang weiterhin unbekannt.
+
+## Vorheriger Befund 02.11.2026, R50
 
 [Kategoriequalität R50](KATEGORIEN-QUALITAET-20261102-R50.md) und [Ausführungsbelege](KATEGORIEN-QUALITAET-20261102-R50.json) zuerst lesen. Aktueller MAIN ist jetzt 213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». Der frühere MAIN212971061639 und Entwurf212978598279 sind UNPUBLISHED. Kein eigener Theme-Publish. Vor jeder weiteren Themeübernahme vollständigen aktuellen MAIN-/Entwurfsdiff lesen, aktuelle Schrift-/Banneränderungen und alle nachgewiesenen bisherigen Funktionen erhalten. Den alten Entwurf nicht ungeprüft über den neuen MAIN veröffentlichen; bestehende Websitefreigabe und Connector-Publishgrenze bleiben erhalten.
 
@@ -20,7 +30,7 @@ Vorhandene Helfer nur nach Versionsprüfung nutzen. Lokale Helfer sind kein Nach
 
 Keine Kunden-/Bestell-/Rabatt-/Budget-/Flow-/Shop-/Feed-Aktivierung, zusätzlichen DNS-Aktionen oder neue Automationen/Frequenzen, Installationen, Hooks, ungeprüfte Workflows/Merges/Deployments. Vier genau genehmigte DNS-Ergänzungen behalten ihren engen Umfang und benötigen legitimen Zugriff. Welcome-Service-Diff bleibt Freigabeentwurf, keine Nachricht senden. Versandgrenzen CHF 50/CHF 45 nach Rabatt und account.luxestyle.com.co erhalten. Kauf-Watch beendet; keine neuen Watchabfragen. Tageskennzahlen/Flowreports am 01.11. bereits gelesen. Gemeinsames Root-CLAUDE.md und andere Marken unangetastet lassen.
 
-Fortschritt nur in betroffener LuxeStyle-Dokumentation mit frischem SHA, konkretem Diff und exakter Rücklesung fortschreiben; 17 stabile Aufgaben-IDs und Historien erhalten. Unklarer Write bleibt unbekannt; kein blindes Wiederholen.
+Fortschritt nur in betroffener LuxeStyle-Dokumentation mit frischem SHA, konkretem Diff und exakter Rücklesung fortschreiben; 18 stabile Aufgaben-IDs und Historien erhalten. Unklarer Write bleibt unbekannt; kein blindes Wiederholen.
 
 R45: Die drei bestehenden Budgetkarten haben drei dekorative Geschenk-Hintergründe, weisse HTML-Texte über dunklem Verlauf und eine mobile Wischreihe; Desktop drei Spalten. Zwei Dateien exakt nativ, 20 begrenzte Vorschauchecks auf360/390/1440px inklusive echtem Touch/Tab/Pfeilen bestanden. Kein neues JavaScript oder Locale-Schlüssel. Preisfilter24.99/49.99 exakt erhalten; TAG-basierte Collections nicht als feste Preisregeln ausgeben. Bestehender Entwurf UNPUBLISHED, keine Veröffentlichung. Dieselbe Websitefreigabe und Connector-Publishgrenze erhalten; kein Ersatzentwurf oder erneute gleiche Freigabefrage. Historische Freigabelage; R49 hat genau diese zwei Bestsellerfelder umgesetzt.
 
