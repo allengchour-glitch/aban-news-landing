@@ -25489,3 +25489,82 @@ smartes-turschloss-mit-fingerabdrucksensor-506944 · 2026-11-02T17:22:47.531Z ·
 funk-video-turklingel-mit-fernuberwachung-fc17da · 2026-11-02T17:22:53.176Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"B set"},{"option":"Farbe","wert":"A se
 solarbambus-rechner-fur-buro-627100 · 2026-11-02T17:22:54.587Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"220":{"linien":0,"urteil":"nicht_lieferbar"},"240":{"linien":0,"urte
 kabel-organizer-fur-schreibtisch-634800 · 2026-11-02T17:22:56.747Z · GESCHRIEBEN · 6 Varianten
+kabellose-1080p-uberwachungskamera-1e8c71 · 2026-11-02T17:23:05.673Z · GESCHRIEBEN · 9 Varianten
+megapixel-wifi-aussenkamera-4k-338816 · 2026-11-02T17:23:06.119Z · GESCHRIEBEN · 8 Varianten
+kompakter-bluetooth-subwoofer-mit-mikrofon-ad9885 · 2026-11-02T17:23:09.969Z · GESCHRIEBEN · 4 Varianten
+smart-home-uberwachungskamera-768064 · 2026-11-02T17:23:15.470Z · GESCHRIEBEN · 3 Varianten
+4g-ptz-uberwachungskamera-mit-solarpanel-614600 · 2026-11-02T17:23:19.704Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"4G EU"},{"option":"Ausführung","w
+uberwachungskamera-mit-lampenkopf-600800 · 2026-11-02T17:23:19.710Z · GESCHRIEBEN · 4 Varianten
+wifi-solar-outdoor-kamera-8k-626800 · 2026-11-02T17:23:24.835Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"550":{"linien":0,"urteil":"nicht_lieferbar"}})
+kabellose-5-mp-uberwachungskamera-160640 · 2026-11-02T17:23:27.023Z · GESCHRIEBEN · 8 Varianten
+wlan-uberwachungskamera-mit-nachtsicht-gegensp-644416 · 2026-11-02T17:23:29.112Z · GESCHRIEBEN · 5 Varianten
+hd-nachtsichtkamera-mit-wlan-616256 · 2026-11-02T17:23:32.494Z · GESCHRIEBEN · 2 Varianten
+webcam-mit-full-hd-led-ringlicht-108608 · 2026-11-02T17:23:34.811Z · GESCHRIEBEN · 2 Varianten
+hd-nachtsicht-uberwachungsroboter-mit-fernzugr-704000 · 2026-11-02T17:23:36.920Z · GESCHRIEBEN · 2 Varianten
+wireless-1080p-kamera-923776 · 2026-11-02T17:23:40.812Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"A12 Ankai"},{"option":"Ausführung
+kabellose-hd-uberwachungskamera-406b9f · 2026-11-02T17:23:44.051Z · GESCHRIEBEN · 4 Varianten
+gaming-headset-637900 · 2026-11-02T17:23:44.476Z · GESCHRIEBEN · 2 Varianten
+bluetooth-earphones-sport-non-in-ear-612700 · 2026-11-02T17:23:47.548Z · GESCHRIEBEN · 3 Varianten
+smarte-hd-schwenk-neige-kamera-fur-zuhause-622300 · 2026-11-02T17:23:50.038Z · GESCHRIEBEN · 2 Varianten
+ai-ubersetzungs-kopfhorer-mit-open-ear-design-608900 · 2026-11-02T17:23:51.996Z · GESCHRIEBEN · 2 Varianten
+kabel-organizer-box-630400 · 2026-11-02T17:23:58.752Z · GESCHRIEBEN · 2 Varianten
+subwoofer-bluetooth-headset-mit-led-28eb15 · 2026-11-02T17:23:59.242Z · GESCHRIEBEN · 4 Varianten
+kabellose-knochenschall-sport-kopfhorer-623600 · 2026-11-02T17:24:07.670Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Glacier Silver"},{"option":"Farbe","we
+48v-soundkarte-fur-live-streaming-611000 · 2026-11-02T17:24:11.777Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"All Black"}]
+kabel-organizer-mit-deckel-und-rollen-fussen-638400 · 2026-11-02T17:24:14.226Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Pulley"},{"option":"Modell","wert":"S
+tragbarer-fotodrucker-639744 · 2026-11-02T17:24:17.293Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Printer"},{"option":"Modell","wert":"
+usb-ethernet-adapter-mit-3-port-usb-hub-46adc4 · 2026-11-02T17:24:18.642Z · GESCHRIEBEN · 3 Varianten
+usb-c-hub-adapter-mit-hdmi-vga-lan-power-port-1534eb · 2026-11-02T17:24:21.245Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"7 in 1"},{"option":"Modell","wert":"8
+workstation-16-in-1-multi-interface-docking-st-814528 · 2026-11-02T17:24:27.059Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"No power supply"},{"option":"Modell",
+usb-c-hub-fur-ipad-pro-iphone-847488 · 2026-11-02T17:24:29.553Z · GESCHRIEBEN · 3 Varianten
+mini-handheld-scanner-mit-bildschirm-und-wlan-613600 · 2026-11-02T17:24:30.464Z · GESCHRIEBEN · 4 Varianten
+usb-2-0-hub-mit-micro-usb-stromversorgung-0-5m-853248 · 2026-11-02T17:24:40.108Z · GESCHRIEBEN · 3 Varianten
+3-in-1-laptop-sleeve-mit-wireless-charger-654900 · 2026-11-02T17:24:42.153Z · GESCHRIEBEN · 4 Varianten
+wasserdichte-laptop-tasche-fur-business-reisen-632900 · 2026-11-02T17:24:44.391Z · GESCHRIEBEN · 8 Varianten
+notebook-schutztasche-aus-leder-15-6-zoll-121024 · 2026-11-02T17:24:47.503Z · GESCHRIEBEN · 12 Varianten
+gps-und-funksignal-detektor-426112 · 2026-11-02T17:24:53.357Z · GESCHRIEBEN · 2 Varianten
+multi-kartenleser-usb-3-0-type-c-662848 · 2026-11-02T17:24:57.153Z · GESCHRIEBEN · 5 Varianten
+hochgeschwindigkeits-ssd-fur-laptops-7a08b2 · 2026-11-02T17:25:01.733Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"MSATA 60"},{"option":"Farbe","wert":"M
+business-laptoptasche-aus-oxford-stoff-619000 · 2026-11-02T17:25:05.358Z · GESCHRIEBEN · 6 Varianten
+fenster-und-tursicherung-mit-kabelschloss-365568 · 2026-11-02T17:25:13.864Z · GESCHRIEBEN · 6 Varianten
+usb-3-0-4-port-hub-mit-externer-stromversorgun-2e20ce · 2026-11-02T17:25:15.918Z · GESCHRIEBEN · 2 Varianten
+tastenkappen-set-gedampftes-brot-629700 · 2026-11-02T17:25:16.030Z · GESCHRIEBEN · 2 Varianten
+usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700 · 2026-11-02T17:25:20.252Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"7 In 1"},{"option":"Ausführung","
+funk-turklingel-38e626 · 2026-11-02T17:25:25.477Z · GESCHRIEBEN · 9 Varianten
+wasserdichte-uberwachungskamera-odc-26b-e8c87b · 2026-11-02T17:25:28.778Z · GESCHRIEBEN · 5 Varianten
+mini-safe-mit-zahlencode-und-schlussel-610300 · 2026-11-02T17:25:32.819Z · GESCHRIEBEN · 4 Varianten
+solar-outdoor-uberwachungskamera-mit-wlan-634300 · 2026-11-02T17:25:35.666Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Graffiti WiFi Standard Edition"},
+m-2-ssd-gehause-extern-405824 · 2026-11-02T17:25:41.610Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Single Disk 6Gbps"},{"option":"Farbe",
+kohlenmonoxidmelder-fur-den-haushalt-009728 · 2026-11-02T17:25:43.158Z · GESCHRIEBEN · 2 Varianten
+solar-uberwachungskamera-v360pro-outdoor-nacht-600700 · 2026-11-02T17:25:43.297Z · GESCHRIEBEN · 6 Varianten
+smarte-wlan-video-turklingel-431360 · 2026-11-02T17:25:48.726Z · GESCHRIEBEN · 4 Varianten
+usb-stick-fur-apple-iphones-190016 · 2026-11-02T17:25:52.967Z · GESCHRIEBEN · 6 Varianten
+bluetooth-maus-mit-5-gang-dpi-und-silikon-hand-605100 · 2026-11-02T17:25:56.549Z · GESCHRIEBEN · 3 Varianten
+smarte-videoturklingel-060416 · 2026-11-02T17:25:56.827Z · GESCHRIEBEN · 2 Varianten
+business-laptop-tasche-mit-schultergurt-286656 · 2026-11-02T17:26:03.189Z · GESCHRIEBEN · 3 Varianten
+muse-color-butterfly-whisper-keycaps-originalh-627200 · 2026-11-02T17:26:03.348Z · GESCHRIEBEN · 2 Varianten
+360-panorama-uberwachungskamera-mit-nachtsicht-774528 · 2026-11-02T17:26:05.930Z · GESCHRIEBEN · 5 Varianten
+wlan-uberwachungskamera-360-graffiti-893376 · 2026-11-02T17:26:09.046Z · GESCHRIEBEN · 6 Varianten
+kabellose-solar-uberwachungskamera-728832 · 2026-11-02T17:26:13.039Z · GESCHRIEBEN · 2 Varianten
+handheld-tablet-tasche-wasserfest-robust-039552 · 2026-11-02T17:26:21.652Z · GESCHRIEBEN · 7 Varianten
+solar-hd-uberwachungskamera-mit-alarm-936128 · 2026-11-02T17:26:22.876Z · GESCHRIEBEN · 8 Varianten
+smart-sicherheitskamera-463104 · 2026-11-02T17:26:25.085Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Graffiti 2MP"},{"option":"Ausführ
+tragbare-externe-festplatten-hulle-631300 · 2026-11-02T17:26:26.187Z · GESCHRIEBEN · 3 Varianten
+usb4-ssd-gehause-fur-notebooks-bis-40-gbit-s-614900 · 2026-11-02T17:26:36.665Z · GESCHRIEBEN · 2 Varianten
+kabellose-silent-bluetooth-maus-395712 · 2026-11-02T17:26:41.328Z · GESCHRIEBEN · 9 Varianten
+wlan-uberwachungskamera-mit-fernzugriff-178944 · 2026-11-02T17:26:41.541Z · GESCHRIEBEN · 5 Varianten
+1080p-cloud-ip-kamera-fe08dc · 2026-11-02T17:26:43.674Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"1080P 64G"},{"option":"Modell","wert"
+usb-3-0-festplattengehause-fur-3-5-zoll-sata-h-615000 · 2026-11-02T17:26:50.109Z · GESCHRIEBEN · 8 Varianten
+hd-nachtsicht-uberwachungskamera-631700 · 2026-11-02T17:26:52.543Z · GESCHRIEBEN · 4 Varianten
+high-speed-solid-state-drive-ssd-631232 · 2026-11-02T17:26:54.315Z · GESCHRIEBEN · 4 Varianten
+gaming-set-mit-beleuchteter-tastatur-maus-head-611300 · 2026-11-02T17:27:03.519Z · GESCHRIEBEN · 8 Varianten
+fingerprint-u-disk-127936 · 2026-11-02T17:27:05.417Z · GESCHRIEBEN · 6 Varianten
+kabelloses-videouberwachungs-set-437824 · 2026-11-02T17:27:11.424Z · GESCHRIEBEN · 3 Varianten
+intelligente-uberwachungskamera-mit-alarmfunkt-425920 · 2026-11-02T17:27:13.326Z · GESCHRIEBEN · 4 Varianten
+usb-c-hub-mit-hdmi-vga-ethernet-und-kartenlese-d8ea0f · 2026-11-02T17:27:17.463Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"11 in 1"},{"option":"Modell","wert":"
+hd-panorama-uberwachungskamera-fur-smartphones-623600 · 2026-11-02T17:27:20.937Z · GESCHRIEBEN · 4 Varianten
+mini-metall-usb-stick-8-gb-ccdeec · 2026-11-02T17:27:25.113Z · GESCHRIEBEN · 6 Varianten
+ergonomische-vertikal-gaming-maus-738432 · 2026-11-02T17:27:29.440Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Magic color version"},{"option":"Farbe
+elektronischer-ubersetzungsstift-613800 · 2026-11-02T17:27:36.505Z · GESCHRIEBEN · 3 Varianten
+usb-stick-schildkrote-204608 · 2026-11-02T17:27:39.455Z · GESCHRIEBEN · 20 Varianten
+usb-stick-sandwich-cookie-681216 · 2026-11-02T17:33:54.086Z · GESCHRIEBEN · 5 Varianten
