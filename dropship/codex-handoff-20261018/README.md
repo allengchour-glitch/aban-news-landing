@@ -1,5 +1,17 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 02.11.2026, Revision 52
+
+[Nachmittagspaket R52](LAUFPAKET-20261102-R52.md) · [Aktuelle Belege](LAUFBELEGE-20261102-R52.json) · [Aufnahme- und Abnahmebogen desselben Masters](MASTER-AUFNAHMEBOGEN-20261102-R52.md).
+
+Shop, Metricool-Marke und sechs erwartete Konten sind frisch bestätigt. Die rollierende Planung umfasst 23 Objekte mit 31 PENDING-Kanalzuständen. Alle 22 gemeinsamen Morgenobjekte sind unverändert. Ein bestehender FB-/IG-Termin am 09.11. um 12:15 wird nur durch die weitergerückte Fenstergrenze sichtbar; keine eigene Neuanlage oder Veröffentlichung. Der genehmigte Threads-Termin samt UUID, Register und tatsächlichem JPEG-Hash bleibt bestätigt. Zwei genaue Produkte und Varianten sind aktuell kaufbar: Projektor CHF 34.90 und Organizer CHF 29.90; Tracking/CONTINUE/Menge 0 ohne Bestands- oder Lieferzusage eingeordnet, 20/20 begrenzte öffentliche Produktbedingungen bestanden.
+
+Derselbe professionelle 18-Sekunden-Master wird durch einen ausfüllbaren Aufnahme-/Abnahmebogen mit tatsächlichen Datei-, Kontrollframe-, Identitäts- und Rechtefeldern weiterentwickelt. 23/23 Dokumentbedingungen sind geprüft; echte Originaltakes, konkrete Ausführung/Motive, Filmrechte, Sichtabnahme und fertige MP4 bleiben offen. Der Bogen ist kein Film und keine Medienfreigabe. Bestehende Hooks und sechs stabile UTMs bleiben erhalten; keine Foto-Zoom-Ersatzserie oder Altclipaktivierung. Musik und vorhandene CJ-Helfer wurden gegengeprüft, finale Rechte-/Hörabnahme und authentifizierte Runtime sind nicht belegt. Fehlende Runtime bedeutet keinen fehlenden Connector.
+
+Genau eine Verkaufsaktion bleibt zur Freigabe: der bestehende Welcome-Service-Zwei-Zeilen-Diff für VZnxDz, frisch an aktuelle Vorlage und tatsächliche Policies gebunden. Keine Template-/Flowänderung oder Nachricht. R49/R50-Bestseller-/Kategorietexte sind erledigt, keine neue alte SEO-Aktion. Heutige R48-Berichte wurden frisch als Quellen gelesen und nicht erneut abgefragt; dailyReadPolicy bleibt exakt unverändert, CHF/USD getrennt und Kauf-Watch beendet.
+
+R51 bleibt getrennt erhalten: Technik-Struktur und Reihenfolge sind live; der zuletzt belegte mobile 16 px-Überlauf ist nur im alten UNPUBLISHED-Entwurf korrigiert. Die einzelne CSS-Regel muss weiterhin über legitimen fähigen Zugang in den frischen MAIN übernommen werden. Hier keine neue R51-Prüfung oder Reparatur, keine ganze alte Kopie publizieren und keine erneute gleiche Freigabefrage. 19 Aufgaben: alle 18 bisherigen IDs/Reihenfolge/Historien erhalten, nur Masteraufgabe fortgeführt und neue Welcome-ID hinten ergänzt; 17 andere bestehende Tasks exakt unverändert. VersandCHF 50/CHF 45, account.luxestyle.com.co, Befugnisse/Frequenz und historische Übergaben erhalten. Claude-Einstieg R52, tatsächlicher Empfang unbekannt.
+
 ## Aktueller Stand – 02.11.2026, Revision 51
 
 [Technik-Unterkategorien und Sortierung R51](TECHNIK-UNTERKATEGORIEN-20261102-R51.md) · [Exakte Ausführung und Prüfbelege](TECHNIK-UNTERKATEGORIEN-20261102-R51.json).
