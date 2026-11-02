@@ -1,0 +1,1489 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 53,
+  "checkedAt": "2026-11-02T15:55:21.993375+00:00",
+  "ownerRequest": "mache weiter dann claude veröffentliche",
+  "scope": {
+    "websiteSamePreviouslyAuthorizedSingleCssFix": true,
+    "optionalPublicationTargetQuestion": "answered_explicitly_website_only",
+    "silenceIsNotNewApproval": true,
+    "websiteAuthority": "Existing website permission, reaffirmed by current explicit Website-Verbesserungen reply",
+    "welcomeApplyAllowedNow": false,
+    "filmPublicationAllowedNow": false,
+    "noNewBroadReleaseScope": true,
+    "welcomeExcludedByCurrentReply": true
+  },
+  "identity": {
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "allExpectedMatched": true,
+    "runtime": {
+      "current": true,
+      "capabilities": [],
+      "credentialBindings": [],
+      "outboundIdentities": []
+    },
+    "sameRunFresh": true
+  },
+  "mainRole": {
+    "id": "213013037447",
+    "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+    "role": "MAIN"
+  },
+  "fourPathComparison": {
+    "rows": [
+      {
+        "filename": "assets/luxe-edit.css",
+        "mainMd5": "110ce69ac47b4b139f6159cc2078d27a",
+        "draftMd5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+        "exactBodiesSame": false
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "mainMd5": "e6a35f08ddafcc80e38a0f469212549c",
+        "draftMd5": "e6a35f08ddafcc80e38a0f469212549c",
+        "exactBodiesSame": true
+      },
+      {
+        "filename": "snippets/luxe-category-directory.liquid",
+        "mainMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "draftMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "exactBodiesSame": true
+      },
+      {
+        "filename": "templates/collection.json",
+        "mainMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "draftMd5": "c7020b391b776427a1346a91540c646f",
+        "exactBodiesSame": false
+      }
+    ],
+    "scope": "4 exact paths only, no full theme or full storefront acceptance",
+    "noOwnThemePublish": true
+  },
+  "candidate": {
+    "mainThemeId": "gid://shopify/OnlineStoreTheme/213013037447",
+    "mainRole": "MAIN",
+    "filename": "templates/collection.json",
+    "beforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+    "afterMd5": "bbacad38aabc5e292ed819b3d1b01782",
+    "beforeSha256": "5f18ff70271c79cda33efeceb51cfeb27ccb601d0c9b0b49f61ed494ed63f0f0",
+    "afterSha256": "53c20c7e9162ea449e3f81a6cccf7744660e0d00534bf51409048df0dd2cf88b",
+    "exactSingleCssRuleOnly": true,
+    "allOtherBytesPreserved": true,
+    "nativeWritten": false,
+    "published": false,
+    "proof": "Fresh actual MAIN body; matched checksum before and reversible exact prefix replacement",
+    "oldDraftMustNotBePublishedWhole": true,
+    "noMainWriteOrBypassAttempt": true
+  },
+  "mainOriginalFullText": "/*\n * ------------------------------------------------------------\n * IMPORTANT: The contents of this file are auto-generated.\n *\n * This file may be updated by the Shopify admin theme editor\n * or related systems. Please exercise caution as any changes\n * made to this file may be overwritten.\n * ------------------------------------------------------------\n */\n{\n  \"sections\": {\n    \"main\": {\n      \"type\": \"main-collection\",\n      \"blocks\": {\n        \"filters\": {\n          \"type\": \"filters\",\n          \"static\": true,\n          \"settings\": {\n            \"enable_filtering\": true,\n            \"filter_style\": \"horizontal\",\n            \"filter_width\": \"centered\",\n            \"text_label_case\": \"default\",\n            \"show_swatch_label\": false,\n            \"show_filter_label\": true,\n            \"enable_sorting\": true,\n            \"enable_grid_density\": true,\n            \"inherit_color_scheme\": true,\n            \"color_scheme\": \"\",\n            \"padding-block-start\": 8,\n            \"padding-block-end\": 8,\n            \"padding-inline-start\": 0,\n            \"padding-inline-end\": 0,\n            \"facets_margin_bottom\": 8,\n            \"facets_margin_right\": 20\n          },\n          \"blocks\": {}\n        },\n        \"product-card\": {\n          \"type\": \"_product-card\",\n          \"static\": true,\n          \"settings\": {\n            \"product_card_gap\": 4,\n            \"inherit_color_scheme\": true,\n            \"color_scheme\": \"\",\n            \"border\": \"none\",\n            \"border_width\": 1,\n            \"border_opacity\": 100,\n            \"border_radius\": 0,\n            \"padding-block-start\": 0,\n            \"padding-block-end\": 0,\n            \"padding-inline-start\": 0,\n            \"padding-inline-end\": 0\n          },\n          \"blocks\": {\n            \"card-gallery\": {\n              \"type\": \"_product-card-gallery\",\n              \"settings\": {\n                \"image_ratio\": \"portrait\",\n                \"border\": \"none\",\n                \"border_width\": 1,\n                \"border_opacity\": 100,\n                \"border_radius\": 0,\n                \"padding-block-start\": 0,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            },\n            \"product_title_4nY4eT\": {\n              \"type\": \"product-title\",\n              \"name\": \"t:names.product_title\",\n              \"settings\": {\n                \"width\": \"100%\",\n                \"max_width\": \"normal\",\n                \"alignment\": \"left\",\n                \"type_preset\": \"rte\",\n                \"font\": \"var(--font-body--family)\",\n                \"font_size\": \"1rem\",\n                \"line_height\": \"normal\",\n                \"letter_spacing\": \"normal\",\n                \"case\": \"none\",\n                \"wrap\": \"pretty\",\n                \"color\": \"var(--color-foreground)\",\n                \"background\": false,\n                \"background_color\": \"#00000026\",\n                \"corner_radius\": 0,\n                \"padding-block-start\": 4,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            },\n            \"price_EzJzMm\": {\n              \"type\": \"price\",\n              \"settings\": {\n                \"show_sale_price_first\": true,\n                \"show_installments\": false,\n                \"show_tax_info\": false,\n                \"type_preset\": \"h6\",\n                \"width\": \"100%\",\n                \"alignment\": \"left\",\n                \"font\": \"var(--font-body--family)\",\n                \"font_size\": \"1rem\",\n                \"line_height\": \"normal\",\n                \"letter_spacing\": \"normal\",\n                \"case\": \"none\",\n                \"color\": \"var(--color-foreground)\",\n                \"padding-block-start\": 0,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            }\n          },\n          \"block_order\": [\n            \"card-gallery\",\n            \"product_title_4nY4eT\",\n            \"price_EzJzMm\"\n          ]\n        }\n      },\n      \"custom_css\": [],\n      \"settings\": {\n        \"layout_type\": \"grid\",\n        \"product_card_size\": \"medium\",\n        \"mobile_product_card_size\": \"small\",\n        \"enable_infinite_scroll\": true,\n        \"products_per_page\": 24,\n        \"product_grid_width\": \"centered\",\n        \"full_width_on_mobile\": true,\n        \"columns_gap_horizontal\": 16,\n        \"columns_gap_vertical\": 32,\n        \"padding-inline-start\": 0,\n        \"padding-inline-end\": 0,\n        \"color_scheme\": \"scheme-1\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 32\n      }\n    },\n    \"lux_faq\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<div style=\\\"max-width:820px;margin:0 auto;font-size:15px;line-height:1.6;color:#333\\\"><h2 style=\\\"font-size:20px;margin:0 0 6px\\\">Häufige Fragen zu {{ collection.title }}</h2><p style=\\\"color:#666;margin:0 0 8px\\\">Alles rund um {{ collection.title }} bei LuxeStyle – kuratierte Auswahl, faire Preise, Lieferdatum beim Artikel und in der Kasse.</p><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">🚚 Wie lange dauert der Versand in die Schweiz?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Ab Schweizer Lager meist 2–3 Werktage, im Direktversand 10–20 Werktage; das genaue Datum steht beim Artikel und in der Kasse — immer mit Sendungsverfolgung. Gratis-Versand ab CHF 50 nach Rabatt, sonst CHF 7.00.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">💳 Welche Zahlungsmethoden gibt es?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">TWINT, Visa, Mastercard und weitere – sicher und SSL-verschlüsselt.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">↩️ Wie funktioniert die Rückgabe?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Wir gewähren ein freiwilliges 30-Tage-Rückgaberecht. Eine kurze Nachricht an info@luxestyle.ch genügt.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">📏 Wie finde ich die richtige Grösse?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">🇨🇭 Warum bei LuxeStyle kaufen?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Schweizer Online-Shop mit kuratierter Auswahl, fairen Preisen, sicherer Zahlung und persönlichem Support auf Deutsch.</p></details></div>\",\n        \"section_width\": \"page-width\",\n        \"padding-block-start\": 28,\n        \"padding-block-end\": 28\n      }\n    },\n    \"lux_breadcrumb\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- liquid\\n  assign p_title = ''\\n  assign p_url = ''\\n  for link in linklists.main-menu.links\\n    for sub in link.links\\n      if sub.url == collection.url and p_title == ''\\n        assign p_title = link.title\\n        assign p_url = link.url\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and p_title == ''\\n          assign p_title = sub.title\\n          assign p_url = sub.url\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n-%}\\n<nav aria-label=\\\"Breadcrumb\\\" style=\\\"max-width:var(--page-width,1200px);margin:0 auto;padding:.4rem 1.5rem 0;font-size:.95rem;font-weight:600;line-height:1.4;color:#3d2f18;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;\\\">\\n  <a href=\\\"{{ routes.root_url }}\\\" style=\\\"color:#6b4f1d;font-weight:700;text-decoration:none;\\\">Home</a>\\n  {%- if p_title != blank %}<span aria-hidden=\\\"true\\\">&rsaquo;</span>\\n  <a href=\\\"{{ p_url }}\\\" style=\\\"color:#6b4f1d;font-weight:700;text-decoration:none;\\\">{{ p_title | strip }}</a>{% endif -%}\\n  <span aria-hidden=\\\"true\\\">&rsaquo;</span>\\n  <span aria-current=\\\"page\\\" style=\\\"color:#1f1a12;font-weight:700;\\\">{{ collection.title }}</span>\\n</nav>\\n<script type=\\\"application/ld+json\\\">\\n{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"BreadcrumbList\\\",\\\"itemListElement\\\":[\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":1,\\\"name\\\":\\\"Home\\\",\\\"item\\\":\\\"{{ shop.url }}{{ routes.root_url }}\\\"}{%- if p_title != blank %},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":2,\\\"name\\\":{{ p_title | strip | json }},\\\"item\\\":\\\"{{ shop.url }}{{ p_url }}\\\"},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":3,\\\"name\\\":{{ collection.title | json }},\\\"item\\\":\\\"{{ shop.url }}{{ collection.url }}\\\"}{% else %},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":2,\\\"name\\\":{{ collection.title | json }},\\\"item\\\":\\\"{{ shop.url }}{{ collection.url }}\\\"}{% endif -%}\\n]}\\n</script>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_subchips\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- liquid\\n  assign chips = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url and link.links.size > 1\\n      assign chips = link.links\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and link.links.size > 1\\n        assign chips = link.links\\n      endif\\n    endfor\\n  endfor\\n-%}\\n{%- if chips != '' and chips.size > 1 -%}\\n{%- assign lx_max = 7 -%}\\n{%- assign lx_n = chips.size -%}\\n<nav class=\\\"lx-tabs\\\" aria-label=\\\"Unterkategorien\\\">\\n<style>\\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\\n.lx-tabs a[aria-current=\\\"page\\\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\\n.lx-tabs summary::-webkit-details-marker{display:none}\\n.lx-tabs summary::after{content:' ▾'}\\n.lx-tabs details[open] summary::after{content:' ▴'}\\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\\n.lx-tabs__alle li{break-inside:avoid}\\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\\n</style>\\n<ul class=\\\"lx-tabs__zeile\\\">\\n  {%- for ch in chips -%}\\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\\n      <li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>\\n    {%- endif -%}\\n  {%- endfor -%}\\n</ul>\\n{%- if lx_n > lx_max -%}\\n<details class=\\\"lx-tabs__details\\\" style=\\\"margin:0\\\"><summary style=\\\"margin:.2rem 0 0;display:inline-block\\\">Alle {{ lx_n }} Kategorien</summary>\\n<ul class=\\\"lx-tabs__alle\\\">\\n  {%- for ch in chips -%}<li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\\n</ul></details>\\n{%- endif -%}\\n</nav>\\n{%- endif -%}\\n{%- liquid\\n  assign lx_uf = collection.metafields.lux.unterfilter.value\\n  assign lx_kopf = collection\\n  if lx_uf == blank\\n    assign lx_el = collection.metafields.lux.eltern.value\\n    if lx_el != blank\\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\\n      assign lx_kopf = lx_el\\n    endif\\n  endif\\n-%}\\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\\n<nav class=\\\"lx-uf\\\" aria-label=\\\"Unterfilter {{ lx_kopf.title | escape }}\\\">\\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100vw);margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\\\"page\\\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\\n  <div class=\\\"lx-uf__zeile\\\">\\n    <span class=\\\"lx-uf__label\\\">{{ lx_kopf.title | escape }}:</span>\\n    <a href=\\\"{{ lx_kopf.url }}\\\"{% if lx_kopf.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>Alle</a>\\n    {%- for f in lx_uf -%}<a href=\\\"{{ f.url }}\\\"{% if f.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\\n  </div>\\n</nav>\\n{%- endif -%}\\n{%- comment -%}\\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\\n{%- endcomment -%}\\n{%- liquid\\n  assign welt = ''\\n  assign menuetitel = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url\\n      assign welt = link.title\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and welt == ''\\n        assign welt = link.title\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and welt == ''\\n          assign welt = link.title\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n  for ch in chips\\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\\n  endfor\\n  comment\\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\\n  endcomment\\n  case welt\\n    when 'Damen'\\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\\n    when 'Herren'\\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\\n    when 'Schuhe'\\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\\n    when 'Schmuck & Uhren'\\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\\n    when 'Beauty & Parfüm'\\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\\n    when 'Wohnen & Garten'\\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\\n    when 'Technik & Gaming'\\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\\n    when 'Kinder & Haustier'\\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\\n    when 'Sport & Party'\\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\\n    when 'Herbst & Übergang'\\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\\n    else\\n      assign erlaubt = ''\\n  endcase\\n-%}\\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\\n{%- capture fchips -%}\\n  {%- for paar in filterpaare -%}\\n    {%- assign teile = paar | split: '|' -%}\\n    {%- assign t = teile[0] -%}\\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\\n    {%- assign tl_pipe = '|' | append: tl -%}\\n    {%- assign ok = true -%}\\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\\n    {%- if ok and collection.all_tags contains t -%}\\n      {%- assign akt = false -%}\\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\\n      {%- if akt -%}\\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\\n        {%- assign rest = rest | remove_first: '+' -%}\\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\\n      {%- else -%}\\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\\n      {%- endif -%}\\n      <a href=\\\"{{ ziel }}\\\" rel=\\\"nofollow\\\" style=\\\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\\\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\\n    {%- endif -%}\\n  {%- endfor -%}\\n{%- endcapture -%}\\n{%- if fchips contains '<a' -%}\\n<div class=\\\"lx-chiprow\\\" style=\\\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\\\">\\n  <div class=\\\"lx-chipflex\\\" style=\\\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\\\">\\n    <span style=\\\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\\\">Filtern:</span>\\n    {{ fchips }}\\n  </div>\\n</div>\\n{%- endif -%}\\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_usp_coll\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<style>.lx-usp{width:100%;box-sizing:border-box;max-width:var(--page-width,1200px);margin:0 auto;padding:.5rem 1.5rem}.lx-usp__reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.7rem 1.2rem;padding:.8rem 0;border-top:1px solid #ece4d6;border-bottom:1px solid #ece4d6;font-size:13px;letter-spacing:.03em;color:#2c2c2c;line-height:1.4}.lx-usp__eintrag{display:flex;align-items:center;gap:.6rem}.lx-usp__eintrag svg{flex:0 0 auto;color:#8b7355}.lx-usp__eintrag strong{font-weight:600;color:#2c2c2c}@media(max-width:749px){.lx-usp{padding:.25rem 1rem}.lx-usp__reihe{display:flex;overflow-x:auto;gap:1.4rem;padding:.55rem 0;font-size:12.5px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.lx-usp__reihe::-webkit-scrollbar{display:none}.lx-usp__eintrag{flex:0 0 auto;white-space:nowrap;gap:.4rem}.lx-usp__eintrag svg{width:16px;height:16px}}</style><div class=\\\"lx-usp\\\"><div class=\\\"lx-usp__reihe\\\"><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\\\"/><path d=\\\"M15 18H9\\\"/><path d=\\\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\\\"/><circle cx=\\\"17\\\" cy=\\\"18\\\" r=\\\"2\\\"/><circle cx=\\\"7\\\" cy=\\\"18\\\" r=\\\"2\\\"/></svg><span><strong>Gratis-Versand</strong> in der Schweiz ab CHF 50 nach Rabatt</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\\\"/><path d=\\\"M3 3v5h5\\\"/></svg><span><strong>30 Tage</strong> Rückgabe</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 32 32\\\" width=\\\"20\\\" height=\\\"20\\\" aria-hidden=\\\"true\\\"><rect width=\\\"32\\\" height=\\\"32\\\" rx=\\\"4\\\" fill=\\\"#d52b1e\\\"/><path fill=\\\"#fff\\\" d=\\\"M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z\\\"/></svg><span><strong>Schweizer Shop</strong></span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\\\"/><path d=\\\"m9 12 2 2 4-4\\\"/></svg><span><strong>Sichere Zahlung</strong> · TWINT</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><rect x=\\\"3\\\" y=\\\"8\\\" width=\\\"18\\\" height=\\\"4\\\" rx=\\\"1\\\"/><path d=\\\"M12 8v13\\\"/><path d=\\\"M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7\\\"/><path d=\\\"M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5\\\"/></svg><span><strong>–10 %</strong> mit WELCOME10</span></span></div></div>\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"luxe_review_assets\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<script src=\\\"{{ 'luxe-product-reviews.js' | asset_url }}\\\" defer></script>\\n<style>.lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:inherit;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.lx-review-badge[hidden]{display:none!important}.lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}</style>\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_hero\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- comment -%} Kopfbild fuer jede Sammlung (02.11.2026): Titel und Beschreibung vor einem Streifen aus den ersten Produktfotos der Sammlung (Reihenfolge: gut bewertete zuerst, dann Bestseller). Fuer Schuhe liegt ein von Hand gewaehltes Bild in assets/kategorie-banner-<handle>.jpg. {%- endcomment -%}\\n{%- assign lx_banner_liste = 'schuhe' | split: ',' -%}\\n{%- assign lx_n = 0 -%}\\n{%- capture lx_bilder -%}\\n  {%- if lx_banner_liste contains collection.handle -%}\\n    <img src=\\\"{{ 'kategorie-banner-' | append: collection.handle | append: '.jpg' | asset_url }}\\\" alt=\\\"\\\" class=\\\"lx-hero__eins\\\" loading=\\\"eager\\\" fetchpriority=\\\"high\\\" width=\\\"2000\\\" height=\\\"640\\\">\\n  {%- else -%}\\n    {%- for p in collection.products limit: 12 -%}\\n      {%- if lx_n < 4 and p.featured_image != blank and p.featured_image.width >= 500 -%}\\n        {%- assign lx_n = lx_n | plus: 1 -%}\\n        <img src=\\\"{{ p.featured_image | image_url: width: 640 }}\\\" alt=\\\"\\\" loading=\\\"{% if lx_n <= 2 %}eager{% else %}lazy{% endif %}\\\" width=\\\"640\\\" height=\\\"640\\\">\\n      {%- endif -%}\\n    {%- endfor -%}\\n  {%- endif -%}\\n{%- endcapture -%}\\n<style>\\n.lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\\n.lx-hero::before{content:\\\"\\\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}\\n</style>\\n<div class=\\\"lx-hero\\\">\\n  <div class=\\\"lx-hero__bilder\\\" aria-hidden=\\\"true\\\">{{ lx_bilder }}</div>\\n  <div class=\\\"lx-hero__text\\\">\\n    <h1>{{ collection.title }}</h1>\\n    {%- if collection.description != blank -%}<div class=\\\"lx-hero__beschr rte\\\">{{ collection.description }}</div>{%- endif -%}\\n  </div>\\n</div>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    }\n  },\n  \"order\": [\n    \"lux_breadcrumb\",\n    \"lux_subchips\",\n    \"lux_usp_coll\",\n    \"lux_hero\",\n    \"luxe_review_assets\",\n    \"main\",\n    \"lux_faq\"\n  ]\n}",
+  "mainCandidateFullText": "/*\n * ------------------------------------------------------------\n * IMPORTANT: The contents of this file are auto-generated.\n *\n * This file may be updated by the Shopify admin theme editor\n * or related systems. Please exercise caution as any changes\n * made to this file may be overwritten.\n * ------------------------------------------------------------\n */\n{\n  \"sections\": {\n    \"main\": {\n      \"type\": \"main-collection\",\n      \"blocks\": {\n        \"filters\": {\n          \"type\": \"filters\",\n          \"static\": true,\n          \"settings\": {\n            \"enable_filtering\": true,\n            \"filter_style\": \"horizontal\",\n            \"filter_width\": \"centered\",\n            \"text_label_case\": \"default\",\n            \"show_swatch_label\": false,\n            \"show_filter_label\": true,\n            \"enable_sorting\": true,\n            \"enable_grid_density\": true,\n            \"inherit_color_scheme\": true,\n            \"color_scheme\": \"\",\n            \"padding-block-start\": 8,\n            \"padding-block-end\": 8,\n            \"padding-inline-start\": 0,\n            \"padding-inline-end\": 0,\n            \"facets_margin_bottom\": 8,\n            \"facets_margin_right\": 20\n          },\n          \"blocks\": {}\n        },\n        \"product-card\": {\n          \"type\": \"_product-card\",\n          \"static\": true,\n          \"settings\": {\n            \"product_card_gap\": 4,\n            \"inherit_color_scheme\": true,\n            \"color_scheme\": \"\",\n            \"border\": \"none\",\n            \"border_width\": 1,\n            \"border_opacity\": 100,\n            \"border_radius\": 0,\n            \"padding-block-start\": 0,\n            \"padding-block-end\": 0,\n            \"padding-inline-start\": 0,\n            \"padding-inline-end\": 0\n          },\n          \"blocks\": {\n            \"card-gallery\": {\n              \"type\": \"_product-card-gallery\",\n              \"settings\": {\n                \"image_ratio\": \"portrait\",\n                \"border\": \"none\",\n                \"border_width\": 1,\n                \"border_opacity\": 100,\n                \"border_radius\": 0,\n                \"padding-block-start\": 0,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            },\n            \"product_title_4nY4eT\": {\n              \"type\": \"product-title\",\n              \"name\": \"t:names.product_title\",\n              \"settings\": {\n                \"width\": \"100%\",\n                \"max_width\": \"normal\",\n                \"alignment\": \"left\",\n                \"type_preset\": \"rte\",\n                \"font\": \"var(--font-body--family)\",\n                \"font_size\": \"1rem\",\n                \"line_height\": \"normal\",\n                \"letter_spacing\": \"normal\",\n                \"case\": \"none\",\n                \"wrap\": \"pretty\",\n                \"color\": \"var(--color-foreground)\",\n                \"background\": false,\n                \"background_color\": \"#00000026\",\n                \"corner_radius\": 0,\n                \"padding-block-start\": 4,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            },\n            \"price_EzJzMm\": {\n              \"type\": \"price\",\n              \"settings\": {\n                \"show_sale_price_first\": true,\n                \"show_installments\": false,\n                \"show_tax_info\": false,\n                \"type_preset\": \"h6\",\n                \"width\": \"100%\",\n                \"alignment\": \"left\",\n                \"font\": \"var(--font-body--family)\",\n                \"font_size\": \"1rem\",\n                \"line_height\": \"normal\",\n                \"letter_spacing\": \"normal\",\n                \"case\": \"none\",\n                \"color\": \"var(--color-foreground)\",\n                \"padding-block-start\": 0,\n                \"padding-block-end\": 0,\n                \"padding-inline-start\": 0,\n                \"padding-inline-end\": 0\n              },\n              \"blocks\": {}\n            }\n          },\n          \"block_order\": [\n            \"card-gallery\",\n            \"product_title_4nY4eT\",\n            \"price_EzJzMm\"\n          ]\n        }\n      },\n      \"custom_css\": [],\n      \"settings\": {\n        \"layout_type\": \"grid\",\n        \"product_card_size\": \"medium\",\n        \"mobile_product_card_size\": \"small\",\n        \"enable_infinite_scroll\": true,\n        \"products_per_page\": 24,\n        \"product_grid_width\": \"centered\",\n        \"full_width_on_mobile\": true,\n        \"columns_gap_horizontal\": 16,\n        \"columns_gap_vertical\": 32,\n        \"padding-inline-start\": 0,\n        \"padding-inline-end\": 0,\n        \"color_scheme\": \"scheme-1\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 32\n      }\n    },\n    \"lux_faq\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<div style=\\\"max-width:820px;margin:0 auto;font-size:15px;line-height:1.6;color:#333\\\"><h2 style=\\\"font-size:20px;margin:0 0 6px\\\">Häufige Fragen zu {{ collection.title }}</h2><p style=\\\"color:#666;margin:0 0 8px\\\">Alles rund um {{ collection.title }} bei LuxeStyle – kuratierte Auswahl, faire Preise, Lieferdatum beim Artikel und in der Kasse.</p><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">🚚 Wie lange dauert der Versand in die Schweiz?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Ab Schweizer Lager meist 2–3 Werktage, im Direktversand 10–20 Werktage; das genaue Datum steht beim Artikel und in der Kasse — immer mit Sendungsverfolgung. Gratis-Versand ab CHF 50 nach Rabatt, sonst CHF 7.00.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">💳 Welche Zahlungsmethoden gibt es?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">TWINT, Visa, Mastercard und weitere – sicher und SSL-verschlüsselt.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">↩️ Wie funktioniert die Rückgabe?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Wir gewähren ein freiwilliges 30-Tage-Rückgaberecht. Eine kurze Nachricht an info@luxestyle.ch genügt.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">📏 Wie finde ich die richtige Grösse?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.</p></details><details style=\\\"border-top:1px solid #ececec;padding:11px 0\\\"><summary style=\\\"cursor:pointer;font-weight:600;list-style:none\\\">🇨🇭 Warum bei LuxeStyle kaufen?</summary><p style=\\\"margin:8px 0 0;color:#555\\\">Schweizer Online-Shop mit kuratierter Auswahl, fairen Preisen, sicherer Zahlung und persönlichem Support auf Deutsch.</p></details></div>\",\n        \"section_width\": \"page-width\",\n        \"padding-block-start\": 28,\n        \"padding-block-end\": 28\n      }\n    },\n    \"lux_breadcrumb\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- liquid\\n  assign p_title = ''\\n  assign p_url = ''\\n  for link in linklists.main-menu.links\\n    for sub in link.links\\n      if sub.url == collection.url and p_title == ''\\n        assign p_title = link.title\\n        assign p_url = link.url\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and p_title == ''\\n          assign p_title = sub.title\\n          assign p_url = sub.url\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n-%}\\n<nav aria-label=\\\"Breadcrumb\\\" style=\\\"max-width:var(--page-width,1200px);margin:0 auto;padding:.4rem 1.5rem 0;font-size:.95rem;font-weight:600;line-height:1.4;color:#3d2f18;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;\\\">\\n  <a href=\\\"{{ routes.root_url }}\\\" style=\\\"color:#6b4f1d;font-weight:700;text-decoration:none;\\\">Home</a>\\n  {%- if p_title != blank %}<span aria-hidden=\\\"true\\\">&rsaquo;</span>\\n  <a href=\\\"{{ p_url }}\\\" style=\\\"color:#6b4f1d;font-weight:700;text-decoration:none;\\\">{{ p_title | strip }}</a>{% endif -%}\\n  <span aria-hidden=\\\"true\\\">&rsaquo;</span>\\n  <span aria-current=\\\"page\\\" style=\\\"color:#1f1a12;font-weight:700;\\\">{{ collection.title }}</span>\\n</nav>\\n<script type=\\\"application/ld+json\\\">\\n{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"BreadcrumbList\\\",\\\"itemListElement\\\":[\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":1,\\\"name\\\":\\\"Home\\\",\\\"item\\\":\\\"{{ shop.url }}{{ routes.root_url }}\\\"}{%- if p_title != blank %},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":2,\\\"name\\\":{{ p_title | strip | json }},\\\"item\\\":\\\"{{ shop.url }}{{ p_url }}\\\"},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":3,\\\"name\\\":{{ collection.title | json }},\\\"item\\\":\\\"{{ shop.url }}{{ collection.url }}\\\"}{% else %},\\n{\\\"@type\\\":\\\"ListItem\\\",\\\"position\\\":2,\\\"name\\\":{{ collection.title | json }},\\\"item\\\":\\\"{{ shop.url }}{{ collection.url }}\\\"}{% endif -%}\\n]}\\n</script>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_subchips\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- liquid\\n  assign chips = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url and link.links.size > 1\\n      assign chips = link.links\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and link.links.size > 1\\n        assign chips = link.links\\n      endif\\n    endfor\\n  endfor\\n-%}\\n{%- if chips != '' and chips.size > 1 -%}\\n{%- assign lx_max = 7 -%}\\n{%- assign lx_n = chips.size -%}\\n<nav class=\\\"lx-tabs\\\" aria-label=\\\"Unterkategorien\\\">\\n<style>\\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\\n.lx-tabs a[aria-current=\\\"page\\\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\\n.lx-tabs summary::-webkit-details-marker{display:none}\\n.lx-tabs summary::after{content:' ▾'}\\n.lx-tabs details[open] summary::after{content:' ▴'}\\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\\n.lx-tabs__alle li{break-inside:avoid}\\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\\n</style>\\n<ul class=\\\"lx-tabs__zeile\\\">\\n  {%- for ch in chips -%}\\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\\n      <li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>\\n    {%- endif -%}\\n  {%- endfor -%}\\n</ul>\\n{%- if lx_n > lx_max -%}\\n<details class=\\\"lx-tabs__details\\\" style=\\\"margin:0\\\"><summary style=\\\"margin:.2rem 0 0;display:inline-block\\\">Alle {{ lx_n }} Kategorien</summary>\\n<ul class=\\\"lx-tabs__alle\\\">\\n  {%- for ch in chips -%}<li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\\n</ul></details>\\n{%- endif -%}\\n</nav>\\n{%- endif -%}\\n{%- liquid\\n  assign lx_uf = collection.metafields.lux.unterfilter.value\\n  assign lx_kopf = collection\\n  if lx_uf == blank\\n    assign lx_el = collection.metafields.lux.eltern.value\\n    if lx_el != blank\\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\\n      assign lx_kopf = lx_el\\n    endif\\n  endif\\n-%}\\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\\n<nav class=\\\"lx-uf\\\" aria-label=\\\"Unterfilter {{ lx_kopf.title | escape }}\\\">\\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\\\"page\\\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\\n  <div class=\\\"lx-uf__zeile\\\">\\n    <span class=\\\"lx-uf__label\\\">{{ lx_kopf.title | escape }}:</span>\\n    <a href=\\\"{{ lx_kopf.url }}\\\"{% if lx_kopf.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>Alle</a>\\n    {%- for f in lx_uf -%}<a href=\\\"{{ f.url }}\\\"{% if f.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\\n  </div>\\n</nav>\\n{%- endif -%}\\n{%- comment -%}\\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\\n{%- endcomment -%}\\n{%- liquid\\n  assign welt = ''\\n  assign menuetitel = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url\\n      assign welt = link.title\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and welt == ''\\n        assign welt = link.title\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and welt == ''\\n          assign welt = link.title\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n  for ch in chips\\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\\n  endfor\\n  comment\\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\\n  endcomment\\n  case welt\\n    when 'Damen'\\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\\n    when 'Herren'\\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\\n    when 'Schuhe'\\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\\n    when 'Schmuck & Uhren'\\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\\n    when 'Beauty & Parfüm'\\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\\n    when 'Wohnen & Garten'\\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\\n    when 'Technik & Gaming'\\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\\n    when 'Kinder & Haustier'\\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\\n    when 'Sport & Party'\\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\\n    when 'Herbst & Übergang'\\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\\n    else\\n      assign erlaubt = ''\\n  endcase\\n-%}\\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\\n{%- capture fchips -%}\\n  {%- for paar in filterpaare -%}\\n    {%- assign teile = paar | split: '|' -%}\\n    {%- assign t = teile[0] -%}\\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\\n    {%- assign tl_pipe = '|' | append: tl -%}\\n    {%- assign ok = true -%}\\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\\n    {%- if ok and collection.all_tags contains t -%}\\n      {%- assign akt = false -%}\\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\\n      {%- if akt -%}\\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\\n        {%- assign rest = rest | remove_first: '+' -%}\\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\\n      {%- else -%}\\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\\n      {%- endif -%}\\n      <a href=\\\"{{ ziel }}\\\" rel=\\\"nofollow\\\" style=\\\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\\\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\\n    {%- endif -%}\\n  {%- endfor -%}\\n{%- endcapture -%}\\n{%- if fchips contains '<a' -%}\\n<div class=\\\"lx-chiprow\\\" style=\\\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\\\">\\n  <div class=\\\"lx-chipflex\\\" style=\\\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\\\">\\n    <span style=\\\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\\\">Filtern:</span>\\n    {{ fchips }}\\n  </div>\\n</div>\\n{%- endif -%}\\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_usp_coll\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<style>.lx-usp{width:100%;box-sizing:border-box;max-width:var(--page-width,1200px);margin:0 auto;padding:.5rem 1.5rem}.lx-usp__reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.7rem 1.2rem;padding:.8rem 0;border-top:1px solid #ece4d6;border-bottom:1px solid #ece4d6;font-size:13px;letter-spacing:.03em;color:#2c2c2c;line-height:1.4}.lx-usp__eintrag{display:flex;align-items:center;gap:.6rem}.lx-usp__eintrag svg{flex:0 0 auto;color:#8b7355}.lx-usp__eintrag strong{font-weight:600;color:#2c2c2c}@media(max-width:749px){.lx-usp{padding:.25rem 1rem}.lx-usp__reihe{display:flex;overflow-x:auto;gap:1.4rem;padding:.55rem 0;font-size:12.5px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.lx-usp__reihe::-webkit-scrollbar{display:none}.lx-usp__eintrag{flex:0 0 auto;white-space:nowrap;gap:.4rem}.lx-usp__eintrag svg{width:16px;height:16px}}</style><div class=\\\"lx-usp\\\"><div class=\\\"lx-usp__reihe\\\"><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\\\"/><path d=\\\"M15 18H9\\\"/><path d=\\\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\\\"/><circle cx=\\\"17\\\" cy=\\\"18\\\" r=\\\"2\\\"/><circle cx=\\\"7\\\" cy=\\\"18\\\" r=\\\"2\\\"/></svg><span><strong>Gratis-Versand</strong> in der Schweiz ab CHF 50 nach Rabatt</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\\\"/><path d=\\\"M3 3v5h5\\\"/></svg><span><strong>30 Tage</strong> Rückgabe</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 32 32\\\" width=\\\"20\\\" height=\\\"20\\\" aria-hidden=\\\"true\\\"><rect width=\\\"32\\\" height=\\\"32\\\" rx=\\\"4\\\" fill=\\\"#d52b1e\\\"/><path fill=\\\"#fff\\\" d=\\\"M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z\\\"/></svg><span><strong>Schweizer Shop</strong></span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><path d=\\\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\\\"/><path d=\\\"m9 12 2 2 4-4\\\"/></svg><span><strong>Sichere Zahlung</strong> · TWINT</span></span><span class=\\\"lx-usp__eintrag\\\"><svg viewBox=\\\"0 0 24 24\\\" width=\\\"20\\\" height=\\\"20\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\"><rect x=\\\"3\\\" y=\\\"8\\\" width=\\\"18\\\" height=\\\"4\\\" rx=\\\"1\\\"/><path d=\\\"M12 8v13\\\"/><path d=\\\"M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7\\\"/><path d=\\\"M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5\\\"/></svg><span><strong>–10 %</strong> mit WELCOME10</span></span></div></div>\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"luxe_review_assets\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"<script src=\\\"{{ 'luxe-product-reviews.js' | asset_url }}\\\" defer></script>\\n<style>.lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:inherit;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.lx-review-badge[hidden]{display:none!important}.lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}</style>\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    },\n    \"lux_hero\": {\n      \"type\": \"custom-liquid\",\n      \"settings\": {\n        \"custom_liquid\": \"{%- comment -%} Kopfbild fuer jede Sammlung (02.11.2026): Titel und Beschreibung vor einem Streifen aus den ersten Produktfotos der Sammlung (Reihenfolge: gut bewertete zuerst, dann Bestseller). Fuer Schuhe liegt ein von Hand gewaehltes Bild in assets/kategorie-banner-<handle>.jpg. {%- endcomment -%}\\n{%- assign lx_banner_liste = 'schuhe' | split: ',' -%}\\n{%- assign lx_n = 0 -%}\\n{%- capture lx_bilder -%}\\n  {%- if lx_banner_liste contains collection.handle -%}\\n    <img src=\\\"{{ 'kategorie-banner-' | append: collection.handle | append: '.jpg' | asset_url }}\\\" alt=\\\"\\\" class=\\\"lx-hero__eins\\\" loading=\\\"eager\\\" fetchpriority=\\\"high\\\" width=\\\"2000\\\" height=\\\"640\\\">\\n  {%- else -%}\\n    {%- for p in collection.products limit: 12 -%}\\n      {%- if lx_n < 4 and p.featured_image != blank and p.featured_image.width >= 500 -%}\\n        {%- assign lx_n = lx_n | plus: 1 -%}\\n        <img src=\\\"{{ p.featured_image | image_url: width: 640 }}\\\" alt=\\\"\\\" loading=\\\"{% if lx_n <= 2 %}eager{% else %}lazy{% endif %}\\\" width=\\\"640\\\" height=\\\"640\\\">\\n      {%- endif -%}\\n    {%- endfor -%}\\n  {%- endif -%}\\n{%- endcapture -%}\\n<style>\\n.lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\\n.lx-hero::before{content:\\\"\\\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}\\n</style>\\n<div class=\\\"lx-hero\\\">\\n  <div class=\\\"lx-hero__bilder\\\" aria-hidden=\\\"true\\\">{{ lx_bilder }}</div>\\n  <div class=\\\"lx-hero__text\\\">\\n    <h1>{{ collection.title }}</h1>\\n    {%- if collection.description != blank -%}<div class=\\\"lx-hero__beschr rte\\\">{{ collection.description }}</div>{%- endif -%}\\n  </div>\\n</div>\\n\",\n        \"padding-block-start\": 0,\n        \"padding-block-end\": 0\n      }\n    }\n  },\n  \"order\": [\n    \"lux_breadcrumb\",\n    \"lux_subchips\",\n    \"lux_usp_coll\",\n    \"lux_hero\",\n    \"luxe_review_assets\",\n    \"main\",\n    \"lux_faq\"\n  ]\n}",
+  "exactWidthOnlyDiff": "--- MAIN/templates/collection.json\n+++ candidate/templates/collection.json\n@@ -160,7 +160,7 @@\n     \"lux_subchips\": {\n       \"type\": \"custom-liquid\",\n       \"settings\": {\n-        \"custom_liquid\": \"{%- liquid\\n  assign chips = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url and link.links.size > 1\\n      assign chips = link.links\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and link.links.size > 1\\n        assign chips = link.links\\n      endif\\n    endfor\\n  endfor\\n-%}\\n{%- if chips != '' and chips.size > 1 -%}\\n{%- assign lx_max = 7 -%}\\n{%- assign lx_n = chips.size -%}\\n<nav class=\\\"lx-tabs\\\" aria-label=\\\"Unterkategorien\\\">\\n<style>\\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\\n.lx-tabs a[aria-current=\\\"page\\\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\\n.lx-tabs summary::-webkit-details-marker{display:none}\\n.lx-tabs summary::after{content:' ▾'}\\n.lx-tabs details[open] summary::after{content:' ▴'}\\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\\n.lx-tabs__alle li{break-inside:avoid}\\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\\n</style>\\n<ul class=\\\"lx-tabs__zeile\\\">\\n  {%- for ch in chips -%}\\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\\n      <li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>\\n    {%- endif -%}\\n  {%- endfor -%}\\n</ul>\\n{%- if lx_n > lx_max -%}\\n<details class=\\\"lx-tabs__details\\\" style=\\\"margin:0\\\"><summary style=\\\"margin:.2rem 0 0;display:inline-block\\\">Alle {{ lx_n }} Kategorien</summary>\\n<ul class=\\\"lx-tabs__alle\\\">\\n  {%- for ch in chips -%}<li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\\n</ul></details>\\n{%- endif -%}\\n</nav>\\n{%- endif -%}\\n{%- liquid\\n  assign lx_uf = collection.metafields.lux.unterfilter.value\\n  assign lx_kopf = collection\\n  if lx_uf == blank\\n    assign lx_el = collection.metafields.lux.eltern.value\\n    if lx_el != blank\\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\\n      assign lx_kopf = lx_el\\n    endif\\n  endif\\n-%}\\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\\n<nav class=\\\"lx-uf\\\" aria-label=\\\"Unterfilter {{ lx_kopf.title | escape }}\\\">\\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100vw);margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\\\"page\\\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\\n  <div class=\\\"lx-uf__zeile\\\">\\n    <span class=\\\"lx-uf__label\\\">{{ lx_kopf.title | escape }}:</span>\\n    <a href=\\\"{{ lx_kopf.url }}\\\"{% if lx_kopf.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>Alle</a>\\n    {%- for f in lx_uf -%}<a href=\\\"{{ f.url }}\\\"{% if f.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\\n  </div>\\n</nav>\\n{%- endif -%}\\n{%- comment -%}\\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\\n{%- endcomment -%}\\n{%- liquid\\n  assign welt = ''\\n  assign menuetitel = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url\\n      assign welt = link.title\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and welt == ''\\n        assign welt = link.title\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and welt == ''\\n          assign welt = link.title\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n  for ch in chips\\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\\n  endfor\\n  comment\\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\\n  endcomment\\n  case welt\\n    when 'Damen'\\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\\n    when 'Herren'\\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\\n    when 'Schuhe'\\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\\n    when 'Schmuck & Uhren'\\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\\n    when 'Beauty & Parfüm'\\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\\n    when 'Wohnen & Garten'\\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\\n    when 'Technik & Gaming'\\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\\n    when 'Kinder & Haustier'\\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\\n    when 'Sport & Party'\\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\\n    when 'Herbst & Übergang'\\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\\n    else\\n      assign erlaubt = ''\\n  endcase\\n-%}\\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\\n{%- capture fchips -%}\\n  {%- for paar in filterpaare -%}\\n    {%- assign teile = paar | split: '|' -%}\\n    {%- assign t = teile[0] -%}\\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\\n    {%- assign tl_pipe = '|' | append: tl -%}\\n    {%- assign ok = true -%}\\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\\n    {%- if ok and collection.all_tags contains t -%}\\n      {%- assign akt = false -%}\\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\\n      {%- if akt -%}\\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\\n        {%- assign rest = rest | remove_first: '+' -%}\\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\\n      {%- else -%}\\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\\n      {%- endif -%}\\n      <a href=\\\"{{ ziel }}\\\" rel=\\\"nofollow\\\" style=\\\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\\\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\\n    {%- endif -%}\\n  {%- endfor -%}\\n{%- endcapture -%}\\n{%- if fchips contains '<a' -%}\\n<div class=\\\"lx-chiprow\\\" style=\\\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\\\">\\n  <div class=\\\"lx-chipflex\\\" style=\\\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\\\">\\n    <span style=\\\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\\\">Filtern:</span>\\n    {{ fchips }}\\n  </div>\\n</div>\\n{%- endif -%}\\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\\n\",\n+        \"custom_liquid\": \"{%- liquid\\n  assign chips = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url and link.links.size > 1\\n      assign chips = link.links\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and link.links.size > 1\\n        assign chips = link.links\\n      endif\\n    endfor\\n  endfor\\n-%}\\n{%- if chips != '' and chips.size > 1 -%}\\n{%- assign lx_max = 7 -%}\\n{%- assign lx_n = chips.size -%}\\n<nav class=\\\"lx-tabs\\\" aria-label=\\\"Unterkategorien\\\">\\n<style>\\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\\n.lx-tabs a[aria-current=\\\"page\\\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\\n.lx-tabs summary::-webkit-details-marker{display:none}\\n.lx-tabs summary::after{content:' ▾'}\\n.lx-tabs details[open] summary::after{content:' ▴'}\\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\\n.lx-tabs__alle li{break-inside:avoid}\\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\\n</style>\\n<ul class=\\\"lx-tabs__zeile\\\">\\n  {%- for ch in chips -%}\\n    {%- if forloop.index <= lx_max or ch.url == collection.url -%}\\n      <li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>\\n    {%- endif -%}\\n  {%- endfor -%}\\n</ul>\\n{%- if lx_n > lx_max -%}\\n<details class=\\\"lx-tabs__details\\\" style=\\\"margin:0\\\"><summary style=\\\"margin:.2rem 0 0;display:inline-block\\\">Alle {{ lx_n }} Kategorien</summary>\\n<ul class=\\\"lx-tabs__alle\\\">\\n  {%- for ch in chips -%}<li><a href=\\\"{{ ch.url }}\\\"{% if ch.url == collection.url %} aria-current=\\\"page\\\"{% endif %}>{{ ch.title }}</a></li>{%- endfor -%}\\n</ul></details>\\n{%- endif -%}\\n</nav>\\n{%- endif -%}\\n{%- liquid\\n  assign lx_uf = collection.metafields.lux.unterfilter.value\\n  assign lx_kopf = collection\\n  if lx_uf == blank\\n    assign lx_el = collection.metafields.lux.eltern.value\\n    if lx_el != blank\\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\\n      assign lx_kopf = lx_el\\n    endif\\n  endif\\n-%}\\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\\n<nav class=\\\"lx-uf\\\" aria-label=\\\"Unterfilter {{ lx_kopf.title | escape }}\\\">\\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\\\"page\\\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\\n  <div class=\\\"lx-uf__zeile\\\">\\n    <span class=\\\"lx-uf__label\\\">{{ lx_kopf.title | escape }}:</span>\\n    <a href=\\\"{{ lx_kopf.url }}\\\"{% if lx_kopf.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>Alle</a>\\n    {%- for f in lx_uf -%}<a href=\\\"{{ f.url }}\\\"{% if f.id == collection.id %} aria-current=\\\"page\\\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\\n  </div>\\n</nav>\\n{%- endif -%}\\n{%- comment -%}\\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\\n{%- endcomment -%}\\n{%- liquid\\n  assign welt = ''\\n  assign menuetitel = ''\\n  for link in linklists.main-menu.links\\n    if link.url == collection.url\\n      assign welt = link.title\\n    endif\\n    for sub in link.links\\n      if sub.url == collection.url and welt == ''\\n        assign welt = link.title\\n      endif\\n      for sub2 in sub.links\\n        if sub2.url == collection.url and welt == ''\\n          assign welt = link.title\\n        endif\\n      endfor\\n    endfor\\n  endfor\\n  for ch in chips\\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\\n  endfor\\n  comment\\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\\n  endcomment\\n  case welt\\n    when 'Damen'\\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\\n    when 'Herren'\\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\\n    when 'Schuhe'\\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\\n    when 'Schmuck & Uhren'\\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\\n    when 'Beauty & Parfüm'\\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\\n    when 'Wohnen & Garten'\\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\\n    when 'Technik & Gaming'\\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\\n    when 'Kinder & Haustier'\\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\\n    when 'Sport & Party'\\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\\n    when 'Herbst & Übergang'\\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\\n    else\\n      assign erlaubt = ''\\n  endcase\\n-%}\\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\\n{%- capture fchips -%}\\n  {%- for paar in filterpaare -%}\\n    {%- assign teile = paar | split: '|' -%}\\n    {%- assign t = teile[0] -%}\\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\\n    {%- assign tl_pipe = '|' | append: tl -%}\\n    {%- assign ok = true -%}\\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\\n    {%- if ok and collection.all_tags contains t -%}\\n      {%- assign akt = false -%}\\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\\n      {%- if akt -%}\\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\\n        {%- assign rest = rest | remove_first: '+' -%}\\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\\n      {%- else -%}\\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\\n      {%- endif -%}\\n      <a href=\\\"{{ ziel }}\\\" rel=\\\"nofollow\\\" style=\\\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\\\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\\n    {%- endif -%}\\n  {%- endfor -%}\\n{%- endcapture -%}\\n{%- if fchips contains '<a' -%}\\n<div class=\\\"lx-chiprow\\\" style=\\\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\\\">\\n  <div class=\\\"lx-chipflex\\\" style=\\\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\\\">\\n    <span style=\\\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\\\">Filtern:</span>\\n    {{ fchips }}\\n  </div>\\n</div>\\n{%- endif -%}\\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\\n\",\n         \"padding-block-start\": 0,\n         \"padding-block-end\": 0\n       }\n",
+  "browserReadOnly": {
+    "scope": "Four 390px read-only views, two actual MAIN and two unpublished preview; no DOM/CSS overrides, cookie/cart interaction, native writes or whole-shop acceptance. Local candidate is not a live fix.",
+    "checkedAt": "2026-11-02T15:45:55.346427+00:00",
+    "localCandidate": {
+      "mainThemeId": "gid://shopify/OnlineStoreTheme/213013037447",
+      "mainRole": "MAIN",
+      "filename": "templates/collection.json",
+      "beforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+      "afterMd5": "bbacad38aabc5e292ed819b3d1b01782",
+      "beforeSha256": "5f18ff70271c79cda33efeceb51cfeb27ccb601d0c9b0b49f61ed494ed63f0f0",
+      "afterSha256": "53c20c7e9162ea449e3f81a6cccf7744660e0d00534bf51409048df0dd2cf88b",
+      "exactSingleCssRuleOnly": true,
+      "allOtherBytesPreserved": true,
+      "nativeWritten": false,
+      "published": false,
+      "proof": "Fresh actual MAIN body; matched checksum before and reversible exact prefix replacement",
+      "oldDraftMustNotBePublishedWhole": true,
+      "noMainWriteOrBypassAttempt": true
+    },
+    "views": [
+      {
+        "theme": "main",
+        "page": "middle",
+        "requestedUrl": "https://luxestyle.ch/collections/handy-zubehoer",
+        "unknown": [],
+        "beforeNaturalFocus": {
+          "scrollX": 0,
+          "htmlScrollWidth": 406,
+          "clientWidth": 390
+        },
+        "data": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "viewport": 390,
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 406,
+          "bodyScrollWidth": 406,
+          "scrollX": 16,
+          "navRect": {
+            "x": 0,
+            "right": 390,
+            "width": 390
+          },
+          "navStyle": {
+            "width": "390px",
+            "minWidth": "auto",
+            "maxWidth": "390px",
+            "boxSizing": "border-box"
+          },
+          "parent": {
+            "rect": {
+              "x": -16,
+              "right": 374,
+              "width": 390
+            },
+            "gridTemplateColumns": "16px 358px 16px"
+          },
+          "rowRect": {
+            "x": 24,
+            "right": 366,
+            "width": 342
+          },
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "current": "page",
+              "text": "Alle",
+              "rect": {
+                "x": 147.765625,
+                "right": 207.8125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/powerbanks",
+              "current": null,
+              "text": "Powerbanks",
+              "rect": {
+                "x": 215,
+                "right": 336.625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "current": null,
+              "text": "Ladegeräte & Netzteile",
+              "rect": {
+                "x": 343.8125,
+                "right": 538.609375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "current": null,
+              "text": "Kabelloses Laden",
+              "rect": {
+                "x": 545.796875,
+                "right": 704.890625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "current": null,
+              "text": "Auto-Ladegeräte",
+              "rect": {
+                "x": 712.078125,
+                "right": 866.875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "current": null,
+              "text": "Ladekabel & Datenkabel",
+              "rect": {
+                "x": 874.0625,
+                "right": 1078.453125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "current": null,
+              "text": "Handyhalter & Ständer",
+              "rect": {
+                "x": 1085.640625,
+                "right": 1280.34375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "current": null,
+              "text": "Handyhüllen & Displayschutz",
+              "rect": {
+                "x": 1287.53125,
+                "right": 1529.859375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "current": null,
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "rect": {
+                "x": 1537.046875,
+                "right": 1784.828125
+              },
+              "rendered": true
+            }
+          ]
+        },
+        "checks": {
+          "http200": true,
+          "actualExpectedTheme": true,
+          "actualExpectedRole": true,
+          "clientWidthEqualsViewport": true,
+          "noDocumentHorizontalOverflow": false,
+          "bodyWidthWithinViewport": false,
+          "noWindowHorizontalScrollAfterNaturalFocus": false,
+          "navWithinViewport": true,
+          "navFitsActualGridMiddleTrack": false,
+          "originalSiblingTargetsExact": true,
+          "correctActiveTarget": true,
+          "allLinksRendered": true,
+          "activeTargetInsideScrollableRow": true
+        },
+        "failed": [
+          "noDocumentHorizontalOverflow",
+          "bodyWidthWithinViewport",
+          "noWindowHorizontalScrollAfterNaturalFocus",
+          "navFitsActualGridMiddleTrack"
+        ],
+        "screenshot": "/workspace/luxestyle-review/claude-publish-20261102-r53/theme/publicQA/main-middle-390.png"
+      },
+      {
+        "theme": "main",
+        "page": "leaf",
+        "requestedUrl": "https://luxestyle.ch/collections/ladekabel-datenkabel",
+        "unknown": [],
+        "beforeNaturalFocus": {
+          "scrollX": 0,
+          "htmlScrollWidth": 406,
+          "clientWidth": 390
+        },
+        "data": {
+          "url": "https://luxestyle.ch/collections/ladekabel-datenkabel",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "viewport": 390,
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 406,
+          "bodyScrollWidth": 406,
+          "scrollX": 16,
+          "navRect": {
+            "x": 0,
+            "right": 390,
+            "width": 390
+          },
+          "navStyle": {
+            "width": "390px",
+            "minWidth": "auto",
+            "maxWidth": "390px",
+            "boxSizing": "border-box"
+          },
+          "parent": {
+            "rect": {
+              "x": -16,
+              "right": 374,
+              "width": 390
+            },
+            "gridTemplateColumns": "16px 358px 16px"
+          },
+          "rowRect": {
+            "x": 24,
+            "right": 366,
+            "width": 342
+          },
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "current": null,
+              "text": "Alle",
+              "rect": {
+                "x": -633.234375,
+                "right": -573.1875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/powerbanks",
+              "current": null,
+              "text": "Powerbanks",
+              "rect": {
+                "x": -566,
+                "right": -444.375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "current": null,
+              "text": "Ladegeräte & Netzteile",
+              "rect": {
+                "x": -437.1875,
+                "right": -242.390625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "current": null,
+              "text": "Kabelloses Laden",
+              "rect": {
+                "x": -235.203125,
+                "right": -76.109375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "current": null,
+              "text": "Auto-Ladegeräte",
+              "rect": {
+                "x": -68.921875,
+                "right": 85.875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "current": "page",
+              "text": "Ladekabel & Datenkabel",
+              "rect": {
+                "x": 93.0625,
+                "right": 297.453125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "current": null,
+              "text": "Handyhalter & Ständer",
+              "rect": {
+                "x": 304.640625,
+                "right": 499.34375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "current": null,
+              "text": "Handyhüllen & Displayschutz",
+              "rect": {
+                "x": 506.53125,
+                "right": 748.859375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "current": null,
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "rect": {
+                "x": 756.046875,
+                "right": 1003.828125
+              },
+              "rendered": true
+            }
+          ]
+        },
+        "checks": {
+          "http200": true,
+          "actualExpectedTheme": true,
+          "actualExpectedRole": true,
+          "clientWidthEqualsViewport": true,
+          "noDocumentHorizontalOverflow": false,
+          "bodyWidthWithinViewport": false,
+          "noWindowHorizontalScrollAfterNaturalFocus": false,
+          "navWithinViewport": true,
+          "navFitsActualGridMiddleTrack": false,
+          "originalSiblingTargetsExact": true,
+          "correctActiveTarget": true,
+          "allLinksRendered": true,
+          "activeTargetInsideScrollableRow": true
+        },
+        "failed": [
+          "noDocumentHorizontalOverflow",
+          "bodyWidthWithinViewport",
+          "noWindowHorizontalScrollAfterNaturalFocus",
+          "navFitsActualGridMiddleTrack"
+        ],
+        "screenshot": "/workspace/luxestyle-review/claude-publish-20261102-r53/theme/publicQA/main-leaf-390.png"
+      },
+      {
+        "theme": "draft",
+        "page": "middle",
+        "requestedUrl": "https://luxestyle.ch/collections/handy-zubehoer?preview_theme_id=212978598279",
+        "unknown": [],
+        "beforeNaturalFocus": {
+          "scrollX": 0,
+          "htmlScrollWidth": 390,
+          "clientWidth": 390
+        },
+        "data": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "212978598279",
+          "themeRole": "unpublished",
+          "viewport": 390,
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "parent": {
+            "rect": {
+              "x": 0,
+              "right": 390,
+              "width": 390
+            },
+            "gridTemplateColumns": "16px 358px 16px"
+          },
+          "rowRect": {
+            "x": 40,
+            "right": 350,
+            "width": 310
+          },
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "current": "page",
+              "text": "Alle",
+              "rect": {
+                "x": 144.03125,
+                "right": 197.921875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/powerbanks",
+              "current": null,
+              "text": "Powerbanks",
+              "rect": {
+                "x": 205.109375,
+                "right": 310.875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "current": null,
+              "text": "Ladegeräte & Netzteile",
+              "rect": {
+                "x": 318.0625,
+                "right": 488.140625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "current": null,
+              "text": "Kabelloses Laden",
+              "rect": {
+                "x": 495.328125,
+                "right": 633.9375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "current": null,
+              "text": "Auto-Ladegeräte",
+              "rect": {
+                "x": 641.125,
+                "right": 775.390625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "current": null,
+              "text": "Ladekabel & Datenkabel",
+              "rect": {
+                "x": 782.578125,
+                "right": 961.203125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "current": null,
+              "text": "Handyhalter & Ständer",
+              "rect": {
+                "x": 968.390625,
+                "right": 1137.46875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "current": null,
+              "text": "Handyhüllen & Displayschutz",
+              "rect": {
+                "x": 1144.65625,
+                "right": 1354.015625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "current": null,
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "rect": {
+                "x": 1361.203125,
+                "right": 1576.265625
+              },
+              "rendered": true
+            }
+          ]
+        },
+        "checks": {
+          "http200": true,
+          "actualExpectedTheme": true,
+          "actualExpectedRole": true,
+          "clientWidthEqualsViewport": true,
+          "noDocumentHorizontalOverflow": true,
+          "bodyWidthWithinViewport": true,
+          "noWindowHorizontalScrollAfterNaturalFocus": true,
+          "navWithinViewport": true,
+          "navFitsActualGridMiddleTrack": true,
+          "originalSiblingTargetsExact": true,
+          "correctActiveTarget": true,
+          "allLinksRendered": true,
+          "activeTargetInsideScrollableRow": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/claude-publish-20261102-r53/theme/publicQA/draft-middle-390.png"
+      },
+      {
+        "theme": "draft",
+        "page": "leaf",
+        "requestedUrl": "https://luxestyle.ch/collections/ladekabel-datenkabel?preview_theme_id=212978598279",
+        "unknown": [],
+        "beforeNaturalFocus": {
+          "scrollX": 0,
+          "htmlScrollWidth": 390,
+          "clientWidth": 390
+        },
+        "data": {
+          "url": "https://luxestyle.ch/collections/ladekabel-datenkabel",
+          "themeId": "212978598279",
+          "themeRole": "unpublished",
+          "viewport": 390,
+          "htmlClientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "parent": {
+            "rect": {
+              "x": 0,
+              "right": 390,
+              "width": 390
+            },
+            "gridTemplateColumns": "16px 358px 16px"
+          },
+          "rowRect": {
+            "x": 40,
+            "right": 350,
+            "width": 310
+          },
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "current": null,
+              "text": "Alle",
+              "rect": {
+                "x": -532.96875,
+                "right": -480.734375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/powerbanks",
+              "current": null,
+              "text": "Powerbanks",
+              "rect": {
+                "x": -473.546875,
+                "right": -367.78125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "current": null,
+              "text": "Ladegeräte & Netzteile",
+              "rect": {
+                "x": -360.59375,
+                "right": -190.515625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "current": null,
+              "text": "Kabelloses Laden",
+              "rect": {
+                "x": -183.328125,
+                "right": -44.71875
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "current": null,
+              "text": "Auto-Ladegeräte",
+              "rect": {
+                "x": -37.53125,
+                "right": 96.734375
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "current": "page",
+              "text": "Ladekabel & Datenkabel",
+              "rect": {
+                "x": 103.921875,
+                "right": 286.640625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "current": null,
+              "text": "Handyhalter & Ständer",
+              "rect": {
+                "x": 293.828125,
+                "right": 462.90625
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "current": null,
+              "text": "Handyhüllen & Displayschutz",
+              "rect": {
+                "x": 470.09375,
+                "right": 679.453125
+              },
+              "rendered": true
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "current": null,
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "rect": {
+                "x": 686.640625,
+                "right": 901.703125
+              },
+              "rendered": true
+            }
+          ]
+        },
+        "checks": {
+          "http200": true,
+          "actualExpectedTheme": true,
+          "actualExpectedRole": true,
+          "clientWidthEqualsViewport": true,
+          "noDocumentHorizontalOverflow": true,
+          "bodyWidthWithinViewport": true,
+          "noWindowHorizontalScrollAfterNaturalFocus": true,
+          "navWithinViewport": true,
+          "navFitsActualGridMiddleTrack": true,
+          "originalSiblingTargetsExact": true,
+          "correctActiveTarget": true,
+          "allLinksRendered": true,
+          "activeTargetInsideScrollableRow": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/claude-publish-20261102-r53/theme/publicQA/draft-leaf-390.png"
+      }
+    ],
+    "blockedNonRead": 276,
+    "blockedAnalytics": 8,
+    "blockedReviewRequests": 4,
+    "pageErrors": [
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "mainWidthIssueOpen": true,
+    "draftChecksPassed": true,
+    "visualReview": {
+      "screenshotsInspected": 4,
+      "main": "Beide tatsächlichen MAIN-Ansichten zeigen die richtigen Gruppenlinks und aktive Markierungen. Nach natürlichem Scrollen zum aktiven Ziel ist das Fenster horizontal um 16 px verschoben; der linke Headerbereich wird entsprechend angeschnitten.",
+      "draft": "Beide tatsächlichen UNPUBLISHED-Ansichten zeigen dieselben Ziel-Links und aktive Markierungen ohne horizontalen Fensterscroll. Die Vorschau hat sichtbar ältere Schrift-/Seitenstile; ein vollständiger Draft-Publish wäre keine isolierte Breitenkorrektur.",
+      "claims": "Sichtbare Marketing-, Retouren-, Versand- und Rabatttexte sind nicht Gegenstand dieser Prüfung und werden nicht bestätigt."
+    },
+    "summary": {
+      "mainChecksPassed": 18,
+      "mainChecksTotal": 26,
+      "draftChecksPassed": 26,
+      "draftChecksTotal": 26,
+      "scopeViews": 4,
+      "localCandidateIsLiveFix": false
+    },
+    "limitations": [
+      "Nur zwei Unterseiten pro Theme bei 390 px, keine Desktop-, Checkout-, Tracking- oder Gesamtshop-Abnahme.",
+      "Keine DOM-/CSS-Overrides und keine Cookie-, Warenkorb- oder anderen Schreibaktionen. Alle Kontexte frisch und voneinander getrennt.",
+      "276 Nicht-Lese-, 8 Analytics- und 4 Reviewanfragen blockiert. 27 Seitenfehler aus geblockten Fetch-/Trackingzugriffen; dadurch keine Messungs-/Review-Abnahme."
+    ]
+  },
+  "liquidValidationLog": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Files:** 1\n\n## Detailed Results\n\n### File 1\n**Artifact ID:** luxe-r53-width-block\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** r53-underfilter.liquid passed all checks.\n\n\n",
+  "officialDocs": [
+    "https://shopify.dev/docs/storefronts/themes/best-practices/performance/fix-content-wider-than-mobile-screen",
+    "https://shopify.dev/docs/storefronts/themes/best-practices/performance.md"
+  ],
+  "claudeReachability": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-02T15:43:06Z",
+    "scope": "Read-only handoff capability and historical source verification; local report writes only",
+    "currentCanonical": {
+      "revision": 52,
+      "taskCount": 19,
+      "repository": "allengchour-glitch/aban-news-landing",
+      "branch": "codex/luxestyle-claude-handoff-20261018",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "gitBlobSha": "1ec9a018c3bb2caea3280e9448b4685acbc63029",
+          "freshRead": true
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "gitBlobSha": "9306a69024c7cafbcd5bbb5d304a4630164dfef2",
+          "freshRead": true
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "gitBlobSha": "6426b272668caa584811eda8c70f130a3c88228a",
+          "freshRead": true
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "gitBlobSha": "1418a37b06dfa03d06021aaeb8f27076ce6e9105",
+          "freshRead": true
+        }
+      ]
+    },
+    "currentRequest": {
+      "text": "mache weiter dann claude veröffentliche",
+      "publicationTarget": "pending_owner_clarification_in_root",
+      "noMediaRightsOrQualityWaiver": true
+    },
+    "claudeAccess": {
+      "callableClaudeToolFound": false,
+      "cliFoundInPath": false,
+      "versionCommandRun": false,
+      "sessionStarted": false,
+      "externalMessageSent": false,
+      "ownerDeviceInstallation": "unknown_not_inspected",
+      "actualReceipt": "unknown_missing_receipt",
+      "publication": "not_performed"
+    },
+    "runtime": {
+      "observationsCurrent": true,
+      "observedPhase": "running",
+      "networkPolicy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "capabilities": [],
+      "secretBindings": [],
+      "outboundIdentities": []
+    },
+    "existingHelpers": [
+      {
+        "path": "/workspace/luxestyle-codex/automation/codex_uebergabe.mjs",
+        "bytes": 2934,
+        "sha256": "8d1ca56a7ffdbfcf8451e12f7a1a2682b1db57d719697cb482960bfe22f06570",
+        "matchesR52HistoricalManifest": true
+      },
+      {
+        "path": "/workspace/luxestyle-codex/codex-mods/luxe-codex/lib/uebergabe.mjs",
+        "bytes": 14804,
+        "sha256": "54547f449be8f8b633c434a7854bde0870ebad6f60e5fdb9bee96f443740c316",
+        "matchesR52HistoricalManifest": true
+      }
+    ],
+    "helperAction": {
+      "command": "node /workspace/luxestyle-codex/automation/codex_uebergabe.mjs stand --repo /workspace/luxestyle-codex --packet dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+      "executions": 1,
+      "exitCode": 0,
+      "readOnly": true,
+      "networkOrModelOrShopCall": false,
+      "result": {
+        "taskId": "luxe-zusammenarbeit-20261028",
+        "revision": 5,
+        "packet": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+        "packetSha256": "4de9db8295fcecf356caab6445db25996ebf4f24fa780095d4c1baeb4f5a574c",
+        "producer": "codex",
+        "coordinator": "claude",
+        "sourceState": "verified",
+        "sourceChecks": [
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+            "expectedSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+            "actualSha256": "06b6153b2aa516744a084b38c8d7610c6b15fe8c3ebe9f1c2d9257f30621e261",
+            "state": "verified",
+            "gitBlobMatches": true
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-TRANSFER-20261101-R37.json",
+            "expectedSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+            "actualSha256": "962767c8fb2bf58c8fd69de9760924c296a48efdb92a3d7b180a121df6fdbba6",
+            "state": "verified",
+            "gitBlobMatches": true
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-THEME-DIFF-20261101-R37.patch",
+            "expectedSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+            "actualSha256": "e1597b666f8c29395f4fece6beafd7410170ffdd4ac56c14ae29dc8e77d50d8f",
+            "state": "verified",
+            "gitBlobMatches": true
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/STICKER-ORIGINALVARIANTEN-20261101.json",
+            "expectedSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+            "actualSha256": "d06d847edb0b32631cbbce2a708140cc0575aea6cde45eae89dae10af534256e",
+            "state": "verified",
+            "gitBlobMatches": true
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261101-R36.json",
+            "expectedSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+            "actualSha256": "06212aa2cbbd6726fad146354d703581f3bc45c57b58370055bb8f87bc488839",
+            "state": "verified",
+            "gitBlobMatches": true
+          }
+        ],
+        "receiptState": "unknown_missing_receipt",
+        "receipt": null,
+        "notice": "Rollenwert ist Selbstauskunft. Keine Live-Sitzungsverbindung, keine Umsetzung oder Veröffentlichung bestätigt."
+      }
+    },
+    "r5": {
+      "purpose": "review_only",
+      "packetSha256": "4de9db8295fcecf356caab6445db25996ebf4f24fa780095d4c1baeb4f5a574c",
+      "previousPacketSha256": "e4f31db64b4f16074dc88bd9dbc48149b75f6369acf30e3eb0de7c79a751673f",
+      "localR4ChainMatches": true,
+      "remoteFreshSources": [
+        {
+          "name": "aufgaben/luxe-zusammenarbeit-20261028.r5.packet.json",
+          "sha": "698bf2b59aa5aaf4453fe965bd983bbae14a9cf0",
+          "error": null
+        },
+        {
+          "name": "CLAUDE-THEME-TRANSFER-20261101-R37.json",
+          "sha": "6ba0d1ead01797dea0a91c1e091582cbd01338be",
+          "error": null
+        },
+        {
+          "name": "CLAUDE-THEME-DIFF-20261101-R37.patch",
+          "sha": "b0a3b846c88928ba451821ce82649b512cc226bf",
+          "error": null
+        },
+        {
+          "name": "STICKER-ORIGINALVARIANTEN-20261101.json",
+          "sha": "1cc8044f751fc09a6a61dfb5af909afd3352c05e",
+          "error": null
+        },
+        {
+          "name": "ABENDBELEGE-20261101-R36.json",
+          "sha": "1f1cf0f217809060958fab93c856def6f6d8ee82",
+          "error": null
+        }
+      ],
+      "allFiveReferencedRemoteGitBlobsMatchPacket": true,
+      "currentReleaseApproval": false,
+      "noReceiptCreated": true
+    },
+    "datedWebsiteReferences": {
+      "r37": {
+        "path": "CLAUDE-CODE-UEBERGABE-20261101-R37.md",
+        "gitBlobSha": "14bdf7db431fa7976e404452fd5555389e8762b7",
+        "status": "historical_requires_current_rebase"
+      },
+      "r40": {
+        "path": "CLAUDE-CODE-UEBERGABE-20261101-R40.md",
+        "gitBlobSha": "bfc70afc6e7ab49cc31df20dc6c0dba6b4c44aba",
+        "status": "historical_same_path_precedence_later_R44_R47_R51"
+      },
+      "r51": {
+        "path": "TECHNIK-UNTERKATEGORIEN-20261102-R51.md",
+        "gitBlobSha": "b3e79aa1bd3be0c35c84aaafe65747fa9f9e9293",
+        "mainThemeIdAtDatedCheck": "213013037447",
+        "oldDraftId": "212978598279",
+        "mainFileMd5AtDatedCheck": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "draftFileMd5AtDatedCheck": "c7020b391b776427a1346a91540c646f",
+        "singleCssRuleOnly": true,
+        "liveStatusRecheckedByThisAgent": false
+      }
+    },
+    "safeClaudeInputs": [
+      "Latest explicit owner target selection and exact scope from root; no implied film-rights approval.",
+      "Fresh four canonical files and scoped CLAUDE.md on the existing handoff branch; preserve stable task IDs/history/daily limits.",
+      "If Website selected: actual fresh shop/theme role/current MAIN file and exact patch diff. Apply one lx-uf width rule to current MAIN through a legitimate capable writer; do not publish the old full draft over new typography/banner.",
+      "For broader old website features: full fresh MAIN/draft comparison and explicit bounded file transfer preserving current branding and prior functionality; dated R37/R40 manifests alone are insufficient.",
+      "If Welcome selected: current Klaviyo account, VZnxDz original HTML hash and exactly the R52 two-line diff; preserve every other byte and all sending/flow/coupon settings.",
+      "No professional-film publication without actual MP4, file-bound commercial rights, product/crop/audio review, owner acceptance and channel/ledger gates."
+    ],
+    "requiredActualClaudeOutput": [
+      "Actual actor/context, received time and exact task/revision/source hashes; a prepared file is not a delivered/accepted task.",
+      "Per attempted write: identity, original/current file or template hash, explicit final diff, actual API result or precise unknown/error; no blind retry.",
+      "Website: final MAIN role/theme ID/file checksum and public URLs/screenshots for the affected mobile views; do not call a draft preview live.",
+      "Welcome: exact returned template ID/HTML hash with preserved other bytes; no test message, customer contact or flow activation.",
+      "Receipt separate from publication proof. A helper receipt actor=claude is self_declared, not independently authenticated.",
+      "Update only scoped LuxeStyle documentation with fresh SHA/diff/readback; preserve histories and existing posts. Unknown results remain unknown."
+    ],
+    "actionsNotTaken": [
+      "No CLI installation/login",
+      "No Claude session or model invocation",
+      "No publish or theme write",
+      "No template/flow write",
+      "No workflows/background service",
+      "No receipt fabrication",
+      "No metrics/flow/order calls",
+      "No external message",
+      "No remote documentation write",
+      "No feedback helper"
+    ]
+  },
+  "welcomeConditionalHandoff": {
+    "schemaVersion": 1,
+    "revision": 53,
+    "checkedAt": "2026-11-02T15:45:12.282236+00:00",
+    "scope": "Current exact welcome-template check and conditional Claude application instruction only; publication target being clarified by root",
+    "state": "PREPARED_WAITING_PUBLICATION_SCOPE_NO_OWNER_APPROVAL_INFERRED",
+    "applicationAllowedNow": false,
+    "operationalWrites": 0,
+    "template": {
+      "id": "VZnxDz",
+      "name": "LuxeStyle – Willkommen WELCOME10 (2026-08-29, saisonneutral)",
+      "editorType": "CODE",
+      "updated": "2026-08-29T15:21:39+00:00"
+    },
+    "account": {
+      "id": "XWqMAD",
+      "contact_information": {
+        "organization_name": "LuxeStyle CH",
+        "website_url": "https://luxestyle.ch"
+      },
+      "preferred_currency": "USD",
+      "timezone": "Europe/Zurich"
+    },
+    "shopCurrency": "CHF",
+    "currenciesMixed": false,
+    "beforeSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+    "afterSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+    "changedLines1Based": [
+      47,
+      53
+    ],
+    "checks": {
+      "freshOriginalMatchesR52ByteExact": true,
+      "originalHashMatchesPinned": true,
+      "candidateHashMatchesPinned": true,
+      "exactlyLines47And53Differ": true,
+      "allOtherLinesByteIdentical": true,
+      "templateTokensUnchanged": true,
+      "originalNameMatchesR52": true,
+      "originalEditorCode": true,
+      "originalUpdatedMatchesR52": true,
+      "currentAccountIdentityMatched": true
+    },
+    "allChecksPassed": true,
+    "preserve": [
+      "Main CTA and its exact anchor markup",
+      "Coupon/WELCOME10 markup and all existing discounts",
+      "Unsubscribe token and all other template tokens",
+      "Every byte outside the two target lines; name, editor type, layout",
+      "Flow status, tracking and Smart Sending flags; no activation or test sends",
+      "PublicCHF50/internalCHF45afterdiscount and account.luxestyle.com.co"
+    ],
+    "historicalFlowBindingNotFresh": {
+      "source": "/workspace/luxestyle-review/daily-20261102/klaviyo/NATIVE-READS.json, welcomeDefinition",
+      "flowId": "VbLQj6",
+      "actionId": "108029461",
+      "messageId": "TTuuTS",
+      "templateId": "VZnxDz",
+      "transactionalAtThatDatedRead": false,
+      "currentFlag": "unknown_not_read_this_subtask"
+    },
+    "datedPolicyReferences": {
+      "shipping": {
+        "url": "https://luxestyle.ch/policies/shipping-policy",
+        "http": 200,
+        "h1": "Versand",
+        "checkedAt": "2026-11-02T13:15:16.631849+00:00",
+        "policyTextSha256": "d94201593efb3e4e0becb4599d00349aa8e678bfbb3d30a904a762f4cd48e015"
+      },
+      "refund": {
+        "url": "https://luxestyle.ch/policies/refund-policy",
+        "http": 200,
+        "h1": "Widerrufsrecht",
+        "checkedAt": "2026-11-02T13:15:16.669021+00:00",
+        "policyTextSha256": "c9542e3e764173ff77b02967309275e0571905a830863045007a9ce1d683ba85"
+      },
+      "shippingRelevantText": [
+        "Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten (innerhalb der Schweiz).",
+        "Ab Schweizer Lager (Blitzversand): meist 2–3 Werktage; das genaue Datum steht beim Artikel und in der Kasse."
+      ],
+      "refundRelevantText": [
+        "Freiwilliges30-tägigesRückgaberecht mit Bedingungen/Ausschlüssen; deshalb imEntwurf keinepauschaleRückgabezusage,sondernPolicyverweis"
+      ]
+    },
+    "policyReferencesFreshTodayInR52NotR53": true,
+    "sourceFiles": {
+      "r52Proposal": "/workspace/luxestyle-review/afternoon-20261102-r52/sales/WELCOME-SERVICE-APPROVAL.json",
+      "r52ProposalSha256": "18f73321a446eb0e99b1c3ee19991fadf234cd8bef1ac571ee794efbb8a14b05",
+      "r52Diff": "/workspace/luxestyle-review/afternoon-20261102-r52/sales/WELCOME-SERVICE-TWO-LINES.diff",
+      "r52DiffSha256": "659619212c48c088e8944cce587e1b979cf85648a8e334b0c13d8f83456e9224"
+    },
+    "readCalls": {
+      "account": 1,
+      "template": 1,
+      "policyGets": 0,
+      "flowReports": 0,
+      "profileEventOrderReads": 0
+    },
+    "conditionalApplicationGates": [
+      "Root must resolve whether the current publication request means website, this exact welcome change, or both; website-only means do not touch welcome",
+      "Read current owner scope evidence; do not ask an already answered approval again",
+      "Immediately before any later write verify account/template identity and original HTML hash again",
+      "Read the concrete flow action/message binding and transactional/review flag with a small configuration read only; dated R48 false flag is not current permission",
+      "If transactional/review state would change or 409 occurs, stop; do not change flow state or retry",
+      "Use legitimate capability and current template-write scopes, not a bypass; 403/429/unknown outcomes stay unknown",
+      "If any original hash differs, record exact observed diff and stop, never silently rebase or force the old HTML",
+      "Only if approved and all gates pass replace html for VZnxDz once with the pinned candidate; do not send or activate anything",
+      "After response read the same templateID fresh; exact afterHTML SHA/name/editor/otherpreserve fields must match",
+      "On uncertain response read the sameID before any action; never create a duplicate template or blindly repeat a mutation"
+    ],
+    "readbackReceiptRequired": [
+      "template id",
+      "before/after SHA-256",
+      "returned updated timestamp",
+      "exact final HTML",
+      "preserved name/editor_type",
+      "whether a write was actually executed",
+      "root confirmed scope reference"
+    ],
+    "noCurrentFlowOrPublicationSuccessClaim": true
+  },
+  "welcomeInstruction": "Aktuelle Inhaberantwort: nur Website-Verbesserungen. Welcome hier nicht anwenden. Der folgende Quellenauftrag stammt aus der vorgelagerten Fragephase und erweitert diese Auswahl nicht.\n\n# Claude: bedingter Welcome-Auftrag, R53\n\n**Aktuell nicht anwenden.** Der Parent klärt, ob «Claude veröffentliche» die Website, diese Welcome-Korrektur oder beides meint. Diese Unklarheit ist keine Freigabe der Mailvorlage. Bei einer reinen Website-Antwort bleibt dieser Auftrag unberührt. Falls der Umfang später eindeutig geklärt ist, den vorhandenen Freigabebeleg verwenden und dieselbe beantwortete Frage nicht erneut stellen.\n\nFrisch geprüft: Klaviyo-Konto XWqMAD, LuxeStyle CH, https://luxestyle.ch, Europe/Zurich, USD. Shopwährung CHF separat. Exakt Vorlage VZnxDz, CODE, «LuxeStyle – Willkommen WELCOME10 (2026-08-29, saisonneutral)». Aktuelles HTML stimmt bytegenau mit dem R52-Ausgangsstand überein; Vorlagenzeitpunkt weiterhin 29.08.2026. Es wurden nur Konto und Vorlage gelesen, keine Reports, Policyseiten oder Kunden-/Bestelldaten erneut abgerufen. Kein Write, keine Testmail.\n\nGenau derselbe Zwei-Zeilen-Umfang aus R52:\n\n- Zeile 47: pauschale Zahlungs- und 1–2-Werktage-Angaben durch Gratis-Standardversand innerhalb der Schweiz ab CHF 50 nach Rabatt und Verweise auf Versand-/Rückgabebedingungen ersetzen.\n- Zeile 53: den Blitzversand-Link durch «Versandinformationen ansehen» mit Ziel https://luxestyle.ch/policies/shipping-policy ersetzen.\n\nDie zwei öffentlichen Policy-Haupttexte wurden in R52 am 02.11.2026 gegen 13:15 UTC mit HTTP 200 geprüft. Das ist eine datierte Quelle, keine neue R53-Policyprüfung. [R52-Quellen](../../afternoon-20261102-r52/sales/POLICY-GET-READBACK.json).\n\n**Gepinnte HTML-Hashes**\n\nVorher SHA-256: 1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b.\n\nNachher SHA-256: 16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a.\n\nVor einem späteren einzelnen HTML-Write nach geklärter Freigabe:\n\n1. Konto und genau VZnxDz frisch lesen. Originalhash muss weiterhin «Vorher» entsprechen. Bei Abweichung exakten beobachteten Diff sichern und stoppen; keine stille Übernahme neuer Änderungen.\n2. Bindung zur konkreten Welcome-Aktion prüfen: datierter Ausgangsbefund VbLQj6 / Aktion 108029461 / Nachricht TTuuTS. Aktuelles transactional-/Reviewflag mit kleiner Konfigurationsabfrage belegen, ohne Report. Der datierte Wert false ist kein aktueller Zustandsnachweis. Bei einem transaktionalen Zustand mit zusätzlichem Reviewbedarf oder 409 nicht blind schreiben oder wiederholen.\n3. Mit legitimem Zugang und aktuellem API-Schema ausschliesslich das HTML dieser Vorlage ersetzen. [Vorbereiteter HTML-only-Payload](HTML-ONLY-PAYLOAD-NOT-EXECUTED.json) ist nicht ausgeführt. Name, Editor, Flowstatus, Tracking / Smart Sending, Coupon und sämtliche anderen Einstellungen erhalten. Kein Flow aktivieren, keine Mail oder Testmail senden.\n4. Dieselbe Vorlage frisch zurücklesen. ID, vollständiges HTML mit exakt «Nachher»-Hash, Name, CODE-Editor und tatsächlichen updated-Zeitpunkt als Quittung speichern. Haupt-CTA, Coupon, Abmeldetoken und alle Bytes ausserhalb 47/53 müssen erhalten sein. Ein globaler Erfolg ersetzt diesen Rücklesebeleg nicht.\n5. Bei unklarer Writeantwort zuerst dieselbe ID lesen; unbekannt bleibt unbekannt. Keine neue Vorlage oder blinde Mutation. 403 mit fehlendem Scope erfordert legitimen Zugang, keinen Bypass; 429 nicht als leere Daten behandeln.\n\nÖffentliche Versandvorgabe CHF 50 und interne CHF 45 nach Rabatt sowie account.luxestyle.com.co bleiben erhalten. Das ist keine Erlaubnis für weitere Texte, Versand-/Rabatt-/Flow-/Kontoeinstellungen oder Nachrichten. Ein Vorlagenupdate ist kein Testversand und keine Zustellabnahme; einen tatsächlichen Write oder Claude-Empfang nur mit echtem Beleg melden.\n\n[Exakter Zwei-Zeilen-Diff](WELCOME-TWO-LINE-APPLICATION.diff) · [Aktuelle Gates und Quellen](WELCOME-HANDOFF-EVIDENCE.json).\n",
+  "publicationGates": [
+    "Fresh identity and actual MAIN/file read immediately before legitimate write",
+    "Original full file hash must match; if changed, review/rebase only one rule, no silent overwrite",
+    "Use a legitimate MAIN-capable writer; connected tool blocks MAIN writes and publishing; no bypass",
+    "Do not publish old full draft; preserve actual current font/banner/code bytes",
+    "After write read same MAIN filename, expected exact body and checksum",
+    "Public DE/FR affected group/leaf views at390/1440, document no page overflow, working active links and preserved styles",
+    "Return actual writer run/commit/transcript and native/public proof; document only observed state; unknown writes never blindly retried"
+  ],
+  "ownOperationalActions": {
+    "shopWrites": 0,
+    "klaviyoWrites": 0,
+    "socialWrites": 0,
+    "claudeSessionsStarted": 0,
+    "themePublishes": 0,
+    "customerOrTestMessages": 0,
+    "metricReports": 0,
+    "flowReports": 0,
+    "purchaseWatchQueries": 0,
+    "installationsOrNewAutomation": 0
+  },
+  "noClaimOfLiveFix": true,
+  "noClaimOfClaudeReceipt": true,
+  "limits": [
+    "4 exact full theme-file bodies plus metadata checksums of13 known pending paths; not a full-theme or rendered UI acceptance",
+    "First ten unfiltered themes lacked MAIN; corrected with a two-result MAIN-filtered query, no pagination",
+    "Native GraphQL prevalidation explicitly skipped; actual read-only API accepted",
+    "Candidate only locally validated; draft preview uses older styles and is not actual MAIN candidate acceptance",
+    "27 blocked browser fetch/tracking errors are documented, not a checkout/analytics acceptance",
+    "No current film MP4/takes/rights supplied; keep R52 block and stable masterId",
+    "No fresh social queue or metrics queried for this website handoff; existing known posts preserved"
+  ],
+  "memoryPlan": {
+    "taskCount": 19,
+    "existing19IdsOrderAndHistoryPreserved": true,
+    "changedExistingTaskIds": [
+      "luxe-zusammenarbeit-20261028",
+      "homepage-redesign-20261029",
+      "tech-category-structure-20261102",
+      "welcome-service-trust-20261102",
+      "personalizer-fullscreen-20261029"
+    ],
+    "other15TasksUnchanged": false,
+    "dailyReadPolicyUnchanged": true,
+    "other14TasksUnchanged": true
+  },
+  "preserve": [
+    "Public CHF50 and internal CHF45 after discount",
+    "account.luxestyle.com.co",
+    "Completed R49/R50 text changes and R51 collection data/order",
+    "Existing social posts, ledger and publication permissions/quality gates",
+    "Ads/DNS/flows/coupons/settings untouched",
+    "Ended purchase watch and original frequency"
+  ],
+  "ownerClarificationReply": {
+    "text": "Die Website-Verbesserungen",
+    "receivedInThisTurn": true
+  },
+  "knownReleasePathMetadata": {
+    "queriedScope": [
+      "assets/luxe-category-directory.css",
+      "assets/luxe-clothing-reference-gallery.json",
+      "assets/luxe-clothing.css",
+      "assets/luxe-clothing.js",
+      "assets/luxe-edit.css",
+      "locales/de.json",
+      "locales/en.default.json",
+      "locales/fr.json",
+      "sections/luxe-clothing.liquid",
+      "sections/luxe-edit-home.liquid",
+      "snippets/luxe-category-directory.liquid",
+      "templates/collection.json",
+      "templates/index.json"
+    ],
+    "result": {
+      "data": {
+        "main": {
+          "id": "gid://shopify/OnlineStoreTheme/213013037447",
+          "role": "MAIN",
+          "files": {
+            "nodes": [
+              {
+                "filename": "assets/luxe-category-directory.css",
+                "checksumMd5": "a66c8692dcd515104bd246ff068792b2",
+                "size": "4937"
+              },
+              {
+                "filename": "assets/luxe-clothing-reference-gallery.json",
+                "checksumMd5": "7bc83b6ec989b72804554a8c7f5f5436",
+                "size": "200290"
+              },
+              {
+                "filename": "assets/luxe-clothing.css",
+                "checksumMd5": "ce07203b9525d83d8d7366b51799ad88",
+                "size": "21385"
+              },
+              {
+                "filename": "assets/luxe-clothing.js",
+                "checksumMd5": "66998e1ab2df428bec60ed0bc7e0cf78",
+                "size": "53029"
+              },
+              {
+                "filename": "assets/luxe-edit.css",
+                "checksumMd5": "110ce69ac47b4b139f6159cc2078d27a",
+                "size": "46349"
+              },
+              {
+                "filename": "locales/de.json",
+                "checksumMd5": "cf07635898956f99cdedd88c95e65af5",
+                "size": "52012"
+              },
+              {
+                "filename": "locales/en.default.json",
+                "checksumMd5": "5eed965fe4e7c88612ed8f34517b1c18",
+                "size": "49337"
+              },
+              {
+                "filename": "locales/fr.json",
+                "checksumMd5": "0a21cf6b810a2e2fd33552977912948b",
+                "size": "31433"
+              },
+              {
+                "filename": "sections/luxe-clothing.liquid",
+                "checksumMd5": "88cfc0a382c60e792ca61f8d430d9525",
+                "size": "28766"
+              },
+              {
+                "filename": "sections/luxe-edit-home.liquid",
+                "checksumMd5": "e6a35f08ddafcc80e38a0f469212549c",
+                "size": "43301"
+              },
+              {
+                "filename": "snippets/luxe-category-directory.liquid",
+                "checksumMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+                "size": "7755"
+              },
+              {
+                "filename": "templates/collection.json",
+                "checksumMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+                "size": "26567"
+              },
+              {
+                "filename": "templates/index.json",
+                "checksumMd5": "17b76982b0cd942cf91a002e60f0dc8e",
+                "size": "723"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+            }
+          }
+        },
+        "draft": {
+          "id": "gid://shopify/OnlineStoreTheme/212978598279",
+          "role": "UNPUBLISHED",
+          "files": {
+            "nodes": [
+              {
+                "filename": "assets/luxe-category-directory.css",
+                "checksumMd5": "a66c8692dcd515104bd246ff068792b2",
+                "size": "4937"
+              },
+              {
+                "filename": "assets/luxe-clothing-reference-gallery.json",
+                "checksumMd5": "7bc83b6ec989b72804554a8c7f5f5436",
+                "size": "200290"
+              },
+              {
+                "filename": "assets/luxe-clothing.css",
+                "checksumMd5": "ce07203b9525d83d8d7366b51799ad88",
+                "size": "21385"
+              },
+              {
+                "filename": "assets/luxe-clothing.js",
+                "checksumMd5": "66998e1ab2df428bec60ed0bc7e0cf78",
+                "size": "53029"
+              },
+              {
+                "filename": "assets/luxe-edit.css",
+                "checksumMd5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+                "size": "45971"
+              },
+              {
+                "filename": "locales/de.json",
+                "checksumMd5": "cf07635898956f99cdedd88c95e65af5",
+                "size": "52012"
+              },
+              {
+                "filename": "locales/en.default.json",
+                "checksumMd5": "5eed965fe4e7c88612ed8f34517b1c18",
+                "size": "49337"
+              },
+              {
+                "filename": "locales/fr.json",
+                "checksumMd5": "0a21cf6b810a2e2fd33552977912948b",
+                "size": "31433"
+              },
+              {
+                "filename": "sections/luxe-clothing.liquid",
+                "checksumMd5": "88cfc0a382c60e792ca61f8d430d9525",
+                "size": "28766"
+              },
+              {
+                "filename": "sections/luxe-edit-home.liquid",
+                "checksumMd5": "e6a35f08ddafcc80e38a0f469212549c",
+                "size": "43301"
+              },
+              {
+                "filename": "snippets/luxe-category-directory.liquid",
+                "checksumMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+                "size": "7755"
+              },
+              {
+                "filename": "templates/collection.json",
+                "checksumMd5": "c7020b391b776427a1346a91540c646f",
+                "size": "26014"
+              },
+              {
+                "filename": "templates/index.json",
+                "checksumMd5": "17b76982b0cd942cf91a002e60f0dc8e",
+                "size": "723"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+            }
+          }
+        }
+      }
+    },
+    "comparison": [
+      {
+        "filename": "assets/luxe-category-directory.css",
+        "mainMd5": "a66c8692dcd515104bd246ff068792b2",
+        "draftMd5": "a66c8692dcd515104bd246ff068792b2",
+        "sameChecksum": true,
+        "mainBytes": "4937",
+        "draftBytes": "4937"
+      },
+      {
+        "filename": "assets/luxe-clothing-reference-gallery.json",
+        "mainMd5": "7bc83b6ec989b72804554a8c7f5f5436",
+        "draftMd5": "7bc83b6ec989b72804554a8c7f5f5436",
+        "sameChecksum": true,
+        "mainBytes": "200290",
+        "draftBytes": "200290"
+      },
+      {
+        "filename": "assets/luxe-clothing.css",
+        "mainMd5": "ce07203b9525d83d8d7366b51799ad88",
+        "draftMd5": "ce07203b9525d83d8d7366b51799ad88",
+        "sameChecksum": true,
+        "mainBytes": "21385",
+        "draftBytes": "21385"
+      },
+      {
+        "filename": "assets/luxe-clothing.js",
+        "mainMd5": "66998e1ab2df428bec60ed0bc7e0cf78",
+        "draftMd5": "66998e1ab2df428bec60ed0bc7e0cf78",
+        "sameChecksum": true,
+        "mainBytes": "53029",
+        "draftBytes": "53029"
+      },
+      {
+        "filename": "assets/luxe-edit.css",
+        "mainMd5": "110ce69ac47b4b139f6159cc2078d27a",
+        "draftMd5": "c9bfd7e8cb86b1663dd01542cf23eacf",
+        "sameChecksum": false,
+        "mainBytes": "46349",
+        "draftBytes": "45971"
+      },
+      {
+        "filename": "locales/de.json",
+        "mainMd5": "cf07635898956f99cdedd88c95e65af5",
+        "draftMd5": "cf07635898956f99cdedd88c95e65af5",
+        "sameChecksum": true,
+        "mainBytes": "52012",
+        "draftBytes": "52012"
+      },
+      {
+        "filename": "locales/en.default.json",
+        "mainMd5": "5eed965fe4e7c88612ed8f34517b1c18",
+        "draftMd5": "5eed965fe4e7c88612ed8f34517b1c18",
+        "sameChecksum": true,
+        "mainBytes": "49337",
+        "draftBytes": "49337"
+      },
+      {
+        "filename": "locales/fr.json",
+        "mainMd5": "0a21cf6b810a2e2fd33552977912948b",
+        "draftMd5": "0a21cf6b810a2e2fd33552977912948b",
+        "sameChecksum": true,
+        "mainBytes": "31433",
+        "draftBytes": "31433"
+      },
+      {
+        "filename": "sections/luxe-clothing.liquid",
+        "mainMd5": "88cfc0a382c60e792ca61f8d430d9525",
+        "draftMd5": "88cfc0a382c60e792ca61f8d430d9525",
+        "sameChecksum": true,
+        "mainBytes": "28766",
+        "draftBytes": "28766"
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "mainMd5": "e6a35f08ddafcc80e38a0f469212549c",
+        "draftMd5": "e6a35f08ddafcc80e38a0f469212549c",
+        "sameChecksum": true,
+        "mainBytes": "43301",
+        "draftBytes": "43301"
+      },
+      {
+        "filename": "snippets/luxe-category-directory.liquid",
+        "mainMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "draftMd5": "91c5a60f4213374ee1ae7384bc9e1a85",
+        "sameChecksum": true,
+        "mainBytes": "7755",
+        "draftBytes": "7755"
+      },
+      {
+        "filename": "templates/collection.json",
+        "mainMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "draftMd5": "c7020b391b776427a1346a91540c646f",
+        "sameChecksum": false,
+        "mainBytes": "26567",
+        "draftBytes": "26014"
+      },
+      {
+        "filename": "templates/index.json",
+        "mainMd5": "17b76982b0cd942cf91a002e60f0dc8e",
+        "draftMd5": "17b76982b0cd942cf91a002e60f0dc8e",
+        "sameChecksum": true,
+        "mainBytes": "723",
+        "draftBytes": "723"
+      }
+    ],
+    "limits": "13 known pending release paths selected from R52 task history/R44 exact filenames, metadata checksums only; not full-theme/checkout/browser acceptance"
+  },
+  "mainCssExtra": {
+    "draftBodyExactPrefix": true,
+    "extraText": "\n/* lx-meister-0111: Hero auf dem Handy kuerzer, damit der Knopf ueber Cookie-Leiste und Tab-Leiste bleibt */\n@media(max-width:760px){\n .lx-home .lx-background-hero{min-height:clamp(430px,calc(100svh - 372px),560px)}\n .lx-home .lx-background-hero .lx-hero-copy{padding-top:96px}\n .lx-home .lx-background-hero h1{margin:10px 0 12px}\n .lx-home .lx-hero-actions{margin-top:14px}\n}\n",
+    "preserveExtra": true,
+    "scope": "Existing mobile hero height/copy/button spacing supplement; no own write"
+  },
+  "graphqlCliLimit": "Error: could not run the graphql validator for --api admin: Cannot find module '/workspace/luxestyle-review/home-redesign-20261029/shopify-tools/_validate_graphql.mjs' imported from /workspace/luxestyle-review/home-redesign-20261029/shopify-tools/validate.mjs\nExpected it alongside validate.mjs.\n"
+}
