@@ -25676,3 +25676,18 @@ eu-ladegerat-615000 · 2026-11-02T17:39:52.713Z · GESCHRIEBEN · 2 Varianten
 kleiner-tragbarer-ventilator-611400 · 2026-11-02T17:39:56.467Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Dual Battery White"},{"option":"Model
 business-laptop-rucksack-wasserdicht-635100 · 2026-11-02T17:40:01.518Z · GESCHRIEBEN · 2 Varianten
 faltbare-outdoor-power-bank-10-000-mah-mit-wir-617000 · 2026-11-02T17:40:02.602Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"243":{"linien":0,"urteil":"nicht_lieferbar"},"273":{"linien":0,"urte
+wasserdichter-reise-rucksack-mah-948928 · 2026-11-02T17:40:04.971Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Bai Xue"},{"option":"Farbe","wert":"Ob
+bmw-x5-x6-kabelloses-ladegerat-143616 · 2026-11-02T17:40:07.441Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"14 18 BMW X5 X6 USB"},{"option":"Farbe
+kabelloses-auto-ladegerat-fur-mobiltelefone-840000 · 2026-11-02T17:40:10.550Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Tiguan L"},{"option":"Modell","wert":
+weilanda-auto-schnellladepanel-319808 · 2026-11-02T17:40:14.638Z · GESCHRIEBEN · 2 Varianten
+ultradunne-magsafe-powerbank-10-000-mah-627600 · 2026-11-02T17:40:15.627Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"148":{"linien":0,"urteil":"nicht_lieferbar"}})
+wasserdichter-rucksack-fur-businessreisen-583552 · 2026-11-02T17:40:18.262Z · GESCHRIEBEN · 2 Varianten
+kabellose-powerbank-mit-magnet-und-stander-635300 · 2026-11-02T17:40:20.579Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"145":{"linien":0,"urteil":"nicht_lieferbar"},"203":{"linien":0,"urte
+business-rucksack-wasserdicht-erweiterbar-102464 · 2026-11-02T17:40:22.679Z · GESCHRIEBEN · 4 Varianten
+ultradunne-magnetische-powerbank-635300 · 2026-11-02T17:40:22.867Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"121":{"linien":0,"urteil":"nicht_lieferbar"}})
+magnetische-wireless-powerbank-mit-digitalanze-614900 · 2026-11-02T17:40:25.363Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"138":{"linien":0,"urteil":"nicht_lieferbar"}})
+faltbares-3-in-1-wireless-ladegerat-602300 · 2026-11-02T17:40:28.402Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ivory White Ordinary Version"},{"optio
+45w-power-bank-mit-kabel-20000-mah-629900 · 2026-11-02T17:40:29.443Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"430":{"linien":0,"urteil":"nicht_lieferbar"}})
+bange-business-rucksack-wasserdicht-335872 · 2026-11-02T17:40:34.776Z · GESCHRIEBEN · 2 Varianten
+rucksack-mit-usb-ladefunktion-und-diebstahlsch-63b382 · 2026-11-02T17:40:36.207Z · GESCHRIEBEN · 4 Varianten
+wiederaufladbare-laptop-powerbank-e67f5f · 2026-11-02T17:40:39.163Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"954":{"linien":0,"urteil":"nicht_lieferbar"}})
