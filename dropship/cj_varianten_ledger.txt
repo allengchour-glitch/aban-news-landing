@@ -25568,3 +25568,111 @@ ergonomische-vertikal-gaming-maus-738432 · 2026-11-02T17:27:29.440Z · UEBERSPR
 elektronischer-ubersetzungsstift-613800 · 2026-11-02T17:27:36.505Z · GESCHRIEBEN · 3 Varianten
 usb-stick-schildkrote-204608 · 2026-11-02T17:27:39.455Z · GESCHRIEBEN · 20 Varianten
 usb-stick-sandwich-cookie-681216 · 2026-11-02T17:33:54.086Z · GESCHRIEBEN · 5 Varianten
+ice-cream-macaroni-tastenkappe-260480 · 2026-11-02T17:33:58.596Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ice cream cup"},{"option":"Farbe","wer
+mechanische-tastatur-769152 · 2026-11-02T17:33:59.496Z · GESCHRIEBEN · 9 Varianten
+frequency-desktop-gaming-ddr5-ram-294656 · 2026-11-02T17:34:08.220Z · GESCHRIEBEN · 4 Varianten
+live-soundkarte-fur-streaming-homerecording-272768 · 2026-11-02T17:34:11.612Z · GESCHRIEBEN · 2 Varianten
+magnetische-kabellose-handyhalterung-furs-auto-633700 · 2026-11-02T17:34:12.200Z · GESCHRIEBEN · 2 Varianten
+6-fach-festplattengehause-fur-5-25-laufwerkssc-591936 · 2026-11-02T17:34:21.231Z · GESCHRIEBEN · 2 Varianten
+usb-c-dual-hub-fur-macbook-d8d571 · 2026-11-02T17:34:21.442Z · GESCHRIEBEN · 2 Varianten
+kabelloses-15w-schnellladepad-25e6c7 · 2026-11-02T17:34:26.565Z · GESCHRIEBEN · 4 Varianten
+usb-stick-aus-naturholz-4-gb-64-gb-985856 · 2026-11-02T17:34:32.105Z · GESCHRIEBEN · 5 Varianten
+360-ki-gimbal-mit-intelligenter-gesichtsverfol-294400 · 2026-11-02T17:34:36.942Z · GESCHRIEBEN · 2 Varianten
+kabelloses-mini-ladegerat-magnetisch-15w-081216 · 2026-11-02T17:34:38.521Z · GESCHRIEBEN · 6 Varianten
+leise-gaming-maus-mit-anpassbarer-dpi-801408 · 2026-11-02T17:34:41.205Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Star black"},{"option":"Farbe","wert":
+mini-ssd-mit-usb-3-1-5d4c20 · 2026-11-02T17:34:47.502Z · GESCHRIEBEN · 4 Varianten
+externes-ssd-gehause-nvme-ngff-dual-protokoll-602100 · 2026-11-02T17:34:48.977Z · GESCHRIEBEN · 2 Varianten
+m-2-nvme-ssd-usb-c-gehause-945600 · 2026-11-02T17:34:52.119Z · GESCHRIEBEN · 2 Varianten
+magnetisches-2-in-1-wireless-ladegerat-618500 · 2026-11-02T17:34:58.693Z · GESCHRIEBEN · 2 Varianten
+laptop-tasche-aus-pu-leder-multifunktional-661120 · 2026-11-02T17:35:00.532Z · GESCHRIEBEN · 4 Varianten
+monitorstander-mit-zwei-ablagen-628000 · 2026-11-02T17:35:03.983Z · GESCHRIEBEN · 2 Varianten
+universal-wireless-lader-953472 · 2026-11-02T17:35:04.114Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"423":{"linien":0,"urteil":"nicht_lieferbar"}})
+etikettendrucker-mini-3c80f3 · 2026-11-02T17:35:07.011Z · GESCHRIEBEN · 36 Varianten
+m2-magnetisches-handy-festplattengehause-617000 · 2026-11-02T17:35:14.710Z · GESCHRIEBEN · 2 Varianten
+multifunktionale-ssd-432576 · 2026-11-02T17:35:15.312Z · GESCHRIEBEN · 3 Varianten
+rgb-keyboard-mit-kabel-und-bluetooth-621800 · 2026-11-02T17:35:21.329Z · GESCHRIEBEN · 5 Varianten
+pbt-tastenkappen-set-fur-mechanische-keyboards-4ec540 · 2026-11-02T17:35:31.721Z · GESCHRIEBEN · 4 Varianten
+dreifach-wireless-ladestation-940928 · 2026-11-02T17:35:31.826Z · GESCHRIEBEN · 4 Varianten
+seagate-exos-enterprise-helium-festplatte-10-t-890240 · 2026-11-02T17:35:33.505Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Inhalt","wert":"10TB NM0086"},{"option":"Inhalt","wer
+magnetische-handy-kamerahilfe-moca-arco-608700 · 2026-11-02T17:35:36.380Z · GESCHRIEBEN · 10 Varianten
+air-mouse-bluetooth-trackpad-948992 · 2026-11-02T17:35:41.319Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Shan Jian"},{"option":"Modell","wert"
+65-w-gan-schnellladegerat-usb-c-618500 · 2026-11-02T17:35:41.860Z · GESCHRIEBEN · 3 Varianten
+mobile-ssd-fur-direkte-smartphone-verbindung-602100 · 2026-11-02T17:35:43.741Z · GESCHRIEBEN · 4 Varianten
+120w-usb-c-super-schnellladekabel-603200 · 2026-11-02T17:35:45.544Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"TYPEC Plus Apple"},{"option":"Modell"
+ladegerat-fur-drei-gerate-628000 · 2026-11-02T17:35:53.414Z · GESCHRIEBEN · 2 Varianten
+kabelloser-magnet-ladestander-mini-774144 · 2026-11-02T17:35:57.594Z · GESCHRIEBEN · 2 Varianten
+lightning-m-2-ssd-gehause-mit-40-gbit-s-626700 · 2026-11-02T17:36:04.123Z · GESCHRIEBEN · 3 Varianten
+kabellose-5-in-1-ladestation-mit-wecker-606900 · 2026-11-02T17:36:09.882Z · GESCHRIEBEN · 4 Varianten
+duales-10w-wireless-charger-2-in-1-459520 · 2026-11-02T17:36:10.274Z · GESCHRIEBEN · 2 Varianten
+magnetischer-4-in-1-ladegeraet-611000 · 2026-11-02T17:36:19.636Z · GESCHRIEBEN · 4 Varianten
+auto-usb-ladegerat-mit-zigarettenanzunder-605000 · 2026-11-02T17:36:19.727Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Standard Edition"},{"option":"Modell"
+kabelloses-bluetooth-keyboard-mit-mute-funktio-604300 · 2026-11-02T17:36:24.895Z · GESCHRIEBEN · 4 Varianten
+20000mah-powerbank-mit-22-5w-super-rapid-charg-016704 · 2026-11-02T17:36:27.848Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"285":{"linien":0,"urteil":"nicht_lieferbar"},"385":{"linien":0,"urte
+pbt-keycaps-retro-pflaumenbluten-design-605600 · 2026-11-02T17:36:32.784Z · GESCHRIEBEN · 3 Varianten
+solar-powerbank-faltbar-20000-mah-659200 · 2026-11-02T17:36:33.157Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"760":{"linien":0,"urteil":"nicht_lieferbar"}})
+mechanische-tastatur-87-tasten-bluetooth-627800 · 2026-11-02T17:36:34.445Z · GESCHRIEBEN · 24 Varianten
+solar-powerbank-10000mah-mit-led-licht-618700 · 2026-11-02T17:36:37.061Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"420":{"linien":0,"urteil":"nicht_lieferbar"}})
+67w-gan-3-port-schnellladegerat-779968 · 2026-11-02T17:36:42.288Z · GESCHRIEBEN · 8 Varianten
+magnetische-kabellose-15w-power-bank-10000mah-478016 · 2026-11-02T17:36:42.792Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"150":{"linien":0,"urteil":"nicht_lieferbar"},"155":{"linien":0,"urte
+mannertasche-fur-laptop-und-sport-603000 · 2026-11-02T17:36:45.345Z · GESCHRIEBEN · 2 Varianten
+25w-dual-wireless-charger-fur-iphone-227520 · 2026-11-02T17:36:46.527Z · GESCHRIEBEN · 4 Varianten
+usb-ladegerat-mit-qc3-0-346176 · 2026-11-02T17:36:55.307Z · GESCHRIEBEN · 2 Varianten
+drahtloses-2-in-1-qi-ladegerat-455360 · 2026-11-02T17:36:58.124Z · GESCHRIEBEN · 2 Varianten
+nackenhalterung-fur-pov-aufnahmen-627900 · 2026-11-02T17:37:01.603Z · GESCHRIEBEN · 3 Varianten
+doppelter-schnelllader-fur-auto-970176 · 2026-11-02T17:37:07.768Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"C U"},{"option":"Modell","wert":"U U"
+schnelles-ladegerat-mit-farbdisplay-619600 · 2026-11-02T17:37:11.854Z · GESCHRIEBEN · 2 Varianten
+mini-powerbank-mit-digitalanzeige-606000 · 2026-11-02T17:37:17.100Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"170":{"linien":0,"urteil":"nicht_lieferbar"}})
+magnetische-dreifach-ladestation-627100 · 2026-11-02T17:37:17.770Z · GESCHRIEBEN · 3 Varianten
+automatisches-4-in-1-schnellladekabel-fur-unte-369664 · 2026-11-02T17:37:18.991Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"120W Apple Huawei TYPEC"},{"option":"
+powerbank-mit-externem-akku-fur-samsung-note20-400448 · 2026-11-02T17:37:23.682Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"185":{"linien":0,"urteil":"nicht_lieferbar"},"186":{"linien":0,"urte
+3-in-1-magnetischer-kabelloser-ladegerat-627200 · 2026-11-02T17:37:32.600Z · GESCHRIEBEN · 4 Varianten
+universelle-kabellose-ladestation-485184 · 2026-11-02T17:37:33.314Z · GESCHRIEBEN · 2 Varianten
+kabelloses-ladegerat-mit-spiegel-und-licht-fab47a · 2026-11-02T17:37:39.096Z · GESCHRIEBEN · 2 Varianten
+4-in-1-wireless-ladestation-mit-schnellladefun-0bc33e · 2026-11-02T17:37:44.303Z · GESCHRIEBEN · 24 Varianten
+japanische-minimalistische-tastenkappe-schwarz-323520 · 2026-11-02T17:37:45.200Z · GESCHRIEBEN · 2 Varianten
+4-in-1-auto-ladegerat-mit-sternenhimmel-ambien-610500 · 2026-11-02T17:37:45.613Z · GESCHRIEBEN · 2 Varianten
+power-bank-mit-diamant-anzeige-8d2aaa · 2026-11-02T17:37:45.877Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"310":{"linien":0,"urteil":"nicht_lieferbar"},"328":{"linien":0,"urte
+mini-powerbank-10000-mah-8acec4 · 2026-11-02T17:37:50.594Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"210":{"linien":0,"urteil":"nicht_lieferbar"}})
+solar-outdoor-powerbank-mit-handkurbel-607200 · 2026-11-02T17:37:55.253Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"510":{"linien":0,"urteil":"nicht_lieferbar"}})
+armaturenbrett-handyhalterung-mit-saugnapf-607000 · 2026-11-02T17:37:55.760Z · GESCHRIEBEN · 2 Varianten
+transparente-kabellose-powerbank-magnetisch-112128 · 2026-11-02T17:38:03.138Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"275":{"linien":0,"urteil":"nicht_lieferbar"},"290":{"linien":0,"urte
+kabelloses-tastatur-und-maus-set-749376 · 2026-11-02T17:38:04.353Z · GESCHRIEBEN · 6 Varianten
+personalisierte-katzen-und-hundehalsbander-616100 · 2026-11-02T17:38:06.159Z · GESCHRIEBEN · 28 Varianten
+65w-fast-charge-telescopic-type-c-line-charger-614600 · 2026-11-02T17:38:10.260Z · GESCHRIEBEN · 2 Varianten
+schwarze-tastatur-9a90e4 · 2026-11-02T17:38:21.278Z · GESCHRIEBEN · 2 Varianten
+dreifach-wireless-lader-607200 · 2026-11-02T17:38:22.448Z · GESCHRIEBEN · 4 Varianten
+mushroom-gan-schnellladegerat-20w-918720 · 2026-11-02T17:38:24.109Z · GESCHRIEBEN · 6 Varianten
+auto-ladegerat-mit-sternenlicht-610400 · 2026-11-02T17:38:24.422Z · GESCHRIEBEN · 2 Varianten
+powerbank-20000-mah-mit-kabel-22-5w-fast-charg-624600 · 2026-11-02T17:38:28.385Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"270":{"linien":0,"urteil":"nicht_lieferbar"}})
+20000-mah-powerbank-mit-digitalanzeige-626400 · 2026-11-02T17:38:29.434Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"455":{"linien":0,"urteil":"nicht_lieferbar"}})
+kompakte-10000-mah-powerbank-mit-integriertem-600900 · 2026-11-02T17:38:31.124Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"221":{"linien":0,"urteil":"nicht_lieferbar"}})
+solar-powerbank-mit-kurbel-613600 · 2026-11-02T17:38:33.628Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"640":{"linien":0,"urteil":"nicht_lieferbar"}})
+apple-kompatibler-ladestand-474432 · 2026-11-02T17:38:34.998Z · GESCHRIEBEN · 2 Varianten
+powerbank-mit-integriertem-kabel-225w-625900 · 2026-11-02T17:38:36.424Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"290":{"linien":0,"urteil":"nicht_lieferbar"},"500":{"linien":0,"urte
+powerbank-fur-iphone-cartoon-design-a82d98 · 2026-11-02T17:38:38.594Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"107":{"linien":0,"urteil":"nicht_lieferbar"}})
+faltbare-solar-powerbank-mit-wireless-charging-602900 · 2026-11-02T17:38:40.918Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"685":{"linien":0,"urteil":"nicht_lieferbar"}})
+grosser-wasserdichter-wanderrucksack-116864 · 2026-11-02T17:38:43.541Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Jungle camouflage"},{"option":"Farbe",
+magnetische-powerbank-10-000-mah-631800 · 2026-11-02T17:38:49.444Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"138":{"linien":0,"urteil":"nicht_lieferbar"},"208":{"linien":0,"urte
+smart-travel-charger-mit-schnellladefunktion-071616 · 2026-11-02T17:38:50.641Z · GESCHRIEBEN · 10 Varianten
+330w-super-schnelllade-netzteil-628400 · 2026-11-02T17:38:58.968Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"European Standard"},{"option":"Au
+zahnaufhellungsstreifen-fur-tagliche-pflege-121282 · 2026-11-02T17:39:00.184Z · GESCHRIEBEN · 3 Varianten
+wasserfester-schulter-rucksack-15-6-laptop-c0544e · 2026-11-02T17:39:02.459Z · GESCHRIEBEN · 4 Varianten
+magnetisches-kabelloses-auto-ladegerat-586df5 · 2026-11-02T17:39:04.445Z · GESCHRIEBEN · 2 Varianten
+faltbares-solar-powerbank-20000-mah-602000 · 2026-11-02T17:39:05.540Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"595":{"linien":0,"urteil":"nicht_lieferbar"},"670":{"linien":0,"urte
+airtag-schutz-fur-haustiere-639900 · 2026-11-02T17:39:16.186Z · GESCHRIEBEN · 3 Varianten
+dreifach-wireloser-ladegerat-602800 · 2026-11-02T17:39:17.363Z · GESCHRIEBEN · 2 Varianten
+digitales-auto-ladegerat-fur-zigarettenanzunde-612100 · 2026-11-02T17:39:19.870Z · GESCHRIEBEN · 3 Varianten
+60000-ma-powerbank-mit-super-schnellladefunkti-604200 · 2026-11-02T17:39:23.291Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1290":{"linien":0,"urteil":"nicht_lieferbar"},"1320":{"linien":0,"ur
+glanzendes-augen-schatten-set-617700 · 2026-11-02T17:39:26.320Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"01 The Glass Is Broken"},{"option":"Fa
+multifunktionales-auto-ladegerat-mit-violettli-602700 · 2026-11-02T17:39:30.963Z · GESCHRIEBEN · 2 Varianten
+microneedling-anti-falten-serum-608000 · 2026-11-02T17:39:33.635Z · GESCHRIEBEN · 2 Varianten
+3-in-1-wireless-charger-fur-handy-kopfhorer-uh-462592 · 2026-11-02T17:39:33.651Z · GESCHRIEBEN · 4 Varianten
+solar-powerbank-20000mah-mit-kabel-606200 · 2026-11-02T17:39:38.297Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"510":{"linien":0,"urteil":"nicht_lieferbar"},"560":{"linien":0,"urte
+hundeleine-2m-mit-verlangerung-602300 · 2026-11-02T17:39:40.857Z · GESCHRIEBEN · 6 Varianten
+kompakte-10000mah-powerbank-611748 · 2026-11-02T17:39:42.297Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"160":{"linien":0,"urteil":"nicht_lieferbar"}})
+slim-powerbank-10000-mah-5aeb79 · 2026-11-02T17:39:45.127Z · GESCHRIEBEN · 4 Varianten
+dekorative-leinwandbilder-set-3-teilige-wandku-604600 · 2026-11-02T17:39:48.768Z · GESCHRIEBEN · 6 Varianten
+eu-ladegerat-615000 · 2026-11-02T17:39:52.713Z · GESCHRIEBEN · 2 Varianten
+kleiner-tragbarer-ventilator-611400 · 2026-11-02T17:39:56.467Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Dual Battery White"},{"option":"Model
+business-laptop-rucksack-wasserdicht-635100 · 2026-11-02T17:40:01.518Z · GESCHRIEBEN · 2 Varianten
+faltbare-outdoor-power-bank-10-000-mah-mit-wir-617000 · 2026-11-02T17:40:02.602Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"243":{"linien":0,"urteil":"nicht_lieferbar"},"273":{"linien":0,"urte
