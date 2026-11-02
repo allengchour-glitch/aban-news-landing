@@ -19,3 +19,10 @@ Stattdessen: die Galeriebilder der Printful-Produktseiten (Modelle, Lifestyle, D
 **Nicht gesetzt:** iPhone-/Samsung-Hüllen (Seiten nicht zugeordnet), Magnet, Strandtuch, Notizbuch, Aufkleber, Bügeltransfer (Printful-Seite nicht gefunden).
 **Urheberrecht:** Die Fotos stammen von Printfuls Webseite (Beispielmotive Dritter); Besitzer hat die Übernahme am 2.11. ausdrücklich verlangt. Printfuls Nutzungsbedingungen für diese Galeriebilder sind ungeprüft (unbekannt).
 **Sterne:** Das Judge.me-Widget blendet ohne echte Bewertung aus (`data-number-of-reviews="0"`). Keine erfundenen Bewertungen (UWG).
+
+## Nachtrag 2 (2.11.): Handyhüllen und Rest
+Auftrag Besitzer: «mach weiter mit den iphone hüllen». Gleiches Verfahren (Printful-Galeriebilder, Sichtprüfung, Infografik/Fremdlogo aussortiert): iPhone Hardcase MagSafe +9, iPhone transparent +6, Samsung +12, Aufkleber +4 (Auto-Aufkleber mit Fremdlogo raus), Magnet +4 (Beschriftungskachel raus), Notizbuch +6. **41 Bilder, 6 Produkte, 114 Medien, 0 nicht `READY`** (frisch gelesen). Die iPhone-Fotos zeigen teils andere Modelle (Printful-Galerie, nicht modellgenau).
+**Weiterhin ohne:** Strandtuch (Printful-Seite nicht gefunden), Bügeltransfer.
+
+## Kategorien-Prüfung (2.11., Prüfer `kategorie_pruefer.mjs`, frischer Katalog 56 529 Produkte)
+GEMESSEN: 706 Menü-Sammlungen, 589 als Themen-Sammlung bewertet, **0 Titel-Regel-Sammlungen mit Fremdkörpern**, 138 mit «Ausreissern» (anderer Google-Bereich als der Kern). Stichprobe der Beispiele: die meisten sind Absicht (Mischgruppen wie Wohnen & Dekoration, Taschen). Echte Fehlgriffe, weil die Sammlung an einem alten Tag hängt: `jacken-outdoor` (`kat-jacke-outdoor`) enthält Haustier-Jacken, `schule-kindergarten` (`sort-schule`) ein Rollregal für Spielzeug. Die älteren Tag-Sammlungen (`kat-*`, `beauty`+`hautpflege`, `auto`) auf `sort-`-Regeln umzustellen ist der grössere offene Schritt (Aufgabe «Taxonomie»), nichts davon wurde geändert.
