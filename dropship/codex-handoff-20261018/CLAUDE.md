@@ -2,7 +2,23 @@
 
 Nur LuxeStyle (luxestyle.ch) bearbeiten. Aktuelle ausdrückliche Inhabervorgaben haben Vorrang; diese Übergabe erweitert keine Geschäftsfreigaben.
 
-## Aktueller Website-Auftrag 02.11.2026, R53
+## Aktueller Abendstand 02.11.2026, R54
+
+[Abendpaket mit konsolidierter eigener Tagestabelle](ABENDPAKET-20261102-R54.md), [Abendbelege](ABENDBELEGE-20261102-R54.json) und [Contentvorschlag desselben Masters](MASTER-CONTENT-20261102-R54.md) frisch lesen. Shop und alle sechs Metricool-Konten sind passend. Abendplanung 21 bestehende Objekte / 28 PENDING; 21 gemeinsame R52-UUIDs und zehn Felder unverändert. Zwei heutige 18-Uhr-Objekte liegen vor dem neuen Fenster, ihr Publikationsstatus bleibt unbekannt. Threads 04.11.18:30 mit UUID, Register und tatsächlichem JPEG-Hash bestätigt; kein eigener neuer Post oder Publish.
+
+Heutige R48-Social-/Klaviyo- und R49-GA4-/GSC-Reports bleiben datierte aktuelle Tagesquellen; keine Wiederholung, dailyReadPolicy exakt. Kauf-Watch beendet. Neue Produktgegenprobe: Projektor CHF 34.90 und Organizer CHF 29.90 ACTIVE, exact variant available, nicht leere ungesperrte Tags, Bilder und Storefront bestätigt. Ohne Bestandstracking/CONTINUE/Menge0 keine Bestands- oder Lieferzusage; Quellbutton ist kein Checkouttest.
+
+Den R53-Personalizer-Schritt mit echter öffentlicher UI-Teilmessung fortgesetzt: vier DE/FR-Kontexte auf 390/1440. DE 390 21/21, DE 1440 15/15 bis zur Grusskartenprobe; danach Angebotsrest unbekannt. Beide FR-Ansichten vor vollständiger UI-/Themeabnahme in technischen Wait-/Scroll-Timeouts; geladene Assets 200 beweisen keine fertige FR-Abnahme. 36 positive beobachtete Bedingungen sind kein bestandenes Vier-Ansichten-Gesamtergebnis. Metrische Grössen-/Variantenanzeige ist keine neue physische Massvalidierung. Eingebettete Printful 4018→Shopify 55794951324033/CHF24.90-Bindung ist keine vollständige Kaufbarkeit. Kein spekulativer Frontendpatch oder Theme-Publish.
+
+Im nächsten bestehenden Lauf gezielt den Lade-/Theme-/Sprach-/Katalogzustand sofort nach DOMContentLoaded erfassen und volle Fehlermeldung/Screenshot erhalten, statt aus 7 s-Timeouts eine kaputte Seite abzuleiten. Diese begrenzte Read-only-Diagnose ist bereits autorisiert; keine zusätzliche Freigabe, Automation oder Frequenz. Die Vier-View-Grenze war nur der R54-Untertaskumfang.
+
+Derselbe 18s-Master: Hook B «Licht im Detail.» und passender TikTok-Titel als Vorschlag, keine Inhaberfreigabe. 18s/540Frames, R52-Aufnahmebogen und sechs stabile UTMs erhalten. 12 Dokumentbedingungen, keine Film-/Rechteabnahme. Tatsächliche passende Takes, Ausführung, kommerzielle Filmrechte und MP4 in begrenzt gelesenen Quellen nicht belegt. Musik frisch hashgleich verfügbar, finale Lizenz/Hören/Mix offen. Keine neue Ausspielung oder Registerinitialisierung. Bioziele/Pinterestboard/konkretes YouTube-Postflag später prüfen; Inhaberzielgruppe YouTube bereits geklärt.
+
+Welcome bleibt genau derselbe getrennte Zwei-Zeilen-Freigabeentwurf, im R54-Abendlauf nicht erneut an Klaviyo gebunden und nicht angewendet. Website-only-Inhaberwahl aus R53 erweitert ihn nicht. Nur nach gesonderter Welcome-Freigabe unmittelbar frische Quellen/Flowflags/Hash prüfen; kein Senden/Testsenden/Flow-, Coupon- oder Trackingwrite. Keine zweite neue Verkaufsaktion behaupten.
+
+R53-Website-Auftrag/Freigabe darunter bleiben massgebend: keine erneute gleiche Freigabefrage, keine alte Gesamtkopie publizieren. Echte Claude-Ausführung oder MAIN-Reparatur wurde hier nicht beobachtet. 19 IDs/Historien erhalten; nur Master/Personalizer fortgeführt, 17 andere Tasks exakt. CHF 50/CHF 45 und account.luxestyle.com.co, sämtliche übrigen Befugnisse und Zeitpläne erhalten.
+
+## Weiterhin massgeblicher Website-Auftrag 02.11.2026, R53
 
 Der Inhaber hat ausdrücklich «Die Website-Verbesserungen» ausgewählt. [Konkreten Claude-Auftrag R53](CLAUDE-PUBLISH-AUFTRAG-20261102-R53.md) und [aktuelle Belege mit vollständiger MAIN-Datei, Kandidat und Diff](CLAUDE-PUBLISH-BELEGE-20261102-R53.json) zuerst lesen. Diese Website-Freigabe nicht erneut fragen. Welcome ist in diesem Auftrag ausdrücklich ausgeschlossen; keine Mailvorlage, Nachricht oder Flowänderung. Der Projektorfilm bleibt ohne Originaltakes/Rechte/MP4-Abnahme blockiert.
 
