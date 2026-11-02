@@ -7,6 +7,8 @@ on:
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
+      - 'automation/autopilot/merchant_feed.mjs'
+      - 'automation/autopilot/merchant_feed_auth_test.mjs'
       - 'automation/*.mjs'
       - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
@@ -77,6 +79,8 @@ jobs:
             codex-mods
             AGENTS.md
             automation/autopilot/shop_pulse.mjs
+            automation/autopilot/merchant_feed.mjs
+            automation/autopilot/merchant_feed_auth_test.mjs
             tools/versandregel.mjs
             tools/versandregel_test.mjs
             automation/seo-optimizer.mjs
@@ -136,6 +140,8 @@ jobs:
       - name: Syntax
         run: |
           node --check automation/cj_reviews_import.mjs
+          node --check automation/autopilot/merchant_feed.mjs
+          node --check automation/autopilot/merchant_feed_auth_test.mjs
           node --check dropship/cj_enrich.mjs
           node --check automation/publish_guard.mjs
           node --check automation/cross_sell.mjs
@@ -176,6 +182,7 @@ jobs:
         run: |
           node automation/lib/shopify_gql_test.mjs
           node automation/lib/shopify_secret_test.mjs
+          node automation/autopilot/merchant_feed_auth_test.mjs
           node automation/lib/kanal_sperren_test.mjs
           node automation/lib/cross_sell_ziel_test.mjs
           node automation/lib/bild_befund_test.mjs
