@@ -1,0 +1,805 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 52,
+  "createdAt": "2026-11-02T13:12:54.533Z",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "status": "AUSFUELLBARER_AUFNAHME_UND_ABNAHMEBOGEN_KEIN_FILM",
+  "newWork": "R48-Zeitplan in einen einzigen datei- und kontrollframegebundenen Annahmebogen mit eindeutigen Abbruchkriterien überführt. Kein neuer Master, keine tatsächliche Medien- oder Rechteabnahme.",
+  "source": {
+    "previousMasterPath": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261102-R48.json",
+    "gitBlobSha": "fff34effe961376fd6240ba5b41eb8151269b6c4",
+    "canonicalRevisionRead": 51
+  },
+  "currentProductReference": {
+    "source": "../products/NATIVE.json + ../products/TAG-CHECK.json + ../products/PUBLIC.json; Root frisch gelesen, Produktreferenz von Root und diesem Masteragenten visuell angesehen",
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "sku": "CJ-1477820492730732544",
+    "nativeStatus": "ACTIVE",
+    "priceCHF": "34.90",
+    "nativeAvailableForSale": true,
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "tagsNonempty": true,
+    "tagStopMatches": [],
+    "executionUnresolvedTag": "auswahl-offen",
+    "referenceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "referenceImageDimensions": [
+      1920,
+      1919
+    ],
+    "referenceImageSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "publicExactVariantHttp": 200,
+    "publicVariantAvailable": true,
+    "visualReferenceOnly": "Weisses Gehäuse, schwarze Sternenkuppel; separate weisse Haube liegt daneben. Das Standfoto belegt keine Abhebehandlung, Tastenfunktion oder genaue Default-Ausführung.",
+    "noStockOrDeliveryPromise": true,
+    "sourceIsNotFootageOrRightsApproval": true
+  },
+  "targetFormat": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "frames": 540,
+    "durationSeconds": 18,
+    "nativeConstant30fpsRequired": true,
+    "frameInterpolationAllowed": false
+  },
+  "selectedHook": null,
+  "hookChoices": [
+    {
+      "id": "A",
+      "text": [
+        "Dein Raum.",
+        "Neues Licht."
+      ],
+      "visual": "Echte Projektion desselben identifizierten Geräts als Raumauftakt, danach Bedienung.",
+      "openingFrames": [
+        0,
+        60
+      ],
+      "notSeparateNewMaster": true
+    },
+    {
+      "id": "B",
+      "text": [
+        "Licht im Detail."
+      ],
+      "visual": "Nahes tatsächliches Gerätedetail mit erkennbarer Form, danach Bedienung.",
+      "openingFrames": [
+        0,
+        60
+      ],
+      "notSeparateNewMaster": true
+    }
+  ],
+  "timeline": [
+    {
+      "startFrame": 0,
+      "endFrameExclusive": 60,
+      "seconds": "0.00–2.00",
+      "take": "P_PROJECTION for HookA OR P_DETAIL for HookB, one selected master",
+      "overlayA": [
+        "Dein Raum.",
+        "Neues Licht."
+      ],
+      "overlayB": [
+        "Licht im Detail."
+      ]
+    },
+    {
+      "startFrame": 60,
+      "endFrameExclusive": 138,
+      "seconds": "2.00–4.60",
+      "take": "P_OPERATION continuous",
+      "overlay": [
+        "Sternenlicht-Projektor"
+      ]
+    },
+    {
+      "startFrame": 138,
+      "endFrameExclusive": 228,
+      "seconds": "4.60–7.60",
+      "take": "same uninterrupted P_OPERATION",
+      "overlay": [
+        "Aus der Nähe",
+        "entdecken."
+      ]
+    },
+    {
+      "startFrame": 228,
+      "endFrameExclusive": 372,
+      "seconds": "7.60–12.40",
+      "take": "P_PROJECTION exact execution/motif",
+      "overlay": [
+        "Für besondere",
+        "Lichtmomente."
+      ]
+    },
+    {
+      "startFrame": 372,
+      "endFrameExclusive": 420,
+      "seconds": "12.40–14.00",
+      "take": "P_DETAIL",
+      "overlay": []
+    },
+    {
+      "startFrame": 420,
+      "endFrameExclusive": 540,
+      "seconds": "14.00–18.00",
+      "take": "P_HERO continuous",
+      "overlay": [
+        "Produkt ansehen",
+        "LuxeStyle · luxestyle.ch"
+      ]
+    }
+  ],
+  "takeRecords": [
+    {
+      "takeId": "P_OPERATION",
+      "minimumNativeCaptureFrames": 228,
+      "inheritedCandidateRanges": {
+        "takeId": "P_OPERATION",
+        "minimumCaptureFrames": 228,
+        "candidateUsedRanges": [
+          {
+            "masterFrames": [
+              60,
+              228
+            ],
+            "captureFrames": [
+              30,
+              198
+            ]
+          }
+        ],
+        "contactFrameCandidates": [
+          30,
+          114,
+          197
+        ],
+        "additionalHumanFrames": [
+          "realpreactionstate",
+          "actualfingercontact",
+          "realpostactionstate"
+        ],
+        "continuousNoPictureCutAtMasterFrame": 138
+      },
+      "actualOriginal": {
+        "path": null,
+        "sha256": null,
+        "ffprobeRecord": null,
+        "actualFrames": null,
+        "actualFps": null,
+        "usedInFrame": null,
+        "usedOutFrameExclusive": null
+      },
+      "exactProductIdentity": {
+        "shopifyProductId": "gid://shopify/Product/15521256604033",
+        "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+        "supplierSku": "CJ-1477820492730732544",
+        "samePhysicalUnitEvidence": null,
+        "executionAndMotifEvidence": null,
+        "powerAndIncludedItemsEvidence": null
+      },
+      "rights": {
+        "licensor": null,
+        "authorityEvidence": null,
+        "licenceDocumentPath": null,
+        "licenceDocumentSha256": null,
+        "licensedOriginalSha256": null,
+        "requiredScope": [
+          "Kommerzielle Werbung",
+          "Bearbeitung und Zuschnitt",
+          "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+          "Gebiet und Laufzeit decken den geplanten Einsatz",
+          "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+        ],
+        "verifiedScope": null,
+        "validFrom": null,
+        "validUntil": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": "unknown"
+      },
+      "contactFrameRecord": {
+        "actualImages": null,
+        "imageSha256": null,
+        "originalFrameNumbers": null,
+        "reviewer": null,
+        "reviewedAt": null
+      },
+      "qualityDecision": {
+        "form": "unknown",
+        "colour": "unknown",
+        "logo": "unknown",
+        "function": "unknown",
+        "continuity": "unknown",
+        "exposureAndFlicker": "unknown",
+        "focusAndMotion": "unknown",
+        "decision": "unknown",
+        "reason": null
+      }
+    },
+    {
+      "takeId": "P_PROJECTION",
+      "minimumNativeCaptureFrames": 264,
+      "inheritedCandidateRanges": {
+        "takeId": "P_PROJECTION",
+        "minimumCaptureFrames": 264,
+        "hookAOnlyCaptureRanges": [
+          {
+            "masterFrames": [
+              0,
+              60
+            ],
+            "captureFrames": [
+              30,
+              90
+            ]
+          },
+          {
+            "masterFrames": [
+              228,
+              372
+            ],
+            "captureFrames": [
+              90,
+              234
+            ]
+          }
+        ],
+        "hookBOnlyCaptureRanges": [
+          {
+            "masterFrames": [
+              228,
+              372
+            ],
+            "captureFrames": [
+              30,
+              174
+            ]
+          }
+        ],
+        "contactFrameCandidatesHookA": [
+          30,
+          89,
+          90,
+          162,
+          233
+        ],
+        "additionalHumanFrames": [
+          "sameunitandsurfacebinding",
+          "motifmatchproof"
+        ],
+        "noInsertedOrRecycledProjection": true
+      },
+      "actualOriginal": {
+        "path": null,
+        "sha256": null,
+        "ffprobeRecord": null,
+        "actualFrames": null,
+        "actualFps": null,
+        "usedInFrame": null,
+        "usedOutFrameExclusive": null
+      },
+      "exactProductIdentity": {
+        "shopifyProductId": "gid://shopify/Product/15521256604033",
+        "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+        "supplierSku": "CJ-1477820492730732544",
+        "samePhysicalUnitEvidence": null,
+        "executionAndMotifEvidence": null,
+        "powerAndIncludedItemsEvidence": null
+      },
+      "rights": {
+        "licensor": null,
+        "authorityEvidence": null,
+        "licenceDocumentPath": null,
+        "licenceDocumentSha256": null,
+        "licensedOriginalSha256": null,
+        "requiredScope": [
+          "Kommerzielle Werbung",
+          "Bearbeitung und Zuschnitt",
+          "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+          "Gebiet und Laufzeit decken den geplanten Einsatz",
+          "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+        ],
+        "verifiedScope": null,
+        "validFrom": null,
+        "validUntil": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": "unknown"
+      },
+      "contactFrameRecord": {
+        "actualImages": null,
+        "imageSha256": null,
+        "originalFrameNumbers": null,
+        "reviewer": null,
+        "reviewedAt": null
+      },
+      "qualityDecision": {
+        "form": "unknown",
+        "colour": "unknown",
+        "logo": "unknown",
+        "function": "unknown",
+        "continuity": "unknown",
+        "exposureAndFlicker": "unknown",
+        "focusAndMotion": "unknown",
+        "decision": "unknown",
+        "reason": null
+      }
+    },
+    {
+      "takeId": "P_DETAIL",
+      "minimumNativeCaptureFrames": 168,
+      "inheritedCandidateRanges": {
+        "takeId": "P_DETAIL",
+        "minimumCaptureFrames": 168,
+        "hookBOnlyCaptureRanges": [
+          {
+            "masterFrames": [
+              0,
+              60
+            ],
+            "captureFrames": [
+              30,
+              90
+            ]
+          },
+          {
+            "masterFrames": [
+              372,
+              420
+            ],
+            "captureFrames": [
+              90,
+              138
+            ]
+          }
+        ],
+        "hookAOnlyCaptureRanges": [
+          {
+            "masterFrames": [
+              372,
+              420
+            ],
+            "captureFrames": [
+              30,
+              78
+            ]
+          }
+        ],
+        "contactFrameCandidatesHookB": [
+          30,
+          89,
+          90,
+          137
+        ],
+        "additionalHumanFrames": [
+          "frontidentity",
+          "domeholderandbuttonidentity"
+        ]
+      },
+      "actualOriginal": {
+        "path": null,
+        "sha256": null,
+        "ffprobeRecord": null,
+        "actualFrames": null,
+        "actualFps": null,
+        "usedInFrame": null,
+        "usedOutFrameExclusive": null
+      },
+      "exactProductIdentity": {
+        "shopifyProductId": "gid://shopify/Product/15521256604033",
+        "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+        "supplierSku": "CJ-1477820492730732544",
+        "samePhysicalUnitEvidence": null,
+        "executionAndMotifEvidence": null,
+        "powerAndIncludedItemsEvidence": null
+      },
+      "rights": {
+        "licensor": null,
+        "authorityEvidence": null,
+        "licenceDocumentPath": null,
+        "licenceDocumentSha256": null,
+        "licensedOriginalSha256": null,
+        "requiredScope": [
+          "Kommerzielle Werbung",
+          "Bearbeitung und Zuschnitt",
+          "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+          "Gebiet und Laufzeit decken den geplanten Einsatz",
+          "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+        ],
+        "verifiedScope": null,
+        "validFrom": null,
+        "validUntil": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": "unknown"
+      },
+      "contactFrameRecord": {
+        "actualImages": null,
+        "imageSha256": null,
+        "originalFrameNumbers": null,
+        "reviewer": null,
+        "reviewedAt": null
+      },
+      "qualityDecision": {
+        "form": "unknown",
+        "colour": "unknown",
+        "logo": "unknown",
+        "function": "unknown",
+        "continuity": "unknown",
+        "exposureAndFlicker": "unknown",
+        "focusAndMotion": "unknown",
+        "decision": "unknown",
+        "reason": null
+      }
+    },
+    {
+      "takeId": "P_HERO",
+      "minimumNativeCaptureFrames": 180,
+      "inheritedCandidateRanges": {
+        "takeId": "P_HERO",
+        "minimumCaptureFrames": 180,
+        "candidateUsedRanges": [
+          {
+            "masterFrames": [
+              420,
+              540
+            ],
+            "captureFrames": [
+              30,
+              150
+            ]
+          }
+        ],
+        "contactFrameCandidates": [
+          30,
+          90,
+          149
+        ],
+        "additionalHumanFrames": [
+          "ctaSpace",
+          "sameunitandcolourcontinuity"
+        ],
+        "continuousClosingTake": true
+      },
+      "actualOriginal": {
+        "path": null,
+        "sha256": null,
+        "ffprobeRecord": null,
+        "actualFrames": null,
+        "actualFps": null,
+        "usedInFrame": null,
+        "usedOutFrameExclusive": null
+      },
+      "exactProductIdentity": {
+        "shopifyProductId": "gid://shopify/Product/15521256604033",
+        "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+        "supplierSku": "CJ-1477820492730732544",
+        "samePhysicalUnitEvidence": null,
+        "executionAndMotifEvidence": null,
+        "powerAndIncludedItemsEvidence": null
+      },
+      "rights": {
+        "licensor": null,
+        "authorityEvidence": null,
+        "licenceDocumentPath": null,
+        "licenceDocumentSha256": null,
+        "licensedOriginalSha256": null,
+        "requiredScope": [
+          "Kommerzielle Werbung",
+          "Bearbeitung und Zuschnitt",
+          "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+          "Gebiet und Laufzeit decken den geplanten Einsatz",
+          "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+        ],
+        "verifiedScope": null,
+        "validFrom": null,
+        "validUntil": null,
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": "unknown"
+      },
+      "contactFrameRecord": {
+        "actualImages": null,
+        "imageSha256": null,
+        "originalFrameNumbers": null,
+        "reviewer": null,
+        "reviewedAt": null
+      },
+      "qualityDecision": {
+        "form": "unknown",
+        "colour": "unknown",
+        "logo": "unknown",
+        "function": "unknown",
+        "continuity": "unknown",
+        "exposureAndFlicker": "unknown",
+        "focusAndMotion": "unknown",
+        "decision": "unknown",
+        "reason": null
+      }
+    }
+  ],
+  "stopCriteria": [
+    {
+      "id": "G1",
+      "stage": "Produktzuordnung",
+      "failIf": "Tatsächliche Einheit, Default-Ausführung oder sichtbares Motiv lässt sich nicht zur konkreten Variante/SKU zuordnen; auswahl-offen allein ist kein Nachweis.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G2",
+      "stage": "Nutzungsrechte",
+      "failIf": "Dateihash oder berechtigter Lizenzgeber fehlt; kommerzielle Bearbeitungs-/Werberechte, sechs Kanäle, Gebiet oder Laufzeit sind nicht belegt. Kosten-/Gratisflag ersetzt keinen Lizenzbeleg.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G3",
+      "stage": "Originaltechnik",
+      "failIf": "Einer der vier Takes fehlt, ist kleiner als native 1080×1920 oder nicht konstant 30 fps, hat zu wenig Nutzframes/Griffe, eingefügte Frames oder einen versteckten Bildschnitt innerhalb der Bedienung.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G4",
+      "stage": "Produkt und Handlung",
+      "failIf": "Form, Gehäusefarbe, Logo, Bedienelemente oder Funktion weichen ab; Hand/Kontakt ist abgeschnitten, die Haube wird unbelegt abgehoben oder der Schnitt behauptet eine ungeprüfte Tastenwirkung.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G5",
+      "stage": "Bild und Anschlüsse",
+      "failIf": "Flimmern, Pumpen, unkontrollierte Überstrahlung oder Unschärfe verdecken Produktdetails; Unit, Motiv, Licht oder Blickrichtung wechseln ohne nachgewiesenen Anschluss.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G6",
+      "stage": "Ton und Rechte",
+      "failIf": "Andere Musik, Voiceover, Fremd-SFX oder Quellgespräch hörbar; Pflichtmusik-/Instrumentherkunft nicht ausreichend belegt; tatsächlicher Export clippt oder wurde nicht vollständig gehört.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G7",
+      "stage": "Text und Ausschnitte",
+      "failIf": "Overlay ist in einer tatsächlichen Plattformvorschau verdeckt, zu klein, zu schnell oder kontrastarm; UI/Produktdetail wird überdeckt. Provisorische Sicherheitszone ersetzt keine sechs tatsächlichen Kanalprüfungen.",
+      "proof": null,
+      "decision": "unknown"
+    },
+    {
+      "id": "G8",
+      "stage": "Abnahme und Publikation",
+      "failIf": "Tatsächliche MP4/SHA-256, Eigentümerabnahme, freigegebene Produktzuordnung oder dauerhafte Master-/Kanalhistorie fehlen. Neue URL/Re-Encode erzeugt keine neue masterId.",
+      "proof": null,
+      "decision": "unknown"
+    }
+  ],
+  "finalExportRecord": {
+    "path": null,
+    "sha256": null,
+    "ffprobeRecord": null,
+    "actualFrames": null,
+    "audioPlan": {
+      "onlySource": "automation/music/luxe-premium.wav",
+      "permittedSourceSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "chosenSourceInSeconds": null,
+      "chosenSourceOutSeconds": null,
+      "voiceover": false,
+      "sourceAudio": false,
+      "externalSoundEffects": false,
+      "plannedFadeInFrames": 6,
+      "plannedFadeOutFrames": 18,
+      "engineeringTargetIntegratedLufs": -14,
+      "engineeringMaxTruePeakDbtp": -1,
+      "targetsAreNotMeasurementsOrPlatformGuarantees": true,
+      "actualIntegratedLufs": null,
+      "actualTruePeakDbtp": null,
+      "full18sListeningReviewer": null,
+      "reviewedAt": null,
+      "rightsDecision": "unknown",
+      "mixDecision": "unknown"
+    },
+    "textPlan": {
+      "graphicPalette": [
+        "#F7F3EC",
+        "#8E7B6A"
+      ],
+      "textColourProposal": "#27231F",
+      "actualProductColoursMustRemain": true,
+      "maximumLines": 2,
+      "minimumProposedFontPxAt1080": 48,
+      "targetMaximumCharactersPerSecond": 15,
+      "minimumTargetTextContrast": 4.5,
+      "provisionalCentralSafeArea": {
+        "xMin": 150,
+        "xMax": 930,
+        "yMin": 260,
+        "yMax": 1450
+      },
+      "notUniversalPlatformSafeArea": true,
+      "actualOverlayWorstFrameContrast": null,
+      "actualFontPx": null,
+      "readabilityDecision": "unknown"
+    },
+    "perChannelReview": [
+      {
+        "channel": "instagram",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      },
+      {
+        "channel": "tiktok",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      },
+      {
+        "channel": "youtube",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      },
+      {
+        "channel": "facebook",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      },
+      {
+        "channel": "threads",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      },
+      {
+        "channel": "pinterest",
+        "actualFinalExportSha256": null,
+        "actualPlatformPreviewScreenshot": null,
+        "phonePlaybackReviewer": null,
+        "cropAndUiDecision": "unknown",
+        "readabilityDecision": "unknown",
+        "reviewedAt": null
+      }
+    ],
+    "ownerFilmApproval": {
+      "approvedFileSha256": null,
+      "evidence": null,
+      "reviewedAt": null,
+      "decision": "unknown"
+    },
+    "publicationLedger": {
+      "state": "unknown_no_verified_durable_film_register",
+      "initialiseOrReset": false,
+      "stableMasterId": "luxe_sternenprojektor_master_20261018",
+      "freshPerChannelHistoryRequired": true
+    },
+    "publishable": false
+  },
+  "captions": [
+    {
+      "channel": "instagram",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Sternenlicht-Projektor im Detail",
+      "caption": "Licht im Detail. Ein genauer Blick auf den Sternenlicht-Projektor von LuxeStyle. Produktansichten und aktuelle Angaben auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+      "linkPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+      "channelGate": "Actualcurrentbio-productpathunverified. Useswebsitesearchinstructiononly; no clickablecaptionclaim. ConditionalbioCTA staysdisabled pendingfreshproductpathproof.",
+      "conditionallyPermittedBioCaption": "Produkt ansehen – über den Link in unserer Bio.",
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": null,
+      "youtubeConcreteMadeForKidsFlagVerified": null,
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    },
+    {
+      "channel": "tiktok",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Dein Raum. Neues Licht.",
+      "caption": "Ein Lichtdetail für deinen Raum. Den Sternenlicht-Projektor findest du auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+      "linkPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+      "channelGate": "Actualcurrentbio-productpathunverified. Useswebsitesearchinstructiononly; no clickablecaptionclaim. ConditionalbioCTA staysdisabled pendingfreshproductpathproof.",
+      "conditionallyPermittedBioCaption": "Produkt ansehen – über den Link in unserer Bio.",
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": null,
+      "youtubeConcreteMadeForKidsFlagVerified": null,
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    },
+    {
+      "channel": "youtube",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+      "caption": "Sternenlicht-Projektor von LuxeStyle: Produktansichten und aktuelle Angaben findest du unter der Produktadresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; Adresse im Browser öffnen.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+      "linkPlacement": "address not clickable in Shorts",
+      "channelGate": "Inhaberentscheid für denselben Master liegt bereits vor: allgemeines Publikum, nicht speziell für Kinder. Keine erneute Zielgruppenfrage. Vor späterer Veröffentlichung konkretes Post-Made-for-kids-Flag daran prüfen; derzeit kein Publish.",
+      "conditionallyPermittedBioCaption": null,
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": "general_audience_not_specifically_made_for_kids",
+      "youtubeConcreteMadeForKidsFlagVerified": "unknown",
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    },
+    {
+      "channel": "facebook",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Licht im Detail.",
+      "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Sieh dir die aktuellen Produktansichten und Angaben zur Ausführung bei LuxeStyle an.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+      "linkPlacement": "product link",
+      "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+      "conditionallyPermittedBioCaption": null,
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": null,
+      "youtubeConcreteMadeForKidsFlagVerified": null,
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    },
+    {
+      "channel": "threads",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Ein Detail für deinen Raum",
+      "caption": "Ein genauer Blick auf den Sternenlicht-Projektor: Hier findest du die aktuellen Produktansichten und Angaben bei LuxeStyle.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+      "linkPlacement": "product link",
+      "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+      "conditionallyPermittedBioCaption": null,
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": null,
+      "youtubeConcreteMadeForKidsFlagVerified": null,
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    },
+    {
+      "channel": "pinterest",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+      "caption": "Sternenlicht-Projektor fürs Schlafzimmer: Entdecke die Produktansichten und prüfe die aktuelle Ausführung bei LuxeStyle.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+      "linkPlacement": "product link",
+      "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+      "conditionallyPermittedBioCaption": null,
+      "conditionalBioCaptionEnabled": false,
+      "pinterestVerifiedBoardId": null,
+      "youtubeOwnerAudienceDecision": null,
+      "youtubeConcreteMadeForKidsFlagVerified": null,
+      "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+    }
+  ],
+  "rightsAndProductionBlocker": "Vier passende native Originaltakes, genaue Ausführung/Motive und kommerzielle Film-/Bearbeitungsrechte fehlen. Pflichtmusik ist verfügbar/hashgleich; finale Rechte-, Hör- und Mixabnahme bleibt offen. Keine Master-MP4 vorhanden, kein Render/Push.",
+  "scope": {
+    "newMaster": false,
+    "newMp4": false,
+    "render": false,
+    "paidRender": false,
+    "newSocialWrite": false,
+    "registerInitialisation": false,
+    "metricsOrFlowRead": false,
+    "customerContact": false
+  }
+}
