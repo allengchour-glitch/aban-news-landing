@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 02.11.2026, Revision 51
+
+[Technik-Unterkategorien und Sortierung R51](TECHNIK-UNTERKATEGORIEN-20261102-R51.md) · [Exakte Ausführung und Prüfbelege](TECHNIK-UNTERKATEGORIEN-20261102-R51.json).
+
+Technik ist live über zehn Mittelgruppen und60bereits vorhandene Blattkategorien verbunden.69Referenzfelder mit den bestehenden Definitionen lux.unterfilter/lux.eltern wurden gesetzt, keine Collection-Dubletten oder Menüänderungen. Alle60Blattcounts sind nativ positiv, alle60Ziele antworten auf je eine HEAD-Anfrage mitHTTP200; das ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Sechs geprüfte Produkte stehen als kuratierter Einstieg vorn, ohne Bestsellerbehauptung. Das originale Mutterkriterium elektronik bleibt erhalten und wurde als ANY um zwölf positive vorhandene Sortiertags ergänzt. Nativer Count6018→6223 ist keine Zahl öffentlich kaufbarer Artikel; die13fehlenden Muttertags stammen nur aus36Stichprobenprodukten, keine Katalogquote. R49/R50SEOtexte und alle Produktpreise/Tags/Statuswerte bleiben erhalten.
+
+Offener Livepunkt: Die echte MAIN-Unterseitenprüfung bestand28/30Bedingungen; ein mobiler16px-Überlauf bleibt live. Nur eine CSS-Regel in templates/collection.json wurde im alten UNPUBLISHED-Entwurf212978598279 exakt korrigiert (MD5c7020b391b776427a1346a91540c646f),36/36echte Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert mit MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Vorschau ist kein Live-Fix. Ein legitim technisch fähiger MAIN-Writer muss nur die eine Regel nach frischem Dateidiff in den aktuellen MAIN übernehmen und die zwei offenen Mobilansichten prüfen. Keine ganze alte Kopie publizieren, keine Toolgrenze umgehen oder neue gleiche Freigabe verlangen; die bestehende ausdrückliche Website-/Sortiererlaubnis gilt.
+
+Native Vorvalidierung übersprang; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte. Keine grüne Voll-CI oder vollständige Checkout-/Tracking-/Rankingabnahme. Neue stabile Aufgabe tech-category-structure-20261102 hinten angefügt:18Tasks, alle17Original-IDs/Reihenfolge/Historien erhalten. Nur die vorhandene Homepageaufgabe zusätzlich aktualisiert;16andere alteTasks und dailyReadPolicy exakt unverändert. R50Supplements, frühere Übergaben, VersandCHF50/CHF45, account.luxestyle.com.co, Tagesgrenzen und beendeter Kauf-Watch erhalten. Keine neuen Analytics-/Flow-/Bestellreports, Socialposts, Shopkonfiguration, Installation oder Frequenzänderung. Claude-EinstiegR51, tatsächlicher Empfang unbekannt.
+
 ## Aktueller Stand – 02.11.2026, Revision 50
 
 [Kategoriequalität R50](KATEGORIEN-QUALITAET-20261102-R50.md) · [Exakte Änderungen und Prüfbelege](KATEGORIEN-QUALITAET-20261102-R50.json).
