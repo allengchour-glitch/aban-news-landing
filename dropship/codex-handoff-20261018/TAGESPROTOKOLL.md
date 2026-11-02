@@ -712,3 +712,21 @@ Fortsetzung kurz nach Mitternacht Europe/Zurich; frühere Tagesblöcke bleiben e
 [LUXESTYLE_MORGEN_20261101] [Paket](MORGENPAKET-20261101.md) · [Belege](MORGENBELEGE-20261101.json) · [Master-Diff](MASTER-FFPROBE-20261101.patch). Kennzahlen/Flows nicht wiederholt; Kauf-Watch bleibt beendet.
 
 [LUXESTYLE_SYNC_SCHUTZ_20261101] [Bericht](SYNC-SCHUTZ-20261101.md) · [Belege](SYNC-SCHUTZ-BELEGE-20261101.json). Interaktive Fortsetzung, kein neuer geplanter Lauf; operative Nutzung unbestätigt.
+
+
+## 02.11.2026
+
+Tageszwischenstand des bestehenden Morgenlaufs, etwa 08:00 Europe/Zurich. Historische Einträge bleiben erhalten; keine neue Frequenz oder Automation.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Tagesstand / Identität | Vier kanonische R47-Dateien frisch gelesen, heutige Reportgrenze vor den Abfragen geprüft und Shop sowie Metricool mit sechs Konten bestätigt | LuxeStyle luxestyle.ch mit CHF, Marke 6227837 und Europe/Zurich; keine Abweichung |
+| Planung | Die nächsten sieben Tage mit 22 Objekten und 29 Kanalzuständen, UUIDs, Texten, Medien-URLs und Terminen geprüft | Alle PENDING; 14 TikTok- und Pinterest-Fototermine neu extern beobachtet. Keine gleichen URL-/Caption-Kombinationen oder Terminkollisionen innerhalb eines Kanals. Bestehende sieben FB/IG-Termine und genehmigter Threads-Termin am 04.11. um 18:30 samt Original-JPEG und Register exakt erhalten; 0 eigene Socialwrites |
+| Kennzahlen | Sechs Definitionen und sechs kleine Datenabfragen für den 26.10.–01.11. einmalig gelesen | Instagram: 497 Views an 7/7 Tagen. Pinterest: 2978 Impressionen und 68 Interaktionen an 5/7 Tagen. TikTok: 160 Views an 6/7 Tagen. YouTube: 70 Views an 5/7 Tagen. Übrige Lücken unbekannt; keine kanalübergreifende Summe oder Verkaufsableitung |
+| Produkte | Zwei genaue ACTIVE-Produkte samt Varianten, CHF-Preisen, echten Bildern, Tags, Wächter und Storefront geprüft | Projektor CHF 34.90 und Organizer CHF 29.90 kaufbar; ohne Bestandstracking, mit CONTINUE und Menge 0, ohne Lieferzusage. Sechs HTTP-200-Belege und aktivierte Warenkorbbuttons, kein Warenkorbschreibzugriff |
+| Professioneller Master | Denselben 18-Sekunden-Master mit Aufnahme- und Schnittanschlussplan sowie Kontaktframe-Ankern für vier Takes konkretisiert | 30 begrenzte Dokumentchecks bestanden. Tatsächliche Originaltakes, Ausführung, Filmrechte, MP4 und Abnahme fehlen. Musik aktuell hashgleich; finale Rechte- und Hörabnahme offen. Kein Render oder Push. CJ-Helfer vorhanden, authentifizierte Laufzeit nicht belegt |
+| Klaviyo | Placed-Order-Metrik W7XTVD entdeckt, genau einen Flowreport gelesen und Flows, Capture sowie Servicevorlage eng geprüft | Welcome: 4 Zustellungen, 3 Öffnungen, 1 Klick und 0 zugeordnete Conversions. Post-Purchase: 2 Zustellungen, 0 Öffnungen, 0 Klicks und 0 zugeordnete Conversions je berichteter Nachricht. Tatsächlicher Recovery-Flow XEGbTB live, seine Leistung nicht angefragt und unbekannt. USD/CHF getrennt, Capture/Sync nicht durchgehend belegt; 0 operative Writes |
+| Verkaufsentwurf | Genau dieselben zwei Bestseller-Texte aus R43 frisch gegen Originalwerte und 10 öffentliche Produktlinks geprüft | Unverändert; genauer Vorher-/Nachher-Diff weiterhin zur Freigabe offen, kein Shopwrite. Bestehender Welcome-Service-Diff nur als Reviewbefund, keine zweite Aktion beantragt |
+| Gedächtnis / Grenzen | R48-Paket, Belege und Masterplan dauerhaft gespeichert; zwei Tasks fortgeführt | Alle 17 IDs und Historien, 15 andere Tasks sowie R47/R46-Websitequellen erhalten. Kauf-Watch beendet, keine Bestellabfrage. Keine Kundenansprache oder Änderungen an Ads, Rabatten, Budgets, Flows, DNS, Einstellungen oder Frequenz. Kenntnisnahme durch Claude unbekannt |
+
+[LUXESTYLE_LAUF_20261102] [Paket](LAUFPAKET-20261102-R48.md) · [Belege](LAUFBELEGE-20261102-R48.json) · [Masterplan](MASTER-STORYBOARD-20261102-R48.json). Tagesreports abgeschlossen; Folgeläufe nutzen diese Belege, soweit kein konkreter neuer Gegenprüfgrund entsteht.
