@@ -1,5 +1,17 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 02.11.2026, Revision 50
+
+[Kategoriequalität R50](KATEGORIEN-QUALITAET-20261102-R50.md) · [Exakte Änderungen und Prüfbelege](KATEGORIEN-QUALITAET-20261102-R50.json).
+
+Auf «noch besser» wurden vier Textfelder in Wohnen & Dekoration sowie Elektronik & Technik live überarbeitet: je eine kurze, konkrete Einleitung und eine passende Suchbeschreibung. Die ersten 8 ACTIVE-Produkte pro Kategorie und vier bestehende Linkziele wurden eng geprüft; daraus folgt keine Aussage zum Gesamtbestand. Die neuen Texte helfen bei der Auswahl nach Massen und Farben beziehungsweise nach Anschlüssen, Stromversorgung und Kompatibilität. Servicezusätze, bestehende Links und FAQ, Titel, Handle, SEO-Titel sowie die beobachtete Produktreihenfolge bleiben erhalten. Zwei Mutationen und 16 native Rücklesebedingungen; öffentliche Root-Quellen sowie vier Mobil- und Desktopansichten geprüft. Die native Vorvalidierung übersprang die Prüfung. Der CLI-Prüfer war wegen fehlender Assets nicht ausführbar; keine grüne Voll-CI.
+
+Der R49-Preisfilterbefund ist korrigiert: CHF{{amount}} steht in einer unsichtbaren HTML-Vorlage und wird korrekt in echte Beträge formatiert. 24 begrenzte Browserbedingungen auf 390/1440 px bestanden, auch mit einem Filter bis CHF 50. Kein Patch; die notwendige Vorlage und data-money-format bleiben erhalten.
+
+Wichtiger neuer Rollenstand: MAIN 213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». Der frühere MAIN 212971061639 und der bisherige Entwurf 212978598279 sind UNPUBLISHED. Keine eigene Theme-Veröffentlichung. Vor einer weiteren Übernahme den vollständigen aktuellen Diff zwischen MAIN und Entwurf prüfen. Die neuen Schrift- und Banneränderungen sowie alle belegten R47/R46-Funktionen erhalten; die alte Kopie nicht blind veröffentlichen. Bestehende Websitefreigabe und Connectorgrenzen bleiben erhalten. Keine erneute Freigabefrage oder neue Kopie. Aus der Rollen- und Teilprüfung keine vollständige Integration ableiten.
+
+Die R49-Bestsellertexte bleiben erledigt. Die heutigen R48/R49-Kennzahl-, Flow-, GA4- und GSC-Belege wurden nicht erneut abgefragt. Drei Aufgaben fortgeführt; die 14 anderen Aufgaben, alle 17 IDs und Historien bleiben erhalten. Versandgrenzen CHF 50/CHF 45, account.luxestyle.com.co, bestehende Befugnisse und Frequenz sowie der beendete Kauf-Watch bleiben erhalten. Keine Social-, Flow-, Ads-, Budget-, DNS-, Shopkonfigurations-, Robots- oder Trainingsänderung, keine Kundenansprache oder Installation. Claude-Einstieg R50; tatsächlicher Empfang unbekannt.
+
 ## Aktueller Stand – 02.11.2026, Revision 49
 
 [Google-/ChatGPT-Sichtbarkeit R49](SICHTBARKEIT-20261102-R49.md) · [Genaue Quellenmessung und Live-Rücklesebelege](SICHTBARKEIT-20261102-R49.json).
