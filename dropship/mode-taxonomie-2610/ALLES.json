@@ -388,7 +388,8 @@
     "(kostüm|cosplay|(^|[^a-zäöüß])verkleid|maskenball)",
     "(^|[^a-zäöüß])(stoffmasken?|mundschutz|gesichtsmaske|tactical|taktisch)",
     "(^|[^a-zäöüß])(body[- ]?chain)",
-    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)"
+    "(^|[^a-zäöüß])(umstand|schwanger|still(kleid|shirt|top|bh)|mutterschaft|maternity)",
+    "(^|[^a-zäöüß])(badeanzug|unterkleid)"
    ],
    "tags_muss_eines": [],
    "tags_nicht": [
@@ -543,6 +544,105 @@
      ],
      "titel_nicht": [],
      "treffer": 237
+    },
+    {
+     "handle": "damen-kleider-aline",
+     "titel": "A-Linien-Kleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(a-?linie|a-?linien)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-wickel",
+     "titel": "Wickelkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(wickel)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-traeger",
+     "titel": "Träger- & Neckholderkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(träger|neckholder|halterneck|spaghetti|bandeau)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-jeans",
+     "titel": "Jeans- & Denimkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(jeans|denim)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-leinen",
+     "titel": "Leinenkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(leinen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-plissee",
+     "titel": "Plisseekleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(plissee|plissé)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-figurbetont",
+     "titel": "Figurbetonte & Etuikleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(bodycon|figurbetont|enganliegend|bleistift|etui)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-ruesche",
+     "titel": "Rüschen- & Puffärmelkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(puffärmel|rüschen|volant)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-satin",
+     "titel": "Satin-, Seiden- & Chiffonkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(satin|seide|chiffon)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-samt",
+     "titel": "Samt- & Paillettenkleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(samt|paillett|glitzer|glitter|metallic)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-kleider-gemustert",
+     "titel": "Gepunktete & gestreifte Kleider",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(polka|gepunktet|tupfen|punkte|gestreift|streifen|karo|kariert)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
     }
    ],
    "unterfilter_vorgemerkt": [],
@@ -897,6 +997,42 @@
      ],
      "titel_nicht": [],
      "treffer": 65
+    },
+    {
+     "handle": "damen-jacken-trench",
+     "titel": "Trenchcoats",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(trench)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-jacken-stepp",
+     "titel": "Stepp- & Pufferjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(stepp|puffer|daunen)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-jacken-uebergang",
+     "titel": "Übergangs- & Bomberjacken",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(übergang|leichte|frühling|herbst|sommerjacke|bomber|baseball)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
+    },
+    {
+     "handle": "damen-jacken-cape",
+     "titel": "Capes & Ponchos",
+     "titel_muss": [
+      "(^|[^a-zäöüß])(cape|poncho)"
+     ],
+     "titel_nicht": [],
+     "treffer": 0
     }
    ],
    "unterfilter_vorgemerkt": [],
