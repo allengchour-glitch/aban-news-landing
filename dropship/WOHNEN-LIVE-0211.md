@@ -15,7 +15,7 @@ Auftrag des Besitzers 2.11.: «mach weiter mit wohnen und überall».
 
 ## Gut bewertete zuerst (`automation/bewertung_zuerst.mjs`)
 - Trockenlauf für alle Menü-Collections: 560 würden geändert (141 ohne bewertetes Produkt, 4 nicht auswertbar, 1 zu klein, 0 Fehler); Katalog: 56 529 aktive Produkte, 2 071 mit Bewertung, 2 010 mit ≥ 4 Sternen.
-- Probe an drei Kategorien (laufschuhe-running, pfannen-woks, led-streifen-lichterketten): frisch gelesen `MANUAL`, bewertete Produkte vorn, Seiten HTTP 200. Danach Lauf für alle Menü-Collections; Rückgängig: `BEST_SELLING=1 LIVE=1`.
+- Probe an drei Kategorien (laufschuhe-running, pfannen-woks, led-streifen-lichterketten): frisch gelesen `MANUAL`, bewertete Produkte vorn, Seiten HTTP 200. **Lauf für alle Menü-Collections (LIVE, `MENUE=1`): 560 geändert, 141 ohne bewertetes Produkt, 4 nicht auswertbar, 1 zu klein, 0 Fehler.** Stichprobe von 8 zufälligen Collections frisch gelesen: alle `MANUAL`, alle HTTP 200. Wirkung auf Verkäufe: unbekannt (nur 2 071 von 56 529 Produkten haben eine Bewertung). Neue Produkte landen hinten, darum periodisch wiederholen. Rückgängig: `BEST_SELLING=1 LIVE=1`.
 
 ## Offen
 - Banner und Kategorie-Bilder für die neuen Sammlungen (Gemini-Guthaben leer; Codex macht Banner).
