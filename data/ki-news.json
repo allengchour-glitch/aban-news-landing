@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-01T11:14:35Z",
+ "stand": "2026-11-02T12:20:40Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,68 +18,76 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "„Die Produktentwicklung ist etwas zutiefst Menschliches“: Apple-CEO äußert sich zu KI-Rückstand",
-   "u": "https://t3n.de/news/die-produktentwicklung-ist-etwas-zutiefst-menschliches-apple-ceo-aeussert-sich-zu-ki-rueckstand-1770975/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-01T10:09:24Z",
-   "s": "John Ternus steht erst seit Kurzem an der Spitze des iPhone-Herstellers. Die Kritik an mangelnden KI-Funktionen sieht er gelassen. Apple wolle die Technologie auf jeden Fall nutzen – aber nicht um jed…",
+   "t": "Straßenverkehr: KI soll Handy-Sünder automatisch erkennen",
+   "u": "https://www.golem.de/news/strassenverkehr-ki-soll-handy-suender-automatisch-erkennen-2611-214752.html",
+   "q": "Golem",
+   "d": "2026-11-02T12:00:02Z",
+   "s": "Bund und Länder unterstützen den Einsatz von Kameras, die Autofahrer mit Handy am Steuer per KI identifizieren. (Überwachung, Kameras)",
    "sprache": "de"
   },
   {
-   "t": "Mathe-Professor kapituliert: Warum KI-Hausaufgaben nicht mehr benotbar sind",
-   "u": "https://t3n.de/news/ki-mathe-hausaufgaben-benotung-universitaet-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-01T09:10:00Z",
-   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
+   "t": "KI-Agenten bauen Zivilisation in Minecraft auf und verlieren sich in Bürokratie",
+   "u": "https://www.heise.de/news/KI-Agenten-bauen-Zivilisation-in-Minecraft-auf-und-verlieren-sich-in-Buerokratie-11507972.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-02T11:54:00Z",
+   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt.",
    "sprache": "de"
   },
   {
-   "t": "Apple CEO says the company doesn’t ‘want to ship AI for AI’s sake’",
-   "u": "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/",
+   "t": "Digitalgipfel: Minister und Industrie hoffen auf KI",
+   "u": "https://www.heise.de/news/Digitalgipfel-Minister-und-Industrie-hoffen-auf-KI-11507882.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-02T11:51:00Z",
+   "s": "Zum Auftakt des Digitalgipfels der Bundesregierung in Berlin fordert der Bundesdigitalminister mehr KI-Offenheit – von Gesellschaft wie Unternehmen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Bundesregierung: Deutschland soll bis 2030 zur \"KI-Nation\" werden",
+   "u": "https://www.golem.de/news/bundesregierung-deutschland-soll-bis-2030-zur-ki-nation-werden-2611-214750.html",
+   "q": "Golem",
+   "d": "2026-11-02T11:36:01Z",
+   "s": "Wird Deutschland im KI-Wettbewerb mit den USA und China abgehängt? Die Bundesregierung sieht bei dem Thema einen starken Handlungsdruck. (Bundesregierung, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic verbietet Claude Nachbau von Games – doch die Regeln treffen auch legitime Projekte",
+   "u": "https://t3n.de/news/anthropic-claude-games-1771064/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-02T11:30:51Z",
+   "s": "Anthropic will verhindern, dass sich sein KI-Modell Claude weiter zum Nachbau von existierenden Games heranziehen lässt. Eine entsprechende Änderung im Systemprompt sorgt aber offenbar auch bei legiti…",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Agenten sollen Zivilisation in Minecraft aufbauen – und verlieren sich in Bürokratie",
+   "u": "https://t3n.de/news/ki-agenten-sollen-zivilisation-in-minecraft-aufbauen-und-verlieren-sich-in-buerokratie-1771070/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-02T10:31:46Z",
+   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt. weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Verhaltensscanner in Berlin: Verdrängung der Schwächsten",
+   "u": "https://netzpolitik.org/2026/verhaltensscanner-in-berlin-verdraengung-der-schwaechsten/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-02T09:49:52Z",
+   "s": "KI-gestützte Videoüberwachung in Berlin wird von verschiedenen Seiten verschieden gut angenommen. – CC-BY-NC-SA 4.0: netzpolitik.orgJetzt läuft die Videoüberwachung mit Verhaltensanalyse in Berlin dau…",
+   "sprache": "de"
+  },
+  {
+   "t": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+   "u": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
    "q": "TechCrunch AI",
-   "d": "2026-10-31T21:41:00Z",
-   "s": "Apple's new CEO defended the company's current position in the AI landscape.",
+   "d": "2026-11-01T21:55:23Z",
+   "s": "Data centers are deeply unpopular. But what if we called them something else?",
    "sprache": "en"
   },
   {
-   "t": "4 days left: How TechCrunch Founder Summit helps you make more useful connections to scale",
-   "u": "https://techcrunch.com/2026/10/31/4-days-left-how-techcrunch-founder-summit-helps-you-make-more-useful-connections-to-scale/",
+   "t": "AI can make tech CEOs’ lives easier. What about everyone else?",
+   "u": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
    "q": "TechCrunch AI",
-   "d": "2026-10-31T21:36:07Z",
-   "s": "On November 4 at Boston’s SoWa Power Station, get ready for a full day packed with meaningful networking opportunities, actionable insights, and connections that could change the trajectory of your id…",
+   "d": "2026-11-01T20:57:58Z",
+   "s": "On Equity, we discuss why tech CEO statements can seem so tone deaf.",
    "sprache": "en"
-  },
-  {
-   "t": "Haiku generiert: Googles Satelliten-KI-Rechner meldet sich aus dem Orbit",
-   "u": "https://www.golem.de/news/haiku-generiert-googles-satelliten-ki-rechner-meldet-sich-aus-dem-orbit-2610-214715.html",
-   "q": "Golem",
-   "d": "2026-10-31T14:41:02Z",
-   "s": "Googles experimenteller Satelliten-KI-Rechner ist online und funkt mit Bodenstationen. Die erste Aufgabe der KI an Bord: ein Gedicht über den Weltraum schreiben. (Satelliten, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Nasdaq: KI-Sorgen treiben Anleger aus Tech-Aktien",
-   "u": "https://www.golem.de/news/nasdaq-ki-sorgen-treiben-anleger-aus-tech-aktien-2610-214717.html",
-   "q": "Golem",
-   "d": "2026-10-31T13:38:01Z",
-   "s": "Der Technologie-Index Nasdaq 100 hat an Wert eingebüßt - gibt es erste Zweifel daran, ob sich die Investitionen in künstliche Intelligenz wirklich lohnen werden? (KI, Intel)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: Product Owner Days: Der Launch ist erst der Anfang",
-   "u": "https://www.heise.de/news/Product-Owner-Days-Der-Launch-ist-erst-der-Anfang-11503479.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-31T12:00:00Z",
-   "s": "Auf der Konferenz am 10. und 11. März 2027 behandeln Expertinnen und Experten die neuesten Methoden rund um Themen wie Product Ownership, KI und mehr.",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: iX-Workshop: Multiagentensysteme entwickeln und in eigene Software integrieren",
-   "u": "https://www.heise.de/news/iX-Workshop-Multiagentensysteme-entwickeln-und-in-eigene-Software-integrieren-11480248.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-31T09:00:00Z",
-   "s": "Üben Sie direkt am Code, wie Sie aus spezialisierten KI-Agenten ein eigenes Multiagentensystem aufbauen, das komplexe Aufgaben automatisiert erledigen kann.",
-   "sprache": "de"
   },
   {
    "t": "Transparenzbericht 3. Quartal 2026: Unsere Einnahmen und Ausgaben und Druck im Kessel",
@@ -88,14 +96,6 @@
    "d": "2026-10-31T07:34:23Z",
    "s": "La Gare Saint-Lazare, le train de Normandie (1877) – Gemeinfrei: Claude MonetAuf dem politischen Druckanzeiger klettert der Zeiger stetig nach oben. Druck erzeugt bekanntlich Gegendruck. Vor allem jun…",
    "sprache": "de"
-  },
-  {
-   "t": "nemotron-halloween",
-   "u": "https://huggingface.co/blog/nvidia/nemotron-halloween",
-   "q": "Hugging Face",
-   "d": "2026-10-30T17:57:24Z",
-   "s": "",
-   "sprache": "en"
   }
  ]
 }
