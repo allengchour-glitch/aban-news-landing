@@ -11,8 +11,11 @@ Auftrag Besitzer: «schau ob es bilder fehlen, mache das auch rein bei jeder ein
 **Offen:** Beispiele mit aufgelegtem Design (Printful v2 Mockup-Tasks), Bilder je Farbvariante, T-Shirt ohne Farbauswahl.
 Unbekannt: Wirkung auf Verkäufe.
 
-## Nachtrag: Beispiele mit Design (2.11., Printful-Mockup-Generator)
-Printfuls Katalog-API liefert nur leere Produktfotos (`basewhitebg`); die Fotos mit fertigem Beispieldesign gibt es nur auf Printfuls Webseite. Die zu kopieren ist urheberrechtlich unklar (fremde Motive) und zeigt Designs, die Kundinnen nicht kaufen können. Darum: Printfuls eigener Mockup-Generator (`/v2/mockup-tasks`) mit **eigenem, lizenzfreiem Beispieldesign** (`beispieldesign.png`, Farbkreis + «Dein Design»).
-**Live (GEMESSEN, frisch gelesen):** 12 Produkte, 141 Medien insgesamt, 0 nicht `READY`; Modell-, Lifestyle- und Flachbilder, T-Shirts auch in Schwarz/Marine/Weiss.
-**Bewusst nicht gesetzt:** alle Allover-Produkte (Leggings, Hoodie, Jogger, Badeanzug …) und Poster: das 1:1-Design wird abgeschnitten, sieht falsch aus; Magnet und Strandtuch (Design kaum sichtbar). Dafür bräuchte es je Schnittteil ein passendes Design.
-**Sterne:** Das Judge.me-Widget ist auf den Seiten eingebaut, blendet aber ohne echte Bewertung aus (`data-number-of-reviews="0"`). Keine erfundenen Bewertungen (UWG); Sterne erscheinen nach echten Käufen und Bewertungsmails.
+## Nachtrag (2.11.): Original-Galeriefotos von Printfuls Webseite statt eigener Mockups
+Besitzer: «das bild sieht scheisse aus, nimm originale bilder wie printful». Die selbst erzeugten Mockups (Farbkreis-Beispieldesign) sind **wieder entfernt** (43 Medien, Alt-Text «– Beispiel mit Design»).
+Stattdessen: die Galeriebilder der Printful-Produktseiten (Modelle, Lifestyle, Detail, mit fertigen Beispieldesigns; Dateien `variant-image*_l` auf `files.cdn.printful.com`), per Playwright von den öffentlichen Seiten gelesen, Seiten-Zuordnung in `pod-bilder-0211/map.json`.
+**Live (GEMESSEN, frisch gelesen):** 25 Produkte, 117 neue Bilder, danach 335 Medien auf diesen Produkten, 0 nicht `READY`. Hoodie-Seite per Screenshot geprüft.
+**Aussortiert (Sichtprüfung):** Verpackungsbild mit Text, Grafiken mit Symbol-Beschriftung, «Your logo here»-Etikett.
+**Nicht gesetzt:** iPhone-/Samsung-Hüllen (Seiten nicht zugeordnet), Magnet, Strandtuch, Notizbuch, Aufkleber, Bügeltransfer (Printful-Seite nicht gefunden).
+**Urheberrecht:** Die Fotos stammen von Printfuls Webseite (Beispielmotive Dritter); Besitzer hat die Übernahme am 2.11. ausdrücklich verlangt. Printfuls Nutzungsbedingungen für diese Galeriebilder sind ungeprüft (unbekannt).
+**Sterne:** Das Judge.me-Widget blendet ohne echte Bewertung aus (`data-number-of-reviews="0"`). Keine erfundenen Bewertungen (UWG).
