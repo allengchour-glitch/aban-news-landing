@@ -1,0 +1,1309 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-02T22:26:30.998714+00:00",
+  "brand": "luxestyle.ch",
+  "request": "fix",
+  "scope": "Two confirmed targeted Shopify metadata writes; four products inspected, no broad catalogue query, no Merchant write.",
+  "diff": {
+    "tagChange": {
+      "id": "gid://shopify/Product/15470027997569",
+      "before": [
+        "bild-ok",
+        "bildmass-ok-0907",
+        "ch-lager",
+        "dropship",
+        "fortura",
+        "neu",
+        "schweiz-versand"
+      ],
+      "add": [
+        "compliance-pruefen"
+      ],
+      "after": [
+        "bild-ok",
+        "bildmass-ok-0907",
+        "ch-lager",
+        "compliance-pruefen",
+        "dropship",
+        "fortura",
+        "neu",
+        "schweiz-versand"
+      ],
+      "reason": "Exact owner CSV marked this table-party item Explosives in FR/CH across all three listed placements. Temporary specific review marker, not a confirmed legal/product finding or a Google fix.",
+      "effect": "Current guard blocks new non-store selections and alternative RSS inclusion; does not unpublish existing channels or posts. Online Store remains allowed."
+    },
+    "altChange": {
+      "productId": "gid://shopify/Product/16606127161735",
+      "fileId": "gid://shopify/MediaImage/77447182287239",
+      "before": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer – Bild 2 | LuxeStyle",
+      "after": "Ventileinsatz-Schlüssel mit rotem Griff und gegabelter Spitze",
+      "basis": "Actual existing photo viewed. No material, universal compatibility, weight, safety or pack contents claimed.",
+      "imageBytesChanged": false
+    },
+    "unchanged": [
+      "prices",
+      "SKUs",
+      "variant IDs",
+      "status",
+      "inventory",
+      "product titles",
+      "descriptions",
+      "image bytes/order",
+      "public URLs",
+      "Google exclusions/publications",
+      "other product tags"
+    ]
+  },
+  "nativeChecks": {
+    "15470027997569": {
+      "allOtherBuiltinFieldsExactlyPreserved": true,
+      "onlyOneAddedTag": true
+    },
+    "16606127161735": {
+      "allOtherBuiltinFieldsExactlyPreserved": true,
+      "onlyFirstAltChanged": true
+    }
+  },
+  "publicReadback": [
+    {
+      "name": "party-public.json",
+      "url": "https://luxestyle.ch/products/maxi-partytime-tischbombe-fga52477.json",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 3427,
+      "sha256": "a19191f9fe5d1aadf26250dd60e3d2ca4c3941bf652f0fd7d94bd77555423167",
+      "productId": 15470027997569,
+      "tags": "bild-ok, bildmass-ok-0907, ch-lager, compliance-pruefen, dropship, fortura, neu, schweiz-versand",
+      "firstImage": {
+        "id": 82906967835009,
+        "product_id": 15470027997569,
+        "position": 1,
+        "created_at": "2026-07-24T00:05:40+02:00",
+        "updated_at": "2026-07-24T00:05:42+02:00",
+        "alt": "Maxi Partytime Tischbombe – Bild 1 | LuxeStyle",
+        "width": 597,
+        "height": 600,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52477_1_f6b71e20-c930-489e-ae67-50549d55616d.jpg?v=1784844342",
+        "variant_ids": []
+      }
+    },
+    {
+      "name": "valve-public.json",
+      "url": "https://luxestyle.ch/products/tubenless-reifenventil-schlussel-aus-kupfer-832000.json",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 4736,
+      "sha256": "48b5f2db52fecbf0e727db6b0780619ba80a4e42008189036771572d20bf81d1",
+      "productId": 16606127161735,
+      "tags": "cj-real, heimwerken, neu, neuheit, sort-velo-werkzeug-reparatur, sort-werkzeug-fahrzeug, werkzeug",
+      "firstImage": {
+        "id": 100708233707911,
+        "product_id": 16606127161735,
+        "position": 1,
+        "created_at": "2026-10-04T03:25:05+02:00",
+        "updated_at": "2026-10-04T03:25:07+02:00",
+        "alt": "Ventileinsatz-Schlüssel mit rotem Griff und gegabelter Spitze",
+        "width": 1000,
+        "height": 1000,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1616306346952.jpg?v=1791077107",
+        "variant_ids": []
+      }
+    },
+    {
+      "name": "valve-photo.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1616306346952.jpg?v=1791077107",
+      "http": 200,
+      "contentType": "image/jpeg",
+      "bytes": 33520,
+      "sha256": "9ed2ac821267c718ff2d8e609f2d79f8eed0d0f9f43fcaa9dd1ef2b192533c14"
+    }
+  ],
+  "writes": {
+    "alt": {
+      "data": {
+        "fileUpdate": {
+          "files": [
+            {
+              "id": "gid://shopify/MediaImage/77447182287239",
+              "alt": "Ventileinsatz-Schlüssel mit rotem Griff und gegabelter Spitze"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "tag": {
+      "data": {
+        "tagsAdd": {
+          "node": {
+            "id": "gid://shopify/Product/15470027997569"
+          },
+          "userErrors": []
+        }
+      }
+    }
+  },
+  "sourceSnapshotSha256": {
+    "products/BEFORE-15470027997569.json": "2d2c0258374e58f0d1c4df4196ae0641fa934c83f5f22172d4a4a456fde42a32",
+    "products/AFTER-15470027997569.json": "9be37164463cc7805109e9dd721d132c89508330c22db2759f41e38e67f51b7c",
+    "products/BEFORE-16606127161735.json": "4938594aaed9acc68751bb56aa8b321004712b1fabc73577de02140c2e92eaf4",
+    "products/AFTER-16606127161735.json": "6c8da00418b083e14671591232a387e906a189551e28a15717adaf33e66e5fcc"
+  },
+  "guardCounterprobe": {
+    "checkedAtUtc": "2026-11-02T22:21:27.103Z",
+    "scope": "Pure local before/after calls of existing current-main helpers using R62 dated product tags. Example channel names illustrate the helper; not a live missing-publication list or new test suite.",
+    "productId": "gid://shopify/Product/15470027997569",
+    "sourceDate": "R62 2026-11-02; root must freshly re-read product before mutation",
+    "tagAdded": "compliance-pruefen",
+    "before": {
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0907",
+        "ch-lager",
+        "dropship",
+        "fortura",
+        "neu",
+        "schweiz-versand"
+      ],
+      "sperrTags": [],
+      "channels": {
+        "erlaubt": [
+          {
+            "name": "Online Store"
+          },
+          {
+            "name": "Google & YouTube"
+          },
+          {
+            "name": "Instagram"
+          },
+          {
+            "name": "Facebook"
+          },
+          {
+            "name": "TikTok"
+          },
+          {
+            "name": "Pinterest"
+          },
+          {
+            "name": "YouTube"
+          },
+          {
+            "name": "Threads"
+          },
+          {
+            "name": "Shop"
+          }
+        ],
+        "blockiert": [],
+        "sperrTags": []
+      },
+      "feedDecision": {
+        "ok": true,
+        "grund": "im Feed"
+      },
+      "wouldEmitRssItem": true
+    },
+    "after": {
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0907",
+        "ch-lager",
+        "dropship",
+        "fortura",
+        "neu",
+        "schweiz-versand",
+        "compliance-pruefen"
+      ],
+      "sperrTags": [
+        "compliance-pruefen"
+      ],
+      "channels": {
+        "erlaubt": [
+          {
+            "name": "Online Store"
+          }
+        ],
+        "blockiert": [
+          {
+            "name": "Google & YouTube"
+          },
+          {
+            "name": "Instagram"
+          },
+          {
+            "name": "Facebook"
+          },
+          {
+            "name": "TikTok"
+          },
+          {
+            "name": "Pinterest"
+          },
+          {
+            "name": "YouTube"
+          },
+          {
+            "name": "Threads"
+          },
+          {
+            "name": "Shop"
+          }
+        ],
+        "sperrTags": [
+          "compliance-pruefen"
+        ]
+      },
+      "feedDecision": {
+        "ok": false,
+        "grund": "Sperrtag: compliance-pruefen"
+      },
+      "wouldEmitRssItem": false
+    },
+    "conclusion": {
+      "blocksFutureNewNonStoreChannelPreparation": true,
+      "onlineStoreRemainsAllowed": true,
+      "alsoBlocksAlternateRssItem": true,
+      "doesNotUnpublishExistingPostsOrShopifyChannels": true,
+      "doesNotFixOrReapproveGoogleMerchantItem": true
+    },
+    "ownActions": {
+      "apiCalls": 0,
+      "mutations": 0,
+      "publisherCalls": 0,
+      "feedFileWrites": 0,
+      "generatedNewTestSuite": false,
+      "productionExecution": false
+    }
+  },
+  "imageCandidates": {
+    "scope": "Two exact R59 overlay targets freshly read. No mass pagination, no Merchant request, no edits, uploads, changes or third product query.",
+    "checkedAtUtc": "2026-11-02T22:17:03.419089+00:00",
+    "productReads": 2,
+    "imagesVisuallyInspected": 8,
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15448965546369",
+        "variantId": "gid://shopify/ProductVariant/55878388580737",
+        "title": "Zitruspresse aus Edelstahl",
+        "sku": "CJ-2064637033193582594",
+        "priceChf": "18.90",
+        "status": "ACTIVE",
+        "tags": [
+          "aufbewahrung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "organizer",
+          "rueckhol-0907",
+          "sort-kuechengadgets",
+          "sort-kuechenhelfer",
+          "wohnen"
+        ],
+        "inventory": 0,
+        "nativeSnapshotSha256": "5333ead1b05061df0c1371ee0f4da690d47ca07226c805c564466bee632bc1ee",
+        "exportOfferId": "shopify_ZZ_15448965546369_55878388580737",
+        "exactR59Contexts": [
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15448965546369_55878388580737",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Dynamic remarketing",
+            "Title": "Zitruspresse aus Edelstahl | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15448965546369_55878388580737",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Free listings",
+            "Title": "Zitruspresse aus Edelstahl | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15448965546369_55878388580737",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Shopping ads",
+            "Title": "Zitruspresse aus Edelstahl | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          }
+        ],
+        "currentFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c59e61f6-c96d-4bca-abeb-d04daa1774fd.png?v=1783198366",
+        "currentMediaOrder": [
+          "gid://shopify/MediaImage/69862767952257",
+          "gid://shopify/MediaImage/69862767886721",
+          "gid://shopify/MediaImage/69862767919489",
+          "gid://shopify/MediaImage/69862767985025"
+        ],
+        "images": [
+          {
+            "productId": "15448965546369",
+            "index": 1,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c59e61f6-c96d-4bca-abeb-d04daa1774fd.png?v=1783198366",
+            "altText": "Zitruspresse aus Edelstahl – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69862767952257",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15448965546369-1.jpg",
+            "http": 200,
+            "contentType": "image/png",
+            "sha256": "b6f09e9df75934daf01f5bef33265710aa32cf7bdb471ead00870cb819cd3b0c",
+            "pixels": [
+              1000,
+              1000
+            ],
+            "format": "PNG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15448965546369",
+            "index": 2,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f2e3d574-7bcf-4a9b-b857-0ff7afbbd342.png?v=1783198366",
+            "altText": "Zitruspresse aus Edelstahl – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69862767886721",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15448965546369-2.jpg",
+            "http": 200,
+            "contentType": "image/png",
+            "sha256": "338f266b8ada216e81a70bae4905258032d535d10ec35eaab3d8b42500a0437d",
+            "pixels": [
+              1116,
+              1000
+            ],
+            "format": "PNG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15448965546369",
+            "index": 3,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7f43bb8a-38af-4b2a-a64c-d15b03c8fb4b.png?v=1783198366",
+            "altText": "Zitruspresse aus Edelstahl – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69862767919489",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15448965546369-3.jpg",
+            "http": 200,
+            "contentType": "image/png",
+            "sha256": "e3b60db2c2f96c014fb9317f591165c114566b60c4c7f4792e8e9cdc3a666b27",
+            "pixels": [
+              1107,
+              1000
+            ],
+            "format": "PNG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15448965546369",
+            "index": 4,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99448a02-af82-429b-86ee-65e1daaa84a0.png?v=1783198367",
+            "altText": "Zitruspresse aus Edelstahl – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69862767985025",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15448965546369-4.jpg",
+            "http": 200,
+            "contentType": "image/png",
+            "sha256": "a5fa2591955852be1f672ed05b31cc8312454641e0c6859201b457ef1f208a2f",
+            "pixels": [
+              1001,
+              1000
+            ],
+            "format": "PNG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          }
+        ],
+        "conclusion": "No clean existing same-model gallery alternative. No safe reorder/variant-media change proposed.",
+        "proposedDiff": null
+      },
+      {
+        "productId": "gid://shopify/Product/15508716224897",
+        "variantId": "gid://shopify/ProductVariant/56152234819969",
+        "title": "Multifunktionale SLR-Kameratasche",
+        "sku": "CJ-6EB70061-2EBF-4F91-97D3-7D1CB95505AB",
+        "priceChf": "24.90",
+        "status": "ACTIVE",
+        "tags": [
+          "accessoire",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "kat-taschen",
+          "kategorie-tasche",
+          "sort-kamerataschen-foto-zubehoer",
+          "tasche",
+          "taschen"
+        ],
+        "inventory": 0,
+        "nativeSnapshotSha256": "6584e531b4b6098dd6592b8a31cd92fcd3f00b5087d196d0b7de222fb66059da",
+        "exportOfferId": "shopify_ZZ_15508716224897_56152234819969",
+        "exactR59Contexts": [
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Liechtenstein",
+            "Traffic type": "Dynamic remarketing",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Liechtenstein",
+            "Traffic type": "Free listings",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Liechtenstein",
+            "Traffic type": "Shopping ads",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Dynamic remarketing",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Free listings",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "de",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Shopping ads",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Dynamic remarketing",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Free listings",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          },
+          {
+            "Channels": "ONLINE",
+            "Language": "fr",
+            "Feed label": "CHF_99383214465",
+            "Item ID": "shopify_ZZ_15508716224897_56152234819969",
+            "Issue title": "Promotional overlay on image",
+            "Country": "Switzerland",
+            "Traffic type": "Shopping ads",
+            "Title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+            "source_files": "product_issues_2026-11-02_12-43-25.csv",
+            "execution_state": "REVIEW_ONLY_NO_FEED_UPLOAD_NO_WRITE"
+          }
+        ],
+        "currentFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2030721434929.jpg?v=1787321958",
+        "currentMediaOrder": [
+          "gid://shopify/MediaImage/70618242187649",
+          "gid://shopify/MediaImage/70618242253185",
+          "gid://shopify/MediaImage/70618242285953",
+          "gid://shopify/MediaImage/70618242318721"
+        ],
+        "images": [
+          {
+            "productId": "15508716224897",
+            "index": 1,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2030721434929.jpg?v=1787321958",
+            "altText": "Multifunktionale SLR-Kameratasche | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70618242187649",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15508716224897-1.jpg",
+            "http": 200,
+            "contentType": "image/jpeg",
+            "sha256": "0882a918219967ec7b86bf1eef795685eac843516cd91f5b9bc0358ea8aa3245",
+            "pixels": [
+              1000,
+              1000
+            ],
+            "format": "JPEG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15508716224897",
+            "index": 2,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1127951266284.jpg?v=1787321959",
+            "altText": "Multifunktionale SLR-Kameratasche – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70618242253185",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15508716224897-2.jpg",
+            "http": 200,
+            "contentType": "image/jpeg",
+            "sha256": "251a3aaeb02fba405fa02a09ed85aaea479c8ee4c010d937ac0378ddd1362c89",
+            "pixels": [
+              1000,
+              1000
+            ],
+            "format": "JPEG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15508716224897",
+            "index": 3,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5421012964977.jpg?v=1787321959",
+            "altText": "Multifunktionale SLR-Kameratasche – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70618242285953",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15508716224897-3.jpg",
+            "http": 200,
+            "contentType": "image/jpeg",
+            "sha256": "d80c5772b207242e31f323b9b725d92c55b4fda19a3a5b15625f9f5aba5f197e",
+            "pixels": [
+              1000,
+              1000
+            ],
+            "format": "JPEG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          },
+          {
+            "productId": "15508716224897",
+            "index": 4,
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8719521366921.jpg?v=1787321959",
+            "altText": "Multifunktionale SLR-Kameratasche – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/70618242318721",
+            "path": "/workspace/luxestyle-review/merchant-fix-20261102-r63/images/15508716224897-4.jpg",
+            "http": 200,
+            "contentType": "image/jpeg",
+            "sha256": "5c2895297422d26a1ceaa107880e8589ee4a51104043ca8a1ff361fd64d63775",
+            "pixels": [
+              1000,
+              1000
+            ],
+            "format": "JPEG",
+            "visuallyInspected": true,
+            "cleanReplacement": false
+          }
+        ],
+        "conclusion": "No clean existing same-model gallery alternative. No safe reorder/variant-media change proposed.",
+        "proposedDiff": null
+      }
+    ],
+    "observations": {
+      "15448965546369": [
+        "Current main: multi-product collage, red 2x and Lemon Orange Squeezer text.",
+        "Other images: dimension/large-capacity text; detailed benefits text; instruction/check-cross collage. All have overlays.",
+        "rueckhol-0907 preserved; no Social preparation.",
+        "2x in current image is not independently established pack scope; do not imply one/two units from title alone."
+      ],
+      "15508716224897": [
+        "Current main: dimension arrows and waterproof-fabric marketing overlay.",
+        "Other images: quick-access text; breathable-strap/adjustable-chest claims; storage collage with text. All have overlays.",
+        "A changed camera/model/included equipment claim cannot be inferred from collages."
+      ]
+    },
+    "ownActions": {
+      "shopifyWrites": 0,
+      "merchantWrites": 0,
+      "newImages": 0,
+      "imageEdits": 0,
+      "reorders": 0,
+      "variantMediaChanges": 0,
+      "socialPosts": 0
+    },
+    "nextStep": "Obtain a real clean photo of exact model/colour and pack with commercial rights, or have root choose a different narrow product set. Existing alternate pictures are not a proven fix."
+  },
+  "accessReview": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-02T22:17:26.216674+00:00",
+    "scope": "Bounded read-only Merchant access/current PR/main/run/helper review; no get_data, secrets, writer execution or external state changes.",
+    "merchantConnector": {
+      "checkedAtUtc": "2026-11-02T22:17:25.423Z",
+      "connector": {
+        "id": "google_merchant",
+        "accounts": [
+          {
+            "id": "5797470070",
+            "name": "LuxeStyle CH"
+          }
+        ]
+      },
+      "listedActions": [],
+      "dataRequests": 0,
+      "writeRequests": 0
+    },
+    "pr": {
+      "number": 2830,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "merged_at": null,
+      "merge_commit_sha": "9327bd686c7783a5747a3dd5d6683d94bfea11ff",
+      "html_url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2830",
+      "updated_at": "2026-11-02T21:26:18Z",
+      "mergeable": null,
+      "mergeable_state": "unknown",
+      "headSha": "ecdc456f1109680b2bcb1584171ee075ed8bf548",
+      "headRef": "codex/merchant-feed-auth-20261102",
+      "baseSha": "83262a155df74711aaa0151ab8a7f7fc8dea07c1",
+      "mainSha": "eac927cc6047b5d23bc1736374de56a33f8b173d"
+    },
+    "mainFiles": [
+      {
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "sha": "765c75c8121d5697a25c8200e7366f900718769b",
+        "bytes": 8576,
+        "sha256": "ae29f0368f1fba82f4198c20e33baa970f438aa4292878fd637ab0a324b9fea4"
+      },
+      {
+        "path": "automation/autopilot/merchant_feed_auth_test.mjs",
+        "state": "unknown_or_missing",
+        "stderr": "gh: Not Found (HTTP 404)\n"
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "sha": "979c484b6e144c4f428f343a964cf664d4573a86",
+        "bytes": 15878,
+        "sha256": "c230d87af87ff7a5ade737607d80860983f550b276b21310af03f9e529feb676"
+      }
+    ],
+    "prFiles": [
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "sha": "0117ca21e0f9c643db8e25cf983fbf3feee7b6ae",
+        "sha256": "d475007fa3013bc3c35e9e5dde1d819c271e6dd4884e394884d6dff85a4260ee"
+      },
+      {
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "sha": "ccc75c554cb8ec2e1a6bd9a41769f3ba34a5fb8c",
+        "sha256": "2e5be19bd90badd7d39bdfc3ea44d489bc1ee5e8f77ebe0d7d52fd2181ca2695"
+      },
+      {
+        "path": "automation/autopilot/merchant_feed_auth_test.mjs",
+        "sha": "f910a5edb26b6cc4130891c96ef0c2d59b11b03e",
+        "sha256": "30368bb7272564e461a6b6807c1a97305c45238d73c4b5dcd9973d0909d0de59"
+      }
+    ],
+    "authSourceChecks": {
+      "mainStillSelectsStaticTokenFirst": true,
+      "mainSourceExactlyMatchesR58Snapshot": true,
+      "codeAfterTokenUnchangedBetweenCurrentMainAndPr": true,
+      "mainTestFile404": true,
+      "currentMergeability": "unknown; response null/unknown, not retried",
+      "freshProductionSuccess": false
+    },
+    "existingRuns": [
+      {
+        "id": 41443439624,
+        "path": ".github/workflows/tages-update.yml",
+        "workflowId": 365504673,
+        "createdAt": "2026-11-02T12:17:13Z",
+        "updatedAt": "2026-11-02T12:30:20Z",
+        "event": "schedule",
+        "headSha": "fe2c3e60fc27d749a4b71af9ce44b408ba8672b8",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/41443439624",
+        "merchantJobs": [
+          {
+            "id": 125272328470,
+            "status": "completed",
+            "conclusion": "failure",
+            "startedAt": "2026-11-02T12:20:58Z",
+            "completedAt": "2026-11-02T12:22:19Z",
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Feed erzeugen",
+                "status": "completed",
+                "conclusion": "failure"
+              },
+              {
+                "name": "Feed pruefen (kein kaputter Feed darf raus)",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Feed committen (falls geaendert)",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Post Run actions/setup-node@v4",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 41300912025,
+        "path": ".github/workflows/tages-update.yml",
+        "workflowId": 365504673,
+        "createdAt": "2026-11-01T11:13:15Z",
+        "updatedAt": "2026-11-01T11:21:35Z",
+        "event": "schedule",
+        "headSha": "12e9c45e164654d7dbe0b6550bc59385b79ae2ae",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/41300912025",
+        "merchantJobs": [
+          {
+            "id": 124831760613,
+            "status": "completed",
+            "conclusion": "failure",
+            "startedAt": "2026-11-01T11:14:49Z",
+            "completedAt": "2026-11-01T11:16:08Z",
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Feed erzeugen",
+                "status": "completed",
+                "conclusion": "failure"
+              },
+              {
+                "name": "Feed pruefen (kein kaputter Feed darf raus)",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Feed committen (falls geaendert)",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Post Run actions/setup-node@v4",
+                "status": "completed",
+                "conclusion": "skipped"
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "helpersReviewed": [
+      {
+        "path": "automation/autopilot/merchant_feed.mjs",
+        "purpose": "Produces alternate RSS from Shopify; g:id=handle and first variant. Not an isolated Merchant API product/source writer. Active mapping to uploaded ProductID_SKU/shopify_ZZ IDs remains unverified."
+      },
+      {
+        "path": "automation/lib/gmc_feed_item.mjs",
+        "purpose": "Builds feed image_link from p.bild. Does not read actual submitted Merchant source or credentials."
+      },
+      {
+        "path": "automation/gmc_audit.mjs",
+        "purpose": "Broad Shopify channel/exclusion audit; not executed."
+      },
+      {
+        "path": "automation/gmc_ausschluss_aufraeumen.mjs",
+        "purpose": "Deletes Google exclusion metafields. Not suitable as a blind Merchant fix; not executed."
+      },
+      {
+        "path": "automation/gmc_schaufenster.mjs",
+        "purpose": "Can publish/unpublish Shopify Google publication with manifest, explicit gate, and full-catalogue/order prerequisites. Does not edit raw Merchant offer fields. Not run or treated as blanket permission; broad reads and channel removals exceed this bounded access inquiry."
+      },
+      {
+        "path": ".github/workflows/tages-update.yml",
+        "purpose": "Existing scheduled merchant-feed generator job; current workflow only read. Existing declared binding names read as code, no values accessed; no dispatch/rerun."
+      }
+    ],
+    "conclusion": {
+      "verifiedAvailableMerchantWriteAction": false,
+      "legitimateIsolatedMerchantRawFieldWriterVerified": false,
+      "doNotInferNoConnector": true,
+      "actualBlocker": "Current connected Merchant MCP exposes no writer, and known single-item reads timed out previously. Exact active raw source/URL is still unbound; reviewed repo routes only alter Shopify publication or produce an alternate unbound RSS. No authenticated isolated raw Merchant/source editor verified.",
+      "authPrRemainsDraftNotDeployed": true,
+      "latestExistingMerchantRunFailure": true,
+      "noNewSuccessfulRunObservedInLastTwoRuns": true,
+      "notEvidenceOfGoogleFix": true
+    },
+    "ownActions": {
+      "dataRequests": 0,
+      "writes": 0,
+      "workflowDispatches": 0,
+      "merges": 0,
+      "installs": 0,
+      "reports": 0,
+      "customerOrReviewerMessages": 0
+    }
+  },
+  "mergeTriggerReview": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-02T22:20:31.335186+00:00",
+    "scope": "Additional bounded read-only PR2830 mergeability, checks, relevant workflow triggers and transitive helper inspection. Not an exhaustive review of every repository workflow or external deployment app.",
+    "checks": {
+      "pulls/2830": {
+        "returnCode": 0,
+        "value": {
+          "state": "open",
+          "draft": true,
+          "mergeable": true,
+          "mergeable_state": "unstable",
+          "merged": false,
+          "merge_commit_sha": "9327bd686c7783a5747a3dd5d6683d94bfea11ff",
+          "rebaseable": true,
+          "updated_at": "2026-11-02T21:26:18Z",
+          "head": "ecdc456f1109680b2bcb1584171ee075ed8bf548"
+        }
+      },
+      "commits/ecdc456f1109680b2bcb1584171ee075ed8bf548/check-runs?per_page=100": {
+        "returnCode": 0,
+        "value": {
+          "total": 7,
+          "checks": [
+            {
+              "name": "Workers Builds: aban-a",
+              "status": "completed",
+              "conclusion": "failure",
+              "started_at": "2026-11-02T20:17:08Z",
+              "completed_at": "2026-11-02T20:17:08Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/runs/125525740417"
+            },
+            {
+              "name": "Workers Builds: ki-verzeichnis",
+              "status": "completed",
+              "conclusion": "failure",
+              "started_at": "2026-11-02T20:14:17Z",
+              "completed_at": "2026-11-02T20:14:17Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/runs/125524224958"
+            },
+            {
+              "name": "Workers Builds: aban-news-landing",
+              "status": "completed",
+              "conclusion": "failure",
+              "started_at": "2026-11-02T20:11:14Z",
+              "completed_at": "2026-11-02T20:11:14Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/runs/125522590690"
+            },
+            {
+              "name": "Deploy to Cloudflare Pages",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-11-02T20:08:41Z",
+              "completed_at": "2026-11-02T20:08:44Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/41516471756/job/125521199718"
+            },
+            {
+              "name": "tests",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-11-02T20:08:41Z",
+              "completed_at": "2026-11-02T20:12:42Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/41516471737/job/125521199210"
+            },
+            {
+              "name": "Pre-deploy validation",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "started_at": "2026-11-02T20:08:41Z",
+              "completed_at": "2026-11-02T20:17:37Z",
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/41516471709/job/125521198548"
+            },
+            {
+              "name": "Cloudflare Pages: foerder-radar",
+              "status": "in_progress",
+              "conclusion": null,
+              "started_at": "2026-11-02T20:08:01Z",
+              "completed_at": null,
+              "html_url": "https://github.com/allengchour-glitch/aban-news-landing/runs/125520861303"
+            }
+          ]
+        }
+      },
+      "commits/ecdc456f1109680b2bcb1584171ee075ed8bf548/status": {
+        "returnCode": 0,
+        "value": {
+          "state": "pending",
+          "total": 0,
+          "statuses": []
+        }
+      },
+      "branches/main": {
+        "returnCode": 0,
+        "value": {
+          "name": "main",
+          "protected": false,
+          "sha": "eac927cc6047b5d23bc1736374de56a33f8b173d",
+          "protection": {
+            "enabled": false,
+            "required_status_checks": {
+              "enforcement_level": "off",
+              "contexts": [],
+              "checks": []
+            }
+          }
+        }
+      },
+      "branches/main/protection": {
+        "returnCode": 1,
+        "value": {
+          "error": "gh: Resource not accessible by integration (HTTP 403)\n"
+        }
+      },
+      "rules/branches/main": {
+        "returnCode": 0,
+        "value": []
+      }
+    },
+    "directDeployGate": {
+      "actions/jobs/125521199718": {
+        "returnCode": 0,
+        "value": {
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Deploy (wrangler pages deploy)",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Hinweis, wenn nicht scharfgeschaltet",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      },
+      "actions/variables/CF_DIRECT_DEPLOY": {
+        "returnCode": 1,
+        "value": {
+          "error": "gh: Resource not accessible by integration (HTTP 403)\n"
+        }
+      },
+      "actions/variables/CF_PAGES_PROJECT": {
+        "returnCode": 1,
+        "value": {
+          "error": "gh: Resource not accessible by integration (HTTP 403)\n"
+        }
+      }
+    },
+    "triggers": {
+      "merchantFeed": {
+        "workflow": ".github/workflows/tages-update.yml",
+        "on": [
+          "schedule cron 15 4 * * * UTC",
+          "workflow_dispatch"
+        ],
+        "pushTriggered": false,
+        "job": "merchant-feed",
+        "futureExistingCronWouldUseMergedCode": true
+      },
+      "testWorkflow": {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "mainOn": [
+          "pull_request path filter",
+          "workflow_dispatch"
+        ],
+        "pushTriggered": false,
+        "prAddsAuthSourceAndAuthTestPathAndTestExecution": true
+      },
+      "preDeployValidation": {
+        "path": ".github/workflows/deploy-check.yml",
+        "on": [
+          "push main/master",
+          "pull_request main/master"
+        ],
+        "pathFilter": false
+      },
+      "directPages": {
+        "path": ".github/workflows/cloudflare-pages.yml",
+        "on": [
+          "push main",
+          "pull_request main"
+        ],
+        "pathFilter": false,
+        "mainPushProductionCapable": true,
+        "gate": "CLOUDFLARE_API_TOKEN nonempty AND vars.CF_DIRECT_DEPLOY==true; configured values not read (403)",
+        "historicalPrJob": "success but checkout/deploy skipped, not proof of present gate or production deployment"
+      },
+      "externalIntegrations": {
+        "observedInPrChecks": true,
+        "someChecksFailOrPending": true,
+        "mainProductionEffect": "unknown; cannot certify an isolated Merchant-only merge effect"
+      }
+    },
+    "transitiveImports": {
+      "trigger__automation__lib__shopify_secret.mjs": {
+        "imports": [],
+        "exports": [
+          "shopifyClientSecret"
+        ]
+      },
+      "trigger__automation__lib__shopify_host.mjs": {
+        "imports": [],
+        "exports": [
+          "normalizeShopifyHost"
+        ]
+      },
+      "trigger__automation__lib__kanal_sperren.mjs": {
+        "imports": [],
+        "exports": [
+          "SPERR_MUSTER",
+          "sperrTags",
+          "istOnlineshop",
+          "erlaubteKanaele"
+        ]
+      },
+      "trigger__automation__lib__gmc_feed_item.mjs": {
+        "imports": [
+          "import { sperrTags } from './kanal_sperren.mjs';"
+        ],
+        "exports": [
+          "LIZENZ",
+          "RISIKO",
+          "escXml",
+          "kuerzeTitel",
+          "pruefeProdukt",
+          "feedItem"
+        ]
+      },
+      "trigger__automation__lib__shopify_gql.mjs": {
+        "imports": [
+          "import { normalizeShopifyHost } from './shopify_host.mjs';"
+        ],
+        "exports": [
+          "taktPause",
+          "shopifyGql"
+        ]
+      }
+    },
+    "manifest": [
+      {
+        "path": ".github/workflows/tages-update.yml",
+        "sha": "9230d12462a4760b4b8b8dc2a00c87f3f939b2d9",
+        "sha256": "c35001f09d515efdc91b6e000611dffe50e8dd3b7b33c64ef8470e148fdd42f4",
+        "bytes": 9404,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__.github__workflows__tages-update.yml"
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "sha": "979c484b6e144c4f428f343a964cf664d4573a86",
+        "sha256": "c230d87af87ff7a5ade737607d80860983f550b276b21310af03f9e529feb676",
+        "bytes": 15878,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__.github__workflows__luxestyle-automation-tests.yml"
+      },
+      {
+        "path": ".github/workflows/cloudflare-pages.yml",
+        "sha": "d60d8bceaa4f550a85b925046fbcc6df974cf0e7",
+        "sha256": "7f009463c7d495505a9da2d1f3fcf1d7365d7523c960b1acbeca537afa6bddab",
+        "bytes": 3575,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__.github__workflows__cloudflare-pages.yml"
+      },
+      {
+        "path": ".github/workflows/deploy-check.yml",
+        "sha": "93fc1b415415cc5727c6bee786b3b37490b4d5c9",
+        "sha256": "28b86373ade9c282435f18d9f0c0dcdeb675073819a677c969a15de58b636000",
+        "bytes": 4965,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__.github__workflows__deploy-check.yml"
+      },
+      {
+        "path": "automation/lib/shopify_secret.mjs",
+        "sha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+        "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c",
+        "bytes": 1184,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__automation__lib__shopify_secret.mjs"
+      },
+      {
+        "path": "automation/lib/shopify_host.mjs",
+        "sha": "3b59fa475cceed8d29efaa797854236c166df4cb",
+        "sha256": "71d0d862dd4e85f17416f634c06a7812588a92dc40dca5b1f3d61bf00cd78f19",
+        "bytes": 962,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__automation__lib__shopify_host.mjs"
+      },
+      {
+        "path": "automation/lib/shopify_gql.mjs",
+        "sha": "186a451acb1db8221fbc95d633e5a62e28b13c77",
+        "sha256": "89273375da65bf2bcd2a8b3c4e12e96bad42be2f8626795edf3d457687b8a02a",
+        "bytes": 4343,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__automation__lib__shopify_gql.mjs"
+      },
+      {
+        "path": "automation/lib/gmc_feed_item.mjs",
+        "sha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+        "sha256": "980a8acf75f6cc3548b9b7e2434cacbe6c35f4a4e3ee3066200ca79d23538e65",
+        "bytes": 7391,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__automation__lib__gmc_feed_item.mjs"
+      },
+      {
+        "path": "automation/lib/kanal_sperren.mjs",
+        "sha": "3adab7369f90945769331910525c08b3778b4371",
+        "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+        "bytes": 3293,
+        "local": "/workspace/luxestyle-review/merchant-fix-20261102-r63/access/trigger__automation__lib__kanal_sperren.mjs"
+      }
+    ],
+    "conclusion": {
+      "prTextMergeable": true,
+      "allChecksGreen": false,
+      "requiredChecksEnforced": false,
+      "branchProtectionEndpoint": "403, not absence evidence; branch info protected=false and rules[] separately observed",
+      "autoProductionSideEffectCanBeExcluded": false,
+      "merchantWorkflowWillNotStartDirectlyFromMerge": true,
+      "directDeployGateCurrentlyKnown": false,
+      "sourceCompatibility": "Named exports/imports exist in current main; no real API/credential/runtime execution. Older API2025-01 unchanged by auth PR.",
+      "localTestsRunInThisReadTask": false
+    },
+    "ownActions": {
+      "writesToExternalSystems": 0,
+      "readyTransitions": 0,
+      "merges": 0,
+      "dispatches": 0,
+      "reviewerCommentsOrEmails": 0,
+      "secretValuesRead": 0,
+      "getDataCalls": 0
+    }
+  },
+  "latestPr": {
+    "headRefOid": "ecdc456f1109680b2bcb1584171ee075ed8bf548",
+    "isDraft": true,
+    "mergeStateStatus": "UNSTABLE",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2830"
+  },
+  "offlineAuthTests": {
+    "existingChecksPassed": 30,
+    "failed": 0,
+    "withFreshMainHelpers": true,
+    "actualGeneratorOrApiExecuted": false
+  },
+  "ownActions": {
+    "shopifyMetadataWrites": 2,
+    "merchantDataRequests": 0,
+    "merchantWrites": 0,
+    "appealsSubmitted": 0,
+    "imageByteEdits": 0,
+    "newUploads": 0,
+    "codePushes": 0,
+    "merges": 0,
+    "workflowDispatches": 0,
+    "newReports": 0,
+    "orderWatchReads": 0,
+    "settingsChanges": 0
+  },
+  "googleIssueResolution": "unknown_not_confirmed",
+  "guardProofNotPipelineExecution": true,
+  "photoBytesUnchanged": true,
+  "pendingAccessClarification": "Asked whether Claude has an authenticated Merchant writer; no secret requested; answer pending."
+}
