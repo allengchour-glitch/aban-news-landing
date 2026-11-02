@@ -1,5 +1,11 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, Revision 62: drei weitere konkrete Merchant-Fälle
+
+[Bericht](MERCHANT-EINZELFAELLE-20261102-R62.md) · [Belege](MERCHANT-EINZELFAELLE-BELEGE-20261102-R62.json) · [Ventilzubehör-Prüfentwurf](VENTILZUBEHOER-NACHPRUEFUNG-20261102-R62.md). Drei CSV mit 17 eindeutigen Kontexten für drei Angebote, keine Dubletten. Bildverarbeitung neun, Explosives drei, CSS zwei, Weapons drei. Kein Kontextüberlapp mit R59–R61; keine Behebungs- oder Entstehungsbehauptung.
+
+Alle drei Varianten nativ/öffentlich nach ID, SKU und Preis geprüft. Das exakte Rucksackbild Grün/Typ B ist bei Shopify READY, intakt 1000×1000 und HTTP 200; Googles Verarbeitung und Fristbeginn bleiben unbekannt. Der Drei-Tage-Hinweis stammt aus dem Export, ist kein bestätigter Termin. Ventilbilder stützen Zubehöridentität; vorsichtiger Einzelprüfungsentwurf vorbereitet, nicht eingereicht. Lieferanten-Ausführung und tatsächliche FR-Quelle fehlen weiterhin. Tischbombe nicht freigegeben oder umbenannt. Keine neuen Shopify-/Merchant-Writes, Appeals, Uploads, Merchant-Abfragen, Tagesreports, Kauf-Watch-Abfragen oder Workflowstarts. R61-Timeout nicht wiederholt; R59/R60-Bildfixes bleiben frühere Arbeit. Alle 20 Aufgaben-IDs und Historien, 19 andere Aufgaben und Tagesgrenzen erhalten; Claude-Kenntnisnahme unbekannt.
+
 ## Aktueller Stand – 02.11.2026, Revision 61: Stiefel-Bildlinks gezielt geprüft
 
 [Bericht](MERCHANT-BILDLINKS-20261102-R61.md) · [Belege](MERCHANT-BILDLINKS-BELEGE-20261102-R61.json) · [Prüfliste – kein Upload](STIEFEL-BILDPRUEFLISTE-20261102-R61-KEIN-UPLOAD.csv). Fünf neue Uploads: 97 Rohzeilen, 85 eindeutige Problemkontexte, 36 Angebots-IDs. Zwei Dateien enthalten dieselben zwölf Zeilen in anderer Reihenfolge; keine Byte-Dublette. Zwölf Kontexte überlappen mit R60, kein Nachweis neuer oder behobener Meldungen.
