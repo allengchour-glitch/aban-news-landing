@@ -23,17 +23,16 @@ Marken: **GEMESSEN** = hier abgefragt · **unbekannt** = nicht gemessen.
 Reserve: `damen-t-shirts-langarm` (206, unbekannt), `damen-nachtwaesche` (42), `herren-hoodies-zip` (41), `wandteppiche` (78).
 Schon indexiert (nicht beantragen): `winterjacken`, `winterschuhe`, `winter-kaelte`, `weihnachtspullover`, `geschenke-fuer-ihn`, `geschenke-fuer-sie`, `premium-geschenke`, `kleine-geschenke-mitbringsel`, `hochzeitsgeschenke`, `party-deko-ch`, `damen-jeans`, `herren-jeans`, `damen-hoodies-sweatshirts`, `herren-hoodies-sweatshirts`, `herren-sneaker`, `tassen-becher`, `kissen`, `vorhaenge`, `nachtwaesche-pyjamas`, `damen-kleider-langarm`, `sofa-moebelueberzuege`. «Crawled – currently not indexed» (Antrag hilft vermutlich nicht, Inhalt zuerst prüfen): `kaffee-ecke`.
 
-Direktlinks in die URL-Prüfung (Anmeldung als Betreiber nötig):
-1. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=hGFkymHOaOBjTR28zA6lrQ&utm_medium=link&utm_source=api
-2. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=ku1VRg715ASFa7-7kIFrIg&utm_medium=link&utm_source=api
-3. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=xU4crkCwyiL28-44kvR70A&utm_medium=link&utm_source=api
-4. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Z-XEzqKm8cgYbLEQ-ikOzQ&utm_medium=link&utm_source=api
-5. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=EI0St0aWZQwgXwMQ8-I_wQ&utm_medium=link&utm_source=api
-6. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=dBwV9U8DIzaEogOnIMaz_g&utm_medium=link&utm_source=api
-7. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=zumZ9h4NZWtHpom7MgRUNg&utm_medium=link&utm_source=api
-8. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=64EpcdNVKS_uhkIt3xxyeA&utm_medium=link&utm_source=api
-9. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=1ReOtrfdNaYY8pKpM0-UAg&utm_medium=link&utm_source=api
-10. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=g-qQVyy5djDtu9gZ_y11IQ&utm_medium=link&utm_source=api
-Reserve: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=jrSdHay7UvaS9KWhWLrJ-A&utm_medium=link&utm_source=api
+Direktlinks in die URL-Prüfung (neu gemessen 02.11.2026 08:20 UTC, Stand unverändert: 4 «Discovered», 6 «unbekannt», keine indexiert; Anmeldung als Betreiber nötig):
+1. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=-DJ_WdfsXLjG_XKoYA6AwA&utm_medium=link&utm_source=api
+2. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=RlSwn_KdYbFkqni2vk-FHA&utm_medium=link&utm_source=api
+3. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=_yFYmYbLeCQKUzGClxgLRg&utm_medium=link&utm_source=api
+4. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=yHd5rWIdFz5dAAzZ0vx9Hg&utm_medium=link&utm_source=api
+5. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=4zQJ14OxwBFAt1KOi12czg&utm_medium=link&utm_source=api
+6. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=f1BclJQlmh1NJrHgZJ6bhw&utm_medium=link&utm_source=api
+7. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=zui-e_gI49_nKtVdDOkSZg&utm_medium=link&utm_source=api
+8. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=HZslziznCVy0MUoCyOvrvA&utm_medium=link&utm_source=api
+9. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=3UwZU8GQc_jVdDFmmyrwsw&utm_medium=link&utm_source=api
+10. https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=V6riuCGYIczFa1dbu8EJTA&utm_medium=link&utm_source=api
 
 Hinweis: Die Kennung im Link ändert sich bei jeder neuen Messung; bei einem Fehler neu messen lassen.
