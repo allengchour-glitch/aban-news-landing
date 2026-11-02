@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 59,
-  "updatedAt": "2026-11-02T21:09:36.975076+00:00",
+  "revision": 60,
+  "updatedAt": "2026-11-02T21:30:55.142606+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1604,17 +1604,18 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r59_zwei_bildfixes_live_13_ausnahmen_zur_quellenpruefung",
-      "title": "Merchant: Preisquellen und konkrete CSV-Korrekturen",
+      "state": "r60_gloeckchenfoto_live_einzelpruefung_vorbereitet_merchant_quelle_offen",
+      "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-02",
-      "belegArt": "VIER_CSV_VOLLPRUEFUNG_ZWEI_SHOPIFY_BILDWRITES_NATIVE_PUBLIC_BESTAETIGT_GOOGLE_STATUS_UNBEKANNT",
-      "lastEvidence": "Drei neue Inhaber-CSV-Exporte vollständig geprüft:57’223 Zeilen,27’269 Offer-IDs,29’055 kanal-/sprach-/feedgebundene Listings, keine identischen Zeilendubletten.2’004 Offer-IDs mit Preisfehler,20 davon auch availability;1’510 weitere DE-Versandmeldungen. CSS-Block51’082 Zeilen entspricht25’541 Listings nur Shoppingads/Remarketing, nicht Free Listings; kein aktuelles Kontolimit daraus abgeleitet. Aktueller Shop luxestyle.ch/CHF und Merchant5797470070 LuxeStyleCH bestätigt. Eine neue exakte Preis-/Quellenprobe für15413245706625_14:691;5:4183#3xl/de/CH/ONLINE endete mit MCP-32603Timeout, kein Retry/force_refresh, Ergebnisunknown. Keine Merchant-Schreibaktion verfügbar; sechs bestehende Repoquellen erklären die aktiven CSV-IDs nicht. Geprüfte Hose15413245706625 ist DRAFT mit12VariantenCHF44.90/nullStorefront; kein Aktivieren oder Preisfüllen. Aktuelle Versandpolicy nurCH/LI, keine DE-Tarife erfinden; spätere Bereinigung nur ZiellandDE, nicht Sprache/ganzeQuelle. Konkrete eigene Shopify-Korrektur: weisse Uhr15491403940225/Variante67814685475207 von214×349 auf bestehendes passendes655×655 OriginalfotoMedia70451373080961 umgestellt; nativ und öffentlich bestätigt, PreisCHF51.90/SKU/Inventar/Status/alleTags inkl.rueckhol unverändert. Google-Neubewertung unbekannt. Silbergalerie ohne passenden grossen Ersatz, DRAFT-Hemd nicht aktiviert; gemeldeteFR-Uhrenseite aktuellHTTP200/exakteVariante kaufbar, eingereichteGoogleURL/Crawl unbekannt. Prüfmanifest3676Nicht-Kapazitäts-Issue-Listing-Keys aus6141Zeilen, keinFeedupload. Unabhängige Vollzählung/18gezielte Bildnachweise bestätigt, keine weiteren Konto-/Kanal-/Feed-/Preisänderungen, Bestell-/Kennzahl-/Flowreports oder Automationsänderungen. R58 auf erneute Inhaberbitte merchant fix: Identitäten luxestyle.ch/CHF, alleMetricoolkanäle und Merchant5797470070 frisch passend. NeuerScreenshot zeigt gerundet25.4KCSSadsKapazität/1.49KVersand/1.25KPreisfehler; keineexaktenAPIzahlen/Katalogquote/FreeListingsSperre ableiten. Genau eine neue7FeldMerchantQuellenprobe für exakteshistorischesLampentupel ONLINE/de/CHF_99383214465/shopify_ZZ_15450836566401_55889781588353 endetMCP-32603Timeout, keinRetry/force_refresh; Quelle unbekannt. WindsorMerchantActionsfrischleer,keinBeweisfehlenderandererEditoren. NeueNativeVariantenprobe ACTIVE55889781588353/SKUCJ-CJYD188109128BY/CHF24.90:775x388beschrifteteCollagemitzweiverschiedenenProdukten tatsächlichgesehen; Set8Bindungnichtbelegt,keinblinderErsatzdurchsauberesEinzelwürfelbild. UnabhängigkonkreterSoftwarefortschritt: bestehenderMerchantFeedjob41443439624/125272328470 am02NovmitGraphQLHTTP401gescheitert,alle3Authbindungenmaskiertnichtleer,RunCodegleichMain; statischerZweigquelllogischgewählt. AuthfixinDraftPR2830/ecdc456f1109680b2bcb1584171ee075ed8bf548 mitgenau3dateienfrischbytegleichremote: frischesAppPaarzuerst,vorhandeneHost/SecretHelfer,keinRedirect/stillerFallback/Antwortlogging. Rootgegenprobealt6ok24Fehler/neue30ok0Fehler,Syntax/YAMLbestanden;GeneratorlogiknachTOKENbytegleich. LokaleVollCIscheitertanunshareBerechtigung,GitHubTestsjob125521199210amRun41516471737vollständigerfolgreich;lokaleCISimulationweiterblockiert,keineProduktivLaufzeitzusage. AlternativerRSSFeedverwendetHandleIDs/ersteVariante,aktiveZuordnungzuCSV/Screenshotunbekannt. NurCodeentwurf,nichtgemergt/produktivausgeführt,keinShopify/Merchant/Feed/Ausschluss/VersandWrite. Quellenname+aktuelleArtikelIDbeimInhabererfragt,Antwortfehlt. KeineanderenTagesreports/Bestellwatch/Frequenzänderung. R59 auf vier neue Inhaber-Exporte: alle4 vollständig und unabhängig nachgezählt,4390Rohzeilen/4386eindeutigeKontexte/1592OfferIDs/1676ListingKeys;4identischeDoppelzeilen. EinzigartigeZeilenPreis2643/Overlay1343/Bildklein185/URL123/availability26/CSS66; keineKatalogquote. ArtikelIDsjetztvorhanden,aberkeineQuellenname/ID/FetchURL/eingereichterLinkSpalte. KeineVersandzeilenindiesenDateienistkeinErledigungsbeleg;DEFeedlabelauchfürCH/LI,nichtpauschalabgewählt. ViergezielteShopifyProdukte: Cordhose15413245706625frischDRAFTmit12VariantenCHF44.90,keinPreisfüllen/Aktivieren;Padaltvariante56147913113985nativNULL,aktuell4andereVarianten,nichtnachTitelumgebogen. Zwei tatsächliche neue Bildkorrekturen unterbestehenderFixerlaubnis: Goldvariante67801774555527bei15524360028545vonMedia70776222941569(217x245)aufvorhandenespassendesGoldoriginal70776223105409(1276x1702);Laser15453825008001mitEinzelvariante55904981713281nur vorhandeneswerbefreies1080x1080Media69927001981313anersteStelleverschoben,übrigerelativeOrdnunggleich. VomRootundunabhängigangesehen,keinKI-Edit/Upload. NativundöffentlicheJS-Datenfrischbestätigt,asynchronerLaserjobdone=true;PreiseSKUsTagsStatusInventarBeschreibungenunverändert,Silberfarbnichtumgestellt. GoogleNeubewertungundaktiveQuelleunbekannt;keineMerchantwrites/Feedrefresh/GoogleAbwahl. BegrenztePrüfliste30Kontexte/13OfferIDs(12DRAFT-Hose+1altePadID),keinUpload/keineLöschung. R58AuthPR2830frischweiterhinDraftoffen/nichtgemergt,keinneuerCode/Workflow/Tests-RunoderProduktivstart. KeineWiederholungR58MerchantTimeoutundkeineKennzahl/Flow/Bestellreports. CLIValidatorweiterfehlend/MCPPrüferüberspringt,nativeOperationenakzeptiertundRückleseverifiziert;keinegrüneToolkitVollvalidierungbehauptet.",
-      "nextAllowedStep": "Nur noch tatsächlichen primären Merchant-Datenquellennamen/ID und Originalfelder/eingereichte URLs für bereits bekannte Artikel lesen; Artikel-IDs liegen durch R59 nun vor, nicht erneut als fehlend anfordern. Mit legitimem Quelleneditor unter bestehender Fixerlaubnis die exakt belegten 13 Ausnahmeangebote erst frisch quellengebunden bereinigen; Liste ist kein Feed/Upload und erlaubt keine pauschale Quellen-/Länder-/Channelentfernung. DE-Feedlabel nicht als Zielland interpretieren, gültige CH/LI-Ziele/deutsche Sprache bewahren. Google-Übernahme der zwei Bildfixes gezielt prüfen, keine Wiederholung der bestätigten Writes oder identischen R58Timeoutabfrage. Weitere Bilder nur derselben realen Farbe/Ausführung zuordnen; Gold nicht auf Silber übertragen, R41weissesUhrbild erhalten. R58AuthPR2830 bleibt eigenständiger Entwurf,keinWorkflowstart/Feedrefresh oder produktive Erfolgsaussage. Tagesgrenzen und beendeten Kauf-Watch erhalten.",
+      "belegArt": "FUENF_POLICY_CSV_VOLLPRUEFUNG_EIN_SHOPIFY_FOTOFIX_NATIVE_PUBLIC_BESTAETIGT_APPEAL_ENTWURF",
+      "lastEvidence": "Drei neue Inhaber-CSV-Exporte vollständig geprüft:57’223 Zeilen,27’269 Offer-IDs,29’055 kanal-/sprach-/feedgebundene Listings, keine identischen Zeilendubletten.2’004 Offer-IDs mit Preisfehler,20 davon auch availability;1’510 weitere DE-Versandmeldungen. CSS-Block51’082 Zeilen entspricht25’541 Listings nur Shoppingads/Remarketing, nicht Free Listings; kein aktuelles Kontolimit daraus abgeleitet. Aktueller Shop luxestyle.ch/CHF und Merchant5797470070 LuxeStyleCH bestätigt. Eine neue exakte Preis-/Quellenprobe für15413245706625_14:691;5:4183#3xl/de/CH/ONLINE endete mit MCP-32603Timeout, kein Retry/force_refresh, Ergebnisunknown. Keine Merchant-Schreibaktion verfügbar; sechs bestehende Repoquellen erklären die aktiven CSV-IDs nicht. Geprüfte Hose15413245706625 ist DRAFT mit12VariantenCHF44.90/nullStorefront; kein Aktivieren oder Preisfüllen. Aktuelle Versandpolicy nurCH/LI, keine DE-Tarife erfinden; spätere Bereinigung nur ZiellandDE, nicht Sprache/ganzeQuelle. Konkrete eigene Shopify-Korrektur: weisse Uhr15491403940225/Variante67814685475207 von214×349 auf bestehendes passendes655×655 OriginalfotoMedia70451373080961 umgestellt; nativ und öffentlich bestätigt, PreisCHF51.90/SKU/Inventar/Status/alleTags inkl.rueckhol unverändert. Google-Neubewertung unbekannt. Silbergalerie ohne passenden grossen Ersatz, DRAFT-Hemd nicht aktiviert; gemeldeteFR-Uhrenseite aktuellHTTP200/exakteVariante kaufbar, eingereichteGoogleURL/Crawl unbekannt. Prüfmanifest3676Nicht-Kapazitäts-Issue-Listing-Keys aus6141Zeilen, keinFeedupload. Unabhängige Vollzählung/18gezielte Bildnachweise bestätigt, keine weiteren Konto-/Kanal-/Feed-/Preisänderungen, Bestell-/Kennzahl-/Flowreports oder Automationsänderungen. R58 auf erneute Inhaberbitte merchant fix: Identitäten luxestyle.ch/CHF, alleMetricoolkanäle und Merchant5797470070 frisch passend. NeuerScreenshot zeigt gerundet25.4KCSSadsKapazität/1.49KVersand/1.25KPreisfehler; keineexaktenAPIzahlen/Katalogquote/FreeListingsSperre ableiten. Genau eine neue7FeldMerchantQuellenprobe für exakteshistorischesLampentupel ONLINE/de/CHF_99383214465/shopify_ZZ_15450836566401_55889781588353 endetMCP-32603Timeout, keinRetry/force_refresh; Quelle unbekannt. WindsorMerchantActionsfrischleer,keinBeweisfehlenderandererEditoren. NeueNativeVariantenprobe ACTIVE55889781588353/SKUCJ-CJYD188109128BY/CHF24.90:775x388beschrifteteCollagemitzweiverschiedenenProdukten tatsächlichgesehen; Set8Bindungnichtbelegt,keinblinderErsatzdurchsauberesEinzelwürfelbild. UnabhängigkonkreterSoftwarefortschritt: bestehenderMerchantFeedjob41443439624/125272328470 am02NovmitGraphQLHTTP401gescheitert,alle3Authbindungenmaskiertnichtleer,RunCodegleichMain; statischerZweigquelllogischgewählt. AuthfixinDraftPR2830/ecdc456f1109680b2bcb1584171ee075ed8bf548 mitgenau3dateienfrischbytegleichremote: frischesAppPaarzuerst,vorhandeneHost/SecretHelfer,keinRedirect/stillerFallback/Antwortlogging. Rootgegenprobealt6ok24Fehler/neue30ok0Fehler,Syntax/YAMLbestanden;GeneratorlogiknachTOKENbytegleich. LokaleVollCIscheitertanunshareBerechtigung,GitHubTestsjob125521199210amRun41516471737vollständigerfolgreich;lokaleCISimulationweiterblockiert,keineProduktivLaufzeitzusage. AlternativerRSSFeedverwendetHandleIDs/ersteVariante,aktiveZuordnungzuCSV/Screenshotunbekannt. NurCodeentwurf,nichtgemergt/produktivausgeführt,keinShopify/Merchant/Feed/Ausschluss/VersandWrite. Quellenname+aktuelleArtikelIDbeimInhabererfragt,Antwortfehlt. KeineanderenTagesreports/Bestellwatch/Frequenzänderung. R59 auf vier neue Inhaber-Exporte: alle4 vollständig und unabhängig nachgezählt,4390Rohzeilen/4386eindeutigeKontexte/1592OfferIDs/1676ListingKeys;4identischeDoppelzeilen. EinzigartigeZeilenPreis2643/Overlay1343/Bildklein185/URL123/availability26/CSS66; keineKatalogquote. ArtikelIDsjetztvorhanden,aberkeineQuellenname/ID/FetchURL/eingereichterLinkSpalte. KeineVersandzeilenindiesenDateienistkeinErledigungsbeleg;DEFeedlabelauchfürCH/LI,nichtpauschalabgewählt. ViergezielteShopifyProdukte: Cordhose15413245706625frischDRAFTmit12VariantenCHF44.90,keinPreisfüllen/Aktivieren;Padaltvariante56147913113985nativNULL,aktuell4andereVarianten,nichtnachTitelumgebogen. Zwei tatsächliche neue Bildkorrekturen unterbestehenderFixerlaubnis: Goldvariante67801774555527bei15524360028545vonMedia70776222941569(217x245)aufvorhandenespassendesGoldoriginal70776223105409(1276x1702);Laser15453825008001mitEinzelvariante55904981713281nur vorhandeneswerbefreies1080x1080Media69927001981313anersteStelleverschoben,übrigerelativeOrdnunggleich. VomRootundunabhängigangesehen,keinKI-Edit/Upload. NativundöffentlicheJS-Datenfrischbestätigt,asynchronerLaserjobdone=true;PreiseSKUsTagsStatusInventarBeschreibungenunverändert,Silberfarbnichtumgestellt. GoogleNeubewertungundaktiveQuelleunbekannt;keineMerchantwrites/Feedrefresh/GoogleAbwahl. BegrenztePrüfliste30Kontexte/13OfferIDs(12DRAFT-Hose+1altePadID),keinUpload/keineLöschung. R58AuthPR2830frischweiterhinDraftoffen/nichtgemergt,keinneuerCode/Workflow/Tests-RunoderProduktivstart. KeineWiederholungR58MerchantTimeoutundkeineKennzahl/Flow/Bestellreports. CLIValidatorweiterfehlend/MCPPrüferüberspringt,nativeOperationenakzeptiertundRückleseverifiziert;keinegrüneToolkitVollvalidierungbehauptet. R60: Fünf weitere Inhaber-CSV vollständig und unabhängig ausgewertet: 386 Rohzeilen, vier unterschiedliche Dateiinhalte, 273 eindeutige Problemkontexte und 65 Offer-IDs. Beide Dateien 12:57:41 sind bytegleich. Drei Produkte mit Originalbildern, Kategorien, Google-Metafeldern und nativen FR-Übersetzungen geprüft; die tatsächlich eingereichten FR-Rohfelder bleiben unbekannt. Eine neue eigene Shopify-Korrektur: Bei den Glöckchen 15497456255361 / 56099949740417 das vorhandene isolierte Foto 70523436401025 (600×600) an die erste Stelle verschoben, übrige relative Galerieordnung erhalten. Job b8507198-8c59-425d-8964-fc1e4810a475 done=true; native und öffentliche HTTP-200-Rücklesung bestätigen den Wechsel. Alle zehn übrigen Produktfeldgruppen einschliesslich Preis CHF 20.90, SKU, Tags, Status und Inventar unverändert. Keine belegte Ursache oder Google-Behebung aus dem Bildwechsel abgeleitet. Genau ein FR/CH-Nachprüfungsentwurf gegen die Meldung zum Verkauf lebender Tiere vorbereitet, nicht eingereicht. Brauverwendung des Rührspatens und rueckhol-Sperre des Helms erhalten; keine Umbenennung zur Richtlinienumgehung. Merchant-Quelle, eingereichte FR-URL und aktueller Google-Status bleiben offen. Keine Merchant-Writes, Appeals, Timeout-Wiederholungen, neuen Reports, Kauf-Watch-Abfragen oder Workflowstarts. R59-Bildfixes nur historisch erhalten.",
+      "nextAllowedStep": "Genau den Glöckchen-Artikel ONLINE/fr/CHF_99383214465/shopify_ZZ_15497456255361_56099949740417 authentifiziert mit aktueller primärer Quelle, eingereichter URL, FR-Rohtext, Kategorie, Bild und noch bestehender Meldung abgleichen. Erst bei belegtem Zubehör-Angebot und geprüftem angezeigtem Umfang die einzelne Nachprüfung mit R60-Entwurf nutzen; keine Sammelbeschwerde. Artikel-IDs liegen vor. R60- und R59-Bildfixes erhalten und Google-Übernahme getrennt prüfen; bestätigte Writes oder R58-Timeout nicht wiederholen. Frühere 13 Ausnahmeangebote bleiben ein quellengebundener Prüfplan, kein Upload und keine Freigabe zum Löschen oder Aktivieren. Preis-, Versand- und CSS-Fragen nur anhand konkreter Rohfelder und mit legitimem Editor bearbeiten; gültige CH/LI-Ziele, deutsche Sprache und Sperren bewahren. Keine neuen Tagesreports, Bestell-Watch-Abfragen oder Workflowstarts.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
         "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
-        "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen."
+        "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen.",
+        "R60: Tatsächlich eingereichte FR-Texte/URL/Quelle und aktuelle Policy-Meldung für den Glöckchenartikel nicht authentifiziert gelesen; native FR-Translations[] ersetzt diese Quelle nicht. Nachprüfungsentwurf nicht eingereicht, Google-Neubewertung unbekannt. Andere Policyfälle nicht allein anhand generischer Titel freigeben."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -1706,6 +1707,21 @@
           "path": "dropship/codex-handoff-20261018/GEKLAERTE-AUSNAHMEN-20261102-R59-KEIN-UPLOAD.csv",
           "gitBlobSha": "4a4490e1fa85b71de41f94dcf55d7530fb1970d7",
           "readAt": "2026-11-02T21:09:36.975076+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NACHPRUEFUNG-GLOECKCHEN-20261102-R60.md",
+          "gitBlobSha": "3d8aa78da7dfb7326c33c1eb972accffdfdd592b",
+          "readAt": "2026-11-02T21:30:55.142606+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RICHTLINIEN-20261102-R60.md",
+          "gitBlobSha": "2a3b98ec173b7db46c71fa7b8f437cdf4d7a25a5",
+          "readAt": "2026-11-02T21:30:55.142606+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RICHTLINIEN-BELEGE-20261102-R60.json",
+          "gitBlobSha": "71c21387a4e2568e4ae2a1f8067ed5802012eb93",
+          "readAt": "2026-11-02T21:30:55.142606+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1796,6 +1812,21 @@
             "Lampen-Set8 zeigt beschriftete Zweiprodukt-Collage; eindeutiger sauberer Ersatz derselben Ausführung/Rechte fehlt. Silberuhr-Originalquelle bleibt separat offen."
           ],
           "previousLastEvidencePreserved": "Unchanged dated prefix retained. Article IDs now supplied by four new owner exports."
+        },
+        {
+          "at": "2026-11-02T21:30:55.142606+00:00",
+          "sourceRevision": 59,
+          "previousState": "r59_zwei_bildfixes_live_13_ausnahmen_zur_quellenpruefung",
+          "previousTitle": "Merchant: Preisquellen und konkrete CSV-Korrekturen",
+          "previousNextAllowedStep": "Nur noch tatsächlichen primären Merchant-Datenquellennamen/ID und Originalfelder/eingereichte URLs für bereits bekannte Artikel lesen; Artikel-IDs liegen durch R59 nun vor, nicht erneut als fehlend anfordern. Mit legitimem Quelleneditor unter bestehender Fixerlaubnis die exakt belegten 13 Ausnahmeangebote erst frisch quellengebunden bereinigen; Liste ist kein Feed/Upload und erlaubt keine pauschale Quellen-/Länder-/Channelentfernung. DE-Feedlabel nicht als Zielland interpretieren, gültige CH/LI-Ziele/deutsche Sprache bewahren. Google-Übernahme der zwei Bildfixes gezielt prüfen, keine Wiederholung der bestätigten Writes oder identischen R58Timeoutabfrage. Weitere Bilder nur derselben realen Farbe/Ausführung zuordnen; Gold nicht auf Silber übertragen, R41weissesUhrbild erhalten. R58AuthPR2830 bleibt eigenständiger Entwurf,keinWorkflowstart/Feedrefresh oder produktive Erfolgsaussage. Tagesgrenzen und beendeten Kauf-Watch erhalten.",
+          "previousBlockers": [
+            "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
+            "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
+            "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
+            "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen."
+          ],
+          "previousBelegArt": "VIER_CSV_VOLLPRUEFUNG_ZWEI_SHOPIFY_BILDWRITES_NATIVE_PUBLIC_BESTAETIGT_GOOGLE_STATUS_UNBEKANNT",
+          "previousLastEvidencePreserved": "Exact previous lastEvidence retained as unchanged prefix."
         }
       ],
       "resolvedBlockers": [
@@ -2171,6 +2202,34 @@
         "newReports": 0,
         "newWorkflows": 0,
         "newPaidActions": 0
+      },
+      "merchantPolicyR60": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RICHTLINIEN-20261102-R60.md",
+          "gitBlobSha": "2a3b98ec173b7db46c71fa7b8f437cdf4d7a25a5"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RICHTLINIEN-BELEGE-20261102-R60.json",
+          "gitBlobSha": "71c21387a4e2568e4ae2a1f8067ed5802012eb93"
+        },
+        "draft": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NACHPRUEFUNG-GLOECKCHEN-20261102-R60.md",
+          "gitBlobSha": "3d8aa78da7dfb7326c33c1eb972accffdfdd592b"
+        },
+        "rawRows": 386,
+        "uniqueFiles": 4,
+        "issueContexts": 273,
+        "offerIds": 65,
+        "targetedNativeProducts": 3,
+        "shopifyWrites": 1,
+        "imageMediaId": "70523436401025",
+        "jobDone": true,
+        "nativeAndPublicConfirmed": true,
+        "googleReapproval": "unknown",
+        "appealsSubmitted": 0,
+        "merchantWrites": 0,
+        "newReports": 0,
+        "workflowDispatches": 0
       }
     },
     {
