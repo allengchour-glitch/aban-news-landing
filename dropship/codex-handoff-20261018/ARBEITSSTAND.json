@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 56,
-  "updatedAt": "2026-11-02T19:19:14.777771+00:00",
+  "revision": 57,
+  "updatedAt": "2026-11-02T19:31:54.226882+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3872,6 +3872,85 @@
         "newFlowReports": 0,
         "publicationTarget": "website_only_welcome_excluded"
       }
+    },
+    {
+      "id": "lamp-reel-comparison-20261102",
+      "priority": 5,
+      "priorityKind": "explicit_owner_internal_comparison_only",
+      "state": "entwurf_pr_2829_fotovergleich_gerendert_nicht_publiziert",
+      "title": "Eigenständiges Wasserwellen-Lampen-Foto-Vergleichsmuster",
+      "lastEvidenceDate": "2026-11-02",
+      "belegArt": "GERENDERTE_MP4_EXAKTE_REMOTE_RUECKLESE_UND_DREI_GESICHTETE_FRAMES",
+      "lastEvidence": "Auf aktuell vom Inhaber verlinktes CODEX-REEL-LAMPE-0211.md ein separates kostenloses Foto-Vergleichsmuster erstellt, keine Ablösung des offenen professionellen Masters. Nur drei gehashte Briefing-JPEGs und kanonische hashgleiche Musik; keine neue Musik eingesetzt, keine Stimme oder KI-Dienste. Tatsächliche MP49.000000s/270Frames/1080x1920/30fps/H264-yuv420p/AAC48kStereo,952271Bytes. Vollständiges Decodieren und bash-n erfolgreich. Drei Frames1.5/4.5/7.5s vom Root angesehen: Texte vollständig, keine sichtbare Fremdschrift/privateFotos. Raum-Originale enthalten Fremdschrift/Marken; feste Ausschnitte blenden diese aus. Kleiner Raumdetailausschnitt sichtbar weicher, in Notiz dokumentiert. Frischer Sparse-Checkout von origin/main83262a155df74711aaa0151ab8a7f7fc8dea07c1; DraftPR2829 offen/nichtgemergt am8afbec7117460aebc6bc7917bea8b004d74ba8cf mit exakt drei genannten Dateien, jede frisch remote bytegleich zurückgelesen. Kein Workflowdispatch, keine Queue/Social/Shopaktion. Claude-Ausführung/Abnahme unbekannt; Gestaltung urteilt Inhaber.",
+      "nextAllowedStep": "Claude oder Inhaber kann die drei Dateien aus DraftPR2829 lesen und das rein lokale Skript nachspielen. Vergleich und kreative Abnahme sind offen; keine Veröffentlichung, Queue, automatischer Merge oder Produkt-/Rechtefreigabe ableiten. Der getrennte Musik-Hörentwurf R56 bleibt separat, kanonische Film-Musik unverändert. Professionellen 18s-Projektor-Master mit bisherigen Voraussetzungen getrennt fortsetzen.",
+      "blockers": [
+        "Kreatives Inhaberurteil und tatsächliche Claude-Reproduktion fehlen.",
+        "Kommerzielle Produkt-/Varianten-/Bildrechte-/Kaufbarkeitsprüfung ist in diesem Sampleauftrag nicht erfolgt; keine Social-Ausspielung vorbereiten.",
+        "Der kleine Raumdetailausschnitt begrenzt die Schärfe; Fotos belegen keine echte Produktbewegung oder Bedienung."
+      ],
+      "acceptance": [
+        "Nur interne Vergleichsansicht, keine Publikation.",
+        "Drei Dateien samt reproduzierbarem Skript und konkreter Sichtprüfungsnotiz im Entwurf-PR belegt."
+      ],
+      "sources": [
+        {
+          "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+          "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+          "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+          "readAt": "2026-11-02T19:31:54.226882+00:00",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
+        },
+        {
+          "path": "dropship/CODEX-REEL-LAMPE-0211.md",
+          "ref": "83262a155df74711aaa0151ab8a7f7fc8dea07c1",
+          "gitBlobSha": "ffcd7b23212bb8d93637197868cb81056567c8ed",
+          "readAt": "2026-11-02T19:31:54.226882+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "codex_preparation_claude_owner_review",
+      "previewOnly": true,
+      "productReference": {
+        "handle": "led-wasserwellen-projektionsleuchte-677504",
+        "provenance": "QUELLE brief, not freshly Shopify-verified"
+      },
+      "delivery": {
+        "number": 2829,
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829",
+        "draft": true,
+        "state": "open",
+        "merged": false,
+        "head": "codex/reel-lampe-20261102",
+        "commit": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+        "baseCommitAtBranchCreation": "83262a155df74711aaa0151ab8a7f7fc8dea07c1",
+        "files": [
+          {
+            "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+            "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+            "bytes": 5900,
+            "sha256": "015790b70c6c86d7ef42ee2312ed026c4909c33c1f2ba7ae7168ebf12d68e1df",
+            "exactRemoteContentEqual": true
+          },
+          {
+            "path": "dropship/reel-vergleich-0211/codex-lampe.mp4",
+            "gitBlobSha": "325ab855b99fbd482217350c9f77abcbcf4e708c",
+            "bytes": 952271,
+            "sha256": "b1b7d3f665704d447018aeae4a6d4ef0364b2bbb3be0ce75b14b714ff7a7ae05",
+            "exactRemoteContentEqual": true
+          },
+          {
+            "path": "dropship/reel-vergleich-0211/codex-lampe.sh",
+            "gitBlobSha": "3d571513bd53b3b266da2881e66d624f12bdc722",
+            "bytes": 5289,
+            "sha256": "b79d54768f43e4099cb2e79cfb57d48ea965b8b7dcc753eb57d5433abcb0e0e3",
+            "exactRemoteContentEqual": true
+          }
+        ],
+        "published": false,
+        "queueChanged": false,
+        "claudeExecution": "unknown_not_claimed"
+      },
+      "videoSha256": "b1b7d3f665704d447018aeae4a6d4ef0364b2bbb3be0ce75b14b714ff7a7ae05"
     }
   ],
   "history": [
@@ -4410,6 +4489,19 @@
         "readAt": "2026-11-02T19:19:14.777771+00:00"
       },
       "action": "Auf ausdrückliche Musikfrage eine neue 18s-Instrumentalhörprobe lokal komponiert und als WAV/MP3 gerendert; elf unabhängige technische/Quellbedingungen, keine Hör-/Rechteabnahme. Kanonische Film-Musik und offene Masterbedingungen unverändert. 19 IDs/Historien und 18 andere Tasks sowie dailyReadPolicy exakt erhalten. Keine API/Kosten/Publikation/Shopänderung oder neuen Berichte."
+    },
+    {
+      "revision": 57,
+      "at": "2026-11-02T19:31:54.226882+00:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+        "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+        "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+        "readAt": "2026-11-02T19:31:54.226882+00:00",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
+      },
+      "action": "Auf neuen verlinkten Inhaberauftrag genau ein separates 9s-Foto-Vergleichsmuster tatsächlich kostenlos gerendert, drei Videoframes angesehen, nachspielbares Skript/Notiz mit Grenzen erstellt und DraftPR2829 mit exakt drei bytegleich remote zurückgelesenen Dateien angelegt. Nicht veröffentlicht, gemergt oder in Queue; kein neues Master-/Rechte-/Claude-Abnahmeversprechen. Neue stabile Vergleichsaufgabe hinten ergänzt; alle19 alten Tasks/IDs/Historien und dailyReadPolicy exakt erhalten,20Aufgaben. R56-Musikhörprobe bleibt separat, kanonischeMusik unverändert."
     }
   ],
   "salesGoal": {
@@ -4583,7 +4675,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "documentation_and_review_only_no_installation_or_execution",
-    "latestCanonicalRevision": 56,
+    "latestCanonicalRevision": 57,
     "snapshotNote": "R55 GitHub-/MiniMax-Zugang belegt; bestehender Trockenlauf erfolgreich, echter Versuch HTTP 402 insufficient balance. Kein eigener Start/Render/Publish. R53-Websiteauftrag und R54-Teilbefunde erhalten, Welcome separat ausgeschlossen.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -4707,6 +4799,13 @@
       "path": "dropship/codex-handoff-20261018/MUSIK-HOERENTWURF-20261102-R56.md",
       "gitBlobSha": "ce126e84d3f8539037ec726e5dc498c6c7a9942f",
       "readAt": "2026-11-02T19:19:14.777771+00:00"
+    },
+    "lampComparisonR57": {
+      "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+      "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+      "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+      "readAt": "2026-11-02T19:31:54.226882+00:00",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
     }
   },
   "claudeCodeHandoffHistory": [
