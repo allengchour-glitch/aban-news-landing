@@ -25940,3 +25940,12 @@ outdoor-rucksack-36-55-l-34-20-52-cm-1d58b0 · 2026-11-02T17:57:46.339Z · GESCH
 sportrucksack-fur-balle-27l-620700 · 2026-11-02T17:57:55.491Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
 outdoor-rucksack-fur-velo-und-wandern-619900 · 2026-11-02T17:58:00.639Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
 sportrucksack-mit-20-35-l-volumen-600600 · 2026-11-02T17:58:04.476Z · GESCHRIEBEN · 7 Varianten
+trekking-rucksack-35-l-622500 · 2026-11-02T17:58:07.623Z · GESCHRIEBEN · 8 Varianten
+koreanischer-karierter-rucksack-mit-grossem-fa-627000 · 2026-11-02T17:58:18.084Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"6622 1 Black"},{"option":"Farbe","wert
+outdoor-wanderrucksack-26-l-603900 · 2026-11-02T17:58:19.892Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+vielseitiger-reise-rucksack-mit-grossem-volume-564736 · 2026-11-02T17:58:25.548Z · GESCHRIEBEN · 5 Varianten
+outdoor-rucksack-fur-damen-25l-974848 · 2026-11-02T17:58:26.395Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+leichter-outdoor-rucksack-fur-sport-227904 · 2026-11-02T17:58:32.897Z · GESCHRIEBEN · 7 Varianten
+ultraleichter-cross-country-rucksack-628100 · 2026-11-02T17:58:40.615Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+trendy-japanischer-rucksack-fur-studenten-620160 · 2026-11-02T17:58:40.633Z · GESCHRIEBEN · 8 Varianten
+kinderrucksack-set-fur-3-4-klasse-624200 · 2026-11-02T17:58:43.304Z · GESCHRIEBEN · 4 Varianten
