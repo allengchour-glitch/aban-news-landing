@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, Revision 48
+
+[Content- und Verkaufspaket R48](LAUFPAKET-20261102-R48.md) · [Aktuelle Belege und exakte Freigabetexte](LAUFBELEGE-20261102-R48.json) · [Master- und Aufnahmeplan mit sechs UTMs](MASTER-STORYBOARD-20261102-R48.json).
+
+Shop luxestyle.ch mit CHF sowie Metricool 6227837 mit Europe/Zurich und allen sechs Kanalidentitäten sind frisch bestätigt. Die Planung umfasst 22 Objekte mit 29 PENDING-Kanalzuständen. Seit R47 wurden 14 TikTok- und Pinterest-Fototermine neu extern beobachtet; daraus folgen weder eigene Writes noch neue Freigaben. Innerhalb eines Kanals wurden keine gleichen Kombinationen aus Caption und Medien-URLs oder Terminkollisionen gefunden. Die bestehenden sieben FB/IG-Termine und der genehmigte Threads-Termin am 04.11. um 18:30 bleiben samt UUID, Register und tatsächlichem JPEG-Hash exakt erhalten.
+
+Zwei ACTIVE-Produkte sind öffentlich kaufbar: Projektor CHF 34.90 und Organizer CHF 29.90. Tracked=false, CONTINUE und Menge 0 begründen keine Liefer- oder Bestandszusage. Tags und Wächter einschliesslich rueckhol und leerer Tags wurden geprüft. Derselbe 18-Sekunden-Master wurde mit einem konkreten Aufnahme- und Schnittanschlussplan sowie Kontaktframe-Ankern für vier native Takes weiterentwickelt; 30 begrenzte Dokumentchecks bestanden. Ausführung, Motive, Originaltakes, Filmrechte, fertige MP4 und Abnahme bleiben offen. Kein Render oder Push; die Filmregisterhistorie bleibt unbekannt. CJ-Helfer sind vorhanden, eine authentifizierte Laufzeit ist nicht belegt. Die YouTube-Zielgruppe ist durch den Inhaber bereits geklärt; später nur das Postflag prüfen. IG/TikTok-Bio und Pinterest-Kontoboard bleiben unbestätigt.
+
+Die heutigen einmaligen Reports für den 26.10.–01.11. sind abgeschlossen: sechs Metricool-Definitionen, sechs Datenabfragen und ein Klaviyo-Flowreport nach Entdeckung der Placed-Order-Metrik. Teilreihen weder als Wochensummen noch fehlende Daten als Null darstellen. Recovery XEGbTB ist live, seine Leistung fehlt jedoch im Report. Capture und Bestell-Sync sind nicht durchgehend bestätigt. CHF und USD getrennt halten; keine Käufe oder Attribution ableiten. Keine erneute Kauf-Watchabfrage und ohne konkreten neuen Befund heute keine weiteren Reports.
+
+Genau ein Verkaufsentwurf zur Freigabe: dieselben zwei Bestseller-Texte aus R43, heute gegen unveränderte Originalwerte und zehn öffentliche Produktlinks bestätigt. Keine Umsetzung oder erteilte Freigabe. Der bestehende Welcome-Service-Diff bleibt ein unveränderter Reviewbefund; keine zweite Aktion beantragt. Website-Dateiversionen R47 für Section/CSS und R46 für Directory samt übrigen R45/R44-Änderungen erhalten. Kein neuer Publish- oder Livebeleg. Zwei Tasks fortgeführt, 15 andere sowie alle 17 IDs und Historien erhalten. Versandgrenzen CHF 50/CHF 45, account.luxestyle.com.co, bestehende Frequenz, Befugnisse und beendeter Kauf-Watch bleiben erhalten. Kenntnisnahme durch Claude unbekannt.
+
 ## Aktueller Stand – 01.11.2026, Revision 47
 
 [Winter-/Weihnachtsbilder und Claude R47](WINTER-WEIHNACHTSBILDER-20261101-R47.md) · [Finale Hashes, Deltas und Belege](WINTER-WEIHNACHTSBILDER-20261101-R47.json).
