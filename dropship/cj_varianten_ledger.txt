@@ -25482,3 +25482,10 @@ wasserdichte-wlan-uberwachungskamera-mit-infra-409152 · 2026-11-02T17:22:04.992
 u21-kabellose-hd-uberwachungskamera-mit-usb-177216 · 2026-11-02T17:22:17.201Z · GESCHRIEBEN · 5 Varianten
 zwei-wege-ortungsgerat-fur-kinder-279872 · 2026-11-02T17:22:17.966Z · GESCHRIEBEN · 4 Varianten
 smart-bluetooth-speaker-mit-ambient-light-474176 · 2026-11-02T17:22:23.277Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Two pack"},{"option":"Modell","wert":
+smart-anti-diebstahl-gps-tracker-610400 · 2026-11-02T17:22:33.881Z · GESCHRIEBEN · 4 Varianten
+induktions-elektronikschloss-fur-sauna-spa-271488 · 2026-11-02T17:22:36.822Z · GESCHRIEBEN · 10 Varianten
+smart-wlan-video-turklingel-mit-gegensprechanl-a9ac65 · 2026-11-02T17:22:40.709Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Set4AU"},{"option":"Farbe","wert":"Set
+smartes-turschloss-mit-fingerabdrucksensor-506944 · 2026-11-02T17:22:47.531Z · GESCHRIEBEN · 3 Varianten
+funk-video-turklingel-mit-fernuberwachung-fc17da · 2026-11-02T17:22:53.176Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"B set"},{"option":"Farbe","wert":"A se
+solarbambus-rechner-fur-buro-627100 · 2026-11-02T17:22:54.587Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"220":{"linien":0,"urteil":"nicht_lieferbar"},"240":{"linien":0,"urte
+kabel-organizer-fur-schreibtisch-634800 · 2026-11-02T17:22:56.747Z · GESCHRIEBEN · 6 Varianten
