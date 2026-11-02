@@ -1,0 +1,4490 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 52,
+  "checkedAt": "2026-11-02T13:19:56.037278+00:00",
+  "localDate": "2026-11-02",
+  "timezone": "Europe/Zurich",
+  "state": "PREPARATION_AND_READONLY_REVIEW_NO_NEW_SOCIAL_OR_SHOP_WRITES",
+  "identity": {
+    "checkedAt": "2026-11-02T13:08:00Z",
+    "timePrecision": "same-run tool reads about 13:08UTC; exact orchestration timestamp not separately recorded",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "country": "Switzerland"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "checks": {
+      "shopDomain": true,
+      "currency": true,
+      "brand": true,
+      "timezone": true,
+      "channels": true
+    },
+    "runtime": {
+      "observationsCurrent": true,
+      "networkPolicy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "capabilities": [],
+      "secretBindings": [],
+      "runtimeVariables": [],
+      "outboundIdentities": []
+    },
+    "noOperationalWrites": true
+  },
+  "planning": {
+    "schemaVersion": 1,
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "checkedAt": "2026-11-02T13:09:50.127848+00:00",
+    "identitySource": "Root fresh live verification in this same run: shop luxestyle.ch/CHF, brand6227837 Europe/Zurich, all six expected account identities matched",
+    "request": {
+      "brandId": "6227837",
+      "extendedRange": false,
+      "fromDate": "2026-11-02T14:08:07+01:00",
+      "timezone": "Europe/Zurich",
+      "toDate": "2026-11-09T14:08:07+01:00"
+    },
+    "postCount": 23,
+    "uniqueUuidCount": 23,
+    "channelStateCount": 31,
+    "coverage": {
+      "facebook": {
+        "channelStateCount": 8,
+        "reportedStatuses": {
+          "PENDING": 8
+        },
+        "byLocalDate": {
+          "2026-11-02": 1,
+          "2026-11-03": 1,
+          "2026-11-04": 1,
+          "2026-11-05": 1,
+          "2026-11-06": 1,
+          "2026-11-07": 1,
+          "2026-11-08": 1,
+          "2026-11-09": 1
+        },
+        "noScheduledPostInQueriedSlice": [],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      },
+      "instagram": {
+        "channelStateCount": 8,
+        "reportedStatuses": {
+          "PENDING": 8
+        },
+        "byLocalDate": {
+          "2026-11-02": 1,
+          "2026-11-03": 1,
+          "2026-11-04": 1,
+          "2026-11-05": 1,
+          "2026-11-06": 1,
+          "2026-11-07": 1,
+          "2026-11-08": 1,
+          "2026-11-09": 1
+        },
+        "noScheduledPostInQueriedSlice": [],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      },
+      "threads": {
+        "channelStateCount": 1,
+        "reportedStatuses": {
+          "PENDING": 1
+        },
+        "byLocalDate": {
+          "2026-11-02": 0,
+          "2026-11-03": 0,
+          "2026-11-04": 1,
+          "2026-11-05": 0,
+          "2026-11-06": 0,
+          "2026-11-07": 0,
+          "2026-11-08": 0,
+          "2026-11-09": 0
+        },
+        "noScheduledPostInQueriedSlice": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09"
+        ],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      },
+      "tiktok": {
+        "channelStateCount": 7,
+        "reportedStatuses": {
+          "PENDING": 7
+        },
+        "byLocalDate": {
+          "2026-11-02": 1,
+          "2026-11-03": 1,
+          "2026-11-04": 1,
+          "2026-11-05": 1,
+          "2026-11-06": 1,
+          "2026-11-07": 1,
+          "2026-11-08": 1,
+          "2026-11-09": 0
+        },
+        "noScheduledPostInQueriedSlice": [
+          "2026-11-09"
+        ],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      },
+      "pinterest": {
+        "channelStateCount": 7,
+        "reportedStatuses": {
+          "PENDING": 7
+        },
+        "byLocalDate": {
+          "2026-11-02": 1,
+          "2026-11-03": 1,
+          "2026-11-04": 1,
+          "2026-11-05": 1,
+          "2026-11-06": 1,
+          "2026-11-07": 1,
+          "2026-11-08": 1,
+          "2026-11-09": 0
+        },
+        "noScheduledPostInQueriedSlice": [
+          "2026-11-09"
+        ],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      },
+      "youtube": {
+        "channelStateCount": 0,
+        "reportedStatuses": {},
+        "byLocalDate": {
+          "2026-11-02": 0,
+          "2026-11-03": 0,
+          "2026-11-04": 0,
+          "2026-11-05": 0,
+          "2026-11-06": 0,
+          "2026-11-07": 0,
+          "2026-11-08": 0,
+          "2026-11-09": 0
+        },
+        "noScheduledPostInQueriedSlice": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09"
+        ],
+        "slicesAreNotFullDays": [
+          "2026-11-02",
+          "2026-11-09"
+        ],
+        "publishedInThisRead": "unknown_scheduled_only_endpoint"
+      }
+    },
+    "collisionCheck": {
+      "facebook": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      },
+      "instagram": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      },
+      "threads": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      },
+      "tiktok": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      },
+      "pinterest": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      },
+      "youtube": {
+        "sameSlot": [],
+        "sameMediaURLs": [],
+        "sameText": [],
+        "sameTextAndMedia": []
+      }
+    },
+    "deltaFromFreshR48Source": {
+      "r48GitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+      "r48ScheduleWindow": {
+        "from": "2026-11-02T07:56:44+01:00",
+        "to": "2026-11-09T07:56:43+01:00",
+        "timezone": "Europe/Zurich",
+        "extendedRange": false,
+        "scheduledOnlyToolNotPastPublicationHistory": true
+      },
+      "r48PostCount": 22,
+      "commonUuidCount": 22,
+      "commonPostFieldsCompared": [
+        "id",
+        "uuid",
+        "publicationDate",
+        "text",
+        "providers",
+        "media",
+        "autoPublish",
+        "draft",
+        "mediaAltText",
+        "threadsData"
+      ],
+      "changedCommonObjects": [],
+      "notInNewWindow": [],
+      "newlyInWindow": [
+        {
+          "id": 407893708,
+          "publicationDate": {
+            "dateTime": "2026-11-09T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-10-27T15:31:00",
+            "timezone": "Europe/Zurich"
+          },
+          "text": "Wichteln steht an und das Geschenk für sie fehlt noch? 🎁\nMehrlagig geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl; Beschläge in Stahlfarbe, Schwarz oder Gold, Länge 20 oder 22 cm.\n\nGeflochtenes Lederarmband mit Hufeisen-Schnalle · ab CHF 21.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#lederarmband #hufeisenarmband #schmuck #geschenkidee #schweiz #luxestyle",
+          "firstCommentText": "",
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+          ],
+          "autoPublish": true,
+          "saveExternalMediaFiles": false,
+          "mediaAltText": [
+            "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+            "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+          ],
+          "shortener": false,
+          "draft": false,
+          "twitterData": {
+            "type": "POST"
+          },
+          "facebookData": {
+            "type": "POST"
+          },
+          "instagramData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "hasNotReadNotes": false,
+          "uuid": "-8720943201794045273",
+          "creatorUserMail": "allengchour@gmail.com",
+          "creatorUserId": 4801419,
+          "brandTags": []
+        }
+      ],
+      "newlyInWindowIsNotOwnCreation": true,
+      "coverageDifferenceExplanation": "The rolling window now extends until09Nov14:08; existing FB/IG09Nov12:15 item created27Oct becomes visible. This is a window-edge difference, not evidence of new creation since morning."
+    },
+    "knownThreadsRegister": {
+      "path": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+      "sha": "11c34a27d663a57a8cd6155d6089e034a0e858c2",
+      "masterId": "luxe_photo_kosmetik_organizer_20261101",
+      "checks": {
+        "exactId": true,
+        "exactUuid": true,
+        "captionExact": true,
+        "mediaURLsExact": true,
+        "slotExact": true,
+        "timezoneExact": true,
+        "onlyThreads": true,
+        "statusPending": true,
+        "draftFalse": true,
+        "autoPublishTrue": true,
+        "threadsSettingsExact": true,
+        "actualJPEGHashExact": true
+      },
+      "actualMedia": {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "bytes": 167314,
+        "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "registeredSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "exact": true
+      },
+      "status": "PENDING",
+      "platformId": null,
+      "publicationUrl": null,
+      "allChecksPassed": true
+    },
+    "ownActions": {
+      "socialWrites": 0,
+      "mediaWritesToExternalSystems": 0,
+      "newPosts": 0,
+      "newAnalyticsCalls": 0,
+      "newFlowReports": 0,
+      "registryWrites": 0
+    },
+    "limits": [
+      "Scheduled-only endpoint does not report past published posts; history outside scoped register remains unknown.",
+      "Exact-caption and URL comparisons are not complete creative, commercial-rights or prior-publication approval.",
+      "Only the approved existing Threads JPEG has current byte-hash confirmation in this check; other22media bodies and rights not re-audited.",
+      "09Nov is a partial boundary day: TikTok/Pinterest evening absence is outside this query, not a full-day gap.02Nov starts14:08; earlier history is outside this query.",
+      "Pending means scheduled, never published. No minimum content volume or replacement clips forced.",
+      "Daily analytics and Klaviyo report already completed today; not repeated."
+    ],
+    "globalFlags": {
+      "draftFalseCount": 23,
+      "autoPublishTrueCount": 23,
+      "all31ChannelStatusesPending": true,
+      "mediaSuffixCounts": {
+        ".jpeg": 36
+      }
+    }
+  },
+  "nativeSchedule": {
+    "data": [
+      {
+        "id": 407830728,
+        "publicationDate": {
+          "dateTime": "2026-11-02T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:32:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln mit Kindern ab 3 Jahren und Budget unter CHF 20? 🐼\nDer Plüsch Panda ist 15 cm gross und für Kinder ab 3 Jahren empfohlen, ein Wichtelgeschenk für unter CHF 20.\n\nPlüsch Panda 15 cm · CHF 19.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#pluschpanda #kuscheltier #wichteln #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Panda 15 cm",
+          "Plüsch Panda 15 cm"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "7282371443509710052",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407838073,
+        "publicationDate": {
+          "dateTime": "2026-11-03T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:39:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fürs Wichteln noch ein Geschenk für Sie gesucht? 🎁\nEdelstahlgehäuse mit Quarzuhrwerk und Stahlband in vier Farbkombinationen, dazu eine Box, in der man die Uhr aufbewahren oder verschenken kann.\n\nElegante Damenuhr in Roségold · CHF 40.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#damenuhr #rosegold #wichteln #weihnachtsgeschenk #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Elegante Damenuhr in Roségold",
+          "Elegante Damenuhr in Roségold"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-3660854990879961370",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407849114,
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:49:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln im Büro und noch eine Idee für ihn, der pendelt? 🎒\nSchlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel) und in 14 oder 17 Zoll, jeweils in mehreren Farben.\n\nLeichter Laptop-Rucksack für Pendler · ab CHF 44.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#laptoprucksack #pendlerrucksack #wichtelgeschenk #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-6402384969971711358",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407849577,
+        "publicationDate": {
+          "dateTime": "2026-11-05T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fürs Wichteln oder als kleines Mitbringsel noch etwas Weiches gesucht? 🧸\nDer graue Plüsch Waschbär (14 cm) wird zu einem speziellen Freund für dein Kind, empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet.\n\nPlüsch Waschbär · CHF 20.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#plüschtier #waschbär #wichteln #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Waschbär",
+          "Plüsch Waschbär"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "5982651913735720132",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407854817,
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:55:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Noch ein Wichtelgeschenk für ein Kind ab 3 gesucht? 🏗️\nDer Baggerarm ist voll funktionsfähig, der Aufsatz schwenkt um 360° und das Räumschild ist beweglich, im Massstab 1:16 und für drinnen wie draussen.\n\nJCB Mikrobagger 8010 CTS · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#mikrobagger #spielzeugbagger #kinderspielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS",
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "5940175700385481481",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407876249,
+        "publicationDate": {
+          "dateTime": "2026-11-07T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln steht an und du suchst etwas für einen gemütlichen Sofaabend? 🛋️\nÜbergrosser Kapuzenpullover mit Taschen, der dich warm einpackt wie eine Decke – für Frauen und Männer, in mehreren Längen und Farben.\n\nXXL Hoodie-Decke mit Taschen für Sie & Ihn · CHF 37.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#hoodiedecke #tvdecke #sofaabend #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn",
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-2612931623723381280",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407889412,
+        "publicationDate": {
+          "dateTime": "2026-11-08T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:27:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln in Sicht und noch kein Geschenk für sie? 🎁\nEin Hochlandrind als Plüschtier, 25 cm gross – ein spezielles Kuscheltier, wer hat das schon?\n\nPlüsch Hochlandrind · CHF 35.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#plüschtier #hochlandrind #kuscheltier #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Hochlandrind",
+          "Plüsch Hochlandrind"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-6564064169639197228",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 407893708,
+        "publicationDate": {
+          "dateTime": "2026-11-09T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:31:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln steht an und das Geschenk für sie fehlt noch? 🎁\nMehrlagig geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl; Beschläge in Stahlfarbe, Schwarz oder Gold, Länge 20 oder 22 cm.\n\nGeflochtenes Lederarmband mit Hufeisen-Schnalle · ab CHF 21.90\nLieferung 10–20 Werktage · Für Weihnachten bis Mitte November bestellen\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#lederarmband #hufeisenarmband #schmuck #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+        ],
+        "shortener": false,
+        "draft": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-8720943201794045273",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413194611,
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T20:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Mehr Überblick auf deinem Schminktisch.\n\nKosmetik-Organizer · CHF 29.90\n\nProdukt und Angaben ansehen:\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-1937081137064819378",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "brandTags": []
+      },
+      {
+        "id": 413265805,
+        "publicationDate": {
+          "dateTime": "2026-11-02T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Der Baggerarm ist voll funktionsfähig, der Aufsatz schwenkt um 360° und das Räumschild ist beweglich. Massstab 1:16, für drinnen wie draussen. 🏗️\n\nJCB Mikrobagger 8010 CTS · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#bagger #spielzeug #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS",
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "JCB Mikrobagger 8010 CTS · CHF 26.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "6062723250200595640",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266208,
+        "publicationDate": {
+          "dateTime": "2026-11-03T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Ein Hochlandrind als Plüschtier, 25 cm gross: ein besonderes Kuscheltier zum Verschenken. 🐮\n\nPlüsch Hochlandrind · CHF 35.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#hochlandrind #kuscheltier #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Hochlandrind",
+          "Plüsch Hochlandrind"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "Plüsch Hochlandrind · CHF 35.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "7722742248805451240",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266366,
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Übergrosser Kapuzenpullover mit Taschen, der dich warm einpackt wie eine Decke. Für Frauen und Männer, in mehreren Längen und Farben. 🛋️\n\nXXL Hoodie-Decke mit Taschen · CHF 37.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#hoodiedecke #sofaabend #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn",
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "XXL Hoodie-Decke mit Taschen · CHF 37.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-441851229276386553",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266427,
+        "publicationDate": {
+          "dateTime": "2026-11-05T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Der Plüsch Panda ist 15 cm gross und für Kinder ab 3 Jahren empfohlen, ein Wichtelgeschenk für unter CHF 20. 🐼\n\nPlüsch Panda 15 cm · CHF 19.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#pluschpanda #kuscheltier #wichteln #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7078108431213599273.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Panda 15 cm",
+          "Plüsch Panda 15 cm"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "Plüsch Panda 15 cm · CHF 19.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "1539281442427783156",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266457,
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Edelstahlgehäuse mit Quarzuhrwerk und Stahlband in vier Farbkombinationen, dazu eine Box, in der man die Uhr aufbewahren oder verschenken kann. 🎁\n\nElegante Damenuhr in Roségold · CHF 40.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#damenuhr #rosegold #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Elegante Damenuhr in Roségold",
+          "Elegante Damenuhr in Roségold"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "Elegante Damenuhr in Roségold · CHF 40.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "3188192088876928648",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266476,
+        "publicationDate": {
+          "dateTime": "2026-11-07T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:45:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Der graue Plüsch Waschbär (14 cm) ist empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet. 🧸\n\nPlüsch Waschbär · CHF 20.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#waschbär #kuscheltier #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Waschbär",
+          "Plüsch Waschbär"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "Plüsch Waschbär · CHF 20.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "4203543208056408815",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266611,
+        "publicationDate": {
+          "dateTime": "2026-11-08T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Schlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel), in 14 oder 17 Zoll und jeweils in mehreren Farben. 🎒\n\nLeichter Laptop-Rucksack für Pendler · ab CHF 44.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#laptoprucksack #pendler #geschenkidee #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "title": "Leichter Laptop-Rucksack für Pendler · ab CHF 44.90",
+          "photoCoverIndex": 0
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-9010345156192940856",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266728,
+        "publicationDate": {
+          "dateTime": "2026-11-02T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Plüsch Panda, 15 cm gross, für Kinder ab 3 Jahren empfohlen. Ein Wichtelgeschenk für unter CHF 20. Ab Schweizer Lager, Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Panda 15 cm"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Plüsch Panda 15 cm · Wichtelgeschenk unter CHF 20",
+          "pinLink": "https://luxestyle.ch/products/plusch-panda-15-cm-fga25867?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "3492872204324128576",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266756,
+        "publicationDate": {
+          "dateTime": "2026-11-03T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Elegante Damenuhr in Roségold mit Edelstahlgehäuse, Quarzuhrwerk und Stahlband, in vier Farbkombinationen, dazu eine Box zum Aufbewahren oder Verschenken. Gratis Versand ab CHF 50.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Elegante Damenuhr in Roségold"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Elegante Damenuhr in Roségold · Geschenkidee für Sie",
+          "pinLink": "https://luxestyle.ch/products/elegante-damenuhr-in-rosegold-668544?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "5341229410228391640",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266778,
+        "publicationDate": {
+          "dateTime": "2026-11-04T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Leichter Laptop-Rucksack für Pendler: schlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel), in 14 oder 17 Zoll. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Leichter Laptop-Rucksack für Pendler · 14 und 17 Zoll",
+          "pinLink": "https://luxestyle.ch/products/leichter-laptop-rucksack-fur-pendler-616000?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-4644708277417590463",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266808,
+        "publicationDate": {
+          "dateTime": "2026-11-05T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Grauer Plüsch Waschbär, 14 cm, empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet. Ab Schweizer Lager, Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Plüsch Waschbär"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+          "pinLink": "https://luxestyle.ch/products/plusch-waschbar-fga41332?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "7261714618004557392",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266908,
+        "publicationDate": {
+          "dateTime": "2026-11-06T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "JCB Mikrobagger 8010 CTS im Massstab 1:16: voll funktionsfähiger Baggerarm, Aufsatz schwenkt um 360°, beweglicher Räumschild. Für drinnen und draussen. Ab Schweizer Lager.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "JCB Mikrobagger 8010 CTS · Spielzeug für Kinder",
+          "pinLink": "https://luxestyle.ch/products/jcb-mikrobagger-8010-cts-fga062003?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-3680497409192607202",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266951,
+        "publicationDate": {
+          "dateTime": "2026-11-07T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "XXL Hoodie-Decke mit Taschen: übergrosser Kapuzenpullover für Frauen und Männer, in mehreren Längen und Farben. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "XXL Hoodie-Decke mit Taschen · Sofaabend-Geschenk",
+          "pinLink": "https://luxestyle.ch/products/xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "-6271192589084504293",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      },
+      {
+        "id": 413266978,
+        "publicationDate": {
+          "dateTime": "2026-11-08T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Geflochtenes Lederarmband mit Hufeisen-Schnalle aus Edelstahl, in Schwarz, Blau oder Braun, Länge 20 oder 22 cm. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg"
+        ],
+        "autoPublish": true,
+        "saveExternalMediaFiles": false,
+        "mediaAltText": [
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+        ],
+        "shortener": false,
+        "draft": false,
+        "imageVariants": false,
+        "twitterData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+          "pinLink": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-hufeisen-schnall-639500?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "hasNotReadNotes": false,
+        "uuid": "5938318811609320266",
+        "creatorUserMail": "allengchour@gmail.com",
+        "creatorUserId": 4801419,
+        "brandTags": []
+      }
+    ]
+  },
+  "products": {
+    "native": {
+      "result": {
+        "data": {
+          "shop": {
+            "id": "gid://shopify/Shop/94368563585",
+            "currencyCode": "CHF",
+            "ianaTimezone": "Europe/Zurich",
+            "url": "https://luxestyle.ch"
+          },
+          "projector": {
+            "id": "gid://shopify/Product/15521256604033",
+            "title": "Sternenlicht-Projektor für Schlafzimmer",
+            "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+            "status": "ACTIVE",
+            "tags": [
+              "auswahl-offen",
+              "beleuchtung",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "dropship",
+              "elektronik",
+              "gadget",
+              "sort-nachtlichter",
+              "sort-nachttischlampen",
+              "tech"
+            ],
+            "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+                "width": 1920,
+                "height": 1919,
+                "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle"
+              }
+            }
+          },
+          "organizer": {
+            "id": "gid://shopify/Product/15408458236289",
+            "title": "Kosmetik-Organizer für den Schminktisch",
+            "handle": "bambus-kosmetik-organizer-premium",
+            "status": "ACTIVE",
+            "tags": [
+              "Aufbewahrung",
+              "bambus",
+              "bambus-badezimmer",
+              "beauty aufbewahrung",
+              "bild-ok",
+              "kosmetik organizer",
+              "kuratiert",
+              "luxestyle-ch",
+              "nachhaltig",
+              "premium",
+              "schminktisch",
+              "sort-kosmetik-schmuck-organizer",
+              "swiss-brand",
+              "vegan"
+            ],
+            "onlineStoreUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+                "width": 1601,
+                "height": 1601,
+                "altText": "Kosmetik-Organizer für den Schminktisch – Produktansicht"
+              }
+            }
+          },
+          "projectorVariant": {
+            "id": "gid://shopify/ProductVariant/56197916361089",
+            "title": "Default Title",
+            "sku": "CJ-1477820492730732544",
+            "price": "34.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "product": {
+              "id": "gid://shopify/Product/15521256604033"
+            }
+          },
+          "organizerVariant": {
+            "id": "gid://shopify/ProductVariant/55732479590785",
+            "title": "Default Title",
+            "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+            "price": "29.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "product": {
+              "id": "gid://shopify/Product/15408458236289"
+            }
+          }
+        }
+      },
+      "variables": {
+        "projector": "gid://shopify/Product/15521256604033",
+        "organizer": "gid://shopify/Product/15408458236289",
+        "projectorVariant": "gid://shopify/ProductVariant/56197916361089",
+        "organizerVariant": "gid://shopify/ProductVariant/55732479590785"
+      },
+      "validatorSkipped": true,
+      "scope": "2 exact products and variants; no masspagination/no orders"
+    },
+    "public": [
+      {
+        "key": "projector",
+        "kind": "page",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089",
+        "at": "2026-11-02T13:11:43.623121+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1482584,
+        "sha256": "7b39a81f40bd2def0dcb900e55508e28a8bd76343120b682330e9a068c9966ab",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/projector.html",
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "h1": [
+          "Sternenlicht-Projektor für Schlafzimmer"
+        ],
+        "buttonState": "independent_browser_check_pending",
+        "state": "observed"
+      },
+      {
+        "key": "projector",
+        "kind": "json",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "at": "2026-11-02T13:11:43.625385+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "contentType": "text/javascript; charset=utf-8",
+        "bytes": 15197,
+        "sha256": "e8c24630c226812e5b674f6473e40de81951a05553840ae2b7e798682a0cf815",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/projector.json",
+        "productId": 15521256604033,
+        "variant": {
+          "id": 56197916361089,
+          "sku": "CJ-1477820492730732544",
+          "price": 3490,
+          "available": true
+        },
+        "exactProduct": true,
+        "exactVariantPriceAvailable": true,
+        "state": "observed"
+      },
+      {
+        "key": "projector",
+        "kind": "image",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "at": "2026-11-02T13:11:43.627264+00:00",
+        "status": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "contentType": "image/jpeg",
+        "bytes": 118008,
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/projector.jpg",
+        "dimensionsFromNative": [
+          1920,
+          1919
+        ],
+        "state": "observed"
+      },
+      {
+        "key": "organizer",
+        "kind": "page",
+        "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?variant=55732479590785",
+        "at": "2026-11-02T13:11:43.823699+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?variant=55732479590785",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1359825,
+        "sha256": "54cbbd20c1e3b393b1ace875d30b78d64fa70cedaaa73d36c6fdbfabaec89e00",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/organizer.html",
+        "canonical": [
+          "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium"
+        ],
+        "h1": [
+          "Kosmetik-Organizer für den Schminktisch"
+        ],
+        "buttonState": "independent_browser_check_pending",
+        "state": "observed"
+      },
+      {
+        "key": "organizer",
+        "kind": "json",
+        "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium.js",
+        "at": "2026-11-02T13:11:43.997110+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium.js",
+        "contentType": "text/javascript; charset=utf-8",
+        "bytes": 4307,
+        "sha256": "23efb7e9b2541b4ff597a30823ee7fe3d13918c6e86569cd131b02d782545c99",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/organizer.json",
+        "productId": 15408458236289,
+        "variant": {
+          "id": 55732479590785,
+          "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+          "price": 2990,
+          "available": true
+        },
+        "exactProduct": true,
+        "exactVariantPriceAvailable": true,
+        "state": "observed"
+      },
+      {
+        "key": "organizer",
+        "kind": "image",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+        "at": "2026-11-02T13:11:44.351103+00:00",
+        "status": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+        "contentType": "image/jpeg",
+        "bytes": 167314,
+        "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "path": "/workspace/luxestyle-review/afternoon-20261102-r52/products/organizer.jpg",
+        "dimensionsFromNative": [
+          1601,
+          1601
+        ],
+        "state": "observed"
+      }
+    ],
+    "tagGuard": {
+      "guardBlob": "3adab7369f90945769331910525c08b3778b4371",
+      "rows": [
+        {
+          "key": "projector",
+          "productId": "gid://shopify/Product/15521256604033",
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "sort-nachtlichter",
+            "sort-nachttischlampen",
+            "tech"
+          ],
+          "guardHits": [],
+          "extraRueckhol": [],
+          "missingTags": false,
+          "tagEligibleOnly": true,
+          "filmApproval": false
+        },
+        {
+          "key": "organizer",
+          "productId": "gid://shopify/Product/15408458236289",
+          "tags": [
+            "Aufbewahrung",
+            "bambus",
+            "bambus-badezimmer",
+            "beauty aufbewahrung",
+            "bild-ok",
+            "kosmetik organizer",
+            "kuratiert",
+            "luxestyle-ch",
+            "nachhaltig",
+            "premium",
+            "schminktisch",
+            "sort-kosmetik-schmuck-organizer",
+            "swiss-brand",
+            "vegan"
+          ],
+          "guardHits": [],
+          "extraRueckhol": [],
+          "missingTags": false,
+          "tagEligibleOnly": true,
+          "filmApproval": false
+        }
+      ]
+    },
+    "browser": {
+      "scope": "Two 390px product-page GET/HEAD browser reads only; no cart/checkout, cookie clicks, writes, reports or attribution. Native identity from current NATIVE.json.",
+      "checkedAt": "2026-11-02T13:12:30.084005+00:00",
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "currencyCode": "CHF",
+        "ianaTimezone": "Europe/Zurich",
+        "url": "https://luxestyle.ch"
+      },
+      "views": [
+        {
+          "key": "projector",
+          "requestedUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089",
+          "nativeProductId": "gid://shopify/Product/15521256604033",
+          "nativeVariantId": "gid://shopify/ProductVariant/56197916361089",
+          "nativePriceCHF": "34.90",
+          "screenshots": [
+            "/workspace/luxestyle-review/afternoon-20261102-r52/products/publicQA/projector-390-gallery.png",
+            "/workspace/luxestyle-review/afternoon-20261102-r52/products/publicQA/projector-390-purchase.png"
+          ],
+          "httpStatus": 200,
+          "data": {
+            "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089",
+            "themeId": "213013037447",
+            "currency": "CHF",
+            "analyticsMeta": {
+              "id": 15521256604033,
+              "gid": "gid://shopify/Product/15521256604033",
+              "vendor": "LuxeStyle",
+              "type": "Elektronik",
+              "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+              "variants": [
+                {
+                  "id": 56197916361089,
+                  "price": 3490,
+                  "name": "Sternenlicht-Projektor für Schlafzimmer",
+                  "public_title": null,
+                  "sku": "CJ-1477820492730732544"
+                }
+              ],
+              "remote": false,
+              "collective": false
+            },
+            "selectedVariantId": "56197916361089",
+            "h1": [
+              "Sternenlicht-Projektor für Schlafzimmer"
+            ],
+            "mainText": "Sternenlicht-Projektor für Schlafzimmer\n\nCHF 34.90\nZu Produktinformationen springen\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n♡\nHome\n›\nWohnen & Garten\n›\nBeleuchtung\nSternenlicht-Projektor für Schlafzimmer\nCHF 34.90\nMenge verringern\nMenge erhöhen\nIn den Warenkorb legen\nJetzt zum Checkout\n♡\nMerken\nMerkliste ansehen\nVerfügbar · Direktversand aus Asien\n🚚\nBestelle jetzt – Lieferung voraussichtlich 17. Nov. – 1. Dez.\nDirektversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis ab CHF 50 nach Rabatt\n🚚 Versand in der Schweiz CHF 7 · gratis ab CHF 50 nach Rabatt\n↩️ 30 Tage Rückgabe\n🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal\n🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch\nVersand & Lieferung\nRückgabe & Umtausch\n\n30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig.\n\nDer Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.\n\nSo funktioniert er\n\nMit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.\n\nDie Ausführungen\n\nEs gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxy-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxy-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxy-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxy-Scheibe, schau dir die gewünschte Ausführung also genau an.\n\nHinweise\n\nDer Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.\n\nTechnische Daten\nMaterial\tKunststoff, Sonstiges\nGewicht\t650 g\nMasse\t121x110x121 mm\nLeistung\t4W\nLieferumfang\n1 Nachtlicht\n6 Farbscheiben\n1 wiederaufladbares Bluetooth-Drehteil\n1 Galaxyscheibe\nSo geht's\nLampenschirm einschalten für Seitenprojektion\nLampenschirm als kleines Nachtlicht einrasten\nSituation drehen, um Fokus zu justieren\nFilmbox öffnen\nFilmschale entnehmen/ersetzen\nFilmschale in Filmbox schieben\nGut zu wissen\nProdukt nicht mit schweren Gegenständen quetschen\nOberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden\nProdukt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden\nNur für Innenräume geeignet\nMitgeliefertes USB-Kabel nur für dieses Produkt verwenden\n\nAngaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.\n\n🛍️ Das könnte dir auch gefallen: Wohnen & Deko · Bestseller\n\nSpezifikationen & Details\nKategorie\tElektronik\nMaterial\tKunststoff\nGewicht\t650 g\nZustand\tNeu\nÄhnliche Produkte",
+            "forms": [
+              {
+                "id": "ref: <Node>",
+                "action": "/cart/add",
+                "variants": [
+                  {
+                    "value": "56197916361089",
+                    "disabled": false,
+                    "tag": "INPUT"
+                  }
+                ],
+                "buttons": [
+                  {
+                    "text": "Menge verringern",
+                    "type": "button",
+                    "name": "minus",
+                    "disabled": true,
+                    "visible": true,
+                    "ariaDisabled": null
+                  },
+                  {
+                    "text": "Menge erhöhen",
+                    "type": "button",
+                    "name": "plus",
+                    "disabled": false,
+                    "visible": true,
+                    "ariaDisabled": null
+                  },
+                  {
+                    "text": "In den Warenkorb legen",
+                    "type": "submit",
+                    "name": "add",
+                    "disabled": false,
+                    "visible": true,
+                    "ariaDisabled": null
+                  },
+                  {
+                    "text": "Jetzt zum Checkout",
+                    "type": "button",
+                    "name": "",
+                    "disabled": false,
+                    "visible": true,
+                    "ariaDisabled": null
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=120",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 120,
+                "naturalHeight": 120,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 316,
+                "naturalHeight": 264,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 325,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 318,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 219,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=832",
+                "alt": "",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 219,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 316,
+                "naturalHeight": 264,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 325,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 318,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=480",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 219,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=832",
+                "alt": "",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 219,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089&width=1024",
+                "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "visible": false
+              }
+            ],
+            "visiblePrices": [
+              "CHF 34.90",
+              "CHF 34.90",
+              "CHF 34.90",
+              "CHF 34.90",
+              "CHF 34.90",
+              "CHF 34.90"
+            ],
+            "documentWidth": 390,
+            "viewport": 390
+          },
+          "checks": {
+            "http200": true,
+            "exactProductTitle": true,
+            "exactProductId": true,
+            "exactVariantInProductForm": true,
+            "selectedVariantMetaMatches": true,
+            "shopCurrencyCHF": true,
+            "expectedPriceVisible": true,
+            "currencyLabelVisible": true,
+            "visibleEnabledCartButton": true,
+            "nativeFeaturedImageLoaded": true
+          },
+          "unknown": [],
+          "failed": []
+        },
+        {
+          "key": "organizer",
+          "requestedUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?variant=55732479590785",
+          "nativeProductId": "gid://shopify/Product/15408458236289",
+          "nativeVariantId": "gid://shopify/ProductVariant/55732479590785",
+          "nativePriceCHF": "29.90",
+          "screenshots": [
+            "/workspace/luxestyle-review/afternoon-20261102-r52/products/publicQA/organizer-390-gallery.png",
+            "/workspace/luxestyle-review/afternoon-20261102-r52/products/publicQA/organizer-390-purchase.png"
+          ],
+          "httpStatus": 200,
+          "data": {
+            "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?variant=55732479590785",
+            "themeId": "213013037447",
+            "currency": "CHF",
+            "analyticsMeta": {
+              "id": 15408458236289,
+              "gid": "gid://shopify/Product/15408458236289",
+              "vendor": "LuxeStyle",
+              "type": "Bambus & Badezimmer",
+              "handle": "bambus-kosmetik-organizer-premium",
+              "variants": [
+                {
+                  "id": 55732479590785,
+                  "price": 2990,
+                  "name": "Kosmetik-Organizer für den Schminktisch",
+                  "public_title": null,
+                  "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE"
+                }
+              ],
+              "remote": false,
+              "collective": false
+            },
+            "selectedVariantId": "55732479590785",
+            "h1": [
+              "Kosmetik-Organizer für den Schminktisch"
+            ],
+            "mainText": "Kosmetik-Organizer für den Schminktisch\n\nCHF 29.90\nZu Produktinformationen springen\n♡\nHome\n›\nAufbewahrung\nKosmetik-Organizer für den Schminktisch\nCHF 29.90\nMenge verringern\nMenge erhöhen\nIn den Warenkorb legen\nWeitere Bezahlmöglichkeiten\n♡\nMerken\nMerkliste ansehen\nVerfügbar · Direktversand aus Asien\n🚚\nBestelle jetzt – Lieferung voraussichtlich 17. Nov. – 1. Dez.\nDirektversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis ab CHF 50 nach Rabatt\n🚚 Versand in der Schweiz CHF 7 · gratis ab CHF 50 nach Rabatt\n↩️ 30 Tage Rückgabe\n🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal\n🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch\nVersand & Lieferung\nRückgabe & Umtausch\n\n30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig.\n\nDeine Düfte übersichtlich in Szene gesetzt. Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine Auswahl nach vorn und hinten staffeln und deinen Schminktisch bewusst gestalten.\n\nGestaffelte Form, warme Optik\n\nMehrere nach hinten ansteigende Ebenen prägen das Design. Naturfarbene Ablageflächen mit sichtbarer Maserung treffen auf einen dunklen Unterbau. Die Vorderseite wird durch einen quer verlaufenden Griff ergänzt.\n\nEine Anordnung für deine Routine\n\nEine mögliche Anordnung: Platziere häufig verwendete Flakons im vorderen Bereich und kombiniere dahinter weitere Lieblingsprodukte. Die unterschiedlichen Höhen bringen Struktur in die Präsentation, ohne alle Stücke in einer Reihe aufzustellen.\n\nVersand und Rückgabe\n\nInformationen zu Versandkosten und Lieferung findest du in unseren Versandbedingungen. Für Rückgaben gelten unsere Rückgabebedingungen.\n\n📖 Passend dazu im Ratgeber: Ratgeber: Minimalistisch einrichten\n\n🛍️ Das könnte dir auch gefallen: Premium-Marken · Bestseller\n\nSpezifikationen & Details\nKategorie\tBambus & Badezimmer\nGewicht\t0.5 kg\nZustand\tNeu\nÄhnliche Produkte",
+            "forms": [
+              {
+                "id": "ref: <Node>",
+                "action": "/cart/add",
+                "variants": [
+                  {
+                    "value": "55732479590785",
+                    "disabled": false,
+                    "tag": "INPUT"
+                  }
+                ],
+                "buttons": [
+                  {
+                    "text": "Menge verringern",
+                    "type": "button",
+                    "name": "minus",
+                    "disabled": true,
+                    "visible": true,
+                    "ariaDisabled": null
+                  },
+                  {
+                    "text": "Menge erhöhen",
+                    "type": "button",
+                    "name": "plus",
+                    "disabled": false,
+                    "visible": true,
+                    "ariaDisabled": null
+                  },
+                  {
+                    "text": "In den Warenkorb legen",
+                    "type": "submit",
+                    "name": "add",
+                    "disabled": false,
+                    "visible": true,
+                    "ariaDisabled": null
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266&width=120",
+                "alt": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+                "complete": true,
+                "naturalWidth": 120,
+                "naturalHeight": 120,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266&width=480",
+                "alt": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": true
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266&width=480",
+                "alt": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              },
+              {
+                "src": "https://luxestyle.ch/cdn/shop/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266&width=480",
+                "alt": "Kosmetik-Organizer für den Schminktisch – Produktansicht",
+                "complete": true,
+                "naturalWidth": 389,
+                "naturalHeight": 389,
+                "visible": false
+              }
+            ],
+            "visiblePrices": [
+              "CHF 29.90",
+              "CHF 29.90",
+              "CHF 29.90",
+              "CHF 29.90",
+              "CHF 29.90",
+              "CHF 29.90"
+            ],
+            "documentWidth": 390,
+            "viewport": 390
+          },
+          "checks": {
+            "http200": true,
+            "exactProductTitle": true,
+            "exactProductId": true,
+            "exactVariantInProductForm": true,
+            "selectedVariantMetaMatches": true,
+            "shopCurrencyCHF": true,
+            "expectedPriceVisible": true,
+            "currencyLabelVisible": true,
+            "visibleEnabledCartButton": true,
+            "nativeFeaturedImageLoaded": true
+          },
+          "unknown": [],
+          "failed": []
+        }
+      ],
+      "blockedNonRead": 147,
+      "blockedAnalytics": 4,
+      "blockedReviewRequests": 4,
+      "pageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "allChecksPassed": true,
+      "visualReview": {
+        "screenshotsInspected": 4,
+        "projector": "Native Produktansicht zeigt weissen/schwarzen Projektor mit abgenommener transluzenter Haube; Titel, CHF 34.90 und Warenkorbbutton auf 390 px lesbar. Keine Funktions-, Motivset- oder Rechtefreigabe aus dem Bild abgeleitet.",
+        "organizer": "Native Produktansicht zeigt Holz-/schwarzen Schminktisch-Organizer mit aufgestellten Parfumflakons; Titel, CHF 29.90 und Warenkorbbutton auf 390 px lesbar. Die Inszenierung zeigt Markenflakons; enthaltenes Zubehör und Bildrechte wurden nicht verifiziert.",
+        "layout": "Keine sichtbare Überlagerung der Preis- oder Warenkorbbereiche in den vier Screenshots.",
+        "observedUnverifiedPromises": "Die Seiten zeigen Verfügbarkeit, Direktversand aus Asien und ein Lieferdatumsfenster. Dieser Browserread bestätigt nur die angezeigten Texte, nicht Lagerbestand, Lieferdatum oder Herkunft."
+      },
+      "limitations": [
+        "Keine Warenkorb-/Checkout-Aktion, kein Kauf und keine Zahlungsprüfung. Enabled Warenkorbbutton und exakte Variant-ID sind begrenzte öffentliche Kaufbarkeitsindikatoren.",
+        "Analytics-/Review-/Nicht-GET-/HEAD-Anfragen blockiert; 12 Seitenfehler aus geblockten Fetch-/Trackingzugriffen. Tracking und Reviews bleiben ungeprüft.",
+        "Keine Bestands-, Lieferzeit-, Produkteigenschafts- oder Rechtefreigabe aus der Browserdarstellung."
+      ]
+    },
+    "originalImagesVisuallyReadByRoot": true,
+    "noStockOrDeliveryPromise": true
+  },
+  "dailyReports": {
+    "source": {
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+      "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+      "sameDayReuse": true,
+      "newReportCalls": 0
+    },
+    "originalCalls": {
+      "metricool": {
+        "from": "2026-10-26T00:00:00+01:00",
+        "to": "2026-11-01T23:59:59+01:00",
+        "dataCalls": 6,
+        "definitionCalls": 6,
+        "retries": 0
+      },
+      "klaviyo": {
+        "reportCalls": 1,
+        "discoveredPlacedOrder": "W7XTVD",
+        "range": "2026-10-26/2026-11-01",
+        "reportId": "3015da2f-13b1-4225-9cd1-f500c4f1250a",
+        "recoveryPerformance": "unknown_not_in_the_three_flow_request"
+      }
+    },
+    "analytics": {
+      "facebook": {
+        "requestedMetricIds": [
+          "FBEV12",
+          "FBEV34",
+          "FBEV22",
+          "FBEV33"
+        ],
+        "coverage": [
+          {
+            "id": "FBEV12",
+            "label": "Facebook Evolution > Feed Posts Impressions",
+            "observedSum": 9,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028"
+            ],
+            "missingDates": [
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "FBEV34",
+            "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "FBEV22",
+            "label": "Facebook Evolution > Reels Video Views",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "FBEV33",
+            "label": "Facebook Evolution > Total Content (feed posts + reels)",
+            "observedSum": 16,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "missingDates": [],
+            "completeSevenDays": true
+          }
+        ],
+        "rows": [
+          [
+            null,
+            "0.0",
+            "0.0",
+            "1.0",
+            "20261101"
+          ],
+          [
+            "2.0",
+            null,
+            null,
+            "4.0",
+            "20261026"
+          ],
+          [
+            "5.0",
+            null,
+            null,
+            "2.0",
+            "20261027"
+          ],
+          [
+            "2.0",
+            null,
+            null,
+            "2.0",
+            "20261028"
+          ],
+          [
+            null,
+            null,
+            null,
+            "4.0",
+            "20261029"
+          ],
+          [
+            null,
+            null,
+            null,
+            "2.0",
+            "20261030"
+          ],
+          [
+            null,
+            null,
+            null,
+            "1.0",
+            "20261031"
+          ]
+        ],
+        "columns": [
+          "FBEV12",
+          "FBEV34",
+          "FBEV22",
+          "FBEV33",
+          "date"
+        ]
+      },
+      "instagram": {
+        "requestedMetricIds": [
+          "IGEV05",
+          "IGEV38",
+          "IGEV37"
+        ],
+        "coverage": [
+          {
+            "id": "IGEV05",
+            "label": "Instagram Evolution > Views",
+            "observedSum": 497,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "missingDates": [],
+            "completeSevenDays": true
+          },
+          {
+            "id": "IGEV38",
+            "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+            "observedSum": 3,
+            "observedDates": [
+              "20261026",
+              "20261027"
+            ],
+            "missingDates": [
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "IGEV37",
+            "label": "Instagram Evolution > Total Content (feed posts + reels)",
+            "observedSum": 16,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "missingDates": [],
+            "completeSevenDays": true
+          }
+        ],
+        "rows": [
+          [
+            "49.0",
+            null,
+            "1.0",
+            "20261101"
+          ],
+          [
+            "87.0",
+            "2.0",
+            "4.0",
+            "20261026"
+          ],
+          [
+            "56.0",
+            "1.0",
+            "2.0",
+            "20261027"
+          ],
+          [
+            "129.0",
+            null,
+            "2.0",
+            "20261028"
+          ],
+          [
+            "99.0",
+            null,
+            "4.0",
+            "20261029"
+          ],
+          [
+            "42.0",
+            null,
+            "2.0",
+            "20261030"
+          ],
+          [
+            "35.0",
+            null,
+            "1.0",
+            "20261031"
+          ]
+        ],
+        "columns": [
+          "IGEV05",
+          "IGEV38",
+          "IGEV37",
+          "date"
+        ]
+      },
+      "threads": {
+        "requestedMetricIds": [
+          "THEV06",
+          "THEV05",
+          "THEV02"
+        ],
+        "coverage": [
+          {
+            "id": "THEV06",
+            "label": "Threads Evolution > Post Views",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "THEV05",
+            "label": "Threads Evolution > Interactions",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "THEV02",
+            "label": "Threads Evolution > Posts",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          }
+        ],
+        "rows": [
+          [
+            "0.0",
+            "0.0",
+            "0.0",
+            "20261101"
+          ]
+        ],
+        "columns": [
+          "THEV06",
+          "THEV05",
+          "THEV02",
+          "date"
+        ]
+      },
+      "tiktok": {
+        "requestedMetricIds": [
+          "TKEV12",
+          "TKEV06",
+          "TKEV01"
+        ],
+        "coverage": [
+          {
+            "id": "TKEV12",
+            "label": "TikTok Evolution > Video views in period",
+            "observedSum": 160,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "missingDates": [
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "TKEV06",
+            "label": "TikTok Evolution > Interactions",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "TKEV01",
+            "label": "TikTok Evolution > Videos",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          }
+        ],
+        "rows": [
+          [
+            null,
+            "0.0",
+            "0.0",
+            "20261101"
+          ],
+          [
+            "38.0",
+            null,
+            null,
+            "20261026"
+          ],
+          [
+            "29.0",
+            null,
+            null,
+            "20261027"
+          ],
+          [
+            "26.0",
+            null,
+            null,
+            "20261028"
+          ],
+          [
+            "27.0",
+            null,
+            null,
+            "20261029"
+          ],
+          [
+            "19.0",
+            null,
+            null,
+            "20261030"
+          ],
+          [
+            "21.0",
+            null,
+            null,
+            "20261031"
+          ]
+        ],
+        "columns": [
+          "TKEV12",
+          "TKEV06",
+          "TKEV01",
+          "date"
+        ]
+      },
+      "youtube": {
+        "requestedMetricIds": [
+          "YTEV02",
+          "YTEV14",
+          "YTEV16",
+          "YTEV18",
+          "YTEV04"
+        ],
+        "coverage": [
+          {
+            "id": "YTEV02",
+            "label": "Youtube Evolution > Video Views",
+            "observedSum": 70,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "YTEV14",
+            "label": "Youtube Evolution > Visited Videos Likes",
+            "observedSum": 0,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "YTEV16",
+            "label": "Youtube Evolution > Visited Videos Comments",
+            "observedSum": 0,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "YTEV18",
+            "label": "Youtube Evolution > Visited Videos Shares",
+            "observedSum": 0,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "YTEV04",
+            "label": "Youtube Evolution > Videos",
+            "observedSum": 0,
+            "observedDates": [
+              "20261101"
+            ],
+            "missingDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031"
+            ],
+            "completeSevenDays": false
+          }
+        ],
+        "rows": [
+          [
+            "2.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            null,
+            "20261030"
+          ],
+          [
+            "5.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            null,
+            "20261029"
+          ],
+          [
+            "29.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            null,
+            "20261026"
+          ],
+          [
+            "26.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            null,
+            "20261027"
+          ],
+          [
+            "8.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            null,
+            "20261028"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "0.0",
+            "20261101"
+          ]
+        ],
+        "columns": [
+          "YTEV02",
+          "YTEV14",
+          "YTEV16",
+          "YTEV18",
+          "YTEV04",
+          "date"
+        ]
+      },
+      "pinterest": {
+        "requestedMetricIds": [
+          "PIEV01",
+          "PIEV04",
+          "PIEV06",
+          "PIEV02"
+        ],
+        "coverage": [
+          {
+            "id": "PIEV01",
+            "label": "Pinterest Evolution > Impressions in period",
+            "observedSum": 2978,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "PIEV04",
+            "label": "Pinterest Evolution > Interactions in period",
+            "observedSum": 68,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "PIEV06",
+            "label": "Pinterest Evolution > Outbound clicks in period",
+            "observedSum": 4,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030"
+            ],
+            "missingDates": [
+              "20261031",
+              "20261101"
+            ],
+            "completeSevenDays": false
+          },
+          {
+            "id": "PIEV02",
+            "label": "Pinterest Evolution > Pins",
+            "observedSum": 25,
+            "observedDates": [
+              "20261026",
+              "20261027",
+              "20261028",
+              "20261029",
+              "20261030",
+              "20261031",
+              "20261101"
+            ],
+            "missingDates": [],
+            "completeSevenDays": true
+          }
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            "2.0",
+            "20261101"
+          ],
+          [
+            "1090.0",
+            "26.0",
+            "2.0",
+            "4.0",
+            "20261026"
+          ],
+          [
+            "827.0",
+            "18.0",
+            "1.0",
+            "6.0",
+            "20261027"
+          ],
+          [
+            "444.0",
+            "7.0",
+            "1.0",
+            "2.0",
+            "20261028"
+          ],
+          [
+            "324.0",
+            "9.0",
+            "0.0",
+            "3.0",
+            "20261029"
+          ],
+          [
+            "293.0",
+            "8.0",
+            "0.0",
+            "5.0",
+            "20261030"
+          ],
+          [
+            null,
+            null,
+            null,
+            "3.0",
+            "20261031"
+          ]
+        ],
+        "columns": [
+          "PIEV01",
+          "PIEV04",
+          "PIEV06",
+          "PIEV02",
+          "date"
+        ]
+      }
+    },
+    "klaviyo": {
+      "schemaVersion": 1,
+      "date": "2026-11-02",
+      "timezone": "Europe/Zurich",
+      "checkedAt": "2026-11-02T07:01:42.246185+00:00",
+      "account": {
+        "id": "XWqMAD",
+        "organization": "LuxeStyle CH",
+        "website": "https://luxestyle.ch",
+        "preferredCurrency": "USD"
+      },
+      "shopCurrency": "CHF",
+      "currencySumsCombined": false,
+      "calls": {
+        "account": 1,
+        "metricDiscovery": 1,
+        "flowReport": 1,
+        "flowRead": 6,
+        "templateRead": 1,
+        "captureListRead": 1,
+        "formsListRead": 1,
+        "publicPolicyReads": 2,
+        "operationalWrites": 0,
+        "profilesOrEventsRead": 0,
+        "orderOrWatchReads": 0
+      },
+      "metricDiscovery": {
+        "queryFields": [
+          "name"
+        ],
+        "queryFilter": null,
+        "placedOrder": "W7XTVD",
+        "metricsNextPage": null
+      },
+      "reportRequest": {
+        "conversion_metric_id": "W7XTVD",
+        "filters": "contains-any(flow_id,[\"Vse76a\",\"VbLQj6\",\"RnTvsY\"])",
+        "statistics": [
+          "recipients",
+          "delivered",
+          "opens_unique",
+          "clicks_unique",
+          "conversions"
+        ],
+        "value_statistics": [],
+        "timeframe": {
+          "start": "2026-10-26T00:00:00+01:00",
+          "end": "2026-11-02T00:00:00+01:00"
+        },
+        "localCompletedDays": "2026-10-26/2026-11-01",
+        "utcStart": "2026-10-25T23:00:00Z",
+        "utcEndExclusive": "2026-11-01T23:00:00Z"
+      },
+      "reportId": "3015da2f-13b1-4225-9cd1-f500c4f1250a",
+      "reportRows": [
+        {
+          "flowId": "VbLQj6",
+          "messageId": "TTuuTS",
+          "channel": "email",
+          "statistics": {
+            "recipients": 4,
+            "delivered": 4,
+            "opens_unique": 3,
+            "clicks_unique": 1,
+            "conversions": 0
+          }
+        },
+        {
+          "flowId": "RnTvsY",
+          "messageId": "Tr6DXE",
+          "channel": "email",
+          "statistics": {
+            "recipients": 2,
+            "delivered": 2,
+            "opens_unique": 0,
+            "clicks_unique": 0,
+            "conversions": 0
+          }
+        }
+      ],
+      "reportLimit": "Only three named historical flows were queried. Current recoveryXEGbTB was verified separately after the one report; its performance was not requested and remains unknown. Vse76a absent reportrow means unknown, not zero. Explicit zero conversions only describes attribution to the delivered message rows, not all shop purchases or order sync.",
+      "flows": {
+        "Vse76a": {
+          "status": "draft",
+          "reportPerformance": "unknown_no_row"
+        },
+        "VbLQj6": {
+          "status": "live",
+          "message": "TTuuTS",
+          "template": "VZnxDz",
+          "list": "T2VHfu",
+          "smartSending": true,
+          "addTrackingParams": false
+        },
+        "XEGbTB": {
+          "status": "live",
+          "triggerMetric": "XhnJPv",
+          "delayHours": [
+            1,
+            23
+          ],
+          "placedOrderSinceFlowStartExcluded": true,
+          "smartSendingBothMessages": true,
+          "reportPerformance": "unknown_not_in_request"
+        },
+        "RnTvsY": {
+          "status": "live",
+          "firstConfirmationAction": "draft",
+          "reviewMessage": "Tr6DXE",
+          "actualReviewDelayDays": 21,
+          "reviewAction": "live"
+        }
+      },
+      "capture": {
+        "formsApiReturnedEmpty": true,
+        "formsApiNext": null,
+        "listId": "T2VHfu",
+        "listName": "Newsletter Subscribers",
+        "optIn": "single_opt_in",
+        "frontendCaptureAvailability": "unknown_not_e2e_tested",
+        "publicCaptureMarkers": "not_rechecked_this_subtask",
+        "noFormSubmission": true,
+        "noMissingCaptureClaim": true
+      },
+      "orderSync": "unknown_not_checked_no_event_or_order_payload_read",
+      "welcomeServiceExistingDraft": {
+        "newProposal": false,
+        "status": "review_only_existing_not_applied",
+        "templateId": "VZnxDz",
+        "beforeSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+        "afterSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+        "changedLines": 2,
+        "otherBytesPreserved": true,
+        "unchanged": [
+          "MainCTA",
+          "couponMarkup",
+          "unsubscribeTokens",
+          "FlowStatus",
+          "TrackingFlag",
+          "shippingRules"
+        ],
+        "policyTargets": [
+          {
+            "url": "https://luxestyle.ch/policies/shipping-policy",
+            "http": 200,
+            "scrapeId": "01a19b0e-dbec-73e9-8d94-5d0cff56771e"
+          },
+          {
+            "url": "https://luxestyle.ch/policies/refund-policy",
+            "http": 200,
+            "scrapeId": "01a19b0e-dcad-708f-a8f5-614d843b12f1"
+          }
+        ],
+        "reason": "Current welcome1–2days statement disagrees with current shippingpolicy2–3workingdays forCHwarehouse; replace blanket promises with existing policylinks.",
+        "ownerApprovalRequiredForApplication": true,
+        "rootOverallSalesAction": "Root chooses oneSEOaction; thisWelcomeDraft remains a carried-forward finding, not an additional requested action."
+      },
+      "files": [
+        "NATIVE-READS.json",
+        "PUBLIC-POLICIES.json",
+        "WELCOME-BEFORE.html",
+        "WELCOME-AFTER-REVIEW-ONLY.html",
+        "WELCOME-SERVICE-EXISTING-REVIEW-ONLY.diff"
+      ],
+      "limits": [
+        "No flow/template/status/settings/discount/DNS writes",
+        "No messages or test sends",
+        "No revenue/AOV totals or CHF/USD combination",
+        "No order-sync absence claim",
+        "No claims from emptyformsAPI about missingfrontendcapture",
+        "No second daily flowreport"
+      ]
+    },
+    "notRepeated": true
+  },
+  "master": {
+    "plan": {
+      "schemaVersion": 1,
+      "brand": "luxestyle.ch",
+      "revision": 52,
+      "createdAt": "2026-11-02T13:12:54.533Z",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "status": "AUSFUELLBARER_AUFNAHME_UND_ABNAHMEBOGEN_KEIN_FILM",
+      "newWork": "R48-Zeitplan in einen einzigen datei- und kontrollframegebundenen Annahmebogen mit eindeutigen Abbruchkriterien überführt. Kein neuer Master, keine tatsächliche Medien- oder Rechteabnahme.",
+      "source": {
+        "previousMasterPath": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261102-R48.json",
+        "gitBlobSha": "fff34effe961376fd6240ba5b41eb8151269b6c4",
+        "canonicalRevisionRead": 51
+      },
+      "currentProductReference": {
+        "source": "../products/NATIVE.json + ../products/TAG-CHECK.json + ../products/PUBLIC.json; Root frisch gelesen, Produktreferenz von Root und diesem Masteragenten visuell angesehen",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "nativeStatus": "ACTIVE",
+        "priceCHF": "34.90",
+        "nativeAvailableForSale": true,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "tagsNonempty": true,
+        "tagStopMatches": [],
+        "executionUnresolvedTag": "auswahl-offen",
+        "referenceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "referenceImageDimensions": [
+          1920,
+          1919
+        ],
+        "referenceImageSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "publicExactVariantHttp": 200,
+        "publicVariantAvailable": true,
+        "visualReferenceOnly": "Weisses Gehäuse, schwarze Sternenkuppel; separate weisse Haube liegt daneben. Das Standfoto belegt keine Abhebehandlung, Tastenfunktion oder genaue Default-Ausführung.",
+        "noStockOrDeliveryPromise": true,
+        "sourceIsNotFootageOrRightsApproval": true
+      },
+      "targetFormat": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "frames": 540,
+        "durationSeconds": 18,
+        "nativeConstant30fpsRequired": true,
+        "frameInterpolationAllowed": false
+      },
+      "selectedHook": null,
+      "hookChoices": [
+        {
+          "id": "A",
+          "text": [
+            "Dein Raum.",
+            "Neues Licht."
+          ],
+          "visual": "Echte Projektion desselben identifizierten Geräts als Raumauftakt, danach Bedienung.",
+          "openingFrames": [
+            0,
+            60
+          ],
+          "notSeparateNewMaster": true
+        },
+        {
+          "id": "B",
+          "text": [
+            "Licht im Detail."
+          ],
+          "visual": "Nahes tatsächliches Gerätedetail mit erkennbarer Form, danach Bedienung.",
+          "openingFrames": [
+            0,
+            60
+          ],
+          "notSeparateNewMaster": true
+        }
+      ],
+      "timeline": [
+        {
+          "startFrame": 0,
+          "endFrameExclusive": 60,
+          "seconds": "0.00–2.00",
+          "take": "P_PROJECTION for HookA OR P_DETAIL for HookB, one selected master",
+          "overlayA": [
+            "Dein Raum.",
+            "Neues Licht."
+          ],
+          "overlayB": [
+            "Licht im Detail."
+          ]
+        },
+        {
+          "startFrame": 60,
+          "endFrameExclusive": 138,
+          "seconds": "2.00–4.60",
+          "take": "P_OPERATION continuous",
+          "overlay": [
+            "Sternenlicht-Projektor"
+          ]
+        },
+        {
+          "startFrame": 138,
+          "endFrameExclusive": 228,
+          "seconds": "4.60–7.60",
+          "take": "same uninterrupted P_OPERATION",
+          "overlay": [
+            "Aus der Nähe",
+            "entdecken."
+          ]
+        },
+        {
+          "startFrame": 228,
+          "endFrameExclusive": 372,
+          "seconds": "7.60–12.40",
+          "take": "P_PROJECTION exact execution/motif",
+          "overlay": [
+            "Für besondere",
+            "Lichtmomente."
+          ]
+        },
+        {
+          "startFrame": 372,
+          "endFrameExclusive": 420,
+          "seconds": "12.40–14.00",
+          "take": "P_DETAIL",
+          "overlay": []
+        },
+        {
+          "startFrame": 420,
+          "endFrameExclusive": 540,
+          "seconds": "14.00–18.00",
+          "take": "P_HERO continuous",
+          "overlay": [
+            "Produkt ansehen",
+            "LuxeStyle · luxestyle.ch"
+          ]
+        }
+      ],
+      "takeRecords": [
+        {
+          "takeId": "P_OPERATION",
+          "minimumNativeCaptureFrames": 228,
+          "inheritedCandidateRanges": {
+            "takeId": "P_OPERATION",
+            "minimumCaptureFrames": 228,
+            "candidateUsedRanges": [
+              {
+                "masterFrames": [
+                  60,
+                  228
+                ],
+                "captureFrames": [
+                  30,
+                  198
+                ]
+              }
+            ],
+            "contactFrameCandidates": [
+              30,
+              114,
+              197
+            ],
+            "additionalHumanFrames": [
+              "realpreactionstate",
+              "actualfingercontact",
+              "realpostactionstate"
+            ],
+            "continuousNoPictureCutAtMasterFrame": 138
+          },
+          "actualOriginal": {
+            "path": null,
+            "sha256": null,
+            "ffprobeRecord": null,
+            "actualFrames": null,
+            "actualFps": null,
+            "usedInFrame": null,
+            "usedOutFrameExclusive": null
+          },
+          "exactProductIdentity": {
+            "shopifyProductId": "gid://shopify/Product/15521256604033",
+            "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+            "supplierSku": "CJ-1477820492730732544",
+            "samePhysicalUnitEvidence": null,
+            "executionAndMotifEvidence": null,
+            "powerAndIncludedItemsEvidence": null
+          },
+          "rights": {
+            "licensor": null,
+            "authorityEvidence": null,
+            "licenceDocumentPath": null,
+            "licenceDocumentSha256": null,
+            "licensedOriginalSha256": null,
+            "requiredScope": [
+              "Kommerzielle Werbung",
+              "Bearbeitung und Zuschnitt",
+              "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+              "Gebiet und Laufzeit decken den geplanten Einsatz",
+              "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+            ],
+            "verifiedScope": null,
+            "validFrom": null,
+            "validUntil": null,
+            "reviewer": null,
+            "reviewedAt": null,
+            "decision": "unknown"
+          },
+          "contactFrameRecord": {
+            "actualImages": null,
+            "imageSha256": null,
+            "originalFrameNumbers": null,
+            "reviewer": null,
+            "reviewedAt": null
+          },
+          "qualityDecision": {
+            "form": "unknown",
+            "colour": "unknown",
+            "logo": "unknown",
+            "function": "unknown",
+            "continuity": "unknown",
+            "exposureAndFlicker": "unknown",
+            "focusAndMotion": "unknown",
+            "decision": "unknown",
+            "reason": null
+          }
+        },
+        {
+          "takeId": "P_PROJECTION",
+          "minimumNativeCaptureFrames": 264,
+          "inheritedCandidateRanges": {
+            "takeId": "P_PROJECTION",
+            "minimumCaptureFrames": 264,
+            "hookAOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  0,
+                  60
+                ],
+                "captureFrames": [
+                  30,
+                  90
+                ]
+              },
+              {
+                "masterFrames": [
+                  228,
+                  372
+                ],
+                "captureFrames": [
+                  90,
+                  234
+                ]
+              }
+            ],
+            "hookBOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  228,
+                  372
+                ],
+                "captureFrames": [
+                  30,
+                  174
+                ]
+              }
+            ],
+            "contactFrameCandidatesHookA": [
+              30,
+              89,
+              90,
+              162,
+              233
+            ],
+            "additionalHumanFrames": [
+              "sameunitandsurfacebinding",
+              "motifmatchproof"
+            ],
+            "noInsertedOrRecycledProjection": true
+          },
+          "actualOriginal": {
+            "path": null,
+            "sha256": null,
+            "ffprobeRecord": null,
+            "actualFrames": null,
+            "actualFps": null,
+            "usedInFrame": null,
+            "usedOutFrameExclusive": null
+          },
+          "exactProductIdentity": {
+            "shopifyProductId": "gid://shopify/Product/15521256604033",
+            "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+            "supplierSku": "CJ-1477820492730732544",
+            "samePhysicalUnitEvidence": null,
+            "executionAndMotifEvidence": null,
+            "powerAndIncludedItemsEvidence": null
+          },
+          "rights": {
+            "licensor": null,
+            "authorityEvidence": null,
+            "licenceDocumentPath": null,
+            "licenceDocumentSha256": null,
+            "licensedOriginalSha256": null,
+            "requiredScope": [
+              "Kommerzielle Werbung",
+              "Bearbeitung und Zuschnitt",
+              "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+              "Gebiet und Laufzeit decken den geplanten Einsatz",
+              "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+            ],
+            "verifiedScope": null,
+            "validFrom": null,
+            "validUntil": null,
+            "reviewer": null,
+            "reviewedAt": null,
+            "decision": "unknown"
+          },
+          "contactFrameRecord": {
+            "actualImages": null,
+            "imageSha256": null,
+            "originalFrameNumbers": null,
+            "reviewer": null,
+            "reviewedAt": null
+          },
+          "qualityDecision": {
+            "form": "unknown",
+            "colour": "unknown",
+            "logo": "unknown",
+            "function": "unknown",
+            "continuity": "unknown",
+            "exposureAndFlicker": "unknown",
+            "focusAndMotion": "unknown",
+            "decision": "unknown",
+            "reason": null
+          }
+        },
+        {
+          "takeId": "P_DETAIL",
+          "minimumNativeCaptureFrames": 168,
+          "inheritedCandidateRanges": {
+            "takeId": "P_DETAIL",
+            "minimumCaptureFrames": 168,
+            "hookBOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  0,
+                  60
+                ],
+                "captureFrames": [
+                  30,
+                  90
+                ]
+              },
+              {
+                "masterFrames": [
+                  372,
+                  420
+                ],
+                "captureFrames": [
+                  90,
+                  138
+                ]
+              }
+            ],
+            "hookAOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  372,
+                  420
+                ],
+                "captureFrames": [
+                  30,
+                  78
+                ]
+              }
+            ],
+            "contactFrameCandidatesHookB": [
+              30,
+              89,
+              90,
+              137
+            ],
+            "additionalHumanFrames": [
+              "frontidentity",
+              "domeholderandbuttonidentity"
+            ]
+          },
+          "actualOriginal": {
+            "path": null,
+            "sha256": null,
+            "ffprobeRecord": null,
+            "actualFrames": null,
+            "actualFps": null,
+            "usedInFrame": null,
+            "usedOutFrameExclusive": null
+          },
+          "exactProductIdentity": {
+            "shopifyProductId": "gid://shopify/Product/15521256604033",
+            "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+            "supplierSku": "CJ-1477820492730732544",
+            "samePhysicalUnitEvidence": null,
+            "executionAndMotifEvidence": null,
+            "powerAndIncludedItemsEvidence": null
+          },
+          "rights": {
+            "licensor": null,
+            "authorityEvidence": null,
+            "licenceDocumentPath": null,
+            "licenceDocumentSha256": null,
+            "licensedOriginalSha256": null,
+            "requiredScope": [
+              "Kommerzielle Werbung",
+              "Bearbeitung und Zuschnitt",
+              "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+              "Gebiet und Laufzeit decken den geplanten Einsatz",
+              "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+            ],
+            "verifiedScope": null,
+            "validFrom": null,
+            "validUntil": null,
+            "reviewer": null,
+            "reviewedAt": null,
+            "decision": "unknown"
+          },
+          "contactFrameRecord": {
+            "actualImages": null,
+            "imageSha256": null,
+            "originalFrameNumbers": null,
+            "reviewer": null,
+            "reviewedAt": null
+          },
+          "qualityDecision": {
+            "form": "unknown",
+            "colour": "unknown",
+            "logo": "unknown",
+            "function": "unknown",
+            "continuity": "unknown",
+            "exposureAndFlicker": "unknown",
+            "focusAndMotion": "unknown",
+            "decision": "unknown",
+            "reason": null
+          }
+        },
+        {
+          "takeId": "P_HERO",
+          "minimumNativeCaptureFrames": 180,
+          "inheritedCandidateRanges": {
+            "takeId": "P_HERO",
+            "minimumCaptureFrames": 180,
+            "candidateUsedRanges": [
+              {
+                "masterFrames": [
+                  420,
+                  540
+                ],
+                "captureFrames": [
+                  30,
+                  150
+                ]
+              }
+            ],
+            "contactFrameCandidates": [
+              30,
+              90,
+              149
+            ],
+            "additionalHumanFrames": [
+              "ctaSpace",
+              "sameunitandcolourcontinuity"
+            ],
+            "continuousClosingTake": true
+          },
+          "actualOriginal": {
+            "path": null,
+            "sha256": null,
+            "ffprobeRecord": null,
+            "actualFrames": null,
+            "actualFps": null,
+            "usedInFrame": null,
+            "usedOutFrameExclusive": null
+          },
+          "exactProductIdentity": {
+            "shopifyProductId": "gid://shopify/Product/15521256604033",
+            "shopifyVariantId": "gid://shopify/ProductVariant/56197916361089",
+            "supplierSku": "CJ-1477820492730732544",
+            "samePhysicalUnitEvidence": null,
+            "executionAndMotifEvidence": null,
+            "powerAndIncludedItemsEvidence": null
+          },
+          "rights": {
+            "licensor": null,
+            "authorityEvidence": null,
+            "licenceDocumentPath": null,
+            "licenceDocumentSha256": null,
+            "licensedOriginalSha256": null,
+            "requiredScope": [
+              "Kommerzielle Werbung",
+              "Bearbeitung und Zuschnitt",
+              "Veröffentlichung auf Instagram, TikTok, YouTube, Facebook, Threads und Pinterest",
+              "Gebiet und Laufzeit decken den geplanten Einsatz",
+              "Lizenzgeber darf die belegten Film-, Motiv-, Marken- und gegebenenfalls Personenrechte erteilen"
+            ],
+            "verifiedScope": null,
+            "validFrom": null,
+            "validUntil": null,
+            "reviewer": null,
+            "reviewedAt": null,
+            "decision": "unknown"
+          },
+          "contactFrameRecord": {
+            "actualImages": null,
+            "imageSha256": null,
+            "originalFrameNumbers": null,
+            "reviewer": null,
+            "reviewedAt": null
+          },
+          "qualityDecision": {
+            "form": "unknown",
+            "colour": "unknown",
+            "logo": "unknown",
+            "function": "unknown",
+            "continuity": "unknown",
+            "exposureAndFlicker": "unknown",
+            "focusAndMotion": "unknown",
+            "decision": "unknown",
+            "reason": null
+          }
+        }
+      ],
+      "stopCriteria": [
+        {
+          "id": "G1",
+          "stage": "Produktzuordnung",
+          "failIf": "Tatsächliche Einheit, Default-Ausführung oder sichtbares Motiv lässt sich nicht zur konkreten Variante/SKU zuordnen; auswahl-offen allein ist kein Nachweis.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G2",
+          "stage": "Nutzungsrechte",
+          "failIf": "Dateihash oder berechtigter Lizenzgeber fehlt; kommerzielle Bearbeitungs-/Werberechte, sechs Kanäle, Gebiet oder Laufzeit sind nicht belegt. Kosten-/Gratisflag ersetzt keinen Lizenzbeleg.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G3",
+          "stage": "Originaltechnik",
+          "failIf": "Einer der vier Takes fehlt, ist kleiner als native 1080×1920 oder nicht konstant 30 fps, hat zu wenig Nutzframes/Griffe, eingefügte Frames oder einen versteckten Bildschnitt innerhalb der Bedienung.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G4",
+          "stage": "Produkt und Handlung",
+          "failIf": "Form, Gehäusefarbe, Logo, Bedienelemente oder Funktion weichen ab; Hand/Kontakt ist abgeschnitten, die Haube wird unbelegt abgehoben oder der Schnitt behauptet eine ungeprüfte Tastenwirkung.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G5",
+          "stage": "Bild und Anschlüsse",
+          "failIf": "Flimmern, Pumpen, unkontrollierte Überstrahlung oder Unschärfe verdecken Produktdetails; Unit, Motiv, Licht oder Blickrichtung wechseln ohne nachgewiesenen Anschluss.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G6",
+          "stage": "Ton und Rechte",
+          "failIf": "Andere Musik, Voiceover, Fremd-SFX oder Quellgespräch hörbar; Pflichtmusik-/Instrumentherkunft nicht ausreichend belegt; tatsächlicher Export clippt oder wurde nicht vollständig gehört.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G7",
+          "stage": "Text und Ausschnitte",
+          "failIf": "Overlay ist in einer tatsächlichen Plattformvorschau verdeckt, zu klein, zu schnell oder kontrastarm; UI/Produktdetail wird überdeckt. Provisorische Sicherheitszone ersetzt keine sechs tatsächlichen Kanalprüfungen.",
+          "proof": null,
+          "decision": "unknown"
+        },
+        {
+          "id": "G8",
+          "stage": "Abnahme und Publikation",
+          "failIf": "Tatsächliche MP4/SHA-256, Eigentümerabnahme, freigegebene Produktzuordnung oder dauerhafte Master-/Kanalhistorie fehlen. Neue URL/Re-Encode erzeugt keine neue masterId.",
+          "proof": null,
+          "decision": "unknown"
+        }
+      ],
+      "finalExportRecord": {
+        "path": null,
+        "sha256": null,
+        "ffprobeRecord": null,
+        "actualFrames": null,
+        "audioPlan": {
+          "onlySource": "automation/music/luxe-premium.wav",
+          "permittedSourceSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+          "chosenSourceInSeconds": null,
+          "chosenSourceOutSeconds": null,
+          "voiceover": false,
+          "sourceAudio": false,
+          "externalSoundEffects": false,
+          "plannedFadeInFrames": 6,
+          "plannedFadeOutFrames": 18,
+          "engineeringTargetIntegratedLufs": -14,
+          "engineeringMaxTruePeakDbtp": -1,
+          "targetsAreNotMeasurementsOrPlatformGuarantees": true,
+          "actualIntegratedLufs": null,
+          "actualTruePeakDbtp": null,
+          "full18sListeningReviewer": null,
+          "reviewedAt": null,
+          "rightsDecision": "unknown",
+          "mixDecision": "unknown"
+        },
+        "textPlan": {
+          "graphicPalette": [
+            "#F7F3EC",
+            "#8E7B6A"
+          ],
+          "textColourProposal": "#27231F",
+          "actualProductColoursMustRemain": true,
+          "maximumLines": 2,
+          "minimumProposedFontPxAt1080": 48,
+          "targetMaximumCharactersPerSecond": 15,
+          "minimumTargetTextContrast": 4.5,
+          "provisionalCentralSafeArea": {
+            "xMin": 150,
+            "xMax": 930,
+            "yMin": 260,
+            "yMax": 1450
+          },
+          "notUniversalPlatformSafeArea": true,
+          "actualOverlayWorstFrameContrast": null,
+          "actualFontPx": null,
+          "readabilityDecision": "unknown"
+        },
+        "perChannelReview": [
+          {
+            "channel": "instagram",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          },
+          {
+            "channel": "tiktok",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          },
+          {
+            "channel": "youtube",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          },
+          {
+            "channel": "facebook",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          },
+          {
+            "channel": "threads",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          },
+          {
+            "channel": "pinterest",
+            "actualFinalExportSha256": null,
+            "actualPlatformPreviewScreenshot": null,
+            "phonePlaybackReviewer": null,
+            "cropAndUiDecision": "unknown",
+            "readabilityDecision": "unknown",
+            "reviewedAt": null
+          }
+        ],
+        "ownerFilmApproval": {
+          "approvedFileSha256": null,
+          "evidence": null,
+          "reviewedAt": null,
+          "decision": "unknown"
+        },
+        "publicationLedger": {
+          "state": "unknown_no_verified_durable_film_register",
+          "initialiseOrReset": false,
+          "stableMasterId": "luxe_sternenprojektor_master_20261018",
+          "freshPerChannelHistoryRequired": true
+        },
+        "publishable": false
+      },
+      "captions": [
+        {
+          "channel": "instagram",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail",
+          "caption": "Licht im Detail. Ein genauer Blick auf den Sternenlicht-Projektor von LuxeStyle. Produktansichten und aktuelle Angaben auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_ig",
+          "linkPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Actualcurrentbio-productpathunverified. Useswebsitesearchinstructiononly; no clickablecaptionclaim. ConditionalbioCTA staysdisabled pendingfreshproductpathproof.",
+          "conditionallyPermittedBioCaption": "Produkt ansehen – über den Link in unserer Bio.",
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": null,
+          "youtubeConcreteMadeForKidsFlagVerified": null,
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        },
+        {
+          "channel": "tiktok",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Dein Raum. Neues Licht.",
+          "caption": "Ein Lichtdetail für deinen Raum. Den Sternenlicht-Projektor findest du auf luxestyle.ch – suche nach «Sternenlicht-Projektor».",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_tt",
+          "linkPlacement": "Website-Suchhinweis; kein behaupteter klickbarer Caption- oder Produkt-Bio-Link",
+          "channelGate": "Actualcurrentbio-productpathunverified. Useswebsitesearchinstructiononly; no clickablecaptionclaim. ConditionalbioCTA staysdisabled pendingfreshproductpathproof.",
+          "conditionallyPermittedBioCaption": "Produkt ansehen – über den Link in unserer Bio.",
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": null,
+          "youtubeConcreteMadeForKidsFlagVerified": null,
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        },
+        {
+          "channel": "youtube",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+          "caption": "Sternenlicht-Projektor von LuxeStyle: Produktansichten und aktuelle Angaben findest du unter der Produktadresse. URLs in Shorts-Beschreibungen sind nicht anklickbar; Adresse im Browser öffnen.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_yt",
+          "linkPlacement": "address not clickable in Shorts",
+          "channelGate": "Inhaberentscheid für denselben Master liegt bereits vor: allgemeines Publikum, nicht speziell für Kinder. Keine erneute Zielgruppenfrage. Vor späterer Veröffentlichung konkretes Post-Made-for-kids-Flag daran prüfen; derzeit kein Publish.",
+          "conditionallyPermittedBioCaption": null,
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": "general_audience_not_specifically_made_for_kids",
+          "youtubeConcreteMadeForKidsFlagVerified": "unknown",
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        },
+        {
+          "channel": "facebook",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Licht im Detail.",
+          "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Sieh dir die aktuellen Produktansichten und Angaben zur Ausführung bei LuxeStyle an.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_fb",
+          "linkPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Facebook text after final master approval.",
+          "conditionallyPermittedBioCaption": null,
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": null,
+          "youtubeConcreteMadeForKidsFlagVerified": null,
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        },
+        {
+          "channel": "threads",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Ein Detail für deinen Raum",
+          "caption": "Ein genauer Blick auf den Sternenlicht-Projektor: Hier findest du die aktuellen Produktansichten und Angaben bei LuxeStyle.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_th",
+          "linkPlacement": "product link",
+          "channelGate": "Clickable product URL may be used in Threads text after final master approval.",
+          "conditionallyPermittedBioCaption": null,
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": null,
+          "youtubeConcreteMadeForKidsFlagVerified": null,
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        },
+        {
+          "channel": "pinterest",
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+          "caption": "Sternenlicht-Projektor fürs Schlafzimmer: Entdecke die Produktansichten und prüfe die aktuelle Ausführung bei LuxeStyle.",
+          "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_20261018&utm_content=master18_pin",
+          "linkPlacement": "product link",
+          "channelGate": "Account board not verified; do not invent board or use old post board as new account proof.",
+          "conditionallyPermittedBioCaption": null,
+          "conditionalBioCaptionEnabled": false,
+          "pinterestVerifiedBoardId": null,
+          "youtubeOwnerAudienceDecision": null,
+          "youtubeConcreteMadeForKidsFlagVerified": null,
+          "state": "DRAFT_NOT_SCHEDULED_NO_APPROVED_MP4"
+        }
+      ],
+      "rightsAndProductionBlocker": "Vier passende native Originaltakes, genaue Ausführung/Motive und kommerzielle Film-/Bearbeitungsrechte fehlen. Pflichtmusik ist verfügbar/hashgleich; finale Rechte-, Hör- und Mixabnahme bleibt offen. Keine Master-MP4 vorhanden, kein Render/Push.",
+      "scope": {
+        "newMaster": false,
+        "newMp4": false,
+        "render": false,
+        "paidRender": false,
+        "newSocialWrite": false,
+        "registerInitialisation": false,
+        "metricsOrFlowRead": false,
+        "customerContact": false
+      }
+    },
+    "sourceEvidence": {
+      "schemaVersion": 1,
+      "checkedAt": "2026-11-02T13:10:27.397Z",
+      "canonicalRevision": 51,
+      "canonicalSources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "gitBlobSha": "469e4fc063e93c24b2bdb9641e28e353282d762d",
+          "ref": "codex/luxestyle-claude-handoff-20261018"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "gitBlobSha": "34d5091a50754851aab6ab3e368d0e928e0a71c6",
+          "ref": "codex/luxestyle-claude-handoff-20261018"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "gitBlobSha": "eec30cf8b849c10a026e3534f8fb9bb78a981dae",
+          "ref": "codex/luxestyle-claude-handoff-20261018"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "gitBlobSha": "899c6b87d121fb4df59136362d8cdeaaaf1d5f14",
+          "ref": "codex/luxestyle-claude-handoff-20261018"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261102-R48.json",
+          "gitBlobSha": "fff34effe961376fd6240ba5b41eb8151269b6c4",
+          "ref": "codex/luxestyle-claude-handoff-20261018"
+        }
+      ],
+      "remoteSources": [
+        {
+          "path": "automation/music/luxe-premium.wav",
+          "ref": "main",
+          "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+          "available": true,
+          "executed": false,
+          "contentBytesDownloaded": false
+        },
+        {
+          "path": "automation/music/CREDITS.txt",
+          "ref": "main",
+          "gitBlobSha": "159e308cf68e88841b810a88882856101fdefb42",
+          "available": true,
+          "executed": false
+        },
+        {
+          "path": "automation/music/produce/make_premium.sh",
+          "ref": "main",
+          "gitBlobSha": "c4f66163742cbfc7e4fc93c1f1834b96df559186",
+          "available": true,
+          "executed": false
+        },
+        {
+          "path": "dropship/cj_enrich.mjs",
+          "ref": "main",
+          "gitBlobSha": "461aa0c56a8f232a3aba20318f83f491b14a7bd1",
+          "available": true,
+          "executed": false
+        },
+        {
+          "path": "automation/cj_category_fill.mjs",
+          "ref": "main",
+          "gitBlobSha": "a00c882026770d5b78e8ded997249f303ad8931f",
+          "available": true,
+          "executed": false
+        },
+        {
+          "path": "automation/lib/cj_token.mjs",
+          "ref": "main",
+          "gitBlobSha": "6afe9beab8c3c1a0ec80852e67c7a4b5d10c2cdf",
+          "available": true,
+          "executed": false
+        }
+      ],
+      "music": {
+        "localPath": "/workspace/aban-news-landing/automation/music/luxe-premium.wav",
+        "bytes": 11343950,
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "localComputedGitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+        "matchesCurrentRemoteGitBlob": true,
+        "metadata": {
+          "durationSeconds": 64.307664,
+          "codec": "pcm_s16le",
+          "sampleRateHz": 44100,
+          "channels": 2
+        },
+        "provenanceClaim": "CREDITS.txt declares ORIGINAL PRO; script uses FluidSynth and FluidR3_GM.sf2",
+        "commercialRightsIndependentAcceptance": "unknown",
+        "listeningAndFinalMixAcceptance": "unknown"
+      },
+      "runtime": {
+        "source": "Root fresh environment_status 02.11.2026 about13:07UTC",
+        "cjRuntimeCredentialsDemonstrated": false,
+        "missingRuntimeIsNotMissingConnector": true
+      },
+      "noRenderOrExternalWrite": true
+    },
+    "documentValidation": {
+      "checkedAt": "2026-11-02T13:15:32.281570+00:00",
+      "scope": "Bounded document identity, timeline, empty-evidence and link checks only; no actual media, rights, creative approval or platform acceptance",
+      "checks": {
+        "sameMasterId": true,
+        "formatExact": true,
+        "originalTimelineUnchanged": true,
+        "fourOriginalRecords": true,
+        "actualOriginalsRemainUnknown": true,
+        "fourRightsDecisionsUnknown": true,
+        "fourVisualDecisionsUnknown": true,
+        "eightGatesUnknown": true,
+        "sixChannelReviewsUnknown": true,
+        "noActualFilm": true,
+        "noFalseAcceptance": true,
+        "onlyPermittedAudio": true,
+        "sixUniqueUtms": true,
+        "oldStableUtmsPreserved": true,
+        "noCaptionPrices": true,
+        "noLiveBioClaim": true,
+        "noInventedPinterestBoard": true,
+        "ownerAudienceRetained": true,
+        "noLedgerReset": true,
+        "noOperationalActions": true,
+        "continuous540FrameTimeline": true,
+        "operationNoCutAt138": true,
+        "exactProductDestinations": true
+      },
+      "passed": 23,
+      "total": 23,
+      "actualMp4": null,
+      "publishable": false,
+      "files": [
+        {
+          "path": "MASTER-AUFNAHMEBOGEN-20261102-R52.md",
+          "sha256": "dbf2c2cfd1c5fa883cf65b67e31cd35880f0d5a0dea3d9f7346d8bbf10878d6d",
+          "bytes": 11833
+        },
+        {
+          "path": "MASTER-AUFNAHMEBOGEN-20261102-R52.json",
+          "sha256": "941670b579969fe7f982f297f3b20821ef3c88576bace15d036049ff2f920d08",
+          "bytes": 28509
+        },
+        {
+          "path": "SOURCE-EVIDENCE.json",
+          "sha256": "c963e43cac474025567affdd8800cd365eef4d4a4037ee8e90229f9a15bc09cc",
+          "bytes": 3253
+        }
+      ]
+    },
+    "actualMp4": null,
+    "mediaOrRightsApproval": false,
+    "creativeApproval": false,
+    "ledgerHistory": "unknown_not_initialized_or_reset"
+  },
+  "oneSalesApproval": {
+    "schemaVersion": 1,
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-02T13:16:59.353677+00:00",
+    "state": "EXACT_EXISTING_TWO_LINE_PROPOSAL_REBOUND_REVIEW_ONLY_NOT_APPLIED",
+    "oneSalesActionOnly": true,
+    "sameFindingAsMorningR48": true,
+    "newWork": "Current exact template/account/policy countercheck and concrete two-line approval packet, not a newly discovered service problem",
+    "account": {
+      "id": "XWqMAD",
+      "contact_information": {
+        "organization_name": "LuxeStyle CH",
+        "website_url": "https://luxestyle.ch"
+      },
+      "preferred_currency": "USD",
+      "timezone": "Europe/Zurich"
+    },
+    "shopCurrency": "CHF",
+    "currencySumsCombined": false,
+    "template": {
+      "id": "VZnxDz",
+      "name": "LuxeStyle – Willkommen WELCOME10 (2026-08-29, saisonneutral)",
+      "updated": "2026-08-29T15:21:39+00:00",
+      "editorType": "CODE"
+    },
+    "beforeSha256": "1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b",
+    "afterSha256": "16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a",
+    "changedLines1Based": [
+      47,
+      53
+    ],
+    "changes": [
+      {
+        "line": 47,
+        "before": "Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna oder TWINT.<br/>Die Lieferzeit steht auf jeder Produktseite – ein Teil unserer Ware liegt im Schweizer Lager und ist in 1–2 Werktagen bei dir.",
+        "after": "Gratis-Standardversand innerhalb der Schweiz ab CHF 50 nach Abzug von Rabatten.<br/>Informationen zu Lieferung und Versand findest du in unseren <a href=\"https://luxestyle.ch/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"https://luxestyle.ch/policies/refund-policy\">Rückgabebedingungen</a>."
+      },
+      {
+        "line": 53,
+        "before": "<a href=\"https://luxestyle.ch/collections/blitzversand-schweiz\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">🇨🇭 Ab Schweizer Lager · 1–2 Tage ansehen</a>",
+        "after": "<a href=\"https://luxestyle.ch/policies/shipping-policy\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">Versandinformationen ansehen</a>"
+      }
+    ],
+    "checks": {
+      "freshOriginalExactlyMorning": true,
+      "sameExistingReviewOnlyAfterBytes": true,
+      "exactlyTwoChangedLines": true,
+      "allOtherLinesByteIdentical": true,
+      "templateTokensUnchanged": true,
+      "mainCtaByteIdentical": true,
+      "couponBlockByteIdentical": true,
+      "welcome10CountUnchanged": true,
+      "beforeHtmlStructureBalanced": true,
+      "afterHtmlStructureBalanced": true,
+      "onlyExpectedAfterHrefValues": true,
+      "noNewEmoji": true,
+      "shippingPolicyHttp200ActualBody": true,
+      "refundPolicyHttp200ActualBody": true,
+      "publicCHF50AfterDiscountPolicyConfirmed": true
+    },
+    "allChecksPassed": true,
+    "policyEvidence": {
+      "shipping": {
+        "url": "https://luxestyle.ch/policies/shipping-policy",
+        "http": 200,
+        "h1": "Versand",
+        "checkedAt": "2026-11-02T13:15:16.631849+00:00",
+        "policyTextSha256": "d94201593efb3e4e0becb4599d00349aa8e678bfbb3d30a904a762f4cd48e015"
+      },
+      "refund": {
+        "url": "https://luxestyle.ch/policies/refund-policy",
+        "http": 200,
+        "h1": "Widerrufsrecht",
+        "checkedAt": "2026-11-02T13:15:16.669021+00:00",
+        "policyTextSha256": "c9542e3e764173ff77b02967309275e0571905a830863045007a9ce1d683ba85"
+      },
+      "shippingRelevantText": [
+        "Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten (innerhalb der Schweiz).",
+        "Ab Schweizer Lager (Blitzversand): meist 2–3 Werktage; das genaue Datum steht beim Artikel und in der Kasse."
+      ],
+      "refundRelevantText": [
+        "Freiwilliges30-tägigesRückgaberecht mit Bedingungen/Ausschlüssen; deshalb imEntwurf keinepauschaleRückgabezusage,sondernPolicyverweis"
+      ]
+    },
+    "preserve": [
+      "Coupon/WELCOME10 and all existing discount markup",
+      "MainCTA,unsubscribe tokens,layout and all bytes outside two lines",
+      "Flowstatus,trackingflags,send settings,no test emails",
+      "PublicCHF50/internalCHF45afterdiscount and account.luxestyle.com.co"
+    ],
+    "reads": {
+      "account": 1,
+      "template": 1,
+      "publicPolicyGets": 2,
+      "flowReport": 0,
+      "profilesEventsOrders": 0
+    },
+    "operationalWrites": 0,
+    "testEmailsOrMessages": 0,
+    "newSeoAction": false,
+    "futureApplicationRequires": [
+      "Explicit owner approval of exactly these two lines",
+      "Fresh account and original template hash must still match before later write",
+      "Only after approval update exact original template and reread exact HTML/template identity",
+      "Do not activate flows or change coupons/shipping settings"
+    ],
+    "limits": [
+      "HTML parsing and byte/token checks only, no delivered-client or email-send acceptance",
+      "Fresh policy main content verified; no accountflowreport reused as currentperformance",
+      "Original contains existing emojis outside two lines; new replacement lines contain none"
+    ]
+  },
+  "salesTemplateBefore": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n<meta charset=\"utf-8\"/>\n<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>\n<title>Willkommen bei LuxeStyle</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4f3f1;font-family:Helvetica,Arial,sans-serif;color:#2c2c2c;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#f4f3f1;\" width=\"100%\">\n<tr>\n<td align=\"center\" style=\"padding:32px 16px;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:8px;overflow:hidden;\" width=\"600\">\n<tr>\n<td align=\"center\" style=\"padding:36px 24px 8px;\">\n<div style=\"font-size:26px;letter-spacing:4px;font-weight:bold;color:#2c2c2c;\">LUXESTYLE</div>\n<div style=\"width:48px;height:3px;background:#b8915a;margin:14px auto 0;\"></div>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:24px 32px 8px;\">\n<h1 style=\"margin:0;font-size:30px;line-height:1.2;color:#2c2c2c;\">Schön, dass du da bist 💛</h1>\n<p style=\"margin:16px 0 0;font-size:16px;line-height:1.6;color:#555;\">\nWillkommen bei LuxeStyle – deinem Schweizer Shop für Mode, Accessoires &amp; Wohnideen. Als Dankeschön für deine Anmeldung schenken wir dir <strong>10% auf deine erste Bestellung</strong>.\n</p>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:24px 32px 8px;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#f4f3f1;border:2px dashed #b8915a;border-radius:8px;\">\n<tr>\n<td align=\"center\" style=\"padding:18px 40px;\">\n<div style=\"font-size:13px;letter-spacing:2px;color:#b8915a;text-transform:uppercase;\">Dein Gutscheincode</div>\n<div style=\"font-size:32px;font-weight:bold;letter-spacing:3px;color:#2c2c2c;margin-top:6px;\">WELCOME10</div>\n<div style=\"font-size:13px;color:#888;margin-top:6px;\">10% Rabatt · ohne Mindestbestellwert</div>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:28px 32px 8px;\"> <a href=\"https://luxestyle.ch/collections/neu-eingetroffen\" style=\"display:inline-block;background:#b8915a;color:#ffffff;text-decoration:none;font-size:17px;font-weight:bold;padding:15px 44px;border-radius:6px;\">Neuheiten entdecken →</a>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:20px 32px 8px;\">\n<p style=\"margin:0;font-size:14px;line-height:1.6;color:#888;\">\nGratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna oder TWINT.<br/>Die Lieferzeit steht auf jeder Produktseite – ein Teil unserer Ware liegt im Schweizer Lager und ist in 1–2 Werktagen bei dir.\n</p>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:4px 32px 28px;\">\n<a href=\"https://luxestyle.ch/collections/blitzversand-schweiz\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">🇨🇭 Ab Schweizer Lager · 1–2 Tage ansehen</a>\n</td>\n</tr>\n<tr>\n<td style=\"padding:0 32px;\"><div style=\"height:1px;background:#eee;\"></div></td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:20px 32px 32px;\">\n<p style=\"margin:0;font-size:12px;color:#aaa;line-height:1.6;\">\nLuxeStyle CH · Hühnerhubelstrasse 37, 3123 Belp<br/>Du erhältst diese E-Mail, weil du dich für unseren Newsletter angemeldet hast.<br/>{% unsubscribe 'Abmelden' %}\n</p>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</body>\n</html>",
+  "salesTemplateAfterReviewOnly": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n<meta charset=\"utf-8\"/>\n<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>\n<title>Willkommen bei LuxeStyle</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4f3f1;font-family:Helvetica,Arial,sans-serif;color:#2c2c2c;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#f4f3f1;\" width=\"100%\">\n<tr>\n<td align=\"center\" style=\"padding:32px 16px;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:8px;overflow:hidden;\" width=\"600\">\n<tr>\n<td align=\"center\" style=\"padding:36px 24px 8px;\">\n<div style=\"font-size:26px;letter-spacing:4px;font-weight:bold;color:#2c2c2c;\">LUXESTYLE</div>\n<div style=\"width:48px;height:3px;background:#b8915a;margin:14px auto 0;\"></div>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:24px 32px 8px;\">\n<h1 style=\"margin:0;font-size:30px;line-height:1.2;color:#2c2c2c;\">Schön, dass du da bist 💛</h1>\n<p style=\"margin:16px 0 0;font-size:16px;line-height:1.6;color:#555;\">\nWillkommen bei LuxeStyle – deinem Schweizer Shop für Mode, Accessoires &amp; Wohnideen. Als Dankeschön für deine Anmeldung schenken wir dir <strong>10% auf deine erste Bestellung</strong>.\n</p>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:24px 32px 8px;\">\n<table cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#f4f3f1;border:2px dashed #b8915a;border-radius:8px;\">\n<tr>\n<td align=\"center\" style=\"padding:18px 40px;\">\n<div style=\"font-size:13px;letter-spacing:2px;color:#b8915a;text-transform:uppercase;\">Dein Gutscheincode</div>\n<div style=\"font-size:32px;font-weight:bold;letter-spacing:3px;color:#2c2c2c;margin-top:6px;\">WELCOME10</div>\n<div style=\"font-size:13px;color:#888;margin-top:6px;\">10% Rabatt · ohne Mindestbestellwert</div>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:28px 32px 8px;\"> <a href=\"https://luxestyle.ch/collections/neu-eingetroffen\" style=\"display:inline-block;background:#b8915a;color:#ffffff;text-decoration:none;font-size:17px;font-weight:bold;padding:15px 44px;border-radius:6px;\">Neuheiten entdecken →</a>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:20px 32px 8px;\">\n<p style=\"margin:0;font-size:14px;line-height:1.6;color:#888;\">\nGratis-Standardversand innerhalb der Schweiz ab CHF 50 nach Abzug von Rabatten.<br/>Informationen zu Lieferung und Versand findest du in unseren <a href=\"https://luxestyle.ch/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"https://luxestyle.ch/policies/refund-policy\">Rückgabebedingungen</a>.\n</p>\n</td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:4px 32px 28px;\">\n<a href=\"https://luxestyle.ch/policies/shipping-policy\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">Versandinformationen ansehen</a>\n</td>\n</tr>\n<tr>\n<td style=\"padding:0 32px;\"><div style=\"height:1px;background:#eee;\"></div></td>\n</tr>\n<tr>\n<td align=\"center\" style=\"padding:20px 32px 32px;\">\n<p style=\"margin:0;font-size:12px;color:#aaa;line-height:1.6;\">\nLuxeStyle CH · Hühnerhubelstrasse 37, 3123 Belp<br/>Du erhältst diese E-Mail, weil du dich für unseren Newsletter angemeldet hast.<br/>{% unsubscribe 'Abmelden' %}\n</p>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</body>\n</html>",
+  "salesExactDiff": "--- VZnxDz/fresh-original-20261102-afternoon\n+++ VZnxDz/same-service-proposal-review-only\n@@ -44,13 +44,13 @@\n <tr>\n <td align=\"center\" style=\"padding:20px 32px 8px;\">\n <p style=\"margin:0;font-size:14px;line-height:1.6;color:#888;\">\n-Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna oder TWINT.<br/>Die Lieferzeit steht auf jeder Produktseite – ein Teil unserer Ware liegt im Schweizer Lager und ist in 1–2 Werktagen bei dir.\n+Gratis-Standardversand innerhalb der Schweiz ab CHF 50 nach Abzug von Rabatten.<br/>Informationen zu Lieferung und Versand findest du in unseren <a href=\"https://luxestyle.ch/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"https://luxestyle.ch/policies/refund-policy\">Rückgabebedingungen</a>.\n </p>\n </td>\n </tr>\n <tr>\n <td align=\"center\" style=\"padding:4px 32px 28px;\">\n-<a href=\"https://luxestyle.ch/collections/blitzversand-schweiz\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">🇨🇭 Ab Schweizer Lager · 1–2 Tage ansehen</a>\n+<a href=\"https://luxestyle.ch/policies/shipping-policy\" style=\"font-size:14px;color:#b8915a;text-decoration:underline;\">Versandinformationen ansehen</a>\n </td>\n </tr>\n <tr>\n",
+  "changesSinceR51": [
+    "Fresh rolling planning window and unchanged existing posts verified; extra old FB/IG09Nov slot due only to range extension",
+    "Same professional master advanced with one fillable four-take acceptance record and eight stop criteria; no film",
+    "Existing Welcome service proposal exactly rebound to current template and policies; not a new defect or applied change"
+  ],
+  "completedWorkNotReoffered": [
+    "R49 Bestseller introduction and seo.description live",
+    "R50 four category text fields live",
+    "R51 category refs, parent rule and curated first six live; mobile MAIN CSS last known still draft only, no new claim of repair"
+  ],
+  "validationLimits": {
+    "nativeGraphqlPrevalidator": "explicitly_skipped",
+    "bundledGraphqlCli": "unavailable_missing__validate_graphql.mjs",
+    "actualReadOnlyApi": "accepted",
+    "publicInitialHelper": "requests import unavailable before any HTTP; replaced with Python standard library, no install/retry of sent requests",
+    "noFullCIOrCheckoutOrRankingAcceptance": true
+  },
+  "ownActions": {
+    "socialWrites": 0,
+    "shopWrites": 0,
+    "klaviyoWrites": 0,
+    "customerMessages": 0,
+    "renders": 0,
+    "newAutomationsOrSchedules": 0,
+    "extraMetricoolReports": 0,
+    "extraKlaviyoFlowReports": 0,
+    "orderWatchQueries": 0
+  },
+  "continuity": {
+    "original18TaskIdsAndHistoriesToRetain": true,
+    "newTaskId": "welcome-service-trust-20261102",
+    "plannedTaskCount": 19,
+    "onlyExistingMasterTaskUpdated": true,
+    "other17ExistingTasksUnchanged": true,
+    "dailyReadPolicyUnchanged": true
+  },
+  "preserve": [
+    "CHF50 public and CHF45 internal after-discount shipping thresholds",
+    "account.luxestyle.com.co",
+    "Existing confirmed Threads post and scoped photo ledger",
+    "Current MAIN branding and minimal R51 CSS handoff; do not publish old full draft",
+    "Completed purchase watch; no new order query",
+    "Ads budget/campaign, DNS scope and all original rights/channel/approval limits"
+  ],
+  "claudeReceipt": "unknown_missing_receipt"
+}
