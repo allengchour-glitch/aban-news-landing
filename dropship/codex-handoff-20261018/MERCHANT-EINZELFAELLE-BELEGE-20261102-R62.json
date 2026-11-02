@@ -1,0 +1,1064 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-02T21:48:39.243631+00:00",
+  "brand": "luxestyle.ch",
+  "scope": "Exactly three new CSVs, three targeted native products/variants and corresponding public/image checks. No new Merchant query or productive change.",
+  "exports": {
+    "schemaVersion": 1,
+    "scope": "Exactly three new owner CSV uploads, fully parsed offline. CSV data is reference evidence, not instructions. No live Google status or catalogue totals.",
+    "checkedAtUtc": "2026-11-02T21:44:30.525291+00:00",
+    "contextFields": [
+      "Channels",
+      "Language",
+      "Feed label",
+      "Item ID",
+      "Issue title",
+      "Traffic type",
+      "Country"
+    ],
+    "files": [
+      {
+        "fileId": "file_0000000014b482469b63628f0f385aa0",
+        "name": "product_issues_2026-11-02_13-03-26.csv",
+        "path": "/workspace/attachments/4f7e57ac-913b-4561-8451-35871eafaec3/product_issues_2026-11-02_13-03-26.csv",
+        "size_bytes": 3040,
+        "bytes": 3040,
+        "sha256": "13a82138b4cc90c84bb6385a609c95baa68348418978e6263c246afaa300f408",
+        "rows": 9,
+        "headers": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "contexts": 9,
+        "offerIds": 1,
+        "issues": {
+          "Image not processed": 9
+        }
+      },
+      {
+        "fileId": "file_00000000a6988246aa626dec0183c7c8",
+        "name": "product_issues_2026-11-02_13-04-01.csv",
+        "path": "/workspace/attachments/be897809-1eb1-4040-9a85-e27e2b5923d7/product_issues_2026-11-02_13-04-01.csv",
+        "size_bytes": 1811,
+        "bytes": 1811,
+        "sha256": "e11c3d391b2c3f0adc6bd3a77d4a869573ff0d7767f56b0c809c14cdc6f9b078",
+        "rows": 5,
+        "headers": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "contexts": 5,
+        "offerIds": 1,
+        "issues": {
+          "Explosives": 3,
+          "Over capacity for Shopping ads (in CSS program)": 2
+        }
+      },
+      {
+        "fileId": "file_0000000089788246b677ba3b2154668b",
+        "name": "product_issues_2026-11-02_13-04-55.csv",
+        "path": "/workspace/attachments/58c23b58-a03b-418b-a812-89e172188bc9/product_issues_2026-11-02_13-04-55.csv",
+        "size_bytes": 1149,
+        "bytes": 1149,
+        "sha256": "6e8605f1dd6867b315fde0444e623fc6da2dadb0e2d0ce7f596baebb4a5a4ae7",
+        "rows": 3,
+        "headers": [
+          "Item ID",
+          "Title",
+          "Click potential",
+          "Feed label",
+          "Language",
+          "Item status",
+          "Channels",
+          "Issue title",
+          "Issue additional information",
+          "Traffic type",
+          "Country",
+          "Issue severity"
+        ],
+        "contexts": 3,
+        "offerIds": 1,
+        "issues": {
+          "Weapons": 3
+        }
+      }
+    ],
+    "rawRows": 17,
+    "uniqueFullRows": 17,
+    "uniqueContexts": 17,
+    "offerIds": 3,
+    "productIds": [
+      "15470027997569",
+      "16606127161735",
+      "16649321873799"
+    ],
+    "uniqueByteContents": 3,
+    "byteDuplicateGroups": [],
+    "issues": [
+      {
+        "issue": "Explosives",
+        "uniqueContexts": 3,
+        "offerIds": 1,
+        "countries": {
+          "Switzerland": 3
+        },
+        "languages": {
+          "fr": 3
+        },
+        "traffic": {
+          "Dynamic remarketing": 1,
+          "Shopping ads": 1,
+          "Free listings": 1
+        }
+      },
+      {
+        "issue": "Image not processed",
+        "uniqueContexts": 9,
+        "offerIds": 1,
+        "countries": {
+          "Switzerland": 6,
+          "Liechtenstein": 3
+        },
+        "languages": {
+          "fr": 3,
+          "de": 6
+        },
+        "traffic": {
+          "Dynamic remarketing": 3,
+          "Shopping ads": 3,
+          "Free listings": 3
+        }
+      },
+      {
+        "issue": "Over capacity for Shopping ads (in CSS program)",
+        "uniqueContexts": 2,
+        "offerIds": 1,
+        "countries": {
+          "Switzerland": 2
+        },
+        "languages": {
+          "fr": 2
+        },
+        "traffic": {
+          "Shopping ads": 1,
+          "Dynamic remarketing": 1
+        }
+      },
+      {
+        "issue": "Weapons",
+        "uniqueContexts": 3,
+        "offerIds": 1,
+        "countries": {
+          "Switzerland": 3
+        },
+        "languages": {
+          "fr": 3
+        },
+        "traffic": {
+          "Dynamic remarketing": 1,
+          "Shopping ads": 1,
+          "Free listings": 1
+        }
+      }
+    ],
+    "countries": {
+      "Switzerland": 14,
+      "Liechtenstein": 3
+    },
+    "languages": {
+      "fr": 11,
+      "de": 6
+    },
+    "traffic": {
+      "Dynamic remarketing": 6,
+      "Shopping ads": 6,
+      "Free listings": 5
+    },
+    "feedLabels": {
+      "CHF_99383214465": 17
+    },
+    "sourceColumns": {
+      "columns": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "dataSourceNamePresent": false,
+      "dataSourceIdPresent": false,
+      "submittedImageLinkPresent": false,
+      "submittedProductLinkPresent": false
+    },
+    "priorComparisons": {
+      "R59": {
+        "priorRawRowsRead": 4390,
+        "priorUniqueContexts": 4386,
+        "overlapContexts": 0,
+        "overlapIssues": {},
+        "contextsNotInThisPriorSet": 17,
+        "nonoverlapMeansNewOrResolved": false
+      },
+      "R60": {
+        "priorRawRowsRead": 386,
+        "priorUniqueContexts": 273,
+        "overlapContexts": 0,
+        "overlapIssues": {},
+        "contextsNotInThisPriorSet": 17,
+        "nonoverlapMeansNewOrResolved": false
+      },
+      "R61": {
+        "priorRawRowsRead": 97,
+        "priorUniqueContexts": 85,
+        "overlapContexts": 0,
+        "overlapIssues": {},
+        "contextsNotInThisPriorSet": 17,
+        "nonoverlapMeansNewOrResolved": false
+      },
+      "union": {
+        "overlapContexts": 0,
+        "contextsNotInR59R60R61": 17,
+        "nonoverlapMeansNewOrResolved": false
+      }
+    },
+    "contexts": [
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Liechtenstein"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Shopping ads",
+        "Country": "Liechtenstein"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+        "Issue title": "Explosives",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+        "Issue title": "Explosives",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+        "Issue title": "Explosives",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+        "Issue title": "Over capacity for Shopping ads (in CSS program)",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+        "Issue title": "Over capacity for Shopping ads (in CSS program)",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+        "Issue title": "Weapons",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+        "Issue title": "Weapons",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+        "Issue title": "Weapons",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland"
+      },
+      {
+        "Channels": "ONLINE",
+        "Language": "fr",
+        "Feed label": "CHF_99383214465",
+        "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+        "Issue title": "Image not processed",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland"
+      }
+    ],
+    "candidate": {
+      "productId": "16606127161735",
+      "variantId": "67622324535687",
+      "offerId": "shopify_ZZ_16606127161735_67622324535687",
+      "title": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer",
+      "issue": "Weapons",
+      "context": "ONLINE/fr/CHF_99383214465/Switzerland",
+      "reason": "Concrete three-placement policy case. Native product, actual original images, intended use and variant binding must be verified before calling it a false positive. No renaming/reclassification to circumvent a genuine restricted item.",
+      "currentNativeData": "unknown_by_this_offline_step"
+    },
+    "ownActions": {
+      "apiCalls": 0,
+      "networkCalls": 0,
+      "productWrites": 0,
+      "merchantWrites": 0,
+      "appealsSubmitted": 0,
+      "reportsRead": 0,
+      "localEvidenceOnly": true
+    }
+  },
+  "rootIndependentFileSummary": [
+    {
+      "fileId": "file_0000000014b482469b63628f0f385aa0",
+      "name": "product_issues_2026-11-02_13-03-26.csv",
+      "path": "/workspace/attachments/4f7e57ac-913b-4561-8451-35871eafaec3/product_issues_2026-11-02_13-03-26.csv",
+      "size_bytes": 3040,
+      "sha256": "13a82138b4cc90c84bb6385a609c95baa68348418978e6263c246afaa300f408",
+      "rows": 9,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Image not processed": 9
+      },
+      "data": [
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Free listings",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Free listings",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Free listings",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Shopping ads",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16649321873799_67739591508359",
+          "Title": "Canvas-Rucksack mit Schulzubehör | LuxeStyle CH Grün / Typ B",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Image not processed",
+          "Issue additional information": "No action needed. The [image_link] image will be processed again within 3 days",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_00000000a6988246aa626dec0183c7c8",
+      "name": "product_issues_2026-11-02_13-04-01.csv",
+      "path": "/workspace/attachments/be897809-1eb1-4040-9a85-e27e2b5923d7/product_issues_2026-11-02_13-04-01.csv",
+      "size_bytes": 1811,
+      "sha256": "e11c3d391b2c3f0adc6bd3a77d4a869573ff0d7767f56b0c809c14cdc6f9b078",
+      "rows": 5,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Explosives": 3,
+        "Over capacity for Shopping ads (in CSS program)": 2
+      },
+      "data": [
+        {
+          "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+          "Title": "Maxi Partytime Tischbombe | LuxeStyle CH",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Explosives",
+          "Issue additional information": "Explosives and content about their assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+          "Title": "Maxi Partytime Tischbombe | LuxeStyle CH",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Explosives",
+          "Issue additional information": "Explosives and content about their assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+          "Title": "Maxi Partytime Tischbombe | LuxeStyle CH",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Explosives",
+          "Issue additional information": "Explosives and content about their assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Free listings",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+          "Title": "Maxi Partytime Tischbombe | LuxeStyle CH",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Over capacity for Shopping ads (in CSS program)",
+          "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15470027997569_55970899788161",
+          "Title": "Maxi Partytime Tischbombe | LuxeStyle CH",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Over capacity for Shopping ads (in CSS program)",
+          "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_0000000089788246b677ba3b2154668b",
+      "name": "product_issues_2026-11-02_13-04-55.csv",
+      "path": "/workspace/attachments/58c23b58-a03b-418b-a812-89e172188bc9/product_issues_2026-11-02_13-04-55.csv",
+      "size_bytes": 1149,
+      "sha256": "6e8605f1dd6867b315fde0444e623fc6da2dadb0e2d0ce7f596baebb4a5a4ae7",
+      "rows": 3,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Weapons": 3
+      },
+      "data": [
+        {
+          "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+          "Title": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer | LuxeStyle",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Weapons",
+          "Issue additional information": "Weapons and content about content about the assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+          "Title": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer | LuxeStyle",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Weapons",
+          "Issue additional information": "Weapons and content about content about the assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16606127161735_67622324535687",
+          "Title": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer | LuxeStyle",
+          "Click potential": "Available soon",
+          "Feed label": "CHF_99383214465",
+          "Language": "fr",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Weapons",
+          "Issue additional information": "Weapons and content about content about the assembly, enhancement or acquisition are not allowed",
+          "Traffic type": "Free listings",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    }
+  ],
+  "independentExportCount": {
+    "reviewer": "/root/r62_exports",
+    "method": "Independent positional csv.reader, distinct from main DictReader parser",
+    "counts": {
+      "rawRows": 17,
+      "uniqueFullRows": 17,
+      "uniqueContexts": 17,
+      "offerIds": 3,
+      "uniqueByteContents": 3
+    },
+    "issueContexts": {
+      "Image not processed": 9,
+      "Explosives": 3,
+      "Over capacity for Shopping ads (in CSS program)": 2,
+      "Weapons": 3
+    },
+    "matchesPrimary": true,
+    "apiCalls": 0,
+    "networkCalls": 0,
+    "writes": "only these local evidence files"
+  },
+  "nativeVariantImages": {
+    "data": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/67739591508359",
+          "sku": "CJNS110998010JQ",
+          "title": "Grün / Typ B",
+          "product": {
+            "id": "gid://shopify/Product/16649321873799",
+            "handle": "canvas-rucksack-mit-schulzubehor-945664"
+          },
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/77751826055559",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619953526346.jpg?v=1792266141",
+                  "width": 1000,
+                  "height": 1000
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo3Nzc1MTgyNjA1NTU1OSwibGFzdF92YWx1ZSI6Nzc3NTE4MjYwNTU1NTl9"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55970899788161",
+          "sku": "fortura-52477",
+          "title": "Default Title",
+          "product": {
+            "id": "gid://shopify/Product/15470027997569",
+            "handle": "maxi-partytime-tischbombe-fga52477"
+          },
+          "media": {
+            "nodes": [],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67622324535687",
+          "sku": "CJ-1373515022264832000",
+          "title": "Default Title",
+          "product": {
+            "id": "gid://shopify/Product/16606127161735",
+            "handle": "tubenless-reifenventil-schlussel-aus-kupfer-832000"
+          },
+          "media": {
+            "nodes": [],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "nativePublicChecks": [
+    {
+      "productId": "16649321873799",
+      "variantId": "gid://shopify/ProductVariant/67739591508359",
+      "sku": "CJNS110998010JQ",
+      "priceChf": "24.90",
+      "nativePublicIdentityPriceExact": true,
+      "variantMediaCountObserved": 1,
+      "pageComplete": true,
+      "nativeMediaStatus": "READY",
+      "nativeMediaId": "gid://shopify/MediaImage/77751826055559",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619953526346.jpg?v=1792266141",
+      "nativePublicVariantImageExact": true
+    },
+    {
+      "productId": "15470027997569",
+      "variantId": "gid://shopify/ProductVariant/55970899788161",
+      "sku": "fortura-52477",
+      "priceChf": "30.90",
+      "nativePublicIdentityPriceExact": true,
+      "variantMediaCountObserved": 0,
+      "pageComplete": true,
+      "publicVariantImageId": null,
+      "productFirstImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52477_1_f6b71e20-c930-489e-ae67-50549d55616d.jpg?v=1784844342",
+      "variantHasNoDirectMediaIsNotMissingProductImage": true
+    },
+    {
+      "productId": "16606127161735",
+      "variantId": "gid://shopify/ProductVariant/67622324535687",
+      "sku": "CJ-1373515022264832000",
+      "priceChf": "21.90",
+      "nativePublicIdentityPriceExact": true,
+      "variantMediaCountObserved": 0,
+      "pageComplete": true,
+      "publicVariantImageId": null,
+      "productFirstImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1616306346952.jpg?v=1791077107",
+      "variantHasNoDirectMediaIsNotMissingProductImage": true
+    }
+  ],
+  "publicReadback": [
+    {
+      "name": "public-16649321873799.json",
+      "url": "https://luxestyle.ch/products/canvas-rucksack-mit-schulzubehor-945664.json",
+      "path": "/workspace/luxestyle-review/merchant-final-20261102-r62/images/public-16649321873799.json",
+      "http": 200,
+      "finalUrl": "https://luxestyle.ch/products/canvas-rucksack-mit-schulzubehor-945664.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 14501,
+      "sha256": "a3a9809a5fb777f18c11a1d138f6e43848c79a626229995d918b78e4fbaa1510",
+      "productId": 16649321873799,
+      "variants": 12
+    },
+    {
+      "name": "public-15470027997569.json",
+      "url": "https://luxestyle.ch/products/maxi-partytime-tischbombe-fga52477.json",
+      "path": "/workspace/luxestyle-review/merchant-final-20261102-r62/images/public-15470027997569.json",
+      "http": 200,
+      "finalUrl": "https://luxestyle.ch/products/maxi-partytime-tischbombe-fga52477.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 3407,
+      "sha256": "6b8665622f04785478db915b675daaeb7db6a418e918449bdd90dc113f4f3789",
+      "productId": 15470027997569,
+      "variants": 1
+    },
+    {
+      "name": "public-16606127161735.json",
+      "url": "https://luxestyle.ch/products/tubenless-reifenventil-schlussel-aus-kupfer-832000.json",
+      "path": "/workspace/luxestyle-review/merchant-final-20261102-r62/images/public-16606127161735.json",
+      "http": 200,
+      "finalUrl": "https://luxestyle.ch/products/tubenless-reifenventil-schlussel-aus-kupfer-832000.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 4768,
+      "sha256": "cfffdc27b1c4360687a583215dcc0ed75d5149dabc05c7f98868a7c12acc01b3",
+      "productId": 16606127161735,
+      "variants": 1
+    },
+    {
+      "name": "backpack-exact.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619953526346.jpg?v=1792266141",
+      "path": "/workspace/luxestyle-review/merchant-final-20261102-r62/images/backpack-exact.jpg",
+      "http": 200,
+      "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619953526346.jpg?v=1792266141",
+      "contentType": "image/jpeg",
+      "bytes": 137122,
+      "sha256": "2dd4724e871c636892edf289ec3ffcdb0c4aa294bdfee92fab88563849b26395",
+      "pixels": [
+        1000,
+        1000
+      ]
+    },
+    {
+      "name": "valve-5.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1616306335226.jpg?v=1791077107",
+      "path": "/workspace/luxestyle-review/merchant-final-20261102-r62/images/valve-5.jpg",
+      "http": 200,
+      "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1616306335226.jpg?v=1791077107",
+      "contentType": "image/jpeg",
+      "bytes": 138539,
+      "sha256": "ca98b06182bdb6043ac1edf2d0a5944f8060a8edcf4bcdc693bd538d809b2b97",
+      "pixels": [
+        800,
+        692
+      ]
+    }
+  ],
+  "referenceReview": {
+    "reviewer": "/root/r62_references",
+    "checkedAtUtc": "2026-11-02T21:45:55.844922+00:00",
+    "scope": "Local native-product JSON and five explicitly opened local image files. No live API, network or product changes.",
+    "imagesOpened": [
+      {
+        "file": "images/valve-1.jpg",
+        "sha256": "9ed2ac821267c718ff2d8e609f2d79f8eed0d0f9f43fcaa9dd1ef2b192533c14"
+      },
+      {
+        "file": "images/valve-2.jpg",
+        "sha256": "0997ecce2bb2d8c0ad032fa5390378c90269c65a65513956c948b49ebf3563ad"
+      },
+      {
+        "file": "images/valve-3.jpg",
+        "sha256": "1b13ce00690108855380b7c5cf066367148526ffa9d75f8c1fa029f7f16926c4"
+      },
+      {
+        "file": "images/valve-4.jpg",
+        "sha256": "a74ec0db6b710705bc8e8122b0b7674e7d2d739117afe3d362777a81dcd08cee"
+      },
+      {
+        "file": "images/party-1.jpg",
+        "sha256": "7cd94d47fccb04df42304cf999408e66723feef6c24ef7567164adb2cbe9ca1e"
+      }
+    ],
+    "valve": {
+      "productId": "gid://shopify/Product/16606127161735",
+      "variantId": "gid://shopify/ProductVariant/67622324535687",
+      "sku": "CJ-1373515022264832000",
+      "currentTitle": "Ventilschlüssel für Tubeless-Reifenventile aus Kupfer",
+      "statusInSuppliedSnapshot": "ACTIVE",
+      "imagesExamined": 4,
+      "imagesInSuppliedNativeGallery": 5,
+      "observed": [
+        "Red handled tool with a split/notched metal tip.",
+        "A bag of many small metal valve-core-shaped parts, some with red bands.",
+        "A tray of such parts and the red handled tool.",
+        "Package visibly labelled VALVE CORES with tool and bags of parts.",
+        "No visible weapon in the four examined images."
+      ],
+      "plausibleProductFamily": "Tyre-valve cores and a valve-core tool; accessory interpretation is consistent with the visible packaging.",
+      "unverified": [
+        "Exact supplied contents for the single Default Title SKU: tool alone, valve cores, quantities or combination.",
+        "Supplier model and exact intended-use specification.",
+        "Pure copper material or whole-product material composition.",
+        "500 g mass.",
+        "Compatibility with all English valves, tubeless suitability, inflation behaviour or damage-free performance.",
+        "Actual French Merchant source text/category/URL and all unexamined assets.",
+        "Commercial rights or product safety/compliance certification."
+      ],
+      "conclusion": "A narrowly worded review draft may describe the visible tyre-valve accessory evidence and ask Google to recheck the Weapons classification. It must remain unsubmitted until exact SKU/contents/intended use and the current Merchant source are bound. Do not assert a definitive false positive, guaranteed compatibility or that only a single tool is offered. No renaming/reclassification to hide a restricted function.",
+      "suggestedSafeDraftBasis": "The supplied product photographs show valve-core parts and a valve-core tool; visible packaging reads VALVE CORES. Please compare the exact submitted article and supplier reference with the Weapons finding. This draft does not establish final eligibility or the exact contents of the single variant."
+    },
+    "party": {
+      "productId": "gid://shopify/Product/15470027997569",
+      "variantId": "gid://shopify/ProductVariant/55970899788161",
+      "sku": "fortura-52477",
+      "currentTitle": "Maxi Partytime Tischbombe",
+      "statusInSuppliedSnapshot": "ACTIVE",
+      "imagesExamined": 1,
+      "observed": [
+        "Tall cylindrical silver/black package marked Party Time.",
+        "A short cord-like projection is visible near the lower edge; photograph alone does not establish chemical composition or mechanism."
+      ],
+      "unverified": [
+        "Manufacturer classification, safety documentation and actual pyrotechnic composition/mechanism.",
+        "Eligibility for Google placements or national sale/shipping rules.",
+        "Exact 26 cm measurement, warehouse stock and delivery claims."
+      ],
+      "conclusion": "Do not treat Explosives as a false alarm or prepare a clearance/appeal based on the party title. Preserve existing exclusions and channel restrictions. No application instructions, rebranding to conceal function or policy bypass."
+    },
+    "ownActions": {
+      "networkCalls": 0,
+      "apiCalls": 0,
+      "shopifyWrites": 0,
+      "merchantWrites": 0,
+      "appealsSubmitted": 0,
+      "imageEdits": 0
+    }
+  },
+  "backpack": {
+    "exactVariant": "67739591508359",
+    "media": "77751826055559",
+    "nativeStatus": "READY",
+    "http": 200,
+    "pixels": [
+      1000,
+      1000
+    ],
+    "sourceImageSha256": "2dd4724e871c636892edf289ec3ffcdb0c4aa294bdfee92fab88563849b26395",
+    "observed": "Green bag/accessory collage with visible Roblox/character motifs; no motif removal, generic bag replacement, bundle claim or new advertising approval.",
+    "googleProcessing": "unknown",
+    "threeDayHint": "Quoted CSV information, not an instruction or proven processing start/deadline.",
+    "rights": "not_verified_by_this_check"
+  },
+  "valve": {
+    "offerId": "shopify_ZZ_16606127161735_67622324535687",
+    "reviewPrepared": true,
+    "submitted": false,
+    "supplierDefaultExecution": "unknown",
+    "merchantRawFields": "unknown",
+    "ownChanges": 0
+  },
+  "party": {
+    "offerId": "shopify_ZZ_15470027997569_55970899788161",
+    "exportExplosivesContexts": 3,
+    "cssContexts": 2,
+    "policyCleared": false,
+    "ownChanges": 0,
+    "appealPrepared": false
+  },
+  "ownActions": {
+    "shopifyWrites": 0,
+    "merchantWrites": 0,
+    "merchantDataRequests": 0,
+    "appealsSubmitted": 0,
+    "imageUploads": 0,
+    "newReports": 0,
+    "orderWatchReads": 0,
+    "workflowDispatches": 0,
+    "settingsOrExclusionChanges": 0,
+    "paidRenders": 0
+  },
+  "historicalImageFixesRepeated": false,
+  "validator": "Fresh schemas and native API accepted query. MCP validator explicitly skipped; no full toolkit validator success claimed."
+}
