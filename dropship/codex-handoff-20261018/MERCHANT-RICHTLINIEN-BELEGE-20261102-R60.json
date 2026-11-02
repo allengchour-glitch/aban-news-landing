@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-02T21:27:32.891835+00:00",
+  "brand": "luxestyle.ch",
+  "scope": "Exactly five new owner CSV uploads; 3 targeted native products, one confirmed Shopify photo-order write. Not a full catalogue or live Google policy audit.",
+  "exportReview": {
+    "rawRows": 386,
+    "uniqueFileContents": 4,
+    "uniqueFullRows": 273,
+    "uniqueIssueContextKeys": 273,
+    "contextKeyFields": [
+      "Channels",
+      "Language",
+      "Feed label",
+      "Item ID",
+      "Issue title",
+      "Traffic type",
+      "Country"
+    ],
+    "offerIds": 65,
+    "resolvedShopifyProductIds": 31,
+    "unmappedNumericOfferIds": [
+      "13691855934451960106",
+      "2146243784051347675",
+      "2900357325756381271",
+      "6337689026823560885",
+      "7646628820503426266",
+      "8307151442341845947"
+    ],
+    "shaDuplicateGroups": [
+      {
+        "sha256": "da350fac631d631989cc5d2bd0c3f1074b5822b65cbb300b6c2fc373eff31a14",
+        "uploads": [
+          {
+            "fileId": "file_000000002274824698ceea990bda331b",
+            "name": "product_issues_2026-11-02_12-57-41.csv"
+          },
+          {
+            "fileId": "file_00000000643882469db716c777618bbf",
+            "name": "product_issues_2026-11-02_12-57-41.csv"
+          }
+        ],
+        "rawRowsCountedOnceAfterExactDedup": true
+      }
+    ],
+    "issues": [
+      {
+        "issue": "Alcoholic beverages",
+        "uniqueRows": 6,
+        "offerIds": 3,
+        "languages": {
+          "de": 6
+        },
+        "traffic": {
+          "Shopping ads": 3,
+          "Free listings": 3
+        },
+        "countries": {
+          "Liechtenstein": 6
+        }
+      },
+      {
+        "issue": "Guns and Parts",
+        "uniqueRows": 113,
+        "offerIds": 21,
+        "languages": {
+          "de": 98,
+          "fr": 15
+        },
+        "traffic": {
+          "Dynamic remarketing": 37,
+          "Shopping ads": 37,
+          "Free listings": 39
+        },
+        "countries": {
+          "Switzerland": 64,
+          "Liechtenstein": 49
+        }
+      },
+      {
+        "issue": "Over capacity for Shopping ads (in CSS program)",
+        "uniqueRows": 12,
+        "offerIds": 6,
+        "languages": {
+          "fr": 12
+        },
+        "traffic": {
+          "Dynamic remarketing": 6,
+          "Shopping ads": 6
+        },
+        "countries": {
+          "Switzerland": 12
+        }
+      },
+      {
+        "issue": "Personalized advertising: legal restrictions",
+        "uniqueRows": 6,
+        "offerIds": 3,
+        "languages": {
+          "de": 6
+        },
+        "traffic": {
+          "Dynamic remarketing": 6
+        },
+        "countries": {
+          "Liechtenstein": 3,
+          "Switzerland": 3
+        }
+      },
+      {
+        "issue": "Sale of live animals",
+        "uniqueRows": 54,
+        "offerIds": 18,
+        "languages": {
+          "fr": 54
+        },
+        "traffic": {
+          "Free listings": 18,
+          "Shopping ads": 18,
+          "Dynamic remarketing": 18
+        },
+        "countries": {
+          "Switzerland": 54
+        }
+      },
+      {
+        "issue": "Tobacco products & related equipment",
+        "uniqueRows": 82,
+        "offerIds": 23,
+        "languages": {
+          "de": 28,
+          "fr": 54
+        },
+        "traffic": {
+          "Dynamic remarketing": 24,
+          "Shopping ads": 24,
+          "Free listings": 34
+        },
+        "countries": {
+          "Switzerland": 68,
+          "Liechtenstein": 14
+        }
+      }
+    ],
+    "countryCounts": {
+      "Liechtenstein": 72,
+      "Switzerland": 201
+    },
+    "trafficCounts": {
+      "Shopping ads": 88,
+      "Free listings": 94,
+      "Dynamic remarketing": 91
+    },
+    "languageCounts": {
+      "de": 138,
+      "fr": 135
+    },
+    "feedLabelCounts": {
+      "CHF_99383214465": 261,
+      "CH": 12
+    },
+    "sourceColumns": {
+      "dataSourceName": false,
+      "dataSourceId": false,
+      "fetchUrl": false,
+      "submittedProductLink": false,
+      "feedLabelIsDataSourceProof": false
+    },
+    "r59ExactContextOverlap": {
+      "oldRowsRead": 4386,
+      "overlapContexts": 0,
+      "overlapIssueCounts": {},
+      "keysNotInR59": 273,
+      "nonoverlapMeansResolvedOrNewlyCreated": false
+    }
+  },
+  "files": [
+    {
+      "fileId": "file_00000000b59c8246bf28c57dcddb66d1",
+      "name": "product_issues_2026-11-02_12-58-43.csv",
+      "bytes": 4037,
+      "sha256": "79b4062a1f41c5a42507b2626a55d8dd5d766ed27d970642d4bc686aca8b99ee",
+      "rows": 12,
+      "issues": {
+        "Alcoholic beverages": 6,
+        "Personalized advertising: legal restrictions": 6
+      }
+    },
+    {
+      "fileId": "file_00000000fd1c8246ad8fb355004abf93",
+      "name": "product_issues_2026-11-02_12-58-18.csv",
+      "bytes": 17407,
+      "sha256": "f1fe2e736cefa5ab068d0d07f30fbcb61ea64383d2bc1a9a37b3bf4e40b5f7b4",
+      "rows": 58,
+      "issues": {
+        "Sale of live animals": 54,
+        "Over capacity for Shopping ads (in CSS program)": 4
+      }
+    },
+    {
+      "fileId": "file_000000002274824698ceea990bda331b",
+      "name": "product_issues_2026-11-02_12-57-41.csv",
+      "bytes": 39391,
+      "sha256": "da350fac631d631989cc5d2bd0c3f1074b5822b65cbb300b6c2fc373eff31a14",
+      "rows": 113,
+      "issues": {
+        "Guns and Parts": 113
+      }
+    },
+    {
+      "fileId": "file_00000000643882469db716c777618bbf",
+      "name": "product_issues_2026-11-02_12-57-41.csv",
+      "bytes": 39391,
+      "sha256": "da350fac631d631989cc5d2bd0c3f1074b5822b65cbb300b6c2fc373eff31a14",
+      "rows": 113,
+      "issues": {
+        "Guns and Parts": 113
+      }
+    },
+    {
+      "fileId": "file_00000000a3348246b47bfbeaa0d3793f",
+      "name": "product_issues_2026-11-02_12-56-55.csv",
+      "bytes": 30830,
+      "sha256": "d78804d7a89ee19b58f598359d83b60c6955b00daf92400eccc0234763b50cf7",
+      "rows": 90,
+      "issues": {
+        "Tobacco products & related equipment": 82,
+        "Over capacity for Shopping ads (in CSS program)": 8
+      }
+    }
+  ],
+  "metadata": {
+    "data": {
+      "bells": {
+        "id": "gid://shopify/Product/15497456255361",
+        "handle": "halsbandglockchen-fur-haustiere-2er-set-468800",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-17-8",
+          "fullName": "Tiere & Tierbedarf > Haustierbedarf > Halsbänder & Geschirre > Standardhalsbänder"
+        },
+        "metafields": {
+          "nodes": [
+            {
+              "key": "gender",
+              "value": "unisex",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "age_group",
+              "value": "adult",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "condition",
+              "value": "new",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "custom_product",
+              "value": "true",
+              "type": "boolean"
+            },
+            {
+              "key": "google_product_category",
+              "value": "Animals & Pet Supplies > Pet Supplies > Pet Collars & Harnesses",
+              "type": "single_line_text_field"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjoyMDIxNzA4ODQwMzA4NDksImxhc3RfdmFsdWUiOiIyMDIxNzA4ODQwMzA4NDkifQ=="
+          }
+        },
+        "translations": []
+      },
+      "paddle": {
+        "id": "gid://shopify/Product/15522242789761",
+        "handle": "edelstahl-ruhrspaten-fur-maische-und-wurze-168000",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/ae-2-3",
+          "fullName": "Kunst & Unterhaltung > Hobby & Kunst > Zubehör für Bier- & Weinherstellung"
+        },
+        "metafields": {
+          "nodes": [
+            {
+              "key": "gender",
+              "value": "unisex",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "age_group",
+              "value": "adult",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "condition",
+              "value": "new",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "custom_product",
+              "value": "true",
+              "type": "boolean"
+            },
+            {
+              "key": "google_product_category",
+              "value": "Arts & Entertainment > Hobbies & Creative Arts > Homebrewing & Winemaking Supplies",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "material",
+              "value": "Edelstahl",
+              "type": "single_line_text_field"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjoyMDMyMTIxNzY1MjM2NDksImxhc3RfdmFsdWUiOiIyMDMyMTIxNzY1MjM2NDkifQ=="
+          }
+        },
+        "translations": []
+      },
+      "helmet": {
+        "id": "gid://shopify/Product/15453770678657",
+        "handle": "skischutzkappe-818816",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/sg-4-17-2-4",
+          "fullName": "Sportartikel > Outdoor-Aktivitäten > Wintersport & -Aktivitäten > Skisport & Snowboarden > Ski- & Snowboardhelme"
+        },
+        "metafields": {
+          "nodes": [
+            {
+              "key": "gender",
+              "value": "unisex",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "age_group",
+              "value": "adult",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "condition",
+              "value": "new",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "google_product_category",
+              "value": "Sporting Goods > Outdoor Recreation > Winter Sports & Activities > Skiing & Snowboarding > Ski & Snowboard Helmets",
+              "type": "single_line_text_field"
+            },
+            {
+              "key": "custom_product",
+              "value": "true",
+              "type": "boolean"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjoyMDIxNDI4Nzg4NTk2NDksImxhc3RfdmFsdWUiOiIyMDIxNDI4Nzg4NTk2NDkifQ=="
+          }
+        },
+        "translations": []
+      }
+    }
+  },
+  "imageFix": {
+    "productId": "gid://shopify/Product/15497456255361",
+    "variantId": "gid://shopify/ProductVariant/56099949740417",
+    "sku": "CJ-1567455260363468800",
+    "priceChf": "20.90",
+    "diff": {
+      "productId": "gid://shopify/Product/15497456255361",
+      "variantId": "gid://shopify/ProductVariant/56099949740417",
+      "reason": "Existing isolated photo of collar bells shows the actual offered accessory clearly; cat lifestyle image remains in gallery. No claim that this caused or resolves Google's policy.",
+      "before": [
+        "gid://shopify/MediaImage/70523436007809",
+        "gid://shopify/MediaImage/70523436335489",
+        "gid://shopify/MediaImage/70523436368257",
+        "gid://shopify/MediaImage/70523436401025",
+        "gid://shopify/MediaImage/70523436433793"
+      ],
+      "after": [
+        "gid://shopify/MediaImage/70523436401025",
+        "gid://shopify/MediaImage/70523436007809",
+        "gid://shopify/MediaImage/70523436335489",
+        "gid://shopify/MediaImage/70523436368257",
+        "gid://shopify/MediaImage/70523436433793"
+      ],
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/70523436401025",
+          "newPosition": "0"
+        }
+      ],
+      "preservedFields": [
+        "title",
+        "vendor",
+        "status",
+        "productType",
+        "descriptionHtml",
+        "tags",
+        "totalInventory",
+        "totalVariants",
+        "variants",
+        "currencyCode"
+      ],
+      "googleStatus": "unknown; no Merchant write"
+    },
+    "checks": {
+      "title": true,
+      "vendor": true,
+      "status": true,
+      "productType": true,
+      "descriptionHtml": true,
+      "tags": true,
+      "totalInventory": true,
+      "totalVariants": true,
+      "variants": true,
+      "currencyCode": true,
+      "correctImageOrder": true,
+      "featuredMatches": true
+    },
+    "job": {
+      "id": "gid://shopify/Job/b8507198-8c59-425d-8964-fc1e4810a475",
+      "done": true
+    },
+    "nativePrimaryImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/800719c3-47da-4fdf-b0f5-9952d533189c.jpg?v=1786673901",
+    "public": {
+      "url": "https://luxestyle.ch/products/halsbandglockchen-fur-haustiere-2er-set-468800.json",
+      "http": 200,
+      "firstImage": {
+        "id": 83302108823937,
+        "product_id": 15497456255361,
+        "position": 1,
+        "created_at": "2026-08-14T04:18:18+02:00",
+        "updated_at": "2026-08-14T04:18:21+02:00",
+        "alt": "Halsbandglöckchen für Haustiere (2er-Set) – Bild 4 | LuxeStyle",
+        "width": 600,
+        "height": 600,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/800719c3-47da-4fdf-b0f5-9952d533189c.jpg?v=1786673901",
+        "variant_ids": []
+      },
+      "variantIds": [
+        56099949740417
+      ],
+      "payloadSha256": "f656651e18eb1f9091b2338ef05ab5dd4e42ee321b8f8f33b1acb8bde729d58d"
+    },
+    "snapshotSha256": {
+      "BELL-BEFORE.json": "8bc3d9c1345adf404f97b269deed5a72ec916629dd00a546bce0f239cfefc58e",
+      "BELL-AFTER.json": "89d7a3a810145adb7867e0851af57544f37934c5df992ef790c7ebf3959dfaaa",
+      "BELL-CHECKS.json": "48a75606365f1c87851396d5f282a3e92643af1b8186490a77e8d5b30d2b5cd8",
+      "BELL-JOB-READBACK.json": "aa5065aafee40722ca596f445c0b4524002fe75330a962b54e2585789dd81361"
+    },
+    "sourceImageSha256": "15a1ce0842114c297d02e097c527f49e0652f00e990c83acd3d12b7ba05960c2",
+    "sourceImagePixels": [
+      600,
+      600
+    ],
+    "googleReapproval": "unknown"
+  },
+  "policyDraft": {
+    "offerId": "shopify_ZZ_15497456255361_56099949740417",
+    "language": "fr",
+    "feedLabel": "CHF_99383214465",
+    "country": "Switzerland",
+    "submitted": false,
+    "sourceBinding": "unknown",
+    "requestScope": "one exact offer, no bulk appeal"
+  },
+  "ownActions": {
+    "shopifyPhotoOrderWrites": 1,
+    "merchantWrites": 0,
+    "policyAppealsSubmitted": 0,
+    "channelOrExclusionChanges": 0,
+    "newUploads": 0,
+    "newReports": 0,
+    "orderWatchReads": 0,
+    "workflowDispatches": 0,
+    "paidVideoRenders": 0
+  },
+  "historicalR59ImageFixesCountedAsNew": false,
+  "validator": "MCP preflight explicitly skipped; native GraphQL accepted operation; job and native/public readbacks confirmed. No full CLI validator success claimed.",
+  "sourcePolicy": [
+    {
+      "url": "https://support.google.com/merchants/answer/6150100?hl=en",
+      "scrapeId": "01a19e22-e5be-723e-8103-9191fa4da11a"
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/13585221?hl=en",
+      "scrapeId": "01a19e22-e760-770f-8aea-20fb6c19fbe4"
+    }
+  ]
+}
