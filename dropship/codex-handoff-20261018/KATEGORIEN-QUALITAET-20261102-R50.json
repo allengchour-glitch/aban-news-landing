@@ -1,0 +1,1508 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 50,
+  "checkedAt": "2026-11-02T10:07:03.551289+00:00",
+  "ownerRequest": "kannst du das auf meisterwerk machen noch besser",
+  "scope": "Current follow-up further improves existing Google/ChatGPT visibility task: four live fields across two actual category pages, bounded quality verification and correction of a false-positive pricefilter finding.",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "sixExpectedChannelsFreshlyMatched": true
+    }
+  },
+  "netLiveFields": 4,
+  "mutationCalls": 2,
+  "categoryChanges": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-02T09:55:40.290496+00:00",
+    "status": "LOCAL_REVIEW_PROPOSAL_NOT_APPLIED",
+    "scope": "Exactly two existing collection descriptions and their SEO descriptions; four net fields. First eight native products per collection only, both hasNextPage true. No product/catalog/stock coverage claim.",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "collections": [
+      {
+        "key": "home",
+        "id": "gid://shopify/Collection/687522775425",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "before": {
+          "id": "gid://shopify/Collection/687522775425",
+          "title": "Wohnen & Dekoration",
+          "handle": "wohnen-dekoration",
+          "descriptionHtml": "<p>Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen &amp; Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "description": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          },
+          "sortOrder": "MANUAL",
+          "updatedAt": "2026-10-30T18:24:38Z",
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15470075576705",
+                "title": "Elastische Stoffhuelle",
+                "handle": "elastische-stoffhuelle-627900",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15470078165377",
+                "title": "Schwarz-Weiss Cartoon Vorhang",
+                "handle": "schwarz-weiss-cartoon-vorhang-619000",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15493718147457",
+                "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15493718770049",
+                "title": "Kissenbezug Leinenoptik mit Pfirsichhaut-Finish",
+                "handle": "kissenbezug-leinenoptik-mit-pfirsichhaut-finis-911744",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15493808521601",
+                "title": "Samtweicher Kissenbezug mit Pferdekopf-Print",
+                "handle": "samtweicher-kissenbezug-mit-pferdekopf-print-293888",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15493835260289",
+                "title": "Sofaüberzug «Pure Color» für alle Jahreszeiten",
+                "handle": "sofauberzug-pure-color-fur-alle-jahreszeiten-945472",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15493836603777",
+                "title": "Rutschfester Sofaüberzug All Inclusive",
+                "handle": "rutschfester-sofauberzug-all-inclusive-630016",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/16603469054343",
+                "title": "Nachtlicht mit Körperinduktion – runde Wandlampe",
+                "handle": "nachtlicht-mit-korperinduktion-runde-wandlampe-629500",
+                "status": "ACTIVE"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true,
+              "endCursor": "eyJsYXN0X2lkIjoxNjYwMzQ2OTA1NDM0MywibGFzdF92YWx1ZSI6IjAwMDFlM200ZHk4In0="
+            }
+          }
+        },
+        "after": {
+          "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+          }
+        },
+        "mutationInput": {
+          "id": "gid://shopify/Collection/687522775425",
+          "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+          }
+        },
+        "netChangedFields": [
+          "descriptionHtml first paragraph",
+          "seo.description"
+        ],
+        "preserve": [
+          "id",
+          "title",
+          "handle",
+          "seo.title",
+          "sortOrder",
+          "products and order",
+          "all HTML following first paragraph"
+        ],
+        "firstParagraphBeforeCharacters": 321,
+        "firstParagraphAfterCharacters": 264,
+        "followingHtmlByteIdentical": true,
+        "existingServiceTextPreserved": true,
+        "verifiedExistingLinkTargets": [
+          "/collections/vorhaenge",
+          "/collections/sub-beleuchtung"
+        ],
+        "newLinksAdded": 0,
+        "nativeProductSampleSize": 8,
+        "nativeHasNextPage": true,
+        "allEightSampleProductsActive": true
+      },
+      {
+        "key": "tech",
+        "id": "gid://shopify/Collection/689681006977",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "before": {
+          "id": "gid://shopify/Collection/689681006977",
+          "title": "Elektronik & Technik",
+          "handle": "elektronik-technik",
+          "descriptionHtml": "<p>Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+            "description": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          },
+          "sortOrder": "MANUAL",
+          "updatedAt": "2026-11-02T07:33:10Z",
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15453728178561",
+                "title": "Transmitter mit Display",
+                "handle": "transmitter-mit-display-97d068",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15453787652481",
+                "title": "Smarter Touch-Lichtschalter aus Glas, per App steuerbar",
+                "handle": "intelligentes-glas-mit-touch-steuerung-629500",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15453825270145",
+                "title": "Universal-Remote für Garagentor, 4-Tasten, Kopierfunktion",
+                "handle": "universal-remote-fur-garagentor-4-tasten-kopie-157248",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15454046781825",
+                "title": "Smart Remote Key Card",
+                "handle": "smart-remote-key-card-ef0a62",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15454066704769",
+                "title": "Mini Wireless Keyboard mit Touchpad",
+                "handle": "mini-wireless-keyboard-mit-touchpad-91f82b",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15454067360129",
+                "title": "ZigBee Bluetooth-Gateway",
+                "handle": "zigbee-bluetooth-gateway-6bee9d",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15454067589505",
+                "title": "Universal-IR-Fernbedienung mit Sprachsteuerung",
+                "handle": "universal-ir-fernbedienung-mit-sprachsteuerung-98c975",
+                "status": "ACTIVE"
+              },
+              {
+                "id": "gid://shopify/Product/15454067655041",
+                "title": "Intelligente Fernbedienung mit Air Mouse",
+                "handle": "intelligente-fernbedienung-mit-air-mouse-643f1b",
+                "status": "ACTIVE"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQ1NDA2NzY1NTA0MSwibGFzdF92YWx1ZSI6IjAwMDBpMDRkajI4In0="
+            }
+          }
+        },
+        "after": {
+          "descriptionHtml": "<p>Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+            "description": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen."
+          }
+        },
+        "mutationInput": {
+          "id": "gid://shopify/Collection/689681006977",
+          "descriptionHtml": "<p>Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+            "description": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen."
+          }
+        },
+        "netChangedFields": [
+          "descriptionHtml first paragraph",
+          "seo.description"
+        ],
+        "preserve": [
+          "id",
+          "title",
+          "handle",
+          "seo.title",
+          "sortOrder",
+          "products and order",
+          "all HTML following first paragraph"
+        ],
+        "firstParagraphBeforeCharacters": 280,
+        "firstParagraphAfterCharacters": 222,
+        "followingHtmlByteIdentical": true,
+        "existingServiceTextPreserved": true,
+        "verifiedExistingLinkTargets": [
+          "/collections/elektronik-audio",
+          "/collections/pc-komponenten"
+        ],
+        "newLinksAdded": 0,
+        "nativeProductSampleSize": 8,
+        "nativeHasNextPage": true,
+        "allEightSampleProductsActive": true
+      }
+    ],
+    "nativeValidation": "Fresh schema discovery and prevalidator explicitly skipped; native read accepted. No independent green CLI or full-CI claim.",
+    "nativeReadCalls": 1,
+    "linkedPublicGetCalls": 4,
+    "externalWrites": 0,
+    "analyticsFlowOrderCalls": 0,
+    "reusePublicEvidence": "/workspace/luxestyle-review/visibility-20261102/audit/AUDIT.json: same-day current root-head/main/FAQ evidence, not a new crawl.",
+    "principles": [
+      "No new FAQ block because both pages already have visible FAQ below products",
+      "No new duplicate links because both descriptions already contain ls-verwandt link blocks",
+      "No invented claims, dimensions, materials, reviews, Swiss-made, stock or delivery promises",
+      "No exact changing catalogue counts or daily-new claims",
+      "First paragraphs are shorter in characters; native/public/mobile rendering still required after actual write",
+      "Existing service text and all HTML following first paragraph preserved byte-for-byte",
+      "Nested seo input must carry original seo.title explicitly alongside new description"
+    ]
+  },
+  "nativeExecution": {
+    "scope": "Exactly four net textfields in two existing collections, current explicit optimization request, nested original SEO titles retained.",
+    "mutationCalls": 2,
+    "receipts": [
+      {
+        "key": "home",
+        "before": {
+          "data": {
+            "shop": {
+              "id": "gid://shopify/Shop/94368563585",
+              "currencyCode": "CHF",
+              "primaryDomain": {
+                "host": "luxestyle.ch"
+              }
+            },
+            "collection": {
+              "id": "gid://shopify/Collection/687522775425",
+              "title": "Wohnen & Dekoration",
+              "handle": "wohnen-dekoration",
+              "descriptionHtml": "<p>Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen &amp; Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+              "seo": {
+                "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                "description": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+              },
+              "sortOrder": "MANUAL",
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15470075576705",
+                    "title": "Elastische Stoffhuelle",
+                    "handle": "elastische-stoffhuelle-627900"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15470078165377",
+                    "title": "Schwarz-Weiss Cartoon Vorhang",
+                    "handle": "schwarz-weiss-cartoon-vorhang-619000"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718147457",
+                    "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                    "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718770049",
+                    "title": "Kissenbezug Leinenoptik mit Pfirsichhaut-Finish",
+                    "handle": "kissenbezug-leinenoptik-mit-pfirsichhaut-finis-911744"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493808521601",
+                    "title": "Samtweicher Kissenbezug mit Pferdekopf-Print",
+                    "handle": "samtweicher-kissenbezug-mit-pferdekopf-print-293888"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493835260289",
+                    "title": "Sofaüberzug «Pure Color» für alle Jahreszeiten",
+                    "handle": "sofauberzug-pure-color-fur-alle-jahreszeiten-945472"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493836603777",
+                    "title": "Rutschfester Sofaüberzug All Inclusive",
+                    "handle": "rutschfester-sofauberzug-all-inclusive-630016"
+                  },
+                  {
+                    "id": "gid://shopify/Product/16603469054343",
+                    "title": "Nachtlicht mit Körperinduktion – runde Wandlampe",
+                    "handle": "nachtlicht-mit-korperinduktion-runde-wandlampe-629500"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true,
+                  "endCursor": "eyJsYXN0X2lkIjoxNjYwMzQ2OTA1NDM0MywibGFzdF92YWx1ZSI6IjAwMDFlM200ZHk4In0="
+                }
+              }
+            }
+          }
+        },
+        "write": {
+          "data": {
+            "collectionUpdate": {
+              "collection": {
+                "id": "gid://shopify/Collection/687522775425",
+                "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+                "seo": {
+                  "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                  "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+                }
+              },
+              "userErrors": []
+            }
+          }
+        },
+        "back": {
+          "data": {
+            "shop": {
+              "id": "gid://shopify/Shop/94368563585",
+              "currencyCode": "CHF",
+              "primaryDomain": {
+                "host": "luxestyle.ch"
+              }
+            },
+            "collection": {
+              "id": "gid://shopify/Collection/687522775425",
+              "title": "Wohnen & Dekoration",
+              "handle": "wohnen-dekoration",
+              "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+              "seo": {
+                "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+              },
+              "sortOrder": "MANUAL",
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15470075576705",
+                    "title": "Elastische Stoffhuelle",
+                    "handle": "elastische-stoffhuelle-627900"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15470078165377",
+                    "title": "Schwarz-Weiss Cartoon Vorhang",
+                    "handle": "schwarz-weiss-cartoon-vorhang-619000"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718147457",
+                    "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                    "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718770049",
+                    "title": "Kissenbezug Leinenoptik mit Pfirsichhaut-Finish",
+                    "handle": "kissenbezug-leinenoptik-mit-pfirsichhaut-finis-911744"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493808521601",
+                    "title": "Samtweicher Kissenbezug mit Pferdekopf-Print",
+                    "handle": "samtweicher-kissenbezug-mit-pferdekopf-print-293888"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493835260289",
+                    "title": "Sofaüberzug «Pure Color» für alle Jahreszeiten",
+                    "handle": "sofauberzug-pure-color-fur-alle-jahreszeiten-945472"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493836603777",
+                    "title": "Rutschfester Sofaüberzug All Inclusive",
+                    "handle": "rutschfester-sofauberzug-all-inclusive-630016"
+                  },
+                  {
+                    "id": "gid://shopify/Product/16603469054343",
+                    "title": "Nachtlicht mit Körperinduktion – runde Wandlampe",
+                    "handle": "nachtlicht-mit-korperinduktion-runde-wandlampe-629500"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true,
+                  "endCursor": "eyJsYXN0X2lkIjoxNjYwMzQ2OTA1NDM0MywibGFzdF92YWx1ZSI6IjAwMDFlM200ZHk4In0="
+                }
+              }
+            }
+          }
+        },
+        "checks": {
+          "bodyExact": true,
+          "descriptionExact": true,
+          "seoTitlePreserved": true,
+          "titlePreserved": true,
+          "handlePreserved": true,
+          "sortPreserved": true,
+          "sampleProductsAndOrderPreserved": true,
+          "followingHtmlPreserved": true
+        }
+      },
+      {
+        "key": "tech",
+        "before": {
+          "data": {
+            "shop": {
+              "id": "gid://shopify/Shop/94368563585",
+              "currencyCode": "CHF",
+              "primaryDomain": {
+                "host": "luxestyle.ch"
+              }
+            },
+            "collection": {
+              "id": "gid://shopify/Collection/689681006977",
+              "title": "Elektronik & Technik",
+              "handle": "elektronik-technik",
+              "descriptionHtml": "<p>Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+              "seo": {
+                "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+                "description": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+              },
+              "sortOrder": "MANUAL",
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15453728178561",
+                    "title": "Transmitter mit Display",
+                    "handle": "transmitter-mit-display-97d068"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453787652481",
+                    "title": "Smarter Touch-Lichtschalter aus Glas, per App steuerbar",
+                    "handle": "intelligentes-glas-mit-touch-steuerung-629500"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453825270145",
+                    "title": "Universal-Remote für Garagentor, 4-Tasten, Kopierfunktion",
+                    "handle": "universal-remote-fur-garagentor-4-tasten-kopie-157248"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454046781825",
+                    "title": "Smart Remote Key Card",
+                    "handle": "smart-remote-key-card-ef0a62"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454066704769",
+                    "title": "Mini Wireless Keyboard mit Touchpad",
+                    "handle": "mini-wireless-keyboard-mit-touchpad-91f82b"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067360129",
+                    "title": "ZigBee Bluetooth-Gateway",
+                    "handle": "zigbee-bluetooth-gateway-6bee9d"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067589505",
+                    "title": "Universal-IR-Fernbedienung mit Sprachsteuerung",
+                    "handle": "universal-ir-fernbedienung-mit-sprachsteuerung-98c975"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067655041",
+                    "title": "Intelligente Fernbedienung mit Air Mouse",
+                    "handle": "intelligente-fernbedienung-mit-air-mouse-643f1b"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true,
+                  "endCursor": "eyJsYXN0X2lkIjoxNTQ1NDA2NzY1NTA0MSwibGFzdF92YWx1ZSI6IjAwMDBpMDRkajI4In0="
+                }
+              }
+            }
+          }
+        },
+        "write": {
+          "data": {
+            "collectionUpdate": {
+              "collection": {
+                "id": "gid://shopify/Collection/689681006977",
+                "descriptionHtml": "<p>Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+                "seo": {
+                  "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+                  "description": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen."
+                }
+              },
+              "userErrors": []
+            }
+          }
+        },
+        "back": {
+          "data": {
+            "shop": {
+              "id": "gid://shopify/Shop/94368563585",
+              "currencyCode": "CHF",
+              "primaryDomain": {
+                "host": "luxestyle.ch"
+              }
+            },
+            "collection": {
+              "id": "gid://shopify/Collection/689681006977",
+              "title": "Elektronik & Technik",
+              "handle": "elektronik-technik",
+              "descriptionHtml": "<p>Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/nintendo-switch\">Nintendo Switch</a> · <a href=\"/collections/3d-drucker\">3D-Drucker &amp; Stifte</a> · <a href=\"/collections/elektronik-audio\">Kopfhörer &amp; Lautsprecher</a> · <a href=\"/collections/pc-komponenten\">PC-Komponenten &amp; Speicher</a></p><!-- /ls-verwandt -->",
+              "seo": {
+                "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+                "description": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen."
+              },
+              "sortOrder": "MANUAL",
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15453728178561",
+                    "title": "Transmitter mit Display",
+                    "handle": "transmitter-mit-display-97d068"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453787652481",
+                    "title": "Smarter Touch-Lichtschalter aus Glas, per App steuerbar",
+                    "handle": "intelligentes-glas-mit-touch-steuerung-629500"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453825270145",
+                    "title": "Universal-Remote für Garagentor, 4-Tasten, Kopierfunktion",
+                    "handle": "universal-remote-fur-garagentor-4-tasten-kopie-157248"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454046781825",
+                    "title": "Smart Remote Key Card",
+                    "handle": "smart-remote-key-card-ef0a62"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454066704769",
+                    "title": "Mini Wireless Keyboard mit Touchpad",
+                    "handle": "mini-wireless-keyboard-mit-touchpad-91f82b"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067360129",
+                    "title": "ZigBee Bluetooth-Gateway",
+                    "handle": "zigbee-bluetooth-gateway-6bee9d"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067589505",
+                    "title": "Universal-IR-Fernbedienung mit Sprachsteuerung",
+                    "handle": "universal-ir-fernbedienung-mit-sprachsteuerung-98c975"
+                  },
+                  {
+                    "id": "gid://shopify/Product/15454067655041",
+                    "title": "Intelligente Fernbedienung mit Air Mouse",
+                    "handle": "intelligente-fernbedienung-mit-air-mouse-643f1b"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true,
+                  "endCursor": "eyJsYXN0X2lkIjoxNTQ1NDA2NzY1NTA0MSwibGFzdF92YWx1ZSI6IjAwMDBpMDRkajI4In0="
+                }
+              }
+            }
+          }
+        },
+        "checks": {
+          "bodyExact": true,
+          "descriptionExact": true,
+          "seoTitlePreserved": true,
+          "titlePreserved": true,
+          "handlePreserved": true,
+          "sortPreserved": true,
+          "sampleProductsAndOrderPreserved": true,
+          "followingHtmlPreserved": true
+        }
+      }
+    ]
+  },
+  "publicFirecrawlInitialLiteralProbe": {
+    "scope": "Exactly two public category pages, fresh Firecrawl raw root head/main after writes, no crawl",
+    "pages": [
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "checkedAt": "2026-11-02T09:59:15.155Z",
+        "receipt": {
+          "scrapeId": "01a19bb2-cce0-72bb-bba1-c48ac1861d4d",
+          "statusCode": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "meta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "h1": "Wohnen & Dekoration",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "checks": {
+          "http200": true,
+          "actualRootHeadFound": true,
+          "mainFound": true,
+          "titleExact": true,
+          "descriptionExact": true,
+          "canonicalExact": true,
+          "h1Exact": true,
+          "newIntroPresentInMain": true,
+          "followingHtmlPresentByteExact": false,
+          "oldDailyNewClaimAbsent": true
+        }
+      },
+      {
+        "key": "tech",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "checkedAt": "2026-11-02T09:59:15.161Z",
+        "receipt": {
+          "scrapeId": "01a19bb2-cd36-722f-80b6-6a59997aa848",
+          "statusCode": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+        "meta": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen.",
+        "h1": "Elektronik & Technik",
+        "canonical": "https://luxestyle.ch/collections/elektronik-technik",
+        "checks": {
+          "http200": true,
+          "actualRootHeadFound": true,
+          "mainFound": true,
+          "titleExact": true,
+          "descriptionExact": true,
+          "canonicalExact": true,
+          "h1Exact": true,
+          "newIntroPresentInMain": true,
+          "followingHtmlPresentByteExact": false,
+          "oldDailyNewClaimAbsent": true
+        }
+      }
+    ],
+    "allChecksPassed": false,
+    "limitations": [
+      "Actual page source, not Google selected snippets/indexation/ranking or full storefront testing"
+    ]
+  },
+  "publicFinalReadback": {
+    "scope": "Final exact browser-origin source plus visible browser verification after initial strict Firecrawl representation probe",
+    "checkedAt": "2026-11-02T10:05:17.410574+00:00",
+    "pages": [
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "checkedAt": "2026-11-02T10:03:04.895761+00:00",
+        "sourceKind": "Actual browser navigation HTTP response body; no additional source request",
+        "responseSha256": "7cac9a91e274de702b43fa50796617baaba29aa295ba64fd81ce5918ddf84a73",
+        "responseHeaders": {
+          "content-type": "text/html; charset=utf-8",
+          "x-robots-tag": null,
+          "cache-control": "private, max-age=0, must-revalidate"
+        },
+        "checks": {
+          "http200": true,
+          "titleExact": true,
+          "metaExact": true,
+          "canonicalExact": true,
+          "introInMain": true,
+          "followingHtmlByteExactInOriginResponse": true,
+          "noRootNoindex": true,
+          "noXRobotsNoindex": true
+        },
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "meta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration"
+      },
+      {
+        "key": "tech",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "checkedAt": "2026-11-02T10:03:16.334394+00:00",
+        "sourceKind": "Actual browser navigation HTTP response body; no additional source request",
+        "responseSha256": "2aa67f3dbfe7b582a1ea5ff64b08121b8dc485ca6a0aec837427f45ef2257bf6",
+        "responseHeaders": {
+          "content-type": "text/html; charset=utf-8",
+          "x-robots-tag": null,
+          "cache-control": "private, max-age=0, must-revalidate"
+        },
+        "checks": {
+          "http200": true,
+          "titleExact": true,
+          "metaExact": true,
+          "canonicalExact": true,
+          "introInMain": true,
+          "followingHtmlByteExactInOriginResponse": true,
+          "noRootNoindex": true,
+          "noXRobotsNoindex": true
+        },
+        "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+        "meta": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen.",
+        "canonical": "https://luxestyle.ch/collections/elektronik-technik"
+      }
+    ],
+    "allChecksPassed": true,
+    "browserChecksPassed": true,
+    "finalConditions": 48,
+    "viewCount": 4,
+    "actualMainThemeIds": [
+      "213013037447"
+    ],
+    "initialProbe": {
+      "file": "PUBLIC-FIRECRAWL-INITIAL-PROBE.json",
+      "strictFirecrawlTailByteMatch": [
+        false,
+        false
+      ],
+      "interpretation": "Strict native-tail matching against the Firecrawl HTML representation failed. Both actual browser-navigation HTTP response bodies preserve the full native following HTML byte-for-byte; rendered service text and related links also match. This is not a demonstrated content-loss defect; no shop content was changed to fit the probe.",
+      "exactFirecrawlRepresentationDifference": "Not assigned a specific comment/attribute-normalisation cause without a retained raw comparison."
+    },
+    "limits": [
+      "48 bounded source/visibility/link/layout conditions across four views, not complete storefront/checkout/tracking/CI acceptance",
+      "GET/HEAD guard blocked186 non-read requests and24 analytics requests; eleven page errors include blocked analytics/fetches",
+      "No new writes, analytics, flow or order reports"
+    ]
+  },
+  "publicOriginEvidence": {
+    "pages": [
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "checkedAt": "2026-11-02T10:03:04.895761+00:00",
+        "sourceKind": "Actual browser navigation HTTP response body; no additional source request",
+        "responseSha256": "7cac9a91e274de702b43fa50796617baaba29aa295ba64fd81ce5918ddf84a73",
+        "responseHeaders": {
+          "content-type": "text/html; charset=utf-8",
+          "x-robots-tag": null,
+          "cache-control": "private, max-age=0, must-revalidate"
+        },
+        "checks": {
+          "http200": true,
+          "titleExact": true,
+          "metaExact": true,
+          "canonicalExact": true,
+          "introInMain": true,
+          "followingHtmlByteExactInOriginResponse": true,
+          "noRootNoindex": true,
+          "noXRobotsNoindex": true
+        },
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "meta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration"
+      },
+      {
+        "key": "tech",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "checkedAt": "2026-11-02T10:03:16.334394+00:00",
+        "sourceKind": "Actual browser navigation HTTP response body; no additional source request",
+        "responseSha256": "2aa67f3dbfe7b582a1ea5ff64b08121b8dc485ca6a0aec837427f45ef2257bf6",
+        "responseHeaders": {
+          "content-type": "text/html; charset=utf-8",
+          "x-robots-tag": null,
+          "cache-control": "private, max-age=0, must-revalidate"
+        },
+        "checks": {
+          "http200": true,
+          "titleExact": true,
+          "metaExact": true,
+          "canonicalExact": true,
+          "introInMain": true,
+          "followingHtmlByteExactInOriginResponse": true,
+          "noRootNoindex": true,
+          "noXRobotsNoindex": true
+        },
+        "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+        "meta": "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen.",
+        "canonical": "https://luxestyle.ch/collections/elektronik-technik"
+      }
+    ],
+    "allChecksPassed": true,
+    "scope": "Exact source from the same two browser navigation HTTP responses, root head/main plus following original HTML"
+  },
+  "browserQuality": {
+    "scope": "Two public category URLs; actual MAIN, four viewports/views; GET/HEAD only with analytics blocked; no DOM/HTML overrides, form/cart writes or extra reports",
+    "expectedMainThemeId": "213013037447",
+    "checkedAt": "2026-11-02T10:02:57.143957+00:00",
+    "checks": [
+      {
+        "name": "home source http200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source titleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source metaExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source canonicalExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source introInMain",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source followingHtmlByteExactInOriginResponse",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source noRootNoindex",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home source noXRobotsNoindex",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 actualMainTheme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 h1VisibleAndExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 newIntroVisibleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 existingRelatedLinksExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 allExistingRelatedLinksVisible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 serviceTextPresent",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 noHorizontalPageOverflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 390 introInsideMain",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 actualMainTheme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 h1VisibleAndExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 newIntroVisibleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 existingRelatedLinksExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 allExistingRelatedLinksVisible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 serviceTextPresent",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 noHorizontalPageOverflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "home 1440 introInsideMain",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source http200",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source titleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source metaExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source canonicalExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source introInMain",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source followingHtmlByteExactInOriginResponse",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source noRootNoindex",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech source noXRobotsNoindex",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 actualMainTheme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 h1VisibleAndExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 newIntroVisibleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 existingRelatedLinksExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 allExistingRelatedLinksVisible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 serviceTextPresent",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 noHorizontalPageOverflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 390 introInsideMain",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 actualMainTheme",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 h1VisibleAndExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 newIntroVisibleExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 existingRelatedLinksExact",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 allExistingRelatedLinksVisible",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 serviceTextPresent",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 noHorizontalPageOverflow",
+        "pass": true,
+        "data": null
+      },
+      {
+        "name": "tech 1440 introInsideMain",
+        "pass": true,
+        "data": null
+      }
+    ],
+    "views": [
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "themeId": "213013037447",
+        "actualIntro": {
+          "firstP": "Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.",
+          "allText": "Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.\n\nPassend dazu: Vorhänge · Beleuchtung · Beistelltisch Acryl",
+          "links": [
+            {
+              "href": "/collections/vorhaenge",
+              "text": "Vorhänge",
+              "visible": true
+            },
+            {
+              "href": "/collections/sub-beleuchtung",
+              "text": "Beleuchtung",
+              "visible": true
+            },
+            {
+              "href": "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+              "text": "Beistelltisch Acryl",
+              "visible": true
+            }
+          ],
+          "rect": {
+            "x": 32,
+            "y": 179.828125,
+            "width": 326,
+            "height": 185.515625,
+            "top": 179.828125,
+            "right": 358,
+            "bottom": 365.34375,
+            "left": 32
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "insideMain": true
+        },
+        "checks": {
+          "actualMainTheme": true,
+          "h1VisibleAndExact": true,
+          "newIntroVisibleExact": true,
+          "existingRelatedLinksExact": true,
+          "allExistingRelatedLinksVisible": true,
+          "serviceTextPresent": true,
+          "noHorizontalPageOverflow": true,
+          "introInsideMain": true
+        },
+        "screenshot": "/workspace/luxestyle-review/masterpiece-20261102/qa/home-390.png"
+      },
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "themeId": "213013037447",
+        "actualIntro": {
+          "firstP": "Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.",
+          "allText": "Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.\n\nPassend dazu: Vorhänge · Beleuchtung · Beistelltisch Acryl",
+          "links": [
+            {
+              "href": "/collections/vorhaenge",
+              "text": "Vorhänge",
+              "visible": true
+            },
+            {
+              "href": "/collections/sub-beleuchtung",
+              "text": "Beleuchtung",
+              "visible": true
+            },
+            {
+              "href": "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+              "text": "Beistelltisch Acryl",
+              "visible": true
+            }
+          ],
+          "rect": {
+            "x": 64,
+            "y": 180.484375,
+            "width": 992,
+            "height": 73.5625,
+            "top": 180.484375,
+            "right": 1056,
+            "bottom": 254.046875,
+            "left": 64
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "insideMain": true
+        },
+        "checks": {
+          "actualMainTheme": true,
+          "h1VisibleAndExact": true,
+          "newIntroVisibleExact": true,
+          "existingRelatedLinksExact": true,
+          "allExistingRelatedLinksVisible": true,
+          "serviceTextPresent": true,
+          "noHorizontalPageOverflow": true,
+          "introInsideMain": true
+        },
+        "screenshot": "/workspace/luxestyle-review/masterpiece-20261102/qa/home-1440.png"
+      },
+      {
+        "key": "tech",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "themeId": "213013037447",
+        "actualIntro": {
+          "firstP": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.",
+          "allText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.\n\n🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10\n\nPassend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher",
+          "links": [
+            {
+              "href": "/collections/nintendo-switch",
+              "text": "Nintendo Switch",
+              "visible": true
+            },
+            {
+              "href": "/collections/3d-drucker",
+              "text": "3D-Drucker & Stifte",
+              "visible": true
+            },
+            {
+              "href": "/collections/elektronik-audio",
+              "text": "Kopfhörer & Lautsprecher",
+              "visible": true
+            },
+            {
+              "href": "/collections/pc-komponenten",
+              "text": "PC-Komponenten & Speicher",
+              "visible": true
+            }
+          ],
+          "rect": {
+            "x": 32,
+            "y": 179.828125,
+            "width": 326,
+            "height": 281.46875,
+            "top": 179.828125,
+            "right": 358,
+            "bottom": 461.296875,
+            "left": 32
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "insideMain": true
+        },
+        "checks": {
+          "actualMainTheme": true,
+          "h1VisibleAndExact": true,
+          "newIntroVisibleExact": true,
+          "existingRelatedLinksExact": true,
+          "allExistingRelatedLinksVisible": true,
+          "serviceTextPresent": true,
+          "noHorizontalPageOverflow": true,
+          "introInsideMain": true
+        },
+        "screenshot": "/workspace/luxestyle-review/masterpiece-20261102/qa/tech-390.png"
+      },
+      {
+        "key": "tech",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "themeId": "213013037447",
+        "actualIntro": {
+          "firstP": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.",
+          "allText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.\n\n🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10\n\nPassend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher",
+          "links": [
+            {
+              "href": "/collections/nintendo-switch",
+              "text": "Nintendo Switch",
+              "visible": true
+            },
+            {
+              "href": "/collections/3d-drucker",
+              "text": "3D-Drucker & Stifte",
+              "visible": true
+            },
+            {
+              "href": "/collections/elektronik-audio",
+              "text": "Kopfhörer & Lautsprecher",
+              "visible": true
+            },
+            {
+              "href": "/collections/pc-komponenten",
+              "text": "PC-Komponenten & Speicher",
+              "visible": true
+            }
+          ],
+          "rect": {
+            "x": 64,
+            "y": 180.09375,
+            "width": 992,
+            "height": 102.34375,
+            "top": 180.09375,
+            "right": 1056,
+            "bottom": 282.4375,
+            "left": 64
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "insideMain": true
+        },
+        "checks": {
+          "actualMainTheme": true,
+          "h1VisibleAndExact": true,
+          "newIntroVisibleExact": true,
+          "existingRelatedLinksExact": true,
+          "allExistingRelatedLinksVisible": true,
+          "serviceTextPresent": true,
+          "noHorizontalPageOverflow": true,
+          "introInsideMain": true
+        },
+        "screenshot": "/workspace/luxestyle-review/masterpiece-20261102/qa/tech-1440.png"
+      }
+    ],
+    "blockedNonRead": 186,
+    "blockedAnalytics": 24,
+    "pageErrors": [
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch"
+    ],
+    "allChecksPassed": true,
+    "failed": []
+  },
+  "priceFilterCountercheck": {
+    "schemaVersion": 1,
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-02T09:55:38.679874+00:00",
+    "scope": "Bounded native source lookup plus actual public browser; read-only/local evidence only",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "actualMain": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "role": "MAIN",
+      "name": "LuxeStyle – Schrift und Banner 02.11.2026"
+    },
+    "historicalMain": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "role": "UNPUBLISHED"
+    },
+    "existingDraft": {
+      "id": "gid://shopify/OnlineStoreTheme/212978598279",
+      "role": "UNPUBLISHED"
+    },
+    "relevantFiles": [
+      {
+        "filename": "assets/facets.js",
+        "mainMd5": "15861bc4012a6cffd283a12424a0db18",
+        "draftMd5": "15861bc4012a6cffd283a12424a0db18",
+        "same": true
+      },
+      {
+        "filename": "snippets/price-filter.liquid",
+        "mainMd5": "4983d5afdbea61b544a2404ca990720d",
+        "draftMd5": "4983d5afdbea61b544a2404ca990720d",
+        "same": true
+      }
+    ],
+    "finding": "Prior R49 visible raw priceplaceholder finding is disproved for the actual current MAIN. The price formatting placeholder is inert HTMLTemplateElement content, not rendered customer-visible text.",
+    "sourceBinding": {
+      "file": "snippets/price-filter.liquid",
+      "line": 38,
+      "template": "<template ref=\"moneyFormat\">{{ shop.money_format }}</template>",
+      "javascriptFile": "assets/facets.js",
+      "consumerLines": [
+        825,
+        827
+      ],
+      "consumer": "#formatMoney reads this.refs.moneyFormat.content.textContent and formats actual amounts",
+      "doNotRemove": [
+        "template ref=moneyFormat",
+        "data-money-format=shop.money_format|strip_html"
+      ]
+    },
+    "browser": {
+      "checks": 24,
+      "allChecksPassed": true,
+      "widths": [
+        390,
+        1440
+      ],
+      "urls": [
+        "https://luxestyle.ch/collections/wohnen-dekoration",
+        "https://luxestyle.ch/collections/wohnen-dekoration?filter.v.price.lte=50"
+      ],
+      "actualMainId": 213013037447,
+      "unfilteredStatus": "empty",
+      "max50Status": "CHF 0.00–CHF 50.00",
+      "visibleLiteralInBody": false,
+      "templateDisplay": "none",
+      "noPageOverflow": true,
+      "blockedNonRead": 147,
+      "blockedAnalytics": 2,
+      "pageErrors": 10
+    },
+    "patch": null,
+    "reasonNoPatch": "No verified customer-visible defect; removing format template would break existing range formatting. Zero theme-file writes or code changes.",
+    "validation": "Fresh schema before each query, native prevalidator explicitly skipped, actual native queries accepted. No Liquid code generated, so no candidate-code validation required. Browser GET/HEAD plus analytics block, no complete checkout/tracking/theme acceptance.",
+    "parentFeedbackOnly": true,
+    "files": [
+      {
+        "path": "ACTUAL-MAIN-FILES.json",
+        "bytes": 36780,
+        "sha256": "d302c02964a9fe0398168f38d98c808cb4256f56d0e329a2703600bceec8cad0"
+      },
+      {
+        "path": "ACTUAL-MAIN-ROLE.json",
+        "bytes": 551,
+        "sha256": "1a36a19b61267e5c22643c6445d00f7be7469a469cfef280d71bfdf843638241"
+      },
+      {
+        "path": "BROWSER-PROBE.json",
+        "bytes": 18070,
+        "sha256": "bf4ff51afcef35ad89a294b7f5e43a365946029d2c750ac86b5941e904bf6475"
+      },
+      {
+        "path": "NATIVE-SOURCES.json",
+        "bytes": 88998,
+        "sha256": "35b07060e2e643bfdfd7458c47540053476903ec8ffa04a00677ef2ad5b25a21"
+      },
+      {
+        "path": "browser_probe.py",
+        "bytes": 4244,
+        "sha256": "11ac87a407911f609a225042959c7839205ac087333ad45614d8d34037e18f08"
+      },
+      {
+        "path": "qa/max50-1440.png",
+        "bytes": 1012964,
+        "sha256": "96c8ffa754d0857f39772b46e93cad879aa1939ad414ff0d017cb8faa6471351"
+      },
+      {
+        "path": "qa/unfiltered-1440.png",
+        "bytes": 1067849,
+        "sha256": "d19e1ee07700e12831fdba911f446396289ef10cfd0146df3d5e25711bd59ed2"
+      }
+    ]
+  },
+  "themeObservation": {
+    "currentMain": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "role": "MAIN",
+      "name": "LuxeStyle – Schrift und Banner 02.11.2026"
+    },
+    "historicalMain": {
+      "id": "gid://shopify/OnlineStoreTheme/212971061639",
+      "role": "UNPUBLISHED"
+    },
+    "existingDraft": {
+      "id": "gid://shopify/OnlineStoreTheme/212978598279",
+      "role": "UNPUBLISHED"
+    },
+    "ownThemeWrites": 0,
+    "ownPublish": false,
+    "fullMainVsDraftDiffRead": false,
+    "requireBeforeAnyOlderDraftPublication": "Read full fresh current MAIN/draft diff; preserve new typography/banner and all verified previous work; do not blindly overwrite current MAIN with older212978598279. Existing website authorization and connector publishing limits remain."
+  },
+  "validation": {
+    "nativeFieldChecks": 16,
+    "prevalidator": "Explicitly skipped, native API accepted read/mutations without userErrors",
+    "cli": "Existing helper cannot run due missing bundled assets; no installation/helper change, no independent green CLI/full-CI claim",
+    "publicOriginAndBrowserChecks": 48,
+    "noCheckoutTrackingOrRankingAcceptance": true
+  },
+  "earlierBestsellerR49": "Two previously verified live fields preserved; not written again",
+  "dailyReports": {
+    "newAnalyticsFlowSalesOrderReads": 0,
+    "newSocialWrites": 0,
+    "reuseSources": [
+      "LAUFBELEGE-20261102-R48.json",
+      "SICHTBARKEIT-20261102-R49.json"
+    ],
+    "noNewFrequency": true,
+    "purchaseWatch": "ended_no_queries"
+  },
+  "unchanged": [
+    "Actual observed collection product IDs/order and original titles/handles/SEOtitles/sortorders",
+    "All following HTML/service text and existing related links/FAQ",
+    "Prices,inventory,tags,reviews,discounts,budgets,flows,DNS,shopconfiguration",
+    "PublicCHF50/internalCHF45afterdiscount andaccount.luxestyle.com.co",
+    "Robots/trainingrules,automation/frequency,installations,paidrender permissions",
+    "Same professional master and14other task states;17stable task IDs/history preserved"
+  ],
+  "limits": [
+    "Eight ACTIVE samples per category, both hasNextPage=true; not full catalog/buyability coverage",
+    "Actual public checks versus initial Firecrawl literal-body probe kept separately; not false all-green source assertion",
+    "Native/GET-HEAD browser checks are bounded; no fulltheme/checkout/tracking/Googleindex/ranking/sales acceptance",
+    "Theme rolechange observed from external action; no Codexpublish or Claude receipt inferred"
+  ],
+  "claudeReceipt": "unknown_missing_receipt",
+  "singleProductRatingCountercheck": {
+    "schemaVersion": 1,
+    "theme": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "role": "MAIN"
+    },
+    "nativeFilesRead": 3,
+    "productId": "gid://shopify/Product/15470075576705",
+    "nativeProductRating": 5.0,
+    "nativeProductRatingScaleMax": 5.0,
+    "nativeProductCount": 8,
+    "nativeAggregateTypeChecked": true,
+    "titleBlockUsesExactClosestProduct": true,
+    "publicElementProductId": "15470075576705",
+    "publicAggregatePayloadReadback": "unknown_server_json_absent_after_render",
+    "individualReviewAuthenticity": "unknown_not_checked",
+    "allOtherProductCards": "not_checked",
+    "globalNumericFallback": "not_observed_in_three_read_files; helper/renderer bodies not freshly read",
+    "conclusion": "Exact product has typed5/5+8 aggregate fields and exactproduct template binding. No fabrication or globalfake fallback conclusion warranted.",
+    "recommendation": "Preserve product binding and all existing reviewdata; future provenance check only with limited anonymised product/provider evidence if needed.",
+    "operationalWrites": 0,
+    "reviewWrites": 0,
+    "furtherReadsAfterCurrentProbe": 0,
+    "evidence": "TRUST-EVIDENCE.json"
+  }
+}
