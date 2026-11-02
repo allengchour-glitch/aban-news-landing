@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, Revision 53
+
+[Konkreter Claude-Publikationsauftrag R53](CLAUDE-PUBLISH-AUFTRAG-20261102-R53.md) · [Aktuelle Quellen- und Prüfnachweise](CLAUDE-PUBLISH-BELEGE-20261102-R53.json).
+
+Auf «mache weiter dann claude veröffentliche» wurden Shop-/Marken-/Kanalidentitäten und der aktuelle Website-Stand frisch gegengeprüft. Der Inhaber hat das Publikationsziel ausdrücklich mit «Die Website-Verbesserungen» geklärt: ausschliesslich Website. Die bestehende Websiteerlaubnis für denselben einzelnen CSS-Fix ist damit aktuell bestätigt. Welcome ist nicht freigegeben; keine erneute Zielklärung.
+
+13 bereits bekannte frühere Releasepfade sind nativ gezielt verglichen: elf MD5-identisch, darunter Galerie-JSON mit datierten 52 Referenzen, Editor-JS/CSS/Section, DE/EN/FR-Locale-Dateien, Index, Startseiten-Section und Kategorie-Directory. Stylesheet und Collectiontemplate unterscheiden sich. Der frische Stylesheet-Bodyvergleich zeigt den vollständigen Entwurfsinhalt im MAIN plus acht zusätzliche Zeilen zur mobilen Hero-Kürzung; diese aktuelle Änderung erhalten. Das ist keine volle Theme-/öffentliche Personalizer-/Kaufbarkeitsabnahme. Keine alte Gesamtkopie veröffentlichen. Aus der aktuellen tatsächlichen MAIN-Datei templates/collection.json ist lokal eine einzige CSS-Regel korrigiert: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84 → bbacad38aabc5e292ed819b3d1b01782. Alle anderen Bytes sind exakt erhalten, der geänderte Liquid-Block ist VALID. Kein nativer Theme-Write oder Publish. Zwei aktuelle MAIN-Mobilansichten zeigen weiterhin 390 px Viewport/406 px Dokument und 16 px Fokusverschiebung; zwei alte Entwurfsansichten haben 390 px/390 px ohne Verschiebung. Lokaler Kandidat und alte Vorschau sind kein Live-Fix oder vollständige Theme-Abnahme. Nur die eine Regel darf nach frischem Quellenvergleich über einen legitim fähigen MAIN-Writer übernommen werden; vorhandener Connector sperrt MAIN-Dateiwrites/Publish. Keine erneute gleiche Websitefreigabe oder Umgehung.
+
+Kein aufrufbares Claude-Tool und keine CLI im aktuellen PATH gefunden; keine Sitzung oder Installation gestartet. Ein bestehender read-only R5-stand bestätigt fünf Quellen und die R4-Hashkette, bleibt jedoch review_only. Keine echte Claude-Kenntnisnahme, Produktionsintegration oder Quittung daraus ableiten. Die Ausführungsdateien sind vorbereitet; tatsächlicher Empfang bleibt unbekannt.
+
+Welcome-Konto und VZnxDz sind frisch exakt an denselben Zwei-Zeilen-Diff wie R52 gebunden. Die aktuelle Freigabe gilt ausdrücklich nur für Website-Verbesserungen; Welcome ist ausgeschlossen, applicationAllowedNow=false. Keine Anwendung, Nachricht, Testsendung, Flow-/Trackingänderung, kein Flowreport oder erneuter Policy-GET. R52-Policies bleiben datierte Quellen. R49/R50-Livetexte und R51-Daten/Sortierung bleiben erhalten. Alle 19 IDs/Reihenfolge/Historien unverändert; fünf bestehende Aufgaben fortgeführt, 14 andere und dailyReadPolicy exakt bewahrt. Tagesreports und Kauf-Watch nicht wiederholt, keine neuen Automationen/Frequenzen, Budgets/DNS/Shopkonfiguration oder kostenpflichtigen Renders.
+
 ## Aktueller Stand – 02.11.2026, Revision 52
 
 [Nachmittagspaket R52](LAUFPAKET-20261102-R52.md) · [Aktuelle Belege](LAUFBELEGE-20261102-R52.json) · [Aufnahme- und Abnahmebogen desselben Masters](MASTER-AUFNAHMEBOGEN-20261102-R52.md).
