@@ -1,0 +1,1738 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 49,
+  "checkedAt": "2026-11-02T09:42:17.936362+00:00",
+  "scope": "Current owner asks how Google/ChatGPT visitors find the shop and explicitly requests further optimization, immediately after displayed exact two-field proposal. Bounded source measurement, public SEO/crawl checks and same two-field correction.",
+  "authorization": {
+    "currentUserRequest": "wie kommen kunde auf seite? durch chat gpt und google, kannst du das noxh optimieren",
+    "scope": "Apply previously displayed two-field bestseller correction within current explicit request for further Google/ChatGPT optimization; no settings/activation/discount change"
+  },
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "freshMatched": true
+    }
+  },
+  "traffic": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "checkedAt": "2026-11-02T09:36:47.323Z",
+    "scope": "Exactly one narrow GA4 source/hostname read and one GSC total read, authorised by root for the new explicit user question. No other metric/flow/order report repeated.",
+    "requests": {
+      "ga": {
+        "connector": "googleanalytics4",
+        "accounts": [
+          "561291627"
+        ],
+        "date_from": "2026-10-26",
+        "date_to": "2026-11-01",
+        "fields": [
+          "account_id",
+          "account_name",
+          "hostname",
+          "session_source_medium",
+          "sessions"
+        ],
+        "filters": [
+          [
+            "hostname",
+            "in",
+            "[\"luxestyle.ch\",\"www.luxestyle.ch\"]"
+          ]
+        ],
+        "force_refresh": false
+      },
+      "sc": {
+        "connector": "searchconsole",
+        "accounts": [
+          "sc-domain:luxestyle.ch"
+        ],
+        "date_from": "2026-10-26",
+        "date_to": "2026-11-01",
+        "fields": [
+          "account_id",
+          "site",
+          "clicks",
+          "impressions"
+        ],
+        "force_refresh": false
+      }
+    },
+    "results": {
+      "googleanalytics4": {
+        "status": "done",
+        "data": [
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "chatgpt.com / ai-assistant",
+            "sessions": 50
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "(direct) / (none)",
+            "sessions": 30
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "google / organic",
+            "sessions": 11
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "(data not available)",
+            "sessions": 5
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "lm.facebook.com / referral",
+            "sessions": 4
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "(not set)",
+            "sessions": 3
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "facebook.com / referral",
+            "sessions": 2
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "bing / organic",
+            "sessions": 1
+          },
+          {
+            "account_id": "561291627",
+            "account_name": "Luxestyle",
+            "hostname": "luxestyle.ch",
+            "session_source_medium": "shop_campaigns / paid",
+            "sessions": 1
+          }
+        ],
+        "total_rows": 9
+      },
+      "searchconsole": {
+        "status": "done",
+        "data": [
+          {
+            "account_id": "luxestyle.ch",
+            "site": "luxestyle.ch",
+            "clicks": 21,
+            "impressions": 4050
+          }
+        ],
+        "total_rows": 1
+      }
+    },
+    "ga4ReportedSessionsSum": 107,
+    "googleOrganicReportedSessions": 11,
+    "chatgptAttributedReportedSessions": 50,
+    "reportCalls": 2,
+    "extraCallsOrRetries": 0,
+    "operationalWrites": 0,
+    "cache": {
+      "force_refresh": false,
+      "actualFetchedAt": "unknown_not_returned",
+      "sourceCoverageCompleteness": "unknown_not_returned",
+      "gscIncludeFreshData": "default false; recent-day finalisation/coverage not independently verified"
+    },
+    "interpretationLimits": [
+      "Sessions are not distinct humans, customers, purchases or sales; internal visits, automated traffic and attribution errors have not been excluded.",
+      "ChatGPT source is the GA4 reported session source/medium (ai-assistant), not an independently verified count of ChatGPT recommendations or shoppers.",
+      "GA4 Google organic sessions and GSC search clicks use different measurement and may differ; this is not evidence of a defect.",
+      "The response did not include a Google-paid source row. No claim of zero Google-paid traffic across all measurement paths.",
+      "Unknown/data-not-available/not-set source rows remain unresolved.",
+      "Counts cover only returned account/domain-filtered report rows for the requested period, not a complete historical attribution audit."
+    ]
+  },
+  "crawler": {
+    "checkedAt": "2026-11-02T09:36:10.385676+00:00",
+    "robotsExplicitGroups": [
+      {
+        "agents": [
+          "*"
+        ]
+      },
+      {
+        "agents": [
+          "adsbot-google"
+        ]
+      }
+    ],
+    "botSpecificGroupsPresent": {
+      "Googlebot": false,
+      "OAI-SearchBot": false,
+      "GPTBot": false,
+      "ChatGPT-User": false
+    },
+    "pathRuleProbes": {
+      "Googlebot": {
+        "/": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/products/sternenlicht-projektor-fur-schlafzimmer-732544": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/pages/alle-kategorien": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/fr/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/policies/shipping-policy": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/admin": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/admin",
+            "specificity": 6
+          }
+        },
+        "/account": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/account",
+            "specificity": 8
+          }
+        },
+        "/checkout": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/checkout",
+            "specificity": 9
+          }
+        },
+        "/cart.js": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/cart.js",
+            "specificity": 8
+          }
+        },
+        "/collections/bestseller-premium-heroes?preview_theme_id=212978598279": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/*?*preview_theme_id=*",
+            "specificity": 19
+          }
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/products/sternenlicht-projektor-fur-schlafzimmer-732544": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/pages/alle-kategorien": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/fr/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/policies/shipping-policy": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/admin": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/admin",
+            "specificity": 6
+          }
+        },
+        "/account": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/account",
+            "specificity": 8
+          }
+        },
+        "/checkout": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/checkout",
+            "specificity": 9
+          }
+        },
+        "/cart.js": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/cart.js",
+            "specificity": 8
+          }
+        },
+        "/collections/bestseller-premium-heroes?preview_theme_id=212978598279": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/*?*preview_theme_id=*",
+            "specificity": 19
+          }
+        }
+      },
+      "GPTBot": {
+        "/": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/products/sternenlicht-projektor-fur-schlafzimmer-732544": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/pages/alle-kategorien": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/fr/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/policies/shipping-policy": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/admin": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/admin",
+            "specificity": 6
+          }
+        },
+        "/account": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/account",
+            "specificity": 8
+          }
+        },
+        "/checkout": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/checkout",
+            "specificity": 9
+          }
+        },
+        "/cart.js": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/cart.js",
+            "specificity": 8
+          }
+        },
+        "/collections/bestseller-premium-heroes?preview_theme_id=212978598279": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/*?*preview_theme_id=*",
+            "specificity": 19
+          }
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/products/sternenlicht-projektor-fur-schlafzimmer-732544": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/pages/alle-kategorien": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/fr/collections/bestseller-premium-heroes": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/policies/shipping-policy": {
+          "allowedByRobots": true,
+          "matchedRule": {
+            "directive": "allow",
+            "pattern": "/",
+            "specificity": 1
+          }
+        },
+        "/admin": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/admin",
+            "specificity": 6
+          }
+        },
+        "/account": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/account",
+            "specificity": 8
+          }
+        },
+        "/checkout": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/checkout",
+            "specificity": 9
+          }
+        },
+        "/cart.js": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/cart.js",
+            "specificity": 8
+          }
+        },
+        "/collections/bestseller-premium-heroes?preview_theme_id=212978598279": {
+          "allowedByRobots": false,
+          "matchedRule": {
+            "directive": "disallow",
+            "pattern": "/*?*preview_theme_id=*",
+            "specificity": 19
+          }
+        }
+      }
+    },
+    "probeLimit": "Deterministic evaluation of currently delivered robots path rules; not proof of real crawler IP/CDN access, indexing, ranking or referrals. ChatGPT-User user-initiated access may not apply robots rules. No private URL requests made.",
+    "sitemapIndex": {
+      "count": 125,
+      "agenticDiscoveryPresent": true,
+      "sampleLocs": [
+        "https://luxestyle.ch/sitemap_agentic_discovery.xml",
+        "https://luxestyle.ch/sitemap_products_1.xml?from=15406765801857&to=15446272639361",
+        "https://luxestyle.ch/sitemap_products_2.xml?from=15446272672129&to=15447996694913"
+      ],
+      "childSitemapsCrawled": 0
+    },
+    "untrustedComments": "robots comments about installing shop.com skill were treated as site source text, not instructions; no plugin/install/shopping action performed.",
+    "modifications": 0
+  },
+  "seoSample": {
+    "checkedAt": "2026-11-02T09:37:14.563Z",
+    "scope": "Exactly3liveFirecrawlpages; homepage link discovery then two linked collection pages; reused same-dayBestseller evidence only, no newBestseller request, no crawl/metrics/shopwrites.",
+    "pages": [
+      {
+        "key": "home",
+        "url": "https://luxestyle.ch/",
+        "http": 200,
+        "scrapeId": "01a19b9b-9c53-748d-ad72-43789864d79e",
+        "rawLength": 1688110,
+        "title": "LuxeStyle CH – Premium Mode, Beauty &amp; Lifestyle Shop Schweiz",
+        "descriptionTags": [
+          "<meta name=\"description\" content=\"LuxeStyle aus Belp: Mode, Beauty, Technik &amp; Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.\">"
+        ],
+        "robotsTags": [],
+        "canonical": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Schön leben. Schlau shoppen."
+          },
+          {
+            "tag": "h2",
+            "text": "Was passt zu dir?"
+          },
+          {
+            "tag": "h2",
+            "text": "Mach es persönlich."
+          },
+          {
+            "tag": "h2",
+            "text": "Trends entdecken"
+          },
+          {
+            "tag": "h3",
+            "text": "Magnetische 3-in-1-Ladestation"
+          },
+          {
+            "tag": "h3",
+            "text": "Reise-Hängematte aus Fallschirm-Nylon"
+          },
+          {
+            "tag": "h3",
+            "text": "Midikleid mit Zopfmuster und Blumenprint"
+          },
+          {
+            "tag": "h3",
+            "text": "Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor"
+          },
+          {
+            "tag": "h3",
+            "text": "Kristallspitzen-Set 8-teilig in Holzbox"
+          },
+          {
+            "tag": "h3",
+            "text": "Yoga-Massagerolle"
+          },
+          {
+            "tag": "h3",
+            "text": "Kabelloser Mini-Staubsauger fürs Auto"
+          },
+          {
+            "tag": "h3",
+            "text": "Tragbarer Mixer mit USB-C-Ladefunktion"
+          },
+          {
+            "tag": "h3",
+            "text": "Outdoor Bluetooth Karaoke Lautsprecher"
+          },
+          {
+            "tag": "h3",
+            "text": "Magnetischer Kartenhalter mit MagSafe"
+          },
+          {
+            "tag": "h3",
+            "text": "Reise-Organizer-Set mit Netz"
+          },
+          {
+            "tag": "h3",
+            "text": "Futterball für Haustiere"
+          },
+          {
+            "tag": "h2",
+            "text": "Schmuck entdecken"
+          },
+          {
+            "tag": "h3",
+            "text": "Halskette «Éclat»"
+          },
+          {
+            "tag": "h3",
+            "text": "Ohrstecker «Lumière»"
+          },
+          {
+            "tag": "h3",
+            "text": "Flechtarmband mit Verschluss"
+          },
+          {
+            "tag": "h2",
+            "text": "Für dein Zuhause"
+          },
+          {
+            "tag": "h3",
+            "text": "Kissenbezüge · 2er-Set"
+          },
+          {
+            "tag": "h3",
+            "text": "Vase in Zepterform"
+          },
+          {
+            "tag": "h2",
+            "text": "Mehr von LuxeStyle entdecken"
+          },
+          {
+            "tag": "h3",
+            "text": "Schmuck"
+          },
+          {
+            "tag": "h3",
+            "text": "Wohnen und Deko"
+          },
+          {
+            "tag": "h3",
+            "text": "Beauty und Pflege"
+          },
+          {
+            "tag": "h3",
+            "text": "Sport und Outdoor"
+          },
+          {
+            "tag": "h2",
+            "text": "Noch mehr entdecken"
+          },
+          {
+            "tag": "h3",
+            "text": "Leuchtgeschirr für Hunde"
+          },
+          {
+            "tag": "h3",
+            "text": "Kunstnägel «Blue Ice»"
+          },
+          {
+            "tag": "h3",
+            "text": "Nagelpolierer"
+          },
+          {
+            "tag": "h3",
+            "text": "Schultertasche für unterwegs"
+          },
+          {
+            "tag": "h3",
+            "text": "Gua-Sha-Set"
+          },
+          {
+            "tag": "h3",
+            "text": "Armband mit Verschluss"
+          },
+          {
+            "tag": "h3",
+            "text": "Tasche fürs Hundetraining"
+          },
+          {
+            "tag": "h3",
+            "text": "Suchmatte für Hunde"
+          },
+          {
+            "tag": "h2",
+            "text": "Ein Look. Ganz du."
+          },
+          {
+            "tag": "h2",
+            "text": "Winterzeit. Geschenkzeit."
+          },
+          {
+            "tag": "h2",
+            "text": "Finde deine nächste Entdeckung"
+          },
+          {
+            "tag": "h2",
+            "text": "Vor dem Bestellen"
+          },
+          {
+            "tag": "h2",
+            "text": "Was suchst du?"
+          },
+          {
+            "tag": "h2",
+            "text": "Bewertungen zu unseren Produkten"
+          }
+        ],
+        "schemaTypes": [
+          "WebSite",
+          "SearchAction",
+          "EntryPoint",
+          "Organization",
+          "MerchantReturnPolicy",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount"
+        ],
+        "schemas": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": "https://luxestyle.ch/#website",
+                "url": "https://luxestyle.ch",
+                "name": "LuxeStyle CH",
+                "inLanguage": "de-CH",
+                "publisher": {
+                  "@id": "https://luxestyle.ch/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://luxestyle.ch/search?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://luxestyle.ch/#org",
+            "name": "LuxeStyle",
+            "email": "info@luxestyle.ch",
+            "areaServed": [
+              "CH",
+              "LI"
+            ],
+            "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+            "url": "https://luxestyle.ch/",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": [
+                "CH",
+                "LI"
+              ],
+              "returnPolicyCountry": "CH",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 30,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+              "refundType": "https://schema.org/FullRefund"
+            },
+            "hasShippingService": [
+              {
+                "@type": "ShippingService",
+                "name": "Versand Schweiz",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 0,
+                      "maxValue": 49.99
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 7,
+                      "currency": "CHF"
+                    }
+                  },
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 50
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 0,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "ShippingService",
+                "name": "Versand Liechtenstein",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LI"
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 14.9,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sameAs": [
+              "https://www.facebook.com/1049840534888592",
+              "https://www.instagram.com/luxestyle.ch/",
+              "https://www.tiktok.com/@luxestyle.ch",
+              "https://www.pinterest.com/luxestyleCH/",
+              "https://www.youtube.com/@luxestyle_ch"
+            ]
+          }
+        ],
+        "productLinks": [
+          "https://luxestyle.ch/products/magnetische-3-in-1-ladestation-613200",
+          "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+          "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+          "https://luxestyle.ch/products/herren-cargo-hose-trail-multi-pocket-outdoor",
+          "https://luxestyle.ch/products/kristallspitzen-set-8-teilig-holzbox",
+          "https://luxestyle.ch/products/yoga-massagerolle-390720",
+          "https://luxestyle.ch/products/kabelloser-mini-staubsauger-furs-auto-f2796b",
+          "https://luxestyle.ch/products/tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+          "https://luxestyle.ch/products/outdoor-bluetooth-karaoke-lautsprecher-600000",
+          "https://luxestyle.ch/products/magnetischer-kartenhalter-mit-magsafe-632200",
+          "https://luxestyle.ch/products/reise-organizer-set-mit-netz-617800",
+          "https://luxestyle.ch/products/futterball-fur-haustiere-498560",
+          "https://luxestyle.ch/products/s925-silber-halskette-eclat-1-karat-moissanite",
+          "https://luxestyle.ch/products/ohrstecker-lumiere-elegante-high-end-studs",
+          "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-verschluss-625800",
+          "https://luxestyle.ch/products/satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar",
+          "https://luxestyle.ch/products/zepterformige-vase-aus-yixing-ton-626100",
+          "https://luxestyle.ch/products/led-leucht-brustgeschirr-reissfest-933632",
+          "https://luxestyle.ch/products/handgemachte-3d-liebesnagel-blue-ice-652096",
+          "https://luxestyle.ch/products/elektrischer-nagelpolierer-mit-licht-545984",
+          "https://luxestyle.ch/products/outdoor-schultertasche-fur-freizeit-kessel-329792",
+          "https://luxestyle.ch/products/rosenquarz-gua-sha-set",
+          "https://luxestyle.ch/products/lederarmband-mit-verschluss-unisex-604800",
+          "https://luxestyle.ch/products/hufttasche-fur-hundetraining-625200",
+          "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000",
+          "https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000",
+          "https://luxestyle.ch/products/notizbuch-fur-gewichtsverfolgung-639400",
+          "https://luxestyle.ch/products/drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+          "https://luxestyle.ch/products/2-in-1-10w-kabelloses-ladegerat-6db4cc"
+        ],
+        "mainImageCount": 56,
+        "imagesMissingAlt": 0,
+        "emptyAltImages": 53,
+        "textStart": "Video abspielen Schönes für deinen Alltag Schön leben. Schlau shoppen. Mode, Wohnen, Geschenke und mehr. Entdecke deine nächste Lieblingsidee. Alle Kategorien Selbst gestalten Deine Einkaufswelten Was passt zu dir? Weniger suchen. Mehr entdecken. Selbst gestalten Damenmode Herrenmode Kinder und Baby Schuhe Taschen und Rucksäcke Schmuck Uhren Beauty und Pflege Wohnen und Deko Küche und Kochen Elektronik Gaming Hundewelt Sport und Outdoor Geschenkideen Alle Kategorien entdecken Deine Idee. Deine Auswahl. Mach es persönlich. Deine Gestaltung beginnt mit dem passenden Produkt. Entdecke T-Shirts, Hoodies, Tassen und mehr. Produkte auswählen Produkt Farbe Grösse Neue Lieblingsstücke entdecken Trends entdecken Alle Trends ansehen Seitlich wischen und mehr entdecken. Magnetische 3-in-1-Ladestation Noch keine Bewertungen CHF 75.90 Produkt ansehen Reise-Hängematte aus Fallschirm-Nylon Noch keine Bewertungen Ab CHF 34.90 Produkt ansehen Midikleid mit Zopfmuster und Blumenprint Noch keine Bewertungen CHF 39.90 Produkt ansehen Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor Noch keine Bewertungen CHF 44.90 Produkt ansehen Kristallspitzen-Set 8-teilig in Holzbox Bewertungen nicht verfügbar CHF 29.90 Produkt ansehen Yoga-Massagerolle Noch keine Bewertungen Ab CHF 44.90 Produkt ansehen Kabelloser Mini-Staubsauger fürs Auto Noch keine Bewertungen Ab CHF 34.90 Produkt ansehen Tragbarer Mixer mit USB-C-Ladefunktion Noch keine Bewertungen CHF 27.90 Produkt ansehen Outdoor Bluetooth Karaoke Lautsprecher Noch keine Bewertungen CHF 26.90 Produkt ansehen Magnetischer Kartenhalter mit MagSafe Noch keine Bewertungen CHF 22.90 Produkt ansehen Reise-Organizer-Set mit Netz Noch keine Bewertungen CHF 28.90 Produkt ansehen Futterball für Haustiere Noch keine Bewertungen CHF 21.90 Produkt ansehen Auswahl für deinen Alltag Schmuck entdecken Ganze Auswahl ansehen Neue Akzente für deinen persönlichen Stil. Seitlich wischen und mehr entdecken. Halskette «Éclat» Noch keine Bewertungen CHF 44.90 Produkt ansehen Ohrstecker «Lumière» Noch keine Bewertungen CHF 14.90 Produkt ansehen Flechtarmband mit Verschluss 5 von 5 · 8 Bewertungen CHF 15.90 Produkt ansehen Auswahl für deinen Alltag Für dein Zuhause Ganze Auswahl ansehen Entdecke besondere Details für deine Räume. Seitlich wischen und mehr entdecken. Kissenbezüge · 2er-Set Noch keine Bewertungen CHF 24.90 Produkt ansehen Vase in Zepterform Noch keine Bewertungen CHF 104.90 Produkt ansehen Neue Ideen für deinen Alltag Mehr von LuxeStyle entdecken Alle Kategorien entdecken Schmuck Schmuckstücke für deinen persönlichen Stil. Auswahl ansehen Wohnen und Deko Neue Akzente für deinen Lieblingsort. Auswahl ansehen Beauty und Pflege Entdecke deine Auswahl für Beauty und Pflege. Auswahl ansehen Sport und Outdoor Für Bewegung, Freizeit und draussen. Auswahl ansehen Neue Ideen für deinen Alltag Noch mehr entdecken Alle Kategorien ansehen Für unterwegs, für deine Routine oder für deinen Hund. Entdecke weitere Produkte und ihre Auswahl. Leuchtgeschirr für Hunde Noch keine Bewertungen CHF 25.90 Produkt ansehen Kunstnägel «Blue Ice» Noch keine Bewertungen CHF 21.90 Produkt ansehen Nagelpolierer Noch keine Bewertungen CHF 26.90 Produkt ansehen Schultertasche für unterwegs Noch keine Bewertungen CHF 23.90 Produkt ansehen Gua-Sha-Set Noch keine Bewertungen CHF 24.90 Produkt ansehen Armband mit Verschluss 5 von 5 · 8 Bewertungen CHF 16.90 Produkt ansehen Tasche fürs Hundetraining Noch keine Bewertungen Ab CHF 16.90 Produkt ansehen Suchmatte für Hunde Noch keine Bewertungen CHF 17.90 Produkt ansehen Mode im Detail Ein Look. Ganz du. Entdecke das Blumenkleid mit Schnürung. Die passende Grösse und alle Produktangaben findest du direkt beim Artikel. Blumenkleid ansehen LuxeStyle / Mode entdecken Neue Saison, neue Ideen Winterzeit. Geschenkzeit. Entdecke unsere Winterauswahl und sammle Ideen für Weihnachten. Winterideen ansehen Weihnachtsideen entdecken Kleine Freude oder besondere Idee Finde deine nächste Entdeckung Kleine Aufmerksamkeiten Unter CHF 25 Ideen für dich und andere Unter CHF 50 Noch mehr Inspiration Geschenkideen Gut zu wissen Vor dem Bestellen Finde die passende Auswahl und die Informationen zu deiner Bestellung. Kontakt und Unterstützung Wo finde ich Farben, Grössen und Produktdetails? + Die verfügbaren Ausführungen und Angaben findest du auf der jeweiligen Produktseite. Fehlt eine Information, kontaktiere uns vor deiner Bestellung. Kontakt und Unterstützung Wie finde ich ein Produkt zum Selbstgestalten? + Öffne die Produktauswahl zum Selbstgestalten. Dort kannst du die Modelle sowie ihre verfügbaren Farben, Grössen und Ausführungen entdecken. Produkte auswählen Wo finde ich Versand- und Rückgabeinformationen? + Lies die aktuellen Informationen auf den folgenden Seiten, bevor du bestellst. Versand &amp; Lieferung Rückgabe LuxeStyle .ch Selbst gestalten Mode Wohnen Geschenkideen Alle Kategorien Zum Kundenkonto Was suchst du? Produkte durchsuchen Suchen Selbst gestalten Mode Wohnen Oder entdecke alle Kategorien . Start Kategorien Suche Merkliste Warenkorb Ausgewählte Produktbewertungen Bewertungen zu unseren Produkten ★★★★★ 4.83 von 5 · 12’459 Bewertungen Ausgewählte Bewertungen zu den jeweiligen Produkten, teilweise vom Hersteller übernommen und ins Deutsche übersetzt. Wische, um weitere Bewertungen zu sehen. ★★★★★ 5 von 5 Früher geliefert, sehr funktional und nützlich. Empfehlenswert! Notizbuch für Gewichtsverfolgung Zum Produkt ★★★★★ 5 von 5 Sehr schnelle Lieferung, super Produkt, gute Qualität. Drehwinkelmesser für Fahrzeuge – 360° Messung Zum Produkt ★★★★★ 5 von 5 Schnelle Lieferung. Gute Verarbeitung. Funktioniert einwandfrei. Super, empfehlenswert! 2-in-1 10W kabelloses Ladegerät Zum Produkt",
+        "hreflang": [
+          "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/\">",
+          "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/\">",
+          "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr\">"
+        ],
+        "actualProductLinkCount": 29,
+        "literalFacetStatusTokens": 0
+      },
+      {
+        "key": "homeCollection",
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "http": 200,
+        "scrapeId": "01a19b9c-6836-74af-83ab-88a9b9c86572",
+        "rawLength": 2569392,
+        "title": "Wohnen &amp; Dekoration kaufen | LuxeStyle Schweiz",
+        "descriptionTags": [
+          "<meta name=\"description\" content=\"Wohnen &amp; Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.\">"
+        ],
+        "robotsTags": [],
+        "canonical": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/wohnen-dekoration\">"
+        ],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Wohnen &amp; Dekoration"
+          },
+          {
+            "tag": "h3",
+            "text": "Aktive Filter:"
+          },
+          {
+            "tag": "h2",
+            "text": "Filtern"
+          },
+          {
+            "tag": "h3",
+            "text": "Aktive Filter:"
+          },
+          {
+            "tag": "h2",
+            "text": "Häufige Fragen zu Wohnen &amp; Dekoration"
+          }
+        ],
+        "schemaTypes": [
+          "Organization",
+          "MerchantReturnPolicy",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "BreadcrumbList",
+          "ListItem",
+          "ListItem"
+        ],
+        "schemas": [
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://luxestyle.ch/#org",
+            "name": "LuxeStyle",
+            "email": "info@luxestyle.ch",
+            "areaServed": [
+              "CH",
+              "LI"
+            ],
+            "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+            "url": "https://luxestyle.ch/",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": [
+                "CH",
+                "LI"
+              ],
+              "returnPolicyCountry": "CH",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 30,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+              "refundType": "https://schema.org/FullRefund"
+            },
+            "hasShippingService": [
+              {
+                "@type": "ShippingService",
+                "name": "Versand Schweiz",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 0,
+                      "maxValue": 49.99
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 7,
+                      "currency": "CHF"
+                    }
+                  },
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 50
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 0,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "ShippingService",
+                "name": "Versand Liechtenstein",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LI"
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 14.9,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sameAs": [
+              "https://www.facebook.com/1049840534888592",
+              "https://www.instagram.com/luxestyle.ch/",
+              "https://www.tiktok.com/@luxestyle.ch",
+              "https://www.pinterest.com/luxestyleCH/",
+              "https://www.youtube.com/@luxestyle_ch"
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://luxestyle.ch/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Wohnen & Dekoration",
+                "item": "https://luxestyle.ch/collections/wohnen-dekoration"
+              }
+            ]
+          }
+        ],
+        "productLinks": [
+          "https://luxestyle.ch/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+          "https://luxestyle.ch/products/elastische-stoffhuelle-627900",
+          "https://luxestyle.ch/products/schwarz-weiss-cartoon-vorhang-619000",
+          "https://luxestyle.ch/products/boho-kissenhulle-mit-stickerei-und-quasten-766208",
+          "https://luxestyle.ch/products/kissenbezug-leinenoptik-mit-pfirsichhaut-finis-911744",
+          "https://luxestyle.ch/products/samtweicher-kissenbezug-mit-pferdekopf-print-293888",
+          "https://luxestyle.ch/products/sofauberzug-pure-color-fur-alle-jahreszeiten-945472",
+          "https://luxestyle.ch/products/rutschfester-sofauberzug-all-inclusive-630016",
+          "https://luxestyle.ch/products/nachtlicht-mit-korperinduktion-runde-wandlampe-629500",
+          "https://luxestyle.ch/products/lordosenstutzkissen-fur-erholsamen-schlaf-613700",
+          "https://luxestyle.ch/products/personalisiertes-boho-foto-wandbild-842093",
+          "https://luxestyle.ch/products/rheinblaues-blumen-kissenbezug-mit-stickerei-097728",
+          "https://luxestyle.ch/products/nordeuropaisches-teppichmuster-30-60-cm-150-30-618600",
+          "https://luxestyle.ch/products/memory-foam-ruckenauflage-fur-burostuhl-617800",
+          "https://luxestyle.ch/products/wandlampe-mit-kreativen-led-farben-621800",
+          "https://luxestyle.ch/products/bein-und-huftkissen-624300",
+          "https://luxestyle.ch/products/sofa-uberwurf-aus-leinen-baumwoll-mix-536960",
+          "https://luxestyle.ch/products/besticktes-kissen-picasso-abstrakt-549440",
+          "https://luxestyle.ch/products/memory-foam-kissen-fur-rucken-und-nacken-618500",
+          "https://luxestyle.ch/products/usb-heizkissen-mit-graphen-technologie-acad9f",
+          "https://luxestyle.ch/products/stainless-steel-backform-fur-gedampfte-kuchen-602368",
+          "https://luxestyle.ch/products/kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+          "https://luxestyle.ch/products/u-formiges-schwangerschafts-und-stillkissen-617200",
+          "https://luxestyle.ch/products/wasserdichter-atmungsaktiver-schonbezug-613600",
+          "https://luxestyle.ch/products/elastischer-sofauberzug-mit-geometrischem-must-228032"
+        ],
+        "mainImageCount": 87,
+        "imagesMissingAlt": 0,
+        "emptyAltImages": 4,
+        "textStart": "Home › Wohnen &amp; Dekoration Kochen, Grillen &amp; Backen Küchenhelfer &amp; Vorrat Küchengeräte Kaffee, Tee &amp; Trinken Geschirr, Besteck &amp; Tisch Putzen &amp; Haushalt Aufbewahrung &amp; Möbel Alle 18 Kategorien Kochen, Grillen &amp; Backen Küchenhelfer &amp; Vorrat Küchengeräte Kaffee, Tee &amp; Trinken Geschirr, Besteck &amp; Tisch Putzen &amp; Haushalt Aufbewahrung &amp; Möbel Bad Kissen, Decken &amp; Bettwäsche Fenster, Wand &amp; Uhren Deko &amp; Kerzen Raumluft &amp; Klima Beleuchtung Basteln &amp; DIY Garten &amp; Outdoor Werkzeug &amp; Maschinen Sanitär &amp; Wasser Bau, Türen &amp; Befestigung Filtern: ✨ Neu Wohnen Geschenkidee Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt 30 Tage Rückgabe Schweizer Shop Sichere Zahlung · TWINT –10 % mit WELCOME10 Wohnen &amp; Dekoration Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen &amp; Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe. Passend dazu: Vorhänge · Beleuchtung · Beistelltisch Acryl Zur Ergebnisliste springen Aktive Filter: Verfügbarkeit Auf Lager Nicht vorrätig Löschen Preis CHF {{amount}} CHF bis CHF Der höchste Preis ist CHF 315.90 Löschen Produkttyp Aroma-Diffuser Baby &amp; Kinder Bad Beleuchtung Damenmode Haushalt &amp; Wohnen Heimtextilien Herrenmode Kissen Küche &amp; Bar Mode Partydeko &amp; Ballone Raucherzubehör Spielzeug &amp; Spiele Wellness &amp; Spa Wohnen &amp; Deko Mehr anzeigen Weniger anzeigen Löschen Farbe Beige Blau Braun Bronze Gelb Gold Grau Grün Lila Marineblau Mehrfarbig Orange Rosa Rot Schwarz Silber Transparent Weiß Löschen Grösse 40cm 50 cm 60cm 80cm 120cm 30x50cm 45x45cm 50x50cm 70x70cm 70x90cm 70x120cm 70x150cm 70x180cm 70x210cm 90x90cm 90x120cm 90x160cm 90x180cm 90x210cm 90x240cm 132x213cm 145x70cm 155x80cm 180x130cm 180x180cm 180x200cm 180x230cm 180x260cm 180x300cm 180x340cm 180x380cm 180x420cm 45x45cm Pillow 45x45cm Pillowcase 45x45cm with core 30x50cm without core 45x45cm without core 40x40 cotton linen 40x40 fleece 100X150cm 110×210 cm 150X200cm 150×100 cm 150×130 cm 150×200 cm 150×200cm 150×230 cm 180X200cm 180×150 180×180 180×180 cm 200X230cm 200×230cm 30X50cm 30×50 cm 35×35 cm 40×40 cm 45 × 45 cm 45X45cm 45×45 45×45 cm 45×45 cm Kissen 45×45 cm Kissenbezug 48x74cm 750g 48x74cm 850g 48x74cm Pillowcase 1pc 48x74cm Pillowcase 2PCs 48x74cm1000g 50X50cm 50×50 cm 51×66 cm 51×76 cm 51×91 cm 56 × 30 cm 60X60cm 60×50×18cm 70×120 cm 70×150 cm 70×180 cm 70×210 cm 70×50×18cm 70×70 cm 70×90 cm 80×50×18cm 90×120 cm 90×160 cm 90×180 cm 90×210 cm 90×240 cm 90×50×18cm 90×90 cm Gross: 190–210 cm L M Pillow Cover Pillow Cover Pillow Core Pillowcase S Standard: 160–190 cm XL Mehr anzeigen Weniger anzeigen Löschen kategorie Adventskalender Babybadewannen Babysicherheit Backmatten &amp; -formen Badematten &amp; Badteppiche Badewannenkissen Badhandtücher &amp; Waschlappen Bänder &amp; Einfassungen Bekleidung Beleuchtung Besteck-Sets Bettbezüge Brotdosen &amp; -taschen Bürostuhl-Zubehör Decken Deckenleuchten Dekoration Duschvorhänge Einlegesohlen &amp; Einlagen Essstäbchen Festtags-Dekoartikel Fliegengitter Fußmatten Gartenarbeit Geschirrsets Gießformen Gitter- &amp; Kinderbettzubehör Handtücher Haushaltsbedarf Haustierbedarf Heim &amp; Garten Jalousien &amp; Rollos Kaffee- und Teetassen Kerzen Kfz-Sitze Kissenbezüge Klappstühle &amp; Holzhocker Knie- und Beinkissen Kopfkissen Kränze &amp; Girlanden Kuchen-Dekorationsbedarf Kuchenbackformen Küchenhelfer &amp; -utensilien Kunst- &amp; Bastelsets Lampen Lebensmittelbehälter Lichtschläuche &amp; Lichterketten Löffel Manuelle Massagegeräte Massage &amp; Entspannung Massagekissen Matratzen Matratzenauflagen Möbel Mousepads Mugs Nachtlichter &amp; indirekte Beleuchtung Nacken- und Halswirbelkissen Partyzubehör Picknickdecken Polsterhocker Poster &amp; Bildende Kunst Puckdecken &amp; Mulltücher Reisekissen Rückenstützkissen Schalen Schlafkleidung &amp; Schlafsäcke für Babys &amp; Kinder Schleifen &amp; Rosetten Schnuller &amp; Beruhigung Schonbezüge Schüsseln Schwangerschafts- und Stillkissen Sitzpolster Sitzsäcke Spielmatten Steppdecken &amp; Quilts Sticksets Stiel- &amp; Bratpfannen Stillkissen Stofftiere Stützen &amp; Bandagen Stützkissen für Rücken- &amp; Lendenbereich Suppentöpfe Tabletts Tapeten Teller Teppiche Tischsets Vasen Vorhänge &amp; Gardinen Wandleuchten, Wandbeleuchtung Wandteppiche Wärmflaschen &amp; Heizkissen Wasserflaschen Wegbeleuchtung Weihnachtsbaumschmuck Wiegen &amp; Stubenwagen Yoga &amp; Pilates Yoga- &amp; Pilatesmatten Zierkissen Mehr anzeigen Weniger anzeigen Löschen Alles löschen 2835 Artikel Sortieren Ausgewählt Am relevantesten meistverkauft Alphabetisch, A-Z Alphabetisch, Z-A Preis, niedrig nach hoch Preis, hoch nach niedrig Datum, alt zu neu Datum, neu zu alt Sortieren Ausgewählt Ausgewählt Am relevantesten meistverkauft Alphabetisch, A-Z Alphabetisch, Z-A Preis, niedrig nach hoch Preis, hoch nach niedrig Datum, alt zu neu Datum, neu zu alt Spaltenraster Filtern Spaltenraster Filtern Aktive Filter: Verfügbarkeit Auf Lager Nicht vorrätig Preis CHF {{amount}} CHF bis CHF Der höchste Preis ist CHF 315.90 Produkttyp Aroma-Diffuser Baby &amp; Kinder Bad Beleuchtung Damenmode Haushalt &amp; Wohnen Heimtextilien Herrenmode Kissen Küche &amp; Bar Mode Partydeko &amp; Ballone Raucherzubehör Spielzeug &amp; Spiele Wellness &amp; Spa Wohnen &amp; Deko Mehr anzeigen Weniger anzeigen Farbe Beige Blau Braun Bronze Gelb Gold Grau Grün Lila Marineblau Mehrfarbig Orange Rosa Rot Schwarz Silber Transparent Weiß Grösse 40cm 50 cm 60cm 80cm 120cm 30x50cm 45x45cm 50x50cm 70x70cm 70x90cm 70x120cm 70x150cm 70x180cm 70x210cm 90x90cm 90x120cm 90x160cm 90x180cm 90x210cm 90x240cm 132x213cm 145x70cm 155x80cm 180x130cm 180x180cm 180x200cm 180x230cm 180x260cm 180x300cm 180x340cm 180x380cm 180x420cm 45x45cm Pillow 45x45cm Pillowcase 45x45cm with core 30x50cm without core 45x45cm without core 40x40 cotton linen 40x40 fleece 100X150cm 110×210 cm 150X200cm 150×100 cm 150×130 cm 150×200 cm 150×200cm 150×230 cm 180X200cm 180×150 180×180 180×180 cm 200X230cm 200×230cm 30X50cm 30×50 cm 35×35 cm 40×40 cm 45 × 45 cm 45X45cm 45×45 45×45 cm 45×45 cm Kissen 45×45 cm Kissenbezug 48x74cm 750g 48x74cm 850g 48x74cm Pillowcase 1pc 48x74cm Pillowcase 2PCs 48x74cm1000g 50X50cm 50×50 cm 51×66 cm 51×76 cm 51×91 cm 56 × 30 cm 60X60cm 60×50×18cm 70×120 cm 70×150 cm 70×180 cm 70×210 cm 70×50×18cm 70×70 cm 70×90 cm 80×50×18cm 90×120 cm 90×160 cm 90×180 cm 90×210 cm 90×240 cm 90×50×18cm 90×90 cm Gross: 190–210 cm L M Pillow Cover Pillow Cover Pillow Core Pillowcase S Standard: 160–190 cm XL Mehr anzeigen Weniger anzeigen kategorie Adventskalender Babybadewannen Babysicherheit Backmatten &amp; -formen Badematten &amp; Badteppiche Badewannenkissen Badhandtücher &amp; Waschlappen Bänder &amp; Einfassungen Bekleidung Beleuchtung Besteck-Sets Bettbezüge Brotdo",
+        "hreflang": [
+          "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/collections/wohnen-dekoration\">",
+          "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/collections/wohnen-dekoration\">",
+          "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr/collections/wohnen-dekoration\">"
+        ],
+        "actualProductLinkCount": 25,
+        "literalFacetStatusTokens": 2
+      },
+      {
+        "key": "techCollection",
+        "url": "https://luxestyle.ch/collections/elektronik-technik",
+        "http": 200,
+        "scrapeId": "01a19b9c-6885-7642-abbd-470f3dadcac5",
+        "rawLength": 2513604,
+        "title": "Elektronik &amp; Technik kaufen | LuxeStyle Schweiz",
+        "descriptionTags": [
+          "<meta name=\"description\" content=\"Elektronik &amp; Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.\">"
+        ],
+        "robotsTags": [],
+        "canonical": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/elektronik-technik\">"
+        ],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Elektronik &amp; Technik"
+          },
+          {
+            "tag": "h3",
+            "text": "Aktive Filter:"
+          },
+          {
+            "tag": "h2",
+            "text": "Filtern"
+          },
+          {
+            "tag": "h3",
+            "text": "Aktive Filter:"
+          },
+          {
+            "tag": "h2",
+            "text": "Häufige Fragen zu Elektronik &amp; Technik"
+          }
+        ],
+        "schemaTypes": [
+          "Organization",
+          "MerchantReturnPolicy",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "MonetaryAmount",
+          "ShippingService",
+          "ShippingConditions",
+          "DefinedRegion",
+          "MonetaryAmount",
+          "BreadcrumbList",
+          "ListItem",
+          "ListItem",
+          "ListItem"
+        ],
+        "schemas": [
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://luxestyle.ch/#org",
+            "name": "LuxeStyle",
+            "email": "info@luxestyle.ch",
+            "areaServed": [
+              "CH",
+              "LI"
+            ],
+            "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+            "url": "https://luxestyle.ch/",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": [
+                "CH",
+                "LI"
+              ],
+              "returnPolicyCountry": "CH",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 30,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+              "refundType": "https://schema.org/FullRefund"
+            },
+            "hasShippingService": [
+              {
+                "@type": "ShippingService",
+                "name": "Versand Schweiz",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 0,
+                      "maxValue": 49.99
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 7,
+                      "currency": "CHF"
+                    }
+                  },
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "CH"
+                    },
+                    "orderValue": {
+                      "@type": "MonetaryAmount",
+                      "currency": "CHF",
+                      "minValue": 50
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 0,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "ShippingService",
+                "name": "Versand Liechtenstein",
+                "shippingConditions": [
+                  {
+                    "@type": "ShippingConditions",
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "LI"
+                    },
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": 14.9,
+                      "currency": "CHF"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sameAs": [
+              "https://www.facebook.com/1049840534888592",
+              "https://www.instagram.com/luxestyle.ch/",
+              "https://www.tiktok.com/@luxestyle.ch",
+              "https://www.pinterest.com/luxestyleCH/",
+              "https://www.youtube.com/@luxestyle_ch"
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://luxestyle.ch/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Elektronik",
+                "item": "https://luxestyle.ch/collections/elektronik-technik"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Elektronik & Technik",
+                "item": "https://luxestyle.ch/collections/elektronik-technik"
+              }
+            ]
+          }
+        ],
+        "productLinks": [
+          "https://luxestyle.ch/products/transmitter-mit-display-97d068",
+          "https://luxestyle.ch/products/intelligentes-glas-mit-touch-steuerung-629500",
+          "https://luxestyle.ch/products/universal-remote-fur-garagentor-4-tasten-kopie-157248",
+          "https://luxestyle.ch/products/smart-remote-key-card-ef0a62",
+          "https://luxestyle.ch/products/mini-wireless-keyboard-mit-touchpad-91f82b",
+          "https://luxestyle.ch/products/zigbee-bluetooth-gateway-6bee9d",
+          "https://luxestyle.ch/products/universal-ir-fernbedienung-mit-sprachsteuerung-98c975",
+          "https://luxestyle.ch/products/intelligente-fernbedienung-mit-air-mouse-643f1b",
+          "https://luxestyle.ch/products/fernbedienung-fur-iphone-df3b52",
+          "https://luxestyle.ch/products/fernsteuerung-fur-rc-autos-3f923d",
+          "https://luxestyle.ch/products/digitale-lupe-mit-mikroskop-628200",
+          "https://luxestyle.ch/products/mini-quadcopter-mit-dual-kamera-221888",
+          "https://luxestyle.ch/products/mini-waschbecher-638100",
+          "https://luxestyle.ch/products/butterfly-bluetooth-earphones-617900",
+          "https://luxestyle.ch/products/a6-pro-bluetooth-in-ear-kopfhorer-mit-gerausch-620300",
+          "https://luxestyle.ch/products/creative-gaming-headset-mit-beleuchtung-619900",
+          "https://luxestyle.ch/products/drahtloses-kragen-mikrofon-set-mit-ladebox-611800",
+          "https://luxestyle.ch/products/kameradetektor-6ff067",
+          "https://luxestyle.ch/products/x99-computer-motherboard-ddr4-server-547584",
+          "https://luxestyle.ch/products/mini-magnetic-wireless-power-bank-5000mah-600300",
+          "https://luxestyle.ch/products/astronaut-galaxy-projektionslampe-622000",
+          "https://luxestyle.ch/products/mini-powerbank-mit-digitalanzeige-20000-mah-639700",
+          "https://luxestyle.ch/products/silicon-labs-efr32mg21-zigbee-3-0-usb-dongle-612100",
+          "https://luxestyle.ch/products/duales-stereo-karaoke-system-601000"
+        ],
+        "mainImageCount": 83,
+        "imagesMissingAlt": 0,
+        "emptyAltImages": 4,
+        "textStart": "Home › Elektronik › Elektronik &amp; Technik Elektronik &amp; Technik Handy &amp; Laden Kopfhörer &amp; Audio Smartwatches &amp; Wearables Kamera, Foto &amp; Drohnen TV, Beamer &amp; Streaming Gaming &amp; VR Alle 15 Kategorien Elektronik &amp; Technik Handy &amp; Laden Kopfhörer &amp; Audio Smartwatches &amp; Wearables Kamera, Foto &amp; Drohnen TV, Beamer &amp; Streaming Gaming &amp; VR PC &amp; Computer Büro &amp; Drucker Sicherheit &amp; Überwachung Strom, Batterien &amp; Solar Smart Home &amp; smarte Gadgets 3D-Drucker &amp; Zubehör Kabel &amp; Adapter Elektronik-Kleinteile Filtern: ✨ Neu Damen Herren Kinder Gürtel Taschen Schmuck Armbänder Ringe Uhren Gadgets Laden &amp; Strom Küche Kissen Werkzeug Auto Haustier Sport 🎃 Halloween Geschenkidee Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt 30 Tage Rückgabe Schweizer Shop Sichere Zahlung · TWINT –10 % mit WELCOME10 Elektronik &amp; Technik Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu. 🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Passend dazu: Nintendo Switch · 3D-Drucker &amp; Stifte · Kopfhörer &amp; Lautsprecher · PC-Komponenten &amp; Speicher Zur Ergebnisliste springen Aktive Filter: Mehr Verfügbarkeit Auf Lager Nicht vorrätig Löschen Preis CHF {{amount}} CHF bis CHF Der höchste Preis ist CHF 399.90 Löschen Produkttyp Damenmode Elektronik Gadget Gaming-Zubehör Partydeko &amp; Ballone Raucherzubehör Schmuck Spass-Elektronik Uhren Wellness &amp; Aromatherapie Löschen Farbe Beige Blau Braun Bronze Gelb Gold Grau Grün Lila Marineblau Mehrfarbig Orange Rosa Roségold Rot Schwarz Silber Transparent Weiß Löschen Grösse 10 11 12 13 20 22 38 40 41 42 44 45 10 inch 12MM 14MM 16MM 18MM 18mm 20MM 20mm 20 mm 22MM 22mm 22 mm 23MM 24MM 38MM 38 mm 38mm 38.40mm 40MM 40 mm 40mm 41MM 41 mm 41mm 42MM 42 mm 42mm 42.44mm 44MM 44 mm 44mm 45MM 45 mm 45mm 49 mm 384041MM 42444549MM 38–40 mm 42–44 mm 38 mm L 42 mm L 38 mm S 42 mm S 38 40 mm 38 40mm 38.40.41mm 38mm 40mm 41mm 38mm40mm41mm 38MM40MM41MM 38or40or41 38or40or41mm 38or40or41MM 38or40or41or42MM 38to40mm 38to40MM 38to40to41mm 40mm 41mm 40mmto41mm 40to38mm 42 44 mm 42 44mm 42.44.45.49mm 42.44.45mm 42mm 44mm 45mm 42mm44mm45mm 42MM44MM45MM 42or44or44mm 42or44or45mm 42or44or45MM 42or44or45or49 42or44or45or49MM 42or44or45or49or46MM 42to44mm 42to44MM 42to44to45mm 42to44to45MM 44mm 45mm 44mmto45mm 45or49mm 7 to 8 inch Apple 38mm40mm41mm Apple 42mm44mm45mm Dual lens L M S Watch4 Watch5 5pro Mehr anzeigen Weniger anzeigen Löschen kategorie Aktivitätsmonitore Armbänder Armbanduhren &amp; Taschenuhren Autoladegeräte Babyfone Batterien Beleuchtung Bewegungsmelder Computer Mäuse &amp; Trackballs Computer-Monitorständer Datenbrillen Diktiergeräte Drahtlose Ladegeräte Drohnen Elektrische Prüfgeräte Elektronik Elektronische Massagegeräte Elektronische Wörterbücher &amp; Übersetzungsgeräte Fallen Fernbedienungen Festplatten Festplattengehäuse &amp; -steckplätze Flaschenwärmer &amp; Sterilisatoren Flash-Speicherkarten Funksprechgeräte Getränkewärmer GPS-Tracker Haar- &amp; Bartschneider Handventilatoren Haushaltsgeräte Haussicherheit Headsets Insektenschutz Kabel Kameraakkus &amp; -batterien Kameras &amp; Optik Kamerastabilisatoren und -stützen Kamerazubehör Kfz-Elektronik Kompressoren Kopfhörer Kopfhörer &amp; Headsets Kopfhörer- &amp; Headset-Zubehör Lampen Laptop-Dockingstationen Laptop-Ladegeräte Lautsprecher Luftbefeuchter Luftreiniger Mehrzweckbatterien Mikrofone Mittel gegen Haushaltsinsekten Mobiltelefonhalterungen &amp; -ständer Mousepads Multimedia-Projektoren Nachtlichter &amp; indirekte Beleuchtung Netzteile &amp; Ladegeräte Netzwerk-Mediaplayer Personenwaagen Powerbanks Projektoren Radios RAM Raumduft-Zubehör Raumheizgeräte Repeater &amp; Sende/-Empfangsgeräte Schlösser &amp; Riegel Smartwatches Speicherkartenlesegerät Spezielle elektrische Schalter Staubsauger System- &amp; Netzkabel Taschenlampen Tastaturen Tastaturtasten &amp; -kappen Thermostate Türklingeln Überwachungskameras Uhrenaccessoires Uhrenarmbänder USB- &amp; FireWire-Hubs USB-Massenspeicher Ventilatoren Videokameras Videospielkonsolen Waagen Wandladegeräte Wanduhren Wärmflaschen &amp; Heizkissen Wassermelder Webcams Wecker Wetterstationen Wildkameras Wireless Router Zahnbürsten Zubehör für ferngesteuerte Fahrzeuge Zubehör für mobile Spielkonsolen Zubehör für Mobiltelefone und Smartphones Zubehör für Spielkonsolen Mehr anzeigen Weniger anzeigen Löschen Alles löschen 4450 Artikel Sortieren Ausgewählt Am relevantesten meistverkauft Alphabetisch, A-Z Alphabetisch, Z-A Preis, niedrig nach hoch Preis, hoch nach niedrig Datum, alt zu neu Datum, neu zu alt Sortieren Ausgewählt Ausgewählt Am relevantesten meistverkauft Alphabetisch, A-Z Alphabetisch, Z-A Preis, niedrig nach hoch Preis, hoch nach niedrig Datum, alt zu neu Datum, neu zu alt Spaltenraster Filtern Spaltenraster Filtern Aktive Filter: Verfügbarkeit Auf Lager Nicht vorrätig Preis CHF {{amount}} CHF bis CHF Der höchste Preis ist CHF 399.90 Produkttyp Damenmode Elektronik Gadget Gaming-Zubehör Partydeko &amp; Ballone Raucherzubehör Schmuck Spass-Elektronik Uhren Wellness &amp; Aromatherapie Farbe Beige Blau Braun Bronze Gelb Gold Grau Grün Lila Marineblau Mehrfarbig Orange Rosa Roségold Rot Schwarz Silber Transparent Weiß Grösse 10 11 12 13 20 22 38 40 41 42 44 45 10 inch 12MM 14MM 16MM 18MM 18mm 20MM 20mm 20 mm 22MM 22mm 22 mm 23MM 24MM 38MM 38 mm 38mm 38.40mm 40MM 40 mm 40mm 41MM 41 mm 41mm 42MM 42 mm 42mm 42.44mm 44MM 44 mm 44mm 45MM 45 mm 45mm 49 mm 384041MM 42444549MM 38–40 mm 42–44 mm 38 mm L 42 mm L 38 mm S 42 mm S 38 40 mm 38 40mm 38.40.41mm 38mm 40mm 41mm 38mm40mm41mm 38MM40MM41MM 38or40or41 38or40or41mm 38or40or41MM 38or40or41or42MM 38to40mm 38to40MM 38to40to41mm 40mm 41mm 40mmto41mm 40to38mm 42 44 mm 42 44mm 42.44.45.49mm 42.44.45mm 42mm 44mm 45mm 42mm44mm45mm 42MM44MM45MM 42or44or44mm 42or44or45mm 42or44or45MM 42or44or45or49 42or44or45or49MM 42or44or45or49or46MM 42to44mm 42to44MM 42to44to45mm 42to44to45MM 44mm 45mm 44mmto45mm 45or49mm 7 to 8 inch Apple 38mm40mm41mm Apple 42mm44mm45mm Dual lens L M S Watch4 Watch5 5pro Mehr anzeigen Weniger anzeigen kategorie Aktivitätsmonitore Armbänder Armbanduhren &amp; Taschenuhren Autoladegeräte Babyfone Batterien Beleuchtung Bewegungsmelder Computer Mäuse &amp; Trackballs Computer-Monitorständer Datenbrillen Diktiergeräte Drahtlose Ladegeräte Drohnen Elektrische Prüfgeräte Elektronik Elektronische Massagegeräte Elektronische Wörterbücher &amp; Übersetzungsgeräte Fallen Fernbedienungen Festplatten Festplattengehäuse &amp; -steckplätze Flaschenwärmer &amp; Sterilisatoren Flash-Speicherkarten Funksprechgeräte Getränkewärmer GPS-Tracker Haar- &amp; Bartschneider Handventilatoren Haushaltsgeräte Haussicherheit Heads",
+        "hreflang": [
+          "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/collections/elektronik-technik\">",
+          "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/collections/elektronik-technik\">",
+          "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr/collections/elektronik-technik\">"
+        ],
+        "actualProductLinkCount": 24,
+        "literalFacetStatusTokens": 2
+      }
+    ],
+    "findings": [
+      {
+        "priority": "medium",
+        "kind": "content_opportunity_existing_draft",
+        "urls": [
+          "https://luxestyle.ch/collections/wohnen-dekoration",
+          "https://luxestyle.ch/collections/elektronik-technik"
+        ],
+        "evidence": "Wohnen opening still says over2700items and dailynewitems; techopening says dailynewitems; metas primarily repeat general serviceclaims. Current pages render exact priorR43/R27 copy.",
+        "impact": "More precise product/category intent and verification guidance can make the page more useful to customers and excerpting systems; no ranking or traffic effect measured.",
+        "fix": "Use existing R43 oldDraftsRebased two category-intro/meta fragments after fresh native comparison/authorization; preserve following service HTML and related links, titles/handles/order/products. Avoid invented sizes/materials/dailygrowth claims.",
+        "verify": "Root native2fieldreadback+publichead/firstparagraph+followingHTMLbytepreservation."
+      },
+      {
+        "priority": "medium",
+        "kind": "confirmed_rendered_template_literal",
+        "urls": [
+          "https://luxestyle.ch/collections/wohnen-dekoration",
+          "https://luxestyle.ch/collections/elektronik-technik"
+        ],
+        "evidence": "Both collection pages contain literal CHF {{amount}} as text child of facet-status-component in desktop and mobile filter summaries, twice per page; attribute data-money-format='CHF {{amount}}' separately is expected formatter configuration.",
+        "impact": "Visible leaked template token reduces filter clarity; no demonstrated SEO/ranking impact.",
+        "fix": "Trace exact active-theme facet-status/price-filter Liquid output. Remove/replace only leaked textnode, preserving formatter data-money-format attribute and actual range status/inputs. Main theme source was not read here; no patch applied.",
+        "verify": "Current native source plus mobile/desktop price-filter view and apply/reset functional checks; empty state no literaltoken and actual ranges/CHF intact."
+      },
+      {
+        "priority": "low",
+        "kind": "generic_faq_opportunity",
+        "urls": [
+          "https://luxestyle.ch/collections/wohnen-dekoration",
+          "https://luxestyle.ch/collections/elektronik-technik"
+        ],
+        "evidence": "Both collections reuse same generic FAQ incl 'Wie finde ich die richtige Grösse?' referring to mode/shoes and universal 'immer mit Sendungsverfolgung'; no type-specific compatibility/dimension selection question in inspected FAQ.",
+        "impact": "FAQ does not directly help electronics or home shoppers choose actual items; blanket tracking is unsupported by this audit.",
+        "fix": "Review category-specific selection answers for dimensions/execution or power/connectivity/compatibility. Link to actual product facts; avoid universal fulfilment claims without proof. Do not invent FAQ rich-result eligibility.",
+        "verify": "Compare visible FAQ to approved policy and actual product data; validate any generated schema against visible answers."
+      }
+    ],
+    "healthy": [
+      "All3actualHTTP200",
+      "EachfirstRootHead hasmatchingcanonical,title,description andno robotsmeta/noindex",
+      "OneprimaryH1permain",
+      "Homepage includesactual<a>category andproduct links; no discoveryfix requiring duplicate links established",
+      "WebSite/SearchAction andOrganization present onhome; Organization andBreadcrumbList present onbothcollections",
+      "NoAggregateRating orReview type injected into the inspectedJSONLD; no new review enrichment needed",
+      "Allmainimages havealtattributes; manyhomepageemptyalts may be decorative besideHTMLlabels, noautomaticSEOdefect declared"
+    ],
+    "limits": [
+      "3page sample, not fullcatalog/site coverage",
+      "Firecrawlmetadata robots:none comes fromembeddedShop sign-in; rootfirsthead hasno suchdirective",
+      "ActualHTTPresponseheaders/X-Robots-Tag notreturned, unverified",
+      "Googleindexation/selectedcanonical/rankings/traffic/CoreWebVitals notmeasured",
+      "CollectionProductrichschemaabsence nottreated asdefect; Productdetailtemplateoutside thisaudit",
+      "No mutations, uploads, reports, settings or changed frequencies"
+    ]
+  },
+  "officialSources": [
+    {
+      "key": "bots",
+      "sourceUrl": "https://platform.openai.com/docs/bots",
+      "url": "https://developers.openai.com/api/docs/bots",
+      "status": 200,
+      "scrapeId": "01a19b9b-81ff-73b2-800b-e795b1b51673"
+    },
+    {
+      "key": "googleAI",
+      "sourceUrl": "https://developers.google.com/search/docs/appearance/ai-features",
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "status": 200,
+      "scrapeId": "01a19b9b-f549-77ee-acb3-36f83e43eb9c"
+    },
+    {
+      "key": "googleGuide",
+      "sourceUrl": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "status": 200,
+      "scrapeId": "01a19b9b-f49c-773a-b287-5fba31f9fa13"
+    },
+    {
+      "key": "search",
+      "sourceUrl": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+      "url": "https://help.openai.com/en/articles/9237897-searching-the-web-with-chatgpt",
+      "status": 200,
+      "scrapeId": "01a19b9c-c38e-725b-a17b-5f507529e726"
+    },
+    {
+      "key": "merchant",
+      "sourceUrl": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+      "status": 200,
+      "scrapeId": "01a19b9b-f4ba-70f8-8cfa-d42263a20a2c"
+    }
+  ],
+  "bestsellerChange": {
+    "id": "gid://shopify/Collection/687774499201",
+    "url": "https://luxestyle.ch/collections/bestseller-premium-heroes",
+    "netChangedFields": [
+      "first paragraph of descriptionHtml",
+      "seo.description"
+    ],
+    "before": {
+      "id": "gid://shopify/Collection/687774499201",
+      "title": "Bestseller",
+      "handle": "bestseller-premium-heroes",
+      "descriptionHtml": "<p>Die absoluten Favoriten unserer Kundschaft! Hier findest du die meistgekauften Produkte aus allen Kategorien — von funkelnden Moissanite-Ketten über Echtleder-Taschen bis zu beliebten Alltags-Helfern.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p>",
+      "seo": {
+        "title": "Bestseller | LuxeStyle Schweiz",
+        "description": "Unsere beliebtesten Produkte: wasserfester Schmuck, Mode & Accessoires. Schweizer Shop, Gratis-Versand in der Schweiz ab CHF 50 · -10% mit Code WELCOME10."
+      },
+      "sortOrder": "MANUAL",
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/15427230269825",
+            "handle": "schweiz-sticker-steinbock"
+          },
+          {
+            "id": "gid://shopify/Product/15430462669185",
+            "handle": "herren-cargo-hose-trail-multi-pocket-outdoor"
+          },
+          {
+            "id": "gid://shopify/Product/15423895830913",
+            "handle": "buegeltransfer-selbst-gestalten"
+          },
+          {
+            "id": "gid://shopify/Product/15519840076161",
+            "handle": "k68-signal-detektor-46ae1c"
+          },
+          {
+            "id": "gid://shopify/Product/15450836566401",
+            "handle": "led-wasserwellen-projektionsleuchte-677504"
+          },
+          {
+            "id": "gid://shopify/Product/15522625094017",
+            "handle": "e-scooter-lithium-akku-ladegerat-605700"
+          },
+          {
+            "id": "gid://shopify/Product/15491411804545",
+            "handle": "leuchtender-halloween-schaukelgeist-627400"
+          },
+          {
+            "id": "gid://shopify/Product/15408458006913",
+            "handle": "kristallspitzen-set-8-teilig-holzbox"
+          },
+          {
+            "id": "gid://shopify/Product/15499700142465",
+            "handle": "magnetische-3-in-1-ladestation-613200"
+          },
+          {
+            "id": "gid://shopify/Product/15478744580481",
+            "handle": "heizbare-kuscheldecke-mit-armeln-und-kapuze-606000"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjoxNTQ3ODc0NDU4MDQ4MSwibGFzdF92YWx1ZSI6IjB0bWQ4MWV5OHdkIn0="
+        }
+      }
+    },
+    "after": {
+      "id": "gid://shopify/Collection/687774499201",
+      "title": "Bestseller",
+      "handle": "bestseller-premium-heroes",
+      "descriptionHtml": "<p>Entdecke ausgewählte Produkte aus unserem Sortiment – darunter Sticker und Bügeltransfers, Beleuchtung und Technik für den Alltag. Vergleiche die Ausführungen und Produktangaben auf der jeweiligen Produktseite.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p>",
+      "seo": {
+        "title": "Bestseller | LuxeStyle Schweiz",
+        "description": "Ausgewählte Produkte aus Wohnen, Technik und Selbstgestalten bei LuxeStyle Schweiz. Vergleiche Ausführungen und Produktangaben direkt beim Artikel."
+      },
+      "sortOrder": "MANUAL",
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/15427230269825",
+            "handle": "schweiz-sticker-steinbock"
+          },
+          {
+            "id": "gid://shopify/Product/15430462669185",
+            "handle": "herren-cargo-hose-trail-multi-pocket-outdoor"
+          },
+          {
+            "id": "gid://shopify/Product/15423895830913",
+            "handle": "buegeltransfer-selbst-gestalten"
+          },
+          {
+            "id": "gid://shopify/Product/15519840076161",
+            "handle": "k68-signal-detektor-46ae1c"
+          },
+          {
+            "id": "gid://shopify/Product/15450836566401",
+            "handle": "led-wasserwellen-projektionsleuchte-677504"
+          },
+          {
+            "id": "gid://shopify/Product/15522625094017",
+            "handle": "e-scooter-lithium-akku-ladegerat-605700"
+          },
+          {
+            "id": "gid://shopify/Product/15491411804545",
+            "handle": "leuchtender-halloween-schaukelgeist-627400"
+          },
+          {
+            "id": "gid://shopify/Product/15408458006913",
+            "handle": "kristallspitzen-set-8-teilig-holzbox"
+          },
+          {
+            "id": "gid://shopify/Product/15499700142465",
+            "handle": "magnetische-3-in-1-ladestation-613200"
+          },
+          {
+            "id": "gid://shopify/Product/15478744580481",
+            "handle": "heizbare-kuscheldecke-mit-armeln-und-kapuze-606000"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjoxNTQ3ODc0NDU4MDQ4MSwibGFzdF92YWx1ZSI6IjB0bWQ4MWV5OHdkIn0="
+        }
+      }
+    },
+    "nativeChecks": {
+      "descriptionExact": true,
+      "seoDescriptionExact": true,
+      "seoTitleUnchanged": true,
+      "titleUnchanged": true,
+      "handleUnchanged": true,
+      "sortUnchanged": true,
+      "productsUnchanged": true
+    },
+    "publicChecks": {
+      "rawAvailable": true,
+      "headFound": true,
+      "mainFound": true,
+      "newIntroductionInMain": true,
+      "newSeoDescriptionInRootHead": true,
+      "oldTitleInRootHead": true,
+      "oldIntroductionAbsent": true,
+      "noRootNoindex": true
+    },
+    "publicSource": {
+      "url": "https://luxestyle.ch/collections/bestseller-premium-heroes",
+      "sourceTitle": "\n  Bestseller | LuxeStyle Schweiz\n",
+      "intro": "Entdecke ausgewählte Produkte aus unserem Sortiment – darunter Sticker und Bügeltransfers, Beleuchtung und Technik für den Alltag. Vergleiche die Ausführungen und Produktangaben auf der jeweiligen Produktseite.",
+      "seoDescription": "Ausgewählte Produkte aus Wohnen, Technik und Selbstgestalten bei LuxeStyle Schweiz. Vergleiche Ausführungen und Produktangaben direkt beim Artikel.",
+      "limits": "Root source/visible main verified; Google recrawl, selected snippet, rankings and sales impact not measured."
+    },
+    "publicReceipt": {
+      "scrapeId": "01a19ba0-f48e-76d4-bd42-c8a151b90784",
+      "url": "https://luxestyle.ch/collections/bestseller-premium-heroes",
+      "statusCode": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    "mutationCalls": 2,
+    "firstWriteSideEffect": "Nested seo description-only input cleared seo.title; immediately observed, separately restored original title with new description in second corrective mutation. Final title exactly original; no blind retry.",
+    "finalChangedFieldsOnly": 2,
+    "products": 10,
+    "followingServiceParagraphPreserved": true,
+    "discountOrSettingsActivated": false
+  },
+  "validation": {
+    "freshSchemaDiscovery": true,
+    "documentation": "https://shopify.dev/docs/api/admin-graphql/2026-10/mutations/collectionUpdate",
+    "nativePrevalidator": "Explicitly skipped; actual native query/mutation validated and accepted by API with no userErrors",
+    "cli": "Existing first helper missing _validate_graphql.mjs; other existing helper missing bundled assets. Could not run, not independent green validation. No installs or helper modifications.",
+    "finalNativeChecks": 7,
+    "publicSourceChecks": 8,
+    "fullThemeOrCheckoutOrSearchIndexAcceptance": false
+  },
+  "dailyReadBoundary": {
+    "sameDayMetricoolKlaviyoReportsReused": true,
+    "newTrafficReason": "New explicit user question plus freshly verified LuxeStyle GA4 and SearchConsole identities; two previously unread narrow source reports only. No repeated Social/Klaviyo/whole-shop sales/order reports.",
+    "newGa4Calls": 1,
+    "newSearchConsoleCalls": 1,
+    "orderWatchCalls": 0,
+    "newSocialWrites": 0
+  },
+  "otherChanges": {
+    "robots": false,
+    "trainingBotRules": false,
+    "theme": false,
+    "productPriceInventoryTags": false,
+    "discountBudgetFlowDnsSettings": false,
+    "shippingThresholdsOrAccountDomain": false,
+    "automationsOrFrequencies": false
+  },
+  "remaining": [
+    "No ranking/citation/traffic/sales guarantee; measured sessions are not people/customers/orders",
+    "Own visits,bots,attribution completeness and real cache timestamp not verified",
+    "Google selected snippets/canonical,page-specificindexstatus and OpenAI IP/CDN access not checked",
+    "Two other category-copy drafts remain proposals; raw facet CHF {{amount}} text observed, native source not fixed",
+    "Merchant source/writer and historical page-diff/theme publication blocks remain scoped and unaltered"
+  ],
+  "claudeReceipt": "unknown_missing_receipt",
+  "independentReview": {
+    "schemaVersion": 1,
+    "reviewer": "visibility_page_audit",
+    "checkedAt": "2026-11-02T09:41:03.919994+00:00",
+    "scope": "Local read-only final evidence review; no new network call or mutation.",
+    "result": "PASS_BOUNDED_FINAL_NET_CHANGE",
+    "changedFields": [
+      "descriptionHtml",
+      "seo.description"
+    ],
+    "collectionId": "gid://shopify/Collection/687774499201",
+    "nativeFinalChecks": {
+      "passed": 7,
+      "total": 7
+    },
+    "publicChecks": {
+      "passed": 8,
+      "total": 8
+    },
+    "serviceParagraphByteIdentical": true,
+    "preserved": [
+      "collection id",
+      "title",
+      "handle",
+      "seo.title",
+      "sortOrder",
+      "complete observed ten-product membership/order/pageInfo",
+      "following service HTML"
+    ],
+    "interimIssue": {
+      "observed": "First nested seo update cleared seo.title to null; first interim readback correctly recorded false preservation check.",
+      "resolution": "Separate corrective write restored original SEO title with the new description. Final native and public evidence confirm original title.",
+      "notBlindRetry": true
+    },
+    "validationLimit": "Native prevalidator explicitly skipped; existing CLI validation attempts blocked by missing module/assets. No full CI or validator pass claimed.",
+    "activationScope": "Reviewed field change concerns collection copy/SEO only; no activation or configuration change evidenced by these receipts.",
+    "unmeasured": [
+      "Google recrawl/indexation",
+      "Google-selected snippet/canonical",
+      "ranking or traffic gain",
+      "sales impact"
+    ],
+    "sources": [
+      {
+        "file": "DIFF-BEFORE-WRITE.json",
+        "sha256": "c31f476bba63c10d1195e43a897b380e32adcc9c3e85a799d1f6eb0c0ebf6b05",
+        "bytes": 3998
+      },
+      {
+        "file": "MUTATION-RECEIPT.json",
+        "sha256": "ac05d7079caee82ec9c1be584f5da410bb8de18de5bda89e1bad0bd63df3deb2",
+        "bytes": 790
+      },
+      {
+        "file": "NATIVE-READBACK.json",
+        "sha256": "14425c94b7a06ee070d04f4f7b07bbf231cc2913e147cf157243deacd4feaa99",
+        "bytes": 3034
+      },
+      {
+        "file": "TITLE-RESTORATION-READBACK.json",
+        "sha256": "5d13905cee4b1a9e0ebd6fc6bee3d502e844a8b2032028619600062c92591a87",
+        "bytes": 4074
+      },
+      {
+        "file": "PUBLIC-READBACK.json",
+        "sha256": "b2d044c9733e350731be0b2003597a28863fd49640d314433664b86ef8aacd94",
+        "bytes": 4294
+      }
+    ]
+  }
+}
