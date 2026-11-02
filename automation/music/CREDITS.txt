@@ -23,3 +23,14 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - luxe-premium.wav  (ELEGANT/PREMIUM, F-Dur, 96 BPM, ~64s; Grand Piano + warme Streicher +
   Akustik-Bass + Glockenspiel + dezenter Soft-Groove, Progression F-C-Dm-Bb mit Aufbau;
   gemastert -14 LUFS. Für Marken-/Premium-Reels. Reproduzierbar: bash automation/music/produce/make_premium.sh)
+
+— MIXKIT (fremde Stücke, seit 2.11.2026 die einzigen, die die Reel-Vorlage dropship/reel-vorlage/ wählt):
+Lizenz «Mixkit Stock Music Free License» (https://mixkit.co/license/#musicFree, am 2.11.2026 gelesen): kostenlos, auch kommerziell und in
+Social-Media-Videos, keine Namensnennung nötig; nicht erlaubt: das Stück allein weiterverkaufen/verteilen, Content-ID-Registrierung.
+Darum nur als Reel-Ton verwenden, die Dateien nicht einzeln weitergeben. Quelle der Dateien: https://assets.mixkit.co/music/<Nr>/<Nr>.mp3
+- mixkit-serene-view-443.mp3   (Nr. 443, Hauptteil ab ca. 16 s)
+- mixkit-majestic-475.mp3      (Nr. 475, ab ca. 14 s)
+- mixkit-dreamy-jazz-645.mp3   (Nr. 645, ab ca. 11 s)
+- mixkit-new-york-427.mp3      (Nr. 427, ab ca. 24 s)
+- mixkit-violin-uplift-675.mp3 (Nr. 675, ab ca. 9 s)
+Die selbst synthetisierten luxe-*-Stücke gefallen dem Besitzer nicht (2.11.2026) und werden von der Reel-Vorlage nicht mehr gewählt.
