@@ -1,5 +1,11 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, Revision 63: zwei Teilkorrekturen tatsächlich umgesetzt
+
+[Bericht](MERCHANT-FIX-20261102-R63.md) · [Belege](MERCHANT-FIX-BELEGE-20261102-R63.json). Auf «fix» zwei eigene Shopify-Writes: nur erster Bild-Alt des Ventilzubehörs16606127161735 präzisiert und bei Tischbombe15470027997569 nur compliance-pruefen ergänzt. Nativ/öffentlich exakt bestätigt, Bildbytes/URL und alle übrigen Produktdaten erhalten. Wächter-Gegenprobe blockiert neue Nicht-Store-/RSS-Aufnahme beim markierten Artikel; keine Pipelineausführung, Entpublikation oder Google-Behebung behauptet. Marker bis belegter Prüfung erhalten.
+
+Zwei weitere Bildfälle mit allen acht Galerieaufnahmen geprüft, kein sauberer vorhandener Ersatz. Merchant5797470070 frisch passend, actions[]; keine Timeout-Wiederholung. AuthPR2830 weiterhin Draft/offen; 30 bestehende Offlineprüfungen mit aktuellen main-Helfern grün, nicht alle PR-Checks grün. Main-Merge kann weitere Produktionsdeployments auslösen, Gatezustand nach403 unbekannt; kein Merge/Dispatch/Deployment. Schreibzugang bleibt Blocker, sichere Frage nach bestehendem Claude-Zugang offen. Alle 20 Aufgaben-IDs/Historien, 19 andere Aufgaben und Tagesgrenzen erhalten; keine neue Automation, Reports, Bestell-Watch oder Konfigurationsänderung. Claude-Kenntnisnahme nicht belegt.
+
 ## Aktueller Stand – 02.11.2026, Revision 62: drei weitere konkrete Merchant-Fälle
 
 [Bericht](MERCHANT-EINZELFAELLE-20261102-R62.md) · [Belege](MERCHANT-EINZELFAELLE-BELEGE-20261102-R62.json) · [Ventilzubehör-Prüfentwurf](VENTILZUBEHOER-NACHPRUEFUNG-20261102-R62.md). Drei CSV mit 17 eindeutigen Kontexten für drei Angebote, keine Dubletten. Bildverarbeitung neun, Explosives drei, CSS zwei, Weapons drei. Kein Kontextüberlapp mit R59–R61; keine Behebungs- oder Entstehungsbehauptung.
