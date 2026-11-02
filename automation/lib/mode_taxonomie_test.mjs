@@ -10,7 +10,7 @@ const in_ = (h, p) => gehoertIn(K(h), p);
 const KL = 'Apparel & Accessories > Clothing > ';
 
 // ── Aufbau ──
-ist('Kategorien + Filter', [MODE.filter(k => !k.filter).length, MODE.filter(k => k.filter).length], [41, 146]);
+ist('Kategorien + Filter', [MODE.filter(k => !k.filter).length, MODE.filter(k => k.filter).length], [41, 161]);
 ist('ids eindeutig', new Set(MODE.map(k => k.id)).size, MODE.length);
 ist('handles eindeutig', new Set(MODE.map(k => k.handle)).size, MODE.length);
 ist('tags eindeutig und mit sort-', MODE.every(k => k.tag === 'sort-' + k.handle) && new Set(MODE.map(k => k.tag)).size === MODE.length, true);
