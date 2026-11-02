@@ -1,0 +1,1362 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-02T21:40:14.103630+00:00",
+  "brand": "luxestyle.ch",
+  "scope": "Exactly five new owner uploads, two targeted native products, 15 exact boot variants and one new Merchant read. No live catalogue totals.",
+  "exportReview": {
+    "contextFields": [
+      "Channels",
+      "Language",
+      "Feed label",
+      "Item ID",
+      "Issue title",
+      "Traffic type",
+      "Country"
+    ],
+    "rawRows": 97,
+    "uniqueFullRows": 85,
+    "uniqueContexts": 85,
+    "offerIds": 36,
+    "uniqueProductCountFromExplicitPatterns": 17,
+    "uniqueByteContents": 5,
+    "byteDuplicateGroups": {},
+    "crossFileContentOverlap": [
+      {
+        "files": [
+          "product_issues_2026-11-02_13-01-30.csv",
+          "product_issues_2026-11-02_13-02-00.csv"
+        ],
+        "sameBytes": false,
+        "sameFullRowSet": true,
+        "sameContextSet": true,
+        "overlapFullRows": 12,
+        "overlapContexts": 12
+      }
+    ],
+    "issues": [
+      {
+        "issue": "Adult-oriented content",
+        "contexts": 12,
+        "fullRows": 12,
+        "offerIds": 4,
+        "languages": {
+          "de": 8,
+          "fr": 4
+        },
+        "countries": {
+          "Liechtenstein": 4,
+          "Switzerland": 8
+        },
+        "traffic": {
+          "Dynamic remarketing": 12
+        }
+      },
+      {
+        "issue": "Alcoholic beverages",
+        "contexts": 6,
+        "fullRows": 6,
+        "offerIds": 3,
+        "languages": {
+          "de": 6
+        },
+        "countries": {
+          "Liechtenstein": 6
+        },
+        "traffic": {
+          "Shopping ads": 3,
+          "Free listings": 3
+        }
+      },
+      {
+        "issue": "Broken image link",
+        "contexts": 30,
+        "fullRows": 30,
+        "offerIds": 15,
+        "languages": {
+          "de": 30
+        },
+        "countries": {
+          "Liechtenstein": 15,
+          "Switzerland": 15
+        },
+        "traffic": {
+          "Free listings": 30
+        }
+      },
+      {
+        "issue": "Over capacity for Shopping ads (in CSS program)",
+        "contexts": 6,
+        "fullRows": 6,
+        "offerIds": 3,
+        "languages": {
+          "de": 2,
+          "fr": 4
+        },
+        "countries": {
+          "Switzerland": 6
+        },
+        "traffic": {
+          "Shopping ads": 3,
+          "Dynamic remarketing": 3
+        }
+      },
+      {
+        "issue": "Personalized advertising: Identity and belief",
+        "contexts": 13,
+        "fullRows": 13,
+        "offerIds": 5,
+        "languages": {
+          "de": 8,
+          "fr": 5
+        },
+        "countries": {
+          "Switzerland": 9,
+          "Liechtenstein": 4
+        },
+        "traffic": {
+          "Dynamic remarketing": 13
+        }
+      },
+      {
+        "issue": "Personalized advertising: legal restrictions",
+        "contexts": 18,
+        "fullRows": 18,
+        "offerIds": 12,
+        "languages": {
+          "de": 6,
+          "fr": 12
+        },
+        "countries": {
+          "Switzerland": 15,
+          "Liechtenstein": 3
+        },
+        "traffic": {
+          "Dynamic remarketing": 18
+        }
+      }
+    ],
+    "countries": {
+      "Switzerland": 53,
+      "Liechtenstein": 32
+    },
+    "languages": {
+      "de": 60,
+      "fr": 25
+    },
+    "traffic": {
+      "Shopping ads": 6,
+      "Dynamic remarketing": 46,
+      "Free listings": 33
+    },
+    "feedLabels": {
+      "CHF_99383214465": 55,
+      "CH": 30
+    },
+    "sourceColumns": {
+      "dataSourceNameOrId": false,
+      "submittedImageLink": false,
+      "submittedProductLink": false
+    },
+    "priorComparisons": {
+      "R59": {
+        "oldRawRowsRead": 4390,
+        "oldUniqueContexts": 4386,
+        "overlapContexts": 0,
+        "overlapIssues": {},
+        "notInThisPriorSet": 85,
+        "nonoverlapMeansNewOrResolved": false
+      },
+      "R60": {
+        "oldRawRowsRead": 386,
+        "oldUniqueContexts": 273,
+        "overlapContexts": 12,
+        "overlapIssues": {
+          "Personalized advertising: legal restrictions": 6,
+          "Alcoholic beverages": 6
+        },
+        "notInThisPriorSet": 73,
+        "nonoverlapMeansNewOrResolved": false
+      },
+      "union": {
+        "overlapContexts": 12,
+        "contextsNotPreviouslyInR59OrR60": 73,
+        "doesNotProveNewOrResolved": true
+      }
+    }
+  },
+  "files": [
+    {
+      "fileId": "file_00000000b7588246b56415341e5a6282",
+      "name": "product_issues_2026-11-02_13-01-18.csv",
+      "path": "/workspace/attachments/3b8e8a72-9ea3-48a9-b617-ef014338cce2/product_issues_2026-11-02_13-01-18.csv",
+      "size_bytes": 6175,
+      "sha256": "2ecfba052a676f5f4278e511c45ebfd1c23ee3c7b4973fbc699339c5ac416375",
+      "rows": 17,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Over capacity for Shopping ads (in CSS program)": 4,
+        "Personalized advertising: Identity and belief": 13
+      },
+      "first": [
+        {
+          "Item ID": "shopify_ZZ_15509389181313_56156456845697",
+          "Title": "Sakyamuni Buddha Statue Dekoration | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Over capacity for Shopping ads (in CSS program)",
+          "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+          "Traffic type": "Shopping ads",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15509389181313_56156456845697",
+          "Title": "Sakyamuni Buddha Statue Dekoration | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Over capacity for Shopping ads (in CSS program)",
+          "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_0000000025008246bd68ee5893dd9834",
+      "name": "product_issues_2026-11-02_13-01-30.csv",
+      "path": "/workspace/attachments/31eaa5ee-bb73-484e-8991-75948a4e20a0/product_issues_2026-11-02_13-01-30.csv",
+      "size_bytes": 4006,
+      "sha256": "aa0d926f9ac5c85c860fbe027958f524e28ed5259a76e8df492101cbec452581",
+      "rows": 12,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Adult-oriented content": 12
+      },
+      "first": [
+        {
+          "Item ID": "shopify_ZZ_16604050719111_67613452337543",
+          "Title": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Adult-oriented content",
+          "Issue additional information": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16604050719111_67613452337543",
+          "Title": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Adult-oriented content",
+          "Issue additional information": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_00000000733c8246b6d4095bb2c43342",
+      "name": "product_issues_2026-11-02_13-00-44.csv",
+      "path": "/workspace/attachments/05c26340-d4cf-4708-b997-50989fe169ab/product_issues_2026-11-02_13-00-44.csv",
+      "size_bytes": 10078,
+      "sha256": "320cc6ca4b11c63b016aec614d76bcaf56a06555b4590b6e9027a8fc03253da3",
+      "rows": 30,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Broken image link": 30
+      },
+      "first": [
+        {
+          "Item ID": "16615382843783_cj-cjns273432813mn",
+          "Title": "Damen Stiefel aus Wildleder mit hohem Schaft - Rot / 46",
+          "Click potential": "Available soon",
+          "Feed label": "CH",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Broken image link",
+          "Issue additional information": "Google couldn't retrieve the image from the URL provided in the image link [image_link] attribute in your product data",
+          "Traffic type": "Free listings",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "16615382843783_cj-cjns273432813mn",
+          "Title": "Damen Stiefel aus Wildleder mit hohem Schaft - Rot / 46",
+          "Click potential": "Available soon",
+          "Feed label": "CH",
+          "Language": "de",
+          "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "Channels": "ONLINE",
+          "Issue title": "Broken image link",
+          "Issue additional information": "Google couldn't retrieve the image from the URL provided in the image link [image_link] attribute in your product data",
+          "Traffic type": "Free listings",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_0000000003c48246a78bff5aa740061a",
+      "name": "product_issues_2026-11-02_13-02-00.csv",
+      "path": "/workspace/attachments/c5410396-959b-43c1-9d36-be24d29bdc19/product_issues_2026-11-02_13-02-00.csv",
+      "size_bytes": 4006,
+      "sha256": "fada137ae7049d75ad0cdc4bde8f5e99c2ee34b7b17779041da1a83974c02bd4",
+      "rows": 12,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Adult-oriented content": 12
+      },
+      "first": [
+        {
+          "Item ID": "shopify_ZZ_16604050719111_67613452337543",
+          "Title": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Adult-oriented content",
+          "Issue additional information": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_16604050719111_67613452337543",
+          "Title": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Adult-oriented content",
+          "Issue additional information": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+          "Traffic type": "Dynamic remarketing",
+          "Country": "Switzerland",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    },
+    {
+      "fileId": "file_000000001b9c82469021dc386157f35f",
+      "name": "product_issues_2026-11-02_13-01-05.csv",
+      "path": "/workspace/attachments/28103d6c-a9b6-4656-adec-1a1d1e504878/product_issues_2026-11-02_13-01-05.csv",
+      "size_bytes": 8937,
+      "sha256": "907d3814dc8b1e6d085bb5d5912cdd5e70c4d1cfa15c234d0e3fbd93e3d88a65",
+      "rows": 26,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "issues": {
+        "Alcoholic beverages": 6,
+        "Personalized advertising: legal restrictions": 18,
+        "Over capacity for Shopping ads (in CSS program)": 2
+      },
+      "first": [
+        {
+          "Item ID": "shopify_ZZ_15522242789761_56204595986817",
+          "Title": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Alcoholic beverages",
+          "Issue additional information": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+          "Traffic type": "Shopping ads",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        },
+        {
+          "Item ID": "shopify_ZZ_15522242789761_56204595986817",
+          "Title": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+          "Click potential": "Low",
+          "Feed label": "CHF_99383214465",
+          "Language": "de",
+          "Item status": "ELIGIBLE_LIMITED",
+          "Channels": "ONLINE",
+          "Issue title": "Alcoholic beverages",
+          "Issue additional information": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+          "Traffic type": "Free listings",
+          "Country": "Liechtenstein",
+          "Issue severity": "SEVERITY_DISAPPROVED"
+        }
+      ]
+    }
+  ],
+  "independentExportCountercheck": {
+    "method": "Independent positional csv.reader count, rather than DictReader aggregation",
+    "rawRows": 97,
+    "perFileRows": [
+      17,
+      12,
+      30,
+      12,
+      26
+    ],
+    "uniqueFullRows": 85,
+    "uniqueContexts": 85,
+    "offerIds": 36,
+    "issueCounts": {
+      "Adult-oriented content": 12,
+      "Personalized advertising: legal restrictions": 18,
+      "Over capacity for Shopping ads (in CSS program)": 6,
+      "Broken image link": 30,
+      "Alcoholic beverages": 6,
+      "Personalized advertising: Identity and belief": 13
+    },
+    "matchesPrimary": true
+  },
+  "bootMappings": [
+    {
+      "offerId": "16615382843783_cj-cjns273432813mn",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300305799",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432813MN",
+      "exportSkuLiteral": "cj-cjns273432813mn",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 46",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432808hs",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300141959",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432808HS",
+      "exportSkuLiteral": "cj-cjns273432808hs",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 41",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432802by",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666299945351",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432802BY",
+      "exportSkuLiteral": "cj-cjns273432802by",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 35",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432804dw",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300010887",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432804DW",
+      "exportSkuLiteral": "cj-cjns273432804dw",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 37",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432811kp",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300240263",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432811KP",
+      "exportSkuLiteral": "cj-cjns273432811kp",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 44",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432810jq",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300207495",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432810JQ",
+      "exportSkuLiteral": "cj-cjns273432810jq",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 43",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432803cx",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666299978119",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432803CX",
+      "exportSkuLiteral": "cj-cjns273432803cx",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 36",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432805ev",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300043655",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432805EV",
+      "exportSkuLiteral": "cj-cjns273432805ev",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 38",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432801az",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666299912583",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432801AZ",
+      "exportSkuLiteral": "cj-cjns273432801az",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 34",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432814nm",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300338567",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432814NM",
+      "exportSkuLiteral": "cj-cjns273432814nm",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 47",
+      "priceChf": "26.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432807gt",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300109191",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432807GT",
+      "exportSkuLiteral": "cj-cjns273432807gt",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 40",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432809ir",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300174727",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432809IR",
+      "exportSkuLiteral": "cj-cjns273432809ir",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 42",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432815ol",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300371335",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432815OL",
+      "exportSkuLiteral": "cj-cjns273432815ol",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 48",
+      "priceChf": "26.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432812lo",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300273031",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432812LO",
+      "exportSkuLiteral": "cj-cjns273432812lo",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 45",
+      "priceChf": "25.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    },
+    {
+      "offerId": "16615382843783_cj-cjns273432806fu",
+      "nativeProductId": "gid://shopify/Product/16615382843783",
+      "nativeVariantId": "gid://shopify/ProductVariant/67666300076423",
+      "nativeSkuCaseSensitive": "CJ-CJNS273432806FU",
+      "exportSkuLiteral": "cj-cjns273432806fu",
+      "mappingMethod": "Exact product ID + complete SKU with documented case-only difference; unique among all 45 current variants; title, public variant ID/SKU and native media cross-checked. No operational SKU edit.",
+      "title": "Rot / 39",
+      "priceChf": "23.90",
+      "imageMediaId": "gid://shopify/MediaImage/77495095427463",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "pixels": [
+        750,
+        750
+      ],
+      "publicImageId": 100758090842503,
+      "googleOriginalImageLink": "unknown",
+      "sourceIdGeneratorVerified": false,
+      "countries": [
+        "Liechtenstein",
+        "Switzerland"
+      ],
+      "traffic": [
+        "Free listings"
+      ],
+      "language": "de",
+      "feedLabel": "CH",
+      "state": "prepared_not_uploaded_source_binding_required"
+    }
+  ],
+  "publicReads": [
+    {
+      "name": "boots-public.json",
+      "url": "https://luxestyle.ch/products/damen-stiefel-aus-wildleder-mit-hohem-schaft-618000.json",
+      "finalUrl": "https://luxestyle.ch/products/damen-stiefel-aus-wildleder-mit-hohem-schaft-618000.json",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 34915,
+      "sha256": "f72729e694372a039ff412dac068660fd20733fd81ce6b68f1235ad9b677d900",
+      "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/boots-public.json",
+      "productId": 16615382843783,
+      "handle": "damen-stiefel-aus-wildleder-mit-hohem-schaft-618000",
+      "variantCount": 45
+    },
+    {
+      "name": "dog-public.json",
+      "url": "https://luxestyle.ch/products/tpr-aktivspielzeug-fur-hunde-625000.json",
+      "finalUrl": "https://luxestyle.ch/products/tpr-aktivspielzeug-fur-hunde-625000.json",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 4724,
+      "sha256": "1863e1ebebf8c271f35c4a4e1c7926eed5c2f5c8d78e8527946f8cff17b9df40",
+      "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-public.json",
+      "productId": 16604050719111,
+      "handle": "tpr-aktivspielzeug-fur-hunde-625000",
+      "variantCount": 1
+    },
+    {
+      "name": "boots-red.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb064d27-da2b-4b8c-8668-d8e41616067b_913f2c34-6d0f-475d-986b-387b6bce27fa-g1019.jpg?v=1792379759",
+      "http": 200,
+      "contentType": "image/jpeg",
+      "bytes": 29952,
+      "sha256": "ba1e8e5ca563c722e1bd2543470480bb56ccd729fb0538f69076564b49436e3c",
+      "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/boots-red.jpg",
+      "pixels": [
+        750,
+        750
+      ]
+    }
+  ],
+  "independentImageCountercheck": {
+    "reviewer": "/root/r61_exports",
+    "checkedAtUtc": "2026-11-02T21:37:33.999806+00:00",
+    "scope": "Independent local crosscheck only. No API/network/mutations; source/image evidence supplied by root.",
+    "checks": {
+      "mapHas15Rows": true,
+      "csvHas15Rows": true,
+      "uniqueMapOfferIds": true,
+      "uniqueMapVariantIds": true,
+      "allExportOffersCovered": true,
+      "allCsvOffersCovered": true,
+      "all15RedSizes": true,
+      "nativeProductIdMatches": true,
+      "nativeAll45Present": true,
+      "publicAll45Present": true,
+      "publicProductIdMatches": true,
+      "imageQueryProductMatches": true,
+      "allScopedNativeMediaPresent": true,
+      "all15PerVariantChecksPassed": true,
+      "boots-public.jsonEvidenceIntegrity": true,
+      "boots-red.jpgEvidenceIntegrity": true,
+      "downloadedImageDimensions": true
+    },
+    "allChecksPassed": true,
+    "variantRows": [
+      {
+        "offerId": "16615382843783_cj-cjns273432813mn",
+        "variantId": "gid://shopify/ProductVariant/67666300305799",
+        "title": "Rot / 46",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432808hs",
+        "variantId": "gid://shopify/ProductVariant/67666300141959",
+        "title": "Rot / 41",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432802by",
+        "variantId": "gid://shopify/ProductVariant/67666299945351",
+        "title": "Rot / 35",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432804dw",
+        "variantId": "gid://shopify/ProductVariant/67666300010887",
+        "title": "Rot / 37",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432811kp",
+        "variantId": "gid://shopify/ProductVariant/67666300240263",
+        "title": "Rot / 44",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432810jq",
+        "variantId": "gid://shopify/ProductVariant/67666300207495",
+        "title": "Rot / 43",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432803cx",
+        "variantId": "gid://shopify/ProductVariant/67666299978119",
+        "title": "Rot / 36",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432805ev",
+        "variantId": "gid://shopify/ProductVariant/67666300043655",
+        "title": "Rot / 38",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432801az",
+        "variantId": "gid://shopify/ProductVariant/67666299912583",
+        "title": "Rot / 34",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432814nm",
+        "variantId": "gid://shopify/ProductVariant/67666300338567",
+        "title": "Rot / 47",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432807gt",
+        "variantId": "gid://shopify/ProductVariant/67666300109191",
+        "title": "Rot / 40",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432809ir",
+        "variantId": "gid://shopify/ProductVariant/67666300174727",
+        "title": "Rot / 42",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432815ol",
+        "variantId": "gid://shopify/ProductVariant/67666300371335",
+        "title": "Rot / 48",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432812lo",
+        "variantId": "gid://shopify/ProductVariant/67666300273031",
+        "title": "Rot / 45",
+        "errors": [],
+        "passed": true
+      },
+      {
+        "offerId": "16615382843783_cj-cjns273432806fu",
+        "variantId": "gid://shopify/ProductVariant/67666300076423",
+        "title": "Rot / 39",
+        "errors": [],
+        "passed": true
+      }
+    ],
+    "recordedReadbackIntegrity": [
+      {
+        "name": "boots-public.json",
+        "sha256Matches": true,
+        "bytesMatch": true,
+        "recordedHttp": 200,
+        "recordedContentType": "application/json; charset=utf-8"
+      },
+      {
+        "name": "boots-red.jpg",
+        "sha256Matches": true,
+        "bytesMatch": true,
+        "recordedHttp": 200,
+        "recordedContentType": "image/jpeg"
+      }
+    ],
+    "visualInspection": {
+      "performed": true,
+      "file": "images/boots-red.jpg",
+      "observed": "Two red high-shaft boots with block heels on white background; no obvious promotional text. Fits scoped red boot variant photo.",
+      "doesNotVerify": [
+        "material",
+        "size dimensions",
+        "licensing",
+        "Google crawler access",
+        "actual submitted Google image_link"
+      ]
+    },
+    "limits": [
+      "Whole SKU differs only by case, explicitly recorded and unique within current 45-variant product; not proof of feed ID generation.",
+      "Current native/public variant image is bound to all 15 red sizes; does not prove what Google received or why it failed.",
+      "Map and CSV are prepared review artifacts, not a source feed or approved upload.",
+      "Google original image_link remains unknown; source ID generator remains unverified.",
+      "No operational SKU or Shopify image write was performed by this reviewer."
+    ],
+    "inputSha256": {
+      "source/BOOT-IMAGE-REPAIR-MAP.json": "905ee3d96ff15a131c067ba02c7258408bb6e280de8b55d73d94d34c5bef5399",
+      "source/STIEFEL-BILDPRUEFLISTE-KEIN-UPLOAD.csv": "49aeb34df354848faffa4323c6b247698e1871802a9f665e7784fb43cc11c1ba",
+      "products/IMAGE-LINKS.json": "ac60fd36fe5d56e29df7eb65e2bd9eee84b9a6886bee3758f07db0d9075473c6",
+      "products/PRODUCT-16615382843783.json": "636b8b888352caa98402613815418f5220ff8ee4aef404b59e21a6c73898811f",
+      "images/boots-public.json": "f72729e694372a039ff412dac068660fd20733fd81ce6b68f1235ad9b677d900",
+      "images/PUBLIC-READBACK.json": "4a9cd8f7f8c571e0e9e57eadf33f416f0b8028e8438203e42229e70b58079d32",
+      "images/boots-red.jpg": "ba1e8e5ca563c722e1bd2543470480bb56ccd729fb0538f69076564b49436e3c"
+    }
+  },
+  "merchantSingleItemRead": {
+    "scope": "One new exact image-link inquiry for a newly supplied broken-image issue; no repetition of earlier R58 lamp request.",
+    "account": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH",
+      "freshlyDiscovered": true,
+      "writeActionsListed": []
+    },
+    "request": {
+      "connector": "google_merchant",
+      "accounts": [
+        "5797470070"
+      ],
+      "date_from": "2020-01-01",
+      "date_to": "2026-11-02",
+      "fields": [
+        "product_id",
+        "product_name",
+        "product_image_link",
+        "product_data_source",
+        "data_fetched_at"
+      ],
+      "filters": [
+        [
+          "product_id",
+          "eq",
+          "16615382843783_cj-cjns273432813mn"
+        ],
+        "and",
+        [
+          "product_content_language",
+          "eq",
+          "de"
+        ],
+        "and",
+        [
+          "product_feed_label",
+          "eq",
+          "CH"
+        ],
+        "and",
+        [
+          "product_channel",
+          "eq",
+          "ONLINE"
+        ]
+      ]
+    },
+    "reason": "New 13:00:44 owner export has exact offer16615382843783_cj-cjns273432813mn, ONLINE/de/CH, Free listings in CH+LI; native SKU/variant binding provided by root. Not a metric, catalogue or performance report.",
+    "schema": {
+      "fieldsDiscovered": true,
+      "filterOperators": "eq and and, from live get_data schema",
+      "offerIdTreatedAsExactCaseSensitiveString": true
+    },
+    "priorR58": {
+      "differentOffer": "shopify_ZZ_15450836566401_55889781588353",
+      "differentFeedLabel": "CHF_99383214465",
+      "state": "UNKNOWN_MCP_TIMEOUT",
+      "repeated": false
+    },
+    "installations": 0,
+    "writes": 0,
+    "maximumDataRequests": 1,
+    "checkedAtUtc": "2026-11-02T21:38:41.101Z",
+    "fieldDefinitions": [
+      {
+        "id": "data_fetched_at",
+        "name": "Data fetched at",
+        "description": "UTC timestamp (second precision) of when the connector request that pulled the row started. Freshly pulled rows show this request's start time; cache hits keep the start time of the request that filled the cache. Selecting this field disables aggregation, so rows are returned individually (each keeping its own fetch time) instead of being summed.",
+        "type": "TIMESTAMP"
+      },
+      {
+        "id": "product_channel",
+        "name": "Product Channel",
+        "description": "Channel of the product. Can be ONLINE or LOCAL.",
+        "type": "TEXT"
+      },
+      {
+        "id": "product_content_language",
+        "name": "Product Content Language",
+        "description": "The two-letter ISO 639-1 language code for the product.",
+        "type": "TEXT"
+      },
+      {
+        "id": "product_data_source",
+        "name": "Product Data Source",
+        "description": "The primary data source of the product.",
+        "type": "TEXT"
+      },
+      {
+        "id": "product_feed_label",
+        "name": "Product Feed Label",
+        "description": "Feed label of the product.",
+        "type": "TEXT"
+      },
+      {
+        "id": "product_id",
+        "name": "Product ID",
+        "description": "Your unique identifier for the product.",
+        "type": "TEXT"
+      },
+      {
+        "id": "product_image_link",
+        "name": "Product Image Link",
+        "description": "URL of an image of the item.",
+        "type": "IMAGE_URL"
+      },
+      {
+        "id": "product_name",
+        "name": "Product Name",
+        "description": "The name of the product. Format: accounts/{account}/products/{product}where the last section product consists of 4 parts:channel~contentLanguage~feedLabel~offerId example for product name isaccounts/123/products/online~en~US~sku123",
+        "type": "TEXT"
+      }
+    ],
+    "state": "UNKNOWN_MCP_TIMEOUT",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    },
+    "retries": 0,
+    "forceRefreshUsed": false,
+    "dataRequests": 1,
+    "submittedImageLink": "unknown",
+    "primaryDataSource": "unknown",
+    "googleCrawlStatus": "unknown",
+    "notAnEmptyDatasetOr404": true,
+    "helperReview": {
+      "localSnapshot": "/workspace/luxestyle-review/merchant-fix-20261102-r58/repo/automation__lib__gmc_feed_item.mjs",
+      "finding": "feedItem emits image_link from p.bild; this historical helper does not establish the active ProductID_SKU data source. No helper executed, installed or changed."
+    },
+    "performanceMetricsOrStatusCountersRead": false,
+    "shopifyWrites": 0,
+    "merchantWrites": 0,
+    "appealsSubmitted": 0
+  },
+  "dogReferenceReview": {
+    "productId": "gid://shopify/Product/16604050719111",
+    "variantId": "gid://shopify/ProductVariant/67613452337543",
+    "sku": "CJ-2609171015371625000",
+    "priceChf": "22.90",
+    "status": "ACTIVE",
+    "currentTags": [
+      "cj-real",
+      "dropship",
+      "haustier",
+      "hund",
+      "kat-haustier",
+      "kat-hunde",
+      "katze",
+      "neuheit",
+      "pet",
+      "sort-haustier",
+      "sort-hunde",
+      "sort-tier-intelligenzspielzeug",
+      "sort-tier-spielzeug"
+    ],
+    "nativePublicIdSkuMatch": true,
+    "reviewedAllCurrentImages": 5,
+    "observed": "Orange ribbed cylindrical object with black straps/handles photographed outdoors; one existing isolated photo shows two such objects. These pictures alone do not prove exact supplier model, delivered size, composition or squeaking function.",
+    "exportScope": "Adult-oriented content only Dynamic remarketing in these uploaded rows; no general Free listings or Shopping ads refusal inferred.",
+    "supplierReferenceVerified": false,
+    "creativeOrCommercialRightsVerified": false,
+    "originalMerchantFieldsVerified": false,
+    "conclusion": "Do not declare a false positive from the pet title. No image retouching, category/text disguise, exclusion removal, adult-flag clearing or appeal prepared for submission. Verify supplier intended use, exact default execution and current Merchant context first.",
+    "ownProductChanges": 0,
+    "appealsSubmitted": 0,
+    "images": [
+      {
+        "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-1.jpg",
+        "sha256": "f5d2453291c5697dde73a5c79cf11a5065435a35f23e78571c65309436e6dfdc"
+      },
+      {
+        "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-2.jpg",
+        "sha256": "2f78df981f8ef36cb7e0f8d3db7ef16cd0601b49f3bcebaf028405264ecfcf94"
+      },
+      {
+        "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-3.jpg",
+        "sha256": "595db2924590d98bf1f848dba70dea3a47428a2761a0ddb7e4ca7ff8476ab796"
+      },
+      {
+        "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-4.jpg",
+        "sha256": "a8da2f8b5ae7e1a3e1a60aff7eb26f9cbc902fd232e6aeee93db9f848145c48c"
+      },
+      {
+        "file": "/workspace/luxestyle-review/merchant-more-20261102-r61/images/dog-5.jpg",
+        "sha256": "3ade2a5b4c5150a5ec2ce40238fb0a1202921af8e85878cb98cd52e785993b22"
+      }
+    ]
+  },
+  "ownActions": {
+    "nativeProductsRead": 2,
+    "nativeBootVariantsRead": 15,
+    "merchantDataRequests": 1,
+    "merchantRetries": 0,
+    "shopifyWrites": 0,
+    "merchantWrites": 0,
+    "appealsSubmitted": 0,
+    "newReports": 0,
+    "orderWatchReads": 0,
+    "workflowDispatches": 0,
+    "exclusionOrChannelChanges": 0,
+    "imageUploads": 0,
+    "paidVideoRenders": 0
+  },
+  "limits": [
+    "Current HTTP200 is not evidence of Google crawler access or submitted image_link.",
+    "Documented complete-SKU case-only comparison is not an operational SKU edit or proof of source ID generation.",
+    "The checklist is not a feed or an upload.",
+    "Reported restrictions apply to listed placements; do not infer all-channel disapproval or purchases.",
+    "R59/R60 image fixes are earlier own work and are not newly repeated.",
+    "Native GraphQL accepted operation. MCP validation skipped explicitly; CLI validator asset missing. No full toolkit validation success."
+  ]
+}
