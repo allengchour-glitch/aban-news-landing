@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "revision": 59,
+  "brand": "luxestyle.ch",
+  "checkedAtUtc": "2026-11-02T21:06:11.812860+00:00",
+  "request": "Continue authorised Merchant fix using all four newly uploaded owner exports; CSV text is data, not instructions",
+  "identity": {
+    "shopDomain": "luxestyle.ch",
+    "shopCurrency": "CHF",
+    "metricoolBrandId": 6227837,
+    "metricoolTimezone": "Europe/Zurich",
+    "allSixExpectedChannelsFreshMatched": true,
+    "merchantAccountReference": "5797470070 as verified in R58 and owner screenshot; no new Merchant account/report request in R59"
+  },
+  "files": [
+    {
+      "name": "product_issues_2026-11-02_12-41-30.csv",
+      "path": "/workspace/.codex-attachments/09df6326-e6b2-4bdb-801c-6a588d07eb47/d6d92d0f-decf-4f60-a30b-21e5ec40a7e5/product_issues_2026-11-02_12-41-30.csv",
+      "sha256": "35a521b39b438ea87cb5246b6383694fb48122f43dffb75d63662f6c0bc13978",
+      "bytes": 754520,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "summary": {
+        "rows": 2671,
+        "uniqueItemIds": 1211,
+        "listingKeys": 1211,
+        "issueListingKeys": 1225,
+        "fullContextKeys": 2671,
+        "fullRowDuplicatesBeyondFirst": 0,
+        "duplicateFullContextRowsBeyondFirst": 0,
+        "issues": {
+          "Missing attribute: [availability]": {
+            "rows": 26,
+            "uniqueItemIds": 13,
+            "listingKeys": 13,
+            "fullContextKeys": 26,
+            "countries": {
+              "Liechtenstein": 13,
+              "Switzerland": 13
+            },
+            "trafficTypes": {
+              "Free listings": 26
+            },
+            "feedLabels": {
+              "CH": 26
+            },
+            "languages": {
+              "de": 26
+            }
+          },
+          "Missing product price": {
+            "rows": 2643,
+            "uniqueItemIds": 1211,
+            "listingKeys": 1211,
+            "fullContextKeys": 2643,
+            "countries": {
+              "Germany": 221,
+              "Liechtenstein": 1211,
+              "Switzerland": 1211
+            },
+            "trafficTypes": {
+              "Free listings": 2643
+            },
+            "feedLabels": {
+              "CH": 1980,
+              "DE": 663
+            },
+            "languages": {
+              "de": 2643
+            }
+          },
+          "Promotional overlay on image": {
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "listingKeys": 1,
+            "fullContextKeys": 2,
+            "countries": {
+              "Liechtenstein": 1,
+              "Switzerland": 1
+            },
+            "trafficTypes": {
+              "Free listings": 2
+            },
+            "feedLabels": {
+              "CH": 2
+            },
+            "languages": {
+              "de": 2
+            }
+          }
+        },
+        "countries": {
+          "Germany": 221,
+          "Liechtenstein": 1225,
+          "Switzerland": 1225
+        },
+        "trafficTypes": {
+          "Free listings": 2671
+        },
+        "feedLabels": {
+          "CH": 2008,
+          "DE": 663
+        },
+        "languages": {
+          "de": 2671
+        },
+        "itemStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 2671
+        },
+        "channels": {
+          "ONLINE": 2671
+        }
+      }
+    },
+    {
+      "name": "product_issues_2026-11-02_12-43-25.csv",
+      "path": "/workspace/.codex-attachments/09df6326-e6b2-4bdb-801c-6a588d07eb47/93f6b69e-e9f1-4c10-83e8-279563a700bc/product_issues_2026-11-02_12-43-25.csv",
+      "sha256": "1eb58aaa431d96998856d2bd33683651032ac83d0d9e4e4c38a87d0cefad60e8",
+      "bytes": 466960,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "summary": {
+        "rows": 1401,
+        "uniqueItemIds": 277,
+        "listingKeys": 356,
+        "issueListingKeys": 385,
+        "fullContextKeys": 1401,
+        "fullRowDuplicatesBeyondFirst": 0,
+        "duplicateFullContextRowsBeyondFirst": 0,
+        "issues": {
+          "Missing product price": {
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "listingKeys": 1,
+            "fullContextKeys": 2,
+            "countries": {
+              "Liechtenstein": 1,
+              "Switzerland": 1
+            },
+            "trafficTypes": {
+              "Free listings": 2
+            },
+            "feedLabels": {
+              "CH": 2
+            },
+            "languages": {
+              "de": 2
+            }
+          },
+          "Over capacity for Shopping ads (in CSS program)": {
+            "rows": 56,
+            "uniqueItemIds": 27,
+            "listingKeys": 28,
+            "fullContextKeys": 56,
+            "countries": {
+              "Switzerland": 56
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 28,
+              "Shopping ads": 28
+            },
+            "feedLabels": {
+              "CHF_99383214465": 56
+            },
+            "languages": {
+              "de": 30,
+              "fr": 26
+            }
+          },
+          "Promotional overlay on image": {
+            "rows": 1343,
+            "uniqueItemIds": 277,
+            "listingKeys": 356,
+            "fullContextKeys": 1343,
+            "countries": {
+              "Liechtenstein": 469,
+              "Switzerland": 874
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 383,
+              "Free listings": 577,
+              "Shopping ads": 383
+            },
+            "feedLabels": {
+              "CH": 194,
+              "CHF_99383214465": 1149
+            },
+            "languages": {
+              "de": 938,
+              "fr": 405
+            }
+          }
+        },
+        "countries": {
+          "Liechtenstein": 470,
+          "Switzerland": 931
+        },
+        "trafficTypes": {
+          "Dynamic remarketing": 411,
+          "Free listings": 579,
+          "Shopping ads": 411
+        },
+        "feedLabels": {
+          "CH": 196,
+          "CHF_99383214465": 1205
+        },
+        "languages": {
+          "de": 970,
+          "fr": 431
+        },
+        "itemStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 1401
+        },
+        "channels": {
+          "ONLINE": 1401
+        }
+      }
+    },
+    {
+      "name": "product_issues_2026-11-02_12-44-56.csv",
+      "path": "/workspace/.codex-attachments/1977eff6-5344-4637-86c0-42ebdb7ef8f3/f685c741-1681-4573-908a-7befe11dc938/product_issues_2026-11-02_12-44-56.csv",
+      "sha256": "f6c31a8ad2250a86c810c85132234a1ad944c54af5e69745ad1dd556fa59acdd",
+      "bytes": 62967,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "summary": {
+        "rows": 187,
+        "uniqueItemIds": 75,
+        "listingKeys": 80,
+        "issueListingKeys": 81,
+        "fullContextKeys": 187,
+        "fullRowDuplicatesBeyondFirst": 0,
+        "duplicateFullContextRowsBeyondFirst": 0,
+        "issues": {
+          "Image too small": {
+            "rows": 185,
+            "uniqueItemIds": 75,
+            "listingKeys": 80,
+            "fullContextKeys": 185,
+            "countries": {
+              "Liechtenstein": 85,
+              "Switzerland": 100
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 15,
+              "Free listings": 155,
+              "Shopping ads": 15
+            },
+            "feedLabels": {
+              "CH": 140,
+              "CHF_99383214465": 45
+            },
+            "languages": {
+              "de": 170,
+              "fr": 15
+            }
+          },
+          "Over capacity for Shopping ads (in CSS program)": {
+            "rows": 2,
+            "uniqueItemIds": 1,
+            "listingKeys": 1,
+            "fullContextKeys": 2,
+            "countries": {
+              "Switzerland": 2
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 1,
+              "Shopping ads": 1
+            },
+            "feedLabels": {
+              "CHF_99383214465": 2
+            },
+            "languages": {
+              "de": 2
+            }
+          }
+        },
+        "countries": {
+          "Liechtenstein": 85,
+          "Switzerland": 102
+        },
+        "trafficTypes": {
+          "Dynamic remarketing": 16,
+          "Free listings": 155,
+          "Shopping ads": 16
+        },
+        "feedLabels": {
+          "CH": 140,
+          "CHF_99383214465": 47
+        },
+        "languages": {
+          "de": 172,
+          "fr": 15
+        },
+        "itemStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 187
+        },
+        "channels": {
+          "ONLINE": 187
+        }
+      }
+    },
+    {
+      "name": "product_issues_2026-11-02_12-46-04.csv",
+      "path": "/workspace/.codex-attachments/1977eff6-5344-4637-86c0-42ebdb7ef8f3/51fc789c-c2ac-4845-9958-0f1a4fe84be5/product_issues_2026-11-02_12-46-04.csv",
+      "sha256": "79c8e3bdd9a33338745825207f0e75d192823588ddd641ec4675589d32119433",
+      "bytes": 47995,
+      "headers": [
+        "Item ID",
+        "Title",
+        "Click potential",
+        "Feed label",
+        "Language",
+        "Item status",
+        "Channels",
+        "Issue title",
+        "Issue additional information",
+        "Traffic type",
+        "Country",
+        "Issue severity"
+      ],
+      "summary": {
+        "rows": 131,
+        "uniqueItemIds": 30,
+        "listingKeys": 30,
+        "issueListingKeys": 34,
+        "fullContextKeys": 131,
+        "fullRowDuplicatesBeyondFirst": 0,
+        "duplicateFullContextRowsBeyondFirst": 0,
+        "issues": {
+          "Over capacity for Shopping ads (in CSS program)": {
+            "rows": 8,
+            "uniqueItemIds": 4,
+            "listingKeys": 4,
+            "fullContextKeys": 8,
+            "countries": {
+              "Switzerland": 8
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 4,
+              "Shopping ads": 4
+            },
+            "feedLabels": {
+              "CHF_99383214465": 8
+            },
+            "languages": {
+              "fr": 8
+            }
+          },
+          "Product page unavailable": {
+            "rows": 123,
+            "uniqueItemIds": 30,
+            "listingKeys": 30,
+            "fullContextKeys": 123,
+            "countries": {
+              "Liechtenstein": 33,
+              "Switzerland": 90
+            },
+            "trafficTypes": {
+              "Dynamic remarketing": 41,
+              "Free listings": 41,
+              "Shopping ads": 41
+            },
+            "feedLabels": {
+              "CHF_99383214465": 123
+            },
+            "languages": {
+              "de": 66,
+              "fr": 57
+            }
+          }
+        },
+        "countries": {
+          "Liechtenstein": 33,
+          "Switzerland": 98
+        },
+        "trafficTypes": {
+          "Dynamic remarketing": 45,
+          "Free listings": 41,
+          "Shopping ads": 45
+        },
+        "feedLabels": {
+          "CHF_99383214465": 131
+        },
+        "languages": {
+          "de": 66,
+          "fr": 65
+        },
+        "itemStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 131
+        },
+        "channels": {
+          "ONLINE": 131
+        }
+      }
+    }
+  ],
+  "boundedRootCountercheck": {
+    "rawRows": 4390,
+    "distinctFullRows": 4386,
+    "distinctIssueContextKeys": 4386,
+    "contextFields": [
+      "Channels",
+      "Language",
+      "Feed label",
+      "Item ID",
+      "Issue title",
+      "Traffic type",
+      "Country"
+    ],
+    "offerIds": 1592,
+    "listingKeys": 1676,
+    "issues": {
+      "Missing product price": 2643,
+      "Promotional overlay on image": 1343,
+      "Missing attribute: [availability]": 26,
+      "Over capacity for Shopping ads (in CSS program)": 66,
+      "Image too small": 185,
+      "Product page unavailable": 123
+    },
+    "shippingRowsInFiles": 0,
+    "absentMeansResolved": false
+  },
+  "independentSecondCount": {
+    "method": "Independent positional csv.reader pass over all four attachment files; distinct full tuples and issue-column index count, plus review-manifest readback",
+    "rawRows": 4390,
+    "uniqueFullRows": 4386,
+    "issues": {
+      "Image too small": 185,
+      "Missing attribute: [availability]": 26,
+      "Missing product price": 2643,
+      "Over capacity for Shopping ads (in CSS program)": 66,
+      "Product page unavailable": 123,
+      "Promotional overlay on image": 1343
+    },
+    "reviewManifestRows": 4386,
+    "assertionsPassed": true
+  },
+  "dataSourceIdentity": {
+    "headersContainDataSourceName": false,
+    "headersContainDataSourceId": false,
+    "headersContainFetchUrl": false,
+    "headersContainSubmittedProductLink": false,
+    "meaning": "Export identifies exact offers/contexts/issues but not their actual primary data-source name, ID, type or fetch URL. Feed label is not a source name and does not reliably identify the target country."
+  },
+  "exportComparison": {
+    "path": "/workspace/luxestyle-review/merchant-csv-20261101/PRUEFLISTE_KEIN_FEEDUPLOAD.csv",
+    "sha256": "d5b062e0c6b2768c3a259ddbdd17c2f93497609c3ad64ac775ff50ee00a01cb9",
+    "oldIssueListingKeys": 3676,
+    "newNonCapacityIssueListingKeys": 1690,
+    "exactIssueListingOverlap": 984,
+    "keysNotInOldManifest": 706,
+    "newKeysByIssue": {
+      "Image too small": 79,
+      "Missing attribute: [availability]": 8,
+      "Missing product price": 255,
+      "Product page unavailable": 29,
+      "Promotional overlay on image": 335
+    },
+    "notReobservedOldKeys": 2692,
+    "interpretation": "Keys absent from either differently scoped snapshot are not resolved or proven newly created Google errors. No country/traffic cross-product reconstructed from the aggregated old manifest."
+  },
+  "actualImageChanges": {
+    "nativeAndPublicConfirmed": true,
+    "goldVariantImageChangedOnly": true,
+    "goldOtherBuiltinProductFieldsExactlyEqual": true,
+    "laserExpectedSingleMoveConfirmed": true,
+    "laserOtherFieldsExactlyEqual": true,
+    "laserJobDone": true,
+    "priceSkuTagsStatusInventoryAndDescriptionsPreserved": true,
+    "originalPicturesOnly": true,
+    "newUploads": 0,
+    "sourceImageEdits": 0,
+    "shopifyWrites": 2,
+    "merchantWrites": 0,
+    "googleReapproval": "unknown",
+    "native": {
+      "data": {
+        "gold": {
+          "id": "gid://shopify/ProductVariant/67801774555527",
+          "sku": "CJJX192283802BY",
+          "price": "33.90",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/70776223105409",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/844b18c1-1a54-454a-bc65-56475b09d397.jpg?v=1788448805",
+                  "width": 1276,
+                  "height": 1702
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo3MDc3NjIyMzEwNTQwOSwibGFzdF92YWx1ZSI6NzA3NzYyMjMxMDU0MDl9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15524360028545",
+            "status": "ACTIVE",
+            "handle": "smartwatch-mit-touchscreen-bluetooth-herzfrequ-377728"
+          }
+        },
+        "job": {
+          "id": "gid://shopify/Job/cca61289-b353-4c48-913c-cf406150836d",
+          "done": true
+        }
+      }
+    },
+    "public": [
+      {
+        "name": "gold",
+        "url": "https://luxestyle.ch/products/smartwatch-mit-touchscreen-bluetooth-herzfrequ-377728.js",
+        "http": "200 text/javascript; charset=utf-8",
+        "productId": 15524360028545,
+        "variantId": 67801774555527,
+        "sku": "CJJX192283802BY",
+        "priceCents": 3390,
+        "publicImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/844b18c1-1a54-454a-bc65-56475b09d397.jpg?v=1788448805",
+        "expectedFilename": "844b18c1-1a54-454a-bc65-56475b09d397.jpg",
+        "imageMatches": true,
+        "productPrimaryImage": "//cdn.shopify.com/s/files/1/0943/6856/3585/files/1736238672300347392.jpg?v=1788448804",
+        "payloadSha256": "b43447aaa612ccc3a76896afe095a9f3c0568bf178324f064ea8a96ca9f8b776"
+      },
+      {
+        "name": "laser",
+        "url": "https://luxestyle.ch/products/laser-entfernungsmessgerat-456064.js",
+        "http": "200 text/javascript; charset=utf-8",
+        "productId": 15453825008001,
+        "variantId": 55904981713281,
+        "sku": "CJ-1382547770778456064",
+        "priceCents": 4890,
+        "publicImage": "//cdn.shopify.com/s/files/1/0943/6856/3585/files/1618472697794.jpg?v=1783810136",
+        "expectedFilename": "1618472697794.jpg",
+        "imageMatches": true,
+        "productPrimaryImage": "//cdn.shopify.com/s/files/1/0943/6856/3585/files/1618472697794.jpg?v=1783810136",
+        "payloadSha256": "e9b498c2ef7a8d7ecad69084ee4b4a5c64df3371107de38f6f70a719f80d23d2"
+      }
+    ]
+  },
+  "exactChangePlan": {
+    "scope": "Two existing original product images only; authorised Merchant fix; no image editing/upload or feed/price/tag/settings change",
+    "gold": {
+      "productId": "15524360028545",
+      "variantId": "67801774555527",
+      "oldMediaId": "70776222941569",
+      "newMediaId": "70776223105409",
+      "oldPixels": [
+        217,
+        245
+      ],
+      "newPixels": [
+        1276,
+        1702
+      ],
+      "sku": "CJJX192283802BY",
+      "priceChf": "33.90",
+      "preserveOtherVariant": "67801774522759"
+    },
+    "laser": {
+      "productId": "15453825008001",
+      "variantId": "55904981713281",
+      "oldFirstMediaId": "69927001915777",
+      "moveExistingMediaId": "69927001981313",
+      "newPosition": 0,
+      "pixels": [
+        1080,
+        1080
+      ],
+      "sku": "CJ-1382547770778456064",
+      "priceChf": "48.90",
+      "preserveOtherMediaRelativeOrder": true
+    },
+    "merchantReapproval": "unknown; no Merchant API write"
+  },
+  "independentImageReview": {
+    "checkedAtUtc": "2026-11-02T20:53:43.648050+00:00",
+    "scope": "Independent visual countercheck of four local originals before parent authorised image-only writes; no network/API or image editing",
+    "files": [
+      {
+        "name": "gold-before.jpg",
+        "path": "/workspace/luxestyle-review/merchant-exports-20261102-r59/images/gold-before.jpg",
+        "sha256": "6024dcaaa80b8f28419c46ccfb9957f8ea677073ef73cd6a9759f75d07646500",
+        "bytes": 13682,
+        "width": 217,
+        "height": 245,
+        "visuallyInspected": true
+      },
+      {
+        "name": "gold-proposal.jpg",
+        "path": "/workspace/luxestyle-review/merchant-exports-20261102-r59/images/gold-proposal.jpg",
+        "sha256": "a933ccff9c227a2d88b2500e62988c0ac099972ad64b07acd8d3fec02b234b9b",
+        "bytes": 220569,
+        "width": 1276,
+        "height": 1702,
+        "visuallyInspected": true
+      },
+      {
+        "name": "laser-1.jpg",
+        "path": "/workspace/luxestyle-review/merchant-exports-20261102-r59/images/laser-1.jpg",
+        "sha256": "63eac67bd0ccab885d8e6483446f99188d66627de8d125c950d1daf43fa3cff4",
+        "bytes": 62293,
+        "width": 800,
+        "height": 800,
+        "visuallyInspected": true
+      },
+      {
+        "name": "laser-3.jpg",
+        "path": "/workspace/luxestyle-review/merchant-exports-20261102-r59/images/laser-3.jpg",
+        "sha256": "8ef0a1648c6438a49404e852ca1abe1b22745711be104daaa8aee62c00679006",
+        "bytes": 48376,
+        "width": 1080,
+        "height": 1080,
+        "visuallyInspected": true
+      }
+    ],
+    "gold": {
+      "decision": "no_visual_veto_for_parent_one_variant_image_binding_change",
+      "parentNativeBinding": {
+        "productId": "15524360028545",
+        "variantId": "67801774555527",
+        "sku": "CJJX192283802BY",
+        "priceChf": "33.90",
+        "beforeMediaId": "70776222941569",
+        "proposalMediaId": "70776223105409",
+        "nativeEvidenceSource": "parent /root current read, not repeated by child"
+      },
+      "visualMatches": [
+        "Round gold-tone case",
+        "Single row of circular stones around bezel",
+        "Triangular top/bottom lugs",
+        "Right-hand crown position and broadly matching shape"
+      ],
+      "proposalObservation": "One watch case held in hand; no external promotional overlay. Face text belongs to the displayed watchface.",
+      "limits": [
+        "Strap not visible in proposal, no strap verification claimed",
+        "Small before image limits fine-grained model verification",
+        "No material, function or commercial-rights conclusion from appearance"
+      ],
+      "proposedScope": "Only exact variant media binding; every other product/variant field and all gallery ordering preserved."
+    },
+    "laser": {
+      "decision": "no_visual_veto_for_parent_featured_image_reorder_only",
+      "parentNativeBinding": {
+        "productId": "15453825008001",
+        "variantId": "55904981713281",
+        "singleVariant": true,
+        "currentVariantMedia": "none",
+        "beforeFeaturedMediaId": "69927001915777",
+        "proposal": "existing current gallery image3; exact media ID handled by root native diff",
+        "nativeEvidenceSource": "parent /root current read, not repeated by child"
+      },
+      "visualMatches": [
+        "Elongated black rectangular/faceted device body",
+        "Compatible display position and measurement layout",
+        "Candidate side view does not contradict front-only original"
+      ],
+      "proposalObservation": "Single device held in hand, real display visible; no external orange MI badge or blue hand graphic.",
+      "limits": [
+        "Different displayed values/mode are not treated as proof of additional functions",
+        "No independent supplier/brand/model/rights verification from photo alone"
+      ],
+      "proposedScope": "Only existing gallery image3 moved to first; preserve relative order of every other item and all product fields."
+    },
+    "combinedResult": "NO_VISUAL_VETO_WITHIN_PARENT_EXACT_NATIVE_BINDING_AND_ONE_FIELD_DIFF_SCOPE",
+    "notEstablished": [
+      "Legal or commercial rights approval",
+      "Feature/material claims",
+      "Google reapproval or actual submitted image URL",
+      "Live-write success"
+    ],
+    "ownActions": {
+      "localImagesViewed": 4,
+      "networkCalls": 0,
+      "shopifyCalls": 0,
+      "merchantCalls": 0,
+      "imageEdits": 0,
+      "liveWrites": 0
+    }
+  },
+  "sourceBoundExceptionPlan": {
+    "reviewRows": 30,
+    "offerIds": 13,
+    "listingKeys": 13,
+    "notExecuted": true,
+    "sourceBindingRequired": true
+  },
+  "exceptions": {
+    "draftProduct": {
+      "id": "15413245706625",
+      "status": "DRAFT",
+      "variantCount": 12,
+      "nativePricesChf": "44.90",
+      "shopPriceEdited": false,
+      "activated": false,
+      "allExportOfferKeysOnlyCandidatesForSourceRemoval": true
+    },
+    "oldPad": {
+      "productId": "15507580649857",
+      "oldVariantId": "56147913113985",
+      "nativeExactLookup": null,
+      "nativeErrorReported": false,
+      "currentVariants": 4,
+      "remappedByTitle": false,
+      "sourceRemovalExecuted": false
+    }
+  },
+  "existingAuthPrFreshRead": {
+    "number": 2830,
+    "html_url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2830",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "merged_at": null,
+    "headSha": "ecdc456f1109680b2bcb1584171ee075ed8bf548",
+    "readKind": "read_only_existing_PR_status_not_own_merge"
+  },
+  "ownActions": {
+    "csvFilesFullyRead": 4,
+    "distinctShopifyProductsTargeted": 4,
+    "shopifyImageWrites": 2,
+    "newPictureUploads": 0,
+    "imageEdits": 0,
+    "merchantWrites": 0,
+    "feedUploadsOrRefreshes": 0,
+    "shopPriceOrAvailabilityWrites": 0,
+    "sourceCountryOrDestinationWrites": 0,
+    "channelOrExclusionChanges": 0,
+    "metricReports": 0,
+    "flowReports": 0,
+    "orderWatchReads": 0,
+    "workflowDispatches": 0,
+    "socialWrites": 0
+  },
+  "validationLimitations": {
+    "cliGraphqlValidator": "Missing _validate_graphql.mjs; exit1",
+    "mcpPrevalidator": "skipped; native operations accepted and fresh reads verified",
+    "newTestsWritten": false,
+    "fullCiClaimedForImageChanges": false
+  },
+  "nextStep": "Article IDs and scoped native exceptions now known. Need actual primary Merchant data-source name/ID and original submitted fields/URL before source edits. Do not request Article-ID again as if absent. Do not infer source from Feed label. Existing source-specific cleanup permission retained. No retry of R58 timed-out request.",
+  "preserved": [
+    "20 task IDs and full histories",
+    "daily report limits and ended purchase watch",
+    "R53 website-only approval; Welcome excluded",
+    "public shipping CHF50/internalCHF45 and account.luxestyle.com.co",
+    "one open professional master; no new content/render/social action"
+  ],
+  "googleReapproval": "unknown; no fresh Google listing status returned",
+  "shippingIssueAbsence": "absent only from these four exports; not evidence of resolution"
+}
