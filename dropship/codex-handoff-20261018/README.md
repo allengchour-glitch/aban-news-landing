@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 02.11.2026, Revision 60: Richtlinienfälle und ein weiterer bestätigter Fotofix
+
+[Bericht](MERCHANT-RICHTLINIEN-20261102-R60.md) · [Belege](MERCHANT-RICHTLINIEN-BELEGE-20261102-R60.json) · [Einzelprüfungsentwurf](MERCHANT-NACHPRUEFUNG-GLOECKCHEN-20261102-R60.md). Fünf weitere Uploads vollständig geprüft: 386 Rohzeilen, vier unterschiedliche Dateiinhalte, 273 Problemkontexte und 65 Offer-IDs. Beide Dateien 12:57:41 sind bytegleich; keine Live-Katalogquote. Eine echte neue Shopify-Korrektur: Bei den Glöckchen 15497456255361 / 56099949740417 steht das vorhandene isolierte 600×600-Foto jetzt zuerst. Job abgeschlossen, nativ und öffentlich mit HTTP 200 bestätigt; Preis, SKU, Tags, Status, Inventar und Beschreibung unverändert. Google-Neubewertung unbekannt; R59-Bildfixes nicht erneut als neue Arbeit gezählt.
+
+Drei gezielte native Kategorien-, Metafeld- und FR-Abgleiche: Zubehörglöckchen, Braurührspaten und Skihelm. Native FR-Translations[] beweist keinen Feedfehler; tatsächliche FR-Quelle und eingereichte URL unbekannt. Genau ein Nachprüfungsentwurf für Glöckchen vorbereitet, nicht eingereicht. Keine pauschale Tabak-/Waffenfreigabe, Umbenennung zur Umgehung oder Sperraufhebung. Merchant-Editor und Quellenbindung bleiben offen; keine Timeout-Wiederholungen, neuen Reports, Bestell-Watch-Abfragen oder Workflowstarts. Alle 20 Aufgaben-IDs mit Historien, die 19 anderen Aufgaben und dailyReadPolicy unverändert erhalten. Kein neuer Merge oder produktiver Lauf behauptet; alle Inhabergrenzen bleiben gültig.
+
 ## Aktueller Stand – 02.11.2026, Revision 59: vier Exporte, zwei Bildkorrekturen bestätigt
 
 [Bericht](MERCHANT-EXPORTE-20261102-R59.md) · [Belege](MERCHANT-EXPORT-BELEGE-20261102-R59.json) · [13 Ausnahmeangebote – kein Upload](GEKLAERTE-AUSNAHMEN-20261102-R59-KEIN-UPLOAD.csv). Alle vier neuen Inhaberdateien vollständig und unabhängig gezählt: 4390 Rohzeilen, 4386 eindeutige Kontexte, 1592 Offer-IDs; keine Vollkatalogzahlen. Artikelkennungen jetzt bekannt, Datenquelle und eingereichte Links fehlen weiterhin. DE-Feedlabel kommt auch für CH/LI vor. Keine Versandzeilen in diesen Ausschnitten bedeutet keine Behebung.
