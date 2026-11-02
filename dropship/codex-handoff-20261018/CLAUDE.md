@@ -2,7 +2,19 @@
 
 Nur LuxeStyle (luxestyle.ch) bearbeiten. Aktuelle ausdrückliche Inhabervorgaben haben Vorrang; diese Übergabe erweitert keine Geschäftsfreigaben.
 
-## Aktueller Befund 02.11.2026, R52
+## Aktueller Website-Auftrag 02.11.2026, R53
+
+Der Inhaber hat ausdrücklich «Die Website-Verbesserungen» ausgewählt. [Konkreten Claude-Auftrag R53](CLAUDE-PUBLISH-AUFTRAG-20261102-R53.md) und [aktuelle Belege mit vollständiger MAIN-Datei, Kandidat und Diff](CLAUDE-PUBLISH-BELEGE-20261102-R53.json) zuerst lesen. Diese Website-Freigabe nicht erneut fragen. Welcome ist in diesem Auftrag ausdrücklich ausgeschlossen; keine Mailvorlage, Nachricht oder Flowänderung. Der Projektorfilm bleibt ohne Originaltakes/Rechte/MP4-Abnahme blockiert.
+
+Frisch bestätigt: luxestyle.ch / CHF, Metricool 6227837 / Europe/Zurich mit allen sechs Identitäten. Tatsächlicher MAIN 213013037447. Vier Dateiinhalte und 13 bekannte Releasepfad-Prüfsummen verglichen: elf identisch zum Entwurf, darunter Galerie/Editor/Sprachen/Startseite. MAIN-luxe-edit.css enthält den vollständigen Entwurfsinhalt plus aktuelle mobile Hero-Abstände. Diese Ergänzungen und alle anderen MAIN-Bytes erhalten. Kein alter Ganzentwurf veröffentlichen. Dies ist keine Volltheme-/Personalizer-/Checkoutabnahme und kein eigener Publish.
+
+Konkreter noch offener Schritt: templates/collection.json im frischen MAIN mit genau einer lx-uf-Regel ergänzen. Vorher MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84, nachher Kandidat bbacad38aabc5e292ed819b3d1b01782; alle übrigen Bytes exakt erhalten. Liquid-Block VALID/SUCCESS. Zwei aktuelle MAIN-Handyansichten haben weiterhin 16 px-Seitenüberlauf, 18/26 Bedingungen; zwei alte Draftansichten 26/26, kein MAIN-Fix. Nach legitimem Write dieselbe MAIN-Datei exakt zurücklesen und tatsächliche DE/FR-Mobil-/Desktopansichten prüfen. Keine ganze Kopie oder unnötige erneute Übertragung identischer Dateien.
+
+Tatsächlicher Claude-Zugang hier nicht verfügbar: kein Tool oder CLI, kein Start und keine Empfangsquittung. R5-stand prüft fünf Quellen/R4-Kette, bleibt review_only und ist keine direkte Claude-Verbindung. GitHub-Auftrag ist auffindbar hinterlegt; Ausführung/Publikation erst mit echten Writer-/Run- und Rücklesebelegen bestätigen. Verfügbarer Shopify-Toolvertrag sperrt MAIN-Writes/Theme-Publish; keine Umgehung. Legitimem fähigem Claude-Zugang den konkreten Auftrag zur Ausführung geben, technische Blocker andernfalls benennen.
+
+19 Aufgaben/Historien erhalten; fünf bestehende Tasks fortgeführt, 14 andere und dailyReadPolicy exakt. Heutige R48/R49-Reports nicht wiederholen, Kauf-Watch beendet. Welcome bleibt freigabeentwurf_website_only_excluded; keine neue Zielunklarheit oder gleiche Websitefrage aus älteren Texten darunter ableiten.
+
+## Vorheriger Befund 02.11.2026, R52
 
 [Nachmittags-/Freigabepaket R52](LAUFPAKET-20261102-R52.md), [Ausführungsbelege](LAUFBELEGE-20261102-R52.json) und [einziger Master-Aufnahmebogen](MASTER-AUFNAHMEBOGEN-20261102-R52.md) zuerst lesen. Frische Shop-/Metricool-Identitäten passen. Planung 02.11.14:08:07–09.11.14:08:07 Europe/Zurich: 23 bestehende Objekte / 31 PENDING, keine kanalgleichen Text-/Medien-Doppel oder Kollisionen. Alle 22 Morgenobjekte unverändert; ein alter FB-/IG-Termin nur durch verschobenes Fenster zusätzlich sichtbar. Bestätigten Threads-Termin 04.11.18:30 / ID413194611 / UUID-1937081137064819378 und bestehendes Register erhalten; kein eigener neuer Post oder Publish.
 
