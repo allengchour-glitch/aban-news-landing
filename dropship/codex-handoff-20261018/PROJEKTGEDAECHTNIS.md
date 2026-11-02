@@ -1,5 +1,17 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, Revision 49
+
+[Google-/ChatGPT-Sichtbarkeit R49](SICHTBARKEIT-20261102-R49.md) · [Genaue Quellenmessung und Live-Rücklesebelege](SICHTBARKEIT-20261102-R49.json).
+
+Für die neue ausdrückliche Frage nach Besucherquellen und weiterer Optimierung wurden GA4-Property 561291627 und Search Console sc-domain:luxestyle.ch frisch verifiziert. Genau zwei kleine Quellenreports für 26.10.–01.11. wurden gelesen; diese Quellen waren heute noch nicht abgefragt worden. GA4 ordnet 50 von 107 gemeldeten Sitzungen ChatGPT und 11 Google Organic zu; Search Console meldet 21 Klicks und 4’050 Impressionen. Sitzungen sind keine bestätigten Kunden oder Käufe. Eigenbesuche, Bots, Attribution sowie tatsächlicher Cache- und Vollständigkeitsstand bleiben ungeprüft. Die heutigen Social- und Flowreports wurden nicht wiederholt.
+
+Unter dem aktuellen Folgeauftrag wurden dieselben zuvor gezeigten zwei Bestsellerfelder live geändert: Einleitung und Suchbeschreibung passen jetzt zur tatsächlichen Zehnerauswahl. Beim ersten Speichern wurde der SEO-Titel unerwartet geleert; nach Gegenprobe wurde er separat exakt wiederhergestellt. Im Endstand sind 7 native und 8 öffentliche Quellbedingungen sowie ein unabhängiger Review bestätigt. Titel, Handle, Serviceabsatz, Produktzuordnung und Reihenfolge bleiben erhalten. Der Vorvalidator übersprang die Prüfung. Vorhandene CLI-Prüfer konnten wegen fehlender Bundle-Dateien nicht laufen; die API akzeptierte die Vorgänge ohne userErrors. Das ist keine grüne Voll-CI. Dieselbe erledigte Zwei-Felder-Freigabe nicht nochmals anfragen und die Felder nicht erneut schreiben.
+
+Googlebot und OAI-SearchBot dürfen öffentliche Shopseiten crawlen; robots.txt und Sitemap liefern HTTP 200. Eine zusätzliche Suchfreigabe oder llms.txt ist nicht nötig. Die Trainingsregeln bleiben unverändert. Drei Seiten haben passende Root-Metadaten, H1, Canonicals, DE/FR-Links und echte HTML- und Schema-Grundlagen. Metadaten der eingebetteten Anmeldung belegen kein noindex der Hauptseite. Google-Neucrawl, ausgewählte Snippets, URL-Indexstatus und OpenAI-IP-/CDN-Zugriff bleiben ungeprüft. Zwei alte Kategorie-Textentwürfe und ein beobachteter roher Preisfilterplatzhalter sind noch nicht umgesetzt.
+
+Eine SEO-Aufgabe wurde fortgeführt; die 16 anderen Aufgaben, alle 17 IDs und Historien bleiben erhalten. R48-Master, Tagesreports und R47-Section/CSS sowie R46-Directory mit den übrigen Websitequellen sind unverändert. Versandgrenzen CHF 50/CHF 45, account.luxestyle.com.co, Befugnisse, Frequenz und beendeter Kauf-Watch bleiben erhalten. Kein Social-/Flow-/Ads-/Budget-/DNS-/Shopkonfigurations-/Theme-Publish, keine Kundenansprache oder Installation. Claude-Empfang unbekannt.
+
 ## Aktueller Stand – 02.11.2026, Revision 48
 
 [Content- und Verkaufspaket R48](LAUFPAKET-20261102-R48.md) · [Aktuelle Belege und exakte Freigabetexte](LAUFBELEGE-20261102-R48.json) · [Master- und Aufnahmeplan mit sechs UTMs](MASTER-STORYBOARD-20261102-R48.json).
