@@ -1,5 +1,11 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 02.11.2026, GitHub-/MiniMax-Korrektur, Revision 55
+
+[Aktuell geprüfter MiniMax-Zugang R55](MINIMAX-ZUGANG-20261102-R55.md). Authentifiziertes GitHub-CLI und bestehender H3-Bild-zu-Video-Workflow sind vorhanden; `MINIMAX_API_KEY` ist im Workflow gebunden. Die frühere lokale CLI-/Runtime-Prüfung beweist keinen fehlenden GitHub-Weg. Bestehender Trockenlauf 41497876466 ist erfolgreich. Der bestehende echte Versuch 41498371388 scheiterte am 02.11. um 19:12 Zürich mit HTTP 402 insufficient balance (1008), ohne bestätigte MP4. Beide bestehenden Läufe samt maskierten Logs gelesen, keinen Job gestartet. Secret-Metadaten-403 ist kein Nachweis eines fehlenden Keys. Andere externe Claude-Nutzung bleibt möglich; keine Claude-Ausführung oder Website-Veröffentlichung behauptet.
+
+Kostenpflichtige Renders bleiben nach Inhabervorgabe gesperrt; kein Retry oder Guthabenkauf. Derselbe 18s-Master bleibt ohne belegte Takes/Produktbindung/Filmrechte/finale MP4-Abnahme offen. Website-Freigabe R53 gilt unverändert, Welcome bleibt ausgeschlossen. R48/R49-Tagesberichte nicht wiederholt, Kauf-Watch beendet. 19 IDs/Historien erhalten, nur Zusammenarbeit und Master um diesen konkreten Befund ergänzt; 17 andere Aufgaben und dailyReadPolicy exakt erhalten. Alle bisherigen R53-/R54-Belege und Grenzen gelten weiter.
+
 ## Aktueller Stand – 02.11.2026, Abendlauf, Revision 54
 
 [Konsolidiertes Abendpaket R54](ABENDPAKET-20261102-R54.md) · [Abendbelege](ABENDBELEGE-20261102-R54.json) · [Weiterentwicklung desselben Masters](MASTER-CONTENT-20261102-R54.md).
