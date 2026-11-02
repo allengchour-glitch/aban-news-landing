@@ -30,4 +30,11 @@ erste_karte() { grep -m1 -o 'color=c=0x[0-9a-f]*' | cut -d= -f2-; }
 [ "$(bash "$dir/reel_karte.sh" | erste_karte)" = "c=0xf3eee7" ] && ok "Vorgabe: erste Karte hell" || bad "Vorgabefarben"
 mkdir -p "$tmp/repo/automation/music/../music"; ( export MUSIK="../music/${liste[0]}"; bash "$dir/reel_karte.sh" >/dev/null 2>&1 ); [ $? -eq 2 ] && ok "MUSIK mit Pfad abgelehnt, auch wenn die Datei existiert" || bad "MUSIK mit existierendem Pfad nicht abgelehnt"
 ( export TITEL2="Zeile zwei" ; bash "$dir/reel_karte.sh" ) | grep -c "text='Zeile zwei'" | grep -q '^1$' && ok "zweite Titelzeile" || bad "TITEL2"
+# Sprecher (Trockenlauf: nur Prüfung und Filtergraph, Piper wird nicht gestartet)
+bash "$dir/reel_karte.sh" | grep -q "\[4:a\]" && bad "Stimme im Graph, obwohl SPRECHER leer" || ok "ohne SPRECHER keine Stimmenspur"
+( export SPRECHER="Ein kurzer Satz."; bash "$dir/reel_karte.sh" ) | grep -q "\[4:a\]loudnorm" && ok "mit SPRECHER: Stimmenspur im Graph" || bad "SPRECHER erreicht den Graph nicht"
+( export SPRECHER="Ein kurzer Satz."; bash "$dir/reel_karte.sh" ) | grep -q "sidechaincompress" && ok "Musik duckt unter der Stimme (sidechaincompress)" || bad "kein Ducking"
+( export SPRECHER="$(printf 'x%.0s' $(seq 1 161))"; bash "$dir/reel_karte.sh" >/dev/null 2>&1 ); [ $? -eq 2 ] && ok "abgelehnt: SPRECHER über 160 Zeichen" || bad "langer SPRECHER nicht abgelehnt"
+( export SPRECHER="Satz." STIMME="../../etc/passwd"; bash "$dir/reel_karte.sh" >/dev/null 2>&1 ); [ $? -eq 2 ] && ok "abgelehnt: STIMME mit Pfad" || bad "STIMME mit Pfad nicht abgelehnt"
+( export SPRECHER="Satz." STIMME="en_US-amy-low"; bash "$dir/reel_karte.sh" >/dev/null 2>&1 ); [ $? -eq 2 ] && ok "abgelehnt: nicht deutsche Stimme" || bad "fremdsprachige Stimme nicht abgelehnt"
 if [ "$fehler" -eq 0 ]; then echo "reel_karte_test: ok, 0 Fehler"; else echo "reel_karte_test: $fehler Fehler"; exit 1; fi

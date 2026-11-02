@@ -4,8 +4,10 @@
 > Session ZUERST lesen und befolgen. Geändert nur auf ausdrücklichen User-Wunsch.
 
 ## Standing Rules
-1. **KEIN Voiceover.** Keine Stimme (weder Frau/Kerstin noch Mann/Thorsten). Stattdessen **on-screen Text**
-   (Kategorien, Produktnamen, Preis-/Code-Hinweise). → Beim Marken-Video die `*-text.mp4`-Variante nutzen.
+1. **Stimme: seit 2.11.2026 erlaubt und erwünscht (Besitzer: «mit Hochdeutsch … gesprochene Stimme»), vorher galt «KEIN Voiceover» (12.6.2026).**
+   Hochdeutsch (nicht Mundart), kurze Sätze (≤ 160 Zeichen, ≈ 8 s), keine Preise, Rabatte, Lieferzeiten, Bewertungen oder Versprechen.
+   Stimme lokal und gratis mit Piper (`SPRECHER=…` in `dropship/reel-vorlage/reel_karte.sh`, Vorgabe `de_DE-thorsten-high`, Alternative `de_DE-ramona-low`);
+   die Musik duckt unter der Stimme. On-screen-Text bleibt zusätzlich. Ältere Marken-Videos (`*-text.mp4`) bleiben stumm.
 2. **Musik rotiert, nie zweimal hintereinander dasselbe Stück, und kommt von Mixkit** (Besitzer 2.11.2026: «kann man andere Musik nehmen … nie das gleiche»,
    danach «die selbst gemachte ist das Schrecklichste … nimm von irgendwo lieber»; löst die Festlegung auf `luxe-premium.wav` ab). Wahl:
    `dropship/reel-vorlage/musik_waehlen.sh` (fünf Mixkit-Stücke, Lizenz ohne Namensnennung, Log `dropship/reel-vorlage/musik-log.txt`).

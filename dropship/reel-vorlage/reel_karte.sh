@@ -11,6 +11,8 @@
 #   TITEL1 [TITEL2]        Titel, je höchstens 16 Zeichen  ·  TAGLINE ≤ 30  ·  TEXT_MITTE ≤ 18  ·  NAME_KURZ ≤ 36  ·  ENDZEILE ≤ 28 (Vorgabe: LuxeStyle · luxestyle.ch)
 #   INVERS=1               dunkle Karten aussen, helle Mitte (sonst creme aussen, dunkle Mitte)
 #   MUSIK                  Dateiname in automation/music (Vorgabe: auto = musik_waehlen.sh, rotiert, nie zweimal hintereinander gleich)  ·  MUSIK_START  Startsekunde (Vorgabe: musik-start.txt)  ·  MUSIK_LUFS  Lautstärke (Vorgabe -22, leise; -16 war dem Besitzer 2.11. zu laut)
+#   SPRECHER               gesprochener Text (Hochdeutsch, ≤ 160 Zeichen, ca. 20 Wörter = 8 s), Piper-Stimme lokal; ohne SPRECHER bleibt das Reel stumm (nur Musik). Besitzer 2.11.: «gesprochene Stimme»
+#   STIMME                 Piper-Stimme (Vorgabe de_DE-thorsten-high; Alternative de_DE-ramona-low), PIPER_MODELLE = Ordner der Modelle (Vorgabe ~/.local/share/luxe-stimmen, wird bei Bedarf von huggingface geladen)
 #   TROCKEN=1              nur prüfen (Text, Zuschnitt, Musikwahl) und den Filtergraphen drucken; nichts laden, nichts rendern
 #   PRODUKT                Name fürs Musik-Log (Vorgabe: NAME_KURZ)   ·   OUT  Zieldatei (Vorgabe ./reel-karte.mp4)   ·   REPO_ROOT
 # Text: kein ' : % \ (drawtext), keine Emoji. Schweizer Rechtschreibung. Keine Preise, Versprechen oder Bewertungen im Reel.
@@ -40,11 +42,25 @@ music_path="$repo_root/automation/music/$MUSIK"; [ -f "$music_path" ] || fail "M
 mlufs="${MUSIK_LUFS:--22}"; [[ "$mlufs" =~ ^-[0-9]+$ ]] || fail "MUSIK_LUFS muss eine negative ganze Zahl sein: «$mlufs»"
 mstart="${MUSIK_START:-$("$script_dir/musik_waehlen.sh" --start "$MUSIK")}"; [[ "$mstart" =~ ^[0-9]+$ ]] || fail "MUSIK_START muss eine ganze Zahl sein: «$mstart»"
 mend=$((mstart + 10))
+SPRECHER="${SPRECHER:-}"; STIMME="${STIMME:-de_DE-thorsten-high}"; stimme_wav=""
+if [ -n "$SPRECHER" ]; then
+  [ "${#SPRECHER}" -le 160 ] || fail "SPRECHER länger als 160 Zeichen"
+  [[ "$STIMME" =~ ^de_DE-[a-z]+-(low|medium|high)$ ]] || fail "STIMME muss eine deutsche Piper-Stimme sein (z. B. de_DE-thorsten-high): «$STIMME»"
+fi
 work="$(mktemp -d)"; trap 'rm -rf -- "$work"' EXIT
 fetch() { local n="$1" url="$2" sha="${3:-}"; curl --fail --location --silent --show-error --max-time 45 --output "$work/$n" "$url"
   [ -z "$sha" ] || printf '%s  %s\n' "$sha" "$work/$n" | sha256sum --check --status || fail "SHA-256 von $n weicht ab"
   ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$work/$n" >/dev/null || fail "$n ist kein Bild"; }
 if [ "${TROCKEN:-0}" != 1 ]; then fetch a.jpg "$FOTO_A" "${SHA_A:-}"; fetch b.jpg "$FOTO_B" "${SHA_B:-}"; fetch c.jpg "$FOTO_C" "${SHA_C:-}"; fi
+if [ -n "$SPRECHER" ] && [ "${TROCKEN:-0}" != 1 ]; then
+  command -v piper >/dev/null || fail "piper fehlt (pip install piper-tts)"
+  mdir="${PIPER_MODELLE:-$HOME/.local/share/luxe-stimmen}"; mkdir -p "$mdir"; sp="${STIMME#de_DE-}"; sp="${sp%-*}"; q="${STIMME##*-}"
+  for e in onnx onnx.json; do [ -s "$mdir/$STIMME.$e" ] || curl --fail --location --silent --show-error --max-time 300 --output "$mdir/$STIMME.$e" "https://huggingface.co/rhasspy/piper-voices/resolve/main/de/de_DE/$sp/$q/$STIMME.$e" || fail "Stimme $STIMME.$e nicht ladbar"; done
+  printf '%s' "$SPRECHER" | piper -m "$mdir/$STIMME.onnx" -f "$work/stimme.wav" >/dev/null 2>&1 || fail "Piper konnte nicht sprechen"
+  sdauer="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$work/stimme.wav")"
+  awk -v d="$sdauer" 'BEGIN{exit !(d<=8.3)}' || fail "Gesprochener Text dauert $sdauer s, höchstens 8,3 s passen ins Reel: kürzen"
+  stimme_wav="$work/stimme.wav"
+fi
 # Farben: aussen = Karten A und C, mitte = Karte B
 if [ "${INVERS:-0}" = 1 ]; then
   BG_O=0x302a25; FG_O=0xf3eee7; SUB_O=0xc8bca9; FR_O=0x796c5d; BG_M=0xf3eee7; FG_M=0x302a25; FR_M=0xc8bca9
@@ -91,17 +107,23 @@ drawtext=fontfile=$font_serif:text='$ENDZEILE':fontsize=56:fontcolor=$FG_O:x=(w-
 [bc][pc]overlay=x=160:y=508:shortest=1,trim=duration=3.4,setpts=PTS-STARTPTS,fps=30,settb=AVTB[sc];
 [sa][sb]xfade=transition=fade:duration=0.4:offset=3.2,fps=30,settb=AVTB[ab];
 [ab][sc]xfade=transition=fade:duration=0.4:offset=6.4,tpad=stop_mode=clone:stop_duration=0.1,fps=30,trim=duration=9.4,format=yuv420p,setparams=range=limited[v];
-[3:a]atrim=start=$mstart:end=$mend,asetpts=PTS-STARTPTS,loudnorm=I=$mlufs:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.4,afade=t=out:st=8.4:d=1,aresample=48000[a]
 FILTER
+musik_kette="[3:a]atrim=start=$mstart:end=$mend,asetpts=PTS-STARTPTS,loudnorm=I=$mlufs:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.4,afade=t=out:st=8.4:d=1,aresample=48000"
+if [ -n "$SPRECHER" ]; then   # Stimme mit 0,6 s Vorlauf; die Musik duckt unter der Stimme (Sidechain)
+  printf '%s\n' "${musik_kette}[m0];" "[4:a]loudnorm=I=-16:TP=-1.5:LRA=7,aresample=48000,adelay=600|600,apad,atrim=duration=9.4,asplit=2[v1][v2];" \
+    "[m0][v1]sidechaincompress=threshold=0.02:ratio=10:attack=15:release=500[md];[md][v2]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.9[a]" >> "$work/g.ffgraph"
+else
+  printf '%s\n' "${musik_kette}[a]" >> "$work/g.ffgraph"
+fi
 if [ "${TROCKEN:-0}" = 1 ]; then echo "MUSIK=$MUSIK"; echo "START=$mstart"; cat "$work/g.ffgraph"; exit 0; fi   # TROCKEN=1: nur prüfen und den Filtergraphen drucken, nichts laden, nichts rendern
 mkdir -p "$(dirname -- "$OUT")"
 ffmpeg -hide_banner -loglevel warning -nostdin -y -filter_complex_threads 1 \
   -loop 1 -framerate 30 -t 3.8 -i "$work/a.jpg" -loop 1 -framerate 30 -t 3.8 -i "$work/b.jpg" -loop 1 -framerate 30 -t 3.8 -i "$work/c.jpg" \
-  -i "$music_path" -filter_complex_script "$work/g.ffgraph" -map '[v]' -map '[a]' -t 9.4 \
+  -i "$music_path" ${stimme_wav:+-i "$stimme_wav"} -filter_complex_script "$work/g.ffgraph" -map '[v]' -map '[a]' -t 9.4 \
   -c:v libx264 -preset medium -crf 19 -pix_fmt yuv420p -color_range tv -threads 2 -c:a aac -b:a 192k -ar 48000 -ac 2 -movflags +faststart \
   -metadata title="LuxeStyle $NAME_KURZ - Foto-Reel" "$OUT"
 if [ "${MUSIK_LOG_SCHREIBEN:-0}" = 1 ]; then
   printf '%s\t%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$PRODUKT" "$MUSIK" >> "${MUSIK_LOG:-$script_dir/musik-log.txt}"
 fi
-echo "Musik: $MUSIK (ab Sekunde $mstart)"
+echo "Musik: $MUSIK (ab Sekunde $mstart)${SPRECHER:+; Stimme: $STIMME}"
 ffprobe -v error -show_entries stream=codec_name,width,height,avg_frame_rate,duration:format=duration,size -of default=nw=1 "$OUT"

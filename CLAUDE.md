@@ -79,8 +79,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **PC-FAKT (User 2026-06-12): der PC mit Brave-Agent (Port 9222, eingeloggt) LÄUFT IMMER** → Browser-Aufgaben
   jederzeit an PC-Claude delegierbar; Skripte: `automation/local/profil-politur-browser.mjs` (Playwright, lädt
   Profilbild automatisch) + `automation/social-profile-polish.mjs` (puppeteer).
-- **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** ALLE Marketing-
-  Videos **OHNE Voiceover** (on-screen Text statt Stimme) + Musik **rotierend aus fünf Mixkit-Stücken**
+- **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** Marketing-
+  Videos: **seit 2.11.2026 mit Hochdeutsch-Stimme erlaubt** (Piper, `SPRECHER=`; vorher OHNE Voiceover) + Musik **rotierend aus fünf Mixkit-Stücken**
   (`dropship/reel-vorlage/musik_waehlen.sh`, User 2.11.: keine Eigenproduktion mehr, nie zweimal dasselbe). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 - **🤖 Modellwahl (FEST, User 2026-10-25: „ändere model haiku selber für einfache aufgaben, automatisch"):** Das
   Hauptmodell einer Sitzung stellt nur der User per `/model` um. Dafür **einfache, mechanische Teilaufgaben
@@ -93,6 +93,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 ## Stand
 **📌 2026-11-02 abends (🎬 Reel-Vorlage nach Codex · 🎵 Musik rotiert · 🛠️ Breitenfix · 🤖 MiniMax-Weg · 🧪 Menü-Adressen):**
 - **🎬 Reel-Vorlage (`dropship/reel-vorlage/`, `README.md`):** Codex' Foto-Reel (PR #2829, Wasserwellen-Lampe) verallgemeinert und verbessert (sanfter Zoom, Fenster mit unscharfem Hintergrund, helle/dunkle Variante). Drei Muster gerendert (Lampe, Tennisarmband, Kristall-Set), **nichts veröffentlicht, nichts in der Queue**. **Claudes erstes Muster ist nicht verwendbar** (Polaroids mit Personen, Markentasche im Bild): Fotos IMMER von Hand sichten. Tests `reel_karte_test.sh` und `musik_waehlen_test.sh`, Mutationsprobe 8 von 8. Hörabnahme der Mixkit-Stücke steht aus (kein Gehör hier).
+- **🗣️ Stimme (Besitzer 2.11. «gesprochene Stimme», Hochdeutsch):** Reel-Vorlage kann mit Piper-Stimme sprechen (`SPRECHER=`, `de_DE-thorsten-high`/`ramona-low`, lokal, gratis; Azure-Schlüssel 401, OpenAI/Gemini ohne Guthaben); Musik leiser (−22 LUFS) und duckt unter der Stimme. Klang unbelegt (kein Gehör hier).
 - **🎵 Musikregel geändert (Besitzer 2.11.): rotieren, nie zweimal hintereinander dasselbe Stück** (fünf fremde Mixkit-Stücke, Lizenz ohne Namensnennung; die Eigenproduktionen `luxe-*` sind abgelöst, Besitzer: «das Schrecklichste, was ich gehört habe»; `musik_waehlen.sh`, Log `musik-log.txt`); `VIDEO-PRAEFERENZEN.md` Regel 2 angepasst. Grenze: bei fünf Stücken heisst «nie das gleiche» «nie zweimal hintereinander».
 - **🛠️ Breitenfix (Codex R53) live:** eine CSS-Regel in `templates/collection.json` des MAIN-Themes (`dropship/BREITENFIX-R53-0211.md`); Codex-Aufträge laufen über Dateien in `dropship/CODEX-*.md` (Codex ist nicht aus dieser Sitzung aufrufbar).
 - **🤖 MiniMax H3:** nur über die API nutzbar (offene Gewichte: 4 GPUs und Gebietsklausel V.4, Reels wären in EU/USA sichtbar). Workflow `minimax-h3-clip.yml` (Vorgabe Trockenlauf) gemergt; erster echter Lauf scheiterte an leerem Konto (HTTP 402), nichts bezahlt. Preise (Dritte): H3 768P 0,08 USD/s, 2K 0,13; Veo 3.1 in der Gemini-API seit 22.10. abgeschaltet (Ersatz Omni Flash ~0,10 USD/s).
