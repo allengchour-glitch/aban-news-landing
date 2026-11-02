@@ -1,0 +1,5 @@
+Freigabe Grind 2.0 (CJ-Produktimport in die passende Kategorie, mit Auswahl)
+Erteilt: 2026-11-02 durch den Besitzer im Chat («3 ja» auf die Frage, ob der CJ-Import für die dünnen Kategorien freigegeben wird).
+Umfang: LIVE=1 darf Produkte NUR als DRAFT anlegen (automation/grind2.mjs, alle 23 Tore). Veröffentlichen (PUBLISH=1, höchstens 5 je Lauf) nur nach bestandenen Toren.
+Weiter gesperrt (nie automatisch): Heikelware (Laser, Medizin, Pyro, Selbstverteidigung, Waffen, Tabak, Erwachsene) und Kinder-/Babyware.
+STOPP: diese Datei löschen. Der Lauf prüft sie vor jedem Produkt und vor jedem sichtbaren Schritt.
