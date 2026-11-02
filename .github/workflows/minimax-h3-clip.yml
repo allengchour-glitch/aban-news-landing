@@ -1,0 +1,68 @@
+name: "MiniMax H3: ein Produkt-Clip (nur von Hand, Vorgabe Trockenlauf)"
+
+# Erzeugt EINEN kurzen Clip aus EINEM eigenen Produktfoto (automation/minimax_h3_clip.mjs, Doku dropship/MINIMAX-H3-0211.md).
+# Bewusst nur von Hand (workflow_dispatch), nie im Zeitplan. Vorgabe = Trockenlauf: ohne «live» wird nichts gesendet und nichts bezahlt.
+# Nur mit «live: true» geht GENAU EINE Anfrage an die MiniMax-API (kostet Geld auf dem Konto des Besitzers; Preis in der Doku nicht belegt).
+# Zugang: Repo-Secret MINIMAX_API_KEY (steht nur im Schritt «Clip», nirgends sonst). Nichts wird veröffentlicht: das Ergebnis liegt
+# als Artefakt (14 Tage) und muss vom Besitzer freigegeben werden. KI-Kennzeichnung: BEGLEITTEXT.txt liegt dabei.
+on:
+  workflow_dispatch:
+    inputs:
+      image_url:
+        description: 'https-Adresse des EIGENEN Produktfotos (JPG/PNG/WEBP, 256–5760 px, Seitenverhältnis 0.4–2.5)'
+        type: string
+        required: true
+      prompt:
+        description: 'Bewegung/Stimmung (Englisch empfohlen). Regeln «keine Sprache, kein Text, keine Logos» hängt das Skript selbst an.'
+        type: string
+        required: true
+      duration:
+        description: 'Sekunden (4–8; Obergrenze im Skript)'
+        type: string
+        default: '5'
+      live:
+        description: 'true = sendet GENAU EINE bezahlte Anfrage. Leer/false = Trockenlauf.'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: minimax-h3-clip
+  cancel-in-progress: false
+
+jobs:
+  clip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/minimax_h3_clip.mjs
+            automation/minimax_h3_clip_test.mjs
+            automation/music/luxe-premium.wav
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tests (ohne Netz)
+        run: node --test automation/minimax_h3_clip_test.mjs
+      - name: Clip
+        env:
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          IMAGE_URL: ${{ inputs.image_url }}
+          PROMPT: ${{ inputs.prompt }}
+          DURATION: ${{ inputs.duration }}
+          LIVE: ${{ inputs.live && '1' || '0' }}
+          OUT: out/h3
+        run: node automation/minimax_h3_clip.mjs
+      - name: Ergebnis als Artefakt
+        if: ${{ inputs.live }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: minimax-h3-clip
+          path: out/h3/
+          retention-days: 14
+          if-no-files-found: error
