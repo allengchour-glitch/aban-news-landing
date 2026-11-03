@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "revisionPurpose": "Same open master; captions refined as drafts only, no new film identity or daily copy publication.",
+  "referenceImage": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "source": "native product featured image; variant-specific binding unknown",
+    "http": 200,
+    "contentType": "image/jpeg",
+    "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "bytes": 118008,
+    "localPath": "/workspace/luxestyle-review/content-sales-20261103-r67/products/IMAGE-15521256604033.jpg",
+    "actuallyViewed": true,
+    "commercialRightsVerified": false,
+    "sameHashAsR64": true,
+    "nativeVariantBindingConfirmed": false,
+    "publicVariantFeaturedImage": null,
+    "visibleObservation": "Weisses Gehäuse und Bügel, schwarze Kuppel mit Sternmotiven, Bedienelemente und daneben dargestellte helle Haube; keine daraus abgeleitete Funktions- oder Lieferumfangszusage."
+  },
+  "referenceIsProductWideOnly": true,
+  "mainHook": "Licht im Detail.",
+  "alternativeHook": "Dein Raum. Neues Licht.",
+  "cta": "Produkt ansehen",
+  "noVoiceover": true,
+  "musicPolicy": "Only automation/music/luxe-premium.wav after current rights and listening/mix approval; no autoAddMusic or rotation.",
+  "channelDrafts": [
+    {
+      "channel": "instagram",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Produktdetails über den Link in der Bio.",
+      "linkUse": "Verified Bio destination required; the caption URL is not presented as clickable.",
+      "additionalBlocker": "Current live Bio destination unknown.",
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    },
+    {
+      "channel": "tiktok",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Produktdetails und angebotene Ausführung: Link in der Bio.",
+      "linkUse": "Verified Bio destination required; no clickable caption product link claimed.",
+      "additionalBlocker": "Current live Bio destination unknown; no platform auto-music.",
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    },
+    {
+      "channel": "youtube",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "title": "Sternenlicht-Projektor: Licht im Detail | LuxeStyle",
+      "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Produktdetails und aktuelle Ausführung: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "linkUse": "URL supplied for copying; Shorts-description URLs are not promised clickable.",
+      "additionalBlocker": "Owner general-audience decision retained; exact concrete post made-for-kids flag must be verified.",
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    },
+    {
+      "channel": "facebook",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und die angebotene Ausführung auf der Produktseite: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "linkUse": "Product destination in caption.",
+      "additionalBlocker": null,
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    },
+    {
+      "channel": "threads",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "caption": "Licht im Detail. Ein Blick auf den Sternenlicht-Projektor von LuxeStyle. Produktdetails: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "linkUse": "Product destination in text; existing approved organiser-photo post is a separate master.",
+      "additionalBlocker": null,
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    },
+    {
+      "channel": "pinterest",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "title": "Sternenlicht-Projektor – Licht im Detail",
+      "caption": "Der Sternenlicht-Projektor von LuxeStyle. Details zur angebotenen Ausführung findest du auf der Produktseite.",
+      "linkUse": "Product destination field; no unverified board assigned.",
+      "boardId": null,
+      "additionalBlocker": "Verified account board still required; scheduler board ID alone is not ownership proof.",
+      "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+      "currentProductPriceChf": "34.90",
+      "commonBlockers": [
+        "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+        "Original four takes plus commercial editing/advertising rights not established.",
+        "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+        "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+      ],
+      "notToBePublishedAsTextOnly": true,
+      "creativeOwnerApproval": "unknown",
+      "scheduledByThisRun": false
+    }
+  ],
+  "publishingWrites": 0,
+  "newRender": false,
+  "professionalMasterMp4": null
+}
