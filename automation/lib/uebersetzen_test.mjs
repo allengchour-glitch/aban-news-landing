@@ -72,6 +72,16 @@ const grq = (arr) => ({ choices:[{ message:{ content: '```json\n'+JSON.stringify
   pruef('alle vier Schluessel werden der Reihe nach gefragt', gefragt.filter((k,i)=>i===0||k!==gefragt[i-1]).join(',')==='k1,k2,k3,k4', gefragt.join(','));
   delete process.env.GROQ_API_KEY; delete process.env.GROQ_API_KEY2; delete process.env.GROQ_API_KEY3; delete process.env.GROQ_API_KEY4; }
 
+// 7c. Fuenfter Groq-Schluessel (03.11.2026: GROQ_API_KEY5 gesetzt, weil die Actions-Secrets 1-4 leer sind): ist er der einzige gesetzte, antwortet er; sind die ersten vier erschoepft, auch
+{ const gefragt=[]; for (const n of ['','2','3','4']) delete process.env['GROQ_API_KEY'+n]; process.env.GROQ_API_KEY5='k5';
+  const nur = await nachDeutsch(EIN, { geminiKey:'', fetch: async (u, o) => { const k=String(o?.headers?.Authorization||'').replace('Bearer ',''); gefragt.push(k); return k==='k5' ? ant(200, grq(DE)) : ant(429, { error:{ message:'rate limit' } }); } });
+  pruef('nur GROQ_API_KEY5 gesetzt → er uebersetzt', nur.weg==='groq' && JSON.stringify(nur.texte)===JSON.stringify(DE) && gefragt.every(k=>k==='k5'), JSON.stringify(nur)+' '+gefragt.join(','));
+  gefragt.length=0; process.env.GROQ_API_KEY='k1'; process.env.GROQ_API_KEY2='k2'; process.env.GROQ_API_KEY3='k3'; process.env.GROQ_API_KEY4='k4';
+  const alle = await nachDeutsch(EIN, { geminiKey:'', fetch: async (u, o) => { const k=String(o?.headers?.Authorization||'').replace('Bearer ',''); gefragt.push(k); return k==='k5' ? ant(200, grq(DE)) : ant(429, { error:{ message:'rate limit' } }); } });
+  pruef('vier Schluessel erschoepft → 5. Schluessel antwortet', alle.weg==='groq' && JSON.stringify(alle.texte)===JSON.stringify(DE), JSON.stringify(alle));
+  pruef('alle fuenf Schluessel werden der Reihe nach gefragt', gefragt.filter((k,i)=>i===0||k!==gefragt[i-1]).join(',')==='k1,k2,k3,k4,k5', gefragt.join(','));
+  for (const n of ['','2','3','4','5']) delete process.env['GROQ_API_KEY'+n]; }
+
 // 9. Grossschreibung des Originals bleibt erhalten (kleines Groq-Modell liefert «purpurrot»)
 pruef('klein → gross: Purplish Red / purpurrot', gleicheGrossschreibung('Purplish Red','purpurrot')==='Purpurrot');
 pruef('schon gross bleibt', gleicheGrossschreibung('Purplish Red','Purpurrot')==='Purpurrot');

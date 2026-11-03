@@ -80,6 +80,7 @@ jobs:
           GROQ_API_KEY2: ${{ secrets.GROQ_API_KEY2 }}
           GROQ_API_KEY3: ${{ secrets.GROQ_API_KEY3 }}
           GROQ_API_KEY4: ${{ secrets.GROQ_API_KEY4 }}
+          GROQ_API_KEY5: ${{ secrets.GROQ_API_KEY5 }}
           QUERY: ${{ inputs.query }}
           ONLY: ${{ inputs.only }}
           LIMIT: ${{ inputs.limit }}
