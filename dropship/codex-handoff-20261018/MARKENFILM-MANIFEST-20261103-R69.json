@@ -1,0 +1,149 @@
+{
+  "masterId": "luxe_website_brand_master_20261103",
+  "revision": "r69-website-edit-01",
+  "sourceAuthority": "Owner explicitly requested existing website-only materials, edited and cut; no original filmed takes required for this website montage. Review preview, no social advertising or third-party licence certificate.",
+  "fps": 30,
+  "frames": 600,
+  "durationSeconds": 20,
+  "audio": false,
+  "timeline": [
+    {
+      "startFrame": 0,
+      "endFrameExclusive": 84,
+      "scene": "intro"
+    },
+    {
+      "startFrame": 84,
+      "endFrameExclusive": 204,
+      "scene": "style"
+    },
+    {
+      "startFrame": 204,
+      "endFrameExclusive": 324,
+      "scene": "home"
+    },
+    {
+      "startFrame": 324,
+      "endFrameExclusive": 423,
+      "scene": "everyday"
+    },
+    {
+      "startFrame": 423,
+      "endFrameExclusive": 525,
+      "scene": "ideas"
+    },
+    {
+      "startFrame": 525,
+      "endFrameExclusive": 600,
+      "scene": "close"
+    }
+  ],
+  "palette": {
+    "cream": "#faf7f2",
+    "ink": "#292722",
+    "taupe": "#77654e"
+  },
+  "sourceManifestSha256": "549423db6c1a5c20fb2c90d25c6c3a3a00710a95d5b753c3d449cae443933e91",
+  "fonts": [
+    {
+      "path": "/usr/share/fonts/opentype/urw-base35/P052-Roman.otf",
+      "sha256": "f054a7389d8d0e9f4c5f7b4c21feb7e2b14bec8004a1e92778a78d149524eea9"
+    },
+    {
+      "path": "/usr/share/fonts/opentype/urw-base35/P052-Italic.otf",
+      "sha256": "1feac6055211cf5c6c812c026e398195070f174064cc4d390f0db01647443b0e"
+    },
+    {
+      "path": "/usr/share/fonts/truetype/open-sans/OpenSans-Regular.ttf",
+      "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+    },
+    {
+      "path": "/usr/share/fonts/truetype/open-sans/OpenSans-Semibold.ttf",
+      "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+    }
+  ],
+  "assets": [
+    {
+      "filename": "homepage-fashion-blumenkleid.jpg",
+      "sha256": "d32255725f2d6556e9fcb6c65d6c0f3ac5f690a322ec268719a7c9c099714c57"
+    },
+    {
+      "filename": "season-card-winter.png",
+      "sha256": "3a8eea479629287219dc217504fe3faa68e2e89ac8d42d67aa2e0e803ebf4275"
+    },
+    {
+      "filename": "category-tile-beauty-pflege.png",
+      "sha256": "3d71544e7891671a7fa27d035de980344e259e48551f9ad55155eda1846f2783"
+    },
+    {
+      "filename": "category-tile-sub-taschen.jpg",
+      "sha256": "f2763e960d421bfce5071b9216d211329c925d06b2a70c8adcedb24192d27aa8"
+    },
+    {
+      "filename": "category-tile-uhren.jpg",
+      "sha256": "303254577fb46b72ce3619b5a0de693cf23c6868afadb09e01dde883b5ec03d4"
+    },
+    {
+      "filename": "category-tile-elektronik-technik.jpg",
+      "sha256": "1f2dd2aacebb26985ea76b55d3a36e66acd3bbf621867c5efa6931cb283d02e4"
+    },
+    {
+      "filename": "category-tile-sub-kueche.jpg",
+      "sha256": "8196025bb1144e48864390dc6821ad63f51f8e8d1aa72a3c39e87fb252114dc4"
+    },
+    {
+      "filename": "category-tile-gaming.jpg",
+      "sha256": "c76e7ec68d8a62531106974847a782269ad539933b8e586c0766fc272b0378dc"
+    },
+    {
+      "filename": "category-tile-sport-outdoor.png",
+      "sha256": "c6f634e04267cffb62bffe87f8644e234c24c20706d69323e19e83969b7e890b"
+    },
+    {
+      "filename": "budget-card-premium-geschenke.png",
+      "sha256": "bb6ffa8a2ed7d5e2accaacf84f2aee44126528d3340c8e80d63ce41e3dec02b4"
+    },
+    {
+      "filename": "season-card-christmas.png",
+      "sha256": "9c42130313a118bebc103653c957230e5032837fd871fd88c7632e98c658f354"
+    },
+    {
+      "filename": "design-collage-selbstgestalten-collage.png",
+      "sha256": "4f9c297b8c65be67360d58d61ca0d9f81f849d9130692fdefb36150dfa5556b1"
+    },
+    {
+      "filename": "category-tile-selbst-gestalten-1.png",
+      "sha256": "ec19b173b79276443d808ce60f43e6a19b2631d02a70bdbbe1cf6202f3f3e0c2"
+    },
+    {
+      "filename": "luxestyle-logo.png",
+      "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6"
+    }
+  ],
+  "outputs": [
+    {
+      "filename": "luxestyle-brand-desktop-r69.mp4",
+      "width": 1280,
+      "height": 1120,
+      "bytes": 2243231,
+      "sha256": "43b345312280fd1c8340a2b13babf3eed7438dcb2cb46a5a8152afbd8a0d99b3",
+      "poster": "luxestyle-brand-desktop-poster.jpg",
+      "posterSha256": "0dcb0f8f3c0b2070ac76ce4bf747160316064f7a5c91d63ce3010254ebcca3a2"
+    },
+    {
+      "filename": "luxestyle-brand-mobile-r69.mp4",
+      "width": 810,
+      "height": 1080,
+      "bytes": 1497161,
+      "sha256": "8c38e6eeac189de539cc213bf0a9c74d275cbc5c91d36a2bacb1e5090e1b80d6",
+      "poster": "luxestyle-brand-mobile-poster.jpg",
+      "posterSha256": "c2fcb1d0ba5daf32087bf99c7cd3cbffa61c51172ec1bf3e2e21cb3acce1c988"
+    }
+  ],
+  "renderer": {
+    "filename": "render_brand_film.py",
+    "sha256": "81c46bf27969479a1c294a7641b70a1ac3fe3efa2a5d2369f1c973052b4b67fd"
+  },
+  "reviewStatus": "Rendered website-edit draft; not owner-approved or deployed. Independent technical/visual QA pending separately.",
+  "imageEditing": "Existing website illustrations only; cropping/layout/typography/reveal masks. No generated product action, no image zoom, no global product recolouring."
+}
