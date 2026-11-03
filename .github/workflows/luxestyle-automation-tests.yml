@@ -248,6 +248,8 @@ jobs:
           node automation/lib/schmuck_menue_test.mjs
           # Rucksack-Taxonomie (Bereichsdatei rucksaecke.json): Menue-Umbau «Taschen & Rucksaecke», Gruppen-Sammlungen; ohne Netz
           node automation/lib/rucksaecke_menue_test.mjs
+          # Trennung «Kueche & Kochen» / «Geschirr & Tisch» im Hauptmenue (Vorlage: Hauptmenue vom 03.11.2026): Umbau, Pruefregel, Plan der sieben Sammlungen, Laeufe mit Attrappe; ohne Netz
+          node automation/lib/kueche_geschirr_menue_test.mjs
           # Doppelte Seitentitel bei Sammlungen (Damen/Herren-Paare, Rucksack-Chips): Plan und Lauf mit Attrappe; ohne Netz
           node automation/lib/seo_dubletten_test.mjs
           node automation/lib/stecker_cj_test.mjs
