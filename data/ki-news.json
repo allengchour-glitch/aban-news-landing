@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-02T12:20:40Z",
+ "stand": "2026-11-03T11:53:47Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Straßenverkehr: KI soll Handy-Sünder automatisch erkennen",
-   "u": "https://www.golem.de/news/strassenverkehr-ki-soll-handy-suender-automatisch-erkennen-2611-214752.html",
-   "q": "Golem",
-   "d": "2026-11-02T12:00:02Z",
-   "s": "Bund und Länder unterstützen den Einsatz von Kameras, die Autofahrer mit Handy am Steuer per KI identifizieren. (Überwachung, Kameras)",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Agenten bauen Zivilisation in Minecraft auf und verlieren sich in Bürokratie",
-   "u": "https://www.heise.de/news/KI-Agenten-bauen-Zivilisation-in-Minecraft-auf-und-verlieren-sich-in-Buerokratie-11507972.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "iOS 27.3: Apple kündigt Apple Intelligence für China an",
+   "u": "https://www.heise.de/news/Apple-Intelligence-kommt-nach-China-mit-iOS-27-3-11508160.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-02T11:54:00Z",
-   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt.",
+   "d": "2026-11-03T11:28:00Z",
+   "s": "Zwei Jahre nach dem Start von Apples KI-System kommt es ins Reich der Mitte. Neu sind die geplanten Features aber nicht.",
    "sprache": "de"
   },
   {
-   "t": "Digitalgipfel: Minister und Industrie hoffen auf KI",
-   "u": "https://www.heise.de/news/Digitalgipfel-Minister-und-Industrie-hoffen-auf-KI-11507882.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-02T11:51:00Z",
-   "s": "Zum Auftakt des Digitalgipfels der Bundesregierung in Berlin fordert der Bundesdigitalminister mehr KI-Offenheit – von Gesellschaft wie Unternehmen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Bundesregierung: Deutschland soll bis 2030 zur \"KI-Nation\" werden",
-   "u": "https://www.golem.de/news/bundesregierung-deutschland-soll-bis-2030-zur-ki-nation-werden-2611-214750.html",
+   "t": "Maschinenträume 5: KI-Ent-Täuschung",
+   "u": "https://www.golem.de/news/maschinentraeume-5-ki-ent-taeuschung-2611-214755.html",
    "q": "Golem",
-   "d": "2026-11-02T11:36:01Z",
-   "s": "Wird Deutschland im KI-Wettbewerb mit den USA und China abgehängt? Die Bundesregierung sieht bei dem Thema einen starken Handlungsdruck. (Bundesregierung, KI)",
+   "d": "2026-11-03T11:00:02Z",
+   "s": "Die KI-Apostel versprechen uns das Paradies auf Erden. Doch selbst eine Superintelligenz kann keine Wunder vollbringen. Zeit für ein wenig Realismus. Ein Deep Dive von P. R. Rhesia (Maschinenträume, K…",
    "sprache": "de"
   },
   {
-   "t": "Anthropic verbietet Claude Nachbau von Games – doch die Regeln treffen auch legitime Projekte",
-   "u": "https://t3n.de/news/anthropic-claude-games-1771064/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "heise-Angebot: Claude Code, Copilot und Codex im Entwicklungsalltag",
+   "u": "https://www.heise.de/news/KI-gestuetzte-Programmierung-vom-Feature-Auftrag-zum-Pull-Request-11507480.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-03T11:00:00Z",
+   "s": "Claude Code, GitHub Copilot und OpenAI Codex im Xcode-Umfeld: Wie Sie mit den Agenten arbeiten, ihre Ergebnisse und auch die Risiken im Blick behalten.",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic IPO: Warum der größte Börsengang aller Zeiten ins Wanken gerät",
+   "u": "https://t3n.de/news/anthropic-ipo-boersengang-wanken-risiken-1771236/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-02T11:30:51Z",
+   "d": "2026-11-03T10:55:00Z",
+   "s": "Im Vorfeld des möglicherweise größten Börsengangs aller Zeiten meldet Anthropic ein Umsatzplus von gut 1.100 Prozent. Doch Milliardenverluste und Verpflichtungen für KI-Infrastruktur von fast 900 Mill…",
+   "sprache": "de"
+  },
+  {
+   "t": "How “reverse game theory” could keep AI agents in check",
+   "u": "https://www.technologyreview.com/2026/11/03/1147934/reverse-game-theory-mechanism-design-ai-alignment/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-03T10:43:41Z",
+   "s": "A new approach known as “reverse game theory” aims to create incentives for powerful AI models that make following the rules the most rational choice. As AI models become more capable, safety research…",
+   "sprache": "en"
+  },
+  {
+   "t": "KI-Update sorgt für Frust: Claude verweigert das Nachbauen von Games",
+   "u": "https://t3n.de/news/anthropic-claude-ki-update-game-nachbau-blockade-1771064/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-03T09:55:00Z",
    "s": "Anthropic will verhindern, dass sich sein KI-Modell Claude weiter zum Nachbau von existierenden Games heranziehen lässt. Eine entsprechende Änderung im Systemprompt sorgt aber offenbar auch bei legiti…",
    "sprache": "de"
   },
   {
-   "t": "KI-Agenten sollen Zivilisation in Minecraft aufbauen – und verlieren sich in Bürokratie",
-   "u": "https://t3n.de/news/ki-agenten-sollen-zivilisation-in-minecraft-aufbauen-und-verlieren-sich-in-buerokratie-1771070/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-02T10:31:46Z",
-   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt. weiterlesen auf t3n.de",
+   "t": "Wütende KI-Meuten: Wie gefälschte Proteste auf Tiktok Geld bringen sollen",
+   "u": "https://www.golem.de/news/wuetende-ki-meuten-wie-gefaelschte-proteste-auf-tiktok-geld-bringen-sollen-2611-214732.html",
+   "q": "Golem",
+   "d": "2026-11-03T08:45:02Z",
+   "s": "Auf Tiktok protestieren KI-generierte Menschen gegen die Politik. Dahinter steckt ein Geschäftsmodell, das mit Empörung Reichweite und Geld erzeugt. Von Alexander Riechelmann (Tiktok, Spam)",
    "sprache": "de"
   },
   {
-   "t": "Verhaltensscanner in Berlin: Verdrängung der Schwächsten",
-   "u": "https://netzpolitik.org/2026/verhaltensscanner-in-berlin-verdraengung-der-schwaechsten/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-02T09:49:52Z",
-   "s": "KI-gestützte Videoüberwachung in Berlin wird von verschiedenen Seiten verschieden gut angenommen. – CC-BY-NC-SA 4.0: netzpolitik.orgJetzt läuft die Videoüberwachung mit Verhaltensanalyse in Berlin dau…",
-   "sprache": "de"
-  },
-  {
-   "t": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
-   "u": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-01T21:55:23Z",
-   "s": "Data centers are deeply unpopular. But what if we called them something else?",
+   "t": "Heimstaden is changing residential real estate management with AI",
+   "u": "https://openai.com/index/heimstaden",
+   "q": "OpenAI",
+   "d": "2026-11-03T08:00:00Z",
+   "s": "Discover how Heimstaden uses OpenAI’s ChatGPT Enterprise and Codex to transform property management, cut costs, and empower employees across Europe.",
    "sprache": "en"
   },
   {
-   "t": "AI can make tech CEOs’ lives easier. What about everyone else?",
-   "u": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
+   "t": "Apple Watch’s AI features for rewinding and recapping conversations begin beta testing",
+   "u": "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/",
    "q": "TechCrunch AI",
-   "d": "2026-11-01T20:57:58Z",
-   "s": "On Equity, we discuss why tech CEO statements can seem so tone deaf.",
+   "d": "2026-11-03T07:20:00Z",
+   "s": "Now in beta: Apple's new Audio Intelligence features can help you remember what someone said or take notes on conversations.",
    "sprache": "en"
   },
   {
-   "t": "Transparenzbericht 3. Quartal 2026: Unsere Einnahmen und Ausgaben und Druck im Kessel",
-   "u": "https://netzpolitik.org/2026/transparenzbericht-3-quartal-2026-unsere-einnahmen-und-ausgaben-und-steigender-druck-im-kessel/",
-   "q": "netzpolitik.org",
-   "d": "2026-10-31T07:34:23Z",
-   "s": "La Gare Saint-Lazare, le train de Normandie (1877) – Gemeinfrei: Claude MonetAuf dem politischen Druckanzeiger klettert der Zeiger stetig nach oben. Druck erzeugt bekanntlich Gegendruck. Vor allem jun…",
-   "sprache": "de"
+   "t": "Here’s who is falling in line for Trump’s “Super Intelligence” loyalty test",
+   "u": "https://www.technologyreview.com/2026/11/02/1147932/heres-who-is-falling-in-line-for-trumps-super-intelligence-loyalty-test/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-03T04:18:47Z",
+   "s": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. At the end of September, President Trump signed an executive o…",
+   "sprache": "en"
   }
  ]
 }
