@@ -800,6 +800,9 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 | R67 Produkte / Master | Zwei Varianten geprüft; Referenzstopp und Farbannahmebedingungen je Take ergänzt | Projektor-Defaultbildbindung unbekannt, Pyjama-rueckhol blockiert; gleicher18s-Master, keine MP4/Render/Posts |
 | R67 Verkaufsgrundlagen | Acht Kategorieansichten und genau eine FR-Desktop-Timeout-Gegenprobe ausgeführt | Begrenzte Breiten-/Fokusprüfung erfolgreich; ursprünglicher Timeout erhalten, keine Themeänderung |
 | R67 Klaviyo | Drei Flowdefinitionen und Email3-Originale frisch gegengeprüft; Tagesreport übernommen | Alle draft; derselbe eine Freigabeentwurf, nicht angewendet oder versandt; keine neuen Reports |
+| R68 Hauptvideo / Quellen | Auf ausdrücklichen Markenfilm-Auftrag15GitHub-Quellen und2realeVideodateien/10Frames geprüft; ein20s-Storyboard mit4Originaltakes vorbereitet | AktuelleFotowand/Altwerbung ungeeignet; Originalmaterial/Produktbindung/Rechte fehlen, keineMP4/Render/Themeänderung |
+| R68 Skills | Zwei offizielle Text-Skills und eigenen LuxeStyle-Qualitäts-Skill projektlokal eingerichtet;93Originaldateien/140Markdownlinks geprüft | Keine Runtime/Hook/Auto-Claude-Ausführung; Herkunft gesichert,20einschlägige Regeln gelesen |
+| R68 Abendgegenprobe | Konten,25Planobjekte/40PENDING,2Varianten,3Flowdefinitionen undEmail3Originale frisch gelesen; Tagesreports wiederverwendet | Threads-Termin erhalten; externeTikTok-Publikation/Musikflags dokumentiert, keineeigenenPosts/Reports/Kauf-Watch/Shop-/Flowwrites |
 
 [LUXESTYLE_LAUF_20261103] [Paket](LAUFPAKET-20261103-R64.md) · [Belege](LAUFBELEGE-20261103-R64.json) · [Master](MASTER-CONTENT-20261103-R64.md). Tagesreports abgeschlossen; spätere bestehende Läufe lesen sie ohne konkreten neuen Anlass nicht erneut.
 
@@ -808,3 +811,5 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 [LUXESTYLE_R66_20261103] [Kartenabgleich](MERCHANT-KARTEN-20261103-R66.md) · [Belege](MERCHANT-KARTEN-BELEGE-20261103-R66.json). Setup-Lesungen sind keine erneuten Tagesreports; Kauf-Watch bleibt beendet.
 
 [LUXESTYLE_R67_20261103] [Nachmittagspaket](NACHMITTAGSPAKET-20261103-R67.md) · [Belege](LAUFBELEGE-20261103-R67.json) · [gleicher Master](MASTER-CONTENT-20261103-R67.md). Tagesreports nicht erneut gelesen; Frequenz und beendeter Kauf-Watch unverändert.
+
+[LUXESTYLE_R68_20261103] [Markenfilm und Abendpaket](ABEND-UND-HAUPTVIDEO-20261103-R68.md) · [Belege](ABENDBELEGE-20261103-R68.json) · [Storyboard](HAUPTVIDEO-ANSICHT-20261103-R68.html). Zweck bestätigt, Film noch nicht produziert; keine neue Automation/Frequenz.
