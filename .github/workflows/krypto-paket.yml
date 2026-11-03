@@ -10,6 +10,7 @@ name: "Krypto-Paket (Auto-Update für den PC)"
 #   3. das fertige Paket ENTPACKEN und dort den Probelauf des PCs laufen lassen (fehlt eine Datei im Paket, fällt es HIER auf)
 #   4. Release: erst das ZIP (der Dateiname enthält die Version), dann paket.json; alte ZIPs werden danach entfernt
 #   5. Nachricht aufs Handy des Besitzers
+# Schritte 1 bis 3 laufen auch in jedem Pull Request, der tools/trading berührt (Probelauf der ganzen Kette); 4 und 5 NUR auf `main`.
 # NOT-AUS: eine Datei docs/KRYPTO-UPDATE-STOPP.txt mit einem Satz in `main` legen. Dann holt kein PC mehr etwas (Datei löschen = weiter).
 # Doku: docs/KRYPTO-AUTONOMIE.md, Abschnitt «Auto-Update».
 on:
@@ -19,13 +20,18 @@ on:
       - 'tools/trading/**'
       - '!tools/trading/daten/**'   # die täglichen Kurs- und News-Zwischenspeicher gehören nicht ins Paket und lösen keinen Bau aus
       - '.github/workflows/krypto-paket.yml'
+  pull_request:
+    paths:
+      - 'tools/trading/**'
+      - '!tools/trading/daten/**'
+      - '.github/workflows/krypto-paket.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: krypto-paket
+  group: krypto-paket-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -84,6 +90,7 @@ jobs:
           PY
 
       - name: Release «krypto-latest» aktualisieren
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -110,7 +117,7 @@ jobs:
           gh release view krypto-latest --json assets --jq '.assets[] | "\(.name) \(.size) Bytes"'
 
       - name: Handy-Nachricht
-        if: success()
+        if: success() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         shell: bash
         env:
           TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -124,7 +131,7 @@ jobs:
           curl -sS -m 20 "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${text}" > /dev/null || echo "Telegram nicht erreichbar (egal)"
 
       - name: Handy-Nachricht bei Fehlschlag
-        if: failure()
+        if: failure() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         shell: bash
         env:
           TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
