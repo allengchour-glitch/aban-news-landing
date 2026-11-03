@@ -1,0 +1,17 @@
+{
+  "scope": "Separate observation, no change or approval assumed. Current full original retained locally; any future edit requires a fresh full read/diff/collision/identity check.",
+  "id": 414937422,
+  "uuid": "7722742248805451240",
+  "scheduledAt": "2026-11-03T18:00:00+01:00",
+  "field": "tiktokData.autoAddMusic",
+  "currentValue": true,
+  "previousValue": "unknown_not_returned",
+  "selectedSound": "unknown",
+  "commercialRights": "unknown",
+  "proposedAutoAddMusicValueForSeparateDecision": false,
+  "correctionApplied": false,
+  "allOtherFieldsMustBePreserved": true,
+  "notAFullCreativeProductOrRightsApproval": true,
+  "ownerInstructionReceivedForThisCorrection": false,
+  "ownWrites": 0
+}
