@@ -44,6 +44,11 @@ STOP = HIER.parent / "ki_bot" / "STOP"    # Not-Aus: nichts eröffnen, der Pilot
 PAUSE = HIER.parent / "ki_bot" / "PAUSE"  # Auto-Handel aus: nichts handeln, Positionen bleiben
 SEITE = HIER / "cockpit.html"
 MARKT = HIER / "markt.html"
+try:  # die Update-Module stehen absichtlich allein: ein Fehler darin darf das Cockpit nie lahmlegen
+    import autoupdate as AU
+    import pflege as PF
+except Exception:  # noqa: BLE001
+    AU = PF = None
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
@@ -93,6 +98,23 @@ def umgebung(basis=None, lesen=None):
 def notaus_env_aktiv(env=None):
     env = umgebung() if env is None else env
     return STOP.exists() or env.get("KI_BOT_STOP", "") == "1"
+
+
+def _wurzel():
+    """Wurzel des Programms für Update-Anzeige und Update-Knopf: der Ordner über data/. (Liegt DATA anderswo, wie in den Tests, dann ein Ordner ohne Update-Dateien.)"""
+    return DATA.parent if DATA.name == "data" else DATA / "_ohne_update"
+
+
+def programm_version():
+    """Nummer der Programmversion auf der Platte (tools/trading/VERSION.json), leer wenn unbekannt."""
+    try:
+        v = AU.lokale_version(_wurzel()) if AU else None
+    except Exception:  # noqa: BLE001
+        v = None
+    return v["version"] if v else ""
+
+
+VERSION_GELADEN = programm_version()   # die Version, mit der DIESES Cockpit-Fenster gestartet wurde: ein Update danach zeigt den Hinweis «neu öffnen»
 
 
 def _json(name, standard):
@@ -185,7 +207,8 @@ AKTIONEN = {
     "selbsttest": ([], 900, "Selbsttest"),
     "aufgabe": ([], 60, "Täglich automatisch einrichten"),
     "heilen": ([], 1500, "Alles prüfen und reparieren"),
-    "update": ([], 180, "Update holen"),
+    "heilen_auto": ([], 1500, "Automatische Prüfung (ohne Probelauf)"),
+    "update": ([], 600, "Update holen"),
     "bericht": ([], 120, "Wochenbericht aufs Handy"),
     "auto_an": ([], 10, "Auto-Handel an"),
     "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
@@ -381,11 +404,12 @@ def _punkte_jetzt():
                       _json("ki-trader.json", {"entscheide": []}))
 
 
-def selbstheilung(starter=None, befehl=None, punkte_lesen=None):
+def selbstheilung(starter=None, befehl=None, punkte_lesen=None, mit_probelauf=True):
     """«Alles prüfen und reparieren»: heilt NUR, was ohne Handel und ohne Geld heilbar ist: fehlende Windows-Aufgaben anlegen
     (nur bei Auto-Handel AN), veraltete Markt-Infos auffrischen, dazu ein Prüflauf ohne Aufträge, der die ganze Kette testet
     (Schlüssel, Börse, Entscheid). NIE: Aufträge senden, Risiko-Stufe ändern, Schlüssel anfassen, Auto-Handel ein- oder ausschalten.
-    Was sich so nicht heilen lässt, steht danach mit einer Anweisung da. → (ok, Text); ok, wenn jeder versuchte Schritt gelang."""
+    Was sich so nicht heilen lässt, steht danach mit einer Anweisung da. → (ok, Text); ok, wenn jeder versuchte Schritt gelang.
+    mit_probelauf=False: ohne den Prüflauf (die automatische Prüfung beim Start und nach dem Tageslauf: der Tageslauf war der Test)."""
     starter = starter or _skript
     punkte_lesen = punkte_lesen or _punkte_jetzt
     vor = {x["name"]: x for x in punkte_lesen()}
@@ -413,10 +437,11 @@ def selbstheilung(starter=None, befehl=None, punkte_lesen=None):
         z.append("✅ Markt-Infos aufgefrischt." if ok else "❌ Markt-Infos: " + (text.strip().splitlines() or ["?"])[-1][:200])
         ok_alles = ok_alles and ok
     # 3) Prüflauf ohne Aufträge: testet Schlüssel, Börse und Entscheid in einem
-    ok, text = starter(["pilot.py", "--lauf", "--trocken"], 300)
-    letzte = (text.strip().splitlines() or ["keine Ausgabe"])[-1][:200]
-    z.append(("✅ Prüflauf ohne Aufträge ok: " if ok else "❌ Prüflauf ohne Aufträge FEHLGESCHLAGEN: ") + letzte)
-    ok_alles = ok_alles and ok
+    if mit_probelauf:
+        ok, text = starter(["pilot.py", "--lauf", "--trocken"], 300)
+        letzte = (text.strip().splitlines() or ["keine Ausgabe"])[-1][:200]
+        z.append(("✅ Prüflauf ohne Aufträge ok: " if ok else "❌ Prüflauf ohne Aufträge FEHLGESCHLAGEN: ") + letzte)
+        ok_alles = ok_alles and ok
     # Danach: was bleibt, mit Anweisung
     nach = punkte_lesen()
     rest = [x for x in nach if x["ok"] is False or x.get("warnung")]
@@ -430,8 +455,8 @@ def selbstheilung(starter=None, befehl=None, punkte_lesen=None):
     return ok_alles, "\n".join(z)
 
 
-def aktion(name, starter=None, befehl=None):
-    """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter: für Tests."""
+def aktion(name, starter=None, befehl=None, update=None):
+    """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter, befehl, update: für Tests."""
     if name not in AKTIONEN:
         raise KeyError(name)
     args, zeit, titel = AKTIONEN[name]
@@ -478,6 +503,22 @@ def aktion(name, starter=None, befehl=None):
                 _AUFGABE_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen, nicht erst nach 5 Minuten
         elif name == "heilen":
             ok, text = selbstheilung(starter=starter, befehl=befehl)
+        elif name == "heilen_auto":
+            ok, text = selbstheilung(starter=starter, befehl=befehl, mit_probelauf=False)
+        elif name == "update" and update is None and befehl is None and not (ROOT / ".git").exists():
+            # Das ZIP-Paket hat kein Git: das Programm holt sich das geprüfte Paket selbst (autoupdate.py, Probelauf in einer Kopie, Rückweg bei Fehlern)
+            if AU is None:
+                ok, text = False, "Das Update-Modul (autoupdate.py) fehlt — bitte das neueste ZIP entpacken."
+            else:
+                r = AU.einspielen(wurzel=_wurzel(), env=umgebung(), hand=True)
+                ok, text = r["ok"], r["text"]
+                if r["ergebnis"] == "eingespielt":
+                    text += "\n\n→ Cockpit-Fenster schliessen und cockpit.bat neu starten, damit alles wirkt."
+        elif name == "update" and update is not None:
+            r = update()
+            ok, text = r["ok"], r["text"]
+            if r["ergebnis"] == "eingespielt":
+                text += "\n\n→ Cockpit-Fenster schliessen und cockpit.bat neu starten, damit alles wirkt."
         elif name == "update":
             # Die Bots schreiben eingecheckte Kursdateien (tools/trading/daten) bei jedem Lauf neu; als «lokale Änderung»
             # würden sie git pull blockieren. Es sind nur Zwischenspeicher — der nächste Lauf lädt sie frisch.
@@ -665,7 +706,7 @@ def stand(env=None):
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
             "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")),
-            "calls": calls_stand()}
+            "calls": calls_stand(), "programm": {"geladen": VERSION_GELADEN, "auf_platte": programm_version()}}
 
 
 def calls_stand():
@@ -847,6 +888,13 @@ def gesundheit(env, lb, ki, heute=None):
             else:
                 p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min."
                   + (f" — der letzte Durchgang wurde übersprungen (Lauf-Sperre belegt, {serie['anzahl']}×)" if serie and serie["art"] == "besetzt" else ""))
+    for _name, _quelle in (("Programm-Update (automatisch)", lambda: AU.ampel(env, _wurzel())),
+                           ("Selbstpflege (automatisch)", lambda: PF.ampel(_wurzel()))):
+        try:
+            _ok, _text, _warn = _quelle()
+            p(_name, _ok, _text, warnung=_warn)
+        except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+            pass
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600
@@ -1045,13 +1093,37 @@ def telegram_schleife(env=None, basis="https://api.telegram.org", runden=None, w
                 arbeit.put(text)
 
 
+def pflege_beim_start(warte=4.0, stunden=6.0, runden=None, schlafen=time.sleep, ausfuehren=None):
+    """Hintergrund-Faden des Cockpits: kurz nach dem Start und danach alle `stunden` Stunden «Alles prüfen und reparieren» (ohne Probelauf, sendet nie Aufträge) —
+    ohne Klick. Legt fehlende Windows-Aufgaben an (nur bei Auto-Handel AN) und frischt veraltete Markt-Infos auf. runden: für Tests."""
+    ausfuehren = ausfuehren or (lambda: aktion("heilen_auto"))
+    schlafen(warte)
+    n = 0
+    while runden is None or n < runden:
+        try:
+            ausfuehren()
+        except Exception:  # noqa: BLE001 — die Prüfung darf das Cockpit nie stören
+            pass
+        n += 1
+        if runden is not None and n >= runden:
+            break
+        schlafen(stunden * 3600)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--kein-browser", action="store_true")
     ap.add_argument("--ohne-telegram", action="store_true")
     ap.add_argument("--ohne-news", action="store_true")
+    ap.add_argument("--ohne-pflege", action="store_true", help="keine automatische Prüfung im Hintergrund")
+    ap.add_argument("--heilen", action="store_true", help="ohne Fenster «Alles prüfen und reparieren» einmal ausführen und beenden (Aufgabenplanung; sendet nie Aufträge)")
+    ap.add_argument("--probelauf", action="store_true", help="mit --heilen: zusätzlich ein Prüflauf des Piloten ohne Aufträge")
     a = ap.parse_args()
+    if a.heilen:
+        ok, text = selbstheilung(mit_probelauf=a.probelauf)
+        print(text)
+        return 0 if ok else 1
     Cockpit.port = a.port
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), Cockpit)
     adresse = f"http://127.0.0.1:{a.port}"
@@ -1064,6 +1136,9 @@ def main():
         import signale as SG
         threading.Thread(target=NW.schleife, args=(SG.push,), daemon=True).start()
         print(f"News-Wächter aktiv: prüft alle {NW.NEWS_MINUTEN} Minuten, Alarme kommen aufs Handy (/news zeigt die letzten).")
+    if not a.ohne_pflege:
+        threading.Thread(target=pflege_beim_start, daemon=True).start()
+        print("Automatische Prüfung aktiv: legt fehlende Aufgaben an und frischt Markt-Infos auf (beim Start und alle 6 Stunden).")
     if not a.kein_browser:
         import webbrowser
         threading.Timer(1.0, lambda: webbrowser.open(adresse)).start()

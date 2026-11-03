@@ -160,3 +160,8 @@ dropship/*.jsonl.lock
 # LuxeStyle Assist: transient locks only; handoff.jsonl is versioned
 /dropship/assistant/.handoff.lock
 /dropship/assistant/.handoff-*.tmp
+data/krypto-update.json
+data/krypto-update-aus.txt
+data/krypto-update-backup/
+data/krypto-update-tmp/
+data/krypto-pflege.json

@@ -1071,6 +1071,91 @@ with tempfile.TemporaryDirectory() as tmp:
         C.DATA, C.STOP, C.PAUSE = alt
         Sp.ORDNER = alt_sperre
 
+# ── Auto-Update und automatische Pflege im Cockpit (nur Wegwerf-Ordner, nie das echte Update, nie echte Aufgaben) ──
+import contextlib as _cl  # noqa: E402
+import io as _io  # noqa: E402
+import tempfile as _tf  # noqa: E402
+import autoupdate as _AU  # noqa: E402
+import pflege as _PF  # noqa: E402
+pruefe("AKTIONEN: heilen_auto und update vorhanden", "heilen_auto" in C.AKTIONEN and "update" in C.AKTIONEN)
+_s_auto = []
+with _tf.TemporaryDirectory() as _td_a:
+    _alt_a = (C.DATA, C.PAUSE, C.STOP, C.ROOT)
+    C.DATA, C.PAUSE, C.STOP = Path(_td_a) / "data", Path(_td_a) / "PAUSE-nein", Path(_td_a) / "STOP-nein"
+    try:
+        def _st_auto(args, zeit):
+            _s_auto.append(list(args))
+            return True, "ok"
+        ok_m, t_m = C.selbstheilung(starter=_st_auto, befehl=lambda c, z: (True, "ok"), punkte_lesen=lambda: [], mit_probelauf=False)
+        pruefe("selbstheilung(mit_probelauf=False): kein Prüflauf des Piloten, kein Prüflauf-Satz im Bericht", ["pilot.py", "--lauf", "--trocken"] not in _s_auto and "Prüflauf" not in t_m and ok_m, (_s_auto, t_m))
+        ok_m, t_m = C.selbstheilung(starter=_st_auto, befehl=lambda c, z: (True, "ok"), punkte_lesen=lambda: [])
+        pruefe("selbstheilung (Standard): der Prüflauf ohne Aufträge läuft weiterhin", ["pilot.py", "--lauf", "--trocken"] in _s_auto and "Prüflauf ohne Aufträge ok" in t_m)
+        e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "eingespielt", "text": "✅ Programm aktualisiert: a → b"})
+        pruefe("Update-Knopf (Paket): neue Version → Hinweis, das Cockpit-Fenster neu zu starten", e_u["ok"] and "neu starten" in e_u["text"] and "aktualisiert" in e_u["text"], e_u)
+        e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "aktuell", "text": "Version a ist die neueste"})
+        pruefe("Update-Knopf (Paket): nichts Neues → kein Neustart-Hinweis", e_u["ok"] and "neu starten" not in e_u["text"], e_u)
+        e_u = C.aktion("update", update=lambda: {"ok": False, "ergebnis": "fehlgeschlagen", "text": "Probelauf nicht bestanden"})
+        pruefe("Update-Knopf (Paket): Fehler → ok=False mit dem Grund", not e_u["ok"] and "Probelauf" in e_u["text"], e_u)
+        _alt_holen = _AU._holen
+        _AU._holen = lambda url, timeout=20, max_bytes=0: (None, b"")
+        C.ROOT = Path(_td_a)            # kein .git darin → der Paket-Weg mit dem echten Updater, hier gegen ein Netz, das nichts liefert
+        try:
+            e_u = C.aktion("update")
+        finally:
+            C.ROOT = _alt_a[3]
+            _AU._holen = _alt_holen
+        pruefe("Update-Knopf ohne Git-Ordner geht den Paket-Weg: ohne Internet eine verständliche Meldung, nichts geändert",
+               e_u["ok"] and "kein Internet" in e_u["text"] and not (Path(_td_a) / "tools").exists(), e_u)
+        (Path(_td_a) / "data").mkdir(exist_ok=True)
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: «Programm-Update (automatisch)» und «Selbstpflege (automatisch)» sind da und grau ohne Alarm, solange nichts gelaufen ist",
+               "Programm-Update (automatisch)" in pk and "Selbstpflege (automatisch)" in pk and pk["Selbstpflege (automatisch)"]["ok"] is None
+               and not pk["Selbstpflege (automatisch)"].get("warnung"), {k: v for k, v in pk.items() if "automatisch" in k})
+        _PF._schreiben(Path(_td_a), {"zeit": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "update": {"ergebnis": "aktuell", "text": "x", "ok": True},
+                                     "heilung": {"ok": False, "text": "❌ Prüflauf ohne Aufträge FEHLGESCHLAGEN: HTTP 401"}})
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: Selbstpflege ist rot, wenn die Selbstprüfung etwas fand, und nennt es", pk["Selbstpflege (automatisch)"]["ok"] is False and "HTTP 401" in pk["Selbstpflege (automatisch)"]["text"], pk["Selbstpflege (automatisch)"])
+        pruefe("programm_version: ohne VERSION.json leer", C.programm_version() == "")
+        _AU._bytes_atomar(Path(_td_a) / "tools/trading/VERSION.json", json.dumps({"version": "2026-11-04.abc1234", "commit": "abc1234", "gebaut": "2026-11-04T09:00:00Z"}).encode("utf-8"))
+        pruefe("programm_version: liest die Nummer aus tools/trading/VERSION.json", C.programm_version() == "2026-11-04.abc1234")
+        _AU.status_schreiben(Path(_td_a), {"geprueft": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "ergebnis": "aktuell", "ok": True, "text": "Version x ist die neueste"})
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: frisch geprüftes Update ist grün und nennt die Programmversion", pk["Programm-Update (automatisch)"]["ok"] is True and "2026-11-04.abc1234" in pk["Programm-Update (automatisch)"]["text"], pk["Programm-Update (automatisch)"])
+    finally:
+        C.DATA, C.PAUSE, C.STOP, C.ROOT = _alt_a
+_runden, _rufe, _schlaf = [], [], []
+C.pflege_beim_start(warte=3.0, stunden=2.0, runden=3, schlafen=_schlaf.append, ausfuehren=lambda: _rufe.append(1))
+pruefe("pflege_beim_start: wartet kurz, prüft, schläft dann Stunden — drei Runden", _rufe == [1, 1, 1] and _schlaf == [3.0, 7200.0, 7200.0], (_rufe, _schlaf))
+_schlaf.clear()
+
+
+def _boese_runde():
+    raise RuntimeError("boom")
+
+
+C.pflege_beim_start(warte=0, stunden=1, runden=2, schlafen=_schlaf.append, ausfuehren=_boese_runde)
+pruefe("pflege_beim_start: eine Ausnahme in der Prüfung stoppt den Faden nicht", _schlaf == [0, 3600.0], _schlaf)
+_alt_sh, _alt_argv = C.selbstheilung, sys.argv
+_gedruckt = _io.StringIO()
+try:
+    _aufrufe = []
+    for _erg, _rc in (((True, "alles gut"), 0), ((False, "etwas kaputt"), 1)):
+        C.selbstheilung = lambda _e=_erg, **kw: (_aufrufe.append(kw), _e)[1]
+        sys.argv = ["cockpit.py", "--heilen"]
+        with _cl.redirect_stdout(_gedruckt):
+            _r = C.main()
+        pruefe(f"cockpit.py --heilen: ohne Fenster, Rückgabewert {_rc} bei {'Erfolg' if _rc == 0 else 'Fehlschlag'}", _r == _rc and ("alles gut" in _gedruckt.getvalue() or _rc == 1), _r)
+    pruefe("cockpit.py --heilen: ohne --probelauf KEIN Prüflauf des Piloten", _aufrufe[0] == {"mit_probelauf": False}, _aufrufe)
+    sys.argv = ["cockpit.py", "--heilen", "--probelauf"]
+    with _cl.redirect_stdout(_gedruckt):
+        C.main()
+    pruefe("cockpit.py --heilen --probelauf: mit Prüflauf", _aufrufe[-1] == {"mit_probelauf": True}, _aufrufe)
+finally:
+    C.selbstheilung, sys.argv = _alt_sh, _alt_argv
+_html = (HIER / "cockpit.html").read_text(encoding="utf-8")
+pruefe("cockpit.html: Hinweis «neue Programmversion installiert» und Knopf «Update holen» ohne Git-Verweis",
+       'id="versionHinweis"' in _html and "d.programm" in _html and 'data-a="update"' in _html and "git pull" not in _html)
+
 # ── Windows-Startdateien: statisch geprüft (kein cmd.exe im Test) ──
 auto = (HIER / "krypto-auto.bat").read_bytes()
 txt = auto.decode("ascii")
@@ -1096,6 +1181,20 @@ pruefe("start-auto.bat auto: ohne Pause, Tageswächter mit Ende (sonst blockiert
        '"%~1"=="auto"' in _sa and "--stunden" in _sa and "\npause" not in _sa.replace("\r", "") and "WARTE=rem" not in _sa)
 pruefe("krypto-auto.bat: ETH-Sparplan nur mit ausdrücklicher Freigabe (ETH_SPARPLAN_BETRAG), nicht schon wegen des Spot-Schlüssels",
        '"%ETH_SPARPLAN_BETRAG%"==""' in txt and 'if not "%BINANCE_API_KEY%"=="" (\r\n  call :schritt ETH-Sammler' not in txt)
+
+# ── Pflege-Zeile in den Start-Dateien (statisch) ──
+_zeilen = txt.split("\r\n")
+_i_ende = _zeilen.index(":ende")
+_pflege = [i for i, z in enumerate(_zeilen) if "pflege.py" in z and not z.startswith("REM")]
+pruefe("krypto-auto.bat: genau eine Pflege-Zeile, NACH :ende und vor dem letzten «goto :eof»", len(_pflege) == 1 and _pflege[0] > _i_ende and _zeilen[_pflege[0] + 1] == "goto :eof", _pflege)
+_pz = _zeilen[_pflege[0]]
+pruefe("krypto-auto.bat: die Pflege-Zeile endet mit «& exit /b» (cmd liest die Datei danach nicht mehr, auch wenn ein Update sie ersetzt) und nur wenn pflege.py da ist",
+       _pz.startswith('if exist "tools\\trading\\krypto_bot\\pflege.py" %PY% ') and _pz.endswith(" --still & exit /b"), _pz)
+pruefe("krypto-auto.bat: die Pflege läuft NACH dem Handel (hinter :ende), nicht davor", txt.index("pflege.py") > txt.index(":ende") > txt.index("meldung.py --ok"))
+_cb = (HIER / "cockpit.bat").read_bytes().decode("ascii").split("\r\n")
+_cz = [z for z in _cb if "cockpit.py" in z and not z.startswith("REM")]
+pruefe("cockpit.bat: Update und Cockpit in EINER Zeile, am Ende «& pause & exit /b», und sonst kein weiteres pause",
+       len(_cz) == 1 and "pflege.py --nur-update --still" in _cz[0] and _cz[0].endswith("cockpit.py & pause & exit /b") and sum(1 for z in _cb if z.strip().lower() == "pause") == 0, _cz)
 
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

@@ -1,0 +1,136 @@
+name: "Krypto-Paket (Auto-Update für den PC)"
+
+# Baut aus `main` bei jeder Änderung an tools/trading ein geprüftes Programmpaket und legt es als Release «krypto-latest» ab.
+# Der PC des Besitzers holt es sich nachts selbst (tools/trading/krypto_bot/autoupdate.py), und zwar nur mit Spielgeld (Testnetz):
+# sobald echtes Geld im Spiel sein könnte, schaltet sich der Auto-Update dort ab.
+#
+# Jeder Schritt hält die Kette an, nichts wird halb veröffentlicht:
+#   1. Selbsttests (dieselben wie auf dem PC in krypto-auto.bat, dazu die Tests des Updaters und des Paketbaus)
+#   2. Paket bauen (prüft sich dabei mit derselben Funktion wie der PC: Pfade, Prüfsummen, Syntax, Pflichtdateien, Windows-Zeilenenden)
+#   3. das fertige Paket ENTPACKEN und dort den Probelauf des PCs laufen lassen (fehlt eine Datei im Paket, fällt es HIER auf)
+#   4. Release: erst das ZIP (der Dateiname enthält die Version), dann paket.json; alte ZIPs werden danach entfernt
+#   5. Nachricht aufs Handy des Besitzers
+# NOT-AUS: eine Datei docs/KRYPTO-UPDATE-STOPP.txt mit einem Satz in `main` legen. Dann holt kein PC mehr etwas (Datei löschen = weiter).
+# Doku: docs/KRYPTO-AUTONOMIE.md, Abschnitt «Auto-Update».
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/trading/**'
+      - '!tools/trading/daten/**'   # die täglichen Kurs- und News-Zwischenspeicher gehören nicht ins Paket und lösen keinen Bau aus
+      - '.github/workflows/krypto-paket.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: krypto-paket
+  cancel-in-progress: false
+
+jobs:
+  paket:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Selbsttests (wie auf dem PC, dazu Updater und Paketbau)
+        shell: bash
+        run: |
+          set -eo pipefail
+          cd tools/trading/krypto_bot
+          for t in test_pilot test_sammler test_infos test_cockpit test_profit test_calls test_pilot2_plan test_pilot2_live test_pilot2_streng test_testnetz_pruefung test_news_waechter test_autoupdate; do
+            echo "=== $t"
+            python "$t.py" | tail -n 3
+          done
+          cd ..
+          echo "=== test_paket_bauen"
+          python test_paket_bauen.py | tail -n 3
+
+      - name: Paket bauen
+        id: bau
+        shell: bash
+        env:
+          COMMIT_TEXT: ${{ github.event.head_commit.message }}
+        run: |
+          set -eo pipefail
+          # Der Commit-Text ist Fremdtext: nur über die Umgebung weitergeben, erste Zeile, der Paketbau kürzt und bereinigt ihn noch einmal.
+          hinweis="$(printf '%s' "${COMMIT_TEXT:-}" | head -n 1)"
+          python tools/trading/paket_bauen.py --out build --commit "$GITHUB_SHA" --hinweis "$hinweis"
+          python -c "import json; m = json.load(open('build/paket.json')); print('version=' + m['version']); print('datei=' + m['datei'])" >> "$GITHUB_OUTPUT"
+          ls -l build
+
+      - name: Das fertige Paket entpacken und prüfen (so wie der PC es bekommt)
+        shell: bash
+        run: |
+          set -eo pipefail
+          rm -rf pruef
+          python -m zipfile -e "build/${{ steps.bau.outputs.datei }}" pruef
+          mkdir -p pruef/tools/trading
+          cp -r tools/trading/daten pruef/tools/trading/daten
+          cp -r data pruef/data
+          cd pruef
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "tools/trading/krypto_bot")
+          import autoupdate as AU
+          ok, text = AU.schnelltests(".")
+          print(text)
+          sys.exit(0 if ok else 1)
+          PY
+
+      - name: Release «krypto-latest» aktualisieren
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.bau.outputs.version }}
+          DATEI: ${{ steps.bau.outputs.datei }}
+        run: |
+          set -eo pipefail
+          if ! gh release view krypto-latest >/dev/null 2>&1; then
+            gh release create krypto-latest --prerelease --target "$GITHUB_SHA" \
+              --title "Krypto-Programmpaket (automatisch)" \
+              --notes "Wird bei jeder Änderung an tools/trading automatisch gebaut. Der PC holt es sich selbst — nicht von Hand herunterladen."
+          fi
+          # erst das ZIP, dann paket.json: ein PC, der gerade fragt, sieht nie eine Beschreibung ohne ihr ZIP
+          gh release upload krypto-latest "build/$DATEI" --clobber
+          gh release upload krypto-latest build/paket.json --clobber
+          gh release edit krypto-latest --notes "Version $VERSION · Commit $GITHUB_SHA · gebaut $(date -u '+%F %T') UTC. Der PC holt es sich selbst — nicht von Hand herunterladen."
+          # alte Pakete entfernen (nur das aktuelle bleibt)
+          gh release view krypto-latest --json assets --jq '.assets[].name' | while read -r name; do
+            case "$name" in
+              "$DATEI"|paket.json) ;;
+              krypto-paket-*.zip) gh release delete-asset krypto-latest "$name" --yes ;;
+            esac
+          done
+          gh release view krypto-latest --json assets --jq '.assets[] | "\(.name) \(.size) Bytes"'
+
+      - name: Handy-Nachricht
+        if: success()
+        shell: bash
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          VERSION: ${{ steps.bau.outputs.version }}
+          COMMIT_TEXT: ${{ github.event.head_commit.message }}
+        run: |
+          if [ -z "${TG_TOKEN:-}" ] || [ -z "${TG_CHAT:-}" ]; then echo "Kein Telegram eingerichtet."; exit 0; fi
+          neu="$(printf '%s' "${COMMIT_TEXT:-}" | head -n 1 | cut -c1-160)"
+          text="🤖 Krypto-Programm ${VERSION} ist geprüft und bereit. Dein PC holt es sich in der nächsten Nacht selbst (nur mit Spielgeld). Neu: ${neu:-Wartung}"
+          curl -sS -m 20 "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${text}" > /dev/null || echo "Telegram nicht erreichbar (egal)"
+
+      - name: Handy-Nachricht bei Fehlschlag
+        if: failure()
+        shell: bash
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "${TG_TOKEN:-}" ] || [ -z "${TG_CHAT:-}" ]; then exit 0; fi
+          text="⚠️ Krypto-Paketbau ist fehlgeschlagen — es geht nichts an deinen PC (das ist sicher, er bleibt auf der jetzigen Version). Lauf: ${LAUF}"
+          curl -sS -m 20 "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${text}" > /dev/null || true

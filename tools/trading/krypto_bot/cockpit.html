@@ -127,6 +127,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
     <button id="notaus" class="stop" type="button">Not-Aus</button>
   </header>
   <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — der Pilot schliesst seine Positionen und eröffnet nichts Neues.</div>
+  <div id="versionHinweis" class="hinweis karte" hidden style="margin-bottom:12px"></div>
 
   <section class="karte profit" aria-label="Profit" style="margin-bottom:12px">
     <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">💰 Profit</h2><span class="pill" id="p-modus">—</span>
@@ -168,7 +169,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
       <button type="button" data-a="selbsttest">🧪 Selbsttest<small>alle Prüfungen laufen lassen</small></button>
       <button type="button" data-a="heilen">🩹 Alles prüfen &amp; reparieren<small>Aufgaben, Markt-Infos, Prüflauf: handelt nie</small></button>
       <button type="button" data-a="aufgabe">🗓️ Täglich automatisch<small>Windows-Aufgabe 02:30 einrichten</small></button>
-      <button type="button" data-a="update">⬇️ Update holen<small>neueste Version laden (git pull)</small></button>
+      <button type="button" data-a="update">⬇️ Update holen<small>neueste Version laden (sonst nachts von selbst)</small></button>
     </div>
     <details style="margin-top:10px" id="g-box" open><summary><b>🩺 Gesundheit</b> <span id="g-kurz" class="unter"></span></summary><ul id="gesund" style="margin:8px 0 0;padding-left:0;list-style:none"></ul></details>
     <div class="konsole" id="konsole" aria-live="polite"><div class="ekopf">Bereit. Ausgaben der Knöpfe erscheinen hier.</div></div>
@@ -394,7 +395,10 @@ function zeichne(d) {
   $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
   $("tg").hidden = !d.telegram;
   zeigeCalls(d.calls);
-  $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
+  $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH") + (d.programm && d.programm.geladen ? " · Programm " + d.programm.geladen : "");
+  const pv = d.programm || {};
+  $("versionHinweis").hidden = !(pv.auf_platte && pv.geladen !== pv.auf_platte);
+  $("versionHinweis").textContent = `🔄 Eine neue Programmversion (${pv.auf_platte}) ist installiert. Dieses Fenster zeigt noch ${pv.geladen || "die alte"}: schliessen und cockpit.bat neu öffnen.`;
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
   const g = d.gesundheit || [];
@@ -512,7 +516,7 @@ const FRAGE = {
   ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
   sparplan: d => `ETH-Sparplan jetzt ausführen?\nModus: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD (Spot)" : "Testnetz (Spielgeld)"}\nEr kauft nur, wenn der nächste Termin fällig ist.`,
   aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 — auch auf Akku; war der PC aus, holt er den Lauf beim nächsten Start nach. Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
-  update: () => "Neueste Version holen (git pull)?\nDanach das Cockpit neu starten.",
+  update: () => "Neueste Version holen?\nSie wird erst in einer Kopie getestet und nur bei bestandenen Selbsttests eingespielt (nachts passiert das ohnehin von selbst).\nDanach das Cockpit-Fenster neu öffnen.",
   auto_an: d => `Auto-Handel wieder EINSCHALTEN?\n${d.notaus ? "Der Not-Aus wird aufgehoben. " : ""}Der nächste Lauf handelt wieder (Modus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}).`,
   auto_aus: () => "Auto-Handel ausschalten?\nDie Bots handeln dann nicht mehr. Offene Positionen bleiben stehen (Stop an der Börse bleibt).",
 };
