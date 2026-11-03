@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 73: bestehendes Design behalten, Kategorien gezielt ergänzen
+
+Massgebend sind die letzten Inhaberpräzisierungen: «das jetzige banner gefällt mir aber mehr» und Verbesserungen/Fehlerbehebung für gezieltes und freies Stöbern. **Banner, vorhandener Stil und relative Abschnittsreihenfolge bleiben erhalten.** Kein kompletter Neuaufbau. [Endgültiges Ergänzungspaket](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md) · [Patch](KATEGORIEN-ERGAENZUNGEN-20261104-R73.patch) · [Transfermanifest](KATEGORIEN-ERGAENZUNGEN-20261104-R73.json) · [Vorschau](https://luxestyle.ch/collections/damen-schuhe?preview_theme_id=212978598279).
+
+Im bestehenden UNPUBLISHED-Theme 212978598279: eigener Unterkategorie-Zweig korrigiert (Damen-Schuhe: 13 passende statt 28 fremde Bereiche), dazu ein geschlossener Zusatzbereich für fehlende Ziele mit Suche. Vorhandene Links werden nicht nochmals angeboten; globale Produktsuche erhalten. Neun finale Dateien exakt zurückgelesen; sechs bestehende Templateabschnitte einschliesslich Banner exakt wie MAIN, im siebten nur führender Auswahlblock geändert. Native Schlussprobe: 86/87 Bedingungen erfüllt; einzig die Hundewelt-Bildfolge änderte sich durch den gezielt entfernten Fehlartikel, anhand der Produktbilder erklärt. Keine Veröffentlichung des neuen Designs.
+
+16 Haupteinstiege und 180 gespeicherte Produktkarten begrenzt geprüft. Ein belegter Sortierfehler bereits am 03.11. live korrigiert: Hundert-Zahlen-Tafel (16655507915143) aus Hundewelt (689884037505) ausgeschlossen; Lernspielzeugzuordnung und Einschlussbedingungen bestätigt erhalten. Nicht erneut ausführen. Weitere Titelunklarheiten nicht blind verschoben, keine Vollkatalogbereinigung behauptet.
+
+MAIN-Dateiwrites/Publish sind im Connector gesperrt. Bestehende Websitefreigabe bleibt bestehen; nur engen Patch nach frischem Hashvergleich über unterstützten Weg übernehmen, keinen alten Gesamtentwurf veröffentlichen. Ein eigener alter Header-Snippet blieb nach blockierter Löschung unreferenziert im Entwurf; nicht übernehmen oder aktivieren. Frühere lokale R73-Redesignpakete sind überholt und nicht gepusht. R72-Startseite erhalten, R69-Film separat. Claude-Empfang unbekannt. 23 Aufgaben-IDs, 21 andere Aufgaben und Historien und Tagesgrenzen erhalten; keine neuen Reports oder Kauf-Watch.
+
+
 ## Aktueller Stand – 03.11.2026, Revision 72: Stöber-Startseite umgesetzt und im Entwurf geprüft
 
 Auf «push» jetzt einen konkreten [Zwei-Dateien-Patch](STARTSEITE-STOEBERN-20261103-R72.patch) erstellt und im bestehenden UNPUBLISHED-Theme 212978598279 gespeichert. [Übergabe und Prüfumfang](STARTSEITE-STOEBERN-20261103-R72.md) · [Ausgangs-/Zielhashes](STARTSEITE-STOEBERN-20261103-R72.json) · [Vorschau](https://luxestyle.ch/?preview_theme_id=212978598279).
