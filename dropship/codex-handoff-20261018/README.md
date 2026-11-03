@@ -1,5 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 75: neue Motive mit anderen Shop-Produkten
+
+Neuester Auftrag: «nimm neue produkte und mache mehr tolle bilder». Drei neue Lifestyle-Entwürfe tatsächlich gerendert: einzelner grüner Gewürztopf vor Terrakotta, dreiteiliges Camping-Kochset am See und bunte Hundematte im hellen Wohnraum. [Bilder ansehen](PRODUKTBILDER-20261104-R75.md) · [Quellen und Hashes](PRODUKTBILDER-20261104-R75.json) · [Finales Dreierpaket](PRODUKTBILDER-20261104-R75.zip). Bestehende Artikel verwendet, keine Produkte neu angelegt. Unterkategorie-Video wegen neuer Bildpriorität zurückgestellt; kein neues Video erstellt.
+
+Aktuelle native Produkt-/Bild-/Tagprüfung und Storefront-Gegenprobe; frischer Kanalwächter plus rueckhol-Check ohne Treffer. Vier Bildkandidaten gerendert: Kaffeebereiter wegen veränderter feiner Marken-/Skalenbeschriftung verworfen und vom finalen Paket ausgeschlossen. Drei finale Bilder visuell und unabhängig zweitgeprüft, je1536×1024. Lifestyle-Entwürfe, keine vollständige SKU-/Farb-/Mass-/Rechteabnahme. Gewürztopf zeigt bewusst ein Stück statt Referenz-Dreierset.
+
+**Bestehende Banner, R74-Bilder und R72/R73-Ergänzungen bleiben erhalten.** Noch keine Website-Einbindung, kein Shopify-Upload oder Produktfoto-Ersatz. Dateien mit aktuellem SHA und exaktem Rücklesen in GitHub gesichert; Claude-Empfang unbekannt. 23 Aufgaben-IDs, 22 andere Aufgaben, Tagesgrenze und beendeter Kauf-Watch unverändert.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 74: vier zusätzliche Kategoriebilder
 
 Auf «mehr neue Bilder» und «weiter» vier neue Motive tatsächlich generiert: Wohnen mit blauem Akzent, dunkles Schmuck-Stillleben, frische Beauty-Draufsicht und Tasche im Tageslicht. [Bilder und Verwendung](KATEGORIEBILDER-20261104-R74.md) · [Dateien/Quellen/Hashes](KATEGORIEBILDER-20261104-R74.json) · [Viererpaket](KATEGORIEBILDER-20261104-R74.zip). Je 1536 × 1024 px; eigenständige Bildaufbauten statt Wiederholung derselben Szene.
