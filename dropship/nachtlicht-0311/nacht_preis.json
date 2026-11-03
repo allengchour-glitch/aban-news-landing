@@ -1,0 +1,200 @@
+[
+ {
+  "sku": "Red-0.3 watts",
+  "vid": "1370991874294288384",
+  "cj": 5.94,
+  "fracht": 10.58,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 13.62,
+  "preis": 18.9,
+  "marge": 27.9,
+  "vorschlag": 19.9
+ },
+ {
+  "sku": "Grey-0.5wattsX4pcs",
+  "vid": "1425394857249214464",
+  "cj": 20,
+  "fracht": 28.27,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 39.79,
+  "preis": 40.9,
+  "marge": 2.7,
+  "vorschlag": 57.9
+ },
+ {
+  "sku": "Grey-0.5wattsX6pcs",
+  "vid": "1425394857253408768",
+  "cj": 27,
+  "fracht": 38.83,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 54.27,
+  "preis": 54.9,
+  "marge": 1.1,
+  "vorschlag": 78.9
+ },
+ {
+  "sku": "USB data cable-1pc",
+  "vid": "1440200863804166144",
+  "cj": 0.25,
+  "fracht": 6.49,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 5.56,
+  "preis": 18.9,
+  "marge": 70.6,
+  "vorschlag": 14.9
+ },
+ {
+  "sku": "Grey 5PC-0.5watts",
+  "vid": "1560231253654384640",
+  "cj": 22.5,
+  "fracht": 34.19,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 46.73,
+  "preis": 45.9,
+  "marge": -1.8,
+  "vorschlag": 67.9
+ },
+ {
+  "sku": "White 5PC-0.5watts",
+  "vid": "1560231253654384641",
+  "cj": 22.5,
+  "fracht": 32.93,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 45.69,
+  "preis": 45.9,
+  "marge": 0.5,
+  "vorschlag": 66.9
+ },
+ {
+  "sku": "2grey 1white-0.5 watts",
+  "vid": "21B10139-F694-4F71-A446-FD6AE78BB7AB",
+  "cj": 13.5,
+  "fracht": 22.09,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 29.34,
+  "preis": 29.9,
+  "marge": 1.9,
+  "vorschlag": 42.9
+ },
+ {
+  "sku": "Set1-0.5 watts",
+  "vid": "2412040925571620500",
+  "cj": 8.9,
+  "fracht": 12.03,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 17.25,
+  "preis": 18.9,
+  "marge": 8.7,
+  "vorschlag": 25.9
+ },
+ {
+  "sku": "Set2-0.5 watts",
+  "vid": "2412040925571620600",
+  "cj": 6.97,
+  "fracht": 11.76,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 15.44,
+  "preis": 18.9,
+  "marge": 18.3,
+  "vorschlag": 22.9
+ },
+ {
+  "sku": "2white 1grey-0.5 watts",
+  "vid": "353FCC71-217E-42E0-8E5B-8454DDBC4269",
+  "cj": 13.5,
+  "fracht": 21.85,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 29.14,
+  "preis": 29.9,
+  "marge": 2.5,
+  "vorschlag": 42.9
+ },
+ {
+  "sku": "White 2pcs-0.5 watts",
+  "vid": "7AA7C9EF-BD74-425C-B82F-7778DDCAA64C",
+  "cj": 9,
+  "fracht": 15.92,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 20.54,
+  "preis": 18.9,
+  "marge": -8.7,
+  "vorschlag": 29.9
+ },
+ {
+  "sku": "Grey-0.5 watts",
+  "vid": "8FA506EC-8840-4C7C-8A59-0176FEDF5BAB",
+  "cj": 6.26,
+  "fracht": 11.39,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 14.55,
+  "preis": 18.9,
+  "marge": 23,
+  "vorschlag": 21.9
+ },
+ {
+  "sku": "White 3pcs-0.5 watts",
+  "vid": "97F46D53-E120-444D-8436-A9066EF88945",
+  "cj": 13.5,
+  "fracht": 21.59,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 28.93,
+  "preis": 29.9,
+  "marge": 3.2,
+  "vorschlag": 42.9
+ },
+ {
+  "sku": "Grey 2pcs-0.5 watts",
+  "vid": "9BD60A15-A2A1-438A-8A5E-B1247AE86BD4",
+  "cj": 9,
+  "fracht": 16.43,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 20.96,
+  "preis": 18.9,
+  "marge": -10.9,
+  "vorschlag": 30.9
+ },
+ {
+  "sku": "Grey 3pcs-0.5 watts",
+  "vid": "B5D48378-80D0-403F-A0C6-D2ABA65933D0",
+  "cj": 13.5,
+  "fracht": 23.55,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 30.54,
+  "preis": 29.9,
+  "marge": -2.1,
+  "vorschlag": 44.9
+ },
+ {
+  "sku": "White-0.5 watts",
+  "vid": "B6576C32-7FB1-4A1E-BC14-FBE4E71A56C2",
+  "cj": 4.5,
+  "fracht": 10.98,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 12.76,
+  "preis": 18.9,
+  "marge": 32.5,
+  "vorschlag": 18.9
+ },
+ {
+  "sku": "Grey white-0.5 watts",
+  "vid": "ED735EA8-DAE9-4FCF-AA2C-D2D0AF57D200",
+  "cj": 10.8,
+  "fracht": 16.17,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 22.23,
+  "preis": 23.9,
+  "marge": 7,
+  "vorschlag": 32.9
+ },
+ {
+  "sku": "White 4pcs-0.5 watts",
+  "vid": "FCE208CD-DD65-491F-B6B7-86280A2FDF1C",
+  "cj": 18,
+  "fracht": 27.26,
+  "linie": "CJPacket EQ Sensitive",
+  "einstand": 37.31,
+  "preis": 39.9,
+  "marge": 6.5,
+  "vorschlag": 54.9
+ }
+]

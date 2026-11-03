@@ -1,0 +1,72 @@
+import {g} from '/tmp/advbau-claude/sh.mjs';
+import fs from 'node:fs';
+const H='faltbare-led-nachtlichtlampe-beruhrungsempfind-38ce45';
+const Q=`query($h:String!){productByHandle(handle:$h){id status tags title descriptionHtml seo{title description} options{id name position optionValues{id name hasVariants}} variants(first:60){nodes{id title sku price compareAtPrice selectedOptions{name value} image{url}}}}}`;
+const vor=(await g(Q,{h:H})).productByHandle;
+fs.writeFileSync('/tmp/cm/nacht_backup_vor_umbau.json',JSON.stringify(vor,null,1));
+console.log('Vorher:',vor.variants.nodes.length,'Varianten, Option',vor.options.map(o=>o.name+':'+o.optionValues.length).join(','));
+const bySku=Object.fromEntries(vor.variants.nodes.map(v=>[v.sku.replace(/^CJ-CJJZSNSN00275-/,''),v]));
+
+// Zielwerte je SKU-Endung: [neuer Name, neuer Preis oder null]
+const ZIEL={
+ 'Red-0.3 watts':['Rot, 1 Stück',null],
+ 'White-0.5 watts':['Weiss, 1 Stück',null],
+ 'Grey-0.5 watts':['Grau, 1 Stück',null],
+ 'White 2pcs-0.5 watts':['Weiss, 2 Stück','30.90'],
+ 'Grey 2pcs-0.5 watts':['Grau, 2 Stück','30.90'],
+ 'Grey white-0.5 watts':['Grau + Weiss, 2 Stück','30.90'],
+ 'White 3pcs-0.5 watts':['Weiss, 3 Stück','44.90'],
+ 'Grey 3pcs-0.5 watts':['Grau, 3 Stück','44.90'],
+ '2grey 1white-0.5 watts':['2 Grau + 1 Weiss, 3 Stück','44.90'],
+ '2white 1grey-0.5 watts':['2 Weiss + 1 Grau, 3 Stück','44.90'],
+ 'White 4pcs-0.5 watts':['Weiss, 4 Stück','57.90'],
+ 'Grey-0.5wattsX4pcs':['Grau, 4 Stück','57.90'],
+ 'White 5PC-0.5watts':['Weiss, 5 Stück','67.90'],
+ 'Grey 5PC-0.5watts':['Grau, 5 Stück','67.90'],
+ 'Grey-0.5wattsX6pcs':['Grau, 6 Stück','78.90'],
+ 'Set1-0.5 watts':['Grau mit Netzteil','23.90'],
+ 'Set2-0.5 watts':['Weiss mit Netzteil','23.90'],
+};
+const KABEL='USB data cable-1pc';
+for(const k of Object.keys(bySku)) if(k!==KABEL && !ZIEL[k]){console.log('ABBRUCH: unbekannte SKU',k);process.exit(2);}
+const namen=Object.values(ZIEL).map(z=>z[0]); if(new Set(namen).size!==namen.length){console.log('ABBRUCH: Namen nicht eindeutig');process.exit(2);}
+
+// 1. Kabel-Variante löschen (liegt jeder Lampe ohnehin bei, 0 Bestellungen)
+const kab=bySku[KABEL];
+if(kab){
+  const r=(await g(`mutation($p:ID!,$v:[ID!]!){productVariantsBulkDelete(productId:$p,variantsIds:$v){userErrors{field message code}}}`,{p:vor.id,v:[kab.id]})).productVariantsBulkDelete;
+  console.log('Kabel-Variante löschen:',JSON.stringify(r.userErrors));
+  if(r.userErrors.length)process.exit(3);
+}
+// 2. Preise (nur Varianten mit neuem Preis; nie gesenkt)
+const preise=[];
+for(const [k,[n,p]] of Object.entries(ZIEL)){ const v=bySku[k]; if(!p)continue; if(Number(p)<=Number(v.price)){console.log('ABBRUCH: Preis nicht höher',k);process.exit(2);} preise.push({id:v.id,price:p}); }
+const rp=(await g(`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){productVariants{id price} userErrors{field message code}}}`,{p:vor.id,v:preise})).productVariantsBulkUpdate;
+console.log('Preise gesetzt:',preise.length,JSON.stringify(rp.userErrors));
+if(rp.userErrors.length)process.exit(3);
+// 3. Optionswerte umbenennen
+const opt=(await g(`query($id:ID!){product(id:$id){options{id name optionValues{id name}}}}`,{id:vor.id})).product.options.find(o=>o.name==='Farbe');
+const wertId=Object.fromEntries(opt.optionValues.map(x=>[x.name,x.id]));
+const upd=[];
+for(const [k,[n]] of Object.entries(ZIEL)){ const alt=bySku[k].title; if(!wertId[alt]){console.log('ABBRUCH: Wert nicht gefunden',alt);process.exit(2);} upd.push({id:wertId[alt],name:n}); }
+const ro=(await g(`mutation($p:ID!,$o:OptionUpdateInput!,$u:[OptionValueUpdateInput!]){productOptionUpdate(productId:$p,option:$o,optionValuesToUpdate:$u){userErrors{field message code}}}`,{p:vor.id,o:{id:opt.id},u:upd})).productOptionUpdate;
+console.log('Optionswerte umbenannt:',upd.length,JSON.stringify(ro.userErrors));
+if(ro.userErrors.length)process.exit(3);
+await new Promise(r=>setTimeout(r,5000));
+// 4. Frisch lesen
+const nach=(await g(Q,{h:H})).productByHandle;
+fs.writeFileSync('/tmp/cm/nacht_nach_umbau.json',JSON.stringify(nach,null,1));
+console.log('Nachher:',nach.variants.nodes.length,'Varianten');
+for(const v of nach.variants.nodes){const alt=vor.variants.nodes.find(x=>x.id===v.id);console.log(' ',v.title.padEnd(28),String(alt.price).padStart(6),'→',v.price.padStart(6),'|Bild',v.image?'ja':'NEIN','|SKU gleich',v.sku===alt.sku);}
+const chk={
+ anzahl_17:nach.variants.nodes.length===17,
+ alle_mit_bild:nach.variants.nodes.every(v=>v.image),
+ kein_kabel:!nach.variants.nodes.some(v=>/USB data cable/i.test(v.sku)),
+ skus_unveraendert:nach.variants.nodes.every(v=>vor.variants.nodes.find(x=>x.id===v.id)?.sku===v.sku),
+ titel_deutsch:nach.variants.nodes.every(v=>namen.includes(v.title)),
+ tags_gleich:JSON.stringify(nach.tags)===JSON.stringify(vor.tags),
+ status_gleich:nach.status===vor.status,
+ body_seo_gleich:nach.descriptionHtml===vor.descriptionHtml&&JSON.stringify(nach.seo)===JSON.stringify(vor.seo),
+ keine_preissenkung:nach.variants.nodes.every(v=>Number(v.price)>=Number(vor.variants.nodes.find(x=>x.id===v.id).price)),
+};
+console.log(JSON.stringify(chk,null,1));
