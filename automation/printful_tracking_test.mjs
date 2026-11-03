@@ -107,6 +107,7 @@ if (process.argv[2] === '--szenario') {
         if (!q.includes('$f:FulfillmentInput!')) return mk(200, { errors: [{ message: 'Variable $f mit falschem Typ' }] });
         if (sz.fulfill500) return mk(500, { errors: 'boom' });
         if (sz.fulfillNull) return antwort(q, { fulfillmentCreate: null });
+        if (sz.fulfillLeer) return antwort(q, { fulfillmentCreate: { fulfillment: null, userErrors: [] } });
         if (sz.fulfillFehler) return antwort(q, { fulfillmentCreate: { fulfillment: null, userErrors: [{ field: ['x'], message: 'kaputt' }] } });
         return antwort(q, { fulfillmentCreate: { fulfillment: { id: 'gid://shopify/Fulfillment/' + fulfillAufrufe, status: 'SUCCESS' }, userErrors: [] } });
       }
@@ -151,7 +152,8 @@ if (process.argv[2] === '--szenario') {
 
 // ═════════════════════════════════════════════════════════════ PRÜFER
 let ok = 0, fehl = 0;
-const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 700)}\n   soll: ${JSON.stringify(b).slice(0, 700)}`); } };
+// PT_FAILFAST=1 (nur für die Mutationsprobe): beim ersten Fehlschlag sofort beenden, ein erkannter Mutant braucht keinen Rest des Laufs
+const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 700)}\n   soll: ${JSON.stringify(b).slice(0, 700)}`); if (process.env.PT_FAILFAST === '1') { console.log(`\nprintful_tracking: ${ok} bestanden, ${fehl} fehlgeschlagen (Abbruch beim ersten Fehler)`); process.exit(1); } } };
 const wahr = (n, bed) => ist(n, !!bed, true);
 
 // ───────────────────────── reine Logik: Hilfsfunktionen
@@ -264,7 +266,10 @@ ist('Plan: Shop schon von Hand erledigt (Nummer unbekannt) → übersprungen, ni
 p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10], ['fo1', 'l2', 1, null]), bekannteNummern: [] });
 ist('Plan: Position ohne Printful-Variante → gemeldet wird A, aber Befund und NICHT fertig', [p.aktionen.length, p.ohneVariante, p.fertig, /ohne Printful-Variante/.test(p.befund)], [1, 1, false, true]);
 p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l2', 1, 0]), bekannteNummern: [] });
-ist('Plan: NUR Positionen ohne Variante offen → Sendung nicht zuordenbar, Befund', [p.aktionen.length, p.ohneVariante, !!p.befund, p.fertig], [0, 1, true, false]);
+ist('Plan: NUR Positionen ohne Variante offen → Sendung ist «unklar» (nicht «schon erledigt»), Befund', [p.aktionen.length, p.ohneVariante, p.unklar.length, p.uebersprungen.length, !!p.befund, p.fertig], [0, 1, 1, 0, true, false]);
+// zwei gleiche Printful-Positionen, zwei Shop-Zeilen: keine Nullmengen in der Meldung
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1], [2, 10, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10], ['fo1', 'l2', 1, 10]), bekannteNummern: [] });
+ist('Plan: zwei gleiche Positionen, zwei Zeilen → genau zwei Einträge, keine Menge 0', p.aktionen[0].positionen.map((x) => [x.lineId, x.quantity]), [['l1', 1], ['l2', 1]]);
 
 p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 2]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 2, 10]), bekannteNummern: [] });
 ist('Plan: fulfilled, aber Shop hat mehr offen → Befund «fulfilled»', [p.aktionen.length, p.restOffen, p.fertig, /fulfilled/.test(p.befund)], [1, 1, false, true]);
@@ -406,6 +411,8 @@ r = lauf({ fulfillFehler: true, main: [bestellung()], printful: { 100: pfA('fulf
 ist('V10 userErrors: kein shipped, Exit 1, Telegram «gescheitert», nur 1 Versuch', [r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((t) => /gescheitert/.test(t)), r.prot.fulfills.length], [0, 1, true, 1]);
 r = lauf({ fulfillNull: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10b Antwort fulfillmentCreate=null → NICHT als gemeldet gezählt', [r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((t) => /versendet \(/.test(t) && /Kundenmail/.test(t))], [0, 1, false]);
+r = lauf({ fulfillLeer: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V10b2 Antwort ohne Fulfillment bei LEERER Fehlerliste → ebenfalls nicht als gemeldet', [r.prot.tagsAdd.length, r.prot.exit, r.prot.err.some((e) => /fulfillment\.id/.test(e))], [0, 1, true]);
 r = lauf({ fulfill500: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10c HTTP 500 bei fulfillmentCreate: GENAU EIN Versuch (keine Wiederholung, sonst doppelte Mail), Exit 1, kein Tag', [r.prot.fulfills.length, r.prot.exit, r.prot.tagsAdd.length], [1, 1, 0]);
 r = lauf({ tagFehler: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
@@ -433,7 +440,7 @@ ist('V12b Printful 500 bleibend → Fehler Exit 1, kein Tag, drei Versuche', [r.
 r = lauf({ pf429: { 100: 2 }, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V12c Printful 429 zweimal dann OK → Wiederholung gelingt', [r.prot.fulfills.length, r.prot.exit, r.prot.pfGets.length], [1, null, 3]);
 r = lauf({ main: [bestellung()], printful: { 100: { __status: 401 } } });
-ist('V12d Printful 401 → Fehler Exit 1 (kein Befund)', [r.prot.exit, r.prot.tagsAdd.length, r.prot.pfGets.length], [1, 0, 1]);
+ist('V12d Printful 401 → Fehler Exit 1 (kein Befund), Meldung nennt «HTTP 401»', [r.prot.exit, r.prot.tagsAdd.length, r.prot.pfGets.length, r.prot.tg.some((t) => /HTTP 401/.test(t))], [1, 0, 1, true]);
 
 // V13: Metafeld fehlt
 r = lauf({ main: [bestellung({ pfId: null })], printful: {} });
@@ -526,6 +533,8 @@ r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]],
 ist('V22 Empfänger verschieden → nicht gemeldet, Befund', [r.prot.fulfills.length, tagListen(r.prot), /gehört vermutlich zu einer anderen Bestellung/.test(r.prot.tg[0] || '')], [0, [['printful-problem']], true]);
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'ROLF LANZ', zip: '8703' }) } });
 ist('V22b Empfänger gleich → gemeldet', r.prot.fulfills.length, 1);
+r = lauf({ main: [bestellung({ adresse: { name: 'Frau Muster', zip: '8703', countryCodeV2: 'CH' } })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'Rolf Lanz', zip: '8703' }) } });
+ist('V22c anderer Name (Mitbewohnerin), gleiche PLZ → gemeldet (die PLZ wird in der Abfrage geholt)', r.prot.fulfills.length, 1);
 
 // V23: storniert
 r = lauf({ main: [bestellung({ cancelledAt: new Date().toISOString() })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });

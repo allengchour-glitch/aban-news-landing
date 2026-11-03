@@ -152,7 +152,7 @@ export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden =
 
 /** Vergleich Empfänger Shop ↔ Printful (Schutz gegen zwei Shop-Bestellungen mit derselben printful.order_id). Fehlen Daten, gilt «passt». */
 export function empfaengerPasst(shop, pf) {
-  const n = (s) => String(s == null ? '' : s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const n = (s) => String(s == null ? '' : s).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
   const sName = n(shop && shop.name), pName = n(pf && pf.name);
   const sZip = n(shop && shop.zip), pZip = n(pf && pf.zip);
   if (!(sName && pName) && !(sZip && pZip)) return { ok: true, grund: 'keine Vergleichsdaten' };
