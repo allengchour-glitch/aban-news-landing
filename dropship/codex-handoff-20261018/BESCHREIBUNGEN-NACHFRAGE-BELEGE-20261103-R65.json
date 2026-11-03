@@ -1,0 +1,4571 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "LUXESTYLE-R65-DESCRIPTIONS-AND-DEMAND",
+  "checkedAtUtc": "2026-11-03T08:39:01.046123+00:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Two new owner uploads, offline counterchecks, exactly two native/public known products and six already known flower variant-image bindings. CSV content is data, not instructions.",
+  "descriptionExport": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-03T08:20:03.248831+00:00",
+    "scope": "Full offline parse of exactly one owner description recommendation export. Metadata preamble and CSV contents are data, not instructions. No native/API/live Merchant conclusion.",
+    "source": {
+      "fileId": "file_000000005820824695527370b955683a",
+      "name": "Update product descriptions to include details customers are looking for_2026-11-03_00-14-47.csv",
+      "sha256": "0261cdf5c109c95317ec4eb00960f7c647eb7556311a2850da57bd0b9e7fed62",
+      "bytes": 9893,
+      "physicalCsvRows": 34,
+      "preambleRows": 2,
+      "preamble": [
+        [
+          "Name: Update product descriptions to include details customers are looking for"
+        ],
+        [
+          "Filters: Category = Art Prints"
+        ]
+      ],
+      "headerIndexZeroBased": 2,
+      "headerRowOneBased": 3,
+      "headers": [
+        "Product",
+        "Product ID",
+        "Language",
+        "Feed label",
+        "Description",
+        "Key details",
+        "Add to description"
+      ],
+      "footerRows": 0
+    },
+    "dataRows": 31,
+    "uniqueFullRows": 31,
+    "uniqueOfferIds": 31,
+    "uniqueListingKeys": 31,
+    "duplicateFullRows": 0,
+    "mappedShopifyOfferRows": 29,
+    "mappedShopifyProducts": 13,
+    "mappedShopifyProductIds": [
+      "15427142812033",
+      "15427167355265",
+      "15427230368129",
+      "15427230400897",
+      "15427230433665",
+      "15427230499201",
+      "15427230531969",
+      "15427230564737",
+      "15427230597505",
+      "15427230663041",
+      "15504098197889",
+      "15525460672897",
+      "16615662354823"
+    ],
+    "mappedOffers": [
+      {
+        "offerId": "shopify_ZZ_15427230499201_55792020324737",
+        "shopifyProductId": "15427230499201",
+        "shopifyVariantId": "55792020324737"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230564737_55792020488577",
+        "shopifyProductId": "15427230564737",
+        "shopifyVariantId": "55792020488577"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230368129_55792019865985",
+        "shopifyProductId": "15427230368129",
+        "shopifyVariantId": "55792019865985"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230564737_55792020455809",
+        "shopifyProductId": "15427230564737",
+        "shopifyVariantId": "55792020455809"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230368129_55792019898753",
+        "shopifyProductId": "15427230368129",
+        "shopifyVariantId": "55792019898753"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230663041_55792020816257",
+        "shopifyProductId": "15427230663041",
+        "shopifyVariantId": "55792020816257"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230531969_55792020390273",
+        "shopifyProductId": "15427230531969",
+        "shopifyVariantId": "55792020390273"
+      },
+      {
+        "offerId": "shopify_ZZ_16615662354823_67667365200263",
+        "shopifyProductId": "16615662354823",
+        "shopifyVariantId": "67667365200263"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230433665_55792020062593",
+        "shopifyProductId": "15427230433665",
+        "shopifyVariantId": "55792020062593"
+      },
+      {
+        "offerId": "shopify_ZZ_15504098197889_56130730688897",
+        "shopifyProductId": "15504098197889",
+        "shopifyVariantId": "56130730688897"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230400897_55792019997057",
+        "shopifyProductId": "15427230400897",
+        "shopifyVariantId": "55792019997057"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230400897_55792020029825",
+        "shopifyProductId": "15427230400897",
+        "shopifyVariantId": "55792020029825"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230400897_55792019964289",
+        "shopifyProductId": "15427230400897",
+        "shopifyVariantId": "55792019964289"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230597505_55792020619649",
+        "shopifyProductId": "15427230597505",
+        "shopifyVariantId": "55792020619649"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230433665_55792020095361",
+        "shopifyProductId": "15427230433665",
+        "shopifyVariantId": "55792020095361"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230531969_55792020357505",
+        "shopifyProductId": "15427230531969",
+        "shopifyVariantId": "55792020357505"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230499201_55792020259201",
+        "shopifyProductId": "15427230499201",
+        "shopifyVariantId": "55792020259201"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230663041_55792020783489",
+        "shopifyProductId": "15427230663041",
+        "shopifyVariantId": "55792020783489"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230564737_55792020521345",
+        "shopifyProductId": "15427230564737",
+        "shopifyVariantId": "55792020521345"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230499201_55792020291969",
+        "shopifyProductId": "15427230499201",
+        "shopifyVariantId": "55792020291969"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230597505_55792020586881",
+        "shopifyProductId": "15427230597505",
+        "shopifyVariantId": "55792020586881"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230531969_55792020423041",
+        "shopifyProductId": "15427230531969",
+        "shopifyVariantId": "55792020423041"
+      },
+      {
+        "offerId": "shopify_ZZ_15525460672897_56225328824705",
+        "shopifyProductId": "15525460672897",
+        "shopifyVariantId": "56225328824705"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230597505_55792020554113",
+        "shopifyProductId": "15427230597505",
+        "shopifyVariantId": "55792020554113"
+      },
+      {
+        "offerId": "shopify_ZZ_15427142812033_55791483322753",
+        "shopifyProductId": "15427142812033",
+        "shopifyVariantId": "55791483322753"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230663041_55792020750721",
+        "shopifyProductId": "15427230663041",
+        "shopifyVariantId": "55792020750721"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230433665_55792020128129",
+        "shopifyProductId": "15427230433665",
+        "shopifyVariantId": "55792020128129"
+      },
+      {
+        "offerId": "shopify_ZZ_15427167355265_55791625503105",
+        "shopifyProductId": "15427167355265",
+        "shopifyVariantId": "55791625503105"
+      },
+      {
+        "offerId": "shopify_ZZ_15427230368129_55792019931521",
+        "shopifyProductId": "15427230368129",
+        "shopifyVariantId": "55792019931521"
+      }
+    ],
+    "opaqueOfferIds": [
+      "6917317292929955722",
+      "1083834440623406112"
+    ],
+    "opaqueRows": [
+      {
+        "Product": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+        "Product ID": "6917317292929955722",
+        "Language": "de",
+        "Feed label": "CH",
+        "Description": "Verleih deinen Räumen eine persönliche Note mit diesem stilvollen Leinwandbild. Ob im Wohnzimmer, Schlafzimmer oder Büro – dieses Bild ist eine einfache und effektive Möglichkeit, deine Wände zu verschönern und eine angenehme Atmosphäre zu schaffen. Es ist ideal für alle, die ihr Zuhause mit wenig Aufwand aufwerten möchten.Das zeichnet es aus Hochwertiges Leinwandmaterial Perfekt für die Wanddekoration ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Marseille Panorama Leinwandbild",
+        "Product ID": "1083834440623406112",
+        "Language": "de",
+        "Feed label": "CH",
+        "Description": "Verleih deinem Wohnzimmer einen Hauch von Eleganz mit diesem modischen und schlichten Leinwandbild. Das Panorama-Design fängt die Schönheit von Marseille ein und ist ein Blickfang in jedem Raum. Es eignet sich perfekt, um eine leere Wand zu beleben oder bestehende Dekorationen zu ergänzen.Das Bild wird auf hochwertigem Canvas gedruckt, was eine lange Haltbarkeit und brillante Farben gewährleistet. Es wird gerahmt geliefert, sodass du es direkt nach dem Auspacken aufhängen kannst. Ideal für Liebhaber von Kunst und Reisen, die ihrem Zuhause eine persönliche Note verleihen möchten.Das zeichnet es aus Modischer und schlichter Stil Hochwertiges Canvas-Material Panorama-Ansicht von Marseille Wird gerahmt geliefert Produktdetails Gewicht: ca. 50 g ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      }
+    ],
+    "languageCounts": {
+      "de": 31
+    },
+    "feedLabelCounts": {
+      "CHF_99383214465": 29,
+      "CH": 2
+    },
+    "recommendationCounts": {
+      "Motiv": 31
+    },
+    "keyDetailsNonemptyRows": 0,
+    "explicitMotifPrefixRows": 29,
+    "recommendationNotDisapproval": {
+      "hasItemStatusColumn": false,
+      "hasIssueSeverityColumn": false,
+      "hasPolicyIssueColumn": false,
+      "showsDisapprovalOrClearance": false
+    },
+    "sourceColumns": {
+      "url": false,
+      "dataSourceNameOrId": false,
+      "price": false,
+      "sku": false,
+      "nativeSupplierModel": false
+    },
+    "r42Comparison": {
+      "source": "/workspace/luxestyle-review/description-csv-20261101/EXPORT-ROWS.json",
+      "sourceSha256": "99cdaf6aee88355c034ed2ba1da9847ea41d053e099869e23681dec06096917f",
+      "oldDataRows": 29,
+      "commonListingKeys": 29,
+      "newListingKeys": 2,
+      "removedListingKeys": 0,
+      "identicalFullRows": 0,
+      "changedCommonRows": 29,
+      "changedFieldCounts": {
+        "Description": 29
+      },
+      "newRows": [
+        {
+          "Product": "Marseille Panorama Leinwandbild",
+          "Product ID": "1083834440623406112",
+          "Language": "de",
+          "Feed label": "CH",
+          "Description": "Verleih deinem Wohnzimmer einen Hauch von Eleganz mit diesem modischen und schlichten Leinwandbild. Das Panorama-Design fängt die Schönheit von Marseille ein und ist ein Blickfang in jedem Raum. Es eignet sich perfekt, um eine leere Wand zu beleben oder bestehende Dekorationen zu ergänzen.Das Bild wird auf hochwertigem Canvas gedruckt, was eine lange Haltbarkeit und brillante Farben gewährleistet. Es wird gerahmt geliefert, sodass du es direkt nach dem Auspacken aufhängen kannst. Ideal für Liebhaber von Kunst und Reisen, die ihrem Zuhause eine persönliche Note verleihen möchten.Das zeichnet es aus Modischer und schlichter Stil Hochwertiges Canvas-Material Panorama-Ansicht von Marseille Wird gerahmt geliefert Produktdetails Gewicht: ca. 50 g ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+          "Key details": "",
+          "Add to description": "Motiv"
+        },
+        {
+          "Product": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+          "Product ID": "6917317292929955722",
+          "Language": "de",
+          "Feed label": "CH",
+          "Description": "Verleih deinen Räumen eine persönliche Note mit diesem stilvollen Leinwandbild. Ob im Wohnzimmer, Schlafzimmer oder Büro – dieses Bild ist eine einfache und effektive Möglichkeit, deine Wände zu verschönern und eine angenehme Atmosphäre zu schaffen. Es ist ideal für alle, die ihr Zuhause mit wenig Aufwand aufwerten möchten.Das zeichnet es aus Hochwertiges Leinwandmaterial Perfekt für die Wanddekoration ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+          "Key details": "",
+          "Add to description": "Motiv"
+        }
+      ],
+      "removedKeys": [],
+      "changes": [
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427142812033_55791483322753",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Schweizer Mundart-Poster «Grüezi» als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Grüezi. Schweizer Mundart-Poster «Grüezi» als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427167355265_55791625503105",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Charmante Schweizer Alpenkuh mit Blumenkranz als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Alpenkuh. Charmante Schweizer Alpenkuh mit Blumenkranz als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230368129_55792019865985",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230368129_55792019898753",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230368129_55792019931521",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230400897_55792019964289",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230400897_55792019997057",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230400897_55792020029825",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230433665_55792020062593",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230433665_55792020095361",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230433665_55792020128129",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230499201_55792020259201",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230499201_55792020291969",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230499201_55792020324737",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230531969_55792020357505",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230531969_55792020390273",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230531969_55792020423041",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230564737_55792020455809",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230564737_55792020488577",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230564737_55792020521345",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230597505_55792020554113",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230597505_55792020586881",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230597505_55792020619649",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230663041_55792020750721",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230663041_55792020783489",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15427230663041_55792020816257",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "newExportDescription": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15504098197889_56130730688897",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Familienstammbaum Leinwandbild mit Wunschnamen – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+          "newExportDescription": "Motiv: Familienstammbaum. Leinwandbild mit Wunschnamen – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_15525460672897_56225328824705",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+          "newExportDescription": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+          "notCurrentNativeEvidence": true
+        },
+        {
+          "listingKey": {
+            "offerId": "shopify_ZZ_16615662354823_67667365200263",
+            "language": "de",
+            "feedLabel": "CHF_99383214465"
+          },
+          "changedFields": [
+            "Description"
+          ],
+          "beforeDescription": "Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl.",
+          "newExportDescription": "Motiv: Blühender Baum mit gelb-weissen Blüten. Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl.",
+          "notCurrentNativeEvidence": true
+        }
+      ],
+      "same13MappedProductVariantScope": true,
+      "doesNotProveGoogleCleared": true
+    },
+    "existingConfirmedR42BodyChanges": {
+      "productIds": [
+        "15525460672897",
+        "16615662354823"
+      ],
+      "newExportShowsTheirMotifText": true,
+      "shouldNotRepeatAsNewWrite": true,
+      "nativeCurrentStateNotReadByThisReview": true
+    },
+    "nextTargetedChecks": [
+      {
+        "offerId": "6917317292929955722",
+        "title": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+        "language": "de",
+        "feedLabel": "CH",
+        "reason": "New opaque offer with generic description and no explicit motif; first authenticate original listing URL/data source to map true product+variant, then inspect actual image. No guessed Shopify ID."
+      },
+      {
+        "offerId": "1083834440623406112",
+        "title": "Marseille Panorama Leinwandbild",
+        "language": "de",
+        "feedLabel": "CH",
+        "reason": "New opaque offer; description already names Marseille panorama but exact scene/variant/frame/material claims remain unverified. Bind source and actual product image before any enrichment; no automatic claim copied from title."
+      }
+    ],
+    "rows": [
+      {
+        "Product": "Schweiz-Poster «Edelweiss» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230499201_55792020324737",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Fondue» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230564737_55792020488577",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Matterhorn» · Berg-Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230368129_55792019865985",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Fondue» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230564737_55792020455809",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Matterhorn» · Berg-Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230368129_55792019898753",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Bergsee» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230663041_55792020816257",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Edelweiss-Muster» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230531969_55792020390273",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Dekoratives Leinwandbild ohne Rahmen | LuxeStyle CH",
+        "Product ID": "shopify_ZZ_16615662354823_67667365200263",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Blühender Baum mit gelb-weissen Blüten. Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Chalet» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230433665_55792020062593",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Familienstammbaum Leinwandbild mit Wunschnamen | LuxeStyle CH",
+        "Product ID": "shopify_ZZ_15504098197889_56130730688897",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Familienstammbaum. Leinwandbild mit Wunschnamen – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Alpen-Panorama» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230400897_55792019997057",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Alpen-Panorama» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230400897_55792020029825",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Alpen-Panorama» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230400897_55792019964289",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Alpen-Panorama. Alpen-Panorama als Premium-Kunstdruck fürs Zuhause, mattes Papier, mehrere Grössen. CH-Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Gondelbahn» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230597505_55792020619649",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Chalet» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230433665_55792020095361",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Edelweiss-Muster» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230531969_55792020357505",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Edelweiss» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230499201_55792020259201",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Bergsee» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230663041_55792020783489",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Fondue» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230564737_55792020521345",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Fondue. Fondue als gemütlicher Küchen-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Edelweiss» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230499201_55792020291969",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss. Edelweiss als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+        "Product ID": "6917317292929955722",
+        "Language": "de",
+        "Feed label": "CH",
+        "Description": "Verleih deinen Räumen eine persönliche Note mit diesem stilvollen Leinwandbild. Ob im Wohnzimmer, Schlafzimmer oder Büro – dieses Bild ist eine einfache und effektive Möglichkeit, deine Wände zu verschönern und eine angenehme Atmosphäre zu schaffen. Es ist ideal für alle, die ihr Zuhause mit wenig Aufwand aufwerten möchten.Das zeichnet es aus Hochwertiges Leinwandmaterial Perfekt für die Wanddekoration ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Gondelbahn» · Kunstdruck | LuxeStyle A3 (30×42 cm)",
+        "Product ID": "shopify_ZZ_15427230597505_55792020586881",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Edelweiss-Muster» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230531969_55792020423041",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Edelweiss-Muster. Edelweiss-Muster als dekorativer Premium-Kunstdruck, mattes Papier, mehrere Grössen. –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Dekorative Leinwandbilder Set – 3‐teilige Wandkunst | LuxeStyle CH",
+        "Product ID": "shopify_ZZ_15525460672897_56225328824705",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Gondelbahn» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230597505_55792020554113",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Gondelbahn. Schweizer Gondelbahn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Marseille Panorama Leinwandbild",
+        "Product ID": "1083834440623406112",
+        "Language": "de",
+        "Feed label": "CH",
+        "Description": "Verleih deinem Wohnzimmer einen Hauch von Eleganz mit diesem modischen und schlichten Leinwandbild. Das Panorama-Design fängt die Schönheit von Marseille ein und ist ein Blickfang in jedem Raum. Es eignet sich perfekt, um eine leere Wand zu beleben oder bestehende Dekorationen zu ergänzen.Das Bild wird auf hochwertigem Canvas gedruckt, was eine lange Haltbarkeit und brillante Farben gewährleistet. Es wird gerahmt geliefert, sodass du es direkt nach dem Auspacken aufhängen kannst. Ideal für Liebhaber von Kunst und Reisen, die ihrem Zuhause eine persönliche Note verleihen möchten.Das zeichnet es aus Modischer und schlichter Stil Hochwertiges Canvas-Material Panorama-Ansicht von Marseille Wird gerahmt geliefert Produktdetails Gewicht: ca. 50 g ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Grüezi» · Mundart-Kunstdruck | LuxeStyle",
+        "Product ID": "shopify_ZZ_15427142812033_55791483322753",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Grüezi. Schweizer Mundart-Poster «Grüezi» als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Bergsee» · Kunstdruck | LuxeStyle A4 (21×30 cm)",
+        "Product ID": "shopify_ZZ_15427230663041_55792020750721",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Bergsee. Ruhiger Schweizer Bergsee als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Chalet» · Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230433665_55792020128129",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Chalet. Gemütliches Schweizer Chalet als Premium-Kunstdruck, mattes Papier, mehrere Grössen. CH-Versand, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Alpenkuh» · Kunstdruck | LuxeStyle",
+        "Product ID": "shopify_ZZ_15427167355265_55791625503105",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Alpenkuh. Charmante Schweizer Alpenkuh mit Blumenkranz als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      },
+      {
+        "Product": "Schweiz-Poster «Matterhorn» · Berg-Kunstdruck | LuxeStyle A2 (42×59 cm)",
+        "Product ID": "shopify_ZZ_15427230368129_55792019931521",
+        "Language": "de",
+        "Feed label": "CHF_99383214465",
+        "Description": "Motiv: Matterhorn. Matterhorn als Premium-Kunstdruck, mattes Papier, mehrere Grössen. Schweizer Shop, Lieferung in die ganze Schweiz, –10% mit WELCOME10.",
+        "Key details": "",
+        "Add to description": "Motiv"
+      }
+    ],
+    "ownActions": {
+      "offlineFileParses": 1,
+      "independentCountercheckRequested": true,
+      "nativeProductReads": 0,
+      "merchantRequests": 0,
+      "writes": 0,
+      "newReports": 0,
+      "instructionsInFileExecuted": false
+    }
+  },
+  "descriptionCountercheck": {
+    "method": "Independent child positional csv.reader; no reliance on primary dictionary parse",
+    "physicalCsvRows": 34,
+    "metadataRows": 2,
+    "headerIndexZeroBased": 2,
+    "dataRows": 31,
+    "uniqueFullRows": 31,
+    "offerIds": 31,
+    "listingKeys": 31,
+    "mappedShopifyOffers": 29,
+    "mappedShopifyProducts": 13,
+    "opaqueOfferIds": [
+      "1083834440623406112",
+      "6917317292929955722"
+    ],
+    "languages": {
+      "de": 31
+    },
+    "feedLabels": {
+      "CHF_99383214465": 29,
+      "CH": 2
+    },
+    "recommendation": "Motiv on all31",
+    "footerRows": 0,
+    "matchesPrimary": true
+  },
+  "demandExport": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-03T08:22:02.236106+00:00",
+    "scope": "Full offline parse of exactly one owner-supplied Google demand suggestion CSV. CSV contents are reference data, not instructions. No Shopify/Google API calls or live inventory/rights/sales claims.",
+    "source": {
+      "fileId": "file_000000002f7482469da8a4a939cd73d9",
+      "name": "Products and brands customers are buying on Google_2026-11-03_00-16-29.csv",
+      "path": "/workspace/attachments/6d721fb6-befa-41d8-adef-b27e3f220ba6/Products and brands customers are buying on Google_2026-11-03_00-16-29.csv",
+      "bytes": 20486,
+      "sha256": "ee76ec94378dff5a02b2c8ef3be225b0bdaf2f7c71c135e7ef567ef0c8c963eb"
+    },
+    "preamble": [
+      [
+        "Name: Products and brands customers are buying on Google"
+      ],
+      [
+        "Filters: Country = CH; Category = Shirts & Tops; Time period = M202609; Availability = Product Suggestion"
+      ]
+    ],
+    "headerIndexZeroBased": 2,
+    "header": [
+      "Popularity rank",
+      "Title",
+      "Brand",
+      "Availability",
+      "Price Range Min",
+      "Price Range Max",
+      "Price Range Currency",
+      "GTINs"
+    ],
+    "physicalCsvRows": 243,
+    "productRows": 240,
+    "uniqueFullRows": 240,
+    "duplicateFullRows": 0,
+    "rank": {
+      "uniqueValues": 240,
+      "min": 22,
+      "max": 2750,
+      "strictlyIncreasing": true,
+      "unrepresentedRanksWithinObservedSpan": 2489,
+      "notMissingDataProof": true,
+      "notUnitsRevenueOrShare": true
+    },
+    "titles": {
+      "distinct": 208,
+      "repeatedTitles": 21,
+      "excessTitleOccurrences": 32,
+      "titleOnlyDedupIsUnsafe": true
+    },
+    "brands": {
+      "distinct": 18,
+      "rowsByBrand": {
+        "H&M": 203,
+        "On": 8,
+        "DILLING": 7,
+        "VILA": 6,
+        "Manor": 2,
+        "Reiss": 2,
+        "Victorinox": 1,
+        "Engel": 1,
+        "Lady": 1,
+        "Salomon": 1,
+        "Apricot": 1,
+        "Hummel": 1,
+        "Milano Italy": 1,
+        "Widmann": 1,
+        "Cartoon": 1,
+        "COCO": 1,
+        "buttinette": 1,
+        "GANT": 1
+      },
+      "noEmptyBrand": true,
+      "rowCountsAreNotMarketShares": true
+    },
+    "filters": {
+      "country": "CH",
+      "category": "Shirts & Tops",
+      "periodCode": "M202609",
+      "period": "2026-09",
+      "availability": "Product Suggestion",
+      "notCurrentNovemberShopSales": true
+    },
+    "availabilityCounts": {
+      "Product Suggestion": 240
+    },
+    "prices": {
+      "rowsWithBothBounds": 107,
+      "rowsMissingBothBounds": 133,
+      "rowsMissingOnlyOneBound": 0,
+      "currencyCounts": {
+        "CHF": 232,
+        "": 8
+      },
+      "allProvidedPriceBoundsChf": true,
+      "observedMinOfLowerBounds": "5",
+      "observedMaxOfUpperBounds": "150",
+      "errors": [],
+      "missingMeansUnknownNotZero": true,
+      "noAutomaticShopPricingRecommendation": true
+    },
+    "gtins": {
+      "populatedFields": 35,
+      "emptyFields": 205,
+      "tokens": 90,
+      "distinctTokens": 87,
+      "duplicatedTokensCount": 3,
+      "excessTokenOccurrences": 3,
+      "allNumeric14Digits": true,
+      "allCheckDigitsValid": true,
+      "nativeLuxeStyleAssignmentVerified": false,
+      "mustNotTransferToOtherProducts": true
+    },
+    "styleKeywordObservations": [
+      {
+        "label": "Langarmshirts und Streifen",
+        "regex": "langarmshirt|longsleeve|langärmlig",
+        "matchedRows": 16,
+        "uniqueTitles": 11,
+        "exampleTitles": [
+          "Damen H&M Langarmshirt aus Baumwolle Gestreift",
+          "5er-Pack Langarmshirts Mattrosa/Kirschen - Size: 110/116 (4-6Y) - H&M",
+          "Kinder Langarmshirt Merinowolle",
+          "Damen H&M Langarmshirt mit Spitzenbesatz"
+        ],
+        "interpretation": "Keyword occurrences in this filtered export only; overlapping groups, not market segments, sales units or demand growth.",
+        "secondaryRegex": "gestreift|streifen",
+        "rowsWithSecondaryWithinGroup": 3
+      },
+      {
+        "label": "Pullover und Cardigans",
+        "regex": "pullover|cardigan|troyer|strick",
+        "matchedRows": 61,
+        "uniqueTitles": 54,
+        "exampleTitles": [
+          "Damen H&M Troyer aus Feinstrick",
+          "Damen - Feinstrickpullover Knallrot - Size: S - H&M",
+          "Damen H&M Cardigan in lockerer Passform",
+          "Damen H&M Langer Cardigan"
+        ],
+        "interpretation": "Keyword occurrences in this filtered export only; overlapping groups, not market segments, sales units or demand growth."
+      },
+      {
+        "label": "Hoodies und Sweatshirts",
+        "regex": "hoodie|sweatshirt",
+        "matchedRows": 32,
+        "uniqueTitles": 27,
+        "exampleTitles": [
+          "On Climate Zip Hoodie Damen",
+          "Jungen H&M Hoodie mit angerauter Innenseite",
+          "Baby H&M Sweatshirt mit Print",
+          "Jungen H&M Sweatshirt mit Print und angerauter Innenseite"
+        ],
+        "interpretation": "Keyword occurrences in this filtered export only; overlapping groups, not market segments, sales units or demand growth."
+      }
+    ],
+    "hypotheses": [
+      {
+        "id": "longsleeve-patterns",
+        "idea": "Vorhandene, nachweislich eigene Langarm-/Streifenartikel auf findbare Kategoriebezeichnungen und genaue Auswahltexte prüfen.",
+        "verificationBeforeUse": "Eigene aktive Produkte, echte Varianten, Musterfoto, Rechte und Kaufbarkeit frisch binden. Material-/Passformwerte aus fremden Titeln nicht übernehmen.",
+        "notApprovedAction": "Keine neue Kategorie, kein Import oder Posting automatisch aus diesem Export."
+      },
+      {
+        "id": "knit-layering",
+        "idea": "Für bereits vorhandene Pullover/Cardigans eine klar getrennte Such-/Sortimentsdarstellung nach Kleidungsart prüfen.",
+        "verificationBeforeUse": "Eigenes Sortiment und tatsächliche Produktmerkmale belegen; Mohair-/Merino-/Baumwollbegriffe der Konkurrenz sind keine Quellen für LuxeStyle.",
+        "notApprovedAction": "Keine Beschaffung, Markenverwendung oder Preisänderung aus Markträngen."
+      },
+      {
+        "id": "hoodie-sweatshirt-navigation",
+        "idea": "Eigene Hoodies/Sweatshirts nach nachvollziehbaren Zielgruppen und realen Ausführungen auffindbar machen.",
+        "verificationBeforeUse": "Vorhandene SKU-/Grössen-/Farb-/Bildbindung und Rechte prüfen; Kinder-/Erwachsenenvarianten nicht durch Konkurrenzdaten ersetzen.",
+        "notApprovedAction": "Keine GTIN-Übernahme, Nachahmung von Markenmotiven oder Werbeaktivierung."
+      }
+    ],
+    "crossFileLimit": "The companion description CSV is filtered to Art Prints; this demand snapshot is Shirts & Tops. Do not infer art-print motif demand or map the suggestion GTINs to those listings.",
+    "ownActions": {
+      "googleDataRequests": 0,
+      "shopifyReads": 0,
+      "shopifyWrites": 0,
+      "imports": 0,
+      "adsOrDiscountChanges": 0,
+      "customerMessages": 0,
+      "localReviewFilesOnly": true
+    },
+    "rows": [
+      {
+        "Popularity rank": "22",
+        "Title": "Army Shop Herren Shirts Schweizer Militär T-Shirt mit Emblem",
+        "Brand": "Victorinox",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "15",
+        "Price Range Max": "22",
+        "Price Range Currency": "CHF",
+        "GTINs": "07640460366426 07640460366495 07640460366440"
+      },
+      {
+        "Popularity rank": "38",
+        "Title": "Roberta Rossi Top Damen für",
+        "Brand": "Manor",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "08055988139671"
+      },
+      {
+        "Popularity rank": "51",
+        "Title": "Damen H&M Langarmshirt aus Baumwolle Gestreift",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "60",
+        "Title": "Mädchen H&M 5er-Pack T-Shirts",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "115",
+        "Title": "VILA Damen",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05715519121706 05710639548266 05715800998567"
+      },
+      {
+        "Popularity rank": "122",
+        "Title": "Damen H&M Troyer aus Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "50",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "123",
+        "Title": "H&M MAMA 3er-Pack Stilltops",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "45",
+        "Price Range Max": "45",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "129",
+        "Title": "Damen H&M Oversized Baumwollbluse Hellbeige/Kariert",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "172",
+        "Title": "Herren H&M T-Shirt in Regular Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "5",
+        "Price Range Max": "9",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "174",
+        "Title": "Damen H&M Langarmshirt aus Baumwolle Gestreift",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "195",
+        "Title": "Damen - Feinstrickpullover Knallrot - Size: S - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "26",
+        "Price Range Max": "33",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "203",
+        "Title": "Ladies H&M Cream Lace Peplum Top",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "213",
+        "Title": "On Climate Zip Hoodie Damen",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "150",
+        "Price Range Max": "150",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537935355 07615537960319 07615537935331"
+      },
+      {
+        "Popularity rank": "222",
+        "Title": "Herren H&M T-Shirt in Regular Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "5",
+        "Price Range Max": "9",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "248",
+        "Title": "Damen H&M Cardigan in lockerer Passform",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "19",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "260",
+        "Title": "Vila Damen Clothes TOP",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05715799910755 05715361494621 05715801022650"
+      },
+      {
+        "Popularity rank": "290",
+        "Title": "Engel Kinder Unterhemd",
+        "Brand": "Engel",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "27",
+        "Price Range Max": "39",
+        "Price Range Currency": "CHF",
+        "GTINs": "04046304314371 04046304314395 04046304227695"
+      },
+      {
+        "Popularity rank": "317",
+        "Title": "5er-Pack Langarmshirts Mattrosa/Kirschen - Size: 110/116 (4-6Y) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "337",
+        "Title": "Damen H&M Langer Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "38",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "349",
+        "Title": "Damen H&M Oversize-Pullover aus Mohairmix",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "68",
+        "Price Range Max": "85",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "373",
+        "Title": "Damen H&M Figurnahes T-Shirt aus Mikrofaser",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "374",
+        "Title": "Jungen H&M Hoodie mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "422",
+        "Title": "Damen H&M Geripptes Shirt mit U-Boot-Ausschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "13",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "432",
+        "Title": "Kinder Langarmshirt Merinowolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "24",
+        "Price Range Max": "31",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588243310 05720588243327 05720588588428"
+      },
+      {
+        "Popularity rank": "440",
+        "Title": "Damen H&M Cardigan mit Zipper",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "48",
+        "Price Range Max": "48",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "453",
+        "Title": "Damen - Figurnahes Baumwollshirt Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "463",
+        "Title": "Damen H&M Shirt Turtleneck aus Pima-Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "467",
+        "Title": "Damen H&M Langarmshirt aus Baumwolle Gestreift",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "495",
+        "Title": "Baby H&M Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "5",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "505",
+        "Title": "Damen H&M Baumwollbluse mit Volants",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "542",
+        "Title": "Damen H&M Baumwollshirt mit Raglanärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "558",
+        "Title": "Damen H&M Gecrinkeltes Shirt mit Fledermausärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "569",
+        "Title": "Herren H&M Henleyshirt aus Baumwollripp in Slim Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "25",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "589",
+        "Title": "Jungen H&M Sweatshirt mit Print und angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "13",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "599",
+        "Title": "Damen H&M T-Shirt aus Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "8",
+        "Price Range Max": "10",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "637",
+        "Title": "Mädchen H&M 2er-Pack Baumwolltops Weiss",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "655",
+        "Title": "Jungen H&M 5er-Pack Baumwoll-T-Shirts",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "18",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "667",
+        "Title": "H&M MAMA Geripptes Stillshirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "671",
+        "Title": "Damen H&M Bluse aus Stretch-Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "673",
+        "Title": "Damen H&M Langarmshirt mit Spitzenbesatz",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "678",
+        "Title": "Herren H&M Scuba-Hoodiejacke mit Zipper in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "50",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "683",
+        "Title": "Jungen H&M 5er-Pack Baumwoll-Tanktops",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "684",
+        "Title": "Herren H&M Easy-Iron-Hemd in Slim Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "15",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "685",
+        "Title": "Damen H&M V-Shirt mit Spitzenbesatz",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "10",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "699",
+        "Title": "Damen Langarmshirt mit hohem Rundhalsausschnitt und Babylock Merinowolle/Seide",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "60",
+        "Price Range Max": "60",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588558926 05720588558933 05720588558988"
+      },
+      {
+        "Popularity rank": "708",
+        "Title": "Lady Unisex Spitzenshirt »Kurzarm-Shirt« 1 tlg",
+        "Brand": "Lady",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "69",
+        "Price Range Max": "79",
+        "Price Range Currency": "CHF",
+        "GTINs": "08907208142292 08907208142346 08907208142254"
+      },
+      {
+        "Popularity rank": "709",
+        "Title": "Mädchen - Baumwollpyjama Weiss/Gingham-Karo - Size: 170 (14Y+) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "718",
+        "Title": "Mädchen H&M 5er-Pack Baumwolltops",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "721",
+        "Title": "Damen H&M Oversized Sweatshirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "754",
+        "Title": "Herren H&M Langarmshirt aus Jersey in Oversize Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "23",
+        "Price Range Max": "23",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "757",
+        "Title": "ON Herren CORE-T",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "48",
+        "Price Range Max": "75",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537018829 07615537340531 07615537251882"
+      },
+      {
+        "Popularity rank": "807",
+        "Title": "Mädchen H&M Oversized Hoodiejacke mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "833",
+        "Title": "H&M Jungen Oversized Sweatshirt mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "836",
+        "Title": "Damen H&M Figurnahes T-Shirt aus Mikrofaser",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "840",
+        "Title": "Damen H&M Cardigan Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "859",
+        "Title": "Damen H&M Fine-knit peplum cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "32",
+        "Price Range Max": "40",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "860",
+        "Title": "Mädchen H&M Sweatshirt mit Print angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "927",
+        "Title": "3er-Pack T-Shirts Hellbeige/Dunkelbeige - Size: 158/164 (12-14Y) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "15",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "946",
+        "Title": "Mädchen - Pullover im Häkellook Weiss - Size: 146/152 (10-12Y) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "25",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "950",
+        "Title": "Damen H&M Gerippter Cardigan Beigemeliert",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "951",
+        "Title": "Damen - Steppjacke Dunkelbraun - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "65",
+        "Price Range Max": "65",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "953",
+        "Title": "Damen H&M Figurnahes T-Shirt aus Mikrofaser",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "978",
+        "Title": "Damen - Figurnahes Baumwollshirt Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "991",
+        "Title": "Damen H&M Baumwollshirt mit Raglanärmeln Colourblocking",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "11",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "993",
+        "Title": "Herren H&M Henleyshirt aus Baumwollripp in Slim Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "25",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1026",
+        "Title": "Damen H&M Viskoseshirt mit V-Ausschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1056",
+        "Title": "Damen H&M Oversized T-Shirt mit Printmotiv",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1070",
+        "Title": "Ladies H&M Burgundy/Zebra Print Jacquard-Knit Mohair-Blend Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1079",
+        "Title": "Damen H&M Feinstrickshirt mit Cape",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1090",
+        "Title": "Damen H&M Gecrinkelte Baumwollbluse",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1101",
+        "Title": "Damen H&M Wickelshirt aus angerautem Jersey",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1110",
+        "Title": "Damen H&M Taillierte Twillbluse Braun/Kariert",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1127",
+        "Title": "Damen H&M Bluse mit Bindebändern am Rücken",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1133",
+        "Title": "Mädchen H&M 2er-Pack T-Shirts mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1146",
+        "Title": "Damen H&M Pullover in Jacquardstrick Dunkelbraun/Leopardenprint",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "45",
+        "Price Range Max": "45",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1147",
+        "Title": "Mädchen - Feinstrick-Cardigan Hellgraumeliert - Size: 170 (14Y+) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1149",
+        "Title": "Damen H&M Cardigan Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1165",
+        "Title": "Damen H&M Bluse mit V-Ausschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "28",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1169",
+        "Title": "Reiss – Phoebe – transparente gesmokte Bluse Damen mit Bindeband am Hals",
+        "Brand": "Reiss",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05063458705694 05063458705748"
+      },
+      {
+        "Popularity rank": "1171",
+        "Title": "Damen H&M Oversized Bluse aus Viskosegemisch Nadelstreifen",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1200",
+        "Title": "Damen - Hoodiejacke Graublau - Size: M - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1207",
+        "Title": "Damen H&M Oversized T-Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1213",
+        "Title": "Damen H&M Gestricktes Shirt mit Cape-Ärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1220",
+        "Title": "Damen - Figurbetonte Jeansbluse Dunkles Denimblau - Size: XS - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "31",
+        "Price Range Max": "58",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1223",
+        "Title": "Damen H&M Baumwollbluse mit Ballonärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1273",
+        "Title": "Damen H&M Jerseytop mit Struktur",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1277",
+        "Title": "Damen - Jumper Beigemeliert - Size: S - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1289",
+        "Title": "Damen Strickjacke Lammwolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "125",
+        "Price Range Max": "125",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588529902 05720588532629 05720588529896"
+      },
+      {
+        "Popularity rank": "1325",
+        "Title": "H&M Knit T-Shirt Nordstrom",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1327",
+        "Title": "Damen H&M Poloshirt aus Feinstrick Gestreift",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1355",
+        "Title": "Damen H&M Figurbetontes T-Shirt aus Modal",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1406",
+        "Title": "Damen H&M Keyhole-Top mit Stehkragen",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1408",
+        "Title": "Damen H&M Gestrickter Bolero",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1414",
+        "Title": "Herren H&M Hoodie in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "13",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1434",
+        "Title": "H&M 5er-Pack Longsleeves aus Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1437",
+        "Title": "Herren H&M 5er-Pack T-Shirts in Slim Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "40",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1450",
+        "Title": "Damen H&M Pullover aus Wollmix",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1453",
+        "Title": "Salomon Damen SHKout Bliss Tanklette Top",
+        "Brand": "Salomon",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "00195751866255 00195751866279 00195751866286"
+      },
+      {
+        "Popularity rank": "1455",
+        "Title": "Damen H&M Cardigan in Strukturstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1464",
+        "Title": "H&M Jungen Oversized Sweatshirt mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1466",
+        "Title": "Damen - Feinstrickpullover Cremefarben/Gestreift - Size: XXL - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "33",
+        "Price Range Max": "33",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1503",
+        "Title": "Damen H&M Pullover in Loose Fit Cremefarben",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1508",
+        "Title": "Mädchen H&M Baumwoll-Cardigan in Pointellestrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1526",
+        "Title": "Mädchen H&M Kapuzenjacke mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1550",
+        "Title": "Damen H&M Bluse mit Ballonärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1559",
+        "Title": "Damen H&M T-Shirt aus Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1569",
+        "Title": "Damen H&M Rollkragenpullover in Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1604",
+        "Title": "Damen H&M Spitzenbluse mit Schulterpolstern",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "54",
+        "Price Range Max": "54",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1619",
+        "Title": "Jungen H&M Baumwoll-T-Shirt mit Motivprint Dunkelbraun/Big Brother",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1632",
+        "Title": "Apricot gerippte Strickjacke Damen mit Doppelreißverschluss EU",
+        "Brand": "Apricot",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05052603165926 05052603165933"
+      },
+      {
+        "Popularity rank": "1672",
+        "Title": "Jungen H&M Bedruckter Hoodie mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1675",
+        "Title": "Damen H&M Langarmshirt mit U-Boot-Ausschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1680",
+        "Title": "Baby H&M Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "5",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1683",
+        "Title": "Damen H&M Cardigan aus Mohairmix mit Reissverschluss",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1686",
+        "Title": "Damen H&M Oversized Rugbyshirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1692",
+        "Title": "Mädchen H&M Cardigan in Rippstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1695",
+        "Title": "Jungen H&M Hoodiejacke mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1699",
+        "Title": "Mädchen H&M Oversized Sweatshirt mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "10",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1716",
+        "Title": "Damen - Figurnahes Baumwollshirt Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1724",
+        "Title": "Damen H&M Gerippter Pullover mit Peplum",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "26",
+        "Price Range Max": "26",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1732",
+        "Title": "ON Damen Core T-Shirt",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537257648 07615537018997 07615537408064"
+      },
+      {
+        "Popularity rank": "1733",
+        "Title": "Damen H&M Kastiges T-Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1747",
+        "Title": "Jungen H&M Oversized T-Shirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1748",
+        "Title": "Jungen - Oxfordhemd Braun - Size: 104 (3-4Y) - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1752",
+        "Title": "Damen Langarmshirt Rundhalsausschnitt Merinowolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "45",
+        "Price Range Max": "45",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588590094 05720588590261 05720588590070"
+      },
+      {
+        "Popularity rank": "1761",
+        "Title": "Damen - Langarmshirt aus Mikrofaser Helltürkis - Size: XXL - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "11",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1771",
+        "Title": "Damen H&M Oversize-Pullover mit V-Ausschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1778",
+        "Title": "Mädchen H&M 3er-Pack Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1779",
+        "Title": "Damen H&M Cardigan mit Zipper Marineblau",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1781",
+        "Title": "Damen H&M Sweatshirt mit Motivprint",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1786",
+        "Title": "Sunderland AFC Trikot - 2026-27",
+        "Brand": "Hummel",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05715917518382"
+      },
+      {
+        "Popularity rank": "1788",
+        "Title": "Damen H&M Oversized Popelinebluse Gestreift",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1793",
+        "Title": "Damen Langarmshirt Rundhalsausschnitt Merinowolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "45",
+        "Price Range Max": "45",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588590094 05720588590261 05720588590070"
+      },
+      {
+        "Popularity rank": "1798",
+        "Title": "Vila Damen Clothes T-Shirt",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05715358401656 05713789778804 05715799213436"
+      },
+      {
+        "Popularity rank": "1808",
+        "Title": "Damen H&M Pullover aus Mohairmix mit Spitzenbesatz",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "80",
+        "Price Range Max": "80",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1822",
+        "Title": "Ladies H&M Short-Sleeved Rib-knit Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1841",
+        "Title": "Damen H&M Ribbed turtleneck top",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1865",
+        "Title": "On Herren Climate Zip Hoodie",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "105",
+        "Price Range Max": "105",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537014678 07615537014661 07615537250649"
+      },
+      {
+        "Popularity rank": "1873",
+        "Title": "Damen H&M Cardigan im Häkellook Elfenbein",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1879",
+        "Title": "Milano Italy Damen Blusenshirt Aus Spitze Mit Volants",
+        "Brand": "Milano Italy",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "119",
+        "Price Range Max": "119",
+        "Price Range Currency": "CHF",
+        "GTINs": "04068704713561 04068704713585 04068704713608"
+      },
+      {
+        "Popularity rank": "1893",
+        "Title": "Damen H&M Gerippter Cardigan mit Spitzenbesatz",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1914",
+        "Title": "Damen H&M Figurnahes T-Shirt aus Mikrofaser",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1947",
+        "Title": "Damen H&M Shirt aus Pima-Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1954",
+        "Title": "Jungen H&M 5er-Pack Baumwollshirts",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1958",
+        "Title": "Damen H&M Cardigan Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1963",
+        "Title": "Damen H&M Poloshirt aus Merinowolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1965",
+        "Title": "Damen H&M Longbluse aus Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1976",
+        "Title": "Damen H&M Gestrickter Cardigan im Wickelschnitt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1979",
+        "Title": "Damen H&M Denimbluse mit Volants Dunkles Denimblau",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "1987",
+        "Title": "Jungen H&M 4er-Pack T-Shirts mit Print Pokémon",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2008",
+        "Title": "Damen H&M Geripptes T-Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2027",
+        "Title": "H&M MAMA Before & After Still-Hoodie",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2029",
+        "Title": "Damen H&M Oversized T-Shirt mit Printmotiv",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2038",
+        "Title": "Vila Damen",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "36",
+        "Price Range Max": "49",
+        "Price Range Currency": "CHF",
+        "GTINs": "05713785748535 05713785748528"
+      },
+      {
+        "Popularity rank": "2043",
+        "Title": "Damen H&M Geripptes T-Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2056",
+        "Title": "H&M MAMA Before & After 2er-Pack Stillshirts",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2057",
+        "Title": "Jungen H&M Bedrucktes T-Shirt aus Baumwolle in Oversized Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2064",
+        "Title": "Damen - Rollkragenpullover Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2065",
+        "Title": "Mädchen H&M Bedrucktes Baumwoll-T-Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2066",
+        "Title": "Damen H&M Langer Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "38",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2070",
+        "Title": "Herren Widmann Kariertes blaues Hemd",
+        "Brand": "Widmann",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "08003558103744"
+      },
+      {
+        "Popularity rank": "2107",
+        "Title": "On Damen Performance-T",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537028866 07615537842844 07615537028859"
+      },
+      {
+        "Popularity rank": "2118",
+        "Title": "Damen H&M Cardigan mit Kragen",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2121",
+        "Title": "Cloud 5ive TURN UP 3/4 ARM Kariert BIG Hemdbluse, Damen, Größe: Large, Camel",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "04255751218112 04255751218129 04255751218037"
+      },
+      {
+        "Popularity rank": "2139",
+        "Title": "Jungen H&M Innen angerautes Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2143",
+        "Title": "Herren H&M Troyer in Regular Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "40",
+        "Price Range Max": "40",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2150",
+        "Title": "Damen H&M T-Shirt aus Baumwolle mit Spitzenborte",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2151",
+        "Title": "Damen H&M Gerippter Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2156",
+        "Title": "Jungen H&M Oversized T-Shirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2160",
+        "Title": "Jungen H&M Hoodiejacke mit Applikationen Dinosaurier",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2166",
+        "Title": "VILA Ril Strickjacke Damen",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05713784984033"
+      },
+      {
+        "Popularity rank": "2167",
+        "Title": "Damen - Cardigan Dunkelbraun - Size: M - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "26",
+        "Price Range Max": "45",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2168",
+        "Title": "Damen H&M Bluse mit Tuchdetail Nadelstreifen",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2213",
+        "Title": "VILA Damen Pullover",
+        "Brand": "VILA",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "28",
+        "Price Range Max": "36",
+        "Price Range Currency": "CHF",
+        "GTINs": "05715800401555 05715801021929 05715801021950"
+      },
+      {
+        "Popularity rank": "2216",
+        "Title": "Herren H&M Hoodie aus Scuba in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "40",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2228",
+        "Title": "Mädchen H&M Innen angerautes Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2231",
+        "Title": "Mädchen H&M Oversized Sweatshirt mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "10",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2241",
+        "Title": "Damen H&M Bluse mit Ballonärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2242",
+        "Title": "Damen H&M Gerafftes Tanktop",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2243",
+        "Title": "Damen Reiss Rae Lochstickerei Bluse mit Blousonärmeln",
+        "Brand": "Reiss",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05063458680519 05063458680496"
+      },
+      {
+        "Popularity rank": "2245",
+        "Title": "Damen H&M Pullover mit Verzierungen Dunkelgrau/Schleife",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2260",
+        "Title": "Damen H&M Schulterfreier Pullover",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2267",
+        "Title": "Manor Woman T-Shirt Rundhals",
+        "Brand": "Manor",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "20",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2268",
+        "Title": "Damen H&M Oversized Bluse",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2275",
+        "Title": "H&M T-Shirt aus Baumwolle",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2292",
+        "Title": "Damen H&M Crop-Top mit Ballonsaum",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2294",
+        "Title": "Damen H&M Gilet in Pointellestrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2296",
+        "Title": "Damen H&M Pullover aus gebürstetem Mohairgemisch",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "119",
+        "Price Range Max": "119",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2315",
+        "Title": "Herren H&M T-Shirt in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2320",
+        "Title": "H&M Damen Geripptes Tanktop",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "8",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2333",
+        "Title": "Jungen H&M Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2345",
+        "Title": "Damen H&M Paillettenbluse Beige",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "60",
+        "Price Range Max": "60",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2358",
+        "Title": "Cartoon Damen Schlupfbluse",
+        "Brand": "Cartoon",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "04065927957154 04065927957123 04065927957161"
+      },
+      {
+        "Popularity rank": "2361",
+        "Title": "Mädchen H&M Oversized Sweatshirt mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "10",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2368",
+        "Title": "Damen H&M V-Top mit Volantbesatz",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2376",
+        "Title": "Coco Kinder/Kinder Tag der Toten Ernesto Miguel Hector Patch Hoodie",
+        "Brand": "COCO",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05063852106783"
+      },
+      {
+        "Popularity rank": "2379",
+        "Title": "Damen H&M Langer Cardigan",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "38",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2398",
+        "Title": "Herren H&M Hoodiejacke in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "26",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2413",
+        "Title": "Damen H&M Oversized Wollpullover",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "96",
+        "Price Range Max": "119",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2451",
+        "Title": "Damen H&M Langes Shirt in Rippstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2455",
+        "Title": "Damen - Figurnahes Baumwollshirt Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2463",
+        "Title": "Damen Wickeloberteil mit langen Ärmeln Merinowolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588544493 05720588544516 05720588480791"
+      },
+      {
+        "Popularity rank": "2472",
+        "Title": "Damen H&M Rollkragentop in Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2476",
+        "Title": "Ladies H&M Knit V-Neck Top",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2499",
+        "Title": "Mädchen H&M Hoodiejacke aus Teddyfleece",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2501",
+        "Title": "Damen H&M Oversized Pullover in Strukturstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2512",
+        "Title": "Damen Hemdjacke Wolle/Baumwolle",
+        "Brand": "DILLING",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "05720588530946 05720588531547 05720588530861"
+      },
+      {
+        "Popularity rank": "2514",
+        "Title": "Herren H&M T-Shirt in Relaxed Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "7",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2515",
+        "Title": "Damen - Rollkragenpullover Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2524",
+        "Title": "H&M Move Damen SculptMove Sport-Tanktop",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "20",
+        "Price Range Max": "33",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2526",
+        "Title": "Herrenhemd Oktoberfest, kariert - rot",
+        "Brand": "buttinette",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2528",
+        "Title": "Damen H&M Langarmshirt aus Feinstrick",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "16",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2548",
+        "Title": "Herren H&M T-Shirt in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2556",
+        "Title": "GANT Herren Archive Shield Hoodie",
+        "Brand": "GANT",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "07325707170133 07325707308239"
+      },
+      {
+        "Popularity rank": "2557",
+        "Title": "Damen H&M Oversized Baumwollbluse",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2573",
+        "Title": "Damen - Langarmshirt aus Mikrofaser Helltürkis - Size: XXL - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "11",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2582",
+        "Title": "On Damen Core Long-T",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537257150 07615537963013 07615537945903"
+      },
+      {
+        "Popularity rank": "2585",
+        "Title": "Jungen H&M Kapuzenjacke mit angerauter Innenseite",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2591",
+        "Title": "H&M Women's Crochet-look Polo Shirt",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2601",
+        "Title": "Herren H&M Sweatshirt in Loose Fit",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2618",
+        "Title": "Damen - Figurnahes Baumwollshirt Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "30",
+        "Price Range Max": "30",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2623",
+        "Title": "Damen - Jumper Beigemeliert - Size: S - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2627",
+        "Title": "Mädchen H&M 3er-Pack Baumwollshirts",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2630",
+        "Title": "Damen H&M Hemdbluse aus Popeline",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2631",
+        "Title": "Damen H&M Netztop mit Pailletten und Neckholder",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2647",
+        "Title": "Damen H&M Bluse mit Puffärmeln",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2649",
+        "Title": "Damen - Paillettenshirt Schwarz/Silberfarben - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "19",
+        "Price Range Max": "19",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2654",
+        "Title": "On Damen Performance Long-T",
+        "Brand": "On",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "51",
+        "Price Range Max": "110",
+        "Price Range Currency": "CHF",
+        "GTINs": "07615537841304 07615537661483 07615537027050"
+      },
+      {
+        "Popularity rank": "2659",
+        "Title": "Damen H&M Cardigan mit Pailletten",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2662",
+        "Title": "Mädchen H&M Cardigan aus Kaschmir",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "60",
+        "Price Range Max": "75",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2669",
+        "Title": "Jungen H&M 3er-Pack T-Shirts mit Print Marvel Comics",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2680",
+        "Title": "Mädchen H&M 5er-Pack Tanktops aus Jersey",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2695",
+        "Title": "Jungen H&M Baumwoll-T-Shirt mit Motivprint",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2696",
+        "Title": "Damen - Langarmshirt aus Mikrofaser Helltürkis - Size: XXL - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "11",
+        "Price Range Max": "13",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2698",
+        "Title": "Ladies H&M Black Extra-Long Halterneck Top",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2725",
+        "Title": "Damen H&M Handgefertigtes Shirt aus Wollmix",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2726",
+        "Title": "Boys H&M Oversized Hooded Jacket",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2734",
+        "Title": "Damen - Rollkragenpullover Schwarz - Size: L - H&M",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "16",
+        "Price Range Max": "25",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2743",
+        "Title": "Damen H&M Cardigan in lockerer Passform",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "19",
+        "Price Range Max": "50",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      },
+      {
+        "Popularity rank": "2750",
+        "Title": "Jungen H&M Sweatshirt mit Print",
+        "Brand": "H&M",
+        "Availability": "Product Suggestion",
+        "Price Range Min": "",
+        "Price Range Max": "",
+        "Price Range Currency": "CHF",
+        "GTINs": ""
+      }
+    ]
+  },
+  "demandCountercheck": {
+    "reviewer": "/root/r65_demand_review/countercheck",
+    "checkedAtUtc": "2026-11-03T08:22:23.839697+00:00",
+    "method": "Independent offline positional CSV parse after the two preamble lines; reported by separate child agent. No file mutations or API/network calls by counterchecker.",
+    "physicalCsvRows": 243,
+    "preambleRows": 2,
+    "headerRows": 1,
+    "dataRows": 240,
+    "uniqueFullRows": 240,
+    "duplicateFullRows": 0,
+    "columnCountEveryDataRow": 8,
+    "rank": {
+      "unique": 240,
+      "min": 22,
+      "max": 2750,
+      "strictlyIncreasing": true,
+      "unrepresentedWithinSpan": 2489,
+      "notMissingDataProof": true
+    },
+    "distinctTitles": 208,
+    "distinctBrands": 18,
+    "brandCountsLeading": {
+      "H&M": 203,
+      "On": 8,
+      "DILLING": 7,
+      "VILA": 6
+    },
+    "prices": {
+      "bothMissing": 133,
+      "bothPresent": 107,
+      "oneSideMissing": 0,
+      "invalidOrInverted": 0,
+      "observedMin": 5,
+      "observedMax": 150,
+      "currencyCHF": 232,
+      "currencyMissing": 8,
+      "missingCurrencyRowsAlsoHaveNoPrice": true
+    },
+    "gtins": {
+      "populatedFields": 35,
+      "emptyFields": 205,
+      "tokens": 90,
+      "distinct": 87,
+      "numeric14Digits": true,
+      "checkDigitsValid": true,
+      "duplicatedTokenValues": 3
+    },
+    "filters": {
+      "country": "CH",
+      "category": "Shirts & Tops",
+      "period": "2026-09",
+      "availability": "Product Suggestion"
+    },
+    "matchesPrimaryReview": true,
+    "ownApiCalls": 0,
+    "ownWrites": "None; this JSON is parent transcription of independent result."
+  },
+  "targetedProductChecks": {
+    "schemaVersion": 1,
+    "reviewId": "LUXESTYLE-R65-TWO-PRINT-PRODUCTS",
+    "checkedAtUTC": "2026-11-03T08:36:30.380482+00:00",
+    "brand": "LuxeStyle",
+    "identity": {
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "name": "LuxeStyle",
+      "verifiedFreshBeforeGetProduct": true
+    },
+    "scope": "Exactly two already known R42 products, read-only motif/SEO/image and current variant identity check",
+    "historicalSource": "/workspace/luxestyle-review/description-csv-20261101/BESCHREIBUNGEN-CSV-20261101-R42.json",
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15525460672897",
+        "title": "Dekorative Leinwandbilder Set – 3-teilige Wandkunst",
+        "status": "ACTIVE",
+        "currency": "CHF",
+        "handle": "dekorative-leinwandbilder-set-3-teilige-wandku-604600",
+        "url": "https://luxestyle.ch/products/dekorative-leinwandbilder-set-3-teilige-wandku-604600",
+        "tags": [
+          "auswahl-offen",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "diy",
+          "dropship",
+          "handarbeit",
+          "hobby",
+          "kat-deko",
+          "kreativ",
+          "neuheit",
+          "sort-wandbilder",
+          "sort-wandbilder-uf-leinwand",
+          "sort-wandbilder-wanddeko",
+          "sort-wanddeko",
+          "varianten-nachgezogen-1025"
+        ],
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67874513322375",
+            "title": "Typ A / 30 × 40 cm",
+            "sku": "CJJT261357801AZ",
+            "price": "33.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67874513355143",
+            "title": "Typ A / 40 × 60 cm",
+            "sku": "CJJT261357802BY",
+            "price": "35.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67874513387911",
+            "title": "Typ B / 30 × 40 cm",
+            "sku": "CJJT261357803CX",
+            "price": "33.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67874513420679",
+            "title": "Typ B / 40 × 60 cm",
+            "sku": "CJJT261357804DW",
+            "price": "35.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67874513453447",
+            "title": "Typ C / 30 × 40 cm",
+            "sku": "CJJT261357805EV",
+            "price": "33.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67874513486215",
+            "title": "Typ C / 40 × 60 cm",
+            "sku": "CJJT261357806FU",
+            "price": "35.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "totalVariants": 6,
+        "variantListCompleteForNativeResponse": true,
+        "inventoryQuantityMeaning": "Native quantities are 0. This does not prove out of stock; tracking, inventoryPolicy and storefront availability were not checked in this narrow motif review.",
+        "image": {
+          "productId": "15525460672897",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+          "localPath": "/workspace/luxestyle-review/description-export-20261103-r65/products/IMAGE-15525460672897.jpg",
+          "http": 200,
+          "contentType": "image/jpeg",
+          "bytes": 158244,
+          "sha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd",
+          "mediaId": "gid://shopify/MediaImage/70813726900609",
+          "visuallyOpened": true,
+          "hashMatchesR42": true,
+          "rightsStatus": "unknown; a current shop image and visual match do not prove commercial usage rights"
+        },
+        "visuallyVerifiedMotifSentence": "Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.",
+        "motifBody": {
+          "exactParagraph": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>",
+          "presentNow": true,
+          "sameAsR42Addition": true,
+          "newAdditionNeeded": false,
+          "supportedForAllCurrentTypes": false,
+          "replacementNeededAfterVariantImageCountercheck": true,
+          "supportLimitedTo": "Typ A"
+        },
+        "seo": {
+          "title": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst | LuxeStyle CH",
+          "description": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set."
+        },
+        "seoExactlyMatchesR42": true,
+        "publicReadback": {
+          "id": "gid://shopify/Product/15525460672897",
+          "url": "https://luxestyle.ch/products/dekorative-leinwandbilder-set-3-teilige-wandku-604600.json",
+          "http": 200,
+          "contentType": "application/json; charset=utf-8",
+          "bytes": 10148,
+          "sha256": "ccfe7826c777b9186e9fe0fa0d2229b536bba19c448cdbe00319b8ffc74382fc",
+          "savedAs": "/workspace/luxestyle-review/description-export-20261103-r65/products/PUBLIC-15525460672897.json",
+          "publicProductId": "15525460672897",
+          "matchesExpectedId": true,
+          "bodyMatchesNative": true,
+          "motifParagraphPresent": true,
+          "variantIds": [
+            "67874513322375",
+            "67874513355143",
+            "67874513387911",
+            "67874513420679",
+            "67874513453447",
+            "67874513486215"
+          ]
+        },
+        "bodySha256Now": "17860a82fbe2305c55038d6ee5042bb23ae4ca43d6ff72d2811ae60ffeb650ba",
+        "r42OfferBinding": {
+          "offerId": "shopify_ZZ_15525460672897_56225328824705",
+          "productId": "gid://shopify/Product/15525460672897",
+          "variantId": "gid://shopify/ProductVariant/56225328824705",
+          "sku": "CJ-2511220828321604600",
+          "priceCHF": "33.90",
+          "availableForSale": true,
+          "oldVariantStillInCurrentVariantList": false,
+          "merchantCurrentSubmittedOfferStatus": "unknown; no Merchant lookup or feed edit"
+        },
+        "exactDraftDiff": {
+          "field": "descriptionHtml",
+          "operation": "replace exactly one motif paragraph; keep remainder byte-for-byte",
+          "before": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>",
+          "after": "<p><strong>Motiv:</strong> Blumen und Blätter auf hellem Hintergrund; die Farbgestaltung unterscheidet sich je nach gewähltem Typ.</p>",
+          "fullBeforeSha256": "17860a82fbe2305c55038d6ee5042bb23ae4ca43d6ff72d2811ae60ffeb650ba",
+          "fullDraftAfterSha256": "4fc1470c75b2833b5ef45ea47a4c6d6ab72c77b7227b1ea9f975dcfdc8fd8faa"
+        },
+        "limitations": [
+          "The image proves the visible motif only; it does not prove print material, dimensions, included frame, delivery time or coupon validity.",
+          "No storefront-availability or social eligibility conclusion is made."
+        ],
+        "seoDraftDiff": {
+          "field": "seo.description",
+          "operation": "replace exactly the first motif sentence; keep remainder byte-for-byte",
+          "before": "Motiv: Blumen in Rosa, Gelb und Grün.",
+          "after": "Motiv: Blumen und Blätter je nach Typ.",
+          "fullBefore": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+          "fullDraftAfter": "Motiv: Blumen und Blätter je nach Typ. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+          "unreviewedExistingOtherSeoClaimsPreservedNotEndorsed": true
+        },
+        "variantImageBindingSource": "/workspace/luxestyle-review/description-export-20261103-r65/products/CURRENT-TYPE-IMAGE-BINDINGS.json"
+      },
+      {
+        "productId": "gid://shopify/Product/16615662354823",
+        "title": "Dekoratives Leinwandbild ohne Rahmen",
+        "status": "ACTIVE",
+        "currency": "CHF",
+        "handle": "dekoratives-leinwandbild-ohne-rahmen-615200",
+        "url": "https://luxestyle.ch/products/dekoratives-leinwandbild-ohne-rahmen-615200",
+        "tags": [
+          "auswahl-offen",
+          "basteln",
+          "cj-real",
+          "diy",
+          "dropship",
+          "handarbeit",
+          "hobby",
+          "kat-deko",
+          "kreativ",
+          "neuheit",
+          "sort-wandbilder",
+          "sort-wandbilder-uf-leinwand",
+          "sort-wandbilder-wanddeko",
+          "sort-wanddeko"
+        ],
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67667365200263",
+            "title": "Default Title",
+            "sku": "CJ-2504250729121615200",
+            "price": "92.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "totalVariants": 1,
+        "variantListCompleteForNativeResponse": true,
+        "inventoryQuantityMeaning": "Native quantities are 0. This does not prove out of stock; tracking, inventoryPolicy and storefront availability were not checked in this narrow motif review.",
+        "image": {
+          "productId": "16615662354823",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b889c32e-3dfd-4a10-b0d9-3b512d1f626a.png?v=1791751214",
+          "localPath": "/workspace/luxestyle-review/description-export-20261103-r65/products/IMAGE-16615662354823.jpg",
+          "http": 200,
+          "contentType": "image/jpeg",
+          "bytes": 166756,
+          "sha256": "3e39164a2b8d4d63701bb40a2601550d921930b3f3b61bbc31979c85feafbe40",
+          "mediaId": "gid://shopify/MediaImage/77495686529415",
+          "visuallyOpened": true,
+          "hashMatchesR42": true,
+          "rightsStatus": "unknown; a current shop image and visual match do not prove commercial usage rights"
+        },
+        "visuallyVerifiedMotifSentence": "Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.",
+        "motifBody": {
+          "exactParagraph": "<p><strong>Motiv:</strong> Blühender Baum mit gelben und weissen Blüten vor blau-grauem Hintergrund.</p>",
+          "presentNow": true,
+          "sameAsR42Addition": true,
+          "newAdditionNeeded": false
+        },
+        "seo": {
+          "title": "Dekoratives Leinwandbild ohne Rahmen | LuxeStyle CH",
+          "description": "Motiv: Blühender Baum mit gelb-weissen Blüten. Für eine moderne Wandgestaltung in deinem Zuhause ist dieses dekorative Leinwandbild eine gute Wahl."
+        },
+        "seoExactlyMatchesR42": true,
+        "publicReadback": {
+          "id": "gid://shopify/Product/16615662354823",
+          "url": "https://luxestyle.ch/products/dekoratives-leinwandbild-ohne-rahmen-615200.json",
+          "http": 200,
+          "contentType": "application/json; charset=utf-8",
+          "bytes": 9250,
+          "sha256": "1f379289c8377528ed658ef0177a9a1ef07fb51d0cad3df4c550a30f5be16fb3",
+          "savedAs": "/workspace/luxestyle-review/description-export-20261103-r65/products/PUBLIC-16615662354823.json",
+          "publicProductId": "16615662354823",
+          "matchesExpectedId": true,
+          "bodyMatchesNative": true,
+          "motifParagraphPresent": true,
+          "variantIds": [
+            "67667365200263"
+          ]
+        },
+        "bodySha256Now": "1613a008d3f7615eac2fd39fc3a1a3af433e1ab425ced26e945d5ccd6e1deab7",
+        "r42OfferBinding": {
+          "offerId": "shopify_ZZ_16615662354823_67667365200263",
+          "productId": "gid://shopify/Product/16615662354823",
+          "variantId": "gid://shopify/ProductVariant/67667365200263",
+          "sku": "CJ-2504250729121615200",
+          "priceCHF": "92.90",
+          "availableForSale": true,
+          "oldVariantStillInCurrentVariantList": true,
+          "merchantCurrentSubmittedOfferStatus": "unknown; no Merchant lookup or feed edit"
+        },
+        "exactDraftDiff": null,
+        "limitations": [
+          "The image proves the visible motif only; it does not prove print material, dimensions, included frame, delivery time or coupon validity.",
+          "No storefront-availability or social eligibility conclusion is made."
+        ]
+      }
+    ],
+    "newFinding": {
+      "productId": "gid://shopify/Product/15525460672897",
+      "description": "R42 flower-set variant56225328824705/SKU CJ-2511220828321604600 is no longer in the current six-variant list. Do not reuse that old offer/variant/supplier binding as a current purchase or source proof.",
+      "causeOfChange": "unknown",
+      "googleOfferCurrentState": "unknown",
+      "nativeCountercheck": {
+        "source": "VARIANT-COUNTERCHECK.json",
+        "queryCount": 1,
+        "oldNode": null,
+        "currentControlNode": {
+          "id": "gid://shopify/ProductVariant/67874513322375",
+          "sku": "CJJT261357801AZ",
+          "price": "33.90",
+          "product": {
+            "id": "gid://shopify/Product/15525460672897"
+          }
+        },
+        "graphqlErrors": false,
+        "interpretation": "Old node not returned with a successful current control. This is not an own deletion or evidence of cause/date of change."
+      },
+      "variantMotifCountercheck": {
+        "variantsRead": 6,
+        "uniqueAssignedImages": 3,
+        "emptyMediaBindings": 0,
+        "differentImagesPerType": true,
+        "sameImageWithinEachTypeAcrossSizes": true,
+        "nativeAndPublicBindingsMatch": true,
+        "imagesActuallyViewed": 3,
+        "oldBodyAndSeoMotifTextStillPresent": true,
+        "oldProductWideColorSentenceSupportedForAllTypes": false,
+        "oldColorSentenceSupportedOnlyFor": "Typ A",
+        "initialR65ConclusionSuperseded": "No replacement needed applied only to the original main image; variant-media follow-up proves B/C use other colours."
+      }
+    },
+    "openSourceIssues": [
+      {
+        "productId": "gid://shopify/Product/15525460672897",
+        "issue": "Existing description says PS/plastic frame while details say Holz; body asserts30x40 while variants also include40x60. The six current CJJT2613578xx SKUs need exact supplier/model specifications; no material/dimension decision from photos."
+      },
+      {
+        "productId": "gid://shopify/Product/16615662354823",
+        "issue": "Existing80x160cm, Epson/10-colour process, weight range and actual no-frame scope remain independently unverified. Display image shows a framed room mock-up with RELIABLI ART text; do not infer included frame, dimensional scale or rights."
+      }
+    ],
+    "opaqueOfferIdsNotUsedAsShopifyIds": [
+      "6917317292929955722",
+      "1083834440623406112"
+    ],
+    "validation": {
+      "schemaExplored": [
+        "QueryRoot",
+        "Product",
+        "SEO",
+        "ProductVariant",
+        "Node"
+      ],
+      "validatorInvokedBeforeEachRead": true,
+      "mcpPrevalidation": "skipped by tool; tool instructed native execution for validation",
+      "nativeQuery": "succeeded without GraphQL errors",
+      "fullToolkitCliValidation": "not obtained; no full validation success claimed",
+      "publicExactBodyAndIdChecks": "both HTTP200, exact native body and expected product ID",
+      "diff": "Draft only: replace one overly specific flower motif paragraph and its SEO motif sentence; no write"
+    },
+    "ownShopWrites": 0,
+    "merchantWrites": 0,
+    "ownNewCorrections": 0,
+    "notPerformed": [
+      "Metric reports",
+      "Flow reports",
+      "Orders/cart queries",
+      "Merchant queries/retries",
+      "Shop/product/feed/settings changes",
+      "Social preparation or publication"
+    ],
+    "nextConcreteStep": "Owner approval of the bounded neutral flower motif replacement draft; exact supplier specifications for six current flower SKUs and tree SKU remain separately required. No product write in this run."
+  },
+  "oldVariantNativeCountercheck": {
+    "schema": {
+      "queryRoot": {
+        "data": {
+          "__type": {
+            "name": "QueryRoot",
+            "fields": [
+              {
+                "name": "node",
+                "description": "Returns a specific node (any object that implements the\n[Node](https://shopify.dev/api/admin-graphql/latest/interfaces/Node)\ninterface) by ID, in accordance with the\n[Relay specification](https://relay.dev/docs/guides/graphql-server-specification/#object-identification).\nThis field is commonly used for refetching an object.",
+                "type": {
+                  "name": "Node",
+                  "kind": "INTERFACE",
+                  "ofType": null
+                },
+                "args": [
+                  {
+                    "name": "id",
+                    "description": "The ID of the `Node` to return.",
+                    "type": {
+                      "name": null,
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "name": "ID",
+                        "kind": "SCALAR",
+                        "ofType": null
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "node": {
+        "data": {
+          "__type": {
+            "name": "Node",
+            "fields": [
+              {
+                "name": "id",
+                "description": "A globally-unique ID.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ID",
+                    "kind": "SCALAR",
+                    "ofType": null
+                  }
+                },
+                "args": []
+              }
+            ],
+            "possibleTypes": [
+              {
+                "name": "ProductVariant",
+                "kind": "OBJECT"
+              }
+            ]
+          }
+        }
+      },
+      "productVariant": {
+        "data": {
+          "__type": {
+            "name": "ProductVariant",
+            "fields": [
+              {
+                "name": "id",
+                "description": "A globally-unique ID.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ID",
+                    "kind": "SCALAR",
+                    "ofType": null
+                  }
+                },
+                "args": []
+              },
+              {
+                "name": "price",
+                "description": "The price of the product variant in the default shop currency.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Money",
+                    "kind": "SCALAR",
+                    "ofType": null
+                  }
+                },
+                "args": []
+              },
+              {
+                "name": "product",
+                "description": "The product that this variant belongs to.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Product",
+                    "kind": "OBJECT",
+                    "ofType": null
+                  }
+                },
+                "args": []
+              },
+              {
+                "name": "sku",
+                "description": "A case-sensitive identifier for the product variant in the shop.\nRequired in order to connect to a fulfillment service.",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                },
+                "args": []
+              }
+            ]
+          }
+        }
+      },
+      "product": {
+        "data": {
+          "__type": {
+            "name": "Product",
+            "fields": [
+              {
+                "name": "id",
+                "description": "A globally-unique ID.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ID",
+                    "kind": "SCALAR",
+                    "ofType": null
+                  }
+                },
+                "args": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "query": "query R65FlowerVariantCountercheck($oldVariant: ID!, $currentVariant: ID!) {\n  oldVariant: node(id: $oldVariant) { id ... on ProductVariant { sku price product { id } } }\n  currentVariant: node(id: $currentVariant) { id ... on ProductVariant { sku price product { id } } }\n}",
+    "variables": {
+      "oldVariant": "gid://shopify/ProductVariant/56225328824705",
+      "currentVariant": "gid://shopify/ProductVariant/67874513322375"
+    },
+    "validation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "GraphQL validation skipped. Continue with graphql_query or graphql_mutation which will perform the validation."
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"oldVariant\":null,\"currentVariant\":{\"id\":\"gid://shopify/ProductVariant/67874513322375\",\"sku\":\"CJJT261357801AZ\",\"price\":\"33.90\",\"product\":{\"id\":\"gid://shopify/Product/15525460672897\"}}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "oldVariant": null,
+          "currentVariant": {
+            "id": "gid://shopify/ProductVariant/67874513322375",
+            "sku": "CJJT261357801AZ",
+            "price": "33.90",
+            "product": {
+              "id": "gid://shopify/Product/15525460672897"
+            }
+          }
+        }
+      },
+      "isError": false
+    }
+  },
+  "currentVariantImageBindingsAndDraft": {
+    "schemaVersion": 1,
+    "reviewId": "LUXESTYLE-R65-BLUMEN-MOTIV-FREIGABE",
+    "checkedAtUTC": "2026-11-03T08:36:30.278542+00:00",
+    "productId": "gid://shopify/Product/15525460672897",
+    "scope": "Only the six previously read current variants; one bounded native query, no pagination and no additional products",
+    "variantImageBindings": [
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513322375",
+        "title": "Typ A / 30 × 40 cm",
+        "sku": "CJJT261357801AZ",
+        "priceCHF": "33.90",
+        "type": "Typ A",
+        "mediaId": "gid://shopify/MediaImage/70813726900609",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 2 | LuxeStyle",
+        "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-A.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595523948929",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": true,
+        "localImagePathIsLocalEvidenceOnly": true
+      },
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513355143",
+        "title": "Typ A / 40 × 60 cm",
+        "sku": "CJJT261357802BY",
+        "priceCHF": "35.90",
+        "type": "Typ A",
+        "mediaId": "gid://shopify/MediaImage/70813726900609",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 2 | LuxeStyle",
+        "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-A.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595523948929",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": true,
+        "localImagePathIsLocalEvidenceOnly": true
+      },
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513387911",
+        "title": "Typ B / 30 × 40 cm",
+        "sku": "CJJT261357803CX",
+        "priceCHF": "33.90",
+        "type": "Typ B",
+        "mediaId": "gid://shopify/MediaImage/70813727031681",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 6 | LuxeStyle",
+        "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-B.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595524080001",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Blaue Zeichnungen von Blumen und Blättern auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": false,
+        "localImagePathIsLocalEvidenceOnly": true
+      },
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513420679",
+        "title": "Typ B / 40 × 60 cm",
+        "sku": "CJJT261357804DW",
+        "priceCHF": "35.90",
+        "type": "Typ B",
+        "mediaId": "gid://shopify/MediaImage/70813727031681",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 6 | LuxeStyle",
+        "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-B.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595524080001",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Blaue Zeichnungen von Blumen und Blättern auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": false,
+        "localImagePathIsLocalEvidenceOnly": true
+      },
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513453447",
+        "title": "Typ C / 30 × 40 cm",
+        "sku": "CJJT261357805EV",
+        "priceCHF": "33.90",
+        "type": "Typ C",
+        "mediaId": "gid://shopify/MediaImage/70813726933377",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 3 | LuxeStyle",
+        "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-C.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595523981697",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Schwarze stilisierte Blumen und Blätter auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": false,
+        "localImagePathIsLocalEvidenceOnly": true
+      },
+      {
+        "variantId": "gid://shopify/ProductVariant/67874513486215",
+        "title": "Typ C / 40 × 60 cm",
+        "sku": "CJJT261357806FU",
+        "priceCHF": "35.90",
+        "type": "Typ C",
+        "mediaId": "gid://shopify/MediaImage/70813726933377",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+        "altText": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst – Bild 3 | LuxeStyle",
+        "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94",
+        "localImagePath": "/workspace/luxestyle-review/description-export-20261103-r65/products/TYPE-Typ-C.jpg",
+        "mediaCount": 1,
+        "mediaListComplete": true,
+        "publicImageId": "83595523981697",
+        "publicUrlAndVariantBindingMatch": true,
+        "visuallyVerifiedMotifSentence": "Schwarze stilisierte Blumen und Blätter auf hellem Hintergrund.",
+        "shopAssignedVariantImageBinding": "confirmed",
+        "supplierOriginalModelAndFulfilmentBinding": "unknown",
+        "oldProductWideColorSentenceSupported": false,
+        "localImagePathIsLocalEvidenceOnly": true
+      }
+    ],
+    "currentFields": {
+      "descriptionHtml": "<!-- ls-var-v1 --><p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p><p>Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt.</p><p>Das Set enthält drei einzelne Bilder.</p><p>Jedes Bild ist auf einer 30 × 40 cm grossen Leinwand aufgespannt und in einem stabilen PS‑Rahmen eingefasst.</p><p>Der Rahmen besteht aus Kunststoff (PS).</p><p>Im Lieferumfang sind drei fertig gerahmte Bilder.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3 Stück pro Set</li>\n<li>30 × 40 cm Grösse</li>\n<li>PS‑Rahmen aus Kunststoff</li>\n<li>Leinwanddruck mit floralem Muster</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Holz</li>\n<li>\n<strong>Gewicht:</strong> ca. 300 g – 520 g (je nach Variante)</li>\n<li>\n<strong>Masse:</strong> 30 × 40cm PS frame + canvas, 40 × 60cm PS frame + canvas</li>\n<li>\n<strong>Muster:</strong> Blumen</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst | LuxeStyle CH",
+        "description": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set."
+      },
+      "tags": [
+        "auswahl-offen",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "diy",
+        "dropship",
+        "handarbeit",
+        "hobby",
+        "kat-deko",
+        "kreativ",
+        "neuheit",
+        "sort-wandbilder",
+        "sort-wandbilder-uf-leinwand",
+        "sort-wandbilder-wanddeko",
+        "sort-wanddeko",
+        "varianten-nachgezogen-1025"
+      ]
+    },
+    "summary": {
+      "variantsRead": 6,
+      "uniqueAssignedImages": 3,
+      "emptyMediaBindings": 0,
+      "differentImagesPerType": true,
+      "sameImageWithinEachTypeAcrossSizes": true,
+      "nativeAndPublicBindingsMatch": true,
+      "imagesActuallyViewed": 3,
+      "oldBodyAndSeoMotifTextStillPresent": true,
+      "oldProductWideColorSentenceSupportedForAllTypes": false,
+      "oldColorSentenceSupportedOnlyFor": "Typ A",
+      "initialR65ConclusionSuperseded": "No replacement needed applied only to the original main image; variant-media follow-up proves B/C use other colours."
+    },
+    "draftDiffsForOwnerApprovalOnly": [
+      {
+        "field": "descriptionHtml",
+        "operation": "replace exactly one motif paragraph; keep remainder byte-for-byte",
+        "before": "<p><strong>Motiv:</strong> Stilisierte Blumen in Rosa und Gelb mit grünen Blättern auf hellem Hintergrund.</p>",
+        "after": "<p><strong>Motiv:</strong> Blumen und Blätter auf hellem Hintergrund; die Farbgestaltung unterscheidet sich je nach gewähltem Typ.</p>",
+        "fullBeforeSha256": "17860a82fbe2305c55038d6ee5042bb23ae4ca43d6ff72d2811ae60ffeb650ba",
+        "fullDraftAfterSha256": "4fc1470c75b2833b5ef45ea47a4c6d6ab72c77b7227b1ea9f975dcfdc8fd8faa"
+      },
+      {
+        "field": "seo.description",
+        "operation": "replace exactly the first motif sentence; keep remainder byte-for-byte",
+        "before": "Motiv: Blumen in Rosa, Gelb und Grün.",
+        "after": "Motiv: Blumen und Blätter je nach Typ.",
+        "fullBefore": "Motiv: Blumen in Rosa, Gelb und Grün. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+        "fullDraftAfter": "Motiv: Blumen und Blätter je nach Typ. Die Wandbilder sind dekorative Leinwanddrucke, die du zum Verschönern deiner Wohn- oder Arbeitsräume nutzt. 3 Stück pro Set.",
+        "unreviewedExistingOtherSeoClaimsPreservedNotEndorsed": true,
+        "fullBeforeSha256": "f539b6fa9bc6a8449fe5c5362d2021954ae702395f0804d6ef793ac854e300df",
+        "fullDraftAfterSha256": "19e4aeb4d1aa55cd8c625f8c336b5ca3929e11dd22e3a487080c8bfea7144fc9"
+      }
+    ],
+    "draftOnly": true,
+    "ownWrites": 0,
+    "preservedTag": "auswahl-offen",
+    "tagExistsInFreshNativeProductRead": true,
+    "exactMaterialDimensionsFrameSupplyAndRights": "unknown; images and selected option labels do not prove supplier specifications or usage rights",
+    "validation": {
+      "schemaExplored": [
+        "QueryRoot",
+        "ProductVariant",
+        "MediaConnection",
+        "Media",
+        "MediaImage",
+        "Image",
+        "PageInfo"
+      ],
+      "validatorInvokedBeforeRead": true,
+      "prevalidation": "MCP skipped; native query validated successfully",
+      "graphqlErrors": false,
+      "pagination": "none; all six media connections have hasNextPage=false"
+    },
+    "sources": [
+      "VARIANT-MEDIA-READ.json",
+      "PUBLIC-15525460672897.json",
+      "PRODUCT-15525460672897.json",
+      "SEO-READ.json",
+      "TYPE-IMAGE-SOURCES.json"
+    ],
+    "status": "approval_draft_not_applied",
+    "ownerApprovalForThisExactNewDiff": "unknown_not_inferred_from_csv_upload",
+    "applicationAllowedNow": false,
+    "applicationPreconditions": [
+      "Explicit approval of exactly these two text-field edits; no status, source, tag, inventory, price or settings change.",
+      "Fresh luxestyle.ch/CHF identity, product/variant/image bindings and exact current original fields; do not apply if the old values changed.",
+      "Preserve current SEO title explicitly and all other fields; change only the one motif paragraph and first SEO motif sentence.",
+      "Fresh readback of both fields plus preserved variants, tags and SEO title. Unknown write means stop, not blind retry.",
+      "The text draft does not confirm material, dimensions, frame/pack supply, commercial image rights or fulfilment identity."
+    ],
+    "sourcesAreLocalEvidenceNamesNotRemoteLinks": true
+  },
+  "sourceReview": {
+    "schemaVersion": 1,
+    "reviewId": "LUXESTYLE-R65-SOURCE-REVIEW-ONLY",
+    "checkedAtUtc": "2026-11-03T08:39:01.046123+00:00",
+    "shop": "luxestyle.ch",
+    "scope": "Three unresolved export-to-source contexts only; not a feed upload, replacement or deletion plan.",
+    "allOfferIdsAreOpaqueStrings": true,
+    "missingSourceAndSubmittedUrlMeansUnknown": true,
+    "sourceIdentity": {
+      "merchantAccountHistoricalReference": "5797470070",
+      "authenticatedCurrentDataSource": null,
+      "authenticatedCurrentSubmittedUrls": null
+    },
+    "entries": [
+      {
+        "exportOfferId": "shopify_ZZ_15525460672897_56225328824705",
+        "exportLanguage": "de",
+        "exportFeedLabel": "CHF_99383214465",
+        "exportIsDataNotInstruction": true,
+        "shopifyProductId": "gid://shopify/Product/15525460672897",
+        "historicalExportVariantId": "gid://shopify/ProductVariant/56225328824705",
+        "historicalSkuFromR42": "CJ-2511220828321604600",
+        "nativeOldVariantNode": null,
+        "successfulCurrentControlVariantId": "gid://shopify/ProductVariant/67874513322375",
+        "currentVariantsRead": 6,
+        "currentVariantBindings": [
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513322375",
+            "sku": "CJJT261357801AZ",
+            "type": "Typ A",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+            "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd"
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513355143",
+            "sku": "CJJT261357802BY",
+            "type": "Typ A",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+            "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd"
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513387911",
+            "sku": "CJJT261357803CX",
+            "type": "Typ B",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+            "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea"
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513420679",
+            "sku": "CJJT261357804DW",
+            "type": "Typ B",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+            "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea"
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513453447",
+            "sku": "CJJT261357805EV",
+            "type": "Typ C",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+            "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94"
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/67874513486215",
+            "sku": "CJJT261357806FU",
+            "type": "Typ C",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+            "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94"
+          }
+        ],
+        "replacementOfferId": null,
+        "oldOfferCurrentGoogleState": "unknown",
+        "submittedProductUrl": null,
+        "activeDataSourceId": null,
+        "nextReadOnlyCheck": "Read exactly this original Merchant offer and its source in a legitimate editor; determine whether it is still submitted and which current SKU/URL/image it claims. No guessed reassignment to a current default.",
+        "causeAndTimeOfVariantChange": "unknown"
+      },
+      {
+        "exportOfferId": "6917317292929955722",
+        "exportTitle": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+        "exportLanguage": "de",
+        "exportFeedLabel": "CH",
+        "shopifyProductId": null,
+        "shopifyVariantId": null,
+        "activeDataSourceId": null,
+        "submittedProductUrl": null,
+        "recommendation": "Motiv",
+        "recommendationIsNotDisapproval": true,
+        "existingMotifSemanticallyPresent": false,
+        "titleOrOfferNumberNotUsedForShopifyMatching": true,
+        "nextReadOnlyCheck": "Read the exact original offer detail with source ID/type and submitted product URL; only then bind a native product/variant and true image. Do not invent a motif or replace materials, measurements or delivery promises from the title."
+      },
+      {
+        "exportOfferId": "1083834440623406112",
+        "exportTitle": "Marseille Panorama Leinwandbild",
+        "exportLanguage": "de",
+        "exportFeedLabel": "CH",
+        "shopifyProductId": null,
+        "shopifyVariantId": null,
+        "activeDataSourceId": null,
+        "submittedProductUrl": null,
+        "recommendation": "Motiv",
+        "recommendationIsNotDisapproval": true,
+        "existingMotifSemanticallyPresent": true,
+        "titleOrOfferNumberNotUsedForShopifyMatching": true,
+        "nextReadOnlyCheck": "Read the exact original offer detail with source ID/type and submitted product URL; only then bind a native product/variant and true image. Do not invent a motif or replace materials, measurements or delivery promises from the title."
+      }
+    ],
+    "notPerformed": [
+      "merchant data query retry",
+      "feed upload",
+      "offer reassignment",
+      "offer deletion",
+      "variant restoration",
+      "shop product change",
+      "report query",
+      "order watch"
+    ]
+  },
+  "ownActionsThisScope": {
+    "newCsvFilesReviewed": 2,
+    "nativeProductsRead": 2,
+    "currentFlowerVariantsImageBindingsRead": 6,
+    "rootAndAgentActuallyViewedTypeImages": 3,
+    "newShopWrites": 0,
+    "merchantQueries": 0,
+    "merchantWrites": 0,
+    "socialWrites": 0,
+    "renders": 0,
+    "newMetricsOrFlowReports": 0,
+    "orderWatchQueries": 0,
+    "configurationWrites": 0,
+    "documentationWrites": "separately recorded after guarded SHA writes and exact readback"
+  },
+  "dailyPolicy": "R64 reports completed today and not repeated: six Metricool metric-definition calls plus six small channel data calls and one Klaviyo flow report; no order watch.",
+  "identityContinuity": "Root freshly checked connected Shopify and Metricool brand/six identities at the beginning of R65; targeted product agent separately rechecked luxestyle.ch/CHF. This scope performs no production write.",
+  "masterContinuity": "Same professional 18-second projector master remains in R64 storyboard/production-blocker state; no new master or slideshow rendered or published for these uploads.",
+  "limitations": [
+    "31 description recommendations are not current Merchant rejection/approval states.",
+    "29 export descriptions have the Motif prefix; current correctness of all 13 products/29 variants is not established by this run.",
+    "Native null old variant plus complete six-variant current list is not evidence of the current Google offer state or the cause/date of change.",
+    "Image binding proves shop-assigned imagery, not supplier fulfilment identity, measured dimensions, frame/pack supply or commercial rights.",
+    "240 suggestions are filtered CH Shirts & Tops market data for September 2026, not current LuxeStyle sales or available inventory.",
+    "133 price ranges are unknown. Market price bounds and third-party GTINs cannot be transferred to LuxeStyle products.",
+    "Three keyword hypotheses overlap and are not current market trends, segment totals, purchase recommendations or brand-use rights."
+  ]
+}
