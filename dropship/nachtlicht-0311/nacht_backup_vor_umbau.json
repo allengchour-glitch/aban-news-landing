@@ -1,0 +1,417 @@
+{
+ "id": "gid://shopify/Product/15449427902849",
+ "status": "ACTIVE",
+ "tags": [
+  "beleuchtung",
+  "beruehrungsempfindlich",
+  "bild-ok",
+  "bildmass-ok-0906",
+  "cj-real",
+  "dropship",
+  "kat-nachtlicht-projektor",
+  "lampe",
+  "neu",
+  "rueckhol-0907",
+  "sort-nachtlichter",
+  "trend",
+  "video-hit",
+  "viral"
+ ],
+ "title": "Faltbare LED-Nachtlichtlampe, Berührungsempfindlich, Dimmbar & USB-Ladeanschluss",
+ "descriptionHtml": "<p>Die faltbare LED-Nachtlichtlampe ist ideal für Zuhause oder Unterwegs. Mit ihrer eleganten Optik in Weiss, Grau und Rot sorgt sie für gemütliches Licht. Sie lässt sich berührungsempfindlich steuern und bietet drei Helligkeitsstufen. Der eingebaute 1200-mAh-Akku ermöglicht mobile Nutzung. Die Lampe ist in Tisch- und Taschenform umlegbar und per USB ladbar.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Berührungsempfindliche Steuerung mit 3 Helligkeitsstufen</li>\n<li>Eingebaute 1200-mAh-Lithium-Batterie</li>\n<li>Faltbarer Design für Tisch- und Taschenmodus</li>\n<li>Material: ABS+PC+Holz+Emaille</li>\n<li>Farben: Elegant white, green gray, red</li>\n<li>USB-Ladeanschluss mit 5V DC</li>\n<li>Abmessungen: 142×37×194 mm (Tischlampe), 142×120×248 mm (Laternenmodus)</li>\n<li>Inkl. USB-Kabel</li>\n<li>Limited Edition</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "seo": {
+  "title": "Faltbare LED-Nachtlichtlampe, Berührungsempfindlich",
+  "description": "Die faltbare LED-Nachtlichtlampe ist ideal für Zuhause oder Unterwegs. Berührungsempfindliche Steuerung mit 3 Helligkeitsstufen."
+ },
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17881090064769",
+   "name": "Farbe",
+   "position": 1,
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393604481",
+     "name": "Rot, 0.3 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393637249",
+     "name": "Grey-0.5wattsX4pcs",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393670017",
+     "name": "Grey-0.5wattsX6pcs",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393702785",
+     "name": "USB data cable-1pc",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393735553",
+     "name": "Grau 5PC, 0.5watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393768321",
+     "name": "Weiss 5PC, 0.5watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393801089",
+     "name": "2 Grau 1 Weiss, 0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393833857",
+     "name": "Set1-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393866625",
+     "name": "Set2-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393899393",
+     "name": "2 Weiss 1 Grau, 0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393932161",
+     "name": "White 2pcs-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393964929",
+     "name": "Grau, 0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034393997697",
+     "name": "White 3pcs-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034394030465",
+     "name": "Grey 2pcs-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034394063233",
+     "name": "Grey 3pcs-0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034394096001",
+     "name": "Weiss, 0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034394128769",
+     "name": "Grau / Weiss, 0.5 watts",
+     "hasVariants": true
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034394161537",
+     "name": "Weiss, 4 Stück, 0.5 watts",
+     "hasVariants": true
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55881748414849",
+    "title": "Rot, 0.3 watts",
+    "sku": "CJ-CJJZSNSN00275-Red-0.3 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot, 0.3 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615704719951.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748447617",
+    "title": "Grey-0.5wattsX4pcs",
+    "sku": "CJ-CJJZSNSN00275-Grey-0.5wattsX4pcs",
+    "price": "40.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grey-0.5wattsX4pcs"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e31b4a83-9e4a-4402-bcd7-4a541dcd23ea.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748480385",
+    "title": "Grey-0.5wattsX6pcs",
+    "sku": "CJ-CJJZSNSN00275-Grey-0.5wattsX6pcs",
+    "price": "54.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grey-0.5wattsX6pcs"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7d033fee-e2c7-440d-a894-f1eff1a45730.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748513153",
+    "title": "USB data cable-1pc",
+    "sku": "CJ-CJJZSNSN00275-USB data cable-1pc",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "USB data cable-1pc"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/25646f94-bd1e-48c2-a4cf-5ae6b9a38356.png?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748545921",
+    "title": "Grau 5PC, 0.5watts",
+    "sku": "CJ-CJJZSNSN00275-Grey 5PC-0.5watts",
+    "price": "45.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau 5PC, 0.5watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a5b1ecd-6eda-4970-bedb-f913f7e39cab.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748578689",
+    "title": "Weiss 5PC, 0.5watts",
+    "sku": "CJ-CJJZSNSN00275-White 5PC-0.5watts",
+    "price": "45.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss 5PC, 0.5watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/13162d6e-9ad5-4582-b812-360a70a6e972.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748611457",
+    "title": "2 Grau 1 Weiss, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-2grey 1white-0.5 watts",
+    "price": "29.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "2 Grau 1 Weiss, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2538206326020.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748644225",
+    "title": "Set1-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Set1-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set1-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6b34afce-a728-4958-984a-3f0caf0ac650.png?v=1793709252"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748676993",
+    "title": "Set2-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Set2-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set2-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/742265de-e235-4cb9-ac7b-50294dc82145.jpg?v=1783290260"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748709761",
+    "title": "2 Weiss 1 Grau, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-2white 1grey-0.5 watts",
+    "price": "29.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "2 Weiss 1 Grau, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2881095875424.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748742529",
+    "title": "White 2pcs-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-White 2pcs-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "White 2pcs-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2744600106147.jpg?v=1793709287"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748775297",
+    "title": "Grau, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Grey-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12531887319681.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748808065",
+    "title": "White 3pcs-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-White 3pcs-0.5 watts",
+    "price": "29.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "White 3pcs-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1360695797593.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748840833",
+    "title": "Grey 2pcs-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Grey 2pcs-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grey 2pcs-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1260489580070.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748873601",
+    "title": "Grey 3pcs-0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Grey 3pcs-0.5 watts",
+    "price": "29.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grey 3pcs-0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15654843134884.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748906369",
+    "title": "Weiss, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-White-0.5 watts",
+    "price": "18.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5956890201678.jpg?v=1783290259"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748939137",
+    "title": "Grau / Weiss, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-Grey white-0.5 watts",
+    "price": "23.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau / Weiss, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/949036867119.jpg?v=1793709251"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881748971905",
+    "title": "Weiss, 4 Stück, 0.5 watts",
+    "sku": "CJ-CJJZSNSN00275-White 4pcs-0.5 watts",
+    "price": "39.90",
+    "compareAtPrice": null,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss, 4 Stück, 0.5 watts"
+     }
+    ],
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1382708281866.jpg?v=1783290259"
+    }
+   }
+  ]
+ }
+}
