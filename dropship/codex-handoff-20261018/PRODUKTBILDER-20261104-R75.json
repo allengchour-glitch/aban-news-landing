@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "revision": 75,
+  "brand": "luxestyle.ch",
+  "createdAtUTC": "2026-11-03T23:51:36.905736+00:00",
+  "dateZurich": "2026-11-04",
+  "taskId": "homepage-redesign-20261029",
+  "ownerRequest": "nimm neue produkte und mache mehr tolle bilder",
+  "scope": "three_new_images_of_different_existing_shop_products",
+  "outputs": [
+    {
+      "key": "gewuerztopf",
+      "filename": "luxestyle-gewuerztopf-20261104-r75.png",
+      "title": "Keramik-Gewürztopf",
+      "scene": "Terrakotta und Salbeigrün",
+      "categorySuggestion": "Küche / Vorratsdosen",
+      "productId": "gid://shopify/Product/15504177136001",
+      "variantId": "gid://shopify/ProductVariant/67789402210695",
+      "variantTitle": "Grün / B",
+      "sku": "CJCJ110093708HS",
+      "checkedPriceCHF": "20.90",
+      "productUrl": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928",
+      "variantUrl": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "sort-vorratsdosen",
+        "topf",
+        "varianten-nachgezogen-1025"
+      ],
+      "storefrontAvailable": true,
+      "inventoryTracking": "not_queried_no_publication",
+      "inventoryPolicy": "not_queried_no_publication",
+      "bytes": 2070215,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "35595cbd843e8934aea76c2861e1c3cbba2c454ead04fb784e5f9b882bd82601",
+      "state": "visually_reviewed_lifestyle_draft_not_product_detail_acceptance",
+      "imageFidelity": "Recognisable referenced shape/colour/parts; not pixel-identical and no exact dimension/material claim."
+    },
+    {
+      "key": "camping",
+      "filename": "luxestyle-camping-20261104-r75.png",
+      "title": "Camping-Kochset",
+      "scene": "Klares Seelicht und Waldgrün",
+      "categorySuggestion": "Reisen / Camping-Geschirr",
+      "productId": "gid://shopify/Product/16656666919303",
+      "variantId": "gid://shopify/ProductVariant/67760472424839",
+      "variantTitle": "Default Title",
+      "sku": "CJ-2610121449541639500",
+      "checkedPriceCHF": "21.90",
+      "productUrl": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500",
+      "variantUrl": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839",
+      "status": "ACTIVE",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "neuheit",
+        "sort-camping-geschirr-kochsets",
+        "sort-kochgeschirr",
+        "sort-sub-reise"
+      ],
+      "storefrontAvailable": true,
+      "inventoryTracking": "not_queried_no_publication",
+      "inventoryPolicy": "not_queried_no_publication",
+      "bytes": 2720351,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "399b1441276d028a66732e46d9ca63de0a930a8dacb13a383f4d17b8c165484c",
+      "state": "visually_reviewed_lifestyle_draft_not_product_detail_acceptance",
+      "imageFidelity": "Recognisable referenced shape/colour/parts; not pixel-identical and no exact dimension/material claim."
+    },
+    {
+      "key": "hundematte",
+      "filename": "luxestyle-hundematte-20261104-r75.png",
+      "title": "Hundematte",
+      "scene": "Fröhliche Farben im hellen Wohnraum",
+      "categorySuggestion": "Hundewelt / Beschäftigung",
+      "productId": "gid://shopify/Product/16654280753543",
+      "variantId": "gid://shopify/ProductVariant/67747895443847",
+      "variantTitle": "Default Title",
+      "sku": "CJ-2610020211131622000",
+      "checkedPriceCHF": "17.90",
+      "productUrl": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000",
+      "variantUrl": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847",
+      "status": "ACTIVE",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kat-haustier",
+        "kat-hunde",
+        "kueche",
+        "matte",
+        "neuheit",
+        "wohnen"
+      ],
+      "storefrontAvailable": true,
+      "inventoryTracking": "not_queried_no_publication",
+      "inventoryPolicy": "not_queried_no_publication",
+      "bytes": 2606008,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "836eea7b22ece69c0a2bafefa8b39abc482047570b50491c8251de065f81ae3b",
+      "state": "visually_reviewed_lifestyle_draft_not_product_detail_acceptance",
+      "imageFidelity": "Recognisable referenced shape/colour/parts; not pixel-identical and no exact dimension/material claim."
+    }
+  ],
+  "nativeIdentity": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "metricoolTimezone": "Europe/Zurich",
+    "allExpectedChannelIdsMatched": true
+  },
+  "sourceChecks": [
+    {
+      "kind": "image",
+      "id": "16656700932487",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5609e966-b5ed-4d6c-a90a-ca0833a9decb_fine.jpg?v=1792652841",
+      "checkedAtUTC": "2026-11-03T23:45:18.657197+00:00",
+      "http": 200,
+      "sha256": "5031474e278a9a6155c68b4738bea67cf6450dd36dc113e3ac442c6883e8dd15",
+      "bytes": 116031,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "image",
+      "id": "16656700932487",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a705c168-fb37-4438-a020-e3789eb74c28_trans.jpg?v=1792652850",
+      "checkedAtUTC": "2026-11-03T23:45:18.657958+00:00",
+      "http": 200,
+      "sha256": "eeace2d9e0e33445fc7c14816566046dbc307ac17253ffd736fd5e2caf9e4461",
+      "bytes": 32988,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "storefront",
+      "id": "16656700932487",
+      "url": "https://luxestyle.ch/products/kaffeebereiter-mit-filter-und-glaskanne-605000.js",
+      "checkedAtUTC": "2026-11-03T23:45:18.658451+00:00",
+      "http": 200,
+      "sha256": "c7169fac38e5620ad4d742024610ac153d130f6c0e5883298a55edc440514239",
+      "bytes": 8465,
+      "mime": "text/javascript; charset=utf-8",
+      "productId": 16656700932487,
+      "available": true,
+      "variants": [
+        {
+          "id": 67760837820807,
+          "title": "Transparent",
+          "price": 3890,
+          "available": true,
+          "featured_image": {
+            "id": 101192117289351,
+            "product_id": 16656700932487,
+            "position": 3,
+            "created_at": "2026-10-22T09:07:28+02:00",
+            "updated_at": "2026-10-22T09:07:30+02:00",
+            "alt": "Kaffeebereiter mit Filter und Glaskanne – Bild 3 | LuxeStyle",
+            "width": 800,
+            "height": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/835e25fb-c7d2-42a0-89c6-5878cc011387_fine.jpg?v=1792652850",
+            "variant_ids": [
+              67760837820807
+            ]
+          }
+        },
+        {
+          "id": 67761166123399,
+          "title": "Bunt",
+          "price": 4190,
+          "available": true,
+          "featured_image": {
+            "id": 101192117354887,
+            "product_id": 16656700932487,
+            "position": 5,
+            "created_at": "2026-10-22T09:07:28+02:00",
+            "updated_at": "2026-10-22T09:07:30+02:00",
+            "alt": "Kaffeebereiter mit Filter und Glaskanne – Bild 5 | LuxeStyle",
+            "width": 800,
+            "height": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8fa0e6e7-0c1a-4492-ab27-f264275d2d87_fine.jpg?v=1792652850",
+            "variant_ids": [
+              67761166123399
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "image",
+      "id": "16656666919303",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c85e4910-f9a2-4c22-af87-84435bd83768.jpg?v=1792646321",
+      "checkedAtUTC": "2026-11-03T23:45:18.658830+00:00",
+      "http": 200,
+      "sha256": "69083644aa46dff79fbadf6ec4cfa034a18ece283efceaed09b3ad482f5f9d12",
+      "bytes": 27716,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "image",
+      "id": "16656666919303",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4efd1510-fc37-4ec5-9e1f-0387bc5a6292_water_fine.jpg?v=1792646315",
+      "checkedAtUTC": "2026-11-03T23:45:18.659338+00:00",
+      "http": 200,
+      "sha256": "205e9a482ba8bc7583ba4f30ac9ec846ffc6bcde288c710b16f92f3349c3c69d",
+      "bytes": 173234,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "storefront",
+      "id": "16656666919303",
+      "url": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500.js",
+      "checkedAtUTC": "2026-11-03T23:45:18.953920+00:00",
+      "http": 200,
+      "sha256": "1770c436506063c63fbffd988290456dd1614c6783635738fc4a1e42fa5e98c0",
+      "bytes": 6276,
+      "mime": "text/javascript; charset=utf-8",
+      "productId": 16656666919303,
+      "available": true,
+      "variants": [
+        {
+          "id": 67760472424839,
+          "title": "Default Title",
+          "price": 2190,
+          "available": true,
+          "featured_image": null
+        }
+      ]
+    },
+    {
+      "kind": "image",
+      "id": "16654280753543",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527",
+      "checkedAtUTC": "2026-11-03T23:45:19.114819+00:00",
+      "http": 200,
+      "sha256": "727a418a43eb5bf645b14100318691d667b762328a5b8876b754837b64941c04",
+      "bytes": 112779,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "image",
+      "id": "16654280753543",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2224c110-81e8-41f1-b318-ea4b4172905c.png?v=1792469522",
+      "checkedAtUTC": "2026-11-03T23:45:19.118600+00:00",
+      "http": 200,
+      "sha256": "5eea1477cbddb79a1307c0a11e8974c830f211647c4d71c108d63af892482f00",
+      "bytes": 247779,
+      "mime": "image/jpeg"
+    },
+    {
+      "kind": "storefront",
+      "id": "16654280753543",
+      "url": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000.js",
+      "checkedAtUTC": "2026-11-03T23:45:19.119181+00:00",
+      "http": 200,
+      "sha256": "272e8c7cf1eedef8ad4bd7ddf61c4f2dcc502ca2ca26a29c0cd2f2dd084cd095",
+      "bytes": 6792,
+      "mime": "text/javascript; charset=utf-8",
+      "productId": 16654280753543,
+      "available": true,
+      "variants": [
+        {
+          "id": 67747895443847,
+          "title": "Default Title",
+          "price": 1790,
+          "available": true,
+          "featured_image": null
+        }
+      ]
+    }
+  ],
+  "kitchenVariantReference": {
+    "productId": 15504177136001,
+    "variantId": 67789402210695,
+    "title": "Grün / B",
+    "price": 2090,
+    "available": true,
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619490117574.jpg?v=1787124960",
+    "http": 200,
+    "sha256": "499aa9448cd5084a7a5010c0903f4f9384cd4d39ae8f77febe5e4a367b811b1b",
+    "storefrontHttp": 200,
+    "referenceBinding": "Current storefront variant67789402210695 explicitly points to this image; same image is also the product main image. Reference shows three pots while offer copy says one; final scene therefore shows one pot only. No exact physical size inferred.",
+    "variantFeaturedImage": {
+      "id": 83366312608129,
+      "product_id": 15504177136001,
+      "position": 1,
+      "created_at": "2026-08-19T09:35:58+02:00",
+      "updated_at": "2026-08-19T09:36:00+02:00",
+      "alt": "Keramik Gewürztopf im Nordic Style | LuxeStyle",
+      "width": 800,
+      "height": 800,
+      "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619490117574.jpg?v=1787124960",
+      "variant_ids": [
+        67789402210695
+      ]
+    }
+  },
+  "tagChecks": [
+    {
+      "id": "gid://shopify/Product/16656700932487",
+      "status": "ACTIVE",
+      "nonemptyTags": true,
+      "guardMatches": [],
+      "ownerRueckholBlock": false
+    },
+    {
+      "id": "gid://shopify/Product/16656666919303",
+      "status": "ACTIVE",
+      "nonemptyTags": true,
+      "guardMatches": [],
+      "ownerRueckholBlock": false
+    },
+    {
+      "id": "gid://shopify/Product/16654280753543",
+      "status": "ACTIVE",
+      "nonemptyTags": true,
+      "guardMatches": [],
+      "ownerRueckholBlock": false
+    },
+    {
+      "id": "gid://shopify/Product/15504177136001",
+      "status": "ACTIVE",
+      "nonemptyTags": true,
+      "guardMatches": [],
+      "ownerRueckholBlock": false
+    }
+  ],
+  "guardSource": {
+    "path": "automation/lib/kanal_sperren.mjs",
+    "ref": "main",
+    "sha": "3adab7369f90945769331910525c08b3778b4371"
+  },
+  "selectionScope": {
+    "searchCalls": 3,
+    "returnedPerSearch": 4,
+    "paginationCalls": 0,
+    "detailedProductReads": 4,
+    "notCompleteCatalogue": true,
+    "titleSearchNoise": "Kitchen title:Tasse* also returned Tassel clothing; these were not selected."
+  },
+  "rejected": {
+    "key": "kaffee",
+    "productId": "16656700932487",
+    "generatedFile": "exec-0bea5b36-3543-4a25-b229-def64fda8704.png",
+    "sha256": "a2008b9a21447015e5403ab88f55fc28cbf389ed79f2ac64311195ef1d1c0559",
+    "reason": "Microbranding and scale markings altered during generation; excluded from final package and website placement."
+  },
+  "qualityReview": {
+    "root": true,
+    "independentSecondReview": true,
+    "finalCount": 3,
+    "rejectedCount": 1,
+    "specificFindings": [
+      "Camping: three referenced pieces, handle arrangement preserved, no added cookware.",
+      "Mat: six rolled compartments and concentric colours recognisable; folds differ, no exact scale claim from staged dog.",
+      "Spice pot: single pot instead of misleading set; fluting, lid notch and spoon recognisable, warm light shifts perceived green slightly."
+    ],
+    "limits": "Lifestyle drafts, not final SKU colour/size or product-detail acceptance. No native website crop review."
+  },
+  "rights": {
+    "ownerRequestedEdits": true,
+    "existingShopReferenceImages": true,
+    "independentCommercialThirdPartyLicence": "unknown",
+    "socialApproved": false
+  },
+  "actions": {
+    "generatedCandidates": 4,
+    "finalImages": 3,
+    "shopifyUploads": 0,
+    "productImageReplacements": 0,
+    "themeWrites": 0,
+    "publications": 0,
+    "videoRenders": 0,
+    "reports": 0,
+    "orderWatchQueries": 0,
+    "automationChanges": 0
+  },
+  "nextStep": "Show owner final scenes. Keep current banners and product originals. Before any product-gallery or social use close colour/variant/reference-rights and tracking/inventoryPolicy checks, and review actual target crop. Use only the final three files; coffee candidate rejected.",
+  "claudeReceipt": "unknown"
+}
