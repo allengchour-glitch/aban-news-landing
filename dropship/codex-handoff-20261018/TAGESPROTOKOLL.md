@@ -806,6 +806,7 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 | R69 Website-Auftrag / Quellen | Explizite Korrektur auf vorhandene Website-Inhalte übernommen; Shop/Metricool-Identität und24Bildquellen frisch geprüft | Für diesen Website-Zuschnitt keine Originaldrehs erforderlich; separater Socialmaster bleibt unverändert |
 | R69 Markenfilm | Einen sechs Szenen umfassenden Schnitt mit zwei responsiven MP4-Ausgaben lokal gerendert; mobile Texte vergrössert, saubere vorhandene Bilder ausgewählt | Tatsächliche20s/30fps/600Frames, Desktop1280×1120 und Mobil810×1080, stumm; zur Ansicht, nicht eingebunden |
 | R69 Qualitätsprüfung / Übergabe | Beide MP4s vollständig dekodiert, echtes Browserplayback/Pause/Seek bei1440/390px und visuelle Stichproben geprüft; Dateien/Hashes gesichert | Prüfungen im benannten Umfang bestanden; kreative Abnahme und aktuelle Websiteintegration ausstehend, Claude-Empfang unbekannt |
+| R70 Startseitenaufbau | Zwei aktuelle Homepageansichten, eine Firecrawl-Aufnahme und CSS geprüft; konkrete neue Reihenfolge vorbereitet | 25 Karten vorhanden, Produktbeginn erst2705/2708px; kompaktere Kategorien und frühere Produkte vorgeschlagen, keine Themeänderung oder neuen Reports |
 
 [LUXESTYLE_LAUF_20261103] [Paket](LAUFPAKET-20261103-R64.md) · [Belege](LAUFBELEGE-20261103-R64.json) · [Master](MASTER-CONTENT-20261103-R64.md). Tagesreports abgeschlossen; spätere bestehende Läufe lesen sie ohne konkreten neuen Anlass nicht erneut.
 
@@ -818,3 +819,5 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 [LUXESTYLE_R68_20261103] [Markenfilm und Abendpaket](ABEND-UND-HAUPTVIDEO-20261103-R68.md) · [Belege](ABENDBELEGE-20261103-R68.json) · [Storyboard](HAUPTVIDEO-ANSICHT-20261103-R68.html). Zweck bestätigt, Film noch nicht produziert; keine neue Automation/Frequenz.
 
 [LUXESTYLE_R69_20261103] [Tatsächlicher Website-Markenfilm](MARKENFILM-20261103-R69.md) · [Belege](MARKENFILM-BELEGE-20261103-R69.json). Bestehende Website-Inhalte auf ausdrücklichen Auftrag bearbeitet; keine neuen Reports, Kauf-Watch, Website-/Socialpublikation oder Frequenzänderung.
+
+[LUXESTYLE_R70_20261103] [Startseitenvorschlag](STARTSEITE-DESIGN-20261103-R70.md) · [Messbelege](STARTSEITE-BELEGE-20261103-R70.json). Prüfung und Gestaltungsvorschlag; keine Umsetzung oder Freigabeausweitung.
