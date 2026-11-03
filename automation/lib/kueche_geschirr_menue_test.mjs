@@ -183,7 +183,7 @@ const kindSammlung = h => ({ id: GIDS[h], title: h, productsCount: { count: 5 },
     : { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: REGEL_TAG(h) }] } });
 const VORHANDEN = Object.fromEntries(Object.keys(GIDS).filter(h => !neueHandles().includes(h)).map(h => [h, kindSammlung(h)]));
 const NEUE = Object.fromEntries(neueHandles().map(h => [h, { id: NEU_GID(h), title: h, productsCount: { count: 9 } }]));
-function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche = false, beimLesen = null, nachLeseFehler = false, menu = null, nachSchreiben = null } = {}) {
+function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche = false, beimLesen = null, nachLeseFehler = false, menu = null, nachSchreiben = null, zaehler = null } = {}) {
   const z = { menu: kopie(menu || MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0, geschrieben: false, erstellt: [] };
   const aufrufe = [];
   const lesbar = items => items.map(i => ({ id: i.id || `gid://shopify/MenuItem/neu-${++z.n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? URL_VON_GID[i.resourceId] ?? (i.type === 'COLLECTION' ? '/collections/x' : null), tags: i.tags || [], items: lesbar(i.items || []) }));
@@ -208,7 +208,7 @@ function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche 
     }
     if (/publishablePublish/.test(query)) { z.pub[v.id] = (z.pub[v.id] || []).concat(v.i.map(x => x.publicationId)); return { publishablePublish: { userErrors: [] } }; }
     if (/collection\(id:\$id\)\{resourcePublicationsV2/.test(query)) return { collection: { resourcePublicationsV2: { nodes: (z.pub[v.id] || []).map(id => ({ isPublished: true, publication: { id, name: id } })) } } };
-    if (/collection\(id:\$id\)\{productsCount/.test(query)) return { collection: { productsCount: { count: 7 } } };
+    if (/collection\(id:\$id\)\{productsCount/.test(query)) { z.zaehlungen = (z.zaehlungen || 0) + 1; return { collection: { productsCount: { count: zaehler ? zaehler(z.zaehlungen) : 7 } } }; }
     throw new Error('unerwartete Abfrage: ' + query.slice(0, 90));
   };
   const schreibend = () => aufrufe.filter(a => /mutation/.test(a.query));
@@ -354,6 +354,8 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   ist('Mengenprüfung: Shopify zählt 7 Mitglieder, erwartet werden 100: Exit 2, das Menü darf nicht umgebaut werden', [r.code, hat(s.zeilen, 'zu wenige Mitglieder'), hat(s.zeilen, 'kochen-grillen-backen 7 statt 100')], [2, true, true]);
   const b = attrappe(), r2 = await kuecheGeschirrGruppenLauf(b.q, { live: true, web: webAttrappe(), katalog: katalog(5), warte: async () => {}, ...frisch('g5'), out: still().out, err: still().err });
   ist('Mengenprüfung: 7 gezählt bei 5 erwartet (Entwürfe zählen mit): Exit 0', r2.code, 0);
+  const dz = attrappe({ zaehler: n => (n <= 7 ? 0 : 100) }), sz = still(), rz = await kuecheGeschirrGruppenLauf(dz.q, { live: true, web: webAttrappe(), katalog: katalog(100), warte: async () => {}, ...frisch('g5b'), out: sz.out, err: sz.err });
+  ist('Mengenprüfung zählt nach: erst 0 (Shopify füllt verzögert), dann 100 bei 100 erwartet: Exit 0', rz.code, 0);
   const c = attrappe(), r3 = await kuecheGeschirrGruppenLauf(c.q, { live: true, web: webAttrappe(), katalog: null, warte: async () => {}, ...frisch('g6'), out: still().out, err: still().err });
   ist('ohne Katalog keine Mengenprüfung (Hinweis steht im Aufruf), Exit 0', r3.code, 0);
 }

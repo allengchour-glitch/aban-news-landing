@@ -24,6 +24,7 @@ import { gruppenPlan, erwartetAus, ELTERN, OBER } from './lib/kueche_geschirr_me
 
 const FELDER = 'id title type resourceId url tags';
 const MENU_Q = `query($h:String!){menus(first:1,query:$h){nodes{id title handle items{${FELDER} items{${FELDER} items{${FELDER}}}}}}}`;
+const ZAHL_Q = `query($id:ID!){collection(id:$id){productsCount{count}}}`;
 const REGEL_Q = `query($h:String!){collectionByHandle(handle:$h){id title productsCount{count} ruleSet{appliedDisjunctively rules{column relation condition}}}}`;
 
 /** Das Tag `sort-…` einer vorhandenen Sammlung, wenn ihre Regel genau `TAG EQUALS <tag>` ist; sonst null. */
@@ -63,9 +64,17 @@ export async function kuecheGeschirrGruppenLauf(q, { live = false, web = null, k
   // Ohne `katalog` an gruppenLauf: dessen Zählung kennt nur Engine-Kategorien, hier wäre sie 0. Eigene Zahlen oben.
   const res = await gruppenLauf(q, { live, web, plan, kategorieVonHandle: () => null, katalog: null, out, err, ...rest });
   // Mengenprüfung (nur für frisch angelegte Sammlungen): Shopify zählt Entwürfe mit, also mindestens 90 % der aktiven Mitglieder laut Katalog. Eine falsche Regel (z. B. 1 statt 355) darf das Menü nicht freigeben.
+  // Smart-Collections füllen sich verzögert (03.11.: «geschirr-besteck-tisch» zeigte direkt nach dem Anlegen 0, wenig später 433): darum bis zu sechsmal nachzählen.
   if (res.code === 0 && katalog) {
-    const e = erwartetAus(katalog.produkte, plan), zuWenig = (res.ergebnis || []).filter(x => x.angelegt && x.mitglieder != null && x.mitglieder < e[x.handle] * 0.9);
-    if (zuWenig.length) { err(`\nFEHLER: zu wenige Mitglieder (Shopify zählt Entwürfe mit, erwartet mindestens 90 % der aktiven laut Katalog): ${zuWenig.map(x => `${x.handle} ${x.mitglieder} statt ${e[x.handle]}`).join('; ')}. Smart-Collections füllen sich verzögert: nach einigen Minuten den Trockenlauf wiederholen (Mitglieder lesen), bevor das Menü umgebaut wird.`); return { ...res, code: 2 }; }
+    const e = erwartetAus(katalog.produkte, plan), warte = rest.warte || (ms => new Promise(r => setTimeout(r, ms)));
+    const wenig = () => (res.ergebnis || []).filter(x => x.angelegt && x.mitglieder != null && x.mitglieder < e[x.handle] * 0.9);
+    let zuWenig = wenig();
+    for (let i = 0; i < 6 && zuWenig.length; i++) {
+      await warte(8000);
+      for (const x of zuWenig) x.mitglieder = (await q(ZAHL_Q, { id: x.id })).collection.productsCount.count;
+      zuWenig = wenig();
+    }
+    if (zuWenig.length) { err(`\nFEHLER: zu wenige Mitglieder (Shopify zählt Entwürfe mit, erwartet mindestens 90 % der aktiven laut Katalog): ${zuWenig.map(x => `${x.handle} ${x.mitglieder} statt ${e[x.handle]}`).join('; ')}. Nach einigen Minuten den Trockenlauf wiederholen (Mitglieder lesen), bevor das Menü umgebaut wird.`); return { ...res, code: 2 }; }
   }
   return res;
 }
