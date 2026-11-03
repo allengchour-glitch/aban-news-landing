@@ -10,6 +10,8 @@ const lies = p => existsSync(p) ? readFileSync(p, 'utf8').split('\n').filter(Boo
 const zeitpunkt = new Date().toISOString();
 
 const geschrieben = ledger => new Set(lies(ledger).map(z => z.split('·').map(s => s.trim())).filter(([h, , e]) => h && e === 'GESCHRIEBEN').map(([h]) => h));
+// Variantenbilder: nur VOLLSTÄNDIGE Schreibläufe zählen (GESCHRIEBEN · a/b mit a == b). 03.11.2026: 436 von 888 Zeilen waren teilweise, 38 ohne ein Bild.
+const vollGeschrieben = ledger => new Set(lies(ledger).map(z => z.split('·').map(s => s.trim())).filter(([h, , e, d]) => { const m = h && e === 'GESCHRIEBEN' && /^(\d+)\/(\d+)/.exec(d || ''); return m && m[1] === m[2]; }).map(([h]) => h));
 const art = k => new Set(lies('dropship/kategorien_ledger.txt').map(z => z.split(' · ')).filter(t => (t[1] || '').split(' ')[0] === k).map(t => (t[1] || '').split(' ')[1]).filter(Boolean));
 
 const ausw = geschrieben('dropship/cj_varianten_ledger.txt');
@@ -18,7 +20,7 @@ const pool = new Set([...kand, ...ausw]);
 
 const zeilen = [
   { id: 'auswahl', bereich: 'Farbe/Grösse nachgezogen', einheit: 'Produkte', fertig: ausw.size, gesamt: pool.size, quelle: 'cj_varianten_ledger.txt + Kandidatenliste vom Katalog-Scan', anmerkung: 'Einzelvarianten-Produkte mit CJ-Kennung; ein Teil führt bei CJ wirklich nur eine Variante und wird übersprungen' },
-  { id: 'varbilder', bereich: 'Variantenbilder verknüpft', einheit: 'Produkte', fertig: geschrieben('dropship/cj_variantenbilder_ledger.txt').size, gesamt: 890, quelle: 'cj_variantenbilder_ledger.txt', anmerkung: 'Umfang gemessen am 25.10. an den neuesten 2010 CJ-Produkten' },
+  { id: 'varbilder', bereich: 'Variantenbilder verknüpft', einheit: 'Produkte', fertig: vollGeschrieben('dropship/cj_variantenbilder_ledger.txt').size, gesamt: 890, quelle: 'cj_variantenbilder_ledger.txt', anmerkung: 'Umfang gemessen am 25.10. an den neuesten 2010 CJ-Produkten' },
   { id: 'texte', bereich: 'Ausführliche Produkttexte', einheit: 'Produkte', fertig: art('text-v2').size, gesamt: null, quelle: 'kategorien_ledger.txt (text-v2)', anmerkung: 'nur Produkte mit lesbarem CJ-Datenblatt; Umfang nicht gemessen' },
   { id: 'fakten', bereich: 'Technische Daten, Lieferumfang', einheit: 'Produkte', fertig: art('fakten').size, gesamt: null, quelle: 'kategorien_ledger.txt (fakten)', anmerkung: 'nur belegte Angaben aus dem Datenblatt' },
   { id: 'labels', bereich: 'Kategorie-Bilder', einheit: 'Kategorien', fertig: art('bild').size, gesamt: 88, quelle: 'kategorien_ledger.txt (bild)', anmerkung: '88 Kategorien in lib/kategorien.mjs' },
