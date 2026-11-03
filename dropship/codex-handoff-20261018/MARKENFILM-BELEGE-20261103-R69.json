@@ -1,0 +1,967 @@
+{
+  "createdAt": "2026-11-03T18:54:50.242920+00:00",
+  "revision": 69,
+  "taskId": "website-main-film-20261103",
+  "ownerMaterialInstruction": "keine orginalmatrial nur webseite mit allem drin wo du hast nur geschnitten und berbeitet",
+  "purpose": "LuxeStyle als Marke zeigen",
+  "scope": "Actual edited website brand-film review files, based on explicitly requested existing website contents. No original filming required for this website edit; previous social projector master remains separate.",
+  "shopIdentity": {
+    "recordedAtUTC": "2026-11-03T18:44:12.780787+00:00",
+    "source": "Connected Shopify get_shop_info tool, executed in this subtask",
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "matchExpectedShop": true,
+    "scope": "Shop identity only; no product inventory, prices or publication state inferred"
+  },
+  "metricoolIdentity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "facebook": "1049840534888592",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "pinterest": "luxestyleCH",
+      "tiktok": "luxestyle.ch",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "checkedAtUtc": "2026-11-03T18:40:02.147Z",
+    "scope": "Fresh identity only; website-film task, no planning or metric calls",
+    "matchesExpected": true
+  },
+  "filmManifest": {
+    "masterId": "luxe_website_brand_master_20261103",
+    "revision": "r69-website-edit-01",
+    "sourceAuthority": "Owner explicitly requested existing website-only materials, edited and cut; no original filmed takes required for this website montage. Review preview, no social advertising or third-party licence certificate.",
+    "fps": 30,
+    "frames": 600,
+    "durationSeconds": 20,
+    "audio": false,
+    "timeline": [
+      {
+        "startFrame": 0,
+        "endFrameExclusive": 84,
+        "scene": "intro"
+      },
+      {
+        "startFrame": 84,
+        "endFrameExclusive": 204,
+        "scene": "style"
+      },
+      {
+        "startFrame": 204,
+        "endFrameExclusive": 324,
+        "scene": "home"
+      },
+      {
+        "startFrame": 324,
+        "endFrameExclusive": 423,
+        "scene": "everyday"
+      },
+      {
+        "startFrame": 423,
+        "endFrameExclusive": 525,
+        "scene": "ideas"
+      },
+      {
+        "startFrame": 525,
+        "endFrameExclusive": 600,
+        "scene": "close"
+      }
+    ],
+    "palette": {
+      "cream": "#faf7f2",
+      "ink": "#292722",
+      "taupe": "#77654e"
+    },
+    "sourceManifestSha256": "549423db6c1a5c20fb2c90d25c6c3a3a00710a95d5b753c3d449cae443933e91",
+    "fonts": [
+      {
+        "path": "/usr/share/fonts/opentype/urw-base35/P052-Roman.otf",
+        "sha256": "f054a7389d8d0e9f4c5f7b4c21feb7e2b14bec8004a1e92778a78d149524eea9"
+      },
+      {
+        "path": "/usr/share/fonts/opentype/urw-base35/P052-Italic.otf",
+        "sha256": "1feac6055211cf5c6c812c026e398195070f174064cc4d390f0db01647443b0e"
+      },
+      {
+        "path": "/usr/share/fonts/truetype/open-sans/OpenSans-Regular.ttf",
+        "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+      },
+      {
+        "path": "/usr/share/fonts/truetype/open-sans/OpenSans-Semibold.ttf",
+        "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+      }
+    ],
+    "assets": [
+      {
+        "filename": "homepage-fashion-blumenkleid.jpg",
+        "sha256": "d32255725f2d6556e9fcb6c65d6c0f3ac5f690a322ec268719a7c9c099714c57"
+      },
+      {
+        "filename": "season-card-winter.png",
+        "sha256": "3a8eea479629287219dc217504fe3faa68e2e89ac8d42d67aa2e0e803ebf4275"
+      },
+      {
+        "filename": "category-tile-beauty-pflege.png",
+        "sha256": "3d71544e7891671a7fa27d035de980344e259e48551f9ad55155eda1846f2783"
+      },
+      {
+        "filename": "category-tile-sub-taschen.jpg",
+        "sha256": "f2763e960d421bfce5071b9216d211329c925d06b2a70c8adcedb24192d27aa8"
+      },
+      {
+        "filename": "category-tile-uhren.jpg",
+        "sha256": "303254577fb46b72ce3619b5a0de693cf23c6868afadb09e01dde883b5ec03d4"
+      },
+      {
+        "filename": "category-tile-elektronik-technik.jpg",
+        "sha256": "1f2dd2aacebb26985ea76b55d3a36e66acd3bbf621867c5efa6931cb283d02e4"
+      },
+      {
+        "filename": "category-tile-sub-kueche.jpg",
+        "sha256": "8196025bb1144e48864390dc6821ad63f51f8e8d1aa72a3c39e87fb252114dc4"
+      },
+      {
+        "filename": "category-tile-gaming.jpg",
+        "sha256": "c76e7ec68d8a62531106974847a782269ad539933b8e586c0766fc272b0378dc"
+      },
+      {
+        "filename": "category-tile-sport-outdoor.png",
+        "sha256": "c6f634e04267cffb62bffe87f8644e234c24c20706d69323e19e83969b7e890b"
+      },
+      {
+        "filename": "budget-card-premium-geschenke.png",
+        "sha256": "bb6ffa8a2ed7d5e2accaacf84f2aee44126528d3340c8e80d63ce41e3dec02b4"
+      },
+      {
+        "filename": "season-card-christmas.png",
+        "sha256": "9c42130313a118bebc103653c957230e5032837fd871fd88c7632e98c658f354"
+      },
+      {
+        "filename": "design-collage-selbstgestalten-collage.png",
+        "sha256": "4f9c297b8c65be67360d58d61ca0d9f81f849d9130692fdefb36150dfa5556b1"
+      },
+      {
+        "filename": "category-tile-selbst-gestalten-1.png",
+        "sha256": "ec19b173b79276443d808ce60f43e6a19b2631d02a70bdbbe1cf6202f3f3e0c2"
+      },
+      {
+        "filename": "luxestyle-logo.png",
+        "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6"
+      }
+    ],
+    "outputs": [
+      {
+        "filename": "luxestyle-brand-desktop-r69.mp4",
+        "width": 1280,
+        "height": 1120,
+        "bytes": 2243231,
+        "sha256": "43b345312280fd1c8340a2b13babf3eed7438dcb2cb46a5a8152afbd8a0d99b3",
+        "poster": "luxestyle-brand-desktop-poster.jpg",
+        "posterSha256": "0dcb0f8f3c0b2070ac76ce4bf747160316064f7a5c91d63ce3010254ebcca3a2"
+      },
+      {
+        "filename": "luxestyle-brand-mobile-r69.mp4",
+        "width": 810,
+        "height": 1080,
+        "bytes": 1497161,
+        "sha256": "8c38e6eeac189de539cc213bf0a9c74d275cbc5c91d36a2bacb1e5090e1b80d6",
+        "poster": "luxestyle-brand-mobile-poster.jpg",
+        "posterSha256": "c2fcb1d0ba5daf32087bf99c7cd3cbffa61c51172ec1bf3e2e21cb3acce1c988"
+      }
+    ],
+    "renderer": {
+      "filename": "render_brand_film.py",
+      "sha256": "81c46bf27969479a1c294a7641b70a1ac3fe3efa2a5d2369f1c973052b4b67fd"
+    },
+    "reviewStatus": "Rendered website-edit draft; not owner-approved or deployed. Independent technical/visual QA pending separately.",
+    "imageEditing": "Existing website illustrations only; cropping/layout/typography/reveal masks. No generated product action, no image zoom, no global product recolouring."
+  },
+  "technicalQa": {
+    "createdAt": "2026-11-03T18:51:58.698177+00:00",
+    "scope": "Actual MP4 technical checks only; no creative owner approval, independent source licence grant or live publication claim.",
+    "files": [
+      {
+        "path": "/workspace/luxestyle-review/website-film-20261103-r69/film/luxestyle-brand-desktop-r69.mp4",
+        "bytes": 2243231,
+        "sha256": "43b345312280fd1c8340a2b13babf3eed7438dcb2cb46a5a8152afbd8a0d99b3",
+        "stream": {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "width": 1280,
+          "height": 1120,
+          "coded_width": 1280,
+          "coded_height": 1120,
+          "closed_captions": 0,
+          "film_grain": 0,
+          "has_b_frames": 2,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "8:7",
+          "pix_fmt": "yuv420p",
+          "level": 40,
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_transfer": "bt709",
+          "color_primaries": "bt709",
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "refs": 4,
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "30/1",
+          "avg_frame_rate": "30/1",
+          "time_base": "1/15360",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 307200,
+          "duration": "20.000000",
+          "bit_rate": "894128",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "600",
+          "nb_read_frames": "600",
+          "extradata_size": 50,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "vendor_id": "[0][0][0][0]",
+            "encoder": "Lavc61.19.101 libx264"
+          }
+        },
+        "format": {
+          "filename": "/workspace/luxestyle-review/website-film-20261103-r69/film/luxestyle-brand-desktop-r69.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "20.000000",
+          "size": "2243231",
+          "bit_rate": "897292",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf61.7.103"
+          }
+        },
+        "audioStreams": 0,
+        "framesObserved": 600,
+        "timestampMaxErrorSeconds": 3.3333333604446125e-07,
+        "atoms": [
+          {
+            "type": "ftyp",
+            "offset": 0,
+            "size": 32
+          },
+          {
+            "type": "moov",
+            "offset": 32,
+            "size": 7861
+          },
+          {
+            "type": "free",
+            "offset": 7893,
+            "size": 8
+          },
+          {
+            "type": "mdat",
+            "offset": 7901,
+            "size": 2235330
+          }
+        ],
+        "decode": {
+          "returncode": 0,
+          "stderr": ""
+        },
+        "checks": {
+          "oneVideoStream": true,
+          "h264": true,
+          "yuv420p": true,
+          "frameCount": true,
+          "duration": true,
+          "fpsMetadata": true,
+          "constantFrameTimestamps": true,
+          "noAudioStream": true,
+          "fullDecode": true,
+          "faststart": true,
+          "positiveEvenDimensions": true,
+          "squarePixels": true,
+          "expectedExportDimensions": true,
+          "rec709Tags": true,
+          "limitedRange": true
+        }
+      },
+      {
+        "path": "/workspace/luxestyle-review/website-film-20261103-r69/film/luxestyle-brand-mobile-r69.mp4",
+        "bytes": 1497161,
+        "sha256": "8c38e6eeac189de539cc213bf0a9c74d275cbc5c91d36a2bacb1e5090e1b80d6",
+        "stream": {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "width": 810,
+          "height": 1080,
+          "coded_width": 816,
+          "coded_height": 1088,
+          "closed_captions": 0,
+          "film_grain": 0,
+          "has_b_frames": 2,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "3:4",
+          "pix_fmt": "yuv420p",
+          "level": 31,
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_transfer": "bt709",
+          "color_primaries": "bt709",
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "refs": 4,
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "30/1",
+          "avg_frame_rate": "30/1",
+          "time_base": "1/15360",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 307200,
+          "duration": "20.000000",
+          "bit_rate": "595711",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "600",
+          "nb_read_frames": "600",
+          "extradata_size": 52,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "vendor_id": "[0][0][0][0]",
+            "encoder": "Lavc61.19.101 libx264"
+          }
+        },
+        "format": {
+          "filename": "/workspace/luxestyle-review/website-film-20261103-r69/film/luxestyle-brand-mobile-r69.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "20.000000",
+          "size": "1497161",
+          "bit_rate": "598864",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf61.7.103"
+          }
+        },
+        "audioStreams": 0,
+        "framesObserved": 600,
+        "timestampMaxErrorSeconds": 3.3333333604446125e-07,
+        "atoms": [
+          {
+            "type": "ftyp",
+            "offset": 0,
+            "size": 32
+          },
+          {
+            "type": "moov",
+            "offset": 32,
+            "size": 7835
+          },
+          {
+            "type": "free",
+            "offset": 7867,
+            "size": 8
+          },
+          {
+            "type": "mdat",
+            "offset": 7875,
+            "size": 1489286
+          }
+        ],
+        "decode": {
+          "returncode": 0,
+          "stderr": ""
+        },
+        "checks": {
+          "oneVideoStream": true,
+          "h264": true,
+          "yuv420p": true,
+          "frameCount": true,
+          "duration": true,
+          "fpsMetadata": true,
+          "constantFrameTimestamps": true,
+          "noAudioStream": true,
+          "fullDecode": true,
+          "faststart": true,
+          "positiveEvenDimensions": true,
+          "squarePixels": true,
+          "expectedExportDimensions": true,
+          "rec709Tags": true,
+          "limitedRange": true
+        }
+      }
+    ],
+    "passed": 30,
+    "failed": 0
+  },
+  "browserQa": {
+    "createdAt": "2026-11-03T18:52:00.521442+00:00",
+    "scope": "Actual browser decoder and controls using exact local MP4 bytes embedded as data URLs for supported page.set_content; no server deployment or native Shopify integration acceptance.",
+    "pageSha256": "4eb3baf6f09bf6cad529f678c8086a20a8982b024bd98b56793f46207b5d7855",
+    "mediaSha256": {
+      "desktop": "43b345312280fd1c8340a2b13babf3eed7438dcb2cb46a5a8152afbd8a0d99b3",
+      "mobile": "8c38e6eeac189de539cc213bf0a9c74d275cbc5c91d36a2bacb1e5090e1b80d6"
+    },
+    "views": [
+      {
+        "viewportWidth": 1440,
+        "playedFullFilm": "desktop",
+        "before": {
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "reduced": true,
+          "videos": [
+            {
+              "id": "desktop",
+              "paused": true,
+              "autoplay": false,
+              "controls": true,
+              "muted": true,
+              "duration": 20,
+              "width": 1280,
+              "height": 1120,
+              "currentTime": 0,
+              "error": null
+            },
+            {
+              "id": "mobile",
+              "paused": true,
+              "autoplay": false,
+              "controls": true,
+              "muted": true,
+              "duration": 20,
+              "width": 810,
+              "height": 1080,
+              "currentTime": 0,
+              "error": null
+            }
+          ]
+        },
+        "advanced": {
+          "currentTime": 0.843893,
+          "paused": false,
+          "error": null
+        },
+        "pause": {
+          "paused": true,
+          "time": 0.960211
+        },
+        "seek8": {
+          "currentTime": 8,
+          "readyState": 4,
+          "error": null
+        },
+        "focused": true,
+        "ended": {
+          "currentTime": 20,
+          "ended": true,
+          "error": null,
+          "quality": {
+            "total": 879,
+            "dropped": 4
+          }
+        },
+        "pageErrors": [],
+        "externalRequests": [],
+        "checks": {
+          "noHorizontalOverflow": true,
+          "noAutoplay": true,
+          "bothHaveNativeControls": true,
+          "muted": true,
+          "bothMetadataLoaded": true,
+          "plays": true,
+          "pauses": true,
+          "seeks": true,
+          "focusable": true,
+          "fullPlaybackEnded": true,
+          "noPageErrors": true,
+          "noExternalRequests": true,
+          "reducedMotionNoAutoplay": true
+        }
+      },
+      {
+        "viewportWidth": 390,
+        "playedFullFilm": "mobile",
+        "before": {
+          "viewport": 390,
+          "scrollWidth": 390,
+          "reduced": true,
+          "videos": [
+            {
+              "id": "desktop",
+              "paused": true,
+              "autoplay": false,
+              "controls": true,
+              "muted": true,
+              "duration": 20,
+              "width": 1280,
+              "height": 1120,
+              "currentTime": 0,
+              "error": null
+            },
+            {
+              "id": "mobile",
+              "paused": true,
+              "autoplay": false,
+              "controls": true,
+              "muted": true,
+              "duration": 20,
+              "width": 810,
+              "height": 1080,
+              "currentTime": 0,
+              "error": null
+            }
+          ]
+        },
+        "advanced": {
+          "currentTime": 0.734948,
+          "paused": false,
+          "error": null
+        },
+        "pause": {
+          "paused": true,
+          "time": 0.7667
+        },
+        "seek8": {
+          "currentTime": 8,
+          "readyState": 4,
+          "error": null
+        },
+        "focused": true,
+        "ended": {
+          "currentTime": 20,
+          "ended": true,
+          "error": null,
+          "quality": {
+            "total": 871,
+            "dropped": 8
+          }
+        },
+        "pageErrors": [],
+        "externalRequests": [],
+        "checks": {
+          "noHorizontalOverflow": true,
+          "noAutoplay": true,
+          "bothHaveNativeControls": true,
+          "muted": true,
+          "bothMetadataLoaded": true,
+          "plays": true,
+          "pauses": true,
+          "seeks": true,
+          "focusable": true,
+          "fullPlaybackEnded": true,
+          "noPageErrors": true,
+          "noExternalRequests": true,
+          "reducedMotionNoAutoplay": true
+        }
+      }
+    ],
+    "passed": 26,
+    "failed": 0
+  },
+  "rootVisualQa": {
+    "createdAt": "2026-11-03T18:54:24.462453+00:00",
+    "reviewer": "root",
+    "scope": "Visual review of actual MP4-decoded transition contact sheets, mobile scene contact sheet and actual Chromium mobile review screenshot. Earlier render layout previews separately reviewed; not a frame-by-frame 1200-frame visual acceptance.",
+    "passed": true,
+    "observations": [
+      "Consistent LuxeStyle logo, cream/taupe styling, readable main headings and enlarged mobile category lines.",
+      "Five actual cut boundaries sampled for each export; no doubled text or cut-off heading in sampled frames. Short reveal masks intentionally expose partial image regions during transitions.",
+      "Branded pet thumbnail replaced with existing clean paint T-shirt source; earlier summer/promotion/catalogue-count banners excluded.",
+      "Existing fashion source has a tight top edge; no claim of new original filming or reconstruction.",
+      "Native player controls can cover the bottom footer while controls are shown; primary headings remain visible. Full website integration not tested."
+    ],
+    "viewedFiles": [
+      {
+        "path": "qa/desktop-transitions-actual.jpg",
+        "sha256": "04aa7a429b92d76d345519deda37398e64cc34cabe17e29b2e6f6aeaa21fee19"
+      },
+      {
+        "path": "qa/mobile-transitions-actual.jpg",
+        "sha256": "4e2061e6e02f2ba90b842956e3bbbb8ce327f742540512c4466bb0064377ac8b"
+      },
+      {
+        "path": "qa/mobile-centres-actual.jpg",
+        "sha256": "922c00aff157f4b5cfdac39141f9b12168413c1b2efe284c56f7e02a6ac922aa"
+      },
+      {
+        "path": "qa/review-390-seek8.png",
+        "sha256": "963c23bfc72551b1275d193731a4362ea35289a2e3eaf1a318123400d02d47b8"
+      }
+    ],
+    "ownerCreativeApproval": "pending",
+    "thirdPartyLicenceCertification": "unknown_not_inferred",
+    "socialMasterUnchanged": true
+  },
+  "sourceManifest": {
+    "path": "MARKENFILM-QUELLEN-20261103-R69.json",
+    "sha256": "549423db6c1a5c20fb2c90d25c6c3a3a00710a95d5b753c3d449cae443933e91",
+    "collectedAssets": 24,
+    "manifestAssets": 14
+  },
+  "sourceRights": "Owner specifically instructed reuse/edit of current website sources for this website review. No independent third-party licence certification or social approval inferred.",
+  "qualitySkill": {
+    "schemaVersion": 1,
+    "name": "luxestyle-video-quality",
+    "version": "1.1.0",
+    "authorship": "Original project instructions authored in this task from explicit owner requirements and independently expressed implementation guidance.",
+    "createdAt": "2026-11-03T17:58:15.486031+00:00",
+    "path": "/workspace/luxestyle-codex/.agents/skills/luxestyle-video-quality/SKILL.md",
+    "sha256": "289667fcb6a5528f16dda744389633569e55c2a7a7ff891fef811888e5ec3bca",
+    "gitBlobSha": "ff1e1b37d0f200ec3e84f5ff6c7022f373edcd06",
+    "upstreamTextCopied": false,
+    "runtimeDependencies": [],
+    "hooksRegistered": false,
+    "autoCliDiscoveryVerified": false,
+    "readAndAppliedByAgent": true,
+    "updatedAt": "2026-11-03T18:43:17.801863+00:00",
+    "history": [
+      {
+        "version": "1.0.0",
+        "sha256": "9b44365102c4374a5881ea6a3815ffdc5e8da47d62ffd5da9109a82fa93d608c",
+        "gitBlobSha": "1fce20fe2793ecbd1edc1dd30f21bbd1bccd4176",
+        "updatedAt": "2026-11-03T17:59:57.028892+00:00",
+        "reason": "Owner explicitly narrows new website film to editing existing site content; no new filming requirement for that scope."
+      }
+    ]
+  },
+  "preservedSocialMasterId": "luxe_sternenprojektor_master_20261018",
+  "ownerCreativeApproval": "pending_review_of_actual_file",
+  "websiteIntegration": "not_performed",
+  "claudeReceipt": "unknown",
+  "counts": {
+    "paidCalls": 0,
+    "shopWrites": 0,
+    "socialWrites": 0,
+    "newReports": 0,
+    "purchaseWatchReads": 0,
+    "newSchedules": 0
+  },
+  "independentQa": {
+    "schemaVersion": 1,
+    "createdAtUTC": "2026-11-03T18:54:19.301113+00:00",
+    "masterId": "luxe_website_brand_master_20261103",
+    "status": "rendered_local_review_passed_limited_independent_qa_owner_acceptance_pending",
+    "outputs": [
+      {
+        "filename": "luxestyle-brand-desktop-r69.mp4",
+        "sha256": "43b345312280fd1c8340a2b13babf3eed7438dcb2cb46a5a8152afbd8a0d99b3",
+        "bytes": 2243231,
+        "dimensions": [
+          1280,
+          1120
+        ],
+        "frames": 600,
+        "durationSeconds": 20.0,
+        "checksPassed": 15,
+        "checksFailed": 0
+      },
+      {
+        "filename": "luxestyle-brand-mobile-r69.mp4",
+        "sha256": "8c38e6eeac189de539cc213bf0a9c74d275cbc5c91d36a2bacb1e5090e1b80d6",
+        "bytes": 1497161,
+        "dimensions": [
+          810,
+          1080
+        ],
+        "frames": 600,
+        "durationSeconds": 20.0,
+        "checksPassed": 15,
+        "checksFailed": 0
+      }
+    ],
+    "technicalSummary": {
+      "passed": 30,
+      "failed": 0,
+      "scope": "Both complete 600-frame streams decoded; PTS spacing checked, not only nominal fps metadata."
+    },
+    "browserSummary": {
+      "passed": 26,
+      "failed": 0,
+      "viewportWidths": [
+        1440,
+        390
+      ],
+      "fullPlaybackBothToSeconds": 20,
+      "controls": [
+        "play",
+        "pause",
+        "seek8",
+        "keyboardFocus",
+        "nativeControls"
+      ],
+      "deliveryScope": "Exact local MP4 bytes supplied as data URLs to supported page.set_content; not an HTTP/CDN/Shopify deployment acceptance test.",
+      "browserPlaybackCounters": [
+        {
+          "viewport": 1440,
+          "export": "desktop",
+          "totalObserved": 879,
+          "droppedObserved": 4
+        },
+        {
+          "viewport": 390,
+          "export": "mobile",
+          "totalObserved": 871,
+          "droppedObserved": 8
+        }
+      ]
+    },
+    "sourceValidation": {
+      "selectedAssets": 14,
+      "checks": [
+        {
+          "filename": "homepage-fashion-blumenkleid.jpg",
+          "sha256": "d32255725f2d6556e9fcb6c65d6c0f3ac5f690a322ec268719a7c9c099714c57",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798"
+        },
+        {
+          "filename": "season-card-winter.png",
+          "sha256": "3a8eea479629287219dc217504fe3faa68e2e89ac8d42d67aa2e0e803ebf4275",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088"
+        },
+        {
+          "filename": "category-tile-beauty-pflege.png",
+          "sha256": "3d71544e7891671a7fa27d035de980344e259e48551f9ad55155eda1846f2783",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453"
+        },
+        {
+          "filename": "category-tile-sub-taschen.jpg",
+          "sha256": "f2763e960d421bfce5071b9216d211329c925d06b2a70c8adcedb24192d27aa8",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169"
+        },
+        {
+          "filename": "category-tile-uhren.jpg",
+          "sha256": "303254577fb46b72ce3619b5a0de693cf23c6868afadb09e01dde883b5ec03d4",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273"
+        },
+        {
+          "filename": "category-tile-elektronik-technik.jpg",
+          "sha256": "1f2dd2aacebb26985ea76b55d3a36e66acd3bbf621867c5efa6931cb283d02e4",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387"
+        },
+        {
+          "filename": "category-tile-sub-kueche.jpg",
+          "sha256": "8196025bb1144e48864390dc6821ad63f51f8e8d1aa72a3c39e87fb252114dc4",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258"
+        },
+        {
+          "filename": "category-tile-gaming.jpg",
+          "sha256": "c76e7ec68d8a62531106974847a782269ad539933b8e586c0766fc272b0378dc",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717"
+        },
+        {
+          "filename": "category-tile-sport-outdoor.png",
+          "sha256": "c6f634e04267cffb62bffe87f8644e234c24c20706d69323e19e83969b7e890b",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453"
+        },
+        {
+          "filename": "budget-card-premium-geschenke.png",
+          "sha256": "bb6ffa8a2ed7d5e2accaacf84f2aee44126528d3340c8e80d63ce41e3dec02b4",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263"
+        },
+        {
+          "filename": "season-card-christmas.png",
+          "sha256": "9c42130313a118bebc103653c957230e5032837fd871fd88c7632e98c658f354",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088"
+        },
+        {
+          "filename": "design-collage-selbstgestalten-collage.png",
+          "sha256": "4f9c297b8c65be67360d58d61ca0d9f81f849d9130692fdefb36150dfa5556b1",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613"
+        },
+        {
+          "filename": "category-tile-selbst-gestalten-1.png",
+          "sha256": "ec19b173b79276443d808ce60f43e6a19b2631d02a70bdbbe1cf6202f3f3e0c2",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979"
+        },
+        {
+          "filename": "luxestyle-logo.png",
+          "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6",
+          "matchedProductionManifest": true,
+          "matchedWebsiteSourceManifest": true,
+          "sourceUrl": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787"
+        }
+      ],
+      "allMatched": true,
+      "sourceManifestHashMatched": true,
+      "authority": "Owner explicitly requested editing existing own-website materials for this website brand preview; no fresh filmed takes required. No independent third-party licence certificate or social publication permission inferred.",
+      "riskExclusions": "Old summer banners, unverified article-count collages, FLOWERS STUDIO / Double happiness banners and unknown dog-harness label not used."
+    },
+    "textBounds": [
+      {
+        "export": "desktop",
+        "recordedHeadingAndBodyBounds": 13,
+        "outsideCanvas": [],
+        "passed": true,
+        "scope": "Recorded headings and category/body text bounds; header/footer additionally inspected in actual decoded samples, not claimed as per-frame OCR."
+      },
+      {
+        "export": "mobile",
+        "recordedHeadingAndBodyBounds": 16,
+        "outsideCanvas": [],
+        "passed": true,
+        "scope": "Recorded headings and category/body text bounds; header/footer additionally inspected in actual decoded samples, not claimed as per-frame OCR."
+      }
+    ],
+    "visualReview": {
+      "inspectedFiles": [
+        {
+          "path": "desktop-transitions-actual.jpg",
+          "sha256": "04aa7a429b92d76d345519deda37398e64cc34cabe17e29b2e6f6aeaa21fee19"
+        },
+        {
+          "path": "mobile-transitions-actual.jpg",
+          "sha256": "4e2061e6e02f2ba90b842956e3bbbb8ce327f742540512c4466bb0064377ac8b"
+        },
+        {
+          "path": "desktop-centres-actual.jpg",
+          "sha256": "7365ae7fe34b50b6a630a982f049a0d181cc1688ba6a8ea2e2c0c09d4fd17004"
+        },
+        {
+          "path": "mobile-centres-actual.jpg",
+          "sha256": "922c00aff157f4b5cfdac39141f9b12168413c1b2efe284c56f7e02a6ac922aa"
+        },
+        {
+          "path": "decoded-desktop/frame-599.png",
+          "sha256": "42488a7e22d91f9c4b5a67804af0ec375ae6f2ebfae27b1b4c0418c0742c7df4"
+        },
+        {
+          "path": "decoded-mobile/frame-599.png",
+          "sha256": "3f33577c153f4081ff0286e16fbaea37a7a9f71b18b0b803d703f27c901f8831"
+        },
+        {
+          "path": "review-390-seek8.png",
+          "sha256": "963c23bfc72551b1275d193731a4362ea35289a2e3eaf1a318123400d02d47b8"
+        },
+        {
+          "path": "review-1440-seek8.png",
+          "sha256": "bd39c0940ee241b3beac8fa795d39ca5206eb554e313dc99f2493756256e5531"
+        }
+      ],
+      "actualDecodedFramesExtractedPerExport": 27,
+      "reviewedScope": "Six scene centres and five transition sequences per export at thumbnail scale, both final frames at full size, 1440/390 native browser screenshots; limited visual sampling, not human inspection of every frame.",
+      "findings": [
+        "No duplicated transitioning text or missing image fields observed in the inspected samples.",
+        "Consistent cream/taupe typography, official source logo and category labels; no price, delivery, review or functional product claims added.",
+        "Mobile category copy enlarged from 22 to 30 source px and footer from 18 to 27 source px before final render; legible at the inspected 358-px player width.",
+        "Native controls temporarily cover the lower decorative footer while displayed; main heading/category text/CTA remain in the upper canvas.",
+        "Images retain source identity, use cut/layout/reveal masks; no simulated product operation or generated movement."
+      ]
+    },
+    "audio": {
+      "streams": 0,
+      "intentional": "Silent website review. No voiceover or substitute music."
+    },
+    "knownLimitations": [
+      "Owner creative acceptance still pending; not deployed or uploaded to Shopify, Metricool or social channels.",
+      "Website illustrations are not independently verified individual product variants and original creation methods/third-party rights remain unverified.",
+      "Chromium headless observed 4/879 desktop and 8/871 mobile dropped playback frames in the shared test environment; encoded timestamps are constant 30 fps. No zero-drop guarantee for all physical devices.",
+      "No iOS/Safari, slow mobile network, CDN delivery or actual theme integration test performed.",
+      "Website source update does not approve the separate social projector master."
+    ],
+    "artifacts": {
+      "review": "REVIEW.html",
+      "technical": "qa/TECHNICAL-QA.json",
+      "browser": "qa/BROWSER-QA.json",
+      "decodedFrames": "qa/DECODED-FRAMES.json",
+      "productionManifest": "film/FILM-MANIFEST.json"
+    }
+  }
+}
