@@ -1713,3 +1713,12 @@
 {"key":"d36e0a60aec6da2717fa6df8e41930e1f446ebdfe0a77a62db25c07ce8d3b7c4","status":"sent","updated_at":"2026-10-18T18:54:28.858Z"}
 {"key":"4ced0e8dd31206f1ed01b86d7a3379670d1f9415a774832565195d92ca6ef499","status":"sending","updated_at":"2026-10-18T18:55:40.363Z"}
 {"key":"4ced0e8dd31206f1ed01b86d7a3379670d1f9415a774832565195d92ca6ef499","status":"sent","updated_at":"2026-10-18T18:55:41.296Z"}
+{"key":"36bc05c224d45eb66d833113dbe847925b3218ad7e5e553169530cad28613819","status":"sending","body":"Sie ist glänzend.","updated_at":"2026-11-03T18:40:52.788Z"}
+{"key":"36bc05c224d45eb66d833113dbe847925b3218ad7e5e553169530cad28613819","status":"sent","body":"Sie ist glänzend.","updated_at":"2026-11-03T18:40:53.988Z"}
+{"key":"dd74e74ecc10ac9a740f6c95ca43e3c139872bf87c388c8a9594f163cfea3a2c","status":"sending","body":"Sieht hübsch aus~ Ich dachte, es könnte etwas altmodisch wirken, aber das helle Beige lässt dein Gesicht strahlen und das dezente Rot wirkt feminin und frisch.","updated_at":"2026-11-03T18:40:58.100Z"}
+{"key":"dd74e74ecc10ac9a740f6c95ca43e3c139872bf87c388c8a9594f163cfea3a2c","status":"uncertain","body":"Sieht hübsch aus~ Ich dachte, es könnte etwas altmodisch wirken, aber das helle Beige lässt dein Gesicht strahlen und das dezente Rot wirkt feminin und frisch.","updated_at":"2026-11-03T18:40:59.045Z"}
+{"key":"8ad7cdd6b3e424e1331c4821dd010c97a5a421c66fc9ac96af80cab7b4273f82","status":"sending","body":"Bin super zufrieden, echt klasse, danke!","updated_at":"2026-11-03T18:41:02.447Z"}
+{"key":"58dddba93ff24ec35c29b27a9464b06346c5cb4288d3f79db873a9766a66c7c9","status":"sending","body":"Tolle Qualität, entspricht dem Foto.","updated_at":"2026-11-03T18:41:03.294Z"}
+{"key":"8ad7cdd6b3e424e1331c4821dd010c97a5a421c66fc9ac96af80cab7b4273f82","status":"sent","body":"Bin super zufrieden, echt klasse, danke!","updated_at":"2026-11-03T18:41:07.487Z"}
+{"key":"58dddba93ff24ec35c29b27a9464b06346c5cb4288d3f79db873a9766a66c7c9","status":"sent","body":"Tolle Qualität, entspricht dem Foto.","updated_at":"2026-11-03T18:41:07.488Z"}
+{"key":"dd74e74ecc10ac9a740f6c95ca43e3c139872bf87c388c8a9594f163cfea3a2c","status":"sent","body":"Sieht hübsch aus~ Ich dachte, es könnte etwas altmodisch wirken, aber das helle Beige lässt dein Gesicht strahlen und das dezente Rot wirkt feminin und frisch.","updated_at":"2026-11-03T18:55:00.000Z","note":"von Hand abgeglichen: in Judge.me genau einmal vorhanden (Review 1405929915, 18:40:59 UTC)"}
