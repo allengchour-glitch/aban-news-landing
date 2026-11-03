@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "kind": "ReviewEvidence_NOT_MasterPublicationRegistry",
+  "quality": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-03T07:09:25.401216+00:00",
+    "scope": "Read-only quality review of exactly three externally scheduled MP4 assets. Three downloads, ffprobe and three representative decoded frames each; one local historical comparison. No product/account API reads, edits, new product-film renders, uploads, queue changes or registry changes.",
+    "scheduleState": "Observed PENDING separately on Facebook, Instagram and TikTok for all three files; no PUBLISHED claim.",
+    "videos": [
+      {
+        "label": "Wasserwellen-Lampe",
+        "postId": 414566455,
+        "uuid": "-4972715334292126303",
+        "scheduledAt": {
+          "dateTime": "2026-11-04T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "perChannelStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "instagramAiGeneratedFlag": true,
+        "tiktokAigcFlag": true,
+        "mediaUrl": "https://static.metricool.com/planner/202611/6227837-file-15442206389654025783.mp4",
+        "mp4Sha256": "6b550fc014222f39f968f8c7f2b668fa7b702d534adb1093c40db80cb400ec74",
+        "bytes": 2278477,
+        "downloadHttp": 200,
+        "actualMp4Exists": true,
+        "durationSeconds": 9.4,
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "fps": "30/1",
+          "frames": 282,
+          "pixelFormat": "yuv420p"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": 48000,
+          "channels": 2,
+          "durationSeconds": 8.816,
+          "musicIdentity": "unknown; current canonical music is not substantiated by diagnostic",
+          "absenceOfVoiceover": "unknown; not manually heard or speech-transcribed",
+          "canonicalSegmentDiagnostic": {
+            "label": "water-lamp",
+            "audioSamples8000": 70656,
+            "audioDurationSeconds": 8.832,
+            "peakAbsoluteNormalizedCorrelation": 0.04180902013357868,
+            "bestCanonicalStartSeconds": 6.655,
+            "decodedPcmSha256": "9b681467070ad32e9cfa2f384a13c3bdafd489fabaad7c00b96d2741e858339f",
+            "methodLimit": "Diagnostic of an unchanged-speed same-track segment under linear gain; not a cryptographic identity test, not proof of source track or absence of speech."
+          }
+        },
+        "embeddedTitle": "LuxeStyle Wasserwellen-Lampe - Foto-Reel",
+        "visuallyInspectedFrames": [
+          {
+            "tSeconds": 0.5,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/water-lamp-frame-1.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 4.7,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/water-lamp-frame-2.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 8.9,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/water-lamp-frame-3.jpg",
+            "exitCode": 0,
+            "error": null
+          }
+        ],
+        "visualObservations": {
+          "action": "Three photographic card layouts: whole cube lamp, two photographic detail/projection windows, whole cube lamp and brand end card. No actual handling, switching or changing light demonstrated by the reviewed frames.",
+          "text": [
+            "Wasserwellen-Lampe",
+            "Ein warmer Akzent.",
+            "Warmes Licht.",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "claimChecksOpen": [
+            "Current exact product/variant and source-photo binding",
+            "Caption claim of moving light not demonstrated by this photograph sequence"
+          ]
+        },
+        "creativeQualityDecision": "Not approved as the one professional 15–20s / 18s product-film master. Actual files exist but are 9.4s photographic card reels; sampled frames do not demonstrate original product-film action.",
+        "technicalRasterPass": true,
+        "targetDurationPass": false,
+        "productIdentityApproved": false,
+        "commercialEditingAdvertisingRightsVerified": false,
+        "platformUiCropApproval": "unknown; 9:16 raster alone is not proof of all platform safezones/cover crops",
+        "captionLinkTargetVerified": false,
+        "ownerCreativeRightsApproval": "unknown; parent asked owner about possible external approval",
+        "notParentProjectorMaster": true,
+        "mutationsByThisReview": 0
+      },
+      {
+        "label": "Tennisarmband mit Zirkon",
+        "postId": 414566490,
+        "uuid": "-7866054559336938189",
+        "scheduledAt": {
+          "dateTime": "2026-11-06T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "perChannelStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "instagramAiGeneratedFlag": true,
+        "tiktokAigcFlag": true,
+        "mediaUrl": "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4",
+        "mp4Sha256": "bb0abd1b8768b305430b49d964d31e3ea21abe9b584c827beec6de4535d87244",
+        "bytes": 2492770,
+        "downloadHttp": 200,
+        "actualMp4Exists": true,
+        "durationSeconds": 9.4,
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "fps": "30/1",
+          "frames": 282,
+          "pixelFormat": "yuv420p"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": 48000,
+          "channels": 2,
+          "durationSeconds": 8.751,
+          "musicIdentity": "unknown; current canonical music is not substantiated by diagnostic",
+          "absenceOfVoiceover": "unknown; not manually heard or speech-transcribed",
+          "canonicalSegmentDiagnostic": {
+            "label": "tennis-bracelet",
+            "audioSamples8000": 70144,
+            "audioDurationSeconds": 8.768,
+            "peakAbsoluteNormalizedCorrelation": 0.04853322880626291,
+            "bestCanonicalStartSeconds": 16.552375,
+            "decodedPcmSha256": "295eececad47a749ad17f4e7c3eec9ff128db73fcc9bcda5a3e891ac9e2b8a69",
+            "methodLimit": "Diagnostic of an unchanged-speed same-track segment under linear gain; not a cryptographic identity test, not proof of source track or absence of speech."
+          }
+        },
+        "embeddedTitle": "LuxeStyle Tennisarmband mit Zirkon - Foto-Reel",
+        "visuallyInspectedFrames": [
+          {
+            "tSeconds": 0.5,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/tennis-bracelet-frame-1.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 4.7,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/tennis-bracelet-frame-2.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 8.9,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/tennis-bracelet-frame-3.jpg",
+            "exitCode": 0,
+            "error": null
+          }
+        ],
+        "visualObservations": {
+          "action": "Three photographic card layouts with whole silver bracelet, paired gold/silver detail photographs, whole bracelet and brand end card. No handling, clasp action or product film takes shown in sampled frames.",
+          "text": [
+            "Tennis-Armband",
+            "Funkelnd, leicht, zeitlos.",
+            "Mit Zirkon.",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "claimChecksOpen": [
+            "Zirkon/material and weight/lightness claim need exact current product source",
+            "Gold/silver execution correspondence and advertised variant"
+          ]
+        },
+        "creativeQualityDecision": "Not approved as the one professional 15–20s / 18s product-film master. Actual files exist but are 9.4s photographic card reels; sampled frames do not demonstrate original product-film action.",
+        "technicalRasterPass": true,
+        "targetDurationPass": false,
+        "productIdentityApproved": false,
+        "commercialEditingAdvertisingRightsVerified": false,
+        "platformUiCropApproval": "unknown; 9:16 raster alone is not proof of all platform safezones/cover crops",
+        "captionLinkTargetVerified": false,
+        "ownerCreativeRightsApproval": "unknown; parent asked owner about possible external approval",
+        "notParentProjectorMaster": true,
+        "mutationsByThisReview": 0
+      },
+      {
+        "label": "Kristallspitzen-Set",
+        "postId": 414566521,
+        "uuid": "1744402171830094170",
+        "scheduledAt": {
+          "dateTime": "2026-11-08T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "perChannelStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "instagramAiGeneratedFlag": true,
+        "tiktokAigcFlag": true,
+        "mediaUrl": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "mp4Sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "bytes": 1783832,
+        "downloadHttp": 200,
+        "actualMp4Exists": true,
+        "durationSeconds": 9.4,
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "fps": "30/1",
+          "frames": 282,
+          "pixelFormat": "yuv420p"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": 48000,
+          "channels": 2,
+          "durationSeconds": 8.818,
+          "musicIdentity": "unknown; current canonical music is not substantiated by diagnostic",
+          "absenceOfVoiceover": "unknown; not manually heard or speech-transcribed",
+          "canonicalSegmentDiagnostic": {
+            "label": "crystal-box",
+            "audioSamples8000": 70656,
+            "audioDurationSeconds": 8.832,
+            "peakAbsoluteNormalizedCorrelation": 0.05274334070430273,
+            "bestCanonicalStartSeconds": 46.1235,
+            "decodedPcmSha256": "ded201dd4bafade8e1f57f61caea68765d98b3aaf88522c111b7096082075776",
+            "methodLimit": "Diagnostic of an unchanged-speed same-track segment under linear gain; not a cryptographic identity test, not proof of source track or absence of speech."
+          }
+        },
+        "embeddedTitle": "LuxeStyle Kristallspitzen-Set - Foto-Reel",
+        "visuallyInspectedFrames": [
+          {
+            "tSeconds": 0.5,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/crystal-box-frame-1.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 4.7,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/crystal-box-frame-2.jpg",
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "tSeconds": 8.9,
+            "path": "/workspace/luxestyle-review/tageslauf-20261103-r64/quality/crystal-box-frame-3.jpg",
+            "exitCode": 0,
+            "error": null
+          }
+        ],
+        "visualObservations": {
+          "action": "Three photographic card layouts with coloured crystal-like points in a wooden-looking box, two close-up photographs, whole box and brand end card. No handling or actual filmed action shown in sampled frames.",
+          "text": [
+            "Kristall-Spitzen",
+            "Acht Steine in der Holzbox.",
+            "Natur pur.",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "claimChecksOpen": [
+            "Natur pur, mineral identity/natural state and box material need verified current product source",
+            "Exact eight-piece variant/pack binding"
+          ]
+        },
+        "creativeQualityDecision": "Not approved as the one professional 15–20s / 18s product-film master. Actual files exist but are 9.4s photographic card reels; sampled frames do not demonstrate original product-film action.",
+        "technicalRasterPass": true,
+        "targetDurationPass": false,
+        "productIdentityApproved": false,
+        "commercialEditingAdvertisingRightsVerified": false,
+        "platformUiCropApproval": "unknown; 9:16 raster alone is not proof of all platform safezones/cover crops",
+        "captionLinkTargetVerified": false,
+        "ownerCreativeRightsApproval": "unknown; parent asked owner about possible external approval",
+        "notParentProjectorMaster": true,
+        "mutationsByThisReview": 0
+      }
+    ],
+    "r57Comparison": {
+      "historicalR57LocalFile": "/workspace/luxestyle-review/lamp-compare-20261102-r57/release/dropship/reel-vergleich-0211/codex-lampe.mp4",
+      "historicalR57Sha256": "b1b7d3f665704d447018aeae4a6d4ef0364b2bbb3be0ce75b14b714ff7a7ae05",
+      "historicalR57Bytes": 952271,
+      "historicalR57DurationSeconds": 9.0,
+      "newScheduledLampSha256": "6b550fc014222f39f968f8c7f2b668fa7b702d534adb1093c40db80cb400ec74",
+      "exactSameFile": false,
+      "observedCreativeRelation": "Same whole-lamp photograph and two-window/brand-card idea visible in R57 reference frame and scheduled lamp sample; new file is 9.4s and has light/dark layout differences.",
+      "differentHashDoesNotProveNewContent": true,
+      "noNewMasterIdAssigned": true,
+      "historicalR57DocumentScope": "Local comparative photo mockup, not publication/queue approval or a replacement for the professional master."
+    },
+    "musicRule": {
+      "currentExplicitOwnerRule": "Only automation/music/luxe-premium.wav, no voiceover; commercial rights and final-film QA required.",
+      "canonicalLocalSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "repoTextIsNotOwnerOverride": true,
+      "currentRepoTemplateReadOnlyObservation": "reel_karte.sh default music delegates to musik_waehlen.sh, which lists five Mixkit files, and permits optional SPRECHER; this does not prove which audio these downloaded files actually use.",
+      "musicLog": "Current main musik-log.txt read successfully and empty; no source-track evidence.",
+      "audioDiagnosticLimit": "Low same-speed segment correlation is a diagnostic non-match, not proof of an alternative track, an absolute forensic identity test or absence of voiceover."
+    },
+    "limitations": [
+      "Representative-frame inspection is not complete frame-by-frame creative approval.",
+      "No new Shopify product reads were performed for these three extra assets; product/variant, material, set and commercial rights claims remain unverified.",
+      "AI-generation flags are observed metadata and do not prove actual AI generation or product fidelity.",
+      "No master-publication register was initialized, reset, changed or treated as empty.",
+      "Existing schedule identities were preserved; actual hashes are evidence of these fetched media bytes only.",
+      "This review does not replace the one open projector master or grant a posting exception."
+    ],
+    "recommendation": "Do not perform an own autopublish/write or call these files the approved master. Obtain exact creative/rights/product/audio approval for each observed schedule and apply the current owner quality rule; parent preserves scheduled objects pending that evidence/owner decision.",
+    "ownActions": {
+      "downloadedExistingMp4s": 3,
+      "frameSamplesInspected": 9,
+      "newProductFilmRenders": 0,
+      "newUploads": 0,
+      "platformWrites": 0,
+      "registryWrites": 0,
+      "paidActions": 0,
+      "newMetricsOrSalesReports": 0
+    }
+  },
+  "originalPostsAtReadTime": [
+    {
+      "id": 414566455,
+      "publicationDate": {
+        "dateTime": "2026-11-04T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-02T22:48:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Die Wasserwellen-Lampe taucht den Raum in warmes, bewegtes Licht. 🌊✨ Ein ruhiger Akzent für dein Zuhause.\n\nFolge uns für neue Ideen. Link in Bio: luxestyle.ch\n\n#wasserwellenlampe #stimmungslicht #wohnideen #geschenkidee #schweiz #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15442206389654025783.mp4"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Wasserwellen-Lampe: warmes, bewegtes Licht für dein Zuhause"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Wasserwellen-Lampe"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "REEL",
+        "showReelOnFeed": true,
+        "isAiGenerated": true
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "title": "Wasserwellen-Lampe",
+        "photoCoverIndex": 0,
+        "isAigc": true
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-4972715334292126303",
+      "creatorUserMail": "allengchour@gmail.com",
+      "creatorUserId": 4801419,
+      "brandTags": []
+    },
+    {
+      "id": 414566490,
+      "publicationDate": {
+        "dateTime": "2026-11-06T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-02T22:48:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Funkelnd, leicht und zeitlos: das Tennisarmband mit Zirkon. ✨\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#tennisarmband #zirkon #schmuck #geschenkidee #schweiz #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Tennisarmband mit Zirkon: funkelnd, leicht, zeitlos"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Tennisarmband mit Zirkon"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "REEL",
+        "showReelOnFeed": true,
+        "isAiGenerated": true
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "title": "Tennisarmband mit Zirkon",
+        "photoCoverIndex": 0,
+        "isAigc": true
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-7866054559336938189",
+      "creatorUserMail": "allengchour@gmail.com",
+      "creatorUserId": 4801419,
+      "brandTags": []
+    },
+    {
+      "id": 414566521,
+      "publicationDate": {
+        "dateTime": "2026-11-08T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-02T22:48:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Acht Kristallspitzen in einer Holzbox. 💎 Natur pur, für dein Zuhause.\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#kristalle #kristallspitzen #naturpur #geschenkidee #schweiz #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Kristallspitzen-Set"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "REEL",
+        "showReelOnFeed": true,
+        "isAiGenerated": true
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "title": "Kristallspitzen-Set",
+        "photoCoverIndex": 0,
+        "isAigc": true
+      },
+      "hasNotReadNotes": false,
+      "uuid": "1744402171830094170",
+      "creatorUserMail": "allengchour@gmail.com",
+      "creatorUserId": 4801419,
+      "brandTags": []
+    }
+  ],
+  "ownerApproval": "unknown_pending_clarification",
+  "writes": 0,
+  "preserveKnownPostIdentities": true,
+  "newHashDoesNotMakeNewMaster": true
+}
