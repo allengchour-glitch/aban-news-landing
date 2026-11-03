@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "LUXESTYLE-R66-MERCHANT-GROWTH-CARDS",
+  "dateZurich": "2026-11-03",
+  "source": "Owner screenshot of Merchant Center Notifications, account5797470070; screenshot has no visible report period",
+  "identity": {
+    "shop": {
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "merchant": [
+      {
+        "id": "5797470070",
+        "name": "LuxeStyle CH"
+      }
+    ],
+    "ads": [
+      {
+        "id": "719-826-3241"
+      }
+    ]
+  },
+  "screenshotCards": [
+    {
+      "card": "Consider stocking more products from brands you sell",
+      "type": "GROWTH",
+      "observed": "240 Shirts & Tops suggestions for Switzerland",
+      "notEvidenceOf": "LuxeStyle purchases, availability or brand rights; screenshot period unknown. The separately reviewed R65 CSV has a September2026 filter."
+    },
+    {
+      "card": "Highlight your best deals and land more sales",
+      "type": "GROWTH",
+      "observed": "Add promotions suggestion",
+      "notEvidenceOf": "Specific product defect or permission to activate discounts."
+    },
+    {
+      "card": "Set up ads conversion tracking",
+      "type": "GROWTH",
+      "observed": "General setup link to Google Ads",
+      "notEvidenceOf": "Tag failure, missing purchase conversion action or actual receipt/non-receipt of a purchase event."
+    },
+    {
+      "card": "Optimize your shipping policy to match competitors",
+      "type": "GROWTH",
+      "observed": "Competitors described as offering 0-day shipping and CHF6.02 shipping",
+      "notEvidenceOf": "LuxeStyle shipping time/fee; no shipping setting changed or promise adopted."
+    }
+  ],
+  "targetedSetupReads": {
+    "reason": "New screenshot setup card; three bounded setup-only reads, no metric/event/order/customer fields and no broad sales report",
+    "dateFieldDefinitionsFresh": true,
+    "selectedDefinitions": [
+      {
+        "id": "accessible_bidding_strategy_owner_customer_id",
+        "name": "Accessible bidding strategy owner customer id",
+        "description": "The ID of the Customer which owns the bidding strategy.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "app_campaign_setting_bidding_strategy_goal_type",
+        "name": "App campaign setting bidding strategy goal type",
+        "description": "Represents the goal which the bidding strategy of this app campaign should optimize towards.",
+        "type": "TEXT"
+      },
+      {
+        "id": "auto_tagging_enabled",
+        "name": "Auto tagging enabled",
+        "description": "Whether auto-tagging is enabled for the customer. Only mutable in an update operation.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "campaign",
+        "name": "Campaign",
+        "description": "The name of the campaign. This field is required and should not be empty when creating new campaigns. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_app_campaign_setting_bidding_strategy_goal_type",
+        "name": "Campaign app campaign setting bidding strategy goal type",
+        "description": "Represents the goal which the bidding strategy of this app campaign should optimize towards.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_fixed_cpm_goal",
+        "name": "Campaign fixed cpm goal",
+        "description": "Fixed CPM bidding goal. Determines the exact bidding optimization parameters.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_id",
+        "name": "Campaign id",
+        "description": "The ID of the campaign.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_name",
+        "name": "Campaign name",
+        "description": "The name of the campaign. This field is required and should not be empty when creating new campaigns. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_optimization_goal_setting_optimization_goal_types",
+        "name": "Campaign optimization goal setting optimization goal types",
+        "description": "The list of optimization goal types.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_status",
+        "name": "Campaign status",
+        "description": "The status of the campaign. When a new campaign is added, the status defaults to ENABLED.",
+        "type": "TEXT"
+      },
+      {
+        "id": "campaign_target_cpm_target_frequency_goal_target_count",
+        "name": "Campaign target cpm target frequency goal target count",
+        "description": "Target Frequency count representing how many times you want to reach a single user.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "campaign_target_cpm_target_frequency_goal_time_unit",
+        "name": "Campaign target cpm target frequency goal time unit",
+        "description": "Time window expressing the period over which you want to reach the specified target_count.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_category",
+        "name": "Conversion action category",
+        "description": "Conversion action category.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_counting_type",
+        "name": "Conversion action counting type",
+        "description": "How to count conversion events for the conversion action: ONE_PER_CLICK or MANY_PER_CLICK.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_id",
+        "name": "Conversion action ID",
+        "description": "The numeric ID of the conversion action, extracted from its resource name.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_name",
+        "name": "Conversion action name",
+        "description": "Conversion action name.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_primary_for_goal",
+        "name": "Conversion action primary for goal",
+        "description": "Whether the conversion action is a primary action for its conversion goal and is used for bidding (counts toward the 'Conversions' metric). Secondary actions (false) are only observed and count toward 'All conversions'.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "conversion_action_status",
+        "name": "Conversion action status",
+        "description": "The status of this conversion action for conversion event accrual: ENABLED, REMOVED or HIDDEN.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_action_type",
+        "name": "Conversion action type",
+        "description": "The type of this conversion action, for example WEBPAGE, PHONE_CALL_FROM_ADS or GOOGLE_ANALYTICS_4_CUSTOM.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_tracking_setting_accepted_customer_data_terms",
+        "name": "Conversion tracking setting accepted customer data terms",
+        "description": "Whether the customer has accepted customer data terms. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only. For more information, see https://support.google.com/adspolicy/answer/7475709.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "conversion_tracking_setting_conversion_tracking_id",
+        "name": "Conversion tracking setting conversion tracking id",
+        "description": "The conversion tracking id used for this account. This id doesn't indicate whether the customer uses conversion tracking (conversion_tracking_status does). This field is read-only.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "conversion_tracking_setting_conversion_tracking_status",
+        "name": "Conversion tracking setting conversion tracking status",
+        "description": "Conversion tracking status. It indicates whether the customer is using conversion tracking, and who is the conversion tracking owner of this customer. If this customer is using cross-account conversion tracking, the value returned will differ based on the login-customer-id of the request.",
+        "type": "TEXT"
+      },
+      {
+        "id": "conversion_tracking_setting_cross_account_conversion_tracking_id",
+        "name": "Conversion tracking setting cross account conversion tracking id",
+        "description": "The conversion tracking id of the customer's manager. This is set when the customer is opted into cross account conversion tracking, and it overrides conversion_tracking_id. This field can only be managed through the Google Ads UI. This field is read-only.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "conversion_tracking_setting_enhanced_conversions_for_leads_enabled",
+        "name": "Conversion tracking setting enhanced conversions for leads enabled",
+        "description": "Whether the customer is opted-in for enhanced conversions for leads. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "conversion_tracking_setting_google_ads_conversion_customer",
+        "name": "Conversion tracking setting google ads conversion customer",
+        "description": "The resource name of the customer where conversions are created and managed. This field is read-only.",
+        "type": "TEXT"
+      },
+      {
+        "id": "customer_auto_tagging_enabled",
+        "name": "Customer auto tagging enabled",
+        "description": "Whether auto-tagging is enabled for the customer. Only mutable in an update operation.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_accepted_customer_data_terms",
+        "name": "Customer conversion tracking setting accepted customer data terms",
+        "description": "Whether the customer has accepted customer data terms. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only. For more information, see https://support.google.com/adspolicy/answer/7475709.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_conversion_tracking_id",
+        "name": "Customer conversion tracking setting conversion tracking id",
+        "description": "The conversion tracking id used for this account. This id doesn't indicate whether the customer uses conversion tracking (conversion_tracking_status does). This field is read-only.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_conversion_tracking_status",
+        "name": "Customer conversion tracking setting conversion tracking status",
+        "description": "Conversion tracking status. It indicates whether the customer is using conversion tracking, and who is the conversion tracking owner of this customer. If this customer is using cross-account conversion tracking, the value returned will differ based on the login-customer-id of the request.",
+        "type": "TEXT"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_cross_account_conversion_tracking_id",
+        "name": "Customer conversion tracking setting cross account conversion tracking id",
+        "description": "The conversion tracking id of the customer's manager. This is set when the customer is opted into cross account conversion tracking, and it overrides conversion_tracking_id. This field can only be managed through the Google Ads UI. This field is read-only.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_enhanced_conversions_for_leads_enabled",
+        "name": "Customer conversion tracking setting enhanced conversions for leads enabled",
+        "description": "Whether the customer is opted-in for enhanced conversions for leads. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only.",
+        "type": "BOOLEAN"
+      },
+      {
+        "id": "customer_conversion_tracking_setting_google_ads_conversion_customer",
+        "name": "Customer conversion tracking setting google ads conversion customer",
+        "description": "The resource name of the customer where conversions are created and managed. This field is read-only.",
+        "type": "TEXT"
+      },
+      {
+        "id": "external_customer_id",
+        "name": "External customer id",
+        "description": "The ID of the customer.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "fixed_cpm_goal",
+        "name": "Fixed cpm goal",
+        "description": "Fixed CPM bidding goal. Determines the exact bidding optimization parameters.",
+        "type": "TEXT"
+      },
+      {
+        "id": "optimization_goal_setting_optimization_goal_types",
+        "name": "Optimization goal setting optimization goal types",
+        "description": "The list of optimization goal types.",
+        "type": "TEXT"
+      },
+      {
+        "id": "owner_customer_id",
+        "name": "Owner customer id",
+        "description": "The ID of the Customer which owns the bidding strategy.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "target_cpm_target_frequency_goal_target_count",
+        "name": "Target cpm target frequency goal target count",
+        "description": "Target Frequency count representing how many times you want to reach a single user.",
+        "type": "NUMERIC"
+      },
+      {
+        "id": "target_cpm_target_frequency_goal_time_unit",
+        "name": "Target cpm target frequency goal time unit",
+        "description": "Time window expressing the period over which you want to reach the specified target_count.",
+        "type": "TEXT"
+      }
+    ],
+    "customerRead": {
+      "date_from": "2026-11-03",
+      "date_to": "2026-11-03",
+      "result": {
+        "status": "done",
+        "data": [],
+        "total_rows": 0
+      },
+      "interpretation": "No usable returned configuration rows; current settings unknown, not absent or zero."
+    },
+    "conversionActionFirstRead": {
+      "result": {
+        "error": "Error calling tool 'get_data': Google Ads cannot return these fields in one request: conversion_action_id has no report in common with the others. Fix: remove conversion_action_id, or request it in a separate call. Guide: https://windsor.ai/documentation/google-ads-fields-cannot-be-queried-together-error/"
+      },
+      "interpretation": "Explicit incompatible field combination for conversion_action_id, not an empty report or missing conversion action."
+    },
+    "conversionActionCorrectedRead": {
+      "args": {
+        "connector": "google_ads",
+        "accounts": [
+          "719-826-3241"
+        ],
+        "fields": [
+          "conversion_action",
+          "conversion_action_name",
+          "conversion_action_category",
+          "conversion_action_type",
+          "conversion_action_status",
+          "conversion_action_primary_for_goal"
+        ],
+        "date_from": "2026-10-27",
+        "date_to": "2026-11-02",
+        "filters": [
+          [
+            "conversion_action",
+            "contains",
+            "/7840141331"
+          ]
+        ]
+      },
+      "result": {
+        "status": "done",
+        "data": [],
+        "total_rows": 0
+      },
+      "interpretation": "One bounded correction after explicit field incompatibility. No usable returned rows; current action state and event occurrence unknown. No blind further retries."
+    },
+    "campaignSpecificGoalResourceFieldsExposed": [],
+    "notNativeGoalBindingProof": true,
+    "cacheFreshness": "unknown; force_refresh not used",
+    "actualPurchaseEventProof": "unknown; no event data queried",
+    "newPerformanceFlowOrOrderWatchReports": 0
+  },
+  "historicalStateOnly": {
+    "source": "Fresh canonical revision65, task ads-pyjama-start-24403263741",
+    "evidence": "Account/campaign pause, auto-tagging=true and Kauf action were documented earlier; they are not freshly re-confirmed by these empty configuration reads.",
+    "remainingBlocker": "Campaign-specific purchase goal binding and true purchase-event reception not confirmed."
+  },
+  "nextStep": "Read-only native Google Ads campaign conversion goals plus tag/purchase-event diagnostics in the already connected account. Preserve current campaign/budget/dates and all other settings; no test purchase, activation or configuration change.",
+  "ownWrites": {
+    "shop": 0,
+    "merchant": 0,
+    "ads": 0,
+    "social": 0,
+    "settings": 0,
+    "documentation": "separately recorded after CAS and exact readback"
+  },
+  "limits": {
+    "shippingThresholdChf": 50,
+    "internalThresholdAfterDiscountChf": 45,
+    "discountActivation": false,
+    "adsActivation": false,
+    "completedPurchaseWatchNotResumed": true,
+    "dailyMetricPolicyUnchanged": true
+  }
+}
