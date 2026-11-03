@@ -384,13 +384,13 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   const w = await kuecheGeschirrZurueckLauf(l.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach.json'), ledger: d.ledger, jetzt: () => new Date('2026-11-03T22:00:00Z'), out: still().out, err: still().err });
   ist('Rücknahme ist wiederholbar (zweiter Lauf auf dem zurückgesetzten Menü): Exit 0, der erste Zwischenstand bleibt unverändert', [w.code, JSON.parse(readFileSync(join(TMP, 'z0', 'nach.json'), 'utf8')).items.length], [0, 21]);
 
-  const f = attrappe({ collections: MIT_NEUEN, menu: vor }), r2 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'gibtsnicht.json'), ledger: d.ledger, out: still().out, err: still().err });
+  const f = attrappe({ collections: MIT_NEUEN, menu: vor }), r2 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'gibtsnicht.json'), zwischen: join(TMP, 'z0', 'extra1.json'), ledger: d.ledger, out: still().out, err: still().err });
   ist('Sicherung fehlt: Exit 1, nichts geschrieben', [r2.code, f.schreibend().length], [1, 0]);
   writeFileSync(join(TMP, 'z0', 'kaputt.json'), '{"id":"gid://x"');
-  const r3 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'kaputt.json'), ledger: d.ledger, out: still().out, err: still().err });
+  const r3 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'kaputt.json'), zwischen: join(TMP, 'z0', 'extra2.json'), ledger: d.ledger, out: still().out, err: still().err });
   ist('Sicherung abgeschnitten (kein gültiges JSON): Exit 1, nichts geschrieben', [r3.code, f.schreibend().length], [1, 0]);
   writeFileSync(join(TMP, 'z0', 'fremd.json'), JSON.stringify({ id: 'gid://shopify/Menu/anderes', handle: 'main-menu', items: ALT_ROH }));
-  const r4 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'fremd.json'), ledger: d.ledger, out: still().out, err: still().err });
+  const r4 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'fremd.json'), zwischen: join(TMP, 'z0', 'extra3.json'), ledger: d.ledger, out: still().out, err: still().err });
   ist('Sicherung gehört zu einem anderen Menü: Exit 1, nichts geschrieben', [r4.code, f.schreibend().length], [1, 0]);
   const g = attrappe({ collections: MIT_NEUEN, menu: vor, beimLesen: { nr: 2, aendere: m => { m.items.find(x => x.title === 'Damen').title = 'Damen (neu)'; return m; } } });
   const r5 = await kuecheGeschirrZurueckLauf(g.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach2.json'), ledger: d.ledger, out: still().out, err: still().err });
