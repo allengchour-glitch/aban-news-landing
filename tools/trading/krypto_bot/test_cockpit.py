@@ -124,6 +124,16 @@ with tempfile.TemporaryDirectory() as tmp:
         KT.lauf(client=fc, logbuch=lbp, kurse=reihen, lage_text="x", push=False)
         pruefe("zweiter Lauf am selben Stand fragt Claude nicht nochmal", len(fc.aufrufe) == 1)
         pruefe("Lagebericht enthält das Lagebild", "Angst&Gier 50" in fc.aufrufe[0]["messages"][0]["content"])
+        # scheitert die Anfrage (Schlüssel, Netz, Guthaben), steht der GRUND im Logbuch — das Cockpit zeigt ihn in der Gesundheits-Zeile; ein späterer Erfolg räumt ihn weg
+        lbp2 = Path(tmp) / "ki2.json"
+        r_aus = KT.lauf(client=FakeClaude(gut, fehler=ConnectionError("Schlüssel ungültig (401)")), logbuch=lbp2, kurse=reihen, lage_text="x", push=False)
+        j_aus = json.loads(lbp2.read_text(encoding="utf-8"))
+        pruefe("KI-Trader: scheitert die Anfrage, wird der GRUND ins Logbuch geschrieben (fürs Cockpit), ohne einen Entscheid zu erfinden",
+               r_aus is None and j_aus["entscheide"] == [] and "Schlüssel ungültig" in j_aus["letzter_fehler"]["hinweis"]
+               and j_aus["letzter_fehler"]["stand"] == tag(399) and "zeit" in j_aus["letzter_fehler"], j_aus)
+        KT.lauf(client=FakeClaude(gut), logbuch=lbp2, kurse=reihen, lage_text="x", push=False)
+        j_gut = json.loads(lbp2.read_text(encoding="utf-8"))
+        pruefe("KI-Trader: ein späterer Erfolg räumt den gemerkten Fehler weg", "letzter_fehler" not in j_gut and len(j_gut["entscheide"]) == 1, j_gut)
     finally:
         KT.PILOT_LOGBUCH = alt_pilot
 
@@ -980,6 +990,20 @@ with tempfile.TemporaryDirectory() as tmp:
                                                  datetime(2026, 1, 20, tzinfo=timezone.utc).date())}
         pruefe("KI-Ampel: rot, wenn die letzte Einschätzung alt ist (nicht nur «Schlüssel gesetzt»)", gk["Claude (KI-Trader)"]["ok"] is False
                and "19 Tage" in gk["Claude (KI-Trader)"]["text"], gk["Claude (KI-Trader)"])
+        # Fund vom 03.11.2026 (Cockpit-Bild des Besitzers): «✗ Claude (KI-Trader) — noch keine Einschätzung» sagte nicht, WARUM — jetzt steht der Grund des letzten Versuchs da
+        _ki_fehler = {"entscheide": [], "letzter_fehler": {"zeit": "2026-01-19T02:31:00+00:00", "stand": "2026-01-18",
+                                                            "hinweis": "Claude nicht erreichbar: AuthenticationError: 401 invalid x-api-key"}}
+        _h20 = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
+        gk2 = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, _ki_fehler, _h20)}["Claude (KI-Trader)"]
+        pruefe("KI-Ampel: ohne je eine Einschätzung nennt die Zeile den Grund des letzten Versuchs (401) und dessen Zeit",
+               gk2["ok"] is False and "noch keine Einschätzung" in gk2["text"] and "AuthenticationError: 401" in gk2["text"] and "2026-01-19 02:31 UTC" in gk2["text"], gk2)
+        gk3 = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, {"entscheide": [], "letzter_fehler": "kaputt"}, _h20)}["Claude (KI-Trader)"]
+        pruefe("KI-Ampel: ein beschädigter Fehler-Eintrag (kein Objekt) stört nicht", gk3["ok"] is False and gk3["text"] == "noch keine Einschätzung", gk3)
+        gk4 = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, {"entscheide": [{"stand": "2026-01-19"}]}, _h20)}["Claude (KI-Trader)"]
+        pruefe("KI-Ampel: frische Einschätzung bleibt grün und ohne Fehlertext", gk4["ok"] is True and gk4["text"] == "letzte Einschätzung 2026-01-19", gk4)
+        _ki_alt_fehler = {"entscheide": [{"stand": "2026-01-10"}], "letzter_fehler": {"zeit": "2026-01-19T02:31:00+00:00", "stand": "2026-01-18", "hinweis": "Guthaben leer"}}
+        gk5 = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, _ki_alt_fehler, _h20)}["Claude (KI-Trader)"]
+        pruefe("KI-Ampel: alte Einschätzung PLUS gescheiterter neuer Versuch nennt beides", gk5["ok"] is False and "10 Tage alt" in gk5["text"] and "Guthaben leer" in gk5["text"], gk5)
 
         # ── Telegram-Calls im Cockpit ──
         pruefe("Calls: ohne Einrichtung keine Tafel und ehrliche /calls-Antwort", C.calls_stand() is None and "nicht eingerichtet" in C.befehl("/calls"))
