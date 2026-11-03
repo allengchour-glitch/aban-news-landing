@@ -87,6 +87,28 @@ class Nav(
         context.startActivity(Intent.createChooser(send, "Teilen über"))
     }
 
+    /** Rückmeldung per Mail, mit Version und Gerät, damit wir sie zuordnen können. */
+    fun feedback() {
+        val body = "\n\n—\nApp ${ch.luxestyle.app.BuildConfig.VERSION_NAME} · Android ${android.os.Build.VERSION.RELEASE} · ${android.os.Build.MODEL}"
+        val mail = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:info@luxestyle.ch"))
+            .putExtra(Intent.EXTRA_SUBJECT, "Feedback zur LuxeStyle-App")
+            .putExtra(Intent.EXTRA_TEXT, body)
+        runCatching { context.startActivity(mail) }.onFailure { toast("Keine Mail-App gefunden – schreib an info@luxestyle.ch") }
+    }
+
+    /** Öffnet die App im Play Store (Bewertung bzw. privates Tester-Feedback). */
+    fun rate() {
+        val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${Links.PACKAGE}"))
+        runCatching { context.startActivity(market) }
+            .onFailure { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Links.PLAY_URL))) }
+    }
+
+    fun shareApp() {
+        val send = Intent(Intent.ACTION_SEND).setType("text/plain")
+            .putExtra(Intent.EXTRA_TEXT, "LuxeStyle – Mode & Schmuck als App: ${Links.PLAY_URL}")
+        context.startActivity(Intent.createChooser(send, "App teilen"))
+    }
+
     fun toast(message: String, action: String? = null, onAction: () -> Unit = {}) = launch {
         val r = snackbar.showSnackbar(message, actionLabel = action, withDismissAction = action == null, duration = SnackbarDuration.Short)
         if (r == SnackbarResult.ActionPerformed) onAction()
@@ -141,7 +163,8 @@ fun LuxeApp(shop: Shop, links: Flow<String>) {
                         shape = Radius.Card,
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onPrimary,
-                        actionColor = MaterialTheme.colorScheme.secondary,
+                        // Weiss statt Gold: Gold auf Dunkel war zu schwach lesbar
+                        actionColor = MaterialTheme.colorScheme.onPrimary,
                         dismissActionContentColor = MaterialTheme.colorScheme.onPrimary,
                     )
                 }

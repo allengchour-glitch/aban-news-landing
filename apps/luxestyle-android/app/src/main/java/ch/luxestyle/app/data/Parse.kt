@@ -44,7 +44,23 @@ object Parse {
             quickVariant = o.o("variants").a("nodes").singleOrNull()?.obj()
                 ?.takeIf { it.b("availableForSale") }?.s("id"),
             collections = o.nodes("collections").mapNotNull { it.s("handle") }.toSet(),
+            rating = rating(o),
         )
+    }
+
+    /**
+     * Judge.me schreibt `reviews.rating` als Rating-JSON ({"value":"4.93","scale_max":"5.0",…})
+     * und `reviews.rating_count` als Zahl. Ohne Bewertung (Anzahl 0) → null.
+     */
+    fun rating(o: JsonObject?): Rating? {
+        val count = o.o("ratingCount").s("value")?.toIntOrNull() ?: return null
+        if (count <= 0) return null
+        val raw = o.o("rating").s("value") ?: return null
+        val obj = runCatching { kotlinx.serialization.json.Json.parseToJsonElement(raw) as? JsonObject }.getOrNull()
+        val value = (obj?.s("value") ?: raw).toDoubleOrNull() ?: return null
+        val max = obj?.s("scale_max")?.toDoubleOrNull() ?: 5.0
+        if (value <= 0 || max <= 0) return null
+        return Rating((value / max * 5.0).coerceIn(0.0, 5.0), count)
     }
 
     fun page(conn: JsonObject?): ProductPage {
@@ -93,6 +109,7 @@ object Parse {
             options = options,
             variants = variants,
             collections = o.nodes("collections").mapNotNull { it.s("handle") },
+            rating = rating(o),
         )
     }
 
