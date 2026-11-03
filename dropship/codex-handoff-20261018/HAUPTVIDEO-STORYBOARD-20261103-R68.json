@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-11-03T17:59:59.444121+00:00",
+  "status": "STORYBOARD_ONLY_NO_MP4_NO_FINAL_APPROVAL",
+  "proposedMasterId": "luxe_website_brand_master_20261103",
+  "isNewWebsiteCreative": true,
+  "existingSocialMasterPreserved": "luxe_sternenprojektor_master_20261018",
+  "basis": "Owner explicitly confirmed purpose: LuxeStyle als Marke zeigen. Product selection, creative details, rights and finished-film approval remain open.",
+  "film": {
+    "durationSeconds": 20,
+    "fps": 30,
+    "totalFrames": 600,
+    "voiceover": false,
+    "textBakedIn": false,
+    "style": [
+      "premium",
+      "clean",
+      "cream",
+      "taupe",
+      "real controlled camera movement"
+    ],
+    "shots": [
+      {
+        "id": "W01",
+        "startFrame": 0,
+        "endFrameExclusive": 120,
+        "time": "00:00–00:04",
+        "title": "Ein Detail zieht den Blick an.",
+        "camera": "Ruhige Makroaufnahme, sehr kurze seitliche Kamerafahrt.",
+        "action": "Ein echtes Detail des ausgewählten Hauptprodukts bleibt im Fokus. Kein Funktionsversprechen.",
+        "lighting": "Grosses weiches Seitenlicht von links; schwarzer Abschatter rechts. Farbe und Oberflächen am Original abgleichen.",
+        "match": "Handlung beginnt vor der Schnittkante im folgenden Take; keine künstliche Verformung oder Fotoanimation.",
+        "sourceStatus": "Originaltake und genaue Produkt-/Variantenbindung fehlen."
+      },
+      {
+        "id": "W02",
+        "startFrame": 120,
+        "endFrameExclusive": 270,
+        "time": "00:04–00:09",
+        "title": "Ein nachvollziehbarer Handgriff.",
+        "camera": "Halbnahe auf derselben cremefarbenen Fläche; gleiche Lichtachse.",
+        "action": "Eine Hand stellt dasselbe reale Objekt behutsam auf den Tisch. Der ganze Griff bleibt erkennbar; kein unsichtbarer Produktwechsel.",
+        "lighting": "Fixierter Weissabgleich und Belichtung; Schattenrichtung aus W01 beibehalten.",
+        "match": "Schnitt auf das Ende der Bewegung. Hand und Produkt dürfen weder unten noch seitlich abgeschnitten werden.",
+        "sourceStatus": "Originaltake, Hand-/Personenfreigabe und Produkteigenschaften noch offen."
+      },
+      {
+        "id": "W03",
+        "startFrame": 270,
+        "endFrameExclusive": 450,
+        "time": "00:09–00:15",
+        "title": "Raum für eine Lieblingsidee.",
+        "camera": "Langsame echte Rückfahrt zur ruhigen Gesamtkomposition.",
+        "action": "Das Hauptprodukt bleibt dasselbe. Ein zweites belegtes LuxeStyle-Objekt darf nur bei passender realer Referenz und Freigabe im Bild erscheinen; sonst bewusst nur ein Produkt.",
+        "lighting": "Cream und Taupe im Umfeld; Produktfarben neutral erhalten. Kein künstliches Glühen, keine hinzugefügte Wirkung.",
+        "match": "Gleiche Bewegungsrichtung und Kamerahöhe wie W02. Kein generischer Lifestyle-Einschub.",
+        "sourceStatus": "Passende reale Szene, konkrete Objektauswahl und Rechte fehlen."
+      },
+      {
+        "id": "W04",
+        "startFrame": 450,
+        "endFrameExclusive": 600,
+        "time": "00:15–00:20",
+        "title": "Ein ruhiger Abschluss.",
+        "camera": "Statische Schlusskomposition mit echter Bewegung nur aus dem vorhandenen Take.",
+        "action": "Das sichtbare Produkt bleibt identisch. Mindestens drei Sekunden stabile Bildfläche für die HTML-Headline und den vorhandenen Kategorie-CTA.",
+        "lighting": "Keine Farb-/Helligkeitsänderung zum vorherigen Take.",
+        "match": "Sauberer Endhalt; Wiederanlauf nur nach Sichtprüfung. Kein erzwungener Morph-Loop oder billige Blende.",
+        "sourceStatus": "Originaltake fehlt; später Posterframe aus genau diesem genehmigten Film ableiten."
+      }
+    ]
+  },
+  "webDelivery": {
+    "website": "https://luxestyle.ch/",
+    "currentThemeObserved": "213013037447",
+    "currentFrameDesktop": {
+      "width": 730.953125,
+      "height": 640,
+      "ratioApprox": "8:7"
+    },
+    "currentFrameMobile": {
+      "width": 358,
+      "height": 472,
+      "ratioApprox": "3:4"
+    },
+    "exportTargets": [
+      {
+        "name": "desktop",
+        "width": 1280,
+        "height": 1120,
+        "fps": 30,
+        "codec": "H.264",
+        "pixelFormat": "yuv420p",
+        "audio": false,
+        "byteBudgetTarget": 5000000
+      },
+      {
+        "name": "mobile",
+        "width": 810,
+        "height": 1080,
+        "fps": 30,
+        "codec": "H.264",
+        "pixelFormat": "yuv420p",
+        "audio": false,
+        "byteBudgetTarget": 3000000
+      }
+    ],
+    "exportNote": "Targets, not measured results. Both exports must derive from the same approved timeline; distinct source hashes do not create new creative. Actual crop reviewed shot by shot; no automatic upscale of the current518x720 old film. For meaningful product detail use adequate original resolution.",
+    "poster": "Derive a still from approved final master; matching composition, dimensions, colour. No placeholder product photo as film.",
+    "playback": [
+      "Muted inline playback only; no audible autoplay.",
+      "Existing reduced-motion preference keeps a stable poster and explicit play button.",
+      "User can pause at all times; manual pause persists while on this page.",
+      "Hidden tab and offscreen pause; respect Save-Data when exposed.",
+      "Source chosen before load for actual viewport. No parallel loading of desktop/mobile files.",
+      "Preload none for the film; hero poster eager/high priority; fixed ratio prevents layout shift.",
+      "Failure keeps readable poster/HTML CTA; no empty black panel."
+    ],
+    "sound": "Website background exports silent. Optional deliberate user-started full film may use only automation/music/luxe-premium.wav after current rights/file/hearing review. No voiceover or substitute music.",
+    "copy": {
+      "retainedHeadline": "Schön leben. Schlau shoppen.",
+      "eyebrow": "Schönes für deinen Alltag",
+      "cta": "Alle Kategorien",
+      "ctaObservedHref": "https://luxestyle.ch/pages/alle-kategorien",
+      "copyLocation": "Accessible current HTML outside video; no extra customer promise."
+    }
+  },
+  "gates": [
+    "Exact current product/variant, genuine images and non-empty current tags before product assignment.",
+    "Actual original footage and commercial advertising/editing rights, plus model/property releases where needed.",
+    "Physical scene is photographed, not invented from unverified AI actions.",
+    "At least native1080 detail quality with planned crops; output30fps does not prove smooth motion from poor source cadence.",
+    "Real shape, colour, logo, function and continuous action checked frame by frame at transitions.",
+    "Two website crops, text contrast, pause/reduced-motion/fallback and network budget reviewed on real delivered files.",
+    "Owner creative/quality review before live integration. No current theme write or publish."
+  ],
+  "unknowns": [
+    "Concrete product selection",
+    "Rights-bound film source",
+    "Matching final composition",
+    "Commercial music right and mix acceptance if a sound-on version is requested",
+    "Final encoded files and measured performance"
+  ],
+  "purposeApproval": {
+    "source": "Owner answer in current R68 task",
+    "answer": "LuxeStyle als Marke zeigen",
+    "scope": "Website brand-film purpose only; not product, rights, final creative or publication acceptance"
+  }
+}
