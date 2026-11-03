@@ -809,6 +809,9 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 | R70 Startseitenaufbau | Zwei aktuelle Homepageansichten, eine Firecrawl-Aufnahme und CSS geprüft; konkrete neue Reihenfolge vorbereitet | 25 Karten vorhanden, Produktbeginn erst2705/2708px; kompaktere Kategorien und frühere Produkte vorgeschlagen, keine Themeänderung oder neuen Reports |
 | R71 Stöbern im ganzen Sortiment | Neue Inhaberpräzisierung übernommen und Startseitenentwurf angepasst | Alle16Bereiche kompakt erreichbar, frühe gemischte Produkte und wechselnde Themen; Sechs-Kategorien-Vorschlag überholt, keine Websiteumsetzung oder neuen Reports |
 | R72 Stöber-Startseite / Push | Zwei aktuelle MAIN-Dateien eng umgebaut, nativ im bestehenden Entwurf gespeichert und exakt zurückgelesen; 320/390/1440-Vorschau geprüft, 320-Wortumbruch korrigiert | 16 Kategorien, 25 Produkte und Herzen erhalten; erste Produkte mobil rund 1114 px früher. Konkreter Patch, Hashes und QA für GitHub-Übergabe; MAIN unverändert, kein Publish, Claude-Empfang unbekannt |
+| R73 Kategorieprüfung | 16 Haupteinstiege, aktuelle Menüs/Quellen und 17 vorhandene Ziele begrenzt geprüft | Vorhandene Unterbereiche weiterverwendet; begrenzte Stichprobe |
+| R73 Hundewelt | Genau die Hundert-Zahlen-Tafel aus der bestehenden Hundeweltquelle ausgeschlossen und frisch zurückgelesen | Live bestätigt: Hundewelt=false, Lernspielzeug=true; Einschlussbedingungen und Produktfelder erhalten |
+| R73 Erster Kategorieentwurf | Zehn Dateien im unveröffentlichten Theme geschrieben und bytegenau zurückgelesen | Zwischenstand; Inhaberpräzisierungen und endgültige Ergänzung im 04.11.-Block. Kein MAIN-Publish |
 
 [LUXESTYLE_LAUF_20261103] [Paket](LAUFPAKET-20261103-R64.md) · [Belege](LAUFBELEGE-20261103-R64.json) · [Master](MASTER-CONTENT-20261103-R64.md). Tagesreports abgeschlossen; spätere bestehende Läufe lesen sie ohne konkreten neuen Anlass nicht erneut.
 
@@ -827,3 +830,17 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 [LUXESTYLE_R71_20261103] [Startseite zum Stöbern](STOEBER-STARTSEITE-20261103-R71.md). Neue Aufbaupräzisierung des Inhabers dokumentiert; historische R70-Messung nicht als neu ausgegeben.
 
 [LUXESTYLE_R72_20261103] [Konkreter Stöber-Layoutpatch und native Entwurfsprüfung](STARTSEITE-STOEBERN-20261103-R72.md). Kein Live-Publish; ältere Initialprüfungen und Rechte-/Freigabegrenzen erhalten.
+
+## 04.11.2026
+
+Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zurich. Kein zusätzlicher geplanter Lauf und keine Frequenzänderung.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| R73 Inhaberpräzisierung | Banner-Neugestaltung zurückgenommen; bisherigen Stil erhalten, endgültigen Umfang auf gezielte Ergänzungen und Fehlerbehebung begrenzt | Bestehendes Banner, HTML/CSS und relative Reihenfolge erhalten; frühere lokale Redesignpakete überholt und nicht gepusht |
+| R73 Kategoriebedienung | Menüauswahl korrigiert, geschlossenen Zusatzbereich für fehlende Ziele und Suche ergänzt; neun finale Dateien nativ bestätigt | Damen-Schuhe: 13 eigene Bereiche; keine doppelten Zusatzlinks. Native Prüfung mit erklärter Hundewelt-Bildänderung; Design nicht live |
+| R73 Sortimentstichprobe | Bereits gespeicherte 180 Produktkarten aus 15 Standardkategorien plus Selbstgestalten-Sonderansicht eingeordnet | Einziger klarer Fehler Hunderttafel bereits behoben; unklare Titel nicht blind verschoben, kein Vollscan |
+| R73 Schutzgrenze | Löschung des eigenen unbenutzten Header-Snippets angefragt | Connector blockiert Theme-Dateilöschung; kein Retry oder Umgehung, Datei unreferenziert und nicht im Transferpaket |
+| R73 Übergabe/Gedächtnis | Finalen engen Patch vorwärts/rückwärts geprüft, GitHub-Paket und Revision 73 fortgeschrieben | MAIN unverändert; 23 IDs, 21 andere Aufgaben und Historien erhalten. Claude-Empfang unbekannt; keine neuen Reports, Kauf-Watch oder Automation |
+
+[LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
