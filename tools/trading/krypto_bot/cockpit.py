@@ -184,6 +184,7 @@ AKTIONEN = {
     "backtest": (["pilot.py", "--backtest"], 600, "Backtest rechnen"),
     "selbsttest": ([], 900, "Selbsttest"),
     "aufgabe": ([], 60, "Täglich automatisch einrichten"),
+    "heilen": ([], 1500, "Alles prüfen und reparieren"),
     "update": ([], 180, "Update holen"),
     "bericht": ([], 120, "Wochenbericht aufs Handy"),
     "auto_an": ([], 10, "Auto-Handel an"),
@@ -364,6 +365,71 @@ def aufgabe_da(befehl=None, name=None):
     return ok
 
 
+HEIL_HINWEISE = {
+    "Futures-Schlüssel (Pilot)": "Testnetz-Schlüssel anlegen, setx BINANCE_FUTURES_API_KEY und BINANCE_FUTURES_API_SECRET, neues Fenster (siehe LIES-MICH).",
+    "Claude (KI-Trader)": "optional: neuen Schlüssel auf console.anthropic.com anlegen, setx ANTHROPIC_API_KEY, neues Fenster.",
+    "Letzter Lauf mit Aufträgen": "der Grund steht in dieser Zeile; der nächste Lauf gleicht die Position selbst wieder an.",
+    "Letzter Pilot-Lauf": "läuft der tägliche Start? In der Windows-Aufgabenplanung «Krypto-Pilot» das letzte Ausführungsergebnis ansehen.",
+    "Telegram-Calls mitlesen": "optional, kann ignoriert werden.",
+    "Risiko-Stufe": "im Block «Risiko-Stufe (Hebel)» auf 1× oder 1,75× stellen.",
+}
+
+
+def _punkte_jetzt():
+    """Die Gesundheits-Ampel aus den frischen Dateien, wie das Cockpit sie zeigt."""
+    return gesundheit(umgebung(), _json("krypto-pilot.json", {"entscheide": [], "kontostand": []}),
+                      _json("ki-trader.json", {"entscheide": []}))
+
+
+def selbstheilung(starter=None, befehl=None, punkte_lesen=None):
+    """«Alles prüfen und reparieren»: heilt NUR, was ohne Handel und ohne Geld heilbar ist: fehlende Windows-Aufgaben anlegen
+    (nur bei Auto-Handel AN), veraltete Markt-Infos auffrischen, dazu ein Prüflauf ohne Aufträge, der die ganze Kette testet
+    (Schlüssel, Börse, Entscheid). NIE: Aufträge senden, Risiko-Stufe ändern, Schlüssel anfassen, Auto-Handel ein- oder ausschalten.
+    Was sich so nicht heilen lässt, steht danach mit einer Anweisung da. → (ok, Text); ok, wenn jeder versuchte Schritt gelang."""
+    starter = starter or _skript
+    punkte_lesen = punkte_lesen or _punkte_jetzt
+    vor = {x["name"]: x for x in punkte_lesen()}
+    rot_vor = [n for n, x in vor.items() if x["ok"] is False]
+    z = ["🩹 Prüfung und Reparatur (sendet keine Aufträge). Vorher rot: " + (", ".join(rot_vor) if rot_vor else "nichts") + "."]
+    ok_alles = True
+    # 1) fehlende Windows-Aufgaben (nur wenn sie wirklich FEHLEN; «läuft nicht» ist etwas anderes und bleibt als Hinweis stehen)
+    fehlt = [n for n in ("Täglicher Start (Aufgabenplanung)", "Nachkontrolle (Aufgabenplanung)")
+             if vor.get(n, {}).get("ok") is False and "fehlt" in str(vor[n].get("text", ""))]
+    if fehlt:
+        if notaus_env_aktiv() or PAUSE.exists():
+            z.append("⏸ Aufgaben NICHT angelegt: Auto-Handel ist aus (Not-Aus oder Pause). Erst einschalten, dann nochmals.")
+        elif os.name != "nt" and befehl is None:
+            z.append("ℹ️ Die Aufgabenplanung gibt es nur unter Windows (Linux/Mac: crontab).")
+        else:
+            ok, text = aufgabe_einrichten(befehl)
+            _AUFGABE_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen
+            grund = next((l.strip() for l in text.splitlines() if l.strip() and "fehlgeschlagen" not in l), "")
+            z.append("✅ Aufgabenplanung eingerichtet: täglicher Start und Nachkontrolle." if ok
+                     else "❌ Aufgabenplanung: Einrichten fehlgeschlagen" + (f" — {grund[:200]}" if grund else ""))
+            ok_alles = ok_alles and ok
+    # 2) veraltete Markt-Infos (öffentliche Daten, ohne Schlüssel)
+    if vor.get("Markt-Infos", {}).get("ok") is False:
+        ok, text = starter(["infos.py"], 600)
+        z.append("✅ Markt-Infos aufgefrischt." if ok else "❌ Markt-Infos: " + (text.strip().splitlines() or ["?"])[-1][:200])
+        ok_alles = ok_alles and ok
+    # 3) Prüflauf ohne Aufträge: testet Schlüssel, Börse und Entscheid in einem
+    ok, text = starter(["pilot.py", "--lauf", "--trocken"], 300)
+    letzte = (text.strip().splitlines() or ["keine Ausgabe"])[-1][:200]
+    z.append(("✅ Prüflauf ohne Aufträge ok: " if ok else "❌ Prüflauf ohne Aufträge FEHLGESCHLAGEN: ") + letzte)
+    ok_alles = ok_alles and ok
+    # Danach: was bleibt, mit Anweisung
+    nach = punkte_lesen()
+    rest = [x for x in nach if x["ok"] is False or x.get("warnung")]
+    if rest:
+        z.append("Danach noch offen:")
+        for x in rest:
+            z.append(f" {'✗' if x['ok'] is False else '⚠'} {x['name']}: {x['text']}"
+                     + (f"  → {HEIL_HINWEISE[x['name']]}" if x["name"] in HEIL_HINWEISE else ""))
+    else:
+        z.append("Danach: alles in Ordnung.")
+    return ok_alles, "\n".join(z)
+
+
 def aktion(name, starter=None, befehl=None):
     """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter: für Tests."""
     if name not in AKTIONEN:
@@ -410,6 +476,8 @@ def aktion(name, starter=None, befehl=None):
             else:
                 ok, text = aufgabe_einrichten(befehl)
                 _AUFGABE_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen, nicht erst nach 5 Minuten
+        elif name == "heilen":
+            ok, text = selbstheilung(starter=starter, befehl=befehl)
         elif name == "update":
             # Die Bots schreiben eingecheckte Kursdateien (tools/trading/daten) bei jedem Lauf neu; als «lokale Änderung»
             # würden sie git pull blockieren. Es sind nur Zwischenspeicher — der nächste Lauf lädt sie frisch.
@@ -652,6 +720,18 @@ def gesundheit(env, lb, ki, heute=None):
 
     p("Futures-Schlüssel (Pilot)", bool(env.get("BINANCE_FUTURES_API_KEY") and env.get("BINANCE_FUTURES_API_SECRET")),
       "gesetzt" if env.get("BINANCE_FUTURES_API_KEY") else "fehlt — ohne Schlüssel nur Probeläufe")
+    import pilot_kern as _K
+    stufe = _K.risiko(env if env.get("KRYPTO_RISIKO") else None)["stufe"]
+    echt_f = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
+    sl = f"{stufe:g}".replace(".", ",") + "×"
+    if stufe <= 1.0:
+        p("Risiko-Stufe", True, f"{sl} (Standard)")
+    elif stufe <= 1.75:
+        p("Risiko-Stufe", None, f"{sl}: mehr Rendite, aber tiefere Einbrüche — im Rückblick bis zu −53 % (1,75×)")
+    elif echt_f:
+        p("Risiko-Stufe", False, f"{sl} mit ECHTEM GELD: der Test mit Zufallsjahren bestand 2× nicht (8 % der Jahre tiefer als −60 %) — auf höchstens 1,75× stellen")
+    else:
+        p("Risiko-Stufe", None, f"{sl}: bestand den Test nicht (8 % der Zufallsjahre tiefer als −60 %) — im Testnetz erlaubt, für echtes Geld nicht empfohlen", warnung=True)
     if env.get("ETH_SPARPLAN_BETRAG"):
         p("ETH-Sparplan", bool(env.get("BINANCE_API_KEY")), f"an: {env['ETH_SPARPLAN_BETRAG']} USDT" if env.get("BINANCE_API_KEY")
           else "eingeschaltet, aber BINANCE_API_KEY (Spot) fehlt")

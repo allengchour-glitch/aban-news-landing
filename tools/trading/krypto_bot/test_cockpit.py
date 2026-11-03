@@ -794,6 +794,95 @@ with tempfile.TemporaryDirectory() as tmp:
             _bp.unlink(missing_ok=True)
         gn = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
         pruefe("Gesundheit: ohne Broker-Protokoll bleibt der Text wie bisher", "Grund:" not in gn["text"] and gn["ok"] is False, gn)
+        # ── Selbstheilung: «Alles prüfen und reparieren» heilt nur Heilbares und sendet nie Aufträge ──
+        def _pkt(name, ok, text, **kw):
+            return {"name": name, "ok": ok, "text": text, **kw}
+        _vor = [_pkt("Täglicher Start (Aufgabenplanung)", False, "fehlt — Knopf «Täglich automatisch einrichten»"),
+                _pkt("Nachkontrolle (Aufgabenplanung)", False, "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an"),
+                _pkt("Markt-Infos", False, "vor 80 Std. geladen — Knopf «Markt-Infos»"),
+                _pkt("Claude (KI-Trader)", False, "noch keine Einschätzung"),
+                _pkt("Risiko-Stufe", None, "2× bestand den Test nicht", warnung=True)]
+        _nach = [_pkt("Täglicher Start (Aufgabenplanung)", True, "eingerichtet (02:30)"), _pkt("Nachkontrolle (Aufgabenplanung)", True, "eingerichtet"),
+                 _pkt("Markt-Infos", True, "vor 0 Std. geladen"), _pkt("Claude (KI-Trader)", False, "noch keine Einschätzung"),
+                 _pkt("Risiko-Stufe", None, "2× bestand den Test nicht", warnung=True)]
+
+        def _reihe(*listen):
+            it = iter(listen)
+            return lambda: next(it)
+        _starts, _cmds = [], []
+
+        def _starter(args, zeit):
+            _starts.append(list(args))
+            return True, "Futures: Position liegt im Zielbereich — keine Aufträge."
+
+        def _bef(c, z):
+            _cmds.append(list(c))
+            return True, "ERFOLGREICH"
+        _alt_pause, _alt_stop = C.PAUSE, C.STOP
+        C.PAUSE, C.STOP = Path(tmp) / "PAUSE-nicht-da", Path(tmp) / "STOP-nicht-da"
+        try:
+            ok_h, t_h = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_vor, _nach))
+            pruefe("Selbstheilung: fehlende Aufgaben werden angelegt (schtasks /create), Ergebnis ok",
+                   ok_h is True and "Aufgabenplanung eingerichtet" in t_h and any(c[:2] == ["schtasks", "/create"] for c in _cmds), (ok_h, t_h, _cmds))
+            pruefe("Selbstheilung: veraltete Markt-Infos werden aufgefrischt, der Prüflauf läuft nur als --trocken",
+                   ["infos.py"] in _starts and ["pilot.py", "--lauf", "--trocken"] in _starts, _starts)
+            pruefe("Selbstheilung sendet NIE Aufträge: kein Lauf ohne --trocken, kein KI-Trader, kein Sparplan",
+                   all(a == ["infos.py"] or "--trocken" in a for a in _starts)
+                   and not any(a[0] in ("ki_trader.py", "eth_sammler.py", "handeln") for a in _starts), _starts)
+            pruefe("Selbstheilung: was bleibt, steht mit Anweisung da (Claude-Schlüssel, Risiko-Stufe als Warnung)",
+                   "Danach noch offen:" in t_h and "✗ Claude (KI-Trader)" in t_h and "console.anthropic.com" in t_h
+                   and "⚠ Risiko-Stufe" in t_h and "höchstens" not in t_h.split("Danach noch offen:")[0], t_h)
+            # Auto-Handel aus (Pause): Aufgaben NICHT anlegen
+            _cmds.clear()
+            C.PAUSE.write_text("", encoding="utf-8")
+            ok_p, t_p = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_vor, _vor))
+            pruefe("Selbstheilung bei Auto-Handel AUS: legt keine Aufgaben an und sagt warum",
+                   not _cmds and "NICHT angelegt" in t_p and "Auto-Handel ist aus" in t_p, (t_p, _cmds))
+            C.PAUSE.unlink()
+            # Einrichten scheitert: ❌ und ok False
+            ok_f, t_f = C.selbstheilung(starter=_starter, befehl=lambda c, z: (False, "Zugriff verweigert"), punkte_lesen=_reihe(_vor, _vor))
+            pruefe("Selbstheilung: scheitert das Einrichten, steht ❌ da und das Ergebnis ist nicht ok",
+                   ok_f is False and "❌ Aufgabenplanung" in t_f and "Zugriff verweigert" in t_f, (ok_f, t_f))
+            # «läuft nicht» ist nicht «fehlt»: nichts neu anlegen, nur melden
+            _cmds.clear()
+            _lauft_nicht = [_pkt("Täglicher Start (Aufgabenplanung)", True, "eingerichtet (02:30)"),
+                            _pkt("Nachkontrolle (Aufgabenplanung)", False, "eingerichtet, aber seit 45 Min. kein Lauf — läuft der unsichtbare Starter nicht?")]
+            _o, _t = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_lauft_nicht, _lauft_nicht))
+            pruefe("Selbstheilung legt nichts neu an, wenn die Aufgabe da ist und nur nicht läuft (bleibt als Hinweis stehen)",
+                   not _cmds and "Nachkontrolle (Aufgabenplanung): eingerichtet, aber seit 45 Min." in _t, (_cmds, _t))
+            # Prüflauf scheitert: ❌ mit letzter Zeile
+            ok_l, t_l = C.selbstheilung(starter=lambda a, z: (False, "x\nBinance antwortet HTTP 401"), befehl=_bef,
+                                        punkte_lesen=_reihe(_nach, _nach))
+            pruefe("Selbstheilung: scheitert der Prüflauf, wird das laut gemeldet (kein stilles «alles gut»)",
+                   ok_l is False and "FEHLGESCHLAGEN" in t_l and "HTTP 401" in t_l, (ok_l, t_l))
+            # Alles gesund: nichts anfassen ausser dem Prüflauf
+            _starts.clear(); _cmds.clear()
+            ok_g, t_g = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe([_nach[0], _nach[1], _nach[2]], [_nach[0], _nach[1], _nach[2]]))
+            pruefe("Selbstheilung bei gesundem System: keine Aufgabe, keine Markt-Infos, nur der Prüflauf, «alles in Ordnung»",
+                   not _cmds and _starts == [["pilot.py", "--lauf", "--trocken"]] and "alles in Ordnung" in t_g, (_cmds, _starts, t_g))
+            # Der Knopf (aktion) liefert das Protokoll mit Titel und Ergebnis
+            e_h = C.aktion("heilen", starter=_starter, befehl=_bef)
+            pruefe("Aktion «heilen»: Protokolleintrag mit Titel und Text", e_h["titel"] == "Alles prüfen und reparieren" and "Prüfung und Reparatur" in e_h["text"], e_h)
+        finally:
+            C.PAUSE, C.STOP = _alt_pause, _alt_stop
+            (Path(tmp) / "PAUSE-nicht-da").unlink(missing_ok=True)
+        # ── Gesundheit: Risiko-Stufe ──
+        import pilot_kern as _K
+        _alt_einst = _K.EINSTELLUNGEN
+        _K.EINSTELLUNGEN = Path(tmp) / "krypto-einstellungen-test.json"
+        try:
+            def _stufe(wert, env=None):
+                _K.EINSTELLUNGEN.write_text(json.dumps({"risiko": wert}), encoding="utf-8")
+                return {x["name"]: x for x in C.gesundheit(env or {}, {"entscheide": []}, {}, heute2)}["Risiko-Stufe"]
+            _echt = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"}
+            s1, s175, s2, s2e = _stufe(1.0), _stufe(1.75), _stufe(2.0), _stufe(2.0, _echt)
+            pruefe("Risiko-Stufe 1×: grün", s1["ok"] is True and "Standard" in s1["text"], s1)
+            pruefe("Risiko-Stufe 1,75×: Info ohne Warnung (grau)", s175["ok"] is None and not s175.get("warnung") and "1,75×" in s175["text"], s175)
+            pruefe("Risiko-Stufe 2× im Testnetz: graue WARNUNG (zählt mit), Test nicht bestanden",
+                   s2["ok"] is None and s2.get("warnung") is True and "bestand den Test nicht" in s2["text"], s2)
+            pruefe("Risiko-Stufe 2× mit ECHTEM GELD: rot", s2e["ok"] is False and "ECHTEM GELD" in s2e["text"], s2e)
+        finally:
+            _K.EINSTELLUNGEN = _alt_einst
         import meldung as M
         alt_datei = M.DATEI
         M.DATEI = Path(tmp) / "krypto-auto-status.json"
