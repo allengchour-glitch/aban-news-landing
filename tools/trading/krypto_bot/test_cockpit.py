@@ -149,6 +149,8 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Cockpit: Konto seit Start −0,25 %, unter Hoch −5 %", abs(s["konto"]["seit_start"] + 0.0025) < 1e-12
                and abs(s["konto"]["unter_hoch"] + 0.05) < 1e-12, s["konto"])
         pruefe("Cockpit: nur Futures-Aufträge", len(s["auftraege"]) == 2 and s["auftraege"][0]["symbol"] == "BTCUSDT")
+        pruefe("Cockpit-Stand trägt die Programmversion (geladen und auf der Platte) für den Hinweis «neue Version installiert»",
+               set(s.get("programm", {})) == {"geladen", "auf_platte"} and s["programm"]["geladen"] == C.VERSION_GELADEN, s.get("programm"))
         pruefe("abgelehnter Auftrag ist als Fehler markiert (Live-Chart zeigt dafür keinen «Bot kauft»-Pfeil)",
                [a_["fehler"] for a_ in s["auftraege"]] == [False, True] and "!a.fehler" in (HIER / "markt.html").read_text(encoding="utf-8"))
         pruefe("Cockpit: Testnetz-Anzeige ohne doppelte Freigabe", s["modus"] == "TESTNETZ"
@@ -1090,6 +1092,10 @@ with _tf.TemporaryDirectory() as _td_a:
         pruefe("selbstheilung(mit_probelauf=False): kein Prüflauf des Piloten, kein Prüflauf-Satz im Bericht", ["pilot.py", "--lauf", "--trocken"] not in _s_auto and "Prüflauf" not in t_m and ok_m, (_s_auto, t_m))
         ok_m, t_m = C.selbstheilung(starter=_st_auto, befehl=lambda c, z: (True, "ok"), punkte_lesen=lambda: [])
         pruefe("selbstheilung (Standard): der Prüflauf ohne Aufträge läuft weiterhin", ["pilot.py", "--lauf", "--trocken"] in _s_auto and "Prüflauf ohne Aufträge ok" in t_m)
+        _s_auto.clear()
+        e_ha = C.aktion("heilen_auto", starter=_st_auto, befehl=lambda c, z: (True, "ok"))
+        pruefe("Aktion «heilen_auto»: eigener Titel, und der Prüflauf des Piloten läuft dabei NICHT (der Tageslauf war der Test)",
+               e_ha["titel"].startswith("Automatische Prüfung") and ["pilot.py", "--lauf", "--trocken"] not in _s_auto and "Prüflauf" not in e_ha["text"], (e_ha["titel"], _s_auto, e_ha["text"][:200]))
         e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "eingespielt", "text": "✅ Programm aktualisiert: a → b"})
         pruefe("Update-Knopf (Paket): neue Version → Hinweis, das Cockpit-Fenster neu zu starten", e_u["ok"] and "neu starten" in e_u["text"] and "aktualisiert" in e_u["text"], e_u)
         e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "aktuell", "text": "Version a ist die neueste"})
@@ -1123,6 +1129,38 @@ with _tf.TemporaryDirectory() as _td_a:
         pruefe("Gesundheit: frisch geprüftes Update ist grün und nennt die Programmversion", pk["Programm-Update (automatisch)"]["ok"] is True and "2026-11-04.abc1234" in pk["Programm-Update (automatisch)"]["text"], pk["Programm-Update (automatisch)"])
     finally:
         C.DATA, C.PAUSE, C.STOP, C.ROOT = _alt_a
+# Robustheit: ein Fehler oder Fehlen der Update-Module legt das Cockpit nie lahm
+_alt_au, _alt_pf = C.AU, C.PF
+try:
+    C.AU = C.PF = None
+    _pk_ohne = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+    pruefe("Gesundheit ohne Update-Module: kein Absturz, die beiden Punkte fehlen einfach", isinstance(_pk_ohne, list) and not any("automatisch" in x["name"] for x in _pk_ohne))
+    pruefe("programm_version ohne Update-Modul: leer statt Absturz", C.programm_version() == "")
+
+    class _KaputtLesen:
+        @staticmethod
+        def lokale_version(*a, **k):
+            raise OSError("Platte weg")
+    C.AU = _KaputtLesen
+    pruefe("programm_version: wirft das Lesen, kommt leer zurück statt eines Absturzes", C.programm_version() == "")
+
+    class _KaputtAU:
+        @staticmethod
+        def ampel(*a, **k):
+            raise RuntimeError("boom")
+    C.AU = _KaputtAU
+    _pk_kaputt = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+    pruefe("Gesundheit: wirft die Update-Ampel, bleibt der Rest der Liste erhalten", isinstance(_pk_kaputt, list) and any(x["name"] == "Not-Aus" for x in _pk_kaputt))
+finally:
+    C.AU, C.PF = _alt_au, _alt_pf
+_alt_d = C.DATA
+try:
+    C.DATA = Path(tempfile.gettempdir()) / "krypto-test-xyz" / "data"
+    pruefe("_wurzel: liegt DATA in einem Ordner «data», ist die Wurzel dessen Elternordner", C._wurzel() == C.DATA.parent)
+    C.DATA = Path(tempfile.gettempdir()) / "krypto-test-xyz-anders"
+    pruefe("_wurzel: liegt DATA anderswo (Tests), zeigt die Wurzel in einen Ordner ohne Update-Dateien", C._wurzel().parent == C.DATA and C._wurzel() != C.DATA.parent)
+finally:
+    C.DATA = _alt_d
 _runden, _rufe, _schlaf = [], [], []
 C.pflege_beim_start(warte=3.0, stunden=2.0, runden=3, schlafen=_schlaf.append, ausfuehren=lambda: _rufe.append(1))
 pruefe("pflege_beim_start: wartet kurz, prüft, schläft dann Stunden — drei Runden", _rufe == [1, 1, 1] and _schlaf == [3.0, 7200.0, 7200.0], (_rufe, _schlaf))

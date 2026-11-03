@@ -58,6 +58,7 @@ Vorher musste der User ein ZIP entpacken, «Täglich automatisch» und «Alles p
 10. Das Release-Telegram nennt, ob Handels- oder Schutzdateien (`pilot*.py`, `broker_*.py`, `sperre.py`, `*.bat`) gegenüber dem letzten Paket geändert sind (nur Hinweis, keine Sperre).
 11. `autoupdate.py --erholen` ganz vorn in `krypto-auto.bat`: heute heilt ein Absturz mitten im Tausch erst am Ende des nächsten Tageslaufs (der Selbsttest am Anfang würde den halben Stand sehen und den Handel für diesen Tag auslassen). Gelb, weil es die Start-Datei des Piloten berührt.
 12. Handy-Alarm ohne Zutun: Anleitung für ntfy direkt in der Ampel (Backlog 5), damit die Meldungen von «Pflege» den User sicher erreichen.
+13. Ampel-Warnung, wenn die Windows-Aufgabe «Krypto-Pilot» auf einen ANDEREN Ordner zeigt als den, in dem das Cockpit läuft (zweite Kopie nach dem Entpacken: die Aufgabe liefe dann weiter mit der alten, nicht aktualisierten Kopie). Nur Warnung, nichts umbiegen.
 
 ## Was nicht automatisch geht
 - Die Cloud sieht den PC nicht (kein Zugriff, keine Schlüssel). Ob ein Update dort ankam, steht nur in der Ampel und im Handy-Alarm des PCs. Mit echtem Geld macht der Auto-Update nichts: dort bleibt jede Änderung ein Klick des Users. (Bis 03.11.2026 galt das für alle Fälle; der User hat es für Spielgeld ausdrücklich anders gewollt.)
