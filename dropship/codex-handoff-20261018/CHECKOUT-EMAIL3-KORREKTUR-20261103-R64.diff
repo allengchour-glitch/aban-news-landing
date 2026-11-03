@@ -1,0 +1,29 @@
+--- Vse76a/WNFHjV/current-definition
++++ Vse76a/WNFHjV/subject-proposal-not-applied
+@@ -4,7 +4,7 @@
+   "reply_to_email": null,
+   "cc_email": null,
+   "bcc_email": null,
+-  "subject_line": "Email #3 Subject",
++  "subject_line": "Möchtest du deine Bestellung fortsetzen?",
+   "preview_text": "",
+   "template_id": "WaQaDv",
+   "smart_sending_enabled": true,
+
+--- WaQaDv/current-html
++++ WaQaDv/neutral-content-proposal-not-applied
+@@ -12,11 +12,11 @@
+ <tr>
+ <td style="padding:34px;">
+ <h1 style="font-size:23px;font-weight:400;margin:0 0 14px;">
+-                  Letzte Chance – fast ausverkauft
++                  Dein Einkauf bei LuxeStyle
+                 </h1>
+ <p style="font-size:15px;line-height:1.6;color:#5a5a5a;margin:0 0 18px;">
+-                  Hey {{ first_name|default:'' }},<br/><br/>deine Lieblingsstücke sind sehr gefragt und fast vergriffen. Dein 10 % Code
+-                  <strong>WELCOME10</strong> gilt nur noch heute!
++                  Hey {{ first_name|default:'' }},<br/><br/>du kannst deinen begonnenen Einkauf im Checkout ansehen und fortsetzen. Falls du den Code
++                  <strong>WELCOME10</strong> verwenden möchtest, prüfe die dort angezeigten Bedingungen.
+                 </p>
+ <table cellpadding="0" cellspacing="0" style="margin:0 0 24px;border:1px solid #ece6dc;border-radius:8px;overflow:hidden;" width="100%">
+                   {% for item in event.extra.line_items %}
