@@ -218,6 +218,7 @@ jobs:
           node automation/lib/fakten_block_test.mjs
           node automation/lib/text_prosa_test.mjs
           node automation/lib/bewertung_rang_test.mjs
+          node automation/lib/verfuegbar_rang_test.mjs
           node automation/lib/option_umbenennen_test.mjs
           node automation/lib/cj_varianten_test.mjs
           node automation/lib/cj_token_test.mjs

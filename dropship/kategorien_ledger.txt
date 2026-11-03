@@ -9792,3 +9792,13 @@
 2026-11-02T15:46:21.145Z · bewertung-zuerst kunstblumen-kraenze-girlanden 2
 2026-11-02T15:46:21.995Z · bewertung-zuerst party-zubehoer-effekte 1
 2026-11-02T15:46:23.533Z · bewertung-zuerst retro-vintage 46
+2026-11-03T00:19:25.490Z · verfuegbar-zuerst kostueme-fasnacht vorher=CREATED_DESC verfuegbar=956 uebrige=851 (Erstlauf FEHLERHAFT: Ware ohne Bestandsführung als ausverkauft gezählt; 00:2x zurück auf CREATED_DESC, danach neu)
+2026-11-03T00:19:51.544Z · verfuegbar-zuerst ft-kostuem-hut vorher=CREATED_DESC verfuegbar=106 uebrige=61 (Erstlauf FEHLERHAFT: Ware ohne Bestandsführung als ausverkauft gezählt; 00:2x zurück auf CREATED_DESC, danach neu)
+2026-11-03T00:20:02.653Z · verfuegbar-zuerst ft-kostuem-accessoire vorher=CREATED_DESC verfuegbar=144 uebrige=153 (Erstlauf FEHLERHAFT: Ware ohne Bestandsführung als ausverkauft gezählt; 00:2x zurück auf CREATED_DESC, danach neu)
+2026-11-03T00:20:13.832Z · verfuegbar-zuerst spielzeug-ch-lager vorher=CREATED_DESC verfuegbar=425 uebrige=43 (Erstlauf FEHLERHAFT: Ware ohne Bestandsführung als ausverkauft gezählt; 00:2x zurück auf CREATED_DESC, danach neu)
+2026-11-03T00:23:38.651Z · verfuegbar-zuerst kostueme-fasnacht vorher=CREATED_DESC verfuegbar=961 uebrige=846
+2026-11-03T00:24:04.879Z · verfuegbar-zuerst ft-kostuem-hut vorher=CREATED_DESC verfuegbar=106 uebrige=61
+2026-11-03T00:24:16.312Z · verfuegbar-zuerst ft-kostuem-accessoire vorher=CREATED_DESC verfuegbar=144 uebrige=153
+2026-11-03T00:24:28.031Z · verfuegbar-zuerst spielzeug-ch-lager vorher=CREATED_DESC verfuegbar=425 uebrige=43
+2026-11-03T00:29:02.517Z · verfuegbar-zuerst herren-jacken-jeans vorher=BEST_SELLING verfuegbar=35 uebrige=18
+2026-11-03T00:29:13.406Z · verfuegbar-zuerst pool-sonnenschutz-gartenmoebel vorher=BEST_SELLING verfuegbar=24 uebrige=4
