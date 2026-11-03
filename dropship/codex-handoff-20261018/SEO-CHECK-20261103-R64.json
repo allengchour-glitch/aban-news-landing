@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "checkedAtUtc": "2026-11-03T07:07:49.647345+00:00",
+  "scope": "Exactly three existing collection landing pages, one current MAIN file, no crawler or source analytics.",
+  "pages": [
+    {
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "statusCode": 200,
+      "scrapeId": "01a1a035-87c2-72fa-8745-3bf3b3fc9160",
+      "rootTitle": [
+        "Elektronik & Technik kaufen | LuxeStyle Schweiz"
+      ],
+      "rootCanonical": [
+        "https://luxestyle.ch/collections/elektronik-technik"
+      ],
+      "rootDescription": [
+        "Elektronik & Technik bei LuxeStyle Schweiz: Fernbedienungen, Audio- und Ladezubehör entdecken. Anschlüsse und Kompatibilität direkt am Artikel prüfen."
+      ],
+      "rootRobotsMeta": [],
+      "rootH1": [
+        "Elektronik & Technik"
+      ],
+      "mainCollectionLinkCount": 66,
+      "scopeLinks": {
+        "https://luxestyle.ch/collections/elektronik-technik": true,
+        "https://luxestyle.ch/collections/handy-zubehoer": true,
+        "https://luxestyle.ch/collections/powerbanks": false
+      },
+      "publicRenderedStylesLxUfRules": [],
+      "sourceExcerptSha256": "39d882e195b218a1263545484b244567118e74ddb57c357cf414199d4e8b3d93"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/handy-zubehoer",
+      "statusCode": 200,
+      "scrapeId": "01a1a035-87a6-713a-8e00-6e6d13181416",
+      "rootTitle": [
+        "Handyzubehör: Ladegeräte, Powerbanks & Halter | LuxeStyle"
+      ],
+      "rootCanonical": [
+        "https://luxestyle.ch/collections/handy-zubehoer"
+      ],
+      "rootDescription": [
+        "Handyzubehör: kabellose Ladegeräte, Powerbanks, Ladekabel, Handyhalter, Handyhüllen und magnetische Ladestationen. Bezahlen mit TWINT oder Klarna."
+      ],
+      "rootRobotsMeta": [],
+      "rootH1": [
+        "Handy-Zubehör"
+      ],
+      "mainCollectionLinkCount": 45,
+      "scopeLinks": {
+        "https://luxestyle.ch/collections/elektronik-technik": true,
+        "https://luxestyle.ch/collections/handy-zubehoer": true,
+        "https://luxestyle.ch/collections/powerbanks": true
+      },
+      "publicRenderedStylesLxUfRules": [
+        ".lx-uf { max-width: min(var(--page-width,1200px),100%); width: 100%; min-width: 0px; margin: 0px auto; padding: 0.35rem 1.5rem 0.2rem; box-sizing: border-box; }"
+      ],
+      "sourceExcerptSha256": "09ba89956bbee97d01fb13dd81020c93a3fe729c183d01a4fafbc2545b1fd4a9"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/powerbanks",
+      "statusCode": 200,
+      "scrapeId": "01a1a035-86eb-739b-a2d6-630b144dfc0b",
+      "rootTitle": [
+        "Powerbanks online kaufen | LuxeStyle CH"
+      ],
+      "rootCanonical": [
+        "https://luxestyle.ch/collections/powerbanks"
+      ],
+      "rootDescription": [
+        "Powerbanks online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      ],
+      "rootRobotsMeta": [],
+      "rootH1": [
+        "Powerbanks"
+      ],
+      "mainCollectionLinkCount": 18,
+      "scopeLinks": {
+        "https://luxestyle.ch/collections/elektronik-technik": false,
+        "https://luxestyle.ch/collections/handy-zubehoer": true,
+        "https://luxestyle.ch/collections/powerbanks": true
+      },
+      "publicRenderedStylesLxUfRules": [
+        ".lx-uf { max-width: min(var(--page-width,1200px),100%); width: 100%; min-width: 0px; margin: 0px auto; padding: 0.35rem 1.5rem 0.2rem; box-sizing: border-box; }"
+      ],
+      "sourceExcerptSha256": "029bbf2f250c99a2da0da95c2affd2299307963183aefd258e0122c75a928d1f"
+    }
+  ],
+  "currentMain": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "role": "MAIN",
+    "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+    "filename": "templates/collection.json",
+    "nativeMd5": "457082cc5d27f1f348ba45f1722d40c1",
+    "computedMd5": "457082cc5d27f1f348ba45f1722d40c1",
+    "sha256": "96d882690659d6634caed4911407a03bdae9b5342ae2015fcfe9205267fb926f",
+    "desiredWidthRuleAlreadyPresent": true,
+    "exactRule": ".lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}",
+    "historicalR53BeforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+    "historicalR53CandidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+    "oldWholeCandidateMustNotOverwriteCurrent": true,
+    "otherParsedFieldsMatchR53Candidate": true,
+    "additionalChangeObserved": "URL-deduplication in the same lux_subchips custom Liquid block, compared with R53 candidate. No own write or actor attribution.",
+    "nativeWrittenByThisAgent": false
+  },
+  "confirmedDefects": [],
+  "nextStep": "Retire stale R53 whole-file replacement; keep current main and perform bounded DE/FR mobile/desktop navigation-overflow QA before declaring functional closure. Existing website authorisation remains; no renewed approval required for that authorised read-only QA.",
+  "draftKind": "Acceptance/checklist draft, no new SEO text or theme patch warranted by these sources.",
+  "unknown": [
+    "Google indexing and selected canonical",
+    "Google/ChatGPT traffic or sales effect",
+    "X-Robots-Tag response headers",
+    "Current 390px/1440px functional focus/overflow behaviour",
+    "Full DE/FR site acceptance"
+  ],
+  "ownActions": {
+    "publicPageScrapes": 3,
+    "sourceFilesRead": 3,
+    "nativeThemeQueryCalls": 1,
+    "themeWrites": 0,
+    "shopWrites": 0,
+    "analyticsCalls": 0,
+    "workflowDispatches": 0,
+    "publishes": 0
+  },
+  "validation": "Fresh native schemas; MCP preflight explicitly skipped; native query accepted. No green full CLI validation claimed."
+}
