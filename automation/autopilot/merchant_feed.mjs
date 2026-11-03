@@ -24,12 +24,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { shopifyClientSecret } from '../lib/shopify_secret.mjs';
+import { normalizeShopifyHost } from '../lib/shopify_host.mjs';
 import { shopifyGql } from '../lib/shopify_gql.mjs';
 import { feedItem, pruefeProdukt } from '../lib/gmc_feed_item.mjs';
 
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = process.env.OUT || path.join(ROOT, 'automation', 'autopilot', 'google-merchant-feed.xml');
-const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
+const SHOP = normalizeShopifyHost(process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com');
 const API = '2025-01';
 const STORE = 'https://luxestyle.ch';
 const SCAN = +(process.env.SCAN || 6000);
@@ -50,20 +51,25 @@ const SORT = (process.env.SORT || '').trim() || null;
 const REVERSE = process.env.REVERSE === undefined ? null : process.env.REVERSE !== '0';
 
 async function holeToken() {
-  if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
-  const id = process.env.SHOPIFY_CLIENT_ID;
+  const id = String(process.env.SHOPIFY_CLIENT_ID || '').trim();
   const sec = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
-  if (!id || !sec) { console.log('ABBRUCH: SHOPIFY_CLIENT_ID oder _SECRET fehlt (kein Token holbar).'); return null; }
+  // Ein vollstaendiges App-Paar hat Vorrang vor einem parallel gesetzten statischen Token.
+  // Fehlt das Paar, bleibt der bisherige statische Zugang als Ausweichweg erhalten.
+  if (!id || !sec) {
+    if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
+    console.log('ABBRUCH: SHOPIFY_CLIENT_ID oder _SECRET fehlt (kein Token holbar).');
+    return null;
+  }
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    method: 'POST', redirect: 'error', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: id, client_secret: sec, grant_type: 'client_credentials' }) });
   const txt = await r.text();
   let j = {}; try { j = JSON.parse(txt); } catch {}
-  if (!j.access_token) {
-    console.log(`ABBRUCH: Token-Anfrage HTTP ${r.status} · Antwort ${txt.slice(0, 200)} · Secret-Länge ${sec.length}`);
+  if (!r.ok || typeof j?.access_token !== 'string' || !j.access_token.trim()) {
+    console.log(`ABBRUCH: Token-Anfrage HTTP ${r.status} · kein brauchbares Token.`);
     return null;
   }
-  return j.access_token;
+  return j.access_token.trim();
 }
 
 const TOKEN = await holeToken();
