@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-03T07:03:49.286403+00:00",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "kind": "READ_ONLY_RENDER_PATH_COUNTERCHECK_AND_INPUT_CONTRACT",
+  "notRendererOrAutomation": true,
+  "newFinding": "Die aktuell gelesene Foto-Reel-Vorlage rotiert Mixkit, kann Voiceover zuschalten und erzeugt9.4s mitFotozoom. Sie ist kein geeigneterAusführungsweg fürdiesen18sMaster. AktuelleChatvorgabehatVorrang vorREADME/CREDITS-Angaben.",
+  "sources": [
+    {
+      "path": "automation/music/CREDITS.txt",
+      "gitBlobSha": "b6dab1a05168da2b7215b50f71b879e4cabdf4c2",
+      "historicalR48Blob": "159e308cf68e88841b810a88882856101fdefb42",
+      "finding": "Changed provenance text; Mixkit preference reported in file. Does not override current owner chat."
+    },
+    {
+      "path": "dropship/reel-vorlage/musik_waehlen.sh",
+      "gitBlobSha": "4ca2faecbcdc44ef3ffdada9c0677feeefd66d8a",
+      "lines": [
+        5,
+        6,
+        14
+      ],
+      "finding": "Five Mixkit tracks default rotation; canonical remains optional explicit selection."
+    },
+    {
+      "path": "dropship/reel-vorlage/reel_karte.sh",
+      "gitBlobSha": "08db261de84c176e6ab50dcc05211dd1606d8a7e",
+      "lines": [
+        38,
+        39,
+        45,
+        46,
+        109,
+        122
+      ],
+      "finding": "Photo-based9.4s; auto music and optional voiceover. Not run."
+    }
+  ],
+  "futureMasterInputContract": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "sourceMode": "four licensed original native video takes P_OPERATION/P_PROJECTION/P_DETAIL/P_HERO",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540,
+    "musicPath": "automation/music/luxe-premium.wav",
+    "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "autoMusicRotationAllowed": false,
+    "voiceoverAllowed": false,
+    "sourceSpeechAllowed": false,
+    "externalSfxAllowed": false,
+    "stillPhotoZoomAllowed": false,
+    "genericStockAllowed": false,
+    "selectedHook": null
+  },
+  "gateResults": {
+    "canonicalMusicAvailableAndHashMatches": true,
+    "defaultPhotoTemplateSuitableForMaster": false,
+    "fourOriginalTakesBound": false,
+    "exactExecutionAndMotifsBound": false,
+    "commercialFilmEditingRightsAccepted": false,
+    "canonicalMusicFinalRightsAccepted": false,
+    "canonicalMusicListeningMixAccepted": false,
+    "finalMp4Present": false,
+    "ownerFilmApproved": false
+  },
+  "actions": {
+    "scriptsRun": 0,
+    "renders": 0,
+    "musicChanged": false,
+    "sourceCodeChanged": false,
+    "published": false,
+    "newWorkflowOrSchedule": false
+  }
+}
