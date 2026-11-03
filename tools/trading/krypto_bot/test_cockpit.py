@@ -770,6 +770,30 @@ with tempfile.TemporaryDirectory() as tmp:
             "zeit": "2026-01-20T02:31:00+00:00", "ok": False, "hinweise": ["BTC long", "⚠️ OHNE Stop: bitte prüfen"]}}, {}, heute2)}
         pruefe("Gesundheit: Warnung im letzten Lauf = rot, mit Grund", gw["Letzter Lauf mit Aufträgen"]["ok"] is False
                and "OHNE Stop" in gw["Letzter Lauf mit Aufträgen"]["text"], gw.get("Letzter Lauf mit Aufträgen"))
+        # Gesundheit nennt den Grund des gescheiterten Auftrags (Binance-Antwort aus dem Broker-Protokoll)
+        _lb_x = {"entscheide": [{"stand": "2026-01-19"}], "letzter_lauf": {
+            "zeit": "2026-01-20T02:31:00+00:00", "ok": False, "hinweise": ["⚠️ Mindestens ein Auftrag scheiterte — bitte im Konto prüfen."]}}
+        _bp = Path(tmp) / "ki-bot-broker.json"
+        _bp.write_text(json.dumps([
+            {"zeit": "2026-01-19T02:31:00+00:00", "broker": "binance-futures", "symbol": "ETHUSDT", "trocken": False,
+             "auftraege": [{"seite": "BUY", "menge": 0.4, "fehler": "HTTP -1111: Precision is over the maximum."}]},
+            {"zeit": "2026-01-20T02:31:00+00:00", "broker": "binance-futures", "symbol": "BTCUSDT", "trocken": False,
+             "auftraege": [{"seite": "BUY", "menge": 0.0128, "status": "FILLED"}, {"seite": "BUY", "menge": 0.0128, "fehler": "HTTP -2019:   Margin is insufficient."}]},
+            {"zeit": "2026-01-20T03:00:00+00:00", "broker": "binance-futures", "symbol": "SOLUSDT", "trocken": True,
+             "auftraege": [{"seite": "BUY", "menge": 1, "fehler": "nur Probelauf"}]}]), encoding="utf-8")
+        try:
+            gx = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+            pruefe("Gesundheit: gescheiterter Auftrag nennt Symbol und Grund von Binance (jüngster echter, Leerzeichen bereinigt)",
+                   gx["ok"] is False and "BTCUSDT BUY 0.0128: HTTP -2019: Margin is insufficient." in gx["text"]
+                   and "Mindestens ein Auftrag scheiterte" in gx["text"] and "Probelauf" not in gx["text"], gx)
+            _bp.write_text("{kaputt", encoding="utf-8")
+            gk = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+            pruefe("Gesundheit: kaputtes Broker-Protokoll stört die Anzeige nicht (Text wie bisher, ohne Grund)",
+                   gk["ok"] is False and "Grund:" not in gk["text"] and "Mindestens ein Auftrag scheiterte" in gk["text"], gk)
+        finally:
+            _bp.unlink(missing_ok=True)
+        gn = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+        pruefe("Gesundheit: ohne Broker-Protokoll bleibt der Text wie bisher", "Grund:" not in gn["text"] and gn["ok"] is False, gn)
         import meldung as M
         alt_datei = M.DATEI
         M.DATEI = Path(tmp) / "krypto-auto-status.json"

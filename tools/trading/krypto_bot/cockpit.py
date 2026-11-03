@@ -626,6 +626,22 @@ def nk_serie(jetzt=None):
     return serie if 0 <= jetzt - serie["zeit"] <= NK_LEBT_MAX_MIN * 60 else None
 
 
+def _letzter_auftragsfehler():
+    """Fehlertext des jüngsten gescheiterten Futures-Auftrags (die Antwort von Binance), nur lesend aus dem Broker-Protokoll.
+    Der Gesundheits-Punkt sagte bisher nur «mindestens ein Auftrag scheiterte»; der Grund stand weiter unten bei «Letzte Aufträge»."""
+    try:
+        protokoll = _json("ki-bot-broker.json", [])
+        for p in reversed(protokoll if isinstance(protokoll, list) else []):
+            if not isinstance(p, dict) or p.get("broker") != "binance-futures" or p.get("trocken"):
+                continue
+            for a in p.get("auftraege", []):
+                if isinstance(a, dict) and a.get("fehler"):
+                    return " ".join(f"{p.get('symbol', '?')} {a.get('seite', '')} {a.get('menge', '')}: {a['fehler']}".split())
+    except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+        pass
+    return ""
+
+
 def gesundheit(env, lb, ki, heute=None):
     """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}; ein grauer Punkt mit warnung=True ist eine WARNUNG (zählt in der Kopfzeile mit)."""
     heute = heute or datetime.now(timezone.utc).date()
@@ -660,8 +676,12 @@ def gesundheit(env, lb, ki, heute=None):
     if ll and ll.get("zeit"):
         alt = (heute - datetime.fromisoformat(ll["zeit"]).date()).days
         warn = next((h for h in ll.get("hinweise", []) if "⚠️" in h or "❌" in h), "") or "Warnung (siehe Handy-Nachricht)"
+        if not ll.get("ok"):
+            grund = _letzter_auftragsfehler()
+            if grund and grund not in warn:
+                warn = f"{warn} · Grund: {grund}"
         p("Letzter Lauf mit Aufträgen", bool(ll.get("ok")) and alt <= 2,
-          f"{ll['zeit'][:16].replace('T', ' ')} UTC — " + ("ohne Warnung" if ll.get("ok") else warn[:200])
+          f"{ll['zeit'][:16].replace('T', ' ')} UTC — " + ("ohne Warnung" if ll.get("ok") else warn[:320])
           + ("" if alt <= 2 else f" — {alt} Tage alt"))
     elif env.get("BINANCE_FUTURES_API_KEY"):
         p("Letzter Lauf mit Aufträgen", None, "noch keiner — kommt mit dem ersten Lauf ohne «Probe»")
