@@ -801,6 +801,55 @@ with _tf.TemporaryDirectory() as _hd:
            ("auftrag", "ETHUSDT") in reihenfolge and gesendet and "ETH ist abgewählt" in gesendet[0] and "SELL 1.5" in gesendet[0], (reihenfolge, gesendet))
     pruefe("Lagebild erst NACH allen Aufträgen geholt", reihenfolge[-1] == ("lage", None) and "Lagebild: test" in gesendet[0], reihenfolge)
 
+
+# ── Logbuch: derselbe Tag zweimal (Stufenwechsel, «Jetzt handeln»): der NEUESTE Entscheid steht da, nicht der erste.
+# Sonst zeigte das Cockpit «LONG 1.00×», während die Aufträge schon auf 2.00× gingen (Fund vom 03.11.2026 am Cockpit-Bild des Besitzers).
+def _entscheid_bsp(hebel, stand="2026-11-02", markt="BTC", detektor_ok=False):
+    return {"markt": markt, "symbol": markt + "USDT", "stand": stand, "kurs": 76677.0, "hebel": hebel, "hebel_roh": hebel,
+            "mvrv": {"tag": "2026-11-01", "wert": 1.45}, "bremse": None, "trend_tage": 150, "schnitt": 70000.0, "schwankung": 0.32,
+            "short_erlaubt": True, "max_hebel": 2.0, "risiko": 2.0, "detektor": {"ok": detektor_ok, "skill_2j": 0.22, "einbruch_1j": 0.1},
+            "stop_long": 72851.8, "stop_short": 80000.0}
+
+
+with _tf.TemporaryDirectory() as _hd2:
+    alt_lb2, alt_ausf2, alt_push2 = PI.LOGBUCH, BF.ausfuehren, _SG.push
+    PI.LOGBUCH = Path(_hd2) / "pilot.json"
+
+    def _ausf2(e_, trocken=False, symbol=None, gewicht=1.0, **k_):
+        e_["broker"] = {"position": 0.1, "hinweis": "", "fehler": False, "modus": "testnetz"}
+        return []
+
+    BF.ausfuehren, _SG.push = _ausf2, (lambda t: None)
+    try:
+        PI.handeln([_entscheid_bsp(1.0)], lambda: "Lage", trocken=False)
+        PI.handeln([_entscheid_bsp(2.0)], lambda: "Lage", trocken=False)
+        _e2 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: zweiter echter Lauf am selben Tag ersetzt den Entscheid (Hebel 2.0 statt des ersten 1.0), kein Doppel", _e2 == [("2026-11-02", 2.0)], _e2)
+        PI.handeln([_entscheid_bsp(1.0)], lambda: "Lage", trocken=True)
+        _e3 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: ein Probelauf überschreibt den Entscheid des Tages nie", _e3 == [("2026-11-02", 2.0)], _e3)
+        PI.handeln([_entscheid_bsp(2.0, stand="2026-11-03")], lambda: "Lage", trocken=False)
+        _e4 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: ein neuer Tag wird angehängt", _e4 == [("2026-11-02", 2.0), ("2026-11-03", 2.0)], _e4)
+        _brok = json.loads(PI.LOGBUCH.read_text())["entscheide"][0].get("broker")
+        pruefe("Logbuch: der ersetzte Entscheid trägt das Ergebnis der Aufträge (Broker-Angaben) des neuen Laufs", _brok and _brok.get("position") == 0.1, _brok)
+    finally:
+        PI.LOGBUCH, BF.ausfuehren, _SG.push = alt_lb2, alt_ausf2, alt_push2
+
+_lbm = {"entscheide": [], "kontostand": []}
+PI.entscheid_merken(_lbm, _entscheid_bsp(1.0, markt="BTC"))
+PI.entscheid_merken(_lbm, _entscheid_bsp(0.5, markt="ETH"))
+PI.entscheid_merken(_lbm, _entscheid_bsp(2.0, markt="BTC"))
+pruefe("entscheid_merken: ersetzt nur den Entscheid des GLEICHEN Marktes am gleichen Tag", [(x["markt"], x["hebel"]) for x in _lbm["entscheide"]] == [("BTC", 2.0), ("ETH", 0.5)], _lbm["entscheide"])
+PI.entscheid_merken(_lbm, _entscheid_bsp(1.0, markt="BTC"), ersetzen=False)
+pruefe("entscheid_merken: ersetzen=False lässt den Entscheid des Tages stehen", _lbm["entscheide"][0]["hebel"] == 2.0, _lbm["entscheide"])
+_lbm2 = {"entscheide": [{"stand": "2026-10-01", "hebel": 0.5}], "kontostand": []}  # altes Logbuch ohne «markt» = Bitcoin
+PI.entscheid_merken(_lbm2, _entscheid_bsp(1.0, stand="2026-10-01", markt="BTC"))
+pruefe("entscheid_merken: Eintrag ohne «markt» (Version 1) zählt als Bitcoin und wird ersetzt", len(_lbm2["entscheide"]) == 1 and _lbm2["entscheide"][0]["hebel"] == 1.0, _lbm2)
+_lbm3 = {"entscheide": [_entscheid_bsp(1.0, stand="2026-11-01")], "kontostand": []}
+PI.entscheid_merken(_lbm3, _entscheid_bsp(1.0, stand="2026-11-02"), ersetzen=False)
+pruefe("entscheid_merken: ein Probelauf an einem NEUEN Tag wird wie bisher angehängt", [x["stand"] for x in _lbm3["entscheide"]] == ["2026-11-01", "2026-11-02"], _lbm3)
+
 # ── nachgebauter Binance-Futures-Server ──
 GEHEIM = "futures-geheim"
 

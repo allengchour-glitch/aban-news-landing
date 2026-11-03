@@ -146,6 +146,21 @@ def letzter(lb, markt):
     return None
 
 
+def entscheid_merken(lb, e, ersetzen=True):
+    """Entscheid ins Logbuch. Neuer Tag: anhängen. Läuft der Pilot am SELBEN Tag nochmals (Wechsel der Risiko-Stufe, «Jetzt handeln»), ersetzt der neueste
+    Entscheid den alten desselben Tages — vorher blieb der erste stehen, und das Cockpit zeigte «LONG 1.00×», während die Aufträge schon auf 2.00× gingen.
+    ersetzen=False (Probelauf): ein vorhandener Entscheid des Tages bleibt unangetastet; es wird nur angehängt, wenn es für den Tag noch keinen gibt."""
+    liste = lb["entscheide"]
+    for i in range(len(liste) - 1, -1, -1):
+        if liste[i].get("markt", "BTC") == e["markt"]:
+            if liste[i].get("stand") != e["stand"]:
+                break                                   # der jüngste Eintrag dieses Marktes ist von einem anderen Tag: neuer Tag
+            if ersetzen:
+                liste[i] = e
+            return
+    lb["entscheide"] = (liste + [e])[-4000:]
+
+
 def kontostand_merken(lb, tag, kapital, modus=None):
     if kapital is None:
         return
@@ -384,8 +399,14 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None, ohne_p2=False):
     except Exception as ex:  # noqa: BLE001
         zeilen.append(f"⚠️ Telegram-Calls nicht lesbar ({type(ex).__name__}) — kopierte Calls bitte im Binance-Konto prüfen!")
         alles_zu = False
+    try:  # Positionen des Satelliten (Top-10-Experiment, nur Testnetz, nie BTC/ETH) schliesst der Not-Aus auch
+        import satellit as SAT
+        ziele += [(f"Satellit {s}", s) for s in SAT.offene_symbole(env=env) if s not in {x[1] for x in ziele}]
+    except Exception as ex:  # noqa: BLE001
+        zeilen.append(f"⚠️ Satelliten-Buch nicht lesbar ({type(ex).__name__}) — Satelliten-Positionen bitte im Binance-Konto prüfen!")
+        alles_zu = False
     for m, sym in ziele:
-        m = m if m.startswith("Call ") else m + alt_name
+        m = m if m.startswith(("Call ", "Satellit ")) else m + alt_name
         e = {"hebel": 0.0, "stand": heute}
         try:
             a = ausfuehren(e, symbol=sym, gewicht=1 / len(MAERKTE)) or []
@@ -548,9 +569,7 @@ def handeln2(ents, lage, trocken, alt_offen=(), alt_fehler=None):
     import pilot2_live as P2L
     lb = lies()
     for e in ents:
-        vorher = letzter(lb, e["markt"])
-        if not vorher or vorher["stand"] != e["stand"]:
-            lb["entscheide"] = (lb["entscheide"] + [e])[-4000:]
+        entscheid_merken(lb, e, ersetzen=not trocken)
     zusatz = []
     if alt_offen:
         zusatz.append("⚠️ Der alte Pilot hat noch offene Positionen in seinem Konto (" + ", ".join(alt_offen) + ") — die verwaltet "
@@ -617,9 +636,8 @@ def handeln(ents, lage, trocken):
     lb = lies()
     zeilen, wechsel_da, alle, warnung = [], False, [], False
     for e in ents:
-        vorher = letzter(lb, e["markt"])
-        if not vorher or vorher["stand"] != e["stand"]:
-            lb["entscheide"] = (lb["entscheide"] + [e])[-4000:]
+        vorher = letzter(lb, e["markt"])                # VOR dem Merken: der Vergleich unten («Wechsel») gilt dem bisherigen Entscheid
+        entscheid_merken(lb, e, ersetzen=not trocken)
         try:
             auftraege = BF.ausfuehren(e, trocken=trocken, symbol=e["symbol"], gewicht=1 / len(ents))
         except Exception as ex:  # noqa: BLE001 — darf den nächsten Markt und die Nachricht nie verhindern

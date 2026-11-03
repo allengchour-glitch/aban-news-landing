@@ -49,6 +49,10 @@ try:  # die Update-Module stehen absichtlich allein: ein Fehler darin darf das C
     import pflege as PF
 except Exception:  # noqa: BLE001
     AU = PF = None
+try:  # das Satelliten-Modul steht ebenfalls allein: ein Fehler darin darf das Cockpit nie lahmlegen
+    import satellit as SAT
+except Exception:  # noqa: BLE001
+    SAT = None
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
@@ -781,8 +785,12 @@ def gesundheit(env, lb, ki, heute=None):
     if env.get("ANTHROPIC_API_KEY"):
         letzte_ki = max((x.get("stand", "") for x in (ki or {}).get("entscheide", [])), default="")
         alt_ki = (heute - datetime.fromisoformat(letzte_ki).date()).days if letzte_ki else None
-        p("Claude (KI-Trader)", alt_ki is not None and alt_ki <= 2, f"letzte Einschätzung {letzte_ki}" if letzte_ki and alt_ki <= 2
-          else (f"letzte Einschätzung {alt_ki} Tage alt — Guthaben/Schlüssel prüfen" if letzte_ki else "noch keine Einschätzung"))
+        fehler_ki = (ki or {}).get("letzter_fehler")  # vom KI-Trader beim letzten gescheiterten Versuch gemerkt (ki_trader.lauf)
+        grund_ki = ""
+        if isinstance(fehler_ki, dict) and fehler_ki.get("hinweis"):
+            grund_ki = f" — letzter Versuch {str(fehler_ki.get('zeit', ''))[:16].replace('T', ' ')} UTC gescheitert: {' '.join(str(fehler_ki['hinweis']).split())[:220]}"
+        p("Claude (KI-Trader)", alt_ki is not None and alt_ki <= 2, (f"letzte Einschätzung {letzte_ki}" if letzte_ki and alt_ki <= 2
+          else (f"letzte Einschätzung {alt_ki} Tage alt — Guthaben/Schlüssel prüfen" if letzte_ki else "noch keine Einschätzung")) + grund_ki)
     else:
         p("Claude (KI-Trader)", None, "nicht gesetzt (optional)")
     p("Handy-Nachrichten", True if (env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")) or env.get("KI_BOT_NTFY") else None,
@@ -894,6 +902,12 @@ def gesundheit(env, lb, ki, heute=None):
             _ok, _text, _warn = _quelle()
             p(_name, _ok, _text, warnung=_warn)
         except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+            pass
+    if SAT is not None and env.get("BINANCE_FUTURES_API_KEY"):  # nur mit Futures-Schlüsseln: ohne sie handelt der Satellit nie und die Zeile wäre Lärm
+        try:
+            _ok, _text, _warn = SAT.ampel(env)
+            p("Satellit (Testnetz-Zusatz)", _ok, _text, warnung=_warn)
+        except Exception:  # noqa: BLE001
             pass
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():

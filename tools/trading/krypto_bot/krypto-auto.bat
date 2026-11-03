@@ -60,6 +60,8 @@ if defined PILOTLAUF (
   call :schritt Krypto-Pilot pilot.py --lauf
   REM Pilot 2.0: blieb ein Auftrag unklar, bis zu 11 Minuten nachfragen, dann Stops setzen (sonst sofort fertig)
   if exist "data\krypto-pilot2-bestand.json" call :schritt Pilot-2.0-Nachkontrolle pilot.py --nachkontrolle
+  REM Satellit: Top-10-Experiment im Testnetz mit Spielgeld. Eigener Ausschalter KRYPTO_SATELLIT=aus, ein Fehler hier haelt den Piloten nie auf.
+  call :schritt Satellit satellit.py --lauf
 ) else (
   echo Krypto-Pilot uebersprungen: keine Schluessel ^(BINANCE_FUTURES_API_KEY oder Pilot 2.0^).
 )
