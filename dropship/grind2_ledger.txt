@@ -1,0 +1,10 @@
+5BB44D7E-10C7-410E-8437-D56F2D9CFBF5 · 2026-11-03T16:40:06.358Z · UEBERSPRUNGEN · zurückgestellt: Zubehör-Konflikt: «aufkleber» im Titel, aber der Google-Pfad nennt das Gerät selbst (Cameras & Optics > Cameras > Webcams)
+DB857359-B497-4C40-A07D-1CCF71E968A0 · 2026-11-03T16:40:06.366Z · UEBERSPRUNGEN · zurückgestellt: Text offen: zu wenig belegte Angaben (0, 2 verworfen)
+1387240026089328640 · 2026-11-03T16:40:06.371Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Cameras > Webcams) passt zu keinem der beobachteten Pfade des Blat
+F9423F15-931B-4CBA-89D7-7C7DC8E68B3A · 2026-11-03T16:40:06.376Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+45F25042-5972-4C0A-B454-C48F5DE8D8F9 · 2026-11-03T16:40:06.381Z · UEBERSPRUNGEN · zurückgestellt: farbwerte-unterscheidbar: Werte unterscheiden sich nur durch eine Ziffer: «Farbe»: Schwarz1 / Schwarz
+EC9FAC95-2EBF-4605-97BE-5B16D84832C0 · 2026-11-03T16:40:06.386Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (82 > 40) — später, wenn das Tageskontingent reicht; optionswerte-sicher: nicht sicher überse
+7471180B-BD84-49A9-8ADF-FB6A644521A2 · 2026-11-03T16:40:14.697Z · GESCHRIEBEN · 1 Varianten · webcam-1080p-konferenz-video-4521a2 · gid://shopify/Product/16690164892039 · webcams
+F87841E3-6099-4C7A-979C-43BCFB50B73C · 2026-11-03T16:40:33.138Z · GESCHRIEBEN · 19 Varianten · laptop-tasche-schultertasche-50b73c · gid://shopify/Product/16690165186951 · laptophuellen
+5C86453E-623F-46F6-BFFD-E5508B7F996B · 2026-11-03T16:40:38.965Z · UEBERSPRUNGEN · zurückgestellt: produktart: Datenblatt widerspricht der Produktart: Netzwerk-/Überwachungskamera beschrieben, Google-Pfad «Cameras & Optics 
+E9D5225E-CBE0-48A7-BB32-1EA27685CAD7 · 2026-11-03T16:40:38.974Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
